@@ -23,6 +23,12 @@ SOFTWARE.
 */
 
 /**
- * This packet of barghos contains basic functionalities that are also used in the derived packets.
+ * This part of Project Barghos contains a lot of basic structures and the entire basic api
+ * used across all barghos subprojects.
+ * It is therefore required by every barghos subproject.
+ * 
+ * @author picatrix1899
+ *
+ * @since 1.0
  */
 package org.barghos.core;

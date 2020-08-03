@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2019 picatrix1899
+Copyright (c) 2020 picatrix1899
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -26,10 +26,28 @@ package org.barghos.core;
 
 
 /**
+ * This class contains general settings for the barghos core subproject.
+ * 
  * @author picatrix1899
  *
+ * @since 1.0
  */
-public class Barghos
+public final class Barghos
 {
+	/**
+	 * This build flag, if set to true, adds paramter checks to all functions within the barghos-core subproject,
+	 * that have an object or object derivation as a parameter.
+	 * 
+	 * <p>
+	 * This build flag should be used with great care, as it could lead to performance loss.
+	 * 
+	 * @since 1.0
+	 */
 	public static final boolean BUILD_FLAG__PARAMETER_CHECKS = false;
+	
+	/**
+	 * This class contains only static methods and therefore it should not be possible to create
+	 * instances from it.
+	 */
+	private Barghos() { }
 }
