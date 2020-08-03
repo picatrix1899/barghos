@@ -28,6 +28,10 @@ import org.barghos.core.tuple3.api.Tup3fR;
 
 /**
  * This class is a simple implementation of an LDRColor3.
+ * 
+ * @author picatrix1899
+ * 
+ * @since 1.0
  */
 public class LDRColor3 implements LDRColor3R
 {

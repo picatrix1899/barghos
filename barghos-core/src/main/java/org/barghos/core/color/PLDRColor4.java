@@ -28,6 +28,10 @@ import org.barghos.core.tuple4.api.Tup4fR;
 
 /**
  * This class is a readonly implementation of an LDRColor4.
+ * 
+ * @author picatrix1899
+ * 
+ * @since 1.0
  */
 public abstract class PLDRColor4 implements LDRColor4R
 {

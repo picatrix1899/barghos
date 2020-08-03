@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2019 picatrix1899
+Copyright (c) 2020 picatrix1899
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -26,11 +26,14 @@ package org.barghos.core.color;
 
 import org.barghos.core.pool.api.IPool;
 import org.barghos.core.tuple3.api.Tup3fR;
-import org.barghos.core.util.Check;
 import org.barghos.core.pool.DequePool;
 
 /**
  * This pool contains instances of the type HDRColor3.
+ * 
+ * @author picatrix1899
+ * 
+ * @since 1.0
  */
 public class HDRColor3Pool
 {
@@ -94,5 +97,5 @@ public class HDRColor3Pool
 	 * Stores HDRColor3 instances in the pool for late reuse.
 	 * @param elements The instances to store.
 	 */
-	public static void store(HDRColor3... instances) { assert(Check.notNull(instances)); pool.store(instances); }
+	public static void store(HDRColor3... instances) { pool.store(instances); }
 }

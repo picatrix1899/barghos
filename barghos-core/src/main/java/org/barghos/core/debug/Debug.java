@@ -24,11 +24,39 @@ SOFTWARE.
 
 package org.barghos.core.debug;
 
+/**
+ * This class provides a better way to do a <code>System.out.prinln("")</code> for debugging purposes.
+ * It can show along with the normal output the exact position of its call.
+ * This enables the easy finding of leftover debug outputs as long as one of the print methods is called.
+ * The debug output can also be disabled.
+ * 
+ * @author picatrix1899
+ *
+ * @since 1.0
+ */
 public class Debug
 {
+	/**
+	 * By setting this to true, calls to the print methods actually output data to the System.out stream.
+	 * Otherwise the output will be suppressed.
+	 * 
+	 * @since 1.0
+	 */
 	public static boolean DEBUG_MODE = false;
+	
+	/**
+	 * By setting this to true, the exact location of the print call is appended before the output data as long as
+	 * DEBUG_MODE is <code>true</code>.
+	 * 
+	 * @since 1.0
+	 */
 	public static boolean PRINT_STACK_ELEMENT = false;
 	
+	/**
+	 * Prints the entire stack of the current thread to the standard error stream.
+	 * 
+	 * @since 1.0
+	 */
 	public static void printCurrentStack()
 	{
 		if(DEBUG_MODE)
@@ -204,8 +232,6 @@ public class Debug
 		StackTraceElement[] elements = Thread.currentThread().getStackTrace();
 		
 		StackTraceElement element = elements[3];
-		
-		element.toString();
 		
 		return element.getClassName() + "." + element.getMethodName() + "(" + element.getFileName() +
 				(element.getLineNumber() >= 0 ? ":" + element.getLineNumber() : "") + ")";

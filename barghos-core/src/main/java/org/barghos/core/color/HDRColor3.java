@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2019 picatrix1899
+Copyright (c) 2020 picatrix1899
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -28,6 +28,10 @@ import org.barghos.core.tuple3.api.Tup3fR;
 
 /**
  * This class is a simple implementation of an HDRColor3.
+ * 
+ * @author picatrix1899
+ * 
+ * @since 1.0
  */
 public class HDRColor3 implements HDRColor3R
 {

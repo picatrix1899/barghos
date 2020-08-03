@@ -24,6 +24,12 @@ SOFTWARE.
 
 package org.barghos.core.color;
 
+/**
+ * 
+ * @author picatrix1899
+ *
+ * @since 1.0
+ */
 public enum LDRColor3Colors implements LDRColor3R
 {
 	/**

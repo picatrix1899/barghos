@@ -26,7 +26,6 @@ package org.barghos.core.color;
 
 import org.barghos.core.pool.api.IPool;
 import org.barghos.core.tuple4.api.Tup4fR;
-import org.barghos.core.util.Check;
 import org.barghos.core.pool.DequePool;
 
 /**
@@ -96,5 +95,5 @@ public class LDRColor4Pool
 	 * Stores LDRColor4 instances in the pool for late reuse.
 	 * @param elements The instances to store.
 	 */
-	public static void store(LDRColor4... instances) { assert(Check.notNull(instances)); pool.store(instances); }
+	public static void store(LDRColor4... instances) { pool.store(instances); }
 }

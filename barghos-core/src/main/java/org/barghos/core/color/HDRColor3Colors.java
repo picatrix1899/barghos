@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2019 picatrix1899
+Copyright (c) 2020 picatrix1899
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -24,6 +24,12 @@ SOFTWARE.
 
 package org.barghos.core.color;
 
+/**
+ * 
+ * @author picatrix1899
+ *
+ * @since 1.0
+ */
 public enum HDRColor3Colors implements HDRColor3R
 {
 	/**

@@ -24,5 +24,9 @@ SOFTWARE.
 
 /**
  * This package contains all basic implementations of LDR/HDR RGB/RGBA colors.
+ * 
+ * @author picatrix1899
+ * 
+ * @since 1.0
  */
 package org.barghos.core.color;

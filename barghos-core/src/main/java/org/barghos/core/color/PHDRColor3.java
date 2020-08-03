@@ -28,6 +28,10 @@ import org.barghos.core.tuple3.api.Tup3fR;
 
 /**
  * This class is a readonly implementation of an HDRColor3.
+ * 
+ * @author picatrix1899
+ * 
+ * @sice 1.0
  */
 public abstract class PHDRColor3 implements HDRColor3R
 {

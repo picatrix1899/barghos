@@ -26,6 +26,10 @@ package org.barghos.core.color;
 
 /**
  * This interface allows for selective reading of only LDR-RGBA-Colors.
+ * 
+ * @author picatrix1899
+ * 
+ * @since 1.0
  */
 public interface LDRColor4R extends LDRColor3R, Color4R
 {

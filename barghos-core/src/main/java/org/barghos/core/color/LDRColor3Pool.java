@@ -26,11 +26,14 @@ package org.barghos.core.color;
 
 import org.barghos.core.pool.api.IPool;
 import org.barghos.core.tuple3.api.Tup3fR;
-import org.barghos.core.util.Check;
 import org.barghos.core.pool.DequePool;
 
 /**
  * This pool contains instances of the type LDRColor3.
+ * 
+ * @author picatrix1899
+ * 
+ * @since 1.0
  */
 public class LDRColor3Pool
 {
@@ -94,5 +97,5 @@ public class LDRColor3Pool
 	 * Stores LDRColor3 instances in the pool for late reuse.
 	 * @param elements The instances to store.
 	 */
-	public static void store(LDRColor3... instances) { assert(Check.notNull(instances)); pool.store(instances); }
+	public static void store(LDRColor3... instances) { pool.store(instances); }
 }
