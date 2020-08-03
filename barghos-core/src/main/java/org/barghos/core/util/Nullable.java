@@ -31,10 +31,12 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 /**
- * @author picatrix1899
- *
  * This annotation indicates, that the annotated method argument may be null.
  * It usually indicates an argument with a special handling for null in the corresponding method.
+ * 
+ * @author picatrix1899
+ * 
+ * @since 1.0
  */
 @Retention(SOURCE)
 @Target(PARAMETER)
