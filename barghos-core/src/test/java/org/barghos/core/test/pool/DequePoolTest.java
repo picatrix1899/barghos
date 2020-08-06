@@ -44,21 +44,6 @@ class DequePoolTest
 	}
 	
 	@Test
-	void ctorNoClassTest()
-	{
-		try
-		{
-			new DequePool<>(null);
-		}
-		catch(IllegalArgumentException e)
-		{
-			return;
-		}
-		
-		fail();
-	}
-	
-	@Test
 	void ctorEnsuredTest()
 	{
 		DequePool<Tup2f> pool = new DequePool<>(Tup2f.class, 4);
