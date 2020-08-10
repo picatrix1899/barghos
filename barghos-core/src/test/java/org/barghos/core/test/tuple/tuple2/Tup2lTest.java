@@ -26,130 +26,130 @@ package org.barghos.core.test.tuple.tuple2;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.barghos.core.tuple2.PTup2f;
-import org.barghos.core.tuple2.Tup2f;
+import org.barghos.core.tuple2.PTup2l;
+import org.barghos.core.tuple2.Tup2l;
 
 import org.junit.jupiter.api.Test;
 
-class Tup2fTest
+class Tup2lTest
 {
 
 	@Test
 	void ctorEmptyTest()
 	{
-		Tup2f t = new Tup2f();
-		assertEquals(0.0f, t.getX());
-		assertEquals(0.0f, t.getY());
+		Tup2l t = new Tup2l();
+		assertEquals(0l, t.getX());
+		assertEquals(0l, t.getY());
 	}
 
 	@Test
 	void ctorCloneTest()
 	{
-		Tup2f t = new Tup2f(PTup2f.gen(1.2f, 3.4f));
-		assertEquals(1.2f, t.getX());
-		assertEquals(3.4f, t.getY());
+		Tup2l t = new Tup2l(PTup2l.gen(1l, 3l));
+		assertEquals(1l, t.getX());
+		assertEquals(3l, t.getY());
 	}
 	
 	@Test
 	void ctorScalarTest()
 	{
-		Tup2f t = new Tup2f(1.2f);
-		assertEquals(1.2f, t.getX());
-		assertEquals(1.2f, t.getY());
+		Tup2l t = new Tup2l(1l);
+		assertEquals(1l, t.getX());
+		assertEquals(1l, t.getY());
 	}
 	
 	@Test
 	void ctorComponentsTest()
 	{
-		Tup2f t = new Tup2f(1.2f, 3.4f);
-		assertEquals(1.2f, t.getX());
-		assertEquals(3.4f, t.getY());
+		Tup2l t = new Tup2l(1l, 3l);
+		assertEquals(1l, t.getX());
+		assertEquals(3l, t.getY());
 	}
 	
 	@Test
 	void setXTest()
 	{
-		Tup2f t = new Tup2f();
-		Tup2f result = t.setX(1.2f);
-		assertEquals(1.2f, t.getX());
+		Tup2l t = new Tup2l();
+		Tup2l result = t.setX(1l);
+		assertEquals(1l, t.getX());
 		assertSame(t, result);
 	}
 	
 	@Test
 	void setYTest()
 	{
-		Tup2f t = new Tup2f();
-		Tup2f result = t.setY(1.2f);
-		assertEquals(1.2f, t.getY());
+		Tup2l t = new Tup2l();
+		Tup2l result = t.setY(1l);
+		assertEquals(1l, t.getY());
 		assertSame(t, result);
 	}
 	
 	@Test
 	void setCloneTest()
 	{
-		Tup2f t = new Tup2f();
-		Tup2f result = t.set(new Tup2f(1.2f, 3.4f));
-		assertEquals(1.2f, t.getX());
-		assertEquals(3.4f, t.getY());
+		Tup2l t = new Tup2l();
+		Tup2l result = t.set(new Tup2l(1l, 3l));
+		assertEquals(1l, t.getX());
+		assertEquals(3l, t.getY());
 		assertSame(t, result);
 	}
 	
 	@Test
 	void setScalarTest()
 	{
-		Tup2f t = new Tup2f();
-		Tup2f result = t.set(1.2f);
-		assertEquals(1.2f, t.getX());
-		assertEquals(1.2f, t.getY());
+		Tup2l t = new Tup2l();
+		Tup2l result = t.set(1l);
+		assertEquals(1l, t.getX());
+		assertEquals(1l, t.getY());
 		assertSame(t, result);
 	}
 	
 	@Test
 	void setComponentsTest()
 	{
-		Tup2f t = new Tup2f();
-		Tup2f result = t.set(1.2f, 3.4f);
-		assertEquals(1.2f, t.getX());
-		assertEquals(3.4f, t.getY());
+		Tup2l t = new Tup2l();
+		Tup2l result = t.set(1l, 3l);
+		assertEquals(1l, t.getX());
+		assertEquals(3l, t.getY());
 		assertSame(t, result);
 	}
 	
 	@Test
 	void cloneTest()
 	{
-		Tup2f t = new Tup2f(1.2f, 3.4f);
-		Tup2f result = t.clone();
-		assertEquals(1.2f, result.getX());
-		assertEquals(3.4f, result.getY());
+		Tup2l t = new Tup2l(1l, 3l);
+		Tup2l result = t.clone();
+		assertEquals(1l, result.getX());
+		assertEquals(3l, result.getY());
 		assertNotSame(t, result);
 	}
 	
 	@Test
 	void hashcodeTest()
 	{
-		Tup2f t = new Tup2f(1.2f, 3.4f);
+		Tup2l t = new Tup2l(1l, 3l);
 		assertTrue(t.hashCode() != 0);
 	}
 	
 	@Test
 	void toStringTest()
 	{
-		Tup2f t = new Tup2f(1.2f, 3.4f);
-		assertEquals("tup2f(x=1.2, y=3.4)", t.toString());
+		Tup2l t = new Tup2l(1, 3);
+		assertEquals("tup2l(x=1, y=3)", t.toString());
 	}
 	
 	@SuppressWarnings("unlikely-arg-type")
 	@Test
 	void equalsTest()
 	{
-		Tup2f t = new Tup2f(1.2f, 3.4f);
+		Tup2l t = new Tup2l(1l, 3l);
 		assertTrue(t.equals(t));
 		assertFalse(t.equals(null));
-		assertFalse(t.equals(0));
-		assertFalse(t.equals(new Tup2f(3.4f, 5.6f)));
-		assertFalse(t.equals(new Tup2f(1.2f, 5.6f)));
+		assertFalse(t.equals(0l));
+		assertFalse(t.equals(new Tup2l(3l, 5l)));
+		assertFalse(t.equals(new Tup2l(1l, 5l)));
 		
-		assertTrue(t.equals(new Tup2f(1.2f, 3.4f)));
-		assertTrue(t.equals(PTup2f.gen(1.2f, 3.4f)));
+		assertTrue(t.equals(new Tup2l(1l, 3l)));
+		assertTrue(t.equals(PTup2l.gen(1l, 3l)));
 	}
 }

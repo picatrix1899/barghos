@@ -146,6 +146,6 @@ public class DequePool<T> implements IPool<T>
 	
 	public String toString()
 	{
-		return "dequepool(size=" + this.size + ")";
+		return "dequepool(class=" + this.clazz.getCanonicalName() + ", size=" + this.size + ")";
 	}
 }

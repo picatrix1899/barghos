@@ -64,13 +64,6 @@ class PTup2fTest
 		assertEquals("ptup2f(x=1.2, y=3.4)", t.toString());
 	}
 	
-	@Test
-	void hashCodeTest()
-	{
-		PTup2f t = PTup2f.gen(1.2f, 3.4f);
-		assertEquals(-202164479, t.hashCode());
-	}
-	
 	@SuppressWarnings("unlikely-arg-type")
 	@Test
 	void equalsTest()

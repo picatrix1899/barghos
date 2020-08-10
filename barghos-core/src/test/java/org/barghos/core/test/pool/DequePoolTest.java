@@ -133,10 +133,27 @@ class DequePoolTest
 	}
 	
 	@Test
+	void ensureNegativeTest()
+	{
+		DequePool<Tup2f> pool = new DequePool<>(Tup2f.class);
+		
+		try
+		{
+			pool.ensure(-1);
+		}
+		catch(IllegalArgumentException e)
+		{
+			return;
+		}
+		
+		fail();
+	}
+	
+	@Test
 	void toStringTest()
 	{
 		DequePool<Tup2f> pool = new DequePool<>(Tup2f.class, 2);
 		
-		assertEquals("dequepool(size=2)", pool.toString());
+		assertEquals("dequepool(class=org.barghos.core.tuple2.Tup2f, size=2)", pool.toString());
 	}
 }

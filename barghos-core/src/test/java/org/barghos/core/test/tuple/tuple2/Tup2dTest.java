@@ -28,10 +28,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.barghos.core.tuple2.PTup2d;
 import org.barghos.core.tuple2.Tup2d;
+
 import org.junit.jupiter.api.Test;
 
 class Tup2dTest
 {
+
 	@Test
 	void ctorEmptyTest()
 	{
@@ -40,10 +42,9 @@ class Tup2dTest
 		assertEquals(0.0, t.getY());
 	}
 
-	@Test
 	void ctorCloneTest()
 	{
-		Tup2d t = new Tup2d(new Tup2d(1.2, 3.4));
+		Tup2d t = new Tup2d(PTup2d.gen(1.2d, 3.4));
 		assertEquals(1.2, t.getX());
 		assertEquals(3.4, t.getY());
 	}
@@ -123,17 +124,17 @@ class Tup2dTest
 	}
 	
 	@Test
+	void hashcodeTest()
+	{
+		Tup2d t = new Tup2d(1.2, 3.4);
+		assertTrue(t.hashCode() != 0);
+	}
+	
+	@Test
 	void toStringTest()
 	{
 		Tup2d t = new Tup2d(1.2, 3.4);
 		assertEquals("tup2d(x=1.2, y=3.4)", t.toString());
-	}
-	
-	@Test
-	void hashCodeTest()
-	{
-		Tup2d t = new Tup2d(1.2, 3.4);
-		assertEquals(-25689151, t.hashCode());
 	}
 	
 	@SuppressWarnings("unlikely-arg-type")
@@ -148,6 +149,6 @@ class Tup2dTest
 		assertFalse(t.equals(new Tup2d(1.2, 5.6)));
 		
 		assertTrue(t.equals(new Tup2d(1.2, 3.4)));
-		assertTrue(t.equals(PTup2d.gen(1.2, 3.4)));	
+		assertTrue(t.equals(PTup2d.gen(1.2, 3.4)));
 	}
 }

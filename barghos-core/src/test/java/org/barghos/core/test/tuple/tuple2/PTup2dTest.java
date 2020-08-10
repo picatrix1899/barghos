@@ -64,13 +64,6 @@ class PTup2dTest
 		assertEquals("ptup2d(x=1.2, y=3.4)", t.toString());
 	}
 	
-	@Test
-	void hashCodeTest()
-	{
-		PTup2d t = PTup2d.gen(1.2, 3.4);
-		assertEquals(-25689151, t.hashCode());
-	}
-	
 	@SuppressWarnings("unlikely-arg-type")
 	@Test
 	void equalsTest()
