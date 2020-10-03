@@ -41,7 +41,7 @@ import org.barghos.core.tuple2.api.Tup2fR;
 public final class Tup2fPool
 {
 	/**
-	 * This variable contains the internal pool that is backing this specialized pool..
+	 * This variable contains the internal pool that is backing this specialized pool.
 	 */
 	private static IPool<Tup2f> pool = new DequePool<>(Tup2f.class);
 	
