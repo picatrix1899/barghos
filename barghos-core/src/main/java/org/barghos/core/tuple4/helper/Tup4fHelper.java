@@ -22,9 +22,15 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package org.barghos.core.tuple4;
+package org.barghos.core.tuple4.helper;
 
+import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
+import org.barghos.core.tuple2.Tup2f;
+import org.barghos.core.tuple2.api.Tup2fW;
+import org.barghos.core.tuple3.Tup3f;
+import org.barghos.core.tuple3.api.Tup3fW;
+import org.barghos.core.tuple4.Tup4f;
 import org.barghos.core.tuple4.api.Tup4fR;
 import org.barghos.core.tuple4.api.Tup4fW;
 
@@ -34,6 +40,227 @@ import org.barghos.core.tuple4.api.Tup4fW;
  */
 public class Tup4fHelper
 {
+	
+	public static Tup3f tupleFromXYZ(Tup4fR t)
+	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(t == null) throw new ArgumentNullException("t");
+		}
+		
+		return new Tup3f(t.getX(), t.getY(), t.getZ());
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends Tup3fW> T tupleFromXYZ(Tup4fR t, T res)
+	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(t == null) throw new ArgumentNullException("t");
+			if(res == null) throw new ArgumentNullException("res");
+		}
+		
+		return (T) res.set(t.getX(), t.getY(), t.getZ());
+	}
+
+	public static Tup3f tupleFromXYW(Tup4fR t)
+	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(t == null) throw new ArgumentNullException("t");
+		}
+		
+		return new Tup3f(t.getX(), t.getY(), t.getW());
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends Tup3fW> T tupleFromXYW(Tup4fR t, T res)
+	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(t == null) throw new ArgumentNullException("t");
+			if(res == null) throw new ArgumentNullException("res");
+		}
+		
+		return (T) res.set(t.getX(), t.getY(), t.getW());
+	}
+	
+	public static Tup3f tupleFromXZW(Tup4fR t)
+	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(t == null) throw new ArgumentNullException("t");
+		}
+		
+		return new Tup3f(t.getX(), t.getZ(), t.getW());
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends Tup3fW> T tupleFromXZW(Tup4fR t, T res)
+	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(t == null) throw new ArgumentNullException("t");
+			if(res == null) throw new ArgumentNullException("res");
+		}
+		
+		return (T) res.set(t.getX(), t.getZ(), t.getW());
+	}
+	
+	public static Tup3f tupleFromYZW(Tup4fR t)
+	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(t == null) throw new ArgumentNullException("t");
+		}
+		
+		return new Tup3f(t.getY(), t.getZ(), t.getW());
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends Tup3fW> T tupleFromYZW(Tup4fR t, T res)
+	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(t == null) throw new ArgumentNullException("t");
+			if(res == null) throw new ArgumentNullException("res");
+		}
+		
+		return (T) res.set(t.getY(), t.getZ(), t.getW());
+	}
+	
+	public static Tup2f tupleFromXY(Tup4fR t)
+	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(t == null) throw new ArgumentNullException("t");
+		}
+		
+		return new Tup2f(t.getX(), t.getY());
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends Tup2fW> T tupleFromXY(Tup4fR t, T res)
+	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(t == null) throw new ArgumentNullException("t");
+			if(res == null) throw new ArgumentNullException("res");
+		}
+		
+		return (T) res.set(t.getX(), t.getY());
+	}
+	
+	public static Tup2f tupleFromYZ(Tup4fR t)
+	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(t == null) throw new ArgumentNullException("t");
+		}
+		
+		return new Tup2f(t.getY(), t.getZ());
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends Tup2fW> T tupleFromYZ(Tup4fR t, T res)
+	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(t == null) throw new ArgumentNullException("t");
+			if(res == null) throw new ArgumentNullException("res");
+		}
+		
+		return (T) res.set(t.getY(), t.getZ());
+	}
+	
+	public static Tup2f tupleFromZW(Tup4fR t)
+	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(t == null) throw new ArgumentNullException("t");
+		}
+		
+		return new Tup2f(t.getZ(), t.getW());
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends Tup2fW> T tupleFromZW(Tup4fR t, T res)
+	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(t == null) throw new ArgumentNullException("t");
+			if(res == null) throw new ArgumentNullException("res");
+		}
+		
+		return (T) res.set(t.getZ(), t.getW());
+	}
+	
+	public static Tup2f tupleFromXZ(Tup4fR t)
+	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(t == null) throw new ArgumentNullException("t");
+		}
+		
+		return new Tup2f(t.getX(), t.getZ());
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends Tup2fW> T tupleFromXZ(Tup4fR t, T res)
+	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(t == null) throw new ArgumentNullException("t");
+			if(res == null) throw new ArgumentNullException("res");
+		}
+		
+		return (T) res.set(t.getX(), t.getZ());
+	}
+	
+	public static Tup2f tupleFromYW(Tup4fR t)
+	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(t == null) throw new ArgumentNullException("t");
+		}
+		
+		return new Tup2f(t.getY(), t.getW());
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends Tup2fW> T tupleFromYW(Tup4fR t, T res)
+	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(t == null) throw new ArgumentNullException("t");
+			if(res == null) throw new ArgumentNullException("res");
+		}
+		
+		return (T) res.set(t.getY(), t.getW());
+	}
+	
+	public static Tup2f tupleFromXW(Tup4fR t)
+	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(t == null) throw new ArgumentNullException("t");
+		}
+		
+		return new Tup2f(t.getX(), t.getW());
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends Tup2fW> T tupleFromXW(Tup4fR t, T res)
+	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(t == null) throw new ArgumentNullException("t");
+			if(res == null) throw new ArgumentNullException("res");
+		}
+		
+		return (T) res.set(t.getX(), t.getW());
+	}
+	
 	
 	public static Tup4f min(Tup4fR a, Tup4fR b)
 	{
