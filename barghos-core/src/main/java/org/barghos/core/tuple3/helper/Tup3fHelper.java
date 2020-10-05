@@ -22,10 +22,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package org.barghos.core.tuple3;
+package org.barghos.core.tuple3.helper;
 
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
+import org.barghos.core.tuple2.Tup2f;
+import org.barghos.core.tuple2.api.Tup2fW;
+import org.barghos.core.tuple3.Tup3f;
 import org.barghos.core.tuple3.api.Tup3fR;
 import org.barghos.core.tuple3.api.Tup3fW;
 
@@ -35,8 +38,73 @@ import org.barghos.core.tuple3.api.Tup3fW;
  */
 public class Tup3fHelper
 {
+	public static Tup2f tupleFromXY(Tup3fR t)
+	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(t == null) throw new ArgumentNullException("t");
+		}
+		
+		return new Tup2f(t.getX(), t.getY());
+	}
 	
-	public static Tup3f min(Tup3fR a, Tup3fR b)
+	@SuppressWarnings("unchecked")
+	public static <T extends Tup2fW> T tupleFromXY(Tup3fR t, T res)
+	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(t == null) throw new ArgumentNullException("t");
+			if(res == null) throw new ArgumentNullException("res");
+		}
+		
+		return (T) res.set(t.getX(), t.getY());
+	}
+	
+	public static Tup2f tupleFromXZ(Tup3fR t)
+	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(t == null) throw new ArgumentNullException("t");
+		}
+		
+		return new Tup2f(t.getX(), t.getZ());
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends Tup2fW> T tupleFromXZ(Tup3fR t, T res)
+	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(t == null) throw new ArgumentNullException("t");
+			if(res == null) throw new ArgumentNullException("res");
+		}
+		
+		return (T) res.set(t.getX(), t.getZ());
+	}
+	
+	public static Tup2f tupleFromYZ(Tup3fR t)
+	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(t == null) throw new ArgumentNullException("t");
+		}
+		
+		return new Tup2f(t.getY(), t.getZ());
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends Tup2fW> T tupleFromYZ(Tup3fR t, T res)
+	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(t == null) throw new ArgumentNullException("t");
+			if(res == null) throw new ArgumentNullException("res");
+		}
+		
+		return (T) res.set(t.getY(), t.getZ());
+	}
+	
+		public static Tup3f min(Tup3fR a, Tup3fR b)
 	{
 		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
 		{
