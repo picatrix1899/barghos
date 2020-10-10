@@ -22,45 +22,35 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package org.barghos.core.pool.api;
+package org.barghos.core.pool;
+
+import org.barghos.core.pool.api.IPool;
+import org.barghos.core.pool.api.PoolFactory;
 
 /**
- * This interface represents an instance pool.
- * An instance pool can store and provide instances for later reusage.
+ * This class is an implementation of {@link PoolFactory} that creates instances of {@link DequePool}.
+ * It is the default factory for creating instance pools.
  * 
  * @author picatrix1899
  * 
  * @since 1.0
  */
-public interface IPool<T>
+public class DequePoolFactory implements PoolFactory
 {
-	/**
-	 * Returns a stored instance and removes it from the pool.
-	 * @return A stored instance.
-	 */
-	T get();
+	private static DequePoolFactory INSTANCE;
 	
-	/**
-	 * Returns always a new instance.
-	 * @return A new instance.
-	 */
-	T getNew();
+	private DequePoolFactory() {}
 	
-	/**
-	 * Ensures that the given amount of instances is present in the pool.
-	 * @param count
-	 */
-	void ensure(int count);
+	public static DequePoolFactory get()
+	{
+		if(INSTANCE == null) INSTANCE = new DequePoolFactory();
+		
+		return INSTANCE;
+	}
 	
-	/**
-	 * Stores one or more instances in the pool.
-	 * @param t instances of the type of the pool.
-	 */
-	int store(@SuppressWarnings("unchecked") T... instance);
+	public <T> IPool<T> create(Class<? extends T> clazz)
+	{
+		return new DequePool<T>(clazz);
+	}
 	
-	/**
-	 * Returns the current instance count in the pool.
-	 * @return the current instance count.
-	 */
-	int size();
 }

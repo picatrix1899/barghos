@@ -24,43 +24,16 @@ SOFTWARE.
 
 package org.barghos.core.pool.api;
 
+
 /**
- * This interface represents an instance pool.
- * An instance pool can store and provide instances for later reusage.
+ * This interface represents a pool factory.
+ * A pool factory is typically used to create all neccessary instances of instance pools.
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @sice 1.0
  */
-public interface IPool<T>
+public interface PoolFactory
 {
-	/**
-	 * Returns a stored instance and removes it from the pool.
-	 * @return A stored instance.
-	 */
-	T get();
-	
-	/**
-	 * Returns always a new instance.
-	 * @return A new instance.
-	 */
-	T getNew();
-	
-	/**
-	 * Ensures that the given amount of instances is present in the pool.
-	 * @param count
-	 */
-	void ensure(int count);
-	
-	/**
-	 * Stores one or more instances in the pool.
-	 * @param t instances of the type of the pool.
-	 */
-	int store(@SuppressWarnings("unchecked") T... instance);
-	
-	/**
-	 * Returns the current instance count in the pool.
-	 * @return the current instance count.
-	 */
-	int size();
+	<T> IPool<T> create(Class<? extends T> clazz);
 }

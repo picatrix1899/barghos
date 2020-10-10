@@ -24,6 +24,8 @@ SOFTWARE.
 
 package org.barghos.core;
 
+import org.barghos.core.pool.DequePoolFactory;
+import org.barghos.core.pool.api.PoolFactory;
 
 /**
  * This class contains general settings for the barghos core subproject.
@@ -44,6 +46,15 @@ public final class Barghos
 	 * @since 1.0
 	 */
 	public static final boolean BUILD_FLAG__PARAMETER_CHECKS = false;
+	
+	
+	/**
+	 * This property contains the instance of the pool factory used to create all neccessary instance pools in the
+	 * barghos-core library.
+	 * 
+	 * @since 1.0
+	 */
+	public static PoolFactory INSTANCE_POOL_FACTORY = DequePoolFactory.get();
 	
 	/**
 	 * This class contains only static methods and therefore it should not be possible to create
