@@ -52,9 +52,23 @@ public final class Tup2strPool
 	private Tup2strPool() { }
 	
 	/**
-	 * Returns an instance of {@link Tup2str} from the pool and resets it.
+	 * Returns an instance of {@link Tup2str} from the pool and does not reset it.
+	 * This function is useful for reducing unneccessary calls and operations if a value is
+	 * applied to to the tuple anyway before it is used.
 	 * 
 	 * @return A stored instance.
+	 * 
+	 * @since 1.0
+	 */
+	public static Tup2str getPlain()
+	{
+		return pool.get();
+	}
+	
+	/**
+	 * Returns an instance of {@link Tup2str} from the pool and resets it.
+	 * 
+	 * @return A stored instance with the components set to <c>""</c>.
 	 * 
 	 * @since 1.0
 	 */

@@ -52,9 +52,23 @@ public final class Tup4sPool
 	private Tup4sPool() { }
 	
 	/**
-	 * Returns an instance of {@link Tup4s} from the pool and resets it.
+	 * Returns an instance of {@link Tup4s} from the pool and does not reset it.
+	 * This function is useful for reducing unneccessary calls and operations if a value is
+	 * applied to to the tuple anyway before it is used.
 	 * 
 	 * @return A stored instance.
+	 * 
+	 * @since 1.0
+	 */
+	public static Tup4s getPlain()
+	{
+		return pool.get();
+	}
+	
+	/**
+	 * Returns an instance of {@link Tup4s} from the pool and resets it.
+	 * 
+	 * @return A stored instance with the components set to 0.
 	 * 
 	 * @since 1.0
 	 */

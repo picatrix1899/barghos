@@ -54,9 +54,23 @@ public final class Tup2bigiPool
 	private Tup2bigiPool() { }
 	
 	/**
-	 * Returns an instance of {@link Tup2bigi} from the pool and resets it.
+	 * Returns an instance of {@link Tup2bigi} from the pool and does not reset it.
+	 * This function is useful for reducing unneccessary calls and operations if a value is
+	 * applied to to the tuple anyway before it is used.
 	 * 
 	 * @return A stored instance.
+	 * 
+	 * @since 1.0
+	 */
+	public static Tup2bigi getPlain()
+	{
+		return pool.get();
+	}
+	
+	/**
+	 * Returns an instance of {@link Tup2bigi} from the pool and resets it.
+	 * 
+	 * @return A stored instance with the components set to {@link BigInteger.ZERO}.
 	 * 
 	 * @since 1.0
 	 */

@@ -54,9 +54,23 @@ public final class Tup4bigdPool
 	private Tup4bigdPool() { }
 	
 	/**
-	 * Returns an instance of {@link Tup4bigd} from the pool and resets it.
+	 * Returns an instance of {@link Tup4bigd} from the pool and does not reset it.
+	 * This function is useful for reducing unneccessary calls and operations if a value is
+	 * applied to to the tuple anyway before it is used.
 	 * 
 	 * @return A stored instance.
+	 * 
+	 * @since 1.0
+	 */
+	public static Tup4bigd getPlain()
+	{
+		return pool.get();
+	}
+	
+	/**
+	 * Returns an instance of {@link Tup4bigd} from the pool and resets it.
+	 * 
+	 * @return A stored instance with the components set to {@link BigDecimal.ZERO}.
 	 * 
 	 * @since 1.0
 	 */

@@ -36,8 +36,22 @@ public class LDRColor4Pool
 	private static final Pool<LDRColor4> pool = new DequePool<>(LDRColor4.class);
 
 	/**
-	 * Returns an instance of LDRColor4 from the pool and resets it.
+	 * Returns an instance of {@link LDRColor4} from the pool and does not reset it.
+	 * This function is useful for reducing unneccessary calls and operations if a value is
+	 * applied to to the tuple anyway before it is used.
+	 * 
 	 * @return A stored instance.
+	 * 
+	 * @since 1.0
+	 */
+	public static LDRColor4 getPlain()
+	{
+		return pool.get();
+	}
+	
+	/**
+	 * Returns an instance of LDRColor4 from the pool and resets it.
+	 * @return A stored instance with the components set to 0.0f.
 	 */
 	public static LDRColor4 get() { return pool.get().set(0.0f); }
 	

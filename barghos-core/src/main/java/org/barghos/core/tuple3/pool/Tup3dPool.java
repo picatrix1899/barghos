@@ -52,9 +52,23 @@ public final class Tup3dPool
 	private Tup3dPool() { }
 	
 	/**
-	 * Returns an instance of {@link Tup3d} from the pool and resets it.
+	 * Returns an instance of {@link Tup3d} from the pool and does not reset it.
+	 * This function is useful for reducing unneccessary calls and operations if a value is
+	 * applied to to the tuple anyway before it is used.
 	 * 
 	 * @return A stored instance.
+	 * 
+	 * @since 1.0
+	 */
+	public static Tup3d getPlain()
+	{
+		return pool.get();
+	}
+	
+	/**
+	 * Returns an instance of {@link Tup3d} from the pool and resets it.
+	 * 
+	 * @return A stored instance with the components set to 0.0d.
 	 * 
 	 * @since 1.0
 	 */

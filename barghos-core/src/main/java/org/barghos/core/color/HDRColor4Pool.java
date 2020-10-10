@@ -40,8 +40,22 @@ public class HDRColor4Pool
 	private static final Pool<HDRColor4> pool = new DequePool<>(HDRColor4.class);
 
 	/**
-	 * Returns an instance of HDRColor4 from the pool and resets it.
+	 * Returns an instance of {@link HDRColor4} from the pool and does not reset it.
+	 * This function is useful for reducing unneccessary calls and operations if a value is
+	 * applied to to the tuple anyway before it is used.
+	 * 
 	 * @return A stored instance.
+	 * 
+	 * @since 1.0
+	 */
+	public static HDRColor4 getPlain()
+	{
+		return pool.get();
+	}
+	
+	/**
+	 * Returns an instance of HDRColor4 from the pool and resets it.
+	 * @return A stored instance with the components set to 0.0f.
 	 */
 	public static HDRColor4 get() { return pool.get().set(0.0f); }
 	

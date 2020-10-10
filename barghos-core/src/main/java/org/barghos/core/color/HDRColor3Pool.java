@@ -40,6 +40,20 @@ public class HDRColor3Pool
 	private static final Pool<HDRColor3> pool = new DequePool<>(HDRColor3.class);
 
 	/**
+	 * Returns an instance of {@link HDRColor3} from the pool and does not reset it.
+	 * This function is useful for reducing unneccessary calls and operations if a value is
+	 * applied to to the tuple anyway before it is used.
+	 * 
+	 * @return A stored instance with the components set to 0.0f.
+	 * 
+	 * @since 1.0
+	 */
+	public static HDRColor3 getPlain()
+	{
+		return pool.get();
+	}
+	
+	/**
 	 * Returns an instance of HDRColor3 from the pool and resets it.
 	 * @return A stored instance.
 	 */
