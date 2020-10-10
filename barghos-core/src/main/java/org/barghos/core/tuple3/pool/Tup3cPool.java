@@ -27,7 +27,7 @@ package org.barghos.core.tuple3.pool;
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.pool.DequePool;
-import org.barghos.core.pool.api.IPool;
+import org.barghos.core.pool.api.Pool;
 import org.barghos.core.tuple3.Tup3c;
 import org.barghos.core.tuple3.api.Tup3cR;
 
@@ -43,7 +43,7 @@ public final class Tup3cPool
 	/**
 	 * This variable contains the internal pool that is backing this specialized pool.
 	 */
-	private static IPool<Tup3c> pool = new DequePool<>(Tup3c.class);
+	private static Pool<Tup3c> pool = new DequePool<>(Tup3c.class);
 	
 	/**
 	 * This class contains only static methods and therefore it should not be possible to create
@@ -150,7 +150,7 @@ public final class Tup3cPool
 	 * 
 	 * @since 1.0
 	 */
-	public static void setInternalPool(IPool<Tup3c> pool)
+	public static void setInternalPool(Pool<Tup3c> pool)
 	{
 		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
 		{
@@ -167,7 +167,7 @@ public final class Tup3cPool
 	 * 
 	 * @since 1.0
 	 */
-	public static IPool<Tup3c> getInternalPool()
+	public static Pool<Tup3c> getInternalPool()
 	{
 		return pool;
 	}

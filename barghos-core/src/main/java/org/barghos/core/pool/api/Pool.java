@@ -32,7 +32,7 @@ package org.barghos.core.pool.api;
  * 
  * @since 1.0
  */
-public interface IPool<T>
+public interface Pool<T>
 {
 	/**
 	 * Returns a stored instance and removes it from the pool.

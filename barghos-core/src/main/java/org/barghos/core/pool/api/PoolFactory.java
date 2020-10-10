@@ -35,5 +35,5 @@ package org.barghos.core.pool.api;
  */
 public interface PoolFactory
 {
-	<T> IPool<T> create(Class<? extends T> clazz);
+	<T> Pool<T> create(Class<? extends T> clazz);
 }

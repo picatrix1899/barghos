@@ -24,7 +24,7 @@ SOFTWARE.
 
 package org.barghos.core.color;
 
-import org.barghos.core.pool.api.IPool;
+import org.barghos.core.pool.api.Pool;
 import org.barghos.core.tuple4.api.Tup4fR;
 import org.barghos.core.pool.DequePool;
 
@@ -37,7 +37,7 @@ import org.barghos.core.pool.DequePool;
  */
 public class HDRColor4Pool
 {
-	private static final IPool<HDRColor4> pool = new DequePool<>(HDRColor4.class);
+	private static final Pool<HDRColor4> pool = new DequePool<>(HDRColor4.class);
 
 	/**
 	 * Returns an instance of HDRColor4 from the pool and resets it.

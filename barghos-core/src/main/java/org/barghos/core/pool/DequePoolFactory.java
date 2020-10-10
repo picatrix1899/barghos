@@ -24,7 +24,7 @@ SOFTWARE.
 
 package org.barghos.core.pool;
 
-import org.barghos.core.pool.api.IPool;
+import org.barghos.core.pool.api.Pool;
 import org.barghos.core.pool.api.PoolFactory;
 
 /**
@@ -48,7 +48,7 @@ public class DequePoolFactory implements PoolFactory
 		return INSTANCE;
 	}
 	
-	public <T> IPool<T> create(Class<? extends T> clazz)
+	public <T> Pool<T> create(Class<? extends T> clazz)
 	{
 		return new DequePool<T>(clazz);
 	}

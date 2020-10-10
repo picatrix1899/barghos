@@ -27,7 +27,7 @@ package org.barghos.core.tuple2.pool;
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.pool.DequePool;
-import org.barghos.core.pool.api.IPool;
+import org.barghos.core.pool.api.Pool;
 import org.barghos.core.tuple2.Tup2s;
 import org.barghos.core.tuple2.api.Tup2sR;
 
@@ -43,7 +43,7 @@ public final class Tup2sPool
 	/**
 	 * This variable contains the internal pool that is backing this specialized pool.
 	 */
-	private static IPool<Tup2s> pool = new DequePool<>(Tup2s.class);
+	private static Pool<Tup2s> pool = new DequePool<>(Tup2s.class);
 	
 	/**
 	 * This class contains only static methods and therefore it should not be possible to create
@@ -149,7 +149,7 @@ public final class Tup2sPool
 	 * 
 	 * @since 1.0
 	 */
-	public static void setInternalPool(IPool<Tup2s> pool)
+	public static void setInternalPool(Pool<Tup2s> pool)
 	{
 		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
 		{
@@ -166,7 +166,7 @@ public final class Tup2sPool
 	 * 
 	 * @since 1.0
 	 */
-	public static IPool<Tup2s> getInternalPool()
+	public static Pool<Tup2s> getInternalPool()
 	{
 		return pool;
 	}

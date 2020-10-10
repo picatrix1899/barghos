@@ -31,12 +31,12 @@ import java.util.Deque;
 
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
-import org.barghos.core.pool.api.IPool;
+import org.barghos.core.pool.api.Pool;
 
 /**
  * This class can store instances of a type T for later reuse.
  */
-public class DequePool<T> implements IPool<T>
+public class DequePool<T> implements Pool<T>
 {
 	private final Deque<T> store = new ArrayDeque<T>();
 	

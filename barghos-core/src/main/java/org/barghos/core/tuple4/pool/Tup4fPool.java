@@ -27,7 +27,7 @@ package org.barghos.core.tuple4.pool;
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.pool.DequePool;
-import org.barghos.core.pool.api.IPool;
+import org.barghos.core.pool.api.Pool;
 import org.barghos.core.tuple4.Tup4f;
 import org.barghos.core.tuple4.api.Tup4fR;
 
@@ -43,7 +43,7 @@ public final class Tup4fPool
 	/**
 	 * This variable contains the internal pool that is backing this specialized pool.
 	 */
-	private static IPool<Tup4f> pool = new DequePool<>(Tup4f.class);
+	private static Pool<Tup4f> pool = new DequePool<>(Tup4f.class);
 	
 	/**
 	 * This class contains only static methods and therefore it should not be possible to create
@@ -151,7 +151,7 @@ public final class Tup4fPool
 	 * 
 	 * @since 1.0
 	 */
-	public static void setInternalPool(IPool<Tup4f> pool)
+	public static void setInternalPool(Pool<Tup4f> pool)
 	{
 		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
 		{
@@ -168,7 +168,7 @@ public final class Tup4fPool
 	 * 
 	 * @since 1.0
 	 */
-	public static IPool<Tup4f> getInternalPool()
+	public static Pool<Tup4f> getInternalPool()
 	{
 		return pool;
 	}
