@@ -26,7 +26,6 @@ package org.barghos.core.tuple4.pool;
 
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
-import org.barghos.core.pool.DequePool;
 import org.barghos.core.pool.api.Pool;
 import org.barghos.core.tuple4.Tup4c;
 import org.barghos.core.tuple4.api.Tup4cR;
@@ -43,7 +42,7 @@ public final class Tup4cPool
 	/**
 	 * This variable contains the internal pool that is backing this specialized pool.
 	 */
-	private static Pool<Tup4c> pool = new DequePool<>(Tup4c.class);
+	private static Pool<Tup4c> pool = Barghos.INSTANCE_POOL_FACTORY.create(Tup4c.class);
 	
 	/**
 	 * This class contains only static methods and therefore it should not be possible to create

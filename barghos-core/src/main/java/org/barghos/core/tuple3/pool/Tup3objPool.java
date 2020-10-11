@@ -26,7 +26,6 @@ package org.barghos.core.tuple3.pool;
 
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
-import org.barghos.core.pool.DequePool;
 import org.barghos.core.pool.api.Pool;
 import org.barghos.core.tuple3.Tup3obj;
 import org.barghos.core.tuple3.api.Tup3objR;
@@ -43,7 +42,7 @@ public final class Tup3objPool
 	/**
 	 * This variable contains the internal pool that is backing this specialized pool.
 	 */
-	private static Pool<Tup3obj> pool = new DequePool<>(Tup3obj.class);
+	private static Pool<Tup3obj> pool = Barghos.INSTANCE_POOL_FACTORY.create(Tup3obj.class);
 	
 	/**
 	 * This class contains only static methods and therefore it should not be possible to create

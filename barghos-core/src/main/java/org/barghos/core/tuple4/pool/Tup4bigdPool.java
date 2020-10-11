@@ -28,7 +28,6 @@ import java.math.BigDecimal;
 
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
-import org.barghos.core.pool.DequePool;
 import org.barghos.core.pool.api.Pool;
 import org.barghos.core.tuple4.Tup4bigd;
 import org.barghos.core.tuple4.api.Tup4bigdR;
@@ -45,7 +44,7 @@ public final class Tup4bigdPool
 	/**
 	 * This variable contains the internal pool that is backing this specialized pool.
 	 */
-	private static Pool<Tup4bigd> pool = new DequePool<>(Tup4bigd.class);
+	private static Pool<Tup4bigd> pool = Barghos.INSTANCE_POOL_FACTORY.create(Tup4bigd.class);
 	
 	/**
 	 * This class contains only static methods and therefore it should not be possible to create

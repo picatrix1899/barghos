@@ -26,7 +26,6 @@ package org.barghos.core.tuple2.pool;
 
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
-import org.barghos.core.pool.DequePool;
 import org.barghos.core.pool.api.Pool;
 import org.barghos.core.tuple2.Tup2i;
 import org.barghos.core.tuple2.api.Tup2iR;
@@ -43,7 +42,7 @@ public final class Tup2iPool
 	/**
 	 * This variable contains the internal pool that is backing this specialized pool.
 	 */
-	private static Pool<Tup2i> pool = new DequePool<>(Tup2i.class);
+	private static Pool<Tup2i> pool = Barghos.INSTANCE_POOL_FACTORY.create(Tup2i.class);
 	
 	/**
 	 * This class contains only static methods and therefore it should not be possible to create

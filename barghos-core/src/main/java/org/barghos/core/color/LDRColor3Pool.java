@@ -26,7 +26,7 @@ package org.barghos.core.color;
 
 import org.barghos.core.pool.api.Pool;
 import org.barghos.core.tuple3.api.Tup3fR;
-import org.barghos.core.pool.DequePool;
+import org.barghos.core.Barghos;
 
 /**
  * This pool contains instances of the type LDRColor3.
@@ -37,7 +37,7 @@ import org.barghos.core.pool.DequePool;
  */
 public class LDRColor3Pool
 {
-	private static final Pool<LDRColor3> pool = new DequePool<>(LDRColor3.class);
+	private static final Pool<LDRColor3> pool = Barghos.INSTANCE_POOL_FACTORY.create(LDRColor3.class);
 
 	/**
 	 * Returns an instance of {@link LDRColor3} from the pool and does not reset it.

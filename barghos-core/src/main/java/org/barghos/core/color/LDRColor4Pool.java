@@ -26,14 +26,14 @@ package org.barghos.core.color;
 
 import org.barghos.core.pool.api.Pool;
 import org.barghos.core.tuple4.api.Tup4fR;
-import org.barghos.core.pool.DequePool;
+import org.barghos.core.Barghos;
 
 /**
  * This pool contains instances of the type LDRColor4.
  */
 public class LDRColor4Pool
 {
-	private static final Pool<LDRColor4> pool = new DequePool<>(LDRColor4.class);
+	private static final Pool<LDRColor4> pool = Barghos.INSTANCE_POOL_FACTORY.create(LDRColor4.class);
 
 	/**
 	 * Returns an instance of {@link LDRColor4} from the pool and does not reset it.
