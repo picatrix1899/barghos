@@ -22,16 +22,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package org.barghos.core.color;
-
 /**
- * This interface allows for selective reading of only HDR-RGBA-Colors.
- * 
  * @author picatrix1899
- * 
- * @since 1.0
+ *
  */
-public interface HDRColor4R extends HDRColor3R, Color4R
-{
 
-}
+package org.barghos.core.color.api;

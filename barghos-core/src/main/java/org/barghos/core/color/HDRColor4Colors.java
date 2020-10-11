@@ -24,6 +24,8 @@ SOFTWARE.
 
 package org.barghos.core.color;
 
+import org.barghos.core.color.api.HDRColor4R;
+
 /**
  * 
  * @author picatrix1899

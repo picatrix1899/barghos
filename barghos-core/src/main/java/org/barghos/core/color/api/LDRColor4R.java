@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package org.barghos.core.color;
+package org.barghos.core.color.api;
 
 /**
  * This interface allows for selective reading of only LDR-RGBA-Colors.

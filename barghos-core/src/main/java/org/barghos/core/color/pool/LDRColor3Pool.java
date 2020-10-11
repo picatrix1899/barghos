@@ -22,11 +22,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package org.barghos.core.color;
+package org.barghos.core.color.pool;
 
 import org.barghos.core.pool.api.Pool;
 import org.barghos.core.tuple3.api.Tup3fR;
 import org.barghos.core.Barghos;
+import org.barghos.core.color.LDRColor3;
 
 /**
  * This pool contains instances of the type LDRColor3.

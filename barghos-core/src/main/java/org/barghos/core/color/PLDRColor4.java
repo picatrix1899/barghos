@@ -24,6 +24,7 @@ SOFTWARE.
 
 package org.barghos.core.color;
 
+import org.barghos.core.color.api.LDRColor4R;
 import org.barghos.core.tuple4.api.Tup4fR;
 
 /**

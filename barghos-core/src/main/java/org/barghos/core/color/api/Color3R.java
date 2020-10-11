@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package org.barghos.core.color;
+package org.barghos.core.color.api;
 
 import org.barghos.core.tuple3.api.Tup3fR;
 

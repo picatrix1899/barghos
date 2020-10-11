@@ -22,16 +22,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package org.barghos.core.color;
-
 /**
- * This interface allows for selective reading of only LDR-RGB-Colors.
- * 
  * @author picatrix1899
- * 
- * @since 1.0
+ *
  */
-public interface LDRColor3R extends Color3R
-{
-	
-}
+
+package org.barghos.core.color.pool;

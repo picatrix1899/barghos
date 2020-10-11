@@ -22,25 +22,22 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package org.barghos.core.color;
+package org.barghos.core.color.pool;
 
 import org.barghos.core.pool.api.Pool;
 import org.barghos.core.tuple4.api.Tup4fR;
 import org.barghos.core.Barghos;
+import org.barghos.core.color.LDRColor4;
 
 /**
- * This pool contains instances of the type HDRColor4.
- * 
- * @author picatrix1899
- * 
- * @since 1.0
+ * This pool contains instances of the type LDRColor4.
  */
-public class HDRColor4Pool
+public class LDRColor4Pool
 {
-	private static final Pool<HDRColor4> pool = Barghos.INSTANCE_POOL_FACTORY.create(HDRColor4.class);
+	private static final Pool<LDRColor4> pool = Barghos.INSTANCE_POOL_FACTORY.create(LDRColor4.class);
 
 	/**
-	 * Returns an instance of {@link HDRColor4} from the pool and does not reset it.
+	 * Returns an instance of {@link LDRColor4} from the pool and does not reset it.
 	 * This function is useful for reducing unneccessary calls and operations if a value is
 	 * applied to to the tuple anyway before it is used.
 	 * 
@@ -48,70 +45,70 @@ public class HDRColor4Pool
 	 * 
 	 * @since 1.0
 	 */
-	public static HDRColor4 getPlain()
+	public static LDRColor4 getPlain()
 	{
 		return pool.get();
 	}
 	
 	/**
-	 * Returns an instance of HDRColor4 from the pool and resets it.
+	 * Returns an instance of LDRColor4 from the pool and resets it.
 	 * @return A stored instance with the components set to 0.0f.
 	 */
-	public static HDRColor4 get() { return pool.get().set(0.0f); }
+	public static LDRColor4 get() { return pool.get().set(0.0f); }
 	
 	/**
-	 * Returns an instance of HDRColor4 from the pool and sets its components to the values of t.
-	 * the values of t are interpreted as in unitspace (0.0 - 1.0) but can exceed these limits.
+	 * Returns an instance of LDRColor4 from the pool and sets its components to the values of t.
+	 * the values of t are interpreted as in unitspace (0.0 - 1.0) and are clamped to these limit.
 	 * @param t A tuple that contains the rgba values in unitspace.
 	 * @return A stored instance.
 	 */
-	public static HDRColor4 get(Tup4fR t) { assert(t != null); return pool.get().set(t); }
+	public static LDRColor4 get(Tup4fR t) { assert(t != null); return pool.get().set(t); }
 	
 	/**
-	 * Returns an instance of HDRColor4 from the pool and sets its components to scalar.
-	 * scalar is interpreted as in unitspace (0.0 - 1.0) but can exceed these limits.
+	 * Returns an instance of LDRColor4 from the pool and sets its components to scalar.
+	 * scalar is interpreted as in unitspace (0.0 - 1.0) and are clamped to these limit.
 	 * It is not actually "scaling" the rgb values!
 	 * It is just a value that the rgba values are set to.
 	 * @param scalar A scalar in unitspace.
 	 * @return A stored instance.
 	 */
-	public static HDRColor4 get(float scalar) { return pool.get().set(scalar); }
+	public static LDRColor4 get(float scalar) { return pool.get().set(scalar); }
 	
 	/**
-	 * Returns an instance of HDRColor4 from the pool and sets its components to scalar.
-	 * scalar is interpreted as in colorrange (0 - 255) but can exceed these limits.
+	 * Returns an instance of LDRColor4 from the pool and sets its components to scalar.
+	 * scalar is interpreted as in colorrange (0 - 255) and are clamped to these limit.
 	 * It is not actually "scaling" the rgb values!
 	 * It is just a value that the rgba values are set to.
 	 * @param scalar A scalar in colorrange.
 	 * @return A stored instance.
 	 */
-	public static HDRColor4 get(int scalar) { return pool.get().set(scalar); }
+	public static LDRColor4 get(int scalar) { return pool.get().set(scalar); }
 	
 	/**
-	 * Returns an instance of HDRColor4 from the pool and sets its components to r, g, b and a.
-	 * r, g, b and a are interpreted as in unitspace (0.0 - 1.0) but can exceed these limits.
+	 * Returns an instance of LDRColor4 from the pool and sets its components to r, g, b and a.
+	 * r, g, b and a are interpreted as in unitspace (0.0 - 1.0) and are clamped to these limit.
 	 * @param r The red component.
 	 * @param g The green component.
 	 * @param b The blue component.
 	 * @param a The blue component.
 	 * @return A stored instance.
 	 */
-	public static HDRColor4 get(float r, float g, float b, float a) { return pool.get().set(r, g, b, a); }
+	public static LDRColor4 get(float r, float g, float b, float a) { return pool.get().set(r, g, b, a); }
 	
 	/**
-	 * Returns an instance of HDRColor4 from the pool and sets its components to r, g, b and a.
-	 * r, g, b and a are interpreted as in colorrange (0 - 255) but can exceed these limits.
+	 * Returns an instance of LDRColor4 from the pool and sets its components to r, g, b and a.
+	 * r, g, b and a are interpreted as in colorrange (0 - 255) and are clamped to these limit.
 	 * @param r The red component.
 	 * @param g The green component.
 	 * @param b The blue component.
 	 * @param a The blue component.
 	 * @return A stored instance.
 	 */
-	public static HDRColor4 get(int r, int g, int b, int a) { return pool.get().set(r, g, b, a); }
+	public static LDRColor4 get(int r, int g, int b, int a) { return pool.get().set(r, g, b, a); }
 	
 	/**
-	 * Stores HDRColor4 instances in the pool for late reuse.
+	 * Stores LDRColor4 instances in the pool for late reuse.
 	 * @param elements The instances to store.
 	 */
-	public static void store(HDRColor4... instances) { pool.store(instances); }
+	public static void store(LDRColor4... instances) { pool.store(instances); }
 }

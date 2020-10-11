@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2020 picatrix1899
+Copyright (c) 2019 picatrix1899
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -22,16 +22,16 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package org.barghos.core.color;
+package org.barghos.core.color.api;
 
 /**
- * This interface allows for selective reading of only HDR-RGB-Colors.
+ * This interface allows for selective reading of only HDR-RGBA-Colors.
  * 
  * @author picatrix1899
  * 
  * @since 1.0
  */
-public interface HDRColor3R extends Color3R
+public interface HDRColor4R extends HDRColor3R, Color4R
 {
-	
+
 }
