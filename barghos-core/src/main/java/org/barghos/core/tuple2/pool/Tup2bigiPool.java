@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2020 picatrix1899
+Copyright (c) 2020 picatrix1899 (Florian Zilkenat)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -37,7 +37,7 @@ import org.barghos.core.tuple2.api.Tup2bigiR;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public final class Tup2bigiPool
 {
@@ -59,7 +59,7 @@ public final class Tup2bigiPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup2bigi getPlain()
 	{
@@ -71,7 +71,7 @@ public final class Tup2bigiPool
 	 * 
 	 * @return A stored instance with the components set to {@link BigInteger.ZERO}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup2bigi get()
 	{
@@ -85,7 +85,7 @@ public final class Tup2bigiPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup2bigi get(Tup2bigiR t)
 	{
@@ -106,7 +106,7 @@ public final class Tup2bigiPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup2bigi get(BigInteger value)
 	{
@@ -126,7 +126,7 @@ public final class Tup2bigiPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup2bigi get(BigInteger x, BigInteger y)
 	{
@@ -145,7 +145,7 @@ public final class Tup2bigiPool
 	 * 
 	 * @param count The amount of instances present in the pool at any time.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static void ensure(int count)
 	{
@@ -162,7 +162,7 @@ public final class Tup2bigiPool
 	 * 
 	 * @param elements The instances to store.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static void store(Tup2bigi... instances)
 	{
@@ -175,7 +175,7 @@ public final class Tup2bigiPool
 	 * 
 	 * @param pool The new pool instance the specialized {@link Tup2bigiPool} should use internal.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static void setInternalPool(Pool<Tup2bigi> pool)
 	{
@@ -192,7 +192,7 @@ public final class Tup2bigiPool
 	 * 
 	 * @return The internal used pool instance of the specialized pool {@link Tup2bigiPool}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Pool<Tup2bigi> getInternalPool()
 	{

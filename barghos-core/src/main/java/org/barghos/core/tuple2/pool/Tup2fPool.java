@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2020 picatrix1899
+Copyright (c) 2020 picatrix1899 (Florian Zilkenat)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -35,7 +35,7 @@ import org.barghos.core.tuple2.api.Tup2fR;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public final class Tup2fPool
 {
@@ -57,7 +57,7 @@ public final class Tup2fPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup2f getPlain()
 	{
@@ -69,7 +69,7 @@ public final class Tup2fPool
 	 * 
 	 * @return A stored instance with the components set to 0.0f.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup2f get()
 	{
@@ -83,7 +83,7 @@ public final class Tup2fPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup2f get(Tup2fR t)
 	{
@@ -102,7 +102,7 @@ public final class Tup2fPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup2f get(float value)
 	{
@@ -117,7 +117,7 @@ public final class Tup2fPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup2f get(float x, float y)
 	{
@@ -132,7 +132,7 @@ public final class Tup2fPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static void ensure(int count)
 	{
@@ -149,7 +149,7 @@ public final class Tup2fPool
 	 * 
 	 * @param elements The instances to store.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static void store(Tup2f... instances)
 	{
@@ -162,7 +162,7 @@ public final class Tup2fPool
 	 * 
 	 * @param pool The new pool instance the specialized {@link Tup2fPool} should use internal.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static void setInternalPool(Pool<Tup2f> pool)
 	{
@@ -179,7 +179,7 @@ public final class Tup2fPool
 	 * 
 	 * @return The internal used pool instance of the specialized pool {@link Tup2fPool}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Pool<Tup2f> getInternalPool()
 	{

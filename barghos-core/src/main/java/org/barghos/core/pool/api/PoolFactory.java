@@ -31,9 +31,20 @@ package org.barghos.core.pool.api;
  * 
  * @author picatrix1899
  * 
- * @sice 1.0
+ * @sice 1.0.0.0
  */
 public interface PoolFactory
 {
+	/**
+	 * Creates a new instance of a Pool for the given type.
+	 * 
+	 * @param <T> The type the new Pool should contain.
+	 * 
+	 * @param clazz The class from the type the new Pool should contain.
+	 * 
+	 * @return A new instance of a pool.
+	 * 
+	 * @since 1.0.0.0
+	 */
 	<T> Pool<T> create(Class<? extends T> clazz);
 }

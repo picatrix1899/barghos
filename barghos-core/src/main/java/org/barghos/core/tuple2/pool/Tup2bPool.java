@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2020 picatrix1899
+Copyright (c) 2020 picatrix1899 (Florian Zilkenat)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -35,7 +35,7 @@ import org.barghos.core.tuple2.api.Tup2bR;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public final class Tup2bPool
 {
@@ -57,7 +57,7 @@ public final class Tup2bPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup2b getPlain()
 	{
@@ -69,7 +69,7 @@ public final class Tup2bPool
 	 * 
 	 * @return A stored instance with the components set to 0.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup2b get()
 	{
@@ -83,7 +83,7 @@ public final class Tup2bPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup2b get(Tup2bR t)
 	{
@@ -102,7 +102,7 @@ public final class Tup2bPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup2b get(byte value)
 	{
@@ -117,7 +117,7 @@ public final class Tup2bPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup2b get(byte x, byte y)
 	{
@@ -130,7 +130,7 @@ public final class Tup2bPool
 	 * 
 	 * @param count The amount of instances present in the pool at any time.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static void ensure(int count)
 	{
@@ -147,7 +147,7 @@ public final class Tup2bPool
 	 * 
 	 * @param elements The instances to store.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static void store(Tup2b... instances)
 	{
@@ -160,7 +160,7 @@ public final class Tup2bPool
 	 * 
 	 * @param pool The new pool instance the specialized {@link Tup2bPool} should use internal.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static void setInternalPool(Pool<Tup2b> pool)
 	{
@@ -177,7 +177,7 @@ public final class Tup2bPool
 	 * 
 	 * @return The internal used pool instance of the specialized pool {@link Tup2bPool}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Pool<Tup2b> getInternalPool()
 	{

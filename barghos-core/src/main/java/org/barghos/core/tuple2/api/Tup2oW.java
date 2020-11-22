@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2020 picatrix1899
+Copyright (c) 2020 picatrix1899 (Florian Zilkenat)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -30,7 +30,7 @@ package org.barghos.core.tuple2.api;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public interface Tup2oW<X,Y>
 {
@@ -41,7 +41,7 @@ public interface Tup2oW<X,Y>
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	Tup2oW<X,Y> setX(X x);
 	
@@ -52,7 +52,7 @@ public interface Tup2oW<X,Y>
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	Tup2oW<X,Y> setY(Y y);
 	
@@ -63,7 +63,7 @@ public interface Tup2oW<X,Y>
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	Tup2oW<X,Y> set(Tup2oR<X,Y> t);
 	
@@ -75,7 +75,7 @@ public interface Tup2oW<X,Y>
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	Tup2oW<X,Y> set(X x, Y y);
 }

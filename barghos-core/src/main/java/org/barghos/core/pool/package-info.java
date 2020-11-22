@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2019 picatrix1899
+Copyright (c) 2020 picatrix1899 (Florian Zilkenat)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -24,5 +24,7 @@ SOFTWARE.
 
 /**
  * This package contains all pools for the barghos-core packet.
+ * 
+ * @author picatrix1899
  */
 package org.barghos.core.pool;

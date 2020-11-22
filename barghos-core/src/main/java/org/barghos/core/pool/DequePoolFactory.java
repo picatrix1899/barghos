@@ -33,14 +33,23 @@ import org.barghos.core.pool.api.PoolFactory;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public class DequePoolFactory implements PoolFactory
 {
+	/**
+	 * This static variables stores the singletion instance of {@link DequePoolFactory}
+	 */
 	private static DequePoolFactory INSTANCE;
 	
-	private DequePoolFactory() {}
-	
+	/**
+	 * Returns the singleton instance of {@link DequePoolFactory}.
+	 * If the instance is not created yet, the call to this function will create it.
+	 * 
+	 * @return The singleton instance of {@link DequePoolFactory}.
+	 * 
+	 * @since 1.0.0.0
+	 */
 	public static DequePoolFactory get()
 	{
 		if(INSTANCE == null) INSTANCE = new DequePoolFactory();
@@ -48,6 +57,14 @@ public class DequePoolFactory implements PoolFactory
 		return INSTANCE;
 	}
 	
+	/**
+	 * This is a singleton class, it must not be instantiated outside this class.
+	 */
+	private DequePoolFactory() {}
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	public <T> Pool<T> create(Class<? extends T> clazz)
 	{
 		return new DequePool<T>(clazz);

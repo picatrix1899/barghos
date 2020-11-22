@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2020 picatrix1899
+Copyright (c) 2020 picatrix1899 (Florian Zilkenat)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -35,7 +35,7 @@ import org.barghos.core.tuple2.api.Tup2strR;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public final class Tup2strPool
 {
@@ -57,7 +57,7 @@ public final class Tup2strPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup2str getPlain()
 	{
@@ -69,7 +69,7 @@ public final class Tup2strPool
 	 * 
 	 * @return A stored instance with the components set to <c>""</c>.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup2str get()
 	{
@@ -83,7 +83,7 @@ public final class Tup2strPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup2str get(Tup2strR t)
 	{
@@ -104,7 +104,7 @@ public final class Tup2strPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup2str get(String value)
 	{
@@ -124,7 +124,7 @@ public final class Tup2strPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup2str get(String x, String y)
 	{
@@ -143,7 +143,7 @@ public final class Tup2strPool
 	 * 
 	 * @param count The amount of instances present in the pool at any time.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static void ensure(int count)
 	{
@@ -160,7 +160,7 @@ public final class Tup2strPool
 	 * 
 	 * @param elements The instances to store.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static void store(Tup2str... instances)
 	{
@@ -173,7 +173,7 @@ public final class Tup2strPool
 	 * 
 	 * @param pool The new pool instance the specialized {@link Tup2strPool} should use internal.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static void setInternalPool(Pool<Tup2str> pool)
 	{
@@ -190,7 +190,7 @@ public final class Tup2strPool
 	 * 
 	 * @return The internal used pool instance of the specialized pool {@link Tup2strPool}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Pool<Tup2str> getInternalPool()
 	{

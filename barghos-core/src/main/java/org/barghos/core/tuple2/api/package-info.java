@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2020 picatrix1899
+Copyright (c) 2020 picatrix1899 (Florian Zilkenat)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -23,10 +23,8 @@ SOFTWARE.
 */
 
 /**
- * This package contains api interfaces of multiple variants of 2-dimensional tuples.
+ * This package contains the API of multiple variants of 2-dimensional tuples.
  * 
  * @author picatrix1899
- * 
- * @since 1.0
  */
 package org.barghos.core.tuple2.api;

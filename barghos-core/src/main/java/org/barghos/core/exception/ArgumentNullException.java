@@ -25,39 +25,63 @@ SOFTWARE.
 package org.barghos.core.exception;
 
 /**
+ * This exception indicates that a method has been passed an argument that is null but must not be null.
+ * It extends the {@link IllegalArgumentException}.
+ * 
  * @author picatrix1899
- *
- * Thrown to indicate that a method has been passed an argument that is null but must not be null.
+ * 
+ * @since 1.0.0.0
  */
 public class ArgumentNullException extends IllegalArgumentException
 {
 	private static final long serialVersionUID = 1L;
 	
+	/**
+	 * This member contains the name of the function argument that was null.
+	 */
 	private String argument;
 	
+	/**
+	 * Create a new instance of the exception without any additional details.
+	 * 
+	 * @since 1.0.0.0
+	 */
 	public ArgumentNullException()
 	{
 		super();
 	}
 	
+	/**
+	 * Creates a new instance of the exception with an argument name as additional information.
+	 * 
+	 * @param argument The name of the argument that was null.
+	 * 
+	 * @since 1.0.0.0
+	 */
 	public ArgumentNullException(String argument)
 	{
 		super();
+		
 		this.argument = argument;
 	}
 	
+	/**
+	 * Creates a new instance of the exception with an argument name and a custom message as additional information.
+	 * 
+	 * @param argument The name of the argument that was null.
+	 * @param message A custom exeption message.
+	 * 
+	 * @since 1.0.0.0
+	 */
 	public ArgumentNullException(String argument, String message)
 	{
 		super(message);
 		this.argument = argument;
 	}
 	
-	public ArgumentNullException(String argument, String message, Throwable cause)
-	{
-		super(message, cause);
-		this.argument = argument;
-	}
-	
+	/**
+	 * {@inheritDoc}
+	 */
 	public String getMessage()
 	{
 		StringBuilder builder = new StringBuilder();

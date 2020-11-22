@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2020 picatrix1899
+Copyright (c) 2020 picatrix1899 (Florian Zilkenat)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -24,9 +24,10 @@ SOFTWARE.
 
 package org.barghos.core.tuple2;
 
+import org.barghos.core.tuple2.api.Tup2bR;
+
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
-import org.barghos.core.tuple2.api.Tup2bR;
 
 /**
  * Represents a persistent 2-dimensional byte tuple.
@@ -41,7 +42,7 @@ import org.barghos.core.tuple2.api.Tup2bR;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public abstract class PTup2b implements Tup2bR
 {
@@ -54,7 +55,7 @@ public abstract class PTup2b implements Tup2bR
 	 * 
 	 * @return A new readonly {@link PTup2b}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static PTup2b gen(Tup2bR t)
 	{
@@ -73,7 +74,7 @@ public abstract class PTup2b implements Tup2bR
 	 * 
 	 * @return A new readonly {@link PTup2b}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static PTup2b gen(byte value)
 	{
@@ -88,7 +89,7 @@ public abstract class PTup2b implements Tup2bR
 	 * 
 	 * @return A new readonly {@link PTup2b}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static PTup2b gen(byte x, byte y)
 	{
@@ -102,6 +103,9 @@ public abstract class PTup2b implements Tup2bR
 		};
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public int hashCode()
 	{
@@ -112,6 +116,9 @@ public abstract class PTup2b implements Tup2bR
 		return result;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -126,7 +133,10 @@ public abstract class PTup2b implements Tup2bR
 		return true;
 	}
 	
-		@Override
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public String toString()
 	{
 		return "ptup2b(x=" + getX() + ", y=" + getY() + ")";

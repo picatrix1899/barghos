@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2020 picatrix1899
+Copyright (c) 2020 picatrix1899 (Florian Zilkenat)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -35,7 +35,7 @@ import org.barghos.core.tuple2.api.Tup2iR;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public final class Tup2iPool
 {
@@ -57,7 +57,7 @@ public final class Tup2iPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup2i getPlain()
 	{
@@ -69,7 +69,7 @@ public final class Tup2iPool
 	 * 
 	 * @return A stored instance with the components set to 0.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup2i get()
 	{
@@ -83,7 +83,7 @@ public final class Tup2iPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup2i get(Tup2iR t)
 	{
@@ -102,7 +102,7 @@ public final class Tup2iPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup2i get(int value)
 	{
@@ -117,7 +117,7 @@ public final class Tup2iPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup2i get(int x, int y)
 	{
@@ -132,7 +132,7 @@ public final class Tup2iPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static void ensure(int count)
 	{
@@ -149,7 +149,7 @@ public final class Tup2iPool
 	 * 
 	 * @param elements The instances to store.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static void store(Tup2i... instances)
 	{
@@ -162,7 +162,7 @@ public final class Tup2iPool
 	 * 
 	 * @param pool The new pool instance the specialized {@link Tup2iPool} should use internal.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static void setInternalPool(Pool<Tup2i> pool)
 	{
@@ -179,7 +179,7 @@ public final class Tup2iPool
 	 * 
 	 * @return The internal used pool instance of the specialized pool {@link Tup2iPool}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Pool<Tup2i> getInternalPool()
 	{

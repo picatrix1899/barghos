@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2019 picatrix1899
+Copyright (c) 2019 picatrix1899 (Florian Zilkenat)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -41,7 +41,7 @@ import org.barghos.core.exception.ArgumentNullException;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 abstract class BufferUtilsPrimitives
 {
@@ -57,7 +57,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The new Byte-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static ByteBuffer createByteBuffer(int size)
 	{
@@ -71,7 +71,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The new Short-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static ShortBuffer createShortBuffer(int size)
 	{
@@ -85,7 +85,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The new Int-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static IntBuffer createIntBuffer(int size)
 	{
@@ -99,7 +99,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The new Long-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static LongBuffer createLongBuffer(int size)
 	{
@@ -113,7 +113,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The new Float-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static FloatBuffer createFloatBuffer(int size)
 	{
@@ -127,7 +127,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The new Double-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static DoubleBuffer createDoubleBuffer(int size)
 	{
@@ -141,7 +141,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The new Byte-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static ByteBuffer copyToByteBuffer(byte... v)
 	{
@@ -155,7 +155,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The ByteBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static ByteBuffer copyToByteBuffer(ByteBuffer buffer, byte... v)
 	{
@@ -174,7 +174,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The new Byte-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static ByteBuffer copyToByteBuffer(List<Byte> v)
 	{
@@ -200,7 +200,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The ByteBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static ByteBuffer copyToByteBuffer(ByteBuffer buffer, List<Byte> v)
 	{
@@ -223,7 +223,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The new Short-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static ShortBuffer copyToShortBuffer(short... v)
 	{
@@ -237,7 +237,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The ShortBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static ShortBuffer copyToShortBuffer(ShortBuffer buffer, short... v)
 	{
@@ -256,7 +256,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The new Short-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static ShortBuffer copyToShortBuffer(List<Short> v)
 	{
@@ -282,7 +282,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The ShortBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static ShortBuffer copyToShortBuffer(ShortBuffer buffer, List<Short> v)
 	{
@@ -305,7 +305,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The new Int-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static IntBuffer copyToIntBuffer(int... v)
 	{
@@ -319,7 +319,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The IntBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static IntBuffer copyToIntBuffer(IntBuffer buffer, int... v)
 	{
@@ -338,7 +338,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The new Int-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static IntBuffer copyToIntBuffer(List<Integer> v)
 	{
@@ -364,7 +364,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The IntBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static IntBuffer copyToIntBuffer(IntBuffer buffer, List<Integer> v)
 	{
@@ -387,7 +387,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The new Long-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static LongBuffer copyToLongBuffer(long... v)
 	{
@@ -401,7 +401,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The LongBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static LongBuffer copyToLongBuffer(LongBuffer buffer, long... v)
 	{
@@ -420,7 +420,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The new Long-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static LongBuffer copyToLongBuffer(List<Long> v)
 	{
@@ -446,7 +446,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The LongBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static LongBuffer copyToLongBuffer(LongBuffer buffer, List<Long> v)
 	{
@@ -469,7 +469,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The new Float-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static FloatBuffer copyToFloatBuffer(float... v)
 	{
@@ -483,7 +483,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The FloatBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static FloatBuffer copyToFloatBuffer(FloatBuffer buffer, float... v)
 	{
@@ -502,7 +502,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The new Float-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static FloatBuffer copyToFloatBuffer(List<Float> v)
 	{
@@ -528,7 +528,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The FloatBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static FloatBuffer copyToFloatBuffer(FloatBuffer buffer, List<Float> v)
 	{
@@ -551,7 +551,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The new Double-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static DoubleBuffer copyToDoubleBuffer(double... v)
 	{
@@ -565,7 +565,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The DoubleBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static DoubleBuffer copyToDoubleBuffer(DoubleBuffer buffer, double... v)
 	{
@@ -584,7 +584,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The new Double-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static DoubleBuffer copyToDoubleBuffer(List<Double> v)
 	{
@@ -610,7 +610,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The DoubleBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static DoubleBuffer copyToDoubleBuffer(DoubleBuffer buffer, List<Double> v)
 	{
@@ -633,7 +633,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The new Byte-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static ByteBuffer copyToFlippedByteBuffer(byte... v)
 	{
@@ -650,7 +650,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The ByteBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static ByteBuffer copyToFlippedByteBuffer(ByteBuffer buffer, byte... v)
 	{
@@ -672,7 +672,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The new Byte-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static ByteBuffer copyToFlippedByteBuffer(List<Byte> v)
 	{
@@ -694,7 +694,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The ByteBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static ByteBuffer copyToFlippedByteBuffer(ByteBuffer buffer, List<Byte> v)
 	{
@@ -717,7 +717,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The new Short-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static ShortBuffer copyToFlippedShortBuffer(short... v)
 	{
@@ -734,7 +734,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The ShortBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static ShortBuffer copyToFlippedShortBuffer(ShortBuffer buffer, short... v)
 	{
@@ -756,7 +756,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The new Short-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static ShortBuffer copyToFlippedShortBuffer(List<Short> v)
 	{
@@ -778,7 +778,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The ShortBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static ShortBuffer copyToFlippedShortBuffer(ShortBuffer buffer, List<Short> v)
 	{
@@ -801,7 +801,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The new Int-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static IntBuffer copyToFlippedIntBuffer(int... v)
 	{
@@ -818,7 +818,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The IntBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static IntBuffer copyToFlippedIntBuffer(IntBuffer buffer, int... v)
 	{
@@ -840,7 +840,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The new Int-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static IntBuffer copyToFlippedIntBuffer(List<Integer> v)
 	{
@@ -862,7 +862,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The IntBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static IntBuffer copyToFlippedIntBuffer(IntBuffer buffer, List<Integer> v)
 	{
@@ -885,7 +885,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The new Long-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static LongBuffer copyToFlippedLongBuffer(long... v)
 	{
@@ -902,7 +902,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The LongBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static LongBuffer copyToFlippedLongBuffer(LongBuffer buffer, long... v)
 	{
@@ -924,7 +924,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The new Long-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static LongBuffer copyToFlippedLongBuffer(List<Long> v)
 	{
@@ -946,7 +946,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The LongBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static LongBuffer copyToFlippedLongBuffer(LongBuffer buffer, List<Long> v)
 	{
@@ -969,7 +969,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The new Float-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static FloatBuffer copyToFlippedFloatBuffer(float... v)
 	{
@@ -986,7 +986,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The FloatBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static FloatBuffer copyToFlippedFloatBuffer(FloatBuffer buffer, float... v)
 	{
@@ -1008,7 +1008,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The new Float-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static FloatBuffer copyToFlippedFloatBuffer(List<Float> v)
 	{
@@ -1030,7 +1030,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The FloatBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static FloatBuffer copyToFlippedFloatBuffer(FloatBuffer buffer, List<Float> v)
 	{
@@ -1053,7 +1053,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The new Double-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static DoubleBuffer copyToFlippedDoubleBuffer(double... v)
 	{
@@ -1070,7 +1070,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The DoubleBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static DoubleBuffer copyToFlippedDoubleBuffer(DoubleBuffer buffer, double... v)
 	{
@@ -1092,7 +1092,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The new Double-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static DoubleBuffer copyToFlippedDoubleBuffer(List<Double> v)
 	{
@@ -1114,7 +1114,7 @@ abstract class BufferUtilsPrimitives
 	 * 
 	 * @return The DoubleBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static DoubleBuffer copyToFlippedDoubleBuffer(DoubleBuffer buffer, List<Double> v)
 	{

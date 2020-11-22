@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2020 picatrix1899
+Copyright (c) 2020 picatrix1899 (Florian Zilkenat)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -43,7 +43,7 @@ import org.barghos.core.tuple4.api.Tup4fR;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public abstract class BufferUtils extends BufferUtilsPrimitives
 {	
@@ -55,7 +55,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The new Float-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static FloatBuffer copyToTuple2FBuffer(Tup2fR... v)
 	{
@@ -87,7 +87,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The FloatBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static FloatBuffer copyToTuple2FBuffer(FloatBuffer buffer, Tup2fR... v)
 	{
@@ -116,7 +116,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The new Float-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static FloatBuffer copyToTuple2FBuffer(List<Tup2fR> v)
 	{
@@ -147,7 +147,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The FloatBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static FloatBuffer copyToTuple2FBuffer(FloatBuffer buffer, List<Tup2fR> v)
 	{
@@ -175,7 +175,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The new Double-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static DoubleBuffer copyToTuple2DBuffer(Tup2dR... v)
 	{
@@ -207,7 +207,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The DoubleBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static DoubleBuffer copyToTuple2DBuffer(DoubleBuffer buffer, Tup2dR... v)
 	{
@@ -236,7 +236,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The new Double-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static DoubleBuffer copyToTuple2DBuffer(List<Tup2dR> v)
 	{
@@ -267,7 +267,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The DoubleBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static DoubleBuffer copyToTuple2DBuffer(DoubleBuffer buffer, List<Tup2dR> v)
 	{
@@ -295,7 +295,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The new Float-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static FloatBuffer copyToTuple3FBuffer(Tup3fR... v)
 	{
@@ -328,7 +328,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The FloatBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static FloatBuffer copyToTuple3FBuffer(FloatBuffer buffer, Tup3fR... v)
 	{
@@ -358,7 +358,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The new Float-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static FloatBuffer copyToTuple3FBuffer(List<Tup3fR> v)
 	{
@@ -390,7 +390,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The FloatBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static FloatBuffer copyToTuple3FBuffer(FloatBuffer buffer, List<Tup3fR> v)
 	{
@@ -419,7 +419,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The new Double-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static DoubleBuffer copyToTuple3DBuffer(Tup3dR... v)
 	{
@@ -452,7 +452,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The DoubleBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static DoubleBuffer copyToTuple3DBuffer(DoubleBuffer buffer, Tup3dR... v)
 	{
@@ -482,7 +482,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The new Double-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static DoubleBuffer copyToTuple3DBuffer(List<Tup3dR> v)
 	{
@@ -514,7 +514,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The DoubleBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static DoubleBuffer copyToTuple3DBuffer(DoubleBuffer buffer, List<Tup3dR> v)
 	{
@@ -543,7 +543,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The new Float-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static FloatBuffer copyToTuple4FBuffer(Tup4fR... v)
 	{
@@ -577,7 +577,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The FloatBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static FloatBuffer copyToTuple4FBuffer(FloatBuffer buffer, Tup4fR... v)
 	{
@@ -609,7 +609,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The new Float-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static FloatBuffer copyToTuple4FBuffer(List<Tup4fR> v)
 	{
@@ -642,7 +642,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The FloatBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static FloatBuffer copyToTuple4FBuffer(FloatBuffer buffer, List<Tup4fR> v)
 	{
@@ -672,7 +672,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The new Double-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static DoubleBuffer copyToTuple4DBuffer(Tup4dR... v)
 	{
@@ -706,7 +706,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The DoubleBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static DoubleBuffer copyToTuple4DBuffer(DoubleBuffer buffer, Tup4dR... v)
 	{
@@ -737,7 +737,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The new Double-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static DoubleBuffer copyToTuple4DBuffer(List<Tup4dR> v)
 	{
@@ -770,7 +770,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The DoubleBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static DoubleBuffer copyToTuple4DBuffer(DoubleBuffer buffer, List<Tup4dR> v)
 	{
@@ -800,7 +800,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The new Float-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static FloatBuffer copyToFlippedTuple2FBuffer(Tup2fR... v)
 	{
@@ -824,7 +824,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The FloatBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static FloatBuffer copyToFlippedTuple2FBuffer(FloatBuffer buffer, Tup2fR... v)
 	{
@@ -849,7 +849,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The new Float-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static FloatBuffer copyToFlippedTuple2FBuffer(List<Tup2fR> v)
 	{
@@ -872,7 +872,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The FloatBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static FloatBuffer copyToFlippedTuple2FBuffer(FloatBuffer buffer, List<Tup2fR> v)
 	{
@@ -896,7 +896,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The new Double-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static DoubleBuffer copyToFlippedTuple2DBuffer(Tup2dR... v)
 	{
@@ -920,7 +920,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The DoubleBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static DoubleBuffer copyToFlippedTuple2DBuffer(DoubleBuffer buffer, Tup2dR... v)
 	{
@@ -945,7 +945,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The new Double-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static DoubleBuffer copyToFlippedTuple2DBuffer(List<Tup2dR> v)
 	{
@@ -968,7 +968,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The DoubleBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static DoubleBuffer copyToFlippedTuple2DBuffer(DoubleBuffer buffer, List<Tup2dR> v)
 	{
@@ -992,7 +992,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The new Float-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static FloatBuffer copyToFlippedTuple3FBuffer(Tup3fR... v)
 	{
@@ -1016,7 +1016,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The FloatBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static FloatBuffer copyToFlippedTuple3FBuffer(FloatBuffer buffer, Tup3fR... v)
 	{
@@ -1041,7 +1041,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The new Float-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static FloatBuffer copyToFlippedTuple3FBuffer(List<Tup3fR> v)
 	{
@@ -1064,7 +1064,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The FloatBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static FloatBuffer copyToFlippedTuple3FBuffer(FloatBuffer buffer, List<Tup3fR> v)
 	{
@@ -1088,7 +1088,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The new Double-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static DoubleBuffer copyToFlippedTuple3DBuffer(Tup3dR... v)
 	{
@@ -1112,7 +1112,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The DoubleBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static DoubleBuffer copyToFlippedTuple3DBuffer(DoubleBuffer buffer, Tup3dR... v)
 	{
@@ -1137,7 +1137,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The new Double-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static DoubleBuffer copyToFlippedTuple3DBuffer(List<Tup3dR> v)
 	{
@@ -1160,7 +1160,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The DoubleBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static DoubleBuffer copyToFlippedTuple3DBuffer(DoubleBuffer buffer, List<Tup3dR> v)
 	{
@@ -1184,7 +1184,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The new Float-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static FloatBuffer copyToFlippedTuple4FBuffer(Tup4fR... v)
 	{
@@ -1208,7 +1208,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The FloatBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static FloatBuffer copyToFlippedTuple4FBuffer(FloatBuffer buffer, Tup4fR... v)
 	{
@@ -1233,7 +1233,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The new Float-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static FloatBuffer copyToFlippedTuple4FBuffer(List<Tup4fR> v)
 	{
@@ -1256,7 +1256,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The FloatBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static FloatBuffer copyToFlippedTuple4FBuffer(FloatBuffer buffer, List<Tup4fR> v)
 	{
@@ -1280,7 +1280,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The new Double-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static DoubleBuffer copyToFlippedTuple4DBuffer(Tup4dR... v)
 	{
@@ -1304,7 +1304,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The DoubleBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static DoubleBuffer copyToFlippedTuple4DBuffer(DoubleBuffer buffer, Tup4dR... v)
 	{
@@ -1329,7 +1329,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The new Double-Buffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static DoubleBuffer copyToFlippedTuple4DBuffer(List<Tup4dR> v)
 	{
@@ -1352,7 +1352,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The DoubleBuffer.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static DoubleBuffer copyToFlippedTuple4DBuffer(DoubleBuffer buffer, List<Tup4dR> v)
 	{
@@ -1377,7 +1377,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The buffer that has been written to.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static FloatBuffer put(FloatBuffer buffer, Tup2fR tuple)
 	{
@@ -1402,7 +1402,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The buffer that has been written to.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static FloatBuffer put(FloatBuffer buffer, Tup2fR... tuples)
 	{
@@ -1432,7 +1432,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The buffer that has been written to.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static FloatBuffer put(FloatBuffer buffer, Tup3fR tuple)
 	{
@@ -1458,7 +1458,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The buffer that has been written to.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static FloatBuffer put(FloatBuffer buffer, Tup3fR... tuples)
 	{
@@ -1489,7 +1489,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The buffer that has been written to.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static FloatBuffer put(FloatBuffer buffer, Tup4fR tuple)
 	{
@@ -1516,7 +1516,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * 
 	 * @return The buffer that has been written to.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static FloatBuffer put(FloatBuffer buffer, Tup4fR... tuples)
 	{

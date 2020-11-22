@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2020 picatrix1899
+Copyright (c) 2020 picatrix1899 (Florian Zilkenat)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -32,7 +32,7 @@ import java.math.BigDecimal;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public interface Tup2bigdW
 {
@@ -43,7 +43,7 @@ public interface Tup2bigdW
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	Tup2bigdW setX(BigDecimal x);
 	
@@ -54,7 +54,7 @@ public interface Tup2bigdW
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	Tup2bigdW setY(BigDecimal y);
 	
@@ -65,7 +65,7 @@ public interface Tup2bigdW
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	Tup2bigdW set(Tup2bigdR t);
 	
@@ -80,7 +80,7 @@ public interface Tup2bigdW
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	Tup2bigdW set(BigDecimal value);
 	
@@ -92,7 +92,7 @@ public interface Tup2bigdW
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	Tup2bigdW set(BigDecimal x, BigDecimal y);
 }
