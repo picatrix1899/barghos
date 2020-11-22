@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2020 picatrix1899
+Copyright (c) 2020 picatrix1899 (Florian Zilkenat)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -41,7 +41,7 @@ import org.barghos.core.tuple2.api.Tup2fR;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public abstract class PTup2f implements Tup2fR
 {
@@ -54,7 +54,7 @@ public abstract class PTup2f implements Tup2fR
 	 * 
 	 * @return A new readonly {@link PTup2f}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static PTup2f gen(Tup2fR t)
 	{
@@ -73,7 +73,7 @@ public abstract class PTup2f implements Tup2fR
 	 * 
 	 * @return A new readonly {@link PTup2f}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static PTup2f gen(float value)
 	{
@@ -88,7 +88,7 @@ public abstract class PTup2f implements Tup2fR
 	 * 
 	 * @return A new readonly {@link PTup2f}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static PTup2f gen(float x, float y)
 	{
@@ -102,6 +102,9 @@ public abstract class PTup2f implements Tup2fR
 		};
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public int hashCode()
 	{
@@ -112,6 +115,9 @@ public abstract class PTup2f implements Tup2fR
 		return result;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -125,6 +131,9 @@ public abstract class PTup2f implements Tup2fR
 		return true;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public String toString()
 	{

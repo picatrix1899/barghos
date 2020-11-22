@@ -54,8 +54,9 @@ public interface Pool<T>
 	
 	/**
 	 * Ensures that the given amount of instances is present in the pool.
+	 * This also sets the amount of instances that should be kept when {@link #reduce()} is called.
 	 * 
-	 * @param count The amount of instances that should be always present in the pool.
+	 * @param count The amount of instances that should be present in the pool.
 	 * 
 	 * @since 1.0.0.0
 	 */
@@ -80,7 +81,7 @@ public interface Pool<T>
 	int size();
 	
 	/**
-	 * Reduces the amount of instances to the amount defined by {@link Pool#ensure(int)}
+	 * Reduces the amount of instances to the amount defined by {@link #ensure(int)}
 	 * by removing the instances from the pool and therefore make them available to the garbage collector.
 	 * 
 	 * @since 1.0.0.0

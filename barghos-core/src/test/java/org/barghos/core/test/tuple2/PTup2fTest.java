@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2019 picatrix1899
+Copyright (c) 2020 picatrix1899 (Florian Zilkenat)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -22,41 +22,68 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package org.barghos.core.test.tuple.tuple2;
+package org.barghos.core.test.tuple2;
 
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 import org.barghos.core.tuple2.PTup2f;
 import org.barghos.core.tuple2.Tup2f;
-import org.junit.jupiter.api.Test;
 
+/**
+ * This class provides component tests for the class {@link PTup2f}.
+ * 
+ * @since 1.0.0.0
+ */
 class PTup2fTest
 {
-
+	/**
+	 * This test ensures, that an instance of {@link PTup2f} generated from an existing tuple,
+	 * returns the correct components.
+	 * 
+	 * @since 1.0.0.0
+	 */
 	@Test
-	void genTupleTest()
+	void gen_TupleTest()
 	{
 		PTup2f t = PTup2f.gen(new Tup2f(1.2f, 3.4f));
 		assertEquals(1.2f, t.getX());
 		assertEquals(3.4f, t.getY());
 	}
 	
+	/**
+	 * This test ensures, that an instance of {@link PTup2f} generated from a scalar,
+	 * returns the correct components.
+	 * 
+	 * @since 1.0.0.0
+	 */
 	@Test
-	void genScalarTest()
+	void gen_ScalarTest()
 	{
 		PTup2f t = PTup2f.gen(1.2f);
 		assertEquals(1.2f, t.getX());
 		assertEquals(1.2f, t.getY());
 	}
 
+	/**
+	 * This test ensures, that an instance of {@link PTup2f} generated from two components,
+	 * returns the correct components.
+	 * 
+	 * @since 1.0.0.0
+	 */
 	@Test
-	void genComponentsTest()
+	void gen_ComponentsTest()
 	{
 		PTup2f t = PTup2f.gen(1.2f, 3.4f);
 		assertEquals(1.2f, t.getX());
 		assertEquals(3.4f, t.getY());
 	}
 	
+	/**
+	 * This test ensures, that the {@link PTup2f#toString()} function prints the components correctly.
+	 * 
+	 * @since 1.0.0.0
+	 */
 	@Test
 	void toStringTest()
 	{
@@ -64,6 +91,11 @@ class PTup2fTest
 		assertEquals("ptup2f(x=1.2, y=3.4)", t.toString());
 	}
 	
+	/**
+	 * This test ensures, that the special policies for the function {@link PTup2f#equals(Object)} are working.
+	 * 
+	 * @since 1.0.0.0
+	 */
 	@SuppressWarnings("unlikely-arg-type")
 	@Test
 	void equalsTest()
@@ -76,6 +108,6 @@ class PTup2fTest
 		assertFalse(t.equals(PTup2f.gen(1.2f, 4.5f)));
 		
 		assertTrue(t.equals(new Tup2f(1.2f, 3.4f)));
-		assertTrue(t.equals(PTup2f.gen(1.2f, 3.4f)));
+		assertTrue(t.equals(PTup2f.gen(1.2f, 3.4f)));	
 	}
 }

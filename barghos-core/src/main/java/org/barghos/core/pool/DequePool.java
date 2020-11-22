@@ -154,6 +154,8 @@ public class DequePool<T> implements Pool<T>
 		if(count < 0) throw new IllegalArgumentException();
 		if(count == 0) return;
 		
+		this.ensuredSize = count;
+		
 		int size = this.store.size();
 		
 		if(count <= size) return;
