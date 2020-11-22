@@ -24,6 +24,7 @@ SOFTWARE.
 
 package org.barghos.core.thread;
 
+import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadFactory;
@@ -103,7 +104,24 @@ public class ExecutorServices
 		
 		return new ThreadPoolExecutor(minThreads, maxThreads,
 				timeout, unit,
-                new SynchronousQueue<Runnable>());
+                new ArrayBlockingQueue<Runnable>(maxThreads) {
+
+			private static final long serialVersionUID = 1L;
+
+			public boolean offer(Runnable e)
+			{
+				try
+				{
+					put(e);
+				}
+				catch(InterruptedException ex)
+				{
+					return false;
+				}
+
+				return true;
+			}
+		});
 	}
 	
 	public static ExecutorService newLimitedCachedThreadPool(int minThreads, int maxThreads, long timeout, TimeUnit unit, ThreadFactory threadFactory)
