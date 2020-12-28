@@ -27,7 +27,7 @@ package org.barghos.core.tuple3;
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.tuple3.api.Tup3oR;
-import org.barghos.core.tuple3.api.Tup3oW;
+import org.barghos.core.tuple3.api.Tup3oRW;
 
 /**
  * This class represents a 3-dimensional object tuple.
@@ -36,9 +36,9 @@ import org.barghos.core.tuple3.api.Tup3oW;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
-public class Tup3o<X,Y,Z> implements Tup3oR<X,Y,Z>, Tup3oW<X,Y,Z>
+public class Tup3o<X,Y,Z> implements Tup3oRW<X,Y,Z>
 {
 	/**
 	 * The x component.
@@ -58,7 +58,7 @@ public class Tup3o<X,Y,Z> implements Tup3oR<X,Y,Z>, Tup3oW<X,Y,Z>
 	/**
 	 * Creates a new instance with all components set to null.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup3o() { }
 	
@@ -67,7 +67,7 @@ public class Tup3o<X,Y,Z> implements Tup3oR<X,Y,Z>, Tup3oW<X,Y,Z>
 	 * 
 	 * @param t An existing implementation of {@link Tup3oR} to adopt the values from.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup3o(Tup3oR<X,Y,Z> t)
 	{
@@ -89,7 +89,7 @@ public class Tup3o<X,Y,Z> implements Tup3oR<X,Y,Z>, Tup3oW<X,Y,Z>
 	 * @param y The initial y value of the tuple.
 	 * @param z The initial z value of the tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup3o(X x, Y y, Z z)
 	{

@@ -41,7 +41,7 @@ import org.barghos.core.tuple3.api.Tup3objR;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public abstract class PTup3obj implements Tup3objR
 {
@@ -54,7 +54,7 @@ public abstract class PTup3obj implements Tup3objR
 	 * 
 	 * @return A new readonly {@link PTup3obj}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static PTup3obj gen(Tup3objR t)
 	{
@@ -76,7 +76,7 @@ public abstract class PTup3obj implements Tup3objR
 	 * 
 	 * @return A new readonly {@link PTup3obj}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static PTup3obj gen(Object value)
 	{
@@ -97,7 +97,7 @@ public abstract class PTup3obj implements Tup3objR
 	 * 
 	 * @return A new readonly {@link PTup3obj}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static PTup3obj gen(Object x, Object y, Object z)
 	{

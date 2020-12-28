@@ -41,7 +41,7 @@ import org.barghos.core.tuple3.api.Tup3oR;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public abstract class PTup3o<X,Y,Z> implements Tup3oR<X,Y,Z>
 {
@@ -54,7 +54,7 @@ public abstract class PTup3o<X,Y,Z> implements Tup3oR<X,Y,Z>
 	 * 
 	 * @return A new readonly {@link PTup3o}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static <X,Y,Z> PTup3o<X,Y,Z> gen(Tup3oR<X,Y,Z> t)
 	{
@@ -78,7 +78,7 @@ public abstract class PTup3o<X,Y,Z> implements Tup3oR<X,Y,Z>
 	 * 
 	 * @return A new readonly {@link PTup3o}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static <X,Y,Z> PTup3o<X,Y,Z> gen(X x, Y y, Z z)
 	{

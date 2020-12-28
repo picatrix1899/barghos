@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2020 picatrix1899
+Copyright (c) 2020 picatrix1899 (Florian Zilkenat)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -24,40 +24,33 @@ SOFTWARE.
 
 package org.barghos.core.tuple3.api;
 
+import java.math.BigInteger;
+
 /**
- * This interface grants readonly access to any 3-dimensional char tuples.
+ * This interface grants read and write access to any 3-dimensional big integer tuple.
  * It should be prefered by design before direct usage of the original instance in method parameters.
  * 
  * @author picatrix1899
  * 
  * @since 1.0.0.0
  */
-public interface Tup3cR
+public interface Tup3bigiRW extends Tup3bigiR, Tup3bigiW
 {
-	/**
-	 * Returns the x value from the tuple.
-	 * 
-	 * @return The x value from the tuple.
-	 * 
-	 * @since 1.0.0.0
-	 */
-	char getX();
+	@Override
+	Tup3bigiRW setX(BigInteger x);
 	
-	/**
-	 * Returns the y value from the tuple.
-	 * 
-	 * @return The y value from the tuple.
-	 * 
-	 * @since 1.0.0.0
-	 */
-	char getY();
+	@Override
+	Tup3bigiRW setY(BigInteger y);
 	
-	/**
-	 * Returns the z value from the tuple.
-	 * 
-	 * @return The z value from the tuple.
-	 * 
-	 * @since 1.0.0.0
-	 */
-	char getZ();
+	@Override
+	Tup3bigiRW setZ(BigInteger z);
+	
+	@Override
+	Tup3bigiRW set(Tup3bigiR t);
+	
+	@Override
+	Tup3bigiRW set(BigInteger value);
+	
+	@Override
+	Tup3bigiRW set(BigInteger x, BigInteger y, BigInteger z);
 }

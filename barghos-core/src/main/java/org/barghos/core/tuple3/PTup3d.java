@@ -42,7 +42,7 @@ import org.barghos.core.tuple3.api.Tup3fR;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public abstract class PTup3d implements Tup3dR
 {
@@ -55,7 +55,7 @@ public abstract class PTup3d implements Tup3dR
 	 * 
 	 * @return A new readonly {@link PTup3d}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static PTup3d gen(Tup3dR t)
 	{
@@ -74,7 +74,7 @@ public abstract class PTup3d implements Tup3dR
 	 * 
 	 * @return A new readonly {@link PTup3d}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static PTup3d gen(double value)
 	{
@@ -90,7 +90,7 @@ public abstract class PTup3d implements Tup3dR
 	 * 
 	 * @return A new readonly {@link PTup3d}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static PTup3d gen(double x, double y, double z)
 	{

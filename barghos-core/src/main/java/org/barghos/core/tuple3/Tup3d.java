@@ -29,7 +29,7 @@ import java.io.Serializable;
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.tuple3.api.Tup3dR;
-import org.barghos.core.tuple3.api.Tup3dW;
+import org.barghos.core.tuple3.api.Tup3dRW;
 
 /**
  * This class represents a 3-dimensional double tuple.
@@ -38,9 +38,9 @@ import org.barghos.core.tuple3.api.Tup3dW;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
-public class Tup3d implements Tup3dR, Tup3dW, Serializable
+public class Tup3d implements Tup3dRW, Serializable
 {
 	/**
 	 * The class version for serialization.
@@ -65,7 +65,7 @@ public class Tup3d implements Tup3dR, Tup3dW, Serializable
 	/**
 	 * Creates a new instance with all components set to 0.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup3d()
 	{
@@ -77,7 +77,7 @@ public class Tup3d implements Tup3dR, Tup3dW, Serializable
 	 * 
 	 * @param t An existing implementation of {@link Tup3dR} to adopt the values from.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup3d(Tup3dR t)
 	{
@@ -94,7 +94,7 @@ public class Tup3d implements Tup3dR, Tup3dW, Serializable
 	 * 
 	 * @param value The value used as the initial value for all values of the tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup3d(double value)
 	{
@@ -108,7 +108,7 @@ public class Tup3d implements Tup3dR, Tup3dW, Serializable
 	 * @param y The initial y value of the tuple.
 	 * @param z The initial z value of the tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup3d(double x, double y, double z)
 	{

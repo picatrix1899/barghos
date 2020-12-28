@@ -30,7 +30,7 @@ import java.math.BigInteger;
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.tuple3.api.Tup3bigiR;
-import org.barghos.core.tuple3.api.Tup3bigiW;
+import org.barghos.core.tuple3.api.Tup3bigiRW;
 
 /**
  * This class represents a 3-dimensional big integer tuple.
@@ -39,9 +39,9 @@ import org.barghos.core.tuple3.api.Tup3bigiW;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
-public class Tup3bigi implements Tup3bigiR, Tup3bigiW, Serializable
+public class Tup3bigi implements Tup3bigiRW, Serializable
 {
 	/**
 	 * The class version for serialization.
@@ -66,7 +66,7 @@ public class Tup3bigi implements Tup3bigiR, Tup3bigiW, Serializable
 	/**
 	 * Creates a new instance with all components set to {@link BigInteger#ZERO}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup3bigi()
 	{
@@ -78,7 +78,7 @@ public class Tup3bigi implements Tup3bigiR, Tup3bigiW, Serializable
 	 * 
 	 * @param t An existing implementation of {@link Tup3bigiR} to adopt the values from.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup3bigi(Tup3bigiR t)
 	{
@@ -98,7 +98,7 @@ public class Tup3bigi implements Tup3bigiR, Tup3bigiW, Serializable
 	 * 
 	 * @param value The value used as the initial value for all values of the tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup3bigi(BigInteger value)
 	{
@@ -117,7 +117,7 @@ public class Tup3bigi implements Tup3bigiR, Tup3bigiW, Serializable
 	 * @param y The initial y value of the tuple.
 	 * @param z The initial z value of the tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup3bigi(BigInteger x, BigInteger y, BigInteger z)
 	{

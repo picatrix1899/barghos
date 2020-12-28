@@ -32,7 +32,7 @@ import java.math.BigDecimal;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public interface Tup3bigdR
 {
@@ -41,7 +41,7 @@ public interface Tup3bigdR
 	 * 
 	 * @return The x value from the tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	BigDecimal getX();
 	
@@ -50,7 +50,7 @@ public interface Tup3bigdR
 	 * 
 	 * @return The y value from the tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	BigDecimal getY();
 	
@@ -59,7 +59,7 @@ public interface Tup3bigdR
 	 * 
 	 * @return The z value from the tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	BigDecimal getZ();
 }

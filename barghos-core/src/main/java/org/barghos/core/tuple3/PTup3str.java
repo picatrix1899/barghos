@@ -41,7 +41,7 @@ import org.barghos.core.tuple3.api.Tup3strR;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public abstract class PTup3str implements Tup3strR
 {
@@ -54,7 +54,7 @@ public abstract class PTup3str implements Tup3strR
 	 * 
 	 * @return A new readonly {@link PTup3str}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static PTup3str gen(Tup3strR t)
 	{
@@ -76,7 +76,7 @@ public abstract class PTup3str implements Tup3strR
 	 * 
 	 * @return A new readonly {@link PTup3str}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static PTup3str gen(String value)
 	{
@@ -97,7 +97,7 @@ public abstract class PTup3str implements Tup3strR
 	 * 
 	 * @return A new readonly {@link PTup3str}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static PTup3str gen(String x, String y, String z)
 	{

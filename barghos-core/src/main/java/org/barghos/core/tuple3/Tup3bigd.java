@@ -30,7 +30,7 @@ import java.math.BigDecimal;
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.tuple3.api.Tup3bigdR;
-import org.barghos.core.tuple3.api.Tup3bigdW;
+import org.barghos.core.tuple3.api.Tup3bigdRW;
 
 /**
  * This class represents a 3-dimensional big decimal tuple.
@@ -39,9 +39,9 @@ import org.barghos.core.tuple3.api.Tup3bigdW;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
-public class Tup3bigd implements Tup3bigdR, Tup3bigdW, Serializable
+public class Tup3bigd implements Tup3bigdRW, Serializable
 {
 	/**
 	 * The class version for serialization.
@@ -66,7 +66,7 @@ public class Tup3bigd implements Tup3bigdR, Tup3bigdW, Serializable
 	/**
 	 * Creates a new instance with all components set to {@link BigDecimal#ZERO}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup3bigd()
 	{
@@ -78,7 +78,7 @@ public class Tup3bigd implements Tup3bigdR, Tup3bigdW, Serializable
 	 * 
 	 * @param t An existing implementation of {@link Tup3bigdR} to adopt the values from.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup3bigd(Tup3bigdR t)
 	{
@@ -98,7 +98,7 @@ public class Tup3bigd implements Tup3bigdR, Tup3bigdW, Serializable
 	 * 
 	 * @param value The value used as the initial value for all values of the tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup3bigd(BigDecimal value)
 	{
@@ -117,7 +117,7 @@ public class Tup3bigd implements Tup3bigdR, Tup3bigdW, Serializable
 	 * @param y The initial y value of the tuple.
 	 * @param z The initial z value of the tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup3bigd(BigDecimal x, BigDecimal y, BigDecimal z)
 	{

@@ -41,7 +41,7 @@ import org.barghos.core.tuple3.api.Tup3iR;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public abstract class PTup3i implements Tup3iR
 {
@@ -54,7 +54,7 @@ public abstract class PTup3i implements Tup3iR
 	 * 
 	 * @return A new readonly {@link PTup3i}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static PTup3i gen(Tup3iR t)
 	{
@@ -73,7 +73,7 @@ public abstract class PTup3i implements Tup3iR
 	 * 
 	 * @return A new readonly {@link PTup3i}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static PTup3i gen(int value)
 	{
@@ -89,7 +89,7 @@ public abstract class PTup3i implements Tup3iR
 	 * 
 	 * @return A new readonly {@link PTup3i}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static PTup3i gen(int x, int y, int z)
 	{

@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2020 picatrix1899
+Copyright (c) 2020 picatrix1899 (Florian Zilkenat)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -25,39 +25,30 @@ SOFTWARE.
 package org.barghos.core.tuple3.api;
 
 /**
- * This interface grants readonly access to any 3-dimensional char tuples.
+ * This interface grants read and write access to any 3-dimensional byte tuple.
  * It should be prefered by design before direct usage of the original instance in method parameters.
  * 
  * @author picatrix1899
  * 
  * @since 1.0.0.0
  */
-public interface Tup3cR
+public interface Tup3bRW extends Tup3bR, Tup3bW
 {
-	/**
-	 * Returns the x value from the tuple.
-	 * 
-	 * @return The x value from the tuple.
-	 * 
-	 * @since 1.0.0.0
-	 */
-	char getX();
+	@Override
+	Tup3bRW setX(byte x);
 	
-	/**
-	 * Returns the y value from the tuple.
-	 * 
-	 * @return The y value from the tuple.
-	 * 
-	 * @since 1.0.0.0
-	 */
-	char getY();
+	@Override
+	Tup3bRW setY(byte y);
 	
-	/**
-	 * Returns the z value from the tuple.
-	 * 
-	 * @return The z value from the tuple.
-	 * 
-	 * @since 1.0.0.0
-	 */
-	char getZ();
+	@Override
+	Tup3bRW setZ(byte z);
+	
+	@Override
+	Tup3bRW set(Tup3bR t);
+	
+	@Override
+	Tup3bRW set(byte value);
+
+	@Override
+	Tup3bRW set(byte x, byte y, byte z);
 }

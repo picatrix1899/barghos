@@ -30,7 +30,7 @@ package org.barghos.core.tuple3.api;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public interface Tup3strW
 {
@@ -41,7 +41,7 @@ public interface Tup3strW
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	Tup3strW setX(String x);
 	
@@ -52,7 +52,7 @@ public interface Tup3strW
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	Tup3strW setY(String y);
 	
@@ -62,6 +62,8 @@ public interface Tup3strW
 	 * @param z The new z value.
 	 * 
 	 * @return The current tuple.
+	 * 
+	 * @since 1.0.0.0
 	 */
 	Tup3strW setZ(String z);
 	
@@ -72,7 +74,7 @@ public interface Tup3strW
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	Tup3strW set(Tup3strR t);
 	
@@ -87,7 +89,7 @@ public interface Tup3strW
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	Tup3strW set(String value);
 	
@@ -100,7 +102,7 @@ public interface Tup3strW
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	Tup3strW set(String x, String y, String z);
 }

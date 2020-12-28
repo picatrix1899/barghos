@@ -32,7 +32,7 @@ import java.math.BigInteger;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public interface Tup3bigiR
 {
@@ -41,7 +41,7 @@ public interface Tup3bigiR
 	 * 
 	 * @return The x value from the tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	BigInteger getX();
 	
@@ -50,7 +50,7 @@ public interface Tup3bigiR
 	 * 
 	 * @return The y value from the tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	BigInteger getY();
 	
@@ -59,7 +59,7 @@ public interface Tup3bigiR
 	 * 
 	 * @return The z value from the tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	BigInteger getZ();
 }

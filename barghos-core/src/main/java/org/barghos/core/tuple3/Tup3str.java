@@ -29,7 +29,7 @@ import java.io.Serializable;
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.tuple3.api.Tup3strR;
-import org.barghos.core.tuple3.api.Tup3strW;
+import org.barghos.core.tuple3.api.Tup3strRW;
 
 /**
  * This class represents a 3-dimensional string tuple.
@@ -38,9 +38,9 @@ import org.barghos.core.tuple3.api.Tup3strW;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
-public class Tup3str implements Tup3strR, Tup3strW, Serializable
+public class Tup3str implements Tup3strRW, Serializable
 {
 	/**
 	 * The class version for serialization.
@@ -65,7 +65,7 @@ public class Tup3str implements Tup3strR, Tup3strW, Serializable
 	/**
 	 * Creates a new instance with all components set to "".
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup3str()
 	{
@@ -77,7 +77,7 @@ public class Tup3str implements Tup3strR, Tup3strW, Serializable
 	 * 
 	 * @param t An existing implementation of {@link Tup3strR} to adopt the values from.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup3str(Tup3strR t)
 	{
@@ -97,7 +97,7 @@ public class Tup3str implements Tup3strR, Tup3strW, Serializable
 	 * 
 	 * @param value The value used as the initial value for all values of the tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup3str(String value)
 	{
@@ -116,7 +116,7 @@ public class Tup3str implements Tup3strR, Tup3strW, Serializable
 	 * @param y The initial y value of the tuple.
 	 * @param z The initial z value of the tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup3str(String x, String y, String z)
 	{

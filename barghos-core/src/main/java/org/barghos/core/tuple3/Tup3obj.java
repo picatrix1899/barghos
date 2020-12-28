@@ -29,7 +29,7 @@ import java.io.Serializable;
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.tuple3.api.Tup3objR;
-import org.barghos.core.tuple3.api.Tup3objW;
+import org.barghos.core.tuple3.api.Tup3objRW;
 
 /**
  * This class represents a 3-dimensional object tuple.
@@ -38,9 +38,9 @@ import org.barghos.core.tuple3.api.Tup3objW;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
-public class Tup3obj implements Tup3objR, Tup3objW, Serializable
+public class Tup3obj implements Tup3objRW, Serializable
 {
 	/**
 	 * The class version for serialization.
@@ -65,7 +65,7 @@ public class Tup3obj implements Tup3objR, Tup3objW, Serializable
 	/**
 	 * Creates a new instance with all components set to new Object().
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup3obj()
 	{
@@ -77,7 +77,7 @@ public class Tup3obj implements Tup3objR, Tup3objW, Serializable
 	 * 
 	 * @param t An existing implementation of {@link Tup3objR} to adopt the values from.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup3obj(Tup3objR t)
 	{
@@ -97,7 +97,7 @@ public class Tup3obj implements Tup3objR, Tup3objW, Serializable
 	 * 
 	 * @param value The value used as the initial value for all values of the tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup3obj(Object value)
 	{
@@ -116,7 +116,7 @@ public class Tup3obj implements Tup3objR, Tup3objW, Serializable
 	 * @param y The initial y value of the tuple.
 	 * @param z The initial z value of the tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup3obj(Object x, Object y, Object z)
 	{

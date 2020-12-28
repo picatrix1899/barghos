@@ -30,7 +30,7 @@ package org.barghos.core.tuple3.api;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public interface Tup3oW<X,Y,Z>
 {
@@ -41,7 +41,7 @@ public interface Tup3oW<X,Y,Z>
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	Tup3oW<X,Y,Z> setX(X x);
 	
@@ -52,7 +52,7 @@ public interface Tup3oW<X,Y,Z>
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	Tup3oW<X,Y,Z> setY(Y y);
 	
@@ -62,6 +62,8 @@ public interface Tup3oW<X,Y,Z>
 	 * @param z The new z value.
 	 * 
 	 * @return The current tuple.
+	 * 
+	 * @since 1.0.0.0
 	 */
 	Tup3oW<X,Y,Z> setZ(Z z);
 	
@@ -72,7 +74,7 @@ public interface Tup3oW<X,Y,Z>
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	Tup3oW<X,Y,Z> set(Tup3oR<X,Y,Z> t);
 	
@@ -85,7 +87,7 @@ public interface Tup3oW<X,Y,Z>
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	Tup3oW<X,Y,Z> set(X x, Y y, Z z);
 }

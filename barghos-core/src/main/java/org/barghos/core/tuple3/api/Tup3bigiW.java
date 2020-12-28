@@ -32,7 +32,7 @@ import java.math.BigInteger;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public interface Tup3bigiW
 {
@@ -43,7 +43,7 @@ public interface Tup3bigiW
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	Tup3bigiW setX(BigInteger x);
 	
@@ -54,7 +54,7 @@ public interface Tup3bigiW
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	Tup3bigiW setY(BigInteger y);
 	
@@ -64,6 +64,8 @@ public interface Tup3bigiW
 	 * @param z The new z value.
 	 * 
 	 * @return The current tuple.
+	 * 
+	 * @sice 1.0.0.0
 	 */
 	Tup3bigiW setZ(BigInteger z);
 	
@@ -74,7 +76,7 @@ public interface Tup3bigiW
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	Tup3bigiW set(Tup3bigiR t);
 	
@@ -89,7 +91,7 @@ public interface Tup3bigiW
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	Tup3bigiW set(BigInteger value);
 	
@@ -102,7 +104,7 @@ public interface Tup3bigiW
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	Tup3bigiW set(BigInteger x, BigInteger y, BigInteger z);
 }

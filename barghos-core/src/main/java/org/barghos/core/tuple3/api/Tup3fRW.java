@@ -24,7 +24,6 @@ SOFTWARE.
 
 package org.barghos.core.tuple3.api;
 
-
 /**
  * This interface grants read and write access to any 3-dimensional float tuple.
  * It should be prefered by design before direct usage of the original instance in method parameters.

@@ -29,7 +29,7 @@ import java.io.Serializable;
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.tuple3.api.Tup3bR;
-import org.barghos.core.tuple3.api.Tup3bW;
+import org.barghos.core.tuple3.api.Tup3bRW;
 
 /**
  * This class represents a 3-dimensional byte tuple.
@@ -38,9 +38,9 @@ import org.barghos.core.tuple3.api.Tup3bW;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
-public class Tup3b implements Tup3bR, Tup3bW, Serializable
+public class Tup3b implements Tup3bRW, Serializable
 {
 	/**
 	 * The class version for serialization.
@@ -65,7 +65,7 @@ public class Tup3b implements Tup3bR, Tup3bW, Serializable
 	/**
 	 * Creates a new instance with all components set to 0.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup3b()
 	{
@@ -77,7 +77,7 @@ public class Tup3b implements Tup3bR, Tup3bW, Serializable
 	 * 
 	 * @param t An existing implementation of {@link Tup3bR} to adopt the values from.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup3b(Tup3bR t)
 	{
@@ -94,7 +94,7 @@ public class Tup3b implements Tup3bR, Tup3bW, Serializable
 	 * 
 	 * @param value The value used as the initial value for all values of the tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup3b(byte value)
 	{
@@ -108,7 +108,7 @@ public class Tup3b implements Tup3bR, Tup3bW, Serializable
 	 * @param y The initial y value of the tuple.
 	 * @param z The initial z value of the tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup3b(byte x, byte y, byte z)
 	{

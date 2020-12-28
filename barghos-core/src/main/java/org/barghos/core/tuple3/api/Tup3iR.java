@@ -30,7 +30,7 @@ package org.barghos.core.tuple3.api;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public interface Tup3iR
 {
@@ -39,7 +39,7 @@ public interface Tup3iR
 	 * 
 	 * @return The x value from the tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	int getX();
 	
@@ -48,7 +48,7 @@ public interface Tup3iR
 	 * 
 	 * @return The y value from the tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	int getY();
 	
@@ -57,7 +57,7 @@ public interface Tup3iR
 	 * 
 	 * @return The z value from the tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	int getZ();
 }

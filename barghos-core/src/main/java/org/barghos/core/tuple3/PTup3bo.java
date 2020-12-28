@@ -41,7 +41,7 @@ import org.barghos.core.tuple3.api.Tup3boR;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public abstract class PTup3bo implements Tup3boR
 {
@@ -54,7 +54,7 @@ public abstract class PTup3bo implements Tup3boR
 	 * 
 	 * @return A new readonly {@link PTup3bo}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static PTup3bo gen(Tup3boR t)
 	{
@@ -73,7 +73,7 @@ public abstract class PTup3bo implements Tup3boR
 	 * 
 	 * @return A new readonly {@link PTup3bo}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static PTup3bo gen(boolean value)
 	{
@@ -89,7 +89,7 @@ public abstract class PTup3bo implements Tup3boR
 	 * 
 	 * @return A new readonly {@link PTup3bo}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static PTup3bo gen(boolean x, boolean y, boolean z)
 	{

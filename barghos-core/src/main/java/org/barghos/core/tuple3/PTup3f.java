@@ -41,7 +41,7 @@ import org.barghos.core.tuple3.api.Tup3fR;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public abstract class PTup3f implements Tup3fR
 {
@@ -54,7 +54,7 @@ public abstract class PTup3f implements Tup3fR
 	 * 
 	 * @return A new readonly {@link PTup3f}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static PTup3f gen(Tup3fR t)
 	{
@@ -73,7 +73,7 @@ public abstract class PTup3f implements Tup3fR
 	 * 
 	 * @return A new readonly {@link PTup3f}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static PTup3f gen(float value)
 	{
@@ -89,7 +89,7 @@ public abstract class PTup3f implements Tup3fR
 	 * 
 	 * @return A new readonly {@link PTup3f}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static PTup3f gen(float x, float y, float z)
 	{

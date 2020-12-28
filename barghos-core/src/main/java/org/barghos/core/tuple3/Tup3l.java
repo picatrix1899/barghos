@@ -29,7 +29,7 @@ import java.io.Serializable;
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.tuple3.api.Tup3lR;
-import org.barghos.core.tuple3.api.Tup3lW;
+import org.barghos.core.tuple3.api.Tup3lRW;
 
 /**
  * This class represents a 3-dimensional long tuple.
@@ -38,9 +38,9 @@ import org.barghos.core.tuple3.api.Tup3lW;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
-public class Tup3l implements Tup3lR, Tup3lW, Serializable
+public class Tup3l implements Tup3lRW, Serializable
 {
 	/**
 	 * The class version for serialization.
@@ -65,7 +65,7 @@ public class Tup3l implements Tup3lR, Tup3lW, Serializable
 	/**
 	 * Creates a new instance with all components set to 0.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup3l()
 	{
@@ -77,7 +77,7 @@ public class Tup3l implements Tup3lR, Tup3lW, Serializable
 	 * 
 	 * @param t An existing implementation of {@link Tup3lR} to adopt the values from.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup3l(Tup3lR t)
 	{
@@ -94,7 +94,7 @@ public class Tup3l implements Tup3lR, Tup3lW, Serializable
 	 * 
 	 * @param value The value used as the initial value for all values of the tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup3l(long value)
 	{
@@ -108,7 +108,7 @@ public class Tup3l implements Tup3lR, Tup3lW, Serializable
 	 * @param y The initial y value of the tuple.
 	 * @param z The initial z value of the tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup3l(long x, long y, long z)
 	{

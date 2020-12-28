@@ -43,7 +43,7 @@ import org.barghos.core.tuple3.api.Tup3bigiR;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public abstract class PTup3bigi implements Tup3bigiR
 {
@@ -56,7 +56,7 @@ public abstract class PTup3bigi implements Tup3bigiR
 	 * 
 	 * @return A new readonly {@link PTup3bigi}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static PTup3bigi gen(Tup3bigiR t)
 	{
@@ -78,7 +78,7 @@ public abstract class PTup3bigi implements Tup3bigiR
 	 * 
 	 * @return A new readonly {@link PTup3bigi}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static PTup3bigi gen(BigInteger value)
 	{
@@ -99,7 +99,7 @@ public abstract class PTup3bigi implements Tup3bigiR
 	 * 
 	 * @return A new readonly {@link PTup3bigi}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static PTup3bigi gen(BigInteger x, BigInteger y, BigInteger z)
 	{

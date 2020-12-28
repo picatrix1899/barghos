@@ -32,7 +32,7 @@ import java.math.BigDecimal;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public interface Tup3bigdW
 {
@@ -43,7 +43,7 @@ public interface Tup3bigdW
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	Tup3bigdW setX(BigDecimal x);
 	
@@ -54,7 +54,7 @@ public interface Tup3bigdW
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	Tup3bigdW setY(BigDecimal y);
 	
@@ -64,6 +64,8 @@ public interface Tup3bigdW
 	 * @param z The new z value.
 	 * 
 	 * @return The current tuple.
+	 * 
+	 * @sice 1.0.0.0
 	 */
 	Tup3bigdW setZ(BigDecimal z);
 	
@@ -74,7 +76,7 @@ public interface Tup3bigdW
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	Tup3bigdW set(Tup3bigdR t);
 	
@@ -89,7 +91,7 @@ public interface Tup3bigdW
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	Tup3bigdW set(BigDecimal value);
 	
@@ -102,7 +104,7 @@ public interface Tup3bigdW
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	Tup3bigdW set(BigDecimal x, BigDecimal y, BigDecimal z);
 }

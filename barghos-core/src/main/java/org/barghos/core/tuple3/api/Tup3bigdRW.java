@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2020 picatrix1899
+Copyright (c) 2020 picatrix1899 (Florian Zilkenat)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -24,40 +24,33 @@ SOFTWARE.
 
 package org.barghos.core.tuple3.api;
 
+import java.math.BigDecimal;
+
 /**
- * This interface grants readonly access to any 3-dimensional char tuples.
+ * This interface grants read and write access to any 3-dimensional big decimal tuple.
  * It should be prefered by design before direct usage of the original instance in method parameters.
  * 
  * @author picatrix1899
  * 
  * @since 1.0.0.0
  */
-public interface Tup3cR
+public interface Tup3bigdRW extends Tup3bigdR, Tup3bigdW
 {
-	/**
-	 * Returns the x value from the tuple.
-	 * 
-	 * @return The x value from the tuple.
-	 * 
-	 * @since 1.0.0.0
-	 */
-	char getX();
+	@Override
+	Tup3bigdRW setX(BigDecimal x);
 	
-	/**
-	 * Returns the y value from the tuple.
-	 * 
-	 * @return The y value from the tuple.
-	 * 
-	 * @since 1.0.0.0
-	 */
-	char getY();
+	@Override
+	Tup3bigdRW setY(BigDecimal y);
 	
-	/**
-	 * Returns the z value from the tuple.
-	 * 
-	 * @return The z value from the tuple.
-	 * 
-	 * @since 1.0.0.0
-	 */
-	char getZ();
+	@Override
+	Tup3bigdRW setZ(BigDecimal z);
+	
+	@Override
+	Tup3bigdRW set(Tup3bigdR t);
+	
+	@Override
+	Tup3bigdRW set(BigDecimal value);
+	
+	@Override
+	Tup3bigdRW set(BigDecimal x, BigDecimal y, BigDecimal z);
 }

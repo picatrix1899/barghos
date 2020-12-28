@@ -30,7 +30,7 @@ package org.barghos.core.tuple3.api;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public interface Tup3sW
 {
@@ -41,7 +41,7 @@ public interface Tup3sW
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	Tup3sW setX(short x);
 	
@@ -52,7 +52,7 @@ public interface Tup3sW
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	Tup3sW setY(short y);
 	
@@ -62,6 +62,8 @@ public interface Tup3sW
 	 * @param z The new z value.
 	 * 
 	 * @return The current tuple.
+	 * 
+	 * @since 1.0.0.0
 	 */
 	Tup3sW setZ(short z);
 	
@@ -72,7 +74,7 @@ public interface Tup3sW
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	Tup3sW set(Tup3sR t);
 	
@@ -87,7 +89,7 @@ public interface Tup3sW
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	Tup3sW set(short value);
 	
@@ -100,7 +102,7 @@ public interface Tup3sW
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	Tup3sW set(short x, short y, short z);
 }
