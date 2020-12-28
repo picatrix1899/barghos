@@ -22,9 +22,43 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+package org.barghos.core.event;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import org.barghos.core.event.api.Event;
+import org.barghos.core.event.api.EventDelegate;
+import org.barghos.core.event.api.EventReceiver;
+
 /**
  * @author picatrix1899
  *
  */
+public class DefaultEventDelegate<T extends Event> implements EventDelegate<T>
+{
+	private Set<EventReceiver<T>> receivers = new HashSet<>();
+	
+	public boolean registerReceiver(EventReceiver<T> receiver)
+	{
+		return receivers.add(receiver);
+	}
 
-package org.barghos.core.event;
+	public boolean unregisterReceiver(EventReceiver<T> receiver)
+	{
+		return receivers.remove(receiver);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public T raise(T event)
+	{
+		T currentEvent = (T) event.clone();
+		
+		for(EventReceiver<T> r : receivers)
+		{
+			r.raise((T)event.clone(), currentEvent);
+		}
+		
+		return currentEvent;
+	}
+}

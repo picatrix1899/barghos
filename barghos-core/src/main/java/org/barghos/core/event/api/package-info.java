@@ -27,4 +27,4 @@ SOFTWARE.
  *
  */
 
-package org.barghos.core.event;
+package org.barghos.core.event.api;

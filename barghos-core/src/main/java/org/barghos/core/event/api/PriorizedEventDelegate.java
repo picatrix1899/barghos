@@ -22,9 +22,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+package org.barghos.core.event.api;
+
 /**
  * @author picatrix1899
  *
  */
-
-package org.barghos.core.event;
+public interface PriorizedEventDelegate<T extends Event> extends EventDelegate<T>
+{
+	boolean registerReceiver(HandlerPriority priority, EventReceiver<T> receiver);
+	boolean unregisterReceiver(HandlerPriority priority, EventReceiver<T> receiver);
+}

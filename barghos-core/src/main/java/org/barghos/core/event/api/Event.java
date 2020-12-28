@@ -22,9 +22,26 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+package org.barghos.core.event.api;
+
+import org.barghos.core.event.DefaultEventDelegate;
+import org.barghos.core.event.DefaultPriorizedEventDelegate;
+
 /**
  * @author picatrix1899
  *
  */
-
-package org.barghos.core.event;
+public abstract class Event
+{
+	public abstract Event clone();
+	
+	public static <T extends Event> EventDelegate<T> createDelegate()
+	{
+		return new DefaultEventDelegate<T>();
+	}
+	
+	public static <T extends Event> EventDelegate<T> createPriorizedDelegate()
+	{
+		return new DefaultPriorizedEventDelegate<T>();
+	}
+}

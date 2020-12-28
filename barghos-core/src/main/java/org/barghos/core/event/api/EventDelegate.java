@@ -22,9 +22,16 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+package org.barghos.core.event.api;
+
 /**
  * @author picatrix1899
  *
  */
-
-package org.barghos.core.event;
+public interface EventDelegate<T extends Event>
+{
+	T raise(T event);
+	
+	boolean registerReceiver(EventReceiver<T> receiver);
+	boolean unregisterReceiver(EventReceiver<T> receiver);
+}

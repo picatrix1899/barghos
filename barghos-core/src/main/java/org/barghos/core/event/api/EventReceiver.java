@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2019 picatrix1899
+Copyright (c) 2020 picatrix1899 (Florian Zilkenat)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -22,51 +22,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package org.barghos.core.event;
+package org.barghos.core.event.api;
 
-import java.util.HashMap;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
-public class AsyncEvent<Args>
+/**
+ * @author picatrix1899
+ *
+ */
+public interface EventReceiver<T extends Event>
 {
-	ExecutorService executors;
-	
-	public AsyncEvent()
-	{
-		this.executors = Executors.newCachedThreadPool();
-	}
-	
-	private HashMap<Integer,EventHandler<Args>> handlers = new HashMap<>();
-	
-	private int index = 0;
-	
-	public int addHandler(EventHandler<Args> handler)
-	{
-		int index = this.index;
-		
-		handlers.put(index, handler);
-		
-		this.index++;
-		
-		return index;
-	}
-	
-	public void removeHandler(int index)
-	{
-		this.handlers.remove(index);
-	}
-	
-	public void clearHandlers()
-	{
-		this.handlers.clear();
-	}
-	
-	public void fire(Args args)
-	{
-		for(EventHandler<Args> handler : handlers.values())
-		{
-			executors.execute(() -> handler.raise(args)); 
-		}
-	}
+	boolean raise(T original, T current);
 }

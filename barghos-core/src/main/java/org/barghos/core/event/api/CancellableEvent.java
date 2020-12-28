@@ -22,9 +22,23 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+package org.barghos.core.event.api;
+
 /**
  * @author picatrix1899
  *
  */
-
-package org.barghos.core.event;
+public abstract class CancellableEvent extends Event
+{
+	private boolean isCancelled;
+	
+	public void setCancelled(boolean isCancelled)
+	{
+		this.isCancelled = isCancelled;
+	}
+	
+	public boolean isCancelled()
+	{
+		return this.isCancelled;
+	}
+}

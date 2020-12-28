@@ -22,9 +22,24 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+package org.barghos.core.event.api;
+
+
 /**
  * @author picatrix1899
  *
  */
-
-package org.barghos.core.event;
+public enum HandlerPriority
+{
+	LOWEST,
+	LOWEST_CANCELLABLE,
+	LOW,
+	LOW_CANCELLABLE,
+	NORMAL,
+	NORMAL_CANCELLABLE,
+	HIGH,
+	HIGH_CANCELLABLE,
+	HIGHEST,
+	HIGHEST_CANCELLABLE,
+	MONITOR;
+}
