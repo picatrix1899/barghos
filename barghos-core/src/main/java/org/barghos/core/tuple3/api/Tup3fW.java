@@ -25,12 +25,12 @@ SOFTWARE.
 package org.barghos.core.tuple3.api;
 
 /**
- * This interface grants writeonly access to any 3-dimensional float tuples.
+ * This interface grants writeonly access to any 3-dimensional float tuple.
  * It should be prefered by design before direct usage of the original instance in method parameters.
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public interface Tup3fW
 {
@@ -41,7 +41,7 @@ public interface Tup3fW
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	Tup3fW setX(float x);
 	
@@ -52,7 +52,7 @@ public interface Tup3fW
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	Tup3fW setY(float y);
 	
@@ -62,6 +62,8 @@ public interface Tup3fW
 	 * @param z The new z value.
 	 * 
 	 * @return The current tuple.
+	 * 
+	 * @since 1.0.0.0
 	 */
 	Tup3fW setZ(float z);
 	
@@ -72,7 +74,7 @@ public interface Tup3fW
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	Tup3fW set(Tup3fR t);
 	
@@ -87,7 +89,7 @@ public interface Tup3fW
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	Tup3fW set(float value);
 	
@@ -100,7 +102,7 @@ public interface Tup3fW
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	Tup3fW set(float x, float y, float z);
 }

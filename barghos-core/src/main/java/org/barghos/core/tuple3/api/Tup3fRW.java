@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2020 picatrix1899
+Copyright (c) 2020 picatrix1899 (Florian Zilkenat)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -24,40 +24,24 @@ SOFTWARE.
 
 package org.barghos.core.tuple3.api;
 
+
 /**
- * This interface grants readonly access to any 3-dimensional float tuples.
+ * This interface grants read and write access to any 3-dimensional float tuple.
  * It should be prefered by design before direct usage of the original instance in method parameters.
  * 
  * @author picatrix1899
  * 
  * @since 1.0.0.0
  */
-public interface Tup3fR
+public interface Tup3fRW extends Tup3fR, Tup3fW
 {
-	/**
-	 * Returns the x value from the tuple.
-	 * 
-	 * @return The x value from the tuple.
-	 * 
-	 * @since 1.0
-	 */
-	float getX();
+	Tup3fRW setX(float x);
 	
-	/**
-	 * Returns the y value from the tuple.
-	 * 
-	 * @return The y value from the tuple.
-	 * 
-	 * @since 1.0
-	 */
-	float getY();
+	Tup3fRW setY(float y);
+
+	Tup3fRW setZ(float z);
 	
-	/**
-	 * Returns the z value from the tuple.
-	 * 
-	 * @return The z value from the tuple.
-	 * 
-	 * @since 1.0
-	 */
-	float getZ();
+	Tup3fRW set(Tup3fR t);
+	Tup3fRW set(float value);
+	Tup3fRW set(float x, float y, float z);
 }

@@ -29,7 +29,7 @@ import java.io.Serializable;
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.tuple3.api.Tup3fR;
-import org.barghos.core.tuple3.api.Tup3fW;
+import org.barghos.core.tuple3.api.Tup3fRW;
 
 /**
  * This class represents a 3-dimensional float tuple.
@@ -38,9 +38,9 @@ import org.barghos.core.tuple3.api.Tup3fW;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
-public class Tup3f implements Tup3fR, Tup3fW, Serializable
+public class Tup3f implements Tup3fRW, Serializable
 {
 	/**
 	 * The class version for serialization.
@@ -65,7 +65,7 @@ public class Tup3f implements Tup3fR, Tup3fW, Serializable
 	/**
 	 * Creates a new instance with all components set to 0.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup3f()
 	{
@@ -77,7 +77,7 @@ public class Tup3f implements Tup3fR, Tup3fW, Serializable
 	 * 
 	 * @param t An existing implementation of {@link Tup3fR} to adopt the values from.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup3f(Tup3fR t)
 	{
@@ -94,7 +94,7 @@ public class Tup3f implements Tup3fR, Tup3fW, Serializable
 	 * 
 	 * @param value The value used as the initial value for all values of the tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup3f(float value)
 	{
@@ -108,7 +108,7 @@ public class Tup3f implements Tup3fR, Tup3fW, Serializable
 	 * @param y The initial y value of the tuple.
 	 * @param z The initial z value of the tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup3f(float x, float y, float z)
 	{
