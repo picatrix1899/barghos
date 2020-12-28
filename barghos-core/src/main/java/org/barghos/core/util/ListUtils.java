@@ -156,7 +156,7 @@ public class ListUtils
 	}
 	
 	/**
-	 * Prints a List of all items in a List. This is equivalent to interate through a list and call toString for every element.
+	 * Prints a List of all items in a List. This is equivalent to iterate through a list and call toString for every element.
 	 * @param list
 	 * @return
 	 */

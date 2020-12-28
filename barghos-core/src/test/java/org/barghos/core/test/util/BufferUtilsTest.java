@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package org.barghos.core.test;
+package org.barghos.core.test.util;
 
 import static org.junit.jupiter.api.Assertions.*;
 
