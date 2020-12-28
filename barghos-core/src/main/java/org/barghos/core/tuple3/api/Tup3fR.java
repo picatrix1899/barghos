@@ -39,7 +39,7 @@ public interface Tup3fR
 	 * 
 	 * @return The x value from the tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	float getX();
 	
@@ -48,7 +48,7 @@ public interface Tup3fR
 	 * 
 	 * @return The y value from the tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	float getY();
 	
@@ -57,7 +57,7 @@ public interface Tup3fR
 	 * 
 	 * @return The z value from the tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	float getZ();
 }

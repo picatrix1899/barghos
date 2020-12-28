@@ -35,13 +35,21 @@ package org.barghos.core.tuple3.api;
  */
 public interface Tup3fRW extends Tup3fR, Tup3fW
 {
+	@Override
 	Tup3fRW setX(float x);
 	
+	@Override
 	Tup3fRW setY(float y);
 
+	@Override
 	Tup3fRW setZ(float z);
 	
+	@Override
 	Tup3fRW set(Tup3fR t);
+	
+	@Override
 	Tup3fRW set(float value);
+	
+	@Override
 	Tup3fRW set(float x, float y, float z);
 }
