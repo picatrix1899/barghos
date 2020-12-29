@@ -29,7 +29,7 @@ import java.io.Serializable;
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.tuple2.api.Tup2fR;
-import org.barghos.core.tuple2.api.Tup2fW;
+import org.barghos.core.tuple2.api.Tup2fRW;
 
 /**
  * This class represents a 2-dimensional float tuple.
@@ -38,9 +38,9 @@ import org.barghos.core.tuple2.api.Tup2fW;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
-public class Tup2f implements Tup2fR, Tup2fW, Serializable
+public class Tup2f implements Tup2fRW, Serializable
 {
 	/**
 	 * The class version for serialization.
@@ -60,7 +60,7 @@ public class Tup2f implements Tup2fR, Tup2fW, Serializable
 	/**
 	 * Creates a new instance with all components set to 0.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup2f()
 	{
@@ -72,7 +72,7 @@ public class Tup2f implements Tup2fR, Tup2fW, Serializable
 	 * 
 	 * @param t An existing implementation of {@link Tup2fR} to adopt the values from.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup2f(Tup2fR t)
 	{
@@ -89,7 +89,7 @@ public class Tup2f implements Tup2fR, Tup2fW, Serializable
 	 * 
 	 * @param value The value used as the initial value for all values of the tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup2f(float value)
 	{
@@ -102,7 +102,7 @@ public class Tup2f implements Tup2fR, Tup2fW, Serializable
 	 * @param x The initial x value of the tuple.
 	 * @param y The initial y value of the tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup2f(float x, float y)
 	{

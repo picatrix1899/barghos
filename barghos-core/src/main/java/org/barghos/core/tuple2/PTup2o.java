@@ -41,7 +41,7 @@ import org.barghos.core.tuple2.api.Tup2oR;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public abstract class PTup2o<X,Y> implements Tup2oR<X,Y>
 {
@@ -54,7 +54,7 @@ public abstract class PTup2o<X,Y> implements Tup2oR<X,Y>
 	 * 
 	 * @return A new readonly {@link PTup2o}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static <X,Y> PTup2o<X,Y> gen(Tup2oR<X,Y> t)
 	{
@@ -76,7 +76,7 @@ public abstract class PTup2o<X,Y> implements Tup2oR<X,Y>
 	 * 
 	 * @return A new readonly {@link PTup2o}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static <X,Y> PTup2o<X,Y> gen(X x, Y y)
 	{

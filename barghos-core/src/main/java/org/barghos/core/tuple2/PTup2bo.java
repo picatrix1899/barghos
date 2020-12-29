@@ -41,7 +41,7 @@ import org.barghos.core.tuple2.api.Tup2boR;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public abstract class PTup2bo implements Tup2boR
 {
@@ -54,7 +54,7 @@ public abstract class PTup2bo implements Tup2boR
 	 * 
 	 * @return A new readonly {@link PTup2bo}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static PTup2bo gen(Tup2boR t)
 	{
@@ -73,7 +73,7 @@ public abstract class PTup2bo implements Tup2boR
 	 * 
 	 * @return A new readonly {@link PTup2bo}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static PTup2bo gen(boolean value)
 	{
@@ -88,7 +88,7 @@ public abstract class PTup2bo implements Tup2boR
 	 * 
 	 * @return A new readonly {@link PTup2bo}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static PTup2bo gen(boolean x, boolean y)
 	{

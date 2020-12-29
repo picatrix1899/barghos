@@ -30,7 +30,7 @@ import java.math.BigDecimal;
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.tuple2.api.Tup2bigdR;
-import org.barghos.core.tuple2.api.Tup2bigdW;
+import org.barghos.core.tuple2.api.Tup2bigdRW;
 
 /**
  * This class represents a 2-dimensional big decimal tuple.
@@ -39,9 +39,9 @@ import org.barghos.core.tuple2.api.Tup2bigdW;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
-public class Tup2bigd implements Tup2bigdR, Tup2bigdW, Serializable
+public class Tup2bigd implements Tup2bigdRW, Serializable
 {
 	/**
 	 * The class version for serialization.
@@ -61,7 +61,7 @@ public class Tup2bigd implements Tup2bigdR, Tup2bigdW, Serializable
 	/**
 	 * Creates a new instance with all components set to {@link BigDecimal#ZERO}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup2bigd()
 	{
@@ -73,7 +73,7 @@ public class Tup2bigd implements Tup2bigdR, Tup2bigdW, Serializable
 	 * 
 	 * @param t An existing implementation of {@link Tup2bigdR} to adopt the values from.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup2bigd(Tup2bigdR t)
 	{
@@ -92,7 +92,7 @@ public class Tup2bigd implements Tup2bigdR, Tup2bigdW, Serializable
 	 * 
 	 * @param value The value used as the initial value for all values of the tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup2bigd(BigDecimal value)
 	{
@@ -110,7 +110,7 @@ public class Tup2bigd implements Tup2bigdR, Tup2bigdW, Serializable
 	 * @param x The initial x value of the tuple.
 	 * @param y The initial y value of the tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup2bigd(BigDecimal x, BigDecimal y)
 	{

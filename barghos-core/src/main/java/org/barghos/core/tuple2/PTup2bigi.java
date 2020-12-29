@@ -43,7 +43,7 @@ import org.barghos.core.tuple2.api.Tup2bigiR;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public abstract class PTup2bigi implements Tup2bigiR
 {
@@ -56,7 +56,7 @@ public abstract class PTup2bigi implements Tup2bigiR
 	 * 
 	 * @return A new readonly {@link PTup2bigi}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static PTup2bigi gen(Tup2bigiR t)
 	{
@@ -77,7 +77,7 @@ public abstract class PTup2bigi implements Tup2bigiR
 	 * 
 	 * @return A new readonly {@link PTup2bigi}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static PTup2bigi gen(BigInteger value)
 	{
@@ -97,7 +97,7 @@ public abstract class PTup2bigi implements Tup2bigiR
 	 * 
 	 * @return A new readonly {@link PTup2bigi}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static PTup2bigi gen(BigInteger x, BigInteger y)
 	{

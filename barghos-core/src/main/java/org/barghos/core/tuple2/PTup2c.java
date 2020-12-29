@@ -41,7 +41,7 @@ import org.barghos.core.tuple2.api.Tup2cR;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public abstract class PTup2c implements Tup2cR
 {
@@ -54,7 +54,7 @@ public abstract class PTup2c implements Tup2cR
 	 * 
 	 * @return A new readonly {@link PTup2c}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static PTup2c gen(Tup2cR t)
 	{
@@ -73,7 +73,7 @@ public abstract class PTup2c implements Tup2cR
 	 * 
 	 * @return A new readonly {@link PTup2c}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static PTup2c gen(char value)
 	{
@@ -88,7 +88,7 @@ public abstract class PTup2c implements Tup2cR
 	 * 
 	 * @return A new readonly {@link PTup2c}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static PTup2c gen(char x, char y)
 	{

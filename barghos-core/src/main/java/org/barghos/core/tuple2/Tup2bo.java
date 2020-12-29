@@ -29,7 +29,7 @@ import java.io.Serializable;
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.tuple2.api.Tup2boR;
-import org.barghos.core.tuple2.api.Tup2boW;
+import org.barghos.core.tuple2.api.Tup2boRW;
 
 /**
  * This class represents a 2-dimensional boolean tuple.
@@ -38,9 +38,9 @@ import org.barghos.core.tuple2.api.Tup2boW;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
-public class Tup2bo implements Tup2boR, Tup2boW, Serializable
+public class Tup2bo implements Tup2boRW, Serializable
 {
 	/**
 	 * The class version for serialization.
@@ -60,7 +60,7 @@ public class Tup2bo implements Tup2boR, Tup2boW, Serializable
 	/**
 	 * Creates a new instance with all components set to false.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup2bo()
 	{
@@ -72,7 +72,7 @@ public class Tup2bo implements Tup2boR, Tup2boW, Serializable
 	 * 
 	 * @param t An existing implementation of {@link Tup2boR} to adopt the values from.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup2bo(Tup2boR t)
 	{
@@ -89,7 +89,7 @@ public class Tup2bo implements Tup2boR, Tup2boW, Serializable
 	 * 
 	 * @param value The value used as the initial value for all values of the tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup2bo(boolean value)
 	{
@@ -102,7 +102,7 @@ public class Tup2bo implements Tup2boR, Tup2boW, Serializable
 	 * @param x The initial x value of the tuple.
 	 * @param y The initial y value of the tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup2bo(boolean x, boolean y)
 	{

@@ -30,7 +30,7 @@ import java.math.BigInteger;
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.tuple2.api.Tup2bigiR;
-import org.barghos.core.tuple2.api.Tup2bigiW;
+import org.barghos.core.tuple2.api.Tup2bigiRW;
 
 /**
  * This class represents a 2-dimensional big integer tuple.
@@ -39,9 +39,9 @@ import org.barghos.core.tuple2.api.Tup2bigiW;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
-public class Tup2bigi implements Tup2bigiR, Tup2bigiW, Serializable
+public class Tup2bigi implements Tup2bigiRW, Serializable
 {
 	/**
 	 * The class version for serialization.
@@ -61,7 +61,7 @@ public class Tup2bigi implements Tup2bigiR, Tup2bigiW, Serializable
 	/**
 	 * Creates a new instance with all components set to {@link BigInteger#ZERO}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup2bigi()
 	{
@@ -73,7 +73,7 @@ public class Tup2bigi implements Tup2bigiR, Tup2bigiW, Serializable
 	 * 
 	 * @param t An existing implementation of {@link Tup2bigiR} to adopt the values from.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup2bigi(Tup2bigiR t)
 	{
@@ -92,7 +92,7 @@ public class Tup2bigi implements Tup2bigiR, Tup2bigiW, Serializable
 	 * 
 	 * @param value The value used as the initial value for all values of the tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup2bigi(BigInteger value)
 	{
@@ -110,7 +110,7 @@ public class Tup2bigi implements Tup2bigiR, Tup2bigiW, Serializable
 	 * @param x The initial x value of the tuple.
 	 * @param y The initial y value of the tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup2bigi(BigInteger x, BigInteger y)
 	{

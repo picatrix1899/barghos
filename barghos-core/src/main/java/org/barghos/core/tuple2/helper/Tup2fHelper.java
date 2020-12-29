@@ -22,10 +22,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package org.barghos.core.tuple2;
+package org.barghos.core.tuple2.helper;
 
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
+import org.barghos.core.tuple2.Tup2f;
 import org.barghos.core.tuple2.api.Tup2fR;
 import org.barghos.core.tuple2.api.Tup2fW;
 

@@ -41,7 +41,7 @@ import org.barghos.core.tuple2.api.Tup2sR;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public abstract class PTup2s implements Tup2sR
 {
@@ -54,7 +54,7 @@ public abstract class PTup2s implements Tup2sR
 	 * 
 	 * @return A new readonly {@link PTup2s}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static PTup2s gen(Tup2sR t)
 	{
@@ -73,7 +73,7 @@ public abstract class PTup2s implements Tup2sR
 	 * 
 	 * @return A new readonly {@link PTup2s}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static PTup2s gen(short value)
 	{
@@ -88,7 +88,7 @@ public abstract class PTup2s implements Tup2sR
 	 * 
 	 * @return A new readonly {@link PTup2s}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static PTup2s gen(short x, short y)
 	{

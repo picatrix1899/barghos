@@ -29,7 +29,7 @@ import java.io.Serializable;
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.tuple2.api.Tup2bR;
-import org.barghos.core.tuple2.api.Tup2bW;
+import org.barghos.core.tuple2.api.Tup2bRW;
 
 /**
  * This class represents a 2-dimensional byte tuple.
@@ -38,9 +38,9 @@ import org.barghos.core.tuple2.api.Tup2bW;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
-public class Tup2b implements Tup2bR, Tup2bW, Serializable
+public class Tup2b implements Tup2bRW, Serializable
 {
 	/**
 	 * The class version for serialization.
@@ -60,7 +60,7 @@ public class Tup2b implements Tup2bR, Tup2bW, Serializable
 	/**
 	 * Creates a new instance with all components set to 0.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup2b()
 	{
@@ -72,7 +72,7 @@ public class Tup2b implements Tup2bR, Tup2bW, Serializable
 	 * 
 	 * @param t An existing implementation of {@link Tup2bR} to adopt the values from.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup2b(Tup2bR t)
 	{
@@ -89,7 +89,7 @@ public class Tup2b implements Tup2bR, Tup2bW, Serializable
 	 * 
 	 * @param value The value used as the initial value for all values of the tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup2b(byte value)
 	{
@@ -102,7 +102,7 @@ public class Tup2b implements Tup2bR, Tup2bW, Serializable
 	 * @param x The initial x value of the tuple.
 	 * @param y The initial y value of the tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup2b(byte x, byte y)
 	{

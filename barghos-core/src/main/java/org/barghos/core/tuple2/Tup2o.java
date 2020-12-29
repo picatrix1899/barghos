@@ -27,7 +27,7 @@ package org.barghos.core.tuple2;
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.tuple2.api.Tup2oR;
-import org.barghos.core.tuple2.api.Tup2oW;
+import org.barghos.core.tuple2.api.Tup2oRW;
 
 /**
  * This class represents a 2-dimensional object tuple.
@@ -36,9 +36,9 @@ import org.barghos.core.tuple2.api.Tup2oW;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
-public class Tup2o<X,Y> implements Tup2oR<X,Y>, Tup2oW<X,Y>
+public class Tup2o<X,Y> implements Tup2oRW<X,Y>
 {
 	/**
 	 * The x component.
@@ -53,7 +53,7 @@ public class Tup2o<X,Y> implements Tup2oR<X,Y>, Tup2oW<X,Y>
 	/**
 	 * Creates a new instance with all components set to null.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup2o() { }
 	
@@ -62,7 +62,7 @@ public class Tup2o<X,Y> implements Tup2oR<X,Y>, Tup2oW<X,Y>
 	 * 
 	 * @param t An existing implementation of {@link Tup2strR} to adopt the values from.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup2o(Tup2oR<X,Y> t)
 	{
@@ -82,7 +82,7 @@ public class Tup2o<X,Y> implements Tup2oR<X,Y>, Tup2oW<X,Y>
 	 * @param x The initial x value of the tuple.
 	 * @param y The initial y value of the tuple.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public Tup2o(X x, Y y)
 	{

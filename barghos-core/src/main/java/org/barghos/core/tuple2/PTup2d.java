@@ -41,7 +41,7 @@ import org.barghos.core.tuple2.api.Tup2dR;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public abstract class PTup2d implements Tup2dR
 {
@@ -54,7 +54,7 @@ public abstract class PTup2d implements Tup2dR
 	 * 
 	 * @return A new readonly {@link PTup2d}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static PTup2d gen(Tup2dR t)
 	{
@@ -73,7 +73,7 @@ public abstract class PTup2d implements Tup2dR
 	 * 
 	 * @return A new readonly {@link PTup2d}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static PTup2d gen(double value)
 	{
@@ -88,7 +88,7 @@ public abstract class PTup2d implements Tup2dR
 	 * 
 	 * @return A new readonly {@link PTup2d}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static PTup2d gen(double x, double y)
 	{

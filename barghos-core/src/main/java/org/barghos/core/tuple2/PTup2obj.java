@@ -41,7 +41,7 @@ import org.barghos.core.tuple2.api.Tup2objR;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public abstract class PTup2obj implements Tup2objR
 {
@@ -54,7 +54,7 @@ public abstract class PTup2obj implements Tup2objR
 	 * 
 	 * @return A new readonly {@link PTup2obj}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static PTup2obj gen(Tup2objR t)
 	{
@@ -75,7 +75,7 @@ public abstract class PTup2obj implements Tup2objR
 	 * 
 	 * @return A new readonly {@link PTup2obj}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static PTup2obj gen(Object value)
 	{
@@ -95,7 +95,7 @@ public abstract class PTup2obj implements Tup2objR
 	 * 
 	 * @return A new readonly {@link PTup2obj}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static PTup2obj gen(Object x, Object y)
 	{
