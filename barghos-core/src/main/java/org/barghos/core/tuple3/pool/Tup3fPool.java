@@ -35,7 +35,7 @@ import org.barghos.core.tuple3.api.Tup3fR;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public final class Tup3fPool
 {
@@ -57,7 +57,7 @@ public final class Tup3fPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup3f getPlain()
 	{
@@ -69,7 +69,7 @@ public final class Tup3fPool
 	 * 
 	 * @return A stored instance with the components set to 0.0f.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup3f get()
 	{
@@ -83,7 +83,7 @@ public final class Tup3fPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup3f get(Tup3fR t)
 	{
@@ -102,7 +102,7 @@ public final class Tup3fPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup3f get(float value)
 	{
@@ -118,7 +118,7 @@ public final class Tup3fPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup3f get(float x, float y, float z)
 	{
@@ -131,7 +131,7 @@ public final class Tup3fPool
 	 * 
 	 * @param count The amount of instances present in the pool at any time.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static void ensure(int count)
 	{
@@ -148,7 +148,7 @@ public final class Tup3fPool
 	 * 
 	 * @param elements The instances to store.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static void store(Tup3f... instances)
 	{
@@ -161,7 +161,7 @@ public final class Tup3fPool
 	 * 
 	 * @param pool The new pool instance the specialized {@link Tup3fPool} should use internal.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static void setInternalPool(Pool<Tup3f> pool)
 	{
@@ -178,7 +178,7 @@ public final class Tup3fPool
 	 * 
 	 * @return The internal used pool instance of the specialized pool {@link Tup3fPool}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Pool<Tup3f> getInternalPool()
 	{

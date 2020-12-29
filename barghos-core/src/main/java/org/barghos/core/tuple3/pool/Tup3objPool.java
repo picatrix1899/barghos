@@ -35,7 +35,7 @@ import org.barghos.core.tuple3.api.Tup3objR;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public final class Tup3objPool
 {
@@ -57,7 +57,7 @@ public final class Tup3objPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup3obj getPlain()
 	{
@@ -69,7 +69,7 @@ public final class Tup3objPool
 	 * 
 	 * @return A stored instance with the components set to <c>new Object()</c>.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup3obj get()
 	{
@@ -83,7 +83,7 @@ public final class Tup3objPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup3obj get(Tup3objR t)
 	{
@@ -105,7 +105,7 @@ public final class Tup3objPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup3obj get(Object value)
 	{
@@ -126,7 +126,7 @@ public final class Tup3objPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup3obj get(Object x, Object y, Object z)
 	{
@@ -146,7 +146,7 @@ public final class Tup3objPool
 	 * 
 	 * @param count The amount of instances present in the pool at any time.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static void ensure(int count)
 	{
@@ -163,7 +163,7 @@ public final class Tup3objPool
 	 * 
 	 * @param elements The instances to store.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static void store(Tup3obj... instances)
 	{
@@ -176,7 +176,7 @@ public final class Tup3objPool
 	 * 
 	 * @param pool The new pool instance the specialized {@link Tup3objPool} should use internal.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static void setInternalPool(Pool<Tup3obj> pool)
 	{
@@ -193,7 +193,7 @@ public final class Tup3objPool
 	 * 
 	 * @return The internal used pool instance of the specialized pool {@link Tup3objPool}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Pool<Tup3obj> getInternalPool()
 	{

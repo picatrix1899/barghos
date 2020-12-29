@@ -35,7 +35,7 @@ import org.barghos.core.tuple3.api.Tup3strR;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public final class Tup3strPool
 {
@@ -57,7 +57,7 @@ public final class Tup3strPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup3str getPlain()
 	{
@@ -69,7 +69,7 @@ public final class Tup3strPool
 	 * 
 	 * @return A stored instance with the components set to <c>""</c>.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup3str get()
 	{
@@ -83,7 +83,7 @@ public final class Tup3strPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup3str get(Tup3strR t)
 	{
@@ -105,7 +105,7 @@ public final class Tup3strPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup3str get(String value)
 	{
@@ -126,7 +126,7 @@ public final class Tup3strPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup3str get(String x, String y, String z)
 	{
@@ -146,7 +146,7 @@ public final class Tup3strPool
 	 * 
 	 * @param count The amount of instances present in the pool at any time.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static void ensure(int count)
 	{
@@ -163,7 +163,7 @@ public final class Tup3strPool
 	 * 
 	 * @param elements The instances to store.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static void store(Tup3str... instances)
 	{
@@ -176,7 +176,7 @@ public final class Tup3strPool
 	 * 
 	 * @param pool The new pool instance the specialized {@link Tup3strPool} should use internal.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static void setInternalPool(Pool<Tup3str> pool)
 	{
@@ -193,7 +193,7 @@ public final class Tup3strPool
 	 * 
 	 * @return The internal used pool instance of the specialized pool {@link Tup3strPool}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Pool<Tup3str> getInternalPool()
 	{

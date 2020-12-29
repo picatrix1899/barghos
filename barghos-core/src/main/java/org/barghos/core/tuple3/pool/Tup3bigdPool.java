@@ -37,7 +37,7 @@ import org.barghos.core.tuple3.api.Tup3bigdR;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public final class Tup3bigdPool
 {
@@ -59,7 +59,7 @@ public final class Tup3bigdPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup3bigd getPlain()
 	{
@@ -71,7 +71,7 @@ public final class Tup3bigdPool
 	 * 
 	 * @return A stored instance with the components set to {@link BigDecimal.ZERO}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup3bigd get()
 	{
@@ -85,7 +85,7 @@ public final class Tup3bigdPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup3bigd get(Tup3bigdR t)
 	{
@@ -107,7 +107,7 @@ public final class Tup3bigdPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup3bigd get(BigDecimal value)
 	{
@@ -128,7 +128,7 @@ public final class Tup3bigdPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup3bigd get(BigDecimal x, BigDecimal y, BigDecimal z)
 	{
@@ -148,7 +148,7 @@ public final class Tup3bigdPool
 	 * 
 	 * @param count The amount of instances present in the pool at any time.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static void ensure(int count)
 	{
@@ -165,7 +165,7 @@ public final class Tup3bigdPool
 	 * 
 	 * @param elements The instances to store.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static void store(Tup3bigd... instances)
 	{
@@ -178,7 +178,7 @@ public final class Tup3bigdPool
 	 * 
 	 * @param pool The new pool instance the specialized {@link Tup3bigdPool} should use internal.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static void setInternalPool(Pool<Tup3bigd> pool)
 	{
@@ -195,7 +195,7 @@ public final class Tup3bigdPool
 	 * 
 	 * @return The internal used pool instance of the specialized pool {@link Tup3bigdPool}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Pool<Tup3bigd> getInternalPool()
 	{
