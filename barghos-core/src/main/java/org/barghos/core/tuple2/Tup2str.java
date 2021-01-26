@@ -27,9 +27,9 @@ package org.barghos.core.tuple2;
 import java.io.Serializable;
 
 import org.barghos.core.Barghos;
+import org.barghos.core.api.tuple2.Tup2strR;
+import org.barghos.core.api.tuple2.Tup2strRW;
 import org.barghos.core.exception.ArgumentNullException;
-import org.barghos.core.tuple2.api.Tup2strR;
-import org.barghos.core.tuple2.api.Tup2strRW;
 
 /**
  * This class represents a 2-dimensional string tuple.

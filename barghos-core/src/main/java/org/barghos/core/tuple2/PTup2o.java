@@ -25,8 +25,8 @@ SOFTWARE.
 package org.barghos.core.tuple2;
 
 import org.barghos.core.Barghos;
+import org.barghos.core.api.tuple2.Tup2oR;
 import org.barghos.core.exception.ArgumentNullException;
-import org.barghos.core.tuple2.api.Tup2oR;
 
 /**
  * Represents a persistent 2-dimensional object tuple.

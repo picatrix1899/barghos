@@ -25,8 +25,8 @@ SOFTWARE.
 package org.barghos.core.tuple4;
 
 import org.barghos.core.Barghos;
+import org.barghos.core.api.tuple4.Tup4iR;
 import org.barghos.core.exception.ArgumentNullException;
-import org.barghos.core.tuple4.api.Tup4iR;
 
 /**
  * Represents a persistent 4-dimensional int tuple.

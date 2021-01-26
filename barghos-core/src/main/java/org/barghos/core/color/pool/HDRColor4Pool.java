@@ -24,9 +24,9 @@ SOFTWARE.
 
 package org.barghos.core.color.pool;
 
-import org.barghos.core.pool.api.Pool;
-import org.barghos.core.tuple4.api.Tup4fR;
 import org.barghos.core.Barghos;
+import org.barghos.core.api.pool.Pool;
+import org.barghos.core.api.tuple4.Tup4fR;
 import org.barghos.core.color.HDRColor4;
 
 /**

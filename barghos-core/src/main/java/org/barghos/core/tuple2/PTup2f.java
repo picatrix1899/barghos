@@ -25,8 +25,8 @@ SOFTWARE.
 package org.barghos.core.tuple2;
 
 import org.barghos.core.Barghos;
+import org.barghos.core.api.tuple2.Tup2fR;
 import org.barghos.core.exception.ArgumentNullException;
-import org.barghos.core.tuple2.api.Tup2fR;
 
 /**
  * Represents a persistent 2-dimensional float tuple.

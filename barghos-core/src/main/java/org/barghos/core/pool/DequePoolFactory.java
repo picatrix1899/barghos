@@ -24,8 +24,8 @@ SOFTWARE.
 
 package org.barghos.core.pool;
 
-import org.barghos.core.pool.api.Pool;
-import org.barghos.core.pool.api.PoolFactory;
+import org.barghos.core.api.pool.Pool;
+import org.barghos.core.api.pool.PoolFactory;
 
 /**
  * This class is an implementation of {@link PoolFactory} that creates instances of {@link DequePool}.
@@ -38,7 +38,7 @@ import org.barghos.core.pool.api.PoolFactory;
 public class DequePoolFactory implements PoolFactory
 {
 	/**
-	 * This static variables stores the singletion instance of {@link DequePoolFactory}
+	 * This static variable stores the singleton instance of {@link DequePoolFactory}
 	 */
 	private static DequePoolFactory INSTANCE;
 	

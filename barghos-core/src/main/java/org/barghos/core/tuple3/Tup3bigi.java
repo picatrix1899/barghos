@@ -28,9 +28,9 @@ import java.io.Serializable;
 import java.math.BigInteger;
 
 import org.barghos.core.Barghos;
+import org.barghos.core.api.tuple3.Tup3bigiR;
+import org.barghos.core.api.tuple3.Tup3bigiRW;
 import org.barghos.core.exception.ArgumentNullException;
-import org.barghos.core.tuple3.api.Tup3bigiR;
-import org.barghos.core.tuple3.api.Tup3bigiRW;
 
 /**
  * This class represents a 3-dimensional big integer tuple.

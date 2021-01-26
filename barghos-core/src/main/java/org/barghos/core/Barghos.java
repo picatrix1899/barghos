@@ -24,8 +24,8 @@ SOFTWARE.
 
 package org.barghos.core;
 
+import org.barghos.core.api.pool.PoolFactory;
 import org.barghos.core.pool.DequePoolFactory;
-import org.barghos.core.pool.api.PoolFactory;
 
 /**
  * This class contains general settings for the barghos core subproject.

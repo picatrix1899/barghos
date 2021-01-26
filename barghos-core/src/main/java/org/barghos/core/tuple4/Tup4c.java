@@ -27,9 +27,9 @@ package org.barghos.core.tuple4;
 import java.io.Serializable;
 
 import org.barghos.core.Barghos;
+import org.barghos.core.api.tuple4.Tup4cR;
+import org.barghos.core.api.tuple4.Tup4cW;
 import org.barghos.core.exception.ArgumentNullException;
-import org.barghos.core.tuple4.api.Tup4cR;
-import org.barghos.core.tuple4.api.Tup4cW;
 
 /**
  * This class represents a 4-dimensional char tuple.

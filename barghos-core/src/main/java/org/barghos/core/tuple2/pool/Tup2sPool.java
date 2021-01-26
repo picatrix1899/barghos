@@ -25,10 +25,10 @@ SOFTWARE.
 package org.barghos.core.tuple2.pool;
 
 import org.barghos.core.Barghos;
+import org.barghos.core.api.pool.Pool;
+import org.barghos.core.api.tuple2.Tup2sR;
 import org.barghos.core.exception.ArgumentNullException;
-import org.barghos.core.pool.api.Pool;
 import org.barghos.core.tuple2.Tup2s;
-import org.barghos.core.tuple2.api.Tup2sR;
 
 /**
  * This specialized instance pool contains instances of the type {@link Tup2s}.

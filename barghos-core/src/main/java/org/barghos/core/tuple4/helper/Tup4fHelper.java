@@ -25,14 +25,14 @@ SOFTWARE.
 package org.barghos.core.tuple4.helper;
 
 import org.barghos.core.Barghos;
+import org.barghos.core.api.tuple2.Tup2fW;
+import org.barghos.core.api.tuple3.Tup3fW;
+import org.barghos.core.api.tuple4.Tup4fR;
+import org.barghos.core.api.tuple4.Tup4fW;
 import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.tuple2.Tup2f;
-import org.barghos.core.tuple2.api.Tup2fW;
 import org.barghos.core.tuple3.Tup3f;
-import org.barghos.core.tuple3.api.Tup3fW;
 import org.barghos.core.tuple4.Tup4f;
-import org.barghos.core.tuple4.api.Tup4fR;
-import org.barghos.core.tuple4.api.Tup4fW;
 
 /**
  * @author picatrix1899

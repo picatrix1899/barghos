@@ -23,8 +23,9 @@ SOFTWARE.
 */
 
 /**
+ * This package contains event systems.
+ * 
  * @author picatrix1899
- *
  */
 
 package org.barghos.core.event;

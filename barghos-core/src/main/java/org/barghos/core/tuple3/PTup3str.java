@@ -25,8 +25,8 @@ SOFTWARE.
 package org.barghos.core.tuple3;
 
 import org.barghos.core.Barghos;
+import org.barghos.core.api.tuple3.Tup3strR;
 import org.barghos.core.exception.ArgumentNullException;
-import org.barghos.core.tuple3.api.Tup3strR;
 
 /**
  * Represents a persistent 3-dimensional string tuple.

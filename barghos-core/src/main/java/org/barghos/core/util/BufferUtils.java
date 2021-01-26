@@ -29,13 +29,13 @@ import java.nio.FloatBuffer;
 import java.util.List;
 
 import org.barghos.core.Barghos;
+import org.barghos.core.api.tuple2.Tup2dR;
+import org.barghos.core.api.tuple2.Tup2fR;
+import org.barghos.core.api.tuple3.Tup3dR;
+import org.barghos.core.api.tuple3.Tup3fR;
+import org.barghos.core.api.tuple4.Tup4dR;
+import org.barghos.core.api.tuple4.Tup4fR;
 import org.barghos.core.exception.ArgumentNullException;
-import org.barghos.core.tuple2.api.Tup2dR;
-import org.barghos.core.tuple2.api.Tup2fR;
-import org.barghos.core.tuple3.api.Tup3dR;
-import org.barghos.core.tuple3.api.Tup3fR;
-import org.barghos.core.tuple4.api.Tup4dR;
-import org.barghos.core.tuple4.api.Tup4fR;
 
 
 /**

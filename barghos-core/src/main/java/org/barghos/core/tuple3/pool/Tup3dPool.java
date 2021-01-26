@@ -25,10 +25,10 @@ SOFTWARE.
 package org.barghos.core.tuple3.pool;
 
 import org.barghos.core.Barghos;
+import org.barghos.core.api.pool.Pool;
+import org.barghos.core.api.tuple3.Tup3dR;
 import org.barghos.core.exception.ArgumentNullException;
-import org.barghos.core.pool.api.Pool;
 import org.barghos.core.tuple3.Tup3d;
-import org.barghos.core.tuple3.api.Tup3dR;
 
 /**
  * This specialized instance pool contains instances of the type {@link Tup3d}.

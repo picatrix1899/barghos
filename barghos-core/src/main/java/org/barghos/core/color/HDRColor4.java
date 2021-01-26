@@ -24,8 +24,8 @@ SOFTWARE.
 
 package org.barghos.core.color;
 
-import org.barghos.core.color.api.HDRColor4R;
-import org.barghos.core.tuple4.api.Tup4fR;
+import org.barghos.core.api.color.HDRColor4R;
+import org.barghos.core.api.tuple4.Tup4fR;
 
 /**
  * This class is a simple implementation of an HDRColor4.

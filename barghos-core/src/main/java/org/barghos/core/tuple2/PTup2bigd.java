@@ -27,8 +27,8 @@ package org.barghos.core.tuple2;
 import java.math.BigDecimal;
 
 import org.barghos.core.Barghos;
+import org.barghos.core.api.tuple2.Tup2bigdR;
 import org.barghos.core.exception.ArgumentNullException;
-import org.barghos.core.tuple2.api.Tup2bigdR;
 
 /**
  * Represents a persistent 2-dimensional big decimal tuple.

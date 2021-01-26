@@ -24,8 +24,8 @@ SOFTWARE.
 
 package org.barghos.core.color;
 
-import org.barghos.core.color.api.LDRColor3R;
-import org.barghos.core.tuple3.api.Tup3fR;
+import org.barghos.core.api.color.LDRColor3R;
+import org.barghos.core.api.tuple3.Tup3fR;
 
 /**
  * This class is a readonly implementation of an LDRColor3.

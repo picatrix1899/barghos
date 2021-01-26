@@ -24,7 +24,7 @@ SOFTWARE.
 
 package org.barghos.core.color;
 
-import org.barghos.core.color.api.HDRColor4R;
+import org.barghos.core.api.color.HDRColor4R;
 
 /**
  * 

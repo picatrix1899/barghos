@@ -25,10 +25,10 @@ SOFTWARE.
 package org.barghos.core.tuple2.helper;
 
 import org.barghos.core.Barghos;
+import org.barghos.core.api.tuple2.Tup2iR;
+import org.barghos.core.api.tuple2.Tup2iW;
 import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.tuple2.Tup2i;
-import org.barghos.core.tuple2.api.Tup2iR;
-import org.barghos.core.tuple2.api.Tup2iW;
 
 /**
  * 

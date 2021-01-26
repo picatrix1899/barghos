@@ -23,7 +23,7 @@ SOFTWARE.
 */
 
 /**
- * This package contains all pools for the barghos-core packet.
+ * This package contains variants of generic instance pools.
  * 
  * @author picatrix1899
  */

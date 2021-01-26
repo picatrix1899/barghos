@@ -25,10 +25,10 @@ SOFTWARE.
 package org.barghos.core.tuple4.pool;
 
 import org.barghos.core.Barghos;
+import org.barghos.core.api.pool.Pool;
+import org.barghos.core.api.tuple4.Tup4bR;
 import org.barghos.core.exception.ArgumentNullException;
-import org.barghos.core.pool.api.Pool;
 import org.barghos.core.tuple4.Tup4b;
-import org.barghos.core.tuple4.api.Tup4bR;
 
 /**
  * This specialized instance pool contains instances of the type {@link Tup4b}.

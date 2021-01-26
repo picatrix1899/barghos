@@ -30,10 +30,10 @@ import java.util.Map;
 import java.util.Set;
 
 import org.barghos.core.Barghos;
-import org.barghos.core.event.api.Event;
-import org.barghos.core.event.api.EventReceiver;
-import org.barghos.core.event.api.HandlerPriority;
-import org.barghos.core.event.api.PriorizedEventDelegate;
+import org.barghos.core.api.event.Event;
+import org.barghos.core.api.event.EventReceiver;
+import org.barghos.core.api.event.HandlerPriority;
+import org.barghos.core.api.event.PriorizedEventDelegate;
 import org.barghos.core.exception.ArgumentNullException;
 
 /**

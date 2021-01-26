@@ -27,9 +27,9 @@ package org.barghos.core.event;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.barghos.core.event.api.Event;
-import org.barghos.core.event.api.EventDelegate;
-import org.barghos.core.event.api.EventReceiver;
+import org.barghos.core.api.event.Event;
+import org.barghos.core.api.event.EventDelegate;
+import org.barghos.core.api.event.EventReceiver;
 
 /**
  * @author picatrix1899

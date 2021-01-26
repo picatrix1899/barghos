@@ -27,9 +27,9 @@ package org.barghos.core.tuple4;
 import java.io.Serializable;
 
 import org.barghos.core.Barghos;
+import org.barghos.core.api.tuple4.Tup4bR;
+import org.barghos.core.api.tuple4.Tup4bW;
 import org.barghos.core.exception.ArgumentNullException;
-import org.barghos.core.tuple4.api.Tup4bR;
-import org.barghos.core.tuple4.api.Tup4bW;
 
 /**
  * This class represents a 4-dimensional byte tuple.

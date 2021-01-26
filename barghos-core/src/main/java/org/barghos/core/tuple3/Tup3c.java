@@ -27,9 +27,9 @@ package org.barghos.core.tuple3;
 import java.io.Serializable;
 
 import org.barghos.core.Barghos;
+import org.barghos.core.api.tuple3.Tup3cR;
+import org.barghos.core.api.tuple3.Tup3cRW;
 import org.barghos.core.exception.ArgumentNullException;
-import org.barghos.core.tuple3.api.Tup3cR;
-import org.barghos.core.tuple3.api.Tup3cRW;
 
 /**
  * This class represents a 3-dimensional char tuple.

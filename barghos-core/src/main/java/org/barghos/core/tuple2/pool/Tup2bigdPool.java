@@ -27,10 +27,10 @@ package org.barghos.core.tuple2.pool;
 import java.math.BigDecimal;
 
 import org.barghos.core.Barghos;
+import org.barghos.core.api.pool.Pool;
+import org.barghos.core.api.tuple2.Tup2bigdR;
 import org.barghos.core.exception.ArgumentNullException;
-import org.barghos.core.pool.api.Pool;
 import org.barghos.core.tuple2.Tup2bigd;
-import org.barghos.core.tuple2.api.Tup2bigdR;
 
 /**
  * This specialized instance pool contains instances of the type {@link Tup2bigd}.
