@@ -24,109 +24,419 @@ package org.barghos.core.color;
 
 import org.barghos.core.api.color.LDRColor3R;
 import org.barghos.core.api.tuple3.Tup3fR;
+import org.barghos.core.api.tuple3.Tup3iR;
+
+import org.barghos.core.Barghos;
+import org.barghos.core.exception.ArgumentNullException;
 
 /**
  * This class is a simple implementation of an LDRColor3.
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public class LDRColor3 implements LDRColor3R
 {
 	/**
 	 * The red component safed in unitspace.
 	 */
-	private float r = 0.0f;
+	public float r;
 	
 	/**
 	 * The green component safed in unitspace.
 	 */
-	private float g = 0.0f;
+	public float g;
 	
 	/**
 	 * The blue component safed in unitspace.
 	 */
-	private float b = 0.0f;
-	
+	public float b;
 	
 	/**
 	 * This is the default constructor.
 	 * It is commonly used by a pool.
 	 * It sets all components to 0.0 what is equal to black color.
+	 * 
+	 * @since 1.0.0.0
 	 */
 	public LDRColor3() { }
 	
 	/**
 	 * This constructor sets the components to t.
 	 * The values of t are interpreted as in unitspace (0.0 - 1.0) and are clamped to these limit.
+	 * 
 	 * @param t A tuple that the components are set to.
+	 * 
+	 * @since 1.0.0.0
 	 */
-	public LDRColor3(Tup3fR t) { set(t); }
+	public LDRColor3(Tup3fR t)
+	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(t == null) throw new ArgumentNullException("t");
+		}
+		
+		set(t);
+	}
+	
+	/**
+	 * This constructor sets the components to t.
+	 * The values of t are interpreted as in colorspace (0 - 255) and are clamped to these limit.
+	 * 
+	 * @param t A tuple that the components are set to.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public LDRColor3(Tup3iR t)
+	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(t == null) throw new ArgumentNullException("t");
+		}
+		
+		set(t);
+	}
 	
 	/**
 	 * This constructor sets the components to scalar.
 	 * The scalar is interpreted as in unitspace (0.0 - 1.0) and are clamped to these limit.
+	 * 
 	 * @param scalar A value that the components are set to.
+	 * 
+	 * @since 1.0.0.0
 	 */
-	public LDRColor3(float scalar) { set(scalar); }
+	public LDRColor3(float scalar)
+	{
+		set(scalar);
+	}
 	
 	/**
 	 * This constructor sets the components to scalar.
-	 * The scalar is interpreted as in colorrange (0 - 255) and are clamped to these limit.
+	 * The scalar is interpreted as in colorspace (0 - 255) and are clamped to these limit.
+	 * 
 	 * @param scalar A value that the components are set to.
+	 * 
+	 * @since 1.0.0.0
 	 */
-	public LDRColor3(int scalar) { set(scalar); }
+	public LDRColor3(int scalar)
+	{
+		set(scalar);
+	}
 	
 	/**
 	 * This constructor sets the components to r, g and b.
 	 * r, g and b are interpreted as in unitspace (0.0 - 1.0) and are clamped to these limit.
+	 * 
 	 * @param r The red component in unitspace.
 	 * @param g The green component in unitspace.
 	 * @param b The blue component in unitspace.
+	 * 
+	 * @since 1.0.0.0
 	 */
-	public LDRColor3(float r, float g, float b) { set(r, g, b); }
+	public LDRColor3(float r, float g, float b)
+	{
+		set(r, g, b);
+	}
 	
 	/**
 	 * This constructor sets the components to r, g and b.
 	 * r, g and b are interpreted as in colorspace (0 - 255) and are clamped to these limit.
+	 * 
 	 * @param r The red component in colorspace.
 	 * @param g The green component in colorspace.
 	 * @param b The blue component in colorspace.
+	 * 
+	 * @since 1.0.0.0
 	 */
-	public LDRColor3(int r, int g, int b) { set(r, g, b); }
-	
-	
-	
-	public LDRColor3 setX(float x) { return setUnityR(x); }
-	public LDRColor3 setY(float y) { return setUnityG(y); }
-	public LDRColor3 setZ(float z) { return setUnityB(z); }
-	
-	public LDRColor3 setUnityR(float r) { this.r = clamp(r); return this; }
-	public LDRColor3 setUnityG(float g) { this.g = clamp(g); return this; }
-	public LDRColor3 setUnityB(float b) { this.b = clamp(b); return this; }
-	
-	public LDRColor3 setR(int r) { return setUnityR(r / 255.0f); }
-	public LDRColor3 setG(int g) { return setUnityG(g / 255.0f); }
-	public LDRColor3 setB(int b) { return setUnityB(b / 255.0f); }
-	
-	public LDRColor3 set(Tup3fR t) { return set(t.getX(), t.getY(), t.getZ()); }
-	public LDRColor3 set(float scalar) { return set(scalar, scalar, scalar); }
-	public LDRColor3 set(int scalar) { return set(scalar, scalar, scalar); }
-	public LDRColor3 set(float r, float g, float b) { return setUnityR(r).setUnityG(g).setUnityB(b); }
-	public LDRColor3 set(int r, int g, int b) { return setR(r).setG(g).setB(b); }
-	
-	public float getUnityR() { return this.r; }
-	public float getUnityG() { return this.g; }
-	public float getUnityB() { return this.b; }
-	
-	public int getR() { return Math.round(this.r * 255); }
-	public int getG() { return Math.round(this.g * 255); }
-	public int getB() { return Math.round(this.b * 255); }
-
-	private float clamp(double value)
+	public LDRColor3(int r, int g, int b)
 	{
-		return (float)(value > 1.0f ? 1.0f : value < 0.0f ? 0.0f : value);
+		set(r, g, b);
 	}
 	
+	/**
+	 * Sets the red component to x.
+	 * x is interpreted as in unitspace (0.0 - 1.0) and are clamped to these limit.
+	 * 
+	 * @param x The red component in unitspace.
+	 * 
+	 * @return The current color.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public LDRColor3 setX(float x)
+	{
+		return setUnityR(x);
+	}
+	
+	/**
+	 * Sets the green component to y.
+	 * y is interpreted as in unitspace (0.0 - 1.0) and are clamped to these limit.
+	 * 
+	 * @param y The green component in unitspace.
+	 * 
+	 * @return The current color.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public LDRColor3 setY(float y)
+	{
+		return setUnityG(y);
+	}
+	
+	/**
+	 * Sets the blue component to z.
+	 * z is interpreted as in unitspace (0.0 - 1.0) and are clamped to these limit.
+	 * 
+	 * @param z The blue component in unitspace.
+	 * 
+	 * @return The current color.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public LDRColor3 setZ(float z)
+	{
+		return setUnityB(z);
+	}
+	
+	/**
+	 * Sets the red component to r.
+	 * r is interpreted as in unitspace (0.0 - 1.0) and are clamped to these limit.
+	 * 
+	 * @param r The red component in unitspace.
+	 * 
+	 * @return The current color.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public LDRColor3 setUnityR(float r)
+	{
+		this.r = clamp(r);
+		
+		return this;
+	}
+	
+	/**
+	 * Sets the green component to g.
+	 * g is interpreted as in unitspace (0.0 - 1.0) and are clamped to these limit.
+	 * 
+	 * @param g The green component in unitspace.
+	 * 
+	 * @return The current color.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public LDRColor3 setUnityG(float g)
+	{
+		this.g = clamp(g);
+		
+		return this;
+	}
+	
+	/**
+	 * Sets the blue component to b.
+	 * b is interpreted as in unitspace (0.0 - 1.0) and are clamped to these limit.
+	 * 
+	 * @param b The blue component in unitspace.
+	 * 
+	 * @return The current color.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public LDRColor3 setUnityB(float b)
+	{
+		this.b = clamp(b);
+		
+		return this;
+	}
+	
+	/**
+	 * Sets the red component to r.
+	 * r is interpreted as in colorspace (0 - 255) and are clamped to these limit.
+	 * 
+	 * @param r The red component in colorspace.
+	 * 
+	 * @return The current color.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public LDRColor3 setR(int r)
+	{
+		return setUnityR(r * 0.00392156862f);
+	}
+	
+	/**
+	 * Sets the green component to g.
+	 * g is interpreted as in colorspace (0 - 255) and are clamped to these limit.
+	 * 
+	 * @param g The green component in colorspace.
+	 * 
+	 * @return The current color.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public LDRColor3 setG(int g)
+	{
+		return setUnityG(g * 0.00392156862f);
+	}
+	
+	/**
+	 * Sets the blue component to b.
+	 * b is interpreted as in colorspace (0 - 255) and are clamped to these limit.
+	 * 
+	 * @param b The blue component in colorspace.
+	 * 
+	 * @return The current color.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public LDRColor3 setB(int b)
+	{
+		return setUnityB(b * 0.00392156862f);
+	}
+	
+	/**
+	 * Adepts the components from tuple t.
+	 * The components are interpreted as in unitspace (0.0 - 1.0) and are clamped to these limit.
+	 * 
+	 * @param t The tuple to adept the components from in unitspace.
+	 * 
+	 * @return The current color.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public LDRColor3 set(Tup3fR t)
+	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(t == null) throw new ArgumentNullException("t");
+		}
+		
+		return set(t.getX(), t.getY(), t.getZ());
+	}
+	
+	/**
+	 * Adepts the components from tuple t.
+	 * The components are interpreted as in colorspace (0 - 255) and are clamped to these limit.
+	 * 
+	 * @param t The tuple to adept the components from in colorspace.
+	 * 
+	 * @return The current color.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public LDRColor3 set(Tup3iR t)
+	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(t == null) throw new ArgumentNullException("t");
+		}
+		
+		return set(t.getX(), t.getY(), t.getZ());
+	}
+	
+	/**
+	 * Sets all components to scalar.
+	 * The value of scalar is interpreted as in unitspace (0.0 - 1.0) and are clamped to these limit.
+	 * 
+	 * @param scalar The value all components should be set to in unitspace.
+	 * 
+	 * @return The current color.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public LDRColor3 set(float scalar)
+	{
+		return set(scalar, scalar, scalar);
+	}
+	
+	/**
+	 * Sets all components to scalar.
+	 * The value of scalar is interpreted as in colorspace (0 - 255) and are clamped to these limit.
+	 * 
+	 * @param scalar The value all components should be set to in colorspace.
+	 * 
+	 * @return The current color.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public LDRColor3 set(int scalar)
+	{
+		return set(scalar, scalar, scalar);
+	}
+	
+	/**
+	 * Sets the components to r, g and b.
+	 * The components are interpreted as in unitspace (0.0 - 1.0) and are clamped to these limit.
+	 *
+	 * @param r The red component in unitspace.
+	 * @param g The green component in unitspace.
+	 * @param b The blue component in unitspace.
+	 * 
+	 * @return The current color.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public LDRColor3 set(float r, float g, float b)
+	{
+		return setUnityR(r).setUnityG(g).setUnityB(b);
+	}
+	
+	/**
+	 * Sets the components to r, g and b.
+	 * The components are interpreted as in colorspace (0 - 255) and are clamped to these limit.
+	 *
+	 * @param r The red component in colorspace.
+	 * @param g The green component in colorspace.
+	 * @param b The blue component in colorspace.
+	 * 
+	 * @return The current color.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public LDRColor3 set(int r, int g, int b)
+	{
+		return setR(r).setG(g).setB(b);
+	}
+	
+	@Override
+	public float getUnityR()
+	{
+		return this.r;
+	}
+	
+	@Override
+	public float getUnityG()
+	{
+		return this.g;
+	}
+	
+	@Override
+	public float getUnityB()
+	{
+		return this.b;
+	}
+	
+	@Override
+	public int getR()
+	{
+		return Math.round(this.r * 255);
+	}
+	
+	@Override
+	public int getG()
+	{
+		return Math.round(this.g * 255);
+	}
+	
+	@Override
+	public int getB()
+	{
+		return Math.round(this.b * 255);
+	}
+
+	private float clamp(float value)
+	{
+		return value > 1.0f ? 1.0f : value < 0.0f ? 0.0f : value;
+	}
 }

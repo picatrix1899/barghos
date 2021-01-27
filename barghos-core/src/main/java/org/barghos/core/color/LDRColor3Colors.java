@@ -25,15 +25,18 @@ package org.barghos.core.color;
 import org.barghos.core.api.color.LDRColor3R;
 
 /**
+ * This enumeration contains a default color palette for low dynamic range (LDR/Standard) RGB-Colors.
  * 
  * @author picatrix1899
  *
- * @since 1.0
+ * @since 1.0.0.0
  */
 public enum LDRColor3Colors implements LDRColor3R
 {
 	/**
 	 * White Color constant.
+	 * 
+	 * @since 1.0.0.0
 	 */
 	WHITE {
 		public int getR() { return 255; }
@@ -46,6 +49,8 @@ public enum LDRColor3Colors implements LDRColor3R
 	
 	/**
 	 * Black Color constant.
+	 * 
+	 * @since 1.0.0.0
 	 */
 	BLACK {
 		public int getR() { return 0; }
@@ -55,9 +60,11 @@ public enum LDRColor3Colors implements LDRColor3R
 		public float getUnityG() { return 0; }
 		public float getUnityB() { return 0; }
 	},
-
+	
 	/**
 	 * Red Color constant.
+	 * 
+	 * @since 1.0.0.0
 	 */
 	RED {
 		public int getR() { return 255; }
@@ -70,6 +77,8 @@ public enum LDRColor3Colors implements LDRColor3R
 	
 	/**
 	 * Green Color constant.
+	 * 
+	 * @since 1.0.0.0
 	 */
 	GREEN {
 		public int getR() { return 0; }
@@ -82,6 +91,8 @@ public enum LDRColor3Colors implements LDRColor3R
 	
 	/**
 	 * Blue Color constant.
+	 * 
+	 * @since 1.0.0.0
 	 */
 	BLUE {
 		public int getR() { return 0; }
@@ -94,6 +105,8 @@ public enum LDRColor3Colors implements LDRColor3R
 	
 	/** 
 	 * Yellow Color constant.
+	 * 
+	 * @since 1.0.0.0
 	 */
 	YELLOW {
 		public int getR() { return 255; }
@@ -106,6 +119,8 @@ public enum LDRColor3Colors implements LDRColor3R
 	
 	/**
 	 * Purple Color constant.
+	 * 
+	 * @since 1.0.0.0
 	 */
 	PURPLE {
 		public int getR() { return 128; }
@@ -116,6 +131,8 @@ public enum LDRColor3Colors implements LDRColor3R
 	
 	/** 
 	 * Gold Color constant.
+	 * 
+	 * @since 1.0.0.0
 	 */
 	GOLD {
 		public int getR() { return 255; }
@@ -127,6 +144,8 @@ public enum LDRColor3Colors implements LDRColor3R
 	
 	/**
 	 * Orange Color constant.
+	 * 
+	 * @since 1.0.0.0
 	 */
 	ORANGE {
 		public int getR() { return 255; }
@@ -138,6 +157,8 @@ public enum LDRColor3Colors implements LDRColor3R
 	
 	/** 
 	 * Grey Color constant.
+	 * 
+	 * @since 1.0.0.0
 	 */
 	GREY {
 		public int getR() { return 128; }
@@ -145,13 +166,22 @@ public enum LDRColor3Colors implements LDRColor3R
 		public int getB() { return 128; }
 	},
 ;
-
-	@Override
-	public float getUnityR() { return (int)Math.round(getR() / 255); }
 	
 	@Override
-	public float getUnityG() { return (int)Math.round(getG() / 255); }
+	public float getUnityR()
+	{
+		return getR() * 0.00392156862f;
+	}
 	
 	@Override
-	public float getUnityB() { return (int)Math.round(getB() / 255); }
+	public float getUnityG()
+	{
+		return getG() * 0.00392156862f;
+	}
+	
+	@Override
+	public float getUnityB()
+	{
+		return getB() * 0.00392156862f;
+	}
 }

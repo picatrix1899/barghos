@@ -24,12 +24,14 @@ package org.barghos.core.color.pool;
 
 import org.barghos.core.api.pool.Pool;
 import org.barghos.core.api.tuple4.Tup4fR;
+import org.barghos.core.api.tuple4.Tup4iR;
 
 import org.barghos.core.Barghos;
 import org.barghos.core.color.LDRColor4;
+import org.barghos.core.exception.ArgumentNullException;
 
 /**
- * This pool contains instances of the type LDRColor4.
+ * This specialized instance pool contains instances of the type {@link LDRColor4}.
  * 
  * @author picatrix1899
  * 
@@ -37,8 +39,19 @@ import org.barghos.core.color.LDRColor4;
  */
 public class LDRColor4Pool
 {
-	private static final Pool<LDRColor4> pool = Barghos.INSTANCE_POOL_FACTORY.create(LDRColor4.class);
-
+	/**
+	 * This variable contains the internal pool that is backing this specialized pool.
+	 */
+	private static Pool<LDRColor4> pool = Barghos.INSTANCE_POOL_FACTORY.create(LDRColor4.class);
+	
+	/**
+	 * This class contains only static methods and therefore it should not be possible to create
+	 * instances from it.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	private LDRColor4Pool() { }
+	
 	/**
 	 * Returns an instance of {@link LDRColor4} from the pool and does not reset it.
 	 * This function is useful for reducing unneccessary calls and operations if a value is
@@ -60,10 +73,13 @@ public class LDRColor4Pool
 	 * 
 	 * @since 1.0.0.0
 	 */
-	public static LDRColor4 get() { return pool.get().set(0.0f); }
+	public static LDRColor4 get()
+	{
+		return pool.get().set(0.0f);
+	}
 	
 	/**
-	 * Returns an instance of LDRColor4 from the pool and sets its components to the values of t.
+	 * Returns an instance of LDRColor4 from the pool and adopts the components from t.
 	 * the values of t are interpreted as in unitspace (0.0 - 1.0) and are clamped to these limit.
 	 * 
 	 * @param t A tuple that contains the rgba values in unitspace.
@@ -72,7 +88,35 @@ public class LDRColor4Pool
 	 * 
 	 * @since 1.0.0.0
 	 */
-	public static LDRColor4 get(Tup4fR t) { assert(t != null); return pool.get().set(t); }
+	public static LDRColor4 get(Tup4fR t)
+	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(pool == null) throw new ArgumentNullException("pool");
+		}
+		
+		return pool.get().set(t);
+	}
+	
+	/**
+	 * Returns an instance of LDRColor4 from the pool and adopts the components from t.
+	 * the values of t are interpreted as in colorspace (0 - 255) and are clamped to these limit.
+	 * 
+	 * @param t A tuple that contains the rgba values in colorspace.
+	 * 
+	 * @return A stored instance.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public static LDRColor4 get(Tup4iR t)
+	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(pool == null) throw new ArgumentNullException("pool");
+		}
+		
+		return pool.get().set(t);
+	}
 	
 	/**
 	 * Returns an instance of LDRColor4 from the pool and sets its components to scalar.
@@ -86,7 +130,10 @@ public class LDRColor4Pool
 	 * 
 	 * @since 1.0.0.0
 	 */
-	public static LDRColor4 get(float scalar) { return pool.get().set(scalar); }
+	public static LDRColor4 get(float scalar)
+	{
+		return pool.get().set(scalar);
+	}
 	
 	/**
 	 * Returns an instance of LDRColor4 from the pool and sets its components to scalar.
@@ -100,7 +147,10 @@ public class LDRColor4Pool
 	 * 
 	 * @since 1.0.0.0
 	 */
-	public static LDRColor4 get(int scalar) { return pool.get().set(scalar); }
+	public static LDRColor4 get(int scalar)
+	{
+		return pool.get().set(scalar);
+	}
 	
 	/**
 	 * Returns an instance of LDRColor4 from the pool and sets its components to r, g, b and a.
@@ -115,7 +165,10 @@ public class LDRColor4Pool
 	 * 
 	 * @since 1.0.0.0
 	 */
-	public static LDRColor4 get(float r, float g, float b, float a) { return pool.get().set(r, g, b, a); }
+	public static LDRColor4 get(float r, float g, float b, float a)
+	{
+		return pool.get().set(r, g, b, a);
+	}
 	
 	/**
 	 * Returns an instance of LDRColor4 from the pool and sets its components to r, g, b and a.
@@ -130,7 +183,28 @@ public class LDRColor4Pool
 	 * 
 	 * @since 1.0.0.0
 	 */
-	public static LDRColor4 get(int r, int g, int b, int a) { return pool.get().set(r, g, b, a); }
+	public static LDRColor4 get(int r, int g, int b, int a)
+	{
+		return pool.get().set(r, g, b, a);
+	}
+	
+	/**
+	 * Ensures a certain amount of instances to be present in the pool at any time.
+	 * A call to this method will eventually cause the pool to create instances to fullfill the ensured amount.
+	 * 
+	 * @param count The amount of instances present in the pool at any time.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public static void ensure(int count)
+	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(count < 0) throw new IllegalArgumentException();
+		}
+		
+		pool.ensure(count);
+	}
 	
 	/**
 	 * Stores LDRColor4 instances in the pool for late reuse.
@@ -139,5 +213,38 @@ public class LDRColor4Pool
 	 * 
 	 * @since 1.0.0.0
 	 */
-	public static void store(LDRColor4... instances) { pool.store(instances); }
+	public static void store(LDRColor4... instances)
+	{
+		pool.store(instances);
+	}
+	
+	/** 
+	 * Sets the internal used pool. This can be used for replacing the default pool
+	 * by a more efficient pool or a debuggable pool.
+	 * 
+	 * @param pool The new pool instance the specialized {@link LDRColor4Pool} should use internal.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public static void setInternalPool(Pool<LDRColor4> pool)
+	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(pool == null) throw new ArgumentNullException("pool");
+		}
+		
+		LDRColor4Pool.pool = pool;
+	}
+	
+	/**
+	 * Returns the internal used pool instance.
+	 * 
+	 * @return The internal used pool instance of the specialized pool {@link LDRColor4Pool}.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public static Pool<LDRColor4> getInternalPool()
+	{
+		return pool;
+	}
 }
