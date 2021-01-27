@@ -24,7 +24,6 @@ package org.barghos.core.api.tuple2;
 
 /**
  * This interface grants read and write access to any 2-dimensional string tuple.
- * It should be prefered by design before direct usage of the original instance in method parameters.
  * 
  * @author picatrix1899
  * 
@@ -33,17 +32,17 @@ package org.barghos.core.api.tuple2;
 public interface Tup2strRW extends Tup2strR, Tup2strW
 {
 	@Override
-	Tup2strW setX(String x);
+	Tup2strRW setX(String x);
 	
 	@Override
-	Tup2strW setY(String y);
+	Tup2strRW setY(String y);
 	
 	@Override
-	Tup2strW set(Tup2strR t);
+	Tup2strRW set(Tup2strR t);
 	
 	@Override
-	Tup2strW set(String value);
+	Tup2strRW set(String value);
 	
 	@Override
-	Tup2strW set(String x, String y);
+	Tup2strRW set(String x, String y);
 }

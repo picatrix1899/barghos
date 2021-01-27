@@ -24,7 +24,6 @@ package org.barghos.core.api.tuple2;
 
 /**
  * This interface grants read and write access to any 2-dimensional short tuple.
- * It should be prefered by design before direct usage of the original instance in method parameters.
  * 
  * @author picatrix1899
  * 
@@ -33,17 +32,17 @@ package org.barghos.core.api.tuple2;
 public interface Tup2sRW extends Tup2sR, Tup2sW
 {
 	@Override
-	Tup2sW setX(short x);
+	Tup2sRW setX(short x);
 	
 	@Override
-	Tup2sW setY(short y);
+	Tup2sRW setY(short y);
 	
 	@Override
-	Tup2sW set(Tup2sR t);
+	Tup2sRW set(Tup2sR t);
 	
 	@Override
-	Tup2sW set(short value);
+	Tup2sRW set(short value);
 	
 	@Override
-	Tup2sW set(short x, short y);
+	Tup2sRW set(short x, short y);
 }

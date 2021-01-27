@@ -26,7 +26,6 @@ import java.math.BigDecimal;
 
 /**
  * This interface grants read and write access to any 2-dimensional big decimal tuple.
- * It should be prefered by design before direct usage of the original instance in method parameters.
  * 
  * @author picatrix1899
  * 

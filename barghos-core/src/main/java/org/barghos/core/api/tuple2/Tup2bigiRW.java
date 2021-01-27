@@ -26,7 +26,6 @@ import java.math.BigInteger;
 
 /**
  * This interface grants read and write access to any 2-dimensional big integer tuple.
- * It should be prefered by design before direct usage of the original instance in method parameters.
  * 
  * @author picatrix1899
  * 
