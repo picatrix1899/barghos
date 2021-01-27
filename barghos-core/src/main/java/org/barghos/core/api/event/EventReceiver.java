@@ -23,10 +23,25 @@
 package org.barghos.core.api.event;
 
 /**
+ * The event receiver represents an event handler.
+ * After registering it to an event delegate it will receive an event
+ * whenever an event is raised over that event delegate.
+ * 
  * @author picatrix1899
- *
+ * 
+ * @since 1.0.0.0
  */
 public interface EventReceiver<T extends Event>
 {
-	boolean raise(T original, T current);
+	/**
+	 * This function is called whenever an event is raised over an event delegate this receiver is registered for.
+	 * 
+	 * @param original A clone of the original raised event instance.
+	 * @param current The event instance that is passed from one to another event receiver.
+	 * This instance is returned by the {@link EventDelegate#raise(Event)} function.
+	 * It allows for altering data.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	void raise(T original, T current);
 }

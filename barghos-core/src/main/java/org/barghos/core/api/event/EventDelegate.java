@@ -23,13 +23,45 @@
 package org.barghos.core.api.event;
 
 /**
+ * The event delegate is used to register and store the event receivers for a single specific event.
+ * It is also used to raise an event and therefore send it to the registered event receivers.
+ * 
  * @author picatrix1899
- *
+ * 
+ * @since 1.0.0.0
  */
 public interface EventDelegate<T extends Event>
 {
+	/**
+	 * Raises the given event and therefore send it to the registered event receivers.
+	 * 
+	 * @param event The event to be send to the event receivers.
+	 * 
+	 * @return The event for retriving altered data from the event receivers.
+	 * 
+	 * @since 1.0.0.0
+	 */
 	T raise(T event);
 	
+	/**
+	 * Registers an event receiver for this event.
+	 * 
+	 * @param receiver The event receiver to register.
+	 * 
+	 * @return True if the event receiver was registered successfully.
+	 * 
+	 * @since 1.0.0.0
+	 */
 	boolean registerReceiver(EventReceiver<T> receiver);
+	
+	/**
+	 * Unregisters an event receiver that was registered for this event.
+	 * 
+	 * @param receiver The original instance of the event receiver to unregister.
+	 * 
+	 * @return True if the event receiver was unregistered successfully.
+	 * 
+	 * @since 1.0.0.0
+	 */
 	boolean unregisterReceiver(EventReceiver<T> receiver);
 }

@@ -22,24 +22,15 @@
 
 package org.barghos.core.api.event;
 
-import org.barghos.core.event.DefaultEventDelegate;
-import org.barghos.core.event.DefaultPriorizedEventDelegate;
-
 /**
+ * This class represents the base for an event within the event system.
+ * 
  * @author picatrix1899
- *
+ * 
+ * @since 1.0.0.0
  */
 public abstract class Event
 {
+	@Override
 	public abstract Event clone();
-	
-	public static <T extends Event> EventDelegate<T> createDelegate()
-	{
-		return new DefaultEventDelegate<T>();
-	}
-	
-	public static <T extends Event> EventDelegate<T> createPriorizedDelegate()
-	{
-		return new DefaultPriorizedEventDelegate<T>();
-	}
 }

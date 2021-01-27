@@ -23,18 +23,38 @@
 package org.barghos.core.api.event;
 
 /**
+ * This class represents the base for a cancellable event within the event system.
+ * 
  * @author picatrix1899
- *
+ * 
+ * @since 1.0.0.0
  */
 public abstract class CancellableEvent extends Event
 {
+	/**
+	 * This member stores the cancellation status of this event.
+	 */
 	private boolean isCancelled;
 	
+	/**
+	 * Sets the cancelleation status of this event.
+	 * 
+	 * @param isCancelled Is the marked as cancelled.
+	 * 
+	 * @since 1.0.0.0
+	 */
 	public void setCancelled(boolean isCancelled)
 	{
 		this.isCancelled = isCancelled;
 	}
 	
+	/**
+	 * Returns the cancellation status of this event.
+	 * 
+	 * @return True if the event is marked as cancelled.
+	 * 
+	 * @since 1.0.0.0
+	 */
 	public boolean isCancelled()
 	{
 		return this.isCancelled;
