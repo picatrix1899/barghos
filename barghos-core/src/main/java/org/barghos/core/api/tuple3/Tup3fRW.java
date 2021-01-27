@@ -24,7 +24,6 @@ package org.barghos.core.api.tuple3;
 
 /**
  * This interface grants read and write access to any 3-dimensional float tuple.
- * It should be prefered by design before direct usage of the original instance in method parameters.
  * 
  * @author picatrix1899
  * 
@@ -37,7 +36,7 @@ public interface Tup3fRW extends Tup3fR, Tup3fW
 	
 	@Override
 	Tup3fRW setY(float y);
-
+	
 	@Override
 	Tup3fRW setZ(float z);
 	

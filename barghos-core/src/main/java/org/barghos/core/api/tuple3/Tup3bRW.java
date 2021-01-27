@@ -24,7 +24,6 @@ package org.barghos.core.api.tuple3;
 
 /**
  * This interface grants read and write access to any 3-dimensional byte tuple.
- * It should be prefered by design before direct usage of the original instance in method parameters.
  * 
  * @author picatrix1899
  * 
@@ -46,7 +45,7 @@ public interface Tup3bRW extends Tup3bR, Tup3bW
 	
 	@Override
 	Tup3bRW set(byte value);
-
+	
 	@Override
 	Tup3bRW set(byte x, byte y, byte z);
 }

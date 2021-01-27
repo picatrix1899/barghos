@@ -24,7 +24,6 @@ package org.barghos.core.api.tuple3;
 
 /**
  * This interface grants read and write access to any 3-dimensional double tuple.
- * It should be prefered by design before direct usage of the original instance in method parameters.
  * 
  * @author picatrix1899
  * 
@@ -34,10 +33,10 @@ public interface Tup3dRW extends Tup3dR, Tup3dW
 {
 	@Override
 	Tup3dRW setX(double x);
-
+	
 	@Override
 	Tup3dRW setY(double y);
-
+	
 	@Override
 	Tup3dRW setZ(double z);
 	
