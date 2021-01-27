@@ -23,11 +23,11 @@
 package org.barghos.core.api.color;
 
 /**
- * This interface allows for selective reading of only LDR-RGBA-Colors.
+ * This interface grants selective readonly access for low dynamic range (LDR/Standard) RGBA-Colors only.
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public interface LDRColor4R extends LDRColor3R, Color4R
 {

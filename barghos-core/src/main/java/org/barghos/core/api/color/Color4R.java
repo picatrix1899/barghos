@@ -25,11 +25,11 @@ package org.barghos.core.api.color;
 import org.barghos.core.api.tuple4.Tup4fR;
 
 /**
- * This interface grants access to all reading methods of an RGBA-Color.
+ * This interface grants readonly access to any RGBA-Color.
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public interface Color4R extends Color3R, Tup4fR
 {
@@ -37,6 +37,8 @@ public interface Color4R extends Color3R, Tup4fR
 	 * Returns the alpha component in unitspace (0 - 1).
 	 * 
 	 * @return The alpha component.
+	 * 
+	 * @since 1.0.0.0
 	 */
 	float getUnityA();
 	
@@ -44,6 +46,8 @@ public interface Color4R extends Color3R, Tup4fR
 	 * Returns the alpha component in colorrange (0 - 255).
 	 * 
 	 * @return The alpha component.
+	 * 
+	 * @since 1.0.0.0
 	 */
 	int getA();
 	
@@ -51,6 +55,8 @@ public interface Color4R extends Color3R, Tup4fR
 	 * Returns the red component in unitspace (0 - 1).
 	 * 
 	 * @return The red component.
+	 * 
+	 * @since 1.0.0.0
 	 */
 	default float getX() { return getUnityR(); }
 	
@@ -58,6 +64,8 @@ public interface Color4R extends Color3R, Tup4fR
 	 * Returns the green component in unitspace (0 - 1).
 	 * 
 	 * @return The green component.
+	 * 
+	 * @since 1.0.0.0
 	 */
 	default float getY() { return getUnityG(); }
 	
@@ -65,6 +73,8 @@ public interface Color4R extends Color3R, Tup4fR
 	 * Returns the blue component in unitspace (0 - 1).
 	 * 
 	 * @return The blue component.
+	 * 
+	 * @since 1.0.0.0
 	 */
 	default float getZ() { return getUnityB(); }
 	
@@ -72,6 +82,8 @@ public interface Color4R extends Color3R, Tup4fR
 	 * Returns the alpha component in unitspace (0 - 1).
 	 * 
 	 * @return The alpha component.
+	 * 
+	 * @since 1.0.0.0
 	 */
 	default float getW() { return getUnityA(); }
 }

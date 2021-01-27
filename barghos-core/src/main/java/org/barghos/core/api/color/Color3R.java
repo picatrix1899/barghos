@@ -25,11 +25,11 @@ package org.barghos.core.api.color;
 import org.barghos.core.api.tuple3.Tup3fR;
 
 /**
- * This interface grants access to all reading methods of an RGB-Color.
+ * This interface grants readonly access to any RGB-Color.
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public interface Color3R extends Tup3fR
 {
@@ -37,6 +37,8 @@ public interface Color3R extends Tup3fR
 	 * Returns the red component in unitspace (0 - 1).
 	 * 
 	 * @return The red component.
+	 * 
+	 * @since 1.0.0.0
 	 */
 	float getUnityR();
 	
@@ -44,6 +46,8 @@ public interface Color3R extends Tup3fR
 	 * Returns the green component in unitspace (0 - 1).
 	 * 
 	 * @return The green component.
+	 * 
+	 * @since 1.0.0.0
 	 */
 	float getUnityG();
 	
@@ -51,13 +55,17 @@ public interface Color3R extends Tup3fR
 	 * Returns the blue component in unitspace (0 - 1).
 	 * 
 	 * @return The blue component.
+	 * 
+	 * @since 1.0.0.0
 	 */
 	float getUnityB();
-
+	
 	/**
 	 * Returns the red component in colorrange (0 - 255).
 	 * 
 	 * @return The red component.
+	 * 
+	 * @since 1.0.0.0
 	 */
 	int getR();
 	
@@ -65,6 +73,8 @@ public interface Color3R extends Tup3fR
 	 * Returns the green component in colorrange (0 - 255).
 	 * 
 	 * @return The green component.
+	 * 
+	 * @since 1.0.0.0
 	 */
 	int getG();
 	
@@ -72,6 +82,8 @@ public interface Color3R extends Tup3fR
 	 * Returns the blue component in colorrange (0 - 255).
 	 * 
 	 * @return The blue component.
+	 * 
+	 * @since 1.0.0.0
 	 */
 	int getB();
 	
@@ -79,6 +91,8 @@ public interface Color3R extends Tup3fR
 	 * Returns the red component in unitspace (0 - 1).
 	 * 
 	 * @return The red component.
+	 * 
+	 * @since 1.0.0.0
 	 */
 	default float getX() { return getUnityR(); }
 	
@@ -86,6 +100,8 @@ public interface Color3R extends Tup3fR
 	 * Returns the green component in unitspace (0 - 1).
 	 * 
 	 * @return The green component.
+	 * 
+	 * @since 1.0.0.0
 	 */
 	default float getY() { return getUnityG(); }
 	
@@ -93,6 +109,8 @@ public interface Color3R extends Tup3fR
 	 * Returns the blue component in unitspace (0 - 1).
 	 * 
 	 * @return The blue component.
+	 * 
+	 * @since 1.0.0.0
 	 */
 	default float getZ() { return getUnityB(); }
 }

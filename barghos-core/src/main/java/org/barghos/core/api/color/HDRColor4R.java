@@ -23,11 +23,11 @@
 package org.barghos.core.api.color;
 
 /**
- * This interface allows for selective reading of only HDR-RGBA-Colors.
+ * This interface grants selective readonly access for high dynamic range (HDR) RGBA-Colors only.
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public interface HDRColor4R extends HDRColor3R, Color4R
 {
