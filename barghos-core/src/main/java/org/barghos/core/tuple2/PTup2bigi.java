@@ -26,7 +26,7 @@ import java.math.BigInteger;
 
 import org.barghos.core.Barghos;
 import org.barghos.core.api.tuple2.Tup2bigiR;
-import org.barghos.core.exception.ArgumentNullException;
+import org.barghos.core.util.ArgumentNullException;
 
 /**
  * Represents a persistent 2-dimensional big integer tuple.

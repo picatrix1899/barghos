@@ -24,7 +24,7 @@ package org.barghos.core.tuple4;
 
 import org.barghos.core.Barghos;
 import org.barghos.core.api.tuple4.Tup4objR;
-import org.barghos.core.exception.ArgumentNullException;
+import org.barghos.core.util.ArgumentNullException;
 
 /**
  * Represents a persistent 4-dimensional object tuple.

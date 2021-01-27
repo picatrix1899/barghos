@@ -33,7 +33,6 @@ import org.barghos.core.api.tuple3.Tup3dR;
 import org.barghos.core.api.tuple3.Tup3fR;
 import org.barghos.core.api.tuple4.Tup4dR;
 import org.barghos.core.api.tuple4.Tup4fR;
-import org.barghos.core.exception.ArgumentNullException;
 
 
 /**

@@ -29,7 +29,7 @@ import java.util.Deque;
 
 import org.barghos.core.Barghos;
 import org.barghos.core.api.pool.Pool;
-import org.barghos.core.exception.ArgumentNullException;
+import org.barghos.core.util.ArgumentNullException;
 
 /**
  * This instance pool utilizes a {@link ArrayDeque} as internal list.

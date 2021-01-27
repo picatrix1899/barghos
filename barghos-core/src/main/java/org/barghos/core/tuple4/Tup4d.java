@@ -27,7 +27,7 @@ import java.io.Serializable;
 import org.barghos.core.Barghos;
 import org.barghos.core.api.tuple4.Tup4dR;
 import org.barghos.core.api.tuple4.Tup4dW;
-import org.barghos.core.exception.ArgumentNullException;
+import org.barghos.core.util.ArgumentNullException;
 
 /**
  * This class represents a 4-dimensional double tuple.

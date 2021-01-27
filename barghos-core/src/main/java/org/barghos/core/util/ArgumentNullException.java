@@ -20,7 +20,7 @@
  * SOFTWARE.
  ******************************************************************************/
 
-package org.barghos.core.exception;
+package org.barghos.core.util;
 
 /**
  * This exception indicates that a method has been passed an argument that is null but must not be null.
@@ -74,12 +74,11 @@ public class ArgumentNullException extends IllegalArgumentException
 	public ArgumentNullException(String argument, String message)
 	{
 		super(message);
+		
 		this.argument = argument;
 	}
 	
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public String getMessage()
 	{
 		StringBuilder builder = new StringBuilder();

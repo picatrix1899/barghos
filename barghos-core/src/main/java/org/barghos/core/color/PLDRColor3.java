@@ -25,9 +25,8 @@ package org.barghos.core.color;
 import org.barghos.core.api.color.LDRColor3R;
 import org.barghos.core.api.tuple3.Tup3fR;
 import org.barghos.core.api.tuple3.Tup3iR;
-
+import org.barghos.core.util.ArgumentNullException;
 import org.barghos.core.Barghos;
-import org.barghos.core.exception.ArgumentNullException;
 
 /**
  * This class is a readonly version of a low dynamic range (LDR/Standard) RGB-Color.

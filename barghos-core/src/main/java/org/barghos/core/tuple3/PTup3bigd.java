@@ -26,7 +26,7 @@ import java.math.BigDecimal;
 
 import org.barghos.core.Barghos;
 import org.barghos.core.api.tuple3.Tup3bigdR;
-import org.barghos.core.exception.ArgumentNullException;
+import org.barghos.core.util.ArgumentNullException;
 
 /**
  * Represents a persistent 3-dimensional big decimal tuple.

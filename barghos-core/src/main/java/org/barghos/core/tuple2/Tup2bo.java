@@ -27,7 +27,7 @@ import java.io.Serializable;
 import org.barghos.core.Barghos;
 import org.barghos.core.api.tuple2.Tup2boR;
 import org.barghos.core.api.tuple2.Tup2boRW;
-import org.barghos.core.exception.ArgumentNullException;
+import org.barghos.core.util.ArgumentNullException;
 
 /**
  * This class represents a 2-dimensional boolean tuple.

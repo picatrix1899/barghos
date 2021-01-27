@@ -27,7 +27,7 @@ import java.io.Serializable;
 import org.barghos.core.Barghos;
 import org.barghos.core.api.tuple3.Tup3bR;
 import org.barghos.core.api.tuple3.Tup3bRW;
-import org.barghos.core.exception.ArgumentNullException;
+import org.barghos.core.util.ArgumentNullException;
 
 /**
  * This class represents a 3-dimensional byte tuple.

@@ -27,8 +27,8 @@ import java.math.BigInteger;
 import org.barghos.core.Barghos;
 import org.barghos.core.api.pool.Pool;
 import org.barghos.core.api.tuple2.Tup2bigiR;
-import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.tuple2.Tup2bigi;
+import org.barghos.core.util.ArgumentNullException;
 
 /**
  * This specialized instance pool contains instances of the type {@link Tup2bigi}.

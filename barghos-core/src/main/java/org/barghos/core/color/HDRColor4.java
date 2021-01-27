@@ -25,9 +25,8 @@ package org.barghos.core.color;
 import org.barghos.core.api.color.HDRColor4R;
 import org.barghos.core.api.tuple4.Tup4fR;
 import org.barghos.core.api.tuple4.Tup4iR;
-
+import org.barghos.core.util.ArgumentNullException;
 import org.barghos.core.Barghos;
-import org.barghos.core.exception.ArgumentNullException;
 
 /**
  * This class is a simple implementation of an HDRColor4.

@@ -24,7 +24,7 @@ package org.barghos.core.tuple2;
 
 import org.barghos.core.Barghos;
 import org.barghos.core.api.tuple2.Tup2sR;
-import org.barghos.core.exception.ArgumentNullException;
+import org.barghos.core.util.ArgumentNullException;
 
 /**
  * Represents a persistent 2-dimensional short tuple.

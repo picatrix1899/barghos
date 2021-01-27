@@ -24,7 +24,7 @@ package org.barghos.core.thread;
 
 import java.util.concurrent.ThreadFactory;
 
-import org.barghos.core.exception.ArgumentNullException;
+import org.barghos.core.util.ArgumentNullException;
 
 public class SimpleDaemonThreadFactory implements ThreadFactory
 {

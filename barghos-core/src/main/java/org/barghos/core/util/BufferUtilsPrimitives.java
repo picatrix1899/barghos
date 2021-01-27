@@ -32,7 +32,6 @@ import java.nio.ShortBuffer;
 import java.util.List;
 
 import org.barghos.core.Barghos;
-import org.barghos.core.exception.ArgumentNullException;
 
 /**
  * Provides functions for creating and filling primitve nio buffers more easiely.

@@ -25,8 +25,8 @@ package org.barghos.core.tuple4.pool;
 import org.barghos.core.Barghos;
 import org.barghos.core.api.pool.Pool;
 import org.barghos.core.api.tuple4.Tup4fR;
-import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.tuple4.Tup4f;
+import org.barghos.core.util.ArgumentNullException;
 
 /**
  * This specialized instance pool contains instances of the type {@link Tup4f}.

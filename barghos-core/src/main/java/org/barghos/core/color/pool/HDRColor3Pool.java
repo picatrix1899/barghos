@@ -28,7 +28,7 @@ import org.barghos.core.api.tuple3.Tup3iR;
 
 import org.barghos.core.Barghos;
 import org.barghos.core.color.HDRColor3;
-import org.barghos.core.exception.ArgumentNullException;
+import org.barghos.core.util.ArgumentNullException;
 
 /**
  * This specialized instance pool contains instances of the type {@link HDRColor3}.

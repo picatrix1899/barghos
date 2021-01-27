@@ -27,8 +27,8 @@ import java.math.BigDecimal;
 import org.barghos.core.Barghos;
 import org.barghos.core.api.pool.Pool;
 import org.barghos.core.api.tuple3.Tup3bigdR;
-import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.tuple3.Tup3bigd;
+import org.barghos.core.util.ArgumentNullException;
 
 /**
  * This specialized instance pool contains instances of the type {@link Tup3bigd}.
