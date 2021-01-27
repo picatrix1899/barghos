@@ -26,7 +26,10 @@ import java.math.BigDecimal;
 
 /**
  * This interface grants readonly access to any 2-dimensional big decimal tuples.
- * It should be prefered by design before direct usage of the original instance in method parameters.
+ * 
+ * <p>
+ * It should be prefered by design before direct usage of a type in method parameters,
+ * if the method only reads data from the parameter.
  * 
  * @author picatrix1899
  * 
