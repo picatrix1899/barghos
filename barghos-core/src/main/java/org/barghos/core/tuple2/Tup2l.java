@@ -24,9 +24,10 @@ package org.barghos.core.tuple2;
 
 import java.io.Serializable;
 
-import org.barghos.core.Barghos;
 import org.barghos.core.api.tuple2.Tup2lR;
 import org.barghos.core.api.tuple2.Tup2lRW;
+
+import org.barghos.core.Barghos;
 import org.barghos.core.util.ArgumentNullException;
 
 /**
@@ -44,12 +45,12 @@ public class Tup2l implements Tup2lRW, Serializable
 	 * The class version for serialization.
 	 */
 	private static final long serialVersionUID = 1L;
-
+	
 	/**
 	 * The x component.
 	 */
 	public long x;
-
+	
 	/**
 	 * The y component.
 	 */
@@ -118,7 +119,7 @@ public class Tup2l implements Tup2lRW, Serializable
 	{
 		return this.y;
 	}
-
+	
 	@Override
 	public Tup2l setX(long x)
 	{
@@ -126,7 +127,7 @@ public class Tup2l implements Tup2lRW, Serializable
 		
 		return this;
 	}
-
+	
 	@Override
 	public Tup2l setY(long y)
 	{
@@ -157,7 +158,7 @@ public class Tup2l implements Tup2lRW, Serializable
 	{
 		return setX(x).setY(y);
 	}
-
+	
 	@Override
 	public int hashCode()
 	{
@@ -167,7 +168,7 @@ public class Tup2l implements Tup2lRW, Serializable
 		result = prime * result + (int) (getY() ^ (getY() >>> 32));
 		return result;
 	}
-
+	
 	@Override
 	public boolean equals(Object obj)
 	{

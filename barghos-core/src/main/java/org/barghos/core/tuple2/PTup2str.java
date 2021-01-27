@@ -22,8 +22,9 @@
 
 package org.barghos.core.tuple2;
 
-import org.barghos.core.Barghos;
 import org.barghos.core.api.tuple2.Tup2strR;
+
+import org.barghos.core.Barghos;
 import org.barghos.core.util.ArgumentNullException;
 
 /**
@@ -84,7 +85,7 @@ public abstract class PTup2str implements Tup2strR
 		
 		return gen(value, value);
 	}
-
+	
 	/**
 	 * Generates a new readonly {@link PTup2str} with the values set to the corresponding parameters.
 	 * 
@@ -114,12 +115,6 @@ public abstract class PTup2str implements Tup2strR
 	}
 	
 	@Override
-	public String toString()
-	{
-		return "ptup2str(x=" + getX() + ", y=" + getY() + ")";
-	}
-
-	@Override
 	public int hashCode()
 	{
 		final int prime = 31;
@@ -128,7 +123,7 @@ public abstract class PTup2str implements Tup2strR
 		result = prime * result + getY().hashCode();
 		return result;
 	}
-
+	
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -141,5 +136,11 @@ public abstract class PTup2str implements Tup2strR
 		if(!getY().equals(other.getY())) return false;
 		
 		return true;
+	}
+	
+	@Override
+	public String toString()
+	{
+		return "ptup2str(x=" + getX() + ", y=" + getY() + ")";
 	}
 }

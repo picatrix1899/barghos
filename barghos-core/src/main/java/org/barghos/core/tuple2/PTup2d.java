@@ -22,8 +22,9 @@
 
 package org.barghos.core.tuple2;
 
-import org.barghos.core.Barghos;
 import org.barghos.core.api.tuple2.Tup2dR;
+
+import org.barghos.core.Barghos;
 import org.barghos.core.util.ArgumentNullException;
 
 /**
@@ -77,7 +78,7 @@ public abstract class PTup2d implements Tup2dR
 	{
 		return gen(value, value);
 	}
-
+	
 	/**
 	 * Generates a new readonly {@link PTup2d} with the values set to the corresponding parameters.
 	 * 
@@ -99,7 +100,7 @@ public abstract class PTup2d implements Tup2dR
 			public double getY() { return y; }
 		};
 	}
-
+	
 	@Override
 	public int hashCode()
 	{
@@ -111,7 +112,7 @@ public abstract class PTup2d implements Tup2dR
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
-
+	
 	@Override
 	public boolean equals(Object obj)
 	{

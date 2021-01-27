@@ -22,9 +22,10 @@
 
 package org.barghos.core.tuple2;
 
-import org.barghos.core.Barghos;
 import org.barghos.core.api.tuple2.Tup2oR;
 import org.barghos.core.api.tuple2.Tup2oRW;
+
+import org.barghos.core.Barghos;
 import org.barghos.core.util.ArgumentNullException;
 
 /**
@@ -43,7 +44,7 @@ public class Tup2o<X,Y> implements Tup2oRW<X,Y>
 	 * This must not be null.
 	 */
 	public X x;
-
+	
 	/**
 	 * The y component. 
 	 * This must not be null.
@@ -106,7 +107,7 @@ public class Tup2o<X,Y> implements Tup2oRW<X,Y>
 	{
 		return this.y;
 	}
-
+	
 	@Override
 	public Tup2o<X,Y> setX(X x)
 	{
@@ -119,7 +120,7 @@ public class Tup2o<X,Y> implements Tup2oRW<X,Y>
 		
 		return this;
 	}
-
+	
 	@Override
 	public Tup2o<X,Y> setY(Y y)
 	{
@@ -157,7 +158,7 @@ public class Tup2o<X,Y> implements Tup2oRW<X,Y>
 		
 		return setX(x).setY(y);
 	}
-
+	
 	@Override
 	public int hashCode()
 	{
@@ -167,7 +168,7 @@ public class Tup2o<X,Y> implements Tup2oRW<X,Y>
 		result = prime * result + getY().hashCode();
 		return result;
 	}
-
+	
 	@Override
 	public boolean equals(Object obj)
 	{

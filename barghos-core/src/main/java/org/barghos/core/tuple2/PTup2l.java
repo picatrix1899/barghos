@@ -22,8 +22,9 @@
 
 package org.barghos.core.tuple2;
 
-import org.barghos.core.Barghos;
 import org.barghos.core.api.tuple2.Tup2lR;
+
+import org.barghos.core.Barghos;
 import org.barghos.core.util.ArgumentNullException;
 
 /**
@@ -77,7 +78,7 @@ public abstract class PTup2l implements Tup2lR
 	{
 		return gen(value, value);
 	}
-
+	
 	/**
 	 * Generates a new readonly {@link PTup2l} with the values set to the corresponding parameters.
 	 * 
@@ -109,7 +110,7 @@ public abstract class PTup2l implements Tup2lR
 		result = prime * result + (int) (getY() ^ (getY() >>> 32));
 		return result;
 	}
-
+	
 	@Override
 	public boolean equals(Object obj)
 	{

@@ -25,9 +25,10 @@ package org.barghos.core.tuple2;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-import org.barghos.core.Barghos;
 import org.barghos.core.api.tuple2.Tup2bigdR;
 import org.barghos.core.api.tuple2.Tup2bigdRW;
+
+import org.barghos.core.Barghos;
 import org.barghos.core.util.ArgumentNullException;
 
 /**
@@ -45,13 +46,13 @@ public class Tup2bigd implements Tup2bigdRW, Serializable
 	 * The class version for serialization.
 	 */
 	private static final long serialVersionUID = 1L;
-
+	
 	/**
 	 * The x component.
 	 * This must not be null.
 	 */
 	public BigDecimal x;
-
+	
 	/**
 	 * The y component.
 	 * This must not be null.
@@ -134,7 +135,7 @@ public class Tup2bigd implements Tup2bigdRW, Serializable
 	{
 		return this.y;
 	}
-
+	
 	@Override
 	public Tup2bigd setX(BigDecimal x)
 	{
@@ -147,7 +148,7 @@ public class Tup2bigd implements Tup2bigdRW, Serializable
 		
 		return this;
 	}
-
+	
 	@Override
 	public Tup2bigd setY(BigDecimal y)
 	{
@@ -196,7 +197,7 @@ public class Tup2bigd implements Tup2bigdRW, Serializable
 		
 		return setX(x).setY(y);
 	}
-
+	
 	@Override
 	public int hashCode()
 	{
@@ -206,7 +207,7 @@ public class Tup2bigd implements Tup2bigdRW, Serializable
 		result = prime * result + getY().hashCode();
 		return result;
 	}
-
+	
 	@Override
 	public boolean equals(Object obj)
 	{

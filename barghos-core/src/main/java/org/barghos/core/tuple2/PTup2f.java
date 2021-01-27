@@ -22,8 +22,9 @@
 
 package org.barghos.core.tuple2;
 
-import org.barghos.core.Barghos;
 import org.barghos.core.api.tuple2.Tup2fR;
+
+import org.barghos.core.Barghos;
 import org.barghos.core.util.ArgumentNullException;
 
 /**
@@ -77,7 +78,7 @@ public abstract class PTup2f implements Tup2fR
 	{
 		return gen(value, value);
 	}
-
+	
 	/**
 	 * Generates a new readonly {@link PTup2f} with the values set to the corresponding parameters.
 	 * 
@@ -100,9 +101,6 @@ public abstract class PTup2f implements Tup2fR
 		};
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
 	public int hashCode()
 	{
@@ -113,9 +111,6 @@ public abstract class PTup2f implements Tup2fR
 		return result;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -129,9 +124,6 @@ public abstract class PTup2f implements Tup2fR
 		return true;
 	}
 	
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
 	public String toString()
 	{
