@@ -27,8 +27,9 @@ import java.lang.reflect.Constructor;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-import org.barghos.core.Barghos;
 import org.barghos.core.api.pool.Pool;
+
+import org.barghos.core.Barghos;
 import org.barghos.core.util.ArgumentNullException;
 
 /**
@@ -88,7 +89,7 @@ public class DequePool<T> implements Pool<T>
 	public DequePool(Class<? extends T> clazz, int size)
 	{
 		this(clazz);
-	
+		
 		ensure(size);
 	}
 	
@@ -119,6 +120,7 @@ public class DequePool<T> implements Pool<T>
 				if(t[i] != null)
 				{
 					this.store.push(t[i]);
+					
 					count++;
 				}
 			}
@@ -126,7 +128,7 @@ public class DequePool<T> implements Pool<T>
 		
 		return count;
 	}
-
+	
 	/**
 	 * {@inheritDoc}
 	 */
@@ -143,7 +145,7 @@ public class DequePool<T> implements Pool<T>
 			throw new Error(e);
 		}
 	}
-
+	
 	/**
 	 * {@inheritDoc}
 	 */
@@ -159,26 +161,26 @@ public class DequePool<T> implements Pool<T>
 		if(count <= size) return;
 		
 		int neededInstances = count - size;
-
+		
 		for(int i = 0; i < neededInstances; i++)
 		{
 			this.store.push(getNew());
 		}
 	}
-
+	
 	/**
 	 * {@inheritDoc}
 	 */
 	public void reduce()
 	{
 		int amountToReduce = this.store.size() - this.ensuredSize;
-	
+		
 		if(amountToReduce <= 0) return;
 		
 		for(int i = 0; i < amountToReduce; i++)
 			this.store.pop();
 	}
-
+	
 	/**
 	 * {@inheritDoc}
 	 */

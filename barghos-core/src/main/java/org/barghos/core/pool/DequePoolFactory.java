@@ -67,5 +67,4 @@ public class DequePoolFactory implements PoolFactory
 	{
 		return new DequePool<T>(clazz);
 	}
-	
 }
