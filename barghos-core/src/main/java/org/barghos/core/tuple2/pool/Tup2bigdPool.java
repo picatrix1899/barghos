@@ -24,9 +24,10 @@ package org.barghos.core.tuple2.pool;
 
 import java.math.BigDecimal;
 
-import org.barghos.core.Barghos;
 import org.barghos.core.api.pool.Pool;
 import org.barghos.core.api.tuple2.Tup2bigdR;
+
+import org.barghos.core.Barghos;
 import org.barghos.core.tuple2.Tup2bigd;
 import org.barghos.core.util.ArgumentNullException;
 
@@ -47,6 +48,8 @@ public final class Tup2bigdPool
 	/**
 	 * This class contains only static methods and therefore it should not be possible to create
 	 * instances from it.
+	 * 
+	 * @since 1.0.0.0
 	 */
 	private Tup2bigdPool() { }
 	
