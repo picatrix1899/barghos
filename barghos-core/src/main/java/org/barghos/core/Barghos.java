@@ -23,6 +23,7 @@
 package org.barghos.core;
 
 import org.barghos.core.api.pool.PoolFactory;
+
 import org.barghos.core.pool.DequePoolFactory;
 
 /**
@@ -30,7 +31,7 @@ import org.barghos.core.pool.DequePoolFactory;
  * 
  * @author picatrix1899
  *
- * @since 1.0
+ * @since 1.0.0.0
  */
 public final class Barghos
 {
@@ -41,7 +42,7 @@ public final class Barghos
 	 * <p>
 	 * This build flag should be used with great care, as it could lead to performance loss.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static final boolean BUILD_FLAG__PARAMETER_CHECKS = false;
 	
@@ -50,13 +51,15 @@ public final class Barghos
 	 * This property contains the instance of the pool factory used to create all neccessary instance pools in the
 	 * barghos-core library.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static PoolFactory INSTANCE_POOL_FACTORY = DequePoolFactory.get();
 	
 	/**
 	 * This class contains only static methods and therefore it should not be possible to create
 	 * instances from it.
+	 * 
+	 * @since 1.0.0.0
 	 */
 	private Barghos() { }
 }
