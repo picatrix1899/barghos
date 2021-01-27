@@ -1,26 +1,24 @@
-/*
-MIT License
-
-Copyright (c) 2020 picatrix1899
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-*/
+/*******************************************************************************
+ * Copyright (C) 2021 picatrix1899 (Florian Zilkenat)
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ ******************************************************************************/
 
 package org.barghos.core.color;
 
@@ -32,7 +30,7 @@ import org.barghos.core.api.tuple3.Tup3fR;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public class HDRColor3 implements HDRColor3R
 {
@@ -56,45 +54,62 @@ public class HDRColor3 implements HDRColor3R
 	 * This is the default constructor.
 	 * It is commonly used by a pool.
 	 * It sets all components to 0.0 what is equal to black color.
+	 * 
+	 * @since 1.0.0.0
 	 */
 	public HDRColor3() { }
 	
 	/**
 	 * This constructor sets the components to t.
 	 * The values of t are interpreted as in unitspace (0.0 - 1.0) but can exceed these limits
+	 * 
 	 * @param t A tuple that the components are set to.
+	 * 
+	 * @since 1.0.0.0
 	 */
 	public HDRColor3(Tup3fR t) { assert(t != null); set(t); }
 	
 	/**
 	 * This constructor sets the components to scalar.
 	 * The scalar is interpreted as in unitspace (0.0 - 1.0) but can exceed these limits.
+	 * 
 	 * @param scalar A value that the components are set to.
+	 * 
+	 * @since 1.0.0.0
 	 */
 	public HDRColor3(float scalar) { set(scalar); }
 	
 	/**
 	 * This constructor sets the components to scalar.
 	 * The scalar is interpreted as in colorrange (0 - 255) but can exceed these limits.
+	 * 
 	 * @param scalar A value that the components are set to.
+	 * 
+	 * @since 1.0.0.0
 	 */
 	public HDRColor3(int scalar) { set(scalar); }
 	
 	/**
 	 * This constructor sets the components to r, g and b.
 	 * r, g and b are interpreted as in unitspace (0.0 - 1.0) but can exceed these limits.
+	 * 
 	 * @param r The red component in unitspace.
 	 * @param g The green component in unitspace.
 	 * @param b The blue component in unitspace.
+	 * 
+	 * @since 1.0.0.0
 	 */
 	public HDRColor3(float r, float g, float b) { set(r, g, b); }
 	
 	/**
 	 * This constructor sets the components to r, g and b.
 	 * r, g and b are interpreted as in colorspace (0 - 255) but can exceed these limits.
+	 * 
 	 * @param r The red component in colorspace.
 	 * @param g The green component in colorspace.
 	 * @param b The blue component in colorspace.
+	 * 
+	 * @since 1.0.0.0
 	 */
 	public HDRColor3(int r, int g, int b) { set(r, g, b); }
 	
