@@ -27,11 +27,11 @@ package org.barghos.core.thread;
  *
  * @author picatrix1899, Oracle (documentation for constructors was copied from Thread class)
  *
- * @since 1.0
+ * @since 1.0.0.0
  */
 public class DaemonThread extends Thread
 {
-
+	
 	/**
      * Allocates a new {@code DaemonThread} object. This constructor has the same
      * effect as {@linkplain #DaemonThread(ThreadGroup,Runnable,String) DaemonThread}
@@ -42,9 +42,10 @@ public class DaemonThread extends Thread
     public DaemonThread()
     {
         super();
+        
         setDaemon(true);
     }
-
+    
     /**
      * Allocates a new {@code DaemonThread} object. This constructor has the same
      * effect as {@linkplain #DaemonThread(ThreadGroup,Runnable,String) DaemonThread}
@@ -60,9 +61,10 @@ public class DaemonThread extends Thread
     public DaemonThread(Runnable target)
     {
         super(target);
+        
         setDaemon(true);
     }
-
+    
      /**
      * Allocates a new {@code DaemonThread} object. This constructor has the same
      * effect as {@linkplain #DaemonThread(ThreadGroup,Runnable,String) DaemonThread}
@@ -89,9 +91,10 @@ public class DaemonThread extends Thread
     public DaemonThread(ThreadGroup group, Runnable target)
     {
         super(group, target);
+        
         setDaemon(true);
     }
-
+    
     /**
      * Allocates a new {@code DaemonThread} object. This constructor has the same
      * effect as {@linkplain #DaemonThread(ThreadGroup,Runnable,String) DaemonThread}
@@ -103,9 +106,10 @@ public class DaemonThread extends Thread
     public DaemonThread(String name)
     {
         super(name);
+        
         setDaemon(true);
     }
-
+    
     /**
      * Allocates a new {@code DaemonThread} object. This constructor has the same
      * effect as {@linkplain #DaemonThread(ThreadGroup,Runnable,String) DaemonThread}
@@ -129,9 +133,10 @@ public class DaemonThread extends Thread
     public DaemonThread(ThreadGroup group, String name)
     {
         super(group, name);
+        
         setDaemon(true);
     }
-
+    
     /**
      * Allocates a new {@code DaemonThread} object. This constructor has the same
      * effect as {@linkplain #DaemonThread(ThreadGroup,Runnable,String) DaemonThread}
@@ -147,9 +152,10 @@ public class DaemonThread extends Thread
     public DaemonThread(Runnable target, String name)
     {
     	super(target, name);
+    	
     	setDaemon(true);
     }
-
+    
     /**
      * Allocates a new {@code DaemonThread} object so that it has {@code target}
      * as its run object, has the specified {@code name} as its name,
@@ -192,9 +198,10 @@ public class DaemonThread extends Thread
     public DaemonThread(ThreadGroup group, Runnable target, String name)
     {
         super(group, target, name);
+        
         setDaemon(true);
     }
-
+    
     /**
      * Allocates a new {@code DaemonThread} object so that it has {@code target}
      * as its run object, has the specified {@code name} as its name,
@@ -270,6 +277,7 @@ public class DaemonThread extends Thread
     public DaemonThread(ThreadGroup group, Runnable target, String name, long stackSize)
     {
         super(group, target, name, stackSize);
+        
         setDaemon(true);
     }
 }

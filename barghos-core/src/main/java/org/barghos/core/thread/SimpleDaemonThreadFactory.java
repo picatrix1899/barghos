@@ -26,14 +26,21 @@ import java.util.concurrent.ThreadFactory;
 
 import org.barghos.core.util.ArgumentNullException;
 
+/**
+ * This is a simple implementation of {@link java.util.concurrent.ThreadFactory} for
+ * creating daemon threads.
+ * 
+ * @author picatrix1899
+ * 
+ * @since 1.0.0.0
+ */
 public class SimpleDaemonThreadFactory implements ThreadFactory
 {
-
+	@Override
 	public Thread newThread(Runnable r)
 	{
 		if(r == null) throw new ArgumentNullException("r");
 		
 		return new DaemonThread(r);
 	}
-
 }
