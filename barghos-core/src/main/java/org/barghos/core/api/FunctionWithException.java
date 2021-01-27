@@ -22,7 +22,24 @@
 
 package org.barghos.core.api;
 
+/**
+ * This is a functional interface exactly like {@link java.util.function.Function} with the
+ * {@link java.util.function.Function#apply(Object)} function extended by a <code>throws Exception</code>.
+ *
+ * @param <T> The type of the parameter of the {@link #apply(Object)} function.
+ * @param <R> The return type of the {@link #apply(Object)} function.
+ * 
+ * @author picatrix1899
+ * 
+ * @since 1.0.0.0
+ */
 public interface FunctionWithException<T,R>
 {
+	/**
+	 * This function is exactly like {@link java.util.function.Function#apply(Object)} but it allows to
+	 * throw exceptions.
+	 * 
+	 * @since 1.0.0.0
+	 */
 	R apply(T t) throws Exception;
 }

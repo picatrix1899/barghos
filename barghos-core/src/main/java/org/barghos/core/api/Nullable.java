@@ -34,7 +34,7 @@ import java.lang.annotation.Target;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 @Retention(SOURCE)
 @Target(PARAMETER)

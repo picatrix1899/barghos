@@ -22,7 +22,23 @@
 
 package org.barghos.core.api;
 
+/**
+ * This is a functional inteface exactly like {@link java.util.function.Supplier} with the
+ * {@link java.util.function.Supplier#get()} function extended by a <code>throws Exception</code>.
+ *
+ * @param <R> The return type of the {@link java.util.function.Supplier#get()} function.
+ * 
+ * @author picatrix1899
+ * 
+ * @since 1.0.0.0
+ */
 public interface SupplierWithException<R>
 {
+	/**
+	 * This function is exactly like {@link java.util.function.Supplier#get()} but it allows to
+	 * throw exceptions.
+	 * 
+	 * @since 1.0.0.0
+	 */
 	R get() throws Exception;
 }
