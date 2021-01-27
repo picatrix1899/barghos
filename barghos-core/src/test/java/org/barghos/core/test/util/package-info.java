@@ -21,8 +21,10 @@
  ******************************************************************************/
 
 /**
+ * This package contains the unit tests for the utility classes.
+ * 
  * @author picatrix1899
- *
+ * 
+ * @since 1.0.0.0
  */
-
 package org.barghos.core.test.util;

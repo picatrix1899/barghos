@@ -21,8 +21,10 @@
  ******************************************************************************/
 
 /**
+ * This package contains unit tests for generic instance pools.
+ * 
  * @author picatrix1899
- *
+ * 
+ * @since 1.0.0.0
  */
-
 package org.barghos.core.test.pool;

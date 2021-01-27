@@ -21,7 +21,10 @@
  ******************************************************************************/
 
 /**
+ * This pool contains instance pools for 4-dimensional tuples.
+ * 
  * @author picatrix1899
- *
+ * 
+ * @since 1.0.0.0
  */
 package org.barghos.core.tuple4.pool;

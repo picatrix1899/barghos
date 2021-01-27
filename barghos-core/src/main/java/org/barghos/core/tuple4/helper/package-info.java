@@ -21,7 +21,10 @@
  ******************************************************************************/
 
 /**
+ * This package contains helper classes for 4-dimensional tuples.
+ * 
  * @author picatrix1899
- *
+ * 
+ * @since 1.0.0.0
  */
 package org.barghos.core.tuple4.helper;

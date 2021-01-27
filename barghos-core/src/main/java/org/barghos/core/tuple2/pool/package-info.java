@@ -21,7 +21,7 @@
  ******************************************************************************/
 
 /**
- * This package contains instance pools of multiple variants of 2-dimensional tuples.
+ * This package contains instance pools for 2-dimensional tuples.
  * 
  * @author picatrix1899
  *

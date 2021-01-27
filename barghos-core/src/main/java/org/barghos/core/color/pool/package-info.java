@@ -21,7 +21,7 @@
  ******************************************************************************/
 
 /**
- * This package contains instance pools for the color systems.
+ * This package contains instance pools for color systems.
  * 
  * @author picatrix1899
  * 

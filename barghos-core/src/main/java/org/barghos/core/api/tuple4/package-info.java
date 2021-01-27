@@ -22,7 +22,7 @@
 
 
 /**
- * This package contains the API for multiple variants of 4-dimensional tuples.
+ * This package contains the API for 4-dimensional tuples.
  * 
  * @author picatrix1899
  * 

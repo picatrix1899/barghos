@@ -20,4 +20,12 @@
  * SOFTWARE.
  ******************************************************************************/
 
+/**
+ * This package contains all sorts of utility classes,
+ * that can't be assigned to a certain feature.
+ * 
+ * @author picatrix1899
+ * 
+ * @since 1.0.0.0
+ */
 package org.barghos.core.util;

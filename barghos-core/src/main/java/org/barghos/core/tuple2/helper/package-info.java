@@ -21,8 +21,10 @@
  ******************************************************************************/
 
 /**
+ * This package contains helper classes for 2-dimensional tuples.
+ * 
  * @author picatrix1899
- *
+ * 
+ * @since 1.0.0.0
  */
-
 package org.barghos.core.tuple2.helper;

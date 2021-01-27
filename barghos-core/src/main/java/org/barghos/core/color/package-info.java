@@ -21,7 +21,7 @@
  ******************************************************************************/
 
 /**
- * This package contains the color systems.
+ * This package contains color systems.
  * 
  * @author picatrix1899
  * 

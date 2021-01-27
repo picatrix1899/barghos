@@ -21,7 +21,7 @@
  ******************************************************************************/
 
 /**
- * This package contains the API for multiple variants of 2-dimensional tuples.
+ * This package contains the API for 2-dimensional tuples.
  * 
  * @author picatrix1899
  * 

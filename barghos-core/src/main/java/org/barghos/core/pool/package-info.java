@@ -24,5 +24,7 @@
  * This package contains variants of generic instance pools.
  * 
  * @author picatrix1899
+ * 
+ * @since 1.0.0.0
  */
 package org.barghos.core.pool;

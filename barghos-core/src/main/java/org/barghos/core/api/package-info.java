@@ -20,9 +20,8 @@
  * SOFTWARE.
  ******************************************************************************/
 
-
 /**
- * This package contains the api for barghos-core.
+ * This package contains the API for barghos-core.
  * 
  * @author picatrix1899
  * 

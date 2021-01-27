@@ -21,10 +21,11 @@
  ******************************************************************************/
 
 /**
- * This package contains multiple variants of 3-dimensional tuples and corresponding utilities
- * like instance pools, api-layers, readonly versions and helpers.
+ * This package contains 3-dimensional tuples and corresponding utilities
+ * like instance pools, readonly versions and helpers.
  * 
  * @author picatrix1899
+ * 
+ * @since 1.0.0.0
  */
 package org.barghos.core.tuple3;
-

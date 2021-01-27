@@ -21,8 +21,10 @@
  ******************************************************************************/
 
 /**
+ * This package contains classes for easier working with Threads and classes for parallelism.
+ * 
  * @author picatrix1899
- *
+ * 
+ * @since 1.0.0.0
  */
-
 package org.barghos.core.thread;

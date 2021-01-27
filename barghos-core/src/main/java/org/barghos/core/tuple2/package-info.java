@@ -21,9 +21,11 @@
  ******************************************************************************/
 
 /**
- * This package contains multiple variants of 2-dimensional tuples and corresponding utilities
- * like instance pools, api-layers, readonly versions and helpers.
+ * This package contains 2-dimensional tuples and corresponding utilities
+ * like instance pools, readonly versions and helpers.
  * 
  * @author picatrix1899
+ * 
+ * @since 1.0.0.0
  */
 package org.barghos.core.tuple2;
