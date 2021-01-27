@@ -22,7 +22,6 @@
 
 package org.barghos.core.api.pool;
 
-
 /**
  * This interface represents a pool factory.
  * A pool factory is typically used to create all neccessary instances of instance pools.
