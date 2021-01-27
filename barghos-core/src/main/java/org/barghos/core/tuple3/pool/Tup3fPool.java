@@ -22,9 +22,10 @@
 
 package org.barghos.core.tuple3.pool;
 
-import org.barghos.core.Barghos;
 import org.barghos.core.api.pool.Pool;
 import org.barghos.core.api.tuple3.Tup3fR;
+
+import org.barghos.core.Barghos;
 import org.barghos.core.tuple3.Tup3f;
 import org.barghos.core.util.ArgumentNullException;
 

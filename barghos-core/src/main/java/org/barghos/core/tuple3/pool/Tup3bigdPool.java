@@ -24,9 +24,10 @@ package org.barghos.core.tuple3.pool;
 
 import java.math.BigDecimal;
 
-import org.barghos.core.Barghos;
 import org.barghos.core.api.pool.Pool;
 import org.barghos.core.api.tuple3.Tup3bigdR;
+
+import org.barghos.core.Barghos;
 import org.barghos.core.tuple3.Tup3bigd;
 import org.barghos.core.util.ArgumentNullException;
 

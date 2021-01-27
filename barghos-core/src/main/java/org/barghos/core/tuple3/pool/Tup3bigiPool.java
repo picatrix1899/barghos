@@ -24,9 +24,10 @@ package org.barghos.core.tuple3.pool;
 
 import java.math.BigInteger;
 
-import org.barghos.core.Barghos;
 import org.barghos.core.api.pool.Pool;
 import org.barghos.core.api.tuple3.Tup3bigiR;
+
+import org.barghos.core.Barghos;
 import org.barghos.core.tuple3.Tup3bigi;
 import org.barghos.core.util.ArgumentNullException;
 

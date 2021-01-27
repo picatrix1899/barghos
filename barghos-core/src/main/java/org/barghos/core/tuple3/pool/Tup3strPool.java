@@ -22,9 +22,11 @@
 
 package org.barghos.core.tuple3.pool;
 
-import org.barghos.core.Barghos;
 import org.barghos.core.api.pool.Pool;
 import org.barghos.core.api.tuple3.Tup3strR;
+
+import org.barghos.core.Barghos;
+
 import org.barghos.core.tuple3.Tup3str;
 import org.barghos.core.util.ArgumentNullException;
 
@@ -168,7 +170,7 @@ public final class Tup3strPool
 		pool.store(instances);
 	}
 	
-	/** 
+	/**
 	 * Sets the internal used pool. This can be used for replacing the default pool
 	 * by a more efficient pool or a debuggable pool.
 	 * 
