@@ -24,7 +24,6 @@ package org.barghos.core.api.tuple4;
 
 /**
  * This interface grants writeonly access to any 4-dimensional integer tuples.
- * It should be prefered by design before direct usage of the original instance in method parameters.
  * 
  * @author picatrix1899
  * 

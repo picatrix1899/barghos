@@ -26,7 +26,10 @@ import java.math.BigDecimal;
 
 /**
  * This interface grants writeonly access to any 4-dimensional big decimal tuples.
- * It should be prefered by design before direct usage of the original instance in method parameters.
+ * 
+ * <p>
+ * It should be prefered by design before direct usage of a type in method parameters,
+ * if the method only writes data to the parameter.
  * 
  * @author picatrix1899
  * 
