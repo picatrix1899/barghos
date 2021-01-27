@@ -22,9 +22,10 @@
 
 package org.barghos.core.tuple4.pool;
 
-import org.barghos.core.Barghos;
 import org.barghos.core.api.pool.Pool;
 import org.barghos.core.api.tuple4.Tup4iR;
+
+import org.barghos.core.Barghos;
 import org.barghos.core.tuple4.Tup4i;
 import org.barghos.core.util.ArgumentNullException;
 
@@ -33,7 +34,7 @@ import org.barghos.core.util.ArgumentNullException;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public final class Tup4iPool
 {
@@ -45,6 +46,8 @@ public final class Tup4iPool
 	/**
 	 * This class contains only static methods and therefore it should not be possible to create
 	 * instances from it.
+	 * 
+	 * @since 1.0.0.0
 	 */
 	private Tup4iPool() { }
 	
@@ -55,7 +58,7 @@ public final class Tup4iPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup4i getPlain()
 	{
@@ -67,7 +70,7 @@ public final class Tup4iPool
 	 * 
 	 * @return A stored instance with the components set to 0.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup4i get()
 	{
@@ -81,7 +84,7 @@ public final class Tup4iPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup4i get(Tup4iR t)
 	{
@@ -100,7 +103,7 @@ public final class Tup4iPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup4i get(int value)
 	{
@@ -117,7 +120,7 @@ public final class Tup4iPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup4i get(int x, int y, int z, int w)
 	{
@@ -130,7 +133,7 @@ public final class Tup4iPool
 	 * 
 	 * @param count The amount of instances present in the pool at any time.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static void ensure(int count)
 	{
@@ -147,7 +150,7 @@ public final class Tup4iPool
 	 * 
 	 * @param elements The instances to store.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static void store(Tup4i... instances)
 	{
@@ -160,7 +163,7 @@ public final class Tup4iPool
 	 * 
 	 * @param pool The new pool instance the specialized {@link Tup4iPool} should use internal.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static void setInternalPool(Pool<Tup4i> pool)
 	{
@@ -177,7 +180,7 @@ public final class Tup4iPool
 	 * 
 	 * @return The internal used pool instance of the specialized pool {@link Tup4iPool}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Pool<Tup4i> getInternalPool()
 	{

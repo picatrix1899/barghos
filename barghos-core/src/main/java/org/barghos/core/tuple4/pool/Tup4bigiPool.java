@@ -24,9 +24,10 @@ package org.barghos.core.tuple4.pool;
 
 import java.math.BigInteger;
 
-import org.barghos.core.Barghos;
 import org.barghos.core.api.pool.Pool;
 import org.barghos.core.api.tuple4.Tup4bigiR;
+
+import org.barghos.core.Barghos;
 import org.barghos.core.tuple4.Tup4bigi;
 import org.barghos.core.util.ArgumentNullException;
 
@@ -35,7 +36,7 @@ import org.barghos.core.util.ArgumentNullException;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public final class Tup4bigiPool
 {
@@ -47,6 +48,8 @@ public final class Tup4bigiPool
 	/**
 	 * This class contains only static methods and therefore it should not be possible to create
 	 * instances from it.
+	 * 
+	 * @since 1.0.0.0
 	 */
 	private Tup4bigiPool() { }
 	
@@ -57,7 +60,7 @@ public final class Tup4bigiPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup4bigi getPlain()
 	{
@@ -69,7 +72,7 @@ public final class Tup4bigiPool
 	 * 
 	 * @return A stored instance with the components set to {@link BigInteger.ZERO}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup4bigi get()
 	{
@@ -83,7 +86,7 @@ public final class Tup4bigiPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup4bigi get(Tup4bigiR t)
 	{
@@ -111,7 +114,7 @@ public final class Tup4bigiPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup4bigi get(BigInteger value)
 	{
@@ -133,7 +136,7 @@ public final class Tup4bigiPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup4bigi get(BigInteger x, BigInteger y, BigInteger z, BigInteger w)
 	{
@@ -154,7 +157,7 @@ public final class Tup4bigiPool
 	 * 
 	 * @param count The amount of instances present in the pool at any time.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static void ensure(int count)
 	{
@@ -171,7 +174,7 @@ public final class Tup4bigiPool
 	 * 
 	 * @param elements The instances to store.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static void store(Tup4bigi... instances)
 	{
@@ -184,7 +187,7 @@ public final class Tup4bigiPool
 	 * 
 	 * @param pool The new pool instance the specialized {@link Tup4bigiPool} should use internal.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static void setInternalPool(Pool<Tup4bigi> pool)
 	{
@@ -201,7 +204,7 @@ public final class Tup4bigiPool
 	 * 
 	 * @return The internal used pool instance of the specialized pool {@link Tup4bigiPool}.
 	 * 
-	 * @since 1.0
+	 *@since 1.0.0.0
 	 */
 	public static Pool<Tup4bigi> getInternalPool()
 	{

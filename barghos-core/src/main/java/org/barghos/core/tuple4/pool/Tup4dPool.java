@@ -22,9 +22,10 @@
 
 package org.barghos.core.tuple4.pool;
 
-import org.barghos.core.Barghos;
 import org.barghos.core.api.pool.Pool;
 import org.barghos.core.api.tuple4.Tup4dR;
+
+import org.barghos.core.Barghos;
 import org.barghos.core.tuple4.Tup4d;
 import org.barghos.core.util.ArgumentNullException;
 
@@ -33,7 +34,7 @@ import org.barghos.core.util.ArgumentNullException;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public final class Tup4dPool
 {
@@ -45,6 +46,8 @@ public final class Tup4dPool
 	/**
 	 * This class contains only static methods and therefore it should not be possible to create
 	 * instances from it.
+	 * 
+	 * @since 1.0.0.0
 	 */
 	private Tup4dPool() { }
 	
@@ -55,7 +58,7 @@ public final class Tup4dPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup4d getPlain()
 	{
@@ -67,7 +70,7 @@ public final class Tup4dPool
 	 * 
 	 * @return A stored instance with the components set to 0.0d.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup4d get()
 	{
@@ -81,7 +84,7 @@ public final class Tup4dPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup4d get(Tup4dR t)
 	{
@@ -100,7 +103,7 @@ public final class Tup4dPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup4d get(double value)
 	{
@@ -117,7 +120,7 @@ public final class Tup4dPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup4d get(double x, double y, double z, double w)
 	{
@@ -130,7 +133,7 @@ public final class Tup4dPool
 	 * 
 	 * @param count The amount of instances present in the pool at any time.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static void ensure(int count)
 	{
@@ -147,7 +150,7 @@ public final class Tup4dPool
 	 * 
 	 * @param elements The instances to store.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static void store(Tup4d... instances)
 	{
@@ -160,7 +163,7 @@ public final class Tup4dPool
 	 * 
 	 * @param pool The new pool instance the specialized {@link Tup4dPool} should use internal.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static void setInternalPool(Pool<Tup4d> pool)
 	{
@@ -177,7 +180,7 @@ public final class Tup4dPool
 	 * 
 	 * @return The internal used pool instance of the specialized pool {@link Tup4dPool}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Pool<Tup4d> getInternalPool()
 	{

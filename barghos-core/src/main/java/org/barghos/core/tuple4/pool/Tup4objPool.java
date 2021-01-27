@@ -22,9 +22,10 @@
 
 package org.barghos.core.tuple4.pool;
 
-import org.barghos.core.Barghos;
 import org.barghos.core.api.pool.Pool;
 import org.barghos.core.api.tuple4.Tup4objR;
+
+import org.barghos.core.Barghos;
 import org.barghos.core.tuple4.Tup4obj;
 import org.barghos.core.util.ArgumentNullException;
 
@@ -33,7 +34,7 @@ import org.barghos.core.util.ArgumentNullException;
  * 
  * @author picatrix1899
  * 
- * @since 1.0
+ * @since 1.0.0.0
  */
 public final class Tup4objPool
 {
@@ -45,6 +46,8 @@ public final class Tup4objPool
 	/**
 	 * This class contains only static methods and therefore it should not be possible to create
 	 * instances from it.
+	 * 
+	 * @since 1.0.0.0
 	 */
 	private Tup4objPool() { }
 	
@@ -55,7 +58,7 @@ public final class Tup4objPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup4obj getPlain()
 	{
@@ -67,7 +70,7 @@ public final class Tup4objPool
 	 * 
 	 * @return A stored instance with the components set to <c>new Object()</c>.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup4obj get()
 	{
@@ -81,7 +84,7 @@ public final class Tup4objPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup4obj get(Tup4objR t)
 	{
@@ -104,7 +107,7 @@ public final class Tup4objPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup4obj get(Object value)
 	{
@@ -126,7 +129,7 @@ public final class Tup4objPool
 	 * 
 	 * @return A stored instance.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Tup4obj get(Object x, Object y, Object z, Object w)
 	{
@@ -147,7 +150,7 @@ public final class Tup4objPool
 	 * 
 	 * @param count The amount of instances present in the pool at any time.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static void ensure(int count)
 	{
@@ -164,7 +167,7 @@ public final class Tup4objPool
 	 * 
 	 * @param elements The instances to store.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static void store(Tup4obj... instances)
 	{
@@ -177,7 +180,7 @@ public final class Tup4objPool
 	 * 
 	 * @param pool The new pool instance the specialized {@link Tup4objPool} should use internal.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static void setInternalPool(Pool<Tup4obj> pool)
 	{
@@ -194,7 +197,7 @@ public final class Tup4objPool
 	 * 
 	 * @return The internal used pool instance of the specialized pool {@link Tup4objPool}.
 	 * 
-	 * @since 1.0
+	 * @since 1.0.0.0
 	 */
 	public static Pool<Tup4obj> getInternalPool()
 	{
