@@ -30,23 +30,32 @@ import org.barghos.core.api.event.EventDelegate;
 import org.barghos.core.api.event.EventReceiver;
 
 /**
+ * This is the default event delegate type.
+ * 
  * @author picatrix1899
- *
+ * 
+ * @since 1.0.0.0
  */
 public class DefaultEventDelegate<T extends Event> implements EventDelegate<T>
 {
+	/**
+	 * This member contains all registered event receivers for this delegate.
+	 */
 	private Set<EventReceiver<T>> receivers = new HashSet<>();
 	
+	@Override
 	public boolean registerReceiver(EventReceiver<T> receiver)
 	{
 		return receivers.add(receiver);
 	}
 
+	@Override
 	public boolean unregisterReceiver(EventReceiver<T> receiver)
 	{
 		return receivers.remove(receiver);
 	}
 	
+	@Override
 	@SuppressWarnings("unchecked")
 	public T raise(T event)
 	{
