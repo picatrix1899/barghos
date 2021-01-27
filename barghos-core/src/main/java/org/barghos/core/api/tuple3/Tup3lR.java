@@ -24,7 +24,10 @@ package org.barghos.core.api.tuple3;
 
 /**
  * This interface grants readonly access to any 3-dimensional long tuples.
- * It should be prefered by design before direct usage of the original instance in method parameters.
+ * 
+ * <p>
+ * It should be prefered by design before direct usage of a type in method parameters,
+ * if the method only reads data from the parameter.
  * 
  * @author picatrix1899
  * 
