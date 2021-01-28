@@ -21,7 +21,7 @@
  ******************************************************************************/
 
 /**
- * This package contains unit tests for generic instance pools.
+ * This package contains component tests for generic instance pools.
  * 
  * @author picatrix1899
  * 
