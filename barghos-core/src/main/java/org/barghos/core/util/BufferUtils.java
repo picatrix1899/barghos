@@ -26,7 +26,6 @@ import java.nio.DoubleBuffer;
 import java.nio.FloatBuffer;
 import java.util.List;
 
-import org.barghos.core.Barghos;
 import org.barghos.core.api.tuple2.Tup2dR;
 import org.barghos.core.api.tuple2.Tup2fR;
 import org.barghos.core.api.tuple3.Tup3dR;
@@ -34,6 +33,7 @@ import org.barghos.core.api.tuple3.Tup3fR;
 import org.barghos.core.api.tuple4.Tup4dR;
 import org.barghos.core.api.tuple4.Tup4fR;
 
+import org.barghos.core.Barghos;
 
 /**
  * Provides functions for creating and filling different buffers more easiely.
@@ -63,9 +63,9 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 		}
 		
 		int length = v.length;
-
+		
 		FloatBuffer buffer = createFloatBuffer(length * 2);
-
+		
 		for(int i = 0; i < length; i++)
 		{
 			Tup2fR current = v[i];
@@ -123,9 +123,9 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 		}
 		
 		int length = v.size();
-
+		
 		FloatBuffer buffer = createFloatBuffer(length * 2);
-
+		
 		for(int i = 0; i < length; i++)
 		{
 			Tup2fR current = v.get(i);
@@ -183,7 +183,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 		}
 		
 		int length = v.length;
-
+		
 		DoubleBuffer buffer = createDoubleBuffer(length * 2);
 		
 		for(int i = 0; i < length; i++)
@@ -192,7 +192,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 			buffer.put(current.getX());
 			buffer.put(current.getY());
 		}
-
+		
 		return buffer;
 	}
 	
@@ -221,7 +221,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 			buffer.put(current.getX());
 			buffer.put(current.getY());
 		}
-
+		
 		return buffer;
 	}
 	
@@ -243,16 +243,16 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 		}
 		
 		int length = v.size();
-
+		
 		DoubleBuffer buffer = createDoubleBuffer(length * 2);
-
+		
 		for(int i = 0; i < length; i++)
 		{
 			Tup2dR current = v.get(i);
 			buffer.put(current.getX());
 			buffer.put(current.getY());
 		}
-
+		
 		return buffer;
 	}
 	
@@ -280,7 +280,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 			buffer.put(current.getX());
 			buffer.put(current.getY());
 		}
-
+		
 		return buffer;
 	}
 	
@@ -305,7 +305,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 		int length = v.length;
 		
 		FloatBuffer buffer = createFloatBuffer(length * 3);
-
+		
 		for(int i = 0; i < length; i++)
 		{
 			Tup3fR current = v[i];
@@ -313,7 +313,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 			buffer.put(current.getY());
 			buffer.put(current.getZ());
 		}
-
+		
 		return buffer;
 	}
 	
@@ -343,7 +343,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 			buffer.put(current.getY());
 			buffer.put(current.getZ());
 		}
-
+		
 		return buffer;
 	}
 	
@@ -367,7 +367,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 		int length = v.size();
 		
 		FloatBuffer buffer = createFloatBuffer(length * 3);
-
+		
 		for(int i = 0; i < length; i++)
 		{
 			Tup3fR current = v.get(i);
@@ -375,7 +375,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 			buffer.put(current.getY());
 			buffer.put(current.getZ());
 		}
-
+		
 		return buffer;
 	}
 	
@@ -404,7 +404,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 			buffer.put(current.getY());
 			buffer.put(current.getZ());
 		}
-
+		
 		return buffer;
 	}
 	
@@ -429,7 +429,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 		int length = v.length;
 		
 		DoubleBuffer buffer = createDoubleBuffer(length * 3);
-
+		
 		for(int i = 0; i < length; i++)
 		{
 			Tup3dR current = v[i];
@@ -437,7 +437,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 			buffer.put(current.getY());
 			buffer.put(current.getZ());
 		}
-
+		
 		return buffer;
 	}
 	
@@ -467,7 +467,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 			buffer.put(current.getY());
 			buffer.put(current.getZ());
 		}
-
+		
 		return buffer;
 	}
 	
@@ -491,7 +491,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 		int length = v.size();
 		
 		DoubleBuffer buffer = createDoubleBuffer(length * 3);
-
+		
 		for(int i = 0; i < length; i++)
 		{
 			Tup3dR current = v.get(i);
@@ -499,7 +499,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 			buffer.put(current.getY());
 			buffer.put(current.getZ());
 		}
-
+		
 		return buffer;
 	}
 	
@@ -528,7 +528,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 			buffer.put(current.getY());
 			buffer.put(current.getZ());
 		}
-
+		
 		return buffer;
 	}
 	
@@ -553,7 +553,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 		int length = v.length;
 		
 		FloatBuffer buffer = createFloatBuffer(length * 4);
-
+		
 		for(int i = 0; i < length; i++)
 		{
 			Tup4fR current = v[i];
@@ -562,7 +562,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 			buffer.put(current.getZ());
 			buffer.put(current.getW());
 		}
-
+		
 		return buffer;
 	}
 	
@@ -593,10 +593,9 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 			buffer.put(current.getZ());
 			buffer.put(current.getW());
 		}
-
+		
 		return buffer;
 	}
-	
 	
 	/**
 	 * Creates a Float-Buffer from the given tuples.
@@ -627,7 +626,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 			buffer.put(current.getZ());
 			buffer.put(current.getW());
 		}
-
+		
 		return buffer;
 	}
 	
@@ -657,7 +656,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 			buffer.put(current.getZ());
 			buffer.put(current.getW());
 		}
-
+		
 		return buffer;
 	}
 	
@@ -680,7 +679,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 		}
 		
 		int length = v.length;
-
+		
 		DoubleBuffer buffer = createDoubleBuffer(length * 4);
 		
 		for(int i = 0; i < length; i++)
@@ -694,7 +693,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 		
 		return buffer;
 	}
-
+	
 	/**
 	 * Copies the given tuples to the DoubleBuffer.
 	 * They are safed tuplewise componentwise (t1.x, t1.y, t1.z t1.w,, t2.x, t2.y, t2.z, t2.w, ...).
@@ -744,9 +743,9 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 		}
 		
 		int length = v.size();
-
+		
 		DoubleBuffer buffer = createDoubleBuffer(length * 4);
-
+		
 		for(int i = 0; i < length; i++)
 		{
 			Tup4dR current = v.get(i);
@@ -1465,7 +1464,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 			for(int i = 0; i < tuples.length; i++)
 				if(tuples[i] == null) throw new RuntimeException();
 		}
-
+		
 		for(int i = 0; i < tuples.length; i++)
 		{
 			Tup3fR t = tuples[i];

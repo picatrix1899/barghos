@@ -131,7 +131,7 @@ abstract class BufferUtilsPrimitives
 		return createByteBuffer(size << 3).asDoubleBuffer();
 	}
 	
-		/**
+	/**
 	 * Creates a Byte-Buffer from the given elements.
 	 * 
 	 * @param v The elements that should be saved in the buffer.
@@ -265,7 +265,7 @@ abstract class BufferUtilsPrimitives
 		int length = v.size();
 		
 		ShortBuffer buffer = createShortBuffer(length);
-
+		
 		for(int i = 0; i < length; i++)
 			buffer.put(v.get(i));
 		
@@ -347,7 +347,7 @@ abstract class BufferUtilsPrimitives
 		int length = v.size();
 		
 		IntBuffer buffer = createIntBuffer(length);
-
+		
 		for(int i = 0; i < length; i++)
 			buffer.put(v.get(i));
 		
@@ -511,7 +511,7 @@ abstract class BufferUtilsPrimitives
 		int length = v.size();
 		
 		FloatBuffer buffer = createFloatBuffer(length);
-
+		
 		for(int i = 0; i < length; i++)
 			buffer.put(v.get(i));
 		
@@ -593,7 +593,7 @@ abstract class BufferUtilsPrimitives
 		int length = v.size();
 		
 		DoubleBuffer buffer = createDoubleBuffer(length);
-
+		
 		for(int i = 0; i < length; i++)
 			buffer.put(v.get(i));
 		
@@ -623,7 +623,7 @@ abstract class BufferUtilsPrimitives
 		return buffer;
 	}
 	
-		/**
+	/**
 	 * Creates a Byte-Buffer from the given elements and flips it so it can be read.
 	 * 
 	 * @param v The elements that should be saved in the buffer.
@@ -806,7 +806,7 @@ abstract class BufferUtilsPrimitives
 		buffer.flip();
 		
 		return buffer;
-	}	
+	}
 	
 	/**
 	 * Copies the given elements to the IntBuffer and flips it so it can be read.
@@ -873,7 +873,7 @@ abstract class BufferUtilsPrimitives
 		buffer.flip();
 		
 		return buffer;
-	}	
+	}
 	
 	/**
 	 * Creates a Long-Buffer from the given elements and flips it so it can be read.
@@ -1056,7 +1056,7 @@ abstract class BufferUtilsPrimitives
 	{
 		DoubleBuffer buffer = copyToDoubleBuffer(v);
 		buffer.flip();
-
+		
 		return buffer;
 	}
 	
@@ -1078,7 +1078,7 @@ abstract class BufferUtilsPrimitives
 		
 		copyToDoubleBuffer(buffer, v);
 		buffer.flip();
-
+		
 		return buffer;
 	}
 	
@@ -1100,7 +1100,7 @@ abstract class BufferUtilsPrimitives
 		
 		DoubleBuffer buffer = copyToDoubleBuffer(v);
 		buffer.flip();
-
+		
 		return buffer;
 	}
 	
@@ -1123,7 +1123,7 @@ abstract class BufferUtilsPrimitives
 		
 		copyToDoubleBuffer(buffer, v);
 		buffer.flip();
-
+		
 		return buffer;
 	}
 }
