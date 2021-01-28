@@ -46,7 +46,6 @@ public final class Barghos
 	 */
 	public static final boolean BUILD_FLAG__PARAMETER_CHECKS = false;
 	
-	
 	/**
 	 * This property contains the instance of the pool factory used to create all neccessary instance pools in the
 	 * barghos-core library.
