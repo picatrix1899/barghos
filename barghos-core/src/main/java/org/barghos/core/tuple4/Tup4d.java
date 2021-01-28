@@ -24,9 +24,10 @@ package org.barghos.core.tuple4;
 
 import java.io.Serializable;
 
-import org.barghos.core.Barghos;
 import org.barghos.core.api.tuple4.Tup4dR;
-import org.barghos.core.api.tuple4.Tup4dW;
+import org.barghos.core.api.tuple4.Tup4dRW;
+
+import org.barghos.core.Barghos;
 import org.barghos.core.util.ArgumentNullException;
 
 /**
@@ -38,7 +39,7 @@ import org.barghos.core.util.ArgumentNullException;
  * 
  * @since 1.0.0.0
  */
-public class Tup4d implements Tup4dR, Tup4dW, Serializable
+public class Tup4d implements Tup4dRW, Serializable
 {
 	/**
 	 * The class version for serialization.
@@ -49,7 +50,7 @@ public class Tup4d implements Tup4dR, Tup4dW, Serializable
 	 * The x component.
 	 */
 	public double x;
-
+	
 	/**
 	 * The y component.
 	 */
@@ -130,7 +131,7 @@ public class Tup4d implements Tup4dR, Tup4dW, Serializable
 	{
 		return this.y;
 	}
-
+	
 	@Override
 	public double getZ()
 	{
@@ -150,7 +151,7 @@ public class Tup4d implements Tup4dR, Tup4dW, Serializable
 		
 		return this;
 	}
-
+	
 	@Override
 	public Tup4d setY(double y)
 	{
@@ -197,7 +198,7 @@ public class Tup4d implements Tup4dR, Tup4dW, Serializable
 	{
 		return setX(x).setY(y).setZ(z).setW(w);
 	}
-
+	
 	@Override
 	public int hashCode()
 	{
@@ -213,7 +214,7 @@ public class Tup4d implements Tup4dR, Tup4dW, Serializable
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
-
+	
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -228,7 +229,7 @@ public class Tup4d implements Tup4dR, Tup4dW, Serializable
 		if(Double.doubleToLongBits(getW()) != Double.doubleToLongBits(other.getW())) return false;
 		return true;
 	}
-
+	
 	@Override
 	public Tup4d clone()
 	{

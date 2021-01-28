@@ -24,9 +24,10 @@ package org.barghos.core.tuple4;
 
 import java.io.Serializable;
 
-import org.barghos.core.Barghos;
 import org.barghos.core.api.tuple4.Tup4sR;
-import org.barghos.core.api.tuple4.Tup4sW;
+import org.barghos.core.api.tuple4.Tup4sRW;
+
+import org.barghos.core.Barghos;
 import org.barghos.core.util.ArgumentNullException;
 
 /**
@@ -38,7 +39,7 @@ import org.barghos.core.util.ArgumentNullException;
  * 
  * @since 1.0.0.0
  */
-public class Tup4s implements Tup4sR, Tup4sW, Serializable
+public class Tup4s implements Tup4sRW, Serializable
 {
 	/**
 	 * The class version for serialization.
@@ -49,7 +50,7 @@ public class Tup4s implements Tup4sR, Tup4sW, Serializable
 	 * The x component.
 	 */
 	public short x;
-
+	
 	/**
 	 * The y component.
 	 */
@@ -130,7 +131,7 @@ public class Tup4s implements Tup4sR, Tup4sW, Serializable
 	{
 		return this.y;
 	}
-
+	
 	@Override
 	public short getZ()
 	{
@@ -197,7 +198,7 @@ public class Tup4s implements Tup4sR, Tup4sW, Serializable
 	{
 		return setX(x).setY(y).setZ(z).setW(w);
 	}
-
+	
 	@Override
 	public int hashCode()
 	{
@@ -209,7 +210,7 @@ public class Tup4s implements Tup4sR, Tup4sW, Serializable
 		result = prime * result + getW();
 		return result;
 	}
-
+	
 	@Override
 	public boolean equals(Object obj)
 	{

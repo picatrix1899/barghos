@@ -22,9 +22,10 @@
 
 package org.barghos.core.tuple4;
 
-import org.barghos.core.Barghos;
 import org.barghos.core.api.tuple4.Tup4oR;
-import org.barghos.core.api.tuple4.Tup4oW;
+import org.barghos.core.api.tuple4.Tup4oRW;
+
+import org.barghos.core.Barghos;
 import org.barghos.core.util.ArgumentNullException;
 
 /**
@@ -36,14 +37,14 @@ import org.barghos.core.util.ArgumentNullException;
  * 
  * @since 1.0.0.0
  */
-public class Tup4o<X,Y,Z,W> implements Tup4oR<X,Y,Z,W>, Tup4oW<X,Y,Z,W>
+public class Tup4o<X,Y,Z,W> implements Tup4oRW<X,Y,Z,W>
 {
 	/**
 	 * The x component.
 	 * This must not be null.
 	 */
 	public X x;
-
+	
 	/**
 	 * The y component.
 	 * This must not be null.
@@ -123,7 +124,7 @@ public class Tup4o<X,Y,Z,W> implements Tup4oR<X,Y,Z,W>, Tup4oW<X,Y,Z,W>
 	{
 		return this.y;
 	}
-
+	
 	@Override
 	public Z getZ()
 	{
@@ -148,7 +149,7 @@ public class Tup4o<X,Y,Z,W> implements Tup4oR<X,Y,Z,W>, Tup4oW<X,Y,Z,W>
 		
 		return this;
 	}
-
+	
 	@Override
 	public Tup4o<X,Y,Z,W> setY(Y y)
 	{
@@ -215,7 +216,7 @@ public class Tup4o<X,Y,Z,W> implements Tup4oR<X,Y,Z,W>, Tup4oW<X,Y,Z,W>
 		
 		return setX(x).setY(y).setZ(z).setW(w);
 	}
-
+	
 	@Override
 	public int hashCode()
 	{
@@ -227,7 +228,7 @@ public class Tup4o<X,Y,Z,W> implements Tup4oR<X,Y,Z,W>, Tup4oW<X,Y,Z,W>
 		result = prime * result + getW().hashCode();
 		return result;
 	}
-
+	
 	@Override
 	public boolean equals(Object obj)
 	{

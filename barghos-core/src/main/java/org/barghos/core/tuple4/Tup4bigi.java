@@ -25,9 +25,10 @@ package org.barghos.core.tuple4;
 import java.io.Serializable;
 import java.math.BigInteger;
 
-import org.barghos.core.Barghos;
 import org.barghos.core.api.tuple4.Tup4bigiR;
-import org.barghos.core.api.tuple4.Tup4bigiW;
+import org.barghos.core.api.tuple4.Tup4bigiRW;
+
+import org.barghos.core.Barghos;
 import org.barghos.core.util.ArgumentNullException;
 
 /**
@@ -39,7 +40,7 @@ import org.barghos.core.util.ArgumentNullException;
  * 
  * @since 1.0.0.0
  */
-public class Tup4bigi implements Tup4bigiR, Tup4bigiW, Serializable
+public class Tup4bigi implements Tup4bigiRW, Serializable
 {
 	/**
 	 * The class version for serialization.
@@ -51,7 +52,7 @@ public class Tup4bigi implements Tup4bigiR, Tup4bigiW, Serializable
 	 * This must not be null.
 	 */
 	public BigInteger x;
-
+	
 	/**
 	 * The y component.
 	 * This must not be null.
@@ -152,7 +153,7 @@ public class Tup4bigi implements Tup4bigiR, Tup4bigiW, Serializable
 	{
 		return this.y;
 	}
-
+	
 	@Override
 	public BigInteger getZ()
 	{
@@ -177,7 +178,7 @@ public class Tup4bigi implements Tup4bigiR, Tup4bigiW, Serializable
 		
 		return this;
 	}
-
+	
 	@Override
 	public Tup4bigi setY(BigInteger y)
 	{
@@ -243,7 +244,7 @@ public class Tup4bigi implements Tup4bigiR, Tup4bigiW, Serializable
 	{
 		return setX(x).setY(y).setZ(z).setW(w);
 	}
-
+	
 	@Override
 	public int hashCode()
 	{
@@ -255,7 +256,7 @@ public class Tup4bigi implements Tup4bigiR, Tup4bigiW, Serializable
 		result = prime * result + getW().hashCode();
 		return result;
 	}
-
+	
 	@Override
 	public boolean equals(Object obj)
 	{

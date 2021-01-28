@@ -24,8 +24,9 @@ package org.barghos.core.tuple4;
 
 import java.math.BigInteger;
 
-import org.barghos.core.Barghos;
 import org.barghos.core.api.tuple4.Tup4bigiR;
+
+import org.barghos.core.Barghos;
 import org.barghos.core.util.ArgumentNullException;
 
 /**
@@ -88,7 +89,7 @@ public abstract class PTup4bigi implements Tup4bigiR
 		
 		return gen(value, value, value, value);
 	}
-
+	
 	/**
 	 * Generates a new readonly {@link PTup4bigi} with the values set to the corresponding parameters.
 	 * 
@@ -126,7 +127,7 @@ public abstract class PTup4bigi implements Tup4bigiR
 			public BigInteger getW() { return w; }
 		};
 	}
-
+	
 	@Override
 	public int hashCode()
 	{
@@ -138,7 +139,7 @@ public abstract class PTup4bigi implements Tup4bigiR
 		result = prime * result + getW().hashCode();
 		return result;
 	}
-
+	
 	@Override
 	public boolean equals(Object obj)
 	{

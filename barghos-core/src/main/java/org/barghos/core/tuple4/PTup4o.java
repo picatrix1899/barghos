@@ -22,8 +22,9 @@
 
 package org.barghos.core.tuple4;
 
-import org.barghos.core.Barghos;
 import org.barghos.core.api.tuple4.Tup4oR;
+
+import org.barghos.core.Barghos;
 import org.barghos.core.util.ArgumentNullException;
 
 /**
@@ -67,7 +68,7 @@ public abstract class PTup4o<X,Y,Z,W> implements Tup4oR<X,Y,Z,W>
 		
 		return gen(t.getX(), t.getY(), t.getZ(), t.getW());
 	}
-
+	
 	/**
 	 * Generates a new readonly {@link PTup4o} with the values set to the corresponding parameters.
 	 * 
@@ -105,7 +106,7 @@ public abstract class PTup4o<X,Y,Z,W> implements Tup4oR<X,Y,Z,W>
 			public W getW() { return w; }
 		};
 	}
-
+	
 	@Override
 	public int hashCode()
 	{
@@ -117,7 +118,7 @@ public abstract class PTup4o<X,Y,Z,W> implements Tup4oR<X,Y,Z,W>
 		result = prime * result + getW().hashCode();
 		return result;
 	}
-
+	
 	@Override
 	public boolean equals(Object obj)
 	{

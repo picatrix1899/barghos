@@ -77,7 +77,7 @@ public abstract class PTup4i implements Tup4iR
 	{
 		return gen(value, value, value, value);
 	}
-
+	
 	/**
 	 * Generates a new readonly {@link PTup4i} with the values set to the corresponding parameters.
 	 * 
@@ -107,7 +107,7 @@ public abstract class PTup4i implements Tup4iR
 			public int getW() { return w; }
 		};
 	}
-
+	
 	@Override
 	public int hashCode()
 	{
@@ -119,7 +119,7 @@ public abstract class PTup4i implements Tup4iR
 		result = prime * result + getW();
 		return result;
 	}
-
+	
 	@Override
 	public boolean equals(Object obj)
 	{

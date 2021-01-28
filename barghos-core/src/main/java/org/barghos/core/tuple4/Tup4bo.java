@@ -24,9 +24,10 @@ package org.barghos.core.tuple4;
 
 import java.io.Serializable;
 
-import org.barghos.core.Barghos;
 import org.barghos.core.api.tuple4.Tup4boR;
-import org.barghos.core.api.tuple4.Tup4boW;
+import org.barghos.core.api.tuple4.Tup4boRW;
+
+import org.barghos.core.Barghos;
 import org.barghos.core.util.ArgumentNullException;
 
 /**
@@ -38,7 +39,7 @@ import org.barghos.core.util.ArgumentNullException;
  * 
  * @since 1.0.0.0
  */
-public class Tup4bo implements Tup4boR, Tup4boW, Serializable
+public class Tup4bo implements Tup4boRW, Serializable
 {
 	/**
 	 * The class version for serialization.
@@ -49,7 +50,7 @@ public class Tup4bo implements Tup4boR, Tup4boW, Serializable
 	 * The x component.
 	 */
 	public boolean x;
-
+	
 	/**
 	 * The y component.
 	 */
@@ -130,7 +131,7 @@ public class Tup4bo implements Tup4boR, Tup4boW, Serializable
 	{
 		return this.y;
 	}
-
+	
 	@Override
 	public boolean getZ()
 	{
@@ -150,7 +151,7 @@ public class Tup4bo implements Tup4boR, Tup4boW, Serializable
 		
 		return this;
 	}
-
+	
 	@Override
 	public Tup4bo setY(boolean y)
 	{
@@ -197,7 +198,7 @@ public class Tup4bo implements Tup4boR, Tup4boW, Serializable
 	{
 		return setX(x).setY(y).setZ(z).setW(w);
 	}
-
+	
 	@Override
 	public int hashCode()
 	{
@@ -209,7 +210,7 @@ public class Tup4bo implements Tup4boR, Tup4boW, Serializable
 		result = prime * result + (getW() ? 1 : 0);
 		return result;
 	}
-
+	
 	@Override
 	public boolean equals(Object obj)
 	{
