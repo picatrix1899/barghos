@@ -22,8 +22,9 @@
 
 package org.barghos.core.tuple3;
 
-import org.barghos.core.Barghos;
 import org.barghos.core.api.tuple3.Tup3objR;
+
+import org.barghos.core.Barghos;
 import org.barghos.core.util.ArgumentNullException;
 
 /**
@@ -85,7 +86,7 @@ public abstract class PTup3obj implements Tup3objR
 		
 		return gen(value, value, value);
 	}
-
+	
 	/**
 	 * Generates a new readonly {@link PTup3obj} with the values set to the corresponding parameters.
 	 * 
@@ -118,7 +119,7 @@ public abstract class PTup3obj implements Tup3objR
 			public Object getZ() { return z; }
 		};
 	}
-
+	
 	@Override
 	public int hashCode()
 	{
@@ -129,7 +130,7 @@ public abstract class PTup3obj implements Tup3objR
 		result = prime * result + getZ().hashCode();
 		return result;
 	}
-
+	
 	@Override
 	public boolean equals(Object obj)
 	{

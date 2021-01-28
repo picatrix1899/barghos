@@ -22,9 +22,9 @@
 
 package org.barghos.core.tuple3;
 
-import org.barghos.core.Barghos;
 import org.barghos.core.api.tuple3.Tup3dR;
-import org.barghos.core.api.tuple3.Tup3fR;
+
+import org.barghos.core.Barghos;
 import org.barghos.core.util.ArgumentNullException;
 
 /**
@@ -78,7 +78,7 @@ public abstract class PTup3d implements Tup3dR
 	{
 		return gen(value, value, value);
 	}
-
+	
 	/**
 	 * Generates a new readonly {@link PTup3d} with the values set to the corresponding parameters.
 	 * 
@@ -118,7 +118,7 @@ public abstract class PTup3d implements Tup3dR
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
-
+	
 	@Override
 	public boolean equals(Object obj)
 	{

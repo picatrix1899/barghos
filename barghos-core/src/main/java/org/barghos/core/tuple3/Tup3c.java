@@ -24,9 +24,10 @@ package org.barghos.core.tuple3;
 
 import java.io.Serializable;
 
-import org.barghos.core.Barghos;
 import org.barghos.core.api.tuple3.Tup3cR;
 import org.barghos.core.api.tuple3.Tup3cRW;
+
+import org.barghos.core.Barghos;
 import org.barghos.core.util.ArgumentNullException;
 
 /**
@@ -44,12 +45,12 @@ public class Tup3c implements Tup3cRW, Serializable
 	 * The class version for serialization.
 	 */
 	private static final long serialVersionUID = 1L;
-
+	
 	/**
 	 * The x component.
 	 */
 	public char x;
-
+	
 	/**
 	 * The y component.
 	 */
@@ -124,7 +125,7 @@ public class Tup3c implements Tup3cRW, Serializable
 	{
 		return this.y;
 	}
-
+	
 	@Override
 	public char getZ()
 	{
@@ -138,7 +139,7 @@ public class Tup3c implements Tup3cRW, Serializable
 		
 		return this;
 	}
-
+	
 	@Override
 	public Tup3c setY(char y)
 	{
@@ -188,7 +189,7 @@ public class Tup3c implements Tup3cRW, Serializable
 		result = prime * result + getZ();
 		return result;
 	}
-
+	
 	@Override
 	public boolean equals(Object obj)
 	{

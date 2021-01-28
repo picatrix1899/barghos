@@ -22,8 +22,9 @@
 
 package org.barghos.core.tuple3;
 
-import org.barghos.core.Barghos;
 import org.barghos.core.api.tuple3.Tup3fR;
+
+import org.barghos.core.Barghos;
 import org.barghos.core.util.ArgumentNullException;
 
 /**
@@ -77,7 +78,7 @@ public abstract class PTup3f implements Tup3fR
 	{
 		return gen(value, value, value);
 	}
-
+	
 	/**
 	 * Generates a new readonly {@link PTup3f} with the values set to the corresponding parameters.
 	 * 
@@ -114,7 +115,7 @@ public abstract class PTup3f implements Tup3fR
 		result = prime * result + Float.floatToIntBits(getZ());
 		return result;
 	}
-
+	
 	@Override
 	public boolean equals(Object obj)
 	{

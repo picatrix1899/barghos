@@ -22,9 +22,10 @@
 
 package org.barghos.core.tuple3;
 
-import org.barghos.core.Barghos;
 import org.barghos.core.api.tuple3.Tup3oR;
 import org.barghos.core.api.tuple3.Tup3oRW;
+
+import org.barghos.core.Barghos;
 import org.barghos.core.util.ArgumentNullException;
 
 /**
@@ -43,7 +44,7 @@ public class Tup3o<X,Y,Z> implements Tup3oRW<X,Y,Z>
 	 * This must not be null.
 	 */
 	public X x;
-
+	
 	/**
 	 * The y component.
 	 * This must not be null.
@@ -115,7 +116,7 @@ public class Tup3o<X,Y,Z> implements Tup3oRW<X,Y,Z>
 	{
 		return this.y;
 	}
-
+	
 	@Override
 	public Z getZ()
 	{
@@ -134,7 +135,7 @@ public class Tup3o<X,Y,Z> implements Tup3oRW<X,Y,Z>
 		
 		return this;
 	}
-
+	
 	@Override
 	public Tup3o<X,Y,Z> setY(Y y)
 	{
@@ -187,7 +188,7 @@ public class Tup3o<X,Y,Z> implements Tup3oRW<X,Y,Z>
 		
 		return setX(x).setY(y).setZ(z);
 	}
-
+	
 	@Override
 	public int hashCode()
 	{
@@ -198,7 +199,7 @@ public class Tup3o<X,Y,Z> implements Tup3oRW<X,Y,Z>
 		result = prime * result + getZ().hashCode();
 		return result;
 	}
-
+	
 	@Override
 	public boolean equals(Object obj)
 	{

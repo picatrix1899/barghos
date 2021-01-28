@@ -24,8 +24,9 @@ package org.barghos.core.tuple3;
 
 import java.math.BigDecimal;
 
-import org.barghos.core.Barghos;
 import org.barghos.core.api.tuple3.Tup3bigdR;
+
+import org.barghos.core.Barghos;
 import org.barghos.core.util.ArgumentNullException;
 
 /**
@@ -87,7 +88,7 @@ public abstract class PTup3bigd implements Tup3bigdR
 		
 		return gen(value, value, value);
 	}
-
+	
 	/**
 	 * Generates a new readonly {@link PTup3bigd} with the values set to the corresponding parameters.
 	 * 
@@ -120,7 +121,7 @@ public abstract class PTup3bigd implements Tup3bigdR
 			public BigDecimal getZ() { return z; }
 		};
 	}
-
+	
 	@Override
 	public int hashCode()
 	{
@@ -131,7 +132,7 @@ public abstract class PTup3bigd implements Tup3bigdR
 		result = prime * result + getZ().hashCode();
 		return result;
 	}
-
+	
 	@Override
 	public boolean equals(Object obj)
 	{

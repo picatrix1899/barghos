@@ -25,9 +25,10 @@ package org.barghos.core.tuple3;
 import java.io.Serializable;
 import java.math.BigInteger;
 
-import org.barghos.core.Barghos;
 import org.barghos.core.api.tuple3.Tup3bigiR;
 import org.barghos.core.api.tuple3.Tup3bigiRW;
+
+import org.barghos.core.Barghos;
 import org.barghos.core.util.ArgumentNullException;
 
 /**
@@ -45,13 +46,13 @@ public class Tup3bigi implements Tup3bigiRW, Serializable
 	 * The class version for serialization.
 	 */
 	private static final long serialVersionUID = 1L;
-
+	
 	/**
 	 * The x component.
 	 * This must not be null.
 	 */
 	public BigInteger x;
-
+	
 	/**
 	 * The y component.
 	 * This must not be null.
@@ -143,7 +144,7 @@ public class Tup3bigi implements Tup3bigiRW, Serializable
 	{
 		return this.y;
 	}
-
+	
 	@Override
 	public BigInteger getZ()
 	{
@@ -162,7 +163,7 @@ public class Tup3bigi implements Tup3bigiRW, Serializable
 		
 		return this;
 	}
-
+	
 	@Override
 	public Tup3bigi setY(BigInteger y)
 	{
@@ -226,7 +227,7 @@ public class Tup3bigi implements Tup3bigiRW, Serializable
 		
 		return setX(x).setY(y).setZ(z);
 	}
-
+	
 	@Override
 	public int hashCode()
 	{
@@ -237,7 +238,7 @@ public class Tup3bigi implements Tup3bigiRW, Serializable
 		result = prime * result + getZ().hashCode();
 		return result;
 	}
-
+	
 	@Override
 	public boolean equals(Object obj)
 	{
