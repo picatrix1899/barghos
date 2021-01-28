@@ -93,9 +93,7 @@ public class DequePool<T> implements Pool<T>
 		ensure(size);
 	}
 	
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public T get()
 	{
 		if(this.store.size() > 0)
@@ -106,9 +104,7 @@ public class DequePool<T> implements Pool<T>
 		return getNew();
 	}
 	
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public int store(@SuppressWarnings("unchecked") T... t)
 	{
 		int count = 0;
@@ -129,9 +125,7 @@ public class DequePool<T> implements Pool<T>
 		return count;
 	}
 	
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public T getNew()
 	{
 		try
@@ -146,9 +140,7 @@ public class DequePool<T> implements Pool<T>
 		}
 	}
 	
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public void ensure(int count)
 	{
 		if(count < 0) throw new IllegalArgumentException();
@@ -168,9 +160,7 @@ public class DequePool<T> implements Pool<T>
 		}
 	}
 	
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public void reduce()
 	{
 		int amountToReduce = this.store.size() - this.ensuredSize;
@@ -181,25 +171,19 @@ public class DequePool<T> implements Pool<T>
 			this.store.pop();
 	}
 	
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public void clear()
 	{
 		this.store.clear();
 	}
 	
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public int size()
 	{
 		return this.store.size();
 	}
 	
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public String toString()
 	{
 		return "dequepool(class=" + this.clazz.getCanonicalName() + ", size=" + this.store.size() + ", ensuredSize=" + this.ensuredSize + ")";
