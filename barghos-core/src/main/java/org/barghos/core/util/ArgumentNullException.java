@@ -78,6 +78,18 @@ public class ArgumentNullException extends IllegalArgumentException
 		this.argument = argument;
 	}
 	
+	/**
+	 * Returns the name of the argument this exception was created for.
+	 * 
+	 * @return The argument name
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public String getArgument()
+	{
+		return this.argument;
+	}
+	
 	@Override
 	public String getMessage()
 	{
