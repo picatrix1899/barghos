@@ -40,7 +40,7 @@ import org.barghos.core.Barghos;
  * 
  * @since 1.0.0.0
  */
-abstract class BufferUtilsPrimitives
+public abstract class BufferUtilsPrimitives
 {
 	/** 
 	 * Contains the byte order used in creating buffers.
