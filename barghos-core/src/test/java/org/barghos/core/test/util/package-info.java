@@ -21,7 +21,7 @@
  ******************************************************************************/
 
 /**
- * This package contains the unit tests for the utility classes.
+ * This package contains the component tests for the utility classes.
  * 
  * @author picatrix1899
  * 
