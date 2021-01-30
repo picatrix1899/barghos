@@ -1,44 +1,15 @@
-/*******************************************************************************
- * Copyright (C) 2021 picatrix1899 (Florian Zilkenat)
- * 
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- * 
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- ******************************************************************************/
-
 package org.barghos.core.test.util;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.nio.ByteBuffer;
+import org.junit.jupiter.api.Test;
+
 import java.nio.DoubleBuffer;
 import java.nio.FloatBuffer;
-import java.nio.IntBuffer;
-import java.nio.LongBuffer;
-import java.nio.ShortBuffer;
-import java.util.ArrayList;
+import java.util.List;
 
-import org.junit.jupiter.api.Test;
-import org.barghos.core.api.tuple2.Tup2dR;
 import org.barghos.core.api.tuple2.Tup2fR;
-import org.barghos.core.api.tuple3.Tup3dR;
-import org.barghos.core.api.tuple3.Tup3fR;
-import org.barghos.core.api.tuple4.Tup4dR;
-import org.barghos.core.api.tuple4.Tup4fR;
+
 import org.barghos.core.tuple2.Tup2d;
 import org.barghos.core.tuple2.Tup2f;
 import org.barghos.core.tuple3.Tup3d;
@@ -47,996 +18,1361 @@ import org.barghos.core.tuple4.Tup4d;
 import org.barghos.core.tuple4.Tup4f;
 import org.barghos.core.util.BufferUtils;
 
-class BufferUtilsTest
+/**
+ * This class provides componenttests for the class {@link org.barghos.core.util.BufferUtils BufferUtils}.
+ * 
+ * @author picatrix1899
+ * 
+ * @since 1.0.0.0
+ */
+public class BufferUtilsTest
 {
-//
-//	@Test
-//	void createByteBufferTest()
-//	{
-//		ByteBuffer buffer = BufferUtils.createByteBuffer(14);
-//		
-//		assertNotNull(buffer);
-//		assertEquals(14, buffer.capacity());
-//	}
-//
-//	@Test
-//	void createShortBufferTest()
-//	{
-//		ShortBuffer buffer = BufferUtils.createShortBuffer(14);
-//		
-//		assertNotNull(buffer);
-//		assertEquals(14, buffer.capacity());
-//	}
-//	
-//	@Test
-//	void createIntBufferTest()
-//	{
-//		IntBuffer buffer = BufferUtils.createIntBuffer(14);
-//		
-//		assertNotNull(buffer);
-//		assertEquals(14, buffer.capacity());
-//	}
-//	
-//	@Test
-//	void createLongBufferTest()
-//	{
-//		LongBuffer buffer = BufferUtils.createLongBuffer(14);
-//		
-//		assertNotNull(buffer);
-//		assertEquals(14, buffer.capacity());
-//	}
-//	
-//	@Test
-//	void createFloatBufferTest()
-//	{
-//		FloatBuffer buffer = BufferUtils.createFloatBuffer(14);
-//		
-//		assertNotNull(buffer);
-//		assertEquals(14, buffer.capacity());
-//	}
-//	
-//	@Test
-//	void createDoubleBufferTest()
-//	{
-//		DoubleBuffer buffer = BufferUtils.createDoubleBuffer(14);
-//		
-//		assertNotNull(buffer);
-//		assertEquals(14, buffer.capacity());
-//	}
-//	
-//	@Test
-//	void copyToByteBufferArrayTest()
-//	{
-//		ByteBuffer buffer = BufferUtils.copyToByteBuffer((byte)1, (byte)2, (byte)3, (byte)4);
-//		
-//		assertNotNull(buffer);
-//		assertEquals(4, buffer.capacity());
-//		assertEquals(4, buffer.position());
-//		
-//		buffer.flip();
-//		
-//		assertEquals((byte)1, buffer.get());
-//		assertEquals((byte)2, buffer.get());
-//		assertEquals((byte)3, buffer.get());
-//		assertEquals((byte)4, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToByteBufferListTest()
-//	{
-//		ArrayList<Byte> list = new ArrayList<>();
-//		list.add((byte)1);
-//		list.add((byte)2);
-//		list.add((byte)3);
-//		list.add((byte)4);
-//		
-//		ByteBuffer buffer = BufferUtils.copyToByteBuffer(list);
-//		
-//		assertNotNull(buffer);
-//		assertEquals(4, buffer.capacity());
-//		assertEquals(4, buffer.position());
-//		
-//		buffer.flip();
-//		
-//		assertEquals((byte)1, buffer.get());
-//		assertEquals((byte)2, buffer.get());
-//		assertEquals((byte)3, buffer.get());
-//		assertEquals((byte)4, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToShortBufferArrayTest()
-//	{
-//		ShortBuffer buffer = BufferUtils.copyToShortBuffer((short)1, (short)2, (short)3, (short)4);
-//		
-//		assertNotNull(buffer);
-//		assertEquals(4, buffer.capacity());
-//		assertEquals(4, buffer.position());
-//		
-//		buffer.flip();
-//		
-//		assertEquals((short)1, buffer.get());
-//		assertEquals((short)2, buffer.get());
-//		assertEquals((short)3, buffer.get());
-//		assertEquals((short)4, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToShortBufferListTest()
-//	{
-//		ArrayList<Short> list = new ArrayList<>();
-//		list.add((short)1);
-//		list.add((short)2);
-//		list.add((short)3);
-//		list.add((short)4);
-//		
-//		ShortBuffer buffer = BufferUtils.copyToShortBuffer(list);
-//		
-//		assertNotNull(buffer);
-//		assertEquals(4, buffer.capacity());
-//		assertEquals(4, buffer.position());
-//		
-//		buffer.flip();
-//		
-//		assertEquals((short)1, buffer.get());
-//		assertEquals((short)2, buffer.get());
-//		assertEquals((short)3, buffer.get());
-//		assertEquals((short)4, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToIntBufferArrayTest()
-//	{
-//		IntBuffer buffer = BufferUtils.copyToIntBuffer(1, 2, 3, 4);
-//		
-//		assertNotNull(buffer);
-//		assertEquals(4, buffer.capacity());
-//		assertEquals(4, buffer.position());
-//		
-//		buffer.flip();
-//		
-//		assertEquals(1, buffer.get());
-//		assertEquals(2, buffer.get());
-//		assertEquals(3, buffer.get());
-//		assertEquals(4, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToIntBufferListTest()
-//	{
-//		ArrayList<Integer> list = new ArrayList<>();
-//		list.add(1);
-//		list.add(2);
-//		list.add(3);
-//		list.add(4);
-//		
-//		IntBuffer buffer = BufferUtils.copyToIntBuffer(list);
-//		
-//		assertNotNull(buffer);
-//		assertEquals(4, buffer.capacity());
-//		assertEquals(4, buffer.position());
-//		
-//		buffer.flip();
-//		
-//		assertEquals(1, buffer.get());
-//		assertEquals(2, buffer.get());
-//		assertEquals(3, buffer.get());
-//		assertEquals(4, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToLongBufferArrayTest()
-//	{
-//		LongBuffer buffer = BufferUtils.copyToLongBuffer(1l, 2l, 3l, 4l);
-//		
-//		assertNotNull(buffer);
-//		assertEquals(4, buffer.capacity());
-//		assertEquals(4, buffer.position());
-//		
-//		buffer.flip();
-//		
-//		assertEquals(1l, buffer.get());
-//		assertEquals(2l, buffer.get());
-//		assertEquals(3l, buffer.get());
-//		assertEquals(4l, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToLongBufferListTest()
-//	{
-//		ArrayList<Long> list = new ArrayList<>();
-//		list.add(1l);
-//		list.add(2l);
-//		list.add(3l);
-//		list.add(4l);
-//		
-//		LongBuffer buffer = BufferUtils.copyToLongBuffer(list);
-//		
-//		assertNotNull(buffer);
-//		assertEquals(4, buffer.capacity());
-//		assertEquals(4, buffer.position());
-//		
-//		buffer.flip();
-//		
-//		assertEquals(1l, buffer.get());
-//		assertEquals(2l, buffer.get());
-//		assertEquals(3l, buffer.get());
-//		assertEquals(4l, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToFloatBufferArrayTest()
-//	{
-//		FloatBuffer buffer = BufferUtils.copyToFloatBuffer(1.1f, 2.2f, 3.3f, 4.4f);
-//		
-//		assertNotNull(buffer);
-//		assertEquals(4, buffer.capacity());
-//		assertEquals(4, buffer.position());
-//		
-//		buffer.flip();
-//		
-//		assertEquals(1.1f, buffer.get());
-//		assertEquals(2.2f, buffer.get());
-//		assertEquals(3.3f, buffer.get());
-//		assertEquals(4.4f, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToFloatBufferListTest()
-//	{
-//		ArrayList<Float> list = new ArrayList<>();
-//		list.add(1.1f);
-//		list.add(2.2f);
-//		list.add(3.3f);
-//		list.add(4.4f);
-//		
-//		FloatBuffer buffer = BufferUtils.copyToFloatBuffer(list);
-//		
-//		assertNotNull(buffer);
-//		assertEquals(4, buffer.capacity());
-//		assertEquals(4, buffer.position());
-//		
-//		buffer.flip();
-//		
-//		assertEquals(1.1f, buffer.get());
-//		assertEquals(2.2f, buffer.get());
-//		assertEquals(3.3f, buffer.get());
-//		assertEquals(4.4f, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToDoubleBufferArrayTest()
-//	{
-//		DoubleBuffer buffer = BufferUtils.copyToDoubleBuffer(1.1, 2.2, 3.3, 4.4);
-//		
-//		assertNotNull(buffer);
-//		assertEquals(4, buffer.capacity());
-//		assertEquals(4, buffer.position());
-//		
-//		buffer.flip();
-//		
-//		assertEquals(1.1, buffer.get());
-//		assertEquals(2.2, buffer.get());
-//		assertEquals(3.3, buffer.get());
-//		assertEquals(4.4, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToDoubleBufferListTest()
-//	{
-//		ArrayList<Double> list = new ArrayList<>();
-//		list.add(1.1);
-//		list.add(2.2);
-//		list.add(3.3);
-//		list.add(4.4);
-//		
-//		DoubleBuffer buffer = BufferUtils.copyToDoubleBuffer(list);
-//		
-//		assertNotNull(buffer);
-//		assertEquals(4, buffer.capacity());
-//		assertEquals(4, buffer.position());
-//		
-//		buffer.flip();
-//		
-//		assertEquals(1.1, buffer.get());
-//		assertEquals(2.2, buffer.get());
-//		assertEquals(3.3, buffer.get());
-//		assertEquals(4.4, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToTuple2FBufferArrayTest()
-//	{
-//		FloatBuffer buffer = BufferUtils.copyToTuple2FBuffer(new Tup2f(1.1f, 2.2f), new Tup2f(3.3f, 4.4f));
-//		
-//		assertNotNull(buffer);
-//		assertEquals(4, buffer.capacity());
-//		assertEquals(4, buffer.position());
-//		
-//		buffer.flip();
-//		
-//		assertEquals(1.1f, buffer.get());
-//		assertEquals(2.2f, buffer.get());
-//		assertEquals(3.3f, buffer.get());
-//		assertEquals(4.4f, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToTuple2FBufferListTest()
-//	{
-//		ArrayList<Tup2fR> list = new ArrayList<>();
-//		list.add(new Tup2f(1.1f, 2.2f));
-//		list.add(new Tup2f(3.3f, 4.4f));
-//		
-//		FloatBuffer buffer = BufferUtils.copyToTuple2FBuffer(list);
-//		
-//		assertNotNull(buffer);
-//		assertEquals(4, buffer.capacity());
-//		assertEquals(4, buffer.position());
-//		
-//		buffer.flip();
-//		
-//		assertEquals(1.1f, buffer.get());
-//		assertEquals(2.2f, buffer.get());
-//		assertEquals(3.3f, buffer.get());
-//		assertEquals(4.4f, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToTuple2DBufferArrayTest()
-//	{
-//		DoubleBuffer buffer = BufferUtils.copyToTuple2DBuffer(new Tup2d(1.1, 2.2), new Tup2d(3.3, 4.4));
-//		
-//		assertNotNull(buffer);
-//		assertEquals(4, buffer.capacity());
-//		assertEquals(4, buffer.position());
-//		
-//		buffer.flip();
-//		
-//		assertEquals(1.1, buffer.get());
-//		assertEquals(2.2, buffer.get());
-//		assertEquals(3.3, buffer.get());
-//		assertEquals(4.4, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToTuple2DBufferListTest()
-//	{
-//		ArrayList<Tup2dR> list = new ArrayList<>();
-//		list.add(new Tup2d(1.1, 2.2));
-//		list.add(new Tup2d(3.3, 4.4));
-//		
-//		DoubleBuffer buffer = BufferUtils.copyToTuple2DBuffer(list);
-//		
-//		assertNotNull(buffer);
-//		assertEquals(4, buffer.capacity());
-//		assertEquals(4, buffer.position());
-//		
-//		buffer.flip();
-//		
-//		assertEquals(1.1, buffer.get());
-//		assertEquals(2.2, buffer.get());
-//		assertEquals(3.3, buffer.get());
-//		assertEquals(4.4, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToTuple3FBufferArrayTest()
-//	{
-//		FloatBuffer buffer = BufferUtils.copyToTuple3FBuffer(new Tup3f(1.1f, 2.2f, 3.3f), new Tup3f(4.4f, 5.5f, 6.6f));
-//		
-//		assertNotNull(buffer);
-//		assertEquals(6, buffer.capacity());
-//		assertEquals(6, buffer.position());
-//		
-//		buffer.flip();
-//		
-//		assertEquals(1.1f, buffer.get());
-//		assertEquals(2.2f, buffer.get());
-//		assertEquals(3.3f, buffer.get());
-//		assertEquals(4.4f, buffer.get());
-//		assertEquals(5.5f, buffer.get());
-//		assertEquals(6.6f, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToTuple3FBufferListTest()
-//	{
-//		ArrayList<Tup3fR> list = new ArrayList<>();
-//		list.add(new Tup3f(1.1f, 2.2f, 3.3f));
-//		list.add(new Tup3f(4.4f, 5.5f, 6.6f));
-//		
-//		FloatBuffer buffer = BufferUtils.copyToTuple3FBuffer(list);
-//		
-//		assertNotNull(buffer);
-//		assertEquals(6, buffer.capacity());
-//		assertEquals(6, buffer.position());
-//		
-//		buffer.flip();
-//		
-//		assertEquals(1.1f, buffer.get());
-//		assertEquals(2.2f, buffer.get());
-//		assertEquals(3.3f, buffer.get());
-//		assertEquals(4.4f, buffer.get());
-//		assertEquals(5.5f, buffer.get());
-//		assertEquals(6.6f, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToTuple3DBufferArrayTest()
-//	{
-//		DoubleBuffer buffer = BufferUtils.copyToTuple3DBuffer(new Tup3d(1.1, 2.2, 3.3), new Tup3d(4.4, 5.5, 6.6));
-//		
-//		assertNotNull(buffer);
-//		assertEquals(6, buffer.capacity());
-//		assertEquals(6, buffer.position());
-//		
-//		buffer.flip();
-//		
-//		assertEquals(1.1, buffer.get());
-//		assertEquals(2.2, buffer.get());
-//		assertEquals(3.3, buffer.get());
-//		assertEquals(4.4, buffer.get());
-//		assertEquals(5.5, buffer.get());
-//		assertEquals(6.6, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToTuple3DBufferListTest()
-//	{
-//		ArrayList<Tup3dR> list = new ArrayList<>();
-//		list.add(new Tup3d(1.1, 2.2, 3.3));
-//		list.add(new Tup3d(4.4, 5.5, 6.6));
-//		
-//		DoubleBuffer buffer = BufferUtils.copyToTuple3DBuffer(list);
-//		
-//		assertNotNull(buffer);
-//		assertEquals(6, buffer.capacity());
-//		assertEquals(6, buffer.position());
-//		
-//		buffer.flip();
-//		
-//		assertEquals(1.1, buffer.get());
-//		assertEquals(2.2, buffer.get());
-//		assertEquals(3.3, buffer.get());
-//		assertEquals(4.4, buffer.get());
-//		assertEquals(5.5, buffer.get());
-//		assertEquals(6.6, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToTuple4FBufferArrayTest()
-//	{
-//		FloatBuffer buffer = BufferUtils.copyToTuple4FBuffer(new Tup4f(1.1f, 2.2f, 3.3f, 4.4f), new Tup4f(5.5f, 6.6f, 7.7f, 8.8f));
-//		
-//		assertNotNull(buffer);
-//		assertEquals(8, buffer.capacity());
-//		assertEquals(8, buffer.position());
-//		
-//		buffer.flip();
-//		
-//		assertEquals(1.1f, buffer.get());
-//		assertEquals(2.2f, buffer.get());
-//		assertEquals(3.3f, buffer.get());
-//		assertEquals(4.4f, buffer.get());
-//		assertEquals(5.5f, buffer.get());
-//		assertEquals(6.6f, buffer.get());
-//		assertEquals(7.7f, buffer.get());
-//		assertEquals(8.8f, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToTuple4FBufferListTest()
-//	{
-//		ArrayList<Tup4fR> list = new ArrayList<>();
-//		list.add(new Tup4f(1.1f, 2.2f, 3.3f, 4.4f));
-//		list.add(new Tup4f(5.5f, 6.6f, 7.7f, 8.8f));
-//		
-//		FloatBuffer buffer = BufferUtils.copyToTuple4FBuffer(list);
-//		
-//		assertNotNull(buffer);
-//		assertEquals(8, buffer.capacity());
-//		assertEquals(8, buffer.position());
-//		
-//		buffer.flip();
-//		
-//		assertEquals(1.1f, buffer.get());
-//		assertEquals(2.2f, buffer.get());
-//		assertEquals(3.3f, buffer.get());
-//		assertEquals(4.4f, buffer.get());
-//		assertEquals(5.5f, buffer.get());
-//		assertEquals(6.6f, buffer.get());
-//		assertEquals(7.7f, buffer.get());
-//		assertEquals(8.8f, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToTuple4DBufferArrayTest()
-//	{
-//		DoubleBuffer buffer = BufferUtils.copyToTuple4DBuffer(new Tup4d(1.1, 2.2, 3.3, 4.4), new Tup4d(5.5, 6.6, 7.7, 8.8));
-//		
-//		assertNotNull(buffer);
-//		assertEquals(8, buffer.capacity());
-//		assertEquals(8, buffer.position());
-//		
-//		buffer.flip();
-//		
-//		assertEquals(1.1, buffer.get());
-//		assertEquals(2.2, buffer.get());
-//		assertEquals(3.3, buffer.get());
-//		assertEquals(4.4, buffer.get());
-//		assertEquals(5.5, buffer.get());
-//		assertEquals(6.6, buffer.get());
-//		assertEquals(7.7, buffer.get());
-//		assertEquals(8.8, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToTuple4DBufferListTest()
-//	{
-//		ArrayList<Tup4dR> list = new ArrayList<>();
-//		list.add(new Tup4d(1.1, 2.2, 3.3, 4.4));
-//		list.add(new Tup4d(5.5, 6.6, 7.7, 8.8));
-//		
-//		DoubleBuffer buffer = BufferUtils.copyToTuple4DBuffer(list);
-//		
-//		assertNotNull(buffer);
-//		assertEquals(8, buffer.capacity());
-//		assertEquals(8, buffer.position());
-//		
-//		buffer.flip();
-//		
-//		assertEquals(1.1, buffer.get());
-//		assertEquals(2.2, buffer.get());
-//		assertEquals(3.3, buffer.get());
-//		assertEquals(4.4, buffer.get());
-//		assertEquals(5.5, buffer.get());
-//		assertEquals(6.6, buffer.get());
-//		assertEquals(7.7, buffer.get());
-//		assertEquals(8.8, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToFlippedByteBufferArrayTest()
-//	{
-//		ByteBuffer buffer = BufferUtils.copyToFlippedByteBuffer((byte)1, (byte)2, (byte)3, (byte)4);
-//		
-//		assertNotNull(buffer);
-//		assertEquals(4, buffer.capacity());
-//		assertEquals(0, buffer.position());
-//
-//		assertEquals((byte)1, buffer.get());
-//		assertEquals((byte)2, buffer.get());
-//		assertEquals((byte)3, buffer.get());
-//		assertEquals((byte)4, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToFlippedByteBufferListTest()
-//	{
-//		ArrayList<Byte> list = new ArrayList<>();
-//		list.add((byte)1);
-//		list.add((byte)2);
-//		list.add((byte)3);
-//		list.add((byte)4);
-//		
-//		ByteBuffer buffer = BufferUtils.copyToFlippedByteBuffer(list);
-//		
-//		assertNotNull(buffer);
-//		assertEquals(4, buffer.capacity());
-//		assertEquals(0, buffer.position());
-//
-//		assertEquals((byte)1, buffer.get());
-//		assertEquals((byte)2, buffer.get());
-//		assertEquals((byte)3, buffer.get());
-//		assertEquals((byte)4, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToFlippedShortBufferArrayTest()
-//	{
-//		ShortBuffer buffer = BufferUtils.copyToFlippedShortBuffer((short)1, (short)2, (short)3, (short)4);
-//		
-//		assertNotNull(buffer);
-//		assertEquals(4, buffer.capacity());
-//		assertEquals(0, buffer.position());
-//
-//		assertEquals((short)1, buffer.get());
-//		assertEquals((short)2, buffer.get());
-//		assertEquals((short)3, buffer.get());
-//		assertEquals((short)4, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToFlippedShortBufferListTest()
-//	{
-//		ArrayList<Short> list = new ArrayList<>();
-//		list.add((short)1);
-//		list.add((short)2);
-//		list.add((short)3);
-//		list.add((short)4);
-//		
-//		ShortBuffer buffer = BufferUtils.copyToFlippedShortBuffer(list);
-//		
-//		assertNotNull(buffer);
-//		assertEquals(4, buffer.capacity());
-//		assertEquals(0, buffer.position());
-//
-//		assertEquals((short)1, buffer.get());
-//		assertEquals((short)2, buffer.get());
-//		assertEquals((short)3, buffer.get());
-//		assertEquals((short)4, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToFlippedIntBufferArrayTest()
-//	{
-//		IntBuffer buffer = BufferUtils.copyToFlippedIntBuffer(1, 2, 3, 4);
-//		
-//		assertNotNull(buffer);
-//		assertEquals(4, buffer.capacity());
-//		assertEquals(0, buffer.position());
-//
-//		assertEquals(1, buffer.get());
-//		assertEquals(2, buffer.get());
-//		assertEquals(3, buffer.get());
-//		assertEquals(4, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToFlippedIntBufferListTest()
-//	{
-//		ArrayList<Integer> list = new ArrayList<>();
-//		list.add(1);
-//		list.add(2);
-//		list.add(3);
-//		list.add(4);
-//		
-//		IntBuffer buffer = BufferUtils.copyToFlippedIntBuffer(list);
-//		
-//		assertNotNull(buffer);
-//		assertEquals(4, buffer.capacity());
-//		assertEquals(0, buffer.position());
-//
-//		assertEquals(1, buffer.get());
-//		assertEquals(2, buffer.get());
-//		assertEquals(3, buffer.get());
-//		assertEquals(4, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToFlippedLongBufferArrayTest()
-//	{
-//		LongBuffer buffer = BufferUtils.copyToFlippedLongBuffer(1l, 2l, 3l, 4l);
-//		
-//		assertNotNull(buffer);
-//		assertEquals(4, buffer.capacity());
-//		assertEquals(0, buffer.position());
-//
-//		assertEquals(1l, buffer.get());
-//		assertEquals(2l, buffer.get());
-//		assertEquals(3l, buffer.get());
-//		assertEquals(4l, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToFlippedLongBufferListTest()
-//	{
-//		ArrayList<Long> list = new ArrayList<>();
-//		list.add(1l);
-//		list.add(2l);
-//		list.add(3l);
-//		list.add(4l);
-//		
-//		LongBuffer buffer = BufferUtils.copyToFlippedLongBuffer(list);
-//		
-//		assertNotNull(buffer);
-//		assertEquals(4, buffer.capacity());
-//		assertEquals(0, buffer.position());
-//
-//		assertEquals(1l, buffer.get());
-//		assertEquals(2l, buffer.get());
-//		assertEquals(3l, buffer.get());
-//		assertEquals(4l, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToFlippedFloatBufferArrayTest()
-//	{
-//		FloatBuffer buffer = BufferUtils.copyToFlippedFloatBuffer(1.1f, 2.2f, 3.3f, 4.4f);
-//		
-//		assertNotNull(buffer);
-//		assertEquals(4, buffer.capacity());
-//		assertEquals(0, buffer.position());
-//
-//		assertEquals(1.1f, buffer.get());
-//		assertEquals(2.2f, buffer.get());
-//		assertEquals(3.3f, buffer.get());
-//		assertEquals(4.4f, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToFlippedFloatBufferListTest()
-//	{
-//		ArrayList<Float> list = new ArrayList<>();
-//		list.add(1.1f);
-//		list.add(2.2f);
-//		list.add(3.3f);
-//		list.add(4.4f);
-//		
-//		FloatBuffer buffer = BufferUtils.copyToFlippedFloatBuffer(list);
-//		
-//		assertNotNull(buffer);
-//		assertEquals(4, buffer.capacity());
-//		assertEquals(0, buffer.position());
-//
-//		assertEquals(1.1f, buffer.get());
-//		assertEquals(2.2f, buffer.get());
-//		assertEquals(3.3f, buffer.get());
-//		assertEquals(4.4f, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToFlippedDoubleBufferArrayTest()
-//	{
-//		DoubleBuffer buffer = BufferUtils.copyToFlippedDoubleBuffer(1.1, 2.2, 3.3, 4.4);
-//		
-//		assertNotNull(buffer);
-//		assertEquals(4, buffer.capacity());
-//		assertEquals(0, buffer.position());
-//
-//		assertEquals(1.1, buffer.get());
-//		assertEquals(2.2, buffer.get());
-//		assertEquals(3.3, buffer.get());
-//		assertEquals(4.4, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToFlippedDoubleBufferListTest()
-//	{
-//		ArrayList<Double> list = new ArrayList<>();
-//		list.add(1.1);
-//		list.add(2.2);
-//		list.add(3.3);
-//		list.add(4.4);
-//		
-//		DoubleBuffer buffer = BufferUtils.copyToFlippedDoubleBuffer(list);
-//		
-//		assertNotNull(buffer);
-//		assertEquals(4, buffer.capacity());
-//		assertEquals(0, buffer.position());
-//
-//		assertEquals(1.1, buffer.get());
-//		assertEquals(2.2, buffer.get());
-//		assertEquals(3.3, buffer.get());
-//		assertEquals(4.4, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToFlippedTuple2FBufferArrayTest()
-//	{
-//		FloatBuffer buffer = BufferUtils.copyToFlippedTuple2FBuffer(new Tup2f(1.1f, 2.2f), new Tup2f(3.3f, 4.4f));
-//		
-//		assertNotNull(buffer);
-//		assertEquals(4, buffer.capacity());
-//		assertEquals(0, buffer.position());
-//
-//		assertEquals(1.1f, buffer.get());
-//		assertEquals(2.2f, buffer.get());
-//		assertEquals(3.3f, buffer.get());
-//		assertEquals(4.4f, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToFlippedTuple2FBufferListTest()
-//	{
-//		ArrayList<Tup2fR> list = new ArrayList<>();
-//		list.add(new Tup2f(1.1f, 2.2f));
-//		list.add(new Tup2f(3.3f, 4.4f));
-//		
-//		FloatBuffer buffer = BufferUtils.copyToFlippedTuple2FBuffer(list);
-//		
-//		assertNotNull(buffer);
-//		assertEquals(4, buffer.capacity());
-//		assertEquals(0, buffer.position());
-//
-//		assertEquals(1.1f, buffer.get());
-//		assertEquals(2.2f, buffer.get());
-//		assertEquals(3.3f, buffer.get());
-//		assertEquals(4.4f, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToFlippedTuple2DBufferArrayTest()
-//	{
-//		DoubleBuffer buffer = BufferUtils.copyToFlippedTuple2DBuffer(new Tup2d(1.1, 2.2), new Tup2d(3.3, 4.4));
-//		
-//		assertNotNull(buffer);
-//		assertEquals(4, buffer.capacity());
-//		assertEquals(0, buffer.position());
-//
-//		assertEquals(1.1, buffer.get());
-//		assertEquals(2.2, buffer.get());
-//		assertEquals(3.3, buffer.get());
-//		assertEquals(4.4, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToFlippedTuple2DBufferListTest()
-//	{
-//		ArrayList<Tup2dR> list = new ArrayList<>();
-//		list.add(new Tup2d(1.1, 2.2));
-//		list.add(new Tup2d(3.3, 4.4));
-//		
-//		DoubleBuffer buffer = BufferUtils.copyToFlippedTuple2DBuffer(list);
-//		
-//		assertNotNull(buffer);
-//		assertEquals(4, buffer.capacity());
-//		assertEquals(0, buffer.position());
-//
-//		assertEquals(1.1, buffer.get());
-//		assertEquals(2.2, buffer.get());
-//		assertEquals(3.3, buffer.get());
-//		assertEquals(4.4, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToFlippedTuple3FBufferArrayTest()
-//	{
-//		FloatBuffer buffer = BufferUtils.copyToFlippedTuple3FBuffer(new Tup3f(1.1f, 2.2f, 3.3f), new Tup3f(4.4f, 5.5f, 6.6f));
-//		
-//		assertNotNull(buffer);
-//		assertEquals(6, buffer.capacity());
-//		assertEquals(0, buffer.position());
-//
-//		assertEquals(1.1f, buffer.get());
-//		assertEquals(2.2f, buffer.get());
-//		assertEquals(3.3f, buffer.get());
-//		assertEquals(4.4f, buffer.get());
-//		assertEquals(5.5f, buffer.get());
-//		assertEquals(6.6f, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToFlippedTuple3FBufferListTest()
-//	{
-//		ArrayList<Tup3fR> list = new ArrayList<>();
-//		list.add(new Tup3f(1.1f, 2.2f, 3.3f));
-//		list.add(new Tup3f(4.4f, 5.5f, 6.6f));
-//		
-//		FloatBuffer buffer = BufferUtils.copyToFlippedTuple3FBuffer(list);
-//		
-//		assertNotNull(buffer);
-//		assertEquals(6, buffer.capacity());
-//		assertEquals(0, buffer.position());
-//
-//		assertEquals(1.1f, buffer.get());
-//		assertEquals(2.2f, buffer.get());
-//		assertEquals(3.3f, buffer.get());
-//		assertEquals(4.4f, buffer.get());
-//		assertEquals(5.5f, buffer.get());
-//		assertEquals(6.6f, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToFlippedTuple3DBufferArrayTest()
-//	{
-//		DoubleBuffer buffer = BufferUtils.copyToFlippedTuple3DBuffer(new Tup3d(1.1, 2.2, 3.3), new Tup3d(4.4, 5.5, 6.6));
-//		
-//		assertNotNull(buffer);
-//		assertEquals(6, buffer.capacity());
-//		assertEquals(0, buffer.position());
-//
-//		assertEquals(1.1, buffer.get());
-//		assertEquals(2.2, buffer.get());
-//		assertEquals(3.3, buffer.get());
-//		assertEquals(4.4, buffer.get());
-//		assertEquals(5.5, buffer.get());
-//		assertEquals(6.6, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToFlippedTuple3DBufferListTest()
-//	{
-//		ArrayList<Tup3dR> list = new ArrayList<>();
-//		list.add(new Tup3d(1.1, 2.2, 3.3));
-//		list.add(new Tup3d(4.4, 5.5, 6.6));
-//		
-//		DoubleBuffer buffer = BufferUtils.copyToFlippedTuple3DBuffer(list);
-//		
-//		assertNotNull(buffer);
-//		assertEquals(6, buffer.capacity());
-//		assertEquals(0, buffer.position());
-//
-//		assertEquals(1.1, buffer.get());
-//		assertEquals(2.2, buffer.get());
-//		assertEquals(3.3, buffer.get());
-//		assertEquals(4.4, buffer.get());
-//		assertEquals(5.5, buffer.get());
-//		assertEquals(6.6, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToFlippedTuple4FBufferArrayTest()
-//	{
-//		FloatBuffer buffer = BufferUtils.copyToFlippedTuple4FBuffer(new Tup4f(1.1f, 2.2f, 3.3f, 4.4f), new Tup4f(5.5f, 6.6f, 7.7f, 8.8f));
-//		
-//		assertNotNull(buffer);
-//		assertEquals(8, buffer.capacity());
-//		assertEquals(0, buffer.position());
-//
-//		assertEquals(1.1f, buffer.get());
-//		assertEquals(2.2f, buffer.get());
-//		assertEquals(3.3f, buffer.get());
-//		assertEquals(4.4f, buffer.get());
-//		assertEquals(5.5f, buffer.get());
-//		assertEquals(6.6f, buffer.get());
-//		assertEquals(7.7f, buffer.get());
-//		assertEquals(8.8f, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToFlippedTuple4FBufferListTest()
-//	{
-//		ArrayList<Tup4fR> list = new ArrayList<>();
-//		list.add(new Tup4f(1.1f, 2.2f, 3.3f, 4.4f));
-//		list.add(new Tup4f(5.5f, 6.6f, 7.7f, 8.8f));
-//		
-//		FloatBuffer buffer = BufferUtils.copyToFlippedTuple4FBuffer(list);
-//		
-//		assertNotNull(buffer);
-//		assertEquals(8, buffer.capacity());
-//		assertEquals(0, buffer.position());
-//
-//		assertEquals(1.1f, buffer.get());
-//		assertEquals(2.2f, buffer.get());
-//		assertEquals(3.3f, buffer.get());
-//		assertEquals(4.4f, buffer.get());
-//		assertEquals(5.5f, buffer.get());
-//		assertEquals(6.6f, buffer.get());
-//		assertEquals(7.7f, buffer.get());
-//		assertEquals(8.8f, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToFlippedTuple4DBufferArrayTest()
-//	{
-//		DoubleBuffer buffer = BufferUtils.copyToFlippedTuple4DBuffer(new Tup4d(1.1, 2.2, 3.3, 4.4), new Tup4d(5.5, 6.6, 7.7, 8.8));
-//		
-//		assertNotNull(buffer);
-//		assertEquals(8, buffer.capacity());
-//		assertEquals(0, buffer.position());
-//
-//		assertEquals(1.1, buffer.get());
-//		assertEquals(2.2, buffer.get());
-//		assertEquals(3.3, buffer.get());
-//		assertEquals(4.4, buffer.get());
-//		assertEquals(5.5, buffer.get());
-//		assertEquals(6.6, buffer.get());
-//		assertEquals(7.7, buffer.get());
-//		assertEquals(8.8, buffer.get());
-//	}
-//	
-//	@Test
-//	void copyToFlippedTuple4DBufferListTest()
-//	{
-//		ArrayList<Tup4dR> list = new ArrayList<>();
-//		list.add(new Tup4d(1.1, 2.2, 3.3, 4.4));
-//		list.add(new Tup4d(5.5, 6.6, 7.7, 8.8));
-//		
-//		DoubleBuffer buffer = BufferUtils.copyToFlippedTuple4DBuffer(list);
-//		
-//		assertNotNull(buffer);
-//		assertEquals(8, buffer.capacity());
-//		assertEquals(0, buffer.position());
-//
-//		assertEquals(1.1, buffer.get());
-//		assertEquals(2.2, buffer.get());
-//		assertEquals(3.3, buffer.get());
-//		assertEquals(4.4, buffer.get());
-//		assertEquals(5.5, buffer.get());
-//		assertEquals(6.6, buffer.get());
-//		assertEquals(7.7, buffer.get());
-//		assertEquals(8.8, buffer.get());
-//	}
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple2FBuffer(Tup2fR[]) BufferUtils.copyToTuple2FBuffer(Tup2fR...)}
+	 * creates a new {@link FloatBuffer}, puts the values in the right order in the buffer
+	 * and advances the position.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToTuple2FBuffer_ArrayTest()
+	{
+		FloatBuffer buffer = BufferUtils.copyToTuple2FBuffer(new Tup2f(1.1f, 2.2f), new Tup2f(3.3f, 4.4f));
+		
+		assertNotNull(buffer);
+		assertEquals(4, buffer.capacity());
+		assertEquals(4, buffer.position());
+		
+		buffer.flip();
+		
+		assertEquals(1.1f, buffer.get());
+		assertEquals(2.2f, buffer.get());
+		assertEquals(3.3f, buffer.get());
+		assertEquals(4.4f, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple2FBuffer(FloatBuffer, Tup2fR[]) BufferUtils.copyToTuple2FBuffer(FloatBuffer, Tup2fR...)}
+	 * puts the values in the right order in the buffer and advances the position.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToTuple2FBuffer_ArrayExternalBufferTest()
+	{
+		FloatBuffer buffer = BufferUtils.createFloatBuffer(10);
+		
+		assertSame(buffer, BufferUtils.copyToTuple2FBuffer(buffer, new Tup2f(1.1f, 2.2f), new Tup2f(3.3f, 4.4f)));
+		
+		assertEquals(10, buffer.capacity());
+		assertEquals(4, buffer.position());
+		
+		buffer.flip();
+		
+		assertEquals(1.1f, buffer.get());
+		assertEquals(2.2f, buffer.get());
+		assertEquals(3.3f, buffer.get());
+		assertEquals(4.4f, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple2FBuffer(List) BufferUtils.copyToTuple2FBuffer(List&lt;Tup2fR&gt;)}
+	 * creates a new {@link FloatBuffer}, puts the values in the right order in the buffer
+	 * and advances the position.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToTuple2FBuffer_ListTest()
+	{
+		FloatBuffer buffer = BufferUtils.copyToTuple2FBuffer(List.of(new Tup2f(1.1f, 2.2f), new Tup2f(3.3f, 4.4f)));
+		
+		assertNotNull(buffer);
+		assertEquals(4, buffer.capacity());
+		assertEquals(4, buffer.position());
+		
+		buffer.flip();
+		
+		assertEquals(1.1f, buffer.get());
+		assertEquals(2.2f, buffer.get());
+		assertEquals(3.3f, buffer.get());
+		assertEquals(4.4f, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple2FBuffer(FloatBuffer, List) BufferUtils.copyToTuple2FBuffer(FloatBuffer, List&lt;Tup2fR&gt;)}
+	 * puts the values in the right order in the buffer and advances the position.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToTuple2FBuffer_ListExternalBufferTest()
+	{
+		FloatBuffer buffer = BufferUtils.createFloatBuffer(10);
+		
+		assertSame(buffer, BufferUtils.copyToTuple2FBuffer(buffer, List.of(new Tup2f(1.1f, 2.2f), new Tup2f(3.3f, 4.4f))));
+		
+		assertEquals(10, buffer.capacity());
+		assertEquals(4, buffer.position());
+		
+		buffer.flip();
+		
+		assertEquals(1.1f, buffer.get());
+		assertEquals(2.2f, buffer.get());
+		assertEquals(3.3f, buffer.get());
+		assertEquals(4.4f, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple2DBuffer(Tup2dR[]) BufferUtils.copyToTuple2DBuffer(Tup2dR...)}
+	 * creates a new {@link DoubleBuffer}, puts the values in the right order in the buffer
+	 * and advances the position.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToTuple2DBuffer_ArrayTest()
+	{
+		DoubleBuffer buffer = BufferUtils.copyToTuple2DBuffer(new Tup2d(1.1, 2.2), new Tup2d(3.3, 4.4));
+		
+		assertNotNull(buffer);
+		assertEquals(4, buffer.capacity());
+		assertEquals(4, buffer.position());
+		
+		buffer.flip();
+		
+		assertEquals(1.1, buffer.get());
+		assertEquals(2.2, buffer.get());
+		assertEquals(3.3, buffer.get());
+		assertEquals(4.4, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple2DBuffer(DoubleBuffer, Tup2dR[]) BufferUtils.copyToTuple2DBuffer(DoubleBuffer, Tup2dR...)}
+	 * puts the values in the right order in the buffer and advances the position.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToTuple2DBuffer_ArrayExternalBufferest()
+	{
+		DoubleBuffer buffer = BufferUtils.createDoubleBuffer(10);
+		
+		assertSame(buffer, BufferUtils.copyToTuple2DBuffer(buffer, new Tup2d(1.1, 2.2), new Tup2d(3.3, 4.4)));
+		
+		assertEquals(10, buffer.capacity());
+		assertEquals(4, buffer.position());
+		
+		buffer.flip();
+		
+		assertEquals(1.1, buffer.get());
+		assertEquals(2.2, buffer.get());
+		assertEquals(3.3, buffer.get());
+		assertEquals(4.4, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple2DBuffer(List) BufferUtils.copyToTuple2DBuffer(List&lt;Tup2dR&gt;)}
+	 * creates a new {@link DoubleBuffer}, puts the values in the right order in the buffer
+	 * and advances the position.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToTuple2DBuffer_ListTest()
+	{
+		DoubleBuffer buffer = BufferUtils.copyToTuple2DBuffer(List.of(new Tup2d(1.1, 2.2), new Tup2d(3.3, 4.4)));
+		
+		assertNotNull(buffer);
+		assertEquals(4, buffer.capacity());
+		assertEquals(4, buffer.position());
+		
+		buffer.flip();
+		
+		assertEquals(1.1, buffer.get());
+		assertEquals(2.2, buffer.get());
+		assertEquals(3.3, buffer.get());
+		assertEquals(4.4, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple2DBuffer(DoubleBuffer, List) BufferUtils.copyToTuple2DBuffer(DoubleBuffer, List&lt;Tup2dR&gt;)}
+	 * puts the values in the right order in the buffer and advances the position.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToTuple2DBuffer_ListExternalBufferTest()
+	{
+		DoubleBuffer buffer = BufferUtils.createDoubleBuffer(10);
+		
+		assertSame(buffer, BufferUtils.copyToTuple2DBuffer(buffer, List.of(new Tup2d(1.1, 2.2), new Tup2d(3.3, 4.4))));
+		
+		assertEquals(10, buffer.capacity());
+		assertEquals(4, buffer.position());
+		
+		buffer.flip();
+		
+		assertEquals(1.1, buffer.get());
+		assertEquals(2.2, buffer.get());
+		assertEquals(3.3, buffer.get());
+		assertEquals(4.4, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple3FBuffer(Tup3fR[]) BufferUtils.copyToTuple3FBuffer(Tup3fR...)}
+	 * creates a new {@link FloatBuffer}, puts the values in the right order in the buffer
+	 * and advances the position.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToTuple3FBuffer_ArrayTest()
+	{
+		FloatBuffer buffer = BufferUtils.copyToTuple3FBuffer(new Tup3f(1.1f, 2.2f, 3.3f), new Tup3f(4.4f, 5.5f, 6.6f));
+		
+		assertNotNull(buffer);
+		assertEquals(6, buffer.capacity());
+		assertEquals(6, buffer.position());
+		
+		buffer.flip();
+		
+		assertEquals(1.1f, buffer.get());
+		assertEquals(2.2f, buffer.get());
+		assertEquals(3.3f, buffer.get());
+		assertEquals(4.4f, buffer.get());
+		assertEquals(5.5f, buffer.get());
+		assertEquals(6.6f, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple3FBuffer(FloatBuffer, Tup3fR[]) BufferUtils.copyToTuple3FBuffer(FloatBuffer, Tup3fR...)}
+	 * puts the values in the right order in the buffer and advances the position.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToTuple3FBuffer_ArrayExternalBufferTest()
+	{
+		FloatBuffer buffer = BufferUtils.createFloatBuffer(10);
+		
+		assertSame(buffer, BufferUtils.copyToTuple3FBuffer(buffer, new Tup3f(1.1f, 2.2f, 3.3f), new Tup3f(4.4f, 5.5f, 6.6f)));
+		
+		assertEquals(10, buffer.capacity());
+		assertEquals(6, buffer.position());
+		
+		buffer.flip();
+		
+		assertEquals(1.1f, buffer.get());
+		assertEquals(2.2f, buffer.get());
+		assertEquals(3.3f, buffer.get());
+		assertEquals(4.4f, buffer.get());
+		assertEquals(5.5f, buffer.get());
+		assertEquals(6.6f, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple3FBuffer(List) BufferUtils.copyToTuple3FBuffer(List&lt;Tup3fR&gt;)}
+	 * creates a new {@link FloatBuffer}, puts the values in the right order in the buffer
+	 * and advances the position.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToTuple3FBuffer_ListTest()
+	{
+		FloatBuffer buffer = BufferUtils.copyToTuple3FBuffer(List.of(new Tup3f(1.1f, 2.2f, 3.3f), new Tup3f(4.4f, 5.5f, 6.6f)));
+		
+		assertNotNull(buffer);
+		assertEquals(6, buffer.capacity());
+		assertEquals(6, buffer.position());
+		
+		buffer.flip();
+		
+		assertEquals(1.1f, buffer.get());
+		assertEquals(2.2f, buffer.get());
+		assertEquals(3.3f, buffer.get());
+		assertEquals(4.4f, buffer.get());
+		assertEquals(5.5f, buffer.get());
+		assertEquals(6.6f, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple3FBuffer(FloatBuffer, List) BufferUtils.copyToTuple3FBuffer(FloatBuffer, List&lt;Tup3fR&gt;)}
+	 * creates a new {@link FloatBuffer}, puts the values in the right order in the buffer
+	 * and advances the position.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToTuple3FBuffer_ListExternalBufferTest()
+	{
+		FloatBuffer buffer = BufferUtils.createFloatBuffer(10);
+				
+		assertSame(buffer, BufferUtils.copyToTuple3FBuffer(buffer, List.of(new Tup3f(1.1f, 2.2f, 3.3f), new Tup3f(4.4f, 5.5f, 6.6f))));
+		
+		assertEquals(10, buffer.capacity());
+		assertEquals(6, buffer.position());
+		
+		buffer.flip();
+		
+		assertEquals(1.1f, buffer.get());
+		assertEquals(2.2f, buffer.get());
+		assertEquals(3.3f, buffer.get());
+		assertEquals(4.4f, buffer.get());
+		assertEquals(5.5f, buffer.get());
+		assertEquals(6.6f, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple3DBuffer(Tup3dR[]) BufferUtils.copyToTuple3DBuffer(Tup3dR...)}
+	 * creates a new {@link DoubleBuffer}, puts the values in the right order in the buffer
+	 * and advances the position.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToTuple3DBuffer_ArrayTest()
+	{
+		DoubleBuffer buffer = BufferUtils.copyToTuple3DBuffer(new Tup3d(1.1, 2.2, 3.3), new Tup3d(4.4, 5.5, 6.6));
+		
+		assertNotNull(buffer);
+		assertEquals(6, buffer.capacity());
+		assertEquals(6, buffer.position());
+		
+		buffer.flip();
+		
+		assertEquals(1.1, buffer.get());
+		assertEquals(2.2, buffer.get());
+		assertEquals(3.3, buffer.get());
+		assertEquals(4.4, buffer.get());
+		assertEquals(5.5, buffer.get());
+		assertEquals(6.6, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple3DBuffer(DoubleBuffer, Tup3dR[]) BufferUtils.copyToTuple3DBuffer(DoubleBuffer, Tup3dR...)}
+	 * puts the values in the right order in the buffer and advances the position.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToTuple3DBuffer_ArrayExternalBufferTest()
+	{
+		DoubleBuffer buffer = BufferUtils.createDoubleBuffer(10);
+		
+		assertSame(buffer, BufferUtils.copyToTuple3DBuffer(buffer, new Tup3d(1.1, 2.2, 3.3), new Tup3d(4.4, 5.5, 6.6)));
+		
+		assertEquals(10, buffer.capacity());
+		assertEquals(6, buffer.position());
+		
+		buffer.flip();
+		
+		assertEquals(1.1, buffer.get());
+		assertEquals(2.2, buffer.get());
+		assertEquals(3.3, buffer.get());
+		assertEquals(4.4, buffer.get());
+		assertEquals(5.5, buffer.get());
+		assertEquals(6.6, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple3DBuffer(List) BufferUtils.copyToTuple3DBuffer(List&lt;Tup3dR&gt;)}
+	 * creates a new {@link DoubleBuffer}, puts the values in the right order in the buffer
+	 * and advances the position.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToTuple3DBuffer_ListTest()
+	{
+		DoubleBuffer buffer = BufferUtils.copyToTuple3DBuffer(List.of(new Tup3d(1.1, 2.2, 3.3), new Tup3d(4.4, 5.5, 6.6)));
+		
+		assertNotNull(buffer);
+		assertEquals(6, buffer.capacity());
+		assertEquals(6, buffer.position());
+		
+		buffer.flip();
+		
+		assertEquals(1.1, buffer.get());
+		assertEquals(2.2, buffer.get());
+		assertEquals(3.3, buffer.get());
+		assertEquals(4.4, buffer.get());
+		assertEquals(5.5, buffer.get());
+		assertEquals(6.6, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple3DBuffer(DoubleBuffer, List) BufferUtils.copyToTuple3DBuffer(DoubleBuffer, List&lt;Tup3dR&gt;)}
+	 * puts the values in the right order in the buffer and advances the position.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToTuple3DBuffer_ListExternalBufferTest()
+	{
+		DoubleBuffer buffer = BufferUtils.createDoubleBuffer(10);
+		
+		assertSame(buffer, BufferUtils.copyToTuple3DBuffer(buffer, List.of(new Tup3d(1.1, 2.2, 3.3), new Tup3d(4.4, 5.5, 6.6))));
+		
+		assertEquals(10, buffer.capacity());
+		assertEquals(6, buffer.position());
+		
+		buffer.flip();
+		
+		assertEquals(1.1, buffer.get());
+		assertEquals(2.2, buffer.get());
+		assertEquals(3.3, buffer.get());
+		assertEquals(4.4, buffer.get());
+		assertEquals(5.5, buffer.get());
+		assertEquals(6.6, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple4FBuffer(Tup4fR[]) BufferUtils.copyToTuple4FBuffer(Tup4fR...)}
+	 * creates a new {@link FloatBuffer}, puts the values in the right order in the buffer
+	 * and advances the position.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToTuple4FBuffer_ArrayTest()
+	{
+		FloatBuffer buffer = BufferUtils.copyToTuple4FBuffer(new Tup4f(1.1f, 2.2f, 3.3f, 4.4f), new Tup4f(5.5f, 6.6f, 7.7f, 8.8f));
+		
+		assertNotNull(buffer);
+		assertEquals(8, buffer.capacity());
+		assertEquals(8, buffer.position());
+		
+		buffer.flip();
+		
+		assertEquals(1.1f, buffer.get());
+		assertEquals(2.2f, buffer.get());
+		assertEquals(3.3f, buffer.get());
+		assertEquals(4.4f, buffer.get());
+		assertEquals(5.5f, buffer.get());
+		assertEquals(6.6f, buffer.get());
+		assertEquals(7.7f, buffer.get());
+		assertEquals(8.8f, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple4FBuffer(FloatBuffer, Tup4fR[]) BufferUtils.copyToTuple4FBuffer(FloatBuffer, Tup4fR...)}
+	 * puts the values in the right order in the buffer and advances the position.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToTuple4FBuffer_ArrayExternalBufferTest()
+	{
+		FloatBuffer buffer = BufferUtils.createFloatBuffer(10);
+		
+		assertSame(buffer, BufferUtils.copyToTuple4FBuffer(buffer, new Tup4f(1.1f, 2.2f, 3.3f, 4.4f), new Tup4f(5.5f, 6.6f, 7.7f, 8.8f)));
+
+		assertEquals(10, buffer.capacity());
+		assertEquals(8, buffer.position());
+		
+		buffer.flip();
+		
+		assertEquals(1.1f, buffer.get());
+		assertEquals(2.2f, buffer.get());
+		assertEquals(3.3f, buffer.get());
+		assertEquals(4.4f, buffer.get());
+		assertEquals(5.5f, buffer.get());
+		assertEquals(6.6f, buffer.get());
+		assertEquals(7.7f, buffer.get());
+		assertEquals(8.8f, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple4FBuffer(List) BufferUtils.copyToTuple4FBuffer(List&lt;Tup4fR&gt;)}
+	 * creates a new {@link FloatBuffer}, puts the values in the right order in the buffer
+	 * and advances the position.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToTuple4FBuffer_ListTest()
+	{
+		FloatBuffer buffer = BufferUtils.copyToTuple4FBuffer(List.of(new Tup4f(1.1f, 2.2f, 3.3f, 4.4f), new Tup4f(5.5f, 6.6f, 7.7f, 8.8f)));
+		
+		assertNotNull(buffer);
+		assertEquals(8, buffer.capacity());
+		assertEquals(8, buffer.position());
+		
+		buffer.flip();
+		
+		assertEquals(1.1f, buffer.get());
+		assertEquals(2.2f, buffer.get());
+		assertEquals(3.3f, buffer.get());
+		assertEquals(4.4f, buffer.get());
+		assertEquals(5.5f, buffer.get());
+		assertEquals(6.6f, buffer.get());
+		assertEquals(7.7f, buffer.get());
+		assertEquals(8.8f, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple4FBuffer(FloatBuffer, List) BufferUtils.copyToTuple4FBuffer(FloatBuffer, List&lt;Tup4fR&gt;)}
+	 * puts the values in the right order in the buffer and advances the position.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToTuple4FBuffer_ListExternalBufferTest()
+	{
+		FloatBuffer buffer = BufferUtils.createFloatBuffer(10);
+		
+		assertSame(buffer, BufferUtils.copyToTuple4FBuffer(buffer, List.of(new Tup4f(1.1f, 2.2f, 3.3f, 4.4f), new Tup4f(5.5f, 6.6f, 7.7f, 8.8f))));
+		
+		assertEquals(10, buffer.capacity());
+		assertEquals(8, buffer.position());
+		
+		buffer.flip();
+		
+		assertEquals(1.1f, buffer.get());
+		assertEquals(2.2f, buffer.get());
+		assertEquals(3.3f, buffer.get());
+		assertEquals(4.4f, buffer.get());
+		assertEquals(5.5f, buffer.get());
+		assertEquals(6.6f, buffer.get());
+		assertEquals(7.7f, buffer.get());
+		assertEquals(8.8f, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple4DBuffer(Tup4dR[]) BufferUtils.copyToTuple4DBuffer(Tup4dR...)}
+	 * creates a new {@link DoubleBuffer}, puts the values in the right order in the buffer
+	 * and advances the position.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToTuple4DBuffer_ArrayTest()
+	{
+		DoubleBuffer buffer = BufferUtils.copyToTuple4DBuffer(new Tup4d(1.1, 2.2, 3.3, 4.4), new Tup4d(5.5, 6.6, 7.7, 8.8));
+		
+		assertNotNull(buffer);
+		assertEquals(8, buffer.capacity());
+		assertEquals(8, buffer.position());
+		
+		buffer.flip();
+		
+		assertEquals(1.1, buffer.get());
+		assertEquals(2.2, buffer.get());
+		assertEquals(3.3, buffer.get());
+		assertEquals(4.4, buffer.get());
+		assertEquals(5.5, buffer.get());
+		assertEquals(6.6, buffer.get());
+		assertEquals(7.7, buffer.get());
+		assertEquals(8.8, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple4DBuffer(DoubleBuffer, Tup4dR[]) BufferUtils.copyToTuple4DBuffer(DoubleBuffer, Tup4dR...)}
+	 * puts the values in the right order in the buffer and advances the position.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToTuple4DBuffer_ArrayExternalBufferTest()
+	{
+		DoubleBuffer buffer = BufferUtils.createDoubleBuffer(10);
+		
+		assertSame(buffer, BufferUtils.copyToTuple4DBuffer(buffer, new Tup4d(1.1, 2.2, 3.3, 4.4), new Tup4d(5.5, 6.6, 7.7, 8.8)));
+		
+		assertEquals(10, buffer.capacity());
+		assertEquals(8, buffer.position());
+		
+		buffer.flip();
+		
+		assertEquals(1.1, buffer.get());
+		assertEquals(2.2, buffer.get());
+		assertEquals(3.3, buffer.get());
+		assertEquals(4.4, buffer.get());
+		assertEquals(5.5, buffer.get());
+		assertEquals(6.6, buffer.get());
+		assertEquals(7.7, buffer.get());
+		assertEquals(8.8, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple4DBuffer(List) BufferUtils.copyToTuple4DBuffer(List&lt;Tup4dR&gt;)}
+	 * creates a new {@link DoubleBuffer}, puts the values in the right order in the buffer
+	 * and advances the position.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToTuple4DBuffer_ListTest()
+	{
+		DoubleBuffer buffer = BufferUtils.copyToTuple4DBuffer(List.of(new Tup4d(1.1, 2.2, 3.3, 4.4), new Tup4d(5.5, 6.6, 7.7, 8.8)));
+		
+		assertNotNull(buffer);
+		assertEquals(8, buffer.capacity());
+		assertEquals(8, buffer.position());
+		
+		buffer.flip();
+		
+		assertEquals(1.1, buffer.get());
+		assertEquals(2.2, buffer.get());
+		assertEquals(3.3, buffer.get());
+		assertEquals(4.4, buffer.get());
+		assertEquals(5.5, buffer.get());
+		assertEquals(6.6, buffer.get());
+		assertEquals(7.7, buffer.get());
+		assertEquals(8.8, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple4FBuffer(List) BufferUtils.copyToTuple4FBuffer(List&lt;Tup4fR&gt;)}
+	 * puts the values in the right order in the buffer and advances the position.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToTuple4DBuffer_ListExternalBufferTest()
+	{
+		DoubleBuffer buffer = BufferUtils.createDoubleBuffer(10);
+		
+		assertSame(buffer, BufferUtils.copyToTuple4DBuffer(buffer, List.of(new Tup4d(1.1, 2.2, 3.3, 4.4), new Tup4d(5.5, 6.6, 7.7, 8.8))));
+		
+		assertEquals(10, buffer.capacity());
+		assertEquals(8, buffer.position());
+		
+		buffer.flip();
+		
+		assertEquals(1.1, buffer.get());
+		assertEquals(2.2, buffer.get());
+		assertEquals(3.3, buffer.get());
+		assertEquals(4.4, buffer.get());
+		assertEquals(5.5, buffer.get());
+		assertEquals(6.6, buffer.get());
+		assertEquals(7.7, buffer.get());
+		assertEquals(8.8, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple2FBuffer(Tup2fR[]) BufferUtils.copyToFlippedTuple2FBuffer(Tup2fR...)}
+	 * creates a new {@link FloatBuffer}, puts the values in the right order in the buffer
+	 * and resets the position to 0 by flipping.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToFlippedTuple2FBuffer_ArrayTest()
+	{
+		FloatBuffer buffer = BufferUtils.copyToFlippedTuple2FBuffer(new Tup2f(1.1f, 2.2f), new Tup2f(3.3f, 4.4f));
+		
+		assertNotNull(buffer);
+		assertEquals(4, buffer.capacity());
+		assertEquals(0, buffer.position());
+		
+		assertEquals(1.1f, buffer.get());
+		assertEquals(2.2f, buffer.get());
+		assertEquals(3.3f, buffer.get());
+		assertEquals(4.4f, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple2FBuffer(FloatBuffer, Tup2fR[]) BufferUtils.copyToFlippedTuple2FBuffer(FloatBuffer, Tup2fR...)}
+	 * puts the values in the right order in the buffer and resets the position to 0 by flipping.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToFlippedTuple2FBuffer_ArrayExternalBufferTest()
+	{
+		FloatBuffer buffer = BufferUtils.createFloatBuffer(10);
+		
+		assertSame(buffer, BufferUtils.copyToFlippedTuple2FBuffer(buffer, new Tup2f(1.1f, 2.2f), new Tup2f(3.3f, 4.4f)));
+		
+		assertEquals(10, buffer.capacity());
+		assertEquals(0, buffer.position());
+		
+		assertEquals(1.1f, buffer.get());
+		assertEquals(2.2f, buffer.get());
+		assertEquals(3.3f, buffer.get());
+		assertEquals(4.4f, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple2FBuffer(List) BufferUtils.copyToFlippedTuple2FBuffer(List&lt;Tup2fR&gt;)}
+	 * creates a new {@link FloatBuffer}, puts the values in the right order in the buffer
+	 * and resets the position to 0 by flipping.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToFlippedTuple2FBuffer_ListTest()
+	{
+		FloatBuffer buffer = BufferUtils.copyToFlippedTuple2FBuffer(List.of(new Tup2f(1.1f, 2.2f), new Tup2f(3.3f, 4.4f)));
+		
+		assertNotNull(buffer);
+		assertEquals(4, buffer.capacity());
+		assertEquals(0, buffer.position());
+		
+		assertEquals(1.1f, buffer.get());
+		assertEquals(2.2f, buffer.get());
+		assertEquals(3.3f, buffer.get());
+		assertEquals(4.4f, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple2FBuffer(FloatBuffer, List) BufferUtils.copyToFlippedTuple2FBuffer(FloatBuffer, List&lt;Tup2fR&gt;)}
+	 * puts the values in the right order in the buffer and resets the position to 0 by flipping.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToFlippedTuple2FBuffer_ListExternalBufferTest()
+	{
+		FloatBuffer buffer = BufferUtils.createFloatBuffer(10);
+		
+		assertSame(buffer, BufferUtils.copyToFlippedTuple2FBuffer(buffer, List.of(new Tup2f(1.1f, 2.2f), new Tup2f(3.3f, 4.4f))));
+		
+		assertEquals(10, buffer.capacity());
+		assertEquals(0, buffer.position());
+		
+		assertEquals(1.1f, buffer.get());
+		assertEquals(2.2f, buffer.get());
+		assertEquals(3.3f, buffer.get());
+		assertEquals(4.4f, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple2DBuffer(Tup2dR[]) BufferUtils.copyToFlippedTuple2DBuffer(Tup2dR...)}
+	 * creates a new {@link DoubleBuffer}, puts the values in the right order in the buffer
+	 * and resets the position to 0 by flipping.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToFlippedTuple2DBuffer_ArrayTest()
+	{
+		DoubleBuffer buffer = BufferUtils.copyToFlippedTuple2DBuffer(new Tup2d(1.1, 2.2), new Tup2d(3.3, 4.4));
+		
+		assertNotNull(buffer);
+		assertEquals(4, buffer.capacity());
+		assertEquals(0, buffer.position());
+		
+		assertEquals(1.1, buffer.get());
+		assertEquals(2.2, buffer.get());
+		assertEquals(3.3, buffer.get());
+		assertEquals(4.4, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple2DBuffer(DoubleBuffer, Tup2dR[]) BufferUtils.copyToFlippedTuple2DBuffer(DoubleBuffer, Tup2dR...)}
+	 * puts the values in the right order in the buffer and resets the position to 0 by flipping.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToFlippedTuple2DBuffer_ArrayExternalBufferTest()
+	{
+		DoubleBuffer buffer = BufferUtils.createDoubleBuffer(10);
+		
+		assertSame(buffer, BufferUtils.copyToFlippedTuple2DBuffer(buffer, new Tup2d(1.1, 2.2), new Tup2d(3.3, 4.4)));
+
+		assertEquals(10, buffer.capacity());
+		assertEquals(0, buffer.position());
+		
+		assertEquals(1.1, buffer.get());
+		assertEquals(2.2, buffer.get());
+		assertEquals(3.3, buffer.get());
+		assertEquals(4.4, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple2DBuffer(List) BufferUtils.copyToFlippedTuple2DBuffer(List&lt;Tup2dR&gt;)}
+	 * creates a new {@link DoubleBuffer}, puts the values in the right order in the buffer
+	 * and resets the position to 0 by flipping.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToFlippedTuple2DBuffer_ListTest()
+	{
+		DoubleBuffer buffer = BufferUtils.copyToFlippedTuple2DBuffer(List.of(new Tup2d(1.1, 2.2), new Tup2d(3.3, 4.4)));
+		
+		assertNotNull(buffer);
+		assertEquals(4, buffer.capacity());
+		assertEquals(0, buffer.position());
+		
+		assertEquals(1.1, buffer.get());
+		assertEquals(2.2, buffer.get());
+		assertEquals(3.3, buffer.get());
+		assertEquals(4.4, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple2DBuffer(DoubleBuffer, List) BufferUtils.copyToFlippedTuple2DBuffer(DoubleBuffer, List&lt;Tup2dR&gt;)}
+	 * puts the values in the right order in the buffer and resets the position to 0 by flipping.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToFlippedTuple2DBuffer_ListExternalBufferTest()
+	{
+		DoubleBuffer buffer = BufferUtils.createDoubleBuffer(10);
+		
+		assertSame(buffer, BufferUtils.copyToFlippedTuple2DBuffer(buffer, List.of(new Tup2d(1.1, 2.2), new Tup2d(3.3, 4.4))));
+		
+		assertEquals(10, buffer.capacity());
+		assertEquals(0, buffer.position());
+		
+		assertEquals(1.1, buffer.get());
+		assertEquals(2.2, buffer.get());
+		assertEquals(3.3, buffer.get());
+		assertEquals(4.4, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple3FBuffer(Tup3fR[]) BufferUtils.copyToFlippedTuple3FBuffer(Tup3fR...)}
+	 * creates a new {@link FloatBuffer}, puts the values in the right order in the buffer
+	 * and resets the position to 0 by flipping.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToFlippedTuple3FBuffer_ArrayTest()
+	{
+		FloatBuffer buffer = BufferUtils.copyToFlippedTuple3FBuffer(new Tup3f(1.1f, 2.2f, 3.3f), new Tup3f(4.4f, 5.5f, 6.6f));
+		
+		assertNotNull(buffer);
+		assertEquals(6, buffer.capacity());
+		assertEquals(0, buffer.position());
+		
+		assertEquals(1.1f, buffer.get());
+		assertEquals(2.2f, buffer.get());
+		assertEquals(3.3f, buffer.get());
+		assertEquals(4.4f, buffer.get());
+		assertEquals(5.5f, buffer.get());
+		assertEquals(6.6f, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple3FBuffer(FloatBuffer, Tup3fR[]) BufferUtils.copyToFlippedTuple3FBuffer(FloatBuffer, Tup3fR...)}
+	 * puts the values in the right order in the buffer and resets the position to 0 by flipping.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToFlippedTuple3FBuffer_ArrayExternalBufferTest()
+	{
+		FloatBuffer buffer = BufferUtils.createFloatBuffer(10);
+		
+		assertSame(buffer, BufferUtils.copyToFlippedTuple3FBuffer(buffer, new Tup3f(1.1f, 2.2f, 3.3f), new Tup3f(4.4f, 5.5f, 6.6f)));
+		
+		assertEquals(10, buffer.capacity());
+		assertEquals(0, buffer.position());
+		
+		assertEquals(1.1f, buffer.get());
+		assertEquals(2.2f, buffer.get());
+		assertEquals(3.3f, buffer.get());
+		assertEquals(4.4f, buffer.get());
+		assertEquals(5.5f, buffer.get());
+		assertEquals(6.6f, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple3FBuffer(List) BufferUtils.copyToFlippedTuple3FBuffer(List&lt;Tup3fR&gt;)}
+	 * creates a new {@link FloatBuffer}, puts the values in the right order in the buffer
+	 * and resets the position to 0 by flipping.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToFlippedTuple3FBuffer_ListTest()
+	{
+		FloatBuffer buffer = BufferUtils.copyToFlippedTuple3FBuffer(List.of(new Tup3f(1.1f, 2.2f, 3.3f), new Tup3f(4.4f, 5.5f, 6.6f)));
+		
+		assertNotNull(buffer);
+		assertEquals(6, buffer.capacity());
+		assertEquals(0, buffer.position());
+		
+		assertEquals(1.1f, buffer.get());
+		assertEquals(2.2f, buffer.get());
+		assertEquals(3.3f, buffer.get());
+		assertEquals(4.4f, buffer.get());
+		assertEquals(5.5f, buffer.get());
+		assertEquals(6.6f, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple3FBuffer(FloatBuffer, List) BufferUtils.copyToFlippedTuple3FBuffer(FloatBuffer, List&lt;Tup3fR&gt;)}
+	 * puts the values in the right order in the buffer and resets the position to 0 by flipping.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToFlippedTuple3FBuffer_ListExternalBufferTest()
+	{
+		FloatBuffer buffer = BufferUtils.createFloatBuffer(10);
+		
+		assertSame(buffer, BufferUtils.copyToFlippedTuple3FBuffer(buffer, List.of(new Tup3f(1.1f, 2.2f, 3.3f), new Tup3f(4.4f, 5.5f, 6.6f))));
+		
+		assertNotNull(buffer);
+		assertEquals(10, buffer.capacity());
+		assertEquals(0, buffer.position());
+		
+		assertEquals(1.1f, buffer.get());
+		assertEquals(2.2f, buffer.get());
+		assertEquals(3.3f, buffer.get());
+		assertEquals(4.4f, buffer.get());
+		assertEquals(5.5f, buffer.get());
+		assertEquals(6.6f, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple3DBuffer(Tup3dR[]) BufferUtils.copyToFlippedTuple3DBuffer(Tup3dR...)}
+	 * creates a new {@link DoubleBuffer}, puts the values in the right order in the buffer
+	 * and resets the position to 0 by flipping.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToFlippedTuple3DBuffer_ArrayTest()
+	{
+		DoubleBuffer buffer = BufferUtils.copyToFlippedTuple3DBuffer(new Tup3d(1.1, 2.2, 3.3), new Tup3d(4.4, 5.5, 6.6));
+		
+		assertNotNull(buffer);
+		assertEquals(6, buffer.capacity());
+		assertEquals(0, buffer.position());
+		
+		assertEquals(1.1, buffer.get());
+		assertEquals(2.2, buffer.get());
+		assertEquals(3.3, buffer.get());
+		assertEquals(4.4, buffer.get());
+		assertEquals(5.5, buffer.get());
+		assertEquals(6.6, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple3DBuffer(DoubleBuffer, Tup3dR[]) BufferUtils.copyToFlippedTuple3DBuffer(DoubleBuffer, Tup3dR...)}
+	 * puts the values in the right order in the buffer and resets the position to 0 by flipping.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToFlippedTuple3DBuffer_ArrayExternalBufferTest()
+	{
+		DoubleBuffer buffer = BufferUtils.createDoubleBuffer(10);
+		
+		assertSame(buffer, BufferUtils.copyToFlippedTuple3DBuffer(buffer, new Tup3d(1.1, 2.2, 3.3), new Tup3d(4.4, 5.5, 6.6)));
+
+		assertEquals(10, buffer.capacity());
+		assertEquals(0, buffer.position());
+		
+		assertEquals(1.1, buffer.get());
+		assertEquals(2.2, buffer.get());
+		assertEquals(3.3, buffer.get());
+		assertEquals(4.4, buffer.get());
+		assertEquals(5.5, buffer.get());
+		assertEquals(6.6, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple3DBuffer(List) BufferUtils.copyToFlippedTuple3DBuffer(List&lt;Tup3dR&gt;)}
+	 * creates a new {@link DoubleBuffer}, puts the values in the right order in the buffer
+	 * and resets the position to 0 by flipping.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToFlippedTuple3DBuffer_ListTest()
+	{
+		DoubleBuffer buffer = BufferUtils.copyToFlippedTuple3DBuffer(List.of(new Tup3d(1.1, 2.2, 3.3), new Tup3d(4.4, 5.5, 6.6)));
+		
+		assertNotNull(buffer);
+		assertEquals(6, buffer.capacity());
+		assertEquals(0, buffer.position());
+		
+		assertEquals(1.1, buffer.get());
+		assertEquals(2.2, buffer.get());
+		assertEquals(3.3, buffer.get());
+		assertEquals(4.4, buffer.get());
+		assertEquals(5.5, buffer.get());
+		assertEquals(6.6, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple3DBuffer(DoubleBuffer, List) BufferUtils.copyToFlippedTuple3DBuffer(DoubleBuffer, List&lt;Tup3dR&gt;)}
+	 * puts the values in the right order in the buffer and resets the position to 0 by flipping.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToFlippedTuple3DBuffer_ListExternalBufferTest()
+	{
+		DoubleBuffer buffer = BufferUtils.createDoubleBuffer(10);
+		
+		assertSame(buffer, BufferUtils.copyToFlippedTuple3DBuffer(buffer, List.of(new Tup3d(1.1, 2.2, 3.3), new Tup3d(4.4, 5.5, 6.6))));
+
+		assertEquals(10, buffer.capacity());
+		assertEquals(0, buffer.position());
+		
+		assertEquals(1.1, buffer.get());
+		assertEquals(2.2, buffer.get());
+		assertEquals(3.3, buffer.get());
+		assertEquals(4.4, buffer.get());
+		assertEquals(5.5, buffer.get());
+		assertEquals(6.6, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple4FBuffer(Tup4fR[]) BufferUtils.copyToFlippedTuple4FBuffer(Tup4fR...)}
+	 * creates a new {@link FloatBuffer}, puts the values in the right order in the buffer
+	 * and resets the position to 0 by flipping.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToFlippedTuple4FBuffer_ArrayTest()
+	{
+		FloatBuffer buffer = BufferUtils.copyToFlippedTuple4FBuffer(new Tup4f(1.1f, 2.2f, 3.3f, 4.4f), new Tup4f(5.5f, 6.6f, 7.7f, 8.8f));
+		
+		assertNotNull(buffer);
+		assertEquals(8, buffer.capacity());
+		assertEquals(0, buffer.position());
+		
+		assertEquals(1.1f, buffer.get());
+		assertEquals(2.2f, buffer.get());
+		assertEquals(3.3f, buffer.get());
+		assertEquals(4.4f, buffer.get());
+		assertEquals(5.5f, buffer.get());
+		assertEquals(6.6f, buffer.get());
+		assertEquals(7.7f, buffer.get());
+		assertEquals(8.8f, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple4FBuffer(FloatBuffer, Tup4fR[]) BufferUtils.copyToFlippedTuple4FBuffer(FloatBuffer, Tup4fR...)}
+	 * puts the values in the right order in the buffer and resets the position to 0 by flipping.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToFlippedTuple4FBuffer_ArrayExternalBufferTest()
+	{
+		FloatBuffer buffer = BufferUtils.createFloatBuffer(10);
+		
+		assertSame(buffer, BufferUtils.copyToFlippedTuple4FBuffer(buffer, new Tup4f(1.1f, 2.2f, 3.3f, 4.4f), new Tup4f(5.5f, 6.6f, 7.7f, 8.8f)));
+		
+		assertEquals(10, buffer.capacity());
+		assertEquals(0, buffer.position());
+		
+		assertEquals(1.1f, buffer.get());
+		assertEquals(2.2f, buffer.get());
+		assertEquals(3.3f, buffer.get());
+		assertEquals(4.4f, buffer.get());
+		assertEquals(5.5f, buffer.get());
+		assertEquals(6.6f, buffer.get());
+		assertEquals(7.7f, buffer.get());
+		assertEquals(8.8f, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple4FBuffer(List) BufferUtils.copyToFlippedTuple4FBuffer(List&lt;Tup4fR&gt;)}
+	 * creates a new {@link FloatBuffer}, puts the values in the right order in the buffer
+	 * and resets the position to 0 by flipping.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToFlippedTuple4FBuffer_ListTest()
+	{
+		FloatBuffer buffer = BufferUtils.copyToFlippedTuple4FBuffer(List.of(new Tup4f(1.1f, 2.2f, 3.3f, 4.4f), new Tup4f(5.5f, 6.6f, 7.7f, 8.8f)));
+		
+		assertNotNull(buffer);
+		assertEquals(8, buffer.capacity());
+		assertEquals(0, buffer.position());
+		
+		assertEquals(1.1f, buffer.get());
+		assertEquals(2.2f, buffer.get());
+		assertEquals(3.3f, buffer.get());
+		assertEquals(4.4f, buffer.get());
+		assertEquals(5.5f, buffer.get());
+		assertEquals(6.6f, buffer.get());
+		assertEquals(7.7f, buffer.get());
+		assertEquals(8.8f, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple4FBuffer(FloatBuffer,List) BufferUtils.copyToFlippedTuple4FBuffer(FloatBuffer, List&lt;Tup4fR&gt;)}
+	 * puts the values in the right order in the buffer and resets the position to 0 by flipping.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToFlippedTuple4FBuffer_ListExternalBufferTest()
+	{
+		FloatBuffer buffer = BufferUtils.createFloatBuffer(10);
+		
+		assertSame(buffer, BufferUtils.copyToFlippedTuple4FBuffer(buffer, List.of(new Tup4f(1.1f, 2.2f, 3.3f, 4.4f), new Tup4f(5.5f, 6.6f, 7.7f, 8.8f))));
+		
+		assertEquals(10, buffer.capacity());
+		assertEquals(0, buffer.position());
+		
+		assertEquals(1.1f, buffer.get());
+		assertEquals(2.2f, buffer.get());
+		assertEquals(3.3f, buffer.get());
+		assertEquals(4.4f, buffer.get());
+		assertEquals(5.5f, buffer.get());
+		assertEquals(6.6f, buffer.get());
+		assertEquals(7.7f, buffer.get());
+		assertEquals(8.8f, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple4DBuffer(Tup4dR[]) BufferUtils.copyToFlippedTuple4DBuffer(Tup4dR...)}
+	 * creates a new {@link DoubleBuffer}, puts the values in the right order in the buffer
+	 * and resets the position to 0 by flipping.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToFlippedTuple4DBuffer_ArrayTest()
+	{
+		DoubleBuffer buffer = BufferUtils.copyToFlippedTuple4DBuffer(new Tup4d(1.1, 2.2, 3.3, 4.4), new Tup4d(5.5, 6.6, 7.7, 8.8));
+		
+		assertNotNull(buffer);
+		assertEquals(8, buffer.capacity());
+		assertEquals(0, buffer.position());
+		
+		assertEquals(1.1, buffer.get());
+		assertEquals(2.2, buffer.get());
+		assertEquals(3.3, buffer.get());
+		assertEquals(4.4, buffer.get());
+		assertEquals(5.5, buffer.get());
+		assertEquals(6.6, buffer.get());
+		assertEquals(7.7, buffer.get());
+		assertEquals(8.8, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple4DBuffer(DoubleBuffer, Tup4dR[]) BufferUtils.copyToFlippedTuple4DBuffer(DoubleBuffer, Tup4dR...)}
+	 * puts the values in the right order in the buffer and resets the position to 0 by flipping.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToFlippedTuple4DBuffer_ArrayExternalBufferTest()
+	{
+		DoubleBuffer buffer = BufferUtils.createDoubleBuffer(10);
+		
+		assertSame(buffer, BufferUtils.copyToFlippedTuple4DBuffer(buffer, new Tup4d(1.1, 2.2, 3.3, 4.4), new Tup4d(5.5, 6.6, 7.7, 8.8)));
+		
+		assertEquals(10, buffer.capacity());
+		assertEquals(0, buffer.position());
+		
+		assertEquals(1.1, buffer.get());
+		assertEquals(2.2, buffer.get());
+		assertEquals(3.3, buffer.get());
+		assertEquals(4.4, buffer.get());
+		assertEquals(5.5, buffer.get());
+		assertEquals(6.6, buffer.get());
+		assertEquals(7.7, buffer.get());
+		assertEquals(8.8, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple4DBuffer(List) BufferUtils.copyToFlippedTuple4FBuffer(List&lt;Tup4dR&gt;)}
+	 * creates a new {@link DoubleBuffer}, puts the values in the right order in the buffer
+	 * and resets the position to 0 by flipping.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToFlippedTuple4DBuffer_ListTest()
+	{
+		DoubleBuffer buffer = BufferUtils.copyToFlippedTuple4DBuffer(List.of(new Tup4d(1.1, 2.2, 3.3, 4.4), new Tup4d(5.5, 6.6, 7.7, 8.8)));
+		
+		assertNotNull(buffer);
+		assertEquals(8, buffer.capacity());
+		assertEquals(0, buffer.position());
+		
+		assertEquals(1.1, buffer.get());
+		assertEquals(2.2, buffer.get());
+		assertEquals(3.3, buffer.get());
+		assertEquals(4.4, buffer.get());
+		assertEquals(5.5, buffer.get());
+		assertEquals(6.6, buffer.get());
+		assertEquals(7.7, buffer.get());
+		assertEquals(8.8, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple4DBuffer(DoubleBuffer, List) BufferUtils.copyToFlippedTuple4FBuffer(DoubleBuffer, List&lt;Tup4dR&gt;)}
+	 * puts the values in the right order in the buffer and resets the position to 0 by flipping.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void copyToFlippedTuple4DBuffer_ListExternalBufferTest()
+	{
+		DoubleBuffer buffer = BufferUtils.createDoubleBuffer(10);
+		
+		assertSame(buffer, BufferUtils.copyToFlippedTuple4DBuffer(buffer, List.of(new Tup4d(1.1, 2.2, 3.3, 4.4), new Tup4d(5.5, 6.6, 7.7, 8.8))));
+		
+		assertEquals(10, buffer.capacity());
+		assertEquals(0, buffer.position());
+		
+		assertEquals(1.1, buffer.get());
+		assertEquals(2.2, buffer.get());
+		assertEquals(3.3, buffer.get());
+		assertEquals(4.4, buffer.get());
+		assertEquals(5.5, buffer.get());
+		assertEquals(6.6, buffer.get());
+		assertEquals(7.7, buffer.get());
+		assertEquals(8.8, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#put(FloatBuffer, Tup2fR) BufferUtils.put(FloatBuffer, Tup2fR)}
+	 * puts the values in the right order in the buffer.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void put_Tuple2FTest()
+	{
+		FloatBuffer buffer = BufferUtils.createFloatBuffer(10);
+		
+		assertSame(buffer, BufferUtils.put(buffer, new Tup2f(1.1f, 2.2f)));
+		
+		assertEquals(10, buffer.capacity());
+		assertEquals(2, buffer.position());
+		
+		buffer.flip();
+		
+		assertEquals(1.1f, buffer.get());
+		assertEquals(2.2f, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#put(FloatBuffer, Tup2fR[]) BufferUtils.put(FloatBuffer, Tup2fR...)}
+	 * puts the values in the right order in the buffer.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void put_Tuple2FArrayTest()
+	{
+		FloatBuffer buffer = BufferUtils.createFloatBuffer(10);
+		
+		assertSame(buffer, BufferUtils.put(buffer, new Tup2f(1.1f, 2.2f), new Tup2f(3.3f, 4.4f)));
+		
+		assertEquals(10, buffer.capacity());
+		assertEquals(4, buffer.position());
+		
+		buffer.flip();
+		
+		assertEquals(1.1f, buffer.get());
+		assertEquals(2.2f, buffer.get());
+		assertEquals(3.3f, buffer.get());
+		assertEquals(4.4f, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#put(FloatBuffer, Tup3fR) BufferUtils.put(FloatBuffer, Tup3fR)}
+	 * puts the values in the right order in the buffer.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void put_Tuple3FTest()
+	{
+		FloatBuffer buffer = BufferUtils.createFloatBuffer(10);
+		
+		assertSame(buffer, BufferUtils.put(buffer, new Tup3f(1.1f, 2.2f, 3.3f)));
+		
+		assertEquals(10, buffer.capacity());
+		assertEquals(3, buffer.position());
+		
+		buffer.flip();
+		
+		assertEquals(1.1f, buffer.get());
+		assertEquals(2.2f, buffer.get());
+		assertEquals(3.3f, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#put(FloatBuffer, Tup3fR[]) BufferUtils.put(FloatBuffer, Tup3fR...)}
+	 * puts the values in the right order in the buffer.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void put_Tuple3FArrayTest()
+	{
+		FloatBuffer buffer = BufferUtils.createFloatBuffer(10);
+		
+		assertSame(buffer, BufferUtils.put(buffer, new Tup3f(1.1f, 2.2f, 3.3f), new Tup3f(4.4f, 5.5f, 6.6f)));
+		
+		assertEquals(10, buffer.capacity());
+		assertEquals(6, buffer.position());
+		
+		buffer.flip();
+		
+		assertEquals(1.1f, buffer.get());
+		assertEquals(2.2f, buffer.get());
+		assertEquals(3.3f, buffer.get());
+		assertEquals(4.4f, buffer.get());
+		assertEquals(5.5f, buffer.get());
+		assertEquals(6.6f, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#put(FloatBuffer, Tup4fR) BufferUtils.put(FloatBuffer, Tup4fR)}
+	 * puts the values in the right order in the buffer.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void put_Tuple4FTest()
+	{
+		FloatBuffer buffer = BufferUtils.createFloatBuffer(10);
+		
+		assertSame(buffer, BufferUtils.put(buffer, new Tup4f(1.1f, 2.2f, 3.3f, 4.4f)));
+		
+		assertEquals(10, buffer.capacity());
+		assertEquals(4, buffer.position());
+		
+		buffer.flip();
+		
+		assertEquals(1.1f, buffer.get());
+		assertEquals(2.2f, buffer.get());
+		assertEquals(3.3f, buffer.get());
+		assertEquals(4.4f, buffer.get());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#put(FloatBuffer, Tup4fR[]) BufferUtils.put(FloatBuffer, Tup4fR...)}
+	 * puts the values in the right order in the buffer.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void put_Tuple4FArrayTest()
+	{
+		FloatBuffer buffer = BufferUtils.createFloatBuffer(10);
+		
+		assertSame(buffer, BufferUtils.put(buffer, new Tup4f(1.1f, 2.2f, 3.3f, 4.4f), new Tup4f(5.5f, 6.6f, 7.7f, 8.8f)));
+		
+		assertEquals(10, buffer.capacity());
+		assertEquals(8, buffer.position());
+		
+		buffer.flip();
+		
+		assertEquals(1.1f, buffer.get());
+		assertEquals(2.2f, buffer.get());
+		assertEquals(3.3f, buffer.get());
+		assertEquals(4.4f, buffer.get());
+		assertEquals(5.5f, buffer.get());
+		assertEquals(6.6f, buffer.get());
+		assertEquals(7.7f, buffer.get());
+		assertEquals(8.8f, buffer.get());
+	}
 }
