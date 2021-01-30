@@ -13,7 +13,7 @@ import org.barghos.core.util.ArgumentNullException;
  * 
  * @since 1.0.0.0
  */
-public class ArgumentNullExceptionTest
+class ArgumentNullExceptionTest
 {
 	/**
 	 * This test ensures, that the function {@link org.barghos.core.util.ArgumentNullException#getArgument() ArgumentNullException.getArgument()}

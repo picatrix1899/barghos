@@ -25,7 +25,7 @@ import org.barghos.core.util.BufferUtils;
  * 
  * @since 1.0.0.0
  */
-public class BufferUtilsTest
+class BufferUtilsTest
 {
 	/**
 	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple2FBuffer(Tup2fR[]) BufferUtils.copyToTuple2FBuffer(Tup2fR...)}
