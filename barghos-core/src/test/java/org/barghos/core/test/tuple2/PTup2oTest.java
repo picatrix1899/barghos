@@ -50,18 +50,18 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import org.barghos.core.tuple2.PTup2b;
-import org.barghos.core.tuple2.Tup2b;
+import org.barghos.core.tuple2.PTup2o;
+import org.barghos.core.tuple2.Tup2o;
 
 /**
- * This class provides component tests for the class {@link PTup2b}.
+ * This class provides component tests for the class {@link PTup2o}.
  * 
  * @since 1.0.0.0
  */
-class PTup2bTest
+class PTup2oTest
 {
 	/**
-	 * This test ensures, that an instance of {@link PTup2b} generated from an existing tuple,
+	 * This test ensures, that an instance of {@link PTup2o} generated from an existing tuple,
 	 * returns the correct components.
 	 * 
 	 * @since 1.0.0.0
@@ -69,29 +69,14 @@ class PTup2bTest
 	@Test
 	void gen_TupleTest()
 	{
-		PTup2b t = PTup2b.gen(new Tup2b((byte)1, (byte)2));
+		PTup2o<Integer,String> t = PTup2o.gen(new Tup2o<>(1, "arg2"));
 		
-		assertEquals((byte)1, t.getX());
-		assertEquals((byte)2, t.getY());
+		assertEquals(1, (int)t.getX());
+		assertEquals("arg2", t.getY());
 	}
 	
 	/**
-	 * This test ensures, that an instance of {@link PTup2b} generated from a scalar,
-	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
-	 */
-	@Test
-	void gen_ScalarTest()
-	{
-		PTup2b t = PTup2b.gen((byte)1);
-		
-		assertEquals((byte)1, t.getX());
-		assertEquals((byte)1, t.getY());
-	}
-	
-	/**
-	 * This test ensures, that an instance of {@link PTup2b} generated from two components,
+	 * This test ensures, that an instance of {@link PTup2o} generated from two components,
 	 * returns the correct components.
 	 * 
 	 * @since 1.0.0.0
@@ -99,27 +84,27 @@ class PTup2bTest
 	@Test
 	void gen_ComponentsTest()
 	{
-		PTup2b t = PTup2b.gen((byte)1, (byte)2);
+		PTup2o<Integer,String> t = PTup2o.gen(1, "arg2");
 		
-		assertEquals((byte)1, t.getX());
-		assertEquals((byte)2, t.getY());
+		assertEquals(1, (int)t.getX());
+		assertEquals("arg2", t.getY());
 	}
 	
 	/**
-	 * This test ensures, that the {@link PTup2b#toString()} function prints the components correctly.
+	 * This test ensures, that the {@link PTup2o#toString()} function prints the components correctly.
 	 * 
 	 * @since 1.0.0.0
 	 */
 	@Test
 	void toStringTest()
 	{
-		PTup2b t = PTup2b.gen((byte)1, (byte)2);
+		PTup2o<Integer,String> t = PTup2o.gen(1, "arg2");
 		
-		assertEquals("ptup2b(x=1, y=2)", t.toString());
+		assertEquals("ptup2o(x=1, y=arg2)", t.toString());
 	}
 	
 	/**
-	 * This test ensures, that the special policies for the function {@link PTup2b#equals(Object)} are working.
+	 * This test ensures, that the special policies for the function {@link PTup2o#equals(Object)} are working.
 	 * 
 	 * @since 1.0.0.0
 	 */
@@ -127,15 +112,15 @@ class PTup2bTest
 	@Test
 	void equalsTest()
 	{
-		PTup2b t = PTup2b.gen((byte)1, (byte)2);
+		PTup2o<Integer,String> t = PTup2o.gen(1, "arg2");
 		
 		assertTrue(t.equals(t));
 		assertFalse(t.equals(null));
 		assertFalse(t.equals(0));
-		assertFalse(t.equals(PTup2b.gen((byte)2, (byte)2))); // x wrong
-		assertFalse(t.equals(PTup2b.gen((byte)1, (byte)3))); // y wrong
+		assertFalse(t.equals(PTup2o.gen("arg1", "arg2"))); // x wrong
+		assertFalse(t.equals(PTup2o.gen(1, 1))); // y wrong
 		
-		assertTrue(t.equals(new Tup2b((byte)1, (byte)2)));
-		assertTrue(t.equals(PTup2b.gen((byte)1, (byte)2)));	
+		assertTrue(t.equals(new Tup2o<>(1, "arg2")));
+		assertTrue(t.equals(PTup2o.gen(1, "arg2")));	
 	}
 }

@@ -47,6 +47,7 @@ SOFTWARE.
 package org.barghos.core.test.tuple2;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 
 import org.barghos.core.tuple2.PTup2d;
@@ -68,9 +69,10 @@ class PTup2dTest
 	@Test
 	void gen_TupleTest()
 	{
-		PTup2d t = PTup2d.gen(new Tup2d(1.2, 3.4));
-		assertEquals(1.2, t.getX());
-		assertEquals(3.4, t.getY());
+		PTup2d t = PTup2d.gen(new Tup2d(1.1, 2.2));
+		
+		assertEquals(1.1, t.getX());
+		assertEquals(2.2, t.getY());
 	}
 	
 	/**
@@ -82,11 +84,12 @@ class PTup2dTest
 	@Test
 	void gen_ScalarTest()
 	{
-		PTup2d t = PTup2d.gen(1.2);
-		assertEquals(1.2, t.getX());
-		assertEquals(1.2, t.getY());
+		PTup2d t = PTup2d.gen(1.1);
+		
+		assertEquals(1.1, t.getX());
+		assertEquals(1.1, t.getY());
 	}
-
+	
 	/**
 	 * This test ensures, that an instance of {@link PTup2d} generated from two components,
 	 * returns the correct components.
@@ -96,9 +99,10 @@ class PTup2dTest
 	@Test
 	void gen_ComponentsTest()
 	{
-		PTup2d t = PTup2d.gen(1.2, 3.4);
-		assertEquals(1.2, t.getX());
-		assertEquals(3.4, t.getY());
+		PTup2d t = PTup2d.gen(1.1, 2.2);
+		
+		assertEquals(1.1, t.getX());
+		assertEquals(2.2, t.getY());
 	}
 	
 	/**
@@ -109,8 +113,9 @@ class PTup2dTest
 	@Test
 	void toStringTest()
 	{
-		PTup2d t = PTup2d.gen(1.2, 3.4);
-		assertEquals("ptup2d(x=1.2, y=3.4)", t.toString());
+		PTup2d t = PTup2d.gen(1.1, 2.2);
+		
+		assertEquals("ptup2d(x=1.1, y=2.2)", t.toString());
 	}
 	
 	/**
@@ -122,14 +127,15 @@ class PTup2dTest
 	@Test
 	void equalsTest()
 	{
-		PTup2d t = PTup2d.gen(1.2, 3.4);
+		PTup2d t = PTup2d.gen(1.1, 2.2);
+		
 		assertTrue(t.equals(t));
 		assertFalse(t.equals(null));
 		assertFalse(t.equals(0));
-		assertFalse(t.equals(PTup2d.gen(3.4, 3.4)));
-		assertFalse(t.equals(PTup2d.gen(1.2, 4.5)));
+		assertFalse(t.equals(PTup2d.gen(2.2, 2.2))); // x wrong
+		assertFalse(t.equals(PTup2d.gen(1.1, 3.3))); // y wrong
 		
-		assertTrue(t.equals(new Tup2d(1.2, 3.4)));
-		assertTrue(t.equals(PTup2d.gen(1.2, 3.4)));	
+		assertTrue(t.equals(new Tup2d(1.1, 2.2)));
+		assertTrue(t.equals(PTup2d.gen(1.1, 2.2)));	
 	}
 }

@@ -47,6 +47,7 @@ SOFTWARE.
 package org.barghos.core.test.tuple2;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 
 import org.barghos.core.tuple2.PTup2f;
@@ -68,9 +69,10 @@ class PTup2fTest
 	@Test
 	void gen_TupleTest()
 	{
-		PTup2f t = PTup2f.gen(new Tup2f(1.2f, 3.4f));
-		assertEquals(1.2f, t.getX());
-		assertEquals(3.4f, t.getY());
+		PTup2f t = PTup2f.gen(new Tup2f(1.1f, 2.2f));
+		
+		assertEquals(1.1f, t.getX());
+		assertEquals(2.2f, t.getY());
 	}
 	
 	/**
@@ -82,11 +84,12 @@ class PTup2fTest
 	@Test
 	void gen_ScalarTest()
 	{
-		PTup2f t = PTup2f.gen(1.2f);
-		assertEquals(1.2f, t.getX());
-		assertEquals(1.2f, t.getY());
+		PTup2f t = PTup2f.gen(1.1f);
+		
+		assertEquals(1.1f, t.getX());
+		assertEquals(1.1f, t.getY());
 	}
-
+	
 	/**
 	 * This test ensures, that an instance of {@link PTup2f} generated from two components,
 	 * returns the correct components.
@@ -96,9 +99,10 @@ class PTup2fTest
 	@Test
 	void gen_ComponentsTest()
 	{
-		PTup2f t = PTup2f.gen(1.2f, 3.4f);
-		assertEquals(1.2f, t.getX());
-		assertEquals(3.4f, t.getY());
+		PTup2f t = PTup2f.gen(1.1f, 2.2f);
+		
+		assertEquals(1.1f, t.getX());
+		assertEquals(2.2f, t.getY());
 	}
 	
 	/**
@@ -109,8 +113,9 @@ class PTup2fTest
 	@Test
 	void toStringTest()
 	{
-		PTup2f t = PTup2f.gen(1.2f, 3.4f);
-		assertEquals("ptup2f(x=1.2, y=3.4)", t.toString());
+		PTup2f t = PTup2f.gen(1.1f, 2.2f);
+		
+		assertEquals("ptup2f(x=1.1, y=2.2)", t.toString());
 	}
 	
 	/**
@@ -122,14 +127,15 @@ class PTup2fTest
 	@Test
 	void equalsTest()
 	{
-		PTup2f t = PTup2f.gen(1.2f, 3.4f);
+		PTup2f t = PTup2f.gen(1.1f, 2.2f);
+		
 		assertTrue(t.equals(t));
 		assertFalse(t.equals(null));
 		assertFalse(t.equals(0));
-		assertFalse(t.equals(PTup2f.gen(3.4f, 3.4f)));
-		assertFalse(t.equals(PTup2f.gen(1.2f, 4.5f)));
+		assertFalse(t.equals(PTup2f.gen(2.2f, 2.2f))); // x wrong
+		assertFalse(t.equals(PTup2f.gen(1.1f, 3.3f))); // y wrong
 		
-		assertTrue(t.equals(new Tup2f(1.2f, 3.4f)));
-		assertTrue(t.equals(PTup2f.gen(1.2f, 3.4f)));	
+		assertTrue(t.equals(new Tup2f(1.1f, 2.2f)));
+		assertTrue(t.equals(PTup2f.gen(1.1f, 2.2f)));	
 	}
 }

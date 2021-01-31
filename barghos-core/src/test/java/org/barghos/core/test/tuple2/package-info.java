@@ -21,7 +21,7 @@
  ******************************************************************************/
 
 /**
- * This package contains unit tests for 2-dimensional tuples.
+ * This package contains component tests for 2-dimensional tuples.
  * 
  * @author picatrix1899
  * 

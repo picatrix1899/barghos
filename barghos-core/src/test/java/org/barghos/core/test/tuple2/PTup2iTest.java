@@ -47,6 +47,7 @@ SOFTWARE.
 package org.barghos.core.test.tuple2;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 
 import org.barghos.core.tuple2.PTup2i;
@@ -68,9 +69,10 @@ class PTup2iTest
 	@Test
 	void gen_TupleTest()
 	{
-		PTup2i t = PTup2i.gen(new Tup2i(1, 3));
+		PTup2i t = PTup2i.gen(new Tup2i(1, 2));
+		
 		assertEquals(1, t.getX());
-		assertEquals(3, t.getY());
+		assertEquals(2, t.getY());
 	}
 	
 	/**
@@ -83,10 +85,11 @@ class PTup2iTest
 	void gen_ScalarTest()
 	{
 		PTup2i t = PTup2i.gen(1);
+		
 		assertEquals(1, t.getX());
 		assertEquals(1, t.getY());
 	}
-
+	
 	/**
 	 * This test ensures, that an instance of {@link PTup2i} generated from two components,
 	 * returns the correct components.
@@ -96,9 +99,10 @@ class PTup2iTest
 	@Test
 	void gen_ComponentsTest()
 	{
-		PTup2i t = PTup2i.gen(1, 3);
+		PTup2i t = PTup2i.gen(1, 2);
+		
 		assertEquals(1, t.getX());
-		assertEquals(3, t.getY());
+		assertEquals(2, t.getY());
 	}
 	
 	/**
@@ -109,8 +113,9 @@ class PTup2iTest
 	@Test
 	void toStringTest()
 	{
-		PTup2i t = PTup2i.gen(1, 3);
-		assertEquals("ptup2i(x=1, y=3)", t.toString());
+		PTup2i t = PTup2i.gen(1, 2);
+		
+		assertEquals("ptup2i(x=1, y=2)", t.toString());
 	}
 	
 	/**
@@ -122,14 +127,15 @@ class PTup2iTest
 	@Test
 	void equalsTest()
 	{
-		PTup2i t = PTup2i.gen(1, 3);
+		PTup2i t = PTup2i.gen(1, 2);
+		
 		assertTrue(t.equals(t));
 		assertFalse(t.equals(null));
 		assertFalse(t.equals(0));
-		assertFalse(t.equals(PTup2i.gen(3, 3)));
-		assertFalse(t.equals(PTup2i.gen(1, 4)));
+		assertFalse(t.equals(PTup2i.gen(2, 2))); // x wrong
+		assertFalse(t.equals(PTup2i.gen(1, 3))); // y wrong
 		
-		assertTrue(t.equals(new Tup2i(1, 3)));
-		assertTrue(t.equals(PTup2i.gen(1, 3)));	
+		assertTrue(t.equals(new Tup2i(1, 2)));
+		assertTrue(t.equals(PTup2i.gen(1, 2)));	
 	}
 }

@@ -47,20 +47,21 @@ SOFTWARE.
 package org.barghos.core.test.tuple2;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 
-import org.barghos.core.tuple2.PTup2s;
-import org.barghos.core.tuple2.Tup2s;
+import org.barghos.core.tuple2.PTup2c;
+import org.barghos.core.tuple2.Tup2c;
 
 /**
- * This class provides component tests for the class {@link PTup2s}.
+ * This class provides component tests for the class {@link PTup2c}.
  * 
  * @since 1.0.0.0
  */
-class PTup2sTest
+class PTup2cTest
 {
 	/**
-	 * This test ensures, that an instance of {@link PTup2s} generated from an existing tuple,
+	 * This test ensures, that an instance of {@link PTup2c} generated from an existing tuple,
 	 * returns the correct components.
 	 * 
 	 * @since 1.0.0.0
@@ -68,13 +69,14 @@ class PTup2sTest
 	@Test
 	void gen_TupleTest()
 	{
-		PTup2s t = PTup2s.gen(new Tup2s((short)1, (short)3));
-		assertEquals((short)1, t.getX());
-		assertEquals((short)3, t.getY());
+		PTup2c t = PTup2c.gen(new Tup2c((char)1, (char)2));
+		
+		assertEquals((char)1, t.getX());
+		assertEquals((char)2, t.getY());
 	}
 	
 	/**
-	 * This test ensures, that an instance of {@link PTup2s} generated from a scalar,
+	 * This test ensures, that an instance of {@link PTup2c} generated from a scalar,
 	 * returns the correct components.
 	 * 
 	 * @since 1.0.0.0
@@ -82,13 +84,14 @@ class PTup2sTest
 	@Test
 	void gen_ScalarTest()
 	{
-		PTup2s t = PTup2s.gen((short)1);
-		assertEquals((short)1, t.getX());
-		assertEquals((short)1, t.getY());
+		PTup2c t = PTup2c.gen((char)1);
+		
+		assertEquals((char)1, t.getX());
+		assertEquals((char)1, t.getY());
 	}
-
+	
 	/**
-	 * This test ensures, that an instance of {@link PTup2s} generated from two components,
+	 * This test ensures, that an instance of {@link PTup2c} generated from two components,
 	 * returns the correct components.
 	 * 
 	 * @since 1.0.0.0
@@ -96,25 +99,14 @@ class PTup2sTest
 	@Test
 	void gen_ComponentsTest()
 	{
-		PTup2s t = PTup2s.gen((short)1, (short)3);
-		assertEquals((short)1, t.getX());
-		assertEquals((short)3, t.getY());
+		PTup2c t = PTup2c.gen((char)1, (char)2);
+		
+		assertEquals((char)1, t.getX());
+		assertEquals((char)2, t.getY());
 	}
 	
 	/**
-	 * This test ensures, that the {@link PTup2s#toString()} function prints the components correctly.
-	 * 
-	 * @since 1.0.0.0
-	 */
-	@Test
-	void toStringTest()
-	{
-		PTup2s t = PTup2s.gen((short)1, (short)3);
-		assertEquals("ptup2s(x=1, y=3)", t.toString());
-	}
-	
-	/**
-	 * This test ensures, that the special policies for the function {@link PTup2s#equals(Object)} are working.
+	 * This test ensures, that the special policies for the function {@link PTup2c#equals(Object)} are working.
 	 * 
 	 * @since 1.0.0.0
 	 */
@@ -122,14 +114,15 @@ class PTup2sTest
 	@Test
 	void equalsTest()
 	{
-		PTup2s t = PTup2s.gen((short)1, (short)3);
+		PTup2c t = PTup2c.gen((char)1, (char)2);
+		
 		assertTrue(t.equals(t));
 		assertFalse(t.equals(null));
 		assertFalse(t.equals(0));
-		assertFalse(t.equals(PTup2s.gen((short)3, (short)3)));
-		assertFalse(t.equals(PTup2s.gen((short)1, (short)4)));
+		assertFalse(t.equals(PTup2c.gen((char)2, (char)2))); // x wrong
+		assertFalse(t.equals(PTup2c.gen((char)1, (char)3))); // y wrong
 		
-		assertTrue(t.equals(new Tup2s((short)1, (short)3)));
-		assertTrue(t.equals(PTup2s.gen((short)1, (short)3)));	
+		assertTrue(t.equals(new Tup2c((char)1, (char)2)));
+		assertTrue(t.equals(PTup2c.gen((char)1, (char)2)));	
 	}
 }
