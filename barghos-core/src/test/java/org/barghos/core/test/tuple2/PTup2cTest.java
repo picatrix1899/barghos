@@ -69,10 +69,10 @@ class PTup2cTest
 	@Test
 	void gen_TupleTest()
 	{
-		PTup2c t = PTup2c.gen(new Tup2c((char)1, (char)2));
+		PTup2c t = PTup2c.gen(new Tup2c('a', 'b'));
 		
-		assertEquals((char)1, t.getX());
-		assertEquals((char)2, t.getY());
+		assertEquals('a', t.getX());
+		assertEquals('b', t.getY());
 	}
 	
 	/**
@@ -84,10 +84,10 @@ class PTup2cTest
 	@Test
 	void gen_ScalarTest()
 	{
-		PTup2c t = PTup2c.gen((char)1);
+		PTup2c t = PTup2c.gen('a');
 		
-		assertEquals((char)1, t.getX());
-		assertEquals((char)1, t.getY());
+		assertEquals('a', t.getX());
+		assertEquals('a', t.getY());
 	}
 	
 	/**
@@ -99,10 +99,23 @@ class PTup2cTest
 	@Test
 	void gen_ComponentsTest()
 	{
-		PTup2c t = PTup2c.gen((char)1, (char)2);
+		PTup2c t = PTup2c.gen('a', 'b');
 		
-		assertEquals((char)1, t.getX());
-		assertEquals((char)2, t.getY());
+		assertEquals('a', t.getX());
+		assertEquals('b', t.getY());
+	}
+	
+	/**
+	 * This test ensures, that the {@link PTup2c#toString()} function prints the components correctly.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void toStringTest()
+	{
+		PTup2c t = PTup2c.gen('a', 'b');
+		
+		assertEquals("ptup2c(x=a, y=b)", t.toString());
 	}
 	
 	/**
@@ -114,15 +127,15 @@ class PTup2cTest
 	@Test
 	void equalsTest()
 	{
-		PTup2c t = PTup2c.gen((char)1, (char)2);
+		PTup2c t = PTup2c.gen('a', 'b');
 		
 		assertTrue(t.equals(t));
 		assertFalse(t.equals(null));
 		assertFalse(t.equals(0));
-		assertFalse(t.equals(PTup2c.gen((char)2, (char)2))); // x wrong
-		assertFalse(t.equals(PTup2c.gen((char)1, (char)3))); // y wrong
+		assertFalse(t.equals(PTup2c.gen('b', 'b'))); // x wrong
+		assertFalse(t.equals(PTup2c.gen('a', 'c'))); // y wrong
 		
-		assertTrue(t.equals(new Tup2c((char)1, (char)2)));
-		assertTrue(t.equals(PTup2c.gen((char)1, (char)2)));	
+		assertTrue(t.equals(new Tup2c('a', 'b')));
+		assertTrue(t.equals(PTup2c.gen('a', 'b')));	
 	}
 }

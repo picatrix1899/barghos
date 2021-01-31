@@ -99,7 +99,7 @@ class PTup2sTest
 	@Test
 	void gen_ComponentsTest()
 	{
-		PTup2s t = PTup2s.gen((short)1, (short)3);
+		PTup2s t = PTup2s.gen((short)1, (short)2);
 		
 		assertEquals((short)1, t.getX());
 		assertEquals((short)2, t.getY());
@@ -115,7 +115,7 @@ class PTup2sTest
 	{
 		PTup2s t = PTup2s.gen((short)1, (short)2);
 		
-		assertEquals("ptup2s(x=1, y=3)", t.toString());
+		assertEquals("ptup2s(x=1, y=2)", t.toString());
 	}
 	
 	/**
