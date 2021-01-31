@@ -22,8 +22,8 @@
 
 package org.barghos.core.event;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.barghos.core.api.event.Event;
 import org.barghos.core.api.event.EventDelegate;
@@ -41,11 +41,13 @@ public class DefaultEventDelegate<T extends Event> implements EventDelegate<T>
 	/**
 	 * This member contains all registered event receivers for this delegate.
 	 */
-	private Set<EventReceiver<T>> receivers = new HashSet<>();
+	private List<EventReceiver<T>> receivers = new ArrayList<>();
 	
 	@Override
 	public boolean registerReceiver(EventReceiver<T> receiver)
 	{
+		if(receivers.contains(receiver)) return false;
+		
 		return receivers.add(receiver);
 	}
 
