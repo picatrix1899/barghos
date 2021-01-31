@@ -139,6 +139,6 @@ public abstract class PTup4s implements Tup4sR
 	@Override
 	public String toString()
 	{
-		return "ptup4b(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ", w=" + getW() + ")";
+		return "ptup4s(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ", w=" + getW() + ")";
 	}
 }
