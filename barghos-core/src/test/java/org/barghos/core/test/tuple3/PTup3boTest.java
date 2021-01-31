@@ -136,8 +136,8 @@ class PTup3boTest
 		assertFalse(t.equals(null));
 		assertFalse(t.equals(0));
 		assertFalse(t.equals(PTup3bo.gen(true, false, false))); // x wrong
-		assertFalse(t.equals(PTup3bo.gen(false, true, true))); // y wrong
-		assertFalse(t.equals(PTup3bo.gen(false, true, false))); // z wrong
+		assertFalse(t.equals(PTup3bo.gen(false, false, true))); // y wrong
+		assertFalse(t.equals(PTup3bo.gen(false, true, true))); // z wrong
 		
 		assertTrue(t.equals(new Tup3bo(false, true, false)));
 		assertTrue(t.equals(PTup3bo.gen(false, true, false)));	

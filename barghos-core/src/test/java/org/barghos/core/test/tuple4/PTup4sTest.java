@@ -121,7 +121,7 @@ class PTup4sTest
 	{
 		PTup4s t = PTup4s.gen((short)1, (short)2, (short)3, (short)4);
 		
-		assertEquals("ptup4s(x=1, y=3, z=3, w=4)", t.toString());
+		assertEquals("ptup4s(x=1, y=2, z=3, w=4)", t.toString());
 	}
 	
 	/**

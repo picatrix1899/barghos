@@ -137,7 +137,7 @@ public class DefaultEventDelegateTest
 				assertEquals(10, original.testValue);
 				assertEquals(1, current.testValue);
 				
-				original.testValue = 2;
+				original.testValue = 10;
 				current.testValue = 2;
 			}
 		};
@@ -152,7 +152,7 @@ public class DefaultEventDelegateTest
 				assertEquals(10, original.testValue);
 				assertEquals(2, current.testValue);
 				
-				original.testValue = 3;
+				original.testValue = 10;
 				current.testValue = 3;
 			}
 		};

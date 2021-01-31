@@ -121,7 +121,7 @@ class PTup4cTest
 	{
 		PTup4c t = PTup4c.gen('a', 'b', 'c', 'd');
 		
-		assertEquals("ptup4d(x=a, y=b, z=c, w=d)", t.toString());
+		assertEquals("ptup4c(x=a, y=b, z=c, w=d)", t.toString());
 	}
 	
 	/**

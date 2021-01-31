@@ -118,7 +118,7 @@ class PTup3sTest
 	{
 		PTup3s t = PTup3s.gen((short)1, (short)2, (short)3);
 		
-		assertEquals("ptup3s(x=1, y=3, z=3)", t.toString());
+		assertEquals("ptup3s(x=1, y=2, z=3)", t.toString());
 	}
 	
 	/**
