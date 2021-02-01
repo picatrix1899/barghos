@@ -28,7 +28,7 @@ Example: v1.23.2.101
 The major version needs to be incremented in the following cases:
 
 - Big redesigns of existing content, that change its api or its behavior.
-- Removing enire content.
+- Removing entire content.
 
 **API**
 The api version needs to be incremented in the following cases:
