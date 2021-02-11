@@ -59,11 +59,11 @@ public class Tup2obj implements Tup2objRW, Serializable
 	public Object y;
 	
 	/**
-	 * Creates a new instance with all components set to new Object().
+	 * Creates a new instance with all components set to null.
 	 * 
 	 * @since 1.0.0.0
 	 */
-	public Tup2obj() { set(new Object()); }
+	public Tup2obj() { }
 	
 	/**
 	 * Creates a new instance from an existing instance of {@link Tup2objR} and adopts the values.
