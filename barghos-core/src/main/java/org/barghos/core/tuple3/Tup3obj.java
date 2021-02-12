@@ -65,14 +65,11 @@ public class Tup3obj implements Tup3objRW, Serializable
 	public Object z;
 	
 	/**
-	 * Creates a new instance with all components set to new Object().
+	 * Creates a new instance with all components set to null.
 	 * 
 	 * @since 1.0.0.0
 	 */
-	public Tup3obj()
-	{
-		set(new Object());
-	}
+	public Tup3obj() { }
 	
 	/**
 	 * Creates a new instance from an existing instance of {@link Tup3objR} and adopts the values.
