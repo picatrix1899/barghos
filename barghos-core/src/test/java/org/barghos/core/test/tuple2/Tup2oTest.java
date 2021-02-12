@@ -38,7 +38,7 @@ class Tup2oTest
 {
 	/**
 	 * This test ensures, that the constructor {@link Tup2o#Tup2o()} aktually works and
-	 * that the components are set to 0.
+	 * that the components are set to null.
 	 * 
 	 * @since 1.0.0.0
 	 */
