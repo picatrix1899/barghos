@@ -17,6 +17,7 @@ import org.barghos.core.tuple3.Tup3f;
 import org.barghos.core.tuple4.Tup4d;
 import org.barghos.core.tuple4.Tup4f;
 import org.barghos.core.util.BufferUtils;
+import org.barghos.core.util.BufferUtilsPrimitives;
 
 /**
  * This class provides componenttests for the class {@link org.barghos.core.util.BufferUtils BufferUtils}.
@@ -27,6 +28,19 @@ import org.barghos.core.util.BufferUtils;
  */
 class BufferUtilsTest
 {
+	/**
+	 * This test ensures, that the class {@link BufferUtils} extends the class {@link BufferUtilsPrimitives}.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void inheritanceTest()
+	{
+		BufferUtils ext = new BufferUtils() {};
+		
+		assertTrue(ext instanceof BufferUtilsPrimitives);
+	}
+	
 	/**
 	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple2FBuffer(Tup2fR[]) BufferUtils.copyToTuple2FBuffer(Tup2fR...)}
 	 * creates a new {@link FloatBuffer}, puts the values in the right order in the buffer
