@@ -182,7 +182,7 @@ class Tup3boTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup3bo#set(false, true, true)} set the components
+	 * This test ensures, that the function {@link Tup3bo#set(boolean, boolean, boolean)} set the components
 	 * to the respective parameters and returns the current tuple.
 	 * 
 	 * @since 1.0.0.0

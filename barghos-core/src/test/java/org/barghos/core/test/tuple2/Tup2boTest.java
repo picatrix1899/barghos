@@ -161,7 +161,7 @@ class Tup2boTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup2bo#set(false, true)} set the components
+	 * This test ensures, that the function {@link Tup2bo#set(boolean, boolean)} set the components
 	 * to the respective parameters and returns the current tuple.
 	 * 
 	 * @since 1.0.0.0
