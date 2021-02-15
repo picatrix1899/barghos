@@ -231,7 +231,7 @@ class Tup3strTest
 	
 	/**
 	 * This test ensures, that the function {@link Tup3str#getZ()} actually returns the value of the
-	 * y component.
+	 * z component.
 	 * 
 	 * @since 1.0.0.0
 	 */
