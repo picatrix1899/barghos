@@ -117,7 +117,7 @@ class Tup3dTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup3d#setY(float)} sets the y component on the tuple
+	 * This test ensures, that the function {@link Tup3d#setY(double)} sets the y component on the tuple
 	 * to the value and returns the current tuple.
 	 * 
 	 * @since 1.0.0.0
@@ -132,7 +132,7 @@ class Tup3dTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup3d#setZ(float)} sets the z component on the tuple
+	 * This test ensures, that the function {@link Tup3d#setZ(double)} sets the z component on the tuple
 	 * to the value and returns the current tuple.
 	 * 
 	 * @since 1.0.0.0

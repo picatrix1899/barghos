@@ -113,7 +113,7 @@ class Tup2dTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup2d#setY(float)} sets the y component on the tuple
+	 * This test ensures, that the function {@link Tup2d#setY(double)} sets the y component on the tuple
 	 * to the value and returns the current tuple.
 	 * 
 	 * @since 1.0.0.0
