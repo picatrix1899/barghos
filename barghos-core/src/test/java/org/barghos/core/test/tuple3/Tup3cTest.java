@@ -54,7 +54,7 @@ class Tup3cTest
 	
 	/**
 	 * This test ensures, that  the constructor
-	 * {@link Tup2c#Tup2c(org.barghos.core.api.tuple3.Tup3cR) Tup3c.Tup3c(Tup3cR)} actually works and
+	 * {@link Tup3c#Tup3c(org.barghos.core.api.tuple3.Tup3cR) Tup3c.Tup3c(Tup3cR)} actually works and
 	 * that the components are adopted from the input tuple.
 	 * 
 	 * @since 1.0.0.0
