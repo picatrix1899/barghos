@@ -292,7 +292,7 @@ class Tup3cTest
 		assertFalse(t.equals(0.0));
 		assertFalse(t.equals(new Tup3c('b', 'b', 'c'))); // x wrong
 		assertFalse(t.equals(new Tup3c('a', 'c', 'c'))); // y wrong
-		assertFalse(t.equals(new Tup3c('a', 'b', 'd'))); // y wrong
+		assertFalse(t.equals(new Tup3c('a', 'b', 'd'))); // z wrong
 		
 		assertTrue(t.equals(new Tup3c('a', 'b', 'c')));
 		assertTrue(t.equals(PTup3c.gen('a', 'b', 'c')));
