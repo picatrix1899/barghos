@@ -71,14 +71,11 @@ public class Tup4obj implements Tup4objRW, Serializable
 	public Object w;
 	
 	/**
-	 * Creates a new instance with all components set to new Object().
+	 * Creates a new instance with all components set to null.
 	 * 
 	 * @since 1.0.0.0
 	 */
-	public Tup4obj()
-	{
-		set(new Object());
-	}
+	public Tup4obj() { }
 	
 	/**
 	 * Creates a new instance from an existing instance of {@link Tup4strR} and adopts the values.
