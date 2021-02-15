@@ -37,7 +37,7 @@ import org.barghos.core.tuple3.Tup3bo;
 class Tup3boTest
 {
 	/**
-	 * This test ensures, that the constructor {@link Tup2bo#Tup2bo()} aktually works and
+	 * This test ensures, that the constructor {@link Tup3bo#Tup3bo()} aktually works and
 	 * that the components are set to 0.
 	 * 
 	 * @since 1.0.0.0
