@@ -292,7 +292,7 @@ class Tup3bTest
 		assertFalse(t.equals(0.0));
 		assertFalse(t.equals(new Tup3b((byte)2, (byte)2, (byte)3))); // x wrong
 		assertFalse(t.equals(new Tup3b((byte)1, (byte)3, (byte)3))); // y wrong
-		assertFalse(t.equals(new Tup3b((byte)1, (byte)2, (byte)4))); // y wrong
+		assertFalse(t.equals(new Tup3b((byte)1, (byte)2, (byte)4))); // z wrong
 		
 		assertTrue(t.equals(new Tup3b((byte)1, (byte)2, (byte)3)));
 		assertTrue(t.equals(PTup3b.gen((byte)1, (byte)2, (byte)3)));
