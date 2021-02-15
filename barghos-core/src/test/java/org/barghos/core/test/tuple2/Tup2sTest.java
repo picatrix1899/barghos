@@ -53,7 +53,7 @@ class Tup2sTest
 	
 	/**
 	 * This test ensures, that  the constructor
-	 * {@link Tup2s#Tup2s(org.barghos.core.api.tuple2.Tup2sR) Tup2b.Tup2s(Tup2sR)} actually works and
+	 * {@link Tup2s#Tup2s(org.barghos.core.api.tuple2.Tup2sR) Tup2s.Tup2s(Tup2sR)} actually works and
 	 * that the components are adopted from the input tuple.
 	 * 
 	 * @since 1.0.0.0

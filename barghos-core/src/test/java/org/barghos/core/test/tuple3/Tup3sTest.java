@@ -54,7 +54,7 @@ class Tup3sTest
 	
 	/**
 	 * This test ensures, that  the constructor
-	 * {@link Tup3s#Tup3s(org.barghos.core.api.tuple3.Tup3sR) Tup3b.Tup3s(Tup3sR)} actually works and
+	 * {@link Tup3s#Tup3s(org.barghos.core.api.tuple3.Tup3sR) Tup3s.Tup3s(Tup3sR)} actually works and
 	 * that the components are adopted from the input tuple.
 	 * 
 	 * @since 1.0.0.0
