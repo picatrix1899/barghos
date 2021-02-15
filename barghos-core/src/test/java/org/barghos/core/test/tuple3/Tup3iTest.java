@@ -291,7 +291,7 @@ class Tup3iTest
 		assertFalse(t.equals(0.0));
 		assertFalse(t.equals(new Tup3i(2, 2, 3))); // x wrong
 		assertFalse(t.equals(new Tup3i(1, 3, 3))); // y wrong
-		assertFalse(t.equals(new Tup3i(1, 2, 4))); // y wrong
+		assertFalse(t.equals(new Tup3i(1, 2, 4))); // z wrong
 		
 		assertTrue(t.equals(new Tup3i(1, 2, 3)));
 		assertTrue(t.equals(PTup3i.gen(1, 2, 3)));
