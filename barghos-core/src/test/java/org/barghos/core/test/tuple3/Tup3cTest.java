@@ -49,6 +49,7 @@ class Tup3cTest
 		
 		assertEquals(0, t.x);
 		assertEquals(0, t.y);
+		assertEquals(0, t.z);
 	}
 	
 	/**
