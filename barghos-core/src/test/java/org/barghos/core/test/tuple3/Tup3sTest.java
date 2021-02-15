@@ -292,7 +292,7 @@ class Tup3sTest
 		assertFalse(t.equals(0.0));
 		assertFalse(t.equals(new Tup3s((short)2, (short)2, (short)3))); // x wrong
 		assertFalse(t.equals(new Tup3s((short)1, (short)3, (short)3))); // y wrong
-		assertFalse(t.equals(new Tup3s((short)1, (short)2, (short)4))); // y wrong
+		assertFalse(t.equals(new Tup3s((short)1, (short)2, (short)4))); // z wrong
 		
 		assertTrue(t.equals(new Tup3s((short)1, (short)2, (short)3)));
 		assertTrue(t.equals(PTup3s.gen((short)1, (short)2, (short)3)));

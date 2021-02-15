@@ -292,7 +292,7 @@ class Tup3lTest
 		assertFalse(t.equals(0.0));
 		assertFalse(t.equals(new Tup3l(2l, 2l, 3l))); // x wrong
 		assertFalse(t.equals(new Tup3l(1l, 3l, 3l))); // y wrong
-		assertFalse(t.equals(new Tup3l(1l, 2l, 4l))); // y wrong
+		assertFalse(t.equals(new Tup3l(1l, 2l, 4l))); // z wrong
 		
 		assertTrue(t.equals(new Tup3l(1l, 2l, 3l)));
 		assertTrue(t.equals(PTup3l.gen(1l, 2l, 3l)));
