@@ -142,7 +142,7 @@ class Tup3objTest
 	{
 		Tup3obj t = new Tup3obj();
 		
-		assertSame(t, t.setY(3.3));
+		assertSame(t, t.setZ(3.3));
 		assertEquals(3.3, t.y);
 	}
 	
