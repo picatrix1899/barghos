@@ -72,9 +72,9 @@ public class Tup3bo implements Tup3boRW, Serializable
 	}
 	
 	/**
-	 * Creates a new instance from an existing instance of {@link Tup3bR} and adopts the values.
+	 * Creates a new instance from an existing instance of {@link Tup3boR} and adopts the values.
 	 * 
-	 * @param t An existing implementation of {@link Tup3bR} to adopt the values from.
+	 * @param t An existing implementation of {@link Tup3boR} to adopt the values from.
 	 * 
 	 * @since 1.0.0.0
 	 */

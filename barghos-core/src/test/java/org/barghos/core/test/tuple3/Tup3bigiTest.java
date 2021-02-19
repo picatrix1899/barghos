@@ -266,7 +266,7 @@ class Tup3bigiTest
 	}
 	
 	/**
-	 * This test ensures, that the {@link Tup3i#toString()} function prints the components correctly.
+	 * This test ensures, that the {@link Tup3bigi#toString()} function prints the components correctly.
 	 * 
 	 * @since 1.0.0.0
 	 */

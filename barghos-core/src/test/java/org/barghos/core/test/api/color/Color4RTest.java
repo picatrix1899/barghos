@@ -13,7 +13,7 @@ import org.barghos.core.api.color.Color4R;
  * 
  *  @since 1.0.0.0
  */
-public class Color4RTest
+class Color4RTest
 {
 	/**
 	 * This test ensures, that the function {@link Color4R#getX()} returns

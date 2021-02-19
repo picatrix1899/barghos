@@ -39,6 +39,12 @@ public interface FunctionWithException<T,R>
 	 * This function is exactly like {@link java.util.function.Function#apply(Object)} but it allows to
 	 * throw exceptions.
 	 * 
+	 * @param t The function argument
+	 * 
+	 * @return The function result
+	 * 
+	 * @throws Exception Passes the unhandled exceptions from the function
+	 * 
 	 * @since 1.0.0.0
 	 */
 	R apply(T t) throws Exception;

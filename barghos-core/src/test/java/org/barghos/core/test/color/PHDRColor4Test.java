@@ -151,7 +151,7 @@ class PHDRColor4Test
 	}
 	
 	/**
-	 * This test ensures, that the function {@link PHDRColor4#gen(int, int, int)}
+	 * This test ensures, that the function {@link PHDRColor4#gen(int, int, int, int)}
 	 * sets the components to the corresponding parameters. Also it ensures that the parameters don't get
 	 * clamped.
 	 * 

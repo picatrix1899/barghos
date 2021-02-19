@@ -148,6 +148,7 @@ public abstract class BufferUtilsPrimitives
 	/**
 	 * Copies the given elements to the ByteBuffer.
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The ByteBuffer.
@@ -193,6 +194,7 @@ public abstract class BufferUtilsPrimitives
 	/**
 	 * Copies the given elements to the ByteBuffer.
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The ByteBuffer.
@@ -230,6 +232,7 @@ public abstract class BufferUtilsPrimitives
 	/**
 	 * Copies the given elements to the ShortBuffer.
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The ShortBuffer.
@@ -275,6 +278,7 @@ public abstract class BufferUtilsPrimitives
 	/**
 	 * Copies the given elements to the ShortBuffer.
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The ShortBuffer.
@@ -312,6 +316,7 @@ public abstract class BufferUtilsPrimitives
 	/**
 	 * Copies the given elements to the IntBuffer.
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The IntBuffer.
@@ -357,6 +362,7 @@ public abstract class BufferUtilsPrimitives
 	/**
 	 * Copies the given elements to the IntBuffer.
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The IntBuffer.
@@ -394,6 +400,7 @@ public abstract class BufferUtilsPrimitives
 	/**
 	 * Copies the given elements to the LongBuffer.
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The LongBuffer.
@@ -439,6 +446,7 @@ public abstract class BufferUtilsPrimitives
 	/**
 	 * Copies the given elements to the LongBuffer.
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The LongBuffer.
@@ -476,6 +484,7 @@ public abstract class BufferUtilsPrimitives
 	/**
 	 * Copies the given elements to the FloatBuffer.
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The FloatBuffer.
@@ -521,6 +530,7 @@ public abstract class BufferUtilsPrimitives
 	/**
 	 * Copies the given elements to the FloatBuffer.
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The FloatBuffer.
@@ -558,6 +568,7 @@ public abstract class BufferUtilsPrimitives
 	/**
 	 * Copies the given elements to the DoubleBuffer.
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The DoubleBuffer.
@@ -603,6 +614,7 @@ public abstract class BufferUtilsPrimitives
 	/**
 	 * Copies the given elements to the DoubleBuffer.
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The DoubleBuffer.
@@ -643,6 +655,7 @@ public abstract class BufferUtilsPrimitives
 	/**
 	 * Copies the given elements to the ByteBuffer and flips it so it can be read.
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The ByteBuffer.
@@ -687,6 +700,7 @@ public abstract class BufferUtilsPrimitives
 	/**
 	 * Copies the given elements to the ByteBuffer and flips it so it can be read.
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The ByteBuffer.
@@ -727,6 +741,7 @@ public abstract class BufferUtilsPrimitives
 	/**
 	 * Copies the given elements to the ShortBuffer and flips it so it can be read.
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The ShortBuffer.
@@ -771,6 +786,7 @@ public abstract class BufferUtilsPrimitives
 	/**
 	 * Copies the given elements to the ShortBuffer and flips it so it can be read.
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The ShortBuffer.
@@ -811,6 +827,7 @@ public abstract class BufferUtilsPrimitives
 	/**
 	 * Copies the given elements to the IntBuffer and flips it so it can be read.
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The IntBuffer.
@@ -855,6 +872,7 @@ public abstract class BufferUtilsPrimitives
 	/**
 	 * Copies the given elements to the IntBuffer and flips it so it can be read.
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The IntBuffer.
@@ -895,6 +913,7 @@ public abstract class BufferUtilsPrimitives
 	/**
 	 * Copies the given elements to the LongBuffer and flips it so it can be read.
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The LongBuffer.
@@ -939,6 +958,7 @@ public abstract class BufferUtilsPrimitives
 	/**
 	 * Copies the given elements to the LongBuffer and flips it so it can be read.
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The LongBuffer.
@@ -979,6 +999,7 @@ public abstract class BufferUtilsPrimitives
 	/**
 	 * Copies the given elements to the FloatBuffer and flips it so it can be read.
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The FloatBuffer.
@@ -1023,6 +1044,7 @@ public abstract class BufferUtilsPrimitives
 	/**
 	 * Copies the given elements to the FloatBuffer and flips it so it can be read.
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The FloatBuffer.
@@ -1063,6 +1085,7 @@ public abstract class BufferUtilsPrimitives
 	/**
 	 * Copies the given elements to the DoubleBuffer and flips it so it can be read.
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The DoubleBuffer.
@@ -1107,6 +1130,7 @@ public abstract class BufferUtilsPrimitives
 	/**
 	 * Copies the given elements to the DoubleBuffer and flips it so it can be read.
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The DoubleBuffer.

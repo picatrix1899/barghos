@@ -38,6 +38,10 @@ public interface SupplierWithException<R>
 	 * This function is exactly like {@link java.util.function.Supplier#get()} but it allows to
 	 * throw exceptions.
 	 * 
+	 * @return A result
+	 * 
+	 * @throws Exception Passes unhandled exceptions from the function.
+	 * 
 	 * @since 1.0.0.0
 	 */
 	R get() throws Exception;

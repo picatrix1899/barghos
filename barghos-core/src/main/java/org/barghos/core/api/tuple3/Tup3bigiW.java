@@ -66,7 +66,7 @@ public interface Tup3bigiW
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @sice 1.0.0.0
+	 * @since 1.0.0.0
 	 */
 	Tup3bigiW setZ(BigInteger z);
 	

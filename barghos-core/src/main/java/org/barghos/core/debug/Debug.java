@@ -51,7 +51,7 @@ public class Debug
 	public static boolean PRINT_STACK_ELEMENT = false;
 	
 	/**
-	 * Prints the entire stack of the current thread to the standard error stream if {@link Debug.DEBUG_MODE} is true.
+	 * Prints the entire stack of the current thread to the standard error stream if {@link Debug#DEBUG_MODE} is true.
 	 * 
 	 * @since 1.0.0.0
 	 */
@@ -64,9 +64,9 @@ public class Debug
 	}
 	
 	/**
-	 * Prints a boolean value to {@link System.out} if {@link Debug.DEBUG_MODE} is true.
+	 * Prints a boolean value to {@link System#out} if {@link Debug#DEBUG_MODE} is true.
 	 * This behaves like a call to {@link java.io.PrintStream#print(boolean)}.
-	 * If {@link PRINT_STACK_ELEMENT} is true, the name of the current element in the stack (e.g. current function)
+	 * If {@link Debug#PRINT_STACK_ELEMENT} is true, the name of the current element in the stack (e.g. current function)
 	 * is appended before the value.
 	 * 
 	 * @param b The boolean to be printed
@@ -83,9 +83,9 @@ public class Debug
 	}
 	
 	/**
-	 * Prints a character to {@link System.out} if {@link Debug.DEBUG_MODE} is true.
+	 * Prints a character to {@link System#out} if {@link Debug#DEBUG_MODE} is true.
 	 * This behaves like a call to {@link java.io.PrintStream#print(char)}.
-	 * If {@link PRINT_STACK_ELEMENT} is true, the name of the current element in the stack (e.g. current function)
+	 * If {@link Debug#PRINT_STACK_ELEMENT} is true, the name of the current element in the stack (e.g. current function)
 	 * is appended before the value.
 	 * 
 	 * @param c The character to be printed
@@ -102,9 +102,9 @@ public class Debug
 	}
 	
 	/**
-	 * Prints an array of characters to {@link System.out} if {@link Debug.DEBUG_MODE} is true.
+	 * Prints an array of characters to {@link System#out} if {@link Debug#DEBUG_MODE} is true.
 	 * This behaves like a call to {@link java.io.PrintStream#print(char[])}.
-	 * If {@link PRINT_STACK_ELEMENT} is true, the name of the current element in the stack (e.g. current function)
+	 * If {@link Debug#PRINT_STACK_ELEMENT} is true, the name of the current element in the stack (e.g. current function)
 	 * is appended before the value.
 	 * 
 	 * @param c The characters to be printed
@@ -121,9 +121,9 @@ public class Debug
 	}
 	
 	/**
-	 * Prints a float value to {@link System.out} if {@link Debug.DEBUG_MODE} is true.
+	 * Prints a float value to {@link System#out} if {@link Debug#DEBUG_MODE} is true.
 	 * This behaves like a call to {@link java.io.PrintStream#print(float)}.
-	 * If {@link PRINT_STACK_ELEMENT} is true, the name of the current element in the stack (e.g. current function)
+	 * If {@link Debug#PRINT_STACK_ELEMENT} is true, the name of the current element in the stack (e.g. current function)
 	 * is appended before the value.
 	 * 
 	 * @param f The float to be printed
@@ -140,9 +140,9 @@ public class Debug
 	}
 	
 	/**
-	 * Prints a double value to {@link System.out} if {@link Debug.DEBUG_MODE} is true.
+	 * Prints a double value to {@link System#out} if {@link Debug#DEBUG_MODE} is true.
 	 * This behaves like a call to {@link java.io.PrintStream#print(double)}.
-	 * If {@link PRINT_STACK_ELEMENT} is true, the name of the current element in the stack (e.g. current function)
+	 * If {@link Debug#PRINT_STACK_ELEMENT} is true, the name of the current element in the stack (e.g. current function)
 	 * is appended before the value.
 	 * 
 	 * @param d The double to be printed
@@ -159,9 +159,9 @@ public class Debug
 	}
 	
 	/**
-	 * Prints an integer to {@link System.out} if {@link Debug.DEBUG_MODE} is true.
+	 * Prints an integer to {@link System#out} if {@link Debug#DEBUG_MODE} is true.
 	 * This behaves like a call to {@link java.io.PrintStream#print(int)}.
-	 * If {@link PRINT_STACK_ELEMENT} is true, the name of the current element in the stack (e.g. current function)
+	 * If {@link Debug#PRINT_STACK_ELEMENT} is true, the name of the current element in the stack (e.g. current function)
 	 * is appended before the value.
 	 * 
 	 * @param i The interger to be printed
@@ -178,9 +178,9 @@ public class Debug
 	}
 	
 	/**
-	 * Prints a long value to {@link System.out} if {@link Debug.DEBUG_MODE} is true.
+	 * Prints a long value to {@link System#out} if {@link Debug#DEBUG_MODE} is true.
 	 * This behaves like a call to {@link java.io.PrintStream#print(long)}.
-	 * If {@link PRINT_STACK_ELEMENT} is true, the name of the current element in the stack (e.g. current function)
+	 * If {@link Debug#PRINT_STACK_ELEMENT} is true, the name of the current element in the stack (e.g. current function)
 	 * is appended before the value.
 	 * 
 	 * @param l The long to be printed
@@ -197,9 +197,9 @@ public class Debug
 	}
 	
 	/**
-	 * Prints an object to {@link System.out} if {@link Debug.DEBUG_MODE} is true.
+	 * Prints an object to {@link System#out} if {@link Debug#DEBUG_MODE} is true.
 	 * This behaves like a call to {@link java.io.PrintStream#print(Object)}.
-	 * If {@link PRINT_STACK_ELEMENT} is true, the name of the current element in the stack (e.g. current function)
+	 * If {@link Debug#PRINT_STACK_ELEMENT} is true, the name of the current element in the stack (e.g. current function)
 	 * is appended before the value.
 	 * 
 	 * @param o The object to be printed
@@ -216,9 +216,9 @@ public class Debug
 	}
 	
 	/**
-	 * Prints a string to {@link System.out} if {@link Debug.DEBUG_MODE} is true.
+	 * Prints a string to {@link System#out} if {@link Debug#DEBUG_MODE} is true.
 	 * This behaves like a call to {@link java.io.PrintStream#print(String)}.
-	 * If {@link PRINT_STACK_ELEMENT} is true, the name of the current element in the stack (e.g. current function)
+	 * If {@link Debug#PRINT_STACK_ELEMENT} is true, the name of the current element in the stack (e.g. current function)
 	 * is appended before the value.
 	 * 
 	 * @param s The string to be printed
@@ -235,9 +235,9 @@ public class Debug
 	}
 
 	/**
-	 * Prints a boolean value to {@link System.out} and terminates the line if {@link Debug.DEBUG_MODE} is true.
+	 * Prints a boolean value to {@link System#out} and terminates the line if {@link Debug#DEBUG_MODE} is true.
 	 * This behaves like a call to {@link java.io.PrintStream#println(boolean)}.
-	 * If {@link PRINT_STACK_ELEMENT} is true, the name of the current element in the stack (e.g. current function)
+	 * If {@link Debug#PRINT_STACK_ELEMENT} is true, the name of the current element in the stack (e.g. current function)
 	 * is appended before the value.
 	 * 
 	 * @param b The boolean to be printed
@@ -254,9 +254,9 @@ public class Debug
 	}
 	
 	/**
-	 * Prints a character to {@link System.out} and terminates the line if {@link Debug.DEBUG_MODE} is true.
+	 * Prints a character to {@link System#out} and terminates the line if {@link Debug#DEBUG_MODE} is true.
 	 * This behaves like a call to {@link java.io.PrintStream#println(char)}.
-	 * If {@link PRINT_STACK_ELEMENT} is true, the name of the current element in the stack (e.g. current function)
+	 * If {@link Debug#PRINT_STACK_ELEMENT} is true, the name of the current element in the stack (e.g. current function)
 	 * is appended before the value.
 	 * 
 	 * @param c The character to be printed
@@ -273,9 +273,9 @@ public class Debug
 	}
 	
 	/**
-	 * Prints an array of characters to {@link System.out} and terminates the line if {@link Debug.DEBUG_MODE} is true.
+	 * Prints an array of characters to {@link System#out} and terminates the line if {@link Debug#DEBUG_MODE} is true.
 	 * This behaves like a call to {@link java.io.PrintStream#println(char[])}.
-	 * If {@link PRINT_STACK_ELEMENT} is true, the name of the current element in the stack (e.g. current function)
+	 * If {@link Debug#PRINT_STACK_ELEMENT} is true, the name of the current element in the stack (e.g. current function)
 	 * is appended before the value.
 	 * 
 	 * @param c The characters to be printed
@@ -292,9 +292,9 @@ public class Debug
 	}
 	
 	/**
-	 * Prints a float value to {@link System.out} and terminates the line if {@link Debug.DEBUG_MODE} is true.
+	 * Prints a float value to {@link System#out} and terminates the line if {@link Debug#DEBUG_MODE} is true.
 	 * This behaves like a call to {@link java.io.PrintStream#println(float)}.
-	 * If {@link PRINT_STACK_ELEMENT} is true, the name of the current element in the stack (e.g. current function)
+	 * If {@link Debug#PRINT_STACK_ELEMENT} is true, the name of the current element in the stack (e.g. current function)
 	 * is appended before the value.
 	 * 
 	 * @param f The float to be printed
@@ -311,9 +311,9 @@ public class Debug
 	}
 	
 	/**
-	 * Prints a double value to {@link System.out} and terminates the line if {@link Debug.DEBUG_MODE} is true.
+	 * Prints a double value to {@link System#out} and terminates the line if {@link Debug#DEBUG_MODE} is true.
 	 * This behaves like a call to {@link java.io.PrintStream#println(double)}.
-	 * If {@link PRINT_STACK_ELEMENT} is true, the name of the current element in the stack (e.g. current function)
+	 * If {@link Debug#PRINT_STACK_ELEMENT} is true, the name of the current element in the stack (e.g. current function)
 	 * is appended before the value.
 	 * 
 	 * @param d The double to be printed
@@ -330,9 +330,9 @@ public class Debug
 	}
 	
 	/**
-	 * Prints an integer value to {@link System.out} and terminates the line if {@link Debug.DEBUG_MODE} is true.
+	 * Prints an integer value to {@link System#out} and terminates the line if {@link Debug#DEBUG_MODE} is true.
 	 * This behaves like a call to {@link java.io.PrintStream#println(int)}.
-	 * If {@link PRINT_STACK_ELEMENT} is true, the name of the current element in the stack (e.g. current function)
+	 * If {@link Debug#PRINT_STACK_ELEMENT} is true, the name of the current element in the stack (e.g. current function)
 	 * is appended before the value.
 	 * 
 	 * @param i The int to be printed
@@ -349,9 +349,9 @@ public class Debug
 	}
 	
 	/**
-	 * Prints a long value to {@link System.out} and terminates the line if {@link Debug.DEBUG_MODE} is true.
+	 * Prints a long value to {@link System#out} and terminates the line if {@link Debug#DEBUG_MODE} is true.
 	 * This behaves like a call to {@link java.io.PrintStream#println(long)}.
-	 * If {@link PRINT_STACK_ELEMENT} is true, the name of the current element in the stack (e.g. current function)
+	 * If {@link Debug#PRINT_STACK_ELEMENT} is true, the name of the current element in the stack (e.g. current function)
 	 * is appended before the value.
 	 * 
 	 * @param l The long to be printed
@@ -368,9 +368,9 @@ public class Debug
 	}
 	
 	/**
-	 * Prints an object to {@link System.out} and terminates the line if {@link Debug.DEBUG_MODE} is true.
+	 * Prints an object to {@link System#out} and terminates the line if {@link Debug#DEBUG_MODE} is true.
 	 * This behaves like a call to {@link java.io.PrintStream#println(Object)}.
-	 * If {@link PRINT_STACK_ELEMENT} is true, the name of the current element in the stack (e.g. current function)
+	 * If {@link Debug#PRINT_STACK_ELEMENT} is true, the name of the current element in the stack (e.g. current function)
 	 * is appended before the value.
 	 * 
 	 * @param o The object to be printed
@@ -387,9 +387,9 @@ public class Debug
 	}
 	
 	/**
-	 * Prints a string to {@link System.out} and terminates the line if {@link Debug.DEBUG_MODE} is true.
+	 * Prints a string to {@link System#out} and terminates the line if {@link Debug#DEBUG_MODE} is true.
 	 * This behaves like a call to {@link java.io.PrintStream#println(String)}.
-	 * If {@link PRINT_STACK_ELEMENT} is true, the name of the current element in the stack (e.g. current function)
+	 * If {@link Debug#PRINT_STACK_ELEMENT} is true, the name of the current element in the stack (e.g. current function)
 	 * is appended before the value.
 	 * 
 	 * @param s The string to be printed

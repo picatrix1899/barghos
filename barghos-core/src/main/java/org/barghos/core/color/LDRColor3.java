@@ -433,7 +433,16 @@ public class LDRColor3 implements LDRColor3R
 	{
 		return Math.round(this.b * 255);
 	}
-
+	
+	/**
+	 * Clamps the float value to unit space from 0.0 to 1.0.
+	 * 
+	 * @param value The value to be clamped.
+	 * 
+	 * @return The clamped value.
+	 * 
+	 * @since 1.0.0.0
+	 */
 	private float clamp(float value)
 	{
 		return value > 1.0f ? 1.0f : value < 0.0f ? 0.0f : value;

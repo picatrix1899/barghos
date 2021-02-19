@@ -78,9 +78,9 @@ public class Tup4obj implements Tup4objRW, Serializable
 	public Tup4obj() { }
 	
 	/**
-	 * Creates a new instance from an existing instance of {@link Tup4strR} and adopts the values.
+	 * Creates a new instance from an existing instance of {@link Tup4objR} and adopts the values.
 	 * 
-	 * @param t An existing implementation of {@link Tup4strR} to adopt the values from.
+	 * @param t An existing implementation of {@link Tup4objR} to adopt the values from.
 	 * 
 	 * @since 1.0.0.0
 	 */

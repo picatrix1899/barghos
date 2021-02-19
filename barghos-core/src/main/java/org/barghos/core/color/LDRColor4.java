@@ -221,10 +221,10 @@ public class LDRColor4 implements LDRColor4R
 	}
 	
 	/**
-	 * Sets the red component to x.
-	 * x is interpreted as in unitspace (0.0 - 1.0) but can exceed these limits.
+	 * Sets the red component to r.
+	 * r is interpreted as in unitspace (0.0 - 1.0) but can exceed these limits.
 	 * 
-	 * @param x The red component in unitspace.
+	 * @param r The red component in unitspace.
 	 * 
 	 * @return The current color.
 	 * 
@@ -238,10 +238,10 @@ public class LDRColor4 implements LDRColor4R
 	}
 	
 	/**
-	 * Sets the green component to y.
-	 * y is interpreted as in unitspace (0.0 - 1.0) but can exceed these limits.
+	 * Sets the green component to g.
+	 * g is interpreted as in unitspace (0.0 - 1.0) but can exceed these limits.
 	 * 
-	 * @param y The green component in unitspace.
+	 * @param g The green component in unitspace.
 	 * 
 	 * @return The current color.
 	 * 
@@ -255,10 +255,10 @@ public class LDRColor4 implements LDRColor4R
 	}
 	
 	/**
-	 * Sets the blue component to z.
-	 * z is interpreted as in unitspace (0.0 - 1.0) but can exceed these limits.
+	 * Sets the blue component to b.
+	 * b is interpreted as in unitspace (0.0 - 1.0) but can exceed these limits.
 	 * 
-	 * @param z The blue component in unitspace.
+	 * @param b The blue component in unitspace.
 	 * 
 	 * @return The current color.
 	 * 
@@ -501,7 +501,16 @@ public class LDRColor4 implements LDRColor4R
 	{
 		return Math.round(this.a * 255);
 	}
-
+	
+	/**
+	 * Clamps the float value to unit space from 0.0 to 1.0.
+	 * 
+	 * @param value The value to be clamped.
+	 * 
+	 * @return The clamped value.
+	 * 
+	 * @since 1.0.0.0
+	 */
 	private float clamp(float value)
 	{
 		return value > 1.0f ? 1.0f : value < 0.0f ? 0.0f : value;

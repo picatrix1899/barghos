@@ -224,7 +224,7 @@ class Tup4bigdTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup34bigd#getX()} actually returns the value of the
+	 * This test ensures, that the function {@link Tup4bigd#getX()} actually returns the value of the
 	 * x component.
 	 * 
 	 * @since 1.0.0.0
@@ -304,7 +304,7 @@ class Tup4bigdTest
 	}
 	
 	/**
-	 * This test ensures, that the {@link Tup4d#toString()} function prints the components correctly.
+	 * This test ensures, that the {@link Tup4bigd#toString()} function prints the components correctly.
 	 * 
 	 * @since 1.0.0.0
 	 */

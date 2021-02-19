@@ -266,7 +266,7 @@ class Tup3bigdTest
 	}
 	
 	/**
-	 * This test ensures, that the {@link Tup3d#toString()} function prints the components correctly.
+	 * This test ensures, that the {@link Tup3bigd#toString()} function prints the components correctly.
 	 * 
 	 * @since 1.0.0.0
 	 */

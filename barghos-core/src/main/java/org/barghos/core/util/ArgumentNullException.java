@@ -32,6 +32,10 @@ package org.barghos.core.util;
  */
 public class ArgumentNullException extends IllegalArgumentException
 {
+	/**
+	 * This constant contains the current version of this class.
+	 * It is used to distinguish between different serialized versions of this class.
+	 */
 	private static final long serialVersionUID = 1L;
 	
 	/**

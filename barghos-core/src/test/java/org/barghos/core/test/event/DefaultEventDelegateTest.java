@@ -16,7 +16,7 @@ import org.barghos.core.event.DefaultEventDelegate;
  * 
  * @since 1.0.0.0
  */
-public class DefaultEventDelegateTest
+class DefaultEventDelegateTest
 {
 	/**
 	 * This test ensures, that the function {@link DefaultEventDelegate#registerReceiver(EventReceiver)}
@@ -220,7 +220,7 @@ public class DefaultEventDelegateTest
 	{
 		/**
 		 * This member will be set to true,
-		 * if the function {@link TestEventReceiver#raise(TestEvent, TestEvent)}
+		 * if the function {@link org.barghos.core.test.event.DefaultEventDelegateTest.TestEventReceiver#raise(TestEvent, TestEvent) TestEventReceiver.raise(TestEvent, TestEvent)}
 		 * was called. It is safe to reset it
 		 * back to false;
 		 */

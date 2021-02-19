@@ -64,7 +64,7 @@ public interface Tup3dW
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @sice 1.0.0.0
+	 * @since 1.0.0.0
 	 */
 	Tup3dW setZ(double z);
 	

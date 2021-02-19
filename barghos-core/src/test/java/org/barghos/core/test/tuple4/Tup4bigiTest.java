@@ -187,7 +187,7 @@ class Tup4bigiTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup3bigi#set(BigInteger)} sets the components
+	 * This test ensures, that the function {@link Tup4bigi#set(BigInteger)} sets the components
 	 * to the value and returns the current tuple.
 	 * 
 	 * @since 1.0.0.0
@@ -304,7 +304,7 @@ class Tup4bigiTest
 	}
 	
 	/**
-	 * This test ensures, that the {@link Tup4i#toString()} function prints the components correctly.
+	 * This test ensures, that the {@link Tup4bigi#toString()} function prints the components correctly.
 	 * 
 	 * @since 1.0.0.0
 	 */

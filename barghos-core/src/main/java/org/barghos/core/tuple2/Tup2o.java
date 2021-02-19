@@ -59,9 +59,9 @@ public class Tup2o<X,Y> implements Tup2oRW<X,Y>
 	public Tup2o() { }
 	
 	/**
-	 * Creates a new instance from an existing instance of {@link Tup2strR} and adopts the values.
+	 * Creates a new instance from an existing instance of {@link Tup2oR} and adopts the values.
 	 * 
-	 * @param t An existing implementation of {@link Tup2strR} to adopt the values from.
+	 * @param t An existing implementation of {@link Tup2oR} to adopt the values from.
 	 * 
 	 * @since 1.0.0.0
 	 */

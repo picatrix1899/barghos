@@ -80,6 +80,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * Copies the given tuples to the FloatBuffer.
 	 * They are safed tuplewise componentwise (t1.x, t1.y, t2.x, t2.y, ...).
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The FloatBuffer.
@@ -140,6 +141,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * Copies the given tuples to the FloatBuffer.
 	 * They are safed tuplewise componentwise (t1.x, t1.y, t2.x, t2.y, ...).
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The FloatBuffer.
@@ -200,6 +202,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * Copies the given tuples to the DoubleBuffer.
 	 * They are safed tuplewise componentwise (t1.x, t1.y, t2.x, t2.y, ...).
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The DoubleBuffer.
@@ -260,6 +263,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * Copies the given tuples to the DoubleBuffer.
 	 * They are safed tuplewise componentwise (t1.x, t1.y, t2.x, t2.y, ...).
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The DoubleBuffer.
@@ -321,6 +325,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * Copies the given tuples to the FloatBuffer.
 	 * They are safed tuplewise componentwise (t1.x, t1.y, t1.z, t2.x, t2.y, t2.z, ...).
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The FloatBuffer.
@@ -383,6 +388,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * Copies the given tuples to the FloatBuffer.
 	 * They are safed tuplewise componentwise (t1.x, t1.y, t1.z, t2.x, t2.y, t2.z, ...).
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The FloatBuffer.
@@ -445,6 +451,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * Copies the given tuples to the DoubleBuffer.
 	 * They are safed tuplewise componentwise (t1.x, t1.y, t1.z, t2.x, t2.y, t2.z, ...).
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The DoubleBuffer.
@@ -507,6 +514,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * Copies the given tuples to the DoubleBuffer.
 	 * They are safed tuplewise componentwise (t1.x, t1.y, t1.z, t2.x, t2.y, t2.z, ...).
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The DoubleBuffer.
@@ -570,6 +578,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * Copies the given tuples to the FloatBuffer.
 	 * They are safed tuplewise componentwise (t1.x, t1.y, t1.z t1.w,, t2.x, t2.y, t2.z, t2.w, ...).
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The FloatBuffer.
@@ -634,6 +643,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * Copies the given tuples to the FloatBuffer.
 	 * They are safed tuplewise componentwise (t1.x, t1.y, t1.z t1.w,, t2.x, t2.y, t2.z, t2.w, ...).
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The FloatBuffer.
@@ -698,6 +708,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * Copies the given tuples to the DoubleBuffer.
 	 * They are safed tuplewise componentwise (t1.x, t1.y, t1.z t1.w,, t2.x, t2.y, t2.z, t2.w, ...).
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The DoubleBuffer.
@@ -762,6 +773,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * Copies the given tuples to the DoubleBuffer.
 	 * They are safed tuplewise componentwise (t1.x, t1.y, t1.z t1.w,, t2.x, t2.y, t2.z, t2.w, ...).
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The DoubleBuffer.
@@ -816,6 +828,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * Copies the given tuples to the FloatBuffer and flips it so it can be read.
 	 * They are safed tuplewise componentwise (t1.x, t1.y, t2.x, t2.y, ...).
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The FloatBuffer.
@@ -864,6 +877,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * Copies the given tuples to the FloatBuffer and flips it so it can be read.
 	 * They are safed tuplewise componentwise (t1.x, t1.y, t2.x, t2.y, ...).
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The FloatBuffer.
@@ -912,6 +926,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * Copies the given tuples to the DoubleBuffer and flips it so it can be read.
 	 * They are safed tuplewise componentwise (t1.x, t1.y, t2.x, t2.y, ...).
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The DoubleBuffer.
@@ -960,6 +975,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * Copies the given tuples to the DoubleBuffer and flips it so it can be read.
 	 * They are safed tuplewise componentwise (t1.x, t1.y, t2.x, t2.y, ...).
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The DoubleBuffer.
@@ -1008,6 +1024,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * Copies the given tuples to the FloatBuffer and flips it so it can be read.
 	 * They are safed tuplewise componentwise (t1.x, t1.y, t1.z, t2.x, t2.y, t2.z, ...).
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The FloatBuffer.
@@ -1056,6 +1073,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * Copies the given tuples to the FloatBuffer and flips it so it can be read.
 	 * They are safed tuplewise componentwise (t1.x, t1.y, t1.z, t2.x, t2.y, t2.z, ...).
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The FloatBuffer.
@@ -1104,6 +1122,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * Copies the given tuples to the DoubleBuffer and flips it so it can be read.
 	 * They are safed tuplewise componentwise (t1.x, t1.y, t1.z, t2.x, t2.y, t2.z, ...).
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The DoubleBuffer.
@@ -1152,6 +1171,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * Copies the given tuples to the DoubleBuffer and flips it so it can be read.
 	 * They are safed tuplewise componentwise (t1.x, t1.y, t1.z, t2.x, t2.y, t2.z, ...).
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The DoubleBuffer.
@@ -1200,6 +1220,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * Copies the given tuples to the FloatBuffer and flips it so it can be read.
 	 * They are safed tuplewise componentwise (t1.x, t1.y, t1.z t1.w,, t2.x, t2.y, t2.z, t2.w, ...).
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The FloatBuffer.
@@ -1248,6 +1269,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * Copies the given tuples to the FloatBuffer and flips it so it can be read.
 	 * They are safed tuplewise componentwise (t1.x, t1.y, t1.z t1.w,, t2.x, t2.y, t2.z, t2.w, ...).
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The FloatBuffer.
@@ -1296,6 +1318,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * Copies the given tuples to the DoubleBuffer and flips it so it can be read.
 	 * They are safed tuplewise componentwise (t1.x, t1.y, t1.z t1.w,, t2.x, t2.y, t2.z, t2.w, ...).
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The DoubleBuffer.
@@ -1344,6 +1367,7 @@ public abstract class BufferUtils extends BufferUtilsPrimitives
 	 * Copies the given tuples to the DoubleBuffer and flips it so it can be read.
 	 * They are safed tuplewise componentwise (t1.x, t1.y, t1.z t1.w,, t2.x, t2.y, t2.z, t2.w, ...).
 	 * 
+	 * @param buffer The buffer all the elements should be written to.
 	 * @param v The elements that should be saved in the buffer.
 	 * 
 	 * @return The DoubleBuffer.

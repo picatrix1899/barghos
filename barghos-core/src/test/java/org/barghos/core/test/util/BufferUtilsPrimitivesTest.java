@@ -640,7 +640,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToDoubleBuffer(DoubleBuffer, float[]) BufferUtilsPrimitives.copyToDoubleBuffer(DoubleBuffer, double...)}
+	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToDoubleBuffer(DoubleBuffer, double[]) BufferUtilsPrimitives.copyToDoubleBuffer(DoubleBuffer, double...)}
 	 * puts the values in the right order in the buffer and advances the position.
 	 * 
 	 * @since 1.0.0.0

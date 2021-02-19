@@ -77,9 +77,9 @@ public class Tup4l implements Tup4lRW, Serializable
 	}
 	
 	/**
-	 * Creates a new instance from an existing instance of {@link Tup4iR} and adopts the values.
+	 * Creates a new instance from an existing instance of {@link Tup4lR} and adopts the values.
 	 * 
-	 * @param t An existing implementation of {@link Tup4iR} to adopt the values from.
+	 * @param t An existing implementation of {@link Tup4lR} to adopt the values from.
 	 * 
 	 * @since 1.0.0.0
 	 */

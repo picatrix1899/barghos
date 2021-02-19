@@ -28,7 +28,7 @@ package org.barghos.core.api.pool;
  * 
  * @author picatrix1899
  * 
- * @sice 1.0.0.0
+ * @since 1.0.0.0
  */
 public interface PoolFactory
 {

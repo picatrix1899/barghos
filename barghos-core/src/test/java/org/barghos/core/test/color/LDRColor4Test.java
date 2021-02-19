@@ -69,7 +69,7 @@ class LDRColor4Test
 	
 	/**
 	 * This test ensures, that the constructor
-	 * {@link LDRColor4#LDRColor4(org.barghos.core.api.tuple3.Tup3iR) LDRColor4.LDRColor4(Tup3iR)}
+	 * {@link LDRColor4#LDRColor4(org.barghos.core.api.tuple4.Tup4iR) LDRColor4.LDRColor4(Tup4iR)}
 	 * aktually works and that the components are adopted from the tuple in color space (0 - 255). Also it ensures,
 	 * that the adopted values are getting clamped to the range from 0 to 255.
 	 * 
@@ -580,7 +580,7 @@ class LDRColor4Test
 	
 	/**
 	 * This test ensures, that the function
-	 * {@link LDRColor4#set(org.barghos.core.api.tuple3.Tup3iR) LDRColor4.set(Tup3iR)}
+	 * {@link LDRColor4#set(org.barghos.core.api.tuple4.Tup4iR) LDRColor4.set(Tup4iR)}
 	 * adopts the components from the tuple in color space (0 - 255). Also it ensures,
 	 * that the adopted values are clamped to the range from 0 to 255.
 	 * 

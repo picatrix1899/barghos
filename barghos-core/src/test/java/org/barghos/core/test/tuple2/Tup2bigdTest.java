@@ -228,7 +228,7 @@ class Tup2bigdTest
 	}
 	
 	/**
-	 * This test ensures, that the {@link Tup2d#toString()} function prints the components correctly.
+	 * This test ensures, that the {@link Tup2bigd#toString()} function prints the components correctly.
 	 * 
 	 * @since 1.0.0.0
 	 */

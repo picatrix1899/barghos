@@ -63,11 +63,13 @@ public interface Pool<T>
 	/**
 	 * Stores one or more instances in the pool.
 	 * 
-	 * @param t instances of the type of the pool.
+	 * @param instances Instances of the type of the pool.
+	 * 
+	 * @return The number of instances inserted into the pool.
 	 * 
 	 * @since 1.0.0.0
 	 */
-	int store(@SuppressWarnings("unchecked") T... instance);
+	int store(@SuppressWarnings("unchecked") T... instances);
 	
 	/**
 	 * Returns the current instance count in the pool.
@@ -89,7 +91,7 @@ public interface Pool<T>
 	/**
 	 * Removes all instances from the pool and therefore make them available to the garbage collector.
 	 * 
-	 * @sice 1.0.0.0
+	 * @since 1.0.0.0
 	 */
 	void clear();
 }

@@ -1985,6 +1985,10 @@ class DebugTest
 	 */
 	private static class ExecutionHelper implements Runnable
 	{
+		/**
+		 * This member is set to true if the {@link org.barghos.core.test.debug.DebugTest.ExecutionHelper#run() ExecutionHelper.run()}
+		 * method gets called. It can be safely reset to false. 
+		 */
 		public boolean wasExecuted = false;
 		
 		@Override

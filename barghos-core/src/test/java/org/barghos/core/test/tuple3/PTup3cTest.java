@@ -122,7 +122,7 @@ class PTup3cTest
 	}
 	
 	/**
-	 * This test ensures, that the special policies for the function {@link PTup2c#equals(Object)} are working.
+	 * This test ensures, that the special policies for the function {@link PTup3c#equals(Object)} are working.
 	 * 
 	 * @since 1.0.0.0
 	 */
