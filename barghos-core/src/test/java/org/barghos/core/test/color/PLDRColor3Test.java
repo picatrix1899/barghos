@@ -28,11 +28,17 @@ class PLDRColor3Test
 	@Test
 	void gen_CloneUnitSpaceTest()
 	{
-		PLDRColor3 color1 = PLDRColor3.gen(PTup3f.gen(0f, 0.5f, 1f));
+		float epsilon = 0.000001f;
+		
+		PLDRColor3 color1 = PLDRColor3.gen(PTup3f.gen(0f, 0.6f, 1f));
 		
 		assertEquals(0f, color1.getUnityR());
-		assertEquals(0.5f, color1.getUnityG());
+		assertEquals(0.6f, color1.getUnityG());
 		assertEquals(1f, color1.getUnityB());
+		
+		assertTrue(Math.abs(0 - color1.getR()) < epsilon);
+		assertTrue(Math.abs(153 - color1.getG()) < epsilon);
+		assertTrue(Math.abs(255 - color1.getB()) < epsilon);
 		
 		PLDRColor3 color2 = PLDRColor3.gen(PTup3f.gen(1.2f, 3.4f, 5.6f));
 		
@@ -40,11 +46,19 @@ class PLDRColor3Test
 		assertEquals(1f, color2.getUnityG());
 		assertEquals(1f, color2.getUnityB());
 		
+		assertTrue(Math.abs(255 - color2.getR()) < epsilon);
+		assertTrue(Math.abs(255 - color2.getG()) < epsilon);
+		assertTrue(Math.abs(255 - color2.getB()) < epsilon);
+		
 		PLDRColor3 color3 = PLDRColor3.gen(PTup3f.gen(-1.2f, -3.4f, -5.6f));
 		
 		assertEquals(0f, color3.getUnityR());
 		assertEquals(0f, color3.getUnityG());
 		assertEquals(0f, color3.getUnityB());
+		
+		assertTrue(Math.abs(0 - color3.getR()) < epsilon);
+		assertTrue(Math.abs(0 - color3.getG()) < epsilon);
+		assertTrue(Math.abs(0 - color3.getB()) < epsilon);
 	}
 	
 	/**
