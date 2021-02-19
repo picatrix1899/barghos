@@ -235,7 +235,7 @@ class Tup2fTest
 	{
 		Tup2f t = new Tup2f(1.2f, 3.4f);
 		
-		assertEquals("tup2f(x=1.2, y=3.4)+", t.toString());
+		assertEquals("tup2f(x=1.2, y=3.4)", t.toString());
 	}
 	
 	/**
