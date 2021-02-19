@@ -185,7 +185,7 @@ public class Tup2f implements Tup2fRW, Serializable
 	@Override
 	public String toString()
 	{
-		return "tup2f(x=" + getX() + ", y=" + getY() + ")+";
+		return "tup2f(x=" + getX() + ", y=" + getY() + ")";
 	}
 	
 	@Override
