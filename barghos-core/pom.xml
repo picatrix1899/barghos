@@ -44,8 +44,8 @@
   <distributionManagement>
    <repository>
      <id>github</id>
-     <name>GitHub OWNER Apache Maven Packages</name>
-     <url>https://maven.pkg.github.com/OWNER/REPOSITORY</url>
+     <name>GitHub picatrix1899 Apache Maven Packages</name>
+     <url>https://maven.pkg.github.com/picatrix1899/barghos-core</url>
    </repository>
 </distributionManagement>
   <dependencies>
