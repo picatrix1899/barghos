@@ -21,9 +21,18 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
+	
   <groupId>org.barghos</groupId>
   <artifactId>barghos</artifactId>
-  <version>1.0.0</version>
+	<version>1.0.0</version>
+  <name>Project Barghos</name>
+  
+  <packaging>pom</packaging>
+	
+  <modules>
+    <module>barghos-core</module>
+  </modules>
+  
   <build>
     <plugins>
       <plugin>
@@ -67,8 +76,8 @@
   </build>
   <distributionManagement>
    <repository>
-     <id>github</id>
-     <name>GitHub picatrix1899 Apache Maven Packages</name>
+     <id>github-barghos</id>
+     <name>GitHub picatrix1899 Barghos Apache Maven Packages</name>
      <url>https://maven.pkg.github.com/picatrix1899/barghos-core</url>
    </repository>
 </distributionManagement>
