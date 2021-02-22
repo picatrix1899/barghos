@@ -24,7 +24,7 @@
 	
   <groupId>org.barghos</groupId>
   <artifactId>barghos</artifactId>
-	<version>1.0.0</version>
+  <version>1.0.0</version>
   <name>Project Barghos</name>
   
   <packaging>pom</packaging>
