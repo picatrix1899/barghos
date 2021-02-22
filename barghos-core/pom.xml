@@ -89,4 +89,10 @@
   <properties>
   	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
+  <parent>
+  	<groupId>org.barghos</groupId>
+  	<artifactId>barghos</artifactId>
+  	<version>1.0.0-0-beta</version>
+  	<relativePath>..\</relativePath>
+  </parent>
 </project>
