@@ -23,7 +23,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.barghos</groupId>
   <artifactId>barghos-core</artifactId>
-  <version>1.0.0.0-SNAPSHOT-1</version>
+  <version>${revision}</version>
   <build>
     <plugins>
       <plugin>
@@ -141,5 +141,6 @@
   </dependencies>
   <properties>
   	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	<revision>1.0.0.0-SNAPSHOT-2</revision>
   </properties>
 </project>
