@@ -24,13 +24,8 @@ SOFTWARE.
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.barghos</groupId>
     <artifactId>barghos-core</artifactId>
-    <version>${revision}</version>
+    <version>1.0.0.0-0-beta</version>
     <packaging>jar</packaging>
-    <parent>
-        <groupId>org.barghos</groupId>
-        <artifactId>barghos</artifactId>
-        <version>${revision}</version>
-    </parent>
     <build>
         <plugins>
             <plugin>
