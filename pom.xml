@@ -71,7 +71,6 @@ SOFTWARE.
           </execution>
         </executions>
       </plugin>
-      <plugin>
     </plugins>
   </build>
   <properties>
