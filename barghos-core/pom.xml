@@ -27,11 +27,11 @@
   <version>${revision}</version>
   <name>Project Barghos Core Library</name>
   <description>This library contains the core API of Project Barghos and utilities valueable to all sub projects.</description>
-  <url>https://github.com/picatrix1899/barghos-core/</url>
+  <url>https://github.com/picatrix1899/barghos/</url>
   <licenses>
     <license>
       <name>MIT</name>
-      <url>https://github.com/picatrix1899/barghos-core/blob/master/LICENSE</url>
+      <url>https://github.com/picatrix1899/barghos/blob/master/LICENSE</url>
       <distribution>repo</distribution>
     </license>
   </licenses>
@@ -102,7 +102,7 @@
     <repository>
       <id>github</id>
       <name>GitHub picatrix1899 Apache Maven Packages</name>
-      <url>https://maven.pkg.github.com/picatrix1899/barghos-core</url>
+      <url>https://maven.pkg.github.com/picatrix1899/barghos</url>
     </repository>
   </distributionManagement>
   <dependencies>
