@@ -30,7 +30,6 @@ SOFTWARE.
         <groupId>org.barghos</groupId>
         <artifactId>barghos</artifactId>
         <version>1.0.0</version>
-        <relativePath>..</relativePath>
     </parent>
     <build>
         <plugins>
