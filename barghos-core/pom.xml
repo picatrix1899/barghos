@@ -121,7 +121,7 @@
   </build>
   <distributionManagement>
    <repository>
-     <id>github</id>
+     <id>github-barghos</id>
      <name>GitHub picatrix1899 Apache Maven Packages</name>
      <url>https://maven.pkg.github.com/picatrix1899/barghos-core</url>
    </repository>
