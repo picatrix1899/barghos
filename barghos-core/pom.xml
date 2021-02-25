@@ -24,7 +24,7 @@ SOFTWARE.
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.barghos</groupId>
     <artifactId>barghos-core</artifactId>
-    <version>1.0.0.0-0-beta</version>
+    <version>${revision}</version>
     <packaging>jar</packaging>
     <build>
         <plugins>
@@ -130,7 +130,24 @@ SOFTWARE.
             </repository>
     </distributionManagement>
     
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.3.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+            <version>5.3.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    
     <properties>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <revision>1.0.0.0-SNAPSHOT-1</revision>
       <maven.deploy.skip>false</maven.deploy.skip>
     </properties>
 </project>
