@@ -28,7 +28,6 @@
   <name>Project Barghos Core Library</name>
   <description>This library contains the core API of Project Barghos and utilities valueable to all sub projects.</description>
   <url>https://github.com/picatrix1899/barghos-core/</url>
-  <packaging>jar</packaging>
   <licenses>
     <license>
       <name>MIT</name>
@@ -36,6 +35,12 @@
       <distribution>repo</distribution>
     </license>
   </licenses>
+  <parent>
+    <groupId>org.barghos</groupId>
+    <artifactId>barghos</artifactId>
+    <version>${revision}</version>
+  </parent>
+  <packaging>jar</packaging>
   <build>
     <plugins>
       <plugin>
@@ -154,8 +159,6 @@
     </dependency>
   </dependencies>
   <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <revision>1.0.0.0-SNAPSHOT-3</revision>
     <maven.deploy.skip>false</maven.deploy.skip>
   </properties>
 </project>
