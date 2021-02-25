@@ -20,4 +20,4 @@ jobs:
     - name: Build with Maven
       env:
         GITHUB_TOKEN: ${{ github.token }}
-      run: mvn deploy --file ./barghos-core/pom.xml
+      run: mvn deploy --file ./pom.xml
