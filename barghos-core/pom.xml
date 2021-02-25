@@ -25,7 +25,17 @@
   <groupId>org.barghos</groupId>
   <artifactId>barghos-core</artifactId>
   <version>${revision}</version>
+  <name>Project Barghos Core Library</name>
+  <description>This library contains the core API of Project Barghos and utilities valueable to all sub projects.</description>
+  <url>https://github.com/picatrix1899/barghos-core/</url>
   <packaging>jar</packaging>
+  <licenses>
+    <license>
+      <name>MIT</name>
+      <url>https://github.com/picatrix1899/barghos-core/blob/master/LICENSE</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
   <build>
     <plugins>
       <plugin>
