@@ -33,15 +33,7 @@ SOFTWARE.
     <modules>
         <module>barghos-core</module>
     </modules>
-    
-    <distributionManagement>
-        <repository>
-            <id>github-barghos</id>
-            <name>GitHub picatrix1899 Barghos Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/picatrix1899/barghos-core</url>
-        </repository>
-    </distributionManagement>
-    
+
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
