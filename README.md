@@ -14,39 +14,91 @@ It is therefore required by every barghos subproject.
 
 ---
 
-# Versioning
+# Warning
 
-To not getting confused (especially myself) about the versioning, I define below what the different parts of the versions are and when to increment a part.
-As always, if a version part needs to be increased all parts behind that part need to be resetted to 0.
-If complex changes were made that would affect multiple version parts, the front most part that would fit a part of the change has to be increased.
+As the deployment scenario for the barghos libraries is currently under development and a lot is still undecided it is very likely that the repository gets
+restructured, the versioning style gets changed and CI pipelines get modified. Therefore special care should be taken while using any of the libraries.
 
-\<MAJOR>.\<API>.\<MINOR>.\<PATCH>
+# Usage & Installation
 
-Example: v1.23.2.101
+## Maven
 
-**MAJOR**
-The major version needs to be incremented in the following cases:
+To use the packages in Maven you first need to add the repository to either your global maven settings or to the pom.xml of your project.
+After that you should use the following dependency in your pom.xml. With this you receive smaller enhancements and added features. If you don't want this,
+you can also use fixed versions.
 
-- Big redesigns of existing content, that change its api or its behavior.
-- Removing entire content.
+```xml
+<project>
+  ...
+  <dependencies>
+    ...
+    <dependency>
+      <groupId>org.barghos</groupId>
+      <artifactId>barghos-core</artifactId>
+      <version>[x.x.0.0,x.x.0.0)</version>
+    </dependency>
+    ...
+  </dependencies>
+  ...
+</project>
+```
 
-**API**
-The api version needs to be incremented in the following cases:
+Example:
 
-- Changing the existing api, like changing function or class names or removing them entirely.
-- Reorganizing packages or just moving files in the package hirachy.
+```xml
+<dependency>
+  <groupId>org.barghos</groupId>
+  <artifactId>barghos-core</artifactId>
+  <version>[1.0.0.0,1.1.0.0)</version>
+</dependency>
+```
 
-**MINOR**
-The minor version needs to be increased by one in the following cases:
+### For Project POM.xml
 
-- Adding new content without changing the api or redesigning existing content.
-- Changing existing content without changing the api or the behavior.
-- Removing existing private content.
+If you want the pacakges to be only referenced by single projects, add the repository directly to the pom.xml.
 
-**PATCH**
+```xml
+<project>
+  ...
+  <repositories>
+    ...
+    <repository>
+      <id>github-barghos-core</id>
+      <name>GitHub picatrix1899 barghos-core Apache Maven Packages</name>
+      <url>https://maven.pkg.github.com/picatrix1899/barghos-core</url>
+    </repository>
+    ...
+  </repositories>
+  ...
+</project>
+```
 
-The patch version is showing the number of small bug fixes and documentation changes since the last minor update.
-The patch version needs to be increased by one in the following cases:
+### settings.xml
 
-- Documentation changes (added/changed/removed).
-- Small bug fixes that are not api breaking.
+If you want the packages to be available to all yout local projects, you have use a profile and add the repository to it.
+You have to make the used profile active to be able to access the package repository.
+
+```xml
+<settings>
+  ...
+  <profiles>
+    ...
+    <profile>
+      ...
+      <repositories>
+        ...
+        <repository>
+          <id>github-barghos-core</id>
+          <name>GitHub picatrix1899 barghos-core Apache Maven Packages</name>
+          <url>https://maven.pkg.github.com/picatrix1899/barghos-core</url>
+        </repository>
+        ...
+      </repositories>
+      ...
+    </profile>
+      ...
+  </profiles>
+      ...
+</settings>
+```
+
