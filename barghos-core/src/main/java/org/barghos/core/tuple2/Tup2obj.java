@@ -23,7 +23,10 @@
 package org.barghos.core.tuple2;
 
 import java.io.Serializable;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
+import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple2.Tup2objR;
 import org.barghos.core.api.tuple2.Tup2objRW;
 
@@ -39,7 +42,7 @@ import org.barghos.core.util.ArgumentNullException;
  * 
  * @since 1.0.0.0
  */
-public class Tup2obj implements Tup2objRW, Serializable
+public class Tup2obj implements Tup2objRW, Serializable, FormattableToString
 {
 	/**
 	 * The class version for serialization.
@@ -227,5 +230,15 @@ public class Tup2obj implements Tup2objRW, Serializable
 	public Tup2obj clone()
 	{
 		return new Tup2obj(this);
+	}
+	
+	@Override
+	public Map<String,Object> getValueMapping()
+	{
+		Map<String,Object> values = new LinkedHashMap<>();
+		values.put("x", getX());
+		values.put("y", getY());
+		
+		return values;
 	}
 }

@@ -4,30 +4,40 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
+import org.barghos.core.Barghos;
+import org.barghos.core.api.Nullable;
+import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.formatting.ToStringFormatter;
+import org.barghos.core.util.ArgumentNullException;
 
 /**
  * This is the default implementation of the interface {@link ToStringFormatter}.
  * It builds the string representation in a fashion like "classname(paramName=paramValue, paramName=paramValue)".
  * The classname is the lowercase simple class name of the object. Float, double and long values get formatted with
- * their respective suffix f, d or l.
+ * their respective suffix f, d or l. Any value which type implements the
+ * {@link org.barghos.core.api.formatting.FormattableToString FormattableToString} interface will be formatted via the
+ * {@link org.barghos.core.api.formatting.FormattableToString#toFormattedString() FormattableToString.toFormattedString()} function.
  * 
  * @author picatrix1899
  */
 public class DefaultToStringFormatter implements ToStringFormatter
 {
-
 	@Override
-	public String format(Object obj, Map<String,Object> values)
+	public String format(Object obj, @Nullable Map<String,Object> values, @Nullable String customName)
 	{
-		StringBuilder builder = new StringBuilder();
-		
-		builder.append(obj.getClass().getSimpleName().toLowerCase());
-		
-		if(values.size() > 0)
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
 		{
-			builder.append("(");
+			if(obj == null) throw new ArgumentNullException("obj");
+		}
 		
+		StringBuilder builder = new StringBuilder();
+
+		builder.append(customName == null ? obj.getClass().getSimpleName().toLowerCase() : customName);
+		
+		builder.append("(");
+		
+		if(values != null && values.size() > 0)
+		{
 			Set<Map.Entry<String,Object>> valueSet = values.entrySet();
 			
 			Iterator<Map.Entry<String,Object>> it = valueSet.iterator();
@@ -40,30 +50,36 @@ public class DefaultToStringFormatter implements ToStringFormatter
 				builder.append("=");
 				
 				Object value = entry.getValue();
-				
-				builder.append(value);
-				
+
 				if(value instanceof Float)
 				{
+					builder.append(value);
 					builder.append("f");
 				}
 				else if(value instanceof Double)
 				{
+					builder.append(value);
 					builder.append("d");
 				}
 				else if(value instanceof Long)
 				{
+					builder.append(value);
 					builder.append("l");
 				}
-				
-				if(it.hasNext())
+				else if(value instanceof FormattableToString)
 				{
-					builder.append(", ");
+					builder.append(((FormattableToString)value).toFormattedString());
 				}
+				else
+				{
+					builder.append(value);
+				}
+
+				if(it.hasNext()) builder.append(", ");
 			}
-			
-			builder.append(")");
 		}
+		
+		builder.append(")");
 		
 		return builder.toString();
 	}

@@ -27,7 +27,6 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
-import org.barghos.core.api.formatting.ToStringFormatter;
 import org.barghos.core.api.tuple2.Tup2bigdR;
 
 import org.barghos.core.Barghos;
@@ -154,27 +153,12 @@ public abstract class PTup2bigd implements Tup2bigdR, FormattableToString
 	}
 	
 	@Override
-	public String toFormattedString()
+	public Map<String,Object> getValueMapping()
 	{
 		Map<String,Object> values = new LinkedHashMap<>();
 		values.put("x", getX());
 		values.put("y", getY());
 		
-		return Barghos.DEFAULT_TO_STRING_FORMATTER.format(this, values);
-	}
-	
-	@Override
-	public String toFormattedString(ToStringFormatter formatter)
-	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(formatter == null) throw new ArgumentNullException("formatter");
-		}
-		
-		Map<String,Object> values = new LinkedHashMap<>();
-		values.put("x", getX());
-		values.put("y", getY());
-		
-		return formatter.format(this, values);
+		return values;
 	}
 }

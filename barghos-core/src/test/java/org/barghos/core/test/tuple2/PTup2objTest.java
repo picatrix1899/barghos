@@ -56,6 +56,8 @@ import org.barghos.core.tuple2.Tup2obj;
 /**
  * This class provides component tests for the class {@link PTup2obj}.
  * 
+ * @author picatrix1899
+ * 
  * @since 1.0.0.0
  */
 class PTup2objTest

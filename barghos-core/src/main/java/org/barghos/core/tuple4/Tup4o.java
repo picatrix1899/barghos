@@ -22,6 +22,10 @@
 
 package org.barghos.core.tuple4;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple4.Tup4oR;
 import org.barghos.core.api.tuple4.Tup4oRW;
 
@@ -37,7 +41,7 @@ import org.barghos.core.util.ArgumentNullException;
  * 
  * @since 1.0.0.0
  */
-public class Tup4o<X,Y,Z,W> implements Tup4oRW<X,Y,Z,W>
+public class Tup4o<X,Y,Z,W> implements Tup4oRW<X,Y,Z,W>, FormattableToString
 {
 	/**
 	 * The x component.
@@ -255,5 +259,17 @@ public class Tup4o<X,Y,Z,W> implements Tup4oRW<X,Y,Z,W>
 	public String toString()
 	{
 		return "tup4o(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ", w=" + getW() + ")";
+	}
+	
+	@Override
+	public Map<String,Object> getValueMapping()
+	{
+		Map<String,Object> values = new LinkedHashMap<>();
+		values.put("x", getX());
+		values.put("y", getY());
+		values.put("z", getZ());
+		values.put("w", getW());
+		
+		return values;
 	}
 }
