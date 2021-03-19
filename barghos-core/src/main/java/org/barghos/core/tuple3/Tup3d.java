@@ -23,7 +23,10 @@
 package org.barghos.core.tuple3;
 
 import java.io.Serializable;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
+import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple3.Tup3dR;
 import org.barghos.core.api.tuple3.Tup3dRW;
 
@@ -39,7 +42,7 @@ import org.barghos.core.util.ArgumentNullException;
  * 
  * @since 1.0.0.0
  */
-public class Tup3d implements Tup3dRW, Serializable
+public class Tup3d implements Tup3dRW, Serializable, FormattableToString
 {
 	/**
 	 * The class version for serialization.
@@ -217,5 +220,16 @@ public class Tup3d implements Tup3dRW, Serializable
 	public String toString()
 	{
 		return "tup3d(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ")";
+	}
+	
+	@Override
+	public Map<String,Object> getValueMapping()
+	{
+		Map<String,Object> values = new LinkedHashMap<>();
+		values.put("x", getX());
+		values.put("y", getY());
+		values.put("z", getZ());
+		
+		return values;
 	}
 }

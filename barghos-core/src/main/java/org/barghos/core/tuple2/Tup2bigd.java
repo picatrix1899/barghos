@@ -24,7 +24,10 @@ package org.barghos.core.tuple2;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
+import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple2.Tup2bigdR;
 import org.barghos.core.api.tuple2.Tup2bigdRW;
 
@@ -40,7 +43,7 @@ import org.barghos.core.util.ArgumentNullException;
  * 
  * @since 1.0.0.0
  */
-public class Tup2bigd implements Tup2bigdRW, Serializable
+public class Tup2bigd implements Tup2bigdRW, Serializable, FormattableToString
 {
 	/**
 	 * The class version for serialization.
@@ -231,5 +234,15 @@ public class Tup2bigd implements Tup2bigdRW, Serializable
 	public Tup2bigd clone()
 	{
 		return new Tup2bigd(this);
+	}
+	
+	@Override
+	public Map<String,Object> getValueMapping()
+	{
+		Map<String,Object> values = new LinkedHashMap<>();
+		values.put("x", getX());
+		values.put("y", getY());
+		
+		return values;
 	}
 }

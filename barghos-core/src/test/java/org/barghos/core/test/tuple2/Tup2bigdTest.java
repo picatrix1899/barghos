@@ -24,9 +24,9 @@ package org.barghos.core.test.tuple2;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.math.BigDecimal;
-
 import org.junit.jupiter.api.Test;
+
+import java.math.BigDecimal;
 
 import org.barghos.core.tuple2.PTup2bigd;
 import org.barghos.core.tuple2.Tup2bigd;

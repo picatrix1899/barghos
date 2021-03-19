@@ -24,7 +24,10 @@ package org.barghos.core.tuple4;
 
 import java.io.Serializable;
 import java.math.BigInteger;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
+import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple4.Tup4bigiR;
 import org.barghos.core.api.tuple4.Tup4bigiRW;
 
@@ -40,7 +43,7 @@ import org.barghos.core.util.ArgumentNullException;
  * 
  * @since 1.0.0.0
  */
-public class Tup4bigi implements Tup4bigiRW, Serializable
+public class Tup4bigi implements Tup4bigiRW, Serializable, FormattableToString
 {
 	/**
 	 * The class version for serialization.
@@ -282,5 +285,17 @@ public class Tup4bigi implements Tup4bigiRW, Serializable
 	public String toString()
 	{
 		return "tup4bigi(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ", w=" + getW() + ")";
+	}
+	
+	@Override
+	public Map<String,Object> getValueMapping()
+	{
+		Map<String,Object> values = new LinkedHashMap<>();
+		values.put("x", getX());
+		values.put("y", getY());
+		values.put("z", getZ());
+		values.put("w", getW());
+		
+		return values;
 	}
 }
