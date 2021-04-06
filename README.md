@@ -1,5 +1,5 @@
 
-[![barghos-core: v1.0.0.0](https://img.shields.io/badge/barghos--core-v1.0.0.0-brightgreen "Barghos-Core: v. 1.0.0.0")](https://github.com/picatrix1899/barghos/packages/639284?version=1.0.0.0)
+[![barghos-core: v1.0.0.0](https://img.shields.io/badge/barghos--core-Stable_v1.0.0.0-brightgreen "Barghos-Core Stable: v1.0.0.0")](https://github.com/picatrix1899/barghos/packages/639284?version=1.0.0.0)
 
 # About Project Barghos
 Project Barghos is a set of multiple smaller libraries providing utilities and structures covering diverse general-use aswell as scientific applications.
