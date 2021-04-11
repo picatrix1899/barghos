@@ -33,4 +33,19 @@
       <distribution>repo</distribution>
     </license>
   </licenses>
+  <dependencies>
+    <dependency>
+      <groupId>org.barghos</groupId>
+      <artifactId>barghos-core</artifactId>
+      <version>1.0.0.0-SNAPSHOT-6</version>
+      <scope>compile</scope>
+    </dependency>
+  </dependencies>
+  <repositories>
+    <repository>
+      <id>github</id>
+      <name>GitHub picatrix1899 Apache Maven Packages</name>
+      <url>https://maven.pkg.github.com/picatrix1899/barghos</url>
+    </repository>
+  </repositories>
 </project>

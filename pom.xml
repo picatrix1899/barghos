@@ -30,6 +30,13 @@ SOFTWARE.
   <modules>
     <module>barghos-core</module>
   </modules>
+  <repositories>
+    <repository>
+	  <id>github</id>
+      <name>GitHub picatrix1899 Apache Maven Packages</name>
+      <url>https://maven.pkg.github.com/picatrix1899/barghos</url>
+    </repository>
+  </repositories>
   <build>
     <plugins>
       <plugin>
@@ -49,6 +56,9 @@ SOFTWARE.
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
         <version>3.2.0</version>
+		<configuration>
+		  <javadocExecutable>${java.home}/bin/javadoc.exe</javadocExecutable>
+		</configuration>
         <executions>
           <execution>
             <id>attach-javadocs</id>
