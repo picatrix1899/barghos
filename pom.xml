@@ -29,6 +29,7 @@ SOFTWARE.
   <packaging>pom</packaging>
   <modules>
     <module>barghos-core</module>
+    <module>barghos-math</module>
   </modules>
   <repositories>
     <repository>
