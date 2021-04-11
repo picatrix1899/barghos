@@ -20,7 +20,7 @@
  * SOFTWARE.
  ******************************************************************************/
 
-package org.barghos.core.util;
+package org.barghos.core.api.util;
 
 import java.nio.DoubleBuffer;
 import java.nio.FloatBuffer;

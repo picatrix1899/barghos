@@ -106,27 +106,47 @@ class DefaultToStringFormatterTest
 		assertEquals("test(param1=1, param2=2, param3=3, param4=4l, param5=5.1f, param6=6.1d, param7=lorem, param8=ipsum, param9=formatted)", result);
 	}
 	
+	/**
+	 * This class represents a test class used to prove that {@link DefaultToStringFormatter} uses the {@link Object#toString()}
+	 * function to retrieve the text for value pairs if the value of the value pair is an object that does not implement the
+	 * {@link FormattableToString} interface.
+	 * 
+	 * @author picatrix1899
+	 *
+	 */
 	static class TestClass3o
 	{
+		@Override
 		public String toString()
 		{
 			return "ipsum";
 		}
 	}
 	
+	/**
+	 * This class represents a test implementation of the {@link FormattableToString} interface for proving,
+	 * that the {@link DefaultToStringFormatter} uses the {@link FormattableToString#toFormattedString()}
+	 * to retrieve the text for value pairs if the value of the value pair is an object that implements the
+	 * {@link FormattableToString} interface.
+	 * 
+	 * @author picatrix1899
+	 */
 	static class TestClassFormatted implements FormattableToString
 	{
+		@Override
 		public String toFormattedString()
 		{
 			return "formatted";
 		}
 		
+		@Override
 		public String toFormattedString(ToStringFormatter formatter)
 		{
 			fail();
 			return "";
 		}
-
+		
+		@Override
 		public Map<String,Object> getValueMapping()
 		{
 			return null;

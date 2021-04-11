@@ -3,7 +3,7 @@ package org.barghos.core.api.formatting;
 import java.util.Map;
 
 import org.barghos.core.Barghos;
-import org.barghos.core.util.ArgumentNullException;
+import org.barghos.core.api.util.ArgumentNullException;
 
 /**
  * This interface provides functions for a formatted toString version.

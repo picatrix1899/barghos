@@ -23,14 +23,13 @@
 package org.barghos.core.api.event;
 
 /**
- * This class represents the base for an event within the event system.
+ * This interface represents an event within the event system.
  * 
  * @author picatrix1899
  * 
  * @since 1.0.0.0
  */
-public abstract class Event
+public interface Event
 {
-	@Override
-	public abstract Event clone();
+	Event clone();
 }

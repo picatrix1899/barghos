@@ -5,10 +5,10 @@ import java.util.Map;
 import java.util.Set;
 
 import org.barghos.core.Barghos;
-import org.barghos.core.api.Nullable;
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.formatting.ToStringFormatter;
-import org.barghos.core.util.ArgumentNullException;
+import org.barghos.core.api.util.ArgumentNullException;
+import org.barghos.core.api.util.Nullable;
 
 /**
  * This is the default implementation of the interface {@link ToStringFormatter}.

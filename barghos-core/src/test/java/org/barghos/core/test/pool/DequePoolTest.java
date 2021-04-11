@@ -25,10 +25,9 @@ package org.barghos.core.test.pool;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
-
+import org.barghos.core.api.util.BufferUtils;
 import org.barghos.core.pool.DequePool;
 import org.barghos.core.tuple2.Tup2f;
-import org.barghos.core.util.BufferUtils;
 
 /**
  * This class provides component tests for the class {@link DequePool}.

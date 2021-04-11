@@ -2,7 +2,7 @@ package org.barghos.core.api.formatting;
 
 import java.util.Map;
 
-import org.barghos.core.api.Nullable;
+import org.barghos.core.api.util.Nullable;
 
 /**
  * This interface represents a special formatter used for the toFormattedString functions

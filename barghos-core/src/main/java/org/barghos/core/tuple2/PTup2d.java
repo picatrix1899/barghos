@@ -27,9 +27,8 @@ import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple2.Tup2dR;
-
+import org.barghos.core.api.util.ArgumentNullException;
 import org.barghos.core.Barghos;
-import org.barghos.core.util.ArgumentNullException;
 
 /**
  * Represents a persistent 2-dimensional double tuple.

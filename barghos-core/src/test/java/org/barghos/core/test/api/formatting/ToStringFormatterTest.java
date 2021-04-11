@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import org.barghos.core.api.testing.ValueRelay;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -34,12 +36,16 @@ class ToStringFormatterTest
 				assertSame(originalValues, values);
 				assertNull(customName);
 				
-				return "test";
+				ValueRelay.relay("format", true);
+				
+				return "";
 			}
 		};
 		
-		String result = formatter.format(originalObj, originalValues);
+		formatter.format(originalObj, originalValues);
 		
-		assertEquals("test", result);
+		assertEquals(true, ValueRelay.get("format", false));
+		
+		ValueRelay.clear();
 	}
 }
