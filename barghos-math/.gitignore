@@ -1,1 +1,4 @@
+/bin/
 /target/
+/src/main/java/org/barghos/math/Main.java
+/.flattened-pom.xml
