@@ -118,6 +118,11 @@
       <version>5.3.1</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+    	<groupId>org.barghos</groupId>
+    	<artifactId>barghos-core</artifactId>
+    	<version>${revision}</version>
+    </dependency>
   </dependencies>
   <properties>
     <maven.deploy.skip>false</maven.deploy.skip>
