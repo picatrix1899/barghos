@@ -2,7 +2,10 @@ package org.barghos.core.test.event;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
+
+import org.barghos.core.api.testing.ValueRelay;
 
 import org.barghos.core.api.event.Event;
 import org.barghos.core.api.event.EventReceiver;
@@ -19,6 +22,15 @@ import org.barghos.core.event.DefaultEventDelegate;
 class DefaultEventDelegateTest
 {
 	/**
+	 * This method is called after each test in this class.
+	 */
+	@AfterEach
+	void cleanup()
+	{
+		ValueRelay.clear();
+	}
+	
+	/**
 	 * This test ensures, that the function {@link DefaultEventDelegate#registerReceiver(EventReceiver)}
 	 * actually registers the receiver to the delegate and returns true,
 	 * if the registering was successful.
@@ -30,14 +42,19 @@ class DefaultEventDelegateTest
 	{
 		DefaultEventDelegate<TestEvent> delegate = new DefaultEventDelegate<>();
 		
-		TestEventReceiver receiver = new TestEventReceiver();
+		EventReceiver<TestEvent> receiver = new EventReceiver<>() {
+			public void raise(TestEvent original, TestEvent current)
+			{
+				ValueRelay.relayCall("raise");
+			}
+		};
 		
 		assertTrue(delegate.registerReceiver(receiver));
 		assertFalse(delegate.registerReceiver(receiver)); // Receiver is already registered.
 		
 		delegate.raise(new TestEvent());
 		
-		assertTrue(receiver.hasBeenRaised);
+		assertEquals(true, ValueRelay.get("raise", false));
 	}
 	
 	/**
@@ -52,7 +69,12 @@ class DefaultEventDelegateTest
 	{
 		DefaultEventDelegate<TestEvent> delegate = new DefaultEventDelegate<>();
 		
-		TestEventReceiver receiver = new TestEventReceiver();
+		EventReceiver<TestEvent> receiver = new EventReceiver<>() {
+			public void raise(TestEvent original, TestEvent current)
+			{
+				ValueRelay.relayCall("raise");
+			}
+		};
 		
 		assertFalse(delegate.unregisterReceiver(receiver)); // Receiver was not registered.
 		
@@ -60,15 +82,15 @@ class DefaultEventDelegateTest
 		
 		delegate.raise(new TestEvent());
 		
-		assertTrue(receiver.hasBeenRaised);
-		
-		receiver.hasBeenRaised = false;
+		assertEquals(true, ValueRelay.get("raise", false));
+
+		ValueRelay.clear();
 		
 		assertTrue(delegate.unregisterReceiver(receiver));
 		
 		delegate.raise(new TestEvent());
 		
-		assertFalse(receiver.hasBeenRaised);
+		assertEquals(false, ValueRelay.get("raise", false));
 	}
 	
 	/**
@@ -82,9 +104,24 @@ class DefaultEventDelegateTest
 	{
 		DefaultEventDelegate<TestEvent> delegate = new DefaultEventDelegate<>();
 		
-		TestEventReceiver receiver1 = new TestEventReceiver();
-		TestEventReceiver receiver2 = new TestEventReceiver();
-		TestEventReceiver receiver3 = new TestEventReceiver();
+		EventReceiver<TestEvent> receiver1 = new EventReceiver<>() {
+			public void raise(TestEvent original, TestEvent current)
+			{
+				ValueRelay.relayCall("raise1");
+			}
+		};
+		EventReceiver<TestEvent> receiver2 = new EventReceiver<>() {
+			public void raise(TestEvent original, TestEvent current)
+			{
+				ValueRelay.relayCall("raise2");
+			}
+		};
+		EventReceiver<TestEvent> receiver3 = new EventReceiver<>() {
+			public void raise(TestEvent original, TestEvent current)
+			{
+				ValueRelay.relayCall("raise3");
+			}
+		};
 		
 		delegate.registerReceiver(receiver1);
 		delegate.registerReceiver(receiver2);
@@ -92,9 +129,9 @@ class DefaultEventDelegateTest
 		
 		delegate.raise(new TestEvent());
 		
-		assertTrue(receiver1.hasBeenRaised);
-		assertTrue(receiver2.hasBeenRaised);
-		assertTrue(receiver3.hasBeenRaised);
+		assertEquals(true, ValueRelay.get("raise1", false));
+		assertEquals(true, ValueRelay.get("raise2", false));
+		assertEquals(true, ValueRelay.get("raise3", false));
 	}
 	
 	/**
@@ -112,7 +149,7 @@ class DefaultEventDelegateTest
 		final TestEvent event = new TestEvent();
 		event.testValue = 10;
 		
-		TestEventReceiver receiver1 = new TestEventReceiver() {
+		EventReceiver<TestEvent> receiver1 = new EventReceiver<>() {
 			@Override
 			public void raise(TestEvent original, TestEvent current)
 			{
@@ -127,7 +164,7 @@ class DefaultEventDelegateTest
 			}
 		};
 		
-		TestEventReceiver receiver2 = new TestEventReceiver() {
+		EventReceiver<TestEvent> receiver2 = new EventReceiver<>() {
 			@Override
 			public void raise(TestEvent original, TestEvent current)
 			{
@@ -142,7 +179,7 @@ class DefaultEventDelegateTest
 			}
 		};
 		
-		TestEventReceiver receiver3 = new TestEventReceiver() {
+		EventReceiver<TestEvent> receiver3 = new EventReceiver<>() {
 			@Override
 			public void raise(TestEvent original, TestEvent current)
 			{
@@ -174,7 +211,7 @@ class DefaultEventDelegateTest
 	 * 
 	 * @since 1.0.0.0
 	 */
-	public static class TestEvent extends Event
+	public static class TestEvent implements Event
 	{	
 		/**
 		 * This is a test value of the event.
@@ -205,31 +242,6 @@ class DefaultEventDelegateTest
 		public Event clone()
 		{
 			return new TestEvent(this);
-		}
-	}
-	
-	/**
-	 * This class is a test implementation of {@link EventReceiver}
-	 * for the event type {@link TestEvent}.
-	 * 
-	 * @author picatrix1899
-	 * 
-	 * @since 1.0.0.0
-	 */
-	public static class TestEventReceiver implements EventReceiver<TestEvent>
-	{
-		/**
-		 * This member will be set to true,
-		 * if the function {@link org.barghos.core.test.event.DefaultEventDelegateTest.TestEventReceiver#raise(TestEvent, TestEvent) TestEventReceiver.raise(TestEvent, TestEvent)}
-		 * was called. It is safe to reset it
-		 * back to false;
-		 */
-		public boolean hasBeenRaised;
-		
-		@Override
-		public void raise(TestEvent original, TestEvent current)
-		{
-			this.hasBeenRaised = true;
 		}
 	}
 }

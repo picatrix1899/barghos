@@ -20,10 +20,11 @@
  * SOFTWARE.
  ******************************************************************************/
 
-package org.barghos.core.test.util;
+package org.barghos.core.test.api.util;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.barghos.core.api.util.BufferUtils;
 import org.junit.jupiter.api.Test;
 
 import java.nio.ByteBuffer;
@@ -34,10 +35,8 @@ import java.nio.LongBuffer;
 import java.nio.ShortBuffer;
 import java.util.List;
 
-import org.barghos.core.util.BufferUtils;
-
 /**
- * This class provides component tests for the class {@link org.barghos.core.util.BufferUtilsPrimitives BufferUtilsPrimitives}.
+ * This class provides component tests for the class {@link org.barghos.core.api.util.BufferUtilsPrimitives BufferUtilsPrimitives}.
  * 
  * @author picatrix1899
  * 
@@ -46,7 +45,7 @@ import org.barghos.core.util.BufferUtils;
 class BufferUtilsPrimitivesTest
 {
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#createByteBuffer(int) BufferUtilsPrimitives.createByteBuffer(int)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#createByteBuffer(int) BufferUtilsPrimitives.createByteBuffer(int)}
 	 * correctly creates a {@link ByteBuffer} with the spezified capacity of values.
 	 * 
 	 * @since 1.0.0.0
@@ -61,7 +60,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#createShortBuffer(int) BufferUtilsPrimitives.createShortBuffer(int)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#createShortBuffer(int) BufferUtilsPrimitives.createShortBuffer(int)}
 	 * correctly creates a {@link ShortBuffer} with the spezified capacity of values.
 	 * 
 	 * @since 1.0.0.0
@@ -76,7 +75,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#createIntBuffer(int) BufferUtilsPrimitives.createIntBuffer(int)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#createIntBuffer(int) BufferUtilsPrimitives.createIntBuffer(int)}
 	 * correctly creates a {@link IntBuffer} with the spezified capacity of values.
 	 * 
 	 * @since 1.0.0.0
@@ -91,7 +90,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#createLongBuffer(int) BufferUtilsPrimitives.createLongBuffer(int)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#createLongBuffer(int) BufferUtilsPrimitives.createLongBuffer(int)}
 	 * correctly creates a {@link LongBuffer} with the spezified capacity of values.
 	 * 
 	 * @since 1.0.0.0
@@ -106,7 +105,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#createFloatBuffer(int) BufferUtilsPrimitives.createFloatBuffer(int)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#createFloatBuffer(int) BufferUtilsPrimitives.createFloatBuffer(int)}
 	 * correctly creates a {@link FloatBuffer} with the spezified capacity of values.
 	 * 
 	 * @since 1.0.0.0
@@ -121,7 +120,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#createDoubleBuffer(int) BufferUtilsPrimitives.createDoubleBuffer(int)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#createDoubleBuffer(int) BufferUtilsPrimitives.createDoubleBuffer(int)}
 	 * correctly creates a {@link DoubleBuffer} with the spezified capacity of values.
 	 * 
 	 * @since 1.0.0.0
@@ -136,7 +135,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToByteBuffer(byte[]) BufferUtilsPrimitives.copyToByteBuffer(byte...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToByteBuffer(byte[]) BufferUtilsPrimitives.copyToByteBuffer(byte...)}
 	 * creates a new {@link ByteBuffer}, puts the values in the right order in the buffer
 	 * and advances the position.
 	 * 
@@ -160,7 +159,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToByteBuffer(ByteBuffer, byte[]) BufferUtilsPrimitives.copyToByteBuffer(ByteBuffer, byte...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToByteBuffer(ByteBuffer, byte[]) BufferUtilsPrimitives.copyToByteBuffer(ByteBuffer, byte...)}
 	 * puts the values in the right order in the buffer and advances the position.
 	 * 
 	 * @since 1.0.0.0
@@ -184,7 +183,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToByteBuffer(List) BufferUtilsPrimitives.copyToByteBuffer(List&lt;Byte&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToByteBuffer(List) BufferUtilsPrimitives.copyToByteBuffer(List&lt;Byte&gt;)}
 	 * creates a new {@link ByteBuffer}, puts the values in the right order in the buffer
 	 * and advances the position.
 	 * 
@@ -208,7 +207,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToByteBuffer(ByteBuffer, List) BufferUtilsPrimitives.copyToByteBuffer(ByteBuffer, List&lt;Byte&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToByteBuffer(ByteBuffer, List) BufferUtilsPrimitives.copyToByteBuffer(ByteBuffer, List&lt;Byte&gt;)}
 	 * puts the values in the right order in the buffer and advances the position.
 	 * 
 	 * @since 1.0.0.0
@@ -232,7 +231,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToShortBuffer(short[]) BufferUtilsPrimitives.copyToShortBuffer(short...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToShortBuffer(short[]) BufferUtilsPrimitives.copyToShortBuffer(short...)}
 	 * creates a new {@link ShortBuffer}, puts the values in the right order in the buffer
 	 * and advances the position.
 	 * 
@@ -256,7 +255,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToShortBuffer(ShortBuffer, short[]) BufferUtilsPrimitives.copyToShortBuffer(ShortBuffer, short...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToShortBuffer(ShortBuffer, short[]) BufferUtilsPrimitives.copyToShortBuffer(ShortBuffer, short...)}
 	 * puts the values in the right order in the buffer and advances the position.
 	 * 
 	 * @since 1.0.0.0
@@ -280,7 +279,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToShortBuffer(List) BufferUtilsPrimitives.copyToShortBuffer(List&lt;Short&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToShortBuffer(List) BufferUtilsPrimitives.copyToShortBuffer(List&lt;Short&gt;)}
 	 * creates a new {@link ShortBuffer}, puts the values in the right order in the buffer
 	 * and advances the position.
 	 * 
@@ -304,7 +303,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToShortBuffer(ShortBuffer, List) BufferUtilsPrimitives.copyToShortBuffer(ShortBuffer, List&lt;Short&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToShortBuffer(ShortBuffer, List) BufferUtilsPrimitives.copyToShortBuffer(ShortBuffer, List&lt;Short&gt;)}
 	 * puts the values in the right order in the buffer and advances the position.
 	 * 
 	 * @since 1.0.0.0
@@ -328,7 +327,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToIntBuffer(int[]) BufferUtilsPrimitives.copyToIntBuffer(int...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToIntBuffer(int[]) BufferUtilsPrimitives.copyToIntBuffer(int...)}
 	 * creates a new {@link IntBuffer}, puts the values in the right order in the buffer
 	 * and advances the position.
 	 * 
@@ -352,7 +351,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToIntBuffer(IntBuffer, int[]) BufferUtilsPrimitives.copyToIntBuffer(IntBuffer, int...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToIntBuffer(IntBuffer, int[]) BufferUtilsPrimitives.copyToIntBuffer(IntBuffer, int...)}
 	 * puts the values in the right order in the buffer and advances the position.
 	 * 
 	 * @since 1.0.0.0
@@ -376,7 +375,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToIntBuffer(List) BufferUtilsPrimitives.copyToIntBuffer(List&lt;Integer&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToIntBuffer(List) BufferUtilsPrimitives.copyToIntBuffer(List&lt;Integer&gt;)}
 	 * creates a new {@link IntBuffer}, puts the values in the right order in the buffer
 	 * and advances the position.
 	 * 
@@ -400,7 +399,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToIntBuffer(IntBuffer, List) BufferUtilsPrimitives.copyToIntBuffer(IntBuffer, List&lt;Integer&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToIntBuffer(IntBuffer, List) BufferUtilsPrimitives.copyToIntBuffer(IntBuffer, List&lt;Integer&gt;)}
 	 * puts the values in the right order in the buffer and advances the position.
 	 * 
 	 * @since 1.0.0.0
@@ -424,7 +423,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToLongBuffer(long[]) BufferUtilsPrimitives.copyToLongBuffer(long...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToLongBuffer(long[]) BufferUtilsPrimitives.copyToLongBuffer(long...)}
 	 * creates a new {@link LongBuffer}, puts the values in the right order in the buffer
 	 * and advances the position.
 	 * 
@@ -448,7 +447,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToLongBuffer(LongBuffer, long[]) BufferUtilsPrimitives.copyToLongBuffer(LongBuffer, long...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToLongBuffer(LongBuffer, long[]) BufferUtilsPrimitives.copyToLongBuffer(LongBuffer, long...)}
 	 * puts the values in the right order in the buffer and advances the position.
 	 * 
 	 * @since 1.0.0.0
@@ -472,7 +471,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToLongBuffer(List) BufferUtilsPrimitives.copyToLongBuffer(List&lt;Long&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToLongBuffer(List) BufferUtilsPrimitives.copyToLongBuffer(List&lt;Long&gt;)}
 	 * creates a new {@link LongBuffer}, puts the values in the right order in the buffer
 	 * and advances the position.
 	 * 
@@ -496,7 +495,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToLongBuffer(LongBuffer, List) BufferUtilsPrimitives.copyToLongBuffer(LongBuffer, List&lt;Long&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToLongBuffer(LongBuffer, List) BufferUtilsPrimitives.copyToLongBuffer(LongBuffer, List&lt;Long&gt;)}
 	 * puts the values in the right order in the buffer and advances the position.
 	 * 
 	 * @since 1.0.0.0
@@ -520,7 +519,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToFloatBuffer(float[]) BufferUtilsPrimitives.copyToFloatBuffer(float...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToFloatBuffer(float[]) BufferUtilsPrimitives.copyToFloatBuffer(float...)}
 	 * creates a new {@link FloatBuffer}, puts the values in the right order in the buffer
 	 * and advances the position.
 	 * 
@@ -544,7 +543,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToFloatBuffer(FloatBuffer, float[]) BufferUtilsPrimitives.copyToFloatBuffer(FloatBuffer, float...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToFloatBuffer(FloatBuffer, float[]) BufferUtilsPrimitives.copyToFloatBuffer(FloatBuffer, float...)}
 	 * puts the values in the right order in the buffer and advances the position.
 	 * 
 	 * @since 1.0.0.0
@@ -568,7 +567,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToFloatBuffer(List) BufferUtilsPrimitives.copyToFloatBuffer(List&lt;Float&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToFloatBuffer(List) BufferUtilsPrimitives.copyToFloatBuffer(List&lt;Float&gt;)}
 	 * creates a new {@link FloatBuffer}, puts the values in the right order in the buffer
 	 * and advances the position.
 	 * 
@@ -592,7 +591,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToFloatBuffer(FloatBuffer, List) BufferUtilsPrimitives.copyToFloatBuffer(FloatBuffer, List&lt;Float&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToFloatBuffer(FloatBuffer, List) BufferUtilsPrimitives.copyToFloatBuffer(FloatBuffer, List&lt;Float&gt;)}
 	 * puts the values in the right order in the buffer and advances the position.
 	 * 
 	 * @since 1.0.0.0
@@ -616,7 +615,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToDoubleBuffer(double[]) BufferUtilsPrimitives.copyToDoubleBuffer(double...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToDoubleBuffer(double[]) BufferUtilsPrimitives.copyToDoubleBuffer(double...)}
 	 * creates a new {@link DoubleBuffer}, puts the values in the right order in the buffer
 	 * and advances the position.
 	 * 
@@ -640,7 +639,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToDoubleBuffer(DoubleBuffer, double[]) BufferUtilsPrimitives.copyToDoubleBuffer(DoubleBuffer, double...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToDoubleBuffer(DoubleBuffer, double[]) BufferUtilsPrimitives.copyToDoubleBuffer(DoubleBuffer, double...)}
 	 * puts the values in the right order in the buffer and advances the position.
 	 * 
 	 * @since 1.0.0.0
@@ -664,7 +663,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToDoubleBuffer(List) BufferUtilsPrimitives.copyToDoubleBuffer(List&lt;Double&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToDoubleBuffer(List) BufferUtilsPrimitives.copyToDoubleBuffer(List&lt;Double&gt;)}
 	 * creates a new {@link DoubleBuffer}, puts the values in the right order in the buffer
 	 * and advances the position.
 	 * 
@@ -688,7 +687,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToDoubleBuffer(DoubleBuffer, List) BufferUtilsPrimitives.copyToDoubleBuffer(DoubleBuffer, List&lt;Double&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToDoubleBuffer(DoubleBuffer, List) BufferUtilsPrimitives.copyToDoubleBuffer(DoubleBuffer, List&lt;Double&gt;)}
 	 * puts the values in the right order in the buffer and advances the position.
 	 * 
 	 * @since 1.0.0.0
@@ -712,7 +711,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToFlippedByteBuffer(byte[]) BufferUtilsPrimitives.copyToFlippedByteBuffer(byte...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToFlippedByteBuffer(byte[]) BufferUtilsPrimitives.copyToFlippedByteBuffer(byte...)}
 	 * creates a new {@link ByteBuffer}, puts the values in the right order in the buffer
 	 * and resets the position to 0 by flipping.
 	 * 
@@ -734,7 +733,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToFlippedByteBuffer(ByteBuffer, byte[]) BufferUtilsPrimitives.copyToFlippedByteBuffer(ByteBuffer, byte...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToFlippedByteBuffer(ByteBuffer, byte[]) BufferUtilsPrimitives.copyToFlippedByteBuffer(ByteBuffer, byte...)}
 	 * puts the values in the right order in the buffer and resets the position to 0 by flipping.
 	 * 
 	 * @since 1.0.0.0
@@ -756,7 +755,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToFlippedByteBuffer(List) BufferUtilsPrimitives.copyToFlippedByteBuffer(List&lt;Byte&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToFlippedByteBuffer(List) BufferUtilsPrimitives.copyToFlippedByteBuffer(List&lt;Byte&gt;)}
 	 * creates a new {@link ByteBuffer}, puts the values in the right order in the buffer
 	 * and resets the position to 0 by flipping.
 	 * 
@@ -778,7 +777,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToFlippedByteBuffer(ByteBuffer, List) BufferUtilsPrimitives.copyToFlippedByteBuffer(ByteBuffer, List&lt;Byte&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToFlippedByteBuffer(ByteBuffer, List) BufferUtilsPrimitives.copyToFlippedByteBuffer(ByteBuffer, List&lt;Byte&gt;)}
 	 * puts the values in the right order in the buffer and resets the position to 0 by flipping.
 	 * 
 	 * @since 1.0.0.0
@@ -800,7 +799,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToFlippedShortBuffer(short[]) BufferUtilsPrimitives.copyToFlippedShortBuffer(short...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToFlippedShortBuffer(short[]) BufferUtilsPrimitives.copyToFlippedShortBuffer(short...)}
 	 * creates a new {@link ShortBuffer}, puts the values in the right order in the buffer
 	 * and resets the position to 0 by flipping.
 	 * 
@@ -822,7 +821,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToFlippedShortBuffer(ShortBuffer, short[]) BufferUtilsPrimitives.copyToFlippedShortBuffer(ShortBuffer, short...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToFlippedShortBuffer(ShortBuffer, short[]) BufferUtilsPrimitives.copyToFlippedShortBuffer(ShortBuffer, short...)}
 	 * puts the values in the right order in the buffer and resets the position to 0 by flipping.
 	 * 
 	 * @since 1.0.0.0
@@ -844,7 +843,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToFlippedShortBuffer(List) BufferUtilsPrimitives.copyToFlippedShortBuffer(List&lt;Short&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToFlippedShortBuffer(List) BufferUtilsPrimitives.copyToFlippedShortBuffer(List&lt;Short&gt;)}
 	 * creates a new {@link ShortBuffer}, puts the values in the right order in the buffer
 	 * and resets the position to 0 by flipping.
 	 * 
@@ -866,7 +865,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToFlippedShortBuffer(ShortBuffer, List) BufferUtilsPrimitives.copyToFlippedShortBuffer(ShortBuffer, List&lt;Short&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToFlippedShortBuffer(ShortBuffer, List) BufferUtilsPrimitives.copyToFlippedShortBuffer(ShortBuffer, List&lt;Short&gt;)}
 	 * puts the values in the right order in the buffer and resets the position to 0 by flipping.
 	 * 
 	 * @since 1.0.0.0
@@ -888,7 +887,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToFlippedIntBuffer(int[]) BufferUtilsPrimitives.copyToFlippedIntBuffer(int...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToFlippedIntBuffer(int[]) BufferUtilsPrimitives.copyToFlippedIntBuffer(int...)}
 	 * creates a new {@link IntBuffer}, puts the values in the right order in the buffer
 	 * and resets the position to 0 by flipping.
 	 * 
@@ -910,7 +909,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToFlippedIntBuffer(IntBuffer, int[]) BufferUtilsPrimitives.copyToFlippedIntBuffer(IntBuffer, int...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToFlippedIntBuffer(IntBuffer, int[]) BufferUtilsPrimitives.copyToFlippedIntBuffer(IntBuffer, int...)}
 	 * puts the values in the right order in the buffer and resets the position to 0 by flipping.
 	 * 
 	 * @since 1.0.0.0
@@ -932,7 +931,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToFlippedIntBuffer(List) BufferUtilsPrimitives.copyToFlippedIntBuffer(List&lt;Integer&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToFlippedIntBuffer(List) BufferUtilsPrimitives.copyToFlippedIntBuffer(List&lt;Integer&gt;)}
 	 * creates a new {@link IntBuffer}, puts the values in the right order in the buffer
 	 * and resets the position to 0 by flipping.
 	 * 
@@ -954,7 +953,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToFlippedIntBuffer(IntBuffer, List) BufferUtilsPrimitives.copyToFlippedIntBuffer(IntBuffer, List&lt;Integer&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToFlippedIntBuffer(IntBuffer, List) BufferUtilsPrimitives.copyToFlippedIntBuffer(IntBuffer, List&lt;Integer&gt;)}
 	 * puts the values in the right order in the bufferand resets the position to 0 by flipping.
 	 * 
 	 * @since 1.0.0.0
@@ -976,7 +975,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToFlippedLongBuffer(long[]) BufferUtilsPrimitives.copyToFlippedLongBuffer(long...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToFlippedLongBuffer(long[]) BufferUtilsPrimitives.copyToFlippedLongBuffer(long...)}
 	 * creates a new {@link LongBuffer}, puts the values in the right order in the buffer
 	 * and resets the position to 0 by flipping.
 	 * 
@@ -998,7 +997,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToFlippedLongBuffer(LongBuffer, long[]) BufferUtilsPrimitives.copyToFlippedLongBuffer(LongBuffer, long...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToFlippedLongBuffer(LongBuffer, long[]) BufferUtilsPrimitives.copyToFlippedLongBuffer(LongBuffer, long...)}
 	 * puts the values in the right order in the buffer and resets the position to 0 by flipping.
 	 * 
 	 * @since 1.0.0.0
@@ -1020,7 +1019,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToFlippedLongBuffer(List) BufferUtilsPrimitives.copyToFlippedLongBuffer(List&lt;Long&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToFlippedLongBuffer(List) BufferUtilsPrimitives.copyToFlippedLongBuffer(List&lt;Long&gt;)}
 	 * creates a new {@link LongBuffer}, puts the values in the right order in the buffer
 	 * and resets the position to 0 by flipping.
 	 * 
@@ -1042,7 +1041,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToFlippedLongBuffer(LongBuffer, List) BufferUtilsPrimitives.copyToFlippedLongBuffer(LongBuffer, List&lt;Long&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToFlippedLongBuffer(LongBuffer, List) BufferUtilsPrimitives.copyToFlippedLongBuffer(LongBuffer, List&lt;Long&gt;)}
 	 * puts the values in the right order in the buffer and resets the position to 0 by flipping.
 	 * 
 	 * @since 1.0.0.0
@@ -1064,7 +1063,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToFlippedFloatBuffer(float[]) BufferUtilsPrimitives.copyToFlippedFloatBuffer(float...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToFlippedFloatBuffer(float[]) BufferUtilsPrimitives.copyToFlippedFloatBuffer(float...)}
 	 * creates a new {@link FloatBuffer}, puts the values in the right order in the buffer
 	 * and resets the position to 0 by flipping.
 	 * 
@@ -1086,7 +1085,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToFlippedFloatBuffer(FloatBuffer, float[]) BufferUtilsPrimitives.copyToFlippedFloatBuffer(FloatBuffer, float...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToFlippedFloatBuffer(FloatBuffer, float[]) BufferUtilsPrimitives.copyToFlippedFloatBuffer(FloatBuffer, float...)}
 	 * puts the values in the right order in the buffern and resets the position to 0 by flipping.
 	 * 
 	 * @since 1.0.0.0
@@ -1108,7 +1107,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToFlippedFloatBuffer(List) BufferUtilsPrimitives.copyToFlippedFloatBuffer(List&lt;Float&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToFlippedFloatBuffer(List) BufferUtilsPrimitives.copyToFlippedFloatBuffer(List&lt;Float&gt;)}
 	 * creates a new {@link FloatBuffer}, puts the values in the right order in the buffer
 	 * and resets the position to 0 by flipping.
 	 * 
@@ -1130,7 +1129,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToFlippedFloatBuffer(FloatBuffer, List) BufferUtilsPrimitives.copyToFlippedFloatBuffer(FloatBuffer, List&lt;Float&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToFlippedFloatBuffer(FloatBuffer, List) BufferUtilsPrimitives.copyToFlippedFloatBuffer(FloatBuffer, List&lt;Float&gt;)}
 	 * puts the values in the right order in the buffer and resets the position to 0 by flipping.
 	 * 
 	 * @since 1.0.0.0
@@ -1152,7 +1151,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToFlippedDoubleBuffer(double[]) BufferUtilsPrimitives.copyToFlippedDoubleBuffer(double...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToFlippedDoubleBuffer(double[]) BufferUtilsPrimitives.copyToFlippedDoubleBuffer(double...)}
 	 * creates a new {@link DoubleBuffer}, puts the values in the right order in the buffer
 	 * and resets the position to 0 by flipping.
 	 * 
@@ -1174,7 +1173,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToFlippedDoubleBuffer(DoubleBuffer, double[]) BufferUtilsPrimitives.copyToFlippedDoubleBuffer(DoubleBuffer, double...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToFlippedDoubleBuffer(DoubleBuffer, double[]) BufferUtilsPrimitives.copyToFlippedDoubleBuffer(DoubleBuffer, double...)}
 	 * puts the values in the right order in the buffer and resets the position to 0 by flipping.
 	 * 
 	 * @since 1.0.0.0
@@ -1196,7 +1195,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToFlippedDoubleBuffer(List) BufferUtilsPrimitives.copyToFlippedDoubleBuffer(List&lt;Double&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToFlippedDoubleBuffer(List) BufferUtilsPrimitives.copyToFlippedDoubleBuffer(List&lt;Double&gt;)}
 	 * creates a new {@link DoubleBuffer}, puts the values in the right order in the buffer
 	 * and resets the position to 0 by flipping.
 	 * 
@@ -1218,7 +1217,7 @@ class BufferUtilsPrimitivesTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtilsPrimitives#copyToFlippedDoubleBuffer(DoubleBuffer, List) BufferUtilsPrimitives.copyToFlippedDoubleBuffer(DoubleBuffer, List&lt;Double&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtilsPrimitives#copyToFlippedDoubleBuffer(DoubleBuffer, List) BufferUtilsPrimitives.copyToFlippedDoubleBuffer(DoubleBuffer, List&lt;Double&gt;)}
 	 * puts the values in the right order in the buffer and resets the position to 0 by flipping.
 	 * 
 	 * @since 1.0.0.0

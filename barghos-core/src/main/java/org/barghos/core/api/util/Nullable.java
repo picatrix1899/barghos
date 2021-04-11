@@ -20,32 +20,25 @@
  * SOFTWARE.
  ******************************************************************************/
 
-package org.barghos.core.api;
+package org.barghos.core.api.util;
+
+import static java.lang.annotation.ElementType.PARAMETER;
+import static java.lang.annotation.RetentionPolicy.SOURCE;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
 
 /**
- * This is a functional interface exactly like {@link java.util.function.Function} with the
- * {@link java.util.function.Function#apply(Object)} function extended by a <code>throws Exception</code>.
- *
- * @param <T> The type of the parameter of the {@link #apply(Object)} function.
- * @param <R> The return type of the {@link #apply(Object)} function.
+ * This annotation indicates, that the annotated method argument may be null.
+ * It usually indicates an argument with a special handling for null in the corresponding method.
  * 
  * @author picatrix1899
  * 
  * @since 1.0.0.0
  */
-public interface FunctionWithException<T,R>
+@Retention(SOURCE)
+@Target(PARAMETER)
+public @interface Nullable
 {
-	/**
-	 * This function is exactly like {@link java.util.function.Function#apply(Object)} but it allows to
-	 * throw exceptions.
-	 * 
-	 * @param t The function argument
-	 * 
-	 * @return The function result
-	 * 
-	 * @throws Exception Passes the unhandled exceptions from the function
-	 * 
-	 * @since 1.0.0.0
-	 */
-	R apply(T t) throws Exception;
+
 }

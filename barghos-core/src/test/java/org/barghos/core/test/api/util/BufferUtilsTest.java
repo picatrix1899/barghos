@@ -1,4 +1,4 @@
-package org.barghos.core.test.util;
+package org.barghos.core.test.api.util;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -9,18 +9,17 @@ import java.nio.FloatBuffer;
 import java.util.List;
 
 import org.barghos.core.api.tuple2.Tup2fR;
-
+import org.barghos.core.api.util.BufferUtils;
+import org.barghos.core.api.util.BufferUtilsPrimitives;
 import org.barghos.core.tuple2.Tup2d;
 import org.barghos.core.tuple2.Tup2f;
 import org.barghos.core.tuple3.Tup3d;
 import org.barghos.core.tuple3.Tup3f;
 import org.barghos.core.tuple4.Tup4d;
 import org.barghos.core.tuple4.Tup4f;
-import org.barghos.core.util.BufferUtils;
-import org.barghos.core.util.BufferUtilsPrimitives;
 
 /**
- * This class provides componenttests for the class {@link org.barghos.core.util.BufferUtils BufferUtils}.
+ * This class provides componenttests for the class {@link org.barghos.core.api.util.BufferUtils BufferUtils}.
  * 
  * @author picatrix1899
  * 
@@ -42,7 +41,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple2FBuffer(Tup2fR[]) BufferUtils.copyToTuple2FBuffer(Tup2fR...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToTuple2FBuffer(Tup2fR[]) BufferUtils.copyToTuple2FBuffer(Tup2fR...)}
 	 * creates a new {@link FloatBuffer}, puts the values in the right order in the buffer
 	 * and advances the position.
 	 * 
@@ -66,7 +65,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple2FBuffer(FloatBuffer, Tup2fR[]) BufferUtils.copyToTuple2FBuffer(FloatBuffer, Tup2fR...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToTuple2FBuffer(FloatBuffer, Tup2fR[]) BufferUtils.copyToTuple2FBuffer(FloatBuffer, Tup2fR...)}
 	 * puts the values in the right order in the buffer and advances the position.
 	 * 
 	 * @since 1.0.0.0
@@ -90,7 +89,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple2FBuffer(List) BufferUtils.copyToTuple2FBuffer(List&lt;Tup2fR&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToTuple2FBuffer(List) BufferUtils.copyToTuple2FBuffer(List&lt;Tup2fR&gt;)}
 	 * creates a new {@link FloatBuffer}, puts the values in the right order in the buffer
 	 * and advances the position.
 	 * 
@@ -114,7 +113,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple2FBuffer(FloatBuffer, List) BufferUtils.copyToTuple2FBuffer(FloatBuffer, List&lt;Tup2fR&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToTuple2FBuffer(FloatBuffer, List) BufferUtils.copyToTuple2FBuffer(FloatBuffer, List&lt;Tup2fR&gt;)}
 	 * puts the values in the right order in the buffer and advances the position.
 	 * 
 	 * @since 1.0.0.0
@@ -138,7 +137,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple2DBuffer(Tup2dR[]) BufferUtils.copyToTuple2DBuffer(Tup2dR...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToTuple2DBuffer(Tup2dR[]) BufferUtils.copyToTuple2DBuffer(Tup2dR...)}
 	 * creates a new {@link DoubleBuffer}, puts the values in the right order in the buffer
 	 * and advances the position.
 	 * 
@@ -162,7 +161,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple2DBuffer(DoubleBuffer, Tup2dR[]) BufferUtils.copyToTuple2DBuffer(DoubleBuffer, Tup2dR...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToTuple2DBuffer(DoubleBuffer, Tup2dR[]) BufferUtils.copyToTuple2DBuffer(DoubleBuffer, Tup2dR...)}
 	 * puts the values in the right order in the buffer and advances the position.
 	 * 
 	 * @since 1.0.0.0
@@ -186,7 +185,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple2DBuffer(List) BufferUtils.copyToTuple2DBuffer(List&lt;Tup2dR&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToTuple2DBuffer(List) BufferUtils.copyToTuple2DBuffer(List&lt;Tup2dR&gt;)}
 	 * creates a new {@link DoubleBuffer}, puts the values in the right order in the buffer
 	 * and advances the position.
 	 * 
@@ -210,7 +209,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple2DBuffer(DoubleBuffer, List) BufferUtils.copyToTuple2DBuffer(DoubleBuffer, List&lt;Tup2dR&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToTuple2DBuffer(DoubleBuffer, List) BufferUtils.copyToTuple2DBuffer(DoubleBuffer, List&lt;Tup2dR&gt;)}
 	 * puts the values in the right order in the buffer and advances the position.
 	 * 
 	 * @since 1.0.0.0
@@ -234,7 +233,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple3FBuffer(Tup3fR[]) BufferUtils.copyToTuple3FBuffer(Tup3fR...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToTuple3FBuffer(Tup3fR[]) BufferUtils.copyToTuple3FBuffer(Tup3fR...)}
 	 * creates a new {@link FloatBuffer}, puts the values in the right order in the buffer
 	 * and advances the position.
 	 * 
@@ -260,7 +259,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple3FBuffer(FloatBuffer, Tup3fR[]) BufferUtils.copyToTuple3FBuffer(FloatBuffer, Tup3fR...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToTuple3FBuffer(FloatBuffer, Tup3fR[]) BufferUtils.copyToTuple3FBuffer(FloatBuffer, Tup3fR...)}
 	 * puts the values in the right order in the buffer and advances the position.
 	 * 
 	 * @since 1.0.0.0
@@ -286,7 +285,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple3FBuffer(List) BufferUtils.copyToTuple3FBuffer(List&lt;Tup3fR&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToTuple3FBuffer(List) BufferUtils.copyToTuple3FBuffer(List&lt;Tup3fR&gt;)}
 	 * creates a new {@link FloatBuffer}, puts the values in the right order in the buffer
 	 * and advances the position.
 	 * 
@@ -312,7 +311,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple3FBuffer(FloatBuffer, List) BufferUtils.copyToTuple3FBuffer(FloatBuffer, List&lt;Tup3fR&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToTuple3FBuffer(FloatBuffer, List) BufferUtils.copyToTuple3FBuffer(FloatBuffer, List&lt;Tup3fR&gt;)}
 	 * creates a new {@link FloatBuffer}, puts the values in the right order in the buffer
 	 * and advances the position.
 	 * 
@@ -339,7 +338,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple3DBuffer(Tup3dR[]) BufferUtils.copyToTuple3DBuffer(Tup3dR...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToTuple3DBuffer(Tup3dR[]) BufferUtils.copyToTuple3DBuffer(Tup3dR...)}
 	 * creates a new {@link DoubleBuffer}, puts the values in the right order in the buffer
 	 * and advances the position.
 	 * 
@@ -365,7 +364,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple3DBuffer(DoubleBuffer, Tup3dR[]) BufferUtils.copyToTuple3DBuffer(DoubleBuffer, Tup3dR...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToTuple3DBuffer(DoubleBuffer, Tup3dR[]) BufferUtils.copyToTuple3DBuffer(DoubleBuffer, Tup3dR...)}
 	 * puts the values in the right order in the buffer and advances the position.
 	 * 
 	 * @since 1.0.0.0
@@ -391,7 +390,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple3DBuffer(List) BufferUtils.copyToTuple3DBuffer(List&lt;Tup3dR&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToTuple3DBuffer(List) BufferUtils.copyToTuple3DBuffer(List&lt;Tup3dR&gt;)}
 	 * creates a new {@link DoubleBuffer}, puts the values in the right order in the buffer
 	 * and advances the position.
 	 * 
@@ -417,7 +416,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple3DBuffer(DoubleBuffer, List) BufferUtils.copyToTuple3DBuffer(DoubleBuffer, List&lt;Tup3dR&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToTuple3DBuffer(DoubleBuffer, List) BufferUtils.copyToTuple3DBuffer(DoubleBuffer, List&lt;Tup3dR&gt;)}
 	 * puts the values in the right order in the buffer and advances the position.
 	 * 
 	 * @since 1.0.0.0
@@ -443,7 +442,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple4FBuffer(Tup4fR[]) BufferUtils.copyToTuple4FBuffer(Tup4fR...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToTuple4FBuffer(Tup4fR[]) BufferUtils.copyToTuple4FBuffer(Tup4fR...)}
 	 * creates a new {@link FloatBuffer}, puts the values in the right order in the buffer
 	 * and advances the position.
 	 * 
@@ -471,7 +470,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple4FBuffer(FloatBuffer, Tup4fR[]) BufferUtils.copyToTuple4FBuffer(FloatBuffer, Tup4fR...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToTuple4FBuffer(FloatBuffer, Tup4fR[]) BufferUtils.copyToTuple4FBuffer(FloatBuffer, Tup4fR...)}
 	 * puts the values in the right order in the buffer and advances the position.
 	 * 
 	 * @since 1.0.0.0
@@ -499,7 +498,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple4FBuffer(List) BufferUtils.copyToTuple4FBuffer(List&lt;Tup4fR&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToTuple4FBuffer(List) BufferUtils.copyToTuple4FBuffer(List&lt;Tup4fR&gt;)}
 	 * creates a new {@link FloatBuffer}, puts the values in the right order in the buffer
 	 * and advances the position.
 	 * 
@@ -527,7 +526,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple4FBuffer(FloatBuffer, List) BufferUtils.copyToTuple4FBuffer(FloatBuffer, List&lt;Tup4fR&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToTuple4FBuffer(FloatBuffer, List) BufferUtils.copyToTuple4FBuffer(FloatBuffer, List&lt;Tup4fR&gt;)}
 	 * puts the values in the right order in the buffer and advances the position.
 	 * 
 	 * @since 1.0.0.0
@@ -555,7 +554,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple4DBuffer(Tup4dR[]) BufferUtils.copyToTuple4DBuffer(Tup4dR...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToTuple4DBuffer(Tup4dR[]) BufferUtils.copyToTuple4DBuffer(Tup4dR...)}
 	 * creates a new {@link DoubleBuffer}, puts the values in the right order in the buffer
 	 * and advances the position.
 	 * 
@@ -583,7 +582,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple4DBuffer(DoubleBuffer, Tup4dR[]) BufferUtils.copyToTuple4DBuffer(DoubleBuffer, Tup4dR...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToTuple4DBuffer(DoubleBuffer, Tup4dR[]) BufferUtils.copyToTuple4DBuffer(DoubleBuffer, Tup4dR...)}
 	 * puts the values in the right order in the buffer and advances the position.
 	 * 
 	 * @since 1.0.0.0
@@ -611,7 +610,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple4DBuffer(List) BufferUtils.copyToTuple4DBuffer(List&lt;Tup4dR&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToTuple4DBuffer(List) BufferUtils.copyToTuple4DBuffer(List&lt;Tup4dR&gt;)}
 	 * creates a new {@link DoubleBuffer}, puts the values in the right order in the buffer
 	 * and advances the position.
 	 * 
@@ -639,7 +638,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToTuple4FBuffer(List) BufferUtils.copyToTuple4FBuffer(List&lt;Tup4fR&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToTuple4FBuffer(List) BufferUtils.copyToTuple4FBuffer(List&lt;Tup4fR&gt;)}
 	 * puts the values in the right order in the buffer and advances the position.
 	 * 
 	 * @since 1.0.0.0
@@ -667,7 +666,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple2FBuffer(Tup2fR[]) BufferUtils.copyToFlippedTuple2FBuffer(Tup2fR...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToFlippedTuple2FBuffer(Tup2fR[]) BufferUtils.copyToFlippedTuple2FBuffer(Tup2fR...)}
 	 * creates a new {@link FloatBuffer}, puts the values in the right order in the buffer
 	 * and resets the position to 0 by flipping.
 	 * 
@@ -689,7 +688,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple2FBuffer(FloatBuffer, Tup2fR[]) BufferUtils.copyToFlippedTuple2FBuffer(FloatBuffer, Tup2fR...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToFlippedTuple2FBuffer(FloatBuffer, Tup2fR[]) BufferUtils.copyToFlippedTuple2FBuffer(FloatBuffer, Tup2fR...)}
 	 * puts the values in the right order in the buffer and resets the position to 0 by flipping.
 	 * 
 	 * @since 1.0.0.0
@@ -711,7 +710,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple2FBuffer(List) BufferUtils.copyToFlippedTuple2FBuffer(List&lt;Tup2fR&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToFlippedTuple2FBuffer(List) BufferUtils.copyToFlippedTuple2FBuffer(List&lt;Tup2fR&gt;)}
 	 * creates a new {@link FloatBuffer}, puts the values in the right order in the buffer
 	 * and resets the position to 0 by flipping.
 	 * 
@@ -733,7 +732,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple2FBuffer(FloatBuffer, List) BufferUtils.copyToFlippedTuple2FBuffer(FloatBuffer, List&lt;Tup2fR&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToFlippedTuple2FBuffer(FloatBuffer, List) BufferUtils.copyToFlippedTuple2FBuffer(FloatBuffer, List&lt;Tup2fR&gt;)}
 	 * puts the values in the right order in the buffer and resets the position to 0 by flipping.
 	 * 
 	 * @since 1.0.0.0
@@ -755,7 +754,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple2DBuffer(Tup2dR[]) BufferUtils.copyToFlippedTuple2DBuffer(Tup2dR...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToFlippedTuple2DBuffer(Tup2dR[]) BufferUtils.copyToFlippedTuple2DBuffer(Tup2dR...)}
 	 * creates a new {@link DoubleBuffer}, puts the values in the right order in the buffer
 	 * and resets the position to 0 by flipping.
 	 * 
@@ -777,7 +776,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple2DBuffer(DoubleBuffer, Tup2dR[]) BufferUtils.copyToFlippedTuple2DBuffer(DoubleBuffer, Tup2dR...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToFlippedTuple2DBuffer(DoubleBuffer, Tup2dR[]) BufferUtils.copyToFlippedTuple2DBuffer(DoubleBuffer, Tup2dR...)}
 	 * puts the values in the right order in the buffer and resets the position to 0 by flipping.
 	 * 
 	 * @since 1.0.0.0
@@ -799,7 +798,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple2DBuffer(List) BufferUtils.copyToFlippedTuple2DBuffer(List&lt;Tup2dR&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToFlippedTuple2DBuffer(List) BufferUtils.copyToFlippedTuple2DBuffer(List&lt;Tup2dR&gt;)}
 	 * creates a new {@link DoubleBuffer}, puts the values in the right order in the buffer
 	 * and resets the position to 0 by flipping.
 	 * 
@@ -821,7 +820,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple2DBuffer(DoubleBuffer, List) BufferUtils.copyToFlippedTuple2DBuffer(DoubleBuffer, List&lt;Tup2dR&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToFlippedTuple2DBuffer(DoubleBuffer, List) BufferUtils.copyToFlippedTuple2DBuffer(DoubleBuffer, List&lt;Tup2dR&gt;)}
 	 * puts the values in the right order in the buffer and resets the position to 0 by flipping.
 	 * 
 	 * @since 1.0.0.0
@@ -843,7 +842,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple3FBuffer(Tup3fR[]) BufferUtils.copyToFlippedTuple3FBuffer(Tup3fR...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToFlippedTuple3FBuffer(Tup3fR[]) BufferUtils.copyToFlippedTuple3FBuffer(Tup3fR...)}
 	 * creates a new {@link FloatBuffer}, puts the values in the right order in the buffer
 	 * and resets the position to 0 by flipping.
 	 * 
@@ -867,7 +866,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple3FBuffer(FloatBuffer, Tup3fR[]) BufferUtils.copyToFlippedTuple3FBuffer(FloatBuffer, Tup3fR...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToFlippedTuple3FBuffer(FloatBuffer, Tup3fR[]) BufferUtils.copyToFlippedTuple3FBuffer(FloatBuffer, Tup3fR...)}
 	 * puts the values in the right order in the buffer and resets the position to 0 by flipping.
 	 * 
 	 * @since 1.0.0.0
@@ -891,7 +890,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple3FBuffer(List) BufferUtils.copyToFlippedTuple3FBuffer(List&lt;Tup3fR&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToFlippedTuple3FBuffer(List) BufferUtils.copyToFlippedTuple3FBuffer(List&lt;Tup3fR&gt;)}
 	 * creates a new {@link FloatBuffer}, puts the values in the right order in the buffer
 	 * and resets the position to 0 by flipping.
 	 * 
@@ -915,7 +914,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple3FBuffer(FloatBuffer, List) BufferUtils.copyToFlippedTuple3FBuffer(FloatBuffer, List&lt;Tup3fR&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToFlippedTuple3FBuffer(FloatBuffer, List) BufferUtils.copyToFlippedTuple3FBuffer(FloatBuffer, List&lt;Tup3fR&gt;)}
 	 * puts the values in the right order in the buffer and resets the position to 0 by flipping.
 	 * 
 	 * @since 1.0.0.0
@@ -940,7 +939,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple3DBuffer(Tup3dR[]) BufferUtils.copyToFlippedTuple3DBuffer(Tup3dR...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToFlippedTuple3DBuffer(Tup3dR[]) BufferUtils.copyToFlippedTuple3DBuffer(Tup3dR...)}
 	 * creates a new {@link DoubleBuffer}, puts the values in the right order in the buffer
 	 * and resets the position to 0 by flipping.
 	 * 
@@ -964,7 +963,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple3DBuffer(DoubleBuffer, Tup3dR[]) BufferUtils.copyToFlippedTuple3DBuffer(DoubleBuffer, Tup3dR...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToFlippedTuple3DBuffer(DoubleBuffer, Tup3dR[]) BufferUtils.copyToFlippedTuple3DBuffer(DoubleBuffer, Tup3dR...)}
 	 * puts the values in the right order in the buffer and resets the position to 0 by flipping.
 	 * 
 	 * @since 1.0.0.0
@@ -988,7 +987,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple3DBuffer(List) BufferUtils.copyToFlippedTuple3DBuffer(List&lt;Tup3dR&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToFlippedTuple3DBuffer(List) BufferUtils.copyToFlippedTuple3DBuffer(List&lt;Tup3dR&gt;)}
 	 * creates a new {@link DoubleBuffer}, puts the values in the right order in the buffer
 	 * and resets the position to 0 by flipping.
 	 * 
@@ -1012,7 +1011,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple3DBuffer(DoubleBuffer, List) BufferUtils.copyToFlippedTuple3DBuffer(DoubleBuffer, List&lt;Tup3dR&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToFlippedTuple3DBuffer(DoubleBuffer, List) BufferUtils.copyToFlippedTuple3DBuffer(DoubleBuffer, List&lt;Tup3dR&gt;)}
 	 * puts the values in the right order in the buffer and resets the position to 0 by flipping.
 	 * 
 	 * @since 1.0.0.0
@@ -1036,7 +1035,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple4FBuffer(Tup4fR[]) BufferUtils.copyToFlippedTuple4FBuffer(Tup4fR...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToFlippedTuple4FBuffer(Tup4fR[]) BufferUtils.copyToFlippedTuple4FBuffer(Tup4fR...)}
 	 * creates a new {@link FloatBuffer}, puts the values in the right order in the buffer
 	 * and resets the position to 0 by flipping.
 	 * 
@@ -1062,7 +1061,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple4FBuffer(FloatBuffer, Tup4fR[]) BufferUtils.copyToFlippedTuple4FBuffer(FloatBuffer, Tup4fR...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToFlippedTuple4FBuffer(FloatBuffer, Tup4fR[]) BufferUtils.copyToFlippedTuple4FBuffer(FloatBuffer, Tup4fR...)}
 	 * puts the values in the right order in the buffer and resets the position to 0 by flipping.
 	 * 
 	 * @since 1.0.0.0
@@ -1088,7 +1087,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple4FBuffer(List) BufferUtils.copyToFlippedTuple4FBuffer(List&lt;Tup4fR&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToFlippedTuple4FBuffer(List) BufferUtils.copyToFlippedTuple4FBuffer(List&lt;Tup4fR&gt;)}
 	 * creates a new {@link FloatBuffer}, puts the values in the right order in the buffer
 	 * and resets the position to 0 by flipping.
 	 * 
@@ -1114,7 +1113,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple4FBuffer(FloatBuffer,List) BufferUtils.copyToFlippedTuple4FBuffer(FloatBuffer, List&lt;Tup4fR&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToFlippedTuple4FBuffer(FloatBuffer,List) BufferUtils.copyToFlippedTuple4FBuffer(FloatBuffer, List&lt;Tup4fR&gt;)}
 	 * puts the values in the right order in the buffer and resets the position to 0 by flipping.
 	 * 
 	 * @since 1.0.0.0
@@ -1140,7 +1139,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple4DBuffer(Tup4dR[]) BufferUtils.copyToFlippedTuple4DBuffer(Tup4dR...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToFlippedTuple4DBuffer(Tup4dR[]) BufferUtils.copyToFlippedTuple4DBuffer(Tup4dR...)}
 	 * creates a new {@link DoubleBuffer}, puts the values in the right order in the buffer
 	 * and resets the position to 0 by flipping.
 	 * 
@@ -1166,7 +1165,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple4DBuffer(DoubleBuffer, Tup4dR[]) BufferUtils.copyToFlippedTuple4DBuffer(DoubleBuffer, Tup4dR...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToFlippedTuple4DBuffer(DoubleBuffer, Tup4dR[]) BufferUtils.copyToFlippedTuple4DBuffer(DoubleBuffer, Tup4dR...)}
 	 * puts the values in the right order in the buffer and resets the position to 0 by flipping.
 	 * 
 	 * @since 1.0.0.0
@@ -1192,7 +1191,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple4DBuffer(List) BufferUtils.copyToFlippedTuple4FBuffer(List&lt;Tup4dR&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToFlippedTuple4DBuffer(List) BufferUtils.copyToFlippedTuple4FBuffer(List&lt;Tup4dR&gt;)}
 	 * creates a new {@link DoubleBuffer}, puts the values in the right order in the buffer
 	 * and resets the position to 0 by flipping.
 	 * 
@@ -1218,7 +1217,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#copyToFlippedTuple4DBuffer(DoubleBuffer, List) BufferUtils.copyToFlippedTuple4FBuffer(DoubleBuffer, List&lt;Tup4dR&gt;)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#copyToFlippedTuple4DBuffer(DoubleBuffer, List) BufferUtils.copyToFlippedTuple4FBuffer(DoubleBuffer, List&lt;Tup4dR&gt;)}
 	 * puts the values in the right order in the buffer and resets the position to 0 by flipping.
 	 * 
 	 * @since 1.0.0.0
@@ -1244,7 +1243,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#put(FloatBuffer, Tup2fR) BufferUtils.put(FloatBuffer, Tup2fR)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#put(FloatBuffer, Tup2fR) BufferUtils.put(FloatBuffer, Tup2fR)}
 	 * puts the values in the right order in the buffer.
 	 * 
 	 * @since 1.0.0.0
@@ -1266,7 +1265,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#put(FloatBuffer, Tup2fR[]) BufferUtils.put(FloatBuffer, Tup2fR...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#put(FloatBuffer, Tup2fR[]) BufferUtils.put(FloatBuffer, Tup2fR...)}
 	 * puts the values in the right order in the buffer.
 	 * 
 	 * @since 1.0.0.0
@@ -1290,7 +1289,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#put(FloatBuffer, Tup3fR) BufferUtils.put(FloatBuffer, Tup3fR)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#put(FloatBuffer, Tup3fR) BufferUtils.put(FloatBuffer, Tup3fR)}
 	 * puts the values in the right order in the buffer.
 	 * 
 	 * @since 1.0.0.0
@@ -1313,7 +1312,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#put(FloatBuffer, Tup3fR[]) BufferUtils.put(FloatBuffer, Tup3fR...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#put(FloatBuffer, Tup3fR[]) BufferUtils.put(FloatBuffer, Tup3fR...)}
 	 * puts the values in the right order in the buffer.
 	 * 
 	 * @since 1.0.0.0
@@ -1339,7 +1338,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#put(FloatBuffer, Tup4fR) BufferUtils.put(FloatBuffer, Tup4fR)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#put(FloatBuffer, Tup4fR) BufferUtils.put(FloatBuffer, Tup4fR)}
 	 * puts the values in the right order in the buffer.
 	 * 
 	 * @since 1.0.0.0
@@ -1363,7 +1362,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link org.barghos.core.util.BufferUtils#put(FloatBuffer, Tup4fR[]) BufferUtils.put(FloatBuffer, Tup4fR...)}
+	 * This test ensures, that the function {@link org.barghos.core.api.util.BufferUtils#put(FloatBuffer, Tup4fR[]) BufferUtils.put(FloatBuffer, Tup4fR...)}
 	 * puts the values in the right order in the buffer.
 	 * 
 	 * @since 1.0.0.0

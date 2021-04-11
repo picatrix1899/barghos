@@ -25,7 +25,7 @@ package org.barghos.core.color;
 import org.barghos.core.api.color.HDRColor3R;
 import org.barghos.core.api.tuple3.Tup3fR;
 import org.barghos.core.api.tuple3.Tup3iR;
-import org.barghos.core.util.ArgumentNullException;
+import org.barghos.core.api.util.ArgumentNullException;
 import org.barghos.core.Barghos;
 
 /**

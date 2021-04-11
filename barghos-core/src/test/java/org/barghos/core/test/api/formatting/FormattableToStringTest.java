@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import org.barghos.core.api.testing.ValueRelay;
+
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -112,7 +114,9 @@ class FormattableToStringTest
 				assertEquals("y", l.get(1).getKey());
 				assertEquals(2, l.get(1).getValue());
 				
-				return "test";
+				ValueRelay.relay("format", true);
+				
+				return "";
 			}
 		};
 		
@@ -133,7 +137,11 @@ class FormattableToStringTest
 			}
 		};
 		
-		assertEquals("test", obj.toFormattedString());
+		obj.toFormattedString(customFormatter);
+		
+		assertEquals(true, ValueRelay.get("format", false));
+		
+		ValueRelay.clear();
 	}
 	
 	/**
@@ -141,7 +149,7 @@ class FormattableToStringTest
 	 * returns <code>null</code>.
 	 */
 	@Test
-	void getCustomFormattedNameTest()
+	void getCustomFormattedName_NullTest()
 	{
 		FormattableToString obj = new FormattableToString() {
 			public Map<String,Object> getValueMapping()

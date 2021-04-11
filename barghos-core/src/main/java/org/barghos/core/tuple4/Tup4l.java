@@ -29,9 +29,8 @@ import java.util.Map;
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple4.Tup4lR;
 import org.barghos.core.api.tuple4.Tup4lRW;
-
+import org.barghos.core.api.util.ArgumentNullException;
 import org.barghos.core.Barghos;
-import org.barghos.core.util.ArgumentNullException;
 
 /**
  * This class represents a 4-dimensional long tuple.

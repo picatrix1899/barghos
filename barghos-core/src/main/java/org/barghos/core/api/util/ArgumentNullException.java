@@ -20,7 +20,7 @@
  * SOFTWARE.
  ******************************************************************************/
 
-package org.barghos.core.util;
+package org.barghos.core.api.util;
 
 /**
  * This exception indicates that a method has been passed an argument that is null but must not be null.

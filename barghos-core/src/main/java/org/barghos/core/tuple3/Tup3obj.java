@@ -29,9 +29,8 @@ import java.util.Map;
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple3.Tup3objR;
 import org.barghos.core.api.tuple3.Tup3objRW;
-
+import org.barghos.core.api.util.ArgumentNullException;
 import org.barghos.core.Barghos;
-import org.barghos.core.util.ArgumentNullException;
 
 /**
  * This class represents a 3-dimensional object tuple.

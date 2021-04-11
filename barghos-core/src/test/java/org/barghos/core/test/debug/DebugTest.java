@@ -2,7 +2,10 @@ package org.barghos.core.test.debug;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
+
+import org.barghos.core.api.testing.ValueRelay;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -19,6 +22,15 @@ import org.barghos.core.debug.Debug;
 class DebugTest
 {
 	/**
+	 * This method is called after each test in this class.
+	 */
+	@AfterEach
+	void cleanup()
+	{
+		ValueRelay.clear();
+	}
+	
+	/**
 	 * This test ensures, that the method {@link Debug#print(boolean)}
 	 * doesn't print anything while {@link Debug#DEBUG_MODE} is <code>false</code>.
 	 * 
@@ -29,19 +41,18 @@ class DebugTest
 	{
 		final boolean value = true;
 		
-		final ExecutionHelper helper = new ExecutionHelper();
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void print(boolean b)
 			{
-				helper.run();
+				ValueRelay.relayCall("print");
 			}
 		});
 		
 		Debug.DEBUG_MODE = false;
 		Debug.print(value);
 		
-		assertFalse(helper.wasExecuted);
+		assertEquals(false, ValueRelay.get("print", false));
 	}
 	
 	/**
@@ -57,23 +68,21 @@ class DebugTest
 	{
 		final boolean value = true;
 		
-		final ExecutionHelper helperValue = new ExecutionHelper();
-		final ExecutionHelper helperStack = new ExecutionHelper();
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void print(String s)
 			{
-				helperStack.run();
+				ValueRelay.relayCall("printString");
 			}
 			
 			@Override
 			public void print(boolean b)
 			{
-				assertFalse(helperStack.wasExecuted);
+				assertEquals(false, ValueRelay.get("printString", false));
 				
 				assertEquals(value, b);
 				
-				helperValue.run();
+				ValueRelay.relayCall("printBoolean");
 			}
 		});
 		
@@ -81,8 +90,8 @@ class DebugTest
 		Debug.PRINT_STACK_ELEMENT = false;
 		Debug.print(value);
 		
-		assertFalse(helperStack.wasExecuted);
-		assertTrue(helperValue.wasExecuted);
+		assertEquals(false, ValueRelay.get("printString", false));
+		assertEquals(true, ValueRelay.get("printBoolean", false));
 	}
 	
 	/**
@@ -98,23 +107,21 @@ class DebugTest
 	{
 		final boolean value = true;
 		
-		final ExecutionHelper helperValue = new ExecutionHelper();
-		final ExecutionHelper helperStack = new ExecutionHelper();
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void print(String s)
 			{
-				helperStack.run();
+				ValueRelay.relayCall("printString");
 			}
 			
 			@Override
 			public void print(boolean b)
 			{
-				assertTrue(helperStack.wasExecuted);
-				
+				assertEquals(true, ValueRelay.get("printString", false));
+
 				assertEquals(value, b);
 				
-				helperValue.run();
+				ValueRelay.relayCall("printBoolean");
 			}
 		});
 		
@@ -122,8 +129,8 @@ class DebugTest
 		Debug.PRINT_STACK_ELEMENT = true;
 		Debug.print(value);
 		
-		assertTrue(helperStack.wasExecuted);
-		assertTrue(helperValue.wasExecuted);
+		assertEquals(true, ValueRelay.get("printString", false));
+		assertEquals(true, ValueRelay.get("printBoolean", false));
 	}
 	
 	/**
@@ -137,19 +144,18 @@ class DebugTest
 	{
 		final char value = 'a';
 		
-		final ExecutionHelper helper = new ExecutionHelper();
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void print(char b)
 			{
-				helper.run();
+				ValueRelay.relayCall("print");
 			}
 		});
 		
 		Debug.DEBUG_MODE = false;
 		Debug.print(value);
 		
-		assertFalse(helper.wasExecuted);
+		assertEquals(false, ValueRelay.get("print", false));
 	}
 	
 	/**
@@ -165,23 +171,21 @@ class DebugTest
 	{
 		final char value = 'a';
 		
-		final ExecutionHelper helperValue = new ExecutionHelper();
-		final ExecutionHelper helperStack = new ExecutionHelper();
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void print(String s)
 			{
-				helperStack.run();
+				ValueRelay.relayCall("printString");
 			}
 			
 			@Override
 			public void print(char b)
 			{
-				assertFalse(helperStack.wasExecuted);
+				assertEquals(false, ValueRelay.get("printString", false));
 				
 				assertEquals(value, b);
 				
-				helperValue.run();
+				ValueRelay.relayCall("printChar");
 			}
 		});
 		
@@ -189,8 +193,8 @@ class DebugTest
 		Debug.PRINT_STACK_ELEMENT = false;
 		Debug.print(value);
 		
-		assertFalse(helperStack.wasExecuted);
-		assertTrue(helperValue.wasExecuted);
+		assertEquals(false, ValueRelay.get("printString", false));
+		assertEquals(true, ValueRelay.get("printChar", false));
 	}
 	
 	/**
@@ -206,23 +210,21 @@ class DebugTest
 	{
 		final char value = 'a';
 		
-		final ExecutionHelper helperValue = new ExecutionHelper();
-		final ExecutionHelper helperStack = new ExecutionHelper();
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void print(String s)
 			{
-				helperStack.run();
+				ValueRelay.relayCall("printString");
 			}
 			
 			@Override
 			public void print(char b)
 			{
-				assertTrue(helperStack.wasExecuted);
-				
+				assertEquals(true, ValueRelay.get("printString", false));
+
 				assertEquals(value, b);
 				
-				helperValue.run();
+				ValueRelay.relayCall("printChar");
 			}
 		});
 		
@@ -230,8 +232,8 @@ class DebugTest
 		Debug.PRINT_STACK_ELEMENT = true;
 		Debug.print(value);
 		
-		assertTrue(helperStack.wasExecuted);
-		assertTrue(helperValue.wasExecuted);
+		assertEquals(true, ValueRelay.get("printString", false));
+		assertEquals(true, ValueRelay.get("printChar", false));
 	}
 	
 	/**
@@ -245,19 +247,18 @@ class DebugTest
 	{
 		final char[] value = new char[] {'a', 'b'};
 		
-		final ExecutionHelper helper = new ExecutionHelper();
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void print(char[] b)
 			{
-				helper.run();
+				ValueRelay.relayCall("print");
 			}
 		});
 		
 		Debug.DEBUG_MODE = false;
 		Debug.print(value);
 		
-		assertFalse(helper.wasExecuted);
+		assertEquals(false, ValueRelay.get("print", false));
 	}
 	
 	/**
@@ -273,25 +274,23 @@ class DebugTest
 	{
 		final char[] value = new char[] {'a', 'b'};
 		
-		final ExecutionHelper helperValue = new ExecutionHelper();
-		final ExecutionHelper helperStack = new ExecutionHelper();
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void print(String s)
 			{
-				helperStack.run();
+				ValueRelay.relayCall("printString");
 			}
 			
 			@Override
 			public void print(char[] b)
 			{
-				assertFalse(helperStack.wasExecuted);
+				assertEquals(false, ValueRelay.get("printString", false));
 				
 				assertEquals(2, b.length);
 				assertEquals(value[0], b[0]);
 				assertEquals(value[1], b[1]);
 				
-				helperValue.run();
+				ValueRelay.relayCall("printCharArray");
 			}
 		});
 		
@@ -299,8 +298,8 @@ class DebugTest
 		Debug.PRINT_STACK_ELEMENT = false;
 		Debug.print(value);
 		
-		assertFalse(helperStack.wasExecuted);
-		assertTrue(helperValue.wasExecuted);
+		assertEquals(false, ValueRelay.get("printString", false));
+		assertEquals(true, ValueRelay.get("printCharArray", false));
 	}
 	
 	/**
@@ -316,25 +315,23 @@ class DebugTest
 	{
 		final char[] value = new char[] {'a', 'b'};
 		
-		final ExecutionHelper helperValue = new ExecutionHelper();
-		final ExecutionHelper helperStack = new ExecutionHelper();
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void print(String s)
 			{
-				helperStack.run();
+				ValueRelay.relayCall("printString");
 			}
 			
 			@Override
 			public void print(char[] b)
 			{
-				assertTrue(helperStack.wasExecuted);
+				assertEquals(true, ValueRelay.get("printString", false));
 				
 				assertEquals(2, b.length);
 				assertEquals(value[0], b[0]);
 				assertEquals(value[1], b[1]);
 				
-				helperValue.run();
+				ValueRelay.relayCall("printCharArray");
 			}
 		});
 		
@@ -342,8 +339,8 @@ class DebugTest
 		Debug.PRINT_STACK_ELEMENT = true;
 		Debug.print(value);
 		
-		assertTrue(helperStack.wasExecuted);
-		assertTrue(helperValue.wasExecuted);
+		assertEquals(true, ValueRelay.get("printString", false));
+		assertEquals(true, ValueRelay.get("printCharArray", false));
 	}
 	
 	/**
@@ -357,19 +354,18 @@ class DebugTest
 	{
 		final float value = 1.2f;
 		
-		final ExecutionHelper helper = new ExecutionHelper();
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void print(float b)
 			{
-				helper.run();
+				ValueRelay.relayCall("print");
 			}
 		});
 		
 		Debug.DEBUG_MODE = false;
 		Debug.print(value);
 		
-		assertFalse(helper.wasExecuted);
+		assertEquals(false, ValueRelay.get("print", false));
 	}
 	
 	/**
@@ -385,23 +381,21 @@ class DebugTest
 	{
 		final float value = 1.2f;
 		
-		final ExecutionHelper helperValue = new ExecutionHelper();
-		final ExecutionHelper helperStack = new ExecutionHelper();
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void print(String s)
 			{
-				helperStack.run();
+				ValueRelay.relayCall("printString");
 			}
 			
 			@Override
 			public void print(float b)
 			{
-				assertFalse(helperStack.wasExecuted);
-				
+				assertEquals(false, ValueRelay.get("printString", false));
+
 				assertEquals(value, b);
 				
-				helperValue.run();
+				ValueRelay.relayCall("printFloat");
 			}
 		});
 		
@@ -409,8 +403,8 @@ class DebugTest
 		Debug.PRINT_STACK_ELEMENT = false;
 		Debug.print(value);
 		
-		assertFalse(helperStack.wasExecuted);
-		assertTrue(helperValue.wasExecuted);
+		assertEquals(false, ValueRelay.get("printString", false));
+		assertEquals(true, ValueRelay.get("printFloat", false));
 	}
 	
 	/**
@@ -426,23 +420,21 @@ class DebugTest
 	{
 		final float value = 1.2f;
 		
-		final ExecutionHelper helperValue = new ExecutionHelper();
-		final ExecutionHelper helperStack = new ExecutionHelper();
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void print(String s)
 			{
-				helperStack.run();
+				ValueRelay.relayCall("printString");
 			}
 			
 			@Override
 			public void print(float b)
 			{
-				assertTrue(helperStack.wasExecuted);
+				assertEquals(true, ValueRelay.get("printString", false));
 				
 				assertEquals(value, b);
 				
-				helperValue.run();
+				ValueRelay.relayCall("printFloat");
 			}
 		});
 		
@@ -450,8 +442,8 @@ class DebugTest
 		Debug.PRINT_STACK_ELEMENT = true;
 		Debug.print(value);
 		
-		assertTrue(helperStack.wasExecuted);
-		assertTrue(helperValue.wasExecuted);
+		assertEquals(true, ValueRelay.get("printString", false));
+		assertEquals(true, ValueRelay.get("printFloat", false));
 	}
 	
 	/**
@@ -465,19 +457,18 @@ class DebugTest
 	{
 		final double value = 1.2;
 		
-		final ExecutionHelper helper = new ExecutionHelper();
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void print(double b)
 			{
-				helper.run();
+				ValueRelay.relayCall("print");
 			}
 		});
 		
 		Debug.DEBUG_MODE = false;
 		Debug.print(value);
 		
-		assertFalse(helper.wasExecuted);
+		assertEquals(false, ValueRelay.get("print", false));
 	}
 	
 	/**
@@ -493,23 +484,21 @@ class DebugTest
 	{
 		final double value = 1.2;
 		
-		final ExecutionHelper helperValue = new ExecutionHelper();
-		final ExecutionHelper helperStack = new ExecutionHelper();
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void print(String s)
 			{
-				helperStack.run();
+				ValueRelay.relayCall("printString");
 			}
 			
 			@Override
 			public void print(double b)
 			{
-				assertFalse(helperStack.wasExecuted);
+				assertEquals(false, ValueRelay.get("printString", false));
 				
 				assertEquals(value, b);
 				
-				helperValue.run();
+				ValueRelay.relayCall("printDouble");
 			}
 		});
 		
@@ -517,8 +506,8 @@ class DebugTest
 		Debug.PRINT_STACK_ELEMENT = false;
 		Debug.print(value);
 		
-		assertFalse(helperStack.wasExecuted);
-		assertTrue(helperValue.wasExecuted);
+		assertEquals(false, ValueRelay.get("printString", false));
+		assertEquals(true, ValueRelay.get("printDouble", false));
 	}
 	
 	/**
@@ -534,23 +523,21 @@ class DebugTest
 	{
 		final double value = 1.2;
 		
-		final ExecutionHelper helperValue = new ExecutionHelper();
-		final ExecutionHelper helperStack = new ExecutionHelper();
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void print(String s)
 			{
-				helperStack.run();
+				ValueRelay.relayCall("printString");
 			}
 			
 			@Override
 			public void print(double b)
 			{
-				assertTrue(helperStack.wasExecuted);
+				assertEquals(true, ValueRelay.get("printString", false));
 				
 				assertEquals(value, b);
 				
-				helperValue.run();
+				ValueRelay.relayCall("printDouble");
 			}
 		});
 		
@@ -558,8 +545,8 @@ class DebugTest
 		Debug.PRINT_STACK_ELEMENT = true;
 		Debug.print(value);
 		
-		assertTrue(helperStack.wasExecuted);
-		assertTrue(helperValue.wasExecuted);
+		assertEquals(true, ValueRelay.get("printString", false));
+		assertEquals(true, ValueRelay.get("printDouble", false));
 	}
 	
 	/**
@@ -573,19 +560,18 @@ class DebugTest
 	{
 		final int value = 2;
 		
-		final ExecutionHelper helper = new ExecutionHelper();
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void print(int b)
 			{
-				helper.run();
+				ValueRelay.relayCall("print");
 			}
 		});
 		
 		Debug.DEBUG_MODE = false;
 		Debug.print(value);
 		
-		assertFalse(helper.wasExecuted);
+		assertEquals(false, ValueRelay.get("print", false));
 	}
 	
 	/**
@@ -601,23 +587,21 @@ class DebugTest
 	{
 		final int value = 2;
 		
-		final ExecutionHelper helperValue = new ExecutionHelper();
-		final ExecutionHelper helperStack = new ExecutionHelper();
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void print(String s)
 			{
-				helperStack.run();
+				ValueRelay.relayCall("printString");
 			}
 			
 			@Override
 			public void print(int b)
 			{
-				assertFalse(helperStack.wasExecuted);
+				assertEquals(false, ValueRelay.get("printString", false));
 				
 				assertEquals(value, b);
 				
-				helperValue.run();
+				ValueRelay.relayCall("printInt");
 			}
 		});
 		
@@ -625,8 +609,8 @@ class DebugTest
 		Debug.PRINT_STACK_ELEMENT = false;
 		Debug.print(value);
 		
-		assertFalse(helperStack.wasExecuted);
-		assertTrue(helperValue.wasExecuted);
+		assertEquals(false, ValueRelay.get("printString", false));
+		assertEquals(true, ValueRelay.get("printInt", false));
 	}
 	
 	/**
@@ -642,23 +626,21 @@ class DebugTest
 	{
 		final int value = 2;
 		
-		final ExecutionHelper helperValue = new ExecutionHelper();
-		final ExecutionHelper helperStack = new ExecutionHelper();
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void print(String s)
 			{
-				helperStack.run();
+				ValueRelay.relayCall("printString");
 			}
 			
 			@Override
 			public void print(int b)
 			{
-				assertTrue(helperStack.wasExecuted);
+				assertEquals(true, ValueRelay.get("printString", false));
 				
 				assertEquals(value, b);
 				
-				helperValue.run();
+				ValueRelay.relayCall("printInt");
 			}
 		});
 		
@@ -666,8 +648,8 @@ class DebugTest
 		Debug.PRINT_STACK_ELEMENT = true;
 		Debug.print(value);
 		
-		assertTrue(helperStack.wasExecuted);
-		assertTrue(helperValue.wasExecuted);
+		assertEquals(true, ValueRelay.get("printString", false));
+		assertEquals(true, ValueRelay.get("printInt", false));
 	}
 	
 	/**
@@ -681,19 +663,18 @@ class DebugTest
 	{
 		final long value = 2l;
 		
-		final ExecutionHelper helper = new ExecutionHelper();
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void print(long b)
 			{
-				helper.run();
+				ValueRelay.relayCall("print");
 			}
 		});
 		
 		Debug.DEBUG_MODE = false;
 		Debug.print(value);
 		
-		assertFalse(helper.wasExecuted);
+		assertEquals(false, ValueRelay.get("print", false));
 	}
 	
 	/**
@@ -709,23 +690,21 @@ class DebugTest
 	{
 		final long value = 2l;
 		
-		final ExecutionHelper helperValue = new ExecutionHelper();
-		final ExecutionHelper helperStack = new ExecutionHelper();
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void print(String s)
 			{
-				helperStack.run();
+				ValueRelay.relayCall("printString");
 			}
 			
 			@Override
 			public void print(long b)
 			{
-				assertFalse(helperStack.wasExecuted);
+				assertEquals(false, ValueRelay.get("printString", false));
 				
 				assertEquals(value, b);
 				
-				helperValue.run();
+				ValueRelay.relayCall("printLong");
 			}
 		});
 		
@@ -733,8 +712,8 @@ class DebugTest
 		Debug.PRINT_STACK_ELEMENT = false;
 		Debug.print(value);
 		
-		assertFalse(helperStack.wasExecuted);
-		assertTrue(helperValue.wasExecuted);
+		assertEquals(false, ValueRelay.get("printString", false));
+		assertEquals(true, ValueRelay.get("printLong", false));
 	}
 	
 	/**
@@ -750,23 +729,21 @@ class DebugTest
 	{
 		final long value = 2l;
 		
-		final ExecutionHelper helperValue = new ExecutionHelper();
-		final ExecutionHelper helperStack = new ExecutionHelper();
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void print(String s)
 			{
-				helperStack.run();
+				ValueRelay.relayCall("printString");
 			}
 			
 			@Override
 			public void print(long b)
 			{
-				assertTrue(helperStack.wasExecuted);
+				assertEquals(true, ValueRelay.get("printString", false));
 				
 				assertEquals(value, b);
 				
-				helperValue.run();
+				ValueRelay.relayCall("printLong");
 			}
 		});
 		
@@ -774,8 +751,8 @@ class DebugTest
 		Debug.PRINT_STACK_ELEMENT = true;
 		Debug.print(value);
 		
-		assertTrue(helperStack.wasExecuted);
-		assertTrue(helperValue.wasExecuted);
+		assertEquals(true, ValueRelay.get("printString", false));
+		assertEquals(true, ValueRelay.get("printLong", false));
 	}
 	
 	/**
@@ -789,19 +766,18 @@ class DebugTest
 	{
 		final Object value = new Object();
 		
-		final ExecutionHelper helper = new ExecutionHelper();
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void print(Object b)
 			{
-				helper.run();
+				ValueRelay.relayCall("print");
 			}
 		});
 		
 		Debug.DEBUG_MODE = false;
 		Debug.print(value);
 		
-		assertFalse(helper.wasExecuted);
+		assertEquals(false, ValueRelay.get("print", false));
 	}
 	
 	/**
@@ -817,23 +793,21 @@ class DebugTest
 	{
 		final Object value = new Object();
 		
-		final ExecutionHelper helperValue = new ExecutionHelper();
-		final ExecutionHelper helperStack = new ExecutionHelper();
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void print(String s)
 			{
-				helperStack.run();
+				ValueRelay.relayCall("printString");
 			}
 			
 			@Override
 			public void print(Object b)
 			{
-				assertFalse(helperStack.wasExecuted);
+				assertEquals(false, ValueRelay.get("printString", false));
 				
 				assertSame(value, b);
 				
-				helperValue.run();
+				ValueRelay.relayCall("printObject");
 			}
 		});
 		
@@ -841,8 +815,8 @@ class DebugTest
 		Debug.PRINT_STACK_ELEMENT = false;
 		Debug.print(value);
 		
-		assertFalse(helperStack.wasExecuted);
-		assertTrue(helperValue.wasExecuted);
+		assertEquals(false, ValueRelay.get("printString", false));
+		assertEquals(true, ValueRelay.get("printObject", false));
 	}
 	
 	/**
@@ -858,23 +832,21 @@ class DebugTest
 	{
 		final Object value = new Object();
 		
-		final ExecutionHelper helperValue = new ExecutionHelper();
-		final ExecutionHelper helperStack = new ExecutionHelper();
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void print(String s)
 			{
-				helperStack.run();
+				ValueRelay.relayCall("printString");
 			}
 			
 			@Override
 			public void print(Object b)
 			{
-				assertTrue(helperStack.wasExecuted);
+				assertEquals(true, ValueRelay.get("printString", false));
 				
 				assertSame(value, b);
 				
-				helperValue.run();
+				ValueRelay.relayCall("printObject");
 			}
 		});
 		
@@ -882,8 +854,8 @@ class DebugTest
 		Debug.PRINT_STACK_ELEMENT = true;
 		Debug.print(value);
 		
-		assertTrue(helperStack.wasExecuted);
-		assertTrue(helperValue.wasExecuted);
+		assertEquals(true, ValueRelay.get("printString", false));
+		assertEquals(true, ValueRelay.get("printObject", false));
 	}
 	
 	/**
@@ -897,19 +869,18 @@ class DebugTest
 	{
 		final String value = "test";
 		
-		final ExecutionHelper helper = new ExecutionHelper();
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void print(String b)
 			{
-				helper.run();
+				ValueRelay.relayCall("print");
 			}
 		});
 		
 		Debug.DEBUG_MODE = false;
 		Debug.print(value);
 		
-		assertFalse(helper.wasExecuted);
+		assertEquals(false, ValueRelay.get("print", false));
 	}
 	
 	/**
@@ -925,25 +896,11 @@ class DebugTest
 	{
 		final String value = "test";
 		
-		final ExecutionHelper helperValue = new ExecutionHelper();
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
-			private int counter = 0;
-			
 			@Override
 			public void print(String s)
 			{
-				if(counter == 0)
-				{
-					assertEquals(value, s);
-					
-					helperValue.run();
-					
-					counter++;
-				}
-				else
-				{
-					fail();
-				}
+				ValueRelay.relayCounterIncrease("printString");
 			}
 		});
 		
@@ -951,7 +908,7 @@ class DebugTest
 		Debug.PRINT_STACK_ELEMENT = false;
 		Debug.print(value);
 		
-		assertTrue(helperValue.wasExecuted);
+		assertEquals(1, ValueRelay.get("printString", 0));
 	}
 	
 	/**
@@ -967,28 +924,11 @@ class DebugTest
 	{
 		final String value = "test";
 		
-		final ExecutionHelper helperValue = new ExecutionHelper();
-		final ExecutionHelper helperStack = new ExecutionHelper();
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
-			private int counter = 0;
-			
 			@Override
 			public void print(String s)
 			{
-				if(counter == 0)
-				{
-					helperStack.run();
-					
-					counter++;
-				}
-				else if(counter == 1)
-				{
-					assertEquals(value, s);
-					
-					helperValue.run();
-					
-					counter++;
-				}
+				ValueRelay.relayCounterIncrease("printString");
 			}
 		});
 		
@@ -996,8 +936,7 @@ class DebugTest
 		Debug.PRINT_STACK_ELEMENT = true;
 		Debug.print(value);
 		
-		assertTrue(helperStack.wasExecuted);
-		assertTrue(helperValue.wasExecuted);
+		assertEquals(2, ValueRelay.get("printString", 0));
 	}
 	
 	/**
@@ -1011,19 +950,18 @@ class DebugTest
 	{
 		final boolean value = true;
 		
-		final ExecutionHelper helper = new ExecutionHelper();
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void println(boolean b)
 			{
-				helper.run();
+				ValueRelay.relayCall("println");
 			}
 		});
 		
 		Debug.DEBUG_MODE = false;
 		Debug.println(value);
 		
-		assertFalse(helper.wasExecuted);
+		assertEquals(false, ValueRelay.get("println", false));
 	}
 	
 	/**
@@ -1039,23 +977,21 @@ class DebugTest
 	{
 		final boolean value = true;
 		
-		final ExecutionHelper helperValue = new ExecutionHelper();
-		final ExecutionHelper helperStack = new ExecutionHelper();
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void print(String s)
 			{
-				helperStack.run();
+				ValueRelay.relayCall("printString");
 			}
 			
 			@Override
 			public void println(boolean b)
 			{
-				assertFalse(helperStack.wasExecuted);
+				assertEquals(false, ValueRelay.get("printlnString", false));
 				
 				assertEquals(value, b);
 				
-				helperValue.run();
+				ValueRelay.relayCall("printlnBoolean");
 			}
 		});
 		
@@ -1063,8 +999,8 @@ class DebugTest
 		Debug.PRINT_STACK_ELEMENT = false;
 		Debug.println(value);
 		
-		assertFalse(helperStack.wasExecuted);
-		assertTrue(helperValue.wasExecuted);
+		assertEquals(false, ValueRelay.get("printString", false));
+		assertEquals(true, ValueRelay.get("printlnBoolean", false));
 	}
 	
 	/**
@@ -1080,23 +1016,21 @@ class DebugTest
 	{
 		final boolean value = true;
 		
-		final ExecutionHelper helperValue = new ExecutionHelper();
-		final ExecutionHelper helperStack = new ExecutionHelper();
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void print(String s)
 			{
-				helperStack.run();
+				ValueRelay.relayCall("printString");
 			}
 			
 			@Override
 			public void println(boolean b)
 			{
-				assertTrue(helperStack.wasExecuted);
+				assertEquals(true, ValueRelay.get("printString", false));
 				
 				assertEquals(value, b);
 				
-				helperValue.run();
+				ValueRelay.relayCall("printlnBoolean");
 			}
 		});
 		
@@ -1104,8 +1038,8 @@ class DebugTest
 		Debug.PRINT_STACK_ELEMENT = true;
 		Debug.println(value);
 		
-		assertTrue(helperStack.wasExecuted);
-		assertTrue(helperValue.wasExecuted);
+		assertEquals(true, ValueRelay.get("printString", false));
+		assertEquals(true, ValueRelay.get("printlnBoolean", false));
 	}
 	
 	/**
@@ -1119,19 +1053,18 @@ class DebugTest
 	{
 		final char value = 'a';
 		
-		final ExecutionHelper helper = new ExecutionHelper();
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void println(char b)
 			{
-				helper.run();
+				ValueRelay.relayCall("println");
 			}
 		});
 		
 		Debug.DEBUG_MODE = false;
 		Debug.println(value);
 		
-		assertFalse(helper.wasExecuted);
+		assertEquals(false, ValueRelay.get("println", false));
 	}
 	
 	/**
@@ -1147,23 +1080,21 @@ class DebugTest
 	{
 		final char value = 'a';
 		
-		final ExecutionHelper helperValue = new ExecutionHelper();
-		final ExecutionHelper helperStack = new ExecutionHelper();
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void print(String s)
 			{
-				helperStack.run();
+				ValueRelay.relayCall("printString");
 			}
 			
 			@Override
 			public void println(char b)
 			{
-				assertFalse(helperStack.wasExecuted);
+				assertEquals(false, ValueRelay.get("printlnString", false));
 				
 				assertEquals(value, b);
 				
-				helperValue.run();
+				ValueRelay.relayCall("printlnChar");
 			}
 		});
 		
@@ -1171,8 +1102,8 @@ class DebugTest
 		Debug.PRINT_STACK_ELEMENT = false;
 		Debug.println(value);
 		
-		assertFalse(helperStack.wasExecuted);
-		assertTrue(helperValue.wasExecuted);
+		assertEquals(false, ValueRelay.get("printString", false));
+		assertEquals(true, ValueRelay.get("printlnChar", false));
 	}
 	
 	/**
@@ -1188,23 +1119,21 @@ class DebugTest
 	{
 		final char value = 'a';
 		
-		final ExecutionHelper helperValue = new ExecutionHelper();
-		final ExecutionHelper helperStack = new ExecutionHelper();
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void print(String s)
 			{
-				helperStack.run();
+				ValueRelay.relayCall("printString");
 			}
 			
 			@Override
 			public void println(char b)
 			{
-				assertTrue(helperStack.wasExecuted);
+				assertEquals(true, ValueRelay.get("printString", false));
 				
 				assertEquals(value, b);
 				
-				helperValue.run();
+				ValueRelay.relayCall("printlnChar");
 			}
 		});
 		
@@ -1212,8 +1141,8 @@ class DebugTest
 		Debug.PRINT_STACK_ELEMENT = true;
 		Debug.println(value);
 		
-		assertTrue(helperStack.wasExecuted);
-		assertTrue(helperValue.wasExecuted);
+		assertEquals(true, ValueRelay.get("printString", false));
+		assertEquals(true, ValueRelay.get("printlnChar", false));
 	}
 	
 	/**
@@ -1227,19 +1156,18 @@ class DebugTest
 	{
 		final char[] value = new char[] {'a', 'b'};
 		
-		final ExecutionHelper helper = new ExecutionHelper();
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void println(char[] b)
 			{
-				helper.run();
+				ValueRelay.relayCall("println");
 			}
 		});
 		
 		Debug.DEBUG_MODE = false;
 		Debug.println(value);
 		
-		assertFalse(helper.wasExecuted);
+		assertEquals(false, ValueRelay.get("println", false));
 	}
 	
 	/**
@@ -1255,25 +1183,23 @@ class DebugTest
 	{
 		final char[] value = new char[] {'a', 'b'};
 		
-		final ExecutionHelper helperValue = new ExecutionHelper();
-		final ExecutionHelper helperStack = new ExecutionHelper();
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void print(String s)
 			{
-				helperStack.run();
+				ValueRelay.relayCall("printString");
 			}
 			
 			@Override
 			public void println(char[] b)
 			{
-				assertFalse(helperStack.wasExecuted);
+				assertEquals(false, ValueRelay.get("printlnString", false));
 				
 				assertEquals(2, b.length);
 				assertEquals(value[0], b[0]);
 				assertEquals(value[1], b[1]);
 				
-				helperValue.run();
+				ValueRelay.relayCall("printCharArray");
 			}
 		});
 		
@@ -1281,8 +1207,8 @@ class DebugTest
 		Debug.PRINT_STACK_ELEMENT = false;
 		Debug.println(value);
 		
-		assertFalse(helperStack.wasExecuted);
-		assertTrue(helperValue.wasExecuted);
+		assertEquals(false, ValueRelay.get("printString", false));
+		assertEquals(true, ValueRelay.get("printCharArray", false));
 	}
 	
 	/**
@@ -1298,25 +1224,23 @@ class DebugTest
 	{
 		final char[] value = new char[] {'a', 'b'};
 		
-		final ExecutionHelper helperValue = new ExecutionHelper();
-		final ExecutionHelper helperStack = new ExecutionHelper();
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void print(String s)
 			{
-				helperStack.run();
+				ValueRelay.relayCall("printString");
 			}
 			
 			@Override
 			public void println(char[] b)
 			{
-				assertTrue(helperStack.wasExecuted);
+				assertEquals(true, ValueRelay.get("printString", false));
 				
 				assertEquals(2, b.length);
 				assertEquals(value[0], b[0]);
 				assertEquals(value[1], b[1]);
 				
-				helperValue.run();
+				ValueRelay.relayCall("printCharArray");
 			}
 		});
 		
@@ -1324,8 +1248,8 @@ class DebugTest
 		Debug.PRINT_STACK_ELEMENT = true;
 		Debug.println(value);
 		
-		assertTrue(helperStack.wasExecuted);
-		assertTrue(helperValue.wasExecuted);
+		assertEquals(true, ValueRelay.get("printString", false));
+		assertEquals(true, ValueRelay.get("printCharArray", false));
 	}
 	
 	/**
@@ -1339,19 +1263,18 @@ class DebugTest
 	{
 		final float value = 1.2f;
 		
-		final ExecutionHelper helper = new ExecutionHelper();
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void println(float b)
 			{
-				helper.run();
+				ValueRelay.relayCall("println");
 			}
 		});
 		
 		Debug.DEBUG_MODE = false;
 		Debug.println(value);
 		
-		assertFalse(helper.wasExecuted);
+		assertEquals(false, ValueRelay.get("println", false));
 	}
 	
 	/**
@@ -1367,23 +1290,21 @@ class DebugTest
 	{
 		final float value = 1.2f;
 		
-		final ExecutionHelper helperValue = new ExecutionHelper();
-		final ExecutionHelper helperStack = new ExecutionHelper();
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void print(String s)
 			{
-				helperStack.run();
+				ValueRelay.relayCall("printString");
 			}
 			
 			@Override
 			public void println(float b)
 			{
-				assertFalse(helperStack.wasExecuted);
+				assertEquals(false, ValueRelay.get("printlnString", false));
 				
 				assertEquals(value, b);
 				
-				helperValue.run();
+				ValueRelay.relayCall("printlnFloat");
 			}
 		});
 		
@@ -1391,8 +1312,8 @@ class DebugTest
 		Debug.PRINT_STACK_ELEMENT = false;
 		Debug.println(value);
 		
-		assertFalse(helperStack.wasExecuted);
-		assertTrue(helperValue.wasExecuted);
+		assertEquals(false, ValueRelay.get("printString", false));
+		assertEquals(true, ValueRelay.get("printlnFloat", false));
 	}
 	
 	/**
@@ -1407,24 +1328,22 @@ class DebugTest
 	void println_float_StackModeOnTest()
 	{
 		final float value = 1.2f;
-		
-		final ExecutionHelper helperValue = new ExecutionHelper();
-		final ExecutionHelper helperStack = new ExecutionHelper();
+
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void print(String s)
 			{
-				helperStack.run();
+				ValueRelay.relayCall("printString");
 			}
 			
 			@Override
 			public void println(float b)
 			{
-				assertTrue(helperStack.wasExecuted);
+				assertEquals(true, ValueRelay.get("printString", false));
 				
 				assertEquals(value, b);
 				
-				helperValue.run();
+				ValueRelay.relayCall("printlnFloat");
 			}
 		});
 		
@@ -1432,8 +1351,8 @@ class DebugTest
 		Debug.PRINT_STACK_ELEMENT = true;
 		Debug.println(value);
 		
-		assertTrue(helperStack.wasExecuted);
-		assertTrue(helperValue.wasExecuted);
+		assertEquals(true, ValueRelay.get("printString", false));
+		assertEquals(true, ValueRelay.get("printlnFloat", false));
 	}
 	
 	/**
@@ -1446,20 +1365,19 @@ class DebugTest
 	void println_double_DebugModeOffTest()
 	{
 		final double value = 1.2;
-		
-		final ExecutionHelper helper = new ExecutionHelper();
+
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void println(double b)
 			{
-				helper.run();
+				ValueRelay.relayCall("println");
 			}
 		});
 		
 		Debug.DEBUG_MODE = false;
 		Debug.println(value);
 		
-		assertFalse(helper.wasExecuted);
+		assertEquals(false, ValueRelay.get("println", false));
 	}
 	
 	/**
@@ -1474,24 +1392,22 @@ class DebugTest
 	void println_double_StackModeOffTest()
 	{
 		final double value = 1.2;
-		
-		final ExecutionHelper helperValue = new ExecutionHelper();
-		final ExecutionHelper helperStack = new ExecutionHelper();
+
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void print(String s)
 			{
-				helperStack.run();
+				ValueRelay.relayCall("printString");
 			}
 			
 			@Override
 			public void println(double b)
 			{
-				assertFalse(helperStack.wasExecuted);
+				assertEquals(false, ValueRelay.get("printlnString", false));
 				
 				assertEquals(value, b);
 				
-				helperValue.run();
+				ValueRelay.relayCall("printlnDouble");
 			}
 		});
 		
@@ -1499,8 +1415,8 @@ class DebugTest
 		Debug.PRINT_STACK_ELEMENT = false;
 		Debug.println(value);
 		
-		assertFalse(helperStack.wasExecuted);
-		assertTrue(helperValue.wasExecuted);
+		assertEquals(false, ValueRelay.get("printString", false));
+		assertEquals(true, ValueRelay.get("printlnDouble", false));
 	}
 	
 	/**
@@ -1515,24 +1431,22 @@ class DebugTest
 	void println_double_StackModeOnTest()
 	{
 		final double value = 1.2;
-		
-		final ExecutionHelper helperValue = new ExecutionHelper();
-		final ExecutionHelper helperStack = new ExecutionHelper();
+
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void print(String s)
 			{
-				helperStack.run();
+				ValueRelay.relayCall("printString");
 			}
 			
 			@Override
 			public void println(double b)
 			{
-				assertTrue(helperStack.wasExecuted);
+				assertEquals(true, ValueRelay.get("printString", false));
 				
 				assertEquals(value, b);
 				
-				helperValue.run();
+				ValueRelay.relayCall("printlnDouble");
 			}
 		});
 		
@@ -1540,8 +1454,8 @@ class DebugTest
 		Debug.PRINT_STACK_ELEMENT = true;
 		Debug.println(value);
 		
-		assertTrue(helperStack.wasExecuted);
-		assertTrue(helperValue.wasExecuted);
+		assertEquals(true, ValueRelay.get("printString", false));
+		assertEquals(true, ValueRelay.get("printlnDouble", false));
 	}
 	
 	/**
@@ -1554,20 +1468,19 @@ class DebugTest
 	void println_int_DebugModeOffTest()
 	{
 		final int value = 2;
-		
-		final ExecutionHelper helper = new ExecutionHelper();
+
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void println(int b)
 			{
-				helper.run();
+				ValueRelay.relayCall("println");
 			}
 		});
 		
 		Debug.DEBUG_MODE = false;
 		Debug.println(value);
 		
-		assertFalse(helper.wasExecuted);
+		assertEquals(false, ValueRelay.get("println", false));
 	}
 	
 	/**
@@ -1582,24 +1495,22 @@ class DebugTest
 	void println_int_StackModeOffTest()
 	{
 		final int value = 2;
-		
-		final ExecutionHelper helperValue = new ExecutionHelper();
-		final ExecutionHelper helperStack = new ExecutionHelper();
+
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void print(String s)
 			{
-				helperStack.run();
+				ValueRelay.relayCall("printString");
 			}
 			
 			@Override
 			public void println(int b)
 			{
-				assertFalse(helperStack.wasExecuted);
+				assertEquals(false, ValueRelay.get("printlnString", false));
 				
 				assertEquals(value, b);
 				
-				helperValue.run();
+				ValueRelay.relayCall("printlnInt");
 			}
 		});
 		
@@ -1607,8 +1518,8 @@ class DebugTest
 		Debug.PRINT_STACK_ELEMENT = false;
 		Debug.println(value);
 		
-		assertFalse(helperStack.wasExecuted);
-		assertTrue(helperValue.wasExecuted);
+		assertEquals(false, ValueRelay.get("printString", false));
+		assertEquals(true, ValueRelay.get("printlnInt", false));
 	}
 	
 	/**
@@ -1623,24 +1534,22 @@ class DebugTest
 	void println_int_StackModeOnTest()
 	{
 		final int value = 2;
-		
-		final ExecutionHelper helperValue = new ExecutionHelper();
-		final ExecutionHelper helperStack = new ExecutionHelper();
+
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void print(String s)
 			{
-				helperStack.run();
+				ValueRelay.relayCall("printString");
 			}
 			
 			@Override
 			public void println(int b)
 			{
-				assertTrue(helperStack.wasExecuted);
+				assertEquals(true, ValueRelay.get("printString", false));
 				
 				assertEquals(value, b);
 				
-				helperValue.run();
+				ValueRelay.relayCall("printlnInt");
 			}
 		});
 		
@@ -1648,8 +1557,8 @@ class DebugTest
 		Debug.PRINT_STACK_ELEMENT = true;
 		Debug.println(value);
 		
-		assertTrue(helperStack.wasExecuted);
-		assertTrue(helperValue.wasExecuted);
+		assertEquals(true, ValueRelay.get("printString", false));
+		assertEquals(true, ValueRelay.get("printlnInt", false));
 	}
 	
 	/**
@@ -1662,20 +1571,19 @@ class DebugTest
 	void println_long_DebugModeOffTest()
 	{
 		final long value = 2l;
-		
-		final ExecutionHelper helper = new ExecutionHelper();
+
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void println(long b)
 			{
-				helper.run();
+				ValueRelay.relayCall("println");
 			}
 		});
 		
 		Debug.DEBUG_MODE = false;
 		Debug.println(value);
 		
-		assertFalse(helper.wasExecuted);
+		assertEquals(false, ValueRelay.get("println", false));
 	}
 	
 	/**
@@ -1690,25 +1598,23 @@ class DebugTest
 	void println_long_StackModeOffTest()
 	{
 		final long value = 2l;
-		
-		final ExecutionHelper helperValue = new ExecutionHelper();
-		final ExecutionHelper helperStack = new ExecutionHelper();
+
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			
 			@Override
 			public void print(String s)
 			{
-				helperStack.run();
+				ValueRelay.relayCall("printString");
 			}
 			
 			@Override
 			public void println(long b)
 			{
-				assertFalse(helperStack.wasExecuted);
+				assertEquals(false, ValueRelay.get("printlnString", false));
 				
 				assertEquals(value, b);
 				
-				helperValue.run();
+				ValueRelay.relayCall("printlnLong");
 			}
 		});
 		
@@ -1716,8 +1622,8 @@ class DebugTest
 		Debug.PRINT_STACK_ELEMENT = false;
 		Debug.println(value);
 		
-		assertFalse(helperStack.wasExecuted);
-		assertTrue(helperValue.wasExecuted);
+		assertEquals(false, ValueRelay.get("printString", false));
+		assertEquals(true, ValueRelay.get("printlnLong", false));
 	}
 	
 	/**
@@ -1732,23 +1638,21 @@ class DebugTest
 	void println_long_StackModeOnTest()
 	{
 		final long value = 2l;
-		
-		final ExecutionHelper helperValue = new ExecutionHelper();
-		final ExecutionHelper helperStack = new ExecutionHelper();
+
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void print(String s)
 			{
-				helperStack.run();
+				ValueRelay.relayCall("printString");
 			}
 			@Override
 			public void println(long b)
 			{
-				assertTrue(helperStack.wasExecuted);
+				assertEquals(false, ValueRelay.get("printlnString", false));
 				
 				assertEquals(value, b);
 				
-				helperValue.run();
+				ValueRelay.relayCall("printlnLong");
 			}
 		});
 		
@@ -1756,8 +1660,8 @@ class DebugTest
 		Debug.PRINT_STACK_ELEMENT = true;
 		Debug.println(value);
 		
-		assertTrue(helperStack.wasExecuted);
-		assertTrue(helperValue.wasExecuted);
+		assertEquals(true, ValueRelay.get("printString", false));
+		assertEquals(true, ValueRelay.get("printlnLong", false));
 	}
 	
 	/**
@@ -1771,19 +1675,18 @@ class DebugTest
 	{
 		final Object value = new Object();
 		
-		final ExecutionHelper helper = new ExecutionHelper();
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void println(Object b)
 			{
-				helper.run();
+				ValueRelay.relayCall("println");
 			}
 		});
 		
 		Debug.DEBUG_MODE = false;
 		Debug.println(value);
 		
-		assertFalse(helper.wasExecuted);
+		assertEquals(false, ValueRelay.get("println", false));
 	}
 	
 	/**
@@ -1798,24 +1701,22 @@ class DebugTest
 	void println_Object_StackModeOffTest()
 	{
 		final Object value = new Object();
-		
-		final ExecutionHelper helperValue = new ExecutionHelper();
-		final ExecutionHelper helperStack = new ExecutionHelper();
+
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void print(String s)
 			{
-				helperStack.run();
+				ValueRelay.relayCall("printString");
 			}
 			
 			@Override
 			public void println(Object b)
 			{
-				assertFalse(helperStack.wasExecuted);
+				assertEquals(false, ValueRelay.get("printlnString", false));
 				
 				assertSame(value, b);
 				
-				helperValue.run();
+				ValueRelay.relayCall("printlnObject");
 			}
 		});
 		
@@ -1823,8 +1724,8 @@ class DebugTest
 		Debug.PRINT_STACK_ELEMENT = false;
 		Debug.println(value);
 		
-		assertFalse(helperStack.wasExecuted);
-		assertTrue(helperValue.wasExecuted);
+		assertEquals(false, ValueRelay.get("printString", false));
+		assertEquals(true, ValueRelay.get("printlnObject", false));
 	}
 	
 	/**
@@ -1839,23 +1740,21 @@ class DebugTest
 	void println_Object_StackModeOnTest()
 	{
 		final Object value = new Object();
-		
-		final ExecutionHelper helperValue = new ExecutionHelper();
-		final ExecutionHelper helperStack = new ExecutionHelper();
+
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void print(String s)
 			{
-				helperStack.run();
+				ValueRelay.relayCall("printString");
 			}
 			@Override
 			public void println(Object b)
 			{
-				assertTrue(helperStack.wasExecuted);
+				assertEquals(true, ValueRelay.get("printString", false));
 				
 				assertSame(value, b);
 				
-				helperValue.run();
+				ValueRelay.relayCall("printlnObject");
 			}
 		});
 		
@@ -1863,8 +1762,8 @@ class DebugTest
 		Debug.PRINT_STACK_ELEMENT = true;
 		Debug.println(value);
 		
-		assertTrue(helperStack.wasExecuted);
-		assertTrue(helperValue.wasExecuted);
+		assertEquals(true, ValueRelay.get("printString", false));
+		assertEquals(true, ValueRelay.get("printlnObject", false));
 	}
 	
 	/**
@@ -1877,20 +1776,19 @@ class DebugTest
 	void println_String_DebugModeOffTest()
 	{
 		final String value = "test";
-		
-		final ExecutionHelper helper = new ExecutionHelper();
+
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void println(String b)
 			{
-				helper.run();
+				ValueRelay.relayCall("println");
 			}
 		});
 		
 		Debug.DEBUG_MODE = false;
 		Debug.println(value);
 		
-		assertFalse(helper.wasExecuted);
+		assertEquals(false, ValueRelay.get("println", false));
 	}
 	
 	/**
@@ -1905,24 +1803,22 @@ class DebugTest
 	void println_String_StackModeOffTest()
 	{
 		final String value = "test";
-		
-		final ExecutionHelper helperValue = new ExecutionHelper();
-		final ExecutionHelper helperStack = new ExecutionHelper();
+
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void print(String s)
 			{
-				helperStack.run();
+				ValueRelay.relayCall("printString");
 			}
 			
 			@Override
 			public void println(String s)
 			{
-				assertFalse(helperStack.wasExecuted);
+				assertEquals(false, ValueRelay.get("printString", false));
 				
 				assertEquals(value, s);
 				
-				helperValue.run();
+				ValueRelay.relayCall("printlnString");
 			}
 		});
 		
@@ -1930,8 +1826,8 @@ class DebugTest
 		Debug.PRINT_STACK_ELEMENT = false;
 		Debug.println(value);
 		
-		assertFalse(helperStack.wasExecuted);
-		assertTrue(helperValue.wasExecuted);
+		assertEquals(false, ValueRelay.get("printString", false));
+		assertEquals(true, ValueRelay.get("printlnString", false));
 	}
 	
 	/**
@@ -1946,24 +1842,22 @@ class DebugTest
 	void println_String_StackModeOnTest()
 	{
 		final String value = "test";
-		
-		final ExecutionHelper helperValue = new ExecutionHelper();
-		final ExecutionHelper helperStack = new ExecutionHelper();
+
 		System.setOut(new PrintStream(new ByteArrayOutputStream()) {
 			@Override
 			public void print(String s)
 			{
-				helperStack.run();
+				ValueRelay.relayCall("printString");
 			}
 			
 			@Override
 			public void println(String s)
 			{
-				assertTrue(helperStack.wasExecuted);
+				assertEquals(true, ValueRelay.get("printString", false));
 				
 				assertEquals(value, s);
 				
-				helperValue.run();
+				ValueRelay.relayCall("printlnString");
 			}
 		});
 		
@@ -1971,30 +1865,7 @@ class DebugTest
 		Debug.PRINT_STACK_ELEMENT = true;
 		Debug.println(value);
 		
-		assertTrue(helperStack.wasExecuted);
-		assertTrue(helperValue.wasExecuted);
-	}
-	
-	/**
-	 * This class sets a boolean member variable to true if the {@link ExecutionHelper#run()} method was called.
-	 * It is therefore a tool to check if function calls in an anonymous implementation were made.
-	 * 
-	 * @author picatrix1899
-	 * 
-	 * @since 1.0.0.0
-	 */
-	private static class ExecutionHelper implements Runnable
-	{
-		/**
-		 * This member is set to true if the {@link org.barghos.core.test.debug.DebugTest.ExecutionHelper#run() ExecutionHelper.run()}
-		 * method gets called. It can be safely reset to false. 
-		 */
-		public boolean wasExecuted = false;
-		
-		@Override
-		public void run()
-		{
-			wasExecuted = true;
-		}
+		assertEquals(true, ValueRelay.get("printString", false));
+		assertEquals(true, ValueRelay.get("printlnString", false));
 	}
 }

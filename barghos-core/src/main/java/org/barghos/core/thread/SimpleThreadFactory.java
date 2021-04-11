@@ -24,7 +24,7 @@ package org.barghos.core.thread;
 
 import java.util.concurrent.ThreadFactory;
 
-import org.barghos.core.util.ArgumentNullException;
+import org.barghos.core.api.util.ArgumentNullException;
 
 /**
  * This is a simple implementation of {@link java.util.concurrent.ThreadFactory} for

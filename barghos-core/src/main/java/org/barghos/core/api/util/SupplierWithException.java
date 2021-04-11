@@ -20,12 +20,29 @@
  * SOFTWARE.
  ******************************************************************************/
 
+package org.barghos.core.api.util;
+
 /**
- * This package contains all sorts of utility classes,
- * that can't be assigned to a certain feature.
+ * This is a functional inteface exactly like {@link java.util.function.Supplier} with the
+ * {@link java.util.function.Supplier#get()} function extended by a <code>throws Exception</code>.
+ *
+ * @param <R> The return type of the {@link java.util.function.Supplier#get()} function.
  * 
  * @author picatrix1899
  * 
  * @since 1.0.0.0
  */
-package org.barghos.core.util;
+public interface SupplierWithException<R>
+{
+	/**
+	 * This function is exactly like {@link java.util.function.Supplier#get()} but it allows to
+	 * throw exceptions.
+	 * 
+	 * @return A result
+	 * 
+	 * @throws Exception Passes unhandled exceptions from the function.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	R get() throws Exception;
+}
