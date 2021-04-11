@@ -10,7 +10,6 @@ import java.util.function.Function;
 
 import org.barghos.core.api.util.CollectionUtils;
 
-
 /**
  * This class provides component tests for the class {@link CollectionUtils}.
  * 

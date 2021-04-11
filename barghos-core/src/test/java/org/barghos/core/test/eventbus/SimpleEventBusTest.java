@@ -4,13 +4,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
+
 import org.barghos.core.api.event.Event;
 import org.barghos.core.api.eventbus.EventBus;
 import org.barghos.core.api.eventbus.EventBusSubscriber;
 import org.barghos.core.api.eventbus.EventHandlerDelegate;
 import org.barghos.core.api.testing.ValueRelay;
-import org.barghos.core.eventbus.SimpleEventBus;
 
+import org.barghos.core.eventbus.SimpleEventBus;
 
 /**
  * This class provides component tests for the class {@link SimpleEventBus}

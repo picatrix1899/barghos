@@ -2,8 +2,9 @@ package org.barghos.core.api.eventbus;
 
 import java.lang.reflect.Method;
 
-import org.barghos.core.Barghos;
 import org.barghos.core.api.util.ArgumentNullException;
+
+import org.barghos.core.Barghos;
 
 /**
  * This class represents a delegate to a event handler function call.
