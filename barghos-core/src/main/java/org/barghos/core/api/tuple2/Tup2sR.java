@@ -52,4 +52,49 @@ public interface Tup2sR
 	 * @since 1.0.0.0
 	 */
 	short getY();
+	
+	/**
+	 * Returns true if all components are finite and therefore not NaN or Infinity.
+	 * 
+	 * @return True if all components are finite.
+	 */
+	default boolean isFinite()
+	{
+		return true;
+	}
+	
+	/**
+	 * Returns true if all components are exactly zero.
+	 * 
+	 * @return True if all components are exactly zero.
+	 */
+	default boolean isZero()
+	{
+		return getX() == (short)0 &&
+				getY() == (short)0;
+	}
+	
+	/**
+	 * Returns true if all components are zero within inclusive the given tolerance.
+	 * 
+	 * @param tolerance The tolerance around zero, that should still count as zero.
+	 * 
+	 * @return True if all components are technically zero.
+	 */
+	default boolean isZero(short tolerance)
+	{
+		return Math.abs(getX()) <= tolerance &&
+				Math.abs(getY()) <= tolerance;
+	}
+	
+	/**
+	 * Returns true if all the components are valid.
+	 * What values are considered valid or invalid depends on the tuple type.
+	 * 
+	 * @return True if all the components are valid.
+	 */
+	default boolean isValid()
+	{
+		return true;
+	}
 }

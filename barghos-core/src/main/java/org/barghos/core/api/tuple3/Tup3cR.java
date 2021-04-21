@@ -61,4 +61,25 @@ public interface Tup3cR
 	 * @since 1.0.0.0
 	 */
 	char getZ();
+	
+	/**
+	 * Returns true if all components are finite and therefore not NaN or Infinity.
+	 * 
+	 * @return True if all components are finite.
+	 */
+	default boolean isFinite()
+	{
+		return true;
+	}
+	
+	/**
+	 * Returns true if all the components are valid.
+	 * What values are considered valid or invalid depends on the tuple type.
+	 * 
+	 * @return True if all the components are valid.
+	 */
+	default boolean isValid()
+	{
+		return true;
+	}	
 }

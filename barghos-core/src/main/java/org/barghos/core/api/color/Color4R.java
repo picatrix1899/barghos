@@ -86,4 +86,28 @@ public interface Color4R extends Color3R, Tup4fR
 	 * @since 1.0.0.0
 	 */
 	default float getW() { return getUnityA(); }
+
+	@Override
+	default boolean isValid()
+	{
+		return Tup4fR.super.isValid();
+	}
+
+	@Override
+	default boolean isZero()
+	{
+		return Tup4fR.super.isZero();
+	}
+
+	@Override
+	default boolean isZero(float tolerance)
+	{
+		return Tup4fR.super.isZero(tolerance);
+	}
+
+	@Override
+	default boolean isFinite()
+	{
+		return Tup4fR.super.isFinite();
+	}
 }

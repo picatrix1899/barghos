@@ -70,4 +70,18 @@ public interface Tup4oR<X,Y,Z,W>
 	 * @since 1.0.0.0
 	 */
 	W getW();
+	
+	/**
+	 * Returns true if all the components are valid.
+	 * What values are considered valid or invalid depends on the tuple type.
+	 * 
+	 * @return True if all the components are valid.
+	 */
+	default boolean isValid()
+	{
+		return getX() != null &&
+				getY() != null &&
+				getZ() != null &&
+				getW() != null;
+	}
 }

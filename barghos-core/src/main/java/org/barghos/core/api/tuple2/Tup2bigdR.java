@@ -54,4 +54,53 @@ public interface Tup2bigdR
 	 * @since 1.0.0.0
 	 */
 	BigDecimal getY();
+	
+	/**
+	 * Returns true if all components are finite and therefore not NaN or Infinity.
+	 * This does not account for validity of the tuple.
+	 * 
+	 * @return True if all components are finite.
+	 */
+	default boolean isFinite()
+	{
+		return true;
+	}
+	
+	/**
+	 * Returns true if all components are exactly zero.
+	 * This does not account for validity of the tuple.
+	 * 
+	 * @return True if all components are exactly zero.
+	 */
+	default boolean isZero()
+	{
+		return getX().compareTo(BigDecimal.ZERO) == 0 &&
+				getY().compareTo(BigDecimal.ZERO) == 0;
+	}
+	
+	/**
+	 * Returns true if all components are zero within inclusive the given tolerance.
+	 * This does not account for validity of the tuple.
+	 * 
+	 * @param tolerance The tolerance around zero, that should still count as zero.
+	 * 
+	 * @return True if all components are technically zero.
+	 */
+	default boolean isZero(BigDecimal tolerance)
+	{
+		return getX().abs().compareTo(tolerance) <= 0 &&
+				getY().abs().compareTo(tolerance) <= 0;
+	}
+	
+	/**
+	 * Returns true if all the components are valid.
+	 * What values are considered valid or invalid depends on the tuple type.
+	 * 
+	 * @return True if all the components are valid.
+	 */
+	default boolean isValid()
+	{
+		return getX() != null &&
+				getY() != null;
+	}
 }
