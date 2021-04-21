@@ -49,7 +49,7 @@ class Tup2dRTest
 	{
 		final double[] values = new double[] {0.0, Double.NaN, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY};
 		
-		for(int i = 0; i <= 4; i++)
+		for(int i = 0; i < 4; i++)
 		{
 			double v = values[i];
 			

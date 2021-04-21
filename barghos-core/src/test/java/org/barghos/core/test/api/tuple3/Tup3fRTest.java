@@ -63,7 +63,7 @@ class Tup3fRTest
 	{
 		final float[] values = new float[] {0.0f, Float.NaN, Float.NEGATIVE_INFINITY, Float.POSITIVE_INFINITY};
 		
-		for(int i = 0; i <= 4; i++)
+		for(int i = 0; i < 4; i++)
 		{
 			float v = values[i];
 			
