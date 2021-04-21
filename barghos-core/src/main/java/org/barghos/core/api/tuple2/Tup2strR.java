@@ -52,4 +52,16 @@ public interface Tup2strR
 	 * @since 1.0.0.0
 	 */
 	String getY();
+	
+	/**
+	 * Returns true if all the components are valid.
+	 * What values are considered valid or invalid depends on the tuple type.
+	 * 
+	 * @return True if all the components are valid.
+	 */
+	default boolean isValid()
+	{
+		return getX() != null &&
+				getY() != null;
+	}
 }

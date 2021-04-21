@@ -70,4 +70,15 @@ public interface Tup4boR
 	 * @since 1.0.0.0
 	 */
 	boolean getW();
+	
+	/**
+	 * Returns true if all the components are valid.
+	 * What values are considered valid or invalid depends on the tuple type.
+	 * 
+	 * @return True if all the components are valid.
+	 */
+	default boolean isValid()
+	{
+		return true;
+	}
 }

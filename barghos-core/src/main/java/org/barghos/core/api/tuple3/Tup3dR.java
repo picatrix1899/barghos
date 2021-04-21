@@ -61,4 +61,53 @@ public interface Tup3dR
 	 * @since 1.0.0.0
 	 */
 	double getZ();
+	
+	/**
+	 * Returns true if all components are finite and therefore not NaN or Infinity.
+	 * 
+	 * @return True if all components are finite.
+	 */
+	default boolean isFinite()
+	{
+		return Double.isFinite(getX()) &&
+				Double.isFinite(getY()) &&
+				Double.isFinite(getZ());
+	}
+	
+	/**
+	 * Returns true if all components are exactly zero.
+	 * 
+	 * @return True if all components are exactly zero.
+	 */
+	default boolean isZero()
+	{
+		return getX() == 0.0 &&
+				getY() == 0.0 &&
+				getZ() == 0.0;
+	}
+	
+	/**
+	 * Returns true if all components are zero within inclusive the given tolerance.
+	 * 
+	 * @param tolerance The tolerance around zero, that should still count as zero.
+	 * 
+	 * @return True if all components are technically zero.
+	 */
+	default boolean isZero(double tolerance)
+	{
+		return Math.abs(getX()) <= tolerance &&
+				Math.abs(getY()) <= tolerance &&
+				Math.abs(getZ()) <= tolerance;
+	}
+	
+	/**
+	 * Returns true if all the components are valid.
+	 * What values are considered valid or invalid depends on the tuple type.
+	 * 
+	 * @return True if all the components are valid.
+	 */
+	default boolean isValid()
+	{
+		return true;
+	}
 }
