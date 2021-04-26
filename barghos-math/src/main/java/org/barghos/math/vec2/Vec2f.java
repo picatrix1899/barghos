@@ -8,6 +8,23 @@ public class Vec2f implements Vec2fRW
 	public float x;
 	public float y;
 	
+	public Vec2f() { }
+	
+	public Vec2f(Tup2fR t)
+	{
+		set(t);
+	}
+	
+	public Vec2f(float value)
+	{
+		set(value);
+	}
+	
+	public Vec2f(float x, float y)
+	{
+		set(x, y);
+	}
+	
 	@Override
 	public float getX()
 	{
@@ -52,5 +69,11 @@ public class Vec2f implements Vec2fRW
 	public Vec2f set(float x, float y)
 	{
 		return setX(x).setY(y);
+	}
+	
+	@Override
+	public Vec2f clone()
+	{
+		return new Vec2f(this);
 	}
 }
