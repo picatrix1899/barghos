@@ -106,8 +106,8 @@ public interface Tup2dR
 	 * <p>
 	 * This can be used for type continuety.
 	 * This way even while only using abstractions it is possible to create
-	 * new instances of the original. It is similar to the {@link #clone()}
-	 * function but the {@link #clone()} function requires the returned instance to be
+	 * new instances of the original. It is similar to the {@link Object#clone()}
+	 * function but the {@link Object#clone()} function requires the returned instance to be
 	 * writable.
 	 * This function on the other hand allows for example the usage of factories.
 	 * 
@@ -127,8 +127,8 @@ public interface Tup2dR
 	 * <p>
 	 * This can be used for type continuety.
 	 * This way even while only using abstractions it is possible to create
-	 * new instances of the original. It is similar to the {@link #clone()}
-	 * function but the {@link #clone()} function requires the returned instance to be
+	 * new instances of the original. It is similar to the {@link Object#clone()}
+	 * function but the {@link Object#clone()} function requires the returned instance to be
 	 * writable.
 	 * This function on the other hand allows for example the usage of factories.
 	 * 
@@ -148,8 +148,8 @@ public interface Tup2dR
 	 * <p>
 	 * This can be used for type continuety.
 	 * This way even while only using abstractions it is possible to create
-	 * new instances of the original. It is similar to the {@link #clone()}
-	 * function but the {@link #clone()} function requires the returned instance to be
+	 * new instances of the original. It is similar to the {@link Object#clone()}
+	 * function but the {@link Object#clone()} function requires the returned instance to be
 	 * writable. This function on the other hand allows for example the usage of factories.
 	 * 
 	 * @param x The value used for the x component.
