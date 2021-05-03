@@ -259,4 +259,20 @@ class Tup2bigdTest
 		assertTrue(t.equals(new Tup2bigd(BigDecimal.valueOf(1.1), BigDecimal.valueOf(2.2))));
 		assertTrue(t.equals(PTup2bigd.gen(BigDecimal.valueOf(1.1), BigDecimal.valueOf(2.2))));
 	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2bigd#getNewInstance(BigDecimal, BigDecimal)}
+	 * returns a new instance of {@link Tup2bigd} with the given values.
+	 */
+	@Test
+	void getNewInstanceTest()
+	{
+		Tup2bigd t = new Tup2bigd(BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0));
+
+		Tup2bigd result = t.getNewInstance(BigDecimal.valueOf(3.0), BigDecimal.valueOf(4.0));
+		
+		assertNotSame(t, result);
+		assertEquals(BigDecimal.valueOf(3.0), result.getX());
+		assertEquals(BigDecimal.valueOf(4.0), result.getY());
+	}
 }

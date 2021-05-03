@@ -22,6 +22,8 @@
 
 package org.barghos.core.api.color;
 
+import org.barghos.core.api.tuple3.Tup3fR;
+
 /**
  * This interface grants selective readonly access for high dynamic range (HDR) RGB-Colors only.
  * 
@@ -31,5 +33,18 @@ package org.barghos.core.api.color;
  */
 public interface HDRColor3R extends Color3R
 {
+	@Override
+	default HDRColor3R getNewInstance(Tup3fR t)
+	{
+		return getNewInstance(t.getX(), t.getY(), t.getZ());
+	}
 	
+	@Override
+	default HDRColor3R getNewInstance(float value)
+	{
+		return getNewInstance(value, value, value);
+	}
+	
+	@Override
+	HDRColor3R getNewInstance(float x, float y, float z);
 }

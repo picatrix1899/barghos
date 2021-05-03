@@ -22,6 +22,7 @@
 
 package org.barghos.core.api.color;
 
+import org.barghos.core.api.tuple3.Tup3fR;
 import org.barghos.core.api.tuple4.Tup4fR;
 
 /**
@@ -86,4 +87,52 @@ public interface Color4R extends Color3R, Tup4fR
 	 * @since 1.0.0.0
 	 */
 	default float getW() { return getUnityA(); }
+
+	@Override
+	default boolean isValid()
+	{
+		return Tup4fR.super.isValid();
+	}
+
+	@Override
+	default boolean isZero()
+	{
+		return Tup4fR.super.isZero();
+	}
+
+	@Override
+	default boolean isZero(float tolerance)
+	{
+		return Tup4fR.super.isZero(tolerance);
+	}
+
+	@Override
+	default boolean isFinite()
+	{
+		return Tup4fR.super.isFinite();
+	}
+	
+	@Override
+	default Color4R getNewInstance(Tup3fR t)
+	{
+		return getNewInstance(t.getX(), t.getY(), t.getZ());
+	}
+	
+	@Override
+	default Color4R getNewInstance(Tup4fR t)
+	{
+		return getNewInstance(t.getX(), t.getY(), t.getZ(), t.getW());
+	}
+	
+	@Override
+	default Color4R getNewInstance(float value)
+	{
+		return getNewInstance(value, value, value, value);
+	}
+	
+	@Override
+	Color4R getNewInstance(float x, float y, float z);
+	
+	@Override
+	Color4R getNewInstance(float x, float y, float z, float w);
 }

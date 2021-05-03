@@ -45,4 +45,19 @@ public interface Tup2iRW extends Tup2iR, Tup2iW
 	
 	@Override
 	Tup2iRW set(int x, int y);
+	
+	@Override
+	default Tup2iRW getNewInstance(Tup2iR t)
+	{
+		return getNewInstance(t.getX(), t.getY());
+	}
+	
+	@Override
+	default Tup2iRW getNewInstance(int value)
+	{
+		return getNewInstance(value, value);
+	}
+	
+	@Override
+	Tup2iRW getNewInstance(int x, int y);
 }

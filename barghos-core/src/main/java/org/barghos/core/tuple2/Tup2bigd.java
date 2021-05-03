@@ -30,8 +30,6 @@ import java.util.Map;
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple2.Tup2bigdR;
 import org.barghos.core.api.tuple2.Tup2bigdRW;
-import org.barghos.core.api.util.ArgumentNullException;
-import org.barghos.core.Barghos;
 
 /**
  * This class represents a 2-dimensional big decimal tuple.
@@ -80,13 +78,6 @@ public class Tup2bigd implements Tup2bigdRW, Serializable, FormattableToString
 	 */
 	public Tup2bigd(Tup2bigdR t)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(t == null) throw new ArgumentNullException("t");
-			if(t.getX() == null) throw new ArgumentNullException("t.getX()");
-			if(t.getY() == null) throw new ArgumentNullException("t.getY()");
-		}
-		
 		set(t);
 	}
 	
@@ -99,11 +90,6 @@ public class Tup2bigd implements Tup2bigdRW, Serializable, FormattableToString
 	 */
 	public Tup2bigd(BigDecimal value)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(value == null) throw new ArgumentNullException("value");
-		}
-		
 		set(value);
 	}
 	
@@ -117,12 +103,6 @@ public class Tup2bigd implements Tup2bigdRW, Serializable, FormattableToString
 	 */
 	public Tup2bigd(BigDecimal x, BigDecimal y)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(x == null) throw new ArgumentNullException("x");
-			if(y == null) throw new ArgumentNullException("y");
-		}
-		
 		set(x, y);
 	}
 	
@@ -141,11 +121,6 @@ public class Tup2bigd implements Tup2bigdRW, Serializable, FormattableToString
 	@Override
 	public Tup2bigd setX(BigDecimal x)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(x == null) throw new ArgumentNullException("x");
-		}
-		
 		this.x = x;
 		
 		return this;
@@ -154,11 +129,6 @@ public class Tup2bigd implements Tup2bigdRW, Serializable, FormattableToString
 	@Override
 	public Tup2bigd setY(BigDecimal y)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(y == null) throw new ArgumentNullException("y");
-		}
-		
 		this.y = y;
 		
 		return this;
@@ -167,36 +137,18 @@ public class Tup2bigd implements Tup2bigdRW, Serializable, FormattableToString
 	@Override
 	public Tup2bigd set(Tup2bigdR t)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(t == null) throw new ArgumentNullException("t");
-			if(t.getX() == null) throw new ArgumentNullException("t.getX()");
-			if(t.getY() == null) throw new ArgumentNullException("t.getY()");
-		}
-		
 		return set(t.getX(), t.getY());
 	}
 	
 	@Override
 	public Tup2bigd set(BigDecimal value)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(value == null) throw new ArgumentNullException("value");
-		}
-		
 		return set(value, value);
 	}
 	
 	@Override
 	public Tup2bigd set(BigDecimal x, BigDecimal y)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(x == null) throw new ArgumentNullException("x");
-			if(y == null) throw new ArgumentNullException("y");
-		}
-		
 		return setX(x).setY(y);
 	}
 	
@@ -243,5 +195,11 @@ public class Tup2bigd implements Tup2bigdRW, Serializable, FormattableToString
 		values.put("y", getY());
 		
 		return values;
+	}
+
+	@Override
+	public Tup2bigd getNewInstance(BigDecimal x, BigDecimal y)
+	{
+		return new Tup2bigd(x, y);
 	}
 }

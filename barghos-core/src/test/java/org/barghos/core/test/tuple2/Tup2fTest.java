@@ -257,4 +257,20 @@ class Tup2fTest
 		assertTrue(t.equals(new Tup2f(1.2f, 3.4f)));
 		assertTrue(t.equals(PTup2f.gen(1.2f, 3.4f)));
 	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2f#getNewInstance(float, float)}
+	 * returns a new instance of {@link Tup2f} with the given values.
+	 */
+	@Test
+	void getNewInstanceTest()
+	{
+		Tup2f t = new Tup2f(1.0f, 1.0f);
+
+		Tup2f result = t.getNewInstance(2.0f, 3.0f);
+		
+		assertNotSame(t, result);
+		assertEquals(2.0f, result.getX());
+		assertEquals(3.0f, result.getY());
+	}
 }

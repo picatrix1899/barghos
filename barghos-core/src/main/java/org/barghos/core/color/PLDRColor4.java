@@ -246,6 +246,18 @@ public abstract class PLDRColor4 implements LDRColor4R
 		};
 	}
 	
+	@Override
+	public PLDRColor4 getNewInstance(float x, float y, float z)
+	{
+		return gen(x, y, z, 1.0f);
+	}
+	
+	@Override
+	public PLDRColor4 getNewInstance(float x, float y, float z, float w)
+	{
+		return gen(x, y, z, w);
+	}
+	
 	/**
 	 * Clamps the float value to unit space from 0.0 to 1.0.
 	 * 

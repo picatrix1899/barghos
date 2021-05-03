@@ -63,4 +63,117 @@ public interface Tup3bigiR
 	 * @since 1.0.0.0
 	 */
 	BigInteger getZ();
+	
+	/**
+	 * Returns true if all components are finite and therefore not NaN or Infinity.
+	 * This does not account for validity of the tuple.
+	 * 
+	 * @return True if all components are finite.
+	 */
+	default boolean isFinite()
+	{
+		return true;
+	}
+	
+	/**
+	 * Returns true if all components are exactly zero.
+	 * This does not account for validity of the tuple.
+	 * 
+	 * @return True if all components are exactly zero.
+	 */
+	default boolean isZero()
+	{
+		return getX().compareTo(BigInteger.ZERO) == 0 &&
+				getY().compareTo(BigInteger.ZERO) == 0 &&
+				getZ().compareTo(BigInteger.ZERO) == 0;
+	}
+	
+	/**
+	 * Returns true if all components are zero within inclusive the given tolerance.
+	 * This does not account for validity of the tuple.
+	 * 
+	 * @param tolerance The tolerance around zero, that should still count as zero.
+	 * 
+	 * @return True if all components are technically zero.
+	 */
+	default boolean isZero(BigInteger tolerance)
+	{
+		return getX().abs().compareTo(tolerance) <= 0 &&
+				getY().abs().compareTo(tolerance) <= 0 &&
+				getZ().abs().compareTo(tolerance) <= 0;
+	}
+	
+	/**
+	 * Returns true if all the components are valid.
+	 * What values are considered valid or invalid depends on the tuple type.
+	 * 
+	 * @return True if all the components are valid.
+	 */
+	default boolean isValid()
+	{
+		return getX() != null &&
+				getY() != null &&
+				getZ() != null;
+	}
+	
+	/**
+	 * Returns a new instance of the type of the origin instance with the components adopted
+	 * from t.
+	 * 
+	 * <p>
+	 * This can be used for type continuety.
+	 * This way even while only using abstractions it is possible to create
+	 * new instances of the original. It is similar to the {@link Object#clone()}
+	 * function but the {@link Object#clone()} function requires the returned instance to be
+	 * writable.
+	 * This function on the other hand allows for example the usage of factories.
+	 * 
+	 * @param t The tuple to adopt the components from.
+	 * 
+	 * @return A new instance of the type of the origin instance
+	 */
+	default Tup3bigiR getNewInstance(Tup3bigiR t)
+	{
+		return getNewInstance(t.getX(), t.getY(), t.getZ());
+	}
+	
+	/**
+	 * Returns a new instance of the type of the origin instance with the components set to
+	 * value.
+	 * 
+	 * <p>
+	 * This can be used for type continuety.
+	 * This way even while only using abstractions it is possible to create
+	 * new instances of the original. It is similar to the {@link Object#clone()}
+	 * function but the {@link Object#clone()} function requires the returned instance to be
+	 * writable.
+	 * This function on the other hand allows for example the usage of factories.
+	 * 
+	 * @param value The value used for all components.
+	 * 
+	 * @return A new instance of the type of the origin instance
+	 */
+	default Tup3bigiR getNewInstance(BigInteger value)
+	{
+		return getNewInstance(value, value, value);
+	}
+	
+	/**
+	 * Returns a new instance of the type of the origin instance with the components set to
+	 * the corresponding parameters.
+	 * 
+	 * <p>
+	 * This can be used for type continuety.
+	 * This way even while only using abstractions it is possible to create
+	 * new instances of the original. It is similar to the {@link Object#clone()}
+	 * function but the {@link Object#clone()} function requires the returned instance to be
+	 * writable. This function on the other hand allows for example the usage of factories.
+	 * 
+	 * @param x The value used for the x component.
+	 * @param y The value used for the y component.
+	 * @param z The value used for the z component.
+	 * 
+	 * @return A new instance of the type of the origin instance
+	 */
+	Tup3bigiR getNewInstance(BigInteger x, BigInteger y, BigInteger z);
 }

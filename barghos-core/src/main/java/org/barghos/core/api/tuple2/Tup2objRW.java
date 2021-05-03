@@ -45,4 +45,19 @@ public interface Tup2objRW extends Tup2objR, Tup2objW
 	
 	@Override
 	Tup2objRW set(Object x, Object y);
+	
+	@Override
+	default Tup2objRW getNewInstance(Tup2objR t)
+	{
+		return getNewInstance(t.getX(), t.getY());
+	}
+	
+	@Override
+	default Tup2objRW getNewInstance(Object value)
+	{
+		return getNewInstance(value, value);
+	}
+	
+	@Override
+	Tup2objRW getNewInstance(Object x, Object y);
 }

@@ -51,4 +51,19 @@ public interface Tup4cRW extends Tup4cR, Tup4cW
 	
 	@Override
 	Tup4cRW set(char x, char y, char z, char w);
+	
+	@Override
+	default Tup4cRW getNewInstance(Tup4cR t)
+	{
+		return getNewInstance(t.getX(), t.getY(), t.getZ(), t.getW());
+	}
+	
+	@Override
+	default Tup4cRW getNewInstance(char value)
+	{
+		return getNewInstance(value, value, value, value);
+	}
+	
+	@Override
+	Tup4cRW getNewInstance(char x, char y, char z, char w);
 }

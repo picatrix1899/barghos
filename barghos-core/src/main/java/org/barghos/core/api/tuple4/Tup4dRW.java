@@ -51,4 +51,19 @@ public interface Tup4dRW extends Tup4dR, Tup4dW
 	
 	@Override
 	Tup4dRW set(double x, double y, double z, double w);
+	
+	@Override
+	default Tup4dRW getNewInstance(Tup4dR t)
+	{
+		return getNewInstance(t.getX(), t.getY(), t.getZ(), t.getW());
+	}
+	
+	@Override
+	default Tup4dRW getNewInstance(double value)
+	{
+		return getNewInstance(value, value, value, value);
+	}
+	
+	@Override
+	Tup4dRW getNewInstance(double x, double y, double z, double w);
 }

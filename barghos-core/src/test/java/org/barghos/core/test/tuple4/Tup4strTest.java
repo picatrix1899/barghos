@@ -336,4 +336,22 @@ class Tup4strTest
 		assertTrue(t.equals(new Tup4str("arg1", "arg2", "arg3", "arg4")));
 		assertTrue(t.equals(PTup4str.gen("arg1", "arg2", "arg3", "arg4")));
 	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4str#getNewInstance(String, String, String, String)}
+	 * returns a new instance of {@link Tup4str} with the given values.
+	 */
+	@Test
+	void getNewInstanceTest()
+	{
+		Tup4str t = new Tup4str("a", "a", "a", "a");
+
+		Tup4str result = t.getNewInstance("b", "c", "d", "e");
+		
+		assertNotSame(t, result);
+		assertEquals("b", result.getX());
+		assertEquals("c", result.getY());
+		assertEquals("d", result.getZ());
+		assertEquals("e", result.getW());
+	}
 }

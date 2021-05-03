@@ -501,4 +501,16 @@ public class HDRColor4 implements HDRColor4R
 	{
 		return Math.round(this.a * 255);
 	}
+	
+	@Override
+	public HDRColor4 getNewInstance(float x, float y, float z)
+	{
+		return new HDRColor4(x, y, z, 1.0f);
+	}
+	
+	@Override
+	public HDRColor4 getNewInstance(float x, float y, float z, float w)
+	{
+		return new HDRColor4(x, y, z, w);
+	}
 }

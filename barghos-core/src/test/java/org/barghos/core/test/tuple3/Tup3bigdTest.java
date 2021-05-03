@@ -299,4 +299,21 @@ class Tup3bigdTest
 		assertTrue(t.equals(new Tup3bigd(BigDecimal.valueOf(1.1), BigDecimal.valueOf(2.2), BigDecimal.valueOf(3.3))));
 		assertTrue(t.equals(PTup3bigd.gen(BigDecimal.valueOf(1.1), BigDecimal.valueOf(2.2), BigDecimal.valueOf(3.3))));
 	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup3bigd#getNewInstance(BigDecimal, BigDecimal, BigDecimal)}
+	 * returns a new instance of {@link Tup3bigd} with the given values.
+	 */
+	@Test
+	void getNewInstanceTest()
+	{
+		Tup3bigd t = new Tup3bigd(BigDecimal.valueOf(1.0), BigDecimal.valueOf(1.0), BigDecimal.valueOf(1.0));
+
+		Tup3bigd result = t.getNewInstance(BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0), BigDecimal.valueOf(4.0));
+		
+		assertNotSame(t, result);
+		assertEquals(BigDecimal.valueOf(2.0), result.getX());
+		assertEquals(BigDecimal.valueOf(3.0), result.getY());
+		assertEquals(BigDecimal.valueOf(4.0), result.getZ());
+	}
 }

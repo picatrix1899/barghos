@@ -72,6 +72,18 @@ class Color4RTest
 			{
 				return 0;
 			}
+			
+			@Override
+			public Color4R getNewInstance(float x, float y, float z)
+			{
+				return null;
+			}
+			
+			@Override
+			public Color4R getNewInstance(float x, float y, float z, float w)
+			{
+				return null;
+			}
 		};
 		
 		assertEquals(2.1f, c.getX());
@@ -134,6 +146,18 @@ class Color4RTest
 			public int getA()
 			{
 				return 0;
+			}
+			
+			@Override
+			public Color4R getNewInstance(float x, float y, float z)
+			{
+				return null;
+			}
+			
+			@Override
+			public Color4R getNewInstance(float x, float y, float z, float w)
+			{
+				return null;
 			}
 		};
 		
@@ -198,6 +222,18 @@ class Color4RTest
 			{
 				return 0;
 			}
+			
+			@Override
+			public Color4R getNewInstance(float x, float y, float z)
+			{
+				return null;
+			}
+			
+			@Override
+			public Color4R getNewInstance(float x, float y, float z, float w)
+			{
+				return null;
+			}
 		};
 		
 		assertEquals(4.3f, c.getZ());
@@ -260,6 +296,18 @@ class Color4RTest
 			public int getA()
 			{
 				return 0;
+			}
+			
+			@Override
+			public Color4R getNewInstance(float x, float y, float z)
+			{
+				return null;
+			}
+			
+			@Override
+			public Color4R getNewInstance(float x, float y, float z, float w)
+			{
+				return null;
 			}
 		};
 		

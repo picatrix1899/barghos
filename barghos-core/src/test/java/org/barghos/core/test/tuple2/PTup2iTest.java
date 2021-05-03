@@ -140,4 +140,20 @@ class PTup2iTest
 		assertTrue(t.equals(new Tup2i(1, 2)));
 		assertTrue(t.equals(PTup2i.gen(1, 2)));	
 	}
+	
+	/**
+	 * This test ensures, that the function {@link PTup2i#getNewInstance(int, int)}
+	 * returns a new instance of {@link PTup2i} with the given values.
+	 */
+	@Test
+	void getNewInstanceTest()
+	{
+		PTup2i t = PTup2i.gen(1, 1);
+
+		PTup2i result = t.getNewInstance(2, 3);
+		
+		assertNotSame(t, result);
+		assertEquals(2, result.getX());
+		assertEquals(3, result.getY());
+	}
 }

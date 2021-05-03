@@ -48,4 +48,19 @@ public interface Tup3iRW extends Tup3iR, Tup3iW
 	
 	@Override
 	Tup3iRW set(int x, int y, int z);
+	
+	@Override
+	default Tup3iRW getNewInstance(Tup3iR t)
+	{
+		return getNewInstance(t.getX(), t.getY(), t.getZ());
+	}
+	
+	@Override
+	default Tup3iRW getNewInstance(int value)
+	{
+		return getNewInstance(value, value, value);
+	}
+	
+	@Override
+	Tup3iRW getNewInstance(int x, int y, int z);
 }

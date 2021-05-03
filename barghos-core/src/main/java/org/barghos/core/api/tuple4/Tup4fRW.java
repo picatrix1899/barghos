@@ -51,4 +51,19 @@ public interface Tup4fRW extends Tup4fR, Tup4fW
 	
 	@Override
 	Tup4fRW set(float x, float y, float z, float w);
+	
+	@Override
+	default Tup4fRW getNewInstance(Tup4fR t)
+	{
+		return getNewInstance(t.getX(), t.getY(), t.getZ(), t.getW());
+	}
+	
+	@Override
+	default Tup4fRW getNewInstance(float value)
+	{
+		return getNewInstance(value, value, value, value);
+	}
+	
+	@Override
+	Tup4fRW getNewInstance(float x, float y, float z, float w);
 }

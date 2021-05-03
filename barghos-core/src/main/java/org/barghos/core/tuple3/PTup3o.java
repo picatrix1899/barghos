@@ -157,4 +157,10 @@ public abstract class PTup3o<X,Y,Z> implements Tup3oR<X,Y,Z>, FormattableToStrin
 		
 		return values;
 	}
+	
+	@Override
+	public PTup3o<X,Y,Z> getNewInstance(X x, Y y, Z z)
+	{
+		return gen(x, y, z);
+	}
 }

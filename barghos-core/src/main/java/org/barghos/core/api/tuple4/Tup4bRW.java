@@ -51,4 +51,19 @@ public interface Tup4bRW extends Tup4bR, Tup4bW
 	
 	@Override
 	Tup4bRW set(byte x, byte y, byte z, byte w);
+	
+	@Override
+	default Tup4bRW getNewInstance(Tup4bR t)
+	{
+		return getNewInstance(t.getX(), t.getY(), t.getZ(), t.getW());
+	}
+	
+	@Override
+	default Tup4bRW getNewInstance(byte value)
+	{
+		return getNewInstance(value, value, value, value);
+	}
+	
+	@Override
+	Tup4bRW getNewInstance(byte x, byte y, byte z, byte w);
 }

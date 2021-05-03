@@ -29,8 +29,6 @@ import java.util.Map;
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple2.Tup2objR;
 import org.barghos.core.api.tuple2.Tup2objRW;
-import org.barghos.core.api.util.ArgumentNullException;
-import org.barghos.core.Barghos;
 
 /**
  * This class represents a 2-dimensional string tuple.
@@ -76,13 +74,6 @@ public class Tup2obj implements Tup2objRW, Serializable, FormattableToString
 	 */
 	public Tup2obj(Tup2objR t)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(t == null) throw new ArgumentNullException("t");
-			if(t.getX() == null) throw new ArgumentNullException("t.getX()");
-			if(t.getY() == null) throw new ArgumentNullException("t.getY()");
-		}
-		
 		set(t);
 	}
 	
@@ -95,11 +86,6 @@ public class Tup2obj implements Tup2objRW, Serializable, FormattableToString
 	 */
 	public Tup2obj(Object value)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(value == null) throw new ArgumentNullException("value");
-		}
-		
 		set(value);
 	}
 	
@@ -113,12 +99,6 @@ public class Tup2obj implements Tup2objRW, Serializable, FormattableToString
 	 */
 	public Tup2obj(Object x, Object y)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(x == null) throw new ArgumentNullException("x");
-			if(y == null) throw new ArgumentNullException("y");
-		}
-		
 		set(x, y);
 	}
 	
@@ -137,11 +117,6 @@ public class Tup2obj implements Tup2objRW, Serializable, FormattableToString
 	@Override
 	public Tup2obj setX(Object x)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(x == null) throw new ArgumentNullException("x");
-		}
-		
 		this.x = x;
 		
 		return this;
@@ -150,11 +125,6 @@ public class Tup2obj implements Tup2objRW, Serializable, FormattableToString
 	@Override
 	public Tup2obj setY(Object y)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(y == null) throw new ArgumentNullException("y");
-		}
-		
 		this.y = y;
 		
 		return this;
@@ -163,36 +133,18 @@ public class Tup2obj implements Tup2objRW, Serializable, FormattableToString
 	@Override
 	public Tup2obj set(Tup2objR t)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(t == null) throw new ArgumentNullException("t");
-			if(t.getX() == null) throw new ArgumentNullException("t.getX()");
-			if(t.getY() == null) throw new ArgumentNullException("t.getY()");
-		}
-		
 		return set(t.getX(), t.getY());
 	}
 	
 	@Override
 	public Tup2obj set(Object value)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(value == null) throw new ArgumentNullException("value");
-		}
-		
 		return set(value, value);
 	}
 	
 	@Override
 	public Tup2obj set(Object x, Object y)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(x == null) throw new ArgumentNullException("x");
-			if(y == null) throw new ArgumentNullException("y");
-		}
-		
 		return setX(x).setY(y);
 	}
 	
@@ -239,5 +191,11 @@ public class Tup2obj implements Tup2objRW, Serializable, FormattableToString
 		values.put("y", getY());
 		
 		return values;
+	}
+	
+	@Override
+	public Tup2obj getNewInstance(Object x, Object y)
+	{
+		return new Tup2obj(x, y);
 	}
 }

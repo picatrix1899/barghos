@@ -152,4 +152,10 @@ public abstract class PTup3i implements Tup3iR, FormattableToString
 		
 		return values;
 	}
+	
+	@Override
+	public PTup3i getNewInstance(int x, int y, int z)
+	{
+		return gen(x, y, z);
+	}
 }

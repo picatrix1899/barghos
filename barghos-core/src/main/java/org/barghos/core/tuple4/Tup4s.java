@@ -251,4 +251,10 @@ public class Tup4s implements Tup4sRW, Serializable, FormattableToString
 		
 		return values;
 	}
+	
+	@Override
+	public Tup4s getNewInstance(short x, short y, short z, short w)
+	{
+		return new Tup4s(x, y, z, w);
+	}
 }

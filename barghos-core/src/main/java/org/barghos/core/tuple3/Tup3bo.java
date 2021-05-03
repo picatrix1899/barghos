@@ -228,4 +228,10 @@ public class Tup3bo implements Tup3boRW, Serializable, FormattableToString
 		
 		return values;
 	}
+	
+	@Override
+	public Tup3bo getNewInstance(boolean x, boolean y, boolean z)
+	{
+		return new Tup3bo(x, y, z);
+	}
 }

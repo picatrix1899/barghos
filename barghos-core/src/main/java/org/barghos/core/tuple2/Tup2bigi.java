@@ -30,8 +30,6 @@ import java.util.Map;
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple2.Tup2bigiR;
 import org.barghos.core.api.tuple2.Tup2bigiRW;
-import org.barghos.core.api.util.ArgumentNullException;
-import org.barghos.core.Barghos;
 
 /**
  * This class represents a 2-dimensional big integer tuple.
@@ -80,13 +78,6 @@ public class Tup2bigi implements Tup2bigiRW, Serializable, FormattableToString
 	 */
 	public Tup2bigi(Tup2bigiR t)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(t == null) throw new ArgumentNullException("t");
-			if(t.getX() == null) throw new ArgumentNullException("t.getX()");
-			if(t.getY() == null) throw new ArgumentNullException("t.getY()");
-		}
-		
 		set(t);
 	}
 	
@@ -99,11 +90,6 @@ public class Tup2bigi implements Tup2bigiRW, Serializable, FormattableToString
 	 */
 	public Tup2bigi(BigInteger value)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(value == null) throw new ArgumentNullException("value");
-		}
-		
 		set(value);
 	}
 	
@@ -117,12 +103,6 @@ public class Tup2bigi implements Tup2bigiRW, Serializable, FormattableToString
 	 */
 	public Tup2bigi(BigInteger x, BigInteger y)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(x == null) throw new ArgumentNullException("x");
-			if(y == null) throw new ArgumentNullException("y");
-		}
-		
 		set(x, y);
 	}
 	
@@ -141,11 +121,6 @@ public class Tup2bigi implements Tup2bigiRW, Serializable, FormattableToString
 	@Override
 	public Tup2bigi setX(BigInteger x)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(x == null) throw new ArgumentNullException("x");
-		}
-		
 		this.x = x;
 		
 		return this;
@@ -154,11 +129,6 @@ public class Tup2bigi implements Tup2bigiRW, Serializable, FormattableToString
 	@Override
 	public Tup2bigi setY(BigInteger y)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(y == null) throw new ArgumentNullException("y");
-		}
-		
 		this.y = y;
 		
 		return this;
@@ -167,36 +137,18 @@ public class Tup2bigi implements Tup2bigiRW, Serializable, FormattableToString
 	@Override
 	public Tup2bigi set(Tup2bigiR t)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(t == null) throw new ArgumentNullException("t");
-			if(t.getX() == null) throw new ArgumentNullException("t.getX()");
-			if(t.getY() == null) throw new ArgumentNullException("t.getY()");
-		}
-		
 		return set(t.getX(), t.getY());
 	}
 	
 	@Override
 	public Tup2bigi set(BigInteger value)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(value == null) throw new ArgumentNullException("value");
-		}
-		
 		return set(value, value);
 	}
 	
 	@Override
 	public Tup2bigi set(BigInteger x, BigInteger y)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(x == null) throw new ArgumentNullException("x");
-			if(y == null) throw new ArgumentNullException("y");
-		}
-		
 		return setX(x).setY(y);
 	}
 	
@@ -243,5 +195,11 @@ public class Tup2bigi implements Tup2bigiRW, Serializable, FormattableToString
 		values.put("y", getY());
 		
 		return values;
+	}
+
+	@Override
+	public Tup2bigi getNewInstance(BigInteger x, BigInteger y)
+	{
+		return new Tup2bigi(x, y);
 	}
 }

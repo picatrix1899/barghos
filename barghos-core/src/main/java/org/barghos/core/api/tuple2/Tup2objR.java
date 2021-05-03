@@ -52,4 +52,76 @@ public interface Tup2objR
 	 * @since 1.0.0.0
 	 */
 	Object getY();
+	
+	/**
+	 * Returns true if all the components are valid.
+	 * What values are considered valid or invalid depends on the tuple type.
+	 * 
+	 * @return True if all the components are valid.
+	 */
+	default boolean isValid()
+	{
+		return getX() != null &&
+				getY() != null;
+	}
+	
+	/**
+	 * Returns a new instance of the type of the origin instance with the components adopted
+	 * from t.
+	 * 
+	 * <p>
+	 * This can be used for type continuety.
+	 * This way even while only using abstractions it is possible to create
+	 * new instances of the original. It is similar to the {@link Object#clone()}
+	 * function but the {@link Object#clone()} function requires the returned instance to be
+	 * writable.
+	 * This function on the other hand allows for example the usage of factories.
+	 * 
+	 * @param t The tuple to adopt the components from.
+	 * 
+	 * @return A new instance of the type of the origin instance
+	 */
+	default Tup2objR getNewInstance(Tup2objR t)
+	{
+		return getNewInstance(t.getX(), t.getY());
+	}
+	
+	/**
+	 * Returns a new instance of the type of the origin instance with the components set to
+	 * value.
+	 * 
+	 * <p>
+	 * This can be used for type continuety.
+	 * This way even while only using abstractions it is possible to create
+	 * new instances of the original. It is similar to the {@link Object#clone()}
+	 * function but the {@link Object#clone()} function requires the returned instance to be
+	 * writable.
+	 * This function on the other hand allows for example the usage of factories.
+	 * 
+	 * @param value The value used for all components.
+	 * 
+	 * @return A new instance of the type of the origin instance
+	 */
+	default Tup2objR getNewInstance(Object value)
+	{
+		return getNewInstance(value, value);
+	}
+	
+	/**
+	 * Returns a new instance of the type of the origin instance with the components set to
+	 * the corresponding parameters.
+	 * 
+	 * <p>
+	 * This can be used for type continuety.
+	 * This way even while only using abstractions it is possible to create
+	 * new instances of the original. It is similar to the {@link Object#clone()}
+	 * function but the {@link Object#clone()} function requires the returned instance to be
+	 * writable. This function on the other hand allows for example the usage of factories.
+	 * 
+	 * @param x The value used for the x component.
+	 * @param y The value used for the y component.
+	 * 
+	 * @return A new instance of the type of the origin instance
+	 */
+	Tup2objR getNewInstance(Object x, Object y);
 }

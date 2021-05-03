@@ -42,4 +42,13 @@ public interface Tup2oRW<X,Y> extends Tup2oR<X,Y>, Tup2oW<X,Y>
 	
 	@Override
 	Tup2oRW<X,Y> set(X x, Y y);
+	
+	@Override
+	default Tup2oRW<X,Y> getNewInstance(Tup2oR<X,Y> t)
+	{
+		return getNewInstance(t.getX(), t.getY());
+	}
+	
+	@Override
+	Tup2oRW<X,Y> getNewInstance(X x, Y y);
 }

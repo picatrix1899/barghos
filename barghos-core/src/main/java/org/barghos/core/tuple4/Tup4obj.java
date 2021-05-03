@@ -293,4 +293,10 @@ public class Tup4obj implements Tup4objRW, Serializable, FormattableToString
 		
 		return values;
 	}
+	
+	@Override
+	public Tup4obj getNewInstance(Object x, Object y, Object z, Object w)
+	{
+		return new Tup4obj(x, y, z, w);
+	}
 }

@@ -297,4 +297,21 @@ class Tup3dTest
 		assertTrue(t.equals(new Tup3d(1.2, 3.4, 5.6)));
 		assertTrue(t.equals(PTup3d.gen(1.2, 3.4, 5.6)));
 	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup3d#getNewInstance(double, double, double)}
+	 * returns a new instance of {@link Tup3d} with the given values.
+	 */
+	@Test
+	void getNewInstanceTest()
+	{
+		Tup3d t = new Tup3d(1.0, 1.0, 1.0);
+
+		Tup3d result = t.getNewInstance(2.0, 3.0, 4.0);
+		
+		assertNotSame(t, result);
+		assertEquals(2.0, result.getX());
+		assertEquals(3.0, result.getY());
+		assertEquals(4.0, result.getZ());
+	}
 }

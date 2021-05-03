@@ -113,4 +113,19 @@ public interface Color3R extends Tup3fR
 	 * @since 1.0.0.0
 	 */
 	default float getZ() { return getUnityB(); }
+	
+	@Override
+	default Color3R getNewInstance(Tup3fR t)
+	{
+		return getNewInstance(t.getX(), t.getY(), t.getZ());
+	}
+	
+	@Override
+	default Color3R getNewInstance(float value)
+	{
+		return getNewInstance(value, value, value);
+	}
+	
+	@Override
+	Color3R getNewInstance(float x, float y, float z);
 }

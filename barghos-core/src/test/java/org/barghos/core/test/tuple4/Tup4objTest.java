@@ -336,4 +336,22 @@ class Tup4objTest
 		assertTrue(t.equals(new Tup4obj(1, "arg2", 3.3, 'd')));
 		assertTrue(t.equals(PTup4obj.gen(1, "arg2", 3.3, 'd')));
 	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4obj#getNewInstance(Object, Object, Object, Object)}
+	 * returns a new instance of {@link Tup4obj} with the given values.
+	 */
+	@Test
+	void getNewInstanceTest()
+	{
+		Tup4obj t = new Tup4obj(1l, 1l, 1l, 1l);
+
+		Tup4obj result = t.getNewInstance(2l, 3l, 4l, 5l);
+		
+		assertNotSame(t, result);
+		assertEquals(2l, result.getX());
+		assertEquals(3l, result.getY());
+		assertEquals(4l, result.getZ());
+		assertEquals(5l, result.getW());
+	}
 }

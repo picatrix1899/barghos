@@ -251,4 +251,10 @@ public class Tup4l implements Tup4lRW, Serializable, FormattableToString
 		
 		return values;
 	}
+	
+	@Override
+	public Tup4l getNewInstance(long x, long y, long z, long w)
+	{
+		return new Tup4l(x, y, z, w);
+	}
 }

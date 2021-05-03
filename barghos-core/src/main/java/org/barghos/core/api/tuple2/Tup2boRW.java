@@ -45,4 +45,19 @@ public interface Tup2boRW extends Tup2boR, Tup2boW
 	
 	@Override
 	Tup2boRW set(boolean x, boolean y);
+	
+	@Override
+	default Tup2boR getNewInstance(Tup2boR t)
+	{
+		return getNewInstance(t.getX(), t.getY());
+	}
+	
+	@Override
+	default Tup2boR getNewInstance(boolean value)
+	{
+		return getNewInstance(value, value);
+	}
+	
+	@Override
+	Tup2boR getNewInstance(boolean x, boolean y);
 }

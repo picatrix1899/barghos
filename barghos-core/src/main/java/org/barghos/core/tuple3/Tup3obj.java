@@ -273,4 +273,10 @@ public class Tup3obj implements Tup3objRW, Serializable, FormattableToString
 		
 		return values;
 	}
+	
+	@Override
+	public Tup3obj getNewInstance(Object x, Object y, Object z)
+	{
+		return new Tup3obj(x, y, z);
+	}
 }

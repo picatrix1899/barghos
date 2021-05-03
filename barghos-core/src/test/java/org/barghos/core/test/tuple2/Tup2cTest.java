@@ -257,4 +257,20 @@ class Tup2cTest
 		assertTrue(t.equals(new Tup2c('a', 'b')));
 		assertTrue(t.equals(PTup2c.gen('a', 'b')));
 	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2c#getNewInstance(char, char)}
+	 * returns a new instance of {@link Tup2c} with the given values.
+	 */
+	@Test
+	void getNewInstanceTest()
+	{
+		Tup2c t = new Tup2c('a', 'a');
+
+		Tup2c result = t.getNewInstance('b', 'c');
+		
+		assertNotSame(t, result);
+		assertEquals('b', result.getX());
+		assertEquals('c', result.getY());
+	}
 }

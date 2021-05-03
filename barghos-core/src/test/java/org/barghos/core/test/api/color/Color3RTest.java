@@ -60,6 +60,12 @@ class Color3RTest
 			{
 				return 0;
 			}
+			
+			@Override
+			public Color3R getNewInstance(float x, float y, float z)
+			{
+				return null;
+			}
 		};
 		
 		assertEquals(2.1f, c.getX());
@@ -111,6 +117,12 @@ class Color3RTest
 			{
 				return 0;
 			}
+			
+			@Override
+			public Color3R getNewInstance(float x, float y, float z)
+			{
+				return null;
+			}
 		};
 		
 		assertEquals(3.2f, c.getY());
@@ -161,6 +173,12 @@ class Color3RTest
 			public int getB()
 			{
 				return 0;
+			}
+			
+			@Override
+			public Color3R getNewInstance(float x, float y, float z)
+			{
+				return null;
 			}
 		};
 		

@@ -255,4 +255,10 @@ public class Tup4d implements Tup4dRW, Serializable, FormattableToString
 		
 		return values;
 	}
+	
+	@Override
+	public Tup4d getNewInstance(double x, double y, double z, double w)
+	{
+		return new Tup4d(x, y, z, w);
+	}
 }

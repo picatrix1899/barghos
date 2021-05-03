@@ -257,4 +257,20 @@ class Tup2objTest
 		assertTrue(t.equals(new Tup2obj(1, "arg2")));
 		assertTrue(t.equals(PTup2obj.gen(1, "arg2")));
 	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2obj#getNewInstance(Object, Object)}
+	 * returns a new instance of {@link Tup2obj} with the given values.
+	 */
+	@Test
+	void getNewInstanceTest()
+	{
+		Tup2obj t = new Tup2obj(1l, "a");
+
+		Tup2obj result = t.getNewInstance(2.0f, 'b');
+		
+		assertNotSame(t, result);
+		assertEquals(2.0f, result.getX());
+		assertEquals('b', result.getY());
+	}
 }

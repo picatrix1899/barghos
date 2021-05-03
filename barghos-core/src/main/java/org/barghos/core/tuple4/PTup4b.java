@@ -159,4 +159,10 @@ public abstract class PTup4b implements Tup4bR, FormattableToString
 		
 		return values;
 	}
+	
+	@Override
+	public PTup4b getNewInstance(byte x, byte y, byte z, byte w)
+	{
+		return gen(x, y, z, w);
+	}
 }

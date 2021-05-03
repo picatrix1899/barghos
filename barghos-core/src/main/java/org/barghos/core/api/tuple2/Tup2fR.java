@@ -52,4 +52,110 @@ public interface Tup2fR
 	 * @since 1.0.0.0
 	 */
 	float getY();
+	
+	/**
+	 * Returns true if all components are finite and therefore not NaN or Infinity.
+	 * 
+	 * @return True if all components are finite.
+	 */
+	default boolean isFinite()
+	{
+		return Float.isFinite(getX()) &&
+				Float.isFinite(getY());
+	}
+	
+	/**
+	 * Returns true if all components are exactly zero.
+	 * 
+	 * @return True if all components are exactly zero.
+	 */
+	default boolean isZero()
+	{
+		return getX() == 0.0f &&
+				getY() == 0.0f;
+	}
+	
+	/**
+	 * Returns true if all components are zero within inclusive the given tolerance.
+	 * 
+	 * @param tolerance The tolerance around zero, that should still count as zero.
+	 * 
+	 * @return True if all components are technically zero.
+	 */
+	default boolean isZero(float tolerance)
+	{
+		return Math.abs(getX()) <= tolerance &&
+				Math.abs(getY()) <= tolerance;
+	}
+	
+	/**
+	 * Returns true if all the components are valid.
+	 * What values are considered valid or invalid depends on the tuple type.
+	 * 
+	 * @return True if all the components are valid.
+	 */
+	default boolean isValid()
+	{
+		return true;
+	}
+	
+	/**
+	 * Returns a new instance of the type of the origin instance with the components adopted
+	 * from t.
+	 * 
+	 * <p>
+	 * This can be used for type continuety.
+	 * This way even while only using abstractions it is possible to create
+	 * new instances of the original. It is similar to the {@link Object#clone()}
+	 * function but the {@link Object#clone()} function requires the returned instance to be
+	 * writable.
+	 * This function on the other hand allows for example the usage of factories.
+	 * 
+	 * @param t The tuple to adopt the components from.
+	 * 
+	 * @return A new instance of the type of the origin instance
+	 */
+	default Tup2fR getNewInstance(Tup2fR t)
+	{
+		return getNewInstance(t.getX(), t.getY());
+	}
+	
+	/**
+	 * Returns a new instance of the type of the origin instance with the components set to
+	 * value.
+	 * 
+	 * <p>
+	 * This can be used for type continuety.
+	 * This way even while only using abstractions it is possible to create
+	 * new instances of the original. It is similar to the {@link Object#clone()}
+	 * function but the {@link Object#clone()} function requires the returned instance to be
+	 * writable.
+	 * This function on the other hand allows for example the usage of factories.
+	 * 
+	 * @param value The value used for all components.
+	 * 
+	 * @return A new instance of the type of the origin instance
+	 */
+	default Tup2fR getNewInstance(float value)
+	{
+		return getNewInstance(value, value);
+	}
+	
+	/**
+	 * Returns a new instance of the type of the origin instance with the components set to
+	 * the corresponding parameters.
+	 * 
+	 * <p>
+	 * This can be used for type continuety.
+	 * This way even while only using abstractions it is possible to create
+	 * new instances of the original. It is similar to the {@link Object#clone()}
+	 * function but the {@link Object#clone()} function requires the returned instance to be
+	 * writable. This function on the other hand allows for example the usage of factories.
+	 * 
+	 * @param x The value used for the x component.
+	 * @param y The value used for the y component.
+	 * 
+	 * @return A new instance of the type of the origin instance
+	 */
+	Tup2fR getNewInstance(float x, float y);
 }

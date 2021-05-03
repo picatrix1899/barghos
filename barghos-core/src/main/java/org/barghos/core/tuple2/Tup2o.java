@@ -28,8 +28,6 @@ import java.util.Map;
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple2.Tup2oR;
 import org.barghos.core.api.tuple2.Tup2oRW;
-import org.barghos.core.api.util.ArgumentNullException;
-import org.barghos.core.Barghos;
 
 /**
  * This class represents a 2-dimensional object tuple.
@@ -70,13 +68,6 @@ public class Tup2o<X,Y> implements Tup2oRW<X,Y>, FormattableToString
 	 */
 	public Tup2o(Tup2oR<X,Y> t)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(t == null) throw new ArgumentNullException("t");
-			if(t.getX() == null) throw new ArgumentNullException("t.getX()");
-			if(t.getY() == null) throw new ArgumentNullException("t.getY()");
-		}
-		
 		set(t);
 	}
 	
@@ -90,12 +81,6 @@ public class Tup2o<X,Y> implements Tup2oRW<X,Y>, FormattableToString
 	 */
 	public Tup2o(X x, Y y)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(x == null) throw new ArgumentNullException("x");
-			if(y == null) throw new ArgumentNullException("y");
-		}
-		
 		set(x, y);
 	}
 	
@@ -114,11 +99,6 @@ public class Tup2o<X,Y> implements Tup2oRW<X,Y>, FormattableToString
 	@Override
 	public Tup2o<X,Y> setX(X x)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(x == null) throw new ArgumentNullException("x");
-		}
-		
 		this.x = x;
 		
 		return this;
@@ -127,11 +107,6 @@ public class Tup2o<X,Y> implements Tup2oRW<X,Y>, FormattableToString
 	@Override
 	public Tup2o<X,Y> setY(Y y)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(y == null) throw new ArgumentNullException("y");
-		}
-		
 		this.y = y;
 		
 		return this;
@@ -140,25 +115,12 @@ public class Tup2o<X,Y> implements Tup2oRW<X,Y>, FormattableToString
 	@Override
 	public Tup2o<X,Y> set(Tup2oR<X,Y> t)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(t == null) throw new ArgumentNullException("t");
-			if(t.getX() == null) throw new ArgumentNullException("t.getX()");
-			if(t.getY() == null) throw new ArgumentNullException("t.getY()");
-		}
-		
 		return set(t.getX(), t.getY());
 	}
 	
 	@Override
 	public Tup2o<X,Y> set(X x, Y y)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(x == null) throw new ArgumentNullException("x");
-			if(y == null) throw new ArgumentNullException("y");
-		}
-		
 		return setX(x).setY(y);
 	}
 	
@@ -206,5 +168,11 @@ public class Tup2o<X,Y> implements Tup2oRW<X,Y>, FormattableToString
 		values.put("y", getY());
 		
 		return values;
+	}
+	
+	@Override
+	public Tup2o<X,Y> getNewInstance(X x, Y y)
+	{
+		return new Tup2o<>(x, y);
 	}
 }

@@ -48,4 +48,19 @@ public interface Tup3boRW extends Tup3boR, Tup3boW
 	
 	@Override
 	Tup3boRW set(boolean x, boolean y, boolean z);
+	
+	@Override
+	default Tup3boRW getNewInstance(Tup3boR t)
+	{
+		return getNewInstance(t.getX(), t.getY(), t.getZ());
+	}
+	
+	@Override
+	default Tup3boRW getNewInstance(boolean value)
+	{
+		return getNewInstance(value, value, value);
+	}
+	
+	@Override
+	Tup3boRW getNewInstance(boolean x, boolean y, boolean z);
 }

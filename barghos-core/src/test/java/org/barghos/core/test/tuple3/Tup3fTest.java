@@ -297,4 +297,21 @@ class Tup3fTest
 		assertTrue(t.equals(new Tup3f(1.2f, 3.4f, 5.6f)));
 		assertTrue(t.equals(PTup3f.gen(1.2f, 3.4f, 5.6f)));
 	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup3f#getNewInstance(float, float, float)}
+	 * returns a new instance of {@link Tup3f} with the given values.
+	 */
+	@Test
+	void getNewInstanceTest()
+	{
+		Tup3f t = new Tup3f(1.0f, 1.0f, 1.0f);
+
+		Tup3f result = t.getNewInstance(2.0f, 3.0f, 4.0f);
+		
+		assertNotSame(t, result);
+		assertEquals(2.0f, result.getX());
+		assertEquals(3.0f, result.getY());
+		assertEquals(4.0f, result.getZ());
+	}
 }

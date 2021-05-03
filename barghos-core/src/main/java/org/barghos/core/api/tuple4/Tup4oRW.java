@@ -48,4 +48,13 @@ public interface Tup4oRW<X,Y,Z,W> extends Tup4oR<X,Y,Z,W>, Tup4oW<X,Y,Z,W>
 	
 	@Override
 	Tup4oRW<X,Y,Z,W> set(X x, Y y, Z z, W w);
+	
+	@Override
+	default Tup4oRW<X,Y,Z,W> getNewInstance(Tup4oR<X,Y,Z,W> t)
+	{
+		return getNewInstance(t.getX(), t.getY(), t.getZ(), t.getW());
+	}
+	
+	@Override
+	Tup4oRW<X,Y,Z,W> getNewInstance(X x, Y y, Z z, W w);
 }

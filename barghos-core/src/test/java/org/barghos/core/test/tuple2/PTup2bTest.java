@@ -140,4 +140,20 @@ class PTup2bTest
 		assertTrue(t.equals(new Tup2b((byte)1, (byte)2)));
 		assertTrue(t.equals(PTup2b.gen((byte)1, (byte)2)));	
 	}
+	
+	/**
+	 * This test ensures, that the function {@link PTup2b#getNewInstance(byte, byte)}
+	 * returns a new instance of {@link PTup2b} with the given values.
+	 */
+	@Test
+	void getNewInstanceTest()
+	{
+		PTup2b t = PTup2b.gen((byte)1, (byte)1);
+
+		PTup2b result = t.getNewInstance((byte)2, (byte)3);
+		
+		assertNotSame(t, result);
+		assertEquals((byte)2, result.getX());
+		assertEquals((byte)3, result.getY());
+	}
 }

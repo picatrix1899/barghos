@@ -27,8 +27,6 @@ import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple2.Tup2iR;
-import org.barghos.core.api.util.ArgumentNullException;
-import org.barghos.core.Barghos;
 
 /**
  * Represents a persistent 2-dimensional integer tuple.
@@ -63,11 +61,6 @@ public abstract class PTup2i implements Tup2iR, FormattableToString
 	 */
 	public static PTup2i gen(Tup2iR t)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(t == null) throw new ArgumentNullException("t");
-		}
-		
 		return gen(t.getX(), t.getY());
 	}
 	
@@ -145,5 +138,11 @@ public abstract class PTup2i implements Tup2iR, FormattableToString
 		values.put("y", getY());
 		
 		return values;
+	}
+	
+	@Override
+	public PTup2i getNewInstance(int x, int y)
+	{
+		return gen(x, y);
 	}
 }

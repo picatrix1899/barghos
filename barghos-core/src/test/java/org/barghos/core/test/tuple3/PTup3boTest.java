@@ -142,4 +142,21 @@ class PTup3boTest
 		assertTrue(t.equals(new Tup3bo(false, true, false)));
 		assertTrue(t.equals(PTup3bo.gen(false, true, false)));	
 	}
+	
+	/**
+	 * This test ensures, that the function {@link PTup3bo#getNewInstance(boolean, boolean, boolean)}
+	 * returns a new instance of {@link PTup3bo} with the given values.
+	 */
+	@Test
+	void getNewInstanceTest()
+	{
+		PTup3bo t = PTup3bo.gen(false, true, false);
+
+		PTup3bo result = t.getNewInstance(true, false, true);
+		
+		assertNotSame(t, result);
+		assertEquals(true, result.getX());
+		assertEquals(false, result.getY());
+		assertEquals(true, result.getZ());
+	}
 }

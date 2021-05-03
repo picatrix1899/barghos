@@ -48,4 +48,19 @@ public interface Tup3sRW extends Tup3sR, Tup3sW
 	
 	@Override
 	Tup3sRW set(short x, short y, short z);
+	
+	@Override
+	default Tup3sRW getNewInstance(Tup3sR t)
+	{
+		return getNewInstance(t.getX(), t.getY(), t.getZ());
+	}
+	
+	@Override
+	default Tup3sRW getNewInstance(short value)
+	{
+		return getNewInstance(value, value, value);
+	}
+	
+	@Override
+	Tup3sRW getNewInstance(short x, short y, short z);
 }

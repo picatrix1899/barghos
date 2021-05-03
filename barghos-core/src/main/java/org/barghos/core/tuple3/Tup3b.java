@@ -228,4 +228,10 @@ public class Tup3b implements Tup3bRW, Serializable, FormattableToString
 		
 		return values;
 	}
+	
+	@Override
+	public Tup3b getNewInstance(byte x, byte y, byte z)
+	{
+		return new Tup3b(x, y, z);
+	}
 }

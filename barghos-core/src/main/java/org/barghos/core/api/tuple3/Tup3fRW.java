@@ -48,4 +48,19 @@ public interface Tup3fRW extends Tup3fR, Tup3fW
 	
 	@Override
 	Tup3fRW set(float x, float y, float z);
+	
+	@Override
+	default Tup3fRW getNewInstance(Tup3fR t)
+	{
+		return getNewInstance(t.getX(), t.getY(), t.getZ());
+	}
+	
+	@Override
+	default Tup3fRW getNewInstance(float value)
+	{
+		return getNewInstance(value, value, value);
+	}
+	
+	@Override
+	Tup3fRW getNewInstance(float x, float y, float z);
 }

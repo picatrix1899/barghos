@@ -47,4 +47,19 @@ public interface Tup2bigdRW extends Tup2bigdR, Tup2bigdW
 	
 	@Override
 	Tup2bigdRW set(BigDecimal x, BigDecimal y);
+
+	@Override
+	default Tup2bigdRW getNewInstance(Tup2bigdR t)
+	{
+		return getNewInstance(t.getX(), t.getY());
+	}
+	
+	@Override
+	default Tup2bigdRW getNewInstance(BigDecimal value)
+	{
+		return getNewInstance(value, value);
+	}
+	
+	@Override
+	Tup2bigdRW getNewInstance(BigDecimal x, BigDecimal y);
 }

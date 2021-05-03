@@ -251,4 +251,10 @@ public class Tup4i implements Tup4iRW, Serializable, FormattableToString
 		
 		return values;
 	}
+	
+	@Override
+	public Tup4i getNewInstance(int x, int y, int z, int w)
+	{
+		return new Tup4i(x, y, z, w);
+	}
 }
