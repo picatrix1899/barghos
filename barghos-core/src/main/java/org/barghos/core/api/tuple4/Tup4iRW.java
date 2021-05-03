@@ -51,4 +51,19 @@ public interface Tup4iRW extends Tup4iR, Tup4iW
 	
 	@Override
 	Tup4iRW set(int x, int y, int z, int w);
+	
+	@Override
+	default Tup4iRW getNewInstance(Tup4iR t)
+	{
+		return getNewInstance(t.getX(), t.getY(), t.getZ(), t.getW());
+	}
+	
+	@Override
+	default Tup4iRW getNewInstance(int value)
+	{
+		return getNewInstance(value, value, value, value);
+	}
+	
+	@Override
+	Tup4iRW getNewInstance(int x, int y, int z, int w);
 }

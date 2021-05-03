@@ -169,4 +169,16 @@ public abstract class PHDRColor4 implements HDRColor4R
 			public int getA() { return a; }
 		};
 	}
+	
+	@Override
+	public PHDRColor4 getNewInstance(float x, float y, float z)
+	{
+		return gen(x, y, z, 1.0f);
+	}
+	
+	@Override
+	public PHDRColor4 getNewInstance(float x, float y, float z, float w)
+	{
+		return gen(x, y, z, w);
+	}
 }

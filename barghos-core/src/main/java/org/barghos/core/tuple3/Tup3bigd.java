@@ -277,4 +277,10 @@ public class Tup3bigd implements Tup3bigdRW, Serializable, FormattableToString
 		
 		return values;
 	}
+	
+	@Override
+	public Tup3bigd getNewInstance(BigDecimal x, BigDecimal y, BigDecimal z)
+	{
+		return new Tup3bigd(x, y, z);
+	}
 }

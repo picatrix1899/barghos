@@ -51,4 +51,19 @@ public interface Tup4lRW extends Tup4lR, Tup4lW
 	
 	@Override
 	Tup4lRW set(long x, long y, long z, long w);
+	
+	@Override
+	default Tup4lRW getNewInstance(Tup4lR t)
+	{
+		return getNewInstance(t.getX(), t.getY(), t.getZ(), t.getW());
+	}
+	
+	@Override
+	default Tup4lRW getNewInstance(long value)
+	{
+		return getNewInstance(value, value, value, value);
+	}
+	
+	@Override
+	Tup4lRW getNewInstance(long x, long y, long z, long w);
 }

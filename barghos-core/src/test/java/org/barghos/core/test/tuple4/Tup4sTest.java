@@ -336,4 +336,22 @@ class Tup4sTest
 		assertTrue(t.equals(new Tup4s((short)1, (short)2, (short)3, (short)4)));
 		assertTrue(t.equals(PTup4s.gen((short)1, (short)2, (short)3, (short)4)));
 	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4s#getNewInstance(short, short, short, short)}
+	 * returns a new instance of {@link Tup4s} with the given values.
+	 */
+	@Test
+	void getNewInstanceTest()
+	{
+		Tup4s t = new Tup4s((short)1, (short)1, (short)1, (short)1);
+
+		Tup4s result = t.getNewInstance((short)2, (short)3, (short)4, (short)5);
+		
+		assertNotSame(t, result);
+		assertEquals((short)2, result.getX());
+		assertEquals((short)3, result.getY());
+		assertEquals((short)4, result.getZ());
+		assertEquals((short)5, result.getW());
+	}
 }

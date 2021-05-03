@@ -28,8 +28,6 @@ import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple2.Tup2bigiR;
-import org.barghos.core.api.util.ArgumentNullException;
-import org.barghos.core.Barghos;
 
 /**
  * Represents a persistent 2-dimensional big integer tuple.
@@ -64,13 +62,6 @@ public abstract class PTup2bigi implements Tup2bigiR, FormattableToString
 	 */
 	public static PTup2bigi gen(Tup2bigiR t)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(t == null) throw new ArgumentNullException("t");
-			if(t.getX() == null) throw new ArgumentNullException("t.getX()");
-			if(t.getY() == null) throw new ArgumentNullException("t.getY()");
-		}
-		
 		return gen(t.getX(), t.getY());
 	}
 	
@@ -85,11 +76,6 @@ public abstract class PTup2bigi implements Tup2bigiR, FormattableToString
 	 */
 	public static PTup2bigi gen(BigInteger value)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(value == null) throw new ArgumentNullException("value");
-		}
-		
 		return gen(value, value);
 	}
 	
@@ -105,12 +91,6 @@ public abstract class PTup2bigi implements Tup2bigiR, FormattableToString
 	 */
 	public static PTup2bigi gen(BigInteger x, BigInteger y)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(x == null) throw new ArgumentNullException("x");
-			if(y == null) throw new ArgumentNullException("y");
-		}
-		
 		return new PTup2bigi()
 		{
 			@Override
@@ -159,5 +139,11 @@ public abstract class PTup2bigi implements Tup2bigiR, FormattableToString
 		values.put("y", getY());
 		
 		return values;
+	}
+	
+	@Override
+	public PTup2bigi getNewInstance(BigInteger x, BigInteger y)
+	{
+		return gen(x, y);
 	}
 }

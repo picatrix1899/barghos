@@ -167,4 +167,10 @@ public abstract class PTup3obj implements Tup3objR, FormattableToString
 		
 		return values;
 	}
+	
+	@Override
+	public PTup3obj getNewInstance(Object x, Object y, Object z)
+	{
+		return gen(x, y, z);
+	}
 }

@@ -228,4 +228,10 @@ public class Tup3l implements Tup3lRW, Serializable, FormattableToString
 		
 		return values;
 	}
+	
+	@Override
+	public Tup3l getNewInstance(long x, long y, long z)
+	{
+		return new Tup3l(x, y, z);
+	}
 }

@@ -142,4 +142,21 @@ class PTup3sTest
 		assertTrue(t.equals(new Tup3s((short)1, (short)2, (short)3)));
 		assertTrue(t.equals(PTup3s.gen((short)1, (short)2, (short)3)));	
 	}
+	
+	/**
+	 * This test ensures, that the function {@link PTup3s#getNewInstance(short, short, short)}
+	 * returns a new instance of {@link PTup3s} with the given values.
+	 */
+	@Test
+	void getNewInstanceTest()
+	{
+		PTup3s t = PTup3s.gen((short)1, (short)1, (short)1);
+		
+		PTup3s result = t.getNewInstance((short)2, (short)3, (short)4);
+		
+		assertNotSame(t, result);
+		assertEquals((short)2, result.getX());
+		assertEquals((short)3, result.getY());
+		assertEquals((short)4, result.getZ());
+	}
 }

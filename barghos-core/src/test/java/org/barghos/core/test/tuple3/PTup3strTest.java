@@ -142,4 +142,21 @@ class PTup3strTest
 		assertTrue(t.equals(new Tup3str("arg1", "arg2", "arg3")));
 		assertTrue(t.equals(PTup3str.gen("arg1", "arg2", "arg3")));	
 	}
+	
+	/**
+	 * This test ensures, that the function {@link PTup3str#getNewInstance(String, String, String)}
+	 * returns a new instance of {@link PTup3str} with the given values.
+	 */
+	@Test
+	void getNewInstanceTest()
+	{
+		PTup3str t = PTup3str.gen("a", "a", "a");
+
+		PTup3str result = t.getNewInstance("b", "c", "d");
+		
+		assertNotSame(t, result);
+		assertEquals("b", result.getX());
+		assertEquals("c", result.getY());
+		assertEquals("d", result.getZ());
+	}
 }

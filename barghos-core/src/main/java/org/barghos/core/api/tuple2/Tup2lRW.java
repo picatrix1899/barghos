@@ -45,4 +45,19 @@ public interface Tup2lRW extends Tup2lR, Tup2lW
 	
 	@Override
 	Tup2lRW set(long x, long y);
+	
+	@Override
+	default Tup2lR getNewInstance(Tup2lR t)
+	{
+		return getNewInstance(t.getX(), t.getY());
+	}
+	
+	@Override
+	default Tup2lR getNewInstance(long value)
+	{
+		return getNewInstance(value, value);
+	}
+	
+	@Override
+	Tup2lR getNewInstance(long x, long y);
 }

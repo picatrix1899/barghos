@@ -502,6 +502,18 @@ public class LDRColor4 implements LDRColor4R
 		return Math.round(this.a * 255);
 	}
 	
+	@Override
+	public LDRColor4 getNewInstance(float x, float y, float z)
+	{
+		return new LDRColor4(x, y, z, 1.0f);
+	}
+	
+	@Override
+	public LDRColor4 getNewInstance(float x, float y, float z, float w)
+	{
+		return new LDRColor4(x, y, z, w);
+	}
+	
 	/**
 	 * Clamps the float value to unit space from 0.0 to 1.0.
 	 * 

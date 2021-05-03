@@ -51,4 +51,19 @@ public interface Tup4objRW extends Tup4objR, Tup4objW
 	
 	@Override
 	Tup4objRW set(Object x, Object y, Object z, Object w);
+	
+	@Override
+	default Tup4objRW getNewInstance(Tup4objR t)
+	{
+		return getNewInstance(t.getX(), t.getY(), t.getZ(), t.getW());
+	}
+	
+	@Override
+	default Tup4objRW getNewInstance(Object value)
+	{
+		return getNewInstance(value, value, value, value);
+	}
+	
+	@Override
+	Tup4objRW getNewInstance(Object x, Object y, Object z, Object w);
 }

@@ -159,4 +159,10 @@ public abstract class PTup4c implements Tup4cR, FormattableToString
 		
 		return values;
 	}
+	
+	@Override
+	public PTup4c getNewInstance(char x, char y, char z, char w)
+	{
+		return gen(x, y, z, w);
+	}
 }

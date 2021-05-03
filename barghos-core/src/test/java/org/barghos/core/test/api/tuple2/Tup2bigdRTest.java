@@ -2,6 +2,7 @@ package org.barghos.core.test.api.tuple2;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -16,6 +17,15 @@ import org.barghos.core.api.tuple2.Tup2bigdR;
  */
 class Tup2bigdRTest
 {
+	/**
+	 * This method is called after each test in this class.
+	 */
+	@AfterEach
+	void cleanup()
+	{
+		ValueRelay.clear();
+	}
+	
 	/**
 	 * This test ensures, that the function {@link Tup2bigdR#isValid()} returns
 	 * the corrct values for different situations.
@@ -45,19 +55,9 @@ class Tup2bigdRTest
 	@Test
 	void isFiniteTest()
 	{
-		Tup2bigdR t = new Tup2bigdR() {
-			public BigDecimal getX()
-			{
-				ValueRelay.relayCall("getX");
-				return null;
-			}
-
-			public BigDecimal getY()
-			{
-				ValueRelay.relayCall("getY");
-				return null;
-			}
-		};
+		final BigDecimal zero = BigDecimal.ZERO;
+		
+		Tup2bigdR t = new TestTup(zero, zero);
 		
 		assertEquals(true, t.isFinite());
 		assertEquals(false, ValueRelay.get("getX", false));
@@ -117,6 +117,51 @@ class Tup2bigdRTest
 	}
 	
 	/**
+	 * This test ensures, that the default implementation of the function {@link Tup2bigdR#getNewInstance(Tup2bigdR)} calls
+	 * the function {@link Tup2bigdR#getNewInstance(BigDecimal, BigDecimal)} with the correct components.
+	 */
+	@Test
+	void getNewInstance_TupleTest()
+	{
+		final BigDecimal zero = BigDecimal.ZERO;
+		final BigDecimal one = BigDecimal.ONE;
+		final BigDecimal two = BigDecimal.valueOf(2.0);
+		final BigDecimal three = BigDecimal.valueOf(3.0);
+		
+		Tup2bigdR t = new TestTup(one, one);
+		
+		t.getNewInstance(new TestTup(two, three));
+		
+		assertEquals(true, ValueRelay.get("getNewInstanceC", false));
+		assertEquals(two, ValueRelay.get("getNewInstanceC_X", zero));
+		assertEquals(three, ValueRelay.get("getNewInstanceC_Y", zero));
+		
+		// Can't test for the result here, as the relaying and adopting of the values are implementation specific.
+	}
+	
+	/**
+	 * This test ensures, that the default implementation of the function {@link Tup2bigdR#getNewInstance(BigDecimal)} calls
+	 * the function {@link Tup2bigdR#getNewInstance(BigDecimal, BigDecimal)} with the correct components.
+	 */
+	@Test
+	void getNewInstance_ValueTest()
+	{
+		final BigDecimal zero = BigDecimal.ZERO;
+		final BigDecimal one = BigDecimal.ONE;
+		final BigDecimal two = BigDecimal.valueOf(2.0);
+
+		Tup2bigdR t = new TestTup(one, one);
+		
+		t.getNewInstance(two);
+		
+		assertEquals(true, ValueRelay.get("getNewInstanceC", false));
+		assertEquals(two, ValueRelay.get("getNewInstanceC_X", zero));
+		assertEquals(two, ValueRelay.get("getNewInstanceC_Y", zero));
+		
+		// Can't test for the result here, as the relaying and adopting of the values are implementation specific.
+	}
+	
+	/**
 	 * This class is a test implementation of the interface {@link Tup2bigdR}.
 	 * 
 	 * @author picatrix1899
@@ -135,13 +180,24 @@ class Tup2bigdRTest
 		@Override
 		public BigDecimal getX()
 		{
+			ValueRelay.relayCall("getX");
 			return this.x;
 		}
 		
 		@Override
 		public BigDecimal getY()
 		{
+			ValueRelay.relayCall("getY");
 			return this.y;
+		}
+		
+		@Override
+		public TestTup getNewInstance(BigDecimal x, BigDecimal y)
+		{
+			ValueRelay.relayCall("getNewInstanceC");
+			ValueRelay.relay("getNewInstanceC_X", x);
+			ValueRelay.relay("getNewInstanceC_Y", y);
+			return new TestTup(x, y);
 		}
 	}
 }

@@ -251,4 +251,10 @@ public class Tup4c implements Tup4cRW, Serializable, FormattableToString
 		
 		return values;
 	}
+	
+	@Override
+	public Tup4c getNewInstance(char x, char y, char z, char w)
+	{
+		return new Tup4c(x, y, z, w);
+	}
 }

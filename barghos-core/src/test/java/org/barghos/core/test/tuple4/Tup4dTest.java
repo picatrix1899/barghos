@@ -336,4 +336,22 @@ class Tup4dTest
 		assertTrue(t.equals(new Tup4d(1.2, 3.4, 5.6, 7.8)));
 		assertTrue(t.equals(PTup4d.gen(1.2, 3.4, 5.6, 7.8)));
 	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4d#getNewInstance(double, double, double, double)}
+	 * returns a new instance of {@link Tup4d} with the given values.
+	 */
+	@Test
+	void getNewInstanceTest()
+	{
+		Tup4d t = new Tup4d(1.0, 1.0, 1.0, 1.0);
+
+		Tup4d result = t.getNewInstance(2.0, 3.0, 4.0, 5.0);
+		
+		assertNotSame(t, result);
+		assertEquals(2.0, result.getX());
+		assertEquals(3.0, result.getY());
+		assertEquals(4.0, result.getZ());
+		assertEquals(5.0, result.getW());
+	}
 }

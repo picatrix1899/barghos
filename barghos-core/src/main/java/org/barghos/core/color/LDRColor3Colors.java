@@ -45,6 +45,12 @@ public enum LDRColor3Colors implements LDRColor3R
 		public float getUnityR() { return 1; }
 		public float getUnityG() { return 1; }
 		public float getUnityB() { return 1; }
+		
+		@Override
+		public LDRColor3R getNewInstance(float x, float y, float z)
+		{
+			return new LDRColor3(x, y, z);
+		}
 	},
 	
 	/**
@@ -59,6 +65,12 @@ public enum LDRColor3Colors implements LDRColor3R
 		public float getUnityR() { return 0; }
 		public float getUnityG() { return 0; }
 		public float getUnityB() { return 0; }
+		
+		@Override
+		public LDRColor3R getNewInstance(float x, float y, float z)
+		{
+			return new LDRColor3(x, y, z);
+		}
 	},
 	
 	/**
@@ -73,6 +85,12 @@ public enum LDRColor3Colors implements LDRColor3R
 		public float getUnityR() { return 1; }
 		public float getUnityG() { return 0; }
 		public float getUnityB() { return 0; }
+		
+		@Override
+		public LDRColor3R getNewInstance(float x, float y, float z)
+		{
+			return new LDRColor3(x, y, z);
+		}
 	},
 	
 	/**
@@ -87,6 +105,12 @@ public enum LDRColor3Colors implements LDRColor3R
 		public float getUnityR() { return 0; }
 		public float getUnityG() { return 1; }
 		public float getUnityB() { return 0; }
+		
+		@Override
+		public LDRColor3R getNewInstance(float x, float y, float z)
+		{
+			return new LDRColor3(x, y, z);
+		}
 	},
 	
 	/**
@@ -101,6 +125,12 @@ public enum LDRColor3Colors implements LDRColor3R
 		public float getUnityR() { return 0; }
 		public float getUnityG() { return 0; }
 		public float getUnityB() { return 1; }
+		
+		@Override
+		public LDRColor3R getNewInstance(float x, float y, float z)
+		{
+			return new LDRColor3(x, y, z);
+		}
 	},
 	
 	/** 
@@ -115,6 +145,12 @@ public enum LDRColor3Colors implements LDRColor3R
 		public float getUnityR() { return 1; }
 		public float getUnityG() { return 1; }
 		public float getUnityB() { return 0; }
+		
+		@Override
+		public LDRColor3R getNewInstance(float x, float y, float z)
+		{
+			return new LDRColor3(x, y, z);
+		}
 	},
 	
 	/**
@@ -127,6 +163,12 @@ public enum LDRColor3Colors implements LDRColor3R
 		public int getG() { return 0; }
 		public int getB() { return 128; }
 		public float getUnityG() { return 0; }
+		
+		@Override
+		public LDRColor3R getNewInstance(float x, float y, float z)
+		{
+			return new LDRColor3(x, y, z);
+		}
 	},
 	
 	/** 
@@ -140,6 +182,12 @@ public enum LDRColor3Colors implements LDRColor3R
 		public int getB() { return 0; }
 		public float getUnityR() { return 1; }
 		public float getUnityB() { return 0; }
+		
+		@Override
+		public LDRColor3R getNewInstance(float x, float y, float z)
+		{
+			return new LDRColor3(x, y, z);
+		}
 	},
 	
 	/**
@@ -153,6 +201,12 @@ public enum LDRColor3Colors implements LDRColor3R
 		public int getB() { return 0; }
 		public float getUnityR() { return 1; }
 		public float getUnityB() { return 0; }
+		
+		@Override
+		public LDRColor3R getNewInstance(float x, float y, float z)
+		{
+			return new LDRColor3(x, y, z);
+		}
 	},
 	
 	/** 
@@ -164,6 +218,12 @@ public enum LDRColor3Colors implements LDRColor3R
 		public int getR() { return 128; }
 		public int getG() { return 128; }
 		public int getB() { return 128; }
+		
+		@Override
+		public LDRColor3R getNewInstance(float x, float y, float z)
+		{
+			return new LDRColor3(x, y, z);
+		}
 	},
 ;
 	

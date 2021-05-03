@@ -433,4 +433,10 @@ public class HDRColor3 implements HDRColor3R
 	{
 		return Math.round(this.b * 255);
 	}
+	
+	@Override
+	public HDRColor3 getNewInstance(float x, float y, float z)
+	{
+		return new HDRColor3(x, y, z);
+	}
 }

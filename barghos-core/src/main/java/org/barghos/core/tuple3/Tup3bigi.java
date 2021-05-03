@@ -277,4 +277,10 @@ public class Tup3bigi implements Tup3bigiRW, Serializable, FormattableToString
 		
 		return values;
 	}
+	
+	@Override
+	public Tup3bigi getNewInstance(BigInteger x, BigInteger y, BigInteger z)
+	{
+		return new Tup3bigi(x, y, z);
+	}
 }

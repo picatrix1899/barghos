@@ -31,4 +31,19 @@ public interface Tup4bigdRW extends Tup4bigdR, Tup4bigdW
 	
 	@Override
 	Tup4bigdRW set(BigDecimal x, BigDecimal y, BigDecimal z, BigDecimal w);
+	
+	@Override
+	default Tup4bigdRW getNewInstance(Tup4bigdR t)
+	{
+		return getNewInstance(t.getX(), t.getY(), t.getZ(), t.getW());
+	}
+	
+	@Override
+	default Tup4bigdRW getNewInstance(BigDecimal value)
+	{
+		return getNewInstance(value, value, value, value);
+	}
+	
+	@Override
+	Tup4bigdRW getNewInstance(BigDecimal x, BigDecimal y, BigDecimal z, BigDecimal w);
 }

@@ -168,4 +168,10 @@ public abstract class PTup4o<X,Y,Z,W> implements Tup4oR<X,Y,Z,W>, FormattableToS
 		
 		return values;
 	}
+	
+	@Override
+	public PTup4o<X,Y,Z,W> getNewInstance(X x, Y y, Z z, W w)
+	{
+		return gen(x, y, z, w);
+	}
 }

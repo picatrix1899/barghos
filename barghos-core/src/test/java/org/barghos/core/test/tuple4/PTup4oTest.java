@@ -129,4 +129,22 @@ class PTup4oTest
 		assertTrue(t.equals(new Tup4o<>(1, "arg2", 3.3, 'd')));
 		assertTrue(t.equals(PTup4o.gen(1, "arg2", 3.3, 'd')));	
 	}
+	
+	/**
+	 * This test ensures, that the function {@link PTup4o#getNewInstance(Object, Object, Object, Object)}
+	 * returns a new instance of {@link PTup4o} with the given values.
+	 */
+	@Test
+	void getNewInstanceTest()
+	{
+		PTup4o<Long,Long,Long,Long> t = PTup4o.gen(1l, 1l, 1l, 1l);
+
+		PTup4o<Long,Long,Long,Long> result = t.getNewInstance(2l, 3l, 4l, 5l);
+		
+		assertNotSame(t, result);
+		assertEquals(2l, (long)result.getX());
+		assertEquals(3l, (long)result.getY());
+		assertEquals(4l, (long)result.getZ());
+		assertEquals(5l, (long)result.getW());
+	}
 }

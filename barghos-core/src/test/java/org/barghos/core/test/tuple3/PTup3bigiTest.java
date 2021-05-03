@@ -144,4 +144,21 @@ class PTup3bigiTest
 		assertTrue(t.equals(new Tup3bigi(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3))));
 		assertTrue(t.equals(PTup3bigi.gen(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3))));	
 	}
+	
+	/**
+	 * This test ensures, that the function {@link PTup3bigi#getNewInstance(BigInteger, BigInteger, BigInteger)}
+	 * returns a new instance of {@link PTup3bigi} with the given values.
+	 */
+	@Test
+	void getNewInstanceTest()
+	{
+		PTup3bigi t = PTup3bigi.gen(BigInteger.valueOf(1), BigInteger.valueOf(1), BigInteger.valueOf(1));
+
+		PTup3bigi result = t.getNewInstance(BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4));
+		
+		assertNotSame(t, result);
+		assertEquals(BigInteger.valueOf(2), result.getX());
+		assertEquals(BigInteger.valueOf(3), result.getY());
+		assertEquals(BigInteger.valueOf(4), result.getZ());
+	}
 }

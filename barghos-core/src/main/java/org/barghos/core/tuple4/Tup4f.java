@@ -251,4 +251,10 @@ public class Tup4f implements Tup4fRW, Serializable, FormattableToString
 		
 		return values;
 	}
+	
+	@Override
+	public Tup4f getNewInstance(float x, float y, float z, float w)
+	{
+		return new Tup4f(x, y, z, w);
+	}
 }

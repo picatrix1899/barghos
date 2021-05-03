@@ -148,4 +148,22 @@ class PTup4bigdTest
 		assertTrue(t.equals(new Tup4bigd(BigDecimal.valueOf(1.1), BigDecimal.valueOf(2.2), BigDecimal.valueOf(3.3), BigDecimal.valueOf(4.4))));
 		assertTrue(t.equals(PTup4bigd.gen(BigDecimal.valueOf(1.1), BigDecimal.valueOf(2.2), BigDecimal.valueOf(3.3), BigDecimal.valueOf(4.4))));	
 	}
+	
+	/**
+	 * This test ensures, that the function {@link PTup4bigd#getNewInstance(BigDecimal, BigDecimal, BigDecimal, BigDecimal)}
+	 * returns a new instance of {@link PTup4bigd} with the given values.
+	 */
+	@Test
+	void getNewInstanceTest()
+	{
+		PTup4bigd t = PTup4bigd.gen(BigDecimal.valueOf(1.0), BigDecimal.valueOf(1.0), BigDecimal.valueOf(1.0), BigDecimal.valueOf(1.0));
+
+		PTup4bigd result = t.getNewInstance(BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0), BigDecimal.valueOf(4.0), BigDecimal.valueOf(5.0));
+		
+		assertNotSame(t, result);
+		assertEquals(BigDecimal.valueOf(2.0), result.getX());
+		assertEquals(BigDecimal.valueOf(3.0), result.getY());
+		assertEquals(BigDecimal.valueOf(4.0), result.getZ());
+		assertEquals(BigDecimal.valueOf(5.0), result.getW());
+	}
 }

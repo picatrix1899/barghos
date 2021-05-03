@@ -45,4 +45,19 @@ public interface Tup2dRW extends Tup2dR, Tup2dW
 	
 	@Override
 	Tup2dRW set(double x, double y);
+	
+	@Override
+	default Tup2dRW getNewInstance(Tup2dR t)
+	{
+		return getNewInstance(t.getX(), t.getY());
+	}
+	
+	@Override
+	default Tup2dRW getNewInstance(double value)
+	{
+		return getNewInstance(value, value);
+	}
+	
+	@Override
+	Tup2dRW getNewInstance(double x, double y);
 }

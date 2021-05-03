@@ -27,8 +27,6 @@ import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple2.Tup2objR;
-import org.barghos.core.api.util.ArgumentNullException;
-import org.barghos.core.Barghos;
 
 /**
  * Represents a persistent 2-dimensional string tuple.
@@ -63,13 +61,6 @@ public abstract class PTup2obj implements Tup2objR, FormattableToString
 	 */
 	public static PTup2obj gen(Tup2objR t)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(t == null) throw new ArgumentNullException("t");
-			if(t.getX() == null) throw new ArgumentNullException("t.getX()");
-			if(t.getY() == null) throw new ArgumentNullException("t.getY()");
-		}
-		
 		return gen(t.getX(), t.getY());
 	}
 	
@@ -84,11 +75,6 @@ public abstract class PTup2obj implements Tup2objR, FormattableToString
 	 */
 	public static PTup2obj gen(Object value)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(value == null) throw new ArgumentNullException("value");
-		}
-		
 		return gen(value, value);
 	}
 	
@@ -104,12 +90,6 @@ public abstract class PTup2obj implements Tup2objR, FormattableToString
 	 */
 	public static PTup2obj gen(Object x, Object y)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(x == null) throw new ArgumentNullException("x");
-			if(y == null) throw new ArgumentNullException("y");
-		}
-		
 		return new PTup2obj()
 		{
 			@Override
@@ -158,5 +138,11 @@ public abstract class PTup2obj implements Tup2objR, FormattableToString
 		values.put("y", getY());
 		
 		return values;
+	}
+	
+	@Override
+	public PTup2obj getNewInstance(Object x, Object y)
+	{
+		return gen(x, y);
 	}
 }

@@ -228,4 +228,10 @@ public class Tup3s implements Tup3sRW, Serializable, FormattableToString
 		
 		return values;
 	}
+	
+	@Override
+	public Tup3s getNewInstance(short x, short y, short z)
+	{
+		return new Tup3s(x, y, z);
+	}
 }

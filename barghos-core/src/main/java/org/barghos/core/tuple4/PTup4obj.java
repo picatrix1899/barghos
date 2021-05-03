@@ -176,4 +176,10 @@ public abstract class PTup4obj implements Tup4objR, FormattableToString
 		
 		return values;
 	}
+	
+	@Override
+	public PTup4obj getNewInstance(Object x, Object y, Object z, Object w)
+	{
+		return gen(x, y, z, w);
+	}
 }

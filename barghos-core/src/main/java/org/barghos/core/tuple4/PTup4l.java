@@ -159,4 +159,10 @@ public abstract class PTup4l implements Tup4lR, FormattableToString
 		
 		return values;
 	}
+	
+	@Override
+	public PTup4l getNewInstance(long x, long y, long z, long w)
+	{
+		return gen(x, y, z, w);
+	}
 }

@@ -176,4 +176,10 @@ public abstract class PTup4str implements Tup4strR, FormattableToString
 		
 		return values;
 	}
+	
+	@Override
+	public PTup4str getNewInstance(String x, String y, String z, String w)
+	{
+		return gen(x, y, z, w);
+	}
 }

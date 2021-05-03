@@ -51,4 +51,19 @@ public interface Tup4strRW extends Tup4strR, Tup4strW
 	
 	@Override
 	Tup4strRW set(String x, String y, String z, String w);
+	
+	@Override
+	default Tup4strRW getNewInstance(Tup4strR t)
+	{
+		return getNewInstance(t.getX(), t.getY(), t.getZ(), t.getW());
+	}
+	
+	@Override
+	default Tup4strRW getNewInstance(String value)
+	{
+		return getNewInstance(value, value, value, value);
+	}
+	
+	@Override
+	Tup4strRW getNewInstance(String x, String y, String z, String w);
 }

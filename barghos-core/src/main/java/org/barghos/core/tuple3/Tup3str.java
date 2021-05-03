@@ -276,4 +276,10 @@ public class Tup3str implements Tup3strRW, Serializable, FormattableToString
 		
 		return values;
 	}
+	
+	@Override
+	public Tup3str getNewInstance(String x, String y, String z)
+	{
+		return new Tup3str(x, y, z);
+	}
 }

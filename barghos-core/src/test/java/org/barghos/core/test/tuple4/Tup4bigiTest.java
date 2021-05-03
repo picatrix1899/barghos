@@ -338,4 +338,22 @@ class Tup4bigiTest
 		assertTrue(t.equals(new Tup4bigi(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4))));
 		assertTrue(t.equals(PTup4bigi.gen(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4))));
 	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4bigi#getNewInstance(BigInteger, BigInteger, BigInteger, BigInteger)}
+	 * returns a new instance of {@link Tup4bigi} with the given values.
+	 */
+	@Test
+	void getNewInstanceTest()
+	{
+		Tup4bigi t = new Tup4bigi(BigInteger.valueOf(1), BigInteger.valueOf(1), BigInteger.valueOf(1), BigInteger.valueOf(1));
+
+		Tup4bigi result = t.getNewInstance(BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4), BigInteger.valueOf(5));
+		
+		assertNotSame(t, result);
+		assertEquals(BigInteger.valueOf(2), result.getX());
+		assertEquals(BigInteger.valueOf(3), result.getY());
+		assertEquals(BigInteger.valueOf(4), result.getZ());
+		assertEquals(BigInteger.valueOf(5), result.getW());
+	}
 }

@@ -48,4 +48,19 @@ public interface Tup3dRW extends Tup3dR, Tup3dW
 	
 	@Override
 	Tup3dRW set(double x, double y, double z);
+	
+	@Override
+	default Tup3dRW getNewInstance(Tup3dR t)
+	{
+		return getNewInstance(t.getX(), t.getY(), t.getZ());
+	}
+	
+	@Override
+	default Tup3dRW getNewInstance(double value)
+	{
+		return getNewInstance(value, value, value);
+	}
+	
+	@Override
+	Tup3dRW getNewInstance(double x, double y, double z);
 }

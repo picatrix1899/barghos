@@ -142,4 +142,20 @@ class PTup2bigiTest
 		assertTrue(t.equals(new Tup2bigi(BigInteger.valueOf(1), BigInteger.valueOf(2))));
 		assertTrue(t.equals(PTup2bigi.gen(BigInteger.valueOf(1), BigInteger.valueOf(2))));	
 	}
+	
+	/**
+	 * This test ensures, that the function {@link PTup2bigi#getNewInstance(BigInteger, BigInteger)}
+	 * returns a new instance of {@link PTup2bigi} with the given values.
+	 */
+	@Test
+	void getNewInstanceTest()
+	{
+		PTup2bigi t = PTup2bigi.gen(BigInteger.valueOf(1), BigInteger.valueOf(2));
+
+		PTup2bigi result = t.getNewInstance(BigInteger.valueOf(3), BigInteger.valueOf(4));
+		
+		assertNotSame(t, result);
+		assertEquals(BigInteger.valueOf(3), result.getX());
+		assertEquals(BigInteger.valueOf(4), result.getY());
+	}
 }

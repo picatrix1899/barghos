@@ -228,4 +228,10 @@ public class Tup3c implements Tup3cRW, Serializable, FormattableToString
 		
 		return values;
 	}
+	
+	@Override
+	public Tup3c getNewInstance(char x, char y, char z)
+	{
+		return new Tup3c(x, y, z);
+	}
 }

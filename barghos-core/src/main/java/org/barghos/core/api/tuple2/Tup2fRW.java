@@ -45,4 +45,19 @@ public interface Tup2fRW extends Tup2fR, Tup2fW
 	
 	@Override
 	Tup2fRW set(float x, float y);
+	
+	@Override
+	default Tup2fRW getNewInstance(Tup2fR t)
+	{
+		return getNewInstance(t.getX(), t.getY());
+	}
+	
+	@Override
+	default Tup2fRW getNewInstance(float value)
+	{
+		return getNewInstance(value, value);
+	}
+	
+	@Override
+	Tup2fRW getNewInstance(float x, float y);
 }

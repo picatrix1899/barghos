@@ -51,4 +51,19 @@ public interface Tup4sRW extends Tup4sR, Tup4sW
 	
 	@Override
 	Tup4sRW set(short x, short y, short z, short w);
+	
+	@Override
+	default Tup4sRW getNewInstance(Tup4sR t)
+	{
+		return getNewInstance(t.getX(), t.getY(), t.getZ(), t.getW());
+	}
+	
+	@Override
+	default Tup4sRW getNewInstance(short value)
+	{
+		return getNewInstance(value, value, value, value);
+	}
+	
+	@Override
+	Tup4sRW getNewInstance(short x, short y, short z, short w);
 }

@@ -336,4 +336,22 @@ class Tup4lTest
 		assertTrue(t.equals(new Tup4l(1l, 2l, 3l, 4l)));
 		assertTrue(t.equals(PTup4l.gen(1l, 2l, 3l, 4l)));
 	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4l#getNewInstance(long, long, long, long)}
+	 * returns a new instance of {@link Tup4l} with the given values.
+	 */
+	@Test
+	void getNewInstanceTest()
+	{
+		Tup4l t = new Tup4l(1l, 1l, 1l, 1l);
+
+		Tup4l result = t.getNewInstance(2l, 3l, 4l, 5l);
+		
+		assertNotSame(t, result);
+		assertEquals(2l, result.getX());
+		assertEquals(3l, result.getY());
+		assertEquals(4l, result.getZ());
+		assertEquals(5l, result.getW());
+	}
 }

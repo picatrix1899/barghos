@@ -257,4 +257,20 @@ class Tup2dTest
 		assertTrue(t.equals(new Tup2d(1.2, 3.4)));
 		assertTrue(t.equals(PTup2d.gen(1.2, 3.4)));
 	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2d#getNewInstance(double, double)}
+	 * returns a new instance of {@link Tup2d} with the given values.
+	 */
+	@Test
+	void getNewInstanceTest()
+	{
+		Tup2d t = new Tup2d(1.0, 1.0);
+
+		Tup2d result = t.getNewInstance(2.0, 3.0);
+		
+		assertNotSame(t, result);
+		assertEquals(2.0, result.getX());
+		assertEquals(3.0, result.getY());
+	}
 }

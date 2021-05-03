@@ -177,4 +177,10 @@ public abstract class PTup4bigd implements Tup4bigdR, FormattableToString
 		
 		return values;
 	}
+	
+	@Override
+	public PTup4bigd getNewInstance(BigDecimal x, BigDecimal y, BigDecimal z, BigDecimal w)
+	{
+		return gen(x, y, z, w);
+	}
 }

@@ -48,4 +48,19 @@ public interface Tup3objRW extends Tup3objR, Tup3objW
 	
 	@Override
 	Tup3objRW set(Object x, Object y, Object z);
+	
+	@Override
+	default Tup3objRW getNewInstance(Tup3objR t)
+	{
+		return getNewInstance(t.getX(), t.getY(), t.getZ());
+	}
+	
+	@Override
+	default Tup3objRW getNewInstance(Object value)
+	{
+		return getNewInstance(value, value, value);
+	}
+	
+	@Override
+	Tup3objRW getNewInstance(Object x, Object y, Object z);
 }

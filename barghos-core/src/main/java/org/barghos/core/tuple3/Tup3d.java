@@ -231,4 +231,10 @@ public class Tup3d implements Tup3dRW, Serializable, FormattableToString
 		
 		return values;
 	}
+	
+	@Override
+	public Tup3d getNewInstance(double x, double y, double z)
+	{
+		return new Tup3d(x, y, z);
+	}
 }

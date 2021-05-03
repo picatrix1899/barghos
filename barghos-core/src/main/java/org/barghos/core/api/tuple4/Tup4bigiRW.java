@@ -53,4 +53,19 @@ public interface Tup4bigiRW extends Tup4bigiR, Tup4bigiW
 	
 	@Override
 	Tup4bigiRW set(BigInteger x, BigInteger y, BigInteger z, BigInteger w);
+	
+	@Override
+	default Tup4bigiRW getNewInstance(Tup4bigiR t)
+	{
+		return getNewInstance(t.getX(), t.getY(), t.getZ(), t.getW());
+	}
+	
+	@Override
+	default Tup4bigiRW getNewInstance(BigInteger value)
+	{
+		return getNewInstance(value, value, value, value);
+	}
+	
+	@Override
+	Tup4bigiRW getNewInstance(BigInteger x, BigInteger y, BigInteger z, BigInteger w);
 }

@@ -296,4 +296,10 @@ public class Tup4str implements Tup4strRW, Serializable, FormattableToString
 		
 		return values;
 	}
+	
+	@Override
+	public Tup4str getNewInstance(String x, String y, String z, String w)
+	{
+		return new Tup4str(x, y, z, w);
+	}
 }

@@ -51,4 +51,19 @@ public interface Tup4boRW extends Tup4boR, Tup4boW
 	
 	@Override
 	Tup4boRW set(boolean x, boolean y, boolean z, boolean w);
+	
+	@Override
+	default Tup4boRW getNewInstance(Tup4boR t)
+	{
+		return getNewInstance(t.getX(), t.getY(), t.getZ(), t.getW());
+	}
+	
+	@Override
+	default Tup4boRW getNewInstance(boolean value)
+	{
+		return getNewInstance(value, value, value, value);
+	}
+	
+	@Override
+	Tup4boRW getNewInstance(boolean x, boolean y, boolean z, boolean w);
 }

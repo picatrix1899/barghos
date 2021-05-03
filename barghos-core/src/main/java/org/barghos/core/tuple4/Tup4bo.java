@@ -251,4 +251,10 @@ public class Tup4bo implements Tup4boRW, Serializable, FormattableToString
 		
 		return values;
 	}
+	
+	@Override
+	public Tup4bo getNewInstance(boolean x, boolean y, boolean z, boolean w)
+	{
+		return new Tup4bo(x, y, z, w);
+	}
 }

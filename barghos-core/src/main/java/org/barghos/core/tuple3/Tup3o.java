@@ -241,4 +241,10 @@ public class Tup3o<X,Y,Z> implements Tup3oRW<X,Y,Z>, FormattableToString
 		
 		return values;
 	}
+	
+	@Override
+	public Tup3o<X,Y,Z> getNewInstance(X x, Y y, Z z)
+	{
+		return new Tup3o<>(x, y, z);
+	}
 }

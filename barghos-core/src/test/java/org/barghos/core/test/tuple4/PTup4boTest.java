@@ -146,4 +146,22 @@ class PTup4boTest
 		assertTrue(t.equals(new Tup4bo(false, true, false, true)));
 		assertTrue(t.equals(PTup4bo.gen(false, true, false, true)));	
 	}
+	
+	/**
+	 * This test ensures, that the function {@link PTup4bo#getNewInstance(boolean, boolean, boolean, boolean)}
+	 * returns a new instance of {@link PTup4bo} with the given values.
+	 */
+	@Test
+	void getNewInstanceTest()
+	{
+		PTup4bo t = PTup4bo.gen(false, true, false, true);
+
+		PTup4bo result = t.getNewInstance(true, false, true, false);
+		
+		assertNotSame(t, result);
+		assertEquals(true, result.getX());
+		assertEquals(false, result.getY());
+		assertEquals(true, result.getZ());
+		assertEquals(false, result.getW());
+	}
 }
