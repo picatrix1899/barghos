@@ -2,6 +2,7 @@ package org.barghos.core.test.api.tuple3;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import org.barghos.core.api.testing.ValueRelay;
@@ -15,31 +16,22 @@ import org.barghos.core.api.tuple3.Tup3iR;
 class Tup3iRTest
 {
 	/**
+	 * This method is called after each test in this class.
+	 */
+	@AfterEach
+	void cleanup()
+	{
+		ValueRelay.clear();
+	}
+	
+	/**
 	 * This test ensures, that the function {@link Tup3iR#isValid()} returns
 	 * the corrct values for different situations.
 	 */
 	@Test
 	void isValidTest()
 	{
-		Tup3iR t = new Tup3iR() {
-			public int getX()
-			{
-				ValueRelay.relayCall("getX");
-				return 0;
-			}
-
-			public int getY()
-			{
-				ValueRelay.relayCall("getY");
-				return 0;
-			}
-			
-			public int getZ()
-			{
-				ValueRelay.relayCall("getZ");
-				return 0;
-			}
-		};
+		Tup3iR t = new TestTup(0, 0, 0);
 		
 		assertEquals(true, t.isValid());
 		assertEquals(false, ValueRelay.get("getX", false));
@@ -54,25 +46,7 @@ class Tup3iRTest
 	@Test
 	void isFiniteTest()
 	{
-		Tup3iR t = new Tup3iR() {
-			public int getX()
-			{
-				ValueRelay.relayCall("getX");
-				return 0;
-			}
-
-			public int getY()
-			{
-				ValueRelay.relayCall("getY");
-				return 0;
-			}
-			
-			public int getZ()
-			{
-				ValueRelay.relayCall("getZ");
-				return 0;
-			}
-		};
+		Tup3iR t = new TestTup(0, 0, 0);
 		
 		assertEquals(true, t.isFinite());
 		assertEquals(false, ValueRelay.get("getX", false));
@@ -131,6 +105,44 @@ class Tup3iRTest
 	}
 	
 	/**
+	 * This test ensures, that the default implementation of the function {@link Tup3iR#getNewInstance(Tup3iR)} calls
+	 * the function {@link Tup3iR#getNewInstance(int, int, int)} with the correct components.
+	 */
+	@Test
+	void getNewInstance_TupleTest()
+	{
+		Tup3iR t = new TestTup(0, 0, 0);
+		
+		t.getNewInstance(new TestTup(1, 2, 3));
+		
+		assertEquals(true, ValueRelay.get("getNewInstanceC", false));
+		assertEquals(1, ValueRelay.get("getNewInstanceC_X", 0));
+		assertEquals(2, ValueRelay.get("getNewInstanceC_Y", 0));
+		assertEquals(3, ValueRelay.get("getNewInstanceC_Z", 0));
+		
+		// Can't test for the result here, as the relaying and adopting of the values are implementation specific.
+	}
+	
+	/**
+	 * This test ensures, that the default implementation of the function {@link Tup3iR#getNewInstance(int)} calls
+	 * the function {@link Tup3iR#getNewInstance(int, int, int)} with the correct components.
+	 */
+	@Test
+	void getNewInstance_ValueTest()
+	{
+		Tup3iR t = new TestTup(0, 0, 0);
+		
+		t.getNewInstance(1);
+		
+		assertEquals(true, ValueRelay.get("getNewInstanceC", false));
+		assertEquals(1, ValueRelay.get("getNewInstanceC_X", 0));
+		assertEquals(1, ValueRelay.get("getNewInstanceC_Y", 0));
+		assertEquals(1, ValueRelay.get("getNewInstanceC_Z", 0));
+		
+		// Can't test for the result here, as the relaying and adopting of the values are implementation specific.
+	}
+	
+	/**
 	 * This class is a test implementation of the interface {@link Tup3iR}.
 	 * 
 	 * @author picatrix1899
@@ -151,19 +163,32 @@ class Tup3iRTest
 		@Override
 		public int getX()
 		{
+			ValueRelay.relayCall("getX");
 			return this.x;
 		}
 		
 		@Override
 		public int getY()
 		{
+			ValueRelay.relayCall("getY");
 			return this.y;
 		}
 		
 		@Override
 		public int getZ()
 		{
+			ValueRelay.relayCall("getZ");
 			return this.z;
+		}
+		
+		@Override
+		public TestTup getNewInstance(int x, int y, int z)
+		{
+			ValueRelay.relayCall("getNewInstanceC");
+			ValueRelay.relay("getNewInstanceC_X", x);
+			ValueRelay.relay("getNewInstanceC_Y", y);
+			ValueRelay.relay("getNewInstanceC_Z", z);
+			return new TestTup(x, y, z);
 		}
 	}
 }

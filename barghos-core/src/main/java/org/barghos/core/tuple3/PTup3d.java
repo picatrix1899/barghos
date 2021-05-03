@@ -155,4 +155,10 @@ public abstract class PTup3d implements Tup3dR, FormattableToString
 		
 		return values;
 	}
+	
+	@Override
+	public PTup3d getNewInstance(double x, double y, double z)
+	{
+		return gen(x, y, z);
+	}
 }

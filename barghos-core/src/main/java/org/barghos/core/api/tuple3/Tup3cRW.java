@@ -48,4 +48,19 @@ public interface Tup3cRW extends Tup3cR, Tup3cW
 	
 	@Override
 	Tup3cRW set(char x, char y, char z);
+	
+	@Override
+	default Tup3cRW getNewInstance(Tup3cR t)
+	{
+		return getNewInstance(t.getX(), t.getY(), t.getZ());
+	}
+	
+	@Override
+	default Tup3cRW getNewInstance(char value)
+	{
+		return getNewInstance(value, value, value);
+	}
+	
+	@Override
+	Tup3cRW getNewInstance(char x, char y, char z);
 }

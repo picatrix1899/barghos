@@ -2,8 +2,10 @@ package org.barghos.core.test.api.tuple4;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
+import org.barghos.core.api.testing.ValueRelay;
 import org.barghos.core.api.tuple4.Tup4oR;
 
 /**
@@ -13,6 +15,15 @@ import org.barghos.core.api.tuple4.Tup4oR;
  */
 class Tup4oRTest
 {
+	/**
+	 * This method is called after each test in this class.
+	 */
+	@AfterEach
+	void cleanup()
+	{
+		ValueRelay.clear();
+	}
+	
 	/**
 	 * This test ensures, that the function {@link Tup4oR#isValid()} returns
 	 * the corrct values for different situations.
@@ -37,6 +48,26 @@ class Tup4oRTest
 		
 		t = new TestTup<>(new Object(), new Object(), new Object(), new Object());
 		assertEquals(true, t.isValid());
+	}
+	
+	/**
+	 * This test ensures, that the default implementation of the function {@link Tup4oR#getNewInstance(Tup4oR)} calls
+	 * the function {@link Tup4oR#getNewInstance(Object, Object, Object, Object)} with the correct components.
+	 */
+	@Test
+	void getNewInstance_TupleTest()
+	{
+		Tup4oR<Long,Long,Long,Long> t = new TestTup<>(1l, 1l, 1l, 1l);
+		
+		t.getNewInstance(new TestTup<>(2l, 3l, 4l, 5l));
+		
+		assertEquals(true, ValueRelay.get("getNewInstanceC", false));
+		assertEquals(2l, ValueRelay.get("getNewInstanceC_X", 0l));
+		assertEquals(3l, ValueRelay.get("getNewInstanceC_Y", 0l));
+		assertEquals(4l, ValueRelay.get("getNewInstanceC_Z", 0l));
+		assertEquals(5l, ValueRelay.get("getNewInstanceC_W", 0l));
+		
+		// Can't test for the result here, as the relaying and adopting of the values are implementation specific.
 	}
 	
 	/**
@@ -81,6 +112,17 @@ class Tup4oRTest
 		public W getW()
 		{
 			return this.w;
+		}
+		
+		@Override
+		public TestTup<X,Y,Z,W> getNewInstance(X x, Y y, Z z, W w)
+		{
+			ValueRelay.relayCall("getNewInstanceC");
+			ValueRelay.relay("getNewInstanceC_X", x);
+			ValueRelay.relay("getNewInstanceC_Y", y);
+			ValueRelay.relay("getNewInstanceC_Z", z);
+			ValueRelay.relay("getNewInstanceC_W", w);
+			return new TestTup<>(x, y, z, w);
 		}
 	}
 }

@@ -2,6 +2,7 @@ package org.barghos.core.test.api.tuple4;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import org.barghos.core.api.testing.ValueRelay;
@@ -15,37 +16,22 @@ import org.barghos.core.api.tuple4.Tup4dR;
 class Tup4dRTest
 {
 	/**
+	 * This method is called after each test in this class.
+	 */
+	@AfterEach
+	void cleanup()
+	{
+		ValueRelay.clear();
+	}
+	
+	/**
 	 * This test ensures, that the function {@link Tup4dR#isValid()} returns
 	 * the corrct values for different situations.
 	 */
 	@Test
 	void isValidTest()
 	{
-		Tup4dR t = new Tup4dR() {
-			public double getX()
-			{
-				ValueRelay.relayCall("getX");
-				return 0.0;
-			}
-
-			public double getY()
-			{
-				ValueRelay.relayCall("getY");
-				return 0.0;
-			}
-			
-			public double getZ()
-			{
-				ValueRelay.relayCall("getZ");
-				return 0.0;
-			}
-			
-			public double getW()
-			{
-				ValueRelay.relayCall("getW");
-				return 0.0;
-			}
-		};
+		Tup4dR t = new TestTup(0.0, 0.0, 0.0, 0.0);
 		
 		assertEquals(true, t.isValid());
 		assertEquals(false, ValueRelay.get("getX", false));
@@ -146,6 +132,46 @@ class Tup4dRTest
 	}
 	
 	/**
+	 * This test ensures, that the default implementation of the function {@link Tup4dR#getNewInstance(Tup4dR)} calls
+	 * the function {@link Tup4dR#getNewInstance(double, double, double, double)} with the correct components.
+	 */
+	@Test
+	void getNewInstance_TupleTest()
+	{
+		Tup4dR t = new TestTup(1.0, 1.0, 1.0, 1.0);
+		
+		t.getNewInstance(new TestTup(2.0, 3.0, 4.0, 5.0));
+		
+		assertEquals(true, ValueRelay.get("getNewInstanceC", false));
+		assertEquals(2.0, ValueRelay.get("getNewInstanceC_X", 0.0));
+		assertEquals(3.0, ValueRelay.get("getNewInstanceC_Y", 0.0));
+		assertEquals(4.0, ValueRelay.get("getNewInstanceC_Z", 0.0));
+		assertEquals(5.0, ValueRelay.get("getNewInstanceC_W", 0.0));
+		
+		// Can't test for the result here, as the relaying and adopting of the values are implementation specific.
+	}
+	
+	/**
+	 * This test ensures, that the default implementation of the function {@link Tup4dR#getNewInstance(double)} calls
+	 * the function {@link Tup4dR#getNewInstance(double, double, double, double)} with the correct components.
+	 */
+	@Test
+	void getNewInstance_ValueTest()
+	{
+		Tup4dR t = new TestTup(1.0, 1.0, 1.0, 1.0);
+		
+		t.getNewInstance(2.0);
+		
+		assertEquals(true, ValueRelay.get("getNewInstanceC", false));
+		assertEquals(2.0, ValueRelay.get("getNewInstanceC_X", 0.0));
+		assertEquals(2.0, ValueRelay.get("getNewInstanceC_Y", 0.0));
+		assertEquals(2.0, ValueRelay.get("getNewInstanceC_Z", 0.0));
+		assertEquals(2.0, ValueRelay.get("getNewInstanceC_W", 0.0));
+		
+		// Can't test for the result here, as the relaying and adopting of the values are implementation specific.
+	}
+	
+	/**
 	 * This class is a test implementation of the interface {@link Tup4dR}.
 	 * 
 	 * @author picatrix1899
@@ -168,25 +194,40 @@ class Tup4dRTest
 		@Override
 		public double getX()
 		{
+			ValueRelay.relayCall("getX");
 			return this.x;
 		}
 		
 		@Override
 		public double getY()
 		{
+			ValueRelay.relayCall("getY");
 			return this.y;
 		}
 		
 		@Override
 		public double getZ()
 		{
+			ValueRelay.relayCall("getZ");
 			return this.z;
 		}
 		
 		@Override
 		public double getW()
 		{
+			ValueRelay.relayCall("getW");
 			return this.w;
+		}
+		
+		@Override
+		public TestTup getNewInstance(double x, double y, double z, double w)
+		{
+			ValueRelay.relayCall("getNewInstanceC");
+			ValueRelay.relay("getNewInstanceC_X", x);
+			ValueRelay.relay("getNewInstanceC_Y", y);
+			ValueRelay.relay("getNewInstanceC_Z", z);
+			ValueRelay.relay("getNewInstanceC_W", w);
+			return new TestTup(x, y, z, w);
 		}
 	}
 }

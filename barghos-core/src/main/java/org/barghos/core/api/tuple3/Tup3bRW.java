@@ -48,4 +48,19 @@ public interface Tup3bRW extends Tup3bR, Tup3bW
 	
 	@Override
 	Tup3bRW set(byte x, byte y, byte z);
+	
+	@Override
+	default Tup3bRW getNewInstance(Tup3bR t)
+	{
+		return getNewInstance(t.getX(), t.getY(), t.getZ());
+	}
+	
+	@Override
+	default Tup3bRW getNewInstance(byte value)
+	{
+		return getNewInstance(value, value, value);
+	}
+	
+	@Override
+	Tup3bRW getNewInstance(byte x, byte y, byte z);
 }

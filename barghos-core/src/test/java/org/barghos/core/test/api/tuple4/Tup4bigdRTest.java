@@ -2,6 +2,7 @@ package org.barghos.core.test.api.tuple4;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -16,6 +17,15 @@ import org.barghos.core.api.tuple4.Tup4bigdR;
  */
 class Tup4bigdRTest
 {
+	/**
+	 * This method is called after each test in this class.
+	 */
+	@AfterEach
+	void cleanup()
+	{
+		ValueRelay.clear();
+	}
+	
 	/**
 	 * This test ensures, that the function {@link Tup4bigdR#isValid()} returns
 	 * the corrct values for different situations.
@@ -51,31 +61,9 @@ class Tup4bigdRTest
 	@Test
 	void isFiniteTest()
 	{
-		Tup4bigdR t = new Tup4bigdR() {
-			public BigDecimal getX()
-			{
-				ValueRelay.relayCall("getX");
-				return null;
-			}
-
-			public BigDecimal getY()
-			{
-				ValueRelay.relayCall("getY");
-				return null;
-			}
-			
-			public BigDecimal getZ()
-			{
-				ValueRelay.relayCall("getZ");
-				return null;
-			}
-			
-			public BigDecimal getW()
-			{
-				ValueRelay.relayCall("getW");
-				return null;
-			}
-		};
+		final BigDecimal zero = BigDecimal.ZERO;
+		
+		Tup4bigdR t = new TestTup(zero, zero, zero, zero);
 		
 		assertEquals(true, t.isFinite());
 		assertEquals(false, ValueRelay.get("getX", false));
@@ -149,6 +137,57 @@ class Tup4bigdRTest
 	}
 	
 	/**
+	 * This test ensures, that the default implementation of the function {@link Tup4bigdR#getNewInstance(Tup4bigdR)} calls
+	 * the function {@link Tup4bigdR#getNewInstance(BigDecimal, BigDecimal, BigDecimal, BigDecimal)} with the correct components.
+	 */
+	@Test
+	void getNewInstance_TupleTest()
+	{
+		final BigDecimal zero = BigDecimal.ZERO;
+		final BigDecimal one = BigDecimal.ONE;
+		final BigDecimal two = BigDecimal.valueOf(2.0);
+		final BigDecimal three = BigDecimal.valueOf(3.0);
+		final BigDecimal four = BigDecimal.valueOf(4.0);
+		final BigDecimal five = BigDecimal.valueOf(5.0);
+		
+		Tup4bigdR t = new TestTup(one, one, one, one);
+		
+		t.getNewInstance(new TestTup(two, three, four, five));
+		
+		assertEquals(true, ValueRelay.get("getNewInstanceC", false));
+		assertEquals(two, ValueRelay.get("getNewInstanceC_X", zero));
+		assertEquals(three, ValueRelay.get("getNewInstanceC_Y", zero));
+		assertEquals(four, ValueRelay.get("getNewInstanceC_Z", zero));
+		assertEquals(five, ValueRelay.get("getNewInstanceC_W", zero));
+		
+		// Can't test for the result here, as the relaying and adopting of the values are implementation specific.
+	}
+	
+	/**
+	 * This test ensures, that the default implementation of the function {@link Tup4bigdR#getNewInstance(BigDecimal)} calls
+	 * the function {@link Tup4bigdR#getNewInstance(BigDecimal, BigDecimal, BigDecimal, BigDecimal)} with the correct components.
+	 */
+	@Test
+	void getNewInstance_ValueTest()
+	{
+		final BigDecimal zero = BigDecimal.ZERO;
+		final BigDecimal one = BigDecimal.ONE;
+		final BigDecimal two = BigDecimal.valueOf(2.0);
+
+		Tup4bigdR t = new TestTup(one, one, one, one);
+		
+		t.getNewInstance(two);
+		
+		assertEquals(true, ValueRelay.get("getNewInstanceC", false));
+		assertEquals(two, ValueRelay.get("getNewInstanceC_X", zero));
+		assertEquals(two, ValueRelay.get("getNewInstanceC_Y", zero));
+		assertEquals(two, ValueRelay.get("getNewInstanceC_Z", zero));
+		assertEquals(two, ValueRelay.get("getNewInstanceC_W", zero));
+		
+		// Can't test for the result here, as the relaying and adopting of the values are implementation specific.
+	}
+	
+	/**
 	 * This class is a test implementation of the interface {@link Tup4bigdR}.
 	 * 
 	 * @author picatrix1899
@@ -171,25 +210,40 @@ class Tup4bigdRTest
 		@Override
 		public BigDecimal getX()
 		{
+			ValueRelay.relayCall("getX");
 			return this.x;
 		}
 		
 		@Override
 		public BigDecimal getY()
 		{
+			ValueRelay.relayCall("getY");
 			return this.y;
 		}
 		
 		@Override
 		public BigDecimal getZ()
 		{
+			ValueRelay.relayCall("getZ");
 			return this.z;
 		}
 		
 		@Override
 		public BigDecimal getW()
 		{
+			ValueRelay.relayCall("getW");
 			return this.w;
+		}
+		
+		@Override
+		public TestTup getNewInstance(BigDecimal x, BigDecimal y, BigDecimal z, BigDecimal w)
+		{
+			ValueRelay.relayCall("getNewInstanceC");
+			ValueRelay.relay("getNewInstanceC_X", x);
+			ValueRelay.relay("getNewInstanceC_Y", y);
+			ValueRelay.relay("getNewInstanceC_Z", z);
+			ValueRelay.relay("getNewInstanceC_W", w);
+			return new TestTup(x, y, z, w);
 		}
 	}
 }

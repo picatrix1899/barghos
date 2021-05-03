@@ -167,4 +167,10 @@ public abstract class PTup3str implements Tup3strR, FormattableToString
 		
 		return values;
 	}
+	
+	@Override
+	public PTup3str getNewInstance(String x, String y, String z)
+	{
+		return gen(x, y, z);
+	}
 }

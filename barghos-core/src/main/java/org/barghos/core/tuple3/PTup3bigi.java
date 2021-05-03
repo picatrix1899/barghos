@@ -168,4 +168,10 @@ public abstract class PTup3bigi implements Tup3bigiR, FormattableToString
 		
 		return values;
 	}
+	
+	@Override
+	public PTup3bigi getNewInstance(BigInteger x, BigInteger y, BigInteger z)
+	{
+		return gen(x, y, z);
+	}
 }

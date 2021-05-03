@@ -48,4 +48,19 @@ public interface Tup3strRW extends Tup3strR, Tup3strW
 	
 	@Override
 	Tup3strRW set(String x, String y, String z);
+	
+	@Override
+	default Tup3strRW getNewInstance(Tup3strR t)
+	{
+		return getNewInstance(t.getX(), t.getY(), t.getZ());
+	}
+	
+	@Override
+	default Tup3strRW getNewInstance(String value)
+	{
+		return getNewInstance(value, value, value);
+	}
+	
+	@Override
+	Tup3strRW getNewInstance(String x, String y, String z);
 }

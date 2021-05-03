@@ -297,4 +297,21 @@ class Tup3bTest
 		assertTrue(t.equals(new Tup3b((byte)1, (byte)2, (byte)3)));
 		assertTrue(t.equals(PTup3b.gen((byte)1, (byte)2, (byte)3)));
 	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup3b#getNewInstance(byte, byte, byte)}
+	 * returns a new instance of {@link Tup3b} with the given values.
+	 */
+	@Test
+	void getNewInstanceTest()
+	{
+		Tup3b t = new Tup3b((byte)1, (byte)1, (byte)1);
+
+		Tup3b result = t.getNewInstance((byte)2, (byte)3, (byte)4);
+		
+		assertNotSame(t, result);
+		assertEquals((byte)2, result.getX());
+		assertEquals((byte)3, result.getY());
+		assertEquals((byte)4, result.getZ());
+	}
 }

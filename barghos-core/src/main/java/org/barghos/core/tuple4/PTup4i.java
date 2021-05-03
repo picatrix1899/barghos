@@ -159,4 +159,10 @@ public abstract class PTup4i implements Tup4iR, FormattableToString
 		
 		return values;
 	}
+	
+	@Override
+	public PTup4i getNewInstance(int x, int y, int z, int w)
+	{
+		return gen(x, y, z, w);
+	}
 }

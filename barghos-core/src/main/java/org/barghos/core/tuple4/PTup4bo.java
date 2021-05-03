@@ -159,4 +159,10 @@ public abstract class PTup4bo implements Tup4boR, FormattableToString
 		
 		return values;
 	}
+	
+	@Override
+	public PTup4bo getNewInstance(boolean x, boolean y, boolean z, boolean w)
+	{
+		return gen(x, y, z, w);
+	}
 }

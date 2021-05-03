@@ -228,4 +228,10 @@ public class Tup3f implements Tup3fRW, Serializable, FormattableToString
 		
 		return values;
 	}
+	
+	@Override
+	public Tup3f getNewInstance(float x, float y, float z)
+	{
+		return new Tup3f(x, y, z);
+	}
 }

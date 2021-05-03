@@ -2,6 +2,7 @@ package org.barghos.core.test.api.tuple2;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import org.barghos.core.api.testing.ValueRelay;
@@ -15,25 +16,24 @@ import org.barghos.core.api.tuple2.Tup2sR;
 class Tup2sRTest
 {
 	/**
+	 * This method is called after each test in this class.
+	 */
+	@AfterEach
+	void cleanup()
+	{
+		ValueRelay.clear();
+	}
+	
+	/**
 	 * This test ensures, that the function {@link Tup2sR#isValid()} returns
 	 * the corrct values for different situations.
 	 */
 	@Test
 	void isValidTest()
 	{
-		Tup2sR t = new Tup2sR() {
-			public short getX()
-			{
-				ValueRelay.relayCall("getX");
-				return (short)0;
-			}
-
-			public short getY()
-			{
-				ValueRelay.relayCall("getY");
-				return (short)0;
-			}
-		};
+		final short zero = (short)0;
+		
+		Tup2sR t = new TestTup(zero, zero);
 		
 		assertEquals(true, t.isValid());
 		assertEquals(false, ValueRelay.get("getX", false));
@@ -47,19 +47,9 @@ class Tup2sRTest
 	@Test
 	void isFiniteTest()
 	{
-		Tup2sR t = new Tup2sR() {
-			public short getX()
-			{
-				ValueRelay.relayCall("getX");
-				return (short)0;
-			}
-
-			public short getY()
-			{
-				ValueRelay.relayCall("getY");
-				return (short)0;
-			}
-		};
+		final short zero = (short)0;
+		
+		Tup2sR t = new TestTup(zero, zero);
 		
 		assertEquals(true, t.isFinite());
 		assertEquals(false, ValueRelay.get("getX", false));
@@ -119,6 +109,51 @@ class Tup2sRTest
 	}
 	
 	/**
+	 * This test ensures, that the default implementation of the function {@link Tup2sR#getNewInstance(Tup2sR)} calls
+	 * the function {@link Tup2sR#getNewInstance(short, short)} with the correct components.
+	 */
+	@Test
+	void getNewInstance_TupleTest()
+	{
+		final short zero = (short)0;
+		final short one = (short)1;
+		final short two = (short)2;
+		final short three = (short)3;
+		
+		Tup2sR t = new TestTup(one, one);
+		
+		t.getNewInstance(new TestTup(two, three));
+		
+		assertEquals(true, ValueRelay.get("getNewInstanceC", false));
+		assertEquals(two, ValueRelay.get("getNewInstanceC_X", zero));
+		assertEquals(three, ValueRelay.get("getNewInstanceC_Y", zero));
+		
+		// Can't test for the result here, as the relaying and adopting of the values are implementation specific.
+	}
+	
+	/**
+	 * This test ensures, that the default implementation of the function {@link Tup2sR#getNewInstance(short)} calls
+	 * the function {@link Tup2sR#getNewInstance(short, short)} with the correct components.
+	 */
+	@Test
+	void getNewInstance_ValueTest()
+	{
+		final short zero = (short)0;
+		final short one = (short)1;
+		final short two = (short)2;
+
+		Tup2sR t = new TestTup(one, one);
+		
+		t.getNewInstance(two);
+		
+		assertEquals(true, ValueRelay.get("getNewInstanceC", false));
+		assertEquals(two, ValueRelay.get("getNewInstanceC_X", zero));
+		assertEquals(two, ValueRelay.get("getNewInstanceC_Y", zero));
+		
+		// Can't test for the result here, as the relaying and adopting of the values are implementation specific.
+	}
+	
+	/**
 	 * This class is a test implementation of the interface {@link Tup2sR}.
 	 * 
 	 * @author picatrix1899
@@ -137,13 +172,24 @@ class Tup2sRTest
 		@Override
 		public short getX()
 		{
+			ValueRelay.relayCall("getX");
 			return this.x;
 		}
 		
 		@Override
 		public short getY()
 		{
+			ValueRelay.relayCall("getY");
 			return this.y;
+		}
+		
+		@Override
+		public TestTup getNewInstance(short x, short y)
+		{
+			ValueRelay.relayCall("getNewInstanceC");
+			ValueRelay.relay("getNewInstanceC_X", x);
+			ValueRelay.relay("getNewInstanceC_Y", y);
+			return new TestTup(x, y);
 		}
 	}
 }

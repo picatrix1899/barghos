@@ -49,7 +49,6 @@ package org.barghos.core.test.tuple2;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
-
 import org.barghos.core.tuple2.PTup2bo;
 import org.barghos.core.tuple2.Tup2bo;
 
@@ -139,5 +138,21 @@ class PTup2boTest
 		
 		assertTrue(t.equals(new Tup2bo(false, true)));
 		assertTrue(t.equals(PTup2bo.gen(false, true)));	
+	}
+	
+	/**
+	 * This test ensures, that the function {@link PTup2bo#getNewInstance(boolean, boolean)}
+	 * returns a new instance of {@link PTup2bo} with the given values.
+	 */
+	@Test
+	void getNewInstanceTest()
+	{
+		PTup2bo t = PTup2bo.gen(false, true);
+
+		PTup2bo result = t.getNewInstance(true, false);
+		
+		assertNotSame(t, result);
+		assertEquals(true, result.getX());
+		assertEquals(false, result.getY());
 	}
 }

@@ -257,4 +257,20 @@ class Tup2sTest
 		assertTrue(t.equals(new Tup2s((short)1, (short)2)));
 		assertTrue(t.equals(PTup2s.gen((short)1, (short)2)));
 	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2s#getNewInstance(short, short)}
+	 * returns a new instance of {@link Tup2s} with the given values.
+	 */
+	@Test
+	void getNewInstanceTest()
+	{
+		Tup2s t = new Tup2s((short)1, (short)1);
+
+		Tup2s result = t.getNewInstance((short)2, (short)3);
+		
+		assertNotSame(t, result);
+		assertEquals((short)2, result.getX());
+		assertEquals((short)3, result.getY());
+	}
 }

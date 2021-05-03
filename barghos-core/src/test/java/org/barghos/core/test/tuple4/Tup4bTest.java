@@ -335,4 +335,22 @@ class Tup4bTest
 		assertTrue(t.equals(new Tup4b((byte)1, (byte)2, (byte)3, (byte)4)));
 		assertTrue(t.equals(PTup4b.gen((byte)1, (byte)2, (byte)3, (byte)4)));
 	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4b#getNewInstance(byte, byte, byte, byte)}
+	 * returns a new instance of {@link Tup4b} with the given values.
+	 */
+	@Test
+	void getNewInstanceTest()
+	{
+		Tup4b t = new Tup4b((byte)1, (byte)1, (byte)1, (byte)1);
+
+		Tup4b result = t.getNewInstance((byte)2, (byte)3, (byte)4, (byte)5);
+		
+		assertNotSame(t, result);
+		assertEquals((byte)2, result.getX());
+		assertEquals((byte)3, result.getY());
+		assertEquals((byte)4, result.getZ());
+		assertEquals((byte)5, result.getW());
+	}
 }

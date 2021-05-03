@@ -45,4 +45,19 @@ public interface Tup2strRW extends Tup2strR, Tup2strW
 	
 	@Override
 	Tup2strRW set(String x, String y);
+	
+	@Override
+	default Tup2strRW getNewInstance(Tup2strR t)
+	{
+		return getNewInstance(t.getX(), t.getY());
+	}
+	
+	@Override
+	default Tup2strRW getNewInstance(String value)
+	{
+		return getNewInstance(value, value);
+	}
+	
+	@Override
+	Tup2strRW getNewInstance(String x, String y);
 }

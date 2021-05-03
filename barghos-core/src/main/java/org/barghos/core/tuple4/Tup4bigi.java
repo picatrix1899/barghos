@@ -297,4 +297,10 @@ public class Tup4bigi implements Tup4bigiRW, Serializable, FormattableToString
 		
 		return values;
 	}
+	
+	@Override
+	public Tup4bigi getNewInstance(BigInteger x, BigInteger y, BigInteger z, BigInteger w)
+	{
+		return new Tup4bigi(x, y, z, w);
+	}
 }

@@ -45,4 +45,19 @@ public interface Tup2bRW extends Tup2bR, Tup2bW
 	
 	@Override
 	Tup2bRW set(byte x, byte y);
+	
+	@Override
+	default Tup2bRW getNewInstance(Tup2bR t)
+	{
+		return getNewInstance(t.getX(), t.getY());
+	}
+	
+	@Override
+	default Tup2bRW getNewInstance(byte value)
+	{
+		return getNewInstance(value, value);
+	}
+	
+	@Override
+	Tup2bRW getNewInstance(byte x, byte y);
 }

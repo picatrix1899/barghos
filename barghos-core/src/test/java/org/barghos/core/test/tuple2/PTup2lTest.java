@@ -140,4 +140,20 @@ class PTup2lTest
 		assertTrue(t.equals(new Tup2l(1l, 2l)));
 		assertTrue(t.equals(PTup2l.gen(1l, 2l)));	
 	}
+	
+	/**
+	 * This test ensures, that the function {@link PTup2l#getNewInstance(long, long)}
+	 * returns a new instance of {@link PTup2l} with the given values.
+	 */
+	@Test
+	void getNewInstanceTest()
+	{
+		PTup2l t = PTup2l.gen(1l, 1l);
+
+		PTup2l result = t.getNewInstance(2l, 3l);
+		
+		assertNotSame(t, result);
+		assertEquals(2l, result.getX());
+		assertEquals(3l, result.getY());
+	}
 }

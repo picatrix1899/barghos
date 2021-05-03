@@ -271,4 +271,10 @@ public class Tup4o<X,Y,Z,W> implements Tup4oRW<X,Y,Z,W>, FormattableToString
 		
 		return values;
 	}
+	
+	@Override
+	public Tup4o<X,Y,Z,W> getNewInstance(X x, Y y, Z z, W w)
+	{
+		return new Tup4o<>(x, y, z, w);
+	}
 }

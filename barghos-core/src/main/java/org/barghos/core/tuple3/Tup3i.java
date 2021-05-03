@@ -228,4 +228,10 @@ public class Tup3i implements Tup3iRW, Serializable, FormattableToString
 		
 		return values;
 	}
+	
+	@Override
+	public Tup3i getNewInstance(int x, int y, int z)
+	{
+		return new Tup3i(x, y, z);
+	}
 }

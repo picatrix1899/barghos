@@ -152,4 +152,10 @@ public abstract class PTup3f implements Tup3fR, FormattableToString
 		
 		return values;
 	}
+	
+	@Override
+	public PTup3f getNewInstance(float x, float y, float z)
+	{
+		return gen(x, y, z);
+	}
 }

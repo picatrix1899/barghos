@@ -2,6 +2,7 @@ package org.barghos.core.test.api.tuple2;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import org.barghos.core.api.testing.ValueRelay;
@@ -15,25 +16,22 @@ import org.barghos.core.api.tuple2.Tup2dR;
 class Tup2dRTest
 {
 	/**
+	 * This method is called after each test in this class.
+	 */
+	@AfterEach
+	void cleanup()
+	{
+		ValueRelay.clear();
+	}
+	
+	/**
 	 * This test ensures, that the function {@link Tup2dR#isValid()} returns
 	 * the corrct values for different situations.
 	 */
 	@Test
 	void isValidTest()
 	{
-		Tup2dR t = new Tup2dR() {
-			public double getX()
-			{
-				ValueRelay.relayCall("getX");
-				return 0.0;
-			}
-
-			public double getY()
-			{
-				ValueRelay.relayCall("getY");
-				return 0.0;
-			}
-		};
+		Tup2dR t = new TestTup(0.0, 0.0);
 		
 		assertEquals(true, t.isValid());
 		assertEquals(false, ValueRelay.get("getX", false));
@@ -114,6 +112,42 @@ class Tup2dRTest
 	}
 	
 	/**
+	 * This test ensures, that the default implementation of the function {@link Tup2dR#getNewInstance(Tup2dR)} calls
+	 * the function {@link Tup2dR#getNewInstance(double, double)} with the correct components.
+	 */
+	@Test
+	void getNewInstance_TupleTest()
+	{
+		Tup2dR t = new TestTup(1.0, 1.0);
+		
+		t.getNewInstance(new TestTup(2.0, 3.0));
+		
+		assertEquals(true, ValueRelay.get("getNewInstanceC", false));
+		assertEquals(2.0, ValueRelay.get("getNewInstanceC_X", 0.0));
+		assertEquals(3.0, ValueRelay.get("getNewInstanceC_Y", 0.0));
+		
+		// Can't test for the result here, as the relaying and adopting of the values are implementation specific.
+	}
+	
+	/**
+	 * This test ensures, that the default implementation of the function {@link Tup2dR#getNewInstance(double)} calls
+	 * the function {@link Tup2dR#getNewInstance(double, double)} with the correct components.
+	 */
+	@Test
+	void getNewInstance_ValueTest()
+	{
+		Tup2dR t = new TestTup(1.0, 1.0);
+		
+		t.getNewInstance(2.0);
+		
+		assertEquals(true, ValueRelay.get("getNewInstanceC", false));
+		assertEquals(2.0, ValueRelay.get("getNewInstanceC_X", 0.0));
+		assertEquals(2.0, ValueRelay.get("getNewInstanceC_Y", 0.0));
+		
+		// Can't test for the result here, as the relaying and adopting of the values are implementation specific.
+	}
+	
+	/**
 	 * This class is a test implementation of the interface {@link Tup2dR}.
 	 * 
 	 * @author picatrix1899
@@ -132,13 +166,24 @@ class Tup2dRTest
 		@Override
 		public double getX()
 		{
+			ValueRelay.relayCall("getX");
 			return this.x;
 		}
 		
 		@Override
 		public double getY()
 		{
+			ValueRelay.relayCall("getY");
 			return this.y;
+		}
+		
+		@Override
+		public TestTup getNewInstance(double x, double y)
+		{
+			ValueRelay.relayCall("getNewInstanceC");
+			ValueRelay.relay("getNewInstanceC_X", x);
+			ValueRelay.relay("getNewInstanceC_Y", y);
+			return new TestTup(x, y);
 		}
 	}
 }

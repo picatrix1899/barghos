@@ -22,6 +22,9 @@
 
 package org.barghos.core.api.color;
 
+import org.barghos.core.api.tuple3.Tup3fR;
+import org.barghos.core.api.tuple4.Tup4fR;
+
 /**
  * This interface grants selective readonly access for low dynamic range (LDR/Standard) RGBA-Colors only.
  * 
@@ -31,5 +34,27 @@ package org.barghos.core.api.color;
  */
 public interface LDRColor4R extends LDRColor3R, Color4R
 {
-
+	@Override
+	default LDRColor4R getNewInstance(Tup3fR t)
+	{
+		return getNewInstance(t.getX(), t.getY(), t.getZ());
+	}
+	
+	@Override
+	default LDRColor4R getNewInstance(Tup4fR t)
+	{
+		return getNewInstance(t.getX(), t.getY(), t.getZ(), t.getW());
+	}
+	
+	@Override
+	default LDRColor4R getNewInstance(float value)
+	{
+		return getNewInstance(value, value, value, value);
+	}
+	
+	@Override
+	LDRColor4R getNewInstance(float x, float y, float z);
+	
+	@Override
+	LDRColor4R getNewInstance(float x, float y, float z, float w);
 }

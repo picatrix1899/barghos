@@ -335,4 +335,22 @@ class Tup4iTest
 		assertTrue(t.equals(new Tup4i(1, 2, 3, 4)));
 		assertTrue(t.equals(PTup4i.gen(1, 2, 3, 4)));
 	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4i#getNewInstance(int, int, int, int)}
+	 * returns a new instance of {@link Tup4i} with the given values.
+	 */
+	@Test
+	void getNewInstanceTest()
+	{
+		Tup4i t = new Tup4i(1, 1, 1, 1);
+
+		Tup4i result = t.getNewInstance(2, 3, 4, 5);
+		
+		assertNotSame(t, result);
+		assertEquals(2, result.getX());
+		assertEquals(3, result.getY());
+		assertEquals(4, result.getZ());
+		assertEquals(5, result.getW());
+	}
 }

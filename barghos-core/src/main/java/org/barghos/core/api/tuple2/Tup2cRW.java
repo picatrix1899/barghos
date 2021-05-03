@@ -45,4 +45,19 @@ public interface Tup2cRW extends Tup2cR, Tup2cW
 	
 	@Override
 	Tup2cRW set(char x, char y);
+	
+	@Override
+	default Tup2cRW getNewInstance(Tup2cR t)
+	{
+		return getNewInstance(t.getX(), t.getY());
+	}
+	
+	@Override
+	default Tup2cRW getNewInstance(char value)
+	{
+		return getNewInstance(value, value);
+	}
+	
+	@Override
+	Tup2cRW getNewInstance(char x, char y);
 }

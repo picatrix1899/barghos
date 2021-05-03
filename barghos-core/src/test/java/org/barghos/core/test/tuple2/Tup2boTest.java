@@ -257,4 +257,20 @@ class Tup2boTest
 		assertTrue(t.equals(new Tup2bo(false, true)));
 		assertTrue(t.equals(PTup2bo.gen(false, true)));
 	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2bo#getNewInstance(boolean, boolean)}
+	 * returns a new instance of {@link Tup2bo} with the given values.
+	 */
+	@Test
+	void getNewInstanceTest()
+	{
+		Tup2bo t = new Tup2bo(false, true);
+
+		Tup2bo result = t.getNewInstance(true, false);
+		
+		assertNotSame(t, result);
+		assertEquals(true, result.getX());
+		assertEquals(false, result.getY());
+	}
 }

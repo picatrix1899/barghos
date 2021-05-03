@@ -47,4 +47,19 @@ public interface Tup2bigiRW extends Tup2bigiR, Tup2bigiW
 	
 	@Override
 	Tup2bigiRW set(BigInteger x, BigInteger y);
+	
+	@Override
+	default Tup2bigiRW getNewInstance(Tup2bigiR t)
+	{
+		return getNewInstance(t.getX(), t.getY());
+	}
+	
+	@Override
+	default Tup2bigiRW getNewInstance(BigInteger value)
+	{
+		return getNewInstance(value, value);
+	}
+	
+	@Override
+	Tup2bigiRW getNewInstance(BigInteger x, BigInteger y);
 }

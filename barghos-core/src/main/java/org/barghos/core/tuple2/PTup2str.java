@@ -27,8 +27,6 @@ import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple2.Tup2strR;
-import org.barghos.core.api.util.ArgumentNullException;
-import org.barghos.core.Barghos;
 
 /**
  * Represents a persistent 2-dimensional string tuple.
@@ -63,13 +61,6 @@ public abstract class PTup2str implements Tup2strR, FormattableToString
 	 */
 	public static PTup2str gen(Tup2strR t)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(t == null) throw new ArgumentNullException("t");
-			if(t.getX() == null) throw new ArgumentNullException("t.getX()");
-			if(t.getY() == null) throw new ArgumentNullException("t.getY()");
-		}
-		
 		return gen(t.getX(), t.getY());
 	}
 	
@@ -84,11 +75,6 @@ public abstract class PTup2str implements Tup2strR, FormattableToString
 	 */
 	public static PTup2str gen(String value)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(value == null) throw new ArgumentNullException("value");
-		}
-		
 		return gen(value, value);
 	}
 	
@@ -104,12 +90,6 @@ public abstract class PTup2str implements Tup2strR, FormattableToString
 	 */
 	public static PTup2str gen(String x, String y)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(x == null) throw new ArgumentNullException("x");
-			if(y == null) throw new ArgumentNullException("y");
-		}
-		
 		return new PTup2str()
 		{
 			@Override
@@ -158,5 +138,11 @@ public abstract class PTup2str implements Tup2strR, FormattableToString
 		values.put("y", getY());
 		
 		return values;
+	}
+	
+	@Override
+	public PTup2str getNewInstance(String x, String y)
+	{
+		return gen(x, y);
 	}
 }

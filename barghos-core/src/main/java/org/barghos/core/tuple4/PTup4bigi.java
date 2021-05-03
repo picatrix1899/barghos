@@ -177,4 +177,10 @@ public abstract class PTup4bigi implements Tup4bigiR, FormattableToString
 		
 		return values;
 	}
+	
+	@Override
+	public PTup4bigi getNewInstance(BigInteger x, BigInteger y, BigInteger z, BigInteger w)
+	{
+		return gen(x, y, z, w);
+	}
 }

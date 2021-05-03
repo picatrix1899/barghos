@@ -108,4 +108,65 @@ public interface Tup3bR
 	{
 		return true;
 	}
+	
+	/**
+	 * Returns a new instance of the type of the origin instance with the components adopted
+	 * from t.
+	 * 
+	 * <p>
+	 * This can be used for type continuety.
+	 * This way even while only using abstractions it is possible to create
+	 * new instances of the original. It is similar to the {@link Object#clone()}
+	 * function but the {@link Object#clone()} function requires the returned instance to be
+	 * writable.
+	 * This function on the other hand allows for example the usage of factories.
+	 * 
+	 * @param t The tuple to adopt the components from.
+	 * 
+	 * @return A new instance of the type of the origin instance
+	 */
+	default Tup3bR getNewInstance(Tup3bR t)
+	{
+		return getNewInstance(t.getX(), t.getY(), t.getZ());
+	}
+	
+	/**
+	 * Returns a new instance of the type of the origin instance with the components set to
+	 * value.
+	 * 
+	 * <p>
+	 * This can be used for type continuety.
+	 * This way even while only using abstractions it is possible to create
+	 * new instances of the original. It is similar to the {@link Object#clone()}
+	 * function but the {@link Object#clone()} function requires the returned instance to be
+	 * writable.
+	 * This function on the other hand allows for example the usage of factories.
+	 * 
+	 * @param value The value used for all components.
+	 * 
+	 * @return A new instance of the type of the origin instance
+	 */
+	default Tup3bR getNewInstance(byte value)
+	{
+		return getNewInstance(value, value, value);
+	}
+	
+	/**
+	 * Returns a new instance of the type of the origin instance with the components set to
+	 * the corresponding parameters.
+	 * 
+	 * <p>
+	 * This can be used for type continuety.
+	 * This way even while only using abstractions it is possible to create
+	 * new instances of the original. It is similar to the {@link Object#clone()}
+	 * function but the {@link Object#clone()} function requires the returned instance to be
+	 * writable. This function on the other hand allows for example the usage of factories.
+	 * 
+	 * @param x The value used for the x component.
+	 * @param y The value used for the y component.
+	 * @param z The value used for the z component.
+	 * 
+	 * @return A new instance of the type of the origin instance
+	 */
+	Tup3bR getNewInstance(byte x, byte y, byte z);
 }

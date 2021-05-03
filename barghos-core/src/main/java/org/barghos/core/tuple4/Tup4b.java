@@ -251,4 +251,10 @@ public class Tup4b implements Tup4bRW, Serializable, FormattableToString
 		
 		return values;
 	}
+	
+	@Override
+	public Tup4b getNewInstance(byte x, byte y, byte z, byte w)
+	{
+		return new Tup4b(x, y, z, w);
+	}
 }

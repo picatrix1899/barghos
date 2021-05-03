@@ -168,4 +168,10 @@ public abstract class PTup3bigd implements Tup3bigdR, FormattableToString
 		
 		return values;
 	}
+	
+	@Override
+	public PTup3bigd getNewInstance(BigDecimal x, BigDecimal y, BigDecimal z)
+	{
+		return gen(x, y, z);
+	}
 }

@@ -27,8 +27,6 @@ import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple2.Tup2fR;
-import org.barghos.core.api.util.ArgumentNullException;
-import org.barghos.core.Barghos;
 
 /**
  * Represents a persistent 2-dimensional float tuple.
@@ -63,11 +61,6 @@ public abstract class PTup2f implements Tup2fR, FormattableToString
 	 */
 	public static PTup2f gen(Tup2fR t)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(t == null) throw new ArgumentNullException("t");
-		}
-		
 		return gen(t.getX(), t.getY());
 	}
 	
@@ -106,7 +99,7 @@ public abstract class PTup2f implements Tup2fR, FormattableToString
 			public float getY() { return y; }
 		};
 	}
-
+	
 	@Override
 	public int hashCode()
 	{
@@ -144,5 +137,11 @@ public abstract class PTup2f implements Tup2fR, FormattableToString
 		values.put("y", getY());
 		
 		return values;
+	}
+	
+	@Override
+	public PTup2f getNewInstance(float x, float y)
+	{
+		return gen(x, y);
 	}
 }

@@ -297,4 +297,21 @@ class Tup3cTest
 		assertTrue(t.equals(new Tup3c('a', 'b', 'c')));
 		assertTrue(t.equals(PTup3c.gen('a', 'b', 'c')));
 	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup3c#getNewInstance(char, char, char)}
+	 * returns a new instance of {@link Tup3c} with the given values.
+	 */
+	@Test
+	void getNewInstanceTest()
+	{
+		Tup3c t = new Tup3c('a', 'a', 'a');
+
+		Tup3c result = t.getNewInstance('b', 'c', 'd');
+		
+		assertNotSame(t, result);
+		assertEquals('b', result.getX());
+		assertEquals('c', result.getY());
+		assertEquals('d', result.getZ());
+	}
 }

@@ -45,4 +45,19 @@ public interface Tup2sRW extends Tup2sR, Tup2sW
 	
 	@Override
 	Tup2sRW set(short x, short y);
+	
+	@Override
+	default Tup2sRW getNewInstance(Tup2sR t)
+	{
+		return getNewInstance(t.getX(), t.getY());
+	}
+	
+	@Override
+	default Tup2sRW getNewInstance(short value)
+	{
+		return getNewInstance(value, value);
+	}
+	
+	@Override
+	Tup2sRW getNewInstance(short x, short y);
 }

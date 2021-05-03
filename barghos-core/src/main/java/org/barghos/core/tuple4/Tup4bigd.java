@@ -297,4 +297,10 @@ public class Tup4bigd implements Tup4bigdRW, Serializable, FormattableToString
 		
 		return values;
 	}
+	
+	@Override
+	public Tup4bigd getNewInstance(BigDecimal x, BigDecimal y, BigDecimal z, BigDecimal w)
+	{
+		return new Tup4bigd(x, y, z, w);
+	}
 }

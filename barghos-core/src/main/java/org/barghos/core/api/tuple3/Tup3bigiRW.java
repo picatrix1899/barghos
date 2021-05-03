@@ -50,4 +50,19 @@ public interface Tup3bigiRW extends Tup3bigiR, Tup3bigiW
 	
 	@Override
 	Tup3bigiRW set(BigInteger x, BigInteger y, BigInteger z);
+	
+	@Override
+	default Tup3bigiRW getNewInstance(Tup3bigiR t)
+	{
+		return getNewInstance(t.getX(), t.getY(), t.getZ());
+	}
+	
+	@Override
+	default Tup3bigiRW getNewInstance(BigInteger value)
+	{
+		return getNewInstance(value, value, value);
+	}
+	
+	@Override
+	Tup3bigiRW getNewInstance(BigInteger x, BigInteger y, BigInteger z);
 }

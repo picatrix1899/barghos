@@ -152,4 +152,10 @@ public abstract class PTup3bo implements Tup3boR, FormattableToString
 		
 		return values;
 	}
+	
+	@Override
+	public PTup3bo getNewInstance(boolean x, boolean y, boolean z)
+	{
+		return gen(x, y, z);
+	}
 }

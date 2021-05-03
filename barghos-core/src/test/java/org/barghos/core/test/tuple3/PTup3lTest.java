@@ -142,4 +142,21 @@ class PTup3lTest
 		assertTrue(t.equals(new Tup3l(1l, 2l, 3l)));
 		assertTrue(t.equals(PTup3l.gen(1l, 2l, 3l)));	
 	}
+	
+	/**
+	 * This test ensures, that the function {@link PTup3l#getNewInstance(long, long, long)}
+	 * returns a new instance of {@link PTup3l} with the given values.
+	 */
+	@Test
+	void getNewInstanceTest()
+	{
+		PTup3l t = PTup3l.gen(1l, 1l, 1l);
+		
+		PTup3l result = t.getNewInstance(2l, 3l, 4l);
+		
+		assertNotSame(t, result);
+		assertEquals(2l, result.getX());
+		assertEquals(3l, result.getY());
+		assertEquals(4l, result.getZ());
+	}
 }

@@ -163,4 +163,10 @@ public abstract class PTup4d implements Tup4dR, FormattableToString
 		
 		return values;
 	}
+	
+	@Override
+	public PTup4d getNewInstance(double x, double y, double z, double w)
+	{
+		return gen(x, y, z, w);
+	}
 }

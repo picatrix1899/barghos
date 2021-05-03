@@ -29,8 +29,6 @@ import java.util.Map;
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple2.Tup2boR;
 import org.barghos.core.api.tuple2.Tup2boRW;
-import org.barghos.core.api.util.ArgumentNullException;
-import org.barghos.core.Barghos;
 
 /**
  * This class represents a 2-dimensional boolean tuple.
@@ -77,11 +75,6 @@ public class Tup2bo implements Tup2boRW, Serializable, FormattableToString
 	 */
 	public Tup2bo(Tup2boR t)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(t == null) throw new ArgumentNullException("t");
-		}
-		
 		set(t);
 	}
 	
@@ -141,11 +134,6 @@ public class Tup2bo implements Tup2boRW, Serializable, FormattableToString
 	@Override
 	public Tup2bo set(Tup2boR t)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(t == null) throw new ArgumentNullException("t");
-		}
-		
 		return set(t.getX(), t.getY());
 	}
 	
@@ -204,5 +192,11 @@ public class Tup2bo implements Tup2boRW, Serializable, FormattableToString
 		values.put("y", getY());
 		
 		return values;
+	}
+	
+	@Override
+	public Tup2bo getNewInstance(boolean x, boolean y)
+	{
+		return new Tup2bo(x, y);
 	}
 }

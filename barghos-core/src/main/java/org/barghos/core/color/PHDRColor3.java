@@ -163,4 +163,10 @@ public abstract class PHDRColor3 implements HDRColor3R
 			public int getB() { return b; }
 		};
 	}
+	
+	@Override
+	public PHDRColor3 getNewInstance(float x, float y, float z)
+	{
+		return gen(x, y, z);
+	}
 }

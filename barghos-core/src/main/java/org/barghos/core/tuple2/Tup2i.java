@@ -29,8 +29,6 @@ import java.util.Map;
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple2.Tup2iR;
 import org.barghos.core.api.tuple2.Tup2iRW;
-import org.barghos.core.api.util.ArgumentNullException;
-import org.barghos.core.Barghos;
 
 /**
  * This class represents a 2-dimensional integer tuple.
@@ -77,11 +75,6 @@ public class Tup2i implements Tup2iRW, Serializable, FormattableToString
 	 */
 	public Tup2i(Tup2iR t)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(t == null) throw new ArgumentNullException("t");
-		}
-		
 		set(t);
 	}
 	
@@ -141,11 +134,6 @@ public class Tup2i implements Tup2iRW, Serializable, FormattableToString
 	@Override
 	public Tup2i set(Tup2iR t)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(t == null) throw new ArgumentNullException("t");
-		}
-		
 		return set(t.getX(), t.getY());
 	}
 	
@@ -204,5 +192,11 @@ public class Tup2i implements Tup2iRW, Serializable, FormattableToString
 		values.put("y", getY());
 		
 		return values;
+	}
+	
+	@Override
+	public Tup2i getNewInstance(int x, int y)
+	{
+		return new Tup2i(x, y);
 	}
 }

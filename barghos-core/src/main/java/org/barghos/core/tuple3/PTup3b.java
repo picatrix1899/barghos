@@ -152,4 +152,10 @@ public abstract class PTup3b implements Tup3bR, FormattableToString
 		
 		return values;
 	}
+	
+	@Override
+	public PTup3b getNewInstance(byte x, byte y, byte z)
+	{
+		return gen(x, y, z);
+	}
 }
