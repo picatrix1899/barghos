@@ -28,18 +28,4 @@ public interface Vec2fW extends Tup2fW
 	
 	@Override
 	Vec2fW set(float x, float y);
-	
-	/**
-	 * Adds the x and y parameter to their corresponding components in the current vector. This operation
-	 * alters the current vector.
-	 * 
-	 * <p>
-	 * Operation: (vector.x + x, vector.y + y)
-	 * 
-	 * @param x The value to add to the x component of the current vector.
-	 * @param y The value to add to the y component of the current vector.
-	 * 
-	 * @return The altered current vector.
-	 */
-	Vec2fW add(float x, float y);
 }

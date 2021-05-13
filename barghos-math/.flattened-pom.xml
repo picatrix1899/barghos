@@ -25,7 +25,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.barghos</groupId>
   <artifactId>barghos-math</artifactId>
-  <version>1.0.0.0-SNAPSHOT-6</version>
+  <version>1.0.0.0-SNAPSHOT-10</version>
   <licenses>
     <license>
       <name>MIT</name>
@@ -33,4 +33,12 @@
       <distribution>repo</distribution>
     </license>
   </licenses>
+  <dependencies>
+    <dependency>
+      <groupId>org.barghos</groupId>
+      <artifactId>barghos-core</artifactId>
+      <version>1.0.0.0-SNAPSHOT-10</version>
+      <scope>compile</scope>
+    </dependency>
+  </dependencies>
 </project>
