@@ -22,6 +22,9 @@
 
 package org.barghos.core.api.tuple4;
 
+import org.barghos.core.api.tuple.TupiR;
+import org.barghos.core.api.tuple.TupiRW;
+
 /**
  * This interface grants read and write access to any 4-dimensional integer tuple.
  * 
@@ -29,7 +32,7 @@ package org.barghos.core.api.tuple4;
  * 
  * @since 1.0.0.0
  */
-public interface Tup4iRW extends Tup4iR, Tup4iW
+public interface Tup4iRW extends Tup4iR, Tup4iW, TupiRW
 {
 	@Override
 	Tup4iRW setX(int x);
@@ -44,26 +47,71 @@ public interface Tup4iRW extends Tup4iR, Tup4iW
 	Tup4iRW setW(int w);
 	
 	@Override
-	Tup4iRW set(Tup4iR t);
+	default Tup4iRW set(Tup4iR t)
+	{
+		return (Tup4iRW)Tup4iW.super.set(t);
+	}
 	
 	@Override
-	Tup4iRW set(int value);
+	default Tup4iRW set(int value)
+	{
+		return (Tup4iRW)Tup4iW.super.set(value);
+	}
 	
 	@Override
-	Tup4iRW set(int x, int y, int z, int w);
-	
+	default Tup4iRW set(int x, int y, int z, int w)
+	{
+		return (Tup4iRW)Tup4iW.super.set(x, y, z, w);
+	}
+
 	@Override
 	default Tup4iRW getNewInstance(Tup4iR t)
 	{
-		return getNewInstance(t.getX(), t.getY(), t.getZ(), t.getW());
+		return (Tup4iRW)Tup4iR.super.getNewInstance(t);
 	}
 	
 	@Override
 	default Tup4iRW getNewInstance(int value)
 	{
-		return getNewInstance(value, value, value, value);
+		return (Tup4iRW)Tup4iR.super.getNewInstance(value);
 	}
 	
 	@Override
 	Tup4iRW getNewInstance(int x, int y, int z, int w);
+	
+	@Override
+	default int getDimensions()
+	{
+		return Tup4iR.super.getDimensions();
+	}
+	
+	@Override
+	default Tup4iRW getNewInstanceFromArray(int... values)
+	{
+		return (Tup4iRW)Tup4iR.super.getNewInstanceFromArray(values);
+	}
+	
+	@Override
+	default Tup4iRW setByIndex(int index, int value)
+	{
+		return (Tup4iRW)Tup4iW.super.setByIndex(index, value);
+	}
+	
+	@Override
+	default Tup4iRW setArray(int... values)
+	{
+		return (Tup4iRW)Tup4iW.super.setArray(values);
+	}
+	
+	@Override
+	default Tup4iRW set(TupiR t)
+	{
+		return (Tup4iRW)Tup4iW.super.set(t);
+	}
+	
+	@Override
+	default Tup4iRW getNewInstance(TupiR t)
+	{
+		return (Tup4iRW)Tup4iR.super.getNewInstance(t);
+	}
 }

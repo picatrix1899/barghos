@@ -22,6 +22,9 @@
 
 package org.barghos.core.api.tuple4;
 
+import org.barghos.core.api.tuple.TupdR;
+import org.barghos.core.api.tuple.TupdRW;
+
 /**
  * This interface grants read and write access to any 4-dimensional double tuple.
  * 
@@ -29,7 +32,7 @@ package org.barghos.core.api.tuple4;
  * 
  * @since 1.0.0.0
  */
-public interface Tup4dRW extends Tup4dR, Tup4dW
+public interface Tup4dRW extends Tup4dR, Tup4dW, TupdRW
 {
 	@Override
 	Tup4dRW setX(double x);
@@ -44,26 +47,71 @@ public interface Tup4dRW extends Tup4dR, Tup4dW
 	Tup4dRW setW(double w);
 	
 	@Override
-	Tup4dRW set(Tup4dR t);
+	default Tup4dRW set(Tup4dR t)
+	{
+		return (Tup4dRW)Tup4dW.super.set(t);
+	}
 	
 	@Override
-	Tup4dRW set(double value);
+	default Tup4dRW set(double value)
+	{
+		return (Tup4dRW)Tup4dW.super.set(value);
+	}
 	
 	@Override
-	Tup4dRW set(double x, double y, double z, double w);
-	
+	default Tup4dRW set(double x, double y, double z, double w)
+	{
+		return (Tup4dRW)Tup4dW.super.set(x, y, z, w);
+	}
+
 	@Override
 	default Tup4dRW getNewInstance(Tup4dR t)
 	{
-		return getNewInstance(t.getX(), t.getY(), t.getZ(), t.getW());
+		return (Tup4dRW)Tup4dR.super.getNewInstance(t);
 	}
 	
 	@Override
 	default Tup4dRW getNewInstance(double value)
 	{
-		return getNewInstance(value, value, value, value);
+		return (Tup4dRW)Tup4dR.super.getNewInstance(value);
 	}
 	
 	@Override
 	Tup4dRW getNewInstance(double x, double y, double z, double w);
+	
+	@Override
+	default int getDimensions()
+	{
+		return Tup4dR.super.getDimensions();
+	}
+	
+	@Override
+	default Tup4dRW getNewInstanceFromArray(double... values)
+	{
+		return (Tup4dRW)Tup4dR.super.getNewInstanceFromArray(values);
+	}
+	
+	@Override
+	default Tup4dRW setByIndex(int index, double value)
+	{
+		return (Tup4dRW)Tup4dW.super.setByIndex(index, value);
+	}
+	
+	@Override
+	default Tup4dRW setArray(double... values)
+	{
+		return (Tup4dRW)Tup4dW.super.setArray(values);
+	}
+	
+	@Override
+	default Tup4dRW set(TupdR t)
+	{
+		return (Tup4dRW)Tup4dW.super.set(t);
+	}
+	
+	@Override
+	default Tup4dRW getNewInstance(TupdR t)
+	{
+		return (Tup4dRW)Tup4dR.super.getNewInstance(t);
+	}
 }

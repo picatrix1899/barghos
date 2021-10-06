@@ -24,6 +24,9 @@ package org.barghos.core.api.tuple2;
 
 import java.math.BigInteger;
 
+import org.barghos.core.api.tuple.TupbigiR;
+import org.barghos.core.api.tuple.TupbigiW;
+
 /**
  * This interface grants writeonly access to any 2-dimensional big integer tuples.
  * 
@@ -35,7 +38,7 @@ import java.math.BigInteger;
  * 
  * @since 1.0.0.0
  */
-public interface Tup2bigiW
+public interface Tup2bigiW extends TupbigiW
 {
 	/**
 	 * Sets the x value of the tuple.
@@ -68,22 +71,16 @@ public interface Tup2bigiW
 	 * 
 	 * @since 1.0.0.0
 	 */
-	Tup2bigiW set(Tup2bigiR t);
+	default Tup2bigiW set(Tup2bigiR t)
+	{
+		return set(t.getX(), t.getY());
+	}
 	
-	/**
-	 * Sets all values to a single value.
-	 * 
-	 * <p>
-	 * This is usually used for resetting the tuple back to 0 again, by calling <code>set(BigInteger.ZERO)</code>.
-	 * </p>
-	 * 
-	 * @param value The value used for all values of the tuple.
-	 * 
-	 * @return The current tuple.
-	 * 
-	 * @since 1.0.0.0
-	 */
-	Tup2bigiW set(BigInteger value);
+	@Override
+	default Tup2bigiW set(BigInteger value)
+	{
+		return set(value, value);
+	}
 	
 	/**
 	 * Sets the values to the corresponding paramters.
@@ -95,5 +92,40 @@ public interface Tup2bigiW
 	 * 
 	 * @since 1.0.0.0
 	 */
-	Tup2bigiW set(BigInteger x, BigInteger y);
+	default Tup2bigiW set(BigInteger x, BigInteger y)
+	{
+		return setX(x).setY(y);
+	}
+	
+	@Override
+	default int getDimensions()
+	{
+		return 2;
+	}
+	
+	@Override
+	default Tup2bigiW setByIndex(int index, BigInteger value)
+	{
+		switch(index)
+		{
+			case 0: return setX(value);
+			case 1: return setY(value);
+		}
+		
+		throw new IndexOutOfBoundsException(index);
+	}
+	
+	@Override
+	default Tup2bigiW setArray(BigInteger... values)
+	{
+		BigInteger[] v = values;
+		return set(v[0], v[1]);
+	}
+	
+	@Override
+	default Tup2bigiW set(TupbigiR t)
+	{
+		BigInteger[] v = t.getArray();
+		return set(v[0], v[1]);
+	}
 }

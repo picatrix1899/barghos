@@ -22,6 +22,9 @@
 
 package org.barghos.core.api.tuple4;
 
+import org.barghos.core.api.tuple.TupiR;
+import org.barghos.core.api.tuple.TupiW;
+
 /**
  * This interface grants writeonly access to any 4-dimensional integer tuples.
  * 
@@ -29,7 +32,7 @@ package org.barghos.core.api.tuple4;
  * 
  * @since 1.0.0.0
  */
-public interface Tup4iW
+public interface Tup4iW extends TupiW
 {
 	/**
 	 * Sets the x value of the tuple.
@@ -84,22 +87,16 @@ public interface Tup4iW
 	 * 
 	 * @since 1.0.0.0
 	 */
-	Tup4iW set(Tup4iR t);
+	default Tup4iW set(Tup4iR t)
+	{
+		return set(t.getX(), t.getY(), t.getZ(), t.getW());
+	}
 	
-	/**
-	 * Sets all values to a single value.
-	 * 
-	 * <p>
-	 * This is usually used for resetting the tuple back to 0 again, by calling <code>set(0)</code>.
-	 * </p>
-	 * 
-	 * @param value The value used for all values of the tuple.
-	 * 
-	 * @return The current tuple.
-	 * 
-	 * @since 1.0.0.0
-	 */
-	Tup4iW set(int value);
+	@Override
+	default Tup4iW set(int value)
+	{
+		return set(value, value, value, value);
+	}
 	
 	/**
 	 * Sets the values to the corresponding paramters.
@@ -113,5 +110,42 @@ public interface Tup4iW
 	 * 
 	 * @since 1.0.0.0
 	 */
-	Tup4iW set(int x, int y, int z, int w);
+	default Tup4iW set(int x, int y, int z, int w)
+	{
+		return setX(x).setY(y).setZ(z).setW(w);
+	}
+	
+	@Override
+	default int getDimensions()
+	{
+		return 4;
+	}
+	
+	@Override
+	default Tup4iW setByIndex(int index, int value)
+	{
+		switch(index)
+		{
+			case 0: return setX(value);
+			case 1: return setY(value);
+			case 2: return setZ(value);
+			case 3: return setW(value);
+		}
+		
+		throw new IndexOutOfBoundsException(index);
+	}
+	
+	@Override
+	default Tup4iW setArray(int... values)
+	{
+		int[] v = values;
+		return set(v[0], v[1], v[2], v[3]);
+	}
+	
+	@Override
+	default Tup4iW set(TupiR t)
+	{
+		int[] v = t.getArray();
+		return set(v[0], v[1], v[2], v[3]);
+	}
 }

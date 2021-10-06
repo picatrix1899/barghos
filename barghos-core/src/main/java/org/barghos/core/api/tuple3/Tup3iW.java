@@ -22,6 +22,9 @@
 
 package org.barghos.core.api.tuple3;
 
+import org.barghos.core.api.tuple.TupiR;
+import org.barghos.core.api.tuple.TupiW;
+
 /**
  * This interface grants writeonly access to any 3-dimensional integer tuples.
  * 
@@ -33,7 +36,7 @@ package org.barghos.core.api.tuple3;
  * 
  * @since 1.0.0.0
  */
-public interface Tup3iW
+public interface Tup3iW extends TupiW
 {
 	/**
 	 * Sets the x value of the tuple.
@@ -77,22 +80,16 @@ public interface Tup3iW
 	 * 
 	 * @since 1.0.0.0
 	 */
-	Tup3iW set(Tup3iR t);
+	default Tup3iW set(Tup3iR t)
+	{
+		return set(t.getX(), t.getY(), t.getZ());
+	}
 	
-	/**
-	 * Sets all values to a single value.
-	 * 
-	 * <p>
-	 * This is usually used for resetting the tuple back to 0 again, by calling <code>set(0)</code>.
-	 * </p>
-	 * 
-	 * @param value The value used for all values of the tuple.
-	 * 
-	 * @return The current tuple.
-	 * 
-	 * @since 1.0.0.0
-	 */
-	Tup3iW set(int value);
+	@Override
+	default Tup3iW set(int value)
+	{
+		return set(value, value, value);
+	}
 	
 	/**
 	 * Sets the values to the corresponding paramters.
@@ -105,5 +102,41 @@ public interface Tup3iW
 	 * 
 	 * @since 1.0.0.0
 	 */
-	Tup3iW set(int x, int y, int z);
+	default Tup3iW set(int x, int y, int z)
+	{
+		return setX(x).setY(y).setZ(z);
+	}
+	
+	@Override
+	default int getDimensions()
+	{
+		return 3;
+	}
+	
+	@Override
+	default Tup3iW setByIndex(int index, int value)
+	{
+		switch(index)
+		{
+			case 0: return setX(value);
+			case 1: return setY(value);
+			case 2: return setZ(value);
+		}
+		
+		throw new IndexOutOfBoundsException(index);
+	}
+	
+	@Override
+	default Tup3iW setArray(int... values)
+	{
+		int[] v = values;
+		return set(v[0], v[1], v[2]);
+	}
+	
+	@Override
+	default Tup3iW set(TupiR t)
+	{
+		int[] v = t.getArray();
+		return set(v[0], v[1], v[2]);
+	}
 }

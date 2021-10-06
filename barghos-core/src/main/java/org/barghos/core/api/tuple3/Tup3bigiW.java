@@ -24,6 +24,9 @@ package org.barghos.core.api.tuple3;
 
 import java.math.BigInteger;
 
+import org.barghos.core.api.tuple.TupbigiR;
+import org.barghos.core.api.tuple.TupbigiW;
+
 /**
  * This interface grants writeonly access to any 3-dimensional big integer tuples.
  * 
@@ -35,7 +38,7 @@ import java.math.BigInteger;
  * 
  * @since 1.0.0.0
  */
-public interface Tup3bigiW
+public interface Tup3bigiW extends TupbigiW
 {
 	/**
 	 * Sets the x value of the tuple.
@@ -79,22 +82,16 @@ public interface Tup3bigiW
 	 * 
 	 * @since 1.0.0.0
 	 */
-	Tup3bigiW set(Tup3bigiR t);
+	default Tup3bigiW set(Tup3bigiR t)
+	{
+		return set(t.getX(), t.getY(), t.getZ());
+	}
 	
-	/**
-	 * Sets all values to a single value.
-	 * 
-	 * <p>
-	 * This is usually used for resetting the tuple back to 0 again, by calling <code>set(BigInteger.ZERO)</code>.
-	 * </p>
-	 * 
-	 * @param value The value used for all values of the tuple.
-	 * 
-	 * @return The current tuple.
-	 * 
-	 * @since 1.0.0.0
-	 */
-	Tup3bigiW set(BigInteger value);
+	@Override
+	default Tup3bigiW set(BigInteger value)
+	{
+		return set(value, value, value);
+	}
 	
 	/**
 	 * Sets the values to the corresponding paramters.
@@ -107,5 +104,41 @@ public interface Tup3bigiW
 	 * 
 	 * @since 1.0.0.0
 	 */
-	Tup3bigiW set(BigInteger x, BigInteger y, BigInteger z);
+	default Tup3bigiW set(BigInteger x, BigInteger y, BigInteger z)
+	{
+		return setX(x).setY(y).setZ(z);
+	}
+	
+	@Override
+	default int getDimensions()
+	{
+		return 3;
+	}
+	
+	@Override
+	default Tup3bigiW setByIndex(int index, BigInteger value)
+	{
+		switch(index)
+		{
+			case 0: return setX(value);
+			case 1: return setY(value);
+			case 2: return setZ(value);
+		}
+		
+		throw new IndexOutOfBoundsException(index);
+	}
+	
+	@Override
+	default Tup3bigiW setArray(BigInteger... values)
+	{
+		BigInteger[] v = values;
+		return set(v[0], v[1], v[2]);
+	}
+	
+	@Override
+	default Tup3bigiW set(TupbigiR t)
+	{
+		BigInteger[] v = t.getArray();
+		return set(v[0], v[1], v[2]);
+	}
 }

@@ -22,6 +22,8 @@
 
 package org.barghos.core.api.tuple4;
 
+import org.barghos.core.api.tuple.TuplR;
+
 /**
  * This interface grants readonly access to any 4-dimensional long tuples.
  * 
@@ -33,7 +35,7 @@ package org.barghos.core.api.tuple4;
  * 
  * @since 1.0.0.0
  */
-public interface Tup4lR
+public interface Tup4lR extends TuplR
 {
 	/**
 	 * Returns the x value from the tuple.
@@ -70,22 +72,8 @@ public interface Tup4lR
 	 * @since 1.0.0.0
 	 */
 	long getW();
-	
-	/**
-	 * Returns true if all components are finite and therefore not NaN or Infinity.
-	 * 
-	 * @return True if all components are finite.
-	 */
-	default boolean isFinite()
-	{
-		return true;
-	}
-	
-	/**
-	 * Returns true if all components are exactly zero.
-	 * 
-	 * @return True if all components are exactly zero.
-	 */
+
+	@Override
 	default boolean isZero()
 	{
 		return getX() == 0l &&
@@ -94,32 +82,15 @@ public interface Tup4lR
 				getW() == 0l;
 	}
 	
-	/**
-	 * Returns true if all components are zero within inclusive the given tolerance.
-	 * 
-	 * @param tolerance The tolerance around zero, that should still count as zero.
-	 * 
-	 * @return True if all components are technically zero.
-	 */
-	default boolean isZero(long tolerance)
+	@Override
+	default boolean isZeroWithMargin(long tolerance)
 	{
 		return Math.abs(getX()) <= tolerance &&
 				Math.abs(getY()) <= tolerance &&
 				Math.abs(getZ()) <= tolerance &&
 				Math.abs(getW()) <= tolerance;
 	}
-	
-	/**
-	 * Returns true if all the components are valid.
-	 * What values are considered valid or invalid depends on the tuple type.
-	 * 
-	 * @return True if all the components are valid.
-	 */
-	default boolean isValid()
-	{
-		return true;
-	}
-	
+
 	/**
 	 * Returns a new instance of the type of the origin instance with the components adopted
 	 * from t.
@@ -141,22 +112,7 @@ public interface Tup4lR
 		return getNewInstance(t.getX(), t.getY(), t.getZ(), t.getW());
 	}
 	
-	/**
-	 * Returns a new instance of the type of the origin instance with the components set to
-	 * value.
-	 * 
-	 * <p>
-	 * This can be used for type continuety.
-	 * This way even while only using abstractions it is possible to create
-	 * new instances of the original. It is similar to the {@link Object#clone()}
-	 * function but the {@link Object#clone()} function requires the returned instance to be
-	 * writable.
-	 * This function on the other hand allows for example the usage of factories.
-	 * 
-	 * @param value The value used for all components.
-	 * 
-	 * @return A new instance of the type of the origin instance
-	 */
+	@Override
 	default Tup4lR getNewInstance(long value)
 	{
 		return getNewInstance(value, value, value, value);
@@ -181,4 +137,44 @@ public interface Tup4lR
 	 * @return A new instance of the type of the origin instance
 	 */
 	Tup4lR getNewInstance(long x, long y, long z, long w);
+	
+	@Override
+	default int getDimensions()
+	{
+		return 4;
+	}
+	
+	@Override
+	default long getByIndex(int index)
+	{
+		switch(index)
+		{
+			case 0: return getX();
+			case 1: return getY();
+			case 2: return getZ();
+			case 3: return getW();
+		}
+		
+		throw new IndexOutOfBoundsException(index);
+	}
+	
+	@Override
+	default long[] getArray()
+	{
+		return new long[] {getX(), getY(), getZ(), getW()};
+	}
+	
+	@Override
+	default Tup4lR getNewInstanceFromArray(long... values)
+	{
+		long[] v = values;
+		return getNewInstance(v[0], v[1], v[2], v[3]);
+	}
+	
+	@Override
+	default Tup4lR getNewInstance(TuplR t)
+	{
+		long[] v = t.getArray();
+		return getNewInstance(v[0], v[1], v[2], v[3]);
+	}
 }

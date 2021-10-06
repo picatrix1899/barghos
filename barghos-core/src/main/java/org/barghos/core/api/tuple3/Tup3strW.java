@@ -22,6 +22,9 @@
 
 package org.barghos.core.api.tuple3;
 
+import org.barghos.core.api.tuple.TupstrR;
+import org.barghos.core.api.tuple.TupstrW;
+
 /**
  * This interface grants writeonly access to any 3-dimensional string tuples.
  * 
@@ -33,7 +36,7 @@ package org.barghos.core.api.tuple3;
  * 
  * @since 1.0.0.0
  */
-public interface Tup3strW
+public interface Tup3strW extends TupstrW
 {
 	/**
 	 * Sets the x value of the tuple.
@@ -77,22 +80,16 @@ public interface Tup3strW
 	 * 
 	 * @since 1.0.0.0
 	 */
-	Tup3strW set(Tup3strR t);
+	default Tup3strW set(Tup3strR t)
+	{
+		return set(t.getX(), t.getY(), t.getZ());
+	}
 	
-	/**
-	 * Sets all values to a single value.
-	 * 
-	 * <p>
-	 * This is usually used for resetting the tuple back to 0 again, by calling <code>set("")</code>.
-	 * </p>
-	 * 
-	 * @param value The value used for all values of the tuple.
-	 * 
-	 * @return The current tuple.
-	 * 
-	 * @since 1.0.0.0
-	 */
-	Tup3strW set(String value);
+	@Override
+	default Tup3strW set(String value)
+	{
+		return set(value, value, value);
+	}
 	
 	/**
 	 * Sets the values to the corresponding paramters.
@@ -105,5 +102,41 @@ public interface Tup3strW
 	 * 
 	 * @since 1.0.0.0
 	 */
-	Tup3strW set(String x, String y, String z);
+	default Tup3strW set(String x, String y, String z)
+	{
+		return setX(x).setY(y).setZ(z);
+	}
+	
+	@Override
+	default int getDimensions()
+	{
+		return 3;
+	}
+	
+	@Override
+	default Tup3strW setByIndex(int index, String value)
+	{
+		switch(index)
+		{
+			case 0: return setX(value);
+			case 1: return setY(value);
+			case 2: return setZ(value);
+		}
+		
+		throw new IndexOutOfBoundsException(index);
+	}
+	
+	@Override
+	default Tup3strW setArray(String... values)
+	{
+		String[] v = values;
+		return set(v[0], v[1], v[2]);
+	}
+	
+	@Override
+	default Tup3strW set(TupstrR t)
+	{
+		String[] v = t.getArray();
+		return set(v[0], v[1], v[2]);
+	}
 }

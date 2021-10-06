@@ -1,11 +1,12 @@
 package org.barghos.core.test.api.tuple4;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
-import org.barghos.core.api.testing.ValueRelay;
+import org.barghos.core.api.tuple.TupstrR;
 import org.barghos.core.api.tuple4.Tup4strR;
 
 /**
@@ -16,58 +17,190 @@ import org.barghos.core.api.tuple4.Tup4strR;
 class Tup4strRTest
 {
 	/**
-	 * This method is called after each test in this class.
+	 * This test ensures, that the interface extends the interface {@link TupstrR}.
 	 */
-	@AfterEach
-	void cleanup()
+	@Test
+	void inheritance_TupstrRTest()
 	{
-		ValueRelay.clear();
+		assertTrue(TupstrR.class.isAssignableFrom(Tup4strR.class));
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4strR#isValid()} returns
-	 * the corrct values for different situations.
+	 * This test ensures, that the function {@link Tup4strR#isValid()} returns true,
+	 * if none of the components is null.
 	 */
 	@Test
 	void isValidTest()
 	{
-		Tup4strR t = new TestTup(null, null, null, null);
-		assertEquals(false, t.isValid());
+		Tup4strR t = mock(Tup4strR.class);
 		
-		t = new TestTup("", null, null, null);
-		assertEquals(false, t.isValid());
+		when(t.isValid()).thenCallRealMethod();
 		
-		t = new TestTup(null, "", null, null);
-		assertEquals(false, t.isValid());
+		when(t.getX()).thenReturn("a");
+		when(t.getY()).thenReturn("b");
+		when(t.getZ()).thenReturn("c");
+		when(t.getW()).thenReturn("d");
 		
-		t = new TestTup(null, null, "", null);
-		assertEquals(false, t.isValid());
-		
-		t = new TestTup(null, null, null, "");
-		assertEquals(false, t.isValid());
-		
-		t = new TestTup("", "", "", "");
 		assertEquals(true, t.isValid());
+		
+		verify(t).isValid();
+		
+		verify(t).getX();
+		verify(t).getY();
+		verify(t).getZ();
+		verify(t).getW();
+		
+		verifyNoMoreInteractions(t);
 	}
 	
+	/**
+	 * This test ensures, that the function {@link Tup4strR#isValid()} returns false,
+	 * if the x component is null.
+	 */
+	@Test
+	void isValid_Fail_XTest()
+	{
+		Tup4strR t = mock(Tup4strR.class);
+		
+		when(t.isValid()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(null);
+
+		assertEquals(false, t.isValid());
+		
+		verify(t).isValid();
+		
+		verify(t).getX();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4strR#isValid()} returns false,
+	 * if the y component is null.
+	 */
+	@Test
+	void isValid_Fail_YTest()
+	{
+		Tup4strR t = mock(Tup4strR.class);
+		
+		when(t.isValid()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn("a");
+		when(t.getY()).thenReturn(null);
+
+		assertEquals(false, t.isValid());
+		
+		verify(t).isValid();
+		
+		verify(t).getX();
+		verify(t).getY();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4strR#isValid()} returns false,
+	 * if the z component is null.
+	 */
+	@Test
+	void isValid_Fail_ZTest()
+	{
+		Tup4strR t = mock(Tup4strR.class);
+		
+		when(t.isValid()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn("a");
+		when(t.getY()).thenReturn("b");
+		when(t.getZ()).thenReturn(null);
+		
+		assertEquals(false, t.isValid());
+		
+		verify(t).isValid();
+		
+		verify(t).getX();
+		verify(t).getY();
+		verify(t).getZ();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4strR#isValid()} returns false,
+	 * if the w component is null.
+	 */
+	@Test
+	void isValid_Fail_WTest()
+	{
+		Tup4strR t = mock(Tup4strR.class);
+		
+		when(t.isValid()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn("a");
+		when(t.getY()).thenReturn("b");
+		when(t.getZ()).thenReturn("c");
+		when(t.getW()).thenReturn(null);
+		
+		assertEquals(false, t.isValid());
+		
+		verify(t).isValid();
+		
+		verify(t).getX();
+		verify(t).getY();
+		verify(t).getZ();
+		verify(t).getW();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * this test ensures, that the function {@link Tup4strR#getDimensions()} always
+	 * returns 4 and does not make any calls.
+	 */
+	@Test
+	void getDimensionsTest()
+	{
+		Tup4strR t = mock(Tup4strR.class);
+		
+		when(t.getDimensions()).thenCallRealMethod();
+		
+		assertEquals(4, t.getDimensions());
+		
+		verify(t).getDimensions();
+		
+		verifyNoMoreInteractions(t);
+	}
+
 	/**
 	 * This test ensures, that the default implementation of the function {@link Tup4strR#getNewInstance(Tup4strR)} calls
 	 * the function {@link Tup4strR#getNewInstance(String, String, String, String)} with the correct components.
 	 */
 	@Test
-	void getNewInstance_TupleTest()
+	void getNewInstance_Tuple2Test()
 	{
-		Tup4strR t = new TestTup("a", "a", "a", "a");
+		Tup4strR original = mock(Tup4strR.class);
+		Tup4strR newInstance = mock(Tup4strR.class);
+		Tup4strR t = mock(Tup4strR.class);
 		
-		t.getNewInstance(new TestTup("b", "c", "d", "e"));
+		when(t.getNewInstance(original)).thenCallRealMethod();
 		
-		assertEquals(true, ValueRelay.get("getNewInstanceC", false));
-		assertEquals("b", ValueRelay.get("getNewInstanceC_X", ""));
-		assertEquals("c", ValueRelay.get("getNewInstanceC_Y", ""));
-		assertEquals("d", ValueRelay.get("getNewInstanceC_Z", ""));
-		assertEquals("e", ValueRelay.get("getNewInstanceC_W", ""));
+		when(original.getX()).thenReturn("a");
+		when(original.getY()).thenReturn("b");
+		when(original.getZ()).thenReturn("c");
+		when(original.getW()).thenReturn("d");
+		when(t.getNewInstance("a", "b", "c", "d")).thenReturn(newInstance);
 		
-		// Can't test for the result here, as the relaying and adopting of the values are implementation specific.
+		assertSame(newInstance, t.getNewInstance(original));
+		
+		verify(t).getNewInstance(original);
+		
+		verify(original).getX();
+		verify(original).getY();
+		verify(original).getZ();
+		verify(original).getW();
+		verify(t).getNewInstance("a", "b", "c", "d");
+		
+		verifyNoMoreInteractions(t, original);
 	}
 	
 	/**
@@ -77,72 +210,207 @@ class Tup4strRTest
 	@Test
 	void getNewInstance_ValueTest()
 	{
-		Tup4strR t = new TestTup("a", "a", "a", "a");
+		Tup4strR newInstance = mock(Tup4strR.class);
+		Tup4strR t = mock(Tup4strR.class);
 		
-		t.getNewInstance("b");
+		when(t.getNewInstance("a")).thenCallRealMethod();
+
+		when(t.getNewInstance("a", "a", "a", "a")).thenReturn(newInstance);
 		
-		assertEquals(true, ValueRelay.get("getNewInstanceC", false));
-		assertEquals("b", ValueRelay.get("getNewInstanceC_X", ""));
-		assertEquals("b", ValueRelay.get("getNewInstanceC_Y", ""));
-		assertEquals("b", ValueRelay.get("getNewInstanceC_Z", ""));
-		assertEquals("b", ValueRelay.get("getNewInstanceC_W", ""));
+		assertSame(newInstance, t.getNewInstance("a"));
 		
-		// Can't test for the result here, as the relaying and adopting of the values are implementation specific.
+		verify(t).getNewInstance("a");
+		
+		verify(t).getNewInstance("a", "a", "a", "a");
+		
+		verifyNoMoreInteractions(t);
 	}
 	
 	/**
-	 * This class is a test implementation of the interface {@link Tup4strR}.
-	 * 
-	 * @author picatrix1899
+	 * This test ensures, that the default implementation of the function {@link Tup4strR#getNewInstance(TupstrR)} calls
+	 * the function {@link Tup4strR#getNewInstance(String, String, String, String)} with the correct components.
 	 */
-	private static class TestTup implements Tup4strR
+	@Test
+	void getNewInstance_TupleTest()
 	{
-		private final String x;
-		private final String y;
-		private final String z;
-		private final String w;
+		TupstrR original = mock(TupstrR.class);
+		Tup4strR newInstance = mock(Tup4strR.class);
+		Tup4strR t = mock(Tup4strR.class);
 		
-		public TestTup(String x, String y, String z, String w)
-		{
-			this.x = x;
-			this.y = y;
-			this.z = z;
-			this.w = w;
-		}
+		when(t.getNewInstance(original)).thenCallRealMethod();
 		
-		@Override
-		public String getX()
-		{
-			return this.x;
-		}
+		when(original.getArray()).thenReturn(new String[] {"a", "b", "c", "d"});
+		when(t.getNewInstance("a", "b", "c", "d")).thenReturn(newInstance);
 		
-		@Override
-		public String getY()
-		{
-			return this.y;
-		}
+		assertSame(newInstance, t.getNewInstance(original));
 		
-		@Override
-		public String getZ()
-		{
-			return this.z;
-		}
+		verify(t).getNewInstance(original);
 		
-		@Override
-		public String getW()
-		{
-			return this.w;
-		}
+		verify(original).getArray();
+		verify(t).getNewInstance("a", "b", "c", "d");
 		
-		@Override
-		public TestTup getNewInstance(String x, String y, String z, String w)
-		{
-			ValueRelay.relayCall("getNewInstanceC");
-			ValueRelay.relay("getNewInstanceC_X", x);
-			ValueRelay.relay("getNewInstanceC_Y", y);
-			ValueRelay.relay("getNewInstanceC_Z", z);
-			ValueRelay.relay("getNewInstanceC_W", w);
-			return new TestTup(x, y, z, w);
-		}
+		verifyNoMoreInteractions(t, original);
+	}
+	
+	/**
+	 * This test ensures, that the default implementation of the function {@link Tup4strR#getNewInstanceFromArray(String[])} calls
+	 * the function {@link Tup4strR#getNewInstance(String, String, String, String)} with the correct components.
+	 */
+	@Test
+	void getNewInstanceFromArrayTest()
+	{
+		Tup4strR newInstance = mock(Tup4strR.class);
+		Tup4strR t = mock(Tup4strR.class);
+		
+		when(t.getNewInstanceFromArray(new String[] {"a", "b", "c", "d"})).thenCallRealMethod();
+
+		when(t.getNewInstance("a", "b", "c", "d")).thenReturn(newInstance);
+		
+		assertSame(newInstance, t.getNewInstanceFromArray(new String[] {"a", "b", "c", "d"}));
+		
+		verify(t).getNewInstanceFromArray(new String[] {"a", "b", "c", "d"});
+		
+		verify(t).getNewInstance("a", "b", "c", "d");
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4strR#getArray()} returns
+	 * an array with the components in the right order.
+	 */
+	@Test
+	void getArrayTest()
+	{
+		Tup4strR t = mock(Tup4strR.class);
+		
+		when(t.getArray()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn("a");
+		when(t.getY()).thenReturn("b");
+		when(t.getZ()).thenReturn("c");
+		when(t.getW()).thenReturn("d");
+		
+		assertArrayEquals(new String[] {"a", "b", "c", "d"}, t.getArray());
+		
+		verify(t).getArray();
+		
+		verify(t).getX();
+		verify(t).getY();
+		verify(t).getZ();
+		verify(t).getW();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4strR#getByIndex(int)} returns
+	 * the x component for the index 0.
+	 */
+	@Test
+	void getByIndex_XTest()
+	{
+		Tup4strR t = mock(Tup4strR.class);
+		
+		when(t.getByIndex(0)).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn("a");
+		
+		assertEquals("a", t.getByIndex(0));
+
+		verify(t).getByIndex(0);
+		
+		verify(t).getX();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4strR#getByIndex(int)} returns
+	 * the y component for the index 1.
+	 */
+	@Test
+	void getByIndex_YTest()
+	{
+		Tup4strR t = mock(Tup4strR.class);
+		
+		when(t.getByIndex(1)).thenCallRealMethod();
+		
+		when(t.getY()).thenReturn("a");
+		
+		assertEquals("a", t.getByIndex(1));
+
+		verify(t).getByIndex(1);
+		
+		verify(t).getY();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4strR#getByIndex(int)} returns
+	 * the z component for the index 2.
+	 */
+	@Test
+	void getByIndex_ZTest()
+	{
+		Tup4strR t = mock(Tup4strR.class);
+		
+		when(t.getByIndex(2)).thenCallRealMethod();
+		
+		when(t.getZ()).thenReturn("a");
+		
+		assertEquals("a", t.getByIndex(2));
+
+		verify(t).getByIndex(2);
+		
+		verify(t).getZ();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4strR#getByIndex(int)} returns
+	 * the w component for the index 3.
+	 */
+	@Test
+	void getByIndex_WTest()
+	{
+		Tup4strR t = mock(Tup4strR.class);
+		
+		when(t.getByIndex(3)).thenCallRealMethod();
+		
+		when(t.getW()).thenReturn("a");
+		
+		assertEquals("a", t.getByIndex(3));
+
+		verify(t).getByIndex(3);
+		
+		verify(t).getW();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4strR#getByIndex(int)} throws
+	 * an {@link IndexOutOfBoundsException} for an index different than 0, 1, 2 or 3.
+	 */
+	@Test
+	void getByIndex_ExceptionTest()
+	{
+		Tup4strR t = mock(Tup4strR.class);
+		
+		when(t.getByIndex(4)).thenCallRealMethod();
+
+		assertThrows(IndexOutOfBoundsException.class, new Executable() {
+			public void execute() throws Throwable
+			{
+				t.getByIndex(4);
+			}
+		});
+
+		verify(t).getByIndex(4);
+
+		verifyNoMoreInteractions(t);
 	}
 }

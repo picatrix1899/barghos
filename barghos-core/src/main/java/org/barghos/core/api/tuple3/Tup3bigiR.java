@@ -24,6 +24,8 @@ package org.barghos.core.api.tuple3;
 
 import java.math.BigInteger;
 
+import org.barghos.core.api.tuple.TupbigiR;
+
 /**
  * This interface grants readonly access to any 3-dimensional big integer tuples.
  * 
@@ -35,7 +37,7 @@ import java.math.BigInteger;
  * 
  * @since 1.0.0.0
  */
-public interface Tup3bigiR
+public interface Tup3bigiR extends TupbigiR
 {
 	/**
 	 * Returns the x value from the tuple.
@@ -63,24 +65,8 @@ public interface Tup3bigiR
 	 * @since 1.0.0.0
 	 */
 	BigInteger getZ();
-	
-	/**
-	 * Returns true if all components are finite and therefore not NaN or Infinity.
-	 * This does not account for validity of the tuple.
-	 * 
-	 * @return True if all components are finite.
-	 */
-	default boolean isFinite()
-	{
-		return true;
-	}
-	
-	/**
-	 * Returns true if all components are exactly zero.
-	 * This does not account for validity of the tuple.
-	 * 
-	 * @return True if all components are exactly zero.
-	 */
+
+	@Override
 	default boolean isZero()
 	{
 		return getX().compareTo(BigInteger.ZERO) == 0 &&
@@ -88,27 +74,15 @@ public interface Tup3bigiR
 				getZ().compareTo(BigInteger.ZERO) == 0;
 	}
 	
-	/**
-	 * Returns true if all components are zero within inclusive the given tolerance.
-	 * This does not account for validity of the tuple.
-	 * 
-	 * @param tolerance The tolerance around zero, that should still count as zero.
-	 * 
-	 * @return True if all components are technically zero.
-	 */
-	default boolean isZero(BigInteger tolerance)
+	@Override
+	default boolean isZeroWithMargin(BigInteger tolerance)
 	{
 		return getX().abs().compareTo(tolerance) <= 0 &&
 				getY().abs().compareTo(tolerance) <= 0 &&
 				getZ().abs().compareTo(tolerance) <= 0;
 	}
 	
-	/**
-	 * Returns true if all the components are valid.
-	 * What values are considered valid or invalid depends on the tuple type.
-	 * 
-	 * @return True if all the components are valid.
-	 */
+	@Override
 	default boolean isValid()
 	{
 		return getX() != null &&
@@ -137,22 +111,7 @@ public interface Tup3bigiR
 		return getNewInstance(t.getX(), t.getY(), t.getZ());
 	}
 	
-	/**
-	 * Returns a new instance of the type of the origin instance with the components set to
-	 * value.
-	 * 
-	 * <p>
-	 * This can be used for type continuety.
-	 * This way even while only using abstractions it is possible to create
-	 * new instances of the original. It is similar to the {@link Object#clone()}
-	 * function but the {@link Object#clone()} function requires the returned instance to be
-	 * writable.
-	 * This function on the other hand allows for example the usage of factories.
-	 * 
-	 * @param value The value used for all components.
-	 * 
-	 * @return A new instance of the type of the origin instance
-	 */
+	@Override
 	default Tup3bigiR getNewInstance(BigInteger value)
 	{
 		return getNewInstance(value, value, value);
@@ -176,4 +135,43 @@ public interface Tup3bigiR
 	 * @return A new instance of the type of the origin instance
 	 */
 	Tup3bigiR getNewInstance(BigInteger x, BigInteger y, BigInteger z);
+	
+	@Override
+	default int getDimensions()
+	{
+		return 3;
+	}
+	
+	@Override
+	default BigInteger getByIndex(int index)
+	{
+		switch(index)
+		{
+			case 0: return getX();
+			case 1: return getY();
+			case 2: return getZ();
+		}
+		
+		throw new IndexOutOfBoundsException(index);
+	}
+	
+	@Override
+	default BigInteger[] getArray()
+	{
+		return new BigInteger[] {getX(), getY(), getZ()};
+	}
+	
+	@Override
+	default Tup3bigiR getNewInstanceFromArray(BigInteger... values)
+	{
+		BigInteger[] v = values;
+		return getNewInstance(v[0], v[1], v[2]);
+	}
+	
+	@Override
+	default Tup3bigiR getNewInstance(TupbigiR t)
+	{
+		BigInteger[] v = t.getArray();
+		return getNewInstance(v[0], v[1], v[2]);
+	}
 }

@@ -22,6 +22,8 @@
 
 package org.barghos.core.api.tuple2;
 
+import org.barghos.core.api.tuple.TuplR;
+
 /**
  * This interface grants readonly access to any 2-dimensional long tuples.
  * 
@@ -33,7 +35,7 @@ package org.barghos.core.api.tuple2;
  * 
  * @since 1.0.0.0
  */
-public interface Tup2lR
+public interface Tup2lR extends TuplR
 {
 	/**
 	 * Returns the x value from the tuple.
@@ -54,20 +56,11 @@ public interface Tup2lR
 	long getY();
 	
 	/**
-	 * Returns true if all components are finite and therefore not NaN or Infinity.
-	 * 
-	 * @return True if all components are finite.
-	 */
-	default boolean isFinite()
-	{
-		return true;
-	}
-	
-	/**
 	 * Returns true if all components are exactly zero.
 	 * 
 	 * @return True if all components are exactly zero.
 	 */
+	@Override
 	default boolean isZero()
 	{
 		return getX() == 0l &&
@@ -81,21 +74,11 @@ public interface Tup2lR
 	 * 
 	 * @return True if all components are technically zero.
 	 */
-	default boolean isZero(long tolerance)
+	@Override
+	default boolean isZeroWithMargin(long tolerance)
 	{
 		return Math.abs(getX()) <= tolerance &&
 				Math.abs(getY()) <= tolerance;
-	}
-	
-	/**
-	 * Returns true if all the components are valid.
-	 * What values are considered valid or invalid depends on the tuple type.
-	 * 
-	 * @return True if all the components are valid.
-	 */
-	default boolean isValid()
-	{
-		return true;
 	}
 	
 	/**
@@ -118,23 +101,8 @@ public interface Tup2lR
 	{
 		return getNewInstance(t.getX(), t.getY());
 	}
-	
-	/**
-	 * Returns a new instance of the type of the origin instance with the components set to
-	 * value.
-	 * 
-	 * <p>
-	 * This can be used for type continuety.
-	 * This way even while only using abstractions it is possible to create
-	 * new instances of the original. It is similar to the {@link Object#clone()}
-	 * function but the {@link Object#clone()} function requires the returned instance to be
-	 * writable.
-	 * This function on the other hand allows for example the usage of factories.
-	 * 
-	 * @param value The value used for all components.
-	 * 
-	 * @return A new instance of the type of the origin instance
-	 */
+
+	@Override
 	default Tup2lR getNewInstance(long value)
 	{
 		return getNewInstance(value, value);
@@ -157,4 +125,42 @@ public interface Tup2lR
 	 * @return A new instance of the type of the origin instance
 	 */
 	Tup2lR getNewInstance(long x, long y);
+	
+	@Override
+	default int getDimensions()
+	{
+		return 2;
+	}
+	
+	@Override
+	default long getByIndex(int index)
+	{
+		switch(index)
+		{
+			case 0: return getX();
+			case 1: return getY();
+		}
+		
+		throw new IndexOutOfBoundsException(index);
+	}
+	
+	@Override
+	default long[] getArray()
+	{
+		return new long[] {getX(), getY()};
+	}
+	
+	@Override
+	default Tup2lR getNewInstanceFromArray(long... values)
+	{
+		long[] v = values;
+		return getNewInstance(v[0], v[1]);
+	}
+	
+	@Override
+	default Tup2lR getNewInstance(TuplR t)
+	{
+		long[] v = t.getArray();
+		return getNewInstance(v[0], v[1]);
+	}
 }

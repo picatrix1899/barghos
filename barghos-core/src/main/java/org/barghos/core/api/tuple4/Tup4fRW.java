@@ -22,6 +22,9 @@
 
 package org.barghos.core.api.tuple4;
 
+import org.barghos.core.api.tuple.TupfR;
+import org.barghos.core.api.tuple.TupfRW;
+
 /**
  * This interface grants read and write access to any 4-dimensional float tuple.
  * 
@@ -29,7 +32,7 @@ package org.barghos.core.api.tuple4;
  * 
  * @since 1.0.0.0
  */
-public interface Tup4fRW extends Tup4fR, Tup4fW
+public interface Tup4fRW extends Tup4fR, Tup4fW, TupfRW
 {
 	@Override
 	Tup4fRW setX(float x);
@@ -44,26 +47,71 @@ public interface Tup4fRW extends Tup4fR, Tup4fW
 	Tup4fRW setW(float w);
 	
 	@Override
-	Tup4fRW set(Tup4fR t);
+	default Tup4fRW set(Tup4fR t)
+	{
+		return (Tup4fRW)Tup4fW.super.set(t);
+	}
 	
 	@Override
-	Tup4fRW set(float value);
+	default Tup4fRW set(float value)
+	{
+		return (Tup4fRW)Tup4fW.super.set(value);
+	}
 	
 	@Override
-	Tup4fRW set(float x, float y, float z, float w);
-	
+	default Tup4fRW set(float x, float y, float z, float w)
+	{
+		return (Tup4fRW)Tup4fW.super.set(x, y, z, w);
+	}
+
 	@Override
 	default Tup4fRW getNewInstance(Tup4fR t)
 	{
-		return getNewInstance(t.getX(), t.getY(), t.getZ(), t.getW());
+		return (Tup4fRW)Tup4fR.super.getNewInstance(t);
 	}
 	
 	@Override
 	default Tup4fRW getNewInstance(float value)
 	{
-		return getNewInstance(value, value, value, value);
+		return (Tup4fRW)Tup4fR.super.getNewInstance(value);
 	}
 	
 	@Override
 	Tup4fRW getNewInstance(float x, float y, float z, float w);
+	
+	@Override
+	default int getDimensions()
+	{
+		return Tup4fR.super.getDimensions();
+	}
+	
+	@Override
+	default Tup4fRW getNewInstanceFromArray(float... values)
+	{
+		return (Tup4fRW)Tup4fR.super.getNewInstanceFromArray(values);
+	}
+	
+	@Override
+	default Tup4fRW setByIndex(int index, float value)
+	{
+		return (Tup4fRW)Tup4fW.super.setByIndex(index, value);
+	}
+	
+	@Override
+	default Tup4fRW setArray(float... values)
+	{
+		return (Tup4fRW)Tup4fW.super.setArray(values);
+	}
+	
+	@Override
+	default Tup4fRW set(TupfR t)
+	{
+		return (Tup4fRW)Tup4fW.super.set(t);
+	}
+	
+	@Override
+	default Tup4fRW getNewInstance(TupfR t)
+	{
+		return (Tup4fRW)Tup4fR.super.getNewInstance(t);
+	}
 }

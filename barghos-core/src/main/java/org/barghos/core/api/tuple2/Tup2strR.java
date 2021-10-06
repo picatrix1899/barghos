@@ -22,6 +22,8 @@
 
 package org.barghos.core.api.tuple2;
 
+import org.barghos.core.api.tuple.TupstrR;
+
 /**
  * This interface grants readonly access to any 2-dimensional string tuples.
  * 
@@ -33,7 +35,7 @@ package org.barghos.core.api.tuple2;
  * 
  * @since 1.0.0.0
  */
-public interface Tup2strR
+public interface Tup2strR extends TupstrR
 {
 	/**
 	 * Returns the x value from the tuple.
@@ -102,6 +104,7 @@ public interface Tup2strR
 	 * 
 	 * @return A new instance of the type of the origin instance
 	 */
+	@Override
 	default Tup2strR getNewInstance(String value)
 	{
 		return getNewInstance(value, value);
@@ -124,4 +127,42 @@ public interface Tup2strR
 	 * @return A new instance of the type of the origin instance
 	 */
 	Tup2strR getNewInstance(String x, String y);
+	
+	@Override
+	default int getDimensions()
+	{
+		return 2;
+	}
+	
+	@Override
+	default String getByIndex(int index)
+	{
+		switch(index)
+		{
+			case 0: return getX();
+			case 1: return getY();
+		}
+		
+		throw new IndexOutOfBoundsException(index);
+	}
+	
+	@Override
+	default String[] getArray()
+	{
+		return new String[] {getX(), getY()};
+	}
+	
+	@Override
+	default Tup2strR getNewInstanceFromArray(String... values)
+	{
+		String[] v = values;
+		return getNewInstance(v[0], v[1]);
+	}
+	
+	@Override
+	default Tup2strR getNewInstance(TupstrR t)
+	{
+		String[] v = t.getArray();
+		return getNewInstance(v[0], v[1]);
+	}
 }

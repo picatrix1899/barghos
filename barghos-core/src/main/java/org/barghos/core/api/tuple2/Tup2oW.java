@@ -66,7 +66,10 @@ public interface Tup2oW<X,Y>
 	 * 
 	 * @since 1.0.0.0
 	 */
-	Tup2oW<X,Y> set(Tup2oR<X,Y> t);
+	default Tup2oW<X,Y> set(Tup2oR<X,Y> t)
+	{
+		return set(t.getX(), t.getY());
+	}
 	
 	/**
 	 * Sets the values to the corresponding paramters.
@@ -78,5 +81,8 @@ public interface Tup2oW<X,Y>
 	 * 
 	 * @since 1.0.0.0
 	 */
-	Tup2oW<X,Y> set(X x, Y y);
+	default Tup2oW<X,Y> set(X x, Y y)
+	{
+		return setX(x).setY(y);
+	}
 }

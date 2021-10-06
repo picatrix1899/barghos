@@ -22,6 +22,9 @@
 
 package org.barghos.core.api.tuple2;
 
+import org.barghos.core.api.tuple.TupboR;
+import org.barghos.core.api.tuple.TupboW;
+
 /**
  * This interface grants writeonly access to any 2-dimensional boolean tuples.
  * 
@@ -33,7 +36,7 @@ package org.barghos.core.api.tuple2;
  * 
  * @since 1.0.0.0
  */
-public interface Tup2boW
+public interface Tup2boW extends TupboW
 {
 	/**
 	 * Sets the x value of the tuple.
@@ -66,22 +69,16 @@ public interface Tup2boW
 	 * 
 	 * @since 1.0.0.0
 	 */
-	Tup2boW set(Tup2boR t);
+	default Tup2boW set(Tup2boR t)
+	{
+		return set(t.getX(), t.getY());
+	}
 	
-	/**
-	 * Sets all values to a single value.
-	 * 
-	 * <p>
-	 * This is usually used for resetting the tuple back to false again, by calling <code>set(false)</code>.
-	 * </p>
-	 * 
-	 * @param value The value used for all values of the tuple.
-	 * 
-	 * @return The current tuple.
-	 * 
-	 * @since 1.0.0.0
-	 */
-	Tup2boW set(boolean value);
+	@Override
+	default Tup2boW set(boolean value)
+	{
+		return set(value, value);
+	}
 	
 	/**
 	 * Sets the values to the corresponding paramters.
@@ -93,5 +90,40 @@ public interface Tup2boW
 	 * 
 	 * @since 1.0.0.0
 	 */
-	Tup2boW set(boolean x, boolean y);
+	default Tup2boW set(boolean x, boolean y)
+	{
+		return setX(x).setY(y);
+	}
+	
+	@Override
+	default int getDimensions()
+	{
+		return 2;
+	}
+	
+	@Override
+	default Tup2boW setByIndex(int index, boolean value)
+	{
+		switch(index)
+		{
+			case 0: return setX(value);
+			case 1: return setY(value);
+		}
+		
+		throw new IndexOutOfBoundsException(index);
+	}
+	
+	@Override
+	default Tup2boW setArray(boolean... values)
+	{
+		boolean[] v = values;
+		return set(v[0], v[1]);
+	}
+	
+	@Override
+	default Tup2boW set(TupboR t)
+	{
+		boolean[] v = t.getArray();
+		return set(v[0], v[1]);
+	}
 }

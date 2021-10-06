@@ -22,6 +22,9 @@
 
 package org.barghos.core.api.tuple3;
 
+import org.barghos.core.api.tuple.TupdR;
+import org.barghos.core.api.tuple.TupdRW;
+
 /**
  * This interface grants read and write access to any 3-dimensional double tuple.
  * 
@@ -29,7 +32,7 @@ package org.barghos.core.api.tuple3;
  * 
  * @since 1.0.0.0
  */
-public interface Tup3dRW extends Tup3dR, Tup3dW
+public interface Tup3dRW extends Tup3dR, Tup3dW, TupdRW
 {
 	@Override
 	Tup3dRW setX(double x);
@@ -41,26 +44,71 @@ public interface Tup3dRW extends Tup3dR, Tup3dW
 	Tup3dRW setZ(double z);
 	
 	@Override
-	Tup3dRW set(Tup3dR t);
+	default Tup3dRW set(Tup3dR t)
+	{
+		return (Tup3dRW)Tup3dW.super.set(t);
+	}
 	
 	@Override
-	Tup3dRW set(double value);
+	default Tup3dRW set(double value)
+	{
+		return (Tup3dRW)Tup3dW.super.set(value);
+	}
 	
 	@Override
-	Tup3dRW set(double x, double y, double z);
-	
+	default Tup3dRW set(double x, double y, double z)
+	{
+		return (Tup3dRW)Tup3dW.super.set(x, y, z);
+	}
+
 	@Override
 	default Tup3dRW getNewInstance(Tup3dR t)
 	{
-		return getNewInstance(t.getX(), t.getY(), t.getZ());
+		return (Tup3dRW)Tup3dR.super.getNewInstance(t);
 	}
 	
 	@Override
 	default Tup3dRW getNewInstance(double value)
 	{
-		return getNewInstance(value, value, value);
+		return (Tup3dRW)Tup3dR.super.getNewInstance(value);
 	}
 	
 	@Override
 	Tup3dRW getNewInstance(double x, double y, double z);
+	
+	@Override
+	default int getDimensions()
+	{
+		return Tup3dR.super.getDimensions();
+	}
+	
+	@Override
+	default Tup3dRW getNewInstanceFromArray(double... values)
+	{
+		return (Tup3dRW)Tup3dR.super.getNewInstanceFromArray(values);
+	}
+	
+	@Override
+	default Tup3dRW setByIndex(int index, double value)
+	{
+		return (Tup3dRW)Tup3dW.super.setByIndex(index, value);
+	}
+	
+	@Override
+	default Tup3dRW setArray(double... values)
+	{
+		return (Tup3dRW)Tup3dW.super.setArray(values);
+	}
+	
+	@Override
+	default Tup3dRW set(TupdR t)
+	{
+		return (Tup3dRW)Tup3dW.super.set(t);
+	}
+	
+	@Override
+	default Tup3dRW getNewInstance(TupdR t)
+	{
+		return (Tup3dRW)Tup3dR.super.getNewInstance(t);
+	}
 }

@@ -22,6 +22,9 @@
 
 package org.barghos.core.api.tuple2;
 
+import org.barghos.core.api.tuple.TupstrR;
+import org.barghos.core.api.tuple.TupstrW;
+
 /**
  * This interface grants writeonly access to any 2-dimensional string tuples.
  * 
@@ -33,7 +36,7 @@ package org.barghos.core.api.tuple2;
  * 
  * @since 1.0.0.0
  */
-public interface Tup2strW
+public interface Tup2strW extends TupstrW
 {
 	/**
 	 * Sets the x value of the tuple.
@@ -66,22 +69,16 @@ public interface Tup2strW
 	 * 
 	 * @since 1.0.0.0
 	 */
-	Tup2strW set(Tup2strR t);
+	default Tup2strW set(Tup2strR t)
+	{
+		return set(t.getX(), t.getY());
+	}
 	
-	/**
-	 * Sets all values to a single value.
-	 * 
-	 * <p>
-	 * This is usually used for resetting the tuple back to "" again, by calling <code>set("")</code>.
-	 * </p>
-	 * 
-	 * @param value The value used for all values of the tuple.
-	 * 
-	 * @return The current tuple.
-	 * 
-	 * @since 1.0.0.0
-	 */
-	Tup2strW set(String value);
+	@Override
+	default Tup2strW set(String value)
+	{
+		return set(value, value);
+	}
 	
 	/**
 	 * Sets the values to the corresponding paramters.
@@ -93,5 +90,40 @@ public interface Tup2strW
 	 * 
 	 * @since 1.0.0.0
 	 */
-	Tup2strW set(String x, String y);
+	default Tup2strW set(String x, String y)
+	{
+		return setX(x).setY(y);
+	}
+	
+	@Override
+	default int getDimensions()
+	{
+		return 2;
+	}
+	
+	@Override
+	default Tup2strW setByIndex(int index, String value)
+	{
+		switch(index)
+		{
+			case 0: return setX(value);
+			case 1: return setY(value);
+		}
+		
+		throw new IndexOutOfBoundsException(index);
+	}
+	
+	@Override
+	default Tup2strW setArray(String... values)
+	{
+		String[] v = values;
+		return set(v[0], v[1]);
+	}
+	
+	@Override
+	default Tup2strW set(TupstrR t)
+	{
+		String[] v = t.getArray();
+		return set(v[0], v[1]);
+	}
 }

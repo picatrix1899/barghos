@@ -22,6 +22,9 @@
 
 package org.barghos.core.api.tuple4;
 
+import org.barghos.core.api.tuple.TupcR;
+import org.barghos.core.api.tuple.TupcRW;
+
 /**
  * This interface grants read and write access to any 4-dimensional char tuple.
  * 
@@ -29,7 +32,7 @@ package org.barghos.core.api.tuple4;
  * 
  * @since 1.0.0.0
  */
-public interface Tup4cRW extends Tup4cR, Tup4cW
+public interface Tup4cRW extends Tup4cR, Tup4cW, TupcRW
 {
 	@Override
 	Tup4cRW setX(char x);
@@ -44,26 +47,71 @@ public interface Tup4cRW extends Tup4cR, Tup4cW
 	Tup4cRW setW(char w);
 	
 	@Override
-	Tup4cRW set(Tup4cR t);
+	default Tup4cRW set(Tup4cR t)
+	{
+		return (Tup4cRW)Tup4cW.super.set(t);
+	}
 	
 	@Override
-	Tup4cRW set(char value);
+	default Tup4cRW set(char value)
+	{
+		return (Tup4cRW)Tup4cW.super.set(value);
+	}
 	
 	@Override
-	Tup4cRW set(char x, char y, char z, char w);
-	
+	default Tup4cRW set(char x, char y, char z, char w)
+	{
+		return (Tup4cRW)Tup4cW.super.set(x, y, z, w);
+	}
+
 	@Override
 	default Tup4cRW getNewInstance(Tup4cR t)
 	{
-		return getNewInstance(t.getX(), t.getY(), t.getZ(), t.getW());
+		return (Tup4cRW)Tup4cR.super.getNewInstance(t);
 	}
 	
 	@Override
 	default Tup4cRW getNewInstance(char value)
 	{
-		return getNewInstance(value, value, value, value);
+		return (Tup4cRW)Tup4cR.super.getNewInstance(value);
 	}
 	
 	@Override
 	Tup4cRW getNewInstance(char x, char y, char z, char w);
+	
+	@Override
+	default int getDimensions()
+	{
+		return Tup4cR.super.getDimensions();
+	}
+	
+	@Override
+	default Tup4cRW getNewInstanceFromArray(char... values)
+	{
+		return (Tup4cRW)Tup4cR.super.getNewInstanceFromArray(values);
+	}
+	
+	@Override
+	default Tup4cRW setByIndex(int index, char value)
+	{
+		return (Tup4cRW)Tup4cW.super.setByIndex(index, value);
+	}
+	
+	@Override
+	default Tup4cRW setArray(char... values)
+	{
+		return (Tup4cRW)Tup4cW.super.setArray(values);
+	}
+	
+	@Override
+	default Tup4cRW set(TupcR t)
+	{
+		return (Tup4cRW)Tup4cW.super.set(t);
+	}
+	
+	@Override
+	default Tup4cRW getNewInstance(TupcR t)
+	{
+		return (Tup4cRW)Tup4cR.super.getNewInstance(t);
+	}
 }

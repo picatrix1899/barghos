@@ -1,11 +1,12 @@
 package org.barghos.core.test.api.tuple4;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
-import org.barghos.core.api.testing.ValueRelay;
+import org.barghos.core.api.tuple.TupfR;
 import org.barghos.core.api.tuple4.Tup4fR;
 
 /**
@@ -16,119 +17,781 @@ import org.barghos.core.api.tuple4.Tup4fR;
 class Tup4fRTest
 {
 	/**
-	 * This method is called after each test in this class.
-	 */
-	@AfterEach
-	void cleanup()
-	{
-		ValueRelay.clear();
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup4fR#isValid()} returns
-	 * the corrct values for different situations.
+	 * This test ensures, that the interface extends the interface {@link TupfR}.
 	 */
 	@Test
-	void isValidTest()
+	void inheritance_TupfRTest()
 	{
-		Tup4fR t = new TestTup(0.0f, 0.0f, 0.0f, 0.0f);
-		
-		assertEquals(true, t.isValid());
-		assertEquals(false, ValueRelay.get("getX", false));
-		assertEquals(false, ValueRelay.get("getY", false));
-		assertEquals(false, ValueRelay.get("getZ", false));
-		assertEquals(false, ValueRelay.get("getW", false));
+		assertTrue(TupfR.class.isAssignableFrom(Tup4fR.class));
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4fR#isFinite()} returns
-	 * the corrct values for different situations.
+	 * This test ensures, that the function {@link Tup4fR#isFinite()} returns true,
+	 * if none of the components is either {@link Float#POSITIVE_INFINITY},
+	 * {@link Float#NEGATIVE_INFINITY}} or {@link Float#NaN}.
 	 */
 	@Test
 	void isFiniteTest()
 	{
-		final float[] values = new float[] {0.0f, Float.NaN, Float.NEGATIVE_INFINITY, Float.POSITIVE_INFINITY};
+		Tup4fR t = mock(Tup4fR.class);
 		
-		for(int i = 0; i < 4; i++)
-		{
-			float v = values[i];
-			
-			boolean b = i == 0;
-			
-			Tup4fR t = new TestTup(v, v, v, v);
-			assertEquals(b, t.isFinite());
-			
-			t = new TestTup(v, 0.0f, 0.0f, 0.0f);
-			assertEquals(b, t.isFinite());
-			
-			t = new TestTup(0.0f, v, 0.0f, 0.0f);
-			assertEquals(b, t.isFinite());
-			
-			t = new TestTup(0.0f, 0.0f, v, 0.0f);
-			assertEquals(b, t.isFinite());
-			
-			t = new TestTup(0.0f, 0.0f, 0.0f, v);
-			assertEquals(b, t.isFinite());
-		}
+		when(t.isFinite()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(1.0f);
+		when(t.getY()).thenReturn(1.0f);
+		when(t.getZ()).thenReturn(1.0f);
+		when(t.getW()).thenReturn(1.0f);
+		
+		assertEquals(true, t.isFinite());
+		
+		verify(t).isFinite();
+		
+		verify(t).getX();
+		verify(t).getY();
+		verify(t).getZ();
+		verify(t).getW();
+		
+		verifyNoMoreInteractions(t);
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4fR#isZero()} returns the correct
-	 * value based on the situation.
+	 * This test ensures, that the function {@link Tup4fR#isFinite()} returns false
+	 * after checking the x component, if the x component is {@link Float#POSITIVE_INFINITY}.
 	 */
 	@Test
-	void isZeroExactTest()
+	void isFinite_Fail_X_PositiveInfTest()
 	{
-		Tup4fR t = new TestTup(0.0f, 0.0f, 0.0f, 0.0f);
+		Tup4fR t = mock(Tup4fR.class);
+		
+		when(t.isFinite()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(Float.POSITIVE_INFINITY);
+		
+		assertEquals(false, t.isFinite());
+		
+		verify(t).isFinite();
+		
+		verify(t).getX();
+
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4fR#isFinite()} returns false
+	 * after checking the x component, if the x component is {@link Float#NEGATIVE_INFINITY}.
+	 */
+	@Test
+	void isFinite_Fail_X_NegativeInfTest()
+	{
+		Tup4fR t = mock(Tup4fR.class);
+		
+		when(t.isFinite()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(Float.NEGATIVE_INFINITY);
+		
+		assertEquals(false, t.isFinite());
+		
+		verify(t).isFinite();
+		
+		verify(t).getX();
+
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4fR#isFinite()} returns false
+	 * after checking the x component, if the x component is {@link Float#NaN}.
+	 */
+	@Test
+	void isFinite_Fail_X_NaNTest()
+	{
+		Tup4fR t = mock(Tup4fR.class);
+		
+		when(t.isFinite()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(Float.NaN);
+		
+		assertEquals(false, t.isFinite());
+		
+		verify(t).isFinite();
+		
+		verify(t).getX();
+
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4fR#isFinite()} returns false
+	 * after checking the y component, if the y component is {@link Float#POSITIVE_INFINITY}.
+	 */
+	@Test
+	void isFinite_Fail_Y_PositiveInfTest()
+	{
+		Tup4fR t = mock(Tup4fR.class);
+		
+		when(t.isFinite()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(1.0f);
+		when(t.getY()).thenReturn(Float.POSITIVE_INFINITY);
+		
+		assertEquals(false, t.isFinite());
+		
+		verify(t).isFinite();
+		
+		verify(t).getX();
+		verify(t).getY();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4fR#isFinite()} returns false
+	 * after checking the y component, if the y component is {@link Float#NEGATIVE_INFINITY}.
+	 */
+	@Test
+	void isFinite_Fail_Y_NegativeInfTest()
+	{
+		Tup4fR t = mock(Tup4fR.class);
+		
+		when(t.isFinite()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(1.0f);
+		when(t.getY()).thenReturn(Float.NEGATIVE_INFINITY);
+		
+		assertEquals(false, t.isFinite());
+		
+		verify(t).isFinite();
+		
+		verify(t).getX();
+		verify(t).getY();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4fR#isFinite()} returns false
+	 * after checking the y component, if the y component is {@link Float#NaN}.
+	 */
+	@Test
+	void isFinite_Fail_Y_NaNTest()
+	{
+		Tup4fR t = mock(Tup4fR.class);
+		
+		when(t.isFinite()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(1.0f);
+		when(t.getY()).thenReturn(Float.NaN);
+		
+		assertEquals(false, t.isFinite());
+		
+		verify(t).isFinite();
+		
+		verify(t).getX();
+		verify(t).getY();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4fR#isFinite()} returns false
+	 * after checking the z component, if the z component is {@link Float#POSITIVE_INFINITY}.
+	 */
+	@Test
+	void isFinite_Fail_Z_PositiveInfTest()
+	{
+		Tup4fR t = mock(Tup4fR.class);
+		
+		when(t.isFinite()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(1.0f);
+		when(t.getY()).thenReturn(1.0f);
+		when(t.getZ()).thenReturn(Float.POSITIVE_INFINITY);
+		
+		assertEquals(false, t.isFinite());
+		
+		verify(t).isFinite();
+		
+		verify(t).getX();
+		verify(t).getY();
+		verify(t).getZ();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4fR#isFinite()} returns false
+	 * after checking the z component, if the z component is {@link Float#NEGATIVE_INFINITY}.
+	 */
+	@Test
+	void isFinite_Fail_Z_NegativeInfTest()
+	{
+		Tup4fR t = mock(Tup4fR.class);
+		
+		when(t.isFinite()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(1.0f);
+		when(t.getY()).thenReturn(1.0f);
+		when(t.getZ()).thenReturn(Float.NEGATIVE_INFINITY);
+		
+		assertEquals(false, t.isFinite());
+		
+		verify(t).isFinite();
+		
+		verify(t).getX();
+		verify(t).getY();
+		verify(t).getZ();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4fR#isFinite()} returns false
+	 * after checking the z component, if the z component is {@link Float#NaN}.
+	 */
+	@Test
+	void isFinite_Fail_Z_NaNTest()
+	{
+		Tup4fR t = mock(Tup4fR.class);
+		
+		when(t.isFinite()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(1.0f);
+		when(t.getY()).thenReturn(1.0f);
+		when(t.getZ()).thenReturn(Float.NaN);
+		
+		assertEquals(false, t.isFinite());
+		
+		verify(t).isFinite();
+		
+		verify(t).getX();
+		verify(t).getY();
+		verify(t).getZ();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4fR#isFinite()} returns false
+	 * after checking the w component, if the w component is {@link Float#POSITIVE_INFINITY}.
+	 */
+	@Test
+	void isFinite_Fail_W_PositiveInfTest()
+	{
+		Tup4fR t = mock(Tup4fR.class);
+		
+		when(t.isFinite()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(1.0f);
+		when(t.getY()).thenReturn(1.0f);
+		when(t.getZ()).thenReturn(1.0f);
+		when(t.getW()).thenReturn(Float.POSITIVE_INFINITY);
+		
+		assertEquals(false, t.isFinite());
+		
+		verify(t).isFinite();
+		
+		verify(t).getX();
+		verify(t).getY();
+		verify(t).getZ();
+		verify(t).getW();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4fR#isFinite()} returns false
+	 * after checking the w component, if the w component is {@link Float#NEGATIVE_INFINITY}.
+	 */
+	@Test
+	void isFinite_Fail_W_NegativeInfTest()
+	{
+		Tup4fR t = mock(Tup4fR.class);
+		
+		when(t.isFinite()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(1.0f);
+		when(t.getY()).thenReturn(1.0f);
+		when(t.getZ()).thenReturn(1.0f);
+		when(t.getW()).thenReturn(Float.NEGATIVE_INFINITY);
+		
+		assertEquals(false, t.isFinite());
+		
+		verify(t).isFinite();
+		
+		verify(t).getX();
+		verify(t).getY();
+		verify(t).getZ();
+		verify(t).getW();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4fR#isFinite()} returns false
+	 * after checking the w component, if the w component is {@link Float#NaN}.
+	 */
+	@Test
+	void isFinite_Fail_W_NaNTest()
+	{
+		Tup4fR t = mock(Tup4fR.class);
+		
+		when(t.isFinite()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(1.0f);
+		when(t.getY()).thenReturn(1.0f);
+		when(t.getZ()).thenReturn(1.0f);
+		when(t.getW()).thenReturn(Float.NaN);
+		
+		assertEquals(false, t.isFinite());
+		
+		verify(t).isFinite();
+		
+		verify(t).getX();
+		verify(t).getY();
+		verify(t).getZ();
+		verify(t).getW();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * this test ensures, that the function {@link Tup4fR#getDimensions()} always
+	 * returns 4 and does not make any calls.
+	 */
+	@Test
+	void getDimensionsTest()
+	{
+		Tup4fR t = mock(Tup4fR.class);
+		
+		when(t.getDimensions()).thenCallRealMethod();
+		
+		assertEquals(4, t.getDimensions());
+		
+		verify(t).getDimensions();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4fR#isZero()} returns true,
+	 * if all of the components are exactly zero.
+	 */
+	@Test
+	void isZero_ZeroTest()
+	{
+		Tup4fR t = mock(Tup4fR.class);
+		
+		when(t.isZero()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(0.0f);
+		when(t.getY()).thenReturn(0.0f);
+		when(t.getZ()).thenReturn(0.0f);
+		when(t.getW()).thenReturn(0.0f);
+		
 		assertEquals(true, t.isZero());
 		
-		t = new TestTup(1.0f, 0.0f, 0.0f, 0.0f);
-		assertEquals(false, t.isZero());
+		verify(t).isZero();
 		
-		t = new TestTup(0.0f, 1.0f, 0.0f, 0.0f);
-		assertEquals(false, t.isZero());
+		verify(t).getX();
+		verify(t).getY();
+		verify(t).getZ();
+		verify(t).getW();
 		
-		t = new TestTup(0.0f, 0.0f, 1.0f, 0.0f);
-		assertEquals(false, t.isZero());
-		
-		t = new TestTup(0.0f, 0.0f, 0.0f, 1.0f);
-		assertEquals(false, t.isZero());
-		
-		t = new TestTup(1.0f, 1.0f, 1.0f, 1.0f);
-		assertEquals(false, t.isZero());
+		verifyNoMoreInteractions(t);
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4fR#isZero(byte)} returns the correct
-	 * value based on the situation.
+	 * This test ensures, that the function {@link Tup4fR#isZero()} returns false,
+	 * if the x component is not zero.
 	 */
 	@Test
-	void isZeroTest()
+	void isZero_Fail_XTest()
 	{
-		final int tolerance = 2;
-		final float tol = (float)tolerance;
+		Tup4fR t = mock(Tup4fR.class);
 		
-		for(int i = -tolerance - 1; i <= tolerance + 1; i++)
-		{
-			float v = (float)i;
-			
-			boolean b = Math.abs(i) <= tolerance;
-			
-			Tup4fR t = new TestTup(v, v, v, v);
-			assertEquals(b, t.isZero(tol));
-			
-			t = new TestTup(v, 0.0f, 0.0f, 0.0f);
-			assertEquals(b, t.isZero(tol));
-			
-			t = new TestTup(0.0f, v, 0.0f, 0.0f);
-			assertEquals(b, t.isZero(tol));
-			
-			t = new TestTup(0.0f, 0.0f, v, 0.0f);
-			assertEquals(b, t.isZero(tol));
-			
-			t = new TestTup(0.0f, 0.0f, 0.0f, v);
-			assertEquals(b, t.isZero(tol));
-		}
+		when(t.isZero()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(1.0f);
+		
+		assertEquals(false, t.isZero());
+		
+		verify(t).isZero();
+		
+		verify(t).getX();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4fR#isZero()} returns false,
+	 * if the y component is not zero.
+	 */
+	@Test
+	void isZero_Fail_YTest()
+	{
+		Tup4fR t = mock(Tup4fR.class);
+		
+		when(t.isZero()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(0.0f);
+		when(t.getY()).thenReturn(1.0f);
+		
+		assertEquals(false, t.isZero());
+		
+		verify(t).isZero();
+		
+		verify(t).getX();
+		verify(t).getY();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4fR#isZero()} returns false,
+	 * if the z component is not zero.
+	 */
+	@Test
+	void isZero_Fail_ZTest()
+	{
+		Tup4fR t = mock(Tup4fR.class);
+		
+		when(t.isZero()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(0.0f);
+		when(t.getY()).thenReturn(0.0f);
+		when(t.getZ()).thenReturn(1.0f);
+		
+		assertEquals(false, t.isZero());
+		
+		verify(t).isZero();
+		
+		verify(t).getX();
+		verify(t).getY();
+		verify(t).getZ();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4fR#isZero()} returns false,
+	 * if the w component is not zero.
+	 */
+	@Test
+	void isZero_Fail_WTest()
+	{
+		Tup4fR t = mock(Tup4fR.class);
+		
+		when(t.isZero()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(0.0f);
+		when(t.getY()).thenReturn(0.0f);
+		when(t.getZ()).thenReturn(0.0f);
+		when(t.getW()).thenReturn(1.0f);
+		
+		assertEquals(false, t.isZero());
+		
+		verify(t).isZero();
+		
+		verify(t).getX();
+		verify(t).getY();
+		verify(t).getZ();
+		verify(t).getW();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4fR#isZeroWithMargin(float)} returns true,
+	 * if all components are exactly zero.
+	 */
+	@Test
+	void isZeroWithMargin_ZeroTest()
+	{
+		Tup4fR t = mock(Tup4fR.class);
+		
+		when(t.isZeroWithMargin(2.0f)).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(0.0f);
+		when(t.getY()).thenReturn(0.0f);
+		when(t.getZ()).thenReturn(0.0f);
+		when(t.getW()).thenReturn(0.0f);
+		
+		assertEquals(true, t.isZeroWithMargin(2.0f));
+		
+		verify(t).isZeroWithMargin(2.0f);
+		
+		verify(t).getX();
+		verify(t).getY();
+		verify(t).getZ();
+		verify(t).getW();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4fR#isZeroWithMargin(float)} returns true,
+	 * if all components are at the positive extreme point that is the inclusive
+	 * tolerance parameter.
+	 */
+	@Test
+	void isZeroWithMargin_Extreme_PositiveTest()
+	{
+		Tup4fR t = mock(Tup4fR.class);
+		
+		when(t.isZeroWithMargin(2.0f)).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(2.0f);
+		when(t.getY()).thenReturn(2.0f);
+		when(t.getZ()).thenReturn(2.0f);
+		when(t.getW()).thenReturn(2.0f);
+		
+		assertEquals(true, t.isZeroWithMargin(2.0f));
+		
+		verify(t).isZeroWithMargin(2.0f);
+		
+		verify(t).getX();
+		verify(t).getY();
+		verify(t).getZ();
+		verify(t).getW();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2bR#isZeroWithMargin(float)} returns true,
+	 * if all components are at the negative extreme point that is the inclusive
+	 * tolerance parameter.
+	 */
+	@Test
+	void isZeroWithMargin_Extreme_NegativeTest()
+	{
+		Tup4fR t = mock(Tup4fR.class);
+		
+		when(t.isZeroWithMargin(2.0f)).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(-2.0f);
+		when(t.getY()).thenReturn(-2.0f);
+		when(t.getZ()).thenReturn(-2.0f);
+		when(t.getW()).thenReturn(-2.0f);
+		
+		assertEquals(true, t.isZeroWithMargin(2.0f));
+		
+		verify(t).isZeroWithMargin(2.0f);
+		
+		verify(t).getX();
+		verify(t).getY();
+		verify(t).getZ();
+		verify(t).getW();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4fR#isZeroWithMargin(float)} returns false,
+	 * if the x component exceeds the positive extreme point that is the inclusive
+	 * tolerance parameter.
+	 */
+	@Test
+	void isZeroWithMargin_Fail_X_PositiveTest()
+	{
+		Tup4fR t = mock(Tup4fR.class);
+		
+		when(t.isZeroWithMargin(2.0f)).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(3.0f);
+		
+		assertEquals(false, t.isZeroWithMargin(2.0f));
+		
+		verify(t).isZeroWithMargin(2.0f);
+		
+		verify(t).getX();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4fR#isZeroWithMargin(float)} returns false,
+	 * if the x component exceeds the negative extreme point that is the inclusive
+	 * tolerance parameter.
+	 */
+	@Test
+	void isZeroWithMargin_Fail_X_NegativeTest()
+	{
+		Tup4fR t = mock(Tup4fR.class);
+		
+		when(t.isZeroWithMargin(2.0f)).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(-3.0f);
+		
+		assertEquals(false, t.isZeroWithMargin(2.0f));
+		
+		verify(t).isZeroWithMargin(2.0f);
+		
+		verify(t).getX();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4fR#isZeroWithMargin(float)} returns false,
+	 * if the y component exceeds the positive extreme point that is the inclusive
+	 * tolerance parameter.
+	 */
+	@Test
+	void isZeroWithMargin_Fail_Y_PositiveTest()
+	{
+		Tup4fR t = mock(Tup4fR.class);
+		
+		when(t.isZeroWithMargin(2.0f)).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(0.0f);
+		when(t.getY()).thenReturn(3.0f);
+		
+		assertEquals(false, t.isZeroWithMargin(2.0f));
+		
+		verify(t).isZeroWithMargin(2.0f);
+		
+		verify(t).getX();
+		verify(t).getY();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4fR#isZeroWithMargin(float)} returns false,
+	 * if the y component exceeds the positive extreme point that is the inclusive
+	 * tolerance parameter.
+	 */
+	@Test
+	void isZeroWithMargin_Fail_Y_NegativeTest()
+	{
+		Tup4fR t = mock(Tup4fR.class);
+		
+		when(t.isZeroWithMargin(2.0f)).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(0.0f);
+		when(t.getY()).thenReturn(-3.0f);
+		
+		assertEquals(false, t.isZeroWithMargin(2.0f));
+		
+		verify(t).isZeroWithMargin(2.0f);
+		
+		verify(t).getX();
+		verify(t).getY();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4fR#isZeroWithMargin(float)} returns false,
+	 * if the z component exceeds the positive extreme point that is the inclusive
+	 * tolerance parameter.
+	 */
+	@Test
+	void isZeroWithMargin_Fail_Z_PositiveTest()
+	{
+		Tup4fR t = mock(Tup4fR.class);
+		
+		when(t.isZeroWithMargin(2.0f)).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(0.0f);
+		when(t.getY()).thenReturn(0.0f);
+		when(t.getZ()).thenReturn(3.0f);
+		
+		assertEquals(false, t.isZeroWithMargin(2.0f));
+		
+		verify(t).isZeroWithMargin(2.0f);
+		
+		verify(t).getX();
+		verify(t).getY();
+		verify(t).getZ();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4fR#isZeroWithMargin(float)} returns false,
+	 * if the z component exceeds the positive extreme point that is the inclusive
+	 * tolerance parameter.
+	 */
+	@Test
+	void isZeroWithMargin_Fail_Z_NegativeTest()
+	{
+		Tup4fR t = mock(Tup4fR.class);
+		
+		when(t.isZeroWithMargin(2.0f)).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(0.0f);
+		when(t.getY()).thenReturn(0.0f);
+		when(t.getZ()).thenReturn(-3.0f);
+		
+		assertEquals(false, t.isZeroWithMargin(2.0f));
+		
+		verify(t).isZeroWithMargin(2.0f);
+		
+		verify(t).getX();
+		verify(t).getY();
+		verify(t).getZ();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4fR#isZeroWithMargin(float)} returns false,
+	 * if the w component exceeds the positive extreme point that is the inclusive
+	 * tolerance parameter.
+	 */
+	@Test
+	void isZeroWithMargin_Fail_W_PositiveTest()
+	{
+		Tup4fR t = mock(Tup4fR.class);
+		
+		when(t.isZeroWithMargin(2.0f)).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(0.0f);
+		when(t.getY()).thenReturn(0.0f);
+		when(t.getZ()).thenReturn(0.0f);
+		when(t.getW()).thenReturn(3.0f);
+		
+		assertEquals(false, t.isZeroWithMargin(2.0f));
+		
+		verify(t).isZeroWithMargin(2.0f);
+		
+		verify(t).getX();
+		verify(t).getY();
+		verify(t).getZ();
+		verify(t).getW();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4fR#isZeroWithMargin(float)} returns false,
+	 * if the w component exceeds the positive extreme point that is the inclusive
+	 * tolerance parameter.
+	 */
+	@Test
+	void isZeroWithMargin_Fail_W_NegativeTest()
+	{
+		Tup4fR t = mock(Tup4fR.class);
+		
+		when(t.isZeroWithMargin(2.0f)).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(0.0f);
+		when(t.getY()).thenReturn(0.0f);
+		when(t.getZ()).thenReturn(0.0f);
+		when(t.getW()).thenReturn(-3.0f);
+		
+		assertEquals(false, t.isZeroWithMargin(2.0f));
+		
+		verify(t).isZeroWithMargin(2.0f);
+		
+		verify(t).getX();
+		verify(t).getY();
+		verify(t).getZ();
+		verify(t).getW();
+		
+		verifyNoMoreInteractions(t);
 	}
 	
 	/**
@@ -136,19 +799,31 @@ class Tup4fRTest
 	 * the function {@link Tup4fR#getNewInstance(float, float, float, float)} with the correct components.
 	 */
 	@Test
-	void getNewInstance_TupleTest()
+	void getNewInstance_Tuple2Test()
 	{
-		Tup4fR t = new TestTup(1.0f, 1.0f, 1.0f, 1.0f);
+		Tup4fR original = mock(Tup4fR.class);
+		Tup4fR newInstance = mock(Tup4fR.class);
+		Tup4fR t = mock(Tup4fR.class);
 		
-		t.getNewInstance(new TestTup(2.0f, 3.0f, 4.0f, 5.0f));
+		when(t.getNewInstance(original)).thenCallRealMethod();
 		
-		assertEquals(true, ValueRelay.get("getNewInstanceC", false));
-		assertEquals(2.0f, ValueRelay.get("getNewInstanceC_X", 0.0f));
-		assertEquals(3.0f, ValueRelay.get("getNewInstanceC_Y", 0.0f));
-		assertEquals(4.0f, ValueRelay.get("getNewInstanceC_Z", 0.0f));
-		assertEquals(5.0f, ValueRelay.get("getNewInstanceC_W", 0.0f));
+		when(original.getX()).thenReturn(1.0f);
+		when(original.getY()).thenReturn(2.0f);
+		when(original.getZ()).thenReturn(3.0f);
+		when(original.getW()).thenReturn(4.0f);
+		when(t.getNewInstance(1.0f, 2.0f, 3.0f, 4.0f)).thenReturn(newInstance);
 		
-		// Can't test for the result here, as the relaying and adopting of the values are implementation specific.
+		assertSame(newInstance, t.getNewInstance(original));
+		
+		verify(t).getNewInstance(original);
+		
+		verify(original).getX();
+		verify(original).getY();
+		verify(original).getZ();
+		verify(original).getW();
+		verify(t).getNewInstance(1.0f, 2.0f, 3.0f, 4.0f);
+		
+		verifyNoMoreInteractions(t, original);
 	}
 	
 	/**
@@ -158,76 +833,207 @@ class Tup4fRTest
 	@Test
 	void getNewInstance_ValueTest()
 	{
-		Tup4fR t = new TestTup(1.0f, 1.0f, 1.0f, 1.0f);
+		Tup4fR newInstance = mock(Tup4fR.class);
+		Tup4fR t = mock(Tup4fR.class);
 		
-		t.getNewInstance(2.0f);
+		when(t.getNewInstance(1.0f)).thenCallRealMethod();
+
+		when(t.getNewInstance(1.0f, 1.0f, 1.0f, 1.0f)).thenReturn(newInstance);
 		
-		assertEquals(true, ValueRelay.get("getNewInstanceC", false));
-		assertEquals(2.0f, ValueRelay.get("getNewInstanceC_X", 0.0f));
-		assertEquals(2.0f, ValueRelay.get("getNewInstanceC_Y", 0.0f));
-		assertEquals(2.0f, ValueRelay.get("getNewInstanceC_Z", 0.0f));
-		assertEquals(2.0f, ValueRelay.get("getNewInstanceC_W", 0.0f));
+		assertSame(newInstance, t.getNewInstance(1.0f));
 		
-		// Can't test for the result here, as the relaying and adopting of the values are implementation specific.
+		verify(t).getNewInstance(1.0f);
+		
+		verify(t).getNewInstance(1.0f, 1.0f, 1.0f, 1.0f);
+		
+		verifyNoMoreInteractions(t);
 	}
 	
 	/**
-	 * This class is a test implementation of the interface {@link Tup4fR}.
-	 * 
-	 * @author picatrix1899
+	 * This test ensures, that the default implementation of the function {@link Tup4fR#getNewInstance(TupfR)} calls
+	 * the function {@link Tup4fR#getNewInstance(float, float, float, float)} with the correct components.
 	 */
-	private static class TestTup implements Tup4fR
+	@Test
+	void getNewInstance_TupleTest()
 	{
-		private final float x;
-		private final float y;
-		private final float z;
-		private final float w;
+		TupfR original = mock(TupfR.class);
+		Tup4fR newInstance = mock(Tup4fR.class);
+		Tup4fR t = mock(Tup4fR.class);
 		
-		public TestTup(float x, float y, float z, float w)
-		{
-			this.x = x;
-			this.y = y;
-			this.z = z;
-			this.w = w;
-		}
+		when(t.getNewInstance(original)).thenCallRealMethod();
 		
-		@Override
-		public float getX()
-		{
-			ValueRelay.relayCall("getX");
-			return this.x;
-		}
+		when(original.getArray()).thenReturn(new float[] {1.0f, 2.0f, 3.0f, 4.0f});
+		when(t.getNewInstance(1.0f, 2.0f, 3.0f, 4.0f)).thenReturn(newInstance);
 		
-		@Override
-		public float getY()
-		{
-			ValueRelay.relayCall("getY");
-			return this.y;
-		}
+		assertSame(newInstance, t.getNewInstance(original));
 		
-		@Override
-		public float getZ()
-		{
-			ValueRelay.relayCall("getZ");
-			return this.z;
-		}
+		verify(t).getNewInstance(original);
 		
-		@Override
-		public float getW()
-		{
-			ValueRelay.relayCall("getW");
-			return this.w;
-		}
+		verify(original).getArray();
+		verify(t).getNewInstance(1.0f, 2.0f, 3.0f, 4.0f);
 		
-		@Override
-		public TestTup getNewInstance(float x, float y, float z, float w)
-		{
-			ValueRelay.relayCall("getNewInstanceC");
-			ValueRelay.relay("getNewInstanceC_X", x);
-			ValueRelay.relay("getNewInstanceC_Y", y);
-			ValueRelay.relay("getNewInstanceC_Z", z);
-			ValueRelay.relay("getNewInstanceC_W", w);
-			return new TestTup(x, y, z, w);
-		}
+		verifyNoMoreInteractions(t, original);
+	}
+	
+	/**
+	 * This test ensures, that the default implementation of the function {@link Tup4fR#getNewInstanceFromArray(float[])} calls
+	 * the function {@link Tup4fR#getNewInstance(float, float, float, float)} with the correct components.
+	 */
+	@Test
+	void getNewInstanceFromArrayTest()
+	{
+		Tup4fR newInstance = mock(Tup4fR.class);
+		Tup4fR t = mock(Tup4fR.class);
+		
+		when(t.getNewInstanceFromArray(new float[] {1.0f, 2.0f, 3.0f, 4.0f})).thenCallRealMethod();
+
+		when(t.getNewInstance(1.0f, 2.0f, 3.0f, 4.0f)).thenReturn(newInstance);
+		
+		assertSame(newInstance, t.getNewInstanceFromArray(new float[] {1.0f, 2.0f, 3.0f, 4.0f}));
+		
+		verify(t).getNewInstanceFromArray(new float[] {1.0f, 2.0f, 3.0f, 4.0f});
+		
+		verify(t).getNewInstance(1.0f, 2.0f, 3.0f, 4.0f);
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4fR#getArray()} returns
+	 * an array with the components in the right order.
+	 */
+	@Test
+	void getArrayTest()
+	{
+		Tup4fR t = mock(Tup4fR.class);
+		
+		when(t.getArray()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(1.0f);
+		when(t.getY()).thenReturn(2.0f);
+		when(t.getZ()).thenReturn(3.0f);
+		when(t.getW()).thenReturn(4.0f);
+		
+		assertArrayEquals(new float[] {1.0f, 2.0f, 3.0f, 4.0f}, t.getArray());
+		
+		verify(t).getArray();
+		
+		verify(t).getX();
+		verify(t).getY();
+		verify(t).getZ();
+		verify(t).getW();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4fR#getByIndex(int)} returns
+	 * the x component for the index 0.
+	 */
+	@Test
+	void getByIndex_XTest()
+	{
+		Tup4fR t = mock(Tup4fR.class);
+		
+		when(t.getByIndex(0)).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(1.0f);
+		
+		assertEquals(1.0f, t.getByIndex(0));
+
+		verify(t).getByIndex(0);
+		
+		verify(t).getX();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4fR#getByIndex(int)} returns
+	 * the y component for the index 1.
+	 */
+	@Test
+	void getByIndex_YTest()
+	{
+		Tup4fR t = mock(Tup4fR.class);
+		
+		when(t.getByIndex(1)).thenCallRealMethod();
+		
+		when(t.getY()).thenReturn(1.0f);
+		
+		assertEquals(1.0f, t.getByIndex(1));
+
+		verify(t).getByIndex(1);
+		
+		verify(t).getY();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4fR#getByIndex(int)} returns
+	 * the z component for the index 2.
+	 */
+	@Test
+	void getByIndex_ZTest()
+	{
+		Tup4fR t = mock(Tup4fR.class);
+		
+		when(t.getByIndex(2)).thenCallRealMethod();
+		
+		when(t.getZ()).thenReturn(1.0f);
+		
+		assertEquals(1.0f, t.getByIndex(2));
+
+		verify(t).getByIndex(2);
+		
+		verify(t).getZ();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4fR#getByIndex(int)} returns
+	 * the w component for the index 3.
+	 */
+	@Test
+	void getByIndex_WTest()
+	{
+		Tup4fR t = mock(Tup4fR.class);
+		
+		when(t.getByIndex(3)).thenCallRealMethod();
+		
+		when(t.getW()).thenReturn(1.0f);
+		
+		assertEquals(1.0f, t.getByIndex(3));
+
+		verify(t).getByIndex(3);
+		
+		verify(t).getW();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4fR#getByIndex(int)} throws
+	 * an {@link IndexOutOfBoundsException} for an index different than 0, 1, 2 or 3.
+	 */
+	@Test
+	void getByIndex_ExceptionTest()
+	{
+		Tup4fR t = mock(Tup4fR.class);
+		
+		when(t.getByIndex(4)).thenCallRealMethod();
+
+		assertThrows(IndexOutOfBoundsException.class, new Executable() {
+			public void execute() throws Throwable
+			{
+				t.getByIndex(4);
+			}
+		});
+
+		verify(t).getByIndex(4);
+
+		verifyNoMoreInteractions(t);
 	}
 }

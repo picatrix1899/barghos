@@ -22,6 +22,9 @@
 
 package org.barghos.core.api.tuple4;
 
+import org.barghos.core.api.tuple.TupstrR;
+import org.barghos.core.api.tuple.TupstrRW;
+
 /**
  * This interface grants read and write access to any 4-dimensional string tuple.
  * 
@@ -29,7 +32,7 @@ package org.barghos.core.api.tuple4;
  * 
  * @since 1.0.0.0
  */
-public interface Tup4strRW extends Tup4strR, Tup4strW
+public interface Tup4strRW extends Tup4strR, Tup4strW, TupstrRW
 {
 	@Override
 	Tup4strRW setX(String x);
@@ -44,26 +47,71 @@ public interface Tup4strRW extends Tup4strR, Tup4strW
 	Tup4strRW setW(String w);
 	
 	@Override
-	Tup4strRW set(Tup4strR t);
+	default Tup4strRW set(Tup4strR t)
+	{
+		return (Tup4strRW)Tup4strW.super.set(t);
+	}
 	
 	@Override
-	Tup4strRW set(String value);
+	default Tup4strRW set(String value)
+	{
+		return (Tup4strRW)Tup4strW.super.set(value);
+	}
 	
 	@Override
-	Tup4strRW set(String x, String y, String z, String w);
-	
+	default Tup4strRW set(String x, String y, String z, String w)
+	{
+		return (Tup4strRW)Tup4strW.super.set(x, y, z, w);
+	}
+
 	@Override
 	default Tup4strRW getNewInstance(Tup4strR t)
 	{
-		return getNewInstance(t.getX(), t.getY(), t.getZ(), t.getW());
+		return (Tup4strRW)Tup4strR.super.getNewInstance(t);
 	}
 	
 	@Override
 	default Tup4strRW getNewInstance(String value)
 	{
-		return getNewInstance(value, value, value, value);
+		return (Tup4strRW)Tup4strR.super.getNewInstance(value);
 	}
 	
 	@Override
 	Tup4strRW getNewInstance(String x, String y, String z, String w);
+	
+	@Override
+	default int getDimensions()
+	{
+		return Tup4strR.super.getDimensions();
+	}
+	
+	@Override
+	default Tup4strRW getNewInstanceFromArray(String... values)
+	{
+		return (Tup4strRW)Tup4strR.super.getNewInstanceFromArray(values);
+	}
+	
+	@Override
+	default Tup4strRW setByIndex(int index, String value)
+	{
+		return (Tup4strRW)Tup4strW.super.setByIndex(index, value);
+	}
+	
+	@Override
+	default Tup4strRW setArray(String... values)
+	{
+		return (Tup4strRW)Tup4strW.super.setArray(values);
+	}
+	
+	@Override
+	default Tup4strRW set(TupstrR t)
+	{
+		return (Tup4strRW)Tup4strW.super.set(t);
+	}
+	
+	@Override
+	default Tup4strRW getNewInstance(TupstrR t)
+	{
+		return (Tup4strRW)Tup4strR.super.getNewInstance(t);
+	}
 }

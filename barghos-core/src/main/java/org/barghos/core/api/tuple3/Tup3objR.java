@@ -22,6 +22,8 @@
 
 package org.barghos.core.api.tuple3;
 
+import org.barghos.core.api.tuple.TupobjR;
+
 /**
  * This interface grants readonly access to any 3-dimensional object tuples.
  * 
@@ -33,7 +35,7 @@ package org.barghos.core.api.tuple3;
  * 
  * @since 1.0.0.0
  */
-public interface Tup3objR
+public interface Tup3objR extends TupobjR
 {
 	/**
 	 * Returns the x value from the tuple.
@@ -62,12 +64,7 @@ public interface Tup3objR
 	 */
 	Object getZ();
 	
-	/**
-	 * Returns true if all the components are valid.
-	 * What values are considered valid or invalid depends on the tuple type.
-	 * 
-	 * @return True if all the components are valid.
-	 */
+	@Override
 	default boolean isValid()
 	{
 		return getX() != null &&
@@ -96,22 +93,7 @@ public interface Tup3objR
 		return getNewInstance(t.getX(), t.getY(), t.getZ());
 	}
 	
-	/**
-	 * Returns a new instance of the type of the origin instance with the components set to
-	 * value.
-	 * 
-	 * <p>
-	 * This can be used for type continuety.
-	 * This way even while only using abstractions it is possible to create
-	 * new instances of the original. It is similar to the {@link Object#clone()}
-	 * function but the {@link Object#clone()} function requires the returned instance to be
-	 * writable.
-	 * This function on the other hand allows for example the usage of factories.
-	 * 
-	 * @param value The value used for all components.
-	 * 
-	 * @return A new instance of the type of the origin instance
-	 */
+	@Override
 	default Tup3objR getNewInstance(Object value)
 	{
 		return getNewInstance(value, value, value);
@@ -135,4 +117,43 @@ public interface Tup3objR
 	 * @return A new instance of the type of the origin instance
 	 */
 	Tup3objR getNewInstance(Object x, Object y, Object z);
+	
+	@Override
+	default int getDimensions()
+	{
+		return 3;
+	}
+	
+	@Override
+	default Object getByIndex(int index)
+	{
+		switch(index)
+		{
+			case 0: return getX();
+			case 1: return getY();
+			case 2: return getZ();
+		}
+		
+		throw new IndexOutOfBoundsException(index);
+	}
+	
+	@Override
+	default Object[] getArray()
+	{
+		return new Object[] {getX(), getY(), getZ()};
+	}
+	
+	@Override
+	default Tup3objR getNewInstanceFromArray(Object... values)
+	{
+		Object[] v = values;
+		return getNewInstance(v[0], v[1], v[2]);
+	}
+	
+	@Override
+	default Tup3objR getNewInstance(TupobjR t)
+	{
+		Object[] v = t.getArray();
+		return getNewInstance(v[0], v[1], v[2]);
+	}
 }

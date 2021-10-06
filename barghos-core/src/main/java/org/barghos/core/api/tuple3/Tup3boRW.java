@@ -22,6 +22,9 @@
 
 package org.barghos.core.api.tuple3;
 
+import org.barghos.core.api.tuple.TupboR;
+import org.barghos.core.api.tuple.TupboRW;
+
 /**
  * This interface grants read and write access to any 3-dimensional boolean tuple.
  * 
@@ -29,7 +32,7 @@ package org.barghos.core.api.tuple3;
  * 
  * @since 1.0.0.0
  */
-public interface Tup3boRW extends Tup3boR, Tup3boW
+public interface Tup3boRW extends Tup3boR, Tup3boW, TupboRW
 {
 	@Override
 	Tup3boRW setX(boolean x);
@@ -41,26 +44,71 @@ public interface Tup3boRW extends Tup3boR, Tup3boW
 	Tup3boRW setZ(boolean z);
 	
 	@Override
-	Tup3boRW set(Tup3boR t);
+	default Tup3boRW set(Tup3boR t)
+	{
+		return (Tup3boRW)Tup3boW.super.set(t);
+	}
 	
 	@Override
-	Tup3boRW set(boolean value);
+	default Tup3boRW set(boolean value)
+	{
+		return (Tup3boRW)Tup3boW.super.set(value);
+	}
 	
 	@Override
-	Tup3boRW set(boolean x, boolean y, boolean z);
-	
+	default Tup3boRW set(boolean x, boolean y, boolean z)
+	{
+		return (Tup3boRW)Tup3boW.super.set(x, y, z);
+	}
+
 	@Override
 	default Tup3boRW getNewInstance(Tup3boR t)
 	{
-		return getNewInstance(t.getX(), t.getY(), t.getZ());
+		return (Tup3boRW)Tup3boR.super.getNewInstance(t);
 	}
 	
 	@Override
 	default Tup3boRW getNewInstance(boolean value)
 	{
-		return getNewInstance(value, value, value);
+		return (Tup3boRW)Tup3boR.super.getNewInstance(value);
 	}
 	
 	@Override
 	Tup3boRW getNewInstance(boolean x, boolean y, boolean z);
+	
+	@Override
+	default int getDimensions()
+	{
+		return Tup3boR.super.getDimensions();
+	}
+	
+	@Override
+	default Tup3boRW getNewInstanceFromArray(boolean... values)
+	{
+		return (Tup3boRW)Tup3boR.super.getNewInstanceFromArray(values);
+	}
+	
+	@Override
+	default Tup3boRW setByIndex(int index, boolean value)
+	{
+		return (Tup3boRW)Tup3boW.super.setByIndex(index, value);
+	}
+	
+	@Override
+	default Tup3boRW setArray(boolean... values)
+	{
+		return (Tup3boRW)Tup3boW.super.setArray(values);
+	}
+	
+	@Override
+	default Tup3boRW set(TupboR t)
+	{
+		return (Tup3boRW)Tup3boW.super.set(t);
+	}
+	
+	@Override
+	default Tup3boRW getNewInstance(TupboR t)
+	{
+		return (Tup3boRW)Tup3boR.super.getNewInstance(t);
+	}
 }

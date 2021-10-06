@@ -22,6 +22,9 @@
 
 package org.barghos.core.api.tuple4;
 
+import org.barghos.core.api.tuple.TupobjR;
+import org.barghos.core.api.tuple.TupobjRW;
+
 /**
  * This interface grants read and write access to any 4-dimensional object tuple.
  * 
@@ -29,7 +32,7 @@ package org.barghos.core.api.tuple4;
  * 
  * @since 1.0.0.0
  */
-public interface Tup4objRW extends Tup4objR, Tup4objW
+public interface Tup4objRW extends Tup4objR, Tup4objW, TupobjRW
 {
 	@Override
 	Tup4objRW setX(Object x);
@@ -44,26 +47,71 @@ public interface Tup4objRW extends Tup4objR, Tup4objW
 	Tup4objRW setW(Object w);
 	
 	@Override
-	Tup4objRW set(Tup4objR t);
+	default Tup4objRW set(Tup4objR t)
+	{
+		return (Tup4objRW)Tup4objW.super.set(t);
+	}
 	
 	@Override
-	Tup4objRW set(Object value);
+	default Tup4objRW set(Object value)
+	{
+		return (Tup4objRW)Tup4objW.super.set(value);
+	}
 	
 	@Override
-	Tup4objRW set(Object x, Object y, Object z, Object w);
-	
+	default Tup4objRW set(Object x, Object y, Object z, Object w)
+	{
+		return (Tup4objRW)Tup4objW.super.set(x, y, z, w);
+	}
+
 	@Override
 	default Tup4objRW getNewInstance(Tup4objR t)
 	{
-		return getNewInstance(t.getX(), t.getY(), t.getZ(), t.getW());
+		return (Tup4objRW)Tup4objR.super.getNewInstance(t);
 	}
 	
 	@Override
 	default Tup4objRW getNewInstance(Object value)
 	{
-		return getNewInstance(value, value, value, value);
+		return (Tup4objRW)Tup4objR.super.getNewInstance(value);
 	}
 	
 	@Override
 	Tup4objRW getNewInstance(Object x, Object y, Object z, Object w);
+	
+	@Override
+	default int getDimensions()
+	{
+		return Tup4objR.super.getDimensions();
+	}
+	
+	@Override
+	default Tup4objRW getNewInstanceFromArray(Object... values)
+	{
+		return (Tup4objRW)Tup4objR.super.getNewInstanceFromArray(values);
+	}
+	
+	@Override
+	default Tup4objRW setByIndex(int index, Object value)
+	{
+		return (Tup4objRW)Tup4objW.super.setByIndex(index, value);
+	}
+	
+	@Override
+	default Tup4objRW setArray(Object... values)
+	{
+		return (Tup4objRW)Tup4objW.super.setArray(values);
+	}
+	
+	@Override
+	default Tup4objRW set(TupobjR t)
+	{
+		return (Tup4objRW)Tup4objW.super.set(t);
+	}
+	
+	@Override
+	default Tup4objRW getNewInstance(TupobjR t)
+	{
+		return (Tup4objRW)Tup4objR.super.getNewInstance(t);
+	}
 }

@@ -1,13 +1,14 @@
 package org.barghos.core.test.api.tuple4;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
 import java.math.BigDecimal;
 
-import org.barghos.core.api.testing.ValueRelay;
+import org.barghos.core.api.tuple.TupbigdR;
 import org.barghos.core.api.tuple4.Tup4bigdR;
 
 /**
@@ -18,122 +19,580 @@ import org.barghos.core.api.tuple4.Tup4bigdR;
 class Tup4bigdRTest
 {
 	/**
-	 * This method is called after each test in this class.
+	 * This test ensures, that the interface extends the interface {@link TupbigdR}.
 	 */
-	@AfterEach
-	void cleanup()
+	@Test
+	void inheritance_TupbigdRTest()
 	{
-		ValueRelay.clear();
+		assertTrue(TupbigdR.class.isAssignableFrom(Tup4bigdR.class));
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4bigdR#isValid()} returns
-	 * the corrct values for different situations.
+	 * This test ensures, that the function {@link Tup4bigdR#isValid()} returns true,
+	 * if none of the components is null.
 	 */
 	@Test
 	void isValidTest()
 	{
-		final BigDecimal one = BigDecimal.ONE;
+		Tup4bigdR t = mock(Tup4bigdR.class);
 		
-		Tup4bigdR t = new TestTup(null, null, null, null);
-		assertEquals(false, t.isValid());
+		when(t.isValid()).thenCallRealMethod();
 		
-		t = new TestTup(one, null, null, null);
-		assertEquals(false, t.isValid());
+		when(t.getX()).thenReturn(BigDecimal.ONE);
+		when(t.getY()).thenReturn(BigDecimal.ONE);
+		when(t.getZ()).thenReturn(BigDecimal.ONE);
+		when(t.getW()).thenReturn(BigDecimal.ONE);
 		
-		t = new TestTup(null, one, null, null);
-		assertEquals(false, t.isValid());
-		
-		t = new TestTup(null, null, one, null);
-		assertEquals(false, t.isValid());
-		
-		t = new TestTup(null, null, null, one);
-		assertEquals(false, t.isValid());
-		
-		t = new TestTup(one, one, one, one);
 		assertEquals(true, t.isValid());
+		
+		verify(t).isValid();
+		
+		verify(t).getX();
+		verify(t).getY();
+		verify(t).getZ();
+		verify(t).getW();
+		
+		verifyNoMoreInteractions(t);
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4bigdR#isFinite()} returns
-	 * the corrct values for different situations.
+	 * This test ensures, that the function {@link Tup4bigdR#isValid()} returns false,
+	 * if the x component is null.
 	 */
 	@Test
-	void isFiniteTest()
+	void isValid_Fail_XTest()
 	{
-		final BigDecimal zero = BigDecimal.ZERO;
+		Tup4bigdR t = mock(Tup4bigdR.class);
 		
-		Tup4bigdR t = new TestTup(zero, zero, zero, zero);
+		when(t.isValid()).thenCallRealMethod();
 		
-		assertEquals(true, t.isFinite());
-		assertEquals(false, ValueRelay.get("getX", false));
-		assertEquals(false, ValueRelay.get("getY", false));
-		assertEquals(false, ValueRelay.get("getZ", false));
-		assertEquals(false, ValueRelay.get("getW", false));
+		when(t.getX()).thenReturn(null);
+
+		assertEquals(false, t.isValid());
+		
+		verify(t).isValid();
+		
+		verify(t).getX();
+		
+		verifyNoMoreInteractions(t);
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup3bigdR#isZero()} returns the correct
-	 * value based on the situation.
+	 * This test ensures, that the function {@link Tup4bigdR#isValid()} returns false,
+	 * if the y component is null.
 	 */
 	@Test
-	void isZeroExactTest()
+	void isValid_Fail_YTest()
 	{
-		final BigDecimal zero = BigDecimal.ZERO;
-		final BigDecimal one = BigDecimal.ONE;
+		Tup4bigdR t = mock(Tup4bigdR.class);
 		
-		Tup4bigdR t = new TestTup(zero, zero, zero, zero);
+		when(t.isValid()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(BigDecimal.ONE);
+		when(t.getY()).thenReturn(null);
+
+		assertEquals(false, t.isValid());
+		
+		verify(t).isValid();
+		
+		verify(t).getX();
+		verify(t).getY();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4bigdR#isValid()} returns false,
+	 * if the z component is null.
+	 */
+	@Test
+	void isValid_Fail_ZTest()
+	{
+		Tup4bigdR t = mock(Tup4bigdR.class);
+		
+		when(t.isValid()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(BigDecimal.ONE);
+		when(t.getY()).thenReturn(BigDecimal.ONE);
+		when(t.getZ()).thenReturn(null);
+
+		assertEquals(false, t.isValid());
+		
+		verify(t).isValid();
+		
+		verify(t).getX();
+		verify(t).getY();
+		verify(t).getZ();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4bigdR#isValid()} returns false,
+	 * if the w component is null.
+	 */
+	@Test
+	void isValid_Fail_WTest()
+	{
+		Tup4bigdR t = mock(Tup4bigdR.class);
+		
+		when(t.isValid()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(BigDecimal.ONE);
+		when(t.getY()).thenReturn(BigDecimal.ONE);
+		when(t.getZ()).thenReturn(BigDecimal.ONE);
+		when(t.getW()).thenReturn(null);
+
+		assertEquals(false, t.isValid());
+		
+		verify(t).isValid();
+		
+		verify(t).getX();
+		verify(t).getY();
+		verify(t).getZ();
+		verify(t).getW();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * this test ensures, that the function {@link Tup4bigdR#getDimensions()} always
+	 * returns 4 and does not make any calls.
+	 */
+	@Test
+	void getDimensionsTest()
+	{
+		Tup4bigdR t = mock(Tup4bigdR.class);
+		
+		when(t.getDimensions()).thenCallRealMethod();
+		
+		assertEquals(4, t.getDimensions());
+		
+		verify(t).getDimensions();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4bigdR#isZero()} returns true,
+	 * if all of the components are exactly {@link BigDecimal#ZERO}.
+	 */
+	@Test
+	void isZero_ZeroTest()
+	{
+		Tup4bigdR t = mock(Tup4bigdR.class);
+		
+		when(t.isZero()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(BigDecimal.ZERO);
+		when(t.getY()).thenReturn(BigDecimal.ZERO);
+		when(t.getZ()).thenReturn(BigDecimal.ZERO);
+		when(t.getW()).thenReturn(BigDecimal.ZERO);
+		
 		assertEquals(true, t.isZero());
 		
-		t = new TestTup(one, zero, zero, zero);
-		assertEquals(false, t.isZero());
+		verify(t).isZero();
 		
-		t = new TestTup(zero, one, zero, zero);
-		assertEquals(false, t.isZero());
+		verify(t).getX();
+		verify(t).getY();
+		verify(t).getZ();
+		verify(t).getW();
 		
-		t = new TestTup(zero, zero, one, zero);
-		assertEquals(false, t.isZero());
-		
-		t = new TestTup(zero, zero, zero, one);
-		assertEquals(false, t.isZero());
-		
-		t = new TestTup(one, one, one, one);
-		assertEquals(false, t.isZero());
+		verifyNoMoreInteractions(t);
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4bigdR#isZero(BigDecimal)} returns the correct
-	 * value based on the situation.
+	 * This test ensures, that the function {@link Tup4bigdR#isZero()} returns false,
+	 * if the x component is not {@link BigDecimal#ZERO}.
 	 */
 	@Test
-	void isZeroTest()
+	void isZero_Fail_XTest()
 	{
-		final BigDecimal zero = BigDecimal.ZERO;
+		Tup4bigdR t = mock(Tup4bigdR.class);
 		
-		final int tolerance = 2;
-		final BigDecimal tol = BigDecimal.valueOf(tolerance);
+		when(t.isZero()).thenCallRealMethod();
 		
-		for(int i = -tolerance - 1; i <= tolerance + 1; i++)
-		{
-			BigDecimal v = BigDecimal.valueOf(i);
-			
-			boolean b = Math.abs(i) <= tolerance;
-			
-			Tup4bigdR t = new TestTup(v, v, v, v);
-			assertEquals(b, t.isZero(tol));
-			
-			t = new TestTup(v, zero, zero, zero);
-			assertEquals(b, t.isZero(tol));
-			
-			t = new TestTup(zero, v, zero, zero);
-			assertEquals(b, t.isZero(tol));
-			
-			t = new TestTup(zero, zero, v, zero);
-			assertEquals(b, t.isZero(tol));
-			
-			t = new TestTup(zero, zero, zero, v);
-			assertEquals(b, t.isZero(tol));
-		}
+		when(t.getX()).thenReturn(BigDecimal.ONE);
+		
+		assertEquals(false, t.isZero());
+		
+		verify(t).isZero();
+		
+		verify(t).getX();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4bigdR#isZero()} returns false,
+	 * if the y component is not {@link BigDecimal#ZERO}.
+	 */
+	@Test
+	void isZero_Fail_YTest()
+	{
+		Tup4bigdR t = mock(Tup4bigdR.class);
+		
+		when(t.isZero()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(BigDecimal.ZERO);
+		when(t.getY()).thenReturn(BigDecimal.ONE);
+		
+		assertEquals(false, t.isZero());
+		
+		verify(t).isZero();
+		
+		verify(t).getX();
+		verify(t).getY();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4bigdR#isZero()} returns false,
+	 * if the z component is not {@link BigDecimal#ZERO}.
+	 */
+	@Test
+	void isZero_Fail_ZTest()
+	{
+		Tup4bigdR t = mock(Tup4bigdR.class);
+		
+		when(t.isZero()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(BigDecimal.ZERO);
+		when(t.getY()).thenReturn(BigDecimal.ZERO);
+		when(t.getZ()).thenReturn(BigDecimal.ONE);
+		
+		assertEquals(false, t.isZero());
+		
+		verify(t).isZero();
+		
+		verify(t).getX();
+		verify(t).getY();
+		verify(t).getZ();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4bigdR#isZero()} returns false,
+	 * if the w component is not {@link BigDecimal#ZERO}.
+	 */
+	@Test
+	void isZero_Fail_WTest()
+	{
+		Tup4bigdR t = mock(Tup4bigdR.class);
+		
+		when(t.isZero()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(BigDecimal.ZERO);
+		when(t.getY()).thenReturn(BigDecimal.ZERO);
+		when(t.getZ()).thenReturn(BigDecimal.ZERO);
+		when(t.getW()).thenReturn(BigDecimal.ONE);
+		
+		assertEquals(false, t.isZero());
+		
+		verify(t).isZero();
+		
+		verify(t).getX();
+		verify(t).getY();
+		verify(t).getZ();
+		verify(t).getW();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4bigdR#isZeroWithMargin(BigDecimal)} returns true,
+	 * if all components are exactly {@link BigDecimal#ZERO}.
+	 */
+	@Test
+	void isZeroWithMargin_ZeroTest()
+	{
+		Tup4bigdR t = mock(Tup4bigdR.class);
+		
+		when(t.isZeroWithMargin(BigDecimal.valueOf(2))).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(BigDecimal.ZERO);
+		when(t.getY()).thenReturn(BigDecimal.ZERO);
+		when(t.getZ()).thenReturn(BigDecimal.ZERO);
+		when(t.getW()).thenReturn(BigDecimal.ZERO);
+		
+		assertEquals(true, t.isZeroWithMargin(BigDecimal.valueOf(2)));
+		
+		verify(t).isZeroWithMargin(BigDecimal.valueOf(2));
+		
+		verify(t).getX();
+		verify(t).getY();
+		verify(t).getZ();
+		verify(t).getW();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4bigdR#isZeroWithMargin(BigDecimal)} returns true,
+	 * if all components are at the positive extreme point that is the inclusive
+	 * tolerance parameter.
+	 */
+	@Test
+	void isZeroWithMargin_Extreme_PositiveTest()
+	{
+		Tup4bigdR t = mock(Tup4bigdR.class);
+		
+		when(t.isZeroWithMargin(BigDecimal.valueOf(2))).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(BigDecimal.valueOf(2));
+		when(t.getY()).thenReturn(BigDecimal.valueOf(2));
+		when(t.getZ()).thenReturn(BigDecimal.valueOf(2));
+		when(t.getW()).thenReturn(BigDecimal.valueOf(2));
+		
+		assertEquals(true, t.isZeroWithMargin(BigDecimal.valueOf(2)));
+		
+		verify(t).isZeroWithMargin(BigDecimal.valueOf(2));
+		
+		verify(t).getX();
+		verify(t).getY();
+		verify(t).getZ();
+		verify(t).getW();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4bigdR#isZeroWithMargin(BigDecimal)} returns true,
+	 * if all components are at the negative extreme point that is the inclusive
+	 * tolerance parameter.
+	 */
+	@Test
+	void isZeroWithMargin_Extreme_NegativeTest()
+	{
+		Tup4bigdR t = mock(Tup4bigdR.class);
+		
+		when(t.isZeroWithMargin(BigDecimal.valueOf(2))).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(BigDecimal.valueOf(-2));
+		when(t.getY()).thenReturn(BigDecimal.valueOf(-2));
+		when(t.getZ()).thenReturn(BigDecimal.valueOf(-2));
+		when(t.getW()).thenReturn(BigDecimal.valueOf(-2));
+		
+		assertEquals(true, t.isZeroWithMargin(BigDecimal.valueOf(2)));
+		
+		verify(t).isZeroWithMargin(BigDecimal.valueOf(2));
+		
+		verify(t).getX();
+		verify(t).getY();
+		verify(t).getZ();
+		verify(t).getW();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4bigdR#isZeroWithMargin(BigDecimal)} returns false,
+	 * if the x component exceeds the positive extreme point that is the inclusive
+	 * tolerance parameter.
+	 */
+	@Test
+	void isZeroWithMargin_Fail_X_PositiveTest()
+	{
+		Tup4bigdR t = mock(Tup4bigdR.class);
+		
+		when(t.isZeroWithMargin(BigDecimal.valueOf(2))).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(BigDecimal.valueOf(3));
+		
+		assertEquals(false, t.isZeroWithMargin(BigDecimal.valueOf(2)));
+		
+		verify(t).isZeroWithMargin(BigDecimal.valueOf(2));
+		
+		verify(t).getX();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4bigdR#isZeroWithMargin(BigDecimal)} returns false,
+	 * if the x component exceeds the negative extreme point that is the inclusive
+	 * tolerance parameter.
+	 */
+	@Test
+	void isZeroWithMargin_Fail_X_NegativeTest()
+	{
+		Tup4bigdR t = mock(Tup4bigdR.class);
+		
+		when(t.isZeroWithMargin(BigDecimal.valueOf(2))).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(BigDecimal.valueOf(-3));
+		
+		assertEquals(false, t.isZeroWithMargin(BigDecimal.valueOf(2)));
+		
+		verify(t).isZeroWithMargin(BigDecimal.valueOf(2));
+		
+		verify(t).getX();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4bigdR#isZeroWithMargin(BigDecimal)} returns false,
+	 * if the y component exceeds the positive extreme point that is the inclusive
+	 * tolerance parameter.
+	 */
+	@Test
+	void isZeroWithMargin_Fail_Y_PositiveTest()
+	{
+		Tup4bigdR t = mock(Tup4bigdR.class);
+		
+		when(t.isZeroWithMargin(BigDecimal.valueOf(2))).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(BigDecimal.ZERO);
+		when(t.getY()).thenReturn(BigDecimal.valueOf(3));
+		
+		assertEquals(false, t.isZeroWithMargin(BigDecimal.valueOf(2)));
+		
+		verify(t).isZeroWithMargin(BigDecimal.valueOf(2));
+		
+		verify(t).getX();
+		verify(t).getY();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4bigdR#isZeroWithMargin(BigDecimal)} returns false,
+	 * if the y component exceeds the positive extreme point that is the inclusive
+	 * tolerance parameter.
+	 */
+	@Test
+	void isZeroWithMargin_Fail_Y_NegativeTest()
+	{
+		Tup4bigdR t = mock(Tup4bigdR.class);
+		
+		when(t.isZeroWithMargin(BigDecimal.valueOf(2))).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(BigDecimal.ZERO);
+		when(t.getY()).thenReturn(BigDecimal.valueOf(-3));
+		
+		assertEquals(false, t.isZeroWithMargin(BigDecimal.valueOf(2)));
+		
+		verify(t).isZeroWithMargin(BigDecimal.valueOf(2));
+		
+		verify(t).getX();
+		verify(t).getY();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4bigdR#isZeroWithMargin(BigDecimal)} returns false,
+	 * if the z component exceeds the positive extreme point that is the inclusive
+	 * tolerance parameter.
+	 */
+	@Test
+	void isZeroWithMargin_Fail_Z_PositiveTest()
+	{
+		Tup4bigdR t = mock(Tup4bigdR.class);
+		
+		when(t.isZeroWithMargin(BigDecimal.valueOf(2))).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(BigDecimal.ZERO);
+		when(t.getY()).thenReturn(BigDecimal.ZERO);
+		when(t.getZ()).thenReturn(BigDecimal.valueOf(3));
+		
+		assertEquals(false, t.isZeroWithMargin(BigDecimal.valueOf(2)));
+		
+		verify(t).isZeroWithMargin(BigDecimal.valueOf(2));
+		
+		verify(t).getX();
+		verify(t).getY();
+		verify(t).getZ();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4bigdR#isZeroWithMargin(BigDecimal)} returns false,
+	 * if the y component exceeds the positive extreme point that is the inclusive
+	 * tolerance parameter.
+	 */
+	@Test
+	void isZeroWithMargin_Fail_Z_NegativeTest()
+	{
+		Tup4bigdR t = mock(Tup4bigdR.class);
+		
+		when(t.isZeroWithMargin(BigDecimal.valueOf(2))).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(BigDecimal.ZERO);
+		when(t.getY()).thenReturn(BigDecimal.ZERO);
+		when(t.getZ()).thenReturn(BigDecimal.valueOf(-3));
+		
+		assertEquals(false, t.isZeroWithMargin(BigDecimal.valueOf(2)));
+		
+		verify(t).isZeroWithMargin(BigDecimal.valueOf(2));
+		
+		verify(t).getX();
+		verify(t).getY();
+		verify(t).getZ();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4bigdR#isZeroWithMargin(BigDecimal)} returns false,
+	 * if the w component exceeds the positive extreme point that is the inclusive
+	 * tolerance parameter.
+	 */
+	@Test
+	void isZeroWithMargin_Fail_W_PositiveTest()
+	{
+		Tup4bigdR t = mock(Tup4bigdR.class);
+		
+		when(t.isZeroWithMargin(BigDecimal.valueOf(2))).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(BigDecimal.ZERO);
+		when(t.getY()).thenReturn(BigDecimal.ZERO);
+		when(t.getZ()).thenReturn(BigDecimal.ZERO);
+		when(t.getW()).thenReturn(BigDecimal.valueOf(3));
+		
+		assertEquals(false, t.isZeroWithMargin(BigDecimal.valueOf(2)));
+		
+		verify(t).isZeroWithMargin(BigDecimal.valueOf(2));
+		
+		verify(t).getX();
+		verify(t).getY();
+		verify(t).getZ();
+		verify(t).getW();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4bigdR#isZeroWithMargin(BigDecimal)} returns false,
+	 * if the w component exceeds the positive extreme point that is the inclusive
+	 * tolerance parameter.
+	 */
+	@Test
+	void isZeroWithMargin_Fail_W_NegativeTest()
+	{
+		Tup4bigdR t = mock(Tup4bigdR.class);
+		
+		when(t.isZeroWithMargin(BigDecimal.valueOf(2))).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(BigDecimal.ZERO);
+		when(t.getY()).thenReturn(BigDecimal.ZERO);
+		when(t.getZ()).thenReturn(BigDecimal.ZERO);
+		when(t.getW()).thenReturn(BigDecimal.valueOf(-3));
+		
+		assertEquals(false, t.isZeroWithMargin(BigDecimal.valueOf(2)));
+		
+		verify(t).isZeroWithMargin(BigDecimal.valueOf(2));
+		
+		verify(t).getX();
+		verify(t).getY();
+		verify(t).getZ();
+		verify(t).getW();
+		
+		verifyNoMoreInteractions(t);
 	}
 	
 	/**
@@ -141,26 +600,31 @@ class Tup4bigdRTest
 	 * the function {@link Tup4bigdR#getNewInstance(BigDecimal, BigDecimal, BigDecimal, BigDecimal)} with the correct components.
 	 */
 	@Test
-	void getNewInstance_TupleTest()
+	void getNewInstance_Tuple2Test()
 	{
-		final BigDecimal zero = BigDecimal.ZERO;
-		final BigDecimal one = BigDecimal.ONE;
-		final BigDecimal two = BigDecimal.valueOf(2.0);
-		final BigDecimal three = BigDecimal.valueOf(3.0);
-		final BigDecimal four = BigDecimal.valueOf(4.0);
-		final BigDecimal five = BigDecimal.valueOf(5.0);
+		Tup4bigdR original = mock(Tup4bigdR.class);
+		Tup4bigdR newInstance = mock(Tup4bigdR.class);
+		Tup4bigdR t = mock(Tup4bigdR.class);
 		
-		Tup4bigdR t = new TestTup(one, one, one, one);
+		when(t.getNewInstance(original)).thenCallRealMethod();
 		
-		t.getNewInstance(new TestTup(two, three, four, five));
+		when(original.getX()).thenReturn(BigDecimal.ONE);
+		when(original.getY()).thenReturn(BigDecimal.valueOf(2));
+		when(original.getZ()).thenReturn(BigDecimal.valueOf(3));
+		when(original.getW()).thenReturn(BigDecimal.valueOf(4));
+		when(t.getNewInstance(BigDecimal.ONE, BigDecimal.valueOf(2), BigDecimal.valueOf(3), BigDecimal.valueOf(4))).thenReturn(newInstance);
 		
-		assertEquals(true, ValueRelay.get("getNewInstanceC", false));
-		assertEquals(two, ValueRelay.get("getNewInstanceC_X", zero));
-		assertEquals(three, ValueRelay.get("getNewInstanceC_Y", zero));
-		assertEquals(four, ValueRelay.get("getNewInstanceC_Z", zero));
-		assertEquals(five, ValueRelay.get("getNewInstanceC_W", zero));
+		assertSame(newInstance, t.getNewInstance(original));
 		
-		// Can't test for the result here, as the relaying and adopting of the values are implementation specific.
+		verify(t).getNewInstance(original);
+		
+		verify(original).getX();
+		verify(original).getY();
+		verify(original).getZ();
+		verify(original).getW();
+		verify(t).getNewInstance(BigDecimal.ONE, BigDecimal.valueOf(2), BigDecimal.valueOf(3), BigDecimal.valueOf(4));
+		
+		verifyNoMoreInteractions(t, original);
 	}
 	
 	/**
@@ -170,80 +634,207 @@ class Tup4bigdRTest
 	@Test
 	void getNewInstance_ValueTest()
 	{
-		final BigDecimal zero = BigDecimal.ZERO;
-		final BigDecimal one = BigDecimal.ONE;
-		final BigDecimal two = BigDecimal.valueOf(2.0);
+		Tup4bigdR newInstance = mock(Tup4bigdR.class);
+		Tup4bigdR t = mock(Tup4bigdR.class);
+		
+		when(t.getNewInstance(BigDecimal.ONE)).thenCallRealMethod();
 
-		Tup4bigdR t = new TestTup(one, one, one, one);
+		when(t.getNewInstance(BigDecimal.ONE, BigDecimal.ONE, BigDecimal.ONE, BigDecimal.ONE)).thenReturn(newInstance);
 		
-		t.getNewInstance(two);
+		assertSame(newInstance, t.getNewInstance(BigDecimal.ONE));
 		
-		assertEquals(true, ValueRelay.get("getNewInstanceC", false));
-		assertEquals(two, ValueRelay.get("getNewInstanceC_X", zero));
-		assertEquals(two, ValueRelay.get("getNewInstanceC_Y", zero));
-		assertEquals(two, ValueRelay.get("getNewInstanceC_Z", zero));
-		assertEquals(two, ValueRelay.get("getNewInstanceC_W", zero));
+		verify(t).getNewInstance(BigDecimal.ONE);
 		
-		// Can't test for the result here, as the relaying and adopting of the values are implementation specific.
+		verify(t).getNewInstance(BigDecimal.ONE, BigDecimal.ONE, BigDecimal.ONE, BigDecimal.ONE);
+		
+		verifyNoMoreInteractions(t);
 	}
 	
 	/**
-	 * This class is a test implementation of the interface {@link Tup4bigdR}.
-	 * 
-	 * @author picatrix1899
+	 * This test ensures, that the default implementation of the function {@link Tup4bigdR#getNewInstance(TupbigdR)} calls
+	 * the function {@link Tup4bigdR#getNewInstance(BigDecimal, BigDecimal, BigDecimal, BigDecimal)} with the correct components.
 	 */
-	private static class TestTup implements Tup4bigdR
+	@Test
+	void getNewInstance_TupleTest()
 	{
-		private final BigDecimal x;
-		private final BigDecimal y;
-		private final BigDecimal z;
-		private final BigDecimal w;
+		TupbigdR original = mock(TupbigdR.class);
+		Tup4bigdR newInstance = mock(Tup4bigdR.class);
+		Tup4bigdR t = mock(Tup4bigdR.class);
 		
-		public TestTup(BigDecimal x, BigDecimal y, BigDecimal z, BigDecimal w)
-		{
-			this.x = x;
-			this.y = y;
-			this.z = z;
-			this.w = w;
-		}
+		when(t.getNewInstance(original)).thenCallRealMethod();
 		
-		@Override
-		public BigDecimal getX()
-		{
-			ValueRelay.relayCall("getX");
-			return this.x;
-		}
+		when(original.getArray()).thenReturn(new BigDecimal[] {BigDecimal.ONE, BigDecimal.valueOf(2), BigDecimal.valueOf(3), BigDecimal.valueOf(4)});
+		when(t.getNewInstance(BigDecimal.ONE, BigDecimal.valueOf(2), BigDecimal.valueOf(3), BigDecimal.valueOf(4))).thenReturn(newInstance);
 		
-		@Override
-		public BigDecimal getY()
-		{
-			ValueRelay.relayCall("getY");
-			return this.y;
-		}
+		assertSame(newInstance, t.getNewInstance(original));
 		
-		@Override
-		public BigDecimal getZ()
-		{
-			ValueRelay.relayCall("getZ");
-			return this.z;
-		}
+		verify(t).getNewInstance(original);
 		
-		@Override
-		public BigDecimal getW()
-		{
-			ValueRelay.relayCall("getW");
-			return this.w;
-		}
+		verify(original).getArray();
+		verify(t).getNewInstance(BigDecimal.ONE, BigDecimal.valueOf(2), BigDecimal.valueOf(3), BigDecimal.valueOf(4));
 		
-		@Override
-		public TestTup getNewInstance(BigDecimal x, BigDecimal y, BigDecimal z, BigDecimal w)
-		{
-			ValueRelay.relayCall("getNewInstanceC");
-			ValueRelay.relay("getNewInstanceC_X", x);
-			ValueRelay.relay("getNewInstanceC_Y", y);
-			ValueRelay.relay("getNewInstanceC_Z", z);
-			ValueRelay.relay("getNewInstanceC_W", w);
-			return new TestTup(x, y, z, w);
-		}
+		verifyNoMoreInteractions(t, original);
+	}
+	
+	/**
+	 * This test ensures, that the default implementation of the function {@link Tup4bigdR#getNewInstanceFromArray(BigDecimal[])} calls
+	 * the function {@link Tup4bigdR#getNewInstance(BigDecimal, BigDecimal, BigDecimal, BigDecimal)} with the correct components.
+	 */
+	@Test
+	void getNewInstanceFromArrayTest()
+	{
+		Tup4bigdR newInstance = mock(Tup4bigdR.class);
+		Tup4bigdR t = mock(Tup4bigdR.class);
+		
+		when(t.getNewInstanceFromArray(new BigDecimal[] {BigDecimal.ONE, BigDecimal.valueOf(2), BigDecimal.valueOf(3), BigDecimal.valueOf(4)})).thenCallRealMethod();
+
+		when(t.getNewInstance(BigDecimal.ONE, BigDecimal.valueOf(2), BigDecimal.valueOf(3), BigDecimal.valueOf(4))).thenReturn(newInstance);
+		
+		assertSame(newInstance, t.getNewInstanceFromArray(new BigDecimal[] {BigDecimal.ONE, BigDecimal.valueOf(2), BigDecimal.valueOf(3), BigDecimal.valueOf(4)}));
+		
+		verify(t).getNewInstanceFromArray(new BigDecimal[] {BigDecimal.ONE, BigDecimal.valueOf(2), BigDecimal.valueOf(3), BigDecimal.valueOf(4)});
+		
+		verify(t).getNewInstance(BigDecimal.ONE, BigDecimal.valueOf(2), BigDecimal.valueOf(3), BigDecimal.valueOf(4));
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4bigdR#getArray()} returns
+	 * an array with the components in the right order.
+	 */
+	@Test
+	void getArrayTest()
+	{
+		Tup4bigdR t = mock(Tup4bigdR.class);
+		
+		when(t.getArray()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(BigDecimal.ONE);
+		when(t.getY()).thenReturn(BigDecimal.valueOf(2));
+		when(t.getZ()).thenReturn(BigDecimal.valueOf(3));
+		when(t.getW()).thenReturn(BigDecimal.valueOf(4));
+		
+		assertArrayEquals(new BigDecimal[] {BigDecimal.ONE, BigDecimal.valueOf(2), BigDecimal.valueOf(3), BigDecimal.valueOf(4)}, t.getArray());
+		
+		verify(t).getArray();
+		
+		verify(t).getX();
+		verify(t).getY();
+		verify(t).getZ();
+		verify(t).getW();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4bigdR#getByIndex(int)} returns
+	 * the x component for the index 0.
+	 */
+	@Test
+	void getByIndex_XTest()
+	{
+		Tup4bigdR t = mock(Tup4bigdR.class);
+		
+		when(t.getByIndex(0)).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(BigDecimal.ONE);
+		
+		assertEquals(BigDecimal.ONE, t.getByIndex(0));
+
+		verify(t).getByIndex(0);
+		
+		verify(t).getX();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4bigdR#getByIndex(int)} returns
+	 * the y component for the index 1.
+	 */
+	@Test
+	void getByIndex_YTest()
+	{
+		Tup4bigdR t = mock(Tup4bigdR.class);
+		
+		when(t.getByIndex(1)).thenCallRealMethod();
+		
+		when(t.getY()).thenReturn(BigDecimal.ONE);
+		
+		assertEquals(BigDecimal.ONE, t.getByIndex(1));
+
+		verify(t).getByIndex(1);
+		
+		verify(t).getY();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4bigdR#getByIndex(int)} returns
+	 * the z component for the index 2.
+	 */
+	@Test
+	void getByIndex_ZTest()
+	{
+		Tup4bigdR t = mock(Tup4bigdR.class);
+		
+		when(t.getByIndex(2)).thenCallRealMethod();
+		
+		when(t.getZ()).thenReturn(BigDecimal.ONE);
+		
+		assertEquals(BigDecimal.ONE, t.getByIndex(2));
+
+		verify(t).getByIndex(2);
+		
+		verify(t).getZ();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4bigdR#getByIndex(int)} returns
+	 * the w component for the index 3.
+	 */
+	@Test
+	void getByIndex_WTest()
+	{
+		Tup4bigdR t = mock(Tup4bigdR.class);
+		
+		when(t.getByIndex(3)).thenCallRealMethod();
+		
+		when(t.getW()).thenReturn(BigDecimal.ONE);
+		
+		assertEquals(BigDecimal.ONE, t.getByIndex(3));
+
+		verify(t).getByIndex(3);
+		
+		verify(t).getW();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4bigdR#getByIndex(int)} throws
+	 * an {@link IndexOutOfBoundsException} for an index different than 0, 1, 2 or 3.
+	 */
+	@Test
+	void getByIndex_ExceptionTest()
+	{
+		Tup4bigdR t = mock(Tup4bigdR.class);
+		
+		when(t.getByIndex(4)).thenCallRealMethod();
+
+		assertThrows(IndexOutOfBoundsException.class, new Executable() {
+			public void execute() throws Throwable
+			{
+				t.getByIndex(4);
+			}
+		});
+
+		verify(t).getByIndex(4);
+
+		verifyNoMoreInteractions(t);
 	}
 }

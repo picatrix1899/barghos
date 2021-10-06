@@ -22,6 +22,9 @@
 
 package org.barghos.core.api.tuple3;
 
+import org.barghos.core.api.tuple.TupfR;
+import org.barghos.core.api.tuple.TupfRW;
+
 /**
  * This interface grants read and write access to any 3-dimensional float tuple.
  * 
@@ -29,7 +32,7 @@ package org.barghos.core.api.tuple3;
  * 
  * @since 1.0.0.0
  */
-public interface Tup3fRW extends Tup3fR, Tup3fW
+public interface Tup3fRW extends Tup3fR, Tup3fW, TupfRW
 {
 	@Override
 	Tup3fRW setX(float x);
@@ -41,26 +44,71 @@ public interface Tup3fRW extends Tup3fR, Tup3fW
 	Tup3fRW setZ(float z);
 	
 	@Override
-	Tup3fRW set(Tup3fR t);
+	default Tup3fRW set(Tup3fR t)
+	{
+		return (Tup3fRW)Tup3fW.super.set(t);
+	}
 	
 	@Override
-	Tup3fRW set(float value);
+	default Tup3fRW set(float value)
+	{
+		return (Tup3fRW)Tup3fW.super.set(value);
+	}
 	
 	@Override
-	Tup3fRW set(float x, float y, float z);
-	
+	default Tup3fRW set(float x, float y, float z)
+	{
+		return (Tup3fRW)Tup3fW.super.set(x, y, z);
+	}
+
 	@Override
 	default Tup3fRW getNewInstance(Tup3fR t)
 	{
-		return getNewInstance(t.getX(), t.getY(), t.getZ());
+		return (Tup3fRW)Tup3fR.super.getNewInstance(t);
 	}
 	
 	@Override
 	default Tup3fRW getNewInstance(float value)
 	{
-		return getNewInstance(value, value, value);
+		return (Tup3fRW)Tup3fR.super.getNewInstance(value);
 	}
 	
 	@Override
 	Tup3fRW getNewInstance(float x, float y, float z);
+	
+	@Override
+	default int getDimensions()
+	{
+		return Tup3fR.super.getDimensions();
+	}
+	
+	@Override
+	default Tup3fRW getNewInstanceFromArray(float... values)
+	{
+		return (Tup3fRW)Tup3fR.super.getNewInstanceFromArray(values);
+	}
+	
+	@Override
+	default Tup3fRW setByIndex(int index, float value)
+	{
+		return (Tup3fRW)Tup3fW.super.setByIndex(index, value);
+	}
+	
+	@Override
+	default Tup3fRW setArray(float... values)
+	{
+		return (Tup3fRW)Tup3fW.super.setArray(values);
+	}
+	
+	@Override
+	default Tup3fRW set(TupfR t)
+	{
+		return (Tup3fRW)Tup3fW.super.set(t);
+	}
+	
+	@Override
+	default Tup3fRW getNewInstance(TupfR t)
+	{
+		return (Tup3fRW)Tup3fR.super.getNewInstance(t);
+	}
 }

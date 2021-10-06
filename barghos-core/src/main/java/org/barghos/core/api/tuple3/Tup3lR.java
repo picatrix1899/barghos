@@ -22,6 +22,8 @@
 
 package org.barghos.core.api.tuple3;
 
+import org.barghos.core.api.tuple.TuplR;
+
 /**
  * This interface grants readonly access to any 3-dimensional long tuples.
  * 
@@ -33,7 +35,7 @@ package org.barghos.core.api.tuple3;
  * 
  * @since 1.0.0.0
  */
-public interface Tup3lR
+public interface Tup3lR extends TuplR
 {
 	/**
 	 * Returns the x value from the tuple.
@@ -63,20 +65,11 @@ public interface Tup3lR
 	long getZ();
 	
 	/**
-	 * Returns true if all components are finite and therefore not NaN or Infinity.
-	 * 
-	 * @return True if all components are finite.
-	 */
-	default boolean isFinite()
-	{
-		return true;
-	}
-	
-	/**
 	 * Returns true if all components are exactly zero.
 	 * 
 	 * @return True if all components are exactly zero.
 	 */
+	@Override
 	default boolean isZero()
 	{
 		return getX() == 0l &&
@@ -91,22 +84,12 @@ public interface Tup3lR
 	 * 
 	 * @return True if all components are technically zero.
 	 */
-	default boolean isZero(long tolerance)
+	@Override
+	default boolean isZeroWithMargin(long tolerance)
 	{
 		return Math.abs(getX()) <= tolerance &&
 				Math.abs(getY()) <= tolerance &&
 				Math.abs(getZ()) <= tolerance;
-	}
-	
-	/**
-	 * Returns true if all the components are valid.
-	 * What values are considered valid or invalid depends on the tuple type.
-	 * 
-	 * @return True if all the components are valid.
-	 */
-	default boolean isValid()
-	{
-		return true;
 	}
 	
 	/**
@@ -129,23 +112,8 @@ public interface Tup3lR
 	{
 		return getNewInstance(t.getX(), t.getY(), t.getZ());
 	}
-	
-	/**
-	 * Returns a new instance of the type of the origin instance with the components set to
-	 * value.
-	 * 
-	 * <p>
-	 * This can be used for type continuety.
-	 * This way even while only using abstractions it is possible to create
-	 * new instances of the original. It is similar to the {@link Object#clone()}
-	 * function but the {@link Object#clone()} function requires the returned instance to be
-	 * writable.
-	 * This function on the other hand allows for example the usage of factories.
-	 * 
-	 * @param value The value used for all components.
-	 * 
-	 * @return A new instance of the type of the origin instance
-	 */
+
+	@Override
 	default Tup3lR getNewInstance(long value)
 	{
 		return getNewInstance(value, value, value);
@@ -169,4 +137,43 @@ public interface Tup3lR
 	 * @return A new instance of the type of the origin instance
 	 */
 	Tup3lR getNewInstance(long x, long y, long z);
+	
+	@Override
+	default int getDimensions()
+	{
+		return 3;
+	}
+	
+	@Override
+	default long getByIndex(int index)
+	{
+		switch(index)
+		{
+			case 0: return getX();
+			case 1: return getY();
+			case 2: return getZ();
+		}
+		
+		throw new IndexOutOfBoundsException(index);
+	}
+	
+	@Override
+	default long[] getArray()
+	{
+		return new long[] {getX(), getY(), getZ()};
+	}
+	
+	@Override
+	default Tup3lR getNewInstanceFromArray(long... values)
+	{
+		long[] v = values;
+		return getNewInstance(v[0], v[1], v[2]);
+	}
+	
+	@Override
+	default Tup3lR getNewInstance(TuplR t)
+	{
+		long[] v = t.getArray();
+		return getNewInstance(v[0], v[1], v[2]);
+	}
 }

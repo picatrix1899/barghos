@@ -1,11 +1,12 @@
 package org.barghos.core.test.api.tuple3;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
-import org.barghos.core.api.testing.ValueRelay;
+import org.barghos.core.api.tuple.TupcR;
 import org.barghos.core.api.tuple3.Tup3cR;
 
 /**
@@ -16,42 +17,29 @@ import org.barghos.core.api.tuple3.Tup3cR;
 class Tup3cRTest
 {
 	/**
-	 * This method is called after each test in this class.
+	 * This test ensures, that the interface extends the interface {@link TupcR}.
 	 */
-	@AfterEach
-	void cleanup()
+	@Test
+	void inheritance_TupcRTest()
 	{
-		ValueRelay.clear();
+		assertTrue(TupcR.class.isAssignableFrom(Tup3cR.class));
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup3cR#isValid()} returns
-	 * the corrct values for different situations.
+	 * this test ensures, that the function {@link Tup3cR#getDimensions()} always
+	 * returns 3 and does not make any calls.
 	 */
 	@Test
-	void isValidTest()
+	void getDimensionsTest()
 	{
-		Tup3cR t = new TestTup('a', 'a', 'a');
+		Tup3cR t = mock(Tup3cR.class);
 		
-		assertEquals(true, t.isValid());
-		assertEquals(false, ValueRelay.get("getX", false));
-		assertEquals(false, ValueRelay.get("getY", false));
-		assertEquals(false, ValueRelay.get("getZ", false));
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup3cR#isFinite()} returns
-	 * the corrct values for different situations.
-	 */
-	@Test
-	void isFiniteTest()
-	{
-		Tup3cR t = new TestTup('a', 'a', 'a');
+		when(t.getDimensions()).thenCallRealMethod();
 		
-		assertEquals(true, t.isFinite());
-		assertEquals(false, ValueRelay.get("getX", false));
-		assertEquals(false, ValueRelay.get("getY", false));
-		assertEquals(false, ValueRelay.get("getZ", false));
+		assertEquals(3, t.getDimensions());
+		
+		verify(t).getDimensions();
+		verifyNoMoreInteractions(t);
 	}
 	
 	/**
@@ -59,18 +47,29 @@ class Tup3cRTest
 	 * the function {@link Tup3cR#getNewInstance(char, char, char)} with the correct components.
 	 */
 	@Test
-	void getNewInstance_TupleTest()
+	void getNewInstance_Tuple2Test()
 	{
-		Tup3cR t = new TestTup('b', 'b', 'b');
+		Tup3cR original = mock(Tup3cR.class);
+		Tup3cR newInstance = mock(Tup3cR.class);
+		Tup3cR t = mock(Tup3cR.class);
 		
-		t.getNewInstance(new TestTup('c', 'd', 'e'));
+		when(t.getNewInstance(original)).thenCallRealMethod();
 		
-		assertEquals(true, ValueRelay.get("getNewInstanceC", false));
-		assertEquals('c', ValueRelay.get("getNewInstanceC_X", 'a'));
-		assertEquals('d', ValueRelay.get("getNewInstanceC_Y", 'a'));
-		assertEquals('e', ValueRelay.get("getNewInstanceC_Z", 'a'));
+		when(original.getX()).thenReturn('a');
+		when(original.getY()).thenReturn('b');
+		when(original.getZ()).thenReturn('c');
+		when(t.getNewInstance('a', 'b', 'c')).thenReturn(newInstance);
 		
-		// Can't test for the result here, as the relaying and adopting of the values are implementation specific.
+		assertSame(newInstance, t.getNewInstance(original));
+		
+		verify(t).getNewInstance(original);
+		
+		verify(original).getX();
+		verify(original).getY();
+		verify(original).getZ();
+		verify(t).getNewInstance('a', 'b', 'c');
+		
+		verifyNoMoreInteractions(t, original);
 	}
 	
 	/**
@@ -80,65 +79,184 @@ class Tup3cRTest
 	@Test
 	void getNewInstance_ValueTest()
 	{
-		Tup3cR t = new TestTup('a', 'a', 'a');
+		Tup3cR newInstance = mock(Tup3cR.class);
+		Tup3cR t = mock(Tup3cR.class);
 		
-		t.getNewInstance('b');
+		when(t.getNewInstance('a')).thenCallRealMethod();
+
+		when(t.getNewInstance('a', 'a', 'a')).thenReturn(newInstance);
 		
-		assertEquals(true, ValueRelay.get("getNewInstanceC", false));
-		assertEquals('b', ValueRelay.get("getNewInstanceC_X", 'a'));
-		assertEquals('b', ValueRelay.get("getNewInstanceC_Y", 'a'));
-		assertEquals('b', ValueRelay.get("getNewInstanceC_Z", 'a'));
+		assertSame(newInstance, t.getNewInstance('a'));
 		
-		// Can't test for the result here, as the relaying and adopting of the values are implementation specific.
+		verify(t).getNewInstance('a');
+		
+		verify(t).getNewInstance('a', 'a', 'a');
+		
+		verifyNoMoreInteractions(t);
 	}
 	
 	/**
-	 * This class is a test implementation of the interface {@link Tup3bR}.
-	 * 
-	 * @author picatrix1899
+	 * This test ensures, that the default implementation of the function {@link Tup3cR#getNewInstance(TupcR)} calls
+	 * the function {@link Tup3cR#getNewInstance(char, char, char)} with the correct components.
 	 */
-	private static class TestTup implements Tup3cR
+	@Test
+	void getNewInstance_TupleTest()
 	{
-		private final char x;
-		private final char y;
-		private final char z;
+		TupcR original = mock(TupcR.class);
+		Tup3cR newInstance = mock(Tup3cR.class);
+		Tup3cR t = mock(Tup3cR.class);
 		
-		public TestTup(char x, char y, char z)
-		{
-			this.x = x;
-			this.y = y;
-			this.z = z;
-		}
+		when(t.getNewInstance(original)).thenCallRealMethod();
 		
-		@Override
-		public char getX()
-		{
-			ValueRelay.relayCall("getX");
-			return this.x;
-		}
+		when(original.getArray()).thenReturn(new char[] {'a', 'b', 'c'});
+		when(t.getNewInstance('a', 'b', 'c')).thenReturn(newInstance);
 		
-		@Override
-		public char getY()
-		{
-			ValueRelay.relayCall("getY");
-			return this.y;
-		}
+		assertSame(newInstance, t.getNewInstance(original));
 		
-		@Override
-		public char getZ()
-		{
-			ValueRelay.relayCall("getZ");
-			return this.z;
-		}
+		verify(t).getNewInstance(original);
 		
-		@Override
-		public TestTup getNewInstance(char x, char y, char z)
-		{
-			ValueRelay.relayCall("getNewInstanceC");
-			ValueRelay.relay("getNewInstanceC_X", x);
-			ValueRelay.relay("getNewInstanceC_Y", y);
-			ValueRelay.relay("getNewInstanceC_Z", z);
-			return new TestTup(x, y, z);
-		}
+		verify(original).getArray();
+		verify(t).getNewInstance('a', 'b', 'c');
+		
+		verifyNoMoreInteractions(t, original);
+	}
+	
+	/**
+	 * This test ensures, that the default implementation of the function
+	 * {@link Tup3cR#getNewInstanceFromArray(char[])} calls the function
+	 * {@link Tup3cR#getNewInstance(char, char, char)} with the correct components.
+	 */
+	@Test
+	void getNewInstanceFromArrayTest()
+	{
+		Tup3cR newInstance = mock(Tup3cR.class);
+		Tup3cR t = mock(Tup3cR.class);
+		
+		when(t.getNewInstanceFromArray(new char[] {'a', 'b', 'c'})).thenCallRealMethod();
+
+		when(t.getNewInstance('a', 'b', 'c')).thenReturn(newInstance);
+		
+		assertSame(newInstance, t.getNewInstanceFromArray(new char[] {'a', 'b', 'c'}));
+		
+		verify(t).getNewInstanceFromArray(new char[] {'a', 'b', 'c'});
+		
+		verify(t).getNewInstance('a', 'b', 'c');
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup3cR#getArray()} returns
+	 * an array with the components in the right order.
+	 */
+	@Test
+	void getArrayTest()
+	{
+		Tup3cR t = mock(Tup3cR.class);
+		
+		when(t.getArray()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn('a');
+		when(t.getY()).thenReturn('b');
+		when(t.getZ()).thenReturn('c');
+		
+		assertArrayEquals(new char[] {'a', 'b', 'c'}, t.getArray());
+		
+		verify(t).getArray();
+		
+		verify(t).getX();
+		verify(t).getY();
+		verify(t).getZ();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup3cR#getByIndex(int)} returns
+	 * the x component for the index 0.
+	 */
+	@Test
+	void getByIndex_XTest()
+	{
+		Tup3cR t = mock(Tup3cR.class);
+		
+		when(t.getByIndex(0)).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn('a');
+		
+		assertEquals('a', t.getByIndex(0));
+
+		verify(t).getByIndex(0);
+		
+		verify(t).getX();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup3cR#getByIndex(int)} returns
+	 * the y component for the index 1.
+	 */
+	@Test
+	void getByIndex_YTest()
+	{
+		Tup3cR t = mock(Tup3cR.class);
+		
+		when(t.getByIndex(1)).thenCallRealMethod();
+		
+		when(t.getY()).thenReturn('a');
+		
+		assertEquals('a', t.getByIndex(1));
+
+		verify(t).getByIndex(1);
+		
+		verify(t).getY();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup3cR#getByIndex(int)} returns
+	 * the z component for the index 2.
+	 */
+	@Test
+	void getByIndex_ZTest()
+	{
+		Tup3cR t = mock(Tup3cR.class);
+		
+		when(t.getByIndex(2)).thenCallRealMethod();
+		
+		when(t.getZ()).thenReturn('a');
+		
+		assertEquals('a', t.getByIndex(2));
+
+		verify(t).getByIndex(2);
+		
+		verify(t).getZ();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup3cR#getByIndex(int)} throws
+	 * an {@link IndexOutOfBoundsException} for an index different than 0, 1 or 2.
+	 */
+	@Test
+	void getByIndex_ExceptionTest()
+	{
+		Tup3cR t = mock(Tup3cR.class);
+		
+		when(t.getByIndex(3)).thenCallRealMethod();
+
+		assertThrows(IndexOutOfBoundsException.class, new Executable() {
+			public void execute() throws Throwable
+			{
+				t.getByIndex(3);
+			}
+		});
+
+		verify(t).getByIndex(3);
+
+		verifyNoMoreInteractions(t);
 	}
 }

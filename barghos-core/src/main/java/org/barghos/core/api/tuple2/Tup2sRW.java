@@ -22,6 +22,9 @@
 
 package org.barghos.core.api.tuple2;
 
+import org.barghos.core.api.tuple.TupsR;
+import org.barghos.core.api.tuple.TupsRW;
+
 /**
  * This interface grants read and write access to any 2-dimensional short tuple.
  * 
@@ -29,7 +32,7 @@ package org.barghos.core.api.tuple2;
  * 
  * @since 1.0.0.0
  */
-public interface Tup2sRW extends Tup2sR, Tup2sW
+public interface Tup2sRW extends Tup2sR, Tup2sW, TupsRW
 {
 	@Override
 	Tup2sRW setX(short x);
@@ -38,26 +41,71 @@ public interface Tup2sRW extends Tup2sR, Tup2sW
 	Tup2sRW setY(short y);
 	
 	@Override
-	Tup2sRW set(Tup2sR t);
+	default Tup2sRW set(Tup2sR t)
+	{
+		return (Tup2sRW)Tup2sW.super.set(t);
+	}
 	
 	@Override
-	Tup2sRW set(short value);
+	default Tup2sRW set(short value)
+	{
+		return (Tup2sRW)Tup2sW.super.set(value);
+	}
 	
 	@Override
-	Tup2sRW set(short x, short y);
+	default Tup2sRW set(short x, short y)
+	{
+		return (Tup2sRW)Tup2sW.super.set(x, y);
+	}
 	
 	@Override
 	default Tup2sRW getNewInstance(Tup2sR t)
 	{
-		return getNewInstance(t.getX(), t.getY());
+		return (Tup2sRW)Tup2sR.super.getNewInstance(t);
 	}
 	
 	@Override
 	default Tup2sRW getNewInstance(short value)
 	{
-		return getNewInstance(value, value);
+		return (Tup2sRW)Tup2sR.super.getNewInstance(value);
 	}
 	
 	@Override
 	Tup2sRW getNewInstance(short x, short y);
+	
+	@Override
+	default int getDimensions()
+	{
+		return Tup2sR.super.getDimensions();
+	}
+	
+	@Override
+	default Tup2sRW getNewInstanceFromArray(short... values)
+	{
+		return (Tup2sRW)Tup2sR.super.getNewInstanceFromArray(values);
+	}
+	
+	@Override
+	default Tup2sRW setByIndex(int index, short value)
+	{
+		return (Tup2sRW)Tup2sW.super.setByIndex(index, value);
+	}
+	
+	@Override
+	default Tup2sRW setArray(short... values)
+	{
+		return (Tup2sRW)Tup2sW.super.setArray(values);
+	}
+	
+	@Override
+	default Tup2sRW set(TupsR t)
+	{
+		return (Tup2sRW)Tup2sW.super.set(t);
+	}
+	
+	@Override
+	default Tup2sRW getNewInstance(TupsR t)
+	{
+		return (Tup2sRW)Tup2sR.super.getNewInstance(t);
+	}
 }

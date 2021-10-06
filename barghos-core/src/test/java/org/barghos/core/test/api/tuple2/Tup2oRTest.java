@@ -1,11 +1,10 @@
 package org.barghos.core.test.api.tuple2;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
-import org.barghos.core.api.testing.ValueRelay;
 import org.barghos.core.api.tuple2.Tup2oR;
 
 /**
@@ -16,87 +15,108 @@ import org.barghos.core.api.tuple2.Tup2oR;
 class Tup2oRTest
 {
 	/**
-	 * This method is called after each test in this class.
-	 */
-	@AfterEach
-	void cleanup()
-	{
-		ValueRelay.clear();
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup2oR#isValid()} returns
-	 * the corrct values for different situations.
+	 * This test ensures, that the function {@link Tup2oR#isValid()} returns true,
+	 * if none of the components is null.
 	 */
 	@Test
 	void isValidTest()
 	{
-		Tup2oR<Object, Object> t = new TestTup<>(null, null);
-		assertEquals(false, t.isValid());
+		@SuppressWarnings("unchecked")
+		Tup2oR<Integer,Double> t = (Tup2oR<Integer,Double>)mock(Tup2oR.class);
 		
-		t = new TestTup<>(null, new Object());
-		assertEquals(false, t.isValid());
+		when(t.isValid()).thenCallRealMethod();
 		
-		t = new TestTup<>(new Object(), null);
-		assertEquals(false, t.isValid());
+		when(t.getX()).thenReturn(1);
+		when(t.getY()).thenReturn(1.0);
 		
-		t = new TestTup<>(new Object(), new Object());
 		assertEquals(true, t.isValid());
+		
+		verify(t).isValid();
+		
+		verify(t).getX();
+		verify(t).getY();
+		
+		verifyNoMoreInteractions(t);
 	}
 	
 	/**
-	 * This test ensures, that the default implementation of the function {@link Tup2oR#getNewInstance(Tup2objR)} calls
+	 * This test ensures, that the function {@link Tup2oR#isValid()} returns false,
+	 * if the x component is null.
+	 */
+	@Test
+	void isValid_Fail_XTest()
+	{
+		@SuppressWarnings("unchecked")
+		Tup2oR<Integer,Double> t = (Tup2oR<Integer,Double>)mock(Tup2oR.class);
+		
+		when(t.isValid()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(null);
+
+		assertEquals(false, t.isValid());
+		
+		verify(t).isValid();
+		
+		verify(t).getX();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2oR#isValid()} returns false,
+	 * if the y component is null.
+	 */
+	@Test
+	void isValid_Fail_YTest()
+	{
+		@SuppressWarnings("unchecked")
+		Tup2oR<Integer,Double> t = (Tup2oR<Integer,Double>)mock(Tup2oR.class);
+		
+		when(t.isValid()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(1);
+		when(t.getY()).thenReturn(null);
+
+		assertEquals(false, t.isValid());
+		
+		verify(t).isValid();
+		
+		verify(t).getX();
+		verify(t).getY();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the default implementation of the function {@link Tup2oR#getNewInstance(Tup2oR)} calls
 	 * the function {@link Tup2oR#getNewInstance(Object, Object)} with the correct components.
 	 */
 	@Test
-	void getNewInstance_TupleTest()
+	void getNewInstance_Tuple2Test()
 	{
-		Tup2oR<Long,Long> t = new TestTup<>(1l, 1l);
+		@SuppressWarnings("unchecked")
+		Tup2oR<Integer,Double> original = (Tup2oR<Integer,Double>)mock(Tup2oR.class);
 		
-		t.getNewInstance(new TestTup<>(2l, 3l));
+		@SuppressWarnings("unchecked")
+		Tup2oR<Integer,Double> newInstance = (Tup2oR<Integer,Double>)mock(Tup2oR.class);
 		
-		assertEquals(true, ValueRelay.get("getNewInstanceC", false));
-		assertEquals(2l, ValueRelay.get("getNewInstanceC_X", 0l));
-		assertEquals(3l, ValueRelay.get("getNewInstanceC_Y", 0l));
+		@SuppressWarnings("unchecked")
+		Tup2oR<Integer,Double> t = (Tup2oR<Integer,Double>)mock(Tup2oR.class);
 		
-		// Can't test for the result here, as the relaying and adopting of the values are implementation specific.
-	}
-	
-	/**
-	 * This class is a test implementation of the interface {@link Tup2oR}.
-	 * 
-	 * @author picatrix1899
-	 */
-	private static class TestTup<X,Y> implements Tup2oR<X,Y>
-	{
-		private final X x;
-		private final Y y;
+		when(t.getNewInstance(original)).thenCallRealMethod();
 		
-		public TestTup(X x, Y y)
-		{
-			this.x = x;
-			this.y = y;
-		}
+		when(original.getX()).thenReturn(1);
+		when(original.getY()).thenReturn(1.0);
+		when(t.getNewInstance(1, 1.0)).thenReturn(newInstance);
 		
-		@Override
-		public X getX()
-		{
-			return this.x;
-		}
+		assertSame(newInstance, t.getNewInstance(original));
 		
-		@Override
-		public Y getY()
-		{
-			return this.y;
-		}
+		verify(t).getNewInstance(original);
 		
-		@Override
-		public TestTup<X,Y> getNewInstance(X x, Y y)
-		{
-			ValueRelay.relayCall("getNewInstanceC");
-			ValueRelay.relay("getNewInstanceC_X", x);
-			ValueRelay.relay("getNewInstanceC_Y", y);
-			return new TestTup<>(x, y);
-		}
+		verify(original).getX();
+		verify(original).getY();
+		verify(t).getNewInstance(1, 1.0);
+		
+		verifyNoMoreInteractions(t, original);
 	}
 }

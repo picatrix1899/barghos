@@ -22,6 +22,8 @@
 
 package org.barghos.core.api.tuple4;
 
+import org.barghos.core.api.tuple.TupcR;
+
 /**
  * This interface grants readonly access to any 4-dimensional char tuples.
  * 
@@ -33,7 +35,7 @@ package org.barghos.core.api.tuple4;
  * 
  * @since 1.0.0.0
  */
-public interface Tup4cR
+public interface Tup4cR extends TupcR
 {
 	/**
 	 * Returns the x value from the tuple.
@@ -70,28 +72,7 @@ public interface Tup4cR
 	 * @since 1.0.0.0
 	 */
 	char getW();
-	
-	/**
-	 * Returns true if all components are finite and therefore not NaN or Infinity.
-	 * 
-	 * @return True if all components are finite.
-	 */
-	default boolean isFinite()
-	{
-		return true;
-	}
-	
-	/**
-	 * Returns true if all the components are valid.
-	 * What values are considered valid or invalid depends on the tuple type.
-	 * 
-	 * @return True if all the components are valid.
-	 */
-	default boolean isValid()
-	{
-		return true;
-	}
-	
+
 	/**
 	 * Returns a new instance of the type of the origin instance with the components adopted
 	 * from t.
@@ -113,22 +94,7 @@ public interface Tup4cR
 		return getNewInstance(t.getX(), t.getY(), t.getZ(), t.getW());
 	}
 	
-	/**
-	 * Returns a new instance of the type of the origin instance with the components set to
-	 * value.
-	 * 
-	 * <p>
-	 * This can be used for type continuety.
-	 * This way even while only using abstractions it is possible to create
-	 * new instances of the original. It is similar to the {@link Object#clone()}
-	 * function but the {@link Object#clone()} function requires the returned instance to be
-	 * writable.
-	 * This function on the other hand allows for example the usage of factories.
-	 * 
-	 * @param value The value used for all components.
-	 * 
-	 * @return A new instance of the type of the origin instance
-	 */
+	@Override
 	default Tup4cR getNewInstance(char value)
 	{
 		return getNewInstance(value, value, value, value);
@@ -153,4 +119,44 @@ public interface Tup4cR
 	 * @return A new instance of the type of the origin instance
 	 */
 	Tup4cR getNewInstance(char x, char y, char z, char w);
+	
+	@Override
+	default int getDimensions()
+	{
+		return 4;
+	}
+	
+	@Override
+	default char getByIndex(int index)
+	{
+		switch(index)
+		{
+			case 0: return getX();
+			case 1: return getY();
+			case 2: return getZ();
+			case 3: return getW();
+		}
+		
+		throw new IndexOutOfBoundsException(index);
+	}
+	
+	@Override
+	default char[] getArray()
+	{
+		return new char[] {getX(), getY(), getZ(), getW()};
+	}
+	
+	@Override
+	default Tup4cR getNewInstanceFromArray(char... values)
+	{
+		char[] v = values;
+		return getNewInstance(v[0], v[1], v[2], v[3]);
+	}
+	
+	@Override
+	default Tup4cR getNewInstance(TupcR t)
+	{
+		char[] v = t.getArray();
+		return getNewInstance(v[0], v[1], v[2], v[3]);
+	}
 }

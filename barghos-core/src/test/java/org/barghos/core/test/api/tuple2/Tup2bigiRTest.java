@@ -1,13 +1,14 @@
 package org.barghos.core.test.api.tuple2;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
 import java.math.BigInteger;
 
-import org.barghos.core.api.testing.ValueRelay;
+import org.barghos.core.api.tuple.TupbigiR;
 import org.barghos.core.api.tuple2.Tup2bigiR;
 
 /**
@@ -18,102 +19,340 @@ import org.barghos.core.api.tuple2.Tup2bigiR;
 class Tup2bigiRTest
 {
 	/**
-	 * This method is called after each test in this class.
+	 * This test ensures, that the interface extends the interface {@link TupbigiR}.
 	 */
-	@AfterEach
-	void cleanup()
+	@Test
+	void inheritance_TupbigiRTest()
 	{
-		ValueRelay.clear();
+		assertTrue(TupbigiR.class.isAssignableFrom(Tup2bigiR.class));
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup2bigiR#isValid()} returns
-	 * the corrct values for different situations.
+	 * This test ensures, that the function {@link Tup2bigiR#isValid()} returns true,
+	 * if none of the components is null.
 	 */
 	@Test
 	void isValidTest()
 	{
-		final BigInteger one = BigInteger.ONE;
+		Tup2bigiR t = mock(Tup2bigiR.class);
 		
-		Tup2bigiR t = new TestTup(null, null);
-		assertEquals(false, t.isValid());
+		when(t.isValid()).thenCallRealMethod();
 		
-		t = new TestTup(one, null);
-		assertEquals(false, t.isValid());
+		when(t.getX()).thenReturn(BigInteger.ONE);
+		when(t.getY()).thenReturn(BigInteger.ONE);
 		
-		t = new TestTup(null, one);
-		assertEquals(false, t.isValid());
-		
-		t = new TestTup(one, one);
 		assertEquals(true, t.isValid());
+		
+		verify(t).isValid();
+		
+		verify(t).getX();
+		verify(t).getY();
+		
+		verifyNoMoreInteractions(t);
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup2bigiR#isFinite()} returns
-	 * the corrct values for different situations.
+	 * This test ensures, that the function {@link Tup2bigiR#isValid()} returns false,
+	 * if the x component is null.
 	 */
 	@Test
-	void isFiniteTest()
+	void isValid_Fail_XTest()
 	{
-		final BigInteger zero = BigInteger.ZERO;
+		Tup2bigiR t = mock(Tup2bigiR.class);
 		
-		Tup2bigiR t = new TestTup(zero, zero);
+		when(t.isValid()).thenCallRealMethod();
 		
-		assertEquals(true, t.isFinite());
-		assertEquals(false, ValueRelay.get("getX", false));
-		assertEquals(false, ValueRelay.get("getY", false));
+		when(t.getX()).thenReturn(null);
+
+		assertEquals(false, t.isValid());
+		
+		verify(t).isValid();
+		
+		verify(t).getX();
+		
+		verifyNoMoreInteractions(t);
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup2bigiR#isZero()} returns the correct
-	 * value based on the situation.
+	 * This test ensures, that the function {@link Tup2bigiR#isValid()} returns false,
+	 * if the y component is null.
 	 */
 	@Test
-	void isZeroExactTest()
+	void isValid_Fail_YTest()
 	{
-		final BigInteger zero = BigInteger.ZERO;
-		final BigInteger one = BigInteger.ONE;
+		Tup2bigiR t = mock(Tup2bigiR.class);
 		
-		Tup2bigiR t = new TestTup(zero, zero);
+		when(t.isValid()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(BigInteger.ONE);
+		when(t.getY()).thenReturn(null);
+
+		assertEquals(false, t.isValid());
+		
+		verify(t).isValid();
+		
+		verify(t).getX();
+		verify(t).getY();
+		
+		verifyNoMoreInteractions(t);
+	}
+
+	/**
+	 * this test ensures, that the function {@link Tup2bigiR#getDimensions()} always
+	 * returns 2 and does not make any calls.
+	 */
+	@Test
+	void getDimensionsTest()
+	{
+		Tup2bigiR t = mock(Tup2bigiR.class);
+		
+		when(t.getDimensions()).thenCallRealMethod();
+		
+		assertEquals(2, t.getDimensions());
+		
+		verify(t).getDimensions();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2bigiR#isZero()} returns true,
+	 * if all of the components are exactly {@link BigInteger#ZERO}.
+	 */
+	@Test
+	void isZero_ZeroTest()
+	{
+		Tup2bigiR t = mock(Tup2bigiR.class);
+		
+		when(t.isZero()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(BigInteger.ZERO);
+		when(t.getY()).thenReturn(BigInteger.ZERO);
+		
 		assertEquals(true, t.isZero());
 		
-		t = new TestTup(one, zero);
-		assertEquals(false, t.isZero());
+		verify(t).isZero();
 		
-		t = new TestTup(zero, one);
-		assertEquals(false, t.isZero());
+		verify(t).getX();
+		verify(t).getY();
 		
-		t = new TestTup(one, one);
-		assertEquals(false, t.isZero());
+		verifyNoMoreInteractions(t);
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup2bigiR#isZero(BigInteger)} returns the correct
-	 * value based on the situation.
+	 * This test ensures, that the function {@link Tup2bigiR#isZero()} returns false,
+	 * if the x component is not {@link BigInteger#ZERO}.
 	 */
 	@Test
-	void isZeroTest()
+	void isZero_Fail_XTest()
 	{
-		final BigInteger zero = BigInteger.ZERO;
+		Tup2bigiR t = mock(Tup2bigiR.class);
 		
-		final int tolerance = 2;
-		final BigInteger tol = BigInteger.valueOf(tolerance);
+		when(t.isZero()).thenCallRealMethod();
 		
-		for(int i = -tolerance - 1; i <= tolerance + 1; i++)
-		{
-			BigInteger v = BigInteger.valueOf(i);
-			
-			boolean b = Math.abs(i) <= tolerance;
-			
-			Tup2bigiR t = new TestTup(v, v);
-			assertEquals(b, t.isZero(tol));
-			
-			t = new TestTup(v, zero);
-			assertEquals(b, t.isZero(tol));
-			
-			t = new TestTup(zero, v);
-			assertEquals(b, t.isZero(tol));
-		}
+		when(t.getX()).thenReturn(BigInteger.ONE);
+		
+		assertEquals(false, t.isZero());
+		
+		verify(t).isZero();
+		
+		verify(t).getX();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2bigiR#isZero()} returns false,
+	 * if the y component is not {@link BigInteger#ZERO}.
+	 */
+	@Test
+	void isZero_Fail_YTest()
+	{
+		Tup2bigiR t = mock(Tup2bigiR.class);
+		
+		when(t.isZero()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(BigInteger.ZERO);
+		when(t.getY()).thenReturn(BigInteger.ONE);
+		
+		assertEquals(false, t.isZero());
+		
+		verify(t).isZero();
+		
+		verify(t).getX();
+		verify(t).getY();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2bigiR#isZeroWithMargin(BigInteger)} returns true,
+	 * if all components are exactly {@link BigInteger#ZERO}.
+	 */
+	@Test
+	void isZeroWithMargin_ZeroTest()
+	{
+		Tup2bigiR t = mock(Tup2bigiR.class);
+		
+		when(t.isZeroWithMargin(BigInteger.valueOf(2))).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(BigInteger.ZERO);
+		when(t.getY()).thenReturn(BigInteger.ZERO);
+		
+		assertEquals(true, t.isZeroWithMargin(BigInteger.valueOf(2)));
+		
+		verify(t).isZeroWithMargin(BigInteger.valueOf(2));
+		
+		verify(t).getX();
+		verify(t).getY();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2bigiR#isZeroWithMargin(BigInteger)} returns true,
+	 * if all components are at the positive extreme point that is the inclusive
+	 * tolerance parameter.
+	 */
+	@Test
+	void isZeroWithMargin_Extreme_PositiveTest()
+	{
+		Tup2bigiR t = mock(Tup2bigiR.class);
+		
+		when(t.isZeroWithMargin(BigInteger.valueOf(2))).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(BigInteger.valueOf(2));
+		when(t.getY()).thenReturn(BigInteger.valueOf(2));
+		
+		assertEquals(true, t.isZeroWithMargin(BigInteger.valueOf(2)));
+		
+		verify(t).isZeroWithMargin(BigInteger.valueOf(2));
+		
+		verify(t).getX();
+		verify(t).getY();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2bigiR#isZeroWithMargin(BigInteger)} returns true,
+	 * if all components are at the negative extreme point that is the inclusive
+	 * tolerance parameter.
+	 */
+	@Test
+	void isZeroWithMargin_Extreme_NegativeTest()
+	{
+		Tup2bigiR t = mock(Tup2bigiR.class);
+		
+		when(t.isZeroWithMargin(BigInteger.valueOf(2))).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(BigInteger.valueOf(-2));
+		when(t.getY()).thenReturn(BigInteger.valueOf(-2));
+		
+		assertEquals(true, t.isZeroWithMargin(BigInteger.valueOf(2)));
+		
+		verify(t).isZeroWithMargin(BigInteger.valueOf(2));
+		
+		verify(t).getX();
+		verify(t).getY();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2bigiR#isZeroWithMargin(BigInteger)} returns false,
+	 * if the x component exceeds the positive extreme point that is the inclusive
+	 * tolerance parameter.
+	 */
+	@Test
+	void isZeroWithMargin_Fail_X_PositiveTest()
+	{
+		Tup2bigiR t = mock(Tup2bigiR.class);
+		
+		when(t.isZeroWithMargin(BigInteger.valueOf(2))).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(BigInteger.valueOf(3));
+		
+		assertEquals(false, t.isZeroWithMargin(BigInteger.valueOf(2)));
+		
+		verify(t).isZeroWithMargin(BigInteger.valueOf(2));
+		
+		verify(t).getX();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2bigiR#isZeroWithMargin(BigInteger)} returns false,
+	 * if the x component exceeds the negative extreme point that is the inclusive
+	 * tolerance parameter.
+	 */
+	@Test
+	void isZeroWithMargin_Fail_X_NegativeTest()
+	{
+		Tup2bigiR t = mock(Tup2bigiR.class);
+		
+		when(t.isZeroWithMargin(BigInteger.valueOf(2))).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(BigInteger.valueOf(-3));
+		
+		assertEquals(false, t.isZeroWithMargin(BigInteger.valueOf(2)));
+		
+		verify(t).isZeroWithMargin(BigInteger.valueOf(2));
+		
+		verify(t).getX();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2bigiR#isZeroWithMargin(BigInteger)} returns false,
+	 * if the y component exceeds the positive extreme point that is the inclusive
+	 * tolerance parameter.
+	 */
+	@Test
+	void isZeroWithMargin_Fail_Y_PositiveTest()
+	{
+		Tup2bigiR t = mock(Tup2bigiR.class);
+		
+		when(t.isZeroWithMargin(BigInteger.valueOf(2))).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(BigInteger.ZERO);
+		when(t.getY()).thenReturn(BigInteger.valueOf(3));
+		
+		assertEquals(false, t.isZeroWithMargin(BigInteger.valueOf(2)));
+		
+		verify(t).isZeroWithMargin(BigInteger.valueOf(2));
+		
+		verify(t).getX();
+		verify(t).getY();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2bigiR#isZeroWithMargin(BigInteger)} returns false,
+	 * if the y component exceeds the positive extreme point that is the inclusive
+	 * tolerance parameter.
+	 */
+	@Test
+	void isZeroWithMargin_Fail_Y_NegativeTest()
+	{
+		Tup2bigiR t = mock(Tup2bigiR.class);
+		
+		when(t.isZeroWithMargin(BigInteger.valueOf(2))).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(BigInteger.ZERO);
+		when(t.getY()).thenReturn(BigInteger.valueOf(-3));
+		
+		assertEquals(false, t.isZeroWithMargin(BigInteger.valueOf(2)));
+		
+		verify(t).isZeroWithMargin(BigInteger.valueOf(2));
+		
+		verify(t).getX();
+		verify(t).getY();
+		
+		verifyNoMoreInteractions(t);
 	}
 	
 	/**
@@ -121,22 +360,27 @@ class Tup2bigiRTest
 	 * the function {@link Tup2bigiR#getNewInstance(BigInteger, BigInteger)} with the correct components.
 	 */
 	@Test
-	void getNewInstance_TupleTest()
+	void getNewInstance_Tuple2Test()
 	{
-		final BigInteger zero = BigInteger.ZERO;
-		final BigInteger one = BigInteger.ONE;
-		final BigInteger two = BigInteger.valueOf(2);
-		final BigInteger three = BigInteger.valueOf(3);
-
-		Tup2bigiR t = new TestTup(one, one);
-	
-		t.getNewInstance(new TestTup(two, three));
+		Tup2bigiR original = mock(Tup2bigiR.class);
+		Tup2bigiR newInstance = mock(Tup2bigiR.class);
+		Tup2bigiR t = mock(Tup2bigiR.class);
 		
-		assertEquals(true, ValueRelay.get("getNewInstanceC", false));
-		assertEquals(two, ValueRelay.get("getNewInstanceC_X", zero));
-		assertEquals(three, ValueRelay.get("getNewInstanceC_Y", zero));
+		when(t.getNewInstance(original)).thenCallRealMethod();
 		
-		// Can't test for the result here, as the relaying and adopting of the values are implementation specific.
+		when(original.getX()).thenReturn(BigInteger.ONE);
+		when(original.getY()).thenReturn(BigInteger.valueOf(2));
+		when(t.getNewInstance(BigInteger.ONE, BigInteger.valueOf(2))).thenReturn(newInstance);
+		
+		assertSame(newInstance, t.getNewInstance(original));
+		
+		verify(t).getNewInstance(original);
+		
+		verify(original).getX();
+		verify(original).getY();
+		verify(t).getNewInstance(BigInteger.ONE, BigInteger.valueOf(2));
+		
+		verifyNoMoreInteractions(t, original);
 	}
 	
 	/**
@@ -146,58 +390,159 @@ class Tup2bigiRTest
 	@Test
 	void getNewInstance_ValueTest()
 	{
-		final BigInteger zero = BigInteger.ZERO;
-		final BigInteger one = BigInteger.ONE;
-		final BigInteger two = BigInteger.valueOf(2);
+		Tup2bigiR newInstance = mock(Tup2bigiR.class);
+		Tup2bigiR t = mock(Tup2bigiR.class);
 		
-		Tup2bigiR t = new TestTup(one, one);
+		when(t.getNewInstance(BigInteger.ONE)).thenCallRealMethod();
+
+		when(t.getNewInstance(BigInteger.ONE, BigInteger.ONE)).thenReturn(newInstance);
 		
-		t.getNewInstance(two);
+		assertSame(newInstance, t.getNewInstance(BigInteger.ONE));
 		
-		assertEquals(true, ValueRelay.get("getNewInstanceC", false));
-		assertEquals(two, ValueRelay.get("getNewInstanceC_X", zero));
-		assertEquals(two, ValueRelay.get("getNewInstanceC_Y", zero));
+		verify(t).getNewInstance(BigInteger.ONE);
 		
-		// Can't test for the result here, as the relaying and adopting of the values are implementation specific.
+		verify(t).getNewInstance(BigInteger.ONE, BigInteger.ONE);
+		
+		verifyNoMoreInteractions(t);
 	}
 	
 	/**
-	 * This class is a test implementation of the interface {@link Tup2bigiR}.
-	 * 
-	 * @author picatrix1899
+	 * This test ensures, that the default implementation of the function {@link Tup2bigiR#getNewInstance(TupbigiR)} calls
+	 * the function {@link Tup2bigiR#getNewInstance(BigInteger, BigInteger)} with the correct components.
 	 */
-	private static class TestTup implements Tup2bigiR
+	@Test
+	void getNewInstance_TupleTest()
 	{
-		private final BigInteger x;
-		private final BigInteger y;
+		TupbigiR original = mock(TupbigiR.class);
+		Tup2bigiR newInstance = mock(Tup2bigiR.class);
+		Tup2bigiR t = mock(Tup2bigiR.class);
 		
-		public TestTup(BigInteger x, BigInteger y)
-		{
-			this.x = x;
-			this.y = y;
-		}
+		when(t.getNewInstance(original)).thenCallRealMethod();
 		
-		@Override
-		public BigInteger getX()
-		{
-			ValueRelay.relayCall("getX");
-			return this.x;
-		}
+		when(original.getArray()).thenReturn(new BigInteger[] {BigInteger.ONE, BigInteger.valueOf(2)});
+		when(t.getNewInstance(BigInteger.ONE, BigInteger.valueOf(2))).thenReturn(newInstance);
 		
-		@Override
-		public BigInteger getY()
-		{
-			ValueRelay.relayCall("getY");
-			return this.y;
-		}
+		assertSame(newInstance, t.getNewInstance(original));
 		
-		@Override
-		public TestTup getNewInstance(BigInteger x, BigInteger y)
-		{
-			ValueRelay.relayCall("getNewInstanceC");
-			ValueRelay.relay("getNewInstanceC_X", x);
-			ValueRelay.relay("getNewInstanceC_Y", y);
-			return new TestTup(x, y);
-		}
+		verify(t).getNewInstance(original);
+		
+		verify(original).getArray();
+		verify(t).getNewInstance(BigInteger.ONE, BigInteger.valueOf(2));
+		
+		verifyNoMoreInteractions(t, original);
+	}
+	
+	/**
+	 * This test ensures, that the default implementation of the function {@link Tup2bigiR#getNewInstanceFromArray(BigInteger[])} calls
+	 * the function {@link Tup2bigiR#getNewInstance(BigInteger, BigInteger)} with the correct components.
+	 */
+	@Test
+	void getNewInstanceFromArrayTest()
+	{
+		Tup2bigiR newInstance = mock(Tup2bigiR.class);
+		Tup2bigiR t = mock(Tup2bigiR.class);
+		
+		when(t.getNewInstanceFromArray(new BigInteger[] {BigInteger.ONE, BigInteger.valueOf(2)})).thenCallRealMethod();
+
+		when(t.getNewInstance(BigInteger.ONE, BigInteger.valueOf(2))).thenReturn(newInstance);
+		
+		assertSame(newInstance, t.getNewInstanceFromArray(new BigInteger[] {BigInteger.ONE, BigInteger.valueOf(2)}));
+		
+		verify(t).getNewInstanceFromArray(new BigInteger[] {BigInteger.ONE, BigInteger.valueOf(2)});
+		
+		verify(t).getNewInstance(BigInteger.ONE, BigInteger.valueOf(2));
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2bigiR#getArray()} returns
+	 * an array with the components in the right order.
+	 */
+	@Test
+	void getArrayTest()
+	{
+		Tup2bigiR t = mock(Tup2bigiR.class);
+		
+		when(t.getArray()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(BigInteger.ONE);
+		when(t.getY()).thenReturn(BigInteger.valueOf(2));
+		
+		assertArrayEquals(new BigInteger[] {BigInteger.ONE, BigInteger.valueOf(2)}, t.getArray());
+		
+		verify(t).getArray();
+		
+		verify(t).getX();
+		verify(t).getY();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2bigiR#getByIndex(int)} returns
+	 * the x component for the index 0.
+	 */
+	@Test
+	void getByIndex_XTest()
+	{
+		Tup2bigiR t = mock(Tup2bigiR.class);
+		
+		when(t.getByIndex(0)).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(BigInteger.ONE);
+		
+		assertEquals(BigInteger.ONE, t.getByIndex(0));
+
+		verify(t).getByIndex(0);
+		
+		verify(t).getX();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2bigiR#getByIndex(int)} returns
+	 * the y component for the index 1.
+	 */
+	@Test
+	void getByIndex_YTest()
+	{
+		Tup2bigiR t = mock(Tup2bigiR.class);
+		
+		when(t.getByIndex(1)).thenCallRealMethod();
+		
+		when(t.getY()).thenReturn(BigInteger.ONE);
+		
+		assertEquals(BigInteger.ONE, t.getByIndex(1));
+
+		verify(t).getByIndex(1);
+		
+		verify(t).getY();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2bigiR#getByIndex(int)} throws
+	 * an {@link IndexOutOfBoundsException} for an index different than 0 or 1.
+	 */
+	@Test
+	void getByIndex_ExceptionTest()
+	{
+		Tup2bigiR t = mock(Tup2bigiR.class);
+		
+		when(t.getByIndex(2)).thenCallRealMethod();
+
+		assertThrows(IndexOutOfBoundsException.class, new Executable() {
+			public void execute() throws Throwable
+			{
+				t.getByIndex(2);
+			}
+		});
+
+		verify(t).getByIndex(2);
+
+		verifyNoMoreInteractions(t);
 	}
 }

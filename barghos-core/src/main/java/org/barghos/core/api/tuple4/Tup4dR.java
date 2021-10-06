@@ -22,6 +22,8 @@
 
 package org.barghos.core.api.tuple4;
 
+import org.barghos.core.api.tuple.TupdR;
+
 /**
  * This interface grants readonly access to any 4-dimensional double tuples.
  * 
@@ -33,7 +35,7 @@ package org.barghos.core.api.tuple4;
  * 
  * @since 1.0.0.0
  */
-public interface Tup4dR
+public interface Tup4dR extends TupdR
 {
 	/**
 	 * Returns the x value from the tuple.
@@ -71,11 +73,7 @@ public interface Tup4dR
 	 */
 	double getW();
 	
-	/**
-	 * Returns true if all components are finite and therefore not NaN or Infinity.
-	 * 
-	 * @return True if all components are finite.
-	 */
+	@Override
 	default boolean isFinite()
 	{
 		return Double.isFinite(getX()) &&
@@ -84,11 +82,7 @@ public interface Tup4dR
 				Double.isFinite(getW());
 	}
 	
-	/**
-	 * Returns true if all components are exactly zero.
-	 * 
-	 * @return True if all components are exactly zero.
-	 */
+	@Override
 	default boolean isZero()
 	{
 		return getX() == 0.0 &&
@@ -97,30 +91,13 @@ public interface Tup4dR
 				getW() == 0.0;
 	}
 	
-	/**
-	 * Returns true if all components are zero within inclusive the given tolerance.
-	 * 
-	 * @param tolerance The tolerance around zero, that should still count as zero.
-	 * 
-	 * @return True if all components are technically zero.
-	 */
-	default boolean isZero(double tolerance)
+	@Override
+	default boolean isZeroWithMargin(double tolerance)
 	{
 		return Math.abs(getX()) <= tolerance &&
 				Math.abs(getY()) <= tolerance &&
 				Math.abs(getZ()) <= tolerance &&
 				Math.abs(getW()) <= tolerance;
-	}
-	
-	/**
-	 * Returns true if all the components are valid.
-	 * What values are considered valid or invalid depends on the tuple type.
-	 * 
-	 * @return True if all the components are valid.
-	 */
-	default boolean isValid()
-	{
-		return true;
 	}
 	
 	/**
@@ -144,22 +121,7 @@ public interface Tup4dR
 		return getNewInstance(t.getX(), t.getY(), t.getZ(), t.getW());
 	}
 	
-	/**
-	 * Returns a new instance of the type of the origin instance with the components set to
-	 * value.
-	 * 
-	 * <p>
-	 * This can be used for type continuety.
-	 * This way even while only using abstractions it is possible to create
-	 * new instances of the original. It is similar to the {@link Object#clone()}
-	 * function but the {@link Object#clone()} function requires the returned instance to be
-	 * writable.
-	 * This function on the other hand allows for example the usage of factories.
-	 * 
-	 * @param value The value used for all components.
-	 * 
-	 * @return A new instance of the type of the origin instance
-	 */
+	@Override
 	default Tup4dR getNewInstance(double value)
 	{
 		return getNewInstance(value, value, value, value);
@@ -184,4 +146,44 @@ public interface Tup4dR
 	 * @return A new instance of the type of the origin instance
 	 */
 	Tup4dR getNewInstance(double x, double y, double z, double w);
+	
+	@Override
+	default int getDimensions()
+	{
+		return 4;
+	}
+	
+	@Override
+	default double getByIndex(int index)
+	{
+		switch(index)
+		{
+			case 0: return getX();
+			case 1: return getY();
+			case 2: return getZ();
+			case 3: return getW();
+		}
+		
+		throw new IndexOutOfBoundsException(index);
+	}
+	
+	@Override
+	default double[] getArray()
+	{
+		return new double[] {getX(), getY(), getZ(), getW()};
+	}
+	
+	@Override
+	default Tup4dR getNewInstanceFromArray(double... values)
+	{
+		double[] v = values;
+		return getNewInstance(v[0], v[1], v[2], v[3]);
+	}
+	
+	@Override
+	default Tup4dR getNewInstance(TupdR t)
+	{
+		double[] v = t.getArray();
+		return getNewInstance(v[0], v[1], v[2], v[3]);
+	}
 }

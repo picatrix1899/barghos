@@ -22,6 +22,9 @@
 
 package org.barghos.core.api.tuple3;
 
+import org.barghos.core.api.tuple.TupbR;
+import org.barghos.core.api.tuple.TupbRW;
+
 /**
  * This interface grants read and write access to any 3-dimensional byte tuple.
  * 
@@ -29,7 +32,7 @@ package org.barghos.core.api.tuple3;
  * 
  * @since 1.0.0.0
  */
-public interface Tup3bRW extends Tup3bR, Tup3bW
+public interface Tup3bRW extends Tup3bR, Tup3bW, TupbRW
 {
 	@Override
 	Tup3bRW setX(byte x);
@@ -41,26 +44,71 @@ public interface Tup3bRW extends Tup3bR, Tup3bW
 	Tup3bRW setZ(byte z);
 	
 	@Override
-	Tup3bRW set(Tup3bR t);
+	default Tup3bRW set(Tup3bR t)
+	{
+		return (Tup3bRW)Tup3bW.super.set(t);
+	}
 	
 	@Override
-	Tup3bRW set(byte value);
+	default Tup3bRW set(byte value)
+	{
+		return (Tup3bRW)Tup3bW.super.set(value);
+	}
 	
 	@Override
-	Tup3bRW set(byte x, byte y, byte z);
-	
+	default Tup3bRW set(byte x, byte y, byte z)
+	{
+		return (Tup3bRW)Tup3bW.super.set(x, y, z);
+	}
+
 	@Override
 	default Tup3bRW getNewInstance(Tup3bR t)
 	{
-		return getNewInstance(t.getX(), t.getY(), t.getZ());
+		return (Tup3bRW)Tup3bR.super.getNewInstance(t);
 	}
 	
 	@Override
 	default Tup3bRW getNewInstance(byte value)
 	{
-		return getNewInstance(value, value, value);
+		return (Tup3bRW)Tup3bR.super.getNewInstance(value);
 	}
 	
 	@Override
 	Tup3bRW getNewInstance(byte x, byte y, byte z);
+	
+	@Override
+	default int getDimensions()
+	{
+		return Tup3bR.super.getDimensions();
+	}
+	
+	@Override
+	default Tup3bRW getNewInstanceFromArray(byte... values)
+	{
+		return (Tup3bRW)Tup3bR.super.getNewInstanceFromArray(values);
+	}
+	
+	@Override
+	default Tup3bRW setByIndex(int index, byte value)
+	{
+		return (Tup3bRW)Tup3bW.super.setByIndex(index, value);
+	}
+	
+	@Override
+	default Tup3bRW setArray(byte... values)
+	{
+		return (Tup3bRW)Tup3bW.super.setArray(values);
+	}
+	
+	@Override
+	default Tup3bRW set(TupbR t)
+	{
+		return (Tup3bRW)Tup3bW.super.set(t);
+	}
+	
+	@Override
+	default Tup3bRW getNewInstance(TupbR t)
+	{
+		return (Tup3bRW)Tup3bR.super.getNewInstance(t);
+	}
 }

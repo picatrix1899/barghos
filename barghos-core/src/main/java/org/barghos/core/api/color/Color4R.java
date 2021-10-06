@@ -22,6 +22,7 @@
 
 package org.barghos.core.api.color;
 
+import org.barghos.core.api.tuple.TupfR;
 import org.barghos.core.api.tuple3.Tup3fR;
 import org.barghos.core.api.tuple4.Tup4fR;
 
@@ -101,9 +102,9 @@ public interface Color4R extends Color3R, Tup4fR
 	}
 
 	@Override
-	default boolean isZero(float tolerance)
+	default boolean isZeroWithMargin(float tolerance)
 	{
-		return Tup4fR.super.isZero(tolerance);
+		return Tup4fR.super.isZeroWithMargin(tolerance);
 	}
 
 	@Override
@@ -135,4 +136,34 @@ public interface Color4R extends Color3R, Tup4fR
 	
 	@Override
 	Color4R getNewInstance(float x, float y, float z, float w);
+
+	@Override
+	default float[] getArray()
+	{
+		return Tup4fR.super.getArray();
+	}
+	
+	@Override
+	default Color4R getNewInstanceFromArray(float... values)
+	{
+		return (Color4R)Tup4fR.super.getNewInstanceFromArray(values);
+	}
+	
+	@Override
+	default Color4R getNewInstance(TupfR t)
+	{
+		return (Color4R)Tup4fR.super.getNewInstance(t);
+	}
+
+	@Override
+	default int getDimensions()
+	{
+		return Tup4fR.super.getDimensions();
+	}
+
+	@Override
+	default float getByIndex(int index)
+	{
+		return Tup4fR.super.getByIndex(index);
+	}
 }

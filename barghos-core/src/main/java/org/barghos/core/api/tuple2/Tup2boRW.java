@@ -22,6 +22,9 @@
 
 package org.barghos.core.api.tuple2;
 
+import org.barghos.core.api.tuple.TupboR;
+import org.barghos.core.api.tuple.TupboRW;
+
 /**
  * This interface grants read and write access to any 2-dimensional boolean tuple.
  * 
@@ -29,7 +32,7 @@ package org.barghos.core.api.tuple2;
  * 
  * @since 1.0.0.0
  */
-public interface Tup2boRW extends Tup2boR, Tup2boW
+public interface Tup2boRW extends Tup2boR, Tup2boW, TupboRW
 {
 	@Override
 	Tup2boRW setX(boolean x);
@@ -38,26 +41,71 @@ public interface Tup2boRW extends Tup2boR, Tup2boW
 	Tup2boRW setY(boolean y);
 	
 	@Override
-	Tup2boRW set(Tup2boR t);
-	
-	@Override
-	Tup2boRW set(boolean value);
-	
-	@Override
-	Tup2boRW set(boolean x, boolean y);
-	
-	@Override
-	default Tup2boR getNewInstance(Tup2boR t)
+	default Tup2boRW set(Tup2boR t)
 	{
-		return getNewInstance(t.getX(), t.getY());
+		return (Tup2boRW)Tup2boW.super.set(t);
 	}
 	
 	@Override
-	default Tup2boR getNewInstance(boolean value)
+	default Tup2boRW set(boolean value)
 	{
-		return getNewInstance(value, value);
+		return (Tup2boRW)Tup2boW.super.set(value);
 	}
 	
 	@Override
-	Tup2boR getNewInstance(boolean x, boolean y);
+	default Tup2boRW set(boolean x, boolean y)
+	{
+		return (Tup2boRW)Tup2boW.super.set(x, y);
+	}
+	
+	@Override
+	default Tup2boRW getNewInstance(Tup2boR t)
+	{
+		return (Tup2boRW)Tup2boR.super.getNewInstance(t);
+	}
+	
+	@Override
+	default Tup2boRW getNewInstance(boolean value)
+	{
+		return (Tup2boRW)Tup2boR.super.getNewInstance(value);
+	}
+	
+	@Override
+	Tup2boRW getNewInstance(boolean x, boolean y);
+	
+	@Override
+	default int getDimensions()
+	{
+		return Tup2boR.super.getDimensions();
+	}
+	
+	@Override
+	default Tup2boRW getNewInstanceFromArray(boolean... values)
+	{
+		return (Tup2boRW)Tup2boR.super.getNewInstanceFromArray(values);
+	}
+	
+	@Override
+	default Tup2boRW setByIndex(int index, boolean value)
+	{
+		return (Tup2boRW)Tup2boW.super.setByIndex(index, value);
+	}
+	
+	@Override
+	default Tup2boRW setArray(boolean... values)
+	{
+		return (Tup2boRW)Tup2boW.super.setArray(values);
+	}
+	
+	@Override
+	default Tup2boRW set(TupboR t)
+	{
+		return (Tup2boRW)Tup2boW.super.set(t);
+	}
+	
+	@Override
+	default Tup2boRW getNewInstance(TupboR t)
+	{
+		return (Tup2boRW)Tup2boR.super.getNewInstance(t);
+	}
 }

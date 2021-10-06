@@ -22,6 +22,8 @@
 
 package org.barghos.core.api.tuple2;
 
+import org.barghos.core.api.tuple.TupbR;
+
 /**
  * This interface grants readonly access to any 2-dimensional byte tuples.
  * 
@@ -33,7 +35,7 @@ package org.barghos.core.api.tuple2;
  * 
  * @since 1.0.0.0
  */
-public interface Tup2bR
+public interface Tup2bR extends TupbR
 {
 	/**
 	 * Returns the x value from the tuple.
@@ -54,20 +56,11 @@ public interface Tup2bR
 	byte getY();
 	
 	/**
-	 * Returns true if all components are finite and therefore not NaN or Infinity.
-	 * 
-	 * @return True if all components are finite.
-	 */
-	default boolean isFinite()
-	{
-		return true;
-	}
-	
-	/**
 	 * Returns true if all components are exactly zero.
 	 * 
 	 * @return True if all components are exactly zero.
 	 */
+	@Override
 	default boolean isZero()
 	{
 		return getX() == (byte)0 &&
@@ -81,21 +74,11 @@ public interface Tup2bR
 	 * 
 	 * @return True if all components are technically zero.
 	 */
-	default boolean isZero(byte tolerance)
+	@Override
+	default boolean isZeroWithMargin(byte tolerance)
 	{
 		return Math.abs(getX()) <= tolerance &&
 				Math.abs(getY()) <= tolerance;
-	}
-	
-	/**
-	 * Returns true if all the components are valid.
-	 * What values are considered valid or invalid depends on the tuple type.
-	 * 
-	 * @return True if all the components are valid.
-	 */
-	default boolean isValid()
-	{
-		return true;
 	}
 	
 	/**
@@ -119,22 +102,7 @@ public interface Tup2bR
 		return getNewInstance(t.getX(), t.getY());
 	}
 	
-	/**
-	 * Returns a new instance of the type of the origin instance with the components set to
-	 * value.
-	 * 
-	 * <p>
-	 * This can be used for type continuety.
-	 * This way even while only using abstractions it is possible to create
-	 * new instances of the original. It is similar to the {@link Object#clone()}
-	 * function but the {@link Object#clone()} function requires the returned instance to be
-	 * writable.
-	 * This function on the other hand allows for example the usage of factories.
-	 * 
-	 * @param value The value used for all components.
-	 * 
-	 * @return A new instance of the type of the origin instance
-	 */
+	@Override
 	default Tup2bR getNewInstance(byte value)
 	{
 		return getNewInstance(value, value);
@@ -157,4 +125,42 @@ public interface Tup2bR
 	 * @return A new instance of the type of the origin instance
 	 */
 	Tup2bR getNewInstance(byte x, byte y);
+	
+	@Override
+	default int getDimensions()
+	{
+		return 2;
+	}
+	
+	@Override
+	default byte getByIndex(int index)
+	{
+		switch(index)
+		{
+			case 0: return getX();
+			case 1: return getY();
+		}
+		
+		throw new IndexOutOfBoundsException(index);
+	}
+	
+	@Override
+	default byte[] getArray()
+	{
+		return new byte[] {getX(), getY()};
+	}
+	
+	@Override
+	default Tup2bR getNewInstanceFromArray(byte... values)
+	{
+		byte[] v = values;
+		return getNewInstance(v[0], v[1]);
+	}
+	
+	@Override
+	default Tup2bR getNewInstance(TupbR t)
+	{
+		byte[] v = t.getArray();
+		return getNewInstance(v[0], v[1]);
+	}
 }

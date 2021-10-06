@@ -22,6 +22,9 @@
 
 package org.barghos.core.api.tuple3;
 
+import org.barghos.core.api.tuple.TupsR;
+import org.barghos.core.api.tuple.TupsRW;
+
 /**
  * This interface grants read and write access to any 3-dimensional short tuple.
  * 
@@ -29,7 +32,7 @@ package org.barghos.core.api.tuple3;
  * 
  * @since 1.0.0.0
  */
-public interface Tup3sRW extends Tup3sR, Tup3sW
+public interface Tup3sRW extends Tup3sR, Tup3sW, TupsRW
 {
 	@Override
 	Tup3sRW setX(short x);
@@ -41,26 +44,71 @@ public interface Tup3sRW extends Tup3sR, Tup3sW
 	Tup3sRW setZ(short z);
 	
 	@Override
-	Tup3sRW set(Tup3sR t);
+	default Tup3sRW set(Tup3sR t)
+	{
+		return (Tup3sRW)Tup3sW.super.set(t);
+	}
 	
 	@Override
-	Tup3sRW set(short value);
+	default Tup3sRW set(short value)
+	{
+		return (Tup3sRW)Tup3sW.super.set(value);
+	}
 	
 	@Override
-	Tup3sRW set(short x, short y, short z);
-	
+	default Tup3sRW set(short x, short y, short z)
+	{
+		return (Tup3sRW)Tup3sW.super.set(x, y, z);
+	}
+
 	@Override
 	default Tup3sRW getNewInstance(Tup3sR t)
 	{
-		return getNewInstance(t.getX(), t.getY(), t.getZ());
+		return (Tup3sRW)Tup3sR.super.getNewInstance(t);
 	}
 	
 	@Override
 	default Tup3sRW getNewInstance(short value)
 	{
-		return getNewInstance(value, value, value);
+		return (Tup3sRW)Tup3sR.super.getNewInstance(value);
 	}
 	
 	@Override
 	Tup3sRW getNewInstance(short x, short y, short z);
+	
+	@Override
+	default int getDimensions()
+	{
+		return Tup3sR.super.getDimensions();
+	}
+	
+	@Override
+	default Tup3sRW getNewInstanceFromArray(short... values)
+	{
+		return (Tup3sRW)Tup3sR.super.getNewInstanceFromArray(values);
+	}
+	
+	@Override
+	default Tup3sRW setByIndex(int index, short value)
+	{
+		return (Tup3sRW)Tup3sW.super.setByIndex(index, value);
+	}
+	
+	@Override
+	default Tup3sRW setArray(short... values)
+	{
+		return (Tup3sRW)Tup3sW.super.setArray(values);
+	}
+	
+	@Override
+	default Tup3sRW set(TupsR t)
+	{
+		return (Tup3sRW)Tup3sW.super.set(t);
+	}
+	
+	@Override
+	default Tup3sRW getNewInstance(TupsR t)
+	{
+		return (Tup3sRW)Tup3sR.super.getNewInstance(t);
+	}
 }

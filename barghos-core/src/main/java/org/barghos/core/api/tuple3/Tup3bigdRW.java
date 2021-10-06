@@ -24,6 +24,9 @@ package org.barghos.core.api.tuple3;
 
 import java.math.BigDecimal;
 
+import org.barghos.core.api.tuple.TupbigdR;
+import org.barghos.core.api.tuple.TupbigdRW;
+
 /**
  * This interface grants read and write access to any 3-dimensional big decimal tuple.
  * 
@@ -31,7 +34,7 @@ import java.math.BigDecimal;
  * 
  * @since 1.0.0.0
  */
-public interface Tup3bigdRW extends Tup3bigdR, Tup3bigdW
+public interface Tup3bigdRW extends Tup3bigdR, Tup3bigdW, TupbigdRW
 {
 	@Override
 	Tup3bigdRW setX(BigDecimal x);
@@ -43,26 +46,71 @@ public interface Tup3bigdRW extends Tup3bigdR, Tup3bigdW
 	Tup3bigdRW setZ(BigDecimal z);
 	
 	@Override
-	Tup3bigdRW set(Tup3bigdR t);
+	default Tup3bigdRW set(Tup3bigdR t)
+	{
+		return (Tup3bigdRW)Tup3bigdW.super.set(t);
+	}
 	
 	@Override
-	Tup3bigdRW set(BigDecimal value);
+	default Tup3bigdRW set(BigDecimal value)
+	{
+		return (Tup3bigdRW)Tup3bigdW.super.set(value);
+	}
 	
 	@Override
-	Tup3bigdRW set(BigDecimal x, BigDecimal y, BigDecimal z);
-	
+	default Tup3bigdRW set(BigDecimal x, BigDecimal y, BigDecimal z)
+	{
+		return (Tup3bigdRW)Tup3bigdW.super.set(x, y, z);
+	}
+
 	@Override
 	default Tup3bigdRW getNewInstance(Tup3bigdR t)
 	{
-		return getNewInstance(t.getX(), t.getY(), t.getZ());
+		return (Tup3bigdRW)Tup3bigdR.super.getNewInstance(t);
 	}
 	
 	@Override
 	default Tup3bigdRW getNewInstance(BigDecimal value)
 	{
-		return getNewInstance(value, value, value);
+		return (Tup3bigdRW)Tup3bigdR.super.getNewInstance(value);
 	}
 	
 	@Override
 	Tup3bigdRW getNewInstance(BigDecimal x, BigDecimal y, BigDecimal z);
+	
+	@Override
+	default int getDimensions()
+	{
+		return Tup3bigdR.super.getDimensions();
+	}
+	
+	@Override
+	default Tup3bigdRW getNewInstanceFromArray(BigDecimal... values)
+	{
+		return (Tup3bigdRW)Tup3bigdR.super.getNewInstanceFromArray(values);
+	}
+	
+	@Override
+	default Tup3bigdRW setByIndex(int index, BigDecimal value)
+	{
+		return (Tup3bigdRW)Tup3bigdW.super.setByIndex(index, value);
+	}
+	
+	@Override
+	default Tup3bigdRW setArray(BigDecimal... values)
+	{
+		return (Tup3bigdRW)Tup3bigdW.super.setArray(values);
+	}
+	
+	@Override
+	default Tup3bigdRW set(TupbigdR t)
+	{
+		return (Tup3bigdRW)Tup3bigdW.super.set(t);
+	}
+	
+	@Override
+	default Tup3bigdRW getNewInstance(TupbigdR t)
+	{
+		return (Tup3bigdRW)Tup3bigdR.super.getNewInstance(t);
+	}
 }

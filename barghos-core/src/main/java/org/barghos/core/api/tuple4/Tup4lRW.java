@@ -22,6 +22,9 @@
 
 package org.barghos.core.api.tuple4;
 
+import org.barghos.core.api.tuple.TuplR;
+import org.barghos.core.api.tuple.TuplRW;
+
 /**
  * This interface grants read and write access to any 4-dimensional long tuple.
  * 
@@ -29,7 +32,7 @@ package org.barghos.core.api.tuple4;
  * 
  * @since 1.0.0.0
  */
-public interface Tup4lRW extends Tup4lR, Tup4lW
+public interface Tup4lRW extends Tup4lR, Tup4lW, TuplRW
 {
 	@Override
 	Tup4lRW setX(long x);
@@ -44,26 +47,71 @@ public interface Tup4lRW extends Tup4lR, Tup4lW
 	Tup4lRW setW(long w);
 	
 	@Override
-	Tup4lRW set(Tup4lR t);
+	default Tup4lRW set(Tup4lR t)
+	{
+		return (Tup4lRW)Tup4lW.super.set(t);
+	}
 	
 	@Override
-	Tup4lRW set(long value);
+	default Tup4lRW set(long value)
+	{
+		return (Tup4lRW)Tup4lW.super.set(value);
+	}
 	
 	@Override
-	Tup4lRW set(long x, long y, long z, long w);
-	
+	default Tup4lRW set(long x, long y, long z, long w)
+	{
+		return (Tup4lRW)Tup4lW.super.set(x, y, z, w);
+	}
+
 	@Override
 	default Tup4lRW getNewInstance(Tup4lR t)
 	{
-		return getNewInstance(t.getX(), t.getY(), t.getZ(), t.getW());
+		return (Tup4lRW)Tup4lR.super.getNewInstance(t);
 	}
 	
 	@Override
 	default Tup4lRW getNewInstance(long value)
 	{
-		return getNewInstance(value, value, value, value);
+		return (Tup4lRW)Tup4lR.super.getNewInstance(value);
 	}
 	
 	@Override
 	Tup4lRW getNewInstance(long x, long y, long z, long w);
+	
+	@Override
+	default int getDimensions()
+	{
+		return Tup4lR.super.getDimensions();
+	}
+	
+	@Override
+	default Tup4lRW getNewInstanceFromArray(long... values)
+	{
+		return (Tup4lRW)Tup4lR.super.getNewInstanceFromArray(values);
+	}
+	
+	@Override
+	default Tup4lRW setByIndex(int index, long value)
+	{
+		return (Tup4lRW)Tup4lW.super.setByIndex(index, value);
+	}
+	
+	@Override
+	default Tup4lRW setArray(long... values)
+	{
+		return (Tup4lRW)Tup4lW.super.setArray(values);
+	}
+	
+	@Override
+	default Tup4lRW set(TuplR t)
+	{
+		return (Tup4lRW)Tup4lW.super.set(t);
+	}
+	
+	@Override
+	default Tup4lRW getNewInstance(TuplR t)
+	{
+		return (Tup4lRW)Tup4lR.super.getNewInstance(t);
+	}
 }

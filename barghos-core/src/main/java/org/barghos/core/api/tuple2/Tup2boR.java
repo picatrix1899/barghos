@@ -22,6 +22,8 @@
 
 package org.barghos.core.api.tuple2;
 
+import org.barghos.core.api.tuple.TupboR;
+
 /**
  * This interface grants readonly access to any 2-dimensional boolean tuples.
  * 
@@ -33,7 +35,7 @@ package org.barghos.core.api.tuple2;
  * 
  * @since 1.0.0.0
  */
-public interface Tup2boR
+public interface Tup2boR extends TupboR
 {
 	/**
 	 * Returns the x value from the tuple.
@@ -52,17 +54,6 @@ public interface Tup2boR
 	 * @since 1.0.0.0
 	 */
 	boolean getY();
-	
-	/**
-	 * Returns true if all the components are valid.
-	 * What values are considered valid or invalid depends on the tuple type.
-	 * 
-	 * @return True if all the components are valid.
-	 */
-	default boolean isValid()
-	{
-		return true;
-	}
 	
 	/**
 	 * Returns a new instance of the type of the origin instance with the components adopted
@@ -85,22 +76,7 @@ public interface Tup2boR
 		return getNewInstance(t.getX(), t.getY());
 	}
 	
-	/**
-	 * Returns a new instance of the type of the origin instance with the components set to
-	 * value.
-	 * 
-	 * <p>
-	 * This can be used for type continuety.
-	 * This way even while only using abstractions it is possible to create
-	 * new instances of the original. It is similar to the {@link Object#clone()}
-	 * function but the {@link Object#clone()} function requires the returned instance to be
-	 * writable.
-	 * This function on the other hand allows for example the usage of factories.
-	 * 
-	 * @param value The value used for all components.
-	 * 
-	 * @return A new instance of the type of the origin instance
-	 */
+	@Override
 	default Tup2boR getNewInstance(boolean value)
 	{
 		return getNewInstance(value, value);
@@ -123,4 +99,42 @@ public interface Tup2boR
 	 * @return A new instance of the type of the origin instance
 	 */
 	Tup2boR getNewInstance(boolean x, boolean y);
+	
+	@Override
+	default int getDimensions()
+	{
+		return 2;
+	}
+	
+	@Override
+	default boolean getByIndex(int index)
+	{
+		switch(index)
+		{
+			case 0: return getX();
+			case 1: return getY();
+		}
+		
+		throw new IndexOutOfBoundsException(index);
+	}
+	
+	@Override
+	default boolean[] getArray()
+	{
+		return new boolean[] {getX(), getY()};
+	}
+	
+	@Override
+	default Tup2boR getNewInstanceFromArray(boolean... values)
+	{
+		boolean[] v = values;
+		return getNewInstance(v[0], v[1]);
+	}
+	
+	@Override
+	default Tup2boR getNewInstance(TupboR t)
+	{
+		boolean[] v = t.getArray();
+		return getNewInstance(v[0], v[1]);
+	}
 }

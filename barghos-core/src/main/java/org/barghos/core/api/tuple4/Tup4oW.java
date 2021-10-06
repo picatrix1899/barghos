@@ -88,7 +88,10 @@ public interface Tup4oW<X,Y,Z,W>
 	 * 
 	 * @since 1.0.0.0
 	 */
-	Tup4oW<X,Y,Z,W> set(Tup4oR<X,Y,Z,W> t);
+	default Tup4oW<X,Y,Z,W> set(Tup4oR<X,Y,Z,W> t)
+	{
+		return set(t.getX(), t.getY(), t.getZ(), t.getW());
+	}
 	
 	/**
 	 * Sets the values to the corresponding paramters.
@@ -102,5 +105,8 @@ public interface Tup4oW<X,Y,Z,W>
 	 * 
 	 * @since 1.0.0.0
 	 */
-	Tup4oW<X,Y,Z,W> set(X x, Y y, Z z, W w);
+	default Tup4oW<X,Y,Z,W> set(X x, Y y, Z z, W w)
+	{
+		return setX(x).setY(y).setZ(z).setW(w);
+	}
 }

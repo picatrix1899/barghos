@@ -22,6 +22,9 @@
 
 package org.barghos.core.api.tuple3;
 
+import org.barghos.core.api.tuple.TupfR;
+import org.barghos.core.api.tuple.TupfW;
+
 /**
  * This interface grants writeonly access to any 3-dimensional float tuple.
  * 
@@ -33,7 +36,7 @@ package org.barghos.core.api.tuple3;
  * 
  * @since 1.0.0.0
  */
-public interface Tup3fW
+public interface Tup3fW extends TupfW
 {
 	/**
 	 * Sets the x value of the tuple.
@@ -77,22 +80,16 @@ public interface Tup3fW
 	 * 
 	 * @since 1.0.0.0
 	 */
-	Tup3fW set(Tup3fR t);
+	default Tup3fW set(Tup3fR t)
+	{
+		return set(t.getX(), t.getY(), t.getZ());
+	}
 	
-	/**
-	 * Sets all values to a single value.
-	 * 
-	 * <p>
-	 * This is usually used for resetting the tuple back to 0 again, by calling <code>set(0)</code>.
-	 * </p>
-	 * 
-	 * @param value The value used for all values of the tuple.
-	 * 
-	 * @return The current tuple.
-	 * 
-	 * @since 1.0.0.0
-	 */
-	Tup3fW set(float value);
+	@Override
+	default Tup3fW set(float value)
+	{
+		return set(value, value, value);
+	}
 	
 	/**
 	 * Sets the values to the corresponding paramters.
@@ -105,5 +102,41 @@ public interface Tup3fW
 	 * 
 	 * @since 1.0.0.0
 	 */
-	Tup3fW set(float x, float y, float z);
+	default Tup3fW set(float x, float y, float z)
+	{
+		return setX(x).setY(y).setZ(z);
+	}
+	
+	@Override
+	default int getDimensions()
+	{
+		return 3;
+	}
+	
+	@Override
+	default Tup3fW setByIndex(int index, float value)
+	{
+		switch(index)
+		{
+			case 0: return setX(value);
+			case 1: return setY(value);
+			case 2: return setZ(value);
+		}
+		
+		throw new IndexOutOfBoundsException(index);
+	}
+	
+	@Override
+	default Tup3fW setArray(float... values)
+	{
+		float[] v = values;
+		return set(v[0], v[1], v[2]);
+	}
+	
+	@Override
+	default Tup3fW set(TupfR t)
+	{
+		float[] v = t.getArray();
+		return set(v[0], v[1], v[2]);
+	}
 }

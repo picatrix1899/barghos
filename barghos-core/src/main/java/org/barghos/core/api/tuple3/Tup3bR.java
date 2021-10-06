@@ -22,6 +22,8 @@
 
 package org.barghos.core.api.tuple3;
 
+import org.barghos.core.api.tuple.TupbR;
+
 /**
  * This interface grants readonly access to any 3-dimensional byte tuples.
  * 
@@ -33,7 +35,7 @@ package org.barghos.core.api.tuple3;
  * 
  * @since 1.0.0.0
  */
-public interface Tup3bR
+public interface Tup3bR extends TupbR
 {
 	/**
 	 * Returns the x value from the tuple.
@@ -62,21 +64,7 @@ public interface Tup3bR
 	 */
 	byte getZ();
 	
-	/**
-	 * Returns true if all components are finite and therefore not NaN or Infinity.
-	 * 
-	 * @return True if all components are finite.
-	 */
-	default boolean isFinite()
-	{
-		return true;
-	}
-	
-	/**
-	 * Returns true if all components are exactly zero.
-	 * 
-	 * @return True if all components are exactly zero.
-	 */
+	@Override
 	default boolean isZero()
 	{
 		return getX() == (byte)0 &&
@@ -84,29 +72,12 @@ public interface Tup3bR
 				getZ() == (byte)0;
 	}
 	
-	/**
-	 * Returns true if all components are zero within inclusive the given tolerance.
-	 * 
-	 * @param tolerance The tolerance around zero, that should still count as zero.
-	 * 
-	 * @return True if all components are technically zero.
-	 */
-	default boolean isZero(byte tolerance)
+	@Override
+	default boolean isZeroWithMargin(byte tolerance)
 	{
 		return Math.abs(getX()) <= tolerance &&
 				Math.abs(getY()) <= tolerance &&
 				Math.abs(getZ()) <= tolerance;
-	}
-	
-	/**
-	 * Returns true if all the components are valid.
-	 * What values are considered valid or invalid depends on the tuple type.
-	 * 
-	 * @return True if all the components are valid.
-	 */
-	default boolean isValid()
-	{
-		return true;
 	}
 	
 	/**
@@ -130,22 +101,7 @@ public interface Tup3bR
 		return getNewInstance(t.getX(), t.getY(), t.getZ());
 	}
 	
-	/**
-	 * Returns a new instance of the type of the origin instance with the components set to
-	 * value.
-	 * 
-	 * <p>
-	 * This can be used for type continuety.
-	 * This way even while only using abstractions it is possible to create
-	 * new instances of the original. It is similar to the {@link Object#clone()}
-	 * function but the {@link Object#clone()} function requires the returned instance to be
-	 * writable.
-	 * This function on the other hand allows for example the usage of factories.
-	 * 
-	 * @param value The value used for all components.
-	 * 
-	 * @return A new instance of the type of the origin instance
-	 */
+	@Override
 	default Tup3bR getNewInstance(byte value)
 	{
 		return getNewInstance(value, value, value);
@@ -169,4 +125,43 @@ public interface Tup3bR
 	 * @return A new instance of the type of the origin instance
 	 */
 	Tup3bR getNewInstance(byte x, byte y, byte z);
+	
+	@Override
+	default int getDimensions()
+	{
+		return 3;
+	}
+	
+	@Override
+	default byte getByIndex(int index)
+	{
+		switch(index)
+		{
+			case 0: return getX();
+			case 1: return getY();
+			case 2: return getZ();
+		}
+		
+		throw new IndexOutOfBoundsException(index);
+	}
+	
+	@Override
+	default byte[] getArray()
+	{
+		return new byte[] {getX(), getY(), getZ()};
+	}
+	
+	@Override
+	default Tup3bR getNewInstanceFromArray(byte... values)
+	{
+		byte[] v = values;
+		return getNewInstance(v[0], v[1], v[2]);
+	}
+	
+	@Override
+	default Tup3bR getNewInstance(TupbR t)
+	{
+		byte[] v = t.getArray();
+		return getNewInstance(v[0], v[1], v[2]);
+	}
 }

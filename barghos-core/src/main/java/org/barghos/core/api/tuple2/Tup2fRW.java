@@ -22,6 +22,9 @@
 
 package org.barghos.core.api.tuple2;
 
+import org.barghos.core.api.tuple.TupfR;
+import org.barghos.core.api.tuple.TupfRW;
+
 /**
  * This interface grants read and write access to any 2-dimensional float tuple.
  * 
@@ -29,7 +32,7 @@ package org.barghos.core.api.tuple2;
  * 
  * @since 1.0.0.0
  */
-public interface Tup2fRW extends Tup2fR, Tup2fW
+public interface Tup2fRW extends Tup2fR, Tup2fW, TupfRW
 {
 	@Override
 	Tup2fRW setX(float x);
@@ -38,26 +41,71 @@ public interface Tup2fRW extends Tup2fR, Tup2fW
 	Tup2fRW setY(float y);
 	
 	@Override
-	Tup2fRW set(Tup2fR t);
+	default Tup2fRW set(Tup2fR t)
+	{
+		return (Tup2fRW)Tup2fW.super.set(t);
+	}
 	
 	@Override
-	Tup2fRW set(float value);
+	default Tup2fRW set(float value)
+	{
+		return (Tup2fRW)Tup2fW.super.set(value);
+	}
 	
 	@Override
-	Tup2fRW set(float x, float y);
+	default Tup2fRW set(float x, float y)
+	{
+		return (Tup2fRW)Tup2fW.super.set(x, y);
+	}
 	
 	@Override
 	default Tup2fRW getNewInstance(Tup2fR t)
 	{
-		return getNewInstance(t.getX(), t.getY());
+		return (Tup2fRW)Tup2fR.super.getNewInstance(t);
 	}
 	
 	@Override
 	default Tup2fRW getNewInstance(float value)
 	{
-		return getNewInstance(value, value);
+		return (Tup2fRW)Tup2fR.super.getNewInstance(value);
 	}
 	
 	@Override
 	Tup2fRW getNewInstance(float x, float y);
+	
+	@Override
+	default int getDimensions()
+	{
+		return Tup2fR.super.getDimensions();
+	}
+	
+	@Override
+	default Tup2fRW getNewInstanceFromArray(float... values)
+	{
+		return (Tup2fRW)Tup2fR.super.getNewInstanceFromArray(values);
+	}
+	
+	@Override
+	default Tup2fRW setByIndex(int index, float value)
+	{
+		return (Tup2fRW)Tup2fW.super.setByIndex(index, value);
+	}
+	
+	@Override
+	default Tup2fRW setArray(float... values)
+	{
+		return (Tup2fRW)Tup2fW.super.setArray(values);
+	}
+	
+	@Override
+	default Tup2fRW set(TupfR t)
+	{
+		return (Tup2fRW)Tup2fW.super.set(t);
+	}
+	
+	@Override
+	default Tup2fRW getNewInstance(TupfR t)
+	{
+		return (Tup2fRW)Tup2fR.super.getNewInstance(t);
+	}
 }

@@ -22,6 +22,9 @@
 
 package org.barghos.core.api.tuple2;
 
+import org.barghos.core.api.tuple.TuplR;
+import org.barghos.core.api.tuple.TuplRW;
+
 /**
  * This interface grants read and write access to any 2-dimensional integer tuple.
  * 
@@ -29,7 +32,7 @@ package org.barghos.core.api.tuple2;
  * 
  * @since 1.0.0.0
  */
-public interface Tup2lRW extends Tup2lR, Tup2lW
+public interface Tup2lRW extends Tup2lR, Tup2lW, TuplRW
 {
 	@Override
 	Tup2lRW setX(long x);
@@ -38,26 +41,71 @@ public interface Tup2lRW extends Tup2lR, Tup2lW
 	Tup2lRW setY(long y);
 	
 	@Override
-	Tup2lRW set(Tup2lR t);
-	
-	@Override
-	Tup2lRW set(long value);
-	
-	@Override
-	Tup2lRW set(long x, long y);
-	
-	@Override
-	default Tup2lR getNewInstance(Tup2lR t)
+	default Tup2lRW set(Tup2lR t)
 	{
-		return getNewInstance(t.getX(), t.getY());
+		return (Tup2lRW)Tup2lW.super.set(t);
 	}
 	
 	@Override
-	default Tup2lR getNewInstance(long value)
+	default Tup2lRW set(long value)
 	{
-		return getNewInstance(value, value);
+		return (Tup2lRW)Tup2lW.super.set(value);
 	}
 	
 	@Override
-	Tup2lR getNewInstance(long x, long y);
+	default Tup2lRW set(long x, long y)
+	{
+		return (Tup2lRW)Tup2lW.super.set(x, y);
+	}
+	
+	@Override
+	default Tup2lRW getNewInstance(Tup2lR t)
+	{
+		return (Tup2lRW)Tup2lR.super.getNewInstance(t);
+	}
+	
+	@Override
+	default Tup2lRW getNewInstance(long value)
+	{
+		return (Tup2lRW)Tup2lR.super.getNewInstance(value);
+	}
+	
+	@Override
+	Tup2lRW getNewInstance(long x, long y);
+	
+	@Override
+	default int getDimensions()
+	{
+		return Tup2lR.super.getDimensions();
+	}
+	
+	@Override
+	default Tup2lRW getNewInstanceFromArray(long... values)
+	{
+		return (Tup2lRW)Tup2lR.super.getNewInstanceFromArray(values);
+	}
+	
+	@Override
+	default Tup2lRW setByIndex(int index, long value)
+	{
+		return (Tup2lRW)Tup2lW.super.setByIndex(index, value);
+	}
+	
+	@Override
+	default Tup2lRW setArray(long... values)
+	{
+		return (Tup2lRW)Tup2lW.super.setArray(values);
+	}
+	
+	@Override
+	default Tup2lRW set(TuplR t)
+	{
+		return (Tup2lRW)Tup2lW.super.set(t);
+	}
+	
+	@Override
+	default Tup2lRW getNewInstance(TuplR t)
+	{
+		return (Tup2lRW)Tup2lR.super.getNewInstance(t);
+	}
 }

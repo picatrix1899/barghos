@@ -22,6 +22,9 @@
 
 package org.barghos.core.api.tuple3;
 
+import org.barghos.core.api.tuple.TupstrR;
+import org.barghos.core.api.tuple.TupstrRW;
+
 /**
  * This interface grants read and write access to any 3-dimensional string tuple.
  * 
@@ -29,7 +32,7 @@ package org.barghos.core.api.tuple3;
  * 
  * @since 1.0.0.0
  */
-public interface Tup3strRW extends Tup3strR, Tup3strW
+public interface Tup3strRW extends Tup3strR, Tup3strW, TupstrRW
 {
 	@Override
 	Tup3strRW setX(String x);
@@ -41,26 +44,71 @@ public interface Tup3strRW extends Tup3strR, Tup3strW
 	Tup3strRW setZ(String z);
 	
 	@Override
-	Tup3strRW set(Tup3strR t);
+	default Tup3strRW set(Tup3strR t)
+	{
+		return (Tup3strRW)Tup3strW.super.set(t);
+	}
 	
 	@Override
-	Tup3strRW set(String value);
+	default Tup3strRW set(String value)
+	{
+		return (Tup3strRW)Tup3strW.super.set(value);
+	}
 	
 	@Override
-	Tup3strRW set(String x, String y, String z);
-	
+	default Tup3strRW set(String x, String y, String z)
+	{
+		return (Tup3strRW)Tup3strW.super.set(x, y, z);
+	}
+
 	@Override
 	default Tup3strRW getNewInstance(Tup3strR t)
 	{
-		return getNewInstance(t.getX(), t.getY(), t.getZ());
+		return (Tup3strRW)Tup3strR.super.getNewInstance(t);
 	}
 	
 	@Override
 	default Tup3strRW getNewInstance(String value)
 	{
-		return getNewInstance(value, value, value);
+		return (Tup3strRW)Tup3strR.super.getNewInstance(value);
 	}
 	
 	@Override
 	Tup3strRW getNewInstance(String x, String y, String z);
+	
+	@Override
+	default int getDimensions()
+	{
+		return Tup3strR.super.getDimensions();
+	}
+	
+	@Override
+	default Tup3strRW getNewInstanceFromArray(String... values)
+	{
+		return (Tup3strRW)Tup3strR.super.getNewInstanceFromArray(values);
+	}
+	
+	@Override
+	default Tup3strRW setByIndex(int index, String value)
+	{
+		return (Tup3strRW)Tup3strW.super.setByIndex(index, value);
+	}
+	
+	@Override
+	default Tup3strRW setArray(String... values)
+	{
+		return (Tup3strRW)Tup3strW.super.setArray(values);
+	}
+	
+	@Override
+	default Tup3strRW set(TupstrR t)
+	{
+		return (Tup3strRW)Tup3strW.super.set(t);
+	}
+	
+	@Override
+	default Tup3strRW getNewInstance(TupstrR t)
+	{
+		return (Tup3strRW)Tup3strR.super.getNewInstance(t);
+	}
 }

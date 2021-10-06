@@ -22,6 +22,9 @@
 
 package org.barghos.core.api.tuple4;
 
+import org.barghos.core.api.tuple.TupboR;
+import org.barghos.core.api.tuple.TupboRW;
+
 /**
  * This interface grants read and write access to any 4-dimensional boolean tuple.
  * 
@@ -29,7 +32,7 @@ package org.barghos.core.api.tuple4;
  * 
  * @since 1.0.0.0
  */
-public interface Tup4boRW extends Tup4boR, Tup4boW
+public interface Tup4boRW extends Tup4boR, Tup4boW, TupboRW
 {
 	@Override
 	Tup4boRW setX(boolean x);
@@ -44,26 +47,71 @@ public interface Tup4boRW extends Tup4boR, Tup4boW
 	Tup4boRW setW(boolean w);
 	
 	@Override
-	Tup4boRW set(Tup4boR t);
+	default Tup4boRW set(Tup4boR t)
+	{
+		return (Tup4boRW)Tup4boW.super.set(t);
+	}
 	
 	@Override
-	Tup4boRW set(boolean value);
+	default Tup4boRW set(boolean value)
+	{
+		return (Tup4boRW)Tup4boW.super.set(value);
+	}
 	
 	@Override
-	Tup4boRW set(boolean x, boolean y, boolean z, boolean w);
-	
+	default Tup4boRW set(boolean x, boolean y, boolean z, boolean w)
+	{
+		return (Tup4boRW)Tup4boW.super.set(x, y, z, w);
+	}
+
 	@Override
 	default Tup4boRW getNewInstance(Tup4boR t)
 	{
-		return getNewInstance(t.getX(), t.getY(), t.getZ(), t.getW());
+		return (Tup4boRW)Tup4boR.super.getNewInstance(t);
 	}
 	
 	@Override
 	default Tup4boRW getNewInstance(boolean value)
 	{
-		return getNewInstance(value, value, value, value);
+		return (Tup4boRW)Tup4boR.super.getNewInstance(value);
 	}
 	
 	@Override
 	Tup4boRW getNewInstance(boolean x, boolean y, boolean z, boolean w);
+	
+	@Override
+	default int getDimensions()
+	{
+		return Tup4boR.super.getDimensions();
+	}
+	
+	@Override
+	default Tup4boRW getNewInstanceFromArray(boolean... values)
+	{
+		return (Tup4boRW)Tup4boR.super.getNewInstanceFromArray(values);
+	}
+	
+	@Override
+	default Tup4boRW setByIndex(int index, boolean value)
+	{
+		return (Tup4boRW)Tup4boW.super.setByIndex(index, value);
+	}
+	
+	@Override
+	default Tup4boRW setArray(boolean... values)
+	{
+		return (Tup4boRW)Tup4boW.super.setArray(values);
+	}
+	
+	@Override
+	default Tup4boRW set(TupboR t)
+	{
+		return (Tup4boRW)Tup4boW.super.set(t);
+	}
+	
+	@Override
+	default Tup4boRW getNewInstance(TupboR t)
+	{
+		return (Tup4boRW)Tup4boR.super.getNewInstance(t);
+	}
 }

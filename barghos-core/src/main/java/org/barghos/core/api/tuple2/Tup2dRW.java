@@ -22,6 +22,9 @@
 
 package org.barghos.core.api.tuple2;
 
+import org.barghos.core.api.tuple.TupdR;
+import org.barghos.core.api.tuple.TupdRW;
+
 /**
  * This interface grants read and write access to any 2-dimensional double tuple.
  * 
@@ -29,7 +32,7 @@ package org.barghos.core.api.tuple2;
  * 
  * @since 1.0.0.0
  */
-public interface Tup2dRW extends Tup2dR, Tup2dW
+public interface Tup2dRW extends Tup2dR, Tup2dW, TupdRW
 {
 	@Override
 	Tup2dRW setX(double x);
@@ -38,26 +41,71 @@ public interface Tup2dRW extends Tup2dR, Tup2dW
 	Tup2dRW setY(double y);
 	
 	@Override
-	Tup2dRW set(Tup2dR t);
+	default Tup2dRW set(Tup2dR t)
+	{
+		return (Tup2dRW)Tup2dW.super.set(t);
+	}
 	
 	@Override
-	Tup2dRW set(double value);
+	default Tup2dRW set(double value)
+	{
+		return (Tup2dRW)Tup2dW.super.set(value);
+	}
 	
 	@Override
-	Tup2dRW set(double x, double y);
+	default Tup2dRW set(double x, double y)
+	{
+		return (Tup2dRW)Tup2dW.super.set(x, y);
+	}
 	
 	@Override
 	default Tup2dRW getNewInstance(Tup2dR t)
 	{
-		return getNewInstance(t.getX(), t.getY());
+		return (Tup2dRW)Tup2dR.super.getNewInstance(t);
 	}
 	
 	@Override
 	default Tup2dRW getNewInstance(double value)
 	{
-		return getNewInstance(value, value);
+		return (Tup2dRW)Tup2dR.super.getNewInstance(value);
 	}
 	
 	@Override
 	Tup2dRW getNewInstance(double x, double y);
+	
+	@Override
+	default int getDimensions()
+	{
+		return Tup2dR.super.getDimensions();
+	}
+	
+	@Override
+	default Tup2dRW getNewInstanceFromArray(double... values)
+	{
+		return (Tup2dRW)Tup2dR.super.getNewInstanceFromArray(values);
+	}
+	
+	@Override
+	default Tup2dRW setByIndex(int index, double value)
+	{
+		return (Tup2dRW)Tup2dW.super.setByIndex(index, value);
+	}
+	
+	@Override
+	default Tup2dRW setArray(double... values)
+	{
+		return (Tup2dRW)Tup2dW.super.setArray(values);
+	}
+	
+	@Override
+	default Tup2dRW set(TupdR t)
+	{
+		return (Tup2dRW)Tup2dW.super.set(t);
+	}
+	
+	@Override
+	default Tup2dRW getNewInstance(TupdR t)
+	{
+		return (Tup2dRW)Tup2dR.super.getNewInstance(t);
+	}
 }

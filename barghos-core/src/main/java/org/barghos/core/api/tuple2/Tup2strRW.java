@@ -22,6 +22,9 @@
 
 package org.barghos.core.api.tuple2;
 
+import org.barghos.core.api.tuple.TupstrR;
+import org.barghos.core.api.tuple.TupstrRW;
+
 /**
  * This interface grants read and write access to any 2-dimensional string tuple.
  * 
@@ -29,7 +32,7 @@ package org.barghos.core.api.tuple2;
  * 
  * @since 1.0.0.0
  */
-public interface Tup2strRW extends Tup2strR, Tup2strW
+public interface Tup2strRW extends Tup2strR, Tup2strW, TupstrRW
 {
 	@Override
 	Tup2strRW setX(String x);
@@ -38,26 +41,71 @@ public interface Tup2strRW extends Tup2strR, Tup2strW
 	Tup2strRW setY(String y);
 	
 	@Override
-	Tup2strRW set(Tup2strR t);
+	default Tup2strRW set(Tup2strR t)
+	{
+		return (Tup2strRW)Tup2strW.super.set(t);
+	}
 	
 	@Override
-	Tup2strRW set(String value);
+	default Tup2strRW set(String value)
+	{
+		return (Tup2strRW)Tup2strW.super.set(value);
+	}
 	
 	@Override
-	Tup2strRW set(String x, String y);
+	default Tup2strRW set(String x, String y)
+	{
+		return (Tup2strRW)Tup2strW.super.set(x, y);
+	}
 	
 	@Override
 	default Tup2strRW getNewInstance(Tup2strR t)
 	{
-		return getNewInstance(t.getX(), t.getY());
+		return (Tup2strRW)Tup2strR.super.getNewInstance(t);
 	}
 	
 	@Override
 	default Tup2strRW getNewInstance(String value)
 	{
-		return getNewInstance(value, value);
+		return (Tup2strRW)Tup2strR.super.getNewInstance(value);
 	}
 	
 	@Override
 	Tup2strRW getNewInstance(String x, String y);
+	
+	@Override
+	default int getDimensions()
+	{
+		return Tup2strR.super.getDimensions();
+	}
+	
+	@Override
+	default Tup2strRW getNewInstanceFromArray(String... values)
+	{
+		return (Tup2strRW)Tup2strR.super.getNewInstanceFromArray(values);
+	}
+	
+	@Override
+	default Tup2strRW setByIndex(int index, String value)
+	{
+		return (Tup2strRW)Tup2strW.super.setByIndex(index, value);
+	}
+	
+	@Override
+	default Tup2strRW setArray(String... values)
+	{
+		return (Tup2strRW)Tup2strW.super.setArray(values);
+	}
+	
+	@Override
+	default Tup2strRW set(TupstrR t)
+	{
+		return (Tup2strRW)Tup2strW.super.set(t);
+	}
+	
+	@Override
+	default Tup2strRW getNewInstance(TupstrR t)
+	{
+		return (Tup2strRW)Tup2strR.super.getNewInstance(t);
+	}
 }

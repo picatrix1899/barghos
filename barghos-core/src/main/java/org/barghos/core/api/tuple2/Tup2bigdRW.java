@@ -24,6 +24,9 @@ package org.barghos.core.api.tuple2;
 
 import java.math.BigDecimal;
 
+import org.barghos.core.api.tuple.TupbigdR;
+import org.barghos.core.api.tuple.TupbigdRW;
+
 /**
  * This interface grants read and write access to any 2-dimensional big decimal tuple.
  * 
@@ -31,7 +34,7 @@ import java.math.BigDecimal;
  * 
  * @since 1.0.0.0
  */
-public interface Tup2bigdRW extends Tup2bigdR, Tup2bigdW
+public interface Tup2bigdRW extends Tup2bigdR, Tup2bigdW, TupbigdRW
 {
 	@Override
 	Tup2bigdRW setX(BigDecimal x);
@@ -40,26 +43,71 @@ public interface Tup2bigdRW extends Tup2bigdR, Tup2bigdW
 	Tup2bigdRW setY(BigDecimal y);
 	
 	@Override
-	Tup2bigdRW set(Tup2bigdR t);
+	default Tup2bigdRW set(Tup2bigdR t)
+	{
+		return (Tup2bigdRW)Tup2bigdW.super.set(t);
+	}
 	
 	@Override
-	Tup2bigdRW set(BigDecimal value);
+	default Tup2bigdRW set(BigDecimal value)
+	{
+		return (Tup2bigdRW)Tup2bigdW.super.set(value);
+	}
 	
 	@Override
-	Tup2bigdRW set(BigDecimal x, BigDecimal y);
+	default Tup2bigdRW set(BigDecimal x, BigDecimal y)
+	{
+		return (Tup2bigdRW)Tup2bigdW.super.set(x, y);
+	}
 
 	@Override
 	default Tup2bigdRW getNewInstance(Tup2bigdR t)
 	{
-		return getNewInstance(t.getX(), t.getY());
+		return (Tup2bigdRW)Tup2bigdR.super.getNewInstance(t);
 	}
 	
 	@Override
 	default Tup2bigdRW getNewInstance(BigDecimal value)
 	{
-		return getNewInstance(value, value);
+		return (Tup2bigdRW)Tup2bigdR.super.getNewInstance(value);
 	}
 	
 	@Override
 	Tup2bigdRW getNewInstance(BigDecimal x, BigDecimal y);
+
+	@Override
+	default int getDimensions()
+	{
+		return Tup2bigdR.super.getDimensions();
+	}
+	
+	@Override
+	default Tup2bigdRW getNewInstanceFromArray(BigDecimal... values)
+	{
+		return (Tup2bigdRW)Tup2bigdR.super.getNewInstanceFromArray(values);
+	}
+	
+	@Override
+	default Tup2bigdRW setByIndex(int index, BigDecimal value)
+	{
+		return (Tup2bigdRW)Tup2bigdW.super.setByIndex(index, value);
+	}
+	
+	@Override
+	default Tup2bigdRW setArray(BigDecimal... values)
+	{
+		return (Tup2bigdRW)Tup2bigdW.super.setArray(values);
+	}
+	
+	@Override
+	default Tup2bigdRW set(TupbigdR t)
+	{
+		return (Tup2bigdRW)Tup2bigdW.super.set(t);
+	}
+	
+	@Override
+	default Tup2bigdRW getNewInstance(TupbigdR t)
+	{
+		return (Tup2bigdRW)Tup2bigdR.super.getNewInstance(t);
+	}
 }

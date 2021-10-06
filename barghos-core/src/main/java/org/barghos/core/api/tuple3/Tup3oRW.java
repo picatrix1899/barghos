@@ -41,15 +41,21 @@ public interface Tup3oRW<X,Y,Z> extends Tup3oR<X,Y,Z>, Tup3oW<X,Y,Z>
 	Tup3oRW<X,Y,Z> setZ(Z z);
 	
 	@Override
-	Tup3oRW<X,Y,Z> set(Tup3oR<X,Y,Z> t);
+	default Tup3oRW<X,Y,Z> set(Tup3oR<X,Y,Z> t)
+	{
+		return (Tup3oRW<X,Y,Z>)Tup3oW.super.set(t);
+	}
 	
 	@Override
-	Tup3oRW<X,Y,Z> set(X x, Y y, Z z);
+	default Tup3oRW<X,Y,Z> set(X x, Y y, Z z)
+	{
+		return (Tup3oRW<X,Y,Z>)Tup3oW.super.set(x, y, z);
+	}
 	
 	@Override
 	default Tup3oRW<X,Y,Z> getNewInstance(Tup3oR<X,Y,Z> t)
 	{
-		return getNewInstance(t.getX(), t.getY(), t.getZ());
+		return (Tup3oRW<X,Y,Z>)Tup3oR.super.getNewInstance(t);
 	}
 	
 	@Override

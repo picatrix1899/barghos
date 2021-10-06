@@ -24,6 +24,9 @@ package org.barghos.core.api.tuple2;
 
 import java.math.BigDecimal;
 
+import org.barghos.core.api.tuple.TupbigdR;
+import org.barghos.core.api.tuple.TupbigdW;
+
 /**
  * This interface grants writeonly access to any 2-dimensional big decimal tuples.
  * 
@@ -35,7 +38,7 @@ import java.math.BigDecimal;
  * 
  * @since 1.0.0.0
  */
-public interface Tup2bigdW
+public interface Tup2bigdW extends TupbigdW
 {
 	/**
 	 * Sets the x value of the tuple.
@@ -68,22 +71,16 @@ public interface Tup2bigdW
 	 * 
 	 * @since 1.0.0.0
 	 */
-	Tup2bigdW set(Tup2bigdR t);
+	default Tup2bigdW set(Tup2bigdR t)
+	{
+		return set(t.getX(), t.getY());
+	}
 	
-	/**
-	 * Sets all values to a single value.
-	 * 
-	 * <p>
-	 * This is usually used for resetting the tuple back to 0 again, by calling <code>set(BigDecimal.ZERO)</code>.
-	 * </p>
-	 * 
-	 * @param value The value used for all values of the tuple.
-	 * 
-	 * @return The current tuple.
-	 * 
-	 * @since 1.0.0.0
-	 */
-	Tup2bigdW set(BigDecimal value);
+	@Override
+	default Tup2bigdW set(BigDecimal value)
+	{
+		return set(value, value);
+	}
 	
 	/**
 	 * Sets the values to the corresponding paramters.
@@ -95,5 +92,40 @@ public interface Tup2bigdW
 	 * 
 	 * @since 1.0.0.0
 	 */
-	Tup2bigdW set(BigDecimal x, BigDecimal y);
+	default Tup2bigdW set(BigDecimal x, BigDecimal y)
+	{
+		return setX(x).setY(y);
+	}
+	
+	@Override
+	default int getDimensions()
+	{
+		return 2;
+	}
+	
+	@Override
+	default Tup2bigdW setByIndex(int index, BigDecimal value)
+	{
+		switch(index)
+		{
+			case 0: return setX(value);
+			case 1: return setY(value);
+		}
+		
+		throw new IndexOutOfBoundsException(index);
+	}
+	
+	@Override
+	default Tup2bigdW setArray(BigDecimal... values)
+	{
+		BigDecimal[] v = values;
+		return set(v[0], v[1]);
+	}
+	
+	@Override
+	default Tup2bigdW set(TupbigdR t)
+	{
+		BigDecimal[] v = t.getArray();
+		return set(v[0], v[1]);
+	}
 }

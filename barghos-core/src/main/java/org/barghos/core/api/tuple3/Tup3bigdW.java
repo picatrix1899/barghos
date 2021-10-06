@@ -24,6 +24,9 @@ package org.barghos.core.api.tuple3;
 
 import java.math.BigDecimal;
 
+import org.barghos.core.api.tuple.TupbigdR;
+import org.barghos.core.api.tuple.TupbigdW;
+
 /**
  * This interface grants writeonly access to any 3-dimensional big decimal tuples.
  * 
@@ -35,7 +38,7 @@ import java.math.BigDecimal;
  * 
  * @since 1.0.0.0
  */
-public interface Tup3bigdW
+public interface Tup3bigdW extends TupbigdW
 {
 	/**
 	 * Sets the x value of the tuple.
@@ -79,22 +82,16 @@ public interface Tup3bigdW
 	 * 
 	 * @since 1.0.0.0
 	 */
-	Tup3bigdW set(Tup3bigdR t);
-	
-	/**
-	 * Sets all values to a single value.
-	 * 
-	 * <p>
-	 * This is usually used for resetting the tuple back to 0 again, by calling <code>set(BigDecimal.ZERO)</code>.
-	 * </p>
-	 * 
-	 * @param value The value used for all values of the tuple.
-	 * 
-	 * @return The current tuple.
-	 * 
-	 * @since 1.0.0.0
-	 */
-	Tup3bigdW set(BigDecimal value);
+	default Tup3bigdW set(Tup3bigdR t)
+	{
+		return set(t.getX(), t.getY(), t.getZ());
+	}
+
+	@Override
+	default Tup3bigdW set(BigDecimal value)
+	{
+		return set(value, value, value);
+	}
 	
 	/**
 	 * Sets the values to the corresponding paramters.
@@ -107,5 +104,41 @@ public interface Tup3bigdW
 	 * 
 	 * @since 1.0.0.0
 	 */
-	Tup3bigdW set(BigDecimal x, BigDecimal y, BigDecimal z);
+	default Tup3bigdW set(BigDecimal x, BigDecimal y, BigDecimal z)
+	{
+		return setX(x).setY(y).setZ(z);
+	}
+	
+	@Override
+	default int getDimensions()
+	{
+		return 3;
+	}
+	
+	@Override
+	default Tup3bigdW setByIndex(int index, BigDecimal value)
+	{
+		switch(index)
+		{
+			case 0: return setX(value);
+			case 1: return setY(value);
+			case 2: return setZ(value);
+		}
+		
+		throw new IndexOutOfBoundsException(index);
+	}
+	
+	@Override
+	default Tup3bigdW setArray(BigDecimal... values)
+	{
+		BigDecimal[] v = values;
+		return set(v[0], v[1], v[2]);
+	}
+	
+	@Override
+	default Tup3bigdW set(TupbigdR t)
+	{
+		BigDecimal[] v = t.getArray();
+		return set(v[0], v[1], v[2]);
+	}
 }

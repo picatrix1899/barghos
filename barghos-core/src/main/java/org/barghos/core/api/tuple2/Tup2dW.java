@@ -22,6 +22,9 @@
 
 package org.barghos.core.api.tuple2;
 
+import org.barghos.core.api.tuple.TupdR;
+import org.barghos.core.api.tuple.TupdW;
+
 /**
  * This interface grants writeonly access to any 2-dimensional double tuples.
  * 
@@ -33,7 +36,7 @@ package org.barghos.core.api.tuple2;
  * 
  * @since 1.0.0.0
  */
-public interface Tup2dW
+public interface Tup2dW extends TupdW
 {
 	/**
 	 * Sets the x value of the tuple.
@@ -66,22 +69,16 @@ public interface Tup2dW
 	 * 
 	 * @since 1.0.0.0
 	 */
-	Tup2dW set(Tup2dR t);
+	default Tup2dW set(Tup2dR t)
+	{
+		return set(t.getX(), t.getY());
+	}
 	
-	/**
-	 * Sets all values to a single value.
-	 * 
-	 * <p>
-	 * This is usually used for resetting the tuple back to 0 again, by calling <code>set(0)</code>.
-	 * </p>
-	 * 
-	 * @param value The value used for all values of the tuple.
-	 * 
-	 * @return The current tuple.
-	 * 
-	 * @since 1.0.0.0
-	 */
-	Tup2dW set(double value);
+	@Override
+	default Tup2dW set(double value)
+	{
+		return set(value, value);
+	}
 	
 	/**
 	 * Sets the values to the corresponding paramters.
@@ -93,5 +90,40 @@ public interface Tup2dW
 	 * 
 	 * @since 1.0.0.0
 	 */
-	Tup2dW set(double x, double y);
+	default Tup2dW set(double x, double y)
+	{
+		return setX(x).setY(y);
+	}
+	
+	@Override
+	default int getDimensions()
+	{
+		return 2;
+	}
+	
+	@Override
+	default Tup2dW setByIndex(int index, double value)
+	{
+		switch(index)
+		{
+			case 0: return setX(value);
+			case 1: return setY(value);
+		}
+		
+		throw new IndexOutOfBoundsException(index);
+	}
+	
+	@Override
+	default Tup2dW setArray(double... values)
+	{
+		double[] v = values;
+		return set(v[0], v[1]);
+	}
+	
+	@Override
+	default Tup2dW set(TupdR t)
+	{
+		double[] v = t.getArray();
+		return set(v[0], v[1]);
+	}
 }

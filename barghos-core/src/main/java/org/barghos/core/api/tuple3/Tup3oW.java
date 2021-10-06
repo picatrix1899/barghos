@@ -73,7 +73,10 @@ public interface Tup3oW<X,Y,Z>
 	 * 
 	 * @since 1.0.0.0
 	 */
-	Tup3oW<X,Y,Z> set(Tup3oR<X,Y,Z> t);
+	default Tup3oW<X,Y,Z> set(Tup3oR<X,Y,Z> t)
+	{
+		return set(t.getX(), t.getY(), t.getZ());
+	}
 	
 	/**
 	 * Sets the values to the corresponding paramters.
@@ -82,9 +85,10 @@ public interface Tup3oW<X,Y,Z>
 	 * @param y The new y value.
 	 * @param z The new z value.
 	 * 
-	 * @return The current tuple.
-	 * 
 	 * @since 1.0.0.0
 	 */
-	Tup3oW<X,Y,Z> set(X x, Y y, Z z);
+	default Tup3oW<X,Y,Z> set(X x, Y y, Z z)
+	{
+		return setX(x).setY(y).setZ(z);
+	}
 }

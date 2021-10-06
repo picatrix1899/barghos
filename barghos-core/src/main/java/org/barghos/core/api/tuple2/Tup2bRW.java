@@ -22,6 +22,9 @@
 
 package org.barghos.core.api.tuple2;
 
+import org.barghos.core.api.tuple.TupbR;
+import org.barghos.core.api.tuple.TupbRW;
+
 /**
  * This interface grants read and write access to any 2-dimensional byte tuple.
  * 
@@ -29,7 +32,7 @@ package org.barghos.core.api.tuple2;
  * 
  * @since 1.0.0.0
  */
-public interface Tup2bRW extends Tup2bR, Tup2bW
+public interface Tup2bRW extends Tup2bR, Tup2bW, TupbRW
 {
 	@Override
 	Tup2bRW setX(byte x);
@@ -38,26 +41,71 @@ public interface Tup2bRW extends Tup2bR, Tup2bW
 	Tup2bRW setY(byte y);
 	
 	@Override
-	Tup2bRW set(Tup2bR t);
+	default Tup2bRW set(Tup2bR t)
+	{
+		return (Tup2bRW)Tup2bW.super.set(t);
+	}
 	
 	@Override
-	Tup2bRW set(byte value);
+	default Tup2bRW set(byte value)
+	{
+		return (Tup2bRW)Tup2bW.super.set(value);
+	}
 	
 	@Override
-	Tup2bRW set(byte x, byte y);
+	default Tup2bRW set(byte x, byte y)
+	{
+		return (Tup2bRW)Tup2bW.super.set(x, y);
+	}
 	
 	@Override
 	default Tup2bRW getNewInstance(Tup2bR t)
 	{
-		return getNewInstance(t.getX(), t.getY());
+		return (Tup2bRW)Tup2bR.super.getNewInstance(t);
 	}
 	
 	@Override
 	default Tup2bRW getNewInstance(byte value)
 	{
-		return getNewInstance(value, value);
+		return (Tup2bRW)Tup2bR.super.getNewInstance(value);
 	}
 	
 	@Override
 	Tup2bRW getNewInstance(byte x, byte y);
+	
+	@Override
+	default int getDimensions()
+	{
+		return Tup2bR.super.getDimensions();
+	}
+	
+	@Override
+	default Tup2bRW getNewInstanceFromArray(byte... values)
+	{
+		return (Tup2bRW)Tup2bR.super.getNewInstanceFromArray(values);
+	}
+	
+	@Override
+	default Tup2bRW setByIndex(int index, byte value)
+	{
+		return (Tup2bRW)Tup2bW.super.setByIndex(index, value);
+	}
+	
+	@Override
+	default Tup2bRW setArray(byte... values)
+	{
+		return (Tup2bRW)Tup2bW.super.setArray(values);
+	}
+	
+	@Override
+	default Tup2bRW set(TupbR t)
+	{
+		return (Tup2bRW)Tup2bW.super.set(t);
+	}
+	
+	@Override
+	default Tup2bRW getNewInstance(TupbR t)
+	{
+		return (Tup2bRW)Tup2bR.super.getNewInstance(t);
+	}
 }

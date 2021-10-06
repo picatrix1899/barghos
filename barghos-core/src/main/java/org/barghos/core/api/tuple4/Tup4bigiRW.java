@@ -24,6 +24,9 @@ package org.barghos.core.api.tuple4;
 
 import java.math.BigInteger;
 
+import org.barghos.core.api.tuple.TupbigiR;
+import org.barghos.core.api.tuple.TupbigiRW;
+
 /**
  * This interface grants read and write access to any 4-dimensional big integer tuple.
  * 
@@ -31,7 +34,7 @@ import java.math.BigInteger;
  * 
  * @since 1.0.0.0
  */
-public interface Tup4bigiRW extends Tup4bigiR, Tup4bigiW
+public interface Tup4bigiRW extends Tup4bigiR, Tup4bigiW, TupbigiRW
 {
 	@Override
 	Tup4bigiRW setX(BigInteger x);
@@ -46,26 +49,71 @@ public interface Tup4bigiRW extends Tup4bigiR, Tup4bigiW
 	Tup4bigiRW setW(BigInteger w);
 	
 	@Override
-	Tup4bigiRW set(Tup4bigiR t);
+	default Tup4bigiRW set(Tup4bigiR t)
+	{
+		return (Tup4bigiRW)Tup4bigiW.super.set(t);
+	}
 	
 	@Override
-	Tup4bigiRW set(BigInteger value);
+	default Tup4bigiRW set(BigInteger value)
+	{
+		return (Tup4bigiRW)Tup4bigiW.super.set(value);
+	}
 	
 	@Override
-	Tup4bigiRW set(BigInteger x, BigInteger y, BigInteger z, BigInteger w);
-	
+	default Tup4bigiRW set(BigInteger x, BigInteger y, BigInteger z, BigInteger w)
+	{
+		return (Tup4bigiRW)Tup4bigiW.super.set(x, y, z, w);
+	}
+
 	@Override
 	default Tup4bigiRW getNewInstance(Tup4bigiR t)
 	{
-		return getNewInstance(t.getX(), t.getY(), t.getZ(), t.getW());
+		return (Tup4bigiRW)Tup4bigiR.super.getNewInstance(t);
 	}
 	
 	@Override
 	default Tup4bigiRW getNewInstance(BigInteger value)
 	{
-		return getNewInstance(value, value, value, value);
+		return (Tup4bigiRW)Tup4bigiR.super.getNewInstance(value);
 	}
 	
 	@Override
 	Tup4bigiRW getNewInstance(BigInteger x, BigInteger y, BigInteger z, BigInteger w);
+	
+	@Override
+	default int getDimensions()
+	{
+		return Tup4bigiR.super.getDimensions();
+	}
+	
+	@Override
+	default Tup4bigiRW getNewInstanceFromArray(BigInteger... values)
+	{
+		return (Tup4bigiRW)Tup4bigiR.super.getNewInstanceFromArray(values);
+	}
+	
+	@Override
+	default Tup4bigiRW setByIndex(int index, BigInteger value)
+	{
+		return (Tup4bigiRW)Tup4bigiW.super.setByIndex(index, value);
+	}
+	
+	@Override
+	default Tup4bigiRW setArray(BigInteger... values)
+	{
+		return (Tup4bigiRW)Tup4bigiW.super.setArray(values);
+	}
+	
+	@Override
+	default Tup4bigiRW set(TupbigiR t)
+	{
+		return (Tup4bigiRW)Tup4bigiW.super.set(t);
+	}
+	
+	@Override
+	default Tup4bigiRW getNewInstance(TupbigiR t)
+	{
+		return (Tup4bigiRW)Tup4bigiR.super.getNewInstance(t);
+	}
 }

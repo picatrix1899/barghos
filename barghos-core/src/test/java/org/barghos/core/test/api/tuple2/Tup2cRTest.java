@@ -1,11 +1,12 @@
 package org.barghos.core.test.api.tuple2;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
-import org.barghos.core.api.testing.ValueRelay;
+import org.barghos.core.api.tuple.TupcR;
 import org.barghos.core.api.tuple2.Tup2cR;
 
 /**
@@ -16,40 +17,29 @@ import org.barghos.core.api.tuple2.Tup2cR;
 class Tup2cRTest
 {
 	/**
-	 * This method is called after each test in this class.
+	 * This test ensures, that the interface extends the interface {@link TupcR}.
 	 */
-	@AfterEach
-	void cleanup()
+	@Test
+	void inheritance_TupcRTest()
 	{
-		ValueRelay.clear();
+		assertTrue(TupcR.class.isAssignableFrom(Tup2cR.class));
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup2cR#isValid()} returns
-	 * the corrct values for different situations.
+	 * this test ensures, that the function {@link Tup2cR#getDimensions()} always
+	 * returns 2 and does not make any calls.
 	 */
 	@Test
-	void isValidTest()
+	void getDimensionsTest()
 	{
-		Tup2cR t = new TestTup('a', 'a');
+		Tup2cR t = mock(Tup2cR.class);
 		
-		assertEquals(true, t.isValid());
-		assertEquals(false, ValueRelay.get("getX", false));
-		assertEquals(false, ValueRelay.get("getY", false));
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup2cR#isFinite()} returns
-	 * the corrct values for different situations.
-	 */
-	@Test
-	void isFiniteTest()
-	{
-		Tup2cR t = new TestTup('a', 'a');
+		when(t.getDimensions()).thenCallRealMethod();
 		
-		assertEquals(true, t.isFinite());
-		assertEquals(false, ValueRelay.get("getX", false));
-		assertEquals(false, ValueRelay.get("getY", false));
+		assertEquals(2, t.getDimensions());
+		
+		verify(t).getDimensions();
+		verifyNoMoreInteractions(t);
 	}
 	
 	/**
@@ -57,17 +47,27 @@ class Tup2cRTest
 	 * the function {@link Tup2cR#getNewInstance(char, char)} with the correct components.
 	 */
 	@Test
-	void getNewInstance_TupleTest()
+	void getNewInstance_Tuple2Test()
 	{
-		Tup2cR t = new TestTup('b', 'b');
+		Tup2cR original = mock(Tup2cR.class);
+		Tup2cR newInstance = mock(Tup2cR.class);
+		Tup2cR t = mock(Tup2cR.class);
 		
-		t.getNewInstance(new TestTup('c', 'd'));
+		when(t.getNewInstance(original)).thenCallRealMethod();
 		
-		assertEquals(true, ValueRelay.get("getNewInstanceC", false));
-		assertEquals('c', ValueRelay.get("getNewInstanceC_X", 'a'));
-		assertEquals('d', ValueRelay.get("getNewInstanceC_Y", 'a'));
+		when(original.getX()).thenReturn('a');
+		when(original.getY()).thenReturn('b');
+		when(t.getNewInstance('a', 'b')).thenReturn(newInstance);
 		
-		// Can't test for the result here, as the relaying and adopting of the values are implementation specific.
+		assertSame(newInstance, t.getNewInstance(original));
+		
+		verify(t).getNewInstance(original);
+		
+		verify(original).getX();
+		verify(original).getY();
+		verify(t).getNewInstance('a', 'b');
+		
+		verifyNoMoreInteractions(t, original);
 	}
 	
 	/**
@@ -77,54 +77,160 @@ class Tup2cRTest
 	@Test
 	void getNewInstance_ValueTest()
 	{
-		Tup2cR t = new TestTup('b', 'b');
+		Tup2cR newInstance = mock(Tup2cR.class);
+		Tup2cR t = mock(Tup2cR.class);
 		
-		t.getNewInstance('c');
+		when(t.getNewInstance('a')).thenCallRealMethod();
+
+		when(t.getNewInstance('a', 'a')).thenReturn(newInstance);
 		
-		assertEquals(true, ValueRelay.get("getNewInstanceC", false));
-		assertEquals('c', ValueRelay.get("getNewInstanceC_X", 'a'));
-		assertEquals('c', ValueRelay.get("getNewInstanceC_Y", 'a'));
+		assertSame(newInstance, t.getNewInstance('a'));
 		
-		// Can't test for the result here, as the relaying and adopting of the values are implementation specific.
+		verify(t).getNewInstance('a');
+		
+		verify(t).getNewInstance('a', 'a');
+		
+		verifyNoMoreInteractions(t);
 	}
 	
 	/**
-	 * This class is a test implementation of the interface {@link Tup2cR}.
-	 * 
-	 * @author picatrix1899
+	 * This test ensures, that the default implementation of the function {@link Tup2cR#getNewInstance(TupcR)} calls
+	 * the function {@link Tup2cR#getNewInstance(char, char)} with the correct components.
 	 */
-	private static class TestTup implements Tup2cR
+	@Test
+	void getNewInstance_TupleTest()
 	{
-		private final char x;
-		private final char y;
+		TupcR original = mock(TupcR.class);
+		Tup2cR newInstance = mock(Tup2cR.class);
+		Tup2cR t = mock(Tup2cR.class);
 		
-		public TestTup(char x, char y)
-		{
-			this.x = x;
-			this.y = y;
-		}
+		when(t.getNewInstance(original)).thenCallRealMethod();
 		
-		@Override
-		public char getX()
-		{
-			ValueRelay.relayCall("getX");
-			return this.x;
-		}
+		when(original.getArray()).thenReturn(new char[] {'a', 'b'});
+		when(t.getNewInstance('a', 'b')).thenReturn(newInstance);
 		
-		@Override
-		public char getY()
-		{
-			ValueRelay.relayCall("getY");
-			return this.y;
-		}
+		assertSame(newInstance, t.getNewInstance(original));
 		
-		@Override
-		public TestTup getNewInstance(char x, char y)
-		{
-			ValueRelay.relayCall("getNewInstanceC");
-			ValueRelay.relay("getNewInstanceC_X", x);
-			ValueRelay.relay("getNewInstanceC_Y", y);
-			return new TestTup(x, y);
-		}
+		verify(t).getNewInstance(original);
+		
+		verify(original).getArray();
+		verify(t).getNewInstance('a', 'b');
+		
+		verifyNoMoreInteractions(t, original);
+	}
+	
+	/**
+	 * This test ensures, that the default implementation of the function
+	 * {@link Tup2cR#getNewInstanceFromArray(char[])} calls the function
+	 * {@link Tup2cR#getNewInstance(char, char)} with the correct components.
+	 */
+	@Test
+	void getNewInstanceFromArrayTest()
+	{
+		Tup2cR newInstance = mock(Tup2cR.class);
+		Tup2cR t = mock(Tup2cR.class);
+		
+		when(t.getNewInstanceFromArray(new char[] {'a', 'b'})).thenCallRealMethod();
+
+		when(t.getNewInstance('a', 'b')).thenReturn(newInstance);
+		
+		assertSame(newInstance, t.getNewInstanceFromArray(new char[] {'a', 'b'}));
+		
+		verify(t).getNewInstanceFromArray(new char[] {'a', 'b'});
+		
+		verify(t).getNewInstance('a', 'b');
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2cR#getArray()} returns
+	 * an array with the components in the right order.
+	 */
+	@Test
+	void getArrayTest()
+	{
+		Tup2cR t = mock(Tup2cR.class);
+		
+		when(t.getArray()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn('a');
+		when(t.getY()).thenReturn('b');
+		
+		assertArrayEquals(new char[] {'a', 'b'}, t.getArray());
+		
+		verify(t).getArray();
+		
+		verify(t).getX();
+		verify(t).getY();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2cR#getByIndex(int)} returns
+	 * the x component for the index 0.
+	 */
+	@Test
+	void getByIndex_XTest()
+	{
+		Tup2cR t = mock(Tup2cR.class);
+		
+		when(t.getByIndex(0)).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn('a');
+		
+		assertEquals('a', t.getByIndex(0));
+
+		verify(t).getByIndex(0);
+		
+		verify(t).getX();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2cR#getByIndex(int)} returns
+	 * the y component for the index 1.
+	 */
+	@Test
+	void getByIndex_YTest()
+	{
+		Tup2cR t = mock(Tup2cR.class);
+		
+		when(t.getByIndex(1)).thenCallRealMethod();
+		
+		when(t.getY()).thenReturn('a');
+		
+		assertEquals('a', t.getByIndex(1));
+
+		verify(t).getByIndex(1);
+		
+		verify(t).getY();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2cR#getByIndex(int)} throws
+	 * an {@link IndexOutOfBoundsException} for an index different than 0 or 1.
+	 */
+	@Test
+	void getByIndex_ExceptionTest()
+	{
+		Tup2cR t = mock(Tup2cR.class);
+		
+		when(t.getByIndex(2)).thenCallRealMethod();
+
+		assertThrows(IndexOutOfBoundsException.class, new Executable() {
+			public void execute() throws Throwable
+			{
+				t.getByIndex(2);
+			}
+		});
+
+		verify(t).getByIndex(2);
+
+		verifyNoMoreInteractions(t);
 	}
 }

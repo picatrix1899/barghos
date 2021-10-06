@@ -1,11 +1,12 @@
 package org.barghos.core.test.api.tuple2;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
-import org.barghos.core.api.testing.ValueRelay;
+import org.barghos.core.api.tuple.TupdR;
 import org.barghos.core.api.tuple2.Tup2dR;
 
 /**
@@ -16,99 +17,433 @@ import org.barghos.core.api.tuple2.Tup2dR;
 class Tup2dRTest
 {
 	/**
-	 * This method is called after each test in this class.
-	 */
-	@AfterEach
-	void cleanup()
-	{
-		ValueRelay.clear();
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup2dR#isValid()} returns
-	 * the corrct values for different situations.
+	 * This test ensures, that the interface extends the interface {@link TupdR}.
 	 */
 	@Test
-	void isValidTest()
+	void inheritance_TupdRTest()
 	{
-		Tup2dR t = new TestTup(0.0, 0.0);
-		
-		assertEquals(true, t.isValid());
-		assertEquals(false, ValueRelay.get("getX", false));
-		assertEquals(false, ValueRelay.get("getY", false));
+		assertTrue(TupdR.class.isAssignableFrom(Tup2dR.class));
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup2dR#isFinite()} returns
-	 * the corrct values for different situations.
+	 * This test ensures, that the function {@link Tup2dR#isFinite()} returns true,
+	 * if none of the components is either {@link Double#POSITIVE_INFINITY},
+	 * {@link Double#NEGATIVE_INFINITY}} or {@link Double#NaN}.
 	 */
 	@Test
 	void isFiniteTest()
 	{
-		final double[] values = new double[] {0.0, Double.NaN, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY};
+		Tup2dR t = mock(Tup2dR.class);
 		
-		for(int i = 0; i < 4; i++)
-		{
-			double v = values[i];
-			
-			boolean b = i == 0;
-			
-			Tup2dR t = new TestTup(v, v);
-			assertEquals(b, t.isFinite());
-			
-			t = new TestTup(v, 0.0);
-			assertEquals(b, t.isFinite());
-			
-			t = new TestTup(0.0, v);
-			assertEquals(b, t.isFinite());
-		}
+		when(t.isFinite()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(1.0);
+		when(t.getY()).thenReturn(1.0);
+		
+		assertEquals(true, t.isFinite());
+		
+		verify(t).isFinite();
+		
+		verify(t).getX();
+		verify(t).getY();
+		
+		verifyNoMoreInteractions(t);
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup2dR#isZero()} returns the correct
-	 * value based on the situation.
+	 * This test ensures, that the function {@link Tup2dR#isFinite()} returns false
+	 * after checking the x component, if the x component is {@link Double#POSITIVE_INFINITY}.
 	 */
 	@Test
-	void isZeroExactTest()
+	void isFinite_Fail_X_PositiveInfTest()
 	{
-		Tup2dR t = new TestTup(0.0, 0.0);
+		Tup2dR t = mock(Tup2dR.class);
+		
+		when(t.isFinite()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(Double.POSITIVE_INFINITY);
+		
+		assertEquals(false, t.isFinite());
+		
+		verify(t).isFinite();
+		
+		verify(t).getX();
+
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2dR#isFinite()} returns false
+	 * after checking the x component, if the x component is {@link Double#NEGATIVE_INFINITY}.
+	 */
+	@Test
+	void isFinite_Fail_X_NegativeInfTest()
+	{
+		Tup2dR t = mock(Tup2dR.class);
+		
+		when(t.isFinite()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(Double.NEGATIVE_INFINITY);
+		
+		assertEquals(false, t.isFinite());
+		
+		verify(t).isFinite();
+		
+		verify(t).getX();
+
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2dR#isFinite()} returns false
+	 * after checking the x component, if the x component is {@link Double#NaN}.
+	 */
+	@Test
+	void isFinite_Fail_X_NaNTest()
+	{
+		Tup2dR t = mock(Tup2dR.class);
+		
+		when(t.isFinite()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(Double.NaN);
+		
+		assertEquals(false, t.isFinite());
+		
+		verify(t).isFinite();
+		
+		verify(t).getX();
+
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2dR#isFinite()} returns false
+	 * after checking the y component, if the y component is {@link Double#POSITIVE_INFINITY}.
+	 */
+	@Test
+	void isFinite_Fail_Y_PositiveInfTest()
+	{
+		Tup2dR t = mock(Tup2dR.class);
+		
+		when(t.isFinite()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(1.0);
+		when(t.getY()).thenReturn(Double.POSITIVE_INFINITY);
+		
+		assertEquals(false, t.isFinite());
+		
+		verify(t).isFinite();
+		
+		verify(t).getX();
+		verify(t).getY();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2dR#isFinite()} returns false
+	 * after checking the y component, if the y component is {@link Double#NEGATIVE_INFINITY}.
+	 */
+	@Test
+	void isFinite_Fail_Y_NegativeInfTest()
+	{
+		Tup2dR t = mock(Tup2dR.class);
+		
+		when(t.isFinite()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(1.0);
+		when(t.getY()).thenReturn(Double.NEGATIVE_INFINITY);
+		
+		assertEquals(false, t.isFinite());
+		
+		verify(t).isFinite();
+		
+		verify(t).getX();
+		verify(t).getY();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2dR#isFinite()} returns false
+	 * after checking the y component, if the y component is {@link Double#NaN}.
+	 */
+	@Test
+	void isFinite_Fail_Y_NaNTest()
+	{
+		Tup2dR t = mock(Tup2dR.class);
+		
+		when(t.isFinite()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(1.0);
+		when(t.getY()).thenReturn(Double.NaN);
+		
+		assertEquals(false, t.isFinite());
+		
+		verify(t).isFinite();
+		
+		verify(t).getX();
+		verify(t).getY();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * this test ensures, that the function {@link Tup2dR#getDimensions()} always
+	 * returns 2 and does not make any calls.
+	 */
+	@Test
+	void getDimensionsTest()
+	{
+		Tup2dR t = mock(Tup2dR.class);
+		
+		when(t.getDimensions()).thenCallRealMethod();
+		
+		assertEquals(2, t.getDimensions());
+		
+		verify(t).getDimensions();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2dR#isZero()} returns true,
+	 * if all of the components are exactly zero.
+	 */
+	@Test
+	void isZero_ZeroTest()
+	{
+		Tup2dR t = mock(Tup2dR.class);
+		
+		when(t.isZero()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(0.0);
+		when(t.getY()).thenReturn(0.0);
+		
 		assertEquals(true, t.isZero());
 		
-		t = new TestTup(1.0, 0.0);
-		assertEquals(false, t.isZero());
+		verify(t).isZero();
 		
-		t = new TestTup(0.0, 1.0);
-		assertEquals(false, t.isZero());
+		verify(t).getX();
+		verify(t).getY();
 		
-		t = new TestTup(1.0, 1.0);
-		assertEquals(false, t.isZero());
+		verifyNoMoreInteractions(t);
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup2dR#isZero(byte)} returns the correct
-	 * value based on the situation.
+	 * This test ensures, that the function {@link Tup2dR#isZero()} returns false,
+	 * if the x component is not zero.
 	 */
 	@Test
-	void isZeroTest()
+	void isZero_Fail_XTest()
 	{
-		final int tolerance = 2;
-		final double tol = (double)tolerance;
+		Tup2dR t = mock(Tup2dR.class);
 		
-		for(int i = -tolerance - 1; i <= tolerance + 1; i++)
-		{
-			double v = (double)i;
-			
-			boolean b = Math.abs(i) <= tolerance;
-			
-			Tup2dR t = new TestTup(v, v);
-			assertEquals(b, t.isZero(tol));
-			
-			t = new TestTup(v, 0.0);
-			assertEquals(b, t.isZero(tol));
-			
-			t = new TestTup(0.0, v);
-			assertEquals(b, t.isZero(tol));
-		}
+		when(t.isZero()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(1.0);
+		
+		assertEquals(false, t.isZero());
+		
+		verify(t).isZero();
+		
+		verify(t).getX();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2dR#isZero()} returns false,
+	 * if the y component is not zero.
+	 */
+	@Test
+	void isZero_Fail_YTest()
+	{
+		Tup2dR t = mock(Tup2dR.class);
+		
+		when(t.isZero()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(0.0);
+		when(t.getY()).thenReturn(1.0);
+		
+		assertEquals(false, t.isZero());
+		
+		verify(t).isZero();
+		
+		verify(t).getX();
+		verify(t).getY();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2dR#isZeroWithMargin(double)} returns true,
+	 * if all components are exactly zero.
+	 */
+	@Test
+	void isZeroWithMargin_ZeroTest()
+	{
+		Tup2dR t = mock(Tup2dR.class);
+		
+		when(t.isZeroWithMargin(2.0)).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(0.0);
+		when(t.getY()).thenReturn(0.0);
+		
+		assertEquals(true, t.isZeroWithMargin(2.0));
+		
+		verify(t).isZeroWithMargin(2.0);
+		
+		verify(t).getX();
+		verify(t).getY();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2dR#isZeroWithMargin(double)} returns true,
+	 * if all components are at the positive extreme point that is the inclusive
+	 * tolerance parameter.
+	 */
+	@Test
+	void isZeroWithMargin_Extreme_PositiveTest()
+	{
+		Tup2dR t = mock(Tup2dR.class);
+		
+		when(t.isZeroWithMargin(2.0)).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(2.0);
+		when(t.getY()).thenReturn(2.0);
+		
+		assertEquals(true, t.isZeroWithMargin(2.0));
+		
+		verify(t).isZeroWithMargin(2.0);
+		
+		verify(t).getX();
+		verify(t).getY();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2bR#isZeroWithMargin(double)} returns true,
+	 * if all components are at the negative extreme point that is the inclusive
+	 * tolerance parameter.
+	 */
+	@Test
+	void isZeroWithMargin_Extreme_NegativeTest()
+	{
+		Tup2dR t = mock(Tup2dR.class);
+		
+		when(t.isZeroWithMargin(2.0)).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(-2.0);
+		when(t.getY()).thenReturn(-2.0);
+		
+		assertEquals(true, t.isZeroWithMargin(2.0));
+		
+		verify(t).isZeroWithMargin(2.0);
+		
+		verify(t).getX();
+		verify(t).getY();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2dR#isZeroWithMargin(double)} returns false,
+	 * if the x component exceeds the positive extreme point that is the inclusive
+	 * tolerance parameter.
+	 */
+	@Test
+	void isZeroWithMargin_Fail_X_PositiveTest()
+	{
+		Tup2dR t = mock(Tup2dR.class);
+		
+		when(t.isZeroWithMargin(2.0)).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(3.0);
+		
+		assertEquals(false, t.isZeroWithMargin(2.0));
+		
+		verify(t).isZeroWithMargin(2.0);
+		
+		verify(t).getX();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2dR#isZeroWithMargin(double)} returns false,
+	 * if the x component exceeds the negative extreme point that is the inclusive
+	 * tolerance parameter.
+	 */
+	@Test
+	void isZeroWithMargin_Fail_X_NegativeTest()
+	{
+		Tup2dR t = mock(Tup2dR.class);
+		
+		when(t.isZeroWithMargin(2.0)).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(-3.0);
+		
+		assertEquals(false, t.isZeroWithMargin(2.0));
+		
+		verify(t).isZeroWithMargin(2.0);
+		
+		verify(t).getX();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2dR#isZeroWithMargin(double)} returns false,
+	 * if the y component exceeds the positive extreme point that is the inclusive
+	 * tolerance parameter.
+	 */
+	@Test
+	void isZeroWithMargin_Fail_Y_PositiveTest()
+	{
+		Tup2dR t = mock(Tup2dR.class);
+		
+		when(t.isZeroWithMargin(2.0)).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(0.0);
+		when(t.getY()).thenReturn(3.0);
+		
+		assertEquals(false, t.isZeroWithMargin(2.0));
+		
+		verify(t).isZeroWithMargin(2.0);
+		
+		verify(t).getX();
+		verify(t).getY();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2dR#isZeroWithMargin(double)} returns false,
+	 * if the y component exceeds the positive extreme point that is the inclusive
+	 * tolerance parameter.
+	 */
+	@Test
+	void isZeroWithMargin_Fail_Y_NegativeTest()
+	{
+		Tup2dR t = mock(Tup2dR.class);
+		
+		when(t.isZeroWithMargin(2.0)).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(0.0);
+		when(t.getY()).thenReturn(-3.0);
+		
+		assertEquals(false, t.isZeroWithMargin(2.0));
+		
+		verify(t).isZeroWithMargin(2.0);
+		
+		verify(t).getX();
+		verify(t).getY();
+		
+		verifyNoMoreInteractions(t);
 	}
 	
 	/**
@@ -116,17 +451,27 @@ class Tup2dRTest
 	 * the function {@link Tup2dR#getNewInstance(double, double)} with the correct components.
 	 */
 	@Test
-	void getNewInstance_TupleTest()
+	void getNewInstance_Tuple2Test()
 	{
-		Tup2dR t = new TestTup(1.0, 1.0);
+		Tup2dR original = mock(Tup2dR.class);
+		Tup2dR newInstance = mock(Tup2dR.class);
+		Tup2dR t = mock(Tup2dR.class);
 		
-		t.getNewInstance(new TestTup(2.0, 3.0));
+		when(t.getNewInstance(original)).thenCallRealMethod();
 		
-		assertEquals(true, ValueRelay.get("getNewInstanceC", false));
-		assertEquals(2.0, ValueRelay.get("getNewInstanceC_X", 0.0));
-		assertEquals(3.0, ValueRelay.get("getNewInstanceC_Y", 0.0));
+		when(original.getX()).thenReturn(1.0);
+		when(original.getY()).thenReturn(2.0);
+		when(t.getNewInstance(1.0, 2.0)).thenReturn(newInstance);
 		
-		// Can't test for the result here, as the relaying and adopting of the values are implementation specific.
+		assertSame(newInstance, t.getNewInstance(original));
+		
+		verify(t).getNewInstance(original);
+		
+		verify(original).getX();
+		verify(original).getY();
+		verify(t).getNewInstance(1.0, 2.0);
+		
+		verifyNoMoreInteractions(t, original);
 	}
 	
 	/**
@@ -136,54 +481,159 @@ class Tup2dRTest
 	@Test
 	void getNewInstance_ValueTest()
 	{
-		Tup2dR t = new TestTup(1.0, 1.0);
+		Tup2dR newInstance = mock(Tup2dR.class);
+		Tup2dR t = mock(Tup2dR.class);
 		
-		t.getNewInstance(2.0);
+		when(t.getNewInstance(1.0)).thenCallRealMethod();
+
+		when(t.getNewInstance(1.0, 1.0)).thenReturn(newInstance);
 		
-		assertEquals(true, ValueRelay.get("getNewInstanceC", false));
-		assertEquals(2.0, ValueRelay.get("getNewInstanceC_X", 0.0));
-		assertEquals(2.0, ValueRelay.get("getNewInstanceC_Y", 0.0));
+		assertSame(newInstance, t.getNewInstance(1.0));
 		
-		// Can't test for the result here, as the relaying and adopting of the values are implementation specific.
+		verify(t).getNewInstance(1.0);
+		
+		verify(t).getNewInstance(1.0, 1.0);
+		
+		verifyNoMoreInteractions(t);
 	}
 	
 	/**
-	 * This class is a test implementation of the interface {@link Tup2dR}.
-	 * 
-	 * @author picatrix1899
+	 * This test ensures, that the default implementation of the function {@link Tup2dR#getNewInstance(TupdR)} calls
+	 * the function {@link Tup2dR#getNewInstance(double, double)} with the correct components.
 	 */
-	private static class TestTup implements Tup2dR
+	@Test
+	void getNewInstance_TupleTest()
 	{
-		private final double x;
-		private final double y;
+		TupdR original = mock(TupdR.class);
+		Tup2dR newInstance = mock(Tup2dR.class);
+		Tup2dR t = mock(Tup2dR.class);
 		
-		public TestTup(double x, double y)
-		{
-			this.x = x;
-			this.y = y;
-		}
+		when(t.getNewInstance(original)).thenCallRealMethod();
 		
-		@Override
-		public double getX()
-		{
-			ValueRelay.relayCall("getX");
-			return this.x;
-		}
+		when(original.getArray()).thenReturn(new double[] {1.0, 2.0});
+		when(t.getNewInstance(1.0, 2.0)).thenReturn(newInstance);
 		
-		@Override
-		public double getY()
-		{
-			ValueRelay.relayCall("getY");
-			return this.y;
-		}
+		assertSame(newInstance, t.getNewInstance(original));
 		
-		@Override
-		public TestTup getNewInstance(double x, double y)
-		{
-			ValueRelay.relayCall("getNewInstanceC");
-			ValueRelay.relay("getNewInstanceC_X", x);
-			ValueRelay.relay("getNewInstanceC_Y", y);
-			return new TestTup(x, y);
-		}
+		verify(t).getNewInstance(original);
+		
+		verify(original).getArray();
+		verify(t).getNewInstance(1.0, 2.0);
+		
+		verifyNoMoreInteractions(t, original);
+	}
+	
+	/**
+	 * This test ensures, that the default implementation of the function {@link Tup2dR#getNewInstanceFromArray(double[])} calls
+	 * the function {@link Tup2dR#getNewInstance(double, double)} with the correct components.
+	 */
+	@Test
+	void getNewInstanceFromArrayTest()
+	{
+		Tup2dR newInstance = mock(Tup2dR.class);
+		Tup2dR t = mock(Tup2dR.class);
+		
+		when(t.getNewInstanceFromArray(new double[] {1.0, 2.0})).thenCallRealMethod();
+
+		when(t.getNewInstance(1.0, 2.0)).thenReturn(newInstance);
+		
+		assertSame(newInstance, t.getNewInstanceFromArray(new double[] {1.0, 2.0}));
+		
+		verify(t).getNewInstanceFromArray(new double[] {1.0, 2.0});
+		
+		verify(t).getNewInstance(1.0, 2.0);
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2dR#getArray()} returns
+	 * an array with the components in the right order.
+	 */
+	@Test
+	void getArrayTest()
+	{
+		Tup2dR t = mock(Tup2dR.class);
+		
+		when(t.getArray()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(1.0);
+		when(t.getY()).thenReturn(2.0);
+		
+		assertArrayEquals(new double[] {1.0, 2.0}, t.getArray());
+		
+		verify(t).getArray();
+		
+		verify(t).getX();
+		verify(t).getY();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2dR#getByIndex(int)} returns
+	 * the x component for the index 0.
+	 */
+	@Test
+	void getByIndex_XTest()
+	{
+		Tup2dR t = mock(Tup2dR.class);
+		
+		when(t.getByIndex(0)).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(1.0);
+		
+		assertEquals(1.0, t.getByIndex(0));
+
+		verify(t).getByIndex(0);
+		
+		verify(t).getX();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2dR#getByIndex(int)} returns
+	 * the y component for the index 1.
+	 */
+	@Test
+	void getByIndex_YTest()
+	{
+		Tup2dR t = mock(Tup2dR.class);
+		
+		when(t.getByIndex(1)).thenCallRealMethod();
+		
+		when(t.getY()).thenReturn(1.0);
+		
+		assertEquals(1.0, t.getByIndex(1));
+
+		verify(t).getByIndex(1);
+		
+		verify(t).getY();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2dR#getByIndex(int)} throws
+	 * an {@link IndexOutOfBoundsException} for an index different than 0 or 1.
+	 */
+	@Test
+	void getByIndex_ExceptionTest()
+	{
+		Tup2dR t = mock(Tup2dR.class);
+		
+		when(t.getByIndex(2)).thenCallRealMethod();
+
+		assertThrows(IndexOutOfBoundsException.class, new Executable() {
+			public void execute() throws Throwable
+			{
+				t.getByIndex(2);
+			}
+		});
+
+		verify(t).getByIndex(2);
+
+		verifyNoMoreInteractions(t);
 	}
 }
