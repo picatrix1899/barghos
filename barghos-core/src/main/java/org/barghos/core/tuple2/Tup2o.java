@@ -115,13 +115,13 @@ public class Tup2o<X,Y> implements Tup2oRW<X,Y>, FormattableToString
 	@Override
 	public Tup2o<X,Y> set(Tup2oR<X,Y> t)
 	{
-		return set(t.getX(), t.getY());
+		return (Tup2o<X,Y>)Tup2oRW.super.set(t);
 	}
 	
 	@Override
 	public Tup2o<X,Y> set(X x, Y y)
 	{
-		return setX(x).setY(y);
+		return (Tup2o<X,Y>)Tup2oRW.super.set(x, y);
 	}
 	
 	@Override
@@ -174,5 +174,11 @@ public class Tup2o<X,Y> implements Tup2oRW<X,Y>, FormattableToString
 	public Tup2o<X,Y> getNewInstance(X x, Y y)
 	{
 		return new Tup2o<>(x, y);
+	}
+	
+	@Override
+	public Tup2o<X,Y> getNewInstance(Tup2oR<X,Y> t)
+	{
+		return (Tup2o<X,Y>)Tup2oRW.super.getNewInstance(t);
 	}
 }

@@ -27,6 +27,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
+import org.barghos.core.api.tuple.TupobjR;
 import org.barghos.core.api.tuple2.Tup2objR;
 import org.barghos.core.api.tuple2.Tup2objRW;
 
@@ -66,6 +67,18 @@ public class Tup2obj implements Tup2objRW, Serializable, FormattableToString
 	public Tup2obj() { }
 	
 	/**
+	 * Creates a new instance from an existing instance of {@link TupobjR} and adopts the values.
+	 * 
+	 * @param t An existing implementation of {@link TupobjR} to adopt the values from.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public Tup2obj(TupobjR t)
+	{
+		this(t.getArray());
+	}
+	
+	/**
 	 * Creates a new instance from an existing instance of {@link Tup2objR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup2objR} to adopt the values from.
@@ -87,6 +100,19 @@ public class Tup2obj implements Tup2objRW, Serializable, FormattableToString
 	public Tup2obj(Object value)
 	{
 		set(value);
+	}
+	
+	/**
+	 * Creates a new instance with the values set to the corresponding parameters.
+	 * 
+	 * @param v The x and y values as an array.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public Tup2obj(Object[] v)
+	{
+		this.x = v[0];
+		this.y = v[1];
 	}
 	
 	/**
@@ -129,23 +155,23 @@ public class Tup2obj implements Tup2objRW, Serializable, FormattableToString
 		
 		return this;
 	}
-	
+
 	@Override
 	public Tup2obj set(Tup2objR t)
 	{
-		return set(t.getX(), t.getY());
+		return (Tup2obj)Tup2objRW.super.set(t);
 	}
 	
 	@Override
 	public Tup2obj set(Object value)
 	{
-		return set(value, value);
+		return (Tup2obj)Tup2objRW.super.set(value);
 	}
 	
 	@Override
 	public Tup2obj set(Object x, Object y)
 	{
-		return setX(x).setY(y);
+		return (Tup2obj)Tup2objRW.super.set(x, y);
 	}
 	
 	@Override
@@ -163,12 +189,27 @@ public class Tup2obj implements Tup2objRW, Serializable, FormattableToString
 	{
 		if(this == obj) return true;
 		if(obj == null) return false;
-		if(!(obj instanceof Tup2objR)) return false;
 		
-		Tup2objR other = (Tup2objR) obj;
-		if(!getX().equals(other.getX())) return false;
-		if(!getY().equals(other.getY())) return false;
-		return true;
+		if(obj instanceof Tup2objR)
+		{
+			Tup2objR other = (Tup2objR) obj;
+			if(!getX().equals(other.getX())) return false;
+			if(!getY().equals(other.getY())) return false;
+			
+			return true;
+		}
+		
+		if(obj instanceof TupobjR)
+		{
+			TupobjR other = (TupobjR) obj;
+			if(getDimensions() != other.getDimensions()) return false;
+			if(!getX().equals(other.getByIndex(0))) return false;
+			if(!getY().equals(other.getByIndex(1))) return false;
+			
+			return true;
+		}
+		
+		return false;
 	}
 	
 	@Override
@@ -197,5 +238,47 @@ public class Tup2obj implements Tup2objRW, Serializable, FormattableToString
 	public Tup2obj getNewInstance(Object x, Object y)
 	{
 		return new Tup2obj(x, y);
+	}
+	
+	@Override
+	public Tup2obj getNewInstance(Object value)
+	{
+		return (Tup2obj)Tup2objRW.super.getNewInstance(value);
+	}
+	
+	@Override
+	public Tup2obj getNewInstance(Tup2objR t)
+	{
+		return (Tup2obj)Tup2objRW.super.getNewInstance(t);
+	}
+	
+	@Override
+	public Tup2obj getNewInstance(TupobjR t)
+	{
+		return (Tup2obj)Tup2objRW.super.getNewInstance(t);
+	}
+	
+	@Override
+	public Tup2obj getNewInstanceFromArray(Object... values)
+	{
+		return (Tup2obj)Tup2objRW.super.getNewInstanceFromArray(values);
+	}
+	
+	@Override
+	public Tup2obj set(TupobjR t)
+	{
+		return (Tup2obj)Tup2objRW.super.set(t);
+	}
+	
+	@Override
+	public Tup2obj setArray(Object... values)
+	{
+		return (Tup2obj)Tup2objRW.super.setArray(values);
+	}
+	
+	@Override
+	public Tup2obj setByIndex(int index, Object value)
+	{
+		return (Tup2obj)Tup2objRW.super.setByIndex(index, value);
 	}
 }

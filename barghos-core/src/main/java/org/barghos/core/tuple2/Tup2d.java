@@ -27,6 +27,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
+import org.barghos.core.api.tuple.TupdR;
 import org.barghos.core.api.tuple2.Tup2dR;
 import org.barghos.core.api.tuple2.Tup2dRW;
 
@@ -67,6 +68,18 @@ public class Tup2d implements Tup2dRW, Serializable, FormattableToString
 	}
 	
 	/**
+	 * Creates a new instance from an existing instance of {@link TupdR} and adopts the values.
+	 * 
+	 * @param t An existing implementation of {@link TupdR} to adopt the values from.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public Tup2d(TupdR t)
+	{
+		this(t.getArray());
+	}
+	
+	/**
 	 * Creates a new instance from an existing instance of {@link Tup2dR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup2dR} to adopt the values from.
@@ -88,6 +101,19 @@ public class Tup2d implements Tup2dRW, Serializable, FormattableToString
 	public Tup2d(double value)
 	{
 		set(value);
+	}
+	
+	/**
+	 * Creates a new instance with the values set to the corresponding parameters.
+	 * 
+	 * @param v The x and y values as an array.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public Tup2d(double[] v)
+	{
+		this.x = v[0];
+		this.y = v[1];
 	}
 	
 	/**
@@ -130,23 +156,23 @@ public class Tup2d implements Tup2dRW, Serializable, FormattableToString
 		
 		return this;
 	}
-	
+
 	@Override
 	public Tup2d set(Tup2dR t)
 	{
-		return set(t.getX(), t.getY());
+		return (Tup2d)Tup2dRW.super.set(t);
 	}
 	
 	@Override
 	public Tup2d set(double value)
 	{
-		return set(value, value);
+		return (Tup2d)Tup2dRW.super.set(value);
 	}
 	
 	@Override
 	public Tup2d set(double x, double y)
 	{
-		return setX(x).setY(y);
+		return (Tup2d)Tup2dRW.super.set(x, y);
 	}
 	
 	@Override
@@ -166,12 +192,27 @@ public class Tup2d implements Tup2dRW, Serializable, FormattableToString
 	{
 		if(this == obj) return true;
 		if(obj == null) return false;
-		if(!(obj instanceof Tup2dR)) return false;
 		
-		Tup2dR other = (Tup2dR) obj;
-		if(Double.doubleToLongBits(getX()) != Double.doubleToLongBits(other.getX())) return false;
-		if(Double.doubleToLongBits(getY()) != Double.doubleToLongBits(other.getY())) return false;
-		return true;
+		if(obj instanceof Tup2dR)
+		{
+			Tup2dR other = (Tup2dR) obj;
+			if(Double.doubleToLongBits(getX()) != Double.doubleToLongBits(other.getX())) return false;
+			if(Double.doubleToLongBits(getY()) != Double.doubleToLongBits(other.getY())) return false;
+			
+			return true;
+		}
+		
+		if(obj instanceof TupdR)
+		{
+			TupdR other = (TupdR) obj;
+			if(getDimensions() != other.getDimensions()) return false;
+			if(Double.doubleToLongBits(getX()) != Double.doubleToLongBits(other.getByIndex(0))) return false;
+			if(Double.doubleToLongBits(getY()) != Double.doubleToLongBits(other.getByIndex(1))) return false;
+			
+			return true;
+		}
+		
+		return false;
 	}
 	
 	@Override
@@ -200,5 +241,47 @@ public class Tup2d implements Tup2dRW, Serializable, FormattableToString
 	public Tup2d getNewInstance(double x, double y)
 	{
 		return new Tup2d(x, y);
+	}
+	
+	@Override
+	public Tup2d getNewInstance(double value)
+	{
+		return (Tup2d)Tup2dRW.super.getNewInstance(value);
+	}
+	
+	@Override
+	public Tup2d getNewInstance(Tup2dR t)
+	{
+		return (Tup2d)Tup2dRW.super.getNewInstance(t);
+	}
+	
+	@Override
+	public Tup2d getNewInstance(TupdR t)
+	{
+		return (Tup2d)Tup2dRW.super.getNewInstance(t);
+	}
+	
+	@Override
+	public Tup2d getNewInstanceFromArray(double... values)
+	{
+		return (Tup2d)Tup2dRW.super.getNewInstanceFromArray(values);
+	}
+	
+	@Override
+	public Tup2d set(TupdR t)
+	{
+		return (Tup2d)Tup2dRW.super.set(t);
+	}
+	
+	@Override
+	public Tup2d setArray(double... values)
+	{
+		return (Tup2d)Tup2dRW.super.setArray(values);
+	}
+	
+	@Override
+	public Tup2d setByIndex(int index, double value)
+	{
+		return (Tup2d)Tup2dRW.super.setByIndex(index, value);
 	}
 }

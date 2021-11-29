@@ -27,6 +27,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
+import org.barghos.core.api.tuple.TupfR;
 import org.barghos.core.api.tuple2.Tup2fR;
 import org.barghos.core.api.tuple2.Tup2fRW;
 
@@ -62,8 +63,20 @@ public class Tup2f implements Tup2fRW, Serializable, FormattableToString
 	 * @since 1.0.0.0
 	 */
 	public Tup2f()
-	{
+	{		
 		set(0.0f);
+	}
+	
+	/**
+	 * Creates a new instance from an existing instance of {@link TupfR} and adopts the values.
+	 * 
+	 * @param t An existing implementation of {@link TupfR} to adopt the values from.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public Tup2f(TupfR t)
+	{
+		this(t.getArray());
 	}
 	
 	/**
@@ -88,6 +101,19 @@ public class Tup2f implements Tup2fRW, Serializable, FormattableToString
 	public Tup2f(float value)
 	{
 		set(value);
+	}
+	
+	/**
+	 * Creates a new instance with the values set to the corresponding parameters.
+	 * 
+	 * @param v The x and y values as an array.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public Tup2f(float[] v)
+	{
+		this.x = v[0];
+		this.y = v[1];
 	}
 	
 	/**
@@ -134,19 +160,19 @@ public class Tup2f implements Tup2fRW, Serializable, FormattableToString
 	@Override
 	public Tup2f set(Tup2fR t)
 	{
-		return set(t.getX(), t.getY());
+		return (Tup2f)Tup2fRW.super.set(t);
 	}
 	
 	@Override
 	public Tup2f set(float value)
 	{
-		return set(value, value);
+		return (Tup2f)Tup2fRW.super.set(value);
 	}
 	
 	@Override
 	public Tup2f set(float x, float y)
 	{
-		return setX(x).setY(y);
+		return (Tup2f)Tup2fRW.super.set(x, y);
 	}
 	
 	@Override
@@ -164,12 +190,27 @@ public class Tup2f implements Tup2fRW, Serializable, FormattableToString
 	{
 		if(this == obj) return true;
 		if(obj == null) return false;
-		if(!(obj instanceof Tup2fR)) return false;
 		
-		Tup2fR other = (Tup2fR) obj;
-		if(Float.floatToIntBits(getX()) != Float.floatToIntBits(other.getX())) return false;
-		if(Float.floatToIntBits(getY()) != Float.floatToIntBits(other.getY())) return false;
-		return true;
+		if(obj instanceof Tup2fR)
+		{
+			Tup2fR other = (Tup2fR) obj;
+			if(Float.floatToIntBits(getX()) != Float.floatToIntBits(other.getX())) return false;
+			if(Float.floatToIntBits(getY()) != Float.floatToIntBits(other.getY())) return false;
+			
+			return true;
+		}
+		
+		if(obj instanceof TupfR)
+		{
+			TupfR other = (TupfR) obj;
+			if(getDimensions() != other.getDimensions()) return false;
+			if(Float.floatToIntBits(getX()) != Float.floatToIntBits(other.getByIndex(0))) return false;
+			if(Float.floatToIntBits(getY()) != Float.floatToIntBits(other.getByIndex(1))) return false;
+			
+			return true;
+		}
+		
+		return false;
 	}
 	
 	@Override
@@ -198,5 +239,47 @@ public class Tup2f implements Tup2fRW, Serializable, FormattableToString
 	public Tup2f getNewInstance(float x, float y)
 	{
 		return new Tup2f(x, y);
+	}
+	
+	@Override
+	public Tup2f getNewInstance(float value)
+	{
+		return (Tup2f)Tup2fRW.super.getNewInstance(value);
+	}
+	
+	@Override
+	public Tup2f getNewInstance(Tup2fR t)
+	{
+		return (Tup2f)Tup2fRW.super.getNewInstance(t);
+	}
+	
+	@Override
+	public Tup2f getNewInstance(TupfR t)
+	{
+		return (Tup2f)Tup2fRW.super.getNewInstance(t);
+	}
+	
+	@Override
+	public Tup2f getNewInstanceFromArray(float... values)
+	{
+		return (Tup2f)Tup2fRW.super.getNewInstanceFromArray(values);
+	}
+	
+	@Override
+	public Tup2f set(TupfR t)
+	{
+		return (Tup2f)Tup2fRW.super.set(t);
+	}
+	
+	@Override
+	public Tup2f setArray(float... values)
+	{
+		return (Tup2f)Tup2fRW.super.setArray(values);
+	}
+	
+	@Override
+	public Tup2f setByIndex(int index, float value)
+	{
+		return (Tup2f)Tup2fRW.super.setByIndex(index, value);
 	}
 }

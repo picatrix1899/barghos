@@ -27,6 +27,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
+import org.barghos.core.api.tuple.TupcR;
 import org.barghos.core.api.tuple2.Tup2cR;
 import org.barghos.core.api.tuple2.Tup2cRW;
 
@@ -67,6 +68,18 @@ public class Tup2c implements Tup2cRW, Serializable, FormattableToString
 	}
 	
 	/**
+	 * Creates a new instance from an existing instance of {@link TupcR} and adopts the values.
+	 * 
+	 * @param t An existing implementation of {@link TupcR} to adopt the values from.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public Tup2c(TupcR t)
+	{
+		this(t.getArray());
+	}
+	
+	/**
 	 * Creates a new instance from an existing instance of {@link Tup2cR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup2cR} to adopt the values from.
@@ -88,6 +101,19 @@ public class Tup2c implements Tup2cRW, Serializable, FormattableToString
 	public Tup2c(char value)
 	{
 		set(value);
+	}
+	
+	/**
+	 * Creates a new instance with the values set to the corresponding parameters.
+	 * 
+	 * @param v The x and y values as an array.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public Tup2c(char[] v)
+	{
+		this.x = v[0];
+		this.y = v[1];
 	}
 	
 	/**
@@ -130,23 +156,23 @@ public class Tup2c implements Tup2cRW, Serializable, FormattableToString
 		
 		return this;
 	}
-	
+
 	@Override
 	public Tup2c set(Tup2cR t)
 	{
-		return set(t.getX(), t.getY());
+		return (Tup2c)Tup2cRW.super.set(t);
 	}
 	
 	@Override
 	public Tup2c set(char value)
 	{
-		return set(value, value);
+		return (Tup2c)Tup2cRW.super.set(value);
 	}
 	
 	@Override
 	public Tup2c set(char x, char y)
 	{
-		return setX(x).setY(y);
+		return (Tup2c)Tup2cRW.super.set(x, y);
 	}
 	
 	@Override
@@ -164,12 +190,27 @@ public class Tup2c implements Tup2cRW, Serializable, FormattableToString
 	{
 		if(this == obj) return true;
 		if(obj == null) return false;
-		if(!(obj instanceof Tup2cR)) return false;
 		
-		Tup2cR other = (Tup2cR) obj;
-		if(getX() != other.getX()) return false;
-		if(getY() != other.getY()) return false;
-		return true;
+		if(obj instanceof Tup2cR)
+		{
+			Tup2cR other = (Tup2cR) obj;
+			if(getX() != other.getX()) return false;
+			if(getY() != other.getY()) return false;
+			
+			return true;
+		}
+		
+		if(obj instanceof TupcR)
+		{
+			TupcR other = (TupcR) obj;
+			if(getDimensions() != other.getDimensions()) return false;
+			if(getX() != other.getByIndex(0)) return false;
+			if(getY() != other.getByIndex(1)) return false;
+			
+			return true;
+		}
+		
+		return false;
 	}
 	
 	@Override
@@ -198,5 +239,47 @@ public class Tup2c implements Tup2cRW, Serializable, FormattableToString
 	public Tup2c getNewInstance(char x, char y)
 	{
 		return new Tup2c(x, y);
+	}
+	
+	@Override
+	public Tup2c getNewInstance(char value)
+	{
+		return (Tup2c)Tup2cRW.super.getNewInstance(value);
+	}
+	
+	@Override
+	public Tup2c getNewInstance(Tup2cR t)
+	{
+		return (Tup2c)Tup2cRW.super.getNewInstance(t);
+	}
+	
+	@Override
+	public Tup2c getNewInstance(TupcR t)
+	{
+		return (Tup2c)Tup2cRW.super.getNewInstance(t);
+	}
+	
+	@Override
+	public Tup2c getNewInstanceFromArray(char... values)
+	{
+		return (Tup2c)Tup2cRW.super.getNewInstanceFromArray(values);
+	}
+	
+	@Override
+	public Tup2c set(TupcR t)
+	{
+		return (Tup2c)Tup2cRW.super.set(t);
+	}
+	
+	@Override
+	public Tup2c setArray(char... values)
+	{
+		return (Tup2c)Tup2cRW.super.setArray(values);
+	}
+	
+	@Override
+	public Tup2c setByIndex(int index, char value)
+	{
+		return (Tup2c)Tup2cRW.super.setByIndex(index, value);
 	}
 }

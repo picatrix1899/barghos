@@ -27,6 +27,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
+import org.barghos.core.api.tuple.TupsR;
 import org.barghos.core.api.tuple2.Tup2sR;
 import org.barghos.core.api.tuple2.Tup2sRW;
 
@@ -67,6 +68,18 @@ public class Tup2s implements Tup2sRW, Serializable, FormattableToString
 	}
 	
 	/**
+	 * Creates a new instance from an existing instance of {@link TupsR} and adopts the values.
+	 * 
+	 * @param t An existing implementation of {@link TupsR} to adopt the values from.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public Tup2s(TupsR t)
+	{
+		this(t.getArray());
+	}
+	
+	/**
 	 * Creates a new instance from an existing instance of {@link Tup2sR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup2sR} to adopt the values from.
@@ -88,6 +101,19 @@ public class Tup2s implements Tup2sRW, Serializable, FormattableToString
 	public Tup2s(short value)
 	{
 		set(value);
+	}
+	
+	/**
+	 * Creates a new instance with the values set to the corresponding parameters.
+	 * 
+	 * @param v The x and y values as an array.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public Tup2s(short[] v)
+	{
+		this.x = v[0];
+		this.y = v[1];
 	}
 	
 	/**
@@ -134,19 +160,19 @@ public class Tup2s implements Tup2sRW, Serializable, FormattableToString
 	@Override
 	public Tup2s set(Tup2sR t)
 	{
-		return set(t.getX(), t.getY());
+		return (Tup2s)Tup2sRW.super.set(t);
 	}
 	
 	@Override
 	public Tup2s set(short value)
 	{
-		return set(value, value);
+		return (Tup2s)Tup2sRW.super.set(value);
 	}
 	
 	@Override
 	public Tup2s set(short x, short y)
 	{
-		return setX(x).setY(y);
+		return (Tup2s)Tup2sRW.super.set(x, y);
 	}
 	
 	@Override
@@ -164,12 +190,27 @@ public class Tup2s implements Tup2sRW, Serializable, FormattableToString
 	{
 		if(this == obj) return true;
 		if(obj == null) return false;
-		if(!(obj instanceof Tup2sR)) return false;
 		
-		Tup2sR other = (Tup2sR) obj;
-		if(getX() != other.getX()) return false;
-		if(getY() != other.getY()) return false;
-		return true;
+		if(obj instanceof Tup2sR)
+		{
+			Tup2sR other = (Tup2sR) obj;
+			if(getX() != other.getX()) return false;
+			if(getY() != other.getY()) return false;
+			
+			return true;
+		}
+		
+		if(obj instanceof TupsR)
+		{
+			TupsR other = (TupsR) obj;
+			if(getDimensions() != other.getDimensions()) return false;
+			if(getX() != other.getByIndex(0)) return false;
+			if(getY() != other.getByIndex(1)) return false;
+			
+			return true;
+		}
+		
+		return false;
 	}
 	
 	@Override
@@ -198,5 +239,47 @@ public class Tup2s implements Tup2sRW, Serializable, FormattableToString
 	public Tup2s getNewInstance(short x, short y)
 	{
 		return new Tup2s(x, y);
+	}
+	
+	@Override
+	public Tup2s getNewInstance(short value)
+	{
+		return (Tup2s)Tup2sRW.super.getNewInstance(value);
+	}
+	
+	@Override
+	public Tup2s getNewInstance(Tup2sR t)
+	{
+		return (Tup2s)Tup2sRW.super.getNewInstance(t);
+	}
+	
+	@Override
+	public Tup2s getNewInstance(TupsR t)
+	{
+		return (Tup2s)Tup2sRW.super.getNewInstance(t);
+	}
+	
+	@Override
+	public Tup2s getNewInstanceFromArray(short... values)
+	{
+		return (Tup2s)Tup2sRW.super.getNewInstanceFromArray(values);
+	}
+	
+	@Override
+	public Tup2s set(TupsR t)
+	{
+		return (Tup2s)Tup2sRW.super.set(t);
+	}
+	
+	@Override
+	public Tup2s setArray(short... values)
+	{
+		return (Tup2s)Tup2sRW.super.setArray(values);
+	}
+	
+	@Override
+	public Tup2s setByIndex(int index, short value)
+	{
+		return (Tup2s)Tup2sRW.super.setByIndex(index, value);
 	}
 }

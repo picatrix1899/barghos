@@ -1,6 +1,7 @@
 package org.barghos.core.test.tuple2.formattableToString;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.Test;
 
@@ -25,7 +26,12 @@ class Tup2c_FormattableToStringTest
 	@Test
 	void getValueMappingTest()
 	{
-		Tup2c t = new Tup2c('a', 'b');
+		Tup2c t = mock(Tup2c.class);
+		
+		when(t.getValueMapping()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn('a');
+		when(t.getY()).thenReturn('b');
 		
 		Map<String,Object> values = t.getValueMapping();
 		
@@ -34,9 +40,20 @@ class Tup2c_FormattableToStringTest
 		List<Map.Entry<String,Object>> l = new ArrayList<>(values.entrySet());
 			
 		assertEquals(2, l.size());
-		assertEquals("x", l.get(0).getKey());
-		assertEquals('a', l.get(0).getValue());
-		assertEquals("y", l.get(1).getKey());
-		assertEquals('b', l.get(1).getValue());
+		
+		Map.Entry<String,Object> entry = l.get(0);
+		assertEquals("x", entry.getKey());
+		assertEquals('a', entry.getValue());
+		
+		entry = l.get(1);
+		assertEquals("y", entry.getKey());
+		assertEquals('b', entry.getValue());
+		
+		verify(t).getValueMapping();
+		
+		verify(t).getX();
+		verify(t).getY();
+		
+		verifyNoMoreInteractions(t);
 	}
 }

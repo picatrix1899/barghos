@@ -28,6 +28,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
+import org.barghos.core.api.tuple.TupbigiR;
 import org.barghos.core.api.tuple2.Tup2bigiR;
 import org.barghos.core.api.tuple2.Tup2bigiRW;
 
@@ -70,6 +71,18 @@ public class Tup2bigi implements Tup2bigiRW, Serializable, FormattableToString
 	}
 	
 	/**
+	 * Creates a new instance from an existing instance of {@link TupbigiR} and adopts the values.
+	 * 
+	 * @param t An existing implementation of {@link TupbigiR} to adopt the values from.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public Tup2bigi(TupbigiR t)
+	{
+		this(t.getArray());
+	}
+	
+	/**
 	 * Creates a new instance from an existing instance of {@link Tup2bigiR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup2bigiR} to adopt the values from.
@@ -91,6 +104,19 @@ public class Tup2bigi implements Tup2bigiRW, Serializable, FormattableToString
 	public Tup2bigi(BigInteger value)
 	{
 		set(value);
+	}
+	
+	/**
+	 * Creates a new instance with the values set to the corresponding parameters.
+	 * 
+	 * @param v The x and y values as an array.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public Tup2bigi(BigInteger[] v)
+	{
+		this.x = v[0];
+		this.y = v[1];
 	}
 	
 	/**
@@ -137,19 +163,19 @@ public class Tup2bigi implements Tup2bigiRW, Serializable, FormattableToString
 	@Override
 	public Tup2bigi set(Tup2bigiR t)
 	{
-		return set(t.getX(), t.getY());
+		return (Tup2bigi)Tup2bigiRW.super.set(t);
 	}
 	
 	@Override
 	public Tup2bigi set(BigInteger value)
 	{
-		return set(value, value);
+		return (Tup2bigi)Tup2bigiRW.super.set(value);
 	}
 	
 	@Override
 	public Tup2bigi set(BigInteger x, BigInteger y)
 	{
-		return setX(x).setY(y);
+		return (Tup2bigi)Tup2bigiRW.super.set(x, y);
 	}
 	
 	@Override
@@ -167,12 +193,27 @@ public class Tup2bigi implements Tup2bigiRW, Serializable, FormattableToString
 	{
 		if(this == obj) return true;
 		if(obj == null) return false;
-		if(!(obj instanceof Tup2bigiR)) return false;
 		
-		Tup2bigiR other = (Tup2bigiR) obj;
-		if(getX().compareTo(other.getX()) != 0) return false;
-		if(getY().compareTo(other.getY()) != 0) return false;
-		return true;
+		if(obj instanceof Tup2bigiR)
+		{
+			Tup2bigiR other = (Tup2bigiR) obj;
+			if(getX().compareTo(other.getX()) != 0) return false;
+			if(getY().compareTo(other.getY()) != 0) return false;
+			
+			return true;
+		}
+		
+		if(obj instanceof TupbigiR)
+		{
+			TupbigiR other = (TupbigiR) obj;
+			if(getDimensions() != other.getDimensions()) return false;
+			if(getX().compareTo(other.getByIndex(0)) != 0) return false;
+			if(getY().compareTo(other.getByIndex(1)) != 0) return false;
+			
+			return true;
+		}
+		
+		return false;
 	}
 	
 	@Override
@@ -201,5 +242,47 @@ public class Tup2bigi implements Tup2bigiRW, Serializable, FormattableToString
 	public Tup2bigi getNewInstance(BigInteger x, BigInteger y)
 	{
 		return new Tup2bigi(x, y);
+	}
+	
+	@Override
+	public Tup2bigi getNewInstance(BigInteger value)
+	{
+		return (Tup2bigi)Tup2bigiRW.super.getNewInstance(value);
+	}
+	
+	@Override
+	public Tup2bigi getNewInstance(Tup2bigiR t)
+	{
+		return (Tup2bigi)Tup2bigiRW.super.getNewInstance(t);
+	}
+	
+	@Override
+	public Tup2bigi getNewInstance(TupbigiR t)
+	{
+		return (Tup2bigi)Tup2bigiRW.super.getNewInstance(t);
+	}
+	
+	@Override
+	public Tup2bigi getNewInstanceFromArray(BigInteger... values)
+	{
+		return (Tup2bigi)Tup2bigiRW.super.getNewInstanceFromArray(values);
+	}
+	
+	@Override
+	public Tup2bigi set(TupbigiR t)
+	{
+		return (Tup2bigi)Tup2bigiRW.super.set(t);
+	}
+	
+	@Override
+	public Tup2bigi setArray(BigInteger... values)
+	{
+		return (Tup2bigi)Tup2bigiRW.super.setArray(values);
+	}
+	
+	@Override
+	public Tup2bigi setByIndex(int index, BigInteger value)
+	{
+		return (Tup2bigi)Tup2bigiRW.super.setByIndex(index, value);
 	}
 }

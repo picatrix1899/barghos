@@ -1,32 +1,13 @@
-/*******************************************************************************
- * Copyright (C) 2021 picatrix1899 (Florian Zilkenat)
- * 
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- * 
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- ******************************************************************************/
-
 package org.barghos.core.test.tuple2;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.Test;
 
-import org.barghos.core.tuple2.PTup2bo;
+import org.barghos.core.api.tuple.TupboR;
+import org.barghos.core.api.tuple2.Tup2boR;
+
 import org.barghos.core.tuple2.Tup2bo;
 
 /**
@@ -37,68 +18,114 @@ import org.barghos.core.tuple2.Tup2bo;
 class Tup2boTest
 {
 	/**
-	 * This test ensures, that the constructor {@link Tup2bo#Tup2bo()} aktually works and
-	 * that the components are set to 0.
+	 * This test ensures, that the default constructor {@link Tup2bo#Tup2b()} sets the components to false.
 	 * 
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void ctorEmptyTest()
+	void ctor_DefaultTest()
 	{
 		Tup2bo t = new Tup2bo();
 		
 		assertEquals(false, t.x);
 		assertEquals(false, t.y);
 	}
-	
+
 	/**
-	 * This test ensures, that  the constructor
-	 * {@link Tup2bo#Tup2bo(org.barghos.core.api.tuple2.Tup2boR) Tup2bo.Tup2bo(Tup2boR)} actually works and
-	 * that the components are adopted from the input tuple.
+	 * This test ensures, that an instance of {@link Tup2bo} generated from an existing instance of {@link TupboR},
+	 * returns the correct components.
 	 * 
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void ctorCloneTest()
+	void ctor_TupleTest()
 	{
-		Tup2bo t = new Tup2bo(PTup2bo.gen(false, true));
+		TupboR original = mock(TupboR.class);
 		
-		assertEquals(false, t.x);
-		assertEquals(true, t.y);
+		when(original.getArray()).thenReturn(new boolean[] {false, true});
+		
+		Tup2bo t = new Tup2bo(original);
+		
+		assertEquals(false, t.getX());
+		assertEquals(true, t.getY());
+		
+		verify(original).getArray();
+		
+		verifyNoMoreInteractions(original);
 	}
 	
 	/**
-	 * This test ensures, that the constructor {@link Tup2bo#Tup2bo(boolean)} actually works,
-	 * and that the components are set to the value.
+	 * This test ensures, that an instance of {@link Tup2bo} generated from an existing instance of {@link Tup2boR},
+	 * returns the correct components.
 	 * 
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void ctorScalarTest()
+	void ctor_Tuple2Test()
+	{
+		Tup2boR original = mock(Tup2boR.class);
+		
+		when(original.getX()).thenReturn(false);
+		when(original.getY()).thenReturn(true);
+		
+		Tup2bo t = new Tup2bo(original);
+		
+		assertEquals(false, t.getX());
+		assertEquals(true, t.getY());
+		
+		verify(original).getX();
+		verify(original).getY();
+		
+		verifyNoMoreInteractions(original);
+	}
+	
+	/**
+	 * This test ensures, that an instance of {@link Tup2bo} generated from a scalar,
+	 * returns the correct components.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void ctor_ValueTest()
 	{
 		Tup2bo t = new Tup2bo(true);
 		
-		assertEquals(true, t.x);
-		assertEquals(true, t.y);
+		assertEquals(true, t.getX());
+		assertEquals(true, t.getY());
 	}
 	
 	/**
-	 * This test ensures, that the constructor {@link Tup2bo#Tup2bo(boolean, boolean)} actually works,
-	 * and that the components are set to the respective parameters.
+	 * This test ensures, that an instance of {@link Tup2bo} generated from an array,
+	 * returns the correct components.
 	 * 
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void ctorComponentsTest()
+	void ctor_ArrayTest()
 	{
-		Tup2bo t = new Tup2bo(false, true);
+		Tup2bo t = new Tup2bo(new boolean[] {false, true});
 		
-		assertEquals(false, t.x);
-		assertEquals(true, t.y);
+		assertEquals(false, t.getX());
+		assertEquals(true, t.getY());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup2bo#setX(boolean)} sets the x component on the tuple
+	 * This test ensures, that an instance of {@link Tup2bo} generated from two components,
+	 * returns the correct components.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void ctor_ComponentsTest()
+	{
+		Tup2bo t = new Tup2bo(false, true);
+		
+		assertEquals(false, t.getX());
+		assertEquals(true, t.getY());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2bo#setX(boolean)} sets the x component of the tuple
 	 * to the value and returns the current tuple.
 	 * 
 	 * @since 1.0.0.0
@@ -113,7 +140,7 @@ class Tup2boTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup2bo#setY(boolean)} sets the y component on the tuple
+	 * This test ensures, that the function {@link Tup2bo#setY(int)} sets the y component of the tuple
 	 * to the value and returns the current tuple.
 	 * 
 	 * @since 1.0.0.0
@@ -135,13 +162,28 @@ class Tup2boTest
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void setCloneTest()
+	void set_CloneTest()
 	{
-		Tup2bo t = new Tup2bo();
+		Tup2bo t = mock(Tup2bo.class);
 		
-		assertSame(t, t.set(PTup2bo.gen(false, true)));
-		assertEquals(false, t.x);
-		assertEquals(true, t.y);
+		Tup2boR t2 = mock(Tup2boR.class);
+	
+		when(t.set(t2)).thenCallRealMethod();
+		
+		when(t2.getX()).thenReturn(false);
+		when(t2.getY()).thenReturn(true);
+		
+		when(t.set(false, true)).thenReturn(t);
+		
+		assertSame(t, t.set(t2));
+		
+		verify(t).set(t2);
+		
+		verify(t2).getX();
+		verify(t2).getY();
+		verify(t).set(false, true);
+		
+		verifyNoMoreInteractions(t, t2);
 	}
 	
 	/**
@@ -151,13 +193,21 @@ class Tup2boTest
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void setScalarTest()
+	void set_ValueTest()
 	{
-		Tup2bo t = new Tup2bo();
+		Tup2bo t = mock(Tup2bo.class);
+
+		when(t.set(true)).thenCallRealMethod();
+
+		when(t.set(true, true)).thenReturn(t);
 		
 		assertSame(t, t.set(true));
-		assertEquals(true, t.x);
-		assertEquals(true, t.y);
+		
+		verify(t).set(true);
+
+		verify(t).set(true, true);
+		
+		verifyNoMoreInteractions(t);
 	}
 	
 	/**
@@ -167,14 +217,23 @@ class Tup2boTest
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void setComponentsTest()
+	void set_ComponentsTest()
 	{
-		Tup2bo t = new Tup2bo();
+		Tup2bo t = mock(Tup2bo.class);
+
+		when(t.set(false, true)).thenCallRealMethod();
+
+		when(t.setX(false)).thenReturn(t);
+		when(t.setY(true)).thenReturn(t);
 		
 		assertSame(t, t.set(false, true));
+
+		verify(t).set(false, true);
 		
-		assertEquals(false, t.x);
-		assertEquals(true, t.y);
+		verify(t).setX(false);
+		verify(t).setY(true);
+		
+		verifyNoMoreInteractions(t);
 	}
 	
 	/**
@@ -208,21 +267,191 @@ class Tup2boTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup2bo#clone()} generates a new instance of
-	 * {@link Tup2bo} and adopts the components from the original.
-	 * 
-	 * @since 1.0.0.0
+	 * This test ensures, that the function {@link Tup2bo#hashCode()} eturns the correct hash.
+	 */
+	@Test
+	void hashCodeTest()
+	{
+		Tup2bo t = new Tup2bo(false, true);
+
+		assertEquals(962, t.hashCode());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2bo#clone()} creates a new instance that satisfies
+	 * the requirements for clone-funktions.
 	 */
 	@Test
 	void cloneTest()
 	{
-		Tup2bo t = new Tup2bo(false, true);
+		Tup2bo original = new Tup2bo(false, true);
+		Tup2bo t = original.clone();
 		
-		Tup2bo result = t.clone();
+		assertFalse(original == t);
+		assertTrue(original.equals(t));
+		assertTrue(t.equals(original));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup2bo#equals(Object)} method returns true if
+	 * the object to test is the same as the testing object.
+	 */
+	@Test
+	void equals_SameTest()
+	{
+		Tup2bo t1 = new Tup2bo(false, true);
 		
-		assertNotSame(t, result);
-		assertEquals(false, result.getX());
-		assertEquals(true, result.getY());
+		assertTrue(t1.equals(t1));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup2bo#equals(Object)} method returns false if
+	 * the object to test is null.
+	 */
+	@Test
+	void equals_NullTest()
+	{
+		Tup2bo t1 = new Tup2bo(false, true);
+		
+		assertFalse(t1.equals(null));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup2bo#equals(Object)} method returns false if
+	 * the object to test is of an unsupported type.
+	 */
+	@Test
+	void equals_IncompatibleTest()
+	{
+		Tup2bo t1 = new Tup2bo(false, true);
+		
+		assertFalse(t1.equals(new Object()));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup2bo#equals(Object)} method returns true if
+	 * the object to test is of the type {@link Tup2boR} and has the same values as the testing object.
+	 */
+	@Test
+	void equals_Tuple2Test()
+	{
+		Tup2bo t1 = new Tup2bo(false, true);
+		
+		Tup2boR t2 = mock(Tup2boR.class);
+		
+		when(t2.getX()).thenReturn(false);
+		when(t2.getY()).thenReturn(true);
+		
+		assertTrue(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup2bo#equals(Object)} method returns false if
+	 * the object to test is of the type {@link Tup2boR} and has the same amount of dimensions and
+	 * a different value of the x component as the testing object.
+	 */
+	@Test
+	void equals_Tuple2_VaryingXTest()
+	{
+		Tup2bo t1 = new Tup2bo(false, true);
+		
+		Tup2boR t2 = mock(Tup2boR.class);
+		
+		when(t2.getX()).thenReturn(true);
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup2bo#equals(Object)} method returns false if
+	 * the object to test is of the type {@link Tup2boR} and has the same amount of dimensions and
+	 * a different value of the y component as the testing object.
+	 */
+	@Test
+	void equals_Tuple2_VaryingYTest()
+	{
+		Tup2bo t1 = new Tup2bo(false, true);
+		
+		Tup2boR t2 = mock(Tup2boR.class);
+		
+		when(t2.getDimensions()).thenReturn(2);
+		when(t2.getX()).thenReturn(false);
+		when(t2.getY()).thenReturn(false);
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup2bo#equals(Object)} method returns true if
+	 * the object to test is of the type {@link TupboR} and has the same amount of dimensions and
+	 * the same values as the testing object.
+	 */
+	@Test
+	void equals_TupleTest()
+	{
+		Tup2bo t1 = new Tup2bo(false, true);
+		
+		TupboR t2 = mock(TupboR.class);
+		
+		when(t2.getDimensions()).thenReturn(2);
+		when(t2.getByIndex(0)).thenReturn(false);
+		when(t2.getByIndex(1)).thenReturn(true);
+		
+		assertTrue(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup2bo#equals(Object)} method returns false if
+	 * the object to test is of the type {@link TupboR} and has a different amount of dimensions
+	 * as the testing object.
+	 */
+	@Test
+	void equals_Tuple_VaryingDimensionsTest()
+	{
+		Tup2bo t1 = new Tup2bo(false, true);
+		
+		TupboR t2 = mock(TupboR.class);
+		
+		when(t2.getDimensions()).thenReturn(1);
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup2bo#equals(Object)} method returns false if
+	 * the object to test is of the type {@link TupboR} and has the same amount of dimensions and
+	 * a different value of the x component as the testing object.
+	 */
+	@Test
+	void equals_Tuple_VaryingXTest()
+	{
+		Tup2bo t1 = new Tup2bo(false, true);
+		
+		TupboR t2 = mock(TupboR.class);
+		
+		when(t2.getDimensions()).thenReturn(2);
+		when(t2.getByIndex(0)).thenReturn(true);
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup2bo#equals(Object)} method returns false if
+	 * the object to test is of the type {@link TupboR} and has the same amount of dimensions and
+	 * a different value of the y component as the testing object.
+	 */
+	@Test
+	void equals_Tuple_VaryingYTest()
+	{
+		Tup2bo t1 = new Tup2bo(false, true);
+		
+		TupboR t2 = mock(TupboR.class);
+		
+		when(t2.getDimensions()).thenReturn(2);
+		when(t2.getByIndex(0)).thenReturn(false);
+		when(t2.getByIndex(1)).thenReturn(false);
+		
+		assertFalse(t1.equals(t2));
 	}
 	
 	/**
@@ -239,38 +468,118 @@ class Tup2boTest
 	}
 	
 	/**
-	 * This test ensures, that the special policies for the function {@link Tup2bo#equals(Object)} are working.
-	 * 
-	 * @since 1.0.0.0
-	 */
-	@SuppressWarnings("unlikely-arg-type")
-	@Test
-	void equalsTest()
-	{
-		Tup2bo t = new Tup2bo(false, true);
-		assertTrue(t.equals(t));
-		assertFalse(t.equals(null));
-		assertFalse(t.equals(0.0));
-		assertFalse(t.equals(new Tup2bo(true, true))); // x wrong
-		assertFalse(t.equals(new Tup2bo(false, false))); // y wrong
-		
-		assertTrue(t.equals(new Tup2bo(false, true)));
-		assertTrue(t.equals(PTup2bo.gen(false, true)));
-	}
-	
-	/**
 	 * This test ensures, that the function {@link Tup2bo#getNewInstance(boolean, boolean)}
 	 * returns a new instance of {@link Tup2bo} with the given values.
 	 */
 	@Test
-	void getNewInstanceTest()
+	void getNewInstance_ComponentsTest()
 	{
-		Tup2bo t = new Tup2bo(false, true);
-
-		Tup2bo result = t.getNewInstance(true, false);
+		Tup2bo original = new Tup2bo(false, true);
+		Tup2bo newInstance = original.getNewInstance(true, false);
 		
-		assertNotSame(t, result);
-		assertEquals(true, result.getX());
-		assertEquals(false, result.getY());
+		assertEquals(false, original.getX());
+		assertEquals(true, original.getY());
+		assertEquals(true, newInstance.getX());
+		assertEquals(false, newInstance.getY());
+	}
+	
+	/**
+	 * This test ensures, that the default implementation of the function {@link Tup2bo#getNewInstance(boolean)} calls
+	 * the function {@link Tup2bo#getNewInstance(boolean, boolean)} with the correct components.
+	 */
+	@Test
+	void getNewInstance_ValueTest()
+	{
+		Tup2bo newInstance = mock(Tup2bo.class);
+		Tup2bo t = mock(Tup2bo.class);
+		
+		when(t.getNewInstance(true)).thenCallRealMethod();
+
+		when(t.getNewInstance(true, true)).thenReturn(newInstance);
+		
+		assertSame(newInstance, t.getNewInstance(true));
+		
+		verify(t).getNewInstance(true);
+		
+		verify(t).getNewInstance(true, true);
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2bo#getNewInstance(Tup2boR)}
+	 * returns a new instance of {@link Tup2bo} with the given values.
+	 */
+	@Test
+	void getNewInstance_Tuple2Test()
+	{
+		Tup2boR original = mock(Tup2boR.class);
+		Tup2bo newInstance = mock(Tup2bo.class);
+		Tup2bo t = mock(Tup2bo.class);
+		
+		when(t.getNewInstance(original)).thenCallRealMethod();
+		
+		when(original.getX()).thenReturn(false);
+		when(original.getY()).thenReturn(true);
+		when(t.getNewInstance(false, true)).thenReturn(newInstance);
+		
+		assertSame(newInstance, t.getNewInstance(original));
+		
+		verify(t).getNewInstance(original);
+		
+		verify(original).getX();
+		verify(original).getY();
+		verify(t).getNewInstance(false, true);
+		
+		verifyNoMoreInteractions(t, original);
+	}
+	
+	/**
+	 * This test ensures, that the default implementation of the function {@link Tup2bo#getNewInstance(TupboR)} calls
+	 * the function {@link Tup2bo#getNewInstance(boolean, boolean)} with the correct components.
+	 */
+	@Test
+	void getNewInstance_TupleTest()
+	{
+		TupboR original = mock(TupboR.class);
+		Tup2bo newInstance = mock(Tup2bo.class);
+		Tup2bo t = mock(Tup2bo.class);
+		
+		when(t.getNewInstance(original)).thenCallRealMethod();
+		
+		when(original.getArray()).thenReturn(new boolean[] {false, true});
+		when(t.getNewInstance(false, true)).thenReturn(newInstance);
+		
+		assertSame(newInstance, t.getNewInstance(original));
+		
+		verify(t).getNewInstance(original);
+		
+		verify(original).getArray();
+		verify(t).getNewInstance(false, true);
+		
+		verifyNoMoreInteractions(t, original);
+	}
+	
+	/**
+	 * This test ensures, that the default implementation of the function {@link Tup2bo#getNewInstanceFromArray(boolean[])} calls
+	 * the function {@link Tup2bo#getNewInstance(boolean, boolean)} with the correct components.
+	 */
+	@Test
+	void getNewInstanceFromArrayTest()
+	{
+		Tup2bo newInstance = mock(Tup2bo.class);
+		Tup2bo t = mock(Tup2bo.class);
+		
+		when(t.getNewInstanceFromArray(new boolean[] {false, true})).thenCallRealMethod();
+
+		when(t.getNewInstance(false, true)).thenReturn(newInstance);
+		
+		assertSame(newInstance, t.getNewInstanceFromArray(new boolean[] {false, true}));
+		
+		verify(t).getNewInstanceFromArray(new boolean[] {false, true});
+		
+		verify(t).getNewInstance(false, true);
+		
+		verifyNoMoreInteractions(t);
 	}
 }

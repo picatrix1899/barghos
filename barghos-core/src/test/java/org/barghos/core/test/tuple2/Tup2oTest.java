@@ -1,32 +1,12 @@
-/*******************************************************************************
- * Copyright (C) 2021 picatrix1899 (Florian Zilkenat)
- * 
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- * 
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- ******************************************************************************/
-
 package org.barghos.core.test.tuple2;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.Test;
 
-import org.barghos.core.tuple2.PTup2o;
+import org.barghos.core.api.tuple2.Tup2oR;
+
 import org.barghos.core.tuple2.Tup2o;
 
 /**
@@ -37,53 +17,62 @@ import org.barghos.core.tuple2.Tup2o;
 class Tup2oTest
 {
 	/**
-	 * This test ensures, that the constructor {@link Tup2o#Tup2o()} aktually works and
-	 * that the components are set to null.
+	 * This test ensures, that the default constructor {@link Tup2o#Tup2o()} sets the components to null.
 	 * 
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void ctorEmptyTest()
+	void ctor_DefaultTest()
 	{
-		Tup2o<Integer,String> t = new Tup2o<>();
+		Tup2o<Integer,Double> t = new Tup2o<>();
 		
-		assertNull(t.x);
-		assertNull(t.y);
+		assertEquals(null, t.x);
+		assertEquals(null, t.y);
 	}
 	
 	/**
-	 * This test ensures, that  the constructor
-	 * {@link Tup2o#Tup2o(org.barghos.core.api.tuple2.Tup2oR) Tup2o.Tup2o(Tup2oR)} actually works and
-	 * that the components are adopted from the input tuple.
+	 * This test ensures, that an instance of {@link Tup2o} generated from an existing instance of {@link Tup2oR},
+	 * returns the correct components.
 	 * 
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void ctorCloneTest()
+	void ctor_Tuple2Test()
 	{
-		Tup2o<Integer,String> t = new Tup2o<>(PTup2o.gen(1, "arg2"));
+		@SuppressWarnings("unchecked")
+		Tup2oR<Integer,Double> original = (Tup2oR<Integer,Double>)mock(Tup2oR.class);
 		
-		assertEquals(1, (int)t.x);
-		assertEquals("arg2", t.y);
+		when(original.getX()).thenReturn(1);
+		when(original.getY()).thenReturn(1.0);
+		
+		Tup2o<Integer,Double> t = new Tup2o<>(original);
+		
+		assertEquals(1, (int)t.getX());
+		assertEquals(1.0, (double)t.getY());
+		
+		verify(original).getX();
+		verify(original).getY();
+		
+		verifyNoMoreInteractions(original);
 	}
 	
 	/**
-	 * This test ensures, that the constructor {@link Tup2o#Tup2o(Object, Object)} actually works,
-	 * and that the components are set to the respective parameters.
+	 * This test ensures, that an instance of {@link Tup2o} generated from two components,
+	 * returns the correct components.
 	 * 
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void ctorComponentsTest()
+	void ctor_ComponentsTest()
 	{
-		Tup2o<Integer,String> t = new Tup2o<>(1, "arg2");
+		Tup2o<Integer,Double> t = new Tup2o<>(1, 1.0);
 		
-		assertEquals(1, (int)t.x);
-		assertEquals("arg2", t.y);
+		assertEquals(1, (int)t.getX());
+		assertEquals(1.0, (double)t.getY());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup2o#setX(Object)} sets the x component on the tuple
+	 * This test ensures, that the function {@link Tup2o#setX(Object)} sets the x component of the tuple
 	 * to the value and returns the current tuple.
 	 * 
 	 * @since 1.0.0.0
@@ -91,14 +80,14 @@ class Tup2oTest
 	@Test
 	void setXTest()
 	{
-		Tup2o<Integer,String> t = new Tup2o<>();
+		Tup2o<Integer,Double> t = new Tup2o<>();
 		
 		assertSame(t, t.setX(1));
 		assertEquals(1, (int)t.x);
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup2o#setY(Object)} sets the y component on the tuple
+	 * This test ensures, that the function {@link Tup2o#setY(Object)} sets the y component of the tuple
 	 * to the value and returns the current tuple.
 	 * 
 	 * @since 1.0.0.0
@@ -106,10 +95,10 @@ class Tup2oTest
 	@Test
 	void setYTest()
 	{
-		Tup2o<Integer,String> t = new Tup2o<>();
+		Tup2o<Integer,Double> t = new Tup2o<>();
 		
-		assertSame(t, t.setY("arg1"));
-		assertEquals("arg1", t.y);
+		assertSame(t, t.setY(1.0));
+		assertEquals(1.0, (double)t.y);
 	}
 	
 	/**
@@ -120,13 +109,30 @@ class Tup2oTest
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void setCloneTest()
+	void set_CloneTest()
 	{
-		Tup2o<Integer,String> t = new Tup2o<>();
+		@SuppressWarnings("unchecked")
+		Tup2o<Integer,Double> t = (Tup2o<Integer,Double>)mock(Tup2o.class);
 		
-		assertSame(t, t.set(PTup2o.gen(1, "arg2")));
-		assertEquals(1, (int)t.x);
-		assertEquals("arg2", t.y);
+		@SuppressWarnings("unchecked")
+		Tup2oR<Integer,Double> t2 = (Tup2oR<Integer,Double>)mock(Tup2oR.class);
+	
+		when(t.set(t2)).thenCallRealMethod();
+		
+		when(t2.getX()).thenReturn(1);
+		when(t2.getY()).thenReturn(1.0);
+		
+		when(t.set(1, 1.0)).thenReturn(t);
+		
+		assertSame(t, t.set(t2));
+		
+		verify(t).set(t2);
+		
+		verify(t2).getX();
+		verify(t2).getY();
+		verify(t).set(1, 1.0);
+		
+		verifyNoMoreInteractions(t, t2);
 	}
 	
 	/**
@@ -136,14 +142,24 @@ class Tup2oTest
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void setComponentsTest()
+	void set_ComponentsTest()
 	{
-		Tup2o<Integer,String> t = new Tup2o<>();
+		@SuppressWarnings("unchecked")
+		Tup2o<Integer,Double> t = (Tup2o<Integer,Double>)mock(Tup2o.class);
+
+		when(t.set(1, 1.0)).thenCallRealMethod();
+
+		when(t.setX(1)).thenReturn(t);
+		when(t.setY(1.0)).thenReturn(t);
 		
-		assertSame(t, t.set(1, "arg2"));
+		assertSame(t, t.set(1, 1.0));
+
+		verify(t).set(1, 1.0);
 		
-		assertEquals(1, (int)t.x);
-		assertEquals("arg2", t.y);
+		verify(t).setX(1);
+		verify(t).setY(1.0);
+		
+		verifyNoMoreInteractions(t);
 	}
 	
 	/**
@@ -155,7 +171,7 @@ class Tup2oTest
 	@Test
 	void getXTest()
 	{
-		Tup2o<Integer,String> t = new Tup2o<>(1, "arg2");
+		Tup2o<Integer,Double> t = new Tup2o<>(1, 1.0);
 		
 		assertEquals(1, (int)t.getX());
 		assertEquals(t.x, t.getX());
@@ -170,28 +186,127 @@ class Tup2oTest
 	@Test
 	void getYTest()
 	{
-		Tup2o<Integer,String> t = new Tup2o<>(1, "arg2");
+		Tup2o<Integer,Double> t = new Tup2o<>(1, 1.0);
 		
-		assertEquals("arg2", t.getY());
+		assertEquals(1.0, (double)t.getY());
 		assertEquals(t.y, t.getY());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup2o#clone()} generates a new instance of
-	 * {@link Tup2o} and adopts the components from the original.
-	 * 
-	 * @since 1.0.0.0
+	 * This test ensures, that the function {@link Tup2o#hashCode()} eturns the correct hash.
+	 */
+	@Test
+	void hashCodeTest()
+	{
+		Tup2o<Integer,Double> t = new Tup2o<>(1, 1.0);
+
+		assertEquals(1072694240, t.hashCode());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2o#clone()} creates a new instance that satisfies
+	 * the requirements for clone-funktions.
 	 */
 	@Test
 	void cloneTest()
 	{
-		Tup2o<Integer,String> t = new Tup2o<>(1, "arg2");
+		Tup2o<Integer,Double> original = new Tup2o<>(1, 1.0);
+		Tup2o<Integer,Double> t = original.clone();
 		
-		Tup2o<Integer,String> result = t.clone();
+		assertFalse(original == t);
+		assertTrue(original.equals(t));
+		assertTrue(t.equals(original));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup2o#equals(Object)} method returns true if
+	 * the object to test is the same as the testing object.
+	 */
+	@Test
+	void equals_SameTest()
+	{
+		Tup2o<Integer,Double> t1 = new Tup2o<>(1, 1.0);
 		
-		assertNotSame(t, result);
-		assertEquals(1, (int)result.getX());
-		assertEquals("arg2", result.getY());
+		assertTrue(t1.equals(t1));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup2o#equals(Object)} method returns false if
+	 * the object to test is null.
+	 */
+	@Test
+	void equals_NullTest()
+	{
+		Tup2o<Integer,Double> t1 = new Tup2o<>(1, 1.0);
+		
+		assertFalse(t1.equals(null));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup2o#equals(Object)} method returns false if
+	 * the object to test is of an unsupported type.
+	 */
+	@Test
+	void equals_IncompatibleTest()
+	{
+		Tup2o<Integer,Double> t1 = new Tup2o<>(1, 1.0);
+		
+		assertFalse(t1.equals(new Object()));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup2o#equals(Object)} method returns true if
+	 * the object to test is of the type {@link Tup2oR} and has the same values as the testing object.
+	 */
+	@Test
+	void equals_Tuple2Test()
+	{
+		Tup2o<Integer,Double> t1 = new Tup2o<>(1, 1.0);
+		
+		@SuppressWarnings("unchecked")
+		Tup2oR<Integer,Double> t2 = (Tup2oR<Integer,Double>)mock(Tup2oR.class);
+		
+		when(t2.getX()).thenReturn(1);
+		when(t2.getY()).thenReturn(1.0);
+		
+		assertTrue(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup2o#equals(Object)} method returns false if
+	 * the object to test is of the type {@link Tup2oR} and has the same amount of dimensions and
+	 * a different value of the x component as the testing object.
+	 */
+	@Test
+	void equals_Tuple2_VaryingXTest()
+	{
+		Tup2o<Integer,Double> t1 = new Tup2o<>(1, 1.0);
+		
+		@SuppressWarnings("unchecked")
+		Tup2oR<Integer,Double> t2 = (Tup2oR<Integer,Double>)mock(Tup2oR.class);
+		
+		when(t2.getX()).thenReturn(2);
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup2o#equals(Object)} method returns false if
+	 * the object to test is of the type {@link Tup2oR} and has the same amount of dimensions and
+	 * a different value of the y component as the testing object.
+	 */
+	@Test
+	void equals_Tuple2_VaryingYTest()
+	{
+		Tup2o<Integer,Double> t1 = new Tup2o<>(1, 1.0);
+		
+		@SuppressWarnings("unchecked")
+		Tup2oR<Integer,Double> t2 = (Tup2oR<Integer,Double>)mock(Tup2oR.class);
+		
+		when(t2.getX()).thenReturn(1);
+		when(t2.getY()).thenReturn(2.0);
+		
+		assertFalse(t1.equals(t2));
 	}
 	
 	/**
@@ -202,29 +317,9 @@ class Tup2oTest
 	@Test
 	void toStringTest()
 	{
-		Tup2o<Integer,String> t = new Tup2o<>(1, "arg2");
+		Tup2o<Integer,Double> t = new Tup2o<>(1, 1.0);
 		
-		assertEquals("tup2o(x=1, y=arg2)", t.toString());
-	}
-	
-	/**
-	 * This test ensures, that the special policies for the function {@link Tup2o#equals(Object)} are working.
-	 * 
-	 * @since 1.0.0.0
-	 */
-	@SuppressWarnings("unlikely-arg-type")
-	@Test
-	void equalsTest()
-	{
-		Tup2o<Integer,String> t = new Tup2o<>(1, "arg2");
-		assertTrue(t.equals(t));
-		assertFalse(t.equals(null));
-		assertFalse(t.equals(0.0));
-		assertFalse(t.equals(new Tup2o<>("arg2", "arg2"))); // x wrong
-		assertFalse(t.equals(new Tup2o<>(1, 1))); // y wrong
-		
-		assertTrue(t.equals(new Tup2o<>(1, "arg2")));
-		assertTrue(t.equals(PTup2o.gen(1, "arg2")));
+		assertEquals("tup2o(x=1, y=1.0)", t.toString());
 	}
 	
 	/**
@@ -232,14 +327,47 @@ class Tup2oTest
 	 * returns a new instance of {@link Tup2o} with the given values.
 	 */
 	@Test
-	void getNewInstanceTest()
+	void getNewInstance_ComponentsTest()
 	{
-		Tup2o<Long,Long> t = new Tup2o<>(1l, 1l);
-
-		Tup2o<Long,Long> result = t.getNewInstance(2l, 3l);
+		Tup2o<Integer,Double> original = new Tup2o<>(1, 1.0);
+		Tup2o<Integer,Double> newInstance = original.getNewInstance(2, 2.0);
 		
-		assertNotSame(t, result);
-		assertEquals(2l, (long)result.getX());
-		assertEquals(3l, (long)result.getY());
+		assertEquals(1, (int)original.getX());
+		assertEquals(1.0, (double)original.getY());
+		assertEquals(2, (int)newInstance.getX());
+		assertEquals(2.0, (double)newInstance.getY());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2o#getNewInstance(Tup2oR)}
+	 * returns a new instance of {@link Tup2o} with the given values.
+	 */
+	@Test
+	void getNewInstance_Tuple2Test()
+	{
+		@SuppressWarnings("unchecked")
+		Tup2oR<Integer,Double> original = (Tup2oR<Integer,Double>)mock(Tup2oR.class);
+		
+		@SuppressWarnings("unchecked")
+		Tup2o<Integer,Double> newInstance = (Tup2o<Integer,Double>)mock(Tup2o.class);
+		
+		@SuppressWarnings("unchecked")
+		Tup2o<Integer,Double> t = (Tup2o<Integer,Double>)mock(Tup2o.class);
+		
+		when(t.getNewInstance(original)).thenCallRealMethod();
+		
+		when(original.getX()).thenReturn(1);
+		when(original.getY()).thenReturn(1.0);
+		when(t.getNewInstance(1, 1.0)).thenReturn(newInstance);
+		
+		assertSame(newInstance, t.getNewInstance(original));
+		
+		verify(t).getNewInstance(original);
+		
+		verify(original).getX();
+		verify(original).getY();
+		verify(t).getNewInstance(1, 1.0);
+		
+		verifyNoMoreInteractions(t, original);
 	}
 }

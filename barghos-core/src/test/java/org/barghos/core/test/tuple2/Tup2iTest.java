@@ -1,32 +1,13 @@
-/*******************************************************************************
- * Copyright (C) 2021 picatrix1899 (Florian Zilkenat)
- * 
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- * 
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- ******************************************************************************/
-
 package org.barghos.core.test.tuple2;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.Test;
 
-import org.barghos.core.tuple2.PTup2i;
+import org.barghos.core.api.tuple.TupiR;
+import org.barghos.core.api.tuple2.Tup2iR;
+
 import org.barghos.core.tuple2.Tup2i;
 
 /**
@@ -37,68 +18,114 @@ import org.barghos.core.tuple2.Tup2i;
 class Tup2iTest
 {
 	/**
-	 * This test ensures, that the constructor {@link Tup2i#Tup2i()} aktually works and
-	 * that the components are set to 0.
+	 * This test ensures, that the default constructor {@link Tup2i#Tup2i()} sets the components to 0.
 	 * 
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void ctorEmptyTest()
+	void ctor_DefaultTest()
 	{
 		Tup2i t = new Tup2i();
 		
 		assertEquals(0, t.x);
 		assertEquals(0, t.y);
 	}
-	
+
 	/**
-	 * This test ensures, that  the constructor
-	 * {@link Tup2i#Tup2i(org.barghos.core.api.tuple2.Tup2iR) Tup2i.Tup2i(Tup2iR)} actually works and
-	 * that the components are adopted from the input tuple.
+	 * This test ensures, that an instance of {@link Tup2i} generated from an existing instance of {@link TupiR},
+	 * returns the correct components.
 	 * 
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void ctorCloneTest()
+	void ctor_TupleTest()
 	{
-		Tup2i t = new Tup2i(PTup2i.gen(1, 2));
+		TupiR original = mock(TupiR.class);
 		
-		assertEquals(1, t.x);
-		assertEquals(2, t.y);
+		when(original.getArray()).thenReturn(new int[] {1, 2});
+		
+		Tup2i t = new Tup2i(original);
+		
+		assertEquals(1, t.getX());
+		assertEquals(2, t.getY());
+		
+		verify(original).getArray();
+		
+		verifyNoMoreInteractions(original);
 	}
 	
 	/**
-	 * This test ensures, that the constructor {@link Tup2i#Tup2i(int)} actually works,
-	 * and that the components are set to the value.
+	 * This test ensures, that an instance of {@link Tup2i} generated from an existing instance of {@link Tup2iR},
+	 * returns the correct components.
 	 * 
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void ctorScalarTest()
+	void ctor_Tuple2Test()
+	{
+		Tup2iR original = mock(Tup2iR.class);
+		
+		when(original.getX()).thenReturn(1);
+		when(original.getY()).thenReturn(2);
+		
+		Tup2i t = new Tup2i(original);
+		
+		assertEquals(1, t.getX());
+		assertEquals(2, t.getY());
+		
+		verify(original).getX();
+		verify(original).getY();
+		
+		verifyNoMoreInteractions(original);
+	}
+	
+	/**
+	 * This test ensures, that an instance of {@link Tup2i} generated from a scalar,
+	 * returns the correct components.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void ctor_ValueTest()
 	{
 		Tup2i t = new Tup2i(1);
 		
-		assertEquals(1, t.x);
-		assertEquals(1, t.y);
+		assertEquals(1, t.getX());
+		assertEquals(1, t.getY());
 	}
 	
 	/**
-	 * This test ensures, that the constructor {@link Tup2i#Tup2i(int, int)} actually works,
-	 * and that the components are set to the respective parameters.
+	 * This test ensures, that an instance of {@link Tup2i} generated from an array,
+	 * returns the correct components.
 	 * 
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void ctorComponentsTest()
+	void ctor_ArrayTest()
 	{
-		Tup2i t = new Tup2i(1, 2);
+		Tup2i t = new Tup2i(new int[] {1, 2});
 		
-		assertEquals(1, t.x);
-		assertEquals(2, t.y);
+		assertEquals(1, t.getX());
+		assertEquals(2, t.getY());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup2i#setX(int)} sets the x component on the tuple
+	 * This test ensures, that an instance of {@link Tup2i} generated from two components,
+	 * returns the correct components.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void ctor_ComponentsTest()
+	{
+		Tup2i t = new Tup2i(1, 2);
+		
+		assertEquals(1, t.getX());
+		assertEquals(2, t.getY());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2i#setX(int)} sets the x component of the tuple
 	 * to the value and returns the current tuple.
 	 * 
 	 * @since 1.0.0.0
@@ -113,7 +140,7 @@ class Tup2iTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup2i#setY(int)} sets the y component on the tuple
+	 * This test ensures, that the function {@link Tup2i#setY(int)} sets the y component of the tuple
 	 * to the value and returns the current tuple.
 	 * 
 	 * @since 1.0.0.0
@@ -135,13 +162,28 @@ class Tup2iTest
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void setCloneTest()
+	void set_CloneTest()
 	{
-		Tup2i t = new Tup2i();
+		Tup2i t = mock(Tup2i.class);
 		
-		assertSame(t, t.set(PTup2i.gen(1, 2)));
-		assertEquals(1, t.x);
-		assertEquals(2, t.y);
+		Tup2iR t2 = mock(Tup2iR.class);
+	
+		when(t.set(t2)).thenCallRealMethod();
+		
+		when(t2.getX()).thenReturn(1);
+		when(t2.getY()).thenReturn(2);
+		
+		when(t.set(1, 2)).thenReturn(t);
+		
+		assertSame(t, t.set(t2));
+		
+		verify(t).set(t2);
+		
+		verify(t2).getX();
+		verify(t2).getY();
+		verify(t).set(1, 2);
+		
+		verifyNoMoreInteractions(t, t2);
 	}
 	
 	/**
@@ -151,13 +193,21 @@ class Tup2iTest
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void setScalarTest()
+	void set_ValueTest()
 	{
-		Tup2i t = new Tup2i();
+		Tup2i t = mock(Tup2i.class);
+
+		when(t.set(1)).thenCallRealMethod();
+
+		when(t.set(1, 1)).thenReturn(t);
 		
 		assertSame(t, t.set(1));
-		assertEquals(1, t.x);
-		assertEquals(1, t.y);
+		
+		verify(t).set(1);
+
+		verify(t).set(1, 1);
+		
+		verifyNoMoreInteractions(t);
 	}
 	
 	/**
@@ -167,14 +217,23 @@ class Tup2iTest
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void setComponentsTest()
+	void set_ComponentsTest()
 	{
-		Tup2i t = new Tup2i();
+		Tup2i t = mock(Tup2i.class);
+
+		when(t.set(1, 2)).thenCallRealMethod();
+
+		when(t.setX(1)).thenReturn(t);
+		when(t.setY(2)).thenReturn(t);
 		
 		assertSame(t, t.set(1, 2));
+
+		verify(t).set(1, 2);
 		
-		assertEquals(1, t.x);
-		assertEquals(2, t.y);
+		verify(t).setX(1);
+		verify(t).setY(2);
+		
+		verifyNoMoreInteractions(t);
 	}
 	
 	/**
@@ -208,21 +267,191 @@ class Tup2iTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup2i#clone()} generates a new instance of
-	 * {@link Tup2i} and adopts the components from the original.
-	 * 
-	 * @since 1.0.0.0
+	 * This test ensures, that the function {@link Tup2i#hashCode()} eturns the correct hash.
+	 */
+	@Test
+	void hashCodeTest()
+	{
+		Tup2i t = new Tup2i(1, 2);
+
+		assertEquals(994, t.hashCode());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2i#clone()} creates a new instance that satisfies
+	 * the requirements for clone-funktions.
 	 */
 	@Test
 	void cloneTest()
 	{
-		Tup2i t = new Tup2i(1, 2);
+		Tup2i original = new Tup2i(1, 2);
+		Tup2i t = original.clone();
 		
-		Tup2i result = t.clone();
+		assertFalse(original == t);
+		assertTrue(original.equals(t));
+		assertTrue(t.equals(original));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup2i#equals(Object)} method returns true if
+	 * the object to test is the same as the testing object.
+	 */
+	@Test
+	void equals_SameTest()
+	{
+		Tup2i t1 = new Tup2i(1, 2);
 		
-		assertNotSame(t, result);
-		assertEquals(1, result.getX());
-		assertEquals(2, result.getY());
+		assertTrue(t1.equals(t1));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup2i#equals(Object)} method returns false if
+	 * the object to test is null.
+	 */
+	@Test
+	void equals_NullTest()
+	{
+		Tup2i t1 = new Tup2i(1, 2);
+		
+		assertFalse(t1.equals(null));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup2i#equals(Object)} method returns false if
+	 * the object to test is of an unsupported type.
+	 */
+	@Test
+	void equals_IncompatibleTest()
+	{
+		Tup2i t1 = new Tup2i(1, 2);
+		
+		assertFalse(t1.equals(new Object()));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup2i#equals(Object)} method returns true if
+	 * the object to test is of the type {@link Tup2iR} and has the same values as the testing object.
+	 */
+	@Test
+	void equals_Tuple2Test()
+	{
+		Tup2i t1 = new Tup2i(1, 2);
+		
+		Tup2iR t2 = mock(Tup2iR.class);
+		
+		when(t2.getX()).thenReturn(1);
+		when(t2.getY()).thenReturn(2);
+		
+		assertTrue(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup2i#equals(Object)} method returns false if
+	 * the object to test is of the type {@link Tup2iR} and has the same amount of dimensions and
+	 * a different value of the x component as the testing object.
+	 */
+	@Test
+	void equals_Tuple2_VaryingXTest()
+	{
+		Tup2i t1 = new Tup2i(1, 2);
+		
+		Tup2iR t2 = mock(Tup2iR.class);
+		
+		when(t2.getX()).thenReturn(3);
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup2i#equals(Object)} method returns false if
+	 * the object to test is of the type {@link Tup2iR} and has the same amount of dimensions and
+	 * a different value of the y component as the testing object.
+	 */
+	@Test
+	void equals_Tuple2_VaryingYTest()
+	{
+		Tup2i t1 = new Tup2i(1, 2);
+		
+		Tup2iR t2 = mock(Tup2iR.class);
+		
+		when(t2.getDimensions()).thenReturn(2);
+		when(t2.getX()).thenReturn(1);
+		when(t2.getY()).thenReturn(3);
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup2i#equals(Object)} method returns true if
+	 * the object to test is of the type {@link TupiR} and has the same amount of dimensions and
+	 * the same values as the testing object.
+	 */
+	@Test
+	void equals_TupleTest()
+	{
+		Tup2i t1 = new Tup2i(1, 2);
+		
+		TupiR t2 = mock(TupiR.class);
+		
+		when(t2.getDimensions()).thenReturn(2);
+		when(t2.getByIndex(0)).thenReturn(1);
+		when(t2.getByIndex(1)).thenReturn(2);
+		
+		assertTrue(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup2i#equals(Object)} method returns false if
+	 * the object to test is of the type {@link TupiR} and has a different amount of dimensions
+	 * as the testing object.
+	 */
+	@Test
+	void equals_Tuple_VaryingDimensionsTest()
+	{
+		Tup2i t1 = new Tup2i(1, 2);
+		
+		TupiR t2 = mock(TupiR.class);
+		
+		when(t2.getDimensions()).thenReturn(1);
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup2i#equals(Object)} method returns false if
+	 * the object to test is of the type {@link TupiR} and has the same amount of dimensions and
+	 * a different value of the x component as the testing object.
+	 */
+	@Test
+	void equals_Tuple_VaryingXTest()
+	{
+		Tup2i t1 = new Tup2i(1, 2);
+		
+		TupiR t2 = mock(TupiR.class);
+		
+		when(t2.getDimensions()).thenReturn(2);
+		when(t2.getByIndex(0)).thenReturn(3);
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup2i#equals(Object)} method returns false if
+	 * the object to test is of the type {@link TupiR} and has the same amount of dimensions and
+	 * a different value of the y component as the testing object.
+	 */
+	@Test
+	void equals_Tuple_VaryingYTest()
+	{
+		Tup2i t1 = new Tup2i(1, 2);
+		
+		TupiR t2 = mock(TupiR.class);
+		
+		when(t2.getDimensions()).thenReturn(2);
+		when(t2.getByIndex(0)).thenReturn(1);
+		when(t2.getByIndex(1)).thenReturn(3);
+		
+		assertFalse(t1.equals(t2));
 	}
 	
 	/**
@@ -239,38 +468,118 @@ class Tup2iTest
 	}
 	
 	/**
-	 * This test ensures, that the special policies for the function {@link Tup2i#equals(Object)} are working.
-	 * 
-	 * @since 1.0.0.0
-	 */
-	@SuppressWarnings("unlikely-arg-type")
-	@Test
-	void equalsTest()
-	{
-		Tup2i t = new Tup2i(1, 2);
-		assertTrue(t.equals(t));
-		assertFalse(t.equals(null));
-		assertFalse(t.equals(0.0));
-		assertFalse(t.equals(new Tup2i(2, 2))); // x wrong
-		assertFalse(t.equals(new Tup2i(1, 3))); // y wrong
-		
-		assertTrue(t.equals(new Tup2i(1, 2)));
-		assertTrue(t.equals(PTup2i.gen(1, 2)));
-	}
-	
-	/**
 	 * This test ensures, that the function {@link Tup2i#getNewInstance(int, int)}
 	 * returns a new instance of {@link Tup2i} with the given values.
 	 */
 	@Test
-	void getNewInstanceTest()
+	void getNewInstance_ComponentsTest()
 	{
-		Tup2i t = new Tup2i(1, 1);
-
-		Tup2i result = t.getNewInstance(2, 3);
+		Tup2i original = new Tup2i(1, 2);
+		Tup2i newInstance = original.getNewInstance(3, 4);
 		
-		assertNotSame(t, result);
-		assertEquals(2, result.getX());
-		assertEquals(3, result.getY());
+		assertEquals(1, original.getX());
+		assertEquals(2, original.getY());
+		assertEquals(3, newInstance.getX());
+		assertEquals(4, newInstance.getY());
+	}
+	
+	/**
+	 * This test ensures, that the default implementation of the function {@link Tup2i#getNewInstance(int)} calls
+	 * the function {@link Tup2i#getNewInstance(int, int)} with the correct components.
+	 */
+	@Test
+	void getNewInstance_ValueTest()
+	{
+		Tup2i newInstance = mock(Tup2i.class);
+		Tup2i t = mock(Tup2i.class);
+		
+		when(t.getNewInstance(1)).thenCallRealMethod();
+
+		when(t.getNewInstance(1, 1)).thenReturn(newInstance);
+		
+		assertSame(newInstance, t.getNewInstance(1));
+		
+		verify(t).getNewInstance(1);
+		
+		verify(t).getNewInstance(1, 1);
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2i#getNewInstance(Tup2iR)}
+	 * returns a new instance of {@link Tup2i} with the given values.
+	 */
+	@Test
+	void getNewInstance_Tuple2Test()
+	{
+		Tup2iR original = mock(Tup2iR.class);
+		Tup2i newInstance = mock(Tup2i.class);
+		Tup2i t = mock(Tup2i.class);
+		
+		when(t.getNewInstance(original)).thenCallRealMethod();
+		
+		when(original.getX()).thenReturn(1);
+		when(original.getY()).thenReturn(2);
+		when(t.getNewInstance(1, 2)).thenReturn(newInstance);
+		
+		assertSame(newInstance, t.getNewInstance(original));
+		
+		verify(t).getNewInstance(original);
+		
+		verify(original).getX();
+		verify(original).getY();
+		verify(t).getNewInstance(1, 2);
+		
+		verifyNoMoreInteractions(t, original);
+	}
+	
+	/**
+	 * This test ensures, that the default implementation of the function {@link Tup2i#getNewInstance(TupiR)} calls
+	 * the function {@link Tup2i#getNewInstance(int, int)} with the correct components.
+	 */
+	@Test
+	void getNewInstance_TupleTest()
+	{
+		TupiR original = mock(TupiR.class);
+		Tup2i newInstance = mock(Tup2i.class);
+		Tup2i t = mock(Tup2i.class);
+		
+		when(t.getNewInstance(original)).thenCallRealMethod();
+		
+		when(original.getArray()).thenReturn(new int[] {1, 2});
+		when(t.getNewInstance(1, 2)).thenReturn(newInstance);
+		
+		assertSame(newInstance, t.getNewInstance(original));
+		
+		verify(t).getNewInstance(original);
+		
+		verify(original).getArray();
+		verify(t).getNewInstance(1, 2);
+		
+		verifyNoMoreInteractions(t, original);
+	}
+	
+	/**
+	 * This test ensures, that the default implementation of the function {@link Tup2i#getNewInstanceFromArray(int[])} calls
+	 * the function {@link Tup2i#getNewInstance(int, int)} with the correct components.
+	 */
+	@Test
+	void getNewInstanceFromArrayTest()
+	{
+		Tup2i newInstance = mock(Tup2i.class);
+		Tup2i t = mock(Tup2i.class);
+		
+		when(t.getNewInstanceFromArray(new int[] {1, 2})).thenCallRealMethod();
+
+		when(t.getNewInstance(1, 2)).thenReturn(newInstance);
+		
+		assertSame(newInstance, t.getNewInstanceFromArray(new int[] {1, 2}));
+		
+		verify(t).getNewInstanceFromArray(new int[] {1, 2});
+		
+		verify(t).getNewInstance(1, 2);
+		
+		verifyNoMoreInteractions(t);
 	}
 }

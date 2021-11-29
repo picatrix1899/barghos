@@ -27,6 +27,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
+import org.barghos.core.api.tuple.TupbR;
 import org.barghos.core.api.tuple2.Tup2bR;
 import org.barghos.core.api.tuple2.Tup2bRW;
 
@@ -67,6 +68,18 @@ public class Tup2b implements Tup2bRW, Serializable, FormattableToString
 	}
 	
 	/**
+	 * Creates a new instance from an existing instance of {@link TupbR} and adopts the values.
+	 * 
+	 * @param t An existing implementation of {@link TupbR} to adopt the values from.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public Tup2b(TupbR t)
+	{
+		this(t.getArray());
+	}
+	
+	/**
 	 * Creates a new instance from an existing instance of {@link Tup2bR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup2bR} to adopt the values from.
@@ -88,6 +101,19 @@ public class Tup2b implements Tup2bRW, Serializable, FormattableToString
 	public Tup2b(byte value)
 	{
 		set(value);
+	}
+	
+	/**
+	 * Creates a new instance with the values set to the corresponding parameters.
+	 * 
+	 * @param v The x and y values as an array.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public Tup2b(byte[] v)
+	{
+		this.x = v[0];
+		this.y = v[1];
 	}
 	
 	/**
@@ -134,21 +160,21 @@ public class Tup2b implements Tup2bRW, Serializable, FormattableToString
 	@Override
 	public Tup2b set(Tup2bR t)
 	{
-		return set(t.getX(), t.getY());
+		return (Tup2b)Tup2bRW.super.set(t);
 	}
 	
 	@Override
 	public Tup2b set(byte value)
 	{
-		return set(value, value);
+		return (Tup2b)Tup2bRW.super.set(value);
 	}
 	
 	@Override
 	public Tup2b set(byte x, byte y)
 	{
-		return setX(x).setY(y);
+		return (Tup2b)Tup2bRW.super.set(x, y);
 	}
-	
+
 	@Override
 	public int hashCode()
 	{
@@ -164,12 +190,27 @@ public class Tup2b implements Tup2bRW, Serializable, FormattableToString
 	{
 		if(this == obj) return true;
 		if(obj == null) return false;
-		if(!(obj instanceof Tup2bR)) return false;
 		
-		Tup2bR other = (Tup2bR) obj;
-		if(getX() != other.getX()) return false;
-		if(getY() != other.getY()) return false;
-		return true;
+		if(obj instanceof Tup2bR)
+		{
+			Tup2bR other = (Tup2bR) obj;
+			if(getX() != other.getX()) return false;
+			if(getY() != other.getY()) return false;
+			
+			return true;
+		}
+		
+		if(obj instanceof TupbR)
+		{
+			TupbR other = (TupbR) obj;
+			if(getDimensions() != other.getDimensions()) return false;
+			if(getX() != other.getByIndex(0)) return false;
+			if(getY() != other.getByIndex(1)) return false;
+			
+			return true;
+		}
+		
+		return false;
 	}
 	
 	@Override
@@ -198,5 +239,47 @@ public class Tup2b implements Tup2bRW, Serializable, FormattableToString
 	public Tup2b getNewInstance(byte x, byte y)
 	{
 		return new Tup2b(x, y);
+	}
+	
+	@Override
+	public Tup2b getNewInstance(byte value)
+	{
+		return (Tup2b)Tup2bRW.super.getNewInstance(value);
+	}
+	
+	@Override
+	public Tup2b getNewInstance(Tup2bR t)
+	{
+		return (Tup2b)Tup2bRW.super.getNewInstance(t);
+	}
+	
+	@Override
+	public Tup2b getNewInstance(TupbR t)
+	{
+		return (Tup2b)Tup2bRW.super.getNewInstance(t);
+	}
+	
+	@Override
+	public Tup2b getNewInstanceFromArray(byte... values)
+	{
+		return (Tup2b)Tup2bRW.super.getNewInstanceFromArray(values);
+	}
+	
+	@Override
+	public Tup2b set(TupbR t)
+	{
+		return (Tup2b)Tup2bRW.super.set(t);
+	}
+	
+	@Override
+	public Tup2b setArray(byte... values)
+	{
+		return (Tup2b)Tup2bRW.super.setArray(values);
+	}
+	
+	@Override
+	public Tup2b setByIndex(int index, byte value)
+	{
+		return (Tup2b)Tup2bRW.super.setByIndex(index, value);
 	}
 }

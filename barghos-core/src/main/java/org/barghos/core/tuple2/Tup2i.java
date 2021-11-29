@@ -27,6 +27,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
+import org.barghos.core.api.tuple.TupiR;
 import org.barghos.core.api.tuple2.Tup2iR;
 import org.barghos.core.api.tuple2.Tup2iRW;
 
@@ -67,6 +68,18 @@ public class Tup2i implements Tup2iRW, Serializable, FormattableToString
 	}
 	
 	/**
+	 * Creates a new instance from an existing instance of {@link TupiR} and adopts the values.
+	 * 
+	 * @param t An existing implementation of {@link TupiR} to adopt the values from.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public Tup2i(TupiR t)
+	{
+		this(t.getArray());
+	}
+	
+	/**
 	 * Creates a new instance from an existing instance of {@link Tup2iR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup2iR} to adopt the values from.
@@ -88,6 +101,19 @@ public class Tup2i implements Tup2iRW, Serializable, FormattableToString
 	public Tup2i(int value)
 	{
 		set(value);
+	}
+	
+	/**
+	 * Creates a new instance with the values set to the corresponding parameters.
+	 * 
+	 * @param v The x and y values as an array.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public Tup2i(int[] v)
+	{
+		this.x = v[0];
+		this.y = v[1];
 	}
 	
 	/**
@@ -134,19 +160,19 @@ public class Tup2i implements Tup2iRW, Serializable, FormattableToString
 	@Override
 	public Tup2i set(Tup2iR t)
 	{
-		return set(t.getX(), t.getY());
+		return (Tup2i)Tup2iRW.super.set(t);
 	}
 	
 	@Override
 	public Tup2i set(int value)
 	{
-		return set(value, value);
+		return (Tup2i)Tup2iRW.super.set(value);
 	}
 	
 	@Override
 	public Tup2i set(int x, int y)
 	{
-		return setX(x).setY(y);
+		return (Tup2i)Tup2iRW.super.set(x, y);
 	}
 	
 	@Override
@@ -164,12 +190,27 @@ public class Tup2i implements Tup2iRW, Serializable, FormattableToString
 	{
 		if(this == obj) return true;
 		if(obj == null) return false;
-		if(!(obj instanceof Tup2iR)) return false;
 		
-		Tup2iR other = (Tup2iR) obj;
-		if(getX() != other.getX()) return false;
-		if(getY() != other.getY()) return false;
-		return true;
+		if(obj instanceof Tup2iR)
+		{
+			Tup2iR other = (Tup2iR) obj;
+			if(getX() != other.getX()) return false;
+			if(getY() != other.getY()) return false;
+			
+			return true;
+		}
+		
+		if(obj instanceof TupiR)
+		{
+			TupiR other = (TupiR) obj;
+			if(getDimensions() != other.getDimensions()) return false;
+			if(getX() != other.getByIndex(0)) return false;
+			if(getY() != other.getByIndex(1)) return false;
+			
+			return true;
+		}
+		
+		return false;
 	}
 	
 	@Override
@@ -198,5 +239,47 @@ public class Tup2i implements Tup2iRW, Serializable, FormattableToString
 	public Tup2i getNewInstance(int x, int y)
 	{
 		return new Tup2i(x, y);
+	}
+	
+	@Override
+	public Tup2i getNewInstance(int value)
+	{
+		return (Tup2i)Tup2iRW.super.getNewInstance(value);
+	}
+	
+	@Override
+	public Tup2i getNewInstance(Tup2iR t)
+	{
+		return (Tup2i)Tup2iRW.super.getNewInstance(t);
+	}
+	
+	@Override
+	public Tup2i getNewInstance(TupiR t)
+	{
+		return (Tup2i)Tup2iRW.super.getNewInstance(t);
+	}
+	
+	@Override
+	public Tup2i getNewInstanceFromArray(int... values)
+	{
+		return (Tup2i)Tup2iRW.super.getNewInstanceFromArray(values);
+	}
+	
+	@Override
+	public Tup2i set(TupiR t)
+	{
+		return (Tup2i)Tup2iRW.super.set(t);
+	}
+	
+	@Override
+	public Tup2i setArray(int... values)
+	{
+		return (Tup2i)Tup2iRW.super.setArray(values);
+	}
+	
+	@Override
+	public Tup2i setByIndex(int index, int value)
+	{
+		return (Tup2i)Tup2iRW.super.setByIndex(index, value);
 	}
 }
