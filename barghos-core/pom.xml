@@ -118,6 +118,11 @@
       <version>5.3.1</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+	  <groupId>org.mockito</groupId>
+	  <artifactId>mockito-core</artifactId>
+	  <version>4.1.0</version>
+	</dependency>
   </dependencies>
   <properties>
     <maven.deploy.skip>false</maven.deploy.skip>
