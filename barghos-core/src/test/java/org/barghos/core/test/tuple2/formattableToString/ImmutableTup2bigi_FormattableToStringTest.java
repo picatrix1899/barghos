@@ -31,20 +31,15 @@ class ImmutableTup2bigi_FormattableToStringTest
 		
 		when(t.getValueMapping()).thenCallRealMethod();
 		
-		when(t.getX()).thenReturn(BigInteger.ONE);
+		when(t.getX()).thenReturn(BigInteger.valueOf(1));
 		when(t.getY()).thenReturn(BigInteger.valueOf(2));
 		
-		Map<String,Object> values = t.getValueMapping();
+		List<Map.Entry<String,Object>> l = new ArrayList<>(t.getValueMapping().entrySet());
+		Map.Entry<String,Object> entry = null;
 		
-		assertNotNull(values);
-		
-		List<Map.Entry<String,Object>> l = new ArrayList<>(values.entrySet());
-			
-		assertEquals(2, l.size());
-		
-		Map.Entry<String,Object> entry = l.get(0);
+		entry = l.get(0);
 		assertEquals("x", entry.getKey());
-		assertEquals(BigInteger.ONE, entry.getValue());
+		assertEquals(BigInteger.valueOf(1), entry.getValue());
 		
 		entry = l.get(1);
 		assertEquals("y", entry.getKey());

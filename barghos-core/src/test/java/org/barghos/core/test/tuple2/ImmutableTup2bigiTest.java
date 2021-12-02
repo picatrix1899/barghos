@@ -254,7 +254,6 @@ class ImmutableTup2bigiTest
 		
 		Tup2bigiR t2 = mock(Tup2bigiR.class);
 		
-		when(t2.getDimensions()).thenReturn(2);
 		when(t2.getX()).thenReturn(BigInteger.valueOf(1));
 		when(t2.getY()).thenReturn(BigInteger.valueOf(4));
 		

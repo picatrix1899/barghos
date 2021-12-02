@@ -374,7 +374,6 @@ class Tup2iTest
 		
 		Tup2iR t2 = mock(Tup2iR.class);
 		
-		when(t2.getDimensions()).thenReturn(2);
 		when(t2.getX()).thenReturn(1);
 		when(t2.getY()).thenReturn(3);
 		

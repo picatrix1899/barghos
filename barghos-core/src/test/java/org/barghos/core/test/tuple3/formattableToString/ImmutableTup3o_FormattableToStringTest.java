@@ -27,23 +27,18 @@ class ImmutableTup3o_FormattableToStringTest
 	void getValueMappingTest()
 	{
 		@SuppressWarnings("unchecked")
-		ImmutableTup3o<Integer,Double, String> t = (ImmutableTup3o<Integer,Double,String>)mock(ImmutableTup3o.class);
+		ImmutableTup3o<Integer,Double,String> t = (ImmutableTup3o<Integer,Double,String>)mock(ImmutableTup3o.class);
 		
 		when(t.getValueMapping()).thenCallRealMethod();
 		
 		when(t.getX()).thenReturn(1);
 		when(t.getY()).thenReturn(2.0);
 		when(t.getZ()).thenReturn("arg3");
+
+		List<Map.Entry<String,Object>> l = new ArrayList<>(t.getValueMapping().entrySet());
+		Map.Entry<String,Object> entry = null;
 		
-		Map<String,Object> values = t.getValueMapping();
-		
-		assertNotNull(values);
-		
-		List<Map.Entry<String,Object>> l = new ArrayList<>(values.entrySet());
-			
-		assertEquals(3, l.size());
-		
-		Map.Entry<String,Object> entry = l.get(0);
+		entry = l.get(0);
 		assertEquals("x", entry.getKey());
 		assertEquals(1, entry.getValue());
 		

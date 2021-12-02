@@ -235,7 +235,6 @@ class ImmutableTup2objTest
 		
 		Tup2objR t2 = mock(Tup2objR.class);
 		
-		when(t2.getDimensions()).thenReturn(2);
 		when(t2.getX()).thenReturn(1);
 		when(t2.getY()).thenReturn(2.0);
 		

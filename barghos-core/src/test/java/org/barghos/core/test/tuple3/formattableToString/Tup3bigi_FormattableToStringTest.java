@@ -31,19 +31,14 @@ class Tup3bigi_FormattableToStringTest
 		
 		when(t.getValueMapping()).thenCallRealMethod();
 		
-		when(t.getX()).thenReturn(BigInteger.ONE);
+		when(t.getX()).thenReturn(BigInteger.valueOf(1));
 		when(t.getY()).thenReturn(BigInteger.valueOf(2));
 		when(t.getZ()).thenReturn(BigInteger.valueOf(3));
+
+		List<Map.Entry<String,Object>> l = new ArrayList<>(t.getValueMapping().entrySet());
+		Map.Entry<String,Object> entry = null;
 		
-		Map<String,Object> values = t.getValueMapping();
-		
-		assertNotNull(values);
-		
-		List<Map.Entry<String,Object>> l = new ArrayList<>(values.entrySet());
-			
-		assertEquals(3, l.size());
-		
-		Map.Entry<String,Object> entry = l.get(0);
+		entry = l.get(0);
 		assertEquals("x", entry.getKey());
 		assertEquals(BigInteger.valueOf(1), entry.getValue());
 		

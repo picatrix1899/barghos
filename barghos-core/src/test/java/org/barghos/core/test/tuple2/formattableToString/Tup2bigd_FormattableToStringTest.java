@@ -31,20 +31,15 @@ class Tup2bigd_FormattableToStringTest
 		
 		when(t.getValueMapping()).thenCallRealMethod();
 		
-		when(t.getX()).thenReturn(BigDecimal.ONE);
+		when(t.getX()).thenReturn(BigDecimal.valueOf(1.0));
 		when(t.getY()).thenReturn(BigDecimal.valueOf(2.0));
+
+		List<Map.Entry<String,Object>> l = new ArrayList<>(t.getValueMapping().entrySet());
+		Map.Entry<String,Object> entry = null;
 		
-		Map<String,Object> values = t.getValueMapping();
-		
-		assertNotNull(values);
-		
-		List<Map.Entry<String,Object>> l = new ArrayList<>(values.entrySet());
-			
-		assertEquals(2, l.size());
-		
-		Map.Entry<String,Object> entry = l.get(0);
+		entry = l.get(0);
 		assertEquals("x", entry.getKey());
-		assertEquals(BigDecimal.ONE, entry.getValue());
+		assertEquals(BigDecimal.valueOf(1.0), entry.getValue());
 		
 		entry = l.get(1);
 		assertEquals("y", entry.getKey());

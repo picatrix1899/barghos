@@ -373,8 +373,7 @@ class Tup2lTest
 		Tup2l t1 = new Tup2l(1l, 2l);
 		
 		Tup2lR t2 = mock(Tup2lR.class);
-		
-		when(t2.getDimensions()).thenReturn(2);
+
 		when(t2.getX()).thenReturn(1l);
 		when(t2.getY()).thenReturn(3l);
 		

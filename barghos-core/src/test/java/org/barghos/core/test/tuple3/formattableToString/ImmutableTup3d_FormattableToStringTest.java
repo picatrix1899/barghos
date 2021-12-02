@@ -33,16 +33,11 @@ class ImmutableTup3d_FormattableToStringTest
 		when(t.getX()).thenReturn(1.0);
 		when(t.getY()).thenReturn(2.0);
 		when(t.getZ()).thenReturn(3.0);
+
+		List<Map.Entry<String,Object>> l = new ArrayList<>(t.getValueMapping().entrySet());
+		Map.Entry<String,Object> entry = null;
 		
-		Map<String,Object> values = t.getValueMapping();
-		
-		assertNotNull(values);
-		
-		List<Map.Entry<String,Object>> l = new ArrayList<>(values.entrySet());
-			
-		assertEquals(3, l.size());
-		
-		Map.Entry<String,Object> entry = l.get(0);
+		entry = l.get(0);
 		assertEquals("x", entry.getKey());
 		assertEquals(1.0, entry.getValue());
 		

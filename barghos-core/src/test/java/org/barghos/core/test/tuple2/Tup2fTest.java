@@ -374,7 +374,6 @@ class Tup2fTest
 		
 		Tup2fR t2 = mock(Tup2fR.class);
 		
-		when(t2.getDimensions()).thenReturn(2);
 		when(t2.getX()).thenReturn(1.0f);
 		when(t2.getY()).thenReturn(3.0f);
 		

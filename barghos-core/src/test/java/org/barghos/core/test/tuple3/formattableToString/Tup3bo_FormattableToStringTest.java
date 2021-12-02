@@ -33,16 +33,11 @@ class Tup3bo_FormattableToStringTest
 		when(t.getX()).thenReturn(false);
 		when(t.getY()).thenReturn(true);
 		when(t.getZ()).thenReturn(false);
+
+		List<Map.Entry<String,Object>> l = new ArrayList<>(t.getValueMapping().entrySet());
+		Map.Entry<String,Object> entry = null;
 		
-		Map<String,Object> values = t.getValueMapping();
-		
-		assertNotNull(values);
-		
-		List<Map.Entry<String,Object>> l = new ArrayList<>(values.entrySet());
-			
-		assertEquals(3, l.size());
-		
-		Map.Entry<String,Object> entry = l.get(0);
+		entry = l.get(0);
 		assertEquals("x", entry.getKey());
 		assertEquals(false, entry.getValue());
 		
