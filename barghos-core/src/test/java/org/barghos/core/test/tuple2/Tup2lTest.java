@@ -274,7 +274,7 @@ class Tup2lTest
 	{
 		Tup2l t = new Tup2l(1l, 2l);
 
-		assertEquals(11223, t.hashCode());
+		assertEquals(994, t.hashCode());
 	}
 	
 	/**
@@ -464,7 +464,7 @@ class Tup2lTest
 	{
 		Tup2l t = new Tup2l(1l, 2l);
 		
-		assertEquals("tup2d(x=1, y=2)", t.toString());
+		assertEquals("tup2l(x=1, y=2)", t.toString());
 	}
 	
 	/**
