@@ -76,7 +76,7 @@ public class Tup2l implements Tup2lRW, Serializable, FormattableToString
 	 */
 	public Tup2l(TuplR t)
 	{
-		this(t.getArray());
+		set(t);
 	}
 	
 	/**
@@ -112,8 +112,7 @@ public class Tup2l implements Tup2lRW, Serializable, FormattableToString
 	 */
 	public Tup2l(long[] v)
 	{
-		this.x = v[0];
-		this.y = v[1];
+		setArray(v);
 	}
 	
 	/**

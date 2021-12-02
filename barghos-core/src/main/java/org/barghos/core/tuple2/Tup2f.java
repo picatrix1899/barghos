@@ -76,7 +76,7 @@ public class Tup2f implements Tup2fRW, Serializable, FormattableToString
 	 */
 	public Tup2f(TupfR t)
 	{
-		this(t.getArray());
+		set(t);
 	}
 	
 	/**
@@ -112,8 +112,7 @@ public class Tup2f implements Tup2fRW, Serializable, FormattableToString
 	 */
 	public Tup2f(float[] v)
 	{
-		this.x = v[0];
-		this.y = v[1];
+		setArray(v);
 	}
 	
 	/**

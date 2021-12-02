@@ -78,7 +78,7 @@ public class Tup2str implements Tup2strRW, Serializable, FormattableToString
 	 */
 	public Tup2str(TupstrR t)
 	{
-		this(t.getArray());
+		set(t);
 	}
 	
 	/**
@@ -114,8 +114,7 @@ public class Tup2str implements Tup2strRW, Serializable, FormattableToString
 	 */
 	public Tup2str(String[] v)
 	{
-		this.x = v[0];
-		this.y = v[1];
+		setArray(v);
 	}
 	
 	/**

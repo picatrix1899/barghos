@@ -31,7 +31,7 @@ import org.barghos.core.api.tuple.TupbigiR;
 import org.barghos.core.api.tuple2.Tup2bigiR;
 
 /**
- * Represents an immutable readonly 2-dimensional big integer tuple.
+ * Represents an immutable readonly 2-dimensional {@link BigInteger} tuple.
  * It can be used as a more flexible way to create constants.
  * 
  * @author picatrix1899

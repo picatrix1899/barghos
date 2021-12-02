@@ -76,7 +76,7 @@ public class Tup2s implements Tup2sRW, Serializable, FormattableToString
 	 */
 	public Tup2s(TupsR t)
 	{
-		this(t.getArray());
+		set(t);
 	}
 	
 	/**
@@ -112,8 +112,7 @@ public class Tup2s implements Tup2sRW, Serializable, FormattableToString
 	 */
 	public Tup2s(short[] v)
 	{
-		this.x = v[0];
-		this.y = v[1];
+		setArray(v);
 	}
 	
 	/**

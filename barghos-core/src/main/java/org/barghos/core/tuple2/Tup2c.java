@@ -76,7 +76,7 @@ public class Tup2c implements Tup2cRW, Serializable, FormattableToString
 	 */
 	public Tup2c(TupcR t)
 	{
-		this(t.getArray());
+		set(t);
 	}
 	
 	/**
@@ -112,8 +112,7 @@ public class Tup2c implements Tup2cRW, Serializable, FormattableToString
 	 */
 	public Tup2c(char[] v)
 	{
-		this.x = v[0];
-		this.y = v[1];
+		setArray(v);
 	}
 	
 	/**

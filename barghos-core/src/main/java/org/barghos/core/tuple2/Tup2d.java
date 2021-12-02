@@ -76,7 +76,7 @@ public class Tup2d implements Tup2dRW, Serializable, FormattableToString
 	 */
 	public Tup2d(TupdR t)
 	{
-		this(t.getArray());
+		set(t);
 	}
 	
 	/**
@@ -112,8 +112,7 @@ public class Tup2d implements Tup2dRW, Serializable, FormattableToString
 	 */
 	public Tup2d(double[] v)
 	{
-		this.x = v[0];
-		this.y = v[1];
+		setArray(v);
 	}
 	
 	/**

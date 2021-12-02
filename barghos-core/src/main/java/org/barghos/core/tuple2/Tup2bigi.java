@@ -33,7 +33,7 @@ import org.barghos.core.api.tuple2.Tup2bigiR;
 import org.barghos.core.api.tuple2.Tup2bigiRW;
 
 /**
- * This class represents a 2-dimensional big integer tuple.
+ * This class represents a 2-dimensional {@link BigInteger} tuple.
  * A tuple unlike a vector contains data that is not necessarly in any relation to each other,
  * where the data of a vector describes the same logical structure.
  * 
@@ -79,7 +79,7 @@ public class Tup2bigi implements Tup2bigiRW, Serializable, FormattableToString
 	 */
 	public Tup2bigi(TupbigiR t)
 	{
-		this(t.getArray());
+		set(t);
 	}
 	
 	/**
@@ -115,8 +115,7 @@ public class Tup2bigi implements Tup2bigiRW, Serializable, FormattableToString
 	 */
 	public Tup2bigi(BigInteger[] v)
 	{
-		this.x = v[0];
-		this.y = v[1];
+		setArray(v);
 	}
 	
 	/**

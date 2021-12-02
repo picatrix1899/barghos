@@ -30,7 +30,7 @@ import org.barghos.core.api.tuple.TupobjR;
 import org.barghos.core.api.tuple2.Tup2objR;
 
 /**
- * Represents an immutable readonly 2-dimensional string tuple.
+ * Represents an immutable readonly 2-dimensional {@link Object} tuple.
  * It can be used as a more flexible way to create constants.
  * 
  * @author picatrix1899

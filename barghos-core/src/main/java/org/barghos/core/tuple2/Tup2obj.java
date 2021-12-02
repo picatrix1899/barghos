@@ -32,7 +32,7 @@ import org.barghos.core.api.tuple2.Tup2objR;
 import org.barghos.core.api.tuple2.Tup2objRW;
 
 /**
- * This class represents a 2-dimensional string tuple.
+ * This class represents a 2-dimensional {@link Object} tuple.
  * A tuple unlike a vector contains data that is not necessarly in any relation to each other,
  * where the data of a vector describes the same logical structure.
  * 
@@ -75,7 +75,7 @@ public class Tup2obj implements Tup2objRW, Serializable, FormattableToString
 	 */
 	public Tup2obj(TupobjR t)
 	{
-		this(t.getArray());
+		set(t);
 	}
 	
 	/**
@@ -111,8 +111,7 @@ public class Tup2obj implements Tup2objRW, Serializable, FormattableToString
 	 */
 	public Tup2obj(Object[] v)
 	{
-		this.x = v[0];
-		this.y = v[1];
+		setArray(v);
 	}
 	
 	/**

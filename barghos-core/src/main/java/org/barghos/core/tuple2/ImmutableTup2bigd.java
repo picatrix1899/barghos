@@ -31,7 +31,7 @@ import org.barghos.core.api.tuple.TupbigdR;
 import org.barghos.core.api.tuple2.Tup2bigdR;
 
 /**
- * Represents an immutable readonly 2-dimensional big decimal tuple.
+ * Represents an immutable readonly 2-dimensional {@link BigDecimal} tuple.
  * It can be used as a more flexible way to create constants.
  * 
  * @author picatrix1899

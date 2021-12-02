@@ -29,7 +29,7 @@ import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple2.Tup2oR;
 
 /**
- * Represents an immutable readonly 2-dimensional object tuple.
+ * Represents an immutable readonly 2-dimensional {@link Object} tuple.
  * It can be used as a more flexible way to create constants.
  * 
  * @author picatrix1899

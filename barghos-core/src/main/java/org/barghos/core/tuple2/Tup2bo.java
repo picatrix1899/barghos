@@ -76,7 +76,7 @@ public class Tup2bo implements Tup2boRW, Serializable, FormattableToString
 	 */
 	public Tup2bo(TupboR t)
 	{
-		this(t.getArray());
+		set(t);
 	}
 	
 	/**
@@ -112,8 +112,7 @@ public class Tup2bo implements Tup2boRW, Serializable, FormattableToString
 	 */
 	public Tup2bo(boolean[] v)
 	{
-		this.x = v[0];
-		this.y = v[1];
+		setArray(v);
 	}
 	
 	/**

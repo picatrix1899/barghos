@@ -30,7 +30,7 @@ import org.barghos.core.api.tuple2.Tup2oR;
 import org.barghos.core.api.tuple2.Tup2oRW;
 
 /**
- * This class represents a 2-dimensional object tuple.
+ * This class represents a 2-dimensional {@link Object} tuple.
  * A tuple unlike a vector contains data that is not necessarly in any relation to each other,
  * where the data of a vector describes the same logical structure.
  * 
