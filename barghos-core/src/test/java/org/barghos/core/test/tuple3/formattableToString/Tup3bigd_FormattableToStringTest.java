@@ -1,6 +1,7 @@
 package org.barghos.core.test.tuple3.formattableToString;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.Test;
 
@@ -26,7 +27,13 @@ class Tup3bigd_FormattableToStringTest
 	@Test
 	void getValueMappingTest()
 	{
-		Tup3bigd t = new Tup3bigd(BigDecimal.valueOf(1.1), BigDecimal.valueOf(2.2), BigDecimal.valueOf(3.3));
+		Tup3bigd t = mock(Tup3bigd.class);
+		
+		when(t.getValueMapping()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(BigDecimal.ONE);
+		when(t.getY()).thenReturn(BigDecimal.valueOf(2.0));
+		when(t.getZ()).thenReturn(BigDecimal.valueOf(3.0));
 		
 		Map<String,Object> values = t.getValueMapping();
 		
@@ -35,11 +42,25 @@ class Tup3bigd_FormattableToStringTest
 		List<Map.Entry<String,Object>> l = new ArrayList<>(values.entrySet());
 			
 		assertEquals(3, l.size());
-		assertEquals("x", l.get(0).getKey());
-		assertEquals(BigDecimal.valueOf(1.1), l.get(0).getValue());
-		assertEquals("y", l.get(1).getKey());
-		assertEquals(BigDecimal.valueOf(2.2), l.get(1).getValue());
-		assertEquals("z", l.get(2).getKey());
-		assertEquals(BigDecimal.valueOf(3.3), l.get(2).getValue());
+		
+		Map.Entry<String,Object> entry = l.get(0);
+		assertEquals("x", entry.getKey());
+		assertEquals(BigDecimal.ONE, entry.getValue());
+		
+		entry = l.get(1);
+		assertEquals("y", entry.getKey());
+		assertEquals(BigDecimal.valueOf(2.0), entry.getValue());
+		
+		entry = l.get(2);
+		assertEquals("z", entry.getKey());
+		assertEquals(BigDecimal.valueOf(3.0), entry.getValue());
+		
+		verify(t).getValueMapping();
+		
+		verify(t).getX();
+		verify(t).getY();
+		verify(t).getZ();
+		
+		verifyNoMoreInteractions(t);
 	}
 }

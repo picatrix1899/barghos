@@ -9,24 +9,24 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.barghos.core.tuple3.Tup3f;
+import org.barghos.core.tuple3.ImmutableTup3f;
 
 /**
  * This class provides component tests for the interface implementation
  * of {@link org.barghos.core.api.formatting.FormattableToString FormattableToString} in the
- * class {@link Tup3f}.
+ * class {@link ImmutableTup3f}.
  * 
  * @author picatrix1899
  */
-class Tup3f_FormattableToStringTest
+class ImmutableTup3f_FormattableToStringTest
 {
 	/**
-	 * This test ensures, that the {@link Tup3f#getValueMapping()} function returns the correct components.
+	 * This test ensures, that the {@link ImmutableTup3f#getValueMapping()} function returns the correct components.
 	 */
 	@Test
 	void getValueMappingTest()
 	{
-		Tup3f t = mock(Tup3f.class);
+		ImmutableTup3f t = mock(ImmutableTup3f.class);
 		
 		when(t.getValueMapping()).thenCallRealMethod();
 		
@@ -39,7 +39,7 @@ class Tup3f_FormattableToStringTest
 		assertNotNull(values);
 		
 		List<Map.Entry<String,Object>> l = new ArrayList<>(values.entrySet());
-			
+		
 		assertEquals(3, l.size());
 		
 		Map.Entry<String,Object> entry = l.get(0);

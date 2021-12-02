@@ -9,30 +9,30 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.barghos.core.tuple3.Tup3f;
+import org.barghos.core.tuple3.ImmutableTup3s;
 
 /**
  * This class provides component tests for the interface implementation
  * of {@link org.barghos.core.api.formatting.FormattableToString FormattableToString} in the
- * class {@link Tup3f}.
+ * class {@link ImmutableTup3s}.
  * 
  * @author picatrix1899
  */
-class Tup3f_FormattableToStringTest
+class ImmutableTup3s_FormattableToStringTest
 {
 	/**
-	 * This test ensures, that the {@link Tup3f#getValueMapping()} function returns the correct components.
+	 * This test ensures, that the {@link ImmutableTup3s#getValueMapping()} function returns the correct components.
 	 */
 	@Test
 	void getValueMappingTest()
 	{
-		Tup3f t = mock(Tup3f.class);
+		ImmutableTup3s t = mock(ImmutableTup3s.class);
 		
 		when(t.getValueMapping()).thenCallRealMethod();
 		
-		when(t.getX()).thenReturn(1.0f);
-		when(t.getY()).thenReturn(2.0f);
-		when(t.getZ()).thenReturn(3.0f);
+		when(t.getX()).thenReturn((short)1);
+		when(t.getY()).thenReturn((short)2);
+		when(t.getZ()).thenReturn((short)3);
 		
 		Map<String,Object> values = t.getValueMapping();
 		
@@ -44,22 +44,20 @@ class Tup3f_FormattableToStringTest
 		
 		Map.Entry<String,Object> entry = l.get(0);
 		assertEquals("x", entry.getKey());
-		assertEquals(1.0f, entry.getValue());
+		assertEquals((short)1, entry.getValue());
 		
 		entry = l.get(1);
 		assertEquals("y", entry.getKey());
-		assertEquals(2.0f, entry.getValue());
+		assertEquals((short)2, entry.getValue());
 		
 		entry = l.get(2);
 		assertEquals("z", entry.getKey());
-		assertEquals(3.0f, entry.getValue());
+		assertEquals((short)3, entry.getValue());
 		
 		verify(t).getValueMapping();
 		
 		verify(t).getX();
 		verify(t).getY();
 		verify(t).getZ();
-		
-		verifyNoMoreInteractions(t);
 	}
 }

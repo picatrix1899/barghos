@@ -1,6 +1,7 @@
 package org.barghos.core.test.tuple3.formattableToString;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.Test;
 
@@ -25,7 +26,13 @@ class Tup3bo_FormattableToStringTest
 	@Test
 	void getValueMappingTest()
 	{
-		Tup3bo t = new Tup3bo(false, true, true);
+		Tup3bo t = mock(Tup3bo.class);
+		
+		when(t.getValueMapping()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(false);
+		when(t.getY()).thenReturn(true);
+		when(t.getZ()).thenReturn(false);
 		
 		Map<String,Object> values = t.getValueMapping();
 		
@@ -34,11 +41,25 @@ class Tup3bo_FormattableToStringTest
 		List<Map.Entry<String,Object>> l = new ArrayList<>(values.entrySet());
 			
 		assertEquals(3, l.size());
-		assertEquals("x", l.get(0).getKey());
-		assertEquals(false, l.get(0).getValue());
-		assertEquals("y", l.get(1).getKey());
-		assertEquals(true, l.get(1).getValue());
-		assertEquals("z", l.get(2).getKey());
-		assertEquals(true, l.get(2).getValue());
+		
+		Map.Entry<String,Object> entry = l.get(0);
+		assertEquals("x", entry.getKey());
+		assertEquals(false, entry.getValue());
+		
+		entry = l.get(1);
+		assertEquals("y", entry.getKey());
+		assertEquals(true, entry.getValue());
+		
+		entry = l.get(2);
+		assertEquals("z", entry.getKey());
+		assertEquals(false, entry.getValue());
+		
+		verify(t).getValueMapping();
+		
+		verify(t).getX();
+		verify(t).getY();
+		verify(t).getZ();
+		
+		verifyNoMoreInteractions(t);
 	}
 }
