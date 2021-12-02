@@ -25,15 +25,12 @@ package org.barghos.core.tuple3;
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple3.Tup3oR;
 import org.barghos.core.api.tuple3.Tup3oRW;
-import org.barghos.core.api.util.ArgumentNullException;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import org.barghos.core.Barghos;
-
 /**
- * This class represents a 3-dimensional object tuple.
+ * This class represents a 3-dimensional {@link Object} tuple.
  * A tuple unlike a vector contains data that is not necessarly in any relation to each other,
  * where the data of a vector describes the same logical structure.
  * 
@@ -77,14 +74,6 @@ public class Tup3o<X,Y,Z> implements Tup3oRW<X,Y,Z>, FormattableToString
 	 */
 	public Tup3o(Tup3oR<X,Y,Z> t)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(t == null) throw new ArgumentNullException("t");
-			if(t.getX() == null) throw new ArgumentNullException("t.getX()");
-			if(t.getY() == null) throw new ArgumentNullException("t.getY()");
-			if(t.getZ() == null) throw new ArgumentNullException("t.getZ()");
-		}
-		
 		set(t);
 	}
 	
@@ -99,13 +88,6 @@ public class Tup3o<X,Y,Z> implements Tup3oRW<X,Y,Z>, FormattableToString
 	 */
 	public Tup3o(X x, Y y, Z z)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(x == null) throw new ArgumentNullException("x");
-			if(y == null) throw new ArgumentNullException("y");
-			if(z == null) throw new ArgumentNullException("z");
-		}
-		
 		set(x, y, z);
 	}
 	
@@ -130,11 +112,6 @@ public class Tup3o<X,Y,Z> implements Tup3oRW<X,Y,Z>, FormattableToString
 	@Override
 	public Tup3o<X,Y,Z> setX(X x)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(x == null) throw new ArgumentNullException("x");
-		}
-		
 		this.x = x;
 		
 		return this;
@@ -143,11 +120,6 @@ public class Tup3o<X,Y,Z> implements Tup3oRW<X,Y,Z>, FormattableToString
 	@Override
 	public Tup3o<X,Y,Z> setY(Y y)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(y == null) throw new ArgumentNullException("y");
-		}
-		
 		this.y = y;
 		
 		return this;
@@ -156,11 +128,6 @@ public class Tup3o<X,Y,Z> implements Tup3oRW<X,Y,Z>, FormattableToString
 	@Override
 	public Tup3o<X,Y,Z> setZ(Z z)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(z == null) throw new ArgumentNullException("z");
-		}
-		
 		this.z = z;
 		
 		return this;
@@ -169,27 +136,12 @@ public class Tup3o<X,Y,Z> implements Tup3oRW<X,Y,Z>, FormattableToString
 	@Override
 	public Tup3o<X,Y,Z> set(Tup3oR<X,Y,Z> t)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(t == null) throw new ArgumentNullException("t");
-			if(t.getX() == null) throw new ArgumentNullException("t.getX()");
-			if(t.getY() == null) throw new ArgumentNullException("t.getY()");
-			if(t.getZ() == null) throw new ArgumentNullException("t.getZ()");
-		}
-		
 		return set(t.getX(), t.getY(), t.getZ());
 	}
 	
 	@Override
 	public Tup3o<X,Y,Z> set(X x, Y y, Z z)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(x == null) throw new ArgumentNullException("x");
-			if(y == null) throw new ArgumentNullException("y");
-			if(z == null) throw new ArgumentNullException("z");
-		}
-		
 		return setX(x).setY(y).setZ(z);
 	}
 	
@@ -246,5 +198,11 @@ public class Tup3o<X,Y,Z> implements Tup3oRW<X,Y,Z>, FormattableToString
 	public Tup3o<X,Y,Z> getNewInstance(X x, Y y, Z z)
 	{
 		return new Tup3o<>(x, y, z);
+	}
+	
+	@Override
+	public Tup3o<X,Y,Z> getNewInstance(Tup3oR<X,Y,Z> t)
+	{
+		return (Tup3o<X,Y,Z>)Tup3oRW.super.getNewInstance(t);
 	}
 }

@@ -27,10 +27,9 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
+import org.barghos.core.api.tuple.TuplR;
 import org.barghos.core.api.tuple3.Tup3lR;
 import org.barghos.core.api.tuple3.Tup3lRW;
-import org.barghos.core.api.util.ArgumentNullException;
-import org.barghos.core.Barghos;
 
 /**
  * This class represents a 3-dimensional long tuple.
@@ -74,6 +73,18 @@ public class Tup3l implements Tup3lRW, Serializable, FormattableToString
 	}
 	
 	/**
+	 * Creates a new instance from an existing instance of {@link TuplR} and adopts the values.
+	 * 
+	 * @param t An existing implementation of {@link TuplR} to adopt the values from.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public Tup3l(TuplR t)
+	{
+		set(t);
+	}
+	
+	/**
 	 * Creates a new instance from an existing instance of {@link Tup3lR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup3lR} to adopt the values from.
@@ -82,11 +93,6 @@ public class Tup3l implements Tup3lRW, Serializable, FormattableToString
 	 */
 	public Tup3l(Tup3lR t)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(t == null) throw new ArgumentNullException("t");
-		}
-		
 		set(t);
 	}
 	
@@ -114,6 +120,18 @@ public class Tup3l implements Tup3lRW, Serializable, FormattableToString
 	public Tup3l(long x, long y, long z)
 	{
 		set(x, y, z);
+	}
+	
+	/**
+	 * Creates a new instance with the values set to the corresponding parameters.
+	 * 
+	 * @param v The values as an array.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public Tup3l(long[] v)
+	{
+		setArray(v);
 	}
 	
 	@Override
@@ -161,11 +179,6 @@ public class Tup3l implements Tup3lRW, Serializable, FormattableToString
 	@Override
 	public Tup3l set(Tup3lR t)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(t == null) throw new ArgumentNullException("t");
-		}
-		
 		return set(t.getX(), t.getY(), t.getZ());
 	}
 	
@@ -197,13 +210,29 @@ public class Tup3l implements Tup3lRW, Serializable, FormattableToString
 	{
 		if(this == obj) return true;
 		if(obj == null) return false;
-		if(!(obj instanceof Tup3lR)) return false;
 		
-		Tup3lR other = (Tup3lR) obj;
-		if(getX() != other.getX()) return false;
-		if(getY() != other.getY()) return false;
-		if(getZ() != other.getZ()) return false;
-		return true;
+		if(obj instanceof Tup3lR)
+		{
+			Tup3lR other = (Tup3lR) obj;
+			if(getX() != other.getX()) return false;
+			if(getY() != other.getY()) return false;
+			if(getZ() != other.getZ()) return false;
+			
+			return true;
+		}
+		
+		if(obj instanceof TuplR)
+		{
+			TuplR other = (TuplR) obj;
+			if(getDimensions() != other.getDimensions()) return false;
+			if(getX() != other.getByIndex(0)) return false;
+			if(getY() != other.getByIndex(1)) return false;
+			if(getZ() != other.getByIndex(2)) return false;
+			
+			return true;
+		}
+		
+		return false;
 	}
 	
 	@Override
@@ -233,5 +262,47 @@ public class Tup3l implements Tup3lRW, Serializable, FormattableToString
 	public Tup3l getNewInstance(long x, long y, long z)
 	{
 		return new Tup3l(x, y, z);
+	}
+	
+	@Override
+	public Tup3l getNewInstance(long value)
+	{
+		return (Tup3l)Tup3lRW.super.getNewInstance(value);
+	}
+	
+	@Override
+	public Tup3l getNewInstance(Tup3lR t)
+	{
+		return (Tup3l)Tup3lRW.super.getNewInstance(t);
+	}
+	
+	@Override
+	public Tup3l getNewInstance(TuplR t)
+	{
+		return (Tup3l)Tup3lRW.super.getNewInstance(t);
+	}
+	
+	@Override
+	public Tup3l getNewInstanceFromArray(long... values)
+	{
+		return (Tup3l)Tup3lRW.super.getNewInstanceFromArray(values);
+	}
+	
+	@Override
+	public Tup3l set(TuplR t)
+	{
+		return (Tup3l)Tup3lRW.super.set(t);
+	}
+	
+	@Override
+	public Tup3l setArray(long... values)
+	{
+		return (Tup3l)Tup3lRW.super.setArray(values);
+	}
+	
+	@Override
+	public Tup3l setByIndex(int index, long value)
+	{
+		return (Tup3l)Tup3lRW.super.setByIndex(index, value);
 	}
 }

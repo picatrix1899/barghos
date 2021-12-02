@@ -28,13 +28,12 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
+import org.barghos.core.api.tuple.TupbigdR;
 import org.barghos.core.api.tuple3.Tup3bigdR;
 import org.barghos.core.api.tuple3.Tup3bigdRW;
-import org.barghos.core.api.util.ArgumentNullException;
-import org.barghos.core.Barghos;
 
 /**
- * This class represents a 3-dimensional big decimal tuple.
+ * This class represents a 3-dimensional {@link BigDecimal} tuple.
  * A tuple unlike a vector contains data that is not necessarly in any relation to each other,
  * where the data of a vector describes the same logical structure.
  * 
@@ -78,6 +77,18 @@ public class Tup3bigd implements Tup3bigdRW, Serializable, FormattableToString
 	}
 	
 	/**
+	 * Creates a new instance from an existing instance of {@link TupbigdR} and adopts the values.
+	 * 
+	 * @param t An existing implementation of {@link TupbigdR} to adopt the values from.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public Tup3bigd(TupbigdR t)
+	{
+		set(t);
+	}
+	
+	/**
 	 * Creates a new instance from an existing instance of {@link Tup3bigdR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup3bigdR} to adopt the values from.
@@ -86,14 +97,6 @@ public class Tup3bigd implements Tup3bigdRW, Serializable, FormattableToString
 	 */
 	public Tup3bigd(Tup3bigdR t)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(t == null) throw new ArgumentNullException("t");
-			if(t.getX() == null) throw new ArgumentNullException("t.getX()");
-			if(t.getY() == null) throw new ArgumentNullException("t.getY()");
-			if(t.getZ() == null) throw new ArgumentNullException("t.getZ()");
-		}
-		
 		set(t);
 	}
 	
@@ -106,11 +109,6 @@ public class Tup3bigd implements Tup3bigdRW, Serializable, FormattableToString
 	 */
 	public Tup3bigd(BigDecimal value)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(value == null) throw new ArgumentNullException("value");
-		}
-		
 		set(value);
 	}
 	
@@ -125,14 +123,19 @@ public class Tup3bigd implements Tup3bigdRW, Serializable, FormattableToString
 	 */
 	public Tup3bigd(BigDecimal x, BigDecimal y, BigDecimal z)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(x == null) throw new ArgumentNullException("x");
-			if(y == null) throw new ArgumentNullException("y");
-			if(z == null) throw new ArgumentNullException("z");
-		}
-		
 		set(x, y, z);
+	}
+	
+	/**
+	 * Creates a new instance with the values set to the corresponding parameters.
+	 * 
+	 * @param v The values as an array.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public Tup3bigd(BigDecimal[] v)
+	{
+		setArray(v);
 	}
 	
 	@Override
@@ -156,11 +159,6 @@ public class Tup3bigd implements Tup3bigdRW, Serializable, FormattableToString
 	@Override
 	public Tup3bigd setX(BigDecimal x)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(x == null) throw new ArgumentNullException("x");
-		}
-		
 		this.x = x;
 		
 		return this;
@@ -169,11 +167,6 @@ public class Tup3bigd implements Tup3bigdRW, Serializable, FormattableToString
 	@Override
 	public Tup3bigd setY(BigDecimal y)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(y == null) throw new ArgumentNullException("y");
-		}
-		
 		this.y = y;
 		
 		return this;
@@ -182,11 +175,6 @@ public class Tup3bigd implements Tup3bigdRW, Serializable, FormattableToString
 	@Override
 	public Tup3bigd setZ(BigDecimal z)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(z == null) throw new ArgumentNullException("z");
-		}
-		
 		this.z = z;
 		
 		return this;
@@ -195,38 +183,18 @@ public class Tup3bigd implements Tup3bigdRW, Serializable, FormattableToString
 	@Override
 	public Tup3bigd set(Tup3bigdR t)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(t == null) throw new ArgumentNullException("t");
-			if(t.getX() == null) throw new ArgumentNullException("t.getX()");
-			if(t.getY() == null) throw new ArgumentNullException("t.getY()");
-			if(t.getZ() == null) throw new ArgumentNullException("t.getZ()");
-		}
-		
 		return set(t.getX(), t.getY(), t.getZ());
 	}
 	
 	@Override
 	public Tup3bigd set(BigDecimal value)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(value == null) throw new ArgumentNullException("value");
-		}
-		
 		return set(value, value, value);
 	}
 	
 	@Override
 	public Tup3bigd set(BigDecimal x, BigDecimal y, BigDecimal z)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(x == null) throw new ArgumentNullException("x");
-			if(y == null) throw new ArgumentNullException("y");
-			if(z == null) throw new ArgumentNullException("z");
-		}
-		
 		return setX(x).setY(y).setZ(z);
 	}
 	
@@ -246,13 +214,29 @@ public class Tup3bigd implements Tup3bigdRW, Serializable, FormattableToString
 	{
 		if(this == obj) return true;
 		if(obj == null) return false;
-		if(!(obj instanceof Tup3bigdR)) return false;
+
+		if(obj instanceof Tup3bigdR)
+		{
+			Tup3bigdR other = (Tup3bigdR) obj;
+			if(getX().compareTo(other.getX()) != 0) return false;
+			if(getY().compareTo(other.getY()) != 0) return false;
+			if(getZ().compareTo(other.getZ()) != 0) return false;
+			
+			return true;
+		}
 		
-		Tup3bigdR other = (Tup3bigdR) obj;
-		if(getX().compareTo(other.getX()) != 0) return false;
-		if(getY().compareTo(other.getY()) != 0) return false;
-		if(getZ().compareTo(other.getZ()) != 0) return false;
-		return true;
+		if(obj instanceof TupbigdR)
+		{
+			TupbigdR other = (TupbigdR) obj;
+			if(getDimensions() != other.getDimensions()) return false;
+			if(getX().compareTo(other.getByIndex(0)) != 0) return false;
+			if(getY().compareTo(other.getByIndex(1)) != 0) return false;
+			if(getZ().compareTo(other.getByIndex(2)) != 0) return false;
+			
+			return true;
+		}
+
+		return false;
 	}
 	
 	@Override
@@ -282,5 +266,47 @@ public class Tup3bigd implements Tup3bigdRW, Serializable, FormattableToString
 	public Tup3bigd getNewInstance(BigDecimal x, BigDecimal y, BigDecimal z)
 	{
 		return new Tup3bigd(x, y, z);
+	}
+	
+	@Override
+	public Tup3bigd getNewInstance(BigDecimal value)
+	{
+		return (Tup3bigd)Tup3bigdRW.super.getNewInstance(value);
+	}
+	
+	@Override
+	public Tup3bigd getNewInstance(Tup3bigdR t)
+	{
+		return (Tup3bigd)Tup3bigdRW.super.getNewInstance(t);
+	}
+	
+	@Override
+	public Tup3bigd getNewInstance(TupbigdR t)
+	{
+		return (Tup3bigd)Tup3bigdRW.super.getNewInstance(t);
+	}
+	
+	@Override
+	public Tup3bigd getNewInstanceFromArray(BigDecimal... values)
+	{
+		return (Tup3bigd)Tup3bigdRW.super.getNewInstanceFromArray(values);
+	}
+	
+	@Override
+	public Tup3bigd set(TupbigdR t)
+	{
+		return (Tup3bigd)Tup3bigdRW.super.set(t);
+	}
+	
+	@Override
+	public Tup3bigd setArray(BigDecimal... values)
+	{
+		return (Tup3bigd)Tup3bigdRW.super.setArray(values);
+	}
+	
+	@Override
+	public Tup3bigd setByIndex(int index, BigDecimal value)
+	{
+		return (Tup3bigd)Tup3bigdRW.super.setByIndex(index, value);
 	}
 }

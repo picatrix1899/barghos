@@ -27,10 +27,9 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
+import org.barghos.core.api.tuple.TupstrR;
 import org.barghos.core.api.tuple3.Tup3strR;
 import org.barghos.core.api.tuple3.Tup3strRW;
-import org.barghos.core.api.util.ArgumentNullException;
-import org.barghos.core.Barghos;
 
 /**
  * This class represents a 3-dimensional string tuple.
@@ -77,6 +76,18 @@ public class Tup3str implements Tup3strRW, Serializable, FormattableToString
 	}
 	
 	/**
+	 * Creates a new instance from an existing instance of {@link TupstrR} and adopts the values.
+	 * 
+	 * @param t An existing implementation of {@link TupstrR} to adopt the values from.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public Tup3str(TupstrR t)
+	{
+		set(t);
+	}
+	
+	/**
 	 * Creates a new instance from an existing instance of {@link Tup3strR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup3strR} to adopt the values from.
@@ -85,14 +96,6 @@ public class Tup3str implements Tup3strRW, Serializable, FormattableToString
 	 */
 	public Tup3str(Tup3strR t)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(t == null) throw new ArgumentNullException("t");
-			if(t.getX() == null) throw new ArgumentNullException("t.getX()");
-			if(t.getY() == null) throw new ArgumentNullException("t.getY()");
-			if(t.getZ() == null) throw new ArgumentNullException("t.getZ()");
-		}
-		
 		set(t);
 	}
 	
@@ -105,11 +108,6 @@ public class Tup3str implements Tup3strRW, Serializable, FormattableToString
 	 */
 	public Tup3str(String value)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(value == null) throw new ArgumentNullException("value");
-		}
-		
 		set(value);
 	}
 	
@@ -124,14 +122,19 @@ public class Tup3str implements Tup3strRW, Serializable, FormattableToString
 	 */
 	public Tup3str(String x, String y, String z)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(x == null) throw new ArgumentNullException("x");
-			if(y == null) throw new ArgumentNullException("y");
-			if(z == null) throw new ArgumentNullException("z");
-		}
-		
 		set(x, y, z);
+	}
+	
+	/**
+	 * Creates a new instance with the values set to the corresponding parameters.
+	 * 
+	 * @param v The values as an array.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public Tup3str(String[] v)
+	{
+		setArray(v);
 	}
 	
 	@Override
@@ -155,11 +158,6 @@ public class Tup3str implements Tup3strRW, Serializable, FormattableToString
 	@Override
 	public Tup3str setX(String x)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(x == null) throw new ArgumentNullException("x");
-		}
-		
 		this.x = x;
 		
 		return this;
@@ -168,11 +166,6 @@ public class Tup3str implements Tup3strRW, Serializable, FormattableToString
 	@Override
 	public Tup3str setY(String y)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(y == null) throw new ArgumentNullException("y");
-		}
-		
 		this.y = y;
 		
 		return this;
@@ -181,11 +174,6 @@ public class Tup3str implements Tup3strRW, Serializable, FormattableToString
 	@Override
 	public Tup3str setZ(String z)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(z == null) throw new ArgumentNullException("z");
-		}
-		
 		this.z = z;
 		
 		return this;
@@ -194,38 +182,18 @@ public class Tup3str implements Tup3strRW, Serializable, FormattableToString
 	@Override
 	public Tup3str set(Tup3strR t)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(t == null) throw new ArgumentNullException("t");
-			if(t.getX() == null) throw new ArgumentNullException("t.getX()");
-			if(t.getY() == null) throw new ArgumentNullException("t.getY()");
-			if(t.getZ() == null) throw new ArgumentNullException("t.getZ()");
-		}
-		
 		return set(t.getX(), t.getY(), t.getZ());
 	}
 	
 	@Override
 	public Tup3str set(String value)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(value == null) throw new ArgumentNullException("value");
-		}
-		
 		return set(value, value, value);
 	}
 	
 	@Override
 	public Tup3str set(String x, String y, String z)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(x == null) throw new ArgumentNullException("x");
-			if(y == null) throw new ArgumentNullException("y");
-			if(z == null) throw new ArgumentNullException("z");
-		}
-		
 		return setX(x).setY(y).setZ(z);
 	}
 	
@@ -245,13 +213,29 @@ public class Tup3str implements Tup3strRW, Serializable, FormattableToString
 	{
 		if(this == obj) return true;
 		if(obj == null) return false;
-		if(!(obj instanceof Tup3strR)) return false;
 		
-		Tup3strR other = (Tup3strR) obj;
-		if(!getX().equals(other.getX())) return false;
-		if(!getY().equals(other.getY())) return false;
-		if(!getZ().equals(other.getZ())) return false;
-		return true;
+		if(obj instanceof Tup3strR)
+		{
+			Tup3strR other = (Tup3strR) obj;
+			if(!getX().equals(other.getX())) return false;
+			if(!getY().equals(other.getY())) return false;
+			if(!getZ().equals(other.getZ())) return false;
+			
+			return true;
+		}
+		
+		if(obj instanceof TupstrR)
+		{
+			TupstrR other = (TupstrR) obj;
+			if(getDimensions() != other.getDimensions()) return false;
+			if(!getX().equals(other.getByIndex(0))) return false;
+			if(!getY().equals(other.getByIndex(1))) return false;
+			if(!getZ().equals(other.getByIndex(2))) return false;
+			
+			return true;
+		}
+		
+		return false;
 	}
 	
 	@Override
@@ -281,5 +265,47 @@ public class Tup3str implements Tup3strRW, Serializable, FormattableToString
 	public Tup3str getNewInstance(String x, String y, String z)
 	{
 		return new Tup3str(x, y, z);
+	}
+	
+	@Override
+	public Tup3str getNewInstance(String value)
+	{
+		return (Tup3str)Tup3strRW.super.getNewInstance(value);
+	}
+	
+	@Override
+	public Tup3str getNewInstance(Tup3strR t)
+	{
+		return (Tup3str)Tup3strRW.super.getNewInstance(t);
+	}
+	
+	@Override
+	public Tup3str getNewInstance(TupstrR t)
+	{
+		return (Tup3str)Tup3strRW.super.getNewInstance(t);
+	}
+	
+	@Override
+	public Tup3str getNewInstanceFromArray(String... values)
+	{
+		return (Tup3str)Tup3strRW.super.getNewInstanceFromArray(values);
+	}
+	
+	@Override
+	public Tup3str set(TupstrR t)
+	{
+		return (Tup3str)Tup3strRW.super.set(t);
+	}
+	
+	@Override
+	public Tup3str setArray(String... values)
+	{
+		return (Tup3str)Tup3strRW.super.setArray(values);
+	}
+	
+	@Override
+	public Tup3str setByIndex(int index, String value)
+	{
+		return (Tup3str)Tup3strRW.super.setByIndex(index, value);
 	}
 }

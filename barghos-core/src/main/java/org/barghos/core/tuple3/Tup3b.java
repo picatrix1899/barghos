@@ -27,10 +27,9 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
+import org.barghos.core.api.tuple.TupbR;
 import org.barghos.core.api.tuple3.Tup3bR;
 import org.barghos.core.api.tuple3.Tup3bRW;
-import org.barghos.core.api.util.ArgumentNullException;
-import org.barghos.core.Barghos;
 
 /**
  * This class represents a 3-dimensional byte tuple.
@@ -74,6 +73,18 @@ public class Tup3b implements Tup3bRW, Serializable, FormattableToString
 	}
 	
 	/**
+	 * Creates a new instance from an existing instance of {@link TupbR} and adopts the values.
+	 * 
+	 * @param t An existing implementation of {@link TupbR} to adopt the values from.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public Tup3b(TupbR t)
+	{
+		set(t);
+	}
+	
+	/**
 	 * Creates a new instance from an existing instance of {@link Tup3bR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup3bR} to adopt the values from.
@@ -82,11 +93,6 @@ public class Tup3b implements Tup3bRW, Serializable, FormattableToString
 	 */
 	public Tup3b(Tup3bR t)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(t == null) throw new ArgumentNullException("t");
-		}
-		
 		set(t);
 	}
 	
@@ -114,6 +120,18 @@ public class Tup3b implements Tup3bRW, Serializable, FormattableToString
 	public Tup3b(byte x, byte y, byte z)
 	{
 		set(x, y, z);
+	}
+	
+	/**
+	 * Creates a new instance with the values set to the corresponding parameters.
+	 * 
+	 * @param v The values as an array.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public Tup3b(byte[] v)
+	{
+		setArray(v);
 	}
 	
 	@Override
@@ -157,15 +175,10 @@ public class Tup3b implements Tup3bRW, Serializable, FormattableToString
 		
 		return this;
 	}
-	
+
 	@Override
 	public Tup3b set(Tup3bR t)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(t == null) throw new ArgumentNullException("t");
-		}
-		
 		return set(t.getX(), t.getY(), t.getZ());
 	}
 	
@@ -197,13 +210,29 @@ public class Tup3b implements Tup3bRW, Serializable, FormattableToString
 	{
 		if(this == obj) return true;
 		if(obj == null) return false;
-		if(!(obj instanceof Tup3bR)) return false;
 		
-		Tup3bR other = (Tup3bR) obj;
-		if(getX() != other.getX()) return false;
-		if(getY() != other.getY()) return false;
-		if(getZ() != other.getZ()) return false;
-		return true;
+		if(obj instanceof Tup3bR)
+		{
+			Tup3bR other = (Tup3bR) obj;
+			if(getX() != other.getX()) return false;
+			if(getY() != other.getY()) return false;
+			if(getZ() != other.getZ()) return false;
+			
+			return true;
+		}
+		
+		if(obj instanceof TupbR)
+		{
+			TupbR other = (TupbR) obj;
+			if(getDimensions() != other.getDimensions()) return false;
+			if(getX() != other.getByIndex(0)) return false;
+			if(getY() != other.getByIndex(1)) return false;
+			if(getZ() != other.getByIndex(2)) return false;
+			
+			return true;
+		}
+		
+		return false;
 	}
 	
 	@Override
@@ -233,5 +262,47 @@ public class Tup3b implements Tup3bRW, Serializable, FormattableToString
 	public Tup3b getNewInstance(byte x, byte y, byte z)
 	{
 		return new Tup3b(x, y, z);
+	}
+	
+	@Override
+	public Tup3b getNewInstance(byte value)
+	{
+		return (Tup3b)Tup3bRW.super.getNewInstance(value);
+	}
+	
+	@Override
+	public Tup3b getNewInstance(Tup3bR t)
+	{
+		return (Tup3b)Tup3bRW.super.getNewInstance(t);
+	}
+	
+	@Override
+	public Tup3b getNewInstance(TupbR t)
+	{
+		return (Tup3b)Tup3bRW.super.getNewInstance(t);
+	}
+	
+	@Override
+	public Tup3b getNewInstanceFromArray(byte... values)
+	{
+		return (Tup3b)Tup3bRW.super.getNewInstanceFromArray(values);
+	}
+	
+	@Override
+	public Tup3b set(TupbR t)
+	{
+		return (Tup3b)Tup3bRW.super.set(t);
+	}
+	
+	@Override
+	public Tup3b setArray(byte... values)
+	{
+		return (Tup3b)Tup3bRW.super.setArray(values);
+	}
+	
+	@Override
+	public Tup3b setByIndex(int index, byte value)
+	{
+		return (Tup3b)Tup3bRW.super.setByIndex(index, value);
 	}
 }

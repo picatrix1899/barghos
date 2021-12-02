@@ -27,10 +27,9 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
+import org.barghos.core.api.tuple.TupboR;
 import org.barghos.core.api.tuple3.Tup3boR;
 import org.barghos.core.api.tuple3.Tup3boRW;
-import org.barghos.core.api.util.ArgumentNullException;
-import org.barghos.core.Barghos;
 
 /**
  * This class represents a 3-dimensional boolean tuple.
@@ -74,6 +73,18 @@ public class Tup3bo implements Tup3boRW, Serializable, FormattableToString
 	}
 	
 	/**
+	 * Creates a new instance from an existing instance of {@link TupboR} and adopts the values.
+	 * 
+	 * @param t An existing implementation of {@link TupboR} to adopt the values from.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public Tup3bo(TupboR t)
+	{
+		set(t);
+	}
+	
+	/**
 	 * Creates a new instance from an existing instance of {@link Tup3boR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup3boR} to adopt the values from.
@@ -82,11 +93,6 @@ public class Tup3bo implements Tup3boRW, Serializable, FormattableToString
 	 */
 	public Tup3bo(Tup3boR t)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(t == null) throw new ArgumentNullException("t");
-		}
-		
 		set(t);
 	}
 	
@@ -114,6 +120,18 @@ public class Tup3bo implements Tup3boRW, Serializable, FormattableToString
 	public Tup3bo(boolean x, boolean y, boolean z)
 	{
 		set(x, y, z);
+	}
+	
+	/**
+	 * Creates a new instance with the values set to the corresponding parameters.
+	 * 
+	 * @param v The values as an array.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public Tup3bo(boolean[] v)
+	{
+		setArray(v);
 	}
 	
 	@Override
@@ -161,11 +179,6 @@ public class Tup3bo implements Tup3boRW, Serializable, FormattableToString
 	@Override
 	public Tup3bo set(Tup3boR t)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(t == null) throw new ArgumentNullException("t");
-		}
-		
 		return set(t.getX(), t.getY(), t.getZ());
 	}
 	
@@ -197,13 +210,29 @@ public class Tup3bo implements Tup3boRW, Serializable, FormattableToString
 	{
 		if(this == obj) return true;
 		if(obj == null) return false;
-		if(!(obj instanceof Tup3boR)) return false;
 		
-		Tup3boR other = (Tup3boR) obj;
-		if(getX() != other.getX()) return false;
-		if(getY() != other.getY()) return false;
-		if(getZ() != other.getZ()) return false;
-		return true;
+		if(obj instanceof Tup3boR)
+		{
+			Tup3boR other = (Tup3boR) obj;
+			if(getX() != other.getX()) return false;
+			if(getY() != other.getY()) return false;
+			if(getZ() != other.getZ()) return false;
+			
+			return true;
+		}
+		
+		if(obj instanceof TupboR)
+		{
+			TupboR other = (TupboR) obj;
+			if(getDimensions() != other.getDimensions()) return false;
+			if(getX() != other.getByIndex(0)) return false;
+			if(getY() != other.getByIndex(1)) return false;
+			if(getZ() != other.getByIndex(2)) return false;
+			
+			return true;
+		}
+		
+		return false;
 	}
 	
 	@Override
@@ -233,5 +262,47 @@ public class Tup3bo implements Tup3boRW, Serializable, FormattableToString
 	public Tup3bo getNewInstance(boolean x, boolean y, boolean z)
 	{
 		return new Tup3bo(x, y, z);
+	}
+	
+	@Override
+	public Tup3bo getNewInstance(boolean value)
+	{
+		return (Tup3bo)Tup3boRW.super.getNewInstance(value);
+	}
+	
+	@Override
+	public Tup3bo getNewInstance(Tup3boR t)
+	{
+		return (Tup3bo)Tup3boRW.super.getNewInstance(t);
+	}
+	
+	@Override
+	public Tup3bo getNewInstance(TupboR t)
+	{
+		return (Tup3bo)Tup3boRW.super.getNewInstance(t);
+	}
+	
+	@Override
+	public Tup3bo getNewInstanceFromArray(boolean... values)
+	{
+		return (Tup3bo)Tup3boRW.super.getNewInstanceFromArray(values);
+	}
+	
+	@Override
+	public Tup3bo set(TupboR t)
+	{
+		return (Tup3bo)Tup3boRW.super.set(t);
+	}
+	
+	@Override
+	public Tup3bo setArray(boolean... values)
+	{
+		return (Tup3bo)Tup3boRW.super.setArray(values);
+	}
+	
+	@Override
+	public Tup3bo setByIndex(int index, boolean value)
+	{
+		return (Tup3bo)Tup3boRW.super.setByIndex(index, value);
 	}
 }

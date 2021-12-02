@@ -27,10 +27,9 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
+import org.barghos.core.api.tuple.TupdR;
 import org.barghos.core.api.tuple3.Tup3dR;
 import org.barghos.core.api.tuple3.Tup3dRW;
-import org.barghos.core.api.util.ArgumentNullException;
-import org.barghos.core.Barghos;
 
 /**
  * This class represents a 3-dimensional double tuple.
@@ -74,6 +73,18 @@ public class Tup3d implements Tup3dRW, Serializable, FormattableToString
 	}
 	
 	/**
+	 * Creates a new instance from an existing instance of {@link TupdR} and adopts the values.
+	 * 
+	 * @param t An existing implementation of {@link TupdR} to adopt the values from.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public Tup3d(TupdR t)
+	{
+		set(t);
+	}
+	
+	/**
 	 * Creates a new instance from an existing instance of {@link Tup3dR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup3dR} to adopt the values from.
@@ -82,11 +93,6 @@ public class Tup3d implements Tup3dRW, Serializable, FormattableToString
 	 */
 	public Tup3d(Tup3dR t)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(t == null) throw new ArgumentNullException("t");
-		}
-		
 		set(t);
 	}
 	
@@ -114,6 +120,18 @@ public class Tup3d implements Tup3dRW, Serializable, FormattableToString
 	public Tup3d(double x, double y, double z)
 	{
 		set(x, y, z);
+	}
+	
+	/**
+	 * Creates a new instance with the values set to the corresponding parameters.
+	 * 
+	 * @param v The values as an array.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public Tup3d(double[] v)
+	{
+		setArray(v);
 	}
 	
 	@Override
@@ -161,11 +179,6 @@ public class Tup3d implements Tup3dRW, Serializable, FormattableToString
 	@Override
 	public Tup3d set(Tup3dR t)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(t == null) throw new ArgumentNullException("t");
-		}
-		
 		return set(t.getX(), t.getY(), t.getZ());
 	}
 	
@@ -200,13 +213,29 @@ public class Tup3d implements Tup3dRW, Serializable, FormattableToString
 	{
 		if(this == obj) return true;
 		if(obj == null) return false;
-		if(!(obj instanceof Tup3dR)) return false;
 		
-		Tup3dR other = (Tup3dR) obj;
-		if(Double.doubleToLongBits(getX()) != Double.doubleToLongBits(other.getX())) return false;
-		if(Double.doubleToLongBits(getY()) != Double.doubleToLongBits(other.getY())) return false;
-		if(Double.doubleToLongBits(getZ()) != Double.doubleToLongBits(other.getZ())) return false;
-		return true;
+		if(obj instanceof Tup3dR)
+		{
+			Tup3dR other = (Tup3dR) obj;
+			if(Double.doubleToLongBits(getX()) != Double.doubleToLongBits(other.getX())) return false;
+			if(Double.doubleToLongBits(getY()) != Double.doubleToLongBits(other.getY())) return false;
+			if(Double.doubleToLongBits(getZ()) != Double.doubleToLongBits(other.getZ())) return false;
+			
+			return true;
+		}
+		
+		if(obj instanceof TupdR)
+		{
+			TupdR other = (TupdR) obj;
+			if(getDimensions() != other.getDimensions()) return false;
+			if(Double.doubleToLongBits(getX()) != Double.doubleToLongBits(other.getByIndex(0))) return false;
+			if(Double.doubleToLongBits(getY()) != Double.doubleToLongBits(other.getByIndex(1))) return false;
+			if(Double.doubleToLongBits(getZ()) != Double.doubleToLongBits(other.getByIndex(2))) return false;
+			
+			return true;
+		}
+		
+		return false;
 	}
 	
 	@Override
@@ -236,5 +265,47 @@ public class Tup3d implements Tup3dRW, Serializable, FormattableToString
 	public Tup3d getNewInstance(double x, double y, double z)
 	{
 		return new Tup3d(x, y, z);
+	}
+	
+	@Override
+	public Tup3d getNewInstance(double value)
+	{
+		return (Tup3d)Tup3dRW.super.getNewInstance(value);
+	}
+	
+	@Override
+	public Tup3d getNewInstance(Tup3dR t)
+	{
+		return (Tup3d)Tup3dRW.super.getNewInstance(t);
+	}
+	
+	@Override
+	public Tup3d getNewInstance(TupdR t)
+	{
+		return (Tup3d)Tup3dRW.super.getNewInstance(t);
+	}
+	
+	@Override
+	public Tup3d getNewInstanceFromArray(double... values)
+	{
+		return (Tup3d)Tup3dRW.super.getNewInstanceFromArray(values);
+	}
+	
+	@Override
+	public Tup3d set(TupdR t)
+	{
+		return (Tup3d)Tup3dRW.super.set(t);
+	}
+	
+	@Override
+	public Tup3d setArray(double... values)
+	{
+		return (Tup3d)Tup3dRW.super.setArray(values);
+	}
+	
+	@Override
+	public Tup3d setByIndex(int index, double value)
+	{
+		return (Tup3d)Tup3dRW.super.setByIndex(index, value);
 	}
 }

@@ -27,13 +27,12 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
+import org.barghos.core.api.tuple.TupobjR;
 import org.barghos.core.api.tuple3.Tup3objR;
 import org.barghos.core.api.tuple3.Tup3objRW;
-import org.barghos.core.api.util.ArgumentNullException;
-import org.barghos.core.Barghos;
 
 /**
- * This class represents a 3-dimensional object tuple.
+ * This class represents a 3-dimensional {@link Object} tuple.
  * A tuple unlike a vector contains data that is not necessarly in any relation to each other,
  * where the data of a vector describes the same logical structure.
  * 
@@ -74,6 +73,18 @@ public class Tup3obj implements Tup3objRW, Serializable, FormattableToString
 	public Tup3obj() { }
 	
 	/**
+	 * Creates a new instance from an existing instance of {@link TupobjR} and adopts the values.
+	 * 
+	 * @param t An existing implementation of {@link TupobjR} to adopt the values from.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public Tup3obj(TupobjR t)
+	{
+		set(t);
+	}
+	
+	/**
 	 * Creates a new instance from an existing instance of {@link Tup3objR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup3objR} to adopt the values from.
@@ -82,14 +93,6 @@ public class Tup3obj implements Tup3objRW, Serializable, FormattableToString
 	 */
 	public Tup3obj(Tup3objR t)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(t == null) throw new ArgumentNullException("t");
-			if(t.getX() == null) throw new ArgumentNullException("t.getX()");
-			if(t.getY() == null) throw new ArgumentNullException("t.getY()");
-			if(t.getZ() == null) throw new ArgumentNullException("t.getZ()");
-		}
-		
 		set(t);
 	}
 	
@@ -102,11 +105,6 @@ public class Tup3obj implements Tup3objRW, Serializable, FormattableToString
 	 */
 	public Tup3obj(Object value)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(value == null) throw new ArgumentNullException("value");
-		}
-		
 		set(value);
 	}
 	
@@ -121,14 +119,19 @@ public class Tup3obj implements Tup3objRW, Serializable, FormattableToString
 	 */
 	public Tup3obj(Object x, Object y, Object z)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(x == null) throw new ArgumentNullException("x");
-			if(y == null) throw new ArgumentNullException("y");
-			if(z == null) throw new ArgumentNullException("z");
-		}
-		
 		set(x, y, z);
+	}
+	
+	/**
+	 * Creates a new instance with the values set to the corresponding parameters.
+	 * 
+	 * @param v The values as an array.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public Tup3obj(Object[] v)
+	{
+		setArray(v);
 	}
 	
 	@Override
@@ -152,11 +155,6 @@ public class Tup3obj implements Tup3objRW, Serializable, FormattableToString
 	@Override
 	public Tup3obj setX(Object x)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(x == null) throw new ArgumentNullException("x");
-		}
-		
 		this.x = x;
 		
 		return this;
@@ -165,11 +163,6 @@ public class Tup3obj implements Tup3objRW, Serializable, FormattableToString
 	@Override
 	public Tup3obj setY(Object y)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(y == null) throw new ArgumentNullException("y");
-		}
-		
 		this.y = y;
 		
 		return this;
@@ -178,11 +171,6 @@ public class Tup3obj implements Tup3objRW, Serializable, FormattableToString
 	@Override
 	public Tup3obj setZ(Object z)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(z == null) throw new ArgumentNullException("z");
-		}
-		
 		this.z = z;
 		
 		return this;
@@ -191,38 +179,18 @@ public class Tup3obj implements Tup3objRW, Serializable, FormattableToString
 	@Override
 	public Tup3obj set(Tup3objR t)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(t == null) throw new ArgumentNullException("t");
-			if(t.getX() == null) throw new ArgumentNullException("t.getX()");
-			if(t.getY() == null) throw new ArgumentNullException("t.getY()");
-			if(t.getZ() == null) throw new ArgumentNullException("t.getZ()");
-		}
-		
 		return set(t.getX(), t.getY(), t.getZ());
 	}
 	
 	@Override
 	public Tup3obj set(Object value)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(value == null) throw new ArgumentNullException("value");
-		}
-		
 		return set(value, value, value);
 	}
 	
 	@Override
 	public Tup3obj set(Object x, Object y, Object z)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(x == null) throw new ArgumentNullException("x");
-			if(y == null) throw new ArgumentNullException("y");
-			if(z == null) throw new ArgumentNullException("z");
-		}
-		
 		return setX(x).setY(y).setZ(z);
 	}
 	
@@ -242,13 +210,29 @@ public class Tup3obj implements Tup3objRW, Serializable, FormattableToString
 	{
 		if(this == obj) return true;
 		if(obj == null) return false;
-		if(!(obj instanceof Tup3objR)) return false;
 		
-		Tup3objR other = (Tup3objR) obj;
-		if(!getX().equals(other.getX())) return false;
-		if(!getY().equals(other.getY())) return false;
-		if(!getZ().equals(other.getZ())) return false;
-		return true;
+		if(obj instanceof Tup3objR)
+		{
+			Tup3objR other = (Tup3objR) obj;
+			if(!getX().equals(other.getX())) return false;
+			if(!getY().equals(other.getY())) return false;
+			if(!getZ().equals(other.getZ())) return false;
+			
+			return true;
+		}
+		
+		if(obj instanceof TupobjR)
+		{
+			TupobjR other = (TupobjR) obj;
+			if(getDimensions() != other.getDimensions()) return false;
+			if(!getX().equals(other.getByIndex(0))) return false;
+			if(!getY().equals(other.getByIndex(1))) return false;
+			if(!getZ().equals(other.getByIndex(2))) return false;
+			
+			return true;
+		}
+		
+		return false;
 	}
 	
 	@Override
@@ -278,5 +262,47 @@ public class Tup3obj implements Tup3objRW, Serializable, FormattableToString
 	public Tup3obj getNewInstance(Object x, Object y, Object z)
 	{
 		return new Tup3obj(x, y, z);
+	}
+	
+	@Override
+	public Tup3obj getNewInstance(Object value)
+	{
+		return (Tup3obj)Tup3objRW.super.getNewInstance(value);
+	}
+	
+	@Override
+	public Tup3obj getNewInstance(Tup3objR t)
+	{
+		return (Tup3obj)Tup3objRW.super.getNewInstance(t);
+	}
+	
+	@Override
+	public Tup3obj getNewInstance(TupobjR t)
+	{
+		return (Tup3obj)Tup3objRW.super.getNewInstance(t);
+	}
+	
+	@Override
+	public Tup3obj getNewInstanceFromArray(Object... values)
+	{
+		return (Tup3obj)Tup3objRW.super.getNewInstanceFromArray(values);
+	}
+	
+	@Override
+	public Tup3obj set(TupobjR t)
+	{
+		return (Tup3obj)Tup3objRW.super.set(t);
+	}
+	
+	@Override
+	public Tup3obj setArray(Object... values)
+	{
+		return (Tup3obj)Tup3objRW.super.setArray(values);
+	}
+	
+	@Override
+	public Tup3obj setByIndex(int index, Object value)
+	{
+		return (Tup3obj)Tup3objRW.super.setByIndex(index, value);
 	}
 }
