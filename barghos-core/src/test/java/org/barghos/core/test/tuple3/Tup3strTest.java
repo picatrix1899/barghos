@@ -23,12 +23,14 @@
 package org.barghos.core.test.tuple3;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.Test;
 
-import org.barghos.core.tuple3.PTup3str;
-import org.barghos.core.tuple3.Tup3str;
+import org.barghos.core.api.tuple.TupstrR;
+import org.barghos.core.api.tuple3.Tup3strR;
 
+import org.barghos.core.tuple3.Tup3str;
 /**
  * This class provides component tests for the class {@link Tup3str}.
  * 
@@ -37,13 +39,12 @@ import org.barghos.core.tuple3.Tup3str;
 class Tup3strTest
 {
 	/**
-	 * This test ensures, that the constructor {@link Tup3str#Tup3str()} aktually works and
-	 * that the components are set to 0.
+	 * This test ensures, that the default constructor {@link Tup3str#Tup3str()} sets the components to "".
 	 * 
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void ctorEmptyTest()
+	void ctor_DefaultTest()
 	{
 		Tup3str t = new Tup3str();
 		
@@ -51,58 +52,109 @@ class Tup3strTest
 		assertEquals("", t.y);
 		assertEquals("", t.z);
 	}
-	
+
 	/**
-	 * This test ensures, that  the constructor
-	 * {@link Tup3str#Tup3str(org.barghos.core.api.tuple3.Tup3strR) Tup3str.Tup3str(Tup3strR)} actually works and
-	 * that the components are adopted from the input tuple.
+	 * This test ensures, that an instance of {@link Tup3str} generated from an existing instance of {@link TupstrR},
+	 * returns the correct components.
 	 * 
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void ctorCloneTest()
+	void ctor_TupleTest()
 	{
-		Tup3str t = new Tup3str(PTup3str.gen("arg1", "arg2", "arg3"));
+		TupstrR original = mock(TupstrR.class);
 		
-		assertEquals("arg1", t.x);
-		assertEquals("arg2", t.y);
-		assertEquals("arg3", t.z);
+		when(original.getArray()).thenReturn(new String[] {"a", "b", "c"});
+		
+		Tup3str t = new Tup3str(original);
+		
+		assertEquals("a", t.getX());
+		assertEquals("b", t.getY());
+		assertEquals("c", t.getZ());
+		
+		verify(original).getArray();
+		
+		verifyNoMoreInteractions(original);
 	}
 	
 	/**
-	 * This test ensures, that the constructor {@link Tup3str#Tup3str(String)} actually works,
-	 * and that the components are set to the value.
+	 * This test ensures, that an instance of {@link Tup3str} generated from an existing instance of {@link Tup3strR},
+	 * returns the correct components.
 	 * 
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void ctorScalarTest()
+	void ctor_Tuple2Test()
 	{
-		Tup3str t = new Tup3str("arg1");
+		Tup3strR original = mock(Tup3strR.class);
 		
-		assertEquals("arg1", t.x);
-		assertEquals("arg1", t.y);
-		assertEquals("arg1", t.z);
+		when(original.getX()).thenReturn("a");
+		when(original.getY()).thenReturn("b");
+		when(original.getZ()).thenReturn("c");
+		
+		Tup3str t = new Tup3str(original);
+		
+		assertEquals("a", t.getX());
+		assertEquals("b", t.getY());
+		assertEquals("c", t.getZ());
+		
+		verify(original).getX();
+		verify(original).getY();
+		verify(original).getZ();
+		
+		verifyNoMoreInteractions(original);
 	}
 	
 	/**
-	 * This test ensures, that the constructor {@link Tup3str#Tup3str(String, String, String)} actually works,
-	 * and that the components are set to the respective parameters.
+	 * This test ensures, that an instance of {@link Tup3str} generated from a scalar,
+	 * returns the correct components.
 	 * 
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void ctorComponentsTest()
+	void ctor_ValueTest()
 	{
-		Tup3str t = new Tup3str("arg1", "arg2", "arg3");
+		Tup3str t = new Tup3str("a");
 		
-		assertEquals("arg1", t.x);
-		assertEquals("arg2", t.y);
-		assertEquals("arg3", t.z);
+		assertEquals("a", t.getX());
+		assertEquals("a", t.getY());
+		assertEquals("a", t.getZ());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup3str#setX(String)} sets the x component on the tuple
+	 * This test ensures, that an instance of {@link Tup3str} generated from an array,
+	 * returns the correct components.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void ctor_ArrayTest()
+	{
+		Tup3str t = new Tup3str(new String[] {"a", "b", "c"});
+		
+		assertEquals("a", t.getX());
+		assertEquals("b", t.getY());
+		assertEquals("c", t.getZ());
+	}
+	
+	/**
+	 * This test ensures, that an instance of {@link Tup3str} generated from two components,
+	 * returns the correct components.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void ctor_ComponentsTest()
+	{
+		Tup3str t = new Tup3str("a", "b", "c");
+		
+		assertEquals("a", t.getX());
+		assertEquals("b", t.getY());
+		assertEquals("c", t.getZ());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup3str#setX(String)} sets the x component of the tuple
 	 * to the value and returns the current tuple.
 	 * 
 	 * @since 1.0.0.0
@@ -112,12 +164,12 @@ class Tup3strTest
 	{
 		Tup3str t = new Tup3str();
 		
-		assertSame(t, t.setX("arg1"));
-		assertEquals("arg1", t.x);
+		assertSame(t, t.setX("a"));
+		assertEquals("a", t.x);
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup3str#setY(String)} sets the y component on the tuple
+	 * This test ensures, that the function {@link Tup3str#setY(String)} sets the y component of the tuple
 	 * to the value and returns the current tuple.
 	 * 
 	 * @since 1.0.0.0
@@ -127,12 +179,12 @@ class Tup3strTest
 	{
 		Tup3str t = new Tup3str();
 		
-		assertSame(t, t.setY("arg1"));
-		assertEquals("arg1", t.y);
+		assertSame(t, t.setY("b"));
+		assertEquals("b", t.y);
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup3str#setZ(String)} sets the z component on the tuple
+	 * This test ensures, that the function {@link Tup3str#setZ(String)} sets the z component of the tuple
 	 * to the value and returns the current tuple.
 	 * 
 	 * @since 1.0.0.0
@@ -142,26 +194,42 @@ class Tup3strTest
 	{
 		Tup3str t = new Tup3str();
 		
-		assertSame(t, t.setZ("arg1"));
-		assertEquals("arg1", t.z);
+		assertSame(t, t.setZ("c"));
+		assertEquals("c", t.z);
 	}
 	
 	/**
 	 * This test ensures, that the function
-	 * {@link Tup3str#set(org.barghos.core.api.tuple3.Tup3strR) Tup3str.set(Tup3strR)}
+	 * {@link Tup3str#set(org.barghos.core.api.tuple2.Tup3strR) Tup3str.set(Tup3strR)}
 	 * adopts the components from the input tuple and returns the current tuple.
 	 * 
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void setCloneTest()
+	void set_CloneTest()
 	{
-		Tup3str t = new Tup3str();
+		Tup3str t = mock(Tup3str.class);
 		
-		assertSame(t, t.set(PTup3str.gen("arg1", "arg2", "arg3")));
-		assertEquals("arg1", t.x);
-		assertEquals("arg2", t.y);
-		assertEquals("arg3", t.z);
+		Tup3strR t2 = mock(Tup3strR.class);
+	
+		when(t.set(t2)).thenCallRealMethod();
+		
+		when(t2.getX()).thenReturn("a");
+		when(t2.getY()).thenReturn("b");
+		when(t2.getZ()).thenReturn("c");
+		
+		when(t.set("a", "b", "c")).thenReturn(t);
+		
+		assertSame(t, t.set(t2));
+		
+		verify(t).set(t2);
+		
+		verify(t2).getX();
+		verify(t2).getY();
+		verify(t2).getZ();
+		verify(t).set("a", "b", "c");
+		
+		verifyNoMoreInteractions(t, t2);
 	}
 	
 	/**
@@ -171,14 +239,21 @@ class Tup3strTest
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void setScalarTest()
+	void set_ValueTest()
 	{
-		Tup3str t = new Tup3str();
+		Tup3str t = mock(Tup3str.class);
+
+		when(t.set("a")).thenCallRealMethod();
+
+		when(t.set("a", "a", "a")).thenReturn(t);
 		
-		assertSame(t, t.set("arg1"));
-		assertEquals("arg1", t.x);
-		assertEquals("arg1", t.y);
-		assertEquals("arg1", t.z);
+		assertSame(t, t.set("a"));
+		
+		verify(t).set("a");
+
+		verify(t).set("a", "a", "a");
+		
+		verifyNoMoreInteractions(t);
 	}
 	
 	/**
@@ -188,15 +263,25 @@ class Tup3strTest
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void setComponentsTest()
+	void set_ComponentsTest()
 	{
-		Tup3str t = new Tup3str();
+		Tup3str t = mock(Tup3str.class);
+
+		when(t.set("a", "b", "c")).thenCallRealMethod();
+
+		when(t.setX("a")).thenReturn(t);
+		when(t.setY("b")).thenReturn(t);
+		when(t.setZ("c")).thenReturn(t);
 		
-		assertSame(t, t.set("arg1", "arg2", "arg3"));
+		assertSame(t, t.set("a", "b", "c"));
+
+		verify(t).set("a", "b", "c");
 		
-		assertEquals("arg1", t.x);
-		assertEquals("arg2", t.y);
-		assertEquals("arg3", t.z);
+		verify(t).setX("a");
+		verify(t).setY("b");
+		verify(t).setZ("c");
+		
+		verifyNoMoreInteractions(t);
 	}
 	
 	/**
@@ -208,9 +293,9 @@ class Tup3strTest
 	@Test
 	void getXTest()
 	{
-		Tup3str t = new Tup3str("arg1", "arg2", "arg3");
+		Tup3str t = new Tup3str("a", "b", "c");
 		
-		assertEquals("arg1", t.getX());
+		assertEquals("a", t.getX());
 		assertEquals(t.x, t.getX());
 	}
 	
@@ -223,14 +308,14 @@ class Tup3strTest
 	@Test
 	void getYTest()
 	{
-		Tup3str t = new Tup3str("arg1", "arg2", "arg3");
+		Tup3str t = new Tup3str("a", "b", "c");
 		
-		assertEquals("arg2", t.getY());
+		assertEquals("b", t.getY());
 		assertEquals(t.y, t.getY());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup3str#getZ()} actually returns the value of the
+	 * This test ensures, that the function {@link Tup3str#getY()} actually returns the value of the
 	 * z component.
 	 * 
 	 * @since 1.0.0.0
@@ -238,29 +323,238 @@ class Tup3strTest
 	@Test
 	void getZTest()
 	{
-		Tup3str t = new Tup3str("arg1", "arg2", "arg3");
+		Tup3str t = new Tup3str("a", "b", "c");
 		
-		assertEquals("arg3", t.getZ());
+		assertEquals("c", t.getZ());
 		assertEquals(t.z, t.getZ());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup3str#clone()} generates a new instance of
-	 * {@link Tup3str} and adopts the components from the original.
-	 * 
-	 * @since 1.0.0.0
+	 * This test ensures, that the function {@link Tup3str#hashCode()} eturns the correct hash.
+	 */
+	@Test
+	void hashCodeTest()
+	{
+		Tup3str t = new Tup3str("a", "b", "c");
+
+		assertEquals(126145, t.hashCode());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup3str#clone()} creates a new instance that satisfies
+	 * the requirements for clone-funktions.
 	 */
 	@Test
 	void cloneTest()
 	{
-		Tup3str t = new Tup3str("arg1", "arg2", "arg3");
+		Tup3str original = new Tup3str("a", "b", "c");
+		Tup3str t = original.clone();
 		
-		Tup3str result = t.clone();
+		assertFalse(original == t);
+		assertTrue(original.equals(t));
+		assertTrue(t.equals(original));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup3str#equals(Object)} method returns true if
+	 * the object to test is the same as the testing object.
+	 */
+	@Test
+	void equals_SameTest()
+	{
+		Tup3str t1 = new Tup3str("a", "b", "c");
 		
-		assertNotSame(t, result);
-		assertEquals("arg1", result.getX());
-		assertEquals("arg2", result.getY());
-		assertEquals("arg3", result.getZ());
+		assertTrue(t1.equals(t1));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup3str#equals(Object)} method returns false if
+	 * the object to test is null.
+	 */
+	@Test
+	void equals_NullTest()
+	{
+		Tup3str t1 = new Tup3str("a", "b", "c");
+		
+		assertFalse(t1.equals(null));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup3str#equals(Object)} method returns false if
+	 * the object to test is of an unsupported type.
+	 */
+	@Test
+	void equals_IncompatibleTest()
+	{
+		Tup3str t1 = new Tup3str("a", "b", "c");
+		
+		assertFalse(t1.equals(new Object()));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup3str#equals(Object)} method returns true if
+	 * the object to test is of the type {@link Tup3strR} and has the same values as the testing object.
+	 */
+	@Test
+	void equals_Tuple2Test()
+	{
+		Tup3str t1 = new Tup3str("a", "b", "c");
+		
+		Tup3strR t2 = mock(Tup3strR.class);
+		
+		when(t2.getX()).thenReturn("a");
+		when(t2.getY()).thenReturn("b");
+		when(t2.getZ()).thenReturn("c");
+		
+		assertTrue(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup3str#equals(Object)} method returns false if
+	 * the object to test is of the type {@link Tup3strR} and has the same amount of dimensions and
+	 * a different value of the x component as the testing object.
+	 */
+	@Test
+	void equals_Tuple2_VaryingXTest()
+	{
+		Tup3str t1 = new Tup3str("a", "b", "c");
+		
+		Tup3strR t2 = mock(Tup3strR.class);
+		
+		when(t2.getX()).thenReturn("d");
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup3str#equals(Object)} method returns false if
+	 * the object to test is of the type {@link Tup3strR} and has the same amount of dimensions and
+	 * a different value of the y component as the testing object.
+	 */
+	@Test
+	void equals_Tuple2_VaryingYTest()
+	{
+		Tup3str t1 = new Tup3str("a", "b", "c");
+		
+		Tup3strR t2 = mock(Tup3strR.class);
+		
+		when(t2.getX()).thenReturn("a");
+		when(t2.getY()).thenReturn("d");
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup3str#equals(Object)} method returns false if
+	 * the object to test is of the type {@link Tup3strR} and has the same amount of dimensions and
+	 * a different value of the z component as the testing object.
+	 */
+	@Test
+	void equals_Tuple2_VaryingZTest()
+	{
+		Tup3str t1 = new Tup3str("a", "b", "c");
+		
+		Tup3strR t2 = mock(Tup3strR.class);
+		
+		when(t2.getX()).thenReturn("a");
+		when(t2.getY()).thenReturn("b");
+		when(t2.getZ()).thenReturn("d");
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup3str#equals(Object)} method returns true if
+	 * the object to test is of the type {@link TupstrR} and has the same amount of dimensions and
+	 * the same values as the testing object.
+	 */
+	@Test
+	void equals_TupleTest()
+	{
+		Tup3str t1 = new Tup3str("a", "b", "c");
+		
+		TupstrR t2 = mock(TupstrR.class);
+		
+		when(t2.getDimensions()).thenReturn(3);
+		when(t2.getByIndex(0)).thenReturn("a");
+		when(t2.getByIndex(1)).thenReturn("b");
+		when(t2.getByIndex(2)).thenReturn("c");
+		
+		assertTrue(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup3str#equals(Object)} method returns false if
+	 * the object to test is of the type {@link TupstrR} and has a different amount of dimensions
+	 * as the testing object.
+	 */
+	@Test
+	void equals_Tuple_VaryingDimensionsTest()
+	{
+		Tup3str t1 = new Tup3str("a", "b", "c");
+		
+		TupstrR t2 = mock(TupstrR.class);
+		
+		when(t2.getDimensions()).thenReturn(1);
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup3str#equals(Object)} method returns false if
+	 * the object to test is of the type {@link TupstrR} and has the same amount of dimensions and
+	 * a different value of the x component as the testing object.
+	 */
+	@Test
+	void equals_Tuple_VaryingXTest()
+	{
+		Tup3str t1 = new Tup3str("a", "b", "c");
+		
+		TupstrR t2 = mock(TupstrR.class);
+		
+		when(t2.getDimensions()).thenReturn(3);
+		when(t2.getByIndex(0)).thenReturn("d");
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup3str#equals(Object)} method returns false if
+	 * the object to test is of the type {@link TupstrR} and has the same amount of dimensions and
+	 * a different value of the y component as the testing object.
+	 */
+	@Test
+	void equals_Tuple_VaryingYTest()
+	{
+		Tup3str t1 = new Tup3str("a", "b", "c");
+		
+		TupstrR t2 = mock(TupstrR.class);
+		
+		when(t2.getDimensions()).thenReturn(3);
+		when(t2.getByIndex(0)).thenReturn("a");
+		when(t2.getByIndex(1)).thenReturn("d");
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup3str#equals(Object)} method returns false if
+	 * the object to test is of the type {@link TupstrR} and has the same amount of dimensions and
+	 * a different value of the z component as the testing object.
+	 */
+	@Test
+	void equals_Tuple_VaryingZTest()
+	{
+		Tup3str t1 = new Tup3str("a", "b", "c");
+		
+		TupstrR t2 = mock(TupstrR.class);
+		
+		when(t2.getDimensions()).thenReturn(3);
+		when(t2.getByIndex(0)).thenReturn("a");
+		when(t2.getByIndex(1)).thenReturn("b");
+		when(t2.getByIndex(2)).thenReturn("d");
+		
+		assertFalse(t1.equals(t2));
 	}
 	
 	/**
@@ -271,31 +565,9 @@ class Tup3strTest
 	@Test
 	void toStringTest()
 	{
-		Tup3str t = new Tup3str("arg1", "arg2", "arg3");
+		Tup3str t = new Tup3str("a", "b", "c");
 		
-		assertEquals("tup3str(x=arg1, y=arg2, z=arg3)", t.toString());
-	}
-	
-	/**
-	 * This test ensures, that the special policies for the function {@link Tup3str#equals(Object)} are working.
-	 * 
-	 * @since 1.0.0.0
-	 */
-	@SuppressWarnings("unlikely-arg-type")
-	@Test
-	void equalsTest()
-	{
-		Tup3str t = new Tup3str("arg1", "arg2", "arg3");
-		
-		assertTrue(t.equals(t));
-		assertFalse(t.equals(null));
-		assertFalse(t.equals(0.0));
-		assertFalse(t.equals(new Tup3str("arg2", "arg2", "arg3"))); // x wrong
-		assertFalse(t.equals(new Tup3str("arg1", "arg3", "arg3"))); // y wrong
-		assertFalse(t.equals(new Tup3str("arg1", "arg2", "arg4"))); // z wrong
-		
-		assertTrue(t.equals(new Tup3str("arg1", "arg2", "arg3")));
-		assertTrue(t.equals(PTup3str.gen("arg1", "arg2", "arg3")));
+		assertEquals("tup3str(x=a, y=b, z=c)", t.toString());
 	}
 	
 	/**
@@ -303,15 +575,118 @@ class Tup3strTest
 	 * returns a new instance of {@link Tup3str} with the given values.
 	 */
 	@Test
-	void getNewInstanceTest()
+	void getNewInstance_ComponentsTest()
 	{
-		Tup3str t = new Tup3str("a", "a", "a");
-
-		Tup3str result = t.getNewInstance("b", "c", "d");
+		Tup3str original = new Tup3str("a", "b", "c");
+		Tup3str newInstance = original.getNewInstance("c", "d", "e");
 		
-		assertNotSame(t, result);
-		assertEquals("b", result.getX());
-		assertEquals("c", result.getY());
-		assertEquals("d", result.getZ());
+		assertEquals("a", original.getX());
+		assertEquals("b", original.getY());
+		assertEquals("c", original.getZ());
+		assertEquals("c", newInstance.getX());
+		assertEquals("d", newInstance.getY());
+		assertEquals("e", newInstance.getZ());
+	}
+	
+	/**
+	 * This test ensures, that the default implementation of the function {@link Tup3str#getNewInstance(String)} calls
+	 * the function {@link Tup3str#getNewInstance(String, String, String)} with the correct components.
+	 */
+	@Test
+	void getNewInstance_ValueTest()
+	{
+		Tup3str newInstance = mock(Tup3str.class);
+		Tup3str t = mock(Tup3str.class);
+		
+		when(t.getNewInstance("a")).thenCallRealMethod();
+
+		when(t.getNewInstance("a", "a", "a")).thenReturn(newInstance);
+		
+		assertSame(newInstance, t.getNewInstance("a"));
+		
+		verify(t).getNewInstance("a");
+		
+		verify(t).getNewInstance("a", "a", "a");
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup3str#getNewInstance(Tup3strR)}
+	 * returns a new instance of {@link Tup3str} with the given values.
+	 */
+	@Test
+	void getNewInstance_Tuple2Test()
+	{
+		Tup3strR original = mock(Tup3strR.class);
+		Tup3str newInstance = mock(Tup3str.class);
+		Tup3str t = mock(Tup3str.class);
+		
+		when(t.getNewInstance(original)).thenCallRealMethod();
+		
+		when(original.getX()).thenReturn("a");
+		when(original.getY()).thenReturn("b");
+		when(original.getZ()).thenReturn("c");
+		when(t.getNewInstance("a", "b", "c")).thenReturn(newInstance);
+		
+		assertSame(newInstance, t.getNewInstance(original));
+		
+		verify(t).getNewInstance(original);
+		
+		verify(original).getX();
+		verify(original).getY();
+		verify(original).getZ();
+		verify(t).getNewInstance("a", "b", "c");
+		
+		verifyNoMoreInteractions(t, original);
+	}
+	
+	/**
+	 * This test ensures, that the default implementation of the function {@link Tup3str#getNewInstance(TupstrR)} calls
+	 * the function {@link Tup3str#getNewInstance(String, String, String)} with the correct components.
+	 */
+	@Test
+	void getNewInstance_TupleTest()
+	{
+		TupstrR original = mock(TupstrR.class);
+		Tup3str newInstance = mock(Tup3str.class);
+		Tup3str t = mock(Tup3str.class);
+		
+		when(t.getNewInstance(original)).thenCallRealMethod();
+		
+		when(original.getArray()).thenReturn(new String[] {"a", "b", "c"});
+		when(t.getNewInstance("a", "b", "c")).thenReturn(newInstance);
+		
+		assertSame(newInstance, t.getNewInstance(original));
+		
+		verify(t).getNewInstance(original);
+		
+		verify(original).getArray();
+		verify(t).getNewInstance("a", "b", "c");
+		
+		verifyNoMoreInteractions(t, original);
+	}
+	
+	/**
+	 * This test ensures, that the default implementation of the function {@link Tup3str#getNewInstanceFromArray(String[])} calls
+	 * the function {@link Tup3str#getNewInstance(String, String, String)} with the correct components.
+	 */
+	@Test
+	void getNewInstanceFromArrayTest()
+	{
+		Tup3str newInstance = mock(Tup3str.class);
+		Tup3str t = mock(Tup3str.class);
+		
+		when(t.getNewInstanceFromArray(new String[] {"a", "b", "c"})).thenCallRealMethod();
+
+		when(t.getNewInstance("a", "b", "c")).thenReturn(newInstance);
+		
+		assertSame(newInstance, t.getNewInstanceFromArray(new String[] {"a", "b", "c"}));
+		
+		verify(t).getNewInstanceFromArray(new String[] {"a", "b", "c"});
+		
+		verify(t).getNewInstance("a", "b", "c");
+		
+		verifyNoMoreInteractions(t);
 	}
 }

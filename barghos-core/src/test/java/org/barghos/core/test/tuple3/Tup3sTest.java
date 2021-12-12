@@ -23,10 +23,13 @@
 package org.barghos.core.test.tuple3;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.Test;
 
-import org.barghos.core.tuple3.PTup3s;
+import org.barghos.core.api.tuple.TupsR;
+import org.barghos.core.api.tuple3.Tup3sR;
+
 import org.barghos.core.tuple3.Tup3s;
 
 /**
@@ -37,13 +40,12 @@ import org.barghos.core.tuple3.Tup3s;
 class Tup3sTest
 {
 	/**
-	 * This test ensures, that the constructor {@link Tup3s#Tup3s()} aktually works and
-	 * that the components are set to 0.
+	 * This test ensures, that the default constructor {@link Tup3s#Tup3s()} sets the components to 0.
 	 * 
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void ctorEmptyTest()
+	void ctor_DefaultTest()
 	{
 		Tup3s t = new Tup3s();
 		
@@ -51,58 +53,109 @@ class Tup3sTest
 		assertEquals((short)0, t.y);
 		assertEquals((short)0, t.z);
 	}
-	
+
 	/**
-	 * This test ensures, that  the constructor
-	 * {@link Tup3s#Tup3s(org.barghos.core.api.tuple3.Tup3sR) Tup3s.Tup3s(Tup3sR)} actually works and
-	 * that the components are adopted from the input tuple.
+	 * This test ensures, that an instance of {@link Tup3s} generated from an existing instance of {@link TupsR},
+	 * returns the correct components.
 	 * 
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void ctorCloneTest()
+	void ctor_TupleTest()
 	{
-		Tup3s t = new Tup3s(PTup3s.gen((short)1, (short)2, (short)3));
+		TupsR original = mock(TupsR.class);
 		
-		assertEquals((short)1, t.x);
-		assertEquals((short)2, t.y);
-		assertEquals((short)3, t.z);
+		when(original.getArray()).thenReturn(new short[] {(short)1, (short)2, (short)3});
+		
+		Tup3s t = new Tup3s(original);
+		
+		assertEquals((short)1, t.getX());
+		assertEquals((short)2, t.getY());
+		assertEquals((short)3, t.getZ());
+		
+		verify(original).getArray();
+		
+		verifyNoMoreInteractions(original);
 	}
 	
 	/**
-	 * This test ensures, that the constructor {@link Tup3s#Tup3s(short)} actually works,
-	 * and that the components are set to the value.
+	 * This test ensures, that an instance of {@link Tup3s} generated from an existing instance of {@link Tup3sR},
+	 * returns the correct components.
 	 * 
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void ctorScalarTest()
+	void ctor_Tuple2Test()
+	{
+		Tup3sR original = mock(Tup3sR.class);
+		
+		when(original.getX()).thenReturn((short)1);
+		when(original.getY()).thenReturn((short)2);
+		when(original.getZ()).thenReturn((short)3);
+		
+		Tup3s t = new Tup3s(original);
+		
+		assertEquals((short)1, t.getX());
+		assertEquals((short)2, t.getY());
+		assertEquals((short)3, t.getZ());
+		
+		verify(original).getX();
+		verify(original).getY();
+		verify(original).getZ();
+		
+		verifyNoMoreInteractions(original);
+	}
+	
+	/**
+	 * This test ensures, that an instance of {@link Tup3s} generated from a scalar,
+	 * returns the correct components.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void ctor_ValueTest()
 	{
 		Tup3s t = new Tup3s((short)1);
 		
-		assertEquals((short)1, t.x);
-		assertEquals((short)1, t.y);
-		assertEquals((short)1, t.z);
+		assertEquals((short)1, t.getX());
+		assertEquals((short)1, t.getY());
+		assertEquals((short)1, t.getZ());
 	}
 	
 	/**
-	 * This test ensures, that the constructor {@link Tup3s#Tup3s(short, short, short)} actually works,
-	 * and that the components are set to the respective parameters.
+	 * This test ensures, that an instance of {@link Tup3s} generated from an array,
+	 * returns the correct components.
 	 * 
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void ctorComponentsTest()
+	void ctor_ArrayTest()
 	{
-		Tup3s t = new Tup3s((short)1, (short)2, (short)3);
+		Tup3s t = new Tup3s(new short[] {(short)1, (short)2, (short)3});
 		
-		assertEquals((short)1, t.x);
-		assertEquals((short)2, t.y);
-		assertEquals((short)3, t.z);
+		assertEquals((short)1, t.getX());
+		assertEquals((short)2, t.getY());
+		assertEquals((short)3, t.getZ());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup3s#setX(short)} sets the x component on the tuple
+	 * This test ensures, that an instance of {@link Tup3s} generated from two components,
+	 * returns the correct components.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void ctor_ComponentsTest()
+	{
+		Tup3s t = new Tup3s((short)1, (short)2, (short)3);
+		
+		assertEquals((short)1, t.getX());
+		assertEquals((short)2, t.getY());
+		assertEquals((short)3, t.getZ());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup3s#setX(short)} sets the x component of the tuple
 	 * to the value and returns the current tuple.
 	 * 
 	 * @since 1.0.0.0
@@ -117,7 +170,7 @@ class Tup3sTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup3s#setY(short)} sets the y component on the tuple
+	 * This test ensures, that the function {@link Tup3s#setY(short)} sets the y component of the tuple
 	 * to the value and returns the current tuple.
 	 * 
 	 * @since 1.0.0.0
@@ -132,7 +185,7 @@ class Tup3sTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup3s#setZ(short)} sets the z component on the tuple
+	 * This test ensures, that the function {@link Tup3s#setZ(short)} sets the z component of the tuple
 	 * to the value and returns the current tuple.
 	 * 
 	 * @since 1.0.0.0
@@ -148,20 +201,36 @@ class Tup3sTest
 	
 	/**
 	 * This test ensures, that the function
-	 * {@link Tup3s#set(org.barghos.core.api.tuple3.Tup3sR) Tup3s.set(Tup3sR)}
+	 * {@link Tup3s#set(org.barghos.core.api.tuple2.Tup3sR) Tup3s.set(Tup3sR)}
 	 * adopts the components from the input tuple and returns the current tuple.
 	 * 
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void setCloneTest()
+	void set_CloneTest()
 	{
-		Tup3s t = new Tup3s();
+		Tup3s t = mock(Tup3s.class);
 		
-		assertSame(t, t.set(PTup3s.gen((short)1, (short)2, (short)3)));
-		assertEquals((short)1, t.x);
-		assertEquals((short)2, t.y);
-		assertEquals((short)3, t.z);
+		Tup3sR t2 = mock(Tup3sR.class);
+	
+		when(t.set(t2)).thenCallRealMethod();
+		
+		when(t2.getX()).thenReturn((short)1);
+		when(t2.getY()).thenReturn((short)2);
+		when(t2.getZ()).thenReturn((short)3);
+		
+		when(t.set((short)1, (short)2, (short)3)).thenReturn(t);
+		
+		assertSame(t, t.set(t2));
+		
+		verify(t).set(t2);
+		
+		verify(t2).getX();
+		verify(t2).getY();
+		verify(t2).getZ();
+		verify(t).set((short)1, (short)2, (short)3);
+		
+		verifyNoMoreInteractions(t, t2);
 	}
 	
 	/**
@@ -171,14 +240,21 @@ class Tup3sTest
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void setScalarTest()
+	void set_ValueTest()
 	{
-		Tup3s t = new Tup3s();
+		Tup3s t = mock(Tup3s.class);
+
+		when(t.set((short)1)).thenCallRealMethod();
+
+		when(t.set((short)1, (short)1, (short)1)).thenReturn(t);
 		
 		assertSame(t, t.set((short)1));
-		assertEquals((short)1, t.x);
-		assertEquals((short)1, t.y);
-		assertEquals((short)1, t.z);
+		
+		verify(t).set((short)1);
+
+		verify(t).set((short)1, (short)1, (short)1);
+		
+		verifyNoMoreInteractions(t);
 	}
 	
 	/**
@@ -188,15 +264,25 @@ class Tup3sTest
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void setComponentsTest()
+	void set_ComponentsTest()
 	{
-		Tup3s t = new Tup3s();
+		Tup3s t = mock(Tup3s.class);
+
+		when(t.set((short)1, (short)2, (short)3)).thenCallRealMethod();
+
+		when(t.setX((short)1)).thenReturn(t);
+		when(t.setY((short)2)).thenReturn(t);
+		when(t.setZ((short)3)).thenReturn(t);
 		
 		assertSame(t, t.set((short)1, (short)2, (short)3));
+
+		verify(t).set((short)1, (short)2, (short)3);
 		
-		assertEquals((short)1, t.x);
-		assertEquals((short)2, t.y);
-		assertEquals((short)3, t.z);
+		verify(t).setX((short)1);
+		verify(t).setY((short)2);
+		verify(t).setZ((short)3);
+		
+		verifyNoMoreInteractions(t);
 	}
 	
 	/**
@@ -245,26 +331,235 @@ class Tup3sTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup3s#clone()} generates a new instance of
-	 * {@link Tup3s} and adopts the components from the original.
-	 * 
-	 * @since 1.0.0.0
+	 * This test ensures, that the function {@link Tup3s#hashCode()} eturns the correct hash.
+	 */
+	@Test
+	void hashCodeTest()
+	{
+		Tup3s t = new Tup3s((short)1, (short)2, (short)3);
+
+		assertEquals(30817, t.hashCode());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup3s#clone()} creates a new instance that satisfies
+	 * the requirements for clone-funktions.
 	 */
 	@Test
 	void cloneTest()
 	{
-		Tup3s t = new Tup3s((short)1, (short)2, (short)3);
+		Tup3s original = new Tup3s((short)1, (short)2, (short)3);
+		Tup3s t = original.clone();
 		
-		Tup3s result = t.clone();
-		
-		assertNotSame(t, result);
-		assertEquals((short)1, result.getX());
-		assertEquals((short)2, result.getY());
-		assertEquals((short)3, result.getZ());
+		assertFalse(original == t);
+		assertTrue(original.equals(t));
+		assertTrue(t.equals(original));
 	}
 	
 	/**
-	 * This test ensures, that the {@link Tup3s#toString()} function prints the components correctly.
+	 * This test ensures, that the {@link Tup3s#equals(Object)} method returns true if
+	 * the object to test is the same as the testing object.
+	 */
+	@Test
+	void equals_SameTest()
+	{
+		Tup3s t1 = new Tup3s((short)1, (short)2, (short)3);
+		
+		assertTrue(t1.equals(t1));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup3s#equals(Object)} method returns false if
+	 * the object to test is null.
+	 */
+	@Test
+	void equals_NullTest()
+	{
+		Tup3s t1 = new Tup3s((short)1, (short)2, (short)3);
+		
+		assertFalse(t1.equals(null));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup3s#equals(Object)} method returns false if
+	 * the object to test is of an unsupported type.
+	 */
+	@Test
+	void equals_IncompatibleTest()
+	{
+		Tup3s t1 = new Tup3s((short)1, (short)2, (short)3);
+		
+		assertFalse(t1.equals(new Object()));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup3s#equals(Object)} method returns true if
+	 * the object to test is of the type {@link Tup3sR} and has the same values as the testing object.
+	 */
+	@Test
+	void equals_Tuple2Test()
+	{
+		Tup3s t1 = new Tup3s((short)1, (short)2, (short)3);
+		
+		Tup3sR t2 = mock(Tup3sR.class);
+		
+		when(t2.getX()).thenReturn((short)1);
+		when(t2.getY()).thenReturn((short)2);
+		when(t2.getZ()).thenReturn((short)3);
+		
+		assertTrue(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup3s#equals(Object)} method returns false if
+	 * the object to test is of the type {@link Tup3sR} and has the same amount of dimensions and
+	 * a different value of the x component as the testing object.
+	 */
+	@Test
+	void equals_Tuple2_VaryingXTest()
+	{
+		Tup3s t1 = new Tup3s((short)1, (short)2, (short)3);
+		
+		Tup3sR t2 = mock(Tup3sR.class);
+		
+		when(t2.getX()).thenReturn((short)4);
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup3s#equals(Object)} method returns false if
+	 * the object to test is of the type {@link Tup3sR} and has the same amount of dimensions and
+	 * a different value of the y component as the testing object.
+	 */
+	@Test
+	void equals_Tuple2_VaryingYTest()
+	{
+		Tup3s t1 = new Tup3s((short)1, (short)2, (short)3);
+		
+		Tup3sR t2 = mock(Tup3sR.class);
+		
+		when(t2.getX()).thenReturn((short)1);
+		when(t2.getY()).thenReturn((short)4);
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup3s#equals(Object)} method returns false if
+	 * the object to test is of the type {@link Tup3sR} and has the same amount of dimensions and
+	 * a different value of the z component as the testing object.
+	 */
+	@Test
+	void equals_Tuple2_VaryingZTest()
+	{
+		Tup3s t1 = new Tup3s((short)1, (short)2, (short)3);
+		
+		Tup3sR t2 = mock(Tup3sR.class);
+		
+		when(t2.getX()).thenReturn((short)1);
+		when(t2.getY()).thenReturn((short)2);
+		when(t2.getZ()).thenReturn((short)4);
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup3s#equals(Object)} method returns true if
+	 * the object to test is of the type {@link TupsR} and has the same amount of dimensions and
+	 * the same values as the testing object.
+	 */
+	@Test
+	void equals_TupleTest()
+	{
+		Tup3s t1 = new Tup3s((short)1, (short)2, (short)3);
+		
+		TupsR t2 = mock(TupsR.class);
+		
+		when(t2.getDimensions()).thenReturn(3);
+		when(t2.getByIndex(0)).thenReturn((short)1);
+		when(t2.getByIndex(1)).thenReturn((short)2);
+		when(t2.getByIndex(2)).thenReturn((short)3);
+		
+		assertTrue(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup3s#equals(Object)} method returns false if
+	 * the object to test is of the type {@link TupsR} and has a different amount of dimensions
+	 * as the testing object.
+	 */
+	@Test
+	void equals_Tuple_VaryingDimensionsTest()
+	{
+		Tup3s t1 = new Tup3s((short)1, (short)2, (short)3);
+		
+		TupsR t2 = mock(TupsR.class);
+		
+		when(t2.getDimensions()).thenReturn(1);
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup3s#equals(Object)} method returns false if
+	 * the object to test is of the type {@link TupsR} and has the same amount of dimensions and
+	 * a different value of the x component as the testing object.
+	 */
+	@Test
+	void equals_Tuple_VaryingXTest()
+	{
+		Tup3s t1 = new Tup3s((short)1, (short)2, (short)3);
+		
+		TupsR t2 = mock(TupsR.class);
+		
+		when(t2.getDimensions()).thenReturn(3);
+		when(t2.getByIndex(0)).thenReturn((short)4);
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup3s#equals(Object)} method returns false if
+	 * the object to test is of the type {@link TupsR} and has the same amount of dimensions and
+	 * a different value of the y component as the testing object.
+	 */
+	@Test
+	void equals_Tuple_VaryingYTest()
+	{
+		Tup3s t1 = new Tup3s((short)1, (short)2, (short)3);
+		
+		TupsR t2 = mock(TupsR.class);
+		
+		when(t2.getDimensions()).thenReturn(3);
+		when(t2.getByIndex(0)).thenReturn((short)1);
+		when(t2.getByIndex(1)).thenReturn((short)4);
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup3s#equals(Object)} method returns false if
+	 * the object to test is of the type {@link TupsR} and has the same amount of dimensions and
+	 * a different value of the z component as the testing object.
+	 */
+	@Test
+	void equals_Tuple_VaryingZTest()
+	{
+		Tup3s t1 = new Tup3s((short)1, (short)2, (short)3);
+		
+		TupsR t2 = mock(TupsR.class);
+		
+		when(t2.getDimensions()).thenReturn(3);
+		when(t2.getByIndex(0)).thenReturn((short)1);
+		when(t2.getByIndex(1)).thenReturn((short)2);
+		when(t2.getByIndex(2)).thenReturn((short)4);
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup3s#toString()} function prshorts the components correctly.
 	 * 
 	 * @since 1.0.0.0
 	 */
@@ -277,41 +572,122 @@ class Tup3sTest
 	}
 	
 	/**
-	 * This test ensures, that the special policies for the function {@link Tup3s#equals(Object)} are working.
-	 * 
-	 * @since 1.0.0.0
-	 */
-	@SuppressWarnings("unlikely-arg-type")
-	@Test
-	void equalsTest()
-	{
-		Tup3s t = new Tup3s((short)1, (short)2, (short)3);
-		
-		assertTrue(t.equals(t));
-		assertFalse(t.equals(null));
-		assertFalse(t.equals(0.0));
-		assertFalse(t.equals(new Tup3s((short)2, (short)2, (short)3))); // x wrong
-		assertFalse(t.equals(new Tup3s((short)1, (short)3, (short)3))); // y wrong
-		assertFalse(t.equals(new Tup3s((short)1, (short)2, (short)4))); // z wrong
-		
-		assertTrue(t.equals(new Tup3s((short)1, (short)2, (short)3)));
-		assertTrue(t.equals(PTup3s.gen((short)1, (short)2, (short)3)));
-	}
-	
-	/**
 	 * This test ensures, that the function {@link Tup3s#getNewInstance(short, short, short)}
 	 * returns a new instance of {@link Tup3s} with the given values.
 	 */
 	@Test
-	void getNewInstanceTest()
+	void getNewInstance_ComponentsTest()
 	{
-		Tup3s t = new Tup3s((short)1, (short)1, (short)1);
+		Tup3s original = new Tup3s((short)1, (short)2, (short)3);
+		Tup3s newInstance = original.getNewInstance((short)3, (short)4, (short)5);
 		
-		Tup3s result = t.getNewInstance((short)2, (short)3, (short)4);
+		assertEquals((short)1, original.getX());
+		assertEquals((short)2, original.getY());
+		assertEquals((short)3, original.getZ());
+		assertEquals((short)3, newInstance.getX());
+		assertEquals((short)4, newInstance.getY());
+		assertEquals((short)5, newInstance.getZ());
+	}
+	
+	/**
+	 * This test ensures, that the default implementation of the function {@link Tup3s#getNewInstance(short)} calls
+	 * the function {@link Tup3s#getNewInstance(short, short, short)} with the correct components.
+	 */
+	@Test
+	void getNewInstance_ValueTest()
+	{
+		Tup3s newInstance = mock(Tup3s.class);
+		Tup3s t = mock(Tup3s.class);
 		
-		assertNotSame(t, result);
-		assertEquals((short)2, result.getX());
-		assertEquals((short)3, result.getY());
-		assertEquals((short)4, result.getZ());
+		when(t.getNewInstance((short)1)).thenCallRealMethod();
+
+		when(t.getNewInstance((short)1, (short)1, (short)1)).thenReturn(newInstance);
+		
+		assertSame(newInstance, t.getNewInstance((short)1));
+		
+		verify(t).getNewInstance((short)1);
+		
+		verify(t).getNewInstance((short)1, (short)1, (short)1);
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2bd#getNewInstance(Tup3sR)}
+	 * returns a new instance of {@link Tup3s} with the given values.
+	 */
+	@Test
+	void getNewInstance_Tuple2Test()
+	{
+		Tup3sR original = mock(Tup3sR.class);
+		Tup3s newInstance = mock(Tup3s.class);
+		Tup3s t = mock(Tup3s.class);
+		
+		when(t.getNewInstance(original)).thenCallRealMethod();
+		
+		when(original.getX()).thenReturn((short)1);
+		when(original.getY()).thenReturn((short)2);
+		when(original.getZ()).thenReturn((short)3);
+		when(t.getNewInstance((short)1, (short)2, (short)3)).thenReturn(newInstance);
+		
+		assertSame(newInstance, t.getNewInstance(original));
+		
+		verify(t).getNewInstance(original);
+		
+		verify(original).getX();
+		verify(original).getY();
+		verify(original).getZ();
+		verify(t).getNewInstance((short)1, (short)2, (short)3);
+		
+		verifyNoMoreInteractions(t, original);
+	}
+	
+	/**
+	 * This test ensures, that the default implementation of the function {@link Tup3s#getNewInstance(TupsR)} calls
+	 * the function {@link Tup3s#getNewInstance(short, short, short)} with the correct components.
+	 */
+	@Test
+	void getNewInstance_TupleTest()
+	{
+		TupsR original = mock(TupsR.class);
+		Tup3s newInstance = mock(Tup3s.class);
+		Tup3s t = mock(Tup3s.class);
+		
+		when(t.getNewInstance(original)).thenCallRealMethod();
+		
+		when(original.getArray()).thenReturn(new short[] {(short)1, (short)2, (short)3});
+		when(t.getNewInstance((short)1, (short)2, (short)3)).thenReturn(newInstance);
+		
+		assertSame(newInstance, t.getNewInstance(original));
+		
+		verify(t).getNewInstance(original);
+		
+		verify(original).getArray();
+		verify(t).getNewInstance((short)1, (short)2, (short)3);
+		
+		verifyNoMoreInteractions(t, original);
+	}
+	
+	/**
+	 * This test ensures, that the default implementation of the function {@link Tup3s#getNewInstanceFromArray(short[])} calls
+	 * the function {@link Tup3s#getNewInstance(short, short, short)} with the correct components.
+	 */
+	@Test
+	void getNewInstanceFromArrayTest()
+	{
+		Tup3s newInstance = mock(Tup3s.class);
+		Tup3s t = mock(Tup3s.class);
+		
+		when(t.getNewInstanceFromArray(new short[] {(short)1, (short)2, (short)3})).thenCallRealMethod();
+
+		when(t.getNewInstance((short)1, (short)2, (short)3)).thenReturn(newInstance);
+		
+		assertSame(newInstance, t.getNewInstanceFromArray(new short[] {(short)1, (short)2, (short)3}));
+		
+		verify(t).getNewInstanceFromArray(new short[] {(short)1, (short)2, (short)3});
+		
+		verify(t).getNewInstance((short)1, (short)2, (short)3);
+		
+		verifyNoMoreInteractions(t);
 	}
 }

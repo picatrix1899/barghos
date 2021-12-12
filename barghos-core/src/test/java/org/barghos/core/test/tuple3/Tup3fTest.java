@@ -23,10 +23,13 @@
 package org.barghos.core.test.tuple3;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.Test;
 
-import org.barghos.core.tuple3.PTup3f;
+import org.barghos.core.api.tuple.TupfR;
+import org.barghos.core.api.tuple3.Tup3fR;
+
 import org.barghos.core.tuple3.Tup3f;
 
 /**
@@ -37,13 +40,12 @@ import org.barghos.core.tuple3.Tup3f;
 class Tup3fTest
 {
 	/**
-	 * This test ensures, that the constructor {@link Tup3f#Tup3f()} aktually works and
-	 * that the components are set to 0.
+	 * This test ensures, that the default constructor {@link Tup3f#Tup3f()} sets the components to 0.
 	 * 
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void ctorEmptyTest()
+	void ctor_DefaultTest()
 	{
 		Tup3f t = new Tup3f();
 		
@@ -51,58 +53,109 @@ class Tup3fTest
 		assertEquals(0.0f, t.y);
 		assertEquals(0.0f, t.z);
 	}
-	
+
 	/**
-	 * This test ensures, that  the constructor
-	 * {@link Tup3f#Tup3f(org.barghos.core.api.tuple3.Tup3fR) Tup3f.Tup3f(Tup3fR)} actually works and
-	 * that the components are adopted from the input tuple.
+	 * This test ensures, that an instance of {@link Tup3f} generated from an existing instance of {@link TupfR},
+	 * returns the correct components.
 	 * 
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void ctorCloneTest()
+	void ctor_TupleTest()
 	{
-		Tup3f t = new Tup3f(PTup3f.gen(1.2f, 3.4f, 5.6f));
+		TupfR original = mock(TupfR.class);
 		
-		assertEquals(1.2f, t.x);
-		assertEquals(3.4f, t.y);
-		assertEquals(5.6f, t.z);
+		when(original.getArray()).thenReturn(new float[] {1.0f, 2.0f, 3.0f});
+		
+		Tup3f t = new Tup3f(original);
+		
+		assertEquals(1.0f, t.getX());
+		assertEquals(2.0f, t.getY());
+		assertEquals(3.0f, t.getZ());
+		
+		verify(original).getArray();
+		
+		verifyNoMoreInteractions(original);
 	}
 	
 	/**
-	 * This test ensures, that the constructor {@link Tup3f#Tup3f(float)} actually works,
-	 * and that the components are set to the value.
+	 * This test ensures, that an instance of {@link Tup3f} generated from an existing instance of {@link Tup3fR},
+	 * returns the correct components.
 	 * 
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void ctorScalarTest()
+	void ctor_Tuple3Test()
 	{
-		Tup3f t = new Tup3f(1.2f);
+		Tup3fR original = mock(Tup3fR.class);
 		
-		assertEquals(1.2f, t.x);
-		assertEquals(1.2f, t.y);
-		assertEquals(1.2f, t.z);
+		when(original.getX()).thenReturn(1.0f);
+		when(original.getY()).thenReturn(2.0f);
+		when(original.getZ()).thenReturn(3.0f);
+		
+		Tup3f t = new Tup3f(original);
+		
+		assertEquals(1.0f, t.getX());
+		assertEquals(2.0f, t.getY());
+		assertEquals(3.0f, t.getZ());
+		
+		verify(original).getX();
+		verify(original).getY();
+		verify(original).getZ();
+		
+		verifyNoMoreInteractions(original);
 	}
 	
 	/**
-	 * This test ensures, that the constructor {@link Tup3f#Tup3f(float, float, float)} actually works,
-	 * and that the components are set to the respective parameters.
+	 * This test ensures, that an instance of {@link Tup3f} generated from a scalar,
+	 * returns the correct components.
 	 * 
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void ctorComponentsTest()
+	void ctor_ValueTest()
 	{
-		Tup3f t = new Tup3f(1.2f, 3.4f, 5.6f);
+		Tup3f t = new Tup3f(1.0f);
 		
-		assertEquals(1.2f, t.x);
-		assertEquals(3.4f, t.y);
-		assertEquals(5.6f, t.z);
+		assertEquals(1.0f, t.getX());
+		assertEquals(1.0f, t.getY());
+		assertEquals(1.0f, t.getZ());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup3f#setX(float)} sets the x component on the tuple
+	 * This test ensures, that an instance of {@link Tup3f} generated from an array,
+	 * returns the correct components.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void ctor_ArrayTest()
+	{
+		Tup3f t = new Tup3f(new float[] {1.0f, 2.0f, 3.0f});
+		
+		assertEquals(1.0f, t.getX());
+		assertEquals(2.0f, t.getY());
+		assertEquals(3.0f, t.getZ());
+	}
+	
+	/**
+	 * This test ensures, that an instance of {@link Tup3f} generated from two components,
+	 * returns the correct components.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void ctor_ComponentsTest()
+	{
+		Tup3f t = new Tup3f(1.0f, 2.0f, 3.0f);
+		
+		assertEquals(1.0f, t.getX());
+		assertEquals(2.0f, t.getY());
+		assertEquals(3.0f, t.getZ());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup3f#setX(float)} sets the x component of the tuple
 	 * to the value and returns the current tuple.
 	 * 
 	 * @since 1.0.0.0
@@ -112,12 +165,12 @@ class Tup3fTest
 	{
 		Tup3f t = new Tup3f();
 		
-		assertSame(t, t.setX(1.2f));
-		assertEquals(1.2f, t.x);
+		assertSame(t, t.setX(1.1f));
+		assertEquals(1.1f, t.x);
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup3f#setY(float)} sets the y component on the tuple
+	 * This test ensures, that the function {@link Tup3f#setY(float)} sets the y component of the tuple
 	 * to the value and returns the current tuple.
 	 * 
 	 * @since 1.0.0.0
@@ -127,12 +180,12 @@ class Tup3fTest
 	{
 		Tup3f t = new Tup3f();
 		
-		assertSame(t, t.setY(1.2f));
-		assertEquals(1.2f, t.y);
+		assertSame(t, t.setY(2.2f));
+		assertEquals(2.2f, t.y);
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup3f#setZ(float)} sets the z component on the tuple
+	 * This test ensures, that the function {@link Tup3f#setZ(float)} sets the z component of the tuple
 	 * to the value and returns the current tuple.
 	 * 
 	 * @since 1.0.0.0
@@ -142,26 +195,42 @@ class Tup3fTest
 	{
 		Tup3f t = new Tup3f();
 		
-		assertSame(t, t.setZ(1.2f));
-		assertEquals(1.2f, t.z);
+		assertSame(t, t.setZ(3.3f));
+		assertEquals(3.3f, t.z);
 	}
 	
 	/**
 	 * This test ensures, that the function
-	 * {@link Tup3f#set(org.barghos.core.api.tuple3.Tup3fR) Tup3f.set(Tup3fR)}
+	 * {@link Tup3f#set(org.barghos.core.api.tuple2.Tup3fR) Tup3f.set(Tup3fR)}
 	 * adopts the components from the input tuple and returns the current tuple.
 	 * 
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void setCloneTest()
+	void set_Tuple3Test()
 	{
-		Tup3f t = new Tup3f();
+		Tup3f t = mock(Tup3f.class);
 		
-		assertSame(t, t.set(PTup3f.gen(1.2f, 3.4f, 5.6f)));
-		assertEquals(1.2f, t.x);
-		assertEquals(3.4f, t.y);
-		assertEquals(5.6f, t.z);
+		Tup3fR t2 = mock(Tup3fR.class);
+	
+		when(t.set(t2)).thenCallRealMethod();
+		
+		when(t2.getX()).thenReturn(1.1f);
+		when(t2.getY()).thenReturn(2.2f);
+		when(t2.getZ()).thenReturn(3.3f);
+		
+		when(t.set(1.1f, 2.2f, 3.3f)).thenReturn(t);
+		
+		assertSame(t, t.set(t2));
+		
+		verify(t).set(t2);
+		
+		verify(t2).getX();
+		verify(t2).getY();
+		verify(t2).getZ();
+		verify(t).set(1.1f, 2.2f, 3.3f);
+		
+		verifyNoMoreInteractions(t, t2);
 	}
 	
 	/**
@@ -171,14 +240,21 @@ class Tup3fTest
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void setScalarTest()
+	void set_ValueTest()
 	{
-		Tup3f t = new Tup3f();
+		Tup3f t = mock(Tup3f.class);
+
+		when(t.set(1.1f)).thenCallRealMethod();
+
+		when(t.set(1.1f, 1.1f, 1.1f)).thenReturn(t);
 		
-		assertSame(t, t.set(1.2f));
-		assertEquals(1.2f, t.x);
-		assertEquals(1.2f, t.y);
-		assertEquals(1.2f, t.z);
+		assertSame(t, t.set(1.1f));
+		
+		verify(t).set(1.1f);
+
+		verify(t).set(1.1f, 1.1f, 1.1f);
+		
+		verifyNoMoreInteractions(t);
 	}
 	
 	/**
@@ -188,15 +264,25 @@ class Tup3fTest
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void setComponentsTest()
+	void set_ComponentsTest()
 	{
-		Tup3f t = new Tup3f();
+		Tup3f t = mock(Tup3f.class);
+
+		when(t.set(1.1f, 2.2f, 3.3f)).thenCallRealMethod();
+
+		when(t.setX(1.1f)).thenReturn(t);
+		when(t.setY(2.2f)).thenReturn(t);
+		when(t.setZ(3.3f)).thenReturn(t);
 		
-		assertSame(t, t.set(1.2f, 3.4f, 5.6f));
+		assertSame(t, t.set(1.1f, 2.2f, 3.3f));
+
+		verify(t).set(1.1f, 2.2f, 3.3f);
 		
-		assertEquals(1.2f, t.x);
-		assertEquals(3.4f, t.y);
-		assertEquals(5.6f, t.z);
+		verify(t).setX(1.1f);
+		verify(t).setY(2.2f);
+		verify(t).setZ(3.3f);
+		
+		verifyNoMoreInteractions(t);
 	}
 	
 	/**
@@ -208,9 +294,9 @@ class Tup3fTest
 	@Test
 	void getXTest()
 	{
-		Tup3f t = new Tup3f(1.2f, 2.3f, 3.4f);
+		Tup3f t = new Tup3f(1.1f, 2.2f, 3.3f);
 		
-		assertEquals(1.2f, t.getX());
+		assertEquals(1.1f, t.getX());
 		assertEquals(t.x, t.getX());
 	}
 	
@@ -223,9 +309,9 @@ class Tup3fTest
 	@Test
 	void getYTest()
 	{
-		Tup3f t = new Tup3f(1.2f, 2.3f, 3.4f);
+		Tup3f t = new Tup3f(1.1f, 2.2f, 3.3f);
 		
-		assertEquals(2.3f, t.getY());
+		assertEquals(2.2f, t.getY());
 		assertEquals(t.y, t.getY());
 	}
 	
@@ -238,29 +324,238 @@ class Tup3fTest
 	@Test
 	void getZTest()
 	{
-		Tup3f t = new Tup3f(1.2f, 2.3f, 3.4f);
+		Tup3f t = new Tup3f(1.1f, 2.2f, 3.3f);
 		
-		assertEquals(3.4f, t.getZ());
+		assertEquals(3.3f, t.getZ());
 		assertEquals(t.z, t.getZ());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup3f#clone()} generates a new instance of
-	 * {@link Tup3f} and adopts the components from the original.
-	 * 
-	 * @since 1.0.0.0
+	 * This test ensures, that the function {@link Tup3f#hashCode()} eturns the correct hash.
+	 */
+	@Test
+	void hashCodeTest()
+	{
+		Tup3f t = new Tup3f(1.0f, 2.0f, 3.0f);
+
+		assertEquals(1606448223, t.hashCode());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup3f#clone()} creates a new instance that satisfies
+	 * the requirements for clone-funktions.
 	 */
 	@Test
 	void cloneTest()
 	{
-		Tup3f t = new Tup3f(1.2f, 3.4f, 5.6f);
+		Tup3f original = new Tup3f(1.0f, 2.0f, 3.0f);
+		Tup3f t = original.clone();
 		
-		Tup3f result = t.clone();
+		assertFalse(original == t);
+		assertTrue(original.equals(t));
+		assertTrue(t.equals(original));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup3f#equals(Object)} method returns true if
+	 * the object to test is the same as the testing object.
+	 */
+	@Test
+	void equals_SameTest()
+	{
+		Tup3f t1 = new Tup3f(1.0f, 2.0f, 3.0f);
 		
-		assertNotSame(t, result);
-		assertEquals(1.2f, result.getX());
-		assertEquals(3.4f, result.getY());
-		assertEquals(5.6f, result.getZ());
+		assertTrue(t1.equals(t1));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup3f#equals(Object)} method returns false if
+	 * the object to test is null.
+	 */
+	@Test
+	void equals_NullTest()
+	{
+		Tup3f t1 = new Tup3f(1.0f, 2.0f, 3.0f);
+		
+		assertFalse(t1.equals(null));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup3f#equals(Object)} method returns false if
+	 * the object to test is of an unsupported type.
+	 */
+	@Test
+	void equals_IncompatibleTest()
+	{
+		Tup3f t1 = new Tup3f(1.0f, 2.0f, 3.0f);
+		
+		assertFalse(t1.equals(new Object()));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup3f#equals(Object)} method returns true if
+	 * the object to test is of the type {@link Tup3fR} and has the same values as the testing object.
+	 */
+	@Test
+	void equals_Tuple3Test()
+	{
+		Tup3f t1 = new Tup3f(1.0f, 2.0f, 3.0f);
+		
+		Tup3fR t2 = mock(Tup3fR.class);
+		
+		when(t2.getX()).thenReturn(1.0f);
+		when(t2.getY()).thenReturn(2.0f);
+		when(t2.getZ()).thenReturn(3.0f);
+		
+		assertTrue(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup3f#equals(Object)} method returns false if
+	 * the object to test is of the type {@link Tup3fR} and has the same amount of dimensions and
+	 * a different value of the x component as the testing object.
+	 */
+	@Test
+	void equals_Tuple3_VaryingXTest()
+	{
+		Tup3f t1 = new Tup3f(1.0f, 2.0f, 3.0f);
+		
+		Tup3fR t2 = mock(Tup3fR.class);
+		
+		when(t2.getX()).thenReturn(4.0f);
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup3f#equals(Object)} method returns false if
+	 * the object to test is of the type {@link Tup3fR} and has the same amount of dimensions and
+	 * a different value of the y component as the testing object.
+	 */
+	@Test
+	void equals_Tuple3_VaryingYTest()
+	{
+		Tup3f t1 = new Tup3f(1.0f, 2.0f, 3.0f);
+		
+		Tup3fR t2 = mock(Tup3fR.class);
+		
+		when(t2.getX()).thenReturn(1.0f);
+		when(t2.getY()).thenReturn(4.0f);
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup3f#equals(Object)} method returns false if
+	 * the object to test is of the type {@link Tup3fR} and has the same amount of dimensions and
+	 * a different value of the z component as the testing object.
+	 */
+	@Test
+	void equals_Tuple3_VaryingZTest()
+	{
+		Tup3f t1 = new Tup3f(1.0f, 2.0f, 3.0f);
+		
+		Tup3fR t2 = mock(Tup3fR.class);
+		
+		when(t2.getX()).thenReturn(1.0f);
+		when(t2.getY()).thenReturn(2.0f);
+		when(t2.getZ()).thenReturn(4.0f);
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup3f#equals(Object)} method returns true if
+	 * the object to test is of the type {@link TupfR} and has the same amount of dimensions and
+	 * the same values as the testing object.
+	 */
+	@Test
+	void equals_TupleTest()
+	{
+		Tup3f t1 = new Tup3f(1.0f, 2.0f, 3.0f);
+		
+		TupfR t2 = mock(TupfR.class);
+		
+		when(t2.getDimensions()).thenReturn(3);
+		when(t2.getByIndex(0)).thenReturn(1.0f);
+		when(t2.getByIndex(1)).thenReturn(2.0f);
+		when(t2.getByIndex(2)).thenReturn(3.0f);
+		
+		assertTrue(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup3f#equals(Object)} method returns false if
+	 * the object to test is of the type {@link TupfR} and has a different amount of dimensions
+	 * as the testing object.
+	 */
+	@Test
+	void equals_Tuple_VaryingDimensionsTest()
+	{
+		Tup3f t1 = new Tup3f(1.0f, 2.0f, 3.0f);
+		
+		TupfR t2 = mock(TupfR.class);
+		
+		when(t2.getDimensions()).thenReturn(1);
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup3f#equals(Object)} method returns false if
+	 * the object to test is of the type {@link TupfR} and has the same amount of dimensions and
+	 * a different value of the x component as the testing object.
+	 */
+	@Test
+	void equals_Tuple_VaryingXTest()
+	{
+		Tup3f t1 = new Tup3f(1.0f, 2.0f, 3.0f);
+		
+		TupfR t2 = mock(TupfR.class);
+		
+		when(t2.getDimensions()).thenReturn(3);
+		when(t2.getByIndex(0)).thenReturn(4.0f);
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup3f#equals(Object)} method returns false if
+	 * the object to test is of the type {@link TupfR} and has the same amount of dimensions and
+	 * a different value of the y component as the testing object.
+	 */
+	@Test
+	void equals_Tuple_VaryingYTest()
+	{
+		Tup3f t1 = new Tup3f(1.0f, 2.0f, 3.0f);
+		
+		TupfR t2 = mock(TupfR.class);
+		
+		when(t2.getDimensions()).thenReturn(3);
+		when(t2.getByIndex(0)).thenReturn(1.0f);
+		when(t2.getByIndex(1)).thenReturn(4.0f);
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup3f#equals(Object)} method returns false if
+	 * the object to test is of the type {@link TupfR} and has the same amount of dimensions and
+	 * a different value of the z component as the testing object.
+	 */
+	@Test
+	void equals_Tuple_VaryingZTest()
+	{
+		Tup3f t1 = new Tup3f(1.0f, 2.0f, 3.0f);
+		
+		TupfR t2 = mock(TupfR.class);
+		
+		when(t2.getDimensions()).thenReturn(3);
+		when(t2.getByIndex(0)).thenReturn(1.0f);
+		when(t2.getByIndex(1)).thenReturn(2.0f);
+		when(t2.getByIndex(2)).thenReturn(4.0f);
+		
+		assertFalse(t1.equals(t2));
 	}
 	
 	/**
@@ -271,31 +566,9 @@ class Tup3fTest
 	@Test
 	void toStringTest()
 	{
-		Tup3f t = new Tup3f(1.2f, 3.4f, 5.6f);
+		Tup3f t = new Tup3f(1.1f, 2.2f, 3.3f);
 		
-		assertEquals("tup3f(x=1.2, y=3.4, z=5.6)", t.toString());
-	}
-	
-	/**
-	 * This test ensures, that the special policies for the function {@link Tup3f#equals(Object)} are working.
-	 * 
-	 * @since 1.0.0.0
-	 */
-	@SuppressWarnings("unlikely-arg-type")
-	@Test
-	void equalsTest()
-	{
-		Tup3f t = new Tup3f(1.2f, 3.4f, 5.6f);
-		
-		assertTrue(t.equals(t));
-		assertFalse(t.equals(null));
-		assertFalse(t.equals(0));
-		assertFalse(t.equals(new Tup3f(3.4f, 3.4f, 5.6f))); // x wrong
-		assertFalse(t.equals(new Tup3f(1.2f, 5.6f, 5.6f))); // y wrong
-		assertFalse(t.equals(new Tup3f(1.2f, 3.4f, 7.8f))); // z wrong
-		
-		assertTrue(t.equals(new Tup3f(1.2f, 3.4f, 5.6f)));
-		assertTrue(t.equals(PTup3f.gen(1.2f, 3.4f, 5.6f)));
+		assertEquals("tup3f(x=1.1, y=2.2, z=3.3)", t.toString());
 	}
 	
 	/**
@@ -303,15 +576,118 @@ class Tup3fTest
 	 * returns a new instance of {@link Tup3f} with the given values.
 	 */
 	@Test
-	void getNewInstanceTest()
+	void getNewInstance_ComponentsTest()
 	{
-		Tup3f t = new Tup3f(1.0f, 1.0f, 1.0f);
-
-		Tup3f result = t.getNewInstance(2.0f, 3.0f, 4.0f);
+		Tup3f original = new Tup3f(1.0f, 2.0f, 3.0f);
+		Tup3f newInstance = original.getNewInstance(3.0f, 4.0f, 5.0f);
 		
-		assertNotSame(t, result);
-		assertEquals(2.0f, result.getX());
-		assertEquals(3.0f, result.getY());
-		assertEquals(4.0f, result.getZ());
+		assertEquals(1.0f, original.getX());
+		assertEquals(2.0f, original.getY());
+		assertEquals(3.0f, original.getZ());
+		assertEquals(3.0f, newInstance.getX());
+		assertEquals(4.0f, newInstance.getY());
+		assertEquals(5.0f, newInstance.getZ());
+	}
+	
+	/**
+	 * This test ensures, that the default implementation of the function {@link Tup3f#getNewInstance(float)} calls
+	 * the function {@link Tup3f#getNewInstance(float, float, float)} with the correct components.
+	 */
+	@Test
+	void getNewInstance_ValueTest()
+	{
+		Tup3f newInstance = mock(Tup3f.class);
+		Tup3f t = mock(Tup3f.class);
+		
+		when(t.getNewInstance(1.0f)).thenCallRealMethod();
+
+		when(t.getNewInstance(1.0f, 1.0f, 1.0f)).thenReturn(newInstance);
+		
+		assertSame(newInstance, t.getNewInstance(1.0f));
+		
+		verify(t).getNewInstance(1.0f);
+		
+		verify(t).getNewInstance(1.0f, 1.0f, 1.0f);
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2bd#getNewInstance(Tup3fR)}
+	 * returns a new instance of {@link Tup3f} with the given values.
+	 */
+	@Test
+	void getNewInstance_Tuple2Test()
+	{
+		Tup3fR original = mock(Tup3fR.class);
+		Tup3f newInstance = mock(Tup3f.class);
+		Tup3f t = mock(Tup3f.class);
+		
+		when(t.getNewInstance(original)).thenCallRealMethod();
+		
+		when(original.getX()).thenReturn(1.0f);
+		when(original.getY()).thenReturn(2.0f);
+		when(original.getZ()).thenReturn(3.0f);
+		when(t.getNewInstance(1.0f, 2.0f, 3.0f)).thenReturn(newInstance);
+		
+		assertSame(newInstance, t.getNewInstance(original));
+		
+		verify(t).getNewInstance(original);
+		
+		verify(original).getX();
+		verify(original).getY();
+		verify(original).getZ();
+		verify(t).getNewInstance(1.0f, 2.0f, 3.0f);
+		
+		verifyNoMoreInteractions(t, original);
+	}
+	
+	/**
+	 * This test ensures, that the default implementation of the function {@link Tup3f#getNewInstance(TupfR)} calls
+	 * the function {@link Tup3f#getNewInstance(float, float, float)} with the correct components.
+	 */
+	@Test
+	void getNewInstance_TupleTest()
+	{
+		TupfR original = mock(TupfR.class);
+		Tup3f newInstance = mock(Tup3f.class);
+		Tup3f t = mock(Tup3f.class);
+		
+		when(t.getNewInstance(original)).thenCallRealMethod();
+		
+		when(original.getArray()).thenReturn(new float[] {1.0f, 2.0f, 3.0f});
+		when(t.getNewInstance(1.0f, 2.0f, 3.0f)).thenReturn(newInstance);
+		
+		assertSame(newInstance, t.getNewInstance(original));
+		
+		verify(t).getNewInstance(original);
+		
+		verify(original).getArray();
+		verify(t).getNewInstance(1.0f, 2.0f, 3.0f);
+		
+		verifyNoMoreInteractions(t, original);
+	}
+	
+	/**
+	 * This test ensures, that the default implementation of the function {@link Tup3f#getNewInstanceFromArray(float[])} calls
+	 * the function {@link Tup3f#getNewInstance(float, float, float)} with the correct components.
+	 */
+	@Test
+	void getNewInstanceFromArrayTest()
+	{
+		Tup3f newInstance = mock(Tup3f.class);
+		Tup3f t = mock(Tup3f.class);
+		
+		when(t.getNewInstanceFromArray(new float[] {1.0f, 2.0f, 3.0f})).thenCallRealMethod();
+
+		when(t.getNewInstance(1.0f, 2.0f, 3.0f)).thenReturn(newInstance);
+		
+		assertSame(newInstance, t.getNewInstanceFromArray(new float[] {1.0f, 2.0f, 3.0f}));
+		
+		verify(t).getNewInstanceFromArray(new float[] {1.0f, 2.0f, 3.0f});
+		
+		verify(t).getNewInstance(1.0f, 2.0f, 3.0f);
+		
+		verifyNoMoreInteractions(t);
 	}
 }
