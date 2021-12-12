@@ -22,122 +22,120 @@
 
 package org.barghos.core.tuple4;
 
-import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupcR;
 import org.barghos.core.api.tuple4.Tup4cR;
-import org.barghos.core.api.tuple4.Tup4cRW;
 
 /**
- * This class represents a 4-dimensional char tuple.
- * A tuple unlike a vector contains data that is not necessarly in any relation to each other,
- * where the data of a vector describes the same logical structure.
+ * Represents an immutable readonly 4-dimensional char tuple.
+ * It can be used as a more flexible way to create constants.
  * 
  * @author picatrix1899
  * 
  * @since 1.0.0.0
  */
-public class Tup4c implements Tup4cRW, Serializable, FormattableToString
+public class ImmutableTup4c implements Tup4cR, FormattableToString
 {
-	/**
-	 * The class version for serialization.
-	 */
-	private static final long serialVersionUID = 1L;
-	
 	/**
 	 * The x component.
 	 */
-	public char x;
+	public final char x;
 	
 	/**
 	 * The y component.
 	 */
-	public char y;
+	public final char y;
 	
 	/**
 	 * The z component.
 	 */
-	public char z;
+	public final char z;
 	
 	/**
 	 * The w component.
 	 */
-	public char w;
+	public final char w;
 	
 	/**
-	 * Creates a new instance with all components set to 0.
-	 * 
-	 * @since 1.0.0.0
+	 * The immutable hashCode.
 	 */
-	public Tup4c()
-	{
-		set((char)0);
-	}
+	protected transient int hashCode;
 	
 	/**
-	 * Creates a new instance from an existing instance of {@link TupcR} and adopts the values.
+	 * The flag that shows that the hashCode has already been generated.
+	 */
+	protected transient boolean isHashCodeGenerated;
+	
+	/**
+	 * Generates a new readonly {@link ImmutableTup4c} from an existing instance of {@link TupcR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupcR} to adopt the values from.
 	 * 
 	 * @since 1.0.0.0
 	 */
-	public Tup4c(TupcR t)
+	public ImmutableTup4c(TupcR t)
 	{
-		set(t);
+		this(t.getArray());
 	}
 	
 	/**
-	 * Creates a new instance from an existing instance of {@link Tup4cR} and adopts the values.
+	 * Generates a new readonly {@link ImmutableTup4c} from an existing instance of {@link Tup4cR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup4cR} to adopt the values from.
-	 * 
+
 	 * @since 1.0.0.0
 	 */
-	public Tup4c(Tup4cR t)
+	public ImmutableTup4c(Tup4cR t)
 	{
-		set(t);
+		this(t.getX(), t.getY(), t.getZ(), t.getW());
 	}
 	
 	/**
-	 * Creates a new instance with all values set to a single value.
+	 * Generates a new readonly {@link ImmutableTup4c} with all values set to a single value.
 	 * 
-	 * @param value The value used as the initial value for all values of the tuple.
-	 * 
+	 * @param value The value used for all values of the tuple.
+
 	 * @since 1.0.0.0
 	 */
-	public Tup4c(char value)
+	public ImmutableTup4c(char value)
 	{
-		set(value);
+		this(value, value, value, value);
 	}
 	
 	/**
-	 * Creates a new instance with the values set to the corresponding parameters.
+	 * Generates a new readonly {@link ImmutableTup4c} with the values set to the corresponding parameters.
 	 * 
-	 * @param x The initial x value of the tuple.
-	 * @param y The initial y value of the tuple.
-	 * @param z The initial z value of the tuple.
-	 * @param w The initial w value of the tuple.
-	 * 
+	 * @param x The x value.
+	 * @param y The y value.
+	 * @param z The z value.
+	 * @param w The w value.
+
 	 * @since 1.0.0.0
 	 */
-	public Tup4c(char x, char y, char z, char w)
+	public ImmutableTup4c(char x, char y, char z, char w)
 	{
-		set(x, y, z, w);
+		this.x = x;
+		this.y = y;
+		this.z = z;
+		this.w = w;
 	}
 	
 	/**
-	 * Creates a new instance with the values set to the corresponding parameters.
+	 * Generates a new readonly {@link ImmutableTup4c} with the values set to the corresponding parameters.
 	 * 
 	 * @param v The values as an array.
 	 * 
 	 * @since 1.0.0.0
 	 */
-	public Tup4c(char[] v)
+	public ImmutableTup4c(char[] v)
 	{
-		setArray(v);
+		this.x = v[0];
+		this.y = v[1];
+		this.z = v[2];
+		this.w = v[3];
 	}
 	
 	@Override
@@ -165,65 +163,11 @@ public class Tup4c implements Tup4cRW, Serializable, FormattableToString
 	}
 	
 	@Override
-	public Tup4c setX(char x)
-	{
-		this.x = x;
-		
-		return this;
-	}
-	
-	@Override
-	public Tup4c setY(char y)
-	{
-		this.y = y;
-		
-		return this;
-	}
-	
-	@Override
-	public Tup4c setZ(char z)
-	{
-		this.z = z;
-		
-		return this;
-	}
-	
-	@Override
-	public Tup4c setW(char w)
-	{
-		this.w = w;
-		
-		return this;
-	}
-	
-	@Override
-	public Tup4c set(Tup4cR t)
-	{
-		return set(t.getX(), t.getY(), t.getZ(), t.getW());
-	}
-	
-	@Override
-	public Tup4c set(char value)
-	{
-		return set(value, value, value, value);
-	}
-	
-	@Override
-	public Tup4c set(char x, char y, char z, char w)
-	{
-		return setX(x).setY(y).setZ(z).setW(w);
-	}
-
-	@Override
 	public int hashCode()
 	{
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + getX();
-		result = prime * result + getY();
-		result = prime * result + getZ();
-		result = prime * result + getW();
-		return result;
+		if(!isHashCodeGenerated) generateHashCode();
+		
+		return this.hashCode;
 	}
 	
 	@Override
@@ -259,15 +203,15 @@ public class Tup4c implements Tup4cRW, Serializable, FormattableToString
 	}
 	
 	@Override
-	public Tup4c clone()
+	public String toString()
 	{
-		return new Tup4c(this);
+		return "immutableTup4c(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ", w=" + getW() +  ")";
 	}
 	
 	@Override
-	public String toString()
+	public ImmutableTup4c clone()
 	{
-		return "tup4c(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ", w=" + getW() + ")";
+		return new ImmutableTup4c(this);
 	}
 	
 	@Override
@@ -283,50 +227,48 @@ public class Tup4c implements Tup4cRW, Serializable, FormattableToString
 	}
 	
 	@Override
-	public Tup4c getNewInstance(char x, char y, char z, char w)
+	public ImmutableTup4c getNewInstance(char x, char y, char z, char w)
 	{
-		return new Tup4c(x, y, z, w);
+		return new ImmutableTup4c(x, y, z, w);
 	}
 	
 	@Override
-	public Tup4c getNewInstance(char value)
+	public ImmutableTup4c getNewInstance(char value)
 	{
-		return (Tup4c)Tup4cRW.super.getNewInstance(value);
+		return (ImmutableTup4c)Tup4cR.super.getNewInstance(value);
 	}
 	
 	@Override
-	public Tup4c getNewInstance(Tup4cR t)
+	public ImmutableTup4c getNewInstance(Tup4cR t)
 	{
-		return (Tup4c)Tup4cRW.super.getNewInstance(t);
+		return (ImmutableTup4c)Tup4cR.super.getNewInstance(t);
 	}
 	
 	@Override
-	public Tup4c getNewInstance(TupcR t)
+	public ImmutableTup4c getNewInstance(TupcR t)
 	{
-		return (Tup4c)Tup4cRW.super.getNewInstance(t);
+		return (ImmutableTup4c)Tup4cR.super.getNewInstance(t);
 	}
 	
 	@Override
-	public Tup4c getNewInstanceFromArray(char... values)
+	public ImmutableTup4c getNewInstanceFromArray(char... values)
 	{
-		return (Tup4c)Tup4cRW.super.getNewInstanceFromArray(values);
+		return (ImmutableTup4c)Tup4cR.super.getNewInstanceFromArray(values);
 	}
 	
-	@Override
-	public Tup4c set(TupcR t)
+	/**
+	 * This method generates the hashCode and stores it in the member for later use.
+	 */
+	protected void generateHashCode()
 	{
-		return (Tup4c)Tup4cRW.super.set(t);
-	}
-	
-	@Override
-	public Tup4c setArray(char... values)
-	{
-		return (Tup4c)Tup4cRW.super.setArray(values);
-	}
-	
-	@Override
-	public Tup4c setByIndex(int index, char value)
-	{
-		return (Tup4c)Tup4cRW.super.setByIndex(index, value);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + getX();
+		result = prime * result + getY();
+		result = prime * result + getZ();
+		result = prime * result + getW();
+		
+		this.hashCode = result;
+		this.isHashCodeGenerated = true;
 	}
 }

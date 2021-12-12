@@ -22,122 +22,120 @@
 
 package org.barghos.core.tuple4;
 
-import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupfR;
 import org.barghos.core.api.tuple4.Tup4fR;
-import org.barghos.core.api.tuple4.Tup4fRW;
 
 /**
- * This class represents a 3-dimensional float tuple.
- * A tuple unlike a vector contains data that is not necessarly in any relation to each other,
- * where the data of a vector describes the same logical structure.
+ * Represents an immutable readonly 4-dimensional float tuple.
+ * It can be used as a more flexible way to create constants.
  * 
  * @author picatrix1899
  * 
  * @since 1.0.0.0
  */
-public class Tup4f implements Tup4fRW, Serializable, FormattableToString
+public class ImmutableTup4f implements Tup4fR, FormattableToString
 {
-	/**
-	 * The class version for serialization.
-	 */
-	private static final long serialVersionUID = 1L;
-	
 	/**
 	 * The x component.
 	 */
-	public float x;
+	public final float x;
 	
 	/**
 	 * The y component.
 	 */
-	public float y;
+	public final float y;
 	
 	/**
 	 * The z component.
 	 */
-	public float z;
+	public final float z;
 	
 	/**
 	 * The w component.
 	 */
-	public float w;
+	public final float w;
 	
 	/**
-	 * Creates a new instance with all components set to 0.
-	 * 
-	 * @since 1.0.0.0
+	 * The immutable hashCode.
 	 */
-	public Tup4f()
-	{
-		set(0.0f);
-	}
+	protected transient int hashCode;
 	
 	/**
-	 * Creates a new instance from an existing instance of {@link TupfR} and adopts the values.
+	 * The flag that shows that the hashCode has already been generated.
+	 */
+	protected transient boolean isHashCodeGenerated;
+	
+	/**
+	 * Generates a new readonly {@link ImmutableTup4f} from an existing instance of {@link TupfR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupfR} to adopt the values from.
 	 * 
 	 * @since 1.0.0.0
 	 */
-	public Tup4f(TupfR t)
+	public ImmutableTup4f(TupfR t)
 	{
-		set(t);
+		this(t.getArray());
 	}
 	
 	/**
-	 * Creates a new instance from an existing instance of {@link Tup4fR} and adopts the values.
+	 * Generates a new readonly {@link ImmutableTup4f} from an existing instance of {@link Tup4fR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup4fR} to adopt the values from.
-	 * 
+
 	 * @since 1.0.0.0
 	 */
-	public Tup4f(Tup4fR t)
+	public ImmutableTup4f(Tup4fR t)
 	{
-		set(t);
+		this(t.getX(), t.getY(), t.getZ(), t.getW());
 	}
 	
 	/**
-	 * Creates a new instance with all values set to a single value.
+	 * Generates a new readonly {@link ImmutableTup4f} with all values set to a single value.
 	 * 
-	 * @param value The value used as the initial value for all values of the tuple.
-	 * 
+	 * @param value The value used for all values of the tuple.
+
 	 * @since 1.0.0.0
 	 */
-	public Tup4f(float value)
+	public ImmutableTup4f(float value)
 	{
-		set(value);
+		this(value, value, value, value);
 	}
 	
 	/**
-	 * Creates a new instance with the values set to the corresponding parameters.
+	 * Generates a new readonly {@link ImmutableTup4f} with the values set to the corresponding parameters.
 	 * 
-	 * @param x The initial x value of the tuple.
-	 * @param y The initial y value of the tuple.
-	 * @param z The initial z value of the tuple.
-	 * @param w The initial w value of the tuple.
-	 * 
+	 * @param x The x value.
+	 * @param y The y value.
+	 * @param z The z value.
+	 * @param w The w value.
+
 	 * @since 1.0.0.0
 	 */
-	public Tup4f(float x, float y, float z, float w)
+	public ImmutableTup4f(float x, float y, float z, float w)
 	{
-		set(x, y, z, w);
+		this.x = x;
+		this.y = y;
+		this.z = z;
+		this.w = w;
 	}
 	
 	/**
-	 * Creates a new instance with the values set to the corresponding parameters.
+	 * Generates a new readonly {@link ImmutableTup4f} with the values set to the corresponding parameters.
 	 * 
 	 * @param v The values as an array.
 	 * 
 	 * @since 1.0.0.0
 	 */
-	public Tup4f(float[] v)
+	public ImmutableTup4f(float[] v)
 	{
-		setArray(v);
+		this.x = v[0];
+		this.y = v[1];
+		this.z = v[2];
+		this.w = v[3];
 	}
 	
 	@Override
@@ -165,65 +163,11 @@ public class Tup4f implements Tup4fRW, Serializable, FormattableToString
 	}
 	
 	@Override
-	public Tup4f setX(float x)
-	{
-		this.x = x;
-		
-		return this;
-	}
-	
-	@Override
-	public Tup4f setY(float y)
-	{
-		this.y = y;
-		
-		return this;
-	}
-	
-	@Override
-	public Tup4f setZ(float z)
-	{
-		this.z = z;
-		
-		return this;
-	}
-	
-	@Override
-	public Tup4f setW(float w)
-	{
-		this.w = w;
-		
-		return this;
-	}
-	
-	@Override
-	public Tup4f set(Tup4fR t)
-	{
-		return set(t.getX(), t.getY(), t.getZ(), t.getW());
-	}
-	
-	@Override
-	public Tup4f set(float value)
-	{
-		return set(value, value, value, value);
-	}
-	
-	@Override
-	public Tup4f set(float x, float y, float z, float w)
-	{
-		return setX(x).setY(y).setZ(z).setW(w);
-	}
-	
-	@Override
 	public int hashCode()
 	{
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + Float.floatToIntBits(getX());
-		result = prime * result + Float.floatToIntBits(getY());
-		result = prime * result + Float.floatToIntBits(getZ());
-		result = prime * result + Float.floatToIntBits(getW());
-		return result;
+		if(!isHashCodeGenerated) generateHashCode();
+		
+		return this.hashCode;
 	}
 	
 	@Override
@@ -259,15 +203,15 @@ public class Tup4f implements Tup4fRW, Serializable, FormattableToString
 	}
 	
 	@Override
-	public Tup4f clone()
+	public String toString()
 	{
-		return new Tup4f(this);
+		return "immutableTup4f(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ", w=" + getW() + ")";
 	}
 	
 	@Override
-	public String toString()
+	public ImmutableTup4f clone()
 	{
-		return "tup4f(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ", w=" + getW() + ")";
+		return new ImmutableTup4f(this);
 	}
 	
 	@Override
@@ -283,50 +227,48 @@ public class Tup4f implements Tup4fRW, Serializable, FormattableToString
 	}
 	
 	@Override
-	public Tup4f getNewInstance(float x, float y, float z, float w)
+	public ImmutableTup4f getNewInstance(float x, float y, float z, float w)
 	{
-		return new Tup4f(x, y, z, w);
+		return new ImmutableTup4f(x, y, z, w);
 	}
 	
 	@Override
-	public Tup4f getNewInstance(float value)
+	public ImmutableTup4f getNewInstance(float value)
 	{
-		return (Tup4f)Tup4fRW.super.getNewInstance(value);
+		return (ImmutableTup4f)Tup4fR.super.getNewInstance(value);
 	}
 	
 	@Override
-	public Tup4f getNewInstance(Tup4fR t)
+	public ImmutableTup4f getNewInstance(Tup4fR t)
 	{
-		return (Tup4f)Tup4fRW.super.getNewInstance(t);
+		return (ImmutableTup4f)Tup4fR.super.getNewInstance(t);
 	}
 	
 	@Override
-	public Tup4f getNewInstance(TupfR t)
+	public ImmutableTup4f getNewInstance(TupfR t)
 	{
-		return (Tup4f)Tup4fRW.super.getNewInstance(t);
+		return (ImmutableTup4f)Tup4fR.super.getNewInstance(t);
 	}
 	
 	@Override
-	public Tup4f getNewInstanceFromArray(float... values)
+	public ImmutableTup4f getNewInstanceFromArray(float... values)
 	{
-		return (Tup4f)Tup4fRW.super.getNewInstanceFromArray(values);
+		return (ImmutableTup4f)Tup4fR.super.getNewInstanceFromArray(values);
 	}
 	
-	@Override
-	public Tup4f set(TupfR t)
+	/**
+	 * This method generates the hashCode and stores it in the member for later use.
+	 */
+	protected void generateHashCode()
 	{
-		return (Tup4f)Tup4fRW.super.set(t);
-	}
-	
-	@Override
-	public Tup4f setArray(float... values)
-	{
-		return (Tup4f)Tup4fRW.super.setArray(values);
-	}
-	
-	@Override
-	public Tup4f setByIndex(int index, float value)
-	{
-		return (Tup4f)Tup4fRW.super.setByIndex(index, value);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Float.floatToIntBits(getX());
+		result = prime * result + Float.floatToIntBits(getY());
+		result = prime * result + Float.floatToIntBits(getZ());
+		result = prime * result + Float.floatToIntBits(getW());
+		
+		this.hashCode = result;
+		this.isHashCodeGenerated = true;
 	}
 }

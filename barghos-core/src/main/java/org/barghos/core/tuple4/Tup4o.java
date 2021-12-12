@@ -28,11 +28,9 @@ import java.util.Map;
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple4.Tup4oR;
 import org.barghos.core.api.tuple4.Tup4oRW;
-import org.barghos.core.api.util.ArgumentNullException;
-import org.barghos.core.Barghos;
 
 /**
- * This class represents a 4-dimensional object tuple.
+ * This class represents a 4-dimensional {@link Object} tuple.
  * A tuple unlike a vector contains data that is not necessarly in any relation to each other,
  * where the data of a vector describes the same logical structure.
  * 
@@ -82,14 +80,6 @@ public class Tup4o<X,Y,Z,W> implements Tup4oRW<X,Y,Z,W>, FormattableToString
 	 */
 	public Tup4o(Tup4oR<X,Y,Z,W> t)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(t == null) throw new ArgumentNullException("t");
-			if(t.getX() == null) throw new ArgumentNullException("t.getX()");
-			if(t.getY() == null) throw new ArgumentNullException("t.getY()");
-			if(t.getZ() == null) throw new ArgumentNullException("t.getZ()");
-		}
-		
 		set(t);
 	}
 	
@@ -105,14 +95,6 @@ public class Tup4o<X,Y,Z,W> implements Tup4oRW<X,Y,Z,W>, FormattableToString
 	 */
 	public Tup4o(X x, Y y, Z z, W w)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(x == null) throw new ArgumentNullException("x");
-			if(y == null) throw new ArgumentNullException("y");
-			if(z == null) throw new ArgumentNullException("z");
-			if(w == null) throw new ArgumentNullException("w");
-		}
-		
 		set(x, y, z, w);
 	}
 	
@@ -143,11 +125,6 @@ public class Tup4o<X,Y,Z,W> implements Tup4oRW<X,Y,Z,W>, FormattableToString
 	@Override
 	public Tup4o<X,Y,Z,W> setX(X x)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(x == null) throw new ArgumentNullException("x");
-		}
-		
 		this.x = x;
 		
 		return this;
@@ -156,11 +133,6 @@ public class Tup4o<X,Y,Z,W> implements Tup4oRW<X,Y,Z,W>, FormattableToString
 	@Override
 	public Tup4o<X,Y,Z,W> setY(Y y)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(y == null) throw new ArgumentNullException("y");
-		}
-		
 		this.y = y;
 		
 		return this;
@@ -169,11 +141,6 @@ public class Tup4o<X,Y,Z,W> implements Tup4oRW<X,Y,Z,W>, FormattableToString
 	@Override
 	public Tup4o<X,Y,Z,W> setZ(Z z)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(z == null) throw new ArgumentNullException("z");
-		}
-		
 		this.z = z;
 		
 		return this;
@@ -182,11 +149,6 @@ public class Tup4o<X,Y,Z,W> implements Tup4oRW<X,Y,Z,W>, FormattableToString
 	@Override
 	public Tup4o<X,Y,Z,W> setW(W w)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(w == null) throw new ArgumentNullException("w");
-		}
-		
 		this.w = w;
 		
 		return this;
@@ -195,28 +157,12 @@ public class Tup4o<X,Y,Z,W> implements Tup4oRW<X,Y,Z,W>, FormattableToString
 	@Override
 	public Tup4o<X,Y,Z,W> set(Tup4oR<X,Y,Z,W> t)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(t == null) throw new ArgumentNullException("t");
-			if(t.getX() == null) throw new ArgumentNullException("t.getX()");
-			if(t.getY() == null) throw new ArgumentNullException("t.getY()");
-			if(t.getZ() == null) throw new ArgumentNullException("t.getZ()");
-		}
-		
 		return set(t.getX(), t.getY(), t.getZ(), t.getW());
 	}
 	
 	@Override
 	public Tup4o<X,Y,Z,W> set(X x, Y y, Z z, W w)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(x == null) throw new ArgumentNullException("x");
-			if(y == null) throw new ArgumentNullException("y");
-			if(z == null) throw new ArgumentNullException("z");
-			if(w == null) throw new ArgumentNullException("w");
-		}
-		
 		return setX(x).setY(y).setZ(z).setW(w);
 	}
 	
@@ -276,5 +222,11 @@ public class Tup4o<X,Y,Z,W> implements Tup4oRW<X,Y,Z,W>, FormattableToString
 	public Tup4o<X,Y,Z,W> getNewInstance(X x, Y y, Z z, W w)
 	{
 		return new Tup4o<>(x, y, z, w);
+	}
+	
+	@Override
+	public Tup4o<X,Y,Z,W> getNewInstance(Tup4oR<X,Y,Z,W> t)
+	{
+		return (Tup4o<X,Y,Z,W>)Tup4oRW.super.getNewInstance(t);
 	}
 }

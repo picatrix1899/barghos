@@ -22,121 +22,120 @@
 
 package org.barghos.core.tuple4;
 
-import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupbR;
 import org.barghos.core.api.tuple4.Tup4bR;
-import org.barghos.core.api.tuple4.Tup4bRW;
 
 /**
- * This class represents a 4-dimensional byte tuple.
- * A tuple unlike a vector contains data that is not necessarly in any relation to each other,
- * where the data of a vector describes the same logical structure.
+ * Represents an immutable readonly 4-dimensional byte tuple.
+ * It can be used as a more flexible way to create constants.
  * 
  * @author picatrix1899
  * 
  * @since 1.0.0.0
  */
-public class Tup4b implements Tup4bRW, Serializable, FormattableToString
+public class ImmutableTup4b implements Tup4bR, FormattableToString
 {
-	/**
-	 * The class version for serialization.
-	 */
-	private static final long serialVersionUID = 1L;
-	
 	/**
 	 * The x component.
 	 */
-	public byte x;
+	public final byte x;
 	
 	/**
 	 * The y component.
 	 */
-	public byte y;
+	public final byte y;
 	
 	/**
 	 * The z component.
 	 */
-	public byte z;
+	public final byte z;
 	
 	/**
 	 * The w component.
 	 */
-	public byte w;
+	public final byte w;
 	
 	/**
-	 * Creates a new instance with all components set to 0.
-	 * 
-	 * @since 1.0.0.0
+	 * The immutable hashCode.
 	 */
-	public Tup4b()
-	{
-		set((byte)0);
-	}
+	protected transient int hashCode;
 	
 	/**
-	 * Creates a new instance from an existing instance of {@link TupbR} and adopts the values.
+	 * The flag that shows that the hashCode has already been generated.
+	 */
+	protected transient boolean isHashCodeGenerated;
+	
+	/**
+	 * Generates a new readonly {@link ImmutableTup4b} from an existing instance of {@link TupbR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupbR} to adopt the values from.
 	 * 
 	 * @since 1.0.0.0
 	 */
-	public Tup4b(TupbR t)
+	public ImmutableTup4b(TupbR t)
 	{
-		set(t);
+		this(t.getArray());
 	}
 	
 	/**
-	 * Creates a new instance from an existing instance of {@link Tup4bR} and adopts the values.
+	 * Generates a new readonly {@link ImmutableTup4b} from an existing instance of {@link Tup4bR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup4bR} to adopt the values from.
-	 * 
+
 	 * @since 1.0.0.0
 	 */
-	public Tup4b(Tup4bR t)
+	public ImmutableTup4b(Tup4bR t)
 	{
-		set(t);
+		this(t.getX(), t.getY(), t.getZ(), t.getW());
 	}
 	
 	/**
-	 * Creates a new instance with all values set to a single value.
+	 * Generates a new readonly {@link ImmutableTup4b} with all values set to a single value.
 	 * 
-	 * @param value The value used as the initial value for all values of the tuple.
-	 * 
+	 * @param value The value used for all values of the tuple.
+
 	 * @since 1.0.0.0
 	 */
-	public Tup4b(byte value)
+	public ImmutableTup4b(byte value)
 	{
-		set(value);
+		this(value, value, value, value);
 	}
 	
 	/**
-	 * Creates a new instance with the values set to the corresponding parameters.
+	 * Generates a new readonly {@link ImmutableTup4b} with the values set to the corresponding parameters.
 	 * 
-	 * @param x The initial x value of the tuple.
-	 * @param y The initial y value of the tuple.
-	 * @param z The initial z value of the tuple.
-	 * 
+	 * @param x The x value.
+	 * @param y The y value.
+	 * @param z The z value.
+	 * @param w The w value.
+
 	 * @since 1.0.0.0
 	 */
-	public Tup4b(byte x, byte y, byte z, byte w)
+	public ImmutableTup4b(byte x, byte y, byte z, byte w)
 	{
-		set(x, y, z, w);
+		this.x = x;
+		this.y = y;
+		this.z = z;
+		this.w = w;
 	}
 	
 	/**
-	 * Creates a new instance with the values set to the corresponding parameters.
+	 * Generates a new readonly {@link ImmutableTup4b} with the values set to the corresponding parameters.
 	 * 
 	 * @param v The values as an array.
 	 * 
 	 * @since 1.0.0.0
 	 */
-	public Tup4b(byte[] v)
+	public ImmutableTup4b(byte[] v)
 	{
-		setArray(v);
+		this.x = v[0];
+		this.y = v[1];
+		this.z = v[2];
+		this.w = v[3];
 	}
 	
 	@Override
@@ -164,65 +163,11 @@ public class Tup4b implements Tup4bRW, Serializable, FormattableToString
 	}
 	
 	@Override
-	public Tup4b setX(byte x)
-	{
-		this.x = x;
-		
-		return this;
-	}
-	
-	@Override
-	public Tup4b setY(byte y)
-	{
-		this.y = y;
-		
-		return this;
-	}
-	
-	@Override
-	public Tup4b setZ(byte z)
-	{
-		this.z = z;
-		
-		return this;
-	}
-
-	@Override
-	public Tup4b setW(byte w)
-	{
-		this.w = w;
-		
-		return this;
-	}
-	
-	@Override
-	public Tup4b set(Tup4bR t)
-	{
-		return set(t.getX(), t.getY(), t.getZ(), t.getW());
-	}
-	
-	@Override
-	public Tup4b set(byte value)
-	{
-		return set(value, value, value, value);
-	}
-	
-	@Override
-	public Tup4b set(byte x, byte y, byte z, byte w)
-	{
-		return setX(x).setY(y).setZ(z).setW(w);
-	}
-	
-	@Override
 	public int hashCode()
 	{
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + getX();
-		result = prime * result + getY();
-		result = prime * result + getZ();
-		result = prime * result + getW();
-		return result;
+		if(!isHashCodeGenerated) generateHashCode();
+		
+		return this.hashCode;
 	}
 	
 	@Override
@@ -258,15 +203,15 @@ public class Tup4b implements Tup4bRW, Serializable, FormattableToString
 	}
 	
 	@Override
-	public Tup4b clone()
+	public String toString()
 	{
-		return new Tup4b(this);
+		return "immutableTup4b(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ", w=" + getW() + ")";
 	}
 	
 	@Override
-	public String toString()
+	public ImmutableTup4b clone()
 	{
-		return "tup4b(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ", w=" + getW() + ")";
+		return new ImmutableTup4b(this);
 	}
 	
 	@Override
@@ -282,50 +227,48 @@ public class Tup4b implements Tup4bRW, Serializable, FormattableToString
 	}
 	
 	@Override
-	public Tup4b getNewInstance(byte x, byte y, byte z, byte w)
+	public ImmutableTup4b getNewInstance(byte x, byte y, byte z, byte w)
 	{
-		return new Tup4b(x, y, z, w);
+		return new ImmutableTup4b(x, y, z, w);
 	}
 	
 	@Override
-	public Tup4b getNewInstance(byte value)
+	public ImmutableTup4b getNewInstance(byte value)
 	{
-		return (Tup4b)Tup4bRW.super.getNewInstance(value);
+		return (ImmutableTup4b)Tup4bR.super.getNewInstance(value);
 	}
 	
 	@Override
-	public Tup4b getNewInstance(Tup4bR t)
+	public ImmutableTup4b getNewInstance(Tup4bR t)
 	{
-		return (Tup4b)Tup4bRW.super.getNewInstance(t);
+		return (ImmutableTup4b)Tup4bR.super.getNewInstance(t);
 	}
 	
 	@Override
-	public Tup4b getNewInstance(TupbR t)
+	public ImmutableTup4b getNewInstance(TupbR t)
 	{
-		return (Tup4b)Tup4bRW.super.getNewInstance(t);
+		return (ImmutableTup4b)Tup4bR.super.getNewInstance(t);
 	}
 	
 	@Override
-	public Tup4b getNewInstanceFromArray(byte... values)
+	public ImmutableTup4b getNewInstanceFromArray(byte... values)
 	{
-		return (Tup4b)Tup4bRW.super.getNewInstanceFromArray(values);
+		return (ImmutableTup4b)Tup4bR.super.getNewInstanceFromArray(values);
 	}
 	
-	@Override
-	public Tup4b set(TupbR t)
+	/**
+	 * This method generates the hashCode and stores it in the member for later use.
+	 */
+	protected void generateHashCode()
 	{
-		return (Tup4b)Tup4bRW.super.set(t);
-	}
-	
-	@Override
-	public Tup4b setArray(byte... values)
-	{
-		return (Tup4b)Tup4bRW.super.setArray(values);
-	}
-	
-	@Override
-	public Tup4b setByIndex(int index, byte value)
-	{
-		return (Tup4b)Tup4bRW.super.setByIndex(index, value);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + getX();
+		result = prime * result + getY();
+		result = prime * result + getZ();
+		result = prime * result + getW();
+		
+		this.hashCode = result;
+		this.isHashCodeGenerated = true;
 	}
 }

@@ -22,122 +22,120 @@
 
 package org.barghos.core.tuple4;
 
-import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupdR;
 import org.barghos.core.api.tuple4.Tup4dR;
-import org.barghos.core.api.tuple4.Tup4dRW;
 
 /**
- * This class represents a 3-dimensional double tuple.
- * A tuple unlike a vector contains data that is not necessarly in any relation to each other,
- * where the data of a vector describes the same logical structure.
+ * Represents an immutable readonly 4-dimensional double tuple.
+ * It can be used as a more flexible way to create constants.
  * 
  * @author picatrix1899
  * 
  * @since 1.0.0.0
  */
-public class Tup4d implements Tup4dRW, Serializable, FormattableToString
+public class ImmutableTup4d implements Tup4dR, FormattableToString
 {
-	/**
-	 * The class version for serialization.
-	 */
-	private static final long serialVersionUID = 1L;
-	
 	/**
 	 * The x component.
 	 */
-	public double x;
+	public final double x;
 	
 	/**
 	 * The y component.
 	 */
-	public double y;
+	public final double y;
 	
 	/**
 	 * The z component.
 	 */
-	public double z;
+	public final double z;
 	
 	/**
 	 * The w component.
 	 */
-	public double w;
+	public final double w;
 	
 	/**
-	 * Creates a new instance with all components set to 0.
-	 * 
-	 * @since 1.0.0.0
+	 * The immutable hashCode.
 	 */
-	public Tup4d()
-	{
-		set(0.0f);
-	}
+	protected transient int hashCode;
 	
 	/**
-	 * Creates a new instance from an existing instance of {@link TupdR} and adopts the values.
+	 * The flag that shows that the hashCode has already been generated.
+	 */
+	protected transient boolean isHashCodeGenerated;
+	
+	/**
+	 * Generates a new readonly {@link ImmutableTup4d} from an existing instance of {@link TupdR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupdR} to adopt the values from.
 	 * 
 	 * @since 1.0.0.0
 	 */
-	public Tup4d(TupdR t)
+	public ImmutableTup4d(TupdR t)
 	{
-		set(t);
+		this(t.getArray());
 	}
 	
 	/**
-	 * Creates a new instance from an existing instance of {@link Tup4dR} and adopts the values.
+	 * Generates a new readonly {@link ImmutableTup4d} from an existing instance of {@link Tup4dR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup4dR} to adopt the values from.
-	 * 
+
 	 * @since 1.0.0.0
 	 */
-	public Tup4d(Tup4dR t)
+	public ImmutableTup4d(Tup4dR t)
 	{
-		set(t);
+		this(t.getX(), t.getY(), t.getZ(), t.getW());
 	}
 	
 	/**
-	 * Creates a new instance with all values set to a single value.
+	 * Generates a new readonly {@link ImmutableTup4d} with all values set to a single value.
 	 * 
-	 * @param value The value used as the initial value for all values of the tuple.
-	 * 
+	 * @param value The value used for all values of the tuple.
+
 	 * @since 1.0.0.0
 	 */
-	public Tup4d(double value)
+	public ImmutableTup4d(double value)
 	{
-		set(value);
+		this(value, value, value, value);
 	}
 	
 	/**
-	 * Creates a new instance with the values set to the corresponding parameters.
+	 * Generates a new readonly {@link ImmutableTup4d} with the values set to the corresponding parameters.
 	 * 
-	 * @param x The initial x value of the tuple.
-	 * @param y The initial y value of the tuple.
-	 * @param z The initial z value of the tuple.
-	 * @param w The initial w value of the tuple.
-	 * 
+	 * @param x The x value.
+	 * @param y The y value.
+	 * @param z The z value.
+	 * @param w The w value.
+
 	 * @since 1.0.0.0
 	 */
-	public Tup4d(double x, double y, double z, double w)
+	public ImmutableTup4d(double x, double y, double z, double w)
 	{
-		set(x, y, z, w);
+		this.x = x;
+		this.y = y;
+		this.z = z;
+		this.w = w;
 	}
 	
 	/**
-	 * Creates a new instance with the values set to the corresponding parameters.
+	 * Generates a new readonly {@link ImmutableTup4d} with the values set to the corresponding parameters.
 	 * 
 	 * @param v The values as an array.
 	 * 
 	 * @since 1.0.0.0
 	 */
-	public Tup4d(double[] v)
+	public ImmutableTup4d(double[] v)
 	{
-		setArray(v);
+		this.x = v[0];
+		this.y = v[1];
+		this.z = v[2];
+		this.w = v[3];
 	}
 	
 	@Override
@@ -165,69 +163,11 @@ public class Tup4d implements Tup4dRW, Serializable, FormattableToString
 	}
 	
 	@Override
-	public Tup4d setX(double x)
-	{
-		this.x = x;
-		
-		return this;
-	}
-	
-	@Override
-	public Tup4d setY(double y)
-	{
-		this.y = y;
-		
-		return this;
-	}
-	
-	@Override
-	public Tup4d setZ(double z)
-	{
-		this.z = z;
-		
-		return this;
-	}
-	
-	@Override
-	public Tup4d setW(double w)
-	{
-		this.w = w;
-		
-		return this;
-	}
-	
-	@Override
-	public Tup4d set(Tup4dR t)
-	{
-		return set(t.getX(), t.getY(), t.getZ(), t.getW());
-	}
-	
-	@Override
-	public Tup4d set(double value)
-	{
-		return set(value, value, value, value);
-	}
-	
-	@Override
-	public Tup4d set(double x, double y, double z, double w)
-	{
-		return setX(x).setY(y).setZ(z);
-	}
-	
-	@Override
 	public int hashCode()
 	{
-		final int prime = 31;
-		int result = 1;
-		long temp = Double.doubleToLongBits(getX());
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(getY());
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(getZ());
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(getW());
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		return result;
+		if(!isHashCodeGenerated) generateHashCode();
+		
+		return this.hashCode;
 	}
 	
 	@Override
@@ -263,15 +203,15 @@ public class Tup4d implements Tup4dRW, Serializable, FormattableToString
 	}
 	
 	@Override
-	public Tup4d clone()
+	public String toString()
 	{
-		return new Tup4d(this);
+		return "immutableTup4d(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ", w=" + getW() + ")";
 	}
 	
 	@Override
-	public String toString()
+	public ImmutableTup4d clone()
 	{
-		return "tup4d(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ", w=" + getW() + ")";
+		return new ImmutableTup4d(this);
 	}
 	
 	@Override
@@ -287,50 +227,52 @@ public class Tup4d implements Tup4dRW, Serializable, FormattableToString
 	}
 	
 	@Override
-	public Tup4d getNewInstance(double x, double y, double z, double w)
+	public ImmutableTup4d getNewInstance(double x, double y, double z, double w)
 	{
-		return new Tup4d(x, y, z, w);
+		return new ImmutableTup4d(x, y, z, w);
 	}
 	
 	@Override
-	public Tup4d getNewInstance(double value)
+	public ImmutableTup4d getNewInstance(double value)
 	{
-		return (Tup4d)Tup4dRW.super.getNewInstance(value);
+		return (ImmutableTup4d)Tup4dR.super.getNewInstance(value);
 	}
 	
 	@Override
-	public Tup4d getNewInstance(Tup4dR t)
+	public ImmutableTup4d getNewInstance(Tup4dR t)
 	{
-		return (Tup4d)Tup4dRW.super.getNewInstance(t);
+		return (ImmutableTup4d)Tup4dR.super.getNewInstance(t);
 	}
 	
 	@Override
-	public Tup4d getNewInstance(TupdR t)
+	public ImmutableTup4d getNewInstance(TupdR t)
 	{
-		return (Tup4d)Tup4dRW.super.getNewInstance(t);
+		return (ImmutableTup4d)Tup4dR.super.getNewInstance(t);
 	}
 	
 	@Override
-	public Tup4d getNewInstanceFromArray(double... values)
+	public ImmutableTup4d getNewInstanceFromArray(double... values)
 	{
-		return (Tup4d)Tup4dRW.super.getNewInstanceFromArray(values);
+		return (ImmutableTup4d)Tup4dR.super.getNewInstanceFromArray(values);
 	}
 	
-	@Override
-	public Tup4d set(TupdR t)
+	/**
+	 * This method generates the hashCode and stores it in the member for later use.
+	 */
+	protected void generateHashCode()
 	{
-		return (Tup4d)Tup4dRW.super.set(t);
-	}
-	
-	@Override
-	public Tup4d setArray(double... values)
-	{
-		return (Tup4d)Tup4dRW.super.setArray(values);
-	}
-	
-	@Override
-	public Tup4d setByIndex(int index, double value)
-	{
-		return (Tup4d)Tup4dRW.super.setByIndex(index, value);
+		final int prime = 31;
+		int result = 1;
+		long temp = Double.doubleToLongBits(getX());
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(getY());
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(getZ());
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(getW());
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		
+		this.hashCode = result;
+		this.isHashCodeGenerated = true;
 	}
 }

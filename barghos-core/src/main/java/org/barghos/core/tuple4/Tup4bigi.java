@@ -28,13 +28,12 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
+import org.barghos.core.api.tuple.TupbigiR;
 import org.barghos.core.api.tuple4.Tup4bigiR;
 import org.barghos.core.api.tuple4.Tup4bigiRW;
-import org.barghos.core.api.util.ArgumentNullException;
-import org.barghos.core.Barghos;
 
 /**
- * This class represents a 4-dimensional big decimal tuple.
+ * This class represents a 4-dimensional {@link BigInteger} tuple.
  * A tuple unlike a vector contains data that is not necessarly in any relation to each other,
  * where the data of a vector describes the same logical structure.
  * 
@@ -74,13 +73,25 @@ public class Tup4bigi implements Tup4bigiRW, Serializable, FormattableToString
 	public BigInteger w;
 	
 	/**
-	 * Creates a new instance with all components set to BigInteger.ZERO.
+	 * Creates a new instance with all components set to {@link BigInteger#ZERO}.
 	 * 
 	 * @since 1.0.0.0
 	 */
 	public Tup4bigi()
 	{
 		set(BigInteger.ZERO);
+	}
+	
+	/**
+	 * Creates a new instance from an existing instance of {@link TupbigiR} and adopts the values.
+	 * 
+	 * @param t An existing implementation of {@link TupbigiR} to adopt the values from.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public Tup4bigi(TupbigiR t)
+	{
+		set(t);
 	}
 	
 	/**
@@ -92,15 +103,6 @@ public class Tup4bigi implements Tup4bigiRW, Serializable, FormattableToString
 	 */
 	public Tup4bigi(Tup4bigiR t)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(t == null) throw new ArgumentNullException("t");
-			if(t.getX() == null) throw new ArgumentNullException("t.getX()");
-			if(t.getY() == null) throw new ArgumentNullException("t.getY()");
-			if(t.getZ() == null) throw new ArgumentNullException("t.getZ()");
-			if(t.getW() == null) throw new ArgumentNullException("t.getW()");
-		}
-		
 		set(t);
 	}
 	
@@ -113,11 +115,6 @@ public class Tup4bigi implements Tup4bigiRW, Serializable, FormattableToString
 	 */
 	public Tup4bigi(BigInteger value)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(value == null) throw new ArgumentNullException("value");
-		}
-		
 		set(value);
 	}
 	
@@ -133,15 +130,19 @@ public class Tup4bigi implements Tup4bigiRW, Serializable, FormattableToString
 	 */
 	public Tup4bigi(BigInteger x, BigInteger y, BigInteger z, BigInteger w)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(x == null) throw new ArgumentNullException("x");
-			if(y == null) throw new ArgumentNullException("y");
-			if(z == null) throw new ArgumentNullException("z");
-			if(w == null) throw new ArgumentNullException("w");
-		}
-		
 		set(x, y, z, w);
+	}
+	
+	/**
+	 * Creates a new instance with the values set to the corresponding parameters.
+	 * 
+	 * @param v The values as an array.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	public Tup4bigi(BigInteger[] v)
+	{
+		setArray(v);
 	}
 	
 	@Override
@@ -171,11 +172,6 @@ public class Tup4bigi implements Tup4bigiRW, Serializable, FormattableToString
 	@Override
 	public Tup4bigi setX(BigInteger x)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(x == null) throw new ArgumentNullException("x");
-		}
-		
 		this.x = x;
 		
 		return this;
@@ -184,11 +180,6 @@ public class Tup4bigi implements Tup4bigiRW, Serializable, FormattableToString
 	@Override
 	public Tup4bigi setY(BigInteger y)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(y == null) throw new ArgumentNullException("y");
-		}
-		
 		this.y = y;
 		
 		return this;
@@ -197,11 +188,6 @@ public class Tup4bigi implements Tup4bigiRW, Serializable, FormattableToString
 	@Override
 	public Tup4bigi setZ(BigInteger z)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(z == null) throw new ArgumentNullException("z");
-		}
-		
 		this.z = z;
 		
 		return this;
@@ -210,11 +196,6 @@ public class Tup4bigi implements Tup4bigiRW, Serializable, FormattableToString
 	@Override
 	public Tup4bigi setW(BigInteger w)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(w == null) throw new ArgumentNullException("w");
-		}
-		
 		this.w = w;
 		
 		return this;
@@ -223,15 +204,6 @@ public class Tup4bigi implements Tup4bigiRW, Serializable, FormattableToString
 	@Override
 	public Tup4bigi set(Tup4bigiR t)
 	{
-		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
-		{
-			if(t == null) throw new ArgumentNullException("t");
-			if(t.getX() == null) throw new ArgumentNullException("t.getX()");
-			if(t.getY() == null) throw new ArgumentNullException("t.getY()");
-			if(t.getZ() == null) throw new ArgumentNullException("t.getZ()");
-			if(t.getW() == null) throw new ArgumentNullException("t.getW()");
-		}
-		
 		return set(t.getX(), t.getY(), t.getZ(), t.getW());
 	}
 	
@@ -264,14 +236,31 @@ public class Tup4bigi implements Tup4bigiRW, Serializable, FormattableToString
 	{
 		if(this == obj) return true;
 		if(obj == null) return false;
-		if(!(obj instanceof Tup4bigiR)) return false;
 		
-		Tup4bigiR other = (Tup4bigiR) obj;
-		if(getX().compareTo(other.getX()) != 0) return false;
-		if(getY().compareTo(other.getY()) != 0) return false;
-		if(getZ().compareTo(other.getZ()) != 0) return false;
-		if(getW().compareTo(other.getW()) != 0) return false;
-		return true;
+		if(obj instanceof Tup4bigiR)
+		{
+			Tup4bigiR other = (Tup4bigiR) obj;
+			if(getX().compareTo(other.getX()) != 0) return false;
+			if(getY().compareTo(other.getY()) != 0) return false;
+			if(getZ().compareTo(other.getZ()) != 0) return false;
+			if(getZ().compareTo(other.getW()) != 0) return false;
+			
+			return true;
+		}
+		
+		if(obj instanceof TupbigiR)
+		{
+			TupbigiR other = (TupbigiR) obj;
+			if(getDimensions() != other.getDimensions()) return false;
+			if(getX().compareTo(other.getByIndex(0)) != 0) return false;
+			if(getY().compareTo(other.getByIndex(1)) != 0) return false;
+			if(getZ().compareTo(other.getByIndex(2)) != 0) return false;
+			if(getW().compareTo(other.getByIndex(3)) != 0) return false;
+			
+			return true;
+		}
+		
+		return false;
 	}
 	
 	@Override
@@ -302,5 +291,47 @@ public class Tup4bigi implements Tup4bigiRW, Serializable, FormattableToString
 	public Tup4bigi getNewInstance(BigInteger x, BigInteger y, BigInteger z, BigInteger w)
 	{
 		return new Tup4bigi(x, y, z, w);
+	}
+	
+	@Override
+	public Tup4bigi getNewInstance(BigInteger value)
+	{
+		return (Tup4bigi)Tup4bigiRW.super.getNewInstance(value);
+	}
+	
+	@Override
+	public Tup4bigi getNewInstance(Tup4bigiR t)
+	{
+		return (Tup4bigi)Tup4bigiRW.super.getNewInstance(t);
+	}
+	
+	@Override
+	public Tup4bigi getNewInstance(TupbigiR t)
+	{
+		return (Tup4bigi)Tup4bigiRW.super.getNewInstance(t);
+	}
+	
+	@Override
+	public Tup4bigi getNewInstanceFromArray(BigInteger... values)
+	{
+		return (Tup4bigi)Tup4bigiRW.super.getNewInstanceFromArray(values);
+	}
+	
+	@Override
+	public Tup4bigi set(TupbigiR t)
+	{
+		return (Tup4bigi)Tup4bigiRW.super.set(t);
+	}
+	
+	@Override
+	public Tup4bigi setArray(BigInteger... values)
+	{
+		return (Tup4bigi)Tup4bigiRW.super.setArray(values);
+	}
+	
+	@Override
+	public Tup4bigi setByIndex(int index, BigInteger value)
+	{
+		return (Tup4bigi)Tup4bigiRW.super.setByIndex(index, value);
 	}
 }

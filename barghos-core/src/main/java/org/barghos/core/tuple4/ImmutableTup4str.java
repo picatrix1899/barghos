@@ -22,126 +22,120 @@
 
 package org.barghos.core.tuple4;
 
-import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupstrR;
 import org.barghos.core.api.tuple4.Tup4strR;
-import org.barghos.core.api.tuple4.Tup4strRW;
 
 /**
- * This class represents a 4-dimensional string tuple.
- * A tuple unlike a vector contains data that is not necessarly in any relation to each other,
- * where the data of a vector describes the same logical structure.
+ * Represents an immutable readonly 4-dimensional {@link String} tuple.
+ * It can be used as a more flexible way to create constants.
  * 
  * @author picatrix1899
  * 
  * @since 1.0.0.0
  */
-public class Tup4str implements Tup4strRW, Serializable, FormattableToString
+public class ImmutableTup4str implements Tup4strR, FormattableToString
 {
 	/**
-	 * The class version for serialization.
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	/**
 	 * The x component.
-	 * This must not be null.
 	 */
-	public String x;
+	public final String x;
 	
 	/**
 	 * The y component.
-	 * This must not be null.
 	 */
-	public String y;
+	public final String y;
 	
 	/**
 	 * The z component.
-	 * This must not be null.
 	 */
-	public String z;
+	public final String z;
 	
 	/**
 	 * The w component.
-	 * This must not be null.
 	 */
-	public String w;
+	public final String w;
 	
 	/**
-	 * Creates a new instance with all components set to "".
-	 * 
-	 * @since 1.0.0.0
+	 * The immutable hashCode.
 	 */
-	public Tup4str()
-	{
-		set("");
-	}
+	protected transient int hashCode;
 	
 	/**
-	 * Creates a new instance from an existing instance of {@link TupstrR} and adopts the values.
+	 * The flag that shows that the hashCode has already been generated.
+	 */
+	protected transient boolean isHashCodeGenerated;
+	
+	/**
+	 * Generates a new readonly {@link ImmutableTup4str} from an existing instance of {@link TupstrR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupstrR} to adopt the values from.
 	 * 
 	 * @since 1.0.0.0
 	 */
-	public Tup4str(TupstrR t)
+	public ImmutableTup4str(TupstrR t)
 	{
-		set(t);
+		this(t.getArray());
 	}
 	
 	/**
-	 * Creates a new instance from an existing instance of {@link Tup4strR} and adopts the values.
+	 * Generates a new readonly {@link ImmutableTup4str} from an existing instance of {@link Tup4strR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup4strR} to adopt the values from.
-	 * 
+
 	 * @since 1.0.0.0
 	 */
-	public Tup4str(Tup4strR t)
+	public ImmutableTup4str(Tup4strR t)
 	{
-		set(t);
+		this(t.getX(), t.getY(), t.getZ(), t.getW());
 	}
 	
 	/**
-	 * Creates a new instance with all values set to a single value.
+	 * Generates a new readonly {@link ImmutableTup4str} with all values set to a single value.
 	 * 
-	 * @param value The value used as the initial value for all values of the tuple.
-	 * 
+	 * @param value The value used for all values of the tuple.
+
 	 * @since 1.0.0.0
 	 */
-	public Tup4str(String value)
+	public ImmutableTup4str(String value)
 	{
-		set(value);
+		this(value, value, value, value);
 	}
 	
 	/**
-	 * Creates a new instance with the values set to the corresponding parameters.
+	 * Generates a new readonly {@link ImmutableTup4str} with the values set to the corresponding parameters.
 	 * 
-	 * @param x The initial x value of the tuple.
-	 * @param y The initial y value of the tuple.
-	 * @param z The initial z value of the tuple.
-	 * @param w The initial w value of the tuple.
-	 * 
+	 * @param x The x value.
+	 * @param y The y value.
+	 * @param z The z value.
+	 * @param w The w value.
+
 	 * @since 1.0.0.0
 	 */
-	public Tup4str(String x, String y, String z, String w)
+	public ImmutableTup4str(String x, String y, String z, String w)
 	{
-		set(x, y, z, w);
+		this.x = x;
+		this.y = y;
+		this.z = z;
+		this.w = w;
 	}
 	
 	/**
-	 * Creates a new instance with the values set to the corresponding parameters.
+	 * Generates a new readonly {@link ImmutableTup4str} with the values set to the corresponding parameters.
 	 * 
 	 * @param v The values as an array.
 	 * 
 	 * @since 1.0.0.0
 	 */
-	public Tup4str(String[] v)
+	public ImmutableTup4str(String[] v)
 	{
-		setArray(v);
+		this.x = v[0];
+		this.y = v[1];
+		this.z = v[2];
+		this.w = v[3];
 	}
 	
 	@Override
@@ -169,65 +163,11 @@ public class Tup4str implements Tup4strRW, Serializable, FormattableToString
 	}
 	
 	@Override
-	public Tup4str setX(String x)
-	{
-		this.x = x;
-		
-		return this;
-	}
-	
-	@Override
-	public Tup4str setY(String y)
-	{
-		this.y = y;
-		
-		return this;
-	}
-	
-	@Override
-	public Tup4str setZ(String z)
-	{
-		this.z = z;
-		
-		return this;
-	}
-	
-	@Override
-	public Tup4str setW(String w)
-	{
-		this.w = w;
-		
-		return this;
-	}
-	
-	@Override
-	public Tup4str set(Tup4strR t)
-	{
-		return set(t.getX(), t.getY(), t.getZ(), t.getW());
-	}
-	
-	@Override
-	public Tup4str set(String value)
-	{
-		return set(value, value, value, value);
-	}
-	
-	@Override
-	public Tup4str set(String x, String y, String z, String w)
-	{
-		return setX(x).setY(y).setZ(z).setW(w);
-	}
-	
-	@Override
 	public int hashCode()
 	{
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + getX().hashCode();
-		result = prime * result + getY().hashCode();
-		result = prime * result + getZ().hashCode();
-		result = prime * result + getW().hashCode();
-		return result;
+		if(!isHashCodeGenerated) generateHashCode();
+		
+		return this.hashCode;
 	}
 	
 	@Override
@@ -263,15 +203,15 @@ public class Tup4str implements Tup4strRW, Serializable, FormattableToString
 	}
 	
 	@Override
-	public Tup4str clone()
+	public String toString()
 	{
-		return new Tup4str(this);
+		return "immutableTup4str(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ", w=" + getW() + ")";
 	}
 	
 	@Override
-	public String toString()
+	public ImmutableTup4str clone()
 	{
-		return "tup4str(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ", w=" + getW() + ")";
+		return new ImmutableTup4str(this);
 	}
 	
 	@Override
@@ -287,50 +227,48 @@ public class Tup4str implements Tup4strRW, Serializable, FormattableToString
 	}
 	
 	@Override
-	public Tup4str getNewInstance(String x, String y, String z, String w)
+	public ImmutableTup4str getNewInstance(String x, String y, String z, String w)
 	{
-		return new Tup4str(x, y, z, w);
+		return new ImmutableTup4str(x, y, z, w);
 	}
 	
 	@Override
-	public Tup4str getNewInstance(String value)
+	public ImmutableTup4str getNewInstance(String value)
 	{
-		return (Tup4str)Tup4strRW.super.getNewInstance(value);
+		return (ImmutableTup4str)Tup4strR.super.getNewInstance(value);
 	}
 	
 	@Override
-	public Tup4str getNewInstance(Tup4strR t)
+	public ImmutableTup4str getNewInstance(Tup4strR t)
 	{
-		return (Tup4str)Tup4strRW.super.getNewInstance(t);
+		return (ImmutableTup4str)Tup4strR.super.getNewInstance(t);
 	}
 	
 	@Override
-	public Tup4str getNewInstance(TupstrR t)
+	public ImmutableTup4str getNewInstance(TupstrR t)
 	{
-		return (Tup4str)Tup4strRW.super.getNewInstance(t);
+		return (ImmutableTup4str)Tup4strR.super.getNewInstance(t);
 	}
 	
 	@Override
-	public Tup4str getNewInstanceFromArray(String... values)
+	public ImmutableTup4str getNewInstanceFromArray(String... values)
 	{
-		return (Tup4str)Tup4strRW.super.getNewInstanceFromArray(values);
+		return (ImmutableTup4str)Tup4strR.super.getNewInstanceFromArray(values);
 	}
 	
-	@Override
-	public Tup4str set(TupstrR t)
+	/**
+	 * This method generates the hashCode and stores it in the member for later use.
+	 */
+	protected void generateHashCode()
 	{
-		return (Tup4str)Tup4strRW.super.set(t);
-	}
-	
-	@Override
-	public Tup4str setArray(String... values)
-	{
-		return (Tup4str)Tup4strRW.super.setArray(values);
-	}
-	
-	@Override
-	public Tup4str setByIndex(int index, String value)
-	{
-		return (Tup4str)Tup4strRW.super.setByIndex(index, value);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + getX().hashCode();
+		result = prime * result + getY().hashCode();
+		result = prime * result + getZ().hashCode();
+		result = prime * result + getW().hashCode();
+		
+		this.hashCode = result;
+		this.isHashCodeGenerated = true;
 	}
 }

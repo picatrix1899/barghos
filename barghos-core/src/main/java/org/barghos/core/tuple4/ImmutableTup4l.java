@@ -22,122 +22,120 @@
 
 package org.barghos.core.tuple4;
 
-import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TuplR;
 import org.barghos.core.api.tuple4.Tup4lR;
-import org.barghos.core.api.tuple4.Tup4lRW;
 
 /**
- * This class represents a 4-dimensional long tuple.
- * A tuple unlike a vector contains data that is not necessarly in any relation to each other,
- * where the data of a vector describes the same logical structure.
+ * Represents an immutable readonly 4-dimensional int tuple.
+ * It can be used as a more flexible way to create constants.
  * 
  * @author picatrix1899
  * 
  * @since 1.0.0.0
  */
-public class Tup4l implements Tup4lRW, Serializable, FormattableToString
+public class ImmutableTup4l implements Tup4lR, FormattableToString
 {
-	/**
-	 * The class version for serialization.
-	 */
-	private static final long serialVersionUID = 1L;
-	
 	/**
 	 * The x component.
 	 */
-	public long x;
+	public final long x;
 	
 	/**
 	 * The y component.
 	 */
-	public long y;
+	public final long y;
 	
 	/**
 	 * The z component.
 	 */
-	public long z;
+	public final long z;
 	
 	/**
 	 * The w component.
 	 */
-	public long w;
+	public final long w;
 	
 	/**
-	 * Creates a new instance with all components set to 0.
-	 * 
-	 * @since 1.0.0.0
+	 * The immutable hashCode.
 	 */
-	public Tup4l()
-	{
-		set(0);
-	}
+	protected transient int hashCode;
 	
 	/**
-	 * Creates a new instance from an existing instance of {@link TuplR} and adopts the values.
+	 * The flag that shows that the hashCode has already been generated.
+	 */
+	protected transient boolean isHashCodeGenerated;
+	
+	/**
+	 * Generates a new readonly {@link ImmutableTup4l} from an existing instance of {@link TuplR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TuplR} to adopt the values from.
 	 * 
 	 * @since 1.0.0.0
 	 */
-	public Tup4l(TuplR t)
+	public ImmutableTup4l(TuplR t)
 	{
-		set(t);
+		this(t.getArray());
 	}
 	
 	/**
-	 * Creates a new instance from an existing instance of {@link Tup4lR} and adopts the values.
+	 * Generates a new readonly {@link ImmutableTup4l} from an existing instance of {@link Tup4lR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup4lR} to adopt the values from.
-	 * 
+
 	 * @since 1.0.0.0
 	 */
-	public Tup4l(Tup4lR t)
+	public ImmutableTup4l(Tup4lR t)
 	{
-		set(t);
+		this(t.getX(), t.getY(), t.getZ(), t.getW());
 	}
 	
 	/**
-	 * Creates a new instance with all values set to a single value.
+	 * Generates a new readonly {@link ImmutableTup4l} with all values set to a single value.
 	 * 
-	 * @param value The value used as the initial value for all values of the tuple.
-	 * 
+	 * @param value The value used for all values of the tuple.
+
 	 * @since 1.0.0.0
 	 */
-	public Tup4l(long value)
+	public ImmutableTup4l(long value)
 	{
-		set(value);
+		this(value, value, value, value);
 	}
 	
 	/**
-	 * Creates a new instance with the values set to the corresponding parameters.
+	 * Generates a new readonly {@link ImmutableTup4l} with the values set to the corresponding parameters.
 	 * 
-	 * @param x The initial x value of the tuple.
-	 * @param y The initial y value of the tuple.
-	 * @param z The initial z value of the tuple.
-	 * @param w The initial w value of the tuple.
-	 * 
+	 * @param x The x value.
+	 * @param y The y value.
+	 * @param z The z value.
+	 * @param w The w value.
+
 	 * @since 1.0.0.0
 	 */
-	public Tup4l(long x, long y, long z, long w)
+	public ImmutableTup4l(long x, long y, long z, long w)
 	{
-		set(x, y, z, w);
+		this.x = x;
+		this.y = y;
+		this.z = z;
+		this.w = w;
 	}
 	
 	/**
-	 * Creates a new instance with the values set to the corresponding parameters.
+	 * Generates a new readonly {@link ImmutableTup4l} with the values set to the corresponding parameters.
 	 * 
 	 * @param v The values as an array.
 	 * 
 	 * @since 1.0.0.0
 	 */
-	public Tup4l(long[] v)
+	public ImmutableTup4l(long[] v)
 	{
-		setArray(v);
+		this.x = v[0];
+		this.y = v[1];
+		this.z = v[2];
+		this.w = v[3];
 	}
 	
 	@Override
@@ -165,65 +163,11 @@ public class Tup4l implements Tup4lRW, Serializable, FormattableToString
 	}
 	
 	@Override
-	public Tup4l setX(long x)
-	{
-		this.x = x;
-		
-		return this;
-	}
-	
-	@Override
-	public Tup4l setY(long y)
-	{
-		this.y = y;
-		
-		return this;
-	}
-	
-	@Override
-	public Tup4l setZ(long z)
-	{
-		this.z = z;
-		
-		return this;
-	}
-	
-	@Override
-	public Tup4l setW(long w)
-	{
-		this.w = w;
-		
-		return this;
-	}
-	
-	@Override
-	public Tup4l set(Tup4lR t)
-	{
-		return set(t.getX(), t.getY(), t.getZ(), t.getW());
-	}
-	
-	@Override
-	public Tup4l set(long value)
-	{
-		return set(value, value, value, value);
-	}
-	
-	@Override
-	public Tup4l set(long x, long y, long z, long w)
-	{
-		return setX(x).setY(y).setZ(z);
-	}
-	
-	@Override
 	public int hashCode()
 	{
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + (int) (getX() ^ (getX() >>> 32));
-		result = prime * result + (int) (getY() ^ (getY() >>> 32));
-		result = prime * result + (int) (getZ() ^ (getZ() >>> 32));
-		result = prime * result + (int) (getW() ^ (getW() >>> 32));
-		return result;
+		if(!isHashCodeGenerated) generateHashCode();
+		
+		return this.hashCode;
 	}
 	
 	@Override
@@ -259,15 +203,15 @@ public class Tup4l implements Tup4lRW, Serializable, FormattableToString
 	}
 	
 	@Override
-	public Tup4l clone()
+	public String toString()
 	{
-		return new Tup4l(this);
+		return "immutableTup4l(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ", w=" + getW() + ")";
 	}
 	
 	@Override
-	public String toString()
+	public ImmutableTup4l clone()
 	{
-		return "tup4l(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ", w=" + getW() + ")";
+		return new ImmutableTup4l(this);
 	}
 	
 	@Override
@@ -283,50 +227,48 @@ public class Tup4l implements Tup4lRW, Serializable, FormattableToString
 	}
 	
 	@Override
-	public Tup4l getNewInstance(long x, long y, long z, long w)
+	public ImmutableTup4l getNewInstance(long x, long y, long z, long w)
 	{
-		return new Tup4l(x, y, z, w);
+		return new ImmutableTup4l(x, y, z, w);
 	}
 	
 	@Override
-	public Tup4l getNewInstance(long value)
+	public ImmutableTup4l getNewInstance(long value)
 	{
-		return (Tup4l)Tup4lRW.super.getNewInstance(value);
+		return (ImmutableTup4l)Tup4lR.super.getNewInstance(value);
 	}
 	
 	@Override
-	public Tup4l getNewInstance(Tup4lR t)
+	public ImmutableTup4l getNewInstance(Tup4lR t)
 	{
-		return (Tup4l)Tup4lRW.super.getNewInstance(t);
+		return (ImmutableTup4l)Tup4lR.super.getNewInstance(t);
 	}
 	
 	@Override
-	public Tup4l getNewInstance(TuplR t)
+	public ImmutableTup4l getNewInstance(TuplR t)
 	{
-		return (Tup4l)Tup4lRW.super.getNewInstance(t);
+		return (ImmutableTup4l)Tup4lR.super.getNewInstance(t);
 	}
 	
 	@Override
-	public Tup4l getNewInstanceFromArray(long... values)
+	public ImmutableTup4l getNewInstanceFromArray(long... values)
 	{
-		return (Tup4l)Tup4lRW.super.getNewInstanceFromArray(values);
+		return (ImmutableTup4l)Tup4lR.super.getNewInstanceFromArray(values);
 	}
 	
-	@Override
-	public Tup4l set(TuplR t)
+	/**
+	 * This method generates the hashCode and stores it in the member for later use.
+	 */
+	protected void generateHashCode()
 	{
-		return (Tup4l)Tup4lRW.super.set(t);
-	}
-	
-	@Override
-	public Tup4l setArray(long... values)
-	{
-		return (Tup4l)Tup4lRW.super.setArray(values);
-	}
-	
-	@Override
-	public Tup4l setByIndex(int index, long value)
-	{
-		return (Tup4l)Tup4lRW.super.setByIndex(index, value);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (int) (getX() ^ (getX() >>> 32));
+		result = prime * result + (int) (getY() ^ (getY() >>> 32));
+		result = prime * result + (int) (getZ() ^ (getZ() >>> 32));
+		result = prime * result + (int) (getW() ^ (getW() >>> 32));
+		
+		this.hashCode = result;
+		this.isHashCodeGenerated = true;
 	}
 }

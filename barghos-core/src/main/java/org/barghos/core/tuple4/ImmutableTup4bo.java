@@ -22,122 +22,120 @@
 
 package org.barghos.core.tuple4;
 
-import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupboR;
 import org.barghos.core.api.tuple4.Tup4boR;
-import org.barghos.core.api.tuple4.Tup4boRW;
 
 /**
- * This class represents a 3-dimensional boolean tuple.
- * A tuple unlike a vector contains data that is not necessarly in any relation to each other,
- * where the data of a vector describes the same logical structure.
+ * Represents an immutable readonly 4-dimensional boolean tuple.
+ * It can be used as a more flexible way to create constants.
  * 
  * @author picatrix1899
  * 
  * @since 1.0.0.0
  */
-public class Tup4bo implements Tup4boRW, Serializable, FormattableToString
+public class ImmutableTup4bo implements Tup4boR, FormattableToString
 {
-	/**
-	 * The class version for serialization.
-	 */
-	private static final long serialVersionUID = 1L;
-	
 	/**
 	 * The x component.
 	 */
-	public boolean x;
+	public final boolean x;
 	
 	/**
 	 * The y component.
 	 */
-	public boolean y;
+	public final boolean y;
 	
 	/**
 	 * The z component.
 	 */
-	public boolean z;
+	public final boolean z;
 	
 	/**
 	 * The w component.
 	 */
-	public boolean w;
+	public final boolean w;
 	
 	/**
-	 * Creates a new instance with all components set to 0.
-	 * 
-	 * @since 1.0.0.0
+	 * The immutable hashCode.
 	 */
-	public Tup4bo()
-	{
-		set(false);
-	}
+	protected transient int hashCode;
 	
 	/**
-	 * Creates a new instance from an existing instance of {@link TupboR} and adopts the values.
+	 * The flag that shows that the hashCode has already been generated.
+	 */
+	protected transient boolean isHashCodeGenerated;
+	
+	/**
+	 * Generates a new readonly {@link ImmutableTup4bo} from an existing instance of {@link TupboR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupboR} to adopt the values from.
 	 * 
 	 * @since 1.0.0.0
 	 */
-	public Tup4bo(TupboR t)
+	public ImmutableTup4bo(TupboR t)
 	{
-		set(t);
+		this(t.getArray());
 	}
 	
 	/**
-	 * Creates a new instance from an existing instance of {@link Tup4boR} and adopts the values.
+	 * Generates a new readonly {@link ImmutableTup4bo} from an existing instance of {@link Tup4boR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup4boR} to adopt the values from.
-	 * 
+
 	 * @since 1.0.0.0
 	 */
-	public Tup4bo(Tup4boR t)
+	public ImmutableTup4bo(Tup4boR t)
 	{
-		set(t);
+		this(t.getX(), t.getY(), t.getZ(), t.getW());
 	}
 	
 	/**
-	 * Creates a new instance with all values set to a single value.
+	 * Generates a new readonly {@link ImmutableTup4bo} with all values set to a single value.
 	 * 
-	 * @param value The value used as the initial value for all values of the tuple.
-	 * 
+	 * @param value The value used for all values of the tuple.
+
 	 * @since 1.0.0.0
 	 */
-	public Tup4bo(boolean value)
+	public ImmutableTup4bo(boolean value)
 	{
-		set(value);
+		this(value, value, value, value);
 	}
 	
 	/**
-	 * Creates a new instance with the values set to the corresponding parameters.
+	 * Generates a new readonly {@link ImmutableTup4bo} with the values set to the corresponding parameters.
 	 * 
-	 * @param x The initial x value of the tuple.
-	 * @param y The initial y value of the tuple.
-	 * @param z The initial z value of the tuple.
-	 * @param w The initial w value of the tuple.
-	 * 
+	 * @param x The x value.
+	 * @param y The y value.
+	 * @param z The z value.
+	 * @param w The w value.
+
 	 * @since 1.0.0.0
 	 */
-	public Tup4bo(boolean x, boolean y, boolean z, boolean w)
+	public ImmutableTup4bo(boolean x, boolean y, boolean z, boolean w)
 	{
-		set(x, y, z, w);
+		this.x = x;
+		this.y = y;
+		this.z = z;
+		this.w = w;
 	}
 	
 	/**
-	 * Creates a new instance with the values set to the corresponding parameters.
+	 * Generates a new readonly {@link ImmutableTup4bo} with the values set to the corresponding parameters.
 	 * 
 	 * @param v The values as an array.
 	 * 
 	 * @since 1.0.0.0
 	 */
-	public Tup4bo(boolean[] v)
+	public ImmutableTup4bo(boolean[] v)
 	{
-		setArray(v);
+		this.x = v[0];
+		this.y = v[1];
+		this.z = v[2];
+		this.w = v[3];
 	}
 	
 	@Override
@@ -165,65 +163,11 @@ public class Tup4bo implements Tup4boRW, Serializable, FormattableToString
 	}
 	
 	@Override
-	public Tup4bo setX(boolean x)
-	{
-		this.x = x;
-		
-		return this;
-	}
-	
-	@Override
-	public Tup4bo setY(boolean y)
-	{
-		this.y = y;
-		
-		return this;
-	}
-	
-	@Override
-	public Tup4bo setZ(boolean z)
-	{
-		this.z = z;
-		
-		return this;
-	}
-	
-	@Override
-	public Tup4bo setW(boolean w)
-	{
-		this.w = w;
-		
-		return this;
-	}
-	
-	@Override
-	public Tup4bo set(Tup4boR t)
-	{
-		return set(t.getX(), t.getY(), t.getZ(), t.getW());
-	}
-	
-	@Override
-	public Tup4bo set(boolean value)
-	{
-		return set(value, value, value, value);
-	}
-	
-	@Override
-	public Tup4bo set(boolean x, boolean y, boolean z, boolean w)
-	{
-		return setX(x).setY(y).setZ(z).setW(w);
-	}
-	
-	@Override
 	public int hashCode()
 	{
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + (getX() ? 1 : 0);
-		result = prime * result + (getY() ? 1 : 0);
-		result = prime * result + (getZ() ? 1 : 0);
-		result = prime * result + (getW() ? 1 : 0);
-		return result;
+		if(!isHashCodeGenerated) generateHashCode();
+		
+		return this.hashCode;
 	}
 	
 	@Override
@@ -259,15 +203,15 @@ public class Tup4bo implements Tup4boRW, Serializable, FormattableToString
 	}
 	
 	@Override
-	public Tup4bo clone()
+	public String toString()
 	{
-		return new Tup4bo(this);
+		return "immutableTup4bo(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ", w=" + getW() + ")";
 	}
 	
 	@Override
-	public String toString()
+	public ImmutableTup4bo clone()
 	{
-		return "tup4bo(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ", w=" + getW() + ")";
+		return new ImmutableTup4bo(this);
 	}
 	
 	@Override
@@ -283,50 +227,48 @@ public class Tup4bo implements Tup4boRW, Serializable, FormattableToString
 	}
 	
 	@Override
-	public Tup4bo getNewInstance(boolean x, boolean y, boolean z, boolean w)
+	public ImmutableTup4bo getNewInstance(boolean x, boolean y, boolean z, boolean w)
 	{
-		return new Tup4bo(x, y, z, w);
+		return new ImmutableTup4bo(x, y, z, w);
 	}
 	
 	@Override
-	public Tup4bo getNewInstance(boolean value)
+	public ImmutableTup4bo getNewInstance(boolean value)
 	{
-		return (Tup4bo)Tup4boRW.super.getNewInstance(value);
+		return (ImmutableTup4bo)Tup4boR.super.getNewInstance(value);
 	}
 	
 	@Override
-	public Tup4bo getNewInstance(Tup4boR t)
+	public ImmutableTup4bo getNewInstance(Tup4boR t)
 	{
-		return (Tup4bo)Tup4boRW.super.getNewInstance(t);
+		return (ImmutableTup4bo)Tup4boR.super.getNewInstance(t);
 	}
 	
 	@Override
-	public Tup4bo getNewInstance(TupboR t)
+	public ImmutableTup4bo getNewInstance(TupboR t)
 	{
-		return (Tup4bo)Tup4boRW.super.getNewInstance(t);
+		return (ImmutableTup4bo)Tup4boR.super.getNewInstance(t);
 	}
 	
 	@Override
-	public Tup4bo getNewInstanceFromArray(boolean... values)
+	public ImmutableTup4bo getNewInstanceFromArray(boolean... values)
 	{
-		return (Tup4bo)Tup4boRW.super.getNewInstanceFromArray(values);
+		return (ImmutableTup4bo)Tup4boR.super.getNewInstanceFromArray(values);
 	}
 	
-	@Override
-	public Tup4bo set(TupboR t)
+	/**
+	 * This method generates the hashCode and stores it in the member for later use.
+	 */
+	protected void generateHashCode()
 	{
-		return (Tup4bo)Tup4boRW.super.set(t);
-	}
-	
-	@Override
-	public Tup4bo setArray(boolean... values)
-	{
-		return (Tup4bo)Tup4boRW.super.setArray(values);
-	}
-	
-	@Override
-	public Tup4bo setByIndex(int index, boolean value)
-	{
-		return (Tup4bo)Tup4boRW.super.setByIndex(index, value);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (getX() ? 1 : 0);
+		result = prime * result + (getY() ? 1 : 0);
+		result = prime * result + (getZ() ? 1 : 0);
+		result = prime * result + (getW() ? 1 : 0);
+		
+		this.hashCode = result;
+		this.isHashCodeGenerated = true;
 	}
 }
