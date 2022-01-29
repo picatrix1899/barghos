@@ -23,12 +23,15 @@
 package org.barghos.core.test.tuple4;
 
 import static org.junit.jupiter.api.Assertions.*;
-
-import java.math.BigDecimal;
+import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.Test;
 
-import org.barghos.core.tuple4.PTup4bigd;
+import java.math.BigDecimal;
+
+import org.barghos.core.api.tuple.TupbigdR;
+import org.barghos.core.api.tuple4.Tup4bigdR;
+
 import org.barghos.core.tuple4.Tup4bigd;
 
 /**
@@ -39,13 +42,12 @@ import org.barghos.core.tuple4.Tup4bigd;
 class Tup4bigdTest
 {
 	/**
-	 * This test ensures, that the constructor {@link Tup4bigd#Tup4bigd()} aktually works and
-	 * that the components are set to 0.
+	 * This test ensures, that the default constructor {@link Tup4bigd#Tup4bigd()} sets the components to 0.
 	 * 
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void ctorEmptyTest()
+	void ctor_DefaultTest()
 	{
 		Tup4bigd t = new Tup4bigd();
 		
@@ -54,61 +56,116 @@ class Tup4bigdTest
 		assertEquals(BigDecimal.ZERO, t.z);
 		assertEquals(BigDecimal.ZERO, t.w);
 	}
-	
+
 	/**
-	 * This test ensures, that  the constructor
-	 * {@link Tup4bigd#Tup4bigd(org.barghos.core.api.tuple4.Tup4bigdR) Tup4bigd.Tup4bigd(Tup4bigdR)} actually works and
-	 * that the components are adopted from the input tuple.
+	 * This test ensures, that an instance of {@link Tup4bigd} generated from an existing instance of {@link TupbigdR},
+	 * returns the correct components.
 	 * 
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void ctorCloneTest()
+	void ctor_TupleTest()
 	{
-		Tup4bigd t = new Tup4bigd(PTup4bigd.gen(BigDecimal.valueOf(1.1), BigDecimal.valueOf(2.2), BigDecimal.valueOf(3.3), BigDecimal.valueOf(4.4)));
+		TupbigdR original = mock(TupbigdR.class);
 		
-		assertEquals(BigDecimal.valueOf(1.1), t.x);
-		assertEquals(BigDecimal.valueOf(2.2), t.y);
-		assertEquals(BigDecimal.valueOf(3.3), t.z);
-		assertEquals(BigDecimal.valueOf(4.4), t.w);
+		when(original.getArray()).thenReturn(new BigDecimal[] {BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0), BigDecimal.valueOf(4.0)});
+		
+		Tup4bigd t = new Tup4bigd(original);
+		
+		assertEquals(BigDecimal.valueOf(1.0), t.getX());
+		assertEquals(BigDecimal.valueOf(2.0), t.getY());
+		assertEquals(BigDecimal.valueOf(3.0), t.getZ());
+		assertEquals(BigDecimal.valueOf(4.0), t.getW());
+		
+		verify(original).getArray();
+		
+		verifyNoMoreInteractions(original);
 	}
 	
 	/**
-	 * This test ensures, that the constructor {@link Tup4bigd#Tup4bigd(BigDecimal)} actually works,
-	 * and that the components are set to the value.
+	 * This test ensures, that an instance of {@link Tup4bigd} generated from an existing instance of {@link Tup4bigdR},
+	 * returns the correct components.
 	 * 
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void ctorScalarTest()
+	void ctor_Tuple3Test()
 	{
-		Tup4bigd t = new Tup4bigd(BigDecimal.valueOf(1.1));
+		Tup4bigdR original = mock(Tup4bigdR.class);
 		
-		assertEquals(BigDecimal.valueOf(1.1), t.x);
-		assertEquals(BigDecimal.valueOf(1.1), t.y);
-		assertEquals(BigDecimal.valueOf(1.1), t.z);
-		assertEquals(BigDecimal.valueOf(1.1), t.w);
+		when(original.getX()).thenReturn(BigDecimal.valueOf(1.0));
+		when(original.getY()).thenReturn(BigDecimal.valueOf(2.0));
+		when(original.getZ()).thenReturn(BigDecimal.valueOf(3.0));
+		when(original.getW()).thenReturn(BigDecimal.valueOf(4.0));
+		
+		Tup4bigd t = new Tup4bigd(original);
+		
+		assertEquals(BigDecimal.valueOf(1.0), t.getX());
+		assertEquals(BigDecimal.valueOf(2.0), t.getY());
+		assertEquals(BigDecimal.valueOf(3.0), t.getZ());
+		assertEquals(BigDecimal.valueOf(4.0), t.getW());
+		
+		verify(original).getX();
+		verify(original).getY();
+		verify(original).getZ();
+		verify(original).getW();
+		
+		verifyNoMoreInteractions(original);
 	}
 	
 	/**
-	 * This test ensures, that the constructor {@link Tup4bigd#Tup4bigd(BigDecimal, BigDecimal, BigDecimal, BigDecimal)} actually works,
-	 * and that the components are set to the respective parameters.
+	 * This test ensures, that an instance of {@link Tup4bigd} generated from a scalar,
+	 * returns the correct components.
 	 * 
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void ctorComponentsTest()
+	void ctor_ValueTest()
 	{
-		Tup4bigd t = new Tup4bigd(BigDecimal.valueOf(1.1), BigDecimal.valueOf(2.2), BigDecimal.valueOf(3.3), BigDecimal.valueOf(4.4));
+		Tup4bigd t = new Tup4bigd(BigDecimal.valueOf(1.0));
 		
-		assertEquals(BigDecimal.valueOf(1.1), t.x);
-		assertEquals(BigDecimal.valueOf(2.2), t.y);
-		assertEquals(BigDecimal.valueOf(3.3), t.z);
-		assertEquals(BigDecimal.valueOf(4.4), t.w);
+		assertEquals(BigDecimal.valueOf(1.0), t.getX());
+		assertEquals(BigDecimal.valueOf(1.0), t.getY());
+		assertEquals(BigDecimal.valueOf(1.0), t.getZ());
+		assertEquals(BigDecimal.valueOf(1.0), t.getW());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4bigd#setX(BigDecimal)} sets the x component on the tuple
+	 * This test ensures, that an instance of {@link Tup4bigd} generated from an array,
+	 * returns the correct components.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void ctor_ArrayTest()
+	{
+		Tup4bigd t = new Tup4bigd(new BigDecimal[] {BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0), BigDecimal.valueOf(4.0)});
+		
+		assertEquals(BigDecimal.valueOf(1.0), t.getX());
+		assertEquals(BigDecimal.valueOf(2.0), t.getY());
+		assertEquals(BigDecimal.valueOf(3.0), t.getZ());
+		assertEquals(BigDecimal.valueOf(4.0), t.getW());
+	}
+	
+	/**
+	 * This test ensures, that an instance of {@link Tup4bigd} generated from two components,
+	 * returns the correct components.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void ctor_ComponentsTest()
+	{
+		Tup4bigd t = new Tup4bigd(BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0), BigDecimal.valueOf(4.0));
+		
+		assertEquals(BigDecimal.valueOf(1.0), t.getX());
+		assertEquals(BigDecimal.valueOf(2.0), t.getY());
+		assertEquals(BigDecimal.valueOf(3.0), t.getZ());
+		assertEquals(BigDecimal.valueOf(4.0), t.getW());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4bigd#setX(BigDecimal)} sets the x component of the tuple
 	 * to the value and returns the current tuple.
 	 * 
 	 * @since 1.0.0.0
@@ -123,7 +180,7 @@ class Tup4bigdTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4bigd#setY(BigDecimal)} sets the y component on the tuple
+	 * This test ensures, that the function {@link Tup4bigd#setY(BigDecimal)} sets the y component of the tuple
 	 * to the value and returns the current tuple.
 	 * 
 	 * @since 1.0.0.0
@@ -138,7 +195,7 @@ class Tup4bigdTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4bigd#setZ(BigDecimal)} sets the z component on the tuple
+	 * This test ensures, that the function {@link Tup4bigd#setZ(BigDecimal)} sets the z component of the tuple
 	 * to the value and returns the current tuple.
 	 * 
 	 * @since 1.0.0.0
@@ -153,7 +210,7 @@ class Tup4bigdTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4bigd#setW(BigDecimal)} sets the w component on the tuple
+	 * This test ensures, that the function {@link Tup4bigd#setW(BigDecimal)} sets the w component of the tuple
 	 * to the value and returns the current tuple.
 	 * 
 	 * @since 1.0.0.0
@@ -169,21 +226,38 @@ class Tup4bigdTest
 	
 	/**
 	 * This test ensures, that the function
-	 * {@link Tup4bigd#set(org.barghos.core.api.tuple4.Tup4bigdR) Tup4bigd.set(Tup4bigdR)}
+	 * {@link Tup4bigd#set(org.barghos.core.api.tuple2.Tup4bigdR) Tup4bigd.set(Tup4bigdR)}
 	 * adopts the components from the input tuple and returns the current tuple.
 	 * 
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void setCloneTest()
+	void set_Tuple3Test()
 	{
-		Tup4bigd t = new Tup4bigd();
+		Tup4bigd t = mock(Tup4bigd.class);
 		
-		assertSame(t, t.set(PTup4bigd.gen(BigDecimal.valueOf(1.1), BigDecimal.valueOf(2.2), BigDecimal.valueOf(3.3), BigDecimal.valueOf(4.4))));
-		assertEquals(BigDecimal.valueOf(1.1), t.x);
-		assertEquals(BigDecimal.valueOf(2.2), t.y);
-		assertEquals(BigDecimal.valueOf(3.3), t.z);
-		assertEquals(BigDecimal.valueOf(4.4), t.w);
+		Tup4bigdR t2 = mock(Tup4bigdR.class);
+	
+		when(t.set(t2)).thenCallRealMethod();
+		
+		when(t2.getX()).thenReturn(BigDecimal.valueOf(1.1));
+		when(t2.getY()).thenReturn(BigDecimal.valueOf(2.2));
+		when(t2.getZ()).thenReturn(BigDecimal.valueOf(3.3));
+		when(t2.getW()).thenReturn(BigDecimal.valueOf(4.4));
+		
+		when(t.set(BigDecimal.valueOf(1.1), BigDecimal.valueOf(2.2), BigDecimal.valueOf(3.3), BigDecimal.valueOf(4.4))).thenReturn(t);
+		
+		assertSame(t, t.set(t2));
+		
+		verify(t).set(t2);
+		
+		verify(t2).getX();
+		verify(t2).getY();
+		verify(t2).getZ();
+		verify(t2).getW();
+		verify(t).set(BigDecimal.valueOf(1.1), BigDecimal.valueOf(2.2), BigDecimal.valueOf(3.3), BigDecimal.valueOf(4.4));
+		
+		verifyNoMoreInteractions(t, t2);
 	}
 	
 	/**
@@ -193,15 +267,21 @@ class Tup4bigdTest
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void setScalarTest()
+	void set_ValueTest()
 	{
-		Tup4bigd t = new Tup4bigd();
+		Tup4bigd t = mock(Tup4bigd.class);
+
+		when(t.set(BigDecimal.valueOf(1.1))).thenCallRealMethod();
+
+		when(t.set(BigDecimal.valueOf(1.1), BigDecimal.valueOf(1.1), BigDecimal.valueOf(1.1), BigDecimal.valueOf(1.1))).thenReturn(t);
 		
 		assertSame(t, t.set(BigDecimal.valueOf(1.1)));
-		assertEquals(BigDecimal.valueOf(1.1), t.x);
-		assertEquals(BigDecimal.valueOf(1.1), t.y);
-		assertEquals(BigDecimal.valueOf(1.1), t.z);
-		assertEquals(BigDecimal.valueOf(1.1), t.w);
+		
+		verify(t).set(BigDecimal.valueOf(1.1));
+
+		verify(t).set(BigDecimal.valueOf(1.1), BigDecimal.valueOf(1.1), BigDecimal.valueOf(1.1), BigDecimal.valueOf(1.1));
+		
+		verifyNoMoreInteractions(t);
 	}
 	
 	/**
@@ -211,16 +291,27 @@ class Tup4bigdTest
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void setComponentsTest()
+	void set_ComponentsTest()
 	{
-		Tup4bigd t = new Tup4bigd();
+		Tup4bigd t = mock(Tup4bigd.class);
+
+		when(t.set(BigDecimal.valueOf(1.1), BigDecimal.valueOf(2.2), BigDecimal.valueOf(3.3), BigDecimal.valueOf(4.4))).thenCallRealMethod();
+
+		when(t.setX(BigDecimal.valueOf(1.1))).thenReturn(t);
+		when(t.setY(BigDecimal.valueOf(2.2))).thenReturn(t);
+		when(t.setZ(BigDecimal.valueOf(3.3))).thenReturn(t);
+		when(t.setZ(BigDecimal.valueOf(4.4))).thenReturn(t);
 		
 		assertSame(t, t.set(BigDecimal.valueOf(1.1), BigDecimal.valueOf(2.2), BigDecimal.valueOf(3.3), BigDecimal.valueOf(4.4)));
+
+		verify(t).set(BigDecimal.valueOf(1.1), BigDecimal.valueOf(2.2), BigDecimal.valueOf(3.3), BigDecimal.valueOf(4.4));
 		
-		assertEquals(BigDecimal.valueOf(1.1), t.x);
-		assertEquals(BigDecimal.valueOf(2.2), t.y);
-		assertEquals(BigDecimal.valueOf(3.3), t.z);
-		assertEquals(BigDecimal.valueOf(4.4), t.w);
+		verify(t).setX(BigDecimal.valueOf(1.1));
+		verify(t).setY(BigDecimal.valueOf(2.2));
+		verify(t).setZ(BigDecimal.valueOf(3.3));
+		verify(t).setZ(BigDecimal.valueOf(4.4));
+		
+		verifyNoMoreInteractions(t);
 	}
 	
 	/**
@@ -284,23 +375,274 @@ class Tup4bigdTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4bigd#clone()} generates a new instance of
-	 * {@link Tup4bigd} and adopts the components from the original.
-	 * 
-	 * @since 1.0.0.0
+	 * This test ensures, that the function {@link Tup4bigd#hashCode()} eturns the correct hash.
+	 */
+	@Test
+	void hashCodeTest()
+	{
+		Tup4bigd t = new Tup4bigd(BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0), BigDecimal.valueOf(4.0));
+
+		assertEquals(348844, t.hashCode());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4bigd#clone()} creates a new instance that satisfies
+	 * the requirements for clone-functions.
 	 */
 	@Test
 	void cloneTest()
 	{
-		Tup4bigd t = new Tup4bigd(BigDecimal.valueOf(1.1), BigDecimal.valueOf(2.2), BigDecimal.valueOf(3.3), BigDecimal.valueOf(4.4));
+		Tup4bigd original = new Tup4bigd(BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0), BigDecimal.valueOf(4.0));
+		Tup4bigd t = original.clone();
 		
-		Tup4bigd result = t.clone();
+		assertFalse(original == t);
+		assertTrue(original.equals(t));
+		assertTrue(t.equals(original));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4bigd#equals(Object)} method returns true if
+	 * the object to test is the same as the testing object.
+	 */
+	@Test
+	void equals_SameTest()
+	{
+		Tup4bigd t1 = new Tup4bigd(BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0), BigDecimal.valueOf(4.0));
 		
-		assertNotSame(t, result);
-		assertEquals(BigDecimal.valueOf(1.1), result.getX());
-		assertEquals(BigDecimal.valueOf(2.2), result.getY());
-		assertEquals(BigDecimal.valueOf(3.3), result.getZ());
-		assertEquals(BigDecimal.valueOf(4.4), result.getW());
+		assertTrue(t1.equals(t1));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4bigd#equals(Object)} method returns false if
+	 * the object to test is null.
+	 */
+	@Test
+	void equals_NullTest()
+	{
+		Tup4bigd t1 = new Tup4bigd(BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0), BigDecimal.valueOf(4.0));
+		
+		assertFalse(t1.equals(null));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4bigd#equals(Object)} method returns false if
+	 * the object to test is of an unsupported type.
+	 */
+	@Test
+	void equals_IncompatibleTest()
+	{
+		Tup4bigd t1 = new Tup4bigd(BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0), BigDecimal.valueOf(4.0));
+		
+		assertFalse(t1.equals(new Object()));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4bigd#equals(Object)} method returns true if
+	 * the object to test is of the type {@link Tup4bigdR} and has the same values as the testing object.
+	 */
+	@Test
+	void equals_Tuple3Test()
+	{
+		Tup4bigd t1 = new Tup4bigd(BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0), BigDecimal.valueOf(4.0));
+		
+		Tup4bigdR t2 = mock(Tup4bigdR.class);
+		
+		when(t2.getX()).thenReturn(BigDecimal.valueOf(1.0));
+		when(t2.getY()).thenReturn(BigDecimal.valueOf(2.0));
+		when(t2.getZ()).thenReturn(BigDecimal.valueOf(3.0));
+		when(t2.getW()).thenReturn(BigDecimal.valueOf(4.0));
+		
+		assertTrue(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4bigd#equals(Object)} method returns false if
+	 * the object to test is of the type {@link Tup4bigdR} and has the same amount of dimensions and
+	 * a different value of the x component as the testing object.
+	 */
+	@Test
+	void equals_Tuple2_VaryingXTest()
+	{
+		Tup4bigd t1 = new Tup4bigd(BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0), BigDecimal.valueOf(4.0));
+		
+		Tup4bigdR t2 = mock(Tup4bigdR.class);
+		
+		when(t2.getX()).thenReturn(BigDecimal.valueOf(5.0));
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4bigd#equals(Object)} method returns false if
+	 * the object to test is of the type {@link Tup4bigdR} and has the same amount of dimensions and
+	 * a different value of the y component as the testing object.
+	 */
+	@Test
+	void equals_Tuple2_VaryingYTest()
+	{
+		Tup4bigd t1 = new Tup4bigd(BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0), BigDecimal.valueOf(4.0));
+		
+		Tup4bigdR t2 = mock(Tup4bigdR.class);
+		
+		when(t2.getX()).thenReturn(BigDecimal.valueOf(1.0));
+		when(t2.getY()).thenReturn(BigDecimal.valueOf(5.0));
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4bigd#equals(Object)} method returns false if
+	 * the object to test is of the type {@link Tup4bigdR} and has the same amount of dimensions and
+	 * a different value of the z component as the testing object.
+	 */
+	@Test
+	void equals_Tuple2_VaryingZTest()
+	{
+		Tup4bigd t1 = new Tup4bigd(BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0), BigDecimal.valueOf(4.0));
+		
+		Tup4bigdR t2 = mock(Tup4bigdR.class);
+		
+		when(t2.getX()).thenReturn(BigDecimal.valueOf(1.0));
+		when(t2.getY()).thenReturn(BigDecimal.valueOf(2.0));
+		when(t2.getZ()).thenReturn(BigDecimal.valueOf(5.0));
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4bigd#equals(Object)} method returns false if
+	 * the object to test is of the type {@link Tup4bigdR} and has the same amount of dimensions and
+	 * a different value of the w component as the testing object.
+	 */
+	@Test
+	void equals_Tuple2_VaryingWTest()
+	{
+		Tup4bigd t1 = new Tup4bigd(BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0), BigDecimal.valueOf(4.0));
+		
+		Tup4bigdR t2 = mock(Tup4bigdR.class);
+		
+		when(t2.getX()).thenReturn(BigDecimal.valueOf(1.0));
+		when(t2.getY()).thenReturn(BigDecimal.valueOf(2.0));
+		when(t2.getZ()).thenReturn(BigDecimal.valueOf(3.0));
+		when(t2.getW()).thenReturn(BigDecimal.valueOf(5.0));
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4bigd#equals(Object)} method returns true if
+	 * the object to test is of the type {@link TupbigdR} and has the same amount of dimensions and
+	 * the same values as the testing object.
+	 */
+	@Test
+	void equals_TupleTest()
+	{
+		Tup4bigd t1 = new Tup4bigd(BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0), BigDecimal.valueOf(4.0));
+		
+		TupbigdR t2 = mock(TupbigdR.class);
+		
+		when(t2.getDimensions()).thenReturn(3);
+		when(t2.getByIndex(0)).thenReturn(BigDecimal.valueOf(1.0));
+		when(t2.getByIndex(1)).thenReturn(BigDecimal.valueOf(2.0));
+		when(t2.getByIndex(2)).thenReturn(BigDecimal.valueOf(3.0));
+		when(t2.getByIndex(3)).thenReturn(BigDecimal.valueOf(4.0));
+		
+		assertTrue(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4bigd#equals(Object)} method returns false if
+	 * the object to test is of the type {@link TupbigdR} and has a different amount of dimensions
+	 * as the testing object.
+	 */
+	@Test
+	void equals_Tuple_VaryingDimensionsTest()
+	{
+		Tup4bigd t1 = new Tup4bigd(BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0), BigDecimal.valueOf(4.0));
+		
+		TupbigdR t2 = mock(TupbigdR.class);
+		
+		when(t2.getDimensions()).thenReturn(1);
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4bigd#equals(Object)} method returns false if
+	 * the object to test is of the type {@link TupbigdR} and has the same amount of dimensions and
+	 * a different value of the x component as the testing object.
+	 */
+	@Test
+	void equals_Tuple_VaryingXTest()
+	{
+		Tup4bigd t1 = new Tup4bigd(BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0), BigDecimal.valueOf(4.0));
+		
+		TupbigdR t2 = mock(TupbigdR.class);
+		
+		when(t2.getDimensions()).thenReturn(4);
+		when(t2.getByIndex(0)).thenReturn(BigDecimal.valueOf(5.0));
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4bigd#equals(Object)} method returns false if
+	 * the object to test is of the type {@link TupbigdR} and has the same amount of dimensions and
+	 * a different value of the y component as the testing object.
+	 */
+	@Test
+	void equals_Tuple_VaryingYTest()
+	{
+		Tup4bigd t1 = new Tup4bigd(BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0), BigDecimal.valueOf(4.0));
+		
+		TupbigdR t2 = mock(TupbigdR.class);
+		
+		when(t2.getDimensions()).thenReturn(4);
+		when(t2.getByIndex(0)).thenReturn(BigDecimal.valueOf(1.0));
+		when(t2.getByIndex(1)).thenReturn(BigDecimal.valueOf(5.0));
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4bigd#equals(Object)} method returns false if
+	 * the object to test is of the type {@link TupbigdR} and has the same amount of dimensions and
+	 * a different value of the z component as the testing object.
+	 */
+	@Test
+	void equals_Tuple_VaryingZTest()
+	{
+		Tup4bigd t1 = new Tup4bigd(BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0), BigDecimal.valueOf(4.0));
+		
+		TupbigdR t2 = mock(TupbigdR.class);
+		
+		when(t2.getDimensions()).thenReturn(4);
+		when(t2.getByIndex(0)).thenReturn(BigDecimal.valueOf(1.0));
+		when(t2.getByIndex(1)).thenReturn(BigDecimal.valueOf(2.0));
+		when(t2.getByIndex(2)).thenReturn(BigDecimal.valueOf(5.0));
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4bigd#equals(Object)} method returns false if
+	 * the object to test is of the type {@link TupbigdR} and has the same amount of dimensions and
+	 * a different value of the w component as the testing object.
+	 */
+	@Test
+	void equals_Tuple_VaryingWTest()
+	{
+		Tup4bigd t1 = new Tup4bigd(BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0), BigDecimal.valueOf(4.0));
+		
+		TupbigdR t2 = mock(TupbigdR.class);
+		
+		when(t2.getDimensions()).thenReturn(4);
+		when(t2.getByIndex(0)).thenReturn(BigDecimal.valueOf(1.0));
+		when(t2.getByIndex(1)).thenReturn(BigDecimal.valueOf(2.0));
+		when(t2.getByIndex(2)).thenReturn(BigDecimal.valueOf(3.0));
+		when(t2.getByIndex(3)).thenReturn(BigDecimal.valueOf(5.0));
+		
+		assertFalse(t1.equals(t2));
 	}
 	
 	/**
@@ -317,43 +659,126 @@ class Tup4bigdTest
 	}
 	
 	/**
-	 * This test ensures, that the special policies for the function {@link Tup4bigd#equals(Object)} are working.
-	 * 
-	 * @since 1.0.0.0
-	 */
-	@SuppressWarnings("unlikely-arg-type")
-	@Test
-	void equalsTest()
-	{
-		Tup4bigd t = new Tup4bigd(BigDecimal.valueOf(1.1), BigDecimal.valueOf(2.2), BigDecimal.valueOf(3.3), BigDecimal.valueOf(4.4));
-		
-		assertTrue(t.equals(t));
-		assertFalse(t.equals(null));
-		assertFalse(t.equals(""));
-		assertFalse(t.equals(new Tup4bigd(BigDecimal.valueOf(2.2), BigDecimal.valueOf(2.2), BigDecimal.valueOf(3.3), BigDecimal.valueOf(4.4)))); // x wrong
-		assertFalse(t.equals(new Tup4bigd(BigDecimal.valueOf(1.1), BigDecimal.valueOf(3.3), BigDecimal.valueOf(3.3), BigDecimal.valueOf(4.4)))); // y wrong
-		assertFalse(t.equals(new Tup4bigd(BigDecimal.valueOf(1.1), BigDecimal.valueOf(2.2), BigDecimal.valueOf(4.4), BigDecimal.valueOf(4.4)))); // z wrong
-		assertFalse(t.equals(new Tup4bigd(BigDecimal.valueOf(1.1), BigDecimal.valueOf(2.2), BigDecimal.valueOf(3.3), BigDecimal.valueOf(5.5)))); // w wrong
-		
-		assertTrue(t.equals(new Tup4bigd(BigDecimal.valueOf(1.1), BigDecimal.valueOf(2.2), BigDecimal.valueOf(3.3), BigDecimal.valueOf(4.4))));
-		assertTrue(t.equals(PTup4bigd.gen(BigDecimal.valueOf(1.1), BigDecimal.valueOf(2.2), BigDecimal.valueOf(3.3), BigDecimal.valueOf(4.4))));
-	}
-	
-	/**
 	 * This test ensures, that the function {@link Tup4bigd#getNewInstance(BigDecimal, BigDecimal, BigDecimal, BigDecimal)}
 	 * returns a new instance of {@link Tup4bigd} with the given values.
 	 */
 	@Test
-	void getNewInstanceTest()
+	void getNewInstance_ComponentsTest()
 	{
-		Tup4bigd t = new Tup4bigd(BigDecimal.valueOf(1.0), BigDecimal.valueOf(1.0), BigDecimal.valueOf(1.0), BigDecimal.valueOf(1.0));
-
-		Tup4bigd result = t.getNewInstance(BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0), BigDecimal.valueOf(4.0), BigDecimal.valueOf(5.0));
+		Tup4bigd original = new Tup4bigd(BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0), BigDecimal.valueOf(4.0));
+		Tup4bigd newInstance = original.getNewInstance(BigDecimal.valueOf(3.0), BigDecimal.valueOf(4.0), BigDecimal.valueOf(5.0), BigDecimal.valueOf(6.0));
 		
-		assertNotSame(t, result);
-		assertEquals(BigDecimal.valueOf(2.0), result.getX());
-		assertEquals(BigDecimal.valueOf(3.0), result.getY());
-		assertEquals(BigDecimal.valueOf(4.0), result.getZ());
-		assertEquals(BigDecimal.valueOf(5.0), result.getW());
+		assertEquals(BigDecimal.valueOf(1.0), original.getX());
+		assertEquals(BigDecimal.valueOf(2.0), original.getY());
+		assertEquals(BigDecimal.valueOf(3.0), original.getZ());
+		assertEquals(BigDecimal.valueOf(4.0), original.getW());
+		assertEquals(BigDecimal.valueOf(3.0), newInstance.getX());
+		assertEquals(BigDecimal.valueOf(4.0), newInstance.getY());
+		assertEquals(BigDecimal.valueOf(5.0), newInstance.getZ());
+		assertEquals(BigDecimal.valueOf(6.0), newInstance.getW());
+	}
+	
+	/**
+	 * This test ensures, that the default implementation of the function {@link Tup4bigd#getNewInstance(BigDecimal)} calls
+	 * the function {@link Tup4bigd#getNewInstance(BigDecimal, BigDecimal, BigDecimal, BigDecimal)} with the correct components.
+	 */
+	@Test
+	void getNewInstance_ValueTest()
+	{
+		Tup4bigd newInstance = mock(Tup4bigd.class);
+		Tup4bigd t = mock(Tup4bigd.class);
+		
+		when(t.getNewInstance(BigDecimal.valueOf(1.0))).thenCallRealMethod();
+
+		when(t.getNewInstance(BigDecimal.valueOf(1.0), BigDecimal.valueOf(1.0), BigDecimal.valueOf(1.0), BigDecimal.valueOf(1.0))).thenReturn(newInstance);
+		
+		assertSame(newInstance, t.getNewInstance(BigDecimal.valueOf(1.0)));
+		
+		verify(t).getNewInstance(BigDecimal.valueOf(1.0));
+		
+		verify(t).getNewInstance(BigDecimal.valueOf(1.0), BigDecimal.valueOf(1.0), BigDecimal.valueOf(1.0), BigDecimal.valueOf(1.0));
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4bigd#getNewInstance(Tup4bigdR)}
+	 * returns a new instance of {@link Tup4bigd} with the given values.
+	 */
+	@Test
+	void getNewInstance_Tuple2Test()
+	{
+		Tup4bigdR original = mock(Tup4bigdR.class);
+		Tup4bigd newInstance = mock(Tup4bigd.class);
+		Tup4bigd t = mock(Tup4bigd.class);
+		
+		when(t.getNewInstance(original)).thenCallRealMethod();
+		
+		when(original.getX()).thenReturn(BigDecimal.valueOf(1.0));
+		when(original.getY()).thenReturn(BigDecimal.valueOf(2.0));
+		when(original.getZ()).thenReturn(BigDecimal.valueOf(3.0));
+		when(original.getW()).thenReturn(BigDecimal.valueOf(4.0));
+		when(t.getNewInstance(BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0), BigDecimal.valueOf(4.0))).thenReturn(newInstance);
+		
+		assertSame(newInstance, t.getNewInstance(original));
+		
+		verify(t).getNewInstance(original);
+		
+		verify(original).getX();
+		verify(original).getY();
+		verify(original).getZ();
+		verify(original).getW();
+		verify(t).getNewInstance(BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0), BigDecimal.valueOf(4.0));
+		
+		verifyNoMoreInteractions(t, original);
+	}
+	
+	/**
+	 * This test ensures, that the default implementation of the function {@link Tup4bigd#getNewInstance(TupbigdR)} calls
+	 * the function {@link Tup4bigd#getNewInstance(BigDecimal, BigDecimal, BigDecimal, BigDecimal)} with the correct components.
+	 */
+	@Test
+	void getNewInstance_TupleTest()
+	{
+		TupbigdR original = mock(TupbigdR.class);
+		Tup4bigd newInstance = mock(Tup4bigd.class);
+		Tup4bigd t = mock(Tup4bigd.class);
+		
+		when(t.getNewInstance(original)).thenCallRealMethod();
+		
+		when(original.getArray()).thenReturn(new BigDecimal[] {BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0), BigDecimal.valueOf(4.0)});
+		when(t.getNewInstance(BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0), BigDecimal.valueOf(4.0))).thenReturn(newInstance);
+		
+		assertSame(newInstance, t.getNewInstance(original));
+		
+		verify(t).getNewInstance(original);
+		
+		verify(original).getArray();
+		verify(t).getNewInstance(BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0), BigDecimal.valueOf(4.0));
+		
+		verifyNoMoreInteractions(t, original);
+	}
+	
+	/**
+	 * This test ensures, that the default implementation of the function {@link Tup4bigd#getNewInstanceFromArray(BigDecimal[])} calls
+	 * the function {@link Tup4bigd#getNewInstance(BigDecimal, BigDecimal, BigDecimal, BigDecimal)} with the correct components.
+	 */
+	@Test
+	void getNewInstanceFromArrayTest()
+	{
+		Tup4bigd newInstance = mock(Tup4bigd.class);
+		Tup4bigd t = mock(Tup4bigd.class);
+		
+		when(t.getNewInstanceFromArray(new BigDecimal[] {BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0), BigDecimal.valueOf(4.0)})).thenCallRealMethod();
+
+		when(t.getNewInstance(BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0), BigDecimal.valueOf(4.0))).thenReturn(newInstance);
+		
+		assertSame(newInstance, t.getNewInstanceFromArray(new BigDecimal[] {BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0), BigDecimal.valueOf(4.0)}));
+		
+		verify(t).getNewInstanceFromArray(new BigDecimal[] {BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0), BigDecimal.valueOf(4.0)});
+		
+		verify(t).getNewInstance(BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0), BigDecimal.valueOf(4.0));
+		
+		verifyNoMoreInteractions(t);
 	}
 }

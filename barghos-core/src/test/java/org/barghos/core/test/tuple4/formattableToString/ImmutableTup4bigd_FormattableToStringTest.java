@@ -10,24 +10,24 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.barghos.core.tuple4.Tup4bigd;
+import org.barghos.core.tuple4.ImmutableTup4bigd;
 
 /**
  * This class provides component tests for the interface implementation
  * of {@link org.barghos.core.api.formatting.FormattableToString FormattableToString} in the
- * class {@link Tup4bigd}.
+ * class {@link ImmutableTup4bigd}.
  * 
  * @author picatrix1899
  */
-class Tup4bigd_FormattableToStringTest
+class ImmutableTup4bigd_FormattableToStringTest
 {
 	/**
-	 * This test ensures, that the {@link Tup4bigd#getValueMapping()} function returns the correct components.
+	 * This test ensures, that the {@link ImmutableTup4bigd#getValueMapping()} function returns the correct components.
 	 */
 	@Test
 	void getValueMappingTest()
 	{
-		Tup4bigd t = mock(Tup4bigd.class);
+		ImmutableTup4bigd t = mock(ImmutableTup4bigd.class);
 		
 		when(t.getValueMapping()).thenCallRealMethod();
 		

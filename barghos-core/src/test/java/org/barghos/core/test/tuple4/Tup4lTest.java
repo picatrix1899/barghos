@@ -23,10 +23,13 @@
 package org.barghos.core.test.tuple4;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.Test;
 
-import org.barghos.core.tuple4.PTup4l;
+import org.barghos.core.api.tuple.TuplR;
+import org.barghos.core.api.tuple4.Tup4lR;
+
 import org.barghos.core.tuple4.Tup4l;
 
 /**
@@ -37,13 +40,12 @@ import org.barghos.core.tuple4.Tup4l;
 class Tup4lTest
 {
 	/**
-	 * This test ensures, that the constructor {@link Tup4l#Tup4l()} aktually works and
-	 * that the components are set to 0.
+	 * This test ensures, that the default constructor {@link Tup4l#Tup4l()} sets the components to 0.
 	 * 
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void ctorEmptyTest()
+	void ctor_DefaultTest()
 	{
 		Tup4l t = new Tup4l();
 		
@@ -52,61 +54,116 @@ class Tup4lTest
 		assertEquals(0l, t.z);
 		assertEquals(0l, t.w);
 	}
-	
+
 	/**
-	 * This test ensures, that  the constructor
-	 * {@link Tup4l#Tup4l(org.barghos.core.api.tuple4.Tup4lR) Tup4l.Tup4l(Tup4lR)} actually works and
-	 * that the components are adopted from the input tuple.
+	 * This test ensures, that an instance of {@link Tup4l} generated from an existing instance of {@link TuplR},
+	 * returns the correct components.
 	 * 
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void ctorCloneTest()
+	void ctor_TupleTest()
 	{
-		Tup4l t = new Tup4l(PTup4l.gen(1l, 2l, 3l, 4l));
+		TuplR original = mock(TuplR.class);
 		
-		assertEquals(1l, t.x);
-		assertEquals(2l, t.y);
-		assertEquals(3l, t.z);
-		assertEquals(4l, t.w);
+		when(original.getArray()).thenReturn(new long[] {1l, 2l, 3l, 4l});
+		
+		Tup4l t = new Tup4l(original);
+		
+		assertEquals(1l, t.getX());
+		assertEquals(2l, t.getY());
+		assertEquals(3l, t.getZ());
+		assertEquals(4l, t.getW());
+		
+		verify(original).getArray();
+		
+		verifyNoMoreInteractions(original);
 	}
 	
 	/**
-	 * This test ensures, that the constructor {@link Tup4l#Tup4l(long)} actually works,
-	 * and that the components are set to the value.
+	 * This test ensures, that an instance of {@link Tup4l} generated from an existing instance of {@link Tup4lR},
+	 * returns the correct components.
 	 * 
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void ctorScalarTest()
+	void ctor_Tuple2Test()
+	{
+		Tup4lR original = mock(Tup4lR.class);
+		
+		when(original.getX()).thenReturn(1l);
+		when(original.getY()).thenReturn(2l);
+		when(original.getZ()).thenReturn(3l);
+		when(original.getZ()).thenReturn(4l);
+		
+		Tup4l t = new Tup4l(original);
+		
+		assertEquals(1l, t.getX());
+		assertEquals(2l, t.getY());
+		assertEquals(3l, t.getZ());
+		assertEquals(4l, t.getW());
+		
+		verify(original).getX();
+		verify(original).getY();
+		verify(original).getZ();
+		verify(original).getW();
+		
+		verifyNoMoreInteractions(original);
+	}
+	
+	/**
+	 * This test ensures, that an instance of {@link Tup4l} generated from a scalar,
+	 * returns the correct components.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void ctor_ValueTest()
 	{
 		Tup4l t = new Tup4l(1l);
 		
-		assertEquals(1l, t.x);
-		assertEquals(1l, t.y);
-		assertEquals(1l, t.z);
-		assertEquals(1l, t.w);
+		assertEquals(1l, t.getX());
+		assertEquals(1l, t.getY());
+		assertEquals(1l, t.getZ());
+		assertEquals(1l, t.getW());
 	}
 	
 	/**
-	 * This test ensures, that the constructor {@link Tup4l#Tup4l(long, long, long, long)} actually works,
-	 * and that the components are set to the respective parameters.
+	 * This test ensures, that an instance of {@link Tup4l} generated from an array,
+	 * returns the correct components.
 	 * 
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void ctorComponentsTest()
+	void ctor_ArrayTest()
 	{
-		Tup4l t = new Tup4l(1l, 2l, 3l, 4l);
+		Tup4l t = new Tup4l(new long[] {1l, 2l, 3l, 4l});
 		
-		assertEquals(1l, t.x);
-		assertEquals(2l, t.y);
-		assertEquals(3l, t.z);
-		assertEquals(4l, t.w);
+		assertEquals(1l, t.getX());
+		assertEquals(2l, t.getY());
+		assertEquals(3l, t.getZ());
+		assertEquals(4l, t.getW());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4l#setX(long)} sets the x component on the tuple
+	 * This test ensures, that an instance of {@link Tup4l} generated from two components,
+	 * returns the correct components.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void ctor_ComponentsTest()
+	{
+		Tup4l t = new Tup4l(1l, 2l, 3l, 4l);
+		
+		assertEquals(1l, t.getX());
+		assertEquals(2l, t.getY());
+		assertEquals(3l, t.getZ());
+		assertEquals(4l, t.getW());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4l#setX(long)} sets the x component of the tuple
 	 * to the value and returns the current tuple.
 	 * 
 	 * @since 1.0.0.0
@@ -121,7 +178,7 @@ class Tup4lTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4l#setY(long)} sets the y component on the tuple
+	 * This test ensures, that the function {@link Tup4l#setY(long)} sets the y component of the tuple
 	 * to the value and returns the current tuple.
 	 * 
 	 * @since 1.0.0.0
@@ -136,7 +193,7 @@ class Tup4lTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4l#setZ(long)} sets the z component on the tuple
+	 * This test ensures, that the function {@link Tup4l#setZ(long)} sets the z component of the tuple
 	 * to the value and returns the current tuple.
 	 * 
 	 * @since 1.0.0.0
@@ -151,7 +208,7 @@ class Tup4lTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4l#setW(long)} sets the z component on the tuple
+	 * This test ensures, that the function {@link Tup4l#setW(long)} sets the w component of the tuple
 	 * to the value and returns the current tuple.
 	 * 
 	 * @since 1.0.0.0
@@ -167,21 +224,38 @@ class Tup4lTest
 	
 	/**
 	 * This test ensures, that the function
-	 * {@link Tup4l#set(org.barghos.core.api.tuple4.Tup4lR) Tup4l.set(Tup4lR)}
+	 * {@link Tup4l#set(org.barghos.core.api.tuple2.Tup4lR) Tup4l.set(Tup4lR)}
 	 * adopts the components from the input tuple and returns the current tuple.
 	 * 
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void setCloneTest()
+	void set_Tuple3Test()
 	{
-		Tup4l t = new Tup4l();
+		Tup4l t = mock(Tup4l.class);
 		
-		assertSame(t, t.set(PTup4l.gen(1l, 2l, 3l, 4l)));
-		assertEquals(1l, t.x);
-		assertEquals(2l, t.y);
-		assertEquals(3l, t.z);
-		assertEquals(4l, t.w);
+		Tup4lR t2 = mock(Tup4lR.class);
+	
+		when(t.set(t2)).thenCallRealMethod();
+		
+		when(t2.getX()).thenReturn(1l);
+		when(t2.getY()).thenReturn(2l);
+		when(t2.getZ()).thenReturn(3l);
+		when(t2.getW()).thenReturn(4l);
+		
+		when(t.set(1l, 2l, 3l, 4l)).thenReturn(t);
+		
+		assertSame(t, t.set(t2));
+		
+		verify(t).set(t2);
+		
+		verify(t2).getX();
+		verify(t2).getY();
+		verify(t2).getZ();
+		verify(t2).getW();
+		verify(t).set(1l, 2l, 3l, 4l);
+		
+		verifyNoMoreInteractions(t, t2);
 	}
 	
 	/**
@@ -191,15 +265,21 @@ class Tup4lTest
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void setScalarTest()
+	void set_ValueTest()
 	{
-		Tup4l t = new Tup4l();
+		Tup4l t = mock(Tup4l.class);
+
+		when(t.set(1l)).thenCallRealMethod();
+
+		when(t.set(1l, 1l, 1l, 1l)).thenReturn(t);
 		
 		assertSame(t, t.set(1l));
-		assertEquals(1l, t.x);
-		assertEquals(1l, t.y);
-		assertEquals(1l, t.z);
-		assertEquals(1l, t.w);
+		
+		verify(t).set(1l);
+
+		verify(t).set(1l, 1l, 1l, 1l);
+		
+		verifyNoMoreInteractions(t);
 	}
 	
 	/**
@@ -209,16 +289,27 @@ class Tup4lTest
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void setComponentsTest()
+	void set_ComponentsTest()
 	{
-		Tup4l t = new Tup4l();
+		Tup4l t = mock(Tup4l.class);
+
+		when(t.set(1l, 2l, 3l, 4l)).thenCallRealMethod();
+
+		when(t.setX(1l)).thenReturn(t);
+		when(t.setY(2l)).thenReturn(t);
+		when(t.setZ(3l)).thenReturn(t);
+		when(t.setW(4l)).thenReturn(t);
 		
 		assertSame(t, t.set(1l, 2l, 3l, 4l));
+
+		verify(t).set(1l, 2l, 3l, 4l);
 		
-		assertEquals(1l, t.x);
-		assertEquals(2l, t.y);
-		assertEquals(3l, t.z);
-		assertEquals(4l, t.w);
+		verify(t).setX(1l);
+		verify(t).setY(2l);
+		verify(t).setZ(3l);
+		verify(t).setW(4l);
+		
+		verifyNoMoreInteractions(t);
 	}
 	
 	/**
@@ -252,7 +343,7 @@ class Tup4lTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4l#getZ()} actually returns the value of the
+	 * This test ensures, that the function {@link Tup4l#getY()} actually returns the value of the
 	 * z component.
 	 * 
 	 * @since 1.0.0.0
@@ -282,27 +373,278 @@ class Tup4lTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4l#clone()} generates a new instance of
-	 * {@link Tup4l} and adopts the components from the original.
-	 * 
-	 * @since 1.0.0.0
+	 * This test ensures, that the function {@link Tup4l#hashCode()} eturns the correct hash.
+	 */
+	@Test
+	void hashCodeTest()
+	{
+		Tup4l t = new Tup4l(1l, 2l, 3l, 4l);
+
+		assertEquals(66614367, t.hashCode());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4l#clone()} creates a new instance that satisfies
+	 * the requirements for clone-funktions.
 	 */
 	@Test
 	void cloneTest()
 	{
-		Tup4l t = new Tup4l(1l, 2l, 3l, 4l);
+		Tup4l original = new Tup4l(1l, 2l, 3l, 4l);
+		Tup4l t = original.clone();
 		
-		Tup4l result = t.clone();
-		
-		assertNotSame(t, result);
-		assertEquals(1l, result.getX());
-		assertEquals(2l, result.getY());
-		assertEquals(3l, result.getZ());
-		assertEquals(4l, result.getW());
+		assertFalse(original == t);
+		assertTrue(original.equals(t));
+		assertTrue(t.equals(original));
 	}
 	
 	/**
-	 * This test ensures, that the {@link Tup4l#toString()} function prints the components correctly.
+	 * This test ensures, that the {@link Tup4l#equals(Object)} method returns true if
+	 * the object to test is the same as the testing object.
+	 */
+	@Test
+	void equals_SameTest()
+	{
+		Tup4l t1 = new Tup4l(1l, 2l, 3l, 4l);
+		
+		assertTrue(t1.equals(t1));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4l#equals(Object)} method returns false if
+	 * the object to test is null.
+	 */
+	@Test
+	void equals_NullTest()
+	{
+		Tup4l t1 = new Tup4l(1l, 2l, 3l, 4l);
+		
+		assertFalse(t1.equals(null));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4l#equals(Object)} method returns false if
+	 * the object to test is of an unsupported type.
+	 */
+	@Test
+	void equals_IncompatibleTest()
+	{
+		Tup4l t1 = new Tup4l(1l, 2l, 3l, 4l);
+		
+		assertFalse(t1.equals(new Object()));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4l#equals(Object)} method returns true if
+	 * the object to test is of the type {@link Tup4lR} and has the same values as the testing object.
+	 */
+	@Test
+	void equals_Tuple2Test()
+	{
+		Tup4l t1 = new Tup4l(1l, 2l, 3l, 4l);
+		
+		Tup4lR t2 = mock(Tup4lR.class);
+		
+		when(t2.getX()).thenReturn(1l);
+		when(t2.getY()).thenReturn(2l);
+		when(t2.getZ()).thenReturn(3l);
+		when(t2.getW()).thenReturn(4l);
+		
+		assertTrue(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4l#equals(Object)} method returns false if
+	 * the object to test is of the type {@link Tup4lR} and has the same amount of dimensions and
+	 * a different value of the x component as the testing object.
+	 */
+	@Test
+	void equals_Tuple2_VaryingXTest()
+	{
+		Tup4l t1 = new Tup4l(1l, 2l, 3l, 4l);
+		
+		Tup4lR t2 = mock(Tup4lR.class);
+		
+		when(t2.getX()).thenReturn(5l);
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4l#equals(Object)} method returns false if
+	 * the object to test is of the type {@link Tup4lR} and has the same amount of dimensions and
+	 * a different value of the y component as the testing object.
+	 */
+	@Test
+	void equals_Tuple2_VaryingYTest()
+	{
+		Tup4l t1 = new Tup4l(1l, 2l, 3l, 4l);
+		
+		Tup4lR t2 = mock(Tup4lR.class);
+		
+		when(t2.getX()).thenReturn(1l);
+		when(t2.getY()).thenReturn(5l);
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4l#equals(Object)} method returns false if
+	 * the object to test is of the type {@link Tup4lR} and has the same amount of dimensions and
+	 * a different value of the z component as the testing object.
+	 */
+	@Test
+	void equals_Tuple2_VaryingZTest()
+	{
+		Tup4l t1 = new Tup4l(1l, 2l, 3l, 4l);
+		
+		Tup4lR t2 = mock(Tup4lR.class);
+		
+		when(t2.getX()).thenReturn(1l);
+		when(t2.getY()).thenReturn(2l);
+		when(t2.getZ()).thenReturn(5l);
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4l#equals(Object)} method returns false if
+	 * the object to test is of the type {@link Tup4lR} and has the same amount of dimensions and
+	 * a different value of the w component as the testing object.
+	 */
+	@Test
+	void equals_Tuple2_VaryingWTest()
+	{
+		Tup4l t1 = new Tup4l(1l, 2l, 3l, 4l);
+		
+		Tup4lR t2 = mock(Tup4lR.class);
+		
+		when(t2.getX()).thenReturn(1l);
+		when(t2.getY()).thenReturn(2l);
+		when(t2.getZ()).thenReturn(3l);
+		when(t2.getW()).thenReturn(5l);
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4l#equals(Object)} method returns true if
+	 * the object to test is of the type {@link TuplR} and has the same amount of dimensions and
+	 * the same values as the testing object.
+	 */
+	@Test
+	void equals_TupleTest()
+	{
+		Tup4l t1 = new Tup4l(1l, 2l, 3l, 4l);
+		
+		TuplR t2 = mock(TuplR.class);
+		
+		when(t2.getDimensions()).thenReturn(4);
+		when(t2.getByIndex(0)).thenReturn(1l);
+		when(t2.getByIndex(1)).thenReturn(2l);
+		when(t2.getByIndex(2)).thenReturn(3l);
+		when(t2.getByIndex(3)).thenReturn(4l);
+		
+		assertTrue(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4l#equals(Object)} method returns false if
+	 * the object to test is of the type {@link TuplR} and has a different amount of dimensions
+	 * as the testing object.
+	 */
+	@Test
+	void equals_Tuple_VaryingDimensionsTest()
+	{
+		Tup4l t1 = new Tup4l(1l, 2l, 3l, 4l);
+		
+		TuplR t2 = mock(TuplR.class);
+		
+		when(t2.getDimensions()).thenReturn(1);
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4l#equals(Object)} method returns false if
+	 * the object to test is of the type {@link TuplR} and has the same amount of dimensions and
+	 * a different value of the x component as the testing object.
+	 */
+	@Test
+	void equals_Tuple_VaryingXTest()
+	{
+		Tup4l t1 = new Tup4l(1l, 2l, 3l, 4l);
+		
+		TuplR t2 = mock(TuplR.class);
+		
+		when(t2.getDimensions()).thenReturn(4);
+		when(t2.getByIndex(0)).thenReturn(5l);
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4l#equals(Object)} method returns false if
+	 * the object to test is of the type {@link TuplR} and has the same amount of dimensions and
+	 * a different value of the y component as the testing object.
+	 */
+	@Test
+	void equals_Tuple_VaryingYTest()
+	{
+		Tup4l t1 = new Tup4l(1l, 2l, 3l, 4l);
+		
+		TuplR t2 = mock(TuplR.class);
+		
+		when(t2.getDimensions()).thenReturn(4);
+		when(t2.getByIndex(0)).thenReturn(1l);
+		when(t2.getByIndex(1)).thenReturn(5l);
+		
+		assertFalse(t1.equals(t2));
+	}
+
+	/**
+	 * This test ensures, that the {@link Tup4l#equals(Object)} method returns false if
+	 * the object to test is of the type {@link TuplR} and has the same amount of dimensions and
+	 * a different value of the z component as the testing object.
+	 */
+	@Test
+	void equals_Tuple_VaryingZTest()
+	{
+		Tup4l t1 = new Tup4l(1, 2, 3, 4);
+		
+		TuplR t2 = mock(TuplR.class);
+		
+		when(t2.getDimensions()).thenReturn(4);
+		when(t2.getByIndex(0)).thenReturn(1l);
+		when(t2.getByIndex(1)).thenReturn(2l);
+		when(t2.getByIndex(2)).thenReturn(5l);
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4l#equals(Object)} method returns false if
+	 * the object to test is of the type {@link TuplR} and has the same amount of dimensions and
+	 * a different value of the w component as the testing object.
+	 */
+	@Test
+	void equals_Tuple_VaryingWTest()
+	{
+		Tup4l t1 = new Tup4l(1l, 2l, 3l, 4l);
+		
+		TuplR t2 = mock(TuplR.class);
+		
+		when(t2.getDimensions()).thenReturn(4);
+		when(t2.getByIndex(0)).thenReturn(1l);
+		when(t2.getByIndex(1)).thenReturn(2l);
+		when(t2.getByIndex(2)).thenReturn(3l);
+		when(t2.getByIndex(3)).thenReturn(5l);
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4l#toString()} function prlongs the components correctly.
 	 * 
 	 * @since 1.0.0.0
 	 */
@@ -311,30 +653,7 @@ class Tup4lTest
 	{
 		Tup4l t = new Tup4l(1l, 2l, 3l, 4l);
 		
-		assertEquals("tup4l(x=1, y=2, z=3, w=4)", t.toString());
-	}
-	
-	/**
-	 * This test ensures, that the special policies for the function {@link Tup4l#equals(Object)} are working.
-	 * 
-	 * @since 1.0.0.0
-	 */
-	@SuppressWarnings("unlikely-arg-type")
-	@Test
-	void equalsTest()
-	{
-		Tup4l t = new Tup4l(1l, 2l, 3l, 4l);
-		
-		assertTrue(t.equals(t));
-		assertFalse(t.equals(null));
-		assertFalse(t.equals(0.0));
-		assertFalse(t.equals(new Tup4l(2l, 2l, 3l, 4l))); // x wrong
-		assertFalse(t.equals(new Tup4l(1l, 3l, 3l, 4l))); // y wrong
-		assertFalse(t.equals(new Tup4l(1l, 2l, 4l, 4l))); // z wrong
-		assertFalse(t.equals(new Tup4l(1l, 2l, 3l, 5l))); // w wrong
-		
-		assertTrue(t.equals(new Tup4l(1l, 2l, 3l, 4l)));
-		assertTrue(t.equals(PTup4l.gen(1l, 2l, 3l, 4l)));
+		assertEquals("tup3l(x=1, y=2, z=3, w=4)", t.toString());
 	}
 	
 	/**
@@ -342,16 +661,122 @@ class Tup4lTest
 	 * returns a new instance of {@link Tup4l} with the given values.
 	 */
 	@Test
-	void getNewInstanceTest()
+	void getNewInstance_ComponentsTest()
 	{
-		Tup4l t = new Tup4l(1l, 1l, 1l, 1l);
-
-		Tup4l result = t.getNewInstance(2l, 3l, 4l, 5l);
+		Tup4l original = new Tup4l(1l, 2l, 3l, 4l);
+		Tup4l newInstance = original.getNewInstance(3l, 4l, 5l, 6l);
 		
-		assertNotSame(t, result);
-		assertEquals(2l, result.getX());
-		assertEquals(3l, result.getY());
-		assertEquals(4l, result.getZ());
-		assertEquals(5l, result.getW());
+		assertEquals(1l, original.getX());
+		assertEquals(2l, original.getY());
+		assertEquals(3l, original.getZ());
+		assertEquals(4l, original.getW());
+		assertEquals(3l, newInstance.getX());
+		assertEquals(4l, newInstance.getY());
+		assertEquals(5l, newInstance.getZ());
+		assertEquals(6l, newInstance.getW());
+	}
+	
+	/**
+	 * This test ensures, that the default implementation of the function {@link Tup4l#getNewInstance(long)} calls
+	 * the function {@link Tup4l#getNewInstance(long, long, long, long)} with the correct components.
+	 */
+	@Test
+	void getNewInstance_ValueTest()
+	{
+		Tup4l newInstance = mock(Tup4l.class);
+		Tup4l t = mock(Tup4l.class);
+		
+		when(t.getNewInstance(1l)).thenCallRealMethod();
+
+		when(t.getNewInstance(1l, 1l, 1l, 1l)).thenReturn(newInstance);
+		
+		assertSame(newInstance, t.getNewInstance(1l));
+		
+		verify(t).getNewInstance(1l);
+		
+		verify(t).getNewInstance(1l, 1l, 1l, 1l);
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4l#getNewInstance(Tup4lR)}
+	 * returns a new instance of {@link Tup4l} with the given values.
+	 */
+	@Test
+	void getNewInstance_Tuple2Test()
+	{
+		Tup4lR original = mock(Tup4lR.class);
+		Tup4l newInstance = mock(Tup4l.class);
+		Tup4l t = mock(Tup4l.class);
+		
+		when(t.getNewInstance(original)).thenCallRealMethod();
+		
+		when(original.getX()).thenReturn(1l);
+		when(original.getY()).thenReturn(2l);
+		when(original.getZ()).thenReturn(3l);
+		when(original.getW()).thenReturn(4l);
+		when(t.getNewInstance(1l, 2l, 3l, 4l)).thenReturn(newInstance);
+		
+		assertSame(newInstance, t.getNewInstance(original));
+		
+		verify(t).getNewInstance(original);
+		
+		verify(original).getX();
+		verify(original).getY();
+		verify(original).getZ();
+		verify(original).getW();
+		verify(t).getNewInstance(1l, 2l, 3l, 4l);
+		
+		verifyNoMoreInteractions(t, original);
+	}
+	
+	/**
+	 * This test ensures, that the default implementation of the function {@link Tup4l#getNewInstance(TuplR)} calls
+	 * the function {@link Tup4l#getNewInstance(long, long, long, long)} with the correct components.
+	 */
+	@Test
+	void getNewInstance_TupleTest()
+	{
+		TuplR original = mock(TuplR.class);
+		Tup4l newInstance = mock(Tup4l.class);
+		Tup4l t = mock(Tup4l.class);
+		
+		when(t.getNewInstance(original)).thenCallRealMethod();
+		
+		when(original.getArray()).thenReturn(new long[] {1l, 2l, 3l, 4l});
+		when(t.getNewInstance(1l, 2l, 3l, 4l)).thenReturn(newInstance);
+		
+		assertSame(newInstance, t.getNewInstance(original));
+		
+		verify(t).getNewInstance(original);
+		
+		verify(original).getArray();
+		verify(t).getNewInstance(1l, 2l, 3l, 4l);
+		
+		verifyNoMoreInteractions(t, original);
+	}
+	
+	/**
+	 * This test ensures, that the default implementation of the function {@link Tup4l#getNewInstanceFromArray(long[])} calls
+	 * the function {@link Tup4l#getNewInstance(long, long, long, long)} with the correct components.
+	 */
+	@Test
+	void getNewInstanceFromArrayTest()
+	{
+		Tup4l newInstance = mock(Tup4l.class);
+		Tup4l t = mock(Tup4l.class);
+		
+		when(t.getNewInstanceFromArray(new long[] {1l, 2l, 3l, 4l})).thenCallRealMethod();
+
+		when(t.getNewInstance(1l, 2l, 3l, 4l)).thenReturn(newInstance);
+		
+		assertSame(newInstance, t.getNewInstanceFromArray(new long[] {1l, 2l, 3l, 4l}));
+		
+		verify(t).getNewInstanceFromArray(new long[] {1l, 2l, 3l, 4l});
+		
+		verify(t).getNewInstance(1l, 2l, 3l, 4l);
+		
+		verifyNoMoreInteractions(t);
 	}
 }

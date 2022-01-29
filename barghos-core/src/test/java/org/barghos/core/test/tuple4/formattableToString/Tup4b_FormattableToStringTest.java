@@ -1,6 +1,7 @@
 package org.barghos.core.test.tuple4.formattableToString;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +18,7 @@ import org.barghos.core.tuple4.Tup4b;
  * 
  * @author picatrix1899
  */
-class Tup4b_FormattableToStringTest
+class Tup3b_FormattableToStringTest
 {
 	/**
 	 * This test ensures, that the {@link Tup4b#getValueMapping()} function returns the correct components.
@@ -25,22 +26,41 @@ class Tup4b_FormattableToStringTest
 	@Test
 	void getValueMappingTest()
 	{
-		Tup4b t = new Tup4b((byte)1, (byte)2, (byte)3, (byte)4);
+		Tup4b t = mock(Tup4b.class);
 		
-		Map<String,Object> values = t.getValueMapping();
+		when(t.getValueMapping()).thenCallRealMethod();
 		
-		assertNotNull(values);
+		when(t.getX()).thenReturn((byte)1);
+		when(t.getY()).thenReturn((byte)2);
+		when(t.getZ()).thenReturn((byte)3);
+		when(t.getW()).thenReturn((byte)4);
+
+		List<Map.Entry<String,Object>> l = new ArrayList<>(t.getValueMapping().entrySet());
+		Map.Entry<String,Object> entry = null;
 		
-		List<Map.Entry<String,Object>> l = new ArrayList<>(values.entrySet());
-			
-		assertEquals(4, l.size());
-		assertEquals("x", l.get(0).getKey());
-		assertEquals((byte)1, l.get(0).getValue());
-		assertEquals("y", l.get(1).getKey());
-		assertEquals((byte)2, l.get(1).getValue());
-		assertEquals("z", l.get(2).getKey());
-		assertEquals((byte)3, l.get(2).getValue());
-		assertEquals("w", l.get(3).getKey());
-		assertEquals((byte)4, l.get(3).getValue());
+		entry = l.get(0);
+		assertEquals("x", entry.getKey());
+		assertEquals((byte)1, entry.getValue());
+		
+		entry = l.get(1);
+		assertEquals("y", entry.getKey());
+		assertEquals((byte)2, entry.getValue());
+		
+		entry = l.get(2);
+		assertEquals("z", entry.getKey());
+		assertEquals((byte)3, entry.getValue());
+		
+		entry = l.get(3);
+		assertEquals("w", entry.getKey());
+		assertEquals((byte)4, entry.getValue());
+		
+		verify(t).getValueMapping();
+		
+		verify(t).getX();
+		verify(t).getY();
+		verify(t).getZ();
+		verify(t).getW();
+		
+		verifyNoMoreInteractions(t);
 	}
 }

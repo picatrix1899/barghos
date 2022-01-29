@@ -395,7 +395,7 @@ class ImmutableTup3bigdTest
 		
 		TupbigdR t2 = mock(TupbigdR.class);
 		
-		when(t2.getDimensions()).thenReturn(2);
+		when(t2.getDimensions()).thenReturn(3);
 		when(t2.getByIndex(0)).thenReturn(BigDecimal.valueOf(4.0));
 		
 		assertFalse(t1.equals(t2));
@@ -551,7 +551,7 @@ class ImmutableTup3bigdTest
 	}
 	
 	/**
-	 * This test ensures, that the default implementation of the function {@link v#getNewInstanceFromArray(BigDecimal[])} calls
+	 * This test ensures, that the default implementation of the function {@link ImmutableTup4bigd#getNewInstanceFromArray(BigDecimal[])} calls
 	 * the function {@link ImmutableTup3bigd#getNewInstance(BigDecimal, BigDecimal, BigDecimal)} with the correct components.
 	 */
 	@Test

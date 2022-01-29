@@ -23,12 +23,15 @@
 package org.barghos.core.test.tuple4;
 
 import static org.junit.jupiter.api.Assertions.*;
-
-import java.math.BigInteger;
+import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.Test;
 
-import org.barghos.core.tuple4.PTup4bigi;
+import java.math.BigInteger;
+
+import org.barghos.core.api.tuple.TupbigiR;
+import org.barghos.core.api.tuple4.Tup4bigiR;
+
 import org.barghos.core.tuple4.Tup4bigi;
 
 /**
@@ -45,7 +48,7 @@ class Tup4bigiTest
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void ctorEmptyTest()
+	void ctor_DefaultTest()
 	{
 		Tup4bigi t = new Tup4bigi();
 		
@@ -54,57 +57,112 @@ class Tup4bigiTest
 		assertEquals(BigInteger.ZERO, t.z);
 		assertEquals(BigInteger.ZERO, t.w);
 	}
-	
+
 	/**
-	 * This test ensures, that  the constructor
-	 * {@link Tup4bigi#Tup4bigi(org.barghos.core.api.tuple4.Tup4bigiR) Tup4bigi.Tup4bigi(Tup4bigiR)} actually works and
-	 * that the components are adopted from the input tuple.
+	 * This test ensures, that an instance of {@link Tup4bigi} generated from an existing instance of {@link TupbigiR},
+	 * returns the correct components.
 	 * 
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void ctorCloneTest()
+	void ctor_TupleTest()
 	{
-		Tup4bigi t = new Tup4bigi(PTup4bigi.gen(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4)));
+		TupbigiR original = mock(TupbigiR.class);
 		
-		assertEquals(BigInteger.valueOf(1), t.x);
-		assertEquals(BigInteger.valueOf(2), t.y);
-		assertEquals(BigInteger.valueOf(3), t.z);
-		assertEquals(BigInteger.valueOf(4), t.w);
+		when(original.getArray()).thenReturn(new BigInteger[] {BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4)});
+		
+		Tup4bigi t = new Tup4bigi(original);
+		
+		assertEquals(BigInteger.valueOf(1), t.getX());
+		assertEquals(BigInteger.valueOf(2), t.getY());
+		assertEquals(BigInteger.valueOf(3), t.getZ());
+		assertEquals(BigInteger.valueOf(4), t.getW());
+		
+		verify(original).getArray();
+		
+		verifyNoMoreInteractions(original);
 	}
 	
 	/**
-	 * This test ensures, that the constructor {@link Tup4bigi#Tup4bigi(BigInteger)} actually works,
-	 * and that the components are set to the value.
+	 * This test ensures, that an instance of {@link Tup4bigi} generated from an existing instance of {@link TupbigiR},
+	 * returns the correct components.
 	 * 
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void ctorScalarTest()
+	void ctor_Tuple2Test()
+	{
+		Tup4bigiR original = mock(Tup4bigiR.class);
+		
+		when(original.getX()).thenReturn(BigInteger.valueOf(1));
+		when(original.getY()).thenReturn(BigInteger.valueOf(2));
+		when(original.getZ()).thenReturn(BigInteger.valueOf(3));
+		when(original.getW()).thenReturn(BigInteger.valueOf(4));
+		
+		Tup4bigi t = new Tup4bigi(original);
+		
+		assertEquals(BigInteger.valueOf(1), t.getX());
+		assertEquals(BigInteger.valueOf(2), t.getY());
+		assertEquals(BigInteger.valueOf(3), t.getZ());
+		assertEquals(BigInteger.valueOf(4), t.getW());
+		
+		verify(original).getX();
+		verify(original).getY();
+		verify(original).getZ();
+		verify(original).getW();
+		
+		verifyNoMoreInteractions(original);
+	}
+	
+	/**
+	 * This test ensures, that an instance of {@link Tup4bigi} generated from a scalar,
+	 * returns the correct components.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void ctor_ValueTest()
 	{
 		Tup4bigi t = new Tup4bigi(BigInteger.valueOf(1));
 		
-		assertEquals(BigInteger.valueOf(1), t.x);
-		assertEquals(BigInteger.valueOf(1), t.y);
-		assertEquals(BigInteger.valueOf(1), t.z);
-		assertEquals(BigInteger.valueOf(1), t.w);
+		assertEquals(BigInteger.valueOf(1), t.getX());
+		assertEquals(BigInteger.valueOf(1), t.getY());
+		assertEquals(BigInteger.valueOf(1), t.getZ());
+		assertEquals(BigInteger.valueOf(1), t.getW());
 	}
 	
 	/**
-	 * This test ensures, that the constructor {@link Tup4bigi#Tup4bigi(BigInteger, BigInteger, BigInteger, BigInteger)} actually works,
-	 * and that the components are set to the respective parameters.
+	 * This test ensures, that an instance of {@link Tup4bigi} generated from an array,
+	 * returns the correct components.
 	 * 
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void ctorComponentsTest()
+	void ctor_ArrayTest()
+	{
+		Tup4bigi t = new Tup4bigi(new BigInteger[] {BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4)});
+		
+		assertEquals(BigInteger.valueOf(1), t.getX());
+		assertEquals(BigInteger.valueOf(2), t.getY());
+		assertEquals(BigInteger.valueOf(3), t.getZ());
+		assertEquals(BigInteger.valueOf(4), t.getW());
+	}
+	
+	/**
+	 * This test ensures, that an instance of {@link Tup4bigi} generated from two components,
+	 * returns the correct components.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void ctor_ComponentsTest()
 	{
 		Tup4bigi t = new Tup4bigi(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4));
 		
-		assertEquals(BigInteger.valueOf(1), t.x);
-		assertEquals(BigInteger.valueOf(2), t.y);
-		assertEquals(BigInteger.valueOf(3), t.z);
-		assertEquals(BigInteger.valueOf(4), t.w);
+		assertEquals(BigInteger.valueOf(1), t.getX());
+		assertEquals(BigInteger.valueOf(2), t.getY());
+		assertEquals(BigInteger.valueOf(3), t.getZ());
+		assertEquals(BigInteger.valueOf(4), t.getW());
 	}
 	
 	/**
@@ -153,7 +211,7 @@ class Tup4bigiTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4bigi#setW(BigInteger)} sets the z component on the tuple
+	 * This test ensures, that the function {@link Tup4bigi#setW(BigInteger)} sets the w component on the tuple
 	 * to the value and returns the current tuple.
 	 * 
 	 * @since 1.0.0.0
@@ -169,21 +227,38 @@ class Tup4bigiTest
 	
 	/**
 	 * This test ensures, that the function
-	 * {@link Tup4bigi#set(org.barghos.core.api.tuple4.Tup4bigiR) Tup4bigi.set(Tup4bigiR)}
+	 * {@link Tup4bigi#set(org.barghos.core.api.tuple2.Tup4bigiR) Tup2bigd.set(Tup4bigiR)}
 	 * adopts the components from the input tuple and returns the current tuple.
 	 * 
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void setCloneTest()
+	void set_Tuple3Test()
 	{
-		Tup4bigi t = new Tup4bigi();
+		Tup4bigi t = mock(Tup4bigi.class);
 		
-		assertSame(t, t.set(PTup4bigi.gen(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4))));
-		assertEquals(BigInteger.valueOf(1), t.x);
-		assertEquals(BigInteger.valueOf(2), t.y);
-		assertEquals(BigInteger.valueOf(3), t.z);
-		assertEquals(BigInteger.valueOf(4), t.w);
+		Tup4bigiR t2 = mock(Tup4bigiR.class);
+	
+		when(t.set(t2)).thenCallRealMethod();
+		
+		when(t2.getX()).thenReturn(BigInteger.valueOf(1));
+		when(t2.getY()).thenReturn(BigInteger.valueOf(2));
+		when(t2.getZ()).thenReturn(BigInteger.valueOf(3));
+		when(t2.getW()).thenReturn(BigInteger.valueOf(4));
+		
+		when(t.set(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4))).thenReturn(t);
+		
+		assertSame(t, t.set(t2));
+		
+		verify(t).set(t2);
+		
+		verify(t2).getX();
+		verify(t2).getY();
+		verify(t2).getZ();
+		verify(t2).getW();
+		verify(t).set(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4));
+		
+		verifyNoMoreInteractions(t, t2);
 	}
 	
 	/**
@@ -193,15 +268,21 @@ class Tup4bigiTest
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void setScalarTest()
+	void set_ValueTest()
 	{
-		Tup4bigi t = new Tup4bigi();
+		Tup4bigi t = mock(Tup4bigi.class);
+
+		when(t.set(BigInteger.valueOf(1))).thenCallRealMethod();
+
+		when(t.set(BigInteger.valueOf(1), BigInteger.valueOf(1), BigInteger.valueOf(1), BigInteger.valueOf(4))).thenReturn(t);
 		
 		assertSame(t, t.set(BigInteger.valueOf(1)));
-		assertEquals(BigInteger.valueOf(1), t.x);
-		assertEquals(BigInteger.valueOf(1), t.y);
-		assertEquals(BigInteger.valueOf(1), t.z);
-		assertEquals(BigInteger.valueOf(1), t.w);
+		
+		verify(t).set(BigInteger.valueOf(1));
+
+		verify(t).set(BigInteger.valueOf(1), BigInteger.valueOf(1), BigInteger.valueOf(1), BigInteger.valueOf(4));
+		
+		verifyNoMoreInteractions(t);
 	}
 	
 	/**
@@ -211,16 +292,27 @@ class Tup4bigiTest
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void setComponentsTest()
+	void set_ComponentsTest()
 	{
-		Tup4bigi t = new Tup4bigi();
+		Tup4bigi t = mock(Tup4bigi.class);
+
+		when(t.set(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4))).thenCallRealMethod();
+
+		when(t.setX(BigInteger.valueOf(1))).thenReturn(t);
+		when(t.setY(BigInteger.valueOf(2))).thenReturn(t);
+		when(t.setZ(BigInteger.valueOf(3))).thenReturn(t);
+		when(t.setW(BigInteger.valueOf(4))).thenReturn(t);
 		
 		assertSame(t, t.set(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4)));
+
+		verify(t).set(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4));
 		
-		assertEquals(BigInteger.valueOf(1), t.x);
-		assertEquals(BigInteger.valueOf(2), t.y);
-		assertEquals(BigInteger.valueOf(3), t.z);
-		assertEquals(BigInteger.valueOf(4), t.w);
+		verify(t).setX(BigInteger.valueOf(1));
+		verify(t).setY(BigInteger.valueOf(2));
+		verify(t).setZ(BigInteger.valueOf(3));
+		verify(t).setZ(BigInteger.valueOf(4));
+		
+		verifyNoMoreInteractions(t);
 	}
 	
 	/**
@@ -232,7 +324,7 @@ class Tup4bigiTest
 	@Test
 	void getXTest()
 	{
-		Tup4bigi t = new Tup4bigi(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3),BigInteger.valueOf(4));
+		Tup4bigi t = new Tup4bigi(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4));
 		
 		assertEquals(BigInteger.valueOf(1), t.getX());
 		assertEquals(t.x, t.getX());
@@ -284,23 +376,274 @@ class Tup4bigiTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4bigi#clone()} generates a new instance of
-	 * {@link Tup4bigi} and adopts the components from the original.
-	 * 
-	 * @since 1.0.0.0
+	 * This test ensures, that the function {@link Tup4bigi#hashCode()} eturns the correct hash.
+	 */
+	@Test
+	void hashCodeTest()
+	{
+		Tup4bigi t = new Tup4bigi(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4));
+
+		assertEquals(30817, t.hashCode());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4bigi#clone()} creates a new instance that satisfies
+	 * the requirements for clone-funktions.
 	 */
 	@Test
 	void cloneTest()
 	{
-		Tup4bigi t = new Tup4bigi(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4));
+		Tup4bigi original = new Tup4bigi(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4));
+		Tup4bigi t = original.clone();
 		
-		Tup4bigi result = t.clone();
+		assertFalse(original == t);
+		assertTrue(original.equals(t));
+		assertTrue(t.equals(original));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4bigi#equals(Object)} method returns true if
+	 * the object to test is the same as the testing object.
+	 */
+	@Test
+	void equals_SameTest()
+	{
+		Tup4bigi t1 = new Tup4bigi(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4));
 		
-		assertNotSame(t, result);
-		assertEquals(BigInteger.valueOf(1), result.getX());
-		assertEquals(BigInteger.valueOf(2), result.getY());
-		assertEquals(BigInteger.valueOf(3), result.getZ());
-		assertEquals(BigInteger.valueOf(4), result.getW());
+		assertTrue(t1.equals(t1));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4bigi#equals(Object)} method returns false if
+	 * the object to test is null.
+	 */
+	@Test
+	void equals_NullTest()
+	{
+		Tup4bigi t1 = new Tup4bigi(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4));
+		
+		assertFalse(t1.equals(null));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4bigi#equals(Object)} method returns false if
+	 * the object to test is of an unsupported type.
+	 */
+	@Test
+	void equals_IncompatibleTest()
+	{
+		Tup4bigi t1 = new Tup4bigi(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4));
+		
+		assertFalse(t1.equals(new Object()));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4bigi#equals(Object)} method returns true if
+	 * the object to test is of the type {@link Tup4bigiR} and has the same values as the testing object.
+	 */
+	@Test
+	void equals_Tuple2Test()
+	{
+		Tup4bigi t1 = new Tup4bigi(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4));
+		
+		Tup4bigiR t2 = mock(Tup4bigiR.class);
+		
+		when(t2.getX()).thenReturn(BigInteger.valueOf(1));
+		when(t2.getY()).thenReturn(BigInteger.valueOf(2));
+		when(t2.getZ()).thenReturn(BigInteger.valueOf(3));
+		when(t2.getW()).thenReturn(BigInteger.valueOf(4));
+		
+		assertTrue(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4bigi#equals(Object)} method returns false if
+	 * the object to test is of the type {@link Tup4bigiR} and has the same amount of dimensions and
+	 * a different value of the x component as the testing object.
+	 */
+	@Test
+	void equals_Tuple2_VaryingXTest()
+	{
+		Tup4bigi t1 = new Tup4bigi(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4));
+		
+		Tup4bigiR t2 = mock(Tup4bigiR.class);
+		
+		when(t2.getX()).thenReturn(BigInteger.valueOf(5));
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4bigi#equals(Object)} method returns false if
+	 * the object to test is of the type {@link Tup4bigiR} and has the same amount of dimensions and
+	 * a different value of the y component as the testing object.
+	 */
+	@Test
+	void equals_Tuple2_VaryingYTest()
+	{
+		Tup4bigi t1 = new Tup4bigi(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4));
+		
+		Tup4bigiR t2 = mock(Tup4bigiR.class);
+		
+		when(t2.getX()).thenReturn(BigInteger.valueOf(1));
+		when(t2.getY()).thenReturn(BigInteger.valueOf(5));
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4bigi#equals(Object)} method returns false if
+	 * the object to test is of the type {@link Tup4bigiR} and has the same amount of dimensions and
+	 * a different value of the z component as the testing object.
+	 */
+	@Test
+	void equals_Tuple2_VaryingZTest()
+	{
+		Tup4bigi t1 = new Tup4bigi(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4));
+		
+		Tup4bigiR t2 = mock(Tup4bigiR.class);
+		
+		when(t2.getX()).thenReturn(BigInteger.valueOf(1));
+		when(t2.getY()).thenReturn(BigInteger.valueOf(2));
+		when(t2.getZ()).thenReturn(BigInteger.valueOf(5));
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4bigi#equals(Object)} method returns false if
+	 * the object to test is of the type {@link Tup4bigiR} and has the same amount of dimensions and
+	 * a different value of the w component as the testing object.
+	 */
+	@Test
+	void equals_Tuple2_VaryingWTest()
+	{
+		Tup4bigi t1 = new Tup4bigi(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4));
+		
+		Tup4bigiR t2 = mock(Tup4bigiR.class);
+		
+		when(t2.getX()).thenReturn(BigInteger.valueOf(1));
+		when(t2.getY()).thenReturn(BigInteger.valueOf(2));
+		when(t2.getZ()).thenReturn(BigInteger.valueOf(4));
+		when(t2.getW()).thenReturn(BigInteger.valueOf(5));
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4bigi#equals(Object)} method returns true if
+	 * the object to test is of the type {@link TupbigiR} and has the same amount of dimensions and
+	 * the same values as the testing object.
+	 */
+	@Test
+	void equals_TupleTest()
+	{
+		Tup4bigi t1 = new Tup4bigi(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4));
+		
+		TupbigiR t2 = mock(TupbigiR.class);
+		
+		when(t2.getDimensions()).thenReturn(4);
+		when(t2.getByIndex(0)).thenReturn(BigInteger.valueOf(1));
+		when(t2.getByIndex(1)).thenReturn(BigInteger.valueOf(2));
+		when(t2.getByIndex(2)).thenReturn(BigInteger.valueOf(3));
+		when(t2.getByIndex(3)).thenReturn(BigInteger.valueOf(4));
+		
+		assertTrue(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4bigi#equals(Object)} method returns false if
+	 * the object to test is of the type {@link TupbigiR} and has a different amount of dimensions
+	 * as the testing object.
+	 */
+	@Test
+	void equals_Tuple_VaryingDimensionsTest()
+	{
+		Tup4bigi t1 = new Tup4bigi(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4));
+		
+		TupbigiR t2 = mock(TupbigiR.class);
+		
+		when(t2.getDimensions()).thenReturn(1);
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4bigi#equals(Object)} method returns false if
+	 * the object to test is of the type {@link TupbigiR} and has the same amount of dimensions and
+	 * a different value of the x component as the testing object.
+	 */
+	@Test
+	void equals_Tuple_VaryingXTest()
+	{
+		Tup4bigi t1 = new Tup4bigi(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4));
+		
+		TupbigiR t2 = mock(TupbigiR.class);
+		
+		when(t2.getDimensions()).thenReturn(4);
+		when(t2.getByIndex(0)).thenReturn(BigInteger.valueOf(5));
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4bigi#equals(Object)} method returns false if
+	 * the object to test is of the type {@link Tup4bigiR} and has the same amount of dimensions and
+	 * a different value of the y component as the testing object.
+	 */
+	@Test
+	void equals_Tuple_VaryingYTest()
+	{
+		Tup4bigi t1 = new Tup4bigi(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4));
+		
+		TupbigiR t2 = mock(TupbigiR.class);
+		
+		when(t2.getDimensions()).thenReturn(4);
+		when(t2.getByIndex(0)).thenReturn(BigInteger.valueOf(1));
+		when(t2.getByIndex(1)).thenReturn(BigInteger.valueOf(5));
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4bigi#equals(Object)} method returns false if
+	 * the object to test is of the type {@link Tup4bigiR} and has the same amount of dimensions and
+	 * a different value of the z component as the testing object.
+	 */
+	@Test
+	void equals_Tuple_VaryingZTest()
+	{
+		Tup4bigi t1 = new Tup4bigi(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4));
+		
+		TupbigiR t2 = mock(TupbigiR.class);
+		
+		when(t2.getDimensions()).thenReturn(4);
+		when(t2.getByIndex(0)).thenReturn(BigInteger.valueOf(1));
+		when(t2.getByIndex(1)).thenReturn(BigInteger.valueOf(2));
+		when(t2.getByIndex(2)).thenReturn(BigInteger.valueOf(5));
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4bigi#equals(Object)} method returns false if
+	 * the object to test is of the type {@link Tup4bigiR} and has the same amount of dimensions and
+	 * a different value of the w component as the testing object.
+	 */
+	@Test
+	void equals_Tuple_VaryingWTest()
+	{
+		Tup4bigi t1 = new Tup4bigi(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4));
+		
+		TupbigiR t2 = mock(TupbigiR.class);
+		
+		when(t2.getDimensions()).thenReturn(4);
+		when(t2.getByIndex(0)).thenReturn(BigInteger.valueOf(1));
+		when(t2.getByIndex(1)).thenReturn(BigInteger.valueOf(2));
+		when(t2.getByIndex(2)).thenReturn(BigInteger.valueOf(4));
+		when(t2.getByIndex(3)).thenReturn(BigInteger.valueOf(5));
+		
+		assertFalse(t1.equals(t2));
 	}
 	
 	/**
@@ -317,43 +660,126 @@ class Tup4bigiTest
 	}
 	
 	/**
-	 * This test ensures, that the special policies for the function {@link Tup4bigi#equals(Object)} are working.
-	 * 
-	 * @since 1.0.0.0
-	 */
-	@SuppressWarnings("unlikely-arg-type")
-	@Test
-	void equalsTest()
-	{
-		Tup4bigi t = new Tup4bigi(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4));
-		
-		assertTrue(t.equals(t));
-		assertFalse(t.equals(null));
-		assertFalse(t.equals(""));
-		assertFalse(t.equals(new Tup4bigi(BigInteger.valueOf(2), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4)))); // x wrong
-		assertFalse(t.equals(new Tup4bigi(BigInteger.valueOf(1), BigInteger.valueOf(3), BigInteger.valueOf(3), BigInteger.valueOf(4)))); // y wrong
-		assertFalse(t.equals(new Tup4bigi(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(4), BigInteger.valueOf(4)))); // z wrong
-		assertFalse(t.equals(new Tup4bigi(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(5)))); // w wrong
-		
-		assertTrue(t.equals(new Tup4bigi(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4))));
-		assertTrue(t.equals(PTup4bigi.gen(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4))));
-	}
-	
-	/**
 	 * This test ensures, that the function {@link Tup4bigi#getNewInstance(BigInteger, BigInteger, BigInteger, BigInteger)}
 	 * returns a new instance of {@link Tup4bigi} with the given values.
 	 */
 	@Test
-	void getNewInstanceTest()
+	void getNewInstance_ComponentsTest()
 	{
-		Tup4bigi t = new Tup4bigi(BigInteger.valueOf(1), BigInteger.valueOf(1), BigInteger.valueOf(1), BigInteger.valueOf(1));
-
-		Tup4bigi result = t.getNewInstance(BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4), BigInteger.valueOf(5));
+		Tup4bigi original = new Tup4bigi(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4));
+		Tup4bigi newInstance = original.getNewInstance(BigInteger.valueOf(3), BigInteger.valueOf(4), BigInteger.valueOf(5), BigInteger.valueOf(5));
 		
-		assertNotSame(t, result);
-		assertEquals(BigInteger.valueOf(2), result.getX());
-		assertEquals(BigInteger.valueOf(3), result.getY());
-		assertEquals(BigInteger.valueOf(4), result.getZ());
-		assertEquals(BigInteger.valueOf(5), result.getW());
+		assertEquals(BigInteger.valueOf(1), original.getX());
+		assertEquals(BigInteger.valueOf(2), original.getY());
+		assertEquals(BigInteger.valueOf(3), original.getZ());
+		assertEquals(BigInteger.valueOf(4), original.getW());
+		assertEquals(BigInteger.valueOf(3), newInstance.getX());
+		assertEquals(BigInteger.valueOf(4), newInstance.getY());
+		assertEquals(BigInteger.valueOf(5), newInstance.getZ());
+		assertEquals(BigInteger.valueOf(6), newInstance.getW());
+	}
+	
+	/**
+	 * This test ensures, that the default implementation of the function {@link Tup4bigi#getNewInstance(BigInteger)} calls
+	 * the function {@link Tup4bigi#getNewInstance(BigInteger, BigInteger, BigInteger, BigInteger)} with the correct components.
+	 */
+	@Test
+	void getNewInstance_ValueTest()
+	{
+		Tup4bigi newInstance = mock(Tup4bigi.class);
+		Tup4bigi t = mock(Tup4bigi.class);
+		
+		when(t.getNewInstance(BigInteger.valueOf(1))).thenCallRealMethod();
+
+		when(t.getNewInstance(BigInteger.valueOf(1), BigInteger.valueOf(1), BigInteger.valueOf(1), BigInteger.valueOf(1))).thenReturn(newInstance);
+		
+		assertSame(newInstance, t.getNewInstance(BigInteger.valueOf(1)));
+		
+		verify(t).getNewInstance(BigInteger.valueOf(1));
+		
+		verify(t).getNewInstance(BigInteger.valueOf(1), BigInteger.valueOf(1), BigInteger.valueOf(1), BigInteger.valueOf(1));
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4bigi#getNewInstance(Tup4bigiR)}
+	 * returns a new instance of {@link Tup4bigi} with the given values.
+	 */
+	@Test
+	void getNewInstance_Tuple2Test()
+	{
+		Tup4bigiR original = mock(Tup4bigiR.class);
+		Tup4bigi newInstance = mock(Tup4bigi.class);
+		Tup4bigi t = mock(Tup4bigi.class);
+		
+		when(t.getNewInstance(original)).thenCallRealMethod();
+		
+		when(original.getX()).thenReturn(BigInteger.valueOf(1));
+		when(original.getY()).thenReturn(BigInteger.valueOf(2));
+		when(original.getZ()).thenReturn(BigInteger.valueOf(3));
+		when(original.getW()).thenReturn(BigInteger.valueOf(4));
+		when(t.getNewInstance(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4))).thenReturn(newInstance);
+		
+		assertSame(newInstance, t.getNewInstance(original));
+		
+		verify(t).getNewInstance(original);
+		
+		verify(original).getX();
+		verify(original).getY();
+		verify(original).getZ();
+		verify(original).getW();
+		verify(t).getNewInstance(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4));
+		
+		verifyNoMoreInteractions(t, original);
+	}
+	
+	/**
+	 * This test ensures, that the default implementation of the function {@link Tup4bigi#getNewInstance(TupbigiR)} calls
+	 * the function {@link Tup4bigi#getNewInstance(BigInteger, BigInteger, BigInteger, BigInteger)} with the correct components.
+	 */
+	@Test
+	void getNewInstance_TupleTest()
+	{
+		TupbigiR original = mock(TupbigiR.class);
+		Tup4bigi newInstance = mock(Tup4bigi.class);
+		Tup4bigi t = mock(Tup4bigi.class);
+		
+		when(t.getNewInstance(original)).thenCallRealMethod();
+		
+		when(original.getArray()).thenReturn(new BigInteger[] {BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4)});
+		when(t.getNewInstance(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4))).thenReturn(newInstance);
+		
+		assertSame(newInstance, t.getNewInstance(original));
+		
+		verify(t).getNewInstance(original);
+		
+		verify(original).getArray();
+		verify(t).getNewInstance(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4));
+		
+		verifyNoMoreInteractions(t, original);
+	}
+	
+	/**
+	 * This test ensures, that the default implementation of the function {@link Tup4bigi#getNewInstanceFromArray(BigInteger[])} calls
+	 * the function {@link Tup4bigi#getNewInstance(BigInteger, BigInteger, BigInteger, BigInteger)} with the correct components.
+	 */
+	@Test
+	void getNewInstanceFromArrayTest()
+	{
+		Tup4bigi newInstance = mock(Tup4bigi.class);
+		Tup4bigi t = mock(Tup4bigi.class);
+		
+		when(t.getNewInstanceFromArray(new BigInteger[] {BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4)})).thenCallRealMethod();
+
+		when(t.getNewInstance(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4))).thenReturn(newInstance);
+		
+		assertSame(newInstance, t.getNewInstanceFromArray(new BigInteger[] {BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4)}));
+		
+		verify(t).getNewInstanceFromArray(new BigInteger[] {BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4)});
+		
+		verify(t).getNewInstance(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4));
+		
+		verifyNoMoreInteractions(t);
 	}
 }

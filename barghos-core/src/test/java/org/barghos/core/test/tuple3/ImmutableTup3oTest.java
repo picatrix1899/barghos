@@ -271,7 +271,7 @@ class ImmutableTup3oTest
 		Tup3oR<Integer,Double,String> t2 = (Tup3oR<Integer,Double,String>)mock(Tup3oR.class);
 
 		when(t2.getX()).thenReturn(1);
-		when(t2.getY()).thenReturn(2.0);
+		when(t2.getY()).thenReturn(1.0);
 		when(t2.getZ()).thenReturn("b");
 		
 		assertFalse(t1.equals(t2));

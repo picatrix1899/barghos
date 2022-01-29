@@ -23,10 +23,13 @@
 package org.barghos.core.test.tuple4;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.Test;
 
-import org.barghos.core.tuple4.PTup4d;
+import org.barghos.core.api.tuple.TupdR;
+import org.barghos.core.api.tuple4.Tup4dR;
+
 import org.barghos.core.tuple4.Tup4d;
 
 /**
@@ -37,13 +40,12 @@ import org.barghos.core.tuple4.Tup4d;
 class Tup4dTest
 {
 	/**
-	 * This test ensures, that the constructor {@link Tup4d#Tup4d()} aktually works and
-	 * that the components are set to 0.
+	 * This test ensures, that the default constructor {@link Tup4d#Tup4d()} sets the components to 0.
 	 * 
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void ctorEmptyTest()
+	void ctor_DefaultTest()
 	{
 		Tup4d t = new Tup4d();
 		
@@ -52,61 +54,116 @@ class Tup4dTest
 		assertEquals(0.0, t.z);
 		assertEquals(0.0, t.w);
 	}
-	
+
 	/**
-	 * This test ensures, that  the constructor
-	 * {@link Tup4d#Tup4d(org.barghos.core.api.tuple4.Tup4dR) Tup4d.Tup4d(Tup4dR)} actually works and
-	 * that the components are adopted from the input tuple.
+	 * This test ensures, that an instance of {@link Tup4d} generated from an existing instance of {@link TupdR},
+	 * returns the correct components.
 	 * 
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void ctorCloneTest()
+	void ctor_TupleTest()
 	{
-		Tup4d t = new Tup4d(PTup4d.gen(1.2, 3.4, 5.6, 7.8));
+		TupdR original = mock(TupdR.class);
 		
-		assertEquals(1.2, t.x);
-		assertEquals(3.4, t.y);
-		assertEquals(5.6, t.z);
-		assertEquals(7.8, t.w);
+		when(original.getArray()).thenReturn(new double[] {1.0, 2.0, 3.0, 4.0});
+		
+		Tup4d t = new Tup4d(original);
+		
+		assertEquals(1.0, t.getX());
+		assertEquals(2.0, t.getY());
+		assertEquals(3.0, t.getZ());
+		assertEquals(4.0, t.getW());
+		
+		verify(original).getArray();
+		
+		verifyNoMoreInteractions(original);
 	}
 	
 	/**
-	 * This test ensures, that the constructor {@link Tup4d#Tup4d(double)} actually works,
-	 * and that the components are set to the value.
+	 * This test ensures, that an instance of {@link Tup4d} generated from an existing instance of {@link Tup4dR},
+	 * returns the correct components.
 	 * 
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void ctorScalarTest()
+	void ctor_Tuple2Test()
 	{
-		Tup4d t = new Tup4d(1.2);
+		Tup4dR original = mock(Tup4dR.class);
 		
-		assertEquals(1.2, t.x);
-		assertEquals(1.2, t.y);
-		assertEquals(1.2, t.z);
-		assertEquals(1.2, t.w);
+		when(original.getX()).thenReturn(1.0);
+		when(original.getY()).thenReturn(2.0);
+		when(original.getZ()).thenReturn(3.0);
+		when(original.getZ()).thenReturn(4.0);
+		
+		Tup4d t = new Tup4d(original);
+		
+		assertEquals(1.0, t.getX());
+		assertEquals(2.0, t.getY());
+		assertEquals(3.0, t.getZ());
+		assertEquals(4.0, t.getW());
+		
+		verify(original).getX();
+		verify(original).getY();
+		verify(original).getZ();
+		verify(original).getW();
+		
+		verifyNoMoreInteractions(original);
 	}
 	
 	/**
-	 * This test ensures, that the constructor {@link Tup4d#Tup4d(double, double, double, double)} actually works,
-	 * and that the components are set to the respective parameters.
+	 * This test ensures, that an instance of {@link Tup4d} generated from a scalar,
+	 * returns the correct components.
 	 * 
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void ctorComponentsTest()
+	void ctor_ValueTest()
 	{
-		Tup4d t = new Tup4d(1.2, 3.4, 5.6, 7.8);
+		Tup4d t = new Tup4d(1.0);
 		
-		assertEquals(1.2, t.x);
-		assertEquals(3.4, t.y);
-		assertEquals(5.6, t.z);
-		assertEquals(7.8, t.w);
+		assertEquals(1.0, t.getX());
+		assertEquals(1.0, t.getY());
+		assertEquals(1.0, t.getZ());
+		assertEquals(1.0, t.getW());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4d#setX(double)} sets the x component on the tuple
+	 * This test ensures, that an instance of {@link Tup4d} generated from an array,
+	 * returns the correct components.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void ctor_ArrayTest()
+	{
+		Tup4d t = new Tup4d(new double[] {1.0, 2.0, 3.0, 4.0});
+		
+		assertEquals(1.0, t.getX());
+		assertEquals(2.0, t.getY());
+		assertEquals(3.0, t.getZ());
+		assertEquals(4.0, t.getW());
+	}
+	
+	/**
+	 * This test ensures, that an instance of {@link Tup4d} generated from two components,
+	 * returns the correct components.
+	 * 
+	 * @since 1.0.0.0
+	 */
+	@Test
+	void ctor_ComponentsTest()
+	{
+		Tup4d t = new Tup4d(1.0, 2.0, 3.0, 4.0);
+		
+		assertEquals(1.0, t.getX());
+		assertEquals(2.0, t.getY());
+		assertEquals(3.0, t.getZ());
+		assertEquals(4.0, t.getW());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4d#setX(double)} sets the x component of the tuple
 	 * to the value and returns the current tuple.
 	 * 
 	 * @since 1.0.0.0
@@ -116,12 +173,12 @@ class Tup4dTest
 	{
 		Tup4d t = new Tup4d();
 		
-		assertSame(t, t.setX(1.2));
-		assertEquals(1.2, t.x);
+		assertSame(t, t.setX(1.1));
+		assertEquals(1.1, t.x);
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4d#setY(double)} sets the y component on the tuple
+	 * This test ensures, that the function {@link Tup4d#setY(double)} sets the y component of the tuple
 	 * to the value and returns the current tuple.
 	 * 
 	 * @since 1.0.0.0
@@ -131,12 +188,12 @@ class Tup4dTest
 	{
 		Tup4d t = new Tup4d();
 		
-		assertSame(t, t.setY(1.2));
-		assertEquals(1.2, t.y);
+		assertSame(t, t.setY(2.2));
+		assertEquals(2.2, t.y);
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4d#setZ(double)} sets the z component on the tuple
+	 * This test ensures, that the function {@link Tup4d#setZ(double)} sets the z component of the tuple
 	 * to the value and returns the current tuple.
 	 * 
 	 * @since 1.0.0.0
@@ -146,12 +203,12 @@ class Tup4dTest
 	{
 		Tup4d t = new Tup4d();
 		
-		assertSame(t, t.setZ(1.2));
-		assertEquals(1.2, t.z);
+		assertSame(t, t.setZ(3.3));
+		assertEquals(3.3, t.z);
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4d#setW(double)} sets the w component on the tuple
+	 * This test ensures, that the function {@link Tup4d#setW(double)} sets the w component of the tuple
 	 * to the value and returns the current tuple.
 	 * 
 	 * @since 1.0.0.0
@@ -161,27 +218,44 @@ class Tup4dTest
 	{
 		Tup4d t = new Tup4d();
 		
-		assertSame(t, t.setW(1.2));
-		assertEquals(1.2, t.w);
+		assertSame(t, t.setW(4.4));
+		assertEquals(4.4, t.w);
 	}
 	
 	/**
 	 * This test ensures, that the function
-	 * {@link Tup4d#set(org.barghos.core.api.tuple4.Tup4dR) Tup4d.set(Tup4dR)}
+	 * {@link Tup4d#set(org.barghos.core.api.tuple2.Tup4dR) Tup4d.set(Tup4dR)}
 	 * adopts the components from the input tuple and returns the current tuple.
 	 * 
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void setCloneTest()
+	void set_Tuple3Test()
 	{
-		Tup4d t = new Tup4d();
+		Tup4d t = mock(Tup4d.class);
 		
-		assertSame(t, t.set(PTup4d.gen(1.2, 3.4, 5.6, 7.8)));
-		assertEquals(1.2, t.x);
-		assertEquals(3.4, t.y);
-		assertEquals(5.6, t.z);
-		assertEquals(7.8, t.w);
+		Tup4dR t2 = mock(Tup4dR.class);
+	
+		when(t.set(t2)).thenCallRealMethod();
+		
+		when(t2.getX()).thenReturn(1.1);
+		when(t2.getY()).thenReturn(2.2);
+		when(t2.getZ()).thenReturn(3.3);
+		when(t2.getW()).thenReturn(4.4);
+		
+		when(t.set(1.1, 2.2, 3.3, 4.4)).thenReturn(t);
+		
+		assertSame(t, t.set(t2));
+		
+		verify(t).set(t2);
+		
+		verify(t2).getX();
+		verify(t2).getY();
+		verify(t2).getZ();
+		verify(t2).getW();
+		verify(t).set(1.1, 2.2, 3.3, 4.4);
+		
+		verifyNoMoreInteractions(t, t2);
 	}
 	
 	/**
@@ -191,15 +265,21 @@ class Tup4dTest
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void setScalarTest()
+	void set_ValueTest()
 	{
-		Tup4d t = new Tup4d();
+		Tup4d t = mock(Tup4d.class);
+
+		when(t.set(1.1)).thenCallRealMethod();
+
+		when(t.set(1.1, 1.1, 1.1, 1.1)).thenReturn(t);
 		
-		assertSame(t, t.set(1.2));
-		assertEquals(1.2, t.x);
-		assertEquals(1.2, t.y);
-		assertEquals(1.2, t.z);
-		assertEquals(1.2, t.w);
+		assertSame(t, t.set(1.1));
+		
+		verify(t).set(1.1);
+
+		verify(t).set(1.1, 1.1, 1.1, 1.1);
+		
+		verifyNoMoreInteractions(t);
 	}
 	
 	/**
@@ -209,16 +289,27 @@ class Tup4dTest
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void setComponentsTest()
+	void set_ComponentsTest()
 	{
-		Tup4d t = new Tup4d();
+		Tup4d t = mock(Tup4d.class);
+
+		when(t.set(1.1, 2.2, 3.3, 4.4)).thenCallRealMethod();
+
+		when(t.setX(1.1)).thenReturn(t);
+		when(t.setY(2.2)).thenReturn(t);
+		when(t.setZ(3.3)).thenReturn(t);
+		when(t.setW(4.4)).thenReturn(t);
 		
-		assertSame(t, t.set(1.2, 3.4, 5.6, 7.8));
+		assertSame(t, t.set(1.1, 2.2, 3.3, 4.4));
+
+		verify(t).set(1.1, 2.2, 3.3, 4.4);
 		
-		assertEquals(1.2, t.x);
-		assertEquals(3.4, t.y);
-		assertEquals(5.6, t.z);
-		assertEquals(7.8, t.w);
+		verify(t).setX(1.1);
+		verify(t).setY(2.2);
+		verify(t).setZ(3.3);
+		verify(t).setW(4.4);
+		
+		verifyNoMoreInteractions(t);
 	}
 	
 	/**
@@ -230,9 +321,9 @@ class Tup4dTest
 	@Test
 	void getXTest()
 	{
-		Tup4d t = new Tup4d(1.2, 2.3, 3.4, 4.5);
+		Tup4d t = new Tup4d(1.1, 2.2, 3.3, 4.4);
 		
-		assertEquals(1.2, t.getX());
+		assertEquals(1.1, t.getX());
 		assertEquals(t.x, t.getX());
 	}
 	
@@ -245,14 +336,14 @@ class Tup4dTest
 	@Test
 	void getYTest()
 	{
-		Tup4d t = new Tup4d(1.2, 2.3, 3.4, 4.5);
+		Tup4d t = new Tup4d(1.1, 2.2, 3.3, 4.4);
 		
-		assertEquals(2.3, t.getY());
+		assertEquals(2.2, t.getY());
 		assertEquals(t.y, t.getY());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4d#getZ()} actually returns the value of the
+	 * This test ensures, that the function {@link Tup4d#getY()} actually returns the value of the
 	 * z component.
 	 * 
 	 * @since 1.0.0.0
@@ -260,9 +351,9 @@ class Tup4dTest
 	@Test
 	void getZTest()
 	{
-		Tup4d t = new Tup4d(1.2, 2.3, 3.4, 4.5);
+		Tup4d t = new Tup4d(1.1, 2.2, 3.3, 4.4);
 		
-		assertEquals(3.4, t.getZ());
+		assertEquals(3.3, t.getZ());
 		assertEquals(t.z, t.getZ());
 	}
 	
@@ -275,30 +366,281 @@ class Tup4dTest
 	@Test
 	void getWTest()
 	{
-		Tup4d t = new Tup4d(1.2, 2.3, 3.4, 4.5);
+		Tup4d t = new Tup4d(1.1, 2.2, 3.3, 4.4);
 		
-		assertEquals(4.5, t.getW());
+		assertEquals(4.4, t.getW());
 		assertEquals(t.w, t.getW());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4d#clone()} generates a new instance of
-	 * {@link Tup4d} and adopts the components from the original.
-	 * 
-	 * @since 1.0.0.0
+	 * This test ensures, that the function {@link Tup4d#hashCode()} eturns the correct hash.
+	 */
+	@Test
+	void hashCodeTest()
+	{
+		Tup4d t = new Tup4d(1.0, 2.0, 3.0, 4.0);
+
+		assertEquals(66614367, t.hashCode());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4d#clone()} creates a new instance that satisfies
+	 * the requirements for clone-funktions.
 	 */
 	@Test
 	void cloneTest()
 	{
-		Tup4d t = new Tup4d(1.2, 3.4, 5.6, 7.8);
+		Tup4d original = new Tup4d(1.0, 2.0, 3.0, 4.0);
+		Tup4d t = original.clone();
 		
-		Tup4d result = t.clone();
+		assertFalse(original == t);
+		assertTrue(original.equals(t));
+		assertTrue(t.equals(original));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4d#equals(Object)} method returns true if
+	 * the object to test is the same as the testing object.
+	 */
+	@Test
+	void equals_SameTest()
+	{
+		Tup4d t1 = new Tup4d(1.0, 2.0, 3.0, 4.0);
 		
-		assertNotSame(t, result);
-		assertEquals(1.2, result.getX());
-		assertEquals(3.4, result.getY());
-		assertEquals(5.6, result.getZ());
-		assertEquals(7.8, result.getW());
+		assertTrue(t1.equals(t1));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4d#equals(Object)} method returns false if
+	 * the object to test is null.
+	 */
+	@Test
+	void equals_NullTest()
+	{
+		Tup4d t1 = new Tup4d(1.0, 2.0, 3.0, 4.0);
+		
+		assertFalse(t1.equals(null));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4d#equals(Object)} method returns false if
+	 * the object to test is of an unsupported type.
+	 */
+	@Test
+	void equals_IncompatibleTest()
+	{
+		Tup4d t1 = new Tup4d(1.0, 2.0, 3.0, 4.0);
+		
+		assertFalse(t1.equals(new Object()));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4d#equals(Object)} method returns true if
+	 * the object to test is of the type {@link Tup4dR} and has the same values as the testing object.
+	 */
+	@Test
+	void equals_Tuple2Test()
+	{
+		Tup4d t1 = new Tup4d(1.0, 2.0, 3.0, 4.0);
+		
+		Tup4dR t2 = mock(Tup4dR.class);
+		
+		when(t2.getX()).thenReturn(1.0);
+		when(t2.getY()).thenReturn(2.0);
+		when(t2.getZ()).thenReturn(3.0);
+		when(t2.getW()).thenReturn(4.0);
+		
+		assertTrue(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4d#equals(Object)} method returns false if
+	 * the object to test is of the type {@link Tup4dR} and has the same amount of dimensions and
+	 * a different value of the x component as the testing object.
+	 */
+	@Test
+	void equals_Tuple2_VaryingXTest()
+	{
+		Tup4d t1 = new Tup4d(1.0, 2.0, 3.0, 4.0);
+		
+		Tup4dR t2 = mock(Tup4dR.class);
+		
+		when(t2.getX()).thenReturn(5.0);
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4d#equals(Object)} method returns false if
+	 * the object to test is of the type {@link Tup4dR} and has the same amount of dimensions and
+	 * a different value of the y component as the testing object.
+	 */
+	@Test
+	void equals_Tuple2_VaryingYTest()
+	{
+		Tup4d t1 = new Tup4d(1.0, 2.0, 3.0, 4.0);
+		
+		Tup4dR t2 = mock(Tup4dR.class);
+		
+		when(t2.getX()).thenReturn(1.0);
+		when(t2.getY()).thenReturn(5.0);
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4d#equals(Object)} method returns false if
+	 * the object to test is of the type {@link Tup4dR} and has the same amount of dimensions and
+	 * a different value of the z component as the testing object.
+	 */
+	@Test
+	void equals_Tuple2_VaryingZTest()
+	{
+		Tup4d t1 = new Tup4d(1.0, 2.0, 3.0, 4.0);
+		
+		Tup4dR t2 = mock(Tup4dR.class);
+		
+		when(t2.getX()).thenReturn(1.0);
+		when(t2.getY()).thenReturn(2.0);
+		when(t2.getZ()).thenReturn(5.0);
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4d#equals(Object)} method returns false if
+	 * the object to test is of the type {@link Tup4dR} and has the same amount of dimensions and
+	 * a different value of the w component as the testing object.
+	 */
+	@Test
+	void equals_Tuple2_VaryingWTest()
+	{
+		Tup4d t1 = new Tup4d(1.0, 2.0, 3.0, 4.0);
+		
+		Tup4dR t2 = mock(Tup4dR.class);
+		
+		when(t2.getX()).thenReturn(1.0);
+		when(t2.getY()).thenReturn(2.0);
+		when(t2.getZ()).thenReturn(3.0);
+		when(t2.getW()).thenReturn(5.0);
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4d#equals(Object)} method returns true if
+	 * the object to test is of the type {@link TupdR} and has the same amount of dimensions and
+	 * the same values as the testing object.
+	 */
+	@Test
+	void equals_TupleTest()
+	{
+		Tup4d t1 = new Tup4d(1.0, 2.0, 3.0, 4.0);
+		
+		TupdR t2 = mock(TupdR.class);
+		
+		when(t2.getDimensions()).thenReturn(4);
+		when(t2.getByIndex(0)).thenReturn(1.0);
+		when(t2.getByIndex(1)).thenReturn(2.0);
+		when(t2.getByIndex(2)).thenReturn(3.0);
+		when(t2.getByIndex(3)).thenReturn(4.0);
+		
+		assertTrue(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4d#equals(Object)} method returns false if
+	 * the object to test is of the type {@link TupdR} and has a different amount of dimensions
+	 * as the testing object.
+	 */
+	@Test
+	void equals_Tuple_VaryingDimensionsTest()
+	{
+		Tup4d t1 = new Tup4d(1.0, 2.0, 3.0, 4.0);
+		
+		TupdR t2 = mock(TupdR.class);
+		
+		when(t2.getDimensions()).thenReturn(1);
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4d#equals(Object)} method returns false if
+	 * the object to test is of the type {@link TupdR} and has the same amount of dimensions and
+	 * a different value of the x component as the testing object.
+	 */
+	@Test
+	void equals_Tuple_VaryingXTest()
+	{
+		Tup4d t1 = new Tup4d(1.0, 2.0, 3.0, 4.0);
+		
+		TupdR t2 = mock(TupdR.class);
+		
+		when(t2.getDimensions()).thenReturn(4);
+		when(t2.getByIndex(0)).thenReturn(5.0);
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4d#equals(Object)} method returns false if
+	 * the object to test is of the type {@link TupdR} and has the same amount of dimensions and
+	 * a different value of the y component as the testing object.
+	 */
+	@Test
+	void equals_Tuple_VaryingYTest()
+	{
+		Tup4d t1 = new Tup4d(1.0, 2.0, 3.0, 4.0);
+		
+		TupdR t2 = mock(TupdR.class);
+		
+		when(t2.getDimensions()).thenReturn(4);
+		when(t2.getByIndex(0)).thenReturn(1.0);
+		when(t2.getByIndex(1)).thenReturn(5.0);
+		
+		assertFalse(t1.equals(t2));
+	}
+
+	/**
+	 * This test ensures, that the {@link Tup4d#equals(Object)} method returns false if
+	 * the object to test is of the type {@link TupdR} and has the same amount of dimensions and
+	 * a different value of the z component as the testing object.
+	 */
+	@Test
+	void equals_Tuple_VaryingZTest()
+	{
+		Tup4d t1 = new Tup4d(1.0, 2.0, 3.0, 4.0);
+		
+		TupdR t2 = mock(TupdR.class);
+		
+		when(t2.getDimensions()).thenReturn(4);
+		when(t2.getByIndex(0)).thenReturn(1.0);
+		when(t2.getByIndex(1)).thenReturn(2.0);
+		when(t2.getByIndex(2)).thenReturn(5.0);
+		
+		assertFalse(t1.equals(t2));
+	}
+	
+	/**
+	 * This test ensures, that the {@link Tup4d#equals(Object)} method returns false if
+	 * the object to test is of the type {@link TupdR} and has the same amount of dimensions and
+	 * a different value of the w component as the testing object.
+	 */
+	@Test
+	void equals_Tuple_VaryingWTest()
+	{
+		Tup4d t1 = new Tup4d(1.0, 2.0, 3.0, 4.0);
+		
+		TupdR t2 = mock(TupdR.class);
+		
+		when(t2.getDimensions()).thenReturn(4);
+		when(t2.getByIndex(0)).thenReturn(1.0);
+		when(t2.getByIndex(1)).thenReturn(2.0);
+		when(t2.getByIndex(2)).thenReturn(3.0);
+		when(t2.getByIndex(3)).thenReturn(5.0);
+		
+		assertFalse(t1.equals(t2));
 	}
 	
 	/**
@@ -309,32 +651,9 @@ class Tup4dTest
 	@Test
 	void toStringTest()
 	{
-		Tup4d t = new Tup4d(1.2, 3.4, 5.6, 7.8);
+		Tup4d t = new Tup4d(1.1, 2.2, 3.3, 4.4);
 		
-		assertEquals("tup4d(x=1.2, y=3.4, z=5.6, w=7.8)", t.toString());
-	}
-	
-	/**
-	 * This test ensures, that the special policies for the function {@link Tup4d#equals(Object)} are working.
-	 * 
-	 * @since 1.0.0.0
-	 */
-	@SuppressWarnings("unlikely-arg-type")
-	@Test
-	void equalsTest()
-	{
-		Tup4d t = new Tup4d(1.2, 3.4, 5.6, 7.8);
-		
-		assertTrue(t.equals(t));
-		assertFalse(t.equals(null));
-		assertFalse(t.equals(0));
-		assertFalse(t.equals(new Tup4d(3.4, 3.4, 5.6, 7.8))); // x wrong
-		assertFalse(t.equals(new Tup4d(1.2, 4.5, 5.6, 7.8))); // y wrong
-		assertFalse(t.equals(new Tup4d(1.2, 3.4, 7.8, 7.8))); // z wrong
-		assertFalse(t.equals(new Tup4d(1.2, 3.4, 5.6, 9.1))); // w wrong
-		
-		assertTrue(t.equals(new Tup4d(1.2, 3.4, 5.6, 7.8)));
-		assertTrue(t.equals(PTup4d.gen(1.2, 3.4, 5.6, 7.8)));
+		assertEquals("tup3d(x=1.1, y=2.2, z=3.3, w=4.4)", t.toString());
 	}
 	
 	/**
@@ -342,16 +661,122 @@ class Tup4dTest
 	 * returns a new instance of {@link Tup4d} with the given values.
 	 */
 	@Test
-	void getNewInstanceTest()
+	void getNewInstance_ComponentsTest()
 	{
-		Tup4d t = new Tup4d(1.0, 1.0, 1.0, 1.0);
-
-		Tup4d result = t.getNewInstance(2.0, 3.0, 4.0, 5.0);
+		Tup4d original = new Tup4d(1.0, 2.0, 3.0, 4.0);
+		Tup4d newInstance = original.getNewInstance(3.0, 4.0, 5.0, 6.0);
 		
-		assertNotSame(t, result);
-		assertEquals(2.0, result.getX());
-		assertEquals(3.0, result.getY());
-		assertEquals(4.0, result.getZ());
-		assertEquals(5.0, result.getW());
+		assertEquals(1.0, original.getX());
+		assertEquals(2.0, original.getY());
+		assertEquals(3.0, original.getZ());
+		assertEquals(4.0, original.getW());
+		assertEquals(3.0, newInstance.getX());
+		assertEquals(4.0, newInstance.getY());
+		assertEquals(5.0, newInstance.getZ());
+		assertEquals(6.0, newInstance.getW());
+	}
+	
+	/**
+	 * This test ensures, that the default implementation of the function {@link Tup4d#getNewInstance(double)} calls
+	 * the function {@link Tup4d#getNewInstance(double, double, double, double)} with the correct components.
+	 */
+	@Test
+	void getNewInstance_ValueTest()
+	{
+		Tup4d newInstance = mock(Tup4d.class);
+		Tup4d t = mock(Tup4d.class);
+		
+		when(t.getNewInstance(1.0)).thenCallRealMethod();
+
+		when(t.getNewInstance(1.0, 1.0, 1.0, 1.0)).thenReturn(newInstance);
+		
+		assertSame(newInstance, t.getNewInstance(1.0));
+		
+		verify(t).getNewInstance(1.0);
+		
+		verify(t).getNewInstance(1.0, 1.0, 1.0, 1.0);
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4d#getNewInstance(Tup4dR)}
+	 * returns a new instance of {@link Tup4d} with the given values.
+	 */
+	@Test
+	void getNewInstance_Tuple2Test()
+	{
+		Tup4dR original = mock(Tup4dR.class);
+		Tup4d newInstance = mock(Tup4d.class);
+		Tup4d t = mock(Tup4d.class);
+		
+		when(t.getNewInstance(original)).thenCallRealMethod();
+		
+		when(original.getX()).thenReturn(1.0);
+		when(original.getY()).thenReturn(2.0);
+		when(original.getZ()).thenReturn(3.0);
+		when(original.getW()).thenReturn(4.0);
+		when(t.getNewInstance(1.0, 2.0, 3.0, 4.0)).thenReturn(newInstance);
+		
+		assertSame(newInstance, t.getNewInstance(original));
+		
+		verify(t).getNewInstance(original);
+		
+		verify(original).getX();
+		verify(original).getY();
+		verify(original).getZ();
+		verify(original).getW();
+		verify(t).getNewInstance(1.0, 2.0, 3.0, 4.0);
+		
+		verifyNoMoreInteractions(t, original);
+	}
+	
+	/**
+	 * This test ensures, that the default implementation of the function {@link Tup4d#getNewInstance(TupdR)} calls
+	 * the function {@link Tup4d#getNewInstance(double, double, double, double)} with the correct components.
+	 */
+	@Test
+	void getNewInstance_TupleTest()
+	{
+		TupdR original = mock(TupdR.class);
+		Tup4d newInstance = mock(Tup4d.class);
+		Tup4d t = mock(Tup4d.class);
+		
+		when(t.getNewInstance(original)).thenCallRealMethod();
+		
+		when(original.getArray()).thenReturn(new double[] {1.0, 2.0, 3.0, 4.0});
+		when(t.getNewInstance(1.0, 2.0, 3.0, 4.0)).thenReturn(newInstance);
+		
+		assertSame(newInstance, t.getNewInstance(original));
+		
+		verify(t).getNewInstance(original);
+		
+		verify(original).getArray();
+		verify(t).getNewInstance(1.0, 2.0, 3.0, 4.0);
+		
+		verifyNoMoreInteractions(t, original);
+	}
+	
+	/**
+	 * This test ensures, that the default implementation of the function {@link Tup4d#getNewInstanceFromArray(double[])} calls
+	 * the function {@link Tup4d#getNewInstance(double, double, double, double)} with the correct components.
+	 */
+	@Test
+	void getNewInstanceFromArrayTest()
+	{
+		Tup4d newInstance = mock(Tup4d.class);
+		Tup4d t = mock(Tup4d.class);
+		
+		when(t.getNewInstanceFromArray(new double[] {1.0, 2.0, 3.0, 4.0})).thenCallRealMethod();
+
+		when(t.getNewInstance(1.0, 2.0, 3.0, 4.0)).thenReturn(newInstance);
+		
+		assertSame(newInstance, t.getNewInstanceFromArray(new double[] {1.0, 2.0, 3.0, 4.0}));
+		
+		verify(t).getNewInstanceFromArray(new double[] {1.0, 2.0, 3.0, 4.0});
+		
+		verify(t).getNewInstance(1.0, 2.0, 3.0, 4.0);
+		
+		verifyNoMoreInteractions(t);
 	}
 }

@@ -1,6 +1,7 @@
 package org.barghos.core.test.tuple4.formattableToString;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.Test;
 
@@ -26,22 +27,41 @@ class Tup4bigi_FormattableToStringTest
 	@Test
 	void getValueMappingTest()
 	{
-		Tup4bigi t = new Tup4bigi(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4));
+		Tup4bigi t = mock(Tup4bigi.class);
 		
-		Map<String,Object> values = t.getValueMapping();
+		when(t.getValueMapping()).thenCallRealMethod();
 		
-		assertNotNull(values);
+		when(t.getX()).thenReturn(BigInteger.valueOf(1));
+		when(t.getY()).thenReturn(BigInteger.valueOf(2));
+		when(t.getZ()).thenReturn(BigInteger.valueOf(3));
+		when(t.getW()).thenReturn(BigInteger.valueOf(4));
+
+		List<Map.Entry<String,Object>> l = new ArrayList<>(t.getValueMapping().entrySet());
+		Map.Entry<String,Object> entry = null;
 		
-		List<Map.Entry<String,Object>> l = new ArrayList<>(values.entrySet());
-			
-		assertEquals(4, l.size());
-		assertEquals("x", l.get(0).getKey());
-		assertEquals(BigInteger.valueOf(1), l.get(0).getValue());
-		assertEquals("y", l.get(1).getKey());
-		assertEquals(BigInteger.valueOf(2), l.get(1).getValue());
-		assertEquals("z", l.get(2).getKey());
-		assertEquals(BigInteger.valueOf(3), l.get(2).getValue());
-		assertEquals("w", l.get(3).getKey());
-		assertEquals(BigInteger.valueOf(4), l.get(3).getValue());
+		entry = l.get(0);
+		assertEquals("x", entry.getKey());
+		assertEquals(BigInteger.valueOf(1), entry.getValue());
+		
+		entry = l.get(1);
+		assertEquals("y", entry.getKey());
+		assertEquals(BigInteger.valueOf(2), entry.getValue());
+		
+		entry = l.get(2);
+		assertEquals("z", entry.getKey());
+		assertEquals(BigInteger.valueOf(3), entry.getValue());
+		
+		entry = l.get(3);
+		assertEquals("w", entry.getKey());
+		assertEquals(BigInteger.valueOf(4), entry.getValue());
+		
+		verify(t).getValueMapping();
+		
+		verify(t).getX();
+		verify(t).getY();
+		verify(t).getZ();
+		verify(t).getW();
+		
+		verifyNoMoreInteractions(t);
 	}
 }
