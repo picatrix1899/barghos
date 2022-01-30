@@ -181,7 +181,7 @@ class ImmutableTup4oTest
 	{
 		ImmutableTup4o<Integer,Double,String,Character> t = new ImmutableTup4o<>(1, 1.0, "a", 'a');
 
-		assertEquals(-1106216831, t.hashCode());
+		assertEquals(67016704, t.hashCode());
 	}
 	
 	/**
@@ -328,7 +328,7 @@ class ImmutableTup4oTest
 	{
 		ImmutableTup4o<Integer,Double,String,Character> t = new ImmutableTup4o<>(1, 1.0, "a", 'a');
 		
-		assertEquals("immutableTup3o(x=1, y=1.0, z=a, w=a)", t.toString());
+		assertEquals("immutableTup4o(x=1, y=1.0, z=a, w=a)", t.toString());
 	}
 	
 	/**

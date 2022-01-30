@@ -380,7 +380,7 @@ class Tup4bTest
 	{
 		Tup4b t = new Tup4b((byte)1, (byte)2, (byte)3, (byte)4);
 
-		assertEquals(30817, t.hashCode());
+		assertEquals(955331, t.hashCode());
 	}
 	
 	/**
@@ -653,7 +653,7 @@ class Tup4bTest
 	{
 		Tup4b t = new Tup4b((byte)1, (byte)2, (byte)3, (byte)4);
 		
-		assertEquals("tup3b(x=1, y=2, z=3, w=4)", t.toString());
+		assertEquals("tup4b(x=1, y=2, z=3, w=4)", t.toString());
 	}
 	
 	/**

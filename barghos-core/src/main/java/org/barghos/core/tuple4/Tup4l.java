@@ -211,7 +211,7 @@ public class Tup4l implements Tup4lRW, Serializable, FormattableToString
 	@Override
 	public Tup4l set(long x, long y, long z, long w)
 	{
-		return setX(x).setY(y).setZ(z);
+		return setX(x).setY(y).setZ(z).setW(w);
 	}
 	
 	@Override

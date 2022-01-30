@@ -301,7 +301,7 @@ class Tup4oTest
 	{
 		Tup4o<Integer,Double,String,Character> t = new Tup4o<>(1, 1.0, "a", 'a');
 
-		assertEquals(-1106216831, t.hashCode());
+		assertEquals(67016704, t.hashCode());
 	}
 	
 	/**
@@ -463,7 +463,7 @@ class Tup4oTest
 	{
 		Tup4o<Integer,Double,String,Character> t = new Tup4o<>(1, 1.0, "a", 'a');
 		
-		assertEquals("tup3o(x=1, y=1.0, z=a, w=a)", t.toString());
+		assertEquals("tup4o(x=1, y=1.0, z=a, w=a)", t.toString());
 	}
 	
 	/**

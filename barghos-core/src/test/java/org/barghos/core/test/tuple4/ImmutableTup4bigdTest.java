@@ -242,7 +242,7 @@ class ImmutableTup4bigdTest
 	{
 		ImmutableTup4bigd t = new ImmutableTup4bigd(BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0), BigDecimal.valueOf(4.0));
 
-		assertEquals(348844, t.hashCode());
+		assertEquals(10815405, t.hashCode());
 	}
 	
 	/**
@@ -401,7 +401,7 @@ class ImmutableTup4bigdTest
 		
 		TupbigdR t2 = mock(TupbigdR.class);
 		
-		when(t2.getDimensions()).thenReturn(3);
+		when(t2.getDimensions()).thenReturn(4);
 		when(t2.getByIndex(0)).thenReturn(BigDecimal.valueOf(1.0));
 		when(t2.getByIndex(1)).thenReturn(BigDecimal.valueOf(2.0));
 		when(t2.getByIndex(2)).thenReturn(BigDecimal.valueOf(3.0));

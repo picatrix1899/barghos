@@ -94,7 +94,7 @@ class Tup4dTest
 		when(original.getX()).thenReturn(1.0);
 		when(original.getY()).thenReturn(2.0);
 		when(original.getZ()).thenReturn(3.0);
-		when(original.getZ()).thenReturn(4.0);
+		when(original.getW()).thenReturn(4.0);
 		
 		Tup4d t = new Tup4d(original);
 		
@@ -380,7 +380,7 @@ class Tup4dTest
 	{
 		Tup4d t = new Tup4d(1.0, 2.0, 3.0, 4.0);
 
-		assertEquals(66614367, t.hashCode());
+		assertEquals(-1155131519, t.hashCode());
 	}
 	
 	/**
@@ -653,7 +653,7 @@ class Tup4dTest
 	{
 		Tup4d t = new Tup4d(1.1, 2.2, 3.3, 4.4);
 		
-		assertEquals("tup3d(x=1.1, y=2.2, z=3.3, w=4.4)", t.toString());
+		assertEquals("tup4d(x=1.1, y=2.2, z=3.3, w=4.4)", t.toString());
 	}
 	
 	/**

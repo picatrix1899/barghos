@@ -94,7 +94,7 @@ class Tup4fTest
 		when(original.getX()).thenReturn(1.0f);
 		when(original.getY()).thenReturn(2.0f);
 		when(original.getZ()).thenReturn(3.0f);
-		when(original.getZ()).thenReturn(4.0f);
+		when(original.getW()).thenReturn(4.0f);
 		
 		Tup4f t = new Tup4f(original);
 		
@@ -380,7 +380,7 @@ class Tup4fTest
 	{
 		Tup4f t = new Tup4f(1.0f, 2.0f, 3.0f, 4.0f);
 
-		assertEquals(66614367, t.hashCode());
+		assertEquals(-657582207, t.hashCode());
 	}
 	
 	/**
@@ -653,7 +653,7 @@ class Tup4fTest
 	{
 		Tup4f t = new Tup4f(1.1f, 2.2f, 3.3f, 4.4f);
 		
-		assertEquals("tup3f(x=1.1, y=2.2, z=3.3, w=4.4)", t.toString());
+		assertEquals("tup4f(x=1.1, y=2.2, z=3.3, w=4.4)", t.toString());
 	}
 	
 	/**

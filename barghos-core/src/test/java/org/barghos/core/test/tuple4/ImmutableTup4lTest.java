@@ -240,7 +240,7 @@ class ImmutableTup4lTest
 	{
 		ImmutableTup4l t = new ImmutableTup4l(1l, 2l, 3l, 4l);
 
-		assertEquals(66614367, t.hashCode());
+		assertEquals(955331, t.hashCode());
 	}
 	
 	/**
@@ -493,7 +493,7 @@ class ImmutableTup4lTest
 	{
 		ImmutableTup4l t = new ImmutableTup4l(1l, 2l, 3l, 4l);
 		
-		assertEquals("immutableTup4d(x=1, y=2, z=3, w=4)", t.toString());
+		assertEquals("immutableTup4l(x=1, y=2, z=3, w=4)", t.toString());
 	}
 	
 	/**

@@ -274,13 +274,13 @@ class Tup4bigiTest
 
 		when(t.set(BigInteger.valueOf(1))).thenCallRealMethod();
 
-		when(t.set(BigInteger.valueOf(1), BigInteger.valueOf(1), BigInteger.valueOf(1), BigInteger.valueOf(4))).thenReturn(t);
+		when(t.set(BigInteger.valueOf(1), BigInteger.valueOf(1), BigInteger.valueOf(1), BigInteger.valueOf(1))).thenReturn(t);
 		
 		assertSame(t, t.set(BigInteger.valueOf(1)));
 		
 		verify(t).set(BigInteger.valueOf(1));
 
-		verify(t).set(BigInteger.valueOf(1), BigInteger.valueOf(1), BigInteger.valueOf(1), BigInteger.valueOf(4));
+		verify(t).set(BigInteger.valueOf(1), BigInteger.valueOf(1), BigInteger.valueOf(1), BigInteger.valueOf(1));
 		
 		verifyNoMoreInteractions(t);
 	}
@@ -310,7 +310,7 @@ class Tup4bigiTest
 		verify(t).setX(BigInteger.valueOf(1));
 		verify(t).setY(BigInteger.valueOf(2));
 		verify(t).setZ(BigInteger.valueOf(3));
-		verify(t).setZ(BigInteger.valueOf(4));
+		verify(t).setW(BigInteger.valueOf(4));
 		
 		verifyNoMoreInteractions(t);
 	}
@@ -383,7 +383,7 @@ class Tup4bigiTest
 	{
 		Tup4bigi t = new Tup4bigi(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4));
 
-		assertEquals(30817, t.hashCode());
+		assertEquals(955331, t.hashCode());
 	}
 	
 	/**
@@ -667,7 +667,7 @@ class Tup4bigiTest
 	void getNewInstance_ComponentsTest()
 	{
 		Tup4bigi original = new Tup4bigi(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4));
-		Tup4bigi newInstance = original.getNewInstance(BigInteger.valueOf(3), BigInteger.valueOf(4), BigInteger.valueOf(5), BigInteger.valueOf(5));
+		Tup4bigi newInstance = original.getNewInstance(BigInteger.valueOf(3), BigInteger.valueOf(4), BigInteger.valueOf(5), BigInteger.valueOf(6));
 		
 		assertEquals(BigInteger.valueOf(1), original.getX());
 		assertEquals(BigInteger.valueOf(2), original.getY());
