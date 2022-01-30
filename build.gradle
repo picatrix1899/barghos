@@ -7,8 +7,6 @@ subprojects {
   apply plugin: 'java'
   apply plugin: 'maven-publish'
   
-  group = 'org.barghos'
-  
 	repositories {
 	  mavenCentral()
 	}
