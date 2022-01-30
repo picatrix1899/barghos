@@ -59,7 +59,7 @@ public class ImmutableTup2o<X,Y> implements Tup2oR<X,Y>, FormattableToString
 	protected transient boolean isHashCodeGenerated;
 	
 	/**
-	 * Generates a new readonly {@link PTup2o} from an existing instance of {@link Tup2oR} and adopts the values.
+	 * Generates a new readonly {@link ImmutableTup2o} from an existing instance of {@link Tup2oR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup2oR} to adopt the values from.
 	 * 
@@ -71,7 +71,7 @@ public class ImmutableTup2o<X,Y> implements Tup2oR<X,Y>, FormattableToString
 	}
 	
 	/**
-	 * Generates a new readonly {@link PTup2o} with the values set to the corresponding parameters.
+	 * Generates a new readonly {@link ImmutableTup2o} with the values set to the corresponding parameters.
 	 * 
 	 * @param x The x value.
 	 * @param y The y value.

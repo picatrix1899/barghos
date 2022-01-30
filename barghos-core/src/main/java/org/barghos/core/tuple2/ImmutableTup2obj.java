@@ -114,8 +114,6 @@ public class ImmutableTup2obj implements Tup2objR, FormattableToString
 	 * @param x The x value.
 	 * @param y The y value.
 	 * 
-	 * @return A new readonly {@link ImmutableTup2obj}.
-	 * 
 	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2obj(Object x, Object y)
