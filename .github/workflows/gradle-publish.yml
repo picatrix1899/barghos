@@ -24,15 +24,15 @@ jobs:
       uses: gradle/gradle-build-action@4137be6a8bf7d7133955359dbd952c0ca73b1021
       with:
         arguments: build
-        gradle-version: 6.5
+        gradle-version: 7.3.3
 
     # The USERNAME and TOKEN need to correspond to the credentials environment variables used in
     # the publishing section of your build.gradle
     - name: Publish to GitHub Packages
       uses: gradle/gradle-build-action@4137be6a8bf7d7133955359dbd952c0ca73b1021
       with:
-        arguments: -Pversion=1.0.0.0-SNAPSHOT-11 publish
-        gradle-version: 6.5
+        arguments: -Pversion=1.0.0.0-SNAPSHOT-12 publish
+        gradle-version: 7.3.3
       env:
         USERNAME: ${{ github.actor }}
         TOKEN: ${{ secrets.GITHUB_TOKEN }}
