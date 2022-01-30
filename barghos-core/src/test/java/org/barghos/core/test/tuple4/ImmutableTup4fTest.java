@@ -97,7 +97,7 @@ class ImmutableTup4fTest
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void ctor_Tuple3Test()
+	void ctor_Tuple4Test()
 	{
 		Tup4fR original = mock(Tup4fR.class);
 		
@@ -111,7 +111,7 @@ class ImmutableTup4fTest
 		assertEquals(1.0f, t.getX());
 		assertEquals(2.0f, t.getY());
 		assertEquals(3.0f, t.getZ());
-		assertEquals(3.0f, t.getW());
+		assertEquals(4.0f, t.getW());
 		
 		verify(original).getX();
 		verify(original).getY();
@@ -240,7 +240,7 @@ class ImmutableTup4fTest
 	{
 		ImmutableTup4f t = new ImmutableTup4f(1.0f, 2.0f, 3.0f, 4.0f);
 
-		assertEquals(1606448223, t.hashCode());
+		assertEquals(-657582207, t.hashCode());
 	}
 	
 	/**

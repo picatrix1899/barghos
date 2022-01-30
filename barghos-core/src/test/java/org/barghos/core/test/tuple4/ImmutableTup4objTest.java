@@ -240,7 +240,7 @@ class ImmutableTup4objTest
 	{
 		ImmutableTup4obj t = new ImmutableTup4obj(1, 1.0, "a", 'a');
 
-		assertEquals(-1106216831, t.hashCode());
+		assertEquals(67016704, t.hashCode());
 	}
 	
 	/**
@@ -384,7 +384,7 @@ class ImmutableTup4objTest
 		
 		TupobjR t2 = mock(TupobjR.class);
 		
-		when(t2.getDimensions()).thenReturn(3);
+		when(t2.getDimensions()).thenReturn(4);
 		when(t2.getByIndex(0)).thenReturn(1);
 		when(t2.getByIndex(1)).thenReturn(1.0);
 		when(t2.getByIndex(2)).thenReturn("a");
@@ -499,7 +499,7 @@ class ImmutableTup4objTest
 	{
 		ImmutableTup4obj t = new ImmutableTup4obj(1, 1.0, "a", 'a');
 		
-		assertEquals("immutableTup3obj(x=1, y=1.0, z=a, w=a)", t.toString());
+		assertEquals("immutableTup4obj(x=1, y=1.0, z=a, w=a)", t.toString());
 	}
 	
 	/**

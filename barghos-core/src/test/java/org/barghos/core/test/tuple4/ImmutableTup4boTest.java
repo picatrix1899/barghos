@@ -238,7 +238,7 @@ class ImmutableTup4boTest
 	{
 		ImmutableTup4bo t = new ImmutableTup4bo(true, false, true, false);
 
-		assertEquals(30753, t.hashCode());
+		assertEquals(953343, t.hashCode());
 	}
 	
 	/**
@@ -573,7 +573,7 @@ class ImmutableTup4boTest
 		when(original.getX()).thenReturn(true);
 		when(original.getY()).thenReturn(false);
 		when(original.getZ()).thenReturn(true);
-		when(original.getZ()).thenReturn(false);
+		when(original.getW()).thenReturn(false);
 		when(t.getNewInstance(true, false, true, false)).thenReturn(newInstance);
 		
 		assertSame(newInstance, t.getNewInstance(original));

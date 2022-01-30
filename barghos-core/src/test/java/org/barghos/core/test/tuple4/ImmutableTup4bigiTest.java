@@ -78,7 +78,7 @@ class ImmutableTup4bigiTest
 	{
 		TupbigiR original = mock(TupbigiR.class);
 		
-		when(original.getArray()).thenReturn(new BigInteger[] {BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3)});
+		when(original.getArray()).thenReturn(new BigInteger[] {BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4)});
 		
 		ImmutableTup4bigi t = new ImmutableTup4bigi(original);
 		
@@ -231,7 +231,7 @@ class ImmutableTup4bigiTest
 	{
 		ImmutableTup4bigi t = new ImmutableTup4bigi(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4));
 		
-		assertEquals(BigInteger.valueOf(3), t.getW());
+		assertEquals(BigInteger.valueOf(4), t.getW());
 		assertEquals(t.w, t.getW());
 	}
 	
@@ -243,7 +243,7 @@ class ImmutableTup4bigiTest
 	{
 		ImmutableTup4bigi t = new ImmutableTup4bigi(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4));
 
-		assertEquals(30817, t.hashCode());
+		assertEquals(955331, t.hashCode());
 	}
 	
 	/**

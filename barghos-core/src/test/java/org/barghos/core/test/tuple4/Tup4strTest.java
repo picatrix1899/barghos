@@ -379,7 +379,7 @@ class Tup4strTest
 	{
 		Tup4str t = new Tup4str("a", "b", "c", "d");
 
-		assertEquals(126145, t.hashCode());
+		assertEquals(3910595, t.hashCode());
 	}
 	
 	/**
@@ -538,7 +538,7 @@ class Tup4strTest
 		
 		TupstrR t2 = mock(TupstrR.class);
 		
-		when(t2.getDimensions()).thenReturn(3);
+		when(t2.getDimensions()).thenReturn(4);
 		when(t2.getByIndex(0)).thenReturn("a");
 		when(t2.getByIndex(1)).thenReturn("b");
 		when(t2.getByIndex(2)).thenReturn("c");

@@ -300,7 +300,7 @@ class Tup4bigdTest
 		when(t.setX(BigDecimal.valueOf(1.1))).thenReturn(t);
 		when(t.setY(BigDecimal.valueOf(2.2))).thenReturn(t);
 		when(t.setZ(BigDecimal.valueOf(3.3))).thenReturn(t);
-		when(t.setZ(BigDecimal.valueOf(4.4))).thenReturn(t);
+		when(t.setW(BigDecimal.valueOf(4.4))).thenReturn(t);
 		
 		assertSame(t, t.set(BigDecimal.valueOf(1.1), BigDecimal.valueOf(2.2), BigDecimal.valueOf(3.3), BigDecimal.valueOf(4.4)));
 
@@ -309,7 +309,7 @@ class Tup4bigdTest
 		verify(t).setX(BigDecimal.valueOf(1.1));
 		verify(t).setY(BigDecimal.valueOf(2.2));
 		verify(t).setZ(BigDecimal.valueOf(3.3));
-		verify(t).setZ(BigDecimal.valueOf(4.4));
+		verify(t).setW(BigDecimal.valueOf(4.4));
 		
 		verifyNoMoreInteractions(t);
 	}
@@ -382,7 +382,7 @@ class Tup4bigdTest
 	{
 		Tup4bigd t = new Tup4bigd(BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0), BigDecimal.valueOf(4.0));
 
-		assertEquals(348844, t.hashCode());
+		assertEquals(10815405, t.hashCode());
 	}
 	
 	/**
@@ -541,7 +541,7 @@ class Tup4bigdTest
 		
 		TupbigdR t2 = mock(TupbigdR.class);
 		
-		when(t2.getDimensions()).thenReturn(3);
+		when(t2.getDimensions()).thenReturn(4);
 		when(t2.getByIndex(0)).thenReturn(BigDecimal.valueOf(1.0));
 		when(t2.getByIndex(1)).thenReturn(BigDecimal.valueOf(2.0));
 		when(t2.getByIndex(2)).thenReturn(BigDecimal.valueOf(3.0));

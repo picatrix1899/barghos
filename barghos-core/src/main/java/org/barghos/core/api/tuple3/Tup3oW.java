@@ -85,6 +85,8 @@ public interface Tup3oW<X,Y,Z>
 	 * @param y The new y value.
 	 * @param z The new z value.
 	 * 
+	 * @return The current tuple.
+	 * 
 	 * @since 1.0.0.0
 	 */
 	default Tup3oW<X,Y,Z> set(X x, Y y, Z z)

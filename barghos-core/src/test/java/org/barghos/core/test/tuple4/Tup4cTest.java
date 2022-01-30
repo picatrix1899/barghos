@@ -159,7 +159,7 @@ class Tup4cTest
 		assertEquals('a', t.getX());
 		assertEquals('b', t.getY());
 		assertEquals('c', t.getZ());
-		assertEquals('d', t.getZ());
+		assertEquals('d', t.getW());
 	}
 	
 	/**
@@ -369,7 +369,7 @@ class Tup4cTest
 		Tup4c t = new Tup4c('a', 'b', 'c', 'd');
 		
 		assertEquals('d', t.getW());
-		assertEquals(t.z, t.getW());
+		assertEquals(t.w, t.getW());
 	}
 	
 	/**
@@ -380,7 +380,7 @@ class Tup4cTest
 	{
 		Tup4c t = new Tup4c('a', 'b', 'c', 'd');
 
-		assertEquals(126145, t.hashCode());
+		assertEquals(3910595, t.hashCode());
 	}
 	
 	/**
@@ -653,7 +653,7 @@ class Tup4cTest
 	{
 		Tup4c t = new Tup4c('a', 'b', 'c', 'd');
 		
-		assertEquals("tup3c(x=a, y=b, z=c, w=d)", t.toString());
+		assertEquals("tup4c(x=a, y=b, z=c, w=d)", t.toString());
 	}
 	
 	/**
@@ -715,7 +715,7 @@ class Tup4cTest
 		when(original.getX()).thenReturn('a');
 		when(original.getY()).thenReturn('b');
 		when(original.getZ()).thenReturn('c');
-		when(original.getZ()).thenReturn('c');
+		when(original.getW()).thenReturn('d');
 		when(t.getNewInstance('a', 'b', 'c', 'd')).thenReturn(newInstance);
 		
 		assertSame(newInstance, t.getNewInstance(original));

@@ -31,5 +31,6 @@ package org.barghos.core.api.event;
  */
 public interface Event
 {
+	/**{@inheritDoc}*/
 	Event clone();
 }
