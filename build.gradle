@@ -1,11 +1,13 @@
 plugins {
   id 'java'
   id 'maven-publish'
+  id 'eclipse'
 }
 
 subprojects {
   apply plugin: 'java'
   apply plugin: 'maven-publish'
+  apply plugin: 'eclipse'
   
 	repositories {
 	  mavenCentral()

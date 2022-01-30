@@ -1,0 +1,22 @@
+plugins {
+  id 'java-library'
+}
+
+dependencies {
+  implementation project(':barghos-core')
+}
+
+publishing {
+  publications {
+    mavenJava(MavenPublication) {
+      artifactId = 'barghos-math'
+		
+      from components.java
+		
+      pom {
+        name = 'Project Barghos Math Library'
+        url = 'https://github.com/picatrix1899/barghos/'
+      }
+    }
+  }
+}
