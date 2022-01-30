@@ -298,7 +298,7 @@ class Tup4objTest
 		when(t.setX(1)).thenReturn(t);
 		when(t.setY(1.0)).thenReturn(t);
 		when(t.setZ("a")).thenReturn(t);
-		when(t.setZ('a')).thenReturn(t);
+		when(t.setW('a')).thenReturn(t);
 		
 		assertSame(t, t.set(1, 1.0, "a", 'a'));
 
@@ -380,7 +380,7 @@ class Tup4objTest
 	{
 		Tup4obj t = new Tup4obj(1, 1.0, "a", 'a');
 
-		assertEquals(-1106216831, t.hashCode());
+		assertEquals(67016704, t.hashCode());
 	}
 	
 	/**
@@ -539,7 +539,7 @@ class Tup4objTest
 		
 		TupobjR t2 = mock(TupobjR.class);
 		
-		when(t2.getDimensions()).thenReturn(3);
+		when(t2.getDimensions()).thenReturn(4);
 		when(t2.getByIndex(0)).thenReturn(1);
 		when(t2.getByIndex(1)).thenReturn(1.0);
 		when(t2.getByIndex(2)).thenReturn("a");

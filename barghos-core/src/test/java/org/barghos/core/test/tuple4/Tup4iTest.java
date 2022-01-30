@@ -87,14 +87,14 @@ class Tup4iTest
 	 * @since 1.0.0.0
 	 */
 	@Test
-	void ctor_Tuple2Test()
+	void ctor_Tuple4Test()
 	{
 		Tup4iR original = mock(Tup4iR.class);
 		
 		when(original.getX()).thenReturn(1);
 		when(original.getY()).thenReturn(2);
 		when(original.getZ()).thenReturn(3);
-		when(original.getZ()).thenReturn(4);
+		when(original.getW()).thenReturn(4);
 		
 		Tup4i t = new Tup4i(original);
 		
@@ -380,7 +380,7 @@ class Tup4iTest
 	{
 		Tup4i t = new Tup4i(1, 2, 3, 4);
 
-		assertEquals(66614367, t.hashCode());
+		assertEquals(955331, t.hashCode());
 	}
 	
 	/**
@@ -653,7 +653,7 @@ class Tup4iTest
 	{
 		Tup4i t = new Tup4i(1, 2, 3, 4);
 		
-		assertEquals("tup3i(x=1, y=2, z=3, w=4)", t.toString());
+		assertEquals("tup4i(x=1, y=2, z=3, w=4)", t.toString());
 	}
 	
 	/**

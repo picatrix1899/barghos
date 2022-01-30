@@ -61,7 +61,7 @@ public class ImmutableTup2bigd implements Tup2bigdR, FormattableToString
 	protected transient boolean isHashCodeGenerated;
 	
 	/**
-	 * Generates a new readonly {@link Immutable2bigd} from an existing instance of {@link TupbigdR} and adopts the values.
+	 * Generates a new readonly {@link ImmutableTup2bigd} from an existing instance of {@link TupbigdR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupbigdR} to adopt the values from.
 	 * 
@@ -73,7 +73,7 @@ public class ImmutableTup2bigd implements Tup2bigdR, FormattableToString
 	}
 	
 	/**
-	 * Generates a new readonly {@link Immutable2bigd} from an existing instance of {@link Tup2bigdR} and adopts the values.
+	 * Generates a new readonly {@link ImmutableTup2bigd} from an existing instance of {@link Tup2bigdR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup2bigdR} to adopt the values from.
 	 * 
@@ -85,7 +85,7 @@ public class ImmutableTup2bigd implements Tup2bigdR, FormattableToString
 	}
 	
 	/**
-	 * Generates a new readonly {@link Immutable2bigd} with all values set to a single value.
+	 * Generates a new readonly {@link ImmutableTup2bigd} with all values set to a single value.
 	 * 
 	 * @param value The value used for all values of the tuple.
 	 * 
@@ -97,7 +97,7 @@ public class ImmutableTup2bigd implements Tup2bigdR, FormattableToString
 	}
 	
 	/**
-	 * Generates a new readonly {@link Immutable2bigd} with the values set to the corresponding parameters.
+	 * Generates a new readonly {@link ImmutableTup2bigd} with the values set to the corresponding parameters.
 	 * 
 	 * @param v The x and y values as an array.
 	 * 
@@ -110,7 +110,7 @@ public class ImmutableTup2bigd implements Tup2bigdR, FormattableToString
 	}
 	
 	/**
-	 * Generates a new readonly {@link Immutable2bigd} with the values set to the corresponding parameters.
+	 * Generates a new readonly {@link ImmutableTup2bigd} with the values set to the corresponding parameters.
 	 * 
 	 * @param x The x value.
 	 * @param y The y value.

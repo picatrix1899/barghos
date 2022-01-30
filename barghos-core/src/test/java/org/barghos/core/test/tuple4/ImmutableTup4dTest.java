@@ -240,7 +240,7 @@ class ImmutableTup4dTest
 	{
 		ImmutableTup4d t = new ImmutableTup4d(1.0, 2.0, 3.0, 4.0);
 
-		assertEquals(66614367, t.hashCode());
+		assertEquals(-1155131519, t.hashCode());
 	}
 	
 	/**

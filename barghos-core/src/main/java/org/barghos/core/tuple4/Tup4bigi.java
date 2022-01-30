@@ -243,7 +243,7 @@ public class Tup4bigi implements Tup4bigiRW, Serializable, FormattableToString
 			if(getX().compareTo(other.getX()) != 0) return false;
 			if(getY().compareTo(other.getY()) != 0) return false;
 			if(getZ().compareTo(other.getZ()) != 0) return false;
-			if(getZ().compareTo(other.getW()) != 0) return false;
+			if(getW().compareTo(other.getW()) != 0) return false;
 			
 			return true;
 		}

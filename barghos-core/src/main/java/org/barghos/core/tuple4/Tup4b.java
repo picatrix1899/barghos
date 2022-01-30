@@ -119,6 +119,7 @@ public class Tup4b implements Tup4bRW, Serializable, FormattableToString
 	 * @param x The initial x value of the tuple.
 	 * @param y The initial y value of the tuple.
 	 * @param z The initial z value of the tuple.
+	 * @param w The initial w value of the tuple.
 	 * 
 	 * @since 1.0.0.0
 	 */

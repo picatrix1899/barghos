@@ -380,7 +380,7 @@ class Tup4boTest
 	{
 		Tup4bo t = new Tup4bo(false, true, false, true);
 
-		assertEquals(29822, t.hashCode());
+		assertEquals(924483, t.hashCode());
 	}
 	
 	/**
@@ -653,7 +653,7 @@ class Tup4boTest
 	{
 		Tup4bo t = new Tup4bo(false, true, false, true);
 		
-		assertEquals("tup3bo(x=false, y=true, z=false, w=true)", t.toString());
+		assertEquals("tup4bo(x=false, y=true, z=false, w=true)", t.toString());
 	}
 	
 	/**

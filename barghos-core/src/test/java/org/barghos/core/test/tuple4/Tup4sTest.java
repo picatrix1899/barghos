@@ -94,7 +94,7 @@ class Tup4sTest
 		when(original.getX()).thenReturn((short)1);
 		when(original.getY()).thenReturn((short)2);
 		when(original.getZ()).thenReturn((short)3);
-		when(original.getZ()).thenReturn((short)4);
+		when(original.getW()).thenReturn((short)4);
 		
 		Tup4s t = new Tup4s(original);
 		
@@ -380,7 +380,7 @@ class Tup4sTest
 	{
 		Tup4s t = new Tup4s((short)1, (short)2, (short)3, (short)4);
 
-		assertEquals(66614367, t.hashCode());
+		assertEquals(955331, t.hashCode());
 	}
 	
 	/**
@@ -653,7 +653,7 @@ class Tup4sTest
 	{
 		Tup4s t = new Tup4s((short)1, (short)2, (short)3, (short)4);
 		
-		assertEquals("tup3s(x=1, y=2, z=3, w=4)", t.toString());
+		assertEquals("tup4s(x=1, y=2, z=3, w=4)", t.toString());
 	}
 	
 	/**

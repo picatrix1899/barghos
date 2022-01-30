@@ -26,7 +26,6 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
-import org.barghos.core.api.tuple3.Tup3oR;
 import org.barghos.core.api.tuple4.Tup4oR;
 
 /**
@@ -137,7 +136,7 @@ public class ImmutableTup4o<X,Y,Z,W> implements Tup4oR<X,Y,Z,W>, FormattableToSt
 		if(this == obj) return true;
 		if(obj == null) return false;
 		
-		if(obj instanceof Tup3oR)
+		if(obj instanceof Tup4oR)
 		{
 			@SuppressWarnings("unchecked")
 			Tup4oR<X,Y,Z,W> other = (Tup4oR<X,Y,Z,W>) obj;

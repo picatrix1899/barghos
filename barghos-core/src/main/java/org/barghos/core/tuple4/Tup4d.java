@@ -211,7 +211,7 @@ public class Tup4d implements Tup4dRW, Serializable, FormattableToString
 	@Override
 	public Tup4d set(double x, double y, double z, double w)
 	{
-		return setX(x).setY(y).setZ(z);
+		return setX(x).setY(y).setZ(z).setW(w);
 	}
 	
 	@Override

@@ -240,7 +240,7 @@ class ImmutableTup4bTest
 	{
 		ImmutableTup4b t = new ImmutableTup4b((byte)1, (byte)2, (byte)3, (byte)4);
 
-		assertEquals(30817, t.hashCode());
+		assertEquals(955331, t.hashCode());
 	}
 	
 	/**
