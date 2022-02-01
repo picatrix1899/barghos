@@ -142,6 +142,12 @@ public class Vec2f implements Vec2fRW
 	}
 	
 	/** {@inheritDoc} */
+	public Vec2f clone()
+	{
+		return new Vec2f(this);
+	}
+	
+	/** {@inheritDoc} */
 	@Override
 	public Vec2f set(Tup2fR t)
 	{
