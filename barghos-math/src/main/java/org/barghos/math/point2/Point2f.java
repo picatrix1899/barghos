@@ -228,6 +228,12 @@ public class Point2f implements Point2fRW
 		return "point2f(" + getX() + ", " + getY() + ")";
 	}
 	
+	/** {@inheritDoc} */
+	public Point2f clone()
+	{
+		return new Point2f(this);
+	}
+	
 	/**
 	 * This class is an accessor that provides the functionality of the {@link Vec2fRW} interface
 	 * for an instance of {@link Point2f}.

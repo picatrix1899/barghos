@@ -228,6 +228,12 @@ public class Point2d implements Point2dRW
 		return "point2d(" + getX() + ", " + getY() + ")";
 	}
 	
+	/** {@inheritDoc} */
+	public Point2d clone()
+	{
+		return new Point2d(this);
+	}
+	
 	/**
 	 * This class is an accessor that provides the functionality of the {@link Vec2dRW} interface
 	 * for an instance of {@link Point2d}.
