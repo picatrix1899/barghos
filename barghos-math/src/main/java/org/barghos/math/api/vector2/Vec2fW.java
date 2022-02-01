@@ -136,8 +136,7 @@ public interface Vec2fW extends Tup2fW
 	 * <p>
 	 * Operation:
 	 * v + t
-	 * </p>
-
+	 * 
 	 * @param t The second tuple to add to the current vector.
 	 * 
 	 * @return The current vector.
@@ -154,7 +153,6 @@ public interface Vec2fW extends Tup2fW
 	 * <p>
 	 * Operation:
 	 * v + (value, value)
-	 * </p>
 	 * 
 	 * @param value The value of all the components of the second tuple.
 	 * 
@@ -172,7 +170,6 @@ public interface Vec2fW extends Tup2fW
 	 * <p>
 	 * Operation:
 	 * v + (x, y)
-	 * </p>
 	 * 
 	 * @param x The value of the x component of the second tuple.
 	 * @param y The value of the y component of the second tuple.
@@ -188,7 +185,6 @@ public interface Vec2fW extends Tup2fW
 	 * <p>
 	 * Operation:
 	 * v - t
-	 * </p>
 	 * 
 	 * @param t The second tuple to subtract from the current vector.
 	 * 
@@ -206,7 +202,6 @@ public interface Vec2fW extends Tup2fW
 	 * <p>
 	 * Operation:
 	 * v - (value, value)
-	 * </p>
 	 * 
 	 * @param value The value of all the components of the second tuple.
 	 * 
@@ -224,7 +219,6 @@ public interface Vec2fW extends Tup2fW
 	 * <p>
 	 * Operation:
 	 * v - (x, y)
-	 * </p>
 	 * 
 	 * @param x The value of the x component of the second tuple.
 	 * @param y The value of the y component of the second tuple.
@@ -240,7 +234,6 @@ public interface Vec2fW extends Tup2fW
 	 * <p>
 	 * Operation:
 	 * t - v
-	 * </p>
 	 * 
 	 * @param t The second tuple of which the current vector is subtracted from.
 	 * 
@@ -258,7 +251,6 @@ public interface Vec2fW extends Tup2fW
 	 * <p>
 	 * Operation:
 	 * (value, value) - v 
-	 * </p>
 	 * 
 	 * @param value The value of all the components of the second tuple.
 	 * 
@@ -276,7 +268,6 @@ public interface Vec2fW extends Tup2fW
 	 * <p>
 	 * Operation:
 	 * (x, y) - v 
-	 * </p>
 	 * 
 	 * @param x The value of the x component of the second tuple.
 	 * @param y The value of the y component of the second tuple.
@@ -292,7 +283,6 @@ public interface Vec2fW extends Tup2fW
 	 * <p>
 	 * Operation:
 	 * v * t
-	 * </p>
 	 * 
 	 * @param t The second tuple to multiply the current vector with.
 	 * 
@@ -310,7 +300,6 @@ public interface Vec2fW extends Tup2fW
 	 * <p>
 	 * Operation:
 	 * v * (value, value)
-	 * </p>
 	 * 
 	 * @param value The value of all the components of the second tuple.
 	 * 
@@ -328,7 +317,6 @@ public interface Vec2fW extends Tup2fW
 	 * <p>
 	 * Operation:
 	 * v * (x, y)
-	 * </p>
 	 * 
 	 * @param x The value of the x component of the second tuple.
 	 * @param y The value of the y component of the second tuple.
@@ -344,7 +332,6 @@ public interface Vec2fW extends Tup2fW
 	 * <p>
 	 * Operation:
 	 * v / t
-	 * </p>
 	 * 
 	 * @param t The second tuple to divide the current vector by.
 	 * 
@@ -362,7 +349,6 @@ public interface Vec2fW extends Tup2fW
 	 * <p>
 	 * Operation:
 	 * v / (value, value)
-	 * </p>
 	 * 
 	 * @param value The value of all the components of the second tuple.
 	 * 
@@ -380,7 +366,6 @@ public interface Vec2fW extends Tup2fW
 	 * <p>
 	 * Operation:
 	 * v / (x, y)
-	 * </p>
 	 * 
 	 * @param x The value of the x component of the second tuple.
 	 * @param y The value of the y component of the second tuple.
@@ -396,7 +381,6 @@ public interface Vec2fW extends Tup2fW
 	 * <p>
 	 * Operation:
 	 * t / v
-	 * </p>
 	 * 
 	 * @param t The second tuple to divide by the current vector.
 	 * 
@@ -414,7 +398,6 @@ public interface Vec2fW extends Tup2fW
 	 * <p>
 	 * Operation:
 	 * (value, value) / v 
-	 * </p>
 	 * 
 	 * @param value The value of all the components of the second tuple.
 	 * 
@@ -432,7 +415,6 @@ public interface Vec2fW extends Tup2fW
 	 * <p>
 	 * Operation:
 	 * (x, y) / v
-	 * </p>
 	 * 
 	 * @param x The value of the x component of the second tuple.
 	 * @param y The value of the y component of the second tuple.
@@ -451,7 +433,6 @@ public interface Vec2fW extends Tup2fW
 	 * <p>
 	 * Operation:
 	 * v / |v|
-	 * </p>
 	 * 
 	 * @param res The query parameter to receive the result.
 	 * 
@@ -473,7 +454,6 @@ public interface Vec2fW extends Tup2fW
 	 * <p>
 	 * Operation:
 	 * v / |v|
-	 * </p>
 	 * 
 	 * @param res The query parameter to receive the result.
 	 * 
@@ -494,7 +474,6 @@ public interface Vec2fW extends Tup2fW
 	 * <p>
 	 * Operation:
 	 * v / |v|
-	 * </p>
 	 * 
 	 * @param tolerance The tolerance for defining the margin around zero.
 	 * 
@@ -509,7 +488,6 @@ public interface Vec2fW extends Tup2fW
 	 * <p>
 	 * Operation:
 	 * -v
-	 * </p>
 	 * 
 	 * @return The current vector.
 	 */
@@ -522,7 +500,6 @@ public interface Vec2fW extends Tup2fW
 	 * <p>
 	 * Operation:
 	 * 1 - v
-	 * </p>
 	 * 
 	 * @return The current vector.
 	 */
@@ -536,7 +513,6 @@ public interface Vec2fW extends Tup2fW
 	 * <p>
 	 * Operation:
 	 * t - v
-	 * </p>
 	 * 
 	 * @param t The tuple the inversion is based on.
 	 * 
@@ -552,7 +528,6 @@ public interface Vec2fW extends Tup2fW
 	 * <p>
 	 * Operation:
 	 * value - v
-	 * </p>
 	 * 
 	 * @param value The value the inversion is based on.
 	 * 
@@ -568,7 +543,6 @@ public interface Vec2fW extends Tup2fW
 	 * <p>
 	 * Operation:
 	 * (x, y) - v
-	 * </p>
 	 * 
 	 * @param x The value the inversion of the x component is based on.
 	 * @param y The value the inversion of the y component is based on.

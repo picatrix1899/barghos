@@ -60,7 +60,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * 1 / |v|
-	 * </p>
 	 * 
 	 * @return The reciprocal length of the vector.
 	 * 
@@ -82,7 +81,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * 1 / |v|
-	 * </p>
 	 * 
 	 * @return The reciprocal length of the vector or zero if it is a zero-length vector.
 	 * 
@@ -105,7 +103,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * 1 / |v|
-	 * </p>
 	 * 
 	 * @param tolerance The tolerance for defining the margin around zero.
 	 * 
@@ -125,7 +122,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * |v|
-	 * </p>
 	 * 
 	 * @return The length of the vector.
 	 */
@@ -142,7 +138,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * |v|
-	 * </p>
 	 * 
 	 * @return The length of the vector or zero if it is a zero-length vector.
 	 */
@@ -162,7 +157,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * |v|
-	 * </p>
 	 * 
 	 * @param tolerance The tolerance for defining the margin around zero.
 	 * 
@@ -182,7 +176,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * |v|²
-	 * </p>
 	 * 
 	 * @return The squared length of the vector.
 	 */
@@ -202,7 +195,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * |v|²
-	 * </p>
 	 * 
 	 * @return The squared length of the vector or zero if it is a zero-length vector.
 	 */
@@ -222,7 +214,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * |v|²
-	 * </p>
 	 * 
 	 * @param tolerance The tolerance for defining the margin around zero.
 	 * 
@@ -241,7 +232,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * v . t
-	 * </p>
 	 * 
 	 * @param t The tuple.
 	 * 
@@ -258,7 +248,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * v . (value, value)
-	 * </p>
 	 * 
 	 * @param value The value of all the components of the second tuple.
 	 * 
@@ -275,7 +264,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * v . (x, y)
-	 * </p>
 	 * 
 	 * @param x The value of the x component of the second tuple.
 	 * @param y The value of the y component of the second tuple.
@@ -491,7 +479,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * v + t
-	 * </p>
 	 * 
 	 * @param <T> The type of the query parameter.
 	 * 
@@ -513,7 +500,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * v + (value, value)
-	 * </p>
 	 * 
 	 * @param <T> The type of the query parameter.
 	 * 
@@ -535,7 +521,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * v + (x, y)
-	 * </p>
 	 * 
 	 * @param <T> The type of the query parameter.
 	 * 
@@ -560,7 +545,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * v - t
-	 * </p>
 	 * 
 	 * @param <T> The type of the query parameter.
 	 * 
@@ -582,7 +566,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * v - (value, value)
-	 * </p>
 	 * 
 	 * @param <T> The type of the query parameter.
 	 * 
@@ -604,7 +587,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * v - (x, y)
-	 * </p>
 	 * 
 	 * @param <T> The type of the query parameter.
 	 * 
@@ -629,7 +611,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * t - v
-	 * </p>
 	 * 
 	 * @param <T> The type of the query parameter.
 	 * 
@@ -651,7 +632,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * (value, value) - v 
-	 * </p>
 	 * 
 	 * @param <T> The type of the query parameter.
 	 * 
@@ -672,8 +652,7 @@ public interface Vec2dR extends Tup2dR
 	 * 
 	 * <p>
 	 * Operation:
-	 * (x, y) - v 
-	 * </p>
+	 * (x, y) - v
 	 * 
 	 * @param <T> The type of the query parameter.
 	 * 
@@ -698,7 +677,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * v * t
-	 * </p>
 	 * 
 	 * @param <T> The type of the query parameter.
 	 * 
@@ -720,7 +698,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * v * (value, value)
-	 * </p>
 	 * 
 	 * @param <T> The type of the query parameter.
 	 * 
@@ -742,7 +719,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * v * (x, y)
-	 * </p>
 	 * 
 	 * @param <T> The type of the query parameter.
 	 * 
@@ -767,7 +743,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * v / t
-	 * </p>
 	 * 
 	 * @param <T> The type of the query parameter.
 	 * 
@@ -789,7 +764,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * v / (value, value)
-	 * </p>
 	 * 
 	 * @param <T> The type of the query parameter.
 	 * 
@@ -811,7 +785,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * v / (x, y)
-	 * </p>
 	 * 
 	 * @param <T> The type of the query parameter.
 	 * 
@@ -836,7 +809,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * t / v
-	 * </p>
 	 * 
 	 * @param <T> The type of the query parameter.
 	 * 
@@ -858,7 +830,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * (value, value) / v 
-	 * </p>
 	 * 
 	 * @param <T> The type of the query parameter.
 	 * 
@@ -880,7 +851,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * (x, y) / v
-	 * </p>
 	 * 
 	 * @param <T> The type of the query parameter.
 	 * 
@@ -908,7 +878,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * v / |v|
-	 * </p>
 	 * 
 	 * @param <T> The type of the query parameter.
 	 * 
@@ -936,7 +905,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * v / |v|
-	 * </p>
 	 * 
 	 * @param <T> The type of the query parameter.
 	 * 
@@ -969,7 +937,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * v / |v|
-	 * </p>
 	 * 
 	 * @param <T> The type of the query parameter.
 	 * 
@@ -993,7 +960,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * -v
-	 * </p>
 	 * 
 	 * @param <T> The type of the query parameter.
 	 * 
@@ -1014,7 +980,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * 1 - v
-	 * </p>
 	 * 
 	 * @param <T> The type of the query parameter.
 	 * 
@@ -1036,7 +1001,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * t - v
-	 * </p>
 	 * 
 	 * @param <T> The type of the query parameter.
 	 * 
@@ -1059,7 +1023,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * value - v
-	 * </p>
 	 * 
 	 * @param <T> The type of the query parameter.
 	 * 
@@ -1082,7 +1045,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * (x, y) - v
-	 * </p>
 	 * 
 	 * @param <T> The type of the query parameter.
 	 * 
@@ -1105,8 +1067,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * v + t
-	 * </p>
-
 	 * @param t The second tuple to add to the current vector.
 	 * 
 	 * @return The new instance with the result.
@@ -1124,7 +1084,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * v + (value, value)
-	 * </p>
 	 * 
 	 * @param value The value of all the components of the second tuple.
 	 * 
@@ -1144,7 +1103,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * v + (x, y)
-	 * </p>
 	 * 
 	 * @param x The value of the x component of the second tuple.
 	 * @param y The value of the y component of the second tuple.
@@ -1164,7 +1122,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * v - t
-	 * </p>
 	 * 
 	 * @param t The second tuple to subtract from the current vector.
 	 * 
@@ -1183,7 +1140,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * v - (value, value)
-	 * </p>
 	 * 
 	 * @param value The value of all the components of the second tuple.
 	 * 
@@ -1203,7 +1159,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * v - (x, y)
-	 * </p>
 	 * 
 	 * @param x The value of the x component of the second tuple.
 	 * @param y The value of the y component of the second tuple.
@@ -1223,7 +1178,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * t - v
-	 * </p>
 	 * 
 	 * @param t The second tuple of which the current vector is subtracted from.
 	 * 
@@ -1242,7 +1196,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * (value, value) - v 
-	 * </p>
 	 * 
 	 * @param value The value of all the components of the second tuple.
 	 * 
@@ -1262,7 +1215,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * (x, y) - v 
-	 * </p>
 	 * 
 	 * @param x The value of the x component of the second tuple.
 	 * @param y The value of the y component of the second tuple.
@@ -1282,7 +1234,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * v * t
-	 * </p>
 	 * 
 	 * @param t The second tuple to multiply the current vector with.
 	 * 
@@ -1301,7 +1252,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * v * (value, value)
-	 * </p>
 	 * 
 	 * @param value The value of all the components of the second tuple.
 	 * 
@@ -1320,7 +1270,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * v * (x, y)
-	 * </p>
 	 * 
 	 * @param x The value of the x component of the second tuple.
 	 * @param y The value of the y component of the second tuple.
@@ -1340,7 +1289,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * v / t
-	 * </p>
 	 * 
 	 * @param t The second tuple to divide the current vector by.
 	 * 
@@ -1359,7 +1307,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * v / (value, value)
-	 * </p>
 	 * 
 	 * @param value The value of all the components of the second tuple.
 	 * 
@@ -1378,7 +1325,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * v / (x, y)
-	 * </p>
 	 * 
 	 * @param x The value of the x component of the second tuple.
 	 * @param y The value of the y component of the second tuple.
@@ -1398,7 +1344,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * t / v
-	 * </p>
 	 * 
 	 * @param t The second tuple to divide by the current vector.
 	 * 
@@ -1417,7 +1362,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * (value, value) / v 
-	 * </p>
 	 * 
 	 * @param value The value of all the components of the second tuple.
 	 * 
@@ -1436,7 +1380,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * (x, y) / v
-	 * </p>
 	 * 
 	 * @param x The value of the x component of the second tuple.
 	 * @param y The value of the y component of the second tuple.
@@ -1459,7 +1402,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * v / |v|
-	 * </p>
 	 * 
 	 * @param res The query parameter to receive the result.
 	 * 
@@ -1485,7 +1427,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * v / |v|
-	 * </p>
 	 * 
 	 * @param res The query parameter to receive the result.
 	 * 
@@ -1512,7 +1453,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * v / |v|
-	 * </p>
 	 * 
 	 * @param tolerance The tolerance for defining the margin around zero.
 	 * 
@@ -1533,7 +1473,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * -v
-	 * </p>
 	 * 
 	 * @return The new instance with the result.
 	 */
@@ -1550,7 +1489,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * 1 - v
-	 * </p>
 	 * 
 	 * @return The new instance with the result.
 	 */
@@ -1568,7 +1506,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * t - v
-	 * </p>
 	 * 
 	 * @param t The tuple the inversion is based on.
 	 * 
@@ -1588,7 +1525,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * value - v
-	 * </p>
 	 * 
 	 * @param value The value the inversion is based on.
 	 * 
@@ -1608,7 +1544,6 @@ public interface Vec2dR extends Tup2dR
 	 * <p>
 	 * Operation:
 	 * (x, y) - v
-	 * </p>
 	 * 
 	 * @param x The value the inversion of the x component is based on.
 	 * @param y The value the inversion of the y component is based on.
