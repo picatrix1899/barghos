@@ -31,30 +31,36 @@ package org.barghos.core.api.tuple2;
  */
 public interface Tup2oRW<X,Y> extends Tup2oR<X,Y>, Tup2oW<X,Y>
 {
+	/** {@inheritDoc} */
 	@Override
 	Tup2oRW<X,Y> setX(X x);
 	
+	/** {@inheritDoc} */
 	@Override
 	Tup2oRW<X,Y> setY(Y y);
 	
+	/** {@inheritDoc} */
 	@Override
-	default Tup2oRW<X,Y> set(Tup2oR<X,Y> t)
+	default Tup2oRW<X,Y> set(TupBase2oR<X,Y> t)
 	{
 		return (Tup2oRW<X,Y>)Tup2oW.super.set(t);
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	default Tup2oRW<X,Y> set(X x, Y y)
 	{
 		return (Tup2oRW<X,Y>)Tup2oW.super.set(x, y);
 	}
 	
+	/** {@inheritDoc} */
 	@Override
-	default Tup2oRW<X,Y> getNewInstance(Tup2oR<X,Y> t)
+	default Tup2oRW<X,Y> getNewInstance(TupBase2oR<X,Y> t)
 	{
 		return (Tup2oRW<X,Y>)Tup2oR.super.getNewInstance(t);
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	Tup2oRW<X,Y> getNewInstance(X x, Y y);
 }

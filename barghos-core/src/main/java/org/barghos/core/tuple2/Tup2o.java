@@ -26,8 +26,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
-import org.barghos.core.api.tuple2.Tup2oR;
 import org.barghos.core.api.tuple2.Tup2oRW;
+import org.barghos.core.api.tuple2.TupBase2oR;
 
 /**
  * This class represents a 2-dimensional {@link Object} tuple.
@@ -60,13 +60,13 @@ public class Tup2o<X,Y> implements Tup2oRW<X,Y>, FormattableToString
 	public Tup2o() { }
 	
 	/**
-	 * Creates a new instance from an existing instance of {@link Tup2oR} and adopts the values.
+	 * Creates a new instance from an existing instance of {@link TupBase2oR} and adopts the values.
 	 * 
-	 * @param t An existing implementation of {@link Tup2oR} to adopt the values from.
+	 * @param t An existing implementation of {@link TupBase2oR} to adopt the values from.
 	 * 
 	 * @since 1.0.0.0
 	 */
-	public Tup2o(Tup2oR<X,Y> t)
+	public Tup2o(TupBase2oR<X,Y> t)
 	{
 		set(t);
 	}
@@ -84,18 +84,21 @@ public class Tup2o<X,Y> implements Tup2oRW<X,Y>, FormattableToString
 		set(x, y);
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public X getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public Y getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public Tup2o<X,Y> setX(X x)
 	{
@@ -104,6 +107,7 @@ public class Tup2o<X,Y> implements Tup2oRW<X,Y>, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public Tup2o<X,Y> setY(Y y)
 	{
@@ -112,18 +116,21 @@ public class Tup2o<X,Y> implements Tup2oRW<X,Y>, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc} */
 	@Override
-	public Tup2o<X,Y> set(Tup2oR<X,Y> t)
+	public Tup2o<X,Y> set(TupBase2oR<X,Y> t)
 	{
 		return (Tup2o<X,Y>)Tup2oRW.super.set(t);
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public Tup2o<X,Y> set(X x, Y y)
 	{
 		return (Tup2o<X,Y>)Tup2oRW.super.set(x, y);
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public int hashCode()
 	{
@@ -134,32 +141,36 @@ public class Tup2o<X,Y> implements Tup2oRW<X,Y>, FormattableToString
 		return result;
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public boolean equals(Object obj)
 	{
 		if(this == obj) return true;
 		if(obj == null) return false;
-		if(!(obj instanceof Tup2oR)) return false;
+		if(!(obj instanceof TupBase2oR)) return false;
 		
 		@SuppressWarnings("unchecked")
-		Tup2oR<X,Y> other = (Tup2oR<X,Y>) obj;
+		TupBase2oR<X,Y> other = (TupBase2oR<X,Y>) obj;
 		if(!getX().equals(other.getX())) return false;
 		if(!getY().equals(other.getY())) return false;
 		return true;
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public String toString()
 	{
 		return "tup2o(x=" + getX() + ", y=" + getY() + ")";
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public Tup2o<X,Y> clone()
 	{
 		return new Tup2o<>(this);
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -170,14 +181,16 @@ public class Tup2o<X,Y> implements Tup2oRW<X,Y>, FormattableToString
 		return values;
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public Tup2o<X,Y> getNewInstance(X x, Y y)
 	{
 		return new Tup2o<>(x, y);
 	}
 	
+	/** {@inheritDoc} */
 	@Override
-	public Tup2o<X,Y> getNewInstance(Tup2oR<X,Y> t)
+	public Tup2o<X,Y> getNewInstance(TupBase2oR<X,Y> t)
 	{
 		return (Tup2o<X,Y>)Tup2oRW.super.getNewInstance(t);
 	}

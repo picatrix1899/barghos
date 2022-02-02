@@ -27,6 +27,7 @@ import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple2.Tup2oR;
+import org.barghos.core.api.tuple2.TupBase2oR;
 
 /**
  * Represents an immutable readonly 2-dimensional {@link Object} tuple.
@@ -59,13 +60,13 @@ public class ImmutableTup2o<X,Y> implements Tup2oR<X,Y>, FormattableToString
 	protected transient boolean isHashCodeGenerated;
 	
 	/**
-	 * Generates a new readonly {@link ImmutableTup2o} from an existing instance of {@link Tup2oR} and adopts the values.
+	 * Generates a new readonly {@link ImmutableTup2o} from an existing instance of {@link TupBase2oR} and adopts the values.
 	 * 
-	 * @param t An existing implementation of {@link Tup2oR} to adopt the values from.
+	 * @param t An existing implementation of {@link TupBase2oR} to adopt the values from.
 	 * 
 	 * @since 1.0.0.0
 	 */
-	public ImmutableTup2o(Tup2oR<X,Y> t)
+	public ImmutableTup2o(TupBase2oR<X,Y> t)
 	{
 		this(t.getX(), t.getY());
 	}
@@ -84,18 +85,21 @@ public class ImmutableTup2o<X,Y> implements Tup2oR<X,Y>, FormattableToString
 		this.y = y;
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public X getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public Y getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public int hashCode()
 	{
@@ -103,6 +107,7 @@ public class ImmutableTup2o<X,Y> implements Tup2oR<X,Y>, FormattableToString
 		return this.hashCode;
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -122,12 +127,14 @@ public class ImmutableTup2o<X,Y> implements Tup2oR<X,Y>, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public String toString()
 	{
 		return "immutableTup2o(x=" + getX() + ", y=" + getY() + ")";
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -138,14 +145,16 @@ public class ImmutableTup2o<X,Y> implements Tup2oR<X,Y>, FormattableToString
 		return values;
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public ImmutableTup2o<X,Y> getNewInstance(X x, Y y)
 	{
 		return new ImmutableTup2o<>(x, y);
 	}
 	
+	/** {@inheritDoc} */
 	@Override
-	public ImmutableTup2o<X,Y> getNewInstance(Tup2oR<X,Y> t)
+	public ImmutableTup2o<X,Y> getNewInstance(TupBase2oR<X,Y> t)
 	{
 		return (ImmutableTup2o<X,Y>)Tup2oR.super.getNewInstance(t);
 	}

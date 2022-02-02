@@ -58,15 +58,15 @@ public interface Tup2oW<X,Y>
 	Tup2oW<X,Y> setY(Y y);
 	
 	/**
-	 * Adopts the values from an existing instance of {@link Tup2oR}.
+	 * Adopts the values from an existing instance of {@link TupBase2oR}.
 	 * 
-	 * @param t An existing implementation of {@link Tup2oR} to adopt the values from.
+	 * @param t An existing implementation of {@link TupBase2oR} to adopt the values from.
 	 * 
 	 * @return The current tuple.
 	 * 
 	 * @since 1.0.0.0
 	 */
-	default Tup2oW<X,Y> set(Tup2oR<X,Y> t)
+	default Tup2oW<X,Y> set(TupBase2oR<X,Y> t)
 	{
 		return set(t.getX(), t.getY());
 	}

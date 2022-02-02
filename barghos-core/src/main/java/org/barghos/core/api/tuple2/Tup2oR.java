@@ -33,38 +33,8 @@ package org.barghos.core.api.tuple2;
  * 
  * @since 1.0.0.0
  */
-public interface Tup2oR<X,Y>
+public interface Tup2oR<X,Y> extends TupBase2oR<X,Y>
 {
-	/**
-	 * Returns the x value from the tuple.
-	 * 
-	 * @return The x value from the tuple.
-	 * 
-	 * @since 1.0.0.0
-	 */
-	X getX();
-	
-	/**
-	 * Returns the y value from the tuple.
-	 * 
-	 * @return The y value from the tuple.
-	 * 
-	 * @since 1.0.0.0
-	 */
-	Y getY();
-	
-	/**
-	 * Returns true if all the components are valid.
-	 * What values are considered valid or invalid depends on the tuple type.
-	 * 
-	 * @return True if all the components are valid.
-	 */
-	default boolean isValid()
-	{
-		return getX() != null &&
-				getY() != null;
-	}
-	
 	/**
 	 * Returns a new instance of the type of the origin instance with the components adopted
 	 * from t.
@@ -81,7 +51,7 @@ public interface Tup2oR<X,Y>
 	 * 
 	 * @return A new instance of the type of the origin instance
 	 */
-	default Tup2oR<X,Y> getNewInstance(Tup2oR<X,Y> t)
+	default Tup2oR<X,Y> getNewInstance(TupBase2oR<X,Y> t)
 	{
 		return getNewInstance(t.getX(), t.getY());
 	}
