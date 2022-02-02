@@ -1,16 +1,14 @@
-package org.barghos.math.point2;
+package org.barghos.math.point;
 
 import org.barghos.core.api.tuple.TupdR;
 import org.barghos.core.api.tuple2.Tup2dR;
 import org.barghos.core.api.tuple2.Tup2dRW;
-
-import org.barghos.math.api.point2.Point2dR;
-import org.barghos.math.api.point2.Point2dRW;
-import org.barghos.math.api.vector2.Vec2dR;
-import org.barghos.math.api.vector2.Vec2dRW;
-import org.barghos.math.api.vector2.Vec2dW;
-
-import org.barghos.math.vector2.Vec2d;
+import org.barghos.math.api.point.Point2dR;
+import org.barghos.math.api.point.Point2dRW;
+import org.barghos.math.api.vector.Vec2dR;
+import org.barghos.math.api.vector.Vec2dRW;
+import org.barghos.math.api.vector.Vec2dW;
+import org.barghos.math.vector.Vec2d;
 
 /**
  * This class represents a 2-dimensional double point.
@@ -229,6 +227,7 @@ public class Point2d implements Point2dRW
 	}
 	
 	/** {@inheritDoc} */
+	@Override
 	public Point2d clone()
 	{
 		return new Point2d(this);

@@ -1,9 +1,8 @@
-package org.barghos.math.vector2;
+package org.barghos.math.vector;
 
 import org.barghos.core.api.tuple.TupdR;
 import org.barghos.core.api.tuple2.Tup2dR;
-
-import org.barghos.math.api.vector2.Vec2dRW;
+import org.barghos.math.api.vector.Vec2dRW;
 
 /**
  * This class represents a 2-dimensional double vector.
@@ -142,6 +141,7 @@ public class Vec2d implements Vec2dRW
 	}
 	
 	/** {@inheritDoc} */
+	@Override
 	public Vec2d clone()
 	{
 		return new Vec2d(this);

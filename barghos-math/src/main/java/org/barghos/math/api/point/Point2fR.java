@@ -1,9 +1,9 @@
-package org.barghos.math.api.point2;
+package org.barghos.math.api.point;
 
 import org.barghos.core.api.tuple2.Tup2fR;
-import org.barghos.math.api.vector2.Vec2fR;
-import org.barghos.math.api.vector2.Vec2fRW;
-import org.barghos.math.api.vector2.Vec2fW;
+import org.barghos.math.api.vector.Vec2fR;
+import org.barghos.math.api.vector.Vec2fRW;
+import org.barghos.math.api.vector.Vec2fW;
 
 /**
  * This interface grants readonly access to any 2-dimensional float point.

@@ -1,4 +1,4 @@
-package org.barghos.math.api.vector2;
+package org.barghos.math.api.vector;
 
 import org.barghos.core.api.tuple.TupdR;
 import org.barghos.core.api.tuple2.Tup2dR;

@@ -1,9 +1,8 @@
-package org.barghos.math.vector2;
+package org.barghos.math.vector;
 
 import org.barghos.core.api.tuple.TupfR;
 import org.barghos.core.api.tuple2.Tup2fR;
-
-import org.barghos.math.api.vector2.Vec2fRW;
+import org.barghos.math.api.vector.Vec2fRW;
 
 /**
  * This class represents a 2-dimensional float vector.
@@ -142,6 +141,7 @@ public class Vec2f implements Vec2fRW
 	}
 	
 	/** {@inheritDoc} */
+	@Override
 	public Vec2f clone()
 	{
 		return new Vec2f(this);

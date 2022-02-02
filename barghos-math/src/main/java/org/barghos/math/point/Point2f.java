@@ -1,16 +1,14 @@
-package org.barghos.math.point2;
+package org.barghos.math.point;
 
 import org.barghos.core.api.tuple.TupfR;
 import org.barghos.core.api.tuple2.Tup2fR;
 import org.barghos.core.api.tuple2.Tup2fRW;
-
-import org.barghos.math.api.point2.Point2fR;
-import org.barghos.math.api.point2.Point2fRW;
-import org.barghos.math.api.vector2.Vec2fR;
-import org.barghos.math.api.vector2.Vec2fRW;
-import org.barghos.math.api.vector2.Vec2fW;
-
-import org.barghos.math.vector2.Vec2f;
+import org.barghos.math.api.point.Point2fR;
+import org.barghos.math.api.point.Point2fRW;
+import org.barghos.math.api.vector.Vec2fR;
+import org.barghos.math.api.vector.Vec2fRW;
+import org.barghos.math.api.vector.Vec2fW;
+import org.barghos.math.vector.Vec2f;
 
 /**
  * This class represents a 2-dimensional float point.
@@ -229,6 +227,7 @@ public class Point2f implements Point2fRW
 	}
 	
 	/** {@inheritDoc} */
+	@Override
 	public Point2f clone()
 	{
 		return new Point2f(this);

@@ -1,7 +1,7 @@
-package org.barghos.math.api.point2;
+package org.barghos.math.api.point;
 
 import org.barghos.core.api.tuple2.Tup2dW;
-import org.barghos.math.api.vector2.Vec2dW;
+import org.barghos.math.api.vector.Vec2dW;
 
 /**
  * This interface grants writeonly access to any 2-dimensional double point.

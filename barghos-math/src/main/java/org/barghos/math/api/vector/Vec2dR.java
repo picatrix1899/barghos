@@ -1,14 +1,14 @@
-package org.barghos.math.api.vector2;
+package org.barghos.math.api.vector;
 
-import org.barghos.core.api.tuple.TupfR;
-import org.barghos.core.api.tuple2.Tup2fR;
-import org.barghos.core.api.tuple2.Tup2fW;
+import org.barghos.core.api.tuple.TupdR;
+import org.barghos.core.api.tuple2.Tup2dR;
+import org.barghos.core.api.tuple2.Tup2dW;
 import org.barghos.core.api.tuple2.Tup2oR;
 import org.barghos.core.api.tuple2.Tup2oW;
 import org.barghos.core.tuple2.ImmutableTup2o;
 
 /**
- * This interface grants readonly access to any 2-dimensional float vector.
+ * This interface grants readonly access to any 2-dimensional double vector.
  * 
  * <p>
  * It should be prefered by design before direct usage of a type in method parameters,
@@ -18,38 +18,38 @@ import org.barghos.core.tuple2.ImmutableTup2o;
  * 
  * @since 1.0.0.0
  */
-public interface Vec2fR extends Tup2fR
+public interface Vec2dR extends Tup2dR
 {
 	/** {@inheritDoc} */
 	@Override
-	default Vec2fR getNewInstance(Tup2fR t)
+	default Vec2dR getNewInstance(Tup2dR t)
 	{
-		return (Vec2fR)Tup2fR.super.getNewInstance(t);
+		return (Vec2dR)Tup2dR.super.getNewInstance(t);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	default Vec2fR getNewInstance(float value)
+	default Vec2dR getNewInstance(double value)
 	{
-		return (Vec2fR)Tup2fR.super.getNewInstance(value);
+		return (Vec2dR)Tup2dR.super.getNewInstance(value);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	Vec2fR getNewInstance(float x, float y);
+	Vec2dR getNewInstance(double x, double y);
 	
 	/** {@inheritDoc} */
 	@Override
-	default Vec2fR getNewInstanceFromArray(float... values)
+	default Vec2dR getNewInstanceFromArray(double... values)
 	{
-		return (Vec2fR)Tup2fR.super.getNewInstanceFromArray(values);
+		return (Vec2dR)Tup2dR.super.getNewInstanceFromArray(values);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	default Vec2fR getNewInstance(TupfR t)
+	default Vec2dR getNewInstance(TupdR t)
 	{
-		return (Vec2fR)Tup2fR.super.getNewInstance(t);
+		return (Vec2dR)Tup2dR.super.getNewInstance(t);
 	}
 	
 	/**
@@ -108,7 +108,7 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The reciprocal length of the vector or zero if it is a zero-length vector.
 	 */
-	default double reciprocalLengthSafeWithMargin(float tolerance)
+	default double reciprocalLengthSafeWithMargin(double tolerance)
 	{
 		if(isZeroWithMargin(tolerance)) return 0.0;
 		
@@ -162,7 +162,7 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The length of the vector or zero if it is a zero-length vector.
 	 */
-	default double lengthSafeWithMargin(float tolerance)
+	default double lengthSafeWithMargin(double tolerance)
 	{
 		if(isZeroWithMargin(tolerance)) return 0.0;
 		
@@ -181,8 +181,8 @@ public interface Vec2fR extends Tup2fR
 	 */
 	default double squaredLength()
 	{
-		float x = getX();
-		float y = getY();
+		double x = getX();
+		double y = getY();
 		
 		return x * x + y * y;
 	}
@@ -219,7 +219,7 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The squared length of the vector or zero if it is a zero-length vector.
 	 */
-	default double squaredLengthSafeWithMargin(float tolerance)
+	default double squaredLengthSafeWithMargin(double tolerance)
 	{
 		if(isZeroWithMargin(tolerance)) return 0.0;
 		
@@ -237,7 +237,7 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The dot product (scalar product) between this vector and the tuple.
 	 */
-	default double dot(Tup2fR t)
+	default double dot(Tup2dR t)
 	{
 		return dot(t.getX(), t.getY());
 	}
@@ -253,7 +253,7 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The dot product (scalar product) between this vector and the value.
 	 */
-	default double dot(float value)
+	default double dot(double value)
 	{
 		return dot(value, value);
 	}
@@ -270,7 +270,7 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The dot product (scalar product) between this vector and the values.
 	 */
-	default double dot(float x, float y)
+	default double dot(double x, double y)
 	{
 		return getX() * x + getY() * y;
 	}
@@ -283,12 +283,12 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The smallest value of the components and the index of the corresponding component.
 	 */
-	default Tup2oR<Float,Integer> min()
+	default Tup2oR<Double,Integer> min()
 	{
-		float x = getX();
-		float y = getY();
+		double x = getX();
+		double y = getY();
 		
-		float value = x;
+		double value = x;
 		int index = 0;
 		
 		if(y < value)
@@ -310,12 +310,12 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The instance from the res parameter with the result.
 	 */
-	default <T extends Tup2oW<Float,Integer>> T minR(T res)
+	default <T extends Tup2oW<Double,Integer>> T minR(T res)
 	{
-		float x = getX();
-		float y = getY();
+		double x = getX();
+		double y = getY();
 		
-		float value = x;
+		double value = x;
 		int index = 0;
 		
 		if(y < value)
@@ -334,12 +334,12 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The smallest value of the components.
 	 */
-	default float minValue()
+	default double minValue()
 	{
-		float x = getX();
-		float y = getY();
+		double x = getX();
+		double y = getY();
 		
-		float value = x;
+		double value = x;
 		
 		if(y < value)
 		{
@@ -358,10 +358,10 @@ public interface Vec2fR extends Tup2fR
 	 */
 	default int minComponent()
 	{
-		float x = getX();
-		float y = getY();
+		double x = getX();
+		double y = getY();
 		
-		float value = x;
+		double value = x;
 		int index = 0;
 		
 		if(y < value)
@@ -381,12 +381,12 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The greatest value of the components and the index of the corresponding component.
 	 */
-	default Tup2oR<Float,Integer> max()
+	default Tup2oR<Double,Integer> max()
 	{
-		float x = getX();
-		float y = getY();
+		double x = getX();
+		double y = getY();
 		
-		float value = x;
+		double value = x;
 		int index = 0;
 		
 		if(y > value)
@@ -408,12 +408,12 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The instance from the res parameter with the result.
 	 */
-	default <T extends Tup2oW<Float,Integer>> T maxR(T res)
+	default <T extends Tup2oW<Double,Integer>> T maxR(T res)
 	{
-		float x = getX();
-		float y = getY();
+		double x = getX();
+		double y = getY();
 		
-		float value = x;
+		double value = x;
 		int index = 0;
 		
 		if(y > value)
@@ -432,12 +432,12 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The greatest value of the components.
 	 */
-	default float maxValue()
+	default double maxValue()
 	{
-		float x = getX();
-		float y = getY();
+		double x = getX();
+		double y = getY();
 		
-		float value = x;
+		double value = x;
 		
 		if(y > value)
 		{
@@ -456,10 +456,10 @@ public interface Vec2fR extends Tup2fR
 	 */
 	default int maxComponent()
 	{
-		float x = getX();
-		float y = getY();
+		double x = getX();
+		double y = getY();
 		
-		float value = x;
+		double value = x;
 		int index = 0;
 		
 		if(y > value)
@@ -487,7 +487,7 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	default <T extends Tup2fW> T addR(Tup2fR t, T res)
+	default <T extends Tup2dW> T addR(Tup2dR t, T res)
 	{
 		return addR(t.getX(), t.getY(), res);
 	}
@@ -508,7 +508,7 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	default <T extends Tup2fW> T addR(float value, T res)
+	default <T extends Tup2dW> T addR(double value, T res)
 	{
 		return addR(value, value, res);
 	}
@@ -530,7 +530,7 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	default <T extends Tup2fW> T addR(float x, float y, T res)
+	default <T extends Tup2dW> T addR(double x, double y, T res)
 	{
 		res.set(getX() + x, getY() + y);
 		
@@ -553,7 +553,7 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	default <T extends Tup2fW> T subR(Tup2fR t, T res)
+	default <T extends Tup2dW> T subR(Tup2dR t, T res)
 	{
 		return subR(t.getX(), t.getY(), res);
 	}
@@ -574,7 +574,7 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	default <T extends Tup2fW> T subR(float value, T res)
+	default <T extends Tup2dW> T subR(double value, T res)
 	{
 		return subR(value, value, res);
 	}
@@ -596,7 +596,7 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	default <T extends Tup2fW> T subR(float x, float y, T res)
+	default <T extends Tup2dW> T subR(double x, double y, T res)
 	{
 		res.set(getX() - x, getY() - y);
 		
@@ -619,7 +619,7 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	default <T extends Tup2fW> T revSubR(Tup2fR t, T res)
+	default <T extends Tup2dW> T revSubR(Tup2dR t, T res)
 	{
 		return revSubR(t.getX(), t.getY(), res);
 	}
@@ -640,7 +640,7 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	default <T extends Tup2fW> T revSubR(float value, T res)
+	default <T extends Tup2dW> T revSubR(double value, T res)
 	{
 		return revSubR(value, value, res);
 	}
@@ -652,7 +652,7 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * <p>
 	 * Operation:
-	 * (x, y) - v 
+	 * (x, y) - v
 	 * 
 	 * @param <T> The type of the query parameter.
 	 * 
@@ -662,7 +662,7 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	default <T extends Tup2fW> T revSubR(float x, float y, T res)
+	default <T extends Tup2dW> T revSubR(double x, double y, T res)
 	{
 		res.set(x - getX(), y - getY());
 		
@@ -685,7 +685,7 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	default <T extends Tup2fW> T mulR(Tup2fR t, T res)
+	default <T extends Tup2dW> T mulR(Tup2dR t, T res)
 	{
 		return mulR(t.getX(), t.getY(), res);
 	}
@@ -706,7 +706,7 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	default <T extends Tup2fW> T mulR(float value, T res)
+	default <T extends Tup2dW> T mulR(double value, T res)
 	{
 		return mulR(value, value, res);
 	}
@@ -728,7 +728,7 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	default <T extends Tup2fW> T mulR(float x, float y, T res)
+	default <T extends Tup2dW> T mulR(double x, double y, T res)
 	{
 		res.set(getX() * x, getY() * y);
 		
@@ -751,7 +751,7 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	default <T extends Tup2fW> T divR(Tup2fR t, T res)
+	default <T extends Tup2dW> T divR(Tup2dR t, T res)
 	{
 		return divR(t.getX(), t.getY(), res);
 	}
@@ -772,7 +772,7 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	default <T extends Tup2fW> T divR(float value, T res)
+	default <T extends Tup2dW> T divR(double value, T res)
 	{
 		return divR(value, value, res);
 	}
@@ -794,7 +794,7 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	default <T extends Tup2fW> T divR(float x, float y, T res)
+	default <T extends Tup2dW> T divR(double x, double y, T res)
 	{
 		res.set(getX() / x, getY() / y);
 		
@@ -817,7 +817,7 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	default <T extends Tup2fW> T revDivR(Tup2fR t, T res)
+	default <T extends Tup2dW> T revDivR(Tup2dR t, T res)
 	{
 		return revDivR(t.getX(), t.getY(), res);
 	}
@@ -838,7 +838,7 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	default <T extends Tup2fW> T revDivR(float value, T res)
+	default <T extends Tup2dW> T revDivR(double value, T res)
 	{
 		return revDivR(value, value, res);
 	}
@@ -860,7 +860,7 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	default <T extends Tup2fW> T revDivR(float x, float y, T res)
+	default <T extends Tup2dW> T revDivR(double x, double y, T res)
 	{
 		res.set(x / getX(), y / getY());
 		
@@ -887,9 +887,9 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @throws ArithmeticException Thrown when it is a zero-length vector.
 	 */
-	default <T extends Tup2fW> T normalR(T res)
+	default <T extends Tup2dW> T normalR(T res)
 	{
-		return mulR((float)reciprocalLength(), res);
+		return mulR(reciprocalLength(), res);
 	}
 	
 	/**
@@ -914,7 +914,7 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @throws ArithmeticException Might be thrown when the length is to close to zero.
 	 */
-	default <T extends Tup2fW> T normalSafeR(T res)
+	default <T extends Tup2dW> T normalSafeR(T res)
 	{
 		if(isZero())
 		{
@@ -922,7 +922,7 @@ public interface Vec2fR extends Tup2fR
 			return res;
 		}
 		
-		return mulR((float)reciprocalLength(), res);
+		return mulR(reciprocalLength(), res);
 	}
 	
 	/**
@@ -945,11 +945,11 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	default <T extends Tup2fW> T normalSafeWithMarginR(float tolerance, T res)
+	default <T extends Tup2dW> T normalSafeWithMarginR(double tolerance, T res)
 	{
 		if(isZeroWithMargin(tolerance)) return res;
 		
-		return mulR((float)reciprocalLength(), res);
+		return mulR(reciprocalLength(), res);
 	}
 	
 	/**
@@ -967,9 +967,9 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	default <T extends Tup2fW> T invertR(T res)
+	default <T extends Tup2dW> T invertR(T res)
 	{
-		return mulR(-1.0f, res);
+		return mulR(-1.0, res);
 	}
 	
 	/**
@@ -987,14 +987,14 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	default <T extends Tup2fW> T inverseR(T res)
+	default <T extends Tup2dW> T inverseR(T res)
 	{
-		return revSubR(1.0f, res);
+		return revSubR(1.0, res);
 	}
 	
 	/**
 	 * Inverses the current vector based on the given tuple and saves the result in the query parameter.
-	 * It does the same as {@link #revSubR(Tup2fR, Object)} and is present for completness.
+	 * It does the same as {@link #revSubR(Tup2dR, Object)} and is present for completness.
 	 * This operation does not alter the current vector but only the query parameter.
 	 * It is however safe to use the current vector as the query parameter.
 	 * 
@@ -1009,14 +1009,14 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	default <T extends Tup2fW> T inverseR(Tup2fR t, T res)
+	default <T extends Tup2dW> T inverseR(Tup2dR t, T res)
 	{
 		return inverseR(t.getX(), t.getY(), res);
 	}
 	
 	/**
 	 * Inverses the current vector based on the given value and saves the result in the query parameter.
-	 * It does the same as {@link #revSubR(float, Object)} and is present for completness.
+	 * It does the same as {@link #revSubR(double, Object)} and is present for completness.
 	 * This operation does not alter the current vector but only the query parameter.
 	 * It is however safe to use the current vector as the query parameter.
 	 * 
@@ -1031,14 +1031,14 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	default <T extends Tup2fW> T inverseR(float value, T res)
+	default <T extends Tup2dW> T inverseR(double value, T res)
 	{
 		return inverseR(value, value, res);
 	}
 	
 	/**
 	 * Inverses the current vector based on the given component values and saves the result in the query parameter.
-	 * It does the same as {@link #revSubR(float, float, Object)} and is present for completness.
+	 * It does the same as {@link #revSubR(double, double, Object)} and is present for completness.
 	 * This operation does not alter the current vector but only the query parameter.
 	 * It is however safe to use the current vector as the query parameter.
 	 * 
@@ -1054,32 +1054,31 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	default <T extends Tup2fW> T inverseR(float x, float y, T res)
+	default <T extends Tup2dW> T inverseR(double x, double y, T res)
 	{
 		return revSubR(x, y, res);
 	}
 	
 	/**
 	 * Adds the second given tuple to the current vector and saves the result in a new instance generated by
-	 * {@link #getNewInstance(float, float)} which should result in the same type as the current vector is of.
+	 * {@link #getNewInstance(double, double)} which should result in the same type as the current vector is of.
 	 * This operation does not alter the current vector.
 	 * 
 	 * <p>
 	 * Operation:
 	 * v + t
-	 * 
 	 * @param t The second tuple to add to the current vector.
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fR addN(Tup2fR t)
+	default Vec2dR addN(Tup2dR t)
 	{
 		return addN(t.getX(), t.getY());
 	}
 	
 	/**
 	 * Adds the second tuple defined by the given value to the current vector and saves the result in a new instance generated by
-	 * {@link #getNewInstance(float, float)} which should result in the same type as the current vector is of.
+	 * {@link #getNewInstance(double, double)} which should result in the same type as the current vector is of.
 	 * This operation does not alter the current vector.
 	 * 
 	 * <p>
@@ -1090,14 +1089,14 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fR addN(float value)
+	default Vec2dR addN(double value)
 	{
 		return addN(value, value);
 	}
 	
 	/**
 	 * Adds the second tuple defined by the given component values to the current vector and saves the result in
-	 * a new instance generated by {@link #getNewInstance(float, float)} which should result in the same type as
+	 * a new instance generated by {@link #getNewInstance(double, double)} which should result in the same type as
 	 * the current vector is of.
 	 * This operation does not alter the current vector.
 	 * 
@@ -1110,14 +1109,14 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fR addN(float x, float y)
+	default Vec2dR addN(double x, double y)
 	{
 		return getNewInstance(getX() + x, getY() + y);
 	}
 	
 	/**
 	 * Subtracts the second given tuple from the current vector and saves the result in a new instance generated by
-	 * {@link #getNewInstance(float, float)} which should result in the same type as the current vector is of.
+	 * {@link #getNewInstance(double, double)} which should result in the same type as the current vector is of.
 	 * This operation does not alter the current vector.
 	 * 
 	 * <p>
@@ -1128,14 +1127,14 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fR subN(Tup2fR t)
+	default Vec2dR subN(Tup2dR t)
 	{
 		return subN(t.getX(), t.getY());
 	}
 	
 	/**
 	 * Subtracts the second tuple defined by the given value from the current vector and saves the result in a new instance generated by
-	 * {@link #getNewInstance(float, float)} which should result in the same type as the current vector is of.
+	 * {@link #getNewInstance(double, double)} which should result in the same type as the current vector is of.
 	 * This operation does not alter the current vector.
 	 * 
 	 * <p>
@@ -1146,14 +1145,14 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fR subN(float value)
+	default Vec2dR subN(double value)
 	{
 		return subN(value, value);
 	}
 	
 	/**
 	 * Subtracts the second tuple defined by the given component values from the current vector and saves the result in
-	 * a new instance generated by {@link #getNewInstance(float, float)} which should result in the same type as
+	 * a new instance generated by {@link #getNewInstance(double, double)} which should result in the same type as
 	 * the current vector is of.
 	 * This operation does not alter the current vector.
 	 * 
@@ -1166,14 +1165,14 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fR subN(float x, float y)
+	default Vec2dR subN(double x, double y)
 	{
 		return getNewInstance(getX() - x, getY() - y);
 	}
 	
 	/**
 	 * Subtracts the current vector from the second given tuple and saves the result in a new instance generated by
-	 * {@link #getNewInstance(float, float)} which should result in the same type as the current vector is of.
+	 * {@link #getNewInstance(double, double)} which should result in the same type as the current vector is of.
 	 * This operation does not alter the current vector.
 	 * 
 	 * <p>
@@ -1184,14 +1183,14 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fR revSubN(Tup2fR t)
+	default Vec2dR revSubN(Tup2dR t)
 	{
 		return revSubN(t.getX(), t.getY());
 	}
 	
 	/**
 	 * Subtracts the current vector from the second tuple defined by the given value and saves the result in a new instance generated by
-	 * {@link #getNewInstance(float, float)} which should result in the same type as the current vector is of.
+	 * {@link #getNewInstance(double, double)} which should result in the same type as the current vector is of.
 	 * This operation does not alter the current vector.
 	 * 
 	 * <p>
@@ -1202,14 +1201,14 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fR revSubN(float value)
+	default Vec2dR revSubN(double value)
 	{
 		return revSubN(value, value);
 	}
 	
 	/**
 	 * Subtracts the current vector from the second tuple defined by the given component values and saves the result in
-	 * a new instance generated by {@link #getNewInstance(float, float)} which should result in the same type as
+	 * a new instance generated by {@link #getNewInstance(double, double)} which should result in the same type as
 	 * the current vector is of.
 	 * This operation does not alter the current vector.
 	 * 
@@ -1222,14 +1221,14 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fR revSubN(float x, float y)
+	default Vec2dR revSubN(double x, double y)
 	{
 		return getNewInstance(x - getX(), y - getY());
 	}
 	
 	/**
 	 * Multiplies the current vector with the second given tuple and saves the result in a new instance generated by
-	 * {@link #getNewInstance(float, float)} which should result in the same type as the current vector is of.
+	 * {@link #getNewInstance(double, double)} which should result in the same type as the current vector is of.
 	 * This operation does not alter the current vector.
 	 * 
 	 * <p>
@@ -1240,14 +1239,14 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fR mulN(Tup2fR t)
+	default Vec2dR mulN(Tup2dR t)
 	{
 		return mulN(t.getX(), t.getY());
 	}
 	
 	/**
 	 * Multiplies the current vector with the second tuple defined by the given value and saves the result in a new instance generated by
-	 * {@link #getNewInstance(float, float)} which should result in the same type as the current vector is of.
+	 * {@link #getNewInstance(double, double)} which should result in the same type as the current vector is of.
 	 * This operation does not alter the current vector.
 	 * 
 	 * <p>
@@ -1258,14 +1257,14 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fR mulN(float value)
+	default Vec2dR mulN(double value)
 	{
 		return mulN(value, value);
 	}
 	
 	/**
 	 * Multiplies the current vector with the second tuple defined by the given component values and saves the result in
-	 * a new instance generated by {@link #getNewInstance(float, float)} which should result in the same type as the current vector is of.
+	 * a new instance generated by {@link #getNewInstance(double, double)} which should result in the same type as the current vector is of.
 	 * This operation does not alter the current vector.
 	 * 
 	 * <p>
@@ -1277,14 +1276,14 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fR mulN(float x, float y)
+	default Vec2dR mulN(double x, double y)
 	{
 		return getNewInstance(getX() * x, getY() * y);
 	}
 	
 	/**
 	 * Divides the current vector by the second given tuple and saves the result in a new instance generated by
-	 * {@link #getNewInstance(float, float)} which should result in the same type as the current vector is of.
+	 * {@link #getNewInstance(double, double)} which should result in the same type as the current vector is of.
 	 * This operation does not alter the current vector.
 	 * 
 	 * <p>
@@ -1295,14 +1294,14 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fR divN(Tup2fR t)
+	default Vec2dR divN(Tup2dR t)
 	{
 		return divN(t.getX(), t.getY());
 	}
 	
 	/**
 	 * Divides the current vector by the second tuple defined by the given value and saves the result in a new instance generated by
-	 * {@link #getNewInstance(float, float)} which should result in the same type as the current vector is of.
+	 * {@link #getNewInstance(double, double)} which should result in the same type as the current vector is of.
 	 * This operation does not alter the current vector.
 	 * 
 	 * <p>
@@ -1313,14 +1312,14 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fR divN(float value)
+	default Vec2dR divN(double value)
 	{
 		return divN(value, value);
 	}
 	
 	/**
 	 * Divides the current vector by the second tuple defined by the given component values and saves the result in
-	 * a new instance generated by {@link #getNewInstance(float, float)} which should result in the same type as the current vector is of.
+	 * a new instance generated by {@link #getNewInstance(double, double)} which should result in the same type as the current vector is of.
 	 * This operation does not alter the current vector.
 	 * 
 	 * <p>
@@ -1332,14 +1331,14 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fR divN(float x, float y)
+	default Vec2dR divN(double x, double y)
 	{
 		return getNewInstance(getX() / x, getY() / y);
 	}
 	
 	/**
 	 * Divides the second given tuple by the current vector and saves the result in a new instance generated by
-	 * {@link #getNewInstance(float, float)} which should result in the same type as the current vector is of.
+	 * {@link #getNewInstance(double, double)} which should result in the same type as the current vector is of.
 	 * This operation does not alter the current vector.
 	 * 
 	 * <p>
@@ -1350,14 +1349,14 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fR revDivN(Tup2fR t)
+	default Vec2dR revDivN(Tup2dR t)
 	{
 		return revDivN(t.getX(), t.getY());
 	}
 	
 	/**
 	 * Divides the second tuple defined by the given value by the current vector and saves the result in a new instance generated by
-	 * {@link #getNewInstance(float, float)} which should result in the same type as the current vector is of.
+	 * {@link #getNewInstance(double, double)} which should result in the same type as the current vector is of.
 	 * This operation does not alter the current vector.
 	 * 
 	 * <p>
@@ -1368,14 +1367,14 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fR revDivN(float value)
+	default Vec2dR revDivN(double value)
 	{
 		return revDivN(value, value);
 	}
 	
 	/**
 	 * Divides the second tuple defined by the given component values by the current vector and saves the result in
-	 * a new instance generated by {@link #getNewInstance(float, float)} which should result in the same type as the current vector is of.
+	 * a new instance generated by {@link #getNewInstance(double, double)} which should result in the same type as the current vector is of.
 	 * This operation does not alter the current vector.
 	 * 
 	 * <p>
@@ -1387,14 +1386,14 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fR revDivN(float x, float y)
+	default Vec2dR revDivN(double x, double y)
 	{
 		return getNewInstance(x / getX(), y / getY());
 	}
 	
 	/**
 	 * Normalizes the current vector and saves the result in a new instance generated by
-	 * {@link #getNewInstance(float, float)} which should result in the same type as the current vector is of.
+	 * {@link #getNewInstance(double, double)} which should result in the same type as the current vector is of.
 	 * Normalization is done by dividing the vector by its length.
 	 * This doesn't account for zero-length vectors and will in such case throw an {@link ArithmeticException}
 	 * as this would result in a division by zero.
@@ -1410,14 +1409,14 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @throws ArithmeticException Thrown when it is a zero-length vector.
 	 */
-	default Vec2fR normalN()
+	default Vec2dR normalN()
 	{
-		return mulN((float)reciprocalLength());
+		return mulN(reciprocalLength());
 	}
 	
 	/**
 	 * Normalizes the current vector and saves the result in a new instance generated by
-	 * {@link #getNewInstance(float, float)} which should result in the same type as the current vector is of.
+	 * {@link #getNewInstance(double, double)} which should result in the same type as the current vector is of.
 	 * Normalization is done by dividing the vector by its length.
 	 * If the vector is a zero-length vector the result will be a zero vector.
 	 * It determines a zero-length by checking if all components are exactly zero.
@@ -1435,16 +1434,16 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @throws ArithmeticException Might be thrown when the length is to close to zero.
 	 */
-	default Vec2fR normalSafeN()
+	default Vec2dR normalSafeN()
 	{
 		if(isZero()) return getNewInstance(this);
 		
-		return mulN((float)reciprocalLength());
+		return mulN(reciprocalLength());
 	}
 	
 	/**
 	 * Normalizes the current vector and saves the result in a new instance generated by
-	 * {@link #getNewInstance(float, float)} which should result in the same type as the current vector is of.
+	 * {@link #getNewInstance(double, double)} which should result in the same type as the current vector is of.
 	 * Normalization is done by dividing the vector by its length.
 	 * If the vector is a zero-length vector the result will be a zero vector.
 	 * It determines a zero-length by checking if all components are within the margin defined by
@@ -1459,16 +1458,16 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fR normalSafeWithMarginN(float tolerance)
+	default Vec2dR normalSafeWithMarginN(double tolerance)
 	{
 		if(isZeroWithMargin(tolerance)) return getNewInstance(this);
 		
-		return mulN((float)reciprocalLength());
+		return mulN(reciprocalLength());
 	}
 	
 	/**
 	 * Inverts the current vector and saves the result in a new instance generated by
-	 * {@link #getNewInstance(float, float)} which should result in the same type as the current vector is of.
+	 * {@link #getNewInstance(double, double)} which should result in the same type as the current vector is of.
 	 * This operation does not alter the current vector.
 	 * 
 	 * <p>
@@ -1477,14 +1476,14 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fR invertN()
+	default Vec2dR invertN()
 	{
-		return mulN(-1.0f);
+		return mulN(-1.0);
 	}
 	
 	/**
 	 * Inverses the current vector based on the value one and saves the result in a new instance generated by
-	 * {@link #getNewInstance(float, float)} which should result in the same type as the current vector is of.
+	 * {@link #getNewInstance(double, double)} which should result in the same type as the current vector is of.
 	 * This operation does not alter the current vector.
 	 * 
 	 * <p>
@@ -1493,15 +1492,15 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fR inverseN()
+	default Vec2dR inverseN()
 	{
-		return revSubN(1.0f);
+		return revSubN(1.0);
 	}
 	
 	/**
 	 * Inverses the current vector based on the given tuple and saves the result in a new instance generated by
-	 * {@link #getNewInstance(float, float)} which should result in the same type as the current vector is of.
-	 * It does the same as {@link #revSubR(Tup2fR, Object)} and is present for completness.
+	 * {@link #getNewInstance(double, double)} which should result in the same type as the current vector is of.
+	 * It does the same as {@link #revSubR(Tup2dR, Object)} and is present for completness.
 	 * This operation does not alter the current vector.
 	 * 
 	 * <p>
@@ -1512,15 +1511,15 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fR inverseN(Tup2fR t)
+	default Vec2dR inverseN(Tup2dR t)
 	{
 		return inverseN(t.getX(), t.getY());
 	}
 	
 	/**
 	 * Inverses the current vector based on the given value and saves the result in a new instance generated by
-	 * {@link #getNewInstance(float, float)} which should result in the same type as the current vector is of.
-	 * It does the same as {@link #revSubR(float, Object)} and is present for completness.
+	 * {@link #getNewInstance(double, double)} which should result in the same type as the current vector is of.
+	 * It does the same as {@link #revSubR(double, Object)} and is present for completness.
 	 * This operation does not alter the current vector.
 	 * 
 	 * <p>
@@ -1531,15 +1530,15 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fR inverseN(float value)
+	default Vec2dR inverseN(double value)
 	{
 		return inverseN(value, value);
 	}
 	
 	/**
 	 * Inverses the current vector based on the given component values and saves the result in a new instance generated by
-	 * {@link #getNewInstance(float, float)} which should result in the same type as the current vector is of.
-	 * It does the same as {@link #revSubR(float, float, Object)} and is present for completness.
+	 * {@link #getNewInstance(double, double)} which should result in the same type as the current vector is of.
+	 * It does the same as {@link #revSubR(double, double, Object)} and is present for completness.
 	 * This operation does not alter the current vector.
 	 * 
 	 * <p>
@@ -1551,7 +1550,7 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fR inverseN(float x, float y)
+	default Vec2dR inverseN(double x, double y)
 	{
 		return revSubN(x, y);
 	}

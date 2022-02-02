@@ -6,4 +6,4 @@
  * 
  * @since 1.0.0.0
  */
-package org.barghos.math.point2;
+package org.barghos.math.point;

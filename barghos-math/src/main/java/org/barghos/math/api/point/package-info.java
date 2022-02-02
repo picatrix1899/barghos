@@ -5,4 +5,4 @@
  * 
  * @since 1.0.0.0
  */
-package org.barghos.math.api.point2;
+package org.barghos.math.api.point;
