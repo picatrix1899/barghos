@@ -22,5 +22,5 @@ public interface DoubleFunction3<T>
 	 * 
 	 * @return The result of the function.
 	 */
-	public T invoke(double a, double b, double c);
+	public T apply(double a, double b, double c);
 }

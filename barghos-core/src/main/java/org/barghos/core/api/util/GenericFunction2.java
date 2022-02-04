@@ -23,5 +23,5 @@ public interface GenericFunction2<A,B,T>
 	 * 
 	 * @return The result of the function.
 	 */
-	T invoke(A a, B b);
+	T apply(A a, B b);
 }
