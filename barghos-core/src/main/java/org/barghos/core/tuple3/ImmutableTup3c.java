@@ -34,8 +34,6 @@ import org.barghos.core.api.tuple3.Tup3cR;
  * It can be used as a more flexible way to create constants.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 public class ImmutableTup3c implements Tup3cR, FormattableToString
 {
@@ -68,8 +66,6 @@ public class ImmutableTup3c implements Tup3cR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup3c} from an existing instance of {@link TupcR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupcR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3c(TupcR t)
 	{
@@ -80,8 +76,6 @@ public class ImmutableTup3c implements Tup3cR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup3c} from an existing instance of {@link Tup3cR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup3cR} to adopt the values from.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3c(Tup3cR t)
 	{
@@ -92,8 +86,6 @@ public class ImmutableTup3c implements Tup3cR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup3c} with all values set to a single value.
 	 * 
 	 * @param value The value used for all values of the tuple.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3c(char value)
 	{
@@ -106,8 +98,6 @@ public class ImmutableTup3c implements Tup3cR, FormattableToString
 	 * @param x The x value.
 	 * @param y The y value.
 	 * @param z The z value.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3c(char x, char y, char z)
 	{
@@ -120,8 +110,6 @@ public class ImmutableTup3c implements Tup3cR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup3c} with the values set to the corresponding parameters.
 	 * 
 	 * @param v The values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3c(char[] v)
 	{
@@ -130,24 +118,28 @@ public class ImmutableTup3c implements Tup3cR, FormattableToString
 		this.z = v[2];
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public char getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public char getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public char getZ()
 	{
 		return this.z;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -156,6 +148,7 @@ public class ImmutableTup3c implements Tup3cR, FormattableToString
 		return this.hashCode;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -186,18 +179,21 @@ public class ImmutableTup3c implements Tup3cR, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "immutableTup3c(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public ImmutableTup3c clone()
 	{
 		return new ImmutableTup3c(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -207,36 +203,6 @@ public class ImmutableTup3c implements Tup3cR, FormattableToString
 		values.put("z", getZ());
 		
 		return values;
-	}
-	
-	@Override
-	public ImmutableTup3c getNewInstance(char x, char y, char z)
-	{
-		return new ImmutableTup3c(x, y, z);
-	}
-	
-	@Override
-	public ImmutableTup3c getNewInstance(char value)
-	{
-		return (ImmutableTup3c)Tup3cR.super.getNewInstance(value);
-	}
-	
-	@Override
-	public ImmutableTup3c getNewInstance(Tup3cR t)
-	{
-		return (ImmutableTup3c)Tup3cR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup3c getNewInstance(TupcR t)
-	{
-		return (ImmutableTup3c)Tup3cR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup3c getNewInstanceFromArray(char... values)
-	{
-		return (ImmutableTup3c)Tup3cR.super.getNewInstanceFromArray(values);
 	}
 	
 	/**

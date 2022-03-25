@@ -28,8 +28,8 @@ import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupobjR;
+import org.barghos.core.api.tuple2.Tup2objBase;
 import org.barghos.core.api.tuple2.Tup2objR;
-import org.barghos.core.api.tuple2.Tup2objRW;
 
 /**
  * This class represents a 2-dimensional {@link Object} tuple.
@@ -37,10 +37,8 @@ import org.barghos.core.api.tuple2.Tup2objRW;
  * where the data of a vector describes the same logical structure.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
-public class Tup2obj implements Tup2objRW, Serializable, FormattableToString
+public class Tup2obj implements Tup2objBase, Serializable, FormattableToString
 {
 	/**
 	 * The class version for serialization.
@@ -61,8 +59,6 @@ public class Tup2obj implements Tup2objRW, Serializable, FormattableToString
 	
 	/**
 	 * Creates a new instance with all components set to null.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup2obj() { }
 	
@@ -70,8 +66,6 @@ public class Tup2obj implements Tup2objRW, Serializable, FormattableToString
 	 * Creates a new instance from an existing instance of {@link TupobjR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupobjR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup2obj(TupobjR t)
 	{
@@ -82,8 +76,6 @@ public class Tup2obj implements Tup2objRW, Serializable, FormattableToString
 	 * Creates a new instance from an existing instance of {@link Tup2objR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup2objR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup2obj(Tup2objR t)
 	{
@@ -94,8 +86,6 @@ public class Tup2obj implements Tup2objRW, Serializable, FormattableToString
 	 * Creates a new instance with all values set to a single value.
 	 * 
 	 * @param value The value used as the initial value for all values of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup2obj(Object value)
 	{
@@ -106,8 +96,6 @@ public class Tup2obj implements Tup2objRW, Serializable, FormattableToString
 	 * Creates a new instance with the values set to the corresponding parameters.
 	 * 
 	 * @param v The x and y values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup2obj(Object[] v)
 	{
@@ -119,26 +107,27 @@ public class Tup2obj implements Tup2objRW, Serializable, FormattableToString
 	 * 
 	 * @param x The initial x value of the tuple.
 	 * @param y The initial y value of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup2obj(Object x, Object y)
 	{
 		set(x, y);
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public Object getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public Object getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public Tup2obj setX(Object x)
 	{
@@ -147,6 +136,7 @@ public class Tup2obj implements Tup2objRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public Tup2obj setY(Object y)
 	{
@@ -155,24 +145,28 @@ public class Tup2obj implements Tup2objRW, Serializable, FormattableToString
 		return this;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public Tup2obj set(Tup2objR t)
 	{
-		return (Tup2obj)Tup2objRW.super.set(t);
+		return (Tup2obj)Tup2objBase.super.set(t);
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public Tup2obj set(Object value)
 	{
-		return (Tup2obj)Tup2objRW.super.set(value);
+		return (Tup2obj)Tup2objBase.super.set(value);
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public Tup2obj set(Object x, Object y)
 	{
-		return (Tup2obj)Tup2objRW.super.set(x, y);
+		return (Tup2obj)Tup2objBase.super.set(x, y);
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public int hashCode()
 	{
@@ -183,6 +177,7 @@ public class Tup2obj implements Tup2objRW, Serializable, FormattableToString
 		return result;
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -211,18 +206,21 @@ public class Tup2obj implements Tup2objRW, Serializable, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public String toString()
 	{
 		return "tup2obj(x=" + getX() + ", y=" + getY() + ")";
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public Tup2obj clone()
 	{
 		return new Tup2obj(this);
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -233,51 +231,24 @@ public class Tup2obj implements Tup2objRW, Serializable, FormattableToString
 		return values;
 	}
 	
-	@Override
-	public Tup2obj getNewInstance(Object x, Object y)
-	{
-		return new Tup2obj(x, y);
-	}
-	
-	@Override
-	public Tup2obj getNewInstance(Object value)
-	{
-		return (Tup2obj)Tup2objRW.super.getNewInstance(value);
-	}
-	
-	@Override
-	public Tup2obj getNewInstance(Tup2objR t)
-	{
-		return (Tup2obj)Tup2objRW.super.getNewInstance(t);
-	}
-	
-	@Override
-	public Tup2obj getNewInstance(TupobjR t)
-	{
-		return (Tup2obj)Tup2objRW.super.getNewInstance(t);
-	}
-	
-	@Override
-	public Tup2obj getNewInstanceFromArray(Object... values)
-	{
-		return (Tup2obj)Tup2objRW.super.getNewInstanceFromArray(values);
-	}
-	
+	/** {@inheritDoc} */
 	@Override
 	public Tup2obj set(TupobjR t)
 	{
-		return (Tup2obj)Tup2objRW.super.set(t);
+		return (Tup2obj)Tup2objBase.super.set(t);
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public Tup2obj setArray(Object... values)
 	{
-		return (Tup2obj)Tup2objRW.super.setArray(values);
+		return (Tup2obj)Tup2objBase.super.setArray(values);
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public Tup2obj setByIndex(int index, Object value)
 	{
-		return (Tup2obj)Tup2objRW.super.setByIndex(index, value);
+		return (Tup2obj)Tup2objBase.super.setByIndex(index, value);
 	}
 }

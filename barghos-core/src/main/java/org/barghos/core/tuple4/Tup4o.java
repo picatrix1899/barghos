@@ -26,8 +26,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
+import org.barghos.core.api.tuple4.Tup4oBase;
 import org.barghos.core.api.tuple4.Tup4oR;
-import org.barghos.core.api.tuple4.Tup4oRW;
 
 /**
  * This class represents a 4-dimensional {@link Object} tuple.
@@ -35,10 +35,8 @@ import org.barghos.core.api.tuple4.Tup4oRW;
  * where the data of a vector describes the same logical structure.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
-public class Tup4o<X,Y,Z,W> implements Tup4oRW<X,Y,Z,W>, FormattableToString
+public class Tup4o<X,Y,Z,W> implements Tup4oBase<X,Y,Z,W>, FormattableToString
 {
 	/**
 	 * The x component.
@@ -66,8 +64,6 @@ public class Tup4o<X,Y,Z,W> implements Tup4oRW<X,Y,Z,W>, FormattableToString
 	
 	/**
 	 * Creates a new instance with all components set to null.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4o() { }
 	
@@ -75,8 +71,6 @@ public class Tup4o<X,Y,Z,W> implements Tup4oRW<X,Y,Z,W>, FormattableToString
 	 * Creates a new instance from an existing instance of {@link Tup4oR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup4oR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4o(Tup4oR<X,Y,Z,W> t)
 	{
@@ -90,38 +84,41 @@ public class Tup4o<X,Y,Z,W> implements Tup4oRW<X,Y,Z,W>, FormattableToString
 	 * @param y The initial y value of the tuple.
 	 * @param z The initial z value of the tuple.
 	 * @param w The initial w value of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4o(X x, Y y, Z z, W w)
 	{
 		set(x, y, z, w);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public X getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Y getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Z getZ()
 	{
 		return this.z;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public W getW()
 	{
 		return this.w;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4o<X,Y,Z,W> setX(X x)
 	{
@@ -130,6 +127,7 @@ public class Tup4o<X,Y,Z,W> implements Tup4oRW<X,Y,Z,W>, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4o<X,Y,Z,W> setY(Y y)
 	{
@@ -138,6 +136,7 @@ public class Tup4o<X,Y,Z,W> implements Tup4oRW<X,Y,Z,W>, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4o<X,Y,Z,W> setZ(Z z)
 	{
@@ -146,6 +145,7 @@ public class Tup4o<X,Y,Z,W> implements Tup4oRW<X,Y,Z,W>, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4o<X,Y,Z,W> setW(W w)
 	{
@@ -154,18 +154,21 @@ public class Tup4o<X,Y,Z,W> implements Tup4oRW<X,Y,Z,W>, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4o<X,Y,Z,W> set(Tup4oR<X,Y,Z,W> t)
 	{
 		return set(t.getX(), t.getY(), t.getZ(), t.getW());
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4o<X,Y,Z,W> set(X x, Y y, Z z, W w)
 	{
 		return setX(x).setY(y).setZ(z).setW(w);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -178,6 +181,7 @@ public class Tup4o<X,Y,Z,W> implements Tup4oRW<X,Y,Z,W>, FormattableToString
 		return result;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -194,18 +198,21 @@ public class Tup4o<X,Y,Z,W> implements Tup4oRW<X,Y,Z,W>, FormattableToString
 		return true;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4o<X,Y,Z,W> clone()
 	{
 		return new Tup4o<X,Y,Z,W>(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "tup4o(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ", w=" + getW() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -216,17 +223,5 @@ public class Tup4o<X,Y,Z,W> implements Tup4oRW<X,Y,Z,W>, FormattableToString
 		values.put("w", getW());
 		
 		return values;
-	}
-	
-	@Override
-	public Tup4o<X,Y,Z,W> getNewInstance(X x, Y y, Z z, W w)
-	{
-		return new Tup4o<>(x, y, z, w);
-	}
-	
-	@Override
-	public Tup4o<X,Y,Z,W> getNewInstance(Tup4oR<X,Y,Z,W> t)
-	{
-		return (Tup4o<X,Y,Z,W>)Tup4oRW.super.getNewInstance(t);
 	}
 }

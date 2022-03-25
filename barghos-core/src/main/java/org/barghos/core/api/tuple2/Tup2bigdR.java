@@ -34,8 +34,6 @@ import org.barghos.core.api.tuple.TupbigdR;
  * if the method only reads data from the parameter.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 public interface Tup2bigdR extends TupbigdR
 {
@@ -43,8 +41,6 @@ public interface Tup2bigdR extends TupbigdR
 	 * Returns the x value from the tuple.
 	 * 
 	 * @return The x value from the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	BigDecimal getX();
 	
@@ -52,11 +48,10 @@ public interface Tup2bigdR extends TupbigdR
 	 * Returns the y value from the tuple.
 	 * 
 	 * @return The y value from the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	BigDecimal getY();
 	
+	/** {@inheritDoc}} */
 	@Override
 	default boolean isZero()
 	{
@@ -64,6 +59,7 @@ public interface Tup2bigdR extends TupbigdR
 				getY().compareTo(BigDecimal.ZERO) == 0;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	default boolean isZeroWithMargin(BigDecimal tolerance)
 	{
@@ -71,6 +67,7 @@ public interface Tup2bigdR extends TupbigdR
 				getY().abs().compareTo(tolerance) <= 0;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	default boolean isValid()
 	{
@@ -78,57 +75,14 @@ public interface Tup2bigdR extends TupbigdR
 				getY() != null;
 	}
 	
-	/**
-	 * Returns a new instance of the type of the origin instance with the components adopted
-	 * from t.
-	 * 
-	 * <p>
-	 * This can be used for type continuety.
-	 * This way even while only using abstractions it is possible to create
-	 * new instances of the original. It is similar to the {@link Object#clone()}
-	 * function but the {@link Object#clone()} function requires the returned instance to be
-	 * writable.
-	 * This function on the other hand allows for example the usage of factories.
-	 * 
-	 * @param t The tuple to adopt the components from.
-	 * 
-	 * @return A new instance of the type of the origin instance
-	 */
-	default Tup2bigdR getNewInstance(Tup2bigdR t)
-	{
-		return getNewInstance(t.getX(), t.getY());
-	}
-	
-	@Override
-	default Tup2bigdR getNewInstance(BigDecimal value)
-	{
-		return getNewInstance(value, value);
-	}
-	
-	/**
-	 * Returns a new instance of the type of the origin instance with the components set to
-	 * the corresponding parameters.
-	 * 
-	 * <p>
-	 * This can be used for type continuety.
-	 * This way even while only using abstractions it is possible to create
-	 * new instances of the original. It is similar to the {@link Object#clone()}
-	 * function but the {@link Object#clone()} function requires the returned instance to be
-	 * writable. This function on the other hand allows for example the usage of factories.
-	 * 
-	 * @param x The value used for the x component.
-	 * @param y The value used for the y component.
-	 * 
-	 * @return A new instance of the type of the origin instance
-	 */
-	Tup2bigdR getNewInstance(BigDecimal x, BigDecimal y);
-	
+	/** {@inheritDoc}} */
 	@Override
 	default int getDimensions()
 	{
 		return 2;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	default BigDecimal getByIndex(int index)
 	{
@@ -141,23 +95,10 @@ public interface Tup2bigdR extends TupbigdR
 		throw new IndexOutOfBoundsException(index);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	default BigDecimal[] getArray()
 	{
 		return new BigDecimal[] {getX(), getY()};
-	}
-	
-	@Override
-	default Tup2bigdR getNewInstanceFromArray(BigDecimal... values)
-	{
-		BigDecimal[] v = values;
-		return getNewInstance(v[0], v[1]);
-	}
-	
-	@Override
-	default Tup2bigdR getNewInstance(TupbigdR t)
-	{
-		BigDecimal[] v = t.getArray();
-		return getNewInstance(v[0], v[1]);
 	}
 }

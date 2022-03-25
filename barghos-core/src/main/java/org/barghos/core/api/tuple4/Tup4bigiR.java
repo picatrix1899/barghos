@@ -34,8 +34,6 @@ import org.barghos.core.api.tuple.TupbigiR;
  * if the method only reads data from the parameter.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 public interface Tup4bigiR extends TupbigiR
 {
@@ -43,8 +41,6 @@ public interface Tup4bigiR extends TupbigiR
 	 * Returns the x value from the tuple.
 	 * 
 	 * @return The x value from the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	BigInteger getX();
 	
@@ -52,8 +48,6 @@ public interface Tup4bigiR extends TupbigiR
 	 * Returns the y value from the tuple.
 	 * 
 	 * @return The y value from the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	BigInteger getY();
 	
@@ -61,8 +55,6 @@ public interface Tup4bigiR extends TupbigiR
 	 * Returns the z value from the tuple.
 	 * 
 	 * @return The z value from the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	BigInteger getZ();
 	
@@ -70,11 +62,10 @@ public interface Tup4bigiR extends TupbigiR
 	 * Returns the w value from the tuple.
 	 * 
 	 * @return The w value from the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	BigInteger getW();
 	
+	/** {@inheritDoc}} */
 	@Override
 	default boolean isZero()
 	{
@@ -84,6 +75,7 @@ public interface Tup4bigiR extends TupbigiR
 				getW().compareTo(BigInteger.ZERO) == 0;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	default boolean isZeroWithMargin(BigInteger tolerance)
 	{
@@ -93,6 +85,7 @@ public interface Tup4bigiR extends TupbigiR
 				getW().abs().compareTo(tolerance) <= 0;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	default boolean isValid()
 	{
@@ -102,59 +95,14 @@ public interface Tup4bigiR extends TupbigiR
 				getW() != null;
 	}
 	
-	/**
-	 * Returns a new instance of the type of the origin instance with the components adopted
-	 * from t.
-	 * 
-	 * <p>
-	 * This can be used for type continuety.
-	 * This way even while only using abstractions it is possible to create
-	 * new instances of the original. It is similar to the {@link Object#clone()}
-	 * function but the {@link Object#clone()} function requires the returned instance to be
-	 * writable.
-	 * This function on the other hand allows for example the usage of factories.
-	 * 
-	 * @param t The tuple to adopt the components from.
-	 * 
-	 * @return A new instance of the type of the origin instance
-	 */
-	default Tup4bigiR getNewInstance(Tup4bigiR t)
-	{
-		return getNewInstance(t.getX(), t.getY(), t.getZ(), t.getW());
-	}
-	
-	@Override
-	default Tup4bigiR getNewInstance(BigInteger value)
-	{
-		return getNewInstance(value, value, value, value);
-	}
-	
-	/**
-	 * Returns a new instance of the type of the origin instance with the components set to
-	 * the corresponding parameters.
-	 * 
-	 * <p>
-	 * This can be used for type continuety.
-	 * This way even while only using abstractions it is possible to create
-	 * new instances of the original. It is similar to the {@link Object#clone()}
-	 * function but the {@link Object#clone()} function requires the returned instance to be
-	 * writable. This function on the other hand allows for example the usage of factories.
-	 * 
-	 * @param x The value used for the x component.
-	 * @param y The value used for the y component.
-	 * @param z The value used for the z component.
-	 * @param w The value used for the w component.
-	 * 
-	 * @return A new instance of the type of the origin instance
-	 */
-	Tup4bigiR getNewInstance(BigInteger x, BigInteger y, BigInteger z, BigInteger w);
-	
+	/** {@inheritDoc}} */
 	@Override
 	default int getDimensions()
 	{
 		return 4;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	default BigInteger getByIndex(int index)
 	{
@@ -169,23 +117,10 @@ public interface Tup4bigiR extends TupbigiR
 		throw new IndexOutOfBoundsException(index);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	default BigInteger[] getArray()
 	{
 		return new BigInteger[] {getX(), getY(), getZ(), getW()};
-	}
-	
-	@Override
-	default Tup4bigiR getNewInstanceFromArray(BigInteger... values)
-	{
-		BigInteger[] v = values;
-		return getNewInstance(v[0], v[1], v[2], v[3]);
-	}
-	
-	@Override
-	default Tup4bigiR getNewInstance(TupbigiR t)
-	{
-		BigInteger[] v = t.getArray();
-		return getNewInstance(v[0], v[1], v[2], v[3]);
 	}
 }

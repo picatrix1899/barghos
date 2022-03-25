@@ -34,8 +34,6 @@ import org.barghos.core.api.tuple2.Tup2dR;
  * It can be used as a more flexible way to create constants.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 public class ImmutableTup2d implements Tup2dR, FormattableToString
 {
@@ -63,8 +61,6 @@ public class ImmutableTup2d implements Tup2dR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup2d} from an existing instance of {@link TupdR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupdR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2d(TupdR t)
 	{
@@ -75,8 +71,6 @@ public class ImmutableTup2d implements Tup2dR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup2d} from an existing instance of {@link Tup2dR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup2dR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2d(Tup2dR t)
 	{
@@ -87,8 +81,6 @@ public class ImmutableTup2d implements Tup2dR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup2d} with all values set to a single value.
 	 * 
 	 * @param value The value used for all values of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2d(double value)
 	{
@@ -99,8 +91,6 @@ public class ImmutableTup2d implements Tup2dR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup2d} with the values set to the corresponding parameters.
 	 * 
 	 * @param v The x and y values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2d(double[] v)
 	{
@@ -113,8 +103,6 @@ public class ImmutableTup2d implements Tup2dR, FormattableToString
 	 * 
 	 * @param x The x value.
 	 * @param y The y value.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2d(double x, double y)
 	{
@@ -122,18 +110,21 @@ public class ImmutableTup2d implements Tup2dR, FormattableToString
 		this.y = y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public double getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public double getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -141,6 +132,7 @@ public class ImmutableTup2d implements Tup2dR, FormattableToString
 		return this.hashCode;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -169,18 +161,21 @@ public class ImmutableTup2d implements Tup2dR, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "immutableTup2d(x=" + getX() + ", y=" + getY() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public ImmutableTup2d clone()
 	{
 		return new ImmutableTup2d(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -189,36 +184,6 @@ public class ImmutableTup2d implements Tup2dR, FormattableToString
 		values.put("y", getY());
 		
 		return values;
-	}
-	
-	@Override
-	public ImmutableTup2d getNewInstance(double x, double y)
-	{
-		return new ImmutableTup2d(x, y);
-	}
-	
-	@Override
-	public ImmutableTup2d getNewInstance(double value)
-	{
-		return (ImmutableTup2d)Tup2dR.super.getNewInstance(value);
-	}
-	
-	@Override
-	public ImmutableTup2d getNewInstance(Tup2dR t)
-	{
-		return (ImmutableTup2d)Tup2dR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup2d getNewInstance(TupdR t)
-	{
-		return (ImmutableTup2d)Tup2dR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup2d getNewInstanceFromArray(double... values)
-	{
-		return (ImmutableTup2d)Tup2dR.super.getNewInstanceFromArray(values);
 	}
 	
 	/**

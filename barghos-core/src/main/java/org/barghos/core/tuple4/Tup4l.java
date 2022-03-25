@@ -28,8 +28,8 @@ import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TuplR;
+import org.barghos.core.api.tuple4.Tup4lBase;
 import org.barghos.core.api.tuple4.Tup4lR;
-import org.barghos.core.api.tuple4.Tup4lRW;
 
 /**
  * This class represents a 4-dimensional long tuple.
@@ -37,10 +37,8 @@ import org.barghos.core.api.tuple4.Tup4lRW;
  * where the data of a vector describes the same logical structure.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
-public class Tup4l implements Tup4lRW, Serializable, FormattableToString
+public class Tup4l implements Tup4lBase, Serializable, FormattableToString
 {
 	/**
 	 * The class version for serialization.
@@ -69,8 +67,6 @@ public class Tup4l implements Tup4lRW, Serializable, FormattableToString
 	
 	/**
 	 * Creates a new instance with all components set to 0.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4l()
 	{
@@ -81,8 +77,6 @@ public class Tup4l implements Tup4lRW, Serializable, FormattableToString
 	 * Creates a new instance from an existing instance of {@link TuplR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TuplR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4l(TuplR t)
 	{
@@ -93,8 +87,6 @@ public class Tup4l implements Tup4lRW, Serializable, FormattableToString
 	 * Creates a new instance from an existing instance of {@link Tup4lR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup4lR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4l(Tup4lR t)
 	{
@@ -105,8 +97,6 @@ public class Tup4l implements Tup4lRW, Serializable, FormattableToString
 	 * Creates a new instance with all values set to a single value.
 	 * 
 	 * @param value The value used as the initial value for all values of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4l(long value)
 	{
@@ -120,8 +110,6 @@ public class Tup4l implements Tup4lRW, Serializable, FormattableToString
 	 * @param y The initial y value of the tuple.
 	 * @param z The initial z value of the tuple.
 	 * @param w The initial w value of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4l(long x, long y, long z, long w)
 	{
@@ -132,38 +120,41 @@ public class Tup4l implements Tup4lRW, Serializable, FormattableToString
 	 * Creates a new instance with the values set to the corresponding parameters.
 	 * 
 	 * @param v The values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4l(long[] v)
 	{
 		setArray(v);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public long getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public long getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public long getZ()
 	{
 		return this.z;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public long getW()
 	{
 		return this.w;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4l setX(long x)
 	{
@@ -172,6 +163,7 @@ public class Tup4l implements Tup4lRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4l setY(long y)
 	{
@@ -180,6 +172,7 @@ public class Tup4l implements Tup4lRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4l setZ(long z)
 	{
@@ -188,6 +181,7 @@ public class Tup4l implements Tup4lRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4l setW(long w)
 	{
@@ -196,24 +190,28 @@ public class Tup4l implements Tup4lRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4l set(Tup4lR t)
 	{
 		return set(t.getX(), t.getY(), t.getZ(), t.getW());
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4l set(long value)
 	{
 		return set(value, value, value, value);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4l set(long x, long y, long z, long w)
 	{
 		return setX(x).setY(y).setZ(z).setW(w);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -226,6 +224,7 @@ public class Tup4l implements Tup4lRW, Serializable, FormattableToString
 		return result;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -258,18 +257,21 @@ public class Tup4l implements Tup4lRW, Serializable, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4l clone()
 	{
 		return new Tup4l(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "tup4l(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ", w=" + getW() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -282,51 +284,24 @@ public class Tup4l implements Tup4lRW, Serializable, FormattableToString
 		return values;
 	}
 	
-	@Override
-	public Tup4l getNewInstance(long x, long y, long z, long w)
-	{
-		return new Tup4l(x, y, z, w);
-	}
-	
-	@Override
-	public Tup4l getNewInstance(long value)
-	{
-		return (Tup4l)Tup4lRW.super.getNewInstance(value);
-	}
-	
-	@Override
-	public Tup4l getNewInstance(Tup4lR t)
-	{
-		return (Tup4l)Tup4lRW.super.getNewInstance(t);
-	}
-	
-	@Override
-	public Tup4l getNewInstance(TuplR t)
-	{
-		return (Tup4l)Tup4lRW.super.getNewInstance(t);
-	}
-	
-	@Override
-	public Tup4l getNewInstanceFromArray(long... values)
-	{
-		return (Tup4l)Tup4lRW.super.getNewInstanceFromArray(values);
-	}
-	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4l set(TuplR t)
 	{
-		return (Tup4l)Tup4lRW.super.set(t);
+		return (Tup4l)Tup4lBase.super.set(t);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4l setArray(long... values)
 	{
-		return (Tup4l)Tup4lRW.super.setArray(values);
+		return (Tup4l)Tup4lBase.super.setArray(values);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4l setByIndex(int index, long value)
 	{
-		return (Tup4l)Tup4lRW.super.setByIndex(index, value);
+		return (Tup4l)Tup4lBase.super.setByIndex(index, value);
 	}
 }

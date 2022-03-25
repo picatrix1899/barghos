@@ -35,8 +35,6 @@ import org.barghos.core.api.tuple2.Tup2bigiR;
  * It can be used as a more flexible way to create constants.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 public class ImmutableTup2bigi implements Tup2bigiR, FormattableToString
 {
@@ -64,8 +62,6 @@ public class ImmutableTup2bigi implements Tup2bigiR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup2bigi} from an existing instance of {@link TupbigiR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupbigiR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2bigi(TupbigiR t)
 	{
@@ -76,8 +72,6 @@ public class ImmutableTup2bigi implements Tup2bigiR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup2bigi} from an existing instance of {@link Tup2bigiR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup2bigiR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2bigi(Tup2bigiR t)
 	{
@@ -88,8 +82,6 @@ public class ImmutableTup2bigi implements Tup2bigiR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup2bigi} with all values set to a single value.
 	 * 
 	 * @param value The value used for all values of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2bigi(BigInteger value)
 	{
@@ -100,8 +92,6 @@ public class ImmutableTup2bigi implements Tup2bigiR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup2bigi} with the values set to the corresponding parameters.
 	 * 
 	 * @param v The x andy values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2bigi(BigInteger[] v)
 	{
@@ -114,8 +104,6 @@ public class ImmutableTup2bigi implements Tup2bigiR, FormattableToString
 	 * 
 	 * @param x The x value.
 	 * @param y The y value.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2bigi(BigInteger x, BigInteger y)
 	{
@@ -123,18 +111,21 @@ public class ImmutableTup2bigi implements Tup2bigiR, FormattableToString
 		this.y = y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public BigInteger getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public BigInteger getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -142,6 +133,7 @@ public class ImmutableTup2bigi implements Tup2bigiR, FormattableToString
 		return hashCode;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -170,18 +162,21 @@ public class ImmutableTup2bigi implements Tup2bigiR, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "immutableTup2bigi(x=" + getX() + ", y=" + getY() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public ImmutableTup2bigi clone()
 	{
 		return new ImmutableTup2bigi(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -190,36 +185,6 @@ public class ImmutableTup2bigi implements Tup2bigiR, FormattableToString
 		values.put("y", getY());
 		
 		return values;
-	}
-	
-	@Override
-	public ImmutableTup2bigi getNewInstance(BigInteger x, BigInteger y)
-	{
-		return new ImmutableTup2bigi(x, y);
-	}
-	
-	@Override
-	public ImmutableTup2bigi getNewInstance(BigInteger value)
-	{
-		return (ImmutableTup2bigi)Tup2bigiR.super.getNewInstance(value);
-	}
-	
-	@Override
-	public ImmutableTup2bigi getNewInstance(Tup2bigiR t)
-	{
-		return (ImmutableTup2bigi)Tup2bigiR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup2bigi getNewInstance(TupbigiR t)
-	{
-		return (ImmutableTup2bigi)Tup2bigiR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup2bigi getNewInstanceFromArray(BigInteger... values)
-	{
-		return (ImmutableTup2bigi)Tup2bigiR.super.getNewInstanceFromArray(values);
 	}
 	
 	/**

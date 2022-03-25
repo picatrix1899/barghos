@@ -28,8 +28,8 @@ import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupboR;
+import org.barghos.core.api.tuple2.Tup2boBase;
 import org.barghos.core.api.tuple2.Tup2boR;
-import org.barghos.core.api.tuple2.Tup2boRW;
 
 /**
  * This class represents a 2-dimensional boolean tuple.
@@ -37,10 +37,8 @@ import org.barghos.core.api.tuple2.Tup2boRW;
  * where the data of a vector describes the same logical structure.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
-public class Tup2bo implements Tup2boRW, Serializable, FormattableToString
+public class Tup2bo implements Tup2boBase, Serializable, FormattableToString
 {
 	/**
 	 * The class version for serialization.
@@ -59,8 +57,6 @@ public class Tup2bo implements Tup2boRW, Serializable, FormattableToString
 	
 	/**
 	 * Creates a new instance with all components set to false.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup2bo()
 	{
@@ -71,8 +67,6 @@ public class Tup2bo implements Tup2boRW, Serializable, FormattableToString
 	 * Creates a new instance from an existing instance of {@link TupboR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupboR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup2bo(TupboR t)
 	{
@@ -83,8 +77,6 @@ public class Tup2bo implements Tup2boRW, Serializable, FormattableToString
 	 * Creates a new instance from an existing instance of {@link Tup2boR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup2boR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup2bo(Tup2boR t)
 	{
@@ -95,8 +87,6 @@ public class Tup2bo implements Tup2boRW, Serializable, FormattableToString
 	 * Creates a new instance with all values set to a single value.
 	 * 
 	 * @param value The value used as the initial value for all values of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup2bo(boolean value)
 	{
@@ -107,8 +97,6 @@ public class Tup2bo implements Tup2boRW, Serializable, FormattableToString
 	 * Creates a new instance with the values set to the corresponding parameters.
 	 * 
 	 * @param v The x and y values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup2bo(boolean[] v)
 	{
@@ -120,26 +108,27 @@ public class Tup2bo implements Tup2boRW, Serializable, FormattableToString
 	 * 
 	 * @param x The initial x value of the tuple.
 	 * @param y The initial y value of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup2bo(boolean x, boolean y)
 	{
 		set(x, y);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2bo setX(boolean x)
 	{
@@ -148,6 +137,7 @@ public class Tup2bo implements Tup2boRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2bo setY(boolean y)
 	{
@@ -156,24 +146,28 @@ public class Tup2bo implements Tup2boRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2bo set(Tup2boR t)
 	{
-		return (Tup2bo)Tup2boRW.super.set(t);
+		return (Tup2bo)Tup2boBase.super.set(t);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2bo set(boolean value)
 	{
-		return (Tup2bo)Tup2boRW.super.set(value);
+		return (Tup2bo)Tup2boBase.super.set(value);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2bo set(boolean x, boolean y)
 	{
-		return (Tup2bo)Tup2boRW.super.set(x, y);
+		return (Tup2bo)Tup2boBase.super.set(x, y);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -184,6 +178,7 @@ public class Tup2bo implements Tup2boRW, Serializable, FormattableToString
 		return result;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -212,18 +207,21 @@ public class Tup2bo implements Tup2boRW, Serializable, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "tup2bo(x=" + getX() + ", y=" + getY() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2bo clone()
 	{
 		return new Tup2bo(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -234,51 +232,24 @@ public class Tup2bo implements Tup2boRW, Serializable, FormattableToString
 		return values;
 	}
 	
-	@Override
-	public Tup2bo getNewInstance(boolean x, boolean y)
-	{
-		return new Tup2bo(x, y);
-	}
-	
-	@Override
-	public Tup2bo getNewInstance(boolean value)
-	{
-		return (Tup2bo)Tup2boRW.super.getNewInstance(value);
-	}
-	
-	@Override
-	public Tup2bo getNewInstance(Tup2boR t)
-	{
-		return (Tup2bo)Tup2boRW.super.getNewInstance(t);
-	}
-	
-	@Override
-	public Tup2bo getNewInstance(TupboR t)
-	{
-		return (Tup2bo)Tup2boRW.super.getNewInstance(t);
-	}
-	
-	@Override
-	public Tup2bo getNewInstanceFromArray(boolean... values)
-	{
-		return (Tup2bo)Tup2boRW.super.getNewInstanceFromArray(values);
-	}
-	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2bo set(TupboR t)
 	{
-		return (Tup2bo)Tup2boRW.super.set(t);
+		return (Tup2bo)Tup2boBase.super.set(t);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2bo setArray(boolean... values)
 	{
-		return (Tup2bo)Tup2boRW.super.setArray(values);
+		return (Tup2bo)Tup2boBase.super.setArray(values);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2bo setByIndex(int index, boolean value)
 	{
-		return (Tup2bo)Tup2boRW.super.setByIndex(index, value);
+		return (Tup2bo)Tup2boBase.super.setByIndex(index, value);
 	}
 }

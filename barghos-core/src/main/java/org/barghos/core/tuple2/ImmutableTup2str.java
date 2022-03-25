@@ -34,8 +34,6 @@ import org.barghos.core.api.tuple2.Tup2strR;
  * It can be used as a more flexible way to create constants.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 public class ImmutableTup2str implements Tup2strR, FormattableToString
 {
@@ -63,8 +61,6 @@ public class ImmutableTup2str implements Tup2strR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup2str} from an existing instance of {@link TupstrR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupstrR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2str(TupstrR t)
 	{
@@ -75,8 +71,6 @@ public class ImmutableTup2str implements Tup2strR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup2str} from an existing instance of {@link Tup2strR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup2strR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2str(Tup2strR t)
 	{
@@ -87,8 +81,6 @@ public class ImmutableTup2str implements Tup2strR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup2str} with all values set to a single value.
 	 * 
 	 * @param value The value used for all values of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2str(String value)
 	{
@@ -99,8 +91,6 @@ public class ImmutableTup2str implements Tup2strR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup2str} with the values set to the corresponding parameters.
 	 * 
 	 * @param v The x and y values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2str(String[] v)
 	{
@@ -113,8 +103,6 @@ public class ImmutableTup2str implements Tup2strR, FormattableToString
 	 * 
 	 * @param x The x value.
 	 * @param y The y value.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2str(String x, String y)
 	{
@@ -122,18 +110,21 @@ public class ImmutableTup2str implements Tup2strR, FormattableToString
 		this.y = y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -144,6 +135,7 @@ public class ImmutableTup2str implements Tup2strR, FormattableToString
 		return result;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -171,18 +163,21 @@ public class ImmutableTup2str implements Tup2strR, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "immutableTup2str(x=" + getX() + ", y=" + getY() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public ImmutableTup2str clone()
 	{
 		return new ImmutableTup2str(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -191,36 +186,6 @@ public class ImmutableTup2str implements Tup2strR, FormattableToString
 		values.put("y", getY());
 		
 		return values;
-	}
-	
-	@Override
-	public ImmutableTup2str getNewInstance(String x, String y)
-	{
-		return new ImmutableTup2str(x, y);
-	}
-	
-	@Override
-	public ImmutableTup2str getNewInstance(String value)
-	{
-		return (ImmutableTup2str)Tup2strR.super.getNewInstance(value);
-	}
-	
-	@Override
-	public ImmutableTup2str getNewInstance(Tup2strR t)
-	{
-		return (ImmutableTup2str)Tup2strR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup2str getNewInstance(TupstrR t)
-	{
-		return (ImmutableTup2str)Tup2strR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup2str getNewInstanceFromArray(String... values)
-	{
-		return (ImmutableTup2str)Tup2strR.super.getNewInstanceFromArray(values);
 	}
 	
 	/**

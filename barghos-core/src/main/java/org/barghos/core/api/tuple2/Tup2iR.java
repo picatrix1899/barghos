@@ -32,8 +32,6 @@ import org.barghos.core.api.tuple.TupiR;
  * if the method only reads data from the parameter.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 public interface Tup2iR extends TupiR
 {
@@ -41,8 +39,6 @@ public interface Tup2iR extends TupiR
 	 * Returns the x value from the tuple.
 	 * 
 	 * @return The x value from the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	int getX();
 	
@@ -50,11 +46,10 @@ public interface Tup2iR extends TupiR
 	 * Returns the y value from the tuple.
 	 * 
 	 * @return The y value from the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	int getY();
 	
+	/** {@inheritDoc}} */
 	@Override
 	default boolean isZero()
 	{
@@ -62,6 +57,7 @@ public interface Tup2iR extends TupiR
 				getY() == 0;
 	}
 
+	/** {@inheritDoc}} */
 	@Override
 	default boolean isZeroWithMargin(int tolerance)
 	{
@@ -69,57 +65,14 @@ public interface Tup2iR extends TupiR
 				Math.abs(getY()) <= tolerance;
 	}
 	
-	/**
-	 * Returns a new instance of the type of the origin instance with the components adopted
-	 * from t.
-	 * 
-	 * <p>
-	 * This can be used for type continuety.
-	 * This way even while only using abstractions it is possible to create
-	 * new instances of the original. It is similar to the {@link Object#clone()}
-	 * function but the {@link Object#clone()} function requires the returned instance to be
-	 * writable.
-	 * This function on the other hand allows for example the usage of factories.
-	 * 
-	 * @param t The tuple to adopt the components from.
-	 * 
-	 * @return A new instance of the type of the origin instance
-	 */
-	default Tup2iR getNewInstance(Tup2iR t)
-	{
-		return getNewInstance(t.getX(), t.getY());
-	}
-
-	@Override
-	default Tup2iR getNewInstance(int value)
-	{
-		return getNewInstance(value, value);
-	}
-	
-	/**
-	 * Returns a new instance of the type of the origin instance with the components set to
-	 * the corresponding parameters.
-	 * 
-	 * <p>
-	 * This can be used for type continuety.
-	 * This way even while only using abstractions it is possible to create
-	 * new instances of the original. It is similar to the {@link Object#clone()}
-	 * function but the {@link Object#clone()} function requires the returned instance to be
-	 * writable. This function on the other hand allows for example the usage of factories.
-	 * 
-	 * @param x The value used for the x component.
-	 * @param y The value used for the y component.
-	 * 
-	 * @return A new instance of the type of the origin instance
-	 */
-	Tup2iR getNewInstance(int x, int y);
-	
+	/** {@inheritDoc}} */
 	@Override
 	default int getDimensions()
 	{
 		return 2;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	default int getByIndex(int index)
 	{
@@ -132,23 +85,10 @@ public interface Tup2iR extends TupiR
 		throw new IndexOutOfBoundsException(index);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	default int[] getArray()
 	{
 		return new int[] {getX(), getY()};
-	}
-	
-	@Override
-	default Tup2iR getNewInstanceFromArray(int... values)
-	{
-		int[] v = values;
-		return getNewInstance(v[0], v[1]);
-	}
-	
-	@Override
-	default Tup2iR getNewInstance(TupiR t)
-	{
-		int[] v = t.getArray();
-		return getNewInstance(v[0], v[1]);
 	}
 }

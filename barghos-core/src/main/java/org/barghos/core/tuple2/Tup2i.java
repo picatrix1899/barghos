@@ -28,8 +28,8 @@ import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupiR;
+import org.barghos.core.api.tuple2.Tup2iBase;
 import org.barghos.core.api.tuple2.Tup2iR;
-import org.barghos.core.api.tuple2.Tup2iRW;
 
 /**
  * This class represents a 2-dimensional integer tuple.
@@ -37,10 +37,8 @@ import org.barghos.core.api.tuple2.Tup2iRW;
  * where the data of a vector describes the same logical structure.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
-public class Tup2i implements Tup2iRW, Serializable, FormattableToString
+public class Tup2i implements Tup2iBase, Serializable, FormattableToString
 {
 	/**
 	 * The class version for serialization.
@@ -59,8 +57,6 @@ public class Tup2i implements Tup2iRW, Serializable, FormattableToString
 	
 	/**
 	 * Creates a new instance with all components set to 0.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup2i()
 	{
@@ -71,8 +67,6 @@ public class Tup2i implements Tup2iRW, Serializable, FormattableToString
 	 * Creates a new instance from an existing instance of {@link TupiR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupiR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup2i(TupiR t)
 	{
@@ -83,8 +77,6 @@ public class Tup2i implements Tup2iRW, Serializable, FormattableToString
 	 * Creates a new instance from an existing instance of {@link Tup2iR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup2iR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup2i(Tup2iR t)
 	{
@@ -95,8 +87,6 @@ public class Tup2i implements Tup2iRW, Serializable, FormattableToString
 	 * Creates a new instance with all values set to a single value.
 	 * 
 	 * @param value The value used as the initial value for all values of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup2i(int value)
 	{
@@ -107,8 +97,6 @@ public class Tup2i implements Tup2iRW, Serializable, FormattableToString
 	 * Creates a new instance with the values set to the corresponding parameters.
 	 * 
 	 * @param v The x and y values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup2i(int[] v)
 	{
@@ -120,26 +108,27 @@ public class Tup2i implements Tup2iRW, Serializable, FormattableToString
 	 * 
 	 * @param x The initial x value of the tuple.
 	 * @param y The initial y value of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup2i(int x, int y)
 	{
 		set(x, y);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2i setX(int x)
 	{
@@ -148,6 +137,7 @@ public class Tup2i implements Tup2iRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2i setY(int y)
 	{
@@ -156,24 +146,28 @@ public class Tup2i implements Tup2iRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2i set(Tup2iR t)
 	{
-		return (Tup2i)Tup2iRW.super.set(t);
+		return (Tup2i)Tup2iBase.super.set(t);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2i set(int value)
 	{
-		return (Tup2i)Tup2iRW.super.set(value);
+		return (Tup2i)Tup2iBase.super.set(value);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2i set(int x, int y)
 	{
-		return (Tup2i)Tup2iRW.super.set(x, y);
+		return (Tup2i)Tup2iBase.super.set(x, y);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -184,6 +178,7 @@ public class Tup2i implements Tup2iRW, Serializable, FormattableToString
 		return result;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -212,18 +207,21 @@ public class Tup2i implements Tup2iRW, Serializable, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "tup2i(x=" + getX() + ", y=" + getY() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2i clone()
 	{
 		return new Tup2i(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -234,51 +232,24 @@ public class Tup2i implements Tup2iRW, Serializable, FormattableToString
 		return values;
 	}
 	
-	@Override
-	public Tup2i getNewInstance(int x, int y)
-	{
-		return new Tup2i(x, y);
-	}
-	
-	@Override
-	public Tup2i getNewInstance(int value)
-	{
-		return (Tup2i)Tup2iRW.super.getNewInstance(value);
-	}
-	
-	@Override
-	public Tup2i getNewInstance(Tup2iR t)
-	{
-		return (Tup2i)Tup2iRW.super.getNewInstance(t);
-	}
-	
-	@Override
-	public Tup2i getNewInstance(TupiR t)
-	{
-		return (Tup2i)Tup2iRW.super.getNewInstance(t);
-	}
-	
-	@Override
-	public Tup2i getNewInstanceFromArray(int... values)
-	{
-		return (Tup2i)Tup2iRW.super.getNewInstanceFromArray(values);
-	}
-	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2i set(TupiR t)
 	{
-		return (Tup2i)Tup2iRW.super.set(t);
+		return (Tup2i)Tup2iBase.super.set(t);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2i setArray(int... values)
 	{
-		return (Tup2i)Tup2iRW.super.setArray(values);
+		return (Tup2i)Tup2iBase.super.setArray(values);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2i setByIndex(int index, int value)
 	{
-		return (Tup2i)Tup2iRW.super.setByIndex(index, value);
+		return (Tup2i)Tup2iBase.super.setByIndex(index, value);
 	}
 }

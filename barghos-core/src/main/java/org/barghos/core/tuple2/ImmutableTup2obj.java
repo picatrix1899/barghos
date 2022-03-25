@@ -34,8 +34,6 @@ import org.barghos.core.api.tuple2.Tup2objR;
  * It can be used as a more flexible way to create constants.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 public class ImmutableTup2obj implements Tup2objR, FormattableToString
 {
@@ -63,8 +61,6 @@ public class ImmutableTup2obj implements Tup2objR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup2obj} from an existing instance of {@link TupobjR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupobjR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2obj(TupobjR t)
 	{
@@ -75,8 +71,6 @@ public class ImmutableTup2obj implements Tup2objR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup2obj} from an existing instance of {@link Tup2objR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup2objR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2obj(Tup2objR t)
 	{
@@ -87,8 +81,6 @@ public class ImmutableTup2obj implements Tup2objR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup2obj} with all values set to a single value.
 	 * 
 	 * @param value The value used for all values of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2obj(Object value)
 	{
@@ -99,8 +91,6 @@ public class ImmutableTup2obj implements Tup2objR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup2obj} with the values set to the corresponding parameters.
 	 * 
 	 * @param v The x and y values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2obj(Object[] v)
 	{
@@ -113,8 +103,7 @@ public class ImmutableTup2obj implements Tup2objR, FormattableToString
 	 * 
 	 * @param x The x value.
 	 * @param y The y value.
-	 * 
-	 * @since 1.0.0.0
+
 	 */
 	public ImmutableTup2obj(Object x, Object y)
 	{
@@ -122,18 +111,21 @@ public class ImmutableTup2obj implements Tup2objR, FormattableToString
 		this.y = y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Object getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Object getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -141,6 +133,7 @@ public class ImmutableTup2obj implements Tup2objR, FormattableToString
 		return this.hashCode;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -169,12 +162,14 @@ public class ImmutableTup2obj implements Tup2objR, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "immutableTup2obj(x=" + getX() + ", y=" + getY() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -183,36 +178,6 @@ public class ImmutableTup2obj implements Tup2objR, FormattableToString
 		values.put("y", getY());
 		
 		return values;
-	}
-	
-	@Override
-	public ImmutableTup2obj getNewInstance(Object x, Object y)
-	{
-		return new ImmutableTup2obj(x, y);
-	}
-	
-	@Override
-	public ImmutableTup2obj getNewInstance(Object value)
-	{
-		return (ImmutableTup2obj)Tup2objR.super.getNewInstance(value);
-	}
-	
-	@Override
-	public ImmutableTup2obj getNewInstance(Tup2objR t)
-	{
-		return (ImmutableTup2obj)Tup2objR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup2obj getNewInstance(TupobjR t)
-	{
-		return (ImmutableTup2obj)Tup2objR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup2obj getNewInstanceFromArray(Object... values)
-	{
-		return (ImmutableTup2obj)Tup2objR.super.getNewInstanceFromArray(values);
 	}
 	
 	/**

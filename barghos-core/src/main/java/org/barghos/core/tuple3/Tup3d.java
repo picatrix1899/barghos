@@ -28,8 +28,8 @@ import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupdR;
+import org.barghos.core.api.tuple3.Tup3dBase;
 import org.barghos.core.api.tuple3.Tup3dR;
-import org.barghos.core.api.tuple3.Tup3dRW;
 
 /**
  * This class represents a 3-dimensional double tuple.
@@ -37,10 +37,8 @@ import org.barghos.core.api.tuple3.Tup3dRW;
  * where the data of a vector describes the same logical structure.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
-public class Tup3d implements Tup3dRW, Serializable, FormattableToString
+public class Tup3d implements Tup3dBase, Serializable, FormattableToString
 {
 	/**
 	 * The class version for serialization.
@@ -76,8 +74,6 @@ public class Tup3d implements Tup3dRW, Serializable, FormattableToString
 	 * Creates a new instance from an existing instance of {@link TupdR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupdR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup3d(TupdR t)
 	{
@@ -88,8 +84,6 @@ public class Tup3d implements Tup3dRW, Serializable, FormattableToString
 	 * Creates a new instance from an existing instance of {@link Tup3dR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup3dR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup3d(Tup3dR t)
 	{
@@ -100,8 +94,6 @@ public class Tup3d implements Tup3dRW, Serializable, FormattableToString
 	 * Creates a new instance with all values set to a single value.
 	 * 
 	 * @param value The value used as the initial value for all values of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup3d(double value)
 	{
@@ -114,8 +106,6 @@ public class Tup3d implements Tup3dRW, Serializable, FormattableToString
 	 * @param x The initial x value of the tuple.
 	 * @param y The initial y value of the tuple.
 	 * @param z The initial z value of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup3d(double x, double y, double z)
 	{
@@ -126,32 +116,34 @@ public class Tup3d implements Tup3dRW, Serializable, FormattableToString
 	 * Creates a new instance with the values set to the corresponding parameters.
 	 * 
 	 * @param v The values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup3d(double[] v)
 	{
 		setArray(v);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public double getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public double getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public double getZ()
 	{
 		return this.z;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3d setX(double x)
 	{
@@ -160,6 +152,7 @@ public class Tup3d implements Tup3dRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3d setY(double y)
 	{
@@ -168,6 +161,7 @@ public class Tup3d implements Tup3dRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3d setZ(double z)
 	{
@@ -176,24 +170,28 @@ public class Tup3d implements Tup3dRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3d set(Tup3dR t)
 	{
 		return set(t.getX(), t.getY(), t.getZ());
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3d set(double value)
 	{
 		return set(value, value, value);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3d set(double x, double y, double z)
 	{
 		return setX(x).setY(y).setZ(z);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -208,6 +206,7 @@ public class Tup3d implements Tup3dRW, Serializable, FormattableToString
 		return result;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -238,18 +237,21 @@ public class Tup3d implements Tup3dRW, Serializable, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3d clone()
 	{
 		return new Tup3d(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "tup3d(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -261,51 +263,24 @@ public class Tup3d implements Tup3dRW, Serializable, FormattableToString
 		return values;
 	}
 	
-	@Override
-	public Tup3d getNewInstance(double x, double y, double z)
-	{
-		return new Tup3d(x, y, z);
-	}
-	
-	@Override
-	public Tup3d getNewInstance(double value)
-	{
-		return (Tup3d)Tup3dRW.super.getNewInstance(value);
-	}
-	
-	@Override
-	public Tup3d getNewInstance(Tup3dR t)
-	{
-		return (Tup3d)Tup3dRW.super.getNewInstance(t);
-	}
-	
-	@Override
-	public Tup3d getNewInstance(TupdR t)
-	{
-		return (Tup3d)Tup3dRW.super.getNewInstance(t);
-	}
-	
-	@Override
-	public Tup3d getNewInstanceFromArray(double... values)
-	{
-		return (Tup3d)Tup3dRW.super.getNewInstanceFromArray(values);
-	}
-	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3d set(TupdR t)
 	{
-		return (Tup3d)Tup3dRW.super.set(t);
+		return (Tup3d)Tup3dBase.super.set(t);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3d setArray(double... values)
 	{
-		return (Tup3d)Tup3dRW.super.setArray(values);
+		return (Tup3d)Tup3dBase.super.setArray(values);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3d setByIndex(int index, double value)
 	{
-		return (Tup3d)Tup3dRW.super.setByIndex(index, value);
+		return (Tup3d)Tup3dBase.super.setByIndex(index, value);
 	}
 }

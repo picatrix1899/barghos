@@ -27,15 +27,12 @@ import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple2.Tup2oR;
-import org.barghos.core.api.tuple2.TupBase2oR;
 
 /**
  * Represents an immutable readonly 2-dimensional {@link Object} tuple.
  * It can be used as a more flexible way to create constants.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 public class ImmutableTup2o<X,Y> implements Tup2oR<X,Y>, FormattableToString
 {
@@ -60,13 +57,11 @@ public class ImmutableTup2o<X,Y> implements Tup2oR<X,Y>, FormattableToString
 	protected transient boolean isHashCodeGenerated;
 	
 	/**
-	 * Generates a new readonly {@link ImmutableTup2o} from an existing instance of {@link TupBase2oR} and adopts the values.
+	 * Generates a new readonly {@link ImmutableTup2o} from an existing instance of {@link Tup2oR} and adopts the values.
 	 * 
-	 * @param t An existing implementation of {@link TupBase2oR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
+	 * @param t An existing implementation of {@link Tup2oR} to adopt the values from.
 	 */
-	public ImmutableTup2o(TupBase2oR<X,Y> t)
+	public ImmutableTup2o(Tup2oR<X,Y> t)
 	{
 		this(t.getX(), t.getY());
 	}
@@ -76,8 +71,6 @@ public class ImmutableTup2o<X,Y> implements Tup2oR<X,Y>, FormattableToString
 	 * 
 	 * @param x The x value.
 	 * @param y The y value.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2o(X x, Y y)
 	{
@@ -143,20 +136,6 @@ public class ImmutableTup2o<X,Y> implements Tup2oR<X,Y>, FormattableToString
 		values.put("y", getY());
 		
 		return values;
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public ImmutableTup2o<X,Y> getNewInstance(X x, Y y)
-	{
-		return new ImmutableTup2o<>(x, y);
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public ImmutableTup2o<X,Y> getNewInstance(TupBase2oR<X,Y> t)
-	{
-		return (ImmutableTup2o<X,Y>)Tup2oR.super.getNewInstance(t);
 	}
 	
 	/**

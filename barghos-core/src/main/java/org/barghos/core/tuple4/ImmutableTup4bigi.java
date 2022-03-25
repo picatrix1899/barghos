@@ -35,8 +35,6 @@ import org.barghos.core.api.tuple4.Tup4bigiR;
  * It can be used as a more flexible way to create constants.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 public class ImmutableTup4bigi implements Tup4bigiR, FormattableToString
 {
@@ -74,8 +72,6 @@ public class ImmutableTup4bigi implements Tup4bigiR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup4bigi} from an existing instance of {@link TupbigiR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupbigiR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup4bigi(TupbigiR t)
 	{
@@ -86,8 +82,6 @@ public class ImmutableTup4bigi implements Tup4bigiR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup4bigi} from an existing instance of {@link Tup4bigiR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup4bigiR} to adopt the values from.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup4bigi(Tup4bigiR t)
 	{
@@ -98,8 +92,6 @@ public class ImmutableTup4bigi implements Tup4bigiR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup4bigi} with all values set to a single value.
 	 * 
 	 * @param value The value used for all values of the tuple.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup4bigi(BigInteger value)
 	{
@@ -113,8 +105,6 @@ public class ImmutableTup4bigi implements Tup4bigiR, FormattableToString
 	 * @param y The y value.
 	 * @param z The z value.
 	 * @param w The w value.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup4bigi(BigInteger x, BigInteger y, BigInteger z, BigInteger w)
 	{
@@ -128,8 +118,6 @@ public class ImmutableTup4bigi implements Tup4bigiR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup4bigi} with the values set to the corresponding parameters.
 	 * 
 	 * @param v The values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup4bigi(BigInteger[] v)
 	{
@@ -139,30 +127,35 @@ public class ImmutableTup4bigi implements Tup4bigiR, FormattableToString
 		this.w = v[3];
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public BigInteger getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public BigInteger getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public BigInteger getZ()
 	{
 		return this.z;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public BigInteger getW()
 	{
 		return this.w;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -171,6 +164,7 @@ public class ImmutableTup4bigi implements Tup4bigiR, FormattableToString
 		return this.hashCode;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -203,18 +197,21 @@ public class ImmutableTup4bigi implements Tup4bigiR, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "immutableTup4bigi(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ", w=" + getW() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public ImmutableTup4bigi clone()
 	{
 		return new ImmutableTup4bigi(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -225,36 +222,6 @@ public class ImmutableTup4bigi implements Tup4bigiR, FormattableToString
 		values.put("w", getW());
 		
 		return values;
-	}
-	
-	@Override
-	public ImmutableTup4bigi getNewInstance(BigInteger x, BigInteger y, BigInteger z, BigInteger w)
-	{
-		return new ImmutableTup4bigi(x, y, z, w);
-	}
-	
-	@Override
-	public ImmutableTup4bigi getNewInstance(BigInteger value)
-	{
-		return (ImmutableTup4bigi)Tup4bigiR.super.getNewInstance(value);
-	}
-	
-	@Override
-	public ImmutableTup4bigi getNewInstance(Tup4bigiR t)
-	{
-		return (ImmutableTup4bigi)Tup4bigiR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup4bigi getNewInstance(TupbigiR t)
-	{
-		return (ImmutableTup4bigi)Tup4bigiR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup4bigi getNewInstanceFromArray(BigInteger... values)
-	{
-		return (ImmutableTup4bigi)Tup4bigiR.super.getNewInstanceFromArray(values);
 	}
 	
 	/**

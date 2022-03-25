@@ -1,6 +1,6 @@
 package org.barghos.core.api.tuple;
 
-import java.util.Arrays;
+import org.barghos.core.api.util.Validateable;
 
 /**
  * This interface grants readonly access to any N-dimensional string tuples.
@@ -11,7 +11,7 @@ import java.util.Arrays;
  * 
  * @author picatrix1899
  */
-public interface TupstrR
+public interface TupstrR extends Validateable
 {
 	/**
 	 * Returns the number of dimensions of the tuple.
@@ -47,73 +47,10 @@ public interface TupstrR
 	default boolean isValid()
 	{
 		int dimensions = getDimensions();
+		
 		for(int i = 0; i < dimensions; i++)
-		{
 			if(getByIndex(i) == null) return false;
-		}
 		
 		return true;
 	}
-	
-	/**
-	 * Returns a new instance of the type of the origin instance with the components adopted
-	 * from t.
-	 * 
-	 * <p>
-	 * This can be used for type continuety.
-	 * This way even while only using abstractions it is possible to create
-	 * new instances of the original. It is similar to the {@link Object#clone()}
-	 * function but the {@link Object#clone()} function requires the returned instance to be
-	 * writable.
-	 * This function on the other hand allows for example the usage of factories.
-	 * 
-	 * @param t The tuple to adopt the components from.
-	 * 
-	 * @return A new instance of the type of the origin instance
-	 */
-	default TupstrR getNewInstance(TupstrR t)
-	{
-		return getNewInstanceFromArray(t.getArray());
-	}
-	
-	/**
-	 * Returns a new instance of the type of the origin instance with the components set to
-	 * value.
-	 * 
-	 * <p>
-	 * This can be used for type continuety.
-	 * This way even while only using abstractions it is possible to create
-	 * new instances of the original. It is similar to the {@link Object#clone()}
-	 * function but the {@link Object#clone()} function requires the returned instance to be
-	 * writable.
-	 * This function on the other hand allows for example the usage of factories.
-	 * 
-	 * @param value The value used for all components.
-	 * 
-	 * @return A new instance of the type of the origin instance
-	 */
-	default TupstrR getNewInstance(String value)
-	{
-		String[] values = new String[getDimensions()];
-		Arrays.fill(values, value);
-		
-		return getNewInstanceFromArray(values);
-	}
-	
-	/**
-	 * Returns a new instance of the type of the origin instance with the components set to
-	 * the corresponding parameters.
-	 * 
-	 * <p>
-	 * This can be used for type continuety.
-	 * This way even while only using abstractions it is possible to create
-	 * new instances of the original. It is similar to the {@link Object#clone()}
-	 * function but the {@link Object#clone()} function requires the returned instance to be
-	 * writable. This function on the other hand allows for example the usage of factories.
-	 * 
-	 * @param values The values used for the components.
-	 * 
-	 * @return A new instance of the type of the origin instance
-	 */
-	TupstrR getNewInstanceFromArray(String... values);
 }

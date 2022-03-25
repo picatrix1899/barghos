@@ -34,8 +34,6 @@ import org.barghos.core.api.tuple3.Tup3boR;
  * It can be used as a more flexible way to create constants.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 public class ImmutableTup3bo implements Tup3boR, FormattableToString
 {
@@ -68,8 +66,6 @@ public class ImmutableTup3bo implements Tup3boR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup3bo} from an existing instance of {@link TupboR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupboR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3bo(TupboR t)
 	{
@@ -80,8 +76,6 @@ public class ImmutableTup3bo implements Tup3boR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup3bo} from an existing instance of {@link Tup3boR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup3boR} to adopt the values from.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3bo(Tup3boR t)
 	{
@@ -92,8 +86,6 @@ public class ImmutableTup3bo implements Tup3boR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup3bo} with all values set to a single value.
 	 * 
 	 * @param value The value used for all values of the tuple.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3bo(boolean value)
 	{
@@ -106,8 +98,6 @@ public class ImmutableTup3bo implements Tup3boR, FormattableToString
 	 * @param x The x value.
 	 * @param y The y value.
 	 * @param z The z value.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3bo(boolean x, boolean y, boolean z)
 	{
@@ -120,8 +110,6 @@ public class ImmutableTup3bo implements Tup3boR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup3bo} with the values set to the corresponding parameters.
 	 * 
 	 * @param v The values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3bo(boolean[] v)
 	{
@@ -130,24 +118,28 @@ public class ImmutableTup3bo implements Tup3boR, FormattableToString
 		this.z = v[2];
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean getZ()
 	{
 		return this.z;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -156,6 +148,7 @@ public class ImmutableTup3bo implements Tup3boR, FormattableToString
 		return this.hashCode;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -186,18 +179,21 @@ public class ImmutableTup3bo implements Tup3boR, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "immutableTup3bo(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public ImmutableTup3bo clone()
 	{
 		return new ImmutableTup3bo(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -207,36 +203,6 @@ public class ImmutableTup3bo implements Tup3boR, FormattableToString
 		values.put("z", getZ());
 		
 		return values;
-	}
-	
-	@Override
-	public ImmutableTup3bo getNewInstance(boolean x, boolean y, boolean z)
-	{
-		return new ImmutableTup3bo(x, y, z);
-	}
-	
-	@Override
-	public ImmutableTup3bo getNewInstance(boolean value)
-	{
-		return (ImmutableTup3bo)Tup3boR.super.getNewInstance(value);
-	}
-	
-	@Override
-	public ImmutableTup3bo getNewInstance(Tup3boR t)
-	{
-		return (ImmutableTup3bo)Tup3boR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup3bo getNewInstance(TupboR t)
-	{
-		return (ImmutableTup3bo)Tup3boR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup3bo getNewInstanceFromArray(boolean... values)
-	{
-		return (ImmutableTup3bo)Tup3boR.super.getNewInstanceFromArray(values);
 	}
 	
 	/**

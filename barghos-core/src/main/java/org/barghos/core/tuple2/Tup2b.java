@@ -28,8 +28,8 @@ import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupbR;
+import org.barghos.core.api.tuple2.Tup2bBase;
 import org.barghos.core.api.tuple2.Tup2bR;
-import org.barghos.core.api.tuple2.Tup2bRW;
 
 /**
  * This class represents a 2-dimensional byte tuple.
@@ -37,10 +37,8 @@ import org.barghos.core.api.tuple2.Tup2bRW;
  * where the data of a vector describes the same logical structure.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
-public class Tup2b implements Tup2bRW, Serializable, FormattableToString
+public class Tup2b implements Tup2bBase, Serializable, FormattableToString
 {
 	/**
 	 * The class version for serialization.
@@ -59,8 +57,6 @@ public class Tup2b implements Tup2bRW, Serializable, FormattableToString
 	
 	/**
 	 * Creates a new instance with all components set to 0.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup2b()
 	{
@@ -71,8 +67,6 @@ public class Tup2b implements Tup2bRW, Serializable, FormattableToString
 	 * Creates a new instance from an existing instance of {@link TupbR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupbR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup2b(TupbR t)
 	{
@@ -83,8 +77,6 @@ public class Tup2b implements Tup2bRW, Serializable, FormattableToString
 	 * Creates a new instance from an existing instance of {@link Tup2bR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup2bR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup2b(Tup2bR t)
 	{
@@ -95,8 +87,6 @@ public class Tup2b implements Tup2bRW, Serializable, FormattableToString
 	 * Creates a new instance with all values set to a single value.
 	 * 
 	 * @param value The value used as the initial value for all values of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup2b(byte value)
 	{
@@ -107,8 +97,6 @@ public class Tup2b implements Tup2bRW, Serializable, FormattableToString
 	 * Creates a new instance with the values set to the corresponding parameters.
 	 * 
 	 * @param v The x and y values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup2b(byte[] v)
 	{
@@ -120,26 +108,27 @@ public class Tup2b implements Tup2bRW, Serializable, FormattableToString
 	 * 
 	 * @param x The initial x value of the tuple.
 	 * @param y The initial y value of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup2b(byte x, byte y)
 	{
 		set(x, y);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public byte getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public byte getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2b setX(byte x)
 	{
@@ -148,6 +137,7 @@ public class Tup2b implements Tup2bRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2b setY(byte y)
 	{
@@ -156,24 +146,28 @@ public class Tup2b implements Tup2bRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2b set(Tup2bR t)
 	{
-		return (Tup2b)Tup2bRW.super.set(t);
+		return (Tup2b)Tup2bBase.super.set(t);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2b set(byte value)
 	{
-		return (Tup2b)Tup2bRW.super.set(value);
+		return (Tup2b)Tup2bBase.super.set(value);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2b set(byte x, byte y)
 	{
-		return (Tup2b)Tup2bRW.super.set(x, y);
+		return (Tup2b)Tup2bBase.super.set(x, y);
 	}
 
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -184,6 +178,7 @@ public class Tup2b implements Tup2bRW, Serializable, FormattableToString
 		return result;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -212,18 +207,21 @@ public class Tup2b implements Tup2bRW, Serializable, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "tup2b(x=" + getX() + ", y=" + getY() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2b clone()
 	{
 		return new Tup2b(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -234,51 +232,24 @@ public class Tup2b implements Tup2bRW, Serializable, FormattableToString
 		return values;
 	}
 	
-	@Override
-	public Tup2b getNewInstance(byte x, byte y)
-	{
-		return new Tup2b(x, y);
-	}
-	
-	@Override
-	public Tup2b getNewInstance(byte value)
-	{
-		return (Tup2b)Tup2bRW.super.getNewInstance(value);
-	}
-	
-	@Override
-	public Tup2b getNewInstance(Tup2bR t)
-	{
-		return (Tup2b)Tup2bRW.super.getNewInstance(t);
-	}
-	
-	@Override
-	public Tup2b getNewInstance(TupbR t)
-	{
-		return (Tup2b)Tup2bRW.super.getNewInstance(t);
-	}
-	
-	@Override
-	public Tup2b getNewInstanceFromArray(byte... values)
-	{
-		return (Tup2b)Tup2bRW.super.getNewInstanceFromArray(values);
-	}
-	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2b set(TupbR t)
 	{
-		return (Tup2b)Tup2bRW.super.set(t);
+		return (Tup2b)Tup2bBase.super.set(t);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2b setArray(byte... values)
 	{
-		return (Tup2b)Tup2bRW.super.setArray(values);
+		return (Tup2b)Tup2bBase.super.setArray(values);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2b setByIndex(int index, byte value)
 	{
-		return (Tup2b)Tup2bRW.super.setByIndex(index, value);
+		return (Tup2b)Tup2bBase.super.setByIndex(index, value);
 	}
 }

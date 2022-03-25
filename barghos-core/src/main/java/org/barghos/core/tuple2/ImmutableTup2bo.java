@@ -34,8 +34,6 @@ import org.barghos.core.api.tuple2.Tup2boR;
  * It can be used as a more flexible way to create constants.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 public class ImmutableTup2bo implements Tup2boR, FormattableToString
 {
@@ -63,8 +61,6 @@ public class ImmutableTup2bo implements Tup2boR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup2bo} from an existing instance of {@link TupboR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupboR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2bo(TupboR t)
 	{
@@ -75,8 +71,6 @@ public class ImmutableTup2bo implements Tup2boR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup2bo} from an existing instance of {@link Tup2boR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup2boR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2bo(Tup2boR t)
 	{
@@ -87,8 +81,6 @@ public class ImmutableTup2bo implements Tup2boR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup2bo} with all values set to a single value.
 	 * 
 	 * @param value The value used for all values of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2bo(boolean value)
 	{
@@ -99,8 +91,6 @@ public class ImmutableTup2bo implements Tup2boR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup2bo} with the values set to the corresponding parameters.
 	 * 
 	 * @param v The x and y values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2bo(boolean[] v)
 	{
@@ -113,8 +103,6 @@ public class ImmutableTup2bo implements Tup2boR, FormattableToString
 	 * 
 	 * @param x The x value.
 	 * @param y The y value.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2bo(boolean x, boolean y)
 	{
@@ -122,18 +110,21 @@ public class ImmutableTup2bo implements Tup2boR, FormattableToString
 		this.y = y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -141,6 +132,7 @@ public class ImmutableTup2bo implements Tup2boR, FormattableToString
 		return this.hashCode;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -169,18 +161,21 @@ public class ImmutableTup2bo implements Tup2boR, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "immutableTup2bo(x=" + getX() + ", y=" + getY() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public ImmutableTup2bo clone()
 	{
 		return new ImmutableTup2bo(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -189,36 +184,6 @@ public class ImmutableTup2bo implements Tup2boR, FormattableToString
 		values.put("y", getY());
 		
 		return values;
-	}
-	
-	@Override
-	public ImmutableTup2bo getNewInstance(boolean x, boolean y)
-	{
-		return new ImmutableTup2bo(x, y);
-	}
-	
-	@Override
-	public ImmutableTup2bo getNewInstance(boolean value)
-	{
-		return (ImmutableTup2bo)Tup2boR.super.getNewInstance(value);
-	}
-	
-	@Override
-	public ImmutableTup2bo getNewInstance(Tup2boR t)
-	{
-		return (ImmutableTup2bo)Tup2boR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup2bo getNewInstance(TupboR t)
-	{
-		return (ImmutableTup2bo)Tup2boR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup2bo getNewInstanceFromArray(boolean... values)
-	{
-		return (ImmutableTup2bo)Tup2boR.super.getNewInstanceFromArray(values);
 	}
 	
 	/**

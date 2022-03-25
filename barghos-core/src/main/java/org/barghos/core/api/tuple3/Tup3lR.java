@@ -32,8 +32,6 @@ import org.barghos.core.api.tuple.TuplR;
  * if the method only reads data from the parameter.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 public interface Tup3lR extends TuplR
 {
@@ -41,8 +39,6 @@ public interface Tup3lR extends TuplR
 	 * Returns the x value from the tuple.
 	 * 
 	 * @return The x value from the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	long getX();
 	
@@ -50,8 +46,6 @@ public interface Tup3lR extends TuplR
 	 * Returns the y value from the tuple.
 	 * 
 	 * @return The y value from the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	long getY();
 	
@@ -59,8 +53,6 @@ public interface Tup3lR extends TuplR
 	 * Returns the z value from the tuple.
 	 * 
 	 * @return The z value from the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	long getZ();
 	
@@ -92,58 +84,14 @@ public interface Tup3lR extends TuplR
 				Math.abs(getZ()) <= tolerance;
 	}
 	
-	/**
-	 * Returns a new instance of the type of the origin instance with the components adopted
-	 * from t.
-	 * 
-	 * <p>
-	 * This can be used for type continuety.
-	 * This way even while only using abstractions it is possible to create
-	 * new instances of the original. It is similar to the {@link Object#clone()}
-	 * function but the {@link Object#clone()} function requires the returned instance to be
-	 * writable.
-	 * This function on the other hand allows for example the usage of factories.
-	 * 
-	 * @param t The tuple to adopt the components from.
-	 * 
-	 * @return A new instance of the type of the origin instance
-	 */
-	default Tup3lR getNewInstance(Tup3lR t)
-	{
-		return getNewInstance(t.getX(), t.getY(), t.getZ());
-	}
-
-	@Override
-	default Tup3lR getNewInstance(long value)
-	{
-		return getNewInstance(value, value, value);
-	}
-	
-	/**
-	 * Returns a new instance of the type of the origin instance with the components set to
-	 * the corresponding parameters.
-	 * 
-	 * <p>
-	 * This can be used for type continuety.
-	 * This way even while only using abstractions it is possible to create
-	 * new instances of the original. It is similar to the {@link Object#clone()}
-	 * function but the {@link Object#clone()} function requires the returned instance to be
-	 * writable. This function on the other hand allows for example the usage of factories.
-	 * 
-	 * @param x The value used for the x component.
-	 * @param y The value used for the y component.
-	 * @param z The value used for the z component.
-	 * 
-	 * @return A new instance of the type of the origin instance
-	 */
-	Tup3lR getNewInstance(long x, long y, long z);
-	
+	/** {@inheritDoc}} */
 	@Override
 	default int getDimensions()
 	{
 		return 3;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	default long getByIndex(int index)
 	{
@@ -157,23 +105,10 @@ public interface Tup3lR extends TuplR
 		throw new IndexOutOfBoundsException(index);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	default long[] getArray()
 	{
 		return new long[] {getX(), getY(), getZ()};
-	}
-	
-	@Override
-	default Tup3lR getNewInstanceFromArray(long... values)
-	{
-		long[] v = values;
-		return getNewInstance(v[0], v[1], v[2]);
-	}
-	
-	@Override
-	default Tup3lR getNewInstance(TuplR t)
-	{
-		long[] v = t.getArray();
-		return getNewInstance(v[0], v[1], v[2]);
 	}
 }

@@ -34,8 +34,6 @@ import org.barghos.core.api.tuple2.Tup2bR;
  * It can be used as a more flexible way to create constants.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 public class ImmutableTup2b implements Tup2bR, FormattableToString
 {
@@ -63,8 +61,6 @@ public class ImmutableTup2b implements Tup2bR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup2b} from an existing instance of {@link TupbR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupbR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2b(TupbR t)
 	{
@@ -76,8 +72,6 @@ public class ImmutableTup2b implements Tup2bR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup2b} from an existing instance of {@link Tup2bR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup2bR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2b(Tup2bR t)
 	{
@@ -88,8 +82,6 @@ public class ImmutableTup2b implements Tup2bR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup2b} with all values set to a single value.
 	 * 
 	 * @param value The value used for all values of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2b(byte value)
 	{
@@ -100,8 +92,6 @@ public class ImmutableTup2b implements Tup2bR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup2b} with the values set to the corresponding parameters.
 	 * 
 	 * @param v The x and y values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2b(byte[] v)
 	{
@@ -114,8 +104,6 @@ public class ImmutableTup2b implements Tup2bR, FormattableToString
 	 * 
 	 * @param x The x value.
 	 * @param y The y value.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2b(byte x, byte y)
 	{
@@ -123,18 +111,21 @@ public class ImmutableTup2b implements Tup2bR, FormattableToString
 		this.y = y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public byte getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public byte getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -143,6 +134,7 @@ public class ImmutableTup2b implements Tup2bR, FormattableToString
 		return this.hashCode;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -171,18 +163,21 @@ public class ImmutableTup2b implements Tup2bR, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "immutableTup2b(x=" + getX() + ", y=" + getY() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public ImmutableTup2b clone()
 	{
 		return new ImmutableTup2b(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -191,36 +186,6 @@ public class ImmutableTup2b implements Tup2bR, FormattableToString
 		values.put("y", getY());
 		
 		return values;
-	}
-	
-	@Override
-	public ImmutableTup2b getNewInstance(byte x, byte y)
-	{
-		return new ImmutableTup2b(x, y);
-	}
-	
-	@Override
-	public ImmutableTup2b getNewInstance(byte value)
-	{
-		return (ImmutableTup2b)Tup2bR.super.getNewInstance(value);
-	}
-	
-	@Override
-	public ImmutableTup2b getNewInstance(Tup2bR t)
-	{
-		return (ImmutableTup2b)Tup2bR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup2b getNewInstance(TupbR t)
-	{
-		return (ImmutableTup2b)Tup2bR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup2b getNewInstanceFromArray(byte... values)
-	{
-		return (ImmutableTup2b)Tup2bR.super.getNewInstanceFromArray(values);
 	}
 	
 	/**

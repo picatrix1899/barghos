@@ -35,8 +35,6 @@ import org.barghos.core.api.tuple4.Tup4bigdR;
  * It can be used as a more flexible way to create constants.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 public class ImmutableTup4bigd implements Tup4bigdR, FormattableToString
 {
@@ -74,8 +72,6 @@ public class ImmutableTup4bigd implements Tup4bigdR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup4bigd} from an existing instance of {@link TupbigdR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupbigdR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup4bigd(TupbigdR t)
 	{
@@ -86,8 +82,6 @@ public class ImmutableTup4bigd implements Tup4bigdR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup4bigd} from an existing instance of {@link Tup4bigdR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup4bigdR} to adopt the values from.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup4bigd(Tup4bigdR t)
 	{
@@ -98,8 +92,6 @@ public class ImmutableTup4bigd implements Tup4bigdR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup4bigd} with all values set to a single value.
 	 * 
 	 * @param value The value used for all values of the tuple.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup4bigd(BigDecimal value)
 	{
@@ -113,8 +105,6 @@ public class ImmutableTup4bigd implements Tup4bigdR, FormattableToString
 	 * @param y The y value.
 	 * @param z The z value.
 	 * @param w The w value.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup4bigd(BigDecimal x, BigDecimal y, BigDecimal z, BigDecimal w)
 	{
@@ -128,8 +118,6 @@ public class ImmutableTup4bigd implements Tup4bigdR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup4bigd} with the values set to the corresponding parameters.
 	 * 
 	 * @param v The values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup4bigd(BigDecimal[] v)
 	{
@@ -139,30 +127,35 @@ public class ImmutableTup4bigd implements Tup4bigdR, FormattableToString
 		this.w = v[3];
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public BigDecimal getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public BigDecimal getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public BigDecimal getZ()
 	{
 		return this.z;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public BigDecimal getW()
 	{
 		return this.w;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -171,6 +164,7 @@ public class ImmutableTup4bigd implements Tup4bigdR, FormattableToString
 		return this.hashCode;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -203,18 +197,21 @@ public class ImmutableTup4bigd implements Tup4bigdR, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "immutableTup4bigd(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ", w=" + getW() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public ImmutableTup4bigd clone()
 	{
 		return new ImmutableTup4bigd(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -225,36 +222,6 @@ public class ImmutableTup4bigd implements Tup4bigdR, FormattableToString
 		values.put("w", getW());
 		
 		return values;
-	}
-	
-	@Override
-	public ImmutableTup4bigd getNewInstance(BigDecimal x, BigDecimal y, BigDecimal z, BigDecimal w)
-	{
-		return new ImmutableTup4bigd(x, y, z, w);
-	}
-	
-	@Override
-	public ImmutableTup4bigd getNewInstance(BigDecimal value)
-	{
-		return (ImmutableTup4bigd)Tup4bigdR.super.getNewInstance(value);
-	}
-	
-	@Override
-	public ImmutableTup4bigd getNewInstance(Tup4bigdR t)
-	{
-		return (ImmutableTup4bigd)Tup4bigdR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup4bigd getNewInstance(TupbigdR t)
-	{
-		return (ImmutableTup4bigd)Tup4bigdR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup4bigd getNewInstanceFromArray(BigDecimal... values)
-	{
-		return (ImmutableTup4bigd)Tup4bigdR.super.getNewInstanceFromArray(values);
 	}
 	
 	/**

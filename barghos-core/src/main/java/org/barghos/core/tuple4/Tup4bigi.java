@@ -29,8 +29,8 @@ import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupbigiR;
+import org.barghos.core.api.tuple4.Tup4bigiBase;
 import org.barghos.core.api.tuple4.Tup4bigiR;
-import org.barghos.core.api.tuple4.Tup4bigiRW;
 
 /**
  * This class represents a 4-dimensional {@link BigInteger} tuple.
@@ -38,10 +38,8 @@ import org.barghos.core.api.tuple4.Tup4bigiRW;
  * where the data of a vector describes the same logical structure.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
-public class Tup4bigi implements Tup4bigiRW, Serializable, FormattableToString
+public class Tup4bigi implements Tup4bigiBase, Serializable, FormattableToString
 {
 	/**
 	 * The class version for serialization.
@@ -74,8 +72,6 @@ public class Tup4bigi implements Tup4bigiRW, Serializable, FormattableToString
 	
 	/**
 	 * Creates a new instance with all components set to {@link BigInteger#ZERO}.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4bigi()
 	{
@@ -86,8 +82,6 @@ public class Tup4bigi implements Tup4bigiRW, Serializable, FormattableToString
 	 * Creates a new instance from an existing instance of {@link TupbigiR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupbigiR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4bigi(TupbigiR t)
 	{
@@ -98,8 +92,6 @@ public class Tup4bigi implements Tup4bigiRW, Serializable, FormattableToString
 	 * Creates a new instance from an existing instance of {@link Tup4bigiR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup4bigiR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4bigi(Tup4bigiR t)
 	{
@@ -110,8 +102,6 @@ public class Tup4bigi implements Tup4bigiRW, Serializable, FormattableToString
 	 * Creates a new instance with all values set to a single value.
 	 * 
 	 * @param value The value used as the initial value for all values of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4bigi(BigInteger value)
 	{
@@ -125,8 +115,6 @@ public class Tup4bigi implements Tup4bigiRW, Serializable, FormattableToString
 	 * @param y The initial y value of the tuple.
 	 * @param z The initial z value of the tuple.
 	 * @param w The initial w value of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4bigi(BigInteger x, BigInteger y, BigInteger z, BigInteger w)
 	{
@@ -137,38 +125,41 @@ public class Tup4bigi implements Tup4bigiRW, Serializable, FormattableToString
 	 * Creates a new instance with the values set to the corresponding parameters.
 	 * 
 	 * @param v The values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4bigi(BigInteger[] v)
 	{
 		setArray(v);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public BigInteger getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public BigInteger getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public BigInteger getZ()
 	{
 		return this.z;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public BigInteger getW()
 	{
 		return this.w;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4bigi setX(BigInteger x)
 	{
@@ -177,6 +168,7 @@ public class Tup4bigi implements Tup4bigiRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4bigi setY(BigInteger y)
 	{
@@ -185,6 +177,7 @@ public class Tup4bigi implements Tup4bigiRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4bigi setZ(BigInteger z)
 	{
@@ -193,6 +186,7 @@ public class Tup4bigi implements Tup4bigiRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4bigi setW(BigInteger w)
 	{
@@ -201,24 +195,28 @@ public class Tup4bigi implements Tup4bigiRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4bigi set(Tup4bigiR t)
 	{
 		return set(t.getX(), t.getY(), t.getZ(), t.getW());
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4bigi set(BigInteger value)
 	{
 		return set(value, value, value, value);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4bigi set(BigInteger x, BigInteger y, BigInteger z, BigInteger w)
 	{
 		return setX(x).setY(y).setZ(z).setW(w);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -231,6 +229,7 @@ public class Tup4bigi implements Tup4bigiRW, Serializable, FormattableToString
 		return result;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -263,18 +262,21 @@ public class Tup4bigi implements Tup4bigiRW, Serializable, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4bigi clone()
 	{
 		return new Tup4bigi(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "tup4bigi(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ", w=" + getW() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -287,51 +289,24 @@ public class Tup4bigi implements Tup4bigiRW, Serializable, FormattableToString
 		return values;
 	}
 	
-	@Override
-	public Tup4bigi getNewInstance(BigInteger x, BigInteger y, BigInteger z, BigInteger w)
-	{
-		return new Tup4bigi(x, y, z, w);
-	}
-	
-	@Override
-	public Tup4bigi getNewInstance(BigInteger value)
-	{
-		return (Tup4bigi)Tup4bigiRW.super.getNewInstance(value);
-	}
-	
-	@Override
-	public Tup4bigi getNewInstance(Tup4bigiR t)
-	{
-		return (Tup4bigi)Tup4bigiRW.super.getNewInstance(t);
-	}
-	
-	@Override
-	public Tup4bigi getNewInstance(TupbigiR t)
-	{
-		return (Tup4bigi)Tup4bigiRW.super.getNewInstance(t);
-	}
-	
-	@Override
-	public Tup4bigi getNewInstanceFromArray(BigInteger... values)
-	{
-		return (Tup4bigi)Tup4bigiRW.super.getNewInstanceFromArray(values);
-	}
-	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4bigi set(TupbigiR t)
 	{
-		return (Tup4bigi)Tup4bigiRW.super.set(t);
+		return (Tup4bigi)Tup4bigiBase.super.set(t);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4bigi setArray(BigInteger... values)
 	{
-		return (Tup4bigi)Tup4bigiRW.super.setArray(values);
+		return (Tup4bigi)Tup4bigiBase.super.setArray(values);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4bigi setByIndex(int index, BigInteger value)
 	{
-		return (Tup4bigi)Tup4bigiRW.super.setByIndex(index, value);
+		return (Tup4bigi)Tup4bigiBase.super.setByIndex(index, value);
 	}
 }

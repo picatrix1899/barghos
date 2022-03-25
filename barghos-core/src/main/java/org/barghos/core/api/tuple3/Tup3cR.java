@@ -32,8 +32,6 @@ import org.barghos.core.api.tuple.TupcR;
  * if the method only reads data from the parameter.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 public interface Tup3cR extends TupcR
 {
@@ -41,8 +39,6 @@ public interface Tup3cR extends TupcR
 	 * Returns the x value from the tuple.
 	 * 
 	 * @return The x value from the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	char getX();
 	
@@ -50,8 +46,6 @@ public interface Tup3cR extends TupcR
 	 * Returns the y value from the tuple.
 	 * 
 	 * @return The y value from the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	char getY();
 	
@@ -59,63 +53,17 @@ public interface Tup3cR extends TupcR
 	 * Returns the z value from the tuple.
 	 * 
 	 * @return The z value from the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	char getZ();
 	
-	/**
-	 * Returns a new instance of the type of the origin instance with the components adopted
-	 * from t.
-	 * 
-	 * <p>
-	 * This can be used for type continuety.
-	 * This way even while only using abstractions it is possible to create
-	 * new instances of the original. It is similar to the {@link Object#clone()}
-	 * function but the {@link Object#clone()} function requires the returned instance to be
-	 * writable.
-	 * This function on the other hand allows for example the usage of factories.
-	 * 
-	 * @param t The tuple to adopt the components from.
-	 * 
-	 * @return A new instance of the type of the origin instance
-	 */
-	default Tup3cR getNewInstance(Tup3cR t)
-	{
-		return getNewInstance(t.getX(), t.getY(), t.getZ());
-	}
-	
-	@Override
-	default Tup3cR getNewInstance(char value)
-	{
-		return getNewInstance(value, value, value);
-	}
-	
-	/**
-	 * Returns a new instance of the type of the origin instance with the components set to
-	 * the corresponding parameters.
-	 * 
-	 * <p>
-	 * This can be used for type continuety.
-	 * This way even while only using abstractions it is possible to create
-	 * new instances of the original. It is similar to the {@link Object#clone()}
-	 * function but the {@link Object#clone()} function requires the returned instance to be
-	 * writable. This function on the other hand allows for example the usage of factories.
-	 * 
-	 * @param x The value used for the x component.
-	 * @param y The value used for the y component.
-	 * @param z The value used for the z component.
-	 * 
-	 * @return A new instance of the type of the origin instance
-	 */
-	Tup3cR getNewInstance(char x, char y, char z);
-	
+	/** {@inheritDoc}} */
 	@Override
 	default int getDimensions()
 	{
 		return 3;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	default char getByIndex(int index)
 	{
@@ -129,23 +77,10 @@ public interface Tup3cR extends TupcR
 		throw new IndexOutOfBoundsException(index);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	default char[] getArray()
 	{
 		return new char[] {getX(), getY(), getZ()};
-	}
-	
-	@Override
-	default Tup3cR getNewInstanceFromArray(char... values)
-	{
-		char[] v = values;
-		return getNewInstance(v[0], v[1], v[2]);
-	}
-	
-	@Override
-	default Tup3cR getNewInstance(TupcR t)
-	{
-		char[] v = t.getArray();
-		return getNewInstance(v[0], v[1], v[2]);
 	}
 }

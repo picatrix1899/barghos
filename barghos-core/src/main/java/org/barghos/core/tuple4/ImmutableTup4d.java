@@ -34,8 +34,6 @@ import org.barghos.core.api.tuple4.Tup4dR;
  * It can be used as a more flexible way to create constants.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 public class ImmutableTup4d implements Tup4dR, FormattableToString
 {
@@ -73,8 +71,6 @@ public class ImmutableTup4d implements Tup4dR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup4d} from an existing instance of {@link TupdR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupdR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup4d(TupdR t)
 	{
@@ -85,8 +81,6 @@ public class ImmutableTup4d implements Tup4dR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup4d} from an existing instance of {@link Tup4dR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup4dR} to adopt the values from.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup4d(Tup4dR t)
 	{
@@ -97,8 +91,6 @@ public class ImmutableTup4d implements Tup4dR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup4d} with all values set to a single value.
 	 * 
 	 * @param value The value used for all values of the tuple.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup4d(double value)
 	{
@@ -112,8 +104,6 @@ public class ImmutableTup4d implements Tup4dR, FormattableToString
 	 * @param y The y value.
 	 * @param z The z value.
 	 * @param w The w value.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup4d(double x, double y, double z, double w)
 	{
@@ -127,8 +117,6 @@ public class ImmutableTup4d implements Tup4dR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup4d} with the values set to the corresponding parameters.
 	 * 
 	 * @param v The values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup4d(double[] v)
 	{
@@ -138,30 +126,35 @@ public class ImmutableTup4d implements Tup4dR, FormattableToString
 		this.w = v[3];
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public double getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public double getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public double getZ()
 	{
 		return this.z;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public double getW()
 	{
 		return this.w;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -170,6 +163,7 @@ public class ImmutableTup4d implements Tup4dR, FormattableToString
 		return this.hashCode;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -202,18 +196,21 @@ public class ImmutableTup4d implements Tup4dR, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "immutableTup4d(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ", w=" + getW() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public ImmutableTup4d clone()
 	{
 		return new ImmutableTup4d(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -224,36 +221,6 @@ public class ImmutableTup4d implements Tup4dR, FormattableToString
 		values.put("w", getW());
 		
 		return values;
-	}
-	
-	@Override
-	public ImmutableTup4d getNewInstance(double x, double y, double z, double w)
-	{
-		return new ImmutableTup4d(x, y, z, w);
-	}
-	
-	@Override
-	public ImmutableTup4d getNewInstance(double value)
-	{
-		return (ImmutableTup4d)Tup4dR.super.getNewInstance(value);
-	}
-	
-	@Override
-	public ImmutableTup4d getNewInstance(Tup4dR t)
-	{
-		return (ImmutableTup4d)Tup4dR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup4d getNewInstance(TupdR t)
-	{
-		return (ImmutableTup4d)Tup4dR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup4d getNewInstanceFromArray(double... values)
-	{
-		return (ImmutableTup4d)Tup4dR.super.getNewInstanceFromArray(values);
 	}
 	
 	/**

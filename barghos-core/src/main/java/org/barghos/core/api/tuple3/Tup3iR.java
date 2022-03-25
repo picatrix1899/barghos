@@ -32,8 +32,6 @@ import org.barghos.core.api.tuple.TupiR;
  * if the method only reads data from the parameter.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 public interface Tup3iR extends TupiR
 {
@@ -41,8 +39,6 @@ public interface Tup3iR extends TupiR
 	 * Returns the x value from the tuple.
 	 * 
 	 * @return The x value from the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	int getX();
 	
@@ -50,8 +46,6 @@ public interface Tup3iR extends TupiR
 	 * Returns the y value from the tuple.
 	 * 
 	 * @return The y value from the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	int getY();
 	
@@ -59,11 +53,10 @@ public interface Tup3iR extends TupiR
 	 * Returns the z value from the tuple.
 	 * 
 	 * @return The z value from the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	int getZ();
 
+	/** {@inheritDoc}} */
 	@Override
 	default boolean isZero()
 	{
@@ -72,6 +65,7 @@ public interface Tup3iR extends TupiR
 				getZ() == 0;
 	}
 
+	/** {@inheritDoc}} */
 	@Override
 	default boolean isZeroWithMargin(int tolerance)
 	{
@@ -80,58 +74,14 @@ public interface Tup3iR extends TupiR
 				Math.abs(getZ()) <= tolerance;
 	}
 	
-	/**
-	 * Returns a new instance of the type of the origin instance with the components adopted
-	 * from t.
-	 * 
-	 * <p>
-	 * This can be used for type continuety.
-	 * This way even while only using abstractions it is possible to create
-	 * new instances of the original. It is similar to the {@link Object#clone()}
-	 * function but the {@link Object#clone()} function requires the returned instance to be
-	 * writable.
-	 * This function on the other hand allows for example the usage of factories.
-	 * 
-	 * @param t The tuple to adopt the components from.
-	 * 
-	 * @return A new instance of the type of the origin instance
-	 */
-	default Tup3iR getNewInstance(Tup3iR t)
-	{
-		return getNewInstance(t.getX(), t.getY(), t.getZ());
-	}
-
-	@Override
-	default Tup3iR getNewInstance(int value)
-	{
-		return getNewInstance(value, value, value);
-	}
-	
-	/**
-	 * Returns a new instance of the type of the origin instance with the components set to
-	 * the corresponding parameters.
-	 * 
-	 * <p>
-	 * This can be used for type continuety.
-	 * This way even while only using abstractions it is possible to create
-	 * new instances of the original. It is similar to the {@link Object#clone()}
-	 * function but the {@link Object#clone()} function requires the returned instance to be
-	 * writable. This function on the other hand allows for example the usage of factories.
-	 * 
-	 * @param x The value used for the x component.
-	 * @param y The value used for the y component.
-	 * @param z The value used for the z component.
-	 * 
-	 * @return A new instance of the type of the origin instance
-	 */
-	Tup3iR getNewInstance(int x, int y, int z);
-	
+	/** {@inheritDoc}} */
 	@Override
 	default int getDimensions()
 	{
 		return 3;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	default int getByIndex(int index)
 	{
@@ -145,23 +95,10 @@ public interface Tup3iR extends TupiR
 		throw new IndexOutOfBoundsException(index);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	default int[] getArray()
 	{
 		return new int[] {getX(), getY(), getZ()};
-	}
-	
-	@Override
-	default Tup3iR getNewInstanceFromArray(int... values)
-	{
-		int[] v = values;
-		return getNewInstance(v[0], v[1], v[2]);
-	}
-	
-	@Override
-	default Tup3iR getNewInstance(TupiR t)
-	{
-		int[] v = t.getArray();
-		return getNewInstance(v[0], v[1], v[2]);
 	}
 }

@@ -29,8 +29,8 @@ import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupbigdR;
+import org.barghos.core.api.tuple3.Tup3bigdBase;
 import org.barghos.core.api.tuple3.Tup3bigdR;
-import org.barghos.core.api.tuple3.Tup3bigdRW;
 
 /**
  * This class represents a 3-dimensional {@link BigDecimal} tuple.
@@ -38,10 +38,8 @@ import org.barghos.core.api.tuple3.Tup3bigdRW;
  * where the data of a vector describes the same logical structure.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
-public class Tup3bigd implements Tup3bigdRW, Serializable, FormattableToString
+public class Tup3bigd implements Tup3bigdBase, Serializable, FormattableToString
 {
 	/**
 	 * The class version for serialization.
@@ -68,8 +66,6 @@ public class Tup3bigd implements Tup3bigdRW, Serializable, FormattableToString
 	
 	/**
 	 * Creates a new instance with all components set to {@link BigDecimal#ZERO}.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup3bigd()
 	{
@@ -80,8 +76,6 @@ public class Tup3bigd implements Tup3bigdRW, Serializable, FormattableToString
 	 * Creates a new instance from an existing instance of {@link TupbigdR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupbigdR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup3bigd(TupbigdR t)
 	{
@@ -92,8 +86,6 @@ public class Tup3bigd implements Tup3bigdRW, Serializable, FormattableToString
 	 * Creates a new instance from an existing instance of {@link Tup3bigdR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup3bigdR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup3bigd(Tup3bigdR t)
 	{
@@ -104,8 +96,6 @@ public class Tup3bigd implements Tup3bigdRW, Serializable, FormattableToString
 	 * Creates a new instance with all values set to a single value.
 	 * 
 	 * @param value The value used as the initial value for all values of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup3bigd(BigDecimal value)
 	{
@@ -118,8 +108,6 @@ public class Tup3bigd implements Tup3bigdRW, Serializable, FormattableToString
 	 * @param x The initial x value of the tuple.
 	 * @param y The initial y value of the tuple.
 	 * @param z The initial z value of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup3bigd(BigDecimal x, BigDecimal y, BigDecimal z)
 	{
@@ -130,32 +118,34 @@ public class Tup3bigd implements Tup3bigdRW, Serializable, FormattableToString
 	 * Creates a new instance with the values set to the corresponding parameters.
 	 * 
 	 * @param v The values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup3bigd(BigDecimal[] v)
 	{
 		setArray(v);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public BigDecimal getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public BigDecimal getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public BigDecimal getZ()
 	{
 		return this.z;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3bigd setX(BigDecimal x)
 	{
@@ -164,6 +154,7 @@ public class Tup3bigd implements Tup3bigdRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3bigd setY(BigDecimal y)
 	{
@@ -172,6 +163,7 @@ public class Tup3bigd implements Tup3bigdRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3bigd setZ(BigDecimal z)
 	{
@@ -180,24 +172,28 @@ public class Tup3bigd implements Tup3bigdRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3bigd set(Tup3bigdR t)
 	{
 		return set(t.getX(), t.getY(), t.getZ());
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3bigd set(BigDecimal value)
 	{
 		return set(value, value, value);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3bigd set(BigDecimal x, BigDecimal y, BigDecimal z)
 	{
 		return setX(x).setY(y).setZ(z);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -209,6 +205,7 @@ public class Tup3bigd implements Tup3bigdRW, Serializable, FormattableToString
 		return result;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -239,18 +236,21 @@ public class Tup3bigd implements Tup3bigdRW, Serializable, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3bigd clone()
 	{
 		return new Tup3bigd(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "tup3bigd(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -262,51 +262,24 @@ public class Tup3bigd implements Tup3bigdRW, Serializable, FormattableToString
 		return values;
 	}
 	
-	@Override
-	public Tup3bigd getNewInstance(BigDecimal x, BigDecimal y, BigDecimal z)
-	{
-		return new Tup3bigd(x, y, z);
-	}
-	
-	@Override
-	public Tup3bigd getNewInstance(BigDecimal value)
-	{
-		return (Tup3bigd)Tup3bigdRW.super.getNewInstance(value);
-	}
-	
-	@Override
-	public Tup3bigd getNewInstance(Tup3bigdR t)
-	{
-		return (Tup3bigd)Tup3bigdRW.super.getNewInstance(t);
-	}
-	
-	@Override
-	public Tup3bigd getNewInstance(TupbigdR t)
-	{
-		return (Tup3bigd)Tup3bigdRW.super.getNewInstance(t);
-	}
-	
-	@Override
-	public Tup3bigd getNewInstanceFromArray(BigDecimal... values)
-	{
-		return (Tup3bigd)Tup3bigdRW.super.getNewInstanceFromArray(values);
-	}
-	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3bigd set(TupbigdR t)
 	{
-		return (Tup3bigd)Tup3bigdRW.super.set(t);
+		return (Tup3bigd)Tup3bigdBase.super.set(t);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3bigd setArray(BigDecimal... values)
 	{
-		return (Tup3bigd)Tup3bigdRW.super.setArray(values);
+		return (Tup3bigd)Tup3bigdBase.super.setArray(values);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3bigd setByIndex(int index, BigDecimal value)
 	{
-		return (Tup3bigd)Tup3bigdRW.super.setByIndex(index, value);
+		return (Tup3bigd)Tup3bigdBase.super.setByIndex(index, value);
 	}
 }

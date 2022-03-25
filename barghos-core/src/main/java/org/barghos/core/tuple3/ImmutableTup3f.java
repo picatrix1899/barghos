@@ -34,8 +34,6 @@ import org.barghos.core.api.tuple3.Tup3fR;
  * It can be used as a more flexible way to create constants.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 public class ImmutableTup3f implements Tup3fR, FormattableToString
 {
@@ -68,8 +66,6 @@ public class ImmutableTup3f implements Tup3fR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup3f} from an existing instance of {@link TupfR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupfR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3f(TupfR t)
 	{
@@ -80,8 +76,6 @@ public class ImmutableTup3f implements Tup3fR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup3f} from an existing instance of {@link Tup3fR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup3fR} to adopt the values from.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3f(Tup3fR t)
 	{
@@ -92,8 +86,6 @@ public class ImmutableTup3f implements Tup3fR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup3f} with all values set to a single value.
 	 * 
 	 * @param value The value used for all values of the tuple.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3f(float value)
 	{
@@ -106,8 +98,6 @@ public class ImmutableTup3f implements Tup3fR, FormattableToString
 	 * @param x The x value.
 	 * @param y The y value.
 	 * @param z The z value.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3f(float x, float y, float z)
 	{
@@ -120,8 +110,6 @@ public class ImmutableTup3f implements Tup3fR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup3f} with the values set to the corresponding parameters.
 	 * 
 	 * @param v The values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3f(float[] v)
 	{
@@ -130,24 +118,28 @@ public class ImmutableTup3f implements Tup3fR, FormattableToString
 		this.z = v[2];
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public float getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public float getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public float getZ()
 	{
 		return this.z;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -156,6 +148,7 @@ public class ImmutableTup3f implements Tup3fR, FormattableToString
 		return this.hashCode;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -186,18 +179,21 @@ public class ImmutableTup3f implements Tup3fR, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "immutableTup3f(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public ImmutableTup3f clone()
 	{
 		return new ImmutableTup3f(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -207,36 +203,6 @@ public class ImmutableTup3f implements Tup3fR, FormattableToString
 		values.put("z", getZ());
 		
 		return values;
-	}
-	
-	@Override
-	public ImmutableTup3f getNewInstance(float x, float y, float z)
-	{
-		return new ImmutableTup3f(x, y, z);
-	}
-	
-	@Override
-	public ImmutableTup3f getNewInstance(float value)
-	{
-		return (ImmutableTup3f)Tup3fR.super.getNewInstance(value);
-	}
-	
-	@Override
-	public ImmutableTup3f getNewInstance(Tup3fR t)
-	{
-		return (ImmutableTup3f)Tup3fR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup3f getNewInstance(TupfR t)
-	{
-		return (ImmutableTup3f)Tup3fR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup3f getNewInstanceFromArray(float... values)
-	{
-		return (ImmutableTup3f)Tup3fR.super.getNewInstanceFromArray(values);
 	}
 	
 	/**

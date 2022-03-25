@@ -34,8 +34,6 @@ import org.barghos.core.api.tuple2.Tup2iR;
  * It can be used as a more flexible way to create constants.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 public class ImmutableTup2i implements Tup2iR, FormattableToString
 {
@@ -63,8 +61,6 @@ public class ImmutableTup2i implements Tup2iR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup2i} from an existing instance of {@link TupiR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupiR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2i(TupiR t)
 	{
@@ -75,8 +71,6 @@ public class ImmutableTup2i implements Tup2iR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup2i} from an existing instance of {@link Tup2iR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup2iR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2i(Tup2iR t)
 	{
@@ -87,8 +81,6 @@ public class ImmutableTup2i implements Tup2iR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup2i} with all values set to a single value.
 	 * 
 	 * @param value The value used for all values of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2i(int value)
 	{
@@ -99,8 +91,6 @@ public class ImmutableTup2i implements Tup2iR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup2i} with the values set to the corresponding parameters.
 	 * 
 	 * @param v The x and y values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2i(int[] v)
 	{
@@ -113,8 +103,6 @@ public class ImmutableTup2i implements Tup2iR, FormattableToString
 	 * 
 	 * @param x The x value.
 	 * @param y The y value.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2i(int x, int y)
 	{
@@ -122,18 +110,21 @@ public class ImmutableTup2i implements Tup2iR, FormattableToString
 		this.y = y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -141,6 +132,7 @@ public class ImmutableTup2i implements Tup2iR, FormattableToString
 		return this.hashCode;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -168,18 +160,21 @@ public class ImmutableTup2i implements Tup2iR, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "immutableTup2i(x=" + getX() + ", y=" + getY() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public ImmutableTup2i clone()
 	{
 		return new ImmutableTup2i(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -188,36 +183,6 @@ public class ImmutableTup2i implements Tup2iR, FormattableToString
 		values.put("y", getY());
 		
 		return values;
-	}
-	
-	@Override
-	public ImmutableTup2i getNewInstance(int x, int y)
-	{
-		return new ImmutableTup2i(x, y);
-	}
-	
-	@Override
-	public ImmutableTup2i getNewInstance(int value)
-	{
-		return (ImmutableTup2i)Tup2iR.super.getNewInstance(value);
-	}
-	
-	@Override
-	public ImmutableTup2i getNewInstance(Tup2iR t)
-	{
-		return (ImmutableTup2i)Tup2iR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup2i getNewInstance(TupiR t)
-	{
-		return (ImmutableTup2i)Tup2iR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup2i getNewInstanceFromArray(int... values)
-	{
-		return (ImmutableTup2i)Tup2iR.super.getNewInstanceFromArray(values);
 	}
 	
 	/**

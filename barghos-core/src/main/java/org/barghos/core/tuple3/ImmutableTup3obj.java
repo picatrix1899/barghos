@@ -34,8 +34,6 @@ import org.barghos.core.api.tuple3.Tup3objR;
  * It can be used as a more flexible way to create constants.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 public class ImmutableTup3obj implements Tup3objR, FormattableToString
 {
@@ -68,8 +66,6 @@ public class ImmutableTup3obj implements Tup3objR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup3obj} from an existing instance of {@link TupobjR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupobjR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3obj(TupobjR t)
 	{
@@ -80,8 +76,6 @@ public class ImmutableTup3obj implements Tup3objR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup3obj} from an existing instance of {@link Tup3objR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup3objR} to adopt the values from.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3obj(Tup3objR t)
 	{
@@ -92,8 +86,6 @@ public class ImmutableTup3obj implements Tup3objR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup3obj} with all values set to a single value.
 	 * 
 	 * @param value The value used for all values of the tuple.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3obj(Object value)
 	{
@@ -106,8 +98,6 @@ public class ImmutableTup3obj implements Tup3objR, FormattableToString
 	 * @param x The x value.
 	 * @param y The y value.
 	 * @param z The z value.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3obj(Object x, Object y, Object z)
 	{
@@ -120,8 +110,6 @@ public class ImmutableTup3obj implements Tup3objR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup3obj} with the values set to the corresponding parameters.
 	 * 
 	 * @param v The values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3obj(Object[] v)
 	{
@@ -130,24 +118,28 @@ public class ImmutableTup3obj implements Tup3objR, FormattableToString
 		this.z = v[2];
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Object getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Object getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Object getZ()
 	{
 		return this.z;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -156,6 +148,7 @@ public class ImmutableTup3obj implements Tup3objR, FormattableToString
 		return this.hashCode;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -186,18 +179,21 @@ public class ImmutableTup3obj implements Tup3objR, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "immutableTup3obj(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public ImmutableTup3obj clone()
 	{
 		return new ImmutableTup3obj(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -207,36 +203,6 @@ public class ImmutableTup3obj implements Tup3objR, FormattableToString
 		values.put("z", getZ());
 		
 		return values;
-	}
-	
-	@Override
-	public ImmutableTup3obj getNewInstance(Object x, Object y, Object z)
-	{
-		return new ImmutableTup3obj(x, y, z);
-	}
-	
-	@Override
-	public ImmutableTup3obj getNewInstance(Object value)
-	{
-		return (ImmutableTup3obj)Tup3objR.super.getNewInstance(value);
-	}
-	
-	@Override
-	public ImmutableTup3obj getNewInstance(Tup3objR t)
-	{
-		return (ImmutableTup3obj)Tup3objR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup3obj getNewInstance(TupobjR t)
-	{
-		return (ImmutableTup3obj)Tup3objR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup3obj getNewInstanceFromArray(Object... values)
-	{
-		return (ImmutableTup3obj)Tup3objR.super.getNewInstanceFromArray(values);
 	}
 	
 	/**

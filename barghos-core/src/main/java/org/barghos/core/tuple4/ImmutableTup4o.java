@@ -33,8 +33,6 @@ import org.barghos.core.api.tuple4.Tup4oR;
  * It can be used as a more flexible way to create constants.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 public class ImmutableTup4o<X,Y,Z,W> implements Tup4oR<X,Y,Z,W>, FormattableToString
 {
@@ -72,8 +70,6 @@ public class ImmutableTup4o<X,Y,Z,W> implements Tup4oR<X,Y,Z,W>, FormattableToSt
 	 * Generates a new readonly {@link ImmutableTup4o} from an existing instance of {@link Tup4oR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup4oR} to adopt the values from.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup4o(Tup4oR<X,Y,Z,W> t)
 	{
@@ -87,8 +83,6 @@ public class ImmutableTup4o<X,Y,Z,W> implements Tup4oR<X,Y,Z,W>, FormattableToSt
 	 * @param y The y value.
 	 * @param z The z value.
 	 * @param w The w value.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup4o(X x, Y y, Z z, W w)
 	{
@@ -98,30 +92,35 @@ public class ImmutableTup4o<X,Y,Z,W> implements Tup4oR<X,Y,Z,W>, FormattableToSt
 		this.w = w;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public X getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Y getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Z getZ()
 	{
 		return this.z;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public W getW()
 	{
 		return this.w;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -130,6 +129,7 @@ public class ImmutableTup4o<X,Y,Z,W> implements Tup4oR<X,Y,Z,W>, FormattableToSt
 		return this.hashCode;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -151,18 +151,21 @@ public class ImmutableTup4o<X,Y,Z,W> implements Tup4oR<X,Y,Z,W>, FormattableToSt
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "immutableTup4o(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ", w=" + getW() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public ImmutableTup4o<X,Y,Z,W> clone()
 	{
 		return new ImmutableTup4o<X,Y,Z,W>(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -173,18 +176,6 @@ public class ImmutableTup4o<X,Y,Z,W> implements Tup4oR<X,Y,Z,W>, FormattableToSt
 		values.put("w", getW());
 		
 		return values;
-	}
-	
-	@Override
-	public ImmutableTup4o<X,Y,Z,W> getNewInstance(X x, Y y, Z z, W w)
-	{
-		return new ImmutableTup4o<X,Y,Z,W>(x, y, z, w);
-	}
-	
-	@Override
-	public ImmutableTup4o<X,Y,Z,W> getNewInstance(Tup4oR<X,Y,Z,W> t)
-	{
-		return (ImmutableTup4o<X,Y,Z,W>)Tup4oR.super.getNewInstance(t);
 	}
 	
 	/**

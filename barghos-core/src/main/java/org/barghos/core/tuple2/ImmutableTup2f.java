@@ -34,8 +34,6 @@ import org.barghos.core.api.tuple2.Tup2fR;
  * It can be used as a more flexible way to create constants.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 public class ImmutableTup2f implements Tup2fR, FormattableToString
 {
@@ -63,8 +61,6 @@ public class ImmutableTup2f implements Tup2fR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup2f} from an existing instance of {@link TupfR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupfR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2f(TupfR t)
 	{
@@ -75,8 +71,6 @@ public class ImmutableTup2f implements Tup2fR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup2f} from an existing instance of {@link Tup2fR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup2fR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2f(Tup2fR t)
 	{
@@ -87,8 +81,6 @@ public class ImmutableTup2f implements Tup2fR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup2f} with all values set to a single value.
 	 * 
 	 * @param value The value used for all values of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2f(float value)
 	{
@@ -99,8 +91,6 @@ public class ImmutableTup2f implements Tup2fR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup2f} with the values set to the corresponding parameters.
 	 * 
 	 * @param v The x and y values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2f(float[] v)
 	{
@@ -113,8 +103,6 @@ public class ImmutableTup2f implements Tup2fR, FormattableToString
 	 * 
 	 * @param x The x value.
 	 * @param y The y value.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2f(float x, float y)
 	{
@@ -122,18 +110,21 @@ public class ImmutableTup2f implements Tup2fR, FormattableToString
 		this.y = y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public float getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public float getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -141,6 +132,7 @@ public class ImmutableTup2f implements Tup2fR, FormattableToString
 		return this.hashCode;
 	}
 
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -168,18 +160,21 @@ public class ImmutableTup2f implements Tup2fR, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "immutableTup2f(x=" + getX() + ", y=" + getY() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public ImmutableTup2f clone()
 	{
 		return new ImmutableTup2f(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -188,36 +183,6 @@ public class ImmutableTup2f implements Tup2fR, FormattableToString
 		values.put("y", getY());
 		
 		return values;
-	}
-	
-	@Override
-	public ImmutableTup2f getNewInstance(Tup2fR t)
-	{
-		return (ImmutableTup2f)Tup2fR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup2f getNewInstance(TupfR t)
-	{
-		return (ImmutableTup2f)Tup2fR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup2f getNewInstance(float value)
-	{
-		return (ImmutableTup2f)Tup2fR.super.getNewInstance(value);
-	}
-	
-	@Override
-	public ImmutableTup2f getNewInstanceFromArray(float... values)
-	{
-		return (ImmutableTup2f)Tup2fR.super.getNewInstanceFromArray(values);
-	}
-	
-	@Override
-	public ImmutableTup2f getNewInstance(float x, float y)
-	{
-		return new ImmutableTup2f(x, y);
 	}
 	
 	/**

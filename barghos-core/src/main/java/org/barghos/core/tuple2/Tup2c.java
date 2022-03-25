@@ -28,8 +28,8 @@ import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupcR;
+import org.barghos.core.api.tuple2.Tup2cBase;
 import org.barghos.core.api.tuple2.Tup2cR;
-import org.barghos.core.api.tuple2.Tup2cRW;
 
 /**
  * This class represents a 2-dimensional char tuple.
@@ -37,10 +37,8 @@ import org.barghos.core.api.tuple2.Tup2cRW;
  * where the data of a vector describes the same logical structure.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
-public class Tup2c implements Tup2cRW, Serializable, FormattableToString
+public class Tup2c implements Tup2cBase, Serializable, FormattableToString
 {
 	/**
 	 * The class version for serialization.
@@ -59,8 +57,6 @@ public class Tup2c implements Tup2cRW, Serializable, FormattableToString
 	
 	/**
 	 * Creates a new instance with all components set to 0.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup2c()
 	{
@@ -71,8 +67,6 @@ public class Tup2c implements Tup2cRW, Serializable, FormattableToString
 	 * Creates a new instance from an existing instance of {@link TupcR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupcR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup2c(TupcR t)
 	{
@@ -83,8 +77,6 @@ public class Tup2c implements Tup2cRW, Serializable, FormattableToString
 	 * Creates a new instance from an existing instance of {@link Tup2cR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup2cR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup2c(Tup2cR t)
 	{
@@ -95,8 +87,6 @@ public class Tup2c implements Tup2cRW, Serializable, FormattableToString
 	 * Creates a new instance with all values set to a single value.
 	 * 
 	 * @param value The value used as the initial value for all values of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup2c(char value)
 	{
@@ -107,8 +97,6 @@ public class Tup2c implements Tup2cRW, Serializable, FormattableToString
 	 * Creates a new instance with the values set to the corresponding parameters.
 	 * 
 	 * @param v The x and y values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup2c(char[] v)
 	{
@@ -120,26 +108,27 @@ public class Tup2c implements Tup2cRW, Serializable, FormattableToString
 	 * 
 	 * @param x The initial x value of the tuple.
 	 * @param y The initial y value of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup2c(char x, char y)
 	{
 		set(x, y);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public char getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public char getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2c setX(char x)
 	{
@@ -148,6 +137,7 @@ public class Tup2c implements Tup2cRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2c setY(char y)
 	{
@@ -156,24 +146,28 @@ public class Tup2c implements Tup2cRW, Serializable, FormattableToString
 		return this;
 	}
 
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2c set(Tup2cR t)
 	{
-		return (Tup2c)Tup2cRW.super.set(t);
+		return (Tup2c)Tup2cBase.super.set(t);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2c set(char value)
 	{
-		return (Tup2c)Tup2cRW.super.set(value);
+		return (Tup2c)Tup2cBase.super.set(value);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2c set(char x, char y)
 	{
-		return (Tup2c)Tup2cRW.super.set(x, y);
+		return (Tup2c)Tup2cBase.super.set(x, y);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -184,6 +178,7 @@ public class Tup2c implements Tup2cRW, Serializable, FormattableToString
 		return result;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -212,18 +207,21 @@ public class Tup2c implements Tup2cRW, Serializable, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "tup2c(x=" + getX() + ", y=" + getY() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2c clone()
 	{
 		return new Tup2c(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -234,51 +232,24 @@ public class Tup2c implements Tup2cRW, Serializable, FormattableToString
 		return values;
 	}
 	
-	@Override
-	public Tup2c getNewInstance(char x, char y)
-	{
-		return new Tup2c(x, y);
-	}
-	
-	@Override
-	public Tup2c getNewInstance(char value)
-	{
-		return (Tup2c)Tup2cRW.super.getNewInstance(value);
-	}
-	
-	@Override
-	public Tup2c getNewInstance(Tup2cR t)
-	{
-		return (Tup2c)Tup2cRW.super.getNewInstance(t);
-	}
-	
-	@Override
-	public Tup2c getNewInstance(TupcR t)
-	{
-		return (Tup2c)Tup2cRW.super.getNewInstance(t);
-	}
-	
-	@Override
-	public Tup2c getNewInstanceFromArray(char... values)
-	{
-		return (Tup2c)Tup2cRW.super.getNewInstanceFromArray(values);
-	}
-	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2c set(TupcR t)
 	{
-		return (Tup2c)Tup2cRW.super.set(t);
+		return (Tup2c)Tup2cBase.super.set(t);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2c setArray(char... values)
 	{
-		return (Tup2c)Tup2cRW.super.setArray(values);
+		return (Tup2c)Tup2cBase.super.setArray(values);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2c setByIndex(int index, char value)
 	{
-		return (Tup2c)Tup2cRW.super.setByIndex(index, value);
+		return (Tup2c)Tup2cBase.super.setByIndex(index, value);
 	}
 }

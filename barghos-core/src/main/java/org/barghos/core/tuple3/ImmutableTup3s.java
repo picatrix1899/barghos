@@ -34,8 +34,6 @@ import org.barghos.core.api.tuple3.Tup3sR;
  * It can be used as a more flexible way to create constants.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 public class ImmutableTup3s implements Tup3sR, FormattableToString
 {
@@ -68,8 +66,6 @@ public class ImmutableTup3s implements Tup3sR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup3s} from an existing instance of {@link TupsR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupsR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3s(TupsR t)
 	{
@@ -80,8 +76,6 @@ public class ImmutableTup3s implements Tup3sR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup3s} from an existing instance of {@link Tup3sR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup3sR} to adopt the values from.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3s(Tup3sR t)
 	{
@@ -92,8 +86,6 @@ public class ImmutableTup3s implements Tup3sR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup3s} with all values set to a single value.
 	 * 
 	 * @param value The value used for all values of the tuple.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3s(short value)
 	{
@@ -106,8 +98,6 @@ public class ImmutableTup3s implements Tup3sR, FormattableToString
 	 * @param x The x value.
 	 * @param y The y value.
 	 * @param z The z value.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3s(short x, short y, short z)
 	{
@@ -120,8 +110,6 @@ public class ImmutableTup3s implements Tup3sR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup3s} with the values set to the corresponding parameters.
 	 * 
 	 * @param v The values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3s(short[] v)
 	{
@@ -130,24 +118,28 @@ public class ImmutableTup3s implements Tup3sR, FormattableToString
 		this.z = v[2];
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public short getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public short getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public short getZ()
 	{
 		return this.z;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -156,6 +148,7 @@ public class ImmutableTup3s implements Tup3sR, FormattableToString
 		return this.hashCode;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -186,18 +179,21 @@ public class ImmutableTup3s implements Tup3sR, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "immutableTup3s(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public ImmutableTup3s clone()
 	{
 		return new ImmutableTup3s(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -207,36 +203,6 @@ public class ImmutableTup3s implements Tup3sR, FormattableToString
 		values.put("z", getZ());
 		
 		return values;
-	}
-	
-	@Override
-	public ImmutableTup3s getNewInstance(short x, short y, short z)
-	{
-		return new ImmutableTup3s(x, y, z);
-	}
-	
-	@Override
-	public ImmutableTup3s getNewInstance(short value)
-	{
-		return (ImmutableTup3s)Tup3sR.super.getNewInstance(value);
-	}
-	
-	@Override
-	public ImmutableTup3s getNewInstance(Tup3sR t)
-	{
-		return (ImmutableTup3s)Tup3sR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup3s getNewInstance(TupsR t)
-	{
-		return (ImmutableTup3s)Tup3sR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup3s getNewInstanceFromArray(short... values)
-	{
-		return (ImmutableTup3s)Tup3sR.super.getNewInstanceFromArray(values);
 	}
 	
 	/**

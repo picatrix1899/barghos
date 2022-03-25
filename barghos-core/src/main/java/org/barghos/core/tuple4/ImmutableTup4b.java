@@ -34,8 +34,6 @@ import org.barghos.core.api.tuple4.Tup4bR;
  * It can be used as a more flexible way to create constants.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 public class ImmutableTup4b implements Tup4bR, FormattableToString
 {
@@ -73,8 +71,6 @@ public class ImmutableTup4b implements Tup4bR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup4b} from an existing instance of {@link TupbR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupbR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup4b(TupbR t)
 	{
@@ -85,8 +81,6 @@ public class ImmutableTup4b implements Tup4bR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup4b} from an existing instance of {@link Tup4bR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup4bR} to adopt the values from.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup4b(Tup4bR t)
 	{
@@ -97,8 +91,6 @@ public class ImmutableTup4b implements Tup4bR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup4b} with all values set to a single value.
 	 * 
 	 * @param value The value used for all values of the tuple.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup4b(byte value)
 	{
@@ -112,8 +104,6 @@ public class ImmutableTup4b implements Tup4bR, FormattableToString
 	 * @param y The y value.
 	 * @param z The z value.
 	 * @param w The w value.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup4b(byte x, byte y, byte z, byte w)
 	{
@@ -127,8 +117,6 @@ public class ImmutableTup4b implements Tup4bR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup4b} with the values set to the corresponding parameters.
 	 * 
 	 * @param v The values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup4b(byte[] v)
 	{
@@ -138,30 +126,35 @@ public class ImmutableTup4b implements Tup4bR, FormattableToString
 		this.w = v[3];
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public byte getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public byte getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public byte getZ()
 	{
 		return this.z;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public byte getW()
 	{
 		return this.w;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -170,6 +163,7 @@ public class ImmutableTup4b implements Tup4bR, FormattableToString
 		return this.hashCode;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -202,18 +196,21 @@ public class ImmutableTup4b implements Tup4bR, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "immutableTup4b(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ", w=" + getW() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public ImmutableTup4b clone()
 	{
 		return new ImmutableTup4b(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -224,36 +221,6 @@ public class ImmutableTup4b implements Tup4bR, FormattableToString
 		values.put("w", getW());
 		
 		return values;
-	}
-	
-	@Override
-	public ImmutableTup4b getNewInstance(byte x, byte y, byte z, byte w)
-	{
-		return new ImmutableTup4b(x, y, z, w);
-	}
-	
-	@Override
-	public ImmutableTup4b getNewInstance(byte value)
-	{
-		return (ImmutableTup4b)Tup4bR.super.getNewInstance(value);
-	}
-	
-	@Override
-	public ImmutableTup4b getNewInstance(Tup4bR t)
-	{
-		return (ImmutableTup4b)Tup4bR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup4b getNewInstance(TupbR t)
-	{
-		return (ImmutableTup4b)Tup4bR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup4b getNewInstanceFromArray(byte... values)
-	{
-		return (ImmutableTup4b)Tup4bR.super.getNewInstanceFromArray(values);
 	}
 	
 	/**

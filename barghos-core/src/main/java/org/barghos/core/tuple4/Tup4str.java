@@ -28,8 +28,8 @@ import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupstrR;
+import org.barghos.core.api.tuple4.Tup4strBase;
 import org.barghos.core.api.tuple4.Tup4strR;
-import org.barghos.core.api.tuple4.Tup4strRW;
 
 /**
  * This class represents a 4-dimensional string tuple.
@@ -37,10 +37,8 @@ import org.barghos.core.api.tuple4.Tup4strRW;
  * where the data of a vector describes the same logical structure.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
-public class Tup4str implements Tup4strRW, Serializable, FormattableToString
+public class Tup4str implements Tup4strBase, Serializable, FormattableToString
 {
 	/**
 	 * The class version for serialization.
@@ -73,8 +71,6 @@ public class Tup4str implements Tup4strRW, Serializable, FormattableToString
 	
 	/**
 	 * Creates a new instance with all components set to "".
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4str()
 	{
@@ -85,8 +81,6 @@ public class Tup4str implements Tup4strRW, Serializable, FormattableToString
 	 * Creates a new instance from an existing instance of {@link TupstrR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupstrR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4str(TupstrR t)
 	{
@@ -97,8 +91,6 @@ public class Tup4str implements Tup4strRW, Serializable, FormattableToString
 	 * Creates a new instance from an existing instance of {@link Tup4strR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup4strR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4str(Tup4strR t)
 	{
@@ -109,8 +101,6 @@ public class Tup4str implements Tup4strRW, Serializable, FormattableToString
 	 * Creates a new instance with all values set to a single value.
 	 * 
 	 * @param value The value used as the initial value for all values of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4str(String value)
 	{
@@ -124,8 +114,6 @@ public class Tup4str implements Tup4strRW, Serializable, FormattableToString
 	 * @param y The initial y value of the tuple.
 	 * @param z The initial z value of the tuple.
 	 * @param w The initial w value of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4str(String x, String y, String z, String w)
 	{
@@ -136,38 +124,41 @@ public class Tup4str implements Tup4strRW, Serializable, FormattableToString
 	 * Creates a new instance with the values set to the corresponding parameters.
 	 * 
 	 * @param v The values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4str(String[] v)
 	{
 		setArray(v);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String getZ()
 	{
 		return this.z;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String getW()
 	{
 		return this.w;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4str setX(String x)
 	{
@@ -176,6 +167,7 @@ public class Tup4str implements Tup4strRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4str setY(String y)
 	{
@@ -184,6 +176,7 @@ public class Tup4str implements Tup4strRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4str setZ(String z)
 	{
@@ -192,6 +185,7 @@ public class Tup4str implements Tup4strRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4str setW(String w)
 	{
@@ -200,24 +194,28 @@ public class Tup4str implements Tup4strRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4str set(Tup4strR t)
 	{
 		return set(t.getX(), t.getY(), t.getZ(), t.getW());
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4str set(String value)
 	{
 		return set(value, value, value, value);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4str set(String x, String y, String z, String w)
 	{
 		return setX(x).setY(y).setZ(z).setW(w);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -230,6 +228,7 @@ public class Tup4str implements Tup4strRW, Serializable, FormattableToString
 		return result;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -262,18 +261,21 @@ public class Tup4str implements Tup4strRW, Serializable, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4str clone()
 	{
 		return new Tup4str(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "tup4str(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ", w=" + getW() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -286,51 +288,24 @@ public class Tup4str implements Tup4strRW, Serializable, FormattableToString
 		return values;
 	}
 	
-	@Override
-	public Tup4str getNewInstance(String x, String y, String z, String w)
-	{
-		return new Tup4str(x, y, z, w);
-	}
-	
-	@Override
-	public Tup4str getNewInstance(String value)
-	{
-		return (Tup4str)Tup4strRW.super.getNewInstance(value);
-	}
-	
-	@Override
-	public Tup4str getNewInstance(Tup4strR t)
-	{
-		return (Tup4str)Tup4strRW.super.getNewInstance(t);
-	}
-	
-	@Override
-	public Tup4str getNewInstance(TupstrR t)
-	{
-		return (Tup4str)Tup4strRW.super.getNewInstance(t);
-	}
-	
-	@Override
-	public Tup4str getNewInstanceFromArray(String... values)
-	{
-		return (Tup4str)Tup4strRW.super.getNewInstanceFromArray(values);
-	}
-	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4str set(TupstrR t)
 	{
-		return (Tup4str)Tup4strRW.super.set(t);
+		return (Tup4str)Tup4strBase.super.set(t);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4str setArray(String... values)
 	{
-		return (Tup4str)Tup4strRW.super.setArray(values);
+		return (Tup4str)Tup4strBase.super.setArray(values);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4str setByIndex(int index, String value)
 	{
-		return (Tup4str)Tup4strRW.super.setByIndex(index, value);
+		return (Tup4str)Tup4strBase.super.setByIndex(index, value);
 	}
 }

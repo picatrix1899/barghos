@@ -35,8 +35,6 @@ import org.barghos.core.api.tuple3.Tup3bigiR;
  * It can be used as a more flexible way to create constants.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 public class ImmutableTup3bigi implements Tup3bigiR, FormattableToString
 {
@@ -69,8 +67,6 @@ public class ImmutableTup3bigi implements Tup3bigiR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup3bigi} from an existing instance of {@link TupbigiR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupbigiR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3bigi(TupbigiR t)
 	{
@@ -81,8 +77,6 @@ public class ImmutableTup3bigi implements Tup3bigiR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup3bigi} from an existing instance of {@link Tup3bigiR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup3bigiR} to adopt the values from.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3bigi(Tup3bigiR t)
 	{
@@ -93,8 +87,6 @@ public class ImmutableTup3bigi implements Tup3bigiR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup3bigi} with all values set to a single value.
 	 * 
 	 * @param value The value used for all values of the tuple.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3bigi(BigInteger value)
 	{
@@ -107,8 +99,6 @@ public class ImmutableTup3bigi implements Tup3bigiR, FormattableToString
 	 * @param x The x value.
 	 * @param y The y value.
 	 * @param z The z value.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3bigi(BigInteger x, BigInteger y, BigInteger z)
 	{
@@ -121,8 +111,6 @@ public class ImmutableTup3bigi implements Tup3bigiR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup3bigi} with the values set to the corresponding parameters.
 	 * 
 	 * @param v The values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3bigi(BigInteger[] v)
 	{
@@ -131,24 +119,28 @@ public class ImmutableTup3bigi implements Tup3bigiR, FormattableToString
 		this.z = v[2];
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public BigInteger getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public BigInteger getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public BigInteger getZ()
 	{
 		return this.z;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -157,6 +149,7 @@ public class ImmutableTup3bigi implements Tup3bigiR, FormattableToString
 		return this.hashCode;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -187,18 +180,21 @@ public class ImmutableTup3bigi implements Tup3bigiR, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "immutableTup3bigi(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public ImmutableTup3bigi clone()
 	{
 		return new ImmutableTup3bigi(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -208,36 +204,6 @@ public class ImmutableTup3bigi implements Tup3bigiR, FormattableToString
 		values.put("z", getZ());
 		
 		return values;
-	}
-	
-	@Override
-	public ImmutableTup3bigi getNewInstance(BigInteger x, BigInteger y, BigInteger z)
-	{
-		return new ImmutableTup3bigi(x, y, z);
-	}
-	
-	@Override
-	public ImmutableTup3bigi getNewInstance(BigInteger value)
-	{
-		return (ImmutableTup3bigi)Tup3bigiR.super.getNewInstance(value);
-	}
-	
-	@Override
-	public ImmutableTup3bigi getNewInstance(Tup3bigiR t)
-	{
-		return (ImmutableTup3bigi)Tup3bigiR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup3bigi getNewInstance(TupbigiR t)
-	{
-		return (ImmutableTup3bigi)Tup3bigiR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup3bigi getNewInstanceFromArray(BigInteger... values)
-	{
-		return (ImmutableTup3bigi)Tup3bigiR.super.getNewInstanceFromArray(values);
 	}
 	
 	/**

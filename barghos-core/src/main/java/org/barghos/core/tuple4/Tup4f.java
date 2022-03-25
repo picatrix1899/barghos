@@ -28,8 +28,8 @@ import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupfR;
+import org.barghos.core.api.tuple4.Tup4fBase;
 import org.barghos.core.api.tuple4.Tup4fR;
-import org.barghos.core.api.tuple4.Tup4fRW;
 
 /**
  * This class represents a 3-dimensional float tuple.
@@ -37,10 +37,8 @@ import org.barghos.core.api.tuple4.Tup4fRW;
  * where the data of a vector describes the same logical structure.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
-public class Tup4f implements Tup4fRW, Serializable, FormattableToString
+public class Tup4f implements Tup4fBase, Serializable, FormattableToString
 {
 	/**
 	 * The class version for serialization.
@@ -69,8 +67,6 @@ public class Tup4f implements Tup4fRW, Serializable, FormattableToString
 	
 	/**
 	 * Creates a new instance with all components set to 0.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4f()
 	{
@@ -81,8 +77,6 @@ public class Tup4f implements Tup4fRW, Serializable, FormattableToString
 	 * Creates a new instance from an existing instance of {@link TupfR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupfR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4f(TupfR t)
 	{
@@ -93,8 +87,6 @@ public class Tup4f implements Tup4fRW, Serializable, FormattableToString
 	 * Creates a new instance from an existing instance of {@link Tup4fR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup4fR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4f(Tup4fR t)
 	{
@@ -105,8 +97,6 @@ public class Tup4f implements Tup4fRW, Serializable, FormattableToString
 	 * Creates a new instance with all values set to a single value.
 	 * 
 	 * @param value The value used as the initial value for all values of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4f(float value)
 	{
@@ -120,8 +110,6 @@ public class Tup4f implements Tup4fRW, Serializable, FormattableToString
 	 * @param y The initial y value of the tuple.
 	 * @param z The initial z value of the tuple.
 	 * @param w The initial w value of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4f(float x, float y, float z, float w)
 	{
@@ -132,38 +120,41 @@ public class Tup4f implements Tup4fRW, Serializable, FormattableToString
 	 * Creates a new instance with the values set to the corresponding parameters.
 	 * 
 	 * @param v The values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4f(float[] v)
 	{
 		setArray(v);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public float getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public float getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public float getZ()
 	{
 		return this.z;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public float getW()
 	{
 		return this.w;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4f setX(float x)
 	{
@@ -172,6 +163,7 @@ public class Tup4f implements Tup4fRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4f setY(float y)
 	{
@@ -180,6 +172,7 @@ public class Tup4f implements Tup4fRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4f setZ(float z)
 	{
@@ -188,6 +181,7 @@ public class Tup4f implements Tup4fRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4f setW(float w)
 	{
@@ -196,24 +190,28 @@ public class Tup4f implements Tup4fRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4f set(Tup4fR t)
 	{
 		return set(t.getX(), t.getY(), t.getZ(), t.getW());
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4f set(float value)
 	{
 		return set(value, value, value, value);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4f set(float x, float y, float z, float w)
 	{
 		return setX(x).setY(y).setZ(z).setW(w);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -226,6 +224,7 @@ public class Tup4f implements Tup4fRW, Serializable, FormattableToString
 		return result;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -258,18 +257,21 @@ public class Tup4f implements Tup4fRW, Serializable, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4f clone()
 	{
 		return new Tup4f(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "tup4f(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ", w=" + getW() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -282,51 +284,24 @@ public class Tup4f implements Tup4fRW, Serializable, FormattableToString
 		return values;
 	}
 	
-	@Override
-	public Tup4f getNewInstance(float x, float y, float z, float w)
-	{
-		return new Tup4f(x, y, z, w);
-	}
-	
-	@Override
-	public Tup4f getNewInstance(float value)
-	{
-		return (Tup4f)Tup4fRW.super.getNewInstance(value);
-	}
-	
-	@Override
-	public Tup4f getNewInstance(Tup4fR t)
-	{
-		return (Tup4f)Tup4fRW.super.getNewInstance(t);
-	}
-	
-	@Override
-	public Tup4f getNewInstance(TupfR t)
-	{
-		return (Tup4f)Tup4fRW.super.getNewInstance(t);
-	}
-	
-	@Override
-	public Tup4f getNewInstanceFromArray(float... values)
-	{
-		return (Tup4f)Tup4fRW.super.getNewInstanceFromArray(values);
-	}
-	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4f set(TupfR t)
 	{
-		return (Tup4f)Tup4fRW.super.set(t);
+		return (Tup4f)Tup4fBase.super.set(t);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4f setArray(float... values)
 	{
-		return (Tup4f)Tup4fRW.super.setArray(values);
+		return (Tup4f)Tup4fBase.super.setArray(values);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4f setByIndex(int index, float value)
 	{
-		return (Tup4f)Tup4fRW.super.setByIndex(index, value);
+		return (Tup4f)Tup4fBase.super.setByIndex(index, value);
 	}
 }

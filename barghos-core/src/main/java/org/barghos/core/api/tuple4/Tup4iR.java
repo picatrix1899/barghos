@@ -73,6 +73,7 @@ public interface Tup4iR extends TupiR
 	 */
 	int getW();
 
+	/** {@inheritDoc}} */
 	@Override
 	default boolean isZero()
 	{
@@ -82,6 +83,7 @@ public interface Tup4iR extends TupiR
 				getW() == 0;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	default boolean isZeroWithMargin(int tolerance)
 	{
@@ -90,60 +92,15 @@ public interface Tup4iR extends TupiR
 				Math.abs(getZ()) <= tolerance &&
 				Math.abs(getW()) <= tolerance;
 	}
-
-	/**
-	 * Returns a new instance of the type of the origin instance with the components adopted
-	 * from t.
-	 * 
-	 * <p>
-	 * This can be used for type continuety.
-	 * This way even while only using abstractions it is possible to create
-	 * new instances of the original. It is similar to the {@link Object#clone()}
-	 * function but the {@link Object#clone()} function requires the returned instance to be
-	 * writable.
-	 * This function on the other hand allows for example the usage of factories.
-	 * 
-	 * @param t The tuple to adopt the components from.
-	 * 
-	 * @return A new instance of the type of the origin instance
-	 */
-	default Tup4iR getNewInstance(Tup4iR t)
-	{
-		return getNewInstance(t.getX(), t.getY(), t.getZ(), t.getW());
-	}
 	
-	@Override
-	default Tup4iR getNewInstance(int value)
-	{
-		return getNewInstance(value, value, value, value);
-	}
-	
-	/**
-	 * Returns a new instance of the type of the origin instance with the components set to
-	 * the corresponding parameters.
-	 * 
-	 * <p>
-	 * This can be used for type continuety.
-	 * This way even while only using abstractions it is possible to create
-	 * new instances of the original. It is similar to the {@link Object#clone()}
-	 * function but the {@link Object#clone()} function requires the returned instance to be
-	 * writable. This function on the other hand allows for example the usage of factories.
-	 * 
-	 * @param x The value used for the x component.
-	 * @param y The value used for the y component.
-	 * @param z The value used for the z component.
-	 * @param w The value used for the w component.
-	 * 
-	 * @return A new instance of the type of the origin instance
-	 */
-	Tup4iR getNewInstance(int x, int y, int z, int w);
-	
+	/** {@inheritDoc}} */
 	@Override
 	default int getDimensions()
 	{
 		return 4;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	default int getByIndex(int index)
 	{
@@ -158,23 +115,10 @@ public interface Tup4iR extends TupiR
 		throw new IndexOutOfBoundsException(index);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	default int[] getArray()
 	{
 		return new int[] {getX(), getY(), getZ(), getW()};
-	}
-	
-	@Override
-	default Tup4iR getNewInstanceFromArray(int... values)
-	{
-		int[] v = values;
-		return getNewInstance(v[0], v[1], v[2], v[3]);
-	}
-	
-	@Override
-	default Tup4iR getNewInstance(TupiR t)
-	{
-		int[] v = t.getArray();
-		return getNewInstance(v[0], v[1], v[2], v[3]);
 	}
 }

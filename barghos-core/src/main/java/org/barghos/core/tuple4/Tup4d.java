@@ -28,8 +28,8 @@ import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupdR;
+import org.barghos.core.api.tuple4.Tup4dBase;
 import org.barghos.core.api.tuple4.Tup4dR;
-import org.barghos.core.api.tuple4.Tup4dRW;
 
 /**
  * This class represents a 3-dimensional double tuple.
@@ -37,10 +37,8 @@ import org.barghos.core.api.tuple4.Tup4dRW;
  * where the data of a vector describes the same logical structure.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
-public class Tup4d implements Tup4dRW, Serializable, FormattableToString
+public class Tup4d implements Tup4dBase, Serializable, FormattableToString
 {
 	/**
 	 * The class version for serialization.
@@ -69,8 +67,6 @@ public class Tup4d implements Tup4dRW, Serializable, FormattableToString
 	
 	/**
 	 * Creates a new instance with all components set to 0.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4d()
 	{
@@ -81,8 +77,6 @@ public class Tup4d implements Tup4dRW, Serializable, FormattableToString
 	 * Creates a new instance from an existing instance of {@link TupdR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupdR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4d(TupdR t)
 	{
@@ -93,8 +87,6 @@ public class Tup4d implements Tup4dRW, Serializable, FormattableToString
 	 * Creates a new instance from an existing instance of {@link Tup4dR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup4dR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4d(Tup4dR t)
 	{
@@ -105,8 +97,6 @@ public class Tup4d implements Tup4dRW, Serializable, FormattableToString
 	 * Creates a new instance with all values set to a single value.
 	 * 
 	 * @param value The value used as the initial value for all values of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4d(double value)
 	{
@@ -120,8 +110,6 @@ public class Tup4d implements Tup4dRW, Serializable, FormattableToString
 	 * @param y The initial y value of the tuple.
 	 * @param z The initial z value of the tuple.
 	 * @param w The initial w value of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4d(double x, double y, double z, double w)
 	{
@@ -132,38 +120,41 @@ public class Tup4d implements Tup4dRW, Serializable, FormattableToString
 	 * Creates a new instance with the values set to the corresponding parameters.
 	 * 
 	 * @param v The values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4d(double[] v)
 	{
 		setArray(v);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public double getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public double getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public double getZ()
 	{
 		return this.z;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public double getW()
 	{
 		return this.w;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4d setX(double x)
 	{
@@ -172,6 +163,7 @@ public class Tup4d implements Tup4dRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4d setY(double y)
 	{
@@ -180,6 +172,7 @@ public class Tup4d implements Tup4dRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4d setZ(double z)
 	{
@@ -188,6 +181,7 @@ public class Tup4d implements Tup4dRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4d setW(double w)
 	{
@@ -196,24 +190,28 @@ public class Tup4d implements Tup4dRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4d set(Tup4dR t)
 	{
 		return set(t.getX(), t.getY(), t.getZ(), t.getW());
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4d set(double value)
 	{
 		return set(value, value, value, value);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4d set(double x, double y, double z, double w)
 	{
 		return setX(x).setY(y).setZ(z).setW(w);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -230,6 +228,7 @@ public class Tup4d implements Tup4dRW, Serializable, FormattableToString
 		return result;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -262,18 +261,21 @@ public class Tup4d implements Tup4dRW, Serializable, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4d clone()
 	{
 		return new Tup4d(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "tup4d(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ", w=" + getW() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -286,51 +288,24 @@ public class Tup4d implements Tup4dRW, Serializable, FormattableToString
 		return values;
 	}
 	
-	@Override
-	public Tup4d getNewInstance(double x, double y, double z, double w)
-	{
-		return new Tup4d(x, y, z, w);
-	}
-	
-	@Override
-	public Tup4d getNewInstance(double value)
-	{
-		return (Tup4d)Tup4dRW.super.getNewInstance(value);
-	}
-	
-	@Override
-	public Tup4d getNewInstance(Tup4dR t)
-	{
-		return (Tup4d)Tup4dRW.super.getNewInstance(t);
-	}
-	
-	@Override
-	public Tup4d getNewInstance(TupdR t)
-	{
-		return (Tup4d)Tup4dRW.super.getNewInstance(t);
-	}
-	
-	@Override
-	public Tup4d getNewInstanceFromArray(double... values)
-	{
-		return (Tup4d)Tup4dRW.super.getNewInstanceFromArray(values);
-	}
-	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4d set(TupdR t)
 	{
-		return (Tup4d)Tup4dRW.super.set(t);
+		return (Tup4d)Tup4dBase.super.set(t);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4d setArray(double... values)
 	{
-		return (Tup4d)Tup4dRW.super.setArray(values);
+		return (Tup4d)Tup4dBase.super.setArray(values);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4d setByIndex(int index, double value)
 	{
-		return (Tup4d)Tup4dRW.super.setByIndex(index, value);
+		return (Tup4d)Tup4dBase.super.setByIndex(index, value);
 	}
 }

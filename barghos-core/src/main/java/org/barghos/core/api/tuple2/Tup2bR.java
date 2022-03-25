@@ -32,8 +32,6 @@ import org.barghos.core.api.tuple.TupbR;
  * if the method only reads data from the parameter.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 public interface Tup2bR extends TupbR
 {
@@ -41,8 +39,6 @@ public interface Tup2bR extends TupbR
 	 * Returns the x value from the tuple.
 	 * 
 	 * @return The x value from the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	byte getX();
 	
@@ -50,8 +46,6 @@ public interface Tup2bR extends TupbR
 	 * Returns the y value from the tuple.
 	 * 
 	 * @return The y value from the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	byte getY();
 	
@@ -80,58 +74,15 @@ public interface Tup2bR extends TupbR
 		return Math.abs(getX()) <= tolerance &&
 				Math.abs(getY()) <= tolerance;
 	}
-	
-	/**
-	 * Returns a new instance of the type of the origin instance with the components adopted
-	 * from t.
-	 * 
-	 * <p>
-	 * This can be used for type continuety.
-	 * This way even while only using abstractions it is possible to create
-	 * new instances of the original. It is similar to the {@link Object#clone()}
-	 * function but the {@link Object#clone()} function requires the returned instance to be
-	 * writable.
-	 * This function on the other hand allows for example the usage of factories.
-	 * 
-	 * @param t The tuple to adopt the components from.
-	 * 
-	 * @return A new instance of the type of the origin instance
-	 */
-	default Tup2bR getNewInstance(Tup2bR t)
-	{
-		return getNewInstance(t.getX(), t.getY());
-	}
-	
-	@Override
-	default Tup2bR getNewInstance(byte value)
-	{
-		return getNewInstance(value, value);
-	}
-	
-	/**
-	 * Returns a new instance of the type of the origin instance with the components set to
-	 * the corresponding parameters.
-	 * 
-	 * <p>
-	 * This can be used for type continuety.
-	 * This way even while only using abstractions it is possible to create
-	 * new instances of the original. It is similar to the {@link Object#clone()}
-	 * function but the {@link Object#clone()} function requires the returned instance to be
-	 * writable. This function on the other hand allows for example the usage of factories.
-	 * 
-	 * @param x The value used for the x component.
-	 * @param y The value used for the y component.
-	 * 
-	 * @return A new instance of the type of the origin instance
-	 */
-	Tup2bR getNewInstance(byte x, byte y);
-	
+
+	/** {@inheritDoc}} */
 	@Override
 	default int getDimensions()
 	{
 		return 2;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	default byte getByIndex(int index)
 	{
@@ -144,23 +95,10 @@ public interface Tup2bR extends TupbR
 		throw new IndexOutOfBoundsException(index);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	default byte[] getArray()
 	{
 		return new byte[] {getX(), getY()};
-	}
-	
-	@Override
-	default Tup2bR getNewInstanceFromArray(byte... values)
-	{
-		byte[] v = values;
-		return getNewInstance(v[0], v[1]);
-	}
-	
-	@Override
-	default Tup2bR getNewInstance(TupbR t)
-	{
-		byte[] v = t.getArray();
-		return getNewInstance(v[0], v[1]);
 	}
 }

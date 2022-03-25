@@ -28,8 +28,8 @@ import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupfR;
+import org.barghos.core.api.tuple3.Tup3fBase;
 import org.barghos.core.api.tuple3.Tup3fR;
-import org.barghos.core.api.tuple3.Tup3fRW;
 
 /**
  * This class represents a 3-dimensional float tuple.
@@ -37,10 +37,8 @@ import org.barghos.core.api.tuple3.Tup3fRW;
  * where the data of a vector describes the same logical structure.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
-public class Tup3f implements Tup3fRW, Serializable, FormattableToString
+public class Tup3f implements Tup3fBase, Serializable, FormattableToString
 {
 	/**
 	 * The class version for serialization.
@@ -64,8 +62,6 @@ public class Tup3f implements Tup3fRW, Serializable, FormattableToString
 	
 	/**
 	 * Creates a new instance with all components set to 0.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup3f()
 	{
@@ -76,8 +72,6 @@ public class Tup3f implements Tup3fRW, Serializable, FormattableToString
 	 * Creates a new instance from an existing instance of {@link TupfR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupfR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup3f(TupfR t)
 	{
@@ -88,8 +82,6 @@ public class Tup3f implements Tup3fRW, Serializable, FormattableToString
 	 * Creates a new instance from an existing instance of {@link Tup3fR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup3fR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup3f(Tup3fR t)
 	{
@@ -100,8 +92,6 @@ public class Tup3f implements Tup3fRW, Serializable, FormattableToString
 	 * Creates a new instance with all values set to a single value.
 	 * 
 	 * @param value The value used as the initial value for all values of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup3f(float value)
 	{
@@ -114,8 +104,6 @@ public class Tup3f implements Tup3fRW, Serializable, FormattableToString
 	 * @param x The initial x value of the tuple.
 	 * @param y The initial y value of the tuple.
 	 * @param z The initial z value of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup3f(float x, float y, float z)
 	{
@@ -126,32 +114,34 @@ public class Tup3f implements Tup3fRW, Serializable, FormattableToString
 	 * Creates a new instance with the values set to the corresponding parameters.
 	 * 
 	 * @param v The values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup3f(float[] v)
 	{
 		setArray(v);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public float getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public float getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public float getZ()
 	{
 		return this.z;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3f setX(float x)
 	{
@@ -160,6 +150,7 @@ public class Tup3f implements Tup3fRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3f setY(float y)
 	{
@@ -168,6 +159,7 @@ public class Tup3f implements Tup3fRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3f setZ(float z)
 	{
@@ -176,24 +168,28 @@ public class Tup3f implements Tup3fRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3f set(Tup3fR t)
 	{
 		return set(t.getX(), t.getY(), t.getZ());
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3f set(float value)
 	{
 		return set(value, value, value);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3f set(float x, float y, float z)
 	{
 		return setX(x).setY(y).setZ(z);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -205,6 +201,7 @@ public class Tup3f implements Tup3fRW, Serializable, FormattableToString
 		return result;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -235,18 +232,21 @@ public class Tup3f implements Tup3fRW, Serializable, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3f clone()
 	{
 		return new Tup3f(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "tup3f(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -258,51 +258,24 @@ public class Tup3f implements Tup3fRW, Serializable, FormattableToString
 		return values;
 	}
 	
-	@Override
-	public Tup3f getNewInstance(float x, float y, float z)
-	{
-		return new Tup3f(x, y, z);
-	}
-	
-	@Override
-	public Tup3f getNewInstance(float value)
-	{
-		return (Tup3f)Tup3fRW.super.getNewInstance(value);
-	}
-	
-	@Override
-	public Tup3f getNewInstance(Tup3fR t)
-	{
-		return (Tup3f)Tup3fRW.super.getNewInstance(t);
-	}
-	
-	@Override
-	public Tup3f getNewInstance(TupfR t)
-	{
-		return (Tup3f)Tup3fRW.super.getNewInstance(t);
-	}
-	
-	@Override
-	public Tup3f getNewInstanceFromArray(float... values)
-	{
-		return (Tup3f)Tup3fRW.super.getNewInstanceFromArray(values);
-	}
-	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3f set(TupfR t)
 	{
-		return (Tup3f)Tup3fRW.super.set(t);
+		return (Tup3f)Tup3fBase.super.set(t);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3f setArray(float... values)
 	{
-		return (Tup3f)Tup3fRW.super.setArray(values);
+		return (Tup3f)Tup3fBase.super.setArray(values);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3f setByIndex(int index, float value)
 	{
-		return (Tup3f)Tup3fRW.super.setByIndex(index, value);
+		return (Tup3f)Tup3fBase.super.setByIndex(index, value);
 	}
 }

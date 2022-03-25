@@ -28,8 +28,8 @@ import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupstrR;
+import org.barghos.core.api.tuple3.Tup3strBase;
 import org.barghos.core.api.tuple3.Tup3strR;
-import org.barghos.core.api.tuple3.Tup3strRW;
 
 /**
  * This class represents a 3-dimensional string tuple.
@@ -37,10 +37,8 @@ import org.barghos.core.api.tuple3.Tup3strRW;
  * where the data of a vector describes the same logical structure.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
-public class Tup3str implements Tup3strRW, Serializable, FormattableToString
+public class Tup3str implements Tup3strBase, Serializable, FormattableToString
 {
 	/**
 	 * The class version for serialization.
@@ -67,8 +65,6 @@ public class Tup3str implements Tup3strRW, Serializable, FormattableToString
 	
 	/**
 	 * Creates a new instance with all components set to "".
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup3str()
 	{
@@ -79,8 +75,6 @@ public class Tup3str implements Tup3strRW, Serializable, FormattableToString
 	 * Creates a new instance from an existing instance of {@link TupstrR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupstrR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup3str(TupstrR t)
 	{
@@ -91,8 +85,6 @@ public class Tup3str implements Tup3strRW, Serializable, FormattableToString
 	 * Creates a new instance from an existing instance of {@link Tup3strR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup3strR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup3str(Tup3strR t)
 	{
@@ -103,8 +95,6 @@ public class Tup3str implements Tup3strRW, Serializable, FormattableToString
 	 * Creates a new instance with all values set to a single value.
 	 * 
 	 * @param value The value used as the initial value for all values of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup3str(String value)
 	{
@@ -117,8 +107,6 @@ public class Tup3str implements Tup3strRW, Serializable, FormattableToString
 	 * @param x The initial x value of the tuple.
 	 * @param y The initial y value of the tuple.
 	 * @param z The initial z value of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup3str(String x, String y, String z)
 	{
@@ -129,32 +117,34 @@ public class Tup3str implements Tup3strRW, Serializable, FormattableToString
 	 * Creates a new instance with the values set to the corresponding parameters.
 	 * 
 	 * @param v The values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup3str(String[] v)
 	{
 		setArray(v);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String getZ()
 	{
 		return this.z;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3str setX(String x)
 	{
@@ -163,6 +153,7 @@ public class Tup3str implements Tup3strRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3str setY(String y)
 	{
@@ -171,6 +162,7 @@ public class Tup3str implements Tup3strRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3str setZ(String z)
 	{
@@ -179,24 +171,28 @@ public class Tup3str implements Tup3strRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3str set(Tup3strR t)
 	{
 		return set(t.getX(), t.getY(), t.getZ());
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3str set(String value)
 	{
 		return set(value, value, value);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3str set(String x, String y, String z)
 	{
 		return setX(x).setY(y).setZ(z);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -208,6 +204,7 @@ public class Tup3str implements Tup3strRW, Serializable, FormattableToString
 		return result;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -238,18 +235,21 @@ public class Tup3str implements Tup3strRW, Serializable, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3str clone()
 	{
 		return new Tup3str(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "tup3str(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -261,51 +261,24 @@ public class Tup3str implements Tup3strRW, Serializable, FormattableToString
 		return values;
 	}
 	
-	@Override
-	public Tup3str getNewInstance(String x, String y, String z)
-	{
-		return new Tup3str(x, y, z);
-	}
-	
-	@Override
-	public Tup3str getNewInstance(String value)
-	{
-		return (Tup3str)Tup3strRW.super.getNewInstance(value);
-	}
-	
-	@Override
-	public Tup3str getNewInstance(Tup3strR t)
-	{
-		return (Tup3str)Tup3strRW.super.getNewInstance(t);
-	}
-	
-	@Override
-	public Tup3str getNewInstance(TupstrR t)
-	{
-		return (Tup3str)Tup3strRW.super.getNewInstance(t);
-	}
-	
-	@Override
-	public Tup3str getNewInstanceFromArray(String... values)
-	{
-		return (Tup3str)Tup3strRW.super.getNewInstanceFromArray(values);
-	}
-	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3str set(TupstrR t)
 	{
-		return (Tup3str)Tup3strRW.super.set(t);
+		return (Tup3str)Tup3strBase.super.set(t);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3str setArray(String... values)
 	{
-		return (Tup3str)Tup3strRW.super.setArray(values);
+		return (Tup3str)Tup3strBase.super.setArray(values);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3str setByIndex(int index, String value)
 	{
-		return (Tup3str)Tup3strRW.super.setByIndex(index, value);
+		return (Tup3str)Tup3strBase.super.setByIndex(index, value);
 	}
 }

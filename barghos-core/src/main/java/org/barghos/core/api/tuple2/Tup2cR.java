@@ -32,8 +32,6 @@ import org.barghos.core.api.tuple.TupcR;
  * if the method only reads data from the parameter.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 public interface Tup2cR extends TupcR
 {
@@ -41,8 +39,6 @@ public interface Tup2cR extends TupcR
 	 * Returns the x value from the tuple.
 	 * 
 	 * @return The x value from the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	char getX();
 	
@@ -50,62 +46,17 @@ public interface Tup2cR extends TupcR
 	 * Returns the y value from the tuple.
 	 * 
 	 * @return The y value from the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	char getY();
 	
-	/**
-	 * Returns a new instance of the type of the origin instance with the components adopted
-	 * from t.
-	 * 
-	 * <p>
-	 * This can be used for type continuety.
-	 * This way even while only using abstractions it is possible to create
-	 * new instances of the original. It is similar to the {@link Object#clone()}
-	 * function but the {@link Object#clone()} function requires the returned instance to be
-	 * writable.
-	 * This function on the other hand allows for example the usage of factories.
-	 * 
-	 * @param t The tuple to adopt the components from.
-	 * 
-	 * @return A new instance of the type of the origin instance
-	 */
-	default Tup2cR getNewInstance(Tup2cR t)
-	{
-		return getNewInstance(t.getX(), t.getY());
-	}
-	
-	@Override
-	default Tup2cR getNewInstance(char value)
-	{
-		return getNewInstance(value, value);
-	}
-	
-	/**
-	 * Returns a new instance of the type of the origin instance with the components set to
-	 * the corresponding parameters.
-	 * 
-	 * <p>
-	 * This can be used for type continuety.
-	 * This way even while only using abstractions it is possible to create
-	 * new instances of the original. It is similar to the {@link Object#clone()}
-	 * function but the {@link Object#clone()} function requires the returned instance to be
-	 * writable. This function on the other hand allows for example the usage of factories.
-	 * 
-	 * @param x The value used for the x component.
-	 * @param y The value used for the y component.
-	 * 
-	 * @return A new instance of the type of the origin instance
-	 */
-	Tup2cR getNewInstance(char x, char y);
-	
+	/** {@inheritDoc}} */
 	@Override
 	default int getDimensions()
 	{
 		return 2;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	default char getByIndex(int index)
 	{
@@ -118,23 +69,10 @@ public interface Tup2cR extends TupcR
 		throw new IndexOutOfBoundsException(index);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	default char[] getArray()
 	{
 		return new char[] {getX(), getY()};
-	}
-	
-	@Override
-	default Tup2cR getNewInstanceFromArray(char... values)
-	{
-		char[] v = values;
-		return getNewInstance(v[0], v[1]);
-	}
-	
-	@Override
-	default Tup2cR getNewInstance(TupcR t)
-	{
-		char[] v = t.getArray();
-		return getNewInstance(v[0], v[1]);
 	}
 }

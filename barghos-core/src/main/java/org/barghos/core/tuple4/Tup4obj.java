@@ -28,8 +28,8 @@ import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupobjR;
+import org.barghos.core.api.tuple4.Tup4objBase;
 import org.barghos.core.api.tuple4.Tup4objR;
-import org.barghos.core.api.tuple4.Tup4objRW;
 
 /**
  * This class represents a 4-dimensional {@link Object} tuple.
@@ -37,10 +37,8 @@ import org.barghos.core.api.tuple4.Tup4objRW;
  * where the data of a vector describes the same logical structure.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
-public class Tup4obj implements Tup4objRW, Serializable, FormattableToString
+public class Tup4obj implements Tup4objBase, Serializable, FormattableToString
 {
 	/**
 	 * The class version for serialization.
@@ -73,8 +71,6 @@ public class Tup4obj implements Tup4objRW, Serializable, FormattableToString
 	
 	/**
 	 * Creates a new instance with all components set to null.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4obj() { }
 	
@@ -82,8 +78,6 @@ public class Tup4obj implements Tup4objRW, Serializable, FormattableToString
 	 * Creates a new instance from an existing instance of {@link TupobjR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupobjR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4obj(TupobjR t)
 	{
@@ -94,8 +88,6 @@ public class Tup4obj implements Tup4objRW, Serializable, FormattableToString
 	 * Creates a new instance from an existing instance of {@link Tup4objR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup4objR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4obj(Tup4objR t)
 	{
@@ -106,8 +98,6 @@ public class Tup4obj implements Tup4objRW, Serializable, FormattableToString
 	 * Creates a new instance with all values set to a single value.
 	 * 
 	 * @param value The value used as the initial value for all values of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4obj(Object value)
 	{
@@ -121,8 +111,6 @@ public class Tup4obj implements Tup4objRW, Serializable, FormattableToString
 	 * @param y The initial y value of the tuple.
 	 * @param z The initial z value of the tuple.
 	 * @param w The initial w value of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4obj(Object x, Object y, Object z, Object w)
 	{
@@ -133,38 +121,41 @@ public class Tup4obj implements Tup4objRW, Serializable, FormattableToString
 	 * Creates a new instance with the values set to the corresponding parameters.
 	 * 
 	 * @param v The values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4obj(Object[] v)
 	{
 		setArray(v);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Object getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Object getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Object getZ()
 	{
 		return this.z;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Object getW()
 	{
 		return this.w;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4obj setX(Object x)
 	{
@@ -173,6 +164,7 @@ public class Tup4obj implements Tup4objRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4obj setY(Object y)
 	{
@@ -181,6 +173,7 @@ public class Tup4obj implements Tup4objRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4obj setZ(Object z)
 	{
@@ -189,6 +182,7 @@ public class Tup4obj implements Tup4objRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4obj setW(Object w)
 	{
@@ -197,24 +191,28 @@ public class Tup4obj implements Tup4objRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4obj set(Tup4objR t)
 	{
 		return set(t.getX(), t.getY(), t.getZ(), t.getW());
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4obj set(Object value)
 	{
 		return set(value, value, value, value);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4obj set(Object x, Object y, Object z, Object w)
 	{
 		return setX(x).setY(y).setZ(z).setW(w);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -227,6 +225,7 @@ public class Tup4obj implements Tup4objRW, Serializable, FormattableToString
 		return result;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -259,18 +258,21 @@ public class Tup4obj implements Tup4objRW, Serializable, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4obj clone()
 	{
 		return new Tup4obj(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "tup4obj(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ", w=" + getW() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -283,51 +285,24 @@ public class Tup4obj implements Tup4objRW, Serializable, FormattableToString
 		return values;
 	}
 	
-	@Override
-	public Tup4obj getNewInstance(Object x, Object y, Object z, Object w)
-	{
-		return new Tup4obj(x, y, z, w);
-	}
-	
-	@Override
-	public Tup4obj getNewInstance(Object value)
-	{
-		return (Tup4obj)Tup4objRW.super.getNewInstance(value);
-	}
-	
-	@Override
-	public Tup4obj getNewInstance(Tup4objR t)
-	{
-		return (Tup4obj)Tup4objRW.super.getNewInstance(t);
-	}
-	
-	@Override
-	public Tup4obj getNewInstance(TupobjR t)
-	{
-		return (Tup4obj)Tup4objRW.super.getNewInstance(t);
-	}
-	
-	@Override
-	public Tup4obj getNewInstanceFromArray(Object... values)
-	{
-		return (Tup4obj)Tup4objRW.super.getNewInstanceFromArray(values);
-	}
-	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4obj set(TupobjR t)
 	{
-		return (Tup4obj)Tup4objRW.super.set(t);
+		return (Tup4obj)Tup4objBase.super.set(t);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4obj setArray(Object... values)
 	{
-		return (Tup4obj)Tup4objRW.super.setArray(values);
+		return (Tup4obj)Tup4objBase.super.setArray(values);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4obj setByIndex(int index, Object value)
 	{
-		return (Tup4obj)Tup4objRW.super.setByIndex(index, value);
+		return (Tup4obj)Tup4objBase.super.setByIndex(index, value);
 	}
 }

@@ -28,8 +28,8 @@ import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupboR;
+import org.barghos.core.api.tuple3.Tup3boBase;
 import org.barghos.core.api.tuple3.Tup3boR;
-import org.barghos.core.api.tuple3.Tup3boRW;
 
 /**
  * This class represents a 3-dimensional boolean tuple.
@@ -37,10 +37,8 @@ import org.barghos.core.api.tuple3.Tup3boRW;
  * where the data of a vector describes the same logical structure.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
-public class Tup3bo implements Tup3boRW, Serializable, FormattableToString
+public class Tup3bo implements Tup3boBase, Serializable, FormattableToString
 {
 	/**
 	 * The class version for serialization.
@@ -64,8 +62,6 @@ public class Tup3bo implements Tup3boRW, Serializable, FormattableToString
 	
 	/**
 	 * Creates a new instance with all components set to 0.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup3bo()
 	{
@@ -76,8 +72,6 @@ public class Tup3bo implements Tup3boRW, Serializable, FormattableToString
 	 * Creates a new instance from an existing instance of {@link TupboR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupboR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup3bo(TupboR t)
 	{
@@ -88,8 +82,6 @@ public class Tup3bo implements Tup3boRW, Serializable, FormattableToString
 	 * Creates a new instance from an existing instance of {@link Tup3boR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup3boR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup3bo(Tup3boR t)
 	{
@@ -100,8 +92,6 @@ public class Tup3bo implements Tup3boRW, Serializable, FormattableToString
 	 * Creates a new instance with all values set to a single value.
 	 * 
 	 * @param value The value used as the initial value for all values of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup3bo(boolean value)
 	{
@@ -114,8 +104,6 @@ public class Tup3bo implements Tup3boRW, Serializable, FormattableToString
 	 * @param x The initial x value of the tuple.
 	 * @param y The initial y value of the tuple.
 	 * @param z The initial z value of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup3bo(boolean x, boolean y, boolean z)
 	{
@@ -126,32 +114,34 @@ public class Tup3bo implements Tup3boRW, Serializable, FormattableToString
 	 * Creates a new instance with the values set to the corresponding parameters.
 	 * 
 	 * @param v The values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup3bo(boolean[] v)
 	{
 		setArray(v);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean getZ()
 	{
 		return this.z;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3bo setX(boolean x)
 	{
@@ -160,6 +150,7 @@ public class Tup3bo implements Tup3boRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3bo setY(boolean y)
 	{
@@ -168,6 +159,7 @@ public class Tup3bo implements Tup3boRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3bo setZ(boolean z)
 	{
@@ -176,24 +168,28 @@ public class Tup3bo implements Tup3boRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3bo set(Tup3boR t)
 	{
 		return set(t.getX(), t.getY(), t.getZ());
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3bo set(boolean value)
 	{
 		return set(value, value, value);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3bo set(boolean x, boolean y, boolean z)
 	{
 		return setX(x).setY(y).setZ(z);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -205,6 +201,7 @@ public class Tup3bo implements Tup3boRW, Serializable, FormattableToString
 		return result;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -235,18 +232,21 @@ public class Tup3bo implements Tup3boRW, Serializable, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3bo clone()
 	{
 		return new Tup3bo(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "tup3bo(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -258,51 +258,24 @@ public class Tup3bo implements Tup3boRW, Serializable, FormattableToString
 		return values;
 	}
 	
-	@Override
-	public Tup3bo getNewInstance(boolean x, boolean y, boolean z)
-	{
-		return new Tup3bo(x, y, z);
-	}
-	
-	@Override
-	public Tup3bo getNewInstance(boolean value)
-	{
-		return (Tup3bo)Tup3boRW.super.getNewInstance(value);
-	}
-	
-	@Override
-	public Tup3bo getNewInstance(Tup3boR t)
-	{
-		return (Tup3bo)Tup3boRW.super.getNewInstance(t);
-	}
-	
-	@Override
-	public Tup3bo getNewInstance(TupboR t)
-	{
-		return (Tup3bo)Tup3boRW.super.getNewInstance(t);
-	}
-	
-	@Override
-	public Tup3bo getNewInstanceFromArray(boolean... values)
-	{
-		return (Tup3bo)Tup3boRW.super.getNewInstanceFromArray(values);
-	}
-	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3bo set(TupboR t)
 	{
-		return (Tup3bo)Tup3boRW.super.set(t);
+		return (Tup3bo)Tup3boBase.super.set(t);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3bo setArray(boolean... values)
 	{
-		return (Tup3bo)Tup3boRW.super.setArray(values);
+		return (Tup3bo)Tup3boBase.super.setArray(values);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3bo setByIndex(int index, boolean value)
 	{
-		return (Tup3bo)Tup3boRW.super.setByIndex(index, value);
+		return (Tup3bo)Tup3boBase.super.setByIndex(index, value);
 	}
 }

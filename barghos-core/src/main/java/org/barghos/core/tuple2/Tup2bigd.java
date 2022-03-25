@@ -29,8 +29,8 @@ import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupbigdR;
+import org.barghos.core.api.tuple2.Tup2bigdBase;
 import org.barghos.core.api.tuple2.Tup2bigdR;
-import org.barghos.core.api.tuple2.Tup2bigdRW;
 
 /**
  * This class represents a 2-dimensional {@link BigDecimal} tuple.
@@ -38,10 +38,8 @@ import org.barghos.core.api.tuple2.Tup2bigdRW;
  * where the data of a vector describes the same logical structure.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
-public class Tup2bigd implements Tup2bigdRW, Serializable, FormattableToString
+public class Tup2bigd implements Tup2bigdBase, Serializable, FormattableToString
 {
 	/**
 	 * The class version for serialization.
@@ -62,8 +60,6 @@ public class Tup2bigd implements Tup2bigdRW, Serializable, FormattableToString
 	
 	/**
 	 * Creates a new instance with all components set to {@link BigDecimal#ZERO}.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup2bigd()
 	{
@@ -74,8 +70,6 @@ public class Tup2bigd implements Tup2bigdRW, Serializable, FormattableToString
 	 * Creates a new instance from an existing instance of {@link TupbigdR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupbigdR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup2bigd(TupbigdR t)
 	{
@@ -86,8 +80,6 @@ public class Tup2bigd implements Tup2bigdRW, Serializable, FormattableToString
 	 * Creates a new instance from an existing instance of {@link Tup2bigdR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup2bigdR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup2bigd(Tup2bigdR t)
 	{
@@ -98,8 +90,6 @@ public class Tup2bigd implements Tup2bigdRW, Serializable, FormattableToString
 	 * Creates a new instance with all values set to a single value.
 	 * 
 	 * @param value The value used as the initial value for all values of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup2bigd(BigDecimal value)
 	{
@@ -110,8 +100,6 @@ public class Tup2bigd implements Tup2bigdRW, Serializable, FormattableToString
 	 * Creates a new instance with the values set to the corresponding parameters.
 	 * 
 	 * @param v The x and y values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup2bigd(BigDecimal[] v)
 	{
@@ -123,26 +111,27 @@ public class Tup2bigd implements Tup2bigdRW, Serializable, FormattableToString
 	 * 
 	 * @param x The initial x value of the tuple.
 	 * @param y The initial y value of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup2bigd(BigDecimal x, BigDecimal y)
 	{
 		set(x, y);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public BigDecimal getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public BigDecimal getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2bigd setX(BigDecimal x)
 	{
@@ -151,6 +140,7 @@ public class Tup2bigd implements Tup2bigdRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2bigd setY(BigDecimal y)
 	{
@@ -159,24 +149,28 @@ public class Tup2bigd implements Tup2bigdRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2bigd set(Tup2bigdR t)
 	{
-		return (Tup2bigd)Tup2bigdRW.super.set(t);
+		return (Tup2bigd)Tup2bigdBase.super.set(t);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2bigd set(BigDecimal value)
 	{
-		return (Tup2bigd)Tup2bigdRW.super.set(value);
+		return (Tup2bigd)Tup2bigdBase.super.set(value);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2bigd set(BigDecimal x, BigDecimal y)
 	{
-		return (Tup2bigd)Tup2bigdRW.super.set(x, y);
+		return (Tup2bigd)Tup2bigdBase.super.set(x, y);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -187,6 +181,7 @@ public class Tup2bigd implements Tup2bigdRW, Serializable, FormattableToString
 		return result;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -215,18 +210,21 @@ public class Tup2bigd implements Tup2bigdRW, Serializable, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "tup2bigd(x=" + getX() + ", y=" + getY() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2bigd clone()
 	{
 		return new Tup2bigd(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -236,52 +234,25 @@ public class Tup2bigd implements Tup2bigdRW, Serializable, FormattableToString
 		
 		return values;
 	}
-
-	@Override
-	public Tup2bigd getNewInstance(BigDecimal x, BigDecimal y)
-	{
-		return new Tup2bigd(x, y);
-	}
 	
-	@Override
-	public Tup2bigd getNewInstance(BigDecimal value)
-	{
-		return (Tup2bigd)Tup2bigdRW.super.getNewInstance(value);
-	}
-	
-	@Override
-	public Tup2bigd getNewInstance(Tup2bigdR t)
-	{
-		return (Tup2bigd)Tup2bigdRW.super.getNewInstance(t);
-	}
-	
-	@Override
-	public Tup2bigd getNewInstance(TupbigdR t)
-	{
-		return (Tup2bigd)Tup2bigdRW.super.getNewInstance(t);
-	}
-	
-	@Override
-	public Tup2bigd getNewInstanceFromArray(BigDecimal... values)
-	{
-		return (Tup2bigd)Tup2bigdRW.super.getNewInstanceFromArray(values);
-	}
-	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2bigd set(TupbigdR t)
 	{
-		return (Tup2bigd)Tup2bigdRW.super.set(t);
+		return (Tup2bigd)Tup2bigdBase.super.set(t);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2bigd setArray(BigDecimal... values)
 	{
-		return (Tup2bigd)Tup2bigdRW.super.setArray(values);
+		return (Tup2bigd)Tup2bigdBase.super.setArray(values);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2bigd setByIndex(int index, BigDecimal value)
 	{
-		return (Tup2bigd)Tup2bigdRW.super.setByIndex(index, value);
+		return (Tup2bigd)Tup2bigdBase.super.setByIndex(index, value);
 	}
 }

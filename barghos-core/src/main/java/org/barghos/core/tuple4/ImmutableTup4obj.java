@@ -33,8 +33,6 @@ import org.barghos.core.api.tuple4.Tup4objR;
  * It can be used as a more flexible way to create constants.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 public class ImmutableTup4obj implements Tup4objR, FormattableToString
 {
@@ -72,8 +70,6 @@ public class ImmutableTup4obj implements Tup4objR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup4obj} from an existing instance of {@link TupobjR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupobjR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup4obj(TupobjR t)
 	{
@@ -84,8 +80,6 @@ public class ImmutableTup4obj implements Tup4objR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup4obj} from an existing instance of {@link Tup4objR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup4objR} to adopt the values from.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup4obj(Tup4objR t)
 	{
@@ -96,8 +90,6 @@ public class ImmutableTup4obj implements Tup4objR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup4obj} with all values set to a single value.
 	 * 
 	 * @param value The value used for all values of the tuple.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup4obj(Object value)
 	{
@@ -111,8 +103,6 @@ public class ImmutableTup4obj implements Tup4objR, FormattableToString
 	 * @param y The y value.
 	 * @param z The z value.
 	 * @param w The w value.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup4obj(Object x, Object y, Object z, Object w)
 	{
@@ -126,8 +116,6 @@ public class ImmutableTup4obj implements Tup4objR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup4obj} with the values set to the corresponding parameters.
 	 * 
 	 * @param v The values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup4obj(Object[] v)
 	{
@@ -137,30 +125,35 @@ public class ImmutableTup4obj implements Tup4objR, FormattableToString
 		this.w = v[3];
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Object getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Object getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Object getZ()
 	{
 		return this.z;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Object getW()
 	{
 		return this.w;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -169,6 +162,7 @@ public class ImmutableTup4obj implements Tup4objR, FormattableToString
 		return this.hashCode;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -201,18 +195,21 @@ public class ImmutableTup4obj implements Tup4objR, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "immutableTup4obj(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ", w=" + getW() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public ImmutableTup4obj clone()
 	{
 		return new ImmutableTup4obj(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -223,36 +220,6 @@ public class ImmutableTup4obj implements Tup4objR, FormattableToString
 		values.put("w", getW());
 		
 		return values;
-	}
-	
-	@Override
-	public ImmutableTup4obj getNewInstance(Object x, Object y, Object z, Object w)
-	{
-		return new ImmutableTup4obj(x, y, z, w);
-	}
-	
-	@Override
-	public ImmutableTup4obj getNewInstance(Object value)
-	{
-		return (ImmutableTup4obj)Tup4objR.super.getNewInstance(value);
-	}
-	
-	@Override
-	public ImmutableTup4obj getNewInstance(Tup4objR t)
-	{
-		return (ImmutableTup4obj)Tup4objR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup4obj getNewInstance(TupobjR t)
-	{
-		return (ImmutableTup4obj)Tup4objR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup4obj getNewInstanceFromArray(Object... values)
-	{
-		return (ImmutableTup4obj)Tup4objR.super.getNewInstanceFromArray(values);
 	}
 	
 	/**

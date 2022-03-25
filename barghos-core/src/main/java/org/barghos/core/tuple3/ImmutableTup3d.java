@@ -34,8 +34,6 @@ import org.barghos.core.api.tuple3.Tup3dR;
  * It can be used as a more flexible way to create constants.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 public class ImmutableTup3d implements Tup3dR, FormattableToString
 {
@@ -68,8 +66,6 @@ public class ImmutableTup3d implements Tup3dR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup3d} from an existing instance of {@link TupdR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupdR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3d(TupdR t)
 	{
@@ -80,8 +76,6 @@ public class ImmutableTup3d implements Tup3dR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup3d} from an existing instance of {@link Tup3dR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup3dR} to adopt the values from.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3d(Tup3dR t)
 	{
@@ -92,8 +86,6 @@ public class ImmutableTup3d implements Tup3dR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup3d} with all values set to a single value.
 	 * 
 	 * @param value The value used for all values of the tuple.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3d(double value)
 	{
@@ -106,8 +98,6 @@ public class ImmutableTup3d implements Tup3dR, FormattableToString
 	 * @param x The x value.
 	 * @param y The y value.
 	 * @param z The z value.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3d(double x, double y, double z)
 	{
@@ -120,8 +110,6 @@ public class ImmutableTup3d implements Tup3dR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup3d} with the values set to the corresponding parameters.
 	 * 
 	 * @param v The values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3d(double[] v)
 	{
@@ -130,24 +118,28 @@ public class ImmutableTup3d implements Tup3dR, FormattableToString
 		this.z = v[2];
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public double getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public double getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public double getZ()
 	{
 		return this.z;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -156,6 +148,7 @@ public class ImmutableTup3d implements Tup3dR, FormattableToString
 		return this.hashCode;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -186,18 +179,21 @@ public class ImmutableTup3d implements Tup3dR, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "immutableTup3d(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public ImmutableTup3d clone()
 	{
 		return new ImmutableTup3d(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -207,36 +203,6 @@ public class ImmutableTup3d implements Tup3dR, FormattableToString
 		values.put("z", getZ());
 		
 		return values;
-	}
-	
-	@Override
-	public ImmutableTup3d getNewInstance(double x, double y, double z)
-	{
-		return new ImmutableTup3d(x, y, z);
-	}
-	
-	@Override
-	public ImmutableTup3d getNewInstance(double value)
-	{
-		return (ImmutableTup3d)Tup3dR.super.getNewInstance(value);
-	}
-	
-	@Override
-	public ImmutableTup3d getNewInstance(Tup3dR t)
-	{
-		return (ImmutableTup3d)Tup3dR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup3d getNewInstance(TupdR t)
-	{
-		return (ImmutableTup3d)Tup3dR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup3d getNewInstanceFromArray(double... values)
-	{
-		return (ImmutableTup3d)Tup3dR.super.getNewInstanceFromArray(values);
 	}
 	
 	/**

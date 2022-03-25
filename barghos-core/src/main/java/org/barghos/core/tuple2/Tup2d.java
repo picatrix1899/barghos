@@ -28,8 +28,8 @@ import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupdR;
+import org.barghos.core.api.tuple2.Tup2dBase;
 import org.barghos.core.api.tuple2.Tup2dR;
-import org.barghos.core.api.tuple2.Tup2dRW;
 
 /**
  * This class represents a 2-dimensional double tuple.
@@ -37,10 +37,8 @@ import org.barghos.core.api.tuple2.Tup2dRW;
  * where the data of a vector describes the same logical structure.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
-public class Tup2d implements Tup2dRW, Serializable, FormattableToString
+public class Tup2d implements Tup2dBase, Serializable, FormattableToString
 {
 	/**
 	 * The class version for serialization.
@@ -59,8 +57,6 @@ public class Tup2d implements Tup2dRW, Serializable, FormattableToString
 	
 	/**
 	 * Creates a new instance with all components set to 0.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup2d()
 	{
@@ -71,8 +67,6 @@ public class Tup2d implements Tup2dRW, Serializable, FormattableToString
 	 * Creates a new instance from an existing instance of {@link TupdR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupdR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup2d(TupdR t)
 	{
@@ -83,8 +77,6 @@ public class Tup2d implements Tup2dRW, Serializable, FormattableToString
 	 * Creates a new instance from an existing instance of {@link Tup2dR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup2dR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup2d(Tup2dR t)
 	{
@@ -95,8 +87,6 @@ public class Tup2d implements Tup2dRW, Serializable, FormattableToString
 	 * Creates a new instance with all values set to a single value.
 	 * 
 	 * @param value The value used as the initial value for all values of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup2d(double value)
 	{
@@ -107,8 +97,6 @@ public class Tup2d implements Tup2dRW, Serializable, FormattableToString
 	 * Creates a new instance with the values set to the corresponding parameters.
 	 * 
 	 * @param v The x and y values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup2d(double[] v)
 	{
@@ -120,26 +108,27 @@ public class Tup2d implements Tup2dRW, Serializable, FormattableToString
 	 * 
 	 * @param x The initial x value of the tuple.
 	 * @param y The initial y value of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup2d(double x, double y)
 	{
 		set(x, y);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public double getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public double getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2d setX(double x)
 	{
@@ -148,6 +137,7 @@ public class Tup2d implements Tup2dRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2d setY(double y)
 	{
@@ -156,24 +146,28 @@ public class Tup2d implements Tup2dRW, Serializable, FormattableToString
 		return this;
 	}
 
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2d set(Tup2dR t)
 	{
-		return (Tup2d)Tup2dRW.super.set(t);
+		return (Tup2d)Tup2dBase.super.set(t);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2d set(double value)
 	{
-		return (Tup2d)Tup2dRW.super.set(value);
+		return (Tup2d)Tup2dBase.super.set(value);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2d set(double x, double y)
 	{
-		return (Tup2d)Tup2dRW.super.set(x, y);
+		return (Tup2d)Tup2dBase.super.set(x, y);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -186,6 +180,7 @@ public class Tup2d implements Tup2dRW, Serializable, FormattableToString
 		return result;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -214,18 +209,21 @@ public class Tup2d implements Tup2dRW, Serializable, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "tup2d(x=" + getX() + ", y=" + getY() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2d clone()
 	{
 		return new Tup2d(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -236,51 +234,24 @@ public class Tup2d implements Tup2dRW, Serializable, FormattableToString
 		return values;
 	}
 	
-	@Override
-	public Tup2d getNewInstance(double x, double y)
-	{
-		return new Tup2d(x, y);
-	}
-	
-	@Override
-	public Tup2d getNewInstance(double value)
-	{
-		return (Tup2d)Tup2dRW.super.getNewInstance(value);
-	}
-	
-	@Override
-	public Tup2d getNewInstance(Tup2dR t)
-	{
-		return (Tup2d)Tup2dRW.super.getNewInstance(t);
-	}
-	
-	@Override
-	public Tup2d getNewInstance(TupdR t)
-	{
-		return (Tup2d)Tup2dRW.super.getNewInstance(t);
-	}
-	
-	@Override
-	public Tup2d getNewInstanceFromArray(double... values)
-	{
-		return (Tup2d)Tup2dRW.super.getNewInstanceFromArray(values);
-	}
-	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2d set(TupdR t)
 	{
-		return (Tup2d)Tup2dRW.super.set(t);
+		return (Tup2d)Tup2dBase.super.set(t);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2d setArray(double... values)
 	{
-		return (Tup2d)Tup2dRW.super.setArray(values);
+		return (Tup2d)Tup2dBase.super.setArray(values);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup2d setByIndex(int index, double value)
 	{
-		return (Tup2d)Tup2dRW.super.setByIndex(index, value);
+		return (Tup2d)Tup2dBase.super.setByIndex(index, value);
 	}
 }

@@ -28,8 +28,8 @@ import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupboR;
+import org.barghos.core.api.tuple4.Tup4boBase;
 import org.barghos.core.api.tuple4.Tup4boR;
-import org.barghos.core.api.tuple4.Tup4boRW;
 
 /**
  * This class represents a 3-dimensional boolean tuple.
@@ -37,10 +37,8 @@ import org.barghos.core.api.tuple4.Tup4boRW;
  * where the data of a vector describes the same logical structure.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
-public class Tup4bo implements Tup4boRW, Serializable, FormattableToString
+public class Tup4bo implements Tup4boBase, Serializable, FormattableToString
 {
 	/**
 	 * The class version for serialization.
@@ -69,8 +67,6 @@ public class Tup4bo implements Tup4boRW, Serializable, FormattableToString
 	
 	/**
 	 * Creates a new instance with all components set to 0.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4bo()
 	{
@@ -81,8 +77,6 @@ public class Tup4bo implements Tup4boRW, Serializable, FormattableToString
 	 * Creates a new instance from an existing instance of {@link TupboR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupboR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4bo(TupboR t)
 	{
@@ -93,8 +87,6 @@ public class Tup4bo implements Tup4boRW, Serializable, FormattableToString
 	 * Creates a new instance from an existing instance of {@link Tup4boR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup4boR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4bo(Tup4boR t)
 	{
@@ -105,8 +97,6 @@ public class Tup4bo implements Tup4boRW, Serializable, FormattableToString
 	 * Creates a new instance with all values set to a single value.
 	 * 
 	 * @param value The value used as the initial value for all values of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4bo(boolean value)
 	{
@@ -120,8 +110,6 @@ public class Tup4bo implements Tup4boRW, Serializable, FormattableToString
 	 * @param y The initial y value of the tuple.
 	 * @param z The initial z value of the tuple.
 	 * @param w The initial w value of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4bo(boolean x, boolean y, boolean z, boolean w)
 	{
@@ -132,38 +120,41 @@ public class Tup4bo implements Tup4boRW, Serializable, FormattableToString
 	 * Creates a new instance with the values set to the corresponding parameters.
 	 * 
 	 * @param v The values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4bo(boolean[] v)
 	{
 		setArray(v);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean getZ()
 	{
 		return this.z;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean getW()
 	{
 		return this.w;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4bo setX(boolean x)
 	{
@@ -172,6 +163,7 @@ public class Tup4bo implements Tup4boRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4bo setY(boolean y)
 	{
@@ -180,6 +172,7 @@ public class Tup4bo implements Tup4boRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4bo setZ(boolean z)
 	{
@@ -188,6 +181,7 @@ public class Tup4bo implements Tup4boRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4bo setW(boolean w)
 	{
@@ -196,24 +190,28 @@ public class Tup4bo implements Tup4boRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4bo set(Tup4boR t)
 	{
 		return set(t.getX(), t.getY(), t.getZ(), t.getW());
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4bo set(boolean value)
 	{
 		return set(value, value, value, value);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4bo set(boolean x, boolean y, boolean z, boolean w)
 	{
 		return setX(x).setY(y).setZ(z).setW(w);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -226,6 +224,7 @@ public class Tup4bo implements Tup4boRW, Serializable, FormattableToString
 		return result;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -258,18 +257,21 @@ public class Tup4bo implements Tup4boRW, Serializable, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4bo clone()
 	{
 		return new Tup4bo(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "tup4bo(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ", w=" + getW() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -282,51 +284,24 @@ public class Tup4bo implements Tup4boRW, Serializable, FormattableToString
 		return values;
 	}
 	
-	@Override
-	public Tup4bo getNewInstance(boolean x, boolean y, boolean z, boolean w)
-	{
-		return new Tup4bo(x, y, z, w);
-	}
-	
-	@Override
-	public Tup4bo getNewInstance(boolean value)
-	{
-		return (Tup4bo)Tup4boRW.super.getNewInstance(value);
-	}
-	
-	@Override
-	public Tup4bo getNewInstance(Tup4boR t)
-	{
-		return (Tup4bo)Tup4boRW.super.getNewInstance(t);
-	}
-	
-	@Override
-	public Tup4bo getNewInstance(TupboR t)
-	{
-		return (Tup4bo)Tup4boRW.super.getNewInstance(t);
-	}
-	
-	@Override
-	public Tup4bo getNewInstanceFromArray(boolean... values)
-	{
-		return (Tup4bo)Tup4boRW.super.getNewInstanceFromArray(values);
-	}
-	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4bo set(TupboR t)
 	{
-		return (Tup4bo)Tup4boRW.super.set(t);
+		return (Tup4bo)Tup4boBase.super.set(t);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4bo setArray(boolean... values)
 	{
-		return (Tup4bo)Tup4boRW.super.setArray(values);
+		return (Tup4bo)Tup4boBase.super.setArray(values);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4bo setByIndex(int index, boolean value)
 	{
-		return (Tup4bo)Tup4boRW.super.setByIndex(index, value);
+		return (Tup4bo)Tup4boBase.super.setByIndex(index, value);
 	}
 }

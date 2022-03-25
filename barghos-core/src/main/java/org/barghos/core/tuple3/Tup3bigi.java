@@ -29,8 +29,8 @@ import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupbigiR;
+import org.barghos.core.api.tuple3.Tup3bigiBase;
 import org.barghos.core.api.tuple3.Tup3bigiR;
-import org.barghos.core.api.tuple3.Tup3bigiRW;
 
 /**
  * This class represents a 3-dimensional {@link BigInteger} tuple.
@@ -38,10 +38,8 @@ import org.barghos.core.api.tuple3.Tup3bigiRW;
  * where the data of a vector describes the same logical structure.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
-public class Tup3bigi implements Tup3bigiRW, Serializable, FormattableToString
+public class Tup3bigi implements Tup3bigiBase, Serializable, FormattableToString
 {
 	/**
 	 * The class version for serialization.
@@ -68,8 +66,6 @@ public class Tup3bigi implements Tup3bigiRW, Serializable, FormattableToString
 	
 	/**
 	 * Creates a new instance with all components set to {@link BigInteger#ZERO}.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup3bigi()
 	{
@@ -80,8 +76,6 @@ public class Tup3bigi implements Tup3bigiRW, Serializable, FormattableToString
 	 * Creates a new instance from an existing instance of {@link TupbigiR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupbigiR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup3bigi(TupbigiR t)
 	{
@@ -92,8 +86,6 @@ public class Tup3bigi implements Tup3bigiRW, Serializable, FormattableToString
 	 * Creates a new instance from an existing instance of {@link Tup3bigiR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup3bigiR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup3bigi(Tup3bigiR t)
 	{
@@ -104,8 +96,6 @@ public class Tup3bigi implements Tup3bigiRW, Serializable, FormattableToString
 	 * Creates a new instance with all values set to a single value.
 	 * 
 	 * @param value The value used as the initial value for all values of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup3bigi(BigInteger value)
 	{
@@ -118,8 +108,6 @@ public class Tup3bigi implements Tup3bigiRW, Serializable, FormattableToString
 	 * @param x The initial x value of the tuple.
 	 * @param y The initial y value of the tuple.
 	 * @param z The initial z value of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup3bigi(BigInteger x, BigInteger y, BigInteger z)
 	{
@@ -130,32 +118,34 @@ public class Tup3bigi implements Tup3bigiRW, Serializable, FormattableToString
 	 * Creates a new instance with the values set to the corresponding parameters.
 	 * 
 	 * @param v The values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup3bigi(BigInteger[] v)
 	{
 		setArray(v);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public BigInteger getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public BigInteger getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public BigInteger getZ()
 	{
 		return this.z;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3bigi setX(BigInteger x)
 	{
@@ -164,6 +154,7 @@ public class Tup3bigi implements Tup3bigiRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3bigi setY(BigInteger y)
 	{
@@ -172,6 +163,7 @@ public class Tup3bigi implements Tup3bigiRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3bigi setZ(BigInteger z)
 	{
@@ -180,24 +172,28 @@ public class Tup3bigi implements Tup3bigiRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3bigi set(Tup3bigiR t)
 	{
 		return set(t.getX(), t.getY(), t.getZ());
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3bigi set(BigInteger value)
 	{
 		return set(value, value, value);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3bigi set(BigInteger x, BigInteger y, BigInteger z)
 	{
 		return setX(x).setY(y).setZ(z);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -209,6 +205,7 @@ public class Tup3bigi implements Tup3bigiRW, Serializable, FormattableToString
 		return result;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -239,18 +236,21 @@ public class Tup3bigi implements Tup3bigiRW, Serializable, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3bigi clone()
 	{
 		return new Tup3bigi(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "tup3bigi(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -262,51 +262,24 @@ public class Tup3bigi implements Tup3bigiRW, Serializable, FormattableToString
 		return values;
 	}
 	
-	@Override
-	public Tup3bigi getNewInstance(BigInteger x, BigInteger y, BigInteger z)
-	{
-		return new Tup3bigi(x, y, z);
-	}
-	
-	@Override
-	public Tup3bigi getNewInstance(BigInteger value)
-	{
-		return (Tup3bigi)Tup3bigiRW.super.getNewInstance(value);
-	}
-	
-	@Override
-	public Tup3bigi getNewInstance(Tup3bigiR t)
-	{
-		return (Tup3bigi)Tup3bigiRW.super.getNewInstance(t);
-	}
-	
-	@Override
-	public Tup3bigi getNewInstance(TupbigiR t)
-	{
-		return (Tup3bigi)Tup3bigiRW.super.getNewInstance(t);
-	}
-	
-	@Override
-	public Tup3bigi getNewInstanceFromArray(BigInteger... values)
-	{
-		return (Tup3bigi)Tup3bigiRW.super.getNewInstanceFromArray(values);
-	}
-	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3bigi set(TupbigiR t)
 	{
-		return (Tup3bigi)Tup3bigiRW.super.set(t);
+		return (Tup3bigi)Tup3bigiBase.super.set(t);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3bigi setArray(BigInteger... values)
 	{
-		return (Tup3bigi)Tup3bigiRW.super.setArray(values);
+		return (Tup3bigi)Tup3bigiBase.super.setArray(values);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3bigi setByIndex(int index, BigInteger value)
 	{
-		return (Tup3bigi)Tup3bigiRW.super.setByIndex(index, value);
+		return (Tup3bigi)Tup3bigiBase.super.setByIndex(index, value);
 	}
 }

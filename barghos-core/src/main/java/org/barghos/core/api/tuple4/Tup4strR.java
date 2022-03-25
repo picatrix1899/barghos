@@ -32,8 +32,6 @@ import org.barghos.core.api.tuple.TupstrR;
  * if the method only reads data from the parameter.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 public interface Tup4strR extends TupstrR
 {
@@ -41,8 +39,6 @@ public interface Tup4strR extends TupstrR
 	 * Returns the x value from the tuple.
 	 * 
 	 * @return The x value from the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	String getX();
 	
@@ -50,8 +46,6 @@ public interface Tup4strR extends TupstrR
 	 * Returns the y value from the tuple.
 	 * 
 	 * @return The y value from the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	String getY();
 	
@@ -59,8 +53,6 @@ public interface Tup4strR extends TupstrR
 	 * Returns the z value from the tuple.
 	 * 
 	 * @return The z value from the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	String getZ();
 	
@@ -68,11 +60,10 @@ public interface Tup4strR extends TupstrR
 	 * Returns the w value from the tuple.
 	 * 
 	 * @return The w value from the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	String getW();
 	
+	/** {@inheritDoc}} */
 	@Override
 	default boolean isValid()
 	{
@@ -82,59 +73,14 @@ public interface Tup4strR extends TupstrR
 				getW() != null;
 	}
 	
-	/**
-	 * Returns a new instance of the type of the origin instance with the components adopted
-	 * from t.
-	 * 
-	 * <p>
-	 * This can be used for type continuety.
-	 * This way even while only using abstractions it is possible to create
-	 * new instances of the original. It is similar to the {@link Object#clone()}
-	 * function but the {@link Object#clone()} function requires the returned instance to be
-	 * writable.
-	 * This function on the other hand allows for example the usage of factories.
-	 * 
-	 * @param t The tuple to adopt the components from.
-	 * 
-	 * @return A new instance of the type of the origin instance
-	 */
-	default Tup4strR getNewInstance(Tup4strR t)
-	{
-		return getNewInstance(t.getX(), t.getY(), t.getZ(), t.getW());
-	}
-	
-	@Override
-	default Tup4strR getNewInstance(String value)
-	{
-		return getNewInstance(value, value, value, value);
-	}
-	
-	/**
-	 * Returns a new instance of the type of the origin instance with the components set to
-	 * the corresponding parameters.
-	 * 
-	 * <p>
-	 * This can be used for type continuety.
-	 * This way even while only using abstractions it is possible to create
-	 * new instances of the original. It is similar to the {@link Object#clone()}
-	 * function but the {@link Object#clone()} function requires the returned instance to be
-	 * writable. This function on the other hand allows for example the usage of factories.
-	 * 
-	 * @param x The value used for the x component.
-	 * @param y The value used for the y component.
-	 * @param z The value used for the z component.
-	 * @param w The value used for the w component.
-	 * 
-	 * @return A new instance of the type of the origin instance
-	 */
-	Tup4strR getNewInstance(String x, String y, String z, String w);
-	
+	/** {@inheritDoc}} */
 	@Override
 	default int getDimensions()
 	{
 		return 4;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	default String getByIndex(int index)
 	{
@@ -149,23 +95,10 @@ public interface Tup4strR extends TupstrR
 		throw new IndexOutOfBoundsException(index);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	default String[] getArray()
 	{
 		return new String[] {getX(), getY(), getZ(), getW()};
-	}
-	
-	@Override
-	default Tup4strR getNewInstanceFromArray(String... values)
-	{
-		String[] v = values;
-		return getNewInstance(v[0], v[1], v[2], v[3]);
-	}
-	
-	@Override
-	default Tup4strR getNewInstance(TupstrR t)
-	{
-		String[] v = t.getArray();
-		return getNewInstance(v[0], v[1], v[2], v[3]);
 	}
 }

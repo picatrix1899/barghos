@@ -29,8 +29,8 @@ import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupbigdR;
+import org.barghos.core.api.tuple4.Tup4bigdBase;
 import org.barghos.core.api.tuple4.Tup4bigdR;
-import org.barghos.core.api.tuple4.Tup4bigdRW;
 
 /**
  * This class represents a 4-dimensional {@link BigDecimal} tuple.
@@ -38,10 +38,8 @@ import org.barghos.core.api.tuple4.Tup4bigdRW;
  * where the data of a vector describes the same logical structure.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
-public class Tup4bigd implements Tup4bigdRW, Serializable, FormattableToString
+public class Tup4bigd implements Tup4bigdBase, Serializable, FormattableToString
 {
 	/**
 	 * The class version for serialization.
@@ -74,8 +72,6 @@ public class Tup4bigd implements Tup4bigdRW, Serializable, FormattableToString
 	
 	/**
 	 * Creates a new instance with all components set to {@link BigDecimal#ZERO}.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4bigd()
 	{
@@ -86,8 +82,6 @@ public class Tup4bigd implements Tup4bigdRW, Serializable, FormattableToString
 	 * Creates a new instance from an existing instance of {@link TupbigdR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupbigdR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4bigd(TupbigdR t)
 	{
@@ -98,8 +92,6 @@ public class Tup4bigd implements Tup4bigdRW, Serializable, FormattableToString
 	 * Creates a new instance from an existing instance of {@link Tup4bigdR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup4bigdR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4bigd(Tup4bigdR t)
 	{
@@ -110,8 +102,6 @@ public class Tup4bigd implements Tup4bigdRW, Serializable, FormattableToString
 	 * Creates a new instance with all values set to a single value.
 	 * 
 	 * @param value The value used as the initial value for all values of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4bigd(BigDecimal value)
 	{
@@ -125,8 +115,6 @@ public class Tup4bigd implements Tup4bigdRW, Serializable, FormattableToString
 	 * @param y The initial y value of the tuple.
 	 * @param z The initial z value of the tuple.
 	 * @param w The initial w value of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4bigd(BigDecimal x, BigDecimal y, BigDecimal z, BigDecimal w)
 	{
@@ -137,38 +125,41 @@ public class Tup4bigd implements Tup4bigdRW, Serializable, FormattableToString
 	 * Creates a new instance with the values set to the corresponding parameters.
 	 * 
 	 * @param v The values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4bigd(BigDecimal[] v)
 	{
 		setArray(v);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public BigDecimal getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public BigDecimal getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public BigDecimal getZ()
 	{
 		return this.z;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public BigDecimal getW()
 	{
 		return this.w;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4bigd setX(BigDecimal x)
 	{
@@ -177,6 +168,7 @@ public class Tup4bigd implements Tup4bigdRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4bigd setY(BigDecimal y)
 	{
@@ -185,6 +177,7 @@ public class Tup4bigd implements Tup4bigdRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4bigd setZ(BigDecimal z)
 	{
@@ -193,6 +186,7 @@ public class Tup4bigd implements Tup4bigdRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4bigd setW(BigDecimal w)
 	{
@@ -201,24 +195,28 @@ public class Tup4bigd implements Tup4bigdRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4bigd set(Tup4bigdR t)
 	{
 		return set(t.getX(), t.getY(), t.getZ(), t.getW());
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4bigd set(BigDecimal value)
 	{
 		return set(value, value, value, value);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4bigd set(BigDecimal x, BigDecimal y, BigDecimal z, BigDecimal w)
 	{
 		return setX(x).setY(y).setZ(z).setW(w);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -231,6 +229,7 @@ public class Tup4bigd implements Tup4bigdRW, Serializable, FormattableToString
 		return result;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -263,18 +262,21 @@ public class Tup4bigd implements Tup4bigdRW, Serializable, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4bigd clone()
 	{
 		return new Tup4bigd(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "tup4bigd(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ", w=" + getW() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -287,51 +289,24 @@ public class Tup4bigd implements Tup4bigdRW, Serializable, FormattableToString
 		return values;
 	}
 	
-	@Override
-	public Tup4bigd getNewInstance(BigDecimal x, BigDecimal y, BigDecimal z, BigDecimal w)
-	{
-		return new Tup4bigd(x, y, z, w);
-	}
-	
-	@Override
-	public Tup4bigd getNewInstance(BigDecimal value)
-	{
-		return (Tup4bigd)Tup4bigdRW.super.getNewInstance(value);
-	}
-	
-	@Override
-	public Tup4bigd getNewInstance(Tup4bigdR t)
-	{
-		return (Tup4bigd)Tup4bigdRW.super.getNewInstance(t);
-	}
-	
-	@Override
-	public Tup4bigd getNewInstance(TupbigdR t)
-	{
-		return (Tup4bigd)Tup4bigdRW.super.getNewInstance(t);
-	}
-	
-	@Override
-	public Tup4bigd getNewInstanceFromArray(BigDecimal... values)
-	{
-		return (Tup4bigd)Tup4bigdRW.super.getNewInstanceFromArray(values);
-	}
-	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4bigd set(TupbigdR t)
 	{
-		return (Tup4bigd)Tup4bigdRW.super.set(t);
+		return (Tup4bigd)Tup4bigdBase.super.set(t);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4bigd setArray(BigDecimal... values)
 	{
-		return (Tup4bigd)Tup4bigdRW.super.setArray(values);
+		return (Tup4bigd)Tup4bigdBase.super.setArray(values);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4bigd setByIndex(int index, BigDecimal value)
 	{
-		return (Tup4bigd)Tup4bigdRW.super.setByIndex(index, value);
+		return (Tup4bigd)Tup4bigdBase.super.setByIndex(index, value);
 	}
 }

@@ -28,8 +28,8 @@ import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupsR;
+import org.barghos.core.api.tuple4.Tup4sBase;
 import org.barghos.core.api.tuple4.Tup4sR;
-import org.barghos.core.api.tuple4.Tup4sRW;
 
 /**
  * This class represents a 4-dimensional short tuple.
@@ -37,10 +37,8 @@ import org.barghos.core.api.tuple4.Tup4sRW;
  * where the data of a vector describes the same logical structure.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
-public class Tup4s implements Tup4sRW, Serializable, FormattableToString
+public class Tup4s implements Tup4sBase, Serializable, FormattableToString
 {
 	/**
 	 * The class version for serialization.
@@ -69,8 +67,6 @@ public class Tup4s implements Tup4sRW, Serializable, FormattableToString
 	
 	/**
 	 * Creates a new instance with all components set to 0.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4s()
 	{
@@ -81,8 +77,6 @@ public class Tup4s implements Tup4sRW, Serializable, FormattableToString
 	 * Creates a new instance from an existing instance of {@link TupsR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupsR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4s(TupsR t)
 	{
@@ -93,8 +87,6 @@ public class Tup4s implements Tup4sRW, Serializable, FormattableToString
 	 * Creates a new instance from an existing instance of {@link Tup4sR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup4sR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4s(Tup4sR t)
 	{
@@ -105,8 +97,6 @@ public class Tup4s implements Tup4sRW, Serializable, FormattableToString
 	 * Creates a new instance with all values set to a single value.
 	 * 
 	 * @param value The value used as the initial value for all values of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4s(short value)
 	{
@@ -120,8 +110,6 @@ public class Tup4s implements Tup4sRW, Serializable, FormattableToString
 	 * @param y The initial y value of the tuple.
 	 * @param z The initial z value of the tuple.
 	 * @param w The initial w value of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4s(short x, short y, short z, short w)
 	{
@@ -132,38 +120,41 @@ public class Tup4s implements Tup4sRW, Serializable, FormattableToString
 	 * Creates a new instance with the values set to the corresponding parameters.
 	 * 
 	 * @param v The values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup4s(short[] v)
 	{
 		setArray(v);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public short getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public short getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public short getZ()
 	{
 		return this.z;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public short getW()
 	{
 		return this.w;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4s setX(short x)
 	{
@@ -172,6 +163,7 @@ public class Tup4s implements Tup4sRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4s setY(short y)
 	{
@@ -180,6 +172,7 @@ public class Tup4s implements Tup4sRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4s setZ(short z)
 	{
@@ -188,6 +181,7 @@ public class Tup4s implements Tup4sRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4s setW(short w)
 	{
@@ -196,24 +190,28 @@ public class Tup4s implements Tup4sRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4s set(Tup4sR t)
 	{
 		return set(t.getX(), t.getY(), t.getZ(), t.getW());
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4s set(short value)
 	{
 		return set(value, value, value, value);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4s set(short x, short y, short z, short w)
 	{
 		return setX(x).setY(y).setZ(z).setW(w);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -226,6 +224,7 @@ public class Tup4s implements Tup4sRW, Serializable, FormattableToString
 		return result;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -258,18 +257,21 @@ public class Tup4s implements Tup4sRW, Serializable, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4s clone()
 	{
 		return new Tup4s(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "tup4s(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ", w=" + getW() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -282,51 +284,24 @@ public class Tup4s implements Tup4sRW, Serializable, FormattableToString
 		return values;
 	}
 	
-	@Override
-	public Tup4s getNewInstance(short x, short y, short z, short w)
-	{
-		return new Tup4s(x, y, z, w);
-	}
-	
-	@Override
-	public Tup4s getNewInstance(short value)
-	{
-		return (Tup4s)Tup4sRW.super.getNewInstance(value);
-	}
-	
-	@Override
-	public Tup4s getNewInstance(Tup4sR t)
-	{
-		return (Tup4s)Tup4sRW.super.getNewInstance(t);
-	}
-	
-	@Override
-	public Tup4s getNewInstance(TupsR t)
-	{
-		return (Tup4s)Tup4sRW.super.getNewInstance(t);
-	}
-	
-	@Override
-	public Tup4s getNewInstanceFromArray(short... values)
-	{
-		return (Tup4s)Tup4sRW.super.getNewInstanceFromArray(values);
-	}
-	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4s set(TupsR t)
 	{
-		return (Tup4s)Tup4sRW.super.set(t);
+		return (Tup4s)Tup4sBase.super.set(t);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4s setArray(short... values)
 	{
-		return (Tup4s)Tup4sRW.super.setArray(values);
+		return (Tup4s)Tup4sBase.super.setArray(values);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup4s setByIndex(int index, short value)
 	{
-		return (Tup4s)Tup4sRW.super.setByIndex(index, value);
+		return (Tup4s)Tup4sBase.super.setByIndex(index, value);
 	}
 }

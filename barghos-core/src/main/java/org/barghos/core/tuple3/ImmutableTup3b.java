@@ -36,8 +36,6 @@ import org.barghos.core.api.tuple3.Tup3bR;
  * It can be used as a more flexible way to create constants.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 public class ImmutableTup3b implements Tup3bR, FormattableToString
 {
@@ -70,8 +68,6 @@ public class ImmutableTup3b implements Tup3bR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup3b} from an existing instance of {@link TupbR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupbR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3b(TupbR t)
 	{
@@ -82,8 +78,6 @@ public class ImmutableTup3b implements Tup3bR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup3b} from an existing instance of {@link Tup3bR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup3bR} to adopt the values from.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3b(Tup3bR t)
 	{
@@ -94,8 +88,6 @@ public class ImmutableTup3b implements Tup3bR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup3b} with all values set to a single value.
 	 * 
 	 * @param value The value used for all values of the tuple.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3b(byte value)
 	{
@@ -108,8 +100,6 @@ public class ImmutableTup3b implements Tup3bR, FormattableToString
 	 * @param x The x value.
 	 * @param y The y value.
 	 * @param z The z value.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3b(byte x, byte y, byte z)
 	{
@@ -122,8 +112,6 @@ public class ImmutableTup3b implements Tup3bR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup3b} with the values set to the corresponding parameters.
 	 * 
 	 * @param v The values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3b(byte[] v)
 	{
@@ -132,24 +120,28 @@ public class ImmutableTup3b implements Tup3bR, FormattableToString
 		this.z = v[2];
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public byte getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public byte getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public byte getZ()
 	{
 		return this.z;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -158,6 +150,7 @@ public class ImmutableTup3b implements Tup3bR, FormattableToString
 		return this.hashCode;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -188,18 +181,21 @@ public class ImmutableTup3b implements Tup3bR, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "immutableTup3b(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public ImmutableTup3b clone()
 	{
 		return new ImmutableTup3b(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -209,36 +205,6 @@ public class ImmutableTup3b implements Tup3bR, FormattableToString
 		values.put("z", getZ());
 		
 		return values;
-	}
-	
-	@Override
-	public ImmutableTup3b getNewInstance(byte x, byte y, byte z)
-	{
-		return new ImmutableTup3b(x, y, z);
-	}
-	
-	@Override
-	public ImmutableTup3b getNewInstance(byte value)
-	{
-		return (ImmutableTup3b)Tup3bR.super.getNewInstance(value);
-	}
-	
-	@Override
-	public ImmutableTup3b getNewInstance(Tup3bR t)
-	{
-		return (ImmutableTup3b)Tup3bR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup3b getNewInstance(TupbR t)
-	{
-		return (ImmutableTup3b)Tup3bR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup3b getNewInstanceFromArray(byte... values)
-	{
-		return (ImmutableTup3b)Tup3bR.super.getNewInstanceFromArray(values);
 	}
 	
 	/**

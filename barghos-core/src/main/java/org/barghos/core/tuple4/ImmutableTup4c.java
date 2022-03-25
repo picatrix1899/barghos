@@ -34,8 +34,6 @@ import org.barghos.core.api.tuple4.Tup4cR;
  * It can be used as a more flexible way to create constants.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 public class ImmutableTup4c implements Tup4cR, FormattableToString
 {
@@ -73,8 +71,6 @@ public class ImmutableTup4c implements Tup4cR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup4c} from an existing instance of {@link TupcR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupcR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup4c(TupcR t)
 	{
@@ -85,8 +81,6 @@ public class ImmutableTup4c implements Tup4cR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup4c} from an existing instance of {@link Tup4cR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup4cR} to adopt the values from.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup4c(Tup4cR t)
 	{
@@ -97,8 +91,6 @@ public class ImmutableTup4c implements Tup4cR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup4c} with all values set to a single value.
 	 * 
 	 * @param value The value used for all values of the tuple.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup4c(char value)
 	{
@@ -112,8 +104,6 @@ public class ImmutableTup4c implements Tup4cR, FormattableToString
 	 * @param y The y value.
 	 * @param z The z value.
 	 * @param w The w value.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup4c(char x, char y, char z, char w)
 	{
@@ -127,8 +117,6 @@ public class ImmutableTup4c implements Tup4cR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup4c} with the values set to the corresponding parameters.
 	 * 
 	 * @param v The values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup4c(char[] v)
 	{
@@ -138,30 +126,35 @@ public class ImmutableTup4c implements Tup4cR, FormattableToString
 		this.w = v[3];
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public char getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public char getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public char getZ()
 	{
 		return this.z;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public char getW()
 	{
 		return this.w;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -170,6 +163,7 @@ public class ImmutableTup4c implements Tup4cR, FormattableToString
 		return this.hashCode;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -202,18 +196,21 @@ public class ImmutableTup4c implements Tup4cR, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "immutableTup4c(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ", w=" + getW() +  ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public ImmutableTup4c clone()
 	{
 		return new ImmutableTup4c(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -224,36 +221,6 @@ public class ImmutableTup4c implements Tup4cR, FormattableToString
 		values.put("w", getW());
 		
 		return values;
-	}
-	
-	@Override
-	public ImmutableTup4c getNewInstance(char x, char y, char z, char w)
-	{
-		return new ImmutableTup4c(x, y, z, w);
-	}
-	
-	@Override
-	public ImmutableTup4c getNewInstance(char value)
-	{
-		return (ImmutableTup4c)Tup4cR.super.getNewInstance(value);
-	}
-	
-	@Override
-	public ImmutableTup4c getNewInstance(Tup4cR t)
-	{
-		return (ImmutableTup4c)Tup4cR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup4c getNewInstance(TupcR t)
-	{
-		return (ImmutableTup4c)Tup4cR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup4c getNewInstanceFromArray(char... values)
-	{
-		return (ImmutableTup4c)Tup4cR.super.getNewInstanceFromArray(values);
 	}
 	
 	/**

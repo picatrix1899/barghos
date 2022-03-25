@@ -35,8 +35,6 @@ import org.barghos.core.api.tuple3.Tup3bigdR;
  * It can be used as a more flexible way to create constants.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 public class ImmutableTup3bigd implements Tup3bigdR, FormattableToString
 {
@@ -69,8 +67,6 @@ public class ImmutableTup3bigd implements Tup3bigdR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup3bigd} from an existing instance of {@link TupbigdR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupbigdR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3bigd(TupbigdR t)
 	{
@@ -81,8 +77,6 @@ public class ImmutableTup3bigd implements Tup3bigdR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup3bigd} from an existing instance of {@link Tup3bigdR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup3bigdR} to adopt the values from.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3bigd(Tup3bigdR t)
 	{
@@ -93,8 +87,6 @@ public class ImmutableTup3bigd implements Tup3bigdR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup3bigd} with all values set to a single value.
 	 * 
 	 * @param value The value used for all values of the tuple.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3bigd(BigDecimal value)
 	{
@@ -107,8 +99,6 @@ public class ImmutableTup3bigd implements Tup3bigdR, FormattableToString
 	 * @param x The x value.
 	 * @param y The y value.
 	 * @param z The z value.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3bigd(BigDecimal x, BigDecimal y, BigDecimal z)
 	{
@@ -121,8 +111,6 @@ public class ImmutableTup3bigd implements Tup3bigdR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup3bigd} with the values set to the corresponding parameters.
 	 * 
 	 * @param v The values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3bigd(BigDecimal[] v)
 	{
@@ -131,24 +119,28 @@ public class ImmutableTup3bigd implements Tup3bigdR, FormattableToString
 		this.z = v[2];
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public BigDecimal getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public BigDecimal getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public BigDecimal getZ()
 	{
 		return this.z;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -157,6 +149,7 @@ public class ImmutableTup3bigd implements Tup3bigdR, FormattableToString
 		return this.hashCode;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -187,18 +180,21 @@ public class ImmutableTup3bigd implements Tup3bigdR, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "immutableTup3bigd(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public ImmutableTup3bigd clone()
 	{
 		return new ImmutableTup3bigd(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -209,37 +205,7 @@ public class ImmutableTup3bigd implements Tup3bigdR, FormattableToString
 		
 		return values;
 	}
-	
-	@Override
-	public ImmutableTup3bigd getNewInstance(BigDecimal x, BigDecimal y, BigDecimal z)
-	{
-		return new ImmutableTup3bigd(x, y, z);
-	}
-	
-	@Override
-	public ImmutableTup3bigd getNewInstance(BigDecimal value)
-	{
-		return (ImmutableTup3bigd)Tup3bigdR.super.getNewInstance(value);
-	}
-	
-	@Override
-	public ImmutableTup3bigd getNewInstance(Tup3bigdR t)
-	{
-		return (ImmutableTup3bigd)Tup3bigdR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup3bigd getNewInstance(TupbigdR t)
-	{
-		return (ImmutableTup3bigd)Tup3bigdR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup3bigd getNewInstanceFromArray(BigDecimal... values)
-	{
-		return (ImmutableTup3bigd)Tup3bigdR.super.getNewInstanceFromArray(values);
-	}
-	
+
 	/**
 	 * This method generates the hashCode and stores it in the member for later use.
 	 */

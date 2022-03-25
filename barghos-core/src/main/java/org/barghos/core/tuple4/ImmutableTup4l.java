@@ -34,8 +34,6 @@ import org.barghos.core.api.tuple4.Tup4lR;
  * It can be used as a more flexible way to create constants.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 public class ImmutableTup4l implements Tup4lR, FormattableToString
 {
@@ -73,8 +71,6 @@ public class ImmutableTup4l implements Tup4lR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup4l} from an existing instance of {@link TuplR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TuplR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup4l(TuplR t)
 	{
@@ -85,8 +81,6 @@ public class ImmutableTup4l implements Tup4lR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup4l} from an existing instance of {@link Tup4lR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup4lR} to adopt the values from.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup4l(Tup4lR t)
 	{
@@ -97,8 +91,6 @@ public class ImmutableTup4l implements Tup4lR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup4l} with all values set to a single value.
 	 * 
 	 * @param value The value used for all values of the tuple.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup4l(long value)
 	{
@@ -112,8 +104,6 @@ public class ImmutableTup4l implements Tup4lR, FormattableToString
 	 * @param y The y value.
 	 * @param z The z value.
 	 * @param w The w value.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup4l(long x, long y, long z, long w)
 	{
@@ -127,8 +117,6 @@ public class ImmutableTup4l implements Tup4lR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup4l} with the values set to the corresponding parameters.
 	 * 
 	 * @param v The values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup4l(long[] v)
 	{
@@ -138,30 +126,35 @@ public class ImmutableTup4l implements Tup4lR, FormattableToString
 		this.w = v[3];
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public long getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public long getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public long getZ()
 	{
 		return this.z;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public long getW()
 	{
 		return this.w;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -170,6 +163,7 @@ public class ImmutableTup4l implements Tup4lR, FormattableToString
 		return this.hashCode;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -202,18 +196,21 @@ public class ImmutableTup4l implements Tup4lR, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "immutableTup4l(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ", w=" + getW() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public ImmutableTup4l clone()
 	{
 		return new ImmutableTup4l(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -224,36 +221,6 @@ public class ImmutableTup4l implements Tup4lR, FormattableToString
 		values.put("w", getW());
 		
 		return values;
-	}
-	
-	@Override
-	public ImmutableTup4l getNewInstance(long x, long y, long z, long w)
-	{
-		return new ImmutableTup4l(x, y, z, w);
-	}
-	
-	@Override
-	public ImmutableTup4l getNewInstance(long value)
-	{
-		return (ImmutableTup4l)Tup4lR.super.getNewInstance(value);
-	}
-	
-	@Override
-	public ImmutableTup4l getNewInstance(Tup4lR t)
-	{
-		return (ImmutableTup4l)Tup4lR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup4l getNewInstance(TuplR t)
-	{
-		return (ImmutableTup4l)Tup4lR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup4l getNewInstanceFromArray(long... values)
-	{
-		return (ImmutableTup4l)Tup4lR.super.getNewInstanceFromArray(values);
 	}
 	
 	/**

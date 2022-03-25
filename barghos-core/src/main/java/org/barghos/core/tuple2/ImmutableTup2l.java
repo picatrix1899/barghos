@@ -34,8 +34,6 @@ import org.barghos.core.api.tuple2.Tup2lR;
  * It can be used as a more flexible way to create constants.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 public class ImmutableTup2l implements Tup2lR, FormattableToString
 {
@@ -63,8 +61,6 @@ public class ImmutableTup2l implements Tup2lR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup2l} from an existing instance of {@link TuplR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TuplR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2l(TuplR t)
 	{
@@ -75,8 +71,6 @@ public class ImmutableTup2l implements Tup2lR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup2l} from an existing instance of {@link Tup2lR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup2lR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2l(Tup2lR t)
 	{
@@ -87,8 +81,6 @@ public class ImmutableTup2l implements Tup2lR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup2l} with all values set to a single value.
 	 * 
 	 * @param value The value used for all values of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2l(long value)
 	{
@@ -99,8 +91,6 @@ public class ImmutableTup2l implements Tup2lR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup2i} with the values set to the corresponding parameters.
 	 * 
 	 * @param v The x and y values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2l(long[] v)
 	{
@@ -113,8 +103,6 @@ public class ImmutableTup2l implements Tup2lR, FormattableToString
 	 * 
 	 * @param x The x value.
 	 * @param y The y value.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2l(long x, long y)
 	{
@@ -122,18 +110,21 @@ public class ImmutableTup2l implements Tup2lR, FormattableToString
 		this.y = y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public long getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public long getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -141,6 +132,7 @@ public class ImmutableTup2l implements Tup2lR, FormattableToString
 		return this.hashCode;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -168,18 +160,21 @@ public class ImmutableTup2l implements Tup2lR, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "immutableTup2l(x=" + getX() + ", y=" + getY() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public ImmutableTup2l clone()
 	{
 		return new ImmutableTup2l(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -188,36 +183,6 @@ public class ImmutableTup2l implements Tup2lR, FormattableToString
 		values.put("y", getY());
 		
 		return values;
-	}
-	
-	@Override
-	public ImmutableTup2l getNewInstance(long x, long y)
-	{
-		return new ImmutableTup2l(x, y);
-	}
-	
-	@Override
-	public ImmutableTup2l getNewInstance(long value)
-	{
-		return (ImmutableTup2l)Tup2lR.super.getNewInstance(value);
-	}
-	
-	@Override
-	public ImmutableTup2l getNewInstance(Tup2lR t)
-	{
-		return (ImmutableTup2l)Tup2lR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup2l getNewInstance(TuplR t)
-	{
-		return (ImmutableTup2l)Tup2lR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup2l getNewInstanceFromArray(long... values)
-	{
-		return (ImmutableTup2l)Tup2lR.super.getNewInstanceFromArray(values);
 	}
 	
 	/**

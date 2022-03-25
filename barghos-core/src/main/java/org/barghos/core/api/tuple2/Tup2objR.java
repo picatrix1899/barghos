@@ -32,8 +32,6 @@ import org.barghos.core.api.tuple.TupobjR;
  * if the method only reads data from the parameter.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 public interface Tup2objR extends TupobjR
 {
@@ -41,8 +39,6 @@ public interface Tup2objR extends TupobjR
 	 * Returns the x value from the tuple.
 	 * 
 	 * @return The x value from the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	Object getX();
 	
@@ -50,74 +46,25 @@ public interface Tup2objR extends TupobjR
 	 * Returns the y value from the tuple.
 	 * 
 	 * @return The y value from the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	Object getY();
 	
-	/**
-	 * Returns true if all the components are valid.
-	 * What values are considered valid or invalid depends on the tuple type.
-	 * 
-	 * @return True if all the components are valid.
-	 */
+	/** {@inheritDoc}} */
+	@Override
 	default boolean isValid()
 	{
 		return getX() != null &&
 				getY() != null;
 	}
 	
-	/**
-	 * Returns a new instance of the type of the origin instance with the components adopted
-	 * from t.
-	 * 
-	 * <p>
-	 * This can be used for type continuety.
-	 * This way even while only using abstractions it is possible to create
-	 * new instances of the original. It is similar to the {@link Object#clone()}
-	 * function but the {@link Object#clone()} function requires the returned instance to be
-	 * writable.
-	 * This function on the other hand allows for example the usage of factories.
-	 * 
-	 * @param t The tuple to adopt the components from.
-	 * 
-	 * @return A new instance of the type of the origin instance
-	 */
-	default Tup2objR getNewInstance(Tup2objR t)
-	{
-		return getNewInstance(t.getX(), t.getY());
-	}
-	
-	@Override
-	default Tup2objR getNewInstance(Object value)
-	{
-		return getNewInstance(value, value);
-	}
-	
-	/**
-	 * Returns a new instance of the type of the origin instance with the components set to
-	 * the corresponding parameters.
-	 * 
-	 * <p>
-	 * This can be used for type continuety.
-	 * This way even while only using abstractions it is possible to create
-	 * new instances of the original. It is similar to the {@link Object#clone()}
-	 * function but the {@link Object#clone()} function requires the returned instance to be
-	 * writable. This function on the other hand allows for example the usage of factories.
-	 * 
-	 * @param x The value used for the x component.
-	 * @param y The value used for the y component.
-	 * 
-	 * @return A new instance of the type of the origin instance
-	 */
-	Tup2objR getNewInstance(Object x, Object y);
-	
+	/** {@inheritDoc}} */
 	@Override
 	default int getDimensions()
 	{
 		return 2;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	default Object getByIndex(int index)
 	{
@@ -130,23 +77,10 @@ public interface Tup2objR extends TupobjR
 		throw new IndexOutOfBoundsException(index);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	default Object[] getArray()
 	{
 		return new Object[] {getX(), getY()};
-	}
-	
-	@Override
-	default Tup2objR getNewInstanceFromArray(Object... values)
-	{
-		Object[] v = values;
-		return getNewInstance(v[0], v[1]);
-	}
-	
-	@Override
-	default Tup2objR getNewInstance(TupobjR t)
-	{
-		Object[] v = t.getArray();
-		return getNewInstance(v[0], v[1]);
 	}
 }

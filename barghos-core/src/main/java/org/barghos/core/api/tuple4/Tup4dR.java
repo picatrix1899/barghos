@@ -32,8 +32,6 @@ import org.barghos.core.api.tuple.TupdR;
  * if the method only reads data from the parameter.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 public interface Tup4dR extends TupdR
 {
@@ -41,8 +39,6 @@ public interface Tup4dR extends TupdR
 	 * Returns the x value from the tuple.
 	 * 
 	 * @return The x value from the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	double getX();
 	
@@ -50,8 +46,6 @@ public interface Tup4dR extends TupdR
 	 * Returns the y value from the tuple.
 	 * 
 	 * @return The y value from the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	double getY();
 	
@@ -59,8 +53,6 @@ public interface Tup4dR extends TupdR
 	 * Returns the z value from the tuple.
 	 * 
 	 * @return The z value from the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	double getZ();
 	
@@ -68,11 +60,10 @@ public interface Tup4dR extends TupdR
 	 * Returns the w value from the tuple.
 	 * 
 	 * @return The w value from the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	double getW();
 	
+	/** {@inheritDoc}} */
 	@Override
 	default boolean isFinite()
 	{
@@ -82,6 +73,7 @@ public interface Tup4dR extends TupdR
 				Double.isFinite(getW());
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	default boolean isZero()
 	{
@@ -91,6 +83,7 @@ public interface Tup4dR extends TupdR
 				getW() == 0.0;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	default boolean isZeroWithMargin(double tolerance)
 	{
@@ -100,59 +93,14 @@ public interface Tup4dR extends TupdR
 				Math.abs(getW()) <= tolerance;
 	}
 	
-	/**
-	 * Returns a new instance of the type of the origin instance with the components adopted
-	 * from t.
-	 * 
-	 * <p>
-	 * This can be used for type continuety.
-	 * This way even while only using abstractions it is possible to create
-	 * new instances of the original. It is similar to the {@link Object#clone()}
-	 * function but the {@link Object#clone()} function requires the returned instance to be
-	 * writable.
-	 * This function on the other hand allows for example the usage of factories.
-	 * 
-	 * @param t The tuple to adopt the components from.
-	 * 
-	 * @return A new instance of the type of the origin instance
-	 */
-	default Tup4dR getNewInstance(Tup4dR t)
-	{
-		return getNewInstance(t.getX(), t.getY(), t.getZ(), t.getW());
-	}
-	
-	@Override
-	default Tup4dR getNewInstance(double value)
-	{
-		return getNewInstance(value, value, value, value);
-	}
-	
-	/**
-	 * Returns a new instance of the type of the origin instance with the components set to
-	 * the corresponding parameters.
-	 * 
-	 * <p>
-	 * This can be used for type continuety.
-	 * This way even while only using abstractions it is possible to create
-	 * new instances of the original. It is similar to the {@link Object#clone()}
-	 * function but the {@link Object#clone()} function requires the returned instance to be
-	 * writable. This function on the other hand allows for example the usage of factories.
-	 * 
-	 * @param x The value used for the x component.
-	 * @param y The value used for the y component.
-	 * @param z The value used for the z component.
-	 * @param w The value used for the w component.
-	 * 
-	 * @return A new instance of the type of the origin instance
-	 */
-	Tup4dR getNewInstance(double x, double y, double z, double w);
-	
+	/** {@inheritDoc}} */
 	@Override
 	default int getDimensions()
 	{
 		return 4;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	default double getByIndex(int index)
 	{
@@ -167,23 +115,10 @@ public interface Tup4dR extends TupdR
 		throw new IndexOutOfBoundsException(index);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	default double[] getArray()
 	{
 		return new double[] {getX(), getY(), getZ(), getW()};
-	}
-	
-	@Override
-	default Tup4dR getNewInstanceFromArray(double... values)
-	{
-		double[] v = values;
-		return getNewInstance(v[0], v[1], v[2], v[3]);
-	}
-	
-	@Override
-	default Tup4dR getNewInstance(TupdR t)
-	{
-		double[] v = t.getArray();
-		return getNewInstance(v[0], v[1], v[2], v[3]);
 	}
 }

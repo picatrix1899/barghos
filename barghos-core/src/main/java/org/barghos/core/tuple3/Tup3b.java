@@ -28,8 +28,8 @@ import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupbR;
+import org.barghos.core.api.tuple3.Tup3bBase;
 import org.barghos.core.api.tuple3.Tup3bR;
-import org.barghos.core.api.tuple3.Tup3bRW;
 
 /**
  * This class represents a 3-dimensional byte tuple.
@@ -37,10 +37,8 @@ import org.barghos.core.api.tuple3.Tup3bRW;
  * where the data of a vector describes the same logical structure.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
-public class Tup3b implements Tup3bRW, Serializable, FormattableToString
+public class Tup3b implements Tup3bBase, Serializable, FormattableToString
 {
 	/**
 	 * The class version for serialization.
@@ -64,8 +62,6 @@ public class Tup3b implements Tup3bRW, Serializable, FormattableToString
 	
 	/**
 	 * Creates a new instance with all components set to 0.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup3b()
 	{
@@ -76,8 +72,6 @@ public class Tup3b implements Tup3bRW, Serializable, FormattableToString
 	 * Creates a new instance from an existing instance of {@link TupbR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupbR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup3b(TupbR t)
 	{
@@ -88,8 +82,6 @@ public class Tup3b implements Tup3bRW, Serializable, FormattableToString
 	 * Creates a new instance from an existing instance of {@link Tup3bR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup3bR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup3b(Tup3bR t)
 	{
@@ -100,8 +92,6 @@ public class Tup3b implements Tup3bRW, Serializable, FormattableToString
 	 * Creates a new instance with all values set to a single value.
 	 * 
 	 * @param value The value used as the initial value for all values of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup3b(byte value)
 	{
@@ -114,8 +104,6 @@ public class Tup3b implements Tup3bRW, Serializable, FormattableToString
 	 * @param x The initial x value of the tuple.
 	 * @param y The initial y value of the tuple.
 	 * @param z The initial z value of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup3b(byte x, byte y, byte z)
 	{
@@ -126,32 +114,34 @@ public class Tup3b implements Tup3bRW, Serializable, FormattableToString
 	 * Creates a new instance with the values set to the corresponding parameters.
 	 * 
 	 * @param v The values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup3b(byte[] v)
 	{
 		setArray(v);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public byte getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public byte getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public byte getZ()
 	{
 		return this.z;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3b setX(byte x)
 	{
@@ -160,6 +150,7 @@ public class Tup3b implements Tup3bRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3b setY(byte y)
 	{
@@ -168,6 +159,7 @@ public class Tup3b implements Tup3bRW, Serializable, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3b setZ(byte z)
 	{
@@ -176,24 +168,28 @@ public class Tup3b implements Tup3bRW, Serializable, FormattableToString
 		return this;
 	}
 
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3b set(Tup3bR t)
 	{
 		return set(t.getX(), t.getY(), t.getZ());
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3b set(byte value)
 	{
 		return set(value, value, value);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3b set(byte x, byte y, byte z)
 	{
 		return setX(x).setY(y).setZ(z);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -205,6 +201,7 @@ public class Tup3b implements Tup3bRW, Serializable, FormattableToString
 		return result;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -235,18 +232,21 @@ public class Tup3b implements Tup3bRW, Serializable, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3b clone()
 	{
 		return new Tup3b(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "tup3b(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -258,51 +258,24 @@ public class Tup3b implements Tup3bRW, Serializable, FormattableToString
 		return values;
 	}
 	
-	@Override
-	public Tup3b getNewInstance(byte x, byte y, byte z)
-	{
-		return new Tup3b(x, y, z);
-	}
-	
-	@Override
-	public Tup3b getNewInstance(byte value)
-	{
-		return (Tup3b)Tup3bRW.super.getNewInstance(value);
-	}
-	
-	@Override
-	public Tup3b getNewInstance(Tup3bR t)
-	{
-		return (Tup3b)Tup3bRW.super.getNewInstance(t);
-	}
-	
-	@Override
-	public Tup3b getNewInstance(TupbR t)
-	{
-		return (Tup3b)Tup3bRW.super.getNewInstance(t);
-	}
-	
-	@Override
-	public Tup3b getNewInstanceFromArray(byte... values)
-	{
-		return (Tup3b)Tup3bRW.super.getNewInstanceFromArray(values);
-	}
-	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3b set(TupbR t)
 	{
-		return (Tup3b)Tup3bRW.super.set(t);
+		return (Tup3b)Tup3bBase.super.set(t);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3b setArray(byte... values)
 	{
-		return (Tup3b)Tup3bRW.super.setArray(values);
+		return (Tup3b)Tup3bBase.super.setArray(values);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3b setByIndex(int index, byte value)
 	{
-		return (Tup3b)Tup3bRW.super.setByIndex(index, value);
+		return (Tup3b)Tup3bBase.super.setByIndex(index, value);
 	}
 }

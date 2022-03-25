@@ -34,8 +34,6 @@ import org.barghos.core.api.tuple3.Tup3lR;
  * It can be used as a more flexible way to create constants.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 public class ImmutableTup3l implements Tup3lR, FormattableToString
 {
@@ -68,8 +66,6 @@ public class ImmutableTup3l implements Tup3lR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup3l} from an existing instance of {@link TuplR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TuplR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3l(TuplR t)
 	{
@@ -80,8 +76,6 @@ public class ImmutableTup3l implements Tup3lR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup3l} from an existing instance of {@link Tup3lR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup3lR} to adopt the values from.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3l(Tup3lR t)
 	{
@@ -92,8 +86,6 @@ public class ImmutableTup3l implements Tup3lR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup3l} with all values set to a single value.
 	 * 
 	 * @param value The value used for all values of the tuple.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3l(long value)
 	{
@@ -106,8 +98,6 @@ public class ImmutableTup3l implements Tup3lR, FormattableToString
 	 * @param x The x value.
 	 * @param y The y value.
 	 * @param z The z value.
-
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3l(long x, long y, long z)
 	{
@@ -120,8 +110,6 @@ public class ImmutableTup3l implements Tup3lR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup3l} with the values set to the corresponding parameters.
 	 * 
 	 * @param v The values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup3l(long[] v)
 	{
@@ -130,24 +118,28 @@ public class ImmutableTup3l implements Tup3lR, FormattableToString
 		this.z = v[2];
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public long getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public long getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public long getZ()
 	{
 		return this.z;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -156,6 +148,7 @@ public class ImmutableTup3l implements Tup3lR, FormattableToString
 		return this.hashCode;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -186,18 +179,21 @@ public class ImmutableTup3l implements Tup3lR, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "immutableTup3l(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public ImmutableTup3l clone()
 	{
 		return new ImmutableTup3l(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -207,36 +203,6 @@ public class ImmutableTup3l implements Tup3lR, FormattableToString
 		values.put("z", getZ());
 		
 		return values;
-	}
-	
-	@Override
-	public ImmutableTup3l getNewInstance(long x, long y, long z)
-	{
-		return new ImmutableTup3l(x, y, z);
-	}
-	
-	@Override
-	public ImmutableTup3l getNewInstance(long value)
-	{
-		return (ImmutableTup3l)Tup3lR.super.getNewInstance(value);
-	}
-	
-	@Override
-	public ImmutableTup3l getNewInstance(Tup3lR t)
-	{
-		return (ImmutableTup3l)Tup3lR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup3l getNewInstance(TuplR t)
-	{
-		return (ImmutableTup3l)Tup3lR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup3l getNewInstanceFromArray(long... values)
-	{
-		return (ImmutableTup3l)Tup3lR.super.getNewInstanceFromArray(values);
 	}
 	
 	/**

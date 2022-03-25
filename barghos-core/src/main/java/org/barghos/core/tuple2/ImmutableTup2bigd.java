@@ -35,8 +35,6 @@ import org.barghos.core.api.tuple2.Tup2bigdR;
  * It can be used as a more flexible way to create constants.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 public class ImmutableTup2bigd implements Tup2bigdR, FormattableToString
 {
@@ -64,8 +62,6 @@ public class ImmutableTup2bigd implements Tup2bigdR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup2bigd} from an existing instance of {@link TupbigdR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupbigdR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2bigd(TupbigdR t)
 	{
@@ -76,8 +72,6 @@ public class ImmutableTup2bigd implements Tup2bigdR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup2bigd} from an existing instance of {@link Tup2bigdR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup2bigdR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2bigd(Tup2bigdR t)
 	{
@@ -88,8 +82,6 @@ public class ImmutableTup2bigd implements Tup2bigdR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup2bigd} with all values set to a single value.
 	 * 
 	 * @param value The value used for all values of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2bigd(BigDecimal value)
 	{
@@ -100,8 +92,6 @@ public class ImmutableTup2bigd implements Tup2bigdR, FormattableToString
 	 * Generates a new readonly {@link ImmutableTup2bigd} with the values set to the corresponding parameters.
 	 * 
 	 * @param v The x and y values as an array.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2bigd(BigDecimal[] v)
 	{
@@ -114,8 +104,6 @@ public class ImmutableTup2bigd implements Tup2bigdR, FormattableToString
 	 * 
 	 * @param x The x value.
 	 * @param y The y value.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public ImmutableTup2bigd(BigDecimal x, BigDecimal y)
 	{
@@ -123,18 +111,21 @@ public class ImmutableTup2bigd implements Tup2bigdR, FormattableToString
 		this.y = y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public BigDecimal getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public BigDecimal getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -142,12 +133,14 @@ public class ImmutableTup2bigd implements Tup2bigdR, FormattableToString
 		return this.hashCode;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public ImmutableTup2bigd clone()
 	{
 		return new ImmutableTup2bigd(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -176,12 +169,14 @@ public class ImmutableTup2bigd implements Tup2bigdR, FormattableToString
 		return false;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "immutableTup2bigd(x=" + getX() + ", y=" + getY() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -190,36 +185,6 @@ public class ImmutableTup2bigd implements Tup2bigdR, FormattableToString
 		values.put("y", getY());
 		
 		return values;
-	}
-	
-	@Override
-	public ImmutableTup2bigd getNewInstance(BigDecimal x, BigDecimal y)
-	{
-		return new ImmutableTup2bigd(x, y);
-	}
-	
-	@Override
-	public ImmutableTup2bigd getNewInstance(BigDecimal value)
-	{
-		return (ImmutableTup2bigd)Tup2bigdR.super.getNewInstance(value);
-	}
-	
-	@Override
-	public ImmutableTup2bigd getNewInstance(Tup2bigdR t)
-	{
-		return (ImmutableTup2bigd)Tup2bigdR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup2bigd getNewInstance(TupbigdR t)
-	{
-		return (ImmutableTup2bigd)Tup2bigdR.super.getNewInstance(t);
-	}
-	
-	@Override
-	public ImmutableTup2bigd getNewInstanceFromArray(BigDecimal... values)
-	{
-		return (ImmutableTup2bigd)Tup2bigdR.super.getNewInstanceFromArray(values);
 	}
 	
 	/**

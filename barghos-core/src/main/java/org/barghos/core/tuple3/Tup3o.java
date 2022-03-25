@@ -23,8 +23,8 @@
 package org.barghos.core.tuple3;
 
 import org.barghos.core.api.formatting.FormattableToString;
+import org.barghos.core.api.tuple3.Tup3oBase;
 import org.barghos.core.api.tuple3.Tup3oR;
-import org.barghos.core.api.tuple3.Tup3oRW;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -35,10 +35,8 @@ import java.util.Map;
  * where the data of a vector describes the same logical structure.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
-public class Tup3o<X,Y,Z> implements Tup3oRW<X,Y,Z>, FormattableToString
+public class Tup3o<X,Y,Z> implements Tup3oBase<X,Y,Z>, FormattableToString
 {
 	/**
 	 * The x component.
@@ -60,8 +58,6 @@ public class Tup3o<X,Y,Z> implements Tup3oRW<X,Y,Z>, FormattableToString
 	
 	/**
 	 * Creates a new instance with all components set to null.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup3o() { }
 	
@@ -69,8 +65,6 @@ public class Tup3o<X,Y,Z> implements Tup3oRW<X,Y,Z>, FormattableToString
 	 * Creates a new instance from an existing instance of {@link Tup3oR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup3oR} to adopt the values from.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup3o(Tup3oR<X,Y,Z> t)
 	{
@@ -83,32 +77,34 @@ public class Tup3o<X,Y,Z> implements Tup3oRW<X,Y,Z>, FormattableToString
 	 * @param x The initial x value of the tuple.
 	 * @param y The initial y value of the tuple.
 	 * @param z The initial z value of the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public Tup3o(X x, Y y, Z z)
 	{
 		set(x, y, z);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public X getX()
 	{
 		return this.x;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Y getY()
 	{
 		return this.y;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Z getZ()
 	{
 		return this.z;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3o<X,Y,Z> setX(X x)
 	{
@@ -117,6 +113,7 @@ public class Tup3o<X,Y,Z> implements Tup3oRW<X,Y,Z>, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3o<X,Y,Z> setY(Y y)
 	{
@@ -125,6 +122,7 @@ public class Tup3o<X,Y,Z> implements Tup3oRW<X,Y,Z>, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3o<X,Y,Z> setZ(Z z)
 	{
@@ -133,18 +131,21 @@ public class Tup3o<X,Y,Z> implements Tup3oRW<X,Y,Z>, FormattableToString
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3o<X,Y,Z> set(Tup3oR<X,Y,Z> t)
 	{
 		return set(t.getX(), t.getY(), t.getZ());
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3o<X,Y,Z> set(X x, Y y, Z z)
 	{
 		return setX(x).setY(y).setZ(z);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
@@ -156,6 +157,7 @@ public class Tup3o<X,Y,Z> implements Tup3oRW<X,Y,Z>, FormattableToString
 		return result;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -171,18 +173,21 @@ public class Tup3o<X,Y,Z> implements Tup3oRW<X,Y,Z>, FormattableToString
 		return true;
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Tup3o<X,Y,Z> clone()
 	{
 		return new Tup3o<X,Y,Z>(this);
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public String toString()
 	{
 		return "tup3o(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ")";
 	}
 	
+	/** {@inheritDoc}} */
 	@Override
 	public Map<String,Object> getValueMapping()
 	{
@@ -192,17 +197,5 @@ public class Tup3o<X,Y,Z> implements Tup3oRW<X,Y,Z>, FormattableToString
 		values.put("z", getZ());
 		
 		return values;
-	}
-	
-	@Override
-	public Tup3o<X,Y,Z> getNewInstance(X x, Y y, Z z)
-	{
-		return new Tup3o<>(x, y, z);
-	}
-	
-	@Override
-	public Tup3o<X,Y,Z> getNewInstance(Tup3oR<X,Y,Z> t)
-	{
-		return (Tup3o<X,Y,Z>)Tup3oRW.super.getNewInstance(t);
 	}
 }
