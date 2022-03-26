@@ -101,4 +101,29 @@ public interface Tup2bR extends TupbR
 	{
 		return new byte[] {getX(), getY()};
 	}
+	
+	/**
+	 * Creates a new anonymous implementation instance of the interface {@link Tup2bR} with the given values.
+	 * As the resulting instance is just a minimal implementation of the interface it does not provide clone,
+	 * equals, hashCode or toString operations.
+	 * 
+	 * @param x The value of the x component.
+	 * @param y The value of the y component.
+	 * 
+	 * @return The anonymous implementation instance.
+	 */
+	public static Tup2bR of(final byte x, final byte y)
+	{
+		return new Tup2bR() {
+			public byte getX()
+			{
+				return x;
+			}
+
+			public byte getY()
+			{
+				return y;
+			}
+		};
+	}
 }

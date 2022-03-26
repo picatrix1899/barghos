@@ -32,8 +32,6 @@ import org.barghos.core.api.tuple.TupiR;
  * if the method only reads data from the parameter.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 public interface Tup4iR extends TupiR
 {
@@ -41,8 +39,6 @@ public interface Tup4iR extends TupiR
 	 * Returns the x value from the tuple.
 	 * 
 	 * @return The x value from the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	int getX();
 	
@@ -50,8 +46,6 @@ public interface Tup4iR extends TupiR
 	 * Returns the y value from the tuple.
 	 * 
 	 * @return The y value from the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	int getY();
 	
@@ -59,8 +53,6 @@ public interface Tup4iR extends TupiR
 	 * Returns the z value from the tuple.
 	 * 
 	 * @return The z value from the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	int getZ();
 	
@@ -68,8 +60,6 @@ public interface Tup4iR extends TupiR
 	 * Returns the w value from the tuple.
 	 * 
 	 * @return The w value from the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	int getW();
 
@@ -120,5 +110,42 @@ public interface Tup4iR extends TupiR
 	default int[] getArray()
 	{
 		return new int[] {getX(), getY(), getZ(), getW()};
+	}
+	
+	/**
+	 * Creates a new anonymous implementation instance of the interface {@link Tup4iR} with the given values.
+	 * As the resulting instance is just a minimal implementation of the interface it does not provide clone,
+	 * equals, hashCode or toString operations.
+	 * 
+	 * @param x The value of the x component.
+	 * @param y The value of the y component.
+	 * @param z The value of the z component.
+	 * @param w The value of the w component.
+	 * 
+	 * @return The anonymous implementation instance.
+	 */
+	public static Tup4iR of(final int x, final int y, final int z, final int w)
+	{
+		return new Tup4iR() {
+			public int getX()
+			{
+				return x;
+			}
+
+			public int getY()
+			{
+				return y;
+			}
+
+			public int getZ()
+			{
+				return z;
+			}
+
+			public int getW()
+			{
+				return w;
+			}
+		};
 	}
 }

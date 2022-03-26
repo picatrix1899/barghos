@@ -83,4 +83,35 @@ public interface Tup3cR extends TupcR
 	{
 		return new char[] {getX(), getY(), getZ()};
 	}
+	
+	/**
+	 * Creates a new anonymous implementation instance of the interface {@link Tup3cR} with the given values.
+	 * As the resulting instance is just a minimal implementation of the interface it does not provide clone,
+	 * equals, hashCode or toString operations.
+	 * 
+	 * @param x The value of the x component.
+	 * @param y The value of the y component.
+	 * @param z The value of the z component.
+	 * 
+	 * @return The anonymous implementation instance.
+	 */
+	public static Tup3cR of(final char x, final char y, final char z)
+	{
+		return new Tup3cR() {
+			public char getX()
+			{
+				return x;
+			}
+
+			public char getY()
+			{
+				return y;
+			}
+
+			public char getZ()
+			{
+				return z;
+			}
+		};
+	}
 }

@@ -24,7 +24,6 @@ package org.barghos.core.api.tuple3;
 
 import org.barghos.core.api.tuple.TupbBase;
 import org.barghos.core.api.tuple.TupbR;
-import org.barghos.core.api.tuple2.Tup2bBase;
 
 /**
  * This interface represents any modifiable 3-dimensional byte tuples.

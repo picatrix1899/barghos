@@ -32,8 +32,6 @@ import org.barghos.core.api.util.Validateable;
  * if the method only reads data from the parameter.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 public interface Tup4oR<X,Y,Z,W> extends Validateable
 {
@@ -41,8 +39,6 @@ public interface Tup4oR<X,Y,Z,W> extends Validateable
 	 * Returns the x value from the tuple.
 	 * 
 	 * @return The x value from the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	X getX();
 	
@@ -50,8 +46,6 @@ public interface Tup4oR<X,Y,Z,W> extends Validateable
 	 * Returns the y value from the tuple.
 	 * 
 	 * @return The y value from the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	Y getY();
 	
@@ -59,8 +53,6 @@ public interface Tup4oR<X,Y,Z,W> extends Validateable
 	 * Returns the z value from the tuple.
 	 * 
 	 * @return The z value from the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	Z getZ();
 	
@@ -68,8 +60,6 @@ public interface Tup4oR<X,Y,Z,W> extends Validateable
 	 * Returns the w value from the tuple.
 	 * 
 	 * @return The w value from the tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	W getW();
 	
@@ -81,5 +71,48 @@ public interface Tup4oR<X,Y,Z,W> extends Validateable
 				getY() != null &&
 				getZ() != null &&
 				getW() != null;
+	}
+	
+	/**
+	 * Creates a new anonymous implementation instance of the interface {@link Tup4oR} with the given values.
+	 * The given values are used directly and are not cloned. Therefore to make the used objects immutable
+	 * they have to be immutable before input. As the resulting instance is just a minimal implementation of the 
+	 * interface it does not provide clone, equals, hashCode or toString operations.
+	 * 
+	 * @param <X> The type of the x component.
+	 * @param <Y> The type of the y component.
+	 * @param <Z> The type of the z component.
+	 * @param <W> The type of the w component.
+	 * 
+	 * @param x The value of the x component.
+	 * @param y The value of the y component.
+	 * @param z The value of the z component.
+	 * @param w The value of the w component.
+	 * 
+	 * @return The anonymous implementation instance.
+	 */
+	public static <X,Y,Z,W> Tup4oR<X,Y,Z,W> of(final X x, final Y y, final Z z, final W w)
+	{
+		return new Tup4oR<X,Y,Z,W>() {
+			public X getX()
+			{
+				return x;
+			}
+
+			public Y getY()
+			{
+				return y;
+			}
+
+			public Z getZ()
+			{
+				return z;
+			}
+
+			public W getW()
+			{
+				return w;
+			}
+		};
 	}
 }

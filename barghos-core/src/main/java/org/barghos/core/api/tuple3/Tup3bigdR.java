@@ -112,4 +112,35 @@ public interface Tup3bigdR extends TupbigdR
 	{
 		return new BigDecimal[] {getX(), getY(), getZ()};
 	}
+	
+	/**
+	 * Creates a new anonymous implementation instance of the interface {@link Tup3bigdR} with the given values.
+	 * As the resulting instance is just a minimal implementation of the interface it does not provide clone,
+	 * equals, hashCode or toString operations.
+	 * 
+	 * @param x The value of the x component.
+	 * @param y The value of the y component.
+	 * @param z The value of the z component.
+	 * 
+	 * @return The anonymous implementation instance.
+	 */
+	public static Tup3bigdR of(final BigDecimal x, final BigDecimal y, final BigDecimal z)
+	{
+		return new Tup3bigdR() {
+			public BigDecimal getX()
+			{
+				return x;
+			}
+
+			public BigDecimal getY()
+			{
+				return y;
+			}
+
+			public BigDecimal getZ()
+			{
+				return z;
+			}
+		};
+	}
 }

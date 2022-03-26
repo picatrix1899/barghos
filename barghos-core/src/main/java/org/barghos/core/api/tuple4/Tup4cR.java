@@ -91,4 +91,41 @@ public interface Tup4cR extends TupcR
 	{
 		return new char[] {getX(), getY(), getZ(), getW()};
 	}
+	
+	/**
+	 * Creates a new anonymous implementation instance of the interface {@link Tup4cR} with the given values.
+	 * As the resulting instance is just a minimal implementation of the interface it does not provide clone,
+	 * equals, hashCode or toString operations.
+	 * 
+	 * @param x The value of the x component.
+	 * @param y The value of the y component.
+	 * @param z The value of the z component.
+	 * @param w The value of the w component.
+	 * 
+	 * @return The anonymous implementation instance.
+	 */
+	public static Tup4cR of(final char x, final char y, final char z, final char w)
+	{
+		return new Tup4cR() {
+			public char getX()
+			{
+				return x;
+			}
+
+			public char getY()
+			{
+				return y;
+			}
+
+			public char getZ()
+			{
+				return z;
+			}
+
+			public char getW()
+			{
+				return w;
+			}
+		};
+	}
 }

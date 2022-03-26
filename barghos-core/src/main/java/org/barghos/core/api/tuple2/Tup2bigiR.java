@@ -101,4 +101,29 @@ public interface Tup2bigiR extends TupbigiR
 	{
 		return new BigInteger[] {getX(), getY()};
 	}
+	
+	/**
+	 * Creates a new anonymous implementation instance of the interface {@link Tup2bigiR} with the given values.
+	 * As the resulting instance is just a minimal implementation of the interface it does not provide clone,
+	 * equals, hashCode or toString operations.
+	 * 
+	 * @param x The value of the x component.
+	 * @param y The value of the y component.
+	 * 
+	 * @return The anonymous implementation instance.
+	 */
+	public static Tup2bigiR of(final BigInteger x, final BigInteger y)
+	{
+		return new Tup2bigiR() {
+			public BigInteger getX()
+			{
+				return x;
+			}
+
+			public BigInteger getY()
+			{
+				return y;
+			}
+		};
+	}
 }

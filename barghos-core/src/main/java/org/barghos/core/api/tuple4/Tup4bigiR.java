@@ -123,4 +123,41 @@ public interface Tup4bigiR extends TupbigiR
 	{
 		return new BigInteger[] {getX(), getY(), getZ(), getW()};
 	}
+	
+	/**
+	 * Creates a new anonymous implementation instance of the interface {@link Tup4bigiR} with the given values.
+	 * As the resulting instance is just a minimal implementation of the interface it does not provide clone,
+	 * equals, hashCode or toString operations.
+	 * 
+	 * @param x The value of the x component.
+	 * @param y The value of the y component.
+	 * @param z The value of the z component.
+	 * @param w The value of the w component.
+	 * 
+	 * @return The anonymous implementation instance.
+	 */
+	public static Tup4bigiR of(final BigInteger x, final BigInteger y, final BigInteger z, final BigInteger w)
+	{
+		return new Tup4bigiR() {
+			public BigInteger getX()
+			{
+				return x;
+			}
+
+			public BigInteger getY()
+			{
+				return y;
+			}
+
+			public BigInteger getZ()
+			{
+				return z;
+			}
+
+			public BigInteger getW()
+			{
+				return w;
+			}
+		};
+	}
 }

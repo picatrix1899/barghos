@@ -64,4 +64,40 @@ public interface Tup3oR<X,Y,Z> extends Validateable
 				getY() != null &&
 				getZ() != null;
 	}
+	
+	/**
+	 * Creates a new anonymous implementation instance of the interface {@link Tup3oR} with the given values.
+	 * The given values are used directly and are not cloned. Therefore to make the used objects immutable
+	 * they have to be immutable before input. As the resulting instance is just a minimal implementation of the 
+	 * interface it does not provide clone, equals, hashCode or toString operations.
+	 * 
+	 * @param <X> The type of the x component.
+	 * @param <Y> The type of the y component.
+	 * @param <Z> The type of the z component.
+	 * 
+	 * @param x The value of the x component.
+	 * @param y The value of the y component.
+	 * @param z The value of the z component.
+	 * 
+	 * @return The anonymous implementation instance.
+	 */
+	public static <X,Y,Z> Tup3oR<X,Y,Z> of(final X x, final Y y, final Z z)
+	{
+		return new Tup3oR<X,Y,Z>() {
+			public X getX()
+			{
+				return x;
+			}
+
+			public Y getY()
+			{
+				return y;
+			}
+
+			public Z getZ()
+			{
+				return z;
+			}
+		};
+	}
 }

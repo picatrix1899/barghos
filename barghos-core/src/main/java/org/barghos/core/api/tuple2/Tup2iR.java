@@ -91,4 +91,29 @@ public interface Tup2iR extends TupiR
 	{
 		return new int[] {getX(), getY()};
 	}
+	
+	/**
+	 * Creates a new anonymous implementation instance of the interface {@link Tup2iR} with the given values.
+	 * As the resulting instance is just a minimal implementation of the interface it does not provide clone,
+	 * equals, hashCode or toString operations.
+	 * 
+	 * @param x The value of the x component.
+	 * @param y The value of the y component.
+	 * 
+	 * @return The anonymous implementation instance.
+	 */
+	public static Tup2iR of(final int x, final int y)
+	{
+		return new Tup2iR() {
+			public int getX()
+			{
+				return x;
+			}
+
+			public int getY()
+			{
+				return y;
+			}
+		};
+	}
 }

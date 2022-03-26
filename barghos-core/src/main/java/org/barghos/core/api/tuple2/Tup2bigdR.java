@@ -101,4 +101,29 @@ public interface Tup2bigdR extends TupbigdR
 	{
 		return new BigDecimal[] {getX(), getY()};
 	}
+	
+	/**
+	 * Creates a new anonymous implementation instance of the interface {@link Tup2bigdR} with the given values.
+	 * As the resulting instance is just a minimal implementation of the interface it does not provide clone,
+	 * equals, hashCode or toString operations.
+	 * 
+	 * @param x The value of the x component.
+	 * @param y The value of the y component.
+	 * 
+	 * @return The anonymous implementation instance.
+	 */
+	public static Tup2bigdR of(final BigDecimal x, final BigDecimal y)
+	{
+		return new Tup2bigdR() {
+			public BigDecimal getX()
+			{
+				return x;
+			}
+
+			public BigDecimal getY()
+			{
+				return y;
+			}
+		};
+	}
 }

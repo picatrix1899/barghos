@@ -83,4 +83,35 @@ public interface Tup3boR extends TupboR
 	{
 		return new boolean[] {getX(), getY(), getZ()};
 	}
+	
+	/**
+	 * Creates a new anonymous implementation instance of the interface {@link Tup3boR} with the given values.
+	 * As the resulting instance is just a minimal implementation of the interface it does not provide clone,
+	 * equals, hashCode or toString operations.
+	 * 
+	 * @param x The value of the x component.
+	 * @param y The value of the y component.
+	 * @param z The value of the z component.
+	 * 
+	 * @return The anonymous implementation instance.
+	 */
+	public static Tup3boR of(final boolean x, final boolean y, final boolean z)
+	{
+		return new Tup3boR() {
+			public boolean getX()
+			{
+				return x;
+			}
+
+			public boolean getY()
+			{
+				return y;
+			}
+
+			public boolean getZ()
+			{
+				return z;
+			}
+		};
+	}
 }

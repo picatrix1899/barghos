@@ -111,4 +111,35 @@ public interface Tup3lR extends TuplR
 	{
 		return new long[] {getX(), getY(), getZ()};
 	}
+	
+	/**
+	 * Creates a new anonymous implementation instance of the interface {@link Tup3lR} with the given values.
+	 * As the resulting instance is just a minimal implementation of the interface it does not provide clone,
+	 * equals, hashCode or toString operations.
+	 * 
+	 * @param x The value of the x component.
+	 * @param y The value of the y component.
+	 * @param z The value of the z component.
+	 * 
+	 * @return The anonymous implementation instance.
+	 */
+	public static Tup3lR of(final long x, final long y, final long z)
+	{
+		return new Tup3lR() {
+			public long getX()
+			{
+				return x;
+			}
+
+			public long getY()
+			{
+				return y;
+			}
+
+			public long getZ()
+			{
+				return z;
+			}
+		};
+	}
 }

@@ -112,4 +112,35 @@ public interface Tup3bigiR extends TupbigiR
 	{
 		return new BigInteger[] {getX(), getY(), getZ()};
 	}
+	
+	/**
+	 * Creates a new anonymous implementation instance of the interface {@link Tup3bigiR} with the given values.
+	 * As the resulting instance is just a minimal implementation of the interface it does not provide clone,
+	 * equals, hashCode or toString operations.
+	 * 
+	 * @param x The value of the x component.
+	 * @param y The value of the y component.
+	 * @param z The value of the z component.
+	 * 
+	 * @return The anonymous implementation instance.
+	 */
+	public static Tup3bigiR of(final BigInteger x, final BigInteger y, final BigInteger z)
+	{
+		return new Tup3bigiR() {
+			public BigInteger getX()
+			{
+				return x;
+			}
+
+			public BigInteger getY()
+			{
+				return y;
+			}
+
+			public BigInteger getZ()
+			{
+				return z;
+			}
+		};
+	}
 }

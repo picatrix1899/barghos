@@ -83,4 +83,30 @@ public interface Tup2objR extends TupobjR
 	{
 		return new Object[] {getX(), getY()};
 	}
+	
+	/**
+	 * Creates a new anonymous implementation instance of the interface {@link Tup2objR} with the given values.
+	 * The given values are used directly and are not cloned. Therefore to make the used objects immutable
+	 * they have to be immutable before input. As the resulting instance is just a minimal implementation of
+	 * the interface it does not provide clone, equals, hashCode or toString operations.
+	 * 
+	 * @param x The value of the x component.
+	 * @param y The value of the y component.
+	 * 
+	 * @return The anonymous implementation instance.
+	 */
+	public static Tup2objR of(final Object x, final Object y)
+	{
+		return new Tup2objR() {
+			public Object getX()
+			{
+				return x;
+			}
+
+			public Object getY()
+			{
+				return y;
+			}
+		};
+	}
 }

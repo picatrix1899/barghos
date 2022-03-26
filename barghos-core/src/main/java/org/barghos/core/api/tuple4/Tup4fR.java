@@ -121,4 +121,41 @@ public interface Tup4fR extends TupfR
 	{
 		return new float[] {getX(), getY(), getZ(), getW()};
 	}
+	
+	/**
+	 * Creates a new anonymous implementation instance of the interface {@link Tup4fR} with the given values.
+	 * As the resulting instance is just a minimal implementation of the interface it does not provide clone,
+	 * equals, hashCode or toString operations.
+	 * 
+	 * @param x The value of the x component.
+	 * @param y The value of the y component.
+	 * @param z The value of the z component.
+	 * @param w The value of the w component.
+	 * 
+	 * @return The anonymous implementation instance.
+	 */
+	public static Tup4fR of(final float x, final float y, final float z, final float w)
+	{
+		return new Tup4fR() {
+			public float getX()
+			{
+				return x;
+			}
+
+			public float getY()
+			{
+				return y;
+			}
+
+			public float getZ()
+			{
+				return z;
+			}
+
+			public float getW()
+			{
+				return w;
+			}
+		};
+	}
 }

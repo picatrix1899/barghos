@@ -24,7 +24,6 @@ package org.barghos.core.api.tuple4;
 
 import org.barghos.core.api.tuple.TupbBase;
 import org.barghos.core.api.tuple.TupbR;
-import org.barghos.core.api.tuple3.Tup3bBase;
 
 /**
  * This interface represents any modifiable 4-dimensional byte tuples.
