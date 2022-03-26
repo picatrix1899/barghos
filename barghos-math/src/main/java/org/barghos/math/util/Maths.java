@@ -1,284 +1,240 @@
-/*
-MIT License
-
-Copyright (c) 2019 picatrix1899
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-*/
-
 package org.barghos.math.util;
 
-/**
- * This class contains mathematical methods and precalculated constants.
- */
 public class Maths extends MathConstants
 {
-
 	/**
-	 * Checks if the value is zero with given tolerance.
-	 * @param value the value to check for 0.
-	 * @param tolerance The threshold around 0.
-	 * @return is the value 0.
-	 */
-	public static boolean isZero(double value, double tolerance)
-	{
-		return Math.abs(value) <= tolerance;
-	}
-	
-	/**
-	 * Checks if the value is zero with tolerance of SMALL_NUMBER(1.e-8f).
-	 * @param value the value to check for 0.
-	 * @return is the value 0.
-	 */
-	public static boolean isZero(double value)
-	{
-		return isZero(value, Maths.SMALL_NUMBER_E8);
-	}
-	
-	public static boolean isExactNaN(double value)
-	{
-		return Double.isNaN(value);
-	}
-	
-	public static boolean isNaN(double value)
-	{
-		return !Double.isFinite(value);
-	}
-	
-	public static boolean isExactZero(double value)
-	{
-		return value == 0.0;
-	}
-	
-	public static double roundFromZero(double value)
-	{
-		return value > 0 ? Math.ceil(value) : value < 0 ? Math.floor(value) : 0;
-	}
-	
-	public static double roundToZero(double value)
-	{
-		return value > 0 ? Math.floor(value) : value < 0 ? Math.ceil(value) : 0;
-	}
-	
-	public static double roundToPosInf(double value)
-	{
-		return Math.ceil(value);
-	}
-	
-	public static double roundToNegInf(double value)
+     * Returns the largest (closest to positive infinity)
+     * {@code double} value that is less than or equal to the
+     * argument and is equal to a mathematical integer. Special cases:
+     * <ul><li>If the argument value is already equal to a
+     * mathematical integer, then the result is the same as the
+     * argument.  <li>If the argument is NaN or an infinity or
+     * positive zero or negative zero, then the result is the same as
+     * the argument.</ul>
+     *
+     * @param value A value.
+     * 
+     * @return The largest (closest to positive infinity) floating-point value that less than or
+     * equal to the argument and is equal to a mathematical integer.
+     */
+	public static double floor(double value)
 	{
 		return Math.floor(value);
 	}
 	
-	public static byte clamp(byte value, byte min, byte max)
+	/**
+     * Returns the largest (closest to positive infinity)
+     * {@code double} value that is less than or equal to the
+     * argument and is equal to a mathematical integer. Special cases:
+     * <ul><li>If the argument value is already equal to a
+     * mathematical integer, then the result is the same as the
+     * argument.  <li>If the argument is NaN or an infinity or
+     * positive zero or negative zero, then the result is the same as
+     * the argument.</ul>
+     *
+     * @param value A value.
+     * 
+     * @return The largest (closest to positive infinity) floating-point value that less than or
+     * equal to the argument and is equal to a mathematical integer.
+     */
+	public static float floor(float value)
 	{
-		return value < min ? min : value > max ? max : value;
+		return (float)Math.floor(value);
 	}
 	
-	public static char clamp(char value, char min, char max)
+	/**
+     * Returns the smallest (closest to negative infinity)
+     * {@code double} value that is greater than or equal to the
+     * argument and is equal to a mathematical integer. Special cases:
+     * <ul><li>If the argument value is already equal to a
+     * mathematical integer, then the result is the same as the
+     * argument.  <li>If the argument is NaN or an infinity or
+     * positive zero or negative zero, then the result is the same as
+     * the argument.  <li>If the argument value is less than zero but
+     * greater than -1.0, then the result is negative zero.</ul> Note
+     * that the value of {@code Math.ceil(x)} is exactly the
+     * value of {@code -Math.floor(-x)}.
+     *
+     *
+     * @param value A value.
+     * 
+     * @return The smallest (closest to negative infinity) floating-point value that is greater than or
+     * equal to the argument and is equal to a mathematical integer.
+     */
+	public static double ceil(double value)
 	{
-		return value < min ? min : value > max ? max : value;
+		return Math.ceil(value);
 	}
 	
-	public static long clamp(long value, long min, long max)
+	/**
+     * Returns the smallest (closest to negative infinity)
+     * {@code double} value that is greater than or equal to the
+     * argument and is equal to a mathematical integer. Special cases:
+     * <ul><li>If the argument value is already equal to a
+     * mathematical integer, then the result is the same as the
+     * argument.  <li>If the argument is NaN or an infinity or
+     * positive zero or negative zero, then the result is the same as
+     * the argument.  <li>If the argument value is less than zero but
+     * greater than -1.0, then the result is negative zero.</ul> Note
+     * that the value of {@code Math.ceil(x)} is exactly the
+     * value of {@code -Math.floor(-x)}.
+     *
+     *
+     * @param value A value.
+     * 
+     * @return The smallest (closest to negative infinity) floating-point value that is greater than or
+     * equal to the argument and is equal to a mathematical integer.
+     */
+	public static float ceil(float value)
 	{
-		return value < min ? min : value > max ? max : value;
+		return (float)Math.ceil(value);
 	}
 	
-	public static float clamp(float value, float min, float max)
+	 /**
+     * Returns the closest {@code long} to the argument, with ties
+     * rounding to positive infinity.
+     *
+     * <p>Special cases:
+     * <ul><li>If the argument is NaN, the result is 0.
+     * <li>If the argument is negative infinity or any value less than or
+     * equal to the value of {@code Long.MIN_VALUE}, the result is
+     * equal to the value of {@code Long.MIN_VALUE}.
+     * <li>If the argument is positive infinity or any value greater than or
+     * equal to the value of {@code Long.MAX_VALUE}, the result is
+     * equal to the value of {@code Long.MAX_VALUE}.</ul>
+     *
+     * @param value A floating-point value to be rounded to a {@code long}.
+     * @return The value of the argument rounded to the nearest {@code long} value.
+     * @see java.lang.Long#MAX_VALUE
+     * @see java.lang.Long#MIN_VALUE
+     */
+	public static double round(double value)
 	{
-		return value < min ? min : value > max ? max : value;
+		return Math.round(value);
 	}
 	
-	public static int clamp(int value, int min, int max)
+	/**
+     * Returns the closest {@code long} to the argument, with ties
+     * rounding to positive infinity.
+     *
+     * <p>Special cases:
+     * <ul><li>If the argument is NaN, the result is 0.
+     * <li>If the argument is negative infinity or any value less than or
+     * equal to the value of {@code Long.MIN_VALUE}, the result is
+     * equal to the value of {@code Long.MIN_VALUE}.
+     * <li>If the argument is positive infinity or any value greater than or
+     * equal to the value of {@code Long.MAX_VALUE}, the result is
+     * equal to the value of {@code Long.MAX_VALUE}.</ul>
+     *
+     * @param value A floating-point value to be rounded to a {@code long}.
+     * @return The value of the argument rounded to the nearest {@code long} value.
+     * @see java.lang.Long#MAX_VALUE
+     * @see java.lang.Long#MIN_VALUE
+     */
+	public static float round(float value)
 	{
-		return value < min ? min : value > max ? max : value;
+		return Math.round(value);
 	}
 	
-	public static double clamp(double value, double min, double max)
+	// MISSING_DOC
+	public static double trunc(double value)
 	{
-		return value < min ? min : value > max ? max : value;
-	}
-
-	public static byte clampMin(byte value, byte min)
-	{
-		return value < min ? min : value;
+		return (long)value;
 	}
 	
-	public static char clampMin(char value, char min)
+	// MISSING_DOC
+	public static float trunc(float value)
 	{
-		return value < min ? min : value;
+		return (int)value;
 	}
 	
-	public static long clampMin(long value, long min)
+	// MISSING_DOC
+	public static double sqrt(double value)
 	{
-		return value < min ? min : value;
+		return Math.sqrt(value);
 	}
 	
-	public static float clampMin(float value, float min)
+	// MISSING_DOC
+	public static float sqrt(float value)
 	{
-		return value < min ? min : value;
+		return (float)Math.sqrt(value);
 	}
 	
-	public static int clampMin(int value, int min)
+	// MISSING_DOC
+	public static double min(double a, double b)
 	{
-		return value < min ? min : value;
+		return Math.min(a, b);
 	}
 	
-	public static double clampMin(double value, double min)
+	// MISSING_DOC
+	public static float min(float a, float b)
 	{
-		return value < min ? min : value;
-	}
-
-	public static byte clampMax(byte value, byte max)
-	{
-		return value > max ? max : value;
+		return Math.min(a, b);
 	}
 	
-	public static char clampMax(char value, char max)
+	// MISSING_DOC
+	public static double max(double a, double b)
 	{
-		return value > max ? max : value;
+		return Math.max(a, b);
 	}
 	
-	public static long clampMax(long value, long max)
+	// MISSING_DOC
+	public static float max(float a, float b)
 	{
-		return value > max ? max : value;
+		return Math.max(a, b);
 	}
 	
-	public static float clampMax(float value, float max)
+	// MISSING_DOC
+	public static double abs(double value)
 	{
-		return value > max ? max : value;
+		return Math.abs(value);
 	}
 	
-	public static int clampMax(int value, int max)
+	// MISSING_DOC
+	public static float abs(float value)
 	{
-		return value > max ? max : value;
+		return Math.abs(value);
 	}
 	
-	public static double clampMax(double value, double max)
+	// MISSING_DOC
+	public static boolean isZero(double value)
 	{
-		return value > max ? max : value;
+		return value == 0.0;
 	}
 	
-	public static byte selectByZero(byte comparand, byte valueGEZ, byte valueLZ)
+	// MISSING_DOC
+	public static boolean isZero(float value)
 	{
-		return comparand >= 0 ? valueGEZ : valueLZ;
+		return value == 0.0f;
 	}
 	
-	public static char selectByZero(char comparand, char valueGEZ, char valueLZ)
+	// MISSING_DOC
+	public static boolean isZeroWithMargin(float value, float tolerance)
 	{
-		return comparand >= 0 ? valueGEZ : valueLZ;
+		return Math.abs(value) <= tolerance;
 	}
 	
-	public static long selectByZero(long comparand, long valueGEZ, long valueLZ)
+	// MISSING_DOC
+	public static boolean isZeroWithMargin(double value, double tolerance)
 	{
-		return comparand >= 0 ? valueGEZ : valueLZ;
+		return Math.abs(value) <= tolerance;
 	}
 	
-	public static int selectByZero(int comparand, int valueGEZ, int valueLZ)
+	// MISSING_DOC
+	public static double signum(double value)
 	{
-		return comparand >= 0 ? valueGEZ : valueLZ;
+		return Math.signum(value);
 	}
 	
-	public static float selectByZero(float comparand, float valueGEZ, float valueLZ)
+	// MISSING_DOC
+	public static float signum(float value)
 	{
-		return comparand >= 0.0f ? valueGEZ : valueLZ;
+		return Math.signum(value);
 	}
 	
-	public static double selectByZero(double comparand, double valueGEZ, double valueLZ)
+	// MISSING_DOC
+	public static float lerpf(float a, float b, float alpha)
 	{
-		return comparand >= 0.0f ? valueGEZ : valueLZ;
-	}
-	
-	public static boolean isMultipleOfTwo(int value)
-	{
-		return (value & value - 1) == 0;
-	}
-	
-	public static double gridSnap(double value, double gridSize)
-	{
-		return Math.floor((value + 0.5 * gridSize) / gridSize) * gridSize;
-	}
-	
-	
-	public static float gridSnap(float value, float gridSize)
-	{
-		return (float) (Math.floor((value + 0.5f * gridSize) / gridSize) * gridSize);
-	}
-	
-	public static int gridSnap(int value, int gridSize)
-	{
-		return (int) (Math.floor((value + 0.5f * gridSize) / gridSize) * gridSize);
-	}
-	
-	public static double reciprocal(double value)
-	{
-		return 1.0 / value;
-	}
-	
-	public static double reciprocalSafe(double value)
-	{
-		return isZero(value) ? 0.0 : 1.0 / value;
-	}
-	
-	public static double reciprocalSafe(double value, double tolerance)
-	{
-		return isZero(value, tolerance) ? 0.0 : 1.0 / value;
-	}
-	
-	public static double sin(double a)
-	{
-		return Math.sin(a);
-	}
-	
-	public static double cos(double a)
-	{
-		return Math.cos(a);
-	}
-	
-	public static double sqrt(double a)
-	{
-		return Math.sqrt(a);
-	}
-	
-	public static float sin(float a)
-	{
-		return (float)Math.sin(a);
-	}
-	
-	public static float cos(float a)
-	{
-		return (float)Math.cos(a);
-	}
-	
-	public static float sqrt(float a)
-	{
-		return (float)Math.sqrt(a);
-	}
-	
-	public static double atan2(double y, double x)
-	{
-		return Math.atan2(y, x);
-	}
-	
-	public static float atan2(float y, float x)
-	{
-		return (float)Math.atan2(y, x);
+		return (1.0f - alpha) * a + alpha * b;
 	}
 }

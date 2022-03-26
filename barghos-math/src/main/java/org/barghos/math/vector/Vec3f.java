@@ -1,16 +1,16 @@
 package org.barghos.math.vector;
 
 import org.barghos.core.api.tuple.TupfR;
-import org.barghos.core.api.tuple2.Tup2fR;
-import org.barghos.math.api.vector.Vec2fBase;
-import org.barghos.math.api.vector.Vec2fR;
+import org.barghos.core.api.tuple3.Tup3fR;
+import org.barghos.math.api.vector.Vec3fBase;
+import org.barghos.math.api.vector.Vec3fR;
 
 /**
- * This class represents a 2-dimensional float vector.
+ * This class represents a 3-dimensional float vector.
  * 
  * @author picatrix1899
  */
-public class Vec2f implements Vec2fBase
+public class Vec3f implements Vec3fBase
 {
 	/**
 	 * The x component.
@@ -23,9 +23,14 @@ public class Vec2f implements Vec2fBase
 	public float y;
 	
 	/**
+	 * The z component.
+	 */
+	public float z;
+	
+	/**
 	 * Creates a new instance with all components set to 0.
 	 */
-	public Vec2f()
+	public Vec3f()
 	{
 		set(0);
 	}
@@ -35,17 +40,17 @@ public class Vec2f implements Vec2fBase
 	 * 
 	 * @param t An existing implementation of {@link TupfR} to adopt the values from.
 	 */
-	public Vec2f(TupfR t)
+	public Vec3f(TupfR t)
 	{
 		set(t);
 	}
 	
 	/**
-	 * Creates a new instance from an existing instance of {@link Tup2fR} and adopts the values.
+	 * Creates a new instance from an existing instance of {@link Tup3fR} and adopts the values.
 	 * 
-	 * @param t An existing implementation of {@link Tup2fR} to adopt the values from.
+	 * @param t An existing implementation of {@link Tup3fR} to adopt the values from.
 	 */
-	public Vec2f(Tup2fR t)
+	public Vec3f(Tup3fR t)
 	{
 		set(t);
 	}
@@ -55,7 +60,7 @@ public class Vec2f implements Vec2fBase
 	 * 
 	 * @param value The value used as the initial value for all values of the tuple.
 	 */
-	public Vec2f(float value)
+	public Vec3f(float value)
 	{
 		set(value);
 	}
@@ -65,7 +70,7 @@ public class Vec2f implements Vec2fBase
 	 * 
 	 * @param v The x and y values as an array.
 	 */
-	public Vec2f(float[] v)
+	public Vec3f(float[] v)
 	{
 		setArray(v);
 	}
@@ -75,10 +80,11 @@ public class Vec2f implements Vec2fBase
 	 * 
 	 * @param x The initial x value of the tuple.
 	 * @param y The initial y value of the tuple.
+	 * @param z The initial z value of the tuple.
 	 */
-	public Vec2f(float x, float y)
+	public Vec3f(float x, float y, float z)
 	{
-		set(x, y);
+		set(x, y, z);
 	}
 	
 	/** {@inheritDoc} */
@@ -97,7 +103,14 @@ public class Vec2f implements Vec2fBase
 	
 	/** {@inheritDoc} */
 	@Override
-	public Vec2fBase setX(float x)
+	public float getZ()
+	{
+		return this.z;
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public Vec3fBase setX(float x)
 	{
 		this.x = x;
 		
@@ -106,13 +119,22 @@ public class Vec2f implements Vec2fBase
 	
 	/** {@inheritDoc} */
 	@Override
-	public Vec2fBase setY(float y)
+	public Vec3fBase setY(float y)
 	{
 		this.y = y;
 		
 		return this;
 	}
 
+	/** {@inheritDoc} */
+	@Override
+	public Vec3fBase setZ(float z)
+	{
+		this.z = z;
+		
+		return this;
+	}
+	
 	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
@@ -121,6 +143,7 @@ public class Vec2f implements Vec2fBase
 		int result = 1;
 		result = prime * result + Float.floatToIntBits(getX());
 		result = prime * result + Float.floatToIntBits(getY());
+		result = prime * result + Float.floatToIntBits(getZ());
 		return result;
 	}
 	
@@ -131,20 +154,22 @@ public class Vec2f implements Vec2fBase
 		if(this == obj) return true;
 		if(obj == null) return false;
 		
-		if(obj instanceof Vec2fR)
+		if(obj instanceof Vec3fR)
 		{
-			Vec2fR other = (Vec2fR) obj;
+			Vec3fR other = (Vec3fR) obj;
 			if(Float.floatToIntBits(getX()) != Float.floatToIntBits(other.getX())) return false;
 			if(Float.floatToIntBits(getY()) != Float.floatToIntBits(other.getY())) return false;
+			if(Float.floatToIntBits(getZ()) != Float.floatToIntBits(other.getZ())) return false;
 			
 			return true;
 		}
 		
-		if(obj instanceof Tup2fR)
+		if(obj instanceof Tup3fR)
 		{
-			Tup2fR other = (Tup2fR) obj;
+			Tup3fR other = (Tup3fR) obj;
 			if(Float.floatToIntBits(getX()) != Float.floatToIntBits(other.getX())) return false;
 			if(Float.floatToIntBits(getY()) != Float.floatToIntBits(other.getY())) return false;
+			if(Float.floatToIntBits(getZ()) != Float.floatToIntBits(other.getZ())) return false;
 			
 			return true;
 		}
@@ -155,6 +180,7 @@ public class Vec2f implements Vec2fBase
 			if(getDimensions() != other.getDimensions()) return false;
 			if(Float.floatToIntBits(getX()) != Float.floatToIntBits(other.getByIndex(0))) return false;
 			if(Float.floatToIntBits(getY()) != Float.floatToIntBits(other.getByIndex(1))) return false;
+			if(Float.floatToIntBits(getZ()) != Float.floatToIntBits(other.getByIndex(2))) return false;
 			
 			return true;
 		}
@@ -166,13 +192,13 @@ public class Vec2f implements Vec2fBase
 	@Override
 	public String toString()
 	{
-		return "vec2f(x=" + getX() + ", y=" + getY() + ")";
+		return "vec3d(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ")";
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public Vec2f clone()
+	public Vec3f clone()
 	{
-		return new Vec2f(this);
+		return new Vec3f(this);
 	}
 }

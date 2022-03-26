@@ -1,11 +1,12 @@
 package org.barghos.math.api.vector;
 
+import org.barghos.core.api.tuple.TupdR;
 import org.barghos.core.api.tuple.TupfR;
-import org.barghos.core.api.tuple2.Tup2fBase;
-import org.barghos.core.api.tuple2.Tup2fR;
+import org.barghos.core.api.tuple3.Tup3fR;
+import org.barghos.core.api.tuple3.Tup3fBase;
 
 /**
- * This interface represents any modifiable 2-dimensional float vector.
+ * This interface represents any modifiable 3-dimensional float vector.
  * 
  * <p>
  * It should be prefered by design before direct usage of a type in method parameters,
@@ -13,7 +14,7 @@ import org.barghos.core.api.tuple2.Tup2fR;
  * 
  * @author picatrix1899
  */
-public interface Vec2fBase extends Vec2fR, Tup2fBase
+public interface Vec3fBase extends Vec3fR, Tup3fBase
 {
 	/**
 	 * Sets the x component of the vector.
@@ -23,7 +24,7 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * @return The current vector.
 	 */
 	@Override
-	Vec2fBase setX(float x);
+	Vec3fBase setX(float x);
 	
 	/**
 	 * Sets the y component of the vector.
@@ -33,19 +34,29 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * @return The current vector.
 	 */
 	@Override
-	Vec2fBase setY(float y);
+	Vec3fBase setY(float y);
 	
 	/**
-	 * Adopts the values from an existing instance of {@link Tup2fR}.
+	 * Sets the z component of the vector.
 	 * 
-	 * @param t An existing implementation of {@link Tup2fR} to adopt the values from.
+	 * @param z The new z value.
 	 * 
 	 * @return The current vector.
 	 */
 	@Override
-	default Vec2fBase set(Tup2fR t)
+	Vec3fBase setZ(float z);
+	
+	/**
+	 * Adopts the values from an existing instance of {@link Tup3fR}.
+	 * 
+	 * @param t An existing implementation of {@link Tup3fR} to adopt the values from.
+	 * 
+	 * @return The current vector.
+	 */
+	@Override
+	default Vec3fBase set(Tup3fR t)
 	{
-		return (Vec2fBase)Tup2fBase.super.set(t);
+		return (Vec3fBase)Tup3fBase.super.set(t);
 	}
 	
 	/**
@@ -60,9 +71,9 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * @return The current vector.
 	 */
 	@Override
-	default Vec2fBase set(float value)
+	default Vec3fBase set(float value)
 	{
-		return (Vec2fBase)Tup2fBase.super.set(value);
+		return (Vec3fBase)Tup3fBase.super.set(value);
 	}
 	
 	/**
@@ -70,13 +81,14 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * @param x The new x value.
 	 * @param y The new y value.
+	 * @param z The new z value.
 	 * 
 	 * @return The current vector.
 	 */
 	@Override
-	default Vec2fBase set(float x, float y)
+	default Vec3fBase set(float x, float y, float z)
 	{
-		return (Vec2fBase)Tup2fBase.super.set(x, y);
+		return (Vec3fBase)Tup3fBase.super.set(x, y, z);
 	}
 	
 	/**
@@ -88,9 +100,9 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * @return The current vector.
 	 */
 	@Override
-	default Vec2fBase setByIndex(int index, float value)
+	default Vec3fBase setByIndex(int index, float value)
 	{
-		return (Vec2fBase)Tup2fBase.super.setByIndex(index, value);
+		return (Vec3fBase)Tup3fBase.super.setByIndex(index, value);
 	}
 	
 	/**
@@ -101,27 +113,27 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * @return The current vector.
 	 */
 	@Override
-	default Vec2fBase setArray(float... values)
+	default Vec3fBase setArray(float... values)
 	{
-		return (Vec2fBase)Tup2fBase.super.setArray(values);
+		return (Vec3fBase)Tup3fBase.super.setArray(values);
 	}
 	
 	/**
-	 * Adopts the values from an existing instance of {@link TupfR}.
+	 * Adopts the values from an existing instance of {@link TupdR}.
 	 * 
-	 * @param t An existing implementation of {@link TupfR} to adopt the values from.
+	 * @param t An existing implementation of {@link TupdR} to adopt the values from.
 	 * 
 	 * @return The current vector.
 	 */
 	@Override
-	default Vec2fBase set(TupfR t)
+	default Vec3fBase set(TupfR t)
 	{
-		return (Vec2fBase)Tup2fBase.super.set(t);
+		return (Vec3fBase)Tup3fBase.super.set(t);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	Vec2fBase clone();
+	Vec3fBase clone();
 	
 	/**
 	 * Adds the second given tuple to the current vector.
@@ -134,9 +146,9 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec2fBase add(Tup2fR t)
+	default Vec3fBase add(Tup3fR t)
 	{
-		return add(t.getX(), t.getY());
+		return add(t.getX(), t.getY(), t.getZ());
 	}
 	
 	/**
@@ -145,15 +157,15 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * <p>
 	 * Operation:
-	 * v + (value, value)
+	 * v + (value, value, value)
 	 * 
 	 * @param value The value of all the components of the second tuple.
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec2fBase add(float value)
+	default Vec3fBase add(float value)
 	{
-		return add(value, value);
+		return add(value, value, value);
 	}
 	
 	/**
@@ -162,16 +174,17 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * <p>
 	 * Operation:
-	 * v + (x, y)
+	 * v + (x, y, z)
 	 * 
 	 * @param x The value of the x component of the second tuple.
 	 * @param y The value of the y component of the second tuple.
+	 * @param z The value of the z component of the second tuple.
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec2fBase add(float x, float y)
+	default Vec3fBase add(float x, float y, float z)
 	{
-		return Vec2fUtil.add(getX(), getY(), x, y, this);
+		return Vec3fUtil.add(getX(), getY(), getZ(), x, y, z, this);
 	}
 	
 	/**
@@ -186,9 +199,9 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec2fBase sub(Tup2fR t)
+	default Vec3fBase sub(Tup3fR t)
 	{
-		return sub(t.getX(), t.getY());
+		return sub(t.getX(), t.getY(), t.getZ());
 	}
 	
 	/**
@@ -197,15 +210,15 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * <p>
 	 * Operation:
-	 * v - (value, value)
+	 * v - (value, value, value)
 	 * 
 	 * @param value The value of all the components of the second tuple.
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec2fBase sub(float value)
+	default Vec3fBase sub(float value)
 	{
-		return sub(value, value);
+		return sub(value, value, value);
 	}
 	
 	/**
@@ -214,16 +227,17 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * <p>
 	 * Operation:
-	 * v - (x, y)
+	 * v - (x, y, z)
 	 * 
 	 * @param x The value of the x component of the second tuple.
 	 * @param y The value of the y component of the second tuple.
+	 * @param z The value of the z component of the second tuple.
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec2fBase sub(float x, float y)
+	default Vec3fBase sub(float x, float y, float z)
 	{
-		return Vec2fUtil.sub(getX(), getY(), x, y, this);
+		return Vec3fUtil.sub(getX(), getY(), getZ(), x, y, z, this);
 	}
 	
 	/**
@@ -238,9 +252,9 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec2fBase revSub(Tup2fR t)
+	default Vec3fBase revSub(Tup3fR t)
 	{
-		return revSub(t.getX(), t.getY());
+		return revSub(t.getX(), t.getY(), t.getZ());
 	}
 	
 	/**
@@ -249,15 +263,15 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * <p>
 	 * Operation:
-	 * (value, value) - v
+	 * (value, value, value) - v
 	 * 
 	 * @param value The value of all the components of the second tuple.
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec2fBase revSub(float value)
+	default Vec3fBase revSub(float value)
 	{
-		return revSub(value, value);
+		return revSub(value, value, value);
 	}
 	
 	/**
@@ -266,16 +280,17 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * <p>
 	 * Operation:
-	 * (x, y) - v 
+	 * (x, y, z) - v 
 	 * 
 	 * @param x The value of the x component of the second tuple.
 	 * @param y The value of the y component of the second tuple.
+	 * @param z The value of the z component of the second tuple.
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec2fBase revSub(float x, float y)
+	default Vec3fBase revSub(float x, float y, float z)
 	{
-		return Vec2fUtil.revSub(getX(), getY(), x, y, this);
+		return Vec3fUtil.revSub(getX(), getY(), getZ(), x, y, z, this);
 	}
 	
 	/**
@@ -290,9 +305,9 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec2fBase mul(Tup2fR t)
+	default Vec3fBase mul(Tup3fR t)
 	{
-		return mul(t.getX(), t.getY());
+		return mul(t.getX(), t.getY(), t.getZ());
 	}
 	
 	/**
@@ -301,15 +316,15 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * <p>
 	 * Operation:
-	 * v * (value, value)
+	 * v * (value, value, value)
 	 * 
 	 * @param value The value of all the components of the second tuple.
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec2fBase mul(float value)
+	default Vec3fBase mul(float value)
 	{
-		return mul(value, value);
+		return mul(value, value, value);
 	}
 	
 	/**
@@ -318,16 +333,17 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * <p>
 	 * Operation:
-	 * v * (x, y)
+	 * v * (x, y, z)
 	 * 
 	 * @param x The value of the x component of the second tuple.
 	 * @param y The value of the y component of the second tuple.
+	 * @param z The value of the z component of the second tuple.
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec2fBase mul(float x, float y)
+	default Vec3fBase mul(float x, float y, float z)
 	{
-		return Vec2fUtil.mul(getX(), getY(), x, y, this);
+		return Vec3fUtil.mul(getX(), getY(), getZ(), x, y, z, this);
 	}
 	
 	/**
@@ -342,9 +358,9 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec2fBase div(Tup2fR t)
+	default Vec3fBase div(Tup3fR t)
 	{
-		return div(t.getX(), t.getY());
+		return div(t.getX(), t.getY(), t.getZ());
 	}
 	
 	/**
@@ -353,15 +369,15 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * <p>
 	 * Operation:
-	 * v / (value, value)
+	 * v / (value, value, value)
 	 * 
 	 * @param value The value of all the components of the second tuple.
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec2fBase div(float value)
+	default Vec3fBase div(float value)
 	{
-		return div(value, value);
+		return div(value, value, value);
 	}
 	
 	/**
@@ -370,16 +386,17 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * <p>
 	 * Operation:
-	 * v / (x, y)
+	 * v / (x, y, z)
 	 * 
 	 * @param x The value of the x component of the second tuple.
 	 * @param y The value of the y component of the second tuple.
+	 * @param z The value of the z component of the second tuple.
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec2fBase div(float x, float y)
+	default Vec3fBase div(float x, float y, float z)
 	{
-		return Vec2fUtil.div(getX(), getY(), x, y, this);
+		return Vec3fUtil.div(getX(), getY(), getZ(), x, y, z, this);
 	}
 	
 	/**
@@ -394,9 +411,9 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec2fBase revDiv(Tup2fR t)
+	default Vec3fBase revDiv(Tup3fR t)
 	{
-		return revDiv(t.getX(), t.getY());
+		return revDiv(t.getX(), t.getY(), t.getZ());
 	}
 	
 	/**
@@ -405,15 +422,15 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * <p>
 	 * Operation:
-	 * (value, value) / v 
+	 * (value, value, value) / v 
 	 * 
 	 * @param value The value of all the components of the second tuple.
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec2fBase revDiv(float value)
+	default Vec3fBase revDiv(float value)
 	{
-		return revDiv(value, value);
+		return revDiv(value, value, value);
 	}
 	
 	/**
@@ -422,16 +439,17 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * <p>
 	 * Operation:
-	 * (x, y) / v
+	 * (x, y, z) / v
 	 * 
 	 * @param x The value of the x component of the second tuple.
 	 * @param y The value of the y component of the second tuple.
+	 * @param z The value of the z component of the second tuple.
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec2fBase revDiv(float x, float y)
+	default Vec3fBase revDiv(float x, float y, float z)
 	{
-		return Vec2fUtil.revDiv(getX(), getY(), x, y, this);
+		return Vec3fUtil.revDiv(getX(), getY(), getZ(), x, y, z, this);
 	}
 	
 	/**
@@ -451,7 +469,7 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * @throws ArithmeticException Thrown when it is a zero-length vector.
 	 */
-	default Vec2fBase normal()
+	default Vec3fBase normal()
 	{
 		return div(length());
 	}
@@ -475,7 +493,7 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * @throws ArithmeticException Might be thrown when the length is to close to zero.
 	 */
-	default Vec2fBase normalSafe()
+	default Vec3fBase normalSafe()
 	{
 		if(isZero()) return set(0.0f);
 		
@@ -498,7 +516,7 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec2fBase normalSafeWithMargin(float tolerance)
+	default Vec3fBase normalSafeWithMargin(float tolerance)
 	{
 		if(isZeroWithMargin(tolerance)) return set(0.0f);
 		
@@ -515,9 +533,9 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec2fBase invert()
+	default Vec3fBase invert()
 	{
-		return set(-getX(), -getY());
+		return set(-getX(), -getY(), -getZ());
 	}
 	
 	/**
@@ -530,9 +548,9 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec2fBase inverse()
+	default Vec3fBase inverse()
 	{
-		return inverse(1.0f, 1.0f);
+		return inverse(1.0f);
 	}
 	
 	/**
@@ -548,9 +566,9 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec2fBase inverse(Tup2fR t)
+	default Vec3fBase inverse(Tup3fR t)
 	{
-		return inverse(t.getX(), t.getY());
+		return inverse(t.getX(), t.getY(), t.getZ());
 	}
 	
 	/**
@@ -566,9 +584,9 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec2fBase inverse(float value)
+	default Vec3fBase inverse(float value)
 	{
-		return inverse(value, value);
+		return inverse(value, value, value);
 	}
 	
 	/**
@@ -577,16 +595,17 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * <p>
 	 * Operation:
-	 * (x, y) - v
+	 * (x, y, z) - v
 	 * 
 	 * @param x The value the inversion of the x component is based on.
 	 * @param y The value the inversion of the y component is based on.
+	 * @param z The value the inversion of the z component is based on.
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec2fBase inverse(float x, float y)
+	default Vec3fBase inverse(float x, float y, float z)
 	{
-		return set(x - getY(), y - getY());
+		return set(x - getY(), y - getY(), z - getZ());
 	}
 	
 	/**
@@ -600,9 +619,9 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * @return The dot product (scalar product) between this vector and the tuple.
 	 */
-	default float dot(Tup2fR t)
+	default float dot(Tup3fR t)
 	{
-		return dot(t.getX(), t.getY());
+		return dot(t.getX(), t.getY(), t.getZ());
 	}
 	
 	/**
@@ -610,7 +629,7 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * <p>
 	 * Operation:
-	 * v . (value, value)
+	 * v . (value, value, value)
 	 * 
 	 * @param value The value of all the components of the second tuple.
 	 * 
@@ -618,7 +637,7 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 */
 	default float dot(float value)
 	{
-		return dot(value, value);
+		return dot(value, value, value);
 	}
 	
 	/**
@@ -626,16 +645,172 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * <p>
 	 * Operation:
-	 * v . (x, y)
+	 * v . (x, y, z)
 	 * 
 	 * @param x The value of the x component of the second tuple.
 	 * @param y The value of the y component of the second tuple.
+	 * @param z The value of the z component of the second tuple.
 	 * 
 	 * @return The dot product (scalar product) between this vector and the values.
 	 */
-	default float dot(float x, float y)
+	default float dot(float x, float y, float z)
 	{
-		return getX() * x + getY() * y;
+		return getX() * x + getY() * y + getZ() * z;
+	}
+	
+	/**
+	 * Sets the vector to the cross product between this vector and the given tuple.
+	 * This operation alters the current vector.
+	 * 
+	 * @param t The tuple.
+	 * 
+	 * @return The current vector.
+	 */
+	default Vec3fBase cross(Tup3fR t)
+	{
+		return crossLH(t.getX());
+	}
+	
+	/**
+	 * Sets the vector to the cross product between this vector and a tuple defined by the given value.
+	 * This operation alters the current vector.
+	 * 
+	 * @param value The value of all the components of the second tuple.
+	 * 
+	 * @return The current vector.
+	 */
+	default Vec3fBase cross(float value)
+	{
+		return crossLH(value);
+	}
+	
+	/**
+	 * Sets the vector to the cross product between this vector and a tuple defined by the given component values.
+	 * This operation alters the current vector.
+	 * 
+	 * @param x The value of the x component of the second tuple.
+	 * @param y The value of the y component of the second tuple.
+	 * @param z The value of the z component of the second tuple.
+	 * 
+	 * @return The current vector.
+	 */
+	default Vec3fBase cross(float x, float y, float z)
+	{
+		return crossLH(x, y, z);
+	}
+	
+	/**
+	 * Sets the vector to the left handed cross product between this vector and the given tuple.
+	 * This operation alters the current vector.
+	 * 
+	 * <p>
+	 * Operation:
+	 * v x t
+	 * 
+	 * @param t The tuple.
+	 * 
+	 * @return The current vector.
+	 */
+	default Vec3fBase crossLH(Tup3fR t)
+	{
+		return crossLH(t.getX(), t.getY(), t.getZ());
+	}
+	
+	/**
+	 * Sets the vector to the left handed cross product between this vector and a tuple defined by the given value.
+	 * This operation alters the current vector.
+	 * 
+	 * <p>
+	 * Operation:
+	 * v x (value, value, value)
+	 * 
+	 * @param value The value of all the components of the second tuple.
+	 * 
+	 * @return The current vector.
+	 */
+	default Vec3fBase crossLH(float value)
+	{
+		return crossLH(value, value, value);
+	}
+	
+	/**
+	 * Sets the vector to the left handed cross product between this vector and a tuple defined by the given component values.
+	 * This operation alters the current vector.
+	 * 
+	 * <p>
+	 * Operation:
+	 * v x (x, y, z)
+	 * 
+	 * @param x The value of the x component of the second tuple.
+	 * @param y The value of the y component of the second tuple.
+	 * @param z The value of the z component of the second tuple.
+	 * 
+	 * @return The current vector.
+	 */
+	default Vec3fBase crossLH(float x, float y, float z)
+	{
+		float aX = getX();
+		float aY = getY();
+		float aZ = getZ();
+		
+		return set(aY * z - aZ * y, aZ * x - aX * z, aX * y - aY * x);
+	}
+	
+	/**
+	 * Sets the vector to the right handed cross product between this vector and the given tuple.
+	 * This operation alters the current vector.
+	 * 
+	 * <p>
+	 * Operation:
+	 * t x v
+	 * 
+	 * @param t The tuple.
+	 * 
+	 * @return The current vector.
+	 */
+	default Vec3fBase crossRH(Tup3fR t)
+	{
+		return crossRH(t.getX(), t.getY(), t.getZ());
+	}
+	
+	/**
+	 * Sets the vector to the right handed cross product between this vector and a tuple defined by the given value.
+	 * This operation alters the current vector.
+	 * 
+	 * <p>
+	 * Operation:
+	 * (value, value, value) x v
+	 * 
+	 * @param value The value of all the components of the second tuple.
+	 * 
+	 * @return The current vector.
+	 */
+	default Vec3fBase crossRH(float value)
+	{
+		return crossRH(value, value, value);
+	}
+	
+	/**
+	 * Sets the vector to the right handed cross product between this vector and a tuple defined by the given component values.
+	 * This operation alters the current vector.
+	 * 
+	 * <p>
+	 * Operation:
+	 * (x, y, z) x v
+	 * 
+	 * @param x The value of the x component of the second tuple.
+	 * @param y The value of the y component of the second tuple.
+	 * @param z The value of the z component of the second tuple.
+	 * 
+	 * @return The current vector.
+	 */
+	default Vec3fBase crossRH(float x, float y, float z)
+	{
+		float aX = getX();
+		float aY = getY();
+		float aZ = getZ();
+
+		return set(aZ * y - aY * z, aX * z - aZ * x, aY * x - aX * y);
 	}
 	
 	/**
@@ -644,9 +819,9 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec2fBase abs()
+	default Vec3fBase abs()
 	{
-		return set(Math.abs(getX()), Math.abs(getY()));
+		return set(Math.abs(getX()), Math.abs(getY()), Math.abs(getZ()));
 	}
 	
 	/**
@@ -655,9 +830,9 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec2fBase floor()
+	default Vec3fBase floor()
 	{
-		return set((float)Math.floor(getX()), (float)Math.floor(getY()));
+		return set((float)Math.floor(getX()), (float)Math.floor(getY()), (float)Math.floor(getZ()));
 	}
 	
 	/**
@@ -666,9 +841,9 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec2fBase ceil()
+	default Vec3fBase ceil()
 	{
-		return set((float)Math.ceil(getX()), (float)Math.ceil(getY()));
+		return set((float)Math.ceil(getX()), (float)Math.ceil(getY()), (float)Math.ceil(getZ()));
 	}
 	
 	/**
@@ -677,9 +852,9 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec2fBase round()
+	default Vec3fBase round()
 	{
-		return set(Math.round(getX()), Math.round(getY()));
+		return set(Math.round(getX()), Math.round(getY()), Math.round(getZ()));
 	}
 	
 	/**
@@ -688,9 +863,9 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec2fBase trunc()
+	default Vec3fBase trunc()
 	{
-		return set((int)getX(), (int)getY());
+		return set((int)getX(), (int)getY(), (int)getZ());
 	}
 	
 	/**
@@ -699,9 +874,9 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec2fBase signum()
+	default Vec3fBase signum()
 	{
-		return set(Math.signum(getX()), Math.signum(getY()));
+		return set(Math.signum(getX()), Math.signum(getY()), Math.signum(getZ()));
 	}
 	
 	/**
@@ -716,7 +891,7 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fBase addN(Tup2fR t)
+	default Vec3fBase addN(Tup3fR t)
 	{
 		return clone().add(t);
 	}
@@ -727,13 +902,13 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * <p>
 	 * Operation:
-	 * v + (value, value)
+	 * v + (value, value, value)
 	 * 
 	 * @param value The value of all the components of the second tuple.
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fBase addN(float value)
+	default Vec3fBase addN(float value)
 	{
 		return clone().add(value);
 	}
@@ -746,16 +921,17 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * <p>
 	 * Operation:
-	 * v + (x, y)
+	 * v + (x, y, z)
 	 * 
 	 * @param x The value of the x component of the second tuple.
 	 * @param y The value of the y component of the second tuple.
+	 * @param z The value of the z component of the second tuple.
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fBase addN(float x, float y)
+	default Vec3fBase addN(float x, float y, float z)
 	{
-		return clone().add(x, y);
+		return clone().add(x, y, z);
 	}
 	
 	/**
@@ -770,7 +946,7 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fBase subN(Tup2fR t)
+	default Vec3fBase subN(Tup3fR t)
 	{
 		return clone().sub(t);
 	}
@@ -781,13 +957,13 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * <p>
 	 * Operation:
-	 * v - (value, value)
+	 * v - (value, value, value)
 	 * 
 	 * @param value The value of all the components of the second tuple.
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fBase subN(float value)
+	default Vec3fBase subN(float value)
 	{
 		return clone().sub(value);
 	}
@@ -799,16 +975,17 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * <p>
 	 * Operation:
-	 * v - (x, y)
+	 * v - (x, y, z)
 	 * 
 	 * @param x The value of the x component of the second tuple.
 	 * @param y The value of the y component of the second tuple.
+	 * @param z The value of the z component of the second tuple.
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fBase subN(float x, float y)
+	default Vec3fBase subN(float x, float y, float z)
 	{
-		return clone().sub(x, y);
+		return clone().sub(x, y, z);
 	}
 	
 	/**
@@ -823,7 +1000,7 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fBase revSubN(Tup2fR t)
+	default Vec3fBase revSubN(Tup3fR t)
 	{
 		return clone().revSub(t);
 	}
@@ -834,13 +1011,13 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * <p>
 	 * Operation:
-	 * (value, value) - v 
+	 * (value, value, value) - v 
 	 * 
 	 * @param value The value of all the components of the second tuple.
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fBase revSubN(float value)
+	default Vec3fBase revSubN(float value)
 	{
 		return clone().revSub(value);
 	}
@@ -853,16 +1030,17 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * <p>
 	 * Operation:
-	 * (x, y) - v 
+	 * (x, y, z) - v 
 	 * 
 	 * @param x The value of the x component of the second tuple.
 	 * @param y The value of the y component of the second tuple.
+	 * @param z The value of the z component of the second tuple.
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fBase revSubN(float x, float y)
+	default Vec3fBase revSubN(float x, float y, float z)
 	{
-		return clone().revSub(x, y);
+		return clone().revSub(x, y, z);
 	}
 	
 	/**
@@ -877,7 +1055,7 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fBase mulN(Tup2fR t)
+	default Vec3fBase mulN(Tup3fR t)
 	{
 		return clone().mul(t);
 	}
@@ -888,13 +1066,13 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * <p>
 	 * Operation:
-	 * v * (value, value)
+	 * v * (value, value, value)
 	 * 
 	 * @param value The value of all the components of the second tuple.
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fBase mulN(float value)
+	default Vec3fBase mulN(float value)
 	{
 		return clone().mul(value);
 	}
@@ -906,16 +1084,17 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * <p>
 	 * Operation:
-	 * v * (x, y)
+	 * v * (x, y, z)
 	 * 
 	 * @param x The value of the x component of the second tuple.
 	 * @param y The value of the y component of the second tuple.
+	 * @param z The value of the z component of the second tuple.
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fBase mulN(float x, float y)
+	default Vec3fBase mulN(float x, float y, float z)
 	{
-		return clone().mul(x, y);
+		return clone().mul(x, y, z);
 	}
 	
 	/**
@@ -930,7 +1109,7 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fBase divN(Tup2fR t)
+	default Vec3fBase divN(Tup3fR t)
 	{
 		return clone().div(t);
 	}
@@ -941,13 +1120,13 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * <p>
 	 * Operation:
-	 * v / (value, value)
+	 * v / (value, value, value)
 	 * 
 	 * @param value The value of all the components of the second tuple.
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fBase divN(float value)
+	default Vec3fBase divN(float value)
 	{
 		return clone().div(value);
 	}
@@ -959,16 +1138,17 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * <p>
 	 * Operation:
-	 * v / (x, y)
+	 * v / (x, y, z)
 	 * 
 	 * @param x The value of the x component of the second tuple.
 	 * @param y The value of the y component of the second tuple.
+	 * @param z The value of the z component of the second tuple.
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fBase divN(float x, float y)
+	default Vec3fBase divN(float x, float y, float z)
 	{
-		return clone().div(x, y);
+		return clone().div(x, y, z);
 	}
 
 	/**
@@ -983,7 +1163,7 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fBase revDivN(Tup2fR t)
+	default Vec3fBase revDivN(Tup3fR t)
 	{
 		return clone().revDiv(t);
 	}
@@ -994,13 +1174,13 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * <p>
 	 * Operation:
-	 * (value, value) / v 
+	 * (value, value, value) / v 
 	 * 
 	 * @param value The value of all the components of the second tuple.
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fBase revDivN(float value)
+	default Vec3fBase revDivN(float value)
 	{
 		return clone().revDiv(value);
 	}
@@ -1012,16 +1192,17 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * <p>
 	 * Operation:
-	 * (x, y) / v
+	 * (x, y, z) / v
 	 * 
 	 * @param x The value of the x component of the second tuple.
 	 * @param y The value of the y component of the second tuple.
+	 * @param z The value of the z component of the second tuple.
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fBase revDivN(float x, float y)
+	default Vec3fBase revDivN(float x, float y, float z)
 	{
-		return clone().revDiv(x, y);
+		return clone().revDiv(x, y, z);
 	}
 
 	/**
@@ -1041,7 +1222,7 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * @throws ArithmeticException Thrown when it is a zero-length vector.
 	 */
-	default Vec2fBase normalN()
+	default Vec3fBase normalN()
 	{
 		return clone().normal();
 	}
@@ -1065,7 +1246,7 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * @throws ArithmeticException Might be thrown when the length is to close to zero.
 	 */
-	default Vec2fBase normalSafeN()
+	default Vec3fBase normalSafeN()
 	{
 		return clone().normalSafe();
 	}
@@ -1086,7 +1267,7 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fBase normalSafeWithMarginN(float tolerance)
+	default Vec3fBase normalSafeWithMarginN(float tolerance)
 	{
 		return clone().normalSafeWithMargin(tolerance);
 	}
@@ -1101,7 +1282,7 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fBase invertN()
+	default Vec3fBase invertN()
 	{
 		return clone().invert();
 	}
@@ -1116,7 +1297,7 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fBase inverseN()
+	default Vec3fBase inverseN()
 	{
 		return clone().inverse();
 	}
@@ -1134,7 +1315,7 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fBase inverseN(Tup2fR t)
+	default Vec3fBase inverseN(Tup3fR t)
 	{
 		return clone().inverse(t);
 	}
@@ -1152,7 +1333,7 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fBase inverseN(float value)
+	default Vec3fBase inverseN(float value)
 	{
 		return clone().inverse(value);
 	}
@@ -1164,16 +1345,171 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * <p>
 	 * Operation:
-	 * (x, y) - v
+	 * (x, y, z) - v
 	 * 
 	 * @param x The value the inversion of the x component is based on.
 	 * @param y The value the inversion of the y component is based on.
+	 * @param z The value the inversion of the z component is based on.
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fBase inverseN(float x, float y)
+	default Vec3fBase inverseN(float x, float y, float z)
 	{
-		return clone().inverse(x, y);
+		return clone().inverse(x, y, z);
+	}
+	
+	/**
+	 * Calculates the cross product between this vector and the given tuple
+	 * and saves the result in a new instance.
+	 * This operation does not alter the current vector.
+	 * 
+	 * @param t The tuple.
+	 * 
+	 * @return The new instance with the result.
+	 */
+	default Vec3fBase crossN(Tup3fR t)
+	{
+		return clone().cross(t);
+	}
+	
+	/**
+	 * Calculates the cross product between this vector and a tuple defined by the given value
+	 * and saves the result in a new instance.
+	 * This operation does not alter the current vector.
+	 * 
+	 * @param value The value of all the components of the second tuple.
+	 * 
+	 * @return The new instance with the result.
+	 */
+	default Vec3fBase crossN(float value)
+	{
+		return clone().cross(value);
+	}
+	
+	/**
+	 * Calculates the cross product between this vector and a tuple defined by the given component values
+	 * and saves the result in a new instance.
+	 * This operation does not alter the current vector.
+	 * 
+	 * @param x The value of the x component of the second tuple.
+	 * @param y The value of the y component of the second tuple.
+	 * @param z The value of the z component of the second tuple.
+	 * 
+	 * @return The new instance with the result.
+	 */
+	default Vec3fBase crossN(float x, float y, float z)
+	{
+		return clone().cross(x, y, z);
+	}
+	
+	/**
+	 * Calculates the left handed cross product between this vector and the given tuple
+	 * and saves the result in a new instance.
+	 * This operation does not alter the current vector.
+	 * 
+	 * <p>
+	 * Operation:
+	 * v x t
+	 * 
+	 * @param t The tuple.
+	 * 
+	 * @return The new instance with the result.
+	 */
+	default Vec3fBase crossLHN(Tup3fR t)
+	{
+		return clone().crossLH(t);
+	}
+	
+	/**
+	 * Calculates the left handed cross product between this vector and a tuple defined by the given value
+	 * and saves the result in a new instance.
+	 * This operation does not alter the current vector.
+	 * 
+	 * <p>
+	 * Operation:
+	 * v x (value, value, value)
+	 * 
+	 * @param value The value of all the components of the second tuple.
+	 * 
+	 * @return The new instance with the result.
+	 */
+	default Vec3fBase crossLHN(float value)
+	{
+		return clone().crossLH(value);
+	}
+	
+	/**
+	 * Calculates the left handed cross product between this vector and a tuple defined by the given component values
+	 * and saves the result in a new instance.
+	 * This operation does not alter the current vector.
+	 * 
+	 * <p>
+	 * Operation:
+	 * v x (x, y, z)
+	 * 
+	 * @param x The value of the x component of the second tuple.
+	 * @param y The value of the y component of the second tuple.
+	 * @param z The value of the z component of the second tuple.
+	 * 
+	 * @return The new instance with the result.
+	 */
+	default Vec3fBase crossLHN(float x, float y, float z)
+	{
+		return clone().crossLH(x, y, z);
+	}
+	
+	/**
+	 * Calculates the right handed cross product between this vector and the given tuple
+	 * and saves the result in a new instance.
+	 * This operation does not alter the current vector.
+	 * 
+	 * <p>
+	 * Operation:
+	 * t x v
+	 * 
+	 * @param t The tuple.
+	 * 
+	 * @return The new instance with the result.
+	 */
+	default Vec3fBase crossRHN(Tup3fR t)
+	{
+		return clone().crossRH(t);
+	}
+	
+	/**
+	 * Calculates the right handed cross product between this vector and a tuple defined by the given value.
+	 * This operation does not alter the current vector.
+	 * 
+	 * <p>
+	 * Operation:
+	 * (value, value, value) x v
+	 * 
+	 * @param value The value of all the components of the second tuple.
+	 * 
+	 * @return The new instance with the result.
+	 */
+	default Vec3fBase crossRHN(float value)
+	{
+		return clone().crossRH(value);
+	}
+	
+	/**
+	 * Calculates the right handed cross product between this vector and a tuple defined by the given component values.
+	 * This operation does not alter the current vector.
+	 * 
+	 * <p>
+	 * Operation:
+	 * (x, y, z) x v
+	 * 
+	 * @param x The value of the x component of the second tuple.
+	 * @param y The value of the y component of the second tuple.
+	 * @param z The value of the z component of the second tuple.
+	 * 
+	 * @return The new instance with the result.
+	 */
+	default Vec3fBase crossRHN(float x, float y, float z)
+	{
+		return clone().crossRH(x, y, z);
 	}
 	
 	/**
@@ -1182,7 +1518,7 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fBase absN()
+	default Vec3fBase absN()
 	{
 		return clone().abs();
 	}
@@ -1193,7 +1529,7 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fBase floorN()
+	default Vec3fBase floorN()
 	{
 		return clone().floor();
 	}
@@ -1204,7 +1540,7 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fBase ceilN()
+	default Vec3fBase ceilN()
 	{
 		return clone().ceil();
 	}
@@ -1215,7 +1551,7 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fBase roundN()
+	default Vec3fBase roundN()
 	{
 		return clone().round();
 	}
@@ -1226,7 +1562,7 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fBase truncN()
+	default Vec3fBase truncN()
 	{
 		return clone().trunc();
 	}
@@ -1237,8 +1573,73 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 * 
 	 * @return The new instance with the result.
 	 */
-	default Vec2fBase signumN()
+	default Vec3fBase signumN()
 	{
 		return clone().signum();
+	}
+	
+		/**
+	 * Adds the second given tuple to the current vector and saves the result in a new instance.
+	 * This operation does not alter the current vector.
+	 * 
+	 * <p>
+	 * Operation:
+	 * v + t
+	 * 
+	 * @param <T> The type of the query parameter.
+	 * 
+	 * @param t The second tuple to add to the current vector.
+	 * @param res The query parameter.
+	 * 
+	 * @return The query parameter with the result.
+	 */
+	default <T extends Vec3fBase> T addR(Tup3fR t, T res)
+	{
+		return addR(t.getX(), t.getY(), t.getZ(), res);
+	}
+	
+	/**
+	 * Adds the second tuple defined by the given value to the current vector and saves the result in a new instance.
+	 * This operation does not alter the current vector.
+	 * 
+	 * <p>
+	 * Operation:
+	 * v + (value, value, value)
+	 * 
+	 * @param <T> The type of the query parameter.
+	 * 
+	 * @param value The value of all the components of the second tuple.
+	 * @param res The query parameter.
+	 * 
+	 * @return The query parameter with the result.
+	 */
+	default <T extends Vec3fBase> T addR(float value, T res)
+	{
+		return addR(value, value, value, res);
+	}
+	
+	/**
+	 * Adds the second tuple defined by the given component values to the current vector and saves the result in
+	 * the query parameter.
+	 * the current vector is of.
+	 * This operation does not alter the current vector.
+	 * 
+	 * <p>
+	 * Operation:
+	 * v + (x, y, z)
+	 * 
+	 * @param <T> The type of the query parameter.
+	 * 
+	 * @param x The value of the x component of the second tuple.
+	 * @param y The value of the y component of the second tuple.
+	 * @param z The value of the z component of the second tuple.
+	 * @param res The query parameter.
+	 * 
+	 * @return The query parameter with the result.
+	 */
+	default <T extends Vec3fBase> T addR(float x, float y, float z, T res)
+	{
+		res.set(x + x, y + y, z + z);
+		return res;
 	}
 }

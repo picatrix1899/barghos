@@ -1,5 +1,5 @@
 plugins {
-  id 'java-library'
+id 'java-library'
 }
 
 dependencies {
@@ -19,4 +19,8 @@ publishing {
       }
     }
   }
+}
+
+application {
+	mainClass = 'org.barghos.math.App'
 }

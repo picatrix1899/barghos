@@ -1,12 +1,12 @@
 package org.barghos.math.api.vector;
 
-import org.barghos.core.api.tuple2.Tup2fR;
+import org.barghos.core.api.tuple3.Tup3dR;
 import org.barghos.core.api.tuple2.Tup2oBase;
 import org.barghos.core.api.tuple2.Tup2oR;
 import org.barghos.core.api.util.function.GenericFunction2;
 
 /**
- * This interface grants readonly access to any 2-dimensional float vector.
+ * This interface grants readonly access to any 3-dimensional double vector.
  * 
  * <p>
  * It should be prefered by design before direct usage of a type in method parameters,
@@ -14,7 +14,7 @@ import org.barghos.core.api.util.function.GenericFunction2;
  * 
  * @author picatrix1899
  */
-public interface Vec2fR extends Tup2fR
+public interface Vec3dR extends Tup3dR
 {
 	/**
 	 * Returns the reciprocal length of the vector.
@@ -30,9 +30,9 @@ public interface Vec2fR extends Tup2fR
 	 * @throws
 	 * ArithmeticException Thrown when it is a zero-length vector.
 	 */
-	default float reciprocalLength()
+	default double reciprocalLength()
 	{
-		return 1.0f / length();
+		return 1.0 / length();
 	}
 	
 	/**
@@ -51,9 +51,9 @@ public interface Vec2fR extends Tup2fR
 	 * @throws
 	 * ArithmeticException Might be thrown when the length is to close to zero.
 	 */
-	default float reciprocalLengthSafe()
+	default double reciprocalLengthSafe()
 	{
-		if(isZero()) return 0.0f;
+		if(isZero()) return 0.0;
 		
 		return reciprocalLength();
 	}
@@ -72,9 +72,9 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The reciprocal length of the vector or zero if it is a zero-length vector.
 	 */
-	default float reciprocalLengthSafeWithMargin(float tolerance)
+	default double reciprocalLengthSafeWithMargin(double tolerance)
 	{
-		if(isZeroWithMargin(tolerance)) return 0.0f;
+		if(isZeroWithMargin(tolerance)) return 0.0;
 		
 		return reciprocalLength();
 	}
@@ -89,9 +89,9 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The length of the vector.
 	 */
-	default float length()
+	default double length()
 	{
-		return (float)Math.sqrt(squaredLength());
+		return Math.sqrt(squaredLength());
 	}
 	
 	/**
@@ -105,9 +105,9 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The length of the vector or zero if it is a zero-length vector.
 	 */
-	default float lengthSafe()
+	default double lengthSafe()
 	{
-		if(isZero()) return 0.0f;
+		if(isZero()) return 0.0;
 		
 		return length();
 	}
@@ -126,9 +126,9 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The length of the vector or zero if it is a zero-length vector.
 	 */
-	default float lengthSafeWithMargin(float tolerance)
+	default double lengthSafeWithMargin(double tolerance)
 	{
-		if(isZeroWithMargin(tolerance)) return 0.0f;
+		if(isZeroWithMargin(tolerance)) return 0.0;
 		
 		return length();
 	}
@@ -143,12 +143,13 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The squared length of the vector.
 	 */
-	default float squaredLength()
+	default double squaredLength()
 	{
-		float x = getX();
-		float y = getY();
+		double x = getX();
+		double y = getY();
+		double z = getZ();
 		
-		return Math.fma(x, x, y * y);
+		return Math.fma(x, x, Math.fma(y, y, z * z));
 	}
 	
 	/**
@@ -162,9 +163,9 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The squared length of the vector or zero if it is a zero-length vector.
 	 */
-	default float squaredLengthSafe()
+	default double squaredLengthSafe()
 	{
-		if(isZero()) return 0.0f;
+		if(isZero()) return 0.0;
 		
 		return squaredLength();
 	}
@@ -183,9 +184,9 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The squared length of the vector or zero if it is a zero-length vector.
 	 */
-	default float squaredLengthSafeWithMargin(float tolerance)
+	default double squaredLengthSafeWithMargin(double tolerance)
 	{
-		if(isZeroWithMargin(tolerance)) return 0.0f;
+		if(isZeroWithMargin(tolerance)) return 0.0;
 		
 		return squaredLength();
 	}
@@ -198,18 +199,25 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The smallest value of the components and the index of the corresponding component.
 	 */
-	default Tup2oR<Float,Integer> min()
+	default Tup2oR<Double,Integer> min()
 	{
-		float x = getX();
-		float y = getY();
+		double x = getX();
+		double y = getY();
+		double z = getZ();
 		
-		float value = x;
+		double value = x;
 		int index = COMP_X;
 		
 		if(y < value)
 		{
 			value = y;
 			index = COMP_Y;
+		}
+		
+		if(z < value)
+		{
+			value = z;
+			index = COMP_Z;
 		}
 		
 		return Tup2oR.of(value, index);
@@ -225,17 +233,24 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The instance from the res parameter with the result.
 	 */
-	default <T extends Tup2oBase<Float,Integer>> T minR(T res)
+	default <T extends Tup2oBase<Double,Integer>> T minR(T res)
 	{
-		float x = getX();
-		float y = getY();
+		double x = getX();
+		double y = getY();
+		double z = getZ();
 		
-		float value = x;
+		double value = x;
 		int index = COMP_X;
 		
 		if(y < value)
 		{
 			value = y;
+			index = COMP_Y;
+		}
+		
+		if(z < value)
+		{
+			value = z;
 			index = COMP_Y;
 		}
 		
@@ -254,18 +269,25 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The returned result from the functional interface implementation.
 	 */
-	default <T> T minR(GenericFunction2<Float,Integer,T> func)
+	default <T> T minR(GenericFunction2<Double,Integer,T> func)
 	{
-		float x = getX();
-		float y = getY();
+		double x = getX();
+		double y = getY();
+		double z = getZ();
 		
-		float value = x;
+		double value = x;
 		int index = COMP_X;
 		
 		if(y < value)
 		{
 			value = y;
 			index = COMP_Y;
+		}
+		
+		if(z < value)
+		{
+			value = z;
+			index = COMP_Z;
 		}
 		
 		return func.apply(value, index);
@@ -276,9 +298,9 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The smallest value of the components.
 	 */
-	default float minValue()
+	default double minValue()
 	{
-		return Math.min(getX(), getY());
+		return Math.min(getX(), Math.min(getY(), getZ()));
 	}
 	
 	/**
@@ -290,16 +312,23 @@ public interface Vec2fR extends Tup2fR
 	 */
 	default int minComponent()
 	{
-		float x = getX();
-		float y = getY();
+		double x = getX();
+		double y = getY();
+		double z = getZ();
 		
-		float value = x;
+		double value = x;
 		int index = COMP_X;
 		
 		if(y < value)
 		{
 			value = y;
 			index = COMP_Y;
+		}
+		
+		if(z < value)
+		{
+			value = z;
+			index = COMP_Z;
 		}
 		
 		return index;
@@ -313,18 +342,25 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The greatest value of the components and the index of the corresponding component.
 	 */
-	default Tup2oR<Float,Integer> max()
+	default Tup2oR<Double,Integer> max()
 	{
-		float x = getX();
-		float y = getY();
+		double x = getX();
+		double y = getY();
+		double z = getZ();
 		
-		float value = x;
+		double value = x;
 		int index = COMP_X;
 		
 		if(y > value)
 		{
 			value = y;
 			index = COMP_Y;
+		}
+		
+		if(z > value)
+		{
+			value = z;
+			index = COMP_Z;
 		}
 		
 		return Tup2oR.of(value, index);
@@ -340,18 +376,25 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The instance from the res parameter with the result.
 	 */
-	default <T extends Tup2oBase<Float,Integer>> T maxR(T res)
+	default <T extends Tup2oBase<Double,Integer>> T maxR(T res)
 	{
-		float x = getX();
-		float y = getY();
+		double x = getX();
+		double y = getY();
+		double z = getZ();
 		
-		float value = x;
+		double value = x;
 		int index = COMP_X;
 		
 		if(y > value)
 		{
 			value = y;
 			index = COMP_Y;
+		}
+		
+		if(z > value)
+		{
+			value = z;
+			index = COMP_Z;
 		}
 		
 		res.set(value, index);
@@ -369,18 +412,25 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The returned result from the functional interface implementation.
 	 */
-	default <T> T maxR(GenericFunction2<Float,Integer,T> func)
+	default <T> T maxR(GenericFunction2<Double,Integer,T> func)
 	{
-		float x = getX();
-		float y = getY();
+		double x = getX();
+		double y = getY();
+		double z = getZ();
 		
-		float value = x;
+		double value = x;
 		int index = COMP_X;
 		
 		if(y > value)
 		{
 			value = y;
 			index = COMP_Y;
+		}
+		
+		if(z > value)
+		{
+			value = z;
+			index = COMP_Z;
 		}
 		
 		return func.apply(value, index);
@@ -391,9 +441,9 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The greatest value of the components.
 	 */
-	default float maxValue()
+	default double maxValue()
 	{
-		return Math.max(getX(), getY());
+		return Math.max(getX(), Math.max(getY(), getZ()));
 	}
 	
 	/**
@@ -405,10 +455,11 @@ public interface Vec2fR extends Tup2fR
 	 */
 	default int maxComponent()
 	{
-		float x = getX();
-		float y = getY();
+		double x = getX();
+		double y = getY();
+		double z = getZ();
 		
-		float value = x;
+		double value = x;
 		int index = COMP_X;
 		
 		if(y > value)
@@ -416,60 +467,79 @@ public interface Vec2fR extends Tup2fR
 			value = y;
 			index = COMP_Y;
 		}
+
+		if(z > value)
+		{
+			value = z;
+			index = COMP_Z;
+		}
 		
 		return index;
 	}
 	
 	/**
-	 * Creates a new anonymous implementation instance of the interface {@link Vec2fR} with the given values.
+	 * Creates a new anonymous implementation instance of the interface {@link Vec3dR} with the given values.
 	 * As the resulting instance is just a minimal implementation of the interface it does not provide clone,
 	 * equals, hashCode or toString operations.
 	 * 
 	 * @param x The value of the x component.
 	 * @param y The value of the y component.
+	 * @param z The value of the z component.
 	 * 
 	 * @return The anonymous implementation instance.
 	 */
-	public static Vec2fR of(final float x, final float y)
+	public static Vec3dR of(final double x, final double y, final double z)
 	{
-		return new Vec2fR() {
-			public float getX()
+		return new Vec3dR() {
+			public double getX()
 			{
 				return x;
 			}
 
-			public float getY()
+			public double getY()
 			{
 				return y;
+			}
+
+			public double getZ()
+			{
+				return z;
 			}
 		};
 	}
 	
 	/**
-	 * Creates a new anonymous implementation instance of the interface {@link Vec2fR} with the normalized given values.
+	 * Creates a new anonymous implementation instance of the interface {@link Vec3dR} with the normalized given values.
 	 * As the resulting instance is just a minimal implementation of the interface it does not provide clone,
 	 * equals, hashCode or toString operations.
 	 * 
 	 * @param x The value of the x component.
 	 * @param y The value of the y component.
+	 * @param z The value of the z component.
 	 * 
 	 * @return The anonymous implementation instance.
 	 */
-	public static Vec2fR ofNormalized(final float x, final float y)
+	public static Vec3dR ofNormalized(final double x, final double y, final double z)
 	{
-		float length = (float)Math.sqrt(Math.fma(x, x, y * y));
-		final float _x = x / length;
-		final float _y = y / length;
+		double length = Math.sqrt(Math.fma(x, x, Math.fma(y, y, z * z)));
+		final double _x = x / length;
+		final double _y = y / length;
+		final double _z = z / length;
 		
-		return new Vec2fR() {
-			public float getX()
+		return new Vec3dR() {
+			public double getX()
 			{
 				return _x;
 			}
 
-			public float getY()
+			public double getY()
 			{
 				return _y;
+			}
+
+			public double getZ()
+			{
+				return _z;
 			}
 		};
 	}

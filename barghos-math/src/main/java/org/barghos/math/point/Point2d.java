@@ -1,13 +1,12 @@
 package org.barghos.math.point;
 
 import org.barghos.core.api.tuple.TupdR;
+import org.barghos.core.api.tuple2.Tup2dBase;
 import org.barghos.core.api.tuple2.Tup2dR;
-import org.barghos.core.api.tuple2.Tup2dRW;
+import org.barghos.math.api.point.Point2dBase;
 import org.barghos.math.api.point.Point2dR;
-import org.barghos.math.api.point.Point2dRW;
+import org.barghos.math.api.vector.Vec2dBase;
 import org.barghos.math.api.vector.Vec2dR;
-import org.barghos.math.api.vector.Vec2dRW;
-import org.barghos.math.api.vector.Vec2dW;
 import org.barghos.math.vector.Vec2d;
 
 /**
@@ -17,12 +16,10 @@ import org.barghos.math.vector.Vec2d;
  * 
  * @since 1.0.0.0
  */
-public class Point2d implements Point2dRW
+public class Point2d implements Point2dBase
 {
 	protected double x;
 	protected double y;
-	
-	protected transient Vec2dRWAccessor vec2dAccessor;
 	
 	/**
 	 * Creates a new instance with all components set to 0.
@@ -111,7 +108,7 @@ public class Point2d implements Point2dRW
 	
 	/** {@inheritDoc}} */
 	@Override
-	public Tup2dRW setX(double x)
+	public Tup2dBase setX(double x)
 	{
 		this.x = x;
 		
@@ -120,18 +117,11 @@ public class Point2d implements Point2dRW
 
 	/** {@inheritDoc}} */
 	@Override
-	public Tup2dRW setY(double y)
+	public Tup2dBase setY(double y)
 	{
 		this.y = y;
 		
 		return this;
-	}
-
-	/** {@inheritDoc}} */
-	@Override
-	public Tup2dRW getNewInstance(double x, double y)
-	{
-		return new Point2d(x, y);
 	}
 	
 	/** {@inheritDoc}} */
@@ -143,44 +133,14 @@ public class Point2d implements Point2dRW
 
 	/** {@inheritDoc}} */
 	@Override
-	public Vec2dW asWriteonlyVector()
-	{
-		return asVector();
-	}
-
-	/** {@inheritDoc}} */
-	@Override
-	public Vec2dRW asVector()
+	public Vec2dBase asVector()
 	{
 		return new Vec2d(this);
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
-	public Vec2dR asReadonlyVectorReference()
-	{
-		return asVectorReference();
-	}
-	
-	/** {@inheritDoc}} */
-	@Override
-	public Vec2dW asWriteonlyVectorReference()
-	{
-		return asVectorReference();
-	}
-	
-	/** {@inheritDoc}} */
-	@Override
-	public Vec2dRW asVectorReference()
-	{
-		if(this.vec2dAccessor == null) this.vec2dAccessor = new Vec2dRWAccessor();
-		
-		return this.vec2dAccessor;
-	}
-	
-	/** {@inheritDoc}} */
-	@Override
-	public <T extends Vec2dW> T asVector(T res)
+	public <T extends Vec2dBase> T asVector(T res)
 	{
 		res.set(this);
 		
@@ -189,14 +149,14 @@ public class Point2d implements Point2dRW
 
 	/** {@inheritDoc}} */
 	@Override
-	public Vec2dRW vectorTo(Point2dR p)
+	public Vec2dBase vectorTo(Point2dR p)
 	{
 		return vectorTo(p, new Vec2d());
 	}
 
 	/** {@inheritDoc}} */
 	@Override
-	public <T extends Vec2dW> T vectorTo(Point2dR p, T res)
+	public <T extends Vec2dBase> T vectorTo(Point2dR p, T res)
 	{
 		res.set(p.getX() - getX(), p.getY() - getY());
 		
@@ -205,14 +165,14 @@ public class Point2d implements Point2dRW
 
 	/** {@inheritDoc}} */
 	@Override
-	public Vec2dRW vectorFrom(Point2dR p)
+	public Vec2dBase vectorFrom(Point2dR p)
 	{
 		return vectorFrom(p, new Vec2d());
 	}
 
 	/** {@inheritDoc}} */
 	@Override
-	public <T extends Vec2dW> T vectorFrom(Point2dR p, T res)
+	public <T extends Vec2dBase> T vectorFrom(Point2dR p, T res)
 	{
 		res.set(getX() - p.getX(), getY() - p.getY());
 		
@@ -231,64 +191,5 @@ public class Point2d implements Point2dRW
 	public Point2d clone()
 	{
 		return new Point2d(this);
-	}
-	
-	/**
-	 * This class is an accessor that provides the functionality of the {@link Vec2dRW} interface
-	 * for an instance of {@link Point2d}.
-	 * It is directly referencing the point instance.
-	 * Therefore any call to functions that would alter the vector will alter the original point.
-	 * 
-	 * @author picatrix1899
-	 * 
-	 * @since 1.0.0.0
-	 */
-	private class Vec2dRWAccessor implements Vec2dRW
-	{
-		/** {@inheritDoc}} */
-		@Override
-		public double getX()
-		{
-			return Point2d.this.getX();
-		}
-
-		/** {@inheritDoc}} */
-		@Override
-		public double getY()
-		{
-			return Point2d.this.getY();
-		}
-
-		/** {@inheritDoc}} */
-		@Override
-		public Vec2dRW setX(double x)
-		{
-			Point2d.this.setX(x);
-			
-			return this;
-		}
-
-		/** {@inheritDoc}} */
-		@Override
-		public Vec2dRW setY(double y)
-		{
-			Point2d.this.setY(y);
-			
-			return this;
-		}
-
-		/** {@inheritDoc}} */
-		@Override
-		public Vec2dRW getNewInstance(double x, double y)
-		{
-			return new Vec2d(x, y);
-		}
-		
-		/** {@inheritDoc}} */
-		@Override
-		public String toString()
-		{
-			return "point2d.Vec2dRWAccessor(" + getX() + ", " + getY() + ")";
-		}
 	}
 }

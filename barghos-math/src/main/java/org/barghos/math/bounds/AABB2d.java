@@ -1,10 +1,10 @@
 package org.barghos.math.bounds;
 
+import org.barghos.core.api.tuple2.Tup2dBase;
 import org.barghos.core.api.tuple2.Tup2dR;
-import org.barghos.core.api.tuple2.Tup2dW;
 import org.barghos.math.api.point.Point2dR;
 import org.barghos.math.api.vector.Vec2dR;
-import org.barghos.math.api.vector.Vec2dW;
+import org.barghos.math.api.vector.Vec2dBase;
 import org.barghos.math.point.Point2d;
 import org.barghos.math.vector.Vec2d;
 
@@ -95,7 +95,7 @@ public class AABB2d
 		return this.minY;
 	}
 	
-	public <T extends Tup2dW> T getMin(T res)
+	public <T extends Tup2dBase> T getMin(T res)
 	{
 		res.set(this.minX, this.minY);
 		
@@ -122,7 +122,7 @@ public class AABB2d
 		return this.maxY;
 	}
 	
-	public <T extends Tup2dW> T getMax(T res)
+	public <T extends Tup2dBase> T getMax(T res)
 	{
 		res.set(this.maxX, this.maxY);
 		
@@ -134,7 +134,7 @@ public class AABB2d
 		return getSize(new Vec2d());
 	}
 	
-	public <T extends Vec2dW> T getSize(T res)
+	public <T extends Vec2dBase> T getSize(T res)
 	{
 		res.set(getSizeX(), getSizeY());
 		
@@ -161,7 +161,7 @@ public class AABB2d
 		return getCenter(new Vec2d());
 	}
 	
-	public <T extends Tup2dW> T getCenter(T res)
+	public <T extends Tup2dBase> T getCenter(T res)
 	{
 		res.set(getCenterX(), getCenterY());
 		
