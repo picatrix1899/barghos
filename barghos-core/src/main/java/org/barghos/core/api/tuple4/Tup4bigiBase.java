@@ -134,4 +134,7 @@ public interface Tup4bigiBase extends Tup4bigiR, TupbigiBase
 		BigInteger[] v = t.getArray();
 		return set(v[0], v[1], v[2], v[3]);
 	}
+	
+	/** {@inheritDoc} */
+	Tup4bigiBase clone();
 }

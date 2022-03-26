@@ -7,7 +7,7 @@ import java.util.Arrays;
  * 
  * @author picatrix1899
  */
-public interface TupsBase extends TupsR
+public interface TupsBase extends TupsR, Cloneable
 {
 	/**
 	 * Sets the value of the component at the given index.
@@ -67,4 +67,7 @@ public interface TupsBase extends TupsR
 		
 		return this;
 	}
+	
+	/** {@inheritDoc} */
+	TupsBase clone();
 }

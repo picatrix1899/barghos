@@ -110,4 +110,7 @@ public interface Tup2strBase extends Tup2strR, TupstrBase
 		String[] v = t.getArray();
 		return set(v[0], v[1]);
 	}
+	
+	/** {@inheritDoc} */
+	Tup2strBase clone();
 }

@@ -123,4 +123,7 @@ public interface Tup3bigiBase extends Tup3bigiR, TupbigiBase
 		BigInteger[] v = t.getArray();
 		return set(v[0], v[1], v[2]);
 	}
+	
+	/** {@inheritDoc} */
+	Tup3bigiBase clone();
 }

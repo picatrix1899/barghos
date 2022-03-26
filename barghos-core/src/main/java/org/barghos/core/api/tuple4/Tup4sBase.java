@@ -139,4 +139,7 @@ public interface Tup4sBase extends Tup4sR, TupsBase
 		short[] v = t.getArray();
 		return set(v[0], v[1], v[2], v[3]);
 	}
+	
+	/** {@inheritDoc} */
+	Tup4sBase clone();
 }

@@ -121,4 +121,7 @@ public interface Tup3fBase extends Tup3fR, TupfBase
 		float[] v = t.getArray();
 		return set(v[0], v[1], v[2]);
 	}
+	
+	/** {@inheritDoc} */
+	Tup3fBase clone();
 }

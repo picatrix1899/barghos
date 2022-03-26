@@ -124,4 +124,7 @@ public interface Tup3cBase extends Tup3cR, TupcBase
 		char[] v = t.getArray();
 		return set(v[0], v[1], v[2]);
 	}
+	
+	/** {@inheritDoc} */
+	Tup3cBase clone();
 }

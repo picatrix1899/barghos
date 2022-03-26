@@ -110,4 +110,7 @@ public interface Tup2fBase extends Tup2fR, TupfBase
 		float[] v = t.getArray();
 		return set(v[0], v[1]);
 	}
+	
+	/** {@inheritDoc} */
+	Tup2fBase clone();
 }

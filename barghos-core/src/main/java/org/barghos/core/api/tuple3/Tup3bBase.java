@@ -24,6 +24,7 @@ package org.barghos.core.api.tuple3;
 
 import org.barghos.core.api.tuple.TupbBase;
 import org.barghos.core.api.tuple.TupbR;
+import org.barghos.core.api.tuple2.Tup2bBase;
 
 /**
  * This interface represents any modifiable 3-dimensional byte tuples.
@@ -121,4 +122,7 @@ public interface Tup3bBase extends Tup3bR, TupbBase
 		byte[] v = t.getArray();
 		return set(v[0], v[1], v[2]);
 	}
+	
+	/** {@inheritDoc} */
+	Tup3bBase clone();
 }

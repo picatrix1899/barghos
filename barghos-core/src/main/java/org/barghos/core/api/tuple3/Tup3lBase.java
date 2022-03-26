@@ -121,4 +121,7 @@ public interface Tup3lBase extends Tup3lR, TuplBase
 		long[] v = t.getArray();
 		return set(v[0], v[1], v[2]);
 	}
+	
+	/** {@inheritDoc} */
+	Tup3lBase clone();
 }

@@ -110,4 +110,7 @@ public interface Tup2lBase extends Tup2lR,TuplBase
 		long[] v = t.getArray();
 		return set(v[0], v[1]);
 	}
+	
+	/** {@inheritDoc} */
+	Tup2lBase clone();
 }

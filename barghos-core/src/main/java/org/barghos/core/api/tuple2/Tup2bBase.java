@@ -110,4 +110,7 @@ public interface Tup2bBase extends Tup2bR, TupbBase
 		byte[] v = t.getArray();
 		return set(v[0], v[1]);
 	}
+	
+	/** {@inheritDoc} */
+	Tup2bBase clone();
 }

@@ -110,4 +110,7 @@ public interface Tup2boBase extends Tup2boR, TupboBase
 		boolean[] v = t.getArray();
 		return set(v[0], v[1]);
 	}
+	
+	/** {@inheritDoc} */
+	Tup2boBase clone();
 }

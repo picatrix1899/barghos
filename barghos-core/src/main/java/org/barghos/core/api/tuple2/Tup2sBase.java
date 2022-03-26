@@ -110,4 +110,7 @@ public interface Tup2sBase extends Tup2sR, TupsBase
 		short[] v = t.getArray();
 		return set(v[0], v[1]);
 	}
+	
+	/** {@inheritDoc} */
+	Tup2sBase clone();
 }

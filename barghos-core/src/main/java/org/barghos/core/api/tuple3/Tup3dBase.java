@@ -121,4 +121,7 @@ public interface Tup3dBase extends Tup3dR, TupdBase
 		double[] v = t.getArray();
 		return set(v[0], v[1], v[2]);
 	}
+	
+	/** {@inheritDoc} */
+	Tup3dBase clone();
 }

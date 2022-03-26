@@ -121,4 +121,7 @@ public interface Tup3sBase extends Tup3sR, TupsBase
 		short[] v = t.getArray();
 		return set(v[0], v[1], v[2]);
 	}
+	
+	/** {@inheritDoc} */
+	Tup3sBase clone();
 }

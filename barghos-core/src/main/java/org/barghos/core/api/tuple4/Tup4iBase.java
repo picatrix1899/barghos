@@ -132,4 +132,7 @@ public interface Tup4iBase extends Tup4iR, TupiBase
 		int[] v = t.getArray();
 		return set(v[0], v[1], v[2], v[3]);
 	}
+	
+	/** {@inheritDoc} */
+	Tup4iBase clone();
 }

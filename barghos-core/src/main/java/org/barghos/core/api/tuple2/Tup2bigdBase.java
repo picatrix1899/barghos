@@ -112,4 +112,7 @@ public interface Tup2bigdBase extends Tup2bigdR, TupbigdBase
 		BigDecimal[] v = t.getArray();
 		return set(v[0], v[1]);
 	}
+	
+	/** {@inheritDoc} */
+	Tup2bigdBase clone();
 }

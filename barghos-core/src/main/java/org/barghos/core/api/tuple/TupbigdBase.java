@@ -8,7 +8,7 @@ import java.util.Arrays;
  * 
  * @author picatrix1899
  */
-public interface TupbigdBase extends TupbigdR
+public interface TupbigdBase extends TupbigdR, Cloneable
 {
 	/**
 	 * Sets the value of the component at the given index.
@@ -68,4 +68,7 @@ public interface TupbigdBase extends TupbigdR
 		
 		return this;
 	}
+	
+	/** {@inheritDoc} */
+	TupbigdBase clone();
 }

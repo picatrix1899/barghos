@@ -24,6 +24,7 @@ package org.barghos.core.api.tuple4;
 
 import org.barghos.core.api.tuple.TupbBase;
 import org.barghos.core.api.tuple.TupbR;
+import org.barghos.core.api.tuple3.Tup3bBase;
 
 /**
  * This interface represents any modifiable 4-dimensional byte tuples.
@@ -132,4 +133,7 @@ public interface Tup4bBase extends Tup4bR, TupbBase
 		byte[] v = t.getArray();
 		return set(v[0], v[1], v[2], v[3]);
 	}
+	
+	/** {@inheritDoc} */
+	Tup4bBase clone();
 }

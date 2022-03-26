@@ -112,4 +112,7 @@ public interface Tup2bigiBase extends Tup2bigiR, TupbigiBase
 		BigInteger[] v = t.getArray();
 		return set(v[0], v[1]);
 	}
+	
+	/** {@inheritDoc} */
+	Tup2bigiBase clone();
 }

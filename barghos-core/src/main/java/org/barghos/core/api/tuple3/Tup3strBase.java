@@ -121,4 +121,7 @@ public interface Tup3strBase extends Tup3strR, TupstrBase
 		String[] v = t.getArray();
 		return set(v[0], v[1], v[2]);
 	}
+	
+	/** {@inheritDoc} */
+	Tup3strBase clone();
 }
