@@ -38,6 +38,16 @@ import org.barghos.core.api.tuple.TupbigdR;
 public interface Tup2bigdR extends TupbigdR
 {
 	/**
+	 * The COMP_X constant contains the index of the x-component of the tuple.
+	 */
+	public static final int COMP_X = 0;
+	
+	/**
+	 * The COMP_Y constant contains the index of the y-component of the tuple.
+	 */
+	public static final int COMP_Y = 1;
+	
+	/**
 	 * Returns the x value from the tuple.
 	 * 
 	 * @return The x value from the tuple.

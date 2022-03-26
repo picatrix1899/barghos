@@ -36,6 +36,21 @@ import org.barghos.core.api.tuple.TupfR;
 public interface Tup3fR extends TupfR
 {
 	/**
+	 * The COMP_X constant contains the index of the x-component of the tuple.
+	 */
+	public static final int COMP_X = 0;
+	
+	/**
+	 * The COMP_Y constant contains the index of the y-component of the tuple.
+	 */
+	public static final int COMP_Y = 1;
+	
+	/**
+	 * The COMP_Z constant contains the index of the z-component of the tuple.
+	 */
+	public static final int COMP_Z = 2;
+	
+	/**
 	 * Returns the x value from the tuple.
 	 * 
 	 * @return The x value from the tuple.
