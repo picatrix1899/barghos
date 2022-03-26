@@ -1,4 +1,4 @@
-package org.barghos.core.api.util;
+package org.barghos.core.api.util.function;
 
 
 /**

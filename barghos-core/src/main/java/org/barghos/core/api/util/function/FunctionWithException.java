@@ -20,29 +20,32 @@
  * SOFTWARE.
  ******************************************************************************/
 
-package org.barghos.core.api.util;
+package org.barghos.core.api.util.function;
 
 /**
- * This is a functional inteface exactly like {@link java.util.function.Supplier} with the
- * {@link java.util.function.Supplier#get()} function extended by a <code>throws Exception</code>.
+ * This is a functional interface exactly like {@link java.util.function.Function} with the
+ * {@link java.util.function.Function#apply(Object)} function extended by a <code>throws Exception</code>.
  *
- * @param <R> The return type of the {@link java.util.function.Supplier#get()} function.
+ * @param <T> The type of the parameter of the {@link #apply(Object)} function.
+ * @param <R> The return type of the {@link #apply(Object)} function.
  * 
  * @author picatrix1899
  * 
  * @since 1.0.0.0
  */
-public interface SupplierWithException<R>
+public interface FunctionWithException<T,R>
 {
 	/**
-	 * This function is exactly like {@link java.util.function.Supplier#get()} but it allows to
+	 * This function is exactly like {@link java.util.function.Function#apply(Object)} but it allows to
 	 * throw exceptions.
 	 * 
-	 * @return A result
+	 * @param t The function argument
 	 * 
-	 * @throws Exception Passes unhandled exceptions from the function.
+	 * @return The function result
+	 * 
+	 * @throws Exception Passes the unhandled exceptions from the function
 	 * 
 	 * @since 1.0.0.0
 	 */
-	R get() throws Exception;
+	R apply(T t) throws Exception;
 }
