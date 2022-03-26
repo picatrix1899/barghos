@@ -34,15 +34,11 @@ import org.barghos.core.tuple4.Tup4f;
 
 /**
  * This class provides component tests for the class {@link Tup4f}.
- * 
- * @since 1.0.0.0
  */
 class Tup4fTest
 {
 	/**
 	 * This test ensures, that the default constructor {@link Tup4f#Tup4f()} sets the components to 0.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_DefaultTest()
@@ -58,8 +54,6 @@ class Tup4fTest
 	/**
 	 * This test ensures, that an instance of {@link Tup4f} generated from an existing instance of {@link TupfR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_TupleTest()
@@ -83,8 +77,6 @@ class Tup4fTest
 	/**
 	 * This test ensures, that an instance of {@link Tup4f} generated from an existing instance of {@link Tup4fR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_Tuple2Test()
@@ -114,8 +106,6 @@ class Tup4fTest
 	/**
 	 * This test ensures, that an instance of {@link Tup4f} generated from a scalar,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ValueTest()
@@ -131,8 +121,6 @@ class Tup4fTest
 	/**
 	 * This test ensures, that an instance of {@link Tup4f} generated from an array,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ArrayTest()
@@ -148,8 +136,6 @@ class Tup4fTest
 	/**
 	 * This test ensures, that an instance of {@link Tup4f} generated from two components,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ComponentsTest()
@@ -165,8 +151,6 @@ class Tup4fTest
 	/**
 	 * This test ensures, that the function {@link Tup4f#setX(float)} sets the x component of the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setXTest()
@@ -180,8 +164,6 @@ class Tup4fTest
 	/**
 	 * This test ensures, that the function {@link Tup4f#setY(float)} sets the y component of the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setYTest()
@@ -195,8 +177,6 @@ class Tup4fTest
 	/**
 	 * This test ensures, that the function {@link Tup4f#setZ(float)} sets the z component of the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setZTest()
@@ -210,8 +190,6 @@ class Tup4fTest
 	/**
 	 * This test ensures, that the function {@link Tup4f#setW(float)} sets the w component of the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setWTest()
@@ -226,8 +204,6 @@ class Tup4fTest
 	 * This test ensures, that the function
 	 * {@link Tup4f#set(org.barghos.core.api.tuple2.Tup4fR) Tup4f.set(Tup4fR)}
 	 * adopts the components from the input tuple and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void set_Tuple3Test()
@@ -261,8 +237,6 @@ class Tup4fTest
 	/**
 	 * This test ensures, that the function {@link Tup4f#set(float)} sets the components
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void set_ValueTest()
@@ -285,8 +259,6 @@ class Tup4fTest
 	/**
 	 * This test ensures, that the function {@link Tup4f#set(float, float, float, float)} set the components
 	 * to the respective parameters and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void set_ComponentsTest()
@@ -315,8 +287,6 @@ class Tup4fTest
 	/**
 	 * This test ensures, that the function {@link Tup4f#getX()} actually returns the value of the
 	 * x component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getXTest()
@@ -330,8 +300,6 @@ class Tup4fTest
 	/**
 	 * This test ensures, that the function {@link Tup4f#getY()} actually returns the value of the
 	 * y component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getYTest()
@@ -345,8 +313,6 @@ class Tup4fTest
 	/**
 	 * This test ensures, that the function {@link Tup4f#getY()} actually returns the value of the
 	 * z component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getZTest()
@@ -360,8 +326,6 @@ class Tup4fTest
 	/**
 	 * This test ensures, that the function {@link Tup4f#getW()} actually returns the value of the
 	 * w component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getWTest()
@@ -645,8 +609,6 @@ class Tup4fTest
 	
 	/**
 	 * This test ensures, that the {@link Tup4f#toString()} function prints the components correctly.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void toStringTest()
@@ -654,129 +616,5 @@ class Tup4fTest
 		Tup4f t = new Tup4f(1.1f, 2.2f, 3.3f, 4.4f);
 		
 		assertEquals("tup4f(x=1.1, y=2.2, z=3.3, w=4.4)", t.toString());
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup4f#getNewInstance(float, float, float, float)}
-	 * returns a new instance of {@link Tup4f} with the given values.
-	 */
-	@Test
-	void getNewInstance_ComponentsTest()
-	{
-		Tup4f original = new Tup4f(1.0f, 2.0f, 3.0f, 4.0f);
-		Tup4f newInstance = original.getNewInstance(3.0f, 4.0f, 5.0f, 6.0f);
-		
-		assertEquals(1.0f, original.getX());
-		assertEquals(2.0f, original.getY());
-		assertEquals(3.0f, original.getZ());
-		assertEquals(4.0f, original.getW());
-		assertEquals(3.0f, newInstance.getX());
-		assertEquals(4.0f, newInstance.getY());
-		assertEquals(5.0f, newInstance.getZ());
-		assertEquals(6.0f, newInstance.getW());
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link Tup4f#getNewInstance(float)} calls
-	 * the function {@link Tup4f#getNewInstance(float, float, float, float)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_ValueTest()
-	{
-		Tup4f newInstance = mock(Tup4f.class);
-		Tup4f t = mock(Tup4f.class);
-		
-		when(t.getNewInstance(1.0f)).thenCallRealMethod();
-
-		when(t.getNewInstance(1.0f, 1.0f, 1.0f, 1.0f)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(1.0f));
-		
-		verify(t).getNewInstance(1.0f);
-		
-		verify(t).getNewInstance(1.0f, 1.0f, 1.0f, 1.0f);
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup4f#getNewInstance(Tup4fR)}
-	 * returns a new instance of {@link Tup4f} with the given values.
-	 */
-	@Test
-	void getNewInstance_Tuple2Test()
-	{
-		Tup4fR original = mock(Tup4fR.class);
-		Tup4f newInstance = mock(Tup4f.class);
-		Tup4f t = mock(Tup4f.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getX()).thenReturn(1.0f);
-		when(original.getY()).thenReturn(2.0f);
-		when(original.getZ()).thenReturn(3.0f);
-		when(original.getW()).thenReturn(4.0f);
-		when(t.getNewInstance(1.0f, 2.0f, 3.0f, 4.0f)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getX();
-		verify(original).getY();
-		verify(original).getZ();
-		verify(original).getW();
-		verify(t).getNewInstance(1.0f, 2.0f, 3.0f, 4.0f);
-		
-		verifyNoMoreInteractions(t, original);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link Tup4f#getNewInstance(TupfR)} calls
-	 * the function {@link Tup4f#getNewInstance(float, float, float, float)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_TupleTest()
-	{
-		TupfR original = mock(TupfR.class);
-		Tup4f newInstance = mock(Tup4f.class);
-		Tup4f t = mock(Tup4f.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getArray()).thenReturn(new float[] {1.0f, 2.0f, 3.0f, 4.0f});
-		when(t.getNewInstance(1.0f, 2.0f, 3.0f, 4.0f)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getArray();
-		verify(t).getNewInstance(1.0f, 2.0f, 3.0f, 4.0f);
-		
-		verifyNoMoreInteractions(t, original);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link Tup4f#getNewInstanceFromArray(float[])} calls
-	 * the function {@link Tup4f#getNewInstance(float, float, float, float)} with the correct components.
-	 */
-	@Test
-	void getNewInstanceFromArrayTest()
-	{
-		Tup4f newInstance = mock(Tup4f.class);
-		Tup4f t = mock(Tup4f.class);
-		
-		when(t.getNewInstanceFromArray(new float[] {1.0f, 2.0f, 3.0f, 4.0f})).thenCallRealMethod();
-
-		when(t.getNewInstance(1.0f, 2.0f, 3.0f, 4.0f)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstanceFromArray(new float[] {1.0f, 2.0f, 3.0f, 4.0f}));
-		
-		verify(t).getNewInstanceFromArray(new float[] {1.0f, 2.0f, 3.0f, 4.0f});
-		
-		verify(t).getNewInstance(1.0f, 2.0f, 3.0f, 4.0f);
-		
-		verifyNoMoreInteractions(t);
 	}
 }

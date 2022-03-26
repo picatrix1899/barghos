@@ -33,24 +33,6 @@ class TupiRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link TupiR#isValid()} returns always
-	 * true and does not make any calls.
-	 */
-	@Test
-	void isValidTest()
-	{
-		TupiR t = mock(TupiR.class);
-		
-		when(t.isValid()).thenCallRealMethod();
-		
-		assertEquals(true, t.isValid());
-		
-		verify(t).isValid();
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
 	 * This test ensures, that the function {@link TupiR#isZero()} returns true
 	 * if all components are 0.0.
 	 */
@@ -360,57 +342,6 @@ class TupiRTest
 		verify(t).getDimensions();
 		verify(t).getByIndex(0);
 		verify(t).getByIndex(1);
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link TupiR#getNewInstance(TupiR)} calls
-	 * the function {@link TupiR#getNewInstance(int[])} with the correct components.
-	 */
-	@Test
-	void getNewInstance_TupleTest()
-	{
-		TupiR original = mock(TupiR.class);
-		TupiR newInstance = mock(TupiR.class);
-		TupiR t = mock(TupiR.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getArray()).thenReturn(new int[] {1, 2});
-		when(t.getNewInstanceFromArray(new int[] {1, 2})).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-
-		verify(original).getArray();
-		verify(t).getNewInstanceFromArray(new int[] {1, 2});
-		
-		verifyNoMoreInteractions(t, original);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link TupiR#getNewInstance(int)} calls
-	 * the function {@link TupiR#getNewInstanceFromArray(int[])} with the correct components.
-	 */
-	@Test
-	void getNewInstance_ValueTest()
-	{
-		TupiR newInstance = mock(TupiR.class);
-		TupiR t = mock(TupiR.class);
-		
-		when(t.getNewInstance(1)).thenCallRealMethod();
-		
-		when(t.getDimensions()).thenReturn(2);
-		when(t.getNewInstanceFromArray(new int[] {1, 1})).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(1));
-		
-		verify(t).getNewInstance(1);
-
-		verify(t).getDimensions();
-		verify(t).getNewInstanceFromArray(new int[] {1, 1});
 		
 		verifyNoMoreInteractions(t);
 	}

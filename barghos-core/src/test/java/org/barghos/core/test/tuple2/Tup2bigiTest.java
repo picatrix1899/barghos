@@ -14,16 +14,12 @@ import org.barghos.core.tuple2.Tup2bigi;
 
 /**
  * This class provides component tests for the class {@link Tup2bigi}.
- * 
- * @since 1.0.0.0
  */
 class Tup2bigiTest
 {
 	/**
 	 * This test ensures, that the constructor {@link Tup2bigi#Tup2bigi()} aktually works and
 	 * that the components are set to 0.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_DefaultTest()
@@ -37,8 +33,6 @@ class Tup2bigiTest
 	/**
 	 * This test ensures, that an instance of {@link Tup2bigi} generated from an existing instance of {@link TupbigiR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_TupleTest()
@@ -60,8 +54,6 @@ class Tup2bigiTest
 	/**
 	 * This test ensures, that an instance of {@link Tup2bigi} generated from an existing instance of {@link TupbigiR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_Tuple2Test()
@@ -85,8 +77,6 @@ class Tup2bigiTest
 	/**
 	 * This test ensures, that an instance of {@link Tup2bigi} generated from a scalar,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ValueTest()
@@ -100,8 +90,6 @@ class Tup2bigiTest
 	/**
 	 * This test ensures, that an instance of {@link Tup2bigi} generated from an array,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ArrayTest()
@@ -115,8 +103,6 @@ class Tup2bigiTest
 	/**
 	 * This test ensures, that an instance of {@link Tup2bigi} generated from two components,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ComponentsTest()
@@ -130,8 +116,6 @@ class Tup2bigiTest
 	/**
 	 * This test ensures, that the function {@link Tup2bigi#setX(BigInteger)} sets the x component on the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setXTest()
@@ -145,8 +129,6 @@ class Tup2bigiTest
 	/**
 	 * This test ensures, that the function {@link Tup2bigi#setY(BigInteger)} sets the y component on the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setYTest()
@@ -161,8 +143,6 @@ class Tup2bigiTest
 	 * This test ensures, that the function
 	 * {@link Tup2bigi#set(org.barghos.core.api.tuple2.Tup2bigiR) Tup2bigd.set(Tup2bigiR)}
 	 * adopts the components from the input tuple and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void set_CloneTest()
@@ -192,8 +172,6 @@ class Tup2bigiTest
 	/**
 	 * This test ensures, that the function {@link Tup2bigi#set(BigInteger)} sets the components
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void set_ValueTest()
@@ -216,8 +194,6 @@ class Tup2bigiTest
 	/**
 	 * This test ensures, that the function {@link Tup2bigi#set(BigInteger, BigInteger)} set the components
 	 * to the respective parameters and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void set_ComponentsTest()
@@ -242,8 +218,6 @@ class Tup2bigiTest
 	/**
 	 * This test ensures, that the function {@link Tup2bigi#getX()} actually returns the value of the
 	 * x component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getXTest()
@@ -257,8 +231,6 @@ class Tup2bigiTest
 	/**
 	 * This test ensures, that the function {@link Tup2bigi#getY()} actually returns the value of the
 	 * y component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getYTest()
@@ -467,121 +439,5 @@ class Tup2bigiTest
 		Tup2bigi t = new Tup2bigi(BigInteger.valueOf(1), BigInteger.valueOf(2));
 		
 		assertEquals("tup2bigi(x=1, y=2)", t.toString());
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup2bigi#getNewInstance(BigInteger, BigInteger)}
-	 * returns a new instance of {@link Tup2bigi} with the given values.
-	 */
-	@Test
-	void getNewInstance_ComponentsTest()
-	{
-		Tup2bigi original = new Tup2bigi(BigInteger.valueOf(1), BigInteger.valueOf(2));
-		Tup2bigi newInstance = original.getNewInstance(BigInteger.valueOf(3), BigInteger.valueOf(4));
-		
-		assertEquals(BigInteger.valueOf(1), original.getX());
-		assertEquals(BigInteger.valueOf(2), original.getY());
-		assertEquals(BigInteger.valueOf(3), newInstance.getX());
-		assertEquals(BigInteger.valueOf(4), newInstance.getY());
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link Tup2bigi#getNewInstance(BigInteger)} calls
-	 * the function {@link Tup2bigi#getNewInstance(BigInteger, BigInteger)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_ValueTest()
-	{
-		Tup2bigi newInstance = mock(Tup2bigi.class);
-		Tup2bigi t = mock(Tup2bigi.class);
-		
-		when(t.getNewInstance(BigInteger.valueOf(1))).thenCallRealMethod();
-
-		when(t.getNewInstance(BigInteger.valueOf(1), BigInteger.valueOf(1))).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(BigInteger.valueOf(1)));
-		
-		verify(t).getNewInstance(BigInteger.valueOf(1));
-		
-		verify(t).getNewInstance(BigInteger.valueOf(1), BigInteger.valueOf(1));
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup2bigi#getNewInstance(Tup2bigiR)}
-	 * returns a new instance of {@link Tup2bigi} with the given values.
-	 */
-	@Test
-	void getNewInstance_Tuple2Test()
-	{
-		Tup2bigiR original = mock(Tup2bigiR.class);
-		Tup2bigi newInstance = mock(Tup2bigi.class);
-		Tup2bigi t = mock(Tup2bigi.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getX()).thenReturn(BigInteger.valueOf(1));
-		when(original.getY()).thenReturn(BigInteger.valueOf(2));
-		when(t.getNewInstance(BigInteger.valueOf(1), BigInteger.valueOf(2))).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getX();
-		verify(original).getY();
-		verify(t).getNewInstance(BigInteger.valueOf(1), BigInteger.valueOf(2));
-		
-		verifyNoMoreInteractions(t, original);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link Tup2bigi#getNewInstance(TupbigiR)} calls
-	 * the function {@link Tup2bigi#getNewInstance(BigInteger, BigInteger)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_TupleTest()
-	{
-		TupbigiR original = mock(TupbigiR.class);
-		Tup2bigi newInstance = mock(Tup2bigi.class);
-		Tup2bigi t = mock(Tup2bigi.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getArray()).thenReturn(new BigInteger[] {BigInteger.valueOf(1), BigInteger.valueOf(2)});
-		when(t.getNewInstance(BigInteger.valueOf(1), BigInteger.valueOf(2))).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getArray();
-		verify(t).getNewInstance(BigInteger.valueOf(1), BigInteger.valueOf(2));
-		
-		verifyNoMoreInteractions(t, original);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link Tup2bigi#getNewInstanceFromArray(BigInteger[])} calls
-	 * the function {@link Tup2bigi#getNewInstance(BigInteger, BigInteger)} with the correct components.
-	 */
-	@Test
-	void getNewInstanceFromArrayTest()
-	{
-		Tup2bigi newInstance = mock(Tup2bigi.class);
-		Tup2bigi t = mock(Tup2bigi.class);
-		
-		when(t.getNewInstanceFromArray(new BigInteger[] {BigInteger.valueOf(1), BigInteger.valueOf(2)})).thenCallRealMethod();
-
-		when(t.getNewInstance(BigInteger.valueOf(1), BigInteger.valueOf(2))).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstanceFromArray(new BigInteger[] {BigInteger.valueOf(1), BigInteger.valueOf(2)}));
-		
-		verify(t).getNewInstanceFromArray(new BigInteger[] {BigInteger.valueOf(1), BigInteger.valueOf(2)});
-		
-		verify(t).getNewInstance(BigInteger.valueOf(1), BigInteger.valueOf(2));
-		
-		verifyNoMoreInteractions(t);
 	}
 }

@@ -34,15 +34,11 @@ import org.barghos.core.tuple4.Tup4b;
 
 /**
  * This class provides component tests for the class {@link Tup4b}.
- * 
- * @since 1.0.0.0
  */
 class Tup4bTest
 {
 	/**
 	 * This test ensures, that the default constructor {@link Tup4b#Tup4b()} sets the components to 0.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_DefaultTest()
@@ -58,8 +54,6 @@ class Tup4bTest
 	/**
 	 * This test ensures, that an instance of {@link Tup4b} generated from an existing instance of {@link TupbR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_TupleTest()
@@ -83,8 +77,6 @@ class Tup4bTest
 	/**
 	 * This test ensures, that an instance of {@link Tup4b} generated from an existing instance of {@link Tup4bR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_Tuple2Test()
@@ -114,8 +106,6 @@ class Tup4bTest
 	/**
 	 * This test ensures, that an instance of {@link Tup4b} generated from a scalar,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ValueTest()
@@ -131,8 +121,6 @@ class Tup4bTest
 	/**
 	 * This test ensures, that an instance of {@link Tup4b} generated from an array,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ArrayTest()
@@ -148,8 +136,6 @@ class Tup4bTest
 	/**
 	 * This test ensures, that an instance of {@link Tup4b} generated from two components,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ComponentsTest()
@@ -165,8 +151,6 @@ class Tup4bTest
 	/**
 	 * This test ensures, that the function {@link Tup4b#setX(byte)} sets the x component of the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setXTest()
@@ -180,8 +164,6 @@ class Tup4bTest
 	/**
 	 * This test ensures, that the function {@link Tup4b#setY(byte)} sets the y component of the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setYTest()
@@ -195,8 +177,6 @@ class Tup4bTest
 	/**
 	 * This test ensures, that the function {@link Tup4b#setZ(byte)} sets the z component of the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setZTest()
@@ -210,8 +190,6 @@ class Tup4bTest
 	/**
 	 * This test ensures, that the function {@link Tup4b#setW(byte)} sets the w component of the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setWTest()
@@ -226,8 +204,6 @@ class Tup4bTest
 	 * This test ensures, that the function
 	 * {@link Tup4b#set(org.barghos.core.api.tuple3.Tup4bR) Tup4b.set(Tup4bR)}
 	 * adopts the components from the input tuple and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void set_Tuple3Test()
@@ -261,8 +237,6 @@ class Tup4bTest
 	/**
 	 * This test ensures, that the function {@link Tup4b#set(byte)} sets the components
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void set_ValueTest()
@@ -285,8 +259,6 @@ class Tup4bTest
 	/**
 	 * This test ensures, that the function {@link Tup4b#set(byte, byte, byte, byte)} set the components
 	 * to the respective parameters and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void set_ComponentsTest()
@@ -315,8 +287,6 @@ class Tup4bTest
 	/**
 	 * This test ensures, that the function {@link Tup4b#getX()} actually returns the value of the
 	 * x component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getXTest()
@@ -330,8 +300,6 @@ class Tup4bTest
 	/**
 	 * This test ensures, that the function {@link Tup4b#getY()} actually returns the value of the
 	 * y component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getYTest()
@@ -345,8 +313,6 @@ class Tup4bTest
 	/**
 	 * This test ensures, that the function {@link Tup4b#getZ()} actually returns the value of the
 	 * z component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getZTest()
@@ -360,8 +326,6 @@ class Tup4bTest
 	/**
 	 * This test ensures, that the function {@link Tup4b#getW()} actually returns the value of the
 	 * w component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getwTest()
@@ -645,8 +609,6 @@ class Tup4bTest
 	
 	/**
 	 * This test ensures, that the {@link Tup4b#toString()} function prbytes the components correctly.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void toStringTest()
@@ -654,129 +616,5 @@ class Tup4bTest
 		Tup4b t = new Tup4b((byte)1, (byte)2, (byte)3, (byte)4);
 		
 		assertEquals("tup4b(x=1, y=2, z=3, w=4)", t.toString());
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup4b#getNewInstance(byte, byte, byte, byte)}
-	 * returns a new instance of {@link Tup4b} with the given values.
-	 */
-	@Test
-	void getNewInstance_ComponentsTest()
-	{
-		Tup4b original = new Tup4b((byte)1, (byte)2, (byte)3, (byte)4);
-		Tup4b newInstance = original.getNewInstance((byte)3, (byte)4, (byte)5, (byte)6);
-		
-		assertEquals((byte)1, original.getX());
-		assertEquals((byte)2, original.getY());
-		assertEquals((byte)3, original.getZ());
-		assertEquals((byte)4, original.getW());
-		assertEquals((byte)3, newInstance.getX());
-		assertEquals((byte)4, newInstance.getY());
-		assertEquals((byte)5, newInstance.getZ());
-		assertEquals((byte)6, newInstance.getW());
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link Tup4b#getNewInstance(byte)} calls
-	 * the function {@link Tup4b#getNewInstance(byte, byte, byte, byte)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_ValueTest()
-	{
-		Tup4b newInstance = mock(Tup4b.class);
-		Tup4b t = mock(Tup4b.class);
-		
-		when(t.getNewInstance((byte)1)).thenCallRealMethod();
-
-		when(t.getNewInstance((byte)1, (byte)1, (byte)1, (byte)1)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance((byte)1));
-		
-		verify(t).getNewInstance((byte)1);
-		
-		verify(t).getNewInstance((byte)1, (byte)1, (byte)1, (byte)1);
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup4bd#getNewInstance(Tup4bR)}
-	 * returns a new instance of {@link Tup4b} with the given values.
-	 */
-	@Test
-	void getNewInstance_Tuple3Test()
-	{
-		Tup4bR original = mock(Tup4bR.class);
-		Tup4b newInstance = mock(Tup4b.class);
-		Tup4b t = mock(Tup4b.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getX()).thenReturn((byte)1);
-		when(original.getY()).thenReturn((byte)2);
-		when(original.getZ()).thenReturn((byte)3);
-		when(original.getW()).thenReturn((byte)4);
-		when(t.getNewInstance((byte)1, (byte)2, (byte)3, (byte)4)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getX();
-		verify(original).getY();
-		verify(original).getZ();
-		verify(original).getW();
-		verify(t).getNewInstance((byte)1, (byte)2, (byte)3, (byte)4);
-		
-		verifyNoMoreInteractions(t, original);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link Tup4b#getNewInstance(TupbR)} calls
-	 * the function {@link Tup4b#getNewInstance(byte, byte, byte, byte)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_TupleTest()
-	{
-		TupbR original = mock(TupbR.class);
-		Tup4b newInstance = mock(Tup4b.class);
-		Tup4b t = mock(Tup4b.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getArray()).thenReturn(new byte[] {(byte)1, (byte)2, (byte)3, (byte)4});
-		when(t.getNewInstance((byte)1, (byte)2, (byte)3, (byte)4)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getArray();
-		verify(t).getNewInstance((byte)1, (byte)2, (byte)3, (byte)4);
-		
-		verifyNoMoreInteractions(t, original);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link Tup4b#getNewInstanceFromArray(byte[])} calls
-	 * the function {@link Tup4b#getNewInstance(byte, byte, byte, byte)} with the correct components.
-	 */
-	@Test
-	void getNewInstanceFromArrayTest()
-	{
-		Tup4b newInstance = mock(Tup4b.class);
-		Tup4b t = mock(Tup4b.class);
-		
-		when(t.getNewInstanceFromArray(new byte[] {(byte)1, (byte)2, (byte)3, (byte)4})).thenCallRealMethod();
-
-		when(t.getNewInstance((byte)1, (byte)2, (byte)3, (byte)4)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstanceFromArray(new byte[] {(byte)1, (byte)2, (byte)3, (byte)4}));
-		
-		verify(t).getNewInstanceFromArray(new byte[] {(byte)1, (byte)2, (byte)3, (byte)4});
-		
-		verify(t).getNewInstance((byte)1, (byte)2, (byte)3, (byte)4);
-		
-		verifyNoMoreInteractions(t);
 	}
 }

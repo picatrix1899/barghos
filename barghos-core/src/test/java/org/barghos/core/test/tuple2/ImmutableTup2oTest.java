@@ -13,16 +13,12 @@ import org.barghos.core.tuple2.ImmutableTup2o;
  * This class provides component tests for the class {@link ImmutableTup2o}.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 class ImmutableTup2oTest
 {
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup2o} generated from an existing instance of {@link Tup2oR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_Tuple2Test()
@@ -47,8 +43,6 @@ class ImmutableTup2oTest
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup2o} generated from two components,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ComponentsTest()
@@ -62,8 +56,6 @@ class ImmutableTup2oTest
 	/**
 	 * This test ensures, that the function {@link ImmutableTup2o#getX()} actually returns the value of the
 	 * x component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getXTest()
@@ -77,8 +69,6 @@ class ImmutableTup2oTest
 	/**
 	 * This test ensures, that the function {@link ImmutableTup2o#getY()} actually returns the value of the
 	 * y component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getYTest()
@@ -193,8 +183,6 @@ class ImmutableTup2oTest
 	
 	/**
 	 * This test ensures, that the {@link ImmutableTup2o#toString()} function prints the components correctly.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void toStringTest()
@@ -202,54 +190,5 @@ class ImmutableTup2oTest
 		ImmutableTup2o<Integer,Double> t = new ImmutableTup2o<>(1, 1.0);
 		
 		assertEquals("immutableTup2o(x=1, y=1.0)", t.toString());
-	}
-	
-	/**
-	 * This test ensures, that the function {@link ImmutableTup2o#getNewInstance(Object, Object)}
-	 * returns a new instance of {@link ImmutableTup2o} with the given values.
-	 */
-	@Test
-	void getNewInstance_ComponentsTest()
-	{
-		ImmutableTup2o<Integer,Double> original = new ImmutableTup2o<>(1, 1.0);
-		ImmutableTup2o<Integer,Double> newInstance = original.getNewInstance(4, 4.0);
-		
-		assertEquals(1, (int)original.getX());
-		assertEquals(1.0, (double)original.getY());
-		assertEquals(4, (int)newInstance.getX());
-		assertEquals(4.0, (double)newInstance.getY());
-	}
-	
-	/**
-	 * This test ensures, that the function {@link ImmutableTup2o#getNewInstance(Tup2oR)}
-	 * returns a new instance of {@link ImmutableTup2o} with the given values.
-	 */
-	@Test
-	void getNewInstance_Tuple2Test()
-	{
-		@SuppressWarnings("unchecked")
-		Tup2oR<Integer,Double> original = (Tup2oR<Integer,Double>)mock(Tup2oR.class);
-		
-		@SuppressWarnings("unchecked")
-		ImmutableTup2o<Integer,Double> newInstance = (ImmutableTup2o<Integer,Double>)mock(ImmutableTup2o.class);
-		
-		@SuppressWarnings("unchecked")
-		ImmutableTup2o<Integer,Double> t = (ImmutableTup2o<Integer,Double>)mock(ImmutableTup2o.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getX()).thenReturn(1);
-		when(original.getY()).thenReturn(1.0);
-		when(t.getNewInstance(1, 1.0)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getX();
-		verify(original).getY();
-		verify(t).getNewInstance(1, 1.0);
-		
-		verifyNoMoreInteractions(t, original);
 	}
 }

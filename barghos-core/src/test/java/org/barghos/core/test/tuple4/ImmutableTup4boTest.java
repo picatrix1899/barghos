@@ -60,16 +60,12 @@ import org.barghos.core.tuple4.ImmutableTup4bo;
  * This class provides component tests for the class {@link ImmutableTup3bo}.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 class ImmutableTup4boTest
 {
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup4bo} generated from an existing instance of {@link TupboR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_TupleTest()
@@ -93,8 +89,6 @@ class ImmutableTup4boTest
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup4bo} generated from an existing instance of {@link Tup4boR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_Tuple3Test()
@@ -122,8 +116,6 @@ class ImmutableTup4boTest
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup4bo} generated from a scalar,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ValueTest()
@@ -139,8 +131,6 @@ class ImmutableTup4boTest
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup4bo} generated from an array,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ArrayTest()
@@ -156,8 +146,6 @@ class ImmutableTup4boTest
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup4bo} generated from two components,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ComponentsTest()
@@ -173,8 +161,6 @@ class ImmutableTup4boTest
 	/**
 	 * This test ensures, that the function {@link ImmutableTup4bo#getX()} actually returns the value of the
 	 * x component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getXTest()
@@ -188,8 +174,6 @@ class ImmutableTup4boTest
 	/**
 	 * This test ensures, that the function {@link ImmutableTup4bo#getY()} actually returns the value of the
 	 * y component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getYTest()
@@ -203,8 +187,6 @@ class ImmutableTup4boTest
 	/**
 	 * This test ensures, that the function {@link ImmutableTup4bo#getZ()} actually returns the value of the
 	 * z component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getZTest()
@@ -218,8 +200,6 @@ class ImmutableTup4boTest
 	/**
 	 * This test ensures, that the function {@link ImmutableTup4bo#getW()} actually returns the value of the
 	 * w component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getWTest()
@@ -503,8 +483,6 @@ class ImmutableTup4boTest
 	
 	/**
 	 * This test ensures, that the {@link ImmutableTup4bo#toString()} function prints the components correctly.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void toStringTest()
@@ -512,129 +490,5 @@ class ImmutableTup4boTest
 		ImmutableTup4bo t = new ImmutableTup4bo(true, false, true, false);
 		
 		assertEquals("immutableTup4bo(x=true, y=false, z=true, w=false)", t.toString());
-	}
-	
-	/**
-	 * This test ensures, that the function {@link ImmutableTup4bo#getNewInstance(boolean, boolean, boolean, boolean)}
-	 * returns a new instance of {@link ImmutableTup4bo} with the given values.
-	 */
-	@Test
-	void getNewInstance_ComponentsTest()
-	{
-		ImmutableTup4bo original = new ImmutableTup4bo(true, false, true, false);
-		ImmutableTup4bo newInstance = original.getNewInstance(false, true, false, true);
-		
-		assertEquals(true, original.getX());
-		assertEquals(false, original.getY());
-		assertEquals(true, original.getZ());
-		assertEquals(false, original.getW());
-		assertEquals(false, newInstance.getX());
-		assertEquals(true, newInstance.getY());
-		assertEquals(false, newInstance.getZ());
-		assertEquals(true, newInstance.getW());
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link ImmutableTup4bo#getNewInstance(boolean)} calls
-	 * the function {@link ImmutableTup4bo#getNewInstance(boolean, boolean, boolean, boolean)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_ValueTest()
-	{
-		ImmutableTup4bo newInstance = mock(ImmutableTup4bo.class);
-		ImmutableTup4bo t = mock(ImmutableTup4bo.class);
-		
-		when(t.getNewInstance(true)).thenCallRealMethod();
-
-		when(t.getNewInstance(true, true, true, true)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(true));
-		
-		verify(t).getNewInstance(true);
-		
-		verify(t).getNewInstance(true, true, true, true);
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link ImmutableTup4bo#getNewInstance(Tup4boR)}
-	 * returns a new instance of {@link ImmutableTup4bo} with the given values.
-	 */
-	@Test
-	void getNewInstance_Tuple4Test()
-	{
-		Tup4boR original = mock(Tup4boR.class);
-		ImmutableTup4bo newInstance = mock(ImmutableTup4bo.class);
-		ImmutableTup4bo t = mock(ImmutableTup4bo.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getX()).thenReturn(true);
-		when(original.getY()).thenReturn(false);
-		when(original.getZ()).thenReturn(true);
-		when(original.getW()).thenReturn(false);
-		when(t.getNewInstance(true, false, true, false)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getX();
-		verify(original).getY();
-		verify(original).getZ();
-		verify(original).getW();
-		verify(t).getNewInstance(true, false, true, false);
-		
-		verifyNoMoreInteractions(t, original);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link ImmutableTup4bo#getNewInstance(TupboR)} calls
-	 * the function {@link ImmutableTup4bo#getNewInstance(boolean, boolean, boolean, boolean)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_TupleTest()
-	{
-		TupboR original = mock(TupboR.class);
-		ImmutableTup4bo newInstance = mock(ImmutableTup4bo.class);
-		ImmutableTup4bo t = mock(ImmutableTup4bo.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getArray()).thenReturn(new boolean[] {true, false, true, false});
-		when(t.getNewInstance(true, false, true, false)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getArray();
-		verify(t).getNewInstance(true, false, true, false);
-		
-		verifyNoMoreInteractions(t, original);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link ImmutableTup4bo#getNewInstanceFromArray(boolean[])} calls
-	 * the function {@link ImmutableTup4bo#getNewInstance(boolean, boolean, boolean, boolean)} with the correct components.
-	 */
-	@Test
-	void getNewInstanceFromArrayTest()
-	{
-		ImmutableTup4bo newInstance = mock(ImmutableTup4bo.class);
-		ImmutableTup4bo t = mock(ImmutableTup4bo.class);
-		
-		when(t.getNewInstanceFromArray(new boolean[] {true, false, true, false})).thenCallRealMethod();
-
-		when(t.getNewInstance(true, false, true, false)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstanceFromArray(new boolean[] {true,false, true, false}));
-		
-		verify(t).getNewInstanceFromArray(new boolean[] {true, false, true, false});
-		
-		verify(t).getNewInstance(true, false, true, false);
-		
-		verifyNoMoreInteractions(t);
 	}
 }

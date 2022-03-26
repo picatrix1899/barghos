@@ -33,24 +33,6 @@ class TupbRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link TupbR#isValid()} returns
-	 * always true and doesn't do any calls.
-	 */
-	@Test
-	void isValidTest()
-	{
-		TupbR t = mock(TupbR.class);
-		
-		when(t.isValid()).thenCallRealMethod();
-		
-		assertEquals(true, t.isValid());
-		
-		verify(t).isValid();
-
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
 	 * This test ensures, that the function {@link TupbR#isZero()} returns true if
 	 * all components are exactly zero.
 	 */
@@ -360,57 +342,6 @@ class TupbRTest
 		verify(t).getDimensions();
 		verify(t).getByIndex(0);
 		verify(t).getByIndex(1);
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link TupbR#getNewInstance(TupbR)} calls
-	 * the function {@link TupbR#getNewInstance(byte[])} with the correct components.
-	 */
-	@Test
-	void getNewInstance_TupleTest()
-	{
-		TupbR original = mock(TupbR.class);
-		TupbR newInstance = mock(TupbR.class);
-		TupbR t = mock(TupbR.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getArray()).thenReturn(new byte[] {1, 2});
-		when(t.getNewInstanceFromArray(new byte[] {1, 2})).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-
-		verify(original).getArray();
-		verify(t).getNewInstanceFromArray(new byte[] {1, 2});
-		
-		verifyNoMoreInteractions(t, original);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link TupbR#getNewInstance(byte)} calls
-	 * the function {@link TupbR#getNewInstanceFromArray(byte[])} with the correct components.
-	 */
-	@Test
-	void getNewInstance_ValueTest()
-	{
-		TupbR newInstance = mock(TupbR.class);
-		TupbR t = mock(TupbR.class);
-		
-		when(t.getNewInstance((byte)1)).thenCallRealMethod();
-		
-		when(t.getDimensions()).thenReturn(2);
-		when(t.getNewInstanceFromArray(new byte[] {1, 1})).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance((byte)1));
-		
-		verify(t).getNewInstance((byte)1);
-
-		verify(t).getDimensions();
-		verify(t).getNewInstanceFromArray(new byte[] {1, 1});
 		
 		verifyNoMoreInteractions(t);
 	}

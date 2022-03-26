@@ -36,16 +36,12 @@ import org.barghos.core.tuple4.Tup4bigi;
 
 /**
  * This class provides component tests for the class {@link Tup4bigi}.
- * 
- * @since 1.0.0.0
  */
 class Tup4bigiTest
 {
 	/**
 	 * This test ensures, that the constructor {@link Tup4bigi#Tup4bigi()} aktually works and
 	 * that the components are set to 0.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_DefaultTest()
@@ -61,8 +57,6 @@ class Tup4bigiTest
 	/**
 	 * This test ensures, that an instance of {@link Tup4bigi} generated from an existing instance of {@link TupbigiR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_TupleTest()
@@ -86,8 +80,6 @@ class Tup4bigiTest
 	/**
 	 * This test ensures, that an instance of {@link Tup4bigi} generated from an existing instance of {@link TupbigiR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_Tuple2Test()
@@ -117,8 +109,6 @@ class Tup4bigiTest
 	/**
 	 * This test ensures, that an instance of {@link Tup4bigi} generated from a scalar,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ValueTest()
@@ -134,8 +124,6 @@ class Tup4bigiTest
 	/**
 	 * This test ensures, that an instance of {@link Tup4bigi} generated from an array,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ArrayTest()
@@ -151,8 +139,6 @@ class Tup4bigiTest
 	/**
 	 * This test ensures, that an instance of {@link Tup4bigi} generated from two components,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ComponentsTest()
@@ -168,8 +154,6 @@ class Tup4bigiTest
 	/**
 	 * This test ensures, that the function {@link Tup4bigi#setX(BigInteger)} sets the x component on the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setXTest()
@@ -183,8 +167,6 @@ class Tup4bigiTest
 	/**
 	 * This test ensures, that the function {@link Tup4bigi#setY(BigInteger)} sets the y component on the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setYTest()
@@ -198,8 +180,6 @@ class Tup4bigiTest
 	/**
 	 * This test ensures, that the function {@link Tup4bigi#setZ(BigInteger)} sets the z component on the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setZTest()
@@ -213,8 +193,6 @@ class Tup4bigiTest
 	/**
 	 * This test ensures, that the function {@link Tup4bigi#setW(BigInteger)} sets the w component on the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setWTest()
@@ -229,8 +207,6 @@ class Tup4bigiTest
 	 * This test ensures, that the function
 	 * {@link Tup4bigi#set(org.barghos.core.api.tuple2.Tup4bigiR) Tup2bigd.set(Tup4bigiR)}
 	 * adopts the components from the input tuple and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void set_Tuple3Test()
@@ -264,8 +240,6 @@ class Tup4bigiTest
 	/**
 	 * This test ensures, that the function {@link Tup4bigi#set(BigInteger)} sets the components
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void set_ValueTest()
@@ -288,8 +262,6 @@ class Tup4bigiTest
 	/**
 	 * This test ensures, that the function {@link Tup4bigi#set(BigInteger, BigInteger, BigInteger, BigInteger)} set the components
 	 * to the respective parameters and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void set_ComponentsTest()
@@ -318,8 +290,6 @@ class Tup4bigiTest
 	/**
 	 * This test ensures, that the function {@link Tup4bigi#getX()} actually returns the value of the
 	 * x component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getXTest()
@@ -333,8 +303,6 @@ class Tup4bigiTest
 	/**
 	 * This test ensures, that the function {@link Tup4bigi#getY()} actually returns the value of the
 	 * y component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getYTest()
@@ -348,8 +316,6 @@ class Tup4bigiTest
 	/**
 	 * This test ensures, that the function {@link Tup4bigi#getZ()} actually returns the value of the
 	 * z component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getZTest()
@@ -363,8 +329,6 @@ class Tup4bigiTest
 	/**
 	 * This test ensures, that the function {@link Tup4bigi#getW()} actually returns the value of the
 	 * w component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getWTest()
@@ -648,8 +612,6 @@ class Tup4bigiTest
 	
 	/**
 	 * This test ensures, that the {@link Tup4bigi#toString()} function prints the components correctly.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void toStringTest()
@@ -657,129 +619,5 @@ class Tup4bigiTest
 		Tup4bigi t = new Tup4bigi(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4));
 		
 		assertEquals("tup4bigi(x=1, y=2, z=3, w=4)", t.toString());
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup4bigi#getNewInstance(BigInteger, BigInteger, BigInteger, BigInteger)}
-	 * returns a new instance of {@link Tup4bigi} with the given values.
-	 */
-	@Test
-	void getNewInstance_ComponentsTest()
-	{
-		Tup4bigi original = new Tup4bigi(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4));
-		Tup4bigi newInstance = original.getNewInstance(BigInteger.valueOf(3), BigInteger.valueOf(4), BigInteger.valueOf(5), BigInteger.valueOf(6));
-		
-		assertEquals(BigInteger.valueOf(1), original.getX());
-		assertEquals(BigInteger.valueOf(2), original.getY());
-		assertEquals(BigInteger.valueOf(3), original.getZ());
-		assertEquals(BigInteger.valueOf(4), original.getW());
-		assertEquals(BigInteger.valueOf(3), newInstance.getX());
-		assertEquals(BigInteger.valueOf(4), newInstance.getY());
-		assertEquals(BigInteger.valueOf(5), newInstance.getZ());
-		assertEquals(BigInteger.valueOf(6), newInstance.getW());
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link Tup4bigi#getNewInstance(BigInteger)} calls
-	 * the function {@link Tup4bigi#getNewInstance(BigInteger, BigInteger, BigInteger, BigInteger)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_ValueTest()
-	{
-		Tup4bigi newInstance = mock(Tup4bigi.class);
-		Tup4bigi t = mock(Tup4bigi.class);
-		
-		when(t.getNewInstance(BigInteger.valueOf(1))).thenCallRealMethod();
-
-		when(t.getNewInstance(BigInteger.valueOf(1), BigInteger.valueOf(1), BigInteger.valueOf(1), BigInteger.valueOf(1))).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(BigInteger.valueOf(1)));
-		
-		verify(t).getNewInstance(BigInteger.valueOf(1));
-		
-		verify(t).getNewInstance(BigInteger.valueOf(1), BigInteger.valueOf(1), BigInteger.valueOf(1), BigInteger.valueOf(1));
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup4bigi#getNewInstance(Tup4bigiR)}
-	 * returns a new instance of {@link Tup4bigi} with the given values.
-	 */
-	@Test
-	void getNewInstance_Tuple2Test()
-	{
-		Tup4bigiR original = mock(Tup4bigiR.class);
-		Tup4bigi newInstance = mock(Tup4bigi.class);
-		Tup4bigi t = mock(Tup4bigi.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getX()).thenReturn(BigInteger.valueOf(1));
-		when(original.getY()).thenReturn(BigInteger.valueOf(2));
-		when(original.getZ()).thenReturn(BigInteger.valueOf(3));
-		when(original.getW()).thenReturn(BigInteger.valueOf(4));
-		when(t.getNewInstance(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4))).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getX();
-		verify(original).getY();
-		verify(original).getZ();
-		verify(original).getW();
-		verify(t).getNewInstance(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4));
-		
-		verifyNoMoreInteractions(t, original);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link Tup4bigi#getNewInstance(TupbigiR)} calls
-	 * the function {@link Tup4bigi#getNewInstance(BigInteger, BigInteger, BigInteger, BigInteger)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_TupleTest()
-	{
-		TupbigiR original = mock(TupbigiR.class);
-		Tup4bigi newInstance = mock(Tup4bigi.class);
-		Tup4bigi t = mock(Tup4bigi.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getArray()).thenReturn(new BigInteger[] {BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4)});
-		when(t.getNewInstance(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4))).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getArray();
-		verify(t).getNewInstance(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4));
-		
-		verifyNoMoreInteractions(t, original);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link Tup4bigi#getNewInstanceFromArray(BigInteger[])} calls
-	 * the function {@link Tup4bigi#getNewInstance(BigInteger, BigInteger, BigInteger, BigInteger)} with the correct components.
-	 */
-	@Test
-	void getNewInstanceFromArrayTest()
-	{
-		Tup4bigi newInstance = mock(Tup4bigi.class);
-		Tup4bigi t = mock(Tup4bigi.class);
-		
-		when(t.getNewInstanceFromArray(new BigInteger[] {BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4)})).thenCallRealMethod();
-
-		when(t.getNewInstance(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4))).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstanceFromArray(new BigInteger[] {BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4)}));
-		
-		verify(t).getNewInstanceFromArray(new BigInteger[] {BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4)});
-		
-		verify(t).getNewInstance(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4));
-		
-		verifyNoMoreInteractions(t);
 	}
 }

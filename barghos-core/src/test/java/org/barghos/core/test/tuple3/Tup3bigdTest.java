@@ -36,15 +36,11 @@ import org.barghos.core.tuple3.Tup3bigd;
 
 /**
  * This class provides component tests for the class {@link Tup3bigd}.
- * 
- * @since 1.0.0.0
  */
 class Tup3bigdTest
 {
 	/**
 	 * This test ensures, that the default constructor {@link Tup3bigd#Tup3bigd()} sets the components to 0.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_DefaultTest()
@@ -59,8 +55,6 @@ class Tup3bigdTest
 	/**
 	 * This test ensures, that an instance of {@link Tup3bigd} generated from an existing instance of {@link TupbigdR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_TupleTest()
@@ -83,8 +77,6 @@ class Tup3bigdTest
 	/**
 	 * This test ensures, that an instance of {@link Tup3bigd} generated from an existing instance of {@link Tup3bigdR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_Tuple3Test()
@@ -111,8 +103,6 @@ class Tup3bigdTest
 	/**
 	 * This test ensures, that an instance of {@link Tup3bigd} generated from a scalar,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ValueTest()
@@ -127,8 +117,6 @@ class Tup3bigdTest
 	/**
 	 * This test ensures, that an instance of {@link Tup3bigd} generated from an array,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ArrayTest()
@@ -143,8 +131,6 @@ class Tup3bigdTest
 	/**
 	 * This test ensures, that an instance of {@link Tup3bigd} generated from two components,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ComponentsTest()
@@ -159,8 +145,6 @@ class Tup3bigdTest
 	/**
 	 * This test ensures, that the function {@link Tup3bigd#setX(BigDecimal)} sets the x component of the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setXTest()
@@ -174,8 +158,6 @@ class Tup3bigdTest
 	/**
 	 * This test ensures, that the function {@link Tup3bigd#setY(BigDecimal)} sets the y component of the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setYTest()
@@ -189,8 +171,6 @@ class Tup3bigdTest
 	/**
 	 * This test ensures, that the function {@link Tup3bigd#setZ(BigDecimal)} sets the z component of the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setZTest()
@@ -205,8 +185,6 @@ class Tup3bigdTest
 	 * This test ensures, that the function
 	 * {@link Tup3bigd#set(org.barghos.core.api.tuple2.Tup3bigdR) Tup3bigd.set(Tup3bigdR)}
 	 * adopts the components from the input tuple and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void set_Tuple3Test()
@@ -238,8 +216,6 @@ class Tup3bigdTest
 	/**
 	 * This test ensures, that the function {@link Tup3bigd#set(BigDecimal)} sets the components
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void set_ValueTest()
@@ -262,8 +238,6 @@ class Tup3bigdTest
 	/**
 	 * This test ensures, that the function {@link Tup3bigd#set(BigDecimal, BigDecimal, BigDecimal)} set the components
 	 * to the respective parameters and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void set_ComponentsTest()
@@ -290,8 +264,6 @@ class Tup3bigdTest
 	/**
 	 * This test ensures, that the function {@link Tup3bigd#getX()} actually returns the value of the
 	 * x component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getXTest()
@@ -305,8 +277,6 @@ class Tup3bigdTest
 	/**
 	 * This test ensures, that the function {@link Tup3bigd#getY()} actually returns the value of the
 	 * y component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getYTest()
@@ -320,8 +290,6 @@ class Tup3bigdTest
 	/**
 	 * This test ensures, that the function {@link Tup3bigd#getZ()} actually returns the value of the
 	 * z component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getZTest()
@@ -562,8 +530,6 @@ class Tup3bigdTest
 	
 	/**
 	 * This test ensures, that the {@link Tup3bigd#toString()} function prints the components correctly.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void toStringTest()
@@ -571,125 +537,5 @@ class Tup3bigdTest
 		Tup3bigd t = new Tup3bigd(BigDecimal.valueOf(1.1), BigDecimal.valueOf(2.2), BigDecimal.valueOf(3.3));
 		
 		assertEquals("tup3bigd(x=1.1, y=2.2, z=3.3)", t.toString());
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup3bigd#getNewInstance(BigDecimal, BigDecimal, BigDecimal)}
-	 * returns a new instance of {@link Tup3bigd} with the given values.
-	 */
-	@Test
-	void getNewInstance_ComponentsTest()
-	{
-		Tup3bigd original = new Tup3bigd(BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0));
-		Tup3bigd newInstance = original.getNewInstance(BigDecimal.valueOf(3.0), BigDecimal.valueOf(4.0), BigDecimal.valueOf(5.0));
-		
-		assertEquals(BigDecimal.valueOf(1.0), original.getX());
-		assertEquals(BigDecimal.valueOf(2.0), original.getY());
-		assertEquals(BigDecimal.valueOf(3.0), original.getZ());
-		assertEquals(BigDecimal.valueOf(3.0), newInstance.getX());
-		assertEquals(BigDecimal.valueOf(4.0), newInstance.getY());
-		assertEquals(BigDecimal.valueOf(5.0), newInstance.getZ());
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link Tup3bigd#getNewInstance(BigDecimal)} calls
-	 * the function {@link Tup3bigd#getNewInstance(BigDecimal, BigDecimal, BigDecimal)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_ValueTest()
-	{
-		Tup3bigd newInstance = mock(Tup3bigd.class);
-		Tup3bigd t = mock(Tup3bigd.class);
-		
-		when(t.getNewInstance(BigDecimal.valueOf(1.0))).thenCallRealMethod();
-
-		when(t.getNewInstance(BigDecimal.valueOf(1.0), BigDecimal.valueOf(1.0), BigDecimal.valueOf(1.0))).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(BigDecimal.valueOf(1.0)));
-		
-		verify(t).getNewInstance(BigDecimal.valueOf(1.0));
-		
-		verify(t).getNewInstance(BigDecimal.valueOf(1.0), BigDecimal.valueOf(1.0), BigDecimal.valueOf(1.0));
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup3bigd#getNewInstance(Tup3bigdR)}
-	 * returns a new instance of {@link Tup3bigd} with the given values.
-	 */
-	@Test
-	void getNewInstance_Tuple2Test()
-	{
-		Tup3bigdR original = mock(Tup3bigdR.class);
-		Tup3bigd newInstance = mock(Tup3bigd.class);
-		Tup3bigd t = mock(Tup3bigd.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getX()).thenReturn(BigDecimal.valueOf(1.0));
-		when(original.getY()).thenReturn(BigDecimal.valueOf(2.0));
-		when(original.getZ()).thenReturn(BigDecimal.valueOf(3.0));
-		when(t.getNewInstance(BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0))).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getX();
-		verify(original).getY();
-		verify(original).getZ();
-		verify(t).getNewInstance(BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0));
-		
-		verifyNoMoreInteractions(t, original);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link Tup3bigd#getNewInstance(TupbigdR)} calls
-	 * the function {@link Tup3bigd#getNewInstance(BigDecimal, BigDecimal, BigDecimal)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_TupleTest()
-	{
-		TupbigdR original = mock(TupbigdR.class);
-		Tup3bigd newInstance = mock(Tup3bigd.class);
-		Tup3bigd t = mock(Tup3bigd.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getArray()).thenReturn(new BigDecimal[] {BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0)});
-		when(t.getNewInstance(BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0))).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getArray();
-		verify(t).getNewInstance(BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0));
-		
-		verifyNoMoreInteractions(t, original);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link Tup3bigd#getNewInstanceFromArray(BigDecimal[])} calls
-	 * the function {@link Tup3bigd#getNewInstance(BigDecimal, BigDecimal, BigDecimal)} with the correct components.
-	 */
-	@Test
-	void getNewInstanceFromArrayTest()
-	{
-		Tup3bigd newInstance = mock(Tup3bigd.class);
-		Tup3bigd t = mock(Tup3bigd.class);
-		
-		when(t.getNewInstanceFromArray(new BigDecimal[] {BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0)})).thenCallRealMethod();
-
-		when(t.getNewInstance(BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0))).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstanceFromArray(new BigDecimal[] {BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0)}));
-		
-		verify(t).getNewInstanceFromArray(new BigDecimal[] {BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0)});
-		
-		verify(t).getNewInstance(BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0));
-		
-		verifyNoMoreInteractions(t);
 	}
 }

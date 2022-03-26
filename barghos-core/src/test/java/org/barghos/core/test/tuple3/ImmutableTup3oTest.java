@@ -59,16 +59,12 @@ import org.barghos.core.tuple3.ImmutableTup3o;
  * This class provides component tests for the class {@link ImmutableTup3o}.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 class ImmutableTup3oTest
 {
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup3o} generated from an existing instance of {@link Tup3oR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_Tuple3Test()
@@ -96,8 +92,6 @@ class ImmutableTup3oTest
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup3o} generated from two components,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ComponentsTest()
@@ -112,8 +106,6 @@ class ImmutableTup3oTest
 	/**
 	 * This test ensures, that the function {@link ImmutableTup3o#getX()} actually returns the value of the
 	 * x component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getXTest()
@@ -127,8 +119,6 @@ class ImmutableTup3oTest
 	/**
 	 * This test ensures, that the function {@link ImmutableTup3o#getY()} actually returns the value of the
 	 * y component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getYTest()
@@ -142,8 +132,6 @@ class ImmutableTup3oTest
 	/**
 	 * This test ensures, that the function {@link ImmutableTup3o#getZ()} actually returns the value of the
 	 * z component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getZTest()
@@ -279,8 +267,6 @@ class ImmutableTup3oTest
 	
 	/**
 	 * This test ensures, that the {@link ImmutableTup3o#toString()} function prints the components correctly.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void toStringTest()
@@ -288,58 +274,5 @@ class ImmutableTup3oTest
 		ImmutableTup3o<Integer,Double,String> t = new ImmutableTup3o<>(1, 1.0, "a");
 		
 		assertEquals("immutableTup3o(x=1, y=1.0, z=a)", t.toString());
-	}
-	
-	/**
-	 * This test ensures, that the function {@link ImmutableTup3o#getNewInstance(Object, Object, Object)}
-	 * returns a new instance of {@link ImmutableTup3o} with the given values.
-	 */
-	@Test
-	void getNewInstance_ComponentsTest()
-	{
-		ImmutableTup3o<Integer,Double,String> original = new ImmutableTup3o<>(1, 1.0, "a");
-		ImmutableTup3o<Integer,Double,String> newInstance = original.getNewInstance(4, 4.0, "b");
-		
-		assertEquals(1, (int)original.getX());
-		assertEquals(1.0, (double)original.getY());
-		assertEquals("a", original.getZ());
-		assertEquals(4, (int)newInstance.getX());
-		assertEquals(4.0, (double)newInstance.getY());
-		assertEquals("b", newInstance.getZ());
-	}
-	
-	/**
-	 * This test ensures, that the function {@link ImmutableTup3o#getNewInstance(Tup3oR)}
-	 * returns a new instance of {@link ImmutableTup3o} with the given values.
-	 */
-	@Test
-	void getNewInstance_Tuple2Test()
-	{
-		@SuppressWarnings("unchecked")
-		Tup3oR<Integer,Double,String> original = (Tup3oR<Integer,Double,String>)mock(Tup3oR.class);
-		
-		@SuppressWarnings("unchecked")
-		ImmutableTup3o<Integer,Double,String> newInstance = (ImmutableTup3o<Integer,Double,String>)mock(ImmutableTup3o.class);
-		
-		@SuppressWarnings("unchecked")
-		ImmutableTup3o<Integer,Double,String> t = (ImmutableTup3o<Integer,Double,String>)mock(ImmutableTup3o.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getX()).thenReturn(1);
-		when(original.getY()).thenReturn(1.0);
-		when(original.getZ()).thenReturn("a");
-		when(t.getNewInstance(1, 1.0, "a")).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getX();
-		verify(original).getY();
-		verify(original).getZ();
-		verify(t).getNewInstance(1, 1.0, "a");
-		
-		verifyNoMoreInteractions(t, original);
 	}
 }

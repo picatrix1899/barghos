@@ -36,16 +36,12 @@ import org.barghos.core.tuple3.Tup3bigi;
 
 /**
  * This class provides component tests for the class {@link Tup3bigi}.
- * 
- * @since 1.0.0.0
  */
 class Tup3bigiTest
 {
 	/**
 	 * This test ensures, that the constructor {@link Tup3bigi#Tup3bigi()} aktually works and
 	 * that the components are set to 0.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_DefaultTest()
@@ -60,8 +56,6 @@ class Tup3bigiTest
 	/**
 	 * This test ensures, that an instance of {@link Tup3bigi} generated from an existing instance of {@link TupbigiR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_TupleTest()
@@ -84,8 +78,6 @@ class Tup3bigiTest
 	/**
 	 * This test ensures, that an instance of {@link Tup3bigi} generated from an existing instance of {@link TupbigiR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_Tuple2Test()
@@ -112,8 +104,6 @@ class Tup3bigiTest
 	/**
 	 * This test ensures, that an instance of {@link Tup3bigi} generated from a scalar,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ValueTest()
@@ -128,8 +118,6 @@ class Tup3bigiTest
 	/**
 	 * This test ensures, that an instance of {@link Tup3bigi} generated from an array,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ArrayTest()
@@ -144,8 +132,6 @@ class Tup3bigiTest
 	/**
 	 * This test ensures, that an instance of {@link Tup3bigi} generated from two components,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ComponentsTest()
@@ -160,8 +146,6 @@ class Tup3bigiTest
 	/**
 	 * This test ensures, that the function {@link Tup3bigi#setX(BigInteger)} sets the x component on the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setXTest()
@@ -175,8 +159,6 @@ class Tup3bigiTest
 	/**
 	 * This test ensures, that the function {@link Tup3bigi#setY(BigInteger)} sets the y component on the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setYTest()
@@ -190,8 +172,6 @@ class Tup3bigiTest
 	/**
 	 * This test ensures, that the function {@link Tup3bigi#setZ(BigInteger)} sets the z component on the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setZTest()
@@ -206,8 +186,6 @@ class Tup3bigiTest
 	 * This test ensures, that the function
 	 * {@link Tup3bigi#set(org.barghos.core.api.tuple2.Tup3bigiR) Tup2bigd.set(Tup3bigiR)}
 	 * adopts the components from the input tuple and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void set_Tuple3Test()
@@ -239,8 +217,6 @@ class Tup3bigiTest
 	/**
 	 * This test ensures, that the function {@link Tup3bigi#set(BigInteger)} sets the components
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void set_ValueTest()
@@ -263,8 +239,6 @@ class Tup3bigiTest
 	/**
 	 * This test ensures, that the function {@link Tup3bigi#set(BigInteger, BigInteger, BigInteger)} set the components
 	 * to the respective parameters and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void set_ComponentsTest()
@@ -291,8 +265,6 @@ class Tup3bigiTest
 	/**
 	 * This test ensures, that the function {@link Tup3bigi#getX()} actually returns the value of the
 	 * x component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getXTest()
@@ -306,8 +278,6 @@ class Tup3bigiTest
 	/**
 	 * This test ensures, that the function {@link Tup3bigi#getY()} actually returns the value of the
 	 * y component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getYTest()
@@ -321,8 +291,6 @@ class Tup3bigiTest
 	/**
 	 * This test ensures, that the function {@link Tup3bigi#getZ()} actually returns the value of the
 	 * z component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getZTest()
@@ -563,8 +531,6 @@ class Tup3bigiTest
 	
 	/**
 	 * This test ensures, that the {@link Tup3bigi#toString()} function prints the components correctly.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void toStringTest()
@@ -572,125 +538,5 @@ class Tup3bigiTest
 		Tup3bigi t = new Tup3bigi(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3));
 		
 		assertEquals("tup3bigi(x=1, y=2, z=3)", t.toString());
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup3bigi#getNewInstance(BigInteger, BigInteger, BigInteger)}
-	 * returns a new instance of {@link Tup3bigi} with the given values.
-	 */
-	@Test
-	void getNewInstance_ComponentsTest()
-	{
-		Tup3bigi original = new Tup3bigi(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3));
-		Tup3bigi newInstance = original.getNewInstance(BigInteger.valueOf(3), BigInteger.valueOf(4), BigInteger.valueOf(5));
-		
-		assertEquals(BigInteger.valueOf(1), original.getX());
-		assertEquals(BigInteger.valueOf(2), original.getY());
-		assertEquals(BigInteger.valueOf(3), original.getZ());
-		assertEquals(BigInteger.valueOf(3), newInstance.getX());
-		assertEquals(BigInteger.valueOf(4), newInstance.getY());
-		assertEquals(BigInteger.valueOf(5), newInstance.getZ());
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link Tup3bigi#getNewInstance(BigInteger)} calls
-	 * the function {@link Tup3bigi#getNewInstance(BigInteger, BigInteger, BigInteger)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_ValueTest()
-	{
-		Tup3bigi newInstance = mock(Tup3bigi.class);
-		Tup3bigi t = mock(Tup3bigi.class);
-		
-		when(t.getNewInstance(BigInteger.valueOf(1))).thenCallRealMethod();
-
-		when(t.getNewInstance(BigInteger.valueOf(1), BigInteger.valueOf(1), BigInteger.valueOf(1))).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(BigInteger.valueOf(1)));
-		
-		verify(t).getNewInstance(BigInteger.valueOf(1));
-		
-		verify(t).getNewInstance(BigInteger.valueOf(1), BigInteger.valueOf(1), BigInteger.valueOf(1));
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup3bigi#getNewInstance(Tup3bigiR)}
-	 * returns a new instance of {@link Tup3bigi} with the given values.
-	 */
-	@Test
-	void getNewInstance_Tuple2Test()
-	{
-		Tup3bigiR original = mock(Tup3bigiR.class);
-		Tup3bigi newInstance = mock(Tup3bigi.class);
-		Tup3bigi t = mock(Tup3bigi.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getX()).thenReturn(BigInteger.valueOf(1));
-		when(original.getY()).thenReturn(BigInteger.valueOf(2));
-		when(original.getZ()).thenReturn(BigInteger.valueOf(3));
-		when(t.getNewInstance(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3))).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getX();
-		verify(original).getY();
-		verify(original).getZ();
-		verify(t).getNewInstance(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3));
-		
-		verifyNoMoreInteractions(t, original);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link Tup3bigi#getNewInstance(TupbigiR)} calls
-	 * the function {@link Tup3bigi#getNewInstance(BigInteger, BigInteger, BigInteger)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_TupleTest()
-	{
-		TupbigiR original = mock(TupbigiR.class);
-		Tup3bigi newInstance = mock(Tup3bigi.class);
-		Tup3bigi t = mock(Tup3bigi.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getArray()).thenReturn(new BigInteger[] {BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3)});
-		when(t.getNewInstance(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3))).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getArray();
-		verify(t).getNewInstance(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3));
-		
-		verifyNoMoreInteractions(t, original);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link Tup3bigi#getNewInstanceFromArray(BigInteger[])} calls
-	 * the function {@link Tup3bigi#getNewInstance(BigInteger, BigInteger, BigInteger)} with the correct components.
-	 */
-	@Test
-	void getNewInstanceFromArrayTest()
-	{
-		Tup3bigi newInstance = mock(Tup3bigi.class);
-		Tup3bigi t = mock(Tup3bigi.class);
-		
-		when(t.getNewInstanceFromArray(new BigInteger[] {BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3)})).thenCallRealMethod();
-
-		when(t.getNewInstance(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3))).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstanceFromArray(new BigInteger[] {BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3)}));
-		
-		verify(t).getNewInstanceFromArray(new BigInteger[] {BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3)});
-		
-		verify(t).getNewInstance(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3));
-		
-		verifyNoMoreInteractions(t);
 	}
 }

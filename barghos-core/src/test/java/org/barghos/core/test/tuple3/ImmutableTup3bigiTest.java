@@ -62,16 +62,12 @@ import org.barghos.core.tuple3.ImmutableTup3bigi;
  * This class provides component tests for the class {@link ImmutableTup3bigi}.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 class ImmutableTup3bigiTest
 {
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup3bigi} generated from an existing instance of {@link TupbigiR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_TupleTest()
@@ -95,8 +91,6 @@ class ImmutableTup3bigiTest
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup3bigi} generated from an existing instance of {@link Tup3bigiR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_Tuple3Test()
@@ -123,8 +117,6 @@ class ImmutableTup3bigiTest
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup3bigi} generated from a scalar,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ValueTest()
@@ -139,8 +131,6 @@ class ImmutableTup3bigiTest
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup3bigi} generated from an array,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ArrayTest()
@@ -155,8 +145,6 @@ class ImmutableTup3bigiTest
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup3bigi} generated from two components,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ComponentsTest()
@@ -171,8 +159,6 @@ class ImmutableTup3bigiTest
 	/**
 	 * This test ensures, that the function {@link ImmutableTup3bigi#getX()} actually returns the value of the
 	 * x component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getXTest()
@@ -186,8 +172,6 @@ class ImmutableTup3bigiTest
 	/**
 	 * This test ensures, that the function {@link ImmutableTup3bigi#getY()} actually returns the value of the
 	 * y component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getYTest()
@@ -201,8 +185,6 @@ class ImmutableTup3bigiTest
 	/**
 	 * This test ensures, that the function {@link ImmutableTup3bigi#getZ()} actually returns the value of the
 	 * z component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getZTest()
@@ -443,8 +425,6 @@ class ImmutableTup3bigiTest
 	
 	/**
 	 * This test ensures, that the {@link ImmutableTup3bigi#toString()} function prints the components correctly.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void toStringTest()
@@ -452,125 +432,5 @@ class ImmutableTup3bigiTest
 		ImmutableTup3bigi t = new ImmutableTup3bigi(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3));
 		
 		assertEquals("immutableTup3bigi(x=1, y=2, z=3)", t.toString());
-	}
-	
-	/**
-	 * This test ensures, that the function {@link ImmutableTup3bigi#getNewInstance(BigInteger, BigInteger, BigInteger)}
-	 * returns a new instance of {@link ImmutableTup3bigi} with the given values.
-	 */
-	@Test
-	void getNewInstance_ComponentsTest()
-	{
-		ImmutableTup3bigi original = new ImmutableTup3bigi(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3));
-		ImmutableTup3bigi newInstance = original.getNewInstance(BigInteger.valueOf(3), BigInteger.valueOf(4), BigInteger.valueOf(5));
-		
-		assertEquals(BigInteger.valueOf(1), original.getX());
-		assertEquals(BigInteger.valueOf(2), original.getY());
-		assertEquals(BigInteger.valueOf(3), original.getZ());
-		assertEquals(BigInteger.valueOf(3), newInstance.getX());
-		assertEquals(BigInteger.valueOf(4), newInstance.getY());
-		assertEquals(BigInteger.valueOf(5), newInstance.getZ());
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link ImmutableTup3bigi#getNewInstance(BigInteger)} calls
-	 * the function {@link ImmutableTup3bigi#getNewInstance(BigInteger, BigInteger, BigInteger)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_ValueTest()
-	{
-		ImmutableTup3bigi newInstance = mock(ImmutableTup3bigi.class);
-		ImmutableTup3bigi t = mock(ImmutableTup3bigi.class);
-		
-		when(t.getNewInstance(BigInteger.valueOf(1))).thenCallRealMethod();
-
-		when(t.getNewInstance(BigInteger.valueOf(1), BigInteger.valueOf(1), BigInteger.valueOf(1))).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(BigInteger.valueOf(1)));
-		
-		verify(t).getNewInstance(BigInteger.valueOf(1));
-		
-		verify(t).getNewInstance(BigInteger.valueOf(1), BigInteger.valueOf(1), BigInteger.valueOf(1));
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link ImmutableTup3bigi#getNewInstance(Tup3bigiR)}
-	 * returns a new instance of {@link ImmutableTup3bigi} with the given values.
-	 */
-	@Test
-	void getNewInstance_Tuple3Test()
-	{
-		Tup3bigiR original = mock(Tup3bigiR.class);
-		ImmutableTup3bigi newInstance = mock(ImmutableTup3bigi.class);
-		ImmutableTup3bigi t = mock(ImmutableTup3bigi.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getX()).thenReturn(BigInteger.valueOf(1));
-		when(original.getY()).thenReturn(BigInteger.valueOf(2));
-		when(original.getZ()).thenReturn(BigInteger.valueOf(3));
-		when(t.getNewInstance(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3))).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getX();
-		verify(original).getY();
-		verify(original).getZ();
-		verify(t).getNewInstance(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3));
-		
-		verifyNoMoreInteractions(t, original);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link ImmutableTup3bigi#getNewInstance(TupbigiR)} calls
-	 * the function {@link ImmutableTup3bigi#getNewInstance(BigInteger, BigInteger, BigInteger)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_TupleTest()
-	{
-		TupbigiR original = mock(TupbigiR.class);
-		ImmutableTup3bigi newInstance = mock(ImmutableTup3bigi.class);
-		ImmutableTup3bigi t = mock(ImmutableTup3bigi.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getArray()).thenReturn(new BigInteger[] {BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3)});
-		when(t.getNewInstance(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3))).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getArray();
-		verify(t).getNewInstance(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3));
-		
-		verifyNoMoreInteractions(t, original);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link ImmutableTup3bigi#getNewInstanceFromArray(BigInteger[])} calls
-	 * the function {@link ImmutableTup3bigi#getNewInstance(BigInteger, BigInteger, BigInteger)} with the correct components.
-	 */
-	@Test
-	void getNewInstanceFromArrayTest()
-	{
-		ImmutableTup3bigi newInstance = mock(ImmutableTup3bigi.class);
-		ImmutableTup3bigi t = mock(ImmutableTup3bigi.class);
-		
-		when(t.getNewInstanceFromArray(new BigInteger[] {BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3)})).thenCallRealMethod();
-
-		when(t.getNewInstance(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3))).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstanceFromArray(new BigInteger[] {BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3)}));
-		
-		verify(t).getNewInstanceFromArray(new BigInteger[] {BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3)});
-		
-		verify(t).getNewInstance(BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3));
-		
-		verifyNoMoreInteractions(t);
 	}
 }

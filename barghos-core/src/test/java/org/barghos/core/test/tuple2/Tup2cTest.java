@@ -12,15 +12,11 @@ import org.barghos.core.tuple2.Tup2c;
 
 /**
  * This class provides component tests for the class {@link Tup2c}.
- * 
- * @since 1.0.0.0
  */
 class Tup2cTest
 {
 	/**
 	 * This test ensures, that the default constructor {@link Tup2c#Tup2c()} sets the components to 0.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_DefaultTest()
@@ -34,8 +30,6 @@ class Tup2cTest
 	/**
 	 * This test ensures, that an instance of {@link Tup2c} generated from an existing instance of {@link TupcR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_TupleTest()
@@ -57,8 +51,6 @@ class Tup2cTest
 	/**
 	 * This test ensures, that an instance of {@link Tup2c} generated from an existing instance of {@link Tup2cR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_Tuple2Test()
@@ -82,8 +74,6 @@ class Tup2cTest
 	/**
 	 * This test ensures, that an instance of {@link Tup2c} generated from a scalar,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ValueTest()
@@ -97,8 +87,6 @@ class Tup2cTest
 	/**
 	 * This test ensures, that an instance of {@link Tup2c} generated from an array,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ArrayTest()
@@ -112,8 +100,6 @@ class Tup2cTest
 	/**
 	 * This test ensures, that an instance of {@link Tup2c} generated from two components,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ComponentsTest()
@@ -127,8 +113,6 @@ class Tup2cTest
 	/**
 	 * This test ensures, that the function {@link Tup2c#setX(char)} sets the x component of the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setXTest()
@@ -142,8 +126,6 @@ class Tup2cTest
 	/**
 	 * This test ensures, that the function {@link Tup2c#setY(char)} sets the y component of the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setYTest()
@@ -158,8 +140,6 @@ class Tup2cTest
 	 * This test ensures, that the function
 	 * {@link Tup2c#set(org.barghos.core.api.tuple2.Tup2cR) Tup2c.set(Tup2cR)}
 	 * adopts the components from the input tuple and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void set_CloneTest()
@@ -189,8 +169,6 @@ class Tup2cTest
 	/**
 	 * This test ensures, that the function {@link Tup2c#set(char)} sets the components
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void set_ValueTest()
@@ -213,8 +191,6 @@ class Tup2cTest
 	/**
 	 * This test ensures, that the function {@link Tup2c#set(char, char)} set the components
 	 * to the respective parameters and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void set_ComponentsTest()
@@ -239,8 +215,6 @@ class Tup2cTest
 	/**
 	 * This test ensures, that the function {@link Tup2c#getX()} actually returns the value of the
 	 * x component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getXTest()
@@ -254,8 +228,6 @@ class Tup2cTest
 	/**
 	 * This test ensures, that the function {@link Tup2c#getY()} actually returns the value of the
 	 * y component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getYTest()
@@ -455,8 +427,6 @@ class Tup2cTest
 	
 	/**
 	 * This test ensures, that the {@link Tup2c#toString()} function prints the components correctly.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void toStringTest()
@@ -464,121 +434,5 @@ class Tup2cTest
 		Tup2c t = new Tup2c('a', 'b');
 		
 		assertEquals("tup2c(x=a, y=b)", t.toString());
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup2c#getNewInstance(char, char)}
-	 * returns a new instance of {@link Tup2c} with the given values.
-	 */
-	@Test
-	void getNewInstance_ComponentsTest()
-	{
-		Tup2c original = new Tup2c('a', 'b');
-		Tup2c newInstance = original.getNewInstance('c', 'd');
-		
-		assertEquals('a', original.getX());
-		assertEquals('b', original.getY());
-		assertEquals('c', newInstance.getX());
-		assertEquals('d', newInstance.getY());
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link Tup2c#getNewInstance(char)} calls
-	 * the function {@link Tup2c#getNewInstance(char, char)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_ValueTest()
-	{
-		Tup2c newInstance = mock(Tup2c.class);
-		Tup2c t = mock(Tup2c.class);
-		
-		when(t.getNewInstance('a')).thenCallRealMethod();
-
-		when(t.getNewInstance('a', 'a')).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance('a'));
-		
-		verify(t).getNewInstance('a');
-		
-		verify(t).getNewInstance('a', 'a');
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup2c#getNewInstance(Tup2cR)}
-	 * returns a new instance of {@link Tup2c} with the given values.
-	 */
-	@Test
-	void getNewInstance_Tuple2Test()
-	{
-		Tup2cR original = mock(Tup2cR.class);
-		Tup2c newInstance = mock(Tup2c.class);
-		Tup2c t = mock(Tup2c.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getX()).thenReturn('a');
-		when(original.getY()).thenReturn('b');
-		when(t.getNewInstance('a', 'b')).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getX();
-		verify(original).getY();
-		verify(t).getNewInstance('a', 'b');
-		
-		verifyNoMoreInteractions(t, original);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link Tup2c#getNewInstance(TupcR)} calls
-	 * the function {@link Tup2c#getNewInstance(char, char)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_TupleTest()
-	{
-		TupcR original = mock(TupcR.class);
-		Tup2c newInstance = mock(Tup2c.class);
-		Tup2c t = mock(Tup2c.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getArray()).thenReturn(new char[] {'a', 'b'});
-		when(t.getNewInstance('a', 'b')).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getArray();
-		verify(t).getNewInstance('a', 'b');
-		
-		verifyNoMoreInteractions(t, original);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link Tup2c#getNewInstanceFromArray(char[])} calls
-	 * the function {@link Tup2c#getNewInstance(char, char)} with the correct components.
-	 */
-	@Test
-	void getNewInstanceFromArrayTest()
-	{
-		Tup2c newInstance = mock(Tup2c.class);
-		Tup2c t = mock(Tup2c.class);
-		
-		when(t.getNewInstanceFromArray(new char[] {'a', 'b'})).thenCallRealMethod();
-
-		when(t.getNewInstance('a', 'b')).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstanceFromArray(new char[] {'a', 'b'}));
-		
-		verify(t).getNewInstanceFromArray(new char[] {'a', 'b'});
-		
-		verify(t).getNewInstance('a', 'b');
-		
-		verifyNoMoreInteractions(t);
 	}
 }

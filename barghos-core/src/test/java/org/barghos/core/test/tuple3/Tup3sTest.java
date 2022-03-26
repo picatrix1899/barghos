@@ -34,15 +34,11 @@ import org.barghos.core.tuple3.Tup3s;
 
 /**
  * This class provides component tests for the class {@link Tup3s}.
- * 
- * @since 1.0.0.0
  */
 class Tup3sTest
 {
 	/**
 	 * This test ensures, that the default constructor {@link Tup3s#Tup3s()} sets the components to 0.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_DefaultTest()
@@ -57,8 +53,6 @@ class Tup3sTest
 	/**
 	 * This test ensures, that an instance of {@link Tup3s} generated from an existing instance of {@link TupsR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_TupleTest()
@@ -81,8 +75,6 @@ class Tup3sTest
 	/**
 	 * This test ensures, that an instance of {@link Tup3s} generated from an existing instance of {@link Tup3sR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_Tuple2Test()
@@ -109,8 +101,6 @@ class Tup3sTest
 	/**
 	 * This test ensures, that an instance of {@link Tup3s} generated from a scalar,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ValueTest()
@@ -125,8 +115,6 @@ class Tup3sTest
 	/**
 	 * This test ensures, that an instance of {@link Tup3s} generated from an array,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ArrayTest()
@@ -141,8 +129,6 @@ class Tup3sTest
 	/**
 	 * This test ensures, that an instance of {@link Tup3s} generated from two components,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ComponentsTest()
@@ -157,8 +143,6 @@ class Tup3sTest
 	/**
 	 * This test ensures, that the function {@link Tup3s#setX(short)} sets the x component of the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setXTest()
@@ -172,8 +156,6 @@ class Tup3sTest
 	/**
 	 * This test ensures, that the function {@link Tup3s#setY(short)} sets the y component of the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setYTest()
@@ -187,8 +169,6 @@ class Tup3sTest
 	/**
 	 * This test ensures, that the function {@link Tup3s#setZ(short)} sets the z component of the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setZTest()
@@ -203,8 +183,6 @@ class Tup3sTest
 	 * This test ensures, that the function
 	 * {@link Tup3s#set(org.barghos.core.api.tuple2.Tup3sR) Tup3s.set(Tup3sR)}
 	 * adopts the components from the input tuple and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void set_CloneTest()
@@ -236,8 +214,6 @@ class Tup3sTest
 	/**
 	 * This test ensures, that the function {@link Tup3s#set(short)} sets the components
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void set_ValueTest()
@@ -260,8 +236,6 @@ class Tup3sTest
 	/**
 	 * This test ensures, that the function {@link Tup3s#set(short, short, short)} set the components
 	 * to the respective parameters and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void set_ComponentsTest()
@@ -288,8 +262,6 @@ class Tup3sTest
 	/**
 	 * This test ensures, that the function {@link Tup3s#getX()} actually returns the value of the
 	 * x component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getXTest()
@@ -303,8 +275,6 @@ class Tup3sTest
 	/**
 	 * This test ensures, that the function {@link Tup3s#getY()} actually returns the value of the
 	 * y component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getYTest()
@@ -318,8 +288,6 @@ class Tup3sTest
 	/**
 	 * This test ensures, that the function {@link Tup3s#getZ()} actually returns the value of the
 	 * z component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getZTest()
@@ -560,8 +528,6 @@ class Tup3sTest
 	
 	/**
 	 * This test ensures, that the {@link Tup3s#toString()} function prshorts the components correctly.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void toStringTest()
@@ -569,125 +535,5 @@ class Tup3sTest
 		Tup3s t = new Tup3s((short)1, (short)2, (short)3);
 		
 		assertEquals("tup3s(x=1, y=2, z=3)", t.toString());
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup3s#getNewInstance(short, short, short)}
-	 * returns a new instance of {@link Tup3s} with the given values.
-	 */
-	@Test
-	void getNewInstance_ComponentsTest()
-	{
-		Tup3s original = new Tup3s((short)1, (short)2, (short)3);
-		Tup3s newInstance = original.getNewInstance((short)3, (short)4, (short)5);
-		
-		assertEquals((short)1, original.getX());
-		assertEquals((short)2, original.getY());
-		assertEquals((short)3, original.getZ());
-		assertEquals((short)3, newInstance.getX());
-		assertEquals((short)4, newInstance.getY());
-		assertEquals((short)5, newInstance.getZ());
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link Tup3s#getNewInstance(short)} calls
-	 * the function {@link Tup3s#getNewInstance(short, short, short)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_ValueTest()
-	{
-		Tup3s newInstance = mock(Tup3s.class);
-		Tup3s t = mock(Tup3s.class);
-		
-		when(t.getNewInstance((short)1)).thenCallRealMethod();
-
-		when(t.getNewInstance((short)1, (short)1, (short)1)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance((short)1));
-		
-		verify(t).getNewInstance((short)1);
-		
-		verify(t).getNewInstance((short)1, (short)1, (short)1);
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup2bd#getNewInstance(Tup3sR)}
-	 * returns a new instance of {@link Tup3s} with the given values.
-	 */
-	@Test
-	void getNewInstance_Tuple2Test()
-	{
-		Tup3sR original = mock(Tup3sR.class);
-		Tup3s newInstance = mock(Tup3s.class);
-		Tup3s t = mock(Tup3s.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getX()).thenReturn((short)1);
-		when(original.getY()).thenReturn((short)2);
-		when(original.getZ()).thenReturn((short)3);
-		when(t.getNewInstance((short)1, (short)2, (short)3)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getX();
-		verify(original).getY();
-		verify(original).getZ();
-		verify(t).getNewInstance((short)1, (short)2, (short)3);
-		
-		verifyNoMoreInteractions(t, original);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link Tup3s#getNewInstance(TupsR)} calls
-	 * the function {@link Tup3s#getNewInstance(short, short, short)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_TupleTest()
-	{
-		TupsR original = mock(TupsR.class);
-		Tup3s newInstance = mock(Tup3s.class);
-		Tup3s t = mock(Tup3s.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getArray()).thenReturn(new short[] {(short)1, (short)2, (short)3});
-		when(t.getNewInstance((short)1, (short)2, (short)3)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getArray();
-		verify(t).getNewInstance((short)1, (short)2, (short)3);
-		
-		verifyNoMoreInteractions(t, original);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link Tup3s#getNewInstanceFromArray(short[])} calls
-	 * the function {@link Tup3s#getNewInstance(short, short, short)} with the correct components.
-	 */
-	@Test
-	void getNewInstanceFromArrayTest()
-	{
-		Tup3s newInstance = mock(Tup3s.class);
-		Tup3s t = mock(Tup3s.class);
-		
-		when(t.getNewInstanceFromArray(new short[] {(short)1, (short)2, (short)3})).thenCallRealMethod();
-
-		when(t.getNewInstance((short)1, (short)2, (short)3)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstanceFromArray(new short[] {(short)1, (short)2, (short)3}));
-		
-		verify(t).getNewInstanceFromArray(new short[] {(short)1, (short)2, (short)3});
-		
-		verify(t).getNewInstance((short)1, (short)2, (short)3);
-		
-		verifyNoMoreInteractions(t);
 	}
 }

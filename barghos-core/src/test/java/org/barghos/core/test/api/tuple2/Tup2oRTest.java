@@ -86,37 +86,4 @@ class Tup2oRTest
 		
 		verifyNoMoreInteractions(t);
 	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link Tup2oR#getNewInstance(Tup2oR)} calls
-	 * the function {@link Tup2oR#getNewInstance(Object, Object)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_Tuple2Test()
-	{
-		@SuppressWarnings("unchecked")
-		Tup2oR<Integer,Double> original = (Tup2oR<Integer,Double>)mock(Tup2oR.class);
-		
-		@SuppressWarnings("unchecked")
-		Tup2oR<Integer,Double> newInstance = (Tup2oR<Integer,Double>)mock(Tup2oR.class);
-		
-		@SuppressWarnings("unchecked")
-		Tup2oR<Integer,Double> t = (Tup2oR<Integer,Double>)mock(Tup2oR.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getX()).thenReturn(1);
-		when(original.getY()).thenReturn(1.0);
-		when(t.getNewInstance(1, 1.0)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getX();
-		verify(original).getY();
-		verify(t).getNewInstance(1, 1.0);
-		
-		verifyNoMoreInteractions(t, original);
-	}
 }

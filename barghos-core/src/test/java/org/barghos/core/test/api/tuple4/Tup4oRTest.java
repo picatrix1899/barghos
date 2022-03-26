@@ -146,41 +146,4 @@ class Tup4oRTest
 		
 		verifyNoMoreInteractions(t);
 	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link Tup4oR#getNewInstance(Tup4oR)} calls
-	 * the function {@link Tup4oR#getNewInstance(Object, Object, Object, Object)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_Tuple2Test()
-	{
-		@SuppressWarnings("unchecked")
-		Tup4oR<Integer,Double,String,Character> original = (Tup4oR<Integer,Double,String,Character>)mock(Tup4oR.class);
-		
-		@SuppressWarnings("unchecked")
-		Tup4oR<Integer,Double,String,Character> newInstance = (Tup4oR<Integer,Double,String,Character>)mock(Tup4oR.class);
-		
-		@SuppressWarnings("unchecked")
-		Tup4oR<Integer,Double,String,Character> t = (Tup4oR<Integer,Double,String,Character>)mock(Tup4oR.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getX()).thenReturn(1);
-		when(original.getY()).thenReturn(1.0);
-		when(original.getZ()).thenReturn("a");
-		when(original.getW()).thenReturn('a');
-		when(t.getNewInstance(1, 1.0, "a", 'a')).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getX();
-		verify(original).getY();
-		verify(original).getZ();
-		verify(original).getW();
-		verify(t).getNewInstance(1, 1.0, "a", 'a');
-		
-		verifyNoMoreInteractions(t, original);
-	}
 }

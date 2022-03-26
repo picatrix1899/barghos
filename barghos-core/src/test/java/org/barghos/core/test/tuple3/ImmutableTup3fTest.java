@@ -60,16 +60,12 @@ import org.barghos.core.tuple3.ImmutableTup3f;
  * This class provides component tests for the class {@link ImmutableTup3f}.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 class ImmutableTup3fTest
 {
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup3f} generated from an existing instance of {@link TupfR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_TupleTest()
@@ -92,8 +88,6 @@ class ImmutableTup3fTest
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup3f} generated from an existing instance of {@link Tup3fR},
 	 * returns the correct components.
-	 *  
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_Tuple3Test()
@@ -120,8 +114,6 @@ class ImmutableTup3fTest
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup3f} generated from a scalar,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ValueTest()
@@ -136,8 +128,6 @@ class ImmutableTup3fTest
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup3f} generated from an array,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ArrayTest()
@@ -152,8 +142,6 @@ class ImmutableTup3fTest
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup3f} generated from two components,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ComponentsTest()
@@ -168,8 +156,6 @@ class ImmutableTup3fTest
 	/**
 	 * This test ensures, that the function {@link ImmutableTup3f#getX()} actually returns the value of the
 	 * x component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getXTest()
@@ -183,8 +169,6 @@ class ImmutableTup3fTest
 	/**
 	 * This test ensures, that the function {@link ImmutableTup3f#getY()} actually returns the value of the
 	 * y component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getYTest()
@@ -198,8 +182,6 @@ class ImmutableTup3fTest
 	/**
 	 * This test ensures, that the function {@link ImmutableTup3f#getZ()} actually returns the value of the
 	 * z component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getZTest()
@@ -440,8 +422,6 @@ class ImmutableTup3fTest
 	
 	/**
 	 * This test ensures, that the {@link ImmutableTup3f#toString()} function prints the components correctly.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void toStringTest()
@@ -449,125 +429,5 @@ class ImmutableTup3fTest
 		ImmutableTup3f t = new ImmutableTup3f(1.1f, 2.2f, 3.3f);
 		
 		assertEquals("immutableTup3f(x=1.1, y=2.2, z=3.3)", t.toString());
-	}
-	
-	/**
-	 * This test ensures, that the function {@link ImmutableTup3f#getNewInstance(float, float, float)}
-	 * returns a new instance of {@link ImmutableTup3f} with the given values.
-	 */
-	@Test
-	void getNewInstance_ComponentsTest()
-	{
-		ImmutableTup3f original = new ImmutableTup3f(1.0f, 2.0f, 3.0f);
-		ImmutableTup3f newInstance = original.getNewInstance(3.0f, 4.0f, 5.0f);
-		
-		assertEquals(1.0f, original.getX());
-		assertEquals(2.0f, original.getY());
-		assertEquals(3.0f, original.getZ());
-		assertEquals(3.0f, newInstance.getX());
-		assertEquals(4.0f, newInstance.getY());
-		assertEquals(5.0f, newInstance.getZ());
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link ImmutableTup3f#getNewInstance(float)} calls
-	 * the function {@link ImmutableTup3f#getNewInstance(float, float, float)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_ValueTest()
-	{
-		ImmutableTup3f newInstance = mock(ImmutableTup3f.class);
-		ImmutableTup3f t = mock(ImmutableTup3f.class);
-		
-		when(t.getNewInstance(1.0f)).thenCallRealMethod();
-
-		when(t.getNewInstance(1.0f, 1.0f, 1.0f)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(1.0f));
-		
-		verify(t).getNewInstance(1.0f);
-		
-		verify(t).getNewInstance(1.0f, 1.0f, 1.0f);
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link ImmutableTup3f#getNewInstance(Tup3fR)}
-	 * returns a new instance of {@link ImmutableTup3f} with the given values.
-	 */
-	@Test
-	void getNewInstance_Tuple2Test()
-	{
-		Tup3fR original = mock(Tup3fR.class);
-		ImmutableTup3f newInstance = mock(ImmutableTup3f.class);
-		ImmutableTup3f t = mock(ImmutableTup3f.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getX()).thenReturn(1.0f);
-		when(original.getY()).thenReturn(2.0f);
-		when(original.getZ()).thenReturn(3.0f);
-		when(t.getNewInstance(1.0f, 2.0f, 3.0f)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getX();
-		verify(original).getY();
-		verify(original).getZ();
-		verify(t).getNewInstance(1.0f, 2.0f, 3.0f);
-		
-		verifyNoMoreInteractions(t, original);
-	}
-
-	/**
-	 * This test ensures, that the default implementation of the function {@link ImmutableTup3f#getNewInstance(TupfR)} calls
-	 * the function {@link ImmutableTup3f#getNewInstance(float, float, float)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_TupleTest()
-	{
-		TupfR original = mock(TupfR.class);
-		ImmutableTup3f newInstance = mock(ImmutableTup3f.class);
-		ImmutableTup3f t = mock(ImmutableTup3f.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getArray()).thenReturn(new float[] {1.0f, 2.0f, 3.0f});
-		when(t.getNewInstance(1.0f, 2.0f, 3.0f)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getArray();
-		verify(t).getNewInstance(1.0f, 2.0f, 3.0f);
-		
-		verifyNoMoreInteractions(t, original);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link ImmutableTup3f#getNewInstanceFromArray(float[])} calls
-	 * the function {@link ImmutableTup3f#getNewInstance(float, float, float)} with the correct components.
-	 */
-	@Test
-	void getNewInstanceFromArrayTest()
-	{
-		ImmutableTup3f newInstance = mock(ImmutableTup3f.class);
-		ImmutableTup3f t = mock(ImmutableTup3f.class);
-		
-		when(t.getNewInstanceFromArray(new float[] {1.0f, 2.0f, 3.0f})).thenCallRealMethod();
-
-		when(t.getNewInstance(1.0f, 2.0f, 3.0f)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstanceFromArray(new float[] {1.0f, 2.0f, 3.0f}));
-		
-		verify(t).getNewInstanceFromArray(new float[] {1.0f, 2.0f, 3.0f});
-		
-		verify(t).getNewInstance(1.0f, 2.0f, 3.0f);
-		
-		verifyNoMoreInteractions(t);
 	}
 }

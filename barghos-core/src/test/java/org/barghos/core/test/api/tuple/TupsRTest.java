@@ -33,24 +33,6 @@ class TupsRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link TupsR#isValid()} returns always
-	 * true and does not make any calls.
-	 */
-	@Test
-	void isValidTest()
-	{
-		TupsR t = mock(TupsR.class);
-		
-		when(t.isValid()).thenCallRealMethod();
-		
-		assertEquals(true, t.isValid());
-		
-		verify(t).isValid();
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
 	 * This test ensures, that the function {@link TupsR#isZero()} returns true
 	 * if all components are 0.0.
 	 */
@@ -360,57 +342,6 @@ class TupsRTest
 		verify(t).getDimensions();
 		verify(t).getByIndex(0);
 		verify(t).getByIndex(1);
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link TupsR#getNewInstance(TupsR)} calls
-	 * the function {@link TupsR#getNewInstance(short[])} with the correct components.
-	 */
-	@Test
-	void getNewInstance_TupleTest()
-	{
-		TupsR original = mock(TupsR.class);
-		TupsR newInstance = mock(TupsR.class);
-		TupsR t = mock(TupsR.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getArray()).thenReturn(new short[] {(short)1, (short)2});
-		when(t.getNewInstanceFromArray(new short[] {(short)1, (short)2})).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-
-		verify(original).getArray();
-		verify(t).getNewInstanceFromArray(new short[] {(short)1, (short)2});
-		
-		verifyNoMoreInteractions(t, original);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link TupsR#getNewInstance(short)} calls
-	 * the function {@link TupsR#getNewInstanceFromArray(short[])} with the correct components.
-	 */
-	@Test
-	void getNewInstance_ValueTest()
-	{
-		TupsR newInstance = mock(TupsR.class);
-		TupsR t = mock(TupsR.class);
-		
-		when(t.getNewInstance((short)1)).thenCallRealMethod();
-		
-		when(t.getDimensions()).thenReturn(2);
-		when(t.getNewInstanceFromArray(new short[] {(short)1, (short)1})).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance((short)1));
-		
-		verify(t).getNewInstance((short)1);
-
-		verify(t).getDimensions();
-		verify(t).getNewInstanceFromArray(new short[] {(short)1, (short)1});
 		
 		verifyNoMoreInteractions(t);
 	}

@@ -59,16 +59,12 @@ import org.barghos.core.tuple4.ImmutableTup4o;
  * This class provides component tests for the class {@link ImmutableTup4o}.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 class ImmutableTup4oTest
 {
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup4o} generated from an existing instance of {@link Tup4oR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_Tuple3Test()
@@ -99,8 +95,6 @@ class ImmutableTup4oTest
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup4o} generated from two components,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ComponentsTest()
@@ -116,8 +110,6 @@ class ImmutableTup4oTest
 	/**
 	 * This test ensures, that the function {@link ImmutableTup4o#getX()} actually returns the value of the
 	 * x component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getXTest()
@@ -131,8 +123,6 @@ class ImmutableTup4oTest
 	/**
 	 * This test ensures, that the function {@link ImmutableTup4o#getY()} actually returns the value of the
 	 * y component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getYTest()
@@ -146,8 +136,6 @@ class ImmutableTup4oTest
 	/**
 	 * This test ensures, that the function {@link ImmutableTup4o#getZ()} actually returns the value of the
 	 * z component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getZTest()
@@ -161,8 +149,6 @@ class ImmutableTup4oTest
 	/**
 	 * This test ensures, that the function {@link ImmutableTup4o#getW()} actually returns the value of the
 	 * z component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getWTest()
@@ -320,8 +306,6 @@ class ImmutableTup4oTest
 	
 	/**
 	 * This test ensures, that the {@link ImmutableTup4o#toString()} function prints the components correctly.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void toStringTest()
@@ -329,62 +313,5 @@ class ImmutableTup4oTest
 		ImmutableTup4o<Integer,Double,String,Character> t = new ImmutableTup4o<>(1, 1.0, "a", 'a');
 		
 		assertEquals("immutableTup4o(x=1, y=1.0, z=a, w=a)", t.toString());
-	}
-	
-	/**
-	 * This test ensures, that the function {@link ImmutableTup4o#getNewInstance(Object, Object, Object, Object)}
-	 * returns a new instance of {@link ImmutableTup4o} with the given values.
-	 */
-	@Test
-	void getNewInstance_ComponentsTest()
-	{
-		ImmutableTup4o<Integer,Double,String,Character> original = new ImmutableTup4o<>(1, 1.0, "a", 'a');
-		ImmutableTup4o<Integer,Double,String,Character> newInstance = original.getNewInstance(4, 4.0, "b", 'b');
-		
-		assertEquals(1, (int)original.getX());
-		assertEquals(1.0, (double)original.getY());
-		assertEquals("a", original.getZ());
-		assertEquals('a', (char)original.getW());
-		assertEquals(4, (int)newInstance.getX());
-		assertEquals(4.0, (double)newInstance.getY());
-		assertEquals("b", newInstance.getZ());
-		assertEquals('b', (char)newInstance.getW());
-	}
-	
-	/**
-	 * This test ensures, that the function {@link ImmutableTup4o#getNewInstance(Tup4oR)}
-	 * returns a new instance of {@link ImmutableTup4o} with the given values.
-	 */
-	@Test
-	void getNewInstance_Tuple2Test()
-	{
-		@SuppressWarnings("unchecked")
-		Tup4oR<Integer,Double,String,Character> original = (Tup4oR<Integer,Double,String,Character>)mock(Tup4oR.class);
-		
-		@SuppressWarnings("unchecked")
-		ImmutableTup4o<Integer,Double,String,Character> newInstance = (ImmutableTup4o<Integer,Double,String,Character>)mock(ImmutableTup4o.class);
-		
-		@SuppressWarnings("unchecked")
-		ImmutableTup4o<Integer,Double,String,Character> t = (ImmutableTup4o<Integer,Double,String,Character>)mock(ImmutableTup4o.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getX()).thenReturn(1);
-		when(original.getY()).thenReturn(1.0);
-		when(original.getZ()).thenReturn("a");
-		when(original.getW()).thenReturn('a');
-		when(t.getNewInstance(1, 1.0, "a", 'a')).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getX();
-		verify(original).getY();
-		verify(original).getZ();
-		verify(original).getW();
-		verify(t).getNewInstance(1, 1.0, "a", 'a');
-		
-		verifyNoMoreInteractions(t, original);
 	}
 }

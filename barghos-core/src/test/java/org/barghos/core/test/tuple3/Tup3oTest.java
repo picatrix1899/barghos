@@ -33,15 +33,11 @@ import org.barghos.core.tuple3.Tup3o;
 
 /**
  * This class provides component tests for the class {@link Tup3o}.
- * 
- * @since 1.0.0.0
  */
 class Tup3oTest
 {
 	/**
 	 * This test ensures, that the default constructor {@link Tup3o#Tup3o()} sets the components to null.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_DefaultTest()
@@ -56,8 +52,6 @@ class Tup3oTest
 	/**
 	 * This test ensures, that an instance of {@link Tup3o} generated from an existing instance of {@link Tup3oR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_Tuple3Test()
@@ -85,8 +79,6 @@ class Tup3oTest
 	/**
 	 * This test ensures, that an instance of {@link Tup3o} generated from two components,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ComponentsTest()
@@ -101,8 +93,6 @@ class Tup3oTest
 	/**
 	 * This test ensures, that the function {@link Tup3o#setX(Object)} sets the x component of the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setXTest()
@@ -116,8 +106,6 @@ class Tup3oTest
 	/**
 	 * This test ensures, that the function {@link Tup3o#setY(Object)} sets the y component of the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setYTest()
@@ -131,8 +119,6 @@ class Tup3oTest
 	/**
 	 * This test ensures, that the function {@link Tup3o#setZ(Object)} sets the z component of the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setZTest()
@@ -147,8 +133,6 @@ class Tup3oTest
 	 * This test ensures, that the function
 	 * {@link Tup3o#set(org.barghos.core.api.tuple2.Tup3oR) Tup3o.set(Tup3oR)}
 	 * adopts the components from the input tuple and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void set_Tuple3Test()
@@ -182,8 +166,6 @@ class Tup3oTest
 	/**
 	 * This test ensures, that the function {@link Tup3o#set(Object, Object, Object)} set the components
 	 * to the respective parameters and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void set_ComponentsTest()
@@ -211,8 +193,6 @@ class Tup3oTest
 	/**
 	 * This test ensures, that the function {@link Tup3o#getX()} actually returns the value of the
 	 * x component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getXTest()
@@ -226,8 +206,6 @@ class Tup3oTest
 	/**
 	 * This test ensures, that the function {@link Tup3o#getY()} actually returns the value of the
 	 * y component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getYTest()
@@ -241,8 +219,6 @@ class Tup3oTest
 	/**
 	 * This test ensures, that the function {@link Tup3o#getZ()} actually returns the value of the
 	 * z component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getZTest()
@@ -393,8 +369,6 @@ class Tup3oTest
 	
 	/**
 	 * This test ensures, that the {@link Tup3o#toString()} function prints the components correctly.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void toStringTest()
@@ -402,58 +376,5 @@ class Tup3oTest
 		Tup3o<Integer,Double,String> t = new Tup3o<>(1, 1.0, "a");
 		
 		assertEquals("tup3o(x=1, y=1.0, z=a)", t.toString());
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup3o#getNewInstance(Object, Object, Object)}
-	 * returns a new instance of {@link Tup3o} with the given values.
-	 */
-	@Test
-	void getNewInstance_ComponentsTest()
-	{
-		Tup3o<Integer,Double,String> original = new Tup3o<>(1, 1.0, "a");
-		Tup3o<Integer,Double,String> newInstance = original.getNewInstance(2, 2.0, "b");
-		
-		assertEquals(1, (int)original.getX());
-		assertEquals(1.0, (double)original.getY());
-		assertEquals("a", original.getZ());
-		assertEquals(2, (int)newInstance.getX());
-		assertEquals(2.0, (double)newInstance.getY());
-		assertEquals("b", newInstance.getZ());
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup3o#getNewInstance(Tup3oR)}
-	 * returns a new instance of {@link Tup3o} with the given values.
-	 */
-	@Test
-	void getNewInstance_Tuple2Test()
-	{
-		@SuppressWarnings("unchecked")
-		Tup3oR<Integer,Double,String> original = (Tup3oR<Integer,Double,String>)mock(Tup3oR.class);
-		
-		@SuppressWarnings("unchecked")
-		Tup3o<Integer,Double,String> newInstance = (Tup3o<Integer,Double,String>)mock(Tup3o.class);
-		
-		@SuppressWarnings("unchecked")
-		Tup3o<Integer,Double,String> t = (Tup3o<Integer,Double,String>)mock(Tup3o.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getX()).thenReturn(1);
-		when(original.getY()).thenReturn(1.0);
-		when(original.getZ()).thenReturn("a");
-		when(t.getNewInstance(1, 1.0, "a")).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getX();
-		verify(original).getY();
-		verify(original).getZ();
-		verify(t).getNewInstance(1, 1.0, "a");
-		
-		verifyNoMoreInteractions(t, original);
 	}
 }

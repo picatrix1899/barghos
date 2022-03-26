@@ -34,15 +34,11 @@ import org.barghos.core.tuple4.Tup4bo;
 
 /**
  * This class provides component tests for the class {@link Tup4bo}.
- * 
- * @since 1.0.0.0
  */
 class Tup4boTest
 {
 	/**
 	 * This test ensures, that the default constructor {@link Tup4bo#Tup4bo()} sets the components to false.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_DefaultTest()
@@ -58,8 +54,6 @@ class Tup4boTest
 	/**
 	 * This test ensures, that an instance of {@link Tup4bo} generated from an existing instance of {@link TupboR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_TupleTest()
@@ -83,8 +77,6 @@ class Tup4boTest
 	/**
 	 * This test ensures, that an instance of {@link Tup4bo} generated from an existing instance of {@link Tup4boR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_Tuple3Test()
@@ -114,8 +106,6 @@ class Tup4boTest
 	/**
 	 * This test ensures, that an instance of {@link Tup4bo} generated from a scalar,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ValueTest()
@@ -131,8 +121,6 @@ class Tup4boTest
 	/**
 	 * This test ensures, that an instance of {@link Tup4bo} generated from an array,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ArrayTest()
@@ -148,8 +136,6 @@ class Tup4boTest
 	/**
 	 * This test ensures, that an instance of {@link Tup4bo} generated from two components,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ComponentsTest()
@@ -165,8 +151,6 @@ class Tup4boTest
 	/**
 	 * This test ensures, that the function {@link Tup4bo#setX(boolean)} sets the x component of the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setXTest()
@@ -180,8 +164,6 @@ class Tup4boTest
 	/**
 	 * This test ensures, that the function {@link Tup4bo#setY(boolean)} sets the y component of the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setYTest()
@@ -195,8 +177,6 @@ class Tup4boTest
 	/**
 	 * This test ensures, that the function {@link Tup4bo#setZ(boolean)} sets the z component of the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setZTest()
@@ -210,8 +190,6 @@ class Tup4boTest
 	/**
 	 * This test ensures, that the function {@link Tup4bo#setW(boolean)} sets the z component of the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setWTest()
@@ -226,8 +204,6 @@ class Tup4boTest
 	 * This test ensures, that the function
 	 * {@link Tup4bo#set(org.barghos.core.api.tuple3.Tup4boR) Tup4bo.set(Tup4boR)}
 	 * adopts the components from the input tuple and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void set_CloneTest()
@@ -261,8 +237,6 @@ class Tup4boTest
 	/**
 	 * This test ensures, that the function {@link Tup4bo#set(boolean)} sets the components
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void set_ValueTest()
@@ -285,8 +259,6 @@ class Tup4boTest
 	/**
 	 * This test ensures, that the function {@link Tup4bo#set(boolean, boolean, boolean, boolean)} set the components
 	 * to the respective parameters and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void set_ComponentsTest()
@@ -315,8 +287,6 @@ class Tup4boTest
 	/**
 	 * This test ensures, that the function {@link Tup4bo#getX()} actually returns the value of the
 	 * x component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getXTest()
@@ -330,8 +300,6 @@ class Tup4boTest
 	/**
 	 * This test ensures, that the function {@link Tup4bo#getY()} actually returns the value of the
 	 * y component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getYTest()
@@ -345,8 +313,6 @@ class Tup4boTest
 	/**
 	 * This test ensures, that the function {@link Tup4bo#getZ()} actually returns the value of the
 	 * z component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getZTest()
@@ -360,8 +326,6 @@ class Tup4boTest
 	/**
 	 * This test ensures, that the function {@link Tup4bo#getW()} actually returns the value of the
 	 * w component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getWTest()
@@ -645,8 +609,6 @@ class Tup4boTest
 	
 	/**
 	 * This test ensures, that the {@link Tup4bo#toString()} function prints the components correctly.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void toStringTest()
@@ -654,129 +616,5 @@ class Tup4boTest
 		Tup4bo t = new Tup4bo(false, true, false, true);
 		
 		assertEquals("tup4bo(x=false, y=true, z=false, w=true)", t.toString());
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup4bo#getNewInstance(boolean, boolean, boolean, boolean)}
-	 * returns a new instance of {@link Tup4bo} with the given values.
-	 */
-	@Test
-	void getNewInstance_ComponentsTest()
-	{
-		Tup4bo original = new Tup4bo(false, true, false, true);
-		Tup4bo newInstance = original.getNewInstance(true, false, true, false);
-		
-		assertEquals(false, original.getX());
-		assertEquals(true, original.getY());
-		assertEquals(false, original.getZ());
-		assertEquals(true, original.getW());
-		assertEquals(true, newInstance.getX());
-		assertEquals(false, newInstance.getY());
-		assertEquals(true, newInstance.getZ());
-		assertEquals(false, newInstance.getW());
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link Tup4bo#getNewInstance(boolean)} calls
-	 * the function {@link Tup4bo#getNewInstance(boolean, boolean, boolean, boolean)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_ValueTest()
-	{
-		Tup4bo newInstance = mock(Tup4bo.class);
-		Tup4bo t = mock(Tup4bo.class);
-		
-		when(t.getNewInstance(true)).thenCallRealMethod();
-
-		when(t.getNewInstance(true, true, true, true)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(true));
-		
-		verify(t).getNewInstance(true);
-		
-		verify(t).getNewInstance(true, true, true, true);
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup4bo#getNewInstance(Tup4boR)}
-	 * returns a new instance of {@link Tup4bo} with the given values.
-	 */
-	@Test
-	void getNewInstance_Tuple2Test()
-	{
-		Tup4boR original = mock(Tup4boR.class);
-		Tup4bo newInstance = mock(Tup4bo.class);
-		Tup4bo t = mock(Tup4bo.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getX()).thenReturn(false);
-		when(original.getY()).thenReturn(true);
-		when(original.getZ()).thenReturn(false);
-		when(original.getW()).thenReturn(true);
-		when(t.getNewInstance(false, true, false, true)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getX();
-		verify(original).getY();
-		verify(original).getZ();
-		verify(original).getW();
-		verify(t).getNewInstance(false, true, false, true);
-		
-		verifyNoMoreInteractions(t, original);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link Tup4bo#getNewInstance(TupboR)} calls
-	 * the function {@link Tup4bo#getNewInstance(boolean, boolean, boolean, boolean)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_TupleTest()
-	{
-		TupboR original = mock(TupboR.class);
-		Tup4bo newInstance = mock(Tup4bo.class);
-		Tup4bo t = mock(Tup4bo.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getArray()).thenReturn(new boolean[] {false, true, false, true});
-		when(t.getNewInstance(false, true, false, true)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getArray();
-		verify(t).getNewInstance(false, true, false, true);
-		
-		verifyNoMoreInteractions(t, original);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link Tup4bo#getNewInstanceFromArray(boolean[])} calls
-	 * the function {@link Tup4bo#getNewInstance(boolean, boolean, boolean, boolean)} with the correct components.
-	 */
-	@Test
-	void getNewInstanceFromArrayTest()
-	{
-		Tup4bo newInstance = mock(Tup4bo.class);
-		Tup4bo t = mock(Tup4bo.class);
-		
-		when(t.getNewInstanceFromArray(new boolean[] {false, true, false, true})).thenCallRealMethod();
-
-		when(t.getNewInstance(false, true, false, true)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstanceFromArray(new boolean[] {false, true, false, true}));
-		
-		verify(t).getNewInstanceFromArray(new boolean[] {false, true, false, true});
-		
-		verify(t).getNewInstance(false, true, false, true);
-		
-		verifyNoMoreInteractions(t);
 	}
 }

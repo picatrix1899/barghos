@@ -34,15 +34,11 @@ import org.barghos.core.tuple3.Tup3d;
 
 /**
  * This class provides component tests for the class {@link Tup3d}.
- * 
- * @since 1.0.0.0
  */
 class Tup3dTest
 {
 	/**
 	 * This test ensures, that the default constructor {@link Tup3d#Tup3d()} sets the components to 0.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_DefaultTest()
@@ -57,8 +53,6 @@ class Tup3dTest
 	/**
 	 * This test ensures, that an instance of {@link Tup3d} generated from an existing instance of {@link TupdR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_TupleTest()
@@ -81,8 +75,6 @@ class Tup3dTest
 	/**
 	 * This test ensures, that an instance of {@link Tup3d} generated from an existing instance of {@link Tup3dR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_Tuple2Test()
@@ -109,8 +101,6 @@ class Tup3dTest
 	/**
 	 * This test ensures, that an instance of {@link Tup3d} generated from a scalar,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ValueTest()
@@ -125,8 +115,6 @@ class Tup3dTest
 	/**
 	 * This test ensures, that an instance of {@link Tup3d} generated from an array,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ArrayTest()
@@ -141,8 +129,6 @@ class Tup3dTest
 	/**
 	 * This test ensures, that an instance of {@link Tup3d} generated from two components,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ComponentsTest()
@@ -157,8 +143,6 @@ class Tup3dTest
 	/**
 	 * This test ensures, that the function {@link Tup3d#setX(double)} sets the x component of the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setXTest()
@@ -172,8 +156,6 @@ class Tup3dTest
 	/**
 	 * This test ensures, that the function {@link Tup3d#setY(double)} sets the y component of the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setYTest()
@@ -187,8 +169,6 @@ class Tup3dTest
 	/**
 	 * This test ensures, that the function {@link Tup3d#setZ(double)} sets the z component of the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setZTest()
@@ -203,8 +183,6 @@ class Tup3dTest
 	 * This test ensures, that the function
 	 * {@link Tup3d#set(org.barghos.core.api.tuple2.Tup3dR) Tup3d.set(Tup3dR)}
 	 * adopts the components from the input tuple and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void set_Tuple3Test()
@@ -236,8 +214,6 @@ class Tup3dTest
 	/**
 	 * This test ensures, that the function {@link Tup3d#set(double)} sets the components
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void set_ValueTest()
@@ -260,8 +236,6 @@ class Tup3dTest
 	/**
 	 * This test ensures, that the function {@link Tup3d#set(double, double, double)} set the components
 	 * to the respective parameters and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void set_ComponentsTest()
@@ -288,8 +262,6 @@ class Tup3dTest
 	/**
 	 * This test ensures, that the function {@link Tup3d#getX()} actually returns the value of the
 	 * x component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getXTest()
@@ -303,8 +275,6 @@ class Tup3dTest
 	/**
 	 * This test ensures, that the function {@link Tup3d#getY()} actually returns the value of the
 	 * y component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getYTest()
@@ -318,8 +288,6 @@ class Tup3dTest
 	/**
 	 * This test ensures, that the function {@link Tup3d#getY()} actually returns the value of the
 	 * z component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getZTest()
@@ -560,8 +528,6 @@ class Tup3dTest
 	
 	/**
 	 * This test ensures, that the {@link Tup3d#toString()} function prints the components correctly.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void toStringTest()
@@ -569,125 +535,5 @@ class Tup3dTest
 		Tup3d t = new Tup3d(1.1, 2.2, 3.3);
 		
 		assertEquals("tup3d(x=1.1, y=2.2, z=3.3)", t.toString());
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup3d#getNewInstance(double, double, double)}
-	 * returns a new instance of {@link Tup3d} with the given values.
-	 */
-	@Test
-	void getNewInstance_ComponentsTest()
-	{
-		Tup3d original = new Tup3d(1.0, 2.0, 3.0);
-		Tup3d newInstance = original.getNewInstance(3.0, 4.0, 5.0);
-		
-		assertEquals(1.0, original.getX());
-		assertEquals(2.0, original.getY());
-		assertEquals(3.0, original.getZ());
-		assertEquals(3.0, newInstance.getX());
-		assertEquals(4.0, newInstance.getY());
-		assertEquals(5.0, newInstance.getZ());
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link Tup3d#getNewInstance(double)} calls
-	 * the function {@link Tup3d#getNewInstance(double, double, double)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_ValueTest()
-	{
-		Tup3d newInstance = mock(Tup3d.class);
-		Tup3d t = mock(Tup3d.class);
-		
-		when(t.getNewInstance(1.0)).thenCallRealMethod();
-
-		when(t.getNewInstance(1.0, 1.0, 1.0)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(1.0));
-		
-		verify(t).getNewInstance(1.0);
-		
-		verify(t).getNewInstance(1.0, 1.0, 1.0);
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup3d#getNewInstance(Tup3dR)}
-	 * returns a new instance of {@link Tup3d} with the given values.
-	 */
-	@Test
-	void getNewInstance_Tuple2Test()
-	{
-		Tup3dR original = mock(Tup3dR.class);
-		Tup3d newInstance = mock(Tup3d.class);
-		Tup3d t = mock(Tup3d.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getX()).thenReturn(1.0);
-		when(original.getY()).thenReturn(2.0);
-		when(original.getZ()).thenReturn(3.0);
-		when(t.getNewInstance(1.0, 2.0, 3.0)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getX();
-		verify(original).getY();
-		verify(original).getZ();
-		verify(t).getNewInstance(1.0, 2.0, 3.0);
-		
-		verifyNoMoreInteractions(t, original);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link Tup3d#getNewInstance(TupdR)} calls
-	 * the function {@link Tup3d#getNewInstance(double, double, double)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_TupleTest()
-	{
-		TupdR original = mock(TupdR.class);
-		Tup3d newInstance = mock(Tup3d.class);
-		Tup3d t = mock(Tup3d.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getArray()).thenReturn(new double[] {1.0, 2.0, 3.0});
-		when(t.getNewInstance(1.0, 2.0, 3.0)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getArray();
-		verify(t).getNewInstance(1.0, 2.0, 3.0);
-		
-		verifyNoMoreInteractions(t, original);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link Tup3d#getNewInstanceFromArray(double[])} calls
-	 * the function {@link Tup3d#getNewInstance(double, double, double)} with the correct components.
-	 */
-	@Test
-	void getNewInstanceFromArrayTest()
-	{
-		Tup3d newInstance = mock(Tup3d.class);
-		Tup3d t = mock(Tup3d.class);
-		
-		when(t.getNewInstanceFromArray(new double[] {1.0, 2.0, 3.0})).thenCallRealMethod();
-
-		when(t.getNewInstance(1.0, 2.0, 3.0)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstanceFromArray(new double[] {1.0, 2.0, 3.0}));
-		
-		verify(t).getNewInstanceFromArray(new double[] {1.0, 2.0, 3.0});
-		
-		verify(t).getNewInstance(1.0, 2.0, 3.0);
-		
-		verifyNoMoreInteractions(t);
 	}
 }

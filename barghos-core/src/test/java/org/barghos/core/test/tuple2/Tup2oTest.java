@@ -11,15 +11,11 @@ import org.barghos.core.tuple2.Tup2o;
 
 /**
  * This class provides component tests for the class {@link Tup2o}.
- * 
- * @since 1.0.0.0
  */
 class Tup2oTest
 {
 	/**
 	 * This test ensures, that the default constructor {@link Tup2o#Tup2o()} sets the components to null.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_DefaultTest()
@@ -33,8 +29,6 @@ class Tup2oTest
 	/**
 	 * This test ensures, that an instance of {@link Tup2o} generated from an existing instance of {@link Tup2oR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_Tuple2Test()
@@ -59,8 +53,6 @@ class Tup2oTest
 	/**
 	 * This test ensures, that an instance of {@link Tup2o} generated from two components,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ComponentsTest()
@@ -74,8 +66,6 @@ class Tup2oTest
 	/**
 	 * This test ensures, that the function {@link Tup2o#setX(Object)} sets the x component of the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setXTest()
@@ -89,8 +79,6 @@ class Tup2oTest
 	/**
 	 * This test ensures, that the function {@link Tup2o#setY(Object)} sets the y component of the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setYTest()
@@ -105,8 +93,6 @@ class Tup2oTest
 	 * This test ensures, that the function
 	 * {@link Tup2o#set(org.barghos.core.api.tuple2.Tup2oR) Tup2o.set(Tup2oR)}
 	 * adopts the components from the input tuple and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void set_CloneTest()
@@ -138,8 +124,6 @@ class Tup2oTest
 	/**
 	 * This test ensures, that the function {@link Tup2o#set(Object, Object)} set the components
 	 * to the respective parameters and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void set_ComponentsTest()
@@ -165,8 +149,6 @@ class Tup2oTest
 	/**
 	 * This test ensures, that the function {@link Tup2o#getX()} actually returns the value of the
 	 * x component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getXTest()
@@ -180,8 +162,6 @@ class Tup2oTest
 	/**
 	 * This test ensures, that the function {@link Tup2o#getY()} actually returns the value of the
 	 * y component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getYTest()
@@ -311,8 +291,6 @@ class Tup2oTest
 	
 	/**
 	 * This test ensures, that the {@link Tup2o#toString()} function prints the components correctly.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void toStringTest()
@@ -320,54 +298,5 @@ class Tup2oTest
 		Tup2o<Integer,Double> t = new Tup2o<>(1, 1.0);
 		
 		assertEquals("tup2o(x=1, y=1.0)", t.toString());
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup2o#getNewInstance(Object, Object)}
-	 * returns a new instance of {@link Tup2o} with the given values.
-	 */
-	@Test
-	void getNewInstance_ComponentsTest()
-	{
-		Tup2o<Integer,Double> original = new Tup2o<>(1, 1.0);
-		Tup2o<Integer,Double> newInstance = original.getNewInstance(2, 2.0);
-		
-		assertEquals(1, (int)original.getX());
-		assertEquals(1.0, (double)original.getY());
-		assertEquals(2, (int)newInstance.getX());
-		assertEquals(2.0, (double)newInstance.getY());
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup2o#getNewInstance(Tup2oR)}
-	 * returns a new instance of {@link Tup2o} with the given values.
-	 */
-	@Test
-	void getNewInstance_Tuple2Test()
-	{
-		@SuppressWarnings("unchecked")
-		Tup2oR<Integer,Double> original = (Tup2oR<Integer,Double>)mock(Tup2oR.class);
-		
-		@SuppressWarnings("unchecked")
-		Tup2o<Integer,Double> newInstance = (Tup2o<Integer,Double>)mock(Tup2o.class);
-		
-		@SuppressWarnings("unchecked")
-		Tup2o<Integer,Double> t = (Tup2o<Integer,Double>)mock(Tup2o.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getX()).thenReturn(1);
-		when(original.getY()).thenReturn(1.0);
-		when(t.getNewInstance(1, 1.0)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getX();
-		verify(original).getY();
-		verify(t).getNewInstance(1, 1.0);
-		
-		verifyNoMoreInteractions(t, original);
 	}
 }

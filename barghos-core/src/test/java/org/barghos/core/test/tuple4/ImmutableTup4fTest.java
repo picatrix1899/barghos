@@ -60,16 +60,12 @@ import org.barghos.core.tuple4.ImmutableTup4f;
  * This class provides component tests for the class {@link ImmutableTup4f}.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 class ImmutableTup4fTest
 {
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup4f} generated from an existing instance of {@link TupfR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_TupleTest()
@@ -93,8 +89,6 @@ class ImmutableTup4fTest
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup4f} generated from an existing instance of {@link Tup4fR},
 	 * returns the correct components.
-	 *  
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_Tuple4Test()
@@ -124,8 +118,6 @@ class ImmutableTup4fTest
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup4f} generated from a scalar,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ValueTest()
@@ -141,8 +133,6 @@ class ImmutableTup4fTest
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup4f} generated from an array,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ArrayTest()
@@ -158,8 +148,6 @@ class ImmutableTup4fTest
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup4f} generated from two components,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ComponentsTest()
@@ -175,8 +163,6 @@ class ImmutableTup4fTest
 	/**
 	 * This test ensures, that the function {@link ImmutableTup4f#getX()} actually returns the value of the
 	 * x component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getXTest()
@@ -190,8 +176,6 @@ class ImmutableTup4fTest
 	/**
 	 * This test ensures, that the function {@link ImmutableTup4f#getY()} actually returns the value of the
 	 * y component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getYTest()
@@ -205,8 +189,6 @@ class ImmutableTup4fTest
 	/**
 	 * This test ensures, that the function {@link ImmutableTup4f#getZ()} actually returns the value of the
 	 * z component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getZTest()
@@ -220,8 +202,6 @@ class ImmutableTup4fTest
 	/**
 	 * This test ensures, that the function {@link ImmutableTup4f#getW()} actually returns the value of the
 	 * w component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getWTest()
@@ -505,8 +485,6 @@ class ImmutableTup4fTest
 	
 	/**
 	 * This test ensures, that the {@link ImmutableTup4f#toString()} function prints the components correctly.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void toStringTest()
@@ -514,129 +492,5 @@ class ImmutableTup4fTest
 		ImmutableTup4f t = new ImmutableTup4f(1.1f, 2.2f, 3.3f, 4.4f);
 		
 		assertEquals("immutableTup4f(x=1.1, y=2.2, z=3.3, w=4.4)", t.toString());
-	}
-	
-	/**
-	 * This test ensures, that the function {@link ImmutableTup4f#getNewInstance(float, float, float, float)}
-	 * returns a new instance of {@link ImmutableTup4f} with the given values.
-	 */
-	@Test
-	void getNewInstance_ComponentsTest()
-	{
-		ImmutableTup4f original = new ImmutableTup4f(1.0f, 2.0f, 3.0f, 4.0f);
-		ImmutableTup4f newInstance = original.getNewInstance(3.0f, 4.0f, 5.0f, 6.0f);
-		
-		assertEquals(1.0f, original.getX());
-		assertEquals(2.0f, original.getY());
-		assertEquals(3.0f, original.getZ());
-		assertEquals(4.0f, original.getW());
-		assertEquals(3.0f, newInstance.getX());
-		assertEquals(4.0f, newInstance.getY());
-		assertEquals(5.0f, newInstance.getZ());
-		assertEquals(6.0f, newInstance.getW());
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link ImmutableTup4f#getNewInstance(float)} calls
-	 * the function {@link ImmutableTup4f#getNewInstance(float, float, float, float)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_ValueTest()
-	{
-		ImmutableTup4f newInstance = mock(ImmutableTup4f.class);
-		ImmutableTup4f t = mock(ImmutableTup4f.class);
-		
-		when(t.getNewInstance(1.0f)).thenCallRealMethod();
-
-		when(t.getNewInstance(1.0f, 1.0f, 1.0f, 1.0f)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(1.0f));
-		
-		verify(t).getNewInstance(1.0f);
-		
-		verify(t).getNewInstance(1.0f, 1.0f, 1.0f, 1.0f);
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link ImmutableTup4f#getNewInstance(Tup4fR)}
-	 * returns a new instance of {@link ImmutableTup4f} with the given values.
-	 */
-	@Test
-	void getNewInstance_Tuple4Test()
-	{
-		Tup4fR original = mock(Tup4fR.class);
-		ImmutableTup4f newInstance = mock(ImmutableTup4f.class);
-		ImmutableTup4f t = mock(ImmutableTup4f.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getX()).thenReturn(1.0f);
-		when(original.getY()).thenReturn(2.0f);
-		when(original.getZ()).thenReturn(3.0f);
-		when(original.getW()).thenReturn(4.0f);
-		when(t.getNewInstance(1.0f, 2.0f, 3.0f, 4.0f)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getX();
-		verify(original).getY();
-		verify(original).getZ();
-		verify(original).getW();
-		verify(t).getNewInstance(1.0f, 2.0f, 3.0f, 4.0f);
-		
-		verifyNoMoreInteractions(t, original);
-	}
-
-	/**
-	 * This test ensures, that the default implementation of the function {@link ImmutableTup4f#getNewInstance(TupfR)} calls
-	 * the function {@link ImmutableTup4f#getNewInstance(float, float, float, float)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_TupleTest()
-	{
-		TupfR original = mock(TupfR.class);
-		ImmutableTup4f newInstance = mock(ImmutableTup4f.class);
-		ImmutableTup4f t = mock(ImmutableTup4f.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getArray()).thenReturn(new float[] {1.0f, 2.0f, 3.0f, 4.0f});
-		when(t.getNewInstance(1.0f, 2.0f, 3.0f, 4.0f)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getArray();
-		verify(t).getNewInstance(1.0f, 2.0f, 3.0f, 4.0f);
-		
-		verifyNoMoreInteractions(t, original);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link ImmutableTup4f#getNewInstanceFromArray(float[])} calls
-	 * the function {@link ImmutableTup4f#getNewInstance(float, float, float, float)} with the correct components.
-	 */
-	@Test
-	void getNewInstanceFromArrayTest()
-	{
-		ImmutableTup4f newInstance = mock(ImmutableTup4f.class);
-		ImmutableTup4f t = mock(ImmutableTup4f.class);
-		
-		when(t.getNewInstanceFromArray(new float[] {1.0f, 2.0f, 3.0f, 4.0f})).thenCallRealMethod();
-
-		when(t.getNewInstance(1.0f, 2.0f, 3.0f, 4.0f)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstanceFromArray(new float[] {1.0f, 2.0f, 3.0f, 4.0f}));
-		
-		verify(t).getNewInstanceFromArray(new float[] {1.0f, 2.0f, 3.0f, 4.0f});
-		
-		verify(t).getNewInstance(1.0f, 2.0f, 3.0f, 4.0f);
-		
-		verifyNoMoreInteractions(t);
 	}
 }

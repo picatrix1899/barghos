@@ -33,15 +33,11 @@ import org.barghos.core.tuple4.Tup4o;
 
 /**
  * This class provides component tests for the class {@link Tup4o}.
- * 
- * @since 1.0.0.0
  */
 class Tup4oTest
 {
 	/**
 	 * This test ensures, that the default constructor {@link Tup4o#Tup4o()} sets the components to null.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_DefaultTest()
@@ -57,8 +53,6 @@ class Tup4oTest
 	/**
 	 * This test ensures, that an instance of {@link Tup4o} generated from an existing instance of {@link Tup4oR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_Tuple3Test()
@@ -89,8 +83,6 @@ class Tup4oTest
 	/**
 	 * This test ensures, that an instance of {@link Tup4o} generated from two components,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ComponentsTest()
@@ -106,8 +98,6 @@ class Tup4oTest
 	/**
 	 * This test ensures, that the function {@link Tup4o#setX(Object)} sets the x component of the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setXTest()
@@ -121,8 +111,6 @@ class Tup4oTest
 	/**
 	 * This test ensures, that the function {@link Tup4o#setY(Object)} sets the y component of the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setYTest()
@@ -136,8 +124,6 @@ class Tup4oTest
 	/**
 	 * This test ensures, that the function {@link Tup4o#setZ(Object)} sets the z component of the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setZTest()
@@ -151,8 +137,6 @@ class Tup4oTest
 	/**
 	 * This test ensures, that the function {@link Tup4o#setW(Object)} sets the w component of the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setWTest()
@@ -168,8 +152,6 @@ class Tup4oTest
 	 * This test ensures, that the function
 	 * {@link Tup4o#set(org.barghos.core.api.tuple2.Tup4oR) Tup4o.set(Tup4oR)}
 	 * adopts the components from the input tuple and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void set_Tuple3Test()
@@ -205,8 +187,6 @@ class Tup4oTest
 	/**
 	 * This test ensures, that the function {@link Tup4o#set(Object, Object, Object, Object)} set the components
 	 * to the respective parameters and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void set_ComponentsTest()
@@ -236,8 +216,6 @@ class Tup4oTest
 	/**
 	 * This test ensures, that the function {@link Tup4o#getX()} actually returns the value of the
 	 * x component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getXTest()
@@ -251,8 +229,6 @@ class Tup4oTest
 	/**
 	 * This test ensures, that the function {@link Tup4o#getY()} actually returns the value of the
 	 * y component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getYTest()
@@ -266,8 +242,6 @@ class Tup4oTest
 	/**
 	 * This test ensures, that the function {@link Tup4o#getZ()} actually returns the value of the
 	 * z component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getZTest()
@@ -281,8 +255,6 @@ class Tup4oTest
 	/**
 	 * This test ensures, that the function {@link Tup4o#getW()} actually returns the value of the
 	 * w component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getWTest()
@@ -455,8 +427,6 @@ class Tup4oTest
 	
 	/**
 	 * This test ensures, that the {@link Tup4o#toString()} function prints the components correctly.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void toStringTest()
@@ -464,62 +434,5 @@ class Tup4oTest
 		Tup4o<Integer,Double,String,Character> t = new Tup4o<>(1, 1.0, "a", 'a');
 		
 		assertEquals("tup4o(x=1, y=1.0, z=a, w=a)", t.toString());
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup4o#getNewInstance(Object, Object, Object, Object)}
-	 * returns a new instance of {@link Tup4o} with the given values.
-	 */
-	@Test
-	void getNewInstance_ComponentsTest()
-	{
-		Tup4o<Integer,Double,String,Character> original = new Tup4o<>(1, 1.0, "a", 'a');
-		Tup4o<Integer,Double,String,Character> newInstance = original.getNewInstance(2, 2.0, "b", 'b');
-		
-		assertEquals(1, (int)original.getX());
-		assertEquals(1.0, (double)original.getY());
-		assertEquals("a", original.getZ());
-		assertEquals('a', (char)original.getW());
-		assertEquals(2, (int)newInstance.getX());
-		assertEquals(2.0, (double)newInstance.getY());
-		assertEquals("b", newInstance.getZ());
-		assertEquals('b', (char)newInstance.getW());
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup4o#getNewInstance(Tup4oR)}
-	 * returns a new instance of {@link Tup4o} with the given values.
-	 */
-	@Test
-	void getNewInstance_Tuple2Test()
-	{
-		@SuppressWarnings("unchecked")
-		Tup4oR<Integer,Double,String,Character> original = (Tup4oR<Integer,Double,String,Character>)mock(Tup4oR.class);
-		
-		@SuppressWarnings("unchecked")
-		Tup4o<Integer,Double,String,Character> newInstance = (Tup4o<Integer,Double,String,Character>)mock(Tup4o.class);
-		
-		@SuppressWarnings("unchecked")
-		Tup4o<Integer,Double,String,Character> t = (Tup4o<Integer,Double,String,Character>)mock(Tup4o.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getX()).thenReturn(1);
-		when(original.getY()).thenReturn(1.0);
-		when(original.getZ()).thenReturn("a");
-		when(original.getW()).thenReturn('a');
-		when(t.getNewInstance(1, 1.0, "a", 'a')).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getX();
-		verify(original).getY();
-		verify(original).getZ();
-		verify(original).getW();
-		verify(t).getNewInstance(1, 1.0, "a", 'a');
-		
-		verifyNoMoreInteractions(t, original);
 	}
 }

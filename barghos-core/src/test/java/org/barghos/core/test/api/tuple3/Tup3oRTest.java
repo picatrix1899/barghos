@@ -115,39 +115,4 @@ class Tup3oRTest
 		
 		verifyNoMoreInteractions(t);
 	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link Tup3oR#getNewInstance(Tup3oR)} calls
-	 * the function {@link Tup3oR#getNewInstance(Object, Object, Object)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_Tuple2Test()
-	{
-		@SuppressWarnings("unchecked")
-		Tup3oR<Integer,Double,String> original = (Tup3oR<Integer,Double,String>)mock(Tup3oR.class);
-		
-		@SuppressWarnings("unchecked")
-		Tup3oR<Integer,Double,String> newInstance = (Tup3oR<Integer,Double,String>)mock(Tup3oR.class);
-		
-		@SuppressWarnings("unchecked")
-		Tup3oR<Integer,Double,String> t = (Tup3oR<Integer,Double,String>)mock(Tup3oR.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getX()).thenReturn(1);
-		when(original.getY()).thenReturn(1.0);
-		when(original.getZ()).thenReturn("a");
-		when(t.getNewInstance(1, 1.0, "a")).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getX();
-		verify(original).getY();
-		verify(original).getZ();
-		verify(t).getNewInstance(1, 1.0, "a");
-		
-		verifyNoMoreInteractions(t, original);
-	}
 }

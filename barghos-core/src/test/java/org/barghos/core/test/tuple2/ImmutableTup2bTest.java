@@ -14,16 +14,12 @@ import org.barghos.core.tuple2.ImmutableTup2b;
  * This class provides component tests for the class {@link ImmutableTup2b}.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 class ImmutableTup2bTest
 {
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup2b} generated from an existing instance of {@link TupbR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_TupleTest()
@@ -45,8 +41,6 @@ class ImmutableTup2bTest
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup2b} generated from an existing instance of {@link Tup2bR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_Tuple2Test()
@@ -70,8 +64,6 @@ class ImmutableTup2bTest
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup2b} generated from a scalar,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ValueTest()
@@ -85,8 +77,6 @@ class ImmutableTup2bTest
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup2b} generated from an array,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ArrayTest()
@@ -100,8 +90,6 @@ class ImmutableTup2bTest
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup2b} generated from two components,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ComponentsTest()
@@ -115,8 +103,6 @@ class ImmutableTup2bTest
 	/**
 	 * This test ensures, that the function {@link ImmutableTup2b#getX()} actually returns the value of the
 	 * x component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getXTest()
@@ -130,8 +116,6 @@ class ImmutableTup2bTest
 	/**
 	 * This test ensures, that the function {@link ImmutableTup2b#getY()} actually returns the value of the
 	 * y component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getYTest()
@@ -331,8 +315,6 @@ class ImmutableTup2bTest
 	
 	/**
 	 * This test ensures, that the {@link ImmutableTup2b#toString()} function prints the components correctly.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void toStringTest()
@@ -340,121 +322,5 @@ class ImmutableTup2bTest
 		ImmutableTup2b t = new ImmutableTup2b((byte)1, (byte)2);
 		
 		assertEquals("immutableTup2b(x=1, y=2)", t.toString());
-	}
-	
-	/**
-	 * This test ensures, that the function {@link ImmutableTup2b#getNewInstance(byte, byte)}
-	 * returns a new instance of {@link ImmutableTup2b} with the given values.
-	 */
-	@Test
-	void getNewInstance_ComponentsTest()
-	{
-		ImmutableTup2b original = new ImmutableTup2b((byte)1, (byte)2);
-		ImmutableTup2b newInstance = original.getNewInstance((byte)3, (byte)4);
-		
-		assertEquals((byte)1, original.getX());
-		assertEquals((byte)2, original.getY());
-		assertEquals((byte)3, newInstance.getX());
-		assertEquals((byte)4, newInstance.getY());
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link ImmutableTup2b#getNewInstance(byte)} calls
-	 * the function {@link ImmutableTup2b#getNewInstance(byte, byte)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_ValueTest()
-	{
-		ImmutableTup2b newInstance = mock(ImmutableTup2b.class);
-		ImmutableTup2b t = mock(ImmutableTup2b.class);
-		
-		when(t.getNewInstance((byte)1)).thenCallRealMethod();
-
-		when(t.getNewInstance((byte)1, (byte)1)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance((byte)1));
-		
-		verify(t).getNewInstance((byte)1);
-		
-		verify(t).getNewInstance((byte)1, (byte)1);
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link ImmutableTup2b#getNewInstance(Tup2bR)}
-	 * returns a new instance of {@link ImmutableTup2b} with the given values.
-	 */
-	@Test
-	void getNewInstance_Tuple2Test()
-	{
-		Tup2bR original = mock(Tup2bR.class);
-		ImmutableTup2b newInstance = mock(ImmutableTup2b.class);
-		ImmutableTup2b t = mock(ImmutableTup2b.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getX()).thenReturn((byte)1);
-		when(original.getY()).thenReturn((byte)2);
-		when(t.getNewInstance((byte)1, (byte)2)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getX();
-		verify(original).getY();
-		verify(t).getNewInstance((byte)1, (byte)2);
-		
-		verifyNoMoreInteractions(t, original);
-	}
-
-	/**
-	 * This test ensures, that the default implementation of the function {@link ImmutableTup2b#getNewInstance(TupbR)} calls
-	 * the function {@link ImmutableTup2b#getNewInstance(byte, byte)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_TupleTest()
-	{
-		TupbR original = mock(TupbR.class);
-		ImmutableTup2b newInstance = mock(ImmutableTup2b.class);
-		ImmutableTup2b t = mock(ImmutableTup2b.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getArray()).thenReturn(new byte[] {(byte)1, (byte)2});
-		when(t.getNewInstance((byte)1, (byte)2)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getArray();
-		verify(t).getNewInstance((byte)1, (byte)2);
-		
-		verifyNoMoreInteractions(t, original);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link ImmutableTup2b#getNewInstanceFromArray(byte[])} calls
-	 * the function {@link ImmutableTup2b#getNewInstance(byte, byte)} with the correct components.
-	 */
-	@Test
-	void getNewInstanceFromArrayTest()
-	{
-		ImmutableTup2b newInstance = mock(ImmutableTup2b.class);
-		ImmutableTup2b t = mock(ImmutableTup2b.class);
-		
-		when(t.getNewInstanceFromArray(new byte[] {(byte)1, (byte)2})).thenCallRealMethod();
-
-		when(t.getNewInstance((byte)1, (byte)2)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstanceFromArray(new byte[] {(byte)1, (byte)2}));
-		
-		verify(t).getNewInstanceFromArray(new byte[] {(byte)1, (byte)2});
-		
-		verify(t).getNewInstance((byte)1, (byte)2);
-		
-		verifyNoMoreInteractions(t);
 	}
 }

@@ -34,15 +34,11 @@ import org.barghos.core.tuple4.Tup4obj;
 
 /**
  * This class provides component tests for the class {@link Tup4obj}.
- * 
- * @since 1.0.0.0
  */
 class Tup4objTest
 {
 	/**
 	 * This test ensures, that the default constructor {@link Tup4obj#Tup4obj()} sets the components to null.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_DefaultTest()
@@ -58,8 +54,6 @@ class Tup4objTest
 	/**
 	 * This test ensures, that an instance of {@link Tup4obj} generated from an existing instance of {@link TupobjR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_TupleTest()
@@ -83,8 +77,6 @@ class Tup4objTest
 	/**
 	 * This test ensures, that an instance of {@link Tup4obj} generated from an existing instance of {@link Tup4objR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_Tuple2Test()
@@ -114,8 +106,6 @@ class Tup4objTest
 	/**
 	 * This test ensures, that an instance of {@link Tup4obj} generated from a scalar,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ValueTest()
@@ -131,8 +121,6 @@ class Tup4objTest
 	/**
 	 * This test ensures, that an instance of {@link Tup4obj} generated from an array,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ArrayTest()
@@ -148,8 +136,6 @@ class Tup4objTest
 	/**
 	 * This test ensures, that an instance of {@link Tup4obj} generated from two components,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ComponentsTest()
@@ -165,8 +151,6 @@ class Tup4objTest
 	/**
 	 * This test ensures, that the function {@link Tup4obj#setX(Object)} sets the x component of the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setXTest()
@@ -180,8 +164,6 @@ class Tup4objTest
 	/**
 	 * This test ensures, that the function {@link Tup4obj#setY(Object)} sets the y component of the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setYTest()
@@ -195,8 +177,6 @@ class Tup4objTest
 	/**
 	 * This test ensures, that the function {@link Tup4obj#setZ(Object)} sets the z component of the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setZTest()
@@ -210,8 +190,6 @@ class Tup4objTest
 	/**
 	 * This test ensures, that the function {@link Tup4obj#setW(Object)} sets the w component of the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setWTest()
@@ -226,8 +204,6 @@ class Tup4objTest
 	 * This test ensures, that the function
 	 * {@link Tup4obj#set(org.barghos.core.api.tuple2.Tup4objR) Tup4obj.set(Tup4objR)}
 	 * adopts the components from the input tuple and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void set_CloneTest()
@@ -261,8 +237,6 @@ class Tup4objTest
 	/**
 	 * This test ensures, that the function {@link Tup4obj#set(Object)} sets the components
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void set_ValueTest()
@@ -285,8 +259,6 @@ class Tup4objTest
 	/**
 	 * This test ensures, that the function {@link Tup4obj#set(Object, Object, Object, Object)} set the components
 	 * to the respective parameters and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void set_ComponentsTest()
@@ -315,8 +287,6 @@ class Tup4objTest
 	/**
 	 * This test ensures, that the function {@link Tup4obj#getX()} actually returns the value of the
 	 * x component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getXTest()
@@ -330,8 +300,6 @@ class Tup4objTest
 	/**
 	 * This test ensures, that the function {@link Tup4obj#getY()} actually returns the value of the
 	 * y component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getYTest()
@@ -345,8 +313,6 @@ class Tup4objTest
 	/**
 	 * This test ensures, that the function {@link Tup4obj#getZ()} actually returns the value of the
 	 * z component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getZTest()
@@ -360,8 +326,6 @@ class Tup4objTest
 	/**
 	 * This test ensures, that the function {@link Tup4obj#getW()} actually returns the value of the
 	 * w component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getWTest()
@@ -645,8 +609,6 @@ class Tup4objTest
 	
 	/**
 	 * This test ensures, that the {@link Tup4obj#toString()} function prints the components correctly.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void toStringTest()
@@ -654,129 +616,5 @@ class Tup4objTest
 		Tup4obj t = new Tup4obj(1, 1.0, "a", 'a');
 		
 		assertEquals("tup4obj(x=1, y=1.0, z=a, w=a)", t.toString());
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup4obj#getNewInstance(Object, Object, Object, Object)}
-	 * returns a new instance of {@link Tup4obj} with the given values.
-	 */
-	@Test
-	void getNewInstance_ComponentsTest()
-	{
-		Tup4obj original = new Tup4obj(1, 1.0, "a", 'a');
-		Tup4obj newInstance = original.getNewInstance("a", 'a', 1, 1.0);
-		
-		assertEquals(1, original.getX());
-		assertEquals(1.0, original.getY());
-		assertEquals("a", original.getZ());
-		assertEquals('a', original.getW());
-		assertEquals("a", newInstance.getX());
-		assertEquals('a', newInstance.getY());
-		assertEquals(1, newInstance.getZ());
-		assertEquals(1.0, newInstance.getW());
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link Tup4obj#getNewInstance(Object)} calls
-	 * the function {@link Tup4obj#getNewInstance(Object, Object, Object, Object)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_ValueTest()
-	{
-		Tup4obj newInstance = mock(Tup4obj.class);
-		Tup4obj t = mock(Tup4obj.class);
-		
-		when(t.getNewInstance(1)).thenCallRealMethod();
-
-		when(t.getNewInstance(1, 1, 1, 1)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(1));
-		
-		verify(t).getNewInstance(1);
-		
-		verify(t).getNewInstance(1, 1, 1, 1);
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup4obj#getNewInstance(Tup4objR)}
-	 * returns a new instance of {@link Tup4obj} with the given values.
-	 */
-	@Test
-	void getNewInstance_Tuple2Test()
-	{
-		Tup4objR original = mock(Tup4objR.class);
-		Tup4obj newInstance = mock(Tup4obj.class);
-		Tup4obj t = mock(Tup4obj.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getX()).thenReturn(1);
-		when(original.getY()).thenReturn(1.0);
-		when(original.getZ()).thenReturn("a");
-		when(original.getW()).thenReturn('a');
-		when(t.getNewInstance(1, 1.0, "a", 'a')).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getX();
-		verify(original).getY();
-		verify(original).getZ();
-		verify(original).getW();
-		verify(t).getNewInstance(1, 1.0, "a", 'a');
-		
-		verifyNoMoreInteractions(t, original);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link Tup4obj#getNewInstance(TupobjR)} calls
-	 * the function {@link Tup4obj#getNewInstance(Object, Object, Object, Object)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_TupleTest()
-	{
-		TupobjR original = mock(TupobjR.class);
-		Tup4obj newInstance = mock(Tup4obj.class);
-		Tup4obj t = mock(Tup4obj.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getArray()).thenReturn(new Object[] {1, 1.0, "a", 'a'});
-		when(t.getNewInstance(1, 1.0, "a", 'a')).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getArray();
-		verify(t).getNewInstance(1, 1.0, "a", 'a');
-		
-		verifyNoMoreInteractions(t, original);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link Tup4obj#getNewInstanceFromArray(Object[])} calls
-	 * the function {@link Tup4obj#getNewInstance(Object, Object, Object, Object)} with the correct components.
-	 */
-	@Test
-	void getNewInstanceFromArrayTest()
-	{
-		Tup4obj newInstance = mock(Tup4obj.class);
-		Tup4obj t = mock(Tup4obj.class);
-		
-		when(t.getNewInstanceFromArray(new Object[] {1, 1.0, "a", 'a'})).thenCallRealMethod();
-
-		when(t.getNewInstance(1, 1.0, "a", 'a')).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstanceFromArray(new Object[] {1, 1.0, "a", 'a'}));
-		
-		verify(t).getNewInstanceFromArray(new Object[] {1, 1.0, "a", 'a'});
-		
-		verify(t).getNewInstance(1, 1.0, "a", 'a');
-		
-		verifyNoMoreInteractions(t);
 	}
 }

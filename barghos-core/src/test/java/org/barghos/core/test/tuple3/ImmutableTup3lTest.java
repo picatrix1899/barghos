@@ -52,7 +52,6 @@ import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.Test;
 
 import org.barghos.core.api.tuple.TuplR;
-import org.barghos.core.api.tuple2.Tup2lR;
 import org.barghos.core.api.tuple3.Tup3lR;
 
 import org.barghos.core.tuple3.ImmutableTup3l;
@@ -61,16 +60,12 @@ import org.barghos.core.tuple3.ImmutableTup3l;
  * This class provides component tests for the class {@link ImmutableTup3l}.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 class ImmutableTup3lTest
 {
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup3l} generated from an existing instance of {@link TuplR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_TupleTest()
@@ -93,8 +88,6 @@ class ImmutableTup3lTest
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup3l} generated from an existing instance of {@link Tup3lR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_Tuple3Test()
@@ -121,8 +114,6 @@ class ImmutableTup3lTest
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup3l} generated from a scalar,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ValueTest()
@@ -137,8 +128,6 @@ class ImmutableTup3lTest
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup3l} generated from an array,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ArrayTest()
@@ -153,8 +142,6 @@ class ImmutableTup3lTest
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup3l} generated from two components,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ComponentsTest()
@@ -169,8 +156,6 @@ class ImmutableTup3lTest
 	/**
 	 * This test ensures, that the function {@link ImmutableTup3l#getX()} actually returns the value of the
 	 * x component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getXTest()
@@ -184,8 +169,6 @@ class ImmutableTup3lTest
 	/**
 	 * This test ensures, that the function {@link ImmutableTup3l#getY()} actually returns the value of the
 	 * y component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getYTest()
@@ -199,8 +182,6 @@ class ImmutableTup3lTest
 	/**
 	 * This test ensures, that the function {@link ImmutableTup3l#getZ()} actually returns the value of the
 	 * z component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getZTest()
@@ -441,8 +422,6 @@ class ImmutableTup3lTest
 	
 	/**
 	 * This test ensures, that the {@link ImmutableTup3l#toString()} function prints the components correctly.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void toStringTest()
@@ -450,125 +429,5 @@ class ImmutableTup3lTest
 		ImmutableTup3l t = new ImmutableTup3l(1l, 2l, 3l);
 		
 		assertEquals("immutableTup3l(x=1, y=2, z=3)", t.toString());
-	}
-	
-	/**
-	 * This test ensures, that the function {@link ImmutableTup3l#getNewInstance(long, long, long)}
-	 * returns a new instance of {@link ImmutableTup3l} with the given values.
-	 */
-	@Test
-	void getNewInstance_ComponentsTest()
-	{
-		ImmutableTup3l original = new ImmutableTup3l(1l, 2l, 3l);
-		ImmutableTup3l newInstance = original.getNewInstance(3l, 4l, 5l);
-		
-		assertEquals(1l, original.getX());
-		assertEquals(2l, original.getY());
-		assertEquals(3l, original.getZ());
-		assertEquals(3l, newInstance.getX());
-		assertEquals(4l, newInstance.getY());
-		assertEquals(5l, newInstance.getZ());
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link ImmutableTup3l#getNewInstance(long)} calls
-	 * the function {@link ImmutableTup3l#getNewInstance(long, long, long)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_ValueTest()
-	{
-		ImmutableTup3l newInstance = mock(ImmutableTup3l.class);
-		ImmutableTup3l t = mock(ImmutableTup3l.class);
-		
-		when(t.getNewInstance(1l)).thenCallRealMethod();
-
-		when(t.getNewInstance(1l, 1l, 1l)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(1l));
-		
-		verify(t).getNewInstance(1l);
-		
-		verify(t).getNewInstance(1l, 1l, 1l);
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link ImmutableTup3l#getNewInstance(Tup2lR)}
-	 * returns a new instance of {@link ImmutableTup3l} with the given values.
-	 */
-	@Test
-	void getNewInstance_Tuple2Test()
-	{
-		Tup3lR original = mock(Tup3lR.class);
-		ImmutableTup3l newInstance = mock(ImmutableTup3l.class);
-		ImmutableTup3l t = mock(ImmutableTup3l.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getX()).thenReturn(1l);
-		when(original.getY()).thenReturn(2l);
-		when(original.getZ()).thenReturn(3l);
-		when(t.getNewInstance(1l, 2l, 3l)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getX();
-		verify(original).getY();
-		verify(original).getZ();
-		verify(t).getNewInstance(1l, 2l, 3l);
-		
-		verifyNoMoreInteractions(t, original);
-	}
-
-	/**
-	 * This test ensures, that the default implementation of the function {@link ImmutableTup3l#getNewInstance(TuplR)} calls
-	 * the function {@link ImmutableTup3l#getNewInstance(long, long, long)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_TupleTest()
-	{
-		TuplR original = mock(TuplR.class);
-		ImmutableTup3l newInstance = mock(ImmutableTup3l.class);
-		ImmutableTup3l t = mock(ImmutableTup3l.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getArray()).thenReturn(new long[] {1l, 2l, 3l});
-		when(t.getNewInstance(1l, 2l, 3l)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getArray();
-		verify(t).getNewInstance(1l, 2l, 3l);
-		
-		verifyNoMoreInteractions(t, original);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link ImmutableTup3l#getNewInstanceFromArray(long[])} calls
-	 * the function {@link ImmutableTup3l#getNewInstance(long, long, long)} with the correct components.
-	 */
-	@Test
-	void getNewInstanceFromArrayTest()
-	{
-		ImmutableTup3l newInstance = mock(ImmutableTup3l.class);
-		ImmutableTup3l t = mock(ImmutableTup3l.class);
-		
-		when(t.getNewInstanceFromArray(new long[] {1l, 2l, 3l})).thenCallRealMethod();
-
-		when(t.getNewInstance(1l, 2l, 3l)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstanceFromArray(new long[] {1l, 2l, 3l}));
-		
-		verify(t).getNewInstanceFromArray(new long[] {1l, 2l, 3l});
-		
-		verify(t).getNewInstance(1l, 2l, 3l);
-		
-		verifyNoMoreInteractions(t);
 	}
 }

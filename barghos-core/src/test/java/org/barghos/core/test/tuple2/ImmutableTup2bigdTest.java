@@ -16,16 +16,12 @@ import org.barghos.core.tuple2.ImmutableTup2bigd;
  * This class provides component tests for the class {@link ImmutableTup2bigd}.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 class ImmutableTup2bigdTest
 {
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup2bigd} generated from an existing instance of {@link TupbigdR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_TupleTest()
@@ -47,8 +43,6 @@ class ImmutableTup2bigdTest
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup2bigd} generated from an existing instance of {@link Tup2bigdR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_Tuple2Test()
@@ -72,8 +66,6 @@ class ImmutableTup2bigdTest
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup2bigd} generated from a scalar,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ValueTest()
@@ -87,8 +79,6 @@ class ImmutableTup2bigdTest
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup2bigd} generated from an array,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ArrayTest()
@@ -102,8 +92,6 @@ class ImmutableTup2bigdTest
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup2bigd} generated from two components,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ComponentsTest()
@@ -117,8 +105,6 @@ class ImmutableTup2bigdTest
 	/**
 	 * This test ensures, that the function {@link ImmutableTup2bigd#getX()} actually returns the value of the
 	 * x component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getXTest()
@@ -132,8 +118,6 @@ class ImmutableTup2bigdTest
 	/**
 	 * This test ensures, that the function {@link ImmutableTup2bigd#getY()} actually returns the value of the
 	 * y component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getYTest()
@@ -333,8 +317,6 @@ class ImmutableTup2bigdTest
 	
 	/**
 	 * This test ensures, that the {@link ImmutableTup2bigd#toString()} function prints the components correctly.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void toStringTest()
@@ -342,121 +324,5 @@ class ImmutableTup2bigdTest
 		ImmutableTup2bigd t = new ImmutableTup2bigd(BigDecimal.valueOf(1.1), BigDecimal.valueOf(2.2));
 		
 		assertEquals("immutableTup2bigd(x=1.1, y=2.2)", t.toString());
-	}
-	
-	/**
-	 * This test ensures, that the function {@link ImmutableTup2bigd#getNewInstance(BigDecimal, BigDecimal)}
-	 * returns a new instance of {@link ImmutableTup2bigd} with the given values.
-	 */
-	@Test
-	void getNewInstance_ComponentsTest()
-	{
-		ImmutableTup2bigd original = new ImmutableTup2bigd(BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0));
-		ImmutableTup2bigd newInstance = original.getNewInstance(BigDecimal.valueOf(3.0), BigDecimal.valueOf(4.0));
-		
-		assertEquals(BigDecimal.valueOf(1.0), original.getX());
-		assertEquals(BigDecimal.valueOf(2.0), original.getY());
-		assertEquals(BigDecimal.valueOf(3.0), newInstance.getX());
-		assertEquals(BigDecimal.valueOf(4.0), newInstance.getY());
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link ImmutableTup2bigd#getNewInstance(BigDecimal)} calls
-	 * the function {@link ImmutableTup2bigd#getNewInstance(BigDecimal, BigDecimal)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_ValueTest()
-	{
-		ImmutableTup2bigd newInstance = mock(ImmutableTup2bigd.class);
-		ImmutableTup2bigd t = mock(ImmutableTup2bigd.class);
-		
-		when(t.getNewInstance(BigDecimal.valueOf(1.0))).thenCallRealMethod();
-
-		when(t.getNewInstance(BigDecimal.valueOf(1.0), BigDecimal.valueOf(1.0))).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(BigDecimal.valueOf(1.0)));
-		
-		verify(t).getNewInstance(BigDecimal.valueOf(1.0));
-		
-		verify(t).getNewInstance(BigDecimal.valueOf(1.0), BigDecimal.valueOf(1.0));
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link ImmutableTup2bigd#getNewInstance(Tup2bigdR)}
-	 * returns a new instance of {@link ImmutableTup2bigd} with the given values.
-	 */
-	@Test
-	void getNewInstance_Tuple2Test()
-	{
-		Tup2bigdR original = mock(Tup2bigdR.class);
-		ImmutableTup2bigd newInstance = mock(ImmutableTup2bigd.class);
-		ImmutableTup2bigd t = mock(ImmutableTup2bigd.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getX()).thenReturn(BigDecimal.valueOf(1.0));
-		when(original.getY()).thenReturn(BigDecimal.valueOf(2.0));
-		when(t.getNewInstance(BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0))).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getX();
-		verify(original).getY();
-		verify(t).getNewInstance(BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0));
-		
-		verifyNoMoreInteractions(t, original);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link ImmutableTup2bigd#getNewInstance(TupbigdR)} calls
-	 * the function {@link ImmutableTup2bigd#getNewInstance(BigDecimal, BigDecimal)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_TupleTest()
-	{
-		TupbigdR original = mock(TupbigdR.class);
-		ImmutableTup2bigd newInstance = mock(ImmutableTup2bigd.class);
-		ImmutableTup2bigd t = mock(ImmutableTup2bigd.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getArray()).thenReturn(new BigDecimal[] {BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0)});
-		when(t.getNewInstance(BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0))).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getArray();
-		verify(t).getNewInstance(BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0));
-		
-		verifyNoMoreInteractions(t, original);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link ImmutableTup2bigd#getNewInstanceFromArray(BigDecimal[])} calls
-	 * the function {@link ImmutableTup2bigd#getNewInstance(BigDecimal, BigDecimal)} with the correct components.
-	 */
-	@Test
-	void getNewInstanceFromArrayTest()
-	{
-		ImmutableTup2bigd newInstance = mock(ImmutableTup2bigd.class);
-		ImmutableTup2bigd t = mock(ImmutableTup2bigd.class);
-		
-		when(t.getNewInstanceFromArray(new BigDecimal[] {BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0)})).thenCallRealMethod();
-
-		when(t.getNewInstance(BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0))).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstanceFromArray(new BigDecimal[] {BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0)}));
-		
-		verify(t).getNewInstanceFromArray(new BigDecimal[] {BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0)});
-		
-		verify(t).getNewInstance(BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0));
-		
-		verifyNoMoreInteractions(t);
 	}
 }

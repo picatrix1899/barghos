@@ -12,15 +12,11 @@ import org.barghos.core.tuple2.Tup2l;
 
 /**
  * This class provides component tests for the class {@link Tup2l}.
- * 
- * @since 1.0.0.0
  */
 class Tup2lTest
 {
 	/**
 	 * This test ensures, that the default constructor {@link Tup2l#Tup2l()} sets the components to 0.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_DefaultTest()
@@ -34,8 +30,6 @@ class Tup2lTest
 	/**
 	 * This test ensures, that an instance of {@link Tup2l} generated from an existing instance of {@link TuplR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_TupleTest()
@@ -57,8 +51,6 @@ class Tup2lTest
 	/**
 	 * This test ensures, that an instance of {@link Tup2l} generated from an existing instance of {@link Tup2lR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_Tuple2Test()
@@ -82,8 +74,6 @@ class Tup2lTest
 	/**
 	 * This test ensures, that an instance of {@link Tup2l} generated from a scalar,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ValueTest()
@@ -97,8 +87,6 @@ class Tup2lTest
 	/**
 	 * This test ensures, that an instance of {@link Tup2l} generated from an array,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ArrayTest()
@@ -112,8 +100,6 @@ class Tup2lTest
 	/**
 	 * This test ensures, that an instance of {@link Tup2l} generated from two components,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ComponentsTest()
@@ -127,8 +113,6 @@ class Tup2lTest
 	/**
 	 * This test ensures, that the function {@link Tup2l#setX(long)} sets the x component of the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setXTest()
@@ -142,8 +126,6 @@ class Tup2lTest
 	/**
 	 * This test ensures, that the function {@link Tup2l#setY(long)} sets the y component of the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setYTest()
@@ -158,8 +140,6 @@ class Tup2lTest
 	 * This test ensures, that the function
 	 * {@link Tup2l#set(org.barghos.core.api.tuple2.Tup2lR) Tup2l.set(Tup2lR)}
 	 * adopts the components from the input tuple and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void set_CloneTest()
@@ -189,8 +169,6 @@ class Tup2lTest
 	/**
 	 * This test ensures, that the function {@link Tup2l#set(long)} sets the components
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void set_ValueTest()
@@ -213,8 +191,6 @@ class Tup2lTest
 	/**
 	 * This test ensures, that the function {@link Tup2l#set(long, long)} set the components
 	 * to the respective parameters and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void set_ComponentsTest()
@@ -239,8 +215,6 @@ class Tup2lTest
 	/**
 	 * This test ensures, that the function {@link Tup2l#getX()} actually returns the value of the
 	 * x component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getXTest()
@@ -254,8 +228,6 @@ class Tup2lTest
 	/**
 	 * This test ensures, that the function {@link Tup2l#getY()} actually returns the value of the
 	 * y component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getYTest()
@@ -455,8 +427,6 @@ class Tup2lTest
 	
 	/**
 	 * This test ensures, that the {@link Tup2l#toString()} function prlongs the components correctly.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void toStringTest()
@@ -464,121 +434,5 @@ class Tup2lTest
 		Tup2l t = new Tup2l(1l, 2l);
 		
 		assertEquals("tup2l(x=1, y=2)", t.toString());
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup2l#getNewInstance(long, long)}
-	 * returns a new instance of {@link Tup2l} with the given values.
-	 */
-	@Test
-	void getNewInstance_ComponentsTest()
-	{
-		Tup2l original = new Tup2l(1l, 2l);
-		Tup2l newInstance = original.getNewInstance(3l, 4l);
-		
-		assertEquals(1l, original.getX());
-		assertEquals(2l, original.getY());
-		assertEquals(3l, newInstance.getX());
-		assertEquals(4l, newInstance.getY());
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link Tup2l#getNewInstance(long)} calls
-	 * the function {@link Tup2l#getNewInstance(long, long)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_ValueTest()
-	{
-		Tup2l newInstance = mock(Tup2l.class);
-		Tup2l t = mock(Tup2l.class);
-		
-		when(t.getNewInstance(1l)).thenCallRealMethod();
-
-		when(t.getNewInstance(1l, 1l)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(1l));
-		
-		verify(t).getNewInstance(1l);
-		
-		verify(t).getNewInstance(1l, 1l);
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup2bd#getNewInstance(Tup2lR)}
-	 * returns a new instance of {@link Tup2l} with the given values.
-	 */
-	@Test
-	void getNewInstance_Tuple2Test()
-	{
-		Tup2lR original = mock(Tup2lR.class);
-		Tup2l newInstance = mock(Tup2l.class);
-		Tup2l t = mock(Tup2l.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getX()).thenReturn(1l);
-		when(original.getY()).thenReturn(2l);
-		when(t.getNewInstance(1l, 2l)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getX();
-		verify(original).getY();
-		verify(t).getNewInstance(1l, 2l);
-		
-		verifyNoMoreInteractions(t, original);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link Tup2l#getNewInstance(TuplR)} calls
-	 * the function {@link Tup2l#getNewInstance(long, long)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_TupleTest()
-	{
-		TuplR original = mock(TuplR.class);
-		Tup2l newInstance = mock(Tup2l.class);
-		Tup2l t = mock(Tup2l.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getArray()).thenReturn(new long[] {1l, 2l});
-		when(t.getNewInstance(1l, 2l)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getArray();
-		verify(t).getNewInstance(1l, 2l);
-		
-		verifyNoMoreInteractions(t, original);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link Tup2l#getNewInstanceFromArray(long[])} calls
-	 * the function {@link Tup2l#getNewInstance(long, long)} with the correct components.
-	 */
-	@Test
-	void getNewInstanceFromArrayTest()
-	{
-		Tup2l newInstance = mock(Tup2l.class);
-		Tup2l t = mock(Tup2l.class);
-		
-		when(t.getNewInstanceFromArray(new long[] {1l, 2l})).thenCallRealMethod();
-
-		when(t.getNewInstance(1, 2)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstanceFromArray(new long[] {1l, 2l}));
-		
-		verify(t).getNewInstanceFromArray(new long[] {1l, 2l});
-		
-		verify(t).getNewInstance(1l, 2l);
-		
-		verifyNoMoreInteractions(t);
 	}
 }

@@ -60,16 +60,12 @@ import org.barghos.core.tuple3.ImmutableTup3b;
  * This class provides component tests for the class {@link ImmutableTup3b}.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 class ImmutableTup3bTest
 {
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup3b} generated from an existing instance of {@link TupbR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_TupleTest()
@@ -92,8 +88,6 @@ class ImmutableTup3bTest
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup3b} generated from an existing instance of {@link Tup3bR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_Tuple3Test()
@@ -120,8 +114,6 @@ class ImmutableTup3bTest
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup3b} generated from a scalar,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ValueTest()
@@ -136,8 +128,6 @@ class ImmutableTup3bTest
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup3b} generated from an array,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ArrayTest()
@@ -152,8 +142,6 @@ class ImmutableTup3bTest
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup3b} generated from two components,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ComponentsTest()
@@ -168,8 +156,6 @@ class ImmutableTup3bTest
 	/**
 	 * This test ensures, that the function {@link ImmutableTup3b#getX()} actually returns the value of the
 	 * x component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getXTest()
@@ -183,8 +169,6 @@ class ImmutableTup3bTest
 	/**
 	 * This test ensures, that the function {@link ImmutableTup3b#getY()} actually returns the value of the
 	 * y component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getYTest()
@@ -198,8 +182,6 @@ class ImmutableTup3bTest
 	/**
 	 * This test ensures, that the function {@link ImmutableTup3b#getZ()} actually returns the value of the
 	 * z component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getZTest()
@@ -449,125 +431,5 @@ class ImmutableTup3bTest
 		ImmutableTup3b t = new ImmutableTup3b((byte)1, (byte)2, (byte)3);
 		
 		assertEquals("immutableTup3b(x=1, y=2, z=3)", t.toString());
-	}
-	
-	/**
-	 * This test ensures, that the function {@link ImmutableTup3b#getNewInstance(byte, byte, byte)}
-	 * returns a new instance of {@link ImmutableTup3b} with the given values.
-	 */
-	@Test
-	void getNewInstance_ComponentsTest()
-	{
-		ImmutableTup3b original = new ImmutableTup3b((byte)1, (byte)2, (byte)3);
-		ImmutableTup3b newInstance = original.getNewInstance((byte)3, (byte)4, (byte)5);
-		
-		assertEquals((byte)1, original.getX());
-		assertEquals((byte)2, original.getY());
-		assertEquals((byte)3, original.getZ());
-		assertEquals((byte)3, newInstance.getX());
-		assertEquals((byte)4, newInstance.getY());
-		assertEquals((byte)5, newInstance.getZ());
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link ImmutableTup3b#getNewInstance(byte)} calls
-	 * the function {@link ImmutableTup3b#getNewInstance(byte, byte, byte)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_ValueTest()
-	{
-		ImmutableTup3b newInstance = mock(ImmutableTup3b.class);
-		ImmutableTup3b t = mock(ImmutableTup3b.class);
-		
-		when(t.getNewInstance((byte)1)).thenCallRealMethod();
-
-		when(t.getNewInstance((byte)1, (byte)1, (byte)1)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance((byte)1));
-		
-		verify(t).getNewInstance((byte)1);
-		
-		verify(t).getNewInstance((byte)1, (byte)1, (byte)1);
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link ImmutableTup3b#getNewInstance(Tup3bR)}
-	 * returns a new instance of {@link ImmutableTup3b} with the given values.
-	 */
-	@Test
-	void getNewInstance_Tuple3Test()
-	{
-		Tup3bR original = mock(Tup3bR.class);
-		ImmutableTup3b newInstance = mock(ImmutableTup3b.class);
-		ImmutableTup3b t = mock(ImmutableTup3b.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getX()).thenReturn((byte)1);
-		when(original.getY()).thenReturn((byte)2);
-		when(original.getZ()).thenReturn((byte)3);
-		when(t.getNewInstance((byte)1, (byte)2, (byte)3)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getX();
-		verify(original).getY();
-		verify(original).getZ();
-		verify(t).getNewInstance((byte)1, (byte)2, (byte)3);
-		
-		verifyNoMoreInteractions(t, original);
-	}
-
-	/**
-	 * This test ensures, that the default implementation of the function {@link ImmutableTup3b#getNewInstance(TupbR)} calls
-	 * the function {@link ImmutableTup3b#getNewInstance(byte, byte, byte)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_TupleTest()
-	{
-		TupbR original = mock(TupbR.class);
-		ImmutableTup3b newInstance = mock(ImmutableTup3b.class);
-		ImmutableTup3b t = mock(ImmutableTup3b.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getArray()).thenReturn(new byte[] {(byte)1, (byte)2, (byte)3});
-		when(t.getNewInstance((byte)1, (byte)2, (byte)3)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getArray();
-		verify(t).getNewInstance((byte)1, (byte)2, (byte)3);
-		
-		verifyNoMoreInteractions(t, original);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link ImmutableTup3b#getNewInstanceFromArray(byte[])} calls
-	 * the function {@link ImmutableTup3b#getNewInstance(byte, byte, byte)} with the correct components.
-	 */
-	@Test
-	void getNewInstanceFromArrayTest()
-	{
-		ImmutableTup3b newInstance = mock(ImmutableTup3b.class);
-		ImmutableTup3b t = mock(ImmutableTup3b.class);
-		
-		when(t.getNewInstanceFromArray(new byte[] {(byte)1, (byte)2, (byte)3})).thenCallRealMethod();
-
-		when(t.getNewInstance((byte)1, (byte)2, (byte)3)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstanceFromArray(new byte[] {(byte)1, (byte)2, (byte)3}));
-		
-		verify(t).getNewInstanceFromArray(new byte[] {(byte)1, (byte)2, (byte)3});
-		
-		verify(t).getNewInstance((byte)1, (byte)2, (byte)3);
-		
-		verifyNoMoreInteractions(t);
 	}
 }

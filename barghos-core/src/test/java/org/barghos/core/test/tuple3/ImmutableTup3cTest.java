@@ -60,16 +60,12 @@ import org.barghos.core.tuple3.ImmutableTup3c;
  * This class provides component tests for the class {@link ImmutableTup3c}.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 class ImmutableTup3cTest
 {
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup3c} generated from an existing instance of {@link TupcR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_TupleTest()
@@ -92,8 +88,6 @@ class ImmutableTup3cTest
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup3c} generated from an existing instance of {@link Tup3cR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_Tuple2Test()
@@ -120,8 +114,6 @@ class ImmutableTup3cTest
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup3c} generated from a scalar,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ValueTest()
@@ -136,8 +128,6 @@ class ImmutableTup3cTest
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup3c} generated from an array,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ArrayTest()
@@ -152,8 +142,6 @@ class ImmutableTup3cTest
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup3c} generated from two components,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ComponentsTest()
@@ -168,8 +156,6 @@ class ImmutableTup3cTest
 	/**
 	 * This test ensures, that the function {@link ImmutableTup3c#getX()} actually returns the value of the
 	 * x component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getXTest()
@@ -183,8 +169,6 @@ class ImmutableTup3cTest
 	/**
 	 * This test ensures, that the function {@link ImmutableTup3c#getY()} actually returns the value of the
 	 * y component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getYTest()
@@ -198,8 +182,6 @@ class ImmutableTup3cTest
 	/**
 	 * This test ensures, that the function {@link ImmutableTup3c#getZ()} actually returns the value of the
 	 * z component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getZTest()
@@ -440,8 +422,6 @@ class ImmutableTup3cTest
 	
 	/**
 	 * This test ensures, that the {@link ImmutableTup3c#toString()} function prints the components correctly.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void toStringTest()
@@ -449,125 +429,5 @@ class ImmutableTup3cTest
 		ImmutableTup3c t = new ImmutableTup3c('a', 'b', 'c');
 		
 		assertEquals("immutableTup3c(x=a, y=b, z=c)", t.toString());
-	}
-	
-	/**
-	 * This test ensures, that the function {@link ImmutableTup3c#getNewInstance(char, char, char)}
-	 * returns a new instance of {@link ImmutableTup3c} with the given values.
-	 */
-	@Test
-	void getNewInstance_ComponentsTest()
-	{
-		ImmutableTup3c original = new ImmutableTup3c('a', 'b', 'c');
-		ImmutableTup3c newInstance = original.getNewInstance('c', 'd', 'e');
-		
-		assertEquals('a', original.getX());
-		assertEquals('b', original.getY());
-		assertEquals('c', original.getZ());
-		assertEquals('c', newInstance.getX());
-		assertEquals('d', newInstance.getY());
-		assertEquals('e', newInstance.getZ());
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link ImmutableTup3c#getNewInstance(char)} calls
-	 * the function {@link ImmutableTup3c#getNewInstance(char, char, char)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_ValueTest()
-	{
-		ImmutableTup3c newInstance = mock(ImmutableTup3c.class);
-		ImmutableTup3c t = mock(ImmutableTup3c.class);
-		
-		when(t.getNewInstance('a')).thenCallRealMethod();
-
-		when(t.getNewInstance('a', 'a', 'a')).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance('a'));
-		
-		verify(t).getNewInstance('a');
-		
-		verify(t).getNewInstance('a', 'a', 'a');
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link ImmutableTup3c#getNewInstance(Tup3cR)}
-	 * returns a new instance of {@link ImmutableTup3c} with the given values.
-	 */
-	@Test
-	void getNewInstance_Tuple3Test()
-	{
-		Tup3cR original = mock(Tup3cR.class);
-		ImmutableTup3c newInstance = mock(ImmutableTup3c.class);
-		ImmutableTup3c t = mock(ImmutableTup3c.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getX()).thenReturn('a');
-		when(original.getY()).thenReturn('b');
-		when(original.getZ()).thenReturn('c');
-		when(t.getNewInstance('a', 'b', 'c')).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getX();
-		verify(original).getY();
-		verify(original).getZ();
-		verify(t).getNewInstance('a', 'b', 'c');
-		
-		verifyNoMoreInteractions(t, original);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link ImmutableTup3c#getNewInstance(TupcR)} calls
-	 * the function {@link ImmutableTup3c#getNewInstance(char, char, char)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_TupleTest()
-	{
-		TupcR original = mock(TupcR.class);
-		ImmutableTup3c newInstance = mock(ImmutableTup3c.class);
-		ImmutableTup3c t = mock(ImmutableTup3c.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getArray()).thenReturn(new char[] {'a', 'b', 'c'});
-		when(t.getNewInstance('a', 'b', 'c')).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getArray();
-		verify(t).getNewInstance('a', 'b', 'c');
-		
-		verifyNoMoreInteractions(t, original);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link ImmutableTup3c#getNewInstanceFromArray(char[])} calls
-	 * the function {@link ImmutableTup3c#getNewInstance(char, char, char)} with the correct components.
-	 */
-	@Test
-	void getNewInstanceFromArrayTest()
-	{
-		ImmutableTup3c newInstance = mock(ImmutableTup3c.class);
-		ImmutableTup3c t = mock(ImmutableTup3c.class);
-		
-		when(t.getNewInstanceFromArray(new char[] {'a', 'b', 'c'})).thenCallRealMethod();
-
-		when(t.getNewInstance('a', 'b', 'c')).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstanceFromArray(new char[] {'a', 'b', 'c'}));
-		
-		verify(t).getNewInstanceFromArray(new char[] {'a', 'b', 'c'});
-		
-		verify(t).getNewInstance('a', 'b', 'c');
-		
-		verifyNoMoreInteractions(t);
 	}
 }

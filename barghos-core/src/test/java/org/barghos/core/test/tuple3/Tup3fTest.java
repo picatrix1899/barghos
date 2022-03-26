@@ -34,15 +34,11 @@ import org.barghos.core.tuple3.Tup3f;
 
 /**
  * This class provides component tests for the class {@link Tup3f}.
- * 
- * @since 1.0.0.0
  */
 class Tup3fTest
 {
 	/**
 	 * This test ensures, that the default constructor {@link Tup3f#Tup3f()} sets the components to 0.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_DefaultTest()
@@ -57,8 +53,6 @@ class Tup3fTest
 	/**
 	 * This test ensures, that an instance of {@link Tup3f} generated from an existing instance of {@link TupfR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_TupleTest()
@@ -81,8 +75,6 @@ class Tup3fTest
 	/**
 	 * This test ensures, that an instance of {@link Tup3f} generated from an existing instance of {@link Tup3fR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_Tuple3Test()
@@ -109,8 +101,6 @@ class Tup3fTest
 	/**
 	 * This test ensures, that an instance of {@link Tup3f} generated from a scalar,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ValueTest()
@@ -125,8 +115,6 @@ class Tup3fTest
 	/**
 	 * This test ensures, that an instance of {@link Tup3f} generated from an array,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ArrayTest()
@@ -141,8 +129,6 @@ class Tup3fTest
 	/**
 	 * This test ensures, that an instance of {@link Tup3f} generated from two components,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ComponentsTest()
@@ -157,8 +143,6 @@ class Tup3fTest
 	/**
 	 * This test ensures, that the function {@link Tup3f#setX(float)} sets the x component of the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setXTest()
@@ -172,8 +156,6 @@ class Tup3fTest
 	/**
 	 * This test ensures, that the function {@link Tup3f#setY(float)} sets the y component of the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setYTest()
@@ -187,8 +169,6 @@ class Tup3fTest
 	/**
 	 * This test ensures, that the function {@link Tup3f#setZ(float)} sets the z component of the tuple
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void setZTest()
@@ -203,8 +183,6 @@ class Tup3fTest
 	 * This test ensures, that the function
 	 * {@link Tup3f#set(org.barghos.core.api.tuple2.Tup3fR) Tup3f.set(Tup3fR)}
 	 * adopts the components from the input tuple and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void set_Tuple3Test()
@@ -236,8 +214,6 @@ class Tup3fTest
 	/**
 	 * This test ensures, that the function {@link Tup3f#set(float)} sets the components
 	 * to the value and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void set_ValueTest()
@@ -260,8 +236,6 @@ class Tup3fTest
 	/**
 	 * This test ensures, that the function {@link Tup3f#set(float, float, float)} set the components
 	 * to the respective parameters and returns the current tuple.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void set_ComponentsTest()
@@ -288,8 +262,6 @@ class Tup3fTest
 	/**
 	 * This test ensures, that the function {@link Tup3f#getX()} actually returns the value of the
 	 * x component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getXTest()
@@ -303,8 +275,6 @@ class Tup3fTest
 	/**
 	 * This test ensures, that the function {@link Tup3f#getY()} actually returns the value of the
 	 * y component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getYTest()
@@ -318,8 +288,6 @@ class Tup3fTest
 	/**
 	 * This test ensures, that the function {@link Tup3f#getZ()} actually returns the value of the
 	 * z component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getZTest()
@@ -560,8 +528,6 @@ class Tup3fTest
 	
 	/**
 	 * This test ensures, that the {@link Tup3f#toString()} function prints the components correctly.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void toStringTest()
@@ -569,125 +535,5 @@ class Tup3fTest
 		Tup3f t = new Tup3f(1.1f, 2.2f, 3.3f);
 		
 		assertEquals("tup3f(x=1.1, y=2.2, z=3.3)", t.toString());
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup3f#getNewInstance(float, float, float)}
-	 * returns a new instance of {@link Tup3f} with the given values.
-	 */
-	@Test
-	void getNewInstance_ComponentsTest()
-	{
-		Tup3f original = new Tup3f(1.0f, 2.0f, 3.0f);
-		Tup3f newInstance = original.getNewInstance(3.0f, 4.0f, 5.0f);
-		
-		assertEquals(1.0f, original.getX());
-		assertEquals(2.0f, original.getY());
-		assertEquals(3.0f, original.getZ());
-		assertEquals(3.0f, newInstance.getX());
-		assertEquals(4.0f, newInstance.getY());
-		assertEquals(5.0f, newInstance.getZ());
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link Tup3f#getNewInstance(float)} calls
-	 * the function {@link Tup3f#getNewInstance(float, float, float)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_ValueTest()
-	{
-		Tup3f newInstance = mock(Tup3f.class);
-		Tup3f t = mock(Tup3f.class);
-		
-		when(t.getNewInstance(1.0f)).thenCallRealMethod();
-
-		when(t.getNewInstance(1.0f, 1.0f, 1.0f)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(1.0f));
-		
-		verify(t).getNewInstance(1.0f);
-		
-		verify(t).getNewInstance(1.0f, 1.0f, 1.0f);
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup2bd#getNewInstance(Tup3fR)}
-	 * returns a new instance of {@link Tup3f} with the given values.
-	 */
-	@Test
-	void getNewInstance_Tuple2Test()
-	{
-		Tup3fR original = mock(Tup3fR.class);
-		Tup3f newInstance = mock(Tup3f.class);
-		Tup3f t = mock(Tup3f.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getX()).thenReturn(1.0f);
-		when(original.getY()).thenReturn(2.0f);
-		when(original.getZ()).thenReturn(3.0f);
-		when(t.getNewInstance(1.0f, 2.0f, 3.0f)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getX();
-		verify(original).getY();
-		verify(original).getZ();
-		verify(t).getNewInstance(1.0f, 2.0f, 3.0f);
-		
-		verifyNoMoreInteractions(t, original);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link Tup3f#getNewInstance(TupfR)} calls
-	 * the function {@link Tup3f#getNewInstance(float, float, float)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_TupleTest()
-	{
-		TupfR original = mock(TupfR.class);
-		Tup3f newInstance = mock(Tup3f.class);
-		Tup3f t = mock(Tup3f.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getArray()).thenReturn(new float[] {1.0f, 2.0f, 3.0f});
-		when(t.getNewInstance(1.0f, 2.0f, 3.0f)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getArray();
-		verify(t).getNewInstance(1.0f, 2.0f, 3.0f);
-		
-		verifyNoMoreInteractions(t, original);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link Tup3f#getNewInstanceFromArray(float[])} calls
-	 * the function {@link Tup3f#getNewInstance(float, float, float)} with the correct components.
-	 */
-	@Test
-	void getNewInstanceFromArrayTest()
-	{
-		Tup3f newInstance = mock(Tup3f.class);
-		Tup3f t = mock(Tup3f.class);
-		
-		when(t.getNewInstanceFromArray(new float[] {1.0f, 2.0f, 3.0f})).thenCallRealMethod();
-
-		when(t.getNewInstance(1.0f, 2.0f, 3.0f)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstanceFromArray(new float[] {1.0f, 2.0f, 3.0f}));
-		
-		verify(t).getNewInstanceFromArray(new float[] {1.0f, 2.0f, 3.0f});
-		
-		verify(t).getNewInstance(1.0f, 2.0f, 3.0f);
-		
-		verifyNoMoreInteractions(t);
 	}
 }

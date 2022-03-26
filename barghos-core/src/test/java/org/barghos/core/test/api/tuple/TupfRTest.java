@@ -198,24 +198,6 @@ class TupfRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link TupfR#isValid()} returns always
-	 * true and does not make any calls.
-	 */
-	@Test
-	void isValidTest()
-	{
-		TupfR t = mock(TupfR.class);
-		
-		when(t.isValid()).thenCallRealMethod();
-		
-		assertEquals(true, t.isValid());
-		
-		verify(t).isValid();
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
 	 * This test ensures, that the function {@link TupfR#isZero()} returns true
 	 * if all components are +0.0f.
 	 */
@@ -577,57 +559,6 @@ class TupfRTest
 		verify(t).getDimensions();
 		verify(t).getByIndex(0);
 		verify(t).getByIndex(1);
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link TupfR#getNewInstance(TupfR)} calls
-	 * the function {@link TupfR#getNewInstance(float[])} with the correct components.
-	 */
-	@Test
-	void getNewInstance_TupleTest()
-	{
-		TupfR original = mock(TupfR.class);
-		TupfR newInstance = mock(TupfR.class);
-		TupfR t = mock(TupfR.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getArray()).thenReturn(new float[] {1.0f, 2.0f});
-		when(t.getNewInstanceFromArray(new float[] {1.0f, 2.0f})).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-
-		verify(original).getArray();
-		verify(t).getNewInstanceFromArray(new float[] {1.0f, 2.0f});
-		
-		verifyNoMoreInteractions(t, original);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link TupfR#getNewInstance(float)} calls
-	 * the function {@link TupfR#getNewInstanceFromArray(float[])} with the correct components.
-	 */
-	@Test
-	void getNewInstance_ValueTest()
-	{
-		TupfR newInstance = mock(TupfR.class);
-		TupfR t = mock(TupfR.class);
-		
-		when(t.getNewInstance(1.0f)).thenCallRealMethod();
-		
-		when(t.getDimensions()).thenReturn(2);
-		when(t.getNewInstanceFromArray(new float[] {1.0f, 1.0f})).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(1.0f));
-		
-		verify(t).getNewInstance(1.0f);
-
-		verify(t).getDimensions();
-		verify(t).getNewInstanceFromArray(new float[] {1.0f, 1.0f});
 		
 		verifyNoMoreInteractions(t);
 	}

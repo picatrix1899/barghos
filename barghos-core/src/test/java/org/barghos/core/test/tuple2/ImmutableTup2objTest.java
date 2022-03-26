@@ -14,16 +14,12 @@ import org.barghos.core.tuple2.ImmutableTup2obj;
  * This class provides component tests for the class {@link ImmutableTup2obj}.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 class ImmutableTup2objTest
 {
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup2obj} generated from an existing instance of {@link TupobjR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_TupleTest()
@@ -45,8 +41,6 @@ class ImmutableTup2objTest
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup2obj} generated from an existing instance of {@link Tup2objR},
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_Tuple2Test()
@@ -70,8 +64,6 @@ class ImmutableTup2objTest
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup2obj} generated from a scalar,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ValueTest()
@@ -85,8 +77,6 @@ class ImmutableTup2objTest
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup2obj} generated from an array,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ArrayTest()
@@ -100,8 +90,6 @@ class ImmutableTup2objTest
 	/**
 	 * This test ensures, that an instance of {@link ImmutableTup2obj} generated from two components,
 	 * returns the correct components.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void ctor_ComponentsTest()
@@ -115,8 +103,6 @@ class ImmutableTup2objTest
 	/**
 	 * This test ensures, that the function {@link ImmutableTup2obj#getX()} actually returns the value of the
 	 * x component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getXTest()
@@ -130,8 +116,6 @@ class ImmutableTup2objTest
 	/**
 	 * This test ensures, that the function {@link ImmutableTup2obj#getY()} actually returns the value of the
 	 * y component.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void getYTest()
@@ -316,8 +300,6 @@ class ImmutableTup2objTest
 	
 	/**
 	 * This test ensures, that the {@link ImmutableTup2obj#toString()} function prints the components correctly.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	@Test
 	void toStringTest()
@@ -325,121 +307,5 @@ class ImmutableTup2objTest
 		ImmutableTup2obj t = new ImmutableTup2obj(1, 1.0);
 		
 		assertEquals("immutableTup2obj(x=1, y=1.0)", t.toString());
-	}
-	
-	/**
-	 * This test ensures, that the function {@link ImmutableTup2obj#getNewInstance(Object, Object)}
-	 * returns a new instance of {@link ImmutableTup2obj} with the given values.
-	 */
-	@Test
-	void getNewInstance_ComponentsTest()
-	{
-		ImmutableTup2obj original = new ImmutableTup2obj(1, 1.0);
-		ImmutableTup2obj newInstance = original.getNewInstance("a", 'a');
-		
-		assertEquals(1, original.getX());
-		assertEquals(1.0, original.getY());
-		assertEquals("a", newInstance.getX());
-		assertEquals('a', newInstance.getY());
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link ImmutableTup2obj#getNewInstance(Object)} calls
-	 * the function {@link ImmutableTup2obj#getNewInstance(Object, Object)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_ValueTest()
-	{
-		ImmutableTup2obj newInstance = mock(ImmutableTup2obj.class);
-		ImmutableTup2obj t = mock(ImmutableTup2obj.class);
-		
-		when(t.getNewInstance(1)).thenCallRealMethod();
-
-		when(t.getNewInstance(1, 1)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(1));
-		
-		verify(t).getNewInstance(1);
-		
-		verify(t).getNewInstance(1, 1);
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link ImmutableTup2obj#getNewInstance(Tup2objR)}
-	 * returns a new instance of {@link ImmutableTup2obj} with the given values.
-	 */
-	@Test
-	void getNewInstance_Tuple2Test()
-	{
-		Tup2objR original = mock(Tup2objR.class);
-		ImmutableTup2obj newInstance = mock(ImmutableTup2obj.class);
-		ImmutableTup2obj t = mock(ImmutableTup2obj.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getX()).thenReturn(1);
-		when(original.getY()).thenReturn(1.0);
-		when(t.getNewInstance(1, 1.0)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getX();
-		verify(original).getY();
-		verify(t).getNewInstance(1, 1.0);
-		
-		verifyNoMoreInteractions(t, original);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link ImmutableTup2obj#getNewInstance(TupobjR)} calls
-	 * the function {@link ImmutableTup2obj#getNewInstance(Object, Object)} with the correct components.
-	 */
-	@Test
-	void getNewInstance_TupleTest()
-	{
-		TupobjR original = mock(TupobjR.class);
-		ImmutableTup2obj newInstance = mock(ImmutableTup2obj.class);
-		ImmutableTup2obj t = mock(ImmutableTup2obj.class);
-		
-		when(t.getNewInstance(original)).thenCallRealMethod();
-		
-		when(original.getArray()).thenReturn(new Object[] {1, 1.0});
-		when(t.getNewInstance(1, 1.0)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstance(original));
-		
-		verify(t).getNewInstance(original);
-		
-		verify(original).getArray();
-		verify(t).getNewInstance(1, 1.0);
-		
-		verifyNoMoreInteractions(t, original);
-	}
-	
-	/**
-	 * This test ensures, that the default implementation of the function {@link ImmutableTup2obj#getNewInstanceFromArray(Object[])} calls
-	 * the function {@link ImmutableTup2obj#getNewInstance(Object, Object)} with the correct components.
-	 */
-	@Test
-	void getNewInstanceFromArrayTest()
-	{
-		ImmutableTup2obj newInstance = mock(ImmutableTup2obj.class);
-		ImmutableTup2obj t = mock(ImmutableTup2obj.class);
-		
-		when(t.getNewInstanceFromArray(new Object[] {1, 1.0})).thenCallRealMethod();
-
-		when(t.getNewInstance(1, 1.0)).thenReturn(newInstance);
-		
-		assertSame(newInstance, t.getNewInstanceFromArray(new Object[] {1, 1.0}));
-		
-		verify(t).getNewInstanceFromArray(new Object[] {1, 1.0});
-		
-		verify(t).getNewInstance(1, 1.0);
-		
-		verifyNoMoreInteractions(t);
 	}
 }
