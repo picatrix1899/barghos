@@ -1,7 +1,5 @@
 package org.barghos.math.api.vector;
 
-import static org.barghos.core.api.tuple.TupleConstants.*;
-
 import org.barghos.core.api.tuple2.Tup2fR;
 import org.barghos.core.api.tuple2.Tup2oBase;
 import org.barghos.core.api.tuple2.Tup2oR;
@@ -199,19 +197,7 @@ public interface Vec2fR extends Tup2fR
 	 */
 	default Tup2oR<Float,Integer> min()
 	{
-		float x = getX();
-		float y = getY();
-		
-		float value = x;
-		int index = COMP_X;
-		
-		if(y < value)
-		{
-			value = y;
-			index = COMP_Y;
-		}
-		
-		return Tup2oR.of(value, index);
+		return Vec2fUtil.min(getX(), getY());
 	}
 	
 	/**
@@ -226,21 +212,7 @@ public interface Vec2fR extends Tup2fR
 	 */
 	default <T extends Tup2oBase<Float,Integer>> T minR(T res)
 	{
-		float x = getX();
-		float y = getY();
-		
-		float value = x;
-		int index = COMP_X;
-		
-		if(y < value)
-		{
-			value = y;
-			index = COMP_Y;
-		}
-		
-		res.set(value, index);
-		
-		return res;
+		return Vec2fUtil.min(getX(), getY(), res);
 	}
 	
 	/**
@@ -255,19 +227,7 @@ public interface Vec2fR extends Tup2fR
 	 */
 	default <T> T minR(GenericFunction2<Float,Integer,T> func)
 	{
-		float x = getX();
-		float y = getY();
-		
-		float value = x;
-		int index = COMP_X;
-		
-		if(y < value)
-		{
-			value = y;
-			index = COMP_Y;
-		}
-		
-		return func.apply(value, index);
+		return Vec2fUtil.min(getX(), getY(), func);
 	}
 	
 	/**
@@ -277,7 +237,7 @@ public interface Vec2fR extends Tup2fR
 	 */
 	default float minValue()
 	{
-		return Math.min(getX(), getY());
+		return Vec2fUtil.minValue(getX(), getY());
 	}
 	
 	/**
@@ -289,19 +249,7 @@ public interface Vec2fR extends Tup2fR
 	 */
 	default int minComponent()
 	{
-		float x = getX();
-		float y = getY();
-		
-		float value = x;
-		int index = COMP_X;
-		
-		if(y < value)
-		{
-			value = y;
-			index = COMP_Y;
-		}
-		
-		return index;
+		return Vec2fUtil.minComponent(getX(), getY());
 	}
 	
 	/**
@@ -314,19 +262,7 @@ public interface Vec2fR extends Tup2fR
 	 */
 	default Tup2oR<Float,Integer> max()
 	{
-		float x = getX();
-		float y = getY();
-		
-		float value = x;
-		int index = COMP_X;
-		
-		if(y > value)
-		{
-			value = y;
-			index = COMP_Y;
-		}
-		
-		return Tup2oR.of(value, index);
+		return Vec2fUtil.max(getX(), getY());
 	}
 	
 	/**
@@ -341,21 +277,7 @@ public interface Vec2fR extends Tup2fR
 	 */
 	default <T extends Tup2oBase<Float,Integer>> T maxR(T res)
 	{
-		float x = getX();
-		float y = getY();
-		
-		float value = x;
-		int index = COMP_X;
-		
-		if(y > value)
-		{
-			value = y;
-			index = COMP_Y;
-		}
-		
-		res.set(value, index);
-		
-		return res;
+		return Vec2fUtil.max(getX(), getY(), res);
 	}
 	
 	/**
@@ -370,19 +292,7 @@ public interface Vec2fR extends Tup2fR
 	 */
 	default <T> T maxR(GenericFunction2<Float,Integer,T> func)
 	{
-		float x = getX();
-		float y = getY();
-		
-		float value = x;
-		int index = COMP_X;
-		
-		if(y > value)
-		{
-			value = y;
-			index = COMP_Y;
-		}
-		
-		return func.apply(value, index);
+		return Vec2fUtil.max(getX(), getY(), func);
 	}
 	
 	/**
@@ -392,7 +302,7 @@ public interface Vec2fR extends Tup2fR
 	 */
 	default float maxValue()
 	{
-		return Math.max(getX(), getY());
+		return Vec2fUtil.maxValue(getX(), getY());
 	}
 	
 	/**
@@ -404,19 +314,7 @@ public interface Vec2fR extends Tup2fR
 	 */
 	default int maxComponent()
 	{
-		float x = getX();
-		float y = getY();
-		
-		float value = x;
-		int index = COMP_X;
-		
-		if(y > value)
-		{
-			value = y;
-			index = COMP_Y;
-		}
-		
-		return index;
+		return Vec2fUtil.maxComponent(getX(), getY());
 	}
 	
 	/**
@@ -456,9 +354,9 @@ public interface Vec2fR extends Tup2fR
 	 */
 	public static Vec2fR ofNormalized(final float x, final float y)
 	{
-		float length = (float)Math.sqrt(Math.fma(x, x, y * y));
-		final float _x = x / length;
-		final float _y = y / length;
+		float recLength = Vec2fUtil.reciprocalLengthSafe(x, y);
+		final float _x = x * recLength;
+		final float _y = y * recLength;
 		
 		return new Vec2fR() {
 			public float getX()

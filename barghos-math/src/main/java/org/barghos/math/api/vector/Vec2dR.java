@@ -1,7 +1,5 @@
 package org.barghos.math.api.vector;
 
-import static org.barghos.core.api.tuple.TupleConstants.*;
-
 import org.barghos.core.api.tuple2.Tup2dR;
 import org.barghos.core.api.tuple2.Tup2oBase;
 import org.barghos.core.api.tuple2.Tup2oR;
@@ -199,19 +197,7 @@ public interface Vec2dR extends Tup2dR
 	 */
 	default Tup2oR<Double,Integer> min()
 	{
-		double x = getX();
-		double y = getY();
-		
-		double value = x;
-		int index = COMP_X;
-		
-		if(y < value)
-		{
-			value = y;
-			index = COMP_Y;
-		}
-		
-		return Tup2oR.of(value, index);
+		return Vec2dUtil.min(getX(), getY());
 	}
 	
 	/**
@@ -226,21 +212,7 @@ public interface Vec2dR extends Tup2dR
 	 */
 	default <T extends Tup2oBase<Double,Integer>> T minR(T res)
 	{
-		double x = getX();
-		double y = getY();
-		
-		double value = x;
-		int index = COMP_X;
-		
-		if(y < value)
-		{
-			value = y;
-			index = COMP_Y;
-		}
-		
-		res.set(value, index);
-		
-		return res;
+		return Vec2dUtil.min(getX(), getY(), res);
 	}
 	
 	/**
@@ -255,19 +227,7 @@ public interface Vec2dR extends Tup2dR
 	 */
 	default <T> T minR(GenericFunction2<Double,Integer,T> func)
 	{
-		double x = getX();
-		double y = getY();
-		
-		double value = x;
-		int index = COMP_X;
-		
-		if(y < value)
-		{
-			value = y;
-			index = COMP_Y;
-		}
-		
-		return func.apply(value, index);
+		return Vec2dUtil.min(getX(), getY(), func);
 	}
 	
 	/**
@@ -277,7 +237,7 @@ public interface Vec2dR extends Tup2dR
 	 */
 	default double minValue()
 	{
-		return Math.min(getX(), getY());
+		return Vec2dUtil.minValue(getX(), getY());
 	}
 	
 	/**
@@ -289,19 +249,7 @@ public interface Vec2dR extends Tup2dR
 	 */
 	default int minComponent()
 	{
-		double x = getX();
-		double y = getY();
-		
-		double value = x;
-		int index = COMP_X;
-		
-		if(y < value)
-		{
-			value = y;
-			index = COMP_Y;
-		}
-		
-		return index;
+		return Vec2dUtil.minComponent(getX(), getY());
 	}
 	
 	/**
@@ -314,19 +262,7 @@ public interface Vec2dR extends Tup2dR
 	 */
 	default Tup2oR<Double,Integer> max()
 	{
-		double x = getX();
-		double y = getY();
-		
-		double value = x;
-		int index = COMP_X;
-		
-		if(y > value)
-		{
-			value = y;
-			index = COMP_Y;
-		}
-		
-		return Tup2oR.of(value, index);
+		return Vec2dUtil.max(getX(), getY());
 	}
 	
 	/**
@@ -341,21 +277,7 @@ public interface Vec2dR extends Tup2dR
 	 */
 	default <T extends Tup2oBase<Double,Integer>> T maxR(T res)
 	{
-		double x = getX();
-		double y = getY();
-		
-		double value = x;
-		int index = COMP_X;
-		
-		if(y > value)
-		{
-			value = y;
-			index = COMP_Y;
-		}
-		
-		res.set(value, index);
-		
-		return res;
+		return Vec2dUtil.max(getX(), getY(), res);
 	}
 	
 	/**
@@ -370,19 +292,7 @@ public interface Vec2dR extends Tup2dR
 	 */
 	default <T> T maxR(GenericFunction2<Double,Integer,T> func)
 	{
-		double x = getX();
-		double y = getY();
-		
-		double value = x;
-		int index = COMP_X;
-		
-		if(y > value)
-		{
-			value = y;
-			index = COMP_Y;
-		}
-		
-		return func.apply(value, index);
+		return Vec2dUtil.max(getX(), getY(), func);
 	}
 	
 	/**
@@ -392,7 +302,7 @@ public interface Vec2dR extends Tup2dR
 	 */
 	default double maxValue()
 	{
-		return Math.max(getX(), getY());
+		return Vec2dUtil.maxValue(getX(), getY());
 	}
 	
 	/**
@@ -404,19 +314,7 @@ public interface Vec2dR extends Tup2dR
 	 */
 	default int maxComponent()
 	{
-		double x = getX();
-		double y = getY();
-		
-		double value = x;
-		int index = COMP_X;
-		
-		if(y > value)
-		{
-			value = y;
-			index = COMP_Y;
-		}
-		
-		return index;
+		return Vec2dUtil.maxComponent(getX(), getY());
 	}
 	
 	/**
@@ -456,9 +354,9 @@ public interface Vec2dR extends Tup2dR
 	 */
 	public static Vec2dR ofNormalized(final double x, final double y)
 	{
-		double length = Math.sqrt(Math.fma(x, x, y * y));
-		final double _x = x / length;
-		final double _y = y / length;
+		double recLength = Vec2dUtil.reciprocalLengthSafe(x, y);
+		final double _x = x * recLength;
+		final double _y = y * recLength;
 		
 		return new Vec2dR() {
 			public double getX()

@@ -1,6 +1,11 @@
 package org.barghos.math.api.vector;
 
+import static org.barghos.core.api.tuple.TupleConstants.*;
+
+import org.barghos.core.api.tuple2.Tup2oBase;
+import org.barghos.core.api.tuple2.Tup2oR;
 import org.barghos.core.api.util.function.DoubleFunction2;
+import org.barghos.core.api.util.function.GenericFunction2;
 
 /**
  * This class provides utilities for working with 2-dimensional double vectors.
@@ -596,5 +601,211 @@ public class Vec2dUtil
 		if(Math.abs(x) <= tolerance && Math.abs(y) <= tolerance) return 0.0;
 		
 		return Math.fma(x, x, y * y);
+	}
+	
+	/**
+	 * Determines the smallest value of the components and returns the value and the index of the component.
+	 * The index returned is limited to the range of 0 to 1.
+	 * If two or more components have the same value the first index will be returned.
+	 * The returned tuple is immutable.
+	 * 
+	 * @return The smallest value of the components and the index of the corresponding component.
+	 */
+	public static Tup2oR<Double,Integer> min(double x, double y)
+	{
+		double value = x;
+		int index = COMP_X;
+		
+		if(y < value)
+		{
+			value = y;
+			index = COMP_Y;
+		}
+		
+		return Tup2oR.of(value, index);
+	}
+	
+	/**
+	 * Determines the smallest value of the components and returns the value and the index of the component.
+	 * The index returned is limited to the range of 0 to 1.
+	 * If two or more components have the same value the first index will be returned.
+	 * This version utilizes a query parameter that receives the result and will be returned.
+	 * 
+	 * @param res The query parameter for the result.
+	 * 
+	 * @return The instance from the res parameter with the result.
+	 */
+	public static <T extends Tup2oBase<Double,Integer>> T min(double x, double y, T res)
+	{
+		double value = x;
+		int index = COMP_X;
+		
+		if(y < value)
+		{
+			value = y;
+			index = COMP_Y;
+		}
+		
+		res.set(value, index);
+		
+		return res;
+	}
+	
+	/**
+	 * Determines the smallest value of the components and returns the value and the index of the component.
+	 * The index returned is limited to the range of 0 to 1.
+	 * If two or more components have the same value the first index will be returned.
+	 * This version provides the result to the given functional interface implementation and returns the result of that call.
+	 * 
+	 * @param func The functional interface implementation to call with the result.
+	 * 
+	 * @return The returned result from the functional interface implementation.
+	 */
+	public static <T> T min(double x, double y, GenericFunction2<Double,Integer,T> func)
+	{
+		double value = x;
+		int index = COMP_X;
+		
+		if(y < value)
+		{
+			value = y;
+			index = COMP_Y;
+		}
+		
+		return func.apply(value, index);
+	}
+	
+	/**
+	 * Determines the smallest value of the components and returns it.
+	 * 
+	 * @return The smallest value of the components.
+	 */
+	public static double minValue(double x, double y)
+	{
+		return Math.min(x, y);
+	}
+	
+	/**
+	 * Determines the smallest value of the componensts and returns the index of the component.
+	 * The index returned is limited to the range of 0 to1.
+	 * If two or more components have the same value the first index will be returned.
+	 * 
+	 * @return The index of the smallest component.
+	 */
+	public static int minComponent(double x, double y)
+	{
+		double value = x;
+		int index = COMP_X;
+		
+		if(y < value)
+		{
+			value = y;
+			index = COMP_Y;
+		}
+		
+		return index;
+	}
+	
+	/**
+	 * Determines the greatest value of the components and returns the value and the index of the component.
+	 * The index returned is limited to the range of 0 to 1.
+	 * If two or more components have the same value the first index will be returned.
+	 * The returned tuple is immutable.
+	 * 
+	 * @return The greatest value of the components and the index of the corresponding component.
+	 */
+	public static Tup2oR<Double,Integer> max(double x, double y)
+	{
+		double value = x;
+		int index = COMP_X;
+		
+		if(y > value)
+		{
+			value = y;
+			index = COMP_Y;
+		}
+		
+		return Tup2oR.of(value, index);
+	}
+	
+	/**
+	 * Determines the greatest value of the components and returns the value and the index of the component.
+	 * The index returned is limited to the range of 0 to 1.
+	 * If two or more components have the same value the first index will be returned.
+	 * This version utilizes a query parameter that receives the result and will be returned.
+	 * 
+	 * @param res The query parameter for the result.
+	 * 
+	 * @return The instance from the res parameter with the result.
+	 */
+	public static <T extends Tup2oBase<Double,Integer>> T max(double x, double y, T res)
+	{
+		double value = x;
+		int index = COMP_X;
+		
+		if(y > value)
+		{
+			value = y;
+			index = COMP_Y;
+		}
+		
+		res.set(value, index);
+		
+		return res;
+	}
+	
+	/**
+	 * Determines the greatest value of the components and returns the value and the index of the component.
+	 * The index returned is limited to the range of 0 to 1.
+	 * If two or more components have the same value the first index will be returned.
+	 * This version provides the result to the given functional interface implementation and returns the result of that call.
+	 * 
+	 * @param func The functional interface implementation to call with the result.
+	 * 
+	 * @return The returned result from the functional interface implementation.
+	 */
+	public static <T> T max(double x, double y, GenericFunction2<Double,Integer,T> func)
+	{
+		double value = x;
+		int index = COMP_X;
+		
+		if(y > value)
+		{
+			value = y;
+			index = COMP_Y;
+		}
+		
+		return func.apply(value, index);
+	}
+	
+	/**
+	 * Determines the greatest value of the components and returns it.
+	 * 
+	 * @return The greatest value of the components.
+	 */
+	public static double maxValue(double x, double y)
+	{
+		return Math.max(x, y);
+	}
+	
+	/**
+	 * Determines the greatest value of the componensts and returns the index of the component.
+	 * The index returned is limited to the range of 0 to 1.
+	 * If two or more components have the same value the first index will be returned.
+	 * 
+	 * @return The index of the greatest component.
+	 */
+	public static int maxComponent(double x, double y)
+	{
+		double value = x;
+		int index = COMP_X;
+		
+		if(y > value)
+		{
+			value = y;
+			index = COMP_Y;
+		}
+		
+		return index;
 	}
 }
