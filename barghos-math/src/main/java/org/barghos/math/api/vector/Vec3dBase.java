@@ -667,7 +667,7 @@ public interface Vec3dBase extends Vec3dR, Tup3dBase
 	 */
 	default Vec3dBase cross(Tup3dR t)
 	{
-		return crossLH(t.getX());
+		return crossLH(t);
 	}
 	
 	/**

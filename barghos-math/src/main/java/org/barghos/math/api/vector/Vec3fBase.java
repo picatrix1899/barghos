@@ -668,7 +668,7 @@ public interface Vec3fBase extends Vec3fR, Tup3fBase
 	 */
 	default Vec3fBase cross(Tup3fR t)
 	{
-		return crossLH(t.getX());
+		return crossLH(t);
 	}
 	
 	/**
