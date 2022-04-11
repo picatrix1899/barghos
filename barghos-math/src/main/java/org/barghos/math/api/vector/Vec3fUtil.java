@@ -1,6 +1,9 @@
 package org.barghos.math.api.vector;
 
+import org.barghos.core.api.tuple3.Tup3fBase;
+import org.barghos.core.api.tuple3.Tup3fR;
 import org.barghos.core.api.util.function.FloatFunction3;
+import org.barghos.math.util.Maths;
 
 /**
  * This class provides utilities for working with 3-dimensional float vectors.
@@ -337,5 +340,16 @@ public class Vec3fUtil
 	public static <T> T revDiv(float x1, float y1, float z1, float x2, float y2, float z2, FloatFunction3<T> func)
 	{
 		return func.apply(x2 / x1, y2 / y1, z2 / z1);
+	}
+	
+	public static <T extends Tup3fBase> T lerp(Tup3fR a, Tup3fR b, float alpha, T res)
+	{
+		float x =  Maths.lerpf(a.getX(), b.getX(), alpha);
+		float y =  Maths.lerpf(a.getY(), b.getY(), alpha);
+		float z =  Maths.lerpf(a.getZ(), b.getZ(), alpha);
+		
+		res.set(x, y, z);
+		
+		return res;
 	}
 }
