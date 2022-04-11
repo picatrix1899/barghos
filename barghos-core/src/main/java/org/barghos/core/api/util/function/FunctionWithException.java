@@ -30,8 +30,6 @@ package org.barghos.core.api.util.function;
  * @param <R> The return type of the {@link #apply(Object)} function.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 public interface FunctionWithException<T,R>
 {
@@ -44,8 +42,6 @@ public interface FunctionWithException<T,R>
 	 * @return The function result
 	 * 
 	 * @throws Exception Passes the unhandled exceptions from the function
-	 * 
-	 * @since 1.0.0.0
 	 */
 	R apply(T t) throws Exception;
 }

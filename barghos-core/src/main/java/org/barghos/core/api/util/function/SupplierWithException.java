@@ -29,8 +29,6 @@ package org.barghos.core.api.util.function;
  * @param <R> The return type of the {@link java.util.function.Supplier#get()} function.
  * 
  * @author picatrix1899
- * 
- * @since 1.0.0.0
  */
 public interface SupplierWithException<R>
 {
@@ -41,8 +39,6 @@ public interface SupplierWithException<R>
 	 * @return A result
 	 * 
 	 * @throws Exception Passes unhandled exceptions from the function.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	R get() throws Exception;
 }
