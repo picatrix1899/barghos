@@ -435,6 +435,230 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	}
 	
 	/**
+	 * Performs an fma ({@link Math#fma}) combined multiplication and addition operation with the two
+	 * given tuples.
+	 * In this version the current vector is used as a multiplicant.
+	 * 
+	 * <p>
+	 * Operation:
+	 * v * m + a
+	 * 
+	 * @param m The second multiplicant.
+	 * @param a The addend.
+	 * 
+	 * @return The current vector.
+	 */
+	default Vec2fBase fma(Tup2fR m, Tup2fR a)
+	{
+		return fma(m, a);
+	}
+	
+	/**
+	 * Performs an fma ({@link Math#fma}) combined multiplication and addition operation with the two
+	 * given tuples defined by the given tuple and the components.
+	 * In this version the current vector is used as a multiplicant.
+	 * 
+	 * <p>
+	 * Operation:
+	 * v * m + (aX, aY)
+	 * 
+	 * @param m The second multiplicant.
+	 * @param aX The value of the x component of the addend.
+	 * @param aY The value of the y component of the addend.
+	 * 
+	 * @return The current vector.
+	 */
+	default Vec2fBase fma(Tup2fR m, float aX, float aY)
+	{
+		return fma(m, aX, aY);
+	}
+	
+	/**
+	 * Performs an fma ({@link Math#fma}) combined multiplication and addition operation with the two
+	 * given tuples defined by the given tuple and the components.
+	 * In this version the current vector is used as a multiplicant.
+	 * 
+	 * <p>
+	 * Operation:
+	 * v * (mX, mY) + a
+	 * 
+	 * @param mX The value of the x component of the second multiplicant.
+	 * @param mY The value of the y component of the second multiplicant.
+	 * @param a The addend.
+	 * 
+	 * @return The current vector.
+	 */
+	default Vec2fBase fma(float mX, float mY, Tup2fR a)
+	{
+		return fma(mX, mY, a);
+	}
+	
+	/**
+	 * Performs an fma ({@link Math#fma}) combined multiplication and addition operation with the two
+	 * given tuples defined by the given components.
+	 * In this version the current vector is used as a multiplicant.
+	 * 
+	 * <p>
+	 * Operation:
+	 * v * (mX, mY) + (aX, aY)
+	 * 
+	 * @param mX The value of the x component of the second multiplicant.
+	 * @param mY The value of the y component of the second multiplicant.
+	 * @param aX The value of the x component of the addend.
+	 * @param aY The value of the y component of the addend.
+	 * 
+	 * @return The current vector.
+	 */
+	default Vec2fBase fma(float mX, float mY, float aX, float aY)
+	{
+		return Vec2fUtil.fma(getX(), getY(), mX, mY, aX, aY, this);
+	}
+	
+	/**
+	 * Performs an fma ({@link Math#fma}) combined multiplication and addition operation with the two
+	 * given tuples and saves the result in a new instance.
+	 * In this version the current vector is used as the addend.
+	 * This operation does not alter the current vector.
+	 * 
+	 * <p>
+	 * Operation:
+	 * v + m1 * m2
+	 * 
+	 * @param m1 The first multiplicant.
+	 * @param m2 The second multiplicant.
+	 * 
+	 * @return The new instance with the result.
+	 */
+	default Vec2fBase mulAddN(Tup2fR m1, Tup2fR m2)
+	{
+		return clone().mulAdd(m1, m2);
+	}
+	
+	/**
+	 * Performs an fma ({@link Math#fma}) combined multiplication and addition operation with the two
+	 * given tuples defined by the given tuple and the components and saves the result in
+	 * a new instance.
+	 * In this version the current vector is used as the addend.
+	 * This operation does not alter the current vector.
+	 * 
+	 * <p>
+	 * Operation:
+	 * v + m1 * (mX2, mY2)
+	 * 
+	 * @param m1 The first multiplicant.
+	 * @param mX2 The value of the x component of the second multiplicant.
+	 * @param mY2 The value of the y component of the second multiplicant.
+	 * 
+	 * @return The new instance with the result.
+	 */
+	default Vec2fBase mulAddN(Tup2fR m1, float mX2, float mY2)
+	{
+		return clone().mulAdd(m1, mX2, mY2);
+	}
+	
+	/**
+	 * Performs an fma ({@link Math#fma}) combined multiplication and addition operation with the two
+	 * given tuples defined by the given tuple and the components and saves the result in
+	 * a new instance.
+	 * In this version the current vector is used as the addend.
+	 * This operation does not alter the current vector.
+	 * 
+	 * <p>
+	 * Operation:
+	 * v + (mX1, mY1) * m2
+	 * 
+	 * @param mX1 The value of the x component of the first multiplicant.
+	 * @param mY1 The value of the y component of the first multiplicant.
+	 * @param m2 The second multiplicant.
+	 * 
+	 * @return The new instance with the result.
+	 */
+	default Vec2fBase mulAddN(float mX1, float mY1, Tup2fR m2)
+	{
+		return clone().mulAdd(mX1, mY1, m2);
+	}
+	
+	/**
+	 * Performs an fma ({@link Math#fma}) combined multiplication and addition operation with the two
+	 * given tuples.
+	 * In this version the current vector is used as the addend.
+	 * 
+	 * <p>
+	 * Operation:
+	 * v + m1 * m2
+	 * 
+	 * @param m1 The first multiplicant.
+	 * @param m2 The second multiplicant.
+	 * 
+	 * @return The current vector.
+	 */
+	default Vec2fBase mulAdd(Tup2fR m1, Tup2fR m2)
+	{
+		return mulAdd(m1.getX(), m1.getY(), m2.getX(), m2.getY());
+	}
+	
+	/**
+	 * Performs an fma ({@link Math#fma}) combined multiplication and addition operation with the two
+	 * given tuples defined by the given tuple and the components.
+	 * In this version the current vector is used as the addend.
+	 * 
+	 * <p>
+	 * Operation:
+	 * v + m1 * (mX2, mY2)
+	 * 
+	 * @param m1 The first multiplicant.
+	 * @param mX2 The value of the x component of the second multiplicant.
+	 * @param mY2 The value of the y component of the second multiplicant.
+	 * 
+	 * @return The current vector.
+	 */
+	default Vec2fBase mulAdd(Tup2fR m1, float mX2, float mY2)
+	{
+		return mulAdd(m1.getX(), m1.getY(), mX2, mY2);
+	}
+	
+	/**
+	 * Performs an fma ({@link Math#fma}) combined multiplication and addition operation with the two
+	 * given tuples defined by the given tuple and the components.
+	 * In this version the current vector is used as the addend.
+	 * 
+	 * <p>
+	 * Operation:
+	 * v + (mX1, mY1) * m2
+	 * 
+	 * @param mX1 The value of the x component of the first multiplicant.
+	 * @param mY1 The value of the y component of the first multiplicant.
+	 * @param m2 The second multiplicant.
+	 * 
+	 * @return The current vector.
+	 */
+	default Vec2fBase mulAdd(float mX1, float mY1, Tup2fR m2)
+	{
+		return mulAdd(mX1, mY1, m2.getX(), m2.getY());
+	}
+	
+	/**
+	 * Performs an fma ({@link Math#fma}) combined multiplication and addition operation with the two
+	 * given tuples defined by the given components.
+	 * In this version the current vector is used as the addend.
+	 * 
+	 * <p>
+	 * Operation:
+	 * v + (mX1, mY1) * (mX2, mY2)
+	 * 
+	 * @param mX1 The value of the x component of the first multiplicant.
+	 * @param mY1 The value of the y component of the first multiplicant.
+	 * @param mX2 The value of the x component of the second multiplicant.
+	 * @param mY2 The value of the y component of the second multiplicant.
+	 * 
+	 * @return The current vector.
+	 */
+	default Vec2fBase mulAdd(float mX1, float mY1, float mX2, float mY2)
+	{
+		return Vec2fUtil.mulAdd(getX(), getY(), mX1, mY1, mX2, mY2, this);
+	}
+	
+	/**
 	 * Normalizes the current vector.
 	 * Normalization is done by dividing the vector by its length.
 	 * This doesn't account for zero-length vectors and will in such case throw an {@link ArithmeticException}
@@ -1024,6 +1248,116 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 		return clone().revDiv(x, y);
 	}
 
+	/**
+	 * Performs an fma ({@link Math#fma}) combined multiplication and addition operation with the two
+	 * given tuples and saves the result in a new instance.
+	 * In this version the current vector is used as a multiplicant.
+	 * This operation does not alter the current vector.
+	 * 
+	 * <p>
+	 * Operation:
+	 * v * m + a
+	 * 
+	 * @param m The second multiplicant.
+	 * @param a The addend.
+	 * 
+	 * @return The new instance with the result.
+	 */
+	default Vec2fBase fmaN(Tup2fR m, Tup2fR a)
+	{
+		return clone().fma(m.getX(), m.getY(), a.getX(), a.getY());
+	}
+	
+	/**
+	 * Performs an fma ({@link Math#fma}) combined multiplication and addition operation with the two
+	 * given tuples defined by the given tuple and the components and saves the result in
+	 * a new instance.
+	 * In this version the current vector is used as a multiplicant.
+	 * This operation does not alter the current vector.
+	 * 
+	 * <p>
+	 * Operation:
+	 * v * m + (aX, aY)
+	 * 
+	 * @param mX The second multiplicant.
+	 * @param aX The value of the x component of the addend.
+	 * @param aY The value of the y component of the addend.
+	 * 
+	 * @return The new instance with the result.
+	 */
+	default Vec2fBase fmaN(Tup2fR m, float aX, float aY)
+	{
+		return clone().fma(m.getX(), m.getY(), aX, aY);
+	}
+	
+	/**
+	 * Performs an fma ({@link Math#fma}) combined multiplication and addition operation with the two
+	 * given tuples defined by the given tuple and the components and saves the result in
+	 * a new instance.
+	 * In this version the current vector is used as a multiplicant.
+	 * This operation does not alter the current vector.
+	 * 
+	 * <p>
+	 * Operation:
+	 * v * (mX, mY) + a
+	 * 
+	 * @param mX The value of the x component of the second multiplicant.
+	 * @param mY The value of the y component of the second multiplicant.
+	 * @param a The addend.
+	 * 
+	 * @return The new instance with the result.
+	 */
+	default Vec2fBase fmaN(float mX, float mY, Tup2fR a)
+	{
+		return clone().fma(mX, mY, a.getX(), a.getY());
+	}
+	
+	/**
+	 * Performs an fma ({@link Math#fma}) combined multiplication and addition operation with the two
+	 * given tuples defined by the given components and saves the result in
+	 * a new instance.
+	 * In this version the current vector is used as a multiplicant.
+	 * This operation does not alter the current vector.
+	 * 
+	 * <p>
+	 * Operation:
+	 * v * (mX, mY) + (aX, aY)
+	 * 
+	 * @param mX The value of the x component of the second multiplicant.
+	 * @param mY The value of the y component of the second multiplicant.
+	 * @param aX The value of the x component of the addend.
+	 * @param aY The value of the y component of the addend.
+	 * 
+	 * @return The new instance with the result.
+	 */
+	default Vec2fBase fmaN(float mX, float mY, float aX, float aY)
+	{
+		return clone().fma(mX, mY, aX, aY);
+	}
+	
+	/**
+	 * Performs an fma ({@link Math#fma}) combined multiplication and addition operation with the two
+	 * given tuples defined by the given components and saves the result in
+	 * a new instance
+	 * In this version the current vector is used as the addend.
+	 * This operation does not alter the current vector.
+	 * 
+	 * <p>
+	 * Operation:
+	 * v + (mX1, mY1) * (mX2, mY2)
+	 * 
+	 * @param mX1 The value of the x component of the first multiplicant.
+	 * @param mY1 The value of the y component of the first multiplicant.
+	 * @param mX2 The value of the x component of the second multiplicant.
+	 * @param mY2 The value of the y component of the second multiplicant.
+	 * 
+	 * @return The new instance with the result.
+	 */
+	default Vec2fBase mulAddN(float mX1, float mY1, float mX2, float mY2)
+	{
+		return clone().mulAdd(mX1, mY1, mX2, mY2);
+	}
+	
 	/**
 	 * Normalizes the current vector and saves the result in a new instance.
 	 * Normalization is done by dividing the vector by its length.
