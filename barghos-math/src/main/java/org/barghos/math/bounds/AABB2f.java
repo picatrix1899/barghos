@@ -292,6 +292,48 @@ public class AABB2f
 		return res;
 	}
 	
+	public boolean isInsideInclusive(Tup2fR t)
+	{
+		return isInsideInclusive(t.getX(), t.getY());
+	}
+	
+	public boolean isInsideInclusive(float x, float y)
+	{
+		if(this.maxX < x || x < this.minX) return false;
+		if(this.maxY < y || y < this.minY) return false;
+		
+		return true;
+	}
+	
+	public boolean isInsideExclusive(Tup2fR t)
+	{
+		return isInsideExclusive(t.getX(), t.getY());
+	}
+	
+	public boolean isInsideExclusive(float x, float y)
+	{
+		if(this.maxX <= x || x <= this.minX) return false;
+		if(this.maxY <= y || y <= this.minY) return false;
+		
+		return true;
+	}
+	
+	public boolean isOnSurface(Tup2fR t)
+	{
+		return isOnSurface(t.getX(), t.getY());
+	}
+	
+	public boolean isOnSurface(float x, float y)
+	{
+		if(maxX < x || x < minX) return false;
+		if(maxY < y || y < minY) return false;
+		
+		if(x == minX || x == maxX) return true;
+		if(y == minY || y == maxY) return true;
+		
+		return false;
+	}
+	
 	/** {@inheritDoc}} */
 	@Override
 	public String toString()
