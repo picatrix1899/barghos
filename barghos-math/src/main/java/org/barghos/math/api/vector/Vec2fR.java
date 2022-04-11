@@ -1,5 +1,7 @@
 package org.barghos.math.api.vector;
 
+import static org.barghos.core.api.tuple.TupleConstants.*;
+
 import org.barghos.core.api.tuple2.Tup2fR;
 import org.barghos.core.api.tuple2.Tup2oBase;
 import org.barghos.core.api.tuple2.Tup2oR;
