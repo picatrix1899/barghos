@@ -22,6 +22,8 @@
 
 package org.barghos.core.api.tuple2;
 
+import static org.barghos.core.api.tuple.TupleConstants.*;
+
 import org.barghos.core.api.tuple.TupdBase;
 import org.barghos.core.api.tuple.TupdR;
 
@@ -88,8 +90,8 @@ public interface Tup2dBase extends Tup2dR, TupdBase
 	{
 		switch(index)
 		{
-			case 0: return setX(value);
-			case 1: return setY(value);
+			case COMP_X: return setX(value);
+			case COMP_Y: return setY(value);
 		}
 		
 		throw new IndexOutOfBoundsException(index);
@@ -97,18 +99,16 @@ public interface Tup2dBase extends Tup2dR, TupdBase
 	
 	/** {@inheritDoc}} */
 	@Override
-	default Tup2dBase setArray(double... values)
+	default Tup2dBase setArray(double... v)
 	{
-		double[] v = values;
-		return set(v[0], v[1]);
+		return set(v[COMP_X], v[COMP_Y]);
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	default Tup2dBase set(TupdR t)
 	{
-		double[] v = t.getArray();
-		return set(v[0], v[1]);
+		return setArray(t.getArray());
 	}
 	
 	/** {@inheritDoc} */

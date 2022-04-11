@@ -24,6 +24,8 @@ package org.barghos.core.api.tuple3;
 
 import java.math.BigDecimal;
 
+import static org.barghos.core.api.tuple.TupleConstants.*;
+
 import org.barghos.core.api.tuple.TupbigdR;
 
 /**
@@ -37,21 +39,6 @@ import org.barghos.core.api.tuple.TupbigdR;
  */
 public interface Tup3bigdR extends TupbigdR
 {
-	/**
-	 * The COMP_X constant contains the index of the x-component of the tuple.
-	 */
-	public static final int COMP_X = 0;
-	
-	/**
-	 * The COMP_Y constant contains the index of the y-component of the tuple.
-	 */
-	public static final int COMP_Y = 1;
-	
-	/**
-	 * The COMP_Z constant contains the index of the z-component of the tuple.
-	 */
-	public static final int COMP_Z = 2;
-	
 	/**
 	 * Returns the x value from the tuple.
 	 * 
@@ -113,9 +100,9 @@ public interface Tup3bigdR extends TupbigdR
 	{
 		switch(index)
 		{
-			case 0: return getX();
-			case 1: return getY();
-			case 2: return getZ();
+			case COMP_X: return getX();
+			case COMP_Y: return getY();
+			case COMP_Z: return getZ();
 		}
 		
 		throw new IndexOutOfBoundsException(index);

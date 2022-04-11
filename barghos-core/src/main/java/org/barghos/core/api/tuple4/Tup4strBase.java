@@ -22,6 +22,8 @@
 
 package org.barghos.core.api.tuple4;
 
+import static org.barghos.core.api.tuple.TupleConstants.*;
+
 import org.barghos.core.api.tuple.TupstrBase;
 import org.barghos.core.api.tuple.TupstrR;
 
@@ -115,10 +117,10 @@ public interface Tup4strBase extends Tup4strR, TupstrBase
 	{
 		switch(index)
 		{
-			case 0: return setX(value);
-			case 1: return setY(value);
-			case 2: return setZ(value);
-			case 3: return setW(value);
+			case COMP_X: return setX(value);
+			case COMP_Y: return setY(value);
+			case COMP_Z: return setZ(value);
+			case COMP_W: return setW(value);
 		}
 		
 		throw new IndexOutOfBoundsException(index);
@@ -126,18 +128,16 @@ public interface Tup4strBase extends Tup4strR, TupstrBase
 	
 	/** {@inheritDoc}} */
 	@Override
-	default Tup4strBase setArray(String... values)
+	default Tup4strBase setArray(String... v)
 	{
-		String[] v = values;
-		return set(v[0], v[1], v[2], v[3]);
+		return set(v[COMP_X], v[COMP_Y], v[COMP_Z], v[COMP_W]);
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	default Tup4strBase set(TupstrR t)
 	{
-		String[] v = t.getArray();
-		return set(v[0], v[1], v[2], v[3]);
+		return setArray(t.getArray());
 	}
 	
 	/** {@inheritDoc} */

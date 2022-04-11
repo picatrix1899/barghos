@@ -24,6 +24,8 @@ package org.barghos.core.api.tuple2;
 
 import java.math.BigDecimal;
 
+import static org.barghos.core.api.tuple.TupleConstants.*;
+
 import org.barghos.core.api.tuple.TupbigdBase;
 import org.barghos.core.api.tuple.TupbigdR;
 
@@ -90,8 +92,8 @@ public interface Tup2bigdBase extends Tup2bigdR, TupbigdBase
 	{
 		switch(index)
 		{
-			case 0: return setX(value);
-			case 1: return setY(value);
+			case COMP_X: return setX(value);
+			case COMP_Y: return setY(value);
 		}
 		
 		throw new IndexOutOfBoundsException(index);
@@ -99,18 +101,16 @@ public interface Tup2bigdBase extends Tup2bigdR, TupbigdBase
 	
 	/** {@inheritDoc}} */
 	@Override
-	default Tup2bigdBase setArray(BigDecimal... values)
+	default Tup2bigdBase setArray(BigDecimal... v)
 	{
-		BigDecimal[] v = values;
-		return set(v[0], v[1]);
+		return set(v[COMP_X], v[COMP_Y]);
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	default Tup2bigdBase set(TupbigdR t)
 	{
-		BigDecimal[] v = t.getArray();
-		return set(v[0], v[1]);
+		return setArray(t.getArray());
 	}
 	
 	/** {@inheritDoc} */

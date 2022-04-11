@@ -22,6 +22,8 @@
 
 package org.barghos.core.api.tuple4;
 
+import static org.barghos.core.api.tuple.TupleConstants.*;
+
 import org.barghos.core.api.tuple.TuplR;
 
 /**
@@ -35,26 +37,6 @@ import org.barghos.core.api.tuple.TuplR;
  */
 public interface Tup4lR extends TuplR
 {
-	/**
-	 * The COMP_X constant contains the index of the x-component of the tuple.
-	 */
-	public static final int COMP_X = 0;
-	
-	/**
-	 * The COMP_Y constant contains the index of the y-component of the tuple.
-	 */
-	public static final int COMP_Y = 1;
-	
-	/**
-	 * The COMP_Z constant contains the index of the z-component of the tuple.
-	 */
-	public static final int COMP_Z = 2;
-	
-	/**
-	 * The COMP_W constant contains the index of the w-component of the tuple.
-	 */
-	public static final int COMP_W = 3;
-	
 	/**
 	 * Returns the x value from the tuple.
 	 * 
@@ -116,10 +98,10 @@ public interface Tup4lR extends TuplR
 	{
 		switch(index)
 		{
-			case 0: return getX();
-			case 1: return getY();
-			case 2: return getZ();
-			case 3: return getW();
+			case COMP_X: return getX();
+			case COMP_Y: return getY();
+			case COMP_Z: return getZ();
+			case COMP_W: return getW();
 		}
 		
 		throw new IndexOutOfBoundsException(index);

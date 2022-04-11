@@ -22,6 +22,8 @@
 
 package org.barghos.core.api.tuple2;
 
+import static org.barghos.core.api.tuple.TupleConstants.*;
+
 import org.barghos.core.api.tuple.TupbR;
 
 /**
@@ -35,16 +37,6 @@ import org.barghos.core.api.tuple.TupbR;
  */
 public interface Tup2bR extends TupbR
 {
-	/**
-	 * The COMP_X constant contains the index of the x-component of the tuple.
-	 */
-	public static final int COMP_X = 0;
-	
-	/**
-	 * The COMP_Y constant contains the index of the y-component of the tuple.
-	 */
-	public static final int COMP_Y = 1;
-	
 	/**
 	 * Returns the x value from the tuple.
 	 * 
@@ -98,8 +90,8 @@ public interface Tup2bR extends TupbR
 	{
 		switch(index)
 		{
-			case 0: return getX();
-			case 1: return getY();
+			case COMP_X: return getX();
+			case COMP_Y: return getY();
 		}
 		
 		throw new IndexOutOfBoundsException(index);

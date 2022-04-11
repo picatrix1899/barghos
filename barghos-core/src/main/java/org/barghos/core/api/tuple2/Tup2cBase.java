@@ -22,6 +22,8 @@
 
 package org.barghos.core.api.tuple2;
 
+import static org.barghos.core.api.tuple.TupleConstants.*;
+
 import org.barghos.core.api.tuple.TupcBase;
 import org.barghos.core.api.tuple.TupcR;
 
@@ -88,8 +90,8 @@ public interface Tup2cBase extends Tup2cR, TupcBase
 	{
 		switch(index)
 		{
-			case 0: return setX(value);
-			case 1: return setY(value);
+			case COMP_X: return setX(value);
+			case COMP_Y: return setY(value);
 		}
 		
 		throw new IndexOutOfBoundsException(index);
@@ -97,18 +99,16 @@ public interface Tup2cBase extends Tup2cR, TupcBase
 	
 	/** {@inheritDoc}} */
 	@Override
-	default Tup2cBase setArray(char... values)
+	default Tup2cBase setArray(char... v)
 	{
-		char[] v = values;
-		return set(v[0], v[1]);
+		return set(v[COMP_X], v[COMP_Y]);
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	default Tup2cBase set(TupcR t)
 	{
-		char[] v = t.getArray();
-		return set(v[0], v[1]);
+		return setArray(t.getArray());
 	}
 	
 	/** {@inheritDoc} */

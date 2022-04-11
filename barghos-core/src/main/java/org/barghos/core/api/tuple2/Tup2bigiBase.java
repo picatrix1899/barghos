@@ -24,6 +24,8 @@ package org.barghos.core.api.tuple2;
 
 import java.math.BigInteger;
 
+import static org.barghos.core.api.tuple.TupleConstants.*;
+
 import org.barghos.core.api.tuple.TupbigiBase;
 import org.barghos.core.api.tuple.TupbigiR;
 
@@ -90,8 +92,8 @@ public interface Tup2bigiBase extends Tup2bigiR, TupbigiBase
 	{
 		switch(index)
 		{
-			case 0: return setX(value);
-			case 1: return setY(value);
+			case COMP_X: return setX(value);
+			case COMP_Y: return setY(value);
 		}
 		
 		throw new IndexOutOfBoundsException(index);
@@ -99,18 +101,16 @@ public interface Tup2bigiBase extends Tup2bigiR, TupbigiBase
 	
 	/** {@inheritDoc}} */
 	@Override
-	default Tup2bigiBase setArray(BigInteger... values)
+	default Tup2bigiBase setArray(BigInteger... v)
 	{
-		BigInteger[] v = values;
-		return set(v[0], v[1]);
+		return set(v[COMP_X], v[COMP_Y]);
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	default Tup2bigiBase set(TupbigiR t)
 	{
-		BigInteger[] v = t.getArray();
-		return set(v[0], v[1]);
+		return setArray(t.getArray());
 	}
 	
 	/** {@inheritDoc} */

@@ -22,6 +22,8 @@
 
 package org.barghos.core.api.tuple3;
 
+import static org.barghos.core.api.tuple.TupleConstants.*;
+
 import org.barghos.core.api.tuple.TuplBase;
 import org.barghos.core.api.tuple.TuplR;
 
@@ -98,9 +100,9 @@ public interface Tup3lBase extends Tup3lR, TuplBase
 	{
 		switch(index)
 		{
-			case 0: return setX(value);
-			case 1: return setY(value);
-			case 2: return setZ(value);
+			case COMP_X: return setX(value);
+			case COMP_Y: return setY(value);
+			case COMP_Z: return setZ(value);
 		}
 		
 		throw new IndexOutOfBoundsException(index);
@@ -108,18 +110,16 @@ public interface Tup3lBase extends Tup3lR, TuplBase
 	
 	/** {@inheritDoc}} */
 	@Override
-	default Tup3lBase setArray(long... values)
+	default Tup3lBase setArray(long... v)
 	{
-		long[] v = values;
-		return set(v[0], v[1], v[2]);
+		return set(v[COMP_X], v[COMP_Y], v[COMP_Z]);
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	default Tup3lBase set(TuplR t)
 	{
-		long[] v = t.getArray();
-		return set(v[0], v[1], v[2]);
+		return setArray(t.getArray());
 	}
 	
 	/** {@inheritDoc} */
