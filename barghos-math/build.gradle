@@ -21,6 +21,4 @@ publishing {
   }
 }
 
-application {
-	mainClass = 'org.barghos.math.App'
-}
+tasks.withType(Javadoc).all { failOnError = false }
