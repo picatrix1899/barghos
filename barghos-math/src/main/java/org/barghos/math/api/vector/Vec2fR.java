@@ -34,7 +34,7 @@ public interface Vec2fR extends Tup2fR
 	 */
 	default float reciprocalLength()
 	{
-		return 1.0f / length();
+		return Vec2fUtil.reciprocalLength(getX(), getY());
 	}
 	
 	/**
@@ -93,7 +93,7 @@ public interface Vec2fR extends Tup2fR
 	 */
 	default float length()
 	{
-		return (float)Math.sqrt(squaredLength());
+		return Vec2fUtil.length(getX(), getY());
 	}
 	
 	/**
@@ -147,10 +147,7 @@ public interface Vec2fR extends Tup2fR
 	 */
 	default float squaredLength()
 	{
-		float x = getX();
-		float y = getY();
-		
-		return Math.fma(x, x, y * y);
+		return Vec2fUtil.squaredLength(getX(), getY());
 	}
 	
 	/**

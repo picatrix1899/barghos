@@ -426,4 +426,175 @@ public class Vec2fUtil
 	{
 		return func.apply(Math.fma(mX1, mX2, x), Math.fma(mY1, mY2, y));
 	}
+	
+	/**
+	 * Returns the reciprocal length of the vector defined by x and y.
+	 * It doesn't account for zero-length vectors and will in such case throw an {@link ArithmeticException}
+	 * as this would result in a division by zero.
+	 * 
+	 * <p>
+	 * Operation:
+	 * 1 / |v|
+	 * 
+	 * @return The reciprocal length of the vector.
+	 * 
+	 * @throws
+	 * ArithmeticException Thrown when it is a zero-length vector.
+	 */
+	public static float reciprocalLength(float x, float y)
+	{
+		return 1.0f / (float)Math.sqrt(Math.fma(x, x, y * y));
+	}
+	
+	/**
+	 * Returns the reciprocal length of the vector defined by x and y.
+	 * If the vector is a zero-length vector the result will be zero.
+	 * It determines a zero-length by checking if all components are exactly zero.
+	 * Due to floating-point-errors it might still throw an {@link ArithmeticException} when
+	 * the length is too close to zero.
+	 * 
+	 * <p>
+	 * Operation:
+	 * 1 / |v|
+	 * 
+	 * @return The reciprocal length of the vector or zero if it is a zero-length vector.
+	 * 
+	 * @throws
+	 * ArithmeticException Might be thrown when the length is to close to zero.
+	 */
+	public static float reciprocalLengthSafe(float x, float y)
+	{
+		if(x + y == 0.0) return 0.0f;
+		
+		return 1.0f / (float)Math.sqrt(Math.fma(x, x, y * y));
+	}
+	
+	/**
+	 * Returns the reciprocal length of the vector defined by x and y
+	 * If the vector is a zero-length vector the result will be zero.
+	 * It determines a zero-length by checking if all components are within the margin defined by
+	 * zero plus-minus the given tolerance inclusive (-tolerance <= value <= tolerance).
+	 * 
+	 * <p>
+	 * Operation:
+	 * 1 / |v|
+	 * 
+	 * @param tolerance The tolerance for defining the margin around zero.
+	 * 
+	 * @return The reciprocal length of the vector or zero if it is a zero-length vector.
+	 */
+	public static float reciprocalLengthSafeWithMargin(float x, float y, float tolerance)
+	{
+		if(Math.abs(x) <= tolerance && Math.abs(y) <= tolerance) return 0.0f;
+		
+		return 1.0f / (float)Math.sqrt(Math.fma(x, x, y * y));
+	}
+	
+	/**
+	 * Returns the length of the vector defined by x and y.
+	 * It doesn't account for zero-length vectors.
+	 * 
+	 * <p>
+	 * Operation:
+	 * |v|
+	 * 
+	 * @return The length of the vector.
+	 */
+	public static float length(float x, float y)
+	{
+		return (float)Math.sqrt(Math.fma(x, x, y * y));
+	}
+	
+	/**
+	 * Returns the length of the vector defined by x and y.
+	 * If the vector is a zero-length vector the result will be zero.
+	 * It determines a zero-length by checking if all components are exactly zero.
+	 * 
+	 * <p>
+	 * Operation:
+	 * |v|
+	 * 
+	 * @return The length of the vector or zero if it is a zero-length vector.
+	 */
+	public static float lengthSafe(float x, float y)
+	{
+		if(x + y == 0.0) return 0.0f;
+		
+		return (float)Math.sqrt(Math.fma(x, x, y * y));
+	}
+	
+	/**
+	 * Returns the length of the vector defined by x and y.
+	 * If the vector is a zero-length vector the result will be zero.
+	 * It determines a zero-length by checking if all components are within the margin defined by
+	 * zero plus-minus the given tolerance inclusive (-tolerance <= value <= tolerance).
+	 * 
+	 * <p>
+	 * Operation:
+	 * |v|
+	 * 
+	 * @param tolerance The tolerance for defining the margin around zero.
+	 * 
+	 * @return The length of the vector or zero if it is a zero-length vector.
+	 */
+	public static float lengthSafeWithMargin(float x, float y, float tolerance)
+	{
+		if(Math.abs(x) <= tolerance && Math.abs(y) <= tolerance) return 0.0f;
+		
+		return (float)Math.sqrt(Math.fma(x, x, y * y));
+	}
+	
+	/**
+	 * Returns the squared length of the vector defined by x and y.
+	 * It doesn't account for zero-length vectors.
+	 * 
+	 * <p>
+	 * Operation:
+	 * |v|²
+	 * 
+	 * @return The squared length of the vector.
+	 */
+	public static float squaredLength(float x, float y)
+	{
+		return Math.fma(x, x, y * y);
+	}
+	
+	/**
+	 * Returns the squared length of the vector defined by x and y.
+	 * If the vector is a zero-length vector the result will be zero.
+	 * It determines a zero-length by checking if all components are exactly zero.
+	 * 
+	 * <p>
+	 * Operation:
+	 * |v|²
+	 * 
+	 * @return The squared length of the vector or zero if it is a zero-length vector.
+	 */
+	public static float squaredLengthSafe(float x, float y)
+	{
+		if(x + y == 0.0) return 0.0f;
+		
+		return Math.fma(x, x, y * y);
+	}
+	
+	/**
+	 * Returns the squared length of the vector defined by x and y.
+	 * If the vector is a zero-length vector the result will be zero.
+	 * It determines a zero-length by checking if all components are within the margin defined by
+	 * zero plus-minus the given tolerance inclusive (-tolerance <= value <= tolerance).
+	 * 
+	 * <p>
+	 * Operation:
+	 * |v|²
+	 * 
+	 * @param tolerance The tolerance for defining the margin around zero.
+	 * 
+	 * @return The squared length of the vector or zero if it is a zero-length vector.
+	 */
+	public static float squaredLengthSafeWithMargin(float x, float y, float tolerance)
+	{
+		if(Math.abs(x) <= tolerance && Math.abs(y) <= tolerance) return 0.0f;
+		
+		return Math.fma(x, x, y * y);
+	}
 }

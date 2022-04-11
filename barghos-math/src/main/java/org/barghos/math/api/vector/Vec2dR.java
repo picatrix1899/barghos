@@ -34,7 +34,7 @@ public interface Vec2dR extends Tup2dR
 	 */
 	default double reciprocalLength()
 	{
-		return 1.0 / length();
+		return Vec2dUtil.reciprocalLength(getX(), getY());
 	}
 	
 	/**
@@ -93,7 +93,7 @@ public interface Vec2dR extends Tup2dR
 	 */
 	default double length()
 	{
-		return Math.sqrt(squaredLength());
+		return Vec2dUtil.length(getX(), getY());
 	}
 	
 	/**
@@ -147,10 +147,7 @@ public interface Vec2dR extends Tup2dR
 	 */
 	default double squaredLength()
 	{
-		double x = getX();
-		double y = getY();
-		
-		return Math.fma(x, x, y * y);
+		return Vec2dUtil.length(getX(), getY());
 	}
 	
 	/**
