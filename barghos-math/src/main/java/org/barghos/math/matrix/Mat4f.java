@@ -7,11 +7,11 @@ import org.barghos.core.api.tuple2.Tup2fR;
 import org.barghos.core.api.tuple3.Tup3fBase;
 import org.barghos.core.api.tuple3.Tup3fR;
 import org.barghos.math.api.matrix.Mat4fR;
+import org.barghos.math.api.vector.Quat3f;
 import org.barghos.math.api.vector.Vec2fBase;
 import org.barghos.math.api.vector.Vec2fR;
 import org.barghos.math.api.vector.Vec3fBase;
 import org.barghos.math.api.vector.Vec3fR;
-import org.barghos.math.vector.Quat3f;
 import org.barghos.math.vector.Vec3f;
 
 // MISSING_DOC
