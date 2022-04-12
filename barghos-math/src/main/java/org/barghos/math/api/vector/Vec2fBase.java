@@ -1,8 +1,8 @@
 package org.barghos.math.api.vector;
 
 import org.barghos.core.api.tuple.TupfR;
-import org.barghos.core.api.tuple2.Tup2fBase;
 import org.barghos.core.api.tuple2.Tup2fR;
+import org.barghos.core.api.tuple2.Tup2fBase;
 
 /**
  * This interface represents any modifiable 2-dimensional float vector.
@@ -516,70 +516,6 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	
 	/**
 	 * Performs an fma ({@link Math#fma}) combined multiplication and addition operation with the two
-	 * given tuples and saves the result in a new instance.
-	 * In this version the current vector is used as the addend.
-	 * This operation does not alter the current vector.
-	 * 
-	 * <p>
-	 * Operation:
-	 * v + m1 * m2
-	 * 
-	 * @param m1 The first multiplicant.
-	 * @param m2 The second multiplicant.
-	 * 
-	 * @return The new instance with the result.
-	 */
-	default Vec2fBase mulAddN(Tup2fR m1, Tup2fR m2)
-	{
-		return clone().mulAdd(m1, m2);
-	}
-	
-	/**
-	 * Performs an fma ({@link Math#fma}) combined multiplication and addition operation with the two
-	 * given tuples defined by the given tuple and the components and saves the result in
-	 * a new instance.
-	 * In this version the current vector is used as the addend.
-	 * This operation does not alter the current vector.
-	 * 
-	 * <p>
-	 * Operation:
-	 * v + m1 * (mX2, mY2)
-	 * 
-	 * @param m1 The first multiplicant.
-	 * @param mX2 The value of the x component of the second multiplicant.
-	 * @param mY2 The value of the y component of the second multiplicant.
-	 * 
-	 * @return The new instance with the result.
-	 */
-	default Vec2fBase mulAddN(Tup2fR m1, float mX2, float mY2)
-	{
-		return clone().mulAdd(m1, mX2, mY2);
-	}
-	
-	/**
-	 * Performs an fma ({@link Math#fma}) combined multiplication and addition operation with the two
-	 * given tuples defined by the given tuple and the components and saves the result in
-	 * a new instance.
-	 * In this version the current vector is used as the addend.
-	 * This operation does not alter the current vector.
-	 * 
-	 * <p>
-	 * Operation:
-	 * v + (mX1, mY1) * m2
-	 * 
-	 * @param mX1 The value of the x component of the first multiplicant.
-	 * @param mY1 The value of the y component of the first multiplicant.
-	 * @param m2 The second multiplicant.
-	 * 
-	 * @return The new instance with the result.
-	 */
-	default Vec2fBase mulAddN(float mX1, float mY1, Tup2fR m2)
-	{
-		return clone().mulAdd(mX1, mY1, m2);
-	}
-	
-	/**
-	 * Performs an fma ({@link Math#fma}) combined multiplication and addition operation with the two
 	 * given tuples.
 	 * In this version the current vector is used as the addend.
 	 * 
@@ -677,7 +613,7 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 */
 	default Vec2fBase normal()
 	{
-		return div(length());
+		return Vec2fUtil.normal(getX(), getY(), this);
 	}
 	
 	/**
@@ -741,7 +677,7 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 */
 	default Vec2fBase invert()
 	{
-		return set(-getX(), -getY());
+		return Vec2fUtil.invert(getX(), getY(), this);
 	}
 	
 	/**
@@ -810,9 +746,9 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 */
 	default Vec2fBase inverse(float x, float y)
 	{
-		return set(x - getY(), y - getY());
+		return Vec2fUtil.inverse(getX(), getY(), x, y, this);
 	}
-	
+		
 	/**
 	 * Returns the dot product (scalar product) between this vector and the given tuple.
 	 * 
@@ -859,7 +795,7 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	 */
 	default float dot(float x, float y)
 	{
-		return getX() * x + getY() * y;
+		return Vec2fUtil.dot(getX(), getY(), x, y);
 	}
 	
 	/**
@@ -926,6 +862,87 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	default Vec2fBase signum()
 	{
 		return set(Math.signum(getX()), Math.signum(getY()));
+	}
+	
+	/**
+	 * Sets the vector to its reflection based on the given surface normal.
+	 * The surface normal has to be normalized.
+	 * This operation alters the current vector.
+	 * 
+	 * @param normal The surface normal.
+	 * 
+	 * @return The current vector.
+	 */
+	default Vec2fBase reflect(Tup2fR normal)
+	{
+		return reflect(normal.getX(), normal.getY());
+	}
+	
+	/**
+	 * Sets the vector to its reflection based on the given surface normal defined by the given components.
+	 * The surface normal has to be normalized.
+	 * This operation alters the current vector.
+	 * 
+	 * @param nX The value of the x component of the surface normal.
+	 * @param nY The value of the y component of the surface normal.
+	 * 
+	 * @return The current vector.
+	 */
+	default Vec2fBase reflect(float nX, float nY)
+	{
+		return Vec2fUtil.reflect(getX(), getY(), nX, nY, this);
+	}
+	
+	/**
+	 * Set the vector to its orthogonal projection onto the target vector.
+	 * The vector to project on has to be normalized.
+	 * This operation alters the current vector.
+	 * 
+	 * @param v The projection target vector.
+	 * 
+	 * @return The current vector.
+	 */
+	default Vec2fBase project(Tup2fR v)
+	{
+		return project(v.getX(), v.getY());
+	}
+	
+	/**
+	 * Set the vector to its orthogonal projection onto the target vector defined by the given components.
+	 * The vector to project on has to be normalized.
+	 * This operation alters the current vector.
+	 * 
+	 * @param vX The value of the x component of the projection target vector.
+	 * @param vY The value of the y component of the projection target vector.
+	 * 
+	 * @return The current vector.
+	 */
+	default Vec2fBase project(float vX, float vY)
+	{
+		return Vec2fUtil.project(getX(), getY(), vX, vY, this);
+	}
+	
+	/**
+	 * Rotates the vector by the given angle in radians.
+	 * This operation alters the current vector.
+	 * 
+	 * @param angle The angle in radians.
+	 * 
+	 * @return The current vector.
+	 */
+	default Vec2fBase rotate(float angle)
+	{
+		return Vec2fUtil.rotate(getX(), getY(), angle, this);
+	}
+	
+	/**
+	 * Halfs the vector.
+	 * This operation alters the current vector.
+	 * @return
+	 */
+	default Vec2fBase half()
+	{
+		return Vec2fUtil.half(getX(), getY(), this);
 	}
 	
 	/**
@@ -1337,6 +1354,70 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	
 	/**
 	 * Performs an fma ({@link Math#fma}) combined multiplication and addition operation with the two
+	 * given tuples and saves the result in a new instance.
+	 * In this version the current vector is used as the addend.
+	 * This operation does not alter the current vector.
+	 * 
+	 * <p>
+	 * Operation:
+	 * v + m1 * m2
+	 * 
+	 * @param m1 The first multiplicant.
+	 * @param m2 The second multiplicant.
+	 * 
+	 * @return The new instance with the result.
+	 */
+	default Vec2fBase mulAddN(Tup2fR m1, Tup2fR m2)
+	{
+		return clone().mulAdd(m1, m2);
+	}
+	
+	/**
+	 * Performs an fma ({@link Math#fma}) combined multiplication and addition operation with the two
+	 * given tuples defined by the given tuple and the components and saves the result in
+	 * a new instance.
+	 * In this version the current vector is used as the addend.
+	 * This operation does not alter the current vector.
+	 * 
+	 * <p>
+	 * Operation:
+	 * v + m1 * (mX2, mY2)
+	 * 
+	 * @param m1 The first multiplicant.
+	 * @param mX2 The value of the x component of the second multiplicant.
+	 * @param mY2 The value of the y component of the second multiplicant.
+	 * 
+	 * @return The new instance with the result.
+	 */
+	default Vec2fBase mulAddN(Tup2fR m1, float mX2, float mY2)
+	{
+		return clone().mulAdd(m1, mX2, mY2);
+	}
+	
+	/**
+	 * Performs an fma ({@link Math#fma}) combined multiplication and addition operation with the two
+	 * given tuples defined by the given tuple and the components and saves the result in
+	 * a new instance.
+	 * In this version the current vector is used as the addend.
+	 * This operation does not alter the current vector.
+	 * 
+	 * <p>
+	 * Operation:
+	 * v + (mX1, mY1) * m2
+	 * 
+	 * @param mX1 The value of the x component of the first multiplicant.
+	 * @param mY1 The value of the y component of the first multiplicant.
+	 * @param m2 The second multiplicant.
+	 * 
+	 * @return The new instance with the result.
+	 */
+	default Vec2fBase mulAddN(float mX1, float mY1, Tup2fR m2)
+	{
+		return clone().mulAdd(mX1, mY1, m2);
+	}
+	
+	/**
+	 * Performs an fma ({@link Math#fma}) combined multiplication and addition operation with the two
 	 * given tuples defined by the given components and saves the result in
 	 * a new instance
 	 * In this version the current vector is used as the addend.
@@ -1574,5 +1655,89 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	default Vec2fBase signumN()
 	{
 		return clone().signum();
+	}
+	
+	/**
+	 * Calculates the reflection of the vector based on the given surface normal and saves the result in a new instance.
+	 * The surface normal has to be normalized.
+	 * This operation does not alter the current vector.
+	 * 
+	 * @param normal The surface normal.
+	 * 
+	 * @return The new instance with the result.
+	 */
+	default Vec2fBase reflectN(Tup2fR normal)
+	{
+		return clone().reflect(normal);
+	}
+	
+	/**
+	 * Calculates the reflection of the vector based on the given surface normal defined by the given components
+	 * and saves the result in a new instance.
+	 * The surface normal has to be normalized.
+	 * This operation does not alter the current vector.
+	 * 
+	 * @param nX The value of the x component of the surface normal.
+	 * @param nY The value of the y component of the surface normal.
+	 * 
+	 * @return The new instance with the result.
+	 */
+	default Vec2fBase reflectN(float nX, float nY)
+	{
+		return clone().reflect(nX, nY);
+	}
+	
+	/**
+	 * Calculates the orthogonal projection of the vector onto the target vector
+	 * and saves the result in a new instance.
+	 * The vector to project on has to be normalized.
+	 * This operation does not alter the current vector.
+	 * 
+	 * @param v The projection target vector.
+	 * 
+	 * @return The new instance with the result.
+	 */
+	default Vec2fBase projectN(Tup2fR v)
+	{
+		return clone().project(v);
+	}
+	
+	/**
+	 * Calculates the orthogonal projection of the vector onto the target vector defined by the given components
+	 * and saves the result in a new instance.
+	 * The vector to project on has to be normalized.
+	 * This operation does not alter the current vector.
+	 * 
+	 * @param vX The value of the x component of the projection target vector.
+	 * @param vY The value of the y component of the projection target vector.
+	 * 
+	 * @return The new instance with the result.
+	 */
+	default Vec2fBase projectN(float vX, float vY)
+	{
+		return clone().project(vX, vY);
+	}
+	
+	/**
+	 * Rotates the vector by the given angle in radians and saves the result in a new instance.
+	 * This operation does not alter the current vector.
+	 * 
+	 * @param angle The angle in radians.
+	 * 
+	 * @return The new instance with the result.
+	 */
+	default Vec2fBase rotateN(float angle)
+	{
+		return clone().rotate(angle);
+	}
+	
+	/**
+	 * Halfs the vector and saves the result in a new instance.
+	 * This operation does not alter the current vector.
+	 * @return
+	 */
+	default Vec2fBase halfN()
+	{
+		return clone().half();
 	}
 }
