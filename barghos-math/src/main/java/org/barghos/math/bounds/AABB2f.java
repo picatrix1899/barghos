@@ -2,13 +2,14 @@ package org.barghos.math.bounds;
 
 import org.barghos.core.api.tuple2.Tup2fR;
 import org.barghos.core.api.tuple2.Tup2fBase;
+import org.barghos.math.api.bounds.BoundingVolume2f;
 import org.barghos.math.api.point.Point2fR;
 import org.barghos.math.api.vector.Vec2fR;
 import org.barghos.math.api.vector.Vec2fBase;
 import org.barghos.math.point.Point2f;
 import org.barghos.math.vector.Vec2f;
 
-public class AABB2f
+public class AABB2f implements BoundingVolume2f
 {
 	protected float minX;
 	protected float minY;
@@ -292,28 +293,15 @@ public class AABB2f
 		return res;
 	}
 	
-	public boolean isInsideInclusive(Tup2fR t)
+	public boolean isInside(Tup2fR t)
 	{
-		return isInsideInclusive(t.getX(), t.getY());
+		return isInside(t.getX(), t.getY());
 	}
 	
-	public boolean isInsideInclusive(float x, float y)
+	public boolean isInside(float x, float y)
 	{
 		if(this.maxX < x || x < this.minX) return false;
 		if(this.maxY < y || y < this.minY) return false;
-		
-		return true;
-	}
-	
-	public boolean isInsideExclusive(Tup2fR t)
-	{
-		return isInsideExclusive(t.getX(), t.getY());
-	}
-	
-	public boolean isInsideExclusive(float x, float y)
-	{
-		if(this.maxX <= x || x <= this.minX) return false;
-		if(this.maxY <= y || y <= this.minY) return false;
 		
 		return true;
 	}
