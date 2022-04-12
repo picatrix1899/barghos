@@ -1,6 +1,6 @@
 package org.barghos.math.util;
 
-public class Maths extends MathConstants
+public class Maths implements MathConstants
 {
 	/**
      * Returns the largest (closest to positive infinity)
