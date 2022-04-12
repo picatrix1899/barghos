@@ -604,16 +604,14 @@ public interface Vec2dBase extends Vec2dR, Tup2dBase
 	 * <p>
 	 * Operation:
 	 * v / |v|
-	 * 
-	 * @param res The query parameter to receive the result.
-	 * 
+
 	 * @return The current vector.
 	 * 
 	 * @throws ArithmeticException Thrown when it is a zero-length vector.
 	 */
 	default Vec2dBase normal()
 	{
-		return div(length());
+		return Vec2dUtil.normal(getX(), getY(), this);
 	}
 	
 	/**
@@ -628,8 +626,6 @@ public interface Vec2dBase extends Vec2dR, Tup2dBase
 	 * <p>
 	 * Operation:
 	 * v / |v|
-	 * 
-	 * @param res The query parameter to receive the result.
 	 * 
 	 * @return The current vector.
 	 * 
@@ -677,7 +673,7 @@ public interface Vec2dBase extends Vec2dR, Tup2dBase
 	 */
 	default Vec2dBase invert()
 	{
-		return set(-getX(), -getY());
+		return Vec2dUtil.invert(getX(), getY(), this);
 	}
 	
 	/**
@@ -746,7 +742,7 @@ public interface Vec2dBase extends Vec2dR, Tup2dBase
 	 */
 	default Vec2dBase inverse(double x, double y)
 	{
-		return set(x - getY(), y - getY());
+		return Vec2dUtil.inverse(getX(), getY(), x, y, this);
 	}
 	
 	/**
@@ -795,7 +791,7 @@ public interface Vec2dBase extends Vec2dR, Tup2dBase
 	 */
 	default double dot(double x, double y)
 	{
-		return getX() * x + getY() * y;
+		return Vec2dUtil.dot(getX(), getY(), x, y);
 	}
 	
 	/**
@@ -862,6 +858,87 @@ public interface Vec2dBase extends Vec2dR, Tup2dBase
 	default Vec2dBase signum()
 	{
 		return set(Math.signum(getX()), Math.signum(getY()));
+	}
+	
+	/**
+	 * Sets the vector to its reflection based on the given surface normal.
+	 * The surface normal has to be normalized.
+	 * This operation alters the current vector.
+	 * 
+	 * @param normal The surface normal.
+	 * 
+	 * @return The current vector.
+	 */
+	default Vec2dBase reflect(Tup2dR normal)
+	{
+		return reflect(normal.getX(), normal.getY());
+	}
+	
+	/**
+	 * Sets the vector to its reflection based on the given surface normal defined by the given components.
+	 * The surface normal has to be normalized.
+	 * This operation alters the current vector.
+	 * 
+	 * @param nX The value of the x component of the surface normal.
+	 * @param nY The value of the y component of the surface normal.
+	 * 
+	 * @return The current vector.
+	 */
+	default Vec2dBase reflect(double nX, double nY)
+	{
+		return Vec2dUtil.reflect(getX(), getY(), nX, nY, this);
+	}
+	
+	/**
+	 * Set the vector to its orthogonal projection onto the target vector.
+	 * The vector to project on has to be normalized.
+	 * This operation alters the current vector.
+	 * 
+	 * @param v The projection target vector.
+	 * 
+	 * @return The current vector.
+	 */
+	default Vec2dBase project(Tup2dR v)
+	{
+		return project(v.getX(), v.getY());
+	}
+	
+	/**
+	 * Set the vector to its orthogonal projection onto the target vector defined by the given components.
+	 * The vector to project on has to be normalized.
+	 * This operation alters the current vector.
+	 * 
+	 * @param vX The value of the x component of the projection target vector.
+	 * @param vY The value of the y component of the projection target vector.
+	 * 
+	 * @return The current vector.
+	 */
+	default Vec2dBase project(double vX, double vY)
+	{
+		return Vec2dUtil.project(getX(), getY(), vX, vY, this);
+	}
+	
+	/**
+	 * Rotates the vector by the given angle in radians.
+	 * This operation alters the current vector.
+	 * 
+	 * @param angle The angle in radians.
+	 * 
+	 * @return The current vector.
+	 */
+	default Vec2dBase rotate(double angle)
+	{
+		return Vec2dUtil.rotate(getX(), getY(), angle, this);
+	}
+	
+	/**
+	 * Halfs the vector.
+	 * This operation alters the current vector.
+	 * @return
+	 */
+	default Vec2dBase half()
+	{
+		return Vec2dUtil.half(getX(), getY(), this);
 	}
 	
 	/**
@@ -1566,7 +1643,7 @@ public interface Vec2dBase extends Vec2dR, Tup2dBase
 	}
 	
 	/**
-	 * Sets the vector to the signums of the components and saves the result in a new instance.
+	 * Determines the signums of the components and saves the result in a new instance.
 	 * This operation does not alter the current vector.
 	 * 
 	 * @return The new instance with the result.
@@ -1576,66 +1653,87 @@ public interface Vec2dBase extends Vec2dR, Tup2dBase
 		return clone().signum();
 	}
 	
-		/**
-	 * Adds the second given tuple to the current vector and saves the result in a new instance.
+	/**
+	 * Calculates the reflection of the vector based on the given surface normal and saves the result in a new instance.
+	 * The surface normal has to be normalized.
 	 * This operation does not alter the current vector.
 	 * 
-	 * <p>
-	 * Operation:
-	 * v + t
+	 * @param normal The surface normal.
 	 * 
-	 * @param <T> The type of the query parameter.
-	 * 
-	 * @param t The second tuple to add to the current vector.
-	 * @param res The query parameter.
-	 * 
-	 * @return The query parameter with the result.
+	 * @return The new instance with the result.
 	 */
-	default <T extends Vec2dBase> T addR(Tup2dR t, T res)
+	default Vec2dBase reflectN(Tup2dR normal)
 	{
-		return addR(t.getX(), t.getY(), res);
+		return clone().reflect(normal);
 	}
 	
 	/**
-	 * Adds the second tuple defined by the given value to the current vector and saves the result in a new instance.
+	 * Calculates the reflection of the vector based on the given surface normal defined by the given components
+	 * and saves the result in a new instance.
+	 * The surface normal has to be normalized.
 	 * This operation does not alter the current vector.
 	 * 
-	 * <p>
-	 * Operation:
-	 * v + (value, value)
+	 * @param nX The value of the x component of the surface normal.
+	 * @param nY The value of the y component of the surface normal.
 	 * 
-	 * @param <T> The type of the query parameter.
-	 * 
-	 * @param value The value of all the components of the second tuple.
-	 * @param res The query parameter.
-	 * 
-	 * @return The query parameter with the result.
+	 * @return The new instance with the result.
 	 */
-	default <T extends Vec2dBase> T addR(double value, T res)
+	default Vec2dBase reflectN(double nX, double nY)
 	{
-		return addR(value, value, res);
+		return clone().reflect(nX, nY);
 	}
 	
 	/**
-	 * Adds the second tuple defined by the given component values to the current vector and saves the result in
-	 * the query parameter.
-	 * the current vector is of.
+	 * Calculates the orthogonal projection of the vector onto the target vector
+	 * and saves the result in a new instance.
+	 * The vector to project on has to be normalized.
 	 * This operation does not alter the current vector.
 	 * 
-	 * <p>
-	 * Operation:
-	 * v + (x, y)
+	 * @param v The projection target vector.
 	 * 
-	 * @param <T> The type of the query parameter.
-	 * 
-	 * @param x The value of the x component of the second tuple.
-	 * @param y The value of the y component of the second tuple.
-	 * @param res The query parameter.
-	 * 
-	 * @return The query parameter with the result.
+	 * @return The new instance with the result.
 	 */
-	default <T extends Vec2dBase> T addR(double x, double y, T res)
+	default Vec2dBase projectN(Tup2dR v)
 	{
-		return Vec2dUtil.add(getX(), getY(), x, y, res);
+		return clone().project(v);
+	}
+	
+	/**
+	 * Calculates the orthogonal projection of the vector onto the target vector defined by the given components
+	 * and saves the result in a new instance.
+	 * The vector to project on has to be normalized.
+	 * This operation does not alter the current vector.
+	 * 
+	 * @param vX The value of the x component of the projection target vector.
+	 * @param vY The value of the y component of the projection target vector.
+	 * 
+	 * @return The new instance with the result.
+	 */
+	default Vec2dBase projectN(double vX, double vY)
+	{
+		return clone().project(vX, vY);
+	}
+	
+	/**
+	 * Rotates the vector by the given angle in radians and saves the result in a new instance.
+	 * This operation does not alter the current vector.
+	 * 
+	 * @param angle The angle in radians.
+	 * 
+	 * @return The new instance with the result.
+	 */
+	default Vec2dBase rotateN(double angle)
+	{
+		return clone().rotate(angle);
+	}
+	
+	/**
+	 * Halfs the vector and saves the result in a new instance.
+	 * This operation does not alter the current vector.
+	 * @return
+	 */
+	default Vec2dBase halfN()
+	{
+		return clone().half();
 	}
 }
