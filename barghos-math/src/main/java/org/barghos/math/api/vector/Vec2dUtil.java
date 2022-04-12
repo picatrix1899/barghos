@@ -1633,7 +1633,7 @@ public class Vec2dUtil
 	 * 
 	 * @return The object returned from the functional interface.
 	 */
-	public static <T extends Vec2dBase> T project(double x, double y, double vX, double vY, DoubleFunction2<T> func)
+	public static <T> T project(double x, double y, double vX, double vY, DoubleFunction2<T> func)
 	{
 		double dot = Math.fma(x, vX, y * vY);
 
@@ -1704,7 +1704,7 @@ public class Vec2dUtil
 	 * 
 	 * @return The object returned from the functional interface.
 	 */
-	public static <T extends Vec2dBase> T reflect(double x, double y, double nX, double nY, DoubleFunction2<T> func)
+	public static <T> T reflect(double x, double y, double nX, double nY, DoubleFunction2<T> func)
 	{
 		double dot = -2 * Math.fma(x, nX, y * nY);
 		
