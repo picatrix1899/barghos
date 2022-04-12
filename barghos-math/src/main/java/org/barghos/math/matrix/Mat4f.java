@@ -2,6 +2,8 @@ package org.barghos.math.matrix;
 
 import java.nio.FloatBuffer;
 
+import static org.barghos.math.api.matrix.MatrixConstants.*;
+
 import org.barghos.core.api.tuple2.Tup2fBase;
 import org.barghos.core.api.tuple2.Tup2fR;
 import org.barghos.core.api.tuple3.Tup3fBase;
@@ -18,7 +20,7 @@ import org.barghos.math.vector.Vec3f;
 public class Mat4f implements Mat4fR
 {
 	// MISSING_DOC
-	public float[][] m = new float[ROWS][COLUMNS];
+	public float[][] m = new float[M4_ROWS][M4_COLUMNS];
 	
 	// MISSING_DOC
 	public Mat4f()
@@ -143,11 +145,11 @@ public class Mat4f implements Mat4fR
 	@Override
 	public float[] toArrayRowMajor()
 	{
-		float[] out = new float[CELLS];
+		float[] out = new float[M4_CELLS];
 		
-		for(int row = 0; row < ROWS; row++)
+		for(int row = 0; row < M4_ROWS; row++)
 		{
-			int rowBase = row * COLUMNS;
+			int rowBase = row * M4_COLUMNS;
 			
 			out[rowBase] = this.m[row][0];
 			out[rowBase + 1] = this.m[row][1];
@@ -162,11 +164,11 @@ public class Mat4f implements Mat4fR
 	@Override
 	public float[] toArrayRowMajor(float[] res)
 	{
-		if(res.length < CELLS) throw new RuntimeException();
+		if(res.length < M4_CELLS) throw new RuntimeException();
 		
-		for(int row = 0; row < ROWS; row++)
+		for(int row = 0; row < M4_ROWS; row++)
 		{
-			int rowBase = row * COLUMNS;
+			int rowBase = row * M4_COLUMNS;
 			
 			res[rowBase] = this.m[row][0];
 			res[rowBase + 1] = this.m[row][1];
@@ -181,7 +183,7 @@ public class Mat4f implements Mat4fR
 	@Override
 	public FloatBuffer toBufferRowMajor(FloatBuffer res)
 	{
-		for(int row = 0; row < ROWS; row++)
+		for(int row = 0; row < M4_ROWS; row++)
 		{
 			res.put(this.m[row][0]);
 			res.put(this.m[row][1]);
@@ -196,11 +198,11 @@ public class Mat4f implements Mat4fR
 	@Override
 	public float[] toArrayColumnMajor()
 	{
-		float[] out = new float[CELLS];
+		float[] out = new float[M4_CELLS];
 		
-		for(int column = 0; column < COLUMNS; column++)
+		for(int column = 0; column < M4_COLUMNS; column++)
 		{
-			int columnBase = column * ROWS;
+			int columnBase = column * M4_ROWS;
 			
 			out[columnBase] = this.m[0][column];
 			out[columnBase + 1] = this.m[1][column];
@@ -215,11 +217,11 @@ public class Mat4f implements Mat4fR
 	@Override
 	public float[] toArrayColumnMajor(float[] res)
 	{
-		if(res.length < CELLS) throw new RuntimeException();
+		if(res.length < M4_CELLS) throw new RuntimeException();
 		
-		for(int column = 0; column < COLUMNS; column++)
+		for(int column = 0; column < M4_COLUMNS; column++)
 		{
-			int columnBase = column * ROWS;
+			int columnBase = column * M4_ROWS;
 			
 			res[columnBase] = this.m[0][column];
 			res[columnBase + 1] = this.m[1][column];
@@ -234,7 +236,7 @@ public class Mat4f implements Mat4fR
 	@Override
 	public FloatBuffer toBufferColumnMajor(FloatBuffer res)
 	{
-		for(int column = 0; column < COLUMNS; column++)
+		for(int column = 0; column < M4_COLUMNS; column++)
 		{
 			res.put(this.m[0][column]);
 			res.put(this.m[1][column]);
@@ -243,27 +245,6 @@ public class Mat4f implements Mat4fR
 		}
 		
 		return res;
-	}
-	
-	/** {@inheritDoc}} */
-	@Override
-	public int getRows()
-	{
-		return Mat4f.ROWS;
-	}
-	
-	/** {@inheritDoc}} */
-	@Override
-	public int getColumns()
-	{
-		return Mat4f.COLUMNS;
-	}
-	
-	/** {@inheritDoc}} */
-	@Override
-	public int getCells()
-	{
-		return Mat4f.CELLS;
 	}
 	
 	// MISSING_DOC
@@ -736,9 +717,9 @@ public class Mat4f implements Mat4fR
 	// MISSING_DOC
 	public static Mat4f mul(Mat4f l, Mat4f r, Mat4f res)
 	{
-		float[][] m_ = new float[ROWS][COLUMNS];
+		float[][] m_ = new float[M4_ROWS][M4_COLUMNS];
 		
-		for(int row = 0; row < ROWS; row++)
+		for(int row = 0; row < M4_ROWS; row++)
 		{
 			m_[row][0] = l.m[row][0] * r.m[0][0] + l.m[row][1] * r.m[1][0] + l.m[row][2] * r.m[2][0] + l.m[row][3] * r.m[3][0];
 			m_[row][1] = l.m[row][0] * r.m[0][1] + l.m[row][1] * r.m[1][1] + l.m[row][2] * r.m[2][1] + l.m[row][3] * r.m[3][1];

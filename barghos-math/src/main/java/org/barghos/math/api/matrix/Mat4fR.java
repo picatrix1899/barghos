@@ -1,5 +1,7 @@
 package org.barghos.math.api.matrix;
 
+import static org.barghos.math.api.matrix.MatrixConstants.*;
+
 import org.barghos.core.api.tuple2.Tup2fBase;
 import org.barghos.core.api.tuple2.Tup2fR;
 import org.barghos.core.api.tuple3.Tup3fBase;
@@ -12,34 +14,25 @@ import org.barghos.math.api.vector.Vec3fR;
 // MISSING_DOC
 public interface Mat4fR extends MatR
 {
-	// MISSING_DOC
-	public static final int ROWS = 4;
-	
-	// MISSING_DOC
-	public static final int COLUMNS = 4;
-	
-	// MISSING_DOC
-	public static final int CELLS = ROWS * COLUMNS;
-	
 	/** {@inheritDoc}} */
 	@Override
 	default int getRows()
 	{
-		return ROWS;
+		return M4_ROWS;
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	default int getColumns()
 	{
-		return COLUMNS;
+		return M4_COLUMNS;
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	default int getCells()
 	{
-		return CELLS;
+		return M4_CELLS;
 	}
 	
 	// MISSING_DOC
