@@ -5,6 +5,8 @@ import org.barghos.core.api.tuple.TupfR;
 import org.barghos.core.api.tuple3.Tup3fR;
 import org.barghos.core.api.tuple3.Tup3fBase;
 
+import org.barghos.math.api.matrix.Mat4fR;
+
 /**
  * This interface represents any modifiable 3-dimensional float vector.
  * 
@@ -880,6 +882,21 @@ public interface Vec3fBase extends Vec3fR, Tup3fBase
 	}
 	
 	/**
+	 * Applies the given matrix to the current vector and therefore transforming it.
+	 * This operation alters the current vector.
+	 * 
+	 * @param m The matrix to apply.
+	 * 
+	 * @return The current vector.
+	 */
+	default Vec3fBase transform(Mat4fR m)
+	{
+		m.transform(this, false, this);
+		
+		return this;
+	}
+	
+	/**
 	 * Adds the second given tuple to the current vector and saves the result in a new instance.
 	 * This operation does not alter the current vector.
 	 * 
@@ -1578,68 +1595,16 @@ public interface Vec3fBase extends Vec3fR, Tup3fBase
 		return clone().signum();
 	}
 	
-		/**
-	 * Adds the second given tuple to the current vector and saves the result in a new instance.
-	 * This operation does not alter the current vector.
-	 * 
-	 * <p>
-	 * Operation:
-	 * v + t
-	 * 
-	 * @param <T> The type of the query parameter.
-	 * 
-	 * @param t The second tuple to add to the current vector.
-	 * @param res The query parameter.
-	 * 
-	 * @return The query parameter with the result.
-	 */
-	default <T extends Vec3fBase> T addR(Tup3fR t, T res)
-	{
-		return addR(t.getX(), t.getY(), t.getZ(), res);
-	}
-	
 	/**
-	 * Adds the second tuple defined by the given value to the current vector and saves the result in a new instance.
+	 * Applies the given matrix to the current vector and therefore transforming it and saves the result in a new instance.
 	 * This operation does not alter the current vector.
 	 * 
-	 * <p>
-	 * Operation:
-	 * v + (value, value, value)
+	 * @param m The matrix to apply.
 	 * 
-	 * @param <T> The type of the query parameter.
-	 * 
-	 * @param value The value of all the components of the second tuple.
-	 * @param res The query parameter.
-	 * 
-	 * @return The query parameter with the result.
+	 * @return The current vector.
 	 */
-	default <T extends Vec3fBase> T addR(float value, T res)
+	default Vec3fBase transformN(Mat4fR m)
 	{
-		return addR(value, value, value, res);
-	}
-	
-	/**
-	 * Adds the second tuple defined by the given component values to the current vector and saves the result in
-	 * the query parameter.
-	 * the current vector is of.
-	 * This operation does not alter the current vector.
-	 * 
-	 * <p>
-	 * Operation:
-	 * v + (x, y, z)
-	 * 
-	 * @param <T> The type of the query parameter.
-	 * 
-	 * @param x The value of the x component of the second tuple.
-	 * @param y The value of the y component of the second tuple.
-	 * @param z The value of the z component of the second tuple.
-	 * @param res The query parameter.
-	 * 
-	 * @return The query parameter with the result.
-	 */
-	default <T extends Vec3fBase> T addR(float x, float y, float z, T res)
-	{
-		res.set(x + x, y + y, z + z);
-		return res;
+		return clone().transform(m);
 	}
 }

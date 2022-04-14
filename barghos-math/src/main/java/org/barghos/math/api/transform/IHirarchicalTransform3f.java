@@ -1,6 +1,7 @@
 package org.barghos.math.api.transform;
 
 import org.barghos.core.api.tuple3.Tup3fR;
+import org.barghos.math.api.matrix.Mat4fBase;
 import org.barghos.math.api.util.BiVectorOrientation3f;
 import org.barghos.math.api.vector.Quat3f;
 import org.barghos.math.matrix.Mat4f;
@@ -52,23 +53,23 @@ public interface IHirarchicalTransform3f extends ITransform3f
 	Vec3f getAbsoluteScale(double alpha);
 	BiVectorOrientation3f getAbsoluteOrientation(double alpha);
 	
-	Mat4f getAbsoluteTranslationMatrix(double alpha);
-	Mat4f getAbsoluteScalingMatrix(double alpha);
-	Mat4f getAbsoluteRotationMatrix(double alpha);
+	Mat4fBase getAbsoluteTranslationMatrix(double alpha);
+	Mat4fBase getAbsoluteScalingMatrix(double alpha);
+	Mat4fBase getAbsoluteRotationMatrix(double alpha);
 	
-	default Mat4f getAbsoluteTransformationMatrix(double alpha)
+	default Mat4fBase getAbsoluteTransformationMatrix(double alpha)
 	{
 		ITransform3f parent = getParent();
 		
-		Mat4f t = getTransformationMatrix(alpha);
+		Mat4fBase t = getTransformationMatrix(alpha);
 		
-		if(parent != null) t.mul(parent.getTransformationMatrix(alpha));
+		if(parent != null) parent.getTransformationMatrix(alpha).mul(t);
 		
 		return t;
 	}
 	
-	default Mat4f getTransformationMatrix(double alpha)
+	default Mat4fBase getTransformationMatrix(double alpha)
 	{
-		return getScalingMatrix(alpha).mul(getRotationMatrix(alpha)).mul(getTranslationMatrix(alpha));
+		return (Mat4f)getTranslationMatrix(alpha).mul(getRotationMatrix(alpha)).mul(getScalingMatrix(alpha));
 	}
 }

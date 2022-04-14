@@ -3,21 +3,20 @@ package org.barghos.math.matrix;
 import java.nio.FloatBuffer;
 
 import static org.barghos.math.api.matrix.MatrixConstants.*;
+import static org.barghos.core.api.tuple.TupleConstants.*;
 
 import org.barghos.core.api.tuple2.Tup2fBase;
-import org.barghos.core.api.tuple2.Tup2fR;
 import org.barghos.core.api.tuple3.Tup3fBase;
 import org.barghos.core.api.tuple3.Tup3fR;
+import org.barghos.core.api.tuple4.Tup4fBase;
+import org.barghos.math.api.matrix.Mat4fBase;
 import org.barghos.math.api.matrix.Mat4fR;
 import org.barghos.math.api.vector.Quat3f;
-import org.barghos.math.api.vector.Vec2fBase;
-import org.barghos.math.api.vector.Vec2fR;
 import org.barghos.math.api.vector.Vec3fBase;
-import org.barghos.math.api.vector.Vec3fR;
 import org.barghos.math.vector.Vec3f;
 
 // MISSING_DOC
-public class Mat4f implements Mat4fR
+public class Mat4f implements Mat4fBase
 {
 	// MISSING_DOC
 	public float[][] m = new float[M4_ROWS][M4_COLUMNS];
@@ -29,24 +28,23 @@ public class Mat4f implements Mat4fR
 	}
 	
 	// MISSING_DOC
-	public Mat4f(Mat4f m)
+	public Mat4f(Mat4fR m)
 	{
 		set(m);
 	}
 	
-	// MISSING_DOC
-	public Mat4f set(Mat4f mat)
+	/** {@inheritDoc}} */
+	@Override
+	public Mat4fBase set(Mat4fR mat)
 	{
-		setRow(0, mat.m[0]);
-		setRow(1, mat.m[1]);
-		setRow(2, mat.m[2]);
-		setRow(3, mat.m[3]);
+		mat.toArray(this.m);
 		
 		return this;
 	}
 	
-	// MISSING_DOC
-	public Mat4f set(float[][] mat)
+	/** {@inheritDoc}} */
+	@Override
+	public Mat4fBase setArray(float[][] mat)
 	{
 		setRow(0, mat[0]);
 		setRow(1, mat[1]);
@@ -55,33 +53,10 @@ public class Mat4f implements Mat4fR
 		
 		return this;
 	}
-	
-	// MISSING_DOC
-	public Mat4f setRow(int row, float value)
-	{
-		return setRow(row, value, value, value, value);
-	}
-	
-	// MISSING_DOC
-	public Mat4f setRow(int row, float[] values)
-	{
-		return setRow(row, values[0], values[1], values[2], values[3]);
-	}
-	
-	// MISSING_DOC
-	public Mat4f setRow(int row, Tup3fR t, float w)
-	{
-		return setRow(row, t.getX(), t.getY(), t.getZ(), w);
-	}
-	
-	// MISSING_DOC
-	public Mat4f setRow(int row, float x, Tup3fR t)
-	{
-		return setRow(row, x, t.getX(), t.getY(), t.getZ());
-	}
-	
-	// MISSING_DOC
-	public Mat4f setRow(int row, float x, float y, float z, float w)
+
+	/** {@inheritDoc}} */
+	@Override
+	public Mat4fBase setRow(int row, float x, float y, float z, float w)
 	{
 		this.m[row][0] = x;
 		this.m[row][1] = y;
@@ -91,32 +66,9 @@ public class Mat4f implements Mat4fR
 		return this;
 	}
 	
-	// MISSING_DOC
-	public Mat4f setColumn(int column, float value)
-	{
-		return setColumn(column, value, value, value, value);
-	}
-	
-	// MISSING_DOC
-	public Mat4f setColumn(int column, float[] values)
-	{
-		return setColumn(column, values[0], values[1], values[2], values[3]);
-	}
-	
-	// MISSING_DOC
-	public Mat4f setColumn(int column, Tup3fR t, float w)
-	{
-		return setColumn(column, t.getX(), t.getY(), t.getZ(), w);
-	}
-	
-	// MISSING_DOC
-	public Mat4f setColumn(int column, float x, Tup3fR t)
-	{
-		return setColumn(column, x, t.getX(), t.getY(), t.getZ());
-	}
-	
-	// MISSING_DOC
-	public Mat4f setColumn(int column, float x, float y, float z, float w)
+	/** {@inheritDoc}} */
+	@Override
+	public Mat4fBase setColumn(int column, float x, float y, float z, float w)
 	{
 		this.m[0][column] = x;
 		this.m[1][column] = y;
@@ -126,8 +78,9 @@ public class Mat4f implements Mat4fR
 		return this;
 	}
 	
-	// MISSING_DOC
-	public Mat4f setCell(int row, int column, float value)
+	/** {@inheritDoc}} */
+	@Override
+	public Mat4fBase setCell(int row, int column, float value)
 	{
 		this.m[row][column] = value;
 		
@@ -143,21 +96,41 @@ public class Mat4f implements Mat4fR
 	
 	/** {@inheritDoc}} */
 	@Override
-	public float[] toArrayRowMajor()
+	public float[] getRow(int row, float[] res)
 	{
-		float[] out = new float[M4_CELLS];
+		res[COMP_X] = this.m[row][COMP_X];
+		res[COMP_Y] = this.m[row][COMP_Y];
+		res[COMP_Z] = this.m[row][COMP_Z];
+		res[COMP_W] = this.m[row][COMP_W];
 		
-		for(int row = 0; row < M4_ROWS; row++)
+		return res;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public float[] getColumn(int column, float[] res)
+	{
+		res[COMP_X] = this.m[COMP_X][column];
+		res[COMP_Y] = this.m[COMP_Y][column];
+		res[COMP_Z] = this.m[COMP_Z][column];
+		res[COMP_W] = this.m[COMP_W][column];
+		
+		return res;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public float[][] toArray(float[][] res)
+	{
+		for(int i = 0; i < M4_ROWS; i++)
 		{
-			int rowBase = row * M4_COLUMNS;
-			
-			out[rowBase] = this.m[row][0];
-			out[rowBase + 1] = this.m[row][1];
-			out[rowBase + 2] = this.m[row][2];
-			out[rowBase + 3] = this.m[row][3];
+			res[i][0] = this.m[i][0];
+			res[i][1] = this.m[i][1];
+			res[i][2] = this.m[i][2];
+			res[i][3] = this.m[i][3];
 		}
 		
-		return out;
+		return res;
 	}
 	
 	/** {@inheritDoc}} */
@@ -192,25 +165,6 @@ public class Mat4f implements Mat4fR
 		}
 		
 		return res;
-	}
-	
-	/** {@inheritDoc}} */
-	@Override
-	public float[] toArrayColumnMajor()
-	{
-		float[] out = new float[M4_CELLS];
-		
-		for(int column = 0; column < M4_COLUMNS; column++)
-		{
-			int columnBase = column * M4_ROWS;
-			
-			out[columnBase] = this.m[0][column];
-			out[columnBase + 1] = this.m[1][column];
-			out[columnBase + 2] = this.m[2][column];
-			out[columnBase + 3] = this.m[3][column];
-		}
-		
-		return out;
 	}
 	
 	/** {@inheritDoc}} */
@@ -257,13 +211,13 @@ public class Mat4f implements Mat4fR
 	}
 	
 	// MISSING_DOC
-	public Mat4f invertN()
+	public Mat4fBase invertN()
 	{
 		return clone().invert();
 	}
 	
 	// MISSING_DOC
-	public Mat4f invert()
+	public Mat4fBase invert()
 	{
 		double determinant = getDeterminant();
 		
@@ -317,6 +271,7 @@ public class Mat4f implements Mat4fR
 	}
 	
 	/** {@inheritDoc} */
+	@Override
 	public Mat4f clone()
 	{
 		return new Mat4f(this);
@@ -329,85 +284,6 @@ public class Mat4f implements Mat4fR
 				m[1][0] + ", " + m[1][1] + ", " + m[1][2] + ", " + m[1][3] + "\n" +
 				m[2][0] + ", " + m[2][1] + ", " + m[2][2] + ", " + m[2][3] + "\n" +
 				m[3][0] + ", " + m[3][1] + ", " + m[3][2] + ", " + m[3][3] + ")";
-	}
-	
-	// MISSING_DOC
-	public Mat4f initIdentity()
-	{
-		setRow(0, 1, 0, 0, 0);
-		setRow(1, 0, 1, 0, 0);
-		setRow(2, 0, 0, 1, 0);
-		setRow(3, 0, 0, 0, 1);
-		
-		return this;
-	}
-	
-	// MISSING_DOC
-	public Mat4f initZero()
-	{
-		setRow(0, 0, 0, 0, 0);
-		setRow(1, 0, 0, 0, 0);
-		setRow(2, 0, 0, 0, 0);
-		setRow(3, 0, 0, 0, 0);
-		
-		return this;
-	}
-
-	// MISSING_DOC
-	public Mat4f initScaling3d(Tup3fR t)
-	{
-		return initScaling3d(t.getX(), t.getY(), t.getZ());
-	}
-	
-	// MISSING_DOC
-	public Mat4f initScaling3d(float factor)
-	{
-		return initScaling3d(factor, factor, factor);
-	}
-	
-	// MISSING_DOC
-	public Mat4f initScaling3d(float x, float y, float z)
-	{
-		setRow(0, x, 0, 0, 0);
-		setRow(1, 0, y, 0, 0);
-		setRow(2, 0, 0, z, 0);
-		setRow(3, 0, 0, 0, 1);
-		
-		return this;
-	}
-	
-	// MISSING_DOC
-	public Mat4f initScaling4d(float factor)
-	{
-		return initScaling4d(factor, factor, factor, factor);
-	}
-	
-	// MISSING_DOC
-	public Mat4f initScaling4d(float x, float y, float z, float w)
-	{
-		setRow(0, x, 0, 0, 0);
-		setRow(1, 0, y, 0, 0);
-		setRow(2, 0, 0, z, 0);
-		setRow(3, 0, 0, 0, w);
-		
-		return this;
-	}
-	
-	// MISSING_DOC
-	public Mat4f initTranslation(Tup3fR t)
-	{
-		return initTranslation(t.getX(), t.getY(), t.getZ());
-	}
-	
-	// MISSING_DOC
-	public Mat4f initTranslation(float x, float y, float z)
-	{
-		setRow(0, 1, 0, 0, x);
-		setRow(1, 0, 1, 0, y);
-		setRow(2, 0, 0, 1, z);
-		setRow(3, 0, 0, 0, 1);
-		
-		return this;
 	}
 	
 	// MISSING_DOC
@@ -568,15 +444,29 @@ public class Mat4f implements Mat4fR
 	}
 	
 	// MISSING_DOC
-	public Mat4f mul(Mat4f r)
+	public Mat4fBase mul(Mat4fR l)
 	{
-		return Mat4f.mul(this, r, this);
+		float[][] m_ = new float[M4_ROWS][M4_COLUMNS];
+		
+		float[] lr = new float[M4_COLUMNS];
+		
+		for(int row = 0; row < M4_ROWS; row++)
+		{
+			l.getRow(row, lr);
+			
+			m_[row][0] = lr[0] * this.m[0][0] + lr[1] * this.m[1][0] + lr[2] * this.m[2][0] + lr[3] * this.m[3][0];
+			m_[row][1] = lr[0] * this.m[0][1] + lr[1] * this.m[1][1] + lr[2] * this.m[2][1] + lr[3] * this.m[3][1];
+			m_[row][2] = lr[0] * this.m[0][2] + lr[1] * this.m[1][2] + lr[2] * this.m[2][2] + lr[3] * this.m[3][2];
+			m_[row][3] = lr[0] * this.m[0][3] + lr[1] * this.m[1][3] + lr[2] * this.m[2][3] + lr[3] * this.m[3][3];
+		}
+		
+		return setArray(m_);
 	}
 	
 	// MISSING_DOC
-	public Mat4f mulN(Mat4f r)
+	public Mat4fBase mulN(Mat4fR r)
 	{
-		return Mat4f.mul(this, r, new Mat4f());
+		return clone().mul(r);
 	}
 	
 	// MISSING_DOC
@@ -727,7 +617,7 @@ public class Mat4f implements Mat4fR
 			m_[row][3] = l.m[row][0] * r.m[0][3] + l.m[row][1] * r.m[1][3] + l.m[row][2] * r.m[2][3] + l.m[row][3] * r.m[3][3];
 		}
 		
-		res.set(m_);
+		res.setArray(m_);
 		
 		return res;
 	}
@@ -735,13 +625,13 @@ public class Mat4f implements Mat4fR
 	// MISSING_DOC
 	public static Mat4f identity()
 	{
-		return new Mat4f().initIdentity();
+		return (Mat4f)new Mat4f().initIdentity();
 	}
 	
 	// MISSING_DOC
 	public static Mat4f zero()
 	{
-		return new Mat4f().initZero();
+		return (Mat4f)new Mat4f().initZero();
 	}
 	
 	// MISSING_DOC
@@ -753,25 +643,25 @@ public class Mat4f implements Mat4fR
 	// MISSING_DOC
 	public static Mat4f scaling3d(float factor)
 	{
-		return new Mat4f().initScaling3d(factor);
+		return (Mat4f)new Mat4f().initScaling3d(factor);
 	}
 	
 	// MISSING_DOC
 	public static Mat4f scaling3d(float x, float y, float z)
 	{
-		return new Mat4f().initScaling3d(x, y, z);
+		return (Mat4f)new Mat4f().initScaling3d(x, y, z);
 	}
 	
 	// MISSING_DOC
 	public static Mat4f scaling4d(float factor)
 	{
-		return new Mat4f().initScaling4d(factor);
+		return (Mat4f)new Mat4f().initScaling4d(factor);
 	}
 	
 	// MISSING_DOC
 	public static Mat4f scaling4d(float x, float y, float z, float w)
 	{
-		return new Mat4f().initScaling4d(x, y, z, w);
+		return (Mat4f)new Mat4f().initScaling4d(x, y, z, w);
 	}
 	
 	// MISSING_DOC
@@ -783,7 +673,7 @@ public class Mat4f implements Mat4fR
 	// MISSING_DOC
 	public static Mat4f translation(float x, float y, float z)
 	{
-		return new Mat4f().initTranslation(x, y, z);
+		return (Mat4f)new Mat4f().initTranslation(x, y, z);
 	}
 	
 	// MISSING_DOC
@@ -852,21 +742,23 @@ public class Mat4f implements Mat4fR
 		return new Mat4f().initLookAtRH(origin, target, up);
 	}
 
-	public <T extends Tup2fBase> T transform(Tup2fR t, boolean useZ, boolean useW, T res)
+	/** {@inheritDoc}} */
+	@Override
+	public <T extends Tup2fBase> T transform(float tX, float tY, boolean useZ, boolean useW, T res)
 	{
-		float x_ = this.m[0][0] * t.getX() + this.m[0][1] * t.getY();
-		float y_ = this.m[1][0] * t.getX() + this.m[1][1] * t.getY();
+		float x_ = this.m[0][0] * tX + this.m[0][1] * tY;
+		float y_ = this.m[1][0] * tX + this.m[1][1] * tY;
 
 		if(useZ)
 		{
-			x_ += this.m[0][2] * 1.0f;
-			y_ += this.m[1][2] * 1.0f;
+			x_ += this.m[0][2];
+			y_ += this.m[1][2];
 		}
 		
 		if(useW)
 		{
-			x_ += this.m[0][3] * 1.0f;
-			y_ += this.m[1][3] * 1.0f;
+			x_ += this.m[0][3];
+			y_ += this.m[1][3];
 		}
 		
 		res.set(x_, y_);
@@ -874,22 +766,44 @@ public class Mat4f implements Mat4fR
 		return res;
 	}
 
-	public <T extends Vec2fBase> T transform(Vec2fR v, boolean useZ, boolean useW, T res)
+	/** {@inheritDoc}} */
+	@Override
+	public float[] transform(float tX, float tY, boolean useZ, boolean useW, float[] res)
 	{
-		return transform((Tup2fR)v, useZ, useW, res);
+		float x_ = this.m[0][0] * tX + this.m[0][1] * tY;
+		float y_ = this.m[1][0] * tX + this.m[1][1] * tY;
+
+		if(useZ)
+		{
+			x_ += this.m[0][2];
+			y_ += this.m[1][2];
+		}
+		
+		if(useW)
+		{
+			x_ += this.m[0][3];
+			y_ += this.m[1][3];
+		}
+		
+		res[COMP_X] = x_;
+		res[COMP_Y] = y_;
+
+		return res;
 	}
 
-	public <T extends Tup3fBase> T transform(Tup3fR t, boolean useW, T res)
+	/** {@inheritDoc}} */
+	@Override
+	public <T extends Tup3fBase> T transform(float tX, float tY, float tZ, boolean useW, T res)
 	{
-		float x_ = this.m[0][0] * t.getX() + this.m[0][1] * t.getY() + this.m[0][2] * t.getZ();
-		float y_ = this.m[1][0] * t.getX() + this.m[1][1] * t.getY() + this.m[1][2] * t.getZ();
-		float z_ = this.m[2][0] * t.getX() + this.m[2][1] * t.getY() + this.m[2][2] * t.getZ();
+		float x_ = this.m[0][0] * tX + this.m[0][1] * tY + this.m[0][2] * tZ;
+		float y_ = this.m[1][0] * tX + this.m[1][1] * tY + this.m[1][2] * tZ;
+		float z_ = this.m[2][0] * tX + this.m[2][1] * tY + this.m[2][2] * tZ;
 
 		if(useW)
 		{
-			x_ += this.m[0][3] * 1.0f;
-			y_ += this.m[1][3] * 1.0f;
-			z_ += this.m[2][3] * 1.0f;
+			x_ += this.m[0][3];
+			y_ += this.m[1][3];
+			z_ += this.m[2][3];
 		}
 		
 		res.set(x_, y_, z_);
@@ -897,8 +811,56 @@ public class Mat4f implements Mat4fR
 		return res;
 	}
 
-	public <T extends Vec3fBase> T transform(Vec3fR v, boolean useW, T res)
+	/** {@inheritDoc}} */
+	@Override
+	public float[] transform(float tX, float tY, float tZ, boolean useW, float[] res)
 	{
-		return transform((Tup3fR)v, useW, res);
+		float x_ = this.m[0][0] * tX + this.m[0][1] * tY + this.m[0][2] * tZ;
+		float y_ = this.m[1][0] * tX + this.m[1][1] * tY + this.m[1][2] * tZ;
+		float z_ = this.m[2][0] * tX + this.m[2][1] * tY + this.m[2][2] * tZ;
+
+		if(useW)
+		{
+			x_ += this.m[0][3];
+			y_ += this.m[1][3];
+			z_ += this.m[2][3];
+		}
+		
+		res[COMP_X] = x_;
+		res[COMP_Y] = y_;
+		res[COMP_Z] = z_;
+
+		return res;
+	}
+
+	/** {@inheritDoc}} */
+	@Override
+	public <T extends Tup4fBase> T transform(float tX, float tY, float tZ, float tW, T res)
+	{
+		float x_ = this.m[0][0] * tX + this.m[0][1] * tY + this.m[0][2] * tZ + this.m[0][3] * tW;
+		float y_ = this.m[1][0] * tX + this.m[1][1] * tY + this.m[1][2] * tZ + this.m[1][3] * tW;
+		float z_ = this.m[2][0] * tX + this.m[2][1] * tY + this.m[2][2] * tZ + this.m[2][3] * tW;
+		float w_ = this.m[3][0] * tX + this.m[3][1] * tY + this.m[3][2] * tZ + this.m[3][3] * tW;
+		
+		res.set(x_, y_, z_, w_);
+
+		return res;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public float[] transform(float tX, float tY, float tZ, float tW, float[] res)
+	{
+		float x_ = this.m[0][0] * tX + this.m[0][1] * tY + this.m[0][2] * tZ + this.m[0][3] * tW;
+		float y_ = this.m[1][0] * tX + this.m[1][1] * tY + this.m[1][2] * tZ + this.m[1][3] * tW;
+		float z_ = this.m[2][0] * tX + this.m[2][1] * tY + this.m[2][2] * tZ + this.m[2][3] * tW;
+		float w_ = this.m[3][0] * tX + this.m[3][1] * tY + this.m[3][2] * tZ + this.m[3][3] * tW;
+		
+		res[COMP_X] = x_;
+		res[COMP_Y] = y_;
+		res[COMP_Z] = z_;
+		res[COMP_W] = w_;
+
+		return res;
 	}
 }
