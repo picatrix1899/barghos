@@ -5,9 +5,6 @@ import org.barghos.core.api.tuple2.Tup2dBase;
 import org.barghos.core.api.tuple2.Tup2dR;
 import org.barghos.math.api.point.Point2dBase;
 import org.barghos.math.api.point.Point2dR;
-import org.barghos.math.api.vector.Vec2dBase;
-import org.barghos.math.api.vector.Vec2dR;
-import org.barghos.math.vector.Vec2d;
 
 /**
  * This class represents a 2-dimensional double point.
@@ -126,21 +123,7 @@ public class Point2d implements Point2dBase
 	
 	/** {@inheritDoc}} */
 	@Override
-	public Vec2dR asReadonlyVector()
-	{
-		return asVector();
-	}
-
-	/** {@inheritDoc}} */
-	@Override
-	public Vec2dBase asVector()
-	{
-		return new Vec2d(this);
-	}
-	
-	/** {@inheritDoc}} */
-	@Override
-	public <T extends Vec2dBase> T asVector(T res)
+	public <T extends Tup2dBase> T copyTo(T res)
 	{
 		res.set(this);
 		
@@ -149,32 +132,18 @@ public class Point2d implements Point2dBase
 
 	/** {@inheritDoc}} */
 	@Override
-	public Vec2dBase vectorTo(Point2dR p)
+	public <T extends Tup2dBase> T vectorTo(double pX, double pY, T res)
 	{
-		return vectorTo(p, new Vec2d());
-	}
-
-	/** {@inheritDoc}} */
-	@Override
-	public <T extends Vec2dBase> T vectorTo(Point2dR p, T res)
-	{
-		res.set(p.getX() - getX(), p.getY() - getY());
+		res.set(pX - getX(), pY - getY());
 		
 		return res;
 	}
-
+	
 	/** {@inheritDoc}} */
 	@Override
-	public Vec2dBase vectorFrom(Point2dR p)
+	public <T extends Tup2dBase> T vectorFrom(double pX, double pY, T res)
 	{
-		return vectorFrom(p, new Vec2d());
-	}
-
-	/** {@inheritDoc}} */
-	@Override
-	public <T extends Vec2dBase> T vectorFrom(Point2dR p, T res)
-	{
-		res.set(getX() - p.getX(), getY() - p.getY());
+		res.set(getX() - pX, getY() - pY);
 		
 		return res;
 	}

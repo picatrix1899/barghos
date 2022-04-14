@@ -3,6 +3,7 @@ package org.barghos.math.point;
 import org.barghos.core.api.tuple.TupfR;
 import org.barghos.core.api.tuple2.Tup2fBase;
 import org.barghos.core.api.tuple2.Tup2fR;
+import org.barghos.math.api.point.Point2dR;
 import org.barghos.math.api.point.Point2fBase;
 import org.barghos.math.api.point.Point2fR;
 import org.barghos.math.api.vector.Vec2fBase;
@@ -126,61 +127,6 @@ public class Point2f implements Point2fBase
 	
 	/** {@inheritDoc}} */
 	@Override
-	public Vec2fR asReadonlyVector()
-	{
-		return asVector();
-	}
-
-	/** {@inheritDoc}} */
-	@Override
-	public Vec2fBase asVector()
-	{
-		return new Vec2f(this);
-	}
-	
-	/** {@inheritDoc}} */
-	@Override
-	public <T extends Vec2fBase> T asVector(T res)
-	{
-		res.set(this);
-		
-		return res;
-	}
-
-	/** {@inheritDoc}} */
-	@Override
-	public Vec2fBase vectorTo(Point2fR p)
-	{
-		return vectorTo(p, new Vec2f());
-	}
-
-	/** {@inheritDoc}} */
-	@Override
-	public <T extends Vec2fBase> T vectorTo(Point2fR p, T res)
-	{
-		res.set(p.getX() - getX(), p.getY() - getY());
-		
-		return res;
-	}
-
-	/** {@inheritDoc}} */
-	@Override
-	public Vec2fBase vectorFrom(Point2fR p)
-	{
-		return vectorFrom(p, new Vec2f());
-	}
-
-	/** {@inheritDoc}} */
-	@Override
-	public <T extends Vec2fBase> T vectorFrom(Point2fR p, T res)
-	{
-		res.set(getX() - p.getX(), getY() - p.getY());
-		
-		return res;
-	}
-	
-	/** {@inheritDoc}} */
-	@Override
 	public String toString()
 	{
 		return "point2f(" + getX() + ", " + getY() + ")";
@@ -191,5 +137,30 @@ public class Point2f implements Point2fBase
 	public Point2f clone()
 	{
 		return new Point2f(this);
+	}
+
+	public <T extends Tup2fBase> T copyTo(T res)
+	{
+		return null;
+	}
+
+	public <T extends Tup2fBase> T vectorTo(Point2dR p, T res)
+	{
+		return null;
+	}
+
+	public <T extends Tup2fBase> T vectorTo(float pX, float pY, T res)
+	{
+		return null;
+	}
+
+	public <T extends Tup2fBase> T vectorFrom(Point2dR p, T res)
+	{
+		return null;
+	}
+
+	public <T extends Tup2fBase> T vectorFrom(float pX, float pY, T res)
+	{
+		return null;
 	}
 }

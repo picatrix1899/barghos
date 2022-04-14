@@ -1,10 +1,10 @@
 package org.barghos.math.api.point;
 
-import org.barghos.core.api.tuple2.Tup2dBase;
-import org.barghos.core.api.tuple2.Tup2dR;
+import org.barghos.core.api.tuple3.Tup3fBase;
+import org.barghos.core.api.tuple3.Tup3fR;
 
 /**
- * This interface grants readonly access to any 2-dimensional double point.
+ * This interface grants readonly access to any 3-dimensional float point.
  * 
  * <p>
  * It should be prefered by design before direct usage of a type in method parameters,
@@ -12,7 +12,7 @@ import org.barghos.core.api.tuple2.Tup2dR;
  * 
  * @author picatrix1899
  */
-public interface Point2dR extends Tup2dR
+public interface Point3fR extends Tup3fR
 {
 	/**
 	 * Copies the values of the components of the current point to the query parameter.
@@ -23,7 +23,7 @@ public interface Point2dR extends Tup2dR
 	 * 
 	 * @return The query parameter with the values.
 	 */
-	<T extends Tup2dBase> T copyTo(T res);
+	<T extends Tup3fBase> T copyTo(T res);
 	
 	/**
 	 * Calculates the vector from this point to the given second point and saves the result in the
@@ -36,9 +36,9 @@ public interface Point2dR extends Tup2dR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	default <T extends Tup2dBase> T vectorTo(Tup2dR p, T res)
+	default <T extends Tup3fBase> T vectorTo(Tup3fR p, T res)
 	{
-		return vectorTo(p.getX(), p.getY(), res);
+		return vectorTo(p.getX(), p.getY(), p.getZ(), res);
 	}
 	
 	/**
@@ -49,11 +49,12 @@ public interface Point2dR extends Tup2dR
 	 * 
 	 * @param pX The value of the x component of the second point.
 	 * @param pY The value of the y component of the second point.
+	 * @param pZ The value of the z component of the second point.
 	 * @param res The query parameter.
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	<T extends Tup2dBase> T vectorTo(double pX, double pY, T res);
+	<T extends Tup3fBase> T vectorTo(float pX, float pY, float pZ, T res);
 	
 	/**
 	 * Calculates the vector from the given second point to this point and saves the result in the
@@ -66,9 +67,9 @@ public interface Point2dR extends Tup2dR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	default <T extends Tup2dBase> T vectorFrom(Tup2dR p, T res)
+	default <T extends Tup3fBase> T vectorFrom(Tup3fR p, T res)
 	{
-		return vectorFrom(p.getX(), p.getY(), res);
+		return vectorFrom(p.getX(), p.getY(), p.getZ(), res);
 	}
 	
 	/**
@@ -79,9 +80,10 @@ public interface Point2dR extends Tup2dR
 	 * 
 	 * @param pX The value of the x component of the second point.
 	 * @param pY The value of the y component of the second point.
+	 * @param pZ The value of the z component of the second point.
 	 * @param res The query parameter.
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	<T extends Tup2dBase> T vectorFrom(double pX, double pY, T res);
+	<T extends Tup3fBase> T vectorFrom(float pX, float pY, float pZ, T res);
 }
