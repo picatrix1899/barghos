@@ -119,7 +119,7 @@ public interface Tup3dBase extends Tup3dR, TupdBase
 	@Override
 	default Tup3dBase set(TupdR t)
 	{
-		return setArray(t.getArray());
+		return setArray(t.toArray());
 	}
 	
 	/** {@inheritDoc} */

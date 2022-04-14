@@ -5,6 +5,7 @@ import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
+
 import org.barghos.core.api.tuple.TupboBase;
 import org.barghos.core.api.tuple.TupboR;
 import org.barghos.core.api.tuple2.Tup2boBase;
@@ -120,38 +121,16 @@ class Tup2boBaseTest
 		
 		when(t.set(t2)).thenCallRealMethod();
 		
-		when(t2.getArray()).thenReturn(new boolean[] {true, false});
-		when(t.set(true, false)).thenReturn(t);
+		when(t2.toArray()).thenReturn(new boolean[] {true, false});
+		when(t.setArray(new boolean[] {true, false})).thenReturn(t);
 
 		assertSame(t, t.set(t2));
 		
 		verify(t).set(t2);
 		
-		verify(t2).getArray();
-		verify(t).set(true, false);
-
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup2boBase#setArray(boolean[])} adopts the
-	 * values and returns the current instance.
-	 */
-	@Test
-	void setArrayTest()
-	{
-		Tup2boBase t = mock(Tup2boBase.class);
-		
-		when(t.setArray(new boolean[] {true, false})).thenCallRealMethod();
-		
-		when(t.set(true, false)).thenReturn(t);
-		
-		assertSame(t, t.setArray(new boolean[] {true, false}));
-		
+		verify(t2).toArray();
 		verify(t).setArray(new boolean[] {true, false});
-		
-		verify(t).set(true, false);
-		
+
 		verifyNoMoreInteractions(t);
 	}
 	

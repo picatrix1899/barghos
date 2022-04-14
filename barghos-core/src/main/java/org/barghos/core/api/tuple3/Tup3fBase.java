@@ -119,7 +119,7 @@ public interface Tup3fBase extends Tup3fR, TupfBase
 	@Override
 	default Tup3fBase set(TupfR t)
 	{
-		return setArray(t.getArray());
+		return setArray(t.toArray());
 	}
 	
 	/** {@inheritDoc} */

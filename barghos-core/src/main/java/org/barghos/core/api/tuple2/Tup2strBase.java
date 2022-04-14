@@ -108,7 +108,7 @@ public interface Tup2strBase extends Tup2strR, TupstrBase
 	@Override
 	default Tup2strBase set(TupstrR t)
 	{
-		return setArray(t.getArray());
+		return setArray(t.toArray());
 	}
 	
 	/** {@inheritDoc} */

@@ -72,7 +72,7 @@ class ImmutableTup3boTest
 	{
 		TupboR original = mock(TupboR.class);
 		
-		when(original.getArray()).thenReturn(new boolean[] {true, false, true});
+		when(original.toArray()).thenReturn(new boolean[] {true, false, true});
 		
 		ImmutableTup3bo t = new ImmutableTup3bo(original);
 		
@@ -80,7 +80,7 @@ class ImmutableTup3boTest
 		assertEquals(false, t.getY());
 		assertEquals(true, t.getZ());
 		
-		verify(original).getArray();
+		verify(original).toArray();
 		
 		verifyNoMoreInteractions(original);
 	}

@@ -423,4 +423,32 @@ class TupbigiRTest
 		
 		verifyNoMoreInteractions(t);
 	}
+	
+	/**
+	 * This test ensures, that the function {@link TupbigiR#getArray()} calls
+	 * the function {@link TupbigiR#toArray(BigInteger[])} with a new array with the size
+	 * equal to the number of dimensions of the tuple.
+	 */
+	@Test
+	void toArrayTest()
+	{
+		TupbigiR t = mock(TupbigiR.class);
+		
+		BigInteger[] array = new BigInteger[2];
+		
+		when(t.toArray()).thenCallRealMethod();
+		when(t.getDimensions()).thenReturn(2);
+
+		when(t.toArray(new BigInteger[2])).thenReturn(array);
+		
+		assertSame(array, t.toArray());
+		
+		verify(t).toArray();
+		
+		verify(t).getDimensions();
+		
+		verify(t).toArray(new BigInteger[2]);
+		
+		verifyNoMoreInteractions(t);
+	}
 }

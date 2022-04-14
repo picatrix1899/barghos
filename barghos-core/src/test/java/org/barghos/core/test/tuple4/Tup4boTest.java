@@ -60,7 +60,7 @@ class Tup4boTest
 	{
 		TupboR original = mock(TupboR.class);
 		
-		when(original.getArray()).thenReturn(new boolean[] {false, true, false, true});
+		when(original.toArray()).thenReturn(new boolean[] {false, true, false, true});
 		
 		Tup4bo t = new Tup4bo(original);
 		
@@ -69,7 +69,7 @@ class Tup4boTest
 		assertEquals(false, t.getZ());
 		assertEquals(true, t.getW());
 		
-		verify(original).getArray();
+		verify(original).toArray();
 		
 		verifyNoMoreInteractions(original);
 	}

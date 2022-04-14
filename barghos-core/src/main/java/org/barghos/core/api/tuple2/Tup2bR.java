@@ -99,9 +99,12 @@ public interface Tup2bR extends TupbR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default byte[] getArray()
+	default byte[] toArray(byte[] res)
 	{
-		return new byte[] {getX(), getY()};
+		res[COMP_X] = getX();
+		res[COMP_Y] = getY();
+		
+		return res;
 	}
 	
 	/**

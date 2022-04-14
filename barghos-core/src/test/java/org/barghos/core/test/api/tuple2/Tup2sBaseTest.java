@@ -5,6 +5,7 @@ import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
+
 import org.barghos.core.api.tuple.TupsBase;
 import org.barghos.core.api.tuple.TupsR;
 import org.barghos.core.api.tuple2.Tup2sBase;
@@ -120,38 +121,16 @@ class Tup2sBaseTest
 		
 		when(t.set(t2)).thenCallRealMethod();
 		
-		when(t2.getArray()).thenReturn(new short[] {(short)1, (short)2});
-		when(t.set((short)1, (short)2)).thenReturn(t);
+		when(t2.toArray()).thenReturn(new short[] {(short)1, (short)2});
+		when(t.setArray(new short[] {(short)1, (short)2})).thenReturn(t);
 
 		assertSame(t, t.set(t2));
 		
 		verify(t).set(t2);
 		
-		verify(t2).getArray();
-		verify(t).set((short)1, (short)2);
-
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup2sBase#setArray(short[])} adopts the
-	 * values and returns the current instance.
-	 */
-	@Test
-	void setArrayTest()
-	{
-		Tup2sBase t = mock(Tup2sBase.class);
-		
-		when(t.setArray(new short[] {(short)1, (short)2})).thenCallRealMethod();
-		
-		when(t.set((short)1, (short)2)).thenReturn(t);
-		
-		assertSame(t, t.setArray(new short[] {(short)1, (short)2}));
-		
+		verify(t2).toArray();
 		verify(t).setArray(new short[] {(short)1, (short)2});
-		
-		verify(t).set((short)1, (short)2);
-		
+
 		verifyNoMoreInteractions(t);
 	}
 	

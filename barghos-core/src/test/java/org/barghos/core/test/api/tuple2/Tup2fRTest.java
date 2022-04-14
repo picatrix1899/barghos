@@ -447,22 +447,25 @@ class Tup2fRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup2fR#getArray()} returns
-	 * an array with the components in the right order.
+	 * This test ensures, that the function {@link Tup2fR#getArray(float[])} returns
+	 * the given array with the components in the right order.
 	 */
 	@Test
-	void getArrayTest()
+	void toArray_QueryTest()
 	{
 		Tup2fR t = mock(Tup2fR.class);
 		
-		when(t.getArray()).thenCallRealMethod();
+		float[] array = new float[2];
+		
+		when(t.toArray(array)).thenCallRealMethod();
 		
 		when(t.getX()).thenReturn(1.0f);
 		when(t.getY()).thenReturn(2.0f);
 		
-		assertArrayEquals(new float[] {1.0f, 2.0f}, t.getArray());
+		assertSame(array, t.toArray(array));
+		assertArrayEquals(new float[] {1.0f, 2.0f}, array);
 		
-		verify(t).getArray();
+		verify(t).toArray(array);
 		
 		verify(t).getX();
 		verify(t).getY();

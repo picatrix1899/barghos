@@ -70,7 +70,7 @@ public class ImmutableTup3bigd implements Tup3bigdR, FormattableToString
 	 */
 	public ImmutableTup3bigd(TupbigdR t)
 	{
-		this(t.getArray());
+		this(t.toArray());
 	}
 	
 	/**

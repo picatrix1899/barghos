@@ -130,7 +130,7 @@ public interface Tup4bBase extends Tup4bR, TupbBase
 	@Override
 	default Tup4bBase set(TupbR t)
 	{
-		return setArray(t.getArray());
+		return setArray(t.toArray());
 	}
 	
 	/** {@inheritDoc} */

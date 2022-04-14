@@ -124,15 +124,15 @@ class Tup3lBaseTest
 		
 		when(t.set(t2)).thenCallRealMethod();
 		
-		when(t2.getArray()).thenReturn(new long[] {1l, 2l, 3l});
-		when(t.set(1l, 2l, 3l)).thenReturn(t);
+		when(t2.toArray()).thenReturn(new long[] {1l, 2l, 3l});
+		when(t.setArray(new long[] {1l, 2l, 3l})).thenReturn(t);
 
 		assertSame(t, t.set(t2));
 		
 		verify(t).set(t2);
 		
-		verify(t2).getArray();
-		verify(t).set(1l, 2l, 3l);
+		verify(t2).toArray();
+		verify(t).setArray(new long[] {1l, 2l, 3l});
 
 		verifyNoMoreInteractions(t);
 	}

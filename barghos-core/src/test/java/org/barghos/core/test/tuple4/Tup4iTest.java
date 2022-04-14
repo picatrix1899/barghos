@@ -60,7 +60,7 @@ class Tup4iTest
 	{
 		TupiR original = mock(TupiR.class);
 		
-		when(original.getArray()).thenReturn(new int[] {1, 2, 3, 4});
+		when(original.toArray()).thenReturn(new int[] {1, 2, 3, 4});
 		
 		Tup4i t = new Tup4i(original);
 		
@@ -69,7 +69,7 @@ class Tup4iTest
 		assertEquals(3, t.getZ());
 		assertEquals(4, t.getW());
 		
-		verify(original).getArray();
+		verify(original).toArray();
 		
 		verifyNoMoreInteractions(original);
 	}

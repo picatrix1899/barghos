@@ -123,38 +123,16 @@ class Tup2bigiBaseTest
 		
 		when(t.set(t2)).thenCallRealMethod();
 		
-		when(t2.getArray()).thenReturn(new BigInteger[] {BigInteger.ONE, BigInteger.valueOf(2)});
-		when(t.set(BigInteger.ONE, BigInteger.valueOf(2))).thenReturn(t);
+		when(t2.toArray()).thenReturn(new BigInteger[] {BigInteger.ONE, BigInteger.valueOf(2)});
+		when(t.setArray(new BigInteger[] {BigInteger.ONE, BigInteger.valueOf(2)})).thenReturn(t);
 
 		assertSame(t, t.set(t2));
 		
 		verify(t).set(t2);
 		
-		verify(t2).getArray();
-		verify(t).set(BigInteger.ONE, BigInteger.valueOf(2));
-
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup2bigiBase#setArray(BigInteger[])} adopts the
-	 * values and returns the current instance.
-	 */
-	@Test
-	void setArrayTest()
-	{
-		Tup2bigiBase t = mock(Tup2bigiBase.class);
-		
-		when(t.setArray(new BigInteger[] {BigInteger.ONE, BigInteger.valueOf(2)})).thenCallRealMethod();
-		
-		when(t.set(BigInteger.ONE, BigInteger.valueOf(2))).thenReturn(t);
-		
-		assertSame(t, t.setArray(new BigInteger[] {BigInteger.ONE, BigInteger.valueOf(2)}));
-		
+		verify(t2).toArray();
 		verify(t).setArray(new BigInteger[] {BigInteger.ONE, BigInteger.valueOf(2)});
-		
-		verify(t).set(BigInteger.ONE, BigInteger.valueOf(2));
-		
+
 		verifyNoMoreInteractions(t);
 	}
 	

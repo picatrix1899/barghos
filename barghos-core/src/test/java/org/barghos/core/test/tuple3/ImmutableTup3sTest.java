@@ -72,7 +72,7 @@ class ImmutableTup3sTest
 	{
 		TupsR original = mock(TupsR.class);
 		
-		when(original.getArray()).thenReturn(new short[] {(short)1, (short)2, (short)3});
+		when(original.toArray()).thenReturn(new short[] {(short)1, (short)2, (short)3});
 		
 		ImmutableTup3s t = new ImmutableTup3s(original);
 		
@@ -80,7 +80,7 @@ class ImmutableTup3sTest
 		assertEquals((short)2, t.getY());
 		assertEquals((short)3, t.getZ());
 		
-		verify(original).getArray();
+		verify(original).toArray();
 		
 		verifyNoMoreInteractions(original);
 	}

@@ -99,9 +99,12 @@ public interface Tup2bigiR extends TupbigiR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default BigInteger[] getArray()
+	default BigInteger[] toArray(BigInteger[] res)
 	{
-		return new BigInteger[] {getX(), getY()};
+		res[COMP_X] = getX();
+		res[COMP_Y] = getY();
+		
+		return res;
 	}
 	
 	/**

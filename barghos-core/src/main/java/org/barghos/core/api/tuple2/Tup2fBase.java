@@ -108,7 +108,7 @@ public interface Tup2fBase extends Tup2fR, TupfBase
 	@Override
 	default Tup2fBase set(TupfR t)
 	{
-		return setArray(t.getArray());
+		return setArray(t.toArray());
 	}
 	
 	/** {@inheritDoc} */

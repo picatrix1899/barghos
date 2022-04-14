@@ -64,7 +64,7 @@ public class ImmutableTup2b implements Tup2bR, FormattableToString
 	 */
 	public ImmutableTup2b(TupbR t)
 	{
-		this(t.getArray());
+		this(t.toArray());
 	}
 	
 	

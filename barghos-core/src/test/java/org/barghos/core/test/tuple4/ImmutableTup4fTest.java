@@ -72,7 +72,7 @@ class ImmutableTup4fTest
 	{
 		TupfR original = mock(TupfR.class);
 		
-		when(original.getArray()).thenReturn(new float[] {1.0f, 2.0f, 3.0f, 4.0f});
+		when(original.toArray()).thenReturn(new float[] {1.0f, 2.0f, 3.0f, 4.0f});
 		
 		ImmutableTup4f t = new ImmutableTup4f(original);
 		
@@ -81,7 +81,7 @@ class ImmutableTup4fTest
 		assertEquals(3.0f, t.getZ());
 		assertEquals(4.0f, t.getW());
 		
-		verify(original).getArray();
+		verify(original).toArray();
 		
 		verifyNoMoreInteractions(original);
 	}

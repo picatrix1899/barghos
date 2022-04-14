@@ -110,9 +110,13 @@ public interface Tup3bigiR extends TupbigiR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default BigInteger[] getArray()
+	default BigInteger[] toArray(BigInteger[] res)
 	{
-		return new BigInteger[] {getX(), getY(), getZ()};
+		res[COMP_X] = getX();
+		res[COMP_Y] = getY();
+		res[COMP_Z] = getZ();
+		
+		return res;
 	}
 	
 	/**

@@ -63,7 +63,7 @@ class Tup4bigiTest
 	{
 		TupbigiR original = mock(TupbigiR.class);
 		
-		when(original.getArray()).thenReturn(new BigInteger[] {BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4)});
+		when(original.toArray()).thenReturn(new BigInteger[] {BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4)});
 		
 		Tup4bigi t = new Tup4bigi(original);
 		
@@ -72,7 +72,7 @@ class Tup4bigiTest
 		assertEquals(BigInteger.valueOf(3), t.getZ());
 		assertEquals(BigInteger.valueOf(4), t.getW());
 		
-		verify(original).getArray();
+		verify(original).toArray();
 		
 		verifyNoMoreInteractions(original);
 	}

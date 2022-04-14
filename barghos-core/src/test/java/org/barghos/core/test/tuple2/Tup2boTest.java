@@ -36,14 +36,14 @@ class Tup2boTest
 	{
 		TupboR original = mock(TupboR.class);
 		
-		when(original.getArray()).thenReturn(new boolean[] {false, true});
+		when(original.toArray()).thenReturn(new boolean[] {false, true});
 		
 		Tup2bo t = new Tup2bo(original);
 		
 		assertEquals(false, t.getX());
 		assertEquals(true, t.getY());
 		
-		verify(original).getArray();
+		verify(original).toArray();
 		
 		verifyNoMoreInteractions(original);
 	}

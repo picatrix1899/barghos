@@ -124,15 +124,15 @@ class Tup3cBaseTest
 		
 		when(t.set(t2)).thenCallRealMethod();
 		
-		when(t2.getArray()).thenReturn(new char[] {'a', 'b', 'c'});
-		when(t.set('a', 'b', 'c')).thenReturn(t);
+		when(t2.toArray()).thenReturn(new char[] {'a', 'b', 'c'});
+		when(t.setArray(new char[] {'a', 'b', 'c'})).thenReturn(t);
 
 		assertSame(t, t.set(t2));
 		
 		verify(t).set(t2);
 		
-		verify(t2).getArray();
-		verify(t).set('a', 'b', 'c');
+		verify(t2).toArray();
+		verify(t).setArray(new char[] {'a', 'b', 'c'});
 
 		verifyNoMoreInteractions(t);
 	}

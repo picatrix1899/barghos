@@ -72,7 +72,7 @@ class ImmutableTup3iTest
 	{
 		TupiR original = mock(TupiR.class);
 		
-		when(original.getArray()).thenReturn(new int[] {1, 2, 3});
+		when(original.toArray()).thenReturn(new int[] {1, 2, 3});
 		
 		ImmutableTup3i t = new ImmutableTup3i(original);
 		
@@ -80,7 +80,7 @@ class ImmutableTup3iTest
 		assertEquals(2, t.getY());
 		assertEquals(3, t.getZ());
 		
-		verify(original).getArray();
+		verify(original).toArray();
 		
 		verifyNoMoreInteractions(original);
 	}

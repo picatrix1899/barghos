@@ -64,7 +64,7 @@ public class ImmutableTup2obj implements Tup2objR, FormattableToString
 	 */
 	public ImmutableTup2obj(TupobjR t)
 	{
-		this(t.getArray());
+		this(t.toArray());
 	}
 	
 	/**

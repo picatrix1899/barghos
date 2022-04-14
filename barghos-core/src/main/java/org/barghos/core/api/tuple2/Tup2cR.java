@@ -73,9 +73,12 @@ public interface Tup2cR extends TupcR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default char[] getArray()
+	default char[] toArray(char[] res)
 	{
-		return new char[] {getX(), getY()};
+		res[COMP_X] = getX();
+		res[COMP_Y] = getY();
+		
+		return res;
 	}
 	
 	/**

@@ -345,4 +345,32 @@ class TupbRTest
 		
 		verifyNoMoreInteractions(t);
 	}
+	
+	/**
+	 * This test ensures, that the function {@link TupbR#getArray()} calls
+	 * the function {@link TupbR#toArray(byte[])} with a new array with the size
+	 * equal to the number of dimensions of the tuple.
+	 */
+	@Test
+	void toArrayTest()
+	{
+		TupbR t = mock(TupbR.class);
+		
+		byte[] array = new byte[2];
+		
+		when(t.toArray()).thenCallRealMethod();
+		when(t.getDimensions()).thenReturn(2);
+
+		when(t.toArray(new byte[2])).thenReturn(array);
+		
+		assertSame(array, t.toArray());
+		
+		verify(t).toArray();
+		
+		verify(t).getDimensions();
+		
+		verify(t).toArray(new byte[2]);
+		
+		verifyNoMoreInteractions(t);
+	}
 }

@@ -142,15 +142,15 @@ class Tup3dBaseTest
 		
 		when(t.set(t2)).thenCallRealMethod();
 		
-		when(t2.getArray()).thenReturn(new double[] {1.0, 2.0, 3.0});
-		when(t.set(1.0, 2.0, 3.0)).thenReturn(t);
+		when(t2.toArray()).thenReturn(new double[] {1.0, 2.0, 3.0});
+		when(t.setArray(new double[] {1.0, 2.0, 3.0})).thenReturn(t);
 
 		assertSame(t, t.set(t2));
 		
 		verify(t).set(t2);
 		
-		verify(t2).getArray();
-		verify(t).set(1.0, 2.0, 3.0);
+		verify(t2).toArray();
+		verify(t).setArray(new double[] {1.0, 2.0, 3.0});
 
 		verifyNoMoreInteractions(t);
 	}

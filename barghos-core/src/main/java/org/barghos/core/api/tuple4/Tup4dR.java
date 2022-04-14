@@ -119,9 +119,14 @@ public interface Tup4dR extends TupdR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default double[] getArray()
+	default double[] toArray(double[] res)
 	{
-		return new double[] {getX(), getY(), getZ(), getW()};
+		res[COMP_X] = getX();
+		res[COMP_Y] = getY();
+		res[COMP_Z] = getZ();
+		res[COMP_W] = getW();
+		
+		return res;
 	}
 	
 	/**

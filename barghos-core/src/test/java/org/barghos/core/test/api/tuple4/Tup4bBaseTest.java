@@ -128,15 +128,15 @@ class Tup4bBaseTest
 		
 		when(t.set(t2)).thenCallRealMethod();
 		
-		when(t2.getArray()).thenReturn(new byte[] {(byte)1, (byte)2, (byte)3, (byte)4});
-		when(t.set((byte)1, (byte)2, (byte)3, (byte)4)).thenReturn(t);
+		when(t2.toArray()).thenReturn(new byte[] {(byte)1, (byte)2, (byte)3, (byte)4});
+		when(t.setArray(new byte[] {(byte)1, (byte)2, (byte)3, (byte)4})).thenReturn(t);
 
 		assertSame(t, t.set(t2));
 		
 		verify(t).set(t2);
 		
-		verify(t2).getArray();
-		verify(t).set((byte)1, (byte)2, (byte)3, (byte)4);
+		verify(t2).toArray();
+		verify(t).setArray(new byte[] {(byte)1, (byte)2, (byte)3, (byte)4});
 
 		verifyNoMoreInteractions(t);
 	}

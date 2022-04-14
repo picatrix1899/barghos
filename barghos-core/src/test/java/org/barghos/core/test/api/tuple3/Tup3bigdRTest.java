@@ -472,23 +472,26 @@ class Tup3bigdRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup3bigdR#getArray()} returns
-	 * an array with the components in the right order.
+	 * This test ensures, that the function {@link Tup3bigdR#getArray(BigDecimal[])} returns
+	 * the given array with the components in the right order.
 	 */
 	@Test
-	void getArrayTest()
+	void toArray_QueryTest()
 	{
 		Tup3bigdR t = mock(Tup3bigdR.class);
 		
-		when(t.getArray()).thenCallRealMethod();
+		BigDecimal[] array = new BigDecimal[3];
+		
+		when(t.toArray(array)).thenCallRealMethod();
 		
 		when(t.getX()).thenReturn(BigDecimal.ONE);
 		when(t.getY()).thenReturn(BigDecimal.valueOf(2));
 		when(t.getZ()).thenReturn(BigDecimal.valueOf(3));
 		
-		assertArrayEquals(new BigDecimal[] {BigDecimal.ONE, BigDecimal.valueOf(2), BigDecimal.valueOf(3)}, t.getArray());
+		assertSame(array, t.toArray(array));
+		assertArrayEquals(new BigDecimal[] {BigDecimal.ONE, BigDecimal.valueOf(2), BigDecimal.valueOf(3)}, array);
 		
-		verify(t).getArray();
+		verify(t).toArray(array);
 		
 		verify(t).getX();
 		verify(t).getY();

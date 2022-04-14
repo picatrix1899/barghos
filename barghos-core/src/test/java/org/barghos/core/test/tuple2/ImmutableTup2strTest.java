@@ -26,14 +26,14 @@ class ImmutableTup2strTest
 	{
 		TupstrR original = mock(TupstrR.class);
 		
-		when(original.getArray()).thenReturn(new String[] {"a", "b"});
+		when(original.toArray()).thenReturn(new String[] {"a", "b"});
 		
 		ImmutableTup2str t = new ImmutableTup2str(original);
 		
 		assertEquals("a", t.getX());
 		assertEquals("b", t.getY());
 		
-		verify(original).getArray();
+		verify(original).toArray();
 		
 		verifyNoMoreInteractions(original);
 	}

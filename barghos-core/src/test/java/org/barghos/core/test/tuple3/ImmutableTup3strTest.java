@@ -72,7 +72,7 @@ class ImmutableTup3strTest
 	{
 		TupstrR original = mock(TupstrR.class);
 		
-		when(original.getArray()).thenReturn(new String[] {"a", "b", "c"});
+		when(original.toArray()).thenReturn(new String[] {"a", "b", "c"});
 		
 		ImmutableTup3str t = new ImmutableTup3str(original);
 		
@@ -80,7 +80,7 @@ class ImmutableTup3strTest
 		assertEquals("b", t.getY());
 		assertEquals("c", t.getZ());
 		
-		verify(original).getArray();
+		verify(original).toArray();
 		
 		verifyNoMoreInteractions(original);
 	}

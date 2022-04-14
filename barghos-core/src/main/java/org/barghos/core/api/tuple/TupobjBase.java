@@ -28,7 +28,7 @@ public interface TupobjBase extends TupobjR
 	 */
 	default TupobjBase set(TupobjR t)
 	{
-		return setArray(t.getArray());
+		return setArray(t.toArray());
 	}
 	
 	/**

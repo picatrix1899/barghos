@@ -108,7 +108,7 @@ public interface Tup2cBase extends Tup2cR, TupcBase
 	@Override
 	default Tup2cBase set(TupcR t)
 	{
-		return setArray(t.getArray());
+		return setArray(t.toArray());
 	}
 	
 	/** {@inheritDoc} */

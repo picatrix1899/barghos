@@ -114,22 +114,25 @@ class Tup2strRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup2strR#getArray()} returns
-	 * an array with the components in the right order.
+	 * This test ensures, that the function {@link Tup2strR#getArray(String[])} returns
+	 * the given array with the components in the right order.
 	 */
 	@Test
-	void getArrayTest()
+	void toArray_QueryTest()
 	{
 		Tup2strR t = mock(Tup2strR.class);
 		
-		when(t.getArray()).thenCallRealMethod();
+		String[] array = new String[2];
+		
+		when(t.toArray(array)).thenCallRealMethod();
 		
 		when(t.getX()).thenReturn("a");
 		when(t.getY()).thenReturn("b");
 		
-		assertArrayEquals(new String[] {"a", "b"}, t.getArray());
+		assertSame(array, t.toArray(array));
+		assertArrayEquals(new String[] {"a", "b"}, array);
 		
-		verify(t).getArray();
+		verify(t).toArray(array);
 		
 		verify(t).getX();
 		verify(t).getY();

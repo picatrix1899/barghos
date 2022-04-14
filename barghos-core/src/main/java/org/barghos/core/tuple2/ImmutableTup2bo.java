@@ -64,7 +64,7 @@ public class ImmutableTup2bo implements Tup2boR, FormattableToString
 	 */
 	public ImmutableTup2bo(TupboR t)
 	{
-		this(t.getArray());
+		this(t.toArray());
 	}
 	
 	/**

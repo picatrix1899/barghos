@@ -74,7 +74,7 @@ public class ImmutableTup4b implements Tup4bR, FormattableToString
 	 */
 	public ImmutableTup4b(TupbR t)
 	{
-		this(t.getArray());
+		this(t.toArray());
 	}
 	
 	/**

@@ -119,7 +119,7 @@ public interface Tup3lBase extends Tup3lR, TuplBase
 	@Override
 	default Tup3lBase set(TuplR t)
 	{
-		return setArray(t.getArray());
+		return setArray(t.toArray());
 	}
 	
 	/** {@inheritDoc} */

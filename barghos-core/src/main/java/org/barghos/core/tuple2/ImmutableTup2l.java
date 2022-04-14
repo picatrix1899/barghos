@@ -64,7 +64,7 @@ public class ImmutableTup2l implements Tup2lR, FormattableToString
 	 */
 	public ImmutableTup2l(TuplR t)
 	{
-		this(t.getArray());
+		this(t.toArray());
 	}
 	
 	/**

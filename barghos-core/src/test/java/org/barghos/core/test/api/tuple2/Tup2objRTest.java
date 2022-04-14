@@ -114,22 +114,25 @@ class Tup2objRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup2objR#getArray()} returns
-	 * an array with the components in the right order.
+	 * This test ensures, that the function {@link Tup2objR#getArray(Object[])} returns
+	 * the given array with the components in the right order.
 	 */
 	@Test
-	void getArrayTest()
+	void toArray_QueryTest()
 	{
 		Tup2objR t = mock(Tup2objR.class);
 		
-		when(t.getArray()).thenCallRealMethod();
+		Object[] array = new Object[2];
+		
+		when(t.toArray(array)).thenCallRealMethod();
 		
 		when(t.getX()).thenReturn(1);
 		when(t.getY()).thenReturn(1.0);
 		
-		assertArrayEquals(new Object[] {1, 1.0}, t.getArray());
+		assertSame(array, t.toArray(array));
+		assertArrayEquals(new Object[] {1, 1.0}, array);
 		
-		verify(t).getArray();
+		verify(t).toArray(array);
 		
 		verify(t).getX();
 		verify(t).getY();

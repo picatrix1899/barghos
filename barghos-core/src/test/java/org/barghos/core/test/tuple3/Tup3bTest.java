@@ -59,7 +59,7 @@ class Tup3bTest
 	{
 		TupbR original = mock(TupbR.class);
 		
-		when(original.getArray()).thenReturn(new byte[] {(byte)1, (byte)2, (byte)3});
+		when(original.toArray()).thenReturn(new byte[] {(byte)1, (byte)2, (byte)3});
 		
 		Tup3b t = new Tup3b(original);
 		
@@ -67,7 +67,7 @@ class Tup3bTest
 		assertEquals((byte)2, t.getY());
 		assertEquals((byte)3, t.getZ());
 		
-		verify(original).getArray();
+		verify(original).toArray();
 		
 		verifyNoMoreInteractions(original);
 	}

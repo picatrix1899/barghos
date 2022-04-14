@@ -28,7 +28,7 @@ public interface TupboBase extends TupboR, Cloneable
 	 */
 	default TupboBase set(TupboR t)
 	{
-		return setArray(t.getArray());
+		return setArray(t.toArray());
 	}
 	
 	/**

@@ -124,38 +124,16 @@ class Tup3bBaseTest
 		
 		when(t.set(t2)).thenCallRealMethod();
 		
-		when(t2.getArray()).thenReturn(new byte[] {(byte)1, (byte)2, (byte)3});
-		when(t.set((byte)1, (byte)2, (byte)3)).thenReturn(t);
+		when(t2.toArray()).thenReturn(new byte[] {(byte)1, (byte)2, (byte)3});
+		when(t.setArray(new byte[] {(byte)1, (byte)2, (byte)3})).thenReturn(t);
 
 		assertSame(t, t.set(t2));
 		
 		verify(t).set(t2);
 		
-		verify(t2).getArray();
-		verify(t).set((byte)1, (byte)2, (byte)3);
-
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup3bRW#setArray(byte[])} adopts the
-	 * values and returns the current instance.
-	 */
-	@Test
-	void setArrayTest()
-	{
-		Tup3bBase t = mock(Tup3bBase.class);
-		
-		when(t.setArray(new byte[] {(byte)1, (byte)2, (byte)3})).thenCallRealMethod();
-		
-		when(t.set((byte)1, (byte)2, (byte)3)).thenReturn(t);
-		
-		assertSame(t, t.setArray(new byte[] {(byte)1, (byte)2, (byte)3}));
-		
+		verify(t2).toArray();
 		verify(t).setArray(new byte[] {(byte)1, (byte)2, (byte)3});
-		
-		verify(t).set((byte)1, (byte)2, (byte)3);
-		
+
 		verifyNoMoreInteractions(t);
 	}
 	

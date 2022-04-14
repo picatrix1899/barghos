@@ -26,14 +26,14 @@ class ImmutableTup2cTest
 	{
 		TupcR original = mock(TupcR.class);
 		
-		when(original.getArray()).thenReturn(new char[] {'a', 'b'});
+		when(original.toArray()).thenReturn(new char[] {'a', 'b'});
 		
 		ImmutableTup2c t = new ImmutableTup2c(original);
 		
 		assertEquals('a', t.getX());
 		assertEquals('b', t.getY());
 		
-		verify(original).getArray();
+		verify(original).toArray();
 		
 		verifyNoMoreInteractions(original);
 	}

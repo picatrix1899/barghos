@@ -59,7 +59,7 @@ class Tup3objTest
 	{
 		TupobjR original = mock(TupobjR.class);
 		
-		when(original.getArray()).thenReturn(new Object[] {1, 1.0, "a"});
+		when(original.toArray()).thenReturn(new Object[] {1, 1.0, "a"});
 		
 		Tup3obj t = new Tup3obj(original);
 		
@@ -67,7 +67,7 @@ class Tup3objTest
 		assertEquals(1.0, t.getY());
 		assertEquals("a", t.getZ());
 		
-		verify(original).getArray();
+		verify(original).toArray();
 		
 		verifyNoMoreInteractions(original);
 	}

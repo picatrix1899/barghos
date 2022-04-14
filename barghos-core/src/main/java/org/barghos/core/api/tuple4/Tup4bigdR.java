@@ -121,9 +121,14 @@ public interface Tup4bigdR extends TupbigdR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default BigDecimal[] getArray()
+	default BigDecimal[] toArray(BigDecimal[] res)
 	{
-		return new BigDecimal[] {getX(), getY(), getZ(), getW()};
+		res[COMP_X] = getX();
+		res[COMP_Y] = getY();
+		res[COMP_Z] = getZ();
+		res[COMP_W] = getW();
+		
+		return res;
 	}
 	
 	/**

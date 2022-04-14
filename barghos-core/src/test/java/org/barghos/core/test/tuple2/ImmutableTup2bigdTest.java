@@ -28,14 +28,14 @@ class ImmutableTup2bigdTest
 	{
 		TupbigdR original = mock(TupbigdR.class);
 		
-		when(original.getArray()).thenReturn(new BigDecimal[] {BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0)});
+		when(original.toArray()).thenReturn(new BigDecimal[] {BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0)});
 		
 		ImmutableTup2bigd t = new ImmutableTup2bigd(original);
 		
 		assertEquals(BigDecimal.valueOf(1.0), t.getX());
 		assertEquals(BigDecimal.valueOf(2.0), t.getY());
 		
-		verify(original).getArray();
+		verify(original).toArray();
 		
 		verifyNoMoreInteractions(original);
 	}

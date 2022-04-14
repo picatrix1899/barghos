@@ -28,7 +28,7 @@ public interface TupiBase extends TupiR, Cloneable
 	 */
 	default TupiBase set(TupiR t)
 	{
-		return setArray(t.getArray());
+		return setArray(t.toArray());
 	}
 	
 	/**

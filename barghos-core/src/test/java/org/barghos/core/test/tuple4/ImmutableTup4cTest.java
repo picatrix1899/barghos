@@ -72,7 +72,7 @@ class ImmutableTup4cTest
 	{
 		TupcR original = mock(TupcR.class);
 		
-		when(original.getArray()).thenReturn(new char[] {'a', 'b', 'c', 'd'});
+		when(original.toArray()).thenReturn(new char[] {'a', 'b', 'c', 'd'});
 		
 		ImmutableTup4c t = new ImmutableTup4c(original);
 		
@@ -81,7 +81,7 @@ class ImmutableTup4cTest
 		assertEquals('c', t.getZ());
 		assertEquals('d', t.getW());
 		
-		verify(original).getArray();
+		verify(original).toArray();
 		
 		verifyNoMoreInteractions(original);
 	}

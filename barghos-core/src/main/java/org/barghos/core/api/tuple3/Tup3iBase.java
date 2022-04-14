@@ -115,7 +115,7 @@ public interface Tup3iBase extends Tup3iR, TupiBase
 	@Override
 	default Tup3iBase set(TupiR t)
 	{
-		return setArray(t.getArray());
+		return setArray(t.toArray());
 	}
 	
 	/** {@inheritDoc} */

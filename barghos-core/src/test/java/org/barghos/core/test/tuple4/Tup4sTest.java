@@ -60,7 +60,7 @@ class Tup4sTest
 	{
 		TupsR original = mock(TupsR.class);
 		
-		when(original.getArray()).thenReturn(new short[] {(short)1, (short)2, (short)3, (short)4});
+		when(original.toArray()).thenReturn(new short[] {(short)1, (short)2, (short)3, (short)4});
 		
 		Tup4s t = new Tup4s(original);
 		
@@ -69,7 +69,7 @@ class Tup4sTest
 		assertEquals((short)3, t.getZ());
 		assertEquals((short)4, t.getW());
 		
-		verify(original).getArray();
+		verify(original).toArray();
 		
 		verifyNoMoreInteractions(original);
 	}

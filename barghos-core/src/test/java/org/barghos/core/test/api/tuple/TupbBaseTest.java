@@ -35,14 +35,14 @@ class TupbBaseTest
 		
 		when(t.set(t2)).thenCallRealMethod();
 		
-		when(t2.getArray()).thenReturn(new byte[] {(byte)1, (byte)2});
+		when(t2.toArray()).thenReturn(new byte[] {(byte)1, (byte)2});
 		when(t.setArray(new byte[] {(byte)1, (byte)2})).thenReturn(t);
 		
 		assertSame(t, t.set(t2));
 		
 		verify(t).set(t2);
 		
-		verify(t2).getArray();
+		verify(t2).toArray();
 		verify(t).setArray(new byte[] {(byte)1, (byte)2});
 		
 		verifyNoMoreInteractions(t);

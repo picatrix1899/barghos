@@ -59,7 +59,7 @@ class Tup4strTest
 	{
 		TupstrR original = mock(TupstrR.class);
 		
-		when(original.getArray()).thenReturn(new String[] {"a", "b", "c", "d"});
+		when(original.toArray()).thenReturn(new String[] {"a", "b", "c", "d"});
 		
 		Tup4str t = new Tup4str(original);
 		
@@ -68,7 +68,7 @@ class Tup4strTest
 		assertEquals("c", t.getZ());
 		assertEquals("d", t.getW());
 		
-		verify(original).getArray();
+		verify(original).toArray();
 		
 		verifyNoMoreInteractions(original);
 	}

@@ -65,7 +65,7 @@ public class ImmutableTup2bigd implements Tup2bigdR, FormattableToString
 	 */
 	public ImmutableTup2bigd(TupbigdR t)
 	{
-		this(t.getArray());
+		this(t.toArray());
 	}
 	
 	/**

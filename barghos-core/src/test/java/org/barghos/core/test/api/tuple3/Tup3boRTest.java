@@ -44,23 +44,26 @@ class Tup3boRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup3boR#getArray()} returns
-	 * an array with the components in the right order.
+	 * This test ensures, that the function {@link Tup3boR#getArray(boolean[])} returns
+	 * the given array with the components in the right order.
 	 */
 	@Test
-	void getArrayTest()
+	void toArray_QueryTest()
 	{
 		Tup3boR t = mock(Tup3boR.class);
 		
-		when(t.getArray()).thenCallRealMethod();
+		boolean[] array = new boolean[3];
+		
+		when(t.toArray(array)).thenCallRealMethod();
 		
 		when(t.getX()).thenReturn(true);
 		when(t.getY()).thenReturn(false);
 		when(t.getZ()).thenReturn(true);
 		
-		assertArrayEquals(new boolean[] {true, false, true}, t.getArray());
+		assertSame(array, t.toArray(array));
+		assertArrayEquals(new boolean[] {true, false, true}, array);
 		
-		verify(t).getArray();
+		verify(t).toArray(array);
 		
 		verify(t).getX();
 		verify(t).getY();

@@ -28,7 +28,7 @@ public interface TupsBase extends TupsR, Cloneable
 	 */
 	default TupsBase set(TupsR t)
 	{
-		return setArray(t.getArray());
+		return setArray(t.toArray());
 	}
 	
 	/**

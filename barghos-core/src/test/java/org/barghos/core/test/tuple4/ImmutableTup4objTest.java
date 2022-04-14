@@ -72,7 +72,7 @@ class ImmutableTup4objTest
 	{
 		TupobjR original = mock(TupobjR.class);
 		
-		when(original.getArray()).thenReturn(new Object[] {1, 1.0, "a", 'a'});
+		when(original.toArray()).thenReturn(new Object[] {1, 1.0, "a", 'a'});
 		
 		ImmutableTup4obj t = new ImmutableTup4obj(original);
 		
@@ -81,7 +81,7 @@ class ImmutableTup4objTest
 		assertEquals("a", t.getZ());
 		assertEquals('a', t.getW());
 		
-		verify(original).getArray();
+		verify(original).toArray();
 		
 		verifyNoMoreInteractions(original);
 	}

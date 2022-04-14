@@ -69,7 +69,7 @@ public class ImmutableTup3s implements Tup3sR, FormattableToString
 	 */
 	public ImmutableTup3s(TupsR t)
 	{
-		this(t.getArray());
+		this(t.toArray());
 	}
 	
 	/**

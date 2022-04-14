@@ -110,9 +110,13 @@ public interface Tup3bigdR extends TupbigdR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default BigDecimal[] getArray()
+	default BigDecimal[] toArray(BigDecimal[] res)
 	{
-		return new BigDecimal[] {getX(), getY(), getZ()};
+		res[COMP_X] = getX();
+		res[COMP_Y] = getY();
+		res[COMP_Z] = getZ();
+		
+		return res;
 	}
 	
 	/**

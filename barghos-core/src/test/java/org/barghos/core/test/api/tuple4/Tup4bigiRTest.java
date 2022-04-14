@@ -596,24 +596,27 @@ class Tup4bigiRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4bigiR#getArray()} returns
-	 * an array with the components in the right order.
+	 * This test ensures, that the function {@link Tup4bigiR#getArray(BigInteger[])} returns
+	 * the given array with the components in the right order.
 	 */
 	@Test
-	void getArrayTest()
+	void toArray_QueryTest()
 	{
 		Tup4bigiR t = mock(Tup4bigiR.class);
 		
-		when(t.getArray()).thenCallRealMethod();
+		BigInteger[] array = new BigInteger[4];
+		
+		when(t.toArray(array)).thenCallRealMethod();
 		
 		when(t.getX()).thenReturn(BigInteger.ONE);
 		when(t.getY()).thenReturn(BigInteger.valueOf(2));
 		when(t.getZ()).thenReturn(BigInteger.valueOf(3));
 		when(t.getW()).thenReturn(BigInteger.valueOf(4));
 		
-		assertArrayEquals(new BigInteger[] {BigInteger.ONE, BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4)}, t.getArray());
+		assertSame(array, t.toArray(array));
+		assertArrayEquals(new BigInteger[] {BigInteger.ONE, BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4)}, array);
 		
-		verify(t).getArray();
+		verify(t).toArray(array);
 		
 		verify(t).getX();
 		verify(t).getY();

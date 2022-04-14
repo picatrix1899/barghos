@@ -128,15 +128,15 @@ class Tup4fBaseTest
 		
 		when(t.set(t2)).thenCallRealMethod();
 		
-		when(t2.getArray()).thenReturn(new float[] {1.0f, 2.0f, 3.0f, 4.0f});
-		when(t.set(1.0f, 2.0f, 3.0f, 4.0f)).thenReturn(t);
+		when(t2.toArray()).thenReturn(new float[] {1.0f, 2.0f, 3.0f, 4.0f});
+		when(t.setArray(new float[] {1.0f, 2.0f, 3.0f, 4.0f})).thenReturn(t);
 
 		assertSame(t, t.set(t2));
 		
 		verify(t).set(t2);
 		
-		verify(t2).getArray();
-		verify(t).set(1.0f, 2.0f, 3.0f, 4.0f);
+		verify(t2).toArray();
+		verify(t).setArray(new float[] {1.0f, 2.0f, 3.0f, 4.0f});
 
 		verifyNoMoreInteractions(t);
 	}

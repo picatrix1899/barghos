@@ -124,15 +124,15 @@ class Tup3boBaseTest
 		
 		when(t.set(t2)).thenCallRealMethod();
 		
-		when(t2.getArray()).thenReturn(new boolean[] {true, false, true});
-		when(t.set(true, false, true)).thenReturn(t);
+		when(t2.toArray()).thenReturn(new boolean[] {true, false, true});
+		when(t.setArray(new boolean[] {true, false, true})).thenReturn(t);
 
 		assertSame(t, t.set(t2));
 		
 		verify(t).set(t2);
 		
-		verify(t2).getArray();
-		verify(t).set(true, false, true);
+		verify(t2).toArray();
+		verify(t).setArray(new boolean[] {true, false, true});
 
 		verifyNoMoreInteractions(t);
 	}

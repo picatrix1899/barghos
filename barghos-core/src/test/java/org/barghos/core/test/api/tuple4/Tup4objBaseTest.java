@@ -128,15 +128,15 @@ class Tup4objBaseTest
 		
 		when(t.set(t2)).thenCallRealMethod();
 		
-		when(t2.getArray()).thenReturn(new Object[] {1, 1.0, "a", 'a'});
-		when(t.set(1, 1.0, "a", 'a')).thenReturn(t);
+		when(t2.toArray()).thenReturn(new Object[] {1, 1.0, "a", 'a'});
+		when(t.setArray(new Object[] {1, 1.0, "a", 'a'})).thenReturn(t);
 
 		assertSame(t, t.set(t2));
 		
 		verify(t).set(t2);
 		
-		verify(t2).getArray();
-		verify(t).set(1, 1.0, "a", 'a');
+		verify(t2).toArray();
+		verify(t).setArray(new Object[] {1, 1.0, "a", 'a'});
 
 		verifyNoMoreInteractions(t);
 	}

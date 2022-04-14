@@ -99,9 +99,13 @@ public interface Tup3sR extends TupsR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default short[] getArray()
+	default short[] toArray(short[] res)
 	{
-		return new short[] {getX(), getY(), getZ()};
+		res[COMP_X] = getX();
+		res[COMP_Y] = getY();
+		res[COMP_Z] = getZ();
+		
+		return res;
 	}
 	
 	/**

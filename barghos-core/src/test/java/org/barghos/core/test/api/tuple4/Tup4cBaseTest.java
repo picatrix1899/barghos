@@ -128,15 +128,15 @@ class Tup4cBaseTest
 		
 		when(t.set(t2)).thenCallRealMethod();
 		
-		when(t2.getArray()).thenReturn(new char[] {'a', 'b', 'c', 'd'});
-		when(t.set('a', 'b', 'c', 'd')).thenReturn(t);
+		when(t2.toArray()).thenReturn(new char[] {'a', 'b', 'c', 'd'});
+		when(t.setArray(new char[] {'a', 'b', 'c', 'd'})).thenReturn(t);
 
 		assertSame(t, t.set(t2));
 		
 		verify(t).set(t2);
 		
-		verify(t2).getArray();
-		verify(t).set('a', 'b', 'c', 'd');
+		verify(t2).toArray();
+		verify(t).setArray(new char[] {'a', 'b', 'c', 'd'});
 
 		verifyNoMoreInteractions(t);
 	}

@@ -423,4 +423,32 @@ class TupbigdRTest
 		
 		verifyNoMoreInteractions(t);
 	}
+	
+	/**
+	 * This test ensures, that the function {@link TupbigdR#getArray()} calls
+	 * the function {@link TupbigdR#toArray(BigDecimal[])} with a new array with the size
+	 * equal to the number of dimensions of the tuple.
+	 */
+	@Test
+	void toArrayTest()
+	{
+		TupbigdR t = mock(TupbigdR.class);
+		
+		BigDecimal[] array = new BigDecimal[2];
+		
+		when(t.toArray()).thenCallRealMethod();
+		when(t.getDimensions()).thenReturn(2);
+
+		when(t.toArray(new BigDecimal[2])).thenReturn(array);
+		
+		assertSame(array, t.toArray());
+		
+		verify(t).toArray();
+		
+		verify(t).getDimensions();
+		
+		verify(t).toArray(new BigDecimal[2]);
+		
+		verifyNoMoreInteractions(t);
+	}
 }

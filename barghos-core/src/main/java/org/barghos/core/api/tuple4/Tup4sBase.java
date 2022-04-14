@@ -137,7 +137,7 @@ public interface Tup4sBase extends Tup4sR, TupsBase
 	@Override
 	default Tup4sBase set(TupsR t)
 	{
-		return setArray(t.getArray());
+		return setArray(t.toArray());
 	}
 	
 	/** {@inheritDoc} */

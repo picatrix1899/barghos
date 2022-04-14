@@ -36,14 +36,14 @@ class Tup2bTest
 	{
 		TupbR original = mock(TupbR.class);
 		
-		when(original.getArray()).thenReturn(new byte[] {(byte)1, (byte)2});
+		when(original.toArray()).thenReturn(new byte[] {(byte)1, (byte)2});
 		
 		Tup2b t = new Tup2b(original);
 		
 		assertEquals((byte)1, t.getX());
 		assertEquals((byte)2, t.getY());
 		
-		verify(original).getArray();
+		verify(original).toArray();
 		
 		verifyNoMoreInteractions(original);
 	}

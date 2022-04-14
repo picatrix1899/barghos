@@ -35,14 +35,14 @@ class TupsBaseTest
 		
 		when(t.set(t2)).thenCallRealMethod();
 		
-		when(t2.getArray()).thenReturn(new short[] {(short)1, (short)2});
+		when(t2.toArray()).thenReturn(new short[] {(short)1, (short)2});
 		when(t.setArray(new short[] {(short)1, (short)2})).thenReturn(t);
 		
 		assertSame(t, t.set(t2));
 		
 		verify(t).set(t2);
 		
-		verify(t2).getArray();
+		verify(t2).toArray();
 		verify(t).setArray(new short[] {(short)1, (short)2});
 		
 		verifyNoMoreInteractions(t);

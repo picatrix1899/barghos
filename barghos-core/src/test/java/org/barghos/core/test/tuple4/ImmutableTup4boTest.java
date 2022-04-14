@@ -72,7 +72,7 @@ class ImmutableTup4boTest
 	{
 		TupboR original = mock(TupboR.class);
 		
-		when(original.getArray()).thenReturn(new boolean[] {true, false, true, false});
+		when(original.toArray()).thenReturn(new boolean[] {true, false, true, false});
 		
 		ImmutableTup4bo t = new ImmutableTup4bo(original);
 		
@@ -81,7 +81,7 @@ class ImmutableTup4boTest
 		assertEquals(true, t.getZ());
 		assertEquals(false, t.getW());
 		
-		verify(original).getArray();
+		verify(original).toArray();
 		
 		verifyNoMoreInteractions(original);
 	}

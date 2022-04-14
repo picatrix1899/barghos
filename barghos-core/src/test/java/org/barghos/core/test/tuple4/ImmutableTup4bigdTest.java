@@ -74,7 +74,7 @@ class ImmutableTup4bigdTest
 	{
 		TupbigdR original = mock(TupbigdR.class);
 		
-		when(original.getArray()).thenReturn(new BigDecimal[] {BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0), BigDecimal.valueOf(4.0)});
+		when(original.toArray()).thenReturn(new BigDecimal[] {BigDecimal.valueOf(1.0), BigDecimal.valueOf(2.0), BigDecimal.valueOf(3.0), BigDecimal.valueOf(4.0)});
 		
 		ImmutableTup4bigd t = new ImmutableTup4bigd(original);
 		
@@ -83,7 +83,7 @@ class ImmutableTup4bigdTest
 		assertEquals(BigDecimal.valueOf(3.0), t.getZ());
 		assertEquals(BigDecimal.valueOf(4.0), t.getW());
 		
-		verify(original).getArray();
+		verify(original).toArray();
 		
 		verifyNoMoreInteractions(original);
 	}

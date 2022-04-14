@@ -69,7 +69,7 @@ public class ImmutableTup3c implements Tup3cR, FormattableToString
 	 */
 	public ImmutableTup3c(TupcR t)
 	{
-		this(t.getArray());
+		this(t.toArray());
 	}
 	
 	/**

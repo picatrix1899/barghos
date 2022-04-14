@@ -81,9 +81,12 @@ public interface Tup2strR extends TupstrR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default String[] getArray()
+	default String[] toArray(String[] res)
 	{
-		return new String[] {getX(), getY()};
+		res[COMP_X] = getX();
+		res[COMP_Y] = getY();
+		
+		return res;
 	}
 	
 	/**

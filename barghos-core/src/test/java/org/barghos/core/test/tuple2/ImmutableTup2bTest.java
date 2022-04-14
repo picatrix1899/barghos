@@ -26,14 +26,14 @@ class ImmutableTup2bTest
 	{
 		TupbR original = mock(TupbR.class);
 		
-		when(original.getArray()).thenReturn(new byte[] {(byte)1, (byte)2});
+		when(original.toArray()).thenReturn(new byte[] {(byte)1, (byte)2});
 		
 		ImmutableTup2b t = new ImmutableTup2b(original);
 		
 		assertEquals(1.0, t.getX());
 		assertEquals(2.0, t.getY());
 		
-		verify(original).getArray();
+		verify(original).toArray();
 		
 		verifyNoMoreInteractions(original);
 	}

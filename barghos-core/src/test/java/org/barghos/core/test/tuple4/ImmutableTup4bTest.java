@@ -72,7 +72,7 @@ class ImmutableTup4bTest
 	{
 		TupbR original = mock(TupbR.class);
 		
-		when(original.getArray()).thenReturn(new byte[] {(byte)1, (byte)2, (byte)3, (byte)4});
+		when(original.toArray()).thenReturn(new byte[] {(byte)1, (byte)2, (byte)3, (byte)4});
 		
 		ImmutableTup4b t = new ImmutableTup4b(original);
 		
@@ -81,7 +81,7 @@ class ImmutableTup4bTest
 		assertEquals(3.0, t.getZ());
 		assertEquals(4.0, t.getW());
 		
-		verify(original).getArray();
+		verify(original).toArray();
 		
 		verifyNoMoreInteractions(original);
 	}

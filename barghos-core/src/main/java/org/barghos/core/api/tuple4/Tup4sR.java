@@ -109,9 +109,14 @@ public interface Tup4sR extends TupsR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default short[] getArray()
+	default short[] toArray(short[] res)
 	{
-		return new short[] {getX(), getY(), getZ(), getW()};
+		res[COMP_X] = getX();
+		res[COMP_Y] = getY();
+		res[COMP_Z] = getZ();
+		res[COMP_W] = getW();
+		
+		return res;
 	}
 	
 	/**

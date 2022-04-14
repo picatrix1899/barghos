@@ -108,6 +108,6 @@ public interface Tup2objBase extends Tup2objR, TupobjBase
 	@Override
 	default Tup2objBase set(TupobjR t)
 	{
-		return setArray(t.getArray());
+		return setArray(t.toArray());
 	}
 }

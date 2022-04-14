@@ -36,14 +36,14 @@ class Tup2iTest
 	{
 		TupiR original = mock(TupiR.class);
 		
-		when(original.getArray()).thenReturn(new int[] {1, 2});
+		when(original.toArray()).thenReturn(new int[] {1, 2});
 		
 		Tup2i t = new Tup2i(original);
 		
 		assertEquals(1, t.getX());
 		assertEquals(2, t.getY());
 		
-		verify(original).getArray();
+		verify(original).toArray();
 		
 		verifyNoMoreInteractions(original);
 	}

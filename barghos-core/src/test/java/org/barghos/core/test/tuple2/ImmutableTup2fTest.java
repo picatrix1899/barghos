@@ -26,14 +26,14 @@ class ImmutableTup2fTest
 	{
 		TupfR original = mock(TupfR.class);
 		
-		when(original.getArray()).thenReturn(new float[] {1.0f, 2.0f});
+		when(original.toArray()).thenReturn(new float[] {1.0f, 2.0f});
 		
 		ImmutableTup2f t = new ImmutableTup2f(original);
 		
 		assertEquals(1.0f, t.getX());
 		assertEquals(2.0f, t.getY());
 		
-		verify(original).getArray();
+		verify(original).toArray();
 		
 		verifyNoMoreInteractions(original);
 	}

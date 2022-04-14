@@ -28,7 +28,7 @@ public interface TupdBase extends TupdR, Cloneable
 	 */
 	default TupdBase set(TupdR t)
 	{
-		return setArray(t.getArray());
+		return setArray(t.toArray());
 	}
 	
 	/**

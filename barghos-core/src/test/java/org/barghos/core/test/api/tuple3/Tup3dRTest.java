@@ -615,23 +615,26 @@ class Tup3dRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup3dR#getArray()} returns
-	 * an array with the components in the right order.
+	 * This test ensures, that the function {@link Tup3dR#getArray(double[])} returns
+	 * the given array with the components in the right order.
 	 */
 	@Test
-	void getArrayTest()
+	void toArray_QueryTest()
 	{
 		Tup3dR t = mock(Tup3dR.class);
 		
-		when(t.getArray()).thenCallRealMethod();
+		double[] array = new double[3];
+		
+		when(t.toArray(array)).thenCallRealMethod();
 		
 		when(t.getX()).thenReturn(1.0);
 		when(t.getY()).thenReturn(2.0);
 		when(t.getZ()).thenReturn(3.0);
 		
-		assertArrayEquals(new double[] {1.0, 2.0, 3.0}, t.getArray());
+		assertSame(array, t.toArray(array));
+		assertArrayEquals(new double[] {1.0, 2.0, 3.0}, array);
 		
-		verify(t).getArray();
+		verify(t).toArray(array);
 		
 		verify(t).getX();
 		verify(t).getY();

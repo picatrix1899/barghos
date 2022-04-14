@@ -137,7 +137,7 @@ public interface Tup4strBase extends Tup4strR, TupstrBase
 	@Override
 	default Tup4strBase set(TupstrR t)
 	{
-		return setArray(t.getArray());
+		return setArray(t.toArray());
 	}
 	
 	/** {@inheritDoc} */

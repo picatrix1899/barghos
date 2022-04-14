@@ -64,7 +64,7 @@ public class ImmutableTup2d implements Tup2dR, FormattableToString
 	 */
 	public ImmutableTup2d(TupdR t)
 	{
-		this(t.getArray());
+		this(t.toArray());
 	}
 	
 	/**

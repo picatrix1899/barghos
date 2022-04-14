@@ -89,9 +89,12 @@ public interface Tup2iR extends TupiR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default int[] getArray()
+	default int[] toArray(int[] res)
 	{
-		return new int[] {getX(), getY()};
+		res[COMP_X] = getX();
+		res[COMP_Y] = getY();
+		
+		return res;
 	}
 	
 	/**

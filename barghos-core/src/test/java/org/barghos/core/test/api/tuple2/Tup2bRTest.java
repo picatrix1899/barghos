@@ -284,22 +284,25 @@ class Tup2bRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup2bR#getArray()} returns
-	 * an array with the components in the right order.
+	 * This test ensures, that the function {@link Tup2bR#getArray(byte[])} returns
+	 * the given array with the components in the right order.
 	 */
 	@Test
-	void getArrayTest()
+	void toArray_QueryTest()
 	{
 		Tup2bR t = mock(Tup2bR.class);
 		
-		when(t.getArray()).thenCallRealMethod();
+		byte[] array = new byte[2];
+		
+		when(t.toArray(array)).thenCallRealMethod();
 		
 		when(t.getX()).thenReturn((byte)1);
 		when(t.getY()).thenReturn((byte)2);
 		
-		assertArrayEquals(new byte[] {(byte)1, (byte)2}, t.getArray());
+		assertSame(array, t.toArray(array));
+		assertArrayEquals(new byte[] {(byte)1, (byte)2}, array);
 		
-		verify(t).getArray();
+		verify(t).toArray(array);
 		
 		verify(t).getX();
 		verify(t).getY();

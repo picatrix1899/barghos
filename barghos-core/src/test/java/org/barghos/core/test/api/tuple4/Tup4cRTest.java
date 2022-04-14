@@ -43,24 +43,27 @@ class Tup4cRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4cR#getArray()} returns
-	 * an array with the components in the right order.
+	 * This test ensures, that the function {@link Tup4cR#getArray(char[])} returns
+	 * the given array with the components in the right order.
 	 */
 	@Test
-	void getArrayTest()
+	void toArray_QueryTest()
 	{
 		Tup4cR t = mock(Tup4cR.class);
 		
-		when(t.getArray()).thenCallRealMethod();
+		char[] array = new char[4];
+		
+		when(t.toArray(array)).thenCallRealMethod();
 		
 		when(t.getX()).thenReturn('a');
 		when(t.getY()).thenReturn('b');
 		when(t.getZ()).thenReturn('c');
 		when(t.getW()).thenReturn('d');
 		
-		assertArrayEquals(new char[] {'a', 'b', 'c', 'd'}, t.getArray());
+		assertSame(array, t.toArray(array));
+		assertArrayEquals(new char[] {'a', 'b', 'c', 'd'}, array);
 		
-		verify(t).getArray();
+		verify(t).toArray(array);
 		
 		verify(t).getX();
 		verify(t).getY();

@@ -35,14 +35,14 @@ class Tup2sTest
 	{
 		TupsR original = mock(TupsR.class);
 		
-		when(original.getArray()).thenReturn(new short[] {(short)1, (short)2});
+		when(original.toArray()).thenReturn(new short[] {(short)1, (short)2});
 		
 		Tup2s t = new Tup2s(original);
 		
 		assertEquals((short)1, t.getX());
 		assertEquals((short)2, t.getY());
 		
-		verify(original).getArray();
+		verify(original).toArray();
 		
 		verifyNoMoreInteractions(original);
 	}

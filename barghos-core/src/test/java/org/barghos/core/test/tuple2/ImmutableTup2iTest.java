@@ -26,14 +26,14 @@ class ImmutableTup2biTest
 	{
 		TupiR original = mock(TupiR.class);
 		
-		when(original.getArray()).thenReturn(new int[] {1, 2});
+		when(original.toArray()).thenReturn(new int[] {1, 2});
 		
 		ImmutableTup2i t = new ImmutableTup2i(original);
 		
 		assertEquals(1, t.getX());
 		assertEquals(2, t.getY());
 		
-		verify(original).getArray();
+		verify(original).toArray();
 		
 		verifyNoMoreInteractions(original);
 	}

@@ -81,9 +81,13 @@ public interface Tup3cR extends TupcR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default char[] getArray()
+	default char[] toArray(char[] res)
 	{
-		return new char[] {getX(), getY(), getZ()};
+		res[COMP_X] = getX();
+		res[COMP_Y] = getY();
+		res[COMP_Z] = getZ();
+		
+		return res;
 	}
 	
 	/**

@@ -35,14 +35,14 @@ class TupboBaseTest
 		
 		when(t.set(t2)).thenCallRealMethod();
 		
-		when(t2.getArray()).thenReturn(new boolean[] {true, false});
+		when(t2.toArray()).thenReturn(new boolean[] {true, false});
 		when(t.setArray(new boolean[] {true, false})).thenReturn(t);
 		
 		assertSame(t, t.set(t2));
 		
 		verify(t).set(t2);
 		
-		verify(t2).getArray();
+		verify(t2).toArray();
 		verify(t).setArray(new boolean[] {true, false});
 		
 		verifyNoMoreInteractions(t);

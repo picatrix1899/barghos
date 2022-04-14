@@ -89,9 +89,14 @@ public interface Tup4boR extends TupboR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default boolean[] getArray()
+	default boolean[] toArray(boolean[] res)
 	{
-		return new boolean[] {getX(), getY(), getZ(), getW()};
+		res[COMP_X] = getX();
+		res[COMP_Y] = getY();
+		res[COMP_Z] = getZ();
+		res[COMP_W] = getW();
+		
+		return res;
 	}
 	
 	/**

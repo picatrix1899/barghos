@@ -29,7 +29,7 @@ public interface TupbigdBase extends TupbigdR, Cloneable
 	 */
 	default TupbigdBase set(TupbigdR t)
 	{
-		return setArray(t.getArray());
+		return setArray(t.toArray());
 	}
 	
 	/**

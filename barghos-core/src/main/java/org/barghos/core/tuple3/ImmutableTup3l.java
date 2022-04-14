@@ -69,7 +69,7 @@ public class ImmutableTup3l implements Tup3lR, FormattableToString
 	 */
 	public ImmutableTup3l(TuplR t)
 	{
-		this(t.getArray());
+		this(t.toArray());
 	}
 	
 	/**

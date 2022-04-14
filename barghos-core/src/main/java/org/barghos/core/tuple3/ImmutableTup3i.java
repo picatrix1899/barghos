@@ -69,7 +69,7 @@ public class ImmutableTup3i implements Tup3iR, FormattableToString
 	 */
 	public ImmutableTup3i(TupiR t)
 	{
-		this(t.getArray());
+		this(t.toArray());
 	}
 	
 	/**

@@ -5,6 +5,7 @@ import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
+
 import org.barghos.core.api.tuple.TupfBase;
 import org.barghos.core.api.tuple.TupfR;
 import org.barghos.core.api.tuple2.Tup2fBase;
@@ -120,38 +121,16 @@ class Tup2fBaseTest
 		
 		when(t.set(t2)).thenCallRealMethod();
 		
-		when(t2.getArray()).thenReturn(new float[] {1.0f, 2.0f});
-		when(t.set(1.0f, 2.0f)).thenReturn(t);
+		when(t2.toArray()).thenReturn(new float[] {1.0f, 2.0f});
+		when(t.setArray(new float[] {1.0f, 2.0f})).thenReturn(t);
 
 		assertSame(t, t.set(t2));
 		
 		verify(t).set(t2);
 		
-		verify(t2).getArray();
-		verify(t).set(1.0f, 2.0f);
-
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup2fBase#setArray(float[])} adopts the
-	 * values and returns the current instance.
-	 */
-	@Test
-	void setArrayTest()
-	{
-		Tup2fBase t = mock(Tup2fBase.class);
-		
-		when(t.setArray(new float[] {1.0f, 2.0f})).thenCallRealMethod();
-		
-		when(t.set(1.0f, 2.0f)).thenReturn(t);
-		
-		assertSame(t, t.setArray(new float[] {1.0f, 2.0f}));
-		
+		verify(t2).toArray();
 		verify(t).setArray(new float[] {1.0f, 2.0f});
-		
-		verify(t).set(1.0f, 2.0f);
-		
+
 		verifyNoMoreInteractions(t);
 	}
 	

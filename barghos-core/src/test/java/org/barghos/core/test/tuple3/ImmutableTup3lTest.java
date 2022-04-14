@@ -72,7 +72,7 @@ class ImmutableTup3lTest
 	{
 		TuplR original = mock(TuplR.class);
 		
-		when(original.getArray()).thenReturn(new long[] {1l, 2l, 3l});
+		when(original.toArray()).thenReturn(new long[] {1l, 2l, 3l});
 		
 		ImmutableTup3l t = new ImmutableTup3l(original);
 		
@@ -80,7 +80,7 @@ class ImmutableTup3lTest
 		assertEquals(2l, t.getY());
 		assertEquals(3l, t.getZ());
 		
-		verify(original).getArray();
+		verify(original).toArray();
 		
 		verifyNoMoreInteractions(original);
 	}

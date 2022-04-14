@@ -81,9 +81,12 @@ public interface Tup2objR extends TupobjR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default Object[] getArray()
+	default Object[] toArray(Object[] res)
 	{
-		return new Object[] {getX(), getY()};
+		res[COMP_X] = getX();
+		res[COMP_Y] = getY();
+		
+		return res;
 	}
 	
 	/**

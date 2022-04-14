@@ -99,9 +99,12 @@ public interface Tup2bigdR extends TupbigdR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default BigDecimal[] getArray()
+	default BigDecimal[] toArray(BigDecimal[] res)
 	{
-		return new BigDecimal[] {getX(), getY()};
+		res[COMP_X] = getX();
+		res[COMP_Y] = getY();
+		
+		return res;
 	}
 	
 	/**

@@ -28,7 +28,7 @@ public interface TupcBase extends TupcR, Cloneable
 	 */
 	default TupcBase set(TupcR t)
 	{
-		return setArray(t.getArray());
+		return setArray(t.toArray());
 	}
 	
 	/**

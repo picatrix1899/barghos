@@ -120,38 +120,16 @@ class Tup2strBaseTest
 		
 		when(t.set(t2)).thenCallRealMethod();
 		
-		when(t2.getArray()).thenReturn(new String[] {"a", "b"});
-		when(t.set("a", "b")).thenReturn(t);
+		when(t2.toArray()).thenReturn(new String[] {"a", "b"});
+		when(t.setArray("a", "b")).thenReturn(t);
 
 		assertSame(t, t.set(t2));
 		
 		verify(t).set(t2);
 		
-		verify(t2).getArray();
-		verify(t).set("a", "b");
+		verify(t2).toArray();
+		verify(t).setArray("a", "b");
 
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup2strBase#setArray(String[])} adopts the
-	 * values and returns the current instance.
-	 */
-	@Test
-	void setArrayTest()
-	{
-		Tup2strBase t = mock(Tup2strBase.class);
-		
-		when(t.setArray(new String[] {"a", "b"})).thenCallRealMethod();
-		
-		when(t.set("a", "b")).thenReturn(t);
-		
-		assertSame(t, t.setArray(new String[] {"a", "b"}));
-		
-		verify(t).setArray(new String[] {"a", "b"});
-		
-		verify(t).set("a", "b");
-		
 		verifyNoMoreInteractions(t);
 	}
 	

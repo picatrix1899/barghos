@@ -29,14 +29,14 @@ class ImmutableTup2bigiTest
 	{
 		TupbigiR original = mock(TupbigiR.class);
 		
-		when(original.getArray()).thenReturn(new BigInteger[] {BigInteger.valueOf(1), BigInteger.valueOf(2)});
+		when(original.toArray()).thenReturn(new BigInteger[] {BigInteger.valueOf(1), BigInteger.valueOf(2)});
 		
 		ImmutableTup2bigi t = new ImmutableTup2bigi(original);
 		
 		assertEquals(BigInteger.valueOf(1), t.getX());
 		assertEquals(BigInteger.valueOf(2), t.getY());
 		
-		verify(original).getArray();
+		verify(original).toArray();
 		
 		verifyNoMoreInteractions(original);
 	}

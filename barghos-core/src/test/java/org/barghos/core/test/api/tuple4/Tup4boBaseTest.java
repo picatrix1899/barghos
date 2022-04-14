@@ -128,15 +128,15 @@ class Tup4boBaseTest
 		
 		when(t.set(t2)).thenCallRealMethod();
 		
-		when(t2.getArray()).thenReturn(new boolean[] {true, false, true, false});
-		when(t.set(true, false, true, false)).thenReturn(t);
+		when(t2.toArray()).thenReturn(new boolean[] {true, false, true, false});
+		when(t.setArray(new boolean[] {true, false, true, false})).thenReturn(t);
 
 		assertSame(t, t.set(t2));
 		
 		verify(t).set(t2);
 		
-		verify(t2).getArray();
-		verify(t).set(true, false, true, false);
+		verify(t2).toArray();
+		verify(t).setArray(new boolean[] {true, false, true, false});
 
 		verifyNoMoreInteractions(t);
 	}

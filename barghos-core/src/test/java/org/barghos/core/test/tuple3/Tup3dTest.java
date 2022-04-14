@@ -59,7 +59,7 @@ class Tup3dTest
 	{
 		TupdR original = mock(TupdR.class);
 		
-		when(original.getArray()).thenReturn(new double[] {1.0, 2.0, 3.0});
+		when(original.toArray()).thenReturn(new double[] {1.0, 2.0, 3.0});
 		
 		Tup3d t = new Tup3d(original);
 		
@@ -67,7 +67,7 @@ class Tup3dTest
 		assertEquals(2.0, t.getY());
 		assertEquals(3.0, t.getZ());
 		
-		verify(original).getArray();
+		verify(original).toArray();
 		
 		verifyNoMoreInteractions(original);
 	}

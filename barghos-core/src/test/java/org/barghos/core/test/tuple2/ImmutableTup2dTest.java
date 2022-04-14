@@ -26,14 +26,14 @@ class ImmutableTup2dTest
 	{
 		TupdR original = mock(TupdR.class);
 		
-		when(original.getArray()).thenReturn(new double[] {1.0, 2.0});
+		when(original.toArray()).thenReturn(new double[] {1.0, 2.0});
 		
 		ImmutableTup2d t = new ImmutableTup2d(original);
 		
 		assertEquals(1.0, t.getX());
 		assertEquals(2.0, t.getY());
 		
-		verify(original).getArray();
+		verify(original).toArray();
 		
 		verifyNoMoreInteractions(original);
 	}

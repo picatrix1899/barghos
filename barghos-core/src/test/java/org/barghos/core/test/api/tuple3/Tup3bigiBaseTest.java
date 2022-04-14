@@ -6,10 +6,12 @@ import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 
 import org.barghos.core.api.tuple.TupbigiBase;
 import org.barghos.core.api.tuple.TupbigiR;
+import org.barghos.core.api.tuple3.Tup3bigdBase;
 import org.barghos.core.api.tuple3.Tup3bigiBase;
 import org.barghos.core.api.tuple3.Tup3bigiR;
 
@@ -127,21 +129,21 @@ class Tup3bigiBaseTest
 		
 		when(t.set(t2)).thenCallRealMethod();
 		
-		when(t2.getArray()).thenReturn(new BigInteger[] {BigInteger.ONE, BigInteger.valueOf(2), BigInteger.valueOf(3)});
-		when(t.set(BigInteger.ONE, BigInteger.valueOf(2), BigInteger.valueOf(3))).thenReturn(t);
+		when(t2.toArray()).thenReturn(new BigInteger[] {BigInteger.ONE, BigInteger.valueOf(2), BigInteger.valueOf(3)});
+		when(t.setArray(new BigInteger[] {BigInteger.ONE, BigInteger.valueOf(2), BigInteger.valueOf(3)})).thenReturn(t);
 
 		assertSame(t, t.set(t2));
 		
 		verify(t).set(t2);
 		
-		verify(t2).getArray();
-		verify(t).set(BigInteger.ONE, BigInteger.valueOf(2), BigInteger.valueOf(3));
+		verify(t2).toArray();
+		verify(t).setArray(new BigInteger[] {BigInteger.ONE, BigInteger.valueOf(2), BigInteger.valueOf(3)});
 
 		verifyNoMoreInteractions(t);
 	}
 	
-	/**
-	 * This test ensures, that the function {@link Tup3bigiBase#setArray(BigInteger[])} adopts the
+		/**
+	 * This test ensures, that the function {@link Tup3bigdBase#setArray(BigDecimal[])} adopts the
 	 * values and returns the current instance.
 	 */
 	@Test

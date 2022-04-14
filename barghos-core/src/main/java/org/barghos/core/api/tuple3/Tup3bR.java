@@ -99,9 +99,13 @@ public interface Tup3bR extends TupbR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default byte[] getArray()
+	default byte[] toArray(byte[] res)
 	{
-		return new byte[] {getX(), getY(), getZ()};
+		res[COMP_X] = getX();
+		res[COMP_Y] = getY();
+		res[COMP_Z] = getZ();
+		
+		return res;
 	}
 	
 	/**

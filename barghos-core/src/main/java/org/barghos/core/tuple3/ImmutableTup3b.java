@@ -71,7 +71,7 @@ public class ImmutableTup3b implements Tup3bR, FormattableToString
 	 */
 	public ImmutableTup3b(TupbR t)
 	{
-		this(t.getArray());
+		this(t.toArray());
 	}
 	
 	/**

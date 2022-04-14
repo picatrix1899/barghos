@@ -26,14 +26,14 @@ class ImmutableTup2boTest
 	{
 		TupboR original = mock(TupboR.class);
 		
-		when(original.getArray()).thenReturn(new boolean[] {true, false});
+		when(original.toArray()).thenReturn(new boolean[] {true, false});
 		
 		ImmutableTup2bo t = new ImmutableTup2bo(original);
 		
 		assertEquals(true, t.getX());
 		assertEquals(false, t.getY());
 		
-		verify(original).getArray();
+		verify(original).toArray();
 		
 		verifyNoMoreInteractions(original);
 	}

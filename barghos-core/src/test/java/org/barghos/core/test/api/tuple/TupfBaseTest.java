@@ -35,14 +35,14 @@ class TupfBaseTest
 		
 		when(t.set(t2)).thenCallRealMethod();
 		
-		when(t2.getArray()).thenReturn(new float[] {1.0f, 2.0f});
+		when(t2.toArray()).thenReturn(new float[] {1.0f, 2.0f});
 		when(t.setArray(new float[] {1.0f, 2.0f})).thenReturn(t);
 		
 		assertSame(t, t.set(t2));
 		
 		verify(t).set(t2);
 		
-		verify(t2).getArray();
+		verify(t2).toArray();
 		verify(t).setArray(new float[] {1.0f, 2.0f});
 		
 		verifyNoMoreInteractions(t);

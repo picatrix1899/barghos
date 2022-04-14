@@ -26,14 +26,14 @@ class ImmutableTup2objTest
 	{
 		TupobjR original = mock(TupobjR.class);
 		
-		when(original.getArray()).thenReturn(new Object[] {1, 1.0});
+		when(original.toArray()).thenReturn(new Object[] {1, 1.0});
 		
 		ImmutableTup2obj t = new ImmutableTup2obj(original);
 		
 		assertEquals(1, t.getX());
 		assertEquals(1.0, t.getY());
 		
-		verify(original).getArray();
+		verify(original).toArray();
 		
 		verifyNoMoreInteractions(original);
 	}

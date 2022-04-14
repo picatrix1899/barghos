@@ -466,24 +466,27 @@ class Tup4sRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4sR#getArray()} returns
-	 * an array with the components in the right order.
+	 * This test ensures, that the function {@link Tup4sR#getArray(short[])} returns
+	 * the given array with the components in the right order.
 	 */
 	@Test
-	void getArrayTest()
+	void toArray_QueryTest()
 	{
 		Tup4sR t = mock(Tup4sR.class);
 		
-		when(t.getArray()).thenCallRealMethod();
+		short[] array = new short[4];
+		
+		when(t.toArray(array)).thenCallRealMethod();
 		
 		when(t.getX()).thenReturn((short)1);
 		when(t.getY()).thenReturn((short)2);
 		when(t.getZ()).thenReturn((short)3);
 		when(t.getW()).thenReturn((short)4);
 		
-		assertArrayEquals(new short[] {(short)1, (short)2, (short)3, (short)4}, t.getArray());
+		assertSame(array, t.toArray(array));
+		assertArrayEquals(new short[] {(short)1, (short)2, (short)3, (short)4}, array);
 		
-		verify(t).getArray();
+		verify(t).toArray(array);
 		
 		verify(t).getX();
 		verify(t).getY();

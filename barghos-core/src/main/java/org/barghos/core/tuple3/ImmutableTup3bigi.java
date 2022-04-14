@@ -70,7 +70,7 @@ public class ImmutableTup3bigi implements Tup3bigiR, FormattableToString
 	 */
 	public ImmutableTup3bigi(TupbigiR t)
 	{
-		this(t.getArray());
+		this(t.toArray());
 	}
 	
 	/**

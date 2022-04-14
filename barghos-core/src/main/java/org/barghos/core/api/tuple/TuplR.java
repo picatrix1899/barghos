@@ -31,12 +31,26 @@ public interface TuplR extends Validateable
 	long getByIndex(int index);
 	
 	/**
-	 * Returns all components of the tuple as an array.
-	 * Any modifications to the array do not alter the values in the tuple.
+	 * Returns all components of the tuple as a new array.
+	 * Any modifications to the result array will not alter the values in the tuple.
 	 * 
-	 * @return All components as an array.
+	 * @return The result array with all components in it.
 	 */
-	long[] getArray();
+	default long[] toArray()
+	{
+		return toArray(new long[getDimensions()]);
+	}
+	
+	/**
+	 * Returns all components of the tuple as the given array.
+	 * The array has to consist of as many entries as this tuple has dimensions.
+	 * Any modifications to the result array will not alter the values in the tuple.
+	 * 
+	 * @param res The result array.
+	 * 
+	 * @return The result array with all components in it.
+	 */
+	long[] toArray(long[] res);
 	
 	/**
 	 * Returns true if all components are finite and therefore not NaN or Infinity.

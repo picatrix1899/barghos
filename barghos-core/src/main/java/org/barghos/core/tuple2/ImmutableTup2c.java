@@ -64,7 +64,7 @@ public class ImmutableTup2c implements Tup2cR, FormattableToString
 	 */
 	public ImmutableTup2c(TupcR t)
 	{
-		this(t.getArray());
+		this(t.toArray());
 	}
 	
 	/**

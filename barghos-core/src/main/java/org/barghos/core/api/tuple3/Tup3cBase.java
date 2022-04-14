@@ -122,7 +122,7 @@ public interface Tup3cBase extends Tup3cR, TupcBase
 	@Override
 	default Tup3cBase set(TupcR t)
 	{
-		return setArray(t.getArray());
+		return setArray(t.toArray());
 	}
 	
 	/** {@inheritDoc} */

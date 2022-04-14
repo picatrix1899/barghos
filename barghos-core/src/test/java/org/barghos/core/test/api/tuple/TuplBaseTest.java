@@ -35,14 +35,14 @@ class TuplBaseTest
 		
 		when(t.set(t2)).thenCallRealMethod();
 		
-		when(t2.getArray()).thenReturn(new long[] {1l, 2l});
+		when(t2.toArray()).thenReturn(new long[] {1l, 2l});
 		when(t.setArray(new long[] {1l, 2l})).thenReturn(t);
 		
 		assertSame(t, t.set(t2));
 		
 		verify(t).set(t2);
 		
-		verify(t2).getArray();
+		verify(t2).toArray();
 		verify(t).setArray(new long[] {1l, 2l});
 		
 		verifyNoMoreInteractions(t);

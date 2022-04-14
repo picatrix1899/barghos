@@ -59,7 +59,7 @@ class Tup3fTest
 	{
 		TupfR original = mock(TupfR.class);
 		
-		when(original.getArray()).thenReturn(new float[] {1.0f, 2.0f, 3.0f});
+		when(original.toArray()).thenReturn(new float[] {1.0f, 2.0f, 3.0f});
 		
 		Tup3f t = new Tup3f(original);
 		
@@ -67,7 +67,7 @@ class Tup3fTest
 		assertEquals(2.0f, t.getY());
 		assertEquals(3.0f, t.getZ());
 		
-		verify(original).getArray();
+		verify(original).toArray();
 		
 		verifyNoMoreInteractions(original);
 	}

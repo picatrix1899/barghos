@@ -59,7 +59,7 @@ class Tup3boTest
 	{
 		TupboR original = mock(TupboR.class);
 		
-		when(original.getArray()).thenReturn(new boolean[] {false, true, false});
+		when(original.toArray()).thenReturn(new boolean[] {false, true, false});
 		
 		Tup3bo t = new Tup3bo(original);
 		
@@ -67,7 +67,7 @@ class Tup3boTest
 		assertEquals(true, t.getY());
 		assertEquals(false, t.getZ());
 		
-		verify(original).getArray();
+		verify(original).toArray();
 		
 		verifyNoMoreInteractions(original);
 	}

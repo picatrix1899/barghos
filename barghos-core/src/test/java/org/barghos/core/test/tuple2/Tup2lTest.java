@@ -36,14 +36,14 @@ class Tup2lTest
 	{
 		TuplR original = mock(TuplR.class);
 		
-		when(original.getArray()).thenReturn(new long[] {1l, 2l});
+		when(original.toArray()).thenReturn(new long[] {1l, 2l});
 		
 		Tup2l t = new Tup2l(original);
 		
 		assertEquals(1l, t.getX());
 		assertEquals(2l, t.getY());
 		
-		verify(original).getArray();
+		verify(original).toArray();
 		
 		verifyNoMoreInteractions(original);
 	}

@@ -110,7 +110,7 @@ public interface Tup2bigiBase extends Tup2bigiR, TupbigiBase
 	@Override
 	default Tup2bigiBase set(TupbigiR t)
 	{
-		return setArray(t.getArray());
+		return setArray(t.toArray());
 	}
 	
 	/** {@inheritDoc} */

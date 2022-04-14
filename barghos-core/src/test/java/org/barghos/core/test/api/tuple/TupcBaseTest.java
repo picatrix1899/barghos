@@ -35,14 +35,14 @@ class TupcBaseTest
 		
 		when(t.set(t2)).thenCallRealMethod();
 		
-		when(t2.getArray()).thenReturn(new char[] {'a', 'b'});
+		when(t2.toArray()).thenReturn(new char[] {'a', 'b'});
 		when(t.setArray(new char[] {'a', 'b'})).thenReturn(t);
 		
 		assertSame(t, t.set(t2));
 		
 		verify(t).set(t2);
 		
-		verify(t2).getArray();
+		verify(t2).toArray();
 		verify(t).setArray(new char[] {'a', 'b'});
 		
 		verifyNoMoreInteractions(t);

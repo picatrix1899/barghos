@@ -128,15 +128,15 @@ class Tup4iBaseTest
 		
 		when(t.set(t2)).thenCallRealMethod();
 		
-		when(t2.getArray()).thenReturn(new int[] {1, 2, 3, 4});
-		when(t.set(1, 2, 3, 4)).thenReturn(t);
+		when(t2.toArray()).thenReturn(new int[] {1, 2, 3, 4});
+		when(t.setArray(new int[] {1, 2, 3, 4})).thenReturn(t);
 
 		assertSame(t, t.set(t2));
 		
 		verify(t).set(t2);
 		
-		verify(t2).getArray();
-		verify(t).set(1, 2, 3, 4);
+		verify(t2).toArray();
+		verify(t).setArray(new int[] {1, 2, 3, 4});
 
 		verifyNoMoreInteractions(t);
 	}

@@ -90,9 +90,13 @@ public interface Tup3objR extends TupobjR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default Object[] getArray()
+	default Object[] toArray(Object[] res)
 	{
-		return new Object[] {getX(), getY(), getZ()};
+		res[COMP_X] = getX();
+		res[COMP_Y] = getY();
+		res[COMP_Z] = getZ();
+		
+		return res;
 	}
 	
 	/**

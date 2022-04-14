@@ -345,4 +345,32 @@ class TupsRTest
 		
 		verifyNoMoreInteractions(t);
 	}
+	
+	/**
+	 * This test ensures, that the function {@link TupsR#getArray()} calls
+	 * the function {@link TupsR#toArray(short[])} with a new array with the size
+	 * equal to the number of dimensions of the tuple.
+	 */
+	@Test
+	void toArrayTest()
+	{
+		TupsR t = mock(TupsR.class);
+		
+		short[] array = new short[2];
+		
+		when(t.toArray()).thenCallRealMethod();
+		when(t.getDimensions()).thenReturn(2);
+
+		when(t.toArray(new short[2])).thenReturn(array);
+		
+		assertSame(array, t.toArray());
+		
+		verify(t).toArray();
+		
+		verify(t).getDimensions();
+		
+		verify(t).toArray(new short[2]);
+		
+		verifyNoMoreInteractions(t);
+	}
 }

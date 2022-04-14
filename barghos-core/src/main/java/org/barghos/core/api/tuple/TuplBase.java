@@ -28,7 +28,7 @@ public interface TuplBase extends TuplR, Cloneable
 	 */
 	default TuplBase set(TuplR t)
 	{
-		return setArray(t.getArray());
+		return setArray(t.toArray());
 	}
 	
 	/**

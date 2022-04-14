@@ -73,9 +73,12 @@ public interface Tup2boR extends TupboR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default boolean[] getArray()
+	default boolean[] toArray(boolean[] res)
 	{
-		return new boolean[] {getX(), getY()};
+		res[COMP_X] = getX();
+		res[COMP_Y] = getY();
+		
+		return res;
 	}
 	
 	/**

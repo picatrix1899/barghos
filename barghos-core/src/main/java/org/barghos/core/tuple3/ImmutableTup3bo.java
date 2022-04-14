@@ -69,7 +69,7 @@ public class ImmutableTup3bo implements Tup3boR, FormattableToString
 	 */
 	public ImmutableTup3bo(TupboR t)
 	{
-		this(t.getArray());
+		this(t.toArray());
 	}
 	
 	/**

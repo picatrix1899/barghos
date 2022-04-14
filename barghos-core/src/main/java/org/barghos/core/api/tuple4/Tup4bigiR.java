@@ -121,9 +121,14 @@ public interface Tup4bigiR extends TupbigiR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default BigInteger[] getArray()
+	default BigInteger[] toArray(BigInteger[] res)
 	{
-		return new BigInteger[] {getX(), getY(), getZ(), getW()};
+		res[COMP_X] = getX();
+		res[COMP_Y] = getY();
+		res[COMP_Z] = getZ();
+		res[COMP_W] = getW();
+		
+		return res;
 	}
 	
 	/**

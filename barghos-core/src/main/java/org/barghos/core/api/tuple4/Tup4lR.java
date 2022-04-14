@@ -109,9 +109,14 @@ public interface Tup4lR extends TuplR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default long[] getArray()
+	default long[] toArray(long[] res)
 	{
-		return new long[] {getX(), getY(), getZ(), getW()};
+		res[COMP_X] = getX();
+		res[COMP_Y] = getY();
+		res[COMP_Z] = getZ();
+		res[COMP_W] = getW();
+		
+		return res;
 	}
 	
 	/**

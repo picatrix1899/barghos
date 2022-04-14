@@ -60,7 +60,7 @@ class Tup4lTest
 	{
 		TuplR original = mock(TuplR.class);
 		
-		when(original.getArray()).thenReturn(new long[] {1l, 2l, 3l, 4l});
+		when(original.toArray()).thenReturn(new long[] {1l, 2l, 3l, 4l});
 		
 		Tup4l t = new Tup4l(original);
 		
@@ -69,7 +69,7 @@ class Tup4lTest
 		assertEquals(3l, t.getZ());
 		assertEquals(4l, t.getW());
 		
-		verify(original).getArray();
+		verify(original).toArray();
 		
 		verifyNoMoreInteractions(original);
 	}

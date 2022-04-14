@@ -5,6 +5,7 @@ import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
+
 import org.barghos.core.api.tuple.TupcBase;
 import org.barghos.core.api.tuple.TupcR;
 import org.barghos.core.api.tuple2.Tup2cBase;
@@ -138,38 +139,16 @@ class Tup2cBaseTest
 		
 		when(t.set(t2)).thenCallRealMethod();
 		
-		when(t2.getArray()).thenReturn(new char[] {'a', 'b'});
-		when(t.set('a', 'b')).thenReturn(t);
+		when(t2.toArray()).thenReturn(new char[] {'a', 'b'});
+		when(t.setArray(new char[] {'a', 'b'})).thenReturn(t);
 
 		assertSame(t, t.set(t2));
 		
 		verify(t).set(t2);
 		
-		verify(t2).getArray();
-		verify(t).set('a', 'b');
-
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup2cBase#setArray(char[])} adopts the
-	 * values and returns the current instance.
-	 */
-	@Test
-	void setArrayTest()
-	{
-		Tup2cBase t = mock(Tup2cBase.class);
-		
-		when(t.setArray(new char[] {'a', 'b'})).thenCallRealMethod();
-		
-		when(t.set('a', 'b')).thenReturn(t);
-		
-		assertSame(t, t.setArray(new char[] {'a', 'b'}));
-		
+		verify(t2).toArray();
 		verify(t).setArray(new char[] {'a', 'b'});
-		
-		verify(t).set('a', 'b');
-		
+
 		verifyNoMoreInteractions(t);
 	}
 	

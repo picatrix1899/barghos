@@ -99,9 +99,12 @@ public interface Tup2lR extends TuplR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default long[] getArray()
+	default long[] toArray(long[] res)
 	{
-		return new long[] {getX(), getY()};
+		res[COMP_X] = getX();
+		res[COMP_Y] = getY();
+		
+		return res;
 	}
 	
 	/**

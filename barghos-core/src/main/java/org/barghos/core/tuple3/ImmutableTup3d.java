@@ -69,7 +69,7 @@ public class ImmutableTup3d implements Tup3dR, FormattableToString
 	 */
 	public ImmutableTup3d(TupdR t)
 	{
-		this(t.getArray());
+		this(t.toArray());
 	}
 	
 	/**

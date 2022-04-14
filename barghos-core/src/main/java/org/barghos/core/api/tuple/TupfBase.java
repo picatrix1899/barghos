@@ -28,7 +28,7 @@ public interface TupfBase extends TupfR, Cloneable
 	 */
 	default TupfBase set(TupfR t)
 	{
-		return setArray(t.getArray());
+		return setArray(t.toArray());
 	}
 	
 	/**

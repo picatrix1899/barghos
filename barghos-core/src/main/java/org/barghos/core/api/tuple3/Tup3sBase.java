@@ -119,7 +119,7 @@ public interface Tup3sBase extends Tup3sR, TupsBase
 	@Override
 	default Tup3sBase set(TupsR t)
 	{
-		return setArray(t.getArray());
+		return setArray(t.toArray());
 	}
 	
 	/** {@inheritDoc} */

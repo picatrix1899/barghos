@@ -109,9 +109,14 @@ public interface Tup4bR extends TupbR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default byte[] getArray()
+	default byte[] toArray(byte[] res)
 	{
-		return new byte[] {getX(), getY(), getZ(), getW()};
+		res[COMP_X] = getX();
+		res[COMP_Y] = getY();
+		res[COMP_Z] = getZ();
+		res[COMP_W] = getW();
+		
+		return res;
 	}
 	
 	/**

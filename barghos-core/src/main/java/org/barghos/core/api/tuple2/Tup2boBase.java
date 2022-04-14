@@ -108,7 +108,7 @@ public interface Tup2boBase extends Tup2boR, TupboBase
 	@Override
 	default Tup2boBase set(TupboR t)
 	{
-		return setArray(t.getArray());
+		return setArray(t.toArray());
 	}
 	
 	/** {@inheritDoc} */

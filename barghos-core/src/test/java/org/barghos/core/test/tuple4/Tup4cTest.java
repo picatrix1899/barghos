@@ -60,7 +60,7 @@ class Tup4cTest
 	{
 		TupcR original = mock(TupcR.class);
 		
-		when(original.getArray()).thenReturn(new char[] {'a', 'b', 'c', 'd'});
+		when(original.toArray()).thenReturn(new char[] {'a', 'b', 'c', 'd'});
 		
 		Tup4c t = new Tup4c(original);
 		
@@ -69,7 +69,7 @@ class Tup4cTest
 		assertEquals('c', t.getZ());
 		assertEquals('d', t.getW());
 		
-		verify(original).getArray();
+		verify(original).toArray();
 		
 		verifyNoMoreInteractions(original);
 	}

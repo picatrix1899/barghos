@@ -466,24 +466,27 @@ class Tup4bRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4bR#getArray()} returns
-	 * an array with the components in the right order.
+	 * This test ensures, that the function {@link Tup4bR#getArray(byte[])} returns
+	 * the given array with the components in the right order.
 	 */
 	@Test
-	void getArrayTest()
+	void toArray_QueryTest()
 	{
 		Tup4bR t = mock(Tup4bR.class);
 		
-		when(t.getArray()).thenCallRealMethod();
+		byte[] array = new byte[4];
+		
+		when(t.toArray(array)).thenCallRealMethod();
 		
 		when(t.getX()).thenReturn((byte)1);
 		when(t.getY()).thenReturn((byte)2);
 		when(t.getZ()).thenReturn((byte)3);
 		when(t.getW()).thenReturn((byte)4);
 		
-		assertArrayEquals(new byte[] {(byte)1, (byte)2, (byte)3, (byte)4}, t.getArray());
+		assertSame(array, t.toArray(array));
+		assertArrayEquals(new byte[] {(byte)1, (byte)2, (byte)3, (byte)4}, array);
 		
-		verify(t).getArray();
+		verify(t).toArray(array);
 		
 		verify(t).getX();
 		verify(t).getY();

@@ -5,6 +5,7 @@ import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
+
 import org.barghos.core.api.tuple.TupiBase;
 import org.barghos.core.api.tuple.TupiR;
 import org.barghos.core.api.tuple2.Tup2iBase;
@@ -120,38 +121,16 @@ class Tup2iBaseTest
 		
 		when(t.set(t2)).thenCallRealMethod();
 		
-		when(t2.getArray()).thenReturn(new int[] {1, 2});
-		when(t.set(1, 2)).thenReturn(t);
+		when(t2.toArray()).thenReturn(new int[] {1, 2});
+		when(t.setArray(new int[] {1, 2})).thenReturn(t);
 
 		assertSame(t, t.set(t2));
 		
 		verify(t).set(t2);
 		
-		verify(t2).getArray();
-		verify(t).set(1, 2);
-
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup2iBase#setArray(int[])} adopts the
-	 * values and returns the current instance.
-	 */
-	@Test
-	void setArrayTest()
-	{
-		Tup2iBase t = mock(Tup2iBase.class);
-		
-		when(t.setArray(new int[] {1, 2})).thenCallRealMethod();
-		
-		when(t.set(1, 2)).thenReturn(t);
-		
-		assertSame(t, t.setArray(new int[] {1, 2}));
-		
+		verify(t2).toArray();
 		verify(t).setArray(new int[] {1, 2});
-		
-		verify(t).set(1, 2);
-		
+
 		verifyNoMoreInteractions(t);
 	}
 	

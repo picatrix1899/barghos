@@ -28,7 +28,7 @@ public interface TupstrBase extends TupstrR, Cloneable
 	 */
 	default TupstrBase set(TupstrR t)
 	{
-		return setArray(t.getArray());
+		return setArray(t.toArray());
 	}
 	
 	/**

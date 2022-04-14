@@ -36,14 +36,14 @@ class Tup2strTest
 	{
 		TupstrR original = mock(TupstrR.class);
 		
-		when(original.getArray()).thenReturn(new String[] {"a", "b"});
+		when(original.toArray()).thenReturn(new String[] {"a", "b"});
 		
 		Tup2str t = new Tup2str(original);
 		
 		assertEquals("a", t.getX());
 		assertEquals("b", t.getY());
 		
-		verify(original).getArray();
+		verify(original).toArray();
 		
 		verifyNoMoreInteractions(original);
 	}

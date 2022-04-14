@@ -69,7 +69,7 @@ public class ImmutableTup3obj implements Tup3objR, FormattableToString
 	 */
 	public ImmutableTup3obj(TupobjR t)
 	{
-		this(t.getArray());
+		this(t.toArray());
 	}
 	
 	/**

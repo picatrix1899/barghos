@@ -74,7 +74,7 @@ public class ImmutableTup4f implements Tup4fR, FormattableToString
 	 */
 	public ImmutableTup4f(TupfR t)
 	{
-		this(t.getArray());
+		this(t.toArray());
 	}
 	
 	/**

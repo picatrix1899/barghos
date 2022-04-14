@@ -59,7 +59,7 @@ class Tup3cTest
 	{
 		TupcR original = mock(TupcR.class);
 		
-		when(original.getArray()).thenReturn(new char[] {'a', 'b', 'c'});
+		when(original.toArray()).thenReturn(new char[] {'a', 'b', 'c'});
 		
 		Tup3c t = new Tup3c(original);
 		
@@ -67,7 +67,7 @@ class Tup3cTest
 		assertEquals('b', t.getY());
 		assertEquals('c', t.getZ());
 		
-		verify(original).getArray();
+		verify(original).toArray();
 		
 		verifyNoMoreInteractions(original);
 	}

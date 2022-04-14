@@ -74,7 +74,7 @@ class ImmutableTup3bigiTest
 	{
 		TupbigiR original = mock(TupbigiR.class);
 		
-		when(original.getArray()).thenReturn(new BigInteger[] {BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3)});
+		when(original.toArray()).thenReturn(new BigInteger[] {BigInteger.valueOf(1), BigInteger.valueOf(2), BigInteger.valueOf(3)});
 		
 		ImmutableTup3bigi t = new ImmutableTup3bigi(original);
 		
@@ -82,7 +82,7 @@ class ImmutableTup3bigiTest
 		assertEquals(BigInteger.valueOf(2), t.getY());
 		assertEquals(BigInteger.valueOf(3), t.getZ());
 		
-		verify(original).getArray();
+		verify(original).toArray();
 		
 		verifyNoMoreInteractions(original);
 	}

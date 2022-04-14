@@ -562,4 +562,32 @@ class TupfRTest
 		
 		verifyNoMoreInteractions(t);
 	}
+	
+	/**
+	 * This test ensures, that the function {@link TupfR#getArray()} calls
+	 * the function {@link TupfR#toArray(float[])} with a new array with the size
+	 * equal to the number of dimensions of the tuple.
+	 */
+	@Test
+	void toArrayTest()
+	{
+		TupfR t = mock(TupfR.class);
+		
+		float[] array = new float[2];
+		
+		when(t.toArray()).thenCallRealMethod();
+		when(t.getDimensions()).thenReturn(2);
+
+		when(t.toArray(new float[2])).thenReturn(array);
+		
+		assertSame(array, t.toArray());
+		
+		verify(t).toArray();
+		
+		verify(t).getDimensions();
+		
+		verify(t).toArray(new float[2]);
+		
+		verifyNoMoreInteractions(t);
+	}
 }

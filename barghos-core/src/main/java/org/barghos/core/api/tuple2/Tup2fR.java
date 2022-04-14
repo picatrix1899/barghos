@@ -97,9 +97,12 @@ public interface Tup2fR extends TupfR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default float[] getArray()
+	default float[] toArray(float[] res)
 	{
-		return new float[] {getX(), getY()};
+		res[COMP_X] = getX();
+		res[COMP_Y] = getY();
+		
+		return res;
 	}
 	
 	/**

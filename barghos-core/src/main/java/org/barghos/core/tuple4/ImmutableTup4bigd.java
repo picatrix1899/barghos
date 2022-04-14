@@ -75,7 +75,7 @@ public class ImmutableTup4bigd implements Tup4bigdR, FormattableToString
 	 */
 	public ImmutableTup4bigd(TupbigdR t)
 	{
-		this(t.getArray());
+		this(t.toArray());
 	}
 	
 	/**

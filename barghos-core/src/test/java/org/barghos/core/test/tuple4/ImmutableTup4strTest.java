@@ -72,7 +72,7 @@ class ImmutableTup4strTest
 	{
 		TupstrR original = mock(TupstrR.class);
 		
-		when(original.getArray()).thenReturn(new String[] {"a", "b", "c", "d"});
+		when(original.toArray()).thenReturn(new String[] {"a", "b", "c", "d"});
 		
 		ImmutableTup4str t = new ImmutableTup4str(original);
 		
@@ -81,7 +81,7 @@ class ImmutableTup4strTest
 		assertEquals("c", t.getZ());
 		assertEquals("d", t.getW());
 		
-		verify(original).getArray();
+		verify(original).toArray();
 		
 		verifyNoMoreInteractions(original);
 	}

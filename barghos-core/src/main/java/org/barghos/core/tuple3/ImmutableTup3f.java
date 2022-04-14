@@ -69,7 +69,7 @@ public class ImmutableTup3f implements Tup3fR, FormattableToString
 	 */
 	public ImmutableTup3f(TupfR t)
 	{
-		this(t.getArray());
+		this(t.toArray());
 	}
 	
 	/**
