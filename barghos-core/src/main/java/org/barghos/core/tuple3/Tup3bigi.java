@@ -29,7 +29,7 @@ import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupbigiR;
-import org.barghos.core.api.tuple3.Tup3bigiBase;
+import org.barghos.core.api.tuple3.Tup3bigiC;
 import org.barghos.core.api.tuple3.Tup3bigiR;
 
 /**
@@ -39,7 +39,7 @@ import org.barghos.core.api.tuple3.Tup3bigiR;
  * 
  * @author picatrix1899
  */
-public class Tup3bigi implements Tup3bigiBase, Serializable, FormattableToString
+public class Tup3bigi implements Tup3bigiC, Serializable, FormattableToString
 {
 	/**
 	 * The class version for serialization.
@@ -266,20 +266,20 @@ public class Tup3bigi implements Tup3bigiBase, Serializable, FormattableToString
 	@Override
 	public Tup3bigi set(TupbigiR t)
 	{
-		return (Tup3bigi)Tup3bigiBase.super.set(t);
+		return (Tup3bigi)Tup3bigiC.super.set(t);
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup3bigi setArray(BigInteger... values)
 	{
-		return (Tup3bigi)Tup3bigiBase.super.setArray(values);
+		return (Tup3bigi)Tup3bigiC.super.setArray(values);
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup3bigi setByIndex(int index, BigInteger value)
 	{
-		return (Tup3bigi)Tup3bigiBase.super.setByIndex(index, value);
+		return (Tup3bigi)Tup3bigiC.super.setByIndex(index, value);
 	}
 }

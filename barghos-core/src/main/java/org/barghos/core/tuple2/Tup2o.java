@@ -26,7 +26,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
-import org.barghos.core.api.tuple2.Tup2oBase;
+import org.barghos.core.api.tuple2.Tup2oC;
 import org.barghos.core.api.tuple2.Tup2oR;
 
 /**
@@ -36,7 +36,7 @@ import org.barghos.core.api.tuple2.Tup2oR;
  * 
  * @author picatrix1899
  */
-public class Tup2o<X,Y> implements Tup2oBase<X,Y>, FormattableToString
+public class Tup2o<X,Y> implements Tup2oC<X,Y>, FormattableToString
 {
 	/**
 	 * The x component.
@@ -112,14 +112,14 @@ public class Tup2o<X,Y> implements Tup2oBase<X,Y>, FormattableToString
 	@Override
 	public Tup2o<X,Y> set(Tup2oR<X,Y> t)
 	{
-		return (Tup2o<X,Y>)Tup2oBase.super.set(t);
+		return (Tup2o<X,Y>)Tup2oC.super.set(t);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public Tup2o<X,Y> set(X x, Y y)
 	{
-		return (Tup2o<X,Y>)Tup2oBase.super.set(x, y);
+		return (Tup2o<X,Y>)Tup2oC.super.set(x, y);
 	}
 	
 	/** {@inheritDoc} */

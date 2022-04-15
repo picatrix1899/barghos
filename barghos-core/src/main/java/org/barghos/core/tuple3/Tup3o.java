@@ -23,7 +23,7 @@
 package org.barghos.core.tuple3;
 
 import org.barghos.core.api.formatting.FormattableToString;
-import org.barghos.core.api.tuple3.Tup3oBase;
+import org.barghos.core.api.tuple3.Tup3oC;
 import org.barghos.core.api.tuple3.Tup3oR;
 
 import java.util.LinkedHashMap;
@@ -36,7 +36,7 @@ import java.util.Map;
  * 
  * @author picatrix1899
  */
-public class Tup3o<X,Y,Z> implements Tup3oBase<X,Y,Z>, FormattableToString
+public class Tup3o<X,Y,Z> implements Tup3oC<X,Y,Z>, FormattableToString
 {
 	/**
 	 * The x component.

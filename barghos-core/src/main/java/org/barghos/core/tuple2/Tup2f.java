@@ -28,7 +28,7 @@ import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupfR;
-import org.barghos.core.api.tuple2.Tup2fBase;
+import org.barghos.core.api.tuple2.Tup2fC;
 import org.barghos.core.api.tuple2.Tup2fR;
 
 /**
@@ -38,7 +38,7 @@ import org.barghos.core.api.tuple2.Tup2fR;
  * 
  * @author picatrix1899
  */
-public class Tup2f implements Tup2fBase, Serializable, FormattableToString
+public class Tup2f implements Tup2fC, Serializable, FormattableToString
 {
 	/**
 	 * The class version for serialization.
@@ -150,21 +150,21 @@ public class Tup2f implements Tup2fBase, Serializable, FormattableToString
 	@Override
 	public Tup2f set(Tup2fR t)
 	{
-		return (Tup2f)Tup2fBase.super.set(t);
+		return (Tup2f)Tup2fC.super.set(t);
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup2f set(float value)
 	{
-		return (Tup2f)Tup2fBase.super.set(value);
+		return (Tup2f)Tup2fC.super.set(value);
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup2f set(float x, float y)
 	{
-		return (Tup2f)Tup2fBase.super.set(x, y);
+		return (Tup2f)Tup2fC.super.set(x, y);
 	}
 	
 	/** {@inheritDoc}} */
@@ -236,20 +236,20 @@ public class Tup2f implements Tup2fBase, Serializable, FormattableToString
 	@Override
 	public Tup2f set(TupfR t)
 	{
-		return (Tup2f)Tup2fBase.super.set(t);
+		return (Tup2f)Tup2fC.super.set(t);
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup2f setArray(float... values)
 	{
-		return (Tup2f)Tup2fBase.super.setArray(values);
+		return (Tup2f)Tup2fC.super.setArray(values);
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup2f setByIndex(int index, float value)
 	{
-		return (Tup2f)Tup2fBase.super.setByIndex(index, value);
+		return (Tup2f)Tup2fC.super.setByIndex(index, value);
 	}
 }

@@ -28,7 +28,7 @@ import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupboR;
-import org.barghos.core.api.tuple4.Tup4boBase;
+import org.barghos.core.api.tuple4.Tup4boC;
 import org.barghos.core.api.tuple4.Tup4boR;
 
 /**
@@ -38,7 +38,7 @@ import org.barghos.core.api.tuple4.Tup4boR;
  * 
  * @author picatrix1899
  */
-public class Tup4bo implements Tup4boBase, Serializable, FormattableToString
+public class Tup4bo implements Tup4boC, Serializable, FormattableToString
 {
 	/**
 	 * The class version for serialization.
@@ -288,20 +288,20 @@ public class Tup4bo implements Tup4boBase, Serializable, FormattableToString
 	@Override
 	public Tup4bo set(TupboR t)
 	{
-		return (Tup4bo)Tup4boBase.super.set(t);
+		return (Tup4bo)Tup4boC.super.set(t);
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup4bo setArray(boolean... values)
 	{
-		return (Tup4bo)Tup4boBase.super.setArray(values);
+		return (Tup4bo)Tup4boC.super.setArray(values);
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup4bo setByIndex(int index, boolean value)
 	{
-		return (Tup4bo)Tup4boBase.super.setByIndex(index, value);
+		return (Tup4bo)Tup4boC.super.setByIndex(index, value);
 	}
 }

@@ -29,7 +29,7 @@ import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupbigdR;
-import org.barghos.core.api.tuple4.Tup4bigdBase;
+import org.barghos.core.api.tuple4.Tup4bigdC;
 import org.barghos.core.api.tuple4.Tup4bigdR;
 
 /**
@@ -39,7 +39,7 @@ import org.barghos.core.api.tuple4.Tup4bigdR;
  * 
  * @author picatrix1899
  */
-public class Tup4bigd implements Tup4bigdBase, Serializable, FormattableToString
+public class Tup4bigd implements Tup4bigdC, Serializable, FormattableToString
 {
 	/**
 	 * The class version for serialization.
@@ -293,20 +293,20 @@ public class Tup4bigd implements Tup4bigdBase, Serializable, FormattableToString
 	@Override
 	public Tup4bigd set(TupbigdR t)
 	{
-		return (Tup4bigd)Tup4bigdBase.super.set(t);
+		return (Tup4bigd)Tup4bigdC.super.set(t);
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup4bigd setArray(BigDecimal... values)
 	{
-		return (Tup4bigd)Tup4bigdBase.super.setArray(values);
+		return (Tup4bigd)Tup4bigdC.super.setArray(values);
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup4bigd setByIndex(int index, BigDecimal value)
 	{
-		return (Tup4bigd)Tup4bigdBase.super.setByIndex(index, value);
+		return (Tup4bigd)Tup4bigdC.super.setByIndex(index, value);
 	}
 }

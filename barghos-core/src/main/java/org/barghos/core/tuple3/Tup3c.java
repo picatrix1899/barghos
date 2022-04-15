@@ -28,7 +28,7 @@ import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupcR;
-import org.barghos.core.api.tuple3.Tup3cBase;
+import org.barghos.core.api.tuple3.Tup3cC;
 import org.barghos.core.api.tuple3.Tup3cR;
 
 /**
@@ -38,7 +38,7 @@ import org.barghos.core.api.tuple3.Tup3cR;
  * 
  * @author picatrix1899
  */
-public class Tup3c implements Tup3cBase, Serializable, FormattableToString
+public class Tup3c implements Tup3cC, Serializable, FormattableToString
 {
 	/**
 	 * The class version for serialization.
@@ -264,20 +264,20 @@ public class Tup3c implements Tup3cBase, Serializable, FormattableToString
 	@Override
 	public Tup3c set(TupcR t)
 	{
-		return (Tup3c)Tup3cBase.super.set(t);
+		return (Tup3c)Tup3cC.super.set(t);
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup3c setArray(char... values)
 	{
-		return (Tup3c)Tup3cBase.super.setArray(values);
+		return (Tup3c)Tup3cC.super.setArray(values);
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup3c setByIndex(int index, char value)
 	{
-		return (Tup3c)Tup3cBase.super.setByIndex(index, value);
+		return (Tup3c)Tup3cC.super.setByIndex(index, value);
 	}
 }

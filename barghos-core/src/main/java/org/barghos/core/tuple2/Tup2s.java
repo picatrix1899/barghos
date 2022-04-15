@@ -28,7 +28,7 @@ import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupsR;
-import org.barghos.core.api.tuple2.Tup2sBase;
+import org.barghos.core.api.tuple2.Tup2sC;
 import org.barghos.core.api.tuple2.Tup2sR;
 
 /**
@@ -38,7 +38,7 @@ import org.barghos.core.api.tuple2.Tup2sR;
  * 
  * @author picatrix1899
  */
-public class Tup2s implements Tup2sBase, Serializable, FormattableToString
+public class Tup2s implements Tup2sC, Serializable, FormattableToString
 {
 	/**
 	 * The class version for serialization.
@@ -150,21 +150,21 @@ public class Tup2s implements Tup2sBase, Serializable, FormattableToString
 	@Override
 	public Tup2s set(Tup2sR t)
 	{
-		return (Tup2s)Tup2sBase.super.set(t);
+		return (Tup2s)Tup2sC.super.set(t);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public Tup2s set(short value)
 	{
-		return (Tup2s)Tup2sBase.super.set(value);
+		return (Tup2s)Tup2sC.super.set(value);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public Tup2s set(short x, short y)
 	{
-		return (Tup2s)Tup2sBase.super.set(x, y);
+		return (Tup2s)Tup2sC.super.set(x, y);
 	}
 	
 	/** {@inheritDoc} */
@@ -236,20 +236,20 @@ public class Tup2s implements Tup2sBase, Serializable, FormattableToString
 	@Override
 	public Tup2s set(TupsR t)
 	{
-		return (Tup2s)Tup2sBase.super.set(t);
+		return (Tup2s)Tup2sC.super.set(t);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public Tup2s setArray(short... values)
 	{
-		return (Tup2s)Tup2sBase.super.setArray(values);
+		return (Tup2s)Tup2sC.super.setArray(values);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public Tup2s setByIndex(int index, short value)
 	{
-		return (Tup2s)Tup2sBase.super.setByIndex(index, value);
+		return (Tup2s)Tup2sC.super.setByIndex(index, value);
 	}
 }

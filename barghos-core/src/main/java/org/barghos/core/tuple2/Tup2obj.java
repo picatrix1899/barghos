@@ -28,7 +28,7 @@ import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupobjR;
-import org.barghos.core.api.tuple2.Tup2objBase;
+import org.barghos.core.api.tuple2.Tup2objC;
 import org.barghos.core.api.tuple2.Tup2objR;
 
 /**
@@ -38,7 +38,7 @@ import org.barghos.core.api.tuple2.Tup2objR;
  * 
  * @author picatrix1899
  */
-public class Tup2obj implements Tup2objBase, Serializable, FormattableToString
+public class Tup2obj implements Tup2objC, Serializable, FormattableToString
 {
 	/**
 	 * The class version for serialization.
@@ -149,21 +149,21 @@ public class Tup2obj implements Tup2objBase, Serializable, FormattableToString
 	@Override
 	public Tup2obj set(Tup2objR t)
 	{
-		return (Tup2obj)Tup2objBase.super.set(t);
+		return (Tup2obj)Tup2objC.super.set(t);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public Tup2obj set(Object value)
 	{
-		return (Tup2obj)Tup2objBase.super.set(value);
+		return (Tup2obj)Tup2objC.super.set(value);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public Tup2obj set(Object x, Object y)
 	{
-		return (Tup2obj)Tup2objBase.super.set(x, y);
+		return (Tup2obj)Tup2objC.super.set(x, y);
 	}
 	
 	/** {@inheritDoc} */
@@ -235,20 +235,20 @@ public class Tup2obj implements Tup2objBase, Serializable, FormattableToString
 	@Override
 	public Tup2obj set(TupobjR t)
 	{
-		return (Tup2obj)Tup2objBase.super.set(t);
+		return (Tup2obj)Tup2objC.super.set(t);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public Tup2obj setArray(Object... values)
 	{
-		return (Tup2obj)Tup2objBase.super.setArray(values);
+		return (Tup2obj)Tup2objC.super.setArray(values);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public Tup2obj setByIndex(int index, Object value)
 	{
-		return (Tup2obj)Tup2objBase.super.setByIndex(index, value);
+		return (Tup2obj)Tup2objC.super.setByIndex(index, value);
 	}
 }

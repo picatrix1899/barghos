@@ -26,7 +26,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
-import org.barghos.core.api.tuple4.Tup4oBase;
+import org.barghos.core.api.tuple4.Tup4oC;
 import org.barghos.core.api.tuple4.Tup4oR;
 
 /**
@@ -36,7 +36,7 @@ import org.barghos.core.api.tuple4.Tup4oR;
  * 
  * @author picatrix1899
  */
-public class Tup4o<X,Y,Z,W> implements Tup4oBase<X,Y,Z,W>, FormattableToString
+public class Tup4o<X,Y,Z,W> implements Tup4oC<X,Y,Z,W>, FormattableToString
 {
 	/**
 	 * The x component.

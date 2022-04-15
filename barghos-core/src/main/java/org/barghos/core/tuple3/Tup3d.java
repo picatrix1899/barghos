@@ -28,7 +28,7 @@ import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupdR;
-import org.barghos.core.api.tuple3.Tup3dBase;
+import org.barghos.core.api.tuple3.Tup3dC;
 import org.barghos.core.api.tuple3.Tup3dR;
 
 /**
@@ -38,7 +38,7 @@ import org.barghos.core.api.tuple3.Tup3dR;
  * 
  * @author picatrix1899
  */
-public class Tup3d implements Tup3dBase, Serializable, FormattableToString
+public class Tup3d implements Tup3dC, Serializable, FormattableToString
 {
 	/**
 	 * The class version for serialization.
@@ -267,20 +267,20 @@ public class Tup3d implements Tup3dBase, Serializable, FormattableToString
 	@Override
 	public Tup3d set(TupdR t)
 	{
-		return (Tup3d)Tup3dBase.super.set(t);
+		return (Tup3d)Tup3dC.super.set(t);
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup3d setArray(double... values)
 	{
-		return (Tup3d)Tup3dBase.super.setArray(values);
+		return (Tup3d)Tup3dC.super.setArray(values);
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup3d setByIndex(int index, double value)
 	{
-		return (Tup3d)Tup3dBase.super.setByIndex(index, value);
+		return (Tup3d)Tup3dC.super.setByIndex(index, value);
 	}
 }

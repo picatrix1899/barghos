@@ -29,7 +29,7 @@ import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupbigdR;
-import org.barghos.core.api.tuple2.Tup2bigdBase;
+import org.barghos.core.api.tuple2.Tup2bigdC;
 import org.barghos.core.api.tuple2.Tup2bigdR;
 
 /**
@@ -39,7 +39,7 @@ import org.barghos.core.api.tuple2.Tup2bigdR;
  * 
  * @author picatrix1899
  */
-public class Tup2bigd implements Tup2bigdBase, Serializable, FormattableToString
+public class Tup2bigd implements Tup2bigdC, Serializable, FormattableToString
 {
 	/**
 	 * The class version for serialization.
@@ -153,21 +153,21 @@ public class Tup2bigd implements Tup2bigdBase, Serializable, FormattableToString
 	@Override
 	public Tup2bigd set(Tup2bigdR t)
 	{
-		return (Tup2bigd)Tup2bigdBase.super.set(t);
+		return (Tup2bigd)Tup2bigdC.super.set(t);
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup2bigd set(BigDecimal value)
 	{
-		return (Tup2bigd)Tup2bigdBase.super.set(value);
+		return (Tup2bigd)Tup2bigdC.super.set(value);
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup2bigd set(BigDecimal x, BigDecimal y)
 	{
-		return (Tup2bigd)Tup2bigdBase.super.set(x, y);
+		return (Tup2bigd)Tup2bigdC.super.set(x, y);
 	}
 	
 	/** {@inheritDoc}} */
@@ -239,20 +239,20 @@ public class Tup2bigd implements Tup2bigdBase, Serializable, FormattableToString
 	@Override
 	public Tup2bigd set(TupbigdR t)
 	{
-		return (Tup2bigd)Tup2bigdBase.super.set(t);
+		return (Tup2bigd)Tup2bigdC.super.set(t);
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup2bigd setArray(BigDecimal... values)
 	{
-		return (Tup2bigd)Tup2bigdBase.super.setArray(values);
+		return (Tup2bigd)Tup2bigdC.super.setArray(values);
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup2bigd setByIndex(int index, BigDecimal value)
 	{
-		return (Tup2bigd)Tup2bigdBase.super.setByIndex(index, value);
+		return (Tup2bigd)Tup2bigdC.super.setByIndex(index, value);
 	}
 }

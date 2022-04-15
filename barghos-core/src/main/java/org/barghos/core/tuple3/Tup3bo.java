@@ -28,7 +28,7 @@ import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupboR;
-import org.barghos.core.api.tuple3.Tup3boBase;
+import org.barghos.core.api.tuple3.Tup3boC;
 import org.barghos.core.api.tuple3.Tup3boR;
 
 /**
@@ -38,7 +38,7 @@ import org.barghos.core.api.tuple3.Tup3boR;
  * 
  * @author picatrix1899
  */
-public class Tup3bo implements Tup3boBase, Serializable, FormattableToString
+public class Tup3bo implements Tup3boC, Serializable, FormattableToString
 {
 	/**
 	 * The class version for serialization.
@@ -262,20 +262,20 @@ public class Tup3bo implements Tup3boBase, Serializable, FormattableToString
 	@Override
 	public Tup3bo set(TupboR t)
 	{
-		return (Tup3bo)Tup3boBase.super.set(t);
+		return (Tup3bo)Tup3boC.super.set(t);
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup3bo setArray(boolean... values)
 	{
-		return (Tup3bo)Tup3boBase.super.setArray(values);
+		return (Tup3bo)Tup3boC.super.setArray(values);
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup3bo setByIndex(int index, boolean value)
 	{
-		return (Tup3bo)Tup3boBase.super.setByIndex(index, value);
+		return (Tup3bo)Tup3boC.super.setByIndex(index, value);
 	}
 }

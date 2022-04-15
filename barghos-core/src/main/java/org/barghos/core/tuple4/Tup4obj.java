@@ -28,7 +28,7 @@ import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupobjR;
-import org.barghos.core.api.tuple4.Tup4objBase;
+import org.barghos.core.api.tuple4.Tup4objC;
 import org.barghos.core.api.tuple4.Tup4objR;
 
 /**
@@ -38,7 +38,7 @@ import org.barghos.core.api.tuple4.Tup4objR;
  * 
  * @author picatrix1899
  */
-public class Tup4obj implements Tup4objBase, Serializable, FormattableToString
+public class Tup4obj implements Tup4objC, Serializable, FormattableToString
 {
 	/**
 	 * The class version for serialization.
@@ -289,20 +289,20 @@ public class Tup4obj implements Tup4objBase, Serializable, FormattableToString
 	@Override
 	public Tup4obj set(TupobjR t)
 	{
-		return (Tup4obj)Tup4objBase.super.set(t);
+		return (Tup4obj)Tup4objC.super.set(t);
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup4obj setArray(Object... values)
 	{
-		return (Tup4obj)Tup4objBase.super.setArray(values);
+		return (Tup4obj)Tup4objC.super.setArray(values);
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup4obj setByIndex(int index, Object value)
 	{
-		return (Tup4obj)Tup4objBase.super.setByIndex(index, value);
+		return (Tup4obj)Tup4objC.super.setByIndex(index, value);
 	}
 }

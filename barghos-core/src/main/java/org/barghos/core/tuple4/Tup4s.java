@@ -28,7 +28,7 @@ import java.util.Map;
 
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupsR;
-import org.barghos.core.api.tuple4.Tup4sBase;
+import org.barghos.core.api.tuple4.Tup4sC;
 import org.barghos.core.api.tuple4.Tup4sR;
 
 /**
@@ -38,7 +38,7 @@ import org.barghos.core.api.tuple4.Tup4sR;
  * 
  * @author picatrix1899
  */
-public class Tup4s implements Tup4sBase, Serializable, FormattableToString
+public class Tup4s implements Tup4sC, Serializable, FormattableToString
 {
 	/**
 	 * The class version for serialization.
@@ -288,20 +288,20 @@ public class Tup4s implements Tup4sBase, Serializable, FormattableToString
 	@Override
 	public Tup4s set(TupsR t)
 	{
-		return (Tup4s)Tup4sBase.super.set(t);
+		return (Tup4s)Tup4sC.super.set(t);
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup4s setArray(short... values)
 	{
-		return (Tup4s)Tup4sBase.super.setArray(values);
+		return (Tup4s)Tup4sC.super.setArray(values);
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup4s setByIndex(int index, short value)
 	{
-		return (Tup4s)Tup4sBase.super.setByIndex(index, value);
+		return (Tup4s)Tup4sC.super.setByIndex(index, value);
 	}
 }
