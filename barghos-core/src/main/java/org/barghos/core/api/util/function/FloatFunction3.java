@@ -16,7 +16,7 @@ public interface FloatFunction3<T>
 	 * 
 	 * @param a The first parameter.
 	 * @param b The second parameter.
-	 * @param b The third parameter.
+	 * @param c The third parameter.
 	 * 
 	 * @return The result of the function.
 	 */

@@ -16,8 +16,8 @@ public interface FloatFunction4<T>
 	 * 
 	 * @param a The first parameter.
 	 * @param b The second parameter.
-	 * @param b The third parameter.
-	 * @param b The fourth parameter.
+	 * @param c The third parameter.
+	 * @param d The fourth parameter.
 	 * 
 	 * @return The result of the function.
 	 */

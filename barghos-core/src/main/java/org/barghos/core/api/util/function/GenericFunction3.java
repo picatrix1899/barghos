@@ -6,7 +6,7 @@ package org.barghos.core.api.util.function;
  * 
  * @param <A> The type of the first parameter.
  * @param <B> The type of the second parameter.
- * @param <B> The type of the third parameter.
+ * @param <C> The type of the third parameter.
  * @param <T> The return type.
  * 
  * @author picatrix1899

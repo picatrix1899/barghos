@@ -17,7 +17,7 @@ public interface DoubleFunction4<T>
 	 * @param a The first parameter.
 	 * @param b The second parameter.
 	 * @param c The third parameter.
-	 * @param c The fourth parameter.
+	 * @param d The fourth parameter.
 	 * 
 	 * @return The result of the function.
 	 */
