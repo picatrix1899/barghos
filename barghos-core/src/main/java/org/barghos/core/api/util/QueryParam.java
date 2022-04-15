@@ -7,10 +7,6 @@ import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
-@Documented
-@Retention(SOURCE)
-@Target(PARAMETER)
-
 /**
  * Indicates that the annotated parameter is used as a query parameter.
  * Query parameters are used to shift the responsibility for creating and maintaining the
@@ -22,6 +18,9 @@ import java.lang.annotation.Target;
  * 
  * @author picatrix1899
  */
+@Documented
+@Retention(SOURCE)
+@Target(PARAMETER)
 public @interface QueryParam
 {
 
