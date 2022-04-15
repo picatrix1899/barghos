@@ -25,6 +25,7 @@ package org.barghos.core.api.tuple3;
 import static org.barghos.core.api.tuple.TupleConstants.*;
 
 import org.barghos.core.api.tuple.TupcR;
+import org.barghos.core.api.util.ExtractParam;
 
 /**
  * This interface grants readonly access to any 3-dimensional char tuples.
@@ -81,7 +82,7 @@ public interface Tup3cR extends TupcR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default char[] toArray(char[] res)
+	default char[] toArray(@ExtractParam char[] res)
 	{
 		res[COMP_X] = getX();
 		res[COMP_Y] = getY();

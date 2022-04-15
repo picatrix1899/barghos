@@ -27,6 +27,7 @@ import java.math.BigInteger;
 import static org.barghos.core.api.tuple.TupleConstants.*;
 
 import org.barghos.core.api.tuple.TupbigiR;
+import org.barghos.core.api.util.ExtractParam;
 
 /**
  * This interface grants readonly access to any 3-dimensional big integer tuples.
@@ -110,7 +111,7 @@ public interface Tup3bigiR extends TupbigiR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default BigInteger[] toArray(BigInteger[] res)
+	default BigInteger[] toArray(@ExtractParam BigInteger[] res)
 	{
 		res[COMP_X] = getX();
 		res[COMP_Y] = getY();

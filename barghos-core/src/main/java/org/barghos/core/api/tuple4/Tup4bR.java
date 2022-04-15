@@ -25,6 +25,7 @@ package org.barghos.core.api.tuple4;
 import static org.barghos.core.api.tuple.TupleConstants.*;
 
 import org.barghos.core.api.tuple.TupbR;
+import org.barghos.core.api.util.ExtractParam;
 
 /**
  * This interface grants readonly access to any 4-dimensional byte tuples.
@@ -109,7 +110,7 @@ public interface Tup4bR extends TupbR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default byte[] toArray(byte[] res)
+	default byte[] toArray(@ExtractParam byte[] res)
 	{
 		res[COMP_X] = getX();
 		res[COMP_Y] = getY();

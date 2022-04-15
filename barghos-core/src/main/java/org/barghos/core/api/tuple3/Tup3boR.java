@@ -25,6 +25,7 @@ package org.barghos.core.api.tuple3;
 import static org.barghos.core.api.tuple.TupleConstants.*;
 
 import org.barghos.core.api.tuple.TupboR;
+import org.barghos.core.api.util.ExtractParam;
 
 /**
  * This interface grants readonly access to any 3-dimensional boolean tuples.
@@ -81,7 +82,7 @@ public interface Tup3boR extends TupboR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default boolean[] toArray(boolean[] res)
+	default boolean[] toArray(@ExtractParam boolean[] res)
 	{
 		res[COMP_X] = getX();
 		res[COMP_Y] = getY();

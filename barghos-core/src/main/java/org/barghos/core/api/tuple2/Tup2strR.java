@@ -25,6 +25,7 @@ package org.barghos.core.api.tuple2;
 import static org.barghos.core.api.tuple.TupleConstants.*;
 
 import org.barghos.core.api.tuple.TupstrR;
+import org.barghos.core.api.util.ExtractParam;
 
 /**
  * This interface grants readonly access to any 2-dimensional string tuples.
@@ -49,6 +50,7 @@ public interface Tup2strR extends TupstrR
 	 * 
 	 * @return The y value from the tuple.
 	 */
+
 	String getY();
 	
 	/** {@inheritDoc}} */
@@ -81,7 +83,7 @@ public interface Tup2strR extends TupstrR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default String[] toArray(String[] res)
+	default String[] toArray(@ExtractParam String[] res)
 	{
 		res[COMP_X] = getX();
 		res[COMP_Y] = getY();

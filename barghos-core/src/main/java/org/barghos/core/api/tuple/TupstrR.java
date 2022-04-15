@@ -1,5 +1,6 @@
 package org.barghos.core.api.tuple;
 
+import org.barghos.core.api.util.ExtractParam;
 import org.barghos.core.api.util.Validateable;
 
 /**
@@ -50,7 +51,7 @@ public interface TupstrR extends Validateable
 	 * 
 	 * @return The result array with all components in it.
 	 */
-	String[] toArray(String[] res);
+	String[] toArray(@ExtractParam String[] res);
 	
 	/**
 	 * Returns true if all the components are valid.

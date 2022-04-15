@@ -25,6 +25,7 @@ package org.barghos.core.api.tuple2;
 import static org.barghos.core.api.tuple.TupleConstants.*;
 
 import org.barghos.core.api.tuple.TupdR;
+import org.barghos.core.api.util.ExtractParam;
 
 /**
  * This interface grants readonly access to any 2-dimensional double tuples.
@@ -108,7 +109,7 @@ public interface Tup2dR extends TupdR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default double[] toArray(double[] res)
+	default double[] toArray(@ExtractParam double[] res)
 	{
 		res[COMP_X] = getX();
 		res[COMP_Y] = getY();

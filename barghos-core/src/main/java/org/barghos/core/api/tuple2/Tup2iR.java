@@ -25,6 +25,7 @@ package org.barghos.core.api.tuple2;
 import static org.barghos.core.api.tuple.TupleConstants.*;
 
 import org.barghos.core.api.tuple.TupiR;
+import org.barghos.core.api.util.ExtractParam;
 
 /**
  * This interface grants readonly access to any 2-dimensional integer tuples.
@@ -89,7 +90,7 @@ public interface Tup2iR extends TupiR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default int[] toArray(int[] res)
+	default int[] toArray(@ExtractParam int[] res)
 	{
 		res[COMP_X] = getX();
 		res[COMP_Y] = getY();

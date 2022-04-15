@@ -1,5 +1,6 @@
 package org.barghos.core.api.tuple;
 
+import org.barghos.core.api.util.ExtractParam;
 import org.barghos.core.api.util.Validateable;
 
 /**
@@ -50,7 +51,7 @@ public interface TuplR extends Validateable
 	 * 
 	 * @return The result array with all components in it.
 	 */
-	long[] toArray(long[] res);
+	long[] toArray(@ExtractParam long[] res);
 	
 	/**
 	 * Returns true if all components are finite and therefore not NaN or Infinity.

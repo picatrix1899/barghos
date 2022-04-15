@@ -25,6 +25,7 @@ package org.barghos.core.api.tuple3;
 import static org.barghos.core.api.tuple.TupleConstants.*;
 
 import org.barghos.core.api.tuple.TupsR;
+import org.barghos.core.api.util.ExtractParam;
 
 /**
  * This interface grants readonly access to any 3-dimensional short tuples.
@@ -99,7 +100,7 @@ public interface Tup3sR extends TupsR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default short[] toArray(short[] res)
+	default short[] toArray(@ExtractParam short[] res)
 	{
 		res[COMP_X] = getX();
 		res[COMP_Y] = getY();
