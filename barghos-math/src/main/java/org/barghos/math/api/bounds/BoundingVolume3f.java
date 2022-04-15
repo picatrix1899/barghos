@@ -17,7 +17,10 @@ public interface BoundingVolume3f
 	 * 
 	 * @return True, if the tuple lies inside the volume.
 	 */
-	boolean isInside(Tup3fR t);
+	default boolean isInside(Tup3fR t)
+	{
+		return isInside(t.getX(), t.getY(), t.getZ());
+	}
 	
 	/**
 	 * Returns true if the given tuple definded by the components lies inside the bounding volume including its surface.
