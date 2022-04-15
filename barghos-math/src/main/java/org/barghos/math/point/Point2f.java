@@ -1,14 +1,10 @@
 package org.barghos.math.point;
 
 import org.barghos.core.api.tuple.TupfR;
-import org.barghos.core.api.tuple2.Tup2fBase;
+import org.barghos.core.api.tuple2.Tup2fC;
 import org.barghos.core.api.tuple2.Tup2fR;
 import org.barghos.math.api.point.Point2dR;
 import org.barghos.math.api.point.Point2fBase;
-import org.barghos.math.api.point.Point2fR;
-import org.barghos.math.api.vector.Vec2fBase;
-import org.barghos.math.api.vector.Vec2fR;
-import org.barghos.math.vector.Vec2f;
 
 /**
  * This class represents a 2-dimensional float point.
@@ -109,7 +105,7 @@ public class Point2f implements Point2fBase
 	
 	/** {@inheritDoc}} */
 	@Override
-	public Tup2fBase setX(float x)
+	public Tup2fC setX(float x)
 	{
 		this.x = x;
 		
@@ -118,7 +114,7 @@ public class Point2f implements Point2fBase
 
 	/** {@inheritDoc}} */
 	@Override
-	public Tup2fBase setY(float y)
+	public Tup2fC setY(float y)
 	{
 		this.y = y;
 		
@@ -139,27 +135,27 @@ public class Point2f implements Point2fBase
 		return new Point2f(this);
 	}
 
-	public <T extends Tup2fBase> T copyTo(T res)
+	public <T extends Tup2fC> T copyTo(T res)
 	{
 		return null;
 	}
 
-	public <T extends Tup2fBase> T vectorTo(Point2dR p, T res)
+	public <T extends Tup2fC> T vectorTo(Point2dR p, T res)
 	{
 		return null;
 	}
 
-	public <T extends Tup2fBase> T vectorTo(float pX, float pY, T res)
+	public <T extends Tup2fC> T vectorTo(float pX, float pY, T res)
 	{
 		return null;
 	}
 
-	public <T extends Tup2fBase> T vectorFrom(Point2dR p, T res)
+	public <T extends Tup2fC> T vectorFrom(Point2dR p, T res)
 	{
 		return null;
 	}
 
-	public <T extends Tup2fBase> T vectorFrom(float pX, float pY, T res)
+	public <T extends Tup2fC> T vectorFrom(float pX, float pY, T res)
 	{
 		return null;
 	}

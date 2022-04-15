@@ -3,7 +3,7 @@ package org.barghos.math.api.vector;
 import org.barghos.core.api.tuple.TupdR;
 import org.barghos.core.api.tuple.TupfR;
 import org.barghos.core.api.tuple3.Tup3fR;
-import org.barghos.core.api.tuple3.Tup3fBase;
+import org.barghos.core.api.tuple3.Tup3fC;
 
 import org.barghos.math.api.matrix.Mat4fR;
 
@@ -16,7 +16,7 @@ import org.barghos.math.api.matrix.Mat4fR;
  * 
  * @author picatrix1899
  */
-public interface Vec3fBase extends Vec3fR, Tup3fBase
+public interface Vec3fBase extends Vec3fR, Tup3fC
 {
 	/**
 	 * Sets the x component of the vector.
@@ -58,7 +58,7 @@ public interface Vec3fBase extends Vec3fR, Tup3fBase
 	@Override
 	default Vec3fBase set(Tup3fR t)
 	{
-		return (Vec3fBase)Tup3fBase.super.set(t);
+		return (Vec3fBase)Tup3fC.super.set(t);
 	}
 	
 	/**
@@ -75,7 +75,7 @@ public interface Vec3fBase extends Vec3fR, Tup3fBase
 	@Override
 	default Vec3fBase set(float value)
 	{
-		return (Vec3fBase)Tup3fBase.super.set(value);
+		return (Vec3fBase)Tup3fC.super.set(value);
 	}
 	
 	/**
@@ -90,7 +90,7 @@ public interface Vec3fBase extends Vec3fR, Tup3fBase
 	@Override
 	default Vec3fBase set(float x, float y, float z)
 	{
-		return (Vec3fBase)Tup3fBase.super.set(x, y, z);
+		return (Vec3fBase)Tup3fC.super.set(x, y, z);
 	}
 	
 	/**
@@ -104,7 +104,7 @@ public interface Vec3fBase extends Vec3fR, Tup3fBase
 	@Override
 	default Vec3fBase setByIndex(int index, float value)
 	{
-		return (Vec3fBase)Tup3fBase.super.setByIndex(index, value);
+		return (Vec3fBase)Tup3fC.super.setByIndex(index, value);
 	}
 	
 	/**
@@ -117,7 +117,7 @@ public interface Vec3fBase extends Vec3fR, Tup3fBase
 	@Override
 	default Vec3fBase setArray(float... values)
 	{
-		return (Vec3fBase)Tup3fBase.super.setArray(values);
+		return (Vec3fBase)Tup3fC.super.setArray(values);
 	}
 	
 	/**
@@ -130,7 +130,7 @@ public interface Vec3fBase extends Vec3fR, Tup3fBase
 	@Override
 	default Vec3fBase set(TupfR t)
 	{
-		return (Vec3fBase)Tup3fBase.super.set(t);
+		return (Vec3fBase)Tup3fC.super.set(t);
 	}
 	
 	/** {@inheritDoc} */

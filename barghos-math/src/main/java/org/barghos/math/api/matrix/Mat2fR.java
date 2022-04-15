@@ -1,6 +1,6 @@
 package org.barghos.math.api.matrix;
 
-import org.barghos.core.api.tuple2.Tup2fBase;
+import org.barghos.core.api.tuple2.Tup2fC;
 import org.barghos.core.api.tuple2.Tup2fR;
 
 /**
@@ -46,7 +46,7 @@ public interface Mat2fR extends SqrMatR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	default <T extends Tup2fBase> T transform(Tup2fR t, T res)
+	default <T extends Tup2fC> T transform(Tup2fR t, T res)
 	{
 		return transform(t.getX(), t.getY(), res);
 	}
@@ -63,7 +63,7 @@ public interface Mat2fR extends SqrMatR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	<T extends Tup2fBase> T transform(float tX, float tY, T res);
+	<T extends Tup2fC> T transform(float tX, float tY, T res);
 	
 	/**
 	 * Applies the current matrix to the tuple definded by the components and therefore transforming it.

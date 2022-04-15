@@ -2,7 +2,7 @@ package org.barghos.math.api.vector;
 
 import static org.barghos.core.api.tuple.TupleConstants.*;
 
-import org.barghos.core.api.tuple2.Tup2oBase;
+import org.barghos.core.api.tuple2.Tup2oC;
 import org.barghos.core.api.tuple2.Tup2oR;
 import org.barghos.core.api.util.function.FloatFunction2;
 import org.barghos.core.api.util.function.GenericFunction2;
@@ -841,7 +841,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The instance from the res parameter with the result.
 	 */
-	public static <T extends Tup2oBase<Float,Integer>> T min(float x, float y, T res)
+	public static <T extends Tup2oC<Float,Integer>> T min(float x, float y, T res)
 	{
 		float value = x;
 		int index = COMP_X;
@@ -944,7 +944,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The instance from the res parameter with the result.
 	 */
-	public static <T extends Tup2oBase<Float,Integer>> T max(float x, float y, T res)
+	public static <T extends Tup2oC<Float,Integer>> T max(float x, float y, T res)
 	{
 		float value = x;
 		int index = COMP_X;

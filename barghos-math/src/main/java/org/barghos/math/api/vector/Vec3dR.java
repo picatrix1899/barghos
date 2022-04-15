@@ -3,7 +3,7 @@ package org.barghos.math.api.vector;
 import static org.barghos.core.api.tuple.TupleConstants.*;
 
 import org.barghos.core.api.tuple3.Tup3dR;
-import org.barghos.core.api.tuple2.Tup2oBase;
+import org.barghos.core.api.tuple2.Tup2oC;
 import org.barghos.core.api.tuple2.Tup2oR;
 import org.barghos.core.api.util.function.GenericFunction2;
 
@@ -235,7 +235,7 @@ public interface Vec3dR extends Tup3dR
 	 * 
 	 * @return The instance from the res parameter with the result.
 	 */
-	default <T extends Tup2oBase<Double,Integer>> T minR(T res)
+	default <T extends Tup2oC<Double,Integer>> T minR(T res)
 	{
 		double x = getX();
 		double y = getY();
@@ -378,7 +378,7 @@ public interface Vec3dR extends Tup3dR
 	 * 
 	 * @return The instance from the res parameter with the result.
 	 */
-	default <T extends Tup2oBase<Double,Integer>> T maxR(T res)
+	default <T extends Tup2oC<Double,Integer>> T maxR(T res)
 	{
 		double x = getX();
 		double y = getY();

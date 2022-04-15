@@ -1,6 +1,6 @@
 package org.barghos.math.api.point;
 
-import org.barghos.core.api.tuple3.Tup3dBase;
+import org.barghos.core.api.tuple3.Tup3dC;
 import org.barghos.core.api.tuple3.Tup3dR;
 
 /**
@@ -23,7 +23,7 @@ public interface Point3dR extends Tup3dR
 	 * 
 	 * @return The query parameter with the values.
 	 */
-	<T extends Tup3dBase> T copyTo(T res);
+	<T extends Tup3dC> T copyTo(T res);
 	
 	/**
 	 * Calculates the vector from this point to the given second point and saves the result in the
@@ -36,7 +36,7 @@ public interface Point3dR extends Tup3dR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	default <T extends Tup3dBase> T vectorTo(Tup3dR p, T res)
+	default <T extends Tup3dC> T vectorTo(Tup3dR p, T res)
 	{
 		return vectorTo(p.getX(), p.getY(), p.getZ(), res);
 	}
@@ -54,7 +54,7 @@ public interface Point3dR extends Tup3dR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	<T extends Tup3dBase> T vectorTo(double pX, double pY, double pZ, T res);
+	<T extends Tup3dC> T vectorTo(double pX, double pY, double pZ, T res);
 	
 	/**
 	 * Calculates the vector from the given second point to this point and saves the result in the
@@ -67,7 +67,7 @@ public interface Point3dR extends Tup3dR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	default <T extends Tup3dBase> T vectorFrom(Tup3dR p, T res)
+	default <T extends Tup3dC> T vectorFrom(Tup3dR p, T res)
 	{
 		return vectorFrom(p.getX(), p.getY(), p.getZ(), res);
 	}
@@ -85,5 +85,5 @@ public interface Point3dR extends Tup3dR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	<T extends Tup3dBase> T vectorFrom(double pX, double pY, double pZ, T res);
+	<T extends Tup3dC> T vectorFrom(double pX, double pY, double pZ, T res);
 }

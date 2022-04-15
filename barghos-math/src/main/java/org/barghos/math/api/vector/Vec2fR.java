@@ -1,7 +1,7 @@
 package org.barghos.math.api.vector;
 
 import org.barghos.core.api.tuple2.Tup2fR;
-import org.barghos.core.api.tuple2.Tup2oBase;
+import org.barghos.core.api.tuple2.Tup2oC;
 import org.barghos.core.api.tuple2.Tup2oR;
 import org.barghos.core.api.util.function.GenericFunction2;
 
@@ -210,7 +210,7 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The instance from the res parameter with the result.
 	 */
-	default <T extends Tup2oBase<Float,Integer>> T minR(T res)
+	default <T extends Tup2oC<Float,Integer>> T minR(T res)
 	{
 		return Vec2fUtil.min(getX(), getY(), res);
 	}
@@ -275,7 +275,7 @@ public interface Vec2fR extends Tup2fR
 	 * 
 	 * @return The instance from the res parameter with the result.
 	 */
-	default <T extends Tup2oBase<Float,Integer>> T maxR(T res)
+	default <T extends Tup2oC<Float,Integer>> T maxR(T res)
 	{
 		return Vec2fUtil.max(getX(), getY(), res);
 	}

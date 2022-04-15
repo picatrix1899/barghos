@@ -1,8 +1,8 @@
 package org.barghos.math.api.matrix;
 
-import org.barghos.core.api.tuple2.Tup2fBase;
+import org.barghos.core.api.tuple2.Tup2fC;
 import org.barghos.core.api.tuple2.Tup2fR;
-import org.barghos.core.api.tuple3.Tup3fBase;
+import org.barghos.core.api.tuple3.Tup3fC;
 import org.barghos.core.api.tuple3.Tup3fR;
 
 /**
@@ -50,7 +50,7 @@ public interface Mat3fR extends SqrMatR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	default <T extends Tup2fBase> T transform(Tup2fR t, boolean useZ, T res)
+	default <T extends Tup2fC> T transform(Tup2fR t, boolean useZ, T res)
 	{
 		return transform(t.getX(), t.getY(), useZ, res);
 	}
@@ -69,7 +69,7 @@ public interface Mat3fR extends SqrMatR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	<T extends Tup2fBase> T transform(float tX, float tY, boolean useZ, T res);
+	<T extends Tup2fC> T transform(float tX, float tY, boolean useZ, T res);
 	
 	/**
 	 * Applies the current matrix to the tuple definded by the components and therefore transforming it. If needed the additional
@@ -96,7 +96,7 @@ public interface Mat3fR extends SqrMatR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	default <T extends Tup3fBase> T transform(Tup3fR t, T res)
+	default <T extends Tup3fC> T transform(Tup3fR t, T res)
 	{
 		return transform(t.getX(), t.getY(), t.getZ(), res);
 	}
@@ -114,7 +114,7 @@ public interface Mat3fR extends SqrMatR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	<T extends Tup3fBase> T transform(float tX, float tY, float tZ, T res);
+	<T extends Tup3fC> T transform(float tX, float tY, float tZ, T res);
 	
 	/**
 	 * Applies the current matrix to the tuple definded by the components and therefore transforming it.

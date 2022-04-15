@@ -1,7 +1,7 @@
 package org.barghos.math.bounds;
 
 import org.barghos.core.api.tuple3.Tup3fR;
-import org.barghos.core.api.tuple3.Tup3fBase;
+import org.barghos.core.api.tuple3.Tup3fC;
 import org.barghos.math.api.vector.Vec3fR;
 import org.barghos.math.api.vector.Vec3fBase;
 import org.barghos.math.vector.Vec3f;
@@ -97,7 +97,7 @@ public class AABB3f
 		return this.minZ;
 	}
 	
-	public <T extends Tup3fBase> T getMin(T res)
+	public <T extends Tup3fC> T getMin(T res)
 	{
 		res.set(this.minX, this.minY, this.minZ);
 		
@@ -124,7 +124,7 @@ public class AABB3f
 		return this.maxZ;
 	}
 	
-	public <T extends Tup3fBase> T getMax(T res)
+	public <T extends Tup3fC> T getMax(T res)
 	{
 		res.set(this.maxX, this.maxY, this.maxZ);
 		
@@ -163,7 +163,7 @@ public class AABB3f
 		return getCenter(new Vec3f());
 	}
 	
-	public <T extends Tup3fBase> T getCenter(T res)
+	public <T extends Tup3fC> T getCenter(T res)
 	{
 		res.set(getCenterX(), getCenterY(), getCenterZ());
 		

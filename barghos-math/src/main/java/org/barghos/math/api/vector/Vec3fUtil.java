@@ -1,6 +1,6 @@
 package org.barghos.math.api.vector;
 
-import org.barghos.core.api.tuple3.Tup3fBase;
+import org.barghos.core.api.tuple3.Tup3fC;
 import org.barghos.core.api.tuple3.Tup3fR;
 import org.barghos.core.api.util.function.FloatFunction3;
 import org.barghos.math.util.Maths;
@@ -342,7 +342,7 @@ public class Vec3fUtil
 		return func.apply(x2 / x1, y2 / y1, z2 / z1);
 	}
 	
-	public static <T extends Tup3fBase> T lerp(Tup3fR a, Tup3fR b, float alpha, T res)
+	public static <T extends Tup3fC> T lerp(Tup3fR a, Tup3fR b, float alpha, T res)
 	{
 		float x =  Maths.lerpf(a.getX(), b.getX(), alpha);
 		float y =  Maths.lerpf(a.getY(), b.getY(), alpha);

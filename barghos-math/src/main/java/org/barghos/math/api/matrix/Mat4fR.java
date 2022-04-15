@@ -1,10 +1,10 @@
 package org.barghos.math.api.matrix;
 
-import org.barghos.core.api.tuple2.Tup2fBase;
+import org.barghos.core.api.tuple2.Tup2fC;
 import org.barghos.core.api.tuple2.Tup2fR;
-import org.barghos.core.api.tuple3.Tup3fBase;
+import org.barghos.core.api.tuple3.Tup3fC;
 import org.barghos.core.api.tuple3.Tup3fR;
-import org.barghos.core.api.tuple4.Tup4fBase;
+import org.barghos.core.api.tuple4.Tup4fC;
 import org.barghos.core.api.tuple4.Tup4fR;
 
 import static org.barghos.math.api.matrix.MatrixConstants.*;
@@ -62,7 +62,7 @@ public interface Mat4fR extends SqrMatR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	default <T extends Tup2fBase> T transform(Tup2fR t, boolean useZ, boolean useW, T res)
+	default <T extends Tup2fC> T transform(Tup2fR t, boolean useZ, boolean useW, T res)
 	{
 		return transform(t.getX(), t.getY(), useZ, useW, res);
 	}
@@ -82,7 +82,7 @@ public interface Mat4fR extends SqrMatR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	<T extends Tup2fBase> T transform(float tX, float tY, boolean useZ, boolean useW, T res);
+	<T extends Tup2fC> T transform(float tX, float tY, boolean useZ, boolean useW, T res);
 	
 	/**
 	 * Applies the current matrix to the tuple definded by the components and therefore transforming it. If needed the additional
@@ -112,7 +112,7 @@ public interface Mat4fR extends SqrMatR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	default <T extends Tup3fBase> T transform(Tup3fR t, boolean useW, T res)
+	default <T extends Tup3fC> T transform(Tup3fR t, boolean useW, T res)
 	{
 		return transform(t.getX(), t.getY(), t.getZ(), useW, res);
 	}
@@ -132,7 +132,7 @@ public interface Mat4fR extends SqrMatR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	<T extends Tup3fBase> T transform(float tX, float tY, float tZ, boolean useW, T res);
+	<T extends Tup3fC> T transform(float tX, float tY, float tZ, boolean useW, T res);
 	
 	/**
 	 * Applies the current matrix to the tuple definded by the components and therefore transforming it. If needed the additional
@@ -160,7 +160,7 @@ public interface Mat4fR extends SqrMatR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	default <T extends Tup4fBase> T transform(Tup4fR t, T res)
+	default <T extends Tup4fC> T transform(Tup4fR t, T res)
 	{
 		return transform(t.getX(), t.getY(), t.getZ(), t.getW(), res);
 	}
@@ -179,7 +179,7 @@ public interface Mat4fR extends SqrMatR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	<T extends Tup4fBase> T transform(float tX, float tY, float tZ, float tW, T res);
+	<T extends Tup4fC> T transform(float tX, float tY, float tZ, float tW, T res);
 	
 	/**
 	 * Applies the current matrix to the tuple definded by the components and therefore transforming it.

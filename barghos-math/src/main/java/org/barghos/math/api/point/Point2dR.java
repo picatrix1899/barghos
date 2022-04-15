@@ -1,6 +1,6 @@
 package org.barghos.math.api.point;
 
-import org.barghos.core.api.tuple2.Tup2dBase;
+import org.barghos.core.api.tuple2.Tup2dC;
 import org.barghos.core.api.tuple2.Tup2dR;
 
 /**
@@ -23,7 +23,7 @@ public interface Point2dR extends Tup2dR
 	 * 
 	 * @return The query parameter with the values.
 	 */
-	<T extends Tup2dBase> T copyTo(T res);
+	<T extends Tup2dC> T copyTo(T res);
 	
 	/**
 	 * Calculates the vector from this point to the given second point and saves the result in the
@@ -36,7 +36,7 @@ public interface Point2dR extends Tup2dR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	default <T extends Tup2dBase> T vectorTo(Tup2dR p, T res)
+	default <T extends Tup2dC> T vectorTo(Tup2dR p, T res)
 	{
 		return vectorTo(p.getX(), p.getY(), res);
 	}
@@ -53,7 +53,7 @@ public interface Point2dR extends Tup2dR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	<T extends Tup2dBase> T vectorTo(double pX, double pY, T res);
+	<T extends Tup2dC> T vectorTo(double pX, double pY, T res);
 	
 	/**
 	 * Calculates the vector from the given second point to this point and saves the result in the
@@ -66,7 +66,7 @@ public interface Point2dR extends Tup2dR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	default <T extends Tup2dBase> T vectorFrom(Tup2dR p, T res)
+	default <T extends Tup2dC> T vectorFrom(Tup2dR p, T res)
 	{
 		return vectorFrom(p.getX(), p.getY(), res);
 	}
@@ -83,5 +83,5 @@ public interface Point2dR extends Tup2dR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	<T extends Tup2dBase> T vectorFrom(double pX, double pY, T res);
+	<T extends Tup2dC> T vectorFrom(double pX, double pY, T res);
 }

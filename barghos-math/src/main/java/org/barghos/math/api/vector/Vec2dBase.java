@@ -1,7 +1,7 @@
 package org.barghos.math.api.vector;
 
 import org.barghos.core.api.tuple.TupdR;
-import org.barghos.core.api.tuple2.Tup2dBase;
+import org.barghos.core.api.tuple2.Tup2dC;
 import org.barghos.core.api.tuple2.Tup2dR;
 
 /**
@@ -13,7 +13,7 @@ import org.barghos.core.api.tuple2.Tup2dR;
  * 
  * @author picatrix1899
  */
-public interface Vec2dBase extends Vec2dR, Tup2dBase
+public interface Vec2dBase extends Vec2dR, Tup2dC
 {
 	/**
 	 * Sets the x component of the vector.
@@ -45,7 +45,7 @@ public interface Vec2dBase extends Vec2dR, Tup2dBase
 	@Override
 	default Vec2dBase set(Tup2dR t)
 	{
-		return (Vec2dBase)Tup2dBase.super.set(t);
+		return (Vec2dBase)Tup2dC.super.set(t);
 	}
 	
 	/**
@@ -62,7 +62,7 @@ public interface Vec2dBase extends Vec2dR, Tup2dBase
 	@Override
 	default Vec2dBase set(double value)
 	{
-		return (Vec2dBase)Tup2dBase.super.set(value);
+		return (Vec2dBase)Tup2dC.super.set(value);
 	}
 	
 	/**
@@ -76,7 +76,7 @@ public interface Vec2dBase extends Vec2dR, Tup2dBase
 	@Override
 	default Vec2dBase set(double x, double y)
 	{
-		return (Vec2dBase)Tup2dBase.super.set(x, y);
+		return (Vec2dBase)Tup2dC.super.set(x, y);
 	}
 	
 	/**
@@ -90,7 +90,7 @@ public interface Vec2dBase extends Vec2dR, Tup2dBase
 	@Override
 	default Vec2dBase setByIndex(int index, double value)
 	{
-		return (Vec2dBase)Tup2dBase.super.setByIndex(index, value);
+		return (Vec2dBase)Tup2dC.super.setByIndex(index, value);
 	}
 	
 	/**
@@ -103,7 +103,7 @@ public interface Vec2dBase extends Vec2dR, Tup2dBase
 	@Override
 	default Vec2dBase setArray(double... values)
 	{
-		return (Vec2dBase)Tup2dBase.super.setArray(values);
+		return (Vec2dBase)Tup2dC.super.setArray(values);
 	}
 	
 	/**
@@ -116,7 +116,7 @@ public interface Vec2dBase extends Vec2dR, Tup2dBase
 	@Override
 	default Vec2dBase set(TupdR t)
 	{
-		return (Vec2dBase)Tup2dBase.super.set(t);
+		return (Vec2dBase)Tup2dC.super.set(t);
 	}
 	
 	/** {@inheritDoc} */

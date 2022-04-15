@@ -1,6 +1,6 @@
 package org.barghos.math.api.point;
 
-import org.barghos.core.api.tuple3.Tup3fBase;
+import org.barghos.core.api.tuple3.Tup3fC;
 import org.barghos.core.api.tuple3.Tup3fR;
 
 /**
@@ -23,7 +23,7 @@ public interface Point3fR extends Tup3fR
 	 * 
 	 * @return The query parameter with the values.
 	 */
-	<T extends Tup3fBase> T copyTo(T res);
+	<T extends Tup3fC> T copyTo(T res);
 	
 	/**
 	 * Calculates the vector from this point to the given second point and saves the result in the
@@ -36,7 +36,7 @@ public interface Point3fR extends Tup3fR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	default <T extends Tup3fBase> T vectorTo(Tup3fR p, T res)
+	default <T extends Tup3fC> T vectorTo(Tup3fR p, T res)
 	{
 		return vectorTo(p.getX(), p.getY(), p.getZ(), res);
 	}
@@ -54,7 +54,7 @@ public interface Point3fR extends Tup3fR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	<T extends Tup3fBase> T vectorTo(float pX, float pY, float pZ, T res);
+	<T extends Tup3fC> T vectorTo(float pX, float pY, float pZ, T res);
 	
 	/**
 	 * Calculates the vector from the given second point to this point and saves the result in the
@@ -67,7 +67,7 @@ public interface Point3fR extends Tup3fR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	default <T extends Tup3fBase> T vectorFrom(Tup3fR p, T res)
+	default <T extends Tup3fC> T vectorFrom(Tup3fR p, T res)
 	{
 		return vectorFrom(p.getX(), p.getY(), p.getZ(), res);
 	}
@@ -85,5 +85,5 @@ public interface Point3fR extends Tup3fR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	<T extends Tup3fBase> T vectorFrom(float pX, float pY, float pZ, T res);
+	<T extends Tup3fC> T vectorFrom(float pX, float pY, float pZ, T res);
 }

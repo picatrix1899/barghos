@@ -4,9 +4,9 @@ import java.nio.FloatBuffer;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.barghos.core.api.tuple2.Tup2fBase;
-import org.barghos.core.api.tuple3.Tup3fBase;
-import org.barghos.core.api.tuple4.Tup4fBase;
+import org.barghos.core.api.tuple2.Tup2fC;
+import org.barghos.core.api.tuple3.Tup3fC;
+import org.barghos.core.api.tuple4.Tup4fC;
 import org.barghos.math.matrix.Mat4f;
 
 public class MatStack4f implements Mat4fR
@@ -123,7 +123,7 @@ public class MatStack4f implements Mat4fR
 
 	/** {@inheritDoc}} */
 	@Override
-	public <T extends Tup2fBase> T transform(float tX, float tY, boolean useZ, boolean useW, T res)
+	public <T extends Tup2fC> T transform(float tX, float tY, boolean useZ, boolean useW, T res)
 	{
 		return get().transform(tX, tY, useZ, useW, res);
 	}
@@ -137,7 +137,7 @@ public class MatStack4f implements Mat4fR
 
 	/** {@inheritDoc}} */
 	@Override
-	public <T extends Tup3fBase> T transform(float tX, float tY, float tZ, boolean useW, T res)
+	public <T extends Tup3fC> T transform(float tX, float tY, float tZ, boolean useW, T res)
 	{
 		return get().transform(tX, tY, tZ, useW, res);
 	}
@@ -167,7 +167,7 @@ public class MatStack4f implements Mat4fR
 		return null;
 	}
 
-	public <T extends Tup4fBase> T transform(float tX, float tY, float tZ, float tW, T res)
+	public <T extends Tup4fC> T transform(float tX, float tY, float tZ, float tW, T res)
 	{
 		return null;
 	}

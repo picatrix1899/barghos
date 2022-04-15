@@ -1,6 +1,6 @@
 package org.barghos.math.api.point;
 
-import org.barghos.core.api.tuple2.Tup2fBase;
+import org.barghos.core.api.tuple2.Tup2fC;
 import org.barghos.core.api.tuple2.Tup2fR;
 
 /**
@@ -23,7 +23,7 @@ public interface Point2fR extends Tup2fR
 	 * 
 	 * @return The query parameter with the values.
 	 */
-	<T extends Tup2fBase> T copyTo(T res);
+	<T extends Tup2fC> T copyTo(T res);
 	
 	/**
 	 * Calculates the vector from this point to the given second point and saves the result in the
@@ -36,7 +36,7 @@ public interface Point2fR extends Tup2fR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	<T extends Tup2fBase> T vectorTo(Point2dR p, T res);
+	<T extends Tup2fC> T vectorTo(Point2dR p, T res);
 	
 	/**
 	 * Calculates the vector from this point to the given second point defined by the components and saves the result in the
@@ -50,7 +50,7 @@ public interface Point2fR extends Tup2fR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	<T extends Tup2fBase> T vectorTo(float pX, float pY, T res);
+	<T extends Tup2fC> T vectorTo(float pX, float pY, T res);
 	
 	/**
 	 * Calculates the vector from the given second point to this point and saves the result in the
@@ -63,7 +63,7 @@ public interface Point2fR extends Tup2fR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	<T extends Tup2fBase> T vectorFrom(Point2dR p, T res);
+	<T extends Tup2fC> T vectorFrom(Point2dR p, T res);
 	
 	/**
 	 * Calculates the vector from the given second point defined by the components to this point and saves the result in the
@@ -77,5 +77,5 @@ public interface Point2fR extends Tup2fR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	<T extends Tup2fBase> T vectorFrom(float pX, float pY, T res);
+	<T extends Tup2fC> T vectorFrom(float pX, float pY, T res);
 }

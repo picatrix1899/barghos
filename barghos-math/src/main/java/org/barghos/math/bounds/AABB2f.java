@@ -1,7 +1,7 @@
 package org.barghos.math.bounds;
 
 import org.barghos.core.api.tuple2.Tup2fR;
-import org.barghos.core.api.tuple2.Tup2fBase;
+import org.barghos.core.api.tuple2.Tup2fC;
 import org.barghos.math.api.bounds.BoundingVolume2f;
 import org.barghos.math.api.point.Point2fR;
 import org.barghos.math.api.vector.Vec2fR;
@@ -96,7 +96,7 @@ public class AABB2f implements BoundingVolume2f
 		return this.minY;
 	}
 	
-	public <T extends Tup2fBase> T getMin(T res)
+	public <T extends Tup2fC> T getMin(T res)
 	{
 		res.set(this.minX, this.minY);
 		
@@ -123,7 +123,7 @@ public class AABB2f implements BoundingVolume2f
 		return this.maxY;
 	}
 	
-	public <T extends Tup2fBase> T getMax(T res)
+	public <T extends Tup2fC> T getMax(T res)
 	{
 		res.set(this.maxX, this.maxY);
 		
@@ -162,7 +162,7 @@ public class AABB2f implements BoundingVolume2f
 		return getCenter(new Vec2f());
 	}
 	
-	public <T extends Tup2fBase> T getCenter(T res)
+	public <T extends Tup2fC> T getCenter(T res)
 	{
 		res.set(getCenterX(), getCenterY());
 		

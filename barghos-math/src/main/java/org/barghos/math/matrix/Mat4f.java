@@ -5,10 +5,10 @@ import java.nio.FloatBuffer;
 import static org.barghos.math.api.matrix.MatrixConstants.*;
 import static org.barghos.core.api.tuple.TupleConstants.*;
 
-import org.barghos.core.api.tuple2.Tup2fBase;
-import org.barghos.core.api.tuple3.Tup3fBase;
+import org.barghos.core.api.tuple2.Tup2fC;
+import org.barghos.core.api.tuple3.Tup3fC;
 import org.barghos.core.api.tuple3.Tup3fR;
-import org.barghos.core.api.tuple4.Tup4fBase;
+import org.barghos.core.api.tuple4.Tup4fC;
 import org.barghos.math.api.matrix.Mat4fBase;
 import org.barghos.math.api.matrix.Mat4fR;
 import org.barghos.math.api.vector.Quat3f;
@@ -744,7 +744,7 @@ public class Mat4f implements Mat4fBase
 
 	/** {@inheritDoc}} */
 	@Override
-	public <T extends Tup2fBase> T transform(float tX, float tY, boolean useZ, boolean useW, T res)
+	public <T extends Tup2fC> T transform(float tX, float tY, boolean useZ, boolean useW, T res)
 	{
 		float x_ = this.m[0][0] * tX + this.m[0][1] * tY;
 		float y_ = this.m[1][0] * tX + this.m[1][1] * tY;
@@ -793,7 +793,7 @@ public class Mat4f implements Mat4fBase
 
 	/** {@inheritDoc}} */
 	@Override
-	public <T extends Tup3fBase> T transform(float tX, float tY, float tZ, boolean useW, T res)
+	public <T extends Tup3fC> T transform(float tX, float tY, float tZ, boolean useW, T res)
 	{
 		float x_ = this.m[0][0] * tX + this.m[0][1] * tY + this.m[0][2] * tZ;
 		float y_ = this.m[1][0] * tX + this.m[1][1] * tY + this.m[1][2] * tZ;
@@ -835,7 +835,7 @@ public class Mat4f implements Mat4fBase
 
 	/** {@inheritDoc}} */
 	@Override
-	public <T extends Tup4fBase> T transform(float tX, float tY, float tZ, float tW, T res)
+	public <T extends Tup4fC> T transform(float tX, float tY, float tZ, float tW, T res)
 	{
 		float x_ = this.m[0][0] * tX + this.m[0][1] * tY + this.m[0][2] * tZ + this.m[0][3] * tW;
 		float y_ = this.m[1][0] * tX + this.m[1][1] * tY + this.m[1][2] * tZ + this.m[1][3] * tW;

@@ -1,6 +1,6 @@
 package org.barghos.math.bounds;
 
-import org.barghos.core.api.tuple2.Tup2fBase;
+import org.barghos.core.api.tuple2.Tup2fC;
 import org.barghos.core.api.tuple2.Tup2fR;
 import org.barghos.math.api.bounds.BoundingVolume2f;
 import org.barghos.math.api.vector.Vec2fUtil;
@@ -97,7 +97,7 @@ public class CircleBV2f implements BoundingVolume2f
 		return getCenter(new Vec2f());
 	}
 	
-	public <T extends Tup2fBase> T getCenter(T res)
+	public <T extends Tup2fC> T getCenter(T res)
 	{
 		res.set(cX, cY);
 		

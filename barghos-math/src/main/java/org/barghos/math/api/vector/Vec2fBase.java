@@ -2,7 +2,7 @@ package org.barghos.math.api.vector;
 
 import org.barghos.core.api.tuple.TupfR;
 import org.barghos.core.api.tuple2.Tup2fR;
-import org.barghos.core.api.tuple2.Tup2fBase;
+import org.barghos.core.api.tuple2.Tup2fC;
 
 /**
  * This interface represents any modifiable 2-dimensional float vector.
@@ -13,7 +13,7 @@ import org.barghos.core.api.tuple2.Tup2fBase;
  * 
  * @author picatrix1899
  */
-public interface Vec2fBase extends Vec2fR, Tup2fBase
+public interface Vec2fBase extends Vec2fR, Tup2fC
 {
 	/**
 	 * Sets the x component of the vector.
@@ -45,7 +45,7 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	@Override
 	default Vec2fBase set(Tup2fR t)
 	{
-		return (Vec2fBase)Tup2fBase.super.set(t);
+		return (Vec2fBase)Tup2fC.super.set(t);
 	}
 	
 	/**
@@ -62,7 +62,7 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	@Override
 	default Vec2fBase set(float value)
 	{
-		return (Vec2fBase)Tup2fBase.super.set(value);
+		return (Vec2fBase)Tup2fC.super.set(value);
 	}
 	
 	/**
@@ -76,7 +76,7 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	@Override
 	default Vec2fBase set(float x, float y)
 	{
-		return (Vec2fBase)Tup2fBase.super.set(x, y);
+		return (Vec2fBase)Tup2fC.super.set(x, y);
 	}
 	
 	/**
@@ -90,7 +90,7 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	@Override
 	default Vec2fBase setByIndex(int index, float value)
 	{
-		return (Vec2fBase)Tup2fBase.super.setByIndex(index, value);
+		return (Vec2fBase)Tup2fC.super.setByIndex(index, value);
 	}
 	
 	/**
@@ -103,7 +103,7 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	@Override
 	default Vec2fBase setArray(float... values)
 	{
-		return (Vec2fBase)Tup2fBase.super.setArray(values);
+		return (Vec2fBase)Tup2fC.super.setArray(values);
 	}
 	
 	/**
@@ -116,7 +116,7 @@ public interface Vec2fBase extends Vec2fR, Tup2fBase
 	@Override
 	default Vec2fBase set(TupfR t)
 	{
-		return (Vec2fBase)Tup2fBase.super.set(t);
+		return (Vec2fBase)Tup2fC.super.set(t);
 	}
 	
 	/** {@inheritDoc} */
