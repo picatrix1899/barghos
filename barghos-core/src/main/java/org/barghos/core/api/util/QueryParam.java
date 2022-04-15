@@ -1,7 +1,8 @@
 package org.barghos.core.api.util;
 
-import static java.lang.annotation.ElementType.PARAMETER;
-import static java.lang.annotation.RetentionPolicy.SOURCE;
+import static java.lang.annotation.ElementType.*;
+import static java.lang.annotation.RetentionPolicy.*;
+
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
@@ -19,7 +20,7 @@ import java.lang.annotation.Target;
  * @author picatrix1899
  */
 @Documented
-@Retention(SOURCE)
+@Retention(CLASS)
 @Target(PARAMETER)
 public @interface QueryParam
 {
