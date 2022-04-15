@@ -56,7 +56,7 @@ public class Vec2dUtil
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	public static <T extends Vec2dBase> T add(double x1, double y1, double x2, double y2, T res)
+	public static <T extends Vec2dC> T add(double x1, double y1, double x2, double y2, T res)
 	{
 		res.set(x1 + x2, y1 + y2);
 		
@@ -132,7 +132,7 @@ public class Vec2dUtil
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	public static <T extends Vec2dBase> T sub(double x1, double y1, double x2, double y2, T res)
+	public static <T extends Vec2dC> T sub(double x1, double y1, double x2, double y2, T res)
 	{
 		res.set(x1 - x2, y1 - y2);
 		
@@ -208,7 +208,7 @@ public class Vec2dUtil
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	public static <T extends Vec2dBase> T revSub(double x1, double y1, double x2, double y2, T res)
+	public static <T extends Vec2dC> T revSub(double x1, double y1, double x2, double y2, T res)
 	{
 		res.set(x2 - x1, y2 - y1);
 		
@@ -284,7 +284,7 @@ public class Vec2dUtil
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	public static <T extends Vec2dBase> T mul(double x1, double y1, double x2, double y2, T res)
+	public static <T extends Vec2dC> T mul(double x1, double y1, double x2, double y2, T res)
 	{
 		res.set(x1 * x2, y1 * y2);
 		
@@ -360,7 +360,7 @@ public class Vec2dUtil
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	public static <T extends Vec2dBase> T div(double x1, double y1, double x2, double y2, T res)
+	public static <T extends Vec2dC> T div(double x1, double y1, double x2, double y2, T res)
 	{
 		res.set(x1 / x2, y1 / y2);
 		
@@ -436,7 +436,7 @@ public class Vec2dUtil
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	public static <T extends Vec2dBase> T revDiv(double x1, double y1, double x2, double y2, T res)
+	public static <T extends Vec2dC> T revDiv(double x1, double y1, double x2, double y2, T res)
 	{
 		res.set(x2 / x1, y2 / y1);
 		
@@ -518,7 +518,7 @@ public class Vec2dUtil
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	public static <T extends Vec2dBase> T fma(double x, double y, double mX, double mY, double aX, double aY, T res)
+	public static <T extends Vec2dC> T fma(double x, double y, double mX, double mY, double aX, double aY, T res)
 	{
 		res.set(Math.fma(x, mX, aX), Math.fma(y, mY, aY));
 		return res;
@@ -602,7 +602,7 @@ public class Vec2dUtil
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	public static <T extends Vec2dBase> T mulAdd(double x, double y, double mX1, double mY1, double mX2, double mY2, T res)
+	public static <T extends Vec2dC> T mulAdd(double x, double y, double mX1, double mY1, double mX2, double mY2, T res)
 	{
 		res.set(Math.fma(mX1, mX2, x), Math.fma(mY1, mY2, y));
 		return res;
@@ -1063,7 +1063,7 @@ public class Vec2dUtil
 	 * 
 	 * @throws ArithmeticException Thrown when it is a zero-length vector.
 	 */
-	public static <T extends Vec2dBase> T normal(double x, double y, T res)
+	public static <T extends Vec2dC> T normal(double x, double y, T res)
 	{
 		double recLength = 1.0 / Math.sqrt(Math.fma(x, x, y * y));
 		res.set(x * recLength, y * recLength);
@@ -1159,7 +1159,7 @@ public class Vec2dUtil
 	 * 
 	 * @throws ArithmeticException Might be thrown when the length is to close to zero.
 	 */
-	public static <T extends Vec2dBase> T normalSafe(double x, double y, T res)
+	public static <T extends Vec2dC> T normalSafe(double x, double y, T res)
 	{
 		if(x + y == 0.0)
 		{
@@ -1261,7 +1261,7 @@ public class Vec2dUtil
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	public static <T extends Vec2dBase> T normalSafeWithMargin(double x, double y, double tolerance, T res)
+	public static <T extends Vec2dC> T normalSafeWithMargin(double x, double y, double tolerance, T res)
 	{
 		if(Math.abs(x) <= tolerance && Math.abs(y) <= tolerance)
 		{
@@ -1343,7 +1343,7 @@ public class Vec2dUtil
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	public static <T extends Vec2dBase> T invert(double x, double y, T res)
+	public static <T extends Vec2dC> T invert(double x, double y, T res)
 	{
 		res.set(-x, -y);
 		
@@ -1411,7 +1411,7 @@ public class Vec2dUtil
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	public static <T extends Vec2dBase> T inverse(double x, double y, double x2, double y2, T res)
+	public static <T extends Vec2dC> T inverse(double x, double y, double x2, double y2, T res)
 	{
 		res.set(x2 - x, y2 - y);
 		
@@ -1436,7 +1436,7 @@ public class Vec2dUtil
 	 * 
 	 * @return The object returned from the functional interface.
 	 */
-	public static <T extends Vec2dBase> T inverse(double x, double y, double x2, double y2, DoubleFunction2<T> func)
+	public static <T extends Vec2dC> T inverse(double x, double y, double x2, double y2, DoubleFunction2<T> func)
 	{
 		return func.apply(x2 - x, y2 - y);
 	}
@@ -1477,7 +1477,7 @@ public class Vec2dUtil
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	public static <T extends Vec2dBase> T half(double x, double y, T res)
+	public static <T extends Vec2dC> T half(double x, double y, T res)
 	{
 		res.set(x * 0.5, y * 0.5);
 		
@@ -1500,7 +1500,7 @@ public class Vec2dUtil
 	 * 
 	 * @return The object returned from the functional interface.
 	 */
-	public static <T extends Vec2dBase> T half(double x, double y, DoubleFunction2<T> func)
+	public static <T extends Vec2dC> T half(double x, double y, DoubleFunction2<T> func)
 	{
 		return func.apply(x * 0.5, y * 0.5);
 	}
@@ -1538,7 +1538,7 @@ public class Vec2dUtil
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	public static <T extends Vec2dBase> T rotate(double x, double y, double angle, T res)
+	public static <T extends Vec2dC> T rotate(double x, double y, double angle, T res)
 	{
 		double cos = Math.cos(angle);
 		double sin = Math.sin(angle);
@@ -1609,7 +1609,7 @@ public class Vec2dUtil
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	public static <T extends Vec2dBase> T project(double x, double y, double vX, double vY, T res)
+	public static <T extends Vec2dC> T project(double x, double y, double vX, double vY, T res)
 	{
 		double dot = Math.fma(x, vX, y * vY);
 		
@@ -1680,7 +1680,7 @@ public class Vec2dUtil
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	public static <T extends Vec2dBase> T reflect(double x, double y, double nX, double nY, T res)
+	public static <T extends Vec2dC> T reflect(double x, double y, double nX, double nY, T res)
 	{
 		double dot = -2 * Math.fma(x, nX, y * nY);
 		

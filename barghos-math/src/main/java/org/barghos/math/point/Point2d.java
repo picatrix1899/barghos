@@ -3,7 +3,7 @@ package org.barghos.math.point;
 import org.barghos.core.api.tuple.TupdR;
 import org.barghos.core.api.tuple2.Tup2dC;
 import org.barghos.core.api.tuple2.Tup2dR;
-import org.barghos.math.api.point.Point2dBase;
+import org.barghos.math.api.point.Point2dC;
 
 /**
  * This class represents a 2-dimensional double point.
@@ -12,7 +12,7 @@ import org.barghos.math.api.point.Point2dBase;
  * 
  * @since 1.0.0.0
  */
-public class Point2d implements Point2dBase
+public class Point2d implements Point2dC
 {
 	protected double x;
 	protected double y;

@@ -100,10 +100,10 @@ public class Quat3f implements Tup4fR
 	
 	public static Quat3f getFromVectors(Tup3fR v1, Tup3fR v2)
 	{
-		Vec3fBase a = new Vec3f(v1).normal();
-		Vec3fBase b = new Vec3f(v2).normal();
+		Vec3fC a = new Vec3f(v1).normal();
+		Vec3fC b = new Vec3f(v2).normal();
 
-		Vec3fBase axis = a.crossN(b).normal();
+		Vec3fC axis = a.crossN(b).normal();
 		
 		float angle = 1.0f + a.dot(b);
 
@@ -262,7 +262,7 @@ public class Quat3f implements Tup4fR
 		return res;
 	}
 	
-	public Vec3fBase transform(Tup3fR v, Vec3fBase res)
+	public Vec3fC transform(Tup3fR v, Vec3fC res)
 	{
 		Quat3f r = mul(v, new Quat3f());
 		Quat3f c = conjugate(new Quat3f());

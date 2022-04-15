@@ -3,7 +3,7 @@ package org.barghos.math.bounds;
 import org.barghos.core.api.tuple3.Tup3fR;
 import org.barghos.core.api.tuple3.Tup3fC;
 import org.barghos.math.api.vector.Vec3fR;
-import org.barghos.math.api.vector.Vec3fBase;
+import org.barghos.math.api.vector.Vec3fC;
 import org.barghos.math.vector.Vec3f;
 
 public class AABB3f
@@ -136,7 +136,7 @@ public class AABB3f
 		return getSize(new Vec3f());
 	}
 	
-	public <T extends Vec3fBase> T getSize(T res)
+	public <T extends Vec3fC> T getSize(T res)
 	{
 		res.set(getSizeX(), getSizeY(), getSizeZ());
 		

@@ -4,7 +4,7 @@ import org.barghos.core.api.tuple.TupfR;
 import org.barghos.core.api.tuple2.Tup2fC;
 import org.barghos.core.api.tuple2.Tup2fR;
 import org.barghos.math.api.point.Point2dR;
-import org.barghos.math.api.point.Point2fBase;
+import org.barghos.math.api.point.Point2fC;
 
 /**
  * This class represents a 2-dimensional float point.
@@ -13,7 +13,7 @@ import org.barghos.math.api.point.Point2fBase;
  * 
  * @since 1.0.0.0
  */
-public class Point2f implements Point2fBase
+public class Point2f implements Point2fC
 {
 	protected float x;
 	protected float y;

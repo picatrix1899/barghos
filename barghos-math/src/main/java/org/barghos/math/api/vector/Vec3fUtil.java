@@ -32,7 +32,7 @@ public class Vec3fUtil
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	public static <T extends Vec3fBase> T add(float x1, float y1, float z1, float x2, float y2, float z2, T res)
+	public static <T extends Vec3fC> T add(float x1, float y1, float z1, float x2, float y2, float z2, T res)
 	{
 		res.set(x1 + x2, y1 + y2, z1 + z2);
 		return res;
@@ -87,7 +87,7 @@ public class Vec3fUtil
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	public static <T extends Vec3fBase> T sub(float x1, float y1, float z1, float x2, float y2, float z2, T res)
+	public static <T extends Vec3fC> T sub(float x1, float y1, float z1, float x2, float y2, float z2, T res)
 	{
 		res.set(x1 - x2, y1 - y2, z1 - z2);
 		return res;
@@ -142,7 +142,7 @@ public class Vec3fUtil
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	public static <T extends Vec3fBase> T revSub(float x1, float y1, float z1, float x2, float y2, float z2, T res)
+	public static <T extends Vec3fC> T revSub(float x1, float y1, float z1, float x2, float y2, float z2, T res)
 	{
 		res.set(x2 - x1, y2 - y1, z2 - z1);
 		return res;
@@ -197,7 +197,7 @@ public class Vec3fUtil
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	public static <T extends Vec3fBase> T mul(float x1, float y1, float z1, float x2, float y2, float z2, T res)
+	public static <T extends Vec3fC> T mul(float x1, float y1, float z1, float x2, float y2, float z2, T res)
 	{
 		res.set(x1 * x2, y1 * y2, z1 * z2);
 		return res;
@@ -252,7 +252,7 @@ public class Vec3fUtil
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	public static <T extends Vec3fBase> T div(float x1, float y1, float z1, float x2, float y2, float z2, T res)
+	public static <T extends Vec3fC> T div(float x1, float y1, float z1, float x2, float y2, float z2, T res)
 	{
 		res.set(x1 / x2, y1 / y2, z1 / z2);
 		return res;
@@ -307,7 +307,7 @@ public class Vec3fUtil
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	public static <T extends Vec3fBase> T revDiv(float x1, float y1, float z1, float x2, float y2, float z2, T res)
+	public static <T extends Vec3fC> T revDiv(float x1, float y1, float z1, float x2, float y2, float z2, T res)
 	{
 		res.set(x2 / x1, y2 / y1, z2 / z1);
 		return res;

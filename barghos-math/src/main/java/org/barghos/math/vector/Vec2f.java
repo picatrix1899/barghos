@@ -2,7 +2,7 @@ package org.barghos.math.vector;
 
 import org.barghos.core.api.tuple.TupfR;
 import org.barghos.core.api.tuple2.Tup2fR;
-import org.barghos.math.api.vector.Vec2fBase;
+import org.barghos.math.api.vector.Vec2fC;
 import org.barghos.math.api.vector.Vec2fR;
 
 /**
@@ -10,7 +10,7 @@ import org.barghos.math.api.vector.Vec2fR;
  * 
  * @author picatrix1899
  */
-public class Vec2f implements Vec2fBase
+public class Vec2f implements Vec2fC
 {
 	/**
 	 * The x component.
@@ -97,7 +97,7 @@ public class Vec2f implements Vec2fBase
 	
 	/** {@inheritDoc} */
 	@Override
-	public Vec2fBase setX(float x)
+	public Vec2fC setX(float x)
 	{
 		this.x = x;
 		
@@ -106,7 +106,7 @@ public class Vec2f implements Vec2fBase
 	
 	/** {@inheritDoc} */
 	@Override
-	public Vec2fBase setY(float y)
+	public Vec2fC setY(float y)
 	{
 		this.y = y;
 		

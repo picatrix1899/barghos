@@ -7,7 +7,7 @@ import org.barghos.core.api.tuple3.Tup3dC;
  * 
  * @author picatrix1899
  */
-public interface Point3dBase extends Point3dR, Tup3dC
+public interface Point3dC extends Point3dR, Tup3dC
 {
 	
 }

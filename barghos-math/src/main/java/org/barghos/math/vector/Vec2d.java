@@ -2,7 +2,7 @@ package org.barghos.math.vector;
 
 import org.barghos.core.api.tuple.TupdR;
 import org.barghos.core.api.tuple2.Tup2dR;
-import org.barghos.math.api.vector.Vec2dBase;
+import org.barghos.math.api.vector.Vec2dC;
 import org.barghos.math.api.vector.Vec2dR;
 
 /**
@@ -10,7 +10,7 @@ import org.barghos.math.api.vector.Vec2dR;
  * 
  * @author picatrix1899
  */
-public class Vec2d implements Vec2dBase
+public class Vec2d implements Vec2dC
 {
 	/**
 	 * The x component.
@@ -97,7 +97,7 @@ public class Vec2d implements Vec2dBase
 	
 	/** {@inheritDoc} */
 	@Override
-	public Vec2dBase setX(double x)
+	public Vec2dC setX(double x)
 	{
 		this.x = x;
 		
@@ -106,7 +106,7 @@ public class Vec2d implements Vec2dBase
 	
 	/** {@inheritDoc} */
 	@Override
-	public Vec2dBase setY(double y)
+	public Vec2dC setY(double y)
 	{
 		this.y = y;
 		

@@ -2,7 +2,7 @@ package org.barghos.math.vector;
 
 import org.barghos.core.api.tuple.TupfR;
 import org.barghos.core.api.tuple3.Tup3fR;
-import org.barghos.math.api.vector.Vec3fBase;
+import org.barghos.math.api.vector.Vec3fC;
 import org.barghos.math.api.vector.Vec3fR;
 
 /**
@@ -10,7 +10,7 @@ import org.barghos.math.api.vector.Vec3fR;
  * 
  * @author picatrix1899
  */
-public class Vec3f implements Vec3fBase
+public class Vec3f implements Vec3fC
 {
 	/**
 	 * The x component.
@@ -110,7 +110,7 @@ public class Vec3f implements Vec3fBase
 	
 	/** {@inheritDoc} */
 	@Override
-	public Vec3fBase setX(float x)
+	public Vec3fC setX(float x)
 	{
 		this.x = x;
 		
@@ -119,7 +119,7 @@ public class Vec3f implements Vec3fBase
 	
 	/** {@inheritDoc} */
 	@Override
-	public Vec3fBase setY(float y)
+	public Vec3fC setY(float y)
 	{
 		this.y = y;
 		
@@ -128,7 +128,7 @@ public class Vec3f implements Vec3fBase
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec3fBase setZ(float z)
+	public Vec3fC setZ(float z)
 	{
 		this.z = z;
 		

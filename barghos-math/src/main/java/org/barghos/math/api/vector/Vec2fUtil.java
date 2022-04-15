@@ -56,7 +56,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	public static <T extends Vec2fBase> T add(float x1, float y1, float x2, float y2, T res)
+	public static <T extends Vec2fC> T add(float x1, float y1, float x2, float y2, T res)
 	{
 		res.set(x1 + x2, y1 + y2);
 		
@@ -132,7 +132,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	public static <T extends Vec2fBase> T sub(float x1, float y1, float x2, float y2, T res)
+	public static <T extends Vec2fC> T sub(float x1, float y1, float x2, float y2, T res)
 	{
 		res.set(x1 - x2, y1 - y2);
 		
@@ -208,7 +208,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	public static <T extends Vec2fBase> T revSub(float x1, float y1, float x2, float y2, T res)
+	public static <T extends Vec2fC> T revSub(float x1, float y1, float x2, float y2, T res)
 	{
 		res.set(x2 - x1, y2 - y1);
 		
@@ -284,7 +284,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	public static <T extends Vec2fBase> T mul(float x1, float y1, float x2, float y2, T res)
+	public static <T extends Vec2fC> T mul(float x1, float y1, float x2, float y2, T res)
 	{
 		res.set(x1 * x2, y1 * y2);
 		
@@ -360,7 +360,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	public static <T extends Vec2fBase> T div(float x1, float y1, float x2, float y2, T res)
+	public static <T extends Vec2fC> T div(float x1, float y1, float x2, float y2, T res)
 	{
 		res.set(x1 / x2, y1 / y2);
 		
@@ -436,7 +436,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	public static <T extends Vec2fBase> T revDiv(float x1, float y1, float x2, float y2, T res)
+	public static <T extends Vec2fC> T revDiv(float x1, float y1, float x2, float y2, T res)
 	{
 		res.set(x2 / x1, y2 / y1);
 		
@@ -518,7 +518,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	public static <T extends Vec2fBase> T fma(float x, float y, float mX, float mY, float aX, float aY, T res)
+	public static <T extends Vec2fC> T fma(float x, float y, float mX, float mY, float aX, float aY, T res)
 	{
 		res.set(Math.fma(x, mX, aX), Math.fma(y, mY, aY));
 		return res;
@@ -602,7 +602,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	public static <T extends Vec2fBase> T mulAdd(float x, float y, float mX1, float mY1, float mX2, float mY2, T res)
+	public static <T extends Vec2fC> T mulAdd(float x, float y, float mX1, float mY1, float mX2, float mY2, T res)
 	{
 		res.set(Math.fma(mX1, mX2, x), Math.fma(mY1, mY2, y));
 		return res;
@@ -1063,7 +1063,7 @@ public class Vec2fUtil
 	 * 
 	 * @throws ArithmeticException Thrown when it is a zero-length vector.
 	 */
-	public static <T extends Vec2fBase> T normal(float x, float y, T res)
+	public static <T extends Vec2fC> T normal(float x, float y, T res)
 	{
 		float recLength = 1.0f / (float)Math.sqrt(Math.fma(x, x, y * y));
 		res.set(x * recLength, y * recLength);
@@ -1159,7 +1159,7 @@ public class Vec2fUtil
 	 * 
 	 * @throws ArithmeticException Might be thrown when the length is to close to zero.
 	 */
-	public static <T extends Vec2fBase> T normalSafe(float x, float y, T res)
+	public static <T extends Vec2fC> T normalSafe(float x, float y, T res)
 	{
 		if(x + y == 0.0f)
 		{
@@ -1261,7 +1261,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	public static <T extends Vec2fBase> T normalSafeWithMargin(float x, float y, float tolerance, T res)
+	public static <T extends Vec2fC> T normalSafeWithMargin(float x, float y, float tolerance, T res)
 	{
 		if(Math.abs(x) <= tolerance && Math.abs(y) <= tolerance)
 		{
@@ -1343,7 +1343,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	public static <T extends Vec2fBase> T invert(float x, float y, T res)
+	public static <T extends Vec2fC> T invert(float x, float y, T res)
 	{
 		res.set(-x, -y);
 		
@@ -1411,7 +1411,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	public static <T extends Vec2fBase> T inverse(float x, float y, float x2, float y2, T res)
+	public static <T extends Vec2fC> T inverse(float x, float y, float x2, float y2, T res)
 	{
 		res.set(x2 - x, y2 - y);
 		
@@ -1436,7 +1436,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The object returned from the functional interface.
 	 */
-	public static <T extends Vec2fBase> T inverse(float x, float y, float x2, float y2, FloatFunction2<T> func)
+	public static <T extends Vec2fC> T inverse(float x, float y, float x2, float y2, FloatFunction2<T> func)
 	{
 		return func.apply(x2 - x, y2 - y);
 	}
@@ -1477,7 +1477,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	public static <T extends Vec2fBase> T half(float x, float y, T res)
+	public static <T extends Vec2fC> T half(float x, float y, T res)
 	{
 		res.set(x * 0.5f, y * 0.5f);
 		
@@ -1500,7 +1500,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The object returned from the functional interface.
 	 */
-	public static <T extends Vec2fBase> T half(float x, float y, FloatFunction2<T> func)
+	public static <T extends Vec2fC> T half(float x, float y, FloatFunction2<T> func)
 	{
 		return func.apply(x * 0.5f, y * 0.5f);
 	}
@@ -1538,7 +1538,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	public static <T extends Vec2fBase> T rotate(float x, float y, float angle, T res)
+	public static <T extends Vec2fC> T rotate(float x, float y, float angle, T res)
 	{
 		float cos = (float)Math.cos(angle);
 		float sin = (float)Math.sin(angle);
@@ -1609,7 +1609,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	public static <T extends Vec2fBase> T project(float x, float y, float vX, float vY, T res)
+	public static <T extends Vec2fC> T project(float x, float y, float vX, float vY, T res)
 	{
 		float dot = Math.fma(x, vX, y * vY);
 		
@@ -1680,7 +1680,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	public static <T extends Vec2fBase> T reflect(float x, float y, float nX, float nY, T res)
+	public static <T extends Vec2fC> T reflect(float x, float y, float nX, float nY, T res)
 	{
 		float dot = -2 * Math.fma(x, nX, y * nY);
 		

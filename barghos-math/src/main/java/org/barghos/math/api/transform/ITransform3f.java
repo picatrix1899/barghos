@@ -1,7 +1,7 @@
 package org.barghos.math.api.transform;
 
 import org.barghos.core.api.tuple3.Tup3fR;
-import org.barghos.math.api.matrix.Mat4fBase;
+import org.barghos.math.api.matrix.Mat4fC;
 import org.barghos.math.api.util.BiVectorOrientation3f;
 import org.barghos.math.api.vector.Quat3f;
 import org.barghos.math.matrix.Mat4f;
@@ -53,11 +53,11 @@ public interface ITransform3f
 	Vec3f getScale(double alpha);
 	BiVectorOrientation3f getOrientation(double alpha);
 	
-	Mat4fBase getTranslationMatrix(double alpha);
-	Mat4fBase getScalingMatrix(double alpha);
-	Mat4fBase getRotationMatrix(double alpha);
+	Mat4fC getTranslationMatrix(double alpha);
+	Mat4fC getScalingMatrix(double alpha);
+	Mat4fC getRotationMatrix(double alpha);
 	
-	default Mat4fBase getTransformationMatrix(double alpha)
+	default Mat4fC getTransformationMatrix(double alpha)
 	{
 		return (Mat4f)getTranslationMatrix(alpha).mul(getRotationMatrix(alpha)).mul(getScalingMatrix(alpha));
 	}

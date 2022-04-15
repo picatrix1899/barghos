@@ -5,7 +5,7 @@ import org.barghos.core.api.tuple2.Tup2fC;
 import org.barghos.math.api.bounds.BoundingVolume2f;
 import org.barghos.math.api.point.Point2fR;
 import org.barghos.math.api.vector.Vec2fR;
-import org.barghos.math.api.vector.Vec2fBase;
+import org.barghos.math.api.vector.Vec2fC;
 import org.barghos.math.point.Point2f;
 import org.barghos.math.vector.Vec2f;
 
@@ -135,7 +135,7 @@ public class AABB2f implements BoundingVolume2f
 		return getSize(new Vec2f());
 	}
 	
-	public <T extends Vec2fBase> T getSize(T res)
+	public <T extends Vec2fC> T getSize(T res)
 	{
 		res.set(getSizeX(), getSizeY());
 		

@@ -2,7 +2,7 @@ package org.barghos.math.vector;
 
 import org.barghos.core.api.tuple.TupdR;
 import org.barghos.core.api.tuple3.Tup3dR;
-import org.barghos.math.api.vector.Vec3dBase;
+import org.barghos.math.api.vector.Vec3dC;
 import org.barghos.math.api.vector.Vec3dR;
 
 /**
@@ -10,7 +10,7 @@ import org.barghos.math.api.vector.Vec3dR;
  * 
  * @author picatrix1899
  */
-public class Vec3d implements Vec3dBase
+public class Vec3d implements Vec3dC
 {
 	/**
 	 * The x component.
@@ -110,7 +110,7 @@ public class Vec3d implements Vec3dBase
 	
 	/** {@inheritDoc} */
 	@Override
-	public Vec3dBase setX(double x)
+	public Vec3dC setX(double x)
 	{
 		this.x = x;
 		
@@ -119,7 +119,7 @@ public class Vec3d implements Vec3dBase
 	
 	/** {@inheritDoc} */
 	@Override
-	public Vec3dBase setY(double y)
+	public Vec3dC setY(double y)
 	{
 		this.y = y;
 		
@@ -128,7 +128,7 @@ public class Vec3d implements Vec3dBase
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec3dBase setZ(double z)
+	public Vec3dC setZ(double z)
 	{
 		this.z = z;
 		

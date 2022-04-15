@@ -4,7 +4,7 @@ import org.barghos.core.api.tuple2.Tup2dC;
 import org.barghos.core.api.tuple2.Tup2dR;
 import org.barghos.math.api.point.Point2dR;
 import org.barghos.math.api.vector.Vec2dR;
-import org.barghos.math.api.vector.Vec2dBase;
+import org.barghos.math.api.vector.Vec2dC;
 import org.barghos.math.point.Point2d;
 import org.barghos.math.vector.Vec2d;
 
@@ -134,7 +134,7 @@ public class AABB2d
 		return getSize(new Vec2d());
 	}
 	
-	public <T extends Vec2dBase> T getSize(T res)
+	public <T extends Vec2dC> T getSize(T res)
 	{
 		res.set(getSizeX(), getSizeY());
 		

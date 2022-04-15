@@ -7,7 +7,7 @@ import org.barghos.core.api.tuple2.Tup2fC;
  * 
  * @author picatrix1899
  */
-public interface Point2fBase extends Point2fR, Tup2fC
+public interface Point2fC extends Point2fR, Tup2fC
 {
 	
 }

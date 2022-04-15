@@ -1,7 +1,7 @@
 package org.barghos.math.transform;
 
 import org.barghos.core.api.tuple3.Tup3fR;
-import org.barghos.math.api.matrix.Mat4fBase;
+import org.barghos.math.api.matrix.Mat4fC;
 import org.barghos.math.api.transform.IHirarchicalTransform3f;
 import org.barghos.math.api.transform.ITransform3f;
 import org.barghos.math.api.util.BiVectorOrientation3f;
@@ -48,17 +48,17 @@ public class Transform3f implements IHirarchicalTransform3f
 		return this.orientation.clone();
 	}
 	
-	public Mat4fBase getTranslationMatrix(double alpha)
+	public Mat4fC getTranslationMatrix(double alpha)
 	{
 		return Mat4f.translation(this.pos);
 	}
 
-	public Mat4fBase getScalingMatrix(double alpha)
+	public Mat4fC getScalingMatrix(double alpha)
 	{
 		return Mat4f.scaling3d(this.scale);
 	}
 
-	public Mat4fBase getRotationMatrix(double alpha)
+	public Mat4fC getRotationMatrix(double alpha)
 	{
 		return this.orientation.toMatrix4f();
 	}
@@ -83,17 +83,17 @@ public class Transform3f implements IHirarchicalTransform3f
 		return getOrientation(alpha);
 	}
 	
-	public Mat4fBase getAbsoluteTranslationMatrix(double alpha)
+	public Mat4fC getAbsoluteTranslationMatrix(double alpha)
 	{
 		return Mat4f.translation(getAbsolutePos(alpha));
 	}
 
-	public Mat4fBase getAbsoluteScalingMatrix(double alpha)
+	public Mat4fC getAbsoluteScalingMatrix(double alpha)
 	{
 		return Mat4f.scaling3d(getAbsoluteScale(alpha));
 	}
 
-	public Mat4fBase getAbsoluteRotationMatrix(double alpha)
+	public Mat4fC getAbsoluteRotationMatrix(double alpha)
 	{
 		return getAbsoluteOrientation(alpha).toMatrix4f();
 	}

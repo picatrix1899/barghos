@@ -9,14 +9,14 @@ import org.barghos.core.api.tuple2.Tup2fC;
 import org.barghos.core.api.tuple3.Tup3fC;
 import org.barghos.core.api.tuple3.Tup3fR;
 import org.barghos.core.api.tuple4.Tup4fC;
-import org.barghos.math.api.matrix.Mat4fBase;
+import org.barghos.math.api.matrix.Mat4fC;
 import org.barghos.math.api.matrix.Mat4fR;
 import org.barghos.math.api.vector.Quat3f;
-import org.barghos.math.api.vector.Vec3fBase;
+import org.barghos.math.api.vector.Vec3fC;
 import org.barghos.math.vector.Vec3f;
 
 // MISSING_DOC
-public class Mat4f implements Mat4fBase
+public class Mat4f implements Mat4fC
 {
 	// MISSING_DOC
 	public float[][] m = new float[M4_ROWS][M4_COLUMNS];
@@ -35,7 +35,7 @@ public class Mat4f implements Mat4fBase
 	
 	/** {@inheritDoc}} */
 	@Override
-	public Mat4fBase set(Mat4fR mat)
+	public Mat4fC set(Mat4fR mat)
 	{
 		mat.toArray(this.m);
 		
@@ -44,7 +44,7 @@ public class Mat4f implements Mat4fBase
 	
 	/** {@inheritDoc}} */
 	@Override
-	public Mat4fBase setArray(float[][] mat)
+	public Mat4fC setArray(float[][] mat)
 	{
 		setRow(0, mat[0]);
 		setRow(1, mat[1]);
@@ -56,7 +56,7 @@ public class Mat4f implements Mat4fBase
 
 	/** {@inheritDoc}} */
 	@Override
-	public Mat4fBase setRow(int row, float x, float y, float z, float w)
+	public Mat4fC setRow(int row, float x, float y, float z, float w)
 	{
 		this.m[row][0] = x;
 		this.m[row][1] = y;
@@ -68,7 +68,7 @@ public class Mat4f implements Mat4fBase
 	
 	/** {@inheritDoc}} */
 	@Override
-	public Mat4fBase setColumn(int column, float x, float y, float z, float w)
+	public Mat4fC setColumn(int column, float x, float y, float z, float w)
 	{
 		this.m[0][column] = x;
 		this.m[1][column] = y;
@@ -80,7 +80,7 @@ public class Mat4f implements Mat4fBase
 	
 	/** {@inheritDoc}} */
 	@Override
-	public Mat4fBase setCell(int row, int column, float value)
+	public Mat4fC setCell(int row, int column, float value)
 	{
 		this.m[row][column] = value;
 		
@@ -211,13 +211,13 @@ public class Mat4f implements Mat4fBase
 	}
 	
 	// MISSING_DOC
-	public Mat4fBase invertN()
+	public Mat4fC invertN()
 	{
 		return clone().invert();
 	}
 	
 	// MISSING_DOC
-	public Mat4fBase invert()
+	public Mat4fC invert()
 	{
 		double determinant = getDeterminant();
 		
@@ -419,8 +419,8 @@ public class Mat4f implements Mat4fBase
 	// MISSING_DOC
 	public Mat4f initLookAt(Tup3fR origin, Tup3fR target, Tup3fR up)
 	{
-		Vec3fBase direction = new Vec3f(target).sub(origin).normal();
-		Vec3fBase left = direction.crossN(up);
+		Vec3fC direction = new Vec3f(target).sub(origin).normal();
+		Vec3fC left = direction.crossN(up);
 		
 		return initRotation(direction, left, up);
 	}
@@ -428,8 +428,8 @@ public class Mat4f implements Mat4fBase
 	// MISSING_DOC
 	public Mat4f initLookAtLH(Tup3fR origin, Tup3fR target, Tup3fR up)
 	{
-		Vec3fBase direction = new Vec3f(target).sub(origin).normal();
-		Vec3fBase left = direction.crossN(up);
+		Vec3fC direction = new Vec3f(target).sub(origin).normal();
+		Vec3fC left = direction.crossN(up);
 		
 		return initRotationLH(direction, left, up);
 	}
@@ -437,14 +437,14 @@ public class Mat4f implements Mat4fBase
 	// MISSING_DOC
 	public Mat4f initLookAtRH(Tup3fR origin, Tup3fR target, Tup3fR up)
 	{
-		Vec3fBase direction = new Vec3f(target).sub(origin).normal();
-		Vec3fBase left = direction.crossN(up);
+		Vec3fC direction = new Vec3f(target).sub(origin).normal();
+		Vec3fC left = direction.crossN(up);
 		
 		return initRotationRH(direction, left, up);
 	}
 	
 	// MISSING_DOC
-	public Mat4fBase mul(Mat4fR l)
+	public Mat4fC mul(Mat4fR l)
 	{
 		float[][] m_ = new float[M4_ROWS][M4_COLUMNS];
 		
@@ -464,7 +464,7 @@ public class Mat4f implements Mat4fBase
 	}
 	
 	// MISSING_DOC
-	public Mat4fBase mulN(Mat4fR r)
+	public Mat4fC mulN(Mat4fR r)
 	{
 		return clone().mul(r);
 	}

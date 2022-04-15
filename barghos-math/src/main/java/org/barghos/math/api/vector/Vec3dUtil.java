@@ -29,7 +29,7 @@ public class Vec3dUtil
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	public static <T extends Vec3dBase> T add(double x1, double y1, double z1, double x2, double y2, double z2, T res)
+	public static <T extends Vec3dC> T add(double x1, double y1, double z1, double x2, double y2, double z2, T res)
 	{
 		res.set(x1 + x2, y1 + y2, z1 + z2);
 		return res;
@@ -84,7 +84,7 @@ public class Vec3dUtil
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	public static <T extends Vec3dBase> T sub(double x1, double y1, double z1, double x2, double y2, double z2, T res)
+	public static <T extends Vec3dC> T sub(double x1, double y1, double z1, double x2, double y2, double z2, T res)
 	{
 		res.set(x1 - x2, y1 - y2, z1 - z2);
 		return res;
@@ -139,7 +139,7 @@ public class Vec3dUtil
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	public static <T extends Vec3dBase> T revSub(double x1, double y1, double z1, double x2, double y2, double z2, T res)
+	public static <T extends Vec3dC> T revSub(double x1, double y1, double z1, double x2, double y2, double z2, T res)
 	{
 		res.set(x2 - x1, y2 - y1, z2 - z1);
 		return res;
@@ -194,7 +194,7 @@ public class Vec3dUtil
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	public static <T extends Vec3dBase> T mul(double x1, double y1, double z1, double x2, double y2, double z2, T res)
+	public static <T extends Vec3dC> T mul(double x1, double y1, double z1, double x2, double y2, double z2, T res)
 	{
 		res.set(x1 * x2, y1 * y2, z1 * z2);
 		return res;
@@ -249,7 +249,7 @@ public class Vec3dUtil
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	public static <T extends Vec3dBase> T div(double x1, double y1, double z1, double x2, double y2, double z2, T res)
+	public static <T extends Vec3dC> T div(double x1, double y1, double z1, double x2, double y2, double z2, T res)
 	{
 		res.set(x1 / x2, y1 / y2, z1 / z2);
 		return res;
@@ -304,7 +304,7 @@ public class Vec3dUtil
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	public static <T extends Vec3dBase> T revDiv(double x1, double y1, double z1, double x2, double y2, double z2, T res)
+	public static <T extends Vec3dC> T revDiv(double x1, double y1, double z1, double x2, double y2, double z2, T res)
 	{
 		res.set(x2 / x1, y2 / y1, z2 / z1);
 		return res;
