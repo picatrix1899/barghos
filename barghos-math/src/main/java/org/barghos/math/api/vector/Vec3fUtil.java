@@ -1863,4 +1863,6 @@ public class Vec3fUtil
 	{
 		return Math.fma(x1, x2, Math.fma(y1, y2, z1 * z2));
 	}
+	
+	
 }

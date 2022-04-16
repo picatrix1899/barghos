@@ -473,7 +473,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 */
 	default Vec3fC normal()
 	{
-		return div(length());
+		return Vec3fUtil.normal(getX(), getY(), getZ(), this);
 	}
 	
 	/**
@@ -537,7 +537,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 */
 	default Vec3fC invert()
 	{
-		return set(-getX(), -getY(), -getZ());
+		return Vec3fUtil.invert(getX(), getY(), getZ(), this);
 	}
 	
 	/**
@@ -607,7 +607,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 */
 	default Vec3fC inverse(float x, float y, float z)
 	{
-		return set(x - getY(), y - getY(), z - getZ());
+		return Vec3fUtil.inverse(getX(), getY(), getZ(), x, y, z, this);
 	}
 	
 	/**
@@ -657,7 +657,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 */
 	default float dot(float x, float y, float z)
 	{
-		return getX() * x + getY() * y + getZ() * z;
+		return Vec3fUtil.dot(getX(), getY(), getZ(), x, y, z);
 	}
 	
 	/**

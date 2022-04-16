@@ -470,7 +470,7 @@ public interface Vec3dC extends Vec3dR, Tup3dC
 	 */
 	default Vec3dC normal()
 	{
-		return div(length());
+		return Vec3dUtil.normal(getX(), getY(), getZ(), this);
 	}
 	
 	/**
@@ -534,7 +534,7 @@ public interface Vec3dC extends Vec3dR, Tup3dC
 	 */
 	default Vec3dC invert()
 	{
-		return set(-getX(), -getY(), -getZ());
+		return Vec3dUtil.invert(getX(), getY(), getZ(), this);
 	}
 	
 	/**
@@ -604,7 +604,7 @@ public interface Vec3dC extends Vec3dR, Tup3dC
 	 */
 	default Vec3dC inverse(double x, double y, double z)
 	{
-		return set(x - getY(), y - getY(), z - getZ());
+		return Vec3dUtil.inverse(getX(), getY(), getZ(), x, y, z, this);
 	}
 	
 	/**
@@ -654,7 +654,7 @@ public interface Vec3dC extends Vec3dR, Tup3dC
 	 */
 	default double dot(double x, double y, double z)
 	{
-		return getX() * x + getY() * y + getZ() * z;
+		return Vec3dUtil.dot(getX(), getY(), getZ(), x, y, z);
 	}
 	
 	/**
@@ -1575,70 +1575,5 @@ public interface Vec3dC extends Vec3dR, Tup3dC
 	default Vec3dC signumN()
 	{
 		return clone().signum();
-	}
-	
-		/**
-	 * Adds the second given tuple to the current vector and saves the result in a new instance.
-	 * This operation does not alter the current vector.
-	 * 
-	 * <p>
-	 * Operation:
-	 * v + t
-	 * 
-	 * @param <T> The type of the query parameter.
-	 * 
-	 * @param t The second tuple to add to the current vector.
-	 * @param res The query parameter.
-	 * 
-	 * @return The query parameter with the result.
-	 */
-	default <T extends Vec3dC> T addR(Tup3dR t, T res)
-	{
-		return addR(t.getX(), t.getY(), t.getZ(), res);
-	}
-	
-	/**
-	 * Adds the second tuple defined by the given value to the current vector and saves the result in a new instance.
-	 * This operation does not alter the current vector.
-	 * 
-	 * <p>
-	 * Operation:
-	 * v + (value, value, value)
-	 * 
-	 * @param <T> The type of the query parameter.
-	 * 
-	 * @param value The value of all the components of the second tuple.
-	 * @param res The query parameter.
-	 * 
-	 * @return The query parameter with the result.
-	 */
-	default <T extends Vec3dC> T addR(double value, T res)
-	{
-		return addR(value, value, value, res);
-	}
-	
-	/**
-	 * Adds the second tuple defined by the given component values to the current vector and saves the result in
-	 * the query parameter.
-	 * the current vector is of.
-	 * This operation does not alter the current vector.
-	 * 
-	 * <p>
-	 * Operation:
-	 * v + (x, y, z)
-	 * 
-	 * @param <T> The type of the query parameter.
-	 * 
-	 * @param x The value of the x component of the second tuple.
-	 * @param y The value of the y component of the second tuple.
-	 * @param z The value of the z component of the second tuple.
-	 * @param res The query parameter.
-	 * 
-	 * @return The query parameter with the result.
-	 */
-	default <T extends Vec3dC> T addR(double x, double y, double z, T res)
-	{
-		res.set(x + x, y + y, z + z);
-		return res;
 	}
 }
