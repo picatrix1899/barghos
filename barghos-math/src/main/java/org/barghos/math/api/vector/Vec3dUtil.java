@@ -1524,7 +1524,7 @@ public class Vec3dUtil
 	 * 
 	 * <p>
 	 * Operation:
-	 * -(x, y)
+	 * -(x, y, z)
 	 * 
 	 * @param <T> The type of the result object.
 	 * 
@@ -1646,6 +1646,7 @@ public class Vec3dUtil
 	/**
 	 * Calculates the half of the vector (x, y, z).
 	 * The result is saved in the extraction parameter object.
+	 * 
 	 * <p>
 	 * Operation:
 	 * (x, y, z) / 2

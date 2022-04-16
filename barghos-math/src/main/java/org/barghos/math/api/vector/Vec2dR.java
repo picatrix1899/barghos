@@ -2,7 +2,6 @@ package org.barghos.math.api.vector;
 
 import org.barghos.core.api.tuple2.Tup2dR;
 import org.barghos.core.api.tuple2.Tup2oC;
-import org.barghos.core.api.tuple2.Tup2oR;
 import org.barghos.core.api.util.function.GenericFunction2;
 
 /**
@@ -191,19 +190,6 @@ public interface Vec2dR extends Tup2dR
 	 * Determines the smallest value of the components and returns the value and the index of the component.
 	 * The index returned is limited to the range of 0 to getDimensions() - 1.
 	 * If two or more components have the same value the first index will be returned.
-	 * The returned tuple is immutable.
-	 * 
-	 * @return The smallest value of the components and the index of the corresponding component.
-	 */
-	default Tup2oR<Double,Integer> min()
-	{
-		return Vec2dUtil.min(getX(), getY());
-	}
-	
-	/**
-	 * Determines the smallest value of the components and returns the value and the index of the component.
-	 * The index returned is limited to the range of 0 to getDimensions() - 1.
-	 * If two or more components have the same value the first index will be returned.
 	 * This version utilizes a query parameter that receives the result and will be returned.
 	 * 
 	 * @param res The query parameter for the result.
@@ -250,19 +236,6 @@ public interface Vec2dR extends Tup2dR
 	default int minComponent()
 	{
 		return Vec2dUtil.minComponent(getX(), getY());
-	}
-	
-	/**
-	 * Determines the greatest value of the components and returns the value and the index of the component.
-	 * The index returned is limited to the range of 0 to getDimensions() - 1.
-	 * If two or more components have the same value the first index will be returned.
-	 * The returned tuple is immutable.
-	 * 
-	 * @return The greatest value of the components and the index of the corresponding component.
-	 */
-	default Tup2oR<Double,Integer> max()
-	{
-		return Vec2dUtil.max(getX(), getY());
 	}
 	
 	/**
