@@ -3,6 +3,7 @@ package org.barghos.math.api.vector;
 import static org.barghos.core.api.tuple.TupleConstants.*;
 
 import org.barghos.core.api.tuple2.Tup2oC;
+import org.barghos.core.api.tuple3.Tup3dR;
 import org.barghos.core.api.util.ExtractParam;
 import org.barghos.core.api.util.function.DoubleFunction3;
 import org.barghos.core.api.util.function.GenericFunction2;
@@ -1862,5 +1863,629 @@ public class Vec3dUtil
 	public static double dot(double x1, double y1, double z1, double x2, double y2, double z2)
 	{
 		return Math.fma(x1, x2, Math.fma(y1, y2, z1 * z2));
+	}
+	
+	/**
+	 * Performs a fast linear interpolation between the two vectors t1 and t2.
+	 * This sacrifices for reduced calculations the precision and the applicability.
+	 * The interpolation happens over the interpolator value alpha in the range of 0.0 to 1.0
+	 * where a value of 0.0 is exacly t1 and a value of 1.0 is aproximatly t2. As the fast
+	 * lerp sacrifices a lot of precision a value of 1.0 will very likely not yield the values of t2
+	 * but a biased result.
+	 * The result is saved in the result array.
+	 * 
+	 * <p>
+	 * Operation:
+	 * t1 + ( t2 - t1 ) * alpha
+	 * 
+	 * @param t1 The first vector.
+	 * @param t2 The second vector.
+	 * @param alpha The interpolator in range of 0.0 to 1.0.
+	 * @param res The result array.
+	 * 
+	 * @return The result array with the result.
+	 */
+	public static double[] fastLerp(Tup3dR t1, Tup3dR t2, double alpha, @ExtractParam double[] res)
+	{
+		return fastLerp(t1.getX(), t1.getY(), t1.getZ(), t2.getX(), t2.getY(), t2.getZ(), alpha, res);
+	}
+	
+	/**
+	 * Performs a fast linear interpolation between the two vectors t1 and (x2, y2, z2).
+	 * This sacrifices for reduced calculations the precision and the applicability.
+	 * The interpolation happens over the interpolator value alpha in the range of 0.0 to 1.0
+	 * where a value of 0.0 is exacly t1 and a value of 1.0 is aproximatly (x2, y2, z2). As the fast
+	 * lerp sacrifices a lot of precision a value of 1.0 will very likely not yield the values of (x2, y2, z2)
+	 * but a biased result.
+	 * The result is saved in the result array.
+	 * 
+	 * <p>
+	 * Operation:
+	 * t1 + ( (x2, y2, z2) - t1 ) * alpha
+	 * 
+	 * @param t1 The first vector.
+	 * @param x2 The value of the x component of the second vector.
+	 * @param y2 The value of the y component of the second vector.
+	 * @param z2 The value of the z component of the second vector.
+	 * @param alpha The interpolator in range of 0.0 to 1.0.
+	 * @param res The result array.
+	 * 
+	 * @return The result array with the result.
+	 */
+	public static double[] fastLerp(Tup3dR t1, double x2, double y2, double z2, double alpha, @ExtractParam double[] res)
+	{
+		return fastLerp(t1.getX(), t1.getY(), t1.getZ(), x2, y2, z2, alpha, res);
+	}
+	
+	/**
+	 * Performs a fast linear interpolation between the two vectors (x1, y1, z1) and t2.
+	 * This sacrifices for reduced calculations the precision and the applicability.
+	 * The interpolation happens over the interpolator value alpha in the range of 0.0 to 1.0
+	 * where a value of 0.0 is exacly (x1, y1, z1) and a value of 1.0 is aproximatly t2. As the fast
+	 * lerp sacrifices a lot of precision a value of 1.0 will very likely not yield the values of t2
+	 * but a biased result.
+	 * The result is saved in the result array.
+	 * 
+	 * <p>
+	 * Operation:
+	 * (x1, y1, z1) + ( t2 - (x1, y1, z1) ) * alpha
+	 * 
+	 * @param x1 The value of the x component of the first vector.
+	 * @param y1 The value of the y component of the first vector.
+	 * @param z1 The value of the z component of the first vector.
+	 * @param t2 The second vector.
+	 * @param alpha The interpolator in range of 0.0 to 1.0.
+	 * @param res The result array.
+	 * 
+	 * @return The result array with the result.
+	 */
+	public static double[] fastLerp(double x1, double y1, double z1, Tup3dR t2, double alpha, @ExtractParam double[] res)
+	{
+		return fastLerp(x1, y1, z1, t2.getX(), t2.getY(), t2.getZ(), alpha, res);
+	}
+	
+	/**
+	 * Performs a fast linear interpolation between the two vectors (x1, y1, z1) and (x2, y2, z2).
+	 * This sacrifices for reduced calculations the precision and the applicability.
+	 * The interpolation happens over the interpolator value alpha in the range of 0.0 to 1.0
+	 * where a value of 0.0 is exacly (x1, y1, z1) and a value of 1.0 is aproximatly (x2, y2, z2). As the fast
+	 * lerp sacrifices a lot of precision a value of 1.0 will very likely not yield the values of (x2, y2, z2)
+	 * but a biased result.
+	 * The result is saved in the result array.
+	 * 
+	 * <p>
+	 * Operation:
+	 * (x1, y1, z1) + ( (x2, y2, z2) - (x1, y1, z1) ) * alpha
+	 * 
+	 * @param x1 The value of the x component of the first vector.
+	 * @param y1 The value of the y component of the first vector.
+	 * @param z1 The value of the z component of the first vector.
+	 * @param x2 The value of the x component of the second vector.
+	 * @param y2 The value of the y component of the second vector.
+	 * @param z2 The value of the z component of the second vector.
+	 * @param alpha The interpolator in range of 0.0 to 1.0.
+	 * @param res The result array.
+	 * 
+	 * @return The result array with the result.
+	 */
+	public static double[] fastLerp(double x1, double y1, double z1, double x2, double y2, double z2, double alpha, @ExtractParam double[] res)
+	{
+		res[COMP_X] = Math.fma(alpha, x2 - x1, x1);
+		res[COMP_Y] = Math.fma(alpha, y2 - y1, y1);
+		res[COMP_Z] = Math.fma(alpha, z2 - z1, z1);
+		
+		return res;
+	}
+	
+	/**
+	 * Performs a fast linear interpolation between the two vectors t1 and t2.
+	 * This sacrifices for reduced calculations the precision and the applicability.
+	 * The interpolation happens over the interpolator value alpha in the range of 0.0 to 1.0
+	 * where a value of 0.0 is exacly t1 and a value of 1.0 is aproximatly t2. As the fast
+	 * lerp sacrifices a lot of precision a value of 1.0 will very likely not yield the values of t2
+	 * but a biased result.
+	 * The result is saved in the extraction parameter object.
+	 * 
+	 * <p>
+	 * Operation:
+	 * t1 + ( t2 - t1 ) * alpha
+	 * 
+	 * @param t1 The first vector.
+	 * @param t2 The second vector.
+	 * @param alpha The interpolator in range of 0.0 to 1.0.
+	 * @param res The extraction parameter object.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	public static <T extends Vec3dC> T fastLerp(Tup3dR t1, Tup3dR t2, double alpha, @ExtractParam T res)
+	{
+		return fastLerp(t1.getX(), t1.getY(), t1.getZ(), t2.getX(), t2.getY(), t2.getZ(), alpha, res);
+	}
+	
+	/**
+	 * Performs a fast linear interpolation between the two vectors t1 and (x2, y2, z2).
+	 * This sacrifices for reduced calculations the precision and the applicability.
+	 * The interpolation happens over the interpolator value alpha in the range of 0.0 to 1.0
+	 * where a value of 0.0 is exacly t1 and a value of 1.0 is aproximatly (x2, y2, z2). As the fast
+	 * lerp sacrifices a lot of precision a value of 1.0 will very likely not yield the values of (x2, y2, z2)
+	 * but a biased result.
+	 * The result is saved in the extraction parameter object.
+	 * 
+	 * <p>
+	 * Operation:
+	 * t1 + ( (x2, y2, z2) - t1 ) * alpha
+	 * 
+	 * @param t1 The first vector.
+	 * @param x2 The value of the x component of the second vector.
+	 * @param y2 The value of the y component of the second vector.
+	 * @param z2 The value of the z component of the second vector.
+	 * @param alpha The interpolator in range of 0.0 to 1.0.
+	 * @param res The extraction parameter object.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	public static <T extends Vec3dC> T fastLerp(Tup3dR t1, double x2, double y2, double z2, double alpha, @ExtractParam T res)
+	{
+		return fastLerp(t1.getX(), t1.getY(), t1.getZ(), x2, y2, z2, alpha, res);
+	}
+	
+	/**
+	 * Performs a fast linear interpolation between the two vectors (x1, y1, z1) and t2.
+	 * This sacrifices for reduced calculations the precision and the applicability.
+	 * The interpolation happens over the interpolator value alpha in the range of 0.0 to 1.0
+	 * where a value of 0.0 is exacly (x1, y1, z1) and a value of 1.0 is aproximatly t2. As the fast
+	 * lerp sacrifices a lot of precision a value of 1.0 will very likely not yield the values of t2
+	 * but a biased result.
+	 * The result is saved in the extraction parameter object.
+	 * 
+	 * <p>
+	 * Operation:
+	 * (x1, y1, z1) + ( t2 - (x1, y1, z1) ) * alpha
+	 * 
+	 * @param x1 The value of the x component of the first vector.
+	 * @param y1 The value of the y component of the first vector.
+	 * @param z1 The value of the z component of the first vector.
+	 * @param t2 The second vector.
+	 * @param alpha The interpolator in range of 0.0 to 1.0.
+	 * @param res The extraction parameter object.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	public static <T extends Vec3dC> T fastLerp(double x1, double y1, double z1, Tup3dR t2, double alpha, @ExtractParam T res)
+	{
+		return fastLerp(x1, y1, z1, t2.getX(), t2.getY(), t2.getZ(), alpha, res);
+	}
+	
+	/**
+	 * Performs a fast linear interpolation between the two vectors (x1, y1, z1) and (x2, y2, z2).
+	 * This sacrifices for reduced calculations the precision and the applicability.
+	 * The interpolation happens over the interpolator value alpha in the range of 0.0 to 1.0
+	 * where a value of 0.0 is exacly (x1, y1, z1) and a value of 1.0 is aproximatly (x2, y2, z2). As the fast
+	 * lerp sacrifices a lot of precision a value of 1.0 will very likely not yield the values of (x2, y2, z2)
+	 * but a biased result.
+	 * The result is saved in the extraction parameter object.
+	 * 
+	 * <p>
+	 * Operation:
+	 * (x1, y1, z1) + ( (x2, y2, z2) - (x1, y1, z1) ) * alpha
+	 * 
+	 * @param x1 The value of the x component of the first vector.
+	 * @param y1 The value of the y component of the first vector.
+	 * @param z1 The value of the z component of the first vector.
+	 * @param x2 The value of the x component of the second vector.
+	 * @param y2 The value of the y component of the second vector.
+	 * @param z2 The value of the z component of the second vector.
+	 * @param alpha The interpolator in range of 0.0 to 1.0.
+	 * @param res The extraction parameter object.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	public static <T extends Vec3dC> T fastLerp(double x1, double y1, double z1, double x2, double y2, double z2, double alpha, @ExtractParam T res)
+	{
+		res.set(Math.fma(alpha, x2 - x1, x1), Math.fma(alpha, y2 - y1, y1), Math.fma(alpha, z2 - z1, z1));
+		
+		return res;
+	}
+	
+	/**
+	 * Performs a fast linear interpolation between the two vectors t1 and t2.
+	 * This sacrifices for reduced calculations the precision and the applicability.
+	 * The interpolation happens over the interpolator value alpha in the range of 0.0 to 1.0
+	 * where a value of 0.0 is exacly t1 and a value of 1.0 is aproximatly t2. As the fast
+	 * lerp sacrifices a lot of precision a value of 1.0 will very likely not yield the values of t2
+	 * but a biased result.
+	 * The result is relayed to the functional interface implementation.
+	 * 
+	 * <p>
+	 * Operation:
+	 * t1 + ( t2 - t1 ) * alpha
+	 * 
+	 * @param t1 The first vector.
+	 * @param t2 The second vector.
+	 * @param alpha The interpolator in range of 0.0 to 1.0.
+	 * @param func A functional interface implementation to take the result.
+	 * 
+	 * @return The object returned from the functional interface.
+	 */
+	public static <T> T fastLerp(Tup3dR t1, Tup3dR t2, double alpha, @ExtractParam DoubleFunction3<T> func)
+	{
+		return fastLerp(t1.getX(), t1.getY(), t1.getZ(), t2.getX(), t2.getY(), t2.getZ(), alpha, func);
+	}
+	
+	/**
+	 * Performs a fast linear interpolation between the two vectors t1 and (x2, y2, z2).
+	 * This sacrifices for reduced calculations the precision and the applicability.
+	 * The interpolation happens over the interpolator value alpha in the range of 0.0 to 1.0
+	 * where a value of 0.0 is exacly t1 and a value of 1.0 is aproximatly (x2, y2, z2). As the fast
+	 * lerp sacrifices a lot of precision a value of 1.0 will very likely not yield the values of (x2, y2, z2)
+	 * but a biased result.
+	 * The result is relayed to the functional interface implementation.
+	 * 
+	 * <p>
+	 * Operation:
+	 * t1 + ( (x2, y2, z2) - t1 ) * alpha
+	 * 
+	 * @param t1 The first vector.
+	 * @param x2 The value of the x component of the second vector.
+	 * @param y2 The value of the y component of the second vector.
+	 * @param z2 The value of the z component of the second vector.
+	 * @param alpha The interpolator in range of 0.0 to 1.0.
+	 * @param func A functional interface implementation to take the result.
+	 * 
+	 * @return The object returned from the functional interface.
+	 */
+	public static <T> T fastLerp(Tup3dR t1, double x2, double y2, double z2, double alpha, @ExtractParam DoubleFunction3<T> func)
+	{
+		return fastLerp(t1.getX(), t1.getY(), t1.getZ(), x2, y2, z2, alpha, func);
+	}
+	
+	/**
+	 * Performs a fast linear interpolation between the two vectors (x1, y1, z1) and t2.
+	 * This sacrifices for reduced calculations the precision and the applicability.
+	 * The interpolation happens over the interpolator value alpha in the range of 0.0 to 1.0
+	 * where a value of 0.0 is exacly (x1, y1, z1) and a value of 1.0 is aproximatly t2. As the fast
+	 * lerp sacrifices a lot of precision a value of 1.0 will very likely not yield the values of t2
+	 * but a biased result.
+	 * The result is relayed to the functional interface implementation.
+	 * 
+	 * <p>
+	 * Operation:
+	 * (x1, y1, z1) + ( t2 - (x1, y1, z1) ) * alpha
+	 * 
+	 * @param x1 The value of the x component of the first vector.
+	 * @param y1 The value of the y component of the first vector.
+	 * @param z1 The value of the z component of the first vector.
+	 * @param t2 The second vector.
+	 * @param alpha The interpolator in range of 0.0 to 1.0.
+	 * @param func A functional interface implementation to take the result.
+	 * 
+	 * @return The object returned from the functional interface.
+	 */
+	public static <T> T fastLerp(double x1, double y1, double z1, Tup3dR t2, double alpha, @ExtractParam DoubleFunction3<T> func)
+	{
+		return fastLerp(x1, y1, z1, t2.getX(), t2.getY(), t2.getZ(), alpha, func);
+	}
+	
+	/**
+	 * Performs a fast linear interpolation between the two vectors (x1, y1, z1) and (x2, y2, z2).
+	 * This sacrifices for reduced calculations the precision and the applicability.
+	 * The interpolation happens over the interpolator value alpha in the range of 0.0 to 1.0
+	 * where a value of 0.0 is exacly (x1, y1, z1) and a value of 1.0 is aproximatly (x2, y2, z2). As the fast
+	 * lerp sacrifices a lot of precision a value of 1.0 will very likely not yield the values of (x2, y2, z2)
+	 * but a biased result.
+	 * The result is relayed to the functional interface implementation.
+	 * 
+	 * <p>
+	 * Operation:
+	 * (x1, y1, z1) + ( (x2, y2, z2) - (x1, y1, z1) ) * alpha
+	 * 
+	 * @param x1 The value of the x component of the first vector.
+	 * @param y1 The value of the y component of the first vector.
+	 * @param z1 The value of the z component of the first vector.
+	 * @param x2 The value of the x component of the second vector.
+	 * @param y2 The value of the y component of the second vector.
+	 * @param z2 The value of the z component of the second vector.
+	 * @param alpha The interpolator in range of 0.0 to 1.0.
+	 * @param func A functional interface implementation to take the result.
+	 * 
+	 * @return The object returned from the functional interface.
+	 */
+	public static <T> T fastLerp(double x1, double y1, double z1, double x2, double y2, double z2, double alpha, @ExtractParam DoubleFunction3<T> func)
+	{
+		return func.apply(Math.fma(alpha, x2 - x1, x1), Math.fma(alpha, y2 - y1, y1), Math.fma(alpha, z2 - z1, z1));
+	}
+	
+	/**
+	 * Performs a linear interpolation between the two vectors t1 and t2.
+	 * The interpolation happens over the interpolator value alpha in the range of 0.0 to 1.0
+	 * where a value of 0.0 is exacly t1 and a value of 1.0 is exactly t2.
+	 * The result is saved in the result array.
+	 * 
+	 * <p>
+	 * Operation:
+	 * (1.0 - alpha) * t1 + alpha * t2
+	 * 
+	 * @param t1 The first vector.
+	 * @param t2 The second vector.
+	 * @param alpha The interpolator in range of 0.0 to 1.0.
+	 * @param res The result array.
+	 * 
+	 * @return The result array with the result.
+	 */
+	public static double[] lerp(Tup3dR t1, Tup3dR t2, double alpha, @ExtractParam double[] res)
+	{
+		return lerp(t1.getX(), t1.getY(), t1.getZ(), t2.getX(), t2.getY(), t2.getZ(), alpha, res);
+	}
+	
+	/**
+	 * Performs a linear interpolation between the two vectors t1 and (x2, y2, z2).
+	 * The interpolation happens over the interpolator value alpha in the range of 0.0 to 1.0
+	 * where a value of 0.0 is exacly t1 and a value of 1.0 is exactly (x2, y2, z2).
+	 * The result is saved in the result array.
+	 * 
+	 * <p>
+	 * Operation:
+	 * (1.0 - alpha) * t1 + alpha * (x2, y2, z2)
+	 * 
+	 * @param t1 The first vector.
+	 * @param x2 The value of the x component of the second vector.
+	 * @param y2 The value of the y component of the second vector.
+	 * @param z2 The value of the z component of the second vector.
+	 * @param alpha The interpolator in range of 0.0 to 1.0.
+	 * @param res The result array.
+	 * 
+	 * @return The result array with the result.
+	 */
+	public static double[] lerp(Tup3dR t1, double x2, double y2, double z2, double alpha, @ExtractParam double[] res)
+	{
+		return lerp(t1.getX(), t1.getY(), t1.getZ(), x2, y2, z2, alpha, res);
+	}
+	
+	/**
+	 * Performs a linear interpolation between the two vectors (x1, y1, z1) and t2.
+	 * The interpolation happens over the interpolator value alpha in the range of 0.0 to 1.0
+	 * where a value of 0.0 is exacly (x1, y1, z1) and a value of 1.0 is exactly t2.
+	 * The result is saved in the result array.
+	 * 
+	 * <p>
+	 * Operation:
+	 * (1.0 - alpha) * (x1, y1, z1) + alpha * t2
+	 * 
+	 * @param x1 The value of the x component of the first vector.
+	 * @param y1 The value of the y component of the first vector.
+	 * @param z1 The value of the z component of the first vector.
+	 * @param t2 The second vector.
+	 * @param alpha The interpolator in range of 0.0 to 1.0.
+	 * @param res The result array.
+	 * 
+	 * @return The result array with the result.
+	 */
+	public static double[] lerp(double x1, double y1, double z1, Tup3dR t2, double alpha, @ExtractParam double[] res)
+	{
+		return lerp(x1, y1, z1, t2.getX(), t2.getY(), t2.getZ(), alpha, res);
+	}
+	
+	/**
+	 * Performs a linear interpolation between the two vectors (x1, y1, z1) and (x2, y2, z2).
+	 * The interpolation happens over the interpolator value alpha in the range of 0.0 to 1.0
+	 * where a value of 0.0 is exacly (x1, y1, z1) and a value of 1.0 is exactly (x2, y2, z2).
+	 * The result is saved in the result array.
+	 * 
+	 * <p>
+	 * Operation:
+	 * (1.0 - alpha) * (x1, y1, z1) + alpha * (x2, y2, z2)
+	 * 
+	 * @param x1 The value of the x component of the first vector.
+	 * @param y1 The value of the y component of the first vector.
+	 * @param z1 The value of the z component of the first vector.
+	 * @param x2 The value of the x component of the second vector.
+	 * @param y2 The value of the y component of the second vector.
+	 * @param z2 The value of the z component of the second vector.
+	 * @param alpha The interpolator in range of 0.0 to 1.0.
+	 * @param res The result array.
+	 * 
+	 * @return The result array with the result.
+	 */
+	public static double[] lerp(double x1, double y1, double z1, double x2, double y2, double z2, double alpha, @ExtractParam double[] res)
+	{
+		res[COMP_X] = Math.fma(1.0 - alpha, x1, alpha * x2);
+		res[COMP_Y] = Math.fma(1.0 - alpha, y1, alpha * y2);
+		res[COMP_Z] = Math.fma(1.0 - alpha, z1, alpha * z2);
+		
+		return res;
+	}
+	
+	/**
+	 * Performs a linear interpolation between the two vectors t1 and t2.
+	 * The interpolation happens over the interpolator value alpha in the range of 0.0 to 1.0
+	 * where a value of 0.0 is exacly t1 and a value of 1.0 is exactly t2.
+	 * The result is saved in the extraction parameter object.
+	 * 
+	 * <p>
+	 * Operation:
+	 * (1.0 - alpha) * t1 + alpha * t2
+	 * 
+	 * @param t1 The first vector.
+	 * @param t2 The second vector.
+	 * @param alpha The interpolator in range of 0.0 to 1.0.
+	 * @param res The extraction parameter object.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	public static <T extends Vec3dC> T lerp(Tup3dR t1, Tup3dR t2, double alpha, @ExtractParam T res)
+	{
+		return lerp(t1.getX(), t1.getY(), t1.getZ(), t2.getX(), t2.getY(), t2.getZ(), alpha, res);
+	}
+	
+	/**
+	 * Performs a linear interpolation between the two vectors t1 and (x2, y2, z2).
+	 * The interpolation happens over the interpolator value alpha in the range of 0.0 to 1.0
+	 * where a value of 0.0 is exacly t1 and a value of 1.0 is exactly (x2, y2, z2).
+	 * The result is saved in the extraction parameter object.
+	 * 
+	 * <p>
+	 * Operation:
+	 * (1.0 - alpha) * t1 + alpha * (x2, y2, z2)
+	 * 
+	 * @param t1 The first vector.
+	 * @param x2 The value of the x component of the second vector.
+	 * @param y2 The value of the y component of the second vector.
+	 * @param z2 The value of the z component of the second vector.
+	 * @param alpha The interpolator in range of 0.0 to 1.0.
+	 * @param res The extraction parameter object.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	public static <T extends Vec3dC> T lerp(Tup3dR t1, double x2, double y2, double z2, double alpha, @ExtractParam T res)
+	{
+		return lerp(t1.getX(), t1.getY(), t1.getZ(), x2, y2, z2, alpha, res);
+	}
+	
+	/**
+	 * Performs a linear interpolation between the two vectors (x1, y1, z1) and t2.
+	 * The interpolation happens over the interpolator value alpha in the range of 0.0 to 1.0
+	 * where a value of 0.0 is exacly (x1, y1, z1) and a value of 1.0 is exactly t2.
+	 * The result is saved in the extraction parameter object.
+	 * 
+	 * <p>
+	 * Operation:
+	 * (1.0 - alpha) * (x1, y1, z1) + alpha * t2
+	 * 
+	 * @param x1 The value of the x component of the first vector.
+	 * @param y1 The value of the y component of the first vector.
+	 * @param z1 The value of the z component of the first vector.
+	 * @param t2 The second vector.
+	 * @param alpha The interpolator in range of 0.0 to 1.0.
+	 * @param res The extraction parameter object.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	public static <T extends Vec3dC> T lerp(double x1, double y1, double z1, Tup3dR t2, double alpha, @ExtractParam T res)
+	{
+		return lerp(x1, y1, z1, t2.getX(), t2.getY(), t2.getZ(), alpha, res);
+	}
+	
+	/**
+	 * Performs a linear interpolation between the two vectors (x1, y1, z1) and (x2, y2, z2).
+	 * The interpolation happens over the interpolator value alpha in the range of 0.0 to 1.0
+	 * where a value of 0.0 is exacly (x1, y1, z1) and a value of 1.0 is exactly (x2, y2, z2).
+	 * The result is saved in the extraction parameter object.
+	 * 
+	 * <p>
+	 * Operation:
+	 * (1.0 - alpha) * (x1, y1, z1) + alpha * (x2, y2, z2)
+	 * 
+	 * @param x1 The value of the x component of the first vector.
+	 * @param y1 The value of the y component of the first vector.
+	 * @param z1 The value of the z component of the first vector.
+	 * @param x2 The value of the x component of the second vector.
+	 * @param y2 The value of the y component of the second vector.
+	 * @param z2 The value of the z component of the second vector.
+	 * @param alpha The interpolator in range of 0.0 to 1.0.
+	 * @param res The extraction parameter object.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	public static <T extends Vec3dC> T lerp(double x1, double y1, double z1, double x2, double y2, double z2, double alpha, @ExtractParam T res)
+	{
+		res.set(Math.fma(1.0 - alpha, x1, alpha * x2), Math.fma(1.0 - alpha, y1, alpha * y2), Math.fma(1.0 - alpha, z1, alpha * z2));
+		
+		return res;
+	}
+	
+	/**
+	 * Performs a linear interpolation between the two vectors t1 and t2.
+	 * The interpolation happens over the interpolator value alpha in the range of 0.0 to 1.0
+	 * where a value of 0.0 is exacly t1 and a value of 1.0 is exactly t2.
+	 * The result is relayed to the functional interface implementation.
+	 * 
+	 * <p>
+	 * Operation:
+	 * (1.0 - alpha) * t1 + alpha * t2
+	 * 
+	 * @param t1 The first vector.
+	 * @param t2 The second vector.
+	 * @param alpha The interpolator in range of 0.0 to 1.0.
+	 * @param func A functional interface implementation to take the result.
+	 * 
+	 * @return The object returned from the functional interface.
+	 */
+	public static <T> T lerp(Tup3dR t1, Tup3dR t2, double alpha, @ExtractParam DoubleFunction3<T> func)
+	{
+		return lerp(t1.getX(), t1.getY(), t1.getZ(), t2.getX(), t2.getY(), t2.getZ(), alpha, func);
+	}
+	
+	/**
+	 * Performs a linear interpolation between the two vectors t1 and (x2, y2, z2).
+	 * The interpolation happens over the interpolator value alpha in the range of 0.0 to 1.0
+	 * where a value of 0.0 is exacly t1 and a value of 1.0 is exactly (x2, y2, z2).
+	 * The result is relayed to the functional interface implementation.
+	 * 
+	 * <p>
+	 * Operation:
+	 * (1.0 - alpha) * t1 + alpha * (x2, y2, z2)
+	 * 
+	 * @param t1 The first vector.
+	 * @param x2 The value of the x component of the second vector.
+	 * @param y2 The value of the y component of the second vector.
+	 * @param z2 The value of the z component of the second vector.
+	 * @param alpha The interpolator in range of 0.0 to 1.0.
+	 * @param func A functional interface implementation to take the result.
+	 * 
+	 * @return The object returned from the functional interface.
+	 */
+	public static <T> T lerp(Tup3dR t1, double x2, double y2, double z2, double alpha, @ExtractParam DoubleFunction3<T> func)
+	{
+		return lerp(t1.getX(), t1.getY(), t1.getZ(), x2, y2, z2, alpha, func);
+	}
+	
+	/**
+	 * Performs a linear interpolation between the two vectors (x1, y1, z1) and t2.
+	 * The interpolation happens over the interpolator value alpha in the range of 0.0 to 1.0
+	 * where a value of 0.0 is exacly (x1, y1, z1) and a value of 1.0 is exactly t2.
+	 * The result is relayed to the functional interface implementation.
+	 * 
+	 * <p>
+	 * Operation:
+	 * (1.0 - alpha) * (x1, y1, z1) + alpha * t2
+	 * 
+	 * @param x1 The value of the x component of the first vector.
+	 * @param y1 The value of the y component of the first vector.
+	 * @param z1 The value of the z component of the first vector.
+	 * @param t2 The second vector.
+	 * @param alpha The interpolator in range of 0.0 to 1.0.
+	 * @param func A functional interface implementation to take the result.
+	 * 
+	 * @return The object returned from the functional interface.
+	 */
+	public static <T> T lerp(double x1, double y1, double z1, Tup3dR t2, double alpha, @ExtractParam DoubleFunction3<T> func)
+	{
+		return lerp(x1, y1, z1, t2.getX(), t2.getY(), t2.getZ(), alpha, func);
+	}
+	
+	/**
+	 * Performs a linear interpolation between the two vectors (x1, y1, z1) and (x2, y2, z2).
+	 * The interpolation happens over the interpolator value alpha in the range of 0.0 to 1.0
+	 * where a value of 0.0 is exacly (x1, y1, z1) and a value of 1.0 is exactly (x2, y2, z2).
+	 * The result is relayed to the functional interface implementation.
+	 * 
+	 * <p>
+	 * Operation:
+	 * (1.0 - alpha) * (x1, y1, z1) + alpha * (x2, y2, z2)
+	 * 
+	 * @param x1 The value of the x component of the first vector.
+	 * @param y1 The value of the y component of the first vector.
+	 * @param z1 The value of the z component of the first vector.
+	 * @param x2 The value of the x component of the second vector.
+	 * @param y2 The value of the y component of the second vector.
+	 * @param z2 The value of the z component of the second vector.
+	 * @param alpha The interpolator in range of 0.0 to 1.0.
+	 * @param func A functional interface implementation to take the result.
+	 * 
+	 * @return The object returned from the functional interface.
+	 */
+	public static <T> T lerp(double x1, double y1, double z1, double x2, double y2, double z2, double alpha, @ExtractParam DoubleFunction3<T> func)
+	{
+		return func.apply(Math.fma(alpha, x2 - x1, x1), Math.fma(alpha, y2 - y1, y1), Math.fma(alpha, z2 - z1, z1));
 	}
 }
