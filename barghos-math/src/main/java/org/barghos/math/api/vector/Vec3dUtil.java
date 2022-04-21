@@ -1872,9 +1872,9 @@ public class Vec3dUtil
 	 * 
 	 * <p>
 	 * Operation:<br>
-	 * Left handend: (x1, y1, z1) X (x2, y2, z2)<br>
+	 * Right handend: (x1, y1, z1) X (x2, y2, z2)<br>
 	 * Or<br>
-	 * Right handed: (x2, y2, z2) X (x1, y1, z1)
+	 * Left handed: (x2, y2, z2) X (x1, y1, z1)
 	 * 
 	 * @param x1 The value of the x component of the first vector.
 	 * @param y1 The value of the y component of the first vector.
@@ -1898,9 +1898,9 @@ public class Vec3dUtil
 	 * 
 	 * <p>
 	 * Operation:<br>
-	 * Left handend: (x1, y1, z1) X (x2, y2, z2)<br>
+	 * Right handend: (x1, y1, z1) X (x2, y2, z2)<br>
 	 * Or<br>
-	 * Right handed: (x2, y2, z2) X (x1, y1, z1)
+	 * Left handed: (x2, y2, z2) X (x1, y1, z1)
 	 * 
 	 * @param <T> The type of the extraction parameter object.
 	 * 
@@ -1926,9 +1926,9 @@ public class Vec3dUtil
 	 * 
 	 * <p>
 	 * Operation:<br>
-	 * Left handend: (x1, y1, z1) X (x2, y2, z2)<br>
+	 * Right handend: (x1, y1, z1) X (x2, y2, z2)<br>
 	 * Or<br>
-	 * Right handed: (x2, y2, z2) X (x1, y1, z1)
+	 * Left handed: (x2, y2, z2) X (x1, y1, z1)
 	 * 
 	 * @param <T> The type of the result object.
 	 * 
@@ -1953,9 +1953,9 @@ public class Vec3dUtil
 	 * 
 	 * <p>
 	 * Operation:<br>
-	 * Left handend: (x1, y1, z1) X (x2, y2, z2)<br>
+	 * Right handend: (x1, y1, z1) X (x2, y2, z2)<br>
 	 * Or<br>
-	 * Right handed: (x2, y2, z2) X (x1, y1, z1)
+	 * Left handed: (x2, y2, z2) X (x1, y1, z1)
 	 * 
 	 * @param x1 The value of the x component of the first vector.
 	 * @param y1 The value of the y component of the first vector.
@@ -1980,9 +1980,9 @@ public class Vec3dUtil
 	 * 
 	 * <p>
 	 * Operation:<br>
-	 * Left handend: (x1, y1, z1) X (x2, y2, z2)<br>
+	 * Right handend: (x1, y1, z1) X (x2, y2, z2)<br>
 	 * Or<br>
-	 * Right handed: (x2, y2, z2) X (x1, y1, z1)
+	 * Left handed: (x2, y2, z2) X (x1, y1, z1)
 	 * 
 	 * @param <T> The type of the extraction parameter object.
 	 * 
@@ -2009,9 +2009,9 @@ public class Vec3dUtil
 	 * 
 	 * <p>
 	 * Operation:<br>
-	 * Left handend: (x1, y1, z1) X (x2, y2, z2)<br>
+	 * Right handend: (x1, y1, z1) X (x2, y2, z2)<br>
 	 * Or<br>
-	 * Right handed: (x2, y2, z2) X (x1, y1, z1)
+	 * Left handed: (x2, y2, z2) X (x1, y1, z1)
 	 * 
 	 * @param <T> The type of the result object.
 	 * 
@@ -2033,91 +2033,12 @@ public class Vec3dUtil
 	}
 	
 	/**
-	 * Calculates the left handed cross product between the first vector (x1, y1, z1) and the second vector (x2, y2, z2).
-	 * The result is saved in the given result array.
-	 * 
-	 * <p>
-	 * Operation:
-	 * (x1, y1, z1) X (x2, y2, z2)
-	 * 
-	 * @param x1 The value of the x component of the first vector.
-	 * @param y1 The value of the y component of the first vector.
-	 * @param z1 The value of the z component of the first vector.
-	 * @param x2 The value of the x component of the second vector.
-	 * @param y2 The value of the y component of the second vector.
-	 * @param z2 The value of the z component of the second vector.
-	 * @param res The result array.
-	 * 
-	 * @return The result array with the result.
-	 */
-	public static double[] crossLH(double x1, double y1, double z1, double x2, double y2, double z2, @ExtractParam double[] res)
-	{
-		res[COMP_X] = y1 * z2 - z1 * y2;
-		res[COMP_Y] = z1 * x2 - x1 * z2;
-		res[COMP_Z] = x1 * y2 - y1 * x2;
-
-		return res;
-	}
-	
-	/**
-	 * Calculates the left handed cross product between the first vector (x1, y1, z1) and the second vector (x2, y2, z2).
-	 * The result is saved in the extraction parameter object.
-	 * 
-	 * <p>
-	 * Operation:
-	 * (x1, y1, z1) X (x2, y2, z2)
-	 * 
-	 * @param <T> The type of the extraction parameter object.
-	 * 
-	 * @param x1 The value of the x component of the first vector.
-	 * @param y1 The value of the y component of the first vector.
-	 * @param z1 The value of the z component of the first vector.
-	 * @param x2 The value of the x component of the second vector.
-	 * @param y2 The value of the y component of the second vector.
-	 * @param z2 The value of the z component of the second vector.
-	 * @param res The extraction parameter object.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends Vec3dC> T crossLH(double x1, double y1, double z1, double x2, double y2, double z2, @ExtractParam T res)
-	{
-		res.set(y1 * z2 - z1 * y2, z1 * x2 - x1 * z2, x1 * y2 - y1 * x2);
-		
-		return res;
-	}
-	
-	/**
-	 * Calculates the left handed cross product between the first vector (x1, y1, z1) and the second vector (x2, y2, z2).
-	 * The result is relayed to the functional interface implementation.
-	 * 
-	 * <p>
-	 * Operation:
-	 * (x1, y1, z1) X (x2, y2, z2)
-	 * 
-	 * @param <T> The type of the result object.
-	 * 
-	 * @param x1 The value of the x component of the first vector.
-	 * @param y1 The value of the y component of the first vector.
-	 * @param z1 The value of the z component of the first vector.
-	 * @param x2 The value of the x component of the second vector.
-	 * @param y2 The value of the y component of the second vector.
-	 * @param z2 The value of the z component of the second vector.
-	 * @param func A functional interface implementation to take the result.
-	 * 
-	 * @return The object returned from the functional interface.
-	 */
-	public static <T> T crossLH(double x1, double y1, double z1, double x2, double y2, double z2, @ExtractParam DoubleFunction3<T> func)
-	{
-		return func.apply(y1 * z2 - z1 * y2, z1 * x2 - x1 * z2, x1 * y2 - y1 * x2);
-	}
-	
-	/**
 	 * Calculates the right handed cross product between the first vector (x1, y1, z1) and the second vector (x2, y2, z2).
 	 * The result is saved in the given result array.
 	 * 
 	 * <p>
 	 * Operation:
-	 * (x2, y2, z2) X (x1, y1, z1)
+	 * (x1, y1, z1) X (x2, y2, z2)
 	 * 
 	 * @param x1 The value of the x component of the first vector.
 	 * @param y1 The value of the y component of the first vector.
@@ -2131,9 +2052,9 @@ public class Vec3dUtil
 	 */
 	public static double[] crossRH(double x1, double y1, double z1, double x2, double y2, double z2, @ExtractParam double[] res)
 	{
-		res[COMP_X] = y2 * z1 - z2 * y1;
-		res[COMP_Y] = z2 * x1 - x2 * z1;
-		res[COMP_Z] = x2 * y1 - y2 * x1;
+		res[COMP_X] = y1 * z2 - z1 * y2;
+		res[COMP_Y] = z1 * x2 - x1 * z2;
+		res[COMP_Z] = x1 * y2 - y1 * x2;
 
 		return res;
 	}
@@ -2144,7 +2065,7 @@ public class Vec3dUtil
 	 * 
 	 * <p>
 	 * Operation:
-	 * (x2, y2, z2) X (x1, y1, z1)
+	 * (x1, y1, z1) X (x2, y2, z2)
 	 * 
 	 * @param <T> The type of the extraction parameter object.
 	 * 
@@ -2160,13 +2081,92 @@ public class Vec3dUtil
 	 */
 	public static <T extends Vec3dC> T crossRH(double x1, double y1, double z1, double x2, double y2, double z2, @ExtractParam T res)
 	{
-		res.set(y2 * z1 - z2 * y1, z2 * x1 - x2 * z1, x2 * y1 - y2 * x1);
+		res.set(y1 * z2 - z1 * y2, z1 * x2 - x1 * z2, x1 * y2 - y1 * x2);
 		
 		return res;
 	}
 	
 	/**
 	 * Calculates the right handed cross product between the first vector (x1, y1, z1) and the second vector (x2, y2, z2).
+	 * The result is relayed to the functional interface implementation.
+	 * 
+	 * <p>
+	 * Operation:
+	 * (x1, y1, z1) X (x2, y2, z2)
+	 * 
+	 * @param <T> The type of the result object.
+	 * 
+	 * @param x1 The value of the x component of the first vector.
+	 * @param y1 The value of the y component of the first vector.
+	 * @param z1 The value of the z component of the first vector.
+	 * @param x2 The value of the x component of the second vector.
+	 * @param y2 The value of the y component of the second vector.
+	 * @param z2 The value of the z component of the second vector.
+	 * @param func A functional interface implementation to take the result.
+	 * 
+	 * @return The object returned from the functional interface.
+	 */
+	public static <T> T crossRH(double x1, double y1, double z1, double x2, double y2, double z2, @ExtractParam DoubleFunction3<T> func)
+	{
+		return func.apply(y1 * z2 - z1 * y2, z1 * x2 - x1 * z2, x1 * y2 - y1 * x2);
+	}
+	
+	/**
+	 * Calculates the left handed cross product between the first vector (x1, y1, z1) and the second vector (x2, y2, z2).
+	 * The result is saved in the given result array.
+	 * 
+	 * <p>
+	 * Operation:
+	 * (x2, y2, z2) X (x1, y1, z1)
+	 * 
+	 * @param x1 The value of the x component of the first vector.
+	 * @param y1 The value of the y component of the first vector.
+	 * @param z1 The value of the z component of the first vector.
+	 * @param x2 The value of the x component of the second vector.
+	 * @param y2 The value of the y component of the second vector.
+	 * @param z2 The value of the z component of the second vector.
+	 * @param res The result array.
+	 * 
+	 * @return The result array with the result.
+	 */
+	public static double[] crossLH(double x1, double y1, double z1, double x2, double y2, double z2, @ExtractParam double[] res)
+	{
+		res[COMP_X] = y2 * z1 - z2 * y1;
+		res[COMP_Y] = z2 * x1 - x2 * z1;
+		res[COMP_Z] = x2 * y1 - y2 * x1;
+
+		return res;
+	}
+	
+	/**
+	 * Calculates the left handed cross product between the first vector (x1, y1, z1) and the second vector (x2, y2, z2).
+	 * The result is saved in the extraction parameter object.
+	 * 
+	 * <p>
+	 * Operation:
+	 * (x2, y2, z2) X (x1, y1, z1)
+	 * 
+	 * @param <T> The type of the extraction parameter object.
+	 * 
+	 * @param x1 The value of the x component of the first vector.
+	 * @param y1 The value of the y component of the first vector.
+	 * @param z1 The value of the z component of the first vector.
+	 * @param x2 The value of the x component of the second vector.
+	 * @param y2 The value of the y component of the second vector.
+	 * @param z2 The value of the z component of the second vector.
+	 * @param res The extraction parameter object.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	public static <T extends Vec3dC> T crossLH(double x1, double y1, double z1, double x2, double y2, double z2, @ExtractParam T res)
+	{
+		res.set(y2 * z1 - z2 * y1, z2 * x1 - x2 * z1, x2 * y1 - y2 * x1);
+		
+		return res;
+	}
+	
+	/**
+	 * Calculates the left handed cross product between the first vector (x1, y1, z1) and the second vector (x2, y2, z2).
 	 * The result is relayed to the functional interface implementation.
 	 * 
 	 * <p>
@@ -2185,7 +2185,7 @@ public class Vec3dUtil
 	 * 
 	 * @return The object returned from the functional interface.
 	 */
-	public static <T> T crossRH(double x1, double y1, double z1, double x2, double y2, double z2, @ExtractParam DoubleFunction3<T> func)
+	public static <T> T crossLH(double x1, double y1, double z1, double x2, double y2, double z2, @ExtractParam DoubleFunction3<T> func)
 	{
 		return func.apply(y2 * z1 - z2 * y1, z2 * x1 - x2 * z1, x2 * y1 - y2 * x1);
 	}
