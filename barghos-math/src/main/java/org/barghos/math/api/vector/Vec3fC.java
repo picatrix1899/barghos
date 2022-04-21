@@ -670,7 +670,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 */
 	default Vec3fC cross(Tup3fR t)
 	{
-		return crossLH(t);
+		return cross(t.getX(), t.getY(), t.getZ());
 	}
 	
 	/**
@@ -683,7 +683,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 */
 	default Vec3fC cross(float value)
 	{
-		return crossLH(value);
+		return cross(value, value, value);
 	}
 	
 	/**
@@ -698,7 +698,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 */
 	default Vec3fC cross(float x, float y, float z)
 	{
-		return crossLH(x, y, z);
+		return Vec3fUtil.cross(getX(), getY(),  getZ(), x, y, z, this);
 	}
 	
 	/**
@@ -751,11 +751,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 */
 	default Vec3fC crossLH(float x, float y, float z)
 	{
-		float aX = getX();
-		float aY = getY();
-		float aZ = getZ();
-		
-		return set(aY * z - aZ * y, aZ * x - aX * z, aX * y - aY * x);
+		return Vec3fUtil.crossLH(getX(), getY(), getZ(), x, y, z, this);
 	}
 	
 	/**
@@ -808,11 +804,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 */
 	default Vec3fC crossRH(float x, float y, float z)
 	{
-		float aX = getX();
-		float aY = getY();
-		float aZ = getZ();
-
-		return set(aZ * y - aY * z, aX * z - aZ * x, aY * x - aX * y);
+		return Vec3fUtil.crossRH(getX(), getY(), getZ(), x, y, z, this);
 	}
 	
 	/**

@@ -1866,6 +1866,331 @@ public class Vec3fUtil
 	}
 	
 	/**
+	 * Calculates the cross product between the first vector (x1, y1, z1) and the second vector (x2, y2, z2).
+	 * The handedness of the cross product is automatically determined by the current global system.
+	 * The result is saved in the given result array.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * Left handend: (x1, y1, z1) X (x2, y2, z2)<br>
+	 * Or<br>
+	 * Right handed: (x2, y2, z2) X (x1, y1, z1)
+	 * 
+	 * @param x1 The value of the x component of the first vector.
+	 * @param y1 The value of the y component of the first vector.
+	 * @param z1 The value of the z component of the first vector.
+	 * @param x2 The value of the x component of the second vector.
+	 * @param y2 The value of the y component of the second vector.
+	 * @param z2 The value of the z component of the second vector.
+	 * @param res The result array.
+	 * 
+	 * @return The result array with the result.
+	 */
+	public static float[] cross(float x1, float y1, float z1, float x2, float y2, float z2, @ExtractParam float[] res)
+	{
+		return crossLH(x1, y1, z1, x2, y2, z2, res);
+	}
+	
+	/**
+	 * Calculates the cross product between the first vector (x1, y1, z1) and the second vector (x2, y2, z2).
+	 * The handedness of the cross product is automatically determined by the current global system.
+	 * The result is saved in the extraction parameter object.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * Left handend: (x1, y1, z1) X (x2, y2, z2)<br>
+	 * Or<br>
+	 * Right handed: (x2, y2, z2) X (x1, y1, z1)
+	 * 
+	 * @param <T> The type of the extraction parameter object.
+	 * 
+	 * @param x1 The value of the x component of the first vector.
+	 * @param y1 The value of the y component of the first vector.
+	 * @param z1 The value of the z component of the first vector.
+	 * @param x2 The value of the x component of the second vector.
+	 * @param y2 The value of the y component of the second vector.
+	 * @param z2 The value of the z component of the second vector.
+	 * @param res The extraction parameter object.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	public static <T extends Vec3fC> T cross(float x1, float y1, float z1, float x2, float y2, float z2, @ExtractParam T res)
+	{
+		return crossLH(x1, y1, z1, x2, y2, z2, res);
+	}
+	
+	/**
+	 * Calculates the cross product between the first vector (x1, y1, z1) and the second vector (x2, y2, z2).
+	 * The handedness of the cross product is automatically determined by the current global system.
+	 * The result is relayed to the functional interface implementation.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * Left handend: (x1, y1, z1) X (x2, y2, z2)<br>
+	 * Or<br>
+	 * Right handed: (x2, y2, z2) X (x1, y1, z1)
+	 * 
+	 * @param <T> The type of the result object.
+	 * 
+	 * @param x1 The value of the x component of the first vector.
+	 * @param y1 The value of the y component of the first vector.
+	 * @param z1 The value of the z component of the first vector.
+	 * @param x2 The value of the x component of the second vector.
+	 * @param y2 The value of the y component of the second vector.
+	 * @param z2 The value of the z component of the second vector.
+	 * @param func A functional interface implementation to take the result.
+	 * 
+	 * @return The object returned from the functional interface.
+	 */
+	public static <T> T cross(float x1, float y1, float z1, float x2, float y2, float z2, @ExtractParam FloatFunction3<T> func)
+	{
+		return crossLH(x1, y1, z1, x2, y2, z2, func);
+	}
+	
+	/**
+	 * Calculates either the left or right handed cross product between the first vector (x1, y1, z1) and the second vector (x2, y2, z2).
+	 * The result is saved in the given result array.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * Left handend: (x1, y1, z1) X (x2, y2, z2)<br>
+	 * Or<br>
+	 * Right handed: (x2, y2, z2) X (x1, y1, z1)
+	 * 
+	 * @param x1 The value of the x component of the first vector.
+	 * @param y1 The value of the y component of the first vector.
+	 * @param z1 The value of the z component of the first vector.
+	 * @param x2 The value of the x component of the second vector.
+	 * @param y2 The value of the y component of the second vector.
+	 * @param z2 The value of the z component of the second vector.
+	 * @param leftHanded If set to true the operation will be left handed. Otherwise right handed.
+	 * @param res The result array.
+	 * 
+	 * @return The result array with the result.
+	 */
+	public static float[] cross(float x1, float y1, float z1, float x2, float y2, float z2, boolean leftHanded, @ExtractParam float[] res)
+	{
+		if(leftHanded) return crossLH(x1, y1, z1, x2, y2, z2, res);
+		return crossRH(x1, y1, z1, x2, y2, z2, res);
+	}
+	
+	/**
+	 * Calculates either the left or right handed cross product between the first vector (x1, y1, z1) and the second vector (x2, y2, z2).
+	 * The result is saved in the extraction parameter object.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * Left handend: (x1, y1, z1) X (x2, y2, z2)<br>
+	 * Or<br>
+	 * Right handed: (x2, y2, z2) X (x1, y1, z1)
+	 * 
+	 * @param <T> The type of the extraction parameter object.
+	 * 
+	 * @param x1 The value of the x component of the first vector.
+	 * @param y1 The value of the y component of the first vector.
+	 * @param z1 The value of the z component of the first vector.
+	 * @param x2 The value of the x component of the second vector.
+	 * @param y2 The value of the y component of the second vector.
+	 * @param z2 The value of the z component of the second vector.
+	 * @param leftHanded If set to true the operation will be left handed. Otherwise right handed.
+	 * @param res The extraction parameter object.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	public static <T extends Vec3fC> T cross(float x1, float y1, float z1, float x2, float y2, float z2, boolean leftHanded, @ExtractParam T res)
+	{
+		if(leftHanded) return crossLH(x1, y1, z1, x2, y2, z2, res);
+		return crossRH(x1, y1, z1, x2, y2, z2, res);
+	}
+	
+	/**
+	 * Calculates either the left or right handed cross product between the first vector (x1, y1, z1) and the second vector (x2, y2, z2).
+	 * The result is relayed to the functional interface implementation.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * Left handend: (x1, y1, z1) X (x2, y2, z2)<br>
+	 * Or<br>
+	 * Right handed: (x2, y2, z2) X (x1, y1, z1)
+	 * 
+	 * @param <T> The type of the result object.
+	 * 
+	 * @param x1 The value of the x component of the first vector.
+	 * @param y1 The value of the y component of the first vector.
+	 * @param z1 The value of the z component of the first vector.
+	 * @param x2 The value of the x component of the second vector.
+	 * @param y2 The value of the y component of the second vector.
+	 * @param z2 The value of the z component of the second vector.
+	 * @param leftHanded If set to true the operation will be left handed. Otherwise right handed.
+	 * @param func A functional interface implementation to take the result.
+	 * 
+	 * @return The object returned from the functional interface.
+	 */
+	public static <T> T cross(float x1, float y1, float z1, float x2, float y2, float z2, boolean leftHanded, @ExtractParam FloatFunction3<T> func)
+	{
+		if(leftHanded) return crossLH(x1, y1, z1, x2, y2, z2, func);
+		return crossRH(x1, y1, z1, x2, y2, z2, func);
+	}
+	
+	/**
+	 * Calculates the left handed cross product between the first vector (x1, y1, z1) and the second vector (x2, y2, z2).
+	 * The result is saved in the given result array.
+	 * 
+	 * <p>
+	 * Operation:
+	 * (x1, y1, z1) X (x2, y2, z2)
+	 * 
+	 * @param x1 The value of the x component of the first vector.
+	 * @param y1 The value of the y component of the first vector.
+	 * @param z1 The value of the z component of the first vector.
+	 * @param x2 The value of the x component of the second vector.
+	 * @param y2 The value of the y component of the second vector.
+	 * @param z2 The value of the z component of the second vector.
+	 * @param res The result array.
+	 * 
+	 * @return The result array with the result.
+	 */
+	public static float[] crossLH(float x1, float y1, float z1, float x2, float y2, float z2, @ExtractParam float[] res)
+	{
+		res[COMP_X] = y1 * z2 - z1 * y2;
+		res[COMP_Y] = z1 * x2 - x1 * z2;
+		res[COMP_Z] = x1 * y2 - y1 * x2;
+
+		return res;
+	}
+	
+	/**
+	 * Calculates the left handed cross product between the first vector (x1, y1, z1) and the second vector (x2, y2, z2).
+	 * The result is saved in the extraction parameter object.
+	 * 
+	 * <p>
+	 * Operation:
+	 * (x1, y1, z1) X (x2, y2, z2)
+	 * 
+	 * @param <T> The type of the extraction parameter object.
+	 * 
+	 * @param x1 The value of the x component of the first vector.
+	 * @param y1 The value of the y component of the first vector.
+	 * @param z1 The value of the z component of the first vector.
+	 * @param x2 The value of the x component of the second vector.
+	 * @param y2 The value of the y component of the second vector.
+	 * @param z2 The value of the z component of the second vector.
+	 * @param res The extraction parameter object.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	public static <T extends Vec3fC> T crossLH(float x1, float y1, float z1, float x2, float y2, float z2, @ExtractParam T res)
+	{
+		res.set(y1 * z2 - z1 * y2, z1 * x2 - x1 * z2, x1 * y2 - y1 * x2);
+		
+		return res;
+	}
+	
+	/**
+	 * Calculates the left handed cross product between the first vector (x1, y1, z1) and the second vector (x2, y2, z2).
+	 * The result is relayed to the functional interface implementation.
+	 * 
+	 * <p>
+	 * Operation:
+	 * (x1, y1, z1) X (x2, y2, z2)
+	 * 
+	 * @param <T> The type of the result object.
+	 * 
+	 * @param x1 The value of the x component of the first vector.
+	 * @param y1 The value of the y component of the first vector.
+	 * @param z1 The value of the z component of the first vector.
+	 * @param x2 The value of the x component of the second vector.
+	 * @param y2 The value of the y component of the second vector.
+	 * @param z2 The value of the z component of the second vector.
+	 * @param func A functional interface implementation to take the result.
+	 * 
+	 * @return The object returned from the functional interface.
+	 */
+	public static <T> T crossLH(float x1, float y1, float z1, float x2, float y2, float z2, @ExtractParam FloatFunction3<T> func)
+	{
+		return func.apply(y1 * z2 - z1 * y2, z1 * x2 - x1 * z2, x1 * y2 - y1 * x2);
+	}
+	
+	/**
+	 * Calculates the right handed cross product between the first vector (x1, y1, z1) and the second vector (x2, y2, z2).
+	 * The result is saved in the given result array.
+	 * 
+	 * <p>
+	 * Operation:
+	 * (x2, y2, z2) X (x1, y1, z1)
+	 * 
+	 * @param x1 The value of the x component of the first vector.
+	 * @param y1 The value of the y component of the first vector.
+	 * @param z1 The value of the z component of the first vector.
+	 * @param x2 The value of the x component of the second vector.
+	 * @param y2 The value of the y component of the second vector.
+	 * @param z2 The value of the z component of the second vector.
+	 * @param res The result array.
+	 * 
+	 * @return The result array with the result.
+	 */
+	public static float[] crossRH(float x1, float y1, float z1, float x2, float y2, float z2, @ExtractParam float[] res)
+	{
+		res[COMP_X] = y2 * z1 - z2 * y1;
+		res[COMP_Y] = z2 * x1 - x2 * z1;
+		res[COMP_Z] = x2 * y1 - y2 * x1;
+
+		return res;
+	}
+	
+	/**
+	 * Calculates the right handed cross product between the first vector (x1, y1, z1) and the second vector (x2, y2, z2).
+	 * The result is saved in the extraction parameter object.
+	 * 
+	 * <p>
+	 * Operation:
+	 * (x2, y2, z2) X (x1, y1, z1)
+	 * 
+	 * @param <T> The type of the extraction parameter object.
+	 * 
+	 * @param x1 The value of the x component of the first vector.
+	 * @param y1 The value of the y component of the first vector.
+	 * @param z1 The value of the z component of the first vector.
+	 * @param x2 The value of the x component of the second vector.
+	 * @param y2 The value of the y component of the second vector.
+	 * @param z2 The value of the z component of the second vector.
+	 * @param res The extraction parameter object.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	public static <T extends Vec3fC> T crossRH(float x1, float y1, float z1, float x2, float y2, float z2, @ExtractParam T res)
+	{
+		res.set(y2 * z1 - z2 * y1, z2 * x1 - x2 * z1, x2 * y1 - y2 * x1);
+		
+		return res;
+	}
+	
+	/**
+	 * Calculates the right handed cross product between the first vector (x1, y1, z1) and the second vector (x2, y2, z2).
+	 * The result is relayed to the functional interface implementation.
+	 * 
+	 * <p>
+	 * Operation:
+	 * (x2, y2, z2) X (x1, y1, z1)
+	 * 
+	 * @param <T> The type of the result object.
+	 * 
+	 * @param x1 The value of the x component of the first vector.
+	 * @param y1 The value of the y component of the first vector.
+	 * @param z1 The value of the z component of the first vector.
+	 * @param x2 The value of the x component of the second vector.
+	 * @param y2 The value of the y component of the second vector.
+	 * @param z2 The value of the z component of the second vector.
+	 * @param func A functional interface implementation to take the result.
+	 * 
+	 * @return The object returned from the functional interface.
+	 */
+	public static <T> T crossRH(float x1, float y1, float z1, float x2, float y2, float z2, @ExtractParam FloatFunction3<T> func)
+	{
+		return func.apply(y2 * z1 - z2 * y1, z2 * x1 - x2 * z1, x2 * y1 - y2 * x1);
+	}
+	
+	/**
 	 * Performs a fast linear interpolation between the two vectors t1 and t2.
 	 * This sacrifices for reduced calculations the precision and the applicability.
 	 * The interpolation happens over the interpolator value alpha in the range of 0.0 to 1.0
