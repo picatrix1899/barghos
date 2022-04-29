@@ -2,8 +2,10 @@ package org.barghos.math.vector;
 
 import org.barghos.core.api.tuple.TupfR;
 import org.barghos.core.api.tuple3.Tup3fR;
+import org.barghos.math.BarghosMath;
 import org.barghos.math.api.vector.Vec3fC;
 import org.barghos.math.api.vector.Vec3fR;
+import org.barghos.math.api.vector.Vec3fUtil;
 
 /**
  * This class represents a 3-dimensional float vector.
@@ -200,5 +202,14 @@ public class Vec3f implements Vec3fC
 	public Vec3f clone()
 	{
 		return new Vec3f(this);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public Vec3fC cross(float x, float y, float z)
+	{
+		if(BarghosMath.DEFAULT_COORD_SYSTEM_3f.isRightHanded()) return Vec3fUtil.cross(getX(), getY(),  getZ(), x, y, z, this);
+		
+		return Vec3fUtil.cross(x, y, z, getX(), getY(),  getZ(), this);
 	}
 }

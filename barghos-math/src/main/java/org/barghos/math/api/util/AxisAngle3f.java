@@ -1,7 +1,9 @@
 package org.barghos.math.api.util;
 
 import org.barghos.core.api.tuple3.Tup3fR;
-import org.barghos.math.api.vector.Quat3f;
+import org.barghos.math.api.matrix.Mat4fC;
+import org.barghos.math.api.vector.Quatf;
+import org.barghos.math.api.vector.QuatfR;
 import org.barghos.math.matrix.Mat4f;
 import org.barghos.math.vector.Vec3f;
 
@@ -62,12 +64,12 @@ public class AxisAngle3f
 		return this.angle;
 	}
 	
-	public Quat3f toQuaternion()
+	public QuatfR toQuaternion()
 	{
-		return Quat3f.getFromAxis(this.axis, this.angle);
+		return Quatf.getFromAxis(this.axis, this.angle);
 	}
 	
-	public Mat4f toMatrix4f()
+	public Mat4fC toMatrix4f()
 	{
 		return Mat4f.rotation(this.axis, this.angle);
 	}

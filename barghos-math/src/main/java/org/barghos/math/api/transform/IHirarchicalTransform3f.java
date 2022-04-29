@@ -3,8 +3,7 @@ package org.barghos.math.api.transform;
 import org.barghos.core.api.tuple3.Tup3fR;
 import org.barghos.math.api.matrix.Mat4fC;
 import org.barghos.math.api.util.BiVectorOrientation3f;
-import org.barghos.math.api.vector.Quat3f;
-import org.barghos.math.matrix.Mat4f;
+import org.barghos.math.api.vector.QuatfR;
 import org.barghos.math.vector.Vec3f;
 
 public interface IHirarchicalTransform3f extends ITransform3f
@@ -45,7 +44,7 @@ public interface IHirarchicalTransform3f extends ITransform3f
 		return (IHirarchicalTransform3f)ITransform3f.super.rotate(axis, angle);
 	}
 	
-	IHirarchicalTransform3f rotate(Quat3f q);
+	IHirarchicalTransform3f rotate(QuatfR q);
 	
 	ITransform3f getParent();
 	
@@ -63,13 +62,13 @@ public interface IHirarchicalTransform3f extends ITransform3f
 		
 		Mat4fC t = getTransformationMatrix(alpha);
 		
-		if(parent != null) parent.getTransformationMatrix(alpha).mul(t);
+		if(parent != null) parent.getTransformationMatrix(alpha).revMul(t);
 		
 		return t;
 	}
 	
 	default Mat4fC getTransformationMatrix(double alpha)
 	{
-		return (Mat4f)getTranslationMatrix(alpha).mul(getRotationMatrix(alpha)).mul(getScalingMatrix(alpha));
+		return getTranslationMatrix(alpha).revMul(getRotationMatrix(alpha)).revMul(getScalingMatrix(alpha));
 	}
 }

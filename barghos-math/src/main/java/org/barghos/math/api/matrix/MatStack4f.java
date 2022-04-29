@@ -11,9 +11,9 @@ import org.barghos.math.matrix.Mat4f;
 
 public class MatStack4f implements Mat4fR
 {
-	private List<Mat4f> stack = new ArrayList<>();
+	private List<Mat4fC> stack = new ArrayList<>();
 	
-	private transient Mat4f current;
+	private transient Mat4fC current;
 	
 	private transient boolean isDirty;
 	
@@ -48,9 +48,9 @@ public class MatStack4f implements Mat4fR
 	{
 		if(!this.isDirty) return this;
 		
-		Mat4f m = Mat4f.identity();
+		Mat4fC m = Mat4f.identity();
 		
-		for(Mat4f mat : this.stack)
+		for(Mat4fC mat : this.stack)
 			m.mul(mat);
 		
 		this.current = m;
@@ -60,7 +60,7 @@ public class MatStack4f implements Mat4fR
 		return this;
 	}
 	
-	public Mat4f get()
+	public Mat4fC get()
 	{
 		computeIfDirty();
 		

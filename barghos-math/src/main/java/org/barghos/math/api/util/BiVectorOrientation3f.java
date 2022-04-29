@@ -1,7 +1,8 @@
 package org.barghos.math.api.util;
 
 import org.barghos.core.api.tuple3.Tup3fR;
-import org.barghos.math.api.vector.Quat3f;
+import org.barghos.math.api.matrix.Mat4fC;
+import org.barghos.math.api.vector.QuatfR;
 import org.barghos.math.matrix.Mat4f;
 import org.barghos.math.vector.Vec3f;
 
@@ -113,13 +114,20 @@ public class BiVectorOrientation3f
 	
 	public BiVectorOrientation3f rotate(Tup3fR axis, float angle)
 	{
-		return rotate(Quat3f.getFromAxis(axis, angle));
+		Mat4fC m = new Mat4f().initRotation(axis, angle);
+		
+		this.forward.transform(m);
+		this.up.transform(m);
+		
+		return this;
 	}
 	
-	public BiVectorOrientation3f rotate(Quat3f quat)
+	public BiVectorOrientation3f rotate(QuatfR quat)
 	{
-		quat.transform(this.forward, this.forward);
-		quat.transform(this.up, this.up);
+		Mat4fC m = new Mat4f().initRotation(quat);
+		
+		this.forward.transform(m);
+		this.up.transform(m);
 		
 		return this;
 	}
@@ -146,19 +154,17 @@ public class BiVectorOrientation3f
 	
 	public Vec3f getLeft()
 	{
-		return (Vec3f)this.forward.crossN(this.up);
+		return (Vec3f)this.up.crossN(this.forward).invert();
 	}
 	
 	public Vec3f getRight()
 	{
-		return (Vec3f)this.forward.crossN(this.up).invert();
+		return (Vec3f)this.up.crossN(this.forward);
 	}
 	
-	public Mat4f toMatrix4f()
+	public Mat4fC toMatrix4f()
 	{
-		Vec3f left = getLeft();
-		
-		return Mat4f.rotation(this.forward, left, this.up);
+		return Mat4f.baseChanging(this.up, this.forward);
 	}
 	
 	public BiVectorOrientation3f clone()

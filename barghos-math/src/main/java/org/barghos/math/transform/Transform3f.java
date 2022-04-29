@@ -5,7 +5,7 @@ import org.barghos.math.api.matrix.Mat4fC;
 import org.barghos.math.api.transform.IHirarchicalTransform3f;
 import org.barghos.math.api.transform.ITransform3f;
 import org.barghos.math.api.util.BiVectorOrientation3f;
-import org.barghos.math.api.vector.Quat3f;
+import org.barghos.math.api.vector.QuatfR;
 import org.barghos.math.matrix.Mat4f;
 import org.barghos.math.vector.Vec3f;
 
@@ -50,7 +50,7 @@ public class Transform3f implements IHirarchicalTransform3f
 	
 	public Mat4fC getTranslationMatrix(double alpha)
 	{
-		return Mat4f.translation(this.pos);
+		return Mat4f.translation3d(this.pos);
 	}
 
 	public Mat4fC getScalingMatrix(double alpha)
@@ -85,7 +85,7 @@ public class Transform3f implements IHirarchicalTransform3f
 	
 	public Mat4fC getAbsoluteTranslationMatrix(double alpha)
 	{
-		return Mat4f.translation(getAbsolutePos(alpha));
+		return Mat4f.translation3d(getAbsolutePos(alpha));
 	}
 
 	public Mat4fC getAbsoluteScalingMatrix(double alpha)
@@ -105,7 +105,14 @@ public class Transform3f implements IHirarchicalTransform3f
 		return this;
 	}
 
-	public Transform3f rotate(Quat3f q)
+	public Transform3f rotate(Tup3fR axis, float angle)
+	{
+		this.orientation.rotate(axis, angle);
+		
+		return this;
+	}
+	
+	public Transform3f rotate(QuatfR q)
 	{
 		this.orientation.rotate(q);
 		

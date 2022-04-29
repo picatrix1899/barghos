@@ -24,14 +24,17 @@ SOFTWARE.
 
 package org.barghos.math.api.vector;
 
+import static org.barghos.core.api.tuple.TupleConstants.*;
+
+import org.barghos.core.api.tuple3.Tup3fC;
 import org.barghos.core.api.tuple3.Tup3fR;
-import org.barghos.core.api.tuple4.Tup4fR;
+import org.barghos.core.api.util.ExtractParam;
 import org.barghos.math.matrix.Mat4f;
 import org.barghos.math.util.Maths;
 import org.barghos.math.vector.Vec3f;
 
 /** A 3-Dimensional Quaternion */
-public class Quat3f implements Tup4fR
+public class Quatf implements QuatfC
 {
 	/** The x component. */
 	protected float x;
@@ -49,7 +52,7 @@ public class Quat3f implements Tup4fR
 	 * The default constructor. It sets x,y and z to 0 and w to 1.
 	 * It is commonly used in pools.
 	 */
-	public Quat3f()
+	public Quatf()
 	{
 		set(0.0f, 0.0f, 0.0f, 1.0f);
 	}
@@ -62,7 +65,7 @@ public class Quat3f implements Tup4fR
 	 * @param z The new z component.
 	 * @param w The new w component.
 	 */
-	public Quat3f(float x, float y, float z, float w)
+	public Quatf(float x, float y, float z, float w)
 	{
 		set(x, y, z, w);
 	}
@@ -71,20 +74,20 @@ public class Quat3f implements Tup4fR
 	 * This contructor sets the components to the values of q.
 	 * @param q A Quaternion that the components are set to.
 	 */
-	public Quat3f(Quat3f q)
+	public Quatf(QuatfR q)
 	{
 		set(q);
 	}
 
-	public static Quat3f getFromAxis(Tup3fR axis, float angle) { return getFromAxis(axis.getX(), axis.getY(), axis.getZ(), angle, null); }
+	public static QuatfC getFromAxis(Tup3fR axis, float angle) { return getFromAxis(axis.getX(), axis.getY(), axis.getZ(), angle, null); }
 	
-	public static Quat3f getFromAxis(float ax, float ay, float az, float angle) { return getFromAxis(ax, ay, az, angle, null); }
+	public static QuatfC getFromAxis(float ax, float ay, float az, float angle) { return getFromAxis(ax, ay, az, angle, null); }
 	
-	public static Quat3f getFromAxis(Tup3fR axis, float angle, Quat3f res) { return getFromAxis(axis.getX(), axis.getY(), axis.getZ(), angle, res); }
+	public static QuatfC getFromAxis(Tup3fR axis, float angle, Quatf res) { return getFromAxis(axis.getX(), axis.getY(), axis.getZ(), angle, res); }
 	
-	public static Quat3f getFromAxis(float ax, float ay, float az, float angle, Quat3f res)
+	public static QuatfC getFromAxis(float ax, float ay, float az, float angle, Quatf res)
 	{
-		if(res == null) res = new Quat3f();
+		if(res == null) res = new Quatf();
 		
 		float halfAngle = angle * 0.5f;
 		float sinHalfAngle = (float)Math.sin(halfAngle);
@@ -98,7 +101,7 @@ public class Quat3f implements Tup4fR
 		return res.set(rX, rY, rZ, rW).normal();
 	}
 	
-	public static Quat3f getFromVectors(Tup3fR v1, Tup3fR v2)
+	public static QuatfC getFromVectors(Tup3fR v1, Tup3fR v2)
 	{
 		Vec3fC a = new Vec3f(v1).normal();
 		Vec3fC b = new Vec3f(v2).normal();
@@ -107,41 +110,40 @@ public class Quat3f implements Tup4fR
 		
 		float angle = 1.0f + a.dot(b);
 
-		Quat3f out = new Quat3f(axis.getX(), axis.getY(), axis.getZ(), angle).normal();
+		QuatfC out = new Quatf(axis.getX(), axis.getY(), axis.getZ(), angle).normal();
 
 		return out;
 	}
 	
+	@Override
 	public float getX() { return this.x; }
 	
+	@Override
 	public float getY() { return this.y; }
 	
+	@Override
 	public float getZ() { return this.z; }
 	
+	@Override
 	public float getW() { return this.w; }
 	
-	public Quat3f rotate(Tup3fR axis, float angle)
+	public QuatfC rotate(Tup3fR axis, float angle)
 	{
 		return rotate(axis.getX(), axis.getY(), axis.getZ(), angle);
 	}
 	
-	public Quat3f rotate(float ax, float ay, float az, float angle)
+	public QuatfC rotate(float ax, float ay, float az, float angle)
 	{
 		return getFromAxis(angle, ax, ay, az).mul(this, this);
 	}
 	
-	public Quat3f rotate(Quat3f q)
+	public QuatfC rotate(Quatf q)
 	{
 		return q.mul(this, this);
 	}
 	
-	public Quat3f set(Quat3f q)
-	{
-		return set(q.getX(), q.getY(), q.getZ(), q.getW());
-	}
-	
 	//From Ken Shoemake's "Quaternion Calculus and Fast Animation" article
-	public Quat3f set(Mat4f rot) 
+	public QuatfC set(Mat4f rot) 
 	{
 		double trace = rot.m[0][0] + rot.m[1][1] + rot.m[2][2];
 
@@ -188,50 +190,15 @@ public class Quat3f implements Tup4fR
 		return this;
 	}
 	
-	public Quat3f set(float x, float y, float z, float w) { return setX(x).setY(y).setZ(z).setW(w); }
+	public QuatfC setX(float x) { this.x = x; return this; }
 	
-	public Quat3f setX(float x) { this.x = x; return this; }
+	public QuatfC setY(float y) { this.y = y; return this; }
 	
-	public Quat3f setY(float y) { this.y = y; return this; }
-	
-	public Quat3f setZ(float z) { this.z = z; return this; }
+	public QuatfC setZ(float z) { this.z = z; return this; }
 
-	public Quat3f setW(float w) { this.w = w; return this; }
+	public QuatfC setW(float w) { this.w = w; return this; }
 	
-	public Quat3f conjugate()
-	{
-		return conjugate(this);
-	}
-	
-	public Quat3f conjugate(Quat3f res)
-	{
-		res.set(-this.x, -this.y, -this.z, this.w);
-
-		return res;
-	}
-	
-	public Quat3f inverse()
-	{
-		return inverse(this);
-	}
-	
-	public Quat3f inverse(Quat3f res)
-	{
-		float l = reciprocalLength();
-		
-		res.set(-this.x * l, -this.y * l, -this.z * l, this.w * l);
-		
-		return res;
-	}
-	
-	public Quat3f mul(Quat3f q)
-	{
-		mul(q, this);
-		
-		return this;
-	}
-	
-	public Quat3f mul(Quat3f q, Quat3f res)
+	public <T extends QuatfC> T mul(QuatfR q, T res)
 	{
 		float w_ = this.w * q.getW() - this.x * q.getX() - this.y * q.getY() - this.z * q.getZ(); // w * w' - v * v'
 		float x_ = this.w * q.getX() + q.getW() * this.x + this.y * q.getZ() - this.z * q.getY(); // s * v'.x + s' * v.x + (V x V').x
@@ -242,68 +209,50 @@ public class Quat3f implements Tup4fR
 
 		return res;
 	}
-	
-	public Quat3f mul(Tup3fR v)
+
+	public <T extends QuatfC> T mulVector(float x, float y, float z, T res)
 	{
-		mul(v, this);
-		
-		return this;
-	}
-	
-	public Quat3f mul(Tup3fR v, Quat3f res)
-	{
-		float w_ = -this.x * v.getX() - this.y * v.getY() - this.z * v.getZ(); // - v * v'
-		float x_ =  this.w * v.getX() + this.y * v.getZ() - this.z * v.getY(); // s * v'.x ...
-		float y_ =  this.w * v.getY() + this.z * v.getX() - this.x * v.getZ(); // s * v'.y ...
-		float z_ =  this.w * v.getZ() + this.x * v.getY() - this.y * v.getX(); // s * v*.z ...
+		float w_ = -this.x * x - this.y * y - this.z * z; // - v * v'
+		float x_ =  this.w * x + this.y * z - this.z * y; // s * v'.x ...
+		float y_ =  this.w * y + this.z * x - this.x * z; // s * v'.y ...
+		float z_ =  this.w * z + this.x * y - this.y * x; // s * v*.z ...
 
 		res.set(x_, y_, z_, w_).normal();
 
 		return res;
 	}
 	
-	public Vec3fC transform(Tup3fR v, Vec3fC res)
+	public <T extends Tup3fC> T transform(float x, float y, float z, @ExtractParam T res)
 	{
-		Quat3f r = mul(v, new Quat3f());
-		Quat3f c = conjugate(new Quat3f());
+		QuatfC r = mulVectorN(x, y, z);
 		
-		r.mul(c, r);
+		r.mul(conjugateN());
 		
 		res.set(r.getX(), r.getY(), r.getZ());
 
 		return res;
 	}
-	
-	public float length() { return (float)Maths.sqrt(squaredLength()); }
-	public float squaredLength() { return this.x * this.x + this.y * this.y + this.z * this.z + this.w * this.w; }
-	public float reciprocalLength() { return 1.0f / length(); }
-	
-	public Quat3f normal()
+
+	public float[] transform(float x, float y, float z, @ExtractParam float[] res)
 	{
-		return normal(this);
-	}
-	
-	public Quat3f normal(Quat3f res)
-	{
-		float l = reciprocalLength();
+		QuatfC r = mulVectorN(x, y, z);
 		
-		res.set(this.x * l, this.y * l, this.z * l, this.w * l);
+		r.mul(conjugateN());
+		
+		res[COMP_X] = r.getX();
+		res[COMP_Y] = r.getY();
+		res[COMP_Z] = r.getZ();
 
 		return res;
 	}
-
-	public float dot(Quat3f q)
-	{
-		return this.x * q.x + this.y * q.y + this.z * q.z + this.w * q.w;
-	}
-
+	
 	public String toString()
 	{
 		return "quat3f("  + this.x + ", " + this.y + ", " + this.z + ", " + this.w + ")";
 	}
 	
-	public Quat3f clone()
+	public Quatf clone()
 	{
-		return new Quat3f(this);
+		return new Quatf(this);
 	}
 }

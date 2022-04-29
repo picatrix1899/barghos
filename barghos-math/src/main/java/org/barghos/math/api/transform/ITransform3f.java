@@ -3,8 +3,8 @@ package org.barghos.math.api.transform;
 import org.barghos.core.api.tuple3.Tup3fR;
 import org.barghos.math.api.matrix.Mat4fC;
 import org.barghos.math.api.util.BiVectorOrientation3f;
-import org.barghos.math.api.vector.Quat3f;
-import org.barghos.math.matrix.Mat4f;
+import org.barghos.math.api.vector.Quatf;
+import org.barghos.math.api.vector.QuatfR;
 import org.barghos.math.vector.Vec3f;
 
 public interface ITransform3f
@@ -44,10 +44,10 @@ public interface ITransform3f
 	
 	default ITransform3f rotate(Tup3fR axis, float angle)
 	{
-		return rotate(Quat3f.getFromAxis(axis, angle));
+		return rotate(Quatf.getFromAxis(axis, angle));
 	}
 	
-	ITransform3f rotate(Quat3f q);
+	ITransform3f rotate(QuatfR q);
 	
 	Vec3f getPos(double alpha);
 	Vec3f getScale(double alpha);
@@ -59,6 +59,6 @@ public interface ITransform3f
 	
 	default Mat4fC getTransformationMatrix(double alpha)
 	{
-		return (Mat4f)getTranslationMatrix(alpha).mul(getRotationMatrix(alpha)).mul(getScalingMatrix(alpha));
+		return getTranslationMatrix(alpha).revMul(getRotationMatrix(alpha)).revMul(getScalingMatrix(alpha));
 	}
 }

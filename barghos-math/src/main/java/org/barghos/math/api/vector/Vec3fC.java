@@ -4,7 +4,6 @@ import org.barghos.core.api.tuple.TupdR;
 import org.barghos.core.api.tuple.TupfR;
 import org.barghos.core.api.tuple3.Tup3fR;
 import org.barghos.core.api.tuple3.Tup3fC;
-
 import org.barghos.math.api.matrix.Mat4fR;
 
 /**
@@ -696,10 +695,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec3fC cross(float x, float y, float z)
-	{
-		return Vec3fUtil.cross(getX(), getY(),  getZ(), x, y, z, this);
-	}
+	Vec3fC cross(float x, float y, float z);
 	
 	/**
 	 * Makes all components of the vector absolute.
@@ -1265,6 +1261,15 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 * Calculates the cross product between this vector and the given tuple
 	 * and saves the result in a new instance.
 	 * This operation does not alter the current vector.
+	 * 
+	 * <p>
+	 * Definition:
+	 * In a standard right handed cartesian system there are the following relations between axis assuming a positive direction.<br>
+	 * Imagine looking in the desired direction and using the axis in counterclockwise order.
+	 * 
+	 * forward(z) = right(x) X up(y)<br>
+	 * up(y) = forward(z) X right(x)<br>
+	 * right(x) = up(y) X forward(z)
 	 * 
 	 * @param t The tuple.
 	 * 

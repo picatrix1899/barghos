@@ -5,7 +5,7 @@ import org.barghos.math.api.matrix.Mat4fC;
 import org.barghos.math.api.transform.IHirarchicalTransform3f;
 import org.barghos.math.api.transform.ITransform3f;
 import org.barghos.math.api.util.BiVectorOrientation3f;
-import org.barghos.math.api.vector.Quat3f;
+import org.barghos.math.api.vector.QuatfR;
 import org.barghos.math.api.vector.Vec3fUtil;
 import org.barghos.math.matrix.Mat4f;
 import org.barghos.math.vector.Vec3f;
@@ -46,7 +46,7 @@ public class SweptTransform3f implements IHirarchicalTransform3f
 
 	public Mat4fC getTranslationMatrix(double alpha)
 	{
-		return Mat4f.translation(getPos(alpha));
+		return Mat4f.translation3d(getPos(alpha));
 	}
 
 	public Mat4fC getScalingMatrix(double alpha)
@@ -96,7 +96,13 @@ public class SweptTransform3f implements IHirarchicalTransform3f
 		return this;
 	}
 
-	public SweptTransform3f rotate(Quat3f q)
+	public SweptTransform3f rotate(Tup3fR axis, float angle)
+	{
+		this.current.rotate(axis, angle);
+		return this;
+	}
+	
+	public SweptTransform3f rotate(QuatfR q)
 	{
 		this.current.rotate(q);
 		return this;
@@ -124,7 +130,7 @@ public class SweptTransform3f implements IHirarchicalTransform3f
 
 	public Mat4fC getAbsoluteTranslationMatrix(double alpha)
 	{
-		return Mat4f.translation(getAbsolutePos(alpha));
+		return Mat4f.translation3d(getAbsolutePos(alpha));
 	}
 
 	public Mat4fC getAbsoluteScalingMatrix(double alpha)
