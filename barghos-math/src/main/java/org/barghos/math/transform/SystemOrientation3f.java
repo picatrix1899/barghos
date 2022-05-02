@@ -1,14 +1,14 @@
-package org.barghos.math.util;
+package org.barghos.math.transform;
 
 import static org.barghos.core.api.tuple.TupleConstants.*;
 
+import org.barghos.core.api.tuple3.Tup3fC;
 import org.barghos.core.api.tuple3.Tup3fR;
 import org.barghos.core.api.util.ExtractParam;
 import org.barghos.math.api.matrix.Mat4fC;
 import org.barghos.math.api.matrix.Mat4fR;
-import org.barghos.math.api.util.SystemOrientation3fC;
-import org.barghos.math.api.util.SystemOrientation3fR;
-import org.barghos.math.api.vector.Vec3fC;
+import org.barghos.math.api.transform.SystemOrientation3fC;
+import org.barghos.math.api.transform.SystemOrientation3fR;
 import org.barghos.math.api.vector.Vec3fR;
 import org.barghos.math.matrix.Mat4f;
 import org.barghos.math.vector.Vec3f;
@@ -152,7 +152,7 @@ public class SystemOrientation3f implements SystemOrientation3fC
 	}
 
 	// MISSING_DOC
-	public <T extends Vec3fC> T getRight(@ExtractParam T res)
+	public <T extends Tup3fC> T getRight(@ExtractParam T res)
 	{
 		res.set(this.rX, this.rY, this.rZ);
 		
@@ -176,7 +176,7 @@ public class SystemOrientation3f implements SystemOrientation3fC
 	}
 
 	// MISSING_DOC
-	public <T extends Vec3fC> T getLeft(@ExtractParam T res)
+	public <T extends Tup3fC> T getLeft(@ExtractParam T res)
 	{
 		res.set(-this.rX, -this.rY, -this.rZ);
 		
@@ -200,7 +200,7 @@ public class SystemOrientation3f implements SystemOrientation3fC
 	}
 
 	// MISSING_DOC
-	public <T extends Vec3fC> T getUp(@ExtractParam T res)
+	public <T extends Tup3fC> T getUp(@ExtractParam T res)
 	{
 		res.set(this.uX, this.uY, this.uZ);
 		
@@ -224,7 +224,7 @@ public class SystemOrientation3f implements SystemOrientation3fC
 	}
 
 	// MISSING_DOC
-	public <T extends Vec3fC> T getDown(@ExtractParam T res)
+	public <T extends Tup3fC> T getDown(@ExtractParam T res)
 	{
 		res.set(-this.uX, -this.uY, -this.uZ);
 		
@@ -248,7 +248,7 @@ public class SystemOrientation3f implements SystemOrientation3fC
 	}
 
 	// MISSING_DOC
-	public <T extends Vec3fC> T getForward(@ExtractParam T res)
+	public <T extends Tup3fC> T getForward(@ExtractParam T res)
 	{
 		res.set(this.fX, this.fY, this.fZ);
 		
@@ -272,7 +272,7 @@ public class SystemOrientation3f implements SystemOrientation3fC
 	}
 
 	// MISSING_DOC
-	public <T extends Vec3fC> T getBack(@ExtractParam T res)
+	public <T extends Tup3fC> T getBack(@ExtractParam T res)
 	{
 		res.set(-this.fX, -this.fY, -this.fZ);
 		

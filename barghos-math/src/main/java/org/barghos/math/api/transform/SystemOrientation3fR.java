@@ -1,8 +1,8 @@
-package org.barghos.math.api.util;
+package org.barghos.math.api.transform;
 
+import org.barghos.core.api.tuple3.Tup3fC;
 import org.barghos.core.api.util.ExtractParam;
 import org.barghos.math.api.matrix.Mat4fC;
-import org.barghos.math.api.vector.Vec3fC;
 import org.barghos.math.api.vector.Vec3fR;
 
 // MISSING_DOC
@@ -12,7 +12,7 @@ public interface SystemOrientation3fR
 	Vec3fR getForward();
 	
 	// MISSING_DOC
-	<T extends Vec3fC> T getForward(@ExtractParam T res);
+	<T extends Tup3fC> T getForward(@ExtractParam T res);
 	
 	// MISSING_DOC
 	float[] getForward(@ExtractParam float[] res);
@@ -21,7 +21,7 @@ public interface SystemOrientation3fR
 	Vec3fR getBack();
 	
 	// MISSING_DOC
-	<T extends Vec3fC> T getBack(@ExtractParam T res);
+	<T extends Tup3fC> T getBack(@ExtractParam T res);
 	
 	// MISSING_DOC
 	float[] getBack(@ExtractParam float[] res);
@@ -30,7 +30,7 @@ public interface SystemOrientation3fR
 	Vec3fR getRight();
 	
 	// MISSING_DOC
-	<T extends Vec3fC> T getRight(@ExtractParam T res);
+	<T extends Tup3fC> T getRight(@ExtractParam T res);
 	
 	// MISSING_DOC
 	float[] getRight(@ExtractParam float[] res);
@@ -39,7 +39,7 @@ public interface SystemOrientation3fR
 	Vec3fR getLeft();
 	
 	// MISSING_DOC
-	<T extends Vec3fC> T getLeft(@ExtractParam T res);
+	<T extends Tup3fC> T getLeft(@ExtractParam T res);
 	
 	// MISSING_DOC
 	float[] getLeft(@ExtractParam float[] res);
@@ -48,7 +48,7 @@ public interface SystemOrientation3fR
 	Vec3fR getUp();
 	
 	// MISSING_DOC
-	<T extends Vec3fC> T getUp(@ExtractParam T res);
+	<T extends Tup3fC> T getUp(@ExtractParam T res);
 	
 	// MISSING_DOC
 	float[] getUp(@ExtractParam float[] res);
@@ -57,7 +57,7 @@ public interface SystemOrientation3fR
 	Vec3fR getDown();
 	
 	// MISSING_DOC
-	<T extends Vec3fC> T getDown(@ExtractParam T res);
+	<T extends Tup3fC> T getDown(@ExtractParam T res);
 	
 	// MISSING_DOC
 	float[] getDown(@ExtractParam float[] res);

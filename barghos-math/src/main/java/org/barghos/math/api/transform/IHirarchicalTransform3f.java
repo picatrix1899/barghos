@@ -39,10 +39,10 @@ public interface IHirarchicalTransform3f extends ITransform3f
 	
 	IHirarchicalTransform3f move(float x, float y, float z);
 	
-	default IHirarchicalTransform3f rotate(Tup3fR axis, float angle)
-	{
-		return (IHirarchicalTransform3f)ITransform3f.super.rotate(axis, angle);
-	}
+//	default IHirarchicalTransform3f rotate(Tup3fR axis, float angle)
+//	{
+//		return (IHirarchicalTransform3f)ITransform3f.super.rotate(axis, angle);
+//	}
 	
 	IHirarchicalTransform3f rotate(QuatfR q);
 	

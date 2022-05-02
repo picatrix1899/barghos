@@ -3,7 +3,7 @@ package org.barghos.math.api.transform;
 import org.barghos.core.api.tuple3.Tup3fR;
 import org.barghos.math.api.matrix.Mat4fC;
 import org.barghos.math.api.util.BiVectorOrientation3f;
-import org.barghos.math.api.vector.Quatf;
+//import org.barghos.math.api.vector.Quatf;
 import org.barghos.math.api.vector.QuatfR;
 import org.barghos.math.vector.Vec3f;
 
@@ -42,10 +42,10 @@ public interface ITransform3f
 	
 	ITransform3f move(float x, float y, float z);
 	
-	default ITransform3f rotate(Tup3fR axis, float angle)
-	{
-		return rotate(Quatf.getFromAxis(axis, angle));
-	}
+//	default ITransform3f rotate(Tup3fR axis, float angle)
+//	{
+//		return rotate(new Quatf().setByAxisAngle(axis, angle));
+//	}
 	
 	ITransform3f rotate(QuatfR q);
 	

@@ -269,4 +269,19 @@ public interface QuatfC extends QuatfR, Tup4fC
 	
 	// MISSING_DOC
 	<T extends QuatfC> T mulVector(float x, float y, float z, @ExtractParam T res);
+	
+	// MISSING_DOC
+	default QuatfC setByAxisAngle(Tup3fR axis, float angle)
+	{
+		return setByAxisAngle(axis.getX(), axis.getY(), axis.getZ(), angle);
+	}
+	
+	// MISSING_DOC
+	default QuatfC setByAxisAngle(float[] axis, float angle)
+	{
+		return setByAxisAngle(axis[COMP_X], axis[COMP_Y], axis[COMP_Z], angle);
+	}
+	
+	// MISSING_DOC
+	QuatfC setByAxisAngle(float ax, float ay, float az, float angle);
 }

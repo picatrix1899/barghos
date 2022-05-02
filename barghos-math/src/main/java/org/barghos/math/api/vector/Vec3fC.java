@@ -183,10 +183,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec3fC add(float x, float y, float z)
-	{
-		return Vec3fUtil.add(getX(), getY(), getZ(), x, y, z, this);
-	}
+	Vec3fC add(float x, float y, float z);
 	
 	/**
 	 * Subtracts the second given tuple from the current vector.
@@ -236,10 +233,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec3fC sub(float x, float y, float z)
-	{
-		return Vec3fUtil.sub(getX(), getY(), getZ(), x, y, z, this);
-	}
+	Vec3fC sub(float x, float y, float z);
 	
 	/**
 	 * Subtracts the current vector from the second given tuple.
@@ -289,10 +283,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec3fC revSub(float x, float y, float z)
-	{
-		return Vec3fUtil.revSub(getX(), getY(), getZ(), x, y, z, this);
-	}
+	Vec3fC revSub(float x, float y, float z);
 	
 	/**
 	 * Multiplies the current vector with the second given tuple.
@@ -342,10 +333,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec3fC mul(float x, float y, float z)
-	{
-		return Vec3fUtil.mul(getX(), getY(), getZ(), x, y, z, this);
-	}
+	Vec3fC mul(float x, float y, float z);
 	
 	/**
 	 * Divides the current vector by the second given tuple.
@@ -395,10 +383,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec3fC div(float x, float y, float z)
-	{
-		return Vec3fUtil.div(getX(), getY(), getZ(), x, y, z, this);
-	}
+	Vec3fC div(float x, float y, float z);
 	
 	/**
 	 * Divides the second given tuple by the current vector.
@@ -448,10 +433,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec3fC revDiv(float x, float y, float z)
-	{
-		return Vec3fUtil.revDiv(getX(), getY(), getZ(), x, y, z, this);
-	}
+	Vec3fC revDiv(float x, float y, float z);
 	
 	/**
 	 * Normalizes the current vector.
@@ -470,10 +452,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 * 
 	 * @throws ArithmeticException Thrown when it is a zero-length vector.
 	 */
-	default Vec3fC normal()
-	{
-		return Vec3fUtil.normal(getX(), getY(), getZ(), this);
-	}
+	Vec3fC normal();
 	
 	/**
 	 * Normalizes the current vector.
@@ -494,12 +473,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 * 
 	 * @throws ArithmeticException Might be thrown when the length is to close to zero.
 	 */
-	default Vec3fC normalSafe()
-	{
-		if(isZero()) return set(0.0f);
-		
-		return normal();
-	}
+	Vec3fC normalSafe();
 	
 	/**
 	 * Normalizes the current vector.
@@ -517,12 +491,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec3fC normalSafeWithMargin(float tolerance)
-	{
-		if(isZeroWithMargin(tolerance)) return set(0.0f);
-		
-		return normal();
-	}
+	Vec3fC normalSafeWithMargin(float tolerance);
 	
 	/**
 	 * Inverts the current vector.
@@ -534,10 +503,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec3fC invert()
-	{
-		return Vec3fUtil.invert(getX(), getY(), getZ(), this);
-	}
+	Vec3fC invert();
 	
 	/**
 	 * Inverses the current vector based on the value one.
@@ -549,10 +515,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec3fC inverse()
-	{
-		return inverse(1.0f);
-	}
+	Vec3fC inverse();
 	
 	/**
 	 * Inverses the current vector based on the given tuple.
@@ -604,10 +567,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec3fC inverse(float x, float y, float z)
-	{
-		return Vec3fUtil.inverse(getX(), getY(), getZ(), x, y, z, this);
-	}
+	Vec3fC inverse(float x, float y, float z);
 	
 	/**
 	 * Returns the dot product (scalar product) between this vector and the given tuple.
@@ -654,10 +614,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 * 
 	 * @return The dot product (scalar product) between this vector and the values.
 	 */
-	default float dot(float x, float y, float z)
-	{
-		return Vec3fUtil.dot(getX(), getY(), getZ(), x, y, z);
-	}
+	float dot(float x, float y, float z);
 	
 	/**
 	 * Sets the vector to the cross product between this vector and the given tuple.
@@ -703,10 +660,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec3fC abs()
-	{
-		return set(Math.abs(getX()), Math.abs(getY()), Math.abs(getZ()));
-	}
+	Vec3fC abs();
 	
 	/**
 	 * Rounds all components down to the next integer closer to negative infinity.
@@ -714,10 +668,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec3fC floor()
-	{
-		return set((float)Math.floor(getX()), (float)Math.floor(getY()), (float)Math.floor(getZ()));
-	}
+	Vec3fC floor();
 	
 	/**
 	 * Rounds all components up to the next integer closer to positive infinity.
@@ -725,10 +676,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec3fC ceil()
-	{
-		return set((float)Math.ceil(getX()), (float)Math.ceil(getY()), (float)Math.ceil(getZ()));
-	}
+	Vec3fC ceil();
 	
 	/**
 	 * Rounds all components up to the next integer closer to positive infinity or negative infinity.
@@ -736,10 +684,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec3fC round()
-	{
-		return set(Math.round(getX()), Math.round(getY()), Math.round(getZ()));
-	}
+	Vec3fC round();
 	
 	/**
 	 * Truncates the decimals of the components.
@@ -747,10 +692,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec3fC trunc()
-	{
-		return set((int)getX(), (int)getY(), (int)getZ());
-	}
+	Vec3fC trunc();
 	
 	/**
 	 * Sets the vector to the signums of the components.
@@ -758,10 +700,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec3fC signum()
-	{
-		return set(Math.signum(getX()), Math.signum(getY()), Math.signum(getZ()));
-	}
+	Vec3fC signum();
 	
 	/**
 	 * Applies the given matrix to the current vector and therefore transforming it.

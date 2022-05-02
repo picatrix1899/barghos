@@ -22,16 +22,17 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package org.barghos.math.api.vector;
+package org.barghos.math.vector;
 
 import static org.barghos.core.api.tuple.TupleConstants.*;
 
 import org.barghos.core.api.tuple3.Tup3fC;
-import org.barghos.core.api.tuple3.Tup3fR;
 import org.barghos.core.api.util.ExtractParam;
+import org.barghos.math.api.matrix.Mat4fR;
+import org.barghos.math.api.vector.QuatfC;
+import org.barghos.math.api.vector.QuatfR;
 import org.barghos.math.matrix.Mat4f;
 import org.barghos.math.util.Maths;
-import org.barghos.math.vector.Vec3f;
 
 /** A 3-Dimensional Quaternion */
 public class Quatf implements QuatfC
@@ -78,126 +79,94 @@ public class Quatf implements QuatfC
 	{
 		set(q);
 	}
-
-	public static QuatfC getFromAxis(Tup3fR axis, float angle) { return getFromAxis(axis.getX(), axis.getY(), axis.getZ(), angle, null); }
 	
-	public static QuatfC getFromAxis(float ax, float ay, float az, float angle) { return getFromAxis(ax, ay, az, angle, null); }
-	
-	public static QuatfC getFromAxis(Tup3fR axis, float angle, Quatf res) { return getFromAxis(axis.getX(), axis.getY(), axis.getZ(), angle, res); }
-	
-	public static QuatfC getFromAxis(float ax, float ay, float az, float angle, Quatf res)
-	{
-		if(res == null) res = new Quatf();
-		
-		float halfAngle = angle * 0.5f;
-		float sinHalfAngle = (float)Math.sin(halfAngle);
-		float cosHalfAngle = (float)Math.cos(halfAngle);
-		
-		float rX = ax * sinHalfAngle;
-		float rY = ay * sinHalfAngle;
-		float rZ = az * sinHalfAngle;
-		float rW = cosHalfAngle;
-		
-		return res.set(rX, rY, rZ, rW).normal();
-	}
-	
-	public static QuatfC getFromVectors(Tup3fR v1, Tup3fR v2)
-	{
-		Vec3fC a = new Vec3f(v1).normal();
-		Vec3fC b = new Vec3f(v2).normal();
-
-		Vec3fC axis = a.crossN(b).normal();
-		
-		float angle = 1.0f + a.dot(b);
-
-		QuatfC out = new Quatf(axis.getX(), axis.getY(), axis.getZ(), angle).normal();
-
-		return out;
-	}
-	
+	/** {@inheritDoc}} */
 	@Override
 	public float getX() { return this.x; }
 	
+	/** {@inheritDoc}} */
 	@Override
 	public float getY() { return this.y; }
 	
+	/** {@inheritDoc}} */
 	@Override
 	public float getZ() { return this.z; }
 	
+	/** {@inheritDoc}} */
 	@Override
 	public float getW() { return this.w; }
-	
-	public QuatfC rotate(Tup3fR axis, float angle)
-	{
-		return rotate(axis.getX(), axis.getY(), axis.getZ(), angle);
-	}
-	
-	public QuatfC rotate(float ax, float ay, float az, float angle)
-	{
-		return getFromAxis(angle, ax, ay, az).mul(this, this);
-	}
-	
-	public QuatfC rotate(Quatf q)
-	{
-		return q.mul(this, this);
-	}
-	
-	//From Ken Shoemake's "Quaternion Calculus and Fast Animation" article
-	public QuatfC set(Mat4f rot) 
-	{
-		double trace = rot.m[0][0] + rot.m[1][1] + rot.m[2][2];
 
-		if(trace > 0)
-		{
-			float s = 0.5f / (float)Maths.sqrt(trace + 1.0);
-			this.w = 0.25f / s;
-			
-			
-			this.x = (rot.m[1][2] - rot.m[2][1]) * s;
-			this.y = (rot.m[2][0] - rot.m[0][2]) * s;
-			this.z = (rot.m[0][1] - rot.m[1][0]) * s;
-		}
-		else
-		{
-			if(rot.m[0][0] > rot.m[1][1] && rot.m[0][0] > rot.m[2][2])
-			{
-				float s = 2.0f * (float)Maths.sqrt(1.0 + rot.m[0][0] - rot.m[1][1] - rot.m[2][2]);
-				this.w = (rot.m[1][2] - rot.m[2][1]) / s;
-				this.x = 0.25f * s;
-				this.y = (rot.m[1][0] + rot.m[0][1]) / s;
-				this.z = (rot.m[2][0] + rot.m[0][2]) / s;
-			}
-			else if(rot.m[1][1] > rot.m[2][2])
-			{
-				float s = 2.0f * (float)Maths.sqrt(1.0 + rot.m[1][1] - rot.m[0][0] - rot.m[2][2]);
-				this.w = (rot.m[2][0] - rot.m[0][2]) / s;
-				this.x = (rot.m[1][0] + rot.m[0][1]) / s;
-				this.y = 0.25f * s;
-				this.z = (rot.m[2][1] + rot.m[1][2]) / s;
-			}
-			else
-			{
-				float s = 2.0f * (float)Maths.sqrt(1.0 + rot.m[2][2] - rot.m[0][0] - rot.m[1][1]);
-				this.w = (rot.m[0][1] - rot.m[1][0] ) / s;
-				this.x = (rot.m[2][0] + rot.m[0][2] ) / s;
-				this.y = (rot.m[1][2] + rot.m[2][1] ) / s;
-				this.z = 0.25f * s;
-			}
-		}
+	
+	public QuatfC set(Mat4fR rot) 
+	{
+		
+		//From Ken Shoemake's "Quaternion Calculus and Fast Animation" article
+//		float[][] m = rot.toArray();
+//		
+//		double trace = m[0][0] + m[1][1] + m[2][2];
+//
+//		if(trace > 0)
+//		{
+//			float s = 0.5f / (float)Maths.sqrt(trace + 1.0);
+//			this.w = 0.25f / s;
+//			
+//			this.x = (m[1][2] - m[2][1]) * s;
+//			this.y = (m[2][0] - m[0][2]) * s;
+//			this.z = (m[0][1] - m[1][0]) * s;
+//		}
+//		else
+//		{
+//			if(m[0][0] > m[1][1] && m[0][0] > m[2][2])
+//			{
+//				float s = 2.0f * (float)Maths.sqrt(1.0 + m[0][0] - m[1][1] - m[2][2]);
+//				this.w = (m[1][2] - m[2][1]) / s;
+//				this.x = 0.25f * s;
+//				this.y = (m[1][0] + m[0][1]) / s;
+//				this.z = (m[2][0] + m[0][2]) / s;
+//			}
+//			else if(m[1][1] > m[2][2])
+//			{
+//				float s = 2.0f * (float)Maths.sqrt(1.0 + m[1][1] - m[0][0] - m[2][2]);
+//				this.w = (m[2][0] - m[0][2]) / s;
+//				this.x = (m[1][0] + m[0][1]) / s;
+//				this.y = 0.25f * s;
+//				this.z = (m[2][1] + m[1][2]) / s;
+//			}
+//			else
+//			{
+//				float s = 2.0f * (float)Maths.sqrt(1.0 + m[2][2] - m[0][0] - m[1][1]);
+//				this.w = (m[0][1] - m[1][0] ) / s;
+//				this.x = (m[2][0] + m[0][2] ) / s;
+//				this.y = (m[1][2] + m[2][1] ) / s;
+//				this.z = 0.25f * s;
+//			}
+//		}
 
+		
+		
 		normal(this);
 		
 		return this;
 	}
 	
+	/** {@inheritDoc}} */
+	@Override
 	public QuatfC setX(float x) { this.x = x; return this; }
 	
+	/** {@inheritDoc}} */
+	@Override
 	public QuatfC setY(float y) { this.y = y; return this; }
 	
+	/** {@inheritDoc}} */
+	@Override
 	public QuatfC setZ(float z) { this.z = z; return this; }
 
+	/** {@inheritDoc}} */
+	@Override
 	public QuatfC setW(float w) { this.w = w; return this; }
 	
+	/** {@inheritDoc}} */
+	@Override
 	public <T extends QuatfC> T mul(QuatfR q, T res)
 	{
 		float w_ = this.w * q.getW() - this.x * q.getX() - this.y * q.getY() - this.z * q.getZ(); // w * w' - v * v'
@@ -210,6 +179,8 @@ public class Quatf implements QuatfC
 		return res;
 	}
 
+	/** {@inheritDoc}} */
+	@Override
 	public <T extends QuatfC> T mulVector(float x, float y, float z, T res)
 	{
 		float w_ = -this.x * x - this.y * y - this.z * z; // - v * v'
@@ -222,6 +193,8 @@ public class Quatf implements QuatfC
 		return res;
 	}
 	
+	/** {@inheritDoc}} */
+	@Override
 	public <T extends Tup3fC> T transform(float x, float y, float z, @ExtractParam T res)
 	{
 		QuatfC r = mulVectorN(x, y, z);
@@ -233,6 +206,8 @@ public class Quatf implements QuatfC
 		return res;
 	}
 
+	/** {@inheritDoc}} */
+	@Override
 	public float[] transform(float x, float y, float z, @ExtractParam float[] res)
 	{
 		QuatfC r = mulVectorN(x, y, z);
@@ -246,13 +221,33 @@ public class Quatf implements QuatfC
 		return res;
 	}
 	
+	/** {@inheritDoc}} */
+	@Override
 	public String toString()
 	{
 		return "quat3f("  + this.x + ", " + this.y + ", " + this.z + ", " + this.w + ")";
 	}
 	
+	/** {@inheritDoc}} */
+	@Override
 	public Quatf clone()
 	{
 		return new Quatf(this);
+	}
+
+	/** {@inheritDoc}} */
+	@Override
+	public QuatfC setByAxisAngle(float ax, float ay, float az, float angle)
+	{
+		float halfAngle = angle * 0.5f;
+		float sinHalfAngle = (float)Math.sin(halfAngle);
+		float cosHalfAngle = (float)Math.cos(halfAngle);
+		
+		float rX = ax * sinHalfAngle;
+		float rY = ay * sinHalfAngle;
+		float rZ = az * sinHalfAngle;
+		float rW = cosHalfAngle;
+		
+		return set(rX, rY, rZ, rW);
 	}
 }

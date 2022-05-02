@@ -6,7 +6,7 @@ import org.barghos.core.api.tuple2.Tup2fR;
 import org.barghos.core.api.tuple3.Tup3fR;
 import org.barghos.core.api.tuple4.Tup4fR;
 import org.barghos.math.BarghosMath;
-import org.barghos.math.api.util.SystemOrientation3fR;
+import org.barghos.math.api.transform.SystemOrientation3fR;
 import org.barghos.math.api.vector.QuatfR;
 import org.barghos.math.api.vector.Vec3fUtil;
 

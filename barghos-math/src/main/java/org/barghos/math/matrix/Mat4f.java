@@ -592,10 +592,10 @@ public class Mat4f implements Mat4fC
 	@Override
 	public Mat4fC initIdentity()
 	{
-		setRow(0, 1, 0, 0, 0);
-		setRow(1, 0, 1, 0, 0);
-		setRow(2, 0, 0, 1, 0);
-		setRow(3, 0, 0, 0, 1);
+		setRow(0, 1.0f, 0, 0, 0);
+		setRow(1, 0, 1.0f, 0, 0);
+		setRow(2, 0, 0, 1.0f, 0);
+		setRow(3, 0, 0, 0, 1.0f);
 		
 		return this;
 	}
@@ -619,7 +619,7 @@ public class Mat4f implements Mat4fC
 		setRow(0, x, 0, 0, 0);
 		setRow(1, 0, y, 0, 0);
 		setRow(2, 0, 0, z, 0);
-		setRow(3, 0, 0, 0, 1);
+		setRow(3, 0, 0, 0, 1.0f);
 		
 		return this;
 	}
@@ -640,10 +640,10 @@ public class Mat4f implements Mat4fC
 	@Override
 	public Mat4fC initTranslation3d(float x, float y, float z)
 	{
-		setRow(0, 1, 0, 0, x);
-		setRow(1, 0, 1, 0, y);
-		setRow(2, 0, 0, 1, z);
-		setRow(3, 0, 0, 0, 1);
+		setRow(0, 1.0f, 0, 0, x);
+		setRow(1, 0, 1.0f, 0, y);
+		setRow(2, 0, 0, 1.0f, z);
+		setRow(3, 0, 0, 0, 1.0f);
 		
 		return this;
 	}
@@ -652,7 +652,7 @@ public class Mat4f implements Mat4fC
 	@Override
 	public Mat4fC initBaseChange(float uX, float uY, float uZ, float fX, float fY, float fZ)
 	{
-		return initBaseChange(uX, uY, uZ, fX, fY, fZ, BarghosMath.DEFAULT_COORD_SYSTEM_3f.isRightHanded());
+		return initBaseChange(uX, uY, uZ, fX, fY, fZ, BarghosMath.DEFAULT_SYSTEM_3f_IS_RIGHTHANDED);
 	}
 	
 	/** {@inheritDoc}} */
@@ -685,7 +685,7 @@ public class Mat4f implements Mat4fC
 	@Override
 	public Mat4fC initBaseChange(float rX, float rY, float rZ, float uX, float uY, float uZ, float fX, float fY, float fZ)
 	{
-		return initBaseChange(rX, rY, rZ, uX, uY, uZ, fX, fY, fZ, BarghosMath.DEFAULT_COORD_SYSTEM_3f.isRightHanded());
+		return initBaseChange(rX, rY, rZ, uX, uY, uZ, fX, fY, fZ, BarghosMath.DEFAULT_SYSTEM_3f_IS_RIGHTHANDED);
 	}
 	
 	/** {@inheritDoc}} */
@@ -718,7 +718,7 @@ public class Mat4f implements Mat4fC
 	@Override
 	public Mat4fC initRotation(QuatfR q)
 	{
-		return initRotation(q, BarghosMath.DEFAULT_COORD_SYSTEM_3f.isRightHanded());
+		return initRotation(q, BarghosMath.DEFAULT_SYSTEM_3f_IS_RIGHTHANDED);
 	}
 	
 	/** {@inheritDoc}} */
@@ -797,7 +797,7 @@ public class Mat4f implements Mat4fC
 	@Override
 	public Mat4fC initRotation(float aX, float aY, float aZ, float angle)
 	{
-		return initRotation(aX, aY, aZ, angle, BarghosMath.DEFAULT_COORD_SYSTEM_3f.isRightHanded());
+		return initRotation(aX, aY, aZ, angle, BarghosMath.DEFAULT_SYSTEM_3f_IS_RIGHTHANDED);
 	}
 	
 	public Mat4fC initRotationRH(float aX, float aY, float aZ, float angle)
@@ -876,8 +876,8 @@ public class Mat4f implements Mat4fC
 		
 		setRow(0, 1.0f / (f * aspectRatio), 0, 0, 0);
 		setRow(1, 0, 1.0f / f, 0, 0);
-		setRow(2, 0, 0, -((far + near) / (far - near)), -((2 * far * near) / (far - near)));
-		setRow(3, 0, 0, -1, 0);
+		setRow(2, 0, 0, -((far + near) / (far - near)), -((2.0f * far * near) / (far - near)));
+		setRow(3, 0, 0, -1.0f, 0);
 		
 		return this;
 	}
@@ -889,7 +889,7 @@ public class Mat4f implements Mat4fC
 		setRow(0, 2.0f / (right - left),				0f,									0f,								-(right + left) / (right - left));
 		setRow(1, 0f,									2.0f / (top - bottom),				0f,								-(top + bottom) / (top - bottom));
 		setRow(2, 0f,									0f, 								-2.0f / (far - near),			-(far + near) / (far - near));
-		setRow(3, 0f,		0f,	0f, 	1f);
+		setRow(3, 0f,		0f,	0f, 	1.0f);
 		 
 		return this;
 	}
