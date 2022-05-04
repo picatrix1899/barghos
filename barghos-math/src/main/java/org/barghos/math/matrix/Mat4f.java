@@ -1103,4 +1103,11 @@ public class Mat4f implements Mat4fC
 	{
 		return new Mat4f().initOrtho(left, right, bottom, top, near, far);
 	}
+
+	/** {@inheritDoc} */
+	@Override
+	public float trace()
+	{
+		return this.m[0][0] + this.m[1][1] + this.m[2][2] + this.m[3][3];
+	}
 }

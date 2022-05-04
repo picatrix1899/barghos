@@ -139,7 +139,7 @@ public class BiVectorOrientation3f
 	
 	public Vec3f getBack()
 	{
-		return (Vec3f)this.forward.invertN();
+		return (Vec3f)this.forward.negateN();
 	}
 	
 	public Vec3f getUp()
@@ -149,12 +149,12 @@ public class BiVectorOrientation3f
 	
 	public Vec3f getDown()
 	{
-		return (Vec3f)this.up.invertN();
+		return (Vec3f)this.up.negateN();
 	}
 	
 	public Vec3f getLeft()
 	{
-		return (Vec3f)this.up.crossN(this.forward).invert();
+		return (Vec3f)this.up.crossN(this.forward).negate();
 	}
 	
 	public Vec3f getRight()

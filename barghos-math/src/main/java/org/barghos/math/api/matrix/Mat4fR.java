@@ -194,4 +194,11 @@ public interface Mat4fR extends SqrMatR
 	 * @return The result array with the result.
 	 */
 	float[] transform(float tX, float tY, float tZ, float tW, float[] res);
+	
+	/**
+	 * Calculates the trace of the current matrix.
+	 * 
+	 * @return The trace of the current matrix.
+	 */
+	float trace();
 }

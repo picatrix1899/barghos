@@ -176,4 +176,9 @@ public class MatStack4f implements Mat4fR
 	{
 		return null;
 	}
+
+	public float trace()
+	{
+		return 0;
+	}
 }

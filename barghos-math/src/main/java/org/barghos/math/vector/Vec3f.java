@@ -1,19 +1,19 @@
 package org.barghos.math.vector;
 
-import static org.barghos.core.api.tuple.TupleConstants.COMP_X;
-import static org.barghos.core.api.tuple.TupleConstants.COMP_Y;
-import static org.barghos.core.api.tuple.TupleConstants.COMP_Z;
+import static org.barghos.core.api.tuple.TupleConstants.*;
 
 import org.barghos.core.api.tuple.TupfR;
 import org.barghos.core.api.tuple2.Tup2oC;
 import org.barghos.core.api.tuple2.Tup2oR;
 import org.barghos.core.api.tuple3.Tup3fR;
-import org.barghos.core.api.util.function.GenericFunction2;
 import org.barghos.math.BarghosMath;
 import org.barghos.math.api.matrix.Mat4fR;
+import org.barghos.math.api.model.AxisAngle3fR;
+import org.barghos.math.api.vector.QuatfR;
 import org.barghos.math.api.vector.Vec3fC;
 import org.barghos.math.api.vector.Vec3fR;
 import org.barghos.math.api.vector.Vec3fUtil;
+import org.barghos.math.util.Maths;
 
 /**
  * This class represents a 3-dimensional float vector.
@@ -145,6 +145,30 @@ public class Vec3f implements Vec3fC
 		return this;
 	}
 	
+	/** {@inheritDoc} */
+	@Override
+	public Vec3fC set(float x, float y, float z)
+	{
+		this.x = x;
+		this.y = y;
+		this.z = z;
+		return this;
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public Vec3fC setByIndex(int index, float value)
+	{
+		switch(index)
+		{
+			case COMP_X: this.x = value;
+			case COMP_Y: this.y = value;
+			case COMP_Z: this.z = value;
+		}
+		
+		return this;
+	}
+	
 	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
@@ -212,70 +236,89 @@ public class Vec3f implements Vec3fC
 		return new Vec3f(this);
 	}
 	
+	/** {@inheritDoc}} */
+	@Override
 	public Vec3fC add(float x, float y, float z)
 	{
 		return Vec3fUtil.add(getX(), getY(), getZ(), x, y, z, this);
 	}
 	
+	/** {@inheritDoc}} */
+	@Override
 	public Vec3fC sub(float x, float y, float z)
 	{
 		return Vec3fUtil.sub(getX(), getY(), getZ(), x, y, z, this);
 	}
 	
+	/** {@inheritDoc}} */
+	@Override
 	public Vec3fC revSub(float x, float y, float z)
 	{
 		return Vec3fUtil.revSub(getX(), getY(), getZ(), x, y, z, this);
 	}
 	
+	/** {@inheritDoc}} */
+	@Override
 	public Vec3fC mul(float x, float y, float z)
 	{
 		return Vec3fUtil.mul(getX(), getY(), getZ(), x, y, z, this);
 	}
 	
+	/** {@inheritDoc}} */
+	@Override
 	public Vec3fC div(float x, float y, float z)
 	{
 		return Vec3fUtil.div(getX(), getY(), getZ(), x, y, z, this);
 	}
 	
+	/** {@inheritDoc}} */
+	@Override
 	public Vec3fC revDiv(float x, float y, float z)
 	{
 		return Vec3fUtil.revDiv(getX(), getY(), getZ(), x, y, z, this);
 	}
 	
-	public Vec3fC normal()
+	/** {@inheritDoc}} */
+	@Override
+	public Vec3fC normalUnsafe()
 	{
 		return Vec3fUtil.normal(getX(), getY(), getZ(), this);
 	}
 	
-	public Vec3fC normalSafe()
+	/** {@inheritDoc}} */
+	@Override
+	public Vec3fC normal()
 	{
 		if(isZero()) return set(0.0f);
 		
 		return normal();
 	}
 	
-	public Vec3fC normalSafeWithMargin(float tolerance)
+	/** {@inheritDoc}} */
+	@Override
+	public Vec3fC normal(float tolerance)
 	{
 		if(isZeroWithMargin(tolerance)) return set(0.0f);
 		
 		return normal();
 	}
 	
-	public Vec3fC invert()
+	/** {@inheritDoc}} */
+	@Override
+	public Vec3fC negate()
 	{
 		return Vec3fUtil.invert(getX(), getY(), getZ(), this);
 	}
 	
+	/** {@inheritDoc}} */
+	@Override
 	public Vec3fC inverse()
 	{
-		return inverse(1.0f);
+		return revSub(1.0f);
 	}
 	
-	public Vec3fC inverse(float x, float y, float z)
-	{
-		return Vec3fUtil.inverse(getX(), getY(), getZ(), x, y, z, this);
-	}
-	
+	/** {@inheritDoc}} */
+	@Override
 	public float dot(float x, float y, float z)
 	{
 		return Vec3fUtil.dot(getX(), getY(), getZ(), x, y, z);
@@ -290,39 +333,278 @@ public class Vec3f implements Vec3fC
 		return Vec3fUtil.cross(x, y, z, getX(), getY(),  getZ(), this);
 	}
 	
+	/** {@inheritDoc} */
+	@Override
+	public Vec3fC cross(float x, float y, float z, boolean rightHanded)
+	{
+		if(rightHanded) return Vec3fUtil.cross(getX(), getY(),  getZ(), x, y, z, this);
+		
+		return Vec3fUtil.cross(x, y, z, getX(), getY(),  getZ(), this);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public Vec3fC crossRH(float x, float y, float z)
+	{
+		return Vec3fUtil.cross(getX(), getY(),  getZ(), x, y, z, this);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public Vec3fC crossLH(float x, float y, float z)
+	{
+		return Vec3fUtil.cross(x, y, z, getX(), getY(),  getZ(), this);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
 	public Vec3fC abs()
 	{
 		return set(Math.abs(getX()), Math.abs(getY()), Math.abs(getZ()));
 	}
 	
+	/** {@inheritDoc} */
+	@Override
 	public Vec3fC floor()
 	{
 		return set((float)Math.floor(getX()), (float)Math.floor(getY()), (float)Math.floor(getZ()));
 	}
 	
+	/** {@inheritDoc} */
+	@Override
 	public Vec3fC ceil()
 	{
 		return set((float)Math.ceil(getX()), (float)Math.ceil(getY()), (float)Math.ceil(getZ()));
 	}
 	
+	/** {@inheritDoc} */
+	@Override
 	public Vec3fC round()
 	{
 		return set(Math.round(getX()), Math.round(getY()), Math.round(getZ()));
 	}
 	
+	/** {@inheritDoc} */
+	@Override
 	public Vec3fC trunc()
 	{
 		return set((int)getX(), (int)getY(), (int)getZ());
 	}
 	
+	/** {@inheritDoc} */
+	@Override
 	public Vec3fC signum()
 	{
 		return set(Math.signum(getX()), Math.signum(getY()), Math.signum(getZ()));
 	}
 	
+	/** {@inheritDoc} */
+	@Override
 	public Vec3fC transform(Mat4fR m)
 	{
 		m.transform(this, false, this);
+		
+		return this;
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public Vec3fC min(float x, float y, float z)
+	{
+		this.x = Math.min(this.x, x);
+		this.y = Math.min(this.y, y);
+		this.z = Math.min(this.z, z);
+		
+		return this;
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public Vec3fC max(float x, float y, float z)
+	{
+		this.x = Math.max(this.x, x);
+		this.y = Math.max(this.y, y);
+		this.z = Math.max(this.z, z);
+		
+		return this;
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public Vec3fC lerp(float x, float y, float z, float alpha)
+	{
+		float invAlpha = 1.0f - alpha;
+		this.x = Math.fma(invAlpha, this.x, alpha * x);
+		this.y = Math.fma(invAlpha, this.y, alpha * y);
+		this.z = Math.fma(invAlpha, this.z, alpha * z);
+		
+		return this;
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public Vec3fC lerpAdd(float x, float y, float z, float alpha)
+	{
+		this.x = Math.fma(alpha, x, this.x);
+		this.y = Math.fma(alpha, y, this.y);
+		this.z = Math.fma(alpha, z, this.z);
+		
+		return this;
+	}
+
+	public Vec3fC rotateX(float angle)
+	{
+		float cosAngle = (float)Math.cos(angle);
+		float sinAngle = (float)Math.sin(angle);
+		
+		float y = this.y;
+		float z = this.z;
+
+		this.y = Math.fma(cosAngle, y, -sinAngle * z);
+		this.z = Math.fma(sinAngle, y, cosAngle * z);
+		
+		return this;
+	}
+
+	public Vec3fC rotateXDeg(float angle)
+	{
+		float ang = angle * Maths.DEG_TO_RADf;
+		float cosAngle = (float)Math.cos(ang);
+		float sinAngle = (float)Math.sin(ang);
+		
+		float y = this.y;
+		float z = this.z;
+
+		this.y = Math.fma(cosAngle, y, -sinAngle * z);
+		this.z = Math.fma(sinAngle, y, cosAngle * z);
+		
+		return this;
+	}
+
+	public Vec3fC rotateY(float angle)
+	{
+		float cosAngle = (float)Math.cos(angle);
+		float sinAngle = (float)Math.sin(angle);
+		
+		float x = this.x;
+		float z = this.z;
+
+		this.x = Math.fma(cosAngle, x, sinAngle * z);
+		this.z = Math.fma(-sinAngle, x, cosAngle * z);
+		
+		return this;
+	}
+
+	public Vec3fC rotateYDeg(float angle)
+	{
+		float ang = angle * Maths.DEG_TO_RADf;
+		float cosAngle = (float)Math.cos(ang);
+		float sinAngle = (float)Math.sin(ang);
+		
+		float x = this.x;
+		float z = this.z;
+
+		this.x = Math.fma(cosAngle, x, sinAngle * z);
+		this.z = Math.fma(-sinAngle, x, cosAngle * z);
+		
+		return this;
+	}
+
+	public Vec3fC rotateZ(float angle)
+	{
+		float cosAngle = (float)Math.cos(angle);
+		float sinAngle = (float)Math.sin(angle);
+		
+		float x = this.x;
+		float y = this.y;
+
+		this.x = Math.fma(cosAngle, x, -sinAngle * y);
+		this.y = Math.fma(sinAngle, x, cosAngle * y);
+		
+		return this;
+	}
+
+	public Vec3fC rotateZDeg(float angle)
+	{
+		float ang = angle * Maths.DEG_TO_RADf;
+		float cosAngle = (float)Math.cos(ang);
+		float sinAngle = (float)Math.sin(ang);
+		
+		float x = this.x;
+		float y = this.y;
+
+		this.x = Math.fma(cosAngle, x, -sinAngle * y);
+		this.y = Math.fma(sinAngle, x, cosAngle * y);
+		
+		return this;
+	}
+
+	public Vec3fC rotate(float axisX, float axisY, float axisZ, float angle)
+	{
+		// Rodrigues' rotation formula
+		float cosAngle = (float)Math.cos(angle);
+		float sinAngle = (float)Math.sin(angle);
+		float invCosAngle = 1.0f - cosAngle;
+		float dot = x * axisX + y * axisY + z * axisZ;
+		
+		float x = this.x;
+		float y = this.y;
+		float z = this.z;
+		
+		this.x = cosAngle * x + sinAngle * (axisY * z - axisZ * y) + invCosAngle * dot * axisX;
+		this.y = cosAngle * y + sinAngle * (axisZ * x - axisX * z) + invCosAngle * dot * axisY;
+		this.z = cosAngle * z + sinAngle * (axisX * y - axisY * x) + invCosAngle * dot * axisZ;
+		
+		return this;
+	}
+
+	public Vec3fC rotateDeg(float axisX, float axisY, float axisZ, float angle)
+	{
+		// Rodrigues' rotation formula
+		float ang = angle * Maths.DEG_TO_RADf;
+		float cosAngle = (float)Math.cos(ang);
+		float sinAngle = (float)Math.sin(ang);
+		float invCosAngle = 1.0f - cosAngle;
+		float dot = x * axisX + y * axisY + z * axisZ;
+		
+		float x = this.x;
+		float y = this.y;
+		float z = this.z;
+		
+		this.x = cosAngle * x + sinAngle * (axisY * z - axisZ * y) + invCosAngle * dot * axisX;
+		this.y = cosAngle * y + sinAngle * (axisZ * x - axisX * z) + invCosAngle * dot * axisY;
+		this.z = cosAngle * z + sinAngle * (axisX * y - axisY * x) + invCosAngle * dot * axisZ;
+		
+		return this;
+	}
+
+	public Vec3fC rotate(AxisAngle3fR aa)
+	{
+		// Rodrigues' rotation formula
+		
+		float angle = aa.getAngle();
+		float aX = aa.getAxisX();
+		float aY = aa.getAxisY();
+		float aZ = aa.getAxisZ();
+		float cosAngle = (float)Math.cos(angle);
+		float sinAngle = (float)Math.sin(angle);
+		float invCosAngle = 1.0f - cosAngle;
+		float dot = x * aX + y * aY + z * aZ;
+		
+		float x = this.x;
+		float y = this.y;
+		float z = this.z;
+		
+		this.x = cosAngle * x + sinAngle * (aY * z - aZ * y) + invCosAngle * dot * aX;
+		this.y = cosAngle * y + sinAngle * (aZ * x - aX * z) + invCosAngle * dot * aY;
+		this.z = cosAngle * z + sinAngle * (aX * y - aY * x) + invCosAngle * dot * aZ;
+		
+		return this;
+	}
+
+	public Vec3fC rotate(QuatfR q)
+	{
+		q.transform(this, this);
 		
 		return this;
 	}
@@ -357,34 +639,29 @@ public class Vec3f implements Vec3fC
 		return clone().revDiv(x, y, z);
 	}
 	
+	public Vec3fC normalUnsafeN()
+	{
+		return clone().normalUnsafe();
+	}
+	
 	public Vec3fC normalN()
 	{
 		return clone().normal();
 	}
 	
-	public Vec3fC normalSafeN()
+	public Vec3fC normalN(float tolerance)
 	{
-		return clone().normalSafe();
+		return clone().normal(tolerance);
 	}
 	
-	public Vec3fC normalSafeWithMarginN(float tolerance)
+	public Vec3fC negateN()
 	{
-		return clone().normalSafeWithMargin(tolerance);
-	}
-	
-	public Vec3fC invertN()
-	{
-		return clone().invert();
+		return clone().negate();
 	}
 	
 	public Vec3fC inverseN()
 	{
 		return clone().inverse();
-	}
-	
-	public Vec3fC inverseN(float x, float y, float z)
-	{
-		return clone().inverse(x, y, z);
 	}
 	
 	public Vec3fC crossN(float x, float y, float z)
@@ -427,45 +704,45 @@ public class Vec3f implements Vec3fC
 		return clone().transform(m);
 	}
 	
-	public float reciprocalLength()
+	public float inverseLengthUnsafe()
 	{
-		return 1.0f / length();
+		return 1.0f / lengthUnsafe();
 	}
 	
-	public float reciprocalLengthSafe()
+	public float inverseLength()
 	{
 		if(isZero()) return 0.0f;
 		
-		return reciprocalLength();
+		return inverseLengthUnsafe();
 	}
 	
-	public float reciprocalLengthSafeWithMargin(float tolerance)
+	public float inverseLength(float tolerance)
 	{
 		if(isZeroWithMargin(tolerance)) return 0.0f;
 		
-		return reciprocalLength();
+		return inverseLengthUnsafe();
 	}
 	
-	public float length()
+	public float lengthUnsafe()
 	{
 		return (float)Math.sqrt(squaredLength());
 	}
 	
-	public float lengthSafe()
+	public float length()
 	{
 		if(isZero()) return 0.0f;
 		
-		return length();
+		return lengthUnsafe();
 	}
 	
-	public float lengthSafeWithMargin(float tolerance)
+	public float length(float tolerance)
 	{
 		if(isZeroWithMargin(tolerance)) return 0.0f;
 		
-		return length();
+		return lengthUnsafe();
 	}
 	
-	public float squaredLength()
+	public float squaredLengthUnsafe()
 	{
 		float x = getX();
 		float y = getY();
@@ -474,21 +751,21 @@ public class Vec3f implements Vec3fC
 		return Math.fma(x, x, Math.fma(y, y, z * z));
 	}
 	
-	public float squaredLengthSafe()
+	public float squaredLength()
 	{
 		if(isZero()) return 0.0f;
 		
-		return squaredLength();
+		return squaredLengthUnsafe();
 	}
 	
-	public float squaredLengthSafeWithMargin(float tolerance)
+	public float squaredLength(float tolerance)
 	{
 		if(isZeroWithMargin(tolerance)) return 0.0f;
 		
-		return squaredLength();
+		return squaredLengthUnsafe();
 	}
 	
-	public Tup2oR<Float,Integer> min()
+	public Tup2oR<Float,Integer> getMin()
 	{
 		float x = getX();
 		float y = getY();
@@ -512,7 +789,7 @@ public class Vec3f implements Vec3fC
 		return Tup2oR.of(value, index);
 	}
 	
-	public <T extends Tup2oC<Float,Integer>> T minR(T res)
+	public <T extends Tup2oC<Float,Integer>> T getMin(T res)
 	{
 		float x = getX();
 		float y = getY();
@@ -538,36 +815,12 @@ public class Vec3f implements Vec3fC
 		return res;
 	}
 	
-	public <T> T minR(GenericFunction2<Float,Integer,T> func)
-	{
-		float x = getX();
-		float y = getY();
-		float z = getZ();
-		
-		float value = x;
-		int index = COMP_X;
-		
-		if(y < value)
-		{
-			value = y;
-			index = COMP_Y;
-		}
-		
-		if(z < value)
-		{
-			value = z;
-			index = COMP_Z;
-		}
-		
-		return func.apply(value, index);
-	}
-	
-	public float minValue()
+	public float getMinValue()
 	{
 		return Math.min(getX(), Math.min(getY(), getZ()));
 	}
 	
-	public int minComponent()
+	public int getMinComponent()
 	{
 		float x = getX();
 		float y = getY();
@@ -591,7 +844,7 @@ public class Vec3f implements Vec3fC
 		return index;
 	}
 	
-	public Tup2oR<Float,Integer> max()
+	public Tup2oR<Float,Integer> getMax()
 	{
 		float x = getX();
 		float y = getY();
@@ -615,7 +868,7 @@ public class Vec3f implements Vec3fC
 		return Tup2oR.of(value, index);
 	}
 	
-	public <T extends Tup2oC<Float,Integer>> T maxR(T res)
+	public <T extends Tup2oC<Float,Integer>> T getMax(T res)
 	{
 		float x = getX();
 		float y = getY();
@@ -641,36 +894,12 @@ public class Vec3f implements Vec3fC
 		return res;
 	}
 	
-	public <T> T maxR(GenericFunction2<Float,Integer,T> func)
-	{
-		float x = getX();
-		float y = getY();
-		float z = getZ();
-		
-		float value = x;
-		int index = COMP_X;
-		
-		if(y > value)
-		{
-			value = y;
-			index = COMP_Y;
-		}
-		
-		if(z > value)
-		{
-			value = z;
-			index = COMP_Z;
-		}
-		
-		return func.apply(value, index);
-	}
-	
-	public float maxValue()
+	public float getMaxValue()
 	{
 		return Math.max(getX(), Math.max(getY(), getZ()));
 	}
 	
-	public int maxComponent()
+	public int getMaxComponent()
 	{
 		float x = getX();
 		float y = getY();
@@ -692,5 +921,90 @@ public class Vec3f implements Vec3fC
 		}
 		
 		return index;
+	}
+
+	public Vec3fC crossN(float x, float y, float z, boolean rightHanded)
+	{
+		return clone().cross(x, y, z, rightHanded);
+	}
+
+	public Vec3fC crossRHN(float x, float y, float z)
+	{
+		return clone().crossRH(x, y, z);
+	}
+
+	public Vec3fC crossLHN(float x, float y, float z)
+	{
+		return clone().crossLH(x, y, z);
+	}
+
+	public Vec3fC minN(float x, float y, float z)
+	{
+		return clone().min(x, y, z);
+	}
+
+	public Vec3fC maxN(float x, float y, float z)
+	{
+		return clone().max(x, y, z);
+	}
+
+	public Vec3fC lerpN(float x, float y, float z, float alpha)
+	{
+		return clone().lerp(x, y, z, alpha);
+	}
+
+	public Vec3fC lerpAddN(float x, float y, float z, float alpha)
+	{
+		return clone().lerpAdd(x, y, z, alpha);
+	}
+
+	public Vec3fC rotateXN(float angle)
+	{
+		return clone().rotateX(angle);
+	}
+
+	public Vec3fC rotateXDegN(float angle)
+	{
+		return clone().rotateXDeg(angle);
+	}
+
+	public Vec3fC rotateYN(float angle)
+	{
+		return clone().rotateY(angle);
+	}
+
+	public Vec3fC rotateYDegN(float angle)
+	{
+		return clone().rotateYDeg(angle);
+	}
+
+	public Vec3fC rotateZN(float angle)
+	{
+		return clone().rotateZ(angle);
+	}
+
+	public Vec3fC rotateZDegN(float angle)
+	{
+		return clone().rotateZDeg(angle);
+	}
+
+	public Vec3fC rotateN(float axisX, float axisY, float axisZ, float angle)
+	{
+		return clone().rotate(axisX, axisY, axisZ, angle);
+	}
+
+	public Vec3fC rotateDegN(float axisX, float axisY, float axisZ, float angle)
+	{
+		return clone().rotateDeg(axisX, axisY, axisZ, angle);
+	}
+
+	public Vec3fC rotateN(AxisAngle3fR aa)
+	{
+		return clone().rotate(aa);
+	}
+
+	public Vec3fC rotateN(QuatfR q)
+	{
+		return clone().rotate(q);
 	}
 }
