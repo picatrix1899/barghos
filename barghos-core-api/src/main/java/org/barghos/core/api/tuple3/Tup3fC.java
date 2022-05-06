@@ -124,11 +124,17 @@ public interface Tup3fC extends Tup3fR, TupfC
 	
 	/** {@inheritDoc}} */
 	@Override
-	Tup3fC shallowClone();
+	default Tup3fC shallowClone()
+	{
+		return clone();
+	}
 	
 	/** {@inheritDoc}} */
 	@Override
-	Tup3fC deepClone();
+	default Tup3fC deepClone()
+	{
+		return clone();
+	}
 	
 	/** {@inheritDoc} */
 	@Override

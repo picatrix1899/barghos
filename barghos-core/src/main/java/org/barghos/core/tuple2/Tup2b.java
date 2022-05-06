@@ -252,4 +252,20 @@ public class Tup2b implements Tup2bC, Serializable, FormattableToString
 	{
 		return (Tup2b)Tup2bC.super.setByIndex(index, value);
 	}
+
+	/*
+	 *
+	 */
+	public Tup2bC shallowClone()
+	{
+		return null;
+	}
+
+	/*
+	 *
+	 */
+	public Tup2bC deepClone()
+	{
+		return null;
+	}
 }

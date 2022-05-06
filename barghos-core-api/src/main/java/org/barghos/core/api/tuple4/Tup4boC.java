@@ -135,11 +135,17 @@ public interface Tup4boC extends Tup4boR, TupboC
 	
 	/** {@inheritDoc}} */
 	@Override
-	Tup4boC shallowClone();
+	default Tup4boC shallowClone()
+	{
+		return clone();
+	}
 	
 	/** {@inheritDoc}} */
 	@Override
-	Tup4boC deepClone();
+	default Tup4boC deepClone()
+	{
+		return clone();
+	}
 	
 	/** {@inheritDoc}} */
 	@Override

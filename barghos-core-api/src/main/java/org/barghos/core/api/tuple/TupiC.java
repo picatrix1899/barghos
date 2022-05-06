@@ -67,11 +67,17 @@ public interface TupiC extends TupiR, ExtendedCloneable
 	
 	/** {@inheritDoc}} */
 	@Override
-	TupiC shallowClone();
+	default TupiC shallowClone()
+	{
+		return clone();
+	}
 	
 	/** {@inheritDoc}} */
 	@Override
-	TupiC deepClone();
+	default TupiC deepClone()
+	{
+		return clone();
+	}
 	
 	/**
 	 * @return A new instance of the current tuple with the same component values.

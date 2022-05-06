@@ -135,11 +135,17 @@ public interface Tup4fC extends Tup4fR, TupfC
 	
 	/** {@inheritDoc}} */
 	@Override
-	Tup4fC shallowClone();
+	default Tup4fC shallowClone()
+	{
+		return clone();
+	}
 	
 	/** {@inheritDoc}} */
 	@Override
-	Tup4fC deepClone();
+	default Tup4fC deepClone()
+	{
+		return clone();
+	}
 	
 	/** {@inheritDoc}} */
 	@Override

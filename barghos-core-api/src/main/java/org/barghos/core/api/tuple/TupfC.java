@@ -68,11 +68,17 @@ public interface TupfC extends TupfR, ExtendedCloneable
 	
 	/** {@inheritDoc}} */
 	@Override
-	TupfC shallowClone();
+	default TupfC shallowClone()
+	{
+		return clone();
+	}
 	
 	/** {@inheritDoc}} */
 	@Override
-	TupfC deepClone();
+	default TupfC deepClone()
+	{
+		return clone();
+	}
 	
 	/**
 	 * @return A new instance of the current tuple with the same component values.

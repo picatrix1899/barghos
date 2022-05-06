@@ -248,4 +248,46 @@ class Tup3strCTest
 
 		verifyNoMoreInteractions(t);
 	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup3strC#shallowClone()} calls
+	 * by default the standard {@link Tup3strC#clone()}-function.
+	 */
+	@Test
+	void shallowCloneTest()
+	{
+		Tup3strC t = mock(Tup3strC.class);
+		Tup3strC res = mock(Tup3strC.class);
+		
+		when(t.shallowClone()).thenCallRealMethod();
+		when(t.clone()).thenReturn(res);
+		
+		assertSame(res, t.shallowClone());
+		
+		verify(t).shallowClone();
+		verify(t).clone();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup3strC#deepClone()} calls
+	 * by default the standard {@link Tup3strC#clone()}-function.
+	 */
+	@Test
+	void deepCloneTest()
+	{
+		Tup3strC t = mock(Tup3strC.class);
+		Tup3strC res = mock(Tup3strC.class);
+
+		when(t.deepClone()).thenCallRealMethod();
+		when(t.clone()).thenReturn(res);
+		
+		assertSame(res, t.deepClone());
+		
+		verify(t).deepClone();
+		verify(t).clone();
+		
+		verifyNoMoreInteractions(t);
+	}
 }

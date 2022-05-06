@@ -68,11 +68,17 @@ public interface TupbigiC extends TupbigiR, ExtendedCloneable
 	
 	/** {@inheritDoc}} */
 	@Override
-	TupbigiC shallowClone();
+	default TupbigiC shallowClone()
+	{
+		return clone();
+	}
 	
 	/** {@inheritDoc}} */
 	@Override
-	TupbigiC deepClone();
+	default TupbigiC deepClone()
+	{
+		return clone();
+	}
 	
 	/**
 	 * @return A new instance of the current tuple with the same component values.

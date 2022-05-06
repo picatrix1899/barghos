@@ -113,11 +113,17 @@ public interface Tup2iC extends Tup2iR, TupiC
 	
 	/** {@inheritDoc}} */
 	@Override
-	Tup2iC shallowClone();
+	default Tup2iC shallowClone()
+	{
+		return clone();
+	}
 	
 	/** {@inheritDoc}} */
 	@Override
-	Tup2iC deepClone();
+	default Tup2iC deepClone()
+	{
+		return clone();
+	}
 	
 	/** {@inheritDoc} */
 	@Override

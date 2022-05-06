@@ -137,11 +137,17 @@ public interface Tup4bigdC extends Tup4bigdR, TupbigdC
 	
 	/** {@inheritDoc}} */
 	@Override
-	Tup4bigdC shallowClone();
+	default Tup4bigdC shallowClone()
+	{
+		return clone();
+	}
 	
 	/** {@inheritDoc}} */
 	@Override
-	Tup4bigdC deepClone();
+	default Tup4bigdC deepClone()
+	{
+		return clone();
+	}
 	
 	/** {@inheritDoc}} */
 	@Override

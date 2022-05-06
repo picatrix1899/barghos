@@ -135,11 +135,17 @@ public interface Tup4iC extends Tup4iR, TupiC
 	
 	/** {@inheritDoc}} */
 	@Override
-	Tup4iC shallowClone();
+	default Tup4iC shallowClone()
+	{
+		return clone();
+	}
 	
 	/** {@inheritDoc}} */
 	@Override
-	Tup4iC deepClone();
+	default Tup4iC deepClone()
+	{
+		return clone();
+	}
 	
 	/** {@inheritDoc}} */
 	@Override

@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.Test;
+
 import org.barghos.core.api.tuple.TupdC;
 import org.barghos.core.api.tuple.TupdR;
 
@@ -93,6 +94,48 @@ class TupdCTest
 		verify(t).getDimensions();
 		verify(t).setByIndex(0, 1.0);
 		verify(t).setByIndex(1, 2.0);
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link TupdC#shallowClone()} calls
+	 * by default the standard {@link TupdC#clone()}-function.
+	 */
+	@Test
+	void shallowCloneTest()
+	{
+		TupdC t = mock(TupdC.class);
+		TupdC res = mock(TupdC.class);
+		
+		when(t.shallowClone()).thenCallRealMethod();
+		when(t.clone()).thenReturn(res);
+		
+		assertSame(res, t.shallowClone());
+		
+		verify(t).shallowClone();
+		verify(t).clone();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link TupdC#deepClone()} calls
+	 * by default the standard {@link TupdC#clone()}-function.
+	 */
+	@Test
+	void deepCloneTest()
+	{
+		TupdC t = mock(TupdC.class);
+		TupdC res = mock(TupdC.class);
+
+		when(t.deepClone()).thenCallRealMethod();
+		when(t.clone()).thenReturn(res);
+		
+		assertSame(res, t.deepClone());
+		
+		verify(t).deepClone();
+		verify(t).clone();
 		
 		verifyNoMoreInteractions(t);
 	}

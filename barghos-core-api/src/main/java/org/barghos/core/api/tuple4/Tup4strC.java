@@ -142,11 +142,17 @@ public interface Tup4strC extends Tup4strR, TupstrC
 	
 	/** {@inheritDoc}} */
 	@Override
-	Tup4strC shallowClone();
+	default Tup4strC shallowClone()
+	{
+		return clone();
+	}
 	
 	/** {@inheritDoc}} */
 	@Override
-	Tup4strC deepClone();
+	default Tup4strC deepClone()
+	{
+		return clone();
+	}
 	
 	/** {@inheritDoc}} */
 	@Override

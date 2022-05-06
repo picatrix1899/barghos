@@ -113,11 +113,17 @@ public interface Tup2objC extends Tup2objR, TupobjC
 	
 	/** {@inheritDoc}} */
 	@Override
-	Tup2objC shallowClone();
+	default Tup2objC shallowClone()
+	{
+		return clone();
+	}
 	
 	/** {@inheritDoc}} */
 	@Override
-	Tup2objC deepClone();
+	default Tup2objC deepClone()
+	{
+		return clone();
+	}
 	
 	/** {@inheritDoc}} */
 	@Override

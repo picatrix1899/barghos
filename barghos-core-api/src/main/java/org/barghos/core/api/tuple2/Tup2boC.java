@@ -113,11 +113,17 @@ public interface Tup2boC extends Tup2boR, TupboC
 	
 	/** {@inheritDoc}} */
 	@Override
-	Tup2boC shallowClone();
+	default Tup2boC shallowClone()
+	{
+		return clone();
+	}
 	
 	/** {@inheritDoc}} */
 	@Override
-	Tup2boC deepClone();
+	default Tup2boC deepClone()
+	{
+		return clone();
+	}
 	
 	/** {@inheritDoc} */
 	@Override

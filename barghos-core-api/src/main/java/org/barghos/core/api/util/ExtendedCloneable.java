@@ -14,14 +14,20 @@ public interface ExtendedCloneable extends Cloneable
 	 * 
 	 * @return True, if the current object is cloneable.
 	 */
-	boolean isCloneable();
+	default boolean isCloneable()
+	{
+		return true;
+	}
 	
 	/**
 	 * Returns true if the current object is deep cloneable in its current state.
 	 * 
 	 * @return True, if the current object is deep cloneable.
 	 */
-	boolean isDeepCloneable();
+	default boolean isDeepCloneable()
+	{
+		return true;
+	}
 	
 	/**
 	 * Creates a shallow clone of the current object.
@@ -32,7 +38,10 @@ public interface ExtendedCloneable extends Cloneable
 	 * 
 	 * @return A shallow clone of the current object.
 	 */
-	Object shallowClone();
+	default Object shallowClone()
+	{
+		return clone();
+	}
 	
 	/**
 	 * Creates a deep clone of the current object.
@@ -42,7 +51,10 @@ public interface ExtendedCloneable extends Cloneable
 	 * 
 	 * @return A deep clone of the current object.
 	 */
-	Object deepClone();
+	default Object deepClone()
+	{
+		return clone();
+	}
 	
 	/**
 	 * @return A new deep clone of the current object.

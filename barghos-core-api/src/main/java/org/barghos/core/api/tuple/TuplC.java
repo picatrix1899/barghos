@@ -68,11 +68,17 @@ public interface TuplC extends TuplR, ExtendedCloneable
 	
 	/** {@inheritDoc}} */
 	@Override
-	TuplC shallowClone();
+	default TuplC shallowClone()
+	{
+		return clone();
+	}
 	
 	/** {@inheritDoc}} */
 	@Override
-	TuplC deepClone();
+	default TuplC deepClone()
+	{
+		return clone();
+	}
 	
 	/**
 	 * @return A new instance of the current tuple with the same component values.

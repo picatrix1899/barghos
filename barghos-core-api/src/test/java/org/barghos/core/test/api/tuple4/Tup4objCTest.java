@@ -274,4 +274,46 @@ class Tup4objCTest
 
 		verifyNoMoreInteractions(t);
 	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4objC#shallowClone()} calls
+	 * by default the standard {@link Tup4objC#clone()}-function.
+	 */
+	@Test
+	void shallowCloneTest()
+	{
+		Tup4objC t = mock(Tup4objC.class);
+		Tup4objC res = mock(Tup4objC.class);
+		
+		when(t.shallowClone()).thenCallRealMethod();
+		when(t.clone()).thenReturn(res);
+		
+		assertSame(res, t.shallowClone());
+		
+		verify(t).shallowClone();
+		verify(t).clone();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4objC#deepClone()} calls
+	 * by default the standard {@link Tup4objC#clone()}-function.
+	 */
+	@Test
+	void deepCloneTest()
+	{
+		Tup4objC t = mock(Tup4objC.class);
+		Tup4objC res = mock(Tup4objC.class);
+
+		when(t.deepClone()).thenCallRealMethod();
+		when(t.clone()).thenReturn(res);
+		
+		assertSame(res, t.deepClone());
+		
+		verify(t).deepClone();
+		verify(t).clone();
+		
+		verifyNoMoreInteractions(t);
+	}
 }

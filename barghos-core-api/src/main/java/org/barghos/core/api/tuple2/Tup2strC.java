@@ -113,11 +113,17 @@ public interface Tup2strC extends Tup2strR, TupstrC
 	
 	/** {@inheritDoc}} */
 	@Override
-	Tup2strC shallowClone();
+	default Tup2strC shallowClone()
+	{
+		return clone();
+	}
 	
 	/** {@inheritDoc}} */
 	@Override
-	Tup2strC deepClone();
+	default Tup2strC deepClone()
+	{
+		return clone();
+	}
 	
 	/** {@inheritDoc} */
 	@Override

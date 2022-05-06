@@ -68,11 +68,17 @@ public interface TupobjC extends TupobjR, ExtendedCloneable
 	
 	/** {@inheritDoc}} */
 	@Override
-	TupobjC shallowClone();
+	default TupobjC shallowClone()
+	{
+		return clone();
+	}
 	
 	/** {@inheritDoc}} */
 	@Override
-	TupobjC deepClone();
+	default TupobjC deepClone()
+	{
+		return clone();
+	}
 	
 	/**
 	 * @return A new instance of the current tuple with the same component values.

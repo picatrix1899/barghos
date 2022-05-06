@@ -278,4 +278,46 @@ class Tup4bigiCTest
 
 		verifyNoMoreInteractions(t);
 	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4bigiC#shallowClone()} calls
+	 * by default the standard {@link Tup4bigiC#clone()}-function.
+	 */
+	@Test
+	void shallowCloneTest()
+	{
+		Tup4bigiC t = mock(Tup4bigiC.class);
+		Tup4bigiC res = mock(Tup4bigiC.class);
+		
+		when(t.shallowClone()).thenCallRealMethod();
+		when(t.clone()).thenReturn(res);
+		
+		assertSame(res, t.shallowClone());
+		
+		verify(t).shallowClone();
+		verify(t).clone();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4bigiC#deepClone()} calls
+	 * by default the standard {@link Tup4bigiC#clone()}-function.
+	 */
+	@Test
+	void deepCloneTest()
+	{
+		Tup4bigiC t = mock(Tup4bigiC.class);
+		Tup4bigiC res = mock(Tup4bigiC.class);
+
+		when(t.deepClone()).thenCallRealMethod();
+		when(t.clone()).thenReturn(res);
+		
+		assertSame(res, t.deepClone());
+		
+		verify(t).deepClone();
+		verify(t).clone();
+		
+		verifyNoMoreInteractions(t);
+	}
 }

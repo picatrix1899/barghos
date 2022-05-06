@@ -202,4 +202,46 @@ class Tup2sCTest
 
 		verifyNoMoreInteractions(t);
 	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2sC#shallowClone()} calls
+	 * by default the standard {@link Tup2sC#clone()}-function.
+	 */
+	@Test
+	void shallowCloneTest()
+	{
+		Tup2sC t = mock(Tup2sC.class);
+		Tup2sC res = mock(Tup2sC.class);
+		
+		when(t.shallowClone()).thenCallRealMethod();
+		when(t.clone()).thenReturn(res);
+		
+		assertSame(res, t.shallowClone());
+		
+		verify(t).shallowClone();
+		verify(t).clone();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2sC#deepClone()} calls
+	 * by default the standard {@link Tup2sC#clone()}-function.
+	 */
+	@Test
+	void deepCloneTest()
+	{
+		Tup2sC t = mock(Tup2sC.class);
+		Tup2sC res = mock(Tup2sC.class);
+
+		when(t.deepClone()).thenCallRealMethod();
+		when(t.clone()).thenReturn(res);
+		
+		assertSame(res, t.deepClone());
+		
+		verify(t).deepClone();
+		verify(t).clone();
+		
+		verifyNoMoreInteractions(t);
+	}
 }

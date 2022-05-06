@@ -68,11 +68,17 @@ public interface TupbC extends TupbR, ExtendedCloneable
 	
 	/** {@inheritDoc}} */
 	@Override
-	TupbC shallowClone();
+	default TupbC shallowClone()
+	{
+		return clone();
+	}
 	
 	/** {@inheritDoc}} */
 	@Override
-	TupbC deepClone();
+	default TupbC deepClone()
+	{
+		return clone();
+	}
 	
 	/**
 	 * @return A new instance of the current tuple with the same component values.

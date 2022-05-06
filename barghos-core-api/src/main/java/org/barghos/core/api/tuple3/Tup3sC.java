@@ -124,11 +124,17 @@ public interface Tup3sC extends Tup3sR, TupsC
 	
 	/** {@inheritDoc}} */
 	@Override
-	Tup3sC shallowClone();
+	default Tup3sC shallowClone()
+	{
+		return clone();
+	}
 	
 	/** {@inheritDoc}} */
 	@Override
-	Tup3sC deepClone();
+	default Tup3sC deepClone()
+	{
+		return clone();
+	}
 	
 	/** {@inheritDoc}} */
 	@Override

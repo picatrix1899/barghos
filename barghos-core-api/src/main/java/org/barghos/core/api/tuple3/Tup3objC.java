@@ -124,11 +124,17 @@ public interface Tup3objC extends Tup3objR, TupobjC
 	
 	/** {@inheritDoc}} */
 	@Override
-	Tup3objC shallowClone();
+	default Tup3objC shallowClone()
+	{
+		return clone();
+	}
 	
 	/** {@inheritDoc}} */
 	@Override
-	Tup3objC deepClone();
+	default Tup3objC deepClone()
+	{
+		return clone();
+	}
 	
 	/** {@inheritDoc}} */
 	@Override

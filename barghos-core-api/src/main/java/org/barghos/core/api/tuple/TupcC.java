@@ -67,11 +67,17 @@ public interface TupcC extends TupcR, ExtendedCloneable
 	
 	/** {@inheritDoc}} */
 	@Override
-	TupcC shallowClone();
+	default TupcC shallowClone()
+	{
+		return clone();
+	}
 	
 	/** {@inheritDoc}} */
 	@Override
-	TupcC deepClone();
+	default TupcC deepClone()
+	{
+		return clone();
+	}
 	
 	/**
 	 * @return A new instance of the current tuple with the same component values.

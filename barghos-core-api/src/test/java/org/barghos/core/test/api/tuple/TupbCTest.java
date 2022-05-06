@@ -99,4 +99,46 @@ class TupbCTest
 		
 		verifyNoMoreInteractions(t);
 	}
+	
+	/**
+	 * This test ensures, that the function {@link TupbC#shallowClone()} calls
+	 * by default the standard {@link TupbC#clone()}-function.
+	 */
+	@Test
+	void shallowCloneTest()
+	{
+		TupbC t = mock(TupbC.class);
+		TupbC res = mock(TupbC.class);
+		
+		when(t.shallowClone()).thenCallRealMethod();
+		when(t.clone()).thenReturn(res);
+		
+		assertSame(res, t.shallowClone());
+		
+		verify(t).shallowClone();
+		verify(t).clone();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link TupbC#deepClone()} calls
+	 * by default the standard {@link TupbC#clone()}-function.
+	 */
+	@Test
+	void deepCloneTest()
+	{
+		TupbC t = mock(TupbC.class);
+		TupbC res = mock(TupbC.class);
+
+		when(t.deepClone()).thenCallRealMethod();
+		when(t.clone()).thenReturn(res);
+		
+		assertSame(res, t.deepClone());
+		
+		verify(t).deepClone();
+		verify(t).clone();
+		
+		verifyNoMoreInteractions(t);
+	}
 }

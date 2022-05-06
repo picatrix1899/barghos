@@ -135,11 +135,17 @@ public interface Tup4objC extends Tup4objR, TupobjC
 	
 	/** {@inheritDoc}} */
 	@Override
-	Tup4objC shallowClone();
+	default Tup4objC shallowClone()
+	{
+		return clone();
+	}
 	
 	/** {@inheritDoc}} */
 	@Override
-	Tup4objC deepClone();
+	default Tup4objC deepClone()
+	{
+		return clone();
+	}
 	
 	/** {@inheritDoc}} */
 	@Override
