@@ -3,13 +3,12 @@ plugins {
 }
 
 dependencies {
-  implementation project(':barghos-core-api')
 }
 
 publishing {
   publications {
     mavenJava(MavenPublication) {
-      artifactId = 'barghos-core'
+      artifactId = 'barghos-core-api'
 		
       from components.java
 		
