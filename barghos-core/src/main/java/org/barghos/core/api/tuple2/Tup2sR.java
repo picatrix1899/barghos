@@ -58,7 +58,7 @@ public interface Tup2sR extends TupsR
 	 * @return True if all components are exactly zero.
 	 */
 	@Override
-	default boolean isZero()
+	default boolean isExactlyZero()
 	{
 		return getX() == (short)0 &&
 				getY() == (short)0;
@@ -72,7 +72,7 @@ public interface Tup2sR extends TupsR
 	 * @return True if all components are technically zero.
 	 */
 	@Override
-	default boolean isZeroWithMargin(short tolerance)
+	default boolean isZero(short tolerance)
 	{
 		return Math.abs(getX()) <= tolerance &&
 				Math.abs(getY()) <= tolerance;
@@ -106,30 +106,5 @@ public interface Tup2sR extends TupsR
 		res[COMP_Y] = getY();
 		
 		return res;
-	}
-	
-	/**
-	 * Creates a new anonymous implementation instance of the interface {@link Tup2sR} with the given values.
-	 * As the resulting instance is just a minimal implementation of the interface it does not provide clone,
-	 * equals, hashCode or toString operations.
-	 * 
-	 * @param x The value of the x component.
-	 * @param y The value of the y component.
-	 * 
-	 * @return The anonymous implementation instance.
-	 */
-	public static Tup2sR of(final short x, final short y)
-	{
-		return new Tup2sR() {
-			public short getX()
-			{
-				return x;
-			}
-
-			public short getY()
-			{
-				return y;
-			}
-		};
 	}
 }

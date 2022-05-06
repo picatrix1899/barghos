@@ -4,6 +4,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.Test;
+
+import static org.barghos.core.api.testing.TestObjectFactory.*;
+
 import org.barghos.core.api.tuple.TupbC;
 import org.barghos.core.api.tuple.TupbR;
 
@@ -35,15 +38,15 @@ class TupbCTest
 		
 		when(t.set(t2)).thenCallRealMethod();
 		
-		when(t2.toArray()).thenReturn(new byte[] {(byte)1, (byte)2});
-		when(t.setArray(new byte[] {(byte)1, (byte)2})).thenReturn(t);
+		when(t2.toArray()).thenReturn(bArray(1, 2));
+		when(t.setArray(bArray(1, 2))).thenReturn(t);
 		
 		assertSame(t, t.set(t2));
 		
 		verify(t).set(t2);
 		
 		verify(t2).toArray();
-		verify(t).setArray(new byte[] {(byte)1, (byte)2});
+		verify(t).setArray(bArray(1, 2));
 		
 		verifyNoMoreInteractions(t);
 	}
@@ -57,17 +60,17 @@ class TupbCTest
 	{
 		TupbC t = mock(TupbC.class);
 		
-		when(t.set((byte)1)).thenCallRealMethod();
+		when(t.set(b(1))).thenCallRealMethod();
 		
 		when(t.getDimensions()).thenReturn(2);
-		when(t.setArray(new byte[] {(byte)1, (byte)1})).thenReturn(t);
+		when(t.setArray(bArray(1, 1))).thenReturn(t);
 		
-		assertSame(t, t.set((byte)1));
+		assertSame(t, t.set(b(1)));
 		
-		verify(t).set((byte)1);
+		verify(t).set(b(1));
 		
 		verify(t).getDimensions();
-		verify(t).setArray(new byte[] {(byte)1, (byte)1});
+		verify(t).setArray(bArray(1, 1));
 		
 		verifyNoMoreInteractions(t);
 	}
@@ -82,17 +85,17 @@ class TupbCTest
 	{
 		TupbC t = mock(TupbC.class);
 		
-		when(t.setArray(new byte[] {(byte)1, (byte)2})).thenCallRealMethod();
+		when(t.setArray(bArray(1, 2))).thenCallRealMethod();
 		
 		when(t.getDimensions()).thenReturn(2);
 		
-		assertSame(t, t.setArray(new byte[] {(byte)1, (byte)2}));
+		assertSame(t, t.setArray(bArray(1, 2)));
 		
-		verify(t).setArray(new byte[] {(byte)1, (byte)2});
+		verify(t).setArray(bArray(1, 2));
 		
 		verify(t).getDimensions();
-		verify(t).setByIndex(0, (byte)1);
-		verify(t).setByIndex(1, (byte)2);
+		verify(t).setByIndex(0, b(1));
+		verify(t).setByIndex(1, b(2));
 		
 		verifyNoMoreInteractions(t);
 	}

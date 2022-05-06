@@ -3,12 +3,14 @@ package org.barghos.core.api.tuple;
 import java.math.BigInteger;
 import java.util.Arrays;
 
+import org.barghos.core.api.util.ExtendedCloneable;
+
 /**
  * This interface represents any modifiable N-dimensional big integer tuple.
  * 
  * @author picatrix1899
  */
-public interface TupbigiC extends TupbigiR, Cloneable
+public interface TupbigiC extends TupbigiR, ExtendedCloneable
 {
 	/**
 	 * Sets the value of the component at the given index.
@@ -34,10 +36,6 @@ public interface TupbigiC extends TupbigiR, Cloneable
 	
 	/**
 	 * Sets all values to a single value.
-	 * 
-	 * <p>
-	 * This is usually used for resetting the tuple back to 0 again, by calling <code>set(0)</code>.
-	 * </p>
 	 * 
 	 * @param value The value used for all values of the tuple.
 	 * 
@@ -68,6 +66,16 @@ public interface TupbigiC extends TupbigiR, Cloneable
 		return this;
 	}
 	
-	/** {@inheritDoc} */
+	/** {@inheritDoc}} */
+	@Override
+	TupbigiC shallowClone();
+	
+	/** {@inheritDoc}} */
+	@Override
+	TupbigiC deepClone();
+	
+	/**
+	 * @return A new instance of the current tuple with the same component values.
+	 */
 	TupbigiC clone();
 }

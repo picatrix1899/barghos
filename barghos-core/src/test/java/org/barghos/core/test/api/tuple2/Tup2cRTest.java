@@ -43,11 +43,11 @@ class Tup2cRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup2cR#getArray(char[])} returns
+	 * This test ensures, that the function {@link Tup2cR#toArray(char[])} returns
 	 * the given array with the components in the right order.
 	 */
 	@Test
-	void toArray_QueryTest()
+	void toArray_ExtractParamTest()
 	{
 		Tup2cR t = mock(Tup2cR.class);
 		

@@ -133,6 +133,15 @@ public interface Tup4fC extends Tup4fR, TupfC
 		return setArray(t.toArray());
 	}
 	
-	/** {@inheritDoc} */
+	/** {@inheritDoc}} */
+	@Override
+	Tup4fC shallowClone();
+	
+	/** {@inheritDoc}} */
+	@Override
+	Tup4fC deepClone();
+	
+	/** {@inheritDoc}} */
+	@Override
 	Tup4fC clone();
 }

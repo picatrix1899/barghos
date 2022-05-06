@@ -86,7 +86,7 @@ class Tup2lCTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup2lRW#set(long, long)} adopts
+	 * This test ensures, that the function {@link Tup2lC#set(long, long)} adopts
 	 * the values and returns the current instance.
 	 */
 	@Test
@@ -110,7 +110,7 @@ class Tup2lCTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup2lRW#set(TuplR)} adopts the
+	 * This test ensures, that the function {@link Tup2lC#set(TuplR)} adopts the
 	 * values from the input tuple and returns the current instance.
 	 */
 	@Test

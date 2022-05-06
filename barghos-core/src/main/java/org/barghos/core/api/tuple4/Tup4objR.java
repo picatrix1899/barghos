@@ -109,42 +109,4 @@ public interface Tup4objR extends TupobjR
 		
 		return res;
 	}
-	
-	/**
-	 * Creates a new anonymous implementation instance of the interface {@link Tup4objR} with the given values.
-	 * The given values are used directly and are not cloned. Therefore to make the used objects immutable
-	 * they have to be immutable before input. As the resulting instance is just a minimal implementation of the 
-	 * interface it does not provide clone, equals, hashCode or toString operations.
-	 * 
-	 * @param x The value of the x component.
-	 * @param y The value of the y component.
-	 * @param z The value of the z component.
-	 * @param w The value of the w component.
-	 * 
-	 * @return The anonymous implementation instance.
-	 */
-	public static Tup4objR of(final Object x, final Object y, final Object z, final Object w)
-	{
-		return new Tup4objR() {
-			public Object getX()
-			{
-				return x;
-			}
-
-			public Object getY()
-			{
-				return y;
-			}
-
-			public Object getZ()
-			{
-				return z;
-			}
-
-			public Object getW()
-			{
-				return w;
-			}
-		};
-	}
 }

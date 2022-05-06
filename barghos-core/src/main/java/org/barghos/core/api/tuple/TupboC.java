@@ -2,12 +2,14 @@ package org.barghos.core.api.tuple;
 
 import java.util.Arrays;
 
+import org.barghos.core.api.util.ExtendedCloneable;
+
 /**
  * This interface represents any modifiable N-dimensional boolean tuple.
  * 
  * @author picatrix1899
  */
-public interface TupboC extends TupboR, Cloneable
+public interface TupboC extends TupboR, ExtendedCloneable
 {
 	/**
 	 * Sets the value of the component at the given index.
@@ -33,10 +35,6 @@ public interface TupboC extends TupboR, Cloneable
 	
 	/**
 	 * Sets all values to a single value.
-	 * 
-	 * <p>
-	 * This is usually used for resetting the tuple back to 0 again, by calling <code>set(0)</code>.
-	 * </p>
 	 * 
 	 * @param value The value used for all values of the tuple.
 	 * 
@@ -68,6 +66,16 @@ public interface TupboC extends TupboR, Cloneable
 		return this;
 	}
 	
-	/** {@inheritDoc} */
+	/** {@inheritDoc}} */
+	@Override
+	TupboC shallowClone();
+	
+	/** {@inheritDoc}} */
+	@Override
+	TupboC deepClone();
+	
+	/**
+	 * @return A new instance of the current tuple with the same component values.
+	 */
 	TupboC clone();
 }

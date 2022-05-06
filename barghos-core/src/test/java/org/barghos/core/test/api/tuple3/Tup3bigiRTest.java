@@ -8,6 +8,8 @@ import org.junit.jupiter.api.function.Executable;
 
 import java.math.BigInteger;
 
+import static org.barghos.core.api.testing.TestObjectFactory.*;
+
 import org.barghos.core.api.tuple.TupbigiR;
 import org.barghos.core.api.tuple3.Tup3bigiR;
 
@@ -38,9 +40,9 @@ class Tup3bigiRTest
 		
 		when(t.isValid()).thenCallRealMethod();
 		
-		when(t.getX()).thenReturn(BigInteger.ONE);
-		when(t.getY()).thenReturn(BigInteger.ONE);
-		when(t.getZ()).thenReturn(BigInteger.ONE);
+		when(t.getX()).thenReturn(bigi(1));
+		when(t.getY()).thenReturn(bigi(1));
+		when(t.getZ()).thenReturn(bigi(1));
 		
 		assertEquals(true, t.isValid());
 		
@@ -86,7 +88,7 @@ class Tup3bigiRTest
 		
 		when(t.isValid()).thenCallRealMethod();
 		
-		when(t.getX()).thenReturn(BigInteger.ONE);
+		when(t.getX()).thenReturn(bigi(1));
 		when(t.getY()).thenReturn(null);
 
 		assertEquals(false, t.isValid());
@@ -110,8 +112,8 @@ class Tup3bigiRTest
 		
 		when(t.isValid()).thenCallRealMethod();
 		
-		when(t.getX()).thenReturn(BigInteger.ONE);
-		when(t.getY()).thenReturn(BigInteger.ONE);
+		when(t.getX()).thenReturn(bigi(1));
+		when(t.getY()).thenReturn(bigi(1));
 		when(t.getZ()).thenReturn(null);
 
 		assertEquals(false, t.isValid());
@@ -144,95 +146,121 @@ class Tup3bigiRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup3bigiR#isZero()} returns true,
+	 * This test ensures, that the function {@link Tup3bigiR#isExactlyZero()} returns true,
 	 * if all of the components are exactly {@link BigInteger#ZERO}.
+	 */
+	@Test
+	void isExactlyZero_ZeroTest()
+	{
+		Tup3bigiR t = mock(Tup3bigiR.class);
+		
+		when(t.isExactlyZero()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(bigi(0));
+		when(t.getY()).thenReturn(bigi(0));
+		when(t.getZ()).thenReturn(bigi(0));
+		
+		assertEquals(true, t.isExactlyZero());
+		
+		verify(t).isExactlyZero();
+		
+		verify(t).getX();
+		verify(t).getY();
+		verify(t).getZ();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup3bigiR#isExactlyZero()} returns false,
+	 * if the x component is not {@link BigInteger#ZERO}.
+	 */
+	@Test
+	void isExactlyZero_Fail_XTest()
+	{
+		Tup3bigiR t = mock(Tup3bigiR.class);
+		
+		when(t.isExactlyZero()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(bigi(1));
+		
+		assertEquals(false, t.isExactlyZero());
+		
+		verify(t).isExactlyZero();
+		
+		verify(t).getX();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup3bigiR#isExactlyZero()} returns false,
+	 * if the y component is not {@link BigInteger#ZERO}.
+	 */
+	@Test
+	void isExactlyZero_Fail_YTest()
+	{
+		Tup3bigiR t = mock(Tup3bigiR.class);
+		
+		when(t.isExactlyZero()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(bigi(0));
+		when(t.getY()).thenReturn(bigi(1));
+		
+		assertEquals(false, t.isExactlyZero());
+		
+		verify(t).isExactlyZero();
+		
+		verify(t).getX();
+		verify(t).getY();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup3bigiR#isExactlyZero()} returns false,
+	 * if the z component is not {@link BigInteger#ZERO}.
+	 */
+	@Test
+	void isExactlyZero_Fail_ZTest()
+	{
+		Tup3bigiR t = mock(Tup3bigiR.class);
+		
+		when(t.isExactlyZero()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(bigi(0));
+		when(t.getY()).thenReturn(bigi(0));
+		when(t.getZ()).thenReturn(bigi(1));
+		
+		assertEquals(false, t.isExactlyZero());
+		
+		verify(t).isExactlyZero();
+		
+		verify(t).getX();
+		verify(t).getY();
+		verify(t).getZ();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup3bigiR#isZero(BigInteger)} returns true,
+	 * if all components are exactly {@link BigInteger#ZERO}.
 	 */
 	@Test
 	void isZero_ZeroTest()
 	{
 		Tup3bigiR t = mock(Tup3bigiR.class);
 		
-		when(t.isZero()).thenCallRealMethod();
+		when(t.isZero(bigi(2))).thenCallRealMethod();
 		
-		when(t.getX()).thenReturn(BigInteger.ZERO);
-		when(t.getY()).thenReturn(BigInteger.ZERO);
-		when(t.getZ()).thenReturn(BigInteger.ZERO);
+		when(t.getX()).thenReturn(bigi(0));
+		when(t.getY()).thenReturn(bigi(0));
+		when(t.getZ()).thenReturn(bigi(0));
 		
-		assertEquals(true, t.isZero());
+		assertEquals(true, t.isZero(bigi(2)));
 		
-		verify(t).isZero();
-		
-		verify(t).getX();
-		verify(t).getY();
-		verify(t).getZ();
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup3bigiR#isZero()} returns false,
-	 * if the x component is not {@link BigInteger#ZERO}.
-	 */
-	@Test
-	void isZero_Fail_XTest()
-	{
-		Tup3bigiR t = mock(Tup3bigiR.class);
-		
-		when(t.isZero()).thenCallRealMethod();
-		
-		when(t.getX()).thenReturn(BigInteger.ONE);
-		
-		assertEquals(false, t.isZero());
-		
-		verify(t).isZero();
-		
-		verify(t).getX();
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup3bigiR#isZero()} returns false,
-	 * if the y component is not {@link BigInteger#ZERO}.
-	 */
-	@Test
-	void isZero_Fail_YTest()
-	{
-		Tup3bigiR t = mock(Tup3bigiR.class);
-		
-		when(t.isZero()).thenCallRealMethod();
-		
-		when(t.getX()).thenReturn(BigInteger.ZERO);
-		when(t.getY()).thenReturn(BigInteger.ONE);
-		
-		assertEquals(false, t.isZero());
-		
-		verify(t).isZero();
-		
-		verify(t).getX();
-		verify(t).getY();
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup3bigiR#isZero()} returns false,
-	 * if the z component is not {@link BigInteger#ZERO}.
-	 */
-	@Test
-	void isZero_Fail_ZTest()
-	{
-		Tup3bigiR t = mock(Tup3bigiR.class);
-		
-		when(t.isZero()).thenCallRealMethod();
-		
-		when(t.getX()).thenReturn(BigInteger.ZERO);
-		when(t.getY()).thenReturn(BigInteger.ZERO);
-		when(t.getZ()).thenReturn(BigInteger.ONE);
-		
-		assertEquals(false, t.isZero());
-		
-		verify(t).isZero();
+		verify(t).isZero(bigi(2));
 		
 		verify(t).getX();
 		verify(t).getY();
@@ -242,50 +270,24 @@ class Tup3bigiRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup3bigiR#isZeroWithMargin(BigInteger)} returns true,
-	 * if all components are exactly {@link BigInteger#ZERO}.
-	 */
-	@Test
-	void isZeroWithMargin_ZeroTest()
-	{
-		Tup3bigiR t = mock(Tup3bigiR.class);
-		
-		when(t.isZeroWithMargin(BigInteger.valueOf(2))).thenCallRealMethod();
-		
-		when(t.getX()).thenReturn(BigInteger.ZERO);
-		when(t.getY()).thenReturn(BigInteger.ZERO);
-		when(t.getZ()).thenReturn(BigInteger.ZERO);
-		
-		assertEquals(true, t.isZeroWithMargin(BigInteger.valueOf(2)));
-		
-		verify(t).isZeroWithMargin(BigInteger.valueOf(2));
-		
-		verify(t).getX();
-		verify(t).getY();
-		verify(t).getZ();
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup3bigiR#isZeroWithMargin(BigInteger)} returns true,
+	 * This test ensures, that the function {@link Tup3bigiR#isZero(BigInteger)} returns true,
 	 * if all components are at the positive extreme point that is the inclusive
 	 * tolerance parameter.
 	 */
 	@Test
-	void isZeroWithMargin_Extreme_PositiveTest()
+	void isZero_Extreme_PositiveTest()
 	{
 		Tup3bigiR t = mock(Tup3bigiR.class);
 		
-		when(t.isZeroWithMargin(BigInteger.valueOf(2))).thenCallRealMethod();
+		when(t.isZero(bigi(2))).thenCallRealMethod();
 		
-		when(t.getX()).thenReturn(BigInteger.valueOf(2));
-		when(t.getY()).thenReturn(BigInteger.valueOf(2));
-		when(t.getZ()).thenReturn(BigInteger.valueOf(2));
+		when(t.getX()).thenReturn(bigi(2));
+		when(t.getY()).thenReturn(bigi(2));
+		when(t.getZ()).thenReturn(bigi(2));
 		
-		assertEquals(true, t.isZeroWithMargin(BigInteger.valueOf(2)));
+		assertEquals(true, t.isZero(bigi(2)));
 		
-		verify(t).isZeroWithMargin(BigInteger.valueOf(2));
+		verify(t).isZero(bigi(2));
 		
 		verify(t).getX();
 		verify(t).getY();
@@ -295,24 +297,24 @@ class Tup3bigiRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup3bigiR#isZeroWithMargin(BigInteger)} returns true,
+	 * This test ensures, that the function {@link Tup3bigiR#isZero(BigInteger)} returns true,
 	 * if all components are at the negative extreme point that is the inclusive
 	 * tolerance parameter.
 	 */
 	@Test
-	void isZeroWithMargin_Extreme_NegativeTest()
+	void isZero_Extreme_NegativeTest()
 	{
 		Tup3bigiR t = mock(Tup3bigiR.class);
 		
-		when(t.isZeroWithMargin(BigInteger.valueOf(2))).thenCallRealMethod();
+		when(t.isZero(bigi(2))).thenCallRealMethod();
 		
-		when(t.getX()).thenReturn(BigInteger.valueOf(-2));
-		when(t.getY()).thenReturn(BigInteger.valueOf(-2));
-		when(t.getZ()).thenReturn(BigInteger.valueOf(-2));
+		when(t.getX()).thenReturn(bigi(-2));
+		when(t.getY()).thenReturn(bigi(-2));
+		when(t.getZ()).thenReturn(bigi(-2));
 		
-		assertEquals(true, t.isZeroWithMargin(BigInteger.valueOf(2)));
+		assertEquals(true, t.isZero(bigi(2)));
 		
-		verify(t).isZeroWithMargin(BigInteger.valueOf(2));
+		verify(t).isZero(bigi(2));
 		
 		verify(t).getX();
 		verify(t).getY();
@@ -322,22 +324,22 @@ class Tup3bigiRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup3bigiR#isZeroWithMargin(BigInteger)} returns false,
+	 * This test ensures, that the function {@link Tup3bigiR#isZero(BigInteger)} returns false,
 	 * if the x component exceeds the positive extreme point that is the inclusive
 	 * tolerance parameter.
 	 */
 	@Test
-	void isZeroWithMargin_Fail_X_PositiveTest()
+	void isZero_Fail_X_PositiveTest()
 	{
 		Tup3bigiR t = mock(Tup3bigiR.class);
 		
-		when(t.isZeroWithMargin(BigInteger.valueOf(2))).thenCallRealMethod();
+		when(t.isZero(bigi(2))).thenCallRealMethod();
 		
-		when(t.getX()).thenReturn(BigInteger.valueOf(3));
+		when(t.getX()).thenReturn(bigi(3));
 		
-		assertEquals(false, t.isZeroWithMargin(BigInteger.valueOf(2)));
+		assertEquals(false, t.isZero(bigi(2)));
 		
-		verify(t).isZeroWithMargin(BigInteger.valueOf(2));
+		verify(t).isZero(bigi(2));
 		
 		verify(t).getX();
 		
@@ -345,22 +347,22 @@ class Tup3bigiRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup3bigiR#isZeroWithMargin(BigInteger)} returns false,
+	 * This test ensures, that the function {@link Tup3bigiR#isZero(BigInteger)} returns false,
 	 * if the x component exceeds the negative extreme point that is the inclusive
 	 * tolerance parameter.
 	 */
 	@Test
-	void isZeroWithMargin_Fail_X_NegativeTest()
+	void isZero_Fail_X_NegativeTest()
 	{
 		Tup3bigiR t = mock(Tup3bigiR.class);
 		
-		when(t.isZeroWithMargin(BigInteger.valueOf(2))).thenCallRealMethod();
+		when(t.isZero(bigi(2))).thenCallRealMethod();
 		
-		when(t.getX()).thenReturn(BigInteger.valueOf(-3));
+		when(t.getX()).thenReturn(bigi(-3));
 		
-		assertEquals(false, t.isZeroWithMargin(BigInteger.valueOf(2)));
+		assertEquals(false, t.isZero(bigi(2)));
 		
-		verify(t).isZeroWithMargin(BigInteger.valueOf(2));
+		verify(t).isZero(bigi(2));
 		
 		verify(t).getX();
 		
@@ -368,23 +370,23 @@ class Tup3bigiRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup3bigiR#isZeroWithMargin(BigInteger)} returns false,
+	 * This test ensures, that the function {@link Tup3bigiR#isZero(BigInteger)} returns false,
 	 * if the y component exceeds the positive extreme point that is the inclusive
 	 * tolerance parameter.
 	 */
 	@Test
-	void isZeroWithMargin_Fail_Y_PositiveTest()
+	void isZero_Fail_Y_PositiveTest()
 	{
 		Tup3bigiR t = mock(Tup3bigiR.class);
 		
-		when(t.isZeroWithMargin(BigInteger.valueOf(2))).thenCallRealMethod();
+		when(t.isZero(bigi(2))).thenCallRealMethod();
 		
-		when(t.getX()).thenReturn(BigInteger.ZERO);
-		when(t.getY()).thenReturn(BigInteger.valueOf(3));
+		when(t.getX()).thenReturn(bigi(0));
+		when(t.getY()).thenReturn(bigi(3));
 		
-		assertEquals(false, t.isZeroWithMargin(BigInteger.valueOf(2)));
+		assertEquals(false, t.isZero(bigi(2)));
 		
-		verify(t).isZeroWithMargin(BigInteger.valueOf(2));
+		verify(t).isZero(bigi(2));
 		
 		verify(t).getX();
 		verify(t).getY();
@@ -393,23 +395,23 @@ class Tup3bigiRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup3bigiR#isZeroWithMargin(BigInteger)} returns false,
+	 * This test ensures, that the function {@link Tup3bigiR#isZero(BigInteger)} returns false,
 	 * if the y component exceeds the positive extreme point that is the inclusive
 	 * tolerance parameter.
 	 */
 	@Test
-	void isZeroWithMargin_Fail_Y_NegativeTest()
+	void isZero_Fail_Y_NegativeTest()
 	{
 		Tup3bigiR t = mock(Tup3bigiR.class);
 		
-		when(t.isZeroWithMargin(BigInteger.valueOf(2))).thenCallRealMethod();
+		when(t.isZero(bigi(2))).thenCallRealMethod();
 		
-		when(t.getX()).thenReturn(BigInteger.ZERO);
-		when(t.getY()).thenReturn(BigInteger.valueOf(-3));
+		when(t.getX()).thenReturn(bigi(0));
+		when(t.getY()).thenReturn(bigi(-3));
 		
-		assertEquals(false, t.isZeroWithMargin(BigInteger.valueOf(2)));
+		assertEquals(false, t.isZero(bigi(2)));
 		
-		verify(t).isZeroWithMargin(BigInteger.valueOf(2));
+		verify(t).isZero(bigi(2));
 		
 		verify(t).getX();
 		verify(t).getY();
@@ -418,24 +420,24 @@ class Tup3bigiRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup3bigiR#isZeroWithMargin(BigInteger)} returns false,
+	 * This test ensures, that the function {@link Tup3bigiR#isZero(BigInteger)} returns false,
 	 * if the z component exceeds the positive extreme point that is the inclusive
 	 * tolerance parameter.
 	 */
 	@Test
-	void isZeroWithMargin_Fail_Z_PositiveTest()
+	void isZero_Fail_Z_PositiveTest()
 	{
 		Tup3bigiR t = mock(Tup3bigiR.class);
 		
-		when(t.isZeroWithMargin(BigInteger.valueOf(2))).thenCallRealMethod();
+		when(t.isZero(bigi(2))).thenCallRealMethod();
 		
-		when(t.getX()).thenReturn(BigInteger.ZERO);
-		when(t.getY()).thenReturn(BigInteger.ZERO);
-		when(t.getZ()).thenReturn(BigInteger.valueOf(3));
+		when(t.getX()).thenReturn(bigi(0));
+		when(t.getY()).thenReturn(bigi(0));
+		when(t.getZ()).thenReturn(bigi(3));
 		
-		assertEquals(false, t.isZeroWithMargin(BigInteger.valueOf(2)));
+		assertEquals(false, t.isZero(bigi(2)));
 		
-		verify(t).isZeroWithMargin(BigInteger.valueOf(2));
+		verify(t).isZero(bigi(2));
 		
 		verify(t).getX();
 		verify(t).getY();
@@ -445,24 +447,24 @@ class Tup3bigiRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup3bigiR#isZeroWithMargin(BigInteger)} returns false,
+	 * This test ensures, that the function {@link Tup3bigiR#isZero(BigInteger)} returns false,
 	 * if the z component exceeds the positive extreme point that is the inclusive
 	 * tolerance parameter.
 	 */
 	@Test
-	void isZeroWithMargin_Fail_Z_NegativeTest()
+	void isZero_Fail_Z_NegativeTest()
 	{
 		Tup3bigiR t = mock(Tup3bigiR.class);
 		
-		when(t.isZeroWithMargin(BigInteger.valueOf(2))).thenCallRealMethod();
+		when(t.isZero(bigi(2))).thenCallRealMethod();
 		
-		when(t.getX()).thenReturn(BigInteger.ZERO);
-		when(t.getY()).thenReturn(BigInteger.ZERO);
-		when(t.getZ()).thenReturn(BigInteger.valueOf(-3));
+		when(t.getX()).thenReturn(bigi(0));
+		when(t.getY()).thenReturn(bigi(0));
+		when(t.getZ()).thenReturn(bigi(-3));
 		
-		assertEquals(false, t.isZeroWithMargin(BigInteger.valueOf(2)));
+		assertEquals(false, t.isZero(bigi(2)));
 		
-		verify(t).isZeroWithMargin(BigInteger.valueOf(2));
+		verify(t).isZero(bigi(2));
 		
 		verify(t).getX();
 		verify(t).getY();
@@ -472,7 +474,7 @@ class Tup3bigiRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup3bigiR#getArray(BigInteger[])} returns
+	 * This test ensures, that the function {@link Tup3bigiR#toArray(BigInteger[])} returns
 	 * the given array with the components in the right order.
 	 */
 	@Test
@@ -484,12 +486,12 @@ class Tup3bigiRTest
 		
 		when(t.toArray(array)).thenCallRealMethod();
 		
-		when(t.getX()).thenReturn(BigInteger.ONE);
-		when(t.getY()).thenReturn(BigInteger.valueOf(2));
-		when(t.getZ()).thenReturn(BigInteger.valueOf(3));
+		when(t.getX()).thenReturn(bigi(1));
+		when(t.getY()).thenReturn(bigi(2));
+		when(t.getZ()).thenReturn(bigi(3));
 		
 		assertSame(array, t.toArray(array));
-		assertArrayEquals(new BigInteger[] {BigInteger.ONE, BigInteger.valueOf(2), BigInteger.valueOf(3)}, array);
+		assertArrayEquals(bigiArray(1, 2, 3), array);
 		
 		verify(t).toArray(array);
 		
@@ -511,9 +513,9 @@ class Tup3bigiRTest
 		
 		when(t.getByIndex(0)).thenCallRealMethod();
 		
-		when(t.getX()).thenReturn(BigInteger.ONE);
+		when(t.getX()).thenReturn(bigi(1));
 		
-		assertEquals(BigInteger.ONE, t.getByIndex(0));
+		assertEquals(bigi(1), t.getByIndex(0));
 
 		verify(t).getByIndex(0);
 		
@@ -533,9 +535,9 @@ class Tup3bigiRTest
 		
 		when(t.getByIndex(1)).thenCallRealMethod();
 		
-		when(t.getY()).thenReturn(BigInteger.ONE);
+		when(t.getY()).thenReturn(bigi(1));
 		
-		assertEquals(BigInteger.ONE, t.getByIndex(1));
+		assertEquals(bigi(1), t.getByIndex(1));
 
 		verify(t).getByIndex(1);
 		
@@ -555,9 +557,9 @@ class Tup3bigiRTest
 		
 		when(t.getByIndex(2)).thenCallRealMethod();
 		
-		when(t.getZ()).thenReturn(BigInteger.ONE);
+		when(t.getZ()).thenReturn(bigi(1));
 		
-		assertEquals(BigInteger.ONE, t.getByIndex(2));
+		assertEquals(bigi(1), t.getByIndex(2));
 
 		verify(t).getByIndex(2);
 		

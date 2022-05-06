@@ -207,68 +207,92 @@ class Tup2dRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup2dR#isZero()} returns true,
+	 * This test ensures, that the function {@link Tup2dR#isExactlyZero()} returns true,
 	 * if all of the components are exactly zero.
+	 */
+	@Test
+	void isExactlyZero_ZeroTest()
+	{
+		Tup2dR t = mock(Tup2dR.class);
+		
+		when(t.isExactlyZero()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(0.0);
+		when(t.getY()).thenReturn(0.0);
+		
+		assertEquals(true, t.isExactlyZero());
+		
+		verify(t).isExactlyZero();
+		
+		verify(t).getX();
+		verify(t).getY();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2dR#isExactlyZero()} returns false,
+	 * if the x component is not zero.
+	 */
+	@Test
+	void isExactlyZero_Fail_XTest()
+	{
+		Tup2dR t = mock(Tup2dR.class);
+		
+		when(t.isExactlyZero()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(1.0);
+		
+		assertEquals(false, t.isExactlyZero());
+		
+		verify(t).isExactlyZero();
+		
+		verify(t).getX();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2dR#isExactlyZero()} returns false,
+	 * if the y component is not zero.
+	 */
+	@Test
+	void isExactlyZero_Fail_YTest()
+	{
+		Tup2dR t = mock(Tup2dR.class);
+		
+		when(t.isExactlyZero()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(0.0);
+		when(t.getY()).thenReturn(1.0);
+		
+		assertEquals(false, t.isExactlyZero());
+		
+		verify(t).isExactlyZero();
+		
+		verify(t).getX();
+		verify(t).getY();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2dR#isZero(double)} returns true,
+	 * if all components are exactly zero.
 	 */
 	@Test
 	void isZero_ZeroTest()
 	{
 		Tup2dR t = mock(Tup2dR.class);
 		
-		when(t.isZero()).thenCallRealMethod();
+		when(t.isZero(2.0)).thenCallRealMethod();
 		
 		when(t.getX()).thenReturn(0.0);
 		when(t.getY()).thenReturn(0.0);
 		
-		assertEquals(true, t.isZero());
+		assertEquals(true, t.isZero(2.0));
 		
-		verify(t).isZero();
-		
-		verify(t).getX();
-		verify(t).getY();
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup2dR#isZero()} returns false,
-	 * if the x component is not zero.
-	 */
-	@Test
-	void isZero_Fail_XTest()
-	{
-		Tup2dR t = mock(Tup2dR.class);
-		
-		when(t.isZero()).thenCallRealMethod();
-		
-		when(t.getX()).thenReturn(1.0);
-		
-		assertEquals(false, t.isZero());
-		
-		verify(t).isZero();
-		
-		verify(t).getX();
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup2dR#isZero()} returns false,
-	 * if the y component is not zero.
-	 */
-	@Test
-	void isZero_Fail_YTest()
-	{
-		Tup2dR t = mock(Tup2dR.class);
-		
-		when(t.isZero()).thenCallRealMethod();
-		
-		when(t.getX()).thenReturn(0.0);
-		when(t.getY()).thenReturn(1.0);
-		
-		assertEquals(false, t.isZero());
-		
-		verify(t).isZero();
+		verify(t).isZero(2.0);
 		
 		verify(t).getX();
 		verify(t).getY();
@@ -277,47 +301,23 @@ class Tup2dRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup2dR#isZeroWithMargin(double)} returns true,
-	 * if all components are exactly zero.
-	 */
-	@Test
-	void isZeroWithMargin_ZeroTest()
-	{
-		Tup2dR t = mock(Tup2dR.class);
-		
-		when(t.isZeroWithMargin(2.0)).thenCallRealMethod();
-		
-		when(t.getX()).thenReturn(0.0);
-		when(t.getY()).thenReturn(0.0);
-		
-		assertEquals(true, t.isZeroWithMargin(2.0));
-		
-		verify(t).isZeroWithMargin(2.0);
-		
-		verify(t).getX();
-		verify(t).getY();
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup2dR#isZeroWithMargin(double)} returns true,
+	 * This test ensures, that the function {@link Tup2dR#isZero(double)} returns true,
 	 * if all components are at the positive extreme point that is the inclusive
 	 * tolerance parameter.
 	 */
 	@Test
-	void isZeroWithMargin_Extreme_PositiveTest()
+	void isZero_Extreme_PositiveTest()
 	{
 		Tup2dR t = mock(Tup2dR.class);
 		
-		when(t.isZeroWithMargin(2.0)).thenCallRealMethod();
+		when(t.isZero(2.0)).thenCallRealMethod();
 		
 		when(t.getX()).thenReturn(2.0);
 		when(t.getY()).thenReturn(2.0);
 		
-		assertEquals(true, t.isZeroWithMargin(2.0));
+		assertEquals(true, t.isZero(2.0));
 		
-		verify(t).isZeroWithMargin(2.0);
+		verify(t).isZero(2.0);
 		
 		verify(t).getX();
 		verify(t).getY();
@@ -326,23 +326,23 @@ class Tup2dRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup2bR#isZeroWithMargin(double)} returns true,
+	 * This test ensures, that the function {@link Tup2dR#isZero(double)} returns true,
 	 * if all components are at the negative extreme point that is the inclusive
 	 * tolerance parameter.
 	 */
 	@Test
-	void isZeroWithMargin_Extreme_NegativeTest()
+	void isZero_Extreme_NegativeTest()
 	{
 		Tup2dR t = mock(Tup2dR.class);
 		
-		when(t.isZeroWithMargin(2.0)).thenCallRealMethod();
+		when(t.isZero(2.0)).thenCallRealMethod();
 		
 		when(t.getX()).thenReturn(-2.0);
 		when(t.getY()).thenReturn(-2.0);
 		
-		assertEquals(true, t.isZeroWithMargin(2.0));
+		assertEquals(true, t.isZero(2.0));
 		
-		verify(t).isZeroWithMargin(2.0);
+		verify(t).isZero(2.0);
 		
 		verify(t).getX();
 		verify(t).getY();
@@ -351,22 +351,22 @@ class Tup2dRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup2dR#isZeroWithMargin(double)} returns false,
+	 * This test ensures, that the function {@link Tup2dR#isZero(double)} returns false,
 	 * if the x component exceeds the positive extreme point that is the inclusive
 	 * tolerance parameter.
 	 */
 	@Test
-	void isZeroWithMargin_Fail_X_PositiveTest()
+	void isZero_Fail_X_PositiveTest()
 	{
 		Tup2dR t = mock(Tup2dR.class);
 		
-		when(t.isZeroWithMargin(2.0)).thenCallRealMethod();
+		when(t.isZero(2.0)).thenCallRealMethod();
 		
 		when(t.getX()).thenReturn(3.0);
 		
-		assertEquals(false, t.isZeroWithMargin(2.0));
+		assertEquals(false, t.isZero(2.0));
 		
-		verify(t).isZeroWithMargin(2.0);
+		verify(t).isZero(2.0);
 		
 		verify(t).getX();
 		
@@ -374,22 +374,22 @@ class Tup2dRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup2dR#isZeroWithMargin(double)} returns false,
+	 * This test ensures, that the function {@link Tup2dR#isZero(double)} returns false,
 	 * if the x component exceeds the negative extreme point that is the inclusive
 	 * tolerance parameter.
 	 */
 	@Test
-	void isZeroWithMargin_Fail_X_NegativeTest()
+	void isZero_Fail_X_NegativeTest()
 	{
 		Tup2dR t = mock(Tup2dR.class);
 		
-		when(t.isZeroWithMargin(2.0)).thenCallRealMethod();
+		when(t.isZero(2.0)).thenCallRealMethod();
 		
 		when(t.getX()).thenReturn(-3.0);
 		
-		assertEquals(false, t.isZeroWithMargin(2.0));
+		assertEquals(false, t.isZero(2.0));
 		
-		verify(t).isZeroWithMargin(2.0);
+		verify(t).isZero(2.0);
 		
 		verify(t).getX();
 		
@@ -397,23 +397,23 @@ class Tup2dRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup2dR#isZeroWithMargin(double)} returns false,
+	 * This test ensures, that the function {@link Tup2dR#isZero(double)} returns false,
 	 * if the y component exceeds the positive extreme point that is the inclusive
 	 * tolerance parameter.
 	 */
 	@Test
-	void isZeroWithMargin_Fail_Y_PositiveTest()
+	void isZero_Fail_Y_PositiveTest()
 	{
 		Tup2dR t = mock(Tup2dR.class);
 		
-		when(t.isZeroWithMargin(2.0)).thenCallRealMethod();
+		when(t.isZero(2.0)).thenCallRealMethod();
 		
 		when(t.getX()).thenReturn(0.0);
 		when(t.getY()).thenReturn(3.0);
 		
-		assertEquals(false, t.isZeroWithMargin(2.0));
+		assertEquals(false, t.isZero(2.0));
 		
-		verify(t).isZeroWithMargin(2.0);
+		verify(t).isZero(2.0);
 		
 		verify(t).getX();
 		verify(t).getY();
@@ -422,23 +422,23 @@ class Tup2dRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup2dR#isZeroWithMargin(double)} returns false,
+	 * This test ensures, that the function {@link Tup2dR#isZero(double)} returns false,
 	 * if the y component exceeds the positive extreme point that is the inclusive
 	 * tolerance parameter.
 	 */
 	@Test
-	void isZeroWithMargin_Fail_Y_NegativeTest()
+	void isZero_Fail_Y_NegativeTest()
 	{
 		Tup2dR t = mock(Tup2dR.class);
 		
-		when(t.isZeroWithMargin(2.0)).thenCallRealMethod();
+		when(t.isZero(2.0)).thenCallRealMethod();
 		
 		when(t.getX()).thenReturn(0.0);
 		when(t.getY()).thenReturn(-3.0);
 		
-		assertEquals(false, t.isZeroWithMargin(2.0));
+		assertEquals(false, t.isZero(2.0));
 		
-		verify(t).isZeroWithMargin(2.0);
+		verify(t).isZero(2.0);
 		
 		verify(t).getX();
 		verify(t).getY();
@@ -447,11 +447,11 @@ class Tup2dRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup2dR#getArray(double[])} returns
+	 * This test ensures, that the function {@link Tup2dR#toArray(double[])} returns
 	 * the given array with the components in the right order.
 	 */
 	@Test
-	void toArray_QueryTest()
+	void toArray_ExtractParamTest()
 	{
 		Tup2dR t = mock(Tup2dR.class);
 		

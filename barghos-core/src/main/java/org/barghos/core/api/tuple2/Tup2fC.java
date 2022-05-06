@@ -111,6 +111,15 @@ public interface Tup2fC extends Tup2fR, TupfC
 		return setArray(t.toArray());
 	}
 	
+	/** {@inheritDoc}} */
+	@Override
+	Tup2fC shallowClone();
+	
+	/** {@inheritDoc}} */
+	@Override
+	Tup2fC deepClone();
+	
 	/** {@inheritDoc} */
+	@Override
 	Tup2fC clone();
 }

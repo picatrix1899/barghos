@@ -62,7 +62,7 @@ public interface Tup2fR extends TupfR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default boolean isZero()
+	default boolean isExactlyZero()
 	{
 		return getX() == 0.0f &&
 				getY() == 0.0f;
@@ -70,7 +70,7 @@ public interface Tup2fR extends TupfR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default boolean isZeroWithMargin(float tolerance)
+	default boolean isZero(float tolerance)
 	{
 		return Math.abs(getX()) <= tolerance &&
 				Math.abs(getY()) <= tolerance;
@@ -104,30 +104,5 @@ public interface Tup2fR extends TupfR
 		res[COMP_Y] = getY();
 		
 		return res;
-	}
-	
-	/**
-	 * Creates a new anonymous implementation instance of the interface {@link Tup2fR} with the given values.
-	 * As the resulting instance is just a minimal implementation of the interface it does not provide clone,
-	 * equals, hashCode or toString operations.
-	 * 
-	 * @param x The value of the x component.
-	 * @param y The value of the y component.
-	 * 
-	 * @return The anonymous implementation instance.
-	 */
-	public static Tup2fR of(final float x, final float y)
-	{
-		return new Tup2fR() {
-			public float getX()
-			{
-				return x;
-			}
-
-			public float getY()
-			{
-				return y;
-			}
-		};
 	}
 }

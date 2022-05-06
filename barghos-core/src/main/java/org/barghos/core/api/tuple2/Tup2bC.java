@@ -111,6 +111,15 @@ public interface Tup2bC extends Tup2bR, TupbC
 		return setArray(t.toArray());
 	}
 	
+	/** {@inheritDoc}} */
+	@Override
+	Tup2bC shallowClone();
+	
+	/** {@inheritDoc}} */
+	@Override
+	Tup2bC deepClone();
+	
 	/** {@inheritDoc} */
+	@Override
 	Tup2bC clone();
 }

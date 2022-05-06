@@ -140,6 +140,15 @@ public interface Tup4sC extends Tup4sR, TupsC
 		return setArray(t.toArray());
 	}
 	
-	/** {@inheritDoc} */
+	/** {@inheritDoc}} */
+	@Override
+	Tup4sC shallowClone();
+	
+	/** {@inheritDoc}} */
+	@Override
+	Tup4sC deepClone();
+	
+	/** {@inheritDoc}} */
+	@Override
 	Tup4sC clone();
 }

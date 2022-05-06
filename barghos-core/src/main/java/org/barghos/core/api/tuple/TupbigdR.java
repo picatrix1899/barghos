@@ -70,7 +70,7 @@ public interface TupbigdR extends Validateable
 	 * 
 	 * @return True if all components are exactly zero.
 	 */
-	default boolean isZero()
+	default boolean isExactlyZero()
 	{
 		int dimensions = getDimensions();
 		
@@ -87,7 +87,7 @@ public interface TupbigdR extends Validateable
 	 * 
 	 * @return True if all components are technically zero.
 	 */
-	default boolean isZeroWithMargin(BigDecimal tolerance)
+	default boolean isZero(BigDecimal tolerance)
 	{
 		int dimensions = getDimensions();
 		

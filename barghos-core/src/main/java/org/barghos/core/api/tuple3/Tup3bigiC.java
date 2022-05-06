@@ -124,6 +124,15 @@ public interface Tup3bigiC extends Tup3bigiR, TupbigiC
 		return setArray(t.toArray());
 	}
 	
+	/** {@inheritDoc}} */
+	@Override
+	Tup3bigiC shallowClone();
+	
+	/** {@inheritDoc}} */
+	@Override
+	Tup3bigiC deepClone();
+	
 	/** {@inheritDoc} */
+	@Override
 	Tup3bigiC clone();
 }

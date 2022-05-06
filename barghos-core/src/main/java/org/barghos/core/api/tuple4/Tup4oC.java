@@ -25,6 +25,11 @@ package org.barghos.core.api.tuple4;
 /**
  * This interface represents any modifiable 4-dimensional object tuples.
  * 
+ * @param <X> The type of the x component.
+ * @param <Y> The type of the y component.
+ * @param <Z> The type of the z component.
+ * @param <W> The type of the w component.
+ * 
  * @author picatrix1899
  */
 public interface Tup4oC<X,Y,Z,W> extends Tup4oR<X,Y,Z,W>

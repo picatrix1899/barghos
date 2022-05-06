@@ -111,6 +111,15 @@ public interface Tup2lC extends Tup2lR, TuplC
 		return setArray(t.toArray());
 	}
 	
+	/** {@inheritDoc}} */
+	@Override
+	Tup2lC shallowClone();
+	
+	/** {@inheritDoc}} */
+	@Override
+	Tup2lC deepClone();
+	
 	/** {@inheritDoc} */
+	@Override
 	Tup2lC clone();
 }

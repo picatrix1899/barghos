@@ -70,7 +70,7 @@ public interface Tup4bigdR extends TupbigdR
 
 	/** {@inheritDoc}} */
 	@Override
-	default boolean isZero()
+	default boolean isExactlyZero()
 	{
 		return getX().compareTo(BigDecimal.ZERO) == 0 &&
 				getY().compareTo(BigDecimal.ZERO) == 0 &&
@@ -80,7 +80,7 @@ public interface Tup4bigdR extends TupbigdR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default boolean isZeroWithMargin(BigDecimal tolerance)
+	default boolean isZero(BigDecimal tolerance)
 	{
 		return getX().abs().compareTo(tolerance) <= 0 &&
 				getY().abs().compareTo(tolerance) <= 0 &&
@@ -130,42 +130,5 @@ public interface Tup4bigdR extends TupbigdR
 		res[COMP_W] = getW();
 		
 		return res;
-	}
-	
-	/**
-	 * Creates a new anonymous implementation instance of the interface {@link Tup4bigdR} with the given values.
-	 * As the resulting instance is just a minimal implementation of the interface it does not provide clone,
-	 * equals, hashCode or toString operations.
-	 * 
-	 * @param x The value of the x component.
-	 * @param y The value of the y component.
-	 * @param z The value of the z component.
-	 * @param w The value of the w component.
-	 * 
-	 * @return The anonymous implementation instance.
-	 */
-	public static Tup4bigdR of(final BigDecimal x, final BigDecimal y, final BigDecimal z, final BigDecimal w)
-	{
-		return new Tup4bigdR() {
-			public BigDecimal getX()
-			{
-				return x;
-			}
-
-			public BigDecimal getY()
-			{
-				return y;
-			}
-
-			public BigDecimal getZ()
-			{
-				return z;
-			}
-
-			public BigDecimal getW()
-			{
-				return w;
-			}
-		};
 	}
 }

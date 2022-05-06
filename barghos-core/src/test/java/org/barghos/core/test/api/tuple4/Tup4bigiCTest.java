@@ -8,6 +8,8 @@ import org.junit.jupiter.api.function.Executable;
 
 import java.math.BigInteger;
 
+import static org.barghos.core.api.testing.TestObjectFactory.*;
+
 import org.barghos.core.api.tuple.TupbigiC;
 import org.barghos.core.api.tuple.TupbigiR;
 import org.barghos.core.api.tuple4.Tup4bigiC;
@@ -50,11 +52,11 @@ class Tup4bigiCTest
 		
 		when(t.set(t2)).thenCallRealMethod();
 		
-		when(t2.getX()).thenReturn(BigInteger.ONE);
-		when(t2.getY()).thenReturn(BigInteger.valueOf(2));
-		when(t2.getZ()).thenReturn(BigInteger.valueOf(3));
-		when(t2.getW()).thenReturn(BigInteger.valueOf(4));
-		when(t.set(BigInteger.ONE, BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4))).thenReturn(t);
+		when(t2.getX()).thenReturn(bigi(1));
+		when(t2.getY()).thenReturn(bigi(2));
+		when(t2.getZ()).thenReturn(bigi(3));
+		when(t2.getW()).thenReturn(bigi(4));
+		when(t.set(bigi(1), bigi(2), bigi(3), bigi(4))).thenReturn(t);
 		
 		assertSame(t, t.set(t2));
 		
@@ -64,7 +66,7 @@ class Tup4bigiCTest
 		verify(t2).getY();
 		verify(t2).getZ();
 		verify(t2).getW();
-		verify(t).set(BigInteger.ONE, BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4));
+		verify(t).set(bigi(1), bigi(2), bigi(3), bigi(4));
 		
 		verifyNoMoreInteractions(t, t2);
 	}
@@ -78,15 +80,15 @@ class Tup4bigiCTest
 	{
 		Tup4bigiC t = mock(Tup4bigiC.class);
 		
-		when(t.set(BigInteger.ONE)).thenCallRealMethod();
+		when(t.set(bigi(1))).thenCallRealMethod();
 		
-		when(t.set(BigInteger.ONE, BigInteger.ONE, BigInteger.ONE, BigInteger.ONE)).thenReturn(t);
+		when(t.set(bigi(1), bigi(1), bigi(1), bigi(1))).thenReturn(t);
 		
-		assertSame(t, t.set(BigInteger.ONE));
+		assertSame(t, t.set(bigi(1)));
 		
-		verify(t).set(BigInteger.ONE);
+		verify(t).set(bigi(1));
 
-		verify(t).set(BigInteger.ONE, BigInteger.ONE, BigInteger.ONE, BigInteger.ONE);
+		verify(t).set(bigi(1), bigi(1), bigi(1), bigi(1));
 		
 		verifyNoMoreInteractions(t);
 	}
@@ -100,21 +102,21 @@ class Tup4bigiCTest
 	{
 		Tup4bigiC t = mock(Tup4bigiC.class);
 		
-		when(t.set(BigInteger.ONE, BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4))).thenCallRealMethod();
+		when(t.set(bigi(1), bigi(2), bigi(3), bigi(4))).thenCallRealMethod();
 		
-		when(t.setX(BigInteger.ONE)).thenReturn(t);
-		when(t.setY(BigInteger.valueOf(2))).thenReturn(t);
-		when(t.setZ(BigInteger.valueOf(3))).thenReturn(t);
-		when(t.setW(BigInteger.valueOf(4))).thenReturn(t);
+		when(t.setX(bigi(1))).thenReturn(t);
+		when(t.setY(bigi(2))).thenReturn(t);
+		when(t.setZ(bigi(3))).thenReturn(t);
+		when(t.setW(bigi(4))).thenReturn(t);
 		
-		assertSame(t, t.set(BigInteger.ONE, BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4)));
+		assertSame(t, t.set(bigi(1), bigi(2), bigi(3), bigi(4)));
 		
-		verify(t).set(BigInteger.ONE, BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4));
+		verify(t).set(bigi(1), bigi(2), bigi(3), bigi(4));
 
-		verify(t).setX(BigInteger.ONE);
-		verify(t).setY(BigInteger.valueOf(2));
-		verify(t).setZ(BigInteger.valueOf(3));
-		verify(t).setW(BigInteger.valueOf(4));
+		verify(t).setX(bigi(1));
+		verify(t).setY(bigi(2));
+		verify(t).setZ(bigi(3));
+		verify(t).setW(bigi(4));
 		
 		verifyNoMoreInteractions(t);
 	}
@@ -131,15 +133,15 @@ class Tup4bigiCTest
 		
 		when(t.set(t2)).thenCallRealMethod();
 		
-		when(t2.toArray()).thenReturn(new BigInteger[] {BigInteger.ONE, BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4)});
-		when(t.setArray(new BigInteger[] {BigInteger.ONE, BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4)})).thenReturn(t);
+		when(t2.toArray()).thenReturn(bigiArray(1, 2, 3, 4));
+		when(t.setArray(bigiArray(1, 2, 3, 4))).thenReturn(t);
 
 		assertSame(t, t.set(t2));
 		
 		verify(t).set(t2);
 		
 		verify(t2).toArray();
-		verify(t).setArray(new BigInteger[] {BigInteger.ONE, BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4)});
+		verify(t).setArray(bigiArray(1, 2, 3, 4));
 
 		verifyNoMoreInteractions(t);
 	}
@@ -153,15 +155,15 @@ class Tup4bigiCTest
 	{
 		Tup4bigiC t = mock(Tup4bigiC.class);
 		
-		when(t.setArray(new BigInteger[] {BigInteger.ONE, BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4)})).thenCallRealMethod();
+		when(t.setArray(bigiArray(1, 2, 3, 4))).thenCallRealMethod();
 		
-		when(t.set(BigInteger.ONE, BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4))).thenReturn(t);
+		when(t.set(bigi(1), bigi(2), bigi(3), bigi(4))).thenReturn(t);
 		
-		assertSame(t, t.setArray(new BigInteger[] {BigInteger.ONE, BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4)}));
+		assertSame(t, t.setArray(bigiArray(1, 2, 3, 4)));
 		
-		verify(t).setArray(new BigInteger[] {BigInteger.ONE, BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4)});
+		verify(t).setArray(bigiArray(1, 2, 3, 4));
 		
-		verify(t).set(BigInteger.ONE, BigInteger.valueOf(2), BigInteger.valueOf(3), BigInteger.valueOf(4));
+		verify(t).set(bigi(1), bigi(2), bigi(3), bigi(4));
 		
 		verifyNoMoreInteractions(t);
 	}
@@ -175,15 +177,15 @@ class Tup4bigiCTest
 	{
 		Tup4bigiC t = mock(Tup4bigiC.class);
 		
-		when(t.setByIndex(0, BigInteger.ONE)).thenCallRealMethod();
+		when(t.setByIndex(0, bigi(1))).thenCallRealMethod();
 		
-		when(t.setX(BigInteger.ONE)).thenReturn(t);
+		when(t.setX(bigi(1))).thenReturn(t);
 		
-		assertSame(t, t.setByIndex(0, BigInteger.ONE));
+		assertSame(t, t.setByIndex(0, bigi(1)));
 		
-		verify(t).setByIndex(0, BigInteger.ONE);
+		verify(t).setByIndex(0, bigi(1));
 		
-		verify(t).setX(BigInteger.ONE);
+		verify(t).setX(bigi(1));
 		
 		verifyNoMoreInteractions(t);
 	}
@@ -197,15 +199,15 @@ class Tup4bigiCTest
 	{
 		Tup4bigiC t = mock(Tup4bigiC.class);
 		
-		when(t.setByIndex(1, BigInteger.ONE)).thenCallRealMethod();
+		when(t.setByIndex(1, bigi(1))).thenCallRealMethod();
 		
-		when(t.setY(BigInteger.ONE)).thenReturn(t);
+		when(t.setY(bigi(1))).thenReturn(t);
 		
-		assertSame(t, t.setByIndex(1, BigInteger.ONE));
+		assertSame(t, t.setByIndex(1, bigi(1)));
 		
-		verify(t).setByIndex(1, BigInteger.ONE);
+		verify(t).setByIndex(1, bigi(1));
 		
-		verify(t).setY(BigInteger.ONE);
+		verify(t).setY(bigi(1));
 		
 		verifyNoMoreInteractions(t);
 	}
@@ -219,15 +221,15 @@ class Tup4bigiCTest
 	{
 		Tup4bigiC t = mock(Tup4bigiC.class);
 		
-		when(t.setByIndex(2, BigInteger.ONE)).thenCallRealMethod();
+		when(t.setByIndex(2, bigi(1))).thenCallRealMethod();
 		
-		when(t.setZ(BigInteger.ONE)).thenReturn(t);
+		when(t.setZ(bigi(1))).thenReturn(t);
 		
-		assertSame(t, t.setByIndex(2, BigInteger.ONE));
+		assertSame(t, t.setByIndex(2, bigi(1)));
 		
-		verify(t).setByIndex(2, BigInteger.ONE);
+		verify(t).setByIndex(2, bigi(1));
 		
-		verify(t).setZ(BigInteger.ONE);
+		verify(t).setZ(bigi(1));
 		
 		verifyNoMoreInteractions(t);
 	}
@@ -241,15 +243,15 @@ class Tup4bigiCTest
 	{
 		Tup4bigiC t = mock(Tup4bigiC.class);
 		
-		when(t.setByIndex(3, BigInteger.ONE)).thenCallRealMethod();
+		when(t.setByIndex(3, bigi(1))).thenCallRealMethod();
 		
-		when(t.setW(BigInteger.ONE)).thenReturn(t);
+		when(t.setW(bigi(1))).thenReturn(t);
 		
-		assertSame(t, t.setByIndex(3, BigInteger.ONE));
+		assertSame(t, t.setByIndex(3, bigi(1)));
 		
-		verify(t).setByIndex(3, BigInteger.ONE);
+		verify(t).setByIndex(3, bigi(1));
 		
-		verify(t).setW(BigInteger.ONE);
+		verify(t).setW(bigi(1));
 		
 		verifyNoMoreInteractions(t);
 	}
@@ -263,16 +265,16 @@ class Tup4bigiCTest
 	{
 		Tup4bigiC t = mock(Tup4bigiC.class);
 		
-		when(t.setByIndex(4, BigInteger.ONE)).thenCallRealMethod();
+		when(t.setByIndex(4, bigi(1))).thenCallRealMethod();
 
 		assertThrows(IndexOutOfBoundsException.class, new Executable() {
 			public void execute() throws Throwable
 			{
-				t.setByIndex(4, BigInteger.ONE);
+				t.setByIndex(4, bigi(1));
 			}
 		});
 
-		verify(t).setByIndex(4, BigInteger.ONE);
+		verify(t).setByIndex(4, bigi(1));
 
 		verifyNoMoreInteractions(t);
 	}

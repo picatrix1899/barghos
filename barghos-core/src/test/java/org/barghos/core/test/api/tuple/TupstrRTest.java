@@ -90,7 +90,7 @@ class TupstrRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link TupstrR#getArray()} calls
+	 * This test ensures, that the function {@link TupstrR#toArray()} calls
 	 * the function {@link TupstrR#toArray(String[])} with a new array with the size
 	 * equal to the number of dimensions of the tuple.
 	 */

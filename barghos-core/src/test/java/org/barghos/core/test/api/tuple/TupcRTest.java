@@ -33,7 +33,7 @@ class TupcRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link TupcR#getArray()} calls
+	 * This test ensures, that the function {@link TupcR#toArray()} calls
 	 * the function {@link TupcR#toArray(char[])} with a new array with the size
 	 * equal to the number of dimensions of the tuple.
 	 */

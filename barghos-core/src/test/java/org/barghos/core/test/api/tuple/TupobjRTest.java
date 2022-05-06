@@ -91,7 +91,7 @@ class TupobjRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link TupobjR#getArray()} calls
+	 * This test ensures, that the function {@link TupobjR#toArray()} calls
 	 * the function {@link TupobjR#toArray(Object[])} with a new array with the size
 	 * equal to the number of dimensions of the tuple.
 	 */

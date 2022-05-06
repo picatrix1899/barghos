@@ -172,7 +172,7 @@ class Tup4strRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4strR#getArray(String[])} returns
+	 * This test ensures, that the function {@link Tup4strR#toArray(String[])} returns
 	 * the given array with the components in the right order.
 	 */
 	@Test

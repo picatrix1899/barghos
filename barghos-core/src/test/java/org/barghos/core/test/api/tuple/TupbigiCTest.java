@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 
 import java.math.BigInteger;
 
+import static org.barghos.core.api.testing.TestObjectFactory.*;
+
 import org.barghos.core.api.tuple.TupbigiC;
 import org.barghos.core.api.tuple.TupbigiR;
 
@@ -38,15 +40,15 @@ class TupbigiCTest
 		
 		when(t.set(t2)).thenCallRealMethod();
 		
-		when(t2.toArray()).thenReturn(new BigInteger[] {BigInteger.ONE, BigInteger.valueOf(2)});
-		when(t.setArray(new BigInteger[] {BigInteger.ONE, BigInteger.valueOf(2)})).thenReturn(t);
+		when(t2.toArray()).thenReturn(bigiArray(1, 2));
+		when(t.setArray(bigiArray(1, 2))).thenReturn(t);
 		
 		assertSame(t, t.set(t2));
 		
 		verify(t).set(t2);
 		
 		verify(t2).toArray();
-		verify(t).setArray(new BigInteger[] {BigInteger.ONE, BigInteger.valueOf(2)});
+		verify(t).setArray(bigiArray(1, 2));
 		
 		verifyNoMoreInteractions(t);
 	}
@@ -60,17 +62,17 @@ class TupbigiCTest
 	{
 		TupbigiC t = mock(TupbigiC.class);
 		
-		when(t.set(BigInteger.ONE)).thenCallRealMethod();
+		when(t.set(bigi(1))).thenCallRealMethod();
 		
 		when(t.getDimensions()).thenReturn(2);
-		when(t.setArray(new BigInteger[] {BigInteger.ONE, BigInteger.ONE})).thenReturn(t);
+		when(t.setArray(bigiArray(1, 1))).thenReturn(t);
 		
-		assertSame(t, t.set(BigInteger.ONE));
+		assertSame(t, t.set(bigi(1)));
 		
-		verify(t).set(BigInteger.ONE);
+		verify(t).set(bigi(1));
 		
 		verify(t).getDimensions();
-		verify(t).setArray(new BigInteger[] {BigInteger.ONE, BigInteger.ONE});
+		verify(t).setArray(bigiArray(1, 1));
 		
 		verifyNoMoreInteractions(t);
 	}
@@ -85,17 +87,17 @@ class TupbigiCTest
 	{
 		TupbigiC t = mock(TupbigiC.class);
 		
-		when(t.setArray(new BigInteger[] {BigInteger.ONE, BigInteger.valueOf(2)})).thenCallRealMethod();
+		when(t.setArray(bigiArray(1, 2))).thenCallRealMethod();
 		
 		when(t.getDimensions()).thenReturn(2);
 		
-		assertSame(t, t.setArray(new BigInteger[] {BigInteger.ONE, BigInteger.valueOf(2)}));
+		assertSame(t, t.setArray(bigiArray(1, 2)));
 		
-		verify(t).setArray(new BigInteger[] {BigInteger.ONE, BigInteger.valueOf(2)});
+		verify(t).setArray(bigiArray(1, 2));
 		
 		verify(t).getDimensions();
-		verify(t).setByIndex(0, BigInteger.ONE);
-		verify(t).setByIndex(1, BigInteger.valueOf(2));
+		verify(t).setByIndex(0, bigi(1));
+		verify(t).setByIndex(1, bigi(2));
 		
 		verifyNoMoreInteractions(t);
 	}

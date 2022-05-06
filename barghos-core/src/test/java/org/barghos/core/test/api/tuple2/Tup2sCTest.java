@@ -6,6 +6,8 @@ import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
+import static org.barghos.core.api.testing.TestObjectFactory.*;
+
 import org.barghos.core.api.tuple.TupsC;
 import org.barghos.core.api.tuple.TupsR;
 import org.barghos.core.api.tuple2.Tup2sC;
@@ -48,9 +50,9 @@ class Tup2sCTest
 		
 		when(t.set(t2)).thenCallRealMethod();
 		
-		when(t2.getX()).thenReturn((short)1);
-		when(t2.getY()).thenReturn((short)2);
-		when(t.set((short)1, (short)2)).thenReturn(t);
+		when(t2.getX()).thenReturn(s(1));
+		when(t2.getY()).thenReturn(s(2));
+		when(t.set(s(1), s(2))).thenReturn(t);
 		
 		assertSame(t, t.set(t2));
 		
@@ -58,7 +60,7 @@ class Tup2sCTest
 		
 		verify(t2).getX();
 		verify(t2).getY();
-		verify(t).set((short)1, (short)2);
+		verify(t).set(s(1), s(2));
 		
 		verifyNoMoreInteractions(t, t2);
 	}
@@ -72,15 +74,15 @@ class Tup2sCTest
 	{
 		Tup2sC t = mock(Tup2sC.class);
 		
-		when(t.set((short)1)).thenCallRealMethod();
+		when(t.set(s(1))).thenCallRealMethod();
 		
-		when(t.set((short)1, (short)1)).thenReturn(t);
+		when(t.set(s(1), s(1))).thenReturn(t);
 		
-		assertSame(t, t.set((short)1));
+		assertSame(t, t.set(s(1)));
 		
-		verify(t).set((short)1);
+		verify(t).set(s(1));
 
-		verify(t).set((short)1, (short)1);
+		verify(t).set(s(1), s(1));
 		
 		verifyNoMoreInteractions(t);
 	}
@@ -94,17 +96,17 @@ class Tup2sCTest
 	{
 		Tup2sC t = mock(Tup2sC.class);
 		
-		when(t.set((short)1, (short)2)).thenCallRealMethod();
+		when(t.set(s(1), s(2))).thenCallRealMethod();
 		
-		when(t.setX((short)1)).thenReturn(t);
-		when(t.setY((short)2)).thenReturn(t);
+		when(t.setX(s(1))).thenReturn(t);
+		when(t.setY(s(2))).thenReturn(t);
 		
-		assertSame(t, t.set((short)1, (short)2));
+		assertSame(t, t.set(s(1), s(2)));
 		
-		verify(t).set((short)1, (short)2);
+		verify(t).set(s(1), s(2));
 
-		verify(t).setX((short)1);
-		verify(t).setY((short)2);
+		verify(t).setX(s(1));
+		verify(t).setY(s(2));
 		
 		verifyNoMoreInteractions(t);
 	}
@@ -121,15 +123,15 @@ class Tup2sCTest
 		
 		when(t.set(t2)).thenCallRealMethod();
 		
-		when(t2.toArray()).thenReturn(new short[] {(short)1, (short)2});
-		when(t.setArray(new short[] {(short)1, (short)2})).thenReturn(t);
+		when(t2.toArray()).thenReturn(sArray(1, 2));
+		when(t.setArray(sArray(1, 2))).thenReturn(t);
 
 		assertSame(t, t.set(t2));
 		
 		verify(t).set(t2);
 		
 		verify(t2).toArray();
-		verify(t).setArray(new short[] {(short)1, (short)2});
+		verify(t).setArray(sArray(1, 2));
 
 		verifyNoMoreInteractions(t);
 	}
@@ -143,15 +145,15 @@ class Tup2sCTest
 	{
 		Tup2sC t = mock(Tup2sC.class);
 		
-		when(t.setByIndex(0, (short)1)).thenCallRealMethod();
+		when(t.setByIndex(0, s(1))).thenCallRealMethod();
 		
-		when(t.setX((short)1)).thenReturn(t);
+		when(t.setX(s(1))).thenReturn(t);
 		
-		assertSame(t, t.setByIndex(0, (short)1));
+		assertSame(t, t.setByIndex(0, s(1)));
 		
-		verify(t).setByIndex(0, (short)1);
+		verify(t).setByIndex(0, s(1));
 		
-		verify(t).setX((short)1);
+		verify(t).setX(s(1));
 		
 		verifyNoMoreInteractions(t);
 	}
@@ -165,15 +167,15 @@ class Tup2sCTest
 	{
 		Tup2sC t = mock(Tup2sC.class);
 		
-		when(t.setByIndex(1, (short)1)).thenCallRealMethod();
+		when(t.setByIndex(1, s(1))).thenCallRealMethod();
 		
-		when(t.setY((short)1)).thenReturn(t);
+		when(t.setY(s(1))).thenReturn(t);
 		
-		assertSame(t, t.setByIndex(1, (short)1));
+		assertSame(t, t.setByIndex(1, s(1)));
 		
-		verify(t).setByIndex(1, (short)1);
+		verify(t).setByIndex(1, s(1));
 		
-		verify(t).setY((short)1);
+		verify(t).setY(s(1));
 		
 		verifyNoMoreInteractions(t);
 	}
@@ -187,16 +189,16 @@ class Tup2sCTest
 	{
 		Tup2sC t = mock(Tup2sC.class);
 		
-		when(t.setByIndex(2, (short)1)).thenCallRealMethod();
+		when(t.setByIndex(2, s(1))).thenCallRealMethod();
 
 		assertThrows(IndexOutOfBoundsException.class, new Executable() {
 			public void execute() throws Throwable
 			{
-				t.setByIndex(2, (short)1);
+				t.setByIndex(2, s(1));
 			}
 		});
 
-		verify(t).setByIndex(2, (short)1);
+		verify(t).setByIndex(2, s(1));
 
 		verifyNoMoreInteractions(t);
 	}

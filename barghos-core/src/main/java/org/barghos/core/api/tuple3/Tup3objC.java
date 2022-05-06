@@ -121,4 +121,16 @@ public interface Tup3objC extends Tup3objR, TupobjC
 	{
 		return setArray(t.toArray());
 	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	Tup3objC shallowClone();
+	
+	/** {@inheritDoc}} */
+	@Override
+	Tup3objC deepClone();
+	
+	/** {@inheritDoc}} */
+	@Override
+	Tup3objC clone();
 }

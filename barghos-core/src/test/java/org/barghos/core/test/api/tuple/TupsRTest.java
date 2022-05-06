@@ -5,6 +5,8 @@ import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.Test;
 
+import static org.barghos.core.api.testing.TestObjectFactory.*;
+
 import org.barghos.core.api.tuple.TupsR;
 
 /**
@@ -33,23 +35,153 @@ class TupsRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link TupsR#isZero()} returns true
+	 * This test ensures, that the function {@link TupsR#isExactlyZero()} returns true
 	 * if all components are 0.0.
+	 */
+	@Test
+	void isExactlyZero_ZeroTest()
+	{
+		TupsR t = mock(TupsR.class);
+		
+		when(t.isExactlyZero()).thenCallRealMethod();
+		
+		when(t.getDimensions()).thenReturn(2);
+		when(t.getByIndex(0)).thenReturn(s(0));
+		when(t.getByIndex(1)).thenReturn(s(0));
+		
+		assertEquals(true, t.isExactlyZero());
+		
+		verify(t).isExactlyZero();
+		
+		verify(t).getDimensions();
+		verify(t).getByIndex(0);
+		verify(t).getByIndex(1);
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link TupsR#isExactlyZero()} returns false
+	 * after checking the first component, if the first component is a positive number
+	 * greater zero.
+	 */
+	@Test
+	void isExactlyZero_FailEarly_PositiveTest()
+	{
+		TupsR t = mock(TupsR.class);
+		
+		when(t.isExactlyZero()).thenCallRealMethod();
+		
+		when(t.getDimensions()).thenReturn(2);
+		when(t.getByIndex(0)).thenReturn(s(1));
+		
+		assertEquals(false, t.isExactlyZero());
+		
+		verify(t).isExactlyZero();
+
+		verify(t).getDimensions();
+		verify(t).getByIndex(0);
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link TupsR#isExactlyZero()} returns false
+	 * after checking the first component, if the first component is a negative number
+	 * greater zero.
+	 */
+	@Test
+	void isExactlyZero_FailEarly_NegativeTest()
+	{
+		TupsR t = mock(TupsR.class);
+		
+		when(t.isExactlyZero()).thenCallRealMethod();
+		
+		when(t.getDimensions()).thenReturn(2);
+		when(t.getByIndex(0)).thenReturn(s(-1));
+		
+		assertEquals(false, t.isExactlyZero());
+		
+		verify(t).isExactlyZero();
+
+		verify(t).getDimensions();
+		verify(t).getByIndex(0);
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link TupsR#isExactlyZero()} returns false
+	 * after checking all components, if only the last component is a positive number
+	 * greater zero.
+	 */
+	@Test
+	void isExactlyZero_Fail_PositiveTest()
+	{
+		TupsR t = mock(TupsR.class);
+		
+		when(t.isExactlyZero()).thenCallRealMethod();
+		
+		when(t.getDimensions()).thenReturn(2);
+		when(t.getByIndex(0)).thenReturn(s(0));
+		when(t.getByIndex(1)).thenReturn(s(1));
+		
+		assertEquals(false, t.isExactlyZero());
+		
+		verify(t).isExactlyZero();
+
+		verify(t).getDimensions();
+		verify(t).getByIndex(0);
+		verify(t).getByIndex(1);
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link TupsR#isExactlyZero()} returns false
+	 * after checking all components, if only the last component is a negative number
+	 * greater zero.
+	 */
+	@Test
+	void isExactlyZero_Fail_NTest()
+	{
+		TupsR t = mock(TupsR.class);
+		
+		when(t.isExactlyZero()).thenCallRealMethod();
+		
+		when(t.getDimensions()).thenReturn(2);
+		when(t.getByIndex(0)).thenReturn(s(0));
+		when(t.getByIndex(1)).thenReturn(s(-1));
+		
+		assertEquals(false, t.isExactlyZero());
+		
+		verify(t).isExactlyZero();
+
+		verify(t).getDimensions();
+		verify(t).getByIndex(0);
+		verify(t).getByIndex(1);
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link TupsR#isZero(short)} returns true,
+	 * if all components are exactly 0.0.
 	 */
 	@Test
 	void isZero_ZeroTest()
 	{
 		TupsR t = mock(TupsR.class);
 		
-		when(t.isZero()).thenCallRealMethod();
+		when(t.isZero(s(2))).thenCallRealMethod();
 		
 		when(t.getDimensions()).thenReturn(2);
-		when(t.getByIndex(0)).thenReturn((short)0);
-		when(t.getByIndex(1)).thenReturn((short)0);
+		when(t.getByIndex(0)).thenReturn(s(0));
+		when(t.getByIndex(1)).thenReturn(s(0));
+
+		assertEquals(true, t.isZero(s(2)));
 		
-		assertEquals(true, t.isZero());
-		
-		verify(t).isZero();
+		verify(t).isZero(s(2));
 		
 		verify(t).getDimensions();
 		verify(t).getByIndex(0);
@@ -59,154 +191,24 @@ class TupsRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link TupsR#isZero()} returns false
-	 * after checking the first component, if the first component is a positive number
-	 * greater zero.
-	 */
-	@Test
-	void isZero_FailEarly_PositiveTest()
-	{
-		TupsR t = mock(TupsR.class);
-		
-		when(t.isZero()).thenCallRealMethod();
-		
-		when(t.getDimensions()).thenReturn(2);
-		when(t.getByIndex(0)).thenReturn((short)1);
-		
-		assertEquals(false, t.isZero());
-		
-		verify(t).isZero();
-
-		verify(t).getDimensions();
-		verify(t).getByIndex(0);
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link TupsR#isZero()} returns false
-	 * after checking the first component, if the first component is a negative number
-	 * greater zero.
-	 */
-	@Test
-	void isZero_FailEarly_NegativeTest()
-	{
-		TupsR t = mock(TupsR.class);
-		
-		when(t.isZero()).thenCallRealMethod();
-		
-		when(t.getDimensions()).thenReturn(2);
-		when(t.getByIndex(0)).thenReturn((short)-1);
-		
-		assertEquals(false, t.isZero());
-		
-		verify(t).isZero();
-
-		verify(t).getDimensions();
-		verify(t).getByIndex(0);
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link TupsR#isZero()} returns false
-	 * after checking all components, if only the last component is a positive number
-	 * greater zero.
-	 */
-	@Test
-	void isZero_Fail_PositiveTest()
-	{
-		TupsR t = mock(TupsR.class);
-		
-		when(t.isZero()).thenCallRealMethod();
-		
-		when(t.getDimensions()).thenReturn(2);
-		when(t.getByIndex(0)).thenReturn((short)0);
-		when(t.getByIndex(1)).thenReturn((short)1);
-		
-		assertEquals(false, t.isZero());
-		
-		verify(t).isZero();
-
-		verify(t).getDimensions();
-		verify(t).getByIndex(0);
-		verify(t).getByIndex(1);
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link TupsR#isZero()} returns false
-	 * after checking all components, if only the last component is a negative number
-	 * greater zero.
-	 */
-	@Test
-	void isZero_Fail_NTest()
-	{
-		TupsR t = mock(TupsR.class);
-		
-		when(t.isZero()).thenCallRealMethod();
-		
-		when(t.getDimensions()).thenReturn(2);
-		when(t.getByIndex(0)).thenReturn((short)0);
-		when(t.getByIndex(1)).thenReturn((short)-1);
-		
-		assertEquals(false, t.isZero());
-		
-		verify(t).isZero();
-
-		verify(t).getDimensions();
-		verify(t).getByIndex(0);
-		verify(t).getByIndex(1);
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link TupsR#isZeroWithMargin(short)} returns true,
-	 * if all components are exactly 0.0.
-	 */
-	@Test
-	void isZeroWithMargin_ZeroTest()
-	{
-		TupsR t = mock(TupsR.class);
-		
-		when(t.isZeroWithMargin((short)2)).thenCallRealMethod();
-		
-		when(t.getDimensions()).thenReturn(2);
-		when(t.getByIndex(0)).thenReturn((short)0);
-		when(t.getByIndex(1)).thenReturn((short)0);
-
-		assertEquals(true, t.isZeroWithMargin((short)2));
-		
-		verify(t).isZeroWithMargin((short)2);
-		
-		verify(t).getDimensions();
-		verify(t).getByIndex(0);
-		verify(t).getByIndex(1);
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link TupsR#isZeroWithMargin(short)} returns true,
+	 * This test ensures, that the function {@link TupsR#isZero(short)} returns true,
 	 * if all components are at the positive extreme point that is the inclusive
 	 * tolerance parameter.
 	 */
 	@Test
-	void isZeroWithMargin_Extreme_PositiveTest()
+	void isZero_Extreme_PositiveTest()
 	{
 		TupsR t = mock(TupsR.class);
 		
-		when(t.isZeroWithMargin((short)2)).thenCallRealMethod();
+		when(t.isZero(s(2))).thenCallRealMethod();
 		
 		when(t.getDimensions()).thenReturn(2);
-		when(t.getByIndex(0)).thenReturn((short)2);
-		when(t.getByIndex(1)).thenReturn((short)2);
+		when(t.getByIndex(0)).thenReturn(s(2));
+		when(t.getByIndex(1)).thenReturn(s(2));
 
-		assertEquals(true, t.isZeroWithMargin((short)2));
+		assertEquals(true, t.isZero(s(2)));
 		
-		verify(t).isZeroWithMargin((short)2);
+		verify(t).isZero(s(2));
 
 		verify(t).getDimensions();
 		verify(t).getByIndex(0);
@@ -216,24 +218,24 @@ class TupsRTest
 	}
 	
 		/**
-	 * This test ensures, that the function {@link TupsR#isZeroWithMargin(short)} returns true,
+	 * This test ensures, that the function {@link TupsR#isZero(short)} returns true,
 	 * if all components are at the negative extreme point that is the inclusive
 	 * tolerance parameter.
 	 */
 	@Test
-	void isZeroWithMargin_Extreme_NegativeTest()
+	void isZero_Extreme_NegativeTest()
 	{
 		TupsR t = mock(TupsR.class);
 		
-		when(t.isZeroWithMargin((short)2)).thenCallRealMethod();
+		when(t.isZero(s(2))).thenCallRealMethod();
 		
 		when(t.getDimensions()).thenReturn(2);
-		when(t.getByIndex(0)).thenReturn((short)-2);
-		when(t.getByIndex(1)).thenReturn((short)-2);
+		when(t.getByIndex(0)).thenReturn(s(-2));
+		when(t.getByIndex(1)).thenReturn(s(-2));
 
-		assertEquals(true, t.isZeroWithMargin((short)2));
+		assertEquals(true, t.isZero(s(2)));
 		
-		verify(t).isZeroWithMargin((short)2);
+		verify(t).isZero(s(2));
 
 		verify(t).getDimensions();
 		verify(t).getByIndex(0);
@@ -243,23 +245,23 @@ class TupsRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link TupsR#isZeroWithMargin(short)} returns false
+	 * This test ensures, that the function {@link TupsR#isZero(short)} returns false
 	 * after checking the first component, if the first component exceeds the positive
 	 * extreme point that is the inclusive tolerance parameter.
 	 */
 	@Test
-	void isZeroWithMargin_FailEarly_PositiveTest()
+	void isZero_FailEarly_PositiveTest()
 	{
 		TupsR t = mock(TupsR.class);
 		
-		when(t.isZeroWithMargin((short)2)).thenCallRealMethod();
+		when(t.isZero(s(2))).thenCallRealMethod();
 		
 		when(t.getDimensions()).thenReturn(2);
-		when(t.getByIndex(0)).thenReturn((short)3);
+		when(t.getByIndex(0)).thenReturn(s(3));
 
-		assertEquals(false, t.isZeroWithMargin((short)2));
+		assertEquals(false, t.isZero(s(2)));
 		
-		verify(t).isZeroWithMargin((short)2);
+		verify(t).isZero(s(2));
 
 		verify(t).getDimensions();
 		verify(t).getByIndex(0);
@@ -268,23 +270,23 @@ class TupsRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link TupsR#isZeroWithMargin(short)} returns false
+	 * This test ensures, that the function {@link TupsR#isZero(short)} returns false
 	 * after checking the first component, if the first component exceeds the negative
 	 * extreme point that is the inclusive tolerance parameter.
 	 */
 	@Test
-	void isZeroWithMargin_FailEarly_NegativeTest()
+	void isZero_FailEarly_NegativeTest()
 	{
 		TupsR t = mock(TupsR.class);
 		
-		when(t.isZeroWithMargin((short)2)).thenCallRealMethod();
+		when(t.isZero(s(2))).thenCallRealMethod();
 		
 		when(t.getDimensions()).thenReturn(2);
-		when(t.getByIndex(0)).thenReturn((short)-3);
+		when(t.getByIndex(0)).thenReturn(s(-3));
 
-		assertEquals(false, t.isZeroWithMargin((short)2));
+		assertEquals(false, t.isZero(s(2)));
 		
-		verify(t).isZeroWithMargin((short)2);
+		verify(t).isZero(s(2));
 
 		verify(t).getDimensions();
 		verify(t).getByIndex(0);
@@ -293,24 +295,24 @@ class TupsRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link TupsR#isZeroWithMargin(short)} returns false
+	 * This test ensures, that the function {@link TupsR#isZero(short)} returns false
 	 * after checking all components, if only the last component exceeds the positive
 	 * extreme point that is the inclusive tolerance parameter.
 	 */
 	@Test
-	void isZeroWithMargin_Fail_PositiveTest()
+	void isZero_Fail_PositiveTest()
 	{
 		TupsR t = mock(TupsR.class);
 		
-		when(t.isZeroWithMargin((short)2)).thenCallRealMethod();
+		when(t.isZero(s(2))).thenCallRealMethod();
 		
 		when(t.getDimensions()).thenReturn(2);
-		when(t.getByIndex(0)).thenReturn((short)0);
-		when(t.getByIndex(1)).thenReturn((short)3);
+		when(t.getByIndex(0)).thenReturn(s(0));
+		when(t.getByIndex(1)).thenReturn(s(3));
 
-		assertEquals(false, t.isZeroWithMargin((short)2));
+		assertEquals(false, t.isZero(s(2)));
 		
-		verify(t).isZeroWithMargin((short)2);
+		verify(t).isZero(s(2));
 
 		verify(t).getDimensions();
 		verify(t).getByIndex(0);
@@ -320,24 +322,24 @@ class TupsRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link TupsR#isZeroWithMargin(short)} returns false
+	 * This test ensures, that the function {@link TupsR#isZero(short)} returns false
 	 * after checking all components, if only the last component exceeds the negative
 	 * extreme point that is the inclusive tolerance parameter.
 	 */
 	@Test
-	void isZeroWithMargin_Fail_NegativeTest()
+	void isZero_Fail_NegativeTest()
 	{
 		TupsR t = mock(TupsR.class);
 		
-		when(t.isZeroWithMargin((short)2)).thenCallRealMethod();
+		when(t.isZero(s(2))).thenCallRealMethod();
 		
 		when(t.getDimensions()).thenReturn(2);
-		when(t.getByIndex(0)).thenReturn((short)0);
-		when(t.getByIndex(1)).thenReturn((short)-3);
+		when(t.getByIndex(0)).thenReturn(s(0));
+		when(t.getByIndex(1)).thenReturn(s(-3));
 
-		assertEquals(false, t.isZeroWithMargin((short)2));
+		assertEquals(false, t.isZero(s(2)));
 		
-		verify(t).isZeroWithMargin((short)2);
+		verify(t).isZero(s(2));
 
 		verify(t).getDimensions();
 		verify(t).getByIndex(0);
@@ -347,7 +349,7 @@ class TupsRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link TupsR#getArray()} calls
+	 * This test ensures, that the function {@link TupsR#toArray()} calls
 	 * the function {@link TupsR#toArray(short[])} with a new array with the size
 	 * equal to the number of dimensions of the tuple.
 	 */

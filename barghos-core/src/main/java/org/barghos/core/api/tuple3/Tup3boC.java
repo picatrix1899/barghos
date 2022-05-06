@@ -122,6 +122,15 @@ public interface Tup3boC extends Tup3boR, TupboC
 		return setArray(t.toArray());
 	}
 	
+	/** {@inheritDoc}} */
+	@Override
+	Tup3boC shallowClone();
+	
+	/** {@inheritDoc}} */
+	@Override
+	Tup3boC deepClone();
+	
 	/** {@inheritDoc} */
+	@Override
 	Tup3boC clone();
 }

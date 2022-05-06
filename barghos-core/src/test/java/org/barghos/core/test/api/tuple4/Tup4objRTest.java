@@ -171,7 +171,7 @@ class Tup4objRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4objR#getArray(Object[])} returns
+	 * This test ensures, that the function {@link Tup4objR#toArray(Object[])} returns
 	 * the given array with the components in the right order.
 	 */
 	@Test

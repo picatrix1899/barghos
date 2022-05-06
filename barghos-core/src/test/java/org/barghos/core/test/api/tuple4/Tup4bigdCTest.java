@@ -8,6 +8,8 @@ import org.junit.jupiter.api.function.Executable;
 
 import java.math.BigDecimal;
 
+import static org.barghos.core.api.testing.TestObjectFactory.*;
+
 import org.barghos.core.api.tuple.TupbigdC;
 import org.barghos.core.api.tuple.TupbigdR;
 import org.barghos.core.api.tuple4.Tup4bigdC;
@@ -50,11 +52,11 @@ class Tup4bigdCTest
 		
 		when(t.set(t2)).thenCallRealMethod();
 		
-		when(t2.getX()).thenReturn(BigDecimal.ONE);
-		when(t2.getY()).thenReturn(BigDecimal.valueOf(2));
-		when(t2.getZ()).thenReturn(BigDecimal.valueOf(3));
-		when(t2.getW()).thenReturn(BigDecimal.valueOf(4));
-		when(t.set(BigDecimal.ONE, BigDecimal.valueOf(2), BigDecimal.valueOf(3), BigDecimal.valueOf(4))).thenReturn(t);
+		when(t2.getX()).thenReturn(bigd(1));
+		when(t2.getY()).thenReturn(bigd(2));
+		when(t2.getZ()).thenReturn(bigd(3));
+		when(t2.getW()).thenReturn(bigd(4));
+		when(t.set(bigd(1), bigd(2), bigd(3), bigd(4))).thenReturn(t);
 		
 		assertSame(t, t.set(t2));
 		
@@ -64,7 +66,7 @@ class Tup4bigdCTest
 		verify(t2).getY();
 		verify(t2).getZ();
 		verify(t2).getW();
-		verify(t).set(BigDecimal.ONE, BigDecimal.valueOf(2), BigDecimal.valueOf(3), BigDecimal.valueOf(4));
+		verify(t).set(bigd(1), bigd(2), bigd(3), bigd(4));
 		
 		verifyNoMoreInteractions(t, t2);
 	}
@@ -78,15 +80,15 @@ class Tup4bigdCTest
 	{
 		Tup4bigdC t = mock(Tup4bigdC.class);
 		
-		when(t.set(BigDecimal.ONE)).thenCallRealMethod();
+		when(t.set(bigd(1))).thenCallRealMethod();
 		
-		when(t.set(BigDecimal.ONE, BigDecimal.ONE, BigDecimal.ONE, BigDecimal.ONE)).thenReturn(t);
+		when(t.set(bigd(1), bigd(1), bigd(1), bigd(1))).thenReturn(t);
 		
-		assertSame(t, t.set(BigDecimal.ONE));
+		assertSame(t, t.set(bigd(1)));
 		
-		verify(t).set(BigDecimal.ONE);
+		verify(t).set(bigd(1));
 
-		verify(t).set(BigDecimal.ONE, BigDecimal.ONE, BigDecimal.ONE, BigDecimal.ONE);
+		verify(t).set(bigd(1), bigd(1), bigd(1), bigd(1));
 		
 		verifyNoMoreInteractions(t);
 	}
@@ -100,21 +102,21 @@ class Tup4bigdCTest
 	{
 		Tup4bigdC t = mock(Tup4bigdC.class);
 		
-		when(t.set(BigDecimal.ONE, BigDecimal.valueOf(2), BigDecimal.valueOf(3), BigDecimal.valueOf(4))).thenCallRealMethod();
+		when(t.set(bigd(1), bigd(2), bigd(3), bigd(4))).thenCallRealMethod();
 		
-		when(t.setX(BigDecimal.ONE)).thenReturn(t);
-		when(t.setY(BigDecimal.valueOf(2))).thenReturn(t);
-		when(t.setZ(BigDecimal.valueOf(3))).thenReturn(t);
-		when(t.setW(BigDecimal.valueOf(4))).thenReturn(t);
+		when(t.setX(bigd(1))).thenReturn(t);
+		when(t.setY(bigd(2))).thenReturn(t);
+		when(t.setZ(bigd(3))).thenReturn(t);
+		when(t.setW(bigd(4))).thenReturn(t);
 		
-		assertSame(t, t.set(BigDecimal.ONE, BigDecimal.valueOf(2), BigDecimal.valueOf(3), BigDecimal.valueOf(4)));
+		assertSame(t, t.set(bigd(1), bigd(2), bigd(3), bigd(4)));
 		
-		verify(t).set(BigDecimal.ONE, BigDecimal.valueOf(2), BigDecimal.valueOf(3), BigDecimal.valueOf(4));
+		verify(t).set(bigd(1), bigd(2), bigd(3), bigd(4));
 
-		verify(t).setX(BigDecimal.ONE);
-		verify(t).setY(BigDecimal.valueOf(2));
-		verify(t).setZ(BigDecimal.valueOf(3));
-		verify(t).setW(BigDecimal.valueOf(4));
+		verify(t).setX(bigd(1));
+		verify(t).setY(bigd(2));
+		verify(t).setZ(bigd(3));
+		verify(t).setW(bigd(4));
 		
 		verifyNoMoreInteractions(t);
 	}
@@ -131,15 +133,15 @@ class Tup4bigdCTest
 		
 		when(t.set(t2)).thenCallRealMethod();
 		
-		when(t2.toArray()).thenReturn(new BigDecimal[] {BigDecimal.ONE, BigDecimal.valueOf(2), BigDecimal.valueOf(3), BigDecimal.valueOf(4)});
-		when(t.setArray(new BigDecimal[] {BigDecimal.ONE, BigDecimal.valueOf(2), BigDecimal.valueOf(3), BigDecimal.valueOf(4)})).thenReturn(t);
+		when(t2.toArray()).thenReturn(bigdArray(1, 2, 3, 4));
+		when(t.setArray(bigdArray(1, 2, 3, 4))).thenReturn(t);
 
 		assertSame(t, t.set(t2));
 		
 		verify(t).set(t2);
 		
 		verify(t2).toArray();
-		verify(t).setArray(new BigDecimal[] {BigDecimal.ONE, BigDecimal.valueOf(2), BigDecimal.valueOf(3), BigDecimal.valueOf(4)});
+		verify(t).setArray(bigdArray(1, 2, 3, 4));
 
 		verifyNoMoreInteractions(t);
 	}
@@ -153,15 +155,15 @@ class Tup4bigdCTest
 	{
 		Tup4bigdC t = mock(Tup4bigdC.class);
 		
-		when(t.setArray(new BigDecimal[] {BigDecimal.ONE, BigDecimal.valueOf(2), BigDecimal.valueOf(3), BigDecimal.valueOf(4)})).thenCallRealMethod();
+		when(t.setArray(new BigDecimal[] {bigd(1), bigd(2), bigd(3), bigd(4)})).thenCallRealMethod();
 		
-		when(t.set(BigDecimal.ONE, BigDecimal.valueOf(2), BigDecimal.valueOf(3), BigDecimal.valueOf(4))).thenReturn(t);
+		when(t.set(bigd(1), bigd(2), bigd(3), bigd(4))).thenReturn(t);
 		
-		assertSame(t, t.setArray(new BigDecimal[] {BigDecimal.ONE, BigDecimal.valueOf(2), BigDecimal.valueOf(3), BigDecimal.valueOf(4)}));
+		assertSame(t, t.setArray(new BigDecimal[] {bigd(1), bigd(2), bigd(3), bigd(4)}));
 		
-		verify(t).setArray(new BigDecimal[] {BigDecimal.ONE, BigDecimal.valueOf(2), BigDecimal.valueOf(3), BigDecimal.valueOf(4)});
+		verify(t).setArray(new BigDecimal[] {bigd(1), bigd(2), bigd(3), bigd(4)});
 		
-		verify(t).set(BigDecimal.ONE, BigDecimal.valueOf(2), BigDecimal.valueOf(3), BigDecimal.valueOf(4));
+		verify(t).set(bigd(1), bigd(2), bigd(3), bigd(4));
 		
 		verifyNoMoreInteractions(t);
 	}
@@ -175,15 +177,15 @@ class Tup4bigdCTest
 	{
 		Tup4bigdC t = mock(Tup4bigdC.class);
 		
-		when(t.setByIndex(0, BigDecimal.ONE)).thenCallRealMethod();
+		when(t.setByIndex(0, bigd(1))).thenCallRealMethod();
 		
-		when(t.setX(BigDecimal.ONE)).thenReturn(t);
+		when(t.setX(bigd(1))).thenReturn(t);
 		
-		assertSame(t, t.setByIndex(0, BigDecimal.ONE));
+		assertSame(t, t.setByIndex(0, bigd(1)));
 		
-		verify(t).setByIndex(0, BigDecimal.ONE);
+		verify(t).setByIndex(0, bigd(1));
 		
-		verify(t).setX(BigDecimal.ONE);
+		verify(t).setX(bigd(1));
 		
 		verifyNoMoreInteractions(t);
 	}
@@ -197,15 +199,15 @@ class Tup4bigdCTest
 	{
 		Tup4bigdC t = mock(Tup4bigdC.class);
 		
-		when(t.setByIndex(1, BigDecimal.ONE)).thenCallRealMethod();
+		when(t.setByIndex(1, bigd(1))).thenCallRealMethod();
 		
-		when(t.setY(BigDecimal.ONE)).thenReturn(t);
+		when(t.setY(bigd(1))).thenReturn(t);
 		
-		assertSame(t, t.setByIndex(1, BigDecimal.ONE));
+		assertSame(t, t.setByIndex(1, bigd(1)));
 		
-		verify(t).setByIndex(1, BigDecimal.ONE);
+		verify(t).setByIndex(1, bigd(1));
 		
-		verify(t).setY(BigDecimal.ONE);
+		verify(t).setY(bigd(1));
 		
 		verifyNoMoreInteractions(t);
 	}
@@ -219,15 +221,15 @@ class Tup4bigdCTest
 	{
 		Tup4bigdC t = mock(Tup4bigdC.class);
 		
-		when(t.setByIndex(2, BigDecimal.ONE)).thenCallRealMethod();
+		when(t.setByIndex(2, bigd(1))).thenCallRealMethod();
 		
-		when(t.setZ(BigDecimal.ONE)).thenReturn(t);
+		when(t.setZ(bigd(1))).thenReturn(t);
 		
-		assertSame(t, t.setByIndex(2, BigDecimal.ONE));
+		assertSame(t, t.setByIndex(2, bigd(1)));
 		
-		verify(t).setByIndex(2, BigDecimal.ONE);
+		verify(t).setByIndex(2, bigd(1));
 		
-		verify(t).setZ(BigDecimal.ONE);
+		verify(t).setZ(bigd(1));
 		
 		verifyNoMoreInteractions(t);
 	}
@@ -241,15 +243,15 @@ class Tup4bigdCTest
 	{
 		Tup4bigdC t = mock(Tup4bigdC.class);
 		
-		when(t.setByIndex(3, BigDecimal.ONE)).thenCallRealMethod();
+		when(t.setByIndex(3, bigd(1))).thenCallRealMethod();
 		
-		when(t.setW(BigDecimal.ONE)).thenReturn(t);
+		when(t.setW(bigd(1))).thenReturn(t);
 		
-		assertSame(t, t.setByIndex(3, BigDecimal.ONE));
+		assertSame(t, t.setByIndex(3, bigd(1)));
 		
-		verify(t).setByIndex(3, BigDecimal.ONE);
+		verify(t).setByIndex(3, bigd(1));
 		
-		verify(t).setW(BigDecimal.ONE);
+		verify(t).setW(bigd(1));
 		
 		verifyNoMoreInteractions(t);
 	}
@@ -263,16 +265,16 @@ class Tup4bigdCTest
 	{
 		Tup4bigdC t = mock(Tup4bigdC.class);
 		
-		when(t.setByIndex(4, BigDecimal.ONE)).thenCallRealMethod();
+		when(t.setByIndex(4, bigd(1))).thenCallRealMethod();
 
 		assertThrows(IndexOutOfBoundsException.class, new Executable() {
 			public void execute() throws Throwable
 			{
-				t.setByIndex(4, BigDecimal.ONE);
+				t.setByIndex(4, bigd(1));
 			}
 		});
 		
-		verify(t).setByIndex(4, BigDecimal.ONE);
+		verify(t).setByIndex(4, bigd(1));
 
 		verifyNoMoreInteractions(t);
 	}

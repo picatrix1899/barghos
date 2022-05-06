@@ -58,7 +58,7 @@ public interface Tup2lR extends TuplR
 	 * @return True if all components are exactly zero.
 	 */
 	@Override
-	default boolean isZero()
+	default boolean isExactlyZero()
 	{
 		return getX() == 0l &&
 				getY() == 0l;
@@ -72,7 +72,7 @@ public interface Tup2lR extends TuplR
 	 * @return True if all components are technically zero.
 	 */
 	@Override
-	default boolean isZeroWithMargin(long tolerance)
+	default boolean isZero(long tolerance)
 	{
 		return Math.abs(getX()) <= tolerance &&
 				Math.abs(getY()) <= tolerance;
@@ -106,30 +106,5 @@ public interface Tup2lR extends TuplR
 		res[COMP_Y] = getY();
 		
 		return res;
-	}
-	
-	/**
-	 * Creates a new anonymous implementation instance of the interface {@link Tup2lR} with the given values.
-	 * As the resulting instance is just a minimal implementation of the interface it does not provide clone,
-	 * equals, hashCode or toString operations.
-	 * 
-	 * @param x The value of the x component.
-	 * @param y The value of the y component.
-	 * 
-	 * @return The anonymous implementation instance.
-	 */
-	public static Tup2lR of(final long x, final long y)
-	{
-		return new Tup2lR() {
-			public long getX()
-			{
-				return x;
-			}
-
-			public long getY()
-			{
-				return y;
-			}
-		};
 	}
 }

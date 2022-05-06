@@ -25,6 +25,9 @@ package org.barghos.core.api.tuple2;
 /**
  * This interface represents any modifiable 2-dimensional object tuple.
  * 
+ * @param <X> The type of the x component.
+ * @param <Y> The type of the y component.
+ * 
  * @author picatrix1899
  */
 public interface Tup2oC<X,Y> extends Tup2oR<X,Y>

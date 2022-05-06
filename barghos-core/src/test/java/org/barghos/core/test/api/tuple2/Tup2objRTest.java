@@ -114,11 +114,11 @@ class Tup2objRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup2objR#getArray(Object[])} returns
+	 * This test ensures, that the function {@link Tup2objR#toArray(Object[])} returns
 	 * the given array with the components in the right order.
 	 */
 	@Test
-	void toArray_QueryTest()
+	void toArray_ExtractParamTest()
 	{
 		Tup2objR t = mock(Tup2objR.class);
 		

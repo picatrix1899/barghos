@@ -6,6 +6,8 @@ import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
+import static org.barghos.core.api.testing.TestObjectFactory.*;
+
 import org.barghos.core.api.tuple.TupbR;
 import org.barghos.core.api.tuple3.Tup3bR;
 
@@ -44,95 +46,121 @@ class Tup3bRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup3bR#isZero()} returns true,
+	 * This test ensures, that the function {@link Tup3bR#isExactlyZero()} returns true,
 	 * if all of the components are exactly zero.
+	 */
+	@Test
+	void isExactlyZero_ZeroTest()
+	{
+		Tup3bR t = mock(Tup3bR.class);
+		
+		when(t.isExactlyZero()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(b(0));
+		when(t.getY()).thenReturn(b(0));
+		when(t.getZ()).thenReturn(b(0));
+		
+		assertEquals(true, t.isExactlyZero());
+		
+		verify(t).isExactlyZero();
+		
+		verify(t).getX();
+		verify(t).getY();
+		verify(t).getZ();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup3bR#isExactlyZero()} returns false,
+	 * if the x component is not zero.
+	 */
+	@Test
+	void isExactlyZero_Fail_XTest()
+	{
+		Tup3bR t = mock(Tup3bR.class);
+		
+		when(t.isExactlyZero()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(b(1));
+		
+		assertEquals(false, t.isExactlyZero());
+		
+		verify(t).isExactlyZero();
+		
+		verify(t).getX();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup3bR#isExactlyZero()} returns false,
+	 * if the y component is not zero.
+	 */
+	@Test
+	void isExactlyZero_Fail_YTest()
+	{
+		Tup3bR t = mock(Tup3bR.class);
+		
+		when(t.isExactlyZero()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(b(0));
+		when(t.getY()).thenReturn(b(1));
+		
+		assertEquals(false, t.isExactlyZero());
+		
+		verify(t).isExactlyZero();
+		
+		verify(t).getX();
+		verify(t).getY();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup3bR#isExactlyZero()} returns false,
+	 * if the z component is not zero.
+	 */
+	@Test
+	void isExactlyZero_Fail_ZTest()
+	{
+		Tup3bR t = mock(Tup3bR.class);
+		
+		when(t.isExactlyZero()).thenCallRealMethod();
+		
+		when(t.getX()).thenReturn(b(0));
+		when(t.getY()).thenReturn(b(0));
+		when(t.getZ()).thenReturn(b(1));
+		
+		assertEquals(false, t.isExactlyZero());
+		
+		verify(t).isExactlyZero();
+		
+		verify(t).getX();
+		verify(t).getY();
+		verify(t).getZ();
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup3bR#isZero(byte)} returns true,
+	 * if all components are exactly zero.
 	 */
 	@Test
 	void isZero_ZeroTest()
 	{
 		Tup3bR t = mock(Tup3bR.class);
 		
-		when(t.isZero()).thenCallRealMethod();
+		when(t.isZero(b(2))).thenCallRealMethod();
 		
-		when(t.getX()).thenReturn((byte)0);
-		when(t.getY()).thenReturn((byte)0);
-		when(t.getZ()).thenReturn((byte)0);
+		when(t.getX()).thenReturn(b(0));
+		when(t.getY()).thenReturn(b(0));
+		when(t.getZ()).thenReturn(b(0));
 		
-		assertEquals(true, t.isZero());
+		assertEquals(true, t.isZero(b(2)));
 		
-		verify(t).isZero();
-		
-		verify(t).getX();
-		verify(t).getY();
-		verify(t).getZ();
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup3bR#isZero()} returns false,
-	 * if the x component is not zero.
-	 */
-	@Test
-	void isZero_Fail_XTest()
-	{
-		Tup3bR t = mock(Tup3bR.class);
-		
-		when(t.isZero()).thenCallRealMethod();
-		
-		when(t.getX()).thenReturn((byte)1);
-		
-		assertEquals(false, t.isZero());
-		
-		verify(t).isZero();
-		
-		verify(t).getX();
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup3bR#isZero()} returns false,
-	 * if the y component is not zero.
-	 */
-	@Test
-	void isZero_Fail_YTest()
-	{
-		Tup3bR t = mock(Tup3bR.class);
-		
-		when(t.isZero()).thenCallRealMethod();
-		
-		when(t.getX()).thenReturn((byte)0);
-		when(t.getY()).thenReturn((byte)1);
-		
-		assertEquals(false, t.isZero());
-		
-		verify(t).isZero();
-		
-		verify(t).getX();
-		verify(t).getY();
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup3bR#isZero()} returns false,
-	 * if the z component is not zero.
-	 */
-	@Test
-	void isZero_Fail_ZTest()
-	{
-		Tup3bR t = mock(Tup3bR.class);
-		
-		when(t.isZero()).thenCallRealMethod();
-		
-		when(t.getX()).thenReturn((byte)0);
-		when(t.getY()).thenReturn((byte)0);
-		when(t.getZ()).thenReturn((byte)1);
-		
-		assertEquals(false, t.isZero());
-		
-		verify(t).isZero();
+		verify(t).isZero(b(2));
 		
 		verify(t).getX();
 		verify(t).getY();
@@ -142,50 +170,24 @@ class Tup3bRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup3bR#isZeroWithMargin(byte)} returns true,
-	 * if all components are exactly zero.
-	 */
-	@Test
-	void isZeroWithMargin_ZeroTest()
-	{
-		Tup3bR t = mock(Tup3bR.class);
-		
-		when(t.isZeroWithMargin((byte)2)).thenCallRealMethod();
-		
-		when(t.getX()).thenReturn((byte)0);
-		when(t.getY()).thenReturn((byte)0);
-		when(t.getZ()).thenReturn((byte)0);
-		
-		assertEquals(true, t.isZeroWithMargin((byte)2));
-		
-		verify(t).isZeroWithMargin((byte)2);
-		
-		verify(t).getX();
-		verify(t).getY();
-		verify(t).getZ();
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link Tup3bR#isZeroWithMargin(byte)} returns true,
+	 * This test ensures, that the function {@link Tup3bR#isZero(byte)} returns true,
 	 * if all components are at the positive extreme point that is the inclusive
 	 * tolerance parameter.
 	 */
 	@Test
-	void isZeroWithMargin_Extreme_PositiveTest()
+	void isZero_Extreme_PositiveTest()
 	{
 		Tup3bR t = mock(Tup3bR.class);
 		
-		when(t.isZeroWithMargin((byte)2)).thenCallRealMethod();
+		when(t.isZero(b(2))).thenCallRealMethod();
 		
-		when(t.getX()).thenReturn((byte)2);
-		when(t.getY()).thenReturn((byte)2);
-		when(t.getZ()).thenReturn((byte)2);
+		when(t.getX()).thenReturn(b(2));
+		when(t.getY()).thenReturn(b(2));
+		when(t.getZ()).thenReturn(b(2));
 		
-		assertEquals(true, t.isZeroWithMargin((byte)2));
+		assertEquals(true, t.isZero(b(2)));
 		
-		verify(t).isZeroWithMargin((byte)2);
+		verify(t).isZero(b(2));
 		
 		verify(t).getX();
 		verify(t).getY();
@@ -195,24 +197,24 @@ class Tup3bRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup3bR#isZeroWithMargin(byte)} returns true,
+	 * This test ensures, that the function {@link Tup3bR#isZero(byte)} returns true,
 	 * if all components are at the negative extreme point that is the inclusive
 	 * tolerance parameter.
 	 */
 	@Test
-	void isZeroWithMargin_Extreme_NegativeTest()
+	void isZero_Extreme_NegativeTest()
 	{
 		Tup3bR t = mock(Tup3bR.class);
 		
-		when(t.isZeroWithMargin((byte)2)).thenCallRealMethod();
+		when(t.isZero(b(2))).thenCallRealMethod();
 		
-		when(t.getX()).thenReturn((byte)-2);
-		when(t.getY()).thenReturn((byte)-2);
-		when(t.getZ()).thenReturn((byte)-2);
+		when(t.getX()).thenReturn(b(-2));
+		when(t.getY()).thenReturn(b(-2));
+		when(t.getZ()).thenReturn(b(-2));
 		
-		assertEquals(true, t.isZeroWithMargin((byte)2));
+		assertEquals(true, t.isZero(b(2)));
 		
-		verify(t).isZeroWithMargin((byte)2);
+		verify(t).isZero(b(2));
 		
 		verify(t).getX();
 		verify(t).getY();
@@ -222,22 +224,22 @@ class Tup3bRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup3bR#isZeroWithMargin(byte)} returns false,
+	 * This test ensures, that the function {@link Tup3bR#isZero(byte)} returns false,
 	 * if the x component exceeds the positive extreme point that is the inclusive
 	 * tolerance parameter.
 	 */
 	@Test
-	void isZeroWithMargin_Fail_X_PositiveTest()
+	void isZero_Fail_X_PositiveTest()
 	{
 		Tup3bR t = mock(Tup3bR.class);
 		
-		when(t.isZeroWithMargin((byte)2)).thenCallRealMethod();
+		when(t.isZero(b(2))).thenCallRealMethod();
 		
-		when(t.getX()).thenReturn((byte)3);
+		when(t.getX()).thenReturn(b(3));
 		
-		assertEquals(false, t.isZeroWithMargin((byte)2));
+		assertEquals(false, t.isZero(b(2)));
 		
-		verify(t).isZeroWithMargin((byte)2);
+		verify(t).isZero(b(2));
 		
 		verify(t).getX();
 		
@@ -245,22 +247,22 @@ class Tup3bRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup3bR#isZeroWithMargin(byte)} returns false,
+	 * This test ensures, that the function {@link Tup3bR#isZero(byte)} returns false,
 	 * if the x component exceeds the negative extreme point that is the inclusive
 	 * tolerance parameter.
 	 */
 	@Test
-	void isZeroWithMargin_Fail_X_NegativeTest()
+	void isZero_Fail_X_NegativeTest()
 	{
 		Tup3bR t = mock(Tup3bR.class);
 		
-		when(t.isZeroWithMargin((byte)2)).thenCallRealMethod();
+		when(t.isZero(b(2))).thenCallRealMethod();
 		
-		when(t.getX()).thenReturn((byte)-3);
+		when(t.getX()).thenReturn(b(-3));
 		
-		assertEquals(false, t.isZeroWithMargin((byte)2));
+		assertEquals(false, t.isZero(b(2)));
 		
-		verify(t).isZeroWithMargin((byte)2);
+		verify(t).isZero(b(2));
 		
 		verify(t).getX();
 		
@@ -268,23 +270,23 @@ class Tup3bRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup3bR#isZeroWithMargin(byte)} returns false,
+	 * This test ensures, that the function {@link Tup3bR#isZero(byte)} returns false,
 	 * if the y component exceeds the positive extreme point that is the inclusive
 	 * tolerance parameter.
 	 */
 	@Test
-	void isZeroWithMargin_Fail_Y_PositiveTest()
+	void isZero_Fail_Y_PositiveTest()
 	{
 		Tup3bR t = mock(Tup3bR.class);
 		
-		when(t.isZeroWithMargin((byte)2)).thenCallRealMethod();
+		when(t.isZero(b(2))).thenCallRealMethod();
 		
-		when(t.getX()).thenReturn((byte)0);
-		when(t.getY()).thenReturn((byte)3);
+		when(t.getX()).thenReturn(b(0));
+		when(t.getY()).thenReturn(b(3));
 		
-		assertEquals(false, t.isZeroWithMargin((byte)2));
+		assertEquals(false, t.isZero(b(2)));
 		
-		verify(t).isZeroWithMargin((byte)2);
+		verify(t).isZero(b(2));
 		
 		verify(t).getX();
 		verify(t).getY();
@@ -293,23 +295,23 @@ class Tup3bRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup3bR#isZeroWithMargin(byte)} returns false,
+	 * This test ensures, that the function {@link Tup3bR#isZero(byte)} returns false,
 	 * if the y component exceeds the positive extreme point that is the inclusive
 	 * tolerance parameter.
 	 */
 	@Test
-	void isZeroWithMargin_Fail_Y_NegativeTest()
+	void isZero_Fail_Y_NegativeTest()
 	{
 		Tup3bR t = mock(Tup3bR.class);
 		
-		when(t.isZeroWithMargin((byte)2)).thenCallRealMethod();
+		when(t.isZero(b(2))).thenCallRealMethod();
 		
-		when(t.getX()).thenReturn((byte)0);
-		when(t.getY()).thenReturn((byte)-3);
+		when(t.getX()).thenReturn(b(0));
+		when(t.getY()).thenReturn(b(-3));
 		
-		assertEquals(false, t.isZeroWithMargin((byte)2));
+		assertEquals(false, t.isZero(b(2)));
 		
-		verify(t).isZeroWithMargin((byte)2);
+		verify(t).isZero(b(2));
 		
 		verify(t).getX();
 		verify(t).getY();
@@ -318,24 +320,24 @@ class Tup3bRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup3bR#isZeroWithMargin(byte)} returns false,
+	 * This test ensures, that the function {@link Tup3bR#isZero(byte)} returns false,
 	 * if the z component exceeds the positive extreme point that is the inclusive
 	 * tolerance parameter.
 	 */
 	@Test
-	void isZeroWithMargin_Fail_Z_PositiveTest()
+	void isZero_Fail_Z_PositiveTest()
 	{
 		Tup3bR t = mock(Tup3bR.class);
 		
-		when(t.isZeroWithMargin((byte)2)).thenCallRealMethod();
+		when(t.isZero(b(2))).thenCallRealMethod();
 		
-		when(t.getX()).thenReturn((byte)0);
-		when(t.getY()).thenReturn((byte)0);
-		when(t.getZ()).thenReturn((byte)3);
+		when(t.getX()).thenReturn(b(0));
+		when(t.getY()).thenReturn(b(0));
+		when(t.getZ()).thenReturn(b(3));
 		
-		assertEquals(false, t.isZeroWithMargin((byte)2));
+		assertEquals(false, t.isZero(b(2)));
 		
-		verify(t).isZeroWithMargin((byte)2);
+		verify(t).isZero(b(2));
 		
 		verify(t).getX();
 		verify(t).getY();
@@ -345,24 +347,24 @@ class Tup3bRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup3bR#isZeroWithMargin(byte)} returns false,
+	 * This test ensures, that the function {@link Tup3bR#isZero(byte)} returns false,
 	 * if the z component exceeds the positive extreme point that is the inclusive
 	 * tolerance parameter.
 	 */
 	@Test
-	void isZeroWithMargin_Fail_Z_NegativeTest()
+	void isZero_Fail_Z_NegativeTest()
 	{
 		Tup3bR t = mock(Tup3bR.class);
 		
-		when(t.isZeroWithMargin((byte)2)).thenCallRealMethod();
+		when(t.isZero(b(2))).thenCallRealMethod();
 		
-		when(t.getX()).thenReturn((byte)0);
-		when(t.getY()).thenReturn((byte)0);
-		when(t.getZ()).thenReturn((byte)-3);
+		when(t.getX()).thenReturn(b(0));
+		when(t.getY()).thenReturn(b(0));
+		when(t.getZ()).thenReturn(b(-3));
 		
-		assertEquals(false, t.isZeroWithMargin((byte)2));
+		assertEquals(false, t.isZero(b(2)));
 		
-		verify(t).isZeroWithMargin((byte)2);
+		verify(t).isZero(b(2));
 		
 		verify(t).getX();
 		verify(t).getY();
@@ -372,7 +374,7 @@ class Tup3bRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup3bR#getArray(byte[])} returns
+	 * This test ensures, that the function {@link Tup3bR#toArray(byte[])} returns
 	 * the given array with the components in the right order.
 	 */
 	@Test
@@ -384,12 +386,12 @@ class Tup3bRTest
 		
 		when(t.toArray(array)).thenCallRealMethod();
 		
-		when(t.getX()).thenReturn((byte)1);
-		when(t.getY()).thenReturn((byte)2);
-		when(t.getZ()).thenReturn((byte)3);
+		when(t.getX()).thenReturn(b(1));
+		when(t.getY()).thenReturn(b(2));
+		when(t.getZ()).thenReturn(b(3));
 		
 		assertSame(array, t.toArray(array));
-		assertArrayEquals(new byte[] {(byte)1, (byte)2, (byte)3}, array);
+		assertArrayEquals(bArray(1, 2, 3), array);
 		
 		verify(t).toArray(array);
 		
@@ -411,9 +413,9 @@ class Tup3bRTest
 		
 		when(t.getByIndex(0)).thenCallRealMethod();
 		
-		when(t.getX()).thenReturn((byte)1);
+		when(t.getX()).thenReturn(b(1));
 		
-		assertEquals((byte)1, t.getByIndex(0));
+		assertEquals(b(1), t.getByIndex(0));
 
 		verify(t).getByIndex(0);
 		
@@ -433,9 +435,9 @@ class Tup3bRTest
 		
 		when(t.getByIndex(1)).thenCallRealMethod();
 		
-		when(t.getY()).thenReturn((byte)1);
+		when(t.getY()).thenReturn(b(1));
 		
-		assertEquals((byte)1, t.getByIndex(1));
+		assertEquals(b(1), t.getByIndex(1));
 
 		verify(t).getByIndex(1);
 		
@@ -455,9 +457,9 @@ class Tup3bRTest
 		
 		when(t.getByIndex(2)).thenCallRealMethod();
 		
-		when(t.getZ()).thenReturn((byte)1);
+		when(t.getZ()).thenReturn(b(1));
 		
-		assertEquals((byte)1, t.getByIndex(2));
+		assertEquals(b(1), t.getByIndex(2));
 
 		verify(t).getByIndex(2);
 		

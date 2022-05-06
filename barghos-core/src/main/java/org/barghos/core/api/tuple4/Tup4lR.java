@@ -68,7 +68,7 @@ public interface Tup4lR extends TuplR
 
 	/** {@inheritDoc}} */
 	@Override
-	default boolean isZero()
+	default boolean isExactlyZero()
 	{
 		return getX() == 0l &&
 				getY() == 0l &&
@@ -78,7 +78,7 @@ public interface Tup4lR extends TuplR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default boolean isZeroWithMargin(long tolerance)
+	default boolean isZero(long tolerance)
 	{
 		return Math.abs(getX()) <= tolerance &&
 				Math.abs(getY()) <= tolerance &&
@@ -118,42 +118,5 @@ public interface Tup4lR extends TuplR
 		res[COMP_W] = getW();
 		
 		return res;
-	}
-	
-	/**
-	 * Creates a new anonymous implementation instance of the interface {@link Tup4lR} with the given values.
-	 * As the resulting instance is just a minimal implementation of the interface it does not provide clone,
-	 * equals, hashCode or toString operations.
-	 * 
-	 * @param x The value of the x component.
-	 * @param y The value of the y component.
-	 * @param z The value of the z component.
-	 * @param w The value of the w component.
-	 * 
-	 * @return The anonymous implementation instance.
-	 */
-	public static Tup4lR of(final long x, final long y, final long z, final long w)
-	{
-		return new Tup4lR() {
-			public long getX()
-			{
-				return x;
-			}
-
-			public long getY()
-			{
-				return y;
-			}
-
-			public long getZ()
-			{
-				return z;
-			}
-
-			public long getW()
-			{
-				return w;
-			}
-		};
 	}
 }

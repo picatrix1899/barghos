@@ -78,7 +78,7 @@ public interface Tup4fR extends TupfR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default boolean isZero()
+	default boolean isExactlyZero()
 	{
 		return getX() == 0.0f &&
 				getY() == 0.0f &&
@@ -88,7 +88,7 @@ public interface Tup4fR extends TupfR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default boolean isZeroWithMargin(float tolerance)
+	default boolean isZero(float tolerance)
 	{
 		return Math.abs(getX()) <= tolerance &&
 				Math.abs(getY()) <= tolerance &&
@@ -128,42 +128,5 @@ public interface Tup4fR extends TupfR
 		res[COMP_W] = getW();
 		
 		return res;
-	}
-	
-	/**
-	 * Creates a new anonymous implementation instance of the interface {@link Tup4fR} with the given values.
-	 * As the resulting instance is just a minimal implementation of the interface it does not provide clone,
-	 * equals, hashCode or toString operations.
-	 * 
-	 * @param x The value of the x component.
-	 * @param y The value of the y component.
-	 * @param z The value of the z component.
-	 * @param w The value of the w component.
-	 * 
-	 * @return The anonymous implementation instance.
-	 */
-	public static Tup4fR of(final float x, final float y, final float z, final float w)
-	{
-		return new Tup4fR() {
-			public float getX()
-			{
-				return x;
-			}
-
-			public float getY()
-			{
-				return y;
-			}
-
-			public float getZ()
-			{
-				return z;
-			}
-
-			public float getW()
-			{
-				return w;
-			}
-		};
 	}
 }

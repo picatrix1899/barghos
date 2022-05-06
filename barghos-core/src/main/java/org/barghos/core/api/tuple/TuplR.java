@@ -68,7 +68,7 @@ public interface TuplR extends Validateable
 	 * 
 	 * @return True if all components are exactly zero.
 	 */
-	default boolean isZero()
+	default boolean isExactlyZero()
 	{
 		int dimensions = getDimensions();
 		
@@ -85,7 +85,7 @@ public interface TuplR extends Validateable
 	 * 
 	 * @return True if all components are technically zero.
 	 */
-	default boolean isZeroWithMargin(long tolerance)
+	default boolean isZero(long tolerance)
 	{
 		int dimensions = getDimensions();
 		

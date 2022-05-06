@@ -2,12 +2,14 @@ package org.barghos.core.api.tuple;
 
 import java.util.Arrays;
 
+import org.barghos.core.api.util.ExtendedCloneable;
+
 /**
  * This interface represents any modifiable N-dimensional char tuple.
  * 
  * @author picatrix1899
  */
-public interface TupcC extends TupcR, Cloneable
+public interface TupcC extends TupcR, ExtendedCloneable
 {
 	/**
 	 * Sets the value of the component at the given index.
@@ -34,10 +36,6 @@ public interface TupcC extends TupcR, Cloneable
 	/**
 	 * Sets all values to a single value.
 	 * 
-	 * <p>
-	 * This is usually used for resetting the tuple back to 0 again, by calling <code>set(0)</code>.
-	 * </p>
-	 * 
 	 * @param value The value used for all values of the tuple.
 	 * 
 	 * @return The current tuple.
@@ -45,6 +43,7 @@ public interface TupcC extends TupcR, Cloneable
 	default TupcC set(char value)
 	{
 		char[] values = new char[getDimensions()];
+		
 		Arrays.fill(values, value);
 		
 		return setArray(values);
@@ -61,13 +60,21 @@ public interface TupcC extends TupcR, Cloneable
 	{
 		int dimensions = getDimensions();
 		for(int i = 0; i < dimensions; i++)
-		{
 			setByIndex(i, values[i]);
-		}
 		
 		return this;
 	}
 	
-	/** {@inheritDoc} */
+	/** {@inheritDoc}} */
+	@Override
+	TupcC shallowClone();
+	
+	/** {@inheritDoc}} */
+	@Override
+	TupcC deepClone();
+	
+	/**
+	 * @return A new instance of the current tuple with the same component values.
+	 */
 	TupcC clone();
 }

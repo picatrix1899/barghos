@@ -373,24 +373,24 @@ class Tup4fRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4fR#isZero()} returns true,
+	 * This test ensures, that the function {@link Tup4fR#isExactlyZero()} returns true,
 	 * if all of the components are exactly zero.
 	 */
 	@Test
-	void isZero_ZeroTest()
+	void isExactlyZero_ZeroTest()
 	{
 		Tup4fR t = mock(Tup4fR.class);
 		
-		when(t.isZero()).thenCallRealMethod();
+		when(t.isExactlyZero()).thenCallRealMethod();
 		
 		when(t.getX()).thenReturn(0.0f);
 		when(t.getY()).thenReturn(0.0f);
 		when(t.getZ()).thenReturn(0.0f);
 		when(t.getW()).thenReturn(0.0f);
 		
-		assertEquals(true, t.isZero());
+		assertEquals(true, t.isExactlyZero());
 		
-		verify(t).isZero();
+		verify(t).isExactlyZero();
 		
 		verify(t).getX();
 		verify(t).getY();
@@ -401,21 +401,21 @@ class Tup4fRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4fR#isZero()} returns false,
+	 * This test ensures, that the function {@link Tup4fR#isExactlyZero()} returns false,
 	 * if the x component is not zero.
 	 */
 	@Test
-	void isZero_Fail_XTest()
+	void isExactlyZero_Fail_XTest()
 	{
 		Tup4fR t = mock(Tup4fR.class);
 		
-		when(t.isZero()).thenCallRealMethod();
+		when(t.isExactlyZero()).thenCallRealMethod();
 		
 		when(t.getX()).thenReturn(1.0f);
 		
-		assertEquals(false, t.isZero());
+		assertEquals(false, t.isExactlyZero());
 		
-		verify(t).isZero();
+		verify(t).isExactlyZero();
 		
 		verify(t).getX();
 		
@@ -423,22 +423,22 @@ class Tup4fRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4fR#isZero()} returns false,
+	 * This test ensures, that the function {@link Tup4fR#isExactlyZero()} returns false,
 	 * if the y component is not zero.
 	 */
 	@Test
-	void isZero_Fail_YTest()
+	void isExactlyZero_Fail_YTest()
 	{
 		Tup4fR t = mock(Tup4fR.class);
 		
-		when(t.isZero()).thenCallRealMethod();
+		when(t.isExactlyZero()).thenCallRealMethod();
 		
 		when(t.getX()).thenReturn(0.0f);
 		when(t.getY()).thenReturn(1.0f);
 		
-		assertEquals(false, t.isZero());
+		assertEquals(false, t.isExactlyZero());
 		
-		verify(t).isZero();
+		verify(t).isExactlyZero();
 		
 		verify(t).getX();
 		verify(t).getY();
@@ -447,23 +447,23 @@ class Tup4fRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4fR#isZero()} returns false,
+	 * This test ensures, that the function {@link Tup4fR#isExactlyZero()} returns false,
 	 * if the z component is not zero.
 	 */
 	@Test
-	void isZero_Fail_ZTest()
+	void isExactlyZero_Fail_ZTest()
 	{
 		Tup4fR t = mock(Tup4fR.class);
 		
-		when(t.isZero()).thenCallRealMethod();
+		when(t.isExactlyZero()).thenCallRealMethod();
 		
 		when(t.getX()).thenReturn(0.0f);
 		when(t.getY()).thenReturn(0.0f);
 		when(t.getZ()).thenReturn(1.0f);
 		
-		assertEquals(false, t.isZero());
+		assertEquals(false, t.isExactlyZero());
 		
-		verify(t).isZero();
+		verify(t).isExactlyZero();
 		
 		verify(t).getX();
 		verify(t).getY();
@@ -473,24 +473,24 @@ class Tup4fRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4fR#isZero()} returns false,
+	 * This test ensures, that the function {@link Tup4fR#isExactlyZero()} returns false,
 	 * if the w component is not zero.
 	 */
 	@Test
-	void isZero_Fail_WTest()
+	void isExactlyZero_Fail_WTest()
 	{
 		Tup4fR t = mock(Tup4fR.class);
 		
-		when(t.isZero()).thenCallRealMethod();
+		when(t.isExactlyZero()).thenCallRealMethod();
 		
 		when(t.getX()).thenReturn(0.0f);
 		when(t.getY()).thenReturn(0.0f);
 		when(t.getZ()).thenReturn(0.0f);
 		when(t.getW()).thenReturn(1.0f);
 		
-		assertEquals(false, t.isZero());
+		assertEquals(false, t.isExactlyZero());
 		
-		verify(t).isZero();
+		verify(t).isExactlyZero();
 		
 		verify(t).getX();
 		verify(t).getY();
@@ -501,24 +501,24 @@ class Tup4fRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4fR#isZeroWithMargin(float)} returns true,
+	 * This test ensures, that the function {@link Tup4fR#isZero(float)} returns true,
 	 * if all components are exactly zero.
 	 */
 	@Test
-	void isZeroWithMargin_ZeroTest()
+	void isZero_ZeroTest()
 	{
 		Tup4fR t = mock(Tup4fR.class);
 		
-		when(t.isZeroWithMargin(2.0f)).thenCallRealMethod();
+		when(t.isZero(2.0f)).thenCallRealMethod();
 		
 		when(t.getX()).thenReturn(0.0f);
 		when(t.getY()).thenReturn(0.0f);
 		when(t.getZ()).thenReturn(0.0f);
 		when(t.getW()).thenReturn(0.0f);
 		
-		assertEquals(true, t.isZeroWithMargin(2.0f));
+		assertEquals(true, t.isZero(2.0f));
 		
-		verify(t).isZeroWithMargin(2.0f);
+		verify(t).isZero(2.0f);
 		
 		verify(t).getX();
 		verify(t).getY();
@@ -529,25 +529,25 @@ class Tup4fRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4fR#isZeroWithMargin(float)} returns true,
+	 * This test ensures, that the function {@link Tup4fR#isZero(float)} returns true,
 	 * if all components are at the positive extreme point that is the inclusive
 	 * tolerance parameter.
 	 */
 	@Test
-	void isZeroWithMargin_Extreme_PositiveTest()
+	void isZero_Extreme_PositiveTest()
 	{
 		Tup4fR t = mock(Tup4fR.class);
 		
-		when(t.isZeroWithMargin(2.0f)).thenCallRealMethod();
+		when(t.isZero(2.0f)).thenCallRealMethod();
 		
 		when(t.getX()).thenReturn(2.0f);
 		when(t.getY()).thenReturn(2.0f);
 		when(t.getZ()).thenReturn(2.0f);
 		when(t.getW()).thenReturn(2.0f);
 		
-		assertEquals(true, t.isZeroWithMargin(2.0f));
+		assertEquals(true, t.isZero(2.0f));
 		
-		verify(t).isZeroWithMargin(2.0f);
+		verify(t).isZero(2.0f);
 		
 		verify(t).getX();
 		verify(t).getY();
@@ -558,25 +558,25 @@ class Tup4fRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup2bR#isZeroWithMargin(float)} returns true,
+	 * This test ensures, that the function {@link Tup4fR#isZero(float)} returns true,
 	 * if all components are at the negative extreme point that is the inclusive
 	 * tolerance parameter.
 	 */
 	@Test
-	void isZeroWithMargin_Extreme_NegativeTest()
+	void isZero_Extreme_NegativeTest()
 	{
 		Tup4fR t = mock(Tup4fR.class);
 		
-		when(t.isZeroWithMargin(2.0f)).thenCallRealMethod();
+		when(t.isZero(2.0f)).thenCallRealMethod();
 		
 		when(t.getX()).thenReturn(-2.0f);
 		when(t.getY()).thenReturn(-2.0f);
 		when(t.getZ()).thenReturn(-2.0f);
 		when(t.getW()).thenReturn(-2.0f);
 		
-		assertEquals(true, t.isZeroWithMargin(2.0f));
+		assertEquals(true, t.isZero(2.0f));
 		
-		verify(t).isZeroWithMargin(2.0f);
+		verify(t).isZero(2.0f);
 		
 		verify(t).getX();
 		verify(t).getY();
@@ -587,22 +587,22 @@ class Tup4fRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4fR#isZeroWithMargin(float)} returns false,
+	 * This test ensures, that the function {@link Tup4fR#isZero(float)} returns false,
 	 * if the x component exceeds the positive extreme point that is the inclusive
 	 * tolerance parameter.
 	 */
 	@Test
-	void isZeroWithMargin_Fail_X_PositiveTest()
+	void isZero_Fail_X_PositiveTest()
 	{
 		Tup4fR t = mock(Tup4fR.class);
 		
-		when(t.isZeroWithMargin(2.0f)).thenCallRealMethod();
+		when(t.isZero(2.0f)).thenCallRealMethod();
 		
 		when(t.getX()).thenReturn(3.0f);
 		
-		assertEquals(false, t.isZeroWithMargin(2.0f));
+		assertEquals(false, t.isZero(2.0f));
 		
-		verify(t).isZeroWithMargin(2.0f);
+		verify(t).isZero(2.0f);
 		
 		verify(t).getX();
 		
@@ -610,22 +610,22 @@ class Tup4fRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4fR#isZeroWithMargin(float)} returns false,
+	 * This test ensures, that the function {@link Tup4fR#isZero(float)} returns false,
 	 * if the x component exceeds the negative extreme point that is the inclusive
 	 * tolerance parameter.
 	 */
 	@Test
-	void isZeroWithMargin_Fail_X_NegativeTest()
+	void isZero_Fail_X_NegativeTest()
 	{
 		Tup4fR t = mock(Tup4fR.class);
 		
-		when(t.isZeroWithMargin(2.0f)).thenCallRealMethod();
+		when(t.isZero(2.0f)).thenCallRealMethod();
 		
 		when(t.getX()).thenReturn(-3.0f);
 		
-		assertEquals(false, t.isZeroWithMargin(2.0f));
+		assertEquals(false, t.isZero(2.0f));
 		
-		verify(t).isZeroWithMargin(2.0f);
+		verify(t).isZero(2.0f);
 		
 		verify(t).getX();
 		
@@ -633,23 +633,23 @@ class Tup4fRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4fR#isZeroWithMargin(float)} returns false,
+	 * This test ensures, that the function {@link Tup4fR#isZero(float)} returns false,
 	 * if the y component exceeds the positive extreme point that is the inclusive
 	 * tolerance parameter.
 	 */
 	@Test
-	void isZeroWithMargin_Fail_Y_PositiveTest()
+	void isZero_Fail_Y_PositiveTest()
 	{
 		Tup4fR t = mock(Tup4fR.class);
 		
-		when(t.isZeroWithMargin(2.0f)).thenCallRealMethod();
+		when(t.isZero(2.0f)).thenCallRealMethod();
 		
 		when(t.getX()).thenReturn(0.0f);
 		when(t.getY()).thenReturn(3.0f);
 		
-		assertEquals(false, t.isZeroWithMargin(2.0f));
+		assertEquals(false, t.isZero(2.0f));
 		
-		verify(t).isZeroWithMargin(2.0f);
+		verify(t).isZero(2.0f);
 		
 		verify(t).getX();
 		verify(t).getY();
@@ -658,23 +658,23 @@ class Tup4fRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4fR#isZeroWithMargin(float)} returns false,
+	 * This test ensures, that the function {@link Tup4fR#isZero(float)} returns false,
 	 * if the y component exceeds the positive extreme point that is the inclusive
 	 * tolerance parameter.
 	 */
 	@Test
-	void isZeroWithMargin_Fail_Y_NegativeTest()
+	void isZero_Fail_Y_NegativeTest()
 	{
 		Tup4fR t = mock(Tup4fR.class);
 		
-		when(t.isZeroWithMargin(2.0f)).thenCallRealMethod();
+		when(t.isZero(2.0f)).thenCallRealMethod();
 		
 		when(t.getX()).thenReturn(0.0f);
 		when(t.getY()).thenReturn(-3.0f);
 		
-		assertEquals(false, t.isZeroWithMargin(2.0f));
+		assertEquals(false, t.isZero(2.0f));
 		
-		verify(t).isZeroWithMargin(2.0f);
+		verify(t).isZero(2.0f);
 		
 		verify(t).getX();
 		verify(t).getY();
@@ -683,24 +683,24 @@ class Tup4fRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4fR#isZeroWithMargin(float)} returns false,
+	 * This test ensures, that the function {@link Tup4fR#isZero(float)} returns false,
 	 * if the z component exceeds the positive extreme point that is the inclusive
 	 * tolerance parameter.
 	 */
 	@Test
-	void isZeroWithMargin_Fail_Z_PositiveTest()
+	void isZero_Fail_Z_PositiveTest()
 	{
 		Tup4fR t = mock(Tup4fR.class);
 		
-		when(t.isZeroWithMargin(2.0f)).thenCallRealMethod();
+		when(t.isZero(2.0f)).thenCallRealMethod();
 		
 		when(t.getX()).thenReturn(0.0f);
 		when(t.getY()).thenReturn(0.0f);
 		when(t.getZ()).thenReturn(3.0f);
 		
-		assertEquals(false, t.isZeroWithMargin(2.0f));
+		assertEquals(false, t.isZero(2.0f));
 		
-		verify(t).isZeroWithMargin(2.0f);
+		verify(t).isZero(2.0f);
 		
 		verify(t).getX();
 		verify(t).getY();
@@ -710,24 +710,24 @@ class Tup4fRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4fR#isZeroWithMargin(float)} returns false,
+	 * This test ensures, that the function {@link Tup4fR#isZero(float)} returns false,
 	 * if the z component exceeds the positive extreme point that is the inclusive
 	 * tolerance parameter.
 	 */
 	@Test
-	void isZeroWithMargin_Fail_Z_NegativeTest()
+	void isZero_Fail_Z_NegativeTest()
 	{
 		Tup4fR t = mock(Tup4fR.class);
 		
-		when(t.isZeroWithMargin(2.0f)).thenCallRealMethod();
+		when(t.isZero(2.0f)).thenCallRealMethod();
 		
 		when(t.getX()).thenReturn(0.0f);
 		when(t.getY()).thenReturn(0.0f);
 		when(t.getZ()).thenReturn(-3.0f);
 		
-		assertEquals(false, t.isZeroWithMargin(2.0f));
+		assertEquals(false, t.isZero(2.0f));
 		
-		verify(t).isZeroWithMargin(2.0f);
+		verify(t).isZero(2.0f);
 		
 		verify(t).getX();
 		verify(t).getY();
@@ -737,25 +737,25 @@ class Tup4fRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4fR#isZeroWithMargin(float)} returns false,
+	 * This test ensures, that the function {@link Tup4fR#isZero(float)} returns false,
 	 * if the w component exceeds the positive extreme point that is the inclusive
 	 * tolerance parameter.
 	 */
 	@Test
-	void isZeroWithMargin_Fail_W_PositiveTest()
+	void isZero_Fail_W_PositiveTest()
 	{
 		Tup4fR t = mock(Tup4fR.class);
 		
-		when(t.isZeroWithMargin(2.0f)).thenCallRealMethod();
+		when(t.isZero(2.0f)).thenCallRealMethod();
 		
 		when(t.getX()).thenReturn(0.0f);
 		when(t.getY()).thenReturn(0.0f);
 		when(t.getZ()).thenReturn(0.0f);
 		when(t.getW()).thenReturn(3.0f);
 		
-		assertEquals(false, t.isZeroWithMargin(2.0f));
+		assertEquals(false, t.isZero(2.0f));
 		
-		verify(t).isZeroWithMargin(2.0f);
+		verify(t).isZero(2.0f);
 		
 		verify(t).getX();
 		verify(t).getY();
@@ -766,25 +766,25 @@ class Tup4fRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4fR#isZeroWithMargin(float)} returns false,
+	 * This test ensures, that the function {@link Tup4fR#isZero(float)} returns false,
 	 * if the w component exceeds the positive extreme point that is the inclusive
 	 * tolerance parameter.
 	 */
 	@Test
-	void isZeroWithMargin_Fail_W_NegativeTest()
+	void isZero_Fail_W_NegativeTest()
 	{
 		Tup4fR t = mock(Tup4fR.class);
 		
-		when(t.isZeroWithMargin(2.0f)).thenCallRealMethod();
+		when(t.isZero(2.0f)).thenCallRealMethod();
 		
 		when(t.getX()).thenReturn(0.0f);
 		when(t.getY()).thenReturn(0.0f);
 		when(t.getZ()).thenReturn(0.0f);
 		when(t.getW()).thenReturn(-3.0f);
 		
-		assertEquals(false, t.isZeroWithMargin(2.0f));
+		assertEquals(false, t.isZero(2.0f));
 		
-		verify(t).isZeroWithMargin(2.0f);
+		verify(t).isZero(2.0f);
 		
 		verify(t).getX();
 		verify(t).getY();
@@ -795,7 +795,7 @@ class Tup4fRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4fR#getArray(float[])} returns
+	 * This test ensures, that the function {@link Tup4fR#toArray(float[])} returns
 	 * the given array with the components in the right order.
 	 */
 	@Test

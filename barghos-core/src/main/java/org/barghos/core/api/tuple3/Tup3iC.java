@@ -73,6 +73,7 @@ public interface Tup3iC extends Tup3iR, TupiC
 		return set(t.getX(), t.getY(), t.getZ());
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	default Tup3iC set(int value)
 	{
@@ -93,6 +94,7 @@ public interface Tup3iC extends Tup3iR, TupiC
 		return setX(x).setY(y).setZ(z);
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	default Tup3iC setByIndex(int index, int value)
 	{
@@ -106,12 +108,14 @@ public interface Tup3iC extends Tup3iR, TupiC
 		throw new IndexOutOfBoundsException(index);
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	default Tup3iC setArray(int... v)
 	{
 		return set(v[COMP_X], v[COMP_Y], v[COMP_Z]);
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	default Tup3iC set(TupiR t)
 	{
@@ -119,5 +123,14 @@ public interface Tup3iC extends Tup3iR, TupiC
 	}
 	
 	/** {@inheritDoc} */
+	@Override
+	Tup3iC shallowClone();
+	
+	/** {@inheritDoc} */
+	@Override
+	Tup3iC deepClone();
+	
+	/** {@inheritDoc} */
+	@Override
 	Tup3iC clone();
 }

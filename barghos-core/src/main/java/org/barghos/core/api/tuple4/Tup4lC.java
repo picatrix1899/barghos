@@ -133,6 +133,15 @@ public interface Tup4lC extends Tup4lR, TuplC
 		return setArray(t.toArray());
 	}
 	
-	/** {@inheritDoc} */
+	/** {@inheritDoc}} */
+	@Override
+	Tup4lC shallowClone();
+	
+	/** {@inheritDoc}} */
+	@Override
+	Tup4lC deepClone();
+	
+	/** {@inheritDoc}} */
+	@Override
 	Tup4lC clone();
 }

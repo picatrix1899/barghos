@@ -63,7 +63,7 @@ public interface Tup3bigiR extends TupbigiR
 
 	/** {@inheritDoc}} */
 	@Override
-	default boolean isZero()
+	default boolean isExactlyZero()
 	{
 		return getX().compareTo(BigInteger.ZERO) == 0 &&
 				getY().compareTo(BigInteger.ZERO) == 0 &&
@@ -72,7 +72,7 @@ public interface Tup3bigiR extends TupbigiR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default boolean isZeroWithMargin(BigInteger tolerance)
+	default boolean isZero(BigInteger tolerance)
 	{
 		return getX().abs().compareTo(tolerance) <= 0 &&
 				getY().abs().compareTo(tolerance) <= 0 &&
@@ -118,36 +118,5 @@ public interface Tup3bigiR extends TupbigiR
 		res[COMP_Z] = getZ();
 		
 		return res;
-	}
-	
-	/**
-	 * Creates a new anonymous implementation instance of the interface {@link Tup3bigiR} with the given values.
-	 * As the resulting instance is just a minimal implementation of the interface it does not provide clone,
-	 * equals, hashCode or toString operations.
-	 * 
-	 * @param x The value of the x component.
-	 * @param y The value of the y component.
-	 * @param z The value of the z component.
-	 * 
-	 * @return The anonymous implementation instance.
-	 */
-	public static Tup3bigiR of(final BigInteger x, final BigInteger y, final BigInteger z)
-	{
-		return new Tup3bigiR() {
-			public BigInteger getX()
-			{
-				return x;
-			}
-
-			public BigInteger getY()
-			{
-				return y;
-			}
-
-			public BigInteger getZ()
-			{
-				return z;
-			}
-		};
 	}
 }

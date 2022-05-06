@@ -5,6 +5,9 @@ import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
+
+import static org.barghos.core.api.testing.TestObjectFactory.*;
+
 import org.barghos.core.api.tuple.TupbC;
 import org.barghos.core.api.tuple.TupbR;
 import org.barghos.core.api.tuple3.Tup3bC;
@@ -47,10 +50,10 @@ class Tup3bCTest
 		
 		when(t.set(t2)).thenCallRealMethod();
 		
-		when(t2.getX()).thenReturn((byte)1);
-		when(t2.getY()).thenReturn((byte)2);
-		when(t2.getZ()).thenReturn((byte)3);
-		when(t.set((byte)1, (byte)2, (byte)3)).thenReturn(t);
+		when(t2.getX()).thenReturn(b(1));
+		when(t2.getY()).thenReturn(b(2));
+		when(t2.getZ()).thenReturn(b(3));
+		when(t.set(b(1), b(2), b(3))).thenReturn(t);
 		
 		assertSame(t, t.set(t2));
 		
@@ -59,7 +62,7 @@ class Tup3bCTest
 		verify(t2).getX();
 		verify(t2).getY();
 		verify(t2).getZ();
-		verify(t).set((byte)1, (byte)2, (byte)3);
+		verify(t).set(b(1), b(2), b(3));
 		
 		verifyNoMoreInteractions(t, t2);
 	}
@@ -73,15 +76,15 @@ class Tup3bCTest
 	{
 		Tup3bC t = mock(Tup3bC.class);
 		
-		when(t.set((byte)1)).thenCallRealMethod();
+		when(t.set(b(1))).thenCallRealMethod();
 		
-		when(t.set((byte)1, (byte)1, (byte)1)).thenReturn(t);
+		when(t.set(b(1), b(1), b(1))).thenReturn(t);
 		
-		assertSame(t, t.set((byte)1));
+		assertSame(t, t.set(b(1)));
 		
-		verify(t).set((byte)1);
+		verify(t).set(b(1));
 
-		verify(t).set((byte)1, (byte)1, (byte)1);
+		verify(t).set(b(1), b(1), b(1));
 		
 		verifyNoMoreInteractions(t);
 	}
@@ -95,19 +98,19 @@ class Tup3bCTest
 	{
 		Tup3bC t = mock(Tup3bC.class);
 		
-		when(t.set((byte)1, (byte)2, (byte)3)).thenCallRealMethod();
+		when(t.set(b(1), b(2), b(3))).thenCallRealMethod();
 		
-		when(t.setX((byte)1)).thenReturn(t);
-		when(t.setY((byte)2)).thenReturn(t);
-		when(t.setZ((byte)3)).thenReturn(t);
+		when(t.setX(b(1))).thenReturn(t);
+		when(t.setY(b(2))).thenReturn(t);
+		when(t.setZ(b(3))).thenReturn(t);
 		
-		assertSame(t, t.set((byte)1, (byte)2, (byte)3));
+		assertSame(t, t.set(b(1), b(2), b(3)));
 		
-		verify(t).set((byte)1, (byte)2, (byte)3);
+		verify(t).set(b(1), b(2), b(3));
 
-		verify(t).setX((byte)1);
-		verify(t).setY((byte)2);
-		verify(t).setZ((byte)3);
+		verify(t).setX(b(1));
+		verify(t).setY(b(2));
+		verify(t).setZ(b(3));
 		
 		verifyNoMoreInteractions(t);
 	}
@@ -124,15 +127,15 @@ class Tup3bCTest
 		
 		when(t.set(t2)).thenCallRealMethod();
 		
-		when(t2.toArray()).thenReturn(new byte[] {(byte)1, (byte)2, (byte)3});
-		when(t.setArray(new byte[] {(byte)1, (byte)2, (byte)3})).thenReturn(t);
+		when(t2.toArray()).thenReturn(bArray(1, 2, 3));
+		when(t.setArray(bArray(1, 2, 3))).thenReturn(t);
 
 		assertSame(t, t.set(t2));
 		
 		verify(t).set(t2);
 		
 		verify(t2).toArray();
-		verify(t).setArray(new byte[] {(byte)1, (byte)2, (byte)3});
+		verify(t).setArray(bArray(1, 2, 3));
 
 		verifyNoMoreInteractions(t);
 	}
@@ -146,15 +149,15 @@ class Tup3bCTest
 	{
 		Tup3bC t = mock(Tup3bC.class);
 		
-		when(t.setByIndex(0, (byte)1)).thenCallRealMethod();
+		when(t.setByIndex(0, b(1))).thenCallRealMethod();
 		
-		when(t.setX((byte)1)).thenReturn(t);
+		when(t.setX(b(1))).thenReturn(t);
 		
-		assertSame(t, t.setByIndex(0, (byte)1));
+		assertSame(t, t.setByIndex(0, b(1)));
 		
-		verify(t).setByIndex(0, (byte)1);
+		verify(t).setByIndex(0, b(1));
 		
-		verify(t).setX((byte)1);
+		verify(t).setX(b(1));
 		
 		verifyNoMoreInteractions(t);
 	}
@@ -168,15 +171,15 @@ class Tup3bCTest
 	{
 		Tup3bC t = mock(Tup3bC.class);
 		
-		when(t.setByIndex(1, (byte)1)).thenCallRealMethod();
+		when(t.setByIndex(1, b(1))).thenCallRealMethod();
 		
-		when(t.setY((byte)1)).thenReturn(t);
+		when(t.setY(b(1))).thenReturn(t);
 		
-		assertSame(t, t.setByIndex(1, (byte)1));
+		assertSame(t, t.setByIndex(1, b(1)));
 		
-		verify(t).setByIndex(1, (byte)1);
+		verify(t).setByIndex(1, b(1));
 		
-		verify(t).setY((byte)1);
+		verify(t).setY(b(1));
 		
 		verifyNoMoreInteractions(t);
 	}
@@ -190,15 +193,15 @@ class Tup3bCTest
 	{
 		Tup3bC t = mock(Tup3bC.class);
 		
-		when(t.setByIndex(2, (byte)1)).thenCallRealMethod();
+		when(t.setByIndex(2, b(1))).thenCallRealMethod();
 		
-		when(t.setZ((byte)1)).thenReturn(t);
+		when(t.setZ(b(1))).thenReturn(t);
 		
-		assertSame(t, t.setByIndex(2, (byte)1));
+		assertSame(t, t.setByIndex(2, b(1)));
 		
-		verify(t).setByIndex(2, (byte)1);
+		verify(t).setByIndex(2, b(1));
 		
-		verify(t).setZ((byte)1);
+		verify(t).setZ(b(1));
 		
 		verifyNoMoreInteractions(t);
 	}
@@ -212,16 +215,16 @@ class Tup3bCTest
 	{
 		Tup3bC t = mock(Tup3bC.class);
 		
-		when(t.setByIndex(3, (byte)1)).thenCallRealMethod();
+		when(t.setByIndex(3, b(1))).thenCallRealMethod();
 
 		assertThrows(IndexOutOfBoundsException.class, new Executable() {
 			public void execute() throws Throwable
 			{
-				t.setByIndex(3, (byte)1);
+				t.setByIndex(3, b(1));
 			}
 		});
 
-		verify(t).setByIndex(3, (byte)1);
+		verify(t).setByIndex(3, b(1));
 
 		verifyNoMoreInteractions(t);
 	}

@@ -111,6 +111,15 @@ public interface Tup2iC extends Tup2iR, TupiC
 		return setArray(t.toArray());
 	}
 	
+	/** {@inheritDoc}} */
+	@Override
+	Tup2iC shallowClone();
+	
+	/** {@inheritDoc}} */
+	@Override
+	Tup2iC deepClone();
+	
 	/** {@inheritDoc} */
+	@Override
 	Tup2iC clone();
 }

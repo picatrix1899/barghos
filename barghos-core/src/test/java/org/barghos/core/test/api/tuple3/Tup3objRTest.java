@@ -143,7 +143,7 @@ class Tup3objRTest
 
 
 	/**
-	 * This test ensures, that the function {@link Tup3objR#getArray(Object[])} returns
+	 * This test ensures, that the function {@link Tup3objR#toArray(Object[])} returns
 	 * the given array with the components in the right order.
 	 */
 	@Test

@@ -6,6 +6,8 @@ import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
+import static org.barghos.core.api.testing.TestObjectFactory.*;
+
 import org.barghos.core.api.tuple.TupsC;
 import org.barghos.core.api.tuple.TupsR;
 import org.barghos.core.api.tuple4.Tup4sC;
@@ -19,7 +21,7 @@ import org.barghos.core.api.tuple4.Tup4sR;
 class Tup4sCTest
 {
 	/**
-	 * This test ensures, that the interface extends the interface {@link Tup3sR}.
+	 * This test ensures, that the interface extends the interface {@link Tup4sR}.
 	 */
 	@Test
 	void inheritance_Tup4sRTest()
@@ -48,11 +50,11 @@ class Tup4sCTest
 		
 		when(t.set(t2)).thenCallRealMethod();
 		
-		when(t2.getX()).thenReturn((short)1);
-		when(t2.getY()).thenReturn((short)2);
-		when(t2.getZ()).thenReturn((short)3);
-		when(t2.getW()).thenReturn((short)4);
-		when(t.set((short)1, (short)2, (short)3, (short)4)).thenReturn(t);
+		when(t2.getX()).thenReturn(s(1));
+		when(t2.getY()).thenReturn(s(2));
+		when(t2.getZ()).thenReturn(s(3));
+		when(t2.getW()).thenReturn(s(4));
+		when(t.set(s(1), s(2), s(3), s(4))).thenReturn(t);
 		
 		assertSame(t, t.set(t2));
 		
@@ -62,7 +64,7 @@ class Tup4sCTest
 		verify(t2).getY();
 		verify(t2).getZ();
 		verify(t2).getW();
-		verify(t).set((short)1, (short)2, (short)3, (short)4);
+		verify(t).set(s(1), s(2), s(3), s(4));
 		
 		verifyNoMoreInteractions(t, t2);
 	}
@@ -76,15 +78,15 @@ class Tup4sCTest
 	{
 		Tup4sC t = mock(Tup4sC.class);
 		
-		when(t.set((short)1)).thenCallRealMethod();
+		when(t.set(s(1))).thenCallRealMethod();
 		
-		when(t.set((short)1, (short)1, (short)1, (short)1)).thenReturn(t);
+		when(t.set(s(1), s(1), s(1), s(1))).thenReturn(t);
 		
-		assertSame(t, t.set((short)1));
+		assertSame(t, t.set(s(1)));
 		
-		verify(t).set((short)1);
+		verify(t).set(s(1));
 
-		verify(t).set((short)1, (short)1, (short)1, (short)1);
+		verify(t).set(s(1), s(1), s(1), s(1));
 		
 		verifyNoMoreInteractions(t);
 	}
@@ -98,21 +100,21 @@ class Tup4sCTest
 	{
 		Tup4sC t = mock(Tup4sC.class);
 		
-		when(t.set((short)1, (short)2, (short)3, (short)4)).thenCallRealMethod();
+		when(t.set(s(1), s(2), s(3), s(4))).thenCallRealMethod();
 		
-		when(t.setX((short)1)).thenReturn(t);
-		when(t.setY((short)2)).thenReturn(t);
-		when(t.setZ((short)3)).thenReturn(t);
-		when(t.setW((short)4)).thenReturn(t);
+		when(t.setX(s(1))).thenReturn(t);
+		when(t.setY(s(2))).thenReturn(t);
+		when(t.setZ(s(3))).thenReturn(t);
+		when(t.setW(s(4))).thenReturn(t);
 		
-		assertSame(t, t.set((short)1, (short)2, (short)3, (short)4));
+		assertSame(t, t.set(s(1), s(2), s(3), s(4)));
 		
-		verify(t).set((short)1, (short)2, (short)3, (short)4);
+		verify(t).set(s(1), s(2), s(3), s(4));
 
-		verify(t).setX((short)1);
-		verify(t).setY((short)2);
-		verify(t).setZ((short)3);
-		verify(t).setW((short)4);
+		verify(t).setX(s(1));
+		verify(t).setY(s(2));
+		verify(t).setZ(s(3));
+		verify(t).setW(s(4));
 		
 		verifyNoMoreInteractions(t);
 	}
@@ -129,15 +131,15 @@ class Tup4sCTest
 		
 		when(t.set(t2)).thenCallRealMethod();
 		
-		when(t2.toArray()).thenReturn(new short[] {(short)1, (short)2, (short)3, (short)4});
-		when(t.setArray(new short[] {(short)1, (short)2, (short)3, (short)4})).thenReturn(t);
+		when(t2.toArray()).thenReturn(sArray(1, 2, 3, 4));
+		when(t.setArray(sArray(1, 2, 3, 4))).thenReturn(t);
 
 		assertSame(t, t.set(t2));
 		
 		verify(t).set(t2);
 		
 		verify(t2).toArray();
-		verify(t).setArray(new short[] {(short)1, (short)2, (short)3, (short)4});
+		verify(t).setArray(sArray(1, 2, 3, 4));
 
 		verifyNoMoreInteractions(t);
 	}
@@ -151,15 +153,15 @@ class Tup4sCTest
 	{
 		Tup4sC t = mock(Tup4sC.class);
 		
-		when(t.setByIndex(0, (short)1)).thenCallRealMethod();
+		when(t.setByIndex(0, s(1))).thenCallRealMethod();
 		
-		when(t.setX((short)1)).thenReturn(t);
+		when(t.setX(s(1))).thenReturn(t);
 		
-		assertSame(t, t.setByIndex(0, (short)1));
+		assertSame(t, t.setByIndex(0, s(1)));
 		
-		verify(t).setByIndex(0, (short)1);
+		verify(t).setByIndex(0, s(1));
 		
-		verify(t).setX((short)1);
+		verify(t).setX(s(1));
 		
 		verifyNoMoreInteractions(t);
 	}
@@ -173,15 +175,15 @@ class Tup4sCTest
 	{
 		Tup4sC t = mock(Tup4sC.class);
 		
-		when(t.setByIndex(1, (short)1)).thenCallRealMethod();
+		when(t.setByIndex(1, s(1))).thenCallRealMethod();
 		
-		when(t.setY((short)1)).thenReturn(t);
+		when(t.setY(s(1))).thenReturn(t);
 		
-		assertSame(t, t.setByIndex(1, (short)1));
+		assertSame(t, t.setByIndex(1, s(1)));
 		
-		verify(t).setByIndex(1, (short)1);
+		verify(t).setByIndex(1, s(1));
 		
-		verify(t).setY((short)1);
+		verify(t).setY(s(1));
 		
 		verifyNoMoreInteractions(t);
 	}
@@ -195,15 +197,15 @@ class Tup4sCTest
 	{
 		Tup4sC t = mock(Tup4sC.class);
 		
-		when(t.setByIndex(2, (short)2)).thenCallRealMethod();
+		when(t.setByIndex(2, s(2))).thenCallRealMethod();
 		
-		when(t.setZ((short)2)).thenReturn(t);
+		when(t.setZ(s(2))).thenReturn(t);
 		
-		assertSame(t, t.setByIndex(2, (short)2));
+		assertSame(t, t.setByIndex(2, s(2)));
 		
-		verify(t).setByIndex(2, (short)2);
+		verify(t).setByIndex(2, s(2));
 		
-		verify(t).setZ((short)2);
+		verify(t).setZ(s(2));
 		
 		verifyNoMoreInteractions(t);
 	}
@@ -217,15 +219,15 @@ class Tup4sCTest
 	{
 		Tup4sC t = mock(Tup4sC.class);
 		
-		when(t.setByIndex(3, (short)3)).thenCallRealMethod();
+		when(t.setByIndex(3, s(3))).thenCallRealMethod();
 		
-		when(t.setW((short)3)).thenReturn(t);
+		when(t.setW(s(3))).thenReturn(t);
 		
-		assertSame(t, t.setByIndex(3, (short)3));
+		assertSame(t, t.setByIndex(3, s(3)));
 		
-		verify(t).setByIndex(3, (short)3);
+		verify(t).setByIndex(3, s(3));
 		
-		verify(t).setW((short)3);
+		verify(t).setW(s(3));
 		
 		verifyNoMoreInteractions(t);
 	}
@@ -239,7 +241,7 @@ class Tup4sCTest
 	{
 		Tup4sC t = mock(Tup4sC.class);
 		
-		when(t.setByIndex(4, (short)1)).thenCallRealMethod();
+		when(t.setByIndex(4, s(1))).thenCallRealMethod();
 
 		assertThrows(IndexOutOfBoundsException.class, new Executable() {
 			public void execute() throws Throwable

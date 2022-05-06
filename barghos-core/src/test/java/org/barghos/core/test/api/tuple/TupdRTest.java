@@ -198,23 +198,23 @@ class TupdRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link TupdR#isZero()} returns true
+	 * This test ensures, that the function {@link TupdR#isExactlyZero()} returns true
 	 * if all components are +0.0.
 	 */
 	@Test
-	void isZero_PositiveZeroTest()
+	void isExactlyZero_PositiveZeroTest()
 	{
 		TupdR t = mock(TupdR.class);
 		
-		when(t.isZero()).thenCallRealMethod();
+		when(t.isExactlyZero()).thenCallRealMethod();
 		
 		when(t.getDimensions()).thenReturn(2);
 		when(t.getByIndex(0)).thenReturn(0.0);
 		when(t.getByIndex(1)).thenReturn(0.0);
 		
-		assertEquals(true, t.isZero());
+		assertEquals(true, t.isExactlyZero());
 		
-		verify(t).isZero();
+		verify(t).isExactlyZero();
 		
 		verify(t).getDimensions();
 		verify(t).getByIndex(0);
@@ -224,23 +224,23 @@ class TupdRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link TupdR#isZero()} returns true
+	 * This test ensures, that the function {@link TupdR#isExactlyZero()} returns true
 	 * if all components are -0.0.
 	 */
 	@Test
-	void isZero_NegativeZeroTest()
+	void isExactlyZero_NegativeZeroTest()
 	{
 		TupdR t = mock(TupdR.class);
 		
-		when(t.isZero()).thenCallRealMethod();
+		when(t.isExactlyZero()).thenCallRealMethod();
 		
 		when(t.getDimensions()).thenReturn(2);
 		when(t.getByIndex(0)).thenReturn(-0.0);
 		when(t.getByIndex(1)).thenReturn(-0.0);
 		
-		assertEquals(true, t.isZero());
+		assertEquals(true, t.isExactlyZero());
 		
-		verify(t).isZero();
+		verify(t).isExactlyZero();
 		
 		verify(t).getDimensions();
 		verify(t).getByIndex(0);
@@ -250,23 +250,23 @@ class TupdRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link TupdR#isZero()} returns false
+	 * This test ensures, that the function {@link TupdR#isExactlyZero()} returns false
 	 * after checking the first component, if the first component is a positive number
 	 * greater zero.
 	 */
 	@Test
-	void isZero_FailEarly_PositiveTest()
+	void isExactlyZero_FailEarly_PositiveTest()
 	{
 		TupdR t = mock(TupdR.class);
 		
-		when(t.isZero()).thenCallRealMethod();
+		when(t.isExactlyZero()).thenCallRealMethod();
 		
 		when(t.getDimensions()).thenReturn(2);
 		when(t.getByIndex(0)).thenReturn(1.0);
 		
-		assertEquals(false, t.isZero());
+		assertEquals(false, t.isExactlyZero());
 		
-		verify(t).isZero();
+		verify(t).isExactlyZero();
 
 		verify(t).getDimensions();
 		verify(t).getByIndex(0);
@@ -275,23 +275,23 @@ class TupdRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link TupdR#isZero()} returns false
+	 * This test ensures, that the function {@link TupdR#isExactlyZero()} returns false
 	 * after checking the first component, if the first component is a negative number
 	 * greater zero.
 	 */
 	@Test
-	void isZero_FailEarly_NegativeTest()
+	void isExactlyZero_FailEarly_NegativeTest()
 	{
 		TupdR t = mock(TupdR.class);
 		
-		when(t.isZero()).thenCallRealMethod();
+		when(t.isExactlyZero()).thenCallRealMethod();
 		
 		when(t.getDimensions()).thenReturn(2);
 		when(t.getByIndex(0)).thenReturn(-1.0);
 		
-		assertEquals(false, t.isZero());
+		assertEquals(false, t.isExactlyZero());
 		
-		verify(t).isZero();
+		verify(t).isExactlyZero();
 
 		verify(t).getDimensions();
 		verify(t).getByIndex(0);
@@ -300,24 +300,24 @@ class TupdRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link TupdR#isZero()} returns false
+	 * This test ensures, that the function {@link TupdR#isExactlyZero()} returns false
 	 * after checking all components, if only the last component is a positive number
 	 * greater zero.
 	 */
 	@Test
-	void isZero_Fail_PositiveTest()
+	void isExactlyZero_Fail_PositiveTest()
 	{
 		TupdR t = mock(TupdR.class);
 		
-		when(t.isZero()).thenCallRealMethod();
+		when(t.isExactlyZero()).thenCallRealMethod();
 		
 		when(t.getDimensions()).thenReturn(2);
 		when(t.getByIndex(0)).thenReturn(0.0);
 		when(t.getByIndex(1)).thenReturn(1.0);
 		
-		assertEquals(false, t.isZero());
+		assertEquals(false, t.isExactlyZero());
 		
-		verify(t).isZero();
+		verify(t).isExactlyZero();
 
 		verify(t).getDimensions();
 		verify(t).getByIndex(0);
@@ -327,24 +327,24 @@ class TupdRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link TupdR#isZero()} returns false
+	 * This test ensures, that the function {@link TupdR#isExactlyZero()} returns false
 	 * after checking all components, if only the last component is a negative number
 	 * greater zero.
 	 */
 	@Test
-	void isZero_Fail_NTest()
+	void isExactlyZero_Fail_NTest()
 	{
 		TupdR t = mock(TupdR.class);
 		
-		when(t.isZero()).thenCallRealMethod();
+		when(t.isExactlyZero()).thenCallRealMethod();
 		
 		when(t.getDimensions()).thenReturn(2);
 		when(t.getByIndex(0)).thenReturn(0.0);
 		when(t.getByIndex(1)).thenReturn(-1.0);
 		
-		assertEquals(false, t.isZero());
+		assertEquals(false, t.isExactlyZero());
 		
-		verify(t).isZero();
+		verify(t).isExactlyZero();
 
 		verify(t).getDimensions();
 		verify(t).getByIndex(0);
@@ -354,23 +354,23 @@ class TupdRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link TupdR#isZeroWithMargin(double)} returns true,
+	 * This test ensures, that the function {@link TupdR#isZero(double)} returns true,
 	 * if all components are exactly +0.0.
 	 */
 	@Test
-	void isZeroWithMargin_Zero_PositiveTest()
+	void isZero_Zero_PositiveTest()
 	{
 		TupdR t = mock(TupdR.class);
 		
-		when(t.isZeroWithMargin(2.0)).thenCallRealMethod();
+		when(t.isZero(2.0)).thenCallRealMethod();
 		
 		when(t.getDimensions()).thenReturn(2);
 		when(t.getByIndex(0)).thenReturn(0.0);
 		when(t.getByIndex(1)).thenReturn(0.0);
 
-		assertEquals(true, t.isZeroWithMargin(2.0));
+		assertEquals(true, t.isZero(2.0));
 		
-		verify(t).isZeroWithMargin(2.0);
+		verify(t).isZero(2.0);
 		
 		verify(t).getDimensions();
 		verify(t).getByIndex(0);
@@ -380,23 +380,23 @@ class TupdRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link TupdR#isZeroWithMargin(double)} returns true,
+	 * This test ensures, that the function {@link TupdR#isZero(double)} returns true,
 	 * if all components are exactly -0.0.
 	 */
 	@Test
-	void isZeroWithMargin_Zero_NegativeTest()
+	void isZero_Zero_NegativeTest()
 	{
 		TupdR t = mock(TupdR.class);
 		
-		when(t.isZeroWithMargin(2.0)).thenCallRealMethod();
+		when(t.isZero(2.0)).thenCallRealMethod();
 		
 		when(t.getDimensions()).thenReturn(2);
 		when(t.getByIndex(0)).thenReturn(-0.0);
 		when(t.getByIndex(1)).thenReturn(-0.0);
 
-		assertEquals(true, t.isZeroWithMargin(2.0));
+		assertEquals(true, t.isZero(2.0));
 		
-		verify(t).isZeroWithMargin(2.0);
+		verify(t).isZero(2.0);
 		
 		verify(t).getDimensions();
 		verify(t).getByIndex(0);
@@ -406,24 +406,24 @@ class TupdRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link TupdR#isZeroWithMargin(double)} returns true,
+	 * This test ensures, that the function {@link TupdR#isZero(double)} returns true,
 	 * if all components are at the positive extreme point that is the inclusive
 	 * tolerance parameter.
 	 */
 	@Test
-	void isZeroWithMargin_Extreme_PositiveTest()
+	void isZero_Extreme_PositiveTest()
 	{
 		TupdR t = mock(TupdR.class);
 		
-		when(t.isZeroWithMargin(2.0)).thenCallRealMethod();
+		when(t.isZero(2.0)).thenCallRealMethod();
 		
 		when(t.getDimensions()).thenReturn(2);
 		when(t.getByIndex(0)).thenReturn(2.0);
 		when(t.getByIndex(1)).thenReturn(2.0);
 
-		assertEquals(true, t.isZeroWithMargin(2.0));
+		assertEquals(true, t.isZero(2.0));
 		
-		verify(t).isZeroWithMargin(2.0);
+		verify(t).isZero(2.0);
 
 		verify(t).getDimensions();
 		verify(t).getByIndex(0);
@@ -433,24 +433,24 @@ class TupdRTest
 	}
 	
 		/**
-	 * This test ensures, that the function {@link TupdR#isZeroWithMargin(double)} returns true,
+	 * This test ensures, that the function {@link TupdR#isZero(double)} returns true,
 	 * if all components are at the negative extreme point that is the inclusive
 	 * tolerance parameter.
 	 */
 	@Test
-	void isZeroWithMargin_Extreme_NegativeTest()
+	void isZero_Extreme_NegativeTest()
 	{
 		TupdR t = mock(TupdR.class);
 		
-		when(t.isZeroWithMargin(2.0)).thenCallRealMethod();
+		when(t.isZero(2.0)).thenCallRealMethod();
 		
 		when(t.getDimensions()).thenReturn(2);
 		when(t.getByIndex(0)).thenReturn(-2.0);
 		when(t.getByIndex(1)).thenReturn(-2.0);
 
-		assertEquals(true, t.isZeroWithMargin(2.0));
+		assertEquals(true, t.isZero(2.0));
 		
-		verify(t).isZeroWithMargin(2.0);
+		verify(t).isZero(2.0);
 
 		verify(t).getDimensions();
 		verify(t).getByIndex(0);
@@ -460,23 +460,23 @@ class TupdRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link TupdR#isZeroWithMargin(double)} returns false
+	 * This test ensures, that the function {@link TupdR#isZero(double)} returns false
 	 * after checking the first component, if the first component exceeds the positive
 	 * extreme point that is the inclusive tolerance parameter.
 	 */
 	@Test
-	void isZeroWithMargin_FailEarly_PositiveTest()
+	void isZero_FailEarly_PositiveTest()
 	{
 		TupdR t = mock(TupdR.class);
 		
-		when(t.isZeroWithMargin(2.0)).thenCallRealMethod();
+		when(t.isZero(2.0)).thenCallRealMethod();
 		
 		when(t.getDimensions()).thenReturn(2);
 		when(t.getByIndex(0)).thenReturn(3.0);
 
-		assertEquals(false, t.isZeroWithMargin(2.0));
+		assertEquals(false, t.isZero(2.0));
 		
-		verify(t).isZeroWithMargin(2.0);
+		verify(t).isZero(2.0);
 
 		verify(t).getDimensions();
 		verify(t).getByIndex(0);
@@ -485,23 +485,23 @@ class TupdRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link TupdR#isZeroWithMargin(double)} returns false
+	 * This test ensures, that the function {@link TupdR#isZero(double)} returns false
 	 * after checking the first component, if the first component exceeds the negative
 	 * extreme point that is the inclusive tolerance parameter.
 	 */
 	@Test
-	void isZeroWithMargin_FailEarly_NegativeTest()
+	void isZero_FailEarly_NegativeTest()
 	{
 		TupdR t = mock(TupdR.class);
 		
-		when(t.isZeroWithMargin(2.0)).thenCallRealMethod();
+		when(t.isZero(2.0)).thenCallRealMethod();
 		
 		when(t.getDimensions()).thenReturn(2);
 		when(t.getByIndex(0)).thenReturn(-3.0);
 
-		assertEquals(false, t.isZeroWithMargin(2.0));
+		assertEquals(false, t.isZero(2.0));
 		
-		verify(t).isZeroWithMargin(2.0);
+		verify(t).isZero(2.0);
 
 		verify(t).getDimensions();
 		verify(t).getByIndex(0);
@@ -510,24 +510,24 @@ class TupdRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link TupdR#isZeroWithMargin(double)} returns false
+	 * This test ensures, that the function {@link TupdR#isZero(double)} returns false
 	 * after checking all components, if only the last component exceeds the positive
 	 * extreme point that is the inclusive tolerance parameter.
 	 */
 	@Test
-	void isZeroWithMargin_Fail_PositiveTest()
+	void isZero_Fail_PositiveTest()
 	{
 		TupdR t = mock(TupdR.class);
 		
-		when(t.isZeroWithMargin(2.0)).thenCallRealMethod();
+		when(t.isZero(2.0)).thenCallRealMethod();
 		
 		when(t.getDimensions()).thenReturn(2);
 		when(t.getByIndex(0)).thenReturn(0.0);
 		when(t.getByIndex(1)).thenReturn(3.0);
 
-		assertEquals(false, t.isZeroWithMargin(2.0));
+		assertEquals(false, t.isZero(2.0));
 		
-		verify(t).isZeroWithMargin(2.0);
+		verify(t).isZero(2.0);
 
 		verify(t).getDimensions();
 		verify(t).getByIndex(0);
@@ -537,24 +537,24 @@ class TupdRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link TupdR#isZeroWithMargin(double)} returns false
+	 * This test ensures, that the function {@link TupdR#isZero(double)} returns false
 	 * after checking all components, if only the last component exceeds the negative
 	 * extreme point that is the inclusive tolerance parameter.
 	 */
 	@Test
-	void isZeroWithMargin_Fail_NegativeTest()
+	void isZero_Fail_NegativeTest()
 	{
 		TupdR t = mock(TupdR.class);
 		
-		when(t.isZeroWithMargin(2.0)).thenCallRealMethod();
+		when(t.isZero(2.0)).thenCallRealMethod();
 		
 		when(t.getDimensions()).thenReturn(2);
 		when(t.getByIndex(0)).thenReturn(0.0);
 		when(t.getByIndex(1)).thenReturn(-3.0);
 
-		assertEquals(false, t.isZeroWithMargin(2.0));
+		assertEquals(false, t.isZero(2.0));
 		
-		verify(t).isZeroWithMargin(2.0);
+		verify(t).isZero(2.0);
 
 		verify(t).getDimensions();
 		verify(t).getByIndex(0);
@@ -564,7 +564,7 @@ class TupdRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link TupdR#getArray()} calls
+	 * This test ensures, that the function {@link TupdR#toArray()} calls
 	 * the function {@link TupdR#toArray(double[])} with a new array with the size
 	 * equal to the number of dimensions of the tuple.
 	 */

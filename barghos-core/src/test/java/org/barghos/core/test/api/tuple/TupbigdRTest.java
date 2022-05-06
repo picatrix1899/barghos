@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
+import static org.barghos.core.api.testing.TestObjectFactory.*;
+
 import org.barghos.core.api.tuple.TupbigdR;
 
 /**
@@ -46,8 +48,8 @@ class TupbigdRTest
 		when(t.isValid()).thenCallRealMethod();
 		
 		when(t.getDimensions()).thenReturn(2);
-		when(t.getByIndex(0)).thenReturn(BigDecimal.ONE);
-		when(t.getByIndex(1)).thenReturn(BigDecimal.ONE);
+		when(t.getByIndex(0)).thenReturn(bigd(1));
+		when(t.getByIndex(1)).thenReturn(bigd(1));
 		
 		assertEquals(true, t.isValid());
 		
@@ -96,7 +98,7 @@ class TupbigdRTest
 		when(t.isValid()).thenCallRealMethod();
 		
 		when(t.getDimensions()).thenReturn(2);
-		when(t.getByIndex(0)).thenReturn(BigDecimal.ONE);
+		when(t.getByIndex(0)).thenReturn(bigd(1));
 		when(t.getByIndex(1)).thenReturn(null);
 		
 		assertEquals(false, t.isValid());
@@ -111,23 +113,153 @@ class TupbigdRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link TupbigdR#isZero()} returns true
+	 * This test ensures, that the function {@link TupbigdR#isExactlyZero()} returns true
 	 * if all components are {@link BigDecimal#ZERO}.
+	 */
+	@Test
+	void isExactlyZero_ZeroTest()
+	{
+		TupbigdR t = mock(TupbigdR.class);
+		
+		when(t.isExactlyZero()).thenCallRealMethod();
+		
+		when(t.getDimensions()).thenReturn(2);
+		when(t.getByIndex(0)).thenReturn(bigd(0));
+		when(t.getByIndex(1)).thenReturn(bigd(0));
+		
+		assertEquals(true, t.isExactlyZero());
+		
+		verify(t).isExactlyZero();
+
+		verify(t).getDimensions();
+		verify(t).getByIndex(0);
+		verify(t).getByIndex(1);
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link TupbigdR#isExactlyZero()} returns false
+	 * after checking the first component, if the first component is a positive number
+	 * greater zero.
+	 */
+	@Test
+	void isExactlyZero_FailEarly_PositiveTest()
+	{
+		TupbigdR t = mock(TupbigdR.class);
+		
+		when(t.isExactlyZero()).thenCallRealMethod();
+		
+		when(t.getDimensions()).thenReturn(2);
+		when(t.getByIndex(0)).thenReturn(bigd(1));
+		
+		assertEquals(false, t.isExactlyZero());
+		
+		verify(t).isExactlyZero();
+		
+		verify(t).getDimensions();
+		verify(t).getByIndex(0);
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link TupbigdR#isExactlyZero()} returns false
+	 * after checking the first component, if the first component is a negative number
+	 * greater zero.
+	 */
+	@Test
+	void isExactlyZero_FailEarly_NegativeTest()
+	{
+		TupbigdR t = mock(TupbigdR.class);
+		
+		when(t.isExactlyZero()).thenCallRealMethod();
+		
+		when(t.getDimensions()).thenReturn(2);
+		when(t.getByIndex(0)).thenReturn(bigd(-1));
+		
+		assertEquals(false, t.isExactlyZero());
+		
+		verify(t).isExactlyZero();
+
+		verify(t).getDimensions();
+		verify(t).getByIndex(0);
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link TupbigdR#isExactlyZero()} returns false
+	 * after checking all components, if only the last component is a positive number
+	 * greater zero.
+	 */
+	@Test
+	void isExactlyZero_Fail_PositiveTest()
+	{
+		TupbigdR t = mock(TupbigdR.class);
+		
+		when(t.isExactlyZero()).thenCallRealMethod();
+		
+		when(t.getDimensions()).thenReturn(2);
+		when(t.getByIndex(0)).thenReturn(bigd(0));
+		when(t.getByIndex(1)).thenReturn(bigd(1));
+		
+		assertEquals(false, t.isExactlyZero());
+		
+		verify(t).isExactlyZero();
+
+		verify(t).getDimensions();
+		verify(t).getByIndex(0);
+		verify(t).getByIndex(1);
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link TupbigdR#isExactlyZero()} returns false
+	 * after checking all components, if only the last component is a negative number
+	 * greater zero.
+	 */
+	@Test
+	void isExactlyZero_Fail_NegativeTest()
+	{
+		TupbigdR t = mock(TupbigdR.class);
+		
+		when(t.isExactlyZero()).thenCallRealMethod();
+		
+		when(t.getDimensions()).thenReturn(2);
+		when(t.getByIndex(0)).thenReturn(bigd(0));
+		when(t.getByIndex(1)).thenReturn(bigd(-1));
+		
+		assertEquals(false, t.isExactlyZero());
+		
+		verify(t).isExactlyZero();
+
+		verify(t).getDimensions();
+		verify(t).getByIndex(0);
+		verify(t).getByIndex(1);
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link TupbigdR#isZero(BigDecimal)} returns true,
+	 * if all components are exactly {@link BigDecimal#ZERO}.
 	 */
 	@Test
 	void isZero_ZeroTest()
 	{
 		TupbigdR t = mock(TupbigdR.class);
 		
-		when(t.isZero()).thenCallRealMethod();
+		when(t.isZero(bigd(2))).thenCallRealMethod();
 		
 		when(t.getDimensions()).thenReturn(2);
-		when(t.getByIndex(0)).thenReturn(BigDecimal.ZERO);
-		when(t.getByIndex(1)).thenReturn(BigDecimal.ZERO);
+		when(t.getByIndex(0)).thenReturn(bigd(0));
+		when(t.getByIndex(1)).thenReturn(bigd(0));
+
+		assertEquals(true, t.isZero(bigd(2)));
 		
-		assertEquals(true, t.isZero());
-		
-		verify(t).isZero();
+		verify(t).isZero(bigd(2));
 
 		verify(t).getDimensions();
 		verify(t).getByIndex(0);
@@ -137,48 +269,77 @@ class TupbigdRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link TupbigdR#isZero()} returns false
-	 * after checking the first component, if the first component is a positive number
-	 * greater zero.
+	 * This test ensures, that the function {@link TupbigdR#isZero(BigDecimal)} returns true,
+	 * if all components are at the positive extreme point that is the inclusive
+	 * tolerance parameter.
+	 */
+	@Test
+	void isZero_Extreme_PositiveTest()
+	{
+		TupbigdR t = mock(TupbigdR.class);
+		
+		when(t.isZero(bigd(2))).thenCallRealMethod();
+		
+		when(t.getDimensions()).thenReturn(2);
+		when(t.getByIndex(0)).thenReturn(bigd(2));
+		when(t.getByIndex(1)).thenReturn(bigd(2));
+
+		assertEquals(true, t.isZero(bigd(2)));
+		
+		verify(t).isZero(bigd(2));
+
+		verify(t).getDimensions();
+		verify(t).getByIndex(0);
+		verify(t).getByIndex(1);
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link TupbigdR#isZero(BigDecimal)} returns true,
+	 * if all components are at the negative extreme point that is the inclusive
+	 * tolerance parameter.
+	 */
+	@Test
+	void isZero_Extreme_NegativeTest()
+	{
+		TupbigdR t = mock(TupbigdR.class);
+		
+		when(t.isZero(bigd(2))).thenCallRealMethod();
+		
+		when(t.getDimensions()).thenReturn(2);
+		when(t.getByIndex(0)).thenReturn(bigd(-2));
+		when(t.getByIndex(1)).thenReturn(bigd(-2));
+
+		assertEquals(true, t.isZero(bigd(2)));
+		
+		verify(t).isZero(bigd(2));
+
+		verify(t).getDimensions();
+		verify(t).getByIndex(0);
+		verify(t).getByIndex(1);
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link TupbigdR#isZero(BigDecimal)} returns false
+	 * after checking the first component, if the first component exceeds the positive
+	 * extreme point that is the inclusive tolerance parameter.
 	 */
 	@Test
 	void isZero_FailEarly_PositiveTest()
 	{
 		TupbigdR t = mock(TupbigdR.class);
 		
-		when(t.isZero()).thenCallRealMethod();
+		when(t.isZero(bigd(2))).thenCallRealMethod();
 		
 		when(t.getDimensions()).thenReturn(2);
-		when(t.getByIndex(0)).thenReturn(BigDecimal.ONE);
+		when(t.getByIndex(0)).thenReturn(bigd(3));
+
+		assertEquals(false, t.isZero(bigd(2)));
 		
-		assertEquals(false, t.isZero());
-		
-		verify(t).isZero();
-		
-		verify(t).getDimensions();
-		verify(t).getByIndex(0);
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link TupbigdR#isZero()} returns false
-	 * after checking the first component, if the first component is a negative number
-	 * greater zero.
-	 */
-	@Test
-	void isZero_FailEarly_NegativeTest()
-	{
-		TupbigdR t = mock(TupbigdR.class);
-		
-		when(t.isZero()).thenCallRealMethod();
-		
-		when(t.getDimensions()).thenReturn(2);
-		when(t.getByIndex(0)).thenReturn(BigDecimal.valueOf(-1));
-		
-		assertEquals(false, t.isZero());
-		
-		verify(t).isZero();
+		verify(t).isZero(bigd(2));
 
 		verify(t).getDimensions();
 		verify(t).getByIndex(0);
@@ -187,166 +348,7 @@ class TupbigdRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link TupbigdR#isZero()} returns false
-	 * after checking all components, if only the last component is a positive number
-	 * greater zero.
-	 */
-	@Test
-	void isZero_Fail_PositiveTest()
-	{
-		TupbigdR t = mock(TupbigdR.class);
-		
-		when(t.isZero()).thenCallRealMethod();
-		
-		when(t.getDimensions()).thenReturn(2);
-		when(t.getByIndex(0)).thenReturn(BigDecimal.ZERO);
-		when(t.getByIndex(1)).thenReturn(BigDecimal.ONE);
-		
-		assertEquals(false, t.isZero());
-		
-		verify(t).isZero();
-
-		verify(t).getDimensions();
-		verify(t).getByIndex(0);
-		verify(t).getByIndex(1);
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link TupbigdR#isZero()} returns false
-	 * after checking all components, if only the last component is a negative number
-	 * greater zero.
-	 */
-	@Test
-	void isZero_Fail_NegativeTest()
-	{
-		TupbigdR t = mock(TupbigdR.class);
-		
-		when(t.isZero()).thenCallRealMethod();
-		
-		when(t.getDimensions()).thenReturn(2);
-		when(t.getByIndex(0)).thenReturn(BigDecimal.ZERO);
-		when(t.getByIndex(1)).thenReturn(BigDecimal.valueOf(-1));
-		
-		assertEquals(false, t.isZero());
-		
-		verify(t).isZero();
-
-		verify(t).getDimensions();
-		verify(t).getByIndex(0);
-		verify(t).getByIndex(1);
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link TupbigdR#isZeroWithMargin(BigDecimal)} returns true,
-	 * if all components are exactly {@link BigDecimal#ZERO}.
-	 */
-	@Test
-	void isZeroWithMargin_ZeroTest()
-	{
-		TupbigdR t = mock(TupbigdR.class);
-		
-		when(t.isZeroWithMargin(BigDecimal.valueOf(2))).thenCallRealMethod();
-		
-		when(t.getDimensions()).thenReturn(2);
-		when(t.getByIndex(0)).thenReturn(BigDecimal.ZERO);
-		when(t.getByIndex(1)).thenReturn(BigDecimal.ZERO);
-
-		assertEquals(true, t.isZeroWithMargin(BigDecimal.valueOf(2)));
-		
-		verify(t).isZeroWithMargin(BigDecimal.valueOf(2));
-
-		verify(t).getDimensions();
-		verify(t).getByIndex(0);
-		verify(t).getByIndex(1);
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link TupbigdR#isZeroWithMargin(BigDecimal)} returns true,
-	 * if all components are at the positive extreme point that is the inclusive
-	 * tolerance parameter.
-	 */
-	@Test
-	void isZeroWithMargin_Extreme_PositiveTest()
-	{
-		TupbigdR t = mock(TupbigdR.class);
-		
-		when(t.isZeroWithMargin(BigDecimal.valueOf(2))).thenCallRealMethod();
-		
-		when(t.getDimensions()).thenReturn(2);
-		when(t.getByIndex(0)).thenReturn(BigDecimal.valueOf(2));
-		when(t.getByIndex(1)).thenReturn(BigDecimal.valueOf(2));
-
-		assertEquals(true, t.isZeroWithMargin(BigDecimal.valueOf(2)));
-		
-		verify(t).isZeroWithMargin(BigDecimal.valueOf(2));
-
-		verify(t).getDimensions();
-		verify(t).getByIndex(0);
-		verify(t).getByIndex(1);
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link TupbigdR#isZeroWithMargin(BigDecimal)} returns true,
-	 * if all components are at the negative extreme point that is the inclusive
-	 * tolerance parameter.
-	 */
-	@Test
-	void isZeroWithMargin_Extreme_NegativeTest()
-	{
-		TupbigdR t = mock(TupbigdR.class);
-		
-		when(t.isZeroWithMargin(BigDecimal.valueOf(2))).thenCallRealMethod();
-		
-		when(t.getDimensions()).thenReturn(2);
-		when(t.getByIndex(0)).thenReturn(BigDecimal.valueOf(-2));
-		when(t.getByIndex(1)).thenReturn(BigDecimal.valueOf(-2));
-
-		assertEquals(true, t.isZeroWithMargin(BigDecimal.valueOf(2)));
-		
-		verify(t).isZeroWithMargin(BigDecimal.valueOf(2));
-
-		verify(t).getDimensions();
-		verify(t).getByIndex(0);
-		verify(t).getByIndex(1);
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link TupbigdR#isZeroWithMargin(BigDecimal)} returns false
-	 * after checking the first component, if the first component exceeds the positive
-	 * extreme point that is the inclusive tolerance parameter.
-	 */
-	@Test
-	void isZeroWithMargin_FailEarly_PositiveTest()
-	{
-		TupbigdR t = mock(TupbigdR.class);
-		
-		when(t.isZeroWithMargin(BigDecimal.valueOf(2))).thenCallRealMethod();
-		
-		when(t.getDimensions()).thenReturn(2);
-		when(t.getByIndex(0)).thenReturn(BigDecimal.valueOf(3));
-
-		assertEquals(false, t.isZeroWithMargin(BigDecimal.valueOf(2)));
-		
-		verify(t).isZeroWithMargin(BigDecimal.valueOf(2));
-
-		verify(t).getDimensions();
-		verify(t).getByIndex(0);
-		
-		verifyNoMoreInteractions(t);
-	}
-	
-	/**
-	 * This test ensures, that the function {@link TupbigdR#isZeroWithMargin(BigDecimal)} returns false
+	 * This test ensures, that the function {@link TupbigdR#isZero(BigDecimal)} returns false
 	 * after checking the first component, if the first component exceeds the negative
 	 * extreme point that is the inclusive tolerance parameter.
 	 */
@@ -355,14 +357,14 @@ class TupbigdRTest
 	{
 		TupbigdR t = mock(TupbigdR.class);
 		
-		when(t.isZeroWithMargin(BigDecimal.valueOf(2))).thenCallRealMethod();
+		when(t.isZero(bigd(2))).thenCallRealMethod();
 		
 		when(t.getDimensions()).thenReturn(2);
-		when(t.getByIndex(0)).thenReturn(BigDecimal.valueOf(-3));
+		when(t.getByIndex(0)).thenReturn(bigd(-3));
 
-		assertEquals(false, t.isZeroWithMargin(BigDecimal.valueOf(2)));
+		assertEquals(false, t.isZero(bigd(2)));
 		
-		verify(t).isZeroWithMargin(BigDecimal.valueOf(2));
+		verify(t).isZero(bigd(2));
 		
 		verify(t).getDimensions();
 		verify(t).getByIndex(0);
@@ -371,24 +373,24 @@ class TupbigdRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link TupbigdR#isZeroWithMargin(BigDecimal)} returns false
+	 * This test ensures, that the function {@link TupbigdR#isZero(BigDecimal)} returns false
 	 * after checking all components, if only the last component exceeds the positive
 	 * extreme point that is the inclusive tolerance parameter.
 	 */
 	@Test
-	void isZeroWithMargin_Fail_PositiveTest()
+	void isZero_Fail_PositiveTest()
 	{
 		TupbigdR t = mock(TupbigdR.class);
 		
-		when(t.isZeroWithMargin(BigDecimal.valueOf(2))).thenCallRealMethod();
+		when(t.isZero(bigd(2))).thenCallRealMethod();
 		
 		when(t.getDimensions()).thenReturn(2);
-		when(t.getByIndex(0)).thenReturn(BigDecimal.ZERO);
-		when(t.getByIndex(1)).thenReturn(BigDecimal.valueOf(3));
+		when(t.getByIndex(0)).thenReturn(bigd(0));
+		when(t.getByIndex(1)).thenReturn(bigd(3));
 
-		assertEquals(false, t.isZeroWithMargin(BigDecimal.valueOf(2)));
+		assertEquals(false, t.isZero(bigd(2)));
 		
-		verify(t).isZeroWithMargin(BigDecimal.valueOf(2));
+		verify(t).isZero(bigd(2));
 
 		verify(t).getDimensions();
 		verify(t).getByIndex(0);
@@ -398,24 +400,24 @@ class TupbigdRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link TupbigdR#isZeroWithMargin(BigDecimal)} returns false
+	 * This test ensures, that the function {@link TupbigdR#isZero(BigDecimal)} returns false
 	 * after checking all components, if only the last component exceeds the negative
 	 * extreme point that is the inclusive tolerance parameter.
 	 */
 	@Test
-	void isZeroWithMargin_Fail_NegativeTest()
+	void isZero_Fail_NegativeTest()
 	{
 		TupbigdR t = mock(TupbigdR.class);
 		
-		when(t.isZeroWithMargin(BigDecimal.valueOf(2))).thenCallRealMethod();
+		when(t.isZero(bigd(2))).thenCallRealMethod();
 		
 		when(t.getDimensions()).thenReturn(2);
-		when(t.getByIndex(0)).thenReturn(BigDecimal.ZERO);
-		when(t.getByIndex(1)).thenReturn(BigDecimal.valueOf(-3));
+		when(t.getByIndex(0)).thenReturn(bigd(0));
+		when(t.getByIndex(1)).thenReturn(bigd(-3));
 		
-		assertEquals(false, t.isZeroWithMargin(BigDecimal.valueOf(2)));
+		assertEquals(false, t.isZero(bigd(2)));
 		
-		verify(t).isZeroWithMargin(BigDecimal.valueOf(2));
+		verify(t).isZero(bigd(2));
 		
 		verify(t).getDimensions();
 		verify(t).getByIndex(0);
@@ -425,7 +427,7 @@ class TupbigdRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link TupbigdR#getArray()} calls
+	 * This test ensures, that the function {@link TupbigdR#toArray()} calls
 	 * the function {@link TupbigdR#toArray(BigDecimal[])} with a new array with the size
 	 * equal to the number of dimensions of the tuple.
 	 */

@@ -58,7 +58,7 @@ public interface Tup2bR extends TupbR
 	 * @return True if all components are exactly zero.
 	 */
 	@Override
-	default boolean isZero()
+	default boolean isExactlyZero()
 	{
 		return getX() == (byte)0 &&
 				getY() == (byte)0;
@@ -72,7 +72,7 @@ public interface Tup2bR extends TupbR
 	 * @return True if all components are technically zero.
 	 */
 	@Override
-	default boolean isZeroWithMargin(byte tolerance)
+	default boolean isZero(byte tolerance)
 	{
 		return Math.abs(getX()) <= tolerance &&
 				Math.abs(getY()) <= tolerance;
@@ -106,30 +106,5 @@ public interface Tup2bR extends TupbR
 		res[COMP_Y] = getY();
 		
 		return res;
-	}
-	
-	/**
-	 * Creates a new anonymous implementation instance of the interface {@link Tup2bR} with the given values.
-	 * As the resulting instance is just a minimal implementation of the interface it does not provide clone,
-	 * equals, hashCode or toString operations.
-	 * 
-	 * @param x The value of the x component.
-	 * @param y The value of the y component.
-	 * 
-	 * @return The anonymous implementation instance.
-	 */
-	public static Tup2bR of(final byte x, final byte y)
-	{
-		return new Tup2bR() {
-			public byte getX()
-			{
-				return x;
-			}
-
-			public byte getY()
-			{
-				return y;
-			}
-		};
 	}
 }

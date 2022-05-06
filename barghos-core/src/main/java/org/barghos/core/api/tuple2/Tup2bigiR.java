@@ -56,7 +56,7 @@ public interface Tup2bigiR extends TupbigiR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default boolean isZero()
+	default boolean isExactlyZero()
 	{
 		return getX().compareTo(BigInteger.ZERO) == 0 &&
 				getY().compareTo(BigInteger.ZERO) == 0;
@@ -64,7 +64,7 @@ public interface Tup2bigiR extends TupbigiR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default boolean isZeroWithMargin(BigInteger tolerance)
+	default boolean isZero(BigInteger tolerance)
 	{
 		return getX().abs().compareTo(tolerance) <= 0 &&
 				getY().abs().compareTo(tolerance) <= 0;
@@ -106,30 +106,5 @@ public interface Tup2bigiR extends TupbigiR
 		res[COMP_Y] = getY();
 		
 		return res;
-	}
-	
-	/**
-	 * Creates a new anonymous implementation instance of the interface {@link Tup2bigiR} with the given values.
-	 * As the resulting instance is just a minimal implementation of the interface it does not provide clone,
-	 * equals, hashCode or toString operations.
-	 * 
-	 * @param x The value of the x component.
-	 * @param y The value of the y component.
-	 * 
-	 * @return The anonymous implementation instance.
-	 */
-	public static Tup2bigiR of(final BigInteger x, final BigInteger y)
-	{
-		return new Tup2bigiR() {
-			public BigInteger getX()
-			{
-				return x;
-			}
-
-			public BigInteger getY()
-			{
-				return y;
-			}
-		};
 	}
 }

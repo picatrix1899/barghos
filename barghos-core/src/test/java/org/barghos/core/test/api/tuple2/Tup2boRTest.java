@@ -44,11 +44,11 @@ class Tup2boRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup2boR#getArray(boolean[])} returns
+	 * This test ensures, that the function {@link Tup2boR#toArray(boolean[])} returns
 	 * the given array with the components in the right order.
 	 */
 	@Test
-	void toArray_QueryTest()
+	void toArray_ExtractParamTest()
 	{
 		Tup2boR t = mock(Tup2boR.class);
 		

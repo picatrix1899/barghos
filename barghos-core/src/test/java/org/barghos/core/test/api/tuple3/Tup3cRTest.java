@@ -43,7 +43,7 @@ class Tup3cRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup3cR#getArray(char[])} returns
+	 * This test ensures, that the function {@link Tup3cR#toArray(char[])} returns
 	 * the given array with the components in the right order.
 	 */
 	@Test

@@ -134,6 +134,15 @@ public interface Tup4cC extends Tup4cR, TupcC
 		return setArray(t.toArray());
 	}
 	
-	/** {@inheritDoc} */
+	/** {@inheritDoc}} */
+	@Override
+	Tup4cC shallowClone();
+	
+	/** {@inheritDoc}} */
+	@Override
+	Tup4cC deepClone();
+	
+	/** {@inheritDoc}} */
+	@Override
 	Tup4cC clone();
 }

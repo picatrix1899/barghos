@@ -110,4 +110,16 @@ public interface Tup2objC extends Tup2objR, TupobjC
 	{
 		return setArray(t.toArray());
 	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	Tup2objC shallowClone();
+	
+	/** {@inheritDoc}} */
+	@Override
+	Tup2objC deepClone();
+	
+	/** {@inheritDoc}} */
+	@Override
+	Tup2objC clone();
 }

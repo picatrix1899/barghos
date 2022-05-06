@@ -135,7 +135,7 @@ class Tup2boCTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup2boRW#setByIndex(int, boolean)} adopts the
+	 * This test ensures, that the function {@link Tup2boC#setByIndex(int, boolean)} adopts the
 	 * value to the x component if the index is 0 and returns the current instance.
 	 */
 	@Test
@@ -157,7 +157,7 @@ class Tup2boCTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup2boRW#setByIndex(int, boolean)} adopts the
+	 * This test ensures, that the function {@link Tup2boC#setByIndex(int, boolean)} adopts the
 	 * value to the y component if the index is 1 and returns the current instance.
 	 */
 	@Test

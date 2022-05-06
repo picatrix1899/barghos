@@ -5,6 +5,7 @@ import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
+
 import org.barghos.core.api.tuple.TupcC;
 import org.barghos.core.api.tuple.TupcR;
 import org.barghos.core.api.tuple4.Tup4cC;

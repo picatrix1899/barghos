@@ -132,4 +132,16 @@ public interface Tup4objC extends Tup4objR, TupobjC
 	{
 		return setArray(t.toArray());
 	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	Tup4objC shallowClone();
+	
+	/** {@inheritDoc}} */
+	@Override
+	Tup4objC deepClone();
+	
+	/** {@inheritDoc}} */
+	@Override
+	Tup4objC clone();
 }

@@ -44,7 +44,7 @@ class Tup3boRTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup3boR#getArray(boolean[])} returns
+	 * This test ensures, that the function {@link Tup3boR#toArray(boolean[])} returns
 	 * the given array with the components in the right order.
 	 */
 	@Test

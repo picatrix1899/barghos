@@ -111,6 +111,15 @@ public interface Tup2strC extends Tup2strR, TupstrC
 		return setArray(t.toArray());
 	}
 	
+	/** {@inheritDoc}} */
+	@Override
+	Tup2strC shallowClone();
+	
+	/** {@inheritDoc}} */
+	@Override
+	Tup2strC deepClone();
+	
 	/** {@inheritDoc} */
+	@Override
 	Tup2strC clone();
 }

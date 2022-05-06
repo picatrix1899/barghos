@@ -54,7 +54,7 @@ public interface Tup2iR extends TupiR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default boolean isZero()
+	default boolean isExactlyZero()
 	{
 		return getX() == 0 &&
 				getY() == 0;
@@ -62,7 +62,7 @@ public interface Tup2iR extends TupiR
 
 	/** {@inheritDoc}} */
 	@Override
-	default boolean isZeroWithMargin(int tolerance)
+	default boolean isZero(int tolerance)
 	{
 		return Math.abs(getX()) <= tolerance &&
 				Math.abs(getY()) <= tolerance;
@@ -96,30 +96,5 @@ public interface Tup2iR extends TupiR
 		res[COMP_Y] = getY();
 		
 		return res;
-	}
-	
-	/**
-	 * Creates a new anonymous implementation instance of the interface {@link Tup2iR} with the given values.
-	 * As the resulting instance is just a minimal implementation of the interface it does not provide clone,
-	 * equals, hashCode or toString operations.
-	 * 
-	 * @param x The value of the x component.
-	 * @param y The value of the y component.
-	 * 
-	 * @return The anonymous implementation instance.
-	 */
-	public static Tup2iR of(final int x, final int y)
-	{
-		return new Tup2iR() {
-			public int getX()
-			{
-				return x;
-			}
-
-			public int getY()
-			{
-				return y;
-			}
-		};
 	}
 }

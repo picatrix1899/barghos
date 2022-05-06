@@ -5,6 +5,7 @@ import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
+
 import org.barghos.core.api.tuple.TupdC;
 import org.barghos.core.api.tuple.TupdR;
 import org.barghos.core.api.tuple4.Tup4dC;
@@ -89,7 +90,7 @@ class Tup4dCTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link Tup4dC#set(double, double)} adopts
+	 * This test ensures, that the function {@link Tup4dC#set(double, double, double, double)} adopts
 	 * the values and returns the current instance.
 	 */
 	@Test

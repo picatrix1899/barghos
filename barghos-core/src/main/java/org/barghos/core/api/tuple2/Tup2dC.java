@@ -111,6 +111,15 @@ public interface Tup2dC extends Tup2dR, TupdC
 		return setArray(t.toArray());
 	}
 	
+	/** {@inheritDoc}} */
+	@Override
+	Tup2dC shallowClone();
+	
+	/** {@inheritDoc}} */
+	@Override
+	Tup2dC deepClone();
+	
 	/** {@inheritDoc} */
+	@Override
 	Tup2dC clone();
 }

@@ -25,6 +25,10 @@ package org.barghos.core.api.tuple3;
 /**
  * This interface represents any modifiable 3-dimensional object tuples.
  * 
+ * @param <X> The type of the x component.
+ * @param <Y> The type of the y component.
+ * @param <Z> The type of the z component.
+ * 
  * @author picatrix1899
  */
 public interface Tup3oC<X,Y,Z> extends Tup3oR<X,Y,Z>
