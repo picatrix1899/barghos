@@ -50,16 +50,21 @@ import org.barghos.core.api.tuple4.Tup4lR;
 import org.barghos.core.api.tuple4.Tup4sR;
 
 /**
- * Provides functions for creating and filling different buffers more easiely.
+ * Provides functions for creating and filling nio buffers more easiely.
  * 
  * @author picatrix1899
  */
-public abstract class BufferUtil
+public class BufferUtil
 {	
 	/**
 	 * Contains the factory that should be used for creating and destroying buffers.
 	 */
 	public static NioBufferFactory BUFFER_FACTORY = new JavaNioBufferFactory();
+	
+	/**
+	 * This class contains only static functions. Therefore it should not be instanciated.
+	 */
+	private BufferUtil() { }
 	
 	/**
 	 * Creates and therefore allocates a new {@link ByteBuffer} with the given maximum capacity.
