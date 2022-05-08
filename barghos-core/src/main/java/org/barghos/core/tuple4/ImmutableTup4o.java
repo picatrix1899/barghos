@@ -32,6 +32,11 @@ import org.barghos.core.api.tuple4.Tup4oR;
  * Represents an immutable readonly 4-dimensional {@link Object} tuple.
  * It can be used as a more flexible way to create constants.
  * 
+ * @param <X> The type of the x component.
+ * @param <Y> The type of the y component.
+ * @param <Z> The type of the z component.
+ * @param <W> The type of the w component.
+ * 
  * @author picatrix1899
  */
 public class ImmutableTup4o<X,Y,Z,W> implements Tup4oR<X,Y,Z,W>, FormattableToString

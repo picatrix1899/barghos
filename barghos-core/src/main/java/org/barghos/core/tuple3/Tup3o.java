@@ -34,6 +34,10 @@ import java.util.Map;
  * A tuple unlike a vector contains data that is not necessarly in any relation to each other,
  * where the data of a vector describes the same logical structure.
  * 
+ * @param <X> The type of the x component.
+ * @param <Y> The type of the y component.
+ * @param <Z> The type of the z component.
+ * 
  * @author picatrix1899
  */
 public class Tup3o<X,Y,Z> implements Tup3oC<X,Y,Z>, FormattableToString

@@ -28,6 +28,8 @@ package org.barghos.core.api.pool;
  * 
  * @author picatrix1899
  * 
+ * @param <T> The type of the elements stored in the pool.
+ * 
  * @since 1.0.0.0
  */
 public interface Pool<T>

@@ -34,6 +34,8 @@ import org.barghos.core.Barghos;
 /**
  * This instance pool utilizes a {@link ArrayDeque} as internal list.
  * 
+ * @param <T> The type of the elements stored in the pool.
+ * 
  * @author picatrix1899
  * 
  * @since 1.0.0.0
