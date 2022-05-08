@@ -25,6 +25,8 @@ package org.barghos.core.tuple2;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import static org.barghos.core.api.tuple.TupleConstants.*;
+
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupsR;
 import org.barghos.core.api.tuple2.Tup2sR;
@@ -53,9 +55,9 @@ public class ImmutableTup2s implements Tup2sR, FormattableToString
 	protected transient int hashCode;
 	
 	/**
-	 * The flag that shows that the hashCode has already been generated.
+	 * The flag that shows that the hashCode has already been calculated.
 	 */
-	protected transient boolean isHashCodeGenerated;
+	protected transient boolean isHashCodeCalculated;
 	
 	/**
 	 * Generates a new readonly {@link ImmutableTup2s} from an existing instance of {@link TupsR} and adopts the values.
@@ -64,7 +66,10 @@ public class ImmutableTup2s implements Tup2sR, FormattableToString
 	 */
 	public ImmutableTup2s(TupsR t)
 	{
-		this(t.toArray());
+		short[] v = t.toArray(new short[2]);
+		
+		this.x = v[COMP_X];
+		this.y = v[COMP_Y];
 	}
 	
 	/**
@@ -74,7 +79,8 @@ public class ImmutableTup2s implements Tup2sR, FormattableToString
 	 */
 	public ImmutableTup2s(Tup2sR t)
 	{
-		this(t.getX(), t.getY());
+		this.x = t.getX();
+		this.y = t.getY();
 	}
 	
 	/**
@@ -84,7 +90,8 @@ public class ImmutableTup2s implements Tup2sR, FormattableToString
 	 */
 	public ImmutableTup2s(short value)
 	{
-		this(value, value);
+		this.x = value;
+		this.y = value;
 	}
 	
 	/**
@@ -94,8 +101,8 @@ public class ImmutableTup2s implements Tup2sR, FormattableToString
 	 */
 	public ImmutableTup2s(short[] v)
 	{
-		this.x = v[0];
-		this.y = v[1];
+		this.x = v[COMP_X];
+		this.y = v[COMP_Y];
 	}
 	
 	/**
@@ -128,7 +135,8 @@ public class ImmutableTup2s implements Tup2sR, FormattableToString
 	@Override
 	public int hashCode()
 	{
-		if(!this.isHashCodeGenerated) generateHashCode();
+		if(!this.isHashCodeCalculated) calculateHashCode();
+		
 		return this.hashCode;
 	}
 	
@@ -142,8 +150,8 @@ public class ImmutableTup2s implements Tup2sR, FormattableToString
 		if(obj instanceof Tup2sR)
 		{
 			Tup2sR other = (Tup2sR) obj;
-			if(getX() != other.getX()) return false;
-			if(getY() != other.getY()) return false;
+			if(this.x != other.getX()) return false;
+			if(this.y != other.getY()) return false;
 			
 			return true;
 		}
@@ -151,9 +159,9 @@ public class ImmutableTup2s implements Tup2sR, FormattableToString
 		if(obj instanceof TupsR)
 		{
 			TupsR other = (TupsR) obj;
-			if(getDimensions() != other.getDimensions()) return false;
-			if(getX() != other.getByIndex(0)) return false;
-			if(getY() != other.getByIndex(1)) return false;
+			if(2 != other.getDimensions()) return false;
+			if(this.x != other.getByIndex(0)) return false;
+			if(this.y != other.getByIndex(1)) return false;
 			
 			return true;
 		}
@@ -165,14 +173,14 @@ public class ImmutableTup2s implements Tup2sR, FormattableToString
 	@Override
 	public String toString()
 	{
-		return "immutableTup2s(x=" + getX() + ", y=" + getY() + ")";
+		return "immutableTup2s(x=" + this.x + ", y=" + this.y + ")";
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public ImmutableTup2s clone()
 	{
-		return new ImmutableTup2s(this);
+		return new ImmutableTup2s(this.x, this.y);
 	}
 	
 	/** {@inheritDoc}} */
@@ -180,23 +188,23 @@ public class ImmutableTup2s implements Tup2sR, FormattableToString
 	public Map<String,Object> getValueMapping()
 	{
 		Map<String,Object> values = new LinkedHashMap<>();
-		values.put("x", getX());
-		values.put("y", getY());
+		values.put("x", this.x);
+		values.put("y", this.y);
 		
 		return values;
 	}
 	
 	/**
-	 * This method generates the hashCode and stores it in the member for later use.
+	 * This method calculates the hashCode and stores it in the member for later use.
 	 */
-	protected void generateHashCode()
+	protected void calculateHashCode()
 	{
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + getX();
-		result = prime * result + getY();
+		result = prime * result + this.x;
+		result = prime * result + this.y;
 		
 		this.hashCode = result;
-		this.isHashCodeGenerated = true;
+		this.isHashCodeCalculated = true;
 	}
 }

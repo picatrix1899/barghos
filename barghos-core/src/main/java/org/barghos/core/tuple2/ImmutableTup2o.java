@@ -32,6 +32,9 @@ import org.barghos.core.api.tuple2.Tup2oR;
  * Represents an immutable readonly 2-dimensional {@link Object} tuple.
  * It can be used as a more flexible way to create constants.
  * 
+ * @param <X> The type of the x component.
+ * @param <Y> The type of the y component.
+ * 
  * @author picatrix1899
  */
 public class ImmutableTup2o<X,Y> implements Tup2oR<X,Y>, FormattableToString
@@ -47,23 +50,14 @@ public class ImmutableTup2o<X,Y> implements Tup2oR<X,Y>, FormattableToString
 	public final Y y;
 	
 	/**
-	 * The immutable hashCode.
-	 */
-	protected transient int hashCode;
-	
-	/**
-	 * The flag that shows that the hashCode has already been generated.
-	 */
-	protected transient boolean isHashCodeGenerated;
-	
-	/**
 	 * Generates a new readonly {@link ImmutableTup2o} from an existing instance of {@link Tup2oR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link Tup2oR} to adopt the values from.
 	 */
 	public ImmutableTup2o(Tup2oR<X,Y> t)
 	{
-		this(t.getX(), t.getY());
+		this.x = t.getX();
+		this.y = t.getY();
 	}
 	
 	/**
@@ -96,8 +90,12 @@ public class ImmutableTup2o<X,Y> implements Tup2oR<X,Y>, FormattableToString
 	@Override
 	public int hashCode()
 	{
-		if(!this.isHashCodeGenerated) generateHashCode();
-		return this.hashCode;
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + this.x.hashCode();
+		result = prime * result + this.y.hashCode();
+		
+		return result;
 	}
 	
 	/** {@inheritDoc} */
@@ -111,8 +109,8 @@ public class ImmutableTup2o<X,Y> implements Tup2oR<X,Y>, FormattableToString
 		{
 			@SuppressWarnings("unchecked")
 			Tup2oR<X,Y> other = (Tup2oR<X,Y>) obj;
-			if(!getX().equals(other.getX())) return false;
-			if(!getY().equals(other.getY())) return false;
+			if(!this.x.equals(other.getX())) return false;
+			if(!this.y.equals(other.getY())) return false;
 			
 			return true;
 		}
@@ -124,7 +122,7 @@ public class ImmutableTup2o<X,Y> implements Tup2oR<X,Y>, FormattableToString
 	@Override
 	public String toString()
 	{
-		return "immutableTup2o(x=" + getX() + ", y=" + getY() + ")";
+		return "immutableTup2o(x=" + this.x + ", y=" + this.y + ")";
 	}
 
 	/** {@inheritDoc} */
@@ -132,23 +130,9 @@ public class ImmutableTup2o<X,Y> implements Tup2oR<X,Y>, FormattableToString
 	public Map<String,Object> getValueMapping()
 	{
 		Map<String,Object> values = new LinkedHashMap<>();
-		values.put("x", getX());
-		values.put("y", getY());
+		values.put("x", this.x);
+		values.put("y", this.y);
 		
 		return values;
-	}
-	
-	/**
-	 * This method generates the hashCode and stores it in the member for later use.
-	 */
-	protected void generateHashCode()
-	{
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + getX().hashCode();
-		result = prime * result + getY().hashCode();
-		
-		this.hashCode = result;
-		this.isHashCodeGenerated = true;
 	}
 }

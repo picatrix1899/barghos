@@ -26,6 +26,8 @@ import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import static org.barghos.core.api.tuple.TupleConstants.*;
+
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupcR;
 import org.barghos.core.api.tuple2.Tup2cC;
@@ -60,7 +62,8 @@ public class Tup2c implements Tup2cC, Serializable, FormattableToString
 	 */
 	public Tup2c()
 	{
-		set((char)0);
+		this.x = 0;
+		this.y = 0;
 	}
 	
 	/**
@@ -70,7 +73,10 @@ public class Tup2c implements Tup2cC, Serializable, FormattableToString
 	 */
 	public Tup2c(TupcR t)
 	{
-		set(t);
+		char[] v = t.toArray(new char[2]);
+		
+		this.x = v[COMP_X];
+		this.y = v[COMP_Y];
 	}
 	
 	/**
@@ -80,7 +86,8 @@ public class Tup2c implements Tup2cC, Serializable, FormattableToString
 	 */
 	public Tup2c(Tup2cR t)
 	{
-		set(t);
+		this.x = t.getX();
+		this.y = t.getY();
 	}
 	
 	/**
@@ -90,7 +97,8 @@ public class Tup2c implements Tup2cC, Serializable, FormattableToString
 	 */
 	public Tup2c(char value)
 	{
-		set(value);
+		this.x = value;
+		this.y = value;
 	}
 	
 	/**
@@ -100,7 +108,8 @@ public class Tup2c implements Tup2cC, Serializable, FormattableToString
 	 */
 	public Tup2c(char[] v)
 	{
-		setArray(v);
+		this.x = v[COMP_X];
+		this.y = v[COMP_Y];
 	}
 	
 	/**
@@ -111,7 +120,8 @@ public class Tup2c implements Tup2cC, Serializable, FormattableToString
 	 */
 	public Tup2c(char x, char y)
 	{
-		set(x, y);
+		this.x = x;
+		this.y = y;
 	}
 	
 	/** {@inheritDoc}} */
@@ -126,6 +136,36 @@ public class Tup2c implements Tup2cC, Serializable, FormattableToString
 	public char getY()
 	{
 		return this.y;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public char getByIndex(int index)
+	{
+		switch(index)
+		{
+			case COMP_X: return this.x;
+			case COMP_Y: return this.y;
+		}
+		
+		throw new IndexOutOfBoundsException(index);
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public char[] toArray()
+	{
+		return new char[] {this.x, this.y};
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public char[] toArray(char[] res)
+	{
+		res[COMP_X] = this.x;
+		res[COMP_Y] = this.y;
+		
+		return res;
 	}
 	
 	/** {@inheritDoc}} */
@@ -150,21 +190,67 @@ public class Tup2c implements Tup2cC, Serializable, FormattableToString
 	@Override
 	public Tup2c set(Tup2cR t)
 	{
-		return (Tup2c)Tup2cC.super.set(t);
+		this.x = t.getX();
+		this.y = t.getY();
+		
+		return this;
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup2c set(char value)
 	{
-		return (Tup2c)Tup2cC.super.set(value);
+		this.x = value;
+		this.y = value;
+		
+		return this;
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup2c set(char x, char y)
 	{
-		return (Tup2c)Tup2cC.super.set(x, y);
+		this.x = x;
+		this.y = y;
+		
+		return this;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public Tup2c set(TupcR t)
+	{
+		char[] v = t.toArray(new char[2]);
+		
+		this.x = v[COMP_X];
+		this.y = v[COMP_Y];
+		
+		return this;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public Tup2c setArray(char... values)
+	{
+		this.x = values[COMP_X];
+		this.y = values[COMP_Y];
+		
+		return this;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public Tup2c setByIndex(int index, char value)
+	{
+		if(index < 0 || index >= 2) throw new IndexOutOfBoundsException(index);
+		
+		switch(index)
+		{
+			case COMP_X: this.x = value;
+			case COMP_Y: this.y = value;
+		}
+		
+		return this;
 	}
 	
 	/** {@inheritDoc}} */
@@ -173,8 +259,8 @@ public class Tup2c implements Tup2cC, Serializable, FormattableToString
 	{
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + getX();
-		result = prime * result + getY();
+		result = prime * result + this.x;
+		result = prime * result + this.y;
 		return result;
 	}
 	
@@ -188,8 +274,8 @@ public class Tup2c implements Tup2cC, Serializable, FormattableToString
 		if(obj instanceof Tup2cR)
 		{
 			Tup2cR other = (Tup2cR) obj;
-			if(getX() != other.getX()) return false;
-			if(getY() != other.getY()) return false;
+			if(this.x != other.getX()) return false;
+			if(this.y != other.getY()) return false;
 			
 			return true;
 		}
@@ -197,9 +283,9 @@ public class Tup2c implements Tup2cC, Serializable, FormattableToString
 		if(obj instanceof TupcR)
 		{
 			TupcR other = (TupcR) obj;
-			if(getDimensions() != other.getDimensions()) return false;
-			if(getX() != other.getByIndex(0)) return false;
-			if(getY() != other.getByIndex(1)) return false;
+			if(2 != other.getDimensions()) return false;
+			if(this.x != other.getByIndex(0)) return false;
+			if(this.y != other.getByIndex(1)) return false;
 			
 			return true;
 		}
@@ -211,14 +297,28 @@ public class Tup2c implements Tup2cC, Serializable, FormattableToString
 	@Override
 	public String toString()
 	{
-		return "tup2c(x=" + getX() + ", y=" + getY() + ")";
+		return "tup2c(x=" + this.x + ", y=" + this.y + ")";
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public Tup2c shallowClone()
+	{
+		return new Tup2c(this.x, this.y);
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public Tup2c deepClone()
+	{
+		return new Tup2c(this.x, this.y);
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup2c clone()
 	{
-		return new Tup2c(this);
+		return new Tup2c(this.x, this.y);
 	}
 	
 	/** {@inheritDoc}} */
@@ -226,30 +326,11 @@ public class Tup2c implements Tup2cC, Serializable, FormattableToString
 	public Map<String,Object> getValueMapping()
 	{
 		Map<String,Object> values = new LinkedHashMap<>();
-		values.put("x", getX());
-		values.put("y", getY());
+		values.put("x", this.x);
+		values.put("y", this.y);
 		
 		return values;
 	}
 	
-	/** {@inheritDoc}} */
-	@Override
-	public Tup2c set(TupcR t)
-	{
-		return (Tup2c)Tup2cC.super.set(t);
-	}
 	
-	/** {@inheritDoc}} */
-	@Override
-	public Tup2c setArray(char... values)
-	{
-		return (Tup2c)Tup2cC.super.setArray(values);
-	}
-	
-	/** {@inheritDoc}} */
-	@Override
-	public Tup2c setByIndex(int index, char value)
-	{
-		return (Tup2c)Tup2cC.super.setByIndex(index, value);
-	}
 }

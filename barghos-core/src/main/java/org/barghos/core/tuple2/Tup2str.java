@@ -26,6 +26,8 @@ import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import static org.barghos.core.api.tuple.TupleConstants.*;
+
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupstrR;
 import org.barghos.core.api.tuple2.Tup2strC;
@@ -62,7 +64,8 @@ public class Tup2str implements Tup2strC, Serializable, FormattableToString
 	 */
 	public Tup2str()
 	{
-		set("");
+		this.x = "";
+		this.y = "";
 	}
 	
 	/**
@@ -72,7 +75,10 @@ public class Tup2str implements Tup2strC, Serializable, FormattableToString
 	 */
 	public Tup2str(TupstrR t)
 	{
-		set(t);
+		String[] v = t.toArray(new String[2]);
+		
+		this.x = v[COMP_X];
+		this.y = v[COMP_Y];
 	}
 	
 	/**
@@ -82,7 +88,8 @@ public class Tup2str implements Tup2strC, Serializable, FormattableToString
 	 */
 	public Tup2str(Tup2strR t)
 	{
-		set(t);
+		this.x = t.getX();
+		this.y = t.getY();
 	}
 	
 	/**
@@ -92,7 +99,8 @@ public class Tup2str implements Tup2strC, Serializable, FormattableToString
 	 */
 	public Tup2str(String value)
 	{
-		set(value);
+		this.x = value;
+		this.y = value;
 	}
 	
 	/**
@@ -102,7 +110,8 @@ public class Tup2str implements Tup2strC, Serializable, FormattableToString
 	 */
 	public Tup2str(String[] v)
 	{
-		setArray(v);
+		this.x = v[COMP_X];
+		this.y = v[COMP_Y];
 	}
 	
 	/**
@@ -113,7 +122,8 @@ public class Tup2str implements Tup2strC, Serializable, FormattableToString
 	 */
 	public Tup2str(String x, String y)
 	{
-		set(x, y);
+		this.x = x;
+		this.y = y;
 	}
 	
 	/** {@inheritDoc} */
@@ -128,6 +138,44 @@ public class Tup2str implements Tup2strC, Serializable, FormattableToString
 	public String getY()
 	{
 		return this.y;
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public String getByIndex(int index)
+	{
+		switch(index)
+		{
+			case COMP_X: return this.x;
+			case COMP_Y: return this.y;
+		}
+		
+		throw new IndexOutOfBoundsException(index);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public boolean isValid()
+	{
+		return	this.x != null &&
+				this.y != null;
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public String[] toArray()
+	{
+		return new String[] {this.x, this.y};
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public String[] toArray(String[] res)
+	{
+		res[COMP_X] = this.x;
+		res[COMP_Y] = this.y;
+		
+		return res;
 	}
 	
 	/** {@inheritDoc} */
@@ -152,21 +200,67 @@ public class Tup2str implements Tup2strC, Serializable, FormattableToString
 	@Override
 	public Tup2str set(Tup2strR t)
 	{
-		return (Tup2str)Tup2strC.super.set(t);
+		this.x = t.getX();
+		this.y = t.getY();
+		
+		return this;
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public Tup2str set(String value)
 	{
-		return (Tup2str)Tup2strC.super.set(value);
+		this.x = value;
+		this.y = value;
+		
+		return this;
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public Tup2str set(String x, String y)
 	{
-		return (Tup2str)Tup2strC.super.set(x, y);
+		this.x = x;
+		this.y = y;
+		
+		return this;
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public Tup2str set(TupstrR t)
+	{
+		String[] v = t.toArray(new String[2]);
+		
+		this.x = v[COMP_X];
+		this.y = v[COMP_Y];
+		
+		return this;
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public Tup2str setArray(String... values)
+	{
+		this.x = values[COMP_X];
+		this.y = values[COMP_Y];
+		
+		return this;
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public Tup2str setByIndex(int index, String value)
+	{
+		if(index < 0 || index >= 2) throw new IndexOutOfBoundsException(index);
+		
+		switch(index)
+		{
+			case COMP_X: this.x = value;
+			case COMP_Y: this.y = value;
+		}
+		
+		return this;
 	}
 	
 	/** {@inheritDoc} */
@@ -175,8 +269,8 @@ public class Tup2str implements Tup2strC, Serializable, FormattableToString
 	{
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + getX().hashCode();
-		result = prime * result + getY().hashCode();
+		result = prime * result + this.x.hashCode();
+		result = prime * result + this.y.hashCode();
 		return result;
 	}
 	
@@ -190,8 +284,8 @@ public class Tup2str implements Tup2strC, Serializable, FormattableToString
 		if(obj instanceof Tup2strR)
 		{
 			Tup2strR other = (Tup2strR) obj;
-			if(!getX().equals(other.getX())) return false;
-			if(!getY().equals(other.getY())) return false;
+			if(!this.x.equals(other.getX())) return false;
+			if(!this.y.equals(other.getY())) return false;
 			
 			return true;
 		}
@@ -199,9 +293,9 @@ public class Tup2str implements Tup2strC, Serializable, FormattableToString
 		if(obj instanceof TupstrR)
 		{
 			TupstrR other = (TupstrR) obj;
-			if(getDimensions() != other.getDimensions()) return false;
-			if(!getX().equals(other.getByIndex(0))) return false;
-			if(!getY().equals(other.getByIndex(1))) return false;
+			if(2 != other.getDimensions()) return false;
+			if(!this.x.equals(other.getByIndex(0))) return false;
+			if(!this.y.equals(other.getByIndex(1))) return false;
 			
 			return true;
 		}
@@ -213,14 +307,28 @@ public class Tup2str implements Tup2strC, Serializable, FormattableToString
 	@Override
 	public String toString()
 	{
-		return "tup2str(x=" + getX() + ", y=" + getY() + ")";
+		return "tup2str(x=" + this.x + ", y=" + this.y + ")";
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public Tup2strC shallowClone()
+	{
+		return new Tup2str(this.x, this.y);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public Tup2strC deepClone()
+	{
+		return new Tup2str(this.x, this.y);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public Tup2str clone()
 	{
-		return new Tup2str(this);
+		return new Tup2str(this.x, this.y);
 	}
 	
 	/** {@inheritDoc} */
@@ -228,30 +336,9 @@ public class Tup2str implements Tup2strC, Serializable, FormattableToString
 	public Map<String,Object> getValueMapping()
 	{
 		Map<String,Object> values = new LinkedHashMap<>();
-		values.put("x", getX());
-		values.put("y", getY());
+		values.put("x", this.x);
+		values.put("y", this.y);
 		
 		return values;
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public Tup2str set(TupstrR t)
-	{
-		return (Tup2str)Tup2strC.super.set(t);
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public Tup2str setArray(String... values)
-	{
-		return (Tup2str)Tup2strC.super.setArray(values);
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public Tup2str setByIndex(int index, String value)
-	{
-		return (Tup2str)Tup2strC.super.setByIndex(index, value);
 	}
 }

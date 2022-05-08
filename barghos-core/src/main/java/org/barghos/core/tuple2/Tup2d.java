@@ -26,6 +26,8 @@ import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import static org.barghos.core.api.tuple.TupleConstants.*;
+
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupdR;
 import org.barghos.core.api.tuple2.Tup2dC;
@@ -60,7 +62,8 @@ public class Tup2d implements Tup2dC, Serializable, FormattableToString
 	 */
 	public Tup2d()
 	{
-		set(0.0);
+		this.x = 0.0;
+		this.y = 0.0;
 	}
 	
 	/**
@@ -70,7 +73,10 @@ public class Tup2d implements Tup2dC, Serializable, FormattableToString
 	 */
 	public Tup2d(TupdR t)
 	{
-		set(t);
+		double[] v = t.toArray(new double[2]);
+		
+		this.x = v[COMP_X];
+		this.y = v[COMP_Y];
 	}
 	
 	/**
@@ -80,7 +86,8 @@ public class Tup2d implements Tup2dC, Serializable, FormattableToString
 	 */
 	public Tup2d(Tup2dR t)
 	{
-		set(t);
+		this.x = t.getX();
+		this.y = t.getY();
 	}
 	
 	/**
@@ -90,7 +97,8 @@ public class Tup2d implements Tup2dC, Serializable, FormattableToString
 	 */
 	public Tup2d(double value)
 	{
-		set(value);
+		this.x = value;
+		this.y = value;
 	}
 	
 	/**
@@ -100,7 +108,8 @@ public class Tup2d implements Tup2dC, Serializable, FormattableToString
 	 */
 	public Tup2d(double[] v)
 	{
-		setArray(v);
+		this.x = v[COMP_X];
+		this.y = v[COMP_Y];
 	}
 	
 	/**
@@ -111,7 +120,8 @@ public class Tup2d implements Tup2dC, Serializable, FormattableToString
 	 */
 	public Tup2d(double x, double y)
 	{
-		set(x, y);
+		this.x = x;
+		this.y = y;
 	}
 	
 	/** {@inheritDoc}} */
@@ -126,6 +136,60 @@ public class Tup2d implements Tup2dC, Serializable, FormattableToString
 	public double getY()
 	{
 		return this.y;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public double getByIndex(int index)
+	{
+		switch(index)
+		{
+			case COMP_X: return this.x;
+			case COMP_Y: return this.y;
+		}
+		
+		throw new IndexOutOfBoundsException(index);
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public boolean isExactlyZero()
+	{
+		return	this.x == 0 &&
+				this.y == 0;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public boolean isZero(double tolerance)
+	{
+		return	Math.abs(this.x) <= tolerance &&
+				Math.abs(this.y) <= tolerance;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public boolean isFinite()
+	{
+		return	Double.isFinite(this.x) &&
+				Double.isFinite(this.y);
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public double[] toArray()
+	{
+		return new double[] {this.x, this.y};
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public double[] toArray(double[] res)
+	{
+		res[COMP_X] = this.x;
+		res[COMP_Y] = this.y;
+		
+		return res;
 	}
 	
 	/** {@inheritDoc}} */
@@ -150,21 +214,67 @@ public class Tup2d implements Tup2dC, Serializable, FormattableToString
 	@Override
 	public Tup2d set(Tup2dR t)
 	{
-		return (Tup2d)Tup2dC.super.set(t);
+		this.x = t.getX();
+		this.y = t.getY();
+		
+		return this;
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup2d set(double value)
 	{
-		return (Tup2d)Tup2dC.super.set(value);
+		this.x = value;
+		this.y = value;
+		
+		return this;
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup2d set(double x, double y)
 	{
-		return (Tup2d)Tup2dC.super.set(x, y);
+		this.x = x;
+		this.y = y;
+		
+		return this;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public Tup2d set(TupdR t)
+	{
+		double[] v = t.toArray(new double[2]);
+		
+		this.x = v[COMP_X];
+		this.y = v[COMP_Y];
+		
+		return this;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public Tup2d setArray(double... values)
+	{
+		this.x = values[COMP_X];
+		this.y = values[COMP_Y];
+		
+		return this;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public Tup2d setByIndex(int index, double value)
+	{
+		if(index < 0 || index >= 2) throw new IndexOutOfBoundsException(index);
+		
+		switch(index)
+		{
+			case COMP_X: this.x = value;
+			case COMP_Y: this.y = value;
+		}
+		
+		return this;
 	}
 	
 	/** {@inheritDoc}} */
@@ -173,9 +283,9 @@ public class Tup2d implements Tup2dC, Serializable, FormattableToString
 	{
 		final int prime = 31;
 		int result = 1;
-		long temp = Double.doubleToLongBits(getX());
+		long temp = Double.doubleToLongBits(this.x);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(getY());
+		temp = Double.doubleToLongBits(this.y);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
@@ -190,8 +300,8 @@ public class Tup2d implements Tup2dC, Serializable, FormattableToString
 		if(obj instanceof Tup2dR)
 		{
 			Tup2dR other = (Tup2dR) obj;
-			if(Double.doubleToLongBits(getX()) != Double.doubleToLongBits(other.getX())) return false;
-			if(Double.doubleToLongBits(getY()) != Double.doubleToLongBits(other.getY())) return false;
+			if(Double.doubleToLongBits(this.x) != Double.doubleToLongBits(other.getX())) return false;
+			if(Double.doubleToLongBits(this.y) != Double.doubleToLongBits(other.getY())) return false;
 			
 			return true;
 		}
@@ -199,9 +309,9 @@ public class Tup2d implements Tup2dC, Serializable, FormattableToString
 		if(obj instanceof TupdR)
 		{
 			TupdR other = (TupdR) obj;
-			if(getDimensions() != other.getDimensions()) return false;
-			if(Double.doubleToLongBits(getX()) != Double.doubleToLongBits(other.getByIndex(0))) return false;
-			if(Double.doubleToLongBits(getY()) != Double.doubleToLongBits(other.getByIndex(1))) return false;
+			if(2 != other.getDimensions()) return false;
+			if(Double.doubleToLongBits(this.x) != Double.doubleToLongBits(other.getByIndex(0))) return false;
+			if(Double.doubleToLongBits(this.y) != Double.doubleToLongBits(other.getByIndex(1))) return false;
 			
 			return true;
 		}
@@ -213,14 +323,28 @@ public class Tup2d implements Tup2dC, Serializable, FormattableToString
 	@Override
 	public String toString()
 	{
-		return "tup2d(x=" + getX() + ", y=" + getY() + ")";
+		return "tup2d(x=" + this.x + ", y=" + this.y + ")";
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public Tup2d shallowClone()
+	{
+		return new Tup2d(this.x, this.y);
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public Tup2d deepClone()
+	{
+		return new Tup2d(this.x, this.y);
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup2d clone()
 	{
-		return new Tup2d(this);
+		return new Tup2d(this.x, this.y);
 	}
 	
 	/** {@inheritDoc}} */
@@ -228,30 +352,9 @@ public class Tup2d implements Tup2dC, Serializable, FormattableToString
 	public Map<String,Object> getValueMapping()
 	{
 		Map<String,Object> values = new LinkedHashMap<>();
-		values.put("x", getX());
-		values.put("y", getY());
+		values.put("x", this.x);
+		values.put("y", this.y);
 		
 		return values;
-	}
-	
-	/** {@inheritDoc}} */
-	@Override
-	public Tup2d set(TupdR t)
-	{
-		return (Tup2d)Tup2dC.super.set(t);
-	}
-	
-	/** {@inheritDoc}} */
-	@Override
-	public Tup2d setArray(double... values)
-	{
-		return (Tup2d)Tup2dC.super.setArray(values);
-	}
-	
-	/** {@inheritDoc}} */
-	@Override
-	public Tup2d setByIndex(int index, double value)
-	{
-		return (Tup2d)Tup2dC.super.setByIndex(index, value);
 	}
 }

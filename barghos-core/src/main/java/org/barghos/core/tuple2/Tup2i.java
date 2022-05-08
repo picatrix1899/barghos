@@ -26,6 +26,8 @@ import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import static org.barghos.core.api.tuple.TupleConstants.*;
+
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupiR;
 import org.barghos.core.api.tuple2.Tup2iC;
@@ -60,7 +62,8 @@ public class Tup2i implements Tup2iC, Serializable, FormattableToString
 	 */
 	public Tup2i()
 	{
-		set(0);
+		this.x = 0;
+		this.y = 0;
 	}
 	
 	/**
@@ -70,7 +73,10 @@ public class Tup2i implements Tup2iC, Serializable, FormattableToString
 	 */
 	public Tup2i(TupiR t)
 	{
-		set(t);
+		int[] v = t.toArray(new int[2]);
+		
+		this.x = v[COMP_X];
+		this.y = v[COMP_Y];
 	}
 	
 	/**
@@ -80,7 +86,8 @@ public class Tup2i implements Tup2iC, Serializable, FormattableToString
 	 */
 	public Tup2i(Tup2iR t)
 	{
-		set(t);
+		this.x = t.getX();
+		this.y = t.getY();
 	}
 	
 	/**
@@ -90,7 +97,8 @@ public class Tup2i implements Tup2iC, Serializable, FormattableToString
 	 */
 	public Tup2i(int value)
 	{
-		set(value);
+		this.x = value;
+		this.y = value;
 	}
 	
 	/**
@@ -100,7 +108,8 @@ public class Tup2i implements Tup2iC, Serializable, FormattableToString
 	 */
 	public Tup2i(int[] v)
 	{
-		setArray(v);
+		this.x = v[COMP_X];
+		this.y = v[COMP_Y];
 	}
 	
 	/**
@@ -111,7 +120,8 @@ public class Tup2i implements Tup2iC, Serializable, FormattableToString
 	 */
 	public Tup2i(int x, int y)
 	{
-		set(x, y);
+		this.x = x;
+		this.y = y;
 	}
 	
 	/** {@inheritDoc}} */
@@ -126,6 +136,52 @@ public class Tup2i implements Tup2iC, Serializable, FormattableToString
 	public int getY()
 	{
 		return this.y;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public int getByIndex(int index)
+	{
+		switch(index)
+		{
+			case COMP_X: return this.x;
+			case COMP_Y: return this.y;
+		}
+		
+		throw new IndexOutOfBoundsException(index);
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public boolean isExactlyZero()
+	{
+		return	this.x == 0 &&
+				this.y == 0;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public boolean isZero(int tolerance)
+	{
+		return	Math.abs(this.x) <= tolerance &&
+				Math.abs(this.y) <= tolerance;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public int[] toArray()
+	{
+		return new int[] {this.x, this.y};
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public int[] toArray(int[] res)
+	{
+		res[COMP_X] = this.x;
+		res[COMP_Y] = this.y;
+		
+		return res;
 	}
 	
 	/** {@inheritDoc}} */
@@ -150,21 +206,67 @@ public class Tup2i implements Tup2iC, Serializable, FormattableToString
 	@Override
 	public Tup2i set(Tup2iR t)
 	{
-		return (Tup2i)Tup2iC.super.set(t);
+		this.x = t.getX();
+		this.y = t.getY();
+		
+		return this;
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup2i set(int value)
 	{
-		return (Tup2i)Tup2iC.super.set(value);
+		this.x = value;
+		this.y = value;
+		
+		return this;
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup2i set(int x, int y)
 	{
-		return (Tup2i)Tup2iC.super.set(x, y);
+		this.x = x;
+		this.y = y;
+		
+		return this;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public Tup2i set(TupiR t)
+	{
+		int[] v = t.toArray(new int[2]);
+		
+		this.x = v[COMP_X];
+		this.y = v[COMP_Y];
+		
+		return this;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public Tup2i setArray(int... values)
+	{
+		this.x = values[COMP_X];
+		this.y = values[COMP_Y];
+		
+		return this;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public Tup2i setByIndex(int index, int value)
+	{
+		if(index < 0 || index >= 2) throw new IndexOutOfBoundsException(index);
+		
+		switch(index)
+		{
+			case COMP_X: this.x = value;
+			case COMP_Y: this.y = value;
+		}
+		
+		return this;
 	}
 	
 	/** {@inheritDoc}} */
@@ -173,8 +275,8 @@ public class Tup2i implements Tup2iC, Serializable, FormattableToString
 	{
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + getX();
-		result = prime * result + getY();
+		result = prime * result + this.x;
+		result = prime * result + this.y;
 		return result;
 	}
 	
@@ -188,8 +290,8 @@ public class Tup2i implements Tup2iC, Serializable, FormattableToString
 		if(obj instanceof Tup2iR)
 		{
 			Tup2iR other = (Tup2iR) obj;
-			if(getX() != other.getX()) return false;
-			if(getY() != other.getY()) return false;
+			if(this.x != other.getX()) return false;
+			if(this.y != other.getY()) return false;
 			
 			return true;
 		}
@@ -197,9 +299,9 @@ public class Tup2i implements Tup2iC, Serializable, FormattableToString
 		if(obj instanceof TupiR)
 		{
 			TupiR other = (TupiR) obj;
-			if(getDimensions() != other.getDimensions()) return false;
-			if(getX() != other.getByIndex(0)) return false;
-			if(getY() != other.getByIndex(1)) return false;
+			if(2 != other.getDimensions()) return false;
+			if(this.x != other.getByIndex(0)) return false;
+			if(this.y != other.getByIndex(1)) return false;
 			
 			return true;
 		}
@@ -211,14 +313,28 @@ public class Tup2i implements Tup2iC, Serializable, FormattableToString
 	@Override
 	public String toString()
 	{
-		return "tup2i(x=" + getX() + ", y=" + getY() + ")";
+		return "tup2i(x=" + this.x + ", y=" + this.y + ")";
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public Tup2i shallowClone()
+	{
+		return new Tup2i(this.x, this.y);
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public Tup2i deepClone()
+	{
+		return new Tup2i(this.x, this.y);
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup2i clone()
 	{
-		return new Tup2i(this);
+		return new Tup2i(this.x, this.y);
 	}
 	
 	/** {@inheritDoc}} */
@@ -226,30 +342,9 @@ public class Tup2i implements Tup2iC, Serializable, FormattableToString
 	public Map<String,Object> getValueMapping()
 	{
 		Map<String,Object> values = new LinkedHashMap<>();
-		values.put("x", getX());
-		values.put("y", getY());
+		values.put("x", this.x);
+		values.put("y", this.y);
 		
 		return values;
-	}
-	
-	/** {@inheritDoc}} */
-	@Override
-	public Tup2i set(TupiR t)
-	{
-		return (Tup2i)Tup2iC.super.set(t);
-	}
-	
-	/** {@inheritDoc}} */
-	@Override
-	public Tup2i setArray(int... values)
-	{
-		return (Tup2i)Tup2iC.super.setArray(values);
-	}
-	
-	/** {@inheritDoc}} */
-	@Override
-	public Tup2i setByIndex(int index, int value)
-	{
-		return (Tup2i)Tup2iC.super.setByIndex(index, value);
 	}
 }

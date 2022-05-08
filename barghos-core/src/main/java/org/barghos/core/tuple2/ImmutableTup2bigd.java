@@ -26,9 +26,12 @@ import java.math.BigDecimal;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import static org.barghos.core.api.tuple.TupleConstants.*;
+
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupbigdR;
 import org.barghos.core.api.tuple2.Tup2bigdR;
+import org.barghos.core.api.util.ExtractParam;
 
 /**
  * Represents an immutable readonly 2-dimensional {@link BigDecimal} tuple.
@@ -54,9 +57,9 @@ public class ImmutableTup2bigd implements Tup2bigdR, FormattableToString
 	protected transient int hashCode;
 	
 	/**
-	 * The flag that shows that the hashCode has already been generated.
+	 * The flag that shows that the hashCode has already been calculated.
 	 */
-	protected transient boolean isHashCodeGenerated;
+	protected transient boolean isHashCodeCalculated;
 	
 	/**
 	 * Generates a new readonly {@link ImmutableTup2bigd} from an existing instance of {@link TupbigdR} and adopts the values.
@@ -65,7 +68,10 @@ public class ImmutableTup2bigd implements Tup2bigdR, FormattableToString
 	 */
 	public ImmutableTup2bigd(TupbigdR t)
 	{
-		this(t.toArray());
+		BigDecimal[] v = t.toArray(new BigDecimal[2]);
+		
+		this.x = v[COMP_X];
+		this.y = v[COMP_Y];
 	}
 	
 	/**
@@ -75,7 +81,8 @@ public class ImmutableTup2bigd implements Tup2bigdR, FormattableToString
 	 */
 	public ImmutableTup2bigd(Tup2bigdR t)
 	{
-		this(t.getX(), t.getY());
+		this.x = t.getX();
+		this.y = t.getY();
 	}
 	
 	/**
@@ -85,7 +92,8 @@ public class ImmutableTup2bigd implements Tup2bigdR, FormattableToString
 	 */
 	public ImmutableTup2bigd(BigDecimal value)
 	{
-		this(value, value);
+		this.x = value;
+		this.y = value;
 	}
 	
 	/**
@@ -95,8 +103,8 @@ public class ImmutableTup2bigd implements Tup2bigdR, FormattableToString
 	 */
 	public ImmutableTup2bigd(BigDecimal[] v)
 	{
-		this.x = v[0];
-		this.y = v[1];
+		this.x = v[COMP_X];
+		this.y = v[COMP_Y];
 	}
 	
 	/**
@@ -127,9 +135,64 @@ public class ImmutableTup2bigd implements Tup2bigdR, FormattableToString
 	
 	/** {@inheritDoc}} */
 	@Override
+	public BigDecimal getByIndex(int index)
+	{
+		switch(index)
+		{
+			case COMP_X: return this.x;
+			case COMP_Y: return this.y;
+		}
+		
+		throw new IndexOutOfBoundsException(index);
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public boolean isExactlyZero()
+	{
+		return	this.x.compareTo(BigDecimal.ZERO) == 0 &&
+				this.y.compareTo(BigDecimal.ZERO) == 0;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public boolean isZero(BigDecimal tolerance)
+	{
+		return	this.x.abs().compareTo(tolerance) <= 0 &&
+				this.y.abs().compareTo(tolerance) <= 0;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public BigDecimal[] toArray()
+	{
+		return new BigDecimal[] {this.x, this.y};
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public BigDecimal[] toArray(@ExtractParam BigDecimal[] res)
+	{
+		res[COMP_X] = this.x;
+		res[COMP_Y] = this.y;
+		
+		return res;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public boolean isValid()
+	{
+		return	this.x != null &&
+				this.y != null;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
 	public int hashCode()
 	{
-		if(!this.isHashCodeGenerated) generateHashCode();
+		if(!this.isHashCodeCalculated) calculateHashCode();
+		
 		return this.hashCode;
 	}
 	
@@ -137,7 +200,7 @@ public class ImmutableTup2bigd implements Tup2bigdR, FormattableToString
 	@Override
 	public ImmutableTup2bigd clone()
 	{
-		return new ImmutableTup2bigd(this);
+		return new ImmutableTup2bigd(this.x, this.y);
 	}
 	
 	/** {@inheritDoc}} */
@@ -150,8 +213,8 @@ public class ImmutableTup2bigd implements Tup2bigdR, FormattableToString
 		if(obj instanceof Tup2bigdR)
 		{
 			Tup2bigdR other = (Tup2bigdR) obj;
-			if(getX().compareTo(other.getX()) != 0) return false;
-			if(getY().compareTo(other.getY()) != 0) return false;
+			if(this.x.compareTo(other.getX()) != 0) return false;
+			if(this.y.compareTo(other.getY()) != 0) return false;
 		
 			return true;
 		}
@@ -159,9 +222,9 @@ public class ImmutableTup2bigd implements Tup2bigdR, FormattableToString
 		if(obj instanceof TupbigdR)
 		{
 			TupbigdR other = (TupbigdR) obj;
-			if(getDimensions() != other.getDimensions()) return false;
-			if(getX().compareTo(other.getByIndex(0)) != 0) return false;
-			if(getY().compareTo(other.getByIndex(1)) != 0) return false;
+			if(2 != other.getDimensions()) return false;
+			if(this.x.compareTo(other.getByIndex(0)) != 0) return false;
+			if(this.y.compareTo(other.getByIndex(1)) != 0) return false;
 			
 			return true;
 		}
@@ -173,7 +236,7 @@ public class ImmutableTup2bigd implements Tup2bigdR, FormattableToString
 	@Override
 	public String toString()
 	{
-		return "immutableTup2bigd(x=" + getX() + ", y=" + getY() + ")";
+		return "immutableTup2bigd(x=" + this.x + ", y=" + this.y + ")";
 	}
 	
 	/** {@inheritDoc}} */
@@ -181,23 +244,22 @@ public class ImmutableTup2bigd implements Tup2bigdR, FormattableToString
 	public Map<String,Object> getValueMapping()
 	{
 		Map<String,Object> values = new LinkedHashMap<>();
-		values.put("x", getX());
-		values.put("y", getY());
+		values.put("x", this.x);
+		values.put("y", this.y);
 		
 		return values;
 	}
 	
 	/**
-	 * This method generates the hashCode and stores it in the member for later use.
+	 * This method calculates the hashCode and stores it in the member for later use.
 	 */
-	protected void generateHashCode()
+	protected void calculateHashCode()
 	{
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + getX().hashCode();
-		result = prime * result + getY().hashCode();
+		result = prime * result + this.x.hashCode();
+		result = prime * result + this.y.hashCode();
 		
 		this.hashCode = result;
-		this.isHashCodeGenerated = true;
 	}
 }

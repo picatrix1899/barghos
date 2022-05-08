@@ -26,6 +26,8 @@ import java.math.BigInteger;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import static org.barghos.core.api.tuple.TupleConstants.*;
+
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupbigiR;
 import org.barghos.core.api.tuple2.Tup2bigiR;
@@ -54,9 +56,9 @@ public class ImmutableTup2bigi implements Tup2bigiR, FormattableToString
 	protected transient int hashCode;
 	
 	/**
-	 * The flag that shows that the hashCode has already been generated.
+	 * The flag that shows that the hashCode has already been calculated.
 	 */
-	protected transient boolean isHashCodeGenerated;
+	protected transient boolean isHashCodeCalculated;
 	
 	/**
 	 * Generates a new readonly {@link ImmutableTup2bigi} from an existing instance of {@link TupbigiR} and adopts the values.
@@ -65,7 +67,10 @@ public class ImmutableTup2bigi implements Tup2bigiR, FormattableToString
 	 */
 	public ImmutableTup2bigi(TupbigiR t)
 	{
-		this(t.toArray());
+		BigInteger[] v = t.toArray(new BigInteger[2]);
+		
+		this.x = v[COMP_X];
+		this.y = v[COMP_Y];
 	}
 	
 	/**
@@ -75,7 +80,8 @@ public class ImmutableTup2bigi implements Tup2bigiR, FormattableToString
 	 */
 	public ImmutableTup2bigi(Tup2bigiR t)
 	{
-		this(t.getX(), t.getY());
+		this.x = t.getX();
+		this.y = t.getY();
 	}
 	
 	/**
@@ -85,7 +91,8 @@ public class ImmutableTup2bigi implements Tup2bigiR, FormattableToString
 	 */
 	public ImmutableTup2bigi(BigInteger value)
 	{
-		this(value, value);
+		this.x = value;
+		this.y = value;
 	}
 	
 	/**
@@ -95,8 +102,8 @@ public class ImmutableTup2bigi implements Tup2bigiR, FormattableToString
 	 */
 	public ImmutableTup2bigi(BigInteger[] v)
 	{
-		this.x = v[0];
-		this.y = v[1];
+		this.x = v[COMP_X];
+		this.y = v[COMP_Y];
 	}
 	
 	/**
@@ -127,9 +134,64 @@ public class ImmutableTup2bigi implements Tup2bigiR, FormattableToString
 	
 	/** {@inheritDoc}} */
 	@Override
+	public BigInteger getByIndex(int index)
+	{
+		switch(index)
+		{
+			case COMP_X: return this.x;
+			case COMP_Y: return this.y;
+		}
+		
+		throw new IndexOutOfBoundsException(index);
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public boolean isExactlyZero()
+	{
+		return	this.x.compareTo(BigInteger.ZERO) == 0 &&
+				this.y.compareTo(BigInteger.ZERO) == 0;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public boolean isZero(BigInteger tolerance)
+	{
+		return	this.x.abs().compareTo(tolerance) <= 0 &&
+				this.y.abs().compareTo(tolerance) <= 0;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public boolean isValid()
+	{
+		return	this.x != null &&
+				this.y != null;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public BigInteger[] toArray()
+	{
+		return new BigInteger[] {this.x, this.y};
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public BigInteger[] toArray(BigInteger[] res)
+	{
+		res[COMP_X] = this.x;
+		res[COMP_Y] = this.y;
+		
+		return res;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
 	public int hashCode()
 	{
-		if(!this.isHashCodeGenerated) generateHashCode();
+		if(!this.isHashCodeCalculated) calculateHashCode();
+		
 		return hashCode;
 	}
 	
@@ -143,8 +205,8 @@ public class ImmutableTup2bigi implements Tup2bigiR, FormattableToString
 		if(obj instanceof Tup2bigiR)
 		{
 			Tup2bigiR other = (Tup2bigiR) obj;
-			if(getX().compareTo(other.getX()) != 0) return false;
-			if(getY().compareTo(other.getY()) != 0) return false;
+			if(this.x.compareTo(other.getX()) != 0) return false;
+			if(this.y.compareTo(other.getY()) != 0) return false;
 			
 			return true;
 		}
@@ -152,9 +214,9 @@ public class ImmutableTup2bigi implements Tup2bigiR, FormattableToString
 		if(obj instanceof TupbigiR)
 		{
 			TupbigiR other = (TupbigiR) obj;
-			if(getDimensions() != other.getDimensions()) return false;
-			if(getX().compareTo(other.getByIndex(0)) != 0) return false;
-			if(getY().compareTo(other.getByIndex(1)) != 0) return false;
+			if(2 != other.getDimensions()) return false;
+			if(this.x.compareTo(other.getByIndex(0)) != 0) return false;
+			if(this.y.compareTo(other.getByIndex(1)) != 0) return false;
 			
 			return true;
 		}
@@ -166,14 +228,14 @@ public class ImmutableTup2bigi implements Tup2bigiR, FormattableToString
 	@Override
 	public String toString()
 	{
-		return "immutableTup2bigi(x=" + getX() + ", y=" + getY() + ")";
+		return "immutableTup2bigi(x=" + this.x + ", y=" + this.y + ")";
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public ImmutableTup2bigi clone()
 	{
-		return new ImmutableTup2bigi(this);
+		return new ImmutableTup2bigi(this.x, this.y);
 	}
 	
 	/** {@inheritDoc}} */
@@ -181,23 +243,22 @@ public class ImmutableTup2bigi implements Tup2bigiR, FormattableToString
 	public Map<String,Object> getValueMapping()
 	{
 		Map<String,Object> values = new LinkedHashMap<>();
-		values.put("x", getX());
-		values.put("y", getY());
+		values.put("x", this.x);
+		values.put("y", this.y);
 		
 		return values;
 	}
 	
 	/**
-	 * This method generates the hashCode and stores it in the member for later use.
+	 * This method calculates the hashCode and stores it in the member for later use.
 	 */
-	protected void generateHashCode()
+	protected void calculateHashCode()
 	{
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + getX().hashCode();
-		result = prime * result + getY().hashCode();
+		result = prime * result + this.x.hashCode();
+		result = prime * result + this.y.hashCode();
 		
 		this.hashCode = result;
-		this.isHashCodeGenerated = true;
 	}
 }

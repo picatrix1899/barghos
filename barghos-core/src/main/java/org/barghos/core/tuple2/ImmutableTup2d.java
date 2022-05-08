@@ -25,6 +25,8 @@ package org.barghos.core.tuple2;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import static org.barghos.core.api.tuple.TupleConstants.*;
+
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupdR;
 import org.barghos.core.api.tuple2.Tup2dR;
@@ -53,9 +55,9 @@ public class ImmutableTup2d implements Tup2dR, FormattableToString
 	protected transient int hashCode;
 	
 	/**
-	 * The flag that shows that the hashCode has already been generated.
+	 * The flag that shows that the hashCode has already been calculated.
 	 */
-	protected transient boolean isHashCodeGenerated;
+	protected transient boolean isHashCodeCalculated;
 	
 	/**
 	 * Generates a new readonly {@link ImmutableTup2d} from an existing instance of {@link TupdR} and adopts the values.
@@ -64,7 +66,10 @@ public class ImmutableTup2d implements Tup2dR, FormattableToString
 	 */
 	public ImmutableTup2d(TupdR t)
 	{
-		this(t.toArray());
+		double[] v = t.toArray(new double[2]);
+		
+		this.x = v[COMP_X];
+		this.y = v[COMP_Y];
 	}
 	
 	/**
@@ -74,7 +79,8 @@ public class ImmutableTup2d implements Tup2dR, FormattableToString
 	 */
 	public ImmutableTup2d(Tup2dR t)
 	{
-		this(t.getX(), t.getY());
+		this.x = t.getX();
+		this.y = t.getY();
 	}
 	
 	/**
@@ -84,7 +90,8 @@ public class ImmutableTup2d implements Tup2dR, FormattableToString
 	 */
 	public ImmutableTup2d(double value)
 	{
-		this(value, value);
+		this.x = value;
+		this.y = value;
 	}
 	
 	/**
@@ -126,9 +133,64 @@ public class ImmutableTup2d implements Tup2dR, FormattableToString
 	
 	/** {@inheritDoc}} */
 	@Override
+	public double getByIndex(int index)
+	{
+		switch(index)
+		{
+			case COMP_X: return this.x;
+			case COMP_Y: return this.y;
+		}
+		
+		throw new IndexOutOfBoundsException(index);
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public boolean isExactlyZero()
+	{
+		return	this.x == 0 &&
+				this.y == 0;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public boolean isZero(double tolerance)
+	{
+		return	Math.abs(this.x) <= tolerance &&
+				Math.abs(this.y) <= tolerance;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public boolean isFinite()
+	{
+		return	Double.isFinite(this.x) &&
+				Double.isFinite(this.y);
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public double[] toArray()
+	{
+		return new double[] {this.x, this.y};
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public double[] toArray(double[] res)
+	{
+		res[COMP_X] = this.x;
+		res[COMP_Y] = this.y;
+		
+		return res;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
 	public int hashCode()
 	{
-		if(!this.isHashCodeGenerated) generateHashCode();
+		if(!this.isHashCodeCalculated) calculateHashCode();
+		
 		return this.hashCode;
 	}
 	
@@ -142,8 +204,8 @@ public class ImmutableTup2d implements Tup2dR, FormattableToString
 		if(obj instanceof Tup2dR)
 		{
 			Tup2dR other = (Tup2dR) obj;
-			if(Double.doubleToLongBits(getX()) != Double.doubleToLongBits(other.getX())) return false;
-			if(Double.doubleToLongBits(getY()) != Double.doubleToLongBits(other.getY())) return false;
+			if(Double.doubleToLongBits(this.x) != Double.doubleToLongBits(other.getX())) return false;
+			if(Double.doubleToLongBits(this.y) != Double.doubleToLongBits(other.getY())) return false;
 			
 			return true;
 		}
@@ -151,9 +213,9 @@ public class ImmutableTup2d implements Tup2dR, FormattableToString
 		if(obj instanceof TupdR)
 		{
 			TupdR other = (TupdR) obj;
-			if(getDimensions() != other.getDimensions()) return false;
-			if(Double.doubleToLongBits(getX()) != Double.doubleToLongBits(other.getByIndex(0))) return false;
-			if(Double.doubleToLongBits(getY()) != Double.doubleToLongBits(other.getByIndex(1))) return false;
+			if(2 != other.getDimensions()) return false;
+			if(Double.doubleToLongBits(this.x) != Double.doubleToLongBits(other.getByIndex(0))) return false;
+			if(Double.doubleToLongBits(this.y) != Double.doubleToLongBits(other.getByIndex(1))) return false;
 			
 			return true;
 		}
@@ -165,14 +227,14 @@ public class ImmutableTup2d implements Tup2dR, FormattableToString
 	@Override
 	public String toString()
 	{
-		return "immutableTup2d(x=" + getX() + ", y=" + getY() + ")";
+		return "immutableTup2d(x=" + this.x + ", y=" + this.y + ")";
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public ImmutableTup2d clone()
 	{
-		return new ImmutableTup2d(this);
+		return new ImmutableTup2d(this.x, this.y);
 	}
 	
 	/** {@inheritDoc}} */
@@ -180,25 +242,25 @@ public class ImmutableTup2d implements Tup2dR, FormattableToString
 	public Map<String,Object> getValueMapping()
 	{
 		Map<String,Object> values = new LinkedHashMap<>();
-		values.put("x", getX());
-		values.put("y", getY());
+		values.put("x", this.x);
+		values.put("y", this.y);
 		
 		return values;
 	}
 	
 	/**
-	 * This method generates the hashCode and stores it in the member for later use.
+	 * This method calculate the hashCode and stores it in the member for later use.
 	 */
-	protected void generateHashCode()
+	protected void calculateHashCode()
 	{
 		final int prime = 31;
 		int result = 1;
-		long temp = Double.doubleToLongBits(getX());
+		long temp = Double.doubleToLongBits(this.x);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(getY());
+		temp = Double.doubleToLongBits(this.y);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		
 		this.hashCode = result;
-		this.isHashCodeGenerated = true;
+		this.isHashCodeCalculated = true;
 	}
 }

@@ -25,6 +25,8 @@ package org.barghos.core.tuple2;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import static org.barghos.core.api.tuple.TupleConstants.*;
+
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TuplR;
 import org.barghos.core.api.tuple2.Tup2lR;
@@ -53,9 +55,9 @@ public class ImmutableTup2l implements Tup2lR, FormattableToString
 	protected transient int hashCode;
 	
 	/**
-	 * The flag that shows that the hashCode has already been generated.
+	 * The flag that shows that the hashCode has already been calculated.
 	 */
-	protected transient boolean isHashCodeGenerated;
+	protected transient boolean isHashCodeCalculated;
 	
 	/**
 	 * Generates a new readonly {@link ImmutableTup2l} from an existing instance of {@link TuplR} and adopts the values.
@@ -64,7 +66,10 @@ public class ImmutableTup2l implements Tup2lR, FormattableToString
 	 */
 	public ImmutableTup2l(TuplR t)
 	{
-		this(t.toArray());
+		long[] v = t.toArray(new long[2]);
+		
+		this.x = v[COMP_X];
+		this.y = v[COMP_Y];
 	}
 	
 	/**
@@ -74,7 +79,8 @@ public class ImmutableTup2l implements Tup2lR, FormattableToString
 	 */
 	public ImmutableTup2l(Tup2lR t)
 	{
-		this(t.getX(), t.getY());
+		this.x = t.getX();
+		this.y = t.getY();
 	}
 	
 	/**
@@ -84,7 +90,8 @@ public class ImmutableTup2l implements Tup2lR, FormattableToString
 	 */
 	public ImmutableTup2l(long value)
 	{
-		this(value, value);
+		this.x = value;
+		this.y = value;
 	}
 	
 	/**
@@ -94,8 +101,8 @@ public class ImmutableTup2l implements Tup2lR, FormattableToString
 	 */
 	public ImmutableTup2l(long[] v)
 	{
-		this.x = v[0];
-		this.y = v[1];
+		this.x = v[COMP_X];
+		this.y = v[COMP_Y];
 	}
 	
 	/**
@@ -128,7 +135,8 @@ public class ImmutableTup2l implements Tup2lR, FormattableToString
 	@Override
 	public int hashCode()
 	{
-		if(!this.isHashCodeGenerated) generateHashCode();
+		if(!this.isHashCodeCalculated) calculateHashCode();
+		
 		return this.hashCode;
 	}
 	
@@ -141,8 +149,8 @@ public class ImmutableTup2l implements Tup2lR, FormattableToString
 		if(obj instanceof Tup2lR)
 		{
 			Tup2lR other = (Tup2lR) obj;
-			if(getX() != other.getX()) return false;
-			if(getY() != other.getY()) return false;
+			if(this.x != other.getX()) return false;
+			if(this.y != other.getY()) return false;
 			
 			return true;
 		}
@@ -150,9 +158,9 @@ public class ImmutableTup2l implements Tup2lR, FormattableToString
 		if(obj instanceof TuplR)
 		{
 			TuplR other = (TuplR) obj;
-			if(getDimensions() != other.getDimensions()) return false;
-			if(getX() != other.getByIndex(0)) return false;
-			if(getY() != other.getByIndex(1)) return false;
+			if(2 != other.getDimensions()) return false;
+			if(this.x != other.getByIndex(0)) return false;
+			if(this.y != other.getByIndex(1)) return false;
 			
 			return true;
 		}
@@ -164,14 +172,14 @@ public class ImmutableTup2l implements Tup2lR, FormattableToString
 	@Override
 	public String toString()
 	{
-		return "immutableTup2l(x=" + getX() + ", y=" + getY() + ")";
+		return "immutableTup2l(x=" + this.x + ", y=" + this.y + ")";
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public ImmutableTup2l clone()
 	{
-		return new ImmutableTup2l(this);
+		return new ImmutableTup2l(this.x, this.y);
 	}
 	
 	/** {@inheritDoc}} */
@@ -179,23 +187,23 @@ public class ImmutableTup2l implements Tup2lR, FormattableToString
 	public Map<String,Object> getValueMapping()
 	{
 		Map<String,Object> values = new LinkedHashMap<>();
-		values.put("x", getX());
-		values.put("y", getY());
+		values.put("x", this.x);
+		values.put("y", this.y);
 		
 		return values;
 	}
 	
 	/**
-	 * This method generates the hashCode and stores it in the member for later use.
+	 * This method calculates the hashCode and stores it in the member for later use.
 	 */
-	protected void generateHashCode()
+	protected void calculateHashCode()
 	{
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (int) (getX() ^ (getX() >>> 32));
-		result = prime * result + (int) (getY() ^ (getY() >>> 32));
+		result = prime * result + (int) (this.x ^ (this.x >>> 32));
+		result = prime * result + (int) (this.y ^ (this.y >>> 32));
 		
 		this.hashCode = result;
-		this.isHashCodeGenerated = true;
+		this.isHashCodeCalculated = true;
 	}
 }

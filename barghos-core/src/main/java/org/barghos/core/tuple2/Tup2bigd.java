@@ -27,6 +27,8 @@ import java.math.BigDecimal;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import static org.barghos.core.api.tuple.TupleConstants.*;
+
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupbigdR;
 import org.barghos.core.api.tuple2.Tup2bigdC;
@@ -63,7 +65,8 @@ public class Tup2bigd implements Tup2bigdC, Serializable, FormattableToString
 	 */
 	public Tup2bigd()
 	{
-		set(BigDecimal.ZERO);
+		this.x = BigDecimal.ZERO;
+		this.y = BigDecimal.ZERO;
 	}
 	
 	/**
@@ -73,7 +76,10 @@ public class Tup2bigd implements Tup2bigdC, Serializable, FormattableToString
 	 */
 	public Tup2bigd(TupbigdR t)
 	{
-		set(t);
+		BigDecimal[] v = t.toArray(new BigDecimal[2]);
+		
+		this.x = v[COMP_X];
+		this.y = v[COMP_Y];
 	}
 	
 	/**
@@ -83,7 +89,8 @@ public class Tup2bigd implements Tup2bigdC, Serializable, FormattableToString
 	 */
 	public Tup2bigd(Tup2bigdR t)
 	{
-		set(t);
+		this.x = t.getX();
+		this.y = t.getY();
 	}
 	
 	/**
@@ -93,7 +100,8 @@ public class Tup2bigd implements Tup2bigdC, Serializable, FormattableToString
 	 */
 	public Tup2bigd(BigDecimal value)
 	{
-		set(value);
+		this.x = value;
+		this.y = value;
 	}
 	
 	/**
@@ -103,7 +111,8 @@ public class Tup2bigd implements Tup2bigdC, Serializable, FormattableToString
 	 */
 	public Tup2bigd(BigDecimal[] v)
 	{
-		setArray(v);
+		this.x = v[COMP_X];
+		this.y = v[COMP_Y];
 	}
 	
 	/**
@@ -114,7 +123,8 @@ public class Tup2bigd implements Tup2bigdC, Serializable, FormattableToString
 	 */
 	public Tup2bigd(BigDecimal x, BigDecimal y)
 	{
-		set(x, y);
+		this.x = x;
+		this.y = y;
 	}
 	
 	/** {@inheritDoc}} */
@@ -129,6 +139,60 @@ public class Tup2bigd implements Tup2bigdC, Serializable, FormattableToString
 	public BigDecimal getY()
 	{
 		return this.y;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public BigDecimal getByIndex(int index)
+	{
+		switch(index)
+		{
+			case COMP_X: return this.x;
+			case COMP_Y: return this.y;
+		}
+		
+		throw new IndexOutOfBoundsException(index);
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public boolean isExactlyZero()
+	{
+		return	this.x.compareTo(BigDecimal.ZERO) == 0 &&
+				this.y.compareTo(BigDecimal.ZERO) == 0;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public boolean isZero(BigDecimal tolerance)
+	{
+		return	this.x.abs().compareTo(tolerance) <= 0 &&
+				this.x.abs().compareTo(tolerance) <= 0;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public boolean isValid()
+	{
+		return	this.x != null &&
+				this.y != null;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public BigDecimal[] toArray()
+	{
+		return new BigDecimal[] {this.x, this.y};
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public BigDecimal[] toArray(BigDecimal[] res)
+	{
+		res[COMP_X] = this.x;
+		res[COMP_Y] = this.y;
+		
+		return res;
 	}
 	
 	/** {@inheritDoc}} */
@@ -153,21 +217,67 @@ public class Tup2bigd implements Tup2bigdC, Serializable, FormattableToString
 	@Override
 	public Tup2bigd set(Tup2bigdR t)
 	{
-		return (Tup2bigd)Tup2bigdC.super.set(t);
+		this.x = t.getX();
+		this.y = t.getY();
+		
+		return this;
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup2bigd set(BigDecimal value)
 	{
-		return (Tup2bigd)Tup2bigdC.super.set(value);
+		this.x = value;
+		this.y = value;
+		
+		return this;
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup2bigd set(BigDecimal x, BigDecimal y)
 	{
-		return (Tup2bigd)Tup2bigdC.super.set(x, y);
+		this.x = x;
+		this.y = y;
+		
+		return this;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public Tup2bigd set(TupbigdR t)
+	{
+		BigDecimal[] v = t.toArray(new BigDecimal[2]);
+		
+		this.x = v[COMP_X];
+		this.y = v[COMP_Y];
+		
+		return this;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public Tup2bigd setArray(BigDecimal... values)
+	{
+		this.x = values[COMP_X];
+		this.y = values[COMP_Y];
+		
+		return this;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public Tup2bigd setByIndex(int index, BigDecimal value)
+	{
+		if(index < 0 || index >= 2) throw new IndexOutOfBoundsException(index);
+		
+		switch(index)
+		{
+			case COMP_X: this.x = value;
+			case COMP_Y: this.y = value;
+		}
+		
+		return this;
 	}
 	
 	/** {@inheritDoc}} */
@@ -176,8 +286,8 @@ public class Tup2bigd implements Tup2bigdC, Serializable, FormattableToString
 	{
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + getX().hashCode();
-		result = prime * result + getY().hashCode();
+		result = prime * result + this.x.hashCode();
+		result = prime * result + this.y.hashCode();
 		return result;
 	}
 	
@@ -191,8 +301,8 @@ public class Tup2bigd implements Tup2bigdC, Serializable, FormattableToString
 		if(obj instanceof Tup2bigdR)
 		{
 			Tup2bigdR other = (Tup2bigdR) obj;
-			if(getX().compareTo(other.getX()) != 0) return false;
-			if(getY().compareTo(other.getY()) != 0) return false;
+			if(this.x.compareTo(other.getX()) != 0) return false;
+			if(this.y.compareTo(other.getY()) != 0) return false;
 			
 			return true;
 		}
@@ -200,9 +310,9 @@ public class Tup2bigd implements Tup2bigdC, Serializable, FormattableToString
 		if(obj instanceof TupbigdR)
 		{
 			TupbigdR other = (TupbigdR) obj;
-			if(getDimensions() != other.getDimensions()) return false;
-			if(getX().compareTo(other.getByIndex(0)) != 0) return false;
-			if(getY().compareTo(other.getByIndex(1)) != 0) return false;
+			if(2 != other.getDimensions()) return false;
+			if(this.x.compareTo(other.getByIndex(0)) != 0) return false;
+			if(this.y.compareTo(other.getByIndex(1)) != 0) return false;
 			
 			return true;
 		}
@@ -214,14 +324,28 @@ public class Tup2bigd implements Tup2bigdC, Serializable, FormattableToString
 	@Override
 	public String toString()
 	{
-		return "tup2bigd(x=" + getX() + ", y=" + getY() + ")";
+		return "tup2bigd(x=" + this.x + ", y=" + this.y + ")";
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public Tup2bigd shallowClone()
+	{
+		return new Tup2bigd(this.x, this.y);
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public Tup2bigd deepClone()
+	{
+		return new Tup2bigd(this.x, this.y);
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup2bigd clone()
 	{
-		return new Tup2bigd(this);
+		return new Tup2bigd(this.x, this.y);
 	}
 	
 	/** {@inheritDoc}} */
@@ -229,30 +353,9 @@ public class Tup2bigd implements Tup2bigdC, Serializable, FormattableToString
 	public Map<String,Object> getValueMapping()
 	{
 		Map<String,Object> values = new LinkedHashMap<>();
-		values.put("x", getX());
-		values.put("y", getY());
+		values.put("x", this.x);
+		values.put("y", this.y);
 		
 		return values;
-	}
-	
-	/** {@inheritDoc}} */
-	@Override
-	public Tup2bigd set(TupbigdR t)
-	{
-		return (Tup2bigd)Tup2bigdC.super.set(t);
-	}
-	
-	/** {@inheritDoc}} */
-	@Override
-	public Tup2bigd setArray(BigDecimal... values)
-	{
-		return (Tup2bigd)Tup2bigdC.super.setArray(values);
-	}
-	
-	/** {@inheritDoc}} */
-	@Override
-	public Tup2bigd setByIndex(int index, BigDecimal value)
-	{
-		return (Tup2bigd)Tup2bigdC.super.setByIndex(index, value);
-	}
+	}	
 }

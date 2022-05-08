@@ -25,6 +25,8 @@ package org.barghos.core.tuple2;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import static org.barghos.core.api.tuple.TupleConstants.*;
+
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupboR;
 import org.barghos.core.api.tuple2.Tup2boR;
@@ -53,9 +55,9 @@ public class ImmutableTup2bo implements Tup2boR, FormattableToString
 	protected transient int hashCode;
 	
 	/**
-	 * The flag that shows that the hashCode has already been generated.
+	 * The flag that shows that the hashCode has already been calculated.
 	 */
-	protected transient boolean isHashCodeGenerated;
+	protected transient boolean isHashCodeCalculated;
 	
 	/**
 	 * Generates a new readonly {@link ImmutableTup2bo} from an existing instance of {@link TupboR} and adopts the values.
@@ -64,7 +66,10 @@ public class ImmutableTup2bo implements Tup2boR, FormattableToString
 	 */
 	public ImmutableTup2bo(TupboR t)
 	{
-		this(t.toArray());
+		boolean[] v = t.toArray(new boolean[2]);
+		
+		this.x = v[COMP_X];
+		this.y = v[COMP_Y];
 	}
 	
 	/**
@@ -74,7 +79,8 @@ public class ImmutableTup2bo implements Tup2boR, FormattableToString
 	 */
 	public ImmutableTup2bo(Tup2boR t)
 	{
-		this(t.getX(), t.getY());
+		this.x = t.getX();
+		this.y = t.getY();
 	}
 	
 	/**
@@ -84,7 +90,8 @@ public class ImmutableTup2bo implements Tup2boR, FormattableToString
 	 */
 	public ImmutableTup2bo(boolean value)
 	{
-		this(value, value);
+		this.x = value;
+		this.y = value;
 	}
 	
 	/**
@@ -94,8 +101,8 @@ public class ImmutableTup2bo implements Tup2boR, FormattableToString
 	 */
 	public ImmutableTup2bo(boolean[] v)
 	{
-		this.x = v[0];
-		this.y = v[1];
+		this.x = v[COMP_X];
+		this.y = v[COMP_Y];
 	}
 	
 	/**
@@ -126,9 +133,40 @@ public class ImmutableTup2bo implements Tup2boR, FormattableToString
 	
 	/** {@inheritDoc}} */
 	@Override
+	public boolean getByIndex(int index)
+	{
+		switch(index)
+		{
+			case COMP_X: return this.x;
+			case COMP_Y: return this.y;
+		}
+		
+		throw new IndexOutOfBoundsException(index);
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public boolean[] toArray()
+	{
+		return new boolean[] {this.x, this.y};
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public boolean[] toArray(boolean[] res)
+	{
+		res[COMP_X] = this.x;
+		res[COMP_Y] = this.y;
+		
+		return res;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
 	public int hashCode()
 	{
-		if(!this.isHashCodeGenerated) generateHashCode();
+		if(!this.isHashCodeCalculated) calculateHashCode();
+		
 		return this.hashCode;
 	}
 	
@@ -142,8 +180,8 @@ public class ImmutableTup2bo implements Tup2boR, FormattableToString
 		if(obj instanceof Tup2boR)
 		{
 			Tup2boR other = (Tup2boR) obj;
-			if(getX() != other.getX()) return false;
-			if(getY() != other.getY()) return false;
+			if(this.x != other.getX()) return false;
+			if(this.y != other.getY()) return false;
 			
 			return true;
 		}
@@ -151,9 +189,9 @@ public class ImmutableTup2bo implements Tup2boR, FormattableToString
 		if(obj instanceof TupboR)
 		{
 			TupboR other = (TupboR) obj;
-			if(getDimensions() != other.getDimensions()) return false;
-			if(getX() != other.getByIndex(0)) return false;
-			if(getY() != other.getByIndex(1)) return false;
+			if(2 != other.getDimensions()) return false;
+			if(this.x != other.getByIndex(0)) return false;
+			if(this.y != other.getByIndex(1)) return false;
 			
 			return true;
 		}
@@ -165,14 +203,14 @@ public class ImmutableTup2bo implements Tup2boR, FormattableToString
 	@Override
 	public String toString()
 	{
-		return "immutableTup2bo(x=" + getX() + ", y=" + getY() + ")";
+		return "immutableTup2bo(x=" + this.x + ", y=" + this.y + ")";
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public ImmutableTup2bo clone()
 	{
-		return new ImmutableTup2bo(this);
+		return new ImmutableTup2bo(this.x, this.y);
 	}
 	
 	/** {@inheritDoc}} */
@@ -180,23 +218,22 @@ public class ImmutableTup2bo implements Tup2boR, FormattableToString
 	public Map<String,Object> getValueMapping()
 	{
 		Map<String,Object> values = new LinkedHashMap<>();
-		values.put("x", getX());
-		values.put("y", getY());
+		values.put("x", this.x);
+		values.put("y", this.y);
 		
 		return values;
 	}
 	
 	/**
-	 * This method generates the hashCode and stores it in the member for later use.
+	 * This method calculates the hashCode and stores it in the member for later use.
 	 */
-	protected void generateHashCode()
+	protected void calculateHashCode()
 	{
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (getX() ? 1 : 0);
-		result = prime * result + (getY() ? 1 : 0);
+		result = prime * result + (this.x ? 1 : 0);
+		result = prime * result + (this.y ? 1 : 0);
 		
 		this.hashCode = result;
-		this.isHashCodeGenerated = true;
 	}
 }

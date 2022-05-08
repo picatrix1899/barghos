@@ -25,6 +25,8 @@ package org.barghos.core.tuple2;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import static org.barghos.core.api.tuple.TupleConstants.*;
+
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupfR;
 import org.barghos.core.api.tuple2.Tup2fR;
@@ -53,9 +55,9 @@ public class ImmutableTup2f implements Tup2fR, FormattableToString
 	protected transient int hashCode;
 	
 	/**
-	 * The flag that shows that the hashCode has already been generated.
+	 * The flag that shows that the hashCode has already been calculate.
 	 */
-	protected transient boolean isHashCodeGenerated;
+	protected transient boolean isHashCodeCalculate;
 	
 	/**
 	 * Generates a new readonly {@link ImmutableTup2f} from an existing instance of {@link TupfR} and adopts the values.
@@ -64,7 +66,10 @@ public class ImmutableTup2f implements Tup2fR, FormattableToString
 	 */
 	public ImmutableTup2f(TupfR t)
 	{
-		this(t.toArray());
+		float[] v = t.toArray(new float[2]);
+		
+		this.x = v[COMP_X];
+		this.y = v[COMP_Y];
 	}
 	
 	/**
@@ -74,7 +79,8 @@ public class ImmutableTup2f implements Tup2fR, FormattableToString
 	 */
 	public ImmutableTup2f(Tup2fR t)
 	{
-		this(t.getX(), t.getY());
+		this.x = t.getX();
+		this.y = t.getY();
 	}
 	
 	/**
@@ -84,7 +90,8 @@ public class ImmutableTup2f implements Tup2fR, FormattableToString
 	 */
 	public ImmutableTup2f(float value)
 	{
-		this(value, value);
+		this.x = value;
+		this.y = value;
 	}
 	
 	/**
@@ -126,9 +133,64 @@ public class ImmutableTup2f implements Tup2fR, FormattableToString
 	
 	/** {@inheritDoc}} */
 	@Override
+	public float getByIndex(int index)
+	{
+		switch(index)
+		{
+			case COMP_X: return this.x;
+			case COMP_Y: return this.y;
+		}
+		
+		throw new IndexOutOfBoundsException(index);
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public boolean isExactlyZero()
+	{
+		return	this.x == 0 &&
+				this.y == 0;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public boolean isZero(float tolerance)
+	{
+		return	Math.abs(this.x) <= tolerance &&
+				Math.abs(this.y) <= tolerance;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public boolean isFinite()
+	{
+		return	Float.isFinite(this.x) &&
+				Float.isFinite(this.y);
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public float[] toArray()
+	{
+		return new float[] {this.x, this.y};
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public float[] toArray(float[] res)
+	{
+		res[COMP_X] = this.x;
+		res[COMP_Y] = this.y;
+		
+		return res;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
 	public int hashCode()
 	{
-		if(!this.isHashCodeGenerated) generateHashCode();
+		if(!this.isHashCodeCalculate) calculateHashCode();
+		
 		return this.hashCode;
 	}
 
@@ -141,8 +203,8 @@ public class ImmutableTup2f implements Tup2fR, FormattableToString
 		if(obj instanceof Tup2fR)
 		{
 			Tup2fR other = (Tup2fR) obj;
-			if(Float.floatToIntBits(getX()) != Float.floatToIntBits(other.getX())) return false;
-			if(Float.floatToIntBits(getY()) != Float.floatToIntBits(other.getY())) return false;
+			if(Float.floatToIntBits(this.x) != Float.floatToIntBits(other.getX())) return false;
+			if(Float.floatToIntBits(this.y) != Float.floatToIntBits(other.getY())) return false;
 			
 			return true;
 		}
@@ -150,9 +212,9 @@ public class ImmutableTup2f implements Tup2fR, FormattableToString
 		if(obj instanceof TupfR)
 		{
 			TupfR other = (TupfR) obj;
-			if(getDimensions() != other.getDimensions()) return false;
-			if(Float.floatToIntBits(getX()) != Float.floatToIntBits(other.getByIndex(0))) return false;
-			if(Float.floatToIntBits(getY()) != Float.floatToIntBits(other.getByIndex(1))) return false;
+			if(2 != other.getDimensions()) return false;
+			if(Float.floatToIntBits(this.x) != Float.floatToIntBits(other.getByIndex(0))) return false;
+			if(Float.floatToIntBits(this.y) != Float.floatToIntBits(other.getByIndex(1))) return false;
 			
 			return true;
 		}
@@ -164,14 +226,14 @@ public class ImmutableTup2f implements Tup2fR, FormattableToString
 	@Override
 	public String toString()
 	{
-		return "immutableTup2f(x=" + getX() + ", y=" + getY() + ")";
+		return "immutableTup2f(x=" + this.x + ", y=" + this.y + ")";
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public ImmutableTup2f clone()
 	{
-		return new ImmutableTup2f(this);
+		return new ImmutableTup2f(this.x, this.y);
 	}
 	
 	/** {@inheritDoc}} */
@@ -179,23 +241,23 @@ public class ImmutableTup2f implements Tup2fR, FormattableToString
 	public Map<String,Object> getValueMapping()
 	{
 		Map<String,Object> values = new LinkedHashMap<>();
-		values.put("x", getX());
-		values.put("y", getY());
+		values.put("x", this.x);
+		values.put("y", this.y);
 		
 		return values;
 	}
 	
 	/**
-	 * This method generates the hashCode and stores it in the member for later use.
+	 * This method calculates the hashCode and stores it in the member for later use.
 	 */
-	protected void generateHashCode()
+	protected void calculateHashCode()
 	{
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + Float.floatToIntBits(getX());
-		result = prime * result + Float.floatToIntBits(getY());
+		result = prime * result + Float.floatToIntBits(this.x);
+		result = prime * result + Float.floatToIntBits(this.y);
 		
 		this.hashCode = result;
-		this.isHashCodeGenerated = true;
+		this.isHashCodeCalculate = true;
 	}
 }

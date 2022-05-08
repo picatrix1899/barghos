@@ -26,6 +26,8 @@ import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import static org.barghos.core.api.tuple.TupleConstants.*;
+
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupbR;
 import org.barghos.core.api.tuple2.Tup2bC;
@@ -60,7 +62,8 @@ public class Tup2b implements Tup2bC, Serializable, FormattableToString
 	 */
 	public Tup2b()
 	{
-		set((byte)0);
+		this.x = 0;
+		this.y = 0;
 	}
 	
 	/**
@@ -70,7 +73,10 @@ public class Tup2b implements Tup2bC, Serializable, FormattableToString
 	 */
 	public Tup2b(TupbR t)
 	{
-		set(t);
+		byte[] v = t.toArray(new byte[2]);
+		
+		this.x = v[COMP_X];
+		this.y = v[COMP_Y];
 	}
 	
 	/**
@@ -80,7 +86,8 @@ public class Tup2b implements Tup2bC, Serializable, FormattableToString
 	 */
 	public Tup2b(Tup2bR t)
 	{
-		set(t);
+		this.x = t.getX();
+		this.y = t.getY();
 	}
 	
 	/**
@@ -90,7 +97,8 @@ public class Tup2b implements Tup2bC, Serializable, FormattableToString
 	 */
 	public Tup2b(byte value)
 	{
-		set(value);
+		this.x = value;
+		this.y = value;
 	}
 	
 	/**
@@ -100,7 +108,8 @@ public class Tup2b implements Tup2bC, Serializable, FormattableToString
 	 */
 	public Tup2b(byte[] v)
 	{
-		setArray(v);
+		this.x = v[COMP_X];
+		this.y = v[COMP_Y];
 	}
 	
 	/**
@@ -111,7 +120,8 @@ public class Tup2b implements Tup2bC, Serializable, FormattableToString
 	 */
 	public Tup2b(byte x, byte y)
 	{
-		set(x, y);
+		this.x = x;
+		this.y = y;
 	}
 	
 	/** {@inheritDoc}} */
@@ -126,6 +136,52 @@ public class Tup2b implements Tup2bC, Serializable, FormattableToString
 	public byte getY()
 	{
 		return this.y;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public byte getByIndex(int index)
+	{
+		switch(index)
+		{
+			case COMP_X: return this.x;
+			case COMP_Y: return this.y;
+		}
+		
+		throw new IndexOutOfBoundsException(index);
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public boolean isExactlyZero()
+	{
+		return	this.x == 0 &&
+				this.y == 0;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public boolean isZero(byte tolerance)
+	{
+		return	Math.abs(this.x) <= tolerance &&
+				Math.abs(this.y) <= tolerance;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public byte[] toArray()
+	{
+		return new byte[] {this.x, this.y};
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public byte[] toArray(byte[] res)
+	{
+		res[COMP_X] = this.x;
+		res[COMP_Y] = this.y;
+		
+		return res;
 	}
 	
 	/** {@inheritDoc}} */
@@ -150,31 +206,77 @@ public class Tup2b implements Tup2bC, Serializable, FormattableToString
 	@Override
 	public Tup2b set(Tup2bR t)
 	{
-		return (Tup2b)Tup2bC.super.set(t);
+		this.x = t.getX();
+		this.y = t.getY();
+		
+		return this;
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup2b set(byte value)
 	{
-		return (Tup2b)Tup2bC.super.set(value);
+		this.x = value;
+		this.y = value;
+		
+		return this;
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup2b set(byte x, byte y)
 	{
-		return (Tup2b)Tup2bC.super.set(x, y);
+		this.x = x;
+		this.y = y;
+		
+		return this;
 	}
 
+	/** {@inheritDoc}} */
+	@Override
+	public Tup2b set(TupbR t)
+	{
+		byte[] v = t.toArray(new byte[2]);
+		
+		this.x = v[COMP_X];
+		this.y = v[COMP_Y];
+		
+		return this;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public Tup2b setArray(byte... values)
+	{
+		this.x = values[COMP_X];
+		this.y = values[COMP_Y];
+		
+		return this;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public Tup2b setByIndex(int index, byte value)
+	{
+		if(index < 0 || index >= 2) throw new IndexOutOfBoundsException(index);
+		
+		switch(index)
+		{
+			case COMP_X: this.x = value;
+			case COMP_Y: this.y = value;
+		}
+		
+		return this;
+	}
+	
 	/** {@inheritDoc}} */
 	@Override
 	public int hashCode()
 	{
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + getX();
-		result = prime * result + getY();
+		result = prime * result + this.x;
+		result = prime * result + this.y;
 		return result;
 	}
 	
@@ -188,8 +290,8 @@ public class Tup2b implements Tup2bC, Serializable, FormattableToString
 		if(obj instanceof Tup2bR)
 		{
 			Tup2bR other = (Tup2bR) obj;
-			if(getX() != other.getX()) return false;
-			if(getY() != other.getY()) return false;
+			if(this.x != other.getX()) return false;
+			if(this.y != other.getY()) return false;
 			
 			return true;
 		}
@@ -197,9 +299,9 @@ public class Tup2b implements Tup2bC, Serializable, FormattableToString
 		if(obj instanceof TupbR)
 		{
 			TupbR other = (TupbR) obj;
-			if(getDimensions() != other.getDimensions()) return false;
-			if(getX() != other.getByIndex(0)) return false;
-			if(getY() != other.getByIndex(1)) return false;
+			if(2 != other.getDimensions()) return false;
+			if(this.x != other.getByIndex(0)) return false;
+			if(this.y != other.getByIndex(1)) return false;
 			
 			return true;
 		}
@@ -211,14 +313,28 @@ public class Tup2b implements Tup2bC, Serializable, FormattableToString
 	@Override
 	public String toString()
 	{
-		return "tup2b(x=" + getX() + ", y=" + getY() + ")";
+		return "tup2b(x=" + this.x + ", y=" + this.y + ")";
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public Tup2b shallowClone()
+	{
+		return new Tup2b(this.x, this.y);
+	}
+
+	/** {@inheritDoc}} */
+	@Override
+	public Tup2b deepClone()
+	{
+		return new Tup2b(this.x, this.y);
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup2b clone()
 	{
-		return new Tup2b(this);
+		return new Tup2b(this.x, this.y);
 	}
 	
 	/** {@inheritDoc}} */
@@ -226,46 +342,9 @@ public class Tup2b implements Tup2bC, Serializable, FormattableToString
 	public Map<String,Object> getValueMapping()
 	{
 		Map<String,Object> values = new LinkedHashMap<>();
-		values.put("x", getX());
-		values.put("y", getY());
+		values.put("x", this.x);
+		values.put("y", this.y);
 		
 		return values;
-	}
-	
-	/** {@inheritDoc}} */
-	@Override
-	public Tup2b set(TupbR t)
-	{
-		return (Tup2b)Tup2bC.super.set(t);
-	}
-	
-	/** {@inheritDoc}} */
-	@Override
-	public Tup2b setArray(byte... values)
-	{
-		return (Tup2b)Tup2bC.super.setArray(values);
-	}
-	
-	/** {@inheritDoc}} */
-	@Override
-	public Tup2b setByIndex(int index, byte value)
-	{
-		return (Tup2b)Tup2bC.super.setByIndex(index, value);
-	}
-
-	/*
-	 *
-	 */
-	public Tup2bC shallowClone()
-	{
-		return null;
-	}
-
-	/*
-	 *
-	 */
-	public Tup2bC deepClone()
-	{
-		return null;
 	}
 }

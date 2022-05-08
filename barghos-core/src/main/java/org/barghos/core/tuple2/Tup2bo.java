@@ -26,6 +26,8 @@ import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import static org.barghos.core.api.tuple.TupleConstants.*;
+
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupboR;
 import org.barghos.core.api.tuple2.Tup2boC;
@@ -60,7 +62,8 @@ public class Tup2bo implements Tup2boC, Serializable, FormattableToString
 	 */
 	public Tup2bo()
 	{
-		set(false);
+		this.x = false;
+		this.y = false;
 	}
 	
 	/**
@@ -70,7 +73,10 @@ public class Tup2bo implements Tup2boC, Serializable, FormattableToString
 	 */
 	public Tup2bo(TupboR t)
 	{
-		set(t);
+		boolean[] v = t.toArray(new boolean[2]);
+		
+		this.x = v[COMP_X];
+		this.y = v[COMP_Y];
 	}
 	
 	/**
@@ -80,7 +86,8 @@ public class Tup2bo implements Tup2boC, Serializable, FormattableToString
 	 */
 	public Tup2bo(Tup2boR t)
 	{
-		set(t);
+		this.x = t.getX();
+		this.y = t.getY();
 	}
 	
 	/**
@@ -90,7 +97,8 @@ public class Tup2bo implements Tup2boC, Serializable, FormattableToString
 	 */
 	public Tup2bo(boolean value)
 	{
-		set(value);
+		this.x = value;
+		this.y = value;
 	}
 	
 	/**
@@ -100,7 +108,8 @@ public class Tup2bo implements Tup2boC, Serializable, FormattableToString
 	 */
 	public Tup2bo(boolean[] v)
 	{
-		setArray(v);
+		this.x = v[COMP_X];
+		this.y = v[COMP_Y];
 	}
 	
 	/**
@@ -111,7 +120,8 @@ public class Tup2bo implements Tup2boC, Serializable, FormattableToString
 	 */
 	public Tup2bo(boolean x, boolean y)
 	{
-		set(x, y);
+		this.x = x;
+		this.y = y;
 	}
 	
 	/** {@inheritDoc}} */
@@ -126,6 +136,36 @@ public class Tup2bo implements Tup2boC, Serializable, FormattableToString
 	public boolean getY()
 	{
 		return this.y;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public boolean getByIndex(int index)
+	{
+		switch(index)
+		{
+			case COMP_X: return this.x;
+			case COMP_Y: return this.y;
+		}
+		
+		throw new IndexOutOfBoundsException(index);
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public boolean[] toArray()
+	{
+		return new boolean[] {this.x, this.y};
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public boolean[] toArray(boolean[] res)
+	{
+		res[COMP_X] = this.x;
+		res[COMP_Y] = this.y;
+		
+		return res;
 	}
 	
 	/** {@inheritDoc}} */
@@ -150,21 +190,67 @@ public class Tup2bo implements Tup2boC, Serializable, FormattableToString
 	@Override
 	public Tup2bo set(Tup2boR t)
 	{
-		return (Tup2bo)Tup2boC.super.set(t);
+		this.x = t.getX();
+		this.y = t.getY();
+		
+		return this;
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup2bo set(boolean value)
 	{
-		return (Tup2bo)Tup2boC.super.set(value);
+		this.x = value;
+		this.y = value;
+		
+		return this;
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup2bo set(boolean x, boolean y)
 	{
-		return (Tup2bo)Tup2boC.super.set(x, y);
+		this.x = x;
+		this.y = y;
+		
+		return this;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public Tup2bo set(TupboR t)
+	{
+		boolean[] v = t.toArray(new boolean[2]);
+		
+		this.x = v[COMP_X];
+		this.y = v[COMP_Y];
+		
+		return this;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public Tup2bo setArray(boolean... values)
+	{
+		this.x = values[COMP_X];
+		this.y = values[COMP_Y];
+		
+		return this;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public Tup2bo setByIndex(int index, boolean value)
+	{
+		if(index < 0 || index >= 2) throw new IndexOutOfBoundsException(index);
+		
+		switch(index)
+		{
+			case COMP_X: this.x = value;
+			case COMP_Y: this.y = value;
+		}
+		
+		return this;
 	}
 	
 	/** {@inheritDoc}} */
@@ -173,8 +259,8 @@ public class Tup2bo implements Tup2boC, Serializable, FormattableToString
 	{
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (getX() ? 1 : 0);
-		result = prime * result + (getY() ? 1 : 0);
+		result = prime * result + (this.x ? 1 : 0);
+		result = prime * result + (this.y ? 1 : 0);
 		return result;
 	}
 	
@@ -188,8 +274,8 @@ public class Tup2bo implements Tup2boC, Serializable, FormattableToString
 		if(obj instanceof Tup2boR)
 		{
 			Tup2boR other = (Tup2boR) obj;
-			if(getX() != other.getX()) return false;
-			if(getY() != other.getY()) return false;
+			if(this.x != other.getX()) return false;
+			if(this.y != other.getY()) return false;
 			
 			return true;
 		}
@@ -197,9 +283,9 @@ public class Tup2bo implements Tup2boC, Serializable, FormattableToString
 		if(obj instanceof TupboR)
 		{
 			TupboR other = (TupboR) obj;
-			if(getDimensions() != other.getDimensions()) return false;
-			if(getX() != other.getByIndex(0)) return false;
-			if(getY() != other.getByIndex(1)) return false;
+			if(2 != other.getDimensions()) return false;
+			if(this.x != other.getByIndex(0)) return false;
+			if(this.y != other.getByIndex(1)) return false;
 			
 			return true;
 		}
@@ -211,14 +297,28 @@ public class Tup2bo implements Tup2boC, Serializable, FormattableToString
 	@Override
 	public String toString()
 	{
-		return "tup2bo(x=" + getX() + ", y=" + getY() + ")";
+		return "tup2bo(x=" + this.x + ", y=" + this.y + ")";
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public Tup2bo shallowClone()
+	{
+		return new Tup2bo(this.x, this.y);
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public Tup2bo deepClone()
+	{
+		return new Tup2bo(this.x, this.y);
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup2bo clone()
 	{
-		return new Tup2bo(this);
+		return new Tup2bo(this.x, this.y);
 	}
 	
 	/** {@inheritDoc}} */
@@ -226,30 +326,9 @@ public class Tup2bo implements Tup2boC, Serializable, FormattableToString
 	public Map<String,Object> getValueMapping()
 	{
 		Map<String,Object> values = new LinkedHashMap<>();
-		values.put("x", getX());
-		values.put("y", getY());
+		values.put("x", this.x);
+		values.put("y", this.y);
 		
 		return values;
-	}
-	
-	/** {@inheritDoc}} */
-	@Override
-	public Tup2bo set(TupboR t)
-	{
-		return (Tup2bo)Tup2boC.super.set(t);
-	}
-	
-	/** {@inheritDoc}} */
-	@Override
-	public Tup2bo setArray(boolean... values)
-	{
-		return (Tup2bo)Tup2boC.super.setArray(values);
-	}
-	
-	/** {@inheritDoc}} */
-	@Override
-	public Tup2bo setByIndex(int index, boolean value)
-	{
-		return (Tup2bo)Tup2boC.super.setByIndex(index, value);
 	}
 }

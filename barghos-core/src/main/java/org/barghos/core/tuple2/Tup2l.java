@@ -26,6 +26,8 @@ import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import static org.barghos.core.api.tuple.TupleConstants.*;
+
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TuplR;
 import org.barghos.core.api.tuple2.Tup2lC;
@@ -60,7 +62,8 @@ public class Tup2l implements Tup2lC, Serializable, FormattableToString
 	 */
 	public Tup2l()
 	{
-		set(0);
+		this.x = 0l;
+		this.y = 0l;
 	}
 	
 	/**
@@ -70,7 +73,10 @@ public class Tup2l implements Tup2lC, Serializable, FormattableToString
 	 */
 	public Tup2l(TuplR t)
 	{
-		set(t);
+		long[] v = t.toArray(new long[2]);
+		
+		this.x = v[COMP_X];
+		this.y = v[COMP_Y];
 	}
 	
 	/**
@@ -80,7 +86,8 @@ public class Tup2l implements Tup2lC, Serializable, FormattableToString
 	 */
 	public Tup2l(Tup2lR t)
 	{
-		set(t);
+		this.x = t.getX();
+		this.y = t.getY();
 	}
 	
 	/**
@@ -90,7 +97,8 @@ public class Tup2l implements Tup2lC, Serializable, FormattableToString
 	 */
 	public Tup2l(long value)
 	{
-		set(value);
+		this.x = value;
+		this.y = value;
 	}
 	
 	/**
@@ -100,7 +108,8 @@ public class Tup2l implements Tup2lC, Serializable, FormattableToString
 	 */
 	public Tup2l(long[] v)
 	{
-		setArray(v);
+		this.x = v[COMP_X];
+		this.y = v[COMP_Y];
 	}
 	
 	/**
@@ -111,7 +120,8 @@ public class Tup2l implements Tup2lC, Serializable, FormattableToString
 	 */
 	public Tup2l(long x, long y)
 	{
-		set(x, y);
+		this.x = x;
+		this.y = y;
 	}
 	
 	/** {@inheritDoc}} */
@@ -126,6 +136,52 @@ public class Tup2l implements Tup2lC, Serializable, FormattableToString
 	public long getY()
 	{
 		return this.y;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public long getByIndex(int index)
+	{
+		switch(index)
+		{
+			case COMP_X: return this.x;
+			case COMP_Y: return this.y;
+		}
+		
+		throw new IndexOutOfBoundsException(index);
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public boolean isExactlyZero()
+	{
+		return	this.x == 0 &&
+				this.y == 0;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public boolean isZero(long tolerance)
+	{
+		return	Math.abs(this.x) <= tolerance &&
+				Math.abs(this.y) <= tolerance;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public long[] toArray()
+	{
+		return new long[] {this.x, this.y};
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public long[] toArray(long[] res)
+	{
+		res[COMP_X] = this.x;
+		res[COMP_Y] = this.y;
+		
+		return res;
 	}
 	
 	/** {@inheritDoc}} */
@@ -150,21 +206,67 @@ public class Tup2l implements Tup2lC, Serializable, FormattableToString
 	@Override
 	public Tup2l set(Tup2lR t)
 	{
-		return (Tup2l)Tup2lC.super.set(t);
+		this.x = t.getX();
+		this.y = t.getY();
+		
+		return this;
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup2l set(long value)
 	{
-		return (Tup2l)Tup2lC.super.set(value);
+		this.x = value;
+		this.y = value;
+		
+		return this;
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup2l set(long x, long y)
 	{
-		return (Tup2l)Tup2lC.super.set(x, y);
+		this.x = x;
+		this.y = y;
+		
+		return this;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public Tup2l set(TuplR t)
+	{
+		long[] v = t.toArray(new long[2]);
+		
+		this.x = v[COMP_X];
+		this.y = v[COMP_Y];
+		
+		return this;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public Tup2l setArray(long... values)
+	{
+		this.x = values[COMP_X];
+		this.y = values[COMP_Y];
+		
+		return this;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public Tup2l setByIndex(int index, long value)
+	{
+		if(index < 0 || index >= 2) throw new IndexOutOfBoundsException(index);
+		
+		switch(index)
+		{
+			case COMP_X: this.x = value;
+			case COMP_Y: this.y = value;
+		}
+		
+		return this;
 	}
 	
 	/** {@inheritDoc}} */
@@ -173,8 +275,8 @@ public class Tup2l implements Tup2lC, Serializable, FormattableToString
 	{
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (int) (getX() ^ (getX() >>> 32));
-		result = prime * result + (int) (getY() ^ (getY() >>> 32));
+		result = prime * result + (int) (this.x ^ (this.x >>> 32));
+		result = prime * result + (int) (this.y ^ (this.y >>> 32));
 		return result;
 	}
 	
@@ -188,8 +290,8 @@ public class Tup2l implements Tup2lC, Serializable, FormattableToString
 		if(obj instanceof Tup2lR)
 		{
 			Tup2lR other = (Tup2lR) obj;
-			if(getX() != other.getX()) return false;
-			if(getY() != other.getY()) return false;
+			if(this.x != other.getX()) return false;
+			if(this.y != other.getY()) return false;
 			
 			return true;
 		}
@@ -197,9 +299,9 @@ public class Tup2l implements Tup2lC, Serializable, FormattableToString
 		if(obj instanceof TuplR)
 		{
 			TuplR other = (TuplR) obj;
-			if(getDimensions() != other.getDimensions()) return false;
-			if(getX() != other.getByIndex(0)) return false;
-			if(getY() != other.getByIndex(1)) return false;
+			if(2 != other.getDimensions()) return false;
+			if(this.x != other.getByIndex(0)) return false;
+			if(this.y != other.getByIndex(1)) return false;
 			
 			return true;
 		}
@@ -211,14 +313,28 @@ public class Tup2l implements Tup2lC, Serializable, FormattableToString
 	@Override
 	public String toString()
 	{
-		return "tup2l(x=" + getX() + ", y=" + getY() + ")";
+		return "tup2l(x=" + this.x + ", y=" + this.y + ")";
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public Tup2l shallowClone()
+	{
+		return new Tup2l(this.x, this.y);
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public Tup2l deepClone()
+	{
+		return new Tup2l(this.x, this.y);
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup2l clone()
 	{
-		return new Tup2l(this);
+		return new Tup2l(this.x, this.y);
 	}
 	
 	/** {@inheritDoc}} */
@@ -226,30 +342,9 @@ public class Tup2l implements Tup2lC, Serializable, FormattableToString
 	public Map<String,Object> getValueMapping()
 	{
 		Map<String,Object> values = new LinkedHashMap<>();
-		values.put("x", getX());
-		values.put("y", getY());
+		values.put("x", this.x);
+		values.put("y", this.y);
 		
 		return values;
-	}
-	
-	/** {@inheritDoc}} */
-	@Override
-	public Tup2l set(TuplR t)
-	{
-		return (Tup2l)Tup2lC.super.set(t);
-	}
-	
-	/** {@inheritDoc}} */
-	@Override
-	public Tup2l setArray(long... values)
-	{
-		return (Tup2l)Tup2lC.super.setArray(values);
-	}
-	
-	/** {@inheritDoc}} */
-	@Override
-	public Tup2l setByIndex(int index, long value)
-	{
-		return (Tup2l)Tup2lC.super.setByIndex(index, value);
 	}
 }

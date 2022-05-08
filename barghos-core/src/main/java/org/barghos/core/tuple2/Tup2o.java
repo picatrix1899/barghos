@@ -34,6 +34,9 @@ import org.barghos.core.api.tuple2.Tup2oR;
  * A tuple unlike a vector contains data that is not necessarly in any relation to each other,
  * where the data of a vector describes the same logical structure.
  * 
+ * @param <X> The type of the x component.
+ * @param <Y> The type of the y component.
+ * 
  * @author picatrix1899
  */
 public class Tup2o<X,Y> implements Tup2oC<X,Y>, FormattableToString
@@ -62,7 +65,8 @@ public class Tup2o<X,Y> implements Tup2oC<X,Y>, FormattableToString
 	 */
 	public Tup2o(Tup2oR<X,Y> t)
 	{
-		set(t);
+		this.x = t.getX();
+		this.y = t.getY();
 	}
 	
 	/**
@@ -73,7 +77,8 @@ public class Tup2o<X,Y> implements Tup2oC<X,Y>, FormattableToString
 	 */
 	public Tup2o(X x, Y y)
 	{
-		set(x, y);
+		this.x = x;
+		this.y = y;
 	}
 	
 	/** {@inheritDoc} */
@@ -88,6 +93,14 @@ public class Tup2o<X,Y> implements Tup2oC<X,Y>, FormattableToString
 	public Y getY()
 	{
 		return this.y;
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public boolean isValid()
+	{
+		return	this.x != null &&
+				this.y != null;
 	}
 	
 	/** {@inheritDoc} */
@@ -112,14 +125,20 @@ public class Tup2o<X,Y> implements Tup2oC<X,Y>, FormattableToString
 	@Override
 	public Tup2o<X,Y> set(Tup2oR<X,Y> t)
 	{
-		return (Tup2o<X,Y>)Tup2oC.super.set(t);
+		this.x = t.getX();
+		this.y = t.getY();
+		
+		return this;
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public Tup2o<X,Y> set(X x, Y y)
 	{
-		return (Tup2o<X,Y>)Tup2oC.super.set(x, y);
+		this.x = x;
+		this.y = y;
+		
+		return this;
 	}
 	
 	/** {@inheritDoc} */
@@ -128,8 +147,8 @@ public class Tup2o<X,Y> implements Tup2oC<X,Y>, FormattableToString
 	{
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + getX().hashCode();
-		result = prime * result + getY().hashCode();
+		result = prime * result + this.x.hashCode();
+		result = prime * result + this.y.hashCode();
 		return result;
 	}
 	
@@ -143,8 +162,8 @@ public class Tup2o<X,Y> implements Tup2oC<X,Y>, FormattableToString
 		
 		@SuppressWarnings("unchecked")
 		Tup2oR<X,Y> other = (Tup2oR<X,Y>) obj;
-		if(!getX().equals(other.getX())) return false;
-		if(!getY().equals(other.getY())) return false;
+		if(!this.x.equals(other.getX())) return false;
+		if(!this.y.equals(other.getY())) return false;
 		return true;
 	}
 	
@@ -152,14 +171,14 @@ public class Tup2o<X,Y> implements Tup2oC<X,Y>, FormattableToString
 	@Override
 	public String toString()
 	{
-		return "tup2o(x=" + getX() + ", y=" + getY() + ")";
+		return "tup2o(x=" + this.x + ", y=" + this.y + ")";
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public Tup2o<X,Y> clone()
 	{
-		return new Tup2o<>(this);
+		return new Tup2o<>(this.x, this.y);
 	}
 	
 	/** {@inheritDoc} */
@@ -167,8 +186,8 @@ public class Tup2o<X,Y> implements Tup2oC<X,Y>, FormattableToString
 	public Map<String,Object> getValueMapping()
 	{
 		Map<String,Object> values = new LinkedHashMap<>();
-		values.put("x", getX());
-		values.put("y", getY());
+		values.put("x", this.x);
+		values.put("y", this.y);
 		
 		return values;
 	}

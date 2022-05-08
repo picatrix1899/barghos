@@ -26,10 +26,13 @@ import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import static org.barghos.core.api.tuple.TupleConstants.*;
+
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupobjR;
 import org.barghos.core.api.tuple2.Tup2objC;
 import org.barghos.core.api.tuple2.Tup2objR;
+import org.barghos.core.api.util.ExtendedCloneable;
 
 /**
  * This class represents a 2-dimensional {@link Object} tuple.
@@ -69,7 +72,10 @@ public class Tup2obj implements Tup2objC, Serializable, FormattableToString
 	 */
 	public Tup2obj(TupobjR t)
 	{
-		set(t);
+		Object[] v = t.toArray(new Object[2]);
+		
+		this.x = v[COMP_X];
+		this.y = v[COMP_Y];
 	}
 	
 	/**
@@ -79,7 +85,8 @@ public class Tup2obj implements Tup2objC, Serializable, FormattableToString
 	 */
 	public Tup2obj(Tup2objR t)
 	{
-		set(t);
+		this.x = t.getX();
+		this.y = t.getY();
 	}
 	
 	/**
@@ -89,7 +96,8 @@ public class Tup2obj implements Tup2objC, Serializable, FormattableToString
 	 */
 	public Tup2obj(Object value)
 	{
-		set(value);
+		this.x = value;
+		this.y = value;
 	}
 	
 	/**
@@ -99,7 +107,8 @@ public class Tup2obj implements Tup2objC, Serializable, FormattableToString
 	 */
 	public Tup2obj(Object[] v)
 	{
-		setArray(v);
+		this.x = v[COMP_X];
+		this.y = v[COMP_Y];
 	}
 	
 	/**
@@ -110,7 +119,8 @@ public class Tup2obj implements Tup2objC, Serializable, FormattableToString
 	 */
 	public Tup2obj(Object x, Object y)
 	{
-		set(x, y);
+		this.x = x;
+		this.y = y;
 	}
 	
 	/** {@inheritDoc} */
@@ -125,6 +135,44 @@ public class Tup2obj implements Tup2objC, Serializable, FormattableToString
 	public Object getY()
 	{
 		return this.y;
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public Object getByIndex(int index)
+	{
+		switch(index)
+		{
+			case COMP_X: return this.x;
+			case COMP_Y: return this.y;
+		}
+		
+		throw new IndexOutOfBoundsException(index);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public boolean isValid()
+	{
+		return	this.x != null &&
+				this.y != null;
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public Object[] toArray()
+	{
+		return new Object[] {this.x, this.y};
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public Object[] toArray(Object[] res)
+	{
+		res[COMP_X] = this.x;
+		res[COMP_Y] = this.y;
+		
+		return res;
 	}
 	
 	/** {@inheritDoc} */
@@ -149,21 +197,67 @@ public class Tup2obj implements Tup2objC, Serializable, FormattableToString
 	@Override
 	public Tup2obj set(Tup2objR t)
 	{
-		return (Tup2obj)Tup2objC.super.set(t);
+		this.x = t.getX();
+		this.y = t.getY();
+		
+		return this;
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public Tup2obj set(Object value)
 	{
-		return (Tup2obj)Tup2objC.super.set(value);
+		this.x = value;
+		this.y = value;
+		
+		return this;
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public Tup2obj set(Object x, Object y)
 	{
-		return (Tup2obj)Tup2objC.super.set(x, y);
+		this.x = x;
+		this.y = y;
+		
+		return this;
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public Tup2obj set(TupobjR t)
+	{
+		Object[] v = t.toArray(new Object[2]);
+		
+		this.x = v[COMP_X];
+		this.y = v[COMP_Y];
+		
+		return this;
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public Tup2obj setArray(Object... values)
+	{
+		this.x = values[COMP_X];
+		this.y = values[COMP_Y];
+		
+		return this;
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public Tup2obj setByIndex(int index, Object value)
+	{
+		if(index < 0 || index >= 2) throw new IndexOutOfBoundsException(index);
+		
+		switch(index)
+		{
+			case COMP_X: this.x = value;
+			case COMP_Y: this.y = value;
+		}
+		
+		return this;
 	}
 	
 	/** {@inheritDoc} */
@@ -172,8 +266,8 @@ public class Tup2obj implements Tup2objC, Serializable, FormattableToString
 	{
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + getX().hashCode();
-		result = prime * result + getY().hashCode();
+		result = prime * result + this.x.hashCode();
+		result = prime * result + this.y.hashCode();
 		return result;
 	}
 	
@@ -187,8 +281,8 @@ public class Tup2obj implements Tup2objC, Serializable, FormattableToString
 		if(obj instanceof Tup2objR)
 		{
 			Tup2objR other = (Tup2objR) obj;
-			if(!getX().equals(other.getX())) return false;
-			if(!getY().equals(other.getY())) return false;
+			if(!this.x.equals(other.getX())) return false;
+			if(!this.y.equals(other.getY())) return false;
 			
 			return true;
 		}
@@ -196,9 +290,9 @@ public class Tup2obj implements Tup2objC, Serializable, FormattableToString
 		if(obj instanceof TupobjR)
 		{
 			TupobjR other = (TupobjR) obj;
-			if(getDimensions() != other.getDimensions()) return false;
-			if(!getX().equals(other.getByIndex(0))) return false;
-			if(!getY().equals(other.getByIndex(1))) return false;
+			if(2 != other.getDimensions()) return false;
+			if(!this.x.equals(other.getByIndex(0))) return false;
+			if(!this.y.equals(other.getByIndex(1))) return false;
 			
 			return true;
 		}
@@ -210,14 +304,34 @@ public class Tup2obj implements Tup2objC, Serializable, FormattableToString
 	@Override
 	public String toString()
 	{
-		return "tup2obj(x=" + getX() + ", y=" + getY() + ")";
+		return "tup2obj(x=" + this.x + ", y=" + this.y + ")";
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public Tup2obj shallowClone()
+	{
+		return new Tup2obj(this.x, this.y);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public Tup2obj deepClone()
+	{
+		Object x = this.x;
+		if(x instanceof ExtendedCloneable) x =  ((ExtendedCloneable)x).deepClone();
+		
+		Object y = this.y;
+		if(y instanceof ExtendedCloneable) y =  ((ExtendedCloneable)y).deepClone();
+		
+		return new Tup2obj(x, y);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public Tup2obj clone()
 	{
-		return new Tup2obj(this);
+		return new Tup2obj(this.x, this.y);
 	}
 	
 	/** {@inheritDoc} */
@@ -225,30 +339,9 @@ public class Tup2obj implements Tup2objC, Serializable, FormattableToString
 	public Map<String,Object> getValueMapping()
 	{
 		Map<String,Object> values = new LinkedHashMap<>();
-		values.put("x", getX());
-		values.put("y", getY());
+		values.put("x", this.x);
+		values.put("y", this.y);
 		
 		return values;
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public Tup2obj set(TupobjR t)
-	{
-		return (Tup2obj)Tup2objC.super.set(t);
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public Tup2obj setArray(Object... values)
-	{
-		return (Tup2obj)Tup2objC.super.setArray(values);
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public Tup2obj setByIndex(int index, Object value)
-	{
-		return (Tup2obj)Tup2objC.super.setByIndex(index, value);
 	}
 }

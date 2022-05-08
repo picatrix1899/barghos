@@ -25,6 +25,8 @@ package org.barghos.core.tuple2;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import static org.barghos.core.api.tuple.TupleConstants.*;
+
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupobjR;
 import org.barghos.core.api.tuple2.Tup2objR;
@@ -48,23 +50,16 @@ public class ImmutableTup2obj implements Tup2objR, FormattableToString
 	public final Object y;
 	
 	/**
-	 * The immutable hashCode.
-	 */
-	protected transient int hashCode;
-	
-	/**
-	 * The flag that shows that the hashCode has already been generated.
-	 */
-	protected transient boolean isHashCodeGenerated;
-	
-	/**
 	 * Generates a new readonly {@link ImmutableTup2obj} from an existing instance of {@link TupobjR} and adopts the values.
 	 * 
 	 * @param t An existing implementation of {@link TupobjR} to adopt the values from.
 	 */
 	public ImmutableTup2obj(TupobjR t)
 	{
-		this(t.toArray());
+		Object[] v = t.toArray(new Object[2]);
+		
+		this.x = v[COMP_X];
+		this.y = v[COMP_Y];
 	}
 	
 	/**
@@ -74,7 +69,8 @@ public class ImmutableTup2obj implements Tup2objR, FormattableToString
 	 */
 	public ImmutableTup2obj(Tup2objR t)
 	{
-		this(t.getX(), t.getY());
+		this.x = t.getX();
+		this.y = t.getY();
 	}
 	
 	/**
@@ -84,7 +80,8 @@ public class ImmutableTup2obj implements Tup2objR, FormattableToString
 	 */
 	public ImmutableTup2obj(Object value)
 	{
-		this(value, value);
+		this.x = value;
+		this.y = value;
 	}
 	
 	/**
@@ -94,8 +91,8 @@ public class ImmutableTup2obj implements Tup2objR, FormattableToString
 	 */
 	public ImmutableTup2obj(Object[] v)
 	{
-		this.x = v[0];
-		this.y = v[1];
+		this.x = v[COMP_X];
+		this.y = v[COMP_Y];
 	}
 	
 	/**
@@ -127,10 +124,52 @@ public class ImmutableTup2obj implements Tup2objR, FormattableToString
 	
 	/** {@inheritDoc}} */
 	@Override
+	public Object getByIndex(int index)
+	{
+		switch(index)
+		{
+			case COMP_X: return this.x;
+			case COMP_Y: return this.y;
+		}
+		
+		throw new IndexOutOfBoundsException(index);
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public boolean isValid()
+	{
+		return	this.x != null &&
+				this.y != null;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public Object[] toArray()
+	{
+		return new Object[] {this.x, this.y};
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public Object[] toArray(Object[] res)
+	{
+		res[COMP_X] = this.x;
+		res[COMP_Y] = this.y;
+		
+		return res;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
 	public int hashCode()
 	{
-		if(!this.isHashCodeGenerated) generateHashCode();
-		return this.hashCode;
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + this.x.hashCode();
+		result = prime * result + this.y.hashCode();
+		
+		return result;
 	}
 	
 	/** {@inheritDoc}} */
@@ -143,8 +182,8 @@ public class ImmutableTup2obj implements Tup2objR, FormattableToString
 		if(obj instanceof Tup2objR)
 		{
 			Tup2objR other = (Tup2objR) obj;
-			if(!getX().equals(other.getX())) return false;
-			if(!getY().equals(other.getY())) return false;
+			if(!this.x.equals(other.getX())) return false;
+			if(!this.y.equals(other.getY())) return false;
 			
 			return true;
 		}
@@ -152,9 +191,9 @@ public class ImmutableTup2obj implements Tup2objR, FormattableToString
 		if(obj instanceof TupobjR)
 		{
 			TupobjR other = (TupobjR) obj;
-			if(getDimensions() != other.getDimensions()) return false;
-			if(!getX().equals(other.getByIndex(0))) return false;
-			if(!getY().equals(other.getByIndex(1))) return false;
+			if(2 != other.getDimensions()) return false;
+			if(!this.x.equals(other.getByIndex(0))) return false;
+			if(!this.y.equals(other.getByIndex(1))) return false;
 			
 			return true;
 		}
@@ -166,7 +205,14 @@ public class ImmutableTup2obj implements Tup2objR, FormattableToString
 	@Override
 	public String toString()
 	{
-		return "immutableTup2obj(x=" + getX() + ", y=" + getY() + ")";
+		return "immutableTup2obj(x=" + this.x + ", y=" + this.y + ")";
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public ImmutableTup2obj clone()
+	{
+		return new ImmutableTup2obj(this.x, this.y);
 	}
 	
 	/** {@inheritDoc}} */
@@ -174,23 +220,9 @@ public class ImmutableTup2obj implements Tup2objR, FormattableToString
 	public Map<String,Object> getValueMapping()
 	{
 		Map<String,Object> values = new LinkedHashMap<>();
-		values.put("x", getX());
-		values.put("y", getY());
+		values.put("x", this.x);
+		values.put("y", this.y);
 		
 		return values;
-	}
-	
-	/**
-	 * This method generates the hashCode and stores it in the member for later use.
-	 */
-	protected void generateHashCode()
-	{
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + getX().hashCode();
-		result = prime * result + getY().hashCode();
-		
-		this.hashCode = result;
-		this.isHashCodeGenerated = true;
 	}
 }

@@ -26,6 +26,8 @@ import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import static org.barghos.core.api.tuple.TupleConstants.*;
+
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupfR;
 import org.barghos.core.api.tuple2.Tup2fC;
@@ -60,7 +62,8 @@ public class Tup2f implements Tup2fC, Serializable, FormattableToString
 	 */
 	public Tup2f()
 	{		
-		set(0.0f);
+		this.x = 0.0f;
+		this.y = 0.0f;
 	}
 	
 	/**
@@ -70,7 +73,10 @@ public class Tup2f implements Tup2fC, Serializable, FormattableToString
 	 */
 	public Tup2f(TupfR t)
 	{
-		set(t);
+		float[] v = t.toArray(new float[2]);
+		
+		this.x = v[COMP_X];
+		this.y = v[COMP_Y];
 	}
 	
 	/**
@@ -80,7 +86,8 @@ public class Tup2f implements Tup2fC, Serializable, FormattableToString
 	 */
 	public Tup2f(Tup2fR t)
 	{
-		set(t);
+		this.x = t.getX();
+		this.y = t.getY();
 	}
 	
 	/**
@@ -90,7 +97,8 @@ public class Tup2f implements Tup2fC, Serializable, FormattableToString
 	 */
 	public Tup2f(float value)
 	{
-		set(value);
+		this.x = value;
+		this.y = value;
 	}
 	
 	/**
@@ -100,7 +108,8 @@ public class Tup2f implements Tup2fC, Serializable, FormattableToString
 	 */
 	public Tup2f(float[] v)
 	{
-		setArray(v);
+		this.x = v[COMP_X];
+		this.y = v[COMP_Y];
 	}
 	
 	/**
@@ -111,7 +120,8 @@ public class Tup2f implements Tup2fC, Serializable, FormattableToString
 	 */
 	public Tup2f(float x, float y)
 	{
-		set(x, y);
+		this.x = x;
+		this.y = y;
 	}
 	
 	/** {@inheritDoc}} */
@@ -126,6 +136,60 @@ public class Tup2f implements Tup2fC, Serializable, FormattableToString
 	public float getY()
 	{
 		return this.y;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public float getByIndex(int index)
+	{
+		switch(index)
+		{
+			case COMP_X: return this.x;
+			case COMP_Y: return this.y;
+		}
+		
+		throw new IndexOutOfBoundsException(index);
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public boolean isExactlyZero()
+	{
+		return	this.x == 0 &&
+				this.y == 0;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public boolean isZero(float tolerance)
+	{
+		return	Math.abs(this.x) <= tolerance &&
+				Math.abs(this.y) <= tolerance;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public boolean isFinite()
+	{
+		return	Float.isFinite(this.x) &&
+				Float.isFinite(this.y);
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public float[] toArray()
+	{
+		return new float[] {this.x, this.y};
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public float[] toArray(float[] res)
+	{
+		res[COMP_X] = this.x;
+		res[COMP_Y] = this.y;
+		
+		return res;
 	}
 	
 	/** {@inheritDoc}} */
@@ -150,21 +214,67 @@ public class Tup2f implements Tup2fC, Serializable, FormattableToString
 	@Override
 	public Tup2f set(Tup2fR t)
 	{
-		return (Tup2f)Tup2fC.super.set(t);
+		this.x = t.getX();
+		this.y = t.getY();
+		
+		return this;
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup2f set(float value)
 	{
-		return (Tup2f)Tup2fC.super.set(value);
+		this.x = value;
+		this.y = value;
+		
+		return this;
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup2f set(float x, float y)
 	{
-		return (Tup2f)Tup2fC.super.set(x, y);
+		this.x = x;
+		this.y = y;
+		
+		return this;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public Tup2f set(TupfR t)
+	{
+		float[] v = t.toArray(new float[2]);
+		
+		this.x = v[COMP_X];
+		this.y = v[COMP_Y];
+		
+		return this;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public Tup2f setArray(float... values)
+	{
+		this.x = values[COMP_X];
+		this.y = values[COMP_Y];
+		
+		return this;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public Tup2f setByIndex(int index, float value)
+	{
+		if(index < 0 || index >= 2) throw new IndexOutOfBoundsException(index);
+		
+		switch(index)
+		{
+			case COMP_X: this.x = value;
+			case COMP_Y: this.y = value;
+		}
+		
+		return this;
 	}
 	
 	/** {@inheritDoc}} */
@@ -173,8 +283,8 @@ public class Tup2f implements Tup2fC, Serializable, FormattableToString
 	{
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + Float.floatToIntBits(getX());
-		result = prime * result + Float.floatToIntBits(getY());
+		result = prime * result + Float.floatToIntBits(this.x);
+		result = prime * result + Float.floatToIntBits(this.y);
 		return result;
 	}
 	
@@ -188,8 +298,8 @@ public class Tup2f implements Tup2fC, Serializable, FormattableToString
 		if(obj instanceof Tup2fR)
 		{
 			Tup2fR other = (Tup2fR) obj;
-			if(Float.floatToIntBits(getX()) != Float.floatToIntBits(other.getX())) return false;
-			if(Float.floatToIntBits(getY()) != Float.floatToIntBits(other.getY())) return false;
+			if(Float.floatToIntBits(this.x) != Float.floatToIntBits(other.getX())) return false;
+			if(Float.floatToIntBits(this.y) != Float.floatToIntBits(other.getY())) return false;
 			
 			return true;
 		}
@@ -197,9 +307,9 @@ public class Tup2f implements Tup2fC, Serializable, FormattableToString
 		if(obj instanceof TupfR)
 		{
 			TupfR other = (TupfR) obj;
-			if(getDimensions() != other.getDimensions()) return false;
-			if(Float.floatToIntBits(getX()) != Float.floatToIntBits(other.getByIndex(0))) return false;
-			if(Float.floatToIntBits(getY()) != Float.floatToIntBits(other.getByIndex(1))) return false;
+			if(2 != other.getDimensions()) return false;
+			if(Float.floatToIntBits(this.x) != Float.floatToIntBits(other.getByIndex(0))) return false;
+			if(Float.floatToIntBits(this.y) != Float.floatToIntBits(other.getByIndex(1))) return false;
 			
 			return true;
 		}
@@ -211,14 +321,28 @@ public class Tup2f implements Tup2fC, Serializable, FormattableToString
 	@Override
 	public String toString()
 	{
-		return "tup2f(x=" + getX() + ", y=" + getY() + ")";
+		return "tup2f(x=" + this.x + ", y=" + this.y + ")";
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public Tup2f shallowClone()
+	{
+		return new Tup2f(this.x, this.y);
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public Tup2f deepClone()
+	{
+		return new Tup2f(this.x, this.y);
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Tup2f clone()
 	{
-		return new Tup2f(this);
+		return new Tup2f(this.x, this.y);
 	}
 	
 	/** {@inheritDoc}} */
@@ -226,30 +350,9 @@ public class Tup2f implements Tup2fC, Serializable, FormattableToString
 	public Map<String,Object> getValueMapping()
 	{
 		Map<String,Object> values = new LinkedHashMap<>();
-		values.put("x", getX());
-		values.put("y", getY());
+		values.put("x", this.x);
+		values.put("y", this.y);
 		
 		return values;
-	}
-	
-	/** {@inheritDoc}} */
-	@Override
-	public Tup2f set(TupfR t)
-	{
-		return (Tup2f)Tup2fC.super.set(t);
-	}
-	
-	/** {@inheritDoc}} */
-	@Override
-	public Tup2f setArray(float... values)
-	{
-		return (Tup2f)Tup2fC.super.setArray(values);
-	}
-	
-	/** {@inheritDoc}} */
-	@Override
-	public Tup2f setByIndex(int index, float value)
-	{
-		return (Tup2f)Tup2fC.super.setByIndex(index, value);
 	}
 }
