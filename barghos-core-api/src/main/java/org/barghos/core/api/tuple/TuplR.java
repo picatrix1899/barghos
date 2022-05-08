@@ -1,5 +1,7 @@
 package org.barghos.core.api.tuple;
 
+import java.nio.LongBuffer;
+
 import org.barghos.core.api.util.ExtractParam;
 import org.barghos.core.api.util.Validateable;
 
@@ -52,6 +54,15 @@ public interface TuplR extends Validateable
 	 * @return The result array with all components in it.
 	 */
 	long[] toArray(@ExtractParam long[] res);
+	
+	/**
+	 * Puts the components of the tuple into the given buffer.
+	 * 
+	 * @param buffer The buffer to put the components into.
+	 * 
+	 * @return The buffer.
+	 */
+	LongBuffer toBuffer(LongBuffer buffer);
 	
 	/**
 	 * Returns true if all components are finite and therefore not NaN or Infinity.

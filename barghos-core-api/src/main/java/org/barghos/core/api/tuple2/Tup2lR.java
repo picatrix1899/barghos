@@ -24,6 +24,8 @@ package org.barghos.core.api.tuple2;
 
 import static org.barghos.core.api.tuple.TupleConstants.*;
 
+import java.nio.LongBuffer;
+
 import org.barghos.core.api.tuple.TuplR;
 import org.barghos.core.api.util.ExtractParam;
 
@@ -60,7 +62,7 @@ public interface Tup2lR extends TuplR
 	@Override
 	default boolean isExactlyZero()
 	{
-		return getX() == 0l &&
+		return	getX() == 0l &&
 				getY() == 0l;
 	}
 	
@@ -74,7 +76,7 @@ public interface Tup2lR extends TuplR
 	@Override
 	default boolean isZero(long tolerance)
 	{
-		return Math.abs(getX()) <= tolerance &&
+		return	Math.abs(getX()) <= tolerance &&
 				Math.abs(getY()) <= tolerance;
 	}
 	
@@ -106,5 +108,15 @@ public interface Tup2lR extends TuplR
 		res[COMP_Y] = getY();
 		
 		return res;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	default LongBuffer toBuffer(LongBuffer buffer)
+	{
+		buffer.put(getX());
+		buffer.put(getY());
+		
+		return buffer;
 	}
 }

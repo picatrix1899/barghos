@@ -135,6 +135,28 @@ class Tup2lCTest
 	}
 	
 	/**
+	 * This test ensures, that the function {@link Tup2lC#setArray(long[])} adopts the
+	 * values and returns the current instance.
+	 */
+	@Test
+	void setArrayTest()
+	{
+		Tup2lC t = mock(Tup2lC.class);
+		
+		when(t.setArray(new long[] {1l, 2l})).thenCallRealMethod();
+		
+		when(t.set(1, 2)).thenReturn(t);
+		
+		assertSame(t, t.setArray(new long[] {1l, 2l}));
+		
+		verify(t).setArray(new long[] {1l, 2l});
+		
+		verify(t).set(1l, 2l);
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
 	 * This test ensures, that the function {@link Tup2lC#setByIndex(int, long)} adopts the
 	 * value to the x component if the index is 0 and returns the current instance.
 	 */

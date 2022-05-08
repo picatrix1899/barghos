@@ -6,6 +6,8 @@ import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
+import java.nio.IntBuffer;
+
 import org.barghos.core.api.tuple.TupiR;
 import org.barghos.core.api.tuple4.Tup4iR;
 
@@ -470,7 +472,7 @@ class Tup4iRTest
 	 * the given array with the components in the right order.
 	 */
 	@Test
-	void toArray_QueryTest()
+	void toArray_ExtractParamTest()
 	{
 		Tup4iR t = mock(Tup4iR.class);
 		
@@ -605,5 +607,37 @@ class Tup4iRTest
 		verify(t).getByIndex(4);
 
 		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4iR#toBuffer(IntBuffer)}
+	 * puts the components correctly in the buffer.
+	 */
+	@Test
+	void toBufferTest()
+	{
+		Tup4iR t = mock(Tup4iR.class);
+		
+		IntBuffer buffer = mock(IntBuffer.class);
+		
+		when(t.toBuffer(buffer)).thenCallRealMethod();
+		when(t.getX()).thenReturn(1);
+		when(t.getY()).thenReturn(2);
+		when(t.getZ()).thenReturn(3);
+		when(t.getW()).thenReturn(4);
+		
+		assertSame(buffer, t.toBuffer(buffer));
+		
+		verify(t).toBuffer(buffer);
+		verify(t).getX();
+		verify(buffer).put(1);
+		verify(t).getY();
+		verify(buffer).put(2);
+		verify(t).getZ();
+		verify(buffer).put(3);
+		verify(t).getW();
+		verify(buffer).put(4);
+		
+		verifyNoMoreInteractions(t, buffer);
 	}
 }

@@ -106,13 +106,6 @@ public interface Tup4sC extends Tup4sR, TupsC
 	
 	/** {@inheritDoc}} */
 	@Override
-	default int getDimensions()
-	{
-		return 4;
-	}
-	
-	/** {@inheritDoc}} */
-	@Override
 	default Tup4sC setByIndex(int index, short value)
 	{
 		switch(index)

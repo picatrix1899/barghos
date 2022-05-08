@@ -1,6 +1,8 @@
 package org.barghos.core.test.api.util;
 
+
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.Test;
 
@@ -108,5 +110,101 @@ class JavaNioBufferFactoryTest
 		
 		assertNotNull(b);
 		assertEquals(10, b.capacity());
+	}
+	
+	/**
+	 * This test ensures, that the function {@link JavaNioBufferFactory#destroyBuffer(ByteBuffer)}
+	 * does not do anything.
+	 */
+	@Test
+	void destroyBuffer_ByteTest()
+	{
+		JavaNioBufferFactory factory = new JavaNioBufferFactory();
+		
+		ByteBuffer b = mock(ByteBuffer.class);
+		
+		factory.destroyBuffer(b);
+		
+		verifyNoInteractions(b);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link JavaNioBufferFactory#destroyBuffer(ShortBuffer)}
+	 * does not do anything.
+	 */
+	@Test
+	void destroyBuffer_ShortTest()
+	{
+		JavaNioBufferFactory factory = new JavaNioBufferFactory();
+		
+		ShortBuffer b = mock(ShortBuffer.class);
+		
+		factory.destroyBuffer(b);
+		
+		verifyNoInteractions(b);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link JavaNioBufferFactory#destroyBuffer(IntBuffer)}
+	 * does not do anything.
+	 */
+	@Test
+	void destroyBuffer_IntTest()
+	{
+		JavaNioBufferFactory factory = new JavaNioBufferFactory();
+		
+		IntBuffer b = mock(IntBuffer.class);
+		
+		factory.destroyBuffer(b);
+		
+		verifyNoInteractions(b);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link JavaNioBufferFactory#destroyBuffer(LongBuffer)}
+	 * does not do anything.
+	 */
+	@Test
+	void destroyBuffer_LongTest()
+	{
+		JavaNioBufferFactory factory = new JavaNioBufferFactory();
+		
+		LongBuffer b = mock(LongBuffer.class);
+		
+		factory.destroyBuffer(b);
+		
+		verifyNoInteractions(b);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link JavaNioBufferFactory#destroyBuffer(FloatBuffer)}
+	 * does not do anything.
+	 */
+	@Test
+	void destroyBuffer_FloatTest()
+	{
+		JavaNioBufferFactory factory = new JavaNioBufferFactory();
+		
+		FloatBuffer b = mock(FloatBuffer.class);
+		
+		factory.destroyBuffer(b);
+		
+		verifyNoInteractions(b);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link JavaNioBufferFactory#destroyBuffer(DoubleBuffer)}
+	 * does not do anything.
+	 */
+	@Test
+	void destroyBuffer_DoubleTest()
+	{
+		JavaNioBufferFactory factory = new JavaNioBufferFactory();
+		
+		DoubleBuffer b = mock(DoubleBuffer.class);
+		
+		factory.destroyBuffer(b);
+		
+		verifyNoInteractions(b);
 	}
 }

@@ -63,7 +63,7 @@ public interface Tup3strR extends TupstrR
 	@Override
 	default boolean isValid()
 	{
-		return getX() != null &&
+		return	getX() != null &&
 				getY() != null &&
 				getZ() != null;
 	}

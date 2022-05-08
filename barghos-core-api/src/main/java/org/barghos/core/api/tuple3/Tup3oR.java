@@ -64,7 +64,7 @@ public interface Tup3oR<X,Y,Z> extends Validateable
 	@Override
 	default boolean isValid()
 	{
-		return getX() != null &&
+		return	getX() != null &&
 				getY() != null &&
 				getZ() != null;
 	}

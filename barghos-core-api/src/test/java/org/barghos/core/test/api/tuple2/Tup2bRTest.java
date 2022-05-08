@@ -8,6 +8,8 @@ import org.junit.jupiter.api.function.Executable;
 
 import static org.barghos.core.api.testing.TestObjectFactory.*;
 
+import java.nio.ByteBuffer;
+
 import org.barghos.core.api.tuple.TupbR;
 import org.barghos.core.api.tuple2.Tup2bR;
 
@@ -377,5 +379,31 @@ class Tup2bRTest
 		verify(t).getByIndex(2);
 
 		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2bR#toBuffer(ByteBuffer)}
+	 * puts the components correctly in the buffer.
+	 */
+	@Test
+	void toBufferTest()
+	{
+		Tup2bR t = mock(Tup2bR.class);
+		
+		ByteBuffer buffer = mock(ByteBuffer.class);
+		
+		when(t.toBuffer(buffer)).thenCallRealMethod();
+		when(t.getX()).thenReturn(b(1));
+		when(t.getY()).thenReturn(b(2));
+		
+		assertSame(buffer, t.toBuffer(buffer));
+		
+		verify(t).toBuffer(buffer);
+		verify(t).getX();
+		verify(buffer).put(b(1));
+		verify(t).getY();
+		verify(buffer).put(b(2));
+		
+		verifyNoMoreInteractions(t, buffer);
 	}
 }

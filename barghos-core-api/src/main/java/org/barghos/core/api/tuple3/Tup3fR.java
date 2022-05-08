@@ -24,6 +24,8 @@ package org.barghos.core.api.tuple3;
 
 import static org.barghos.core.api.tuple.TupleConstants.*;
 
+import java.nio.FloatBuffer;
+
 import org.barghos.core.api.tuple.TupfR;
 import org.barghos.core.api.util.ExtractParam;
 
@@ -63,7 +65,7 @@ public interface Tup3fR extends TupfR
 	@Override
 	default boolean isFinite()
 	{
-		return Float.isFinite(getX()) &&
+		return	Float.isFinite(getX()) &&
 				Float.isFinite(getY()) &&
 				Float.isFinite(getZ());
 	}
@@ -72,7 +74,7 @@ public interface Tup3fR extends TupfR
 	@Override
 	default boolean isExactlyZero()
 	{
-		return getX() == 0.0f &&
+		return	getX() == 0.0f &&
 				getY() == 0.0f &&
 				getZ() == 0.0f;
 	}
@@ -81,7 +83,7 @@ public interface Tup3fR extends TupfR
 	@Override
 	default boolean isZero(float tolerance)
 	{
-		return Math.abs(getX()) <= tolerance &&
+		return	Math.abs(getX()) <= tolerance &&
 				Math.abs(getY()) <= tolerance &&
 				Math.abs(getZ()) <= tolerance;
 	}
@@ -116,5 +118,16 @@ public interface Tup3fR extends TupfR
 		res[COMP_Z] = getZ();
 		
 		return res;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	default FloatBuffer toBuffer(FloatBuffer buffer)
+	{
+		buffer.put(getX());
+		buffer.put(getY());
+		buffer.put(getZ());
+		
+		return buffer;
 	}
 }

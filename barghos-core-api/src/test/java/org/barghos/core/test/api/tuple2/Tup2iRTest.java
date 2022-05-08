@@ -6,6 +6,8 @@ import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
+import java.nio.IntBuffer;
+
 import org.barghos.core.api.tuple.TupiR;
 import org.barghos.core.api.tuple2.Tup2iR;
 
@@ -375,5 +377,31 @@ class Tup2iRTest
 		verify(t).getByIndex(2);
 
 		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2iR#toBuffer(IntBuffer)}
+	 * puts the components correctly in the buffer.
+	 */
+	@Test
+	void toBufferTest()
+	{
+		Tup2iR t = mock(Tup2iR.class);
+		
+		IntBuffer buffer = mock(IntBuffer.class);
+		
+		when(t.toBuffer(buffer)).thenCallRealMethod();
+		when(t.getX()).thenReturn(1);
+		when(t.getY()).thenReturn(2);
+		
+		assertSame(buffer, t.toBuffer(buffer));
+		
+		verify(t).toBuffer(buffer);
+		verify(t).getX();
+		verify(buffer).put(1);
+		verify(t).getY();
+		verify(buffer).put(2);
+		
+		verifyNoMoreInteractions(t, buffer);
 	}
 }

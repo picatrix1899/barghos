@@ -8,6 +8,8 @@ import org.junit.jupiter.api.function.Executable;
 
 import static org.barghos.core.api.testing.TestObjectFactory.*;
 
+import java.nio.ShortBuffer;
+
 import org.barghos.core.api.tuple.TupsR;
 import org.barghos.core.api.tuple2.Tup2sR;
 
@@ -377,5 +379,31 @@ class Tup2sRTest
 		verify(t).getByIndex(2);
 
 		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2sR#toBuffer(ShortBuffer)}
+	 * puts the components correctly in the buffer.
+	 */
+	@Test
+	void toBufferTest()
+	{
+		Tup2sR t = mock(Tup2sR.class);
+		
+		ShortBuffer buffer = mock(ShortBuffer.class);
+		
+		when(t.toBuffer(buffer)).thenCallRealMethod();
+		when(t.getX()).thenReturn(s(1));
+		when(t.getY()).thenReturn(s(2));
+		
+		assertSame(buffer, t.toBuffer(buffer));
+		
+		verify(t).toBuffer(buffer);
+		verify(t).getX();
+		verify(buffer).put(s(1));
+		verify(t).getY();
+		verify(buffer).put(s(2));
+		
+		verifyNoMoreInteractions(t, buffer);
 	}
 }

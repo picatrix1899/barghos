@@ -24,6 +24,8 @@ package org.barghos.core.api.tuple3;
 
 import static org.barghos.core.api.tuple.TupleConstants.*;
 
+import java.nio.IntBuffer;
+
 import org.barghos.core.api.tuple.TupiR;
 import org.barghos.core.api.util.ExtractParam;
 
@@ -63,7 +65,7 @@ public interface Tup3iR extends TupiR
 	@Override
 	default boolean isExactlyZero()
 	{
-		return getX() == 0 &&
+		return	getX() == 0 &&
 				getY() == 0 &&
 				getZ() == 0;
 	}
@@ -72,7 +74,7 @@ public interface Tup3iR extends TupiR
 	@Override
 	default boolean isZero(int tolerance)
 	{
-		return Math.abs(getX()) <= tolerance &&
+		return	Math.abs(getX()) <= tolerance &&
 				Math.abs(getY()) <= tolerance &&
 				Math.abs(getZ()) <= tolerance;
 	}
@@ -107,5 +109,16 @@ public interface Tup3iR extends TupiR
 		res[COMP_Z] = getZ();
 		
 		return res;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	default IntBuffer toBuffer(IntBuffer buffer)
+	{
+		buffer.put(getX());
+		buffer.put(getY());
+		buffer.put(getZ());
+		
+		return buffer;
 	}
 }

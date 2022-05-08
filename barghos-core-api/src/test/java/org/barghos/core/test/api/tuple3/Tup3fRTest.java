@@ -6,6 +6,8 @@ import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
+import java.nio.FloatBuffer;
+
 import org.barghos.core.api.tuple.TupfR;
 import org.barghos.core.api.tuple3.Tup3fR;
 
@@ -619,7 +621,7 @@ class Tup3fRTest
 	 * the given array with the components in the right order.
 	 */
 	@Test
-	void toArray_QueryTest()
+	void toArray_ExtractParamTest()
 	{
 		Tup3fR t = mock(Tup3fR.class);
 		
@@ -730,5 +732,34 @@ class Tup3fRTest
 		verify(t).getByIndex(3);
 
 		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup3fR#toBuffer(FloatBuffer)}
+	 * puts the components correctly in the buffer.
+	 */
+	@Test
+	void toBufferTest()
+	{
+		Tup3fR t = mock(Tup3fR.class);
+		
+		FloatBuffer buffer = mock(FloatBuffer.class);
+		
+		when(t.toBuffer(buffer)).thenCallRealMethod();
+		when(t.getX()).thenReturn(1.0f);
+		when(t.getY()).thenReturn(2.0f);
+		when(t.getZ()).thenReturn(3.0f);
+		
+		assertSame(buffer, t.toBuffer(buffer));
+		
+		verify(t).toBuffer(buffer);
+		verify(t).getX();
+		verify(buffer).put(1.0f);
+		verify(t).getY();
+		verify(buffer).put(2.0f);
+		verify(t).getZ();
+		verify(buffer).put(3.0f);
+		
+		verifyNoMoreInteractions(t, buffer);
 	}
 }

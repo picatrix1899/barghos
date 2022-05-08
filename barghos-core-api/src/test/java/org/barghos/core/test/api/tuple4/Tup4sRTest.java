@@ -8,6 +8,8 @@ import org.junit.jupiter.api.function.Executable;
 
 import static org.barghos.core.api.testing.TestObjectFactory.*;
 
+import java.nio.ShortBuffer;
+
 import org.barghos.core.api.tuple.TupsR;
 import org.barghos.core.api.tuple4.Tup4sR;
 
@@ -472,7 +474,7 @@ class Tup4sRTest
 	 * the given array with the components in the right order.
 	 */
 	@Test
-	void toArray_QueryTest()
+	void toArray_ExtractParamTest()
 	{
 		Tup4sR t = mock(Tup4sR.class);
 		
@@ -607,5 +609,37 @@ class Tup4sRTest
 		verify(t).getByIndex(4);
 
 		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4sR#toBuffer(ShortBuffer)}
+	 * puts the components correctly in the buffer.
+	 */
+	@Test
+	void toBufferTest()
+	{
+		Tup4sR t = mock(Tup4sR.class);
+		
+		ShortBuffer buffer = mock(ShortBuffer.class);
+		
+		when(t.toBuffer(buffer)).thenCallRealMethod();
+		when(t.getX()).thenReturn(s(1));
+		when(t.getY()).thenReturn(s(2));
+		when(t.getZ()).thenReturn(s(3));
+		when(t.getW()).thenReturn(s(4));
+		
+		assertSame(buffer, t.toBuffer(buffer));
+		
+		verify(t).toBuffer(buffer);
+		verify(t).getX();
+		verify(buffer).put(s(1));
+		verify(t).getY();
+		verify(buffer).put(s(2));
+		verify(t).getZ();
+		verify(buffer).put(s(3));
+		verify(t).getW();
+		verify(buffer).put(s(4));
+		
+		verifyNoMoreInteractions(t, buffer);
 	}
 }

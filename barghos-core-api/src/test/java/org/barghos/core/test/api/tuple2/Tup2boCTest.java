@@ -135,6 +135,28 @@ class Tup2boCTest
 	}
 	
 	/**
+	 * This test ensures, that the function {@link Tup2boC#setArray(boolean[])} adopts the
+	 * values and returns the current instance.
+	 */
+	@Test
+	void setArrayTest()
+	{
+		Tup2boC t = mock(Tup2boC.class);
+		
+		when(t.setArray(new boolean[] {true, false})).thenCallRealMethod();
+		
+		when(t.set(true, false)).thenReturn(t);
+		
+		assertSame(t, t.setArray(new boolean[] {true, false}));
+		
+		verify(t).setArray(new boolean[] {true, false});
+		
+		verify(t).set(true, false);
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
 	 * This test ensures, that the function {@link Tup2boC#setByIndex(int, boolean)} adopts the
 	 * value to the x component if the index is 0 and returns the current instance.
 	 */

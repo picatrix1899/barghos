@@ -6,6 +6,8 @@ import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
+import java.nio.FloatBuffer;
+
 import org.barghos.core.api.tuple.TupfR;
 import org.barghos.core.api.tuple2.Tup2fR;
 
@@ -538,5 +540,31 @@ class Tup2fRTest
 		verify(t).getByIndex(2);
 
 		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2fR#toBuffer(FloatBuffer)}
+	 * puts the components correctly in the buffer.
+	 */
+	@Test
+	void toBufferTest()
+	{
+		Tup2fR t = mock(Tup2fR.class);
+		
+		FloatBuffer buffer = mock(FloatBuffer.class);
+		
+		when(t.toBuffer(buffer)).thenCallRealMethod();
+		when(t.getX()).thenReturn(1.0f);
+		when(t.getY()).thenReturn(2.0f);
+		
+		assertSame(buffer, t.toBuffer(buffer));
+		
+		verify(t).toBuffer(buffer);
+		verify(t).getX();
+		verify(buffer).put(1.0f);
+		verify(t).getY();
+		verify(buffer).put(2.0f);
+		
+		verifyNoMoreInteractions(t, buffer);
 	}
 }

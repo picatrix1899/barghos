@@ -176,7 +176,7 @@ class Tup4strRTest
 	 * the given array with the components in the right order.
 	 */
 	@Test
-	void toArray_QueryTest()
+	void toArray_ExtractParamTest()
 	{
 		Tup4strR t = mock(Tup4strR.class);
 		

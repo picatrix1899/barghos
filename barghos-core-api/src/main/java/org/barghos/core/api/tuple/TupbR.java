@@ -1,5 +1,7 @@
 package org.barghos.core.api.tuple;
 
+import java.nio.ByteBuffer;
+
 import org.barghos.core.api.util.ExtractParam;
 import org.barghos.core.api.util.Validateable;
 
@@ -52,6 +54,15 @@ public interface TupbR extends Validateable
 	 * @return The result array with all components in it.
 	 */
 	byte[] toArray(@ExtractParam byte[] res);
+	
+	/**
+	 * Puts the components of the tuple into the given buffer.
+	 * 
+	 * @param buffer The buffer to put the components into.
+	 * 
+	 * @return The buffer.
+	 */
+	ByteBuffer toBuffer(ByteBuffer buffer);
 	
 	/**
 	 * Returns true if all components are finite and therefore not NaN or Infinity.

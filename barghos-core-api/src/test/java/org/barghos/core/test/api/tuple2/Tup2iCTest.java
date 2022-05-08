@@ -135,6 +135,28 @@ class Tup2iCTest
 	}
 	
 	/**
+	 * This test ensures, that the function {@link Tup2iC#setArray(int[])} adopts the
+	 * values and returns the current instance.
+	 */
+	@Test
+	void setArrayTest()
+	{
+		Tup2iC t = mock(Tup2iC.class);
+		
+		when(t.setArray(new int[] {1, 2})).thenCallRealMethod();
+		
+		when(t.set(1, 2)).thenReturn(t);
+		
+		assertSame(t, t.setArray(new int[] {1, 2}));
+		
+		verify(t).setArray(new int[] {1, 2});
+		
+		verify(t).set(1, 2);
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
 	 * This test ensures, that the function {@link Tup2iC#setByIndex(int, int)} adopts the
 	 * value to the x component if the index is 0 and returns the current instance.
 	 */

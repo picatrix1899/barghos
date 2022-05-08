@@ -135,6 +135,28 @@ class Tup2fCTest
 	}
 	
 	/**
+	 * This test ensures, that the function {@link Tup2fC#setArray(float[])} adopts the
+	 * values and returns the current instance.
+	 */
+	@Test
+	void setArrayTest()
+	{
+		Tup2fC t = mock(Tup2fC.class);
+		
+		when(t.setArray(new float[] {1.0f, 2.0f})).thenCallRealMethod();
+		
+		when(t.set(1.0f, 2.0f)).thenReturn(t);
+		
+		assertSame(t, t.setArray(new float[] {1.0f, 2.0f}));
+		
+		verify(t).setArray(new float[] {1.0f, 2.0f});
+		
+		verify(t).set(1.0f, 2.0f);
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
 	 * This test ensures, that the function {@link Tup2fC#setByIndex(int, float)} adopts the
 	 * value to the x component if the index is 0 and returns the current instance.
 	 */

@@ -139,6 +139,28 @@ class Tup2bigiCTest
 	}
 	
 	/**
+	 * This test ensures, that the function {@link Tup2bigiC#setArray(BigInteger[])} adopts the
+	 * values and returns the current instance.
+	 */
+	@Test
+	void setArrayTest()
+	{
+		Tup2bigiC t = mock(Tup2bigiC.class);
+		
+		when(t.setArray(bigiArray(1, 2))).thenCallRealMethod();
+		
+		when(t.set(bigi(1), bigi(2))).thenReturn(t);
+		
+		assertSame(t, t.setArray(bigiArray(1, 2)));
+		
+		verify(t).setArray(bigiArray(1, 2));
+		
+		verify(t).set(bigi(1), bigi(2));
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
 	 * This test ensures, that the function {@link Tup2bigiC#setByIndex(int, BigInteger)} adopts the
 	 * value to the x component if the index is 0 and returns the current instance.
 	 */

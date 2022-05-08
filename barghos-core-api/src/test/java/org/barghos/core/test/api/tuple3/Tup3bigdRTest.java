@@ -478,7 +478,7 @@ class Tup3bigdRTest
 	 * the given array with the components in the right order.
 	 */
 	@Test
-	void toArray_QueryTest()
+	void toArray_ExtractParamTest()
 	{
 		Tup3bigdR t = mock(Tup3bigdR.class);
 		

@@ -141,6 +141,28 @@ class Tup3sCTest
 	}
 	
 	/**
+	 * This test ensures, that the function {@link Tup3sC#setArray(short[])} adopts the
+	 * values and returns the current instance.
+	 */
+	@Test
+	void setArrayTest()
+	{
+		Tup3sC t = mock(Tup3sC.class);
+		
+		when(t.setArray(sArray(1, 2, 3))).thenCallRealMethod();
+		
+		when(t.set(s(1), s(2), s(3))).thenReturn(t);
+		
+		assertSame(t, t.setArray(sArray(1, 2, 3)));
+		
+		verify(t).setArray(sArray(1, 2, 3));
+		
+		verify(t).set(s(1), s(2), s(3));
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
 	 * This test ensures, that the function {@link Tup3sC#setByIndex(int, short)} adopts the
 	 * value to the x component if the index is 0 and returns the current instance.
 	 */

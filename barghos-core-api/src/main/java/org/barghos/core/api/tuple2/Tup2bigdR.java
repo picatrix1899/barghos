@@ -58,7 +58,7 @@ public interface Tup2bigdR extends TupbigdR
 	@Override
 	default boolean isExactlyZero()
 	{
-		return getX().compareTo(BigDecimal.ZERO) == 0 &&
+		return	getX().compareTo(BigDecimal.ZERO) == 0 &&
 				getY().compareTo(BigDecimal.ZERO) == 0;
 	}
 	
@@ -66,7 +66,7 @@ public interface Tup2bigdR extends TupbigdR
 	@Override
 	default boolean isZero(BigDecimal tolerance)
 	{
-		return getX().abs().compareTo(tolerance) <= 0 &&
+		return	getX().abs().compareTo(tolerance) <= 0 &&
 				getY().abs().compareTo(tolerance) <= 0;
 	}
 	
@@ -74,7 +74,7 @@ public interface Tup2bigdR extends TupbigdR
 	@Override
 	default boolean isValid()
 	{
-		return getX() != null &&
+		return	getX() != null &&
 				getY() != null;
 	}
 	

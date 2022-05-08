@@ -6,6 +6,8 @@ import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
+import java.nio.DoubleBuffer;
+
 import org.barghos.core.api.tuple.TupdR;
 import org.barghos.core.api.tuple2.Tup2dR;
 
@@ -538,5 +540,31 @@ class Tup2dRTest
 		verify(t).getByIndex(2);
 
 		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2dR#toBuffer(DoubleBuffer)}
+	 * puts the components correctly in the buffer.
+	 */
+	@Test
+	void toBufferTest()
+	{
+		Tup2dR t = mock(Tup2dR.class);
+		
+		DoubleBuffer buffer = mock(DoubleBuffer.class);
+		
+		when(t.toBuffer(buffer)).thenCallRealMethod();
+		when(t.getX()).thenReturn(1.0);
+		when(t.getY()).thenReturn(2.0);
+		
+		assertSame(buffer, t.toBuffer(buffer));
+		
+		verify(t).toBuffer(buffer);
+		verify(t).getX();
+		verify(buffer).put(1.0);
+		verify(t).getY();
+		verify(buffer).put(2.0);
+		
+		verifyNoMoreInteractions(t, buffer);
 	}
 }

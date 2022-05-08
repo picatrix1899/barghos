@@ -6,6 +6,8 @@ import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
+import java.nio.LongBuffer;
+
 import org.barghos.core.api.tuple.TuplR;
 import org.barghos.core.api.tuple3.Tup3lR;
 
@@ -370,13 +372,13 @@ class Tup3lRTest
 		
 		verifyNoMoreInteractions(t);
 	}
-
+	
 	/**
 	 * This test ensures, that the function {@link Tup3lR#toArray(long[])} returns
 	 * the given array with the components in the right order.
 	 */
 	@Test
-	void toArray_QueryTest()
+	void toArray_ExtractParamTest()
 	{
 		Tup3lR t = mock(Tup3lR.class);
 		
@@ -487,5 +489,34 @@ class Tup3lRTest
 		verify(t).getByIndex(3);
 
 		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup3lR#toBuffer(LongBuffer)}
+	 * puts the components correctly in the buffer.
+	 */
+	@Test
+	void toBufferTest()
+	{
+		Tup3lR t = mock(Tup3lR.class);
+		
+		LongBuffer buffer = mock(LongBuffer.class);
+		
+		when(t.toBuffer(buffer)).thenCallRealMethod();
+		when(t.getX()).thenReturn(1l);
+		when(t.getY()).thenReturn(2l);
+		when(t.getZ()).thenReturn(3l);
+		
+		assertSame(buffer, t.toBuffer(buffer));
+		
+		verify(t).toBuffer(buffer);
+		verify(t).getX();
+		verify(buffer).put(1l);
+		verify(t).getY();
+		verify(buffer).put(2l);
+		verify(t).getZ();
+		verify(buffer).put(3l);
+		
+		verifyNoMoreInteractions(t, buffer);
 	}
 }

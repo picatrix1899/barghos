@@ -65,7 +65,7 @@ public interface Tup3bigiR extends TupbigiR
 	@Override
 	default boolean isExactlyZero()
 	{
-		return getX().compareTo(BigInteger.ZERO) == 0 &&
+		return	getX().compareTo(BigInteger.ZERO) == 0 &&
 				getY().compareTo(BigInteger.ZERO) == 0 &&
 				getZ().compareTo(BigInteger.ZERO) == 0;
 	}
@@ -74,7 +74,7 @@ public interface Tup3bigiR extends TupbigiR
 	@Override
 	default boolean isZero(BigInteger tolerance)
 	{
-		return getX().abs().compareTo(tolerance) <= 0 &&
+		return	getX().abs().compareTo(tolerance) <= 0 &&
 				getY().abs().compareTo(tolerance) <= 0 &&
 				getZ().abs().compareTo(tolerance) <= 0;
 	}
@@ -83,7 +83,7 @@ public interface Tup3bigiR extends TupbigiR
 	@Override
 	default boolean isValid()
 	{
-		return getX() != null &&
+		return	getX() != null &&
 				getY() != null &&
 				getZ() != null;
 	}

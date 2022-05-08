@@ -6,6 +6,8 @@ import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
+import java.nio.IntBuffer;
+
 import org.barghos.core.api.tuple.TupiR;
 import org.barghos.core.api.tuple3.Tup3iR;
 
@@ -376,7 +378,7 @@ class Tup3iRTest
 	 * the given array with the components in the right order.
 	 */
 	@Test
-	void toArray_QueryTest()
+	void toArray_ExtractParamTest()
 	{
 		Tup3iR t = mock(Tup3iR.class);
 		
@@ -487,5 +489,34 @@ class Tup3iRTest
 		verify(t).getByIndex(3);
 
 		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup3iR#toBuffer(IntBuffer)}
+	 * puts the components correctly in the buffer.
+	 */
+	@Test
+	void toBufferTest()
+	{
+		Tup3iR t = mock(Tup3iR.class);
+		
+		IntBuffer buffer = mock(IntBuffer.class);
+		
+		when(t.toBuffer(buffer)).thenCallRealMethod();
+		when(t.getX()).thenReturn(1);
+		when(t.getY()).thenReturn(2);
+		when(t.getZ()).thenReturn(3);
+		
+		assertSame(buffer, t.toBuffer(buffer));
+		
+		verify(t).toBuffer(buffer);
+		verify(t).getX();
+		verify(buffer).put(1);
+		verify(t).getY();
+		verify(buffer).put(2);
+		verify(t).getZ();
+		verify(buffer).put(3);
+		
+		verifyNoMoreInteractions(t, buffer);
 	}
 }

@@ -56,7 +56,7 @@ public interface Tup2objR extends TupobjR
 	@Override
 	default boolean isValid()
 	{
-		return getX() != null &&
+		return	getX() != null &&
 				getY() != null;
 	}
 	

@@ -135,6 +135,28 @@ class Tup2strCTest
 	}
 	
 	/**
+	 * This test ensures, that the function {@link Tup2strC#setArray(String[])} adopts the
+	 * values and returns the current instance.
+	 */
+	@Test
+	void setArrayTest()
+	{
+		Tup2strC t = mock(Tup2strC.class);
+		
+		when(t.setArray(new String[] {"a", "b"})).thenCallRealMethod();
+		
+		when(t.set("a", "b")).thenReturn(t);
+		
+		assertSame(t, t.setArray(new String[] {"a", "b"}));
+		
+		verify(t).setArray(new String[] {"a", "b"});
+		
+		verify(t).set("a", "b");
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
 	 * This test ensures, that the function {@link Tup2strC#setByIndex(int, String)} adopts the
 	 * value to the x component if the index is 0 and returns the current instance.
 	 */

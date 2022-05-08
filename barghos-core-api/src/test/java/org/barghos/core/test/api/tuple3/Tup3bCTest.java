@@ -141,6 +141,28 @@ class Tup3bCTest
 	}
 	
 	/**
+	 * This test ensures, that the function {@link Tup3bC#setArray(byte[])} adopts the
+	 * values and returns the current instance.
+	 */
+	@Test
+	void setArrayTest()
+	{
+		Tup3bC t = mock(Tup3bC.class);
+		
+		when(t.setArray(bArray(1, 2, 3))).thenCallRealMethod();
+		
+		when(t.set(b(1), b(2), b(3))).thenReturn(t);
+		
+		assertSame(t, t.setArray(bArray(1, 2, 3)));
+		
+		verify(t).setArray(bArray(1, 2, 3));
+		
+		verify(t).set(b(1), b(2), b(3));
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
 	 * This test ensures, that the function {@link Tup3bC#setByIndex(int, byte)} adopts the
 	 * value to the x component if the index is 0 and returns the current instance.
 	 */

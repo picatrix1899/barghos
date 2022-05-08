@@ -24,6 +24,8 @@ package org.barghos.core.api.tuple2;
 
 import static org.barghos.core.api.tuple.TupleConstants.*;
 
+import java.nio.DoubleBuffer;
+
 import org.barghos.core.api.tuple.TupdR;
 import org.barghos.core.api.util.ExtractParam;
 
@@ -56,7 +58,7 @@ public interface Tup2dR extends TupdR
 	@Override
 	default boolean isFinite()
 	{
-		return Double.isFinite(getX()) &&
+		return	Double.isFinite(getX()) &&
 				Double.isFinite(getY());
 	}
 	
@@ -64,7 +66,7 @@ public interface Tup2dR extends TupdR
 	@Override
 	default boolean isExactlyZero()
 	{
-		return getX() == 0.0 &&
+		return	getX() == 0.0 &&
 				getY() == 0.0;
 	}
 	
@@ -72,7 +74,7 @@ public interface Tup2dR extends TupdR
 	@Override
 	default boolean isZero(double tolerance)
 	{
-		return Math.abs(getX()) <= tolerance &&
+		return	Math.abs(getX()) <= tolerance &&
 				Math.abs(getY()) <= tolerance;
 	}
 	
@@ -104,5 +106,15 @@ public interface Tup2dR extends TupdR
 		res[COMP_Y] = getY();
 		
 		return res;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	default DoubleBuffer toBuffer(DoubleBuffer buffer)
+	{
+		buffer.put(getX());
+		buffer.put(getY());
+		
+		return buffer;
 	}
 }

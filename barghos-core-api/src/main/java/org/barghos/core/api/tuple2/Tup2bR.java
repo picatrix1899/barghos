@@ -24,6 +24,8 @@ package org.barghos.core.api.tuple2;
 
 import static org.barghos.core.api.tuple.TupleConstants.*;
 
+import java.nio.ByteBuffer;
+
 import org.barghos.core.api.tuple.TupbR;
 import org.barghos.core.api.util.ExtractParam;
 
@@ -60,7 +62,7 @@ public interface Tup2bR extends TupbR
 	@Override
 	default boolean isExactlyZero()
 	{
-		return getX() == (byte)0 &&
+		return	getX() == (byte)0 &&
 				getY() == (byte)0;
 	}
 	
@@ -74,7 +76,7 @@ public interface Tup2bR extends TupbR
 	@Override
 	default boolean isZero(byte tolerance)
 	{
-		return Math.abs(getX()) <= tolerance &&
+		return	Math.abs(getX()) <= tolerance &&
 				Math.abs(getY()) <= tolerance;
 	}
 
@@ -106,5 +108,15 @@ public interface Tup2bR extends TupbR
 		res[COMP_Y] = getY();
 		
 		return res;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	default ByteBuffer toBuffer(ByteBuffer buffer)
+	{
+		buffer.put(getX());
+		buffer.put(getY());
+		
+		return buffer;
 	}
 }

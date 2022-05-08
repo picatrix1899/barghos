@@ -48,7 +48,7 @@ class Tup3boRTest
 	 * the given array with the components in the right order.
 	 */
 	@Test
-	void toArray_QueryTest()
+	void toArray_ExtractParamTest()
 	{
 		Tup3boR t = mock(Tup3boR.class);
 		

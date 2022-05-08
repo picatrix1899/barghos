@@ -6,6 +6,8 @@ import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
+import java.nio.DoubleBuffer;
+
 import org.barghos.core.api.tuple.TupdR;
 import org.barghos.core.api.tuple4.Tup4dR;
 
@@ -799,7 +801,7 @@ class Tup4dRTest
 	 * the given array with the components in the right order.
 	 */
 	@Test
-	void toArray_QueryTest()
+	void toArray_ExtractParamTest()
 	{
 		Tup4dR t = mock(Tup4dR.class);
 		
@@ -934,5 +936,37 @@ class Tup4dRTest
 		verify(t).getByIndex(4);
 
 		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4dR#toBuffer(DoubleBuffer)}
+	 * puts the components correctly in the buffer.
+	 */
+	@Test
+	void toBufferTest()
+	{
+		Tup4dR t = mock(Tup4dR.class);
+		
+		DoubleBuffer buffer = mock(DoubleBuffer.class);
+		
+		when(t.toBuffer(buffer)).thenCallRealMethod();
+		when(t.getX()).thenReturn(1.0);
+		when(t.getY()).thenReturn(2.0);
+		when(t.getZ()).thenReturn(3.0);
+		when(t.getW()).thenReturn(4.0);
+		
+		assertSame(buffer, t.toBuffer(buffer));
+		
+		verify(t).toBuffer(buffer);
+		verify(t).getX();
+		verify(buffer).put(1.0);
+		verify(t).getY();
+		verify(buffer).put(2.0);
+		verify(t).getZ();
+		verify(buffer).put(3.0);
+		verify(t).getW();
+		verify(buffer).put(4.0);
+		
+		verifyNoMoreInteractions(t, buffer);
 	}
 }

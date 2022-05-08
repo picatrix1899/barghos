@@ -24,6 +24,8 @@ package org.barghos.core.api.tuple4;
 
 import static org.barghos.core.api.tuple.TupleConstants.*;
 
+import java.nio.DoubleBuffer;
+
 import org.barghos.core.api.tuple.TupdR;
 import org.barghos.core.api.util.ExtractParam;
 
@@ -70,7 +72,7 @@ public interface Tup4dR extends TupdR
 	@Override
 	default boolean isFinite()
 	{
-		return Double.isFinite(getX()) &&
+		return	Double.isFinite(getX()) &&
 				Double.isFinite(getY()) &&
 				Double.isFinite(getZ()) &&
 				Double.isFinite(getW());
@@ -80,7 +82,7 @@ public interface Tup4dR extends TupdR
 	@Override
 	default boolean isExactlyZero()
 	{
-		return getX() == 0.0 &&
+		return	getX() == 0.0 &&
 				getY() == 0.0 &&
 				getZ() == 0.0 &&
 				getW() == 0.0;
@@ -90,7 +92,7 @@ public interface Tup4dR extends TupdR
 	@Override
 	default boolean isZero(double tolerance)
 	{
-		return Math.abs(getX()) <= tolerance &&
+		return	Math.abs(getX()) <= tolerance &&
 				Math.abs(getY()) <= tolerance &&
 				Math.abs(getZ()) <= tolerance &&
 				Math.abs(getW()) <= tolerance;
@@ -128,5 +130,17 @@ public interface Tup4dR extends TupdR
 		res[COMP_W] = getW();
 		
 		return res;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	default DoubleBuffer toBuffer(DoubleBuffer buffer)
+	{
+		buffer.put(getX());
+		buffer.put(getY());
+		buffer.put(getZ());
+		buffer.put(getW());
+		
+		return buffer;
 	}
 }

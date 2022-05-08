@@ -6,6 +6,8 @@ import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
+import java.nio.LongBuffer;
+
 import org.barghos.core.api.tuple.TuplR;
 import org.barghos.core.api.tuple2.Tup2lR;
 
@@ -375,5 +377,31 @@ class Tup2lRTest
 		verify(t).getByIndex(2);
 
 		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup2lR#toBuffer(LongBuffer)}
+	 * puts the components correctly in the buffer.
+	 */
+	@Test
+	void toBufferTest()
+	{
+		Tup2lR t = mock(Tup2lR.class);
+		
+		LongBuffer buffer = mock(LongBuffer.class);
+		
+		when(t.toBuffer(buffer)).thenCallRealMethod();
+		when(t.getX()).thenReturn(1l);
+		when(t.getY()).thenReturn(2l);
+		
+		assertSame(buffer, t.toBuffer(buffer));
+		
+		verify(t).toBuffer(buffer);
+		verify(t).getX();
+		verify(buffer).put(1l);
+		verify(t).getY();
+		verify(buffer).put(2l);
+		
+		verifyNoMoreInteractions(t, buffer);
 	}
 }

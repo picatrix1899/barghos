@@ -135,6 +135,28 @@ class Tup2dCTest
 	}
 	
 	/**
+	 * This test ensures, that the function {@link Tup2dC#setArray(double[])} adopts the
+	 * values and returns the current instance.
+	 */
+	@Test
+	void setArrayTest()
+	{
+		Tup2dC t = mock(Tup2dC.class);
+		
+		when(t.setArray(new double[] {1.0, 2.0})).thenCallRealMethod();
+		
+		when(t.set(1.0, 2.0)).thenReturn(t);
+		
+		assertSame(t, t.setArray(new double[] {1.0, 2.0}));
+		
+		verify(t).setArray(new double[] {1.0, 2.0});
+		
+		verify(t).set(1.0, 2.0);
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
 	 * This test ensures, that the function {@link Tup2dC#setByIndex(int, double)} adopts the
 	 * value to the x component if the index is 0 and returns the current instance.
 	 */

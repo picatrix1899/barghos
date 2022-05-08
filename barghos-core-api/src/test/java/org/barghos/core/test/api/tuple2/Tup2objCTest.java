@@ -135,6 +135,28 @@ class Tup2objCTest
 	}
 	
 	/**
+	 * This test ensures, that the function {@link Tup2objC#setArray(Object[])} adopts the
+	 * values and returns the current instance.
+	 */
+	@Test
+	void setArrayTest()
+	{
+		Tup2objC t = mock(Tup2objC.class);
+		
+		when(t.setArray(new Object[] {1, 2.0})).thenCallRealMethod();
+		
+		when(t.set(1, 2.0)).thenReturn(t);
+		
+		assertSame(t, t.setArray(new Object[] {1, 2.0}));
+		
+		verify(t).setArray(new Object[] {1, 2.0});
+		
+		verify(t).set(1, 2.0);
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
 	 * This test ensures, that the function {@link Tup2objC#setByIndex(int, Object)} adopts the
 	 * value to the x component if the index is 0 and returns the current instance.
 	 */

@@ -24,6 +24,8 @@ package org.barghos.core.api.tuple2;
 
 import static org.barghos.core.api.tuple.TupleConstants.*;
 
+import java.nio.ShortBuffer;
+
 import org.barghos.core.api.tuple.TupsR;
 import org.barghos.core.api.util.ExtractParam;
 
@@ -60,7 +62,7 @@ public interface Tup2sR extends TupsR
 	@Override
 	default boolean isExactlyZero()
 	{
-		return getX() == (short)0 &&
+		return	getX() == (short)0 &&
 				getY() == (short)0;
 	}
 	
@@ -74,7 +76,7 @@ public interface Tup2sR extends TupsR
 	@Override
 	default boolean isZero(short tolerance)
 	{
-		return Math.abs(getX()) <= tolerance &&
+		return	Math.abs(getX()) <= tolerance &&
 				Math.abs(getY()) <= tolerance;
 	}
 	
@@ -106,5 +108,15 @@ public interface Tup2sR extends TupsR
 		res[COMP_Y] = getY();
 		
 		return res;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	default ShortBuffer toBuffer(ShortBuffer buffer)
+	{
+		buffer.put(getX());
+		buffer.put(getY());
+		
+		return buffer;
 	}
 }

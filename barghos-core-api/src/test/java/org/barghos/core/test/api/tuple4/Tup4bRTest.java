@@ -8,6 +8,8 @@ import org.junit.jupiter.api.function.Executable;
 
 import static org.barghos.core.api.testing.TestObjectFactory.*;
 
+import java.nio.ByteBuffer;
+
 import org.barghos.core.api.tuple.TupbR;
 import org.barghos.core.api.tuple4.Tup4bR;
 
@@ -472,7 +474,7 @@ class Tup4bRTest
 	 * the given array with the components in the right order.
 	 */
 	@Test
-	void toArray_QueryTest()
+	void toArray_ExtractParamTest()
 	{
 		Tup4bR t = mock(Tup4bR.class);
 		
@@ -607,5 +609,37 @@ class Tup4bRTest
 		verify(t).getByIndex(4);
 
 		verifyNoMoreInteractions(t);
+	}
+	
+	/**
+	 * This test ensures, that the function {@link Tup4bR#toBuffer(ByteBuffer)}
+	 * puts the components correctly in the buffer.
+	 */
+	@Test
+	void toBufferTest()
+	{
+		Tup4bR t = mock(Tup4bR.class);
+		
+		ByteBuffer buffer = mock(ByteBuffer.class);
+		
+		when(t.toBuffer(buffer)).thenCallRealMethod();
+		when(t.getX()).thenReturn(b(1));
+		when(t.getY()).thenReturn(b(2));
+		when(t.getZ()).thenReturn(b(3));
+		when(t.getW()).thenReturn(b(4));
+		
+		assertSame(buffer, t.toBuffer(buffer));
+		
+		verify(t).toBuffer(buffer);
+		verify(t).getX();
+		verify(buffer).put(b(1));
+		verify(t).getY();
+		verify(buffer).put(b(2));
+		verify(t).getZ();
+		verify(buffer).put(b(3));
+		verify(t).getW();
+		verify(buffer).put(b(4));
+		
+		verifyNoMoreInteractions(t, buffer);
 	}
 }

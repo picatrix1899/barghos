@@ -137,6 +137,28 @@ class Tup2bCTest
 	}
 	
 	/**
+	 * This test ensures, that the function {@link Tup2bC#setArray(byte[])} adopts the
+	 * values and returns the current instance.
+	 */
+	@Test
+	void setArrayTest()
+	{
+		Tup2bC t = mock(Tup2bC.class);
+		
+		when(t.setArray(bArray(1, 2))).thenCallRealMethod();
+		
+		when(t.set(b(1), b(2))).thenReturn(t);
+		
+		assertSame(t, t.setArray(bArray(1, 2)));
+		
+		verify(t).setArray(bArray(1, 2));
+		
+		verify(t).set(b(1), b(2));
+		
+		verifyNoMoreInteractions(t);
+	}
+	
+	/**
 	 * This test ensures, that the function {@link Tup2bC#setByIndex(int, byte)} adopts the
 	 * value to the x component if the index is 0 and returns the current instance.
 	 */

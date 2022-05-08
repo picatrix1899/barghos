@@ -140,14 +140,13 @@ class Tup3objRTest
 		
 		verifyNoMoreInteractions(t);
 	}
-
-
+	
 	/**
 	 * This test ensures, that the function {@link Tup3objR#toArray(Object[])} returns
 	 * the given array with the components in the right order.
 	 */
 	@Test
-	void toArray_QueryTest()
+	void toArray_ExtractParamTest()
 	{
 		Tup3objR t = mock(Tup3objR.class);
 		
