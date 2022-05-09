@@ -3,6 +3,7 @@ id 'java-library'
 }
 
 dependencies {
+  implementation project(':barghos-core-api')
   implementation project(':barghos-core')
 }
 
