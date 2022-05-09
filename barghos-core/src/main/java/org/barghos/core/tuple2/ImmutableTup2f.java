@@ -22,6 +22,7 @@
 
 package org.barghos.core.tuple2;
 
+import java.nio.FloatBuffer;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -183,6 +184,16 @@ public class ImmutableTup2f implements Tup2fR, FormattableToString
 		res[COMP_Y] = this.y;
 		
 		return res;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public FloatBuffer toBuffer(FloatBuffer buffer)
+	{
+		buffer.put(this.x);
+		buffer.put(this.y);
+		
+		return buffer;
 	}
 	
 	/** {@inheritDoc}} */

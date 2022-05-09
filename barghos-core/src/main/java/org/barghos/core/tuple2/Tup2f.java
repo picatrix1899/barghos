@@ -23,6 +23,7 @@
 package org.barghos.core.tuple2;
 
 import java.io.Serializable;
+import java.nio.FloatBuffer;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -190,6 +191,16 @@ public class Tup2f implements Tup2fC, Serializable, FormattableToString
 		res[COMP_Y] = this.y;
 		
 		return res;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public FloatBuffer toBuffer(FloatBuffer buffer)
+	{
+		buffer.put(this.x);
+		buffer.put(this.y);
+		
+		return buffer;
 	}
 	
 	/** {@inheritDoc}} */

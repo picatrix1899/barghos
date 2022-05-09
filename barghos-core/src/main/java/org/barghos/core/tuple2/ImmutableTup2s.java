@@ -22,6 +22,7 @@
 
 package org.barghos.core.tuple2;
 
+import java.nio.ShortBuffer;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -129,6 +130,62 @@ public class ImmutableTup2s implements Tup2sR, FormattableToString
 	public short getY()
 	{
 		return this.y;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public short getByIndex(int index)
+	{
+		switch(index)
+		{
+			case COMP_X: return this.x;
+			case COMP_Y: return this.y;
+		}
+		
+		throw new IndexOutOfBoundsException(index);
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public boolean isExactlyZero()
+	{
+		return	this.x == 0 &&
+				this.y == 0;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public boolean isZero(short tolerance)
+	{
+		return	Math.abs(this.x) <= tolerance &&
+				Math.abs(this.y) <= tolerance;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public short[] toArray()
+	{
+		return new short[] {this.x, this.y};
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public short[] toArray(short[] res)
+	{
+		res[COMP_X] = this.x;
+		res[COMP_Y] = this.y;
+		
+		return res;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public ShortBuffer toBuffer(ShortBuffer buffer)
+	{
+		buffer.put(this.x);
+		buffer.put(this.y);
+		
+		return buffer;
 	}
 	
 	/** {@inheritDoc}} */

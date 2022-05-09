@@ -22,6 +22,7 @@
 
 package org.barghos.core.tuple2;
 
+import java.nio.ByteBuffer;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -177,6 +178,16 @@ public class ImmutableTup2b implements Tup2bR, FormattableToString
 		res[COMP_Y] = this.y;
 		
 		return res;
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	public ByteBuffer toBuffer(ByteBuffer buffer)
+	{
+		buffer.put(this.x);
+		buffer.put(this.y);
+		
+		return buffer;
 	}
 	
 	/** {@inheritDoc}} */

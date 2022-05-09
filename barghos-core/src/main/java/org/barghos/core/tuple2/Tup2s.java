@@ -23,6 +23,7 @@
 package org.barghos.core.tuple2;
 
 import java.io.Serializable;
+import java.nio.ShortBuffer;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -182,6 +183,16 @@ public class Tup2s implements Tup2sC, Serializable, FormattableToString
 		res[COMP_Y] = this.y;
 		
 		return res;
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public ShortBuffer toBuffer(ShortBuffer buffer)
+	{
+		buffer.put(this.x);
+		buffer.put(this.y);
+		
+		return buffer;
 	}
 	
 	/** {@inheritDoc} */
