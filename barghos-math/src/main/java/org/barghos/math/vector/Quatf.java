@@ -29,10 +29,10 @@ import static org.barghos.core.api.tuple.TupleConstants.*;
 import org.barghos.core.api.tuple3.Tup3fC;
 import org.barghos.core.api.util.ExtractParam;
 import org.barghos.math.api.matrix.Mat4fR;
+import org.barghos.math.api.util.Maths;
 import org.barghos.math.api.vector.QuatfC;
 import org.barghos.math.api.vector.QuatfR;
 import org.barghos.math.matrix.Mat4f;
-import org.barghos.math.util.Maths;
 
 /** A 3-Dimensional Quaternion */
 public class Quatf implements QuatfC

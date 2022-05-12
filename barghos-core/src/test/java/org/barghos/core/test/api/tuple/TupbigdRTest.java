@@ -1,13 +1,12 @@
 package org.barghos.core.test.api.tuple;
 
+import static org.barghos.testutils.TestObjectFactory.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
-
-import static org.barghos.core.api.testing.TestObjectFactory.*;
 
 import org.barghos.core.api.tuple.TupbigdR;
 

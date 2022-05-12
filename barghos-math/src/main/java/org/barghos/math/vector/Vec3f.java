@@ -6,14 +6,15 @@ import org.barghos.core.api.tuple.TupfR;
 import org.barghos.core.api.tuple2.Tup2oC;
 import org.barghos.core.api.tuple2.Tup2oR;
 import org.barghos.core.api.tuple3.Tup3fR;
+import org.barghos.core.tuple2.ImmutableTup2o;
 import org.barghos.math.BarghosMath;
 import org.barghos.math.api.matrix.Mat4fR;
 import org.barghos.math.api.model.AxisAngle3fR;
+import org.barghos.math.api.util.Maths;
 import org.barghos.math.api.vector.QuatfR;
 import org.barghos.math.api.vector.Vec3fC;
 import org.barghos.math.api.vector.Vec3fR;
 import org.barghos.math.api.vector.Vec3fUtil;
-import org.barghos.math.util.Maths;
 
 /**
  * This class represents a 3-dimensional float vector.
@@ -289,18 +290,18 @@ public class Vec3f implements Vec3fC
 	@Override
 	public Vec3fC normal()
 	{
-		if(isZero()) return set(0.0f);
+		if(isExactlyZero()) return set(0.0f);
 		
-		return normal();
+		return normalUnsafe();
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Vec3fC normal(float tolerance)
 	{
-		if(isZeroWithMargin(tolerance)) return set(0.0f);
+		if(isZero(tolerance)) return set(0.0f);
 		
-		return normal();
+		return normalUnsafe();
 	}
 	
 	/** {@inheritDoc}} */
@@ -711,14 +712,14 @@ public class Vec3f implements Vec3fC
 	
 	public float inverseLength()
 	{
-		if(isZero()) return 0.0f;
+		if(isExactlyZero()) return 0.0f;
 		
 		return inverseLengthUnsafe();
 	}
 	
 	public float inverseLength(float tolerance)
 	{
-		if(isZeroWithMargin(tolerance)) return 0.0f;
+		if(isZero(tolerance)) return 0.0f;
 		
 		return inverseLengthUnsafe();
 	}
@@ -730,14 +731,14 @@ public class Vec3f implements Vec3fC
 	
 	public float length()
 	{
-		if(isZero()) return 0.0f;
+		if(isExactlyZero()) return 0.0f;
 		
 		return lengthUnsafe();
 	}
 	
 	public float length(float tolerance)
 	{
-		if(isZeroWithMargin(tolerance)) return 0.0f;
+		if(isZero(tolerance)) return 0.0f;
 		
 		return lengthUnsafe();
 	}
@@ -753,14 +754,14 @@ public class Vec3f implements Vec3fC
 	
 	public float squaredLength()
 	{
-		if(isZero()) return 0.0f;
+		if(isExactlyZero()) return 0.0f;
 		
 		return squaredLengthUnsafe();
 	}
 	
 	public float squaredLength(float tolerance)
 	{
-		if(isZeroWithMargin(tolerance)) return 0.0f;
+		if(isZero(tolerance)) return 0.0f;
 		
 		return squaredLengthUnsafe();
 	}
@@ -786,7 +787,7 @@ public class Vec3f implements Vec3fC
 			index = COMP_Z;
 		}
 		
-		return Tup2oR.of(value, index);
+		return new ImmutableTup2o<>(value, index);
 	}
 	
 	public <T extends Tup2oC<Float,Integer>> T getMin(T res)
@@ -865,7 +866,7 @@ public class Vec3f implements Vec3fC
 			index = COMP_Z;
 		}
 		
-		return Tup2oR.of(value, index);
+		return new ImmutableTup2o<>(value, index);
 	}
 	
 	public <T extends Tup2oC<Float,Integer>> T getMax(T res)

@@ -1,10 +1,13 @@
 plugins {
-id 'java-library'
+	id 'java-library'
 }
 
 dependencies {
   implementation project(':barghos-core-api')
   implementation project(':barghos-core')
+  implementation project(':barghos-math-api')
+  
+  testImplementation project(':barghos-testutils')
 }
 
 publishing {

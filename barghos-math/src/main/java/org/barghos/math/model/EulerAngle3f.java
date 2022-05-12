@@ -2,7 +2,7 @@ package org.barghos.math.model;
 
 import org.barghos.math.api.model.EulerAngle3fC;
 import org.barghos.math.api.model.EulerAngle3fR;
-import org.barghos.math.util.Maths;
+import org.barghos.math.api.util.Maths;
 
 public class EulerAngle3f implements EulerAngle3fC
 {

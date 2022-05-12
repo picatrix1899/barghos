@@ -1,5 +1,6 @@
 package org.barghos.core.test.api.tuple3;
 
+import static org.barghos.testutils.TestObjectFactory.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -7,9 +8,6 @@ import java.nio.ByteBuffer;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
-
-import static org.barghos.core.api.testing.TestObjectFactory.*;
-
 import org.barghos.core.api.tuple.TupbR;
 import org.barghos.core.api.tuple3.Tup3bR;
 

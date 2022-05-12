@@ -1,5 +1,6 @@
 package org.barghos.core.test.api.tuple3;
 
+import static org.barghos.testutils.TestObjectFactory.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -7,8 +8,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
 import java.math.BigInteger;
-
-import static org.barghos.core.api.testing.TestObjectFactory.*;
 
 import org.barghos.core.api.tuple.TupbigiR;
 import org.barghos.core.api.tuple3.Tup3bigiR;

@@ -1,13 +1,12 @@
 package org.barghos.core.test.api.util;
 
+import static org.barghos.testutils.TestObjectFactory.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
-
-import static org.barghos.core.api.testing.TestObjectFactory.*;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
