@@ -54,7 +54,7 @@ import org.barghos.core.api.tuple4.Tup4sR;
  * 
  * @author picatrix1899
  */
-public class BufferUtil
+public class CoreBufferUtil
 {	
 	/**
 	 * Contains the factory that should be used for creating and destroying buffers.
@@ -64,7 +64,7 @@ public class BufferUtil
 	/**
 	 * This class contains only static functions. Therefore it should not be instanciated.
 	 */
-	private BufferUtil() { }
+	private CoreBufferUtil() { }
 	
 	/**
 	 * Creates and therefore allocates a new {@link ByteBuffer} with the given maximum capacity.
