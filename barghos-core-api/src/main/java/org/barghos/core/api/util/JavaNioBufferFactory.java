@@ -16,7 +16,7 @@ import java.nio.ShortBuffer;
  */
 public class JavaNioBufferFactory implements NioBufferFactory
 {
-/** 
+	/** 
 	 * Contains the byte order used in creating buffers.
 	 */
 	public static final ByteOrder BYTE_ORDER = ByteOrder.nativeOrder();
