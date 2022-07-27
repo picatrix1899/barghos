@@ -24,10 +24,6 @@
 
 package org.barghos.core.tuple3;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-
-import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupbR;
 import org.barghos.core.api.tuple3.Tup3bR;
 
@@ -37,7 +33,7 @@ import org.barghos.core.api.tuple3.Tup3bR;
  * 
  * @author picatrix1899
  */
-public class ImmutableTup3b implements Tup3bR, FormattableToString
+public class ImmutableTup3b implements Tup3bR
 {
 	/**
 	 * The x component.
@@ -193,18 +189,6 @@ public class ImmutableTup3b implements Tup3bR, FormattableToString
 	public ImmutableTup3b clone()
 	{
 		return new ImmutableTup3b(this);
-	}
-	
-	/** {@inheritDoc}} */
-	@Override
-	public Map<String,Object> getValueMapping()
-	{
-		Map<String,Object> values = new LinkedHashMap<>();
-		values.put("x", getX());
-		values.put("y", getY());
-		values.put("z", getZ());
-		
-		return values;
 	}
 	
 	/**

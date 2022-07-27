@@ -23,10 +23,7 @@
 package org.barghos.core.tuple4;
 
 import java.io.Serializable;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
-import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupboR;
 import org.barghos.core.api.tuple4.Tup4boC;
 import org.barghos.core.api.tuple4.Tup4boR;
@@ -38,7 +35,7 @@ import org.barghos.core.api.tuple4.Tup4boR;
  * 
  * @author picatrix1899
  */
-public class Tup4bo implements Tup4boC, Serializable, FormattableToString
+public class Tup4bo implements Tup4boC, Serializable
 {
 	/**
 	 * The class version for serialization.
@@ -269,19 +266,6 @@ public class Tup4bo implements Tup4boC, Serializable, FormattableToString
 	public String toString()
 	{
 		return "tup4bo(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ", w=" + getW() + ")";
-	}
-	
-	/** {@inheritDoc}} */
-	@Override
-	public Map<String,Object> getValueMapping()
-	{
-		Map<String,Object> values = new LinkedHashMap<>();
-		values.put("x", getX());
-		values.put("y", getY());
-		values.put("z", getZ());
-		values.put("w", getW());
-		
-		return values;
 	}
 	
 	/** {@inheritDoc}} */

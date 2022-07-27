@@ -23,13 +23,10 @@
 package org.barghos.core.tuple2;
 
 import java.math.BigDecimal;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 import static org.barghos.core.api.tuple.TupleConstants.*;
 
 import org.barghos.core.api.documentation.ExtractionParam;
-import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupbigdR;
 import org.barghos.core.api.tuple2.Tup2bigdR;
 
@@ -39,7 +36,7 @@ import org.barghos.core.api.tuple2.Tup2bigdR;
  * 
  * @author picatrix1899
  */
-public class ImmutableTup2bigd implements Tup2bigdR, FormattableToString
+public class ImmutableTup2bigd implements Tup2bigdR
 {
 	/**
 	 * The x component.
@@ -237,17 +234,6 @@ public class ImmutableTup2bigd implements Tup2bigdR, FormattableToString
 	public String toString()
 	{
 		return "immutableTup2bigd(x=" + this.x + ", y=" + this.y + ")";
-	}
-	
-	/** {@inheritDoc}} */
-	@Override
-	public Map<String,Object> getValueMapping()
-	{
-		Map<String,Object> values = new LinkedHashMap<>();
-		values.put("x", this.x);
-		values.put("y", this.y);
-		
-		return values;
 	}
 	
 	/**

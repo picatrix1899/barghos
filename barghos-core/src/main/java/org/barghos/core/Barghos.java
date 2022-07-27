@@ -22,9 +22,7 @@
 
 package org.barghos.core;
 
-import org.barghos.core.api.formatting.ToStringFormatter;
 import org.barghos.core.api.pool.PoolFactory;
-import org.barghos.core.formatting.DefaultToStringFormatter;
 import org.barghos.core.pool.DequePoolFactory;
 
 /**
@@ -54,12 +52,6 @@ public final class Barghos
 	 * @since 1.0.0.0
 	 */
 	public static PoolFactory INSTANCE_POOL_FACTORY = DequePoolFactory.get();
-	
-	/**
-	 * This property contains the default instance of a {@link ToStringFormatter}.
-	 * It is commonly used in the {@link org.barghos.core.api.formatting.FormattableToString#toFormattedString()} function.
-	 */
-	public static ToStringFormatter DEFAULT_TO_STRING_FORMATTER = new DefaultToStringFormatter();
 	
 	/**
 	 * This class contains only static methods and therefore it should not be possible to create

@@ -22,10 +22,6 @@
 
 package org.barghos.core.tuple4;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-
-import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupobjR;
 import org.barghos.core.api.tuple4.Tup4objR;
 /**
@@ -34,7 +30,7 @@ import org.barghos.core.api.tuple4.Tup4objR;
  * 
  * @author picatrix1899
  */
-public class ImmutableTup4obj implements Tup4objR, FormattableToString
+public class ImmutableTup4obj implements Tup4objR
 {
 	/**
 	 * The x component.
@@ -207,19 +203,6 @@ public class ImmutableTup4obj implements Tup4objR, FormattableToString
 	public ImmutableTup4obj clone()
 	{
 		return new ImmutableTup4obj(this);
-	}
-	
-	/** {@inheritDoc}} */
-	@Override
-	public Map<String,Object> getValueMapping()
-	{
-		Map<String,Object> values = new LinkedHashMap<>();
-		values.put("x", getX());
-		values.put("y", getY());
-		values.put("z", getZ());
-		values.put("w", getW());
-		
-		return values;
 	}
 	
 	/**

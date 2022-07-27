@@ -23,10 +23,7 @@
 package org.barghos.core.tuple4;
 
 import java.math.BigDecimal;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
-import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupbigdR;
 import org.barghos.core.api.tuple4.Tup4bigdR;
 
@@ -36,7 +33,7 @@ import org.barghos.core.api.tuple4.Tup4bigdR;
  * 
  * @author picatrix1899
  */
-public class ImmutableTup4bigd implements Tup4bigdR, FormattableToString
+public class ImmutableTup4bigd implements Tup4bigdR
 {
 	/**
 	 * The x component.
@@ -209,19 +206,6 @@ public class ImmutableTup4bigd implements Tup4bigdR, FormattableToString
 	public ImmutableTup4bigd clone()
 	{
 		return new ImmutableTup4bigd(this);
-	}
-	
-	/** {@inheritDoc}} */
-	@Override
-	public Map<String,Object> getValueMapping()
-	{
-		Map<String,Object> values = new LinkedHashMap<>();
-		values.put("x", getX());
-		values.put("y", getY());
-		values.put("z", getZ());
-		values.put("w", getW());
-		
-		return values;
 	}
 	
 	/**

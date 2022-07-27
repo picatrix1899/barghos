@@ -23,10 +23,7 @@
 package org.barghos.core.tuple3;
 
 import java.io.Serializable;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
-import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TuplR;
 import org.barghos.core.api.tuple3.Tup3lC;
 import org.barghos.core.api.tuple3.Tup3lR;
@@ -38,7 +35,7 @@ import org.barghos.core.api.tuple3.Tup3lR;
  * 
  * @author picatrix1899
  */
-public class Tup3l implements Tup3lC, Serializable, FormattableToString
+public class Tup3l implements Tup3lC, Serializable
 {
 	/**
 	 * The class version for serialization.
@@ -246,18 +243,6 @@ public class Tup3l implements Tup3lC, Serializable, FormattableToString
 	public String toString()
 	{
 		return "tup3l(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ")";
-	}
-	
-	/** {@inheritDoc}} */
-	@Override
-	public Map<String,Object> getValueMapping()
-	{
-		Map<String,Object> values = new LinkedHashMap<>();
-		values.put("x", getX());
-		values.put("y", getY());
-		values.put("z", getZ());
-		
-		return values;
 	}
 	
 	/** {@inheritDoc}} */

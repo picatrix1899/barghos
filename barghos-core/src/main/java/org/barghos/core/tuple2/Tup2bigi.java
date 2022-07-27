@@ -24,12 +24,9 @@ package org.barghos.core.tuple2;
 
 import java.io.Serializable;
 import java.math.BigInteger;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 import static org.barghos.core.api.tuple.TupleConstants.*;
 
-import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupbigiR;
 import org.barghos.core.api.tuple2.Tup2bigiC;
 import org.barghos.core.api.tuple2.Tup2bigiR;
@@ -41,7 +38,7 @@ import org.barghos.core.api.tuple2.Tup2bigiR;
  * 
  * @author picatrix1899
  */
-public class Tup2bigi implements Tup2bigiC, Serializable, FormattableToString
+public class Tup2bigi implements Tup2bigiC, Serializable
 {
 	/**
 	 * The class version for serialization.
@@ -346,16 +343,5 @@ public class Tup2bigi implements Tup2bigiC, Serializable, FormattableToString
 	public Tup2bigi clone()
 	{
 		return new Tup2bigi(this.x, this.y);
-	}
-	
-	/** {@inheritDoc}} */
-	@Override
-	public Map<String,Object> getValueMapping()
-	{
-		Map<String,Object> values = new LinkedHashMap<>();
-		values.put("x", this.x);
-		values.put("y", this.y);
-		
-		return values;
 	}
 }

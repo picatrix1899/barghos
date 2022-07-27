@@ -22,12 +22,8 @@
 
 package org.barghos.core.tuple2;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-
 import static org.barghos.core.api.tuple.TupleConstants.*;
 
-import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupstrR;
 import org.barghos.core.api.tuple2.Tup2strR;
 
@@ -37,7 +33,7 @@ import org.barghos.core.api.tuple2.Tup2strR;
  * 
  * @author picatrix1899
  */
-public class ImmutableTup2str implements Tup2strR, FormattableToString
+public class ImmutableTup2str implements Tup2strR
 {
 	/**
 	 * The x component.
@@ -219,17 +215,6 @@ public class ImmutableTup2str implements Tup2strR, FormattableToString
 	public ImmutableTup2str clone()
 	{
 		return new ImmutableTup2str(this.x, this.y);
-	}
-	
-	/** {@inheritDoc}} */
-	@Override
-	public Map<String,Object> getValueMapping()
-	{
-		Map<String,Object> values = new LinkedHashMap<>();
-		values.put("x", this.x);
-		values.put("y", this.y);
-		
-		return values;
 	}
 	
 	/**
