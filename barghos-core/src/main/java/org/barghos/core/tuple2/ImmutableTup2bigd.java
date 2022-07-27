@@ -28,10 +28,10 @@ import java.util.Map;
 
 import static org.barghos.core.api.tuple.TupleConstants.*;
 
+import org.barghos.core.api.documentation.ExtractionParam;
 import org.barghos.core.api.formatting.FormattableToString;
 import org.barghos.core.api.tuple.TupbigdR;
 import org.barghos.core.api.tuple2.Tup2bigdR;
-import org.barghos.core.api.util.ExtractParam;
 
 /**
  * Represents an immutable readonly 2-dimensional {@link BigDecimal} tuple.
@@ -171,7 +171,7 @@ public class ImmutableTup2bigd implements Tup2bigdR, FormattableToString
 	
 	/** {@inheritDoc}} */
 	@Override
-	public BigDecimal[] toArray(@ExtractParam BigDecimal[] res)
+	public BigDecimal[] toArray(@ExtractionParam BigDecimal[] res)
 	{
 		res[COMP_X] = this.x;
 		res[COMP_Y] = this.y;

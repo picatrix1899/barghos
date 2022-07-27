@@ -26,9 +26,9 @@ import java.nio.ByteBuffer;
 
 import static org.barghos.core.api.tuple.TupleConstants.*;
 
+import org.barghos.core.api.documentation.ExtractionParam;
 import org.barghos.core.api.tuple.TupbR;
 import org.barghos.core.api.tuple2.Tup2bR;
-import org.barghos.core.api.util.ExtractParam;
 
 /**
  * Represents an immutable readonly 2-dimensional byte tuple.
@@ -169,7 +169,7 @@ public class ImmutableTup2b implements Tup2bR
 	
 	/** {@inheritDoc}} */
 	@Override
-	public byte[] toArray(@ExtractParam byte[] res)
+	public byte[] toArray(@ExtractionParam byte[] res)
 	{
 		res[COMP_X] = this.x;
 		res[COMP_Y] = this.y;
