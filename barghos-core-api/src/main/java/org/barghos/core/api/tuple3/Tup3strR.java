@@ -24,8 +24,8 @@ package org.barghos.core.api.tuple3;
 
 import static org.barghos.core.api.tuple.TupleConstants.*;
 
+import org.barghos.core.api.documentation.ExtractionParam;
 import org.barghos.core.api.tuple.TupstrR;
-import org.barghos.core.api.util.ExtractParam;
 
 /**
  * This interface grants readonly access to any 3-dimensional string tuples.
@@ -91,7 +91,7 @@ public interface Tup3strR extends TupstrR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default String[] toArray(@ExtractParam String[] res)
+	default String[] toArray(@ExtractionParam String[] res)
 	{
 		res[COMP_X] = getX();
 		res[COMP_Y] = getY();

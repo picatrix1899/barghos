@@ -26,8 +26,8 @@ import static org.barghos.core.api.tuple.TupleConstants.*;
 
 import java.nio.ByteBuffer;
 
+import org.barghos.core.api.documentation.ExtractionParam;
 import org.barghos.core.api.tuple.TupbR;
-import org.barghos.core.api.util.ExtractParam;
 
 /**
  * This interface grants readonly access to any 2-dimensional byte tuples.
@@ -102,7 +102,7 @@ public interface Tup2bR extends TupbR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default byte[] toArray(@ExtractParam byte[] res)
+	default byte[] toArray(@ExtractionParam byte[] res)
 	{
 		res[COMP_X] = getX();
 		res[COMP_Y] = getY();

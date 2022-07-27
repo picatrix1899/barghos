@@ -1,4 +1,4 @@
-package org.barghos.core.api.util;
+package org.barghos.core.api.documentation;
 
 import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.*;
@@ -22,7 +22,7 @@ import java.lang.annotation.Target;
 @Documented
 @Retention(CLASS)
 @Target(PARAMETER)
-public @interface ExtractParam
+public @interface ExtractionParam
 {
 
 }

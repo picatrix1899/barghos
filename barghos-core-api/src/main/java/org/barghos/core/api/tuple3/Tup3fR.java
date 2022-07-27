@@ -26,8 +26,8 @@ import static org.barghos.core.api.tuple.TupleConstants.*;
 
 import java.nio.FloatBuffer;
 
+import org.barghos.core.api.documentation.ExtractionParam;
 import org.barghos.core.api.tuple.TupfR;
-import org.barghos.core.api.util.ExtractParam;
 
 /**
  * This interface grants readonly access to any 3-dimensional float tuples.
@@ -111,7 +111,7 @@ public interface Tup3fR extends TupfR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default float[] toArray(@ExtractParam float[] res)
+	default float[] toArray(@ExtractionParam float[] res)
 	{
 		res[COMP_X] = getX();
 		res[COMP_Y] = getY();

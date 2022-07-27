@@ -2,7 +2,7 @@ package org.barghos.core.api.tuple;
 
 import java.nio.ShortBuffer;
 
-import org.barghos.core.api.util.ExtractParam;
+import org.barghos.core.api.documentation.ExtractionParam;
 import org.barghos.core.api.util.Validateable;
 
 /**
@@ -53,7 +53,7 @@ public interface TupsR extends Validateable
 	 * 
 	 * @return The result array with all components in it.
 	 */
-	short[] toArray(@ExtractParam short[] res);
+	short[] toArray(@ExtractionParam short[] res);
 	
 	/**
 	 * Puts the components of the tuple into the given buffer.

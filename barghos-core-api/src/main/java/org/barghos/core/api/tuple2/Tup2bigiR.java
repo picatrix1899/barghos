@@ -26,8 +26,8 @@ import java.math.BigInteger;
 
 import static org.barghos.core.api.tuple.TupleConstants.*;
 
+import org.barghos.core.api.documentation.ExtractionParam;
 import org.barghos.core.api.tuple.TupbigiR;
-import org.barghos.core.api.util.ExtractParam;
 
 /**
  * This interface grants readonly access to any 2-dimensional big integer tuples.
@@ -100,7 +100,7 @@ public interface Tup2bigiR extends TupbigiR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default BigInteger[] toArray(@ExtractParam BigInteger[] res)
+	default BigInteger[] toArray(@ExtractionParam BigInteger[] res)
 	{
 		res[COMP_X] = getX();
 		res[COMP_Y] = getY();

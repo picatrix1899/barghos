@@ -26,8 +26,8 @@ import java.math.BigDecimal;
 
 import static org.barghos.core.api.tuple.TupleConstants.*;
 
+import org.barghos.core.api.documentation.ExtractionParam;
 import org.barghos.core.api.tuple.TupbigdR;
-import org.barghos.core.api.util.ExtractParam;
 
 /**
  * This interface grants readonly access to any 4-dimensional big decimal tuples.
@@ -122,7 +122,7 @@ public interface Tup4bigdR extends TupbigdR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default BigDecimal[] toArray(@ExtractParam BigDecimal[] res)
+	default BigDecimal[] toArray(@ExtractionParam BigDecimal[] res)
 	{
 		res[COMP_X] = getX();
 		res[COMP_Y] = getY();

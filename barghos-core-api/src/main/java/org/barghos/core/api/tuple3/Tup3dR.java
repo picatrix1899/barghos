@@ -26,8 +26,8 @@ import static org.barghos.core.api.tuple.TupleConstants.*;
 
 import java.nio.DoubleBuffer;
 
+import org.barghos.core.api.documentation.ExtractionParam;
 import org.barghos.core.api.tuple.TupdR;
-import org.barghos.core.api.util.ExtractParam;
 
 /**
  * This interface grants readonly access to any 3-dimensional double tuples.
@@ -111,7 +111,7 @@ public interface Tup3dR extends TupdR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default double[] toArray(@ExtractParam double[] res)
+	default double[] toArray(@ExtractionParam double[] res)
 	{
 		res[COMP_X] = getX();
 		res[COMP_Y] = getY();

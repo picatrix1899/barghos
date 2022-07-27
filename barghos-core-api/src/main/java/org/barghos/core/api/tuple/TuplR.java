@@ -2,7 +2,7 @@ package org.barghos.core.api.tuple;
 
 import java.nio.LongBuffer;
 
-import org.barghos.core.api.util.ExtractParam;
+import org.barghos.core.api.documentation.ExtractionParam;
 import org.barghos.core.api.util.Validateable;
 
 /**
@@ -53,7 +53,7 @@ public interface TuplR extends Validateable
 	 * 
 	 * @return The result array with all components in it.
 	 */
-	long[] toArray(@ExtractParam long[] res);
+	long[] toArray(@ExtractionParam long[] res);
 	
 	/**
 	 * Puts the components of the tuple into the given buffer.

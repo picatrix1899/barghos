@@ -20,7 +20,7 @@
  * SOFTWARE.
  ******************************************************************************/
 
-package org.barghos.core.api.util;
+package org.barghos.core.api.documentation;
 
 import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.*;

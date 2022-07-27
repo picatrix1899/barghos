@@ -26,8 +26,8 @@ import static org.barghos.core.api.tuple.TupleConstants.*;
 
 import java.nio.LongBuffer;
 
+import org.barghos.core.api.documentation.ExtractionParam;
 import org.barghos.core.api.tuple.TuplR;
-import org.barghos.core.api.util.ExtractParam;
 
 /**
  * This interface grants readonly access to any 3-dimensional long tuples.
@@ -112,7 +112,7 @@ public interface Tup3lR extends TuplR
 	
 	/** {@inheritDoc}} */
 	@Override
-	default long[] toArray(@ExtractParam long[] res)
+	default long[] toArray(@ExtractionParam long[] res)
 	{
 		res[COMP_X] = getX();
 		res[COMP_Y] = getY();

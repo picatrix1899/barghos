@@ -2,7 +2,7 @@ package org.barghos.core.api.tuple;
 
 import java.nio.ByteBuffer;
 
-import org.barghos.core.api.util.ExtractParam;
+import org.barghos.core.api.documentation.ExtractionParam;
 import org.barghos.core.api.util.Validateable;
 
 /**
@@ -53,7 +53,7 @@ public interface TupbR extends Validateable
 	 * 
 	 * @return The result array with all components in it.
 	 */
-	byte[] toArray(@ExtractParam byte[] res);
+	byte[] toArray(@ExtractionParam byte[] res);
 	
 	/**
 	 * Puts the components of the tuple into the given buffer.

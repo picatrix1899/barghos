@@ -1,6 +1,6 @@
 package org.barghos.core.api.tuple;
 
-import org.barghos.core.api.util.ExtractParam;
+import org.barghos.core.api.documentation.ExtractionParam;
 import org.barghos.core.api.util.Validateable;
 
 /**
@@ -51,7 +51,7 @@ public interface TupobjR extends Validateable
 	 * 
 	 * @return The result array with all components in it.
 	 */
-	Object[] toArray(@ExtractParam Object[] res);
+	Object[] toArray(@ExtractionParam Object[] res);
 	
 	/**
 	 * Returns true if all the components are valid.

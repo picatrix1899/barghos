@@ -2,7 +2,7 @@ package org.barghos.core.api.tuple;
 
 import java.math.BigDecimal;
 
-import org.barghos.core.api.util.ExtractParam;
+import org.barghos.core.api.documentation.ExtractionParam;
 import org.barghos.core.api.util.Validateable;
 
 /**
@@ -53,7 +53,7 @@ public interface TupbigdR extends Validateable
 	 * 
 	 * @return The result array with all components in it.
 	 */
-	BigDecimal[] toArray(@ExtractParam BigDecimal[] res);
+	BigDecimal[] toArray(@ExtractionParam BigDecimal[] res);
 	
 	/**
 	 * Returns true if all components are finite and therefore not NaN or Infinity.
