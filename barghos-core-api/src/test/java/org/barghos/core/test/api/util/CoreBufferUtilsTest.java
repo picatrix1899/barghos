@@ -35,18 +35,18 @@ import org.barghos.core.api.tuple4.Tup4fR;
 import org.barghos.core.api.tuple4.Tup4iR;
 import org.barghos.core.api.tuple4.Tup4lR;
 import org.barghos.core.api.tuple4.Tup4sR;
-import org.barghos.core.api.util.BufferUtil;
+import org.barghos.core.api.util.CoreBufferUtil;
 import org.barghos.core.api.util.NioBufferFactory;
 
 /**
- * This class provides component tests for the class {@link BufferUtil}.
+ * This class provides component tests for the class {@link CoreBufferUtil}.
  * 
  * @author picatrix1899
  */
-class BufferUtilsTest
+class CoreBufferUtilsTest
 {
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createByteBuffer(int)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createByteBuffer(int)}
 	 * correctly relays the call to the factory.
 	 */
 	@Test
@@ -55,11 +55,11 @@ class BufferUtilsTest
 		NioBufferFactory factory = mock(NioBufferFactory.class);
 		ByteBuffer b = mock(ByteBuffer.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createByteBuffer(14)).thenReturn(b);
 		
-		assertSame(b, BufferUtil.createByteBuffer(14));
+		assertSame(b, CoreBufferUtil.createByteBuffer(14));
 		
 		verify(factory).createByteBuffer(14);
 		
@@ -67,7 +67,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createShortBuffer(int)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createShortBuffer(int)}
 	 * correctly relays the call to the factory.
 	 */
 	@Test
@@ -76,11 +76,11 @@ class BufferUtilsTest
 		NioBufferFactory factory = mock(NioBufferFactory.class);
 		ShortBuffer b = mock(ShortBuffer.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createShortBuffer(14)).thenReturn(b);
 		
-		assertSame(b, BufferUtil.createShortBuffer(14));
+		assertSame(b, CoreBufferUtil.createShortBuffer(14));
 		
 		verify(factory).createShortBuffer(14);
 		
@@ -88,7 +88,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createIntBuffer(int)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createIntBuffer(int)}
 	 * correctly relays the call to the factory.
 	 */
 	@Test
@@ -97,11 +97,11 @@ class BufferUtilsTest
 		NioBufferFactory factory = mock(NioBufferFactory.class);
 		IntBuffer b = mock(IntBuffer.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createIntBuffer(14)).thenReturn(b);
 		
-		assertSame(b, BufferUtil.createIntBuffer(14));
+		assertSame(b, CoreBufferUtil.createIntBuffer(14));
 		
 		verify(factory).createIntBuffer(14);
 		
@@ -109,7 +109,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createLongBuffer(int)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createLongBuffer(int)}
 	 * correctly relays the call to the factory.
 	 */
 	@Test
@@ -118,11 +118,11 @@ class BufferUtilsTest
 		NioBufferFactory factory = mock(NioBufferFactory.class);
 		LongBuffer b = mock(LongBuffer.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createLongBuffer(14)).thenReturn(b);
 		
-		assertSame(b, BufferUtil.createLongBuffer(14));
+		assertSame(b, CoreBufferUtil.createLongBuffer(14));
 		
 		verify(factory).createLongBuffer(14);
 		
@@ -130,7 +130,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFloatBuffer(int)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFloatBuffer(int)}
 	 * correctly relays the call to the factory.
 	 */
 	@Test
@@ -139,11 +139,11 @@ class BufferUtilsTest
 		NioBufferFactory factory = mock(NioBufferFactory.class);
 		FloatBuffer b = mock(FloatBuffer.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createFloatBuffer(14)).thenReturn(b);
 		
-		assertSame(b, BufferUtil.createFloatBuffer(14));
+		assertSame(b, CoreBufferUtil.createFloatBuffer(14));
 		
 		verify(factory).createFloatBuffer(14);
 		
@@ -151,7 +151,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createDoubleBuffer(int)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createDoubleBuffer(int)}
 	 * correctly relays the call to the factory.
 	 */
 	@Test
@@ -160,11 +160,11 @@ class BufferUtilsTest
 		NioBufferFactory factory = mock(NioBufferFactory.class);
 		DoubleBuffer b = mock(DoubleBuffer.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createDoubleBuffer(14)).thenReturn(b);
 		
-		assertSame(b, BufferUtil.createDoubleBuffer(14));
+		assertSame(b, CoreBufferUtil.createDoubleBuffer(14));
 		
 		verify(factory).createDoubleBuffer(14);
 		
@@ -172,7 +172,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#destroyBuffer(ByteBuffer)}
+	 * This test ensures, that the function {@link CoreBufferUtil#destroyBuffer(ByteBuffer)}
 	 * correctly relays the call to the factory.
 	 */
 	@Test
@@ -181,9 +181,9 @@ class BufferUtilsTest
 		NioBufferFactory factory = mock(NioBufferFactory.class);
 		ByteBuffer b = mock(ByteBuffer.class);
 
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
-		BufferUtil.destroyBuffer(b);
+		CoreBufferUtil.destroyBuffer(b);
 		
 		verify(factory).destroyBuffer(b);
 		
@@ -191,7 +191,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#destroyBuffer(ShortBuffer)}
+	 * This test ensures, that the function {@link CoreBufferUtil#destroyBuffer(ShortBuffer)}
 	 * correctly relays the call to the factory.
 	 */
 	@Test
@@ -200,9 +200,9 @@ class BufferUtilsTest
 		NioBufferFactory factory = mock(NioBufferFactory.class);
 		ShortBuffer b = mock(ShortBuffer.class);
 
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
-		BufferUtil.destroyBuffer(b);
+		CoreBufferUtil.destroyBuffer(b);
 		
 		verify(factory).destroyBuffer(b);
 		
@@ -210,7 +210,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#destroyBuffer(IntBuffer)}
+	 * This test ensures, that the function {@link CoreBufferUtil#destroyBuffer(IntBuffer)}
 	 * correctly relays the call to the factory.
 	 */
 	@Test
@@ -219,9 +219,9 @@ class BufferUtilsTest
 		NioBufferFactory factory = mock(NioBufferFactory.class);
 		IntBuffer b = mock(IntBuffer.class);
 
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
-		BufferUtil.destroyBuffer(b);
+		CoreBufferUtil.destroyBuffer(b);
 		
 		verify(factory).destroyBuffer(b);
 		
@@ -229,7 +229,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#destroyBuffer(LongBuffer)}
+	 * This test ensures, that the function {@link CoreBufferUtil#destroyBuffer(LongBuffer)}
 	 * correctly relays the call to the factory.
 	 */
 	@Test
@@ -238,9 +238,9 @@ class BufferUtilsTest
 		NioBufferFactory factory = mock(NioBufferFactory.class);
 		LongBuffer b = mock(LongBuffer.class);
 
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
-		BufferUtil.destroyBuffer(b);
+		CoreBufferUtil.destroyBuffer(b);
 		
 		verify(factory).destroyBuffer(b);
 		
@@ -248,7 +248,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#destroyBuffer(FloatBuffer)}
+	 * This test ensures, that the function {@link CoreBufferUtil#destroyBuffer(FloatBuffer)}
 	 * correctly relays the call to the factory.
 	 */
 	@Test
@@ -257,9 +257,9 @@ class BufferUtilsTest
 		NioBufferFactory factory = mock(NioBufferFactory.class);
 		FloatBuffer b = mock(FloatBuffer.class);
 
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
-		BufferUtil.destroyBuffer(b);
+		CoreBufferUtil.destroyBuffer(b);
 		
 		verify(factory).destroyBuffer(b);
 		
@@ -267,7 +267,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#destroyBuffer(DoubleBuffer)}
+	 * This test ensures, that the function {@link CoreBufferUtil#destroyBuffer(DoubleBuffer)}
 	 * correctly relays the call to the factory.
 	 */
 	@Test
@@ -276,9 +276,9 @@ class BufferUtilsTest
 		NioBufferFactory factory = mock(NioBufferFactory.class);
 		DoubleBuffer b = mock(DoubleBuffer.class);
 
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
-		BufferUtil.destroyBuffer(b);
+		CoreBufferUtil.destroyBuffer(b);
 		
 		verify(factory).destroyBuffer(b);
 		
@@ -286,7 +286,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromByte(byte[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromByte(byte[])}
 	 * correctly creates a {@link ByteBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -295,12 +295,12 @@ class BufferUtilsTest
 		NioBufferFactory factory = mock(NioBufferFactory.class);
 		ByteBuffer b = mock(ByteBuffer.class);
 
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createByteBuffer(4)).thenReturn(b);
 		when(b.put(bArray(1, 2, 3, 4))).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromByte(bArray(1, 2, 3, 4)));
+		assertEquals(b, CoreBufferUtil.createFromByte(bArray(1, 2, 3, 4)));
 
 		verify(factory).createByteBuffer(4);
 		verify(b).put(bArray(1, 2, 3, 4));
@@ -309,7 +309,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromByte(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromByte(List)}
 	 * correctly creates a {@link ByteBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -318,7 +318,7 @@ class BufferUtilsTest
 		NioBufferFactory factory = mock(NioBufferFactory.class);
 		ByteBuffer b = mock(ByteBuffer.class);
 
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createByteBuffer(4)).thenReturn(b);
 		
@@ -327,7 +327,7 @@ class BufferUtilsTest
 		when(b.put(b(3))).thenReturn(b);
 		when(b.put(b(4))).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromByte(List.of(b(1), b(2), b(3), b(4))));
+		assertEquals(b, CoreBufferUtil.createFromByte(List.of(b(1), b(2), b(3), b(4))));
 
 		verify(factory).createByteBuffer(4);
 		verify(b).put(b(1));
@@ -339,7 +339,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromShort(short[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromShort(short[])}
 	 * correctly creates a {@link ShortBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -348,12 +348,12 @@ class BufferUtilsTest
 		NioBufferFactory factory = mock(NioBufferFactory.class);
 		ShortBuffer b = mock(ShortBuffer.class);
 
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createShortBuffer(4)).thenReturn(b);
 		when(b.put(sArray(1, 2, 3, 4))).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromShort(sArray(1, 2, 3, 4)));
+		assertEquals(b, CoreBufferUtil.createFromShort(sArray(1, 2, 3, 4)));
 
 		verify(factory).createShortBuffer(4);
 		verify(b).put(sArray(1, 2, 3, 4));
@@ -362,7 +362,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromShort(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromShort(List)}
 	 * correctly creates a {@link ShortBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -371,7 +371,7 @@ class BufferUtilsTest
 		NioBufferFactory factory = mock(NioBufferFactory.class);
 		ShortBuffer b = mock(ShortBuffer.class);
 
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createShortBuffer(4)).thenReturn(b);
 		
@@ -380,7 +380,7 @@ class BufferUtilsTest
 		when(b.put(s(3))).thenReturn(b);
 		when(b.put(s(4))).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromShort(List.of(s(1), s(2), s(3), s(4))));
+		assertEquals(b, CoreBufferUtil.createFromShort(List.of(s(1), s(2), s(3), s(4))));
 
 		verify(factory).createShortBuffer(4);
 		verify(b).put(s(1));
@@ -392,7 +392,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromInt(int[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromInt(int[])}
 	 * correctly creates a {@link IntBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -401,12 +401,12 @@ class BufferUtilsTest
 		NioBufferFactory factory = mock(NioBufferFactory.class);
 		IntBuffer b = mock(IntBuffer.class);
 
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createIntBuffer(4)).thenReturn(b);
 		when(b.put(new int[] {1, 2, 3, 4})).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromInt(new int[] {1, 2, 3, 4}));
+		assertEquals(b, CoreBufferUtil.createFromInt(new int[] {1, 2, 3, 4}));
 
 		verify(factory).createIntBuffer(4);
 		verify(b).put(new int[] {1, 2, 3, 4});
@@ -415,7 +415,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromInt(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromInt(List)}
 	 * correctly creates a {@link IntBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -424,7 +424,7 @@ class BufferUtilsTest
 		NioBufferFactory factory = mock(NioBufferFactory.class);
 		IntBuffer b = mock(IntBuffer.class);
 
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createIntBuffer(4)).thenReturn(b);
 		
@@ -433,7 +433,7 @@ class BufferUtilsTest
 		when(b.put(3)).thenReturn(b);
 		when(b.put(4)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromInt(List.of(1, 2, 3, 4)));
+		assertEquals(b, CoreBufferUtil.createFromInt(List.of(1, 2, 3, 4)));
 
 		verify(factory).createIntBuffer(4);
 		verify(b).put(1);
@@ -445,7 +445,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromLong(long[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromLong(long[])}
 	 * correctly creates a {@link LongBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -454,12 +454,12 @@ class BufferUtilsTest
 		NioBufferFactory factory = mock(NioBufferFactory.class);
 		LongBuffer b = mock(LongBuffer.class);
 
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createLongBuffer(4)).thenReturn(b);
 		when(b.put(new long[] {1l, 2l, 3l, 4l})).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromLong(new long[] {1l, 2l, 3l, 4l}));
+		assertEquals(b, CoreBufferUtil.createFromLong(new long[] {1l, 2l, 3l, 4l}));
 
 		verify(factory).createLongBuffer(4);
 		verify(b).put(new long[] {1l, 2l, 3l, 4l});
@@ -468,7 +468,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromLong(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromLong(List)}
 	 * correctly creates a {@link LongBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -477,7 +477,7 @@ class BufferUtilsTest
 		NioBufferFactory factory = mock(NioBufferFactory.class);
 		LongBuffer b = mock(LongBuffer.class);
 
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createLongBuffer(4)).thenReturn(b);
 		
@@ -486,7 +486,7 @@ class BufferUtilsTest
 		when(b.put(3l)).thenReturn(b);
 		when(b.put(4l)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromLong(List.of(1l, 2l, 3l, 4l)));
+		assertEquals(b, CoreBufferUtil.createFromLong(List.of(1l, 2l, 3l, 4l)));
 
 		verify(factory).createLongBuffer(4);
 		verify(b).put(1l);
@@ -498,7 +498,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromFloat(float[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromFloat(float[])}
 	 * correctly creates a {@link FloatBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -507,12 +507,12 @@ class BufferUtilsTest
 		NioBufferFactory factory = mock(NioBufferFactory.class);
 		FloatBuffer b = mock(FloatBuffer.class);
 
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createFloatBuffer(4)).thenReturn(b);
 		when(b.put(new float[] {1.0f, 2.0f, 3.0f, 4.0f})).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromFloat(new float[] {1.0f, 2.0f, 3.0f, 4.0f}));
+		assertEquals(b, CoreBufferUtil.createFromFloat(new float[] {1.0f, 2.0f, 3.0f, 4.0f}));
 
 		verify(factory).createFloatBuffer(4);
 		verify(b).put(new float[] {1.0f, 2.0f, 3.0f, 4.0f});
@@ -521,7 +521,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromFloat(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromFloat(List)}
 	 * correctly creates a {@link FloatBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -530,7 +530,7 @@ class BufferUtilsTest
 		NioBufferFactory factory = mock(NioBufferFactory.class);
 		FloatBuffer b = mock(FloatBuffer.class);
 
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createFloatBuffer(4)).thenReturn(b);
 		
@@ -539,7 +539,7 @@ class BufferUtilsTest
 		when(b.put(3.0f)).thenReturn(b);
 		when(b.put(4.0f)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromFloat(List.of(1.0f, 2.0f, 3.0f, 4.0f)));
+		assertEquals(b, CoreBufferUtil.createFromFloat(List.of(1.0f, 2.0f, 3.0f, 4.0f)));
 
 		verify(factory).createFloatBuffer(4);
 		verify(b).put(1.0f);
@@ -551,7 +551,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromDouble(double[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromDouble(double[])}
 	 * correctly creates a {@link DoubleBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -560,12 +560,12 @@ class BufferUtilsTest
 		NioBufferFactory factory = mock(NioBufferFactory.class);
 		DoubleBuffer b = mock(DoubleBuffer.class);
 
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createDoubleBuffer(4)).thenReturn(b);
 		when(b.put(new double[] {1.0, 2.0, 3.0, 4.0})).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromDouble(new double[] {1.0, 2.0, 3.0, 4.0}));
+		assertEquals(b, CoreBufferUtil.createFromDouble(new double[] {1.0, 2.0, 3.0, 4.0}));
 
 		verify(factory).createDoubleBuffer(4);
 		verify(b).put(new double[] {1.0, 2.0, 3.0, 4.0});
@@ -574,7 +574,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromDouble(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromDouble(List)}
 	 * correctly creates a {@link DoubleBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -583,7 +583,7 @@ class BufferUtilsTest
 		NioBufferFactory factory = mock(NioBufferFactory.class);
 		DoubleBuffer b = mock(DoubleBuffer.class);
 
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createDoubleBuffer(4)).thenReturn(b);
 		
@@ -592,7 +592,7 @@ class BufferUtilsTest
 		when(b.put(3.0)).thenReturn(b);
 		when(b.put(4.0)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromDouble(List.of(1.0, 2.0, 3.0, 4.0)));
+		assertEquals(b, CoreBufferUtil.createFromDouble(List.of(1.0, 2.0, 3.0, 4.0)));
 
 		verify(factory).createDoubleBuffer(4);
 		verify(b).put(1.0);
@@ -604,7 +604,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromTuple2b(Tup2bR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromTuple2b(Tup2bR[])}
 	 * correctly creates a {@link ByteBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -615,11 +615,11 @@ class BufferUtilsTest
 		Tup2bR t1 = mock(Tup2bR.class);
 		Tup2bR t2 = mock(Tup2bR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createByteBuffer(4)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromTuple2b(t1, t2));
+		assertEquals(b, CoreBufferUtil.createFromTuple2b(t1, t2));
 
 		verify(factory).createByteBuffer(4);
 		verify(t1).toBuffer(b);
@@ -629,7 +629,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromTuple2b(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromTuple2b(List)}
 	 * correctly creates a {@link ByteBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -640,11 +640,11 @@ class BufferUtilsTest
 		Tup2bR t1 = mock(Tup2bR.class);
 		Tup2bR t2 = mock(Tup2bR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createByteBuffer(4)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromTuple2b(List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.createFromTuple2b(List.of(t1, t2)));
 
 		verify(factory).createByteBuffer(4);
 		verify(t1).toBuffer(b);
@@ -654,7 +654,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromTuple3b(Tup3bR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromTuple3b(Tup3bR[])}
 	 * correctly creates a {@link ByteBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -665,11 +665,11 @@ class BufferUtilsTest
 		Tup3bR t1 = mock(Tup3bR.class);
 		Tup3bR t2 = mock(Tup3bR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createByteBuffer(6)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromTuple3b(t1, t2));
+		assertEquals(b, CoreBufferUtil.createFromTuple3b(t1, t2));
 
 		verify(factory).createByteBuffer(6);
 		verify(t1).toBuffer(b);
@@ -679,7 +679,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromTuple3b(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromTuple3b(List)}
 	 * correctly creates a {@link ByteBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -690,11 +690,11 @@ class BufferUtilsTest
 		Tup3bR t1 = mock(Tup3bR.class);
 		Tup3bR t2 = mock(Tup3bR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createByteBuffer(6)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromTuple3b(List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.createFromTuple3b(List.of(t1, t2)));
 
 		verify(factory).createByteBuffer(6);
 		verify(t1).toBuffer(b);
@@ -704,7 +704,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromTuple4b(Tup4bR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromTuple4b(Tup4bR[])}
 	 * correctly creates a {@link ByteBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -715,11 +715,11 @@ class BufferUtilsTest
 		Tup4bR t1 = mock(Tup4bR.class);
 		Tup4bR t2 = mock(Tup4bR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createByteBuffer(8)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromTuple4b(t1, t2));
+		assertEquals(b, CoreBufferUtil.createFromTuple4b(t1, t2));
 
 		verify(factory).createByteBuffer(8);
 		verify(t1).toBuffer(b);
@@ -729,7 +729,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromTuple4b(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromTuple4b(List)}
 	 * correctly creates a {@link ByteBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -740,11 +740,11 @@ class BufferUtilsTest
 		Tup4bR t1 = mock(Tup4bR.class);
 		Tup4bR t2 = mock(Tup4bR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createByteBuffer(8)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromTuple4b(List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.createFromTuple4b(List.of(t1, t2)));
 
 		verify(factory).createByteBuffer(8);
 		verify(t1).toBuffer(b);
@@ -754,7 +754,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromTuple2s(Tup2sR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromTuple2s(Tup2sR[])}
 	 * correctly creates a {@link ShortBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -765,11 +765,11 @@ class BufferUtilsTest
 		Tup2sR t1 = mock(Tup2sR.class);
 		Tup2sR t2 = mock(Tup2sR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createShortBuffer(4)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromTuple2s(t1, t2));
+		assertEquals(b, CoreBufferUtil.createFromTuple2s(t1, t2));
 
 		verify(factory).createShortBuffer(4);
 		verify(t1).toBuffer(b);
@@ -779,7 +779,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromTuple2s(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromTuple2s(List)}
 	 * correctly creates a {@link ShortBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -790,11 +790,11 @@ class BufferUtilsTest
 		Tup2sR t1 = mock(Tup2sR.class);
 		Tup2sR t2 = mock(Tup2sR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createShortBuffer(4)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromTuple2s(List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.createFromTuple2s(List.of(t1, t2)));
 
 		verify(factory).createShortBuffer(4);
 		verify(t1).toBuffer(b);
@@ -804,7 +804,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromTuple3s(Tup3sR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromTuple3s(Tup3sR[])}
 	 * correctly creates a {@link ShortBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -815,11 +815,11 @@ class BufferUtilsTest
 		Tup3sR t1 = mock(Tup3sR.class);
 		Tup3sR t2 = mock(Tup3sR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createShortBuffer(6)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromTuple3s(t1, t2));
+		assertEquals(b, CoreBufferUtil.createFromTuple3s(t1, t2));
 
 		verify(factory).createShortBuffer(6);
 		verify(t1).toBuffer(b);
@@ -829,7 +829,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromTuple3s(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromTuple3s(List)}
 	 * correctly creates a {@link ShortBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -840,11 +840,11 @@ class BufferUtilsTest
 		Tup3sR t1 = mock(Tup3sR.class);
 		Tup3sR t2 = mock(Tup3sR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createShortBuffer(6)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromTuple3s(List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.createFromTuple3s(List.of(t1, t2)));
 
 		verify(factory).createShortBuffer(6);
 		verify(t1).toBuffer(b);
@@ -854,7 +854,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromTuple4s(Tup4sR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromTuple4s(Tup4sR[])}
 	 * correctly creates a {@link ShortBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -865,11 +865,11 @@ class BufferUtilsTest
 		Tup4sR t1 = mock(Tup4sR.class);
 		Tup4sR t2 = mock(Tup4sR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createShortBuffer(8)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromTuple4s(t1, t2));
+		assertEquals(b, CoreBufferUtil.createFromTuple4s(t1, t2));
 
 		verify(factory).createShortBuffer(8);
 		verify(t1).toBuffer(b);
@@ -879,7 +879,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromTuple4s(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromTuple4s(List)}
 	 * correctly creates a {@link ShortBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -890,11 +890,11 @@ class BufferUtilsTest
 		Tup4sR t1 = mock(Tup4sR.class);
 		Tup4sR t2 = mock(Tup4sR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createShortBuffer(8)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromTuple4s(List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.createFromTuple4s(List.of(t1, t2)));
 
 		verify(factory).createShortBuffer(8);
 		verify(t1).toBuffer(b);
@@ -904,7 +904,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromTuple2i(Tup2iR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromTuple2i(Tup2iR[])}
 	 * correctly creates a {@link IntBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -915,11 +915,11 @@ class BufferUtilsTest
 		Tup2iR t1 = mock(Tup2iR.class);
 		Tup2iR t2 = mock(Tup2iR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createIntBuffer(4)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromTuple2i(t1, t2));
+		assertEquals(b, CoreBufferUtil.createFromTuple2i(t1, t2));
 
 		verify(factory).createIntBuffer(4);
 		verify(t1).toBuffer(b);
@@ -929,7 +929,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromTuple2i(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromTuple2i(List)}
 	 * correctly creates a {@link IntBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -940,11 +940,11 @@ class BufferUtilsTest
 		Tup2iR t1 = mock(Tup2iR.class);
 		Tup2iR t2 = mock(Tup2iR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createIntBuffer(4)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromTuple2i(List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.createFromTuple2i(List.of(t1, t2)));
 
 		verify(factory).createIntBuffer(4);
 		verify(t1).toBuffer(b);
@@ -954,7 +954,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromTuple3i(Tup3iR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromTuple3i(Tup3iR[])}
 	 * correctly creates a {@link IntBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -965,11 +965,11 @@ class BufferUtilsTest
 		Tup3iR t1 = mock(Tup3iR.class);
 		Tup3iR t2 = mock(Tup3iR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createIntBuffer(6)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromTuple3i(t1, t2));
+		assertEquals(b, CoreBufferUtil.createFromTuple3i(t1, t2));
 
 		verify(factory).createIntBuffer(6);
 		verify(t1).toBuffer(b);
@@ -979,7 +979,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromTuple3i(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromTuple3i(List)}
 	 * correctly creates a {@link IntBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -990,11 +990,11 @@ class BufferUtilsTest
 		Tup3iR t1 = mock(Tup3iR.class);
 		Tup3iR t2 = mock(Tup3iR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createIntBuffer(6)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromTuple3i(List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.createFromTuple3i(List.of(t1, t2)));
 
 		verify(factory).createIntBuffer(6);
 		verify(t1).toBuffer(b);
@@ -1004,7 +1004,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromTuple4i(Tup4iR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromTuple4i(Tup4iR[])}
 	 * correctly creates a {@link IntBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -1015,11 +1015,11 @@ class BufferUtilsTest
 		Tup4iR t1 = mock(Tup4iR.class);
 		Tup4iR t2 = mock(Tup4iR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createIntBuffer(8)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromTuple4i(t1, t2));
+		assertEquals(b, CoreBufferUtil.createFromTuple4i(t1, t2));
 
 		verify(factory).createIntBuffer(8);
 		verify(t1).toBuffer(b);
@@ -1029,7 +1029,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromTuple4i(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromTuple4i(List)}
 	 * correctly creates a {@link IntBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -1040,11 +1040,11 @@ class BufferUtilsTest
 		Tup4iR t1 = mock(Tup4iR.class);
 		Tup4iR t2 = mock(Tup4iR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createIntBuffer(8)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromTuple4i(List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.createFromTuple4i(List.of(t1, t2)));
 
 		verify(factory).createIntBuffer(8);
 		verify(t1).toBuffer(b);
@@ -1054,7 +1054,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromTuple2l(Tup2lR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromTuple2l(Tup2lR[])}
 	 * correctly creates a {@link LongBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -1065,11 +1065,11 @@ class BufferUtilsTest
 		Tup2lR t1 = mock(Tup2lR.class);
 		Tup2lR t2 = mock(Tup2lR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createLongBuffer(4)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromTuple2l(t1, t2));
+		assertEquals(b, CoreBufferUtil.createFromTuple2l(t1, t2));
 
 		verify(factory).createLongBuffer(4);
 		verify(t1).toBuffer(b);
@@ -1079,7 +1079,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromTuple2l(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromTuple2l(List)}
 	 * correctly creates a {@link LongBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -1090,11 +1090,11 @@ class BufferUtilsTest
 		Tup2lR t1 = mock(Tup2lR.class);
 		Tup2lR t2 = mock(Tup2lR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createLongBuffer(4)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromTuple2l(List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.createFromTuple2l(List.of(t1, t2)));
 
 		verify(factory).createLongBuffer(4);
 		verify(t1).toBuffer(b);
@@ -1104,7 +1104,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromTuple3l(Tup3lR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromTuple3l(Tup3lR[])}
 	 * correctly creates a {@link LongBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -1115,11 +1115,11 @@ class BufferUtilsTest
 		Tup3lR t1 = mock(Tup3lR.class);
 		Tup3lR t2 = mock(Tup3lR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createLongBuffer(6)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromTuple3l(t1, t2));
+		assertEquals(b, CoreBufferUtil.createFromTuple3l(t1, t2));
 
 		verify(factory).createLongBuffer(6);
 		verify(t1).toBuffer(b);
@@ -1129,7 +1129,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromTuple3l(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromTuple3l(List)}
 	 * correctly creates a {@link LongBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -1140,11 +1140,11 @@ class BufferUtilsTest
 		Tup3lR t1 = mock(Tup3lR.class);
 		Tup3lR t2 = mock(Tup3lR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createLongBuffer(6)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromTuple3l(List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.createFromTuple3l(List.of(t1, t2)));
 
 		verify(factory).createLongBuffer(6);
 		verify(t1).toBuffer(b);
@@ -1154,7 +1154,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromTuple4l(Tup4lR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromTuple4l(Tup4lR[])}
 	 * correctly creates a {@link LongBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -1165,11 +1165,11 @@ class BufferUtilsTest
 		Tup4lR t1 = mock(Tup4lR.class);
 		Tup4lR t2 = mock(Tup4lR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createLongBuffer(8)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromTuple4l(t1, t2));
+		assertEquals(b, CoreBufferUtil.createFromTuple4l(t1, t2));
 
 		verify(factory).createLongBuffer(8);
 		verify(t1).toBuffer(b);
@@ -1179,7 +1179,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromTuple4l(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromTuple4l(List)}
 	 * correctly creates a {@link LongBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -1190,11 +1190,11 @@ class BufferUtilsTest
 		Tup4lR t1 = mock(Tup4lR.class);
 		Tup4lR t2 = mock(Tup4lR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createLongBuffer(8)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromTuple4l(List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.createFromTuple4l(List.of(t1, t2)));
 
 		verify(factory).createLongBuffer(8);
 		verify(t1).toBuffer(b);
@@ -1204,7 +1204,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromTuple2f(Tup2fR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromTuple2f(Tup2fR[])}
 	 * correctly creates a {@link FloatBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -1215,11 +1215,11 @@ class BufferUtilsTest
 		Tup2fR t1 = mock(Tup2fR.class);
 		Tup2fR t2 = mock(Tup2fR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createFloatBuffer(4)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromTuple2f(t1, t2));
+		assertEquals(b, CoreBufferUtil.createFromTuple2f(t1, t2));
 
 		verify(factory).createFloatBuffer(4);
 		verify(t1).toBuffer(b);
@@ -1229,7 +1229,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromTuple2f(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromTuple2f(List)}
 	 * correctly creates a {@link FloatBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -1240,11 +1240,11 @@ class BufferUtilsTest
 		Tup2fR t1 = mock(Tup2fR.class);
 		Tup2fR t2 = mock(Tup2fR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createFloatBuffer(4)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromTuple2f(List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.createFromTuple2f(List.of(t1, t2)));
 
 		verify(factory).createFloatBuffer(4);
 		verify(t1).toBuffer(b);
@@ -1254,7 +1254,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromTuple3f(Tup3fR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromTuple3f(Tup3fR[])}
 	 * correctly creates a {@link FloatBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -1265,11 +1265,11 @@ class BufferUtilsTest
 		Tup3fR t1 = mock(Tup3fR.class);
 		Tup3fR t2 = mock(Tup3fR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createFloatBuffer(6)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromTuple3f(t1, t2));
+		assertEquals(b, CoreBufferUtil.createFromTuple3f(t1, t2));
 
 		verify(factory).createFloatBuffer(6);
 		verify(t1).toBuffer(b);
@@ -1279,7 +1279,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromTuple3f(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromTuple3f(List)}
 	 * correctly creates a {@link FloatBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -1290,11 +1290,11 @@ class BufferUtilsTest
 		Tup3fR t1 = mock(Tup3fR.class);
 		Tup3fR t2 = mock(Tup3fR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createFloatBuffer(6)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromTuple3f(List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.createFromTuple3f(List.of(t1, t2)));
 
 		verify(factory).createFloatBuffer(6);
 		verify(t1).toBuffer(b);
@@ -1304,7 +1304,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromTuple4f(Tup4fR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromTuple4f(Tup4fR[])}
 	 * correctly creates a {@link FloatBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -1315,11 +1315,11 @@ class BufferUtilsTest
 		Tup4fR t1 = mock(Tup4fR.class);
 		Tup4fR t2 = mock(Tup4fR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createFloatBuffer(8)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromTuple4f(t1, t2));
+		assertEquals(b, CoreBufferUtil.createFromTuple4f(t1, t2));
 
 		verify(factory).createFloatBuffer(8);
 		verify(t1).toBuffer(b);
@@ -1329,7 +1329,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromTuple4f(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromTuple4f(List)}
 	 * correctly creates a {@link FloatBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -1340,11 +1340,11 @@ class BufferUtilsTest
 		Tup4fR t1 = mock(Tup4fR.class);
 		Tup4fR t2 = mock(Tup4fR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createFloatBuffer(8)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromTuple4f(List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.createFromTuple4f(List.of(t1, t2)));
 
 		verify(factory).createFloatBuffer(8);
 		verify(t1).toBuffer(b);
@@ -1354,7 +1354,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromTuple2d(Tup2dR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromTuple2d(Tup2dR[])}
 	 * correctly creates a {@link DoubleBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -1365,11 +1365,11 @@ class BufferUtilsTest
 		Tup2dR t1 = mock(Tup2dR.class);
 		Tup2dR t2 = mock(Tup2dR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createDoubleBuffer(4)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromTuple2d(t1, t2));
+		assertEquals(b, CoreBufferUtil.createFromTuple2d(t1, t2));
 
 		verify(factory).createDoubleBuffer(4);
 		verify(t1).toBuffer(b);
@@ -1379,7 +1379,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromTuple2d(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromTuple2d(List)}
 	 * correctly creates a {@link DoubleBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -1390,11 +1390,11 @@ class BufferUtilsTest
 		Tup2dR t1 = mock(Tup2dR.class);
 		Tup2dR t2 = mock(Tup2dR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createDoubleBuffer(4)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromTuple2d(List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.createFromTuple2d(List.of(t1, t2)));
 
 		verify(factory).createDoubleBuffer(4);
 		verify(t1).toBuffer(b);
@@ -1404,7 +1404,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromTuple3d(Tup3dR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromTuple3d(Tup3dR[])}
 	 * correctly creates a {@link DoubleBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -1415,11 +1415,11 @@ class BufferUtilsTest
 		Tup3dR t1 = mock(Tup3dR.class);
 		Tup3dR t2 = mock(Tup3dR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createDoubleBuffer(6)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromTuple3d(t1, t2));
+		assertEquals(b, CoreBufferUtil.createFromTuple3d(t1, t2));
 
 		verify(factory).createDoubleBuffer(6);
 		verify(t1).toBuffer(b);
@@ -1429,7 +1429,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromTuple3d(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromTuple3d(List)}
 	 * correctly creates a {@link DoubleBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -1440,11 +1440,11 @@ class BufferUtilsTest
 		Tup3dR t1 = mock(Tup3dR.class);
 		Tup3dR t2 = mock(Tup3dR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createDoubleBuffer(6)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromTuple3d(List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.createFromTuple3d(List.of(t1, t2)));
 
 		verify(factory).createDoubleBuffer(6);
 		verify(t1).toBuffer(b);
@@ -1454,7 +1454,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromTuple4d(Tup4dR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromTuple4d(Tup4dR[])}
 	 * correctly creates a {@link DoubleBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -1465,11 +1465,11 @@ class BufferUtilsTest
 		Tup4dR t1 = mock(Tup4dR.class);
 		Tup4dR t2 = mock(Tup4dR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createDoubleBuffer(8)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromTuple4d(t1, t2));
+		assertEquals(b, CoreBufferUtil.createFromTuple4d(t1, t2));
 
 		verify(factory).createDoubleBuffer(8);
 		verify(t1).toBuffer(b);
@@ -1479,7 +1479,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromTuple4d(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromTuple4d(List)}
 	 * correctly creates a {@link DoubleBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -1490,11 +1490,11 @@ class BufferUtilsTest
 		Tup4dR t1 = mock(Tup4dR.class);
 		Tup4dR t2 = mock(Tup4dR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createDoubleBuffer(8)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.createFromTuple4d(List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.createFromTuple4d(List.of(t1, t2)));
 
 		verify(factory).createDoubleBuffer(8);
 		verify(t1).toBuffer(b);
@@ -1504,7 +1504,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipByte(byte[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipByte(byte[])}
 	 * correctly creates a {@link ByteBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -1512,11 +1512,11 @@ class BufferUtilsTest
 	{
 		TestBufferFactory factory = mock(TestBufferFactory.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createByteBuffer(4)).thenCallRealMethod();
 		
-		ByteBuffer b = BufferUtil.createFromAndFlipByte(bArray(1, 2, 3, 4));
+		ByteBuffer b = CoreBufferUtil.createFromAndFlipByte(bArray(1, 2, 3, 4));
 
 		assertNotNull(b);
 		assertEquals(4, b.capacity());
@@ -1529,7 +1529,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipByte(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipByte(List)}
 	 * correctly creates a {@link ByteBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -1537,11 +1537,11 @@ class BufferUtilsTest
 	{
 		TestBufferFactory factory = mock(TestBufferFactory.class);
 
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createByteBuffer(4)).thenCallRealMethod();
 		
-		ByteBuffer b = BufferUtil.createFromAndFlipByte(List.of(b(1), b(2), b(3), b(4)));
+		ByteBuffer b = CoreBufferUtil.createFromAndFlipByte(List.of(b(1), b(2), b(3), b(4)));
 
 		assertEquals(4, b.capacity());
 		assertEquals(4, b.limit());
@@ -1553,7 +1553,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipShort(short[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipShort(short[])}
 	 * correctly creates a {@link ShortBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -1561,11 +1561,11 @@ class BufferUtilsTest
 	{
 		TestBufferFactory factory = mock(TestBufferFactory.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createShortBuffer(4)).thenCallRealMethod();
 		
-		ShortBuffer b = BufferUtil.createFromAndFlipShort(sArray(1, 2, 3, 4));
+		ShortBuffer b = CoreBufferUtil.createFromAndFlipShort(sArray(1, 2, 3, 4));
 
 		assertEquals(4, b.capacity());
 		assertEquals(4, b.limit());
@@ -1577,7 +1577,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipShort(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipShort(List)}
 	 * correctly creates a {@link ShortBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -1585,11 +1585,11 @@ class BufferUtilsTest
 	{
 		TestBufferFactory factory = mock(TestBufferFactory.class);
 
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createShortBuffer(4)).thenCallRealMethod();
 		
-		ShortBuffer b = BufferUtil.createFromAndFlipShort(List.of(s(1), s(2), s(3), s(4)));
+		ShortBuffer b = CoreBufferUtil.createFromAndFlipShort(List.of(s(1), s(2), s(3), s(4)));
 
 		assertEquals(4, b.capacity());
 		assertEquals(4, b.limit());
@@ -1601,7 +1601,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipInt(int[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipInt(int[])}
 	 * correctly creates a {@link IntBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -1609,11 +1609,11 @@ class BufferUtilsTest
 	{
 		TestBufferFactory factory = mock(TestBufferFactory.class);
 
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createIntBuffer(4)).thenCallRealMethod();
 		
-		IntBuffer b = BufferUtil.createFromAndFlipInt(new int[] {1, 2, 3, 4});
+		IntBuffer b = CoreBufferUtil.createFromAndFlipInt(new int[] {1, 2, 3, 4});
 
 		assertEquals(4, b.capacity());
 		assertEquals(4, b.limit());
@@ -1625,7 +1625,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipInt(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipInt(List)}
 	 * correctly creates a {@link IntBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -1633,11 +1633,11 @@ class BufferUtilsTest
 	{
 		TestBufferFactory factory = mock(TestBufferFactory.class);
 
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createIntBuffer(4)).thenCallRealMethod();
 		
-		IntBuffer b = BufferUtil.createFromAndFlipInt(List.of(1, 2, 3, 4));
+		IntBuffer b = CoreBufferUtil.createFromAndFlipInt(List.of(1, 2, 3, 4));
 
 		assertEquals(4, b.capacity());
 		assertEquals(4, b.limit());
@@ -1649,7 +1649,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipLong(long[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipLong(long[])}
 	 * correctly creates a {@link LongBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -1657,11 +1657,11 @@ class BufferUtilsTest
 	{
 		TestBufferFactory factory = mock(TestBufferFactory.class);
 
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createLongBuffer(4)).thenCallRealMethod();
 		
-		LongBuffer b = BufferUtil.createFromAndFlipLong(new long[] {1l, 2l, 3l, 4l});
+		LongBuffer b = CoreBufferUtil.createFromAndFlipLong(new long[] {1l, 2l, 3l, 4l});
 
 		assertEquals(4, b.capacity());
 		assertEquals(4, b.limit());
@@ -1673,7 +1673,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipLong(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipLong(List)}
 	 * correctly creates a {@link LongBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -1681,11 +1681,11 @@ class BufferUtilsTest
 	{
 		TestBufferFactory factory = mock(TestBufferFactory.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createLongBuffer(4)).thenCallRealMethod();
 		
-		LongBuffer b = BufferUtil.createFromAndFlipLong(List.of(1l, 2l, 3l, 4l));
+		LongBuffer b = CoreBufferUtil.createFromAndFlipLong(List.of(1l, 2l, 3l, 4l));
 
 		assertEquals(4, b.capacity());
 		assertEquals(4, b.limit());
@@ -1697,7 +1697,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipFloat(float[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipFloat(float[])}
 	 * correctly creates a {@link FloatBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -1705,11 +1705,11 @@ class BufferUtilsTest
 	{
 		TestBufferFactory factory = mock(TestBufferFactory.class);
 
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createFloatBuffer(4)).thenCallRealMethod();
 		
-		FloatBuffer b = BufferUtil.createFromAndFlipFloat(new float[] {1.0f, 2.0f, 3.0f, 4.0f});
+		FloatBuffer b = CoreBufferUtil.createFromAndFlipFloat(new float[] {1.0f, 2.0f, 3.0f, 4.0f});
 
 		assertEquals(4, b.capacity());
 		assertEquals(4, b.limit());
@@ -1721,7 +1721,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipFloat(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipFloat(List)}
 	 * correctly creates a {@link FloatBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -1729,11 +1729,11 @@ class BufferUtilsTest
 	{
 		TestBufferFactory factory = mock(TestBufferFactory.class);
 
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createFloatBuffer(4)).thenCallRealMethod();
 		
-		FloatBuffer b = BufferUtil.createFromAndFlipFloat(List.of(1.0f, 2.0f, 3.0f, 4.0f));
+		FloatBuffer b = CoreBufferUtil.createFromAndFlipFloat(List.of(1.0f, 2.0f, 3.0f, 4.0f));
 
 		assertEquals(4, b.capacity());
 		assertEquals(4, b.limit());
@@ -1745,7 +1745,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipDouble(double[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipDouble(double[])}
 	 * correctly creates a {@link DoubleBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -1753,11 +1753,11 @@ class BufferUtilsTest
 	{
 		TestBufferFactory factory = mock(TestBufferFactory.class);
 
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createDoubleBuffer(4)).thenCallRealMethod();
 		
-		DoubleBuffer b = BufferUtil.createFromAndFlipDouble(new double[] {1.0, 2.0, 3.0, 4.0});
+		DoubleBuffer b = CoreBufferUtil.createFromAndFlipDouble(new double[] {1.0, 2.0, 3.0, 4.0});
 
 		assertEquals(4, b.capacity());
 		assertEquals(4, b.limit());
@@ -1769,7 +1769,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipDouble(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipDouble(List)}
 	 * correctly creates a {@link DoubleBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -1777,11 +1777,11 @@ class BufferUtilsTest
 	{
 		TestBufferFactory factory = mock(TestBufferFactory.class);
 
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createDoubleBuffer(4)).thenCallRealMethod();
 		
-		DoubleBuffer b = BufferUtil.createFromAndFlipDouble(List.of(1.0, 2.0, 3.0, 4.0));
+		DoubleBuffer b = CoreBufferUtil.createFromAndFlipDouble(List.of(1.0, 2.0, 3.0, 4.0));
 
 		assertEquals(4, b.capacity());
 		assertEquals(4, b.limit());
@@ -1793,7 +1793,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipTuple2b(Tup2bR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipTuple2b(Tup2bR[])}
 	 * correctly creates a {@link ByteBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -1804,7 +1804,7 @@ class BufferUtilsTest
 		Tup2bR t1 = mock(Tup2bR.class);
 		Tup2bR t2 = mock(Tup2bR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createByteBuffer(4)).thenCallRealMethod();
 		when(t1.toBuffer(any(ByteBuffer.class))).then(new Answer<ByteBuffer>() {
@@ -1822,7 +1822,7 @@ class BufferUtilsTest
 			}
 		});
 		
-		ByteBuffer b = BufferUtil.createFromAndFlipTuple2b(t1, t2);
+		ByteBuffer b = CoreBufferUtil.createFromAndFlipTuple2b(t1, t2);
 
 		assertEquals(4, b.capacity());
 		assertEquals(4, b.limit());
@@ -1836,7 +1836,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipTuple2b(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipTuple2b(List)}
 	 * correctly creates a {@link ByteBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -1847,7 +1847,7 @@ class BufferUtilsTest
 		Tup2bR t1 = mock(Tup2bR.class);
 		Tup2bR t2 = mock(Tup2bR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createByteBuffer(4)).thenCallRealMethod();
 		when(t1.toBuffer(any(ByteBuffer.class))).then(new Answer<ByteBuffer>() {
@@ -1865,7 +1865,7 @@ class BufferUtilsTest
 			}
 		});
 		
-		ByteBuffer b = BufferUtil.createFromAndFlipTuple2b(List.of(t1, t2));
+		ByteBuffer b = CoreBufferUtil.createFromAndFlipTuple2b(List.of(t1, t2));
 
 		assertEquals(4, b.capacity());
 		assertEquals(4, b.limit());
@@ -1879,7 +1879,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipTuple3b(Tup3bR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipTuple3b(Tup3bR[])}
 	 * correctly creates a {@link ByteBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -1890,7 +1890,7 @@ class BufferUtilsTest
 		Tup3bR t1 = mock(Tup3bR.class);
 		Tup3bR t2 = mock(Tup3bR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createByteBuffer(6)).thenCallRealMethod();
 		when(t1.toBuffer(any(ByteBuffer.class))).then(new Answer<ByteBuffer>() {
@@ -1908,7 +1908,7 @@ class BufferUtilsTest
 			}
 		});
 		
-		ByteBuffer b = BufferUtil.createFromAndFlipTuple3b(t1, t2);
+		ByteBuffer b = CoreBufferUtil.createFromAndFlipTuple3b(t1, t2);
 
 		assertEquals(6, b.capacity());
 		assertEquals(6, b.limit());
@@ -1922,7 +1922,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipTuple3b(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipTuple3b(List)}
 	 * correctly creates a {@link ByteBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -1933,7 +1933,7 @@ class BufferUtilsTest
 		Tup3bR t1 = mock(Tup3bR.class);
 		Tup3bR t2 = mock(Tup3bR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createByteBuffer(6)).thenCallRealMethod();
 		when(t1.toBuffer(any(ByteBuffer.class))).then(new Answer<ByteBuffer>() {
@@ -1951,7 +1951,7 @@ class BufferUtilsTest
 			}
 		});
 		
-		ByteBuffer b = BufferUtil.createFromAndFlipTuple3b(List.of(t1, t2));
+		ByteBuffer b = CoreBufferUtil.createFromAndFlipTuple3b(List.of(t1, t2));
 
 		assertEquals(6, b.capacity());
 		assertEquals(6, b.limit());
@@ -1965,7 +1965,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipTuple4b(Tup4bR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipTuple4b(Tup4bR[])}
 	 * correctly creates a {@link ByteBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -1976,7 +1976,7 @@ class BufferUtilsTest
 		Tup4bR t1 = mock(Tup4bR.class);
 		Tup4bR t2 = mock(Tup4bR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createByteBuffer(8)).thenCallRealMethod();
 		when(t1.toBuffer(any(ByteBuffer.class))).then(new Answer<ByteBuffer>() {
@@ -1994,7 +1994,7 @@ class BufferUtilsTest
 			}
 		});
 		
-		ByteBuffer b = BufferUtil.createFromAndFlipTuple4b(t1, t2);
+		ByteBuffer b = CoreBufferUtil.createFromAndFlipTuple4b(t1, t2);
 
 		assertEquals(8, b.capacity());
 		assertEquals(8, b.limit());
@@ -2008,7 +2008,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipTuple4b(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipTuple4b(List)}
 	 * correctly creates a {@link ByteBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -2019,7 +2019,7 @@ class BufferUtilsTest
 		Tup4bR t1 = mock(Tup4bR.class);
 		Tup4bR t2 = mock(Tup4bR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createByteBuffer(8)).thenCallRealMethod();
 		when(t1.toBuffer(any(ByteBuffer.class))).then(new Answer<ByteBuffer>() {
@@ -2037,7 +2037,7 @@ class BufferUtilsTest
 			}
 		});
 		
-		ByteBuffer b = BufferUtil.createFromAndFlipTuple4b(List.of(t1, t2));
+		ByteBuffer b = CoreBufferUtil.createFromAndFlipTuple4b(List.of(t1, t2));
 
 		assertEquals(8, b.capacity());
 		assertEquals(8, b.limit());
@@ -2051,7 +2051,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipTuple2s(Tup2sR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipTuple2s(Tup2sR[])}
 	 * correctly creates a {@link ShortBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -2062,7 +2062,7 @@ class BufferUtilsTest
 		Tup2sR t1 = mock(Tup2sR.class);
 		Tup2sR t2 = mock(Tup2sR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createShortBuffer(4)).thenCallRealMethod();
 		when(t1.toBuffer(any(ShortBuffer.class))).then(new Answer<ShortBuffer>() {
@@ -2080,7 +2080,7 @@ class BufferUtilsTest
 			}
 		});
 		
-		ShortBuffer b = BufferUtil.createFromAndFlipTuple2s(t1, t2);
+		ShortBuffer b = CoreBufferUtil.createFromAndFlipTuple2s(t1, t2);
 
 		assertEquals(4, b.capacity());
 		assertEquals(4, b.limit());
@@ -2094,7 +2094,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipTuple2s(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipTuple2s(List)}
 	 * correctly creates a {@link ShortBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -2105,7 +2105,7 @@ class BufferUtilsTest
 		Tup2sR t1 = mock(Tup2sR.class);
 		Tup2sR t2 = mock(Tup2sR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createShortBuffer(4)).thenCallRealMethod();
 		when(t1.toBuffer(any(ShortBuffer.class))).then(new Answer<ShortBuffer>() {
@@ -2123,7 +2123,7 @@ class BufferUtilsTest
 			}
 		});
 		
-		ShortBuffer b = BufferUtil.createFromAndFlipTuple2s(List.of(t1, t2));
+		ShortBuffer b = CoreBufferUtil.createFromAndFlipTuple2s(List.of(t1, t2));
 
 		assertEquals(4, b.capacity());
 		assertEquals(4, b.limit());
@@ -2137,7 +2137,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipTuple3s(Tup3sR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipTuple3s(Tup3sR[])}
 	 * correctly creates a {@link ShortBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -2148,7 +2148,7 @@ class BufferUtilsTest
 		Tup3sR t1 = mock(Tup3sR.class);
 		Tup3sR t2 = mock(Tup3sR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createShortBuffer(6)).thenCallRealMethod();
 		when(t1.toBuffer(any(ShortBuffer.class))).then(new Answer<ShortBuffer>() {
@@ -2166,7 +2166,7 @@ class BufferUtilsTest
 			}
 		});
 		
-		ShortBuffer b = BufferUtil.createFromAndFlipTuple3s(t1, t2);
+		ShortBuffer b = CoreBufferUtil.createFromAndFlipTuple3s(t1, t2);
 
 		assertEquals(6, b.capacity());
 		assertEquals(6, b.limit());
@@ -2180,7 +2180,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipTuple3s(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipTuple3s(List)}
 	 * correctly creates a {@link ShortBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -2191,7 +2191,7 @@ class BufferUtilsTest
 		Tup3sR t1 = mock(Tup3sR.class);
 		Tup3sR t2 = mock(Tup3sR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createShortBuffer(6)).thenCallRealMethod();
 		when(t1.toBuffer(any(ShortBuffer.class))).then(new Answer<ShortBuffer>() {
@@ -2209,7 +2209,7 @@ class BufferUtilsTest
 			}
 		});
 		
-		ShortBuffer b = BufferUtil.createFromAndFlipTuple3s(List.of(t1, t2));
+		ShortBuffer b = CoreBufferUtil.createFromAndFlipTuple3s(List.of(t1, t2));
 
 		assertEquals(6, b.capacity());
 		assertEquals(6, b.limit());
@@ -2223,7 +2223,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipTuple4s(Tup4sR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipTuple4s(Tup4sR[])}
 	 * correctly creates a {@link ShortBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -2234,7 +2234,7 @@ class BufferUtilsTest
 		Tup4sR t1 = mock(Tup4sR.class);
 		Tup4sR t2 = mock(Tup4sR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createShortBuffer(8)).thenCallRealMethod();
 		when(t1.toBuffer(any(ShortBuffer.class))).then(new Answer<ShortBuffer>() {
@@ -2252,7 +2252,7 @@ class BufferUtilsTest
 			}
 		});
 		
-		ShortBuffer b = BufferUtil.createFromAndFlipTuple4s(t1, t2);
+		ShortBuffer b = CoreBufferUtil.createFromAndFlipTuple4s(t1, t2);
 
 		assertEquals(8, b.capacity());
 		assertEquals(8, b.limit());
@@ -2266,7 +2266,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipTuple4s(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipTuple4s(List)}
 	 * correctly creates a {@link ShortBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -2277,7 +2277,7 @@ class BufferUtilsTest
 		Tup4sR t1 = mock(Tup4sR.class);
 		Tup4sR t2 = mock(Tup4sR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createShortBuffer(8)).thenCallRealMethod();
 		when(t1.toBuffer(any(ShortBuffer.class))).then(new Answer<ShortBuffer>() {
@@ -2295,7 +2295,7 @@ class BufferUtilsTest
 			}
 		});
 		
-		ShortBuffer b = BufferUtil.createFromAndFlipTuple4s(List.of(t1, t2));
+		ShortBuffer b = CoreBufferUtil.createFromAndFlipTuple4s(List.of(t1, t2));
 
 		assertEquals(8, b.capacity());
 		assertEquals(8, b.limit());
@@ -2309,7 +2309,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipTuple2i(Tup2iR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipTuple2i(Tup2iR[])}
 	 * correctly creates a {@link IntBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -2320,7 +2320,7 @@ class BufferUtilsTest
 		Tup2iR t1 = mock(Tup2iR.class);
 		Tup2iR t2 = mock(Tup2iR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createIntBuffer(4)).thenCallRealMethod();
 		when(t1.toBuffer(any(IntBuffer.class))).then(new Answer<IntBuffer>() {
@@ -2338,7 +2338,7 @@ class BufferUtilsTest
 			}
 		});
 		
-		IntBuffer b = BufferUtil.createFromAndFlipTuple2i(t1, t2);
+		IntBuffer b = CoreBufferUtil.createFromAndFlipTuple2i(t1, t2);
 
 		assertEquals(4, b.capacity());
 		assertEquals(4, b.limit());
@@ -2352,7 +2352,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipTuple2i(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipTuple2i(List)}
 	 * correctly creates a {@link IntBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -2363,7 +2363,7 @@ class BufferUtilsTest
 		Tup2iR t1 = mock(Tup2iR.class);
 		Tup2iR t2 = mock(Tup2iR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createIntBuffer(4)).thenCallRealMethod();
 		when(t1.toBuffer(any(IntBuffer.class))).then(new Answer<IntBuffer>() {
@@ -2381,7 +2381,7 @@ class BufferUtilsTest
 			}
 		});
 		
-		IntBuffer b = BufferUtil.createFromAndFlipTuple2i(List.of(t1, t2));
+		IntBuffer b = CoreBufferUtil.createFromAndFlipTuple2i(List.of(t1, t2));
 
 		assertEquals(4, b.capacity());
 		assertEquals(4, b.limit());
@@ -2395,7 +2395,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipTuple3i(Tup3iR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipTuple3i(Tup3iR[])}
 	 * correctly creates a {@link IntBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -2406,7 +2406,7 @@ class BufferUtilsTest
 		Tup3iR t1 = mock(Tup3iR.class);
 		Tup3iR t2 = mock(Tup3iR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createIntBuffer(6)).thenCallRealMethod();
 		when(t1.toBuffer(any(IntBuffer.class))).then(new Answer<IntBuffer>() {
@@ -2424,7 +2424,7 @@ class BufferUtilsTest
 			}
 		});
 		
-		IntBuffer b = BufferUtil.createFromAndFlipTuple3i(t1, t2);
+		IntBuffer b = CoreBufferUtil.createFromAndFlipTuple3i(t1, t2);
 
 		assertEquals(6, b.capacity());
 		assertEquals(6, b.limit());
@@ -2438,7 +2438,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipTuple3i(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipTuple3i(List)}
 	 * correctly creates a {@link IntBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -2449,7 +2449,7 @@ class BufferUtilsTest
 		Tup3iR t1 = mock(Tup3iR.class);
 		Tup3iR t2 = mock(Tup3iR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createIntBuffer(6)).thenCallRealMethod();
 		when(t1.toBuffer(any(IntBuffer.class))).then(new Answer<IntBuffer>() {
@@ -2467,7 +2467,7 @@ class BufferUtilsTest
 			}
 		});
 		
-		IntBuffer b = BufferUtil.createFromAndFlipTuple3i(List.of(t1, t2));
+		IntBuffer b = CoreBufferUtil.createFromAndFlipTuple3i(List.of(t1, t2));
 
 		assertEquals(6, b.capacity());
 		assertEquals(6, b.limit());
@@ -2481,7 +2481,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipTuple4i(Tup4iR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipTuple4i(Tup4iR[])}
 	 * correctly creates a {@link IntBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -2492,7 +2492,7 @@ class BufferUtilsTest
 		Tup4iR t1 = mock(Tup4iR.class);
 		Tup4iR t2 = mock(Tup4iR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createIntBuffer(8)).thenCallRealMethod();
 		when(t1.toBuffer(any(IntBuffer.class))).then(new Answer<IntBuffer>() {
@@ -2510,7 +2510,7 @@ class BufferUtilsTest
 			}
 		});
 		
-		IntBuffer b = BufferUtil.createFromAndFlipTuple4i(t1, t2);
+		IntBuffer b = CoreBufferUtil.createFromAndFlipTuple4i(t1, t2);
 
 		assertEquals(8, b.capacity());
 		assertEquals(8, b.limit());
@@ -2524,7 +2524,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipTuple4i(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipTuple4i(List)}
 	 * correctly creates a {@link IntBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -2535,7 +2535,7 @@ class BufferUtilsTest
 		Tup4iR t1 = mock(Tup4iR.class);
 		Tup4iR t2 = mock(Tup4iR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createIntBuffer(8)).thenCallRealMethod();
 		when(t1.toBuffer(any(IntBuffer.class))).then(new Answer<IntBuffer>() {
@@ -2553,7 +2553,7 @@ class BufferUtilsTest
 			}
 		});
 		
-		IntBuffer b = BufferUtil.createFromAndFlipTuple4i(List.of(t1, t2));
+		IntBuffer b = CoreBufferUtil.createFromAndFlipTuple4i(List.of(t1, t2));
 
 		assertEquals(8, b.capacity());
 		assertEquals(8, b.limit());
@@ -2567,7 +2567,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipTuple2l(Tup2lR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipTuple2l(Tup2lR[])}
 	 * correctly creates a {@link LongBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -2578,7 +2578,7 @@ class BufferUtilsTest
 		Tup2lR t1 = mock(Tup2lR.class);
 		Tup2lR t2 = mock(Tup2lR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createLongBuffer(4)).thenCallRealMethod();
 		when(t1.toBuffer(any(LongBuffer.class))).then(new Answer<LongBuffer>() {
@@ -2596,7 +2596,7 @@ class BufferUtilsTest
 			}
 		});
 		
-		LongBuffer b = BufferUtil.createFromAndFlipTuple2l(t1, t2);
+		LongBuffer b = CoreBufferUtil.createFromAndFlipTuple2l(t1, t2);
 
 		assertEquals(4, b.capacity());
 		assertEquals(4, b.limit());
@@ -2610,7 +2610,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipTuple2l(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipTuple2l(List)}
 	 * correctly creates a {@link LongBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -2621,7 +2621,7 @@ class BufferUtilsTest
 		Tup2lR t1 = mock(Tup2lR.class);
 		Tup2lR t2 = mock(Tup2lR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createLongBuffer(4)).thenCallRealMethod();
 		when(t1.toBuffer(any(LongBuffer.class))).then(new Answer<LongBuffer>() {
@@ -2639,7 +2639,7 @@ class BufferUtilsTest
 			}
 		});
 		
-		LongBuffer b = BufferUtil.createFromAndFlipTuple2l(List.of(t1, t2));
+		LongBuffer b = CoreBufferUtil.createFromAndFlipTuple2l(List.of(t1, t2));
 
 		assertEquals(4, b.capacity());
 		assertEquals(4, b.limit());
@@ -2653,7 +2653,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipTuple3l(Tup3lR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipTuple3l(Tup3lR[])}
 	 * correctly creates a {@link LongBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -2664,7 +2664,7 @@ class BufferUtilsTest
 		Tup3lR t1 = mock(Tup3lR.class);
 		Tup3lR t2 = mock(Tup3lR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createLongBuffer(6)).thenCallRealMethod();
 		when(t1.toBuffer(any(LongBuffer.class))).then(new Answer<LongBuffer>() {
@@ -2682,7 +2682,7 @@ class BufferUtilsTest
 			}
 		});
 		
-		LongBuffer b = BufferUtil.createFromAndFlipTuple3l(t1, t2);
+		LongBuffer b = CoreBufferUtil.createFromAndFlipTuple3l(t1, t2);
 
 		assertEquals(6, b.capacity());
 		assertEquals(6, b.limit());
@@ -2696,7 +2696,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipTuple3l(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipTuple3l(List)}
 	 * correctly creates a {@link LongBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -2707,7 +2707,7 @@ class BufferUtilsTest
 		Tup3lR t1 = mock(Tup3lR.class);
 		Tup3lR t2 = mock(Tup3lR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createLongBuffer(6)).thenCallRealMethod();
 		when(t1.toBuffer(any(LongBuffer.class))).then(new Answer<LongBuffer>() {
@@ -2725,7 +2725,7 @@ class BufferUtilsTest
 			}
 		});
 		
-		LongBuffer b = BufferUtil.createFromAndFlipTuple3l(List.of(t1, t2));
+		LongBuffer b = CoreBufferUtil.createFromAndFlipTuple3l(List.of(t1, t2));
 
 		assertEquals(6, b.capacity());
 		assertEquals(6, b.limit());
@@ -2739,7 +2739,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipTuple4l(Tup4lR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipTuple4l(Tup4lR[])}
 	 * correctly creates a {@link LongBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -2750,7 +2750,7 @@ class BufferUtilsTest
 		Tup4lR t1 = mock(Tup4lR.class);
 		Tup4lR t2 = mock(Tup4lR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createLongBuffer(8)).thenCallRealMethod();
 		when(t1.toBuffer(any(LongBuffer.class))).then(new Answer<LongBuffer>() {
@@ -2768,7 +2768,7 @@ class BufferUtilsTest
 			}
 		});
 		
-		LongBuffer b = BufferUtil.createFromAndFlipTuple4l(t1, t2);
+		LongBuffer b = CoreBufferUtil.createFromAndFlipTuple4l(t1, t2);
 
 		assertEquals(8, b.capacity());
 		assertEquals(8, b.limit());
@@ -2782,7 +2782,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipTuple4l(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipTuple4l(List)}
 	 * correctly creates a {@link LongBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -2793,7 +2793,7 @@ class BufferUtilsTest
 		Tup4lR t1 = mock(Tup4lR.class);
 		Tup4lR t2 = mock(Tup4lR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createLongBuffer(8)).thenCallRealMethod();
 		when(t1.toBuffer(any(LongBuffer.class))).then(new Answer<LongBuffer>() {
@@ -2811,7 +2811,7 @@ class BufferUtilsTest
 			}
 		});
 		
-		LongBuffer b = BufferUtil.createFromAndFlipTuple4l(List.of(t1, t2));
+		LongBuffer b = CoreBufferUtil.createFromAndFlipTuple4l(List.of(t1, t2));
 
 		assertEquals(8, b.capacity());
 		assertEquals(8, b.limit());
@@ -2825,7 +2825,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipTuple2f(Tup2fR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipTuple2f(Tup2fR[])}
 	 * correctly creates a {@link FloatBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -2836,7 +2836,7 @@ class BufferUtilsTest
 		Tup2fR t1 = mock(Tup2fR.class);
 		Tup2fR t2 = mock(Tup2fR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createFloatBuffer(4)).thenCallRealMethod();
 		when(t1.toBuffer(any(FloatBuffer.class))).then(new Answer<FloatBuffer>() {
@@ -2854,7 +2854,7 @@ class BufferUtilsTest
 			}
 		});
 		
-		FloatBuffer b = BufferUtil.createFromAndFlipTuple2f(t1, t2);
+		FloatBuffer b = CoreBufferUtil.createFromAndFlipTuple2f(t1, t2);
 
 		assertEquals(4, b.capacity());
 		assertEquals(4, b.limit());
@@ -2868,7 +2868,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipTuple2f(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipTuple2f(List)}
 	 * correctly creates a {@link FloatBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -2879,7 +2879,7 @@ class BufferUtilsTest
 		Tup2fR t1 = mock(Tup2fR.class);
 		Tup2fR t2 = mock(Tup2fR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createFloatBuffer(4)).thenCallRealMethod();
 		when(t1.toBuffer(any(FloatBuffer.class))).then(new Answer<FloatBuffer>() {
@@ -2897,7 +2897,7 @@ class BufferUtilsTest
 			}
 		});
 		
-		FloatBuffer b = BufferUtil.createFromAndFlipTuple2f(List.of(t1, t2));
+		FloatBuffer b = CoreBufferUtil.createFromAndFlipTuple2f(List.of(t1, t2));
 
 		assertEquals(4, b.capacity());
 		assertEquals(4, b.limit());
@@ -2911,7 +2911,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipTuple3f(Tup3fR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipTuple3f(Tup3fR[])}
 	 * correctly creates a {@link FloatBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -2922,7 +2922,7 @@ class BufferUtilsTest
 		Tup3fR t1 = mock(Tup3fR.class);
 		Tup3fR t2 = mock(Tup3fR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createFloatBuffer(6)).thenCallRealMethod();
 		when(t1.toBuffer(any(FloatBuffer.class))).then(new Answer<FloatBuffer>() {
@@ -2940,7 +2940,7 @@ class BufferUtilsTest
 			}
 		});
 		
-		FloatBuffer b = BufferUtil.createFromAndFlipTuple3f(t1, t2);
+		FloatBuffer b = CoreBufferUtil.createFromAndFlipTuple3f(t1, t2);
 
 		assertEquals(6, b.capacity());
 		assertEquals(6, b.limit());
@@ -2954,7 +2954,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipTuple3f(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipTuple3f(List)}
 	 * correctly creates a {@link FloatBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -2965,7 +2965,7 @@ class BufferUtilsTest
 		Tup3fR t1 = mock(Tup3fR.class);
 		Tup3fR t2 = mock(Tup3fR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createFloatBuffer(6)).thenCallRealMethod();
 		when(t1.toBuffer(any(FloatBuffer.class))).then(new Answer<FloatBuffer>() {
@@ -2983,7 +2983,7 @@ class BufferUtilsTest
 			}
 		});
 		
-		FloatBuffer b = BufferUtil.createFromAndFlipTuple3f(List.of(t1, t2));
+		FloatBuffer b = CoreBufferUtil.createFromAndFlipTuple3f(List.of(t1, t2));
 
 		assertEquals(6, b.capacity());
 		assertEquals(6, b.limit());
@@ -2997,7 +2997,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipTuple4f(Tup4fR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipTuple4f(Tup4fR[])}
 	 * correctly creates a {@link FloatBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -3008,7 +3008,7 @@ class BufferUtilsTest
 		Tup4fR t1 = mock(Tup4fR.class);
 		Tup4fR t2 = mock(Tup4fR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createFloatBuffer(8)).thenCallRealMethod();
 		when(t1.toBuffer(any(FloatBuffer.class))).then(new Answer<FloatBuffer>() {
@@ -3026,7 +3026,7 @@ class BufferUtilsTest
 			}
 		});
 		
-		FloatBuffer b = BufferUtil.createFromAndFlipTuple4f(t1, t2);
+		FloatBuffer b = CoreBufferUtil.createFromAndFlipTuple4f(t1, t2);
 
 		assertEquals(8, b.capacity());
 		assertEquals(8, b.limit());
@@ -3040,7 +3040,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipTuple4f(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipTuple4f(List)}
 	 * correctly creates a {@link FloatBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -3051,7 +3051,7 @@ class BufferUtilsTest
 		Tup4fR t1 = mock(Tup4fR.class);
 		Tup4fR t2 = mock(Tup4fR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createFloatBuffer(8)).thenCallRealMethod();
 		when(t1.toBuffer(any(FloatBuffer.class))).then(new Answer<FloatBuffer>() {
@@ -3069,7 +3069,7 @@ class BufferUtilsTest
 			}
 		});
 		
-		FloatBuffer b = BufferUtil.createFromAndFlipTuple4f(List.of(t1, t2));
+		FloatBuffer b = CoreBufferUtil.createFromAndFlipTuple4f(List.of(t1, t2));
 
 		assertEquals(8, b.capacity());
 		assertEquals(8, b.limit());
@@ -3083,7 +3083,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipTuple2d(Tup2dR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipTuple2d(Tup2dR[])}
 	 * correctly creates a {@link DoubleBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -3094,7 +3094,7 @@ class BufferUtilsTest
 		Tup2dR t1 = mock(Tup2dR.class);
 		Tup2dR t2 = mock(Tup2dR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createDoubleBuffer(4)).thenCallRealMethod();
 		when(t1.toBuffer(any(DoubleBuffer.class))).then(new Answer<DoubleBuffer>() {
@@ -3112,7 +3112,7 @@ class BufferUtilsTest
 			}
 		});
 		
-		DoubleBuffer b = BufferUtil.createFromAndFlipTuple2d(t1, t2);
+		DoubleBuffer b = CoreBufferUtil.createFromAndFlipTuple2d(t1, t2);
 
 		assertEquals(4, b.capacity());
 		assertEquals(4, b.limit());
@@ -3126,7 +3126,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipTuple2d(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipTuple2d(List)}
 	 * correctly creates a {@link DoubleBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -3137,7 +3137,7 @@ class BufferUtilsTest
 		Tup2dR t1 = mock(Tup2dR.class);
 		Tup2dR t2 = mock(Tup2dR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createDoubleBuffer(4)).thenCallRealMethod();
 		when(t1.toBuffer(any(DoubleBuffer.class))).then(new Answer<DoubleBuffer>() {
@@ -3155,7 +3155,7 @@ class BufferUtilsTest
 			}
 		});
 		
-		DoubleBuffer b = BufferUtil.createFromAndFlipTuple2d(List.of(t1, t2));
+		DoubleBuffer b = CoreBufferUtil.createFromAndFlipTuple2d(List.of(t1, t2));
 
 		assertEquals(4, b.capacity());
 		assertEquals(4, b.limit());
@@ -3169,7 +3169,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipTuple3d(Tup3dR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipTuple3d(Tup3dR[])}
 	 * correctly creates a {@link DoubleBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -3180,7 +3180,7 @@ class BufferUtilsTest
 		Tup3dR t1 = mock(Tup3dR.class);
 		Tup3dR t2 = mock(Tup3dR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createDoubleBuffer(6)).thenCallRealMethod();
 		when(t1.toBuffer(any(DoubleBuffer.class))).then(new Answer<DoubleBuffer>() {
@@ -3198,7 +3198,7 @@ class BufferUtilsTest
 			}
 		});
 		
-		DoubleBuffer b = BufferUtil.createFromAndFlipTuple3d(t1, t2);
+		DoubleBuffer b = CoreBufferUtil.createFromAndFlipTuple3d(t1, t2);
 
 		assertEquals(6, b.capacity());
 		assertEquals(6, b.limit());
@@ -3212,7 +3212,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipTuple3d(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipTuple3d(List)}
 	 * correctly creates a {@link DoubleBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -3223,7 +3223,7 @@ class BufferUtilsTest
 		Tup3dR t1 = mock(Tup3dR.class);
 		Tup3dR t2 = mock(Tup3dR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createDoubleBuffer(6)).thenCallRealMethod();
 		when(t1.toBuffer(any(DoubleBuffer.class))).then(new Answer<DoubleBuffer>() {
@@ -3241,7 +3241,7 @@ class BufferUtilsTest
 			}
 		});
 		
-		DoubleBuffer b = BufferUtil.createFromAndFlipTuple3d(List.of(t1, t2));
+		DoubleBuffer b = CoreBufferUtil.createFromAndFlipTuple3d(List.of(t1, t2));
 
 		assertEquals(6, b.capacity());
 		assertEquals(6, b.limit());
@@ -3255,7 +3255,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipTuple4d(Tup4dR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipTuple4d(Tup4dR[])}
 	 * correctly creates a {@link DoubleBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -3266,7 +3266,7 @@ class BufferUtilsTest
 		Tup4dR t1 = mock(Tup4dR.class);
 		Tup4dR t2 = mock(Tup4dR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createDoubleBuffer(8)).thenCallRealMethod();
 		when(t1.toBuffer(any(DoubleBuffer.class))).then(new Answer<DoubleBuffer>() {
@@ -3284,7 +3284,7 @@ class BufferUtilsTest
 			}
 		});
 		
-		DoubleBuffer b = BufferUtil.createFromAndFlipTuple4d(t1, t2);
+		DoubleBuffer b = CoreBufferUtil.createFromAndFlipTuple4d(t1, t2);
 
 		assertEquals(8, b.capacity());
 		assertEquals(8, b.limit());
@@ -3298,7 +3298,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#createFromAndFlipTuple4d(List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#createFromAndFlipTuple4d(List)}
 	 * correctly creates a {@link DoubleBuffer} via the factory and puts the entries in it.
 	 */
 	@Test
@@ -3309,7 +3309,7 @@ class BufferUtilsTest
 		Tup4dR t1 = mock(Tup4dR.class);
 		Tup4dR t2 = mock(Tup4dR.class);
 		
-		BufferUtil.BUFFER_FACTORY = factory;
+		CoreBufferUtil.BUFFER_FACTORY = factory;
 		
 		when(factory.createDoubleBuffer(8)).thenCallRealMethod();
 		when(t1.toBuffer(any(DoubleBuffer.class))).then(new Answer<DoubleBuffer>() {
@@ -3327,7 +3327,7 @@ class BufferUtilsTest
 			}
 		});
 		
-		DoubleBuffer b = BufferUtil.createFromAndFlipTuple4d(List.of(t1, t2));
+		DoubleBuffer b = CoreBufferUtil.createFromAndFlipTuple4d(List.of(t1, t2));
 
 		assertEquals(8, b.capacity());
 		assertEquals(8, b.limit());
@@ -3341,7 +3341,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putByte(ByteBuffer, byte[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putByte(ByteBuffer, byte[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -3351,7 +3351,7 @@ class BufferUtilsTest
 
 		when(b.put(bArray(1, 2, 3, 4))).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putByte(b, bArray(1, 2, 3, 4)));
+		assertEquals(b, CoreBufferUtil.putByte(b, bArray(1, 2, 3, 4)));
 
 		verify(b).put(bArray(1, 2, 3, 4));
 		
@@ -3359,7 +3359,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putByte(ByteBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putByte(ByteBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -3372,7 +3372,7 @@ class BufferUtilsTest
 		when(b.put(b(3))).thenReturn(b);
 		when(b.put(b(4))).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putByte(b, List.of(b(1), b(2), b(3), b(4))));
+		assertEquals(b, CoreBufferUtil.putByte(b, List.of(b(1), b(2), b(3), b(4))));
 
 		verify(b).put(b(1));
 		verify(b).put(b(2));
@@ -3383,7 +3383,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putShort(ShortBuffer, short[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putShort(ShortBuffer, short[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -3393,7 +3393,7 @@ class BufferUtilsTest
 
 		when(b.put(sArray(1, 2, 3, 4))).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putShort(b, sArray(1, 2, 3, 4)));
+		assertEquals(b, CoreBufferUtil.putShort(b, sArray(1, 2, 3, 4)));
 
 		verify(b).put(sArray(1, 2, 3, 4));
 		
@@ -3401,7 +3401,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putShort(ShortBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putShort(ShortBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -3414,7 +3414,7 @@ class BufferUtilsTest
 		when(b.put(s(3))).thenReturn(b);
 		when(b.put(s(4))).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putShort(b, List.of(s(1), s(2), s(3), s(4))));
+		assertEquals(b, CoreBufferUtil.putShort(b, List.of(s(1), s(2), s(3), s(4))));
 
 		verify(b).put(s(1));
 		verify(b).put(s(2));
@@ -3425,7 +3425,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putInt(IntBuffer, int[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putInt(IntBuffer, int[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -3435,7 +3435,7 @@ class BufferUtilsTest
 
 		when(b.put(new int[] {1, 2, 3, 4})).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putInt(b, new int[] {1, 2, 3, 4}));
+		assertEquals(b, CoreBufferUtil.putInt(b, new int[] {1, 2, 3, 4}));
 
 		verify(b).put(new int[] {1, 2, 3, 4});
 		
@@ -3443,7 +3443,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putInt(IntBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putInt(IntBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -3456,7 +3456,7 @@ class BufferUtilsTest
 		when(b.put(3)).thenReturn(b);
 		when(b.put(4)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putInt(b, List.of(1, 2, 3, 4)));
+		assertEquals(b, CoreBufferUtil.putInt(b, List.of(1, 2, 3, 4)));
 
 		verify(b).put(1);
 		verify(b).put(2);
@@ -3467,7 +3467,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putLong(LongBuffer, long[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putLong(LongBuffer, long[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -3477,7 +3477,7 @@ class BufferUtilsTest
 
 		when(b.put(new long[] {1l, 2l, 3l, 4l})).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putLong(b, new long[] {1l, 2l, 3l, 4l}));
+		assertEquals(b, CoreBufferUtil.putLong(b, new long[] {1l, 2l, 3l, 4l}));
 
 		verify(b).put(new long[] {1l, 2l, 3l, 4l});
 		
@@ -3485,7 +3485,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putLong(LongBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putLong(LongBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -3498,7 +3498,7 @@ class BufferUtilsTest
 		when(b.put(3l)).thenReturn(b);
 		when(b.put(4l)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putLong(b, List.of(1l, 2l, 3l, 4l)));
+		assertEquals(b, CoreBufferUtil.putLong(b, List.of(1l, 2l, 3l, 4l)));
 
 		verify(b).put(1l);
 		verify(b).put(2l);
@@ -3509,7 +3509,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putFloat(FloatBuffer, float[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putFloat(FloatBuffer, float[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -3519,7 +3519,7 @@ class BufferUtilsTest
 
 		when(b.put(new float[] {1.0f, 2.0f, 3.0f, 4.0f})).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putFloat(b, new float[] {1.0f, 2.0f, 3.0f, 4.0f}));
+		assertEquals(b, CoreBufferUtil.putFloat(b, new float[] {1.0f, 2.0f, 3.0f, 4.0f}));
 
 		verify(b).put(new float[] {1.0f, 2.0f, 3.0f, 4.0f});
 		
@@ -3527,7 +3527,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putFloat(FloatBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putFloat(FloatBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -3540,7 +3540,7 @@ class BufferUtilsTest
 		when(b.put(3.0f)).thenReturn(b);
 		when(b.put(4.0f)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putFloat(b, List.of(1.0f, 2.0f, 3.0f, 4.0f)));
+		assertEquals(b, CoreBufferUtil.putFloat(b, List.of(1.0f, 2.0f, 3.0f, 4.0f)));
 
 		verify(b).put(1.0f);
 		verify(b).put(2.0f);
@@ -3551,7 +3551,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putDouble(DoubleBuffer, double[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putDouble(DoubleBuffer, double[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -3561,7 +3561,7 @@ class BufferUtilsTest
 
 		when(b.put(new double[] {1.0, 2.0, 3.0, 4.0})).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putDouble(b, new double[] {1.0, 2.0, 3.0, 4.0}));
+		assertEquals(b, CoreBufferUtil.putDouble(b, new double[] {1.0, 2.0, 3.0, 4.0}));
 
 		verify(b).put(new double[] {1.0, 2.0, 3.0, 4.0});
 		
@@ -3569,7 +3569,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putDouble(DoubleBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putDouble(DoubleBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -3582,7 +3582,7 @@ class BufferUtilsTest
 		when(b.put(3.0)).thenReturn(b);
 		when(b.put(4.0)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putDouble(b, List.of(1.0, 2.0, 3.0, 4.0)));
+		assertEquals(b, CoreBufferUtil.putDouble(b, List.of(1.0, 2.0, 3.0, 4.0)));
 
 		verify(b).put(1.0);
 		verify(b).put(2.0);
@@ -3593,7 +3593,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putTuple2b(ByteBuffer, Tup2bR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putTuple2b(ByteBuffer, Tup2bR[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -3606,7 +3606,7 @@ class BufferUtilsTest
 		when(t1.toBuffer(b)).thenReturn(b);
 		when(t2.toBuffer(b)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putTuple2b(b, t1, t2));
+		assertEquals(b, CoreBufferUtil.putTuple2b(b, t1, t2));
 
 		verify(t1).toBuffer(b);
 		verify(t2).toBuffer(b);
@@ -3615,7 +3615,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putTuple2b(ByteBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putTuple2b(ByteBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -3628,7 +3628,7 @@ class BufferUtilsTest
 		when(t1.toBuffer(b)).thenReturn(b);
 		when(t2.toBuffer(b)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putTuple2b(b, List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.putTuple2b(b, List.of(t1, t2)));
 
 		verify(t1).toBuffer(b);
 		verify(t2).toBuffer(b);
@@ -3637,7 +3637,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putTuple3b(ByteBuffer, Tup3bR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putTuple3b(ByteBuffer, Tup3bR[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -3650,7 +3650,7 @@ class BufferUtilsTest
 		when(t1.toBuffer(b)).thenReturn(b);
 		when(t2.toBuffer(b)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putTuple3b(b, t1, t2));
+		assertEquals(b, CoreBufferUtil.putTuple3b(b, t1, t2));
 
 		verify(t1).toBuffer(b);
 		verify(t2).toBuffer(b);
@@ -3659,7 +3659,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putTuple3b(ByteBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putTuple3b(ByteBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -3672,7 +3672,7 @@ class BufferUtilsTest
 		when(t1.toBuffer(b)).thenReturn(b);
 		when(t2.toBuffer(b)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putTuple3b(b, List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.putTuple3b(b, List.of(t1, t2)));
 
 		verify(t1).toBuffer(b);
 		verify(t2).toBuffer(b);
@@ -3681,7 +3681,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putTuple4b(ByteBuffer, Tup4bR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putTuple4b(ByteBuffer, Tup4bR[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -3694,7 +3694,7 @@ class BufferUtilsTest
 		when(t1.toBuffer(b)).thenReturn(b);
 		when(t2.toBuffer(b)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putTuple4b(b, t1, t2));
+		assertEquals(b, CoreBufferUtil.putTuple4b(b, t1, t2));
 
 		verify(t1).toBuffer(b);
 		verify(t2).toBuffer(b);
@@ -3703,7 +3703,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putTuple4b(ByteBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putTuple4b(ByteBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -3716,7 +3716,7 @@ class BufferUtilsTest
 		when(t1.toBuffer(b)).thenReturn(b);
 		when(t2.toBuffer(b)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putTuple4b(b, List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.putTuple4b(b, List.of(t1, t2)));
 
 		verify(t1).toBuffer(b);
 		verify(t2).toBuffer(b);
@@ -3725,7 +3725,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putTuple2s(ShortBuffer, Tup2sR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putTuple2s(ShortBuffer, Tup2sR[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -3738,7 +3738,7 @@ class BufferUtilsTest
 		when(t1.toBuffer(b)).thenReturn(b);
 		when(t2.toBuffer(b)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putTuple2s(b, t1, t2));
+		assertEquals(b, CoreBufferUtil.putTuple2s(b, t1, t2));
 
 		verify(t1).toBuffer(b);
 		verify(t2).toBuffer(b);
@@ -3747,7 +3747,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putTuple2s(ShortBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putTuple2s(ShortBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -3760,7 +3760,7 @@ class BufferUtilsTest
 		when(t1.toBuffer(b)).thenReturn(b);
 		when(t2.toBuffer(b)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putTuple2s(b, List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.putTuple2s(b, List.of(t1, t2)));
 
 		verify(t1).toBuffer(b);
 		verify(t2).toBuffer(b);
@@ -3769,7 +3769,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putTuple3s(ShortBuffer, Tup3sR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putTuple3s(ShortBuffer, Tup3sR[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -3782,7 +3782,7 @@ class BufferUtilsTest
 		when(t1.toBuffer(b)).thenReturn(b);
 		when(t2.toBuffer(b)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putTuple3s(b, t1, t2));
+		assertEquals(b, CoreBufferUtil.putTuple3s(b, t1, t2));
 
 		verify(t1).toBuffer(b);
 		verify(t2).toBuffer(b);
@@ -3791,7 +3791,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putTuple3s(ShortBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putTuple3s(ShortBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -3804,7 +3804,7 @@ class BufferUtilsTest
 		when(t1.toBuffer(b)).thenReturn(b);
 		when(t2.toBuffer(b)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putTuple3s(b, List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.putTuple3s(b, List.of(t1, t2)));
 
 		verify(t1).toBuffer(b);
 		verify(t2).toBuffer(b);
@@ -3813,7 +3813,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putTuple4s(ShortBuffer, Tup4sR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putTuple4s(ShortBuffer, Tup4sR[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -3826,7 +3826,7 @@ class BufferUtilsTest
 		when(t1.toBuffer(b)).thenReturn(b);
 		when(t2.toBuffer(b)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putTuple4s(b, t1, t2));
+		assertEquals(b, CoreBufferUtil.putTuple4s(b, t1, t2));
 
 		verify(t1).toBuffer(b);
 		verify(t2).toBuffer(b);
@@ -3835,7 +3835,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putTuple4s(ShortBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putTuple4s(ShortBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -3848,7 +3848,7 @@ class BufferUtilsTest
 		when(t1.toBuffer(b)).thenReturn(b);
 		when(t2.toBuffer(b)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putTuple4s(b, List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.putTuple4s(b, List.of(t1, t2)));
 
 		verify(t1).toBuffer(b);
 		verify(t2).toBuffer(b);
@@ -3857,7 +3857,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putTuple2i(IntBuffer, Tup2iR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putTuple2i(IntBuffer, Tup2iR[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -3870,7 +3870,7 @@ class BufferUtilsTest
 		when(t1.toBuffer(b)).thenReturn(b);
 		when(t2.toBuffer(b)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putTuple2i(b, t1, t2));
+		assertEquals(b, CoreBufferUtil.putTuple2i(b, t1, t2));
 
 		verify(t1).toBuffer(b);
 		verify(t2).toBuffer(b);
@@ -3879,7 +3879,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putTuple2i(IntBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putTuple2i(IntBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -3892,7 +3892,7 @@ class BufferUtilsTest
 		when(t1.toBuffer(b)).thenReturn(b);
 		when(t2.toBuffer(b)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putTuple2i(b, List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.putTuple2i(b, List.of(t1, t2)));
 
 		verify(t1).toBuffer(b);
 		verify(t2).toBuffer(b);
@@ -3901,7 +3901,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putTuple3i(IntBuffer, Tup3iR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putTuple3i(IntBuffer, Tup3iR[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -3914,7 +3914,7 @@ class BufferUtilsTest
 		when(t1.toBuffer(b)).thenReturn(b);
 		when(t2.toBuffer(b)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putTuple3i(b, t1, t2));
+		assertEquals(b, CoreBufferUtil.putTuple3i(b, t1, t2));
 
 		verify(t1).toBuffer(b);
 		verify(t2).toBuffer(b);
@@ -3923,7 +3923,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putTuple3i(IntBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putTuple3i(IntBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -3936,7 +3936,7 @@ class BufferUtilsTest
 		when(t1.toBuffer(b)).thenReturn(b);
 		when(t2.toBuffer(b)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putTuple3i(b, List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.putTuple3i(b, List.of(t1, t2)));
 
 		verify(t1).toBuffer(b);
 		verify(t2).toBuffer(b);
@@ -3945,7 +3945,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putTuple4i(IntBuffer, Tup4iR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putTuple4i(IntBuffer, Tup4iR[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -3958,7 +3958,7 @@ class BufferUtilsTest
 		when(t1.toBuffer(b)).thenReturn(b);
 		when(t2.toBuffer(b)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putTuple4i(b, t1, t2));
+		assertEquals(b, CoreBufferUtil.putTuple4i(b, t1, t2));
 
 		verify(t1).toBuffer(b);
 		verify(t2).toBuffer(b);
@@ -3967,7 +3967,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putTuple4i(IntBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putTuple4i(IntBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -3980,7 +3980,7 @@ class BufferUtilsTest
 		when(t1.toBuffer(b)).thenReturn(b);
 		when(t2.toBuffer(b)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putTuple4i(b, List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.putTuple4i(b, List.of(t1, t2)));
 
 		verify(t1).toBuffer(b);
 		verify(t2).toBuffer(b);
@@ -3989,7 +3989,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putTuple2l(LongBuffer, Tup2lR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putTuple2l(LongBuffer, Tup2lR[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -4002,7 +4002,7 @@ class BufferUtilsTest
 		when(t1.toBuffer(b)).thenReturn(b);
 		when(t2.toBuffer(b)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putTuple2l(b, t1, t2));
+		assertEquals(b, CoreBufferUtil.putTuple2l(b, t1, t2));
 
 		verify(t1).toBuffer(b);
 		verify(t2).toBuffer(b);
@@ -4011,7 +4011,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putTuple2l(LongBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putTuple2l(LongBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -4024,7 +4024,7 @@ class BufferUtilsTest
 		when(t1.toBuffer(b)).thenReturn(b);
 		when(t2.toBuffer(b)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putTuple2l(b, List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.putTuple2l(b, List.of(t1, t2)));
 
 		verify(t1).toBuffer(b);
 		verify(t2).toBuffer(b);
@@ -4033,7 +4033,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putTuple3l(LongBuffer, Tup3lR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putTuple3l(LongBuffer, Tup3lR[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -4046,7 +4046,7 @@ class BufferUtilsTest
 		when(t1.toBuffer(b)).thenReturn(b);
 		when(t2.toBuffer(b)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putTuple3l(b, t1, t2));
+		assertEquals(b, CoreBufferUtil.putTuple3l(b, t1, t2));
 
 		verify(t1).toBuffer(b);
 		verify(t2).toBuffer(b);
@@ -4055,7 +4055,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putTuple3l(LongBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putTuple3l(LongBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -4068,7 +4068,7 @@ class BufferUtilsTest
 		when(t1.toBuffer(b)).thenReturn(b);
 		when(t2.toBuffer(b)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putTuple3l(b, List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.putTuple3l(b, List.of(t1, t2)));
 
 		verify(t1).toBuffer(b);
 		verify(t2).toBuffer(b);
@@ -4077,7 +4077,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putTuple4l(LongBuffer, Tup4lR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putTuple4l(LongBuffer, Tup4lR[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -4090,7 +4090,7 @@ class BufferUtilsTest
 		when(t1.toBuffer(b)).thenReturn(b);
 		when(t2.toBuffer(b)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putTuple4l(b, t1, t2));
+		assertEquals(b, CoreBufferUtil.putTuple4l(b, t1, t2));
 
 		verify(t1).toBuffer(b);
 		verify(t2).toBuffer(b);
@@ -4099,7 +4099,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putTuple4l(LongBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putTuple4l(LongBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -4112,7 +4112,7 @@ class BufferUtilsTest
 		when(t1.toBuffer(b)).thenReturn(b);
 		when(t2.toBuffer(b)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putTuple4l(b, List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.putTuple4l(b, List.of(t1, t2)));
 
 		verify(t1).toBuffer(b);
 		verify(t2).toBuffer(b);
@@ -4121,7 +4121,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putTuple2f(FloatBuffer, Tup2fR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putTuple2f(FloatBuffer, Tup2fR[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -4134,7 +4134,7 @@ class BufferUtilsTest
 		when(t1.toBuffer(b)).thenReturn(b);
 		when(t2.toBuffer(b)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putTuple2f(b, t1, t2));
+		assertEquals(b, CoreBufferUtil.putTuple2f(b, t1, t2));
 
 		verify(t1).toBuffer(b);
 		verify(t2).toBuffer(b);
@@ -4143,7 +4143,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putTuple2f(FloatBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putTuple2f(FloatBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -4156,7 +4156,7 @@ class BufferUtilsTest
 		when(t1.toBuffer(b)).thenReturn(b);
 		when(t2.toBuffer(b)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putTuple2f(b, List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.putTuple2f(b, List.of(t1, t2)));
 
 		verify(t1).toBuffer(b);
 		verify(t2).toBuffer(b);
@@ -4165,7 +4165,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putTuple3f(FloatBuffer, Tup3fR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putTuple3f(FloatBuffer, Tup3fR[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -4178,7 +4178,7 @@ class BufferUtilsTest
 		when(t1.toBuffer(b)).thenReturn(b);
 		when(t2.toBuffer(b)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putTuple3f(b, t1, t2));
+		assertEquals(b, CoreBufferUtil.putTuple3f(b, t1, t2));
 
 		verify(t1).toBuffer(b);
 		verify(t2).toBuffer(b);
@@ -4187,7 +4187,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putTuple3f(FloatBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putTuple3f(FloatBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -4200,7 +4200,7 @@ class BufferUtilsTest
 		when(t1.toBuffer(b)).thenReturn(b);
 		when(t2.toBuffer(b)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putTuple3f(b, List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.putTuple3f(b, List.of(t1, t2)));
 
 		verify(t1).toBuffer(b);
 		verify(t2).toBuffer(b);
@@ -4209,7 +4209,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putTuple4f(FloatBuffer, Tup4fR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putTuple4f(FloatBuffer, Tup4fR[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -4222,7 +4222,7 @@ class BufferUtilsTest
 		when(t1.toBuffer(b)).thenReturn(b);
 		when(t2.toBuffer(b)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putTuple4f(b, t1, t2));
+		assertEquals(b, CoreBufferUtil.putTuple4f(b, t1, t2));
 
 		verify(t1).toBuffer(b);
 		verify(t2).toBuffer(b);
@@ -4231,7 +4231,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putTuple4f(FloatBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putTuple4f(FloatBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -4244,7 +4244,7 @@ class BufferUtilsTest
 		when(t1.toBuffer(b)).thenReturn(b);
 		when(t2.toBuffer(b)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putTuple4f(b, List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.putTuple4f(b, List.of(t1, t2)));
 
 		verify(t1).toBuffer(b);
 		verify(t2).toBuffer(b);
@@ -4253,7 +4253,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putTuple2d(DoubleBuffer, Tup2dR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putTuple2d(DoubleBuffer, Tup2dR[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -4266,7 +4266,7 @@ class BufferUtilsTest
 		when(t1.toBuffer(b)).thenReturn(b);
 		when(t2.toBuffer(b)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putTuple2d(b, t1, t2));
+		assertEquals(b, CoreBufferUtil.putTuple2d(b, t1, t2));
 
 		verify(t1).toBuffer(b);
 		verify(t2).toBuffer(b);
@@ -4275,7 +4275,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putTuple2d(DoubleBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putTuple2d(DoubleBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -4288,7 +4288,7 @@ class BufferUtilsTest
 		when(t1.toBuffer(b)).thenReturn(b);
 		when(t2.toBuffer(b)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putTuple2d(b, List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.putTuple2d(b, List.of(t1, t2)));
 
 		verify(t1).toBuffer(b);
 		verify(t2).toBuffer(b);
@@ -4297,7 +4297,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putTuple3d(DoubleBuffer, Tup3dR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putTuple3d(DoubleBuffer, Tup3dR[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -4310,7 +4310,7 @@ class BufferUtilsTest
 		when(t1.toBuffer(b)).thenReturn(b);
 		when(t2.toBuffer(b)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putTuple3d(b, t1, t2));
+		assertEquals(b, CoreBufferUtil.putTuple3d(b, t1, t2));
 
 		verify(t1).toBuffer(b);
 		verify(t2).toBuffer(b);
@@ -4319,7 +4319,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putTuple3d(DoubleBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putTuple3d(DoubleBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -4332,7 +4332,7 @@ class BufferUtilsTest
 		when(t1.toBuffer(b)).thenReturn(b);
 		when(t2.toBuffer(b)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putTuple3d(b, List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.putTuple3d(b, List.of(t1, t2)));
 
 		verify(t1).toBuffer(b);
 		verify(t2).toBuffer(b);
@@ -4341,7 +4341,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putTuple4d(DoubleBuffer, Tup4dR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putTuple4d(DoubleBuffer, Tup4dR[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -4354,7 +4354,7 @@ class BufferUtilsTest
 		when(t1.toBuffer(b)).thenReturn(b);
 		when(t2.toBuffer(b)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putTuple4d(b, t1, t2));
+		assertEquals(b, CoreBufferUtil.putTuple4d(b, t1, t2));
 
 		verify(t1).toBuffer(b);
 		verify(t2).toBuffer(b);
@@ -4363,7 +4363,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putTuple4d(DoubleBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putTuple4d(DoubleBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -4376,7 +4376,7 @@ class BufferUtilsTest
 		when(t1.toBuffer(b)).thenReturn(b);
 		when(t2.toBuffer(b)).thenReturn(b);
 		
-		assertEquals(b, BufferUtil.putTuple4d(b, List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.putTuple4d(b, List.of(t1, t2)));
 
 		verify(t1).toBuffer(b);
 		verify(t2).toBuffer(b);
@@ -4385,7 +4385,7 @@ class BufferUtilsTest
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipByte(ByteBuffer, byte[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipByte(ByteBuffer, byte[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -4395,14 +4395,14 @@ class BufferUtilsTest
 		
 		ByteBuffer b = factory.createByteBuffer(8);
 		
-		assertEquals(b, BufferUtil.putAndFlipByte(b, bArray(1, 2, 3, 4)));
+		assertEquals(b, CoreBufferUtil.putAndFlipByte(b, bArray(1, 2, 3, 4)));
 
 		assertEquals(4, b.limit());
 		assertEquals(0, b.position());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipByte(ByteBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipByte(ByteBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -4412,14 +4412,14 @@ class BufferUtilsTest
 		
 		ByteBuffer b = factory.createByteBuffer(8);
 		
-		assertEquals(b, BufferUtil.putAndFlipByte(b, List.of(b(1), b(2), b(3), b(4))));
+		assertEquals(b, CoreBufferUtil.putAndFlipByte(b, List.of(b(1), b(2), b(3), b(4))));
 
 		assertEquals(4, b.limit());
 		assertEquals(0, b.position());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipShort(ShortBuffer, short[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipShort(ShortBuffer, short[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -4429,14 +4429,14 @@ class BufferUtilsTest
 		
 		ShortBuffer b = factory.createShortBuffer(8);
 		
-		assertEquals(b, BufferUtil.putAndFlipShort(b, sArray(1, 2, 3, 4)));
+		assertEquals(b, CoreBufferUtil.putAndFlipShort(b, sArray(1, 2, 3, 4)));
 
 		assertEquals(4, b.limit());
 		assertEquals(0, b.position());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipShort(ShortBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipShort(ShortBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -4446,14 +4446,14 @@ class BufferUtilsTest
 		
 		ShortBuffer b = factory.createShortBuffer(8);
 		
-		assertEquals(b, BufferUtil.putAndFlipShort(b, List.of(s(1), s(2), s(3), s(4))));
+		assertEquals(b, CoreBufferUtil.putAndFlipShort(b, List.of(s(1), s(2), s(3), s(4))));
 
 		assertEquals(4, b.limit());
 		assertEquals(0, b.position());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipInt(IntBuffer, int[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipInt(IntBuffer, int[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -4463,14 +4463,14 @@ class BufferUtilsTest
 		
 		IntBuffer b = factory.createIntBuffer(8);
 		
-		assertEquals(b, BufferUtil.putAndFlipInt(b, 1, 2, 3, 4));
+		assertEquals(b, CoreBufferUtil.putAndFlipInt(b, 1, 2, 3, 4));
 
 		assertEquals(4, b.limit());
 		assertEquals(0, b.position());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipInt(IntBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipInt(IntBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -4480,14 +4480,14 @@ class BufferUtilsTest
 		
 		IntBuffer b = factory.createIntBuffer(8);
 		
-		assertEquals(b, BufferUtil.putAndFlipInt(b, List.of(1, 2, 3, 4)));
+		assertEquals(b, CoreBufferUtil.putAndFlipInt(b, List.of(1, 2, 3, 4)));
 
 		assertEquals(4, b.limit());
 		assertEquals(0, b.position());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipLong(LongBuffer, long[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipLong(LongBuffer, long[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -4497,14 +4497,14 @@ class BufferUtilsTest
 		
 		LongBuffer b = factory.createLongBuffer(8);
 		
-		assertEquals(b, BufferUtil.putAndFlipLong(b, 1l, 2l, 3l, 4l));
+		assertEquals(b, CoreBufferUtil.putAndFlipLong(b, 1l, 2l, 3l, 4l));
 
 		assertEquals(4, b.limit());
 		assertEquals(0, b.position());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipLong(LongBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipLong(LongBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -4514,14 +4514,14 @@ class BufferUtilsTest
 		
 		LongBuffer b = factory.createLongBuffer(8);
 		
-		assertEquals(b, BufferUtil.putAndFlipLong(b, List.of(1l, 2l, 3l, 4l)));
+		assertEquals(b, CoreBufferUtil.putAndFlipLong(b, List.of(1l, 2l, 3l, 4l)));
 
 		assertEquals(4, b.limit());
 		assertEquals(0, b.position());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipFloat(FloatBuffer, float[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipFloat(FloatBuffer, float[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -4531,14 +4531,14 @@ class BufferUtilsTest
 		
 		FloatBuffer b = factory.createFloatBuffer(8);
 		
-		assertEquals(b, BufferUtil.putAndFlipFloat(b, 1.0f, 2.0f, 3.0f, 4.0f));
+		assertEquals(b, CoreBufferUtil.putAndFlipFloat(b, 1.0f, 2.0f, 3.0f, 4.0f));
 
 		assertEquals(4, b.limit());
 		assertEquals(0, b.position());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipFloat(FloatBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipFloat(FloatBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -4548,14 +4548,14 @@ class BufferUtilsTest
 		
 		FloatBuffer b = factory.createFloatBuffer(8);
 		
-		assertEquals(b, BufferUtil.putAndFlipFloat(b, List.of(1.0f, 2.0f, 3.0f, 4.0f)));
+		assertEquals(b, CoreBufferUtil.putAndFlipFloat(b, List.of(1.0f, 2.0f, 3.0f, 4.0f)));
 
 		assertEquals(4, b.limit());
 		assertEquals(0, b.position());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipDouble(DoubleBuffer, double[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipDouble(DoubleBuffer, double[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -4565,14 +4565,14 @@ class BufferUtilsTest
 		
 		DoubleBuffer b = factory.createDoubleBuffer(8);
 		
-		assertEquals(b, BufferUtil.putAndFlipDouble(b, 1.0, 2.0, 3.0, 4.0));
+		assertEquals(b, CoreBufferUtil.putAndFlipDouble(b, 1.0, 2.0, 3.0, 4.0));
 
 		assertEquals(4, b.limit());
 		assertEquals(0, b.position());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipDouble(DoubleBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipDouble(DoubleBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -4582,14 +4582,14 @@ class BufferUtilsTest
 		
 		DoubleBuffer b = factory.createDoubleBuffer(8);
 		
-		assertEquals(b, BufferUtil.putAndFlipDouble(b, List.of(1.0, 2.0, 3.0, 4.0)));
+		assertEquals(b, CoreBufferUtil.putAndFlipDouble(b, List.of(1.0, 2.0, 3.0, 4.0)));
 
 		assertEquals(4, b.limit());
 		assertEquals(0, b.position());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipTuple2b(ByteBuffer, Tup2bR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipTuple2b(ByteBuffer, Tup2bR[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -4617,14 +4617,14 @@ class BufferUtilsTest
 			}
 		});
 		
-		assertEquals(b, BufferUtil.putAndFlipTuple2b(b, t1, t2));
+		assertEquals(b, CoreBufferUtil.putAndFlipTuple2b(b, t1, t2));
 
 		assertEquals(4, b.limit());
 		assertEquals(0, b.position());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipTuple2b(ByteBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipTuple2b(ByteBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -4652,14 +4652,14 @@ class BufferUtilsTest
 			}
 		});
 		
-		assertEquals(b, BufferUtil.putAndFlipTuple2b(b, List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.putAndFlipTuple2b(b, List.of(t1, t2)));
 
 		assertEquals(4, b.limit());
 		assertEquals(0, b.position());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipTuple3b(ByteBuffer, Tup3bR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipTuple3b(ByteBuffer, Tup3bR[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -4687,14 +4687,14 @@ class BufferUtilsTest
 			}
 		});
 		
-		assertEquals(b, BufferUtil.putAndFlipTuple3b(b, t1, t2));
+		assertEquals(b, CoreBufferUtil.putAndFlipTuple3b(b, t1, t2));
 
 		assertEquals(6, b.limit());
 		assertEquals(0, b.position());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipTuple3b(ByteBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipTuple3b(ByteBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -4722,14 +4722,14 @@ class BufferUtilsTest
 			}
 		});
 		
-		assertEquals(b, BufferUtil.putAndFlipTuple3b(b, List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.putAndFlipTuple3b(b, List.of(t1, t2)));
 
 		assertEquals(6, b.limit());
 		assertEquals(0, b.position());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipTuple4b(ByteBuffer, Tup4bR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipTuple4b(ByteBuffer, Tup4bR[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -4757,14 +4757,14 @@ class BufferUtilsTest
 			}
 		});
 		
-		assertEquals(b, BufferUtil.putAndFlipTuple4b(b, t1, t2));
+		assertEquals(b, CoreBufferUtil.putAndFlipTuple4b(b, t1, t2));
 
 		assertEquals(8, b.limit());
 		assertEquals(0, b.position());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipTuple4b(ByteBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipTuple4b(ByteBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -4792,14 +4792,14 @@ class BufferUtilsTest
 			}
 		});
 		
-		assertEquals(b, BufferUtil.putAndFlipTuple4b(b, List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.putAndFlipTuple4b(b, List.of(t1, t2)));
 
 		assertEquals(8, b.limit());
 		assertEquals(0, b.position());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipTuple2s(ShortBuffer, Tup2sR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipTuple2s(ShortBuffer, Tup2sR[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -4827,14 +4827,14 @@ class BufferUtilsTest
 			}
 		});
 		
-		assertEquals(b, BufferUtil.putAndFlipTuple2s(b, t1, t2));
+		assertEquals(b, CoreBufferUtil.putAndFlipTuple2s(b, t1, t2));
 
 		assertEquals(4, b.limit());
 		assertEquals(0, b.position());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipTuple2s(ShortBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipTuple2s(ShortBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -4862,14 +4862,14 @@ class BufferUtilsTest
 			}
 		});
 		
-		assertEquals(b, BufferUtil.putAndFlipTuple2s(b, List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.putAndFlipTuple2s(b, List.of(t1, t2)));
 
 		assertEquals(4, b.limit());
 		assertEquals(0, b.position());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipTuple3s(ShortBuffer, Tup3sR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipTuple3s(ShortBuffer, Tup3sR[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -4897,14 +4897,14 @@ class BufferUtilsTest
 			}
 		});
 		
-		assertEquals(b, BufferUtil.putAndFlipTuple3s(b, t1, t2));
+		assertEquals(b, CoreBufferUtil.putAndFlipTuple3s(b, t1, t2));
 
 		assertEquals(6, b.limit());
 		assertEquals(0, b.position());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipTuple3s(ShortBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipTuple3s(ShortBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -4932,14 +4932,14 @@ class BufferUtilsTest
 			}
 		});
 		
-		assertEquals(b, BufferUtil.putAndFlipTuple3s(b, List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.putAndFlipTuple3s(b, List.of(t1, t2)));
 
 		assertEquals(6, b.limit());
 		assertEquals(0, b.position());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipTuple4s(ShortBuffer, Tup4sR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipTuple4s(ShortBuffer, Tup4sR[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -4967,14 +4967,14 @@ class BufferUtilsTest
 			}
 		});
 		
-		assertEquals(b, BufferUtil.putAndFlipTuple4s(b, t1, t2));
+		assertEquals(b, CoreBufferUtil.putAndFlipTuple4s(b, t1, t2));
 
 		assertEquals(8, b.limit());
 		assertEquals(0, b.position());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipTuple4s(ShortBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipTuple4s(ShortBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -5002,14 +5002,14 @@ class BufferUtilsTest
 			}
 		});
 		
-		assertEquals(b, BufferUtil.putAndFlipTuple4s(b, List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.putAndFlipTuple4s(b, List.of(t1, t2)));
 
 		assertEquals(8, b.limit());
 		assertEquals(0, b.position());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipTuple2i(IntBuffer, Tup2iR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipTuple2i(IntBuffer, Tup2iR[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -5037,14 +5037,14 @@ class BufferUtilsTest
 			}
 		});
 		
-		assertEquals(b, BufferUtil.putAndFlipTuple2i(b, t1, t2));
+		assertEquals(b, CoreBufferUtil.putAndFlipTuple2i(b, t1, t2));
 
 		assertEquals(4, b.limit());
 		assertEquals(0, b.position());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipTuple2i(IntBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipTuple2i(IntBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -5072,14 +5072,14 @@ class BufferUtilsTest
 			}
 		});
 		
-		assertEquals(b, BufferUtil.putAndFlipTuple2i(b, List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.putAndFlipTuple2i(b, List.of(t1, t2)));
 
 		assertEquals(4, b.limit());
 		assertEquals(0, b.position());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipTuple3i(IntBuffer, Tup3iR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipTuple3i(IntBuffer, Tup3iR[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -5107,14 +5107,14 @@ class BufferUtilsTest
 			}
 		});
 		
-		assertEquals(b, BufferUtil.putAndFlipTuple3i(b, t1, t2));
+		assertEquals(b, CoreBufferUtil.putAndFlipTuple3i(b, t1, t2));
 
 		assertEquals(6, b.limit());
 		assertEquals(0, b.position());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipTuple3i(IntBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipTuple3i(IntBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -5142,14 +5142,14 @@ class BufferUtilsTest
 			}
 		});
 		
-		assertEquals(b, BufferUtil.putAndFlipTuple3i(b, List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.putAndFlipTuple3i(b, List.of(t1, t2)));
 
 		assertEquals(6, b.limit());
 		assertEquals(0, b.position());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipTuple4i(IntBuffer, Tup4iR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipTuple4i(IntBuffer, Tup4iR[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -5177,14 +5177,14 @@ class BufferUtilsTest
 			}
 		});
 		
-		assertEquals(b, BufferUtil.putAndFlipTuple4i(b, t1, t2));
+		assertEquals(b, CoreBufferUtil.putAndFlipTuple4i(b, t1, t2));
 
 		assertEquals(8, b.limit());
 		assertEquals(0, b.position());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipTuple4i(IntBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipTuple4i(IntBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -5212,14 +5212,14 @@ class BufferUtilsTest
 			}
 		});
 		
-		assertEquals(b, BufferUtil.putAndFlipTuple4i(b, List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.putAndFlipTuple4i(b, List.of(t1, t2)));
 
 		assertEquals(8, b.limit());
 		assertEquals(0, b.position());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipTuple2l(LongBuffer, Tup2lR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipTuple2l(LongBuffer, Tup2lR[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -5247,14 +5247,14 @@ class BufferUtilsTest
 			}
 		});
 		
-		assertEquals(b, BufferUtil.putAndFlipTuple2l(b, t1, t2));
+		assertEquals(b, CoreBufferUtil.putAndFlipTuple2l(b, t1, t2));
 
 		assertEquals(4, b.limit());
 		assertEquals(0, b.position());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipTuple2l(LongBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipTuple2l(LongBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -5282,14 +5282,14 @@ class BufferUtilsTest
 			}
 		});
 		
-		assertEquals(b, BufferUtil.putAndFlipTuple2l(b, List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.putAndFlipTuple2l(b, List.of(t1, t2)));
 
 		assertEquals(4, b.limit());
 		assertEquals(0, b.position());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipTuple3l(LongBuffer, Tup3lR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipTuple3l(LongBuffer, Tup3lR[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -5317,14 +5317,14 @@ class BufferUtilsTest
 			}
 		});
 		
-		assertEquals(b, BufferUtil.putAndFlipTuple3l(b, t1, t2));
+		assertEquals(b, CoreBufferUtil.putAndFlipTuple3l(b, t1, t2));
 
 		assertEquals(6, b.limit());
 		assertEquals(0, b.position());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipTuple3l(LongBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipTuple3l(LongBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -5352,14 +5352,14 @@ class BufferUtilsTest
 			}
 		});
 		
-		assertEquals(b, BufferUtil.putAndFlipTuple3l(b, List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.putAndFlipTuple3l(b, List.of(t1, t2)));
 
 		assertEquals(6, b.limit());
 		assertEquals(0, b.position());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipTuple4l(LongBuffer, Tup4lR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipTuple4l(LongBuffer, Tup4lR[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -5387,14 +5387,14 @@ class BufferUtilsTest
 			}
 		});
 		
-		assertEquals(b, BufferUtil.putAndFlipTuple4l(b, t1, t2));
+		assertEquals(b, CoreBufferUtil.putAndFlipTuple4l(b, t1, t2));
 
 		assertEquals(8, b.limit());
 		assertEquals(0, b.position());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipTuple4l(LongBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipTuple4l(LongBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -5422,14 +5422,14 @@ class BufferUtilsTest
 			}
 		});
 		
-		assertEquals(b, BufferUtil.putAndFlipTuple4l(b, List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.putAndFlipTuple4l(b, List.of(t1, t2)));
 
 		assertEquals(8, b.limit());
 		assertEquals(0, b.position());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipTuple2f(FloatBuffer, Tup2fR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipTuple2f(FloatBuffer, Tup2fR[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -5457,14 +5457,14 @@ class BufferUtilsTest
 			}
 		});
 		
-		assertEquals(b, BufferUtil.putAndFlipTuple2f(b, t1, t2));
+		assertEquals(b, CoreBufferUtil.putAndFlipTuple2f(b, t1, t2));
 
 		assertEquals(4, b.limit());
 		assertEquals(0, b.position());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipTuple2f(FloatBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipTuple2f(FloatBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -5492,14 +5492,14 @@ class BufferUtilsTest
 			}
 		});
 		
-		assertEquals(b, BufferUtil.putAndFlipTuple2f(b, List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.putAndFlipTuple2f(b, List.of(t1, t2)));
 
 		assertEquals(4, b.limit());
 		assertEquals(0, b.position());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipTuple3f(FloatBuffer, Tup3fR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipTuple3f(FloatBuffer, Tup3fR[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -5527,14 +5527,14 @@ class BufferUtilsTest
 			}
 		});
 		
-		assertEquals(b, BufferUtil.putAndFlipTuple3f(b, t1, t2));
+		assertEquals(b, CoreBufferUtil.putAndFlipTuple3f(b, t1, t2));
 
 		assertEquals(6, b.limit());
 		assertEquals(0, b.position());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipTuple3f(FloatBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipTuple3f(FloatBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -5562,14 +5562,14 @@ class BufferUtilsTest
 			}
 		});
 		
-		assertEquals(b, BufferUtil.putAndFlipTuple3f(b, List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.putAndFlipTuple3f(b, List.of(t1, t2)));
 
 		assertEquals(6, b.limit());
 		assertEquals(0, b.position());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipTuple4f(FloatBuffer, Tup4fR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipTuple4f(FloatBuffer, Tup4fR[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -5597,14 +5597,14 @@ class BufferUtilsTest
 			}
 		});
 		
-		assertEquals(b, BufferUtil.putAndFlipTuple4f(b, t1, t2));
+		assertEquals(b, CoreBufferUtil.putAndFlipTuple4f(b, t1, t2));
 
 		assertEquals(8, b.limit());
 		assertEquals(0, b.position());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipTuple4f(FloatBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipTuple4f(FloatBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -5632,14 +5632,14 @@ class BufferUtilsTest
 			}
 		});
 		
-		assertEquals(b, BufferUtil.putAndFlipTuple4f(b, List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.putAndFlipTuple4f(b, List.of(t1, t2)));
 
 		assertEquals(8, b.limit());
 		assertEquals(0, b.position());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipTuple2d(DoubleBuffer, Tup2dR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipTuple2d(DoubleBuffer, Tup2dR[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -5667,14 +5667,14 @@ class BufferUtilsTest
 			}
 		});
 		
-		assertEquals(b, BufferUtil.putAndFlipTuple2d(b, t1, t2));
+		assertEquals(b, CoreBufferUtil.putAndFlipTuple2d(b, t1, t2));
 
 		assertEquals(4, b.limit());
 		assertEquals(0, b.position());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipTuple2d(DoubleBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipTuple2d(DoubleBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -5702,14 +5702,14 @@ class BufferUtilsTest
 			}
 		});
 		
-		assertEquals(b, BufferUtil.putAndFlipTuple2d(b, List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.putAndFlipTuple2d(b, List.of(t1, t2)));
 
 		assertEquals(4, b.limit());
 		assertEquals(0, b.position());
 	}
 
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipTuple3d(DoubleBuffer, Tup3dR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipTuple3d(DoubleBuffer, Tup3dR[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -5737,14 +5737,14 @@ class BufferUtilsTest
 			}
 		});
 		
-		assertEquals(b, BufferUtil.putAndFlipTuple3d(b, t1, t2));
+		assertEquals(b, CoreBufferUtil.putAndFlipTuple3d(b, t1, t2));
 
 		assertEquals(6, b.limit());
 		assertEquals(0, b.position());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipTuple3d(DoubleBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipTuple3d(DoubleBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -5772,14 +5772,14 @@ class BufferUtilsTest
 			}
 		});
 		
-		assertEquals(b, BufferUtil.putAndFlipTuple3d(b, List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.putAndFlipTuple3d(b, List.of(t1, t2)));
 
 		assertEquals(6, b.limit());
 		assertEquals(0, b.position());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipTuple4d(DoubleBuffer, Tup4dR[])}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipTuple4d(DoubleBuffer, Tup4dR[])}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -5807,14 +5807,14 @@ class BufferUtilsTest
 			}
 		});
 		
-		assertEquals(b, BufferUtil.putAndFlipTuple4d(b, t1, t2));
+		assertEquals(b, CoreBufferUtil.putAndFlipTuple4d(b, t1, t2));
 
 		assertEquals(8, b.limit());
 		assertEquals(0, b.position());
 	}
 	
 	/**
-	 * This test ensures, that the function {@link BufferUtil#putAndFlipTuple4d(DoubleBuffer, List)}
+	 * This test ensures, that the function {@link CoreBufferUtil#putAndFlipTuple4d(DoubleBuffer, List)}
 	 * correctly puts the entries in the buffer.
 	 */
 	@Test
@@ -5842,7 +5842,7 @@ class BufferUtilsTest
 			}
 		});
 		
-		assertEquals(b, BufferUtil.putAndFlipTuple4d(b, List.of(t1, t2)));
+		assertEquals(b, CoreBufferUtil.putAndFlipTuple4d(b, List.of(t1, t2)));
 
 		assertEquals(8, b.limit());
 		assertEquals(0, b.position());
