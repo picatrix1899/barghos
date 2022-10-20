@@ -1,7 +1,7 @@
 package org.barghos.math.api.model;
 
+import org.barghos.core.api.documentation.ExtractionParam;
 import org.barghos.core.api.tuple3.Tup3fC;
-import org.barghos.core.api.util.ExtractParam;
 import org.barghos.math.api.vector.Vec3fC;
 
 public interface System3fR extends AxisSystem3fR
@@ -16,8 +16,8 @@ public interface System3fR extends AxisSystem3fR
 	Vec3fC getOrigin();
 	
 	// MISSING_DOC
-	<T extends Tup3fC> T getOrigin(@ExtractParam T res);
+	<T extends Tup3fC> T getOrigin(@ExtractionParam T res);
 	
 	// MISSING_DOC
-	float[] getOrigin(@ExtractParam float[] res);
+	float[] getOrigin(@ExtractionParam float[] res);
 }

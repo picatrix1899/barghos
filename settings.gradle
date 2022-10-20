@@ -1,3 +1,8 @@
 rootProject.name = 'barghos'
 
-include('barghos-testutils', 'barghos-core-api', 'barghos-core', 'barghos-math-api', 'barghos-math')
+include('barghos-documentation')
+include('barghos-testutils')
+include('barghos-tuple-api', 'barghos-tuple')
+include('barghos-core-api', 'barghos-core')
+include('barghos-event')
+include('barghos-math-api', 'barghos-math', 'barghos-math-simd')

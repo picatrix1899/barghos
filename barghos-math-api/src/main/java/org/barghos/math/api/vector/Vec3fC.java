@@ -1,12 +1,8 @@
 package org.barghos.math.api.vector;
 
-import static org.barghos.core.api.tuple.TupleConstants.COMP_X;
-import static org.barghos.core.api.tuple.TupleConstants.COMP_Y;
-import static org.barghos.core.api.tuple.TupleConstants.COMP_Z;
+import static org.barghos.core.api.tuple.TupleConstants.*;
 
-import org.barghos.core.api.tuple.TupdR;
-import org.barghos.core.api.tuple.TupfR;
-import org.barghos.core.api.tuple3.Tup3fR;
+import org.barghos.core.api.documentation.MinLength;
 import org.barghos.core.api.tuple3.Tup3fC;
 import org.barghos.math.api.matrix.Mat4fR;
 import org.barghos.math.api.model.AxisAngle3fR;
@@ -29,7 +25,6 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 * 
 	 * @return The current vector.
 	 */
-	@Override
 	Vec3fC setX(float x);
 	
 	/**
@@ -39,7 +34,6 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 * 
 	 * @return The current vector.
 	 */
-	@Override
 	Vec3fC setY(float y);
 	
 	/**
@@ -49,20 +43,18 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 * 
 	 * @return The current vector.
 	 */
-	@Override
 	Vec3fC setZ(float z);
 	
 	/**
-	 * Adopts the values from an existing instance of {@link Tup3fR}.
+	 * Adopts the values from an existing instance of {@link Vec3fR}.
 	 * 
-	 * @param t An existing implementation of {@link Tup3fR} to adopt the values from.
+	 * @param v An existing implementation of {@link Vec3fR} to adopt the values from.
 	 * 
 	 * @return The current vector.
 	 */
-	@Override
-	default Vec3fC set(Tup3fR t)
+	default Vec3fC set(SimpleVec3fR v)
 	{
-		return set(t.getX(), t.getY(), t.getZ());
+		return set(v.getX(), v.getY(), v.getZ());
 	}
 	
 	/**
@@ -76,7 +68,6 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 * 
 	 * @return The current vector.
 	 */
-	@Override
 	default Vec3fC set(float value)
 	{
 		return set(value, value, value);
@@ -91,8 +82,8 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 * 
 	 * @return The current vector.
 	 */
-	@Override
 	Vec3fC set(float x, float y, float z);
+	
 	
 	/**
 	 * Sets the value of the component at the given index.
@@ -102,101 +93,61 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 * 
 	 * @return The current vector.
 	 */
-	@Override
 	Vec3fC setByIndex(int index, float value);
 	
 	/**
 	 * Sets the components to the corresponding components.
 	 * 
-	 * @param values The values to store in the components of the vector.
+	 * @param values The values to store in the components of the vector. Minimum Length: 3.
 	 * 
 	 * @return The current vector.
 	 */
-	@Override
-	default Vec3fC setArray(float... values)
+	default Vec3fC setArray(@MinLength(3) float... values)
 	{
 		return set(values[0], values[1], values[2]);
 	}
 	
-	/**
-	 * Adopts the values from an existing instance of {@link TupdR}.
-	 * 
-	 * @param t An existing implementation of {@link TupdR} to adopt the values from.
-	 * 
-	 * @return The current vector.
-	 */
-	@Override
-	default Vec3fC set(TupfR t)
-	{
-		return setArray(t.toArray());
-	}
-	
 	/** {@inheritDoc} */
 	@Override
-	Vec3fC clone();
+	Vec3fC copy();
 	
 	/**
-	 * Adds the given tuple {@code (t)} to the current vector.
-	 * This operation alters the current vector.
+	 * Adds the given vector {@code (v2)} to the current vector.
 	 * 
 	 * <p>
 	 * Operation:<br>
-	 * {@code v + t}
+	 * {@code v + v2}
 	 * 
-	 * @param t The tuple to add to the current vector.
+	 * @param v2 The tuple to add to the current vector.
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec3fC add(Tup3fR t)
+	default Vec3fC add(SimpleVec3fR v2)
 	{
-		return add(t.getX(), t.getY(), t.getZ());
+		return add(v2.getX(), v2.getY(), v2.getZ());
 	}
 	
 	/**
-	 * Adds the given array {@code (a)} to the current vector.
+	 * Adds the given vector {@code (v2[0], v2[1], v2[2])} to the current vector.
 	 * The components for x, y and z are expected to be on the indices 0, 1 and 2. Therefore the array
 	 * has to contain at least 3 elements.
-	 * This operation alters the current vector.
 	 * 
 	 * <p>
 	 * Operation:<br>
-	 * {@code v + (a[0], a[1], a[2])}
+	 * {@code v + (v2[0], v2[1], v2[2])}
 	 * 
-	 * @param a The array to add to the current vector. Minimum legth: 3.
-	 * 
-	 * @return The current vector.
-	 */
-	default Vec3fC add(float[] a)
-	{
-		return add(a[COMP_X], a[COMP_Y], a[COMP_Z]);
-	}
-	
-	/**
-	 * Adds the given array {@code (a)} to the current vector.
-	 * The indices for the components are given by the parameters. Therefore the array
-	 * has to contain at least 1 element.
-	 * This operation alters the current vector.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code v + (a[indexX], a[indexY], a[indexZ])}
-	 * 
-	 * @param indexX The index in the array for the x component.
-	 * @param indexY The index in the array for the y component.
-	 * @param indexZ The index in the array for the z component.
-	 * @param a The array to add to the current vector. Minimum length: 1.
+	 * @param v2 The tuple to add to the current vector. Minimum Length: 3.
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec3fC add(int indexX, int indexY, int indexZ, float[] a)
+	default Vec3fC add(@MinLength(3) float[] v2)
 	{
-		return add(a[indexX], a[indexY], a[indexZ]);
+		return add(v2[0], v2[1], v2[2]);
 	}
 	
 	/**
 	 * Adds the given value {@code (value)} to the current vector.
 	 * The value is added to every component.
-	 * This operation alters the current vector.
 	 * 
 	 * <p>
 	 * Operation:<br>
@@ -212,83 +163,57 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	}
 	
 	/**
-	 * Adds the given tuple {@code (x, y, z)} to the current vector.
-	 * This operation alters the current vector.
+	 * Adds the given vector {@code (v2x, v2y, v2z)} to the current vector.
 	 * 
 	 * <p>
 	 * Operation:<br>
-	 * {@code v + (x, y, z)}
+	 * {@code v + (v2x, v2y, v2z)}
 	 * 
-	 * @param x The value of the x component to add to the current vector.
-	 * @param y The value of the y component to add to the current vector.
-	 * @param z The value of the z component to add to the current vector.
+	 * @param v2x The value of the x component to add to the current vector.
+	 * @param v2y The value of the y component to add to the current vector.
+	 * @param v2z The value of the z component to add to the current vector.
 	 * 
 	 * @return The current vector.
 	 */
-	Vec3fC add(float x, float y, float z);
+	Vec3fC add(float v2x, float v2y, float v2z);
 	
 	/**
-	 * Subtracts the given tuple {@code (t)} from the current vector.
-	 * This operation alters the current vector.
+	 * Subtracts the given vector {@code (v2)} from the current vector.
 	 * 
 	 * <p>
 	 * Operation:<br>
-	 * {@code v - t}
+	 * {@code v - v2}
 	 * 
-	 * @param t The tuple to subtract from the current vector.
+	 * @param v2 The vector to subtract from the current vector.
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec3fC sub(Tup3fR t)
+	default Vec3fC sub(SimpleVec3fR v2)
 	{
-		return sub(t.getX(), t.getY(), t.getZ());
+		return sub(v2.getX(), v2.getY(), v2.getZ());
 	}
 	
 	/**
-	 * Subtracts the given array {@code (a)} from the current vector.
+	 * Subtracts the given vector {@code (v2[0], v2[1], v2[2])} from the current vector.
 	 * The components for x, y and z are expected to be on the indices 0, 1 and 2. Therefore the array
 	 * has to contain at least 3 elements.
-	 * This operation alters the current vector.
 	 * 
 	 * <p>
 	 * Operation:<br>
-	 * {@code v - (a[0], a[1], a[2])}
+	 * {@code v - (v2[0], v2[1], v2[2])}
 	 * 
-	 * @param a The array to subtract from the current vector. Minimum length: 3.
-	 * 
-	 * @return The current vector.
-	 */
-	default Vec3fC sub(float[] a)
-	{
-		return sub(a[COMP_X], a[COMP_Y], a[COMP_Z]);
-	}
-	
-	/**
-	 * Subtracts the given array {@code (a)} from the current vector.
-	 * The indices for the components are given by the parameters. Therefore the array
-	 * has to contain at least 1 element.
-	 * This operation alters the current vector.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code v - (a[indexX], a[indexY], a[indexZ])}
-	 * 
-	 * @param indexX The index in the array for the x component.
-	 * @param indexY The index in the array for the y component.
-	 * @param indexZ The index in the array for the z component.
-	 * @param a The array to subtract from the current vector. Minimum length: 1.
+	 * @param v2 The vector to subtract from the current vector. Minimum length: 3.
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec3fC sub(int indexX, int indexY, int indexZ, float[] a)
+	default Vec3fC sub(@MinLength(3) float[] v2)
 	{
-		return sub(a[indexX], a[indexY], a[indexZ]);
+		return sub(v2[0], v2[1], v2[2]);
 	}
 	
 	/**
 	 * Subtracts the given value {@code (value)} from the current vector.
 	 * The value is subtracted from every component.
-	 * This operation alters the current vector.
 	 * 
 	 * <p>
 	 * Operation:<br>
@@ -304,77 +229,54 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	}
 	
 	/**
-	 * Subtracts the given tuple {@code (x, y, z)} from the current vector.
-	 * This operation alters the current vector.
+	 * Subtracts the given vector {@code (v2x, v2y, v2z)} from the current vector.
 	 * 
 	 * <p>
 	 * Operation:<br>
-	 * {@code v - (x, y, z)}
+	 * {@code v - (v2x, v2y, v2z)}
 	 * 
-	 * @param x The value of the x component to subtract from the current vector.
-	 * @param y The value of the y component to subtract from the current vector.
-	 * @param z The value of the z component to subtract from the current vector.
+	 * @param v2x The value of the x component to subtract from the current vector.
+	 * @param v2y The value of the y component to subtract from the current vector.
+	 * @param v2z The value of the z component to subtract from the current vector.
 	 * 
 	 * @return The current vector.
 	 */
-	Vec3fC sub(float x, float y, float z);
+	Vec3fC sub(float v2x, float v2y, float v2z);
 	
 	/**
-	 * Subtracts the current vector from the given tuple {@code (t)}.
+	 * Subtracts the current vector from the given tuple {@code (v2)}.
 	 * This operation alters the current vector.
 	 * 
 	 * <p>
 	 * Operation:<br>
-	 * {@code t - v}
+	 * {@code v2 - v}
 	 * 
-	 * @param t The tuple the current vector is subtracted from.
+	 * @param v2 The tuple the current vector is subtracted from.
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec3fC revSub(Tup3fR t)
+	default Vec3fC revSub(SimpleVec3fR v2)
 	{
-		return revSub(t.getX(), t.getY(), t.getZ());
+		return revSub(v2.getX(), v2.getY(), v2.getZ());
 	}
 	
 	/**
-	 * Subtracts the current vector from the given array {@code (a)}.
+	 * Subtracts the current vector from the given array {@code (v2)}.
 	 * The components for x, y and z are expected to be on the indices 0, 1 and 2. Therefore the array
 	 * has to contain at least 3 elements.
 	 * This operation alters the current vector.
 	 * 
 	 * <p>
 	 * Operation:<br>
-	 * {@code (a[0], a[1], a[2]) - v}
+	 * {@code (v2[0], v2[1], v2[2]) - v}
 	 * 
-	 * @param a The array the current vector is subtracted from. Minimum length: 3.
-	 * 
-	 * @return The current vector.
-	 */
-	default Vec3fC revSub(float[] a)
-	{
-		return revSub(a[COMP_X], a[COMP_Y], a[COMP_Z]);
-	}
-	
-	/**
-	 * Subtracts the current vector from the given array {@code (a)}.
-	 * The indices for the components are given by the parameters. Therefore the array
-	 * has to contain at least 1 element.
-	 * This operation alters the current vector.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code (a[indexX], a[indexY], a[indexZ]) - v}
-	 * 
-	 * @param indexX The index in the array for the x component.
-	 * @param indexY The index in the array for the y component.
-	 * @param indexZ The index in the array for the z component.
-	 * @param a The array the current vector is subtracted from. Minimum length: 1.
+	 * @param v2 The array the current vector is subtracted from. Minimum length: 3.
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec3fC revSub(int indexX, int indexY, int indexZ, float[] a)
+	default Vec3fC revSub(@MinLength(3) float[] v2)
 	{
-		return revSub(a[indexX], a[indexY], a[indexZ]);
+		return revSub(v2[0], v2[1], v2[2]);
 	}
 	
 	/**
@@ -396,77 +298,55 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	}
 		
 	/**
-	 * Subtracts the current vector from the given tuple {@code (x, y, z)}.
+	 * Subtracts the current vector from the given tuple {@code (v2x, v2y, v2z)}.
 	 * This operation alters the current vector.
 	 * 
 	 * <p>
 	 * Operation:<br>
-	 * {@code (x, y, z) - v}
+	 * {@code (v2x, v2y, v2z) - v}
 	 * 
-	 * @param x The value of the x component the current vector is subtracted from.
-	 * @param y The value of the y component the current vector is subtracted from.
-	 * @param z The value of the z component the current vector is subtracted from.
+	 * @param v2x The value of the x component the current vector is subtracted from.
+	 * @param v2y The value of the y component the current vector is subtracted from.
+	 * @param v2z The value of the z component the current vector is subtracted from.
 	 * 
 	 * @return The current vector.
 	 */
-	Vec3fC revSub(float x, float y, float z);
+	Vec3fC revSub(float v2x, float v2y, float v2z);
 	
 	/**
-	 * Multiplies the current vector with the given tuple {@code (t)}.
+	 * Multiplies the current vector with the given tuple {@code (v2)}.
 	 * This operation alters the current vector.
 	 * 
 	 * <p>
 	 * Operation:<br>
-	 * {@code v * t}
+	 * {@code v * v2}
 	 * 
-	 * @param t The tuple to multiply the current vector with.
+	 * @param v2 The tuple to multiply the current vector with.
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec3fC mul(Tup3fR t)
+	default Vec3fC mul(SimpleVec3fR v2)
 	{
-		return mul(t.getX(), t.getY(), t.getZ());
+		return mul(v2.getX(), v2.getY(), v2.getZ());
 	}
 	
 	/**
-	 * Multiplies the current vector with the given array {@code (a)}.
+	 * Multiplies the current vector with the given array {@code (v2)}.
 	 * The components for x, y and z are expected to be on the indices 0, 1 and 2. Therefore the array
 	 * has to contain at least 3 elements.
 	 * This operation alters the current vector.
 	 * 
 	 * <p>
 	 * Operation:<br>
-	 * {@code v * (a[0], a[1], a[2])}
+	 * {@code v * (v2[0], v2[1], v2[2])}
 	 * 
-	 * @param a The array to multiply the current vector with. Minimum length: 3.
-	 * 
-	 * @return The current vector.
-	 */
-	default Vec3fC mul(float[] a)
-	{
-		return mul(a[COMP_X], a[COMP_Y], a[COMP_Z]);
-	}
-	
-	/**
-	 * Multiplies the current vector with the given array {@code (a)}.
-	 * The indices for the components are given by the parameters. Therefore the array
-	 * has to contain at least 1 element.
-	 * This operation alters the current vector.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code v * (a[indexX], a[indexY], a[indexZ])}
-	 * 
-	 * @param indexX The index in the array for the x component.
-	 * @param indexY The index in the array for the y component.
-	 * @param indexZ The index in the array for the z component.
-	 * @param a The array to multiply the current vector with. Minimum length: 1.
+	 * @param v2 The array to multiply the current vector with. Minimum length: 3.
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec3fC mul(int indexX, int indexY, int indexZ, float[] a)
+	default Vec3fC mul(@MinLength(3) float[] v2)
 	{
-		return mul(a[indexX], a[indexY], a[indexZ]);
+		return mul(v2[0], v2[1], v2[2]);
 	}
 	
 	/**
@@ -488,77 +368,55 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	}
 	
 	/**
-	 * Multiplies the current vector with the given tuple {@code (x, y, z)}.
+	 * Multiplies the current vector with the given tuple {@code (v2x, v2y, v2z)}.
 	 * This operation alters the current vector.
 	 * 
 	 * <p>
 	 * Operation:<br>
-	 * {@code v * (x, y, z)}
+	 * {@code v * (v2x, v2y, v2z)}
 	 * 
-	 * @param x The value of the x component to multiply the current vector with.
-	 * @param y The value of the y component to multiply the current vector with.
-	 * @param z The value of the z component to multiply the current vector with.
+	 * @param v2x The value of the x component to multiply the current vector with.
+	 * @param v2y The value of the y component to multiply the current vector with.
+	 * @param v2z The value of the z component to multiply the current vector with.
 	 * 
 	 * @return The current vector.
 	 */
-	Vec3fC mul(float x, float y, float z);
+	Vec3fC mul(float v2x, float v2y, float v2z);
 	
 	/**
-	 * Divides the current vector by the given tuple {@code (t)}.
+	 * Divides the current vector by the given tuple {@code (v2)}.
 	 * This operation alters the current vector.
 	 * 
 	 * <p>
 	 * Operation:<br>
-	 * {@code v / t}
+	 * {@code v / v2}
 	 * 
-	 * @param t The tuple to divide the current vector by.
+	 * @param v2 The tuple to divide the current vector by.
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec3fC div(Tup3fR t)
+	default Vec3fC div(SimpleVec3fR v2)
 	{
-		return div(t.getX(), t.getY(), t.getZ());
+		return div(v2.getX(), v2.getY(), v2.getZ());
 	}
 	
 	/**
-	 * Divides the current vector by the given array {@code (a)}.
+	 * Divides the current vector by the given array {@code (v2)}.
 	 * The components for x, y and z are expected to be on the indices 0, 1 and 2. Therefore the array
 	 * has to contain at least 3 elements.
 	 * This operation alters the current vector.
 	 * 
 	 * <p>
 	 * Operation:<br>
-	 * {@code v / (a[0], a[1], a[2])}
+	 * {@code v / (v2[0], v2[1], v2[2])}
 	 * 
-	 * @param a The array to divide the current vector by. Minimum length: 3.
-	 * 
-	 * @return The current vector.
-	 */
-	default Vec3fC div(float[] a)
-	{
-		return div(a[COMP_X], a[COMP_Y], a[COMP_Z]);
-	}
-	
-	/**
-	 * Divides the current vector by the given array {@code (a)}.
-	 * The indices for the components are given by the parameters. Therefore the array
-	 * has to contain at least 1 element.
-	 * This operation alters the current vector.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code v / (a[indexX], a[indexY], a[indexZ])}
-	 * 
-	 * @param indexX The index in the array for the x component.
-	 * @param indexY The index in the array for the y component.
-	 * @param indexZ The index in the array for the z component.
-	 * @param a The array to divide the current vector by. Minimum length: 1.
+	 * @param v2 The array to divide the current vector by. Minimum length: 3.
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec3fC div(int indexX, int indexY, int indexZ, float[] a)
+	default Vec3fC div(@MinLength(3) float[] v2)
 	{
-		return div(a[indexX], a[indexY], a[indexZ]);
+		return div(v2[0], v2[1], v2[2]);
 	}
 	
 	/**
@@ -596,61 +454,39 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	Vec3fC div(float x, float y, float z);
 
 	/**
-	 * Divides the given tuple {@code (t)} by the current vector.
+	 * Divides the given tuple {@code (v2)} by the current vector.
 	 * This operation alters the current vector.
 	 * 
 	 * <p>
 	 * Operation:<br>
-	 * {@code t / v}
+	 * {@code v2 / v}
 	 * 
-	 * @param t The tuple to divide by the current vector.
+	 * @param v2 The tuple to divide by the current vector.
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec3fC revDiv(Tup3fR t)
+	default Vec3fC revDiv(SimpleVec3fR v2)
 	{
-		return revDiv(t.getX(), t.getY(), t.getZ());
+		return revDiv(v2.getX(), v2.getY(), v2.getZ());
 	}
 
 	/**
-	 * Divides the given array {@code (a)} by the current vector.
+	 * Divides the given array {@code (v2)} by the current vector.
 	 * The components for x, y and z are expected to be on the indices 0, 1 and 2. Therefore the array
 	 * has to contain at least 3 elements.
 	 * This operation alters the current vector.
 	 * 
 	 * <p>
 	 * Operation:<br>
-	 * {@code (a[0], a[1], a[2]) / v}
+	 * {@code (v2[0], v2[1], v2[2]) / v}
 	 * 
-	 * @param a The array to divide by the current vector. Minimum length: 3.
-	 * 
-	 * @return The current vector.
-	 */
-	default Vec3fC revDiv(float[] a)
-	{
-		return revDiv(a[COMP_X], a[COMP_Y], a[COMP_Z]);
-	}
-	
-	/**
-	 * Divides the given array {@code (a)} by the current vector.
-	 * The indices for the components are given by the parameters. Therefore the array
-	 * has to contain at least 1 element.
-	 * This operation alters the current vector.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code (a[indexX], a[indexY], a[indexZ]) / v}
-	 * 
-	 * @param indexX The index in the array for the x component.
-	 * @param indexY The index in the array for the y component.
-	 * @param indexZ The index in the array for the z component.
-	 * @param a The array to divide by the current vector. Minimum length: 1.
+	 * @param v2 The array to divide by the current vector. Minimum length: 3.
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec3fC revDiv(int indexX, int indexY, int indexZ, float[] a)
+	default Vec3fC revDiv(@MinLength(3) float[] v2)
 	{
-		return revDiv(a[indexX], a[indexY], a[indexZ]);
+		return revDiv(v2[0], v2[1], v2[2]);
 	}
 	
 	/**
@@ -672,21 +508,268 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	}
 
 	/**
-	 * Divides the given tuple {@code (x, y, z)} by the current vector.
+	 * Divides the given tuple {@code (v2x, v2y, v2z)} by the current vector.
 	 * This operation alters the current vector.
 	 * 
 	 * <p>
 	 * Operation:<br>
-	 * {@code (x, y, z) / v}
+	 * {@code (v2x, v2y, 2vz) / v}
 	 * 
-	 * @param x The value of the x component to divide by the current vector.
-	 * @param y The value of the y component to divide by the current vector.
-	 * @param z The value of the z component to divide by the current vector.
+	 * @param v2x The value of the x component to divide by the current vector.
+	 * @param v2y The value of the y component to divide by the current vector.
+	 * @param v2z The value of the z component to divide by the current vector.
 	 * 
 	 * @return The current vector.
 	 */
-	Vec3fC revDiv(float x, float y, float z);
+	Vec3fC revDiv(float v2x, float v2y, float v2z);
 
+	/**
+	 * Calculates the half vector from the vector to the given vector {@code (v2)} and returns the result
+	 * as a new instance.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code ( v2 - v ) / 2}
+	 * 
+	 * @param v2 The second vector.
+	 * 
+	 * @return A new instance of the vector with the result.
+	 */
+	default Vec3fR halfVector(SimpleVec3fR v2)
+	{
+		return halfVector(v2.getX(), v2.getY(), v2.getZ());
+	}
+	
+	/**
+	 * Calculates the half vector from the vector to the given vector {@code (v2[0], v2[1], v2[2])} and returns the result
+	 * as a new instance.
+	 * The x, y and z components are expected to be on the indices 0, 1 and 2. Therefore the arrays
+	 * have to contain at least 3 entries.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code ( (v2[0], v2[1], v2[2]) - v ) / 2}
+	 * 
+	 * @param v2 The second vector. Minimum legth: 3.
+	 * 
+	 * @return A new instance of the vector with the result.
+	 */
+	default Vec3fR halfVector(@MinLength(3) float[] v2)
+	{
+		return halfVector(v2[0], v2[1], v2[2]);
+	}
+	
+	/**
+	 * Calculates the half vector from the vector to the given vector {@code (v2x, v2y, v2z)} and returns the result
+	 * as a new instance.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code ( (v2x, v2y, v2z) - v1 ) / 2}
+	 * 
+	 * @param v2x The value of the x component of the second vector.
+	 * @param v2y The value of the y component of the second vector.
+	 * @param v2z The value of the z component of the second vector.
+	 * 
+	 * @return A new instance of the vector with the result.
+	 */
+	Vec3fR halfVector(float v2x, float v2y, float v2z);
+	
+	/**
+	 * Calculates the point that lies in the middle of a vector spanning between the vector and the given vector {@code (v2)}
+	 * and returns the result as a new instance.
+	 * The x, y and z components are expected to be on the indices 0, 1 and 2. Therefore the array
+	 * has to contain at least 3 entries.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code ( v + v2 ) / 2}
+	 * 
+	 * @param v2 The second vector.
+	 * 
+	 * @return A new instance of the vector with the result.
+	 */
+	default Vec3fR halfPoint(SimpleVec3fR v2)
+	{
+		return halfPoint(v2.getX(), v2.getY(), v2.getZ());
+	}
+	
+	/**
+	 * Calculates the point that lies in the middle of a vector spanning between the vector and the given vector {@code (v2[0], v2[1], v2[2])}
+	 * and returns the result as a new instance.
+	 * The x, y and z components are expected to be on the indices 0, 1 and 2. Therefore the array
+	 * has to contain at least 3 entries.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code ( v + (v2[0], v2[1], v2[2]) ) / 2}
+	 * 
+	 * @param v2 The second vector. Minimum legth: 3.
+	 * 
+	 * @return A new instance of the vector with the result.
+	 */
+	default Vec3fR halfPoint(@MinLength(3) float[] v2)
+	{
+		return halfPoint(v2[0], v2[1], v2[2]);
+	}
+	
+	/**
+	 * Calculates the point that lies in the middle of a vector spanning between the vector and the given vector {@code (v2x, v2y, v2z)}
+	 * and returns the result as a new instance.
+	 * The x, y and z components are expected to be on the indices 0, 1 and 2. Therefore the array
+	 * has to contain at least 3 entries.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code ( v + (v2x, v2y, v2z) ) / 2}
+	 * 
+	 * @param v2x The value of the x component of the second vector.
+	 * @param v2y The value of the y component of the second vector.
+	 * @param v2z The value of the z component of the second vector.
+	 * 
+	 * @return A new instance of the vector with the result.
+	 */
+	Vec3fR halfPoint(float v2x, float v2y, float v2z);
+
+	/**
+	 * Calculates a vector consisting of the per component minimum between the vector and the given vector {@code (v2)} and
+	 * returns the result as a new instance.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code min( v, v2 )}
+	 * 
+	 * @param v2 The second vector.
+	 * 
+	 * @return A new instance of the vector with the result.
+	 */
+	default Vec3fR minVector(SimpleVec3fR v2)
+	{
+		return minVector(v2.getX(), v2.getY(), v2.getZ());
+	}
+	
+	/**
+	 * Calculates a vector consisting of the per component minimum between the vector and the given vector {@code (value, value, value)} and
+	 * returns the result as a new instance.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code min( v, (value, value, value) )}
+	 * 
+	 * @param value The value of all components of the second vector.
+	 * 
+	 * @return A new instance of the vector with the result.
+	 */
+	default Vec3fR minVector(float value)
+	{
+		return minVector(value, value, value);
+	}
+	
+	/**
+	 * Calculates a vector consisting of the per component minimum between the vector and the given vector {@code (v2[0], v2[1], v2[2])} and
+	 * returns the result as a new instance.
+	 * The x, y and z components are expected to be on the indices 0, 1 and 2. Therefore the array
+	 * has to contain at least 3 entries.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code min( v, (v2[0], v2[1], v2[2]) )}
+	 * 
+	 * @param v2 The second vector. Minimum legth: 3.
+	 * 
+	 * @return A new instance of the vector with the result.
+	 */
+	default Vec3fR minVector(@MinLength(3) float[] v2)
+	{
+		return minVector(v2[0], v2[1], v2[2]);
+	}
+	
+	/**
+	 * Calculates a vector consisting of the per component minimum between the vector and the given vector {@code (v2x, v2y, v2z)} and
+	 * returns the result as a new instance.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code min( v, (v2x, v2y, v2z) )}
+	 * 
+	 * @param v2x The value of the x component of the second vector.
+	 * @param v2y The value of the y component of the second vector.
+	 * @param v2z The value of the z component of the second vector.
+	 * 
+	 * @return A new instance of the vector with the result.
+	 */
+	Vec3fR minVector(float v2x, float v2y, float v2z);
+	
+	/**
+	 * Calculates a vector consisting of the per component maximum between the vector and the given vector {@code (v2)} and
+	 * returns the result as a new instance.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code max( v, v2 )}
+	 * 
+	 * @param v2 The second vector.
+	 * 
+	 * @return A new instance of the vector with the result.
+	 */
+	default Vec3fR maxVector(SimpleVec3fR v2)
+	{
+		return maxVector(v2.getX(), v2.getY(), v2.getZ());
+	}
+	
+	/**
+	 * Calculates a vector consisting of the per component maximum between the vector and the given vector {@code (value, value, value)} and
+	 * returns the result as a new instance.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code max( v, (value, value, value) )}
+	 * 
+	 * @param value The value of all components of the second vector.
+	 * 
+	 * @return A new instance of the vector with the result.
+	 */
+	default Vec3fR maxVector(float value)
+	{
+		return maxVector(value, value, value);
+	}
+	
+	/**
+	 * Calculates a vector consisting of the per component maximum between the vector and the given vector {@code (v2[0], v2[1], v2[2])} and
+	 * returns the result as a new instance.
+	 * The x, y and z components are expected to be on the indices 0, 1 and 2. Therefore the array
+	 * has to contain at least 3 entries.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code max( v, (v2[0], v2[1], v2[2]) )}
+	 * 
+	 * @param v2 The second vector. Minimum legth: 3.
+	 * 
+	 * @return A new instance of the vector with the result.
+	 */
+	default Vec3fR maxVector(@MinLength(3) float[] v2)
+	{
+		return maxVector(v2[0], v2[1], v2[2]);
+	}
+	
+	/**
+	 * Calculates a vector consisting of the per component maximum between the vector and the given vector {@code (v2x, v2y, v2z)} and
+	 * returns the result as a new instance.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code max( v, (v2x, v2y, v2z) )}
+	 * 
+	 * @param v2x The value of the x component of the second vector.
+	 * @param v2y The value of the y component of the second vector.
+	 * @param v2z The value of the z component of the second vector.
+	 * 
+	 * @return A new instance of the vector with the result.
+	 */
+	Vec3fR maxVector(float v2x, float v2y, float v2z);
+	
+	
 	/**
 	 * Normalizes the current vector.
 	 * Normalization is done by dividing the vector by its length (magnitude).
@@ -706,7 +789,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 * 
 	 * @throws ArithmeticException Thrown when it is a zero-length vector.
 	 */
-	Vec3fC normalUnsafe();
+	Vec3fC normalizeUnsafe();
 
 	/**
 	 * Normalizes the current vector.
@@ -725,7 +808,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 * 
 	 * @throws ArithmeticException Might be thrown when the length is to close to zero.
 	 */
-	Vec3fC normal();
+	Vec3fC normalize();
 
 	/**
 	 * Normalizes the current vector.
@@ -743,7 +826,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 * 
 	 * @return The current vector.
 	 */
-	Vec3fC normal(float tolerance);
+	Vec3fC normalize(float tolerance);
 
 	/**
 	 * Negates (inverts) the current vector.
@@ -793,7 +876,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec3fC cross(Tup3fR t)
+	default Vec3fC cross(Vec3fR t)
 	{
 		return cross(t.getX(), t.getY(), t.getZ());
 	}
@@ -826,41 +909,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 */
 	default Vec3fC cross(float[] a)
 	{
-		return cross(a[COMP_X], a[COMP_Y], a[COMP_Z]);
-	}
-	
-	/**
-	 * Calculates either the right or left handed cross product between this vector and the given array {@code (a)}.
-	 * The indices for the components are given by the parameters. Therefore the array
-	 * has to contain at least 1 element.
-	 * The handedness is determined by the implementation.
-	 * This operation alters the current vector.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code v X (a[indexX], a[indexY], a[indexZ])}
-	 * 
-	 * <p>
-	 * Definition:<br>
-	 * In a standard right handed cartesian system there are the following relations between axis assuming a positive direction.
-	 * Imagine looking in the desired direction and using the axis in counterclockwise order.
-	 * In a left handed cartesian system the order is reversed and therefore clockwise.
-	 * 
-	 * <p>
-	 * {@code forward(z) = right(x) X up(y)}<br>
-	 * {@code up(y) = forward(z) X right(x)}<br>
-	 * {@code right(x) = up(y) X forward(z)}
-	 * 
-	 * @param indexX The index in the array for the x component.
-	 * @param indexY The index in the array for the y component.
-	 * @param indexZ The index in the array for the z component.
-	 * @param a The array to calculate the cross product with. Minimum length: 1.
-	 * 
-	 * @return The current vector.
-	 */
-	default Vec3fC cross(int indexX, int indexY, int indexZ, float[] a)
-	{
-		return cross(a[indexX], a[indexY], a[indexZ]);
+		return cross(a[0], a[1], a[2]);
 	}
 	
 	/**
@@ -946,7 +995,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec3fC cross(Tup3fR t, boolean rightHanded)
+	default Vec3fC cross(Vec3fR t, boolean rightHanded)
 	{
 		return cross(t.getX(), t.getY(), t.getZ(), rightHanded);
 	}
@@ -980,42 +1029,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 */
 	default Vec3fC cross(float[] a, boolean rightHanded)
 	{
-		return cross(a[COMP_X], a[COMP_Y], a[COMP_Z], rightHanded);
-	}
-	
-	/**
-	 * Calculates either the right or left handed cross product between this vector and the given array {@code (a)}.
-	 * The indices for the components are given by the parameters. Therefore the array
-	 * has to contain at least 1 element.
-	 * The handedness is determined by the parameter {@code rightHanded}.
-	 * This operation alters the current vector.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code v X (a[indexX], a[indexY], a[indexZ])}
-	 * 
-	 * <p>
-	 * Definition:<br>
-	 * In a standard right handed cartesian system there are the following relations between axis assuming a positive direction.
-	 * Imagine looking in the desired direction and using the axis in counterclockwise order.
-	 * In a left handed cartesian system the order is reversed and therefore clockwise.
-	 * 
-	 * <p>
-	 * {@code forward(z) = right(x) X up(y)}<br>
-	 * {@code up(y) = forward(z) X right(x)}<br>
-	 * {@code right(x) = up(y) X forward(z)}
-	 * 
-	 * @param indexX The index in the array for the x component.
-	 * @param indexY The index in the array for the y component.
-	 * @param indexZ The index in the array for the z component.
-	 * @param a The array to calculate the cross product with. Minimum length: 1.
-	 * @param rightHanded Specifies that the operation should be right handed if true. Left handed otherwise.
-	 * 
-	 * @return The current vector.
-	 */
-	default Vec3fC cross(int indexX, int indexY, int indexZ, float[] a, boolean rightHanded)
-	{
-		return cross(a[indexX], a[indexY], a[indexZ], rightHanded);
+		return cross(a[0], a[1], a[2], rightHanded);
 	}
 	
 	/**
@@ -1100,7 +1114,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec3fC crossRH(Tup3fR t)
+	default Vec3fC crossRH(Vec3fR t)
 	{
 		return crossRH(t.getX(), t.getY(), t.getZ());
 	}
@@ -1131,39 +1145,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 */
 	default Vec3fC crossRH(float[] a)
 	{
-		return crossRH(a[COMP_X], a[COMP_Y], a[COMP_Z]);
-	}
-	
-	/**
-	 * Calculates the right handed cross product between this vector and the given array {@code (a)}.
-	 * The indices for the components are given by the parameters. Therefore the array
-	 * has to contain at least 1 element.
-	 * This operation alters the current vector.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code v X (a[indexX], a[indexY], a[indexZ])}
-	 * 
-	 * <p>
-	 * Definition:<br>
-	 * In a standard right handed cartesian system there are the following relations between axis assuming a positive direction.
-	 * Imagine looking in the desired direction and using the axis in counterclockwise order.
-	 * 
-	 * <p>
-	 * {@code forward(z) = right(x) X up(y)}<br>
-	 * {@code up(y) = forward(z) X right(x)}<br>
-	 * {@code right(x) = up(y) X forward(z)}
-	 * 
-	 * @param indexX The index in the array for the x component.
-	 * @param indexY The index in the array for the y component.
-	 * @param indexZ The index in the array for the z component.
-	 * @param a The array to calculate the cross product with. Minimum length: 1.
-	 * 
-	 * @return The current vector.
-	 */
-	default Vec3fC crossRH(int indexX, int indexY, int indexZ, float[] a)
-	{
-		return crossRH(a[indexX], a[indexY], a[indexZ]);
+		return crossRH(a[0], a[1], a[2]);
 	}
 	
 	/**
@@ -1242,7 +1224,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec3fC crossLH(Tup3fR t)
+	default Vec3fC crossLH(Vec3fR t)
 	{
 		return crossLH(t.getX(), t.getY(), t.getZ());
 	}
@@ -1273,39 +1255,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 */
 	default Vec3fC crossLH(float[] a)
 	{
-		return crossLH(a[COMP_X], a[COMP_Y], a[COMP_Z]);
-	}
-	
-	/**
-	 * Calculates the left handed cross product between this vector and the given array {@code (a)}.
-	 * The indices for the components are given by the parameters. Therefore the array
-	 * has to contain at least 1 element.
-	 * This operation alters the current vector.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code (a[indexX], a[indexY], a[indexZ]) X v}
-	 * 
-	 * <p>
-	 * Definition:<br>
-	 * In a left handed cartesian system there are the following relations between axis assuming a positive direction.
-	 * Imagine looking in the desired direction and using the axis in clockwise order.
-	 * 
-	 * <p>
-	 * {@code forward(z) = up(y) X right(x)}<br>
-	 * {@code up(y) = right(x) X forward(z)}<br>
-	 * {@code right(x) = forward(z) X up(y)}
-	 * 
-	 * @param indexX The index in the array for the x component.
-	 * @param indexY The index in the array for the y component.
-	 * @param indexZ The index in the array for the z component.
-	 * @param a The array to calculate the cross product with. Minimum length: 1.
-	 * 
-	 * @return The current vector.
-	 */
-	default Vec3fC crossLH(int indexX, int indexY, int indexZ, float[] a)
-	{
-		return crossLH(a[indexX], a[indexY], a[indexZ]);
+		return crossLH(a[0], a[1], a[2]);
 	}
 	
 	/**
@@ -1442,7 +1392,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec3fC min(Tup3fR t)
+	default Vec3fC min(Vec3fR t)
 	{
 		return min(t.getX(), t.getY(), t.getZ());
 	}
@@ -1464,30 +1414,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 */
 	default Vec3fC min(float[] a)
 	{
-		return min(a[COMP_X], a[COMP_Y], a[COMP_Z]);
-	}
-	
-	/**
-	 * Sets the vector to the componentwise minimum values of the current vector and the given array {@code (a)}.
-	 * Therefore it uses for each component the smaller value of either the current vector or the array.
-	 * The indices for the components are given by the parameters. Therefore the array
-	 * has to contain at least 1 element.
-	 * This operation alters the current vector.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code (min(v.x, a[indexX]), min(v.y, a[indexY]), min(v.z, a[indexZ]))}
-	 * 
-	 * @param indexX The index in the array for the x component.
-	 * @param indexY The index in the array for the y component.
-	 * @param indexZ The index in the array for the z component.
-	 * @param a The other array. Minimum length: 1.
-	 * 
-	 * @return The current vector.
-	 */
-	default Vec3fC min(int indexX, int indexY, int indexZ, float[] a)
-	{
-		return min(a[indexX], a[indexY], a[indexZ]);
+		return min(a[0], a[1], a[2]);
 	}
 	
 	/**
@@ -1538,7 +1465,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec3fC max(Tup3fR t)
+	default Vec3fC max(Vec3fR t)
 	{
 		return max(t.getX(), t.getY(), t.getZ());
 	}
@@ -1560,30 +1487,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 */
 	default Vec3fC max(float[] a)
 	{
-		return max(a[COMP_X], a[COMP_Y], a[COMP_Z]);
-	}
-	
-	/**
-	 * Sets the vector to the componentwise maximum values of the current vector and the given array {@code (a)}.
-	 * Therefore it uses for each component the greater value of either the current vector or the array.
-	 * The indices for the components are given by the parameters. Therefore the array
-	 * has to contain at least 1 element.
-	 * This operation alters the current vector.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code (max(v.x, a[indexX]), max(v.y, a[indexY]), max(v.z, a[indexZ]))}
-	 * 
-	 * @param indexX The index in the array for the x component.
-	 * @param indexY The index in the array for the y component.
-	 * @param indexZ The index in the array for the z component.
-	 * @param a The other array. Minimum length: 1.
-	 * 
-	 * @return The current vector.
-	 */
-	default Vec3fC max(int indexX, int indexY, int indexZ, float[] a)
-	{
-		return max(a[indexX], a[indexY], a[indexZ]);
+		return max(a[0], a[1], a[2]);
 	}
 	
 	/**
@@ -1634,7 +1538,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec3fC lerp(Tup3fR t, float alpha)
+	default Vec3fC lerp(Vec3fR t, float alpha)
 	{
 		return lerp(t.getX(), t.getY(), t.getZ(), alpha);
 	}
@@ -1657,29 +1561,6 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	default Vec3fC lerp(float[] a, float alpha)
 	{
 		return lerp(a[COMP_X], a[COMP_Y], a[COMP_Z], alpha);
-	}
-	
-	 /**
-	 * Interpolates between the current vector and the given array {@code (a)} by the factor of {@code alpha}.
-	 * The indices for the components are given by the parameters. Therefore the array
-	 * has to contain at least 1 element.
-	 * This operation alters the current vector.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code v * (1-alpha) + (a[indexX], a[indexY], a[indexZ]) * alpha}
-	 * 
-	 * @param indexX The index in the array for the x component.
-	 * @param indexY The index in the array for the y component.
-	 * @param indexZ The index in the array for the z component.
-	 * @param a The other array. Minimum length: 1.
-	 * @param alpha The factor for the interpolation in range of {@code 0.0f-1.0f}.
-	 * 
-	 * @return The current vector.
-	 */
-	default Vec3fC lerp(int indexX, int indexY, int indexZ, float[] a, float alpha)
-	{
-		return lerp(a[indexX], a[indexY], a[indexZ], alpha);
 	}
 	 
 	/**
@@ -1731,7 +1612,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec3fC lerpAdd(Tup3fR t, float alpha)
+	default Vec3fC lerpAdd(Vec3fR t, float alpha)
 	{
 		return lerpAdd(t.getX(), t.getY(), t.getZ(), alpha);
 	}
@@ -1755,30 +1636,6 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	default Vec3fC lerpAdd(float[] a, float alpha)
 	{
 		return lerpAdd(a[COMP_X], a[COMP_Y], a[COMP_Z], alpha);
-	}
-	
-	/**
-	 * Scales the given array {@code (a)} by the factor {@code alpha}, adds it to the current vector.
-	 * This is useful for example for adding a velocity vector that is interpolated over a timeframe.
-	 * The indices for the components are given by the parameters. Therefore the array
-	 * has to contain at least 1 element.
-	 * This operation alters the current vector.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code v + (a[indexX], a[indexY], a[indexZ]) * alpha}.
-	 * 
-	 * @param indexX The index in the array for the x component.
-	 * @param indexY The index in the array for the y component.
-	 * @param indexZ The index in the array for the z component.
-	 * @param a The other array. Minimum length: 1.
-	 * @param alpha The factor for the interpolation in range of {@code 0.0f-1.0f}.
-	 * 
-	 * @return The current vector.
-	 */
-	default Vec3fC lerpAdd(int indexX, int indexY, int indexZ, float[] a, float alpha)
-	{
-		return lerpAdd(a[indexX], a[indexY], a[indexZ], alpha);
 	}
 	
 	/**
@@ -1887,7 +1744,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec3fC rotate(Tup3fR axis, float angle)
+	default Vec3fC rotate(Vec3fR axis, float angle)
 	{
 		return rotate(axis.getX(), axis.getY(), axis.getZ(), angle);
 	}
@@ -1906,25 +1763,6 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	default Vec3fC rotate(float[] axis, float angle)
 	{
 		return rotate(axis[0], axis[1], axis[2], angle);
-	}
-	
-	/**
-	 * Rotates the current vector around the give array {@code (axis)} as axis and the given angle in radians.
-	 * The indices for the components are given by the parameters. Therefore the array
-	 * has to contain at least 1 element.
-	 * This operation alters the current vector.
-	 * 
-	 * @param indexX The index in the array for the x component.
-	 * @param indexY The index in the array for the y component.
-	 * @param indexZ The index in the array for the z component.
-	 * @param axis The rotation axis. Minimum length: 1.
-	 * @param angle The angle to rotate by in radians.
-	 * 
-	 * @return The current vector.
-	 */
-	default Vec3fC rotate(int indexX, int indexY, int indexZ, float[] axis, float angle)
-	{
-		return rotate(axis[indexX], axis[indexY], axis[indexZ], angle);
 	}
 	
 	/**
@@ -1949,7 +1787,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec3fC rotateDeg(Tup3fR axis, float angle)
+	default Vec3fC rotateDeg(Vec3fR axis, float angle)
 	{
 		return rotateDeg(axis.getX(), axis.getY(), axis.getZ(), angle);
 	}
@@ -1968,25 +1806,6 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	default Vec3fC rotateDeg(float[] axis, float angle)
 	{
 		return rotateDeg(axis[0], axis[1], axis[2], angle);
-	}
-	
-	/**
-	 * Rotates the current vector around the give array {@code (axis)} as axis and the given angle in degrees.
-	 * The indices for the components are given by the parameters. Therefore the array
-	 * has to contain at least 1 element.
-	 * This operation alters the current vector.
-	 * 
-	 * @param indexX The index in the array for the x component.
-	 * @param indexY The index in the array for the y component.
-	 * @param indexZ The index in the array for the z component.
-	 * @param axis The rotation axis. Minimum length: 1.
-	 * @param angle The angle to rotate by in degrees.
-	 * 
-	 * @return The current vector.
-	 */
-	default Vec3fC rotateDeg(int indexX, int indexY, int indexZ, float[] axis, float angle)
-	{
-		return rotateDeg(axis[indexX], axis[indexY], axis[indexZ], angle);
 	}
 	
 	/**
@@ -2020,11 +1839,11 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	 * 
 	 * @return The current vector.
 	 */
-	Vec3fC rotate(QuatfR q);
+	Vec3fC rotate(QuatR q);
 	
 	/**{@inheritDoc} */
 	@Override
-	default Vec3fC addN(Tup3fR t)
+	default Vec3fC addN(Vec3fR t)
 	{
 		return addN(t.getX(), t.getY(), t.getZ());
 	}
@@ -2034,13 +1853,6 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	default Vec3fC addN(float[] a)
 	{
 		return addN(a[COMP_X], a[COMP_Y], a[COMP_Z]);
-	}
-	
-	/**{@inheritDoc} */
-	@Override
-	default Vec3fC addN(int indexX, int indexY, int indexZ, float[] a)
-	{
-		return addN(a[indexX], a[indexY], a[indexZ]);
 	}
 	
 	/**{@inheritDoc} */
@@ -2056,7 +1868,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	
 	/**{@inheritDoc} */
 	@Override
-	default Vec3fC subN(Tup3fR t)
+	default Vec3fC subN(Vec3fR t)
 	{
 		return subN(t.getX(), t.getY(), t.getZ());
 	}
@@ -2066,13 +1878,6 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	default Vec3fC subN(float[] a)
 	{
 		return subN(a[COMP_X], a[COMP_Y], a[COMP_Z]);
-	}
-	
-	/**{@inheritDoc} */
-	@Override
-	default Vec3fC subN(int indexX, int indexY, int indexZ, float[] a)
-	{
-		return subN(a[indexX], a[indexY], a[indexZ]);
 	}
 	
 	/**{@inheritDoc} */
@@ -2088,7 +1893,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	
 	/**{@inheritDoc} */
 	@Override
-	default Vec3fC revSubN(Tup3fR t)
+	default Vec3fC revSubN(Vec3fR t)
 	{
 		return revSubN(t.getX(), t.getY(), t.getZ());
 	}
@@ -2098,13 +1903,6 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	default Vec3fC revSubN(float[] a)
 	{
 		return revSubN(a[COMP_X], a[COMP_Y], a[COMP_Z]);
-	}
-	
-	/**{@inheritDoc} */
-	@Override
-	default Vec3fC revSubN(int indexX, int indexY, int indexZ, float[] a)
-	{
-		return revSubN(a[indexX], a[indexY], a[indexZ]);
 	}
 	
 	/**{@inheritDoc} */
@@ -2120,7 +1918,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	
 	/**{@inheritDoc} */
 	@Override
-	default Vec3fC mulN(Tup3fR t)
+	default Vec3fC mulN(Vec3fR t)
 	{
 		return mulN(t.getX(), t.getY(), t.getZ());
 	}
@@ -2130,13 +1928,6 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	default Vec3fC mulN(float[] a)
 	{
 		return mulN(a[COMP_X], a[COMP_Y], a[COMP_Z]);
-	}
-	
-	/**{@inheritDoc} */
-	@Override
-	default Vec3fC mulN(int indexX, int indexY, int indexZ, float[] a)
-	{
-		return mulN(a[indexX], a[indexY], a[indexZ]);
 	}
 	
 	/**{@inheritDoc} */
@@ -2152,7 +1943,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	
 	/**{@inheritDoc} */
 	@Override
-	default Vec3fC divN(Tup3fR t)
+	default Vec3fC divN(Vec3fR t)
 	{
 		return divN(t.getX(), t.getY(), t.getZ());
 	}
@@ -2162,13 +1953,6 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	default Vec3fC divN(float[] a)
 	{
 		return divN(a[COMP_X], a[COMP_Y], a[COMP_Z]);
-	}
-	
-	/**{@inheritDoc} */
-	@Override
-	default Vec3fC divN(int indexX, int indexY, int indexZ, float[] a)
-	{
-		return divN(a[indexX], a[indexY], a[indexZ]);
 	}
 	
 	/**{@inheritDoc} */
@@ -2184,7 +1968,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 
 	/**{@inheritDoc} */
 	@Override
-	default Vec3fC revDivN(Tup3fR t)
+	default Vec3fC revDivN(Vec3fR t)
 	{
 		return revDivN(t.getX(), t.getY(), t.getZ());
 	}
@@ -2194,13 +1978,6 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	default Vec3fC revDivN(float[] a)
 	{
 		return revDivN(a[COMP_X], a[COMP_Y], a[COMP_Z]);
-	}
-	
-	/**{@inheritDoc} */
-	@Override
-	default Vec3fC revDivN(int indexX, int indexY, int indexZ, float[] a)
-	{
-		return revDivN(a[indexX], a[indexY], a[indexZ]);
 	}
 	
 	/**{@inheritDoc} */
@@ -2216,15 +1993,15 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 
 	/**{@inheritDoc} */
 	@Override
-	Vec3fC normalUnsafeN();
+	Vec3fC normalizeUnsafeN();
 
 	/**{@inheritDoc} */
 	@Override
-	Vec3fC normalN();
+	Vec3fC normalizeN();
 
 	/**{@inheritDoc} */
 	@Override
-	Vec3fC normalN(float tolerance);
+	Vec3fC normalizeN(float tolerance);
 
 	/**{@inheritDoc} */
 	@Override
@@ -2236,7 +2013,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	
 	/**{@inheritDoc} */
 	@Override
-	default Vec3fC crossN(Tup3fR t)
+	default Vec3fC crossN(Vec3fR t)
 	{
 		return crossN(t.getX(), t.getY(), t.getZ());
 	}
@@ -2250,13 +2027,6 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	
 	/**{@inheritDoc} */
 	@Override
-	default Vec3fC crossN(int indexX, int indexY, int indexZ, float[] a)
-	{
-		return crossN(a[indexX], a[indexY], a[indexZ]);
-	}
-	
-	/**{@inheritDoc} */
-	@Override
 	default Vec3fC crossN(float value)
 	{
 		return crossN(value, value, value);
@@ -2265,102 +2035,6 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	/**{@inheritDoc} */
 	@Override
 	Vec3fC crossN(float x, float y, float z);
-	
-	/**{@inheritDoc} */
-	@Override
-	default Vec3fC crossN(Tup3fR t, boolean rightHanded)
-	{
-		return crossN(t.getX(), t.getY(), t.getZ(), rightHanded);
-	}
-	
-	/**{@inheritDoc} */
-	@Override
-	default Vec3fC crossN(float[] a, boolean rightHanded)
-	{
-		return crossN(a[COMP_X], a[COMP_Y], a[COMP_Z], rightHanded);
-	}
-	
-	/**{@inheritDoc} */
-	@Override
-	default Vec3fC crossN(int indexX, int indexY, int indexZ, float[] a, boolean rightHanded)
-	{
-		return crossN(a[indexX], a[indexY], a[indexZ], rightHanded);
-	}
-	
-	/**{@inheritDoc} */
-	@Override
-	default Vec3fC crossN(float value, boolean rightHanded)
-	{
-		return crossN(value, value, value, rightHanded);
-	}
-	
-	/**{@inheritDoc} */
-	@Override
-	Vec3fC crossN(float x, float y, float z, boolean rightHanded);
-	
-	/**{@inheritDoc} */
-	@Override
-	default Vec3fC crossRHN(Tup3fR t)
-	{
-		return crossRHN(t.getX(), t.getY(), t.getZ());
-	}
-	
-	/**{@inheritDoc} */
-	@Override
-	default Vec3fC crossRHN(float[] a)
-	{
-		return crossRHN(a[COMP_X], a[COMP_Y], a[COMP_Z]);
-	}
-	
-	/**{@inheritDoc} */
-	@Override
-	default Vec3fC crossRHN(int indexX, int indexY, int indexZ, float[] a)
-	{
-		return crossRHN(a[indexX], a[indexY], a[indexZ]);
-	}
-	
-	/**{@inheritDoc} */
-	@Override
-	default Vec3fC crossRHN(float value)
-	{
-		return crossRHN(value, value, value);
-	}
-	
-	/**{@inheritDoc} */
-	@Override
-	Vec3fC crossRHN(float x, float y, float z);
-	
-	/**{@inheritDoc} */
-	@Override
-	default Vec3fC crossLHN(Tup3fR t)
-	{
-		return crossLHN(t.getX(), t.getY(), t.getZ());
-	}
-	
-	/**{@inheritDoc} */
-	@Override
-	default Vec3fC crossLHN(float[] a)
-	{
-		return crossLHN(a[COMP_X], a[COMP_Y], a[COMP_Z]);
-	}
-	
-	/**{@inheritDoc} */
-	@Override
-	default Vec3fC crossLHN(int indexX, int indexY, int indexZ, float[] a)
-	{
-		return crossLHN(a[indexX], a[indexY], a[indexZ]);
-	}
-	
-	/**{@inheritDoc} */
-	@Override
-	default Vec3fC crossLHN(float value)
-	{
-		return crossLHN(value, value, value);
-	}
-	
-	/**{@inheritDoc} */
-	@Override
-	Vec3fC crossLHN(float x, float y, float z);
 	
 	/**{@inheritDoc} */
 	@Override
@@ -2390,133 +2064,105 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	@Override
 	Vec3fC transformN(Mat4fR m);
 	
-	/**{@inheritDoc} */
-	@Override
-	default Vec3fC minN(Tup3fR t)
-	{
-		return minN(t.getX(), t.getY(), t.getZ());
-	}
-	
-	/**{@inheritDoc} */
-	@Override
-	default Vec3fC minN(float[] a)
-	{
-		return minN(a[COMP_X], a[COMP_Y], a[COMP_Z]);
-	}
-	
-	/**{@inheritDoc} */
-	@Override
-	default Vec3fC minN(int indexX, int indexY, int indexZ, float[] a)
-	{
-		return minN(a[indexX], a[indexY], a[indexZ]);
-	}
-	
-	/**{@inheritDoc} */
-	@Override
-	default Vec3fC minN(float value)
-	{
-		return minN(value, value, value);
-	}
-	
-	/**{@inheritDoc} */
-	@Override
-	Vec3fC minN(float x, float y, float z);
-	
-	/**{@inheritDoc} */
-	@Override
-	default Vec3fC maxN(Tup3fR t)
-	{
-		return maxN(t.getX(), t.getY(), t.getZ());
-	}
-	
-	/**{@inheritDoc} */
-	@Override
-	default Vec3fC maxN(float[] a)
-	{
-		return maxN(a[COMP_X], a[COMP_Y], a[COMP_Z]);
-	}
-	
-	/**{@inheritDoc} */
-	@Override
-	default Vec3fC maxN(int indexX, int indexY, int indexZ, float[] a)
-	{
-		return maxN(a[indexX], a[indexY], a[indexZ]);
-	}
-	
-	/**{@inheritDoc} */
-	@Override
-	default Vec3fC maxN(float value)
-	{
-		return maxN(value, value, value);
-	}
-	
-	/**{@inheritDoc} */
-	@Override
-	Vec3fC maxN(float x, float y, float z);
-	
-	/**{@inheritDoc} */
-	@Override
-	default Vec3fC lerpN(Tup3fR t, float alpha)
-	{
-		return lerpN(t.getX(), t.getY(), t.getZ(), alpha);
-	}
-	
-	/**{@inheritDoc} */
-	@Override
-	default Vec3fC lerpN(float[] a, float alpha)
-	{
-		return lerpN(a[COMP_X], a[COMP_Y], a[COMP_Z], alpha);
-	}
-	
-	/**{@inheritDoc} */
-	@Override
-	default Vec3fC lerpN(int indexX, int indexY, int indexZ, float[] a, float alpha)
-	{
-		return lerpN(a[indexX], a[indexY], a[indexZ], alpha);
-	}
-	 
-	/**{@inheritDoc} */
-	@Override
-	default Vec3fC lerpN(float value, float alpha)
-	{
-		return lerpN(value, value, value, alpha);
-	}
-	
-	/**{@inheritDoc} */
-	@Override
-	Vec3fC lerpN(float x, float y, float z, float alpha);
-	
-	/**{@inheritDoc} */
-	@Override
-	default Vec3fC lerpAddN(Tup3fR t, float alpha)
-	{
-		return lerpAddN(t.getX(), t.getY(), t.getZ(), alpha);
-	}
-	
-	/**{@inheritDoc} */
-	@Override
-	default Vec3fC lerpAddN(float[] a, float alpha)
-	{
-		return lerpAddN(a[COMP_X], a[COMP_Y], a[COMP_Z], alpha);
-	}
-	
-	/**{@inheritDoc} */
-	@Override
-	default Vec3fC lerpAddN(int indexX, int indexY, int indexZ, float[] a, float alpha)
-	{
-		return lerpAddN(a[indexX], a[indexY], a[indexZ], alpha);
-	}
-	
-	/**{@inheritDoc} */
-	@Override
-	default Vec3fC lerpAddN(float value, float alpha)
-	{
-		return lerpAddN(value, value, value, alpha);
-	}
-	
-	/**{@inheritDoc} */
-	@Override
-	Vec3fC lerpAddN(float x, float y, float z, float alpha);
+//	/**{@inheritDoc} */
+//	@Override
+//	default Vec3fC minN(Vec3fR t)
+//	{
+//		return minN(t.getX(), t.getY(), t.getZ());
+//	}
+//	
+//	/**{@inheritDoc} */
+//	@Override
+//	default Vec3fC minN(float[] a)
+//	{
+//		return minN(a[COMP_X], a[COMP_Y], a[COMP_Z]);
+//	}
+//
+//	/**{@inheritDoc} */
+//	@Override
+//	default Vec3fC minN(float value)
+//	{
+//		return minN(value, value, value);
+//	}
+//	
+//	/**{@inheritDoc} */
+//	@Override
+//	Vec3fC minN(float x, float y, float z);
+//	
+//	/**{@inheritDoc} */
+//	@Override
+//	default Vec3fC maxN(Vec3fR t)
+//	{
+//		return maxN(t.getX(), t.getY(), t.getZ());
+//	}
+//	
+//	/**{@inheritDoc} */
+//	@Override
+//	default Vec3fC maxN(float[] a)
+//	{
+//		return maxN(a[COMP_X], a[COMP_Y], a[COMP_Z]);
+//	}
+//	
+//	/**{@inheritDoc} */
+//	@Override
+//	default Vec3fC maxN(float value)
+//	{
+//		return maxN(value, value, value);
+//	}
+//	
+//	/**{@inheritDoc} */
+//	@Override
+//	Vec3fC maxN(float x, float y, float z);
+//	
+//	/**{@inheritDoc} */
+//	@Override
+//	default Vec3fC lerpN(Vec3fR t, float alpha)
+//	{
+//		return lerpN(t.getX(), t.getY(), t.getZ(), alpha);
+//	}
+//	
+//	/**{@inheritDoc} */
+//	@Override
+//	default Vec3fC lerpN(float[] a, float alpha)
+//	{
+//		return lerpN(a[COMP_X], a[COMP_Y], a[COMP_Z], alpha);
+//	}
+//	 
+//	/**{@inheritDoc} */
+//	@Override
+//	default Vec3fC lerpN(float value, float alpha)
+//	{
+//		return lerpN(value, value, value, alpha);
+//	}
+//	
+//	/**{@inheritDoc} */
+//	@Override
+//	Vec3fC lerpN(float x, float y, float z, float alpha);
+//	
+//	/**{@inheritDoc} */
+//	@Override
+//	default Vec3fC lerpAddN(Vec3fR t, float alpha)
+//	{
+//		return lerpAddN(t.getX(), t.getY(), t.getZ(), alpha);
+//	}
+//	
+//	/**{@inheritDoc} */
+//	@Override
+//	default Vec3fC lerpAddN(float[] a, float alpha)
+//	{
+//		return lerpAddN(a[COMP_X], a[COMP_Y], a[COMP_Z], alpha);
+//	}
+//	
+//	/**{@inheritDoc} */
+//	@Override
+//	default Vec3fC lerpAddN(float value, float alpha)
+//	{
+//		return lerpAddN(value, value, value, alpha);
+//	}
+//	
+//	/**{@inheritDoc} */
+//	@Override
+//	Vec3fC lerpAddN(float x, float y, float z, float alpha);
 	
 	/**{@inheritDoc} */
 	@Override
@@ -2544,7 +2190,7 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	
 	/**{@inheritDoc} */
 	@Override
-	default Vec3fC rotateN(Tup3fR axis, float angle)
+	default Vec3fC rotateN(Vec3fR axis, float angle)
 	{
 		return rotateN(axis.getX(), axis.getY(), axis.getZ(), angle);
 	}
@@ -2558,18 +2204,11 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	
 	/**{@inheritDoc} */
 	@Override
-	default Vec3fC rotateN(int indexX, int indexY, int indexZ, float[] axis, float angle)
-	{
-		return rotateN(axis[indexX], axis[indexY], axis[indexZ], angle);
-	}
-	
-	/**{@inheritDoc} */
-	@Override
 	Vec3fC rotateN(float axisX, float axisY, float axisZ, float angle);
 	
 	/**{@inheritDoc} */
 	@Override
-	default Vec3fC rotateDegN(Tup3fR axis, float angle)
+	default Vec3fC rotateDegN(Vec3fR axis, float angle)
 	{
 		return rotateDegN(axis.getX(), axis.getY(), axis.getZ(), angle);
 	}
@@ -2583,13 +2222,6 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	
 	/**{@inheritDoc} */
 	@Override
-	default Vec3fC rotateDegN(int indexX, int indexY, int indexZ, float[] axis, float angle)
-	{
-		return rotateDegN(axis[indexX], axis[indexY], axis[indexZ], angle);
-	}
-	
-	/**{@inheritDoc} */
-	@Override
 	Vec3fC rotateDegN(float axisX, float axisY, float axisZ, float angle);
 	
 	/**{@inheritDoc} */
@@ -2598,5 +2230,5 @@ public interface Vec3fC extends Vec3fR, Tup3fC
 	
 	/**{@inheritDoc} */
 	@Override
-	Vec3fC rotateN(QuatfR q);
+	Vec3fC rotateN(QuatR q);
 }

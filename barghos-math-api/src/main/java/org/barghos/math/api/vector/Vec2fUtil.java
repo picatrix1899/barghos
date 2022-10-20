@@ -2,9 +2,9 @@ package org.barghos.math.api.vector;
 
 import static org.barghos.core.api.tuple.TupleConstants.*;
 
+import org.barghos.core.api.documentation.ExtractionParam;
 import org.barghos.core.api.tuple2.Tup2fR;
 import org.barghos.core.api.tuple2.Tup2oC;
-import org.barghos.core.api.util.ExtractParam;
 import org.barghos.core.api.util.function.FloatFunction2;
 import org.barghos.core.api.util.function.GenericFunction2;
 
@@ -31,7 +31,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The result array with the result.
 	 */
-	public static float[] add(float x1, float y1, float x2, float y2, @ExtractParam float[] res)
+	public static float[] add(float x1, float y1, float x2, float y2, @ExtractionParam float[] res)
 	{
 		res[COMP_X] = x1 + x2;
 		res[COMP_Y] = y1 + y2;
@@ -57,7 +57,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Vec2fC> T add(float x1, float y1, float x2, float y2, @ExtractParam T res)
+	public static <T extends Vec2fC> T add(float x1, float y1, float x2, float y2, @ExtractionParam T res)
 	{
 		res.set(x1 + x2, y1 + y2);
 		
@@ -85,7 +85,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The object returned from the functional interface.
 	 */
-	public static <T> T add(float x1, float y1, float x2, float y2, @ExtractParam FloatFunction2<T> func)
+	public static <T> T add(float x1, float y1, float x2, float y2, @ExtractionParam FloatFunction2<T> func)
 	{
 		return func.apply(x1 + x2, y1 + y2);
 	}
@@ -106,7 +106,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The result array with the result.
 	 */
-	public static float[] sub(float x1, float y1, float x2, float y2, @ExtractParam float[] res)
+	public static float[] sub(float x1, float y1, float x2, float y2, @ExtractionParam float[] res)
 	{
 		res[COMP_X] = x1 - x2;
 		res[COMP_Y] = y1 - y2;
@@ -132,7 +132,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Vec2fC> T sub(float x1, float y1, float x2, float y2, @ExtractParam T res)
+	public static <T extends Vec2fC> T sub(float x1, float y1, float x2, float y2, @ExtractionParam T res)
 	{
 		res.set(x1 - x2, y1 - y2);
 		
@@ -160,7 +160,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The object returned from the functional interface.
 	 */
-	public static <T> T sub(float x1, float y1, float x2, float y2, @ExtractParam FloatFunction2<T> func)
+	public static <T> T sub(float x1, float y1, float x2, float y2, @ExtractionParam FloatFunction2<T> func)
 	{
 		return func.apply(x1 - x2, y1 - y2);
 	}
@@ -181,7 +181,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The result array with the result.
 	 */
-	public static float[] revSub(float x1, float y1, float x2, float y2, @ExtractParam float[] res)
+	public static float[] revSub(float x1, float y1, float x2, float y2, @ExtractionParam float[] res)
 	{
 		res[COMP_X] = x2 - x1;
 		res[COMP_Y] = y2 - y1;
@@ -207,7 +207,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Vec2fC> T revSub(float x1, float y1, float x2, float y2, @ExtractParam T res)
+	public static <T extends Vec2fC> T revSub(float x1, float y1, float x2, float y2, @ExtractionParam T res)
 	{
 		res.set(x2 - x1, y2 - y1);
 		
@@ -235,7 +235,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The object returned from the functional interface.
 	 */
-	public static <T> T revSub(float x1, float y1, float x2, float y2, @ExtractParam FloatFunction2<T> func)
+	public static <T> T revSub(float x1, float y1, float x2, float y2, @ExtractionParam FloatFunction2<T> func)
 	{
 		return func.apply(x2 - x1, y2 - y1);
 	}
@@ -256,7 +256,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The result array with the result.
 	 */
-	public static float[] mul(float x1, float y1, float x2, float y2, @ExtractParam float[] res)
+	public static float[] mul(float x1, float y1, float x2, float y2, @ExtractionParam float[] res)
 	{
 		res[COMP_X] = x1 * x2;
 		res[COMP_Y] = y1 * y2;
@@ -282,7 +282,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Vec2fC> T mul(float x1, float y1, float x2, float y2, @ExtractParam T res)
+	public static <T extends Vec2fC> T mul(float x1, float y1, float x2, float y2, @ExtractionParam T res)
 	{
 		res.set(x1 * x2, y1 * y2);
 		
@@ -310,7 +310,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The object returned from the functional interface.
 	 */
-	public static <T> T mul(float x1, float y1, float x2, float y2, @ExtractParam FloatFunction2<T> func)
+	public static <T> T mul(float x1, float y1, float x2, float y2, @ExtractionParam FloatFunction2<T> func)
 	{
 		return func.apply(x1 * x2, y1 * y2);
 	}
@@ -331,7 +331,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The result array with the result.
 	 */
-	public static float[] div(float x1, float y1, float x2, float y2, @ExtractParam float[] res)
+	public static float[] div(float x1, float y1, float x2, float y2, @ExtractionParam float[] res)
 	{
 		res[COMP_X] = x1 / x2;
 		res[COMP_Y] = y1 / y2;
@@ -357,7 +357,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Vec2fC> T div(float x1, float y1, float x2, float y2, @ExtractParam T res)
+	public static <T extends Vec2fC> T div(float x1, float y1, float x2, float y2, @ExtractionParam T res)
 	{
 		res.set(x1 / x2, y1 / y2);
 		
@@ -385,7 +385,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The object returned from the functional interface.
 	 */
-	public static <T> T div(float x1, float y1, float x2, float y2, @ExtractParam FloatFunction2<T> func)
+	public static <T> T div(float x1, float y1, float x2, float y2, @ExtractionParam FloatFunction2<T> func)
 	{
 		return func.apply(x1 / x2, y1 / y2);
 	}
@@ -406,7 +406,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The result array with the result.
 	 */
-	public static float[] revDiv(float x1, float y1, float x2, float y2, @ExtractParam float[] res)
+	public static float[] revDiv(float x1, float y1, float x2, float y2, @ExtractionParam float[] res)
 	{
 		res[COMP_X] = x2 / x1;
 		res[COMP_Y] = y2 / y1;
@@ -432,7 +432,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static <T extends Vec2fC> T revDiv(float x1, float y1, float x2, float y2, @ExtractParam T res)
+	public static <T extends Vec2fC> T revDiv(float x1, float y1, float x2, float y2, @ExtractionParam T res)
 	{
 		res.set(x2 / x1, y2 / y1);
 		
@@ -460,7 +460,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The object returned from the functional interface.
 	 */
-	public static <T> T revDiv(float x1, float y1, float x2, float y2, @ExtractParam FloatFunction2<T> func)
+	public static <T> T revDiv(float x1, float y1, float x2, float y2, @ExtractionParam FloatFunction2<T> func)
 	{
 		return func.apply(x2 / x1, y2 / y1);
 	}
@@ -485,7 +485,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The result array with the result.
 	 */
-	public static float[] fma(float x, float y, float mX, float mY, float aX, float aY, @ExtractParam float[] res)
+	public static float[] fma(float x, float y, float mX, float mY, float aX, float aY, @ExtractionParam float[] res)
 	{
 		res[COMP_X] = Math.fma(x, mX, aX);
 		res[COMP_Y] = Math.fma(y, mY, aY);
@@ -515,7 +515,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Vec2fC> T fma(float x, float y, float mX, float mY, float aX, float aY, @ExtractParam T res)
+	public static <T extends Vec2fC> T fma(float x, float y, float mX, float mY, float aX, float aY, @ExtractionParam T res)
 	{
 		res.set(Math.fma(x, mX, aX), Math.fma(y, mY, aY));
 		return res;
@@ -546,7 +546,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The object returned from the functional interface.
 	 */
-	public static <T> T fma(float x, float y, float mX, float mY, float aX, float aY, @ExtractParam FloatFunction2<T> func)
+	public static <T> T fma(float x, float y, float mX, float mY, float aX, float aY, @ExtractionParam FloatFunction2<T> func)
 	{
 		return func.apply(Math.fma(x, mX, aX), Math.fma(y, mY, aY));
 	}
@@ -571,7 +571,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The result array with the result.
 	 */
-	public static float[] mulAdd(float x, float y, float mX1, float mY1, float mX2, float mY2, @ExtractParam float[] res)
+	public static float[] mulAdd(float x, float y, float mX1, float mY1, float mX2, float mY2, @ExtractionParam float[] res)
 	{
 		res[COMP_X] = Math.fma(mX1, mX2, x);
 		res[COMP_Y] = Math.fma(mY1, mY2, y);
@@ -601,7 +601,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Vec2fC> T mulAdd(float x, float y, float mX1, float mY1, float mX2, float mY2, @ExtractParam T res)
+	public static <T extends Vec2fC> T mulAdd(float x, float y, float mX1, float mY1, float mX2, float mY2, @ExtractionParam T res)
 	{
 		res.set(Math.fma(mX1, mX2, x), Math.fma(mY1, mY2, y));
 		return res;
@@ -632,7 +632,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The object returned from the functional interface.
 	 */
-	public static <T> T mulAdd(float x, float y, float mX1, float mY1, float mX2, float mY2, @ExtractParam FloatFunction2<T> func)
+	public static <T> T mulAdd(float x, float y, float mX1, float mY1, float mX2, float mY2, @ExtractionParam FloatFunction2<T> func)
 	{
 		return func.apply(Math.fma(mX1, mX2, x), Math.fma(mY1, mY2, y));
 	}
@@ -846,7 +846,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2oC<Float,Integer>> T min(float x, float y, @ExtractParam T res)
+	public static <T extends Tup2oC<Float,Integer>> T min(float x, float y, @ExtractionParam T res)
 	{
 		float value = x;
 		int index = COMP_X;
@@ -879,7 +879,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The object returned from the functional interface.
 	 */
-	public static <T> T min(float x, float y, @ExtractParam GenericFunction2<Float,Integer,T> func)
+	public static <T> T min(float x, float y, @ExtractionParam GenericFunction2<Float,Integer,T> func)
 	{
 		float value = x;
 		int index = COMP_X;
@@ -944,7 +944,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2oC<Float,Integer>> T max(float x, float y, @ExtractParam T res)
+	public static <T extends Tup2oC<Float,Integer>> T max(float x, float y, @ExtractionParam T res)
 	{
 		float value = x;
 		int index = COMP_X;
@@ -977,7 +977,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The object returned from the functional interface.
 	 */
-	public static <T> T max(float x, float y, @ExtractParam GenericFunction2<Float,Integer,T> func)
+	public static <T> T max(float x, float y, @ExtractionParam GenericFunction2<Float,Integer,T> func)
 	{
 		float value = x;
 		int index = COMP_X;
@@ -1047,7 +1047,7 @@ public class Vec2fUtil
 	 * 
 	 * @throws ArithmeticException Thrown when it is a zero-length vector.
 	 */
-	public static float[] normal(float x, float y, @ExtractParam float[] res)
+	public static float[] normal(float x, float y, @ExtractionParam float[] res)
 	{
 		float recLength = (float)(1.0 / Math.sqrt(Math.fma(x, x, y * y)));
 		
@@ -1078,7 +1078,7 @@ public class Vec2fUtil
 	 * 
 	 * @throws ArithmeticException Thrown when it is a zero-length vector.
 	 */
-	public static <T extends Vec2fC> T normal(float x, float y, @ExtractParam T res)
+	public static <T extends Vec2fC> T normal(float x, float y, @ExtractionParam T res)
 	{
 		float recLength = (float)(1.0 / Math.sqrt(Math.fma(x, x, y * y)));
 		
@@ -1111,7 +1111,7 @@ public class Vec2fUtil
 	 * 
 	 * @throws ArithmeticException Thrown when it is a zero-length vector.
 	 */
-	public static <T> T normal(float x, float y, @ExtractParam FloatFunction2<T> func)
+	public static <T> T normal(float x, float y, @ExtractionParam FloatFunction2<T> func)
 	{
 		float recLength = (float)(1.0 / Math.sqrt(Math.fma(x, x, y * y)));
 		
@@ -1139,7 +1139,7 @@ public class Vec2fUtil
 	 * 
 	 * @throws ArithmeticException Might be thrown when the length is to close to zero.
 	 */
-	public static float[] normalSafe(float x, float y, @ExtractParam float[] res)
+	public static float[] normalSafe(float x, float y, @ExtractionParam float[] res)
 	{
 		if(x + y == 0.0)
 		{
@@ -1180,7 +1180,7 @@ public class Vec2fUtil
 	 * 
 	 * @throws ArithmeticException Might be thrown when the length is to close to zero.
 	 */
-	public static <T extends Vec2fC> T normalSafe(float x, float y, @ExtractParam T res)
+	public static <T extends Vec2fC> T normalSafe(float x, float y, @ExtractionParam T res)
 	{
 		if(x + y == 0.0)
 		{
@@ -1222,7 +1222,7 @@ public class Vec2fUtil
 	 * 
 	 * @throws ArithmeticException Might be thrown when the length is to close to zero.
 	 */
-	public static <T> T normalSafe(float x, float y, @ExtractParam FloatFunction2<T> func)
+	public static <T> T normalSafe(float x, float y, @ExtractionParam FloatFunction2<T> func)
 	{
 		if(x + y == 0.0) return func.apply(0.0f, 0.0f);
 		
@@ -1250,7 +1250,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The result array with the result.
 	 */
-	public static float[] normalSafeWithMargin(float x, float y, float tolerance, @ExtractParam float[] res)
+	public static float[] normalSafeWithMargin(float x, float y, float tolerance, @ExtractionParam float[] res)
 	{
 		if(Math.abs(x) <= tolerance && Math.abs(y) <= tolerance)
 		{
@@ -1289,7 +1289,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Vec2fC> T normalSafeWithMargin(float x, float y, float tolerance, @ExtractParam T res)
+	public static <T extends Vec2fC> T normalSafeWithMargin(float x, float y, float tolerance, @ExtractionParam T res)
 	{
 		if(Math.abs(x) <= tolerance && Math.abs(y) <= tolerance)
 		{
@@ -1328,7 +1328,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The object returned from the functional interface.
 	 */
-	public static <T> T normalSafeWithMargin(float x, float y, float tolerance, @ExtractParam FloatFunction2<T> func)
+	public static <T> T normalSafeWithMargin(float x, float y, float tolerance, @ExtractionParam FloatFunction2<T> func)
 	{
 		if(Math.abs(x) <= tolerance && Math.abs(y) <= tolerance) return func.apply(0.0f, 0.0f);
 		
@@ -1351,7 +1351,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The result array with the result.
 	 */
-	public static float[] invert(float x, float y, @ExtractParam float[] res)
+	public static float[] invert(float x, float y, @ExtractionParam float[] res)
 	{
 		res[COMP_X] = -x;
 		res[COMP_Y] = -y;
@@ -1375,7 +1375,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Vec2fC> T invert(float x, float y, @ExtractParam T res)
+	public static <T extends Vec2fC> T invert(float x, float y, @ExtractionParam T res)
 	{
 		res.set(-x, -y);
 		
@@ -1401,7 +1401,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The object returned from the functional interface.
 	 */
-	public static <T> T invert(float x, float y, @ExtractParam FloatFunction2<T> func)
+	public static <T> T invert(float x, float y, @ExtractionParam FloatFunction2<T> func)
 	{
 		return func.apply(-x, -y);
 	}
@@ -1422,7 +1422,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The result array with the result.
 	 */
-	public static float[] inverse(float x, float y, float x2, float y2, @ExtractParam float[] res)
+	public static float[] inverse(float x, float y, float x2, float y2, @ExtractionParam float[] res)
 	{
 		res[COMP_X] = x2 - x;
 		res[COMP_Y] = y2 - y;
@@ -1448,7 +1448,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Vec2fC> T inverse(float x, float y, float x2, float y2, @ExtractParam T res)
+	public static <T extends Vec2fC> T inverse(float x, float y, float x2, float y2, @ExtractionParam T res)
 	{
 		res.set(x2 - x, y2 - y);
 		
@@ -1473,7 +1473,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The object returned from the functional interface.
 	 */
-	public static <T extends Vec2fC> T inverse(float x, float y, float x2, float y2, @ExtractParam FloatFunction2<T> func)
+	public static <T extends Vec2fC> T inverse(float x, float y, float x2, float y2, @ExtractionParam FloatFunction2<T> func)
 	{
 		return func.apply(x2 - x, y2 - y);
 	}
@@ -1492,7 +1492,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The result array with the result.
 	 */
-	public static float[] half(float x, float y, @ExtractParam float[] res)
+	public static float[] half(float x, float y, @ExtractionParam float[] res)
 	{
 		res[COMP_X] = x * 0.5f;
 		res[COMP_Y] = y * 0.5f;
@@ -1516,7 +1516,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	public static <T extends Vec2fC> T half(float x, float y, @ExtractParam T res)
+	public static <T extends Vec2fC> T half(float x, float y, @ExtractionParam T res)
 	{
 		res.set(x * 0.5f, y * 0.5f);
 		
@@ -1539,7 +1539,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The object returned from the functional interface.
 	 */
-	public static <T extends Vec2fC> T half(float x, float y, @ExtractParam FloatFunction2<T> func)
+	public static <T extends Vec2fC> T half(float x, float y, @ExtractionParam FloatFunction2<T> func)
 	{
 		return func.apply(x * 0.5f, y * 0.5f);
 	}
@@ -1555,7 +1555,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The result array with the result.
 	 */
-	public static float[] rotate(float x, float y, float angle, @ExtractParam float[] res)
+	public static float[] rotate(float x, float y, float angle, @ExtractionParam float[] res)
 	{
 		float cos = (float)Math.cos(angle);
 		float sin = (float)Math.sin(angle);
@@ -1579,7 +1579,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The extraction parameter object. with the result.
 	 */
-	public static <T extends Vec2fC> T rotate(float x, float y, float angle, @ExtractParam T res)
+	public static <T extends Vec2fC> T rotate(float x, float y, float angle, @ExtractionParam T res)
 	{
 		float cos = (float)Math.cos(angle);
 		float sin = (float)Math.sin(angle);
@@ -1602,7 +1602,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The object returned from the functional interface.
 	 */
-	public static <T> T rotate(float x, float y, float angle, @ExtractParam FloatFunction2<T> func)
+	public static <T> T rotate(float x, float y, float angle, @ExtractionParam FloatFunction2<T> func)
 	{
 		float cos = (float)Math.cos(angle);
 		float sin = (float)Math.sin(angle);
@@ -1623,7 +1623,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The result array with the result.
 	 */
-	public static float[] project(float x, float y, float vX, float vY, @ExtractParam float[] res)
+	public static float[] project(float x, float y, float vX, float vY, @ExtractionParam float[] res)
 	{
 		float dot = Math.fma(x, vX, y * vY);
 		
@@ -1648,7 +1648,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Vec2fC> T project(float x, float y, float vX, float vY, @ExtractParam T res)
+	public static <T extends Vec2fC> T project(float x, float y, float vX, float vY, @ExtractionParam T res)
 	{
 		float dot = Math.fma(x, vX, y * vY);
 		
@@ -1672,7 +1672,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The object returned from the functional interface.
 	 */
-	public static <T> T project(float x, float y, float vX, float vY, @ExtractParam FloatFunction2<T> func)
+	public static <T> T project(float x, float y, float vX, float vY, @ExtractionParam FloatFunction2<T> func)
 	{
 		float dot = Math.fma(x, vX, y * vY);
 
@@ -1692,7 +1692,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The result array with the result.
 	 */
-	public static float[] reflect(float x, float y, float nX, float nY, @ExtractParam float[] res)
+	public static float[] reflect(float x, float y, float nX, float nY, @ExtractionParam float[] res)
 	{
 		float dot = -2 * Math.fma(x, nX, y * nY);
 		
@@ -1717,7 +1717,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Vec2fC> T reflect(float x, float y, float nX, float nY, @ExtractParam T res)
+	public static <T extends Vec2fC> T reflect(float x, float y, float nX, float nY, @ExtractionParam T res)
 	{
 		float dot = -2 * Math.fma(x, nX, y * nY);
 		
@@ -1741,7 +1741,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The object returned from the functional interface.
 	 */
-	public static <T> T reflect(float x, float y, float nX, float nY, @ExtractParam FloatFunction2<T> func)
+	public static <T> T reflect(float x, float y, float nX, float nY, @ExtractionParam FloatFunction2<T> func)
 	{
 		float dot = -2 * Math.fma(x, nX, y * nY);
 		
@@ -1788,7 +1788,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The result array with the result.
 	 */
-	public static float[] fastLerp(Tup2fR t1, Tup2fR t2, float alpha, @ExtractParam float[] res)
+	public static float[] fastLerp(Tup2fR t1, Tup2fR t2, float alpha, @ExtractionParam float[] res)
 	{
 		return fastLerp(t1.getX(), t1.getY(), t2.getX(), t2.getY(), alpha, res);
 	}
@@ -1814,7 +1814,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The result array with the result.
 	 */
-	public static float[] fastLerp(Tup2fR t1, float x2, float y2, float alpha, @ExtractParam float[] res)
+	public static float[] fastLerp(Tup2fR t1, float x2, float y2, float alpha, @ExtractionParam float[] res)
 	{
 		return fastLerp(t1.getX(), t1.getY(), x2, y2, alpha, res);
 	}
@@ -1840,7 +1840,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The result array with the result.
 	 */
-	public static float[] fastLerp(float x1, float y1, Tup2fR t2, float alpha, @ExtractParam float[] res)
+	public static float[] fastLerp(float x1, float y1, Tup2fR t2, float alpha, @ExtractionParam float[] res)
 	{
 		return fastLerp(x1, y1, t2.getX(), t2.getY(), alpha, res);
 	}
@@ -1867,7 +1867,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The result array with the result.
 	 */
-	public static float[] fastLerp(float x1, float y1, float x2, float y2, float alpha, @ExtractParam float[] res)
+	public static float[] fastLerp(float x1, float y1, float x2, float y2, float alpha, @ExtractionParam float[] res)
 	{
 		res[COMP_X] = Math.fma(alpha, x2 - x1, x1);
 		res[COMP_Y] = Math.fma(alpha, y2 - y1, y1);
@@ -1895,7 +1895,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Vec2fC> T fastLerp(Tup2fR t1, Tup2fR t2, float alpha, @ExtractParam T res)
+	public static <T extends Vec2fC> T fastLerp(Tup2fR t1, Tup2fR t2, float alpha, @ExtractionParam T res)
 	{
 		return fastLerp(t1.getX(), t1.getY(), t2.getX(), t2.getY(), alpha, res);
 	}
@@ -1921,7 +1921,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Vec2fC> T fastLerp(Tup2fR t1, float x2, float y2, float alpha, @ExtractParam T res)
+	public static <T extends Vec2fC> T fastLerp(Tup2fR t1, float x2, float y2, float alpha, @ExtractionParam T res)
 	{
 		return fastLerp(t1.getX(), t1.getY(), x2, y2, alpha, res);
 	}
@@ -1947,7 +1947,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Vec2fC> T fastLerp(float x1, float y1, Tup2fR t2, float alpha, @ExtractParam T res)
+	public static <T extends Vec2fC> T fastLerp(float x1, float y1, Tup2fR t2, float alpha, @ExtractionParam T res)
 	{
 		return fastLerp(x1, y1, t2.getX(), t2.getY(), alpha, res);
 	}
@@ -1974,7 +1974,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Vec2fC> T fastLerp(float x1, float y1, float x2, float y2, float alpha, @ExtractParam T res)
+	public static <T extends Vec2fC> T fastLerp(float x1, float y1, float x2, float y2, float alpha, @ExtractionParam T res)
 	{
 		res.set(Math.fma(alpha, x2 - x1, x1), Math.fma(alpha, y2 - y1, y1));
 		
@@ -2001,7 +2001,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The object returned from the functional interface.
 	 */
-	public static <T> T fastLerp(Tup2fR t1, Tup2fR t2, float alpha, @ExtractParam FloatFunction2<T> func)
+	public static <T> T fastLerp(Tup2fR t1, Tup2fR t2, float alpha, @ExtractionParam FloatFunction2<T> func)
 	{
 		return fastLerp(t1.getX(), t1.getY(), t2.getX(), t2.getY(), alpha, func);
 	}
@@ -2027,7 +2027,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The object returned from the functional interface.
 	 */
-	public static <T> T fastLerp(Tup2fR t1, float x2, float y2, float alpha, @ExtractParam FloatFunction2<T> func)
+	public static <T> T fastLerp(Tup2fR t1, float x2, float y2, float alpha, @ExtractionParam FloatFunction2<T> func)
 	{
 		return fastLerp(t1.getX(), t1.getY(), x2, y2, alpha, func);
 	}
@@ -2053,7 +2053,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The object returned from the functional interface.
 	 */
-	public static <T> T fastLerp(float x1, float y1, Tup2fR t2, float alpha, @ExtractParam FloatFunction2<T> func)
+	public static <T> T fastLerp(float x1, float y1, Tup2fR t2, float alpha, @ExtractionParam FloatFunction2<T> func)
 	{
 		return fastLerp(x1, y1, t2.getX(), t2.getY(), alpha, func);
 	}
@@ -2080,7 +2080,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The object returned from the functional interface.
 	 */
-	public static <T> T fastLerp(float x1, float y1, float x2, float y2, float alpha, @ExtractParam FloatFunction2<T> func)
+	public static <T> T fastLerp(float x1, float y1, float x2, float y2, float alpha, @ExtractionParam FloatFunction2<T> func)
 	{
 		return func.apply(Math.fma(alpha, x2 - x1, x1), Math.fma(alpha, y2 - y1, y1));
 	}
@@ -2102,7 +2102,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The result array with the result.
 	 */
-	public static float[] lerp(Tup2fR t1, Tup2fR t2, float alpha, @ExtractParam float[] res)
+	public static float[] lerp(Tup2fR t1, Tup2fR t2, float alpha, @ExtractionParam float[] res)
 	{
 		return lerp(t1.getX(), t1.getY(), t2.getX(), t2.getY(), alpha, res);
 	}
@@ -2125,7 +2125,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The result array with the result.
 	 */
-	public static float[] lerp(Tup2fR t1, float x2, float y2, float alpha, @ExtractParam float[] res)
+	public static float[] lerp(Tup2fR t1, float x2, float y2, float alpha, @ExtractionParam float[] res)
 	{
 		return lerp(t1.getX(), t1.getY(), x2, y2, alpha, res);
 	}
@@ -2148,7 +2148,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The result array with the result.
 	 */
-	public static float[] lerp(float x1, float y1, Tup2fR t2, float alpha, @ExtractParam float[] res)
+	public static float[] lerp(float x1, float y1, Tup2fR t2, float alpha, @ExtractionParam float[] res)
 	{
 		return lerp(x1, y1, t2.getX(), t2.getY(), alpha, res);
 	}
@@ -2172,7 +2172,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The result array with the result.
 	 */
-	public static float[] lerp(float x1, float y1, float x2, float y2, float alpha, @ExtractParam float[] res)
+	public static float[] lerp(float x1, float y1, float x2, float y2, float alpha, @ExtractionParam float[] res)
 	{
 		res[COMP_X] = Math.fma(1.0f - alpha, x1, alpha * x2);
 		res[COMP_Y] = Math.fma(1.0f - alpha, y1, alpha * y2);
@@ -2197,7 +2197,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Vec2fC> T lerp(Tup2fR t1, Tup2fR t2, float alpha, @ExtractParam T res)
+	public static <T extends Vec2fC> T lerp(Tup2fR t1, Tup2fR t2, float alpha, @ExtractionParam T res)
 	{
 		return lerp(t1.getX(), t1.getY(), t2.getX(), t2.getY(), alpha, res);
 	}
@@ -2220,7 +2220,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Vec2fC> T lerp(Tup2fR t1, float x2, float y2, float alpha, @ExtractParam T res)
+	public static <T extends Vec2fC> T lerp(Tup2fR t1, float x2, float y2, float alpha, @ExtractionParam T res)
 	{
 		return lerp(t1.getX(), t1.getY(), x2, y2, alpha, res);
 	}
@@ -2243,7 +2243,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Vec2fC> T lerp(float x1, float y1, Tup2fR t2, float alpha, @ExtractParam T res)
+	public static <T extends Vec2fC> T lerp(float x1, float y1, Tup2fR t2, float alpha, @ExtractionParam T res)
 	{
 		return lerp(x1, y1, t2.getX(), t2.getY(), alpha, res);
 	}
@@ -2267,7 +2267,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Vec2fC> T lerp(float x1, float y1, float x2, float y2, float alpha, @ExtractParam T res)
+	public static <T extends Vec2fC> T lerp(float x1, float y1, float x2, float y2, float alpha, @ExtractionParam T res)
 	{
 		res.set(Math.fma(1.0f - alpha, x1, alpha * x2), Math.fma(1.0f - alpha, y1, alpha * y2));
 		
@@ -2291,7 +2291,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The object returned from the functional interface.
 	 */
-	public static <T> T lerp(Tup2fR t1, Tup2fR t2, float alpha, @ExtractParam FloatFunction2<T> func)
+	public static <T> T lerp(Tup2fR t1, Tup2fR t2, float alpha, @ExtractionParam FloatFunction2<T> func)
 	{
 		return lerp(t1.getX(), t1.getY(), t2.getX(), t2.getY(), alpha, func);
 	}
@@ -2314,7 +2314,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The object returned from the functional interface.
 	 */
-	public static <T> T lerp(Tup2fR t1, float x2, float y2, float alpha, @ExtractParam FloatFunction2<T> func)
+	public static <T> T lerp(Tup2fR t1, float x2, float y2, float alpha, @ExtractionParam FloatFunction2<T> func)
 	{
 		return lerp(t1.getX(), t1.getY(), x2, y2, alpha, func);
 	}
@@ -2337,7 +2337,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The object returned from the functional interface.
 	 */
-	public static <T> T lerp(float x1, float y1, Tup2fR t2, float alpha, @ExtractParam FloatFunction2<T> func)
+	public static <T> T lerp(float x1, float y1, Tup2fR t2, float alpha, @ExtractionParam FloatFunction2<T> func)
 	{
 		return lerp(x1, y1, t2.getX(), t2.getY(), alpha, func);
 	}
@@ -2361,7 +2361,7 @@ public class Vec2fUtil
 	 * 
 	 * @return The object returned from the functional interface.
 	 */
-	public static <T> T lerp(float x1, float y1, float x2, float y2, float alpha, @ExtractParam FloatFunction2<T> func)
+	public static <T> T lerp(float x1, float y1, float x2, float y2, float alpha, @ExtractionParam FloatFunction2<T> func)
 	{
 		return func.apply(Math.fma(alpha, x2 - x1, x1), Math.fma(alpha, y2 - y1, y1));
 	}

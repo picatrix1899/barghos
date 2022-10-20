@@ -10,7 +10,7 @@ public interface Validateable
 {
 	/**
 	 * Returns true if the current object is in a valid state.
-	 * What the valid state is depends on the implementation.
+	 * The definition of beeing in a valid state depends on the implementation.
 	 * 
 	 * @return True if the object is in a valid state.
 	 */

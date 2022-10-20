@@ -11,7 +11,7 @@ import org.barghos.math.BarghosMath;
 import org.barghos.math.api.matrix.Mat4fR;
 import org.barghos.math.api.model.AxisAngle3fR;
 import org.barghos.math.api.util.Maths;
-import org.barghos.math.api.vector.QuatfR;
+import org.barghos.math.api.vector.QuatR;
 import org.barghos.math.api.vector.Vec3fC;
 import org.barghos.math.api.vector.Vec3fR;
 import org.barghos.math.api.vector.Vec3fUtil;
@@ -281,34 +281,34 @@ public class Vec3f implements Vec3fC
 	
 	/** {@inheritDoc}} */
 	@Override
-	public Vec3fC normalUnsafe()
+	public Vec3fC normalizeUnsafe()
 	{
-		return Vec3fUtil.normal(getX(), getY(), getZ(), this);
+		return Vec3fUtil.normalize(getX(), getY(), getZ(), this);
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
-	public Vec3fC normal()
+	public Vec3fC normalize()
 	{
 		if(isExactlyZero()) return set(0.0f);
 		
-		return normalUnsafe();
+		return normalizeUnsafe();
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
-	public Vec3fC normal(float tolerance)
+	public Vec3fC normalize(float tolerance)
 	{
 		if(isZero(tolerance)) return set(0.0f);
 		
-		return normalUnsafe();
+		return normalizeUnsafe();
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	public Vec3fC negate()
 	{
-		return Vec3fUtil.invert(getX(), getY(), getZ(), this);
+		return Vec3fUtil.negate(getX(), getY(), getZ(), this);
 	}
 	
 	/** {@inheritDoc}} */
@@ -603,7 +603,7 @@ public class Vec3f implements Vec3fC
 		return this;
 	}
 
-	public Vec3fC rotate(QuatfR q)
+	public Vec3fC rotate(QuatR q)
 	{
 		q.transform(this, this);
 		
@@ -640,19 +640,19 @@ public class Vec3f implements Vec3fC
 		return clone().revDiv(x, y, z);
 	}
 	
-	public Vec3fC normalUnsafeN()
+	public Vec3fC normalizeUnsafeN()
 	{
-		return clone().normalUnsafe();
+		return clone().normalizeUnsafe();
 	}
 	
-	public Vec3fC normalN()
+	public Vec3fC normalizeN()
 	{
-		return clone().normal();
+		return clone().normalize();
 	}
 	
-	public Vec3fC normalN(float tolerance)
+	public Vec3fC normalizeN(float tolerance)
 	{
-		return clone().normal(tolerance);
+		return clone().normalize(tolerance);
 	}
 	
 	public Vec3fC negateN()
@@ -1004,8 +1004,19 @@ public class Vec3f implements Vec3fC
 		return clone().rotate(aa);
 	}
 
-	public Vec3fC rotateN(QuatfR q)
+	public Vec3fC rotateN(QuatR q)
 	{
 		return clone().rotate(q);
+	}
+
+	public float signedAngleTo(float x, float y, float z)
+	{
+		Vec3fC cross = crossN(x, y, z);
+		
+		float length = cross.length();
+		
+		float dot = dot(x, y, z);
+		
+		return (float)Math.atan2(length, dot);
 	}
 }

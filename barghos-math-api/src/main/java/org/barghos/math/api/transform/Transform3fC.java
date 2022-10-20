@@ -1,100 +1,68 @@
 package org.barghos.math.api.transform;
 
-import static org.barghos.core.api.tuple.TupleConstants.*;
-
 import org.barghos.core.api.tuple3.Tup3fR;
-import org.barghos.math.api.vector.QuatfR;
+import org.barghos.math.api.vector.QuatR;
 
-// MISSING_DOC
 public interface Transform3fC extends Transform3fR
 {
-	// MISSING_DOC
-	Transform3fC set(Transform3fR t);
+	Transform3fC set(Transform3fR tr);
 	
-	// MISSING_DOC
+	Transform3fC set(Tup3fR pos, QuatR rot, Tup3fR scale);
+	
 	default Transform3fC setPos(Tup3fR t)
 	{
 		return setPos(t.getX(), t.getY(), t.getZ());
 	}
 	
-	// MISSING_DOC
-	default Transform3fC setPos(float[] t)
+	default Transform3fC setPos(float value)
 	{
-		return setPos(t[COMP_X], t[COMP_Y], t[COMP_Z]);
+		return setPos(value, value, value);
 	}
 	
-	// MISSING_DOC
+	Transform3fC reset();
+	
 	Transform3fC setPos(float x, float y, float z);
 	
-	// MISSING_DOC
+	Transform3fC setRot(QuatR rot);
+	
 	default Transform3fC setScale(Tup3fR t)
 	{
 		return setScale(t.getX(), t.getY(), t.getZ());
 	}
 	
-	// MISSING_DOC
-	default Transform3fC setScale(float[] t)
+	default Transform3fC setScale(float value)
 	{
-		return setScale(t[COMP_X], t[COMP_Y], t[COMP_Z]);
+		return setScale(value, value, value);
 	}
 	
-	// MISSING_DOC
-	default Transform3fC setScale(float factor)
-	{
-		return setScale(factor, factor, factor);
-	}
-	
-	// MISSING_DOC
 	Transform3fC setScale(float x, float y, float z);
 	
-	// MISSING_DOC
-	Transform3fC setOrientation(Orientation3fR o);
+	Transform3fC clone();
 	
-	// MISSING_DOC
 	default Transform3fC move(Tup3fR t)
 	{
 		return move(t.getX(), t.getY(), t.getZ());
 	}
 	
-	// MISSING_DOC
-	default Transform3fC move(float[] t)
+	default Transform3fC move(float value)
 	{
-		return move(t[COMP_X], t[COMP_Y], t[COMP_Z]);
+		return move(value);
 	}
 	
-	// MISSING_DOC
 	Transform3fC move(float x, float y, float z);
 	
-	// MISSING_DOC
-	default Transform3fC rotate(Tup3fR axis, float angle)
+	Transform3fC rotate(QuatR rot);
+	
+	
+	default Transform3fC scale(Tup3fR t)
 	{
-		return rotate(axis.getX(), axis.getY(), axis.getZ(), angle);
+		return scale(t.getX(), t.getY(), t.getZ());
 	}
 	
-	// MISSING_DOC
-	default Transform3fC rotate(float[] axis, float angle)
+	default Transform3fC scale(float value)
 	{
-		return rotate(axis[COMP_X], axis[COMP_Y], axis[COMP_Z], angle);
+		return scale(value, value, value);
 	}
 	
-	// MISSING_DOC
-	Transform3fC rotate(float aX, float aY, float aZ, float angle);
-	
-	// MISSING_DOC
-	default Transform3fC rotateDeg(Tup3fR axis, float angle)
-	{
-		return rotateDeg(axis.getX(), axis.getY(), axis.getZ(), angle);
-	}
-	
-	// MISSING_DOC
-	default Transform3fC rotateDeg(float[] axis, float angle)
-	{
-		return rotateDeg(axis[COMP_X], axis[COMP_Y], axis[COMP_Z], angle);
-	}
-	
-	// MISSING_DOC
-	Transform3fC rotateDeg(float aX, float aY, float aZ, float angle);
-	
-	// MISSING_DOC
-	Transform3fC rotate(QuatfR q);
+	Transform3fC scale(float x, float y, float z);
 }

@@ -13,7 +13,7 @@ import org.barghos.core.api.tuple4.Tup4fR;
 import org.barghos.math.BarghosMath;
 import org.barghos.math.api.matrix.Mat4fC;
 import org.barghos.math.api.matrix.Mat4fR;
-import org.barghos.math.api.vector.QuatfR;
+import org.barghos.math.api.vector.QuatR;
 import org.barghos.math.api.vector.Vec3fUtil;
 
 // MISSING_DOC
@@ -350,21 +350,21 @@ public class Mat4f implements Mat4fC
 
 	/** {@inheritDoc}} */
 	@Override
-	public Mat4fC rotate(QuatfR q)
+	public Mat4fC rotate(QuatR q)
 	{
 		return revMul(new Mat4f().initRotation(q));
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
-	public Mat4fC rotateRH(QuatfR q)
+	public Mat4fC rotateRH(QuatR q)
 	{
 		return revMul(new Mat4f().initRotationRH(q));
 	}
 
 	/** {@inheritDoc}} */
 	@Override
-	public Mat4fC rotateLH(QuatfR q)
+	public Mat4fC rotateLH(QuatR q)
 	{
 		return revMul(new Mat4f().initRotationLH(q));
 	}
@@ -716,38 +716,38 @@ public class Mat4f implements Mat4fC
 	
 	/** {@inheritDoc}} */
 	@Override
-	public Mat4fC initRotation(QuatfR q)
+	public Mat4fC initRotation(QuatR q)
 	{
 		return initRotation(q, BarghosMath.DEFAULT_SYSTEM_3f_IS_RIGHTHANDED);
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
-	public Mat4fC initRotationRH(QuatfR q)
+	public Mat4fC initRotationRH(QuatR q)
 	{
-		float qX = q.getX();
-		float qY = q.getY();
-		float qZ = q.getZ();
-		float qW = q.getW();
+		double qX = q.getX();
+		double qY = q.getY();
+		double qZ = q.getZ();
+		double qW = q.getW();
 		
 		setRow(0,
-				1.0f - 2.0f	* (qY * qY + qZ * qZ),
-				2.0f		* (qX * qY - qZ * qW),
-				2.0f		* (qX * qZ + qW * qY),
-				0.0f
+				(float)(1.0 - 2.0	* (qY * qY + qZ * qZ)),
+				(float)(2.0		* (qX * qY - qZ * qW)),
+				(float)(2.0		* (qX * qZ + qW * qY)),
+				(float)0.0f
 				);
 		
 		setRow(1,
-				2.0f		* (qX * qY + qZ * qW),
-				1.0f - 2.0f	* (qX * qX + qZ * qZ),
-				2.0f		* (qY * qZ - qW * qX),
+				(float)(2.0		* (qX * qY + qZ * qW)),
+				(float)(1.0 - 2.0	* (qX * qX + qZ * qZ)),
+				(float)(2.0		* (qY * qZ - qW * qX)),
 				0.0f
 				);
 		
 		setRow(2,
-				2.0f		* (qX * qZ - qW * qY),
-				2.0f		* (qY * qZ + qW * qX),
-				1.0f - 2.0f	* (qX * qX + qY * qY),
+				(float)(2.0		* (qX * qZ - qW * qY)),
+				(float)(2.0		* (qY * qZ + qW * qX)),
+				(float)(1.0 - 2.0	* (qX * qX + qY * qY)),
 				0.0f
 				);
 		
@@ -758,31 +758,31 @@ public class Mat4f implements Mat4fC
 	
 	/** {@inheritDoc}} */
 	@Override
-	public Mat4fC initRotationLH(QuatfR q)
+	public Mat4fC initRotationLH(QuatR q)
 	{
-		float qX = q.getX();
-		float qY = q.getY();
-		float qZ = q.getZ();
-		float qW = q.getW();
+		double qX = q.getX();
+		double qY = q.getY();
+		double qZ = q.getZ();
+		double qW = q.getW();
 		
 		setRow(0,
-				1.0f - 2.0f	* (qY * qY + qZ * qZ),
-				2.0f		* (qX * qY - qZ * qW),
-				2.0f		* (qX * qZ + qW * qY),
+				(float)(1.0 - 2.0	* (qY * qY + qZ * qZ)),
+				(float)(2.0		* (qX * qY - qZ * qW)),
+				(float)(2.0		* (qX * qZ + qW * qY)),
 				0.0f
 				);
 		
 		setRow(1,
-				2.0f		* (qX * qY + qZ * qW),
-				1.0f - 2.0f	* (qX * qX + qZ * qZ),
-				2.0f		* (qY * qZ - qW * qX),
+				(float)(2.0		* (qX * qY + qZ * qW)),
+				(float)(1.0 - 2.0f	* (qX * qX + qZ * qZ)),
+				(float)(2.0		* (qY * qZ - qW * qX)),
 				0.0f
 				);
 		
 		setRow(2,
-				2.0f		* (qX * qZ - qW * qY),
-				2.0f		* (qY * qZ + qW * qX),
-				1.0f - 2.0f	* (qX * qX + qY * qY),
+				(float)(2.0		* (qX * qZ - qW * qY)),
+				(float)(2.0		* (qY * qZ + qW * qX)),
+				(float)(1.0 - 2.0f	* (qX * qX + qY * qY)),
 				0.0f
 				);
 		
@@ -1027,7 +1027,7 @@ public class Mat4f implements Mat4fC
 	}
 	
 	// MISSING_DOC
-	public static Mat4fC rotation(QuatfR q)
+	public static Mat4fC rotation(QuatR q)
 	{
 		return new Mat4f().initRotation(q);
 	}

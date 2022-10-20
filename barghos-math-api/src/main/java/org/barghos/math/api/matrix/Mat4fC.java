@@ -5,8 +5,7 @@ import static org.barghos.core.api.tuple.TupleConstants.*;
 import org.barghos.core.api.tuple2.Tup2fR;
 import org.barghos.core.api.tuple3.Tup3fR;
 import org.barghos.core.api.tuple4.Tup4fR;
-import org.barghos.math.api.transform.SystemOrientation3fR;
-import org.barghos.math.api.vector.QuatfR;
+import org.barghos.math.api.vector.QuatR;
 import org.barghos.math.api.vector.Vec3fUtil;
 
 /**
@@ -974,73 +973,6 @@ public interface Mat4fC extends Mat4fR
 	 * @return The current matrix.
 	 */
 	Mat4fC initBaseChangeLH(float uX, float uY, float uZ, float fX, float fY, float fZ);
-	
-	/**
-	 * Initializes the matrix as a 3d rotation matrix from a linear system.
-	 * The handedness of the rotation is determined by the matrix implementation.
-	 * 
-	 * @param system The linear system to use.
-	 * 
-	 * @return The current matrix.
-	 */
-	default Mat4fC initBaseChange(SystemOrientation3fR system)
-	{
-		float[] r = system.getRight(new float[3]);
-		float[] u = system.getUp(new float[3]); 
-		float[] f = system.getForward(new float[3]); 
-		
-		return initBaseChange(r[COMP_X], r[COMP_Y], r[COMP_Z], u[COMP_X], u[COMP_Y], u[COMP_Z], f[COMP_X], f[COMP_Y], f[COMP_Z]);
-	}
-	
-	/**
-	 * Initializes the matrix as a 3d rotation matrix from a linear system.
-	 * The handedness of the rotation is right handed if the parameter rightHanded is set to true. Otherwise it is left handed.
-	 * 
-	 * @param system The linear system to use.
-	 * @param rightHanded Specifies if true that the rotation is right handed. Otherwise it is left handed.
-	 * 
-	 * @return The current matrix.
-	 */
-	default Mat4fC initBaseChange(SystemOrientation3fR system, boolean rightHanded)
-	{
-		float[] r = system.getRight(new float[3]);
-		float[] u = system.getUp(new float[3]); 
-		float[] f = system.getForward(new float[3]); 
-		
-		return initBaseChange(r[COMP_X], r[COMP_Y], r[COMP_Z], u[COMP_X], u[COMP_Y], u[COMP_Z], f[COMP_X], f[COMP_Y], f[COMP_Z], rightHanded);
-	}
-	
-	/**
-	 * Initializes the matrix as a right handed 3d rotation matrix from a linear system.
-	 * 
-	 * @param system The linear system to use.
-	 * 
-	 * @return The current matrix.
-	 */
-	default Mat4fC initBaseChangeRH(SystemOrientation3fR system)
-	{
-		float[] r = system.getRight(new float[3]);
-		float[] u = system.getUp(new float[3]); 
-		float[] f = system.getForward(new float[3]); 
-		
-		return initBaseChangeRH(r[COMP_X], r[COMP_Y], r[COMP_Z], u[COMP_X], u[COMP_Y], u[COMP_Z], f[COMP_X], f[COMP_Y], f[COMP_Z]);
-	}
-	
-	/**
-	 * Initializes the matrix as a left handed 3d rotation matrix from a linear system.
-	 * 
-	 * @param system The linear system to use.
-	 * 
-	 * @return The current matrix.
-	 */
-	default Mat4fC initBaseChangeLH(SystemOrientation3fR system)
-	{
-		float[] r = system.getRight(new float[3]);
-		float[] u = system.getUp(new float[3]); 
-		float[] f = system.getForward(new float[3]); 
-		
-		return initBaseChangeLH(r[COMP_X], r[COMP_Y], r[COMP_Z], u[COMP_X], u[COMP_Y], u[COMP_Z], f[COMP_X], f[COMP_Y], f[COMP_Z]);
-	}
 	
 	/**
 	 * Initializes the matrix as a 3d rotation matrix from a right vector, an up vector and a forward vector.
@@ -2023,7 +1955,7 @@ public interface Mat4fC extends Mat4fR
 	 * 
 	 * @return The current matrix.
 	 */
-	Mat4fC initRotation(QuatfR q);
+	Mat4fC initRotation(QuatR q);
 	
 	/**
 	 * Initializes the matrix as a 3d rotation matrix from a 3d quaternion.
@@ -2034,7 +1966,7 @@ public interface Mat4fC extends Mat4fR
 	 * 
 	 * @return The current matrix.
 	 */
-	default Mat4fC initRotation(QuatfR q, boolean rightHanded)
+	default Mat4fC initRotation(QuatR q, boolean rightHanded)
 	{
 		if(rightHanded) return initRotationRH(q);
 		return initRotationLH(q);
@@ -2047,7 +1979,7 @@ public interface Mat4fC extends Mat4fR
 	 * 
 	 * @return The current matrix.
 	 */
-	Mat4fC initRotationRH(QuatfR q);
+	Mat4fC initRotationRH(QuatR q);
 	
 	/**
 	 * Initializes the matrix as a left handed 3d rotation matrix from a 3d quaternion.
@@ -2056,7 +1988,7 @@ public interface Mat4fC extends Mat4fR
 	 * 
 	 * @return The current matrix.
 	 */
-	Mat4fC initRotationLH(QuatfR q);
+	Mat4fC initRotationLH(QuatR q);
 	
 	/**
 	 * Initializes the matrix as a 3d rotation matrix from a vector axis as rotation axis and an angle in radians.
@@ -2249,10 +2181,10 @@ public interface Mat4fC extends Mat4fR
 	{
 		float[] dir = new float[3];
 		Vec3fUtil.sub(tX, tY, tZ, oX, oY, oZ, dir);
-		Vec3fUtil.normal(dir[COMP_X], dir[COMP_Y], dir[COMP_Z], dir);
+		Vec3fUtil.normalize(dir, dir);
 		
 		float[] right = new float[3];
-		Vec3fUtil.cross(dir[COMP_X], dir[COMP_Y], dir[COMP_Z], uX, uY, uZ, right);
+		Vec3fUtil.cross(dir, uX, uY, uZ, right);
 
 		return initBaseChange(right[COMP_X], right[COMP_Y], right[COMP_Z], uX, uY, uZ, dir[COMP_X], dir[COMP_Y], dir[COMP_Z]);
 	}
@@ -2588,20 +2520,20 @@ public interface Mat4fC extends Mat4fR
 	Mat4fC baseChangeLH(float rX, float rY, float rZ, float uX, float uY, float uZ, float fX, float fY, float fZ);
 	
 	// MISSING_DOC
-	Mat4fC rotate(QuatfR q);
+	Mat4fC rotate(QuatR q);
 	
 	// MISSING_DOC
-	default Mat4fC rotate(QuatfR q, boolean rightHanded)
+	default Mat4fC rotate(QuatR q, boolean rightHanded)
 	{
 		if(rightHanded) return rotateRH(q);
 		return rotateLH(q);
 	}
 	
 	// MISSING_DOC
-	Mat4fC rotateRH(QuatfR q);
+	Mat4fC rotateRH(QuatR q);
 	
 	// MISSING_DOC
-	Mat4fC rotateLH(QuatfR q);
+	Mat4fC rotateLH(QuatR q);
 	
 	// MISSING_DOC
 	default Mat4fC rotate(Tup3fR axis, float angle)

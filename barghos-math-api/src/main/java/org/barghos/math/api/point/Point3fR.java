@@ -2,6 +2,7 @@ package org.barghos.math.api.point;
 
 import org.barghos.core.api.tuple3.Tup3fC;
 import org.barghos.core.api.tuple3.Tup3fR;
+import org.barghos.math.api.vector.Vec3fR;
 
 /**
  * This interface grants readonly access to any 3-dimensional float point.
@@ -12,19 +13,8 @@ import org.barghos.core.api.tuple3.Tup3fR;
  * 
  * @author picatrix1899
  */
-public interface Point3fR extends Tup3fR
-{
-	/**
-	 * Copies the values of the components of the current point to the query parameter.
-	 * 
-	 * @param <T> The type of the query parameter.
-	 * 
-	 * @param res The query parameter.
-	 * 
-	 * @return The query parameter with the values.
-	 */
-	<T extends Tup3fC> T copyTo(T res);
-	
+public interface Point3fR extends Vec3fR
+{	
 	/**
 	 * Calculates the vector from this point to the given second point and saves the result in the
 	 * query parameter.

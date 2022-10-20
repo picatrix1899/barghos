@@ -2,45 +2,73 @@ package org.barghos.math.api.model;
 
 import org.barghos.core.api.tuple3.Tup3fR;
 
-// MISSING_DOC
+/**
+ * This interface grants readonly access to a semi-vector consisting of the three euler angles pitch, yaw and roll in radians.
+ * 
+ * @author picatrix1899
+ */
 public interface EulerAngle3fR extends Tup3fR
 {
-	// MISSING_DOC
+	/** {@inheritDoc} */
 	@Override
 	default float getX()
 	{
 		return getPitch();
 	}
 	
-	// MISSING_DOC
-	@Override
-	default float getZ()
-	{
-		return getRoll();
-	}
-	
-	// MISSING_DOC
+	/** {@inheritDoc} */
 	@Override
 	default float getY()
 	{
 		return getYaw();
 	}
 	
-	// MISSING_DOC
+	/** {@inheritDoc} */
+	@Override
+	default float getZ()
+	{
+		return getRoll();
+	}
+	
+	/**
+	 * Returns the pitch euler angle in degrees.
+	 * 
+	 * @return the pitch angle in degrees.
+	 */
 	float getPitchDeg();
 	
-	// MISSING_DOC
+	/**
+	 * Returns the pitch euler angle in radians.
+	 * 
+	 * @return the pitch angle in radians.
+	 */
 	float getPitch();
 	
-	// MISSING_DOC
+	/**
+	 * Returns the yaw euler angle in degrees.
+	 * 
+	 * @return the yaw angle in degrees.
+	 */
 	float getYawDeg();
 	
-	// MISSING_DOC
+	/**
+	 * Returns the yaw euler angle in radians.
+	 * 
+	 * @return the yaw angle in radians.
+	 */
 	float getYaw();
 	
-	// MISSING_DOC
+	/**
+	 * Returns the roll euler angle in degrees.
+	 * 
+	 * @return the roll angle in degrees.
+	 */
 	float getRollDeg();
 	
-	// MISSING_DOC
+	/**
+	 * Returns the roll euler angle in radians.
+	 * 
+	 * @return the roll angle in radians.
+	 */
 	float getRoll();
 }

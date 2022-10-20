@@ -1,8 +1,8 @@
 package org.barghos.math.api.model;
 
+import org.barghos.core.api.documentation.ExtractionParam;
 import org.barghos.core.api.tuple3.Tup3fC;
 import org.barghos.core.api.tuple4.Tup4fR;
-import org.barghos.core.api.util.ExtractParam;
 import org.barghos.math.api.vector.Vec3fC;
 
 // MISSING_DOC
@@ -46,10 +46,10 @@ public interface AxisAngle3fR extends Tup4fR
 	Vec3fC getAxis();
 	
 	// MISSING_DOC
-	<T extends Tup3fC> T getAxis(@ExtractParam T res);
+	<T extends Tup3fC> T getAxis(@ExtractionParam T res);
 	
 	// MISSING_DOC
-	float[] getAxis(@ExtractParam float[] res);
+	float[] getAxis(@ExtractionParam float[] res);
 	
 	// MISSING_DOC
 	float getAxisX();

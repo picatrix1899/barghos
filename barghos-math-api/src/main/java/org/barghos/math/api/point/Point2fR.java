@@ -1,7 +1,8 @@
 package org.barghos.math.api.point;
 
 import org.barghos.core.api.tuple2.Tup2fC;
-import org.barghos.core.api.tuple2.Tup2fR;
+
+import org.barghos.math.api.vector.Vec2fR;
 
 /**
  * This interface grants readonly access to any 2-dimensional float point.
@@ -12,19 +13,8 @@ import org.barghos.core.api.tuple2.Tup2fR;
  * 
  * @author picatrix1899
  */
-public interface Point2fR extends Tup2fR
-{
-	/**
-	 * Copies the values of the components of the current point to the query parameter.
-	 * 
-	 * @param <T> The type of the query parameter.
-	 * 
-	 * @param res The query parameter.
-	 * 
-	 * @return The query parameter with the values.
-	 */
-	<T extends Tup2fC> T copyTo(T res);
-	
+public interface Point2fR extends Vec2fR
+{	
 	/**
 	 * Calculates the vector from this point to the given second point and saves the result in the
 	 * query parameter.
@@ -36,7 +26,7 @@ public interface Point2fR extends Tup2fR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	<T extends Tup2fC> T vectorTo(Point2dR p, T res);
+	<T extends Tup2fC> T vectorTo(Point2fR p, T res);
 	
 	/**
 	 * Calculates the vector from this point to the given second point defined by the components and saves the result in the
@@ -63,7 +53,7 @@ public interface Point2fR extends Tup2fR
 	 * 
 	 * @return The query parameter with the result.
 	 */
-	<T extends Tup2fC> T vectorFrom(Point2dR p, T res);
+	<T extends Tup2fC> T vectorFrom(Point2fR p, T res);
 	
 	/**
 	 * Calculates the vector from the given second point defined by the components to this point and saves the result in the
