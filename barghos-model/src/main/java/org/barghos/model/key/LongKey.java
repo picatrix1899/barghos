@@ -1,4 +1,4 @@
-package org.barghos.core.api.key;
+package org.barghos.model.key;
 
 /**
  * This interface represents an unique key with a long as identifier.
