@@ -8,7 +8,6 @@ import org.barghos.core.api.pool.Pool;
 
 import org.barghos.core.pool.DequePool;
 import org.barghos.core.pool.DequePoolFactory;
-import org.barghos.core.tuple2.Tup2f;
 
 /**
  * This class provides component tests for the class {@link DequePoolFactory}
@@ -43,9 +42,19 @@ class DequePoolFactoryTest
 	@Test
 	void createTest()
 	{
-		Pool<Tup2f> p = DequePoolFactory.get().create(Tup2f.class);
+		Pool<TestClass> p = DequePoolFactory.get().create(TestClass.class);
 		
 		assertNotNull(p);
 		assertTrue(p instanceof DequePool);
+	}
+	
+	/**
+	 * This is a test class.
+	 * 
+	 * @author picatrix1899
+	 */
+	class TestClass
+	{
+		
 	}
 }
