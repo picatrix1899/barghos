@@ -1,0 +1,36 @@
+plugins {
+	id 'java-library'
+}
+
+dependencies {
+  implementation project(':barghos-core-api')
+  implementation project(':barghos-math-api')
+  implementation project(':barghos-math')
+  
+  testImplementation project(':barghos-testutils')
+}
+
+publishing {
+  publications {
+    mavenJava(MavenPublication) {
+      artifactId = 'barghos-math-simd'
+		
+      from components.java
+		
+      pom {
+        name = 'Project Barghos Math Library'
+        url = 'https://github.com/picatrix1899/barghos/'
+      }
+    }
+  }
+}
+
+tasks.withType(Javadoc).all { failOnError = false }
+
+tasks.withType(AbstractCompile) {
+  options.compilerArgs += ["--add-modules", "jdk.incubator.vector"]
+}
+
+tasks.withType(Test) {
+  jvmArgs += ["--add-modules", "jdk.incubator.vector"]
+}

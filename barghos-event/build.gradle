@@ -1,0 +1,23 @@
+plugins {
+  id 'java-library'
+}
+
+dependencies {
+  testImplementation project(':barghos-testutils')
+}
+
+publishing {
+  publications {
+    mavenJava(MavenPublication) {
+      artifactId = 'barghos-event'
+		
+      from components.java
+		
+      pom {
+        name = 'Project Barghos Event System Library'
+        description = 'This library contains the API and implementations of the event systems of Project Barghos.'
+        url = 'https://github.com/picatrix1899/barghos/'
+      }
+    }
+  }
+}

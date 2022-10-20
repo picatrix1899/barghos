@@ -1,0 +1,26 @@
+plugins {
+  id 'java-library'
+}
+
+dependencies {
+  implementation project(':barghos-documentation')
+  implementation project(':barghos-tuple-api')
+  
+  testImplementation project(':barghos-testutils')
+}
+
+publishing {
+  publications {
+    mavenJava(MavenPublication) {
+      artifactId = 'barghos-tuple'
+		
+      from components.java
+		
+      pom {
+        name = 'Project Barghos Tuple Library'
+        description = 'This library contains the tuple implementations of Project Barghos.'
+        url = 'https://github.com/picatrix1899/barghos/'
+      }
+    }
+  }
+}

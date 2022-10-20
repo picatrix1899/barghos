@@ -1,0 +1,22 @@
+plugins {
+  id 'java-library'
+}
+
+dependencies {
+}
+
+publishing {
+  publications {
+    mavenJava(MavenPublication) {
+      artifactId = 'barghos-testutils'
+		
+      from components.java
+		
+      pom {
+        name = 'Project Barghos Core Library'
+        description = 'This library contains the core API of Project Barghos and utilities valueable to all sub projects.'
+        url = 'https://github.com/picatrix1899/barghos/'
+      }
+    }
+  }
+}

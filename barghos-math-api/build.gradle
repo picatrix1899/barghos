@@ -1,0 +1,28 @@
+plugins {
+	id 'java-library'
+}
+
+dependencies {
+  implementation project(':barghos-documentation')
+  implementation project(':barghos-tuple-api')
+  implementation project(':barghos-core-api')
+  
+  testImplementation project(':barghos-testutils')
+}
+
+publishing {
+  publications {
+    mavenJava(MavenPublication) {
+      artifactId = 'barghos-math-api'
+		
+      from components.java
+		
+      pom {
+        name = 'Project Barghos Math Library'
+        url = 'https://github.com/picatrix1899/barghos/'
+      }
+    }
+  }
+}
+
+tasks.withType(Javadoc).all { failOnError = false }
