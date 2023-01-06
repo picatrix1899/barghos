@@ -6,7 +6,6 @@ import org.barghos.core.api.math.MathProvider;
 import org.barghos.documentation.ExtractionParam;
 import org.barghos.documentation.FloatMinValue;
 import org.barghos.documentation.MinLength;
-
 import org.barghos.math.api.util.ComponentValueFloat;
 
 /**
@@ -70,6 +69,7 @@ public interface Vec2fR extends SimpleVec2fR
 	Vec2fR createNew(float x, float y);
 	
 	/** {@inheritDoc} */
+	@Override
 	Vec2fR copy();
 	
 	/**
