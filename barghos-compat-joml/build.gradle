@@ -3,20 +3,24 @@ plugins {
 }
 
 dependencies {
-  implementation project(':barghos-documentation')
-  implementation project(':barghos-tuple-api')
   implementation project(':barghos-core-api')
+  implementation project(':barghos-core')
+  implementation project(':barghos-math-api')
+  
+  testImplementation project(':barghos-testutils')
+  
+  implementation "org.joml:joml:1.10.3"
 }
 
 publishing {
   publications {
     mavenJava(MavenPublication) {
-      artifactId = 'barghos-math-api'
+      artifactId = 'barghos-compat-joml'
 		
       from components.java
 		
       pom {
-        name = 'Project Barghos Math Library'
+        name = 'Project Barghos JOML Compatibility Library'
         url = 'https://github.com/picatrix1899/barghos/'
       }
     }

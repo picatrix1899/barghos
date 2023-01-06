@@ -1,9 +1,7 @@
 //package org.barghos.math.api.vector;
 //
-//import org.barghos.core.api.documentation.ExtractionParam;
-//import org.barghos.core.api.documentation.InlineOnly;
-//import org.barghos.core.api.documentation.MinLength;
 //import org.barghos.core.api.math.BarghosMath;
+//import org.barghos.documentation.ExtractionParam;
 //import org.barghos.math.api.util.ComponentValueFloat;
 //
 ///**

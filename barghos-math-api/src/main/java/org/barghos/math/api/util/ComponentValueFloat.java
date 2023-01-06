@@ -3,26 +3,42 @@ package org.barghos.math.api.util;
 
 public class ComponentValueFloat
 {
-	private int component;
 	private float value;
+	private int index;
 	
-	public ComponentValueFloat(int component, float value)
-	{
-		set(component, value);
-	}
+	public ComponentValueFloat() { }
 	
-	public void set(int component, float value)
+	public ComponentValueFloat(float value, int index)
 	{
-		this.component = component;
 		this.value = value;
+		this.index = index;
 	}
 	
-	public int component()
+	public ComponentValueFloat set(float value, int index)
 	{
-		return this.component;
+		return setValue(value).setIndex(index);
 	}
 	
-	public float value()
+	public ComponentValueFloat setIndex(int index)
+	{
+		this.index = index;
+		
+		return this;
+	}
+	
+	public ComponentValueFloat setValue(float value)
+	{
+		this.value = value;
+		
+		return this;
+	}
+	
+	public int getComponentIndex()
+	{
+		return this.index;
+	}
+	
+	public float getValue()
 	{
 		return this.value;
 	}

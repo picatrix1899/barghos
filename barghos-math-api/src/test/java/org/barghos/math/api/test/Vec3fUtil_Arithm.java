@@ -1,3 +1,4 @@
+package org.barghos.math.api.test;
 //package org.barghos.math.api;
 //
 //import static org.junit.jupiter.api.Assertions.*;

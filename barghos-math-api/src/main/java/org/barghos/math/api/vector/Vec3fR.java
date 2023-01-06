@@ -1,14 +1,9 @@
 //package org.barghos.math.api.vector;
 //
-//import static org.barghos.core.api.tuple.TupleConstants.*;
-//
-//import org.barghos.core.api.documentation.ExtractionParam;
-//import org.barghos.core.api.documentation.FloatMinValue;
-//import org.barghos.core.api.documentation.MinLength;
 //import org.barghos.core.api.math.BarghosMath;
 //import org.barghos.core.api.math.FloatRoundMethod;
-//import org.barghos.math.api.matrix.Mat4fR;
-//import org.barghos.math.api.model.AxisAngle3fR;
+//import org.barghos.documentation.ExtractionParam;
+//import org.barghos.documentation.MinLength;
 //import org.barghos.math.api.util.ComponentValueFloat;
 //
 ///**
