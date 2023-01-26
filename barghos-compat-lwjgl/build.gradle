@@ -2,6 +2,9 @@ plugins {
 	id 'java-library'
 }
 
+project.ext.lwjglVersion = "3.3.0"
+project.ext.lwjglNatives = "natives-windows"
+
 dependencies {
   implementation project(':barghos-core-api')
   implementation project(':barghos-core')
@@ -10,18 +13,23 @@ dependencies {
   
   testImplementation project(':barghos-testutils')
   
-  implementation "org.joml:joml:1.10.3"
+  implementation platform("org.lwjgl:lwjgl-bom:$lwjglVersion")
+  implementation "org.lwjgl:lwjgl"
+  runtimeOnly "org.lwjgl:lwjgl::$lwjglNatives"
+  
+  implementation "org.lwjgl:lwjgl-opengl"
+  runtimeOnly "org.lwjgl:lwjgl-opengl::$lwjglNatives"
 }
 
 publishing {
   publications {
     mavenJava(MavenPublication) {
-      artifactId = 'barghos-compat-joml'
+      artifactId = 'barghos-compat-lwjgl'
 		
       from components.java
 		
       pom {
-        name = 'Project Barghos JOML Compatibility Library'
+        name = 'Project Barghos LWJGL Compatibility Library'
         url = 'https://github.com/picatrix1899/barghos/'
       }
     }
