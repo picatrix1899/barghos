@@ -137,15 +137,15 @@ public class CumulativeStopwatch
 	{
 		public static final Format SEC = (sec, milli, micro, nano) -> sec + "s";
 		public static final Format SEC_MILLI = (sec, milli, micro, nano) -> sec + "s/" + milli + "ms";
-		public static final Format SEC_MILLI_MICRO = (sec, milli, micro, nano) -> sec + "s/" + milli + "ms/" + micro + "µs";
-		public static final Format SEC_MILLI_MICRO_NANO = (sec, milli, micro, nano) -> sec + "s/" + milli + "ms/" + micro + "µs/" + nano + "ns";
+		public static final Format SEC_MILLI_MICRO = (sec, milli, micro, nano) -> sec + "s/" + milli + "ms/" + micro + "Âµs";
+		public static final Format SEC_MILLI_MICRO_NANO = (sec, milli, micro, nano) -> sec + "s/" + milli + "ms/" + micro + "Âµs/" + nano + "ns";
 		
 		public static final Format MILLI = (sec, milli, micro, nano) -> milli + "ms";
-		public static final Format MILLI_MICRO = (sec, milli, micro, nano) -> milli + "ms/" + micro + "µs";
-		public static final Format MILLI_MICRO_NANO = (sec, milli, micro, nano) -> milli + "ms/" + micro + "µs/" + nano + "ns";
+		public static final Format MILLI_MICRO = (sec, milli, micro, nano) -> milli + "ms/" + micro + "Âµs";
+		public static final Format MILLI_MICRO_NANO = (sec, milli, micro, nano) -> milli + "ms/" + micro + "Âµs/" + nano + "ns";
 		
-		public static final Format MICRO = (sec, milli, micro, nano) -> micro + "µs";
-		public static final Format MICRO_NANO = (sec, milli, micro, nano) -> micro + "µs/" + nano + "ns";
+		public static final Format MICRO = (sec, milli, micro, nano) -> micro + "Âµs";
+		public static final Format MICRO_NANO = (sec, milli, micro, nano) -> micro + "Âµs/" + nano + "ns";
 		
 		public static final Format NANO = (sec, milli, micro, nano) -> nano + "ns";
 		

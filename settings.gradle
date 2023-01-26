@@ -2,10 +2,10 @@ rootProject.name = 'barghos'
 
 include('barghos-documentation')
 include('barghos-testutils')
-include('barghos-tuple-api', 'barghos-tuple')
+include('barghos-tuple-api')
 include('barghos-core-api', 'barghos-core')
 include('barghos-event')
-include('barghos-math-api', 'barghos-math', 'barghos-math-simd')
+include('barghos-math-api', 'barghos-math')
 include('barghos-model')
 include('barghos-compat-joml')
 include('barghos-compat-lwjgl')

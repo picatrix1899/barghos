@@ -27,10 +27,10 @@ publishing {
 
 tasks.withType(Javadoc).all { failOnError = false }
 
-tasks.withType(AbstractCompile) {
+/* tasks.withType(AbstractCompile) {
   options.compilerArgs += ["--add-modules", "jdk.incubator.vector"]
 }
 
 tasks.withType(Test) {
   jvmArgs += ["--add-modules", "jdk.incubator.vector"]
-}
+} */
