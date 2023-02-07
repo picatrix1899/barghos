@@ -3,11 +3,10 @@ plugins {
 }
 
 dependencies {
-  implementation project(':barghos-tuple-api')
-  implementation project(':barghos-core-api')
-  implementation project(':barghos-core')
-  implementation project(':barghos-math-api')
-  
+  api project(':barghos-tuple-api')
+  api project(':barghos-core-api')
+  api project(':barghos-math-api')
+
   testImplementation project(':barghos-testutils')
 }
 

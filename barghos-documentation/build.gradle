@@ -3,7 +3,6 @@ plugins {
 }
 
 dependencies {
-  testImplementation project(':barghos-testutils')
 }
 
 publishing {
@@ -20,4 +19,12 @@ publishing {
       }
     }
   }
+}
+
+java {
+  modularity.inferModulePath = true
+}
+
+tasks.named('compileJava') {
+  modularity.inferModulePath = true
 }

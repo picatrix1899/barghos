@@ -13,7 +13,7 @@ publishing {
       from components.java
 		
       pom {
-        name = 'Project Barghos Core Library'
+        name = 'Project Barghos Test Utilities Library'
         description = 'This library contains the core API of Project Barghos and utilities valueable to all sub projects.'
         url = 'https://github.com/picatrix1899/barghos/'
       }
