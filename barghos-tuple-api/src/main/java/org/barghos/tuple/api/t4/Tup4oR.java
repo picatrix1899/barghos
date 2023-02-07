@@ -1,6 +1,6 @@
 package org.barghos.tuple.api.t4;
 
-import org.barghos.documentation.Nullable;
+import org.barghos.annotation.Nullable;
 
 /**
  * This interface provides non invasive (readonly) functions and methods for object tuples with four dimensions.

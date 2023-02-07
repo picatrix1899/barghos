@@ -29,14 +29,14 @@ import java.nio.IntBuffer;
 import java.nio.LongBuffer;
 import java.nio.ShortBuffer;
 
-import org.barghos.documentation.Nullable;
+import org.barghos.annotation.Nullable;
 
 /**
  * Provides functions for creating and filling nio buffers more easiely.
  * 
  * @author picatrix1899
  */
-public class BufferUtil
+public class BufferUtils
 {	
 	/**
 	 * Contains the factory that should be used for creating and destroying buffers.
@@ -46,7 +46,7 @@ public class BufferUtil
 	/**
 	 * This class contains only static functions. Therefore it should not be instanciated.
 	 */
-	private BufferUtil() { }
+	private BufferUtils() { }
 	
 	/**
 	 * Creates and therefore allocates a new direct {@link ByteBuffer} with the given maximum capacity.

@@ -3,7 +3,7 @@ package org.barghos.core.api.metrics;
 import java.util.Objects;
 import java.util.function.LongSupplier;
 
-import org.barghos.documentation.Nullable;
+import org.barghos.annotation.Nullable;
 
 public class Stopwatch
 {

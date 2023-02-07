@@ -1,6 +1,6 @@
 module org.barghos.tuple.api
 {
-	requires org.barghos.documentation;
+	requires org.barghos.annotation;
 	
 	exports org.barghos.tuple.api;
 	

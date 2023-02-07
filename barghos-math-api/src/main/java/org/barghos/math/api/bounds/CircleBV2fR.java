@@ -1,7 +1,7 @@
 package org.barghos.math.api.bounds;
 
-import org.barghos.documentation.ExtractionParam;
-import org.barghos.documentation.MinLength;
+import org.barghos.annotation.ExtractionParam;
+import org.barghos.annotation.MinLength;
 import org.barghos.math.api.vector.SimpleVec2fC;
 import org.barghos.math.api.vector.SimpleVec2fR;
 

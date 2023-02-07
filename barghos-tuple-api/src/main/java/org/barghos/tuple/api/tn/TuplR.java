@@ -1,9 +1,9 @@
 package org.barghos.tuple.api.tn;
 
-import org.barghos.documentation.ExtractionParam;
-import org.barghos.documentation.IntMinValue;
-import org.barghos.documentation.LongMinValue;
-import org.barghos.documentation.Nullable;
+import org.barghos.annotation.ExtractionParam;
+import org.barghos.annotation.IntMinValue;
+import org.barghos.annotation.LongMinValue;
+import org.barghos.annotation.Nullable;
 
 /**
  * This interface provides non invasive (readonly) functions and methods for long tuples with flexible dimension counts.

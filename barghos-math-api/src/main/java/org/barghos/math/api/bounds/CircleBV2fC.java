@@ -1,6 +1,6 @@
 package org.barghos.math.api.bounds;
 
-import org.barghos.documentation.MinLength;
+import org.barghos.annotation.MinLength;
 import org.barghos.math.api.vector.SimpleVec2fR;
 
 public interface CircleBV2fC extends CircleBV2fR

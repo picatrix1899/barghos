@@ -1,9 +1,9 @@
 package org.barghos.tuple.api.tn;
 
-import org.barghos.documentation.ByteMinValue;
-import org.barghos.documentation.ExtractionParam;
-import org.barghos.documentation.IntMinValue;
-import org.barghos.documentation.Nullable;
+import org.barghos.annotation.ByteMinValue;
+import org.barghos.annotation.ExtractionParam;
+import org.barghos.annotation.IntMinValue;
+import org.barghos.annotation.Nullable;
 
 /**
  * This interface provides non invasive (readonly) functions and methods for byte tuples with flexible dimension counts.

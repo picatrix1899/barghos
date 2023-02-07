@@ -2,11 +2,11 @@ package org.barghos.tuple.api.t4;
 
 import java.util.Objects;
 
-import org.barghos.documentation.ExtractionParam;
-import org.barghos.documentation.FloatMinValue;
-import org.barghos.documentation.IntValueRange;
-import org.barghos.documentation.MinLength;
-import org.barghos.documentation.Nullable;
+import org.barghos.annotation.ExtractionParam;
+import org.barghos.annotation.FloatMinValue;
+import org.barghos.annotation.IntValueRange;
+import org.barghos.annotation.MinLength;
+import org.barghos.annotation.Nullable;
 
 import org.barghos.tuple.api.tn.TupfR;
 

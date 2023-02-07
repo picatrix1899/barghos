@@ -2,8 +2,8 @@ package org.barghos.tuple.api.t4;
 
 import java.util.Objects;
 
-import org.barghos.documentation.IntValueRange;
-import org.barghos.documentation.MinLength;
+import org.barghos.annotation.IntValueRange;
+import org.barghos.annotation.MinLength;
 
 import org.barghos.tuple.api.tn.TupdC;
 import org.barghos.tuple.api.tn.TupdR;

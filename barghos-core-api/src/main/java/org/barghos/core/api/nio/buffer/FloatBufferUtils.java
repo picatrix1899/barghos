@@ -5,9 +5,9 @@ import java.nio.FloatBuffer;
 import java.util.Collection;
 import java.util.List;
 
-import org.barghos.documentation.IntMinValue;
-import org.barghos.documentation.MinLength;
-import org.barghos.documentation.Nullable;
+import org.barghos.annotation.IntMinValue;
+import org.barghos.annotation.MinLength;
+import org.barghos.annotation.Nullable;
 import org.barghos.core.api.util.ArgumentNullException;
 
 /**
@@ -32,7 +32,7 @@ public class FloatBufferUtils
 	 */
 	public static FloatBuffer direct(@IntMinValue(0) int capacity)
 	{
-		return BufferUtil.directFloatBuffer(capacity);
+		return BufferUtils.directFloatBuffer(capacity);
 	}
 	
 	/**
@@ -42,7 +42,7 @@ public class FloatBufferUtils
 	 */
 	public static void destroy(@Nullable FloatBuffer buffer)
 	{
-		BufferUtil.destroy(buffer);
+		BufferUtils.destroy(buffer);
 	}
 	
 	/**

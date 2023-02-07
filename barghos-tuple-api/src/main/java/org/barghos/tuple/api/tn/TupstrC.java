@@ -2,7 +2,7 @@ package org.barghos.tuple.api.tn;
 
 import java.util.Arrays;
 
-import org.barghos.documentation.IntMinValue;
+import org.barghos.annotation.IntMinValue;
 
 /**
  * This interface provides the common functions and methods for boolean tuples with flexible dimension counts.

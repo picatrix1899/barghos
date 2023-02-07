@@ -3,7 +3,7 @@ plugins {
 }
 
 dependencies {
-  implementation project(':barghos-documentation')
+  implementation project(':barghos-annotation')
   testImplementation project(':barghos-testutils')
 }
 

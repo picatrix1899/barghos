@@ -1,4 +1,4 @@
-package org.barghos.documentation;
+package org.barghos.annotation;
 
 import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.*;
@@ -8,19 +8,26 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 /**
- * Indicates the minimum value for the annotated short parameter.
+ * Indicates the valid value range for the annotated long parameter.
  * 
  * @author picatrix1899
  */
 @Documented
 @Retention(CLASS)
 @Target(PARAMETER)
-public @interface ShortMinValue
+public @interface LongValueRange
 {
 	/**
 	 * This parameter contains the minimum value for the annotated parameter.
 	 * 
 	 * @return The minimum value for the annotated parameter.
 	 */
-	short value();
+	long min() default 0;
+	
+	/**
+	 * This parameter contains the maximum value for the annotated parameter.
+	 * 
+	 * @return The maximum value for the annotated parameter.
+	 */
+	long max() default Long.MAX_VALUE;
 }

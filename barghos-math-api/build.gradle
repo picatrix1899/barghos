@@ -6,7 +6,7 @@ dependencies {
   api project(':barghos-tuple-api')
   api project(':barghos-core-api')
 
-  implementation project(':barghos-documentation')
+  implementation project(':barghos-annotation')
 }
 
 publishing {

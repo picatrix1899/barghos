@@ -1,7 +1,7 @@
 package org.barghos.math.api.vector;
 
-import org.barghos.documentation.FloatMinValue;
-import org.barghos.documentation.Nullable;
+import org.barghos.annotation.FloatMinValue;
+import org.barghos.annotation.Nullable;
 import org.barghos.tuple.api.t2.Tup2fR;
 import org.barghos.tuple.api.tn.TupfR;
 

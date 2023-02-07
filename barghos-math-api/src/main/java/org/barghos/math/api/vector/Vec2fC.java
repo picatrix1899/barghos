@@ -3,8 +3,8 @@ package org.barghos.math.api.vector;
 import org.barghos.core.api.math.BarghosMath;
 import org.barghos.core.api.math.FloatRoundMethod;
 import org.barghos.core.api.math.MathProvider;
-import org.barghos.documentation.IntValueRange;
-import org.barghos.documentation.MinLength;
+import org.barghos.annotation.IntValueRange;
+import org.barghos.annotation.MinLength;
 import org.barghos.tuple.api.t2.Tup2fR;
 import org.barghos.tuple.api.tn.TupfR;
 

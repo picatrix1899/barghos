@@ -3,9 +3,9 @@ package org.barghos.math.api.vector;
 import org.barghos.core.api.math.BarghosMath;
 import org.barghos.core.api.math.FloatRoundMethod;
 import org.barghos.core.api.math.MathProvider;
-import org.barghos.documentation.ExtractionParam;
-import org.barghos.documentation.FloatMinValue;
-import org.barghos.documentation.MinLength;
+import org.barghos.annotation.ExtractionParam;
+import org.barghos.annotation.FloatMinValue;
+import org.barghos.annotation.MinLength;
 import org.barghos.math.api.util.ComponentValueFloat;
 
 /**

@@ -1,6 +1,6 @@
 rootProject.name = 'barghos'
 
-include('barghos-documentation')
+include('barghos-annotation')
 include('barghos-testutils')
 include('barghos-tuple-api')
 include('barghos-core-api', 'barghos-core')

@@ -3,7 +3,7 @@ package org.barghos.tuple.api.tn;
 import java.math.BigDecimal;
 import java.util.Arrays;
 
-import org.barghos.documentation.IntMinValue;
+import org.barghos.annotation.IntMinValue;
 
 /**
  * This interface provides the common functions and methods for {@link BigDecimal} tuples with flexible dimension counts.
