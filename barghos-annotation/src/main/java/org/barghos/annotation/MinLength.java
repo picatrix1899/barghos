@@ -10,8 +10,6 @@ import java.lang.annotation.Target;
 
 /**
  * Shows the minimum required amount of entries of the annotated array or collection for the function.
- * 
- * @author picatrix1899
  */
 @Documented
 @Retention(CLASS)

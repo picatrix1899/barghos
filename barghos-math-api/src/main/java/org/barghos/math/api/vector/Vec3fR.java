@@ -1,2440 +1,5164 @@
-//package org.barghos.math.api.vector;
-//
-//import org.barghos.core.api.math.BarghosMath;
-//import org.barghos.core.api.math.FloatRoundMethod;
-//import org.barghos.documentation.ExtractionParam;
-//import org.barghos.documentation.MinLength;
-//import org.barghos.math.api.util.ComponentValueFloat;
-//
-///**
-// * This interface grants readonly access to any 3-dimensional float vector.
-// * 
-// * @author picatrix1899
-// */
-//public interface Vec3fR extends SimpleVec3fR
-//{
-//	
-//	/**
-//	 * Creates a new instance of the current class with the same component valuess.
-//	 * 
-//	 * @return A new instance.
-//	 */
-//	Vec3fR copy();
-//	
-//	/**
-//	 * Returns the inverse (reciprocal) length (magnitude, norm) of the vector.
-//	 * If this vector is a zero-vector {@code (x=y=z=0)} this will throw an {@link ArithmeticException}
-//	 * as this would result in a division by zero.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code 1 / |v|}
-//	 * 
-//	 * @return The inverse length of the vector.
-//	 */
-//	float inverseLength();
-//	
-//	/**
-//	 * Returns the inverse (reciprocal) distance between the vector
-//	 * and the given vector {@code (v2)}.
-//	 * If the two vectors are the same this will throw an {@link ArithmeticException}
-//	 * as this would result in a division by zero.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code 1 / |v2 - v|}
-//	 * 
-//	 * @param v2 The second vector.
-//	 * 
-//	 * @return The inverse distance between the two vectors.
-//	 */
-//	default float inverseDistance(SimpleVec3fR v2)
-//	{
-//		return inverseDistance(v2.getX(), v2.getY(), v2.getZ());
-//	}
-//	
-//	/**
-//	 * Returns the inverse (reciprocal) distance between the vector
-//	 * and the given vector {@code (v2[0], v2[1], v2[2])}.
-//	 * If the two vectors are the same this will throw an {@link ArithmeticException}
-//	 * as this would result in a division by zero.
-//	 * The x, y and z components are expected to be on the indices 0, 1 and 2. Therefore the array
-//	 * has to contain at least 3 entries.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code 1 / |(v2[0], v2[1], v2[2]) - v|}
-//	 * 
-//	 * @param v2 The second vector. Minimum legth: 3.
-//	 * 
-//	 * @return The inverse distance between the two vectors.
-//	 */
-//	default float inverseDistance(@MinLength(3) float[] v2)
-//	{
-//		return inverseDistance(v2[0], v2[1], v2[2]);
-//	}
-//	
-//	/**
-//	 * Returns the inverse (reciprocal) distance between the vector
-//	 * and the given vector {@code (v2x, v2y, v2z)}.
-//	 * If the two vectors are the same this will throw an {@link ArithmeticException}
-//	 * as this would result in a division by zero.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code 1 / |(v2x, v2y, v2z) - v|}
-//	 * 
-//	 * @param v2x The value of the x component of the second vector.
-//	 * @param v2y The value of the y component of the second vector.
-//	 * @param v2z The value of the z component of the second vector.
-//	 * 
-//	 * @return The inverse distance between the two vectors.
-//	 */
-//	float inverseDistance(float v2x, float v2y, float v2z);
-//	
-//	/**
-//	 * Returns the length (magnitude, norm) of the vector.
-//	 * If the vector is a zero-vector {@code (x=y=z=0)} this will throw an {@link ArithmeticException}
-//	 * as this would result in a division by zero.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code |v|}
-//	 * 
-//	 * @return The length of the vector.
-//	 */
-//	float lengthUnsafe();
-//	
-//	/**
-//	 * Returns the distance between the vector and the given vector {@code (v2)}.
-//	 * If the vector is a zero-vector {@code (x=y=z=0)} this will throw an {@link ArithmeticException}
-//	 * as this would result in a division by zero.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code |v2 - v|}
-//	 * 
-//	 * @param v2 The second vector.
-//	 * 
-//	 * @return The distance between the two vectors.
-//	 */
-//	default float distanceUnsafe(SimpleVec3fR v2)
-//	{
-//		return distanceUnsafe(v2.getX(), v2.getY(), v2.getZ());
-//	}
-//	
-//	/**
-//	 * Returns the distance between the vector and the given vector {@code (v2[0], v2[1], v2[2])}.
-//	 * If the vector is a zero-vector {@code (x=y=z=0)} this will throw an {@link ArithmeticException}
-//	 * as this would result in a division by zero.
-//	 * The x, y and z components are expected to be on the indices 0, 1 and 2. Therefore the array
-//	 * has to contain at least 3 entries.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code |(v2[0], v2[1], v2[2]) - v|}
-//	 * 
-//	 * @param v2 The second vector. Minimum legth: 3.
-//	 * 
-//	 * @return The distance between the two vectors.
-//	 */
-//	default float distanceUnsafe(@MinLength(3) float[] v2)
-//	{
-//		return distanceUnsafe(v2[0], v2[1], v2[2]);
-//	}
-//	
-//	/**
-//	 * Returns the distance between the vector and the given vector {@code (v2x, v2y, v2z)}.
-//	 * If the vector is a zero-vector {@code (x=y=z=0)} this will throw an {@link ArithmeticException}
-//	 * as this would result in a division by zero.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code |(v2x, v2y, v2z) - v|}
-//	 * 
-//	 * @param v2x The value of the x component of the second vector.
-//	 * @param v2y The value of the y component of the second vector.
-//	 * @param v2z The value of the z component of the second vector.
-//	 * 
-//	 * @return The distance between the two vectors.
-//	 */
-//	float distanceUnsafe(float v2x, float v2y, float v2z);
-//	
-//	/**
-//	 * Returns the length (magnitude, norm) of the vector.
-//	 * If the vector is a zero-vector {@code (x=y=z=0)} the result will be zero.
-//	 * It determines a length of zero by checking if all components are exactly zero.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code |v|}
-//	 * 
-//	 * @return The length of the vector or zero if it is a zero-vector.
-//	 */
-//	float length();
-//	
-//	/**
-//	 * Returns the distance between the vector and the given vector {@code (v2)}.
-//	 * If the vectors are equal the result will be zero.
-//	 * It determines an equality by checking if all components are exactly the same.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code |v2 - v|}
-//	 * 
-//	 * @param v2 The second vector.
-//	 * 
-//	 * @return The distance between the vectors or zero if the two vectors are equal.
-//	 */
-//	default float distance(SimpleVec3fR v2)
-//	{
-//		return distance(v2.getX(), v2.getY(), v2.getZ());
-//	}
-//	
-//	/**
-//	 * Returns the distance between the vector and the given vector {@code (v2[0], v2[1], v2[2])}.
-//	 * If the vectors are equal the result will be zero.
-//	 * It determines an equality by checking if all components are exactly the same.
-//	 * The x, y and z components are expected to be on the indices 0, 1 and 2. Therefore the array
-//	 * has to contain at least 3 entries.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code |(v2[0], v2[1], v2[2]) - v|}
-//	 * 
-//	 * @param v2 The second vector. Minimum legth: 3.
-//	 * 
-//	 * @return The distance between the vectors or zero if the two vectors are equal.
-//	 */
-//	default float distance(@MinLength(3) float[] v2)
-//	{
-//		return distance(v2[0], v2[1], v2[2]);
-//	}
-//	
-//	/**
-//	 * Returns the distance between the vector and the given vector {@code (v2z, v2y, v2z)}.
-//	 * If the vectors are equal the result will be zero.
-//	 * It determines an equality by checking if all components are exactly the same.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code |(v2x, v2y, v2z) - v|}
-//	 * 
-//	 * @param v2x The value of the x component of the second vector.
-//	 * @param v2y The value of the y component of the second vector.
-//	 * @param v2z The value of the z component of the second vector.
-//	 * 
-//	 * @return The distance between the vectors or zero if the two vectors are equal.
-//	 */
-//	float distance(float v2x, float v2y, float v2z);
-//	
-//	/**
-//	 * Returns the length (magnitude, norm) of the vector.
-//	 * If the vector is a zero-vector {@code (x=y=z=0)} the result will be zero.
-//	 * It determines a length of zero by checking if all components are within the margin defined by
-//	 * zero plus-minus the given tolerance inclusive {@code (-tolerance <= value <= tolerance)}.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code |v|}
-//	 * 
-//	 * @param tolerance The tolerance for defining the margin around zero.
-//	 * 
-//	 * @return The length of the vector or zero if it is a zero-vector.
-//	 */
-//	float length(@FloatMinValue(0.0f) float tolerance);
-//	
-//	/**
-//	 * Returns the distance between the vector and the given vector {@code (v2)}.
-//	 * If the two vectors are equal the result will be zero.
-//	 * It determines an equality by checking if all components are equal within a margin of plus-minus the given tolerance inclusive {@code (-tolerance <= value <= tolerance)}
-//	 * around the component values.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code |v2 - v|}
-//	 * 
-//	 * @param v2 The second vector.
-//	 * @param tolerance The tolerance for defining the margin.
-//	 * 
-//	 * @return The distance between the vectors or zero if the two vectors are equal withing the tolerance.
-//	 */
-//	default float distance(SimpleVec3fR v2, @FloatMinValue(0.0f) float tolerance)
-//	{
-//		return distance(v2.getX(), v2.getY(), v2.getZ(), tolerance);
-//	}
-//	
-//	/**
-//	 * Returns the distance between the vector and the given vector {@code (v2[0], v2[1], v2[2])}.
-//	 * If the two vectors are equal the result will be zero.
-//	 * It determines an equality by checking if all components are equal within a margin of plus-minus the given tolerance inclusive {@code (-tolerance <= value <= tolerance)}
-//	 * around the component values.
-//	 * The x, y and z components are expected to be on the indices 0, 1 and 2. Therefore the array
-//	 * has to contain at least 3 entries.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code |(v2[0], v2[1], v2[2]) - v|}
-//	 * 
-//	 * @param v2 The second vector. Minimum legth: 3.
-//	 * @param tolerance The tolerance for defining the margin.
-//	 * 
-//	 * @return The distance between the vectors or zero if the two vectors are equal withing the tolerance.
-//	 */
-//	default float distance(@MinLength(3) float[] v2, @FloatMinValue(0.0f) float tolerance)
-//	{
-//		return distance(v2[0], v2[1], v2[2], tolerance);
-//	}
-//	
-//	/**
-//	 * Returns the distance between the vector and the given vector {@code (v2x, v2y, v2z)}.
-//	 * If the two vectors are equal the result will be zero.
-//	 * It determines an equality by checking if all components are equal within a margin of plus-minus the given tolerance inclusive {@code (-tolerance <= value <= tolerance)}
-//	 * around the component values.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code |(v2x, v2y, v2z) - v|}
-//	 * 
-//	 * @param v2x The value of the x component of the second vector.
-//	 * @param v2y The value of the y component of the second vector.
-//	 * @param v2z The value of the z component of the second vector.
-//	 * @param tolerance The tolerance for defining the margin.
-//	 * 
-//	 * @return The distance between the vectors or zero if the two vectors are equal withing the tolerance.
-//	 */
-//	float distance(float v2x, float v2y, float v2z, @FloatMinValue(0.0f) float tolerance);
-//	
-//	/**
-//	 * Returns the squared length (magnitude, norm) of the vector.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code |v|^2}
-//	 * 
-//	 * @return The squared length of the vector.
-//	 */
-//	float squaredLengthUnsafe();
-//	
-//	/**
-//	 * Returns the squared distance between the vector and the given vector {@code (v2)}.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code |v2 - v|^2}
-//	 * 
-//	 * @param v2 The second vector.
-//	 * 
-//	 * @return The squared distance between the vectors.
-//	 */
-//	default float squaredDistanceUnsafe(SimpleVec3fR v2)
-//	{
-//		return squaredDistanceUnsafe(v2.getX(), v2.getY(), v2.getZ());
-//	}
-//	
-//	/**
-//	 * Returns the squared distance between the vector and the given vector {@code (v2[0], v2[1], v2[2])}.
-//	 * The x, y and z components are expected to be on the indices 0, 1 and 2. Therefore the array
-//	 * has to contain at least 3 entries.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code |(v2[0], v2[1], v2[2]) - v|^2}
-//	 * 
-//	 * @param v2 The second vector. Minimum legth: 3.
-//	 * 
-//	 * @return The squared distance between the vectors.
-//	 */
-//	default float squaredDistanceUnsafe(@MinLength(3) float[] v2)
-//	{
-//		return squaredDistanceUnsafe(v2[0], v2[1], v2[2]);
-//	}
-//	
-//	/**
-//	 * Returns the squared distance between the vector and the given vector {@code (v2x, v2y, v2z)}.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code |(v2x, v2y, v2z) - v|^2}
-//	 * 
-//	 * @param v2x The value of the x component of the second vector.
-//	 * @param v2y The value of the y component of the second vector.
-//	 * @param v2z The value of the z component of the second vector.
-//	 * 
-//	 * @return The squared distance between the vectors.
-//	 */
-//	float squaredDistanceUnsafe(float v2x, float v2y, float v2z);
-//	
-//	/**
-//	 * Returns the squared length of the vector {@code (v)}.
-//	 * If the vector is a zero-vector {@code (x=y=z=0)} the result will be zero.
-//	 * It determines a length of zero by checking if all components are exactly zero.
-//	 * The x, y and z components are expected to be on the indices 0, 1 and 2. Therefore the array
-//	 * has to contain at least 3 entries.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code |v|^2}
-//	 * 
-//	 * @return The squared length of the vector or zero if it is a zero-vector.
-//	 */
-//	float squaredLength();
-//	
-//	/**
-//	 * Returns the squared distance between the vector and the given vector {@code (v2)}.
-//	 * If the two vectors are equal the result will be zero.
-//	 * It determines an equality by checking if all components are exactly the same.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code |v2 - v|^2}
-//	 * 
-//	 * @param v2 The second vector.
-//	 * 
-//	 * @return The squared distance between the vectors or zero if both vectors are equal.
-//	 */
-//	default float squaredDistance(SimpleVec3fR v2)
-//	{
-//		return squaredDistance(v2.getX(), v2.getY(), v2.getZ());
-//	}
-//	
-//	/**
-//	 * Returns the squared distance between the vector and the given vector {@code (v2[0], v2[1], v2[2])}.
-//	 * If the two vectors are equal the result will be zero.
-//	 * It determines an equality by checking if all components are exactly the same.
-//	 * The x, y and z components are expected to be on the indices 0, 1 and 2. Therefore the array
-//	 * has to contain at least 3 entries.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code |(v2[0], v2[1], v2[2]) - v|^2}
-//	 * 
-//	 * @param v2 The second vector. Minimum legth: 3.
-//	 * 
-//	 * @return The squared distance between the vectors or zero if both vectors are equal.
-//	 */
-//	default float squaredDistance(@MinLength(3) float[] v2)
-//	{
-//		return squaredDistance(v2[0], v2[1], v2[2]);
-//	}
-//	
-//	/**
-//	 * Returns the squared distance between the vector and the given vector {@code (v2x, v2y, v2z)}.
-//	 * If the two vectors are equal the result will be zero.
-//	 * It determines an equality by checking if all components are exactly the same.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code |(v2x, v2y, v2z) - v|^2}
-//	 * 
-//	 * @param v2x The value of the x component of the second vector.
-//	 * @param v2y The value of the y component of the second vector.
-//	 * @param v2z The value of the z component of the second vector.
-//	 * 
-//	 * @return The squared distance between the vectors or zero if both vectors are equal.
-//	 */
-//	float squaredDistance(float v2x, float v2y, float v2z);
-//	
-//	/**
-//	 * Returns the squared length of the vector.
-//	 * If the vector is a zero-vector the result will be zero.
-//	 * It determines a length of zero by checking if all components are within the margin defined by
-//	 * zero plus-minus the given tolerance inclusive {@code (-tolerance <= value <= tolerance)}.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code |v|^2}
-//	 * 
-//	 * @param tolerance The tolerance for defining the margin around zero.
-//	 * 
-//	 * @return The squared length of the vector or zero if it is a zero-length vector.
-//	 */
-//	float squaredLength(@FloatMinValue(0.0f) float tolerance);
-//	
-//	/**
-//	 * Returns the squared distance between the vector and the given vector {@code (v2)}.
-//	 * If the two vectors are equal the result will be zero.
-//	 * It determines an equality by checking if all components are equal within a margin of plus-minus the given tolerance inclusive {@code (-tolerance <= value <= tolerance)}
-//	 * around the component values.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code |v2 - v|^2}
-//	 * 
-//	 * @param v2 The second vector.
-//	 * @param tolerance The tolerance for defining the margin.
-//	 * 
-//	 * @return The distance between the vectors or zero if the two vectors are equal withing the tolerance.
-//	 */
-//	default float squaredDistance(SimpleVec3fR v2, @FloatMinValue(0.0f) float tolerance)
-//	{
-//		return squaredDistance(v2.getX(), v2.getY(), v2.getZ(), tolerance);
-//	}
-//	
-//	/**
-//	 * Returns the squared distance between the vector and the given vector {@code (v2[0], v2[1], v2[2])}.
-//	 * If the two vectors are equal the result will be zero.
-//	 * It determines an equality by checking if all components are equal within a margin of plus-minus the given tolerance inclusive {@code (-tolerance <= value <= tolerance)}
-//	 * around the component values.
-//	 * The x, y and z components are expected to be on the indices 0, 1 and 2. Therefore the array
-//	 * has to contain at least 3 entries.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code |(v2[0], v2[1], v2[2]) - v|^2}
-//	 * 
-//	 * @param v2 The second vector. Minimum legth: 3.
-//	 * @param tolerance The tolerance for defining the margin.
-//	 * 
-//	 * @return The distance between the vectors or zero if the two vectors are equal withing the tolerance.
-//	 */
-//	default float squaredDistance(@MinLength(3) float[] v2, @FloatMinValue(0.0f) float tolerance)
-//	{
-//		return squaredDistance(v2[0], v2[1], v2[2], tolerance);
-//	}
-//	
-//	/**
-//	 * Returns the squared distance between the vector and the given vector {@code (v2x, v2y, v2z)}.
-//	 * If the two vectors are equal the result will be zero.
-//	 * It determines an equality by checking if all components are equal within a margin of plus-minus the given tolerance inclusive {@code (-tolerance <= value <= tolerance)}
-//	 * around the component values.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code |(v2x, v2y, v2z) - v|^2}
-//	 * 
-//	 * @param v2x The value of the x component of the second vector.
-//	 * @param v2y The value of the y component of the second vector.
-//	 * @param v2z The value of the z component of the second vector.
-//	 * @param tolerance The tolerance for defining the margin.
-//	 * 
-//	 * @return The distance between the vectors or zero if the two vectors are equal withing the tolerance.
-//	 */
-//	float squaredDistance(float v2x, float v2y, float v2z, @FloatMinValue(0.0f) float tolerance);
-//	
-//	/**
-//	 * Calculates the half vector from the vector to the given vector {@code (v2)} and returns the result
-//	 * as a new instance.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code ( v2 - v ) / 2}
-//	 * 
-//	 * @param v2 The second vector.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	default Vec3fR halfVectorN(SimpleVec3fR v2)
-//	{
-//		return halfVectorN(v2.getX(), v2.getY(), v2.getZ());
-//	}
-//	
-//	/**
-//	 * Calculates the half vector from the vector to the given vector {@code (v2[0], v2[1], v2[2])} and returns the result
-//	 * as a new instance.
-//	 * The x, y and z components are expected to be on the indices 0, 1 and 2. Therefore the arrays
-//	 * have to contain at least 3 entries.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code ( (v2[0], v2[1], v2[2]) - v ) / 2}
-//	 * 
-//	 * @param v2 The second vector. Minimum legth: 3.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	default Vec3fR halfVectorN(@MinLength(3) float[] v2)
-//	{
-//		return halfVectorN(v2[0], v2[1], v2[2]);
-//	}
-//	
-//	/**
-//	 * Calculates the half vector from the vector to the given vector {@code (v2x, v2y, v2z)} and returns the result
-//	 * as a new instance.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code ( (v2x, v2y, v2z) - v1 ) / 2}
-//	 * 
-//	 * @param v2x The value of the x component of the second vector.
-//	 * @param v2y The value of the y component of the second vector.
-//	 * @param v2z The value of the z component of the second vector.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	Vec3fR halfVectorN(float v2x, float v2y, float v2z);
-//	
-//	/**
-//	 * Calculates the point that lies in the middle of a vector spanning between the vector and the given vector {@code (v2)}
-//	 * and returns the result as a new instance.
-//	 * The x, y and z components are expected to be on the indices 0, 1 and 2. Therefore the array
-//	 * has to contain at least 3 entries.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code ( v + v2 ) / 2}
-//	 * 
-//	 * @param v2 The second vector.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	default Vec3fR halfPointN(SimpleVec3fR v2)
-//	{
-//		return halfPointN(v2.getX(), v2.getY(), v2.getZ());
-//	}
-//	
-//	/**
-//	 * Calculates the point that lies in the middle of a vector spanning between the vector and the given vector {@code (v2[0], v2[1], v2[2])}
-//	 * and returns the result as a new instance.
-//	 * The x, y and z components are expected to be on the indices 0, 1 and 2. Therefore the array
-//	 * has to contain at least 3 entries.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code ( v + (v2[0], v2[1], v2[2]) ) / 2}
-//	 * 
-//	 * @param v2 The second vector. Minimum legth: 3.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	default Vec3fR halfPointN(@MinLength(3) float[] v2)
-//	{
-//		return halfPointN(v2[0], v2[1], v2[2]);
-//	}
-//	
-//	/**
-//	 * Calculates the point that lies in the middle of a vector spanning between the vector and the given vector {@code (v2x, v2y, v2z)}
-//	 * and returns the result as a new instance.
-//	 * The x, y and z components are expected to be on the indices 0, 1 and 2. Therefore the array
-//	 * has to contain at least 3 entries.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code ( v + (v2x, v2y, v2z) ) / 2}
-//	 * 
-//	 * @param v2x The value of the x component of the second vector.
-//	 * @param v2y The value of the y component of the second vector.
-//	 * @param v2z The value of the z component of the second vector.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	Vec3fR halfPointN(float v2x, float v2y, float v2z);
-//
-//	/**
-//	 * Calculates a vector consisting of the per component minimum between the vector and the given vector {@code (v2)} and
-//	 * returns the result as a new instance.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code min( v, v2 )}
-//	 * 
-//	 * @param v2 The second vector.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	default Vec3fR minVectorN(SimpleVec3fR v2)
-//	{
-//		return minVectorN(v2.getX(), v2.getY(), v2.getZ());
-//	}
-//	
-//	/**
-//	 * Calculates a vector consisting of the per component minimum between the vector and the given vector {@code (value, value, value)} and
-//	 * returns the result as a new instance.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code min( v, (value, value, value) )}
-//	 * 
-//	 * @param value The value of all components of the second vector.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	default Vec3fR minVectorN(float value)
-//	{
-//		return minVectorN(value, value, value);
-//	}
-//	
-//	/**
-//	 * Calculates a vector consisting of the per component minimum between the vector and the given vector {@code (v2[0], v2[1], v2[2])} and
-//	 * returns the result as a new instance.
-//	 * The x, y and z components are expected to be on the indices 0, 1 and 2. Therefore the array
-//	 * has to contain at least 3 entries.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code min( v, (v2[0], v2[1], v2[2]) )}
-//	 * 
-//	 * @param v2 The second vector. Minimum legth: 3.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	default Vec3fR minVectorN(@MinLength(3) float[] v2)
-//	{
-//		return minVectorN(v2[0], v2[1], v2[2]);
-//	}
-//	
-//	/**
-//	 * Calculates a vector consisting of the per component minimum between the vector and the given vector {@code (v2x, v2y, v2z)} and
-//	 * returns the result as a new instance.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code min( v, (v2x, v2y, v2z) )}
-//	 * 
-//	 * @param v2x The value of the x component of the second vector.
-//	 * @param v2y The value of the y component of the second vector.
-//	 * @param v2z The value of the z component of the second vector.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	Vec3fR minVectorN(float v2x, float v2y, float v2z);
-//	
-//	/**
-//	 * Calculates a vector consisting of the per component maximum between the vector and the given vector {@code (v2)} and
-//	 * returns the result as a new instance.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code max( v, v2 )}
-//	 * 
-//	 * @param v2 The second vector.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	default Vec3fR maxVectorN(SimpleVec3fR v2)
-//	{
-//		return maxVectorN(v2.getX(), v2.getY(), v2.getZ());
-//	}
-//	
-//	/**
-//	 * Calculates a vector consisting of the per component maximum between the vector and the given vector {@code (value, value, value)} and
-//	 * returns the result as a new instance.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code max( v, (value, value, value) )}
-//	 * 
-//	 * @param value The value of all components of the second vector.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	default Vec3fR maxVectorN(float value)
-//	{
-//		return maxVectorN(value, value, value);
-//	}
-//	
-//	/**
-//	 * Calculates a vector consisting of the per component maximum between the vector and the given vector {@code (v2[0], v2[1], v2[2])} and
-//	 * returns the result as a new instance.
-//	 * The x, y and z components are expected to be on the indices 0, 1 and 2. Therefore the array
-//	 * has to contain at least 3 entries.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code max( v, (v2[0], v2[1], v2[2]) )}
-//	 * 
-//	 * @param v2 The second vector. Minimum legth: 3.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	default Vec3fR maxVectorN(@MinLength(3) float[] v2)
-//	{
-//		return maxVectorN(v2[0], v2[1], v2[2]);
-//	}
-//	
-//	/**
-//	 * Calculates a vector consisting of the per component maximum between the vector and the given vector {@code (v2x, v2y, v2z)} and
-//	 * returns the result as a new instance.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code max( v, (v2x, v2y, v2z) )}
-//	 * 
-//	 * @param v2x The value of the x component of the second vector.
-//	 * @param v2y The value of the y component of the second vector.
-//	 * @param v2z The value of the z component of the second vector.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	Vec3fR maxVectorN(float v2x, float v2y, float v2z);
-//	
-//	/**
-//	 * Returns the dot product (scalar product) between this vector and the given vector {@code (v2)}.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code v . v2}
-//	 * 
-//	 * @param v2 The second vector.
-//	 * 
-//	 * @return The dot product (scalar product).
-//	 */
-//	default float dot(SimpleVec3fR v2)
-//	{
-//		return dot(v2.getX(), v2.getY(), v2.getZ());
-//	}
-//	
-//	/**
-//	 * Returns the dot product (scalar product) between this vector and the given vector {@code (value, value, value)}.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code v . (value, value, value)}
-//	 * 
-//	 * @param value The value of all the components of the other vector.
-//	 * 
-//	 * @return The dot product (scalar product).
-//	 */
-//	default float dot(float value)
-//	{
-//		return dot(value, value, value);
-//	}
-//	
-//	/**
-//	 * Returns the dot product (scalar product) between this vector and the given vector {@code (v2[0], v2[1], v2[2])}.
-//	 * The components for x, y and z are expected to be on the indices 0, 1 and 2. Therefore the array
-//	 * has to contain at least 3 elements.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code v . (v2[0], v2[1], v2[2])}
-//	 * 
-//	 * @param v2 The array containing the other vector. Minimum length: 3
-//	 * 
-//	 * @return The dot product (scalar product).
-//	 */
-//	default float dot(@MinLength(3) float[] v2)
-//	{
-//		return dot(v2[0], v2[1], v2[2]);
-//	}
-//	
-//	/**
-//	 * Returns the dot product (scalar product) between this vector and the given vector {@code (x, y, z)}.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code v . (x, y, z)}
-//	 * 
-//	 * @param x The value of the x component of the other vector.
-//	 * @param y The value of the y component of the other vector.
-//	 * @param z The value of the z component of the other vector.
-//	 * 
-//	 * @return The dot product (scalar product).
-//	 */
-//	float dot(float x, float y, float z);
-//	
-//	/**
-//	 * Determines the smallest value of the components and returns the value and the index of the component.
-//	 * The index returned is limited to the range of {@code 0 to getDimensions() - 1}.
-//	 * If two or more components have the same value the first index will be returned.
-//	 * The returned tuple is immutable.
-//	 * 
-//	 * @return The smallest value of the components and the index of the corresponding component.
-//	 */
-//	ComponentValueFloat min();
-//	
-//	/**
-//	 * Determines the smallest value of the components and returns the value and the index of the component.
-//	 * The index returned is limited to the range of {@code 0 to getDimensions() - 1}.
-//	 * If two or more components have the same value the first index will be returned.
-//	 * This version utilizes an extraction parameter that receives the result and will be returned.
-//	 * 
-//	 * @param res The extraction parameter for the result.
-//	 * 
-//	 * @return The extraction parameter with the result.
-//	 */
-//	ComponentValueFloat min(@ExtractionParam ComponentValueFloat res);
-//	
-//	/**
-//	 * Determines the smallest value of the components and returns it.
-//	 * 
-//	 * @return The smallest value of the components.
-//	 */
-//	float minValue();
-//	
-//	/**
-//	 * Determines the smallest value of the componensts and returns the index of the component.
-//	 * The index returned is limited to the range of {@code 0 to getDimensions() - 1}.
-//	 * If two or more components have the same value the first index will be returned.
-//	 * 
-//	 * @return The index of the smallest component.
-//	 */
-//	int minComponent();
-//	
-//	/**
-//	 * Determines the greatest value of the components and returns the value and the index of the component.
-//	 * The index returned is limited to the range of {@code 0 to getDimensions() - 1}.
-//	 * If two or more components have the same value the first index will be returned.
-//	 * The returned tuple is immutable.
-//	 * 
-//	 * @return The greatest value of the components and the index of the corresponding component.
-//	 */
-//	ComponentValueFloat max();
-//	
-//	/**
-//	 * Determines the greatest value of the components and returns the value and the index of the component.
-//	 * The index returned is limited to the range of {@code 0 to getDimensions() - 1}.
-//	 * If two or more components have the same value the first index will be returned.
-//	 * This version utilizes an extraction parameter that receives the result and will be returned.
-//	 * 
-//	 * @param res The extraction parameter for the result.
-//	 * 
-//	 * @return The extraction parameter with the result.
-//	 */
-//	ComponentValueFloat max(@ExtractionParam ComponentValueFloat res);
-//	
-//	/**
-//	 * Determines the greatest value of the components and returns it.
-//	 * 
-//	 * @return The greatest value of the components.
-//	 */
-//	float maxValue();
-//	
-//	/**
-//	 * Determines the greatest value of the componensts and returns the index of the component.
-//	 * The index returned is limited to the range of {@code 0 to getDimensions() - 1}.
-//	 * If two or more components have the same value the first index will be returned.
-//	 * 
-//	 * @return The index of the greatest component.
-//	 */
-//	int maxComponent();
-//	
-//	/**
-//	 * Adds the given vector {@code (v2)} to the current vector and saves the result in a new instance.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code v + v2}
-//	 * 
-//	 * @param v2 The vector to add to the current vector.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	default Vec3fR addN(SimpleVec3fR v2)
-//	{
-//		return addN(v2.getX(), v2.getY(), v2.getZ());
-//	}
-//	
-//	/**
-//	 * Adds the given vector {@code (v2[0], v2[1], v2[2])} to the current vector and saves the result in a new instance.
-//	 * The components for x, y and z are expected to be on the indices 0, 1 and 2. Therefore the array
-//	 * has to contain at least 3 elements.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code v + (v2[0], v2[1], v2[2])}
-//	 * 
-//	 * @param v2 The vector to add to the current vector. Minimum legth: 3.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	default Vec3fR addN(@MinLength(3) float[] v2)
-//	{
-//		return addN(v2[0], v2[1], v2[2]);
-//	}
-//	
-//	/**
-//	 * Adds the given value {@code (value)} to the current vector and saves the result in a new instance.
-//	 * The value is added to every component.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code v + (value, value, value)}
-//	 * 
-//	 * @param value The value to add to the current vector.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	default Vec3fR addN(float value)
-//	{
-//		return addN(value, value, value);
-//	}
-//	
-//	/**
-//	 * Adds the given vector {@code (v2x, v2y, v2z)} to the current vector and saves the result in a new instance.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code v + (v2x, v2y, v2z)}
-//	 * 
-//	 * @param v2x The value of the x component to add to the current vector.
-//	 * @param v2y The value of the y component to add to the current vector.
-//	 * @param v2z The value of the z component to add to the current vector.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	Vec3fR addN(float v2x, float v2y, float v2z);
-//	
-//	/**
-//	 * Subtracts the given vector {@code (v2)} from the current vector and saves the result in a new instance.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code v - v2}
-//	 * 
-//	 * @param v2 The tuple to subtract from the current vector.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	default Vec3fR subN(SimpleVec3fR v2)
-//	{
-//		return subN(v2.getX(), v2.getY(), v2.getZ());
-//	}
-//	
-//	/**
-//	 * Subtracts the given vector {@code (v2[0], v2[1], v2[2])} from the current vector and saves the result in a new instance.
-//	 * The components for x, y and z are expected to be on the indices 0, 1 and 2. Therefore the array
-//	 * has to contain at least 3 elements.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code v - (v2[0], v2[1], v2[2])}
-//	 * 
-//	 * @param v2 The array to subtract from the current vector. Minimum length: 3.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	default Vec3fR subN(@MinLength(3) float[] v2)
-//	{
-//		return subN(v2[0], v2[1], v2[2]);
-//	}
-//	
-//	/**
-//	 * Subtracts the given value {@code (value)} from the current vector and saves the result in a new instance.
-//	 * The value is subtracted from every component.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code v - (value, value, value)}
-//	 * 
-//	 * @param value The value to subtract from the current vector.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	default Vec3fR subN(float value)
-//	{
-//		return subN(value, value, value);
-//	}
-//	
-//	/**
-//	 * Subtracts the given tuple {@code (v2x, v2y, v2z)} from the current vector and saves the result in
-//	 * a new instance.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code v - (v2x, v2y, v2z)}
-//	 * 
-//	 * @param v2x The value of the x component to subtract from the current vector.
-//	 * @param v2y The value of the y component to subtract from the current vector.
-//	 * @param v2z The value of the z component to subtract from the current vector.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	Vec3fR subN(float v2x, float v2y, float v2z);
-//	
-//	/**
-//	 * Subtracts the current vector from the given tuple {@code (t)} and saves the result in a new instance.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code v2 - v}
-//	 * 
-//	 * @param v2 The tuple the current vector is subtracted from.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	default Vec3fR revSubN(SimpleVec3fR v2)
-//	{
-//		return revSubN(v2.getX(), v2.getY(), v2.getZ());
-//	}
-//	
-//	/**
-//	 * Subtracts the current vector from the given array {@code (a)} and saves the result in a new instance.
-//	 * The components for x, y and z are expected to be on the indices 0, 1 and 2. Therefore the array
-//	 * has to contain at least 3 elements.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code (v2[0], v2[1], v2[2]) - v}
-//	 * 
-//	 * @param v2 The array the current vector is subtracted from. Minimum length: 3.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	default Vec3fR revSubN(@MinLength(3) float[] v2)
-//	{
-//		return revSubN(v2[0], v2[1], v2[2]);
-//	}
-//	
-//	/**
-//	 * Subtracts the current vector from the given value {@code (value)} and saves the result in a new instance.
-//	 * Every component is subtracted from the value.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code (value, value, value) - v}
-//	 * 
-//	 * @param value The value the current vector is subtracted from.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	default Vec3fR revSubN(float value)
-//	{
-//		return revSubN(value, value, value);
-//	}
-//		
-//	/**
-//	 * Subtracts the current vector from the given tuple {@code (x, y, z)} and saves the result in
-//	 * a new instance.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code (x, y, z) - v}
-//	 * 
-//	 * @param x The value of the x component the current vector is subtracted from.
-//	 * @param y The value of the y component the current vector is subtracted from.
-//	 * @param z The value of the z component the current vector is subtracted from.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	Vec3fR revSubN(float x, float y, float z);
-//	
-//	/**
-//	 * Multiplies the current vector with the given tuple {@code (t)} and saves the result in a new instance.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code v * v2}
-//	 * 
-//	 * @param v2 The tuple to multiply the current vector with.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	default Vec3fR mulN(SimpleVec3fR v2)
-//	{
-//		return mulN(v2.getX(), v2.getY(), v2.getZ());
-//	}
-//	
-//	/**
-//	 * Multiplies the current vector with the given array {@code (a)} and saves the result in a new instance.
-//	 * The components for x, y and z are expected to be on the indices 0, 1 and 2. Therefore the array
-//	 * has to contain at least 3 elements.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code v * (v2[0], v2[1], v2[2])}
-//	 * 
-//	 * @param v2 The array to multiply the current vector with. Minimum length: 3.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	default Vec3fR mulN(@MinLength(3) float[] v2)
-//	{
-//		return mulN(v2[0], v2[1], v2[2]);
-//	}
-//	
-//	/**
-//	 * Multiplies the current vector with the given value {@code (value)} and saves the result in a new instance.
-//	 * The value is multiplied with every component.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code v * (value, value, value)}
-//	 * 
-//	 * @param value The value to multiply the current vector with.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	default Vec3fR mulN(float value)
-//	{
-//		return mulN(value, value, value);
-//	}
-//	
-//	/**
-//	 * Multiplies the current vector with the given tuple {@code (x, y, z)} and saves the result in
-//	 * a new instance.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code v * (x, y, z)}
-//	 * 
-//	 * @param x The value of the x component to multiply the current vector with.
-//	 * @param y The value of the y component to multiply the current vector with.
-//	 * @param z The value of the z component to multiply the current vector with.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	Vec3fR mulN(float x, float y, float z);
-//	
-//	/**
-//	 * Divides the current vector by the given tuple {@code (t)} and saves the result in a new instance.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code v / v2}
-//	 * 
-//	 * @param v2 The tuple to divide the current vector by.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	default Vec3fR divN(SimpleVec3fR v2)
-//	{
-//		return divN(v2.getX(), v2.getY(), v2.getZ());
-//	}
-//	
-//	/**
-//	 * Divides the current vector by the given array {@code (a)} and saves the result in a new instance.
-//	 * The components for x, y and z are expected to be on the indices 0, 1 and 2. Therefore the array
-//	 * has to contain at least 3 elements.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code v / (v2[0], v2[1], v2[2])}
-//	 * 
-//	 * @param v2 The array to divide the current vector by. Minimum length: 3.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	default Vec3fR divN(@MinLength(3) float[] v2)
-//	{
-//		return divN(v2[0], v2[1], v2[2]);
-//	}
-//	
-//	/**
-//	 * Divides the current vector by the given value {@code (value)} and saves the result in a new instance.
-//	 * every component is divided by the value.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code v / (value, value, value)}
-//	 * 
-//	 * @param value The value to divide the current vector by.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	default Vec3fR divN(float value)
-//	{
-//		return divN(value, value, value);
-//	}
-//	
-//	/**
-//	 * Divides the current vector by the given tuple {@code (x, y, z)} and saves the result in
-//	 * a new instance.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code v / (x, y, z)}
-//	 * 
-//	 * @param x The value of the x component to divide the current vector by.
-//	 * @param y The value of the y component to divide the current vector by.
-//	 * @param z The value of the z component to divide the current vector by.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	Vec3fR divN(float x, float y, float z);
-//
-//	/**
-//	 * Divides the given tuple {@code (t)} by the current vector and saves the result in a new instance.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code v2 / v}
-//	 * 
-//	 * @param t The tuple to divide by the current vector.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	default Vec3fR revDivN(SimpleVec3fR v2)
-//	{
-//		return revDivN(v2.getX(), v2.getY(), v2.getZ());
-//	}
-//
-//	/**
-//	 * Divides the given array {@code (a)} by the current vector and saves the result in a new instance.
-//	 * The components for x, y and z are expected to be on the indices 0, 1 and 2. Therefore the array
-//	 * has to contain at least 3 elements.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code (v2[0], v2[1], v2[2]) / v}
-//	 * 
-//	 * @param v2 The array to divide by the current vector. Minimum length: 3.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	default Vec3fR revDivN(@MinLength(3) float[] v2)
-//	{
-//		return revDivN(v2[COMP_X], v2[COMP_Y], v2[COMP_Z]);
-//	}
-//	
-//	/**
-//	 * Divides the given value {@code (value)} by the current vector and saves the result in a new instance.
-//	 * The value is divided by every component.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code (value, value, value) / v}
-//	 * 
-//	 * @param value The value to divide by the current vector.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	default Vec3fR revDivN(float value)
-//	{
-//		return revDivN(value, value, value);
-//	}
-//
-//	/**
-//	 * Divides the given tuple {@code (x, y, z)} by the current vector and saves the result in
-//	 * a new instance.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code (x, y, z) / v}
-//	 * 
-//	 * @param x The value of the x component to divide by the current vector.
-//	 * @param y The value of the y component to divide by the current vector.
-//	 * @param z The value of the z component to divide by the current vector.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	Vec3fR revDivN(float x, float y, float z);
-//
-//	/**
-//	 * Normalizes the current vector and saves the result in a new instance.
-//	 * Normalization is done by dividing the vector by its length (magnitude, norm).
-//	 * This doesn't account for zero-length vectors {@code (x=y=z=0)} and will in such case throw an {@link ArithmeticException}
-//	 * as this will result in a division by zero.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * <p>
-//	 * This function is intended to be used in situations where the vector by design cannot be of zero length.
-//	 * In that case calling this function will avoid the check for zero.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code v / |v|}
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 * 
-//	 * @throws ArithmeticException Thrown when it is a zero-length vector.
-//	 */
-//	Vec3fR normalizeUnsafeN();
-//
-//	/**
-//	 * Normalizes the current vector and saves the result in a new instance.
-//	 * Normalization is done by dividing the vector by its length (magnitude, norm).
-//	 * If the vector is a zero-length vector {@code (x=y=z=0)} the result will be a zero vector.
-//	 * It determines a length of zero by checking if all components are exactly zero.
-//	 * Due to floating-point-errors it might still throw an {@link ArithmeticException} when
-//	 * the length is too close to zero.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code v / |v|}
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 * 
-//	 * @throws ArithmeticException Might be thrown when the length is to close to zero.
-//	 */
-//	Vec3fR normalizeN();
-//
-//	/**
-//	 * Normalizes the current vector and saves the result in a new instance.
-//	 * Normalization is done by dividing the vector by its length (magnitude, norm).
-//	 * If the vector is a zero-length vector {@code (x=y=z=0)} the result will be a zero vector.
-//	 * It determines a zero-length by checking if all components are within the margin defined by
-//	 * zero plus-minus the given tolerance inclusive {@code (-tolerance <= value <= tolerance)}.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code v / |v|}
-//	 * 
-//	 * @param tolerance The tolerance for defining the margin around zero.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	Vec3fR normalizeN(@FloatMinValue(0.0f) float tolerance);
-//
-//	/**
-//	 * Negates (inverts) the current vector and saves the result in a new instance.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code -v}
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	Vec3fR negateN();
-//	
-//	/**
-//	 * Calculates the inverse of the vector and saves the result in a new instance.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * <p>
-//	 * Operation:
-//	 * {@code 1 / v}
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	Vec3fR inverseN();
-//	
-//	/**
-//	 * Calculates either the right or left handed cross product between this vector and the given tuple {@code (t)}
-//	 * and saves the result in a new instance.
-//	 * The handedness is determined by the implementation.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code v X t}
-//	 * 
-//	 * <p>
-//	 * Definition:<br>
-//	 * In a standard right handed cartesian system there are the following relations between axis assuming a positive direction.
-//	 * Imagine looking in the desired direction and using the axis in counterclockwise order.
-//	 * In a left handed cartesian system the order is reversed and therefore clockwise.
-//	 * 
-//	 * <p>
-//	 * {@code forward(z) = right(x) X up(y)}<br>
-//	 * {@code up(y) = forward(z) X right(x)}<br>
-//	 * {@code right(x) = up(y) X forward(z)}
-//	 * 
-//	 * @param v2 The tuple to calculate the cross product with.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	default Vec3fR crossN(SimpleVec3fR v2)
-//	{
-//		return crossN(v2.getX(), v2.getY(), v2.getZ());
-//	}
-//	
-//	/**
-//	 * Calculates either the right or left handed cross product between this vector and the given array {@code (a)}
-//	 * and saves the result in a new instance.
-//	 * The components for x, y and z are expected to be on the indices 0, 1 and 2. Therefore the array
-//	 * has to contain at least 3 elements.
-//	 * The handedness is determined by the implementation.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code v X (a[0], a[1], a[2])}
-//	 * 
-//	 * <p>
-//	 * Definition:<br>
-//	 * In a standard right handed cartesian system there are the following relations between axis assuming a positive direction.
-//	 * Imagine looking in the desired direction and using the axis in counterclockwise order.
-//	 * In a left handed cartesian system the order is reversed and therefore clockwise.
-//	 * 
-//	 * <p>
-//	 * {@code forward(z) = right(x) X up(y)}<br>
-//	 * {@code up(y) = forward(z) X right(x)}<br>
-//	 * {@code right(x) = up(y) X forward(z)}
-//	 * 
-//	 * @param v2 The array to calculate the cross product with. Minimum length: 3.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	default Vec3fR crossN(@MinLength(3) float[] v2)
-//	{
-//		return crossN(v2[0], v2[1], v2[2]);
-//	}
-//	
-//	/**
-//	 * Calculates either the right or left handed cross product between this vector and the given value {@code (value)}
-//	 * and saves the result in a new instance.
-//	 * The value is seen as a tuple with all component values equal to it.
-//	 * The handedness is determined by the implementation.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code v X (value, value, value)}
-//	 * 
-//	 * <p>
-//	 * Definition:<br>
-//	 * In a standard right handed cartesian system there are the following relations between axis assuming a positive direction.
-//	 * Imagine looking in the desired direction and using the axis in counterclockwise order.
-//	 * In a left handed cartesian system the order is reversed and therefore clockwise.
-//	 * 
-//	 * <p>
-//	 * {@code forward(z) = right(x) X up(y)}<br>
-//	 * {@code up(y) = forward(z) X right(x)}<br>
-//	 * {@code right(x) = up(y) X forward(z)}
-//	 * 
-//	 * @param value The value to calculate the cross product with.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	default Vec3fR crossN(float value)
-//	{
-//		return crossN(value, value, value);
-//	}
-//	
-//	/**
-//	 * Calculates either the right or left handed cross product between this vector and the given tuple {@code (x, y, z)}
-//	 * and saves the result in a new instance.
-//	 * The handedness is determined by the implementation.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code v X (x, y, z)}
-//	 * 
-//	 * <p>
-//	 * Definition:<br>
-//	 * In a standard right handed cartesian system there are the following relations between axis assuming a positive direction.
-//	 * Imagine looking in the desired direction and using the axis in counterclockwise order.
-//	 * In a left handed cartesian system the order is reversed and therefore clockwise.
-//	 * 
-//	 * <p>
-//	 * {@code forward(z) = right(x) X up(y)}<br>
-//	 * {@code up(y) = forward(z) X right(x)}<br>
-//	 * {@code right(x) = up(y) X forward(z)}
-//	 * 
-//	 * @param x The value of the x component to calculate the cross product with.
-//	 * @param y The value of the y component to calculate the cross product with.
-//	 * @param z The value of the z component to calculate the cross product with.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	Vec3fR crossN(float x, float y, float z);
-//	
-//	/**
-//	 * Calculates the absolute values of all components of the current vector and saves the result in a new instance.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code (|v.x|, |v.y|, |v.z|)}
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	Vec3fR absN();
-//	
-//	/**
-//	 * Rounds all components down to the next integer closer to negative infinity and saves the result in a new instance.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	Vec3fR floorN();
-//	
-//	/**
-//	 * Rounds all components up to the next integer closer to positive infinity and saves the result in a new instance.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	Vec3fR ceilN();
-//	
-//	/**
-//	 * Rounds all components up to the next integer closer to positive infinity or negative infinity and saves the result in a new instance.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	Vec3fR roundN();
-//	
-//	/**
-//	 * Truncates the decimals of the components and saves the result in a new instance.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	Vec3fR truncN();
-//	
-//	/**
-//	 * Rounds all components by the given rounding method and saves the result in a new instance.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * @param method The rounding method to use.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	Vec3fR roundN(FloatRoundMethod method);
-//	
-//	/**
-//	 * Sets the vector to the signums {@code (+1.0f, -1.0f)} of the components and saves the result in a new instance.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	Vec3fR signumN();
-//	
-//	/**
-//	 * Applies the given matrix to the current vector and therefore transforming it and saves the result in a new instance.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * <p>
-//	 * Operation:<br>
-//	 * {@code m * v}
-//	 * 
-//	 * @param m The matrix to apply.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	Vec3fR transformN(Mat4fR m);
-//	
-//	/**
-//	 * Rotates the current vector around the x axis by the given angle in radians and saves the result in a new instance.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * @param angle The angle to rotate by in radians.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	Vec3fR rotateXN(float angle);
-//	
-//	/**
-//	 * Rotates the current vector around the x axis by the given angle in degrees and saves the result in a new instance.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * @param angle The angle to rotate by in degrees.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	default Vec3fR rotateXDegN(float angle)
-//	{
-//		return rotateXN(angle * BarghosMath.DEG_TO_RADf);
-//	}
-//	
-//	/**
-//	 * Rotates the current vector around the y axis by the given angle in radians and saves the result in a new instance.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * @param angle The angle to rotate by in radians.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	Vec3fR rotateYN(float angle);
-//	
-//	/**
-//	 * Rotates the current vector around the y axis by the given angle in degrees and saves the result in a new instance.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * @param angle The angle to rotate by in degrees.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	default Vec3fR rotateYDegN(float angle)
-//	{
-//		return rotateYN(angle * BarghosMath.DEG_TO_RADf);
-//	}
-//	
-//	/**
-//	 * Rotates the current vector around the z axis by the given angle in radians and saves the result in a new instance.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * @param angle The angle to rotate by in radians.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	Vec3fR rotateZN(float angle);
-//	
-//	/**
-//	 * Rotates the current vector around the z axis by the given angle in degrees and saves the result in a new instance.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * @param angle The angle to rotate by in degrees.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	default Vec3fR rotateZDegN(float angle)
-//	{
-//		return rotateZN(angle * BarghosMath.DEG_TO_RADf);
-//	}
-//	
-//	/**
-//	 * Rotates the current vector around the give tuple {@code (axis)} as axis and the given angle in radians
-//	 * and saves the result in a new instance.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * @param axis The rotation axis.
-//	 * @param angle The angle to rotate by in radians.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	default Vec3fR rotateN(SimpleVec3fR axis, float angle)
-//	{
-//		return rotateN(axis.getX(), axis.getY(), axis.getZ(), angle);
-//	}
-//	
-//	/**
-//	 * Rotates the current vector around the give array {@code (axis)} as axis and the given angle in radians
-//	 * and saves the result in a new instance.
-//	 * The components for x, y and z are expected to be on the indices 0, 1 and 2. Therefore the array
-//	 * has to contain at least 3 elements.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * @param axis The rotation axis. Minimum length: 3.
-//	 * @param angle The angle to rotate by in radians.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	default Vec3fR rotateN(@MinLength(3) float[] axis, float angle)
-//	{
-//		return rotateN(axis[0], axis[1], axis[2], angle);
-//	}
-//	
-//	/**
-//	 * Rotates the current vector around the give tuple {@code (axisX, axisY, axisZ)} as axis and the given angle in radians
-//	 * and saves the result in a new instance.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * @param axisX The value of the x component of the rotation axis.
-//	 * @param axisY The value of the y component of the rotation axis.
-//	 * @param axisZ The value of the z component of the rotation axis.
-//	 * @param angle The angle to rotate by in radians.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	Vec3fR rotateN(float axisX, float axisY, float axisZ, float angle);
-//	
-//	/**
-//	 * Rotates the current vector around the give tuple {@code (axis)} as axis and the given angle in degrees
-//	 * and saves the result in a new instance.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * @param axis The rotation axis.
-//	 * @param angle The angle to rotate by in degrees.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	default Vec3fR rotateDegN(SimpleVec3fR axis, float angle)
-//	{
-//		return rotateDegN(axis.getX(), axis.getY(), axis.getZ(), angle);
-//	}
-//	
-//	/**
-//	 * Rotates the current vector around the give array {@code (axis)} as axis and the given angle in degrees
-//	 * and saves the result in a new instance.
-//	 * The components for x, y and z are expected to be on the indices 0, 1 and 2. Therefore the array
-//	 * has to contain at least 3 elements.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * @param axis The rotation axis. Minimum length: 3.
-//	 * @param angle The angle to rotate by in degrees.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	default Vec3fR rotateDegN(@MinLength(3) float[] axis, float angle)
-//	{
-//		return rotateDegN(axis[0], axis[1], axis[2], angle);
-//	}
-//	
-//	/**
-//	 * Rotates the current vector around the give tuple {@code (axisX, axisY, axisZ)} as axis and the given angle in degrees
-//	 * and saves the result in a new instance.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * @param axisX The value of the x component of the rotation axis.
-//	 * @param axisY The value of the y component of the rotation axis.
-//	 * @param axisZ The value of the z component of the rotation axis.
-//	 * @param angle The angle to rotate by in degrees.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	Vec3fR rotateDegN(float axisX, float axisY, float axisZ, float angle);
-//	
-//	/**
-//	 * Rotates the current vector by the given axis-angle and saves the result in a new instance.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * @param aa The axis-angle to rotate by.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	Vec3fR rotateN(AxisAngle3fR aa);
-//	
-//	/**
-//	 * Rotates the current vector by the given quaternion and saves the result in a new instance.
-//	 * This operation does not alter the current vector.
-//	 * 
-//	 * @param q The quaternion to rotate by.
-//	 * 
-//	 * @return A new instance of the vector with the result.
-//	 */
-//	Vec3fR rotateN(QuatR q);
-//	
-//	/**
-//	 * Projects the current vector onto the given vector {@code (v2)} and returns the result in a new instance.
-//	 * 
-//	 * @param v2 The target vector to project on.
-//	 * 
-//	 * @return An new instance of the vector with the result.
-//	 */
-//	default Vec3fR projectN(SimpleVec3fR v2)
-//	{
-//		return projectN(v2.getX(), v2.getY(), v2.getZ());
-//	}
-//	
-//	/**
-//	 * Projects the current vector onto the given vector {@code (v2[0], v2[1], v2[2])} and returns the result in a new instance.
-//	 * 
-//	 * @param v2 The target vector to project on. Minimum length: 3.
-//	 * 
-//	 * @return An new instance of the vector with the result.
-//	 */
-//	default Vec3fR projectN(@MinLength(3) float[] v2)
-//	{
-//		return projectN(v2[0], v2[1], v2[2]);
-//	}
-//	
-//	/**
-//	 * Projects the current vector onto the given vector {@code (x, y, z)} and returns the result in a new instance.
-//	 * 
-//	 * @param x The value of the x component of the target vector.
-//	 * @param y The value of the y component of the target vector.
-//	 * @param z The value of the z component of the target vector.
-//	 * 
-//	 * @return An new instance of the vector with the result.
-//	 */
-//	Vec3fR projectN(float x, float y, float z);
-//	
-//	/**
-//	 * Reflects the current vector by the given normal vector {@code (v2)} and returns the result in a new instance.
-//	 * 
-//	 * @param v2 The normal vector to reflect on.
-//	 * 
-//	 * @return An new instance of the vector with the result.
-//	 */
-//	default Vec3fR reflectN(Vec3fR v2)
-//	{
-//		return reflectN(v2.getX(), v2.getY(), v2.getZ());
-//	}
-//	
-//	/**
-//	 * Reflects the current vector by the given normal vector {@code (v2[0], v2[1], v2[2])} and returns the result in a new instance.
-//	 * 
-//	 * @param v2 The normal vector to reflect on. Minimum length: 3.
-//	 * 
-//	 * @return An new instance of the vector with the result.
-//	 */
-//	default Vec3fR reflectN(@MinLength(3) float[] v2)
-//	{
-//		return reflectN(v2[0], v2[1], v2[2]);
-//	}
-//	
-//	/**
-//	 * Reflects the current vector by the given normal vector {@code (x, y, z)} and returns the result in a new instance.
-//	 * 
-//	 * @param x The value of the x component of the normal vector.
-//	 * @param y The value of the y component of the normal vector.
-//	 * @param z The value of the z component of the normal vector.
-//	 * 
-//	 * @return An new instance of the vector with the result.
-//	 */
-//	Vec3fR reflectN(float x, float y, float z);
-//	
-//	default <T extends Vec3fC> T halfVectorR(SimpleVec3fR v2, @ExtractionParam T res)
-//	{
-//		return halfVectorR(v2.getX(), v2.getY(), v2.getZ(), res);
-//	}
-//	
-//	default <T extends Vec3fC> T halfVectorR(@MinLength(3) float[] v2, @ExtractionParam T res)
-//	{
-//		return halfVectorR(v2[0], v2[1], v2[2], res);
-//	}
-//	
-//	<T extends Vec3fC> T halfVectorR(float v2x, float v2y, float v2z, @ExtractionParam T res);
-//	
-//	default float[] halfVectorR(SimpleVec3fR v2, @ExtractionParam @MinLength(3) float[] res)
-//	{
-//		return halfVectorR(v2.getX(), v2.getY(), v2.getZ(), res);
-//	}
-//	
-//	default float[] halfVectorR(@MinLength(3) float[] v2, @ExtractionParam @MinLength(3) float[] res)
-//	{
-//		return halfVectorR(v2[0], v2[1], v2[2], res);
-//	}
-//	
-//	float[] halfVectorR(float v2x, float v2y, float v2z, @ExtractionParam @MinLength(3) float[] res);
-//	
-//	default <T extends Vec3fC> T halfPointR(SimpleVec3fR v2, @ExtractionParam T res)
-//	{
-//		return halfPointR(v2.getX(), v2.getY(), v2.getZ(), res);
-//	}
-//	
-//	default <T extends Vec3fC> T halfPointR(@MinLength(3) float[] v2, @ExtractionParam T res)
-//	{
-//		return halfPointR(v2[0], v2[1], v2[2], res);
-//	}
-//	
-//	<T extends Vec3fC> T halfPointR(float v2x, float v2y, float v2z, @ExtractionParam T res);
-//	
-//	default float[] halfPointR(SimpleVec3fR v2, @ExtractionParam @MinLength(3) float[] res)
-//	{
-//		return halfPointR(v2.getX(), v2.getY(), v2.getZ(), res);
-//	}
-//	
-//	default float[] halfPointR(@MinLength(3) float[] v2, @ExtractionParam @MinLength(3) float[] res)
-//	{
-//		return halfPointR(v2[0], v2[1], v2[2], res);
-//	}
-//	
-//	float[] halfPointR(float v2x, float v2y, float v2z, @ExtractionParam @MinLength(3) float[] res);
-//	
-//	default <T extends Vec3fC> T minVectorR(SimpleVec3fR v2, @ExtractionParam T res)
-//	{
-//		return minVectorR(v2.getX(), v2.getY(), v2.getZ(), res);
-//	}
-//	
-//	default <T extends Vec3fC> T minVectorR(float value, @ExtractionParam T res)
-//	{
-//		return minVectorR(value, value, value, res);
-//	}
-//	
-//	default <T extends Vec3fC> T minVectorR(@MinLength(3) float[] v2, @ExtractionParam T res)
-//	{
-//		return minVectorR(v2[0], v2[1], v2[2], res);
-//	}
-//	
-//	<T extends Vec3fC> T minVectorR(float v2x, float v2y, float v2z, @ExtractionParam T res);
-//	
-//	default float[] minVectorR(SimpleVec3fR v2, @ExtractionParam @MinLength(3) float[] res)
-//	{
-//		return minVectorR(v2.getX(), v2.getY(), v2.getZ(), res);
-//	}
-//	
-//	default float[] minVectorR(float value, @ExtractionParam @MinLength(3) float[] res)
-//	{
-//		return minVectorR(value, value, value, res);
-//	}
-//	
-//	default float[] minVectorR(@MinLength(3) float[] v2, @ExtractionParam @MinLength(3) float[] res)
-//	{
-//		return minVectorR(v2[0], v2[1], v2[2], res);
-//	}
-//	
-//	float[] minVectorR(float v2x, float v2y, float v2z, @ExtractionParam @MinLength(3) float[] res);
-//	
-//	default <T extends Vec3fC> T maxVectorR(SimpleVec3fR v2, @ExtractionParam T res)
-//	{
-//		return maxVectorR(v2.getX(), v2.getY(), v2.getZ(), res);
-//	}
-//	
-//	default <T extends Vec3fC> T maxVectorR(float value, @ExtractionParam T res)
-//	{
-//		return maxVectorR(value, value, value, res);
-//	}
-//	
-//	default <T extends Vec3fC> T maxVectorR(@MinLength(3) float[] v2, @ExtractionParam T res)
-//	{
-//		return maxVectorR(v2[0], v2[1], v2[2], res);
-//	}
-//	
-//	<T extends Vec3fC> T maxVectorR(float v2x, float v2y, float v2z, @ExtractionParam T res);
-//	
-//	default float[] maxVectorR(SimpleVec3fR v2, @ExtractionParam @MinLength(3) float[] res)
-//	{
-//		return maxVectorR(v2.getX(), v2.getY(), v2.getZ(), res);
-//	}
-//	
-//	default float[] maxVectorR(float value, @ExtractionParam @MinLength(3) float[] res)
-//	{
-//		return maxVectorR(value, value, value, res);
-//	}
-//	
-//	default float[] maxVectorR(@MinLength(3) float[] v2, @ExtractionParam @MinLength(3) float[] res)
-//	{
-//		return maxVectorR(v2[0], v2[1], v2[2], res);
-//	}
-//	
-//	float[] maxVectorR(float v2x, float v2y, float v2z, @ExtractionParam @MinLength(3) float[] res);
-//	
-//	default <T extends Vec3fC> T addR(SimpleVec3fR v2, @ExtractionParam T res)
-//	{
-//		return addR(v2.getX(), v2.getY(), v2.getZ(), res);
-//	}
-//	
-//	default <T extends Vec3fC> T addR(float value, @ExtractionParam T res)
-//	{
-//		return addR(value, value, value, res);
-//	}
-//	
-//	default <T extends Vec3fC> T addR(@MinLength(3) float[] v2, @ExtractionParam T res)
-//	{
-//		return addR(v2[0], v2[1], v2[2], res);
-//	}
-//	
-//	<T extends Vec3fC> T addR(float v2x, float v2y, float v2z, @ExtractionParam T res);
-//	
-//	default float[] addR(SimpleVec3fR v2, @ExtractionParam @MinLength(3) float[] res)
-//	{
-//		return addR(v2.getX(), v2.getY(), v2.getZ(), res);
-//	}
-//	
-//	default float[] addR(float value, @ExtractionParam @MinLength(3) float[] res)
-//	{
-//		return addR(value, value, value, res);
-//	}
-//	
-//	default float[] addR(@MinLength(3) float[] v2, @ExtractionParam @MinLength(3) float[] res)
-//	{
-//		return addR(v2[0], v2[1], v2[2], res);
-//	}
-//	
-//	float[] addR(float v2x, float v2y, float v2z, @ExtractionParam @MinLength(3) float[] res);
-//	
-//	default <T extends Vec3fC> T subR(SimpleVec3fR v2, @ExtractionParam T res)
-//	{
-//		return subR(v2.getX(), v2.getY(), v2.getZ(), res);
-//	}
-//	
-//	default <T extends Vec3fC> T subR(float value, @ExtractionParam T res)
-//	{
-//		return subR(value, value, value, res);
-//	}
-//	
-//	default <T extends Vec3fC> T subR(@MinLength(3) float[] v2, @ExtractionParam T res)
-//	{
-//		return subR(v2[0], v2[1], v2[2], res);
-//	}
-//	
-//	<T extends Vec3fC> T subR(float v2x, float v2y, float v2z, @ExtractionParam T res);
-//	
-//	default float[] subR(SimpleVec3fR v2, @ExtractionParam @MinLength(3) float[] res)
-//	{
-//		return subR(v2.getX(), v2.getY(), v2.getZ(), res);
-//	}
-//	
-//	default float[] subR(float value, @ExtractionParam @MinLength(3) float[] res)
-//	{
-//		return subR(value, value, value, res);
-//	}
-//	
-//	default float[] subR(@MinLength(3) float[] v2, @ExtractionParam @MinLength(3) float[] res)
-//	{
-//		return subR(v2[0], v2[1], v2[2], res);
-//	}
-//	
-//	float[] subR(float v2x, float v2y, float v2z, @ExtractionParam @MinLength(3) float[] res);
-//	
-//	default <T extends Vec3fC> T revSubR(SimpleVec3fR v2, @ExtractionParam T res)
-//	{
-//		return revSubR(v2.getX(), v2.getY(), v2.getZ(), res);
-//	}
-//	
-//	default <T extends Vec3fC> T revSubR(float value, @ExtractionParam T res)
-//	{
-//		return revSubR(value, value, value, res);
-//	}
-//	
-//	default <T extends Vec3fC> T revSubR(@MinLength(3) float[] v2, @ExtractionParam T res)
-//	{
-//		return revSubR(v2[0], v2[1], v2[2], res);
-//	}
-//	
-//	<T extends Vec3fC> T revSubR(float v2x, float v2y, float v2z, @ExtractionParam T res);
-//	
-//	default float[] revSubR(SimpleVec3fR v2, @ExtractionParam @MinLength(3) float[] res)
-//	{
-//		return revSubR(v2.getX(), v2.getY(), v2.getZ(), res);
-//	}
-//	
-//	default float[] revSubR(float value, @ExtractionParam @MinLength(3) float[] res)
-//	{
-//		return revSubR(value, value, value, res);
-//	}
-//	
-//	default float[] revSubR(@MinLength(3) float[] v2, @ExtractionParam @MinLength(3) float[] res)
-//	{
-//		return revSubR(v2[0], v2[1], v2[2], res);
-//	}
-//	
-//	float[] revSubR(float v2x, float v2y, float v2z, @ExtractionParam @MinLength(3) float[] res);
-//	
-//	default <T extends Vec3fC> T mulR(SimpleVec3fR v2, @ExtractionParam T res)
-//	{
-//		return mulR(v2.getX(), v2.getY(), v2.getZ(), res);
-//	}
-//	
-//	default <T extends Vec3fC> T mulR(float value, @ExtractionParam T res)
-//	{
-//		return mulR(value, value, value, res);
-//	}
-//	
-//	default <T extends Vec3fC> T mulR(@MinLength(3) float[] v2, @ExtractionParam T res)
-//	{
-//		return mulR(v2[0], v2[1], v2[2], res);
-//	}
-//	
-//	<T extends Vec3fC> T mulR(float v2x, float v2y, float v2z, @ExtractionParam T res);
-//	
-//	default float[] mulR(SimpleVec3fR v2, @ExtractionParam @MinLength(3) float[] res)
-//	{
-//		return mulR(v2.getX(), v2.getY(), v2.getZ(), res);
-//	}
-//	
-//	default float[] mulR(float value, @ExtractionParam @MinLength(3) float[] res)
-//	{
-//		return mulR(value, value, value, res);
-//	}
-//	
-//	default float[] mulR(@MinLength(3) float[] v2, @ExtractionParam @MinLength(3) float[] res)
-//	{
-//		return mulR(v2[0], v2[1], v2[2], res);
-//	}
-//	
-//	float[] mulR(float v2x, float v2y, float v2z, @ExtractionParam @MinLength(3) float[] res);
-//	
-//	default <T extends Vec3fC> T divR(SimpleVec3fR v2, @ExtractionParam T res)
-//	{
-//		return divR(v2.getX(), v2.getY(), v2.getZ(), res);
-//	}
-//	
-//	default <T extends Vec3fC> T divR(float value, @ExtractionParam T res)
-//	{
-//		return divR(value, value, value, res);
-//	}
-//	
-//	default <T extends Vec3fC> T divR(@MinLength(3) float[] v2, @ExtractionParam T res)
-//	{
-//		return divR(v2[0], v2[1], v2[2], res);
-//	}
-//	
-//	<T extends Vec3fC> T divR(float v2x, float v2y, float v2z, @ExtractionParam T res);
-//	
-//	default float[] divR(SimpleVec3fR v2, @ExtractionParam @MinLength(3) float[] res)
-//	{
-//		return divR(v2.getX(), v2.getY(), v2.getZ(), res);
-//	}
-//	
-//	default float[] divR(float value, @ExtractionParam @MinLength(3) float[] res)
-//	{
-//		return divR(value, value, value, res);
-//	}
-//	
-//	default float[] divR(@MinLength(3) float[] v2, @ExtractionParam @MinLength(3) float[] res)
-//	{
-//		return divR(v2[0], v2[1], v2[2], res);
-//	}
-//	
-//	float[] divR(float v2x, float v2y, float v2z, @ExtractionParam @MinLength(3) float[] res);
-//	
-//	default <T extends Vec3fC> T revDivR(SimpleVec3fR v2, @ExtractionParam T res)
-//	{
-//		return revDivR(v2.getX(), v2.getY(), v2.getZ(), res);
-//	}
-//	
-//	default <T extends Vec3fC> T revDivR(float value, @ExtractionParam T res)
-//	{
-//		return revDivR(value, value, value, res);
-//	}
-//	
-//	default <T extends Vec3fC> T revDivR(@MinLength(3) float[] v2, @ExtractionParam T res)
-//	{
-//		return revDivR(v2[0], v2[1], v2[2], res);
-//	}
-//	
-//	<T extends Vec3fC> T revDivR(float v2x, float v2y, float v2z, @ExtractionParam T res);
-//	
-//	default float[] revDivR(SimpleVec3fR v2, @ExtractionParam @MinLength(3) float[] res)
-//	{
-//		return revDivR(v2.getX(), v2.getY(), v2.getZ(), res);
-//	}
-//	
-//	default float[] revDivR(float value, @ExtractionParam @MinLength(3) float[] res)
-//	{
-//		return revDivR(value, value, value, res);
-//	}
-//	
-//	default float[] revDivR(@MinLength(3) float[] v2, @ExtractionParam @MinLength(3) float[] res)
-//	{
-//		return revDivR(v2[0], v2[1], v2[2], res);
-//	}
-//	
-//	float[] revDivR(float v2x, float v2y, float v2z, @ExtractionParam @MinLength(3) float[] res);
-//	
-//	<T extends Vec3fC> T normalizeUnsafeR(@ExtractionParam T res);
-//	
-//	float[] normalizeUnsafeR(@ExtractionParam @MinLength(3) float[] res);
-//	
-//	<T extends Vec3fC> T normalizeR(@ExtractionParam T res);
-//	
-//	float[] normalizeR(@ExtractionParam @MinLength(3) float[] res);
-//	
-//	<T extends Vec3fC> T normalizeR(@FloatMinValue(0.0f) float tolerance, @ExtractionParam T res);
-//	
-//	float[] normalizeR(@FloatMinValue(0.0f) float tolerance, @ExtractionParam @MinLength(3) float[] res);
-//	
-//	<T extends Vec3fC> T negateR(@ExtractionParam T res);
-//	
-//	float[] negateR(@ExtractionParam @MinLength(3) float[] res);
-//	
-//	<T extends Vec3fC> T inverseR(@ExtractionParam T res);
-//	
-//	float[] inverseR(@ExtractionParam @MinLength(3) float[] res);
-//	
-//	default <T extends Vec3fC> T crossR(SimpleVec3fR v2, @ExtractionParam T res)
-//	{
-//		return crossR(v2.getX(), v2.getY(), v2.getZ(), res);
-//	}
-//	
-//	default <T extends Vec3fC> T crossR(float value, @ExtractionParam T res)
-//	{
-//		return crossR(value, value, value, res);
-//	}
-//	
-//	default <T extends Vec3fC> T crossR(@MinLength(3) float[] v2, @ExtractionParam T res)
-//	{
-//		return crossR(v2[0], v2[1], v2[2], res);
-//	}
-//	
-//	<T extends Vec3fC> T crossR(float v2x, float v2y, float v2z, @ExtractionParam T res);
-//	
-//	default float[] crossR(SimpleVec3fR v2, @ExtractionParam @MinLength(3) float[] res)
-//	{
-//		return crossR(v2.getX(), v2.getY(), v2.getZ(), res);
-//	}
-//	
-//	default float[] crossR(float value, @ExtractionParam @MinLength(3) float[] res)
-//	{
-//		return crossR(value, value, value, res);
-//	}
-//	
-//	default float[] crossR(@MinLength(3) float[] v2, @ExtractionParam @MinLength(3) float[] res)
-//	{
-//		return crossR(v2[0], v2[1], v2[2], res);
-//	}
-//	
-//	float[] crossR(float v2x, float v2y, float v2z, @ExtractionParam @MinLength(3) float[] res);
-//	
-//	<T extends Vec3fC> T absR(@ExtractionParam T res);
-//	
-//	float[] absR(@ExtractionParam @MinLength(3) float[] res);
-//	
-//	<T extends Vec3fC> T floorR(@ExtractionParam T res);
-//	
-//	float[] floorR(@ExtractionParam @MinLength(3) float[] res);
-//	
-//	<T extends Vec3fC> T ceilR(@ExtractionParam T res);
-//	
-//	float[] ceilR(@ExtractionParam @MinLength(3) float[] res);
-//	
-//	<T extends Vec3fC> T roundR(@ExtractionParam T res);
-//	
-//	float[] roundR(@ExtractionParam @MinLength(3) float[] res);
-//	
-//	<T extends Vec3fC> T truncR(@ExtractionParam T res);
-//	
-//	float[] truncR(@ExtractionParam @MinLength(3) float[] res);
-//	
-//	<T extends Vec3fC> T roundR(FloatRoundMethod method, @ExtractionParam T res);
-//	
-//	float[] roundR(FloatRoundMethod method, @ExtractionParam @MinLength(3) float[] res);
-//	
-//	<T extends Vec3fC> T signumR(@ExtractionParam T res);
-//	
-//	float[] signumR(@ExtractionParam @MinLength(3) float[] res);
-//	
-//	<T extends Vec3fC> T transformR(Mat4fR m, @ExtractionParam T res);
-//	
-//	float[] transformR(Mat4fR m, @ExtractionParam @MinLength(3) float[] res);
-//	
-//	<T extends Vec3fC> T rotateXR(float angle, @ExtractionParam T res);
-//	
-//	float[] rotateXR(float angle, @ExtractionParam @MinLength(3) float[] res);
-//	
-//	default <T extends Vec3fC> T rotateXDegR(float angle, @ExtractionParam T res)
-//	{
-//		return rotateXR(angle * BarghosMath.DEG_TO_RADf, res);
-//	}
-//	
-//	default float[] rotateXDegR(float angle, @ExtractionParam @MinLength(3) float[] res)
-//	{
-//		return rotateXR(angle * BarghosMath.DEG_TO_RADf, res);
-//	}
-//	
-//	<T extends Vec3fC> T rotateYR(float angle, @ExtractionParam T res);
-//	
-//	float[] rotateYR(float angle, @ExtractionParam @MinLength(3) float[] res);
-//	
-//	default <T extends Vec3fC> T rotateYDegR(float angle, @ExtractionParam T res)
-//	{
-//		return rotateYR(angle * BarghosMath.DEG_TO_RADf, res);
-//	}
-//	
-//	default float[] rotateYDegR(float angle, @ExtractionParam @MinLength(3) float[] res)
-//	{
-//		return rotateYR(angle * BarghosMath.DEG_TO_RADf, res);
-//	}
-//	
-//	<T extends Vec3fC> T rotateZR(float angle, @ExtractionParam T res);
-//	
-//	float[] rotateZR(float angle, @ExtractionParam @MinLength(3) float[] res);
-//	
-//	default <T extends Vec3fC> T rotateZDegR(float angle, @ExtractionParam T res)
-//	{
-//		return rotateZR(angle * BarghosMath.DEG_TO_RADf, res);
-//	}
-//	
-//	default float[] rotateZDegR(float angle, @ExtractionParam @MinLength(3) float[] res)
-//	{
-//		return rotateZR(angle * BarghosMath.DEG_TO_RADf, res);
-//	}
-//	
-//	default <T extends Vec3fC> T rotateR(SimpleVec3fR axis, float angle, @ExtractionParam T res)
-//	{
-//		return rotateR(axis.getX(), axis.getY(), axis.getZ(), angle, res);
-//	}
-//	
-//	default <T extends Vec3fC> T rotateR(@MinLength(3) float[] axis, float angle, @ExtractionParam T res)
-//	{
-//		return rotateR(axis[0], axis[1], axis[2], angle, res);
-//	}
-//
-//	<T extends Vec3fC> T rotateR(float axisX, float axisY, float axisZ, float angle, @ExtractionParam T res);
-//	
-//	default float[] rotateR(SimpleVec3fR axis, float angle, @ExtractionParam @MinLength(3) float[] res)
-//	{
-//		return rotateR(axis.getX(), axis.getY(), axis.getZ(), angle, res);
-//	}
-//	
-//	default float[] rotateR(@MinLength(3) float[] axis, float angle, @ExtractionParam @MinLength(3) float[] res)
-//	{
-//		return rotateR(axis[0], axis[1], axis[2], angle, res);
-//	}
-//
-//	float[] rotateR(float axisX, float axisY, float axisZ, float angle, @ExtractionParam @MinLength(3) float[] res);
-//	
-//	default <T extends Vec3fC> T rotateDegR(SimpleVec3fR axis, float angle, @ExtractionParam T res)
-//	{
-//		return rotateDegR(axis.getX(), axis.getY(), axis.getZ(), angle, res);
-//	}
-//
-//	default <T extends Vec3fC> T rotateDegR(@MinLength(3) float[] axis, float angle, @ExtractionParam T res)
-//	{
-//		return rotateDegR(axis[0], axis[1], axis[2], angle, res);
-//	}
-//
-//	default <T extends Vec3fC> T rotateDegR(float axisX, float axisY, float axisZ, float angle, @ExtractionParam T res)
-//	{
-//		return rotateR(axisX, axisY, axisZ, angle * BarghosMath.DEG_TO_RADf, res);
-//	}
-//	
-//	default float[] rotateDegR(SimpleVec3fR axis, float angle, @ExtractionParam @MinLength(3) float[] res)
-//	{
-//		return rotateDegR(axis.getX(), axis.getY(), axis.getZ(), angle, res);
-//	}
-//
-//	default float[] rotateDegR(@MinLength(3) float[] axis, float angle, @ExtractionParam @MinLength(3) float[] res)
-//	{
-//		return rotateDegR(axis[0], axis[1], axis[2], angle, res);
-//	}
-//
-//	default float[] rotateDegR(float axisX, float axisY, float axisZ, float angle, @ExtractionParam @MinLength(3) float[] res)
-//	{
-//		return rotateR(axisX, axisY, axisZ, angle * BarghosMath.DEG_TO_RADf, res);
-//	}
-//	
-//	<T extends Vec3fC> T rotateR(AxisAngle3fR aa, @ExtractionParam T res);
-//
-//	float[] rotateR(AxisAngle3fR aa, @ExtractionParam @MinLength(3) float[] res);
-//	
-//	<T extends Vec3fC> T rotateR(QuatR q, @ExtractionParam T res);
-//	
-//	float[] rotateR(QuatR q, @ExtractionParam @MinLength(3) float[] res);
-//	
-//	default <T extends Vec3fC> T projectR(SimpleVec3fR v2, @ExtractionParam T res)
-//	{
-//		return projectR(v2.getX(), v2.getY(), v2.getZ(), res);
-//	}
-//	
-//	default <T extends Vec3fC> T projectR(@MinLength(3) float[] v2, @ExtractionParam T res)
-//	{
-//		return projectR(v2[0], v2[1], v2[2], res);
-//	}
-//	
-//	<T extends Vec3fC> T projectR(float x, float y, float z, @ExtractionParam T res);
-//	
-//	default float[] projectR(SimpleVec3fR v2, @ExtractionParam @MinLength(3) float[] res)
-//	{
-//		return projectR(v2.getX(), v2.getY(), v2.getZ(), res);
-//	}
-//	
-//	default float[] projectR(@MinLength(3) float[] v2, @ExtractionParam @MinLength(3) float[] res)
-//	{
-//		return projectR(v2[0], v2[1], v2[2], res);
-//	}
-//	
-//	float[] projectR(float x, float y, float z, @ExtractionParam @MinLength(3) float[] res);
-//	
-//	default <T extends Vec3fC> T reflectR(SimpleVec3fR v2, @ExtractionParam T res)
-//	{
-//		return reflectR(v2.getX(), v2.getY(), v2.getZ(), res);
-//	}
-//	
-//	default <T extends Vec3fC> T reflectR(@MinLength(3) float[] v2, @ExtractionParam T res)
-//	{
-//		return reflectR(v2[0], v2[1], v2[2], res);
-//	}
-//	
-//	<T extends Vec3fC> T reflectR(float x, float y, float z, @ExtractionParam T res);
-//	
-//	default float[] reflectR(SimpleVec3fR v2, @ExtractionParam @MinLength(3) float[] res)
-//	{
-//		return reflectR(v2.getX(), v2.getY(), v2.getZ(), res);
-//	}
-//	
-//	default float[] reflectR(@MinLength(3) float[] v2, @ExtractionParam @MinLength(3) float[] res)
-//	{
-//		return reflectR(v2[0], v2[1], v2[2], res);
-//	}
-//	
-//	float[] reflectR(float x, float y, float z, @ExtractionParam @MinLength(3) float[] res);
-//	
-//	default float cosAngleToUnsafe(Vec3fR v2)
-//	{
-//		return cosAngleToUnsafe(v2.getX(), v2.getY(), v2.getZ());
-//	}
-//	
-//	default float cosAngleToUnsafe(@MinLength(3) float[] v2)
-//	{
-//		return cosAngleToUnsafe(v2[0], v2[1], v2[2]);
-//	}
-//	
-//	float cosAngleToUnsafe(float x, float y, float z);
-//	
-//	default float cosAngleTo(SimpleVec3fR v2)
-//	{
-//		return cosAngleTo(v2.getX(), v2.getY(), v2.getZ());
-//	}
-//	
-//	default float cosAngleTo(@MinLength(3) float[] v2)
-//	{
-//		return cosAngleTo(v2[0], v2[1], v2[2]);
-//	}
-//	
-//	float cosAngleTo(float x, float y, float z);
-//}
+package org.barghos.math.api.vector;
+
+import org.barghos.core.api.math.BarghosMath;
+import org.barghos.core.api.math.FloatRoundMethod;
+import org.barghos.core.api.math.MathProvider;
+import org.barghos.annotation.ExtractionParam;
+import org.barghos.annotation.FloatMinValue;
+import org.barghos.annotation.MinLength;
+import org.barghos.math.api.util.ComponentValueFloat;
+import org.barghos.tuple.api.t3.Tup3fC;
+import org.barghos.tuple.api.t3.Tup3fR;
+
+/**
+ * This interface provides non invasive (readonly) functions and methods for float vectors with three dimensions.
+ */
+public interface Vec3fR extends SimpleVec3fR
+{
+	/**
+	 * Creates a new instance of the type of this vector.
+	 * 
+	 * @return A new instance.
+	 */
+	Vec3fR createNew();
+	
+	/**
+	 * Creates a new instance of the type of this vector and adopts the component values from the givewn vector {@code (v)}.
+	 * 
+	 * @param v The vector to adopt the component values from.
+	 * 
+	 * @return A new instance.
+	 */
+	default Vec3fR createNew(Tup3fR v)
+	{
+		return createNew(v.getV0(), v.getV1(), v.getV2());
+	}
+	
+	/**
+	 * Creates a new instance of the type of this vector and adopts the component values from the given vector {@code (v[0], v[1], v[2])}.
+	 * 
+	 * @param v The vector as an array with at least three entries to adopt the component values from.
+	 * 
+	 * @return A new instance.
+	 */
+	default Vec3fR createNew(@MinLength(3) float[] v)
+	{
+		return createNew(v[0], v[1], v[2]);
+	}
+	
+	/**
+	 * Creates a new instance of the type of this vector and sets the component values to the given value {@code (value)}.
+	 * 
+	 * @param value The value that will be used for all component values.
+	 * 
+	 * @return A new instance.
+	 */
+	default Vec3fR createNew(float value)
+	{
+		return createNew(value, value, value);
+	}
+	
+	/**
+	 * Creates a new instance of the type of this vector and adopts the component values from the given vector {@code (x, y, z)}.
+	 * 
+	 * @param x The value of the x component.
+	 * @param y The value of the y component.
+	 * @param z The value of the z component.
+	 * 
+	 * @return A new instance.
+	 */
+	Vec3fR createNew(float x, float y, float z);
+	
+	/** {@inheritDoc} */
+	@Override
+	Vec3fR copy();
+	
+	/**
+	 * Returns the length (magnitude, norm) of this vector.
+	 * 
+	 * <p>
+	 * Here the default {@link MathProvider} from {@link BarghosMath#PROVIDER} is used for calculation.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code |v|}
+	 * 
+	 * @return The length of this vector.
+	 */
+	default float length()
+	{
+		return Vec3fUtils.length(this);
+	}
+	
+	/**
+	 * Returns the length (magnitude, norm) of this vector.
+	 * 
+	 * <p>
+	 * Here the explicitly given {@link MathProvider} is used for calculation.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code |v|}
+	 * 
+	 * @param mathProvider The provider of fundamental math functions that should be used for calculation.
+	 * 
+	 * @return The length of this vector.
+	 */
+	default float length(MathProvider mathProvider)
+	{
+		return Vec3fUtils.length(this, mathProvider);
+	}
+	
+	/**
+	 * Returns the length (magnitude, norm) of this vector.
+	 * 
+	 * <p>
+	 * If all the component values are within the given inclusive margin around zero defined by {@code tolerance},
+	 * the length will be zero.
+	 * This allows to account for floating point precision errors.
+	 * 
+	 * <p>
+	 * Here the default {@link MathProvider} from {@link BarghosMath#PROVIDER} is used for calculation.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code |v|}
+	 * 
+	 * @param tolerance The inclusive margin around zero to still count as zero.
+	 * 
+	 * @return The length of this vector.
+	 * 
+	 * @throws IllegalArgumentException If the given {@code tolerance} is below zero.
+	 */
+	default float length(@FloatMinValue(0.0f) float tolerance)
+	{
+		return Vec3fUtils.length(this, tolerance);
+	}
+	
+	/**
+	 * Returns the length (magnitude, norm) of this vector.
+	 * 
+	 * <p>
+	 * If all the component values are within the given inclusive margin around zero defined by {@code tolerance},
+	 * the length will be zero.
+	 * This allows to account for floating point precision errors.
+	 * 
+	 * <p>
+	 * Here the default {@link MathProvider} from {@link BarghosMath#PROVIDER} is used for calculation.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code |v|}
+	 * 
+	 * @param tolerance The inclusive margin around zero to still count as zero.
+	 * @param mathProvider The provider of fundamental math functions that should be used for calculation.
+	 * 
+	 * @return The length of this vector.
+	 * 
+	 * @throws IllegalArgumentException If the given {@code tolerance} is below zero.
+	 */
+	default float length(@FloatMinValue(0.0f) float tolerance, MathProvider mathProvider)
+	{
+		return Vec3fUtils.length(this, tolerance, mathProvider);
+	}
+	
+	/**
+	 * Returns the inverse (reciprocal) length (magnitude, norm) of this vector.
+	 * If the length of this vector is zero, an {@link ArithmeticException} is thrown.
+	 * 
+	 * <p>
+	 * Here the default {@link MathProvider} from {@link BarghosMath#PROVIDER} is used for calculation.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code 1 / |v|}
+	 * 
+	 * @return The inverse length of this vector.
+	 * 
+	 * @throws ArithmeticException If the vector has a length of zero.
+	 */
+	default float inverseLength()
+	{
+		return Vec3fUtils.inverseLength(this);
+	}
+
+	/**
+	 * Returns the inverse (reciprocal) length (magnitude, norm) of this vector.
+	 * If the length of this vector is zero, an {@link ArithmeticException} is thrown.
+	 * 
+	 * <p>
+	 * Here the explicitly given {@link MathProvider} is used for calculation.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code 1 / |v|}
+	 * 
+	 * @param mathProvider The provider of fundamental math functions that should be used for calculation.
+	 * 
+	 * @return The inverse length of this vector.
+	 * 
+	 * @throws ArithmeticException If the vector has a length of zero.
+	 */
+	default float inverseLength(MathProvider mathProvider)
+	{
+		return Vec3fUtils.inverseLength(this, mathProvider);
+	}
+	
+	/**
+	 * Returns the distance between the endpoint of this vector and the endpoint of the given vector {@code (v2)}.
+	 * 
+	 * <p>
+	 * Here the default {@link MathProvider} from {@link BarghosMath#PROVIDER} is used for calculation.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code |v2 - v|}
+	 * 
+	 * @param v2 The second vector.
+	 * 
+	 * @return The distance between the endpoint of this vector and the endpoint of the given vector.
+	 */
+	default float distanceTo(Tup3fR v2)
+	{
+		return Vec3fUtils.distanceTo(this, v2);
+	}
+	
+	/**
+	 * Returns the distance between the endpoint of this vector and the endpoint of the given vector {@code (v2)}.
+	 * 
+	 * <p>
+	 * Here the explicitly given {@link MathProvider} is used for calculation.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code |v2 - v|}
+	 * 
+	 * @param v2 The second vector.
+	 * @param mathProvider The provider of fundamental math functions that should be used for calculation.
+	 * 
+	 * @return The distance between the endpoint of this vector and the endpoint of the given vector.
+	 */
+	default float distanceTo(Tup3fR v2, MathProvider mathProvider)
+	{
+		return Vec3fUtils.distanceTo(this, v2, mathProvider);
+	}
+	
+	/**
+	 * Returns the distance between the endpoint of this vector and the endpoint of the given vector {@code (v2)}.
+	 * 
+	 * <p>
+	 * If the distance is less or equal to the given inclusive {@code tolerance} the distance will be zero.
+	 * This allows to account for floating point precision errors.
+	 * 
+	 * <p>
+	 * Here the default {@link MathProvider} from {@link BarghosMath#PROVIDER} is used for calculation.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code |v2 - v|}
+	 * 
+	 * @param v2 The second vector.
+	 * @param tolerance The inclusive margin around zero to still count as zero.
+	 * 
+	 * @return The distance between the endpoint of this vector and the endpoint of the given vector.
+	 * 
+	 * @throws IllegalArgumentException If the given {@code tolerance} is below zero.
+	 */
+	default float distanceTo(Tup3fR v2, @FloatMinValue(0.0f) float tolerance)
+	{
+		return Vec3fUtils.distanceTo(this, v2, tolerance);
+	}
+	
+	/**
+	 * Returns the distance between the endpoint of this vector and the endpoint of the given vector {@code (v2)}.
+	 * 
+	 * <p>
+	 * If the distance is less or equal to the given inclusive {@code tolerance} the distance will be zero.
+	 * This allows to account for floating point precision errors.
+	 * 
+	 * <p>
+	 * Here the explicitly given {@link MathProvider} is used for calculation.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code |v2 - v|}
+	 * 
+	 * @param v2 The second vector.
+	 * @param tolerance The inclusive margin around zero to still count as zero.
+	 * @param mathProvider The provider of fundamental math functions that should be used for calculation.
+	 * 
+	 * @return The distance between the endpoint of this vector and the endpoint of the given vector.
+	 * 
+	 * @throws IllegalArgumentException If the given {@code tolerance} is below zero.
+	 */
+	default float distanceTo(Tup3fR v2, @FloatMinValue(0.0f) float tolerance, MathProvider mathProvider)
+	{
+		return Vec3fUtils.distanceTo(this, v2, tolerance);
+	}
+	
+	/**
+	 * Returns the distance between the endpoint of this vector and the endpoint of the given vector {@code (v2[0], v2[1], v2[2])}.
+	 * 
+	 * <p>
+	 * Here the default {@link MathProvider} from {@link BarghosMath#PROVIDER} is used for calculation.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code |(v2[0], v2[1], v2[2]) - v|}
+	 * 
+	 * @param v2 The second vector as an array with at least three entries.
+	 * 
+	 * @return The distance between the endpoint of this vector and the endpoint of the given vector.
+	 */
+	default float distanceTo(@MinLength(3) float[] v2)
+	{
+		return Vec3fUtils.distanceTo(this, v2);
+	}
+	
+	/**
+	 * Returns the distance between the endpoint of this vector and the endpoint of the given vector {@code (v2[0], v2[1], v2[2])}.
+	 * 
+	 * <p>
+	 * Here the explicitly given {@link MathProvider} is used for calculation.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code |(v2[0], v2[1], v2[2]) - v|}
+	 * 
+	 * @param v2 The second vector as an array with at least three entries.
+	 * @param mathProvider The provider of fundamental math functions that should be used for calculation.
+	 * 
+	 * @return The distance between the endpoint of this vector and the endpoint of the given vector.
+	 */
+	default float distanceTo(@MinLength(3) float[] v2, MathProvider mathProvider)
+	{
+		return Vec3fUtils.distanceTo(this, v2, mathProvider);
+	}
+	
+	/**
+	 * Returns the distance between the endpoint of this vector and the endpoint of the given vector {@code (v2[0], v2[1], v2[2])}.
+	 * 
+	 * <p>
+	 * If the distance is less or equal to the given inclusive {@code tolerance} the distance will be zero.
+	 * This allows to account for floating point precision errors.
+	 * 
+	 * <p>
+	 * Here the default {@link MathProvider} from {@link BarghosMath#PROVIDER} is used for calculation.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code |(v2[0], v2[1], v2[2]) - v|}
+	 * 
+	 * @param v2 The second vector as an array with at least three entries.
+	 * @param tolerance The inclusive margin around zero to still count as zero.
+	 * 
+	 * @return The distance between the endpoint of this vector and the endpoint of the given vector.
+	 * 
+	 * @throws IllegalArgumentException If the given {@code tolerance} is below zero.
+	 */
+	default float distanceTo(@MinLength(3) float[] v2, @FloatMinValue(0.0f) float tolerance)
+	{
+		return Vec3fUtils.distanceTo(this, v2, tolerance);
+	}
+	
+	/**
+	 * Returns the distance between the endpoint of this vector and the endpoint of the given vector {@code (v2[0], v2[1], v2[2])}.
+	 * 
+	 * <p>
+	 * If the distance is less or equal to the given inclusive {@code tolerance} the distance will be zero.
+	 * This allows to account for floating point precision errors.
+	 * 
+	 * <p>
+	 * Here the explicitly given {@link MathProvider} is used for calculation.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code |(v2[0], v2[1], v2[2]) - v|}
+	 * 
+	 * @param v2 The second vector as an array with at least three entries.
+	 * @param tolerance The inclusive margin around zero to still count as zero.
+	 * @param mathProvider The provider of fundamental math functions that should be used for calculation.
+	 * 
+	 * @return The distance between the endpoint of this vector and the endpoint of the given vector.
+	 * 
+	 * @throws IllegalArgumentException If the given {@code tolerance} is below zero.
+	 */
+	default float distanceTo(@MinLength(2) float[] v2, @FloatMinValue(0.0f) float tolerance, MathProvider mathProvider)
+	{
+		return Vec3fUtils.distanceTo(this, v2, tolerance, mathProvider);
+	}
+	
+	/**
+	 * Returns the distance between the endpoint of this vector and the endpoint of the given vector {@code (v2x, v2y, v2z)}.
+	 * 
+	 * <p>
+	 * Here the default {@link MathProvider} from {@link BarghosMath#PROVIDER} is used for calculation.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code |(v2x, v2y, v2z) - v|}
+	 * 
+	 * @param v2x The value of the x component of the second vector.
+	 * @param v2y The value of the y component of the second vector.
+	 * @param v2z The value of the z component of the second vector.
+	 * 
+	 * @return The distance between the endpoint of this vector and the endpoint of the given vector.
+	 */
+	default float distanceTo(float v2x, float v2y, float v2z)
+	{
+		return Vec3fUtils.distanceTo(this, v2x, v2y, v2z);
+	}
+	
+	/**
+	 * Returns the distance between the endpoint of this vector and the endpoint of the given vector {@code (v2x, v2y, v2z)}.
+	 * 
+	 * <p>
+	 * Here the explicitly given {@link MathProvider} is used for calculation.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code |(v2x, v2y, v2z) - v|}
+	 * 
+	 * @param v2x The value of the x component of the second vector.
+	 * @param v2y The value of the y component of the second vector.
+	 * @param v2z The value of the z component of the second vector.
+	 * @param mathProvider The provider of fundamental math functions that should be used for calculation.
+	 * 
+	 * @return The distance between the endpoint of this vector and the endpoint of the given vector.
+	 */
+	default float distanceTo(float v2x, float v2y, float v2z, MathProvider mathProvider)
+	{
+		return Vec3fUtils.distanceTo(this, v2x, v2y, v2z, mathProvider);
+	}
+	
+	/**
+	 * Returns the distance between the endpoint of this vector and the endpoint of the given vector {@code (v2x, v2y, v2z)}.
+	 * 
+	 * <p>
+	 * If the distance is less or equal to the given inclusive {@code tolerance} the distance will be zero.
+	 * This allows to account for floating point precision errors.
+	 * 
+	 * <p>
+	 * Here the default {@link MathProvider} from {@link BarghosMath#PROVIDER} is used for calculation.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code |(v2x, v2y, v2z) - v|}
+	 * 
+	 * @param v2x The value of the x component of the second vector.
+	 * @param v2y The value of the y component of the second vector.
+	 * @param v2z The value of the z component of the second vector.
+	 * @param tolerance The inclusive margin around zero to still count as zero.
+	 * 
+	 * @return The distance between the endpoint of this vector and the endpoint of the given vector.
+	 * 
+	 * @throws IllegalArgumentException If the given {@code tolerance} is below zero.
+	 */
+	default float distanceTo(float v2x, float v2y, float v2z, @FloatMinValue(0.0f) float tolerance)
+	{
+		return Vec3fUtils.distanceTo(this, v2x, v2y, v2z, tolerance);
+	}
+	
+	/**
+	 * Returns the distance between the endpoint of this vector and the endpoint of the given vector {@code (v2x, v2y, v2z)}.
+	 * 
+	 * <p>
+	 * If the distance is less or equal to the given inclusive {@code tolerance} the distance will be zero.
+	 * This allows to account for floating point precision errors.
+	 * 
+	 * <p>
+	 * Here the explicitly given {@link MathProvider} is used for calculation.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code |(v2x, v2y, v2z) - v|}
+	 * 
+	 * @param v2x The value of the x component of the second vector.
+	 * @param v2y The value of the y component of the second vector.
+	 * @param v2z The value of the z component of the second vector.
+	 * @param tolerance The inclusive margin around zero to still count as zero.
+	 * @param mathProvider The provider of fundamental math functions that should be used for calculation.
+	 * 
+	 * @return The distance between the endpoint of this vector and the endpoint of the given vector.
+	 * 
+	 * @throws IllegalArgumentException If the given {@code tolerance} is below zero.
+	 */
+	default float distanceTo(float v2x, float v2y, float v2z, @FloatMinValue(0.0f) float tolerance, MathProvider mathProvider)
+	{
+		return Vec3fUtils.distanceTo(this, v2x, v2y, v2z, tolerance, mathProvider);
+	}
+	
+	/**
+	 * Returns the inverse (reciprocal) distance between the endpoint of this vector and the endpoint of the given vector {@code (v2)}.
+	 * If the distance is zero an {@link ArithmeticException} is thrown.
+	 * 
+	 * <p>
+	 * Here the default {@link MathProvider} from {@link BarghosMath#PROVIDER} is used for calculation.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code 1 / |v2 - v|}
+	 * 
+	 * @param v2 The second vector.
+	 * 
+	 * @return The inverse distance between the endpoint of this vector and the endpoint of the given vector.
+	 * 
+	 * @throws ArithmeticException If the distance between the endpoints is zero.
+	 */
+	default float inverseDistanceTo(Tup3fR v2)
+	{
+		return Vec3fUtils.inverseDistanceTo(this, v2);
+	}
+	
+	/**
+	 * Returns the inverse (reciprocal) distance between the endpoint of this vector and the endpoint of the given vector {@code (v2)}.
+	 * If the distance is zero an {@link ArithmeticException} is thrown.
+	 * 
+	 * <p>
+	 * Here the explicitly given {@link MathProvider} is used for calculation.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code 1 / |v2 - v|}
+	 * 
+	 * @param v2 The second vector.
+	 * @param mathProvider The provider of fundamental math functions that should be used for calculation.
+	 * 
+	 * @return The inverse distance between the endpoint of this vector and the endpoint of the given vector.
+	 * 
+	 * @throws ArithmeticException If the distance between the endpoints is zero.
+	 */
+	default float inverseDistanceTo(Tup3fR v2, MathProvider mathProvider)
+	{
+		return Vec3fUtils.inverseDistanceTo(this, v2, mathProvider);
+	}
+	
+	/**
+	 * Returns the inverse (reciprocal) distance between the endpoint of this vector and the endpoint of the given vector {@code (v2[0], v2[1], v2[2])}.
+	 * If the distance is zero an {@link ArithmeticException} is thrown.
+	 * 
+	 * <p>
+	 * Here the default {@link MathProvider} from {@link BarghosMath#PROVIDER} is used for calculation.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code 1 / |(v2[0], v2[1], v2[2]) - v|}
+	 * 
+	 * @param v2 The second vector as an array with at least three entries.
+	 * 
+	 * @return The inverse distance between the endpoint of this vector and the endpoint of the given vector.
+	 * 
+	 * @throws ArithmeticException If the distance between the endpoints is zero.
+	 */
+	default float inverseDistanceTo(@MinLength(3) float[] v2)
+	{
+		return Vec3fUtils.inverseDistanceTo(this, v2);
+	}
+	
+	/**
+	 * Returns the inverse (reciprocal) distance between the endpoint of this vector and the endpoint of the given vector {@code (v2[0], v2[1], v2[2])}.
+	 * If the distance is zero an {@link ArithmeticException} is thrown.
+	 * 
+	 * <p>
+	 * Here the explicitly given {@link MathProvider} is used for calculation.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code 1 / |(v2[0], v2[1], v2[2]) - v|}
+	 * 
+	 * @param v2 The second vector as an array with at least three entries.
+	 * @param mathProvider The provider of fundamental math functions that should be used for calculation.
+	 * 
+	 * @return The inverse distance between the endpoint of this vector and the endpoint of the given vector.
+	 * 
+	 * @throws ArithmeticException If the distance between the endpoints is zero.
+	 */
+	default float inverseDistanceTo(@MinLength(3) float[] v2, MathProvider mathProvider)
+	{
+		return Vec3fUtils.inverseDistanceTo(this, v2, mathProvider);
+	}
+	
+	/**
+	 * Returns the inverse (reciprocal) distance between the endpoint of this vector and the endpoint of the given vector {@code (v2x, v2y, v2z)}.
+	 * If the distance is zero an {@link ArithmeticException} is thrown.
+	 * 
+	 * <p>
+	 * Here the default {@link MathProvider} from {@link BarghosMath#PROVIDER} is used for calculation.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code 1 / |(v2x, v2y, v2z) - v|}
+	 * 
+	 * @param v2x The value of the x component of the second vector.
+	 * @param v2y The value of the y component of the second vector.
+	 * @param v2z The value of the z component of the second vector.
+	 * 
+	 * @return The inverse distance between the endpoint of this vector and the endpoint of the given vector.
+	 * 
+	 * @throws ArithmeticException If the distance between the endpoints is zero.
+	 */
+	default float inverseDistanceTo(float v2x, float v2y, float v2z)
+	{
+		return Vec3fUtils.inverseDistanceTo(this, v2x, v2y, v2z);
+	}
+	
+	/**
+	 * Returns the inverse (reciprocal) distance between the endpoint of this vector and the endpoint of the given vector {@code (v2x, v2y, v2z)}.
+	 * If the distance is zero an {@link ArithmeticException} is thrown.
+	 * 
+	 * <p>
+	 * Here the explicitly given {@link MathProvider} is used for calculation.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code 1 / |(v2x, v2y, v2z) - v|}
+	 * 
+	 * @param v2x The value of the x component of the second vector.
+	 * @param v2y The value of the y component of the second vector.
+	 * @param v2z The value of the z component of the second vector.
+	 * @param mathProvider The provider of fundamental math functions that should be used for calculation.
+	 * 
+	 * @return The inverse distance between the endpoint of this vector and the endpoint of the given vector.
+	 * 
+	 * @throws ArithmeticException If the distance between the endpoints is zero.
+	 */
+	default float inverseDistanceTo(float v2x, float v2y, float v2z, MathProvider mathProvider)
+	{
+		return Vec3fUtils.inverseDistanceTo(this, v2x, v2y, v2z, mathProvider);
+	}
+	
+	/**
+	 * Returns the squared length (magnitude, norm) of this vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code |v|^2}
+	 * 
+	 * @return The squared length of this vector.
+	 */
+	default float squaredLength()
+	{
+		return Vec3fUtils.squaredLength(this);
+	}
+	
+	/**
+	 * Returns the squared distance between the endpoint of this vector and the endpoint of the given vector {@code (v2)}.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code |v2 - v|^2}
+	 * 
+	 * @param v2 The second vector.
+	 * 
+	 * @return The squared distance between the endpoint of this vector and the endpoint of the given vector.
+	 */
+	default float squaredDistanceTo(Tup3fR v2)
+	{
+		return Vec3fUtils.squaredDistanceTo(this, v2);
+	}
+	
+	/**
+	 * Returns the squared distance between the endpoint of this vector and the endpoint of the given vector {@code (v2[0], v2[1], v2[2])}.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code |(v2[0], v2[1], v2[2]) - v|^2}
+	 * 
+	 * @param v2 The second vector as an array with at least three entries.
+	 * 
+	 * @return The squared distance between the endpoint of this vector and the endpoint of the given vector.
+	 */
+	default float squaredDistanceTo(@MinLength(3) float[] v2)
+	{
+		return Vec3fUtils.squaredDistanceTo(this, v2);
+	}
+	
+	/**
+	 * Returns the squared distance between the endpoint of this vector and the endpoint of the given vector {@code (v2x, v2y, v2z)}.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code |(v2x, v2y, v2z) - v|^2}
+	 * 
+	 * @param v2x The value of the x component of the second vector.
+	 * @param v2y The value of the y component of the second vector.
+	 * @param v2z The value of the z component of the second vector.
+	 * 
+	 * @return The squared distance between the endpoint of this vector and the endpoint of the given vector.
+	 */
+	default float squaredDistanceTo(float v2x, float v2y, float v2z)
+	{
+		return Vec3fUtils.squaredDistanceTo(this, v2x, v2y, v2z);
+	}
+	
+	/**
+	 * Returns the dot product (scalar product) between this vector and the given vector {@code (v2)}.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v . v2}
+	 * 
+	 * @param v2 The second vector.
+	 * @return The dot product.
+	 */
+	default float dot(Tup3fR v2)
+	{
+		return Vec3fUtils.dot(this, v2);
+	}
+	
+	/**
+	 * Returns the dot product (scalar product) between this vector and the given vector {@code (v2[0], v2[1], v2[2])}.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v . (v2[0], v2[1], v2[2])}
+	 * 
+	 * @param v2 The second vector as an array with at least three entries.
+	 * @return The dot product.
+	 */
+	default float dot(@MinLength(3) float[] v2)
+	{
+		return Vec3fUtils.dot(this, v2);
+	}
+	
+	/**
+	 * Returns the dot product (scalar product) between this vector and the given vector {@code (v2x, v2y, v2z)}.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v . (v2x, v2y, v2z)}
+	 * 
+	 * @param v2x The value of the x component of the second vector.
+	 * @param v2y The value of the y component of the second vector.
+	 * @param v2z The value of the z component of the second vector.
+	 * @return The dot product.
+	 */
+	default float dot(float v2x, float v2y, float v2z)
+	{
+		return Vec3fUtils.dot(this, v2x, v2y, v2z);
+	}
+	
+	/**
+	 * Adds the given vector {@code (v2)} to this vector and saves the result in a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v + v2}
+	 * 
+	 * @param v2 The vector to add to this vector.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR addN(Tup3fR v2)
+	{
+		return Vec3fUtils.addFunc(this, v2, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Adds the given vector {@code (v2[0], v2[1], v2[2])} to this vector and saves the result in a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v + (v2[0], v2[1], v2[2])}
+	 * 
+	 * @param v2 The vector to add to this vector as an array with at least three entries.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR addN(@MinLength(3) float[] v2)
+	{
+		return Vec3fUtils.addFunc(this, v2, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Adds the given value {@code (value)} to every component of this vector and saves the result in a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v + (value, value, value)}
+	 * 
+	 * @param value The value to add to this vector.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR addN(float value)
+	{
+		return Vec3fUtils.addFunc(this, value, value, value, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Adds the given vector {@code (v2x, v2y, v2z)} to this vector and saves the result in a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v + (v2x, v2y, v2z)}
+	 * 
+	 * @param v2x The value of the x component to add to this vector.
+	 * @param v2y The value of the y component to add to this vector.
+	 * @param v2z The value of the z component to add to this vector.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR addN(float v2x, float v2y, float v2z)
+	{
+		return Vec3fUtils.addFunc(this, v2x, v2y, v2z, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Subtracts the given vector {@code (v2)} from this vector and saves the result in a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v - v2}
+	 * 
+	 * @param v2 The vector to subtract from this vector.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR subN(Tup3fR v2)
+	{
+		return Vec3fUtils.subFunc(this, v2, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Subtracts the given vector {@code (v2[0], v2[1], v2[2])} from this vector and saves the result in a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v - (v2[0], v2[1], v2[2])}
+	 * 
+	 * @param v2 The vector to subtract from this vector as an array with at least three entries.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR subN(@MinLength(3) float[] v2)
+	{
+		return Vec3fUtils.subFunc(this, v2, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Subtracts the given value {@code (value)} from every component of this vector and saves the result in a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v - (value, value, value)}
+	 * 
+	 * @param value The value to subtract from this vector.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR subN(float value)
+	{
+		return Vec3fUtils.subFunc(this, value, value, value, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Subtracts the given vector {@code (v2x, v2y, v2z)} from this vector and saves the result in a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v - (v2x, v2y, v2z)}
+	 * 
+	 * @param v2x The value of the x component to subtract from this vector.
+	 * @param v2y The value of the y component to subtract from this vector.
+	 * @param v2z The value of the z component to subtract from this vector.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR subN(float v2x, float v2y, float v2z)
+	{
+		return Vec3fUtils.subFunc(this, v2x, v2y, v2z, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Subtracts this vector from the given vector {@code (v2)} and saves the result in a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v2 - v}
+	 * 
+	 * @param v2 The vector this vector is subtracted from.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR revSubN(Tup3fR v2)
+	{
+		return Vec3fUtils.revSubFunc(this, v2, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Subtracts this vector from the given vector {@code (v2[0], v2[1], v2[2])} and saves the result in a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code (v2[0], v2[1], v2[2]) - v}
+	 * 
+	 * @param v2 The vector this vector is subtracted from as an array with at least three entries.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR revSubN(@MinLength(3) float[] v2)
+	{
+		return Vec3fUtils.revSubFunc(this, v2, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Subtracts every component of this vector from the given value {@code (value)} and saves the result in a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code (value, value, value) - v}
+	 * 
+	 * @param value The value this vector is subtracted from.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR revSubN(float value)
+	{
+		return Vec3fUtils.revSubFunc(this, value, value, value, (x, y, z) -> createNew(x, y, z));
+	}
+		
+	/**
+	 * Subtracts this vector from the given vector {@code (v2x, v2y, v2z)} and saves the result in a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code (v2x, v2y, v2z) - v}
+	 * 
+	 * @param v2x The value of the x component this vector is subtracted from.
+	 * @param v2y The value of the y component this vector is subtracted from.
+	 * @param v2z The value of the z component this vector is subtracted from.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR revSubN(float v2x, float v2y, float v2z)
+	{
+		return Vec3fUtils.revSubFunc(this, v2x, v2y, v2z, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Multiplies this vector with the given vector {@code (v2)} and saves the result in a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v * v2}
+	 * 
+	 * @param v2 The vector to multiply this vector with.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR mulN(Tup3fR v2)
+	{
+		return Vec3fUtils.mulFunc(this, v2, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Multiplies this vector with the given vector {@code (v2[0], v2[1], v2[2])} and saves the result in a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v * (v2[0], v2[1], v2[2])}
+	 * 
+	 * @param v2 The vector to multiply this vector with as an array with at least three entries.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR mulN(@MinLength(3) float[] v2)
+	{
+		return Vec3fUtils.mulFunc(this, v2, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Multiplies every component of this vector with the given value {@code (value)} and saves the result in a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v * (value, value, value)}
+	 * 
+	 * @param value The value to multiply this vector with.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR mulN(float value)
+	{
+		return Vec3fUtils.mulFunc(this, value, value, value, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Multiplies this vector with the given vector {@code (v2x, v2y, v2z)} and saves the result in a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v * (v2x, v2y, v2z)}
+	 * 
+	 * @param v2x The value of the x component to multiply this vector with.
+	 * @param v2y The value of the y component to multiply this vector with.
+	 * @param v2z The value of the z component to multiply this vector with.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR mulN(float v2x, float v2y, float v2z)
+	{
+		return Vec3fUtils.mulFunc(this, v2x, v2y, v2z, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Divides this vector by the given vector {@code (v2)} and saves the result in a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v / v2}
+	 * 
+	 * @param v2 The vector to divide this vector by.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR divN(Tup3fR v2)
+	{
+		return Vec3fUtils.divFunc(this, v2, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Divides this vector by the given vector {@code (v2[0], v2[1], v2[2])} and saves the result in a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v / (v2[0], v2[1], v2[2])}
+	 * 
+	 * @param v2 The vector to divide this vector by as an array with at least three entries.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR divN(@MinLength(3) float[] v2)
+	{
+		return Vec3fUtils.divFunc(this, v2, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Divides each component of this vector by the given value {@code (value)} and saves the result in a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v / (value, value, value)}
+	 * 
+	 * @param value The value to divide this vector by.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR divN(float value)
+	{
+		return Vec3fUtils.divFunc(this, value, value, value, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Divides this vector by the given vector {@code (v2x, v2y, v2z)} and saves the result in a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v / (v2x, v2y, v2z)}
+	 * 
+	 * @param v2x The value of the x component to divide this vector by.
+	 * @param v2y The value of the y component to divide this vector by.
+	 * @param v2z The value of the z component to divide this vector by.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR divN(float v2x, float v2y, float v2z)
+	{
+		return Vec3fUtils.divFunc(this, v2x, v2y, v2z, (x, y, z) -> createNew(x, y, z));
+	}
+
+	/**
+	 * Divides the given vector {@code (v2)} by this vector and saves the result in a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v2 / v}
+	 * 
+	 * @param v2 The vector to divide by this vector.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR revDivN(Tup3fR v2)
+	{
+		return Vec3fUtils.revDivFunc(this, v2, (x, y, z) -> createNew(x, y, z));
+	}
+
+	/**
+	 * Divides the given vector {@code (v2[0], v2[1], v2[2])} by this vector and saves the result in a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code (v2[0], v2[1], v2[2]) / v}
+	 * 
+	 * @param v2 The vector to divide by this vector as an array with at least three entries.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR revDivN(@MinLength(3) float[] v2)
+	{
+		return Vec3fUtils.revDivFunc(this, v2, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Divides the given value {@code (value)} by each component of this vector and saves the result in a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code (value, value, value) / v}
+	 * 
+	 * @param value The value to divide by this vector.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR revDivN(float value)
+	{
+		return Vec3fUtils.revDivFunc(this, value, value, value, (x, y, z) -> createNew(x, y, z));
+	}
+
+	/**
+	 * Divides the given vector {@code (v2x, v2y, v2z)} by this vector and saves the result in a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code (v2x, v2y, v2z) / v}
+	 * 
+	 * @param v2x The value of the x component to divide by this vector.
+	 * @param v2y The value of the y component to divide by this vector.
+	 * @param v2z The value of the z component to divide by this vector.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR revDivN(float v2x, float v2y, float v2z)
+	{
+		return Vec3fUtils.revDivFunc(this, v2x, v2y, v2z, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Returns half the vector from the endpoint of this vector to the endpoint of the given vector {@code (v2)} as a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code ( v2 - v ) / 2}
+	 * 
+	 * @param v2 The second vector.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR halfVectorToN(Tup3fR v2)
+	{
+		return Vec3fUtils.halfVectorToFunc(this, v2, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Returns half the vector from the endpoint of this vector to the endpoint of the given vector {@code (v2[0], v2[1], v2[2])} as a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code ( (v2[0], v2[1], v2[2]) - v ) / 2}
+	 * 
+	 * @param v2 The second vector as an array with at least three entries.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR halfVectorToN(@MinLength(3) float[] v2)
+	{
+		return Vec3fUtils.halfVectorToFunc(this, v2, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Returns half the vector from the endpoint of this vector to the endpoint of the given vector {@code (v2x, v2y, v2z)} as a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code ( (v2x, v2y, v2z) - v ) / 2}
+	 * 
+	 * @param v2x The value of the x component of the second vector.
+	 * @param v2y The value of the y component of the second vector.
+	 * @param v2z The value of the z component of the second vector.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR halfVectorToN(float v2x, float v2y, float v2z)
+	{
+		return Vec3fUtils.halfVectorToFunc(this, v2x, v2y, v2z, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Returns the origin vector to the point that lies half way between the endpoint of this vector and the endpoint of the given vector {@code (v2)} as a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code ( v2 + v ) / 2}
+	 * 
+	 * @param v2 The second vector.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR halfPointBetweenN(Tup3fR v2)
+	{
+		return Vec3fUtils.halfPointBetweenFunc(this, v2, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Returns the origin vector to the point that lies half way between the endpoint of this vector and the endpoint of the given vector {@code (v2[0], v2[1], v2[2])} as a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code ( (v2[0], v2[1], v2[2]) + v ) / 2}
+	 * 
+	 * @param v2 The second vector as an array with at least three entries.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR halfPointBetweenN(@MinLength(3) float[] v2)
+	{
+		return Vec3fUtils.halfPointBetweenFunc(this, v2, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Returns the origin vector to the point that lies half way between the endpoint of this vector and the endpoint of the given vector {@code (v2x, v2y, v2z)} as a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code ( (v2x, v2y, v2z) + v ) / 2}
+	 * 
+	 * @param v2x The value of the x component of the second vector.
+	 * @param v2y The value of the y component of the second vector.
+	 * @param v2z The value of the z component of the second vector.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR halfPointBetweenN(float v2x, float v2y, float v2z)
+	{
+		return Vec3fUtils.halfPointBetweenFunc(this, v2x, v2y, v2z, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Negates this vector and returns the result as a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code -v}
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR negateN()
+	{
+		return Vec3fUtils.negateFunc(this, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Inverses this vector and returns the result as a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code 1 / v}
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR inverseN()
+	{
+		return Vec3fUtils.inverseFunc(this, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Normalizes this vector and returns the result as a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v / |v|}
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR normalizeN()
+	{
+		return Vec3fUtils.normalizeFunc(this, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Compares each component of this vector with the corresponding component of the given vector {@code (v2)} and
+	 * returns the smallest values as a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @param v2 The second vector.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR minVectorN(Tup3fR v2)
+	{
+		return Vec3fUtils.minVectorFunc(this, v2, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Compares each component of this vector with the corresponding component of the given vector {@code (v2[0], v2[1], v2[2])} and
+	 * returns the smallest values as a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @param v2 The second vector as an array with at least three entries.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR minVectorN(@MinLength(3) float[] v2)
+	{
+		return Vec3fUtils.minVectorFunc(this, v2, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Compares each component of this vector with the corresponding component of the given vector {@code (value, value, value)} and
+	 * returns the smallest values as a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @param value The value for all the components of the second vector.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR minVectorN(float value)
+	{
+		return Vec3fUtils.minVectorFunc(this, value, value, value, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Compares each component of this vector with the corresponding component of the given vector {@code (v2x, v2y, v2z)} and
+	 * returns the smallest values as a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @param v2x The value of the x component of the second vector.
+	 * @param v2y The value of the y component of the second vector.
+	 * @param v2z The value of the z component of the second vector.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR minVectorN(float v2x, float v2y, float v2z)
+	{
+		return Vec3fUtils.minVectorFunc(this, v2x, v2y, v2z, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Compares each component of this vector with the corresponding component of the given vector {@code (v2)} and
+	 * returns the greatest values as a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @param v2 The second vector.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR maxVectorN(Tup3fR v2)
+	{
+		return Vec3fUtils.maxVectorFunc(this, v2, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Compares each component of this vector with the corresponding component of the given vector {@code (v2[0], v2[1], v2[2])} and
+	 * returns the greatest values as a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @param v2 The second vector as an array with at least three entries.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR maxVectorN(@MinLength(3) float[] v2)
+	{
+		return Vec3fUtils.maxVectorFunc(this, v2, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Compares each component of this vector with the corresponding component of the given vector {@code (value, value, value)} and
+	 * returns the greatest values as a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @param value The value for all the components of the second vector.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR maxVectorN(float value)
+	{
+		return Vec3fUtils.maxVectorFunc(this, value, value, value, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Compares each component of this vector with the corresponding component of the given vector {@code (v2x, v2y, v2z)} and
+	 * returns the greatest values as a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @param v2x The value of the x component of the second vector.
+	 * @param v2y The value of the y component of the second vector.
+	 * @param v2z The value of the z component of the second vector.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR maxVectorN(float v2x, float v2y, float v2z)
+	{
+		return Vec3fUtils.maxVectorFunc(this, v2x, v2y, v2z, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Rotates this vector by the given angle in radians around the rotation axis {@code (axis)} and returns the result as a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Here the default {@link MathProvider} from {@link BarghosMath#PROVIDER} is used for calculation.
+	 * 
+	 * @param axis The rotation axis.
+	 * @param angle The angle in radians.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR rotateRadN(Tup3fR axis, float angle)
+	{
+		return Vec3fUtils.rotateRadFunc(this, axis, angle, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Rotates this vector by the given angle in radians around the rotation axis {@code (axis)} and returns the result as a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Here the explicitly given {@link MathProvider} is used for calculation.
+	 * 
+	 * @param axis The rotation axis.
+	 * @param angle The angle in radians.
+	 * @param mathProvider The provider of fundamental math functions that should be used for calculation.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR rotateRadN(Tup3fR axis, float angle, MathProvider mathProvider)
+	{
+		return Vec3fUtils.rotateRadFunc(this, axis, angle, mathProvider, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Rotates this vector by the given angle in radians around the rotation axis {@code (axis[0], axis[1], axis[2])} and returns the result as a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Here the default {@link MathProvider} from {@link BarghosMath#PROVIDER} is used for calculation.
+	 * 
+	 * @param axis The rotation axis as an array with at least three entries.
+	 * @param angle The angle in radians.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR rotateRadN(@MinLength(3) float[] axis, float angle)
+	{
+		return Vec3fUtils.rotateRadFunc(this, axis, angle, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Rotates this vector by the given angle in radians around the rotation axis {@code (axis[0], axis[1], axis[2])} and returns the result as a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Here the explicitly given {@link MathProvider} is used for calculation.
+	 * 
+	 * @param axis The rotation axis as an array with at least three entries.
+	 * @param angle The angle in radians.
+	 * @param mathProvider The provider of fundamental math functions that should be used for calculation.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR rotateRadN(@MinLength(3) float[] axis, float angle, MathProvider mathProvider)
+	{
+		return Vec3fUtils.rotateRadFunc(this, axis, angle, mathProvider, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Rotates this vector by the given angle in radians around the rotation axis {@code (axisX, axisY, axisZ)} and returns the result as a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Here the default {@link MathProvider} from {@link BarghosMath#PROVIDER} is used for calculation.
+	 * 
+	 * @param axisX The value of the x component of the rotation axis.
+	 * @param axisY The value of the y component of the rotation axis.
+	 * @param axisZ The value of the z component of the rotation axis.
+	 * @param angle The angle in radians.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR rotateRadN(float axisX, float axisY, float axisZ, float angle)
+	{
+		return Vec3fUtils.rotateRadFunc(this, axisX, axisY, axisZ, angle, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Rotates this vector by the given angle in radians around the rotation axis {@code (axisX, axisY, axisZ)} and returns the result as a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Here the explicitly given {@link MathProvider} is used for calculation.
+	 * 
+	 * @param axisX The value of the x component of the rotation axis.
+	 * @param axisY The value of the y component of the rotation axis.
+	 * @param axisZ The value of the z component of the rotation axis.
+	 * @param angle The angle in radians.
+	 * @param mathProvider The provider of fundamental math functions that should be used for calculation.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR rotateRadN(float axisX, float axisY, float axisZ, float angle, MathProvider mathProvider)
+	{
+		return Vec3fUtils.rotateRadFunc(this, axisX, axisY, axisZ, angle, mathProvider, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Rotates this vector by the given angle in degrees around the rotation axis {@code (axis)} and returns the result as a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Here the default {@link MathProvider} from {@link BarghosMath#PROVIDER} is used for calculation.
+	 * 
+	 * @param axis The rotation axis.
+	 * @param angle The angle in radians.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR rotateDegN(Tup3fR axis, float angle)
+	{
+		return Vec3fUtils.rotateDegFunc(this, axis, angle, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Rotates this vector by the given angle in degrees around the rotation axis {@code (axis)} and returns the result as a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Here the explicitly given {@link MathProvider} is used for calculation.
+	 * 
+	 * @param axis The rotation axis.
+	 * @param angle The angle in radians.
+	 * @param mathProvider The provider of fundamental math functions that should be used for calculation.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR rotateDegN(Tup3fR axis, float angle, MathProvider mathProvider)
+	{
+		return Vec3fUtils.rotateDegFunc(this, axis, angle, mathProvider, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Rotates this vector by the given angle in degrees around the rotation axis {@code (axis[0], axis[1], axis[2])} and returns the result as a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Here the default {@link MathProvider} from {@link BarghosMath#PROVIDER} is used for calculation.
+	 * 
+	 * @param axis The rotation axis as an array with at least three entries.
+	 * @param angle The angle in radians.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR rotateDegN(@MinLength(3) float[] axis, float angle)
+	{
+		return Vec3fUtils.rotateDegFunc(this, axis, angle, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Rotates this vector by the given angle in degrees around the rotation axis {@code (axis[0], axis[1], axis[2])} and returns the result as a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Here the explicitly given {@link MathProvider} is used for calculation.
+	 * 
+	 * @param axis The rotation axis as an array with at least three entries.
+	 * @param angle The angle in radians.
+	 * @param mathProvider The provider of fundamental math functions that should be used for calculation.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR rotateDegN(@MinLength(3) float[] axis, float angle, MathProvider mathProvider)
+	{
+		return Vec3fUtils.rotateDegFunc(this, axis, angle, mathProvider, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Rotates this vector by the given angle in degrees around the rotation axis {@code (axisX, axisY, axisZ)} and returns the result as a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Here the default {@link MathProvider} from {@link BarghosMath#PROVIDER} is used for calculation.
+	 * 
+	 * @param axisX The value of the x component of the rotation axis.
+	 * @param axisY The value of the y component of the rotation axis.
+	 * @param axisZ The value of the z component of the rotation axis.
+	 * @param angle The angle in radians.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR rotateDegN(float axisX, float axisY, float axisZ, float angle)
+	{
+		return Vec3fUtils.rotateDegFunc(this, axisX, axisY, axisZ, angle, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Rotates this vector by the given angle in degrees around the rotation axis {@code (axisX, axisY, axisZ)} and returns the result as a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Here the explicitly given {@link MathProvider} is used for calculation.
+	 * 
+	 * @param axisX The value of the x component of the rotation axis.
+	 * @param axisY The value of the y component of the rotation axis.
+	 * @param axisZ The value of the z component of the rotation axis.
+	 * @param angle The angle in radians.
+	 * @param mathProvider The provider of fundamental math functions that should be used for calculation.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR rotateDegN(float axisX, float axisY, float axisZ, float angle, MathProvider mathProvider)
+	{
+		return Vec3fUtils.rotateDegFunc(this, axisX, axisY, axisZ, angle, mathProvider, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Calculates the orthogonal projection of this vector onto the normalized target vector {@code (t)}
+	 * and returns the result as a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code t * (v . t)}
+	 * 
+	 * @param t The projection target vector.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR projectN(Tup3fR t)
+	{
+		return Vec3fUtils.projectFunc(this, t, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Calculates the orthogonal projection of this vector onto the normalized target vector {@code (t[0], t[1], t[2])}
+	 * and returns the result as a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code (t[0], t[1], t[2]) * (v . (t[0], t[1], [2]))}
+	 * 
+	 * @param t The projection target vector as an array with at least three entries.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR projectN(@MinLength(3) float[] t)
+	{
+		return Vec3fUtils.projectFunc(this, t, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Calculates the orthogonal projection of this vector onto the normalized target vector {@code (tX, tY, tZ)}
+	 * and returns the result as a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code (tX, tY, tZ) * (v . (tX, tY, tZ))}
+	 * 
+	 * @param tX The value of the x component of the projection target vector.
+	 * @param tY The value of the y component of the projection target vector.
+	 * @param tZ The value of the z component of the projection target vector.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR projectN(float tX, float tY, float tZ)
+	{
+		return Vec3fUtils.projectFunc(this, tX, tY, tZ, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Calculates the reflection of this vector based on the given normalized surface normal {@code (n)}
+	 * and returns the result as a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @param n The surface normal vector.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR reflectN(Tup3fR n)
+	{
+		return Vec3fUtils.reflectFunc(this, n, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Calculates the reflection of this vector based on the given normalized surface normal {@code (n[0], n[1], n[2])}
+	 * and returns the result as a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @param n The surface normal vector as an array with at least three entries.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR reflectN(@MinLength(3) float[] n)
+	{
+		return Vec3fUtils.reflectFunc(this, n, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Calculates the reflection of this vector based on the given normalized surface normal {@code (nX, nY, nZ)}
+	 * and returns the result as a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @param nX The value of the x component of the surface normal vector.
+	 * @param nY The value of the y component of the surface normal vector.
+	 * @param nZ The value of the z component of the surface normal vector.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR reflectN(float nX, float nY, float nZ)
+	{
+		return Vec3fUtils.reflectFunc(this, nX, nY, nZ, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Rounds the components of this vector towards the next greater integer and saves the result in a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR ceilN()
+	{
+		return Vec3fUtils.ceilFunc(this, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Rounds the components of this vector towards the next smaller integer and saves the result in a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR floorN()
+	{
+		return Vec3fUtils.floorFunc(this, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Rounds the components of this vector and saves the result in a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR roundN()
+	{
+		return Vec3fUtils.roundFunc(this, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Truncates the decimals of the components of this vector and saves the result in a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR truncN()
+	{
+		return Vec3fUtils.truncFunc(this, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Rounds the components of this vector using the given method and saves the result in a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @param method The Method to use for rounding.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR roundN(FloatRoundMethod method)
+	{
+		return Vec3fUtils.roundFunc(this, method, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Determines the smallest value of the components and returns the value and the index of the component.
+	 * The index returned is limited to the range of {@code 0 to 1}.
+	 * If two or more components have the same value the smallest index will be returned.
+	 * The returned object is immutable.
+	 * 
+	 * @return An object containing the smallest value of the components and the index of the corresponding component.
+	 */
+	default ComponentValueFloat min()
+	{
+		return Vec3fUtils.min(this, new ComponentValueFloat());
+	}
+	
+	/**
+	 * Determines the smallest value of the components and returns the value and the index of the component.
+	 * The index returned is limited to the range of {@code 0 to 1}.
+	 * If two or more components have the same value the smallest index will be returned.
+	 * This version utilizes an extraction parameter that receives the result and will be returned.
+	 * 
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default ComponentValueFloat min(@ExtractionParam ComponentValueFloat res)
+	{
+		return Vec3fUtils.min(this, res);
+	}
+	
+	/**
+	 * Determines the smallest value of the components and returns it.
+	 * 
+	 * @return The smallest value of the components.
+	 */
+	default float minValue()
+	{
+		return Vec3fUtils.minValue(this);
+	}
+	
+	/**
+	 * Determines the smallest value of the componensts and returns the index of the component.
+	 * The index returned is limited to the range of {@code 0 to 1}.
+	 * If two or more components have the same value the smallest index will be returned.
+	 * 
+	 * @return The index of the smallest component.
+	 */
+	default int minComponent()
+	{
+		return Vec3fUtils.minComponent(this);
+	}
+	
+	/**
+	 * Determines the greatest value of the components and returns the value and the index of the component.
+	 * The index returned is limited to the range of {@code 0 to 1}.
+	 * If two or more components have the same value the smallest index will be returned.
+	 * The returned tuple is immutable.
+	 * 
+	 * @return An object containing the greatest value of the components and the index of the corresponding component.
+	 */
+	default ComponentValueFloat max()
+	{
+		return Vec3fUtils.max(this, new ComponentValueFloat());
+	}
+	
+	/**
+	 * Determines the greatest value of the components and returns the value and the index of the component.
+	 * The index returned is limited to the range of {@code 0 to 1}.
+	 * If two or more components have the same value the smallest index will be returned.
+	 * This version utilizes an extraction parameter that receives the result and will be returned.
+	 * 
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default ComponentValueFloat max(@ExtractionParam ComponentValueFloat res)
+	{
+		return Vec3fUtils.max(this, res);
+	}
+	
+	/**
+	 * Determines the greatest value of the components and returns it.
+	 * 
+	 * @return The greatest value of the components.
+	 */
+	default float maxValue()
+	{
+		return Vec3fUtils.maxValue(this);
+	}
+	
+	/**
+	 * Determines the greatest value of the componensts and returns the index of the component.
+	 * The index returned is limited to the range of {@code 0 to getDimensions() - 1}.
+	 * If two or more components have the same value the smallest index will be returned.
+	 * 
+	 * @return The index of the greatest component.
+	 */
+	default int maxComponent()
+	{
+		return Vec3fUtils.maxComponent(this);
+	}
+	
+	/**
+	 * Calculates the absolute value of the component values and saves the result in a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR absN()
+	{
+		return Vec3fUtils.absFunc(this, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Calculates the cross product between this vector and the second given vector {@code (v2)} and saves the result in a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v X v2}
+	 * 
+	 * @param v2 The second vector.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR crossN(Tup3fR v2)
+	{
+		return Vec3fUtils.crossFunc(this, v2.getV0(), v2.getV1(), v2.getV2(), (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Calculates the cross product between this vector and the second given vector {@code (v2[0], v2[1], v2[2])} and saves the result in a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v X (v2[0], v2[1], v2[2])}
+	 * 
+	 * @param v2 The second vector as an array with at least three entries.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR crossN(@MinLength(3) float[] v2)
+	{
+		return Vec3fUtils.crossFunc(this, v2[0], v2[1], v2[2], (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Calculates the cross product between this vector and the second given vector {@code (value, value, value)} and saves the result in a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v X (value, value, value)}
+	 * 
+	 * @param value The value for all the components of the second vector.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR crossN(float value)
+	{
+		return Vec3fUtils.crossFunc(this, value, value, value, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Calculates the cross product between this vector and the second given vector {@code (v2x, v2y, v2z)} and saves the result in a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v X (v2x, v2y, v2z)}
+	 * 
+	 * @param v2x The value of the x component of the second vector.
+	 * @param v2y The value of the y component of the second vector.
+	 * @param v2z The value of the z component of the second vector.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR crossN(float v2x, float v2y, float v2z)
+	{
+		return Vec3fUtils.crossFunc(this, v2x, v2y, v2z, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Calculates the {@link Math#signum(float) signum} of the components of this vecotr and saves the result in a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec3fR signumN()
+	{
+		return Vec3fUtils.signumFunc(this, (x, y, z) -> createNew(x, y, z));
+	}
+	
+	/**
+	 * Adds the given vector {@code (v2)} to this vector and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector or the given vector {@code v2} as the extraction parameter.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v + v2}
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param v2 The vector to add to this vector.
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup3fC> T addR(Tup3fR v2, @ExtractionParam T res)
+	{
+		return Vec3fUtils.add(this, v2.getV0(), v2.getV1(), v2.getV2(), res);
+	}
+	
+	/**
+	 * Adds the given vector {@code (v2)} to this vector and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v + v2}
+	 * 
+	 * @param v2 The vector to add to this vector.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] addR(Tup3fR v2, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.add(this, v2.getV0(), v2.getV1(), v2.getV2(), res);
+	}
+	
+	/**
+	 * Adds the given vector {@code (v2[0], v2[1], v2[2])} to this vector and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v + (v2[0], v2[1], v2[2])}
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param v2 The vector to add to this vector as an array with at least three entries.
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup3fC> T addR(@MinLength(3) float[] v2, @ExtractionParam T res)
+	{
+		return Vec3fUtils.add(this, v2[0], v2[1], v2[2], res);
+	}
+	
+	/**
+	 * Adds the given vector {@code (v2[0], v2[1], v2[2])} to this vector and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use the given vector {@code v2} as the extraction parameter.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v + (v2[0], v2[1], v2[2])}
+	 * 
+	 * @param v2 The vector to add to this vector as an array with at least three entries.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] addR(@MinLength(3) float[] v2, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.add(this, v2[0], v2[1], v2[2], res);
+	}
+	
+	/**
+	 * Adds the given value {@code (value)} to every component of this vector and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v + (value, value, value)}
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param value The value to add to this vector.
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup3fC> T addR(float value, @ExtractionParam T res)
+	{
+		return Vec3fUtils.add(this, value, value, value, res);
+	}
+	
+	/**
+	 * Adds the given value {@code (value)} to every component of this vector and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v + (value, value, value)}
+	 * 
+	 * @param value The value to add to this vector.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] addR(float value, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.add(this, value, value, value, res);
+	}
+	
+	/**
+	 * Adds the given vector {@code (v2x, v2y, v2z)} to this vector and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v + (v2x, v2y, v2z)}
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param v2x The value of the x component to add to this vector.
+	 * @param v2y The value of the y component to add to this vector.
+	 * @param v2z The value of the z component to add to this vector.
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup3fC> T addR(float v2x, float v2y, float v2z, @ExtractionParam T res)
+	{
+		return Vec3fUtils.add(this, v2x, v2y, v2z, res);
+	}
+	
+	/**
+	 * Adds the given vector {@code (v2x, v2y, v2z)} to this vector and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v + (v2x, v2y, v2z)}
+	 * 
+	 * @param v2x The value of the x component to add to this vector.
+	 * @param v2y The value of the y component to add to this vector.
+	 * @param v2z The value of the z component to add to this vector.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] addR(float v2x, float v2y, float v2z, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.add(this, v2x, v2y, v2z, res);
+	}
+	
+	/**
+	 * Subtracts the given vector {@code (v2)} from this vector and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector or the given vector {@code v2} as the extraction parameter.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v - v2}
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param v2 The vector to subtract from this vector.
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup3fC> T subR(Tup3fR v2, @ExtractionParam T res)
+	{
+		return Vec3fUtils.sub(this, v2.getV0(), v2.getV1(), v2.getV2(), res);
+	}
+	
+	/**
+	 * Subtracts the given vector {@code (v2)} from this vector and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v - v2}
+	 * 
+	 * @param v2 The vector to subtract from this vector.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] subR(Tup3fR v2, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.sub(this, v2.getV0(), v2.getV1(), v2.getV2(), res);
+	}
+	
+	/**
+	 * Subtracts the given vector {@code (v2[0], v2[1], v2[2])} from this vector and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v - (v2[0], v2[1], v2[2])}
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param v2 The vector to subtract from this vector as an array with at least three entries.
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup3fC> T subR(@MinLength(3) float[] v2, @ExtractionParam T res)
+	{
+		return Vec3fUtils.sub(this, v2[0], v2[1], v2[2], res);
+	}
+	
+	/**
+	 * Subtracts the given vector {@code (v2[0], v2[1], v2[2])} from this vector and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use the given vector {@code v2} as the extraction parameter.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v - (v2[0], v2[1], v2[2])}
+	 * 
+
+	 * @param v2 The vector to subtract from this vector as an array with at least three entries.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] subR(@MinLength(3) float[] v2, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.sub(this, v2[0], v2[1], v2[2], res);
+	}
+	
+	/**
+	 * Subtracts the given value {@code (value)} from every component of this vector and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v - (value, value, value)}
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param value The value to subtract from this vector.
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup3fC> T subR(float value, @ExtractionParam T res)
+	{
+		return Vec3fUtils.sub(this, value, value, value, res);
+	}
+	
+	/**
+	 * Subtracts the given value {@code (value)} from every component of this vector and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v - (value, value, value)}
+	 * 
+	 * @param value The value to subtract from this vector.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] subR(float value, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.sub(this, value, value, value, res);
+	}
+	
+	/**
+	 * Subtracts the given vector {@code (v2x, v2y, v2z)} from this vector and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v - (v2x, v2y, v2z)}
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param v2x The value of the x component to subtract from this vector.
+	 * @param v2y The value of the y component to subtract from this vector.
+	 * @param v2z The value of the z component to subtract from this vector.
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup3fC> T subR(float v2x, float v2y, float v2z, @ExtractionParam T res)
+	{
+		return Vec3fUtils.sub(this, v2x, v2y, v2z, res);
+	}
+	
+	/**
+	 * Subtracts the given vector {@code (v2x, v2y, v2z)} from this vector and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v - (v2x, v2y, v2z)}
+	 * 
+	 * 
+	 * @param v2x The value of the x component to subtract from this vector.
+	 * @param v2y The value of the y component to subtract from this vector.
+	 * @param v2z The value of the z component to subtract from this vector.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] subR(float v2x, float v2y, float v2z, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.sub(this, v2x, v2y, v2z, res);
+	}
+	
+	/**
+	 * Subtracts this vector from the given vector {@code (v2)} and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector or the given vector {@code v2} as the extraction parameter.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v2 - v}
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param v2 The vector this vector is subtracted from.
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup3fC> T revSubR(Tup3fR v2, @ExtractionParam T res)
+	{
+		return Vec3fUtils.revSub(this, v2.getV0(), v2.getV1(), v2.getV2(), res);
+	}
+	
+	/**
+	 * Subtracts this vector from the given vector {@code (v2)} and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v2 - v}
+	 * 
+	 * @param v2 The vector this vector is subtracted from.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] revSubR(Tup3fR v2, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.revSub(this, v2.getV0(), v2.getV1(), v2.getV2(), res);
+	}
+	
+	/**
+	 * Subtracts this vector from the given vector {@code (v2[0], v2[1], v2[2])} and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector or the given vector {@code v2} as the extraction parameter.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code (v2[0], v2[1], v2[2]) - v}
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param v2 The vector this vector is subtracted from as an array with at least three entries.
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup3fC> T revSubR(@MinLength(3) float[] v2, @ExtractionParam T res)
+	{
+		return Vec3fUtils.revSub(this, v2[0], v2[1], v2[2], res);
+	}
+	
+	/**
+	 * Subtracts this vector from the given vector {@code (v2[0], v2[1], v2[2])} and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use the given vector {@code v2} as the extraction parameter.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code (v2[0], v2[1], v2[2]) - v}
+	 * 
+	 * @param v2 The vector this vector is subtracted from as an array with at least three entries.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] revSubR(@MinLength(3) float[] v2, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.revSub(this, v2[0], v2[1], v2[2], res);
+	}
+	
+	/**
+	 * Subtracts every component of this vector from the given value {@code (value)} and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code (value, value, value) - v}
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param value The value this vector is subtracted from.
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup3fC> T revSubR(float value, @ExtractionParam T res)
+	{
+		return Vec3fUtils.revSub(this, value, value, value, res);
+	}
+		
+	/**
+	 * Subtracts every component of this vector from the given value {@code (value)} and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code (value, value, value) - v}
+	 * 
+	 * @param value The value this vector is subtracted from.
+	 * @param res The extraction parameter for the result as an array with at least two entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] revSubR(float value, @ExtractionParam @MinLength(2) float[] res)
+	{
+		return Vec3fUtils.revSub(this, value, value, value, res);
+	}
+	
+	/**
+	 * Subtracts this vector from the given vector {@code (v2x, v2y, v2z)} and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code (v2x, v2y, v2z) - v}
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param v2x The value of the x component this vector is subtracted from.
+	 * @param v2y The value of the y component this vector is subtracted from.
+	 * @param v2z The value of the z component this vector is subtracted from.
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup3fC> T revSubR(float v2x, float v2y, float v2z, @ExtractionParam T res)
+	{
+		return Vec3fUtils.revSub(this, v2x, v2y, v2z, res);
+	}
+	
+	/**
+	 * Subtracts this vector from the given vector {@code (v2x, v2y, v2z)} and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code (v2x, v2y, v2z) - v}
+	 * 
+	 * @param v2x The value of the x component this vector is subtracted from.
+	 * @param v2y The value of the y component this vector is subtracted from.
+	 * @param v2z The value of the z component this vector is subtracted from.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] revSubR(float v2x, float v2y, float v2z, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.revSub(this, v2x, v2y, v2z, res);
+	}
+	
+	/**
+	 * Multiplies this vector with the given vector {@code (v2)} and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector or the given vector {@code v2} as the extraction parameter.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v * v2}
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param v2 The vector to multiply this vector with.
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup3fC> T mulR(Tup3fR v2, @ExtractionParam T res)
+	{
+		return Vec3fUtils.mul(this, v2, res);
+	}
+	
+	/**
+	 * Multiplies this vector with the given vector {@code (v2)} and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v * v2}
+	 * 
+	 * @param v2 The vector to multiply this vector with.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] mulR(Tup3fR v2, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.mul(this, v2, res);
+	}
+	
+	/**
+	 * Multiplies this vector with the given vector {@code (v2[0], v2[1], v2[2])} and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v * (v2[0], v2[1], v2[2])}
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param v2 The vector to multiply this vector with as an array with at least three entries.
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup3fC> T mulR(@MinLength(3) float[] v2, @ExtractionParam T res)
+	{
+		return Vec3fUtils.mul(this, v2, res);
+	}
+	
+	/**
+	 * Multiplies this vector with the given vector {@code (v2[0], v2[1], v2[2])} and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use the given vector {@code v2} as the extraction parameter.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v * (v2[0], v2[1], v2[2])}
+	 * 
+	 * @param v2 The vector to multiply this vector with as an array with at least three entries.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] mulR(@MinLength(3) float[] v2, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.mul(this, v2, res);
+	}
+	
+	/**
+	 * Multiplies every component of this vector with the given value {@code (value)} and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v * (value, value, value)}
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param value The value to multiply this vector with.
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup3fC> T mulR(float value, @ExtractionParam T res)
+	{
+		return Vec3fUtils.mul(this, value, value, value, res);
+	}
+	
+	/**
+	 * Multiplies every component of this vector with the given value {@code (value)} and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v * (value, value, value)}
+	 * 
+	 * @param value The value to multiply this vector with.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] mulR(float value, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.mul(this, value, value, value, res);
+	}
+	
+	/**
+	 * Multiplies this vector with the given vector {@code (v2x, v2y, v2z)} and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v * (v2x, v2y, v2z)}
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param v2x The value of the x component to multiply this vector with.
+	 * @param v2y The value of the y component to multiply this vector with.
+	 * @param v2z The value of the z component to multiply this vector with.
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup3fC> T mulR(float v2x, float v2y, float v2z, @ExtractionParam T res)
+	{
+		return Vec3fUtils.mul(this, v2x, v2y, v2z, res);
+	}
+	
+	/**
+	 * Multiplies this vector with the given vector {@code (v2x, v2y, v2z)} and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v * (v2x, v2y, v2z)}
+	 * 
+	 * @param v2x The value of the x component to multiply this vector with.
+	 * @param v2y The value of the y component to multiply this vector with.
+	 * @param v2z The value of the z component to multiply this vector with.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] mulR(float v2x, float v2y, float v2z, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.mul(this, v2x, v2y, v2z, res);
+	}
+	
+	/**
+	 * Divides this vector by the given vector {@code (v2)} and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector or the given vector {@code v2} as the extraction parameter.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v / v2}
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param v2 The vector to divide this vector by.
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup3fC> T divR(Tup3fR v2, @ExtractionParam T res)
+	{
+		return Vec3fUtils.div(this, v2, res);
+	}
+	
+	/**
+	 * Divides this vector by the given vector {@code (v2)} and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v / v2}
+	 * 
+	 * @param v2 The vector to divide this vector by.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] divR(Tup3fR v2, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.div(this, v2, res);
+	}
+	
+	/**
+	 * Divides this vector by the given vector {@code (v2[0], v2[1], v2[2])} and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v / (v2[0], v2[1], v2[2])}
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param v2 The vector to divide this vector by as an array with at least three entries.
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup3fC> T divR(@MinLength(3) float[] v2, @ExtractionParam T res)
+	{
+		return Vec3fUtils.div(this, v2, res);
+	}
+	
+	/**
+	 * Divides this vector by the given vector {@code (v2[0], v2[1], v2[2])} and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use the given vector {@code v2} as the extraction parameter.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v / (v2[0], v2[1], v2[2])}
+	 * 
+	 * @param v2 The vector to divide this vector by as an array with at least three entries.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] divR(@MinLength(3) float[] v2, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.div(this, v2, res);
+	}
+	
+	/**
+	 * Divides each component of this vector by the given value {@code (value)} and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v / (value, value, value)}
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param value The value to divide this vector by.
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup3fC> T divR(float value, @ExtractionParam T res)
+	{
+		return Vec3fUtils.div(this, value, value, value, res);
+	}
+	
+	/**
+	 * Divides each component of this vector by the given value {@code (value)} and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v / (value, value, value)}
+	 * 
+	 * @param value The value to divide this vector by.
+	 * @param res The extraction parameter for the result as an array with at least two entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] divR(float value, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.div(this, value, value, value, res);
+	}
+	
+	/**
+	 * Divides this vector by the given vector {@code (v2x, v2y, v2z)} and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v / (v2x, v2y, v2z)}
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param v2x The value of the x component to divide this vector by.
+	 * @param v2y The value of the y component to divide this vector by.
+	 * @param v2z The value of the z component to divide this vector by.
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup3fC> T divR(float v2x, float v2y, float v2z, @ExtractionParam T res)
+	{
+		return Vec3fUtils.div(this, v2x, v2y, v2z, res);
+	}
+
+	/**
+	 * Divides this vector by the given vector {@code (v2x, v2y, v2z)} and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v / (v2x, v2y, v2z)}
+	 * 
+	 * @param v2x The value of the x component to divide this vector by.
+	 * @param v2y The value of the y component to divide this vector by.
+	 * @param v2z The value of the z component to divide this vector by.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] divR(float v2x, float v2y, float v2z, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.div(this, v2x, v2y, v2z, res);
+	}
+	
+	/**
+	 * Divides the given vector {@code (v2)} by this vector and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v2 / v}
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param v2 The vector to divide by this vector.
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup3fC> T revDivR(Tup3fR v2, @ExtractionParam T res)
+	{
+		return Vec3fUtils.revDiv(this, v2, res);
+	}
+
+	/**
+	 * Divides the given vector {@code (v2)} by this vector and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v2 / v}
+	 * 
+	 * @param v2 The vector to divide by this vector.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] revDivR(Tup3fR v2, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.revDiv(this, v2, res);
+	}
+	
+	/**
+	 * Divides the given vector {@code (v2[0], v2[1], v2[2])} by this vector and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code (v2[0], v2[1], v2[2]) / v}
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param v2 The vector to divide by this vector as an array with at least three entries.
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup3fC> T revDivR(@MinLength(3) float[] v2, @ExtractionParam T res)
+	{
+		return Vec3fUtils.revDiv(this, v2, res);
+	}
+	
+	/**
+	 * Divides the given vector {@code (v2[0], v2[1], v2[2])} by this vector and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use the given vector {@code v2} as the extraction parameter.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code (v2[0], v2[1], v2[2]) / v}
+	 * 
+	 * @param v2 The vector to divide by this vector as an array with at least three entries.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] revDivR(@MinLength(3) float[] v2, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.revDiv(this, v2, res);
+	}
+	
+	/**
+	 * Divides the given value {@code (value)} by each component of this vector and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code (value, value, value) / v}
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param value The value to divide by this vector.
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup3fC> T revDivR(float value, @ExtractionParam T res)
+	{
+		return Vec3fUtils.revDiv(this, value, value, value, res);
+	}
+
+	/**
+	 * Divides the given value {@code (value)} by each component of this vector and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code (value, value, value) / v}
+	 * 
+	 * @param value The value to divide by this vector.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] revDivR(float value, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.revDiv(this, value, value, value, res);
+	}
+	
+	/**
+	 * Divides the given vector {@code (v2x, v2y, v2z)} by this vector and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code (v2x, v2y, v2z) / v}
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param v2x The value of the x component to divide by this vector.
+	 * @param v2y The value of the y component to divide by this vector.
+	 * @param v2z The value of the z component to divide by this vector.
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup3fC> T revDivR(float v2x, float v2y, float v2z, @ExtractionParam T res)
+	{
+		return Vec3fUtils.revDiv(this, v2x, v2y, v2z, res);
+	}
+	
+	/**
+	 * Divides the given vector {@code (v2x, v2y, v2z)} by this vector and saves the result in the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code (v2x, v2y, v2z) / v}
+	 * 
+	 * @param v2x The value of the x component to divide by this vector.
+	 * @param v2y The value of the y component to divide by this vector.
+	 * @param v2z The value of the z component to divide by this vector.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] revDivR(float v2x, float v2y, float v2z, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.revDiv(this, v2x, v2y, v2z, res);
+	}
+	
+	/**
+	 * Returns half the vector from the endpoint of this vector to the endpoint of the given vector {@code (v2)} as the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code ( v2 - v ) / 2}
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param v2 The second vector.
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup3fC> T halfVectorToR(Tup3fR v2, @ExtractionParam T res)
+	{
+		return Vec3fUtils.halfVectorTo(this, v2, res);
+	}
+	
+	/**
+	 * Returns half the vector from the endpoint of this vector to the endpoint of the given vector {@code (v2)} as the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code ( v2 - v ) / 2}
+	 * 
+	 * @param v2 The second vector.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] halfVectorToR(Tup3fR v2, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.halfVectorTo(this, v2, res);
+	}
+	
+	/**
+	 * Returns half the vector from the endpoint of this vector to the endpoint of the given vector {@code (v2[0], v2[1], v2[2])} as the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code ( (v2[0], v2[1], v2[2]) - v ) / 2}
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param v2 The second vector as an array with at least three entries.
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup3fC> T halfVectorToR(@MinLength(3) float[] v2, @ExtractionParam T res)
+	{
+		return Vec3fUtils.halfVectorTo(this, v2, res);
+	}
+	
+	/**
+	 * Returns half the vector from the endpoint of this vector to the endpoint of the given vector {@code (v2[0], v2[1], v2[2])} as the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use the given vector {@code v2} as the extraction parameter.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code ( (v2[0], v2[1], v2[2]) - v ) / 2}
+	 * 
+	 * @param v2 The second vector as an array with at least three entries.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] halfVectorToR(@MinLength(3) float[] v2, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.halfVectorTo(this, v2, res);
+	}
+	
+	/**
+	 * Returns half the vector from the endpoint of this vector to the endpoint of the given vector {@code (v2x, v2y, v2z)} as the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code ( (v2x, v2y, v2z) - v ) / 2}
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param v2x The value of the x component of the second vector.
+	 * @param v2y The value of the y component of the second vector.
+	 * @param v2z The value of the z component of the second vector.
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup3fC> T halfVectorToR(float v2x, float v2y, float v2z, @ExtractionParam T res)
+	{
+		return Vec3fUtils.halfVectorTo(this, v2x, v2y, v2z, res);
+	}
+	
+	/**
+	 * Returns half the vector from the endpoint of this vector to the endpoint of the given vector {@code (v2x, v2y, v2z)} as the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code ( (v2x, v2y, v2z) - v ) / 2}
+	 * 
+	 * @param v2x The value of the x component of the second vector.
+	 * @param v2y The value of the y component of the second vector.
+	 * @param v2z The value of the z component of the second vector.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] halfVectorToR(float v2x, float v2y, float v2z, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.halfVectorTo(this, v2x, v2y, v2z, res);
+	}
+	
+	/**
+	 * Returns the origin vector to the point that lies half way between the endpoint of this vector and the endpoint of the given vector {@code (v2)} as
+	 * the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code ( v2 + v ) / 2}
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param v2 The second vector.
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup3fC> T halfPointBetweenR(Tup3fR v2, @ExtractionParam T res)
+	{
+		return Vec3fUtils.halfPointBetween(this, v2, res);
+	}
+	
+	/**
+	 * Returns the origin vector to the point that lies half way between the endpoint of this vector and the endpoint of the given vector {@code (v2)} as
+	 * the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code ( v2 + v ) / 2}
+	 * 
+	 * @param v2 The second vector.
+	 * @param res The extraction parameter for the result as an array with at least two entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] halfPointBetweenR(Tup3fR v2, @ExtractionParam @MinLength(2) float[] res)
+	{
+		return Vec3fUtils.halfPointBetween(this, v2, res);
+	}
+	
+	/**
+	 * Returns the origin vector to the point that lies half way between the endpoint of this vector and the endpoint of the given vector {@code (v2[0], v2[1])} as
+	 * the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code ( (v2[0], v2[1]) + v ) / 2}
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param v2 The second vector as an array with at least two entries.
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup3fC> T halfPointBetweenR(@MinLength(2) float[] v2, @ExtractionParam T res)
+	{
+		return Vec3fUtils.halfPointBetween(this, v2, res);
+	}
+	
+	/**
+	 * Returns the origin vector to the point that lies half way between the endpoint of this vector and the endpoint of the given vector {@code (v2[0], v2[1])} as
+	 * the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use the given vector {@code v2} as the extraction parameter.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code ( (v2[0], v2[1]) + v ) / 2}
+	 * 
+	 * @param v2 The second vector as an array with at least two entries.
+	 * @param res The extraction parameter for the result as an array with at least two entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] halfPointBetweenR(@MinLength(2) float[] v2, @ExtractionParam @MinLength(2) float[] res)
+	{
+		return Vec3fUtils.halfPointBetween(this, v2, res);
+	}
+	
+	/**
+	 * Returns the origin vector to the point that lies half way between the endpoint of this vector and the endpoint of the given vector {@code (v2x, v2y, v2z)} as
+	 * the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code ( (v2x, v2y, v2z) + v ) / 2}
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param v2x The value of the x component of the second vector.
+	 * @param v2y The value of the y component of the second vector.
+	 * @param v2z The value of the z component of the second vector.
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup3fC> T halfPointBetweenR(float v2x, float v2y, float v2z, @ExtractionParam T res)
+	{
+		return Vec3fUtils.halfPointBetween(this, v2x, v2y, v2z, res);
+	}
+	
+	/**
+	 * Returns the origin vector to the point that lies half way between the endpoint of this vector and the endpoint of the given vector {@code (v2x, v2y, v2z)} as
+	 * the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code ( (v2x, v2y, v2z) + v ) / 2}
+	 * 
+	 * @param v2x The value of the x component of the second vector.
+	 * @param v2y The value of the y component of the second vector.
+	 * @param v2z The value of the z component of the second vector.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] halfPointBetweenR(float v2x, float v2y, float v2z, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.halfPointBetween(this, v2x, v2y, v2z, res);
+	}
+	
+	/**
+	 * Negates this vector and returns the result as the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code -v}
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup3fC> T negateR(@ExtractionParam T res)
+	{
+		return Vec3fUtils.negate(this, res);
+	}
+	
+	/**
+	 * Negates this vector and returns the result as the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code -v}
+	 * 
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] negateR(@ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.negate(this, res);
+	}
+	
+	/**
+	 * Inverses this vector and returns the result as the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code 1 / v}
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup3fC> T inverseR(@ExtractionParam T res)
+	{
+		return Vec3fUtils.inverse(this, res);
+	}
+	
+	/**
+	 * Inverses this vector and returns the result as the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code 1 / v}
+	 * 
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] inverseR(@ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.inverse(this, res);
+	}
+	
+	/**
+	 * Normalizes this vector and returns the result as the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v / |v|}
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup3fC> T normalizeR(@ExtractionParam T res)
+	{
+		return Vec3fUtils.normalize(this, res);
+	}
+	
+	/**
+	 * Normalizes this vector and returns the result as the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v / |v|}
+	 * 
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] normalizeR(@ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.normalize(this, res);
+	}
+	
+	/**
+	 * Compares each component of this vector with the corresponding component of the given vector {@code (v2)} and
+	 * returns the smallest values as the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param v2 The second vector.
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup3fC> T minVectorR(Tup3fR v2, @ExtractionParam T res)
+	{
+		return Vec3fUtils.minVector(this, v2, res);
+	}
+	
+	/**
+	 * Compares each component of this vector with the corresponding component of the given vector {@code (v2)} and
+	 * returns the smallest values as the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @param v2 The second vector.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] minVectorR(Tup3fR v2, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.minVector(this, v2, res);
+	}
+	
+	/**
+	 * Compares each component of this vector with the corresponding component of the given vector {@code (v2[0], v2[1], v2[2])} and
+	 * returns the smallest values as the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param v2 The second vector as an array with at least two entries.
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup3fC> T minVectorR(@MinLength(3) float[] v2, @ExtractionParam T res)
+	{
+		return Vec3fUtils.minVector(this, v2, res);
+	}
+	
+	/**
+	 * Compares each component of this vector with the corresponding component of the given vector {@code (v2[0], v2[1], v2[2])} and
+	 * returns the smallest values as the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use the given vector {@code v2} as the extraction parameter.
+	 * 
+	 * @param v2 The second vector as an array with at least three entries.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] minVectorR(@MinLength(3) float[] v2, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.minVector(this, v2, res);
+	}
+	
+	/**
+	 * Compares each component of this vector with the corresponding component of the given vector {@code (v2x, v2y, v2z)} and
+	 * returns the smallest values as the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param v2x The value of the x component of the second vector.
+	 * @param v2y The value of the y component of the second vector.
+	 * @param v2z The value of the z component of the second vector.
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup3fC> T minVectorR(float v2x, float v2y, float v2z, @ExtractionParam T res)
+	{
+		return Vec3fUtils.minVector(this, v2x, v2y, v2z, res);
+	}
+	
+	/**
+	 * Compares each component of this vector with the corresponding component of the given vector {@code (v2x, v2y, v2z)} and
+	 * returns the smallest values as the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @param v2x The value of the x component of the second vector.
+	 * @param v2y The value of the y component of the second vector.
+	 * @param v2z The value of the z component of the second vector.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] minVectorR(float v2x, float v2y, float v2z, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.minVector(this, v2x, v2y, v2z, res);
+	}
+	
+	/**
+	 * Compares each component of this vector with the corresponding component of the given vector {@code (v2)} and
+	 * returns the greatest values as the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param v2 The second vector.
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup3fC> T maxVectorR(Tup3fR v2, @ExtractionParam T res)
+	{
+		return Vec3fUtils.maxVector(this,  v2, res);
+	}
+	
+	/**
+	 * Compares each component of this vector with the corresponding component of the given vector {@code (v2)} and
+	 * returns the greatest values as the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @param v2 The second vector.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] maxVectorR(Tup3fR v2, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.maxVector(this, v2, res);
+	}
+	
+	/**
+	 * Compares each component of this vector with the corresponding component of the given vector {@code (v2[0], v2[1],v2[2])} and
+	 * returns the greatest values as the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param v2 The second vector as an array with at least three entries.
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup3fC> T maxVectorR(@MinLength(3) float[] v2, @ExtractionParam T res)
+	{
+		return Vec3fUtils.maxVector(this, v2, res);
+	}
+	
+	/**
+	 * Compares each component of this vector with the corresponding component of the given vector {@code (v2[0], v2[1], v2[2])} and
+	 * returns the greatest values as the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use the given vector {@code v2} as the extraction parameter.
+	 * 
+	 * @param v2 The second vector as an array with at least two entries.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] maxVectorR(@MinLength(3) float[] v2, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.maxVector(this, v2, res);
+	}
+	
+	/**
+	 * Compares each component of this vector with the corresponding component of the given vector {@code (v2x, v2y, v2z)} and
+	 * returns the greatest values as the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param v2x The value of the x component of the second vector.
+	 * @param v2y The value of the y component of the second vector.
+	 * @param v2z The value of the z component of the second vector.
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup3fC> T maxVectorR(float v2x, float v2y, float v2z, @ExtractionParam T res)
+	{
+		return Vec3fUtils.maxVector(this, v2x, v2y, v2z, res);
+	}
+	
+	/**
+	 * Compares each component of this vector with the corresponding component of the given vector {@code (v2x, v2y, v2z)} and
+	 * returns the greatest values as the extraction parameter {@code res}.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @param v2x The value of the x component of the second vector.
+	 * @param v2y The value of the y component of the second vector.
+	 * @param v2z The value of the z component of the second vector.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] maxVectorR(float v2x, float v2y, float v2z, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.maxVector(this, v2x, v2y, v2z, res);
+	}
+	
+	/**
+	 * Rotates this vector by the given angle in radians around the rotation axis {@code (axis)} and saves the result in the given extraction parameter object.
+	 * 
+	 * <p>
+	 * Here the default {@link MathProvider} from {@link BarghosMath#PROVIDER} is used for calculation.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param axis The rotation axis.
+	 * @param angle The angle in radians.
+	 * @param res The extraction parameter object for the result.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	default <T extends Tup3fC> T rotateRadR(Tup3fR axis, float angle, @ExtractionParam T res)
+	{
+		return Vec3fUtils.rotateRad(this, axis, angle, res);
+	}
+	
+	/**
+	 * Rotates this vector by the given angle in radians around the rotation axis {@code (axis)} and saves the result in the given extraction parameter object.
+	 * 
+	 * <p>
+	 * Here the explicitly given {@link MathProvider} is used for calculation.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param axis The rotation axis.
+	 * @param angle The angle in radians.
+	 * @param mathProvider The provider of fundamental math functions that should be used for calculation.
+	 * @param res The extraction parameter object for the result.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	default <T extends Tup3fC> T rotateRadR(Tup3fR axis, float angle, MathProvider mathProvider, @ExtractionParam T res)
+	{
+		return Vec3fUtils.rotateRad(this, axis, angle, mathProvider, res);
+	}
+	
+	/**
+	 * Rotates this vector by the given angle in radians around the rotation axis {@code (axis[0], axis[1], axis[2])} and saves the result in the given extraction parameter object.
+	 * 
+	 * <p>
+	 * Here the default {@link MathProvider} from {@link BarghosMath#PROVIDER} is used for calculation.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param axis The rotation axis as an array with at least three entries.
+	 * @param angle The angle in radians.
+	 * @param res The extraction parameter object for the result.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	default <T extends Tup3fC> T rotateRadR(@MinLength(3) float[] axis, float angle, @ExtractionParam T res)
+	{
+		return Vec3fUtils.rotateRad(this, axis, angle, res);
+	}
+	
+	/**
+	 * Rotates this vector by the given angle in radians around the rotation axis {@code (axis[0], axis[1], axis[2])} and saves the result in the given extraction parameter object.
+	 * 
+	 * <p>
+	 * Here the explicitly given {@link MathProvider} is used for calculation.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param axis The rotation axis as an array with at least three entries.
+	 * @param angle The angle in radians.
+	 * @param mathProvider The provider of fundamental math functions that should be used for calculation.
+	 * @param res The extraction parameter object for the result.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	default <T extends Tup3fC> T rotateRadR(@MinLength(3) float[] axis, float angle, MathProvider mathProvider, @ExtractionParam T res)
+	{
+		return Vec3fUtils.rotateRad(this, axis, angle, mathProvider, res);
+	}
+	
+	/**
+	 * Rotates this vector by the given angle in radians around the rotation axis {@code (axisX, axisY, axisZ)} and saves the result in the given extraction parameter object.
+	 * 
+	 * <p>
+	 * Here the default {@link MathProvider} from {@link BarghosMath#PROVIDER} is used for calculation.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param axisX The value of the x component of the rotation axis.
+	 * @param axisY The value of the y component of the rotation axis.
+	 * @param axisZ The value of the z component of the rotation axis.
+	 * @param angle The angle in radians.
+	 * @param res The extraction parameter object for the result.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	default <T extends Tup3fC> T rotateRadR(float axisX, float axisY, float axisZ, float angle, @ExtractionParam T res)
+	{
+		return Vec3fUtils.rotateRad(this, axisX, axisY, axisZ, angle, res);
+	}
+	
+	/**
+	 * Rotates this vector by the given angle in radians around the rotation axis {@code (axisX, axisY, axisZ)} and saves the result in the given extraction parameter object.
+	 * 
+	 * <p>
+	 * Here the explicitly given {@link MathProvider} is used for calculation.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param axisX The value of the x component of the rotation axis.
+	 * @param axisY The value of the y component of the rotation axis.
+	 * @param axisZ The value of the z component of the rotation axis.
+	 * @param angle The angle in radians.
+	 * @param mathProvider The provider of fundamental math functions that should be used for calculation.
+	 * @param res The extraction parameter object for the result.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	default <T extends Tup3fC> T rotateRadR(float axisX, float axisY, float axisZ, float angle, MathProvider mathProvider, @ExtractionParam T res)
+	{
+		return Vec3fUtils.rotateRad(this, axisX, axisY, axisZ, angle, mathProvider, res);
+	}
+	
+	/**
+	 * Rotates this vector by the given angle in radians around the rotation axis {@code (axis)} and saves the result in the given extraction parameter.
+	 * 
+	 * <p>
+	 * Here the default {@link MathProvider} from {@link BarghosMath#PROVIDER} is used for calculation.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @param axis The rotation axis.
+	 * @param angle The angle in radians.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] rotateRadR(Tup3fR axis, float angle, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.rotateRad(this, axis, angle, res);
+	}
+	
+	/**
+	 * Rotates this vector by the given angle in radians around the rotation axis {@code (axis)} and saves the result in the given extraction parameter.
+	 * 
+	 * <p>
+	 * Here the explicitly given {@link MathProvider} is used for calculation.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * @param axis The rotation axis.
+	 * @param angle The angle in radians.
+	 * @param mathProvider The provider of fundamental math functions that should be used for calculation.
+	 * @param res The extraction parameter for the result as an array with at least two entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] rotateRadR(Tup3fR axis, float angle, MathProvider mathProvider, @ExtractionParam @MinLength(2) float[] res)
+	{
+		return Vec3fUtils.rotateRad(this, axis, angle, mathProvider, res);
+	}
+	
+	/**
+	 * Rotates this vector by the given angle in radians around the rotation axis {@code (axis[0], axis[1], axis[2])} and saves the result in the given extraction parameter.
+	 * 
+	 * <p>
+	 * Here the default {@link MathProvider} from {@link BarghosMath#PROVIDER} is used for calculation.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @param axis The rotation axis as an array with at least three entries.
+	 * @param angle The angle in radians.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] rotateRadR(@MinLength(3) float[] axis, float angle, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.rotateRad(this, axis, angle, res);
+	}
+	
+	/**
+	 * Rotates this vector by the given angle in radians around the rotation axis {@code (axis[0], axis[1], axis[2])} and saves the result in the given extraction parameter.
+	 * 
+	 * <p>
+	 * Here the explicitly given {@link MathProvider} is used for calculation.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * @param axis The rotation axis as an array with at least three entries.
+	 * @param angle The angle in radians.
+	 * @param mathProvider The provider of fundamental math functions that should be used for calculation.
+	 * @param res The extraction parameter for the result as an array with at least two entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] rotateRadR(@MinLength(3) float[] axis, float angle, MathProvider mathProvider, @ExtractionParam @MinLength(2) float[] res)
+	{
+		return Vec3fUtils.rotateRad(this, axis, angle, mathProvider, res);
+	}
+	
+	/**
+	 * Rotates this vector by the given angle in radians around the rotation axis {@code (axisX, axisY, axisZ)} and saves the result in the given extraction parameter.
+	 * 
+	 * <p>
+	 * Here the default {@link MathProvider} from {@link BarghosMath#PROVIDER} is used for calculation.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @param axisX The value of the x component of the rotation axis.
+	 * @param axisY The value of the y component of the rotation axis.
+	 * @param axisZ The value of the z component of the rotation axis.
+	 * @param angle The angle in radians.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] rotateRadR(float axisX, float axisY, float axisZ, float angle, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.rotateRad(this, axisX, axisY, axisZ, angle, res);
+	}
+	
+	/**
+	 * Rotates this vector by the given angle in radians around the rotation axis {@code (axisX, axisY, axisZ)} and saves the result in the given extraction parameter.
+	 * 
+	 * <p>
+	 * Here the explicitly given {@link MathProvider} is used for calculation.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * @param axisX The value of the x component of the rotation axis.
+	 * @param axisY The value of the y component of the rotation axis.
+	 * @param axisZ The value of the z component of the rotation axis.
+	 * @param angle The angle in radians.
+	 * @param mathProvider The provider of fundamental math functions that should be used for calculation.
+	 * @param res The extraction parameter for the result as an array with at least two entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] rotateRadR(float axisX, float axisY, float axisZ, float angle, MathProvider mathProvider, @ExtractionParam @MinLength(2) float[] res)
+	{
+		return Vec3fUtils.rotateRad(this, axisX, axisY, axisZ, angle, mathProvider, res);
+	}
+	
+	/**
+	 * Rotates this vector by the given angle in degrees around the rotation axis {@code (axis)} and saves the result in the given extraction parameter object.
+	 * 
+	 * <p>
+	 * Here the default {@link MathProvider} from {@link BarghosMath#PROVIDER} is used for calculation.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param axis The rotation axis.
+	 * @param angle The angle in radians.
+	 * @param res The extraction parameter object for the result.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	default <T extends Tup3fC> T rotateDegR(Tup3fR axis, float angle, @ExtractionParam T res)
+	{
+		return Vec3fUtils.rotateDeg(this, axis, angle, res);
+	}
+	
+	/**
+	 * Rotates this vector by the given angle in degrees around the rotation axis {@code (axis)} and saves the result in the given extraction parameter object.
+	 * 
+	 * <p>
+	 * Here the explicitly given {@link MathProvider} is used for calculation.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param axis The rotation axis
+	 * @param angle The angle in radians.
+	 * @param mathProvider The provider of fundamental math functions that should be used for calculation.
+	 * @param res The extraction parameter object for the result.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	default <T extends Tup3fC> T rotateDegR(Tup3fR axis, float angle, MathProvider mathProvider, @ExtractionParam T res)
+	{
+		return Vec3fUtils.rotateDeg(this, axis, angle, mathProvider, res);
+	}
+	
+	/**
+	 * Rotates this vector by the given angle in degrees around the rotation axis {@code (axis[0], axis[1], axis[2])} and saves the result in the given extraction parameter object.
+	 * 
+	 * <p>
+	 * Here the default {@link MathProvider} from {@link BarghosMath#PROVIDER} is used for calculation.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param axis The rotation axis as an array with at least three entries.
+	 * @param angle The angle in radians.
+	 * @param res The extraction parameter object for the result.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	default <T extends Tup3fC> T rotateDegR(@MinLength(3) float[] axis, float angle, @ExtractionParam T res)
+	{
+		return Vec3fUtils.rotateDeg(this, axis, angle, res);
+	}
+	
+	/**
+	 * Rotates this vector by the given angle in degrees around the rotation axis {@code (axis[0], axis[1], axis[2])} and saves the result in the given extraction parameter object.
+	 * 
+	 * <p>
+	 * Here the explicitly given {@link MathProvider} is used for calculation.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param axis The rotation axis as an array with at least three entries.
+	 * @param angle The angle in radians.
+	 * @param mathProvider The provider of fundamental math functions that should be used for calculation.
+	 * @param res The extraction parameter object for the result.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	default <T extends Tup3fC> T rotateDegR(@MinLength(3) float[] axis, float angle, MathProvider mathProvider, @ExtractionParam T res)
+	{
+		return Vec3fUtils.rotateDeg(this, axis, angle, mathProvider, res);
+	}
+	
+	/**
+	 * Rotates this vector by the given angle in degrees around the rotation axis {@code (axisX, axisY, axisZ)} and saves the result in the given extraction parameter object.
+	 * 
+	 * <p>
+	 * Here the default {@link MathProvider} from {@link BarghosMath#PROVIDER} is used for calculation.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param axisX The value of the x component of the rotation axis.
+	 * @param axisY The value of the y component of the rotation axis.
+	 * @param axisZ The value of the z component of the rotation axis.
+	 * @param angle The angle in radians.
+	 * @param res The extraction parameter object for the result.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	default <T extends Tup3fC> T rotateDegR(float axisX, float axisY, float axisZ, float angle, @ExtractionParam T res)
+	{
+		return Vec3fUtils.rotateDeg(this, axisX, axisY, axisZ, angle, res);
+	}
+	
+	/**
+	 * Rotates this vector by the given angle in degrees around the rotation axis {@code (axisX, axisY, axisZ)} and saves the result in the given extraction parameter object.
+	 * 
+	 * <p>
+	 * Here the explicitly given {@link MathProvider} is used for calculation.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param axisX The value of the x component of the rotation axis.
+	 * @param axisY The value of the y component of the rotation axis.
+	 * @param axisZ The value of the z component of the rotation axis.
+	 * @param angle The angle in radians.
+	 * @param mathProvider The provider of fundamental math functions that should be used for calculation.
+	 * @param res The extraction parameter object for the result.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	default <T extends Tup3fC> T rotateDegR(float axisX, float axisY, float axisZ, float angle, MathProvider mathProvider, @ExtractionParam T res)
+	{
+		return Vec3fUtils.rotateDeg(this, axisX, axisY, axisZ, angle, mathProvider, res);
+	}
+	
+	/**
+	 * Rotates this vector by the given angle in degrees around the rotation axis {@code (axis)} and saves the result in the given extraction parameter.
+	 * 
+	 * <p>
+	 * Here the default {@link MathProvider} from {@link BarghosMath#PROVIDER} is used for calculation.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @param axis The rotation axis.
+	 * @param angle The angle in radians.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] rotateDegR(Tup3fR axis, float angle, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.rotateDeg(this, axis, angle, res);
+	}
+	
+	/**
+	 * Rotates this vector by the given angle in degrees around the rotation axis {@code (axis)} and saves the result in the given extraction parameter.
+	 * 
+	 * <p>
+	 * Here the explicitly given {@link MathProvider} is used for calculation.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @param axis The rotation axis.
+	 * @param angle The angle in radians.
+	 * @param mathProvider The provider of fundamental math functions that should be used for calculation.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] rotateDegR(Tup3fR axis, float angle, MathProvider mathProvider, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.rotateDeg(this, axis, angle, mathProvider, res);
+	}
+	
+	/**
+	 * Rotates this vector by the given angle in degrees around the rotation axis {@code (axis[0], axis[1], axis[2])} and saves the result in the given extraction parameter.
+	 * 
+	 * <p>
+	 * Here the default {@link MathProvider} from {@link BarghosMath#PROVIDER} is used for calculation.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @param axis The rotation axis as an array with at least three entries.
+	 * @param angle The angle in radians.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] rotateDegR(@MinLength(3) float[] axis, float angle, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.rotateDeg(this, axis, angle, res);
+	}
+	
+	/**
+	 * Rotates this vector by the given angle in degrees around the rotation axis {@code (axis[0], axis[1], axis[2])} and saves the result in the given extraction parameter.
+	 * 
+	 * <p>
+	 * Here the explicitly given {@link MathProvider} is used for calculation.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @param axis The rotation axis as an array with at least three entries.
+	 * @param angle The angle in radians.
+	 * @param mathProvider The provider of fundamental math functions that should be used for calculation.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] rotateDegR(@MinLength(3) float[] axis, float angle, MathProvider mathProvider, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.rotateDeg(this, axis, angle, mathProvider, res);
+	}
+	
+	/**
+	 * Rotates this vector by the given angle in degrees around the rotation axis {@code (axisX, axisY, axisZ)} and saves the result in the given extraction parameter.
+	 * 
+	 * <p>
+	 * Here the default {@link MathProvider} from {@link BarghosMath#PROVIDER} is used for calculation.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @param axisX The value of the x component of the rotation axis.
+	 * @param axisY The value of the y component of the rotation axis.
+	 * @param axisZ The value of the z component of the rotation axis.
+	 * @param angle The angle in radians.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] rotateDegR(float axisX, float axisY, float axisZ, float angle, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.rotateDeg(this, axisX, axisY, axisZ, angle, res);
+	}
+	
+	/**
+	 * Rotates this vector by the given angle in degrees around the rotation axis {@code (axisX, axisY, axisZ)} and saves the result in the given extraction parameter.
+	 * 
+	 * <p>
+	 * Here the explicitly given {@link MathProvider} is used for calculation.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @param axisX The value of the x component of the rotation axis.
+	 * @param axisY The value of the y component of the rotation axis.
+	 * @param axisZ The value of the z component of the rotation axis.
+	 * @param angle The angle in radians.
+	 * @param mathProvider The provider of fundamental math functions that should be used for calculation.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] rotateDegR(float axisX, float axisY, float axisZ, float angle, MathProvider mathProvider, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.rotateDeg(this, axisX, axisY, axisZ, angle, mathProvider, res);
+	}
+	
+	/**
+	 * Calculates the orthogonal projection of this vector onto the normalized target vector {@code (t)}
+	 * and saves the result in the given extraction parameter object.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code t * (v . t)}
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param t The projection target vector.
+	 * @param res The extraction parameter object for the result.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	default <T extends Tup3fC> T projectR(Tup3fR t, @ExtractionParam T res)
+	{
+		return Vec3fUtils.project(this, t, res);
+	}
+	
+	/**
+	 * Calculates the orthogonal projection of this vector onto the normalized target vector {@code (t[0], t[1], t[2])}
+	 * and saves the result in the given extraction parameter object.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code (t[0], t[1], t[2]) * (v . (t[0], t[1], t[2]))}
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param t The projection target vector as an array with at least three entries.
+	 * @param res The extraction parameter object for the result.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	default <T extends Tup3fC> T projectR(@MinLength(3) float[] t, @ExtractionParam T res)
+	{
+		return Vec3fUtils.project(this, t, res);
+	}
+	
+	/**
+	 * Calculates the orthogonal projection of this vector onto the normalized target vector {@code (tX, tY, tZ)}
+	 * and saves the result in the given extraction parameter object.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code (tX, tY, tZ) * (v . (tX, tY, tZ))}
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param tX The value of the x component of the projection target vector.
+	 * @param tY The value of the y component of the projection target vector.
+	 * @param tZ The value of the z component of the projection target vector.
+	 * @param res The extraction parameter object for the result.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	default <T extends Tup3fC> T projectR(float tX, float tY, float tZ, @ExtractionParam T res)
+	{
+		return Vec3fUtils.project(this, tX, tY, tZ, res);
+	}
+	
+	/**
+	 * Calculates the orthogonal projection of this vector onto the normalized target vector {@code (t)}
+	 * and saves the result in the given extraction parameter.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code t * (v . t)}
+	 * 
+	 * @param t The projection target vector.
+	 * @param res The extraction parameter for the result as an array with at least two entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] projectR(Tup3fR t, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.project(this, t, res);
+	}
+	
+	/**
+	 * Calculates the orthogonal projection of this vector onto the normalized target vector {@code (t[0], t[1], t[2])}
+	 * and saves the result in the given extraction parameter.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code (t[0], t[1], t[2]) * (v . (t[0], t[1], t[2]))}
+	 * 
+	 * @param t The projection target vector as an array with at least three entries.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] projectR(@MinLength(3) float[] t, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.project(this, t, res);
+	}
+	
+	/**
+	 * Calculates the orthogonal projection of this vector onto the normalized target vector {@code (tX, tY, tZ)}
+	 * and saves the result in the given extraction parameter.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code (tX, tY, tZ) * (v . (tX, tY, tZ))}
+	 * 
+	 * @param tX The value of the x component of the projection target vector.
+	 * @param tY The value of the y component of the projection target vector.
+	 * @param tZ The value of the z component of the projection target vector.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] projectR(float tX, float tY, float tZ, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.project(this, tX, tY, tZ, res);
+	}
+	
+	/**
+	 * Calculates the reflection of this vector based on the given normalized surface normal {@code (n)}
+	 * and saves the result in the given extraction parameter object.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param n The surface normal vector.
+	 * @param res The extraction parameter object for the result.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	default <T extends Tup3fC> T reflectR(Tup3fR n, @ExtractionParam T res)
+	{
+		return Vec3fUtils.reflect(this,  n, res);
+	}
+	
+	/**
+	 * Calculates the reflection of this vector based on the given normalized surface normal {@code (n[0], n[1], n[2])}
+	 * and saves the result in the given extraction parameter object.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param n The surface normal vector as an array with at least three entries.
+	 * @param res The extraction parameter object for the result.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	default <T extends Tup3fC> T reflectR(@MinLength(3) float[] n, @ExtractionParam T res)
+	{
+		return Vec3fUtils.reflect(this, n, res);
+	}
+	
+	/**
+	 * Calculates the reflection of this vector based on the given normalized surface normal {@code (nX, nY, nZ)}
+	 * and saves the result in the given extraction parameter object.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * It is safe to use this vector as the extraction parameter.
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param nX The value of the x component of the surface normal vector.
+	 * @param nY The value of the y component of the surface normal vector.
+	 * @param nZ The value of the z component of the surface normal vector.
+	 * @param res The extraction parameter object for the result.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	default <T extends Tup3fC> T reflectR(float nX, float nY, float nZ, @ExtractionParam T res)
+	{
+		return Vec3fUtils.reflect(this, nX, nY, nZ, res);
+	}
+	
+	/**
+	 * Calculates the reflection of this vector based on the given normalized surface normal {@code (n)}
+	 * and saves the result in the given extraction parameter.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @param n The surface normal vector.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] reflectR(Tup3fR n, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.reflect(this, n, res);
+	}
+	
+	/**
+	 * Calculates the reflection of this vector based on the given normalized surface normal {@code (n[0], n[1], n[2])}
+	 * and saves the result in the given extraction parameter.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @param n The surface normal vector as an array with at least three entries.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] reflectR(@MinLength(3) float[] n, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.reflect(this, n, res);
+	}
+	
+	/**
+	 * Calculates the reflection of this vector based on the given normalized surface normal {@code (nX, nY, nZ)}
+	 * and saves the result in the given extraction parameter.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @param nX The value of the x component of the surface normal vector.
+	 * @param nY The value of the y component of the surface normal vector.
+	 * @param nZ The value of the z component of the surface normal vector.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] reflectR(float nX, float nY, float nZ, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.reflect(this, nX, nY, nZ, res);
+	}
+	
+	/**
+	 * Rounds the components of this vector towards the next greater integer and saves the result in the given extraction parameter object.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @param <T> The type of the extraction parameter object.
+	 * 
+	 * @param res The extraction parameter object for the result.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	default <T extends Tup3fC> T ceilR(@ExtractionParam T res)
+	{
+		return Vec3fUtils.ceil(this, res);
+	}
+	
+	/**
+	 * Rounds the components of this vector towards the next greater integer and saves the result in the extraction parameter.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] ceilR(@ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.ceil(this, res);
+	}
+	
+	/**
+	 * Rounds the components of this vector towards the next smaller integer and saves the result in the given extraction parameter object.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @param <T> The type of the extraction parameter object.
+	 * 
+	 * @param res The extraction parameter object for the result.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	default <T extends Tup3fC> T floorR(@ExtractionParam T res)
+	{
+		return Vec3fUtils.floor(this, res);
+	}
+	
+	/**
+	 * Rounds the components of this vector towards the next smaller integer and saves the result in the extraction parameter.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] floorR(@ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.floor(this, res);
+	}
+	
+	/**
+	 * Rounds the components of this vector and saves the result in the given extraction parameter object.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @param <T> The type of the extraction parameter object.
+	 * 
+	 * @param res The extraction parameter object for the result.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	default <T extends Tup3fC> T roundR(@ExtractionParam T res)
+	{
+		return Vec3fUtils.round(this, res);
+	}
+	
+	/**
+	 * Rounds the components of this vector and saves the result in the extraction parameter.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] roundR(@ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.round(this, res);
+	}
+	
+	/**
+	 * Truncates the decimals of the components of this vector and saves the result in the given extraction parameter object.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @param <T> The type of the extraction parameter object.
+	 * 
+	 * @param res The extraction parameter object for the result.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	default <T extends Tup3fC> T truncR(@ExtractionParam T res)
+	{
+		return Vec3fUtils.trunc(this, res);
+	}
+	
+	/**
+	 * Truncates the decimals of the components of this vector and saves the result in the extraction parameter.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] truncR(@ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.trunc(this, res);
+	}
+	
+	/**
+	 * Rounds the components of this vector using the given method and saves the result in the given extraction parameter object.
+	 * 
+	 * @param <T> The type of the extraction parameter object.
+	 * 
+	 * @param method The Method to use for rounding.
+	 * @param res The extraction parameter object for the result.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	default <T extends Tup3fC> T roundR(FloatRoundMethod method, @ExtractionParam T res)
+	{
+		return Vec3fUtils.round(this, method, res);
+	}
+	
+	/**
+	 * Rounds the components of this vector using the given method and saves the result in the extraction parameter.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @param method The Method to use for rounding.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] roundR(FloatRoundMethod method, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.round(this, method, res);
+	}
+	
+	/**
+	 * Calculates the absolute values of the component values and saves the result in the extraction parameter.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup3fC> T absR(@ExtractionParam T res)
+	{
+		return Vec3fUtils.abs(this, res);
+	}
+	
+	/**
+	 * Calculates the absolute values of the component values and saves the result in the extraction parameter.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] absR(@ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.abs(this, res);
+	}
+	
+	/**
+	 * Calculates the cross product between this vector and the second given vector {@code (v2)} and saves the result in the extraction parameter.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v X v2}
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param v2 The second vector.
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup3fC> T crossR(Tup3fR v2, @ExtractionParam T res)
+	{
+		return Vec3fUtils.cross(this, v2.getV0(), v2.getV1(), v2.getV2(), res);
+	}
+	
+	/**
+	 * Calculates the cross product between this vector and the second given vector {@code (v2[0], v2[1], v2[2])} and saves the result in the extraction parameter.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v X (v2[0], v2[1], v2[2])}
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param v2 The second vector as an array with at least three entries.
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup3fC> T crossR(@MinLength(3) float[] v2, @ExtractionParam T res)
+	{
+		return Vec3fUtils.cross(this, v2[0], v2[1], v2[2], res);
+	}
+	
+	/**
+	 * Calculates the cross product between this vector and the second given vector {@code (value, value, value)} and saves the result in the extraction parameter.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v X (value, value, value)}
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param value The value for all the components of the second vector.
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup3fC> T crossR(float value, @ExtractionParam T res)
+	{
+		return Vec3fUtils.cross(this, value, value, value, res);
+	}
+	
+	/**
+	 * Calculates the cross product between this vector and the second given vector {@code (v2x, v2y, v2z)} and saves the result in the extraction parameter.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v X (v2x, v2y, v2z)}
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param v2x The value of the x component of the second vector.
+	 * @param v2y The value of the y component of the second vector.
+	 * @param v2z The value of the z component of the second vector.
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup3fC> T crossR(float v2x, float v2y, float v2z, @ExtractionParam T res)
+	{
+		return Vec3fUtils.cross(this, v2x, v2y, v2z, res);
+	}
+	
+	/**
+	 * Calculates the cross product between this vector and the second given vector {@code (v2)} and saves the result in the extraction parameter.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v X v2}
+	 * 
+	 * @param v2 The second vector.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] crossR(Tup3fR v2, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.cross(this, v2.getV0(), v2.getV1(), v2.getV2(), res);
+	}
+	
+	/**
+	 * Calculates the cross product between this vector and the second given vector {@code (v2[0], v2[1], v2[2])} and saves the result in the extraction parameter.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v X (v2[0], v2[1], v2[2])}
+	 * 
+	 * @param v2 The second vector as an array with at least three entries.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] crossR(@MinLength(3) float[] v2, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.cross(this, v2[0], v2[1], v2[2], res);
+	}
+	
+	/**
+	 * Calculates the cross product between this vector and the second given vector {@code (value, value, value)} and saves the result in the extraction parameter.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v X (value, value, value)}
+	 * 
+	 * @param value The value for all the components of the second vector.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] crossR(float value, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.cross(this, value, value, value, res);
+	}
+	
+	/**
+	 * Calculates the cross product between this vector and the second given vector {@code (v2x, v2y, v2z)} and saves the result in the extraction parameter.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v X (v2x, v2y, v2z)}
+	 * 
+	 * @param v2x The value of the x component of the second vector.
+	 * @param v2y The value of the y component of the second vector.
+	 * @param v2z The value of the z component of the second vector.
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] crossR(float v2x, float v2y, float v2z, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.cross(this, v2x, v2y, v2z, res);
+	}
+	
+	/**
+	 * Calculates the {@link Math#signum(float) signum} of the components of this vecotr and saves the result in the extraction parameter.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup3fC> T signumR(@ExtractionParam T res)
+	{
+		return Vec3fUtils.signum(this, res);
+	}
+	
+	/**
+	 * Calculates the {@link Math#signum(float) signum} of the components of this vecotr and saves the result in the extraction parameter.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @param res The extraction parameter for the result as an array with at least three entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] signumR(@ExtractionParam @MinLength(3) float[] res)
+	{
+		return Vec3fUtils.signum(this, res);
+	}
+}

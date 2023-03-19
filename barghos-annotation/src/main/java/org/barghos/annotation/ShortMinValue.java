@@ -9,8 +9,6 @@ import java.lang.annotation.Target;
 
 /**
  * Indicates the minimum value for the annotated short parameter.
- * 
- * @author picatrix1899
  */
 @Documented
 @Retention(CLASS)

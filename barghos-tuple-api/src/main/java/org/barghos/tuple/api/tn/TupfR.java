@@ -7,8 +7,6 @@ import org.barghos.annotation.Nullable;
 
 /**
  * This interface provides non invasive (readonly) functions and methods for float tuples with flexible dimension counts.
- * 
- * @author picatrix1899
  */
 public interface TupfR
 {
@@ -116,7 +114,21 @@ public interface TupfR
 	 * 
 	 * @return True if this tuple is componentwise equal to the other tuple.
 	 */
-	boolean equals(@Nullable TupfR other);
+	default boolean equals(@Nullable TupfR other)
+	{
+		if(other == null) return false;
+		if(this == other) return true;
+		if(getDimensions() == other.getDimensions()) return false;
+		
+		int dimensions = getDimensions();
+		
+		for(int i = 0; i < dimensions; i++)
+		{
+			if(getByIndex(i) != other.getByIndex(i)) return false;
+		}
+
+		return true;
+	}
 	
 	/**
 	 * Compares the value of the components of this tuple and the given tuple and returns true,
@@ -127,5 +139,19 @@ public interface TupfR
 	 * @param tolerance The tolerance that defines the margin.
 	 * @return True if this tuple is componentwise equal to the other tuple.
 	 */
-	boolean equals(@Nullable TupfR other, @FloatMinValue(0.0f) float tolerance);
+	default boolean equals(@Nullable TupfR other, @FloatMinValue(0.0f) float tolerance)
+	{
+		if(other == null) return false;
+		if(this == other) return true;
+		if(getDimensions() == other.getDimensions()) return false;
+		
+		int dimensions = getDimensions();
+		
+		for(int i = 0; i < dimensions; i++)
+		{
+			if(Math.abs(getByIndex(i) - other.getByIndex(i)) > tolerance) return false;
+		}
+
+		return true;
+	}
 }

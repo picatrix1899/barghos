@@ -1,3 +1,4 @@
+package org.barghos.math.api.point;
 //package org.barghos.math.api.point;
 //
 //import org.barghos.math.api.vector.Vec3fC;

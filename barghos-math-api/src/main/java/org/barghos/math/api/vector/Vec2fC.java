@@ -9,13 +9,7 @@ import org.barghos.tuple.api.t2.Tup2fR;
 import org.barghos.tuple.api.tn.TupfR;
 
 /**
- * This interface represents any modifiable 2-dimensional float vector.
- * 
- * <p>
- * It should be prefered by design before direct usage of a type in method parameters,
- * if the method only writes data to the parameter.
- * 
- * @author picatrix1899
+ * This interface provides the common functions and methods for float vectors with two dimensions.
  */
 public interface Vec2fC extends Vec2fR, SimpleVec2fC
 {
@@ -33,9 +27,9 @@ public interface Vec2fC extends Vec2fR, SimpleVec2fC
 	 * 
 	 * @return A new instance.
 	 */
-	default Vec2fC createNew(SimpleVec2fR v)
+	default Vec2fC createNew(Tup2fR v)
 	{
-		return createNew(v.getX(), v.getY());
+		return createNew(v.getV0(), v.getV1());
 	}
 	
 	/**
@@ -86,9 +80,23 @@ public interface Vec2fC extends Vec2fR, SimpleVec2fC
 	
 	/** {@inheritDoc} */
 	@Override
+	default Vec2fC setV0(float v0)
+	{
+		return setX(v0);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	default Vec2fC setV1(float v1)
+	{
+		return setY(v1);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
 	default Vec2fC set(Tup2fR t)
 	{
-		return set(t.getX(), t.getY());
+		return set(t.getV0(), t.getV1());
 	}
 	
 	/** {@inheritDoc} */
@@ -148,7 +156,7 @@ public interface Vec2fC extends Vec2fR, SimpleVec2fC
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec2fC add(SimpleVec2fR v2)
+	default Vec2fC add(Tup2fR v2)
 	{
 		return Vec2fUtils.add(this, v2, this);
 	}
@@ -225,7 +233,7 @@ public interface Vec2fC extends Vec2fR, SimpleVec2fC
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec2fC sub(SimpleVec2fR v2)
+	default Vec2fC sub(Tup2fR v2)
 	{
 		return Vec2fUtils.sub(this, v2, this);
 	}
@@ -302,7 +310,7 @@ public interface Vec2fC extends Vec2fR, SimpleVec2fC
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec2fC revSub(SimpleVec2fR v2)
+	default Vec2fC revSub(Tup2fR v2)
 	{
 		return Vec2fUtils.revSub(this, v2, this);
 	}
@@ -379,7 +387,7 @@ public interface Vec2fC extends Vec2fR, SimpleVec2fC
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec2fC mul(SimpleVec2fR v2)
+	default Vec2fC mul(Tup2fR v2)
 	{
 		return Vec2fUtils.mul(this, v2, this);
 	}
@@ -456,7 +464,7 @@ public interface Vec2fC extends Vec2fR, SimpleVec2fC
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec2fC div(SimpleVec2fR v2)
+	default Vec2fC div(Tup2fR v2)
 	{
 		return Vec2fUtils.div(this, v2, this);
 	}
@@ -533,7 +541,7 @@ public interface Vec2fC extends Vec2fR, SimpleVec2fC
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec2fC revDiv(SimpleVec2fR v2)
+	default Vec2fC revDiv(Tup2fR v2)
 	{
 		return Vec2fUtils.revDiv(this, v2, this);
 	}
@@ -610,7 +618,7 @@ public interface Vec2fC extends Vec2fR, SimpleVec2fC
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec2fC halfVectorTo(SimpleVec2fR v2)
+	default Vec2fC halfVectorTo(Tup2fR v2)
 	{
 		return Vec2fUtils.halfVectorTo(this, v2, this);
 	}
@@ -668,7 +676,7 @@ public interface Vec2fC extends Vec2fR, SimpleVec2fC
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec2fC halfPointBetween(SimpleVec2fR v2)
+	default Vec2fC halfPointBetween(Tup2fR v2)
 	{
 		return Vec2fUtils.halfPointBetween(this, v2, this);
 	}
@@ -774,7 +782,7 @@ public interface Vec2fC extends Vec2fR, SimpleVec2fC
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec2fC minVector(SimpleVec2fR v2)
+	default Vec2fC minVector(Tup2fR v2)
 	{
 		return Vec2fUtils.minVector(this, v2, this);
 	}
@@ -823,7 +831,7 @@ public interface Vec2fC extends Vec2fR, SimpleVec2fC
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec2fC maxVector(SimpleVec2fR v2)
+	default Vec2fC maxVector(Tup2fR v2)
 	{
 		return Vec2fUtils.maxVector(this, v2, this);
 	}
@@ -949,7 +957,7 @@ public interface Vec2fC extends Vec2fR, SimpleVec2fC
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec2fC project(SimpleVec2fR t)
+	default Vec2fC project(Tup2fR t)
 	{
 		return Vec2fUtils.project(this, t, this);
 	}
@@ -1003,7 +1011,7 @@ public interface Vec2fC extends Vec2fR, SimpleVec2fC
 	 * 
 	 * @return The current vector.
 	 */
-	default Vec2fC reflect(SimpleVec2fR n)
+	default Vec2fC reflect(Tup2fR n)
 	{
 		return Vec2fUtils.reflect(this, n, this);
 	}
@@ -1106,9 +1114,35 @@ public interface Vec2fC extends Vec2fR, SimpleVec2fC
 		return Vec2fUtils.round(this, method, this);
 	}
 	
+	/**
+	 * Calculates the absolute value of the component values.
+	 * 
+	 * <p>
+	 * This operation <u><b>does</b></u> alter the vector.
+	 * 
+	 * @return The current vector.
+	 */
+	default Vec2fC abs()
+	{
+		return Vec2fUtils.abs(this, this);
+	}
+	
+	/**
+	 * Calculates the {@link Math#signum(float) signum} of the components of this vector.
+	 * 
+	 * <p>
+	 * This operation <u><b>does</b></u> alter the vector.
+	 * 
+	 * @return The current vector.
+	 */
+	default Vec2fC signum()
+	{
+		return Vec2fUtils.signum(this, this);
+	}
+	
 	/** {@inheritDoc} */
 	@Override
-	default Vec2fC addN(SimpleVec2fR v2)
+	default Vec2fC addN(Tup2fR v2)
 	{
 		return Vec2fUtils.addFunc(this, v2, (x, y) -> createNew(x, y));
 	}
@@ -1136,7 +1170,7 @@ public interface Vec2fC extends Vec2fR, SimpleVec2fC
 	
 	/** {@inheritDoc} */
 	@Override
-	default Vec2fC subN(SimpleVec2fR v2)
+	default Vec2fC subN(Tup2fR v2)
 	{
 		return Vec2fUtils.subFunc(this, v2, (x, y) -> createNew(x, y));
 	}
@@ -1164,7 +1198,7 @@ public interface Vec2fC extends Vec2fR, SimpleVec2fC
 	
 	/** {@inheritDoc} */
 	@Override
-	default Vec2fC revSubN(SimpleVec2fR v2)
+	default Vec2fC revSubN(Tup2fR v2)
 	{
 		return Vec2fUtils.revSubFunc(this, v2, (x, y) -> createNew(x, y));
 	}
@@ -1192,7 +1226,7 @@ public interface Vec2fC extends Vec2fR, SimpleVec2fC
 	
 	/** {@inheritDoc} */
 	@Override
-	default Vec2fC mulN(SimpleVec2fR v2)
+	default Vec2fC mulN(Tup2fR v2)
 	{
 		return Vec2fUtils.mulFunc(this, v2, (x, y) -> createNew(x, y));
 	}
@@ -1220,7 +1254,7 @@ public interface Vec2fC extends Vec2fR, SimpleVec2fC
 	
 	/** {@inheritDoc} */
 	@Override
-	default Vec2fC divN(SimpleVec2fR v2)
+	default Vec2fC divN(Tup2fR v2)
 	{
 		return Vec2fUtils.divFunc(this, v2, (x, y) -> createNew(x, y));
 	}
@@ -1248,7 +1282,7 @@ public interface Vec2fC extends Vec2fR, SimpleVec2fC
 
 	/** {@inheritDoc} */
 	@Override
-	default Vec2fC revDivN(SimpleVec2fR v2)
+	default Vec2fC revDivN(Tup2fR v2)
 	{
 		return Vec2fUtils.revDivFunc(this, v2, (x, y) -> createNew(x, y));
 	}
@@ -1276,7 +1310,7 @@ public interface Vec2fC extends Vec2fR, SimpleVec2fC
 	
 	/** {@inheritDoc} */
 	@Override
-	default Vec2fC halfVectorToN(SimpleVec2fR v2)
+	default Vec2fC halfVectorToN(Tup2fR v2)
 	{
 		return Vec2fUtils.halfVectorToFunc(this, v2, (x, y) -> createNew(x, y));
 	}
@@ -1297,7 +1331,7 @@ public interface Vec2fC extends Vec2fR, SimpleVec2fC
 	
 	/** {@inheritDoc} */
 	@Override
-	default Vec2fC halfPointBetweenN(SimpleVec2fR v2)
+	default Vec2fC halfPointBetweenN(Tup2fR v2)
 	{
 		return Vec2fUtils.halfPointBetweenFunc(this, v2, (x, y) -> createNew(x, y));
 	}
@@ -1339,7 +1373,7 @@ public interface Vec2fC extends Vec2fR, SimpleVec2fC
 	
 	/** {@inheritDoc} */
 	@Override
-	default Vec2fC minVectorN(SimpleVec2fR v2)
+	default Vec2fC minVectorN(Tup2fR v2)
 	{
 		return Vec2fUtils.minVectorFunc(this, v2, (x, y) -> createNew(x, y));
 	}
@@ -1360,7 +1394,7 @@ public interface Vec2fC extends Vec2fR, SimpleVec2fC
 	
 	/** {@inheritDoc} */
 	@Override
-	default Vec2fC maxVectorN(SimpleVec2fR v2)
+	default Vec2fC maxVectorN(Tup2fR v2)
 	{
 		return Vec2fUtils.maxVectorFunc(this, v2, (x, y) -> createNew(x, y));
 	}
@@ -1409,7 +1443,7 @@ public interface Vec2fC extends Vec2fR, SimpleVec2fC
 	
 	/** {@inheritDoc} */
 	@Override
-	default Vec2fC projectN(SimpleVec2fR t)
+	default Vec2fC projectN(Tup2fR t)
 	{
 		return Vec2fUtils.projectFunc(this, t, (x, y) -> createNew(x, y));
 	}
@@ -1430,7 +1464,7 @@ public interface Vec2fC extends Vec2fR, SimpleVec2fC
 	
 	/** {@inheritDoc} */
 	@Override
-	default Vec2fC reflectN(SimpleVec2fR n)
+	default Vec2fC reflectN(Tup2fR n)
 	{
 		return Vec2fUtils.reflectFunc(this, n, (x, y) -> createNew(x, y));
 	}
@@ -1482,5 +1516,19 @@ public interface Vec2fC extends Vec2fR, SimpleVec2fC
 	default Vec2fC roundN(FloatRoundMethod method)
 	{
 		return Vec2fUtils.roundFunc(this, method, (x, y) -> createNew(x, y));
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	default Vec2fC absN()
+	{
+		return Vec2fUtils.absFunc(this, (x, y) -> createNew(x, y));
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	default Vec2fC signumN()
+	{
+		return Vec2fUtils.signumFunc(this, (x, y) -> createNew(x, y));
 	}
 }

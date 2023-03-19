@@ -12,12 +12,17 @@ import org.barghos.tuple.api.tn.TupfR;
 
 /**
  * This interface provides non invasive (readonly) functions and methods for float tuples with two dimensions.
- * 
- * @author picatrix1899
  */
 public interface Tup2fR extends TupfR
 {
-	/** {@inheritDoc} */
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * <p>
+	 * For any derivative or implementation of {@link Tup2fR} this will be two.
+	 * 
+	 * @apiNote Do not override this function, as it already returns the correct value for any two dimensional tuple.
+	 */
 	@Override
 	default int getDimensions()
 	{
@@ -25,18 +30,26 @@ public interface Tup2fR extends TupfR
 	}
 	
 	/**
-	 * Returns the value of the x component of the tuple.
+	 * Returns the value of the first component of the tuple.
 	 * 
-	 * @return The value of the x component.
+	 * @return The value of the first component.
+	 * 
+	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced, as the original concept was too close to the naming conventions
+	 * of vectors. Because not all tuples are necessarly vectors, the vector naming convention might be confusing to understand or could even
+	 * create conflicts hence it was changed.
 	 */
-	float getX();
+	float getV0();
 	
 	/**
-	 * Returns the value of the y component of the tuple.
+	 * Returns the value of the second component of the tuple.
 	 * 
-	 * @return The value of the y component.
+	 * @return The value of the second component.
+	 * 
+	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced, as the original concept was too close to the naming conventions
+	 * of vectors. Because not all tuples are necessarly vectors, the vector naming convention might be confusing to understand or could even
+	 * create conflicts hence it was changed.
 	 */
-	float getY();
+	float getV1();
 	
 	/** {@inheritDoc} */
 	@Override
@@ -46,8 +59,8 @@ public interface Tup2fR extends TupfR
 
 		switch(index)
 		{
-			case 0: return getX();
-			case 1: return getY();
+			case 0: return getV0();
+			case 1: return getV1();
 			
 			default: throw new AssertionError(index);
 		}
@@ -57,16 +70,16 @@ public interface Tup2fR extends TupfR
 	@Override
 	default boolean isFinite()
 	{
-		return	Float.isFinite(getX()) &&
-				Float.isFinite(getY());
+		return	Float.isFinite(getV0()) &&
+				Float.isFinite(getV1());
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	default boolean isZero()
 	{
-		return	getX() == 0.0f &&
-				getY() == 0.0f;
+		return	getV0() == 0.0f &&
+				getV1() == 0.0f;
 	}
 	
 	/** {@inheritDoc} */
@@ -75,16 +88,16 @@ public interface Tup2fR extends TupfR
 	{
 		if(tolerance < 0.0f) throw new IllegalArgumentException();
 		
-		return	Math.abs(getX()) <= tolerance &&
-				Math.abs(getY()) <= tolerance;
+		return	Math.abs(getV0()) <= tolerance &&
+				Math.abs(getV1()) <= tolerance;
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	default float[] toArray(@ExtractionParam @MinLength(2) float[] res)
 	{
-		res[0] = getX();
-		res[1] = getY();
+		res[0] = getV0();
+		res[1] = getV1();
 		
 		return res;
 	}
@@ -101,7 +114,16 @@ public interface Tup2fR extends TupfR
 	 * 
 	 * @return True if this tuple is componentwise equal to the other tuple.
 	 */
-	boolean equals(@Nullable Tup2fR other);
+	default boolean equals(@Nullable Tup2fR other)
+	{
+		if(other == null) return false;
+		if(this == other) return true;
+		
+		if(getV0() != other.getV0()) return false;
+		if(getV1() != other.getV1()) return false;
+		
+		return true;
+	}
 	
 	/**
 	 * Compares the value of the components of this tuple and the given tuple and returns true,
@@ -110,7 +132,45 @@ public interface Tup2fR extends TupfR
 	 * 
 	 * @param other The tuple to compare with.
 	 * @param tolerance The tolerance that defines the margin.
+	 * 
 	 * @return True if this tuple is componentwise equal to the other tuple.
 	 */
-	boolean equals(@Nullable Tup2fR other, @FloatMinValue(0.0f) float tolerance);
+	default boolean equals(@Nullable Tup2fR other, @FloatMinValue(0.0f) float tolerance)
+	{
+		if(other == null) return false;
+		if(this == other) return true;
+		
+		if(Math.abs(getV0() - other.getV0()) > tolerance) return false;
+		if(Math.abs(getV1() - other.getV1()) > tolerance) return false;
+		
+		return false;
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	default boolean equals(@Nullable TupfR other)
+	{
+		if(other == null) return false;
+		if(this == other) return true;
+		if(other.getDimensions() != 2) return false;
+		
+		if(getV0() != other.getByIndex(0)) return false;
+		if(getV1() != other.getByIndex(1)) return false;
+		
+		return true;
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	default boolean equals(@Nullable TupfR other, @FloatMinValue(0.0f) float tolerance)
+	{
+		if(other == null) return false;
+		if(this == other) return true;
+		if(other.getDimensions() != 2) return false;
+		
+		if(Math.abs(getV0() - other.getByIndex(0)) > tolerance) return false;
+		if(Math.abs(getV1() - other.getByIndex(1)) > tolerance) return false;
+		
+		return true;
+	}
 }

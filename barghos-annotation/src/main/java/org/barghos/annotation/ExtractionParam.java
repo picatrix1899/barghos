@@ -16,8 +16,6 @@ import java.lang.annotation.Target;
  * As the caller has the resposibility for instance management it is possible to either reuse
  * an existing instance (i.e. an array) or utilize an instance pool. With this it is possible to
  * increase the performance by cutting out unnecessary allocations. A extraction parameter must never be null.
- * 
- * @author picatrix1899
  */
 @Documented
 @Retention(CLASS)

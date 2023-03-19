@@ -9,17 +9,17 @@ subprojects {
   apply plugin: 'maven-publish'
   apply plugin: 'eclipse'
   
-	repositories {
-	  mavenCentral()
-	}
-	
-  java {
-    withJavadocJar()
-    withSourcesJar()
+  repositories {
+    mavenCentral()
   }
   
   dependencies {
     testImplementation 'org.mockito:mockito-core:4.1.0'
+  }
+  
+  java {
+    withJavadocJar()
+    withSourcesJar()
   }
   
   testing {
@@ -31,8 +31,22 @@ subprojects {
   }
   
   compileJava {
+  
+  	// Build against Java 17 as 18 is not fully released jet.
     sourceCompatibility = '17'
     targetCompatibility = '17'
+  }
+  
+  javadoc {
+  
+  	// Enable more javadoc tags.
+  	options.addMultilineStringsOption('tag').setValue([
+  	
+  	  // Enable the javadoc tags @apiNote, @implSpec and @implNote for better documentation as they are not enabled by default.
+  	  'apiNote:a:"API Note:"',
+  	  'implSpec:a:"Implementation Requirements:"',
+  	  'implNote:a:"Implementation Note:"'
+  	])
   }
   
   publishing {

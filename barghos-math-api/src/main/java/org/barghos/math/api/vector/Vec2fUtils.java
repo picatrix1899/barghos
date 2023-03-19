@@ -8,11 +8,11 @@ import org.barghos.annotation.ExtractionParam;
 import org.barghos.annotation.FloatMinValue;
 import org.barghos.annotation.MinLength;
 import org.barghos.math.api.util.ComponentValueFloat;
+import org.barghos.tuple.api.t2.Tup2fC;
+import org.barghos.tuple.api.t2.Tup2fR;
 
 /**
  * This class provides utilities for working with 2-dimensional float vectors.
- * 
- * @author picatrix1899
  */
 public class Vec2fUtils
 {
@@ -29,9 +29,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] add(SimpleVec2fR v1, SimpleVec2fR v2, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] add(Tup2fR v1, Tup2fR v2, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return add(v1.getX(), v1.getY(), v2.getX(), v2.getY(), res);
+		return add(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -47,9 +47,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] add(SimpleVec2fR v1, @MinLength(2) float[] v2, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] add(Tup2fR v1, @MinLength(2) float[] v2, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return add(v1.getX(), v1.getY(), v2[0], v2[1], res);
+		return add(v1.getV0(), v1.getV1(), v2[0], v2[1], res);
 	}
 	
 	/**
@@ -66,9 +66,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] add(SimpleVec2fR v1, float v2x, float v2y, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] add(Tup2fR v1, float v2x, float v2y, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return add(v1.getX(), v1.getY(), v2x, v2y, res);
+		return add(v1.getV0(), v1.getV1(), v2x, v2y, res);
 	}
 	
 	/**
@@ -84,9 +84,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] add(@MinLength(2) float[] v1, SimpleVec2fR v2, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] add(@MinLength(2) float[] v1, Tup2fR v2, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return add(v1[0], v1[1], v2.getX(), v2.getY(), res);
+		return add(v1[0], v1[1], v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -140,9 +140,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] add(float v1x, float v1y, SimpleVec2fR v2, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] add(float v1x, float v1y, Tup2fR v2, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return add(v1x, v1y, v2.getX(), v2.getY(), res);
+		return add(v1x, v1y, v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -202,9 +202,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T add(SimpleVec2fR v1, SimpleVec2fR v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T add(Tup2fR v1, Tup2fR v2, @ExtractionParam T res)
 	{
-		return add(v1.getX(), v1.getY(), v2.getX(), v2.getY(), res);
+		return add(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -222,9 +222,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T add(SimpleVec2fR v1, @MinLength(2) float[] v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T add(Tup2fR v1, @MinLength(2) float[] v2, @ExtractionParam T res)
 	{
-		return add(v1.getX(), v1.getY(), v2[0], v2[1], res);
+		return add(v1.getV0(), v1.getV1(), v2[0], v2[1], res);
 	}
 	
 	/**
@@ -243,9 +243,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T add(SimpleVec2fR v1, float v2x, float v2y, @ExtractionParam T res)
+	public static <T extends Tup2fC> T add(Tup2fR v1, float v2x, float v2y, @ExtractionParam T res)
 	{
-		return add(v1.getX(), v1.getY(), v2x, v2y, res);
+		return add(v1.getV0(), v1.getV1(), v2x, v2y, res);
 	}
 	
 	/**
@@ -263,9 +263,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T add(@MinLength(2) float[] v1, SimpleVec2fR v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T add(@MinLength(2) float[] v1, Tup2fR v2, @ExtractionParam T res)
 	{
-		return add(v1[0], v1[1], v2.getX(), v2.getY(), res);
+		return add(v1[0], v1[1], v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -283,7 +283,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T add(@MinLength(2) float[] v1, @MinLength(2) float[] v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T add(@MinLength(2) float[] v1, @MinLength(2) float[] v2, @ExtractionParam T res)
 	{
 		return add(v1[0], v1[1], v2[0], v2[1], res);
 	}
@@ -304,7 +304,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T add(@MinLength(2) float[] v1, float v2x, float v2y, @ExtractionParam T res)
+	public static <T extends Tup2fC> T add(@MinLength(2) float[] v1, float v2x, float v2y, @ExtractionParam T res)
 	{
 		return add(v1[0], v1[1], v2x, v2y, res);
 	}
@@ -325,9 +325,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T add(float v1x, float v1y, SimpleVec2fR v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T add(float v1x, float v1y, Tup2fR v2, @ExtractionParam T res)
 	{
-		return add(v1x, v1y, v2.getX(), v2.getY(), res);
+		return add(v1x, v1y, v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -346,7 +346,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T add(float v1x, float v1y, @MinLength(2) float[] v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T add(float v1x, float v1y, @MinLength(2) float[] v2, @ExtractionParam T res)
 	{
 		return add(v1x, v1y, v2[0], v2[1], res);
 	}
@@ -368,7 +368,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T add(float v1x, float v1y, float v2x, float v2y, @ExtractionParam T res)
+	public static <T extends Tup2fC> T add(float v1x, float v1y, float v2x, float v2y, @ExtractionParam T res)
 	{
 		res.set(v1x + v2x, v1y + v2y);
 		
@@ -391,9 +391,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T addFunc(SimpleVec2fR v1, SimpleVec2fR v2, FloatFunction2<T> res)
+	public static <T> T addFunc(Tup2fR v1, Tup2fR v2, FloatFunction2<T> res)
 	{
-		return addFunc(v1.getX(), v1.getY(), v2.getX(), v2.getY(), res);
+		return addFunc(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -412,9 +412,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T addFunc(SimpleVec2fR v1, @MinLength(2) float[] v2, FloatFunction2<T> res)
+	public static <T> T addFunc(Tup2fR v1, @MinLength(2) float[] v2, FloatFunction2<T> res)
 	{
-		return addFunc(v1.getX(), v1.getY(), v2[0], v2[1], res);
+		return addFunc(v1.getV0(), v1.getV1(), v2[0], v2[1], res);
 	}
 	
 	/**
@@ -434,9 +434,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T addFunc(SimpleVec2fR v1, float v2x, float v2y, FloatFunction2<T> res)
+	public static <T> T addFunc(Tup2fR v1, float v2x, float v2y, FloatFunction2<T> res)
 	{
-		return addFunc(v1.getX(), v1.getY(), v2x, v2y, res);
+		return addFunc(v1.getV0(), v1.getV1(), v2x, v2y, res);
 	}
 	
 	/**
@@ -455,9 +455,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T addFunc(@MinLength(2) float[] v1, SimpleVec2fR v2, FloatFunction2<T> res)
+	public static <T> T addFunc(@MinLength(2) float[] v1, Tup2fR v2, FloatFunction2<T> res)
 	{
-		return addFunc(v1[0], v1[1], v2.getX(), v2.getY(), res);
+		return addFunc(v1[0], v1[1], v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -520,9 +520,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T addFunc(float v1x, float v1y, SimpleVec2fR v2, FloatFunction2<T> res)
+	public static <T> T addFunc(float v1x, float v1y, Tup2fR v2, FloatFunction2<T> res)
 	{
-		return addFunc(v1x, v1y, v2.getX(), v2.getY(), res);
+		return addFunc(v1x, v1y, v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -583,9 +583,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] sub(SimpleVec2fR v1, SimpleVec2fR v2, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] sub(Tup2fR v1, Tup2fR v2, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return sub(v1.getX(), v1.getY(), v2.getX(), v2.getY(), res);
+		return sub(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -596,14 +596,14 @@ public class Vec2fUtils
 	 * {@code v1 - (v2x, v2y)}
 	 * 
 	 * @param v1 The first vector.
-	 * @param v2 The second vector as an array with at leasttwo entries.
+	 * @param v2 The second vector as an array with at least two entries.
 	 * @param res The extraction parameter for the result as an array with at least two entries.
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] sub(SimpleVec2fR v1, @MinLength(2) float[] v2, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] sub(Tup2fR v1, @MinLength(2) float[] v2, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return sub(v1.getX(), v1.getY(), v2[0], v2[1], res);
+		return sub(v1.getV0(), v1.getV1(), v2[0], v2[1], res);
 	}
 	
 	/**
@@ -620,9 +620,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] sub(SimpleVec2fR v1, float v2x, float v2y, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] sub(Tup2fR v1, float v2x, float v2y, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return sub(v1.getX(), v1.getY(), v2x, v2y, res);
+		return sub(v1.getV0(), v1.getV1(), v2x, v2y, res);
 	}
 	
 	/**
@@ -638,9 +638,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] sub(@MinLength(2) float[] v1, SimpleVec2fR v2, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] sub(@MinLength(2) float[] v1, Tup2fR v2, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return sub(v1[0], v1[1], v2.getX(), v2.getY(), res);
+		return sub(v1[0], v1[1], v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -694,9 +694,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] sub(float v1x, float v1y, SimpleVec2fR v2, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] sub(float v1x, float v1y, Tup2fR v2, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return sub(v1x, v1y, v2.getX(), v2.getY(), res);
+		return sub(v1x, v1y, v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -756,9 +756,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T sub(SimpleVec2fR v1, SimpleVec2fR v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T sub(Tup2fR v1, Tup2fR v2, @ExtractionParam T res)
 	{
-		return sub(v1.getX(), v1.getY(), v2.getX(), v2.getY(), res);
+		return sub(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -776,9 +776,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T sub(SimpleVec2fR v1, @MinLength(2) float[] v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T sub(Tup2fR v1, @MinLength(2) float[] v2, @ExtractionParam T res)
 	{
-		return sub(v1.getX(), v1.getY(), v2[0], v2[1], res);
+		return sub(v1.getV0(), v1.getV1(), v2[0], v2[1], res);
 	}
 	
 	/**
@@ -797,9 +797,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T sub(SimpleVec2fR v1, float v2x, float v2y, @ExtractionParam T res)
+	public static <T extends Tup2fC> T sub(Tup2fR v1, float v2x, float v2y, @ExtractionParam T res)
 	{
-		return sub(v1.getX(), v1.getY(), v2x, v2y, res);
+		return sub(v1.getV0(), v1.getV1(), v2x, v2y, res);
 	}
 	
 	/**
@@ -817,9 +817,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T sub(@MinLength(2) float[] v1, SimpleVec2fR v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T sub(@MinLength(2) float[] v1, Tup2fR v2, @ExtractionParam T res)
 	{
-		return sub(v1[0], v1[1], v2.getX(), v2.getY(), res);
+		return sub(v1[0], v1[1], v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -837,7 +837,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T sub(@MinLength(2) float[] v1, @MinLength(2) float[] v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T sub(@MinLength(2) float[] v1, @MinLength(2) float[] v2, @ExtractionParam T res)
 	{
 		return sub(v1[0], v1[1], v2[0], v2[1], res);
 	}
@@ -858,7 +858,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T sub(@MinLength(2) float[] v1, float v2x, float v2y, @ExtractionParam T res)
+	public static <T extends Tup2fC> T sub(@MinLength(2) float[] v1, float v2x, float v2y, @ExtractionParam T res)
 	{
 		return sub(v1[0], v1[1], v2x, v2y, res);
 	}
@@ -879,9 +879,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T sub(float v1x, float v1y, SimpleVec2fR v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T sub(float v1x, float v1y, Tup2fR v2, @ExtractionParam T res)
 	{
-		return sub(v1x, v1y, v2.getX(), v2.getY(), res);
+		return sub(v1x, v1y, v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -900,7 +900,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T sub(float v1x, float v1y, @MinLength(2) float[] v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T sub(float v1x, float v1y, @MinLength(2) float[] v2, @ExtractionParam T res)
 	{
 		return sub(v1x, v1y, v2[0], v2[1], res);
 	}
@@ -922,7 +922,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T sub(float v1x, float v1y, float v2x, float v2y, @ExtractionParam T res)
+	public static <T extends Tup2fC> T sub(float v1x, float v1y, float v2x, float v2y, @ExtractionParam T res)
 	{
 		res.set(v1x - v2x, v1y - v2y);
 		
@@ -945,9 +945,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T subFunc(SimpleVec2fR v1, SimpleVec2fR v2, FloatFunction2<T> res)
+	public static <T> T subFunc(Tup2fR v1, Tup2fR v2, FloatFunction2<T> res)
 	{
-		return subFunc(v1.getX(), v1.getY(), v2.getX(), v2.getY(), res);
+		return subFunc(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -966,9 +966,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T subFunc(SimpleVec2fR v1, @MinLength(2) float[] v2, FloatFunction2<T> res)
+	public static <T> T subFunc(Tup2fR v1, @MinLength(2) float[] v2, FloatFunction2<T> res)
 	{
-		return subFunc(v1.getX(), v1.getY(), v2[0], v2[1], res);
+		return subFunc(v1.getV0(), v1.getV1(), v2[0], v2[1], res);
 	}
 	
 	/**
@@ -988,9 +988,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T subFunc(SimpleVec2fR v1, float v2x, float v2y, FloatFunction2<T> res)
+	public static <T> T subFunc(Tup2fR v1, float v2x, float v2y, FloatFunction2<T> res)
 	{
-		return subFunc(v1.getX(), v1.getY(), v2x, v2y, res);
+		return subFunc(v1.getV0(), v1.getV1(), v2x, v2y, res);
 	}
 	
 	/**
@@ -1009,9 +1009,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T subFunc(@MinLength(2) float[] v1, SimpleVec2fR v2, FloatFunction2<T> res)
+	public static <T> T subFunc(@MinLength(2) float[] v1, Tup2fR v2, FloatFunction2<T> res)
 	{
-		return subFunc(v1[0], v1[1], v2.getX(), v2.getY(), res);
+		return subFunc(v1[0], v1[1], v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -1074,9 +1074,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T subFunc(float v1x, float v1y, SimpleVec2fR v2, FloatFunction2<T> res)
+	public static <T> T subFunc(float v1x, float v1y, Tup2fR v2, FloatFunction2<T> res)
 	{
-		return subFunc(v1x, v1y, v2.getX(), v2.getY(), res);
+		return subFunc(v1x, v1y, v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -1137,9 +1137,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] revSub(SimpleVec2fR v1, SimpleVec2fR v2, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] revSub(Tup2fR v1, Tup2fR v2, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return revSub(v1.getX(), v1.getY(), v2.getX(), v2.getY(), res);
+		return revSub(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -1155,9 +1155,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] revSub(SimpleVec2fR v1, @MinLength(2) float[] v2, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] revSub(Tup2fR v1, @MinLength(2) float[] v2, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return revSub(v1.getX(), v1.getY(), v2[0], v2[1], res);
+		return revSub(v1.getV0(), v1.getV1(), v2[0], v2[1], res);
 	}
 	
 	/**
@@ -1174,9 +1174,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] revSub(SimpleVec2fR v1, float v2x, float v2y, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] revSub(Tup2fR v1, float v2x, float v2y, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return revSub(v1.getX(), v1.getY(), v2x, v2y, res);
+		return revSub(v1.getV0(), v1.getV1(), v2x, v2y, res);
 	}
 	
 	/**
@@ -1192,9 +1192,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] revSub(@MinLength(2) float[] v1, SimpleVec2fR v2, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] revSub(@MinLength(2) float[] v1, Tup2fR v2, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return revSub(v1[0], v1[1], v2.getX(), v2.getY(), res);
+		return revSub(v1[0], v1[1], v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -1248,9 +1248,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] revSub(float v1x, float v1y, SimpleVec2fR v2, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] revSub(float v1x, float v1y, Tup2fR v2, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return revSub(v1x, v1y, v2.getX(), v2.getY(), res);
+		return revSub(v1x, v1y, v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -1310,9 +1310,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T revSub(SimpleVec2fR v1, SimpleVec2fR v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T revSub(Tup2fR v1, Tup2fR v2, @ExtractionParam T res)
 	{
-		return revSub(v1.getX(), v1.getY(), v2.getX(), v2.getY(), res);
+		return revSub(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -1330,9 +1330,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T revSub(SimpleVec2fR v1, @MinLength(2) float[] v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T revSub(Tup2fR v1, @MinLength(2) float[] v2, @ExtractionParam T res)
 	{
-		return revSub(v1.getX(), v1.getY(), v2[0], v2[1], res);
+		return revSub(v1.getV0(), v1.getV1(), v2[0], v2[1], res);
 	}
 	
 	/**
@@ -1351,9 +1351,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T revSub(SimpleVec2fR v1, float v2x, float v2y, @ExtractionParam T res)
+	public static <T extends Tup2fC> T revSub(Tup2fR v1, float v2x, float v2y, @ExtractionParam T res)
 	{
-		return revSub(v1.getX(), v1.getY(), v2x, v2y, res);
+		return revSub(v1.getV0(), v1.getV1(), v2x, v2y, res);
 	}
 	
 	/**
@@ -1371,9 +1371,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T revSub(@MinLength(2) float[] v1, SimpleVec2fR v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T revSub(@MinLength(2) float[] v1, Tup2fR v2, @ExtractionParam T res)
 	{
-		return revSub(v1[0], v1[1], v2.getX(), v2.getY(), res);
+		return revSub(v1[0], v1[1], v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -1391,7 +1391,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T revSub(@MinLength(2) float[] v1, @MinLength(2) float[] v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T revSub(@MinLength(2) float[] v1, @MinLength(2) float[] v2, @ExtractionParam T res)
 	{
 		return revSub(v1[0], v1[1], v2[0], v2[1], res);
 	}
@@ -1412,7 +1412,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T revSub(@MinLength(2) float[] v1, float v2x, float v2y, @ExtractionParam T res)
+	public static <T extends Tup2fC> T revSub(@MinLength(2) float[] v1, float v2x, float v2y, @ExtractionParam T res)
 	{
 		return revSub(v1[0], v1[1], v2x, v2y, res);
 	}
@@ -1433,9 +1433,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T revSub(float v1x, float v1y, SimpleVec2fR v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T revSub(float v1x, float v1y, Tup2fR v2, @ExtractionParam T res)
 	{
-		return revSub(v1x, v1y, v2.getX(), v2.getY(), res);
+		return revSub(v1x, v1y, v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -1454,7 +1454,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T revSub(float v1x, float v1y, @MinLength(2) float[] v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T revSub(float v1x, float v1y, @MinLength(2) float[] v2, @ExtractionParam T res)
 	{
 		return revSub(v1x, v1y, v2[0], v2[1], res);
 	}
@@ -1476,7 +1476,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T revSub(float v1x, float v1y, float v2x, float v2y, @ExtractionParam T res)
+	public static <T extends Tup2fC> T revSub(float v1x, float v1y, float v2x, float v2y, @ExtractionParam T res)
 	{
 		res.set(v2x - v1x, v2y - v1y);
 		
@@ -1499,9 +1499,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T revSubFunc(SimpleVec2fR v1, SimpleVec2fR v2, FloatFunction2<T> res)
+	public static <T> T revSubFunc(Tup2fR v1, Tup2fR v2, FloatFunction2<T> res)
 	{
-		return revSubFunc(v1.getX(), v1.getY(), v2.getX(), v2.getY(), res);
+		return revSubFunc(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -1520,9 +1520,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T revSubFunc(SimpleVec2fR v1, @MinLength(2) float[] v2, FloatFunction2<T> res)
+	public static <T> T revSubFunc(Tup2fR v1, @MinLength(2) float[] v2, FloatFunction2<T> res)
 	{
-		return revSubFunc(v1.getX(), v1.getY(), v2[0], v2[1], res);
+		return revSubFunc(v1.getV0(), v1.getV1(), v2[0], v2[1], res);
 	}
 	
 	/**
@@ -1542,9 +1542,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T revSubFunc(SimpleVec2fR v1, float v2x, float v2y, FloatFunction2<T> res)
+	public static <T> T revSubFunc(Tup2fR v1, float v2x, float v2y, FloatFunction2<T> res)
 	{
-		return revSubFunc(v1.getX(), v1.getY(), v2x, v2y, res);
+		return revSubFunc(v1.getV0(), v1.getV1(), v2x, v2y, res);
 	}
 	
 	/**
@@ -1563,9 +1563,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T revSubFunc(@MinLength(2) float[] v1, SimpleVec2fR v2, FloatFunction2<T> res)
+	public static <T> T revSubFunc(@MinLength(2) float[] v1, Tup2fR v2, FloatFunction2<T> res)
 	{
-		return revSubFunc(v1[0], v1[1], v2.getX(), v2.getY(), res);
+		return revSubFunc(v1[0], v1[1], v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -1628,9 +1628,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T revSubFunc(float v1x, float v1y, SimpleVec2fR v2, FloatFunction2<T> res)
+	public static <T> T revSubFunc(float v1x, float v1y, Tup2fR v2, FloatFunction2<T> res)
 	{
-		return revSubFunc(v1x, v1y, v2.getX(), v2.getY(), res);
+		return revSubFunc(v1x, v1y, v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -1691,9 +1691,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] mul(SimpleVec2fR v1, SimpleVec2fR v2, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] mul(Tup2fR v1, Tup2fR v2, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return mul(v1.getX(), v1.getY(), v2.getX(), v2.getY(), res);
+		return mul(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -1709,9 +1709,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] mul(SimpleVec2fR v1, @MinLength(2) float[] v2, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] mul(Tup2fR v1, @MinLength(2) float[] v2, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return mul(v1.getX(), v1.getY(), v2[0], v2[1], res);
+		return mul(v1.getV0(), v1.getV1(), v2[0], v2[1], res);
 	}
 	
 	/**
@@ -1728,9 +1728,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] mul(SimpleVec2fR v1, float v2x, float v2y, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] mul(Tup2fR v1, float v2x, float v2y, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return mul(v1.getX(), v1.getY(), v2x, v2y, res);
+		return mul(v1.getV0(), v1.getV1(), v2x, v2y, res);
 	}
 	
 	/**
@@ -1746,9 +1746,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] mul(@MinLength(2) float[] v1, SimpleVec2fR v2, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] mul(@MinLength(2) float[] v1, Tup2fR v2, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return mul(v1[0], v1[1], v2.getX(), v2.getY(), res);
+		return mul(v1[0], v1[1], v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -1802,9 +1802,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] mul(float v1x, float v1y, SimpleVec2fR v2, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] mul(float v1x, float v1y, Tup2fR v2, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return mul(v1x, v1y, v2.getX(), v2.getY(), res);
+		return mul(v1x, v1y, v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -1864,9 +1864,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T mul(SimpleVec2fR v1, SimpleVec2fR v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T mul(Tup2fR v1, Tup2fR v2, @ExtractionParam T res)
 	{
-		return mul(v1.getX(), v1.getY(), v2.getX(), v2.getY(), res);
+		return mul(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -1884,9 +1884,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T mul(SimpleVec2fR v1, @MinLength(2) float[] v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T mul(Tup2fR v1, @MinLength(2) float[] v2, @ExtractionParam T res)
 	{
-		return mul(v1.getX(), v1.getY(), v2[0], v2[1], res);
+		return mul(v1.getV0(), v1.getV1(), v2[0], v2[1], res);
 	}
 	
 	/**
@@ -1905,9 +1905,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T mul(SimpleVec2fR v1, float v2x, float v2y, @ExtractionParam T res)
+	public static <T extends Tup2fC> T mul(Tup2fR v1, float v2x, float v2y, @ExtractionParam T res)
 	{
-		return mul(v1.getX(), v1.getY(), v2x, v2y, res);
+		return mul(v1.getV0(), v1.getV1(), v2x, v2y, res);
 	}
 	
 	/**
@@ -1925,9 +1925,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T mul(@MinLength(2) float[] v1, SimpleVec2fR v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T mul(@MinLength(2) float[] v1, Tup2fR v2, @ExtractionParam T res)
 	{
-		return mul(v1[0], v1[1], v2.getX(), v2.getY(), res);
+		return mul(v1[0], v1[1], v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -1945,7 +1945,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T mul(@MinLength(2) float[] v1, @MinLength(2) float[] v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T mul(@MinLength(2) float[] v1, @MinLength(2) float[] v2, @ExtractionParam T res)
 	{
 		return mul(v1[0], v1[1], v2[0], v2[1], res);
 	}
@@ -1966,7 +1966,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T mul(@MinLength(2) float[] v1, float v2x, float v2y, @ExtractionParam T res)
+	public static <T extends Tup2fC> T mul(@MinLength(2) float[] v1, float v2x, float v2y, @ExtractionParam T res)
 	{
 		return mul(v1[0], v1[1], v2x, v2y, res);
 	}
@@ -1987,9 +1987,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T mul(float v1x, float v1y, SimpleVec2fR v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T mul(float v1x, float v1y, Tup2fR v2, @ExtractionParam T res)
 	{
-		return mul(v1x, v1y, v2.getX(), v2.getY(), res);
+		return mul(v1x, v1y, v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -2008,7 +2008,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T mul(float v1x, float v1y, @MinLength(2) float[] v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T mul(float v1x, float v1y, @MinLength(2) float[] v2, @ExtractionParam T res)
 	{
 		return mul(v1x, v1y, v2[0], v2[1], res);
 	}
@@ -2030,7 +2030,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T mul(float v1x, float v1y, float v2x, float v2y, @ExtractionParam T res)
+	public static <T extends Tup2fC> T mul(float v1x, float v1y, float v2x, float v2y, @ExtractionParam T res)
 	{
 		res.set(v1x * v2x, v1y * v2y);
 		
@@ -2053,9 +2053,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T mulFunc(SimpleVec2fR v1, SimpleVec2fR v2, FloatFunction2<T> res)
+	public static <T> T mulFunc(Tup2fR v1, Tup2fR v2, FloatFunction2<T> res)
 	{
-		return mulFunc(v1.getX(), v1.getY(), v2.getX(), v2.getY(), res);
+		return mulFunc(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -2074,9 +2074,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T mulFunc(SimpleVec2fR v1, @MinLength(2) float[] v2, FloatFunction2<T> res)
+	public static <T> T mulFunc(Tup2fR v1, @MinLength(2) float[] v2, FloatFunction2<T> res)
 	{
-		return mulFunc(v1.getX(), v1.getY(), v2[0], v2[1], res);
+		return mulFunc(v1.getV0(), v1.getV1(), v2[0], v2[1], res);
 	}
 	
 	/**
@@ -2096,9 +2096,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T mulFunc(SimpleVec2fR v1, float v2x, float v2y, FloatFunction2<T> res)
+	public static <T> T mulFunc(Tup2fR v1, float v2x, float v2y, FloatFunction2<T> res)
 	{
-		return mulFunc(v1.getX(), v1.getY(), v2x, v2y, res);
+		return mulFunc(v1.getV0(), v1.getV1(), v2x, v2y, res);
 	}
 	
 	/**
@@ -2117,9 +2117,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T mulFunc(@MinLength(2) float[] v1, SimpleVec2fR v2, FloatFunction2<T> res)
+	public static <T> T mulFunc(@MinLength(2) float[] v1, Tup2fR v2, FloatFunction2<T> res)
 	{
-		return mulFunc(v1[0], v1[1], v2.getX(), v2.getY(), res);
+		return mulFunc(v1[0], v1[1], v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -2182,9 +2182,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T mulFunc(float v1x, float v1y, SimpleVec2fR v2, FloatFunction2<T> res)
+	public static <T> T mulFunc(float v1x, float v1y, Tup2fR v2, FloatFunction2<T> res)
 	{
-		return mulFunc(v1x, v1y, v2.getX(), v2.getY(), res);
+		return mulFunc(v1x, v1y, v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -2245,9 +2245,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] div(SimpleVec2fR v1, SimpleVec2fR v2, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] div(Tup2fR v1, Tup2fR v2, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return div(v1.getX(), v1.getY(), v2.getX(), v2.getY(), res);
+		return div(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -2263,9 +2263,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] div(SimpleVec2fR v1, @MinLength(2) float[] v2, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] div(Tup2fR v1, @MinLength(2) float[] v2, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return div(v1.getX(), v1.getY(), v2[0], v2[1], res);
+		return div(v1.getV0(), v1.getV1(), v2[0], v2[1], res);
 	}
 	
 	/**
@@ -2282,9 +2282,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] div(SimpleVec2fR v1, float v2x, float v2y, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] div(Tup2fR v1, float v2x, float v2y, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return div(v1.getX(), v1.getY(), v2x, v2y, res);
+		return div(v1.getV0(), v1.getV1(), v2x, v2y, res);
 	}
 	
 	/**
@@ -2300,9 +2300,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] div(@MinLength(2) float[] v1, SimpleVec2fR v2, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] div(@MinLength(2) float[] v1, Tup2fR v2, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return div(v1[0], v1[1], v2.getX(), v2.getY(), res);
+		return div(v1[0], v1[1], v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -2356,9 +2356,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] div(float v1x, float v1y, SimpleVec2fR v2, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] div(float v1x, float v1y, Tup2fR v2, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return div(v1x, v1y, v2.getX(), v2.getY(), res);
+		return div(v1x, v1y, v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -2418,9 +2418,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T div(SimpleVec2fR v1, SimpleVec2fR v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T div(Tup2fR v1, Tup2fR v2, @ExtractionParam T res)
 	{
-		return div(v1.getX(), v1.getY(), v2.getX(), v2.getY(), res);
+		return div(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -2438,9 +2438,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T div(SimpleVec2fR v1, @MinLength(2) float[] v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T div(Tup2fR v1, @MinLength(2) float[] v2, @ExtractionParam T res)
 	{
-		return div(v1.getX(), v1.getY(), v2[0], v2[1], res);
+		return div(v1.getV0(), v1.getV1(), v2[0], v2[1], res);
 	}
 	
 	/**
@@ -2459,9 +2459,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T div(SimpleVec2fR v1, float v2x, float v2y, @ExtractionParam T res)
+	public static <T extends Tup2fC> T div(Tup2fR v1, float v2x, float v2y, @ExtractionParam T res)
 	{
-		return div(v1.getX(), v1.getY(), v2x, v2y, res);
+		return div(v1.getV0(), v1.getV1(), v2x, v2y, res);
 	}
 	
 	/**
@@ -2479,9 +2479,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T div(@MinLength(2) float[] v1, SimpleVec2fR v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T div(@MinLength(2) float[] v1, Tup2fR v2, @ExtractionParam T res)
 	{
-		return div(v1[0], v1[1], v2.getX(), v2.getY(), res);
+		return div(v1[0], v1[1], v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -2499,7 +2499,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T div(@MinLength(2) float[] v1, @MinLength(2) float[] v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T div(@MinLength(2) float[] v1, @MinLength(2) float[] v2, @ExtractionParam T res)
 	{
 		return div(v1[0], v1[1], v2[0], v2[1], res);
 	}
@@ -2520,7 +2520,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T div(@MinLength(2) float[] v1, float v2x, float v2y, @ExtractionParam T res)
+	public static <T extends Tup2fC> T div(@MinLength(2) float[] v1, float v2x, float v2y, @ExtractionParam T res)
 	{
 		return div(v1[0], v1[1], v2x, v2y, res);
 	}
@@ -2541,9 +2541,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T div(float v1x, float v1y, SimpleVec2fR v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T div(float v1x, float v1y, Tup2fR v2, @ExtractionParam T res)
 	{
-		return div(v1x, v1y, v2.getX(), v2.getY(), res);
+		return div(v1x, v1y, v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -2562,7 +2562,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T div(float v1x, float v1y, @MinLength(2) float[] v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T div(float v1x, float v1y, @MinLength(2) float[] v2, @ExtractionParam T res)
 	{
 		return div(v1x, v1y, v2[0], v2[1], res);
 	}
@@ -2584,7 +2584,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T div(float v1x, float v1y, float v2x, float v2y, @ExtractionParam T res)
+	public static <T extends Tup2fC> T div(float v1x, float v1y, float v2x, float v2y, @ExtractionParam T res)
 	{
 		res.set(v1x / v2x, v1y / v2y);
 		
@@ -2607,9 +2607,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T divFunc(SimpleVec2fR v1, SimpleVec2fR v2, FloatFunction2<T> res)
+	public static <T> T divFunc(Tup2fR v1, Tup2fR v2, FloatFunction2<T> res)
 	{
-		return divFunc(v1.getX(), v1.getY(), v2.getX(), v2.getY(), res);
+		return divFunc(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -2628,9 +2628,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T divFunc(SimpleVec2fR v1, @MinLength(2) float[] v2, FloatFunction2<T> res)
+	public static <T> T divFunc(Tup2fR v1, @MinLength(2) float[] v2, FloatFunction2<T> res)
 	{
-		return divFunc(v1.getX(), v1.getY(), v2[0], v2[1], res);
+		return divFunc(v1.getV0(), v1.getV1(), v2[0], v2[1], res);
 	}
 	
 	/**
@@ -2650,9 +2650,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T divFunc(SimpleVec2fR v1, float v2x, float v2y, FloatFunction2<T> res)
+	public static <T> T divFunc(Tup2fR v1, float v2x, float v2y, FloatFunction2<T> res)
 	{
-		return divFunc(v1.getX(), v1.getY(), v2x, v2y, res);
+		return divFunc(v1.getV0(), v1.getV1(), v2x, v2y, res);
 	}
 	
 	/**
@@ -2671,9 +2671,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T divFunc(@MinLength(2) float[] v1, SimpleVec2fR v2, FloatFunction2<T> res)
+	public static <T> T divFunc(@MinLength(2) float[] v1, Tup2fR v2, FloatFunction2<T> res)
 	{
-		return divFunc(v1[0], v1[1], v2.getX(), v2.getY(), res);
+		return divFunc(v1[0], v1[1], v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -2736,9 +2736,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T divFunc(float v1x, float v1y, SimpleVec2fR v2, FloatFunction2<T> res)
+	public static <T> T divFunc(float v1x, float v1y, Tup2fR v2, FloatFunction2<T> res)
 	{
-		return divFunc(v1x, v1y, v2.getX(), v2.getY(), res);
+		return divFunc(v1x, v1y, v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -2799,9 +2799,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] revDiv(SimpleVec2fR v1, SimpleVec2fR v2, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] revDiv(Tup2fR v1, Tup2fR v2, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return revDiv(v1.getX(), v1.getY(), v2.getX(), v2.getY(), res);
+		return revDiv(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -2817,9 +2817,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] revDiv(SimpleVec2fR v1, @MinLength(2) float[] v2, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] revDiv(Tup2fR v1, @MinLength(2) float[] v2, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return revDiv(v1.getX(), v1.getY(), v2[0], v2[1], res);
+		return revDiv(v1.getV0(), v1.getV1(), v2[0], v2[1], res);
 	}
 	
 	/**
@@ -2836,9 +2836,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] revDiv(SimpleVec2fR v1, float v2x, float v2y, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] revDiv(Tup2fR v1, float v2x, float v2y, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return revDiv(v1.getX(), v1.getY(), v2x, v2y, res);
+		return revDiv(v1.getV0(), v1.getV1(), v2x, v2y, res);
 	}
 	
 	/**
@@ -2854,9 +2854,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] revDiv(@MinLength(2) float[] v1, SimpleVec2fR v2, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] revDiv(@MinLength(2) float[] v1, Tup2fR v2, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return revDiv(v1[0], v1[1], v2.getX(), v2.getY(), res);
+		return revDiv(v1[0], v1[1], v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -2910,9 +2910,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] revDiv(float v1x, float v1y, SimpleVec2fR v2, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] revDiv(float v1x, float v1y, Tup2fR v2, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return revDiv(v1x, v1y, v2.getX(), v2.getY(), res);
+		return revDiv(v1x, v1y, v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -2972,9 +2972,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T revDiv(SimpleVec2fR v1, SimpleVec2fR v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T revDiv(Tup2fR v1, Tup2fR v2, @ExtractionParam T res)
 	{
-		return revDiv(v1.getX(), v1.getY(), v2.getX(), v2.getY(), res);
+		return revDiv(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -2992,9 +2992,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T revDiv(SimpleVec2fR v1, @MinLength(2) float[] v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T revDiv(Tup2fR v1, @MinLength(2) float[] v2, @ExtractionParam T res)
 	{
-		return revDiv(v1.getX(), v1.getY(), v2[0], v2[1], res);
+		return revDiv(v1.getV0(), v1.getV1(), v2[0], v2[1], res);
 	}
 	
 	/**
@@ -3013,9 +3013,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T revDiv(SimpleVec2fR v1, float v2x, float v2y, @ExtractionParam T res)
+	public static <T extends Tup2fC> T revDiv(Tup2fR v1, float v2x, float v2y, @ExtractionParam T res)
 	{
-		return revDiv(v1.getX(), v1.getY(), v2x, v2y, res);
+		return revDiv(v1.getV0(), v1.getV1(), v2x, v2y, res);
 	}
 	
 	/**
@@ -3033,9 +3033,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T revDiv(@MinLength(2) float[] v1, SimpleVec2fR v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T revDiv(@MinLength(2) float[] v1, Tup2fR v2, @ExtractionParam T res)
 	{
-		return revDiv(v1[0], v1[1], v2.getX(), v2.getY(), res);
+		return revDiv(v1[0], v1[1], v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -3053,7 +3053,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T revDiv(@MinLength(2) float[] v1, @MinLength(2) float[] v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T revDiv(@MinLength(2) float[] v1, @MinLength(2) float[] v2, @ExtractionParam T res)
 	{
 		return revDiv(v1[0], v1[1], v2[0], v2[1], res);
 	}
@@ -3074,7 +3074,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T revDiv(@MinLength(2) float[] v1, float v2x, float v2y, @ExtractionParam T res)
+	public static <T extends Tup2fC> T revDiv(@MinLength(2) float[] v1, float v2x, float v2y, @ExtractionParam T res)
 	{
 		return revDiv(v1[0], v1[1], v2x, v2y, res);
 	}
@@ -3095,9 +3095,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T revDiv(float v1x, float v1y, SimpleVec2fR v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T revDiv(float v1x, float v1y, Tup2fR v2, @ExtractionParam T res)
 	{
-		return revDiv(v1x, v1y, v2.getX(), v2.getY(), res);
+		return revDiv(v1x, v1y, v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -3116,7 +3116,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T revDiv(float v1x, float v1y, @MinLength(2) float[] v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T revDiv(float v1x, float v1y, @MinLength(2) float[] v2, @ExtractionParam T res)
 	{
 		return revDiv(v1x, v1y, v2[0], v2[1], res);
 	}
@@ -3138,7 +3138,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T revDiv(float v1x, float v1y, float v2x, float v2y, @ExtractionParam T res)
+	public static <T extends Tup2fC> T revDiv(float v1x, float v1y, float v2x, float v2y, @ExtractionParam T res)
 	{
 		res.set(v2x / v1x, v2y / v1y);
 		
@@ -3161,9 +3161,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T revDivFunc(SimpleVec2fR v1, SimpleVec2fR v2, FloatFunction2<T> res)
+	public static <T> T revDivFunc(Tup2fR v1, Tup2fR v2, FloatFunction2<T> res)
 	{
-		return revDivFunc(v1.getX(), v1.getY(), v2.getX(), v2.getY(), res);
+		return revDivFunc(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -3182,9 +3182,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T revDivFunc(SimpleVec2fR v1, @MinLength(2) float[] v2, FloatFunction2<T> res)
+	public static <T> T revDivFunc(Tup2fR v1, @MinLength(2) float[] v2, FloatFunction2<T> res)
 	{
-		return revDivFunc(v1.getX(), v1.getY(), v2[0], v2[1], res);
+		return revDivFunc(v1.getV0(), v1.getV1(), v2[0], v2[1], res);
 	}
 	
 	/**
@@ -3204,9 +3204,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T revDivFunc(SimpleVec2fR v1, float v2x, float v2y, FloatFunction2<T> res)
+	public static <T> T revDivFunc(Tup2fR v1, float v2x, float v2y, FloatFunction2<T> res)
 	{
-		return revDivFunc(v1.getX(), v1.getY(), v2x, v2y, res);
+		return revDivFunc(v1.getV0(), v1.getV1(), v2x, v2y, res);
 	}
 	
 	/**
@@ -3225,9 +3225,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T revDivFunc(@MinLength(2) float[] v1, SimpleVec2fR v2, FloatFunction2<T> res)
+	public static <T> T revDivFunc(@MinLength(2) float[] v1, Tup2fR v2, FloatFunction2<T> res)
 	{
-		return revDivFunc(v1[0], v1[1], v2.getX(), v2.getY(), res);
+		return revDivFunc(v1[0], v1[1], v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -3290,9 +3290,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T revDivFunc(float v1x, float v1y, SimpleVec2fR v2, FloatFunction2<T> res)
+	public static <T> T revDivFunc(float v1x, float v1y, Tup2fR v2, FloatFunction2<T> res)
 	{
-		return revDivFunc(v1x, v1y, v2.getX(), v2.getY(), res);
+		return revDivFunc(v1x, v1y, v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -3362,9 +3362,64 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] fma(SimpleVec2fR v1, SimpleVec2fR v2, SimpleVec2fR v3, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] fma(Tup2fR v1, Tup2fR v2, Tup2fR v3, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return fma(v1.getX(), v1.getY(), v2.getX(), v2.getY(), v3.getX(), v3.getY(), res);
+		return fma(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), v3.getV0(), v3.getV1(), res);
+	}
+	
+	/**
+	 * Multiplies the given vector {@code (v1)} with the given vector {@code (v2)}, adds the given vector {@code (v3)}
+	 * to the product result and saves the result in the given extraction parameter.
+	 * 
+	 * <p>
+	 * This performs a {@link Math#fma(float, float, float)} style fused multiplication and addition.
+	 * The actual way of calculation depends on the implementation of the used {@link MathProvider}.
+	 * 
+	 * <p>
+	 * Here the explicitly given {@link MathProvider} is used for calculation.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code  v1 * v2 + v3}
+	 * 
+	 * @param v1 The first multiplicant vector.
+	 * @param v2 The second multiplicant vector.
+	 * @param v3 The addend vector.
+	 * @param mathProvider The provider of fundamental math functions that should be used for calculation.
+	 * @param res The extraction parameter for the result as an array with at least two entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	public static float[] fma(Tup2fR v1, Tup2fR v2, Tup2fR v3, MathProvider mathProvider, @ExtractionParam @MinLength(2) float[] res)
+	{
+		return fma(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), v3.getV0(), v3.getV1(), res);
+	}
+	
+	/**
+	 * Multiplies the given vector {@code (v1)} with the given vector {@code (v2)}, adds the given vector {@code (v3[0], v3[1])}
+	 * to the product result and saves the result in the given extraction parameter.
+	 * 
+	 * <p>
+	 * This performs a {@link Math#fma(float, float, float)} style fused multiplication and addition.
+	 * The actual way of calculation depends on the implementation of the used {@link MathProvider}.
+	 * 
+	 * <p>
+	 * Here the default {@link MathProvider} from {@link BarghosMath#PROVIDER} is used for calculation.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v1 * v2 + (v3[0], v3[1])}
+	 * 
+	 * @param v1 The first multiplicant vector.
+	 * @param v2 The second multiplicant vector.
+	 * @param v3 The addend vector as an array with at least two entries.
+	 * @param res The extraction parameter for the result as an array with at least two entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	public static float[] fma(Tup2fR v1, Tup2fR v2, @MinLength(2) float[] v3, @ExtractionParam @MinLength(2) float[] res)
+	{
+		return fma(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), v3[0], v3[1], res);
 	}
 	
 	/**
@@ -3390,9 +3445,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] fma(SimpleVec2fR v1, SimpleVec2fR v2, @MinLength(2) float[] v3, MathProvider mathProvider, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] fma(Tup2fR v1, Tup2fR v2, @MinLength(2) float[] v3, MathProvider mathProvider, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return fma(v1.getX(), v1.getY(), v2.getX(), v2.getY(), v3[0], v3[1], mathProvider, res);
+		return fma(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), v3[0], v3[1], mathProvider, res);
 	}
 	
 	/**
@@ -3418,9 +3473,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] fma(SimpleVec2fR v1, SimpleVec2fR v2, float v3x, float v3y, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] fma(Tup2fR v1, Tup2fR v2, float v3x, float v3y, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return fma(v1.getX(), v1.getY(), v2.getX(), v2.getY(), v3x, v3y, res);
+		return fma(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), v3x, v3y, res);
 	}
 	
 	/**
@@ -3447,9 +3502,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] fma(SimpleVec2fR v1, SimpleVec2fR v2, float v3x, float v3y, MathProvider mathProvider, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] fma(Tup2fR v1, Tup2fR v2, float v3x, float v3y, MathProvider mathProvider, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return fma(v1.getX(), v1.getY(), v2.getX(), v2.getY(), v3x, v3y, mathProvider, res);
+		return fma(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), v3x, v3y, mathProvider, res);
 	}
 	
 	/**
@@ -3474,9 +3529,64 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] fma(SimpleVec2fR v1, @MinLength(2) float[] v2, SimpleVec2fR v3, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] fma(Tup2fR v1, @MinLength(2) float[] v2, Tup2fR v3, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return fma(v1.getX(), v1.getY(), v2[0], v2[1], v3.getX(), v3.getY(), res);
+		return fma(v1.getV0(), v1.getV1(), v2[0], v2[1], v3.getV0(), v3.getV1(), res);
+	}
+	
+	/**
+	 * Multiplies the given vector {@code (v1)} with the given vector {@code (v2[0], v2[1])}, adds the given vector {@code (v3)}
+	 * to the product result and saves the result in the given extraction parameter.
+	 * 
+	 * <p>
+	 * This performs a {@link Math#fma(float, float, float)} style fused multiplication and addition.
+	 * The actual way of calculation depends on the implementation of the used {@link MathProvider}.
+	 * 
+	 * <p>
+	 * Here the explicitly given {@link MathProvider} is used for calculation.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v1 * (v2[0], v2[1]) + v3}
+	 * 
+	 * @param v1 The first multiplicant vector.
+	 * @param v2 The second multiplicant vector as an array with at least two entries.
+	 * @param v3 The addend vector.
+	 * @param mathProvider The provider of fundamental math functions that should be used for calculation.
+	 * @param res The extraction parameter for the result as an array with at least two entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	public static float[] fma(Tup2fR v1, @MinLength(2) float[] v2, Tup2fR v3, MathProvider mathProvider, @ExtractionParam @MinLength(2) float[] res)
+	{
+		return fma(v1.getV0(), v1.getV1(), v2[0], v2[1], v3.getV0(), v3.getV1(), mathProvider, res);
+	}
+	
+	/**
+	 * Multiplies the given vector {@code (v1)} with the given vector {@code (v2[0], v2[1])}, adds the given vector {@code (v3[0], v3[1])}
+	 * to the product result and saves the result in the given extraction parameter.
+	 * 
+	 * <p>
+	 * This performs a {@link Math#fma(float, float, float)} style fused multiplication and addition.
+	 * The actual way of calculation depends on the implementation of the used {@link MathProvider}.
+	 * 
+	 * <p>
+	 * Here the default {@link MathProvider} from {@link BarghosMath#PROVIDER} is used for calculation.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code v1 * (v2[0], v2[1]) + (v3[0], v3[1])}
+	 * 
+	 * @param v1 The first multiplicant vector.
+	 * @param v2 The second multiplicant vector as an array with at least two entries.
+	 * @param v3 The addend vector as an array with at least two entries.
+	 * @param res The extraction parameter for the result as an array with at least two entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	public static float[] fma(Tup2fR v1, @MinLength(2) float[] v2, @MinLength(2) float[] v3, @ExtractionParam @MinLength(2) float[] res)
+	{
+		return fma(v1.getV0(), v1.getV1(), v2[0], v2[1], v3[0], v3[1], res);
 	}
 	
 	/**
@@ -3502,9 +3612,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] fma(SimpleVec2fR v1, @MinLength(2) float[] v2, @MinLength(2) float[] v3, MathProvider mathProvider, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] fma(Tup2fR v1, @MinLength(2) float[] v2, @MinLength(2) float[] v3, MathProvider mathProvider, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return fma(v1.getX(), v1.getY(), v2[0], v2[1], v3[0], v3[1], mathProvider, res);
+		return fma(v1.getV0(), v1.getV1(), v2[0], v2[1], v3[0], v3[1], mathProvider, res);
 	}
 	
 	/**
@@ -3530,9 +3640,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] fma(SimpleVec2fR v1, @MinLength(2) float[] v2, float v3x, float v3y, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] fma(Tup2fR v1, @MinLength(2) float[] v2, float v3x, float v3y, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return fma(v1.getX(), v1.getY(), v2[0], v2[1], v3x, v3y, res);
+		return fma(v1.getV0(), v1.getV1(), v2[0], v2[1], v3x, v3y, res);
 	}
 	
 	/**
@@ -3559,9 +3669,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] fma(SimpleVec2fR v1, @MinLength(2) float[] v2, float v3x, float v3y, MathProvider mathProvider, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] fma(Tup2fR v1, @MinLength(2) float[] v2, float v3x, float v3y, MathProvider mathProvider, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return fma(v1.getX(), v1.getY(), v2[0], v2[1], v3x, v3y, mathProvider, res);
+		return fma(v1.getV0(), v1.getV1(), v2[0], v2[1], v3x, v3y, mathProvider, res);
 	}
 	
 	/**
@@ -3587,9 +3697,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] fma(SimpleVec2fR v1, float v2x, float v2y, SimpleVec2fR v3, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] fma(Tup2fR v1, float v2x, float v2y, Tup2fR v3, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return fma(v1.getX(), v1.getY(), v2x, v2y, v3.getX(), v3.getY(), res);
+		return fma(v1.getV0(), v1.getV1(), v2x, v2y, v3.getV0(), v3.getV1(), res);
 	}
 	
 	/**
@@ -3616,9 +3726,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] fma(SimpleVec2fR v1, float v2x, float v2y, SimpleVec2fR v3, MathProvider mathProvider, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] fma(Tup2fR v1, float v2x, float v2y, Tup2fR v3, MathProvider mathProvider, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return fma(v1.getX(), v1.getY(), v2x, v2y, v3.getX(), v3.getY(), mathProvider, res);
+		return fma(v1.getV0(), v1.getV1(), v2x, v2y, v3.getV0(), v3.getV1(), mathProvider, res);
 	}
 	
 	/**
@@ -3644,9 +3754,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] fma(SimpleVec2fR v1, float v2x, float v2y, @MinLength(2) float[] v3, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] fma(Tup2fR v1, float v2x, float v2y, @MinLength(2) float[] v3, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return fma(v1.getX(), v1.getY(), v2x, v2y, v3[0], v3[1], res);
+		return fma(v1.getV0(), v1.getV1(), v2x, v2y, v3[0], v3[1], res);
 	}
 	
 	/**
@@ -3673,9 +3783,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] fma(SimpleVec2fR v1, float v2x, float v2y, @MinLength(2) float[] v3, MathProvider mathProvider, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] fma(Tup2fR v1, float v2x, float v2y, @MinLength(2) float[] v3, MathProvider mathProvider, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return fma(v1.getX(), v1.getY(), v2x, v2y, v3[0], v3[1], mathProvider, res);
+		return fma(v1.getV0(), v1.getV1(), v2x, v2y, v3[0], v3[1], mathProvider, res);
 	}
 	
 	/**
@@ -3702,9 +3812,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] fma(SimpleVec2fR v1, float v2x, float v2y, float v3x, float v3y, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] fma(Tup2fR v1, float v2x, float v2y, float v3x, float v3y, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return fma(v1.getX(), v1.getY(), v2x, v2y, v3x, v3y, res);
+		return fma(v1.getV0(), v1.getV1(), v2x, v2y, v3x, v3y, res);
 	}
 	
 	/**
@@ -3732,9 +3842,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] fma(SimpleVec2fR v1, float v2x, float v2y, float v3x, float v3y, MathProvider mathProvider, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] fma(Tup2fR v1, float v2x, float v2y, float v3x, float v3y, MathProvider mathProvider, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return fma(v1.getX(), v1.getY(), v2x, v2y, v3x, v3y, mathProvider, res);
+		return fma(v1.getV0(), v1.getV1(), v2x, v2y, v3x, v3y, mathProvider, res);
 	}
 	
 	/**
@@ -3759,9 +3869,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] fma(@MinLength(2) float[] v1, SimpleVec2fR v2, SimpleVec2fR v3, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] fma(@MinLength(2) float[] v1, Tup2fR v2, Tup2fR v3, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return fma(v1[0], v1[1], v2.getX(), v2.getY(), v3.getX(), v3.getY(), res);
+		return fma(v1[0], v1[1], v2.getV0(), v2.getV1(), v3.getV0(), v3.getV1(), res);
 	}
 	
 	/**
@@ -3787,9 +3897,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] fma(@MinLength(2) float[] v1, SimpleVec2fR v2, SimpleVec2fR v3, MathProvider mathProvider, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] fma(@MinLength(2) float[] v1, Tup2fR v2, Tup2fR v3, MathProvider mathProvider, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return fma(v1[0], v1[1], v2.getX(), v2.getY(), v3.getX(), v3.getY(), mathProvider, res);
+		return fma(v1[0], v1[1], v2.getV0(), v2.getV1(), v3.getV0(), v3.getV1(), mathProvider, res);
 	}
 	
 	/**
@@ -3814,9 +3924,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] fma(@MinLength(2) float[] v1, SimpleVec2fR v2, @MinLength(2) float[] v3, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] fma(@MinLength(2) float[] v1, Tup2fR v2, @MinLength(2) float[] v3, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return fma(v1[0], v1[1], v2.getX(), v2.getY(), v3[0], v3[1], res);
+		return fma(v1[0], v1[1], v2.getV0(), v2.getV1(), v3[0], v3[1], res);
 	}
 	
 	/**
@@ -3842,9 +3952,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] fma(@MinLength(2) float[] v1, SimpleVec2fR v2, @MinLength(2) float[] v3, MathProvider mathProvider, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] fma(@MinLength(2) float[] v1, Tup2fR v2, @MinLength(2) float[] v3, MathProvider mathProvider, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return fma(v1[0], v1[1], v2.getX(), v2.getY(), v3[0], v3[1], mathProvider, res);
+		return fma(v1[0], v1[1], v2.getV0(), v2.getV1(), v3[0], v3[1], mathProvider, res);
 	}
 	
 	/**
@@ -3870,9 +3980,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] fma(@MinLength(2) float[] v1, SimpleVec2fR v2, float v3x, float v3y, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] fma(@MinLength(2) float[] v1, Tup2fR v2, float v3x, float v3y, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return fma(v1[0], v1[1], v2.getX(), v2.getY(), v3x, v3y, res);
+		return fma(v1[0], v1[1], v2.getV0(), v2.getV1(), v3x, v3y, res);
 	}
 	
 	/**
@@ -3899,9 +4009,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] fma(@MinLength(2) float[] v1, SimpleVec2fR v2, float v3x, float v3y, MathProvider mathProvider, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] fma(@MinLength(2) float[] v1, Tup2fR v2, float v3x, float v3y, MathProvider mathProvider, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return fma(v1[0], v1[1], v2.getX(), v2.getY(), v3x, v3y, mathProvider, res);
+		return fma(v1[0], v1[1], v2.getV0(), v2.getV1(), v3x, v3y, mathProvider, res);
 	}
 	
 	/**
@@ -3926,9 +4036,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] fma(@MinLength(2) float[] v1, @MinLength(2) float[] v2, SimpleVec2fR v3, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] fma(@MinLength(2) float[] v1, @MinLength(2) float[] v2, Tup2fR v3, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return fma(v1[0], v1[1], v2[0], v2[1], v3.getX(), v3.getY(), res);
+		return fma(v1[0], v1[1], v2[0], v2[1], v3.getV0(), v3.getV1(), res);
 	}
 	
 	/**
@@ -3954,9 +4064,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] fma(@MinLength(2) float[] v1, @MinLength(2) float[] v2, SimpleVec2fR v3, MathProvider mathProvider, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] fma(@MinLength(2) float[] v1, @MinLength(2) float[] v2, Tup2fR v3, MathProvider mathProvider, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return fma(v1[0], v1[1], v2[0], v2[1], v3.getX(), v3.getY(), mathProvider, res);
+		return fma(v1[0], v1[1], v2[0], v2[1], v3.getV0(), v3.getV1(), mathProvider, res);
 	}
 	
 	/**
@@ -4094,9 +4204,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] fma(@MinLength(2) float[] v1, float v2x, float v2y, SimpleVec2fR v3, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] fma(@MinLength(2) float[] v1, float v2x, float v2y, Tup2fR v3, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return fma(v1[0], v1[1], v2x, v2y, v3.getX(), v3.getY(), res);
+		return fma(v1[0], v1[1], v2x, v2y, v3.getV0(), v3.getV1(), res);
 	}
 	
 	/**
@@ -4123,9 +4233,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] fma(@MinLength(2) float[] v1, float v2x, float v2y, SimpleVec2fR v3, MathProvider mathProvider, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] fma(@MinLength(2) float[] v1, float v2x, float v2y, Tup2fR v3, MathProvider mathProvider, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return fma(v1[0], v1[1], v2x, v2y, v3.getX(), v3.getY(), mathProvider, res);
+		return fma(v1[0], v1[1], v2x, v2y, v3.getV0(), v3.getV1(), mathProvider, res);
 	}
 	
 	/**
@@ -4267,9 +4377,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] fma(float v1x, float v1y,  SimpleVec2fR v2, SimpleVec2fR v3, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] fma(float v1x, float v1y, Tup2fR v2, Tup2fR v3, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return fma(v1x, v1y, v2.getX(), v2.getY(), v3.getX(), v3.getY(), res);
+		return fma(v1x, v1y, v2.getV0(), v2.getV1(), v3.getV0(), v3.getV1(), res);
 	}
 	
 	/**
@@ -4296,9 +4406,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] fma(float v1x, float v1y,  SimpleVec2fR v2, SimpleVec2fR v3, MathProvider mathProvider, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] fma(float v1x, float v1y, Tup2fR v2, Tup2fR v3, MathProvider mathProvider, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return fma(v1x, v1y, v2.getX(), v2.getY(), v3.getX(), v3.getY(), mathProvider, res);
+		return fma(v1x, v1y, v2.getV0(), v2.getV1(), v3.getV0(), v3.getV1(), mathProvider, res);
 	}
 	
 	/**
@@ -4324,9 +4434,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] fma(float v1x, float v1y, SimpleVec2fR v2, @MinLength(2) float[] v3, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] fma(float v1x, float v1y, Tup2fR v2, @MinLength(2) float[] v3, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return fma(v1x, v1y, v2.getX(), v2.getY(), v3[0], v3[1], res);
+		return fma(v1x, v1y, v2.getV0(), v2.getV1(), v3[0], v3[1], res);
 	}
 	
 	/**
@@ -4353,9 +4463,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] fma(float v1x, float v1y, SimpleVec2fR v2, @MinLength(2) float[] v3, MathProvider mathProvider, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] fma(float v1x, float v1y, Tup2fR v2, @MinLength(2) float[] v3, MathProvider mathProvider, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return fma(v1x, v1y, v2.getX(), v2.getY(), v3[0], v3[1], mathProvider, res);
+		return fma(v1x, v1y, v2.getV0(), v2.getV1(), v3[0], v3[1], mathProvider, res);
 	}
 	
 	/**
@@ -4382,9 +4492,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] fma(float v1x, float v1y, SimpleVec2fR v2, float v3x, float v3y, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] fma(float v1x, float v1y, Tup2fR v2, float v3x, float v3y, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return fma(v1x, v1y, v2.getX(), v2.getY(), v3x, v3y, res);
+		return fma(v1x, v1y, v2.getV0(), v2.getV1(), v3x, v3y, res);
 	}
 	
 	/**
@@ -4412,9 +4522,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] fma(float v1x, float v1y, SimpleVec2fR v2, float v3x, float v3y, MathProvider mathProvider, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] fma(float v1x, float v1y, Tup2fR v2, float v3x, float v3y, MathProvider mathProvider, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return fma(v1x, v1y, v2.getX(), v2.getY(), v3x, v3y, mathProvider, res);
+		return fma(v1x, v1y, v2.getV0(), v2.getV1(), v3x, v3y, mathProvider, res);
 	}
 	
 	/**
@@ -4440,9 +4550,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] fma(float v1x, float v1y, @MinLength(2) float[] v2, SimpleVec2fR v3, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] fma(float v1x, float v1y, @MinLength(2) float[] v2, Tup2fR v3, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return fma(v1x, v1y, v2[0], v2[1], v3.getX(), v3.getY(), res);
+		return fma(v1x, v1y, v2[0], v2[1], v3.getV0(), v3.getV1(), res);
 	}
 	
 	/**
@@ -4469,9 +4579,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] fma(float v1x, float v1y, @MinLength(2) float[] v2, SimpleVec2fR v3, MathProvider mathProvider, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] fma(float v1x, float v1y, @MinLength(2) float[] v2, Tup2fR v3, MathProvider mathProvider, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return fma(v1x, v1y, v2[0], v2[1], v3.getX(), v3.getY(), mathProvider, res);
+		return fma(v1x, v1y, v2[0], v2[1], v3.getV0(), v3.getV1(), mathProvider, res);
 	}
 	
 	/**
@@ -4614,9 +4724,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] fma(float v1x, float v1y, float v2x, float v2y, SimpleVec2fR v3, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] fma(float v1x, float v1y, float v2x, float v2y, Tup2fR v3, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return fma(v1x, v1y, v2x, v2y, v3.getX(), v3.getY(), res);
+		return fma(v1x, v1y, v2x, v2y, v3.getV0(), v3.getV1(), res);
 	}
 	
 	/**
@@ -4644,9 +4754,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] fma(float v1x, float v1y, float v2x, float v2y, SimpleVec2fR v3, MathProvider mathProvider, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] fma(float v1x, float v1y, float v2x, float v2y, Tup2fR v3, MathProvider mathProvider, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return fma(v1x, v1y, v2x, v2y, v3.getX(), v3.getY(), mathProvider, res);
+		return fma(v1x, v1y, v2x, v2y, v3.getV0(), v3.getV1(), mathProvider, res);
 	}
 	
 	/**
@@ -4796,9 +4906,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(SimpleVec2fR v1, SimpleVec2fR v2, SimpleVec2fR v3, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(Tup2fR v1, Tup2fR v2, Tup2fR v3, @ExtractionParam T res)
 	{
-		return fma(v1.getX(), v1.getY(), v2.getX(), v2.getY(), v3.getX(), v3.getY(), res);
+		return fma(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), v3.getV0(), v3.getV1(), res);
 	}
 	
 	/**
@@ -4826,9 +4936,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(SimpleVec2fR v1, SimpleVec2fR v2, SimpleVec2fR v3, MathProvider mathProvider, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(Tup2fR v1, Tup2fR v2, Tup2fR v3, MathProvider mathProvider, @ExtractionParam T res)
 	{
-		return fma(v1.getX(), v1.getY(), v2.getX(), v2.getY(), v3.getX(), v3.getY(), res);
+		return fma(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), v3.getV0(), v3.getV1(), res);
 	}
 	
 	/**
@@ -4855,9 +4965,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(SimpleVec2fR v1, SimpleVec2fR v2, @MinLength(2) float[] v3, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(Tup2fR v1, Tup2fR v2, @MinLength(2) float[] v3, @ExtractionParam T res)
 	{
-		return fma(v1.getX(), v1.getY(), v2.getX(), v2.getY(), v3[0], v3[1], res);
+		return fma(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), v3[0], v3[1], res);
 	}
 	
 	/**
@@ -4885,9 +4995,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(SimpleVec2fR v1, SimpleVec2fR v2, @MinLength(2) float[] v3, MathProvider mathProvider, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(Tup2fR v1, Tup2fR v2, @MinLength(2) float[] v3, MathProvider mathProvider, @ExtractionParam T res)
 	{
-		return fma(v1.getX(), v1.getY(), v2.getX(), v2.getY(), v3[0], v3[1], res);
+		return fma(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), v3[0], v3[1], res);
 	}
 	
 	/**
@@ -4915,9 +5025,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(SimpleVec2fR v1, SimpleVec2fR v2, float v3x, float v3y, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(Tup2fR v1, Tup2fR v2, float v3x, float v3y, @ExtractionParam T res)
 	{
-		return fma(v1.getX(), v1.getY(), v2.getX(), v2.getY(), v3x, v3y, res);
+		return fma(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), v3x, v3y, res);
 	}
 	
 	/**
@@ -4946,9 +5056,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(SimpleVec2fR v1, SimpleVec2fR v2, float v3x, float v3y, MathProvider mathProvider, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(Tup2fR v1, Tup2fR v2, float v3x, float v3y, MathProvider mathProvider, @ExtractionParam T res)
 	{
-		return fma(v1.getX(), v1.getY(), v2.getX(), v2.getY(), v3x, v3y, res);
+		return fma(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), v3x, v3y, res);
 	}
 	
 	/**
@@ -4975,9 +5085,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(SimpleVec2fR v1, @MinLength(2) float[] v2, SimpleVec2fR v3, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(Tup2fR v1, @MinLength(2) float[] v2, Tup2fR v3, @ExtractionParam T res)
 	{
-		return fma(v1.getX(), v1.getY(), v2[0], v2[1], v3.getX(), v3.getY(), res);
+		return fma(v1.getV0(), v1.getV1(), v2[0], v2[1], v3.getV0(), v3.getV1(), res);
 	}
 	
 	/**
@@ -5005,9 +5115,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(SimpleVec2fR v1, @MinLength(2) float[] v2, SimpleVec2fR v3, MathProvider mathProvider, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(Tup2fR v1, @MinLength(2) float[] v2, Tup2fR v3, MathProvider mathProvider, @ExtractionParam T res)
 	{
-		return fma(v1.getX(), v1.getY(), v2[0], v2[1], v3.getX(), v3.getY(), res);
+		return fma(v1.getV0(), v1.getV1(), v2[0], v2[1], v3.getV0(), v3.getV1(), res);
 	}
 	
 	/**
@@ -5034,9 +5144,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(SimpleVec2fR v1, @MinLength(2) float[] v2, @MinLength(2) float[] v3, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(Tup2fR v1, @MinLength(2) float[] v2, @MinLength(2) float[] v3, @ExtractionParam T res)
 	{
-		return fma(v1.getX(), v1.getY(), v2[0], v2[1], v3[0], v3[1], res);
+		return fma(v1.getV0(), v1.getV1(), v2[0], v2[1], v3[0], v3[1], res);
 	}
 	
 	/**
@@ -5064,9 +5174,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(SimpleVec2fR v1, @MinLength(2) float[] v2, @MinLength(2) float[] v3, MathProvider mathProvider, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(Tup2fR v1, @MinLength(2) float[] v2, @MinLength(2) float[] v3, MathProvider mathProvider, @ExtractionParam T res)
 	{
-		return fma(v1.getX(), v1.getY(), v2[0], v2[1], v3[0], v3[1], mathProvider, res);
+		return fma(v1.getV0(), v1.getV1(), v2[0], v2[1], v3[0], v3[1], mathProvider, res);
 	}
 	
 	/**
@@ -5094,9 +5204,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(SimpleVec2fR v1, @MinLength(2) float[] v2, float v3x, float v3y, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(Tup2fR v1, @MinLength(2) float[] v2, float v3x, float v3y, @ExtractionParam T res)
 	{
-		return fma(v1.getX(), v1.getY(), v2[0], v2[1], v3x, v3y, res);
+		return fma(v1.getV0(), v1.getV1(), v2[0], v2[1], v3x, v3y, res);
 	}
 	
 	/**
@@ -5125,9 +5235,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(SimpleVec2fR v1, @MinLength(2) float[] v2, float v3x, float v3y, MathProvider mathProvider, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(Tup2fR v1, @MinLength(2) float[] v2, float v3x, float v3y, MathProvider mathProvider, @ExtractionParam T res)
 	{
-		return fma(v1.getX(), v1.getY(), v2[0], v2[1], v3x, v3y, mathProvider, res);
+		return fma(v1.getV0(), v1.getV1(), v2[0], v2[1], v3x, v3y, mathProvider, res);
 	}
 	
 	/**
@@ -5155,9 +5265,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(SimpleVec2fR v1, float v2x, float v2y, SimpleVec2fR v3, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(Tup2fR v1, float v2x, float v2y, Tup2fR v3, @ExtractionParam T res)
 	{
-		return fma(v1.getX(), v1.getY(), v2x, v2y, v3.getX(), v3.getY(), res);
+		return fma(v1.getV0(), v1.getV1(), v2x, v2y, v3.getV0(), v3.getV1(), res);
 	}
 	
 	/**
@@ -5186,9 +5296,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(SimpleVec2fR v1, float v2x, float v2y, SimpleVec2fR v3, MathProvider mathProvider, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(Tup2fR v1, float v2x, float v2y, Tup2fR v3, MathProvider mathProvider, @ExtractionParam T res)
 	{
-		return fma(v1.getX(), v1.getY(), v2x, v2y, v3.getX(), v3.getY(), mathProvider, res);
+		return fma(v1.getV0(), v1.getV1(), v2x, v2y, v3.getV0(), v3.getV1(), mathProvider, res);
 	}
 	
 	/**
@@ -5216,9 +5326,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(SimpleVec2fR v1, float v2x, float v2y, @MinLength(2) float[] v3, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(Tup2fR v1, float v2x, float v2y, @MinLength(2) float[] v3, @ExtractionParam T res)
 	{
-		return fma(v1.getX(), v1.getY(), v2x, v2y, v3[0], v3[1], res);
+		return fma(v1.getV0(), v1.getV1(), v2x, v2y, v3[0], v3[1], res);
 	}
 	
 	/**
@@ -5247,9 +5357,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(SimpleVec2fR v1, float v2x, float v2y, @MinLength(2) float[] v3, MathProvider mathProvider, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(Tup2fR v1, float v2x, float v2y, @MinLength(2) float[] v3, MathProvider mathProvider, @ExtractionParam T res)
 	{
-		return fma(v1.getX(), v1.getY(), v2x, v2y, v3[0], v3[1], mathProvider, res);
+		return fma(v1.getV0(), v1.getV1(), v2x, v2y, v3[0], v3[1], mathProvider, res);
 	}
 	
 	/**
@@ -5278,9 +5388,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(SimpleVec2fR v1, float v2x, float v2y, float v3x, float v3y, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(Tup2fR v1, float v2x, float v2y, float v3x, float v3y, @ExtractionParam T res)
 	{
-		return fma(v1.getX(), v1.getY(), v2x, v2y, v3x, v3y, res);
+		return fma(v1.getV0(), v1.getV1(), v2x, v2y, v3x, v3y, res);
 	}
 	
 	/**
@@ -5310,9 +5420,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(SimpleVec2fR v1, float v2x, float v2y, float v3x, float v3y, MathProvider mathProvider, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(Tup2fR v1, float v2x, float v2y, float v3x, float v3y, MathProvider mathProvider, @ExtractionParam T res)
 	{
-		return fma(v1.getX(), v1.getY(), v2x, v2y, v3x, v3y, res);
+		return fma(v1.getV0(), v1.getV1(), v2x, v2y, v3x, v3y, res);
 	}
 	
 	/**
@@ -5339,9 +5449,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(@MinLength(2) float[] v1, SimpleVec2fR v2, SimpleVec2fR v3, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(@MinLength(2) float[] v1, Tup2fR v2, Tup2fR v3, @ExtractionParam T res)
 	{
-		return fma(v1[0], v1[1], v2.getX(), v2.getY(), v3.getX(), v3.getY(), res);
+		return fma(v1[0], v1[1], v2.getV0(), v2.getV1(), v3.getV0(), v3.getV1(), res);
 	}
 	
 	/**
@@ -5369,9 +5479,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(@MinLength(2) float[] v1, SimpleVec2fR v2, SimpleVec2fR v3, MathProvider mathProvider, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(@MinLength(2) float[] v1, Tup2fR v2, Tup2fR v3, MathProvider mathProvider, @ExtractionParam T res)
 	{
-		return fma(v1[0], v1[1], v2.getX(), v2.getY(), v3.getX(), v3.getY(), res);
+		return fma(v1[0], v1[1], v2.getV0(), v2.getV1(), v3.getV0(), v3.getV1(), res);
 	}
 	
 	/**
@@ -5398,9 +5508,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(@MinLength(2) float[] v1, SimpleVec2fR v2, @MinLength(2) float[] v3, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(@MinLength(2) float[] v1, Tup2fR v2, @MinLength(2) float[] v3, @ExtractionParam T res)
 	{
-		return fma(v1[0], v1[1], v2.getX(), v2.getY(), v3[0], v3[1], res);
+		return fma(v1[0], v1[1], v2.getV0(), v2.getV1(), v3[0], v3[1], res);
 	}
 	
 	/**
@@ -5428,9 +5538,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(@MinLength(2) float[] v1, SimpleVec2fR v2, @MinLength(2) float[] v3, MathProvider mathProvider, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(@MinLength(2) float[] v1, Tup2fR v2, @MinLength(2) float[] v3, MathProvider mathProvider, @ExtractionParam T res)
 	{
-		return fma(v1[0], v1[1], v2.getX(), v2.getY(), v3[0], v3[1], mathProvider, res);
+		return fma(v1[0], v1[1], v2.getV0(), v2.getV1(), v3[0], v3[1], mathProvider, res);
 	}
 	
 	/**
@@ -5458,9 +5568,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(@MinLength(2) float[] v1, SimpleVec2fR v2, float v3x, float v3y, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(@MinLength(2) float[] v1, Tup2fR v2, float v3x, float v3y, @ExtractionParam T res)
 	{
-		return fma(v1[0], v1[1], v2.getX(), v2.getY(), v3x, v3y, res);
+		return fma(v1[0], v1[1], v2.getV0(), v2.getV1(), v3x, v3y, res);
 	}
 	
 	/**
@@ -5489,9 +5599,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(@MinLength(2) float[] v1, SimpleVec2fR v2, float v3x, float v3y, MathProvider mathProvider, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(@MinLength(2) float[] v1, Tup2fR v2, float v3x, float v3y, MathProvider mathProvider, @ExtractionParam T res)
 	{
-		return fma(v1[0], v1[1], v2.getX(), v2.getY(), v3x, v3y, mathProvider, res);
+		return fma(v1[0], v1[1], v2.getV0(), v2.getV1(), v3x, v3y, mathProvider, res);
 	}
 	
 	/**
@@ -5518,9 +5628,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(@MinLength(2) float[] v1, @MinLength(2) float[] v2, SimpleVec2fR v3, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(@MinLength(2) float[] v1, @MinLength(2) float[] v2, Tup2fR v3, @ExtractionParam T res)
 	{
-		return fma(v1[0], v1[1], v2[0], v2[1], v3.getX(), v3.getY(), res);
+		return fma(v1[0], v1[1], v2[0], v2[1], v3.getV0(), v3.getV1(), res);
 	}
 	
 	/**
@@ -5548,9 +5658,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(@MinLength(2) float[] v1, @MinLength(2) float[] v2, SimpleVec2fR v3, MathProvider mathProvider, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(@MinLength(2) float[] v1, @MinLength(2) float[] v2, Tup2fR v3, MathProvider mathProvider, @ExtractionParam T res)
 	{
-		return fma(v1[0], v1[1], v2[0], v2[1], v3.getX(), v3.getY(), mathProvider, res);
+		return fma(v1[0], v1[1], v2[0], v2[1], v3.getV0(), v3.getV1(), mathProvider, res);
 	}
 	
 	/**
@@ -5577,7 +5687,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(@MinLength(2) float[] v1, @MinLength(2) float[] v2, @MinLength(2) float[] v3, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(@MinLength(2) float[] v1, @MinLength(2) float[] v2, @MinLength(2) float[] v3, @ExtractionParam T res)
 	{
 		return fma(v1[0], v1[1], v2[0], v2[1], v3[0], v3[1], res);
 	}
@@ -5607,7 +5717,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(@MinLength(2) float[] v1, @MinLength(2) float[] v2, @MinLength(2) float[] v3, MathProvider mathProvider, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(@MinLength(2) float[] v1, @MinLength(2) float[] v2, @MinLength(2) float[] v3, MathProvider mathProvider, @ExtractionParam T res)
 	{
 		return fma(v1[0], v1[1], v2[0], v2[1], v3[0], v3[1], mathProvider, res);
 	}
@@ -5637,7 +5747,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(@MinLength(2) float[] v1, @MinLength(2) float[] v2, float v3x, float v3y, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(@MinLength(2) float[] v1, @MinLength(2) float[] v2, float v3x, float v3y, @ExtractionParam T res)
 	{
 		return fma(v1[0], v1[1], v2[0], v2[1], v3x, v3y, res);
 	}
@@ -5668,7 +5778,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(@MinLength(2) float[] v1, @MinLength(2) float[] v2, float v3x, float v3y, MathProvider mathProvider, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(@MinLength(2) float[] v1, @MinLength(2) float[] v2, float v3x, float v3y, MathProvider mathProvider, @ExtractionParam T res)
 	{
 		return fma(v1[0], v1[1], v2[0], v2[1], v3x, v3y, mathProvider, res);
 	}
@@ -5698,9 +5808,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(@MinLength(2) float[] v1, float v2x, float v2y, SimpleVec2fR v3, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(@MinLength(2) float[] v1, float v2x, float v2y, Tup2fR v3, @ExtractionParam T res)
 	{
-		return fma(v1[0], v1[1], v2x, v2y, v3.getX(), v3.getY(), res);
+		return fma(v1[0], v1[1], v2x, v2y, v3.getV0(), v3.getV1(), res);
 	}
 	
 	/**
@@ -5729,9 +5839,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(@MinLength(2) float[] v1, float v2x, float v2y, SimpleVec2fR v3, MathProvider mathProvider, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(@MinLength(2) float[] v1, float v2x, float v2y, Tup2fR v3, MathProvider mathProvider, @ExtractionParam T res)
 	{
-		return fma(v1[0], v1[1], v2x, v2y, v3.getX(), v3.getY(), mathProvider, res);
+		return fma(v1[0], v1[1], v2x, v2y, v3.getV0(), v3.getV1(), mathProvider, res);
 	}
 	
 	/**
@@ -5759,7 +5869,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(@MinLength(2) float[] v1, float v2x, float v2y, @MinLength(2) float[] v3, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(@MinLength(2) float[] v1, float v2x, float v2y, @MinLength(2) float[] v3, @ExtractionParam T res)
 	{
 		return fma(v1[0], v1[1], v2x, v2y, v3[0], v3[1], res);
 	}
@@ -5790,7 +5900,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(@MinLength(2) float[] v1, float v2x, float v2y, @MinLength(2) float[] v3, MathProvider mathProvider, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(@MinLength(2) float[] v1, float v2x, float v2y, @MinLength(2) float[] v3, MathProvider mathProvider, @ExtractionParam T res)
 	{
 		return fma(v1[0], v1[1], v2x, v2y, v3[0], v3[1], mathProvider, res);
 	}
@@ -5821,7 +5931,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(@MinLength(2) float[] v1, float v2x, float v2y, float v3x, float v3y, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(@MinLength(2) float[] v1, float v2x, float v2y, float v3x, float v3y, @ExtractionParam T res)
 	{
 		return fma(v1[0], v1[1], v2x, v2y, v3x, v3y, res);
 	}
@@ -5853,7 +5963,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(@MinLength(2) float[] v1, float v2x, float v2y, float v3x, float v3y, MathProvider mathProvider, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(@MinLength(2) float[] v1, float v2x, float v2y, float v3x, float v3y, MathProvider mathProvider, @ExtractionParam T res)
 	{
 		return fma(v1[0], v1[1], v2x, v2y, v3x, v3y, mathProvider, res);
 	}
@@ -5883,9 +5993,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(float v1x, float v1y, SimpleVec2fR v2, SimpleVec2fR v3, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(float v1x, float v1y, Tup2fR v2, Tup2fR v3, @ExtractionParam T res)
 	{
-		return fma(v1x, v1y, v2.getX(), v2.getY(), v3.getX(), v3.getY(), res);
+		return fma(v1x, v1y, v2.getV0(), v2.getV1(), v3.getV0(), v3.getV1(), res);
 	}
 	
 	/**
@@ -5914,9 +6024,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(float v1x, float v1y, SimpleVec2fR v2, SimpleVec2fR v3, MathProvider mathProvider, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(float v1x, float v1y, Tup2fR v2, Tup2fR v3, MathProvider mathProvider, @ExtractionParam T res)
 	{
-		return fma(v1x, v1y, v2.getX(), v2.getY(), v3.getX(), v3.getY(), mathProvider, res);
+		return fma(v1x, v1y, v2.getV0(), v2.getV1(), v3.getV0(), v3.getV1(), mathProvider, res);
 	}
 	
 	/**
@@ -5944,9 +6054,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(float v1x, float v1y, SimpleVec2fR v2, @MinLength(2) float[] v3, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(float v1x, float v1y, Tup2fR v2, @MinLength(2) float[] v3, @ExtractionParam T res)
 	{
-		return fma(v1x, v1y, v2.getX(), v2.getY(), v3[0], v3[1], res);
+		return fma(v1x, v1y, v2.getV0(), v2.getV1(), v3[0], v3[1], res);
 	}
 	
 	/**
@@ -5975,9 +6085,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(float v1x, float v1y, SimpleVec2fR v2, @MinLength(2) float[] v3, MathProvider mathProvider, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(float v1x, float v1y, Tup2fR v2, @MinLength(2) float[] v3, MathProvider mathProvider, @ExtractionParam T res)
 	{
-		return fma(v1x, v1y, v2.getX(), v2.getY(), v3[0], v3[1], mathProvider, res);
+		return fma(v1x, v1y, v2.getV0(), v2.getV1(), v3[0], v3[1], mathProvider, res);
 	}
 	
 	/**
@@ -6006,9 +6116,71 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(float v1x, float v1y, SimpleVec2fR v2, float v3x, float v3y, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(float v1x, float v1y, Tup2fR v2, float v3x, float v3y, @ExtractionParam T res)
 	{
-		return fma(v1x, v1y, v2.getX(), v2.getY(), v3x, v3y, res);
+		return fma(v1x, v1y, v2.getV0(), v2.getV1(), v3x, v3y, res);
+	}
+	
+	/**
+	 * Multiplies the given vector {@code (v1x, v1y)} with the given vector {@code (v2)}, adds the given vector {@code (v3x, v3y)}
+	 * to the product result and saves the result in the given extraction parameter object.
+	 * 
+	 * <p>
+	 * This performs a {@link Math#fma(float, float, float)} style fused multiplication and addition.
+	 * The actual way of calculation depends on the implementation of the used {@link MathProvider}.
+	 * 
+	 * <p>
+	 * Here the explicitly given {@link MathProvider} is used for calculation.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code (v1x, v1y) * v2 + (v3x, v3y)}
+	 * 
+	 * @param <T> The type of the result vector.
+	 * 
+	 * @param v1x The value of the x component of the first multiplicant vector.
+	 * @param v1y The value of the y component of the first multiplicant vector.
+	 * @param v2 The second multiplicant vector.
+	 * @param v3x The value of the x component of the addend vector.
+	 * @param v3y The value of the y component of the addend vector.
+	 * @param mathProvider The provider of fundamental math functions that should be used for calculation.
+	 * @param res The extraction parameter object for the result.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	public static <T extends Tup2fC> T fma(float v1x, float v1y, Tup2fR v2, float v3x, float v3y, MathProvider mathProvider, @ExtractionParam T res)
+	{
+		return fma(v1x, v1y, v2.getV0(), v2.getV1(), v3x, v3y, res);
+	}
+	
+	/**
+	 * Multiplies the given vector {@code (v1x, v1y)} with the given vector {@code (v2[0], v2[1])}, adds the given vector {@code (v3)}
+	 * to the product result and saves the result in the given extraction parameter object.
+	 * 
+	 * <p>
+	 * This performs a {@link Math#fma(float, float, float)} style fused multiplication and addition.
+	 * The actual way of calculation depends on the implementation of the used {@link MathProvider}.
+	 * 
+	 * <p>
+	 * Here the default {@link MathProvider} from {@link BarghosMath#PROVIDER} is used for calculation.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code (v1x, v1y) * (v2[0], v2[1]) + v3}
+	 * 
+	 * @param <T> The type of the result vector.
+	 * 
+	 * @param v1x The value of the x component of the first multiplicant vector.
+	 * @param v1y The value of the y component of the first multiplicant vector.
+	 * @param v2 The second multiplicant vector as an array with at least two entries.
+	 * @param v3 The addend vector.
+	 * @param res The extraction parameter object for the result.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	public static <T extends Tup2fC> T fma(float v1x, float v1y, @MinLength(2) float[] v2, Tup2fR v3, @ExtractionParam T res)
+	{
+		return fma(v1x, v1y, v2[0], v2[1], v3.getV0(), v3.getV1(), res);
 	}
 	
 	/**
@@ -6037,9 +6209,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(float v1x, float v1y, @MinLength(2) float[] v2, SimpleVec2fR v3, MathProvider mathProvider, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(float v1x, float v1y, @MinLength(2) float[] v2, Tup2fR v3, MathProvider mathProvider, @ExtractionParam T res)
 	{
-		return fma(v1x, v1y, v2[0], v2[1], v3.getX(), v3.getY(), mathProvider, res);
+		return fma(v1x, v1y, v2[0], v2[1], v3.getV0(), v3.getV1(), mathProvider, res);
 	}
 	
 	/**
@@ -6067,7 +6239,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(float v1x, float v1y, @MinLength(2) float[] v2, @MinLength(2) float[] v3, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(float v1x, float v1y, @MinLength(2) float[] v2, @MinLength(2) float[] v3, @ExtractionParam T res)
 	{
 		return fma(v1x, v1y, v2[0], v2[1], v3[0], v3[1], res);
 	}
@@ -6098,7 +6270,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(float v1x, float v1y, @MinLength(2) float[] v2, @MinLength(2) float[] v3, MathProvider mathProvider, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(float v1x, float v1y, @MinLength(2) float[] v2, @MinLength(2) float[] v3, MathProvider mathProvider, @ExtractionParam T res)
 	{
 		return fma(v1x, v1y, v2[0], v2[1], v3[0], v3[1], mathProvider, res);
 	}
@@ -6129,7 +6301,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(float v1x, float v1y, @MinLength(2) float[] v2, float v3x, float v3y, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(float v1x, float v1y, @MinLength(2) float[] v2, float v3x, float v3y, @ExtractionParam T res)
 	{
 		return fma(v1x, v1y, v2[0], v2[1], v3x, v3y, res);
 	}
@@ -6161,7 +6333,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(float v1x, float v1y, @MinLength(2) float[] v2, float v3x, float v3y, MathProvider mathProvider, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(float v1x, float v1y, @MinLength(2) float[] v2, float v3x, float v3y, MathProvider mathProvider, @ExtractionParam T res)
 	{
 		return fma(v1x, v1y, v2[0], v2[1], v3x, v3y, mathProvider, res);
 	}
@@ -6192,9 +6364,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(float v1x, float v1y,  float v2x, float v2y, SimpleVec2fR v3, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(float v1x, float v1y, float v2x, float v2y, Tup2fR v3, @ExtractionParam T res)
 	{
-		return fma(v1x, v1y, v2x, v2y, v3.getX(), v3.getY(), res);
+		return fma(v1x, v1y, v2x, v2y, v3.getV0(), v3.getV1(), res);
 	}
 	
 	/**
@@ -6224,9 +6396,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(float v1x, float v1y,  float v2x, float v2y, SimpleVec2fR v3, MathProvider mathProvider, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(float v1x, float v1y, float v2x, float v2y, Tup2fR v3, MathProvider mathProvider, @ExtractionParam T res)
 	{
-		return fma(v1x, v1y, v2x, v2y, v3.getX(), v3.getY(), mathProvider, res);
+		return fma(v1x, v1y, v2x, v2y, v3.getV0(), v3.getV1(), mathProvider, res);
 	}
 	
 	/**
@@ -6255,7 +6427,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(float v1x, float v1y, float v2x, float v2y, @MinLength(2) float[] v3, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(float v1x, float v1y, float v2x, float v2y, @MinLength(2) float[] v3, @ExtractionParam T res)
 	{
 		return fma(v1x, v1y, v2x, v2y, v3[0], v3[1], res);
 	}
@@ -6287,7 +6459,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(float v1x, float v1y, float v2x, float v2y, @MinLength(2) float[] v3, MathProvider mathProvider, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(float v1x, float v1y, float v2x, float v2y, @MinLength(2) float[] v3, MathProvider mathProvider, @ExtractionParam T res)
 	{
 		return fma(v1x, v1y, v2x, v2y, v3[0], v3[1], mathProvider, res);
 	}
@@ -6319,7 +6491,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(float v1x, float v1y, float v2x, float v2y, float v3x, float v3y, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(float v1x, float v1y, float v2x, float v2y, float v3x, float v3y, @ExtractionParam T res)
 	{
 		return fma(v1x, v1y, v2x, v2y, v3x, v3y, BarghosMath.PROVIDER, res);
 	}
@@ -6352,7 +6524,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T fma(float v1x, float v1y, float v2x, float v2y, float v3x, float v3y, MathProvider mathProvider, @ExtractionParam T res)
+	public static <T extends Tup2fC> T fma(float v1x, float v1y, float v2x, float v2y, float v3x, float v3y, MathProvider mathProvider, @ExtractionParam T res)
 	{
 		res.set(mathProvider.fma(v1x, v2x, v3x), mathProvider.fma(v1y, v2y, v3y));
 		
@@ -6384,9 +6556,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T fmaFunc(SimpleVec2fR v1, SimpleVec2fR v2, SimpleVec2fR v3, FloatFunction2<T> res)
+	public static <T> T fmaFunc(Tup2fR v1, Tup2fR v2, Tup2fR v3, FloatFunction2<T> res)
 	{
-		return fmaFunc(v1.getX(), v1.getY(), v2.getX(), v2.getY(), v3.getX(), v3.getY(), res);
+		return fmaFunc(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), v3.getV0(), v3.getV1(), res);
 	}
 	
 	/**
@@ -6415,9 +6587,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T fmaFunc(SimpleVec2fR v1, SimpleVec2fR v2, SimpleVec2fR v3, MathProvider mathProvider, FloatFunction2<T> res)
+	public static <T> T fmaFunc(Tup2fR v1, Tup2fR v2, Tup2fR v3, MathProvider mathProvider, FloatFunction2<T> res)
 	{
-		return fmaFunc(v1.getX(), v1.getY(), v2.getX(), v2.getY(), v3.getX(), v3.getY(), res);
+		return fmaFunc(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), v3.getV0(), v3.getV1(), res);
 	}
 	
 	/**
@@ -6445,9 +6617,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T fmaFunc(SimpleVec2fR v1, SimpleVec2fR v2, @MinLength(2) float[] v3, FloatFunction2<T> res)
+	public static <T> T fmaFunc(Tup2fR v1, Tup2fR v2, @MinLength(2) float[] v3, FloatFunction2<T> res)
 	{
-		return fmaFunc(v1.getX(), v1.getY(), v2.getX(), v2.getY(), v3[0], v3[1], res);
+		return fmaFunc(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), v3[0], v3[1], res);
 	}
 	
 	/**
@@ -6476,9 +6648,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T fmaFunc(SimpleVec2fR v1, SimpleVec2fR v2, @MinLength(2) float[] v3, MathProvider mathProvider, FloatFunction2<T> res)
+	public static <T> T fmaFunc(Tup2fR v1, Tup2fR v2, @MinLength(2) float[] v3, MathProvider mathProvider, FloatFunction2<T> res)
 	{
-		return fmaFunc(v1.getX(), v1.getY(), v2.getX(), v2.getY(), v3[0], v3[1], res);
+		return fmaFunc(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), v3[0], v3[1], res);
 	}
 	
 	/**
@@ -6507,9 +6679,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T fmaFunc(SimpleVec2fR v1, SimpleVec2fR v2, float v3x, float v3y, FloatFunction2<T> res)
+	public static <T> T fmaFunc(Tup2fR v1, Tup2fR v2, float v3x, float v3y, FloatFunction2<T> res)
 	{
-		return fmaFunc(v1.getX(), v1.getY(), v2.getX(), v2.getY(), v3x, v3y, res);
+		return fmaFunc(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), v3x, v3y, res);
 	}
 	
 	/**
@@ -6539,9 +6711,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T fmaFunc(SimpleVec2fR v1, SimpleVec2fR v2, float v3x, float v3y, MathProvider mathProvider, FloatFunction2<T> res)
+	public static <T> T fmaFunc(Tup2fR v1, Tup2fR v2, float v3x, float v3y, MathProvider mathProvider, FloatFunction2<T> res)
 	{
-		return fmaFunc(v1.getX(), v1.getY(), v2.getX(), v2.getY(), v3x, v3y, res);
+		return fmaFunc(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), v3x, v3y, res);
 	}
 	
 	/**
@@ -6569,9 +6741,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T fmaFunc(SimpleVec2fR v1, @MinLength(2) float[] v2, SimpleVec2fR v3, FloatFunction2<T> res)
+	public static <T> T fmaFunc(Tup2fR v1, @MinLength(2) float[] v2, Tup2fR v3, FloatFunction2<T> res)
 	{
-		return fmaFunc(v1.getX(), v1.getY(), v2[0], v2[1], v3.getX(), v3.getY(), res);
+		return fmaFunc(v1.getV0(), v1.getV1(), v2[0], v2[1], v3.getV0(), v3.getV1(), res);
 	}
 	
 	/**
@@ -6600,9 +6772,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T fmaFunc(SimpleVec2fR v1, @MinLength(2) float[] v2, SimpleVec2fR v3, MathProvider mathProvider, FloatFunction2<T> res)
+	public static <T> T fmaFunc(Tup2fR v1, @MinLength(2) float[] v2, Tup2fR v3, MathProvider mathProvider, FloatFunction2<T> res)
 	{
-		return fmaFunc(v1.getX(), v1.getY(), v2[0], v2[1], v3.getX(), v3.getY(), res);
+		return fmaFunc(v1.getV0(), v1.getV1(), v2[0], v2[1], v3.getV0(), v3.getV1(), res);
 	}
 	
 	/**
@@ -6630,9 +6802,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T fmaFunc(SimpleVec2fR v1, @MinLength(2) float[] v2, @MinLength(2) float[] v3, FloatFunction2<T> res)
+	public static <T> T fmaFunc(Tup2fR v1, @MinLength(2) float[] v2, @MinLength(2) float[] v3, FloatFunction2<T> res)
 	{
-		return fmaFunc(v1.getX(), v1.getY(), v2[0], v2[1], v3[0], v3[1], res);
+		return fmaFunc(v1.getV0(), v1.getV1(), v2[0], v2[1], v3[0], v3[1], res);
 	}
 	
 	/**
@@ -6661,9 +6833,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T fmaFunc(SimpleVec2fR v1, @MinLength(2) float[] v2, @MinLength(2) float[] v3, MathProvider mathProvider, FloatFunction2<T> res)
+	public static <T> T fmaFunc(Tup2fR v1, @MinLength(2) float[] v2, @MinLength(2) float[] v3, MathProvider mathProvider, FloatFunction2<T> res)
 	{
-		return fmaFunc(v1.getX(), v1.getY(), v2[0], v2[1], v3[0], v3[1], mathProvider, res);
+		return fmaFunc(v1.getV0(), v1.getV1(), v2[0], v2[1], v3[0], v3[1], mathProvider, res);
 	}
 	
 	/**
@@ -6692,9 +6864,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T fmaFunc(SimpleVec2fR v1, @MinLength(2) float[] v2, float v3x, float v3y, FloatFunction2<T> res)
+	public static <T> T fmaFunc(Tup2fR v1, @MinLength(2) float[] v2, float v3x, float v3y, FloatFunction2<T> res)
 	{
-		return fmaFunc(v1.getX(), v1.getY(), v2[0], v2[1], v3x, v3y, res);
+		return fmaFunc(v1.getV0(), v1.getV1(), v2[0], v2[1], v3x, v3y, res);
 	}
 	
 	/**
@@ -6724,9 +6896,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T fmaFunc(SimpleVec2fR v1, @MinLength(2) float[] v2, float v3x, float v3y, MathProvider mathProvider, FloatFunction2<T> res)
+	public static <T> T fmaFunc(Tup2fR v1, @MinLength(2) float[] v2, float v3x, float v3y, MathProvider mathProvider, FloatFunction2<T> res)
 	{
-		return fmaFunc(v1.getX(), v1.getY(), v2[0], v2[1], v3x, v3y, mathProvider, res);
+		return fmaFunc(v1.getV0(), v1.getV1(), v2[0], v2[1], v3x, v3y, mathProvider, res);
 	}
 	
 	/**
@@ -6755,9 +6927,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T fmaFunc(SimpleVec2fR v1, float v2x, float v2y, SimpleVec2fR v3, FloatFunction2<T> res)
+	public static <T> T fmaFunc(Tup2fR v1, float v2x, float v2y, Tup2fR v3, FloatFunction2<T> res)
 	{
-		return fmaFunc(v1.getX(), v1.getY(), v2x, v2y, v3.getX(), v3.getY(), res);
+		return fmaFunc(v1.getV0(), v1.getV1(), v2x, v2y, v3.getV0(), v3.getV1(), res);
 	}
 	
 	/**
@@ -6787,9 +6959,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T fmaFunc(SimpleVec2fR v1, float v2x, float v2y, SimpleVec2fR v3, MathProvider mathProvider, FloatFunction2<T> res)
+	public static <T> T fmaFunc(Tup2fR v1, float v2x, float v2y, Tup2fR v3, MathProvider mathProvider, FloatFunction2<T> res)
 	{
-		return fmaFunc(v1.getX(), v1.getY(), v2x, v2y, v3.getX(), v3.getY(), mathProvider, res);
+		return fmaFunc(v1.getV0(), v1.getV1(), v2x, v2y, v3.getV0(), v3.getV1(), mathProvider, res);
 	}
 	
 	/**
@@ -6818,9 +6990,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T fmaFunc(SimpleVec2fR v1, float v2x, float v2y, @MinLength(2) float[] v3, FloatFunction2<T> res)
+	public static <T> T fmaFunc(Tup2fR v1, float v2x, float v2y, @MinLength(2) float[] v3, FloatFunction2<T> res)
 	{
-		return fmaFunc(v1.getX(), v1.getY(), v2x, v2y, v3[0], v3[1], res);
+		return fmaFunc(v1.getV0(), v1.getV1(), v2x, v2y, v3[0], v3[1], res);
 	}
 	
 	/**
@@ -6850,9 +7022,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T fmaFunc(SimpleVec2fR v1, float v2x, float v2y, @MinLength(2) float[] v3, MathProvider mathProvider, FloatFunction2<T> res)
+	public static <T> T fmaFunc(Tup2fR v1, float v2x, float v2y, @MinLength(2) float[] v3, MathProvider mathProvider, FloatFunction2<T> res)
 	{
-		return fmaFunc(v1.getX(), v1.getY(), v2x, v2y, v3[0], v3[1], mathProvider, res);
+		return fmaFunc(v1.getV0(), v1.getV1(), v2x, v2y, v3[0], v3[1], mathProvider, res);
 	}
 	
 	/**
@@ -6882,9 +7054,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T fmaFunc(SimpleVec2fR v1, float v2x, float v2y, float v3x, float v3y, FloatFunction2<T> res)
+	public static <T> T fmaFunc(Tup2fR v1, float v2x, float v2y, float v3x, float v3y, FloatFunction2<T> res)
 	{
-		return fmaFunc(v1.getX(), v1.getY(), v2x, v2y, v3x, v3y, res);
+		return fmaFunc(v1.getV0(), v1.getV1(), v2x, v2y, v3x, v3y, res);
 	}
 	
 	/**
@@ -6915,9 +7087,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T fmaFunc(SimpleVec2fR v1, float v2x, float v2y, float v3x, float v3y, MathProvider mathProvider, FloatFunction2<T> res)
+	public static <T> T fmaFunc(Tup2fR v1, float v2x, float v2y, float v3x, float v3y, MathProvider mathProvider, FloatFunction2<T> res)
 	{
-		return fmaFunc(v1.getX(), v1.getY(), v2x, v2y, v3x, v3y, res);
+		return fmaFunc(v1.getV0(), v1.getV1(), v2x, v2y, v3x, v3y, res);
 	}
 	
 	/**
@@ -6945,9 +7117,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T fmaFunc(@MinLength(2) float[] v1, SimpleVec2fR v2, SimpleVec2fR v3, FloatFunction2<T> res)
+	public static <T> T fmaFunc(@MinLength(2) float[] v1, Tup2fR v2, Tup2fR v3, FloatFunction2<T> res)
 	{
-		return fmaFunc(v1[0], v1[1], v2.getX(), v2.getY(), v3.getX(), v3.getY(), res);
+		return fmaFunc(v1[0], v1[1], v2.getV0(), v2.getV1(), v3.getV0(), v3.getV1(), res);
 	}
 	
 	/**
@@ -6976,9 +7148,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T fmaFunc(@MinLength(2) float[] v1, SimpleVec2fR v2, SimpleVec2fR v3, MathProvider mathProvider, FloatFunction2<T> res)
+	public static <T> T fmaFunc(@MinLength(2) float[] v1, Tup2fR v2, Tup2fR v3, MathProvider mathProvider, FloatFunction2<T> res)
 	{
-		return fmaFunc(v1[0], v1[1], v2.getX(), v2.getY(), v3.getX(), v3.getY(), res);
+		return fmaFunc(v1[0], v1[1], v2.getV0(), v2.getV1(), v3.getV0(), v3.getV1(), res);
 	}
 	
 	/**
@@ -7006,9 +7178,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T fmaFunc(@MinLength(2) float[] v1, SimpleVec2fR v2, @MinLength(2) float[] v3, FloatFunction2<T> res)
+	public static <T> T fmaFunc(@MinLength(2) float[] v1, Tup2fR v2, @MinLength(2) float[] v3, FloatFunction2<T> res)
 	{
-		return fmaFunc(v1[0], v1[1], v2.getX(), v2.getY(), v3[0], v3[1], res);
+		return fmaFunc(v1[0], v1[1], v2.getV0(), v2.getV1(), v3[0], v3[1], res);
 	}
 	
 	/**
@@ -7037,9 +7209,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T fmaFunc(@MinLength(2) float[] v1, SimpleVec2fR v2, @MinLength(2) float[] v3, MathProvider mathProvider, FloatFunction2<T> res)
+	public static <T> T fmaFunc(@MinLength(2) float[] v1, Tup2fR v2, @MinLength(2) float[] v3, MathProvider mathProvider, FloatFunction2<T> res)
 	{
-		return fmaFunc(v1[0], v1[1], v2.getX(), v2.getY(), v3[0], v3[1], mathProvider, res);
+		return fmaFunc(v1[0], v1[1], v2.getV0(), v2.getV1(), v3[0], v3[1], mathProvider, res);
 	}
 	
 	/**
@@ -7068,9 +7240,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T fmaFunc(@MinLength(2) float[] v1, SimpleVec2fR v2, float v3x, float v3y, FloatFunction2<T> res)
+	public static <T> T fmaFunc(@MinLength(2) float[] v1, Tup2fR v2, float v3x, float v3y, FloatFunction2<T> res)
 	{
-		return fmaFunc(v1[0], v1[1], v2.getX(), v2.getY(), v3x, v3y, res);
+		return fmaFunc(v1[0], v1[1], v2.getV0(), v2.getV1(), v3x, v3y, res);
 	}
 	
 	/**
@@ -7100,9 +7272,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T fmaFunc(@MinLength(2) float[] v1, SimpleVec2fR v2, float v3x, float v3y, MathProvider mathProvider, FloatFunction2<T> res)
+	public static <T> T fmaFunc(@MinLength(2) float[] v1, Tup2fR v2, float v3x, float v3y, MathProvider mathProvider, FloatFunction2<T> res)
 	{
-		return fmaFunc(v1[0], v1[1], v2.getX(), v2.getY(), v3x, v3y, mathProvider, res);
+		return fmaFunc(v1[0], v1[1], v2.getV0(), v2.getV1(), v3x, v3y, mathProvider, res);
 	}
 	
 	/**
@@ -7130,9 +7302,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T fmaFunc(@MinLength(2) float[] v1, @MinLength(2) float[] v2, SimpleVec2fR v3, FloatFunction2<T> res)
+	public static <T> T fmaFunc(@MinLength(2) float[] v1, @MinLength(2) float[] v2, Tup2fR v3, FloatFunction2<T> res)
 	{
-		return fmaFunc(v1[0], v1[1], v2[0], v2[1], v3.getX(), v3.getY(), res);
+		return fmaFunc(v1[0], v1[1], v2[0], v2[1], v3.getV0(), v3.getV1(), res);
 	}
 	
 	/**
@@ -7161,9 +7333,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T fmaFunc(@MinLength(2) float[] v1, @MinLength(2) float[] v2, SimpleVec2fR v3, MathProvider mathProvider, FloatFunction2<T> res)
+	public static <T> T fmaFunc(@MinLength(2) float[] v1, @MinLength(2) float[] v2, Tup2fR v3, MathProvider mathProvider, FloatFunction2<T> res)
 	{
-		return fmaFunc(v1[0], v1[1], v2[0], v2[1], v3.getX(), v3.getY(), mathProvider, res);
+		return fmaFunc(v1[0], v1[1], v2[0], v2[1], v3.getV0(), v3.getV1(), mathProvider, res);
 	}
 	
 	/**
@@ -7316,9 +7488,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T fmaFunc(@MinLength(2) float[] v1, float v2x, float v2y, SimpleVec2fR v3, FloatFunction2<T> res)
+	public static <T> T fmaFunc(@MinLength(2) float[] v1, float v2x, float v2y, Tup2fR v3, FloatFunction2<T> res)
 	{
-		return fmaFunc(v1[0], v1[1], v2x, v2y, v3.getX(), v3.getY(), res);
+		return fmaFunc(v1[0], v1[1], v2x, v2y, v3.getV0(), v3.getV1(), res);
 	}
 	
 	/**
@@ -7348,9 +7520,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T fmaFunc(@MinLength(2) float[] v1, float v2x, float v2y, SimpleVec2fR v3, MathProvider mathProvider, FloatFunction2<T> res)
+	public static <T> T fmaFunc(@MinLength(2) float[] v1, float v2x, float v2y, Tup2fR v3, MathProvider mathProvider, FloatFunction2<T> res)
 	{
-		return fmaFunc(v1[0], v1[1], v2x, v2y, v3.getX(), v3.getY(), mathProvider, res);
+		return fmaFunc(v1[0], v1[1], v2x, v2y, v3.getV0(), v3.getV1(), mathProvider, res);
 	}
 	
 	/**
@@ -7507,9 +7679,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T fmaFunc(float v1x, float v1y, SimpleVec2fR v2, SimpleVec2fR v3, FloatFunction2<T> res)
+	public static <T> T fmaFunc(float v1x, float v1y, Tup2fR v2, Tup2fR v3, FloatFunction2<T> res)
 	{
-		return fmaFunc(v1x, v1y, v2.getX(), v2.getY(), v3.getX(), v3.getY(), res);
+		return fmaFunc(v1x, v1y, v2.getV0(), v2.getV1(), v3.getV0(), v3.getV1(), res);
 	}
 	
 	/**
@@ -7539,9 +7711,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T fmaFunc(float v1x, float v1y, SimpleVec2fR v2, SimpleVec2fR v3, MathProvider mathProvider, FloatFunction2<T> res)
+	public static <T> T fmaFunc(float v1x, float v1y, Tup2fR v2, Tup2fR v3, MathProvider mathProvider, FloatFunction2<T> res)
 	{
-		return fmaFunc(v1x, v1y, v2.getX(), v2.getY(), v3.getX(), v3.getY(), mathProvider, res);
+		return fmaFunc(v1x, v1y, v2.getV0(), v2.getV1(), v3.getV0(), v3.getV1(), mathProvider, res);
 	}
 	
 	/**
@@ -7570,9 +7742,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T fmaFunc(float v1x, float v1y, SimpleVec2fR v2, @MinLength(2) float[] v3, FloatFunction2<T> res)
+	public static <T> T fmaFunc(float v1x, float v1y, Tup2fR v2, @MinLength(2) float[] v3, FloatFunction2<T> res)
 	{
-		return fmaFunc(v1x, v1y, v2.getX(), v2.getY(), v3[0], v3[1], res);
+		return fmaFunc(v1x, v1y, v2.getV0(), v2.getV1(), v3[0], v3[1], res);
 	}
 	
 	/**
@@ -7602,9 +7774,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T fmaFunc(float v1x, float v1y, SimpleVec2fR v2, @MinLength(2) float[] v3, MathProvider mathProvider, FloatFunction2<T> res)
+	public static <T> T fmaFunc(float v1x, float v1y, Tup2fR v2, @MinLength(2) float[] v3, MathProvider mathProvider, FloatFunction2<T> res)
 	{
-		return fmaFunc(v1x, v1y, v2.getX(), v2.getY(), v3[0], v3[1], mathProvider, res);
+		return fmaFunc(v1x, v1y, v2.getV0(), v2.getV1(), v3[0], v3[1], mathProvider, res);
 	}
 	
 	/**
@@ -7634,9 +7806,73 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T fmaFunc(float v1x, float v1y, SimpleVec2fR v2, float v3x, float v3y, FloatFunction2<T> res)
+	public static <T> T fmaFunc(float v1x, float v1y, Tup2fR v2, float v3x, float v3y, FloatFunction2<T> res)
 	{
-		return fmaFunc(v1x, v1y, v2.getX(), v2.getY(), v3x, v3y, res);
+		return fmaFunc(v1x, v1y, v2.getV0(), v2.getV1(), v3x, v3y, res);
+	}
+	
+	/**
+	 * Multiplies the given vector {@code (v1x, v1y)} with the given vector {@code (v2)}, adds the given vector {@code (v3x, v3y)}
+	 * to the product result, supplies the result to the given implementation of the functional interface
+	 * and returns the result of that implementation.
+	 * 
+	 * <p>
+	 * This performs a {@link Math#fma(float, float, float)} style fused multiplication and addition.
+	 * The actual way of calculation depends on the implementation of the used {@link MathProvider}.
+	 * 
+	 * <p>
+	 * Here the explicitly given {@link MathProvider} is used for calculation.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code (v1x, v1y) * v2 + (v3x, v3y)}
+	 * 
+	 * @param <T> The type of the result object.
+	 * 
+	 * @param v1x The value of the x component of the first multiplicant vector.
+	 * @param v1y The value of the y component of the first multiplicant vector.
+	 * @param v2 The second multiplicant vector.
+	 * @param v3x The value of the x component of the addend vector.
+	 * @param v3y The value of the y component of the addend vector.
+	 * @param mathProvider The provider of fundamental math functions that should be used for calculation.
+	 * @param res A functional interface implementation for consuming the supplied result.
+	 * 
+	 * @return The result returned from the given functional interface implementation.
+	 */
+	public static <T> T fmaFunc(float v1x, float v1y, Tup2fR v2, float v3x, float v3y, MathProvider mathProvider, FloatFunction2<T> res)
+	{
+		return fmaFunc(v1x, v1y, v2.getV0(), v2.getV1(), v3x, v3y, res);
+	}
+	
+	/**
+	 * Multiplies the given vector {@code (v1x, v1y)} with the given vector {@code (v2[0], v2[1])}, adds the given vector {@code (v3)}
+	 * to the product result, supplies the result to the given implementation of the functional interface
+	 * and returns the result of that implementation.
+	 * 
+	 * <p>
+	 * This performs a {@link Math#fma(float, float, float)} style fused multiplication and addition.
+	 * The actual way of calculation depends on the implementation of the used {@link MathProvider}.
+	 * 
+	 * <p>
+	 * Here the default {@link MathProvider} from {@link BarghosMath#PROVIDER} is used for calculation.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code (v1x, v1y) * (v2[0], v2[1]) + v3}
+	 * 
+	 * @param <T> The type of the result object.
+	 * 
+	 * @param v1x The value of the x component of the first multiplicant vector.
+	 * @param v1y The value of the y component of the first multiplicant vector.
+	 * @param v2 The second multiplicant vector as an array with at least two entries.
+	 * @param v3 The addend vector.
+	 * @param res A functional interface implementation for consuming the supplied result.
+	 * 
+	 * @return The result returned from the given functional interface implementation.
+	 */
+	public static <T> T fmaFunc(float v1x, float v1y, @MinLength(2) float[] v2, Tup2fR v3, FloatFunction2<T> res)
+	{
+		return fmaFunc(v1x, v1y, v2[0], v2[1], v3.getV0(), v3.getV1(), res);
 	}
 	
 	/**
@@ -7666,9 +7902,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T fmaFunc(float v1x, float v1y, @MinLength(2) float[] v2, SimpleVec2fR v3, MathProvider mathProvider, FloatFunction2<T> res)
+	public static <T> T fmaFunc(float v1x, float v1y, @MinLength(2) float[] v2, Tup2fR v3, MathProvider mathProvider, FloatFunction2<T> res)
 	{
-		return fmaFunc(v1x, v1y, v2[0], v2[1], v3.getX(), v3.getY(), mathProvider, res);
+		return fmaFunc(v1x, v1y, v2[0], v2[1], v3.getV0(), v3.getV1(), mathProvider, res);
 	}
 	
 	/**
@@ -7826,9 +8062,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T fmaFunc(float v1x, float v1y,  float v2x, float v2y, SimpleVec2fR v3, FloatFunction2<T> res)
+	public static <T> T fmaFunc(float v1x, float v1y, float v2x, float v2y, Tup2fR v3, FloatFunction2<T> res)
 	{
-		return fmaFunc(v1x, v1y, v2x, v2y, v3.getX(), v3.getY(), res);
+		return fmaFunc(v1x, v1y, v2x, v2y, v3.getV0(), v3.getV1(), res);
 	}
 	
 	/**
@@ -7859,9 +8095,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T fmaFunc(float v1x, float v1y,  float v2x, float v2y, SimpleVec2fR v3, MathProvider mathProvider, FloatFunction2<T> res)
+	public static <T> T fmaFunc(float v1x, float v1y, float v2x, float v2y, Tup2fR v3, MathProvider mathProvider, FloatFunction2<T> res)
 	{
-		return fmaFunc(v1x, v1y, v2x, v2y, v3.getX(), v3.getY(), mathProvider, res);
+		return fmaFunc(v1x, v1y, v2x, v2y, v3.getV0(), v3.getV1(), mathProvider, res);
 	}
 	
 	/**
@@ -8010,9 +8246,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The inverse length of the vector.
 	 */
-	public static float inverseLength(SimpleVec2fR v)
+	public static float inverseLength(Tup2fR v)
 	{
-		return inverseLength(v.getX(), v.getY());
+		return inverseLength(v.getV0(), v.getV1());
 	}
 
 	/**
@@ -8030,9 +8266,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The inverse length of the vector.
 	 */
-	public static float inverseLength(SimpleVec2fR v, MathProvider mathProvider)
+	public static float inverseLength(Tup2fR v, MathProvider mathProvider)
 	{
-		return inverseLength(v.getX(), v.getY(), mathProvider);
+		return inverseLength(v.getV0(), v.getV1(), mathProvider);
 	}
 	
 	/**
@@ -8129,9 +8365,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The length of the vector.
 	 */
-	public static float length(SimpleVec2fR v)
+	public static float length(Tup2fR v)
 	{
-		return length(v.getX(), v.getY());
+		return length(v.getV0(), v.getV1());
 	}
 	
 	/**
@@ -8149,9 +8385,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The length of the vector.
 	 */
-	public static float length(SimpleVec2fR v, MathProvider mathProvider)
+	public static float length(Tup2fR v, MathProvider mathProvider)
 	{
-		return length(v.getX(), v.getY(), mathProvider);
+		return length(v.getV0(), v.getV1(), mathProvider);
 	}
 	
 	/**
@@ -8170,9 +8406,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The length of the vector.
 	 */
-	public static float length(SimpleVec2fR v, @FloatMinValue(0.0f) float tolerance)
+	public static float length(Tup2fR v, @FloatMinValue(0.0f) float tolerance)
 	{
-		return length(v.getX(), v.getY(), tolerance);
+		return length(v.getV0(), v.getV1(), tolerance);
 	}
 	
 	/**
@@ -8192,9 +8428,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The length of the vector.
 	 */
-	public static float length(SimpleVec2fR v, @FloatMinValue(0.0f) float tolerance, MathProvider mathProvider)
+	public static float length(Tup2fR v, @FloatMinValue(0.0f) float tolerance, MathProvider mathProvider)
 	{
-		return length(v.getX(), v.getY(), tolerance, mathProvider);
+		return length(v.getV0(), v.getV1(), tolerance, mathProvider);
 	}
 	
 	/**
@@ -8381,9 +8617,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The squared length of the vector.
 	 */
-	public static float squaredLength(SimpleVec2fR v)
+	public static float squaredLength(Tup2fR v)
 	{
-		return squaredLength(v.getX(), v.getY());
+		return squaredLength(v.getV0(), v.getV1());
 	}
 	
 	/**
@@ -8433,9 +8669,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static ComponentValueFloat min(SimpleVec2fR v, @ExtractionParam ComponentValueFloat res)
+	public static ComponentValueFloat min(Tup2fR v, @ExtractionParam ComponentValueFloat res)
 	{
-		return min(v.getX(), v.getY(), res);
+		return min(v.getV0(), v.getV1(), res);
 	}
 	
 	/**
@@ -8491,9 +8727,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The smallest value of the components.
 	 */
-	public static float minValue(SimpleVec2fR v)
+	public static float minValue(Tup2fR v)
 	{
-		return minValue(v.getX(), v.getY());
+		return minValue(v.getV0(), v.getV1());
 	}
 	
 	/**
@@ -8532,9 +8768,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The index of the smallest component.
 	 */
-	public static int minComponent(SimpleVec2fR v)
+	public static int minComponent(Tup2fR v)
 	{
-		return minComponent(v.getX(), v.getY());
+		return minComponent(v.getV0(), v.getV1());
 	}
 	
 	/**
@@ -8593,9 +8829,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] minVector(SimpleVec2fR v1, SimpleVec2fR v2, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] minVector(Tup2fR v1, Tup2fR v2, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return minVector(v1.getX(), v1.getY(), v2.getX(), v2.getY(), res);
+		return minVector(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -8604,7 +8840,7 @@ public class Vec2fUtils
 	 * 
 	 * <p>
 	 * Operation:<br>
-	 * {@code min(v1, (v2x, v2y))}
+	 * {@code min(v1, (v2[0], v2[1]))}
 	 * 
 	 * @param v1 The first vector.
 	 * @param v2 The second vector as an array with at least two entries.
@@ -8612,9 +8848,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] minVector(SimpleVec2fR v1, @MinLength(2) float[] v2, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] minVector(Tup2fR v1, @MinLength(2) float[] v2, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return minVector(v1.getX(), v1.getY(), v2[0], v2[1], res);
+		return minVector(v1.getV0(), v1.getV1(), v2[0], v2[1], res);
 	}
 	
 	/**
@@ -8632,9 +8868,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] minVector(SimpleVec2fR v1, float v2x, float v2y, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] minVector(Tup2fR v1, float v2x, float v2y, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return minVector(v1.getX(), v1.getY(), v2x, v2y, res);
+		return minVector(v1.getV0(), v1.getV1(), v2x, v2y, res);
 	}
 	
 	/**
@@ -8651,9 +8887,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] minVector(@MinLength(2) float[] v1, SimpleVec2fR v2, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] minVector(@MinLength(2) float[] v1, Tup2fR v2, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return minVector(v1[0], v1[1], v2.getX(), v2.getY(), res);
+		return minVector(v1[0], v1[1], v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -8710,9 +8946,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] minVector(float v1x, float v1y, SimpleVec2fR v2, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] minVector(float v1x, float v1y, Tup2fR v2, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return minVector(v1x, v1y, v2.getX(), v2.getY(), res);
+		return minVector(v1x, v1y, v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -8775,9 +9011,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T minVector(SimpleVec2fR v1, SimpleVec2fR v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T minVector(Tup2fR v1, Tup2fR v2, @ExtractionParam T res)
 	{
-		return minVector(v1.getX(), v1.getY(), v2.getX(), v2.getY(), res);
+		return minVector(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -8786,7 +9022,7 @@ public class Vec2fUtils
 	 * 
 	 * <p>
 	 * Operation:<br>
-	 * {@code min(v1, (v2x, v2y))}
+	 * {@code min(v1, (v2[0], v2[1]))}
 	 * 
 	 * @param <T> The type of the extraction parameter object.
 	 * 
@@ -8796,9 +9032,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T minVector(SimpleVec2fR v1, @MinLength(2) float[] v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T minVector(Tup2fR v1, @MinLength(2) float[] v2, @ExtractionParam T res)
 	{
-		return minVector(v1.getX(), v1.getY(), v2[0], v2[1], res);
+		return minVector(v1.getV0(), v1.getV1(), v2[0], v2[1], res);
 	}
 	
 	/**
@@ -8818,9 +9054,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T minVector(SimpleVec2fR v1, float v2x, float v2y, @ExtractionParam T res)
+	public static <T extends Tup2fC> T minVector(Tup2fR v1, float v2x, float v2y, @ExtractionParam T res)
 	{
-		return minVector(v1.getX(), v1.getY(), v2x, v2y, res);
+		return minVector(v1.getV0(), v1.getV1(), v2x, v2y, res);
 	}
 	
 	/**
@@ -8839,9 +9075,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T minVector(@MinLength(2) float[] v1, SimpleVec2fR v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T minVector(@MinLength(2) float[] v1, Tup2fR v2, @ExtractionParam T res)
 	{
-		return minVector(v1[0], v1[1], v2.getX(), v2.getY(), res);
+		return minVector(v1[0], v1[1], v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -8860,7 +9096,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T minVector(@MinLength(2) float[] v1, @MinLength(2) float[] v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T minVector(@MinLength(2) float[] v1, @MinLength(2) float[] v2, @ExtractionParam T res)
 	{
 		return minVector(v1[0], v1[1], v2[0], v2[1], res);
 	}
@@ -8882,7 +9118,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T minVector(@MinLength(2) float[] v1, float v2x, float v2y, @ExtractionParam T res)
+	public static <T extends Tup2fC> T minVector(@MinLength(2) float[] v1, float v2x, float v2y, @ExtractionParam T res)
 	{
 		return minVector(v1[0], v1[1], v2x, v2y, res);
 	}
@@ -8904,9 +9140,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T minVector(float v1x, float v1y, SimpleVec2fR v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T minVector(float v1x, float v1y, Tup2fR v2, @ExtractionParam T res)
 	{
-		return minVector(v1x, v1y, v2.getX(), v2.getY(), res);
+		return minVector(v1x, v1y, v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -8926,7 +9162,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T minVector(float v1x, float v1y, @MinLength(2) float[] v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T minVector(float v1x, float v1y, @MinLength(2) float[] v2, @ExtractionParam T res)
 	{
 		return minVector(v1x, v1y, v2[0], v2[1], res);
 	}
@@ -8949,7 +9185,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T minVector(float v1x, float v1y, float v2x, float v2y, @ExtractionParam T res)
+	public static <T extends Tup2fC> T minVector(float v1x, float v1y, float v2x, float v2y, @ExtractionParam T res)
 	{
 		res.set(Math.min(v1x, v2x), Math.min(v1y, v2y));
 		
@@ -8972,9 +9208,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T minVectorFunc(SimpleVec2fR v1, SimpleVec2fR v2, FloatFunction2<T> res)
+	public static <T> T minVectorFunc(Tup2fR v1, Tup2fR v2, FloatFunction2<T> res)
 	{
-		return minVectorFunc(v1.getX(), v1.getY(), v2.getX(), v2.getY(), res);
+		return minVectorFunc(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -8983,7 +9219,7 @@ public class Vec2fUtils
 	 * 
 	 * <p>
 	 * Operation:<br>
-	 * {@code min(v1, (v2x, v2y))}
+	 * {@code min(v1, (v2[0], v2[1]))}
 	 * 
 	 * @param <T> The type of the extraction parameter object.
 	 * 
@@ -8993,9 +9229,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T minVectorFunc(SimpleVec2fR v1, @MinLength(2) float[] v2, FloatFunction2<T> res)
+	public static <T> T minVectorFunc(Tup2fR v1, @MinLength(2) float[] v2, FloatFunction2<T> res)
 	{
-		return minVectorFunc(v1.getX(), v1.getY(), v2[0], v2[1], res);
+		return minVectorFunc(v1.getV0(), v1.getV1(), v2[0], v2[1], res);
 	}
 	
 	/**
@@ -9015,9 +9251,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T minVectorFunc(SimpleVec2fR v1, float v2x, float v2y, FloatFunction2<T> res)
+	public static <T> T minVectorFunc(Tup2fR v1, float v2x, float v2y, FloatFunction2<T> res)
 	{
-		return minVectorFunc(v1.getX(), v1.getY(), v2x, v2y, res);
+		return minVectorFunc(v1.getV0(), v1.getV1(), v2x, v2y, res);
 	}
 	
 	/**
@@ -9036,9 +9272,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T minVectorFunc(@MinLength(2) float[] v1, SimpleVec2fR v2, FloatFunction2<T> res)
+	public static <T> T minVectorFunc(@MinLength(2) float[] v1, Tup2fR v2, FloatFunction2<T> res)
 	{
-		return minVectorFunc(v1[0], v1[1], v2.getX(), v2.getY(), res);
+		return minVectorFunc(v1[0], v1[1], v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -9101,9 +9337,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T minVectorFunc(float v1x, float v1y, SimpleVec2fR v2, FloatFunction2<T> res)
+	public static <T> T minVectorFunc(float v1x, float v1y, Tup2fR v2, FloatFunction2<T> res)
 	{
-		return minVectorFunc(v1x, v1y, v2.getX(), v2.getY(), res);
+		return minVectorFunc(v1x, v1y, v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -9163,9 +9399,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static ComponentValueFloat max(SimpleVec2fR v, @ExtractionParam ComponentValueFloat res)
+	public static ComponentValueFloat max(Tup2fR v, @ExtractionParam ComponentValueFloat res)
 	{
-		return max(v.getX(), v.getY(), res);
+		return max(v.getV0(), v.getV1(), res);
 	}
 	
 	/**
@@ -9221,9 +9457,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The greatest value of the components.
 	 */
-	public static float maxValue(SimpleVec2fR v)
+	public static float maxValue(Tup2fR v)
 	{
-		return maxValue(v.getX(), v.getY());
+		return maxValue(v.getV0(), v.getV1());
 	}
 	
 	/**
@@ -9262,9 +9498,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The index of the greatest component.
 	 */
-	public static int maxComponent(SimpleVec2fR v)
+	public static int maxComponent(Tup2fR v)
 	{
-		return maxComponent(v.getX(), v.getY());
+		return maxComponent(v.getV0(), v.getV1());
 	}
 	
 	/**
@@ -9323,9 +9559,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] maxVector(SimpleVec2fR v1, SimpleVec2fR v2, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] maxVector(Tup2fR v1, Tup2fR v2, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return maxVector(v1.getX(), v1.getY(), v2.getX(), v2.getY(), res);
+		return maxVector(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -9334,7 +9570,7 @@ public class Vec2fUtils
 	 * 
 	 * <p>
 	 * Operation:<br>
-	 * {@code max(v1, (v2x, v2y))}
+	 * {@code max(v1, (v2[0], v2[1]))}
 	 * 
 	 * @param v1 The first vector.
 	 * @param v2 The second vector as an array with at least two entries.
@@ -9342,9 +9578,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] maxVector(SimpleVec2fR v1, @MinLength(2) float[] v2, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] maxVector(Tup2fR v1, @MinLength(2) float[] v2, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return maxVector(v1.getX(), v1.getY(), v2[0], v2[1], res);
+		return maxVector(v1.getV0(), v1.getV1(), v2[0], v2[1], res);
 	}
 	
 	/**
@@ -9362,9 +9598,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] maxVector(SimpleVec2fR v1, float v2x, float v2y, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] maxVector(Tup2fR v1, float v2x, float v2y, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return maxVector(v1.getX(), v1.getY(), v2x, v2y, res);
+		return maxVector(v1.getV0(), v1.getV1(), v2x, v2y, res);
 	}
 	
 	/**
@@ -9381,9 +9617,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] maxVector(@MinLength(2) float[] v1, SimpleVec2fR v2, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] maxVector(@MinLength(2) float[] v1, Tup2fR v2, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return maxVector(v1[0], v1[1], v2.getX(), v2.getY(), res);
+		return maxVector(v1[0], v1[1], v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -9440,9 +9676,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] maxVector(float v1x, float v1y, SimpleVec2fR v2, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] maxVector(float v1x, float v1y, Tup2fR v2, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return maxVector(v1x, v1y, v2.getX(), v2.getY(), res);
+		return maxVector(v1x, v1y, v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -9505,9 +9741,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T maxVector(SimpleVec2fR v1, SimpleVec2fR v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T maxVector(Tup2fR v1, Tup2fR v2, @ExtractionParam T res)
 	{
-		return maxVector(v1.getX(), v1.getY(), v2.getX(), v2.getY(), res);
+		return maxVector(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -9516,7 +9752,7 @@ public class Vec2fUtils
 	 * 
 	 * <p>
 	 * Operation:<br>
-	 * {@code max(v1, (v2x, v2y))}
+	 * {@code max(v1, (v2[0], v2[1]))}
 	 * 
 	 * @param <T> The type of the extraction parameter object.
 	 * 
@@ -9526,9 +9762,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T maxVector(SimpleVec2fR v1, @MinLength(2) float[] v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T maxVector(Tup2fR v1, @MinLength(2) float[] v2, @ExtractionParam T res)
 	{
-		return maxVector(v1.getX(), v1.getY(), v2[0], v2[1], res);
+		return maxVector(v1.getV0(), v1.getV1(), v2[0], v2[1], res);
 	}
 	
 	/**
@@ -9548,9 +9784,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T maxVector(SimpleVec2fR v1, float v2x, float v2y, @ExtractionParam T res)
+	public static <T extends Tup2fC> T maxVector(Tup2fR v1, float v2x, float v2y, @ExtractionParam T res)
 	{
-		return maxVector(v1.getX(), v1.getY(), v2x, v2y, res);
+		return maxVector(v1.getV0(), v1.getV1(), v2x, v2y, res);
 	}
 	
 	/**
@@ -9569,9 +9805,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T maxVector(@MinLength(2) float[] v1, SimpleVec2fR v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T maxVector(@MinLength(2) float[] v1, Tup2fR v2, @ExtractionParam T res)
 	{
-		return maxVector(v1[0], v1[1], v2.getX(), v2.getY(), res);
+		return maxVector(v1[0], v1[1], v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -9590,7 +9826,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T maxVector(@MinLength(2) float[] v1, @MinLength(2) float[] v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T maxVector(@MinLength(2) float[] v1, @MinLength(2) float[] v2, @ExtractionParam T res)
 	{
 		return maxVector(v1[0], v1[1], v2[0], v2[1], res);
 	}
@@ -9612,7 +9848,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T maxVector(@MinLength(2) float[] v1, float v2x, float v2y, @ExtractionParam T res)
+	public static <T extends Tup2fC> T maxVector(@MinLength(2) float[] v1, float v2x, float v2y, @ExtractionParam T res)
 	{
 		return maxVector(v1[0], v1[1], v2x, v2y, res);
 	}
@@ -9634,9 +9870,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T maxVector(float v1x, float v1y, SimpleVec2fR v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T maxVector(float v1x, float v1y, Tup2fR v2, @ExtractionParam T res)
 	{
-		return maxVector(v1x, v1y, v2.getX(), v2.getY(), res);
+		return maxVector(v1x, v1y, v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -9656,7 +9892,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T maxVector(float v1x, float v1y, @MinLength(2) float[] v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T maxVector(float v1x, float v1y, @MinLength(2) float[] v2, @ExtractionParam T res)
 	{
 		return maxVector(v1x, v1y, v2[0], v2[1], res);
 	}
@@ -9679,7 +9915,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T maxVector(float v1x, float v1y, float v2x, float v2y, @ExtractionParam T res)
+	public static <T extends Tup2fC> T maxVector(float v1x, float v1y, float v2x, float v2y, @ExtractionParam T res)
 	{
 		res.set(Math.max(v1x, v2x), Math.max(v1y, v2y));
 		
@@ -9702,9 +9938,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T maxVectorFunc(SimpleVec2fR v1, SimpleVec2fR v2, FloatFunction2<T> res)
+	public static <T> T maxVectorFunc(Tup2fR v1, Tup2fR v2, FloatFunction2<T> res)
 	{
-		return maxVectorFunc(v1.getX(), v1.getY(), v2.getX(), v2.getY(), res);
+		return maxVectorFunc(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -9713,7 +9949,7 @@ public class Vec2fUtils
 	 * 
 	 * <p>
 	 * Operation:<br>
-	 * {@code max(v1, (v2x, v2y))}
+	 * {@code max(v1, (v2[0], v2[1]))}
 	 * 
 	 * @param <T> The type of the extraction parameter object.
 	 * 
@@ -9723,9 +9959,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T maxVectorFunc(SimpleVec2fR v1, @MinLength(2) float[] v2, FloatFunction2<T> res)
+	public static <T> T maxVectorFunc(Tup2fR v1, @MinLength(2) float[] v2, FloatFunction2<T> res)
 	{
-		return maxVectorFunc(v1.getX(), v1.getY(), v2[0], v2[1], res);
+		return maxVectorFunc(v1.getV0(), v1.getV1(), v2[0], v2[1], res);
 	}
 	
 	/**
@@ -9745,9 +9981,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T maxVectorFunc(SimpleVec2fR v1, float v2x, float v2y, FloatFunction2<T> res)
+	public static <T> T maxVectorFunc(Tup2fR v1, float v2x, float v2y, FloatFunction2<T> res)
 	{
-		return maxVectorFunc(v1.getX(), v1.getY(), v2x, v2y, res);
+		return maxVectorFunc(v1.getV0(), v1.getV1(), v2x, v2y, res);
 	}
 	
 	/**
@@ -9766,9 +10002,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T maxVectorFunc(@MinLength(2) float[] v1, SimpleVec2fR v2, FloatFunction2<T> res)
+	public static <T> T maxVectorFunc(@MinLength(2) float[] v1, Tup2fR v2, FloatFunction2<T> res)
 	{
-		return maxVectorFunc(v1[0], v1[1], v2.getX(), v2.getY(), res);
+		return maxVectorFunc(v1[0], v1[1], v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -9831,9 +10067,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T maxVectorFunc(float v1x, float v1y, SimpleVec2fR v2, FloatFunction2<T> res)
+	public static <T> T maxVectorFunc(float v1x, float v1y, Tup2fR v2, FloatFunction2<T> res)
 	{
-		return maxVectorFunc(v1x, v1y, v2.getX(), v2.getY(), res);
+		return maxVectorFunc(v1x, v1y, v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -9896,16 +10132,16 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] normalize(Vec2fR v, @ExtractionParam @MinLength(3) float[] res)
+	public static float[] normalize(Tup2fR v, @ExtractionParam @MinLength(3) float[] res)
 	{
-		return normalize(v.getX(), v.getY(), res);
+		return normalize(v.getV0(), v.getV1(), res);
 	}
 	
 	/**
 	 * Normalizes the vector {@code (v)} and saves the result in the given extraction parameter.
 	 * 
 	 * <p>
-	 * Here the default {@link MathProvider} from {@link BarghosMath#PROVIDER} is used for calculation.
+	 * Here the explicitly given {@link MathProvider} is used for calculation.
 	 * 
 	 * <p>
 	 * Operation:<br>
@@ -9917,9 +10153,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] normalize(Vec2fR v, MathProvider mathProvider, @ExtractionParam @MinLength(3) float[] res)
+	public static float[] normalize(Tup2fR v, MathProvider mathProvider, @ExtractionParam @MinLength(3) float[] res)
 	{
-		return normalize(v.getX(), v.getY(), mathProvider, res);
+		return normalize(v.getV0(), v.getV1(), mathProvider, res);
 	}
 	
 	/**
@@ -9940,9 +10176,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] normalize(Vec2fR v, @FloatMinValue(0.0f) float tolerance, @ExtractionParam @MinLength(3) float[] res)
+	public static float[] normalize(Tup2fR v, @FloatMinValue(0.0f) float tolerance, @ExtractionParam @MinLength(3) float[] res)
 	{
-		return normalize(v.getX(), v.getY(), tolerance, res);
+		return normalize(v.getV0(), v.getV1(), tolerance, res);
 	}
 	
 	/**
@@ -9951,7 +10187,7 @@ public class Vec2fUtils
 	 * a zero vector.
 	 * 
 	 * <p>
-	 * Here the default {@link MathProvider} from {@link BarghosMath#PROVIDER} is used for calculation.
+	 * Here the explicitly given {@link MathProvider} is used for calculation.
 	 * 
 	 * <p>
 	 * Operation:<br>
@@ -9964,9 +10200,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] normalize(Vec2fR v, @FloatMinValue(0.0f) float tolerance, MathProvider mathProvider, @ExtractionParam @MinLength(3) float[] res)
+	public static float[] normalize(Tup2fR v, @FloatMinValue(0.0f) float tolerance, MathProvider mathProvider, @ExtractionParam @MinLength(3) float[] res)
 	{
-		return normalize(v.getX(), v.getY(), tolerance, mathProvider, res);
+		return normalize(v.getV0(), v.getV1(), tolerance, mathProvider, res);
 	}
 	
 	/**
@@ -10220,9 +10456,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T normalize(Vec2fR v, @ExtractionParam T res)
+	public static <T extends Tup2fC> T normalize(Tup2fR v, @ExtractionParam T res)
 	{
-		return normalize(v.getX(), v.getY(), res);
+		return normalize(v.getV0(), v.getV1(), res);
 	}
 	
 	/**
@@ -10243,9 +10479,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T normalize(Vec2fR v, MathProvider mathProvider, @ExtractionParam T res)
+	public static <T extends Tup2fC> T normalize(Tup2fR v, MathProvider mathProvider, @ExtractionParam T res)
 	{
-		return normalize(v.getX(), v.getY(), res);
+		return normalize(v.getV0(), v.getV1(), res);
 	}
 	
 	/**
@@ -10268,9 +10504,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T normalize(Vec2fR v, @FloatMinValue(0.0f) float tolerance, @ExtractionParam T res)
+	public static <T extends Tup2fC> T normalize(Tup2fR v, @FloatMinValue(0.0f) float tolerance, @ExtractionParam T res)
 	{
-		return normalize(v.getX(), v.getY(), tolerance, res);
+		return normalize(v.getV0(), v.getV1(), tolerance, res);
 	}
 	
 	/**
@@ -10294,9 +10530,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T normalize(Vec2fR v, @FloatMinValue(0.0f) float tolerance, MathProvider mathProvider, @ExtractionParam T res)
+	public static <T extends Tup2fC> T normalize(Tup2fR v, @FloatMinValue(0.0f) float tolerance, MathProvider mathProvider, @ExtractionParam T res)
 	{
-		return normalize(v.getX(), v.getY(), tolerance, res);
+		return normalize(v.getV0(), v.getV1(), tolerance, res);
 	}
 	
 	/**
@@ -10316,7 +10552,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T normalize(@MinLength(3) float[] v, @ExtractionParam T res)
+	public static <T extends Tup2fC> T normalize(@MinLength(2) float[] v, @ExtractionParam T res)
 	{
 		return normalize(v[0], v[1], res);
 	}
@@ -10339,7 +10575,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T normalize(@MinLength(3) float[] v, MathProvider mathProvider, @ExtractionParam T res)
+	public static <T extends Tup2fC> T normalize(@MinLength(2) float[] v, MathProvider mathProvider, @ExtractionParam T res)
 	{
 		return normalize(v[0], v[1], mathProvider, res);
 	}
@@ -10364,7 +10600,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T normalize(@MinLength(3) float[] v, @FloatMinValue(0.0f) float tolerance, @ExtractionParam T res)
+	public static <T extends Tup2fC> T normalize(@MinLength(2) float[] v, @FloatMinValue(0.0f) float tolerance, @ExtractionParam T res)
 	{
 		return normalize(v[0], v[1], tolerance, res);
 	}
@@ -10390,7 +10626,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T normalize(@MinLength(3) float[] v, @FloatMinValue(0.0f) float tolerance, MathProvider mathProvider, @ExtractionParam T res)
+	public static <T extends Tup2fC> T normalize(@MinLength(2) float[] v, @FloatMinValue(0.0f) float tolerance, MathProvider mathProvider, @ExtractionParam T res)
 	{
 		return normalize(v[0], v[1], tolerance, mathProvider, res);
 	}
@@ -10413,7 +10649,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T normalize(float x, float y, @ExtractionParam T res)
+	public static <T extends Tup2fC> T normalize(float x, float y, @ExtractionParam T res)
 	{
 		if(x == 0.0f && y == 0.0f)
 		{
@@ -10448,7 +10684,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T normalize(float x, float y, MathProvider mathProvider, @ExtractionParam T res)
+	public static <T extends Tup2fC> T normalize(float x, float y, MathProvider mathProvider, @ExtractionParam T res)
 	{
 		if(x == 0.0f && y == 0.0f)
 		{
@@ -10485,7 +10721,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T normalize(float x, float y, @FloatMinValue(0.0f) float tolerance, @ExtractionParam T res)
+	public static <T extends Tup2fC> T normalize(float x, float y, @FloatMinValue(0.0f) float tolerance, @ExtractionParam T res)
 	{
 		if(	Math.abs(x) <= tolerance &&
 			Math.abs(y) <= tolerance)
@@ -10524,7 +10760,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T normalize(float x, float y, @FloatMinValue(0.0f) float tolerance, MathProvider mathProvider, @ExtractionParam T res)
+	public static <T extends Tup2fC> T normalize(float x, float y, @FloatMinValue(0.0f) float tolerance, MathProvider mathProvider, @ExtractionParam T res)
 	{
 		if(	Math.abs(x) <= tolerance &&
 			Math.abs(y) <= tolerance)
@@ -10559,9 +10795,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T normalizeFunc(Vec2fR v, FloatFunction2<T> res)
+	public static <T> T normalizeFunc(Tup2fR v, FloatFunction2<T> res)
 	{
-		return normalizeFunc(v.getX(), v.getY(), res);
+		return normalizeFunc(v.getV0(), v.getV1(), res);
 	}
 	
 	/**
@@ -10583,9 +10819,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T normalizeFunc(Vec2fR v, MathProvider mathProvider, FloatFunction2<T> res)
+	public static <T> T normalizeFunc(Tup2fR v, MathProvider mathProvider, FloatFunction2<T> res)
 	{
-		return normalizeFunc(v.getX(), v.getY(), res);
+		return normalizeFunc(v.getV0(), v.getV1(), res);
 	}
 	
 	/**
@@ -10609,9 +10845,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T normalizeFunc(Vec2fR v, @FloatMinValue(0.0f) float tolerance, FloatFunction2<T> res)
+	public static <T> T normalizeFunc(Tup2fR v, @FloatMinValue(0.0f) float tolerance, FloatFunction2<T> res)
 	{
-		return normalizeFunc(v.getX(), v.getY(), tolerance, res);
+		return normalizeFunc(v.getV0(), v.getV1(), tolerance, res);
 	}
 	
 	/**
@@ -10636,9 +10872,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T normalizeFunc(Vec2fR v, @FloatMinValue(0.0f) float tolerance, MathProvider mathProvider, FloatFunction2<T> res)
+	public static <T> T normalizeFunc(Tup2fR v, @FloatMinValue(0.0f) float tolerance, MathProvider mathProvider, FloatFunction2<T> res)
 	{
-		return normalizeFunc(v.getX(), v.getY(), tolerance, res);
+		return normalizeFunc(v.getV0(), v.getV1(), tolerance, res);
 	}
 	
 	/**
@@ -10659,7 +10895,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T normalizeFunc(@MinLength(3) float[] v, FloatFunction2<T> res)
+	public static <T> T normalizeFunc(@MinLength(2) float[] v, FloatFunction2<T> res)
 	{
 		return normalizeFunc(v[0], v[1], res);
 	}
@@ -10683,7 +10919,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T normalizeFunc(@MinLength(3) float[] v, MathProvider mathProvider, FloatFunction2<T> res)
+	public static <T> T normalizeFunc(@MinLength(2) float[] v, MathProvider mathProvider, FloatFunction2<T> res)
 	{
 		return normalizeFunc(v[0], v[1], mathProvider, res);
 	}
@@ -10709,7 +10945,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T normalizeFunc(@MinLength(3) float[] v, @FloatMinValue(0.0f) float tolerance, FloatFunction2<T> res)
+	public static <T> T normalizeFunc(@MinLength(2) float[] v, @FloatMinValue(0.0f) float tolerance, FloatFunction2<T> res)
 	{
 		return normalizeFunc(v[0], v[1], tolerance, res);
 	}
@@ -10736,7 +10972,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T normalizeFunc(@MinLength(3) float[] v, @FloatMinValue(0.0f) float tolerance, MathProvider mathProvider, FloatFunction2<T> res)
+	public static <T> T normalizeFunc(@MinLength(2) float[] v, @FloatMinValue(0.0f) float tolerance, MathProvider mathProvider, FloatFunction2<T> res)
 	{
 		return normalizeFunc(v[0], v[1], tolerance, mathProvider, res);
 	}
@@ -10887,9 +11123,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] negate(SimpleVec2fR v, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] negate(Tup2fR v, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return negate(v.getX(), v.getY(), res);
+		return negate(v.getV0(), v.getV1(), res);
 	}
 	
 	/**
@@ -10944,9 +11180,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T negate(SimpleVec2fR v, @ExtractionParam T res)
+	public static <T extends Tup2fC> T negate(Tup2fR v, @ExtractionParam T res)
 	{
-		return negate(v.getX(), v.getY(), res);
+		return negate(v.getV0(), v.getV1(), res);
 	}
 	
 	/**
@@ -10963,7 +11199,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T negate(@MinLength(2) float[] v, @ExtractionParam T res)
+	public static <T extends Tup2fC> T negate(@MinLength(2) float[] v, @ExtractionParam T res)
 	{
 		return negate(v[0], v[1], res);
 	}
@@ -10983,7 +11219,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T negate(float x, float y, @ExtractionParam T res)
+	public static <T extends Tup2fC> T negate(float x, float y, @ExtractionParam T res)
 	{
 		res.set(-x, -y);
 		
@@ -11005,9 +11241,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T negateFunc(SimpleVec2fR v, FloatFunction2<T> res)
+	public static <T> T negateFunc(Tup2fR v, FloatFunction2<T> res)
 	{
-		return negateFunc(v.getX(), v.getY(), res);
+		return negateFunc(v.getV0(), v.getV1(), res);
 	}
 	
 	/**
@@ -11063,9 +11299,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] inverse(SimpleVec2fR v, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] inverse(Tup2fR v, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return inverse(v.getX(), v.getY(), res);
+		return inverse(v.getV0(), v.getV1(), res);
 	}
 	
 	/**
@@ -11120,9 +11356,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T inverse(SimpleVec2fR v, @ExtractionParam T res)
+	public static <T extends Tup2fC> T inverse(Tup2fR v, @ExtractionParam T res)
 	{
-		return inverse(v.getX(), v.getY(), res);
+		return inverse(v.getV0(), v.getV1(), res);
 	}
 	
 	/**
@@ -11139,7 +11375,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T inverse(@MinLength(2) float[] v, @ExtractionParam T res)
+	public static <T extends Tup2fC> T inverse(@MinLength(2) float[] v, @ExtractionParam T res)
 	{
 		return inverse(v[0], v[1], res);
 	}
@@ -11159,7 +11395,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T inverse(float x, float y, @ExtractionParam T res)
+	public static <T extends Tup2fC> T inverse(float x, float y, @ExtractionParam T res)
 	{
 		res.set(1.0f / x, 1.0f / y);
 		
@@ -11198,9 +11434,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T inverseFunc(SimpleVec2fR v, FloatFunction2<T> res)
+	public static <T> T inverseFunc(Tup2fR v, FloatFunction2<T> res)
 	{
-		return inverseFunc(v.getX(), v.getY(), res);
+		return inverseFunc(v.getV0(), v.getV1(), res);
 	}
 	
 	/**
@@ -11256,9 +11492,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] rotateRad(SimpleVec2fR v, float angle, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] rotateRad(Tup2fR v, float angle, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return rotateRad(v.getX(), v.getY(), angle, res);
+		return rotateRad(v.getV0(), v.getV1(), angle, res);
 	}
 	
 	/**
@@ -11274,9 +11510,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] rotateRad(SimpleVec2fR v, float angle, MathProvider mathProvider, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] rotateRad(Tup2fR v, float angle, MathProvider mathProvider, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return rotateRad(v.getX(), v.getY(), angle, mathProvider, res);
+		return rotateRad(v.getV0(), v.getV1(), angle, mathProvider, res);
 	}
 	
 	/**
@@ -11369,9 +11605,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] rotateDeg(SimpleVec2fR v, float angle, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] rotateDeg(Tup2fR v, float angle, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return rotateDeg(v.getX(), v.getY(), angle, res);
+		return rotateDeg(v.getV0(), v.getV1(), angle, res);
 	}
 	
 	/**
@@ -11387,9 +11623,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] rotateDeg(SimpleVec2fR v, float angle, MathProvider mathProvider, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] rotateDeg(Tup2fR v, float angle, MathProvider mathProvider, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return rotateDeg(v.getX(), v.getY(), angle, mathProvider, res);
+		return rotateDeg(v.getV0(), v.getV1(), angle, mathProvider, res);
 	}
 	
 	/**
@@ -11478,9 +11714,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T rotateRad(SimpleVec2fR v, float angle, @ExtractionParam T res)
+	public static <T extends Tup2fC> T rotateRad(Tup2fR v, float angle, @ExtractionParam T res)
 	{
-		return rotateRad(v.getX(), v.getY(), angle, res);
+		return rotateRad(v.getV0(), v.getV1(), angle, res);
 	}
 	
 	/**
@@ -11498,9 +11734,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T rotateRad(SimpleVec2fR v, float angle, MathProvider mathProvider, @ExtractionParam T res)
+	public static <T extends Tup2fC> T rotateRad(Tup2fR v, float angle, MathProvider mathProvider, @ExtractionParam T res)
 	{
-		return rotateRad(v.getX(), v.getY(), angle, mathProvider, res);
+		return rotateRad(v.getV0(), v.getV1(), angle, mathProvider, res);
 	}
 	
 	/**
@@ -11517,7 +11753,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T rotateRad(@MinLength(2) float[] v, float angle, @ExtractionParam T res)
+	public static <T extends Tup2fC> T rotateRad(@MinLength(2) float[] v, float angle, @ExtractionParam T res)
 	{
 		return rotateRad(v[0], v[1], angle, res);
 	}
@@ -11537,7 +11773,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T rotateRad(@MinLength(2) float[] v, float angle, MathProvider mathProvider, @ExtractionParam T res)
+	public static <T extends Tup2fC> T rotateRad(@MinLength(2) float[] v, float angle, MathProvider mathProvider, @ExtractionParam T res)
 	{
 		return rotateRad(v[0], v[1], angle, mathProvider, res);
 	}
@@ -11557,7 +11793,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T rotateRad(float x, float y, float angle, @ExtractionParam T res)
+	public static <T extends Tup2fC> T rotateRad(float x, float y, float angle, @ExtractionParam T res)
 	{
 		return rotateRad(x, y, angle, BarghosMath.PROVIDER, res);
 	}
@@ -11578,7 +11814,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T rotateRad(float x, float y, float angle, MathProvider mathProvider, @ExtractionParam T res)
+	public static <T extends Tup2fC> T rotateRad(float x, float y, float angle, MathProvider mathProvider, @ExtractionParam T res)
 	{
 		float cos = mathProvider.cos(angle);
 		float sin = mathProvider.sin(angle);
@@ -11602,9 +11838,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T rotateDeg(SimpleVec2fR v, float angle, @ExtractionParam T res)
+	public static <T extends Tup2fC> T rotateDeg(Tup2fR v, float angle, @ExtractionParam T res)
 	{
-		return rotateDeg(v.getX(), v.getY(), angle, res);
+		return rotateDeg(v.getV0(), v.getV1(), angle, res);
 	}
 	
 	/**
@@ -11622,9 +11858,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T rotateDeg(SimpleVec2fR v, float angle, MathProvider mathProvider, @ExtractionParam T res)
+	public static <T extends Tup2fC> T rotateDeg(Tup2fR v, float angle, MathProvider mathProvider, @ExtractionParam T res)
 	{
-		return rotateDeg(v.getX(), v.getY(), angle, mathProvider, res);
+		return rotateDeg(v.getV0(), v.getV1(), angle, mathProvider, res);
 	}
 	
 	/**
@@ -11641,7 +11877,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T rotateDeg(@MinLength(2) float[] v, float angle, @ExtractionParam T res)
+	public static <T extends Tup2fC> T rotateDeg(@MinLength(2) float[] v, float angle, @ExtractionParam T res)
 	{
 		return rotateDeg(v[0], v[1], angle, res);
 	}
@@ -11661,7 +11897,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T rotateDeg(@MinLength(2) float[] v, float angle, MathProvider mathProvider, @ExtractionParam T res)
+	public static <T extends Tup2fC> T rotateDeg(@MinLength(2) float[] v, float angle, MathProvider mathProvider, @ExtractionParam T res)
 	{
 		return rotateDeg(v[0], v[1], angle, mathProvider, res);
 	}
@@ -11681,7 +11917,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T rotateDeg(float x, float y, float angle, @ExtractionParam T res)
+	public static <T extends Tup2fC> T rotateDeg(float x, float y, float angle, @ExtractionParam T res)
 	{
 		return rotateRad(x, y, angle * BarghosMath.DEG_TO_RADf, res);
 	}
@@ -11702,7 +11938,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T rotateDeg(float x, float y, float angle, MathProvider mathProvider, @ExtractionParam T res)
+	public static <T extends Tup2fC> T rotateDeg(float x, float y, float angle, MathProvider mathProvider, @ExtractionParam T res)
 	{
 		return rotateRad(x, y, angle * BarghosMath.DEG_TO_RADf, mathProvider, res);
 	}
@@ -11722,9 +11958,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T rotateRadFunc(SimpleVec2fR v, float angle, FloatFunction2<T> res)
+	public static <T> T rotateRadFunc(Tup2fR v, float angle, FloatFunction2<T> res)
 	{
-		return rotateRadFunc(v.getX(), v.getY(), angle, res);
+		return rotateRadFunc(v.getV0(), v.getV1(), angle, res);
 	}
 	
 	/**
@@ -11743,9 +11979,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T rotateRadFunc(SimpleVec2fR v, float angle, MathProvider mathProvider, FloatFunction2<T> res)
+	public static <T> T rotateRadFunc(Tup2fR v, float angle, MathProvider mathProvider, FloatFunction2<T> res)
 	{
-		return rotateRadFunc(v.getX(), v.getY(), angle, mathProvider, res);
+		return rotateRadFunc(v.getV0(), v.getV1(), angle, mathProvider, res);
 	}
 	
 	/**
@@ -11850,9 +12086,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T rotateDegFunc(SimpleVec2fR v, float angle, FloatFunction2<T> res)
+	public static <T> T rotateDegFunc(Tup2fR v, float angle, FloatFunction2<T> res)
 	{
-		return rotateDegFunc(v.getX(), v.getY(), angle, res);
+		return rotateDegFunc(v.getV0(), v.getV1(), angle, res);
 	}
 	
 	/**
@@ -11871,9 +12107,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T rotateDegFunc(SimpleVec2fR v, float angle, MathProvider mathProvider, FloatFunction2<T> res)
+	public static <T> T rotateDegFunc(Tup2fR v, float angle, MathProvider mathProvider, FloatFunction2<T> res)
 	{
-		return rotateDegFunc(v.getX(), v.getY(), angle, mathProvider, res);
+		return rotateDegFunc(v.getV0(), v.getV1(), angle, mathProvider, res);
 	}
 	
 	/**
@@ -11973,9 +12209,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result
 	 */
-	public static float[] project(SimpleVec2fR v, SimpleVec2fR t, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] project(Tup2fR v, Tup2fR t, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return project(v.getX(), v.getY(), t.getX(), t.getY(), res);
+		return project(v.getV0(), v.getV1(), t.getV0(), t.getV1(), res);
 	}
 	
 	/**
@@ -11991,9 +12227,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result
 	 */
-	public static float[] project(SimpleVec2fR v, @MinLength(2) float[] t, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] project(Tup2fR v, @MinLength(2) float[] t, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return project(v.getX(), v.getY(), t[0], t[1], res);
+		return project(v.getV0(), v.getV1(), t[0], t[1], res);
 	}
 	
 	/**
@@ -12010,9 +12246,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result
 	 */
-	public static float[] project(SimpleVec2fR v, float tX, float tY, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] project(Tup2fR v, float tX, float tY, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return project(v.getX(), v.getY(), tX, tY, res);
+		return project(v.getV0(), v.getV1(), tX, tY, res);
 	}
 	
 	/**
@@ -12028,9 +12264,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result
 	 */
-	public static float[] project(@MinLength(2) float[] v, SimpleVec2fR t, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] project(@MinLength(2) float[] v, Tup2fR t, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return project(v[0], v[1], t.getX(), t.getY(), res);
+		return project(v[0], v[1], t.getV0(), t.getV1(), res);
 	}
 	
 	/**
@@ -12084,9 +12320,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result
 	 */
-	public static float[] project(float vX, float vY, SimpleVec2fR t, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] project(float vX, float vY, Tup2fR t, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return project(vX, vY, t.getX(), t.getY(), res);
+		return project(vX, vY, t.getV0(), t.getV1(), res);
 	}
 	
 	/**
@@ -12148,9 +12384,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T project(SimpleVec2fR v, SimpleVec2fR t, @ExtractionParam T res)
+	public static <T extends Tup2fC> T project(Tup2fR v, Tup2fR t, @ExtractionParam T res)
 	{
-		return project(v.getX(), v.getY(), t.getX(), t.getY(), res);
+		return project(v.getV0(), v.getV1(), t.getV0(), t.getV1(), res);
 	}
 	
 	/**
@@ -12168,9 +12404,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T project(SimpleVec2fR v, @MinLength(2) float[] t, @ExtractionParam T res)
+	public static <T extends Tup2fC> T project(Tup2fR v, @MinLength(2) float[] t, @ExtractionParam T res)
 	{
-		return project(v.getX(), v.getY(), t[0], t[1], res);
+		return project(v.getV0(), v.getV1(), t[0], t[1], res);
 	}
 	
 	/**
@@ -12189,9 +12425,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T project(SimpleVec2fR v, float tX, float tY, @ExtractionParam T res)
+	public static <T extends Tup2fC> T project(Tup2fR v, float tX, float tY, @ExtractionParam T res)
 	{
-		return project(v.getX(), v.getY(), tX, tY, res);
+		return project(v.getV0(), v.getV1(), tX, tY, res);
 	}
 	
 	/**
@@ -12209,9 +12445,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T project(@MinLength(2) float[] v, SimpleVec2fR t, @ExtractionParam T res)
+	public static <T extends Tup2fC> T project(@MinLength(2) float[] v, Tup2fR t, @ExtractionParam T res)
 	{
-		return project(v[0], v[1], t.getX(), t.getY(), res);
+		return project(v[0], v[1], t.getV0(), t.getV1(), res);
 	}
 	
 	/**
@@ -12229,7 +12465,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T project(@MinLength(2) float[] v, @MinLength(2) float[] t, @ExtractionParam T res)
+	public static <T extends Tup2fC> T project(@MinLength(2) float[] v, @MinLength(2) float[] t, @ExtractionParam T res)
 	{
 		return project(v[0], v[1], t[0], t[1], res);
 	}
@@ -12250,7 +12486,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T project(@MinLength(2) float[] v, float tX, float tY, @ExtractionParam T res)
+	public static <T extends Tup2fC> T project(@MinLength(2) float[] v, float tX, float tY, @ExtractionParam T res)
 	{
 		return project(v[0], v[1], tX, tY, res);
 	}
@@ -12271,9 +12507,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T project(float vX, float vY, SimpleVec2fR t, @ExtractionParam T res)
+	public static <T extends Tup2fC> T project(float vX, float vY, Tup2fR t, @ExtractionParam T res)
 	{
-		return project(vX, vY, t.getX(), t.getY(), res);
+		return project(vX, vY, t.getV0(), t.getV1(), res);
 	}
 	
 	/**
@@ -12292,7 +12528,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T project(float vX, float vY, @MinLength(2) float[] t, @ExtractionParam T res)
+	public static <T extends Tup2fC> T project(float vX, float vY, @MinLength(2) float[] t, @ExtractionParam T res)
 	{
 		return project(vX, vY, t[0], t[1], res);
 	}
@@ -12314,7 +12550,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T project(float vX, float vY, float tX, float tY, @ExtractionParam T res)
+	public static <T extends Tup2fC> T project(float vX, float vY, float tX, float tY, @ExtractionParam T res)
 	{
 		float dot = dot(vX, vY, tX, tY);
 		
@@ -12339,9 +12575,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T projectFunc(SimpleVec2fR v, SimpleVec2fR t, FloatFunction2<T> res)
+	public static <T> T projectFunc(Tup2fR v, Tup2fR t, FloatFunction2<T> res)
 	{
-		return projectFunc(v.getX(), v.getY(), t.getX(), t.getY(), res);
+		return projectFunc(v.getV0(), v.getV1(), t.getV0(), t.getV1(), res);
 	}
 	
 	/**
@@ -12360,9 +12596,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T projectFunc(SimpleVec2fR v, @MinLength(2) float[] t, FloatFunction2<T> res)
+	public static <T> T projectFunc(Tup2fR v, @MinLength(2) float[] t, FloatFunction2<T> res)
 	{
-		return projectFunc(v.getX(), v.getY(), t[0], t[1], res);
+		return projectFunc(v.getV0(), v.getV1(), t[0], t[1], res);
 	}
 	
 	/**
@@ -12382,9 +12618,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T projectFunc(SimpleVec2fR v, float tX, float tY, FloatFunction2<T> res)
+	public static <T> T projectFunc(Tup2fR v, float tX, float tY, FloatFunction2<T> res)
 	{
-		return projectFunc(v.getX(), v.getY(), tX, tY, res);
+		return projectFunc(v.getV0(), v.getV1(), tX, tY, res);
 	}
 	
 	/**
@@ -12403,9 +12639,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T projectFunc(@MinLength(2) float[] v, SimpleVec2fR t, FloatFunction2<T> res)
+	public static <T> T projectFunc(@MinLength(2) float[] v, Tup2fR t, FloatFunction2<T> res)
 	{
-		return projectFunc(v[0], v[1], t.getX(), t.getY(), res);
+		return projectFunc(v[0], v[1], t.getV0(), t.getV1(), res);
 	}
 	
 	/**
@@ -12468,9 +12704,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T projectFunc(float vX, float vY, SimpleVec2fR t, FloatFunction2<T> res)
+	public static <T> T projectFunc(float vX, float vY, Tup2fR t, FloatFunction2<T> res)
 	{
-		return projectFunc(vX, vY, t.getX(), t.getY(), res);
+		return projectFunc(vX, vY, t.getV0(), t.getV1(), res);
 	}
 	
 	/**
@@ -12529,9 +12765,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] reflect(SimpleVec2fR v, SimpleVec2fR n, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] reflect(Tup2fR v, Tup2fR n, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return reflect(v.getX(), v.getY(), n.getX(), n.getY(), res);
+		return reflect(v.getV0(), v.getV1(), n.getV0(), n.getV1(), res);
 	}
 	
 	/**
@@ -12543,9 +12779,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] reflect(SimpleVec2fR v, @MinLength(2) float[] n, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] reflect(Tup2fR v, @MinLength(2) float[] n, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return reflect(v.getX(), v.getY(), n[0], n[1], res);
+		return reflect(v.getV0(), v.getV1(), n[0], n[1], res);
 	}
 	
 	/**
@@ -12558,9 +12794,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] reflect(SimpleVec2fR v, float nX, float nY, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] reflect(Tup2fR v, float nX, float nY, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return reflect(v.getX(), v.getY(), nX, nY, res);
+		return reflect(v.getV0(), v.getV1(), nX, nY, res);
 	}
 	
 	/**
@@ -12572,9 +12808,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] reflect(@MinLength(2) float[] v, SimpleVec2fR n, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] reflect(@MinLength(2) float[] v, Tup2fR n, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return reflect(v[0], v[1], n.getX(), n.getY(), res);
+		return reflect(v[0], v[1], n.getV0(), n.getV1(), res);
 	}
 	
 	/**
@@ -12616,9 +12852,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] reflect(float vX, float vY, SimpleVec2fR n, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] reflect(float vX, float vY, Tup2fR n, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return reflect(vX, vY, n.getX(), n.getY(), res);
+		return reflect(vX, vY, n.getV0(), n.getV1(), res);
 	}
 	
 	/**
@@ -12668,9 +12904,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T reflect(SimpleVec2fR v, SimpleVec2fR n, @ExtractionParam T res)
+	public static <T extends Tup2fC> T reflect(Tup2fR v, Tup2fR n, @ExtractionParam T res)
 	{
-		return reflect(v.getX(), v.getY(), n.getX(), n.getY(), res);
+		return reflect(v.getV0(), v.getV1(), n.getV0(), n.getV1(), res);
 	}
 	
 	/**
@@ -12684,9 +12920,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T reflect(SimpleVec2fR v, @MinLength(2) float[] n, @ExtractionParam T res)
+	public static <T extends Tup2fC> T reflect(Tup2fR v, @MinLength(2) float[] n, @ExtractionParam T res)
 	{
-		return reflect(v.getX(), v.getY(), n[0], n[1], res);
+		return reflect(v.getV0(), v.getV1(), n[0], n[1], res);
 	}
 	
 	/**
@@ -12701,9 +12937,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T reflect(SimpleVec2fR v, float nX, float nY, @ExtractionParam T res)
+	public static <T extends Tup2fC> T reflect(Tup2fR v, float nX, float nY, @ExtractionParam T res)
 	{
-		return reflect(v.getX(), v.getY(), nX, nY, res);
+		return reflect(v.getV0(), v.getV1(), nX, nY, res);
 	}
 	
 	/**
@@ -12717,9 +12953,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T reflect(@MinLength(2) float[] v, SimpleVec2fR n, @ExtractionParam T res)
+	public static <T extends Tup2fC> T reflect(@MinLength(2) float[] v, Tup2fR n, @ExtractionParam T res)
 	{
-		return reflect(v[0], v[1], n.getX(), n.getY(), res);
+		return reflect(v[0], v[1], n.getV0(), n.getV1(), res);
 	}
 	
 	/**
@@ -12733,7 +12969,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T reflect(@MinLength(2) float[] v, @MinLength(2) float[] n, @ExtractionParam T res)
+	public static <T extends Tup2fC> T reflect(@MinLength(2) float[] v, @MinLength(2) float[] n, @ExtractionParam T res)
 	{
 		return reflect(v[0], v[1], n[0], n[1], res);
 	}
@@ -12750,7 +12986,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T reflect(@MinLength(2) float[] v, float nX, float nY, @ExtractionParam T res)
+	public static <T extends Tup2fC> T reflect(@MinLength(2) float[] v, float nX, float nY, @ExtractionParam T res)
 	{
 		return reflect(v[0], v[1], nX, nY, res);
 	}
@@ -12767,9 +13003,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T reflect(float vX, float vY, SimpleVec2fR n, @ExtractionParam T res)
+	public static <T extends Tup2fC> T reflect(float vX, float vY, Tup2fR n, @ExtractionParam T res)
 	{
-		return reflect(vX, vY, n.getX(), n.getY(), res);
+		return reflect(vX, vY, n.getV0(), n.getV1(), res);
 	}
 	
 	/**
@@ -12784,7 +13020,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T reflect(float vX, float vY, @MinLength(2) float[] n, @ExtractionParam T res)
+	public static <T extends Tup2fC> T reflect(float vX, float vY, @MinLength(2) float[] n, @ExtractionParam T res)
 	{
 		return reflect(vX, vY, n[0], n[1], res);
 	}
@@ -12802,7 +13038,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T reflect(float vX, float vY, float nX, float nY, @ExtractionParam T res)
+	public static <T extends Tup2fC> T reflect(float vX, float vY, float nX, float nY, @ExtractionParam T res)
 	{
 		float dot = -2 * dot(vX, vY, nX, nY);
 		
@@ -12823,9 +13059,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T reflectFunc(SimpleVec2fR v, SimpleVec2fR n, FloatFunction2<T> res)
+	public static <T> T reflectFunc(Tup2fR v, Tup2fR n, FloatFunction2<T> res)
 	{
-		return reflectFunc(v.getX(), v.getY(), n.getX(), n.getY(), res);
+		return reflectFunc(v.getV0(), v.getV1(), n.getV0(), n.getV1(), res);
 	}
 	
 	/**
@@ -12840,9 +13076,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T reflectFunc(SimpleVec2fR v, @MinLength(2) float[] n, FloatFunction2<T> res)
+	public static <T> T reflectFunc(Tup2fR v, @MinLength(2) float[] n, FloatFunction2<T> res)
 	{
-		return reflectFunc(v.getX(), v.getY(), n[0], n[1], res);
+		return reflectFunc(v.getV0(), v.getV1(), n[0], n[1], res);
 	}
 	
 	/**
@@ -12858,9 +13094,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T reflectFunc(SimpleVec2fR v, float nX, float nY, FloatFunction2<T> res)
+	public static <T> T reflectFunc(Tup2fR v, float nX, float nY, FloatFunction2<T> res)
 	{
-		return reflectFunc(v.getX(), v.getY(), nX, nY, res);
+		return reflectFunc(v.getV0(), v.getV1(), nX, nY, res);
 	}
 	
 	/**
@@ -12875,9 +13111,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T reflectFunc(@MinLength(2) float[] v, SimpleVec2fR n, FloatFunction2<T> res)
+	public static <T> T reflectFunc(@MinLength(2) float[] v, Tup2fR n, FloatFunction2<T> res)
 	{
-		return reflectFunc(v[0], v[1], n.getX(), n.getY(), res);
+		return reflectFunc(v[0], v[1], n.getV0(), n.getV1(), res);
 	}
 	
 	/**
@@ -12928,9 +13164,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T reflectFunc(float vX, float vY, SimpleVec2fR n, FloatFunction2<T> res)
+	public static <T> T reflectFunc(float vX, float vY, Tup2fR n, FloatFunction2<T> res)
 	{
-		return reflectFunc(vX, vY, n.getX(), n.getY(), res);
+		return reflectFunc(vX, vY, n.getV0(), n.getV1(), res);
 	}
 	
 	/**
@@ -12985,9 +13221,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The dot product (scalar product).
 	 */
-	public static float dot(SimpleVec2fR v1, SimpleVec2fR v2)
+	public static float dot(Tup2fR v1, Tup2fR v2)
 	{
-		return dot(v1.getX(), v1.getY(), v2.getX(), v2.getY());
+		return dot(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1());
 	}
 	
 	/**
@@ -13003,9 +13239,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The dot product (scalar product).
 	 */
-	public static float dot(SimpleVec2fR v1, @MinLength(2) float[] v2)
+	public static float dot(Tup2fR v1, @MinLength(2) float[] v2)
 	{
-		return dot(v1.getX(), v1.getY(), v2[0], v2[1]);
+		return dot(v1.getV0(), v1.getV1(), v2[0], v2[1]);
 	}
 	
 	/**
@@ -13022,9 +13258,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The dot product (scalar product).
 	 */
-	public static float dot(SimpleVec2fR v1, float v2x, float v2y)
+	public static float dot(Tup2fR v1, float v2x, float v2y)
 	{
-		return dot(v1.getX(), v1.getY(), v2x, v2y);
+		return dot(v1.getV0(), v1.getV1(), v2x, v2y);
 	}
 	
 	/**
@@ -13040,9 +13276,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The dot product (scalar product).
 	 */
-	public static float dot(@MinLength(2) float[] v1, SimpleVec2fR v2)
+	public static float dot(@MinLength(2) float[] v1, Tup2fR v2)
 	{
-		return dot(v1[0], v1[1], v2.getX(), v2.getY());
+		return dot(v1[0], v1[1], v2.getV0(), v2.getV1());
 	}
 	
 	/**
@@ -13096,9 +13332,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The dot product (scalar product).
 	 */
-	public static float dot(float v1x, float v1y, SimpleVec2fR v2)
+	public static float dot(float v1x, float v1y, Tup2fR v2)
 	{
-		return dot(v1x, v1y, v2.getX(), v2.getY());
+		return dot(v1x, v1y, v2.getV0(), v2.getV1());
 	}
 	
 	/**
@@ -13154,9 +13390,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] halfVectorTo(SimpleVec2fR v1, SimpleVec2fR v2, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] halfVectorTo(Tup2fR v1, Tup2fR v2, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return halfVectorTo(v1.getX(), v1.getY(), v2.getX(), v2.getY(), res);
+		return halfVectorTo(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -13173,9 +13409,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] halfVectorTo(SimpleVec2fR v1, @MinLength(2) float[] v2, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] halfVectorTo(Tup2fR v1, @MinLength(2) float[] v2, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return halfVectorTo(v1.getX(), v1.getY(), v2[0], v2[1], res);
+		return halfVectorTo(v1.getV0(), v1.getV1(), v2[0], v2[1], res);
 	}
 	
 	/**
@@ -13193,9 +13429,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] halfVectorTo(SimpleVec2fR v1, float v2x, float v2y, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] halfVectorTo(Tup2fR v1, float v2x, float v2y, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return halfVectorTo(v1.getX(), v1.getY(), v2x, v2y, res);
+		return halfVectorTo(v1.getV0(), v1.getV1(), v2x, v2y, res);
 	}
 	
 	/**
@@ -13212,9 +13448,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] halfVectorTo(@MinLength(2) float[] v1, SimpleVec2fR v2, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] halfVectorTo(@MinLength(2) float[] v1, Tup2fR v2, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return halfVectorTo(v1[0], v1[1], v2.getX(), v2.getY(), res);
+		return halfVectorTo(v1[0], v1[1], v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -13271,9 +13507,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] halfVectorTo(float v1x, float v1y, SimpleVec2fR v2, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] halfVectorTo(float v1x, float v1y, Tup2fR v2, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return halfVectorTo(v1x, v1y, v2.getX(), v2.getY(), res);
+		return halfVectorTo(v1x, v1y, v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -13336,9 +13572,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T halfVectorTo(SimpleVec2fR v1, SimpleVec2fR v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T halfVectorTo(Tup2fR v1, Tup2fR v2, @ExtractionParam T res)
 	{
-		return halfVectorTo(v1.getX(), v1.getY(), v2.getX(), v2.getY(), res);
+		return halfVectorTo(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -13357,9 +13593,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T halfVectorTo(SimpleVec2fR v1, @MinLength(2) float[] v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T halfVectorTo(Tup2fR v1, @MinLength(2) float[] v2, @ExtractionParam T res)
 	{
-		return halfVectorTo(v1.getX(), v1.getY(), v2[0], v2[1], res);
+		return halfVectorTo(v1.getV0(), v1.getV1(), v2[0], v2[1], res);
 	}
 	
 	/**
@@ -13379,9 +13615,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T halfVectorTo(SimpleVec2fR v1, float v2x, float v2y, @ExtractionParam T res)
+	public static <T extends Tup2fC> T halfVectorTo(Tup2fR v1, float v2x, float v2y, @ExtractionParam T res)
 	{
-		return halfVectorTo(v1.getX(), v1.getY(), v2x, v2y, res);
+		return halfVectorTo(v1.getV0(), v1.getV1(), v2x, v2y, res);
 	}
 	
 	/**
@@ -13400,9 +13636,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T halfVectorTo(@MinLength(2) float[] v1, SimpleVec2fR v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T halfVectorTo(@MinLength(2) float[] v1, Tup2fR v2, @ExtractionParam T res)
 	{
-		return halfVectorTo(v1[0], v1[1], v2.getX(), v2.getY(), res);
+		return halfVectorTo(v1[0], v1[1], v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -13421,7 +13657,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T halfVectorTo(@MinLength(2) float[] v1, @MinLength(2) float[] v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T halfVectorTo(@MinLength(2) float[] v1, @MinLength(2) float[] v2, @ExtractionParam T res)
 	{
 		return halfVectorTo(v1[0], v1[1], v2[0], v2[1], res);
 	}
@@ -13443,7 +13679,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T halfVectorTo(@MinLength(2) float[] v1, float v2x, float v2y, @ExtractionParam T res)
+	public static <T extends Tup2fC> T halfVectorTo(@MinLength(2) float[] v1, float v2x, float v2y, @ExtractionParam T res)
 	{
 		return halfVectorTo(v1[0], v1[1], v2x, v2y, res);
 	}
@@ -13465,9 +13701,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T halfVectorTo(float v1x, float v1y, SimpleVec2fR v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T halfVectorTo(float v1x, float v1y, Tup2fR v2, @ExtractionParam T res)
 	{
-		return halfVectorTo(v1x, v1y, v2.getX(), v2.getY(), res);
+		return halfVectorTo(v1x, v1y, v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -13487,7 +13723,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T halfVectorTo(float v1x, float v1y, @MinLength(2) float[] v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T halfVectorTo(float v1x, float v1y, @MinLength(2) float[] v2, @ExtractionParam T res)
 	{
 		return halfVectorTo(v1x, v1y, v2[0], v2[1], res);
 	}
@@ -13510,7 +13746,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T halfVectorTo(float v1x, float v1y, float v2x, float v2y, @ExtractionParam T res)
+	public static <T extends Tup2fC> T halfVectorTo(float v1x, float v1y, float v2x, float v2y, @ExtractionParam T res)
 	{
 		res.set((v2x - v1x) * 0.5f, (v2y - v1y) * 0.5f);
 		
@@ -13534,9 +13770,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T halfVectorToFunc(SimpleVec2fR v1, SimpleVec2fR v2, FloatFunction2<T> res)
+	public static <T> T halfVectorToFunc(Tup2fR v1, Tup2fR v2, FloatFunction2<T> res)
 	{
-		return halfVectorToFunc(v1.getX(), v1.getY(), v2.getX(), v2.getY(), res);
+		return halfVectorToFunc(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -13556,9 +13792,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T halfVectorToFunc(SimpleVec2fR v1, @MinLength(2) float[] v2, FloatFunction2<T> res)
+	public static <T> T halfVectorToFunc(Tup2fR v1, @MinLength(2) float[] v2, FloatFunction2<T> res)
 	{
-		return halfVectorToFunc(v1.getX(), v1.getY(), v2[0], v2[1], res);
+		return halfVectorToFunc(v1.getV0(), v1.getV1(), v2[0], v2[1], res);
 	}
 	
 	/**
@@ -13579,9 +13815,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T halfVectorToFunc(SimpleVec2fR v1, float v2x, float v2y, FloatFunction2<T> res)
+	public static <T> T halfVectorToFunc(Tup2fR v1, float v2x, float v2y, FloatFunction2<T> res)
 	{
-		return halfVectorToFunc(v1.getX(), v1.getY(), v2x, v2y, res);
+		return halfVectorToFunc(v1.getV0(), v1.getV1(), v2x, v2y, res);
 	}
 	
 	/**
@@ -13601,9 +13837,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T halfVectorToFunc(@MinLength(2) float[] v1, SimpleVec2fR v2, FloatFunction2<T> res)
+	public static <T> T halfVectorToFunc(@MinLength(2) float[] v1, Tup2fR v2, FloatFunction2<T> res)
 	{
-		return halfVectorToFunc(v1[0], v1[1], v2.getX(), v2.getY(), res);
+		return halfVectorToFunc(v1[0], v1[1], v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -13669,9 +13905,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T halfVectorToFunc(float v1x, float v1y, SimpleVec2fR v2, FloatFunction2<T> res)
+	public static <T> T halfVectorToFunc(float v1x, float v1y, Tup2fR v2, FloatFunction2<T> res)
 	{
-		return halfVectorToFunc(v1x, v1y, v2.getX(), v2.getY(), res);
+		return halfVectorToFunc(v1x, v1y, v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -13735,9 +13971,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] halfPointBetween(SimpleVec2fR v1, SimpleVec2fR v2, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] halfPointBetween(Tup2fR v1, Tup2fR v2, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return halfPointBetween(v1.getX(), v1.getY(), v2.getX(), v2.getY(), res);
+		return halfPointBetween(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -13754,9 +13990,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] halfPointBetween(SimpleVec2fR v1, @MinLength(2) float[] v2, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] halfPointBetween(Tup2fR v1, @MinLength(2) float[] v2, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return halfPointBetween(v1.getX(), v1.getY(), v2[0], v2[1], res);
+		return halfPointBetween(v1.getV0(), v1.getV1(), v2[0], v2[1], res);
 	}
 	
 	/**
@@ -13774,9 +14010,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] halfPointBetween(SimpleVec2fR v1, float v2x, float v2y, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] halfPointBetween(Tup2fR v1, float v2x, float v2y, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return halfPointBetween(v1.getX(), v1.getY(), v2x, v2y, res);
+		return halfPointBetween(v1.getV0(), v1.getV1(), v2x, v2y, res);
 	}
 	
 	/**
@@ -13793,9 +14029,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] halfPointBetween(@MinLength(2) float[] v1, SimpleVec2fR v2, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] halfPointBetween(@MinLength(2) float[] v1, Tup2fR v2, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return halfPointBetween(v1[0], v1[1], v2.getX(), v2.getY(), res);
+		return halfPointBetween(v1[0], v1[1], v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -13852,9 +14088,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] halfPointBetween(float v1x, float v1y, SimpleVec2fR v2, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] halfPointBetween(float v1x, float v1y, Tup2fR v2, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return halfPointBetween(v1x, v1y, v2.getX(), v2.getY(), res);
+		return halfPointBetween(v1x, v1y, v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -13917,9 +14153,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T halfPointBetween(SimpleVec2fR v1, SimpleVec2fR v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T halfPointBetween(Tup2fR v1, Tup2fR v2, @ExtractionParam T res)
 	{
-		return halfPointBetween(v1.getX(), v1.getY(), v2.getX(), v2.getY(), res);
+		return halfPointBetween(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -13938,9 +14174,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T halfPointBetween(SimpleVec2fR v1, @MinLength(2) float[] v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T halfPointBetween(Tup2fR v1, @MinLength(2) float[] v2, @ExtractionParam T res)
 	{
-		return halfPointBetween(v1.getX(), v1.getY(), v2[0], v2[1], res);
+		return halfPointBetween(v1.getV0(), v1.getV1(), v2[0], v2[1], res);
 	}
 	
 	/**
@@ -13960,9 +14196,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T halfPointBetween(SimpleVec2fR v1, float v2x, float v2y, @ExtractionParam T res)
+	public static <T extends Tup2fC> T halfPointBetween(Tup2fR v1, float v2x, float v2y, @ExtractionParam T res)
 	{
-		return halfPointBetween(v1.getX(), v1.getY(), v2x, v2y, res);
+		return halfPointBetween(v1.getV0(), v1.getV1(), v2x, v2y, res);
 	}
 	
 	/**
@@ -13981,9 +14217,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T halfPointBetween(@MinLength(2) float[] v1, SimpleVec2fR v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T halfPointBetween(@MinLength(2) float[] v1, Tup2fR v2, @ExtractionParam T res)
 	{
-		return halfPointBetween(v1[0], v1[1], v2.getX(), v2.getY(), res);
+		return halfPointBetween(v1[0], v1[1], v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -14002,7 +14238,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T halfPointBetween(@MinLength(2) float[] v1, @MinLength(2) float[] v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T halfPointBetween(@MinLength(2) float[] v1, @MinLength(2) float[] v2, @ExtractionParam T res)
 	{
 		return halfPointBetween(v1[0], v1[1], v2[0], v2[1], res);
 	}
@@ -14024,7 +14260,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T halfPointBetween(@MinLength(2) float[] v1, float v2x, float v2y, @ExtractionParam T res)
+	public static <T extends Tup2fC> T halfPointBetween(@MinLength(2) float[] v1, float v2x, float v2y, @ExtractionParam T res)
 	{
 		return halfPointBetween(v1[0], v1[1], v2x, v2y, res);
 	}
@@ -14046,9 +14282,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T halfPointBetween(float v1x, float v1y, SimpleVec2fR v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T halfPointBetween(float v1x, float v1y, Tup2fR v2, @ExtractionParam T res)
 	{
-		return halfPointBetween(v1x, v1y, v2.getX(), v2.getY(), res);
+		return halfPointBetween(v1x, v1y, v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -14068,7 +14304,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T halfPointBetween(float v1x, float v1y, @MinLength(2) float[] v2, @ExtractionParam T res)
+	public static <T extends Tup2fC> T halfPointBetween(float v1x, float v1y, @MinLength(2) float[] v2, @ExtractionParam T res)
 	{
 		return halfPointBetween(v1x, v1y, v2[0], v2[1], res);
 	}
@@ -14091,7 +14327,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T halfPointBetween(float v1x, float v1y, float v2x, float v2y, @ExtractionParam T res)
+	public static <T extends Tup2fC> T halfPointBetween(float v1x, float v1y, float v2x, float v2y, @ExtractionParam T res)
 	{
 		res.set((v2x - v1x) * 0.5f, (v2y - v1y) * 0.5f);
 		
@@ -14115,9 +14351,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T halfPointBetweenFunc(SimpleVec2fR v1, SimpleVec2fR v2, FloatFunction2<T> res)
+	public static <T> T halfPointBetweenFunc(Tup2fR v1, Tup2fR v2, FloatFunction2<T> res)
 	{
-		return halfPointBetweenFunc(v1.getX(), v1.getY(), v2.getX(), v2.getY(), res);
+		return halfPointBetweenFunc(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -14137,9 +14373,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T halfPointBetweenFunc(SimpleVec2fR v1, @MinLength(2) float[] v2, FloatFunction2<T> res)
+	public static <T> T halfPointBetweenFunc(Tup2fR v1, @MinLength(2) float[] v2, FloatFunction2<T> res)
 	{
-		return halfPointBetweenFunc(v1.getX(), v1.getY(), v2[0], v2[1], res);
+		return halfPointBetweenFunc(v1.getV0(), v1.getV1(), v2[0], v2[1], res);
 	}
 	
 	/**
@@ -14160,9 +14396,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T halfPointBetweenFunc(SimpleVec2fR v1, float v2x, float v2y, FloatFunction2<T> res)
+	public static <T> T halfPointBetweenFunc(Tup2fR v1, float v2x, float v2y, FloatFunction2<T> res)
 	{
-		return halfPointBetweenFunc(v1.getX(), v1.getY(), v2x, v2y, res);
+		return halfPointBetweenFunc(v1.getV0(), v1.getV1(), v2x, v2y, res);
 	}
 	
 	/**
@@ -14182,9 +14418,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T halfPointBetweenFunc(@MinLength(2) float[] v1, SimpleVec2fR v2, FloatFunction2<T> res)
+	public static <T> T halfPointBetweenFunc(@MinLength(2) float[] v1, Tup2fR v2, FloatFunction2<T> res)
 	{
-		return halfPointBetweenFunc(v1[0], v1[1], v2.getX(), v2.getY(), res);
+		return halfPointBetweenFunc(v1[0], v1[1], v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -14250,10 +14486,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T halfPointBetweenFunc(float v1x, float v1y, SimpleVec2fR v2, FloatFunction2<T> res)
+	public static <T> T halfPointBetweenFunc(float v1x, float v1y, Tup2fR v2, FloatFunction2<T> res)
 	{
-		return halfPointBetweenFunc(v1x, v1y, v2.getX(), v2.getY()
-				, res);
+		return halfPointBetweenFunc(v1x, v1y, v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -14318,9 +14553,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The distance between the points.
 	 */
-	public static float distanceTo(SimpleVec2fR v1, SimpleVec2fR v2)
+	public static float distanceTo(Tup2fR v1, Tup2fR v2)
 	{
-		return distanceTo(v1.getX(), v1.getY(), v2.getX(), v2.getY());
+		return distanceTo(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1());
 	}
 	
 	/**
@@ -14339,9 +14574,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The distance between the points.
 	 */
-	public static float distanceTo(SimpleVec2fR v1, SimpleVec2fR v2, MathProvider mathProvider)
+	public static float distanceTo(Tup2fR v1, Tup2fR v2, MathProvider mathProvider)
 	{
-		return distanceTo(v1.getX(), v1.getY(), v2.getX(), v2.getY(), mathProvider);
+		return distanceTo(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), mathProvider);
 	}
 	
 	/**
@@ -14360,9 +14595,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The distance between the points.
 	 */
-	public static float distanceTo(SimpleVec2fR v1, SimpleVec2fR v2, @FloatMinValue(0.0f) float tolerance)
+	public static float distanceTo(Tup2fR v1, Tup2fR v2, @FloatMinValue(0.0f) float tolerance)
 	{
-		return distanceTo(v1.getX(), v1.getY(), v2.getX(), v2.getY(), tolerance);
+		return distanceTo(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), tolerance);
 	}
 	
 	/**
@@ -14382,9 +14617,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The distance between the points.
 	 */
-	public static float distanceTo(SimpleVec2fR v1, SimpleVec2fR v2, @FloatMinValue(0.0f) float tolerance, MathProvider mathProvider)
+	public static float distanceTo(Tup2fR v1, Tup2fR v2, @FloatMinValue(0.0f) float tolerance, MathProvider mathProvider)
 	{
-		return distanceTo(v1.getX(), v1.getY(), v2.getX(), v2.getY(), tolerance, mathProvider);
+		return distanceTo(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), tolerance, mathProvider);
 	}
 	
 	/**
@@ -14402,9 +14637,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The distance between the points.
 	 */
-	public static float distanceTo(SimpleVec2fR v1, @MinLength(2) float[] v2)
+	public static float distanceTo(Tup2fR v1, @MinLength(2) float[] v2)
 	{
-		return distanceTo(v1.getX(), v1.getY(), v2[0], v2[1]);
+		return distanceTo(v1.getV0(), v1.getV1(), v2[0], v2[1]);
 	}
 	
 	/**
@@ -14423,9 +14658,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The distance between the points.
 	 */
-	public static float distanceTo(SimpleVec2fR v1, @MinLength(2) float[] v2, MathProvider mathProvider)
+	public static float distanceTo(Tup2fR v1, @MinLength(2) float[] v2, MathProvider mathProvider)
 	{
-		return distanceTo(v1.getX(), v1.getY(), v2[0], v2[1], mathProvider);
+		return distanceTo(v1.getV0(), v1.getV1(), v2[0], v2[1], mathProvider);
 	}
 	
 	/**
@@ -14444,9 +14679,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The distance between the points.
 	 */
-	public static float distanceTo(SimpleVec2fR v1, @MinLength(2) float[] v2, @FloatMinValue(0.0f) float tolerance)
+	public static float distanceTo(Tup2fR v1, @MinLength(2) float[] v2, @FloatMinValue(0.0f) float tolerance)
 	{
-		return distanceTo(v1.getX(), v1.getY(), v2[0], v2[1], tolerance);
+		return distanceTo(v1.getV0(), v1.getV1(), v2[0], v2[1], tolerance);
 	}
 	
 	/**
@@ -14466,9 +14701,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The distance between the points.
 	 */
-	public static float distanceTo(SimpleVec2fR v1, @MinLength(2) float[] v2, @FloatMinValue(0.0f) float tolerance, MathProvider mathProvider)
+	public static float distanceTo(Tup2fR v1, @MinLength(2) float[] v2, @FloatMinValue(0.0f) float tolerance, MathProvider mathProvider)
 	{
-		return distanceTo(v1.getX(), v1.getY(), v2[0], v2[1], tolerance, mathProvider);
+		return distanceTo(v1.getV0(), v1.getV1(), v2[0], v2[1], tolerance, mathProvider);
 	}
 	
 	/**
@@ -14487,9 +14722,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The distance between the points.
 	 */
-	public static float distanceTo(SimpleVec2fR v1, float v2x, float v2y)
+	public static float distanceTo(Tup2fR v1, float v2x, float v2y)
 	{
-		return distanceTo(v1.getX(), v1.getY(), v2x, v2y);
+		return distanceTo(v1.getV0(), v1.getV1(), v2x, v2y);
 	}
 	
 	/**
@@ -14509,9 +14744,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The distance between the points.
 	 */
-	public static float distanceTo(SimpleVec2fR v1, float v2x, float v2y, MathProvider mathProvider)
+	public static float distanceTo(Tup2fR v1, float v2x, float v2y, MathProvider mathProvider)
 	{
-		return distanceTo(v1.getX(), v1.getY(), v2x, v2y, mathProvider);
+		return distanceTo(v1.getV0(), v1.getV1(), v2x, v2y, mathProvider);
 	}
 	
 	/**
@@ -14531,9 +14766,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The distance between the points.
 	 */
-	public static float distanceTo(SimpleVec2fR v1, float v2x, float v2y, @FloatMinValue(0.0f) float tolerance)
+	public static float distanceTo(Tup2fR v1, float v2x, float v2y, @FloatMinValue(0.0f) float tolerance)
 	{
-		return distanceTo(v1.getX(), v1.getY(), v2x, v2y, tolerance);
+		return distanceTo(v1.getV0(), v1.getV1(), v2x, v2y, tolerance);
 	}
 	
 	/**
@@ -14554,9 +14789,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The distance between the points.
 	 */
-	public static float distanceTo(SimpleVec2fR v1, float v2x, float v2y, @FloatMinValue(0.0f) float tolerance, MathProvider mathProvider)
+	public static float distanceTo(Tup2fR v1, float v2x, float v2y, @FloatMinValue(0.0f) float tolerance, MathProvider mathProvider)
 	{
-		return distanceTo(v1.getX(), v1.getY(), v2x, v2y, tolerance, mathProvider);
+		return distanceTo(v1.getV0(), v1.getV1(), v2x, v2y, tolerance, mathProvider);
 	}
 	
 	/**
@@ -14574,9 +14809,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The distance between the points.
 	 */
-	public static float distanceTo(@MinLength(2) float[] v1, SimpleVec2fR v2)
+	public static float distanceTo(@MinLength(2) float[] v1, Tup2fR v2)
 	{
-		return distanceTo(v1[0], v1[1], v2.getX(), v2.getY());
+		return distanceTo(v1[0], v1[1], v2.getV0(), v2.getV1());
 	}
 	
 	/**
@@ -14595,9 +14830,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The distance between the points.
 	 */
-	public static float distanceTo(@MinLength(2) float[] v1, SimpleVec2fR v2, MathProvider mathProvider)
+	public static float distanceTo(@MinLength(2) float[] v1, Tup2fR v2, MathProvider mathProvider)
 	{
-		return distanceTo(v1[0], v1[1], v2.getX(), v2.getY(), mathProvider);
+		return distanceTo(v1[0], v1[1], v2.getV0(), v2.getV1(), mathProvider);
 	}
 	
 	/**
@@ -14616,9 +14851,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The distance between the points.
 	 */
-	public static float distanceTo(@MinLength(2) float[] v1, SimpleVec2fR v2, @FloatMinValue(0.0f) float tolerance)
+	public static float distanceTo(@MinLength(2) float[] v1, Tup2fR v2, @FloatMinValue(0.0f) float tolerance)
 	{
-		return distanceTo(v1[0], v1[1], v2.getX(), v2.getY(), tolerance);
+		return distanceTo(v1[0], v1[1], v2.getV0(), v2.getV1(), tolerance);
 	}
 	
 	/**
@@ -14638,9 +14873,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The distance between the points.
 	 */
-	public static float distanceTo(@MinLength(2) float[] v1, SimpleVec2fR v2, @FloatMinValue(0.0f) float tolerance, MathProvider mathProvider)
+	public static float distanceTo(@MinLength(2) float[] v1, Tup2fR v2, @FloatMinValue(0.0f) float tolerance, MathProvider mathProvider)
 	{
-		return distanceTo(v1[0], v1[1], v2.getX(), v2.getY(), tolerance, mathProvider);
+		return distanceTo(v1[0], v1[1], v2.getV0(), v2.getV1(), tolerance, mathProvider);
 	}
 	
 	/**
@@ -14831,9 +15066,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The distance between the points.
 	 */
-	public static float distanceTo(float v1x, float v1y, SimpleVec2fR v2)
+	public static float distanceTo(float v1x, float v1y, Tup2fR v2)
 	{
-		return distanceTo(v1x, v1y, v2.getX(), v2.getY());
+		return distanceTo(v1x, v1y, v2.getV0(), v2.getV1());
 	}
 	
 	/**
@@ -14853,9 +15088,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The distance between the points.
 	 */
-	public static float distanceTo(float v1x, float v1y, SimpleVec2fR v2, MathProvider mathProvider)
+	public static float distanceTo(float v1x, float v1y, Tup2fR v2, MathProvider mathProvider)
 	{
-		return distanceTo(v1x, v1y, v2.getX(), v2.getY(), mathProvider);
+		return distanceTo(v1x, v1y, v2.getV0(), v2.getV1(), mathProvider);
 	}
 	
 	/**
@@ -14875,9 +15110,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The distance between the points.
 	 */
-	public static float distanceTo(float v1x, float v1y, SimpleVec2fR v2, @FloatMinValue(0.0f) float tolerance)
+	public static float distanceTo(float v1x, float v1y, Tup2fR v2, @FloatMinValue(0.0f) float tolerance)
 	{
-		return distanceTo(v1x, v1y, v2.getX(), v2.getY(), tolerance);
+		return distanceTo(v1x, v1y, v2.getV0(), v2.getV1(), tolerance);
 	}
 	
 	/**
@@ -14898,9 +15133,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The distance between the points.
 	 */
-	public static float distanceTo(float v1x, float v1y, SimpleVec2fR v2, @FloatMinValue(0.0f) float tolerance, MathProvider mathProvider)
+	public static float distanceTo(float v1x, float v1y, Tup2fR v2, @FloatMinValue(0.0f) float tolerance, MathProvider mathProvider)
 	{
-		return distanceTo(v1x, v1y, v2.getX(), v2.getY(), tolerance, mathProvider);
+		return distanceTo(v1x, v1y, v2.getV0(), v2.getV1(), tolerance, mathProvider);
 	}
 	
 	/**
@@ -15097,9 +15332,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The squared distance between the points.
 	 */
-	public static float squaredDistanceTo(SimpleVec2fR v1, SimpleVec2fR v2)
+	public static float squaredDistanceTo(Tup2fR v1, Tup2fR v2)
 	{
-		return squaredDistanceTo(v1.getX(), v1.getY(), v2.getX(), v2.getY());
+		return squaredDistanceTo(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1());
 	}
 	
 	/**
@@ -15114,9 +15349,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The squared distance between the points.
 	 */
-	public static float squaredDistanceTo(SimpleVec2fR v1, @MinLength(2) float[] v2)
+	public static float squaredDistanceTo(Tup2fR v1, @MinLength(2) float[] v2)
 	{
-		return squaredDistanceTo(v1.getX(), v1.getY(), v2[0], v2[1]);
+		return squaredDistanceTo(v1.getV0(), v1.getV1(), v2[0], v2[1]);
 	}
 	
 	/**
@@ -15132,9 +15367,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The squared distance between the points.
 	 */
-	public static float squaredDistanceTo(SimpleVec2fR v1, float v2x, float v2y)
+	public static float squaredDistanceTo(Tup2fR v1, float v2x, float v2y)
 	{
-		return squaredDistanceTo(v1.getX(), v1.getY(), v2x, v2y);
+		return squaredDistanceTo(v1.getV0(), v1.getV1(), v2x, v2y);
 	}
 	
 	/**
@@ -15149,9 +15384,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The squared distance between the points.
 	 */
-	public static float squaredDistanceTo(@MinLength(2) float[] v1, SimpleVec2fR v2)
+	public static float squaredDistanceTo(@MinLength(2) float[] v1, Tup2fR v2)
 	{
-		return squaredDistanceTo(v1[0], v1[1], v2.getX(), v2.getY());
+		return squaredDistanceTo(v1[0], v1[1], v2.getV0(), v2.getV1());
 	}
 	
 	/**
@@ -15202,9 +15437,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The squared distance between the points.
 	 */
-	public static float squaredDistanceTo(float v1x, float v1y, SimpleVec2fR v2)
+	public static float squaredDistanceTo(float v1x, float v1y, Tup2fR v2)
 	{
-		return squaredDistanceTo(v1x, v1y, v2.getX(), v2.getY());
+		return squaredDistanceTo(v1x, v1y, v2.getV0(), v2.getV1());
 	}
 	
 	/**
@@ -15259,9 +15494,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The invers distance between the points.
 	 */
-	public static float inverseDistanceTo(SimpleVec2fR v1, SimpleVec2fR v2)
+	public static float inverseDistanceTo(Tup2fR v1, Tup2fR v2)
 	{
-		return inverseDistanceTo(v1.getX(), v1.getY(), v2.getX(), v2.getY());
+		return inverseDistanceTo(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1());
 	}
 	
 	/**
@@ -15280,9 +15515,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The invers distance between the points.
 	 */
-	public static float inverseDistanceTo(SimpleVec2fR v1, SimpleVec2fR v2, MathProvider mathProvider)
+	public static float inverseDistanceTo(Tup2fR v1, Tup2fR v2, MathProvider mathProvider)
 	{
-		return inverseDistanceTo(v1.getX(), v1.getY(), v2.getX(), v2.getY(), mathProvider);
+		return inverseDistanceTo(v1.getV0(), v1.getV1(), v2.getV0(), v2.getV1(), mathProvider);
 	}
 	
 	/**
@@ -15300,9 +15535,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The invers distance between the points.
 	 */
-	public static float inverseDistanceTo(SimpleVec2fR v1, @MinLength(2) float[] v2)
+	public static float inverseDistanceTo(Tup2fR v1, @MinLength(2) float[] v2)
 	{
-		return inverseDistanceTo(v1.getX(), v1.getY(), v2[0], v2[1]);
+		return inverseDistanceTo(v1.getV0(), v1.getV1(), v2[0], v2[1]);
 	}
 	
 	/**
@@ -15321,9 +15556,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The invers distance between the points.
 	 */
-	public static float inverseDistanceTo(SimpleVec2fR v1, @MinLength(2) float[] v2, MathProvider mathProvider)
+	public static float inverseDistanceTo(Tup2fR v1, @MinLength(2) float[] v2, MathProvider mathProvider)
 	{
-		return inverseDistanceTo(v1.getX(), v1.getY(), v2[0], v2[1], mathProvider);
+		return inverseDistanceTo(v1.getV0(), v1.getV1(), v2[0], v2[1], mathProvider);
 	}
 	
 	/**
@@ -15342,9 +15577,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The invers distance between the points.
 	 */
-	public static float inverseDistanceTo(SimpleVec2fR v1, float v2x, float v2y)
+	public static float inverseDistanceTo(Tup2fR v1, float v2x, float v2y)
 	{
-		return inverseDistanceTo(v1.getX(), v1.getY(), v2x, v2y);
+		return inverseDistanceTo(v1.getV0(), v1.getV1(), v2x, v2y);
 	}
 	
 	/**
@@ -15364,9 +15599,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The invers distance between the points.
 	 */
-	public static float inverseDistanceTo(SimpleVec2fR v1, float v2x, float v2y, MathProvider mathProvider)
+	public static float inverseDistanceTo(Tup2fR v1, float v2x, float v2y, MathProvider mathProvider)
 	{
-		return inverseDistanceTo(v1.getX(), v1.getY(), v2x, v2y, mathProvider);
+		return inverseDistanceTo(v1.getV0(), v1.getV1(), v2x, v2y, mathProvider);
 	}
 	
 	/**
@@ -15384,9 +15619,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The invers distance between the points.
 	 */
-	public static float inverseDistanceTo(@MinLength(2) float[] v1, SimpleVec2fR v2)
+	public static float inverseDistanceTo(@MinLength(2) float[] v1, Tup2fR v2)
 	{
-		return inverseDistanceTo(v1[0], v1[1], v2.getX(), v2.getY());
+		return inverseDistanceTo(v1[0], v1[1], v2.getV0(), v2.getV1());
 	}
 	
 	/**
@@ -15405,9 +15640,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The invers distance between the points.
 	 */
-	public static float inverseDistanceTo(@MinLength(2) float[] v1, SimpleVec2fR v2, MathProvider mathProvider)
+	public static float inverseDistanceTo(@MinLength(2) float[] v1, Tup2fR v2, MathProvider mathProvider)
 	{
-		return inverseDistanceTo(v1[0], v1[1], v2.getX(), v2.getY(), mathProvider);
+		return inverseDistanceTo(v1[0], v1[1], v2.getV0(), v2.getV1(), mathProvider);
 	}
 	
 	/**
@@ -15510,9 +15745,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The invers distance between the points.
 	 */
-	public static float inverseDistanceTo(float v1x, float v1y, SimpleVec2fR v2)
+	public static float inverseDistanceTo(float v1x, float v1y, Tup2fR v2)
 	{
-		return inverseDistanceTo(v1x, v1y, v2.getX(), v2.getY());
+		return inverseDistanceTo(v1x, v1y, v2.getV0(), v2.getV1());
 	}
 	
 	/**
@@ -15532,9 +15767,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The invers distance between the points.
 	 */
-	public static float inverseDistanceTo(float v1x, float v1y, SimpleVec2fR v2, MathProvider mathProvider)
+	public static float inverseDistanceTo(float v1x, float v1y, Tup2fR v2, MathProvider mathProvider)
 	{
-		return inverseDistanceTo(v1x, v1y, v2.getX(), v2.getY(), mathProvider);
+		return inverseDistanceTo(v1x, v1y, v2.getV0(), v2.getV1(), mathProvider);
 	}
 	
 	/**
@@ -15635,9 +15870,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T ceil(SimpleVec2fR v, @ExtractionParam T res)
+	public static <T extends Tup2fC> T ceil(Tup2fR v, @ExtractionParam T res)
 	{
-		return ceil(v.getX(), v.getY(), res);
+		return ceil(v.getV0(), v.getV1(), res);
 	}
 	
 	/**
@@ -15650,7 +15885,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T ceil(@MinLength(2) float[] v, @ExtractionParam T res)
+	public static <T extends Tup2fC> T ceil(@MinLength(2) float[] v, @ExtractionParam T res)
 	{
 		return ceil(v[0], v[1], res);
 	}
@@ -15666,7 +15901,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T ceil(float x, float y, @ExtractionParam T res)
+	public static <T extends Tup2fC> T ceil(float x, float y, @ExtractionParam T res)
 	{
 		res.set((float)Math.ceil(x), (float)Math.ceil(y));
 		
@@ -15681,9 +15916,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] ceil(SimpleVec2fR v, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] ceil(Tup2fR v, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return ceil(v.getX(), v.getY(), res);
+		return ceil(v.getV0(), v.getV1(), res);
 	}
 	
 	/**
@@ -15727,9 +15962,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T ceilFunc(SimpleVec2fR v, FloatFunction2<T> res)
+	public static <T> T ceilFunc(Tup2fR v, FloatFunction2<T> res)
 	{
-		return ceilFunc(v.getX(), v.getY(), res);
+		return ceilFunc(v.getV0(), v.getV1(), res);
 	}
 	
 	/**
@@ -15775,9 +16010,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T floor(SimpleVec2fR v, @ExtractionParam T res)
+	public static <T extends Tup2fC> T floor(Tup2fR v, @ExtractionParam T res)
 	{
-		return floor(v.getX(), v.getY(), res);
+		return floor(v.getV0(), v.getV1(), res);
 	}
 	
 	/**
@@ -15790,7 +16025,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T floor(@MinLength(2) float[] v, @ExtractionParam T res)
+	public static <T extends Tup2fC> T floor(@MinLength(2) float[] v, @ExtractionParam T res)
 	{
 		return floor(v[0], v[1], res);
 	}
@@ -15806,7 +16041,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T floor(float x, float y, @ExtractionParam T res)
+	public static <T extends Tup2fC> T floor(float x, float y, @ExtractionParam T res)
 	{
 		res.set((float)Math.floor(x), (float)Math.floor(y));
 		
@@ -15821,9 +16056,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] floor(SimpleVec2fR v, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] floor(Tup2fR v, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return floor(v.getX(), v.getY(), res);
+		return floor(v.getV0(), v.getV1(), res);
 	}
 	
 	/**
@@ -15867,9 +16102,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T floorFunc(SimpleVec2fR v, FloatFunction2<T> res)
+	public static <T> T floorFunc(Tup2fR v, FloatFunction2<T> res)
 	{
-		return floorFunc(v.getX(), v.getY(), res);
+		return floorFunc(v.getV0(), v.getV1(), res);
 	}
 	
 	/**
@@ -15915,9 +16150,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T round(SimpleVec2fR v, @ExtractionParam T res)
+	public static <T extends Tup2fC> T round(Tup2fR v, @ExtractionParam T res)
 	{
-		return round(v.getX(), v.getY(), res);
+		return round(v.getV0(), v.getV1(), res);
 	}
 	
 	/**
@@ -15930,7 +16165,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T round(@MinLength(2) float[] v, @ExtractionParam T res)
+	public static <T extends Tup2fC> T round(@MinLength(2) float[] v, @ExtractionParam T res)
 	{
 		return round(v[0], v[1], res);
 	}
@@ -15946,7 +16181,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T round(float x, float y, @ExtractionParam T res)
+	public static <T extends Tup2fC> T round(float x, float y, @ExtractionParam T res)
 	{
 		res.set((float)Math.round(x), (float)Math.round(y));
 		
@@ -15961,9 +16196,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] round(SimpleVec2fR v, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] round(Tup2fR v, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return round(v.getX(), v.getY(), res);
+		return round(v.getV0(), v.getV1(), res);
 	}
 	
 	/**
@@ -16007,9 +16242,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T roundFunc(SimpleVec2fR v, FloatFunction2<T> res)
+	public static <T> T roundFunc(Tup2fR v, FloatFunction2<T> res)
 	{
-		return roundFunc(v.getX(), v.getY(), res);
+		return roundFunc(v.getV0(), v.getV1(), res);
 	}
 	
 	/**
@@ -16055,9 +16290,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T trunc(SimpleVec2fR v, @ExtractionParam T res)
+	public static <T extends Tup2fC> T trunc(Tup2fR v, @ExtractionParam T res)
 	{
-		return trunc(v.getX(), v.getY(), res);
+		return trunc(v.getV0(), v.getV1(), res);
 	}
 	
 	/**
@@ -16070,7 +16305,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T trunc(@MinLength(2) float[] v, @ExtractionParam T res)
+	public static <T extends Tup2fC> T trunc(@MinLength(2) float[] v, @ExtractionParam T res)
 	{
 		return trunc(v[0], v[1], res);
 	}
@@ -16086,7 +16321,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T trunc(float x, float y, @ExtractionParam T res)
+	public static <T extends Tup2fC> T trunc(float x, float y, @ExtractionParam T res)
 	{
 		res.set((int)x, (int)y);
 		
@@ -16101,9 +16336,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] trunc(SimpleVec2fR v, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] trunc(Tup2fR v, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return trunc(v.getX(), v.getY(), res);
+		return trunc(v.getV0(), v.getV1(), res);
 	}
 	
 	/**
@@ -16147,9 +16382,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T truncFunc(SimpleVec2fR v, FloatFunction2<T> res)
+	public static <T> T truncFunc(Tup2fR v, FloatFunction2<T> res)
 	{
-		return truncFunc(v.getX(), v.getY(), res);
+		return truncFunc(v.getV0(), v.getV1(), res);
 	}
 	
 	/**
@@ -16196,9 +16431,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T round(SimpleVec2fR v, FloatRoundMethod method, @ExtractionParam T res)
+	public static <T extends Tup2fC> T round(Tup2fR v, FloatRoundMethod method, @ExtractionParam T res)
 	{
-		return round(v.getX(), v.getY(), res);
+		return round(v.getV0(), v.getV1(), res);
 	}
 	
 	/**
@@ -16212,7 +16447,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T round(@MinLength(2) float[] v, FloatRoundMethod method, @ExtractionParam T res)
+	public static <T extends Tup2fC> T round(@MinLength(2) float[] v, FloatRoundMethod method, @ExtractionParam T res)
 	{
 		return round(v[0], v[1], res);
 	}
@@ -16229,7 +16464,7 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends SimpleVec2fC> T round(float x, float y, FloatRoundMethod method, @ExtractionParam T res)
+	public static <T extends Tup2fC> T round(float x, float y, FloatRoundMethod method, @ExtractionParam T res)
 	{
 		res.set(method.round(x), method.round(y));
 		
@@ -16245,9 +16480,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] round(SimpleVec2fR v, FloatRoundMethod method, @ExtractionParam @MinLength(2) float[] res)
+	public static float[] round(Tup2fR v, FloatRoundMethod method, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return round(v.getX(), v.getY(), res);
+		return round(v.getV0(), v.getV1(), res);
 	}
 	
 	/**
@@ -16294,9 +16529,9 @@ public class Vec2fUtils
 	 * 
 	 * @return The result returned from the given functional interface implementation.
 	 */
-	public static <T> T roundFunc(SimpleVec2fR v, FloatRoundMethod method, FloatFunction2<T> res)
+	public static <T> T roundFunc(Tup2fR v, FloatRoundMethod method, FloatFunction2<T> res)
 	{
-		return roundFunc(v.getX(), v.getY(), res);
+		return roundFunc(v.getV0(), v.getV1(), res);
 	}
 	
 	/**
@@ -16332,5 +16567,285 @@ public class Vec2fUtils
 	public static <T> T roundFunc(float x, float y, FloatRoundMethod method, FloatFunction2<T> res)
 	{
 		return res.apply(method.round(x), method.round(y));
+	}
+	
+	/**
+	 * Calculates the absolute value of the component values of the vector {@code (v)} and saves the result in the extraction parameter.
+	 * 
+	 * @param v The vector.
+	 * @param res The extraction parameter for the result as an array with at least two entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	public static float[] abs(Tup2fR v, @ExtractionParam @MinLength(2) float[] res)
+	{
+		return abs(v.getV0(), v.getV1(), res);
+	}
+	
+	/**
+	 * Calculates the absolute value of the component values of the vector {@code (v[0], v[1])} and saves the result in the extraction parameter.
+	 * 
+	 * @param v The vector as an array with at least two entries.
+	 * @param res The extraction parameter for the result as an array with at least two entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	public static float[] abs(@MinLength(2) float[] v, @ExtractionParam @MinLength(3) float[] res)
+	{
+		return abs(v[0], v[1], res);
+	}
+	
+	/**
+	 * Calculates the absolute value of the component values of the vector {@code (x, y)} and saves the result in the extraction parameter.
+	 * 
+	 * @param x The value of the x component of the vector.
+	 * @param y The value of the y component of the vector.
+	 * @param res The extraction parameter for the result as an array with at least two entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	public static float[] abs(float x, float y, @ExtractionParam @MinLength(2) float[] res)
+	{
+		res[0] = Math.abs(x);
+		res[1] = Math.abs(y);
+		
+		return res;
+	}
+	
+	/**
+	 * Calculates the absolute value of the component values of the vector {@code (v)} and saves the result in the given extraction parameter object.
+	 * 
+	 * @param <T> The type of the extraction parameter object.
+	 * 
+	 * @param v The vector.
+	 * @param res The extraction parameter object for the result.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	public static <T extends Tup2fC> T abs(Tup2fR v, @ExtractionParam T res)
+	{
+		return abs(v.getV0(), v.getV1(), res);
+	}
+	
+	/**
+	 * Calculates the absolute value of the component values of the vector {@code (v[0], v[1])} and saves the result in the given extraction parameter object.
+	 * 
+	 * @param <T> The type of the extraction parameter object.
+	 * 
+	 * @param v The vector as an array with at least two entries.
+	 * @param res The extraction parameter object for the result.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	public static <T extends Tup2fC> T abs(@MinLength(2) float[] v, @ExtractionParam T res)
+	{
+		return abs(v[0], v[1], res);
+	}
+	
+	/**
+	 * Calculates the absolute value of the component values of the vector {@code (x, y)} and saves the result in the given extraction parameter object.
+	 * 
+	 * @param <T> The type of the extraction parameter object.
+	 * 
+	 * @param x The value of the x component of the vector.
+	 * @param y The value of the y component of the vector.
+	 * @param res The extraction parameter object for the result.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	public static <T extends Tup2fC> T abs(float x, float y, @ExtractionParam T res)
+	{
+		res.set(Math.abs(x), Math.abs(y));
+		
+		return res;
+	}
+	
+	/**
+	 * Calculates the absolute value of the component values of the vector {@code (v)},
+	 * supplies the result to the given implementation of the functional interface and returns the result of that implementation.
+	 * 
+	 * @param <T> The type of the result object.
+	 * 
+	 * @param v The vector.
+	 * @param res A functional interface implementation for consuming the supplied result.
+	 * 
+	 * @return The result returned from the given functional interface implementation.
+	 */
+	public static <T> T absFunc(Tup2fR v, FloatFunction2<T> res)
+	{
+		return absFunc(v.getV0(), v.getV1(), res);
+	}
+	
+	/**
+	 * Calculates the absolute value of the component values of the vector {@code (v[0], v[1])},
+	 * supplies the result to the given implementation of the functional interface and returns the result of that implementation.
+	 * 
+	 * @param <T> The type of the result object.
+	 * 
+	 * @param v The vector as an array with at least two entries.
+	 * @param res A functional interface implementation for consuming the supplied result.
+	 * 
+	 * @return The result returned from the given functional interface implementation.
+	 */
+	public static <T> T absFunc(@MinLength(3) float[] v, FloatFunction2<T> res)
+	{
+		return absFunc(v[0], v[1], res);
+	}
+	
+	/**
+	 * Calculates the absolute value of the component values of the vector {@code (x, y)},
+	 * supplies the result to the given implementation of the functional interface and returns the result of that implementation.
+	 * 
+	 * @param <T> The type of the result object.
+	 * 
+	 * @param x The value of the x component of the vector.
+	 * @param y The value of the y component of the vector.
+	 * @param res A functional interface implementation for consuming the supplied result.
+	 * 
+	 * @return The result returned from the given functional interface implementation.
+	 */
+	public static <T> T absFunc(float x, float y, FloatFunction2<T> res)
+	{
+		return res.apply(Math.abs(x), Math.abs(y));
+	}
+	
+	/**
+	 * Calculates the {@link Math#signum(float) signum} of the components of the given vector {@code (v)} and saves the result in the extraction parameter.
+	 * 
+	 * @param v The vector.
+	 * @param res The extraction parameter for the result as an array with at least two entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	public static float[] signum(Tup2fR v, @ExtractionParam @MinLength(2) float[] res)
+	{
+		return signum(v.getV0(), v.getV1(), res);
+	}
+	
+	/**
+	 * Calculates the {@link Math#signum(float) signum} of the components of the given vector {@code (v[0], v[1])} and saves the result in the extraction parameter.
+	 * 
+	 * @param v The vector as an array with at least two entries.
+	 * @param res The extraction parameter for the result as an array with at least two entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	public static float[] signum(@MinLength(2) float[] v, @ExtractionParam @MinLength(2) float[] res)
+	{
+		return signum(v[0], v[1], res);
+	}
+	
+	/**
+	 * Calculates the {@link Math#signum(float) signum} of the components of the given vector {@code (x, y)} and saves the result in the extraction parameter.
+	 * 
+	 * @param x The value of the x component of the vector.
+	 * @param y The value of the y component of the vector.
+	 * @param res The extraction parameter for the result as an array with at least two entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	public static float[] signum(float x, float y, @ExtractionParam @MinLength(2) float[] res)
+	{
+		res[0] = Math.signum(x);
+		res[1] = Math.signum(y);
+		
+		return res;
+	}
+	
+	/**
+	 * Calculates the {@link Math#signum(float) signum} of the components of the given vector {@code (v)} and saves the result in the given extraction parameter object.
+	 * 
+	 * @param <T> The type of the extraction parameter object.
+	 * 
+	 * @param v The vector as an array with at leasts two entries.
+	 * @param res The extraction parameter object for the result.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	public static <T extends Tup2fC> T signum(Tup2fR v, @ExtractionParam T res)
+	{
+		return signum(v.getV0(), v.getV1(), res);
+	}
+	
+	/**
+	 * Calculates the {@link Math#signum(float) signum} of the components of the given vector {@code (v[0], v[1])} and saves the result in the given extraction parameter object.
+	 * 
+	 * @param <T> The type of the extraction parameter object.
+	 * 
+	 * @param v The vector as an array with at least two entries.
+	 * @param res The extraction parameter object for the result.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	public static <T extends Tup2fC> T signum(@MinLength(2) float[] v, @ExtractionParam T res)
+	{
+		return signum(v[0], v[1], res);
+	}
+	
+	/**
+	 * Calculates the {@link Math#signum(float) signum} of the components of the given vector {@code (x, y)} and saves the result in the given extraction parameter object.
+	 * 
+	 * @param <T> The type of the extraction parameter object.
+	 * 
+	 * @param x The value of the x component of the vector.
+	 * @param y The value of the y component of the vector.
+	 * @param res The extraction parameter object for the result.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	public static <T extends Tup2fC> T signum(float x, float y, @ExtractionParam T res)
+	{
+		res.set(Math.signum(x), Math.signum(y));
+		
+		return res;
+	}
+	
+	/**
+	 * Calculates the {@link Math#signum(float) signum} of the components of the given vector {@code (v)},
+	 * supplies the result to the given implementation of the functional interface and returns the result of that implementation.
+	 * 
+	 * @param <T> The type of the extraction parameter object.
+	 * 
+	 * @param v The vector.
+	 * @param res A functional interface implementation for consuming the supplied result.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	public static <T> T signumFunc(Tup2fR v, FloatFunction2<T> res)
+	{
+		return signumFunc(v.getV0(), v.getV1(), res);
+	}
+	
+	/**
+	 * Calculates the {@link Math#signum(float) signum} of the components of the given vector {@code (v[0], v[1])},
+	 * supplies the result to the given implementation of the functional interface and returns the result of that implementation.
+	 * 
+	 * @param <T> The type of the extraction parameter object.
+	 * 
+	 * @param v The vector as an array with at least two entries.
+	 * @param res A functional interface implementation for consuming the supplied result.
+	 * 
+	 * @return The result returned from the given functional interface implementation.
+	 */
+	public static <T> T signumFunc(@MinLength(2) float[] v, FloatFunction2<T> res)
+	{
+		return signumFunc(v[0], v[1], res);
+	}
+	
+	/**
+	 * Calculates the {@link Math#signum(float) signum} of the components of the given vector {@code (x, y)},
+	 * supplies the result to the given implementation of the functional interface and returns the result of that implementation.
+	 * 
+	 * @param <T> The type of the extraction parameter object.
+	 * 
+	 * @param x The value of the x component of the vector.
+	 * @param y The value of the y component of the vector.
+	 * @param res A functional interface implementation for consuming the supplied result.
+	 * 
+	 * @return The result returned from the given functional interface implementation.
+	 */
+	public static <T> T signumFunc(float x, float y, FloatFunction2<T> res)
+	{
+		return res.apply(Math.signum(x), Math.signum(y));
 	}
 }

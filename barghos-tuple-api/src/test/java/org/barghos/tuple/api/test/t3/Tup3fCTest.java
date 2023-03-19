@@ -51,18 +51,18 @@ class Tup3fCTest
 
 		when(t.set(t2)).thenCallRealMethod();
 
-		when(t2.getX()).thenReturn(1.0f);
-		when(t2.getY()).thenReturn(2.0f);
-		when(t2.getZ()).thenReturn(3.0f);
+		when(t2.getV0()).thenReturn(1.0f);
+		when(t2.getV1()).thenReturn(2.0f);
+		when(t2.getV2()).thenReturn(3.0f);
 		when(t.set(1.0f, 2.0f, 3.0f)).thenReturn(t);
 
 		assertSame(t, t.set(t2));
 
 		verify(t).set(t2);
 
-		verify(t2).getX();
-		verify(t2).getY();
-		verify(t2).getZ();
+		verify(t2).getV0();
+		verify(t2).getV1();
+		verify(t2).getV2();
 		verify(t).set(1.0f, 2.0f, 3.0f);
 
 		verifyNoMoreInteractions(t, t2);
@@ -102,17 +102,17 @@ class Tup3fCTest
 
 		when(t.set(1.0f, 2.0f, 3.0f)).thenCallRealMethod();
 
-		when(t.setX(1.0f)).thenReturn(t);
-		when(t.setY(2.0f)).thenReturn(t);
-		when(t.setZ(3.0f)).thenReturn(t);
+		when(t.setV0(1.0f)).thenReturn(t);
+		when(t.setV1(2.0f)).thenReturn(t);
+		when(t.setV2(3.0f)).thenReturn(t);
 
 		assertSame(t, t.set(1.0f, 2.0f, 3.0f));
 
 		verify(t).set(1.0f, 2.0f, 3.0f);
 
-		verify(t).setX(1.0f);
-		verify(t).setY(2.0f);
-		verify(t).setZ(3.0f);
+		verify(t).setV0(1.0f);
+		verify(t).setV1(2.0f);
+		verify(t).setV2(3.0f);
 
 		verifyNoMoreInteractions(t);
 	}
@@ -154,13 +154,13 @@ class Tup3fCTest
 
 		when(t.setByIndex(0, 1.0f)).thenCallRealMethod();
 
-		when(t.setX(1.0f)).thenReturn(t);
+		when(t.setV0(1.0f)).thenReturn(t);
 
 		assertSame(t, t.setByIndex(0, 1.0f));
 
 		verify(t).setByIndex(0, 1.0f);
 
-		verify(t).setX(1.0f);
+		verify(t).setV0(1.0f);
 
 		verifyNoMoreInteractions(t);
 	}
@@ -177,13 +177,13 @@ class Tup3fCTest
 
 		when(t.setByIndex(1, 1.0f)).thenCallRealMethod();
 
-		when(t.setY(1.0f)).thenReturn(t);
+		when(t.setV1(1.0f)).thenReturn(t);
 
 		assertSame(t, t.setByIndex(1, 1.0f));
 
 		verify(t).setByIndex(1, 1.0f);
 
-		verify(t).setY(1.0f);
+		verify(t).setV1(1.0f);
 
 		verifyNoMoreInteractions(t);
 	}
@@ -200,13 +200,13 @@ class Tup3fCTest
 
 		when(t.setByIndex(2, 1.0f)).thenCallRealMethod();
 
-		when(t.setZ(1.0f)).thenReturn(t);
+		when(t.setV2(1.0f)).thenReturn(t);
 
 		assertSame(t, t.setByIndex(2, 1.0f));
 
 		verify(t).setByIndex(2, 1.0f);
 
-		verify(t).setZ(1.0f);
+		verify(t).setV2(1.0f);
 
 		verifyNoMoreInteractions(t);
 	}

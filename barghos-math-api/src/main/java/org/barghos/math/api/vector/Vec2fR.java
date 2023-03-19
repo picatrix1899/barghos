@@ -7,11 +7,11 @@ import org.barghos.annotation.ExtractionParam;
 import org.barghos.annotation.FloatMinValue;
 import org.barghos.annotation.MinLength;
 import org.barghos.math.api.util.ComponentValueFloat;
+import org.barghos.tuple.api.t2.Tup2fC;
+import org.barghos.tuple.api.t2.Tup2fR;
 
 /**
  * This interface provides non invasive (readonly) functions and methods for float vectors with two dimensions.
- * 
- * @author picatrix1899
  */
 public interface Vec2fR extends SimpleVec2fR
 {
@@ -29,9 +29,9 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return A new instance.
 	 */
-	default Vec2fR createNew(SimpleVec2fR v)
+	default Vec2fR createNew(Tup2fR v)
 	{
-		return createNew(v.getX(), v.getY());
+		return createNew(v.getV0(), v.getV1());
 	}
 	
 	/**
@@ -217,7 +217,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The distance between the endpoint of this vector and the endpoint of the given vector.
 	 */
-	default float distanceTo(SimpleVec2fR v2)
+	default float distanceTo(Tup2fR v2)
 	{
 		return Vec2fUtils.distanceTo(this, v2);
 	}
@@ -237,7 +237,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The distance between the endpoint of this vector and the endpoint of the given vector.
 	 */
-	default float distanceTo(SimpleVec2fR v2, MathProvider mathProvider)
+	default float distanceTo(Tup2fR v2, MathProvider mathProvider)
 	{
 		return Vec2fUtils.distanceTo(this, v2, mathProvider);
 	}
@@ -263,7 +263,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @throws IllegalArgumentException If the given {@code tolerance} is below zero.
 	 */
-	default float distanceTo(SimpleVec2fR v2, @FloatMinValue(0.0f) float tolerance)
+	default float distanceTo(Tup2fR v2, @FloatMinValue(0.0f) float tolerance)
 	{
 		return Vec2fUtils.distanceTo(this, v2, tolerance);
 	}
@@ -290,7 +290,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @throws IllegalArgumentException If the given {@code tolerance} is below zero.
 	 */
-	default float distanceTo(SimpleVec2fR v2, @FloatMinValue(0.0f) float tolerance, MathProvider mathProvider)
+	default float distanceTo(Tup2fR v2, @FloatMinValue(0.0f) float tolerance, MathProvider mathProvider)
 	{
 		return Vec2fUtils.distanceTo(this, v2, tolerance);
 	}
@@ -500,7 +500,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @throws ArithmeticException If the distance between the endpoints is zero.
 	 */
-	default float inverseDistanceTo(SimpleVec2fR v2)
+	default float inverseDistanceTo(Tup2fR v2)
 	{
 		return Vec2fUtils.inverseDistanceTo(this, v2);
 	}
@@ -523,7 +523,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @throws ArithmeticException If the distance between the endpoints is zero.
 	 */
-	default float inverseDistanceTo(SimpleVec2fR v2, MathProvider mathProvider)
+	default float inverseDistanceTo(Tup2fR v2, MathProvider mathProvider)
 	{
 		return Vec2fUtils.inverseDistanceTo(this, v2, mathProvider);
 	}
@@ -645,7 +645,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The squared distance between the endpoint of this vector and the endpoint of the given vector.
 	 */
-	default float squaredDistanceTo(SimpleVec2fR v2)
+	default float squaredDistanceTo(Tup2fR v2)
 	{
 		return Vec2fUtils.squaredDistanceTo(this, v2);
 	}
@@ -693,7 +693,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * @param v2 The second vector.
 	 * @return The dot product.
 	 */
-	default float dot(SimpleVec2fR v2)
+	default float dot(Tup2fR v2)
 	{
 		return Vec2fUtils.dot(this, v2);
 	}
@@ -743,7 +743,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return A new instance of this vector with the result.
 	 */
-	default Vec2fR addN(SimpleVec2fR v2)
+	default Vec2fR addN(Tup2fR v2)
 	{
 		return Vec2fUtils.addFunc(this, v2, (x, y) -> createNew(x, y));
 	}
@@ -820,7 +820,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return A new instance of this vector with the result.
 	 */
-	default Vec2fR subN(SimpleVec2fR v2)
+	default Vec2fR subN(Tup2fR v2)
 	{
 		return Vec2fUtils.subFunc(this, v2, (x, y) -> createNew(x, y));
 	}
@@ -897,7 +897,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return A new instance of this vector with the result.
 	 */
-	default Vec2fR revSubN(SimpleVec2fR v2)
+	default Vec2fR revSubN(Tup2fR v2)
 	{
 		return Vec2fUtils.revSubFunc(this, v2, (x, y) -> createNew(x, y));
 	}
@@ -974,7 +974,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return A new instance of this vector with the result.
 	 */
-	default Vec2fR mulN(SimpleVec2fR v2)
+	default Vec2fR mulN(Tup2fR v2)
 	{
 		return Vec2fUtils.mulFunc(this, v2, (x, y) -> createNew(x, y));
 	}
@@ -1051,7 +1051,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return A new instance of this vector with the result.
 	 */
-	default Vec2fR divN(SimpleVec2fR v2)
+	default Vec2fR divN(Tup2fR v2)
 	{
 		return Vec2fUtils.divFunc(this, v2, (x, y) -> createNew(x, y));
 	}
@@ -1128,7 +1128,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return A new instance of this vector with the result.
 	 */
-	default Vec2fR revDivN(SimpleVec2fR v2)
+	default Vec2fR revDivN(Tup2fR v2)
 	{
 		return Vec2fUtils.revDivFunc(this, v2, (x, y) -> createNew(x, y));
 	}
@@ -1205,7 +1205,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return A new instance of this vector with the result.
 	 */
-	default Vec2fR halfVectorToN(SimpleVec2fR v2)
+	default Vec2fR halfVectorToN(Tup2fR v2)
 	{
 		return Vec2fUtils.halfVectorToFunc(this, v2, (x, y) -> createNew(x, y));
 	}
@@ -1263,7 +1263,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return A new instance of this vector with the result.
 	 */
-	default Vec2fR halfPointBetweenN(SimpleVec2fR v2)
+	default Vec2fR halfPointBetweenN(Tup2fR v2)
 	{
 		return Vec2fUtils.halfPointBetweenFunc(this, v2, (x, y) -> createNew(x, y));
 	}
@@ -1369,7 +1369,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return A new instance of this vector with the result.
 	 */
-	default Vec2fR minVectorN(SimpleVec2fR v2)
+	default Vec2fR minVectorN(Tup2fR v2)
 	{
 		return Vec2fUtils.minVectorFunc(this, v2, (x, y) -> createNew(x, y));
 	}
@@ -1418,7 +1418,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return A new instance of this vector with the result.
 	 */
-	default Vec2fR maxVectorN(SimpleVec2fR v2)
+	default Vec2fR maxVectorN(Tup2fR v2)
 	{
 		return Vec2fUtils.maxVectorFunc(this, v2, (x, y) -> createNew(x, y));
 	}
@@ -1545,7 +1545,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return A new instance of this vector with the result.
 	 */
-	default Vec2fR projectN(SimpleVec2fR t)
+	default Vec2fR projectN(Tup2fR t)
 	{
 		return Vec2fUtils.projectFunc(this, t, (x, y) -> createNew(x, y));
 	}
@@ -1602,7 +1602,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return A new instance of this vector with the result.
 	 */
-	default Vec2fR reflectN(SimpleVec2fR n)
+	default Vec2fR reflectN(Tup2fR n)
 	{
 		return Vec2fUtils.reflectFunc(this, n, (x, y) -> createNew(x, y));
 	}
@@ -1808,6 +1808,32 @@ public interface Vec2fR extends SimpleVec2fR
 	}
 	
 	/**
+	 * Calculates the absolute value of the component values and saves the result in a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec2fR absN()
+	{
+		return Vec2fUtils.absFunc(this, (x, y) -> createNew(x, y));
+	}
+	
+	/**
+	 * Calculates the {@link Math#signum(float) signum} of the components of this vector and saves the result in a new instance.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @return A new instance of this vector with the result.
+	 */
+	default Vec2fR signumN()
+	{
+		return Vec2fUtils.signumFunc(this, (x, y) -> createNew(x, y));
+	}
+	
+	/**
 	 * Adds the given vector {@code (v2)} to this vector and saves the result in the extraction parameter {@code res}.
 	 * 
 	 * <p>
@@ -1827,9 +1853,9 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default <T extends SimpleVec2fC> T addR(SimpleVec2fR v2, @ExtractionParam T res)
+	default <T extends Tup2fC> T addR(Tup2fR v2, @ExtractionParam T res)
 	{
-		return Vec2fUtils.add(this, v2.getX(), v2.getY(), res);
+		return Vec2fUtils.add(this, v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -1847,9 +1873,9 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default float[] addR(SimpleVec2fR v2, @ExtractionParam @MinLength(2) float[] res)
+	default float[] addR(Tup2fR v2, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return Vec2fUtils.add(this, v2.getX(), v2.getY(), res);
+		return Vec2fUtils.add(this, v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -1872,7 +1898,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default <T extends SimpleVec2fC> T addR(@MinLength(2) float[] v2, @ExtractionParam T res)
+	default <T extends Tup2fC> T addR(@MinLength(2) float[] v2, @ExtractionParam T res)
 	{
 		return Vec2fUtils.add(this, v2[0], v2[1], res);
 	}
@@ -1920,7 +1946,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default <T extends SimpleVec2fC> T addR(float value, @ExtractionParam T res)
+	default <T extends Tup2fC> T addR(float value, @ExtractionParam T res)
 	{
 		return Vec2fUtils.add(this, value, value, res);
 	}
@@ -1966,7 +1992,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default <T extends SimpleVec2fC> T addR(float v2x, float v2y, @ExtractionParam T res)
+	default <T extends Tup2fC> T addR(float v2x, float v2y, @ExtractionParam T res)
 	{
 		return Vec2fUtils.add(this, v2x, v2y, res);
 	}
@@ -2012,9 +2038,9 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default <T extends SimpleVec2fC> T subR(SimpleVec2fR v2, @ExtractionParam T res)
+	default <T extends Tup2fC> T subR(Tup2fR v2, @ExtractionParam T res)
 	{
-		return Vec2fUtils.sub(this, v2.getX(), v2.getY(), res);
+		return Vec2fUtils.sub(this, v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -2032,9 +2058,9 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default float[] subR(SimpleVec2fR v2, @ExtractionParam @MinLength(2) float[] res)
+	default float[] subR(Tup2fR v2, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return Vec2fUtils.sub(this, v2.getX(), v2.getY(), res);
+		return Vec2fUtils.sub(this, v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -2057,7 +2083,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default <T extends SimpleVec2fC> T subR(@MinLength(2) float[] v2, @ExtractionParam T res)
+	default <T extends Tup2fC> T subR(@MinLength(2) float[] v2, @ExtractionParam T res)
 	{
 		return Vec2fUtils.sub(this, v2[0], v2[1], res);
 	}
@@ -2106,7 +2132,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default <T extends SimpleVec2fC> T subR(float value, @ExtractionParam T res)
+	default <T extends Tup2fC> T subR(float value, @ExtractionParam T res)
 	{
 		return Vec2fUtils.sub(this, value, value, res);
 	}
@@ -2152,7 +2178,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default <T extends SimpleVec2fC> T subR(float v2x, float v2y, @ExtractionParam T res)
+	default <T extends Tup2fC> T subR(float v2x, float v2y, @ExtractionParam T res)
 	{
 		return Vec2fUtils.sub(this, v2x, v2y, res);
 	}
@@ -2200,9 +2226,9 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default <T extends SimpleVec2fC> T revSubR(SimpleVec2fR v2, @ExtractionParam T res)
+	default <T extends Tup2fC> T revSubR(Tup2fR v2, @ExtractionParam T res)
 	{
-		return Vec2fUtils.revSub(this, v2.getX(), v2.getY(), res);
+		return Vec2fUtils.revSub(this, v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -2220,9 +2246,9 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default float[] revSubR(SimpleVec2fR v2, @ExtractionParam @MinLength(2) float[] res)
+	default float[] revSubR(Tup2fR v2, @ExtractionParam @MinLength(2) float[] res)
 	{
-		return Vec2fUtils.revSub(this, v2.getX(), v2.getY(), res);
+		return Vec2fUtils.revSub(this, v2.getV0(), v2.getV1(), res);
 	}
 	
 	/**
@@ -2245,7 +2271,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default <T extends SimpleVec2fC> T revSubR(@MinLength(2) float[] v2, @ExtractionParam T res)
+	default <T extends Tup2fC> T revSubR(@MinLength(2) float[] v2, @ExtractionParam T res)
 	{
 		return Vec2fUtils.revSub(this, v2[0], v2[1], res);
 	}
@@ -2293,7 +2319,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default <T extends SimpleVec2fC> T revSubR(float value, @ExtractionParam T res)
+	default <T extends Tup2fC> T revSubR(float value, @ExtractionParam T res)
 	{
 		return Vec2fUtils.revSub(this, value, value, res);
 	}
@@ -2339,7 +2365,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default <T extends SimpleVec2fC> T revSubR(float v2x, float v2y, @ExtractionParam T res)
+	default <T extends Tup2fC> T revSubR(float v2x, float v2y, @ExtractionParam T res)
 	{
 		return Vec2fUtils.revSub(this, v2x, v2y, res);
 	}
@@ -2385,7 +2411,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default <T extends SimpleVec2fC> T mulR(SimpleVec2fR v2, @ExtractionParam T res)
+	default <T extends Tup2fC> T mulR(Tup2fR v2, @ExtractionParam T res)
 	{
 		return Vec2fUtils.mul(this, v2, res);
 	}
@@ -2405,7 +2431,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default float[] mulR(SimpleVec2fR v2, @ExtractionParam @MinLength(2) float[] res)
+	default float[] mulR(Tup2fR v2, @ExtractionParam @MinLength(2) float[] res)
 	{
 		return Vec2fUtils.mul(this, v2, res);
 	}
@@ -2430,7 +2456,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default <T extends SimpleVec2fC> T mulR(@MinLength(2) float[] v2, @ExtractionParam T res)
+	default <T extends Tup2fC> T mulR(@MinLength(2) float[] v2, @ExtractionParam T res)
 	{
 		return Vec2fUtils.mul(this, v2, res);
 	}
@@ -2478,7 +2504,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default <T extends SimpleVec2fC> T mulR(float value, @ExtractionParam T res)
+	default <T extends Tup2fC> T mulR(float value, @ExtractionParam T res)
 	{
 		return Vec2fUtils.mul(this, value, value, res);
 	}
@@ -2524,7 +2550,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default <T extends SimpleVec2fC> T mulR(float v2x, float v2y, @ExtractionParam T res)
+	default <T extends Tup2fC> T mulR(float v2x, float v2y, @ExtractionParam T res)
 	{
 		return Vec2fUtils.mul(this, v2x, v2y, res);
 	}
@@ -2570,7 +2596,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default <T extends SimpleVec2fC> T divR(SimpleVec2fR v2, @ExtractionParam T res)
+	default <T extends Tup2fC> T divR(Tup2fR v2, @ExtractionParam T res)
 	{
 		return Vec2fUtils.div(this, v2, res);
 	}
@@ -2590,7 +2616,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default float[] divR(SimpleVec2fR v2, @ExtractionParam @MinLength(2) float[] res)
+	default float[] divR(Tup2fR v2, @ExtractionParam @MinLength(2) float[] res)
 	{
 		return Vec2fUtils.div(this, v2, res);
 	}
@@ -2615,7 +2641,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default <T extends SimpleVec2fC> T divR(@MinLength(2) float[] v2, @ExtractionParam T res)
+	default <T extends Tup2fC> T divR(@MinLength(2) float[] v2, @ExtractionParam T res)
 	{
 		return Vec2fUtils.div(this, v2, res);
 	}
@@ -2663,7 +2689,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default <T extends SimpleVec2fC> T divR(float value, @ExtractionParam T res)
+	default <T extends Tup2fC> T divR(float value, @ExtractionParam T res)
 	{
 		return Vec2fUtils.div(this, value, value, res);
 	}
@@ -2709,7 +2735,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default <T extends SimpleVec2fC> T divR(float v2x, float v2y, @ExtractionParam T res)
+	default <T extends Tup2fC> T divR(float v2x, float v2y, @ExtractionParam T res)
 	{
 		return Vec2fUtils.div(this, v2x, v2y, res);
 	}
@@ -2755,7 +2781,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default <T extends SimpleVec2fC> T revDivR(SimpleVec2fR v2, @ExtractionParam T res)
+	default <T extends Tup2fC> T revDivR(Tup2fR v2, @ExtractionParam T res)
 	{
 		return Vec2fUtils.revDiv(this, v2, res);
 	}
@@ -2775,7 +2801,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default float[] revDivR(SimpleVec2fR v2, @ExtractionParam float[] res)
+	default float[] revDivR(Tup2fR v2, @ExtractionParam float[] res)
 	{
 		return Vec2fUtils.revDiv(this, v2, res);
 	}
@@ -2800,7 +2826,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default <T extends SimpleVec2fC> T revDivR(@MinLength(2) float[] v2, @ExtractionParam T res)
+	default <T extends Tup2fC> T revDivR(@MinLength(2) float[] v2, @ExtractionParam T res)
 	{
 		return Vec2fUtils.revDiv(this, v2, res);
 	}
@@ -2848,7 +2874,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default <T extends SimpleVec2fC> T revDivR(float value, @ExtractionParam T res)
+	default <T extends Tup2fC> T revDivR(float value, @ExtractionParam T res)
 	{
 		return Vec2fUtils.revDiv(this, value, value, res);
 	}
@@ -2894,7 +2920,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default <T extends SimpleVec2fC> T revDivR(float v2x, float v2y, @ExtractionParam T res)
+	default <T extends Tup2fC> T revDivR(float v2x, float v2y, @ExtractionParam T res)
 	{
 		return Vec2fUtils.revDiv(this, v2x, v2y, res);
 	}
@@ -2940,7 +2966,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default <T extends SimpleVec2fC> T halfVectorToR(SimpleVec2fR v2, @ExtractionParam T res)
+	default <T extends Tup2fC> T halfVectorToR(Tup2fR v2, @ExtractionParam T res)
 	{
 		return Vec2fUtils.halfVectorTo(this, v2, res);
 	}
@@ -2960,7 +2986,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default float[] halfVectorToR(SimpleVec2fR v2, @ExtractionParam @MinLength(2) float[] res)
+	default float[] halfVectorToR(Tup2fR v2, @ExtractionParam @MinLength(2) float[] res)
 	{
 		return Vec2fUtils.halfVectorTo(this, v2, res);
 	}
@@ -2985,7 +3011,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default <T extends SimpleVec2fC> T halfVectorToR(@MinLength(2) float[] v2, @ExtractionParam T res)
+	default <T extends Tup2fC> T halfVectorToR(@MinLength(2) float[] v2, @ExtractionParam T res)
 	{
 		return Vec2fUtils.halfVectorTo(this, v2, res);
 	}
@@ -3034,7 +3060,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default <T extends SimpleVec2fC> T halfVectorToR(float v2x, float v2y, @ExtractionParam T res)
+	default <T extends Tup2fC> T halfVectorToR(float v2x, float v2y, @ExtractionParam T res)
 	{
 		return Vec2fUtils.halfVectorTo(this, v2x, v2y, res);
 	}
@@ -3081,7 +3107,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default <T extends SimpleVec2fC> T halfPointBetweenR(SimpleVec2fR v2, @ExtractionParam T res)
+	default <T extends Tup2fC> T halfPointBetweenR(Tup2fR v2, @ExtractionParam T res)
 	{
 		return Vec2fUtils.halfPointBetween(this, v2, res);
 	}
@@ -3102,7 +3128,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default float[] halfPointBetweenR(SimpleVec2fR v2, @ExtractionParam @MinLength(2) float[] res)
+	default float[] halfPointBetweenR(Tup2fR v2, @ExtractionParam @MinLength(2) float[] res)
 	{
 		return Vec2fUtils.halfPointBetween(this, v2, res);
 	}
@@ -3128,7 +3154,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default <T extends SimpleVec2fC> T halfPointBetweenR(@MinLength(2) float[] v2, @ExtractionParam T res)
+	default <T extends Tup2fC> T halfPointBetweenR(@MinLength(2) float[] v2, @ExtractionParam T res)
 	{
 		return Vec2fUtils.halfPointBetween(this, v2, res);
 	}
@@ -3179,7 +3205,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default <T extends SimpleVec2fC> T halfPointBetweenR(float v2x, float v2y, @ExtractionParam T res)
+	default <T extends Tup2fC> T halfPointBetweenR(float v2x, float v2y, @ExtractionParam T res)
 	{
 		return Vec2fUtils.halfPointBetween(this, v2x, v2y, res);
 	}
@@ -3225,7 +3251,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default <T extends SimpleVec2fC> T negateR(@ExtractionParam T res)
+	default <T extends Tup2fC> T negateR(@ExtractionParam T res)
 	{
 		return Vec2fUtils.negate(this, res);
 	}
@@ -3268,7 +3294,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default <T extends SimpleVec2fC> T inverseR(@ExtractionParam T res)
+	default <T extends Tup2fC> T inverseR(@ExtractionParam T res)
 	{
 		return Vec2fUtils.inverse(this, res);
 	}
@@ -3311,7 +3337,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default <T extends SimpleVec2fC> T normalizeR(@ExtractionParam T res)
+	default <T extends Tup2fC> T normalizeR(@ExtractionParam T res)
 	{
 		return Vec2fUtils.normalize(this, res);
 	}
@@ -3352,7 +3378,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default <T extends SimpleVec2fC> T minVectorR(SimpleVec2fR v2, @ExtractionParam T res)
+	default <T extends Tup2fC> T minVectorR(Tup2fR v2, @ExtractionParam T res)
 	{
 		return Vec2fUtils.minVector(this, v2, res);
 	}
@@ -3369,7 +3395,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default float[] minVectorR(SimpleVec2fR v2, @ExtractionParam @MinLength(2) float[] res)
+	default float[] minVectorR(Tup2fR v2, @ExtractionParam @MinLength(2) float[] res)
 	{
 		return Vec2fUtils.minVector(this, v2, res);
 	}
@@ -3391,7 +3417,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default <T extends SimpleVec2fC> T minVectorR(@MinLength(2) float[] v2, @ExtractionParam T res)
+	default <T extends Tup2fC> T minVectorR(@MinLength(2) float[] v2, @ExtractionParam T res)
 	{
 		return Vec2fUtils.minVector(this, v2, res);
 	}
@@ -3434,7 +3460,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default <T extends SimpleVec2fC> T minVectorR(float v2x, float v2y, @ExtractionParam T res)
+	default <T extends Tup2fC> T minVectorR(float v2x, float v2y, @ExtractionParam T res)
 	{
 		return Vec2fUtils.minVector(this, v2x, v2y, res);
 	}
@@ -3474,7 +3500,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default <T extends SimpleVec2fC> T maxVectorR(SimpleVec2fR v2, @ExtractionParam T res)
+	default <T extends Tup2fC> T maxVectorR(Tup2fR v2, @ExtractionParam T res)
 	{
 		return Vec2fUtils.maxVector(this,  v2, res);
 	}
@@ -3491,7 +3517,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default float[] maxVectorR(SimpleVec2fR v2, @ExtractionParam @MinLength(2) float[] res)
+	default float[] maxVectorR(Tup2fR v2, @ExtractionParam @MinLength(2) float[] res)
 	{
 		return Vec2fUtils.maxVector(this, v2, res);
 	}
@@ -3513,7 +3539,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default <T extends SimpleVec2fC> T maxVectorR(@MinLength(2) float[] v2, @ExtractionParam T res)
+	default <T extends Tup2fC> T maxVectorR(@MinLength(2) float[] v2, @ExtractionParam T res)
 	{
 		return Vec2fUtils.maxVector(this, v2, res);
 	}
@@ -3556,7 +3582,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default <T extends SimpleVec2fC> T maxVectorR(float v2x, float v2y, @ExtractionParam T res)
+	default <T extends Tup2fC> T maxVectorR(float v2x, float v2y, @ExtractionParam T res)
 	{
 		return Vec2fUtils.maxVector(this, v2x, v2y, res);
 	}
@@ -3598,7 +3624,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	default <T extends SimpleVec2fC> T rotateRadR(float angle, @ExtractionParam T res)
+	default <T extends Tup2fC> T rotateRadR(float angle, @ExtractionParam T res)
 	{
 		return Vec2fUtils.rotateRad(this, angle, res);
 	}
@@ -3623,7 +3649,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	default <T extends SimpleVec2fC> T rotateRadR(float angle, MathProvider mathProvider, @ExtractionParam T res)
+	default <T extends Tup2fC> T rotateRadR(float angle, MathProvider mathProvider, @ExtractionParam T res)
 	{
 		return Vec2fUtils.rotateRad(this, angle, mathProvider, res);
 	}
@@ -3690,7 +3716,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	default <T extends SimpleVec2fC> T rotateDegR(float angle, @ExtractionParam T res)
+	default <T extends Tup2fC> T rotateDegR(float angle, @ExtractionParam T res)
 	{
 		return Vec2fUtils.rotateDeg(this, angle, res);
 	}
@@ -3715,7 +3741,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	default <T extends SimpleVec2fC> T rotateDegR(float angle, MathProvider mathProvider, @ExtractionParam T res)
+	default <T extends Tup2fC> T rotateDegR(float angle, MathProvider mathProvider, @ExtractionParam T res)
 	{
 		return Vec2fUtils.rotateDeg(this, angle, mathProvider, res);
 	}
@@ -3782,7 +3808,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	default <T extends SimpleVec2fC> T projectR(SimpleVec2fR t, @ExtractionParam T res)
+	default <T extends Tup2fC> T projectR(Tup2fR t, @ExtractionParam T res)
 	{
 		return Vec2fUtils.project(this, t, res);
 	}
@@ -3808,7 +3834,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	default <T extends SimpleVec2fC> T projectR(@MinLength(2) float[] t, @ExtractionParam T res)
+	default <T extends Tup2fC> T projectR(@MinLength(2) float[] t, @ExtractionParam T res)
 	{
 		return Vec2fUtils.project(this, t, res);
 	}
@@ -3835,7 +3861,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	default <T extends SimpleVec2fC> T projectR(float tX, float tY, @ExtractionParam T res)
+	default <T extends Tup2fC> T projectR(float tX, float tY, @ExtractionParam T res)
 	{
 		return Vec2fUtils.project(this, tX, tY, res);
 	}
@@ -3856,7 +3882,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default float[] projectR(SimpleVec2fR t, @ExtractionParam @MinLength(2) float[] res)
+	default float[] projectR(Tup2fR t, @ExtractionParam @MinLength(2) float[] res)
 	{
 		return Vec2fUtils.project(this, t, res);
 	}
@@ -3921,7 +3947,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	default <T extends SimpleVec2fC> T reflectR(SimpleVec2fR n, @ExtractionParam T res)
+	default <T extends Tup2fC> T reflectR(Tup2fR n, @ExtractionParam T res)
 	{
 		return Vec2fUtils.reflect(this,  n, res);
 	}
@@ -3943,7 +3969,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	default <T extends SimpleVec2fC> T reflectR(@MinLength(2) float[] n, @ExtractionParam T res)
+	default <T extends Tup2fC> T reflectR(@MinLength(2) float[] n, @ExtractionParam T res)
 	{
 		return Vec2fUtils.reflect(this, n, res);
 	}
@@ -3966,7 +3992,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	default <T extends SimpleVec2fC> T reflectR(float nX, float nY, @ExtractionParam T res)
+	default <T extends Tup2fC> T reflectR(float nX, float nY, @ExtractionParam T res)
 	{
 		return Vec2fUtils.reflect(this, nX, nY, res);
 	}
@@ -3983,7 +4009,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	default float[] reflectR(SimpleVec2fR n, @ExtractionParam @MinLength(2) float[] res)
+	default float[] reflectR(Tup2fR n, @ExtractionParam @MinLength(2) float[] res)
 	{
 		return Vec2fUtils.reflect(this, n, res);
 	}
@@ -4035,7 +4061,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	default <T extends SimpleVec2fC> T ceilR(@ExtractionParam T res)
+	default <T extends Tup2fC> T ceilR(@ExtractionParam T res)
 	{
 		return Vec2fUtils.ceil(this, res);
 	}
@@ -4067,7 +4093,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	default <T extends SimpleVec2fC> T floorR(@ExtractionParam T res)
+	default <T extends Tup2fC> T floorR(@ExtractionParam T res)
 	{
 		return Vec2fUtils.floor(this, res);
 	}
@@ -4099,7 +4125,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	default <T extends SimpleVec2fC> T roundR(@ExtractionParam T res)
+	default <T extends Tup2fC> T roundR(@ExtractionParam T res)
 	{
 		return Vec2fUtils.round(this, res);
 	}
@@ -4131,7 +4157,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	default <T extends SimpleVec2fC> T truncR(@ExtractionParam T res)
+	default <T extends Tup2fC> T truncR(@ExtractionParam T res)
 	{
 		return Vec2fUtils.trunc(this, res);
 	}
@@ -4161,7 +4187,7 @@ public interface Vec2fR extends SimpleVec2fR
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	default <T extends SimpleVec2fC> T roundR(FloatRoundMethod method, @ExtractionParam T res)
+	default <T extends Tup2fC> T roundR(FloatRoundMethod method, @ExtractionParam T res)
 	{
 		return Vec2fUtils.round(this, method, res);
 	}
@@ -4180,5 +4206,69 @@ public interface Vec2fR extends SimpleVec2fR
 	default float[] roundR(FloatRoundMethod method, @ExtractionParam @MinLength(2) float[] res)
 	{
 		return Vec2fUtils.round(this, method, res);
+	}
+	
+	/**
+	 * Calculates the absolute values of the component values and saves the result in the extraction parameter.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup2fC> T absR(@ExtractionParam T res)
+	{
+		return Vec2fUtils.abs(this, res);
+	}
+	
+	/**
+	 * Calculates the absolute values of the component values and saves the result in the extraction parameter.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @param res The extraction parameter for the result as an array with at least two entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] absR(@ExtractionParam @MinLength(2) float[] res)
+	{
+		return Vec2fUtils.abs(this, res);
+	}
+	
+	/**
+	 * Calculates the {@link Math#signum(float) signum} of the components of this vector and saves the result in the extraction parameter.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @param <T> The type of the extraction parameter.
+	 * 
+	 * @param res The extraction parameter for the result.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default <T extends Tup2fC> T signumN(@ExtractionParam T res)
+	{
+		return Vec2fUtils.signum(this, res);
+	}
+	
+	/**
+	 * Calculates the {@link Math#signum(float) signum} of the components of this vector and saves the result in the extraction parameter.
+	 * 
+	 * <p>
+	 * This operation <u><b>does not</b></u> alter the vector.
+	 * 
+	 * @param res The extraction parameter for the result as an array with at least two entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	default float[] signumN(@ExtractionParam @MinLength(2) float[] res)
+	{
+		return Vec2fUtils.signum(this, res);
 	}
 }

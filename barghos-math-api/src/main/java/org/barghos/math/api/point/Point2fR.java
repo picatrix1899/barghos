@@ -1,3 +1,4 @@
+package org.barghos.math.api.point;
 //package org.barghos.math.api.point;
 //
 //import org.barghos.core.api.tuple2.Tup2fC;

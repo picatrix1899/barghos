@@ -9,8 +9,6 @@ import java.lang.annotation.Target;
 
 /**
  * Indicates the valid value range for the annotated int parameter.
- * 
- * @author picatrix1899
  */
 @Documented
 @Retention(CLASS)

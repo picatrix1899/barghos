@@ -12,12 +12,17 @@ import org.barghos.tuple.api.tn.TupfR;
 
 /**
  * This interface provides non invasive (readonly) functions and methods for float tuples with four dimensions.
- * 
- * @author picatrix1899
  */
 public interface Tup4fR extends TupfR
 {
-	/** {@inheritDoc}} */
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * <p>
+	 * For any derivative or implementation of {@link Tup4fR} this will be two.
+	 * 
+	 * @apiNote Do not override this function, as it already returns the correct value for any four dimensional tuple.
+	 */
 	@Override
 	default int getDimensions()
 	{
@@ -25,32 +30,48 @@ public interface Tup4fR extends TupfR
 	}
 	
 	/**
-	 * Returns the value of the x component of the tuple.
+	 * Returns the value of the first component of the tuple.
 	 * 
-	 * @return The value of the x component.
+	 * @return The value of the first component.
+	 * 
+	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced, as the original concept was too close to the naming conventions
+	 * of vectors. Because not all tuples are necessarly vectors, the vector naming convention might be confusing to understand or could even
+	 * create conflicts hence it was changed.
 	 */
-	float getX();
+	float getV0();
 	
 	/**
-	 * Returns the value of the y component of the tuple.
+	 * Returns the value of the second component of the tuple.
 	 * 
-	 * @return The value of the y component.
+	 * @return The value of the second component.
+	 * 
+	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced, as the original concept was too close to the naming conventions
+	 * of vectors. Because not all tuples are necessarly vectors, the vector naming convention might be confusing to understand or could even
+	 * create conflicts hence it was changed.
 	 */
-	float getY();
+	float getV1();
 	
 	/**
-	 * Returns the value of the z component of the tuple.
+	 * Returns the value of the third component of the tuple.
 	 * 
-	 * @return The value of the z component.
+	 * @return The value of the third component.
+	 * 
+	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced, as the original concept was too close to the naming conventions
+	 * of vectors. Because not all tuples are necessarly vectors, the vector naming convention might be confusing to understand or could even
+	 * create conflicts hence it was changed.
 	 */
-	float getZ();
+	float getV2();
 	
 	/**
-	 * Returns the value of the w component of the tuple.
+	 * Returns the value of the fourth component of the tuple.
 	 * 
-	 * @return The value of the w component.
+	 * @return The value of the fourth component.
+	 * 
+	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced, as the original concept was too close to the naming conventions
+	 * of vectors. Because not all tuples are necessarly vectors, the vector naming convention might be confusing to understand or could even
+	 * create conflicts hence it was changed.
 	 */
-	float getW();
+	float getV3();
 	
 	/** {@inheritDoc}} */
 	@Override
@@ -60,10 +81,10 @@ public interface Tup4fR extends TupfR
 		
 		switch(index)
 		{
-			case 0: return getX();
-			case 1: return getY();
-			case 2: return getZ();
-			case 3: return getW();
+			case 0: return getV0();
+			case 1: return getV1();
+			case 2: return getV2();
+			case 3: return getV3();
 			default: throw new AssertionError(index);
 		}
 	}
@@ -72,20 +93,20 @@ public interface Tup4fR extends TupfR
 	@Override
 	default boolean isFinite()
 	{
-		return	Float.isFinite(getX()) &&
-				Float.isFinite(getY()) &&
-				Float.isFinite(getZ()) &&
-				Float.isFinite(getW());
+		return	Float.isFinite(getV0()) &&
+				Float.isFinite(getV1()) &&
+				Float.isFinite(getV2()) &&
+				Float.isFinite(getV3());
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	default boolean isZero()
 	{
-		return	getX() == 0.0f &&
-				getY() == 0.0f &&
-				getZ() == 0.0f &&
-				getW() == 0.0f;
+		return	getV0() == 0.0f &&
+				getV1() == 0.0f &&
+				getV2() == 0.0f &&
+				getV3() == 0.0f;
 	}
 	
 	/** {@inheritDoc}} */
@@ -94,20 +115,20 @@ public interface Tup4fR extends TupfR
 	{
 		if(tolerance < 0.0f) throw new IllegalArgumentException();
 		
-		return	Math.abs(getX()) <= tolerance &&
-				Math.abs(getY()) <= tolerance &&
-				Math.abs(getZ()) <= tolerance &&
-				Math.abs(getW()) <= tolerance;
+		return	Math.abs(getV0()) <= tolerance &&
+				Math.abs(getV1()) <= tolerance &&
+				Math.abs(getV2()) <= tolerance &&
+				Math.abs(getV3()) <= tolerance;
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	default float[] toArray(@ExtractionParam @MinLength(4) float[] res)
 	{
-		res[0] = getX();
-		res[1] = getY();
-		res[2] = getZ();
-		res[3] = getW();
+		res[0] = getV0();
+		res[1] = getV1();
+		res[2] = getV2();
+		res[3] = getV3();
 		
 		return res;
 	}
@@ -124,7 +145,18 @@ public interface Tup4fR extends TupfR
 	 * 
 	 * @return True if this tuple is componentwise equal to the other tuple.
 	 */
-	boolean equals(@Nullable Tup4fR other);
+	default boolean equals(@Nullable Tup4fR other)
+	{
+		if(other == null) return false;
+		if(this == other) return true;
+		
+		if(getV0() != other.getV0()) return false;
+		if(getV1() != other.getV1()) return false;
+		if(getV2() != other.getV2()) return false;
+		if(getV3() != other.getV3()) return false;
+		
+		return true;
+	}
 	
 	/**
 	 * Compares the value of the components of this tuple and the given tuple and returns true,
@@ -135,5 +167,48 @@ public interface Tup4fR extends TupfR
 	 * @param tolerance The tolerance that defines the margin.
 	 * @return True if this tuple is componentwise equal to the other tuple.
 	 */
-	boolean equals(@Nullable Tup4fR other, @FloatMinValue(0.0f) float tolerance);
+	default boolean equals(@Nullable Tup4fR other, @FloatMinValue(0.0f) float tolerance)
+	{
+		if(other == null) return false;
+		if(this == other) return true;
+		
+		if(Math.abs(getV0() - other.getV0()) > tolerance) return false;
+		if(Math.abs(getV1() - other.getV1()) > tolerance) return false;
+		if(Math.abs(getV2() - other.getV2()) > tolerance) return false;
+		if(Math.abs(getV3() - other.getV3()) > tolerance) return false;
+		
+		return false;
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	default boolean equals(@Nullable TupfR other)
+	{
+		if(other == null) return false;
+		if(this == other) return true;
+		if(other.getDimensions() != 4) return false;
+		
+		if(getV0() != other.getByIndex(0)) return false;
+		if(getV1() != other.getByIndex(1)) return false;
+		if(getV2() != other.getByIndex(2)) return false;
+		if(getV3() != other.getByIndex(3)) return false;
+		
+		return true;
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	default boolean equals(@Nullable TupfR other, @FloatMinValue(0.0f) float tolerance)
+	{
+		if(other == null) return false;
+		if(this == other) return true;
+		if(other.getDimensions() != 4) return false;
+		
+		if(Math.abs(getV0() - other.getByIndex(0)) > tolerance) return false;
+		if(Math.abs(getV1() - other.getByIndex(1)) > tolerance) return false;
+		if(Math.abs(getV2() - other.getByIndex(2)) > tolerance) return false;
+		if(Math.abs(getV3() - other.getByIndex(3)) > tolerance) return false;
+		
+		return true;
+	}
 }

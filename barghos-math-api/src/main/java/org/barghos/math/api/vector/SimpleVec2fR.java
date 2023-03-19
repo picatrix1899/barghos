@@ -1,14 +1,9 @@
 package org.barghos.math.api.vector;
 
-import org.barghos.annotation.FloatMinValue;
-import org.barghos.annotation.Nullable;
 import org.barghos.tuple.api.t2.Tup2fR;
-import org.barghos.tuple.api.tn.TupfR;
 
 /**
  * This interface provides non invasive (readonly) functions and methods for basic float vectors with two dimensions.
- * 
- * @author picatrix1899
  */
 public interface SimpleVec2fR extends Tup2fR
 {
@@ -25,7 +20,6 @@ public interface SimpleVec2fR extends Tup2fR
 	 * 
 	 * @return The value of the x component.
 	 */
-	@Override
 	float getX();
 	
 	/**
@@ -33,60 +27,19 @@ public interface SimpleVec2fR extends Tup2fR
 	 * 
 	 * @return The value of the y component.
 	 */
-	@Override
 	float getY();
 	
 	/** {@inheritDoc} */
 	@Override
-	default boolean equals(@Nullable Tup2fR other)
+	default float getV0()
 	{
-		if(other == null) return false;
-		if(this == other) return true;
-		
-		if(getX() != other.getX()) return false;
-		if(getY() != other.getY()) return false;
-		
-		return true;
+		return getX();
 	}
-
+	
 	/** {@inheritDoc} */
 	@Override
-	default boolean equals(@Nullable Tup2fR other, @FloatMinValue(0.0f) float tolerance)
+	default float getV1()
 	{
-		if(other == null) return false;
-		if(this == other) return true;
-		
-		if(Math.abs(getX() - other.getX()) > tolerance) return false;
-		if(Math.abs(getY() - other.getY()) > tolerance) return false;
-		
-		return false;
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	default boolean equals(@Nullable TupfR other)
-	{
-		if(other == null) return false;
-		if(this == other) return true;
-		if(other.getDimensions() != 2) return false;
-		
-		if(getX() != other.getByIndex(0)) return false;
-		if(getY() != other.getByIndex(1)) return false;
-		
-		return true;
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	default boolean equals(@Nullable TupfR other, @FloatMinValue(0.0f) float tolerance)
-	{
-		if(other == null) return false;
-		if(this == other) return true;
-		if(other.getDimensions() != 2) return false;
-		
-		if(Math.abs(getX() - other.getByIndex(0)) > tolerance) return false;
-		if(Math.abs(getY() - other.getByIndex(1)) > tolerance) return false;
-		
-		return true;
+		return getY();
 	}
 }

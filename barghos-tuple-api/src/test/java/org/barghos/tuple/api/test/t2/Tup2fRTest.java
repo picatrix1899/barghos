@@ -56,13 +56,13 @@ class Tup2fRTest
 
 		when(t.getByIndex(0)).thenCallRealMethod();
 
-		when(t.getX()).thenReturn(1.0f);
+		when(t.getV0()).thenReturn(1.0f);
 
 		assertEquals(1.0f, t.getByIndex(0));
 
 		verify(t).getByIndex(0);
 
-		verify(t).getX();
+		verify(t).getV0();
 
 		verifyNoMoreInteractions(t);
 	}
@@ -78,13 +78,13 @@ class Tup2fRTest
 
 		when(t.getByIndex(1)).thenCallRealMethod();
 
-		when(t.getY()).thenReturn(1.0f);
+		when(t.getV1()).thenReturn(1.0f);
 
 		assertEquals(1.0f, t.getByIndex(1));
 
 		verify(t).getByIndex(1);
 
-		verify(t).getY();
+		verify(t).getV1();
 
 		verifyNoMoreInteractions(t);
 	}
@@ -102,15 +102,15 @@ class Tup2fRTest
 
 		when(t.isFinite()).thenCallRealMethod();
 
-		when(t.getX()).thenReturn(1.0f);
-		when(t.getY()).thenReturn(1.0f);
+		when(t.getV0()).thenReturn(1.0f);
+		when(t.getV1()).thenReturn(1.0f);
 
 		assertEquals(true, t.isFinite());
 
 		verify(t).isFinite();
 
-		verify(t).getX();
-		verify(t).getY();
+		verify(t).getV0();
+		verify(t).getV1();
 
 		verifyNoMoreInteractions(t);
 	}
@@ -127,13 +127,13 @@ class Tup2fRTest
 
 		when(t.isFinite()).thenCallRealMethod();
 
-		when(t.getX()).thenReturn(Float.POSITIVE_INFINITY);
+		when(t.getV0()).thenReturn(Float.POSITIVE_INFINITY);
 
 		assertEquals(false, t.isFinite());
 
 		verify(t).isFinite();
 
-		verify(t).getX();
+		verify(t).getV0();
 
 		verifyNoMoreInteractions(t);
 	}
@@ -150,13 +150,13 @@ class Tup2fRTest
 
 		when(t.isFinite()).thenCallRealMethod();
 
-		when(t.getX()).thenReturn(Float.NEGATIVE_INFINITY);
+		when(t.getV0()).thenReturn(Float.NEGATIVE_INFINITY);
 
 		assertEquals(false, t.isFinite());
 
 		verify(t).isFinite();
 
-		verify(t).getX();
+		verify(t).getV0();
 
 		verifyNoMoreInteractions(t);
 	}
@@ -173,13 +173,13 @@ class Tup2fRTest
 
 		when(t.isFinite()).thenCallRealMethod();
 
-		when(t.getX()).thenReturn(Float.NaN);
+		when(t.getV0()).thenReturn(Float.NaN);
 
 		assertEquals(false, t.isFinite());
 
 		verify(t).isFinite();
 
-		verify(t).getX();
+		verify(t).getV0();
 
 		verifyNoMoreInteractions(t);
 	}
@@ -196,15 +196,15 @@ class Tup2fRTest
 
 		when(t.isFinite()).thenCallRealMethod();
 
-		when(t.getX()).thenReturn(1.0f);
-		when(t.getY()).thenReturn(Float.POSITIVE_INFINITY);
+		when(t.getV0()).thenReturn(1.0f);
+		when(t.getV1()).thenReturn(Float.POSITIVE_INFINITY);
 
 		assertEquals(false, t.isFinite());
 
 		verify(t).isFinite();
 
-		verify(t).getX();
-		verify(t).getY();
+		verify(t).getV0();
+		verify(t).getV1();
 
 		verifyNoMoreInteractions(t);
 	}
@@ -221,15 +221,15 @@ class Tup2fRTest
 
 		when(t.isFinite()).thenCallRealMethod();
 
-		when(t.getX()).thenReturn(1.0f);
-		when(t.getY()).thenReturn(Float.NEGATIVE_INFINITY);
+		when(t.getV0()).thenReturn(1.0f);
+		when(t.getV1()).thenReturn(Float.NEGATIVE_INFINITY);
 
 		assertEquals(false, t.isFinite());
 
 		verify(t).isFinite();
 
-		verify(t).getX();
-		verify(t).getY();
+		verify(t).getV0();
+		verify(t).getV1();
 
 		verifyNoMoreInteractions(t);
 	}
@@ -246,15 +246,15 @@ class Tup2fRTest
 
 		when(t.isFinite()).thenCallRealMethod();
 
-		when(t.getX()).thenReturn(1.0f);
-		when(t.getY()).thenReturn(Float.NaN);
+		when(t.getV0()).thenReturn(1.0f);
+		when(t.getV1()).thenReturn(Float.NaN);
 
 		assertEquals(false, t.isFinite());
 
 		verify(t).isFinite();
 
-		verify(t).getX();
-		verify(t).getY();
+		verify(t).getV0();
+		verify(t).getV1();
 
 		verifyNoMoreInteractions(t);
 	}
@@ -270,15 +270,15 @@ class Tup2fRTest
 
 		when(t.isZero()).thenCallRealMethod();
 
-		when(t.getX()).thenReturn(0.0f);
-		when(t.getY()).thenReturn(0.0f);
+		when(t.getV0()).thenReturn(0.0f);
+		when(t.getV1()).thenReturn(0.0f);
 
 		assertEquals(true, t.isZero());
 
 		verify(t).isZero();
 
-		verify(t).getX();
-		verify(t).getY();
+		verify(t).getV0();
+		verify(t).getV1();
 
 		verifyNoMoreInteractions(t);
 	}
@@ -294,13 +294,13 @@ class Tup2fRTest
 
 		when(t.isZero()).thenCallRealMethod();
 
-		when(t.getX()).thenReturn(1.0f);
+		when(t.getV0()).thenReturn(1.0f);
 
 		assertEquals(false, t.isZero());
 
 		verify(t).isZero();
 
-		verify(t).getX();
+		verify(t).getV0();
 
 		verifyNoMoreInteractions(t);
 	}
@@ -316,15 +316,15 @@ class Tup2fRTest
 
 		when(t.isZero()).thenCallRealMethod();
 
-		when(t.getX()).thenReturn(0.0f);
-		when(t.getY()).thenReturn(1.0f);
+		when(t.getV0()).thenReturn(0.0f);
+		when(t.getV1()).thenReturn(1.0f);
 
 		assertEquals(false, t.isZero());
 
 		verify(t).isZero();
 
-		verify(t).getX();
-		verify(t).getY();
+		verify(t).getV0();
+		verify(t).getV1();
 
 		verifyNoMoreInteractions(t);
 	}
@@ -340,15 +340,15 @@ class Tup2fRTest
 
 		when(t.isZero(2.0f)).thenCallRealMethod();
 
-		when(t.getX()).thenReturn(0.0f);
-		when(t.getY()).thenReturn(0.0f);
+		when(t.getV0()).thenReturn(0.0f);
+		when(t.getV1()).thenReturn(0.0f);
 
 		assertEquals(true, t.isZero(2.0f));
 
 		verify(t).isZero(2.0f);
 
-		verify(t).getX();
-		verify(t).getY();
+		verify(t).getV0();
+		verify(t).getV1();
 
 		verifyNoMoreInteractions(t);
 	}
@@ -365,15 +365,15 @@ class Tup2fRTest
 
 		when(t.isZero(2.0f)).thenCallRealMethod();
 
-		when(t.getX()).thenReturn(2.0f);
-		when(t.getY()).thenReturn(2.0f);
+		when(t.getV0()).thenReturn(2.0f);
+		when(t.getV1()).thenReturn(2.0f);
 
 		assertEquals(true, t.isZero(2.0f));
 
 		verify(t).isZero(2.0f);
 
-		verify(t).getX();
-		verify(t).getY();
+		verify(t).getV0();
+		verify(t).getV1();
 
 		verifyNoMoreInteractions(t);
 	}
@@ -390,15 +390,15 @@ class Tup2fRTest
 
 		when(t.isZero(2.0f)).thenCallRealMethod();
 
-		when(t.getX()).thenReturn(-2.0f);
-		when(t.getY()).thenReturn(-2.0f);
+		when(t.getV0()).thenReturn(-2.0f);
+		when(t.getV1()).thenReturn(-2.0f);
 
 		assertEquals(true, t.isZero(2.0f));
 
 		verify(t).isZero(2.0f);
 
-		verify(t).getX();
-		verify(t).getY();
+		verify(t).getV0();
+		verify(t).getV1();
 
 		verifyNoMoreInteractions(t);
 	}
@@ -415,13 +415,13 @@ class Tup2fRTest
 
 		when(t.isZero(2.0f)).thenCallRealMethod();
 
-		when(t.getX()).thenReturn(3.0f);
+		when(t.getV0()).thenReturn(3.0f);
 
 		assertEquals(false, t.isZero(2.0f));
 
 		verify(t).isZero(2.0f);
 
-		verify(t).getX();
+		verify(t).getV0();
 
 		verifyNoMoreInteractions(t);
 	}
@@ -438,13 +438,13 @@ class Tup2fRTest
 
 		when(t.isZero(2.0f)).thenCallRealMethod();
 
-		when(t.getX()).thenReturn(-3.0f);
+		when(t.getV0()).thenReturn(-3.0f);
 
 		assertEquals(false, t.isZero(2.0f));
 
 		verify(t).isZero(2.0f);
 
-		verify(t).getX();
+		verify(t).getV0();
 
 		verifyNoMoreInteractions(t);
 	}
@@ -461,15 +461,15 @@ class Tup2fRTest
 
 		when(t.isZero(2.0f)).thenCallRealMethod();
 
-		when(t.getX()).thenReturn(0.0f);
-		when(t.getY()).thenReturn(3.0f);
+		when(t.getV0()).thenReturn(0.0f);
+		when(t.getV1()).thenReturn(3.0f);
 
 		assertEquals(false, t.isZero(2.0f));
 
 		verify(t).isZero(2.0f);
 
-		verify(t).getX();
-		verify(t).getY();
+		verify(t).getV0();
+		verify(t).getV1();
 
 		verifyNoMoreInteractions(t);
 	}
@@ -486,15 +486,15 @@ class Tup2fRTest
 
 		when(t.isZero(2.0f)).thenCallRealMethod();
 
-		when(t.getX()).thenReturn(0.0f);
-		when(t.getY()).thenReturn(-3.0f);
+		when(t.getV0()).thenReturn(0.0f);
+		when(t.getV1()).thenReturn(-3.0f);
 
 		assertEquals(false, t.isZero(2.0f));
 
 		verify(t).isZero(2.0f);
 
-		verify(t).getX();
-		verify(t).getY();
+		verify(t).getV0();
+		verify(t).getV1();
 
 		verifyNoMoreInteractions(t);
 	}
@@ -531,16 +531,16 @@ class Tup2fRTest
 
 		when(t.toArray(array)).thenCallRealMethod();
 
-		when(t.getX()).thenReturn(1.0f);
-		when(t.getY()).thenReturn(2.0f);
+		when(t.getV0()).thenReturn(1.0f);
+		when(t.getV1()).thenReturn(2.0f);
 
 		assertSame(array, t.toArray(array));
 		assertArrayEquals(new float[] {1.0f, 2.0f}, array);
 
 		verify(t).toArray(array);
 
-		verify(t).getX();
-		verify(t).getY();
+		verify(t).getV0();
+		verify(t).getV1();
 
 		verifyNoMoreInteractions(t);
 	}

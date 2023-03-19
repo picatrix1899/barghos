@@ -24,4 +24,12 @@ publishing {
   }
 }
 
+java {
+  modularity.inferModulePath = true
+}
+
+tasks.named('compileJava') {
+  modularity.inferModulePath = true
+}
+
 tasks.withType(Javadoc).all { failOnError = false }

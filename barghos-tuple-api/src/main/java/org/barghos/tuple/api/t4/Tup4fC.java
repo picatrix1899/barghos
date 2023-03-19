@@ -10,46 +10,44 @@ import org.barghos.tuple.api.tn.TupfR;
 
 /**
  * This interface provides the common functions and methods for float tuples with four dimensions.
- * 
- * @author picatrix1899
  */
 public interface Tup4fC extends Tup4fR, TupfC
 {
 	/**
-	 * Sets the value of the x component of the tuple.
+	 * Sets the value of the first component of the tuple.
 	 * 
-	 * @param x The new value.
+	 * @param v0 The new value.
 	 * 
 	 * @return The current tuple.
 	 */
-	Tup4fC setX(float x);
+	Tup4fC setV0(float v0);
 	
 	/**
-	 * Sets the value of the y component of the tuple.
+	 * Sets the value of the second component of the tuple.
 	 * 
-	 * @param y The new value.
+	 * @param v1 The new value.
 	 * 
 	 * @return The current tuple.
 	 */
-	Tup4fC setY(float y);
+	Tup4fC setV1(float v1);
 	
 	/**
-	 * Sets the value of the z component of the tuple.
+	 * Sets the value of the third component of the tuple.
 	 * 
-	 * @param z The new value.
+	 * @param v2 The new value.
 	 * 
 	 * @return The current tuple.
 	 */
-	Tup4fC setZ(float z);
+	Tup4fC setV2(float v2);
 	
 	/**
-	 * Sets the value of the w component of the tuple.
+	 * Sets the value of the fourth component of the tuple.
 	 * 
-	 * @param w The new value.
+	 * @param v3 The new value.
 	 * 
 	 * @return The current tuple.
 	 */
-	Tup4fC setW(float w);
+	Tup4fC setV3(float v3);
 	
 	/**
 	 * Adopts the component values from an existing instance of {@link Tup4fR}.
@@ -60,7 +58,7 @@ public interface Tup4fC extends Tup4fR, TupfC
 	 */
 	default Tup4fC set(Tup4fR t)
 	{
-		return set(t.getX(), t.getY(), t.getZ(), t.getW());
+		return set(t.getV0(), t.getV1(), t.getV2(), t.getV3());
 	}
 	
 	/** {@inheritDoc}} */
@@ -73,19 +71,19 @@ public interface Tup4fC extends Tup4fR, TupfC
 	/**
 	 * Sets the values of all components to the corresponding parameters.
 	 * 
-	 * @param x The new value of the x component.
-	 * @param y The new value of the y component.
-	 * @param z The new value of the z component.
-	 * @param w The new value of the w component.
+	 * @param v0 The new value of the first component.
+	 * @param v1 The new value of the second component.
+	 * @param v2 The new value of the third component.
+	 * @param v3 The new value of the fourth component.
 	 * 
 	 * @return The current tuple.
 	 */
-	default Tup4fC set(float x, float y, float z, float w)
+	default Tup4fC set(float v0, float v1, float v2, float v3)
 	{
-		setX(x);
-		setY(y);
-		setZ(z);
-		setW(w);
+		setV0(v0);
+		setV1(v1);
+		setV2(v2);
+		setV3(v3);
 		
 		return this;
 	}
@@ -105,10 +103,10 @@ public interface Tup4fC extends Tup4fR, TupfC
 		
 		switch(index)
 		{
-			case 0: return setX(value);
-			case 1: return setY(value);
-			case 2: return setZ(value);
-			case 3: return setW(value);
+			case 0: return setV0(value);
+			case 1: return setV1(value);
+			case 2: return setV2(value);
+			case 3: return setV3(value);
 			default: throw new AssertionError(index);
 		}
 	}

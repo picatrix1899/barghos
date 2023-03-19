@@ -383,9 +383,44 @@ public class BarghosMath
 	}
 	
 	// MISSING_DOC
-	public static float lerpf(float a, float b, float alpha)
+	public static float lerp(float a, float b, float alpha)
 	{
 		return (1.0f - alpha) * a + alpha * b;
+	}
+	
+	public static double lerp(double a, double b, double alpha)
+	{
+		return (1.0 - alpha) * a + alpha * b;
+	}
+	
+	public static float quadricBezier(float a, float b, float c, float alpha)
+	{
+		return (1.0f - alpha) * lerp(a, b, alpha) + alpha * lerp(b, c, alpha);
+	}
+	
+	public static double quadricBezier(double a, double b, double c, double alpha)
+	{
+		return (1.0 - alpha) * lerp(a, b, alpha) + alpha * lerp(b, c, alpha);
+	}
+	
+	public static float cubicBezier(float a, float b, float c, float d, float alpha)
+	{
+		return (1.0f - alpha) * quadricBezier(a, b, c, alpha) + alpha * quadricBezier(b, c, d, alpha);
+	}
+	
+	public static double cubicBezier(double a, double b, double c, double d, double alpha)
+	{
+		return (1.0 - alpha) * quadricBezier(a, b, c, alpha) + alpha * quadricBezier(b, c, d, alpha);
+	}
+	
+	public static float bicubicBezier(float a, float b, float c, float d, float e, float alpha)
+	{
+		return (1.0f - alpha) * cubicBezier(a, b, c, d, alpha) + alpha * cubicBezier(b, c, d, e, alpha);
+	}
+	
+	public static double bicubicBezier(double a, double b, double c, double d, double e, double alpha)
+	{
+		return (1.0 - alpha) * cubicBezier(a, b, c, d, alpha) + alpha * cubicBezier(b, c, d, e, alpha);
 	}
 	
 	public static float acos(float value)

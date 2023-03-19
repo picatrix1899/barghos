@@ -7,6 +7,8 @@ dependencies {
   api project(':barghos-core-api')
   api project(':barghos-math-api')
 
+  implementation project(':barghos-annotation')
+
   testImplementation project(':barghos-testutils')
 }
 
@@ -23,6 +25,14 @@ publishing {
       }
     }
   }
+}
+
+java {
+  modularity.inferModulePath = true
+}
+
+tasks.named('compileJava') {
+  modularity.inferModulePath = true
 }
 
 tasks.withType(Javadoc).all { failOnError = false }

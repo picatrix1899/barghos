@@ -22,3 +22,11 @@ publishing {
     }
   }
 }
+
+java {
+  modularity.inferModulePath = true
+}
+
+tasks.named('compileJava') {
+  modularity.inferModulePath = true
+}

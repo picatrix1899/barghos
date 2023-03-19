@@ -6,8 +6,6 @@ import org.barghos.annotation.IntMinValue;
 
 /**
  * This interface provides the common functions and methods for float tuples with flexible dimension counts.
- * 
- * @author picatrix1899
  */
 public interface TupfC extends TupfR
 {

@@ -10,9 +10,7 @@ import org.barghos.tuple.api.t2.Tup2fR;
 import org.barghos.tuple.api.tn.TupfR;
 
 /**
- * This interface provides the common functions and methods for basic float tuples with two dimensions.
- * 
- * @author picatrix1899
+ * This interface provides the common functions and methods for basic float vectors with two dimensions.
  */
 public interface SimpleVec2fC extends SimpleVec2fR, Tup2fC
 {
@@ -27,7 +25,6 @@ public interface SimpleVec2fC extends SimpleVec2fR, Tup2fC
 	 * 
 	 * @return The current vector.
 	 */
-	@Override
 	SimpleVec2fC setX(float x);
 	
 	/**
@@ -37,8 +34,21 @@ public interface SimpleVec2fC extends SimpleVec2fR, Tup2fC
 	 * 
 	 * @return The current vector.
 	 */
-	@Override
 	SimpleVec2fC setY(float y);
+	
+	/** {@inheritDoc} */
+	@Override
+	default SimpleVec2fC setV0(float v0)
+	{
+		return setX(v0);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	default SimpleVec2fC setV1(float v1)
+	{
+		return setY(v1);
+	}
 	
 	/**
 	 * Adopts the component values from an existing instance of {@link Tup2fR}.
@@ -50,7 +60,7 @@ public interface SimpleVec2fC extends SimpleVec2fR, Tup2fC
 	@Override
 	default SimpleVec2fC set(Tup2fR t)
 	{
-		return set(t.getX(), t.getY());
+		return set(t.getV0(), t.getV1());
 	}
 	
 	/**

@@ -1,6 +1,6 @@
 package org.barghos.math.bounds;
 
-import org.barghos.math.api.bounds.Aabb2fR;
+import org.barghos.math.api.bv.Aabb2fR;
 import org.barghos.math.api.vector.SimpleVec2fR;
 
 public class Aabb2fResolver
