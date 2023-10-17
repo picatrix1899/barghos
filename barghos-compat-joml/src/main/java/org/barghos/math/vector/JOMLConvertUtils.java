@@ -15,7 +15,7 @@ public class JOMLConvertUtils
 		return res;
 	}
 	
-	public static <T> T toJomlFunc(org.barghos.math.api.vector.SimpleVec2fR v, org.barghos.core.api.util.function.FloatFunction2<T> func)
+	public static <T> T toJomlFunc(org.barghos.math.api.vector.SimpleVec2fR v, org.barghos.core.function.FloatFunction2<T> func)
 	{
 		return func.apply(v.getX(), v.getY());
 	}
@@ -32,7 +32,7 @@ public class JOMLConvertUtils
 		return res;
 	}
 	
-	public static <T> T toBarghosFunc(org.joml.Vector2fc v, org.barghos.core.api.util.function.FloatFunction2<T> func)
+	public static <T> T toBarghosFunc(org.joml.Vector2fc v, org.barghos.core.function.FloatFunction2<T> func)
 	{
 		return func.apply(v.x(), v.y());
 	}

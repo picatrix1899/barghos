@@ -1,5 +1,6 @@
 plugins {
   id 'java-library'
+  id 'eclipse'
 }
 
 dependencies {
@@ -21,10 +22,9 @@ publishing {
   }
 }
 
-java {
-  modularity.inferModulePath = true
-}
-
-tasks.named('compileJava') {
-  modularity.inferModulePath = true
+eclipse {
+  project {
+    name = 'barghos-annotation'
+	comment = ''
+  }
 }

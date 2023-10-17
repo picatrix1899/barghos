@@ -1,11 +1,11 @@
 plugins {
   id 'java-library'
+  id 'eclipse'
 }
 
 dependencies {
-  api project(':barghos-core-api')
-
-  testImplementation project(':barghos-testutils')
+	api project(':barghos-annotation')
+	api project(':barghos-util')
 }
 
 publishing {
@@ -16,10 +16,17 @@ publishing {
       from components.java
 		
       pom {
-        name = 'Project Barghos Event System Library'
-        description = 'This library contains the API and implementations of the event systems of Project Barghos.'
+        name = 'Project Barghos Documentation Library'
+        description = 'This library contains the documentation annotations of Project Barghos.'
         url = 'https://github.com/picatrix1899/barghos/'
       }
     }
+  }
+}
+
+eclipse {
+  project {
+    name = 'barghos-event'
+	comment = ''
   }
 }

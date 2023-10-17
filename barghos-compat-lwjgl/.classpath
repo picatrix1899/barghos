@@ -33,16 +33,6 @@
 			<attribute name="without_test_code" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="src" path="/barghos-math-api">
-		<attributes>
-			<attribute name="without_test_code" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="src" path="/barghos-core-api">
-		<attributes>
-			<attribute name="without_test_code" value="true"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="src" path="/barghos-testutils">
 		<attributes>
 			<attribute name="without_test_code" value="true"/>

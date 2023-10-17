@@ -5,7 +5,6 @@ import static org.lwjgl.glfw.GLFW.*;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GLCapabilities;
-
 import org.barghos.math.api.vector.Vec2fR;
 import org.barghos.math.vector.Vec2f;
 

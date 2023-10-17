@@ -1,12 +1,15 @@
 rootProject.name = 'barghos'
 
 include('barghos-annotation')
+include('barghos-validation')
 include('barghos-testutils')
-include('barghos-tuple-api')
-include('barghos-core-api', 'barghos-core')
 include('barghos-event')
-include('barghos-math-api', 'barghos-math')
-include('barghos-model')
-include('barghos-compat-joml')
-include('barghos-compat-lwjgl')
-include('barghos-compat-lwjgl-glfw')
+include('barghos-hash')
+include('barghos-pool')
+
+include('barghos-math')
+include('barghos-math-geometry')
+
+include('barghos-util')
+
+include('barghos-nio-buffer')

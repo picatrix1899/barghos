@@ -1,0 +1,33 @@
+plugins {
+  id 'java-library'
+  id 'eclipse'
+}
+
+dependencies {
+  api project(':barghos-annotation')
+
+  testImplementation project(':barghos-testutils')
+}
+
+publishing {
+  publications {
+    mavenJava(MavenPublication) {
+      artifactId = 'barghos-pool'
+		
+      from components.java
+		
+      pom {
+        name = 'Project Barghos Documentation Library'
+        description = 'This library contains the documentation annotations of Project Barghos.'
+        url = 'https://github.com/picatrix1899/barghos/'
+      }
+    }
+  }
+}
+
+eclipse {
+  project {
+    name = 'barghos-pool'
+	comment = ''
+  }
+}

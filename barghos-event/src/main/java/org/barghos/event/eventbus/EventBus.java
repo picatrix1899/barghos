@@ -6,7 +6,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import org.barghos.event.event.Event;
+import org.barghos.event.Event;
 
 /**
  * This interface represents an event bus within the event system.

@@ -6,8 +6,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.barghos.core.api.reflect.ClassHelper;
-import org.barghos.event.event.Event;
+import org.barghos.event.Event;
+import org.barghos.util.reflect.ClassHelper;
 
 /**
  * This class is a simple implementation of an {@link EventBus}.

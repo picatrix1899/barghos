@@ -1,9 +1,3 @@
-plugins {
-  id 'java'
-  id 'maven-publish'
-  id 'eclipse'
-}
-
 subprojects {
   apply plugin: 'java'
   apply plugin: 'maven-publish'
@@ -20,6 +14,9 @@ subprojects {
   java {
     withJavadocJar()
     withSourcesJar()
+	
+	sourceCompatibility = '17'
+    targetCompatibility = '17'
   }
   
   testing {
@@ -31,9 +28,20 @@ subprojects {
   }
   
   compileJava {
+    modularity.inferModulePath = true
+	
+	options.encoding = "UTF-8"
+	
+	sourceCompatibility = '17'
+    targetCompatibility = '17'
+  }
   
-  	// Build against Java 17 as 18 is not fully released jet.
-    sourceCompatibility = '17'
+  compileTestJava {
+	modularity.inferModulePath = true
+	
+	options.encoding = "UTF-8"
+	
+	sourceCompatibility = '17'
     targetCompatibility = '17'
   }
   
@@ -47,6 +55,25 @@ subprojects {
   	  'implSpec:a:"Implementation Requirements:"',
   	  'implNote:a:"Implementation Note:"'
   	])
+  }
+  
+  eclipse {
+    project {
+	  natures 'org.eclipse.buildship.core.gradleprojectnature'
+	
+	  buildCommand 'org.eclipse.buildship.core.gradleprojectbuilder'
+    }
+  
+    jdt {
+      sourceCompatibility = '17'
+      targetCompatibility = '17'
+      javaRuntimeName = 'JavaSE-17'
+    }
+  
+    classpath {
+      downloadSources = true
+      downloadJavadoc = true
+    }
   }
   
   publishing {

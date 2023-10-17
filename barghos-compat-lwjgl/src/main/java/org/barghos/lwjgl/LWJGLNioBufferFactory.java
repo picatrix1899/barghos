@@ -7,9 +7,8 @@ import java.nio.IntBuffer;
 import java.nio.LongBuffer;
 import java.nio.ShortBuffer;
 
+import org.barghos.core.nio.buffer.NioBufferFactory;
 import org.lwjgl.system.MemoryUtil;
-
-import org.barghos.core.api.nio.buffer.NioBufferFactory;
 
 public class LWJGLNioBufferFactory implements NioBufferFactory
 {

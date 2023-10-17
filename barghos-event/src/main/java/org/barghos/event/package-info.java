@@ -21,12 +21,10 @@
  ******************************************************************************/
 
 /**
- * This part of Project Barghos contains a lot of basic structures and the entire basic api
- * used across all barghos subprojects.
- * It is therefore required by every barghos subproject.
+ * This package contains the API to event systems.
  * 
  * @author picatrix1899
- *
+ * 
  * @since 1.0.0.0
  */
 package org.barghos.event;

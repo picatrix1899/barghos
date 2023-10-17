@@ -3,7 +3,7 @@ plugins {
 }
 
 dependencies {
-  api project(':barghos-core-api')
+  api project(':barghos-core')
   
   testImplementation project(':barghos-testutils')
 }

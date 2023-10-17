@@ -1,0 +1,555 @@
+package org.barghos.util.consumer.doubles;
+
+import org.barghos.util.consumer.Consumer2;
+import org.barghos.validation.Validation;
+
+/**
+ * Represents an operation that accepts two double input arguments and returns no result.
+ * {@link Consumer2d} is expected to operate via side-effects.
+ *
+ * <p>
+ * This is a functional interface
+ * whose functional method is {@link #acceptDouble(double, double)}.
+ * 
+ * @see Consumerd
+ * @see ConsumerExd
+ * @see Consumer2d
+ * @see ConsumerEx2d
+ * @see Consumer3d
+ * @see ConsumerEx3d
+ * @see Consumer4d
+ * @see ConsumerEx4d
+ */
+@FunctionalInterface
+public interface Consumer2d extends Consumer2<Double,Double>
+{
+	/**
+     * Performs the operation on the given arguments.
+     *
+     * @param a The first input argument.
+     * @param b The second input argument.
+     */
+    void acceptDouble(double a, double b);
+    
+    /**
+     * Performs the given operation after this operation.
+     * 
+     * @param after The operation to perform after this operation.
+     * 
+     * @return A new {@link Consumer2d} performing this operation and the operation after.
+     */
+    default Consumer2d andThenDouble(Consumer2d after)
+    {
+    	/*
+    	 * The argument must not be null.
+    	 */
+    	Validation.validateNotNull(after);
+    	
+    	return (a, b) -> {acceptDouble(a, b); after.acceptDouble(a, b);};
+    }
+    
+    /**
+     * Performs the given operations in sequence after this operation.
+     * 
+     * @param after The operations to perform after this operation.
+     * 
+     * @return A new {@link Consumer2d} performing this operation and the operations after.
+     */
+	default Consumer2d andThenDouble(Consumer2d... after)
+    {
+		/*
+    	 * The argument array can be empty but must not be null.
+    	 * Also no entry must be null.
+    	 */
+    	Validation.validateAllNotNull(after);
+    	
+    	/*
+    	 * If no operations are passed return this operation.
+    	 */
+    	if(after.length == 0) return this;
+    	
+    	if(after.length == 1) return (a, b) -> {acceptDouble(a, b); after[0].acceptDouble(a, b);};
+
+    	return (a, b) -> {acceptDouble(a, b); for(Consumer2d consumer : after) consumer.acceptDouble(a, b);};
+    }
+    
+    /**
+     * Performs the given operations in sequence after this operation.
+     * 
+     * @param after The operations to perform after this operation.
+     * 
+     * @return A new {@link Consumer2d} performing this operation and the operations after.
+     */
+	default Consumer2d andThenDouble(Iterable<Consumer2d> after)
+    {
+		/*
+    	 * The argument must not be null.
+    	 */
+		Validation.validateNotNull(after);
+		
+    	return (a, b) -> {acceptDouble(a, b); for(Consumer2d consumer : after) consumer.acceptDouble(a, b);};
+    }
+    
+	/**
+     * Performs the given operation before this operation.
+     * 
+     * @param before The operation to perform before this operation.
+     * 
+     * @return A new {@link Consumer2d} performing the operation before and this operation.
+     */
+    default Consumer2d beforeThatDouble(Consumer2d before)
+    {
+    	/*
+    	 * The argument must not be null.
+    	 */
+    	Validation.validateNotNull(before);
+    	
+    	return (a, b) -> {before.acceptDouble(a, b); acceptDouble(a, b);};
+    }
+    
+    /**
+     * Performs the given operations in sequence before this operation.
+     * 
+     * @param before The operations to perform before this operation.
+     * 
+     * @return A new {@link Consumer2d} performing the operations before and this operation.
+     */
+    default Consumer2d beforeThatDouble(Consumer2d... before)
+    {
+    	/*
+    	 * The argument array can be empty but must not be null.
+    	 * Also no entry must be null.
+    	 */
+    	Validation.validateAllNotNull(before);
+    	
+    	/*
+    	 * If no operations are passed return this operation.
+    	 */
+    	if(before.length == 0) return this;
+    	
+    	if(before.length == 1) return (a, b) -> {before[0].acceptDouble(a, b); acceptDouble(a, b);};
+    	
+    	return (a, b) -> {for(Consumer2d consumer : before) consumer.acceptDouble(a, b); acceptDouble(a, b);};
+    }
+    
+    /**
+     * Performs the given operations in sequence before this operation.
+     * 
+     * @param before The operations to perform before this operation.
+     * 
+     * @return A new {@link Consumer2d} performing the operations before and this operation.
+     */
+    default Consumer2d beforeThatDouble(Iterable<Consumer2d> before)
+    {
+    	/*
+    	 * The argument must not be null.
+    	 */
+    	Validation.validateNotNull(before);
+    	
+    	return (a, b) -> {for(Consumer2d consumer : before) consumer.acceptDouble(a, b); acceptDouble(a, b);};
+    }
+    
+    /**
+     * Composes a new {@link Consumer2d} performing the given operations in sequence.
+     * 
+     * @param consumers The operations to perform.
+     * 
+     * @return A new {@link Consumer2d} performing the operations.
+     */
+	static Consumer2d inSequenceDouble(Consumer2d... consumers)
+    {
+		/*
+    	 * The argument array can be empty but must not be null.
+    	 * Also no entry must be null.
+    	 */
+    	Validation.validateAllNotNull(consumers);
+    	
+    	/*
+    	 * If no operations are passed return empty operation.
+    	 */
+    	if(consumers.length == 0) return (a, b) -> {};
+    	
+    	/*
+    	 * If exactly one operation is passed return the operation.
+    	 */
+    	if(consumers.length == 1) return consumers[0];
+    	
+    	return (a, b) -> {for(Consumer2d consumer : consumers) consumer.acceptDouble(a, b);};
+    }
+    
+    /**
+     * Composes a new {@link Consumer2d} performing the given operations in sequence.
+     * 
+     * @param consumers The operations to perform.
+     * 
+     * @return A new {@link Consumer2d} performing the operations.
+     */
+    static Consumer2d inSequenceDouble(Iterable<Consumer2d> consumers)
+    {
+    	/*
+    	 * The argument must not be null.
+    	 */
+    	Validation.validateNotNull(consumers);
+    	
+    	return (a, b) -> {for(Consumer2d consumer : consumers) consumer.acceptDouble(a, b);};
+    }
+    
+    /**
+     * {@inheritDoc}
+     * 
+     * @deprecated Use {@link acceptDouble} instead.
+     */
+    @Override
+    @Deprecated
+    default void accept(Double a, Double b)
+    {
+    	acceptDouble(a, b);
+    }
+    
+    /**
+     * Performs the given operation after this operation.
+     * 
+     * @param after The operation to perform after this operation.
+     * 
+     * @return A new {@link Consumer2d} performing this operation and the operation after.
+     */
+    default Consumer2d andThen(Consumer2<Double,Double> after)
+    {
+    	/*
+    	 * The argument must not be null.
+    	 */
+    	Validation.validateNotNull(after);
+    	
+    	/*
+		 * If the passed operation is an instance of the desired type
+		 * use it as the desired type to avoid boxing.
+		 */
+    	if(after instanceof Consumer2d)
+    	{
+    		final Consumer2d originalAfter = (Consumer2d)after;
+    		
+    		return (a, b) -> {acceptDouble(a, b); originalAfter.acceptDouble(a, b);};
+    	}
+    	else
+    	{
+    		return (a, b) -> {acceptDouble(a, b); after.accept(a, b);};
+    	}
+    }
+    
+    /**
+     * Performs the given operations in sequence after this operation.
+     * 
+     * @param after The operations to perform after this operation.
+     * 
+     * @return A new {@link Consumer2d} performing this operation and the operations after.
+     */
+    @SuppressWarnings("unchecked")
+	default Consumer2d andThen(Consumer2<Double,Double>... after)
+    {
+    	/*
+    	 * The argument array can be empty but must not be null.
+    	 * Also no entry must be null.
+    	 */
+    	Validation.validateAllNotNull(after);
+    	
+    	/*
+    	 * If no operations are passed return this operation.
+    	 */
+    	if(after.length == 0) return this;
+    	
+    	/*
+    	 * If exactly one operation is passed try to optimize.
+    	 */
+    	if(after.length == 1)
+    	{
+    		/*
+    		 * If the passed operation is an instance of the desired type
+    		 * use it as the desired type to avoid boxing.
+    		 */
+    		if(after[0] instanceof Consumer2d)
+        	{
+        		final Consumer2d originalAfter = (Consumer2d)after[0];
+        		
+        		return (a, b) -> {acceptDouble(a, b); originalAfter.acceptDouble(a, b);};
+        	}
+        	else
+        	{
+        		return (a, b) -> {acceptDouble(a, b); after[0].accept(a, b);};
+        	}
+    	}
+
+    	/*
+    	 * If multiple operations were passed it is not possible to optimize while
+    	 * composing the new operation anymore. The optimization had to be postponed to execution
+    	 * of the composite operation. The optimization prevents unnecessary auto-boxing if
+    	 * possible.
+    	 */
+    	return (a, b) -> {
+			acceptDouble(a, b);
+			
+    		for(Consumer2<Double,Double> consumer : after)
+    		{
+    			if(consumer instanceof Consumer2d)
+    				((Consumer2d)consumer).acceptDouble(a, b);
+    			else
+    				consumer.accept(a, b);
+    		}
+    	};
+    }
+    
+    /**
+     * Performs the given operations in sequence after this operation.
+     * 
+     * @param after The operations to perform after this operation.
+     * 
+     * @return A new {@link Consumer2d} performing this operation and the operations after.
+     */
+	default Consumer2d andThen(Iterable<Consumer2<Double,Double>> after)
+    {
+		/*
+    	 * The argument must not be null.
+    	 */
+		Validation.validateNotNull(after);
+		
+		/*
+    	 * As there is no way to determine how many operations were passed
+    	 * it is not possible to optimize while composing the new operation
+    	 * composing the new operation anymore. The optimization had to be postponed to execution
+    	 * of the composite operation. The optimization prevents unnecessary auto-boxing if
+    	 * possible.
+    	 */
+		return (a, b) -> {
+			acceptDouble(a, b);
+			
+    		for(Consumer2<Double,Double> consumer : after)
+    		{
+    			if(consumer instanceof Consumer2d)
+    				((Consumer2d)consumer).acceptDouble(a, b);
+    			else
+    				consumer.accept(a, b);
+    		}
+    	};
+    }
+    
+	/**
+     * Performs the given operation before this operation.
+     * 
+     * @param before The operation to perform before this operation.
+     * 
+     * @return A new {@link Consumer2d} performing the operation before and this operation.
+     */
+    default Consumer2d beforeThat(Consumer2<Double,Double> before)
+    {
+    	/*
+    	 * The argument must not be null.
+    	 */
+    	Validation.validateNotNull(before);
+    	
+    	/*
+		 * If the passed operation is an instance of the desired type
+		 * use it as the desired type to avoid boxing.
+		 */
+    	if(before instanceof Consumer2d)
+    	{
+    		final Consumer2d originalBefore = (Consumer2d)before;
+    		
+    		return (a, b) -> {originalBefore.acceptDouble(a, b); acceptDouble(a, b);};
+    	}
+    	else
+    	{
+    		return (a, b) -> {before.accept(a, b); acceptDouble(a, b);};
+    	}
+    }
+    
+    /**
+     * Performs the given operations in sequence before this operation.
+     * 
+     * @param before The operations to perform before this operation.
+     * 
+     * @return A new {@link Consumer2d} performing the operations before and this operation.
+     */
+    @SuppressWarnings("unchecked")
+    default Consumer2d beforeThat(Consumer2<Double,Double>... before)
+    {
+    	/*
+    	 * The argument array can be empty but must not be null.
+    	 * Also no entry must be null.
+    	 */
+    	Validation.validateAllNotNull(before);
+    	
+    	/*
+    	 * If no operations are passed return this operation.
+    	 */
+    	if(before.length == 0) return this;
+    	
+    	/*
+    	 * If exactly one operation is passed try to optimize.
+    	 */
+    	if(before.length == 1)
+    	{
+    		/*
+    		 * If the passed operation is an instance of the desired type
+    		 * use it as the desired type to avoid boxing.
+    		 */
+    		if(before[0] instanceof Consumer2d)
+        	{
+        		final Consumer2d originalBefore = (Consumer2d)before[0];
+        		
+        		return (a, b) -> {originalBefore.acceptDouble(a, b); acceptDouble(a, b);};
+        	}
+        	else
+        	{
+        		return (a, b) -> {before[0].accept(a, b); acceptDouble(a, b);};
+        	}
+    	}
+    	
+    	/*
+    	 * If multiple operations were passed it is not possible to optimize while
+    	 * composing the new operation anymore. The optimization had to be postponed to execution
+    	 * of the composite operation. The optimization prevents unnecessary auto-boxing if
+    	 * possible.
+    	 */
+    	return (a, b) -> {
+    		for(Consumer2<Double,Double> consumer : before)
+    		{
+    			if(consumer instanceof Consumer2d)
+    				((Consumer2d)consumer).acceptDouble(a, b);
+    			else
+    				consumer.accept(a, b);
+    		}
+    		
+    		acceptDouble(a, b);
+    	};
+    }
+    
+    /**
+     * Performs the given operations in sequence before this operation.
+     * 
+     * @param before The operations to perform before this operation.
+     * 
+     * @return A new {@link Consumer2d} performing the operations before and this operation.
+     */
+    default Consumer2d beforeThat(Iterable<Consumer2<Double,Double>> before)
+    {
+    	/*
+    	 * The argument must not be null.
+    	 */
+    	Validation.validateNotNull(before);
+    	
+    	/*
+    	 * As there is no way to determine how many operations were passed
+    	 * it is not possible to optimize while composing the new operation
+    	 * composing the new operation anymore. The optimization had to be postponed to execution
+    	 * of the composite operation. The optimization prevents unnecessary auto-boxing if
+    	 * possible.
+    	 */
+    	return (a, b) -> {
+    		for(Consumer2<Double,Double> consumer : before)
+    		{
+    			if(consumer instanceof Consumer2d)
+    				((Consumer2d)consumer).acceptDouble(a, b);
+    			else
+    				consumer.accept(a, b);
+    		}
+    		
+    		acceptDouble(a, b);
+    	};
+    }
+    
+    /**
+     * Composes a new {@link Consumer2d} performing the given operations in sequence.
+     * 
+     * @param consumers The operations to perform.
+     * 
+     * @return A new {@link Consumer2d} performing the operations.
+     */
+    @SuppressWarnings("unchecked")
+	static Consumer2d inSequence(Consumer2<Double,Double>... consumers)
+    {
+    	/*
+    	 * The argument array can be empty but must not be null.
+    	 * Also no entry must be null.
+    	 */
+    	Validation.validateAllNotNull(consumers);
+    	
+    	/*
+    	 * If no operations are passed return empty operation.
+    	 */
+    	if(consumers.length == 0) return (a, b) -> {};
+    	
+    	/*
+    	 * If exactly one operation is passed try to optimize. If the operation
+    	 * is an instance of the desired type return the operation directly without wrapping.
+    	 * Otherwise wrap the original operation in an operation of the desired type.
+    	 * The optimization prevents unnecessary auto-boxing if possible and also unnecessary
+    	 * creation of a new operation.
+    	 */
+    	if(consumers.length == 1)
+    	{
+    		if(consumers[0] instanceof Consumer2d)
+    			return (Consumer2d) consumers[0];
+    		else
+    			return (Consumer2d) consumers[0]::accept;
+    	}
+    	
+    	/*
+    	 * If multiple operations were passed it is not possible to optimize while
+    	 * composing the new operation anymore. The optimization had to be postponed to execution
+    	 * of the composite operation. The optimization prevents unnecessary auto-boxing if
+    	 * possible.
+    	 */
+    	return (a, b) -> {
+    		for(Consumer2<Double,Double> consumer : consumers)
+    		{
+    			if(consumer instanceof Consumer2d)
+    				((Consumer2d)consumer).acceptDouble(a, b);
+    			else
+    				consumer.accept(a, b);
+    		}
+    	};
+    }
+    
+    /**
+     * Composes a new {@link Consumer2d} performing the given operations in sequence.
+     * 
+     * @param consumers The operations to perform.
+     * 
+     * @return A new {@link Consumer2d} performing the operations.
+     */
+    static Consumer2d inSequence(Iterable<Consumer2<Double,Double>> consumers)
+    {
+    	/*
+    	 * The argument must not be null.
+    	 */
+    	Validation.validateNotNull(consumers);
+    	
+    	/*
+    	 * As there is no way to determine how many operations were passed
+    	 * it is not possible to optimize while composing the new operation
+    	 * composing the new operation anymore. The optimization had to be postponed to execution
+    	 * of the composite operation. The optimization prevents unnecessary auto-boxing if
+    	 * possible.
+    	 */
+    	return (a, b) -> {
+    		for(Consumer2<Double,Double> consumer : consumers)
+    		{
+    			if(consumer instanceof Consumer2d)
+    				((Consumer2d)consumer).acceptDouble(a, b);
+    			else
+    				consumer.accept(a, b);
+    		}
+    	};
+    }
+    
+    /** {@inheritDoc}} */
+    @Override
+    default Consumer2d andThen(java.util.function.BiConsumer<? super Double,? super Double> after)
+    {
+    	/*
+    	 * The argument must not be null.
+    	 */
+    	Validation.validateNotNull(after);
+    	
+    	return (a, b) -> {acceptDouble(a, b); after.accept(a, b);};
+    }
+}

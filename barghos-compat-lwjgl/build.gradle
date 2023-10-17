@@ -6,9 +6,7 @@ project.ext.lwjglVersion = "3.3.0"
 project.ext.lwjglNatives = "natives-windows"
 
 dependencies {
-  api project(':barghos-core-api')
   api project(':barghos-core')
-  api project(':barghos-math-api')
   api project(':barghos-math')
   
   testImplementation project(':barghos-testutils')

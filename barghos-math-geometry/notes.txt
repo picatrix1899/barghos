@@ -1,0 +1,498 @@
+vec:
+/**
+//	 * Only for better maintainability.
+//	 * 
+//	 * Rotates the vector {@code (x, y, z)} around the z-axis by the given angle in radians and saves the result in the result array.
+//	 * The x, y and z components are expected to be on the indices 0, 1 and 2. Therefore the array
+//	 * has to contain at least 3 entries.
+//	 * 
+//	 * @param x The value of the x component of the vector to rotate.
+//	 * @param y The value of the y component of the vector to rotate.
+//	 * @param z The value of the z component of the vector to rotate.
+//	 * @param angle The angle to rotate by in radians.
+//	 * @param res The result array. Minimum Length: 3
+//	 */
+//	@InlineOnly
+//	private static void rotateZInternal(float x, float y, float z, float angle, @ExtractionParam @MinLength(3) float[] res)
+//	{
+//		float cosAngle = BarghosMath.cos(angle);
+//		float sinAngle = BarghosMath.sin(angle);
+//
+//		res[0] = cosAngle * x - sinAngle * y;
+//		res[1] = sinAngle * x + cosAngle * y;
+//		res[2] = z;
+//	}
+/**
+//	 * Only for better maintainability.
+//	 * 
+//	 * <p>
+//	 * Rotates the vector {@code (x, y, z)} around the y-axis by the given angle in radians and saves the result in the result array.
+//	 * The x, y and z components are expected to be on the indices 0, 1 and 2. Therefore the array
+//	 * has to contain at least 3 entries.
+//	 * 
+//	 * @param x The value of the x component of the vector to rotate.
+//	 * @param y The value of the y component of the vector to rotate.
+//	 * @param z The value of the z component of the vector to rotate.
+//	 * @param angle The angle to rotate by in radians.
+//	 * @param res The result array. Minimum Length: 3
+//	 */
+//	@InlineOnly
+//	private static void rotateYInternal(float x, float y, float z, float angle, @ExtractionParam @MinLength(3) float[] res)
+//	{
+//		float cosAngle = BarghosMath.cos(angle);
+//		float sinAngle = BarghosMath.sin(angle);
+//
+//		res[0] = cosAngle * x + sinAngle * z;
+//		res[1] = y;
+//		res[2] = -sinAngle * x + cosAngle * z;
+//	}
+//	/**
+//	 * Only for better maintainability.
+//	 * 
+//	 * <p>
+//	 * Rotates the vector {@code (x, y, z)} around the x-axis by the given angle in radians and saves the result in the result array.
+//	 * The x, y and z components are expected to be on the indices 0, 1 and 2. Therefore the array
+//	 * has to contain at least 3 entries.
+//	 * 
+//	 * @param x The value of the x component of the vector to rotate.
+//	 * @param y The value of the y component of the vector to rotate.
+//	 * @param z The value of the z component of the vector to rotate.
+//	 * @param angle The angle to rotate by in radians.
+//	 * @param res The result array. Minimum Length: 3
+//	 */
+//	@InlineOnly
+//	private static void rotateXInternal(float x, float y, float z, float angle, @ExtractionParam @MinLength(3) float[] res)
+//	{
+//		float cosAngle = BarghosMath.cos(angle);
+//		float sinAngle = BarghosMath.sin(angle);
+//		
+//		res[0] = x;
+//		res[1] = cosAngle * y - sinAngle * z;
+//		res[2] = sinAngle * y + cosAngle * z;
+//	}
+/**
+//	 * Only for better maintainability.
+//	 * 
+//	 * <p>
+//	 * Calculates the signed angle in radians from the vector {@code (v1x, v1y, v1z)} to the vector {@code (v2x, v2y, v2z)} under the assumption
+//	 * that both vectors are unit vectors. If the vectors are not unit vectors the result will be biased.
+//	 * 
+//	 * @param v1x The value of the x component of the first vector.
+//	 * @param v1y The value of the y component of the first vector.
+//	 * @param v1z The value of the z component of the first vector.
+//	 * @param v2x The value of the x component of the second vector.
+//	 * @param v2y The value of the y component of the second vector.
+//	 * @param v2z The value of the z component of the second vector.
+//	 * 
+//	 * @return The angle between the two vectors in radians.
+//	 */
+//	private static float signedAngleToUnsafeDegInternal(float v1x, float v1y, float v1z, float v2x, float v2y, float v2z)
+//	{
+//		float perpX = v1y * v2z - v1z * v2y;
+//		float perpY = v1z * v2x - v1x * v2z;
+//		float perpZ = v1x * v2y - v1y * v2x;
+//
+//		// |v1 X v2| = |v1| * |v2| * sin(angle)
+//		// v1 . v2 = |v1| * |v2| * cos(angle)
+//		// angle = atan2(|v1 X v2|, v1 . v2)
+//		return BarghosMath.atan2(BarghosMath.sqrt(perpX * perpX + perpY * perpY + perpZ * perpZ), v1x * v2x + v1y * v2y + v1z * v2z);
+//	}
+/**
+//	 * Only for better maintainability.
+//	 * 
+//	 * <p>
+//	 * Calculates the signed angle in radians from the vector {@code (v1x, v1y, v1z)} to the vector {@code (v2x, v2y, v2z)} under the assumption
+//	 * that both vectors are unit vectors. If the vectors are not unit vectors the result will be biased.
+//	 * 
+//	 * @param v1x The value of the x component of the first vector.
+//	 * @param v1y The value of the y component of the first vector.
+//	 * @param v1z The value of the z component of the first vector.
+//	 * @param v2x The value of the x component of the second vector.
+//	 * @param v2y The value of the y component of the second vector.
+//	 * @param v2z The value of the z component of the second vector.
+//	 * 
+//	 * @return The angle between the two vectors in radians.
+//	 */
+//	private static float signedAngleToUnsafeInternal(float v1x, float v1y, float v1z, float v2x, float v2y, float v2z)
+//	{
+//		float perpX = v1y * v2z - v1z * v2y;
+//		float perpY = v1z * v2x - v1x * v2z;
+//		float perpZ = v1x * v2y - v1y * v2x;
+//
+//		// |v1 X v2| = |v1| * |v2| * sin(angle)
+//		// v1 . v2 = |v1| * |v2| * cos(angle)
+//		// angle = atan2(|v1 X v2|, v1 . v2)
+//		return BarghosMath.atan2(BarghosMath.sqrt(perpX * perpX + perpY * perpY + perpZ * perpZ), v1x * v2x + v1y * v2y + v1z * v2z);
+//	}
+/**
+//	 * Only for better maintainability.
+//	 * 
+//	 * <p>
+//	 * Calculates the angle in degrees from the vector {@code (v1x, v1y, v1z)} to the vector {@code (v2x, v2y, v2z)} taking into acount the lengths.
+//	 * Therefore this does not require the vectors to be unit vectors.
+//	 * 
+//	 * @param v1x The value of the x component of the first vector.
+//	 * @param v1y The value of the y component of the first vector.
+//	 * @param v1z The value of the z component of the first vector.
+//	 * @param v2x The value of the x component of the second vector.
+//	 * @param v2y The value of the y component of the second vector.
+//	 * @param v2z The value of the z component of the second vector.
+//	 * 
+//	 * @return The angle between the two vectors in degrees.
+//	 */
+//	private static float angleToDegInternal(float v1x, float v1y, float v1z, float v2x, float v2y, float v2z)
+//	{
+//		if(v1x == 0.0f && v1y == 0.0f && v1z == 0.0f) return 0.0f;
+//		if(v2x == 0.0f && v2y == 0.0f && v2z == 0.0f) return 0.0f;
+//		
+//		// angle = acos((v1 . v2) / sqrt(|v1|^2 * |v2|^2))
+//		return BarghosMath.acos((v1x * v2x + v1y * v2y + v1z * v2z) / BarghosMath.sqrt((v1x * v1x + v1y * v1y + v1z * v1z) * (v2x * v2x + v2y * v2y + v2z * v2z))) * BarghosMath.RAD_TO_DEGf;
+//	}
+/**
+//	 * Only for better maintainability.
+//	 * 
+//	 * <p>
+//	 * Calculates the angle in radians from the vector {@code (v1x, v1y, v1z)} to the vector {@code (v2x, v2y, v2z)} taking into acount the lengths.
+//	 * Therefore this does not require the vectors to be unit vectors.
+//	 * 
+//	 * @param v1x The value of the x component of the first vector.
+//	 * @param v1y The value of the y component of the first vector.
+//	 * @param v1z The value of the z component of the first vector.
+//	 * @param v2x The value of the x component of the second vector.
+//	 * @param v2y The value of the y component of the second vector.
+//	 * @param v2z The value of the z component of the second vector.
+//	 * 
+//	 * @return The angle between the two vectors in radians.
+//	 */
+//	private static float angleToRadInternal(float v1x, float v1y, float v1z, float v2x, float v2y, float v2z)
+//	{
+//		if(v1x == 0.0f && v1y == 0.0f && v1z == 0.0f) return 0.0f;
+//		if(v2x == 0.0f && v2y == 0.0f && v2z == 0.0f) return 0.0f;
+//		if(v1x == v2x && v1y == v2y && v1z == v2z) return 0.0f;
+//		if(v1x == -v2x && v1y == -v2y && v1z == -v2z) return BarghosMath.PIf;
+//		
+//		// angle = acos((v1 . v2) / sqrt(|v1|^2 * |v2|^2))
+//		return BarghosMath.acos((v1x * v2x + v1y * v2y + v1z * v2z) / BarghosMath.sqrt((v1x * v1x + v1y * v1y + v1z * v1z) * (v2x * v2x + v2y * v2y + v2z * v2z)));
+//	}
+/**
+//	 * Calculates the angle in degrees from the vector {@code (v1x, v1y, v1z)} to the vector {@code (v2x, v2y, v2z)} under the assumption
+//	 * that both vectors are unit vectors. If the vectors are not unit vectors the result will be biased.
+//	 * 
+//	 * @param v1x The value of the x component of the first vector.
+//	 * @param v1y The value of the y component of the first vector.
+//	 * @param v1z The value of the z component of the first vector.
+//	 * @param v2x The value of the x component of the second vector.
+//	 * @param v2y The value of the y component of the second vector.
+//	 * @param v2z The value of the z component of the second vector.
+//	 * 
+//	 * @return The angle between the two vectors in degrees.
+//	 */
+//	public static float angleToUnsafeDeg(float v1x, float v1y, float v1z, float v2x, float v2y, float v2z)
+//	{
+//		// angle = acos(v1 . v2)
+//		// or: angle = acos((v1 . v2) / 1)
+//		return BarghosMath.acos(v1x * v2x + v1y * v2y + v1z * v2z) * BarghosMath.RAD_TO_DEGf;
+//	}
+/**
+//	 * Calculates the angle in radians from the vector {@code (v1x, v1y, v1z)} to the vector {@code (v2x, v2y, v2z)} under the assumption
+//	 * that both vectors are unit vectors. If the vectors are not unit vectors the result will be biased.
+//	 * 
+//	 * @param v1x The value of the x component of the first vector.
+//	 * @param v1y The value of the y component of the first vector.
+//	 * @param v1z The value of the z component of the first vector.
+//	 * @param v2x The value of the x component of the second vector.
+//	 * @param v2y The value of the y component of the second vector.
+//	 * @param v2z The value of the z component of the second vector.
+//	 * 
+//	 * @return The angle between the two vectors in radians.
+//	 */
+//	public static float angleToUnsafeRad(float v1x, float v1y, float v1z, float v2x, float v2y, float v2z)
+//	{
+//		// angle = acos(v1 . v2)
+//		// or: angle = acos((v1 . v2) / 1)
+//		return BarghosMath.acos(v1x * v2x + v1y * v2y + v1z * v2z);
+//	}
+/**
+//	 * Calculates the cosine angle from the vector {@code (v1x, v1y, v1z)} to the vector {@code (v2x, v2y, v2z)} taking into acount the lengths.
+//	 * Therefore this does not require the vectors to be unit vectors.
+//	 * 
+//	 * @param v1x The value of the x component of the first vector.
+//	 * @param v1y The value of the y component of the first vector.
+//	 * @param v1z The value of the z component of the first vector.
+//	 * @param v2x The value of the x component of the second vector.
+//	 * @param v2y The value of the y component of the second vector.
+//	 * @param v2z The value of the z component of the second vector.
+//	 * 
+//	 * @return The cosine angle between the two vectors.
+//	 */
+//	public static float cosAngleTo(float v1x, float v1y, float v1z, float v2x, float v2y, float v2z)
+//	{
+//		if(v1x == 0.0f && v1y == 0.0f && v1z == 0.0f) return 0.0f;
+//		if(v2x == 0.0f && v2y == 0.0f && v2z == 0.0f) return 0.0f;
+//		
+//		// cos(angle) = (v1 . v2) / sqrt(|v1|^2 * |v2|^2)
+//		return (v1x * v2x + v1y * v2y + v1z * v2z) / BarghosMath.sqrt((v1x * v1x + v1y * v1y + v1z * v1z) * (v2x * v2x + v2y * v2y + v2z * v2z));
+//	}
+/**
+//	 * Calculates the cosine angle from the vector {@code (v1x, v1y, v1z)} to the vector {@code (v2x, v2y, v2z)} under the assumption
+//	 * that both vectors are unit vectors. If the vectors are not unit vectors the result will be biased.
+//	 * 
+//	 * @param v1x The value of the x component of the first vector.
+//	 * @param v1y The value of the y component of the first vector.
+//	 * @param v1z The value of the z component of the first vector.
+//	 * @param v2x The value of the x component of the second vector.
+//	 * @param v2y The value of the y component of the second vector.
+//	 * @param v2z The value of the z component of the second vector.
+//	 * 
+//	 * @return The cosine angle between the two vectors.
+//	 */
+//	public static float cosAngleToUnsafe(float v1x, float v1y, float v1z, float v2x, float v2y, float v2z)
+//	{
+//		// cos(angle) = (v1 . v2)
+//		// or: cos(angle) = (v1 . v2) / 1
+//		return v1x * v2x + v1y * v2y + v1z * v2z;
+//	}
+//	public static float[] lerpWeighted(float[] v, float[] weights, float alpha, @ExtractionParam float[] res)
+//	{
+//		if(alpha == 0.0f)
+//		{
+//			res[0] = v[0];
+//			res[1] = v[1];
+//			res[2] = v[2];
+//			
+//			return res;
+//		}
+//		
+//		if(alpha == 1.0f)
+//		{
+//			res[0] = v[v.length - 3];
+//			res[1] = v[v.length - 2];
+//			res[2] = v[v.length - 1];
+//			
+//			return res;
+//		}
+//		
+//		int endIndex = weights.length - 1;
+//		for(int i = 0; i < weights.length; i++)
+//		{
+//			if(alpha >= weights[i]) continue;
+//			
+//			endIndex = i;
+//
+//			break;
+//		}
+//		
+//		int startIndex = endIndex - 1;
+//		
+//		float subAlpha = (alpha - weights[startIndex]) / (weights[endIndex] - weights[startIndex]);
+//
+//		float oneMinusAlpha = 1.0f - subAlpha;
+//		
+//		res[0] = oneMinusAlpha * v[startIndex*3] + subAlpha * v[endIndex*3];
+//		res[1] = oneMinusAlpha * v[startIndex*3+1] + subAlpha * v[endIndex*3+1];
+//		res[2] = oneMinusAlpha * v[startIndex*3+2] + subAlpha * v[endIndex*3+2];
+//		
+//		return res;
+//	}
+	
+//	public static float[] slerp(float x1, float y1, float z1, float x2, float y2, float z2, float alpha, @ExtractionParam float[] res)
+//	{
+//		if(alpha == 0.0f)
+//		{
+//			res[0] = x1;
+//			res[1] = y1;
+//			res[2] = z1;
+//			
+//			return res;
+//		}
+//		
+//		if(alpha == 1.0f)
+//		{
+//			res[0] = x2;
+//			res[1] = y2;
+//			res[2] = z2;
+//			
+//			return res;
+//		}
+//		
+//		// v1 X v2
+//		float perpX = y1 * z2 - z1 * y2;
+//		float perpY = z1 * x2 - x1 * z2;
+//		float perpZ = x1 * y2 - y1 * x2;
+//
+//		// |v1| * |v2| = sqrt(|v1|^2 * |v2|^2)
+//		float lengthScaled = 1.0f / BarghosMath.sqrt((x1 * x1 + y1 * y1 + z1 * z1) * (x2 * x2 + y2 * y2 + z2 * z2));
+//		
+//		// |v1 X v2| = |v1| * |v2| * sin(angle)
+//		// v1 . v2 = |v1| * |v2| * cos(angle)
+//		// angle = atan2(|v1 X v2| / |v1| * |v2|, v1 . v2 / |v1| * |v2|)
+//		float angle = BarghosMath.atan2(BarghosMath.sqrt(perpX * perpX + perpY * perpY + perpZ * perpZ) * lengthScaled, (x1 * x2 + y1 * y2 + z1 * z2) * lengthScaled);
+//		
+//		float sinAngle = BarghosMath.sin(angle);
+//		float factorA = BarghosMath.sin(angle * (1.0f - alpha)) / sinAngle;
+//		float factorB = BarghosMath.sin(angle * alpha) / sinAngle;
+//		
+//		res[0] = factorA * x1 + factorB * x2;
+//		res[1] = factorA * y1 + factorB * y2;
+//		res[2] = factorA * z1 + factorB * z2;
+//		
+//		return res;
+//	}
+//	
+//	public static float[] slerpShortestPath(float x1, float y1, float z1, float x2, float y2, float z2, float alpha, @ExtractionParam float[] res)
+//	{
+//		if(alpha == 0.0f)
+//		{
+//			res[0] = x1;
+//			res[1] = y1;
+//			res[2] = z1;
+//			
+//			return res;
+//		}
+//		
+//		if(alpha == 1.0f)
+//		{
+//			res[0] = x2;
+//			res[1] = y2;
+//			res[2] = z2;
+//			
+//			return res;
+//		}
+//
+//		float angle = BarghosMath.acos((x1 * x2 + y1 * y2 + z1 * z2) / BarghosMath.sqrt((x1 * x1 + y1 * y1 + z1 * z1) * (x2 * x2 + y2 * y2 + z2 * z2)));
+//		
+//		float sinAngle = BarghosMath.sin(angle);
+//		float factorA = BarghosMath.sin(angle * (1.0f - alpha)) / sinAngle;
+//		float factorB = BarghosMath.sin(angle * alpha) / sinAngle;
+//		
+//		res[0] = factorA * x1 + factorB * x2;
+//		res[1] = factorA * y1 + factorB * y2;
+//		res[2] = factorA * z1 + factorB * z2;
+//		
+//		return res;
+//	}
+
+
+quat:
+/**
+//	 * Extracts the half angle of the rotation around the rotation axis and returns it as double.
+//	 * 
+//	 * @return The half angle of the rotation.
+//	 */
+//	default double getHalfAngle()
+//	{
+//		return Math.acos(getW());
+//	}
+/	/**
+//	 * Extracts the angle of the rotation around the rotation axis and returns it as double.
+//	 * 
+//	 * @return The angle of the rotation.
+//	 */
+//	default double getAngle()
+//	{
+//		return 2.0 * BarghosMath.acos(getW());
+//	}
+//	/**
+//	 * Extracts the rotation axis as float vector and saves the result in the given result vector.
+//	 * 
+//	 * @param <T> The type of the result vector.
+//	 * 
+//	 * @param res The result vector.
+//	 * 
+//	 * @return The result vector with the rotation axis.
+//	 */
+//	default <T extends Vec3fC> T getAxisf(T res)
+//	{
+//		double halfAngle = BarghosMath.acos(getW());
+//		double invSinHalfAngle = BarghosMath.invSqrt(1.0 - halfAngle * halfAngle);
+//		
+//		double aX = getX() * invSinHalfAngle;
+//		double aY = getY() * invSinHalfAngle;
+//		double aZ = getZ() * invSinHalfAngle;
+//		
+//		double invLength = BarghosMath.invSqrt(aX * aX + aY * aY + aZ * aZ); 
+//
+//		res.set((float)(aX * invLength), (float)(aY * invLength), (float)(aZ * invLength));
+//		
+//		return res;
+//	}
+// MISSING_DOC
+//	default <T extends QuatC> T scaleR(double factor, @ExtractionParam T res)
+//	{
+//		double angle = 2 * BarghosMath.acos(getW());
+//		double newAngle = angle * factor;
+//		
+//		double sinScale = BarghosMath.sin(newAngle * 0.5) / BarghosMath.sin(angle * 0.5);
+//		
+//		res.set(getX() * sinScale, getY() * sinScale, getZ() * sinScale, getW() * BarghosMath.cos(newAngle));
+//		
+//		return res;
+//	}
+	// MISSING_DOC
+//	default <T extends QuatC> T integrateR(double avX, double avY, double avZ, double dt, @ExtractionParam T res)
+//	{
+//		double halfDt = dt * 0.5;
+//		
+//		double thetaX = avX * halfDt;
+//		double thetaY = avY * halfDt;
+//		double thetaZ = avZ * halfDt;
+//		
+//		double length = BarghosMath.sqrt(thetaX * thetaX + thetaY * thetaY + thetaZ * thetaZ);
+//		
+//		if(length == 0.0) return res;
+//		
+//		double s = BarghosMath.sin(length) / length;
+//
+//		double x_ = thetaX * s;
+//		double y_ = thetaY * s;
+//		double z_ = thetaZ * s;
+//		double w_ = BarghosMath.cos(length);
+//		
+//		double invLength = BarghosMath.invSqrt(x_ * x_ + y_ * y_ + z_ * z_ + w_ * w_);
+//
+//		res.revMul(x_ * invLength, y_ * invLength, z_ * invLength, w_ * invLength);
+//		
+//		return res;
+//	}
+// MISSING_DOC
+//	default double normErrorSquared()
+//	{
+//		return 1.0 - squaredLength();
+//	}
+// MISSING_DOC
+//	default double normError()
+//	{
+//		double error = BarghosMath.abs(1.0 - squaredLength());
+//		
+//		if(error == 0.0) return 0.0;
+//		
+//		return BarghosMath.sqrt(error);
+//	}
+// MISSING_DOC
+//	default QuatC setFromAxisAngle(double ax, double ay, double az, double angle)
+//	{
+//		double halfAngle = angle * 0.5;
+//		double sinHalfAngle = BarghosMath.sin(halfAngle);
+//		
+//		double x_ = ax * sinHalfAngle;
+//		double y_ = ay * sinHalfAngle;
+//		double z_ = az * sinHalfAngle;
+//		double w_ = BarghosMath.cos(halfAngle);
+//		
+//		double invLength = BarghosMath.invSqrt(x_ * x_ + y_ * y_ + z_ * z_ + w_ * w_);
+//
+//		return set(x_ * invLength, y_ * invLength, z_ * invLength, w_ * invLength);
+//	}
+public static <T extends QuatC> T lerp(QuatR a, QuatR b, double alpha, @ExtractionParam T res)
+//	{
+//		double x = a.getX() * (1.0 - alpha) + b.getX() * alpha;
+//		double y = a.getY() * (1.0 - alpha) + b.getY() * alpha;
+//		double z = a.getZ() * (1.0 - alpha) + b.getZ() * alpha;
+//		double w = a.getW() * (1.0 - alpha) + b.getW() * alpha;
+//		
+//		double invLength = BarghosMath.invSqrt(x * x + y * y + z * z + w * w);
+//		
+//		res.set(x * invLength, y * invLength, z * invLength, w * invLength);
+//		
+//		return res;
+//	}
