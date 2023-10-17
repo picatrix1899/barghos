@@ -5,12 +5,13 @@ plugins {
 
 dependencies {
 	api project(':barghos-annotation')
+	api project(':barghos-util')
 }
 
 publishing {
   publications {
     mavenJava(MavenPublication) {
-      artifactId = 'barghos-math-geometry'
+      artifactId = 'barghos-math'
 		
       from components.java
 		
@@ -25,7 +26,7 @@ publishing {
 
 eclipse {
   project {
-    name = 'barghos-math-geometry'
+    name = 'barghos-math'
 	comment = ''
   }
 }
