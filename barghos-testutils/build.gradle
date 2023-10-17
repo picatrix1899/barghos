@@ -1,5 +1,6 @@
 plugins {
   id 'java-library'
+  id 'eclipse'
 }
 
 dependencies {
@@ -18,5 +19,12 @@ publishing {
         url = 'https://github.com/picatrix1899/barghos/'
       }
     }
+  }
+}
+
+eclipse {
+  project {
+    name = 'barghos-testutils'
+	comment = ''
   }
 }
