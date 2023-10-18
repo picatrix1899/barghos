@@ -8,7 +8,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 /**
- * Shows the minimum required amount of entries of the annotated array or collection for the function.
+ * Shows the minimum required amount of entries of the annotated array or
+ * collection for the function.
  */
 @Documented
 @Retention(CLASS)
@@ -16,9 +17,11 @@ import java.lang.annotation.Target;
 public @interface MinLength
 {
 	/**
-	 * This parameter contains the minimum required amount of entries of the annotated array or collection.
+	 * This parameter contains the minimum required amount of entries of the
+	 * annotated array or collection.
 	 * 
-	 * @return the minimum required amount of entries of the annotated array or collection.
+	 * @return the minimum required amount of entries of the annotated array or
+	 * collection.
 	 */
 	int value();
 }
