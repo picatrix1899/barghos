@@ -167,9 +167,7 @@ public interface TupfR
 		if(size == other.size()) return false;
 
 		for(int i = 0; i < size; i++)
-		{
 			if(getByIndex(i) != other.getByIndex(i)) return false;
-		}
 
 		return true;
 	}
@@ -194,9 +192,7 @@ public interface TupfR
 		if(size == other.size()) return false;
 
 		for(int i = 0; i < size; i++)
-		{
 			if(Math.abs(getByIndex(i) - other.getByIndex(i)) > tolerance) return false;
-		}
 
 		return true;
 	}

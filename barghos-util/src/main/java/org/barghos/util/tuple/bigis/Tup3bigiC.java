@@ -1,14 +1,15 @@
 package org.barghos.util.tuple.bigis;
 
 import java.math.BigInteger;
-import java.util.Objects;
 
 import org.barghos.annotation.IntValueRange;
 import org.barghos.annotation.MinLength;
-import org.barghos.util.tuple.bigis.Tup3bigiC;
+
+import org.barghos.validation.Validation;
 
 /**
- * This interface provides the common functions and methods for {@link BigInteger} tuples with three dimensions.
+ * This interface provides the common functions and methods for
+ * {@link BigInteger} tuples with three dimensions.
  */
 public interface Tup3bigiC extends Tup3bigiR, TupbigiC
 {
@@ -18,8 +19,19 @@ public interface Tup3bigiC extends Tup3bigiR, TupbigiC
 	
 	/** {@inheritDoc}} */
 	@Override
+	default Tup3bigiC createNew(TupbigiR t)
+	{
+		Validation.validateNotNull("t", t);
+		
+		return createNew(t.toArray());
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
 	default Tup3bigiC createNew(Tup3bigiR t)
 	{
+		Validation.validateNotNull("t", t);
+		
 		return createNew(t.v0(), t.v1(), t.v2());
 	}
 	
@@ -27,6 +39,9 @@ public interface Tup3bigiC extends Tup3bigiR, TupbigiC
 	@Override
 	default Tup3bigiC createNew(@MinLength(3) BigInteger[] t)
 	{
+		Validation.validateNotNull("t", t);
+		Validation.validateMinSize("t", t, 3);
+		
 		return createNew(t[0], t[1], t[2]);
 	}
 	
@@ -48,9 +63,11 @@ public interface Tup3bigiC extends Tup3bigiR, TupbigiC
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced, as the original concept was too close to the naming conventions
-	 * of vectors. Because not all tuples are necessarily vectors, the vector naming convention might be confusing to understand or could even
-	 * create conflicts hence it was changed.
+	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced,
+	 * as the original concept was too close to the naming conventions of
+	 * vectors. Because not all tuples are necessarily vectors, the vector
+	 * naming convention might be confusing to understand or could even create
+	 * conflicts hence it was changed.
 	 */
 	Tup3bigiC v0(BigInteger v0);
 	
@@ -61,9 +78,11 @@ public interface Tup3bigiC extends Tup3bigiR, TupbigiC
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced, as the original concept was too close to the naming conventions
-	 * of vectors. Because not all tuples are necessarily vectors, the vector naming convention might be confusing to understand or could even
-	 * create conflicts hence it was changed.
+	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced,
+	 * as the original concept was too close to the naming conventions of
+	 * vectors. Because not all tuples are necessarily vectors, the vector
+	 * naming convention might be confusing to understand or could even create
+	 * conflicts hence it was changed.
 	 */
 	Tup3bigiC v1(BigInteger v1);
 	
@@ -74,21 +93,27 @@ public interface Tup3bigiC extends Tup3bigiR, TupbigiC
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced, as the original concept was too close to the naming conventions
-	 * of vectors. Because not all tuples are necessarily vectors, the vector naming convention might be confusing to understand or could even
-	 * create conflicts hence it was changed.
+	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced,
+	 * as the original concept was too close to the naming conventions of
+	 * vectors. Because not all tuples are necessarily vectors, the vector
+	 * naming convention might be confusing to understand or could even create
+	 * conflicts hence it was changed.
 	 */
 	Tup3bigiC v2(BigInteger v2);
 	
 	/**
-	 * Adopts the component values from an existing instance of {@link Tup3bigiR}.
+	 * Adopts the component values from an existing instance of
+	 * {@link Tup3bigiR}.
 	 * 
-	 * @param t An existing implementation of {@link Tup3bigiR} to adopt the component values from.
+	 * @param t An existing implementation of {@link Tup3bigiR} to adopt the
+	 * component values from.
 	 * 
 	 * @return The current tuple.
 	 */
 	default Tup3bigiC set(Tup3bigiR t)
 	{
+		Validation.validateNotNull("t", t);
+		
 		return set(t.v0(), t.v1(), t.v2());
 	}
 	
@@ -121,6 +146,8 @@ public interface Tup3bigiC extends Tup3bigiR, TupbigiC
 	@Override
 	default Tup3bigiC set(@MinLength(3) TupbigiR t)
 	{
+		Validation.validateNotNull("t", t);
+		
 		return setArray(t.toArray());
 	}
 	
@@ -128,7 +155,7 @@ public interface Tup3bigiC extends Tup3bigiR, TupbigiC
 	@Override
 	default Tup3bigiC setByIndex(@IntValueRange(min=0, max=2) int index, BigInteger value)
 	{
-		Objects.checkIndex(index, 3);
+		Validation.validateInRange("index", index, 0, 2);
 		
 		switch(index)
 		{
@@ -141,12 +168,198 @@ public interface Tup3bigiC extends Tup3bigiR, TupbigiC
 	
 	/** {@inheritDoc}} */
 	@Override
-	default Tup3bigiC setArray(@MinLength(3) BigInteger... values)
+	default Tup3bigiC setArray(@MinLength(3) BigInteger... t)
 	{
-		return set(values[0], values[1], values[2]);
+		if(Validation.argumentValidation())
+		{
+			Validation.notNull("t", t);
+			Validation.expectSize("t", t, 3);
+		}
+		
+		return set(t[0], t[1], t[2]);
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	Tup3bigiC copy();
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @deprecated Unsupported by fixed sized tuples.
+	 */
+	@Deprecated
+	@Override
+	default Tup3bigiC setResize(TupbigiR t)
+	{
+		throw new UnsupportedOperationException();
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @deprecated Unsupported by fixed sized tuples.
+	 */
+	@Deprecated
+	@Override
+	default Tup3bigiC setArrayResize(BigInteger... t)
+	{
+		throw new UnsupportedOperationException();
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @deprecated Unsupported by fixed sized tuples.
+	 */
+	@Deprecated
+	@Override
+	default Tup3bigiC resizeN(int size)
+	{
+		throw new UnsupportedOperationException();
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	default Tup3bigiC rearrangeN(int[] indices)
+	{
+		Validation.validateNotNull("indices", indices);
+		Validation.validateExpectSize("indices", indices, 3);
+		
+		BigInteger v0 = getByIndex(indices[0]);
+		BigInteger v1 = getByIndex(indices[1]);
+		BigInteger v2 = getByIndex(indices[2]);
+		
+		return createNew(v0, v1, v2);
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @deprecated Unsupported by fixed sized tuples.
+	 */
+	@Deprecated
+	@Override
+	default Tup3bigiC rearrangeResizeN(int[] indices)
+	{
+		throw new UnsupportedOperationException();
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	default Tup3bigiC swapV0AndV1N()
+	{
+		return createNew(v1(), v0(), v2());
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	default Tup3bigiC swapV0AndV2N()
+	{
+		return createNew(v2(), v1(), v0());
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	default Tup3bigiC swapV1AndV2N()
+	{
+		return createNew(v0(), v2(), v1());
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	default Tup3bigiC swapByIndexN(int indexA, int indexB)
+	{
+		Validation.validateInRange("indexA", indexA, 0, 2);
+		Validation.validateInRange("indexB", indexB, 0, 2);
+		
+		BigInteger[] values = toArray();
+		BigInteger temp = values[indexA];
+		values[indexA] = values[indexB];
+		values[indexB] = temp;
+		
+		return createNew(values);
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @deprecated Unsupported by fixed sized tuples.
+	 */
+	@Deprecated
+	@Override
+	default Tup3bigiC resize(int size)
+	{
+		throw new UnsupportedOperationException();
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	default Tup3bigiC rearrange(int[] indices)
+	{
+		Validation.validateNotNull("indices", indices);
+		Validation.validateExpectSize("indices", indices, 3);
+		
+		BigInteger v0 = getByIndex(indices[0]);
+		BigInteger v1 = getByIndex(indices[1]);
+		BigInteger v2 = getByIndex(indices[2]);
+		
+		return set(v0, v1, v2);
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @deprecated Unsupported by fixed sized tuples.
+	 */
+	@Deprecated
+	@Override
+	default Tup3bigiC rearrangeResize(int[] indices)
+	{
+		throw new UnsupportedOperationException();
+	}
+	
+	/**
+	 * Swaps the values of the components {@code v0} and {@code v1}.
+	 * 
+	 * @return This tuple.
+	 */
+	default Tup3bigiC swapV0AndV1()
+	{
+		return set(v1(), v0(), v2());
+	}
+	
+	/**
+	 * Swaps the values of the components {@code v0} and {@code v2}.
+	 * 
+	 * @return This tuple.
+	 */
+	default Tup3bigiC swapV0AndV2()
+	{
+		return set(v2(), v1(), v0());
+	}
+	
+	/**
+	 * Swaps the values of the components {@code v1} and {@code v2}.
+	 * 
+	 * @return This tuple.
+	 */
+	default Tup3bigiC swapV1AndV2()
+	{
+		return set(v0(), v2(), v1());
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	default Tup3bigiC swapByIndex(int indexA, int indexB)
+	{
+		Validation.validateInRange("indexA", indexA, 0, 2);
+		Validation.validateInRange("indexB", indexB, 0, 2);
+		
+		BigInteger temp = getByIndex(indexA);
+		setByIndex(indexA, getByIndex(indexB));
+		setByIndex(indexB, temp);
+		
+		return this;
+	}
 }

@@ -8,7 +8,8 @@ import java.lang.annotation.Target;
 
 /**
  * This annotation indicates, that the annotated method argument may be null.
- * It usually indicates an argument with a special handling for null in the corresponding method.
+ * It usually indicates an argument with a special handling for null in the
+ * corresponding method.
  */
 @Retention(CLASS)
 @Target(PARAMETER)
