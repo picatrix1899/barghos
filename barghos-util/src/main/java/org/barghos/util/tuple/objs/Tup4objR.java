@@ -11,8 +11,8 @@ import org.barghos.util.consumer.objs.Consumer4obj;
 import org.barghos.validation.Validation;
 
 /**
- * This interface provides non-invasive (read only) functions and methods for object tuples with
- * four dimensions.
+ * This interface provides non-invasive (read only) functions and methods for
+ * object tuples with four dimensions.
  */
 public interface Tup4objR extends TupobjR
 {
@@ -30,8 +30,8 @@ public interface Tup4objR extends TupobjR
 	}
 	
 	/**
-	 * Creates a new instance of the type of this tuple and adopts the component values from the
-	 * given tuple {@code (t)}.
+	 * Creates a new instance of the type of this tuple and adopts the component
+	 * values from the given tuple {@code (t)}.
 	 * 
 	 * @param t The tuple to adopt the component values from.
 	 * 
@@ -45,11 +45,11 @@ public interface Tup4objR extends TupobjR
 	}
 	
 	/**
-	 * Creates a new instance of the type of this tuple and adopts the component values from the
-	 * given tuple {@code (t[0], t[1], t[2], t[3])}.
+	 * Creates a new instance of the type of this tuple and adopts the component 
+	 * values from the given tuple {@code (t[0], t[1], t[2], t[3])}.
 	 * 
-	 * @param t The tuple as an array with at least three entries to adopt the component values
-	 * from.
+	 * @param t The tuple as an array with at least three entries to adopt the
+	 * component values from.
 	 * 
 	 * @return A new instance.
 	 */
@@ -62,8 +62,8 @@ public interface Tup4objR extends TupobjR
 	}
 	
 	/**
-	 * Creates a new instance of the type of this tuple and sets the component values to the given
-	 * value {@code (value)}.
+	 * Creates a new instance of the type of this tuple and sets the component
+	 * values to the given value {@code (value)}.
 	 * 
 	 * @param value The value that will be used for all component values.
 	 * 
@@ -75,8 +75,8 @@ public interface Tup4objR extends TupobjR
 	}
 	
 	/**
-	 * Creates a new instance of the type of this tuple and adopts the component values from the
-	 * given tuple {@code (v0, v1, v2, v3)}.
+	 * Creates a new instance of the type of this tuple and adopts the component
+	 * values from the given tuple {@code (v0, v1, v2, v3)}.
 	 * 
 	 * @param v0 The new value of the first component.
 	 * @param v1 The new value of the second component.
@@ -91,10 +91,11 @@ public interface Tup4objR extends TupobjR
 	 * {@inheritDoc}
 	 * 
 	 * <p>
-	 * For any derivative or implementation of {@link Tup4objR} this will be two.
+	 * For any derivative or implementation of {@link Tup4objR} this will be
+	 * four.
 	 * 
-	 * @apiNote Do not override this function, as it already returns the correct value for any four
-	 * dimensional tuple.
+	 * @apiNote Do not override this function, as it already returns the correct
+	 * value for any four dimensional tuple.
 	 */
 	@Override
 	default int size()
@@ -107,10 +108,11 @@ public interface Tup4objR extends TupobjR
 	 * 
 	 * @return The value of the first component.
 	 * 
-	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced, as the original
-	 * concept was too close to the naming conventions of vectors. Because not all tuples are
-	 * necessarily vectors, the vector naming convention might be confusing to understand or could
-	 * even create conflicts hence it was changed.
+	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced,
+	 * as the original concept was too close to the naming conventions of
+	 * vectors. Because not all tuples are necessarily vectors, the vector
+	 * naming convention might be confusing to understand or could even create
+	 * conflicts hence it was changed.
 	 */
 	Object v0();
 	
@@ -119,10 +121,11 @@ public interface Tup4objR extends TupobjR
 	 * 
 	 * @return The value of the second component.
 	 * 
-	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced, as the original
-	 * concept was too close to the naming conventions of vectors. Because not all tuples are
-	 * necessarily vectors, the vector naming convention might be confusing to understand or could
-	 * even create conflicts hence it was changed.
+	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced,
+	 * as the original concept was too close to the naming conventions of
+	 * vectors. Because not all tuples are necessarily vectors, the vector
+	 * naming convention might be confusing to understand or could even create
+	 * conflicts hence it was changed.
 	 */
 	Object v1();
 	
@@ -131,10 +134,11 @@ public interface Tup4objR extends TupobjR
 	 * 
 	 * @return The value of the third component.
 	 * 
-	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced, as the original
-	 * concept was too close to the naming conventions of vectors. Because not all tuples are
-	 * necessarily vectors, the vector naming convention might be confusing to understand or could
-	 * even create conflicts hence it was changed.
+	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced,
+	 * as the original concept was too close to the naming conventions of
+	 * vectors. Because not all tuples are necessarily vectors, the vector
+	 * naming convention might be confusing to understand or could even create
+	 * conflicts hence it was changed.
 	 */
 	Object v2();
 	
@@ -143,10 +147,11 @@ public interface Tup4objR extends TupobjR
 	 * 
 	 * @return The value of the fourth component.
 	 * 
-	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced, as the original
-	 * concept was too close to the naming conventions of vectors. Because not all tuples are
-	 * necessarily vectors, the vector naming convention might be confusing to understand or could
-	 * even create conflicts hence it was changed.
+	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced,
+	 * as the original concept was too close to the naming conventions of
+	 * vectors. Because not all tuples are necessarily vectors, the vector
+	 * naming convention might be confusing to understand or could even create
+	 * conflicts hence it was changed.
 	 */
 	Object v3();
 	
@@ -185,9 +190,9 @@ public interface Tup4objR extends TupobjR
 	Tup4objR copy();
 	
 	/**
-	 * Compares the value of the components of this tuple and the given tuple and returns true,
-	 * if the value of each component of this tuple is equal to the value of the corresponding
-	 * component in the other tuple.
+	 * Compares the value of the components of this tuple and the given tuple
+	 * and returns true, if the value of each component of this tuple is equal
+	 * to the value of the corresponding component in the other tuple.
 	 * 
 	 * @param other The tuple to compare with.
 	 * 
@@ -228,6 +233,7 @@ public interface Tup4objR extends TupobjR
 	 * @deprecated Unsupported by fixed sized tuples.
 	 */
 	@Deprecated
+	@Override
 	default Tup4objR resizeN(int size)
 	{
 		throw new UnsupportedOperationException();
@@ -254,14 +260,15 @@ public interface Tup4objR extends TupobjR
 	 * @deprecated Unsupported by fixed sized tuples.
 	 */
 	@Deprecated
+	@Override
 	default Tup4objR rearrangeResizeN(int[] indices)
 	{
 		throw new UnsupportedOperationException();
 	}
 	
 	/**
-	 * Swaps the values of the components {@code v0} and {@code v1} and returns the result as a new
-	 * instance of this type of tuple.
+	 * Swaps the values of the components {@code v0} and {@code v1} and returns
+	 * the result as a new instance of this type of tuple.
 	 * 
 	 * @return A new instance of this type of tuple with the result.
 	 */
@@ -271,8 +278,8 @@ public interface Tup4objR extends TupobjR
 	}
 	
 	/**
-	 * Swaps the values of the components {@code v0} and {@code v2} and returns the result as a new
-	 * instance of this type of tuple.
+	 * Swaps the values of the components {@code v0} and {@code v2} and returns
+	 * the result as a new instance of this type of tuple.
 	 * 
 	 * @return A new instance of this type of tuple with the result.
 	 */
@@ -282,8 +289,8 @@ public interface Tup4objR extends TupobjR
 	}
 	
 	/**
-	 * Swaps the values of the components {@code v0} and {@code v3} and returns the result as a new
-	 * instance of this type of tuple.
+	 * Swaps the values of the components {@code v0} and {@code v3} and returns
+	 * the result as a new instance of this type of tuple.
 	 * 
 	 * @return A new instance of this type of tuple with the result.
 	 */
@@ -293,8 +300,8 @@ public interface Tup4objR extends TupobjR
 	}
 	
 	/**
-	 * Swaps the values of the components {@code v1} and {@code v2} and returns the result as a new
-	 * instance of this type of tuple.
+	 * Swaps the values of the components {@code v1} and {@code v2} and returns
+	 * the result as a new instance of this type of tuple.
 	 * 
 	 * @return A new instance of this type of tuple with the result.
 	 */
@@ -304,8 +311,8 @@ public interface Tup4objR extends TupobjR
 	}
 	
 	/**
-	 * Swaps the values of the components {@code v1} and {@code v3} and returns the result as a new
-	 * instance of this type of tuple.
+	 * Swaps the values of the components {@code v1} and {@code v3} and returns
+	 * the result as a new instance of this type of tuple.
 	 * 
 	 * @return A new instance of this type of tuple with the result.
 	 */
@@ -315,8 +322,8 @@ public interface Tup4objR extends TupobjR
 	}
 	
 	/**
-	 * Swaps the values of the components {@code v2} and {@code v3} and returns the result as a new
-	 * instance of this type of tuple.
+	 * Swaps the values of the components {@code v2} and {@code v3} and returns
+	 * the result as a new instance of this type of tuple.
 	 * 
 	 * @return A new instance of this type of tuple with the result.
 	 */
@@ -344,8 +351,8 @@ public interface Tup4objR extends TupobjR
 	 * Passes the tuple to the consumer.
 	 * 
 	 * <p>
-	 * This allows to pass a tuple not as an instance of tuple but as single components to a
-	 * consumer.
+	 * This allows to pass a tuple not as an instance of tuple but as single
+	 * components to a consumer.
 	 * 
 	 * @param consumer The consumer receiving the tuple.
 	 */
@@ -360,8 +367,8 @@ public interface Tup4objR extends TupobjR
 	 * Passes the tuple to the consumer.
 	 * 
 	 * <p>
-	 * This allows to pass a tuple not as an instance of tuple but as single components to a
-	 * consumer.
+	 * This allows to pass a tuple not as an instance of tuple but as single
+	 * components to a consumer.
 	 * 
 	 * @param consumer The consumer receiving the tuple.
 	 */

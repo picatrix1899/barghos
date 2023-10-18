@@ -6,7 +6,8 @@ import org.barghos.annotation.MinLength;
 import org.barghos.validation.Validation;
 
 /**
- * This interface provides the common functions and methods for string tuples with three dimensions.
+ * This interface provides the common functions and methods for string tuples
+ * with three dimensions.
  */
 public interface Tup4strC extends Tup4strR, TupstrC
 {
@@ -60,10 +61,11 @@ public interface Tup4strC extends Tup4strR, TupstrC
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced, as the original
-	 * concept was too close to the naming conventions of vectors. Because not all tuples are
-	 * necessarily vectors, the vector naming convention might be confusing to understand or could
-	 * even create conflicts hence it was changed.
+	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced,
+	 * as the original concept was too close to the naming conventions of
+	 * vectors. Because not all tuples are necessarily vectors, the vector
+	 * naming convention might be confusing to understand or could even create
+	 * conflicts hence it was changed.
 	 */
 	Tup4strC v0(String v0);
 	
@@ -74,10 +76,11 @@ public interface Tup4strC extends Tup4strR, TupstrC
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced, as the original
-	 * concept was too close to the naming conventions of vectors. Because not all tuples are
-	 * necessarily vectors, the vector naming convention might be confusing to understand or could
-	 * even create conflicts hence it was changed.
+	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced,
+	 * as the original concept was too close to the naming conventions of
+	 * vectors. Because not all tuples are necessarily vectors, the vector
+	 * naming convention might be confusing to understand or could even create
+	 * conflicts hence it was changed.
 	 */
 	Tup4strC v1(String v1);
 	
@@ -88,10 +91,11 @@ public interface Tup4strC extends Tup4strR, TupstrC
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced, as the original
-	 * concept was too close to the naming conventions of vectors. Because not all tuples are
-	 * necessarily vectors, the vector naming convention might be confusing to understand or could
-	 * even create conflicts hence it was changed.
+	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced,
+	 * as the original concept was too close to the naming conventions of
+	 * vectors. Because not all tuples are necessarily vectors, the vector
+	 * naming convention might be confusing to understand or could even create
+	 * conflicts hence it was changed.
 	 */
 	Tup4strC v2(String v2);
 	
@@ -102,17 +106,20 @@ public interface Tup4strC extends Tup4strR, TupstrC
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced, as the original
-	 * concept was too close to the naming conventions of vectors. Because not all tuples are
-	 * necessarily vectors, the vector naming convention might be confusing to understand or could
-	 * even create conflicts hence it was changed.
+	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced,
+	 * as the original concept was too close to the naming conventions of
+	 * vectors. Because not all tuples are necessarily vectors, the vector
+	 * naming convention might be confusing to understand or could even create
+	 * conflicts hence it was changed.
 	 */
 	Tup4strC v3(String v3);
 	
 	/**
-	 * Adopts the component values from an existing instance of {@link Tup4strR}.
+	 * Adopts the component values from an existing instance of
+	 * {@link Tup4strR}.
 	 * 
-	 * @param t An existing implementation of {@link Tup4strR} to adopt the component values from.
+	 * @param t An existing implementation of {@link Tup4strR} to adopt the
+	 * component values from.
 	 * 
 	 * @return The current tuple.
 	 */
@@ -198,6 +205,7 @@ public interface Tup4strC extends Tup4strR, TupstrC
 	 * @deprecated Unsupported by fixed sized tuples.
 	 */
 	@Deprecated
+	@Override
 	default Tup4strC setResize(TupstrR t)
 	{
 		throw new UnsupportedOperationException();
@@ -209,6 +217,7 @@ public interface Tup4strC extends Tup4strR, TupstrC
 	 * @deprecated Unsupported by fixed sized tuples.
 	 */
 	@Deprecated
+	@Override
 	default Tup4strC setArrayResize(String... t)
 	{
 		throw new UnsupportedOperationException();
@@ -220,6 +229,7 @@ public interface Tup4strC extends Tup4strR, TupstrC
 	 * @deprecated Unsupported by fixed sized tuples.
 	 */
 	@Deprecated
+	@Override
 	default Tup4strC resizeN(int size)
 	{
 		throw new UnsupportedOperationException();
@@ -246,6 +256,7 @@ public interface Tup4strC extends Tup4strR, TupstrC
 	 * @deprecated Unsupported by fixed sized tuples.
 	 */
 	@Deprecated
+	@Override
 	default Tup4strC rearrangeResizeN(int[] indices)
 	{
 		throw new UnsupportedOperationException();
@@ -314,23 +325,14 @@ public interface Tup4strC extends Tup4strR, TupstrC
 	 * @deprecated Unsupported by fixed sized tuples.
 	 */
 	@Deprecated
+	@Override
 	default Tup4strC resize(int size)
 	{
 		throw new UnsupportedOperationException();
 	}
 	
-	/**
-	 * Rearranges the order of the component values by their indices.
-	 * 
-	 * <p>
-	 * The passed indices array contains the current indices at the new positions. If the value at
-	 * the current index 7 in the tuple should be placed at the index 2, the index 7 would be passed
-	 * at index 2 in the indices array.
-	 * 
-	 * @param indices The indices in the tuple in new order.
-	 * 
-	 * @return This tuple.
-	 */
+	/** {@inheritDoc}} */
+	@Override
 	default Tup4strC rearrange(int[] indices)
 	{
 		Validation.validateNotNull("indices", indices);
@@ -350,6 +352,7 @@ public interface Tup4strC extends Tup4strR, TupstrC
 	 * @deprecated Unsupported by fixed sized tuples.
 	 */
 	@Deprecated
+	@Override
 	default Tup4strC rearrangeResize(int[] indices)
 	{
 		throw new UnsupportedOperationException();
@@ -415,14 +418,8 @@ public interface Tup4strC extends Tup4strR, TupstrC
 		return createNew(v0(), v1(), v3(), v2());
 	}
 	
-	/**
-	 * Swaps two component values based on their indices.
-	 * 
-	 * @param indexA The index to the first value to be swapped.
-	 * @param indexB The index to the second value to be swapped.
-	 * 
-	 * @return This tuple.
-	 */
+	/** {@inheritDoc}} */
+	@Override
 	default Tup4strC swapByIndex(int indexA, int indexB)
 	{
 		Validation.validateInRange("indexA", indexA, 0, 3);

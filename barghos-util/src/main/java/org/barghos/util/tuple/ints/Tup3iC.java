@@ -1,13 +1,13 @@
 package org.barghos.util.tuple.ints;
 
-import java.util.Objects;
-
 import org.barghos.annotation.IntValueRange;
 import org.barghos.annotation.MinLength;
-import org.barghos.util.tuple.ints.Tup3iC;
+
+import org.barghos.validation.Validation;
 
 /**
- * This interface provides the common functions and methods for int tuples with three dimensions.
+ * This interface provides the common functions and methods for int tuples with
+ * three dimensions.
  */
 public interface Tup3iC extends Tup3iR, TupiC
 {
@@ -17,8 +17,19 @@ public interface Tup3iC extends Tup3iR, TupiC
 	
 	/** {@inheritDoc}} */
 	@Override
+	default Tup3iC createNew(TupiR t)
+	{
+		Validation.validateNotNull("t", t);
+		
+		return createNew(t.toArray());
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
 	default Tup3iC createNew(Tup3iR t)
 	{
+		Validation.validateNotNull("t", t);
+		
 		return createNew(t.v0(), t.v1(), t.v2());
 	}
 	
@@ -26,6 +37,9 @@ public interface Tup3iC extends Tup3iR, TupiC
 	@Override
 	default Tup3iC createNew(@MinLength(3) int[] t)
 	{
+		Validation.validateNotNull("t", t);
+		Validation.validateMinSize("t", t, 3);
+		
 		return createNew(t[0], t[1], t[2]);
 	}
 	
@@ -47,9 +61,11 @@ public interface Tup3iC extends Tup3iR, TupiC
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced, as the original concept was too close to the naming conventions
-	 * of vectors. Because not all tuples are necessarily vectors, the vector naming convention might be confusing to understand or could even
-	 * create conflicts hence it was changed.
+	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced,
+	 * as the original concept was too close to the naming conventions of
+	 * vectors. Because not all tuples are necessarily vectors, the vector
+	 * naming convention might be confusing to understand or could even create
+	 * conflicts hence it was changed.
 	 */
 	Tup3iC v0(int v0);
 	
@@ -60,9 +76,11 @@ public interface Tup3iC extends Tup3iR, TupiC
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced, as the original concept was too close to the naming conventions
-	 * of vectors. Because not all tuples are necessarily vectors, the vector naming convention might be confusing to understand or could even
-	 * create conflicts hence it was changed.
+	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced,
+	 * as the original concept was too close to the naming conventions of
+	 * vectors. Because not all tuples are necessarily vectors, the vector
+	 * naming convention might be confusing to understand or could even create
+	 * conflicts hence it was changed.
 	 */
 	Tup3iC v1(int v1);
 	
@@ -73,21 +91,26 @@ public interface Tup3iC extends Tup3iR, TupiC
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced, as the original concept was too close to the naming conventions
-	 * of vectors. Because not all tuples are necessarily vectors, the vector naming convention might be confusing to understand or could even
-	 * create conflicts hence it was changed.
+	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced,
+	 * as the original concept was too close to the naming conventions of
+	 * vectors. Because not all tuples are necessarily vectors, the vector
+	 * naming convention might be confusing to understand or could even create
+	 * conflicts hence it was changed.
 	 */
 	Tup3iC v2(int v2);
 	
 	/**
 	 * Adopts the component values from an existing instance of {@link Tup3iR}.
 	 * 
-	 * @param t An existing implementation of {@link Tup3iR} to adopt the component values from.
+	 * @param t An existing implementation of {@link Tup3iR} to adopt the
+	 * component values from.
 	 * 
 	 * @return The current tuple.
 	 */
 	default Tup3iC set(Tup3iR t)
 	{
+		Validation.validateNotNull("t", t);
+		
 		return set(t.v0(), t.v1(), t.v2());
 	}
 	
@@ -120,6 +143,8 @@ public interface Tup3iC extends Tup3iR, TupiC
 	@Override
 	default Tup3iC set(@MinLength(3) TupiR t)
 	{
+		Validation.validateNotNull("t", t);
+		
 		return setArray(t.toArray());
 	}
 	
@@ -127,7 +152,7 @@ public interface Tup3iC extends Tup3iR, TupiC
 	@Override
 	default Tup3iC setByIndex(@IntValueRange(min=0, max=2) int index, int value)
 	{
-		Objects.checkIndex(index, 3);
+		Validation.validateInRange("index", index, 0, 2);
 		
 		switch(index)
 		{
@@ -140,12 +165,198 @@ public interface Tup3iC extends Tup3iR, TupiC
 	
 	/** {@inheritDoc}} */
 	@Override
-	default Tup3iC setArray(@MinLength(3) int... values)
+	default Tup3iC setArray(@MinLength(3) int... t)
 	{
-		return set(values[0], values[1], values[2]);
+		if(Validation.argumentValidation())
+		{
+			Validation.notNull("t", t);
+			Validation.expectSize("t", t, 3);
+		}
+		
+		return set(t[0], t[1], t[2]);
 	}
 	
 	/** {@inheritDoc}} */
 	@Override
 	Tup3iC copy();
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @deprecated Unsupported by fixed sized tuples.
+	 */
+	@Deprecated
+	@Override
+	default Tup3iC setResize(TupiR t)
+	{
+		throw new UnsupportedOperationException();
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @deprecated Unsupported by fixed sized tuples.
+	 */
+	@Deprecated
+	@Override
+	default Tup3iC setArrayResize(int... t)
+	{
+		throw new UnsupportedOperationException();
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @deprecated Unsupported by fixed sized tuples.
+	 */
+	@Deprecated
+	@Override
+	default Tup3iC resizeN(int size)
+	{
+		throw new UnsupportedOperationException();
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	default Tup3iC rearrangeN(int[] indices)
+	{
+		Validation.validateNotNull("indices", indices);
+		Validation.validateExpectSize("indices", indices, 3);
+		
+		int v0 = getByIndex(indices[0]);
+		int v1 = getByIndex(indices[1]);
+		int v2 = getByIndex(indices[2]);
+		
+		return createNew(v0, v1, v2);
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @deprecated Unsupported by fixed sized tuples.
+	 */
+	@Deprecated
+	@Override
+	default Tup3iC rearrangeResizeN(int[] indices)
+	{
+		throw new UnsupportedOperationException();
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	default Tup3iC swapV0AndV1N()
+	{
+		return createNew(v1(), v0(), v2());
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	default Tup3iC swapV0AndV2N()
+	{
+		return createNew(v2(), v1(), v0());
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	default Tup3iC swapV1AndV2N()
+	{
+		return createNew(v0(), v2(), v1());
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	default Tup3iC swapByIndexN(int indexA, int indexB)
+	{
+		Validation.validateInRange("indexA", indexA, 0, 2);
+		Validation.validateInRange("indexB", indexB, 0, 2);
+		
+		int[] values = toArray();
+		int temp = values[indexA];
+		values[indexA] = values[indexB];
+		values[indexB] = temp;
+		
+		return createNew(values);
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @deprecated Unsupported by fixed sized tuples.
+	 */
+	@Deprecated
+	@Override
+	default Tup3iC resize(int size)
+	{
+		throw new UnsupportedOperationException();
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	default Tup3iC rearrange(int[] indices)
+	{
+		Validation.validateNotNull("indices", indices);
+		Validation.validateExpectSize("indices", indices, 3);
+		
+		int v0 = getByIndex(indices[0]);
+		int v1 = getByIndex(indices[1]);
+		int v2 = getByIndex(indices[2]);
+		
+		return set(v0, v1, v2);
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @deprecated Unsupported by fixed sized tuples.
+	 */
+	@Deprecated
+	@Override
+	default Tup3iC rearrangeResize(int[] indices)
+	{
+		throw new UnsupportedOperationException();
+	}
+	
+	/**
+	 * Swaps the values of the components {@code v0} and {@code v1}.
+	 * 
+	 * @return This tuple.
+	 */
+	default Tup3iC swapV0AndV1()
+	{
+		return set(v1(), v0(), v2());
+	}
+	
+	/**
+	 * Swaps the values of the components {@code v0} and {@code v2}.
+	 * 
+	 * @return This tuple.
+	 */
+	default Tup3iC swapV0AndV2()
+	{
+		return set(v2(), v1(), v0());
+	}
+	
+	/**
+	 * Swaps the values of the components {@code v1} and {@code v2}.
+	 * 
+	 * @return This tuple.
+	 */
+	default Tup3iC swapV1AndV2()
+	{
+		return set(v0(), v2(), v1());
+	}
+	
+	/** {@inheritDoc}} */
+	@Override
+	default Tup3iC swapByIndex(int indexA, int indexB)
+	{
+		Validation.validateInRange("indexA", indexA, 0, 2);
+		Validation.validateInRange("indexB", indexB, 0, 2);
+		
+		int temp = getByIndex(indexA);
+		setByIndex(indexA, getByIndex(indexB));
+		setByIndex(indexB, temp);
+		
+		return this;
+	}
 }

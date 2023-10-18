@@ -4,7 +4,8 @@ import org.barghos.util.tuple.Tup3C;
 import org.barghos.validation.Validation;
 
 /**
- * This interface provides the common functions and methods for object tuples with three dimensions.
+ * This interface provides the common functions and methods for object tuples
+ * with three dimensions.
  * 
  * @param <V0> The type of the first component.
  * @param <V1> The type of the second component.
@@ -36,10 +37,11 @@ public interface Tup3C<V0,V1,V2> extends Tup3R<V0,V1,V2>
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced, as the original
-	 * concept was too close to the naming conventions of vectors. Because not all tuples are
-	 * necessarily vectors, the vector naming convention might be confusing to understand or could
-	 * even create conflicts hence it was changed.
+	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced,
+	 * as the original concept was too close to the naming conventions of
+	 * vectors. Because not all tuples are necessarily vectors, the vector
+	 * naming convention might be confusing to understand or could even create
+	 * conflicts hence it was changed.
 	 */
 	Tup3C<V0,V1,V2> v0(V0 v0);
 	
@@ -50,10 +52,11 @@ public interface Tup3C<V0,V1,V2> extends Tup3R<V0,V1,V2>
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced, as the original
-	 * concept was too close to the naming conventions of vectors. Because not all tuples are
-	 * necessarily vectors, the vector naming convention might be confusing to understand or could
-	 * even create conflicts hence it was changed.
+	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced,
+	 * as the original concept was too close to the naming conventions of
+	 * vectors. Because not all tuples are necessarily vectors, the vector
+	 * naming convention might be confusing to understand or could even create
+	 * conflicts hence it was changed.
 	 */
 	Tup3C<V0,V1,V2> v1(V1 v1);
 	
@@ -64,17 +67,19 @@ public interface Tup3C<V0,V1,V2> extends Tup3R<V0,V1,V2>
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced, as the original
-	 * concept was too close to the naming conventions of vectors. Because not all tuples are
-	 * necessarily vectors, the vector naming convention might be confusing to understand or could
-	 * even create conflicts hence it was changed.
+	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced,
+	 * as the original concept was too close to the naming conventions of
+	 * vectors. Because not all tuples are necessarily vectors, the vector
+	 * naming convention might be confusing to understand or could even create
+	 * conflicts hence it was changed.
 	 */
 	Tup3C<V0,V1,V2> v2(V2 v2);
 	
 	/**
 	 * Adopts the component values from an existing instance of {@link Tup3R}.
 	 * 
-	 * @param t An existing implementation of {@link Tup3R} to adopt the component values from.
+	 * @param t An existing implementation of {@link Tup3R} to adopt the
+	 * component values from.
 	 * 
 	 * @return The current tuple.
 	 */

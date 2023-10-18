@@ -6,7 +6,8 @@ import org.barghos.annotation.MinLength;
 import org.barghos.validation.Validation;
 
 /**
- * This interface provides the common functions and methods for long tuples with four dimensions.
+ * This interface provides the common functions and methods for long tuples with
+ * four dimensions.
  */
 public interface Tup4lC extends Tup4lR, TuplC
 {
@@ -60,10 +61,11 @@ public interface Tup4lC extends Tup4lR, TuplC
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced, as the original
-	 * concept was too close to the naming conventions of vectors. Because not all tuples are
-	 * necessarily vectors, the vector naming convention might be confusing to understand or could
-	 * even create conflicts hence it was changed.
+	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced,
+	 * as the original concept was too close to the naming conventions of
+	 * vectors. Because not all tuples are necessarily vectors, the vector
+	 * naming convention might be confusing to understand or could even create
+	 * conflicts hence it was changed.
 	 */
 	Tup4lC v0(long v0);
 	
@@ -74,10 +76,11 @@ public interface Tup4lC extends Tup4lR, TuplC
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced, as the original
-	 * concept was too close to the naming conventions of vectors. Because not all tuples are
-	 * necessarily vectors, the vector naming convention might be confusing to understand or could
-	 * even create conflicts hence it was changed.
+	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced,
+	 * as the original concept was too close to the naming conventions of
+	 * vectors. Because not all tuples are necessarily vectors, the vector
+	 * naming convention might be confusing to understand or could even create
+	 * conflicts hence it was changed.
 	 */
 	Tup4lC v1(long v1);
 	
@@ -88,10 +91,11 @@ public interface Tup4lC extends Tup4lR, TuplC
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced, as the original
-	 * concept was too close to the naming conventions of vectors. Because not all tuples are
-	 * necessarily vectors, the vector naming convention might be confusing to understand or could
-	 * even create conflicts hence it was changed.
+	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced,
+	 * as the original concept was too close to the naming conventions of
+	 * vectors. Because not all tuples are necessarily vectors, the vector
+	 * naming convention might be confusing to understand or could even create
+	 * conflicts hence it was changed.
 	 */
 	Tup4lC v2(long v2);
 	
@@ -102,17 +106,19 @@ public interface Tup4lC extends Tup4lR, TuplC
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced, as the original
-	 * concept was too close to the naming conventions of vectors. Because not all tuples are
-	 * necessarily vectors, the vector naming convention might be confusing to understand or could
-	 * even create conflicts hence it was changed.
+	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced,
+	 * as the original concept was too close to the naming conventions of
+	 * vectors. Because not all tuples are necessarily vectors, the vector
+	 * naming convention might be confusing to understand or could even create
+	 * conflicts hence it was changed.
 	 */
 	Tup4lC v3(long v3);
 	
 	/**
 	 * Adopts the component values from an existing instance of {@link Tup4lR}.
 	 * 
-	 * @param t An existing implementation of {@link Tup4lR} to adopt the component values from.
+	 * @param t An existing implementation of {@link Tup4lR} to adopt the
+	 * component values from.
 	 * 
 	 * @return The current tuple.
 	 */
@@ -198,6 +204,7 @@ public interface Tup4lC extends Tup4lR, TuplC
 	 * @deprecated Unsupported by fixed sized tuples.
 	 */
 	@Deprecated
+	@Override
 	default Tup4lC setResize(TuplR t)
 	{
 		throw new UnsupportedOperationException();
@@ -209,7 +216,8 @@ public interface Tup4lC extends Tup4lR, TuplC
 	 * @deprecated Unsupported by fixed sized tuples.
 	 */
 	@Deprecated
-	default Tup4lC setArrayResize(short... t)
+	@Override
+	default Tup4lC setArrayResize(long... t)
 	{
 		throw new UnsupportedOperationException();
 	}
@@ -220,6 +228,7 @@ public interface Tup4lC extends Tup4lR, TuplC
 	 * @deprecated Unsupported by fixed sized tuples.
 	 */
 	@Deprecated
+	@Override
 	default Tup4lC resizeN(int size)
 	{
 		throw new UnsupportedOperationException();
@@ -246,6 +255,7 @@ public interface Tup4lC extends Tup4lR, TuplC
 	 * @deprecated Unsupported by fixed sized tuples.
 	 */
 	@Deprecated
+	@Override
 	default Tup4lC rearrangeResizeN(int[] indices)
 	{
 		throw new UnsupportedOperationException();
@@ -314,23 +324,14 @@ public interface Tup4lC extends Tup4lR, TuplC
 	 * @deprecated Unsupported by fixed sized tuples.
 	 */
 	@Deprecated
+	@Override
 	default Tup4lC resize(int size)
 	{
 		throw new UnsupportedOperationException();
 	}
 	
-	/**
-	 * Rearranges the order of the component values by their indices.
-	 * 
-	 * <p>
-	 * The passed indices array contains the current indices at the new positions. If the value at
-	 * the current index 7 in the tuple should be placed at the index 2, the index 7 would be passed
-	 * at index 2 in the indices array.
-	 * 
-	 * @param indices The indices in the tuple in new order.
-	 * 
-	 * @return This tuple.
-	 */
+	/** {@inheritDoc}} */
+	@Override
 	default Tup4lC rearrange(int[] indices)
 	{
 		Validation.validateNotNull("indices", indices);
@@ -350,6 +351,7 @@ public interface Tup4lC extends Tup4lR, TuplC
 	 * @deprecated Unsupported by fixed sized tuples.
 	 */
 	@Deprecated
+	@Override
 	default Tup4lC rearrangeResize(int[] indices)
 	{
 		throw new UnsupportedOperationException();
@@ -415,14 +417,8 @@ public interface Tup4lC extends Tup4lR, TuplC
 		return createNew(v0(), v1(), v3(), v2());
 	}
 	
-	/**
-	 * Swaps two component values based on their indices.
-	 * 
-	 * @param indexA The index to the first value to be swapped.
-	 * @param indexB The index to the second value to be swapped.
-	 * 
-	 * @return This tuple.
-	 */
+	/** {@inheritDoc}} */
+	@Override
 	default Tup4lC swapByIndex(int indexA, int indexB)
 	{
 		Validation.validateInRange("indexA", indexA, 0, 3);

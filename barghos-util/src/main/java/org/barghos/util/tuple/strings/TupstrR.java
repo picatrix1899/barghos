@@ -7,8 +7,8 @@ import org.barghos.annotation.Nullable;
 import org.barghos.validation.Validation;
 
 /**
- * This interface provides non-invasive (read only) functions and methods for string tuples with
- * flexible dimension counts.
+ * This interface provides non-invasive (read only) functions and methods for
+ * string tuples with flexible dimension counts.
  */
 public interface TupstrR
 {
@@ -20,8 +20,8 @@ public interface TupstrR
 	TupstrR createNew();
 	
 	/**
-	 * Creates a new instance of the type of this tuple and adopts the component values from the
-	 * given tuple {@code (t)}.
+	 * Creates a new instance of the type of this tuple and adopts the component
+	 * values from the given tuple {@code (t)}.
 	 * 
 	 * @param t The tuple to adopt the component values from.
 	 * 
@@ -35,11 +35,11 @@ public interface TupstrR
 	}
 	
 	/**
-	 * Creates a new instance of the type of this tuple and adopts the component values from the
-	 * given tuple {@code (t)}.
+	 * Creates a new instance of the type of this tuple and adopts the component
+	 * values from the given tuple {@code (t)}.
 	 * 
-	 * @param t The tuple as an array with at least three entries to adopt the component values
-	 * from.
+	 * @param t The tuple as an array with at least three entries to adopt the
+	 * component values from.
 	 * 
 	 * @return A new instance.
 	 */
@@ -63,7 +63,8 @@ public interface TupstrR
 
 	/**
 	 * Returns all component values of the tuple in order as a new array.
-	 * Modifications made to the returned array will not alter the values in the tuple.
+	 * Modifications made to the returned array will not alter the values in the
+	 * tuple.
 	 *
 	 * @return An array filled with the component values.
 	 */
@@ -73,9 +74,10 @@ public interface TupstrR
 	}
 
 	/**
-	 * Fills the given result array with the component values of the tuple in order and returns it.
-	 * The size of the result array has to be equal to or greater than the number of dimensions of
-	 * this tuple. Modifications made to the result array will not alter the values in the tuple.
+	 * Fills the given result array with the component values of the tuple in
+	 * order and returns it. The size of the result array has to be equal to or
+	 * greater than the number of dimensions of this tuple. Modifications made
+	 * to the result array will not alter the values in the tuple.
 	 *
 	 * @param res The result array.
 	 *
@@ -91,9 +93,9 @@ public interface TupstrR
 	TupstrR copy();
 	
 	/**
-	 * Compares the value of the components of this tuple and the given tuple and returns true,
-	 * if the value of each component of this tuple is equal to the value of the corresponding
-	 * component in the other tuple.
+	 * Compares the value of the components of this tuple and the given tuple
+	 * and returns true, if the value of each component of this tuple is equal
+	 * to the value of the corresponding component in the other tuple.
 	 *
 	 * @param other The tuple to compare with.
 	 *
@@ -115,8 +117,9 @@ public interface TupstrR
 	}
 	
 	/**
-	 * Resizes the tuple to the passed size and either trims of any excess components or adds new
-	 * empty components. The result is returned as a new instance of this type of tuple.
+	 * Resizes the tuple to the passed size and either trims of any excess
+	 * components or adds new empty components. The result is returned as a new
+	 * instance of this type of tuple.
 	 * 
 	 * @param size The new size.
 	 * 
@@ -138,13 +141,14 @@ public interface TupstrR
 	}
 	
 	/**
-	 * Rearranges the order of the component values by their indices and returns the result as a new
-	 * instance of this type of tuple.
+	 * Rearranges the order of the component values by their indices and returns
+	 * the result as a new instance of this type of tuple.
 	 * 
 	 * <p>
-	 * The passed indices array contains the current indices at the new positions. If the value at
-	 * the current index 7 in the tuple should be placed at the index 2, the index 7 would be passed
-	 * at index 2 in the indices array.
+	 * The passed indices array contains the current indices at the new
+	 * positions. If the value at the current index 7 in the tuple should be
+	 * placed at the index 2, the index 7 would be passed at index 2 in the
+	 * indices array.
 	 * 
 	 * @param indices The indices in the tuple in new order.
 	 * 
@@ -169,15 +173,16 @@ public interface TupstrR
 	}
 	
 	/**
-	 * Rearranges the order of the component values by their indices and returns the result as a new
-	 * instance of this type of tuple.
-	 * If more or less indices are passed than the size of this tuple the new tuple gets resized
-	 * accordingly.
+	 * Rearranges the order of the component values by their indices and
+	 * returns the result as a new instance of this type of tuple.If more or
+	 * less indices are passed than the size of this tuple the new tuple gets
+	 * resized accordingly.
 	 * 
 	 * <p>
-	 * The passed indices array contains the current indices at the new positions. If the value at
-	 * the current index 7 in the tuple should be placed at the index 2, the index 7 would be passed
-	 * at index 2 in the indices array.
+	 * The passed indices array contains the current indices at the new
+	 * positions. If the value at the current index 7 in the tuple should be
+	 * placed at the index 2, the index 7 would be passed at index 2 in the
+	 * indices array.
 	 * 
 	 * @param indices The indices in the tuple in new order.
 	 * 
@@ -196,8 +201,8 @@ public interface TupstrR
 	}
 	
 	/**
-	 * Swaps two component values based on their indices and returns the result as a new instance of
-	 * this type of tuple.
+	 * Swaps two component values based on their indices and returns the result
+	 * as a new instance of this type of tuple.
 	 * 
 	 * @param indexA The index to the first value to be swapped.
 	 * @param indexB The index to the second value to be swapped.

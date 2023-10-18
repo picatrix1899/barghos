@@ -4,7 +4,8 @@ import org.barghos.util.tuple.Tup2C;
 import org.barghos.validation.Validation;
 
 /**
- * This interface provides the common functions and methods for object tuples with two dimensions.
+ * This interface provides the common functions and methods for object tuples
+ * with two dimensions.
  * 
  * @param <V0> The type of the first component.
  * @param <V1> The type of the second component.
@@ -35,10 +36,11 @@ public interface Tup2C<V0,V1> extends Tup2R<V0,V1>
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced, as the original
-	 * concept was too close to the naming conventions of vectors. Because not all tuples are
-	 * necessarily vectors, the vector naming convention might be confusing to understand or could
-	 * even create conflicts hence it was changed.
+	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced,
+	 * as the original concept was too close to the naming conventions of
+	 * vectors. Because not all tuples are necessarily vectors, the vector
+	 * naming convention might be confusing to understand or could even create
+	 * conflicts hence it was changed.
 	 */
 	Tup2C<V0,V1> v0(Object v0);
 	
@@ -49,17 +51,19 @@ public interface Tup2C<V0,V1> extends Tup2R<V0,V1>
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced, as the original
-	 * concept was too close to the naming conventions of vectors. Because not all tuples are
-	 * necessarily vectors, the vector naming convention might be confusing to understand or could
-	 * even create conflicts hence it was changed.
+	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced,
+	 * as the original concept was too close to the naming conventions of
+	 * vectors. Because not all tuples are necessarily vectors, the vector
+	 * naming convention might be confusing to understand or could even create
+	 * conflicts hence it was changed.
 	 */
 	Tup2C<V0,V1> v1(Object v1);
 	
 	/**
 	 * Adopts the component values from an existing instance of {@link Tup2R}.
 	 * 
-	 * @param t An existing implementation of {@link Tup2R} to adopt the component values from.
+	 * @param t An existing implementation of {@link Tup2R} to adopt the
+	 * component values from.
 	 * 
 	 * @return The current tuple.
 	 */

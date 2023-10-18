@@ -7,8 +7,8 @@ import org.barghos.annotation.IntMinValue;
 import org.barghos.validation.Validation;
 
 /**
- * This interface provides the common functions and methods for object tuples with flexible
- * dimension counts.
+ * This interface provides the common functions and methods for object tuples
+ * with flexible dimension counts.
  */
 public interface TupobjC extends TupobjR
 {
@@ -42,7 +42,8 @@ public interface TupobjC extends TupobjR
 	/**
 	 * Adopts the component values from an existing instance of {@link TupobjR}.
 	 *
-	 * @param t An existing implementation of {@link TupobjR} to adopt the component values from.
+	 * @param t An existing implementation of {@link TupobjR} to adopt the
+	 * component values from.
 	 *
 	 * @return The current tuple.
 	 */
@@ -70,10 +71,12 @@ public interface TupobjC extends TupobjR
 	}
 
 	/**
-	 * Adopts the component values from an existing instance of {@link TupobjR}. If the other tuple
-	 * contains more or less values than the size of this tuple the tuple gets resized accordingly.
+	 * Adopts the component values from an existing instance of {@link TupobjR}.
+	 * If the other tuple contains more or less values than the size of this
+	 * tuple the tuple gets resized accordingly.
 	 *
-	 * @param t An existing implementation of {@link TupobjR} to adopt the component values from.
+	 * @param t An existing implementation of {@link TupobjR} to adopt the
+	 * component values from.
 	 *
 	 * @return The current tuple.
 	 */
@@ -191,8 +194,8 @@ public interface TupobjC extends TupobjR
 	}
 	
 	/**
-	 * Resizes the tuple to the passed size and either trims of any excess components or adds new
-	 * empty components.
+	 * Resizes the tuple to the passed size and either trims of any excess
+	 * components or adds new empty components.
 	 * 
 	 * @param size The new size.
 	 * 
@@ -219,9 +222,10 @@ public interface TupobjC extends TupobjR
 	 * Rearranges the order of the component values by their indices.
 	 * 
 	 * <p>
-	 * The passed indices array contains the current indices at the new positions. If the value at
-	 * the current index 7 in the tuple should be placed at the index 2, the index 7 would be passed
-	 * at index 2 in the indices array.
+	 * The passed indices array contains the current indices at the new
+	 * positions. If the value at the current index 7 in the tuple should be
+	 * placed at the index 2, the index 7 would be passed at index 2 in the
+	 * indices array.
 	 * 
 	 * @param indices The indices in the tuple in new order.
 	 * 
@@ -248,13 +252,15 @@ public interface TupobjC extends TupobjR
 	}
 	
 	/**
-	 * Rearranges the order of the component values by their indices. If more or less indices are
-	 * passed than the size of this tuple the tuple gets resized accordingly.
+	 * Rearranges the order of the component values by their indices. If more or
+	 * less indices are passed than the size of this tuple the tuple gets
+	 * resized accordingly.
 	 * 
 	 * <p>
-	 * The passed indices array contains the current indices at the new positions. If the value at
-	 * the current index 7 in the tuple should be placed at the index 2, the index 7 would be passed
-	 * at index 2 in the indices array.
+	 * The passed indices array contains the current indices at the new
+	 * positions. If the value at the current index 7 in the tuple should be
+	 * placed at the index 2, the index 7 would be passed at index 2 in the
+	 * indices array.
 	 * 
 	 * @param indices The indices in the tuple in new order.
 	 * 

@@ -6,7 +6,8 @@ import org.barghos.annotation.MinLength;
 import org.barghos.validation.Validation;
 
 /**
- * This interface provides the common functions and methods for long tuples with three dimensions.
+ * This interface provides the common functions and methods for long tuples with
+ * three dimensions.
  */
 public interface Tup3lC extends Tup3lR, TuplC
 {
@@ -60,10 +61,11 @@ public interface Tup3lC extends Tup3lR, TuplC
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced, as the original
-	 * concept was too close to the naming conventions of vectors. Because not all tuples are
-	 * necessarily vectors, the vector naming convention might be confusing to understand or could
-	 * even create conflicts hence it was changed.
+	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced,
+	 * as the original concept was too close to the naming conventions of
+	 * vectors. Because not all tuples are necessarily vectors, the vector
+	 * naming convention might be confusing to understand or could even create
+	 * conflicts hence it was changed.
 	 */
 	Tup3lC v0(long v0);
 	
@@ -74,10 +76,11 @@ public interface Tup3lC extends Tup3lR, TuplC
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced, as the original
-	 * concept was too close to the naming conventions of vectors. Because not all tuples are
-	 * necessarily vectors, the vector naming convention might be confusing to understand or could
-	 * even create conflicts hence it was changed.
+	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced,
+	 * as the original concept was too close to the naming conventions of
+	 * vectors. Because not all tuples are necessarily vectors, the vector
+	 * naming convention might be confusing to understand or could even create
+	 * conflicts hence it was changed.
 	 */
 	Tup3lC v1(long v1);
 	
@@ -88,17 +91,19 @@ public interface Tup3lC extends Tup3lR, TuplC
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced, as the original
-	 * concept was too close to the naming conventions of vectors. Because not all tuples are
-	 * necessarily vectors, the vector naming convention might be confusing to understand or could
-	 * even create conflicts hence it was changed.
+	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced,
+	 * as the original concept was too close to the naming conventions of
+	 * vectors. Because not all tuples are necessarily vectors, the vector
+	 * naming convention might be confusing to understand or could even create
+	 * conflicts hence it was changed.
 	 */
 	Tup3lC v2(long v2);
 	
 	/**
 	 * Adopts the component values from an existing instance of {@link Tup3lR}.
 	 * 
-	 * @param t An existing implementation of {@link Tup3lR} to adopt the component values from.
+	 * @param t An existing implementation of {@link Tup3lR} to adopt the
+	 * component values from.
 	 * 
 	 * @return The current tuple.
 	 */
@@ -181,6 +186,7 @@ public interface Tup3lC extends Tup3lR, TuplC
 	 * @deprecated Unsupported by fixed sized tuples.
 	 */
 	@Deprecated
+	@Override
 	default Tup3lC setResize(TuplR t)
 	{
 		throw new UnsupportedOperationException();
@@ -192,6 +198,7 @@ public interface Tup3lC extends Tup3lR, TuplC
 	 * @deprecated Unsupported by fixed sized tuples.
 	 */
 	@Deprecated
+	@Override
 	default Tup3lC setArrayResize(long... t)
 	{
 		throw new UnsupportedOperationException();
@@ -203,6 +210,7 @@ public interface Tup3lC extends Tup3lR, TuplC
 	 * @deprecated Unsupported by fixed sized tuples.
 	 */
 	@Deprecated
+	@Override
 	default Tup3lC resizeN(int size)
 	{
 		throw new UnsupportedOperationException();
@@ -228,6 +236,7 @@ public interface Tup3lC extends Tup3lR, TuplC
 	 * @deprecated Unsupported by fixed sized tuples.
 	 */
 	@Deprecated
+	@Override
 	default Tup3lC rearrangeResizeN(int[] indices)
 	{
 		throw new UnsupportedOperationException();
@@ -275,23 +284,14 @@ public interface Tup3lC extends Tup3lR, TuplC
 	 * @deprecated Unsupported by fixed sized tuples.
 	 */
 	@Deprecated
+	@Override
 	default Tup3lC resize(int size)
 	{
 		throw new UnsupportedOperationException();
 	}
 	
-	/**
-	 * Rearranges the order of the component values by their indices.
-	 * 
-	 * <p>
-	 * The passed indices array contains the current indices at the new positions. If the value at
-	 * the current index 7 in the tuple should be placed at the index 2, the index 7 would be passed
-	 * at index 2 in the indices array.
-	 * 
-	 * @param indices The indices in the tuple in new order.
-	 * 
-	 * @return This tuple.
-	 */
+	/** {@inheritDoc}} */
+	@Override
 	default Tup3lC rearrange(int[] indices)
 	{
 		Validation.validateNotNull("indices", indices);
@@ -310,6 +310,7 @@ public interface Tup3lC extends Tup3lR, TuplC
 	 * @deprecated Unsupported by fixed sized tuples.
 	 */
 	@Deprecated
+	@Override
 	default Tup3lC rearrangeResize(int[] indices)
 	{
 		throw new UnsupportedOperationException();
@@ -345,14 +346,8 @@ public interface Tup3lC extends Tup3lR, TuplC
 		return set(v0(), v2(), v1());
 	}
 	
-	/**
-	 * Swaps two component values based on their indices.
-	 * 
-	 * @param indexA The index to the first value to be swapped.
-	 * @param indexB The index to the second value to be swapped.
-	 * 
-	 * @return This tuple.
-	 */
+	/** {@inheritDoc}} */
+	@Override
 	default Tup3lC swapByIndex(int indexA, int indexB)
 	{
 		Validation.validateInRange("indexA", indexA, 0, 2);

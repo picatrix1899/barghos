@@ -3,7 +3,8 @@ package org.barghos.util.tuple;
 import org.barghos.validation.Validation;
 
 /**
- * This interface provides the common functions and methods for object tuples with four dimensions.
+ * This interface provides the common functions and methods for object tuples
+ * with four dimensions.
  * 
  * @param <V0> The type of the first component.
  * @param <V1> The type of the second component.
@@ -36,10 +37,11 @@ public interface Tup4C<V0,V1,V2,V3> extends Tup4R<V0,V1,V2,V3>
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced, as the original
-	 * concept was too close to the naming conventions of vectors. Because not all tuples are
-	 * necessarily vectors, the vector naming convention might be confusing to understand or could
-	 * even create conflicts hence it was changed.
+	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced,
+	 * as the original concept was too close to the naming conventions of
+	 * vectors. Because not all tuples are necessarily vectors, the vector
+	 * naming convention might be confusing to understand or could even create
+	 * conflicts hence it was changed.
 	 */
 	Tup4C<V0,V1,V2,V3> v0(V0 v0);
 	
@@ -50,10 +52,11 @@ public interface Tup4C<V0,V1,V2,V3> extends Tup4R<V0,V1,V2,V3>
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced, as the original
-	 * concept was too close to the naming conventions of vectors. Because not all tuples are
-	 * necessarily vectors, the vector naming convention might be confusing to understand or could
-	 * even create conflicts hence it was changed.
+	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced,
+	 * as the original concept was too close to the naming conventions of
+	 * vectors. Because not all tuples are necessarily vectors, the vector
+	 * naming convention might be confusing to understand or could even create
+	 * conflicts hence it was changed.
 	 */
 	Tup4C<V0,V1,V2,V3> v1(V1 v1);
 	
@@ -64,10 +67,11 @@ public interface Tup4C<V0,V1,V2,V3> extends Tup4R<V0,V1,V2,V3>
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced, as the original
-	 * concept was too close to the naming conventions of vectors. Because not all tuples are
-	 * necessarily vectors, the vector naming convention might be confusing to understand or could
-	 * even create conflicts hence it was changed.
+	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced,
+	 * as the original concept was too close to the naming conventions of
+	 * vectors. Because not all tuples are necessarily vectors, the vector
+	 * naming convention might be confusing to understand or could even create
+	 * conflicts hence it was changed.
 	 */
 	Tup4C<V0,V1,V2,V3> v2(V2 v2);
 	
@@ -78,17 +82,19 @@ public interface Tup4C<V0,V1,V2,V3> extends Tup4R<V0,V1,V2,V3>
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced, as the original
-	 * concept was too close to the naming conventions of vectors. Because not all tuples are
-	 * necessarily vectors, the vector naming convention might be confusing to understand or could
-	 * even create conflicts hence it was changed.
+	 * @implNote The abstract naming concept of "Value n" (Vn) was introduced,
+	 * as the original concept was too close to the naming conventions of
+	 * vectors. Because not all tuples are necessarily vectors, the vector
+	 * naming convention might be confusing to understand or could even create
+	 * conflicts hence it was changed.
 	 */
 	Tup4C<V0,V1,V2,V3> v3(V3 v3);
 	
 	/**
 	 * Adopts the component values from an existing instance of {@link Tup4R}.
 	 * 
-	 * @param t An existing implementation of {@link Tup4R} to adopt the component values from.
+	 * @param t An existing implementation of {@link Tup4R} to adopt the
+	 * component values from.
 	 * 
 	 * @return The current tuple.
 	 */
