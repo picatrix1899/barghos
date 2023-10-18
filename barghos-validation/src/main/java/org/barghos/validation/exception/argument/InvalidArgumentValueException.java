@@ -1,15 +1,16 @@
 package org.barghos.validation.exception.argument;
 
 /**
- * Thrown to indicate that a function argument has an invalid or unexpected value.
- * This extends {@link InvalidArgumentException} by the possibility to specify
- * and access also the argument value outside of the message.
+ * Thrown to indicate that a function argument has an invalid or unexpected
+ * value. This extends {@link InvalidArgumentException} by the possibility to
+ * specify and access also the argument value outside of the message.
  */
 public class InvalidArgumentValueException extends InvalidArgumentException
 {
 	/**
 	 * This constant contains the current version of this class.
-	 * It is used to distinguish between different serialized versions of this class.
+	 * It is used to distinguish between different serialized versions of this
+	 * class.
 	 */
 	private static final long serialVersionUID = 1L;
 	
@@ -28,7 +29,8 @@ public class InvalidArgumentValueException extends InvalidArgumentException
 	}
 	
 	/**
-	 * Creates a new instance of the exception with an argument name and the argument value as additional information.
+	 * Creates a new instance of the exception with an argument name and the
+	 * argument value as additional information.
 	 * 
 	 * @param argument The name of the argument that was null.
 	 * @param value The value of the argument.
@@ -42,7 +44,8 @@ public class InvalidArgumentValueException extends InvalidArgumentException
 	}
 	
 	/**
-	 * Creates a new instance of the exception with an argument name, the argument value and a custom message as additional information.
+	 * Creates a new instance of the exception with an argument name, the
+	 * argument value and a custom message as additional information.
 	 * 
 	 * @param argument The name of the argument that was null.
 	 * @param value The value of the argument.
@@ -57,7 +60,8 @@ public class InvalidArgumentValueException extends InvalidArgumentException
 	}
 	
 	/**
-	 * Returns the value of the argument for which this exception was created for.
+	 * Returns the value of the argument for which this exception was created
+	 * for.
 	 * @return The argument value.
 	 */
 	public Object getValue()
@@ -66,7 +70,8 @@ public class InvalidArgumentValueException extends InvalidArgumentException
 	}
 	
 	/**
-	 * Returns if the value of the argument was specified for which this exception was created for.
+	 * Returns if the value of the argument was specified for which this
+	 * exception was created for.
 	 * 
 	 * @return True, if the value was specified.
 	 */

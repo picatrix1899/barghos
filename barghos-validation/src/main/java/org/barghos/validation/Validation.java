@@ -31,9 +31,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is not null. If it is null an {@link ArgumentNullException}
-	 * for the passed argument is thrown. The validation only occurs if argument validation is
-	 * enabled.
+	 * Validates that the passed value is not null. If it is null an
+	 * {@link ArgumentNullException} for the passed argument is thrown.
+	 * The validation only occurs if argument validation is enabled.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
@@ -48,17 +48,19 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is within the range of passed min value to passed max value
-	 * with the min and max value being part of the range. If the value is outside of the range an
-	 * {@link ArgumentValueOutOfRangeException} for the passed argument is thrown. The validation
-	 * only occurs if argument validation is enabled.
+	 * Validates that the passed value is within the range of passed min value
+	 * to passed max value with the min and max value being part of the range.
+	 * If the value is outside of the range an
+	 * {@link ArgumentValueOutOfRangeException} for the passed argument is
+	 * thrown. The validation only occurs if argument validation is enabled.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
 	 * @param min The inclusive minimum value for the range.
 	 * @param max The inclusive maximum value for the range.
 	 * 
-	 * @throws ArgumentValueOutOfRangeException If the value is outside of the range.
+	 * @throws ArgumentValueOutOfRangeException If the value is outside of the
+	 * range.
 	 */
 	public static void validateInRange(String argument, byte v, byte min, byte max)
 	{
@@ -68,17 +70,19 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is within the range of passed min value to passed max value
-	 * with the min and max value being part of the range. If the value is outside of the range an
-	 * {@link ArgumentValueOutOfRangeException} for the passed argument is thrown. The validation
-	 * only occurs if argument validation is enabled.
+	 * Validates that the passed value is within the range of passed min value
+	 * to passed max value with the min and max value being part of the range.
+	 * If the value is outside of the range an
+	 * {@link ArgumentValueOutOfRangeException} for the passed argument is
+	 * thrown. The validation only occurs if argument validation is enabled.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
 	 * @param min The inclusive minimum value for the range.
 	 * @param max The inclusive maximum value for the range.
 	 * 
-	 * @throws ArgumentValueOutOfRangeException If the value is outside of the range.
+	 * @throws ArgumentValueOutOfRangeException If the value is outside of the
+	 * range.
 	 */
 	public static void validateInRange(String argument, short v, short min, short max)
 	{
@@ -88,17 +92,19 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is within the range of passed min value to passed max value
-	 * with the min and max value being part of the range. If the value is outside of the range an
-	 * {@link ArgumentValueOutOfRangeException} for the passed argument is thrown. The validation
-	 * only occurs if argument validation is enabled.
+	 * Validates that the passed value is within the range of passed min value
+	 * to passed max value with the min and max value being part of the range.
+	 * If the value is outside of the range an
+	 * {@link ArgumentValueOutOfRangeException} for the passed argument is
+	 * thrown. The validation only occurs if argument validation is enabled.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
 	 * @param min The inclusive minimum value for the range.
 	 * @param max The inclusive maximum value for the range.
 	 * 
-	 * @throws ArgumentValueOutOfRangeException If the value is outside of the range.
+	 * @throws ArgumentValueOutOfRangeException If the value is outside of the
+	 * range.
 	 */
 	public static void validateInRange(String argument, int v, int min, int max)
 	{
@@ -108,17 +114,19 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is within the range of passed min value to passed max value
-	 * with the min and max value being part of the range. If the value is outside of the range an
-	 * {@link ArgumentValueOutOfRangeException} for the passed argument is thrown. The validation
-	 * only occurs if argument validation is enabled.
+	 * Validates that the passed value is within the range of passed min value
+	 * to passed max value with the min and max value being part of the range.
+	 * If the value is outside of the range an
+	 * {@link ArgumentValueOutOfRangeException} for the passed argument is
+	 * thrown. The validation only occurs if argument validation is enabled.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
 	 * @param min The inclusive minimum value for the range.
 	 * @param max The inclusive maximum value for the range.
 	 * 
-	 * @throws ArgumentValueOutOfRangeException If the value is outside of the range.
+	 * @throws ArgumentValueOutOfRangeException If the value is outside of the
+	 * range.
 	 */
 	public static void validateInRange(String argument, long v, long min, long max)
 	{
@@ -128,17 +136,19 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is within the range of passed min value to passed max value
-	 * with the min and max value being part of the range. If the value is outside of the range an
-	 * {@link ArgumentValueOutOfRangeException} for the passed argument is thrown. The validation
-	 * only occurs if argument validation is enabled.
+	 * Validates that the passed value is within the range of passed min value
+	 * to passed max value with the min and max value being part of the range.
+	 * If the value is outside of the range an
+	 * {@link ArgumentValueOutOfRangeException} for the passed argument is
+	 * thrown. The validation only occurs if argument validation is enabled.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
 	 * @param min The inclusive minimum value for the range.
 	 * @param max The inclusive maximum value for the range.
 	 * 
-	 * @throws ArgumentValueOutOfRangeException If the value is outside of the range.
+	 * @throws ArgumentValueOutOfRangeException If the value is outside of the
+	 * range.
 	 */
 	public static void validateInRange(String argument, float v, float min, float max)
 	{
@@ -148,17 +158,19 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is within the range of passed min value to passed max value
-	 * with the min and max value being part of the range. If the value is outside of the range an
-	 * {@link ArgumentValueOutOfRangeException} for the passed argument is thrown. The validation
-	 * only occurs if argument validation is enabled.
+	 * Validates that the passed value is within the range of passed min value
+	 * to passed max value with the min and max value being part of the range.
+	 * If the value is outside of the range an
+	 * {@link ArgumentValueOutOfRangeException} for the passed argument is
+	 * thrown. The validation only occurs if argument validation is enabled.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
 	 * @param min The inclusive minimum value for the range.
 	 * @param max The inclusive maximum value for the range.
 	 * 
-	 * @throws ArgumentValueOutOfRangeException If the value is outside of the range.
+	 * @throws ArgumentValueOutOfRangeException If the value is outside of the
+	 * range.
 	 */
 	public static void validateInRange(String argument, double v, double min, double max)
 	{
@@ -168,17 +180,19 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is within the range of passed min value to passed max value
-	 * with the min and max value being part of the range. If the value is outside of the range an
-	 * {@link ArgumentValueOutOfRangeException} for the passed argument is thrown. The validation
-	 * only occurs if argument validation is enabled.
+	 * Validates that the passed value is within the range of passed min value
+	 * to passed max value with the min and max value being part of the range.
+	 * If the value is outside of the range an
+	 * {@link ArgumentValueOutOfRangeException} for the passed argument is
+	 * thrown. The validation only occurs if argument validation is enabled.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
 	 * @param min The inclusive minimum value for the range.
 	 * @param max The inclusive maximum value for the range.
 	 * 
-	 * @throws ArgumentValueOutOfRangeException If the value is outside of the range.
+	 * @throws ArgumentValueOutOfRangeException If the value is outside of the
+	 * range.
 	 */
 	public static void validateInRange(String argument, BigDecimal v, BigDecimal min, BigDecimal max)
 	{
@@ -188,17 +202,19 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is within the range of passed min value to passed max value
-	 * with the min and max value being part of the range. If the value is outside of the range an
-	 * {@link ArgumentValueOutOfRangeException} for the passed argument is thrown. The validation
-	 * only occurs if argument validation is enabled.
+	 * Validates that the passed value is within the range of passed min value
+	 * to passed max value with the min and max value being part of the range.
+	 * If the value is outside of the range an
+	 * {@link ArgumentValueOutOfRangeException} for the passed argument is
+	 * thrown. The validation only occurs if argument validation is enabled.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
 	 * @param min The inclusive minimum value for the range.
 	 * @param max The inclusive maximum value for the range.
 	 * 
-	 * @throws ArgumentValueOutOfRangeException If the value is outside of the range.
+	 * @throws ArgumentValueOutOfRangeException If the value is outside of the
+	 * range.
 	 */
 	public static void validateInRange(String argument, BigInteger v, BigInteger min, BigInteger max)
 	{
@@ -208,9 +224,10 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is at least the passed min value. If the value is below the
-	 * min value an {@link ArgumentValueTooSmallException} for the passed argument is thrown. The
-	 * validation only occurs if argument validation is enabled.
+	 * Validates that the passed value is at least the passed min value. If the
+	 * value is below the min value an {@link ArgumentValueTooSmallException}
+	 * for the passed argument is thrown. The validation only occurs if argument
+	 * validation is enabled.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
@@ -226,9 +243,10 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is at least the passed min value. If the value is below the
-	 * min value an {@link ArgumentValueTooSmallException} for the passed argument is thrown. The
-	 * validation only occurs if argument validation is enabled.
+	 * Validates that the passed value is at least the passed min value. If the
+	 * value is below the min value an {@link ArgumentValueTooSmallException}
+	 * for the passed argument is thrown. The validation only occurs if argument
+	 * validation is enabled.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
@@ -244,9 +262,10 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is at least the passed min value. If the value is below the
-	 * min value an {@link ArgumentValueTooSmallException} for the passed argument is thrown. The
-	 * validation only occurs if argument validation is enabled.
+	 * Validates that the passed value is at least the passed min value. If the
+	 * value is below the min value an {@link ArgumentValueTooSmallException}
+	 * for the passed argument is thrown. The validation only occurs if argument
+	 * validation is enabled.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
@@ -262,9 +281,10 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is at least the passed min value. If the value is below the
-	 * min value an {@link ArgumentValueTooSmallException} for the passed argument is thrown. The
-	 * validation only occurs if argument validation is enabled.
+	 * Validates that the passed value is at least the passed min value. If the
+	 * value is below the min value an {@link ArgumentValueTooSmallException}
+	 * for the passed argument is thrown. The validation only occurs if argument
+	 * validation is enabled.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
@@ -280,9 +300,10 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is at least the passed min value. If the value is below the
-	 * min value an {@link ArgumentValueTooSmallException} for the passed argument is thrown. The
-	 * validation only occurs if argument validation is enabled.
+	 * Validates that the passed value is at least the passed min value. If the
+	 * value is below the min value an {@link ArgumentValueTooSmallException}
+	 * for the passed argument is thrown. The validation only occurs if argument
+	 * validation is enabled.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
@@ -298,9 +319,10 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is at least the passed min value. If the value is below the
-	 * min value an {@link ArgumentValueTooSmallException} for the passed argument is thrown. The
-	 * validation only occurs if argument validation is enabled.
+	 * Validates that the passed value is at least the passed min value. If the
+	 * value is below the min value an {@link ArgumentValueTooSmallException}
+	 * for the passed argument is thrown. The validation only occurs if argument
+	 * validation is enabled.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
@@ -316,9 +338,10 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is at least the passed min value. If the value is below the
-	 * min value an {@link ArgumentValueTooSmallException} for the passed argument is thrown. The
-	 * validation only occurs if argument validation is enabled.
+	 * Validates that the passed value is at least the passed min value. If the
+	 * value is below the min value an {@link ArgumentValueTooSmallException}
+	 * for the passed argument is thrown. The validation only occurs if argument
+	 * validation is enabled.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
@@ -334,9 +357,10 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is at least the passed min value. If the value is below the
-	 * min value an {@link ArgumentValueTooSmallException} for the passed argument is thrown. The
-	 * validation only occurs if argument validation is enabled.
+	 * Validates that the passed value is at least the passed min value. If the
+	 * value is below the min value an {@link ArgumentValueTooSmallException}
+	 * for the passed argument is thrown. The validation only occurs if argument
+	 * validation is enabled.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
@@ -352,9 +376,10 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is at most the passed max value. If the value is above the
-	 * max value an {@link ArgumentValueTooBigException} for the passed argument is thrown. The
-	 * validation only occurs if argument validation is enabled.
+	 * Validates that the passed value is at most the passed max value. If the
+	 * value is above the max value an {@link ArgumentValueTooBigException} for
+	 * the passed argument is thrown. The validation only occurs if argument
+	 * validation is enabled.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
@@ -370,9 +395,10 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is at most the passed max value. If the value is above the
-	 * max value an {@link ArgumentValueTooBigException} for the passed argument is thrown. The
-	 * validation only occurs if argument validation is enabled.
+	 * Validates that the passed value is at most the passed max value. If the
+	 * value is above the max value an {@link ArgumentValueTooBigException} for
+	 * the passed argument is thrown. The validation only occurs if argument
+	 * validation is enabled.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
@@ -388,9 +414,10 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is at most the passed max value. If the value is above the
-	 * max value an {@link ArgumentValueTooBigException} for the passed argument is thrown. The
-	 * validation only occurs if argument validation is enabled.
+	 * Validates that the passed value is at most the passed max value. If the
+	 * value is above the max value an {@link ArgumentValueTooBigException} for
+	 * the passed argument is thrown. The validation only occurs if argument
+	 * validation is enabled.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
@@ -406,9 +433,10 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is at most the passed max value. If the value is above the
-	 * max value an {@link ArgumentValueTooBigException} for the passed argument is thrown. The
-	 * validation only occurs if argument validation is enabled.
+	 * Validates that the passed value is at most the passed max value. If the
+	 * value is above the max value an {@link ArgumentValueTooBigException} for
+	 * the passed argument is thrown. The validation only occurs if argument
+	 * validation is enabled.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
@@ -424,9 +452,10 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is at most the passed max value. If the value is above the
-	 * max value an {@link ArgumentValueTooBigException} for the passed argument is thrown. The
-	 * validation only occurs if argument validation is enabled.
+	 * Validates that the passed value is at most the passed max value. If the
+	 * value is above the max value an {@link ArgumentValueTooBigException} for
+	 * the passed argument is thrown. The validation only occurs if argument
+	 * validation is enabled.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
@@ -442,9 +471,10 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is at most the passed max value. If the value is above the
-	 * max value an {@link ArgumentValueTooBigException} for the passed argument is thrown. The
-	 * validation only occurs if argument validation is enabled.
+	 * Validates that the passed value is at most the passed max value. If the
+	 * value is above the max value an {@link ArgumentValueTooBigException} for
+	 * the passed argument is thrown. The validation only occurs if argument
+	 * validation is enabled.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
@@ -460,9 +490,10 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is at most the passed max value. If the value is above the
-	 * max value an {@link ArgumentValueTooBigException} for the passed argument is thrown. The
-	 * validation only occurs if argument validation is enabled.
+	 * Validates that the passed value is at most the passed max value. If the
+	 * value is above the max value an {@link ArgumentValueTooBigException} for
+	 * the passed argument is thrown. The validation only occurs if argument
+	 * validation is enabled.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
@@ -478,9 +509,10 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is at most the passed max value. If the value is above the
-	 * max value an {@link ArgumentValueTooBigException} for the passed argument is thrown. The
-	 * validation only occurs if argument validation is enabled.
+	 * Validates that the passed value is at most the passed max value. If the
+	 * value is above the max value an {@link ArgumentValueTooBigException} for
+	 * the passed argument is thrown. The validation only occurs if argument
+	 * validation is enabled.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
@@ -496,8 +528,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed array has the expected size. If the size of the array differs from
-	 * the expected size an {@link UnexpectedArgumentSizeException} for the passed argument is
+	 * Validates that the passed array has the expected size. If the size of the
+	 * array differs from the expected size an
+	 * {@link UnexpectedArgumentSizeException} for the passed argument is
 	 * thrown. The validation only occurs if argument validation is enabled.
 	 * 
 	 * @param <T> The array type.
@@ -506,7 +539,8 @@ private static final boolean argumentValidation;
 	 * @param c The array that will be validated.
 	 * @param expectedSize The expected size.
 	 * 
-	 * @throws UnexpectedArgumentSizeException If the array size differs from the expected size.
+	 * @throws UnexpectedArgumentSizeException If the array size differs from
+	 * the expected size.
 	 */
 	public static <T> void validateExpectSize(String argument, T[] c, int expectedSize)
 	{
@@ -516,8 +550,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed array has the expected size. If the size of the array differs from
-	 * the expected size an {@link UnexpectedArgumentSizeException} for the passed argument is
+	 * Validates that the passed array has the expected size. If the size of the
+	 * array differs from the expected size an
+	 * {@link UnexpectedArgumentSizeException} for the passed argument is
 	 * thrown. The validation only occurs if argument validation is enabled.
 	 * 
 	 * @param <T> The array type.
@@ -526,7 +561,8 @@ private static final boolean argumentValidation;
 	 * @param c The array that will be validated.
 	 * @param expectedSize The expected size.
 	 * 
-	 * @throws UnexpectedArgumentSizeException If the array size differs from the expected size.
+	 * @throws UnexpectedArgumentSizeException If the array size differs from
+	 * the expected size.
 	 */
 	public static void validateExpectSize(String argument, byte[] c, int expectedSize)
 	{
@@ -536,8 +572,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed array has the expected size. If the size of the array differs from
-	 * the expected size an {@link UnexpectedArgumentSizeException} for the passed argument is
+	 * Validates that the passed array has the expected size. If the size of the
+	 * array differs from the expected size an
+	 * {@link UnexpectedArgumentSizeException} for the passed argument is
 	 * thrown. The validation only occurs if argument validation is enabled.
 	 * 
 	 * @param <T> The array type.
@@ -546,7 +583,8 @@ private static final boolean argumentValidation;
 	 * @param c The array that will be validated.
 	 * @param expectedSize The expected size.
 	 * 
-	 * @throws UnexpectedArgumentSizeException If the array size differs from the expected size.
+	 * @throws UnexpectedArgumentSizeException If the array size differs from
+	 * the expected size.
 	 */
 	public static void validateExpectSize(String argument, short[] c, int expectedSize)
 	{
@@ -556,8 +594,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed array has the expected size. If the size of the array differs from
-	 * the expected size an {@link UnexpectedArgumentSizeException} for the passed argument is
+	 * Validates that the passed array has the expected size. If the size of the
+	 * array differs from the expected size an
+	 * {@link UnexpectedArgumentSizeException} for the passed argument is
 	 * thrown. The validation only occurs if argument validation is enabled.
 	 * 
 	 * @param <T> The array type.
@@ -566,7 +605,8 @@ private static final boolean argumentValidation;
 	 * @param c The array that will be validated.
 	 * @param expectedSize The expected size.
 	 * 
-	 * @throws UnexpectedArgumentSizeException If the array size differs from the expected size.
+	 * @throws UnexpectedArgumentSizeException If the array size differs from
+	 * the expected size.
 	 */
 	public static void validateExpectSize(String argument, int[] c, int expectedSize)
 	{
@@ -576,8 +616,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed array has the expected size. If the size of the array differs from
-	 * the expected size an {@link UnexpectedArgumentSizeException} for the passed argument is
+	 * Validates that the passed array has the expected size. If the size of the
+	 * array differs from the expected size an
+	 * {@link UnexpectedArgumentSizeException} for the passed argument is
 	 * thrown. The validation only occurs if argument validation is enabled.
 	 * 
 	 * @param <T> The array type.
@@ -586,7 +627,8 @@ private static final boolean argumentValidation;
 	 * @param c The array that will be validated.
 	 * @param expectedSize The expected size.
 	 * 
-	 * @throws UnexpectedArgumentSizeException If the array size differs from the expected size.
+	 * @throws UnexpectedArgumentSizeException If the array size differs from
+	 * the expected size.
 	 */
 	public static void validateExpectSize(String argument, long[] c, int expectedSize)
 	{
@@ -596,8 +638,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed array has the expected size. If the size of the array differs from
-	 * the expected size an {@link UnexpectedArgumentSizeException} for the passed argument is
+	 * Validates that the passed array has the expected size. If the size of the
+	 * array differs from the expected size an
+	 * {@link UnexpectedArgumentSizeException} for the passed argument is
 	 * thrown. The validation only occurs if argument validation is enabled.
 	 * 
 	 * @param <T> The array type.
@@ -606,7 +649,8 @@ private static final boolean argumentValidation;
 	 * @param c The array that will be validated.
 	 * @param expectedSize The expected size.
 	 * 
-	 * @throws UnexpectedArgumentSizeException If the array size differs from the expected size.
+	 * @throws UnexpectedArgumentSizeException If the array size differs from
+	 * the expected size.
 	 */
 	public static void validateExpectSize(String argument, float[] c, int expectedSize)
 	{
@@ -616,8 +660,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed array has the expected size. If the size of the array differs from
-	 * the expected size an {@link UnexpectedArgumentSizeException} for the passed argument is
+	 * Validates that the passed array has the expected size. If the size of the
+	 * array differs from the expected size an
+	 * {@link UnexpectedArgumentSizeException} for the passed argument is
 	 * thrown. The validation only occurs if argument validation is enabled.
 	 * 
 	 * @param <T> The array type.
@@ -626,7 +671,8 @@ private static final boolean argumentValidation;
 	 * @param c The array that will be validated.
 	 * @param expectedSize The expected size.
 	 * 
-	 * @throws UnexpectedArgumentSizeException If the array size differs from the expected size.
+	 * @throws UnexpectedArgumentSizeException If the array size differs from
+	 * the expected size.
 	 */
 	public static void validateExpectSize(String argument, double[] c, int expectedSize)
 	{
@@ -636,8 +682,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed array has the expected size. If the size of the array differs from
-	 * the expected size an {@link UnexpectedArgumentSizeException} for the passed argument is
+	 * Validates that the passed array has the expected size. If the size of the
+	 * array differs from the expected size an
+	 * {@link UnexpectedArgumentSizeException} for the passed argument is
 	 * thrown. The validation only occurs if argument validation is enabled.
 	 * 
 	 * @param <T> The array type.
@@ -646,7 +693,8 @@ private static final boolean argumentValidation;
 	 * @param c The array that will be validated.
 	 * @param expectedSize The expected size.
 	 * 
-	 * @throws UnexpectedArgumentSizeException If the array size differs from the expected size.
+	 * @throws UnexpectedArgumentSizeException If the array size differs from
+	 * the expected size.
 	 */
 	public static void validateExpectSize(String argument, char[] c, int expectedSize)
 	{
@@ -656,8 +704,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed array has the expected size. If the size of the array differs from
-	 * the expected size an {@link UnexpectedArgumentSizeException} for the passed argument is
+	 * Validates that the passed array has the expected size. If the size of the
+	 * array differs from the expected size an
+	 * {@link UnexpectedArgumentSizeException} for the passed argument is
 	 * thrown. The validation only occurs if argument validation is enabled.
 	 * 
 	 * @param <T> The array type.
@@ -666,7 +715,8 @@ private static final boolean argumentValidation;
 	 * @param c The array that will be validated.
 	 * @param expectedSize The expected size.
 	 * 
-	 * @throws UnexpectedArgumentSizeException If the array size differs from the expected size.
+	 * @throws UnexpectedArgumentSizeException If the array size differs from
+	 * the expected size.
 	 */
 	public static void validateExpectSize(String argument, boolean[] c, int expectedSize)
 	{
@@ -676,15 +726,17 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed collection has the expected size. If the size of the array differs
-	 * from the expected size an {@link UnexpectedArgumentSizeException} for the passed argument is
+	 * Validates that the passed collection has the expected size. If the size
+	 * of the collection differs from the expected size an
+	 * {@link UnexpectedArgumentSizeException} for the passed argument is
 	 * thrown. The validation only occurs if argument validation is enabled.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param c The collection that will be validated.
 	 * @param expectedSize The expected size.
 	 * 
-	 * @throws UnexpectedArgumentSizeException If the array size differs from the expected size.
+	 * @throws UnexpectedArgumentSizeException If the array size differs from
+	 * the expected size.
 	 */
 	public static void validateExpectSize(String argument, Collection<?> c, int expectedSize)
 	{
@@ -694,8 +746,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed array has at least the minimum size. If the size of the array is
-	 * below the minimum size an {@link ArgumentSizeTooSmallException} for the passed argument is
+	 * Validates that the passed array has at least the minimum size. If the
+	 * size of the array is below the minimum size an
+	 * {@link ArgumentSizeTooSmallException} for the passed argument is
 	 * thrown. The validation only occurs if argument validation is enabled.
 	 * 
 	 * @param <T> The array type.
@@ -704,7 +757,8 @@ private static final boolean argumentValidation;
 	 * @param c The array that will be validated.
 	 * @param minSize The minimum size.
 	 * 
-	 * @throws ArgumentSizeTooSmallException If the array size is below minimum size.
+	 * @throws ArgumentSizeTooSmallException If the array size is below minimum
+	 * size.
 	 */
 	public static <T> void validateMinSize(String argument, T[] v, int minSize)
 	{
@@ -714,8 +768,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed array has at least the minimum size. If the size of the array is
-	 * below the minimum size an {@link ArgumentSizeTooSmallException} for the passed argument is
+	 * Validates that the passed array has at least the minimum size. If the
+	 * size of the array is below the minimum size an
+	 * {@link ArgumentSizeTooSmallException} for the passed argument is
 	 * thrown. The validation only occurs if argument validation is enabled.
 	 * 
 	 * @param <T> The array type.
@@ -724,7 +779,8 @@ private static final boolean argumentValidation;
 	 * @param c The array that will be validated.
 	 * @param minSize The minimum size.
 	 * 
-	 * @throws ArgumentSizeTooSmallException If the array size is below minimum size.
+	 * @throws ArgumentSizeTooSmallException If the array size is below minimum
+	 * size.
 	 */
 	public static void validateMinSize(String argument, byte[] v, int minSize)
 	{
@@ -734,8 +790,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed array has at least the minimum size. If the size of the array is
-	 * below the minimum size an {@link ArgumentSizeTooSmallException} for the passed argument is
+	 * Validates that the passed array has at least the minimum size. If the
+	 * size of the array is below the minimum size an
+	 * {@link ArgumentSizeTooSmallException} for the passed argument is
 	 * thrown. The validation only occurs if argument validation is enabled.
 	 * 
 	 * @param <T> The array type.
@@ -744,7 +801,8 @@ private static final boolean argumentValidation;
 	 * @param c The array that will be validated.
 	 * @param minSize The minimum size.
 	 * 
-	 * @throws ArgumentSizeTooSmallException If the array size is below minimum size.
+	 * @throws ArgumentSizeTooSmallException If the array size is below minimum
+	 * size.
 	 */
 	public static void validateMinSize(String argument, short[] v, int minSize)
 	{
@@ -754,8 +812,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed array has at least the minimum size. If the size of the array is
-	 * below the minimum size an {@link ArgumentSizeTooSmallException} for the passed argument is
+	 * Validates that the passed array has at least the minimum size. If the
+	 * size of the array is below the minimum size an
+	 * {@link ArgumentSizeTooSmallException} for the passed argument is
 	 * thrown. The validation only occurs if argument validation is enabled.
 	 * 
 	 * @param <T> The array type.
@@ -764,7 +823,8 @@ private static final boolean argumentValidation;
 	 * @param c The array that will be validated.
 	 * @param minSize The minimum size.
 	 * 
-	 * @throws ArgumentSizeTooSmallException If the array size is below minimum size.
+	 * @throws ArgumentSizeTooSmallException If the array size is below minimum
+	 * size.
 	 */
 	public static void validateMinSize(String argument, int[] v, int minSize)
 	{
@@ -774,8 +834,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed array has at least the minimum size. If the size of the array is
-	 * below the minimum size an {@link ArgumentSizeTooSmallException} for the passed argument is
+	 * Validates that the passed array has at least the minimum size. If the
+	 * size of the array is below the minimum size an
+	 * {@link ArgumentSizeTooSmallException} for the passed argument is
 	 * thrown. The validation only occurs if argument validation is enabled.
 	 * 
 	 * @param <T> The array type.
@@ -784,7 +845,8 @@ private static final boolean argumentValidation;
 	 * @param c The array that will be validated.
 	 * @param minSize The minimum size.
 	 * 
-	 * @throws ArgumentSizeTooSmallException If the array size is below minimum size.
+	 * @throws ArgumentSizeTooSmallException If the array size is below minimum
+	 * size.
 	 */
 	public static void validateMinSize(String argument, long[] v, int minSize)
 	{
@@ -794,8 +856,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed array has at least the minimum size. If the size of the array is
-	 * below the minimum size an {@link ArgumentSizeTooSmallException} for the passed argument is
+	 * Validates that the passed array has at least the minimum size. If the
+	 * size of the array is below the minimum size an
+	 * {@link ArgumentSizeTooSmallException} for the passed argument is
 	 * thrown. The validation only occurs if argument validation is enabled.
 	 * 
 	 * @param <T> The array type.
@@ -804,7 +867,8 @@ private static final boolean argumentValidation;
 	 * @param c The array that will be validated.
 	 * @param minSize The minimum size.
 	 * 
-	 * @throws ArgumentSizeTooSmallException If the array size is below minimum size.
+	 * @throws ArgumentSizeTooSmallException If the array size is below minimum
+	 * size.
 	 */
 	public static void validateMinSize(String argument, float[] v, int minSize)
 	{
@@ -814,8 +878,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed array has at least the minimum size. If the size of the array is
-	 * below the minimum size an {@link ArgumentSizeTooSmallException} for the passed argument is
+	 * Validates that the passed array has at least the minimum size. If the
+	 * size of the array is below the minimum size an
+	 * {@link ArgumentSizeTooSmallException} for the passed argument is
 	 * thrown. The validation only occurs if argument validation is enabled.
 	 * 
 	 * @param <T> The array type.
@@ -824,7 +889,8 @@ private static final boolean argumentValidation;
 	 * @param c The array that will be validated.
 	 * @param minSize The minimum size.
 	 * 
-	 * @throws ArgumentSizeTooSmallException If the array size is below minimum size.
+	 * @throws ArgumentSizeTooSmallException If the array size is below minimum
+	 * size.
 	 */
 	public static void validateMinSize(String argument, double[] v, int minSize)
 	{
@@ -834,8 +900,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed array has at least the minimum size. If the size of the array is
-	 * below the minimum size an {@link ArgumentSizeTooSmallException} for the passed argument is
+	 * Validates that the passed array has at least the minimum size. If the
+	 * size of the array is below the minimum size an
+	 * {@link ArgumentSizeTooSmallException} for the passed argument is
 	 * thrown. The validation only occurs if argument validation is enabled.
 	 * 
 	 * @param <T> The array type.
@@ -844,7 +911,8 @@ private static final boolean argumentValidation;
 	 * @param c The array that will be validated.
 	 * @param minSize The minimum size.
 	 * 
-	 * @throws ArgumentSizeTooSmallException If the array size is below minimum size.
+	 * @throws ArgumentSizeTooSmallException If the array size is below minimum
+	 * size.
 	 */
 	public static void validateMinSize(String argument, char[] v, int minSize)
 	{
@@ -854,8 +922,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed array has at least the minimum size. If the size of the array is
-	 * below the minimum size an {@link ArgumentSizeTooSmallException} for the passed argument is
+	 * Validates that the passed array has at least the minimum size. If the
+	 * size of the array is below the minimum size an
+	 * {@link ArgumentSizeTooSmallException} for the passed argument is
 	 * thrown. The validation only occurs if argument validation is enabled.
 	 * 
 	 * @param <T> The array type.
@@ -864,7 +933,8 @@ private static final boolean argumentValidation;
 	 * @param c The array that will be validated.
 	 * @param minSize The minimum size.
 	 * 
-	 * @throws ArgumentSizeTooSmallException If the array size is below minimum size.
+	 * @throws ArgumentSizeTooSmallException If the array size is below minimum
+	 * size.
 	 */
 	public static void validateMinSize(String argument, boolean[] v, int minSize)
 	{
@@ -874,15 +944,17 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed collection has at least the minimum size. If the size of the
-	 * collection is below the minimum size an {@link ArgumentSizeTooSmallException} for the passed
-	 * argument is thrown. The validation only occurs if argument validation is enabled.
+	 * Validates that the passed collection has at least the minimum size.
+	 * If the collection of the collection is below the minimum size an
+	 * {@link ArgumentSizeTooSmallException} for the passed argument is thrown.
+	 * The validation only occurs if argument validation is enabled.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param c The collection that will be validated.
 	 * @param minSize The minimum size.
 	 * 
-	 * @throws ArgumentSizeTooSmallException If the array size is below minimum size.
+	 * @throws ArgumentSizeTooSmallException If the array size is below minimum
+	 * size.
 	 */
 	public static void validateMinSize(String argument, Collection<?> c, int minSize)
 	{
@@ -892,8 +964,8 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is not null. If it is null an {@link ArgumentNullException}
-	 * for the passed argument is thrown.
+	 * Validates that the passed value is not null. If it is null an
+	 * {@link ArgumentNullException} for the passed argument is thrown.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
@@ -906,16 +978,19 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is within the range of passed min value to passed max value
-	 * with the min and max value being part of the range. If the value is outside of the range an
-	 * {@link ArgumentValueOutOfRangeException} for the passed argument is thrown.
+	 * Validates that the passed value is within the range of passed min value
+	 * to passed max value with the min and max value being part of the range.
+	 * If the value is outside of the range an
+	 * {@link ArgumentValueOutOfRangeException} for the passed argument is
+	 * thrown.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
 	 * @param min The inclusive minimum value for the range.
 	 * @param max The inclusive maximum value for the range.
 	 * 
-	 * @throws ArgumentValueOutOfRangeException If the value is outside of the range.
+	 * @throws ArgumentValueOutOfRangeException If the value is outside of the
+	 * range.
 	 */
 	public static void inRange(String argument, byte v, byte min, byte max)
 	{
@@ -923,16 +998,19 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is within the range of passed min value to passed max value
-	 * with the min and max value being part of the range. If the value is outside of the range an
-	 * {@link ArgumentValueOutOfRangeException} for the passed argument is thrown.
+	 * Validates that the passed value is within the range of passed min value
+	 * to passed max value with the min and max value being part of the range.
+	 * If the value is outside of the range an
+	 * {@link ArgumentValueOutOfRangeException} for the passed argument is
+	 * thrown.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
 	 * @param min The inclusive minimum value for the range.
 	 * @param max The inclusive maximum value for the range.
 	 * 
-	 * @throws ArgumentValueOutOfRangeException If the value is outside of the range.
+	 * @throws ArgumentValueOutOfRangeException If the value is outside of the
+	 * range.
 	 */
 	public static void inRange(String argument, short v, short min, short max)
 	{
@@ -940,16 +1018,19 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is within the range of passed min value to passed max value
-	 * with the min and max value being part of the range. If the value is outside of the range an
-	 * {@link ArgumentValueOutOfRangeException} for the passed argument is thrown.
+	 * Validates that the passed value is within the range of passed min value
+	 * to passed max value with the min and max value being part of the range.
+	 * If the value is outside of the range an
+	 * {@link ArgumentValueOutOfRangeException} for the passed argument is
+	 * thrown.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
 	 * @param min The inclusive minimum value for the range.
 	 * @param max The inclusive maximum value for the range.
 	 * 
-	 * @throws ArgumentValueOutOfRangeException If the value is outside of the range.
+	 * @throws ArgumentValueOutOfRangeException If the value is outside of the
+	 * range.
 	 */
 	public static void inRange(String argument, int v, int min, int max)
 	{
@@ -957,16 +1038,19 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is within the range of passed min value to passed max value
-	 * with the min and max value being part of the range. If the value is outside of the range an
-	 * {@link ArgumentValueOutOfRangeException} for the passed argument is thrown.
+	 * Validates that the passed value is within the range of passed min value
+	 * to passed max value with the min and max value being part of the range.
+	 * If the value is outside of the range an
+	 * {@link ArgumentValueOutOfRangeException} for the passed argument is
+	 * thrown.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
 	 * @param min The inclusive minimum value for the range.
 	 * @param max The inclusive maximum value for the range.
 	 * 
-	 * @throws ArgumentValueOutOfRangeException If the value is outside of the range.
+	 * @throws ArgumentValueOutOfRangeException If the value is outside of the
+	 * range.
 	 */
 	public static void inRange(String argument, long v, long min, long max)
 	{
@@ -974,16 +1058,19 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is within the range of passed min value to passed max value
-	 * with the min and max value being part of the range. If the value is outside of the range an
-	 * {@link ArgumentValueOutOfRangeException} for the passed argument is thrown.
+	 * Validates that the passed value is within the range of passed min value
+	 * to passed max value with the min and max value being part of the range.
+	 * If the value is outside of the range an
+	 * {@link ArgumentValueOutOfRangeException} for the passed argument is
+	 * thrown.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
 	 * @param min The inclusive minimum value for the range.
 	 * @param max The inclusive maximum value for the range.
 	 * 
-	 * @throws ArgumentValueOutOfRangeException If the value is outside of the range.
+	 * @throws ArgumentValueOutOfRangeException If the value is outside of the
+	 * range.
 	 */
 	public static void inRange(String argument, float v, float min, float max)
 	{
@@ -991,16 +1078,19 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is within the range of passed min value to passed max value
-	 * with the min and max value being part of the range. If the value is outside of the range an
-	 * {@link ArgumentValueOutOfRangeException} for the passed argument is thrown.
+	 * Validates that the passed value is within the range of passed min value
+	 * to passed max value with the min and max value being part of the range.
+	 * If the value is outside of the range an
+	 * {@link ArgumentValueOutOfRangeException} for the passed argument is
+	 * thrown.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
 	 * @param min The inclusive minimum value for the range.
 	 * @param max The inclusive maximum value for the range.
 	 * 
-	 * @throws ArgumentValueOutOfRangeException If the value is outside of the range.
+	 * @throws ArgumentValueOutOfRangeException If the value is outside of the
+	 * range.
 	 */
 	public static void inRange(String argument, double v, double min, double max)
 	{
@@ -1008,16 +1098,19 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is within the range of passed min value to passed max value
-	 * with the min and max value being part of the range. If the value is outside of the range an
-	 * {@link ArgumentValueOutOfRangeException} for the passed argument is thrown.
+	 * Validates that the passed value is within the range of passed min value
+	 * to passed max value with the min and max value being part of the range.
+	 * If the value is outside of the range an
+	 * {@link ArgumentValueOutOfRangeException} for the passed argument is
+	 * thrown.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
 	 * @param min The inclusive minimum value for the range.
 	 * @param max The inclusive maximum value for the range.
 	 * 
-	 * @throws ArgumentValueOutOfRangeException If the value is outside of the range.
+	 * @throws ArgumentValueOutOfRangeException If the value is outside of the
+	 * range.
 	 */
 	public static void inRange(String argument, BigDecimal v, BigDecimal min, BigDecimal max)
 	{
@@ -1025,16 +1118,19 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is within the range of passed min value to passed max value
-	 * with the min and max value being part of the range. If the value is outside of the range an
-	 * {@link ArgumentValueOutOfRangeException} for the passed argument is thrown.
+	 * Validates that the passed value is within the range of passed min value
+	 * to passed max value with the min and max value being part of the range.
+	 * If the value is outside of the range an
+	 * {@link ArgumentValueOutOfRangeException} for the passed argument is
+	 * thrown.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
 	 * @param min The inclusive minimum value for the range.
 	 * @param max The inclusive maximum value for the range.
 	 * 
-	 * @throws ArgumentValueOutOfRangeException If the value is outside of the range.
+	 * @throws ArgumentValueOutOfRangeException If the value is outside of the
+	 * range.
 	 */
 	public static void inRange(String argument, BigInteger v, BigInteger min, BigInteger max)
 	{
@@ -1042,8 +1138,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is at least the passed min value. If the value is below the
-	 * min value an {@link ArgumentValueTooSmallException} for the passed argument is thrown.
+	 * Validates that the passed value is at least the passed min value. If the
+	 * value is below the min value an {@link ArgumentValueTooSmallException}
+	 * for the passed argument is thrown.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
@@ -1057,8 +1154,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is at least the passed min value. If the value is below the
-	 * min value an {@link ArgumentValueTooSmallException} for the passed argument is thrown.
+	 * Validates that the passed value is at least the passed min value. If the
+	 * value is below the min value an {@link ArgumentValueTooSmallException}
+	 * for the passed argument is thrown.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
@@ -1072,8 +1170,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is at least the passed min value. If the value is below the
-	 * min value an {@link ArgumentValueTooSmallException} for the passed argument is thrown.
+	 * Validates that the passed value is at least the passed min value. If the
+	 * value is below the min value an {@link ArgumentValueTooSmallException}
+	 * for the passed argument is thrown.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
@@ -1087,8 +1186,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is at least the passed min value. If the value is below the
-	 * min value an {@link ArgumentValueTooSmallException} for the passed argument is thrown.
+	 * Validates that the passed value is at least the passed min value. If the
+	 * value is below the min value an {@link ArgumentValueTooSmallException}
+	 * for the passed argument is thrown.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
@@ -1102,8 +1202,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is at least the passed min value. If the value is below the
-	 * min value an {@link ArgumentValueTooSmallException} for the passed argument is thrown.
+	 * Validates that the passed value is at least the passed min value. If the
+	 * value is below the min value an {@link ArgumentValueTooSmallException}
+	 * for the passed argument is thrown.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
@@ -1117,8 +1218,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is at least the passed min value. If the value is below the
-	 * min value an {@link ArgumentValueTooSmallException} for the passed argument is thrown.
+	 * Validates that the passed value is at least the passed min value. If the
+	 * value is below the min value an {@link ArgumentValueTooSmallException}
+	 * for the passed argument is thrown.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
@@ -1132,8 +1234,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is at least the passed min value. If the value is below the
-	 * min value an {@link ArgumentValueTooSmallException} for the passed argument is thrown.
+	 * Validates that the passed value is at least the passed min value. If the
+	 * value is below the min value an {@link ArgumentValueTooSmallException}
+	 * for the passed argument is thrown.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
@@ -1147,8 +1250,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is at least the passed min value. If the value is below the
-	 * min value an {@link ArgumentValueTooSmallException} for the passed argument is thrown.
+	 * Validates that the passed value is at least the passed min value. If the
+	 * value is below the min value an {@link ArgumentValueTooSmallException}
+	 * for the passed argument is thrown.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
@@ -1162,8 +1266,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is at most the passed max value. If the value is above the
-	 * max value an {@link ArgumentValueTooBigException} for the passed argument is thrown.
+	 * Validates that the passed value is at most the passed max value. If the
+	 * value is above the max value an {@link ArgumentValueTooBigException} for
+	 * the passed argument is thrown.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
@@ -1177,8 +1282,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is at most the passed max value. If the value is above the
-	 * max value an {@link ArgumentValueTooBigException} for the passed argument is thrown.
+	 * Validates that the passed value is at most the passed max value. If the
+	 * value is above the max value an {@link ArgumentValueTooBigException} for
+	 * the passed argument is thrown.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
@@ -1192,8 +1298,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is at most the passed max value. If the value is above the
-	 * max value an {@link ArgumentValueTooBigException} for the passed argument is thrown.
+	 * Validates that the passed value is at most the passed max value. If the
+	 * value is above the max value an {@link ArgumentValueTooBigException} for
+	 * the passed argument is thrown.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
@@ -1207,8 +1314,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is at most the passed max value. If the value is above the
-	 * max value an {@link ArgumentValueTooBigException} for the passed argument is thrown.
+	 * Validates that the passed value is at most the passed max value. If the
+	 * value is above the max value an {@link ArgumentValueTooBigException} for
+	 * the passed argument is thrown.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
@@ -1222,8 +1330,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is at most the passed max value. If the value is above the
-	 * max value an {@link ArgumentValueTooBigException} for the passed argument is thrown.
+	 * Validates that the passed value is at most the passed max value. If the
+	 * value is above the max value an {@link ArgumentValueTooBigException} for
+	 * the passed argument is thrown.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
@@ -1237,8 +1346,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is at most the passed max value. If the value is above the
-	 * max value an {@link ArgumentValueTooBigException} for the passed argument is thrown.
+	 * Validates that the passed value is at most the passed max value. If the
+	 * value is above the max value an {@link ArgumentValueTooBigException} for
+	 * the passed argument is thrown.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
@@ -1252,8 +1362,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is at most the passed max value. If the value is above the
-	 * max value an {@link ArgumentValueTooBigException} for the passed argument is thrown.
+	 * Validates that the passed value is at most the passed max value. If the
+	 * value is above the max value an {@link ArgumentValueTooBigException} for
+	 * the passed argument is thrown.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
@@ -1267,8 +1378,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed value is at most the passed max value. If the value is above the
-	 * max value an {@link ArgumentValueTooBigException} for the passed argument is thrown.
+	 * Validates that the passed value is at most the passed max value. If the
+	 * value is above the max value an {@link ArgumentValueTooBigException} for
+	 * the passed argument is thrown.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param v The value that will be validated.
@@ -1282,9 +1394,10 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed array has the expected size. If the size of the array differs from
-	 * the expected size an {@link UnexpectedArgumentSizeException} for the passed argument is
-	 * thrown.
+	 * Validates that the passed array has the expected size. If the size of the
+	 * array differs from the expected size an
+	 * {@link UnexpectedArgumentSizeException} for the passed argument is
+	 *  thrown.
 	 * 
 	 * @param <T> The array type.
 	 * 
@@ -1292,7 +1405,8 @@ private static final boolean argumentValidation;
 	 * @param c The array that will be validated.
 	 * @param expectedSize The expected size.
 	 * 
-	 * @throws UnexpectedArgumentSizeException If the array size differs from the expected size.
+	 * @throws UnexpectedArgumentSizeException If the array size differs from
+	 * the expected size.
 	 */
 	public static <T> void expectSize(String argument, T[] c, int expectedSize)
 	{
@@ -1300,8 +1414,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed array has the expected size. If the size of the array differs from
-	 * the expected size an {@link UnexpectedArgumentSizeException} for the passed argument is
+	 * Validates that the passed array has the expected size. If the size of the
+	 * array differs from the expected size an
+	 * {@link UnexpectedArgumentSizeException} for the passed argument is
 	 * thrown.
 	 * 
 	 * @param <T> The array type.
@@ -1310,7 +1425,8 @@ private static final boolean argumentValidation;
 	 * @param c The array that will be validated.
 	 * @param expectedSize The expected size.
 	 * 
-	 * @throws UnexpectedArgumentSizeException If the array size differs from the expected size.
+	 * @throws UnexpectedArgumentSizeException If the array size differs from
+	 * the expected size.
 	 */
 	public static void expectSize(String argument, byte[] c, int expectedSize)
 	{
@@ -1318,8 +1434,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed array has the expected size. If the size of the array differs from
-	 * the expected size an {@link UnexpectedArgumentSizeException} for the passed argument is
+	 * Validates that the passed array has the expected size. If the size of the
+	 * array differs from the expected size an
+	 * {@link UnexpectedArgumentSizeException} for the passed argument is
 	 * thrown.
 	 * 
 	 * @param <T> The array type.
@@ -1328,7 +1445,8 @@ private static final boolean argumentValidation;
 	 * @param c The array that will be validated.
 	 * @param expectedSize The expected size.
 	 * 
-	 * @throws UnexpectedArgumentSizeException If the array size differs from the expected size.
+	 * @throws UnexpectedArgumentSizeException If the array size differs from
+	 * the expected size.
 	 */
 	public static void expectSize(String argument, short[] c, int expectedSize)
 	{
@@ -1336,8 +1454,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed array has the expected size. If the size of the array differs from
-	 * the expected size an {@link UnexpectedArgumentSizeException} for the passed argument is
+	 * Validates that the passed array has the expected size. If the size of the
+	 * array differs from the expected size an
+	 * {@link UnexpectedArgumentSizeException} for the passed argument is
 	 * thrown.
 	 * 
 	 * @param <T> The array type.
@@ -1346,7 +1465,8 @@ private static final boolean argumentValidation;
 	 * @param c The array that will be validated.
 	 * @param expectedSize The expected size.
 	 * 
-	 * @throws UnexpectedArgumentSizeException If the array size differs from the expected size.
+	 * @throws UnexpectedArgumentSizeException If the array size differs from
+	 * the expected size.
 	 */
 	public static void expectSize(String argument, int[] c, int expectedSize)
 	{
@@ -1354,8 +1474,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed array has the expected size. If the size of the array differs from
-	 * the expected size an {@link UnexpectedArgumentSizeException} for the passed argument is
+	 * Validates that the passed array has the expected size. If the size of the
+	 * array differs from the expected size an
+	 * {@link UnexpectedArgumentSizeException} for the passed argument is
 	 * thrown.
 	 * 
 	 * @param <T> The array type.
@@ -1364,7 +1485,8 @@ private static final boolean argumentValidation;
 	 * @param c The array that will be validated.
 	 * @param expectedSize The expected size.
 	 * 
-	 * @throws UnexpectedArgumentSizeException If the array size differs from the expected size.
+	 * @throws UnexpectedArgumentSizeException If the array size differs from
+	 * the expected size.
 	 */
 	public static void expectSize(String argument, long[] c, int expectedSize)
 	{
@@ -1372,8 +1494,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed array has the expected size. If the size of the array differs from
-	 * the expected size an {@link UnexpectedArgumentSizeException} for the passed argument is
+	 * Validates that the passed array has the expected size. If the size of the
+	 * array differs from the expected size an
+	 * {@link UnexpectedArgumentSizeException} for the passed argument is
 	 * thrown.
 	 * 
 	 * @param <T> The array type.
@@ -1382,7 +1505,8 @@ private static final boolean argumentValidation;
 	 * @param c The array that will be validated.
 	 * @param expectedSize The expected size.
 	 * 
-	 * @throws UnexpectedArgumentSizeException If the array size differs from the expected size.
+	 * @throws UnexpectedArgumentSizeException If the array size differs from
+	 * the expected size.
 	 */
 	public static void expectSize(String argument, float[] c, int expectedSize)
 	{
@@ -1390,8 +1514,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed array has the expected size. If the size of the array differs from
-	 * the expected size an {@link UnexpectedArgumentSizeException} for the passed argument is
+	 * Validates that the passed array has the expected size. If the size of the
+	 * array differs from the expected size an
+	 * {@link UnexpectedArgumentSizeException} for the passed argument is
 	 * thrown.
 	 * 
 	 * @param <T> The array type.
@@ -1400,7 +1525,8 @@ private static final boolean argumentValidation;
 	 * @param c The array that will be validated.
 	 * @param expectedSize The expected size.
 	 * 
-	 * @throws UnexpectedArgumentSizeException If the array size differs from the expected size.
+	 * @throws UnexpectedArgumentSizeException If the array size differs from
+	 * the expected size.
 	 */
 	public static void expectSize(String argument, double[] c, int expectedSize)
 	{
@@ -1408,8 +1534,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed array has the expected size. If the size of the array differs from
-	 * the expected size an {@link UnexpectedArgumentSizeException} for the passed argument is
+	 * Validates that the passed array has the expected size. If the size of the
+	 * array differs from the expected size an
+	 * {@link UnexpectedArgumentSizeException} for the passed argument is
 	 * thrown.
 	 * 
 	 * @param <T> The array type.
@@ -1418,7 +1545,8 @@ private static final boolean argumentValidation;
 	 * @param c The array that will be validated.
 	 * @param expectedSize The expected size.
 	 * 
-	 * @throws UnexpectedArgumentSizeException If the array size differs from the expected size.
+	 * @throws UnexpectedArgumentSizeException If the array size differs from
+	 * the expected size.
 	 */
 	public static void expectSize(String argument, char[] c, int expectedSize)
 	{
@@ -1426,8 +1554,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed array has the expected size. If the size of the array differs from
-	 * the expected size an {@link UnexpectedArgumentSizeException} for the passed argument is
+	 * Validates that the passed array has the expected size. If the size of the
+	 * array differs from the expected size an
+	 * {@link UnexpectedArgumentSizeException} for the passed argument is
 	 * thrown.
 	 * 
 	 * @param <T> The array type.
@@ -1436,7 +1565,8 @@ private static final boolean argumentValidation;
 	 * @param c The array that will be validated.
 	 * @param expectedSize The expected size.
 	 * 
-	 * @throws UnexpectedArgumentSizeException If the array size differs from the expected size.
+	 * @throws UnexpectedArgumentSizeException If the array size differs from
+	 * the expected size.
 	 */
 	public static void expectSize(String argument, boolean[] c, int expectedSize)
 	{
@@ -1444,15 +1574,17 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed collection has the expected size. If the size of the collection
-	 * differs from the expected size an {@link UnexpectedArgumentSizeException} for the passed
-	 * argument is thrown.
+	 * Validates that the passed collection has the expected size. If the size
+	 * of the collection differs from the expected size an
+	 * {@link UnexpectedArgumentSizeException} for the passed argument is
+	 * thrown.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param c The collection that will be validated.
 	 * @param expectedSize The expected size.
 	 * 
-	 * @throws UnexpectedArgumentSizeException If the array size differs from the expected size.
+	 * @throws UnexpectedArgumentSizeException If the array size differs from
+	 * the expected size.
 	 */
 	public static void expectSize(String argument, Collection<?> c, int expectedSize)
 	{
@@ -1462,9 +1594,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed array has at least the minimum size. If the size of the array is
-	 * below the minimum size an {@link ArgumentSizeTooSmallException} for the passed argument is
-	 * thrown.
+	 * Validates that the passed array has at least the minimum size. If the
+	 * size of the array is below the minimum size an
+	 * {@link ArgumentSizeTooSmallException} for the passed argument is thrown.
 	 * 
 	 * @param <T> The array type.
 	 * 
@@ -1472,7 +1604,8 @@ private static final boolean argumentValidation;
 	 * @param c The array that will be validated.
 	 * @param minSize The minimum size.
 	 * 
-	 * @throws ArgumentSizeTooSmallException If the array size is below minimum size.
+	 * @throws ArgumentSizeTooSmallException If the array size is below minimum
+	 * size.
 	 */
 	public static <T> void minSize(String argument, T[] c, int minSize)
 	{
@@ -1480,9 +1613,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed array has at least the minimum size. If the size of the array is
-	 * below the minimum size an {@link ArgumentSizeTooSmallException} for the passed argument is
-	 * thrown.
+	 * Validates that the passed array has at least the minimum size. If the
+	 * size of the array is below the minimum size an
+	 * {@link ArgumentSizeTooSmallException} for the passed argument is thrown.
 	 * 
 	 * @param <T> The array type.
 	 * 
@@ -1490,7 +1623,8 @@ private static final boolean argumentValidation;
 	 * @param c The array that will be validated.
 	 * @param minSize The minimum size.
 	 * 
-	 * @throws ArgumentSizeTooSmallException If the array size is below minimum size.
+	 * @throws ArgumentSizeTooSmallException If the array size is below minimum
+	 * size.
 	 */
 	public static void minSize(String argument, byte[] c, int minSize)
 	{
@@ -1498,9 +1632,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed array has at least the minimum size. If the size of the array is
-	 * below the minimum size an {@link ArgumentSizeTooSmallException} for the passed argument is
-	 * thrown.
+	 * Validates that the passed array has at least the minimum size. If the
+	 * size of the array is below the minimum size an
+	 * {@link ArgumentSizeTooSmallException} for the passed argument is thrown.
 	 * 
 	 * @param <T> The array type.
 	 * 
@@ -1508,7 +1642,8 @@ private static final boolean argumentValidation;
 	 * @param c The array that will be validated.
 	 * @param minSize The minimum size.
 	 * 
-	 * @throws ArgumentSizeTooSmallException If the array size is below minimum size.
+	 * @throws ArgumentSizeTooSmallException If the array size is below minimum
+	 * size.
 	 */
 	public static void minSize(String argument, short[] c, int minSize)
 	{
@@ -1516,9 +1651,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed array has at least the minimum size. If the size of the array is
-	 * below the minimum size an {@link ArgumentSizeTooSmallException} for the passed argument is
-	 * thrown.
+	 * Validates that the passed array has at least the minimum size. If the
+	 * size of the array is below the minimum size an
+	 * {@link ArgumentSizeTooSmallException} for the passed argument is thrown.
 	 * 
 	 * @param <T> The array type.
 	 * 
@@ -1526,7 +1661,8 @@ private static final boolean argumentValidation;
 	 * @param c The array that will be validated.
 	 * @param minSize The minimum size.
 	 * 
-	 * @throws ArgumentSizeTooSmallException If the array size is below minimum size.
+	 * @throws ArgumentSizeTooSmallException If the array size is below minimum
+	 * size.
 	 */
 	public static void minSize(String argument, int[] c, int minSize)
 	{
@@ -1534,9 +1670,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed array has at least the minimum size. If the size of the array is
-	 * below the minimum size an {@link ArgumentSizeTooSmallException} for the passed argument is
-	 * thrown.
+	 * Validates that the passed array has at least the minimum size. If the
+	 * size of the array is below the minimum size an
+	 * {@link ArgumentSizeTooSmallException} for the passed argument is thrown.
 	 * 
 	 * @param <T> The array type.
 	 * 
@@ -1544,7 +1680,8 @@ private static final boolean argumentValidation;
 	 * @param c The array that will be validated.
 	 * @param minSize The minimum size.
 	 * 
-	 * @throws ArgumentSizeTooSmallException If the array size is below minimum size.
+	 * @throws ArgumentSizeTooSmallException If the array size is below minimum
+	 * size.
 	 */
 	public static void minSize(String argument, long[] c, int minSize)
 	{
@@ -1552,9 +1689,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed array has at least the minimum size. If the size of the array is
-	 * below the minimum size an {@link ArgumentSizeTooSmallException} for the passed argument is
-	 * thrown.
+	 * Validates that the passed array has at least the minimum size. If the
+	 * size of the array is below the minimum size an
+	 * {@link ArgumentSizeTooSmallException} for the passed argument is thrown.
 	 * 
 	 * @param <T> The array type.
 	 * 
@@ -1562,7 +1699,8 @@ private static final boolean argumentValidation;
 	 * @param c The array that will be validated.
 	 * @param minSize The minimum size.
 	 * 
-	 * @throws ArgumentSizeTooSmallException If the array size is below minimum size.
+	 * @throws ArgumentSizeTooSmallException If the array size is below minimum
+	 * size.
 	 */
 	public static void minSize(String argument, float[] c, int minSize)
 	{
@@ -1570,9 +1708,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed array has at least the minimum size. If the size of the array is
-	 * below the minimum size an {@link ArgumentSizeTooSmallException} for the passed argument is
-	 * thrown.
+	 * Validates that the passed array has at least the minimum size. If the
+	 * size of the array is below the minimum size an
+	 * {@link ArgumentSizeTooSmallException} for the passed argument is thrown.
 	 * 
 	 * @param <T> The array type.
 	 * 
@@ -1580,7 +1718,8 @@ private static final boolean argumentValidation;
 	 * @param c The array that will be validated.
 	 * @param minSize The minimum size.
 	 * 
-	 * @throws ArgumentSizeTooSmallException If the array size is below minimum size.
+	 * @throws ArgumentSizeTooSmallException If the array size is below minimum
+	 * size.
 	 */
 	public static void minSize(String argument, double[] c, int minSize)
 	{
@@ -1588,9 +1727,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed array has at least the minimum size. If the size of the array is
-	 * below the minimum size an {@link ArgumentSizeTooSmallException} for the passed argument is
-	 * thrown.
+	 * Validates that the passed array has at least the minimum size. If the
+	 * size of the array is below the minimum size an
+	 * {@link ArgumentSizeTooSmallException} for the passed argument is thrown.
 	 * 
 	 * @param <T> The array type.
 	 * 
@@ -1598,7 +1737,8 @@ private static final boolean argumentValidation;
 	 * @param c The array that will be validated.
 	 * @param minSize The minimum size.
 	 * 
-	 * @throws ArgumentSizeTooSmallException If the array size is below minimum size.
+	 * @throws ArgumentSizeTooSmallException If the array size is below minimum
+	 * size.
 	 */
 	public static void minSize(String argument, char[] c, int minSize)
 	{
@@ -1606,9 +1746,9 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed array has at least the minimum size. If the size of the array is
-	 * below the minimum size an {@link ArgumentSizeTooSmallException} for the passed argument is
-	 * thrown.
+	 * Validates that the passed array has at least the minimum size. If the
+	 * size of the array is below the minimum size an
+	 * {@link ArgumentSizeTooSmallException} for the passed argument is thrown.
 	 * 
 	 * @param <T> The array type.
 	 * 
@@ -1616,7 +1756,8 @@ private static final boolean argumentValidation;
 	 * @param c The array that will be validated.
 	 * @param minSize The minimum size.
 	 * 
-	 * @throws ArgumentSizeTooSmallException If the array size is below minimum size.
+	 * @throws ArgumentSizeTooSmallException If the array size is below minimum
+	 * size.
 	 */
 	public static void minSize(String argument, boolean[] c, int minSize)
 	{
@@ -1624,15 +1765,16 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
-	 * Validates that the passed collection has at least the minimum size. If the size of the
-	 * collection is below the minimum size an {@link ArgumentSizeTooSmallException} for the passed
-	 * argument is thrown.
+	 * Validates that the passed collection has at least the minimum size.
+	 * If the size of the collection is below the minimum size an
+	 * {@link ArgumentSizeTooSmallException} for the passed argument is thrown.
 	 * 
 	 * @param argument The name of the argument that is validated.
 	 * @param c The collection that will be validated.
 	 * @param minSize The minimum size.
 	 * 
-	 * @throws ArgumentSizeTooSmallException If the array size is below minimum size.
+	 * @throws ArgumentSizeTooSmallException If the array size is below minimum
+	 * size.
 	 */
 	public static void minSize(String argument, Collection<?> c, int minSize)
 	{

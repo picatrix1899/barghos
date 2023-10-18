@@ -2,15 +2,16 @@ package org.barghos.validation.exception.argument;
 
 /**
  * Thrown to indicate that a function argument has a value which is out of the
- * expected range.
- * This extends {@link InvalidArgumentValueException} by the possibility to specify
- * and access also the minimum and maximum value outside of the message.
+ * expected range. This extends {@link InvalidArgumentValueException} by the
+ * possibility to specify and access also the minimum and maximum value outside
+ * of the message.
  */
 public class ArgumentValueOutOfRangeException extends InvalidArgumentValueException
 {
 	/**
 	 * This constant contains the current version of this class.
-	 * It is used to distinguish between different serialized versions of this class.
+	 * It is used to distinguish between different serialized versions of this
+	 * class.
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -31,8 +32,9 @@ public class ArgumentValueOutOfRangeException extends InvalidArgumentValueExcept
 	}
 	
 	/**
-	 * Creates a new instance of the exception with an argument name, the argument value and the
-	 * expected minimum and maximum values for the argument as additional information.
+	 * Creates a new instance of the exception with an argument name, the
+	 * argument value and the expected minimum and maximum values for the
+	 * argument as additional information.
 	 * 
 	 * @param argument The name of the argument that was out of range.
 	 * @param value The value of the argument.
@@ -49,8 +51,9 @@ public class ArgumentValueOutOfRangeException extends InvalidArgumentValueExcept
 	}
 	
 	/**
-	 * Creates a new instance of the exception with an argument name, the argument value, the
-	 * expected minimum and maximum values for the argument and a custom message as additional information.
+	 * Creates a new instance of the exception with an argument name, the
+	 * argument value, the expected minimum and maximum values for the argument
+	 * and a custom message as additional information.
 	 * 
 	 * @param argument The name of the argument that was out of range.
 	 * @param value The value of the argument.
@@ -68,7 +71,8 @@ public class ArgumentValueOutOfRangeException extends InvalidArgumentValueExcept
 	}
 	
 	/**
-	 * Returns the expected minimum value for the argument for which this exception was created for.
+	 * Returns the expected minimum value for the argument for which this
+	 * exception was created for.
 	 * 
 	 * @return The expected minimum value..
 	 */
@@ -78,7 +82,8 @@ public class ArgumentValueOutOfRangeException extends InvalidArgumentValueExcept
 	}
 	
 	/**
-	 * Returns the expected maximum value for the argument for which this exception was created for.
+	 * Returns the expected maximum value for the argument for which this
+	 * exception was created for.
 	 * 
 	 * @return The expected maximum value.
 	 */
@@ -88,7 +93,8 @@ public class ArgumentValueOutOfRangeException extends InvalidArgumentValueExcept
 	}
 	
 	/**
-	 * Returns if the expected minimum and maximum value bounds for the argument for which this exception was created for were specified.
+	 * Returns if the expected minimum and maximum value bounds for the argument
+	 * for which this exception was created for were specified.
 	 * 
 	 * @return True, if the expected minimum and maximum bounds were specified.
 	 */

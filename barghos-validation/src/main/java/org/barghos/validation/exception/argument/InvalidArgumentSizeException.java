@@ -1,15 +1,17 @@
 package org.barghos.validation.exception.argument;
 
 /**
- * Thrown to indicate that a function argument is a collection with an invalid or unexpected size.
- * This extends {@link InvalidArgumentException} by the possibility to specify
- * and access also the argument size outside of the message.
+ * Thrown to indicate that a function argument is a collection with an invalid
+ * or unexpected size. This extends {@link InvalidArgumentException} by the
+ * possibility to specify and access also the argument size outside of the
+ * message.
  */
 public class InvalidArgumentSizeException extends InvalidArgumentException
 {
 	/**
 	 * This constant contains the current version of this class.
-	 * It is used to distinguish between different serialized versions of this class.
+	 * It is used to distinguish between different serialized versions of this
+	 * class.
 	 */
 	private static final long serialVersionUID = 1L;
 	
@@ -28,7 +30,8 @@ public class InvalidArgumentSizeException extends InvalidArgumentException
 	}
 	
 	/**
-	 * Creates a new instance of the exception with an argument name and the argument size as additional information.
+	 * Creates a new instance of the exception with an argument name and the
+	 * argument size as additional information.
 	 * 
 	 * @param argument The name of the argument that was null.
 	 * @param size The size of the argument.
@@ -42,7 +45,8 @@ public class InvalidArgumentSizeException extends InvalidArgumentException
 	}
 	
 	/**
-	 * Creates a new instance of the exception with an argument name, the argument size and a custom message as additional information.
+	 * Creates a new instance of the exception with an argument name, the
+	 * argument size and a custom message as additional information.
 	 * 
 	 * @param argument The name of the argument that was null.
 	 * @param size The size of the argument.
@@ -57,7 +61,8 @@ public class InvalidArgumentSizeException extends InvalidArgumentException
 	}
 	
 	/**
-	 * Returns the size of the argument for which this exception was created for.
+	 * Returns the size of the argument for which this exception was created
+	 * for.
 	 * 
 	 * @return The argument size.
 	 */
@@ -67,7 +72,8 @@ public class InvalidArgumentSizeException extends InvalidArgumentException
 	}
 	
 	/**
-	 * Returns if the size of the argument was specified for which this exception was created for.
+	 * Returns if the size of the argument was specified for which this
+	 * exception was created for.
 	 * 
 	 * @return True, if the size was specified.
 	 */

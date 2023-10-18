@@ -1,16 +1,17 @@
 package org.barghos.validation.exception.argument;
 
 /**
- * Thrown to indicate that a function argument has a value which is below an expected
- * minimum.
- * This extends {@link InvalidArgumentValueException} by the possibility to specify
- * and access also the minimum value outside of the message.
+ * Thrown to indicate that a function argument has a value which is below an
+ * expected minimum. This extends {@link InvalidArgumentValueException} by the
+ * possibility to specify and access also the minimum value outside of the
+ * message.
  */
 public class ArgumentValueTooSmallException extends InvalidArgumentValueException
 {
 	/**
 	 * This constant contains the current version of this class.
-	 * It is used to distinguish between different serialized versions of this class.
+	 * It is used to distinguish between different serialized versions of this
+	 * class.
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -29,8 +30,9 @@ public class ArgumentValueTooSmallException extends InvalidArgumentValueExceptio
 	}
 	
 	/**
-	 * Creates a new instance of the exception with an argument name, the argument value and
-	 * the expected minimum value for the argument as additional information.
+	 * Creates a new instance of the exception with an argument name, the
+	 * argument value and the expected minimum value for the argument as
+	 * additional information.
 	 * 
 	 * @param argument The name of the argument that was out of range.
 	 * @param value The value of the argument.
@@ -45,8 +47,9 @@ public class ArgumentValueTooSmallException extends InvalidArgumentValueExceptio
 	}
 	
 	/**
-	 * Creates a new instance of the exception with an argument name, the argument value,
-	 * the expected minimum value for the argument and a custom message as additional information.
+	 * Creates a new instance of the exception with an argument name, the
+	 * argument value, the expected minimum value for the argument and a custom
+	 * message as additional information.
 	 * 
 	 * @param argument The name of the argument that was out of range.
 	 * @param value The value of the argument.
@@ -62,7 +65,8 @@ public class ArgumentValueTooSmallException extends InvalidArgumentValueExceptio
 	}
 	
 	/**
-	 * Returns the expected minimum value for the argument for which this exception was created for.
+	 * Returns the expected minimum value for the argument for which this
+	 * exception was created for.
 	 * 
 	 * @return The expected minimum value.
 	 */
@@ -72,7 +76,8 @@ public class ArgumentValueTooSmallException extends InvalidArgumentValueExceptio
 	}
 	
 	/**
-	 * Returns if the expected minimum value for the argument for which this exception was created for was specified.
+	 * Returns if the expected minimum value for the argument for which this
+	 * exception was created for was specified.
 	 * 
 	 * @return True, if the expected minimum was specified.
 	 */
