@@ -3,8 +3,8 @@ package org.barghos.util.consumer;
 import org.barghos.validation.Validation;
 
 /**
- * Represents an operation that accepts three input arguments and returns no result.
- * {@link Consumer3} is expected to operate via side-effects.
+ * Represents an operation that accepts three input arguments and returns no
+ * result. {@link Consumer3} is expected to operate via side-effects.
  *
  * <p>
  * This is a functional interface whose functional method is {@link #accept}.
@@ -39,14 +39,15 @@ public interface Consumer3<A,B,C>
      * 
      * @param after The operation to perform after this operation.
      * 
-     * @return A new {@link Consumer3} performing this operation and the operation after.
+     * @return A new {@link Consumer3} performing this operation and the
+     * operation after.
      */
     default Consumer3<A,B,C> andThen(Consumer3<A,B,C> after)
     {
     	/*
     	 * The argument must not be null.
     	 */
-    	Validation.validateNotNull(after);
+    	Validation.validateNotNull("after", after);
     	
     	return (a, b, c) -> {accept(a, b, c); after.accept(a, b, c);};
     }
@@ -56,13 +57,17 @@ public interface Consumer3<A,B,C>
      * 
      * @param after The operations to perform after this operation.
      * 
-     * @return A new {@link Consumer3} performing this operation and the operations after.
+     * @return A new {@link Consumer3} performing this operation and the
+     * operations after.
      */
     @SuppressWarnings("unchecked")
 	default Consumer3<A,B,C> andThen(Consumer3<A,B,C>... after)
     {
+    	Validation.validateNotNull("after", after);
+    	
     	/*
-    	 * The argument array can be empty but must not be null. Also no entry must be null.
+    	 * The argument array can be empty but must not be null. Also no entry
+    	 * must be null.
     	 */
     	Validation.validateAllNotNull(after);
     	
@@ -81,14 +86,15 @@ public interface Consumer3<A,B,C>
      * 
      * @param after The operations to perform after this operation.
      * 
-     * @return A new {@link Consumer3} performing this operation and the operations after.
+     * @return A new {@link Consumer3} performing this operation and the
+     * operations after.
      */
 	default Consumer3<A,B,C> andThen(Iterable<Consumer3<A,B,C>> after)
     {
 		/*
     	 * The argument must not be null.
     	 */
-		Validation.validateNotNull(after);
+		Validation.validateNotNull("after", after);
 		
     	return (a, b, c) -> {accept(a, b, c); for(Consumer3<A,B,C> consumer : after) consumer.accept(a, b, c);};
     }
@@ -98,14 +104,15 @@ public interface Consumer3<A,B,C>
      * 
      * @param before The operation to perform before this operation.
      * 
-     * @return A new {@link Consumer3} performing the operation before and this operation.
+     * @return A new {@link Consumer3} performing the operation before and this
+     * operation.
      */
     default Consumer3<A,B,C> beforeThat(Consumer3<A,B,C> before)
     {
     	/*
     	 * The argument must not be null.
     	 */
-    	Validation.validateNotNull(before);
+    	Validation.validateNotNull("before", before);
     	
     	return (a, b, c) -> {before.accept(a, b, c); accept(a, b, c);};
     }
@@ -115,13 +122,17 @@ public interface Consumer3<A,B,C>
      * 
      * @param before The operations to perform before this operation.
      * 
-     * @return A new {@link Consumer3} performing the operations before and this operation.
+     * @return A new {@link Consumer3} performing the operations before and this
+     * operation.
      */
     @SuppressWarnings("unchecked")
     default Consumer3<A,B,C> beforeThat(Consumer3<A,B,C>... before)
     {
+    	Validation.validateNotNull("before", before);
+    	
     	/*
-    	 * The argument array can be empty but must not be null. Also no entry must be null.
+    	 * The argument array can be empty but must not be null. Also no entry
+    	 * must be null.
     	 */
     	Validation.validateAllNotNull(before);
     	
@@ -140,20 +151,22 @@ public interface Consumer3<A,B,C>
      * 
      * @param before The operations to perform before this operation.
      * 
-     * @return A new {@link Consumer3} performing the operations before and this operation.
+     * @return A new {@link Consumer3} performing the operations before and this
+     * operation.
      */
     default Consumer3<A,B,C> beforeThat(Iterable<Consumer3<A,B,C>> before)
     {
     	/*
     	 * The argument must not be null.
     	 */
-    	Validation.validateNotNull(before);
+    	Validation.validateNotNull("before", before);
     	
     	return (a, b, c) -> {for(Consumer3<A,B,C> consumer : before) consumer.accept(a, b, c); accept(a, b, c);};
     }
     
     /**
-     * Composes a, b, c new {@link Consumer3} performing the given operations in sequence.
+     * Composes a, b, c new {@link Consumer3} performing the given operations in
+     * sequence.
      * 
      * @param <A> The type of the first argument to the operation.
      * @param <B> The type of the second argument to the operation.
@@ -166,8 +179,11 @@ public interface Consumer3<A,B,C>
     @SuppressWarnings("unchecked")
 	static <A,B,C> Consumer3<A,B,C> inSequence(Consumer3<A,B,C>... consumers)
     {
+    	Validation.validateNotNull("consumers", consumers);
+    	
     	/*
-    	 * The argument array can be empty but must not be null. Also no entry must be null.
+    	 * The argument array can be empty but must not be null. Also no entry
+    	 * must be null.
     	 */
     	Validation.validateAllNotNull(consumers);
     	
@@ -185,7 +201,8 @@ public interface Consumer3<A,B,C>
     }
     
     /**
-     * Composes a, b, c new {@link Consumer3} performing the given operations in sequence.
+     * Composes a, b, c new {@link Consumer3} performing the given operations in
+     * sequence.
      * 
      * @param <A> The type of the first argument to the operation.
      * @param <B> The type of the second argument to the operation.
@@ -200,7 +217,7 @@ public interface Consumer3<A,B,C>
     	/*
     	 * The argument must not be null.
     	 */
-    	Validation.validateNotNull(consumers);
+    	Validation.validateNotNull("consumers",consumers);
     	
     	return (a, b, c) -> {for(Consumer3<A,B,C> consumer : consumers) consumer.accept(a, b, c);};
     }

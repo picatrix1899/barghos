@@ -1,11 +1,10 @@
 package org.barghos.util.consumer;
 
-import org.barghos.validation.Assert;
 import org.barghos.validation.Validation;
 
 /**
- * Represents an operation that accepts one input argument and returns no result.
- * {@link Consumer} is expected to operate via side-effects.
+ * Represents an operation that accepts one input argument and returns no
+ * result. {@link Consumer} is expected to operate via side-effects.
  *
  * <p>
  * This is a functional interface whose functional method is {@link #accept}.
@@ -36,11 +35,12 @@ public interface Consumer<A> extends java.util.function.Consumer<A>
      * 
      * @param after The operation to perform after this operation.
      * 
-     * @return A new {@link Consumer} performing this operation and the operation after.
+     * @return A new {@link Consumer} performing this operation and the
+     * operation after.
      */
     default Consumer<A> andThen(Consumer<A> after)
     {
-    	Assert.assertNotNull("after", after);
+    	Validation.validateNotNull("after", after);
     	
     	return (a) -> {accept(a); after.accept(a);};
     }
@@ -50,14 +50,16 @@ public interface Consumer<A> extends java.util.function.Consumer<A>
      * 
      * @param after The operations to perform after this operation.
      * 
-     * @return A new {@link Consumer} performing this operation and the operations after.
+     * @return A new {@link Consumer} performing this operation and the
+     * operations after.
      */
     @SuppressWarnings("unchecked")
 	default Consumer<A> andThen(Consumer<A>... after)
     {
-    	Assert.assertNotNull("after", after);
+    	Validation.validateNotNull("after", after);
     	/*
-    	 * The argument array can be empty but must not be null. Also no entry must be null.
+    	 * The argument array can be empty but must not be null. Also no entry
+    	 * must be null.
     	 */
     	Validation.validateAllNotNull(after);
     	
@@ -76,11 +78,12 @@ public interface Consumer<A> extends java.util.function.Consumer<A>
      * 
      * @param after The operations to perform after this operation.
      * 
-     * @return A new {@link Consumer} performing this operation and the operations after.
+     * @return A new {@link Consumer} performing this operation and the
+     * operations after.
      */
 	default Consumer<A> andThen(Iterable<Consumer<A>> after)
     {
-		Assert.assertNotNull("after", after);
+		Validation.validateNotNull("after", after);
 		
     	return (a) -> {accept(a); for(Consumer<A> consumer : after) consumer.accept(a);};
     }
@@ -90,11 +93,12 @@ public interface Consumer<A> extends java.util.function.Consumer<A>
      * 
      * @param before The operation to perform before this operation.
      * 
-     * @return A new {@link Consumer} performing the operation before and this operation.
+     * @return A new {@link Consumer} performing the operation before and this
+     * operation.
      */
     default Consumer<A> beforeThat(Consumer<A> before)
     {
-    	Assert.assertNotNull("before", before);
+    	Validation.validateNotNull("before", before);
     	
     	return (a) -> {before.accept(a); accept(a);};
     }
@@ -104,14 +108,16 @@ public interface Consumer<A> extends java.util.function.Consumer<A>
      * 
      * @param before The operations to perform before this operation.
      * 
-     * @return A new {@link Consumer} performing the operations before and this operation.
+     * @return A new {@link Consumer} performing the operations before and this
+     * operation.
      */
     @SuppressWarnings("unchecked")
     default Consumer<A> beforeThat(Consumer<A>... before)
     {
-    	Assert.assertNotNull("before", before);
+    	Validation.validateNotNull("before", before);
     	/*
-    	 * The argument array can be empty but must not be null. Also no entry must be null.
+    	 * The argument array can be empty but must not be null. Also no entry
+    	 * must be null.
     	 */
     	Validation.validateAllNotNull(before);
     	
@@ -130,17 +136,19 @@ public interface Consumer<A> extends java.util.function.Consumer<A>
      * 
      * @param before The operations to perform before this operation.
      * 
-     * @return A new {@link Consumer} performing the operations before and this operation.
+     * @return A new {@link Consumer} performing the operations before and this
+     * operation.
      */
     default Consumer<A> beforeThat(Iterable<Consumer<A>> before)
     {
-    	Assert.assertNotNull("before", before);
+    	Validation.validateNotNull("before", before);
     	
     	return (a) -> {for(Consumer<A> consumer : before) consumer.accept(a); accept(a);};
     }
     
     /**
-     * Composes a new {@link Consumer} performing the given operations in sequence.
+     * Composes a new {@link Consumer} performing the given operations in
+     * sequence.
      * 
      * @param <A> The type of the first argument to the operation.
      * 
@@ -151,9 +159,10 @@ public interface Consumer<A> extends java.util.function.Consumer<A>
     @SuppressWarnings("unchecked")
 	static <A> Consumer<A> inSequence(Consumer<A>... consumers)
     {
-    	Assert.assertNotNull("consumers", consumers);
+    	Validation.validateNotNull("consumers", consumers);
     	/*
-    	 * The argument array can be empty but must not be null. Also no entry must be null.
+    	 * The argument array can be empty but must not be null. Also no entry
+    	 * must be null.
     	 */
     	Validation.validateAllNotNull(consumers);
     	
@@ -171,7 +180,8 @@ public interface Consumer<A> extends java.util.function.Consumer<A>
     }
     
     /**
-     * Composes a new {@link Consumer} performing the given operations in sequence.
+     * Composes a new {@link Consumer} performing the given operations in
+     * sequence.
      * 
      * @param <A> The type of the first argument to the operation.
      * 
@@ -181,7 +191,7 @@ public interface Consumer<A> extends java.util.function.Consumer<A>
      */
     static <A> Consumer<A> inSequence(Iterable<Consumer<A>> consumers)
     {
-    	Assert.assertNotNull("consumers", consumers);
+    	Validation.validateNotNull("consumers", consumers);
     	
     	return (a) -> {for(Consumer<A> consumer : consumers) consumer.accept(a);};
     }
@@ -190,7 +200,7 @@ public interface Consumer<A> extends java.util.function.Consumer<A>
     @Override
     default Consumer<A> andThen(java.util.function.Consumer<? super A> after)
     {
-    	Assert.assertNotNull("after", after);
+    	Validation.validateNotNull("after", after);
     	
     	return (a) -> {accept(a); after.accept(a);};
     }
