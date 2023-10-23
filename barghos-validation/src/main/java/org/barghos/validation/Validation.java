@@ -3,12 +3,14 @@ package org.barghos.validation;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Collection;
+import java.util.List;
 
 import org.barghos.validation.exception.argument.ArgumentNullException;
 import org.barghos.validation.exception.argument.ArgumentSizeTooSmallException;
 import org.barghos.validation.exception.argument.ArgumentValueOutOfRangeException;
 import org.barghos.validation.exception.argument.ArgumentValueTooBigException;
 import org.barghos.validation.exception.argument.ArgumentValueTooSmallException;
+import org.barghos.validation.exception.argument.InvalidArgumentException;
 import org.barghos.validation.exception.argument.UnexpectedArgumentSizeException;
 
 public class Validation
@@ -964,6 +966,46 @@ private static final boolean argumentValidation;
 	}
 	
 	/**
+	 * Validates that no entry in the passed array is null.
+	 * If an entry is null an {@link InvalidArgumentException} for the passed
+	 * argument is thrown. The validation only occurs if argument validation is
+	 * enabled.
+	 * 
+	 * @param <T> The array type.
+	 * 
+	 * @param argument The name of the argument that is validated.
+	 * @param c The array that will be validated.
+	 * 
+	 * @throws InvalidArgumentException If an entry in the array is null.
+	 */
+	public static <T> void validateEntriesNotNull(String argument, T[] obj)
+	{
+		if(!argumentValidation) return;
+		
+		entriesNotNull(argument, obj);
+	}
+	
+	/**
+	 * Validates that no entry in the passed list is null.
+	 * If an entry is null an {@link InvalidArgumentException} for the passed
+	 * argument is thrown. The validation only occurs if argument validation is
+	 * enabled.
+	 * 
+	 * @param <T> The array type.
+	 * 
+	 * @param argument The name of the argument that is validated.
+	 * @param c The list that will be validated.
+	 * 
+	 * @throws InvalidArgumentException If an entry in the array is null.
+	 */
+	public static void validateEntriesNotNull(String argument, List<?> obj)
+	{
+		if(!argumentValidation) return;
+		
+		entriesNotNull(argument, obj);
+	}
+	
+	/**
 	 * Validates that the passed value is not null. If it is null an
 	 * {@link ArgumentNullException} for the passed argument is thrown.
 	 * 
@@ -1783,11 +1825,44 @@ private static final boolean argumentValidation;
 		if(size < minSize) throw new ArgumentSizeTooSmallException(argument, size, minSize);
 	}
 	
-	public static <T> void validateAllNotNull(T[] obj)
+	/**
+	 * Validates that no entry in the passed array is null.
+	 * If an entry is null an {@link InvalidArgumentException} for the passed
+	 * argument is thrown.
+	 * 
+	 * @param <T> The array type.
+	 * 
+	 * @param argument The name of the argument that is validated.
+	 * @param c The array that will be validated.
+	 * 
+	 * @throws InvalidArgumentException If an entry in the array is null.
+	 */
+	public static <T> void entriesNotNull(String argument, T[] c)
 	{
-		if(obj == null) throw new NullPointerException();
-
-		for(T entry : obj)
-			if(entry == null) throw new NullPointerException();
+		if(c == null) return;
+		
+		for(int i = 0; i < c.length; i++)
+			if(c[i] == null) throw new InvalidArgumentException(argument);
+	}
+	
+	/**
+	 * Validates that no entry in the passed list is null.
+	 * If an entry is null an {@link InvalidArgumentException} for the passed
+	 * argument is thrown.
+	 * 
+	 * @param <T> The array type.
+	 * 
+	 * @param argument The name of the argument that is validated.
+	 * @param c The list that will be validated.
+	 * 
+	 * @throws InvalidArgumentException If an entry in the array is null.
+	 */
+	public static void entriesNotNull(String argument, List<?> c)
+	{
+		if(c == null) return;
+		
+		int size = c.size();
+		for(int i = 0; i < size; i++)
+			if(c.get(i) == null) throw new InvalidArgumentException(argument);
 	}
 }
