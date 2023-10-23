@@ -3,12 +3,13 @@ package org.barghos.util.consumer;
 import org.barghos.validation.Validation;
 
 /**
- * Represents an operation that accepts four 1-dimensional array input arguments and returns no
- * result.
- * {@link Consumer4A} is expected to operate via side-effects.
+ * Represents an operation that accepts four 1-dimensional array input arguments
+ * and returns no result. {@link Consumer4A} is expected to operate via
+ * side-effects.
  *
  * <p>
- * This is a functional interface whose functional method is {@link #acceptArray}.
+ * This is a functional interface whose functional method is
+ * {@link #acceptArray}.
  * 
  * @param <A> The type of the first argument to the operation.
  * @param <B> The type of the second argument to the operation.
@@ -42,14 +43,12 @@ public interface Consumer4A<A,B,C,D>extends Consumer4<A[],B[],C[],D[]>
      * 
      * @param after The operation to perform after this operation.
      * 
-     * @return A new {@link Consumer4A} performing this operation and the operation after.
+     * @return A new {@link Consumer4A} performing this operation and the
+     * operation after.
      */
-    default Consumer4A<A,B,C,D> andThenArray(Consumer4A<A,B,C,D> after)
+    default Consumer4A<A,B,C,D> thenArray(Consumer4A<A,B,C,D> after)
     {
-    	/*
-    	 * The argument must not be null.
-    	 */
-    	Validation.validateNotNull(after);
+    	Validation.validateNotNull("after", after);
     	
     	return (a, b, c, d) -> {acceptArray(a, b, c, d); after.acceptArray(a, b, c, d);};
     }
@@ -59,16 +58,15 @@ public interface Consumer4A<A,B,C,D>extends Consumer4<A[],B[],C[],D[]>
      * 
      * @param after The operations to perform after this operation.
      * 
-     * @return A new {@link Consumer4A} performing this operation and the operations after.
+     * @return A new {@link Consumer4A} performing this operation and the
+     * operations after.
      */
 	@SuppressWarnings("unchecked")
-	default Consumer4A<A,B,C,D> andThenArray(Consumer4A<A,B,C,D>... after)
+	default Consumer4A<A,B,C,D> thenArray(Consumer4A<A,B,C,D>... after)
     {
-		/*
-    	 * The argument array can be empty but must not be null. Also no entry must be null.
-    	 */
-    	Validation.validateAllNotNull(after);
-    	
+		Validation.validateNotNull("after", after);
+		Validation.validateEntriesNotNull("after", after);
+		
     	/*
     	 * If no operations are passed return this operation.
     	 */
@@ -79,19 +77,42 @@ public interface Consumer4A<A,B,C,D>extends Consumer4<A[],B[],C[],D[]>
     	return (a, b, c, d) -> {acceptArray(a, b, c, d); for(Consumer4A<A,B,C,D> consumer : after) consumer.acceptArray(a, b, c, d);};
     }
     
+	/**
+     * Performs the given operations in sequence after this operation.
+     * 
+     * @param after The operations to perform after this operation.
+     * 
+     * @return A new {@link Consumer4A} performing this operation and the
+     * operations after.
+     */
+	default Consumer4A<A,B,C,D> thenArray(java.util.List<Consumer4A<A,B,C,D>> after)
+    {
+		Validation.validateNotNull("after", after);
+		Validation.validateEntriesNotNull("after", after);
+		
+		int size = after.size();
+		
+    	/*
+    	 * If no operations are passed return this operation.
+    	 */
+    	if(size == 0) return this;
+    	
+    	if(size == 1) return (a, b, c, d) -> {acceptArray(a, b, c, d); after.get(0).acceptArray(a, b, c, d);};
+
+    	return (a, b, c, d) -> {acceptArray(a, b, c, d); for(Consumer4A<A,B,C,D> consumer : after) consumer.acceptArray(a, b, c, d);};
+    }
+	
     /**
      * Performs the given operations in sequence after this operation.
      * 
      * @param after The operations to perform after this operation.
      * 
-     * @return A new {@link Consumer4A} performing this operation and the operations after.
+     * @return A new {@link Consumer4A} performing this operation and the
+     * operations after.
      */
-	default Consumer4A<A,B,C,D> andThenArray(Iterable<Consumer4A<A,B,C,D>> after)
+	default Consumer4A<A,B,C,D> thenArray(Iterable<Consumer4A<A,B,C,D>> after)
     {
-		/*
-    	 * The argument must not be null.
-    	 */
-		Validation.validateNotNull(after);
+		Validation.validateNotNull("after", after);
 		
     	return (a, b, c, d) -> {acceptArray(a, b, c, d); for(Consumer4A<A,B,C,D> consumer : after) consumer.acceptArray(a, b, c, d);};
     }
@@ -101,14 +122,12 @@ public interface Consumer4A<A,B,C,D>extends Consumer4<A[],B[],C[],D[]>
      * 
      * @param before The operation to perform before this operation.
      * 
-     * @return A new {@link Consumer4A} performing the operation before and this operation.
+     * @return A new {@link Consumer4A} performing the operation before and this
+     * operation.
      */
-    default Consumer4A<A,B,C,D> beforeThatArray(Consumer4A<A,B,C,D> before)
+    default Consumer4A<A,B,C,D> beforeArray(Consumer4A<A,B,C,D> before)
     {
-    	/*
-    	 * The argument must not be null.
-    	 */
-    	Validation.validateNotNull(before);
+    	Validation.validateNotNull("before", before);
     	
     	return (a, b, c, d) -> {before.acceptArray(a, b, c, d); acceptArray(a, b, c, d);};
     }
@@ -118,15 +137,14 @@ public interface Consumer4A<A,B,C,D>extends Consumer4<A[],B[],C[],D[]>
      * 
      * @param before The operations to perform before this operation.
      * 
-     * @return A new {@link Consumer4A} performing the operations before and this operation.
+     * @return A new {@link Consumer4A} performing the operations before and
+     * this operation.
      */
     @SuppressWarnings("unchecked")
-	default Consumer4A<A,B,C,D> beforeThatArray(Consumer4A<A,B,C,D>... before)
+	default Consumer4A<A,B,C,D> beforeArray(Consumer4A<A,B,C,D>... before)
     {
-    	/*
-    	 * The argument array can be empty but must not be null. Also no entry must be null.
-    	 */
-    	Validation.validateAllNotNull(before);
+    	Validation.validateNotNull("before", before);
+    	Validation.validateEntriesNotNull("before", before);
     	
     	/*
     	 * If no operations are passed return this operation.
@@ -143,14 +161,37 @@ public interface Consumer4A<A,B,C,D>extends Consumer4<A[],B[],C[],D[]>
      * 
      * @param before The operations to perform before this operation.
      * 
-     * @return A new {@link Consumer4A} performing the operations before and this operation.
+     * @return A new {@link Consumer4A} performing the operations before and
+     * this operation.
      */
-    default Consumer4A<A,B,C,D> beforeThatArray(Iterable<Consumer4A<A,B,C,D>> before)
+	default Consumer4A<A,B,C,D> beforeArray(java.util.List<Consumer4A<A,B,C,D>> before)
     {
+    	Validation.validateNotNull("before", before);
+    	Validation.validateEntriesNotNull("before", before);
+    	
+    	int size = before.size();
+    	
     	/*
-    	 * The argument must not be null.
+    	 * If no operations are passed return this operation.
     	 */
-    	Validation.validateNotNull(before);
+    	if(size == 0) return this;
+    	
+    	if(size == 1) return (a, b, c, d) -> {before.get(0).acceptArray(a, b, c, d); acceptArray(a, b, c, d);};
+    	
+    	return (a, b, c, d) -> {for(Consumer4A<A,B,C,D> consumer : before) consumer.acceptArray(a, b, c, d); acceptArray(a, b, c, d);};
+    }
+    
+    /**
+     * Performs the given operations in sequence before this operation.
+     * 
+     * @param before The operations to perform before this operation.
+     * 
+     * @return A new {@link Consumer4A} performing the operations before and
+     * this operation.
+     */
+    default Consumer4A<A,B,C,D> beforeArray(Iterable<Consumer4A<A,B,C,D>> before)
+    {
+    	Validation.validateNotNull("before", before);
     	
     	return (a, b, c, d) -> {for(Consumer4A<A,B,C,D> consumer : before) consumer.acceptArray(a, b, c, d); acceptArray(a, b, c, d);};
     }
@@ -168,12 +209,10 @@ public interface Consumer4A<A,B,C,D>extends Consumer4<A[],B[],C[],D[]>
      * @return A new {@link Consumer4A} performing the operations.
      */
 	@SuppressWarnings("unchecked")
-	static <A,B,C,D> Consumer4A<A,B,C,D> inSequenceArray(Consumer4A<A,B,C,D>... consumers)
+	static <A,B,C,D> Consumer4A<A,B,C,D> sequenceArray(Consumer4A<A,B,C,D>... consumers)
     {
-		/*
-    	 * The argument array can be empty but must not be null. Also no entry must be null.
-    	 */
-    	Validation.validateAllNotNull(consumers);
+		Validation.validateNotNull("consumers", consumers);
+		Validation.validateEntriesNotNull("consumers", consumers);
     	
     	/*
     	 * If no operations are passed return empty operation.
@@ -188,7 +227,7 @@ public interface Consumer4A<A,B,C,D>extends Consumer4<A[],B[],C[],D[]>
     	return (a, b, c, d) -> {for(Consumer4A<A,B,C,D> consumer : consumers) consumer.acceptArray(a, b, c, d);};
     }
     
-    /**
+	/**
      * Composes a new {@link Consumer4A} performing the given operations in sequence.
      * 
      * @param <A> The type of the first argument to the operation.
@@ -200,12 +239,42 @@ public interface Consumer4A<A,B,C,D>extends Consumer4<A[],B[],C[],D[]>
      * 
      * @return A new {@link Consumer4A} performing the operations.
      */
-    static <A,B,C,D> Consumer4A<A,B,C,D> inSequenceArray(Iterable<Consumer4A<A,B,C,D>> consumers)
+	static <A,B,C,D> Consumer4A<A,B,C,D> sequenceArray(java.util.List<Consumer4A<A,B,C,D>> consumers)
     {
+		Validation.validateNotNull("consumers", consumers);
+		Validation.validateEntriesNotNull("consumers", consumers);
+    	
+		int size = consumers.size();
+		
     	/*
-    	 * The argument must not be null.
+    	 * If no operations are passed return empty operation.
     	 */
-    	Validation.validateNotNull(consumers);
+    	if(size == 0) return (a, b, c, d) -> {};
+    	
+    	/*
+    	 * If exactly one operation is passed return the operation.
+    	 */
+    	if(size == 1) return consumers.get(0);
+    	
+    	return (a, b, c, d) -> {for(Consumer4A<A,B,C,D> consumer : consumers) consumer.acceptArray(a, b, c, d);};
+    }
+	
+    /**
+     * Composes a new {@link Consumer4A} performing the given operations in
+     * sequence.
+     * 
+     * @param <A> The type of the first argument to the operation.
+     * @param <B> The type of the second argument to the operation.
+     * @param <C> The type of the third argument to the operation.
+     * @param <D> The type of the fourth argument to the operation.
+     * 
+     * @param consumers The operations to perform.
+     * 
+     * @return A new {@link Consumer4A} performing the operations.
+     */
+    static <A,B,C,D> Consumer4A<A,B,C,D> sequenceArray(Iterable<Consumer4A<A,B,C,D>> consumers)
+    {
+    	Validation.validateNotNull("consumers", consumers);
     	
     	return (a, b, c, d) -> {for(Consumer4A<A,B,C,D> consumer : consumers) consumer.acceptArray(a, b, c, d);};
     }
@@ -227,18 +296,16 @@ public interface Consumer4A<A,B,C,D>extends Consumer4<A[],B[],C[],D[]>
      * 
      * @param after The operation to perform after this operation.
      * 
-     * @return A new {@link Consumer4A} performing this operation and the operation after.
+     * @return A new {@link Consumer4A} performing this operation and the
+     * operation after.
      */
-    default Consumer4A<A,B,C,D> andThen(Consumer4<A[],B[],C[],D[]> after)
+    default Consumer4A<A,B,C,D> then(Consumer4<A[],B[],C[],D[]> after)
     {
-    	/*
-    	 * The argument must not be null.
-    	 */
-    	Validation.validateNotNull(after);
+    	Validation.validateNotNull("after", after);
     	
     	/*
-		 * If the passed operation is an instance of the desired type use it as the desired type to
-		 * avoid boxing.
+		 * If the passed operation is an instance of the desired type use it as
+		 * the desired type to avoid boxing.
 		 */
     	if(after instanceof Consumer4A<A,B,C,D>)
     	{
@@ -257,15 +324,14 @@ public interface Consumer4A<A,B,C,D>extends Consumer4<A[],B[],C[],D[]>
      * 
      * @param after The operations to perform after this operation.
      * 
-     * @return A new {@link Consumer4A} performing this operation and the operations after.
+     * @return A new {@link Consumer4A} performing this operation and the
+     * operations after.
      */
     @SuppressWarnings("unchecked")
-	default Consumer4A<A,B,C,D> andThen(Consumer4<A[],B[],C[],D[]>... after)
+	default Consumer4A<A,B,C,D> then(Consumer4<A[],B[],C[],D[]>... after)
     {
-    	/*
-    	 * The argument array can be empty but must not be null. Also no entry must be null.
-    	 */
-    	Validation.validateAllNotNull(after);
+    	Validation.validateNotNull("after", after);
+    	Validation.validateEntriesNotNull("after", after);
     	
     	/*
     	 * If no operations are passed return this operation.
@@ -278,8 +344,8 @@ public interface Consumer4A<A,B,C,D>extends Consumer4<A[],B[],C[],D[]>
     	if(after.length == 1)
     	{
     		/*
-    		 * If the passed operation is an instance of the desired type use it as the desired type
-    		 * to avoid boxing.
+    		 * If the passed operation is an instance of the desired type use it
+    		 * as the desired type to avoid boxing.
     		 */
     		if(after[0] instanceof Consumer4A<A,B,C,D>)
         	{
@@ -294,9 +360,10 @@ public interface Consumer4A<A,B,C,D>extends Consumer4<A[],B[],C[],D[]>
     	}
 
     	/*
-    	 * If multiple operations were passed it is not possible to optimize while composing the new
-    	 * operation anymore. The optimization had to be postponed to execution of the composite
-    	 * operation. The optimization prevents unnecessary auto-boxing if possible.
+    	 * If multiple operations were passed it is not possible to optimize
+    	 * while composing the new operation anymore. The optimization had to be
+    	 * postponed to execution of the composite operation. The optimization
+    	 * prevents unnecessary auto-boxing if possible.
     	 */
     	return (a, b, c, d) -> {
 			acceptArray(a, b, c, d);
@@ -316,20 +383,81 @@ public interface Consumer4A<A,B,C,D>extends Consumer4<A[],B[],C[],D[]>
      * 
      * @param after The operations to perform after this operation.
      * 
-     * @return A new {@link Consumer4A} performing this operation and the operations after.
+     * @return A new {@link Consumer4A} performing this operation and the
+     * operations after.
      */
-	default Consumer4A<A,B,C,D> andThen(Iterable<Consumer4<A[],B[],C[],D[]>> after)
+	default Consumer4A<A,B,C,D> then(java.util.List<Consumer4<A[],B[],C[],D[]>> after)
     {
-		/*
-    	 * The argument must not be null.
+    	Validation.validateNotNull("after", after);
+    	Validation.validateEntriesNotNull("after", after);
+    	
+    	int size = after.size();
+    	
+    	/*
+    	 * If no operations are passed return this operation.
     	 */
-		Validation.validateNotNull(after);
+    	if(size == 0) return this;
+    	
+    	/*
+    	 * If exactly one operation is passed try to optimize.
+    	 */
+    	if(size == 1)
+    	{
+    		final Consumer4<A[],B[],C[],D[]> first = after.get(0);
+    		
+    		/*
+    		 * If the passed operation is an instance of the desired type use it
+    		 * as the desired type to avoid boxing.
+    		 */
+    		if(first instanceof Consumer4A<A,B,C,D>)
+        	{
+        		final Consumer4A<A,B,C,D> originalAfter = (Consumer4A<A,B,C,D>)first;
+        		
+        		return (a, b, c, d) -> {acceptArray(a, b, c, d); originalAfter.acceptArray(a, b, c, d);};
+        	}
+        	else
+        	{
+        		return (a, b, c, d) -> {acceptArray(a, b, c, d); first.accept(a, b, c, d);};
+        	}
+    	}
+
+    	/*
+    	 * If multiple operations were passed it is not possible to optimize
+    	 * while composing the new operation anymore. The optimization had to be
+    	 * postponed to execution of the composite operation. The optimization
+    	 * prevents unnecessary auto-boxing if possible.
+    	 */
+    	return (a, b, c, d) -> {
+			acceptArray(a, b, c, d);
+			
+    		for(Consumer4<A[],B[],C[],D[]> consumer : after)
+    		{
+    			if(consumer instanceof Consumer4A<A,B,C,D>)
+    				((Consumer4A<A,B,C,D>)consumer).acceptArray(a, b, c, d);
+    			else
+    				consumer.accept(a, b, c, d);
+    		}
+    	};
+    }
+    
+    /**
+     * Performs the given operations in sequence after this operation.
+     * 
+     * @param after The operations to perform after this operation.
+     * 
+     * @return A new {@link Consumer4A} performing this operation and the
+     * operations after.
+     */
+	default Consumer4A<A,B,C,D> then(Iterable<Consumer4<A[],B[],C[],D[]>> after)
+    {
+		Validation.validateNotNull("after", after);
 		
 		/*
-    	 * As there is no way to determine how many operations were passed it is not possible to
-    	 * optimize while composing the new operation composing the new operation anymore.
-    	 * The optimization had to be postponed to execution of the composite operation.
-    	 * The optimization prevents unnecessary auto-boxing if possible.
+    	 * As there is no way to determine how many operations were passed it is
+    	 * not possible to optimize while composing the new operation composing
+    	 * the new operation anymore. The optimization had to be postponed to
+    	 * execution of the composite operation. The optimization prevents
+    	 * unnecessary auto-boxing if possible.
     	 */
 		return (a, b, c, d) -> {
 			acceptArray(a, b, c, d);
@@ -349,18 +477,16 @@ public interface Consumer4A<A,B,C,D>extends Consumer4<A[],B[],C[],D[]>
      * 
      * @param before The operation to perform before this operation.
      * 
-     * @return A new {@link Consumer4A} performing the operation before and this operation.
+     * @return A new {@link Consumer4A} performing the operation before and this
+     * operation.
      */
-    default Consumer4A<A,B,C,D> beforeThat(Consumer4<A[],B[],C[],D[]> before)
+    default Consumer4A<A,B,C,D> before(Consumer4<A[],B[],C[],D[]> before)
     {
-    	/*
-    	 * The argument must not be null.
-    	 */
-    	Validation.validateNotNull(before);
+    	Validation.validateNotNull("before", before);
     	
     	/*
-		 * If the passed operation is an instance of the desired type use it as the desired type to
-		 * avoid boxing.
+		 * If the passed operation is an instance of the desired type use it as
+		 * the desired type to avoid boxing.
 		 */
     	if(before instanceof Consumer4A<A,B,C,D>)
     	{
@@ -379,15 +505,14 @@ public interface Consumer4A<A,B,C,D>extends Consumer4<A[],B[],C[],D[]>
      * 
      * @param before The operations to perform before this operation.
      * 
-     * @return A new {@link Consumer4A} performing the operations before and this operation.
+     * @return A new {@link Consumer4A} performing the operations before and
+     * this operation.
      */
     @SuppressWarnings("unchecked")
-    default Consumer4A<A,B,C,D> beforeThat(Consumer4<A[],B[],C[],D[]>... before)
+    default Consumer4A<A,B,C,D> before(Consumer4<A[],B[],C[],D[]>... before)
     {
-    	/*
-    	 * The argument array can be empty but must not be null. Also no entry must be null.
-    	 */
-    	Validation.validateAllNotNull(before);
+    	Validation.validateNotNull("before", before);
+    	Validation.validateEntriesNotNull("before", before);
     	
     	/*
     	 * If no operations are passed return this operation.
@@ -400,7 +525,8 @@ public interface Consumer4A<A,B,C,D>extends Consumer4<A[],B[],C[],D[]>
     	if(before.length == 1)
     	{
     		/*
-    		 * If the passed operation is an instance of the desired type use it as the desired type
+    		 * If the passed operation is an instance of the desired type use it
+    		 * as the desired type
     		 * to avoid boxing.
     		 */
     		if(before[0] instanceof Consumer4A<A,B,C,D>)
@@ -416,9 +542,10 @@ public interface Consumer4A<A,B,C,D>extends Consumer4<A[],B[],C[],D[]>
     	}
     	
     	/*
-    	 * If multiple operations were passed it is not possible to optimize while composing the new
-    	 * operation anymore. The optimization had to be postponed to execution of the composite
-    	 * operation. The optimization prevents unnecessary auto-boxing if possible.
+    	 * If multiple operations were passed it is not possible to optimize
+    	 * while composing the new operation anymore. The optimization had to be
+    	 * postponed to execution of the composite operation. The optimization
+    	 * prevents unnecessary auto-boxing if possible.
     	 */
     	return (a, b, c, d) -> {
     		for(Consumer4<A[],B[],C[],D[]> consumer : before)
@@ -438,20 +565,50 @@ public interface Consumer4A<A,B,C,D>extends Consumer4<A[],B[],C[],D[]>
      * 
      * @param before The operations to perform before this operation.
      * 
-     * @return A new {@link Consumer4A} performing the operations before and this operation.
+     * @return A new {@link Consumer4A} performing the operations before and
+     * this operation.
      */
-    default Consumer4A<A,B,C,D> beforeThat(Iterable<Consumer4<A[],B[],C[],D[]>> before)
+    default Consumer4A<A,B,C,D> before(java.util.List<Consumer4<A[],B[],C[],D[]>> before)
     {
-    	/*
-    	 * The argument must not be null.
-    	 */
-    	Validation.validateNotNull(before);
+    	Validation.validateNotNull("before", before);
+    	Validation.validateEntriesNotNull("before", before);
+    	
+    	int size = before.size();
     	
     	/*
-    	 * As there is no way to determine how many operations were passed it is not possible to
-    	 * optimize while composing the new operation composing the new operation anymore.
-    	 * The optimization had to be postponed to execution of the composite operation.
-    	 * The optimization prevents unnecessary auto-boxing if possible.
+    	 * If no operations are passed return this operation.
+    	 */
+    	if(size == 0) return this;
+    	
+    	/*
+    	 * If exactly one operation is passed try to optimize.
+    	 */
+    	if(size == 1)
+    	{
+    		final Consumer4<A[],B[],C[],D[]> first = before.get(0);
+    		
+    		/*
+    		 * If the passed operation is an instance of the desired type use it
+    		 * as the desired type
+    		 * to avoid boxing.
+    		 */
+    		if(first instanceof Consumer4A<A,B,C,D>)
+        	{
+        		final Consumer4A<A,B,C,D> originalBefore = (Consumer4A<A,B,C,D>)first;
+        		
+        		return (a, b, c, d) -> {originalBefore.acceptArray(a, b, c, d); acceptArray(a, b, c, d);};
+        	}
+        	else
+        	{
+        		return (a, b, c, d) -> {first.accept(a, b, c, d); acceptArray(a, b, c, d);};
+        	}
+    	}
+    	
+    	/*
+    	 * If multiple operations were passed it is not possible to optimize
+    	 * while composing the new operation anymore. The optimization had to be
+    	 * postponed to execution of the composite operation. The optimization
+    	 * prevents unnecessary auto-boxing if possible.
     	 */
     	return (a, b, c, d) -> {
     		for(Consumer4<A[],B[],C[],D[]> consumer : before)
@@ -467,7 +624,40 @@ public interface Consumer4A<A,B,C,D>extends Consumer4<A[],B[],C[],D[]>
     }
     
     /**
-     * Composes a new {@link Consumer4A} performing the given operations in sequence.
+     * Performs the given operations in sequence before this operation.
+     * 
+     * @param before The operations to perform before this operation.
+     * 
+     * @return A new {@link Consumer4A} performing the operations before and
+     * this operation.
+     */
+    default Consumer4A<A,B,C,D> before(Iterable<Consumer4<A[],B[],C[],D[]>> before)
+    {
+    	Validation.validateNotNull("before", before);
+    	
+    	/*
+    	 * As there is no way to determine how many operations were passed it is
+    	 * not possible to optimize while composing the new operation composing
+    	 * the new operation anymore. The optimization had to be postponed to
+    	 * execution of the composite operation. The optimization prevents
+    	 * unnecessary auto-boxing if possible.
+    	 */
+    	return (a, b, c, d) -> {
+    		for(Consumer4<A[],B[],C[],D[]> consumer : before)
+    		{
+    			if(consumer instanceof Consumer4A<A,B,C,D>)
+    				((Consumer4A<A,B,C,D>)consumer).acceptArray(a, b, c, d);
+    			else
+    				consumer.accept(a, b, c, d);
+    		}
+    		
+    		acceptArray(a, b, c, d);
+    	};
+    }
+    
+    /**
+     * Composes a new {@link Consumer4A} performing the given operations in
+     * sequence.
      * 
      * @param <A> The type of the first argument to the operation.
      * @param <B> The type of the second argument to the operation.
@@ -479,12 +669,10 @@ public interface Consumer4A<A,B,C,D>extends Consumer4<A[],B[],C[],D[]>
      * @return A new {@link Consumer4A} performing the operations.
      */
     @SuppressWarnings("unchecked")
-	static <A,B,C,D> Consumer4A<A,B,C,D> inSequence(Consumer4<A[],B[],C[],D[]>... consumers)
+	static <A,B,C,D> Consumer4A<A,B,C,D> sequence(Consumer4<A[],B[],C[],D[]>... consumers)
     {
-    	/*
-    	 * The argument array can be empty but must not be null. Also no entry must be null.
-    	 */
-    	Validation.validateAllNotNull(consumers);
+    	Validation.validateNotNull("consumers", consumers);
+    	Validation.validateEntriesNotNull("consumers", consumers);
     	
     	/*
     	 * If no operations are passed return empty operation.
@@ -492,10 +680,12 @@ public interface Consumer4A<A,B,C,D>extends Consumer4<A[],B[],C[],D[]>
     	if(consumers.length == 0) return (a, b, c, d) -> {};
     	
     	/*
-    	 * If exactly one operation is passed try to optimize. If the operation is an instance of
-    	 * the desired type return the operation directly without wrapping. Otherwise wrap the
-    	 * original operation in an operation of the desired type. The optimization prevents
-    	 * unnecessary auto-boxing if possible and also unnecessary creation of a new operation.
+    	 * If exactly one operation is passed try to optimize. If the operation
+    	 * is an instance of the desired type return the operation directly
+    	 * without wrapping. Otherwise wrap the original operation in an
+    	 * operation of the desired type. The optimization prevents unnecessary
+    	 * auto-boxing if possible and also unnecessary creation of a new
+    	 * operation.
     	 */
     	if(consumers.length == 1)
     	{
@@ -506,9 +696,10 @@ public interface Consumer4A<A,B,C,D>extends Consumer4<A[],B[],C[],D[]>
     	}
     	
     	/*
-    	 * If multiple operations were passed it is not possible to optimize while composing the new
-    	 * operation anymore. The optimization had to be postponed to execution of the composite
-    	 * operation. The optimization prevents unnecessary auto-boxing if possible.
+    	 * If multiple operations were passed it is not possible to optimize
+    	 * while composing the new operation anymore. The optimization had to be
+    	 * postponed to execution of the composite operation. The optimization
+    	 * prevents unnecessary auto-boxing if possible.
     	 */
     	return (a, b, c, d) -> {
     		for(Consumer4<A[],B[],C[],D[]> consumer : consumers)
@@ -522,7 +713,8 @@ public interface Consumer4A<A,B,C,D>extends Consumer4<A[],B[],C[],D[]>
     }
     
     /**
-     * Composes a new {@link Consumer4A} performing the given operations in sequence.
+     * Composes a new {@link Consumer4A} performing the given operations in
+     * sequence.
      * 
      * @param <A> The type of the first argument to the operation.
      * @param <B> The type of the second argument to the operation.
@@ -533,18 +725,76 @@ public interface Consumer4A<A,B,C,D>extends Consumer4<A[],B[],C[],D[]>
      * 
      * @return A new {@link Consumer4A} performing the operations.
      */
-    static <A,B,C,D> Consumer4A<A,B,C,D> inSequence(Iterable<Consumer4<A[],B[],C[],D[]>> consumers)
+	static <A,B,C,D> Consumer4A<A,B,C,D> sequence(java.util.List<Consumer4<A[],B[],C[],D[]>> consumers)
     {
-    	/*
-    	 * The argument must not be null.
-    	 */
-    	Validation.validateNotNull(consumers);
+    	Validation.validateNotNull("consumers", consumers);
+    	Validation.validateEntriesNotNull("consumers", consumers);
+    	
+    	int size = consumers.size();
     	
     	/*
-    	 * As there is no way to determine how many operations were passed it is not possible to
-    	 * optimize while composing the new operation composing the new operation anymore.
-    	 * The optimization had to be postponed to execution of the composite operation.
-    	 * The optimization prevents unnecessary auto-boxing if possible.
+    	 * If no operations are passed return empty operation.
+    	 */
+    	if(size == 0) return (a, b, c, d) -> {};
+    	
+    	/*
+    	 * If exactly one operation is passed try to optimize. If the operation
+    	 * is an instance of the desired type return the operation directly
+    	 * without wrapping. Otherwise wrap the original operation in an
+    	 * operation of the desired type. The optimization prevents unnecessary
+    	 * auto-boxing if possible and also unnecessary creation of a new
+    	 * operation.
+    	 */
+    	if(size == 1)
+    	{
+    		final Consumer4<A[],B[],C[],D[]> first = consumers.get(0);
+    		
+    		if(first instanceof Consumer4A<A,B,C,D>)
+    			return (Consumer4A<A,B,C,D>) first;
+    		else
+    			return (Consumer4A<A,B,C,D>) first::accept;
+    	}
+    	
+    	/*
+    	 * If multiple operations were passed it is not possible to optimize
+    	 * while composing the new operation anymore. The optimization had to be
+    	 * postponed to execution of the composite operation. The optimization
+    	 * prevents unnecessary auto-boxing if possible.
+    	 */
+    	return (a, b, c, d) -> {
+    		for(Consumer4<A[],B[],C[],D[]> consumer : consumers)
+    		{
+    			if(consumer instanceof Consumer4A<A,B,C,D>)
+    				((Consumer4A<A,B,C,D>)consumer).acceptArray(a, b, c, d);
+    			else
+    				consumer.accept(a, b, c, d);
+    		}
+    	};
+    }
+    
+    /**
+     * Composes a new {@link Consumer4A} performing the given operations in
+     * sequence.
+     * 
+     * @param <A> The type of the first argument to the operation.
+     * @param <B> The type of the second argument to the operation.
+     * @param <C> The type of the third argument to the operation.
+     * @param <D> The type of the fourth argument to the operation.
+     * 
+     * @param consumers The operations to perform.
+     * 
+     * @return A new {@link Consumer4A} performing the operations.
+     */
+    static <A,B,C,D> Consumer4A<A,B,C,D> sequence(Iterable<Consumer4<A[],B[],C[],D[]>> consumers)
+    {
+    	Validation.validateNotNull("consumers", consumers);
+    	
+    	/*
+    	 * As there is no way to determine how many operations were passed it is
+    	 * not possible to optimize while composing the new operation composing
+    	 * the new operation anymore. The optimization had to be postponed to
+    	 * execution of the composite operation. The optimization prevents
+    	 * unnecessary auto-boxing if possible.
     	 */
     	return (a, b, c, d) -> {
     		for(Consumer4<A[],B[],C[],D[]> consumer : consumers)

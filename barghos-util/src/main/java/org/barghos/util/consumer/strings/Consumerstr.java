@@ -4,8 +4,8 @@ import org.barghos.util.consumer.Consumer;
 import org.barghos.validation.Validation;
 
 /**
- * Represents an operation that accepts one string input argument and returns no result.
- * {@link Consumerstr} is expected to operate via side-effects.
+ * Represents an operation that accepts one string input argument and returns no
+ * result. {@link Consumerstr} is expected to operate via side-effects.
  *
  * <p>
  * This is a functional interface
@@ -35,14 +35,12 @@ public interface Consumerstr extends Consumer<String>
      * 
      * @param after The operation to perform after this operation.
      * 
-     * @return A new {@link Consumerstr} performing this operation and the operation after.
+     * @return A new {@link Consumerstr} performing this operation and the
+     * operation after.
      */
-    default Consumerstr andThenString(Consumerstr after)
+    default Consumerstr thenString(Consumerstr after)
     {
-    	/*
-    	 * The argument must not be null.
-    	 */
-    	Validation.validateNotNull(after);
+    	Validation.validateNotNull("after", after);
     	
     	return (a) -> {acceptString(a); after.acceptString(a);};
     }
@@ -52,15 +50,13 @@ public interface Consumerstr extends Consumer<String>
      * 
      * @param after The operations to perform after this operation.
      * 
-     * @return A new {@link Consumerstr} performing this operation and the operations after.
+     * @return A new {@link Consumerstr} performing this operation and the
+     * operations after.
      */
-	default Consumerstr andThenString(Consumerstr... after)
+	default Consumerstr thenString(Consumerstr... after)
     {
-		/*
-    	 * The argument array can be empty but must not be null.
-    	 * Also no entry must be null.
-    	 */
-    	Validation.validateAllNotNull(after);
+		Validation.validateNotNull("after", after);
+		Validation.validateEntriesNotNull("after", after);
     	
     	/*
     	 * If no operations are passed return this operation.
@@ -72,19 +68,42 @@ public interface Consumerstr extends Consumer<String>
     	return (a) -> {acceptString(a); for(Consumerstr consumer : after) consumer.acceptString(a);};
     }
     
+	/**
+     * Performs the given operations in sequence after this operation.
+     * 
+     * @param after The operations to perform after this operation.
+     * 
+     * @return A new {@link Consumerstr} performing this operation and the
+     * operations after.
+     */
+	default Consumerstr thenString(java.util.List<Consumerstr> after)
+    {
+		Validation.validateNotNull("after", after);
+		Validation.validateEntriesNotNull("after", after);
+    	
+		int size = after.size();
+		
+    	/*
+    	 * If no operations are passed return this operation.
+    	 */
+    	if(size == 0) return this;
+    	
+    	if(size == 1) return (a) -> {acceptString(a); after.get(0).acceptString(a);};
+
+    	return (a) -> {acceptString(a); for(Consumerstr consumer : after) consumer.acceptString(a);};
+    }
+	
     /**
      * Performs the given operations in sequence after this operation.
      * 
      * @param after The operations to perform after this operation.
      * 
-     * @return A new {@link Consumerstr} performing this operation and the operations after.
+     * @return A new {@link Consumerstr} performing this operation and the
+     * operations after.
      */
-	default Consumerstr andThenString(Iterable<Consumerstr> after)
+	default Consumerstr thenString(Iterable<Consumerstr> after)
     {
-		/*
-    	 * The argument must not be null.
-    	 */
-		Validation.validateNotNull(after);
+		Validation.validateNotNull("after", after);
 		
     	return (a) -> {acceptString(a); for(Consumerstr consumer : after) consumer.acceptString(a);};
     }
@@ -94,14 +113,12 @@ public interface Consumerstr extends Consumer<String>
      * 
      * @param before The operation to perform before this operation.
      * 
-     * @return A new {@link Consumerstr} performing the operation before and this operation.
+     * @return A new {@link Consumerstr} performing the operation before and
+     * this operation.
      */
-    default Consumerstr beforeThatString(Consumerstr before)
+    default Consumerstr beforeString(Consumerstr before)
     {
-    	/*
-    	 * The argument must not be null.
-    	 */
-    	Validation.validateNotNull(before);
+    	Validation.validateNotNull("before", before);
     	
     	return (a) -> {before.acceptString(a); acceptString(a);};
     }
@@ -111,15 +128,13 @@ public interface Consumerstr extends Consumer<String>
      * 
      * @param before The operations to perform before this operation.
      * 
-     * @return A new {@link Consumerstr} performing the operations before and this operation.
+     * @return A new {@link Consumerstr} performing the operations before and
+     * this operation.
      */
-    default Consumerstr beforeThatString(Consumerstr... before)
+    default Consumerstr beforeString(Consumerstr... before)
     {
-    	/*
-    	 * The argument array can be empty but must not be null.
-    	 * Also no entry must be null.
-    	 */
-    	Validation.validateAllNotNull(before);
+    	Validation.validateNotNull("before", before);
+    	Validation.validateEntriesNotNull("before", before);
     	
     	/*
     	 * If no operations are passed return this operation.
@@ -136,32 +151,53 @@ public interface Consumerstr extends Consumer<String>
      * 
      * @param before The operations to perform before this operation.
      * 
-     * @return A new {@link Consumerstr} performing the operations before and this operation.
+     * @return A new {@link Consumerstr} performing the operations before and
+     * this operation.
      */
-    default Consumerstr beforeThatString(Iterable<Consumerstr> before)
+    default Consumerstr beforeString(java.util.List<Consumerstr> before)
     {
+    	Validation.validateNotNull("before", before);
+    	Validation.validateEntriesNotNull("before", before);
+    	
+    	int size = before.size();
+    	
     	/*
-    	 * The argument must not be null.
+    	 * If no operations are passed return this operation.
     	 */
-    	Validation.validateNotNull(before);
+    	if(size == 0) return this;
+    	
+    	if(size == 1) return (a) -> {before.get(0).acceptString(a); acceptString(a);};
     	
     	return (a) -> {for(Consumerstr consumer : before) consumer.acceptString(a); acceptString(a);};
     }
     
     /**
-     * Composes a new {@link Consumerstr} performing the given operations in sequence.
+     * Performs the given operations in sequence before this operation.
+     * 
+     * @param before The operations to perform before this operation.
+     * 
+     * @return A new {@link Consumerstr} performing the operations before and
+     * this operation.
+     */
+    default Consumerstr beforeString(Iterable<Consumerstr> before)
+    {
+    	Validation.validateNotNull("before", before);
+    	
+    	return (a) -> {for(Consumerstr consumer : before) consumer.acceptString(a); acceptString(a);};
+    }
+    
+    /**
+     * Composes a new {@link Consumerstr} performing the given operations in
+     * sequence.
      * 
      * @param consumers The operations to perform.
      * 
      * @return A new {@link Consumerstr} performing the operations.
      */
-	static Consumerstr inSequenceString(Consumerstr... consumers)
+	static Consumerstr sequenceString(Consumerstr... consumers)
     {
-		/*
-    	 * The argument array can be empty but must not be null.
-    	 * Also no entry must be null.
-    	 */
-    	Validation.validateAllNotNull(consumers);
+		Validation.validateNotNull("consumers", consumers);
+		Validation.validateEntriesNotNull("consumers", consumers);
     	
     	/*
     	 * If no operations are passed return empty operation.
@@ -176,19 +212,45 @@ public interface Consumerstr extends Consumer<String>
     	return (a) -> {for(Consumerstr consumer : consumers) consumer.acceptString(a);};
     }
     
-    /**
-     * Composes a new {@link Consumerstr} performing the given operations in sequence.
+	/**
+     * Composes a new {@link Consumerstr} performing the given operations in
+     * sequence.
      * 
      * @param consumers The operations to perform.
      * 
      * @return A new {@link Consumerstr} performing the operations.
      */
-    static Consumerstr inSequenceString(Iterable<Consumerstr> consumers)
+	static Consumerstr sequenceString(java.util.List<Consumerstr> consumers)
     {
+		Validation.validateNotNull("consumers", consumers);
+		Validation.validateEntriesNotNull("consumers", consumers);
+    	
+		int size = consumers.size();
+		
     	/*
-    	 * The argument must not be null.
+    	 * If no operations are passed return empty operation.
     	 */
-    	Validation.validateNotNull(consumers);
+    	if(size == 0) return (a) -> {};
+    	
+    	/*
+    	 * If exactly one operation is passed return the operation.
+    	 */
+    	if(size == 1) return consumers.get(0);
+    	
+    	return (a) -> {for(Consumerstr consumer : consumers) consumer.acceptString(a);};
+    }
+	
+    /**
+     * Composes a new {@link Consumerstr} performing the given operations in
+     * sequence.
+     * 
+     * @param consumers The operations to perform.
+     * 
+     * @return A new {@link Consumerstr} performing the operations.
+     */
+    static Consumerstr sequenceString(Iterable<Consumerstr> consumers)
+    {
+    	Validation.validateNotNull("consumers", consumers);
     	
     	return (a) -> {for(Consumerstr consumer : consumers) consumer.acceptString(a);};
     }
@@ -210,14 +272,12 @@ public interface Consumerstr extends Consumer<String>
      * 
      * @param after The operation to perform after this operation.
      * 
-     * @return A new {@link Consumerstr} performing this operation and the operation after.
+     * @return A new {@link Consumerstr} performing this operation and the
+     * operation after.
      */
-    default Consumerstr andThen(Consumer<String> after)
+    default Consumerstr then(Consumer<String> after)
     {
-    	/*
-    	 * The argument must not be null.
-    	 */
-    	Validation.validateNotNull(after);
+    	Validation.validateNotNull("after", after);
     	
     	/*
 		 * If the passed operation is an instance of the desired type
@@ -240,16 +300,14 @@ public interface Consumerstr extends Consumer<String>
      * 
      * @param after The operations to perform after this operation.
      * 
-     * @return A new {@link Consumerstr} performing this operation and the operations after.
+     * @return A new {@link Consumerstr} performing this operation and the
+     * operations after.
      */
     @SuppressWarnings("unchecked")
-	default Consumerstr andThen(Consumer<String>... after)
+	default Consumerstr then(Consumer<String>... after)
     {
-    	/*
-    	 * The argument array can be empty but must not be null.
-    	 * Also no entry must be null.
-    	 */
-    	Validation.validateAllNotNull(after);
+    	Validation.validateNotNull("after", after);
+    	Validation.validateEntriesNotNull("after", after);
     	
     	/*
     	 * If no operations are passed return this operation.
@@ -278,10 +336,10 @@ public interface Consumerstr extends Consumer<String>
     	}
 
     	/*
-    	 * If multiple operations were passed it is not possible to optimize while
-    	 * composing the new operation anymore. The optimization had to be postponed to execution
-    	 * of the composite operation. The optimization prevents unnecessary auto-boxing if
-    	 * possible.
+    	 * If multiple operations were passed it is not possible to optimize
+    	 * while composing the new operation anymore. The optimization had to be
+    	 * postponed to execution of the composite operation. The optimization
+    	 * prevents unnecessary auto-boxing if possible.
     	 */
     	return (a) -> {
 			acceptString(a);
@@ -301,21 +359,81 @@ public interface Consumerstr extends Consumer<String>
      * 
      * @param after The operations to perform after this operation.
      * 
-     * @return A new {@link Consumerstr} performing this operation and the operations after.
+     * @return A new {@link Consumerstr} performing this operation and the
+     * operations after.
      */
-	default Consumerstr andThen(Iterable<Consumer<String>> after)
+	default Consumerstr then(java.util.List<Consumer<String>> after)
     {
-		/*
-    	 * The argument must not be null.
+    	Validation.validateNotNull("after", after);
+    	Validation.validateEntriesNotNull("after", after);
+    	
+    	int size = after.size();
+    	
+    	/*
+    	 * If no operations are passed return this operation.
     	 */
-		Validation.validateNotNull(after);
+    	if(size == 0) return this;
+    	
+    	/*
+    	 * If exactly one operation is passed try to optimize.
+    	 */
+    	if(size == 1)
+    	{
+    		final Consumer<String> first = after.get(0);
+    		
+    		/*
+    		 * If the passed operation is an instance of the desired type
+    		 * use it as the desired type to avoid boxing.
+    		 */
+    		if(first instanceof Consumerstr)
+        	{
+        		final Consumerstr originalAfter = (Consumerstr)first;
+        		
+        		return (a) -> {acceptString(a); originalAfter.acceptString(a);};
+        	}
+        	else
+        	{
+        		return (a) -> {acceptString(a); first.accept(a);};
+        	}
+    	}
+
+    	/*
+    	 * If multiple operations were passed it is not possible to optimize
+    	 * while composing the new operation anymore. The optimization had to be
+    	 * postponed to execution of the composite operation. The optimization
+    	 * prevents unnecessary auto-boxing if possible.
+    	 */
+    	return (a) -> {
+			acceptString(a);
+			
+    		for(Consumer<String> consumer : after)
+    		{
+    			if(consumer instanceof Consumerstr)
+    				((Consumerstr)consumer).acceptString(a);
+    			else
+    				consumer.accept(a);
+    		}
+    	};
+    }
+    
+    /**
+     * Performs the given operations in sequence after this operation.
+     * 
+     * @param after The operations to perform after this operation.
+     * 
+     * @return A new {@link Consumerstr} performing this operation and the
+     * operations after.
+     */
+	default Consumerstr then(Iterable<Consumer<String>> after)
+    {
+		Validation.validateNotNull("after", after);
 		
 		/*
     	 * As there is no way to determine how many operations were passed
     	 * it is not possible to optimize while composing the new operation
-    	 * composing the new operation anymore. The optimization had to be postponed to execution
-    	 * of the composite operation. The optimization prevents unnecessary auto-boxing if
-    	 * possible.
+    	 * composing the new operation anymore. The optimization had to be
+    	 * postponed to execution of the composite operation. The optimization
+    	 * prevents unnecessary auto-boxing if possible.
     	 */
 		return (a) -> {
 			acceptString(a);
@@ -335,14 +453,12 @@ public interface Consumerstr extends Consumer<String>
      * 
      * @param before The operation to perform before this operation.
      * 
-     * @return A new {@link Consumerstr} performing the operation before and this operation.
+     * @return A new {@link Consumerstr} performing the operation before and
+     * this operation.
      */
-    default Consumerstr beforeThat(Consumer<String> before)
+    default Consumerstr before(Consumer<String> before)
     {
-    	/*
-    	 * The argument must not be null.
-    	 */
-    	Validation.validateNotNull(before);
+    	Validation.validateNotNull("before", before);
     	
     	/*
 		 * If the passed operation is an instance of the desired type
@@ -365,16 +481,14 @@ public interface Consumerstr extends Consumer<String>
      * 
      * @param before The operations to perform before this operation.
      * 
-     * @return A new {@link Consumerstr} performing the operations before and this operation.
+     * @return A new {@link Consumerstr} performing the operations before and
+     * this operation.
      */
     @SuppressWarnings("unchecked")
-    default Consumerstr beforeThat(Consumer<String>... before)
+    default Consumerstr before(Consumer<String>... before)
     {
-    	/*
-    	 * The argument array can be empty but must not be null.
-    	 * Also no entry must be null.
-    	 */
-    	Validation.validateAllNotNull(before);
+    	Validation.validateNotNull("before", before);
+    	Validation.validateEntriesNotNull("before", before);
     	
     	/*
     	 * If no operations are passed return this operation.
@@ -403,10 +517,10 @@ public interface Consumerstr extends Consumer<String>
     	}
     	
     	/*
-    	 * If multiple operations were passed it is not possible to optimize while
-    	 * composing the new operation anymore. The optimization had to be postponed to execution
-    	 * of the composite operation. The optimization prevents unnecessary auto-boxing if
-    	 * possible.
+    	 * If multiple operations were passed it is not possible to optimize
+    	 * while composing the new operation anymore. The optimization had to be
+    	 * postponed to execution of the composite operation. The optimization
+    	 * prevents unnecessary auto-boxing if possible.
     	 */
     	return (a) -> {
     		for(Consumer<String> consumer : before)
@@ -426,21 +540,49 @@ public interface Consumerstr extends Consumer<String>
      * 
      * @param before The operations to perform before this operation.
      * 
-     * @return A new {@link Consumerstr} performing the operations before and this operation.
+     * @return A new {@link Consumerstr} performing the operations before and
+     * this operation.
      */
-    default Consumerstr beforeThat(Iterable<Consumer<String>> before)
+    default Consumerstr before(java.util.List<Consumer<String>> before)
     {
-    	/*
-    	 * The argument must not be null.
-    	 */
-    	Validation.validateNotNull(before);
+    	Validation.validateNotNull("before", before);
+    	Validation.validateEntriesNotNull("before", before);
+    	
+    	int size = before.size();
     	
     	/*
-    	 * As there is no way to determine how many operations were passed
-    	 * it is not possible to optimize while composing the new operation
-    	 * composing the new operation anymore. The optimization had to be postponed to execution
-    	 * of the composite operation. The optimization prevents unnecessary auto-boxing if
-    	 * possible.
+    	 * If no operations are passed return this operation.
+    	 */
+    	if(size == 0) return this;
+    	
+    	/*
+    	 * If exactly one operation is passed try to optimize.
+    	 */
+    	if(size == 1)
+    	{
+    		final Consumer<String> first = before.get(0);
+    		
+    		/*
+    		 * If the passed operation is an instance of the desired type
+    		 * use it as the desired type to avoid boxing.
+    		 */
+    		if(first instanceof Consumerstr)
+        	{
+        		final Consumerstr originalBefore = (Consumerstr)first;
+        		
+        		return (a) -> {originalBefore.acceptString(a); acceptString(a);};
+        	}
+        	else
+        	{
+        		return (a) -> {first.accept(a); acceptString(a);};
+        	}
+    	}
+    	
+    	/*
+    	 * If multiple operations were passed it is not possible to optimize
+    	 * while composing the new operation anymore. The optimization had to be
+    	 * postponed to execution of the composite operation. The optimization
+    	 * prevents unnecessary auto-boxing if possible.
     	 */
     	return (a) -> {
     		for(Consumer<String> consumer : before)
@@ -456,20 +598,50 @@ public interface Consumerstr extends Consumer<String>
     }
     
     /**
-     * Composes a new {@link Consumerstr} performing the given operations in sequence.
+     * Performs the given operations in sequence before this operation.
+     * 
+     * @param before The operations to perform before this operation.
+     * 
+     * @return A new {@link Consumerstr} performing the operations before and
+     * this operation.
+     */
+    default Consumerstr before(Iterable<Consumer<String>> before)
+    {
+    	Validation.validateNotNull("before", before);
+    	
+    	/*
+    	 * As there is no way to determine how many operations were passed
+    	 * it is not possible to optimize while composing the new operation
+    	 * composing the new operation anymore. The optimization had to be
+    	 * postponed to execution of the composite operation. The optimization
+    	 * prevents unnecessary auto-boxing if possible.
+    	 */
+    	return (a) -> {
+    		for(Consumer<String> consumer : before)
+    		{
+    			if(consumer instanceof Consumerstr)
+    				((Consumerstr)consumer).acceptString(a);
+    			else
+    				consumer.accept(a);
+    		}
+    		
+    		acceptString(a);
+    	};
+    }
+    
+    /**
+     * Composes a new {@link Consumerstr} performing the given operations in
+     * sequence.
      * 
      * @param consumers The operations to perform.
      * 
      * @return A new {@link Consumerstr} performing the operations.
      */
     @SuppressWarnings("unchecked")
-	static Consumerstr inSequence(Consumer<String>... consumers)
+	static Consumerstr sequence(Consumer<String>... consumers)
     {
-    	/*
-    	 * The argument array can be empty but must not be null.
-    	 * Also no entry must be null.
-    	 */
-    	Validation.validateAllNotNull(consumers);
+    	Validation.validateNotNull("consumers", consumers);
+    	Validation.validateEntriesNotNull("consumers", consumers);
     	
     	/*
     	 * If no operations are passed return empty operation.
@@ -478,10 +650,11 @@ public interface Consumerstr extends Consumer<String>
     	
     	/*
     	 * If exactly one operation is passed try to optimize. If the operation
-    	 * is an instance of the desired type return the operation directly without wrapping.
-    	 * Otherwise wrap the original operation in an operation of the desired type.
-    	 * The optimization prevents unnecessary auto-boxing if possible and also unnecessary
-    	 * creation of a new operation.
+    	 * is an instance of the desired type return the operation directly
+    	 * without wrapping. Otherwise wrap the original operation in an
+    	 * operation of the desired type. The optimization prevents unnecessary
+    	 * auto-boxing if possible and also unnecessary creation of a new
+    	 * operation.
     	 */
     	if(consumers.length == 1)
     	{
@@ -492,10 +665,10 @@ public interface Consumerstr extends Consumer<String>
     	}
     	
     	/*
-    	 * If multiple operations were passed it is not possible to optimize while
-    	 * composing the new operation anymore. The optimization had to be postponed to execution
-    	 * of the composite operation. The optimization prevents unnecessary auto-boxing if
-    	 * possible.
+    	 * If multiple operations were passed it is not possible to optimize
+    	 * while composing the new operation anymore. The optimization had to be
+    	 * postponed to execution of the composite operation. The optimization
+    	 * prevents unnecessary auto-boxing if possible.
     	 */
     	return (a) -> {
     		for(Consumer<String> consumer : consumers)
@@ -509,25 +682,78 @@ public interface Consumerstr extends Consumer<String>
     }
     
     /**
-     * Composes a new {@link Consumerstr} performing the given operations in sequence.
+     * Composes a new {@link Consumerstr} performing the given operations in
+     * sequence.
      * 
      * @param consumers The operations to perform.
      * 
      * @return A new {@link Consumerstr} performing the operations.
      */
-    static Consumerstr inSequence(Iterable<Consumer<String>> consumers)
+	static Consumerstr sequence(java.util.List<Consumer<String>> consumers)
     {
+    	Validation.validateNotNull("consumers", consumers);
+    	Validation.validateEntriesNotNull("consumers", consumers);
+    	
+    	int size = consumers.size();
+    	
     	/*
-    	 * The argument must not be null.
+    	 * If no operations are passed return empty operation.
     	 */
-    	Validation.validateNotNull(consumers);
+    	if(size == 0) return (a) -> {};
+    	
+    	/*
+    	 * If exactly one operation is passed try to optimize. If the operation
+    	 * is an instance of the desired type return the operation directly
+    	 * without wrapping. Otherwise wrap the original operation in an
+    	 * operation of the desired type. The optimization prevents unnecessary
+    	 * auto-boxing if possible and also unnecessary creation of a new
+    	 * operation.
+    	 */
+    	if(size == 1)
+    	{
+    		final Consumer<String> first = consumers.get(0);
+    		
+    		if(first instanceof Consumerstr)
+    			return (Consumerstr) first;
+    		else
+    			return (Consumerstr) first::accept;
+    	}
+    	
+    	/*
+    	 * If multiple operations were passed it is not possible to optimize
+    	 * while composing the new operation anymore. The optimization had to be
+    	 * postponed to execution of the composite operation. The optimization
+    	 * prevents unnecessary auto-boxing if possible.
+    	 */
+    	return (a) -> {
+    		for(Consumer<String> consumer : consumers)
+    		{
+    			if(consumer instanceof Consumerstr)
+    				((Consumerstr)consumer).acceptString(a);
+    			else
+    				consumer.accept(a);
+    		}
+    	};
+    }
+    
+    /**
+     * Composes a new {@link Consumerstr} performing the given operations in
+     * sequence.
+     * 
+     * @param consumers The operations to perform.
+     * 
+     * @return A new {@link Consumerstr} performing the operations.
+     */
+    static Consumerstr sequence(Iterable<Consumer<String>> consumers)
+    {
+    	Validation.validateNotNull("consumers", consumers);
     	
     	/*
     	 * As there is no way to determine how many operations were passed
     	 * it is not possible to optimize while composing the new operation
-    	 * composing the new operation anymore. The optimization had to be postponed to execution
-    	 * of the composite operation. The optimization prevents unnecessary auto-boxing if
-    	 * possible.
+    	 * composing the new operation anymore. The optimization had to be
+    	 * postponed to execution of the composite operation. The optimization
+    	 * prevents unnecessary auto-boxing if possible.
     	 */
     	return (a) -> {
     		for(Consumer<String> consumer : consumers)
@@ -544,10 +770,7 @@ public interface Consumerstr extends Consumer<String>
     @Override
     default Consumerstr andThen(java.util.function.Consumer<? super String> after)
     {
-    	/*
-    	 * The argument must not be null.
-    	 */
-    	Validation.validateNotNull(after);
+    	Validation.validateNotNull("after", after);
     	
     	return (a) -> {acceptString(a); after.accept(a);};
     }

@@ -40,7 +40,7 @@ public interface Consumer2<A,B> extends java.util.function.BiConsumer<A,B>
      * @return A new {@link Consumer2} performing this operation and the
      * operation after.
      */
-    default Consumer2<A,B> andThen(Consumer2<A,B> after)
+    default Consumer2<A,B> then(Consumer2<A,B> after)
     {
     	Validation.validateNotNull("after", after);
     	
@@ -56,14 +56,10 @@ public interface Consumer2<A,B> extends java.util.function.BiConsumer<A,B>
      * operations after.
      */
     @SuppressWarnings("unchecked")
-	default Consumer2<A,B> andThen(Consumer2<A,B>... after)
+	default Consumer2<A,B> then(Consumer2<A,B>... after)
     {
     	Validation.validateNotNull("after", after);
-    	/*
-    	 * The argument array can be empty but must not be null. Also no entry
-    	 * must be null.
-    	 */
-    	Validation.validateAllNotNull(after);
+    	Validation.validateEntriesNotNull("after", after);
     	
     	/*
     	 * If no operations are passed return this operation.
@@ -83,7 +79,32 @@ public interface Consumer2<A,B> extends java.util.function.BiConsumer<A,B>
      * @return A new {@link Consumer2} performing this operation and the
      * operations after.
      */
-	default Consumer2<A,B> andThen(Iterable<Consumer2<A,B>> after)
+	default Consumer2<A,B> then(java.util.List<Consumer2<A,B>> after)
+    {
+    	Validation.validateNotNull("after", after);
+    	Validation.validateEntriesNotNull("after", after);
+    	
+    	int size = after.size();
+    	
+    	/*
+    	 * If no operations are passed return this operation.
+    	 */
+    	if(size == 0) return this;
+    	
+    	if(size == 1) return (a, b) -> {accept(a, b); after.get(0).accept(a, b);};
+
+    	return (a, b) -> {accept(a, b); for(Consumer2<A,B> consumer : after) consumer.accept(a, b);};
+    }
+    
+    /**
+     * Performs the given operations in sequence after this operation.
+     * 
+     * @param after The operations to perform after this operation.
+     * 
+     * @return A new {@link Consumer2} performing this operation and the
+     * operations after.
+     */
+	default Consumer2<A,B> then(Iterable<Consumer2<A,B>> after)
     {
 		Validation.validateNotNull("after", after);
 		
@@ -98,7 +119,7 @@ public interface Consumer2<A,B> extends java.util.function.BiConsumer<A,B>
      * @return A new {@link Consumer2} performing the operation before and this
      * operation.
      */
-    default Consumer2<A,B> beforeThat(Consumer2<A,B> before)
+    default Consumer2<A,B> before(Consumer2<A,B> before)
     {
     	Validation.validateNotNull("before", before);
     	
@@ -114,14 +135,10 @@ public interface Consumer2<A,B> extends java.util.function.BiConsumer<A,B>
      * operation.
      */
     @SuppressWarnings("unchecked")
-    default Consumer2<A,B> beforeThat(Consumer2<A,B>... before)
+    default Consumer2<A,B> before(Consumer2<A,B>... before)
     {
     	Validation.validateNotNull("before", before);
-    	/*
-    	 * The argument array can be empty but must not be null. Also no entry
-    	 * must be null.
-    	 */
-    	Validation.validateAllNotNull(before);
+    	Validation.validateEntriesNotNull("before", before);
     	
     	/*
     	 * If no operations are passed return this operation.
@@ -141,7 +158,32 @@ public interface Consumer2<A,B> extends java.util.function.BiConsumer<A,B>
      * @return A new {@link Consumer2} performing the operations before and this
      * operation.
      */
-    default Consumer2<A,B> beforeThat(Iterable<Consumer2<A,B>> before)
+    default Consumer2<A,B> before(java.util.List<Consumer2<A,B>> before)
+    {
+    	Validation.validateNotNull("before", before);
+    	Validation.validateEntriesNotNull("before", before);
+    	
+    	int size = before.size();
+    	
+    	/*
+    	 * If no operations are passed return this operation.
+    	 */
+    	if(size == 0) return this;
+    	
+    	if(size == 1) return (a, b) -> {before.get(0).accept(a, b); accept(a, b);};
+    
+    	return (a, b) -> {for(Consumer2<A,B> consumer : before) consumer.accept(a, b); accept(a, b);};
+    }
+    
+    /**
+     * Performs the given operations in sequence before this operation.
+     * 
+     * @param before The operations to perform before this operation.
+     * 
+     * @return A new {@link Consumer2} performing the operations before and this
+     * operation.
+     */
+    default Consumer2<A,B> before(Iterable<Consumer2<A,B>> before)
     {
     	Validation.validateNotNull("before", before);
     	
@@ -149,7 +191,7 @@ public interface Consumer2<A,B> extends java.util.function.BiConsumer<A,B>
     }
     
     /**
-     * Composes a, b new {@link Consumer2} performing the given operations in
+     * Composes a new {@link Consumer2} performing the given operations in
      * sequence.
      * 
      * @param <A> The type of the first argument to the operation.
@@ -160,14 +202,10 @@ public interface Consumer2<A,B> extends java.util.function.BiConsumer<A,B>
      * @return A new {@link Consumer2} performing the operations.
      */
     @SuppressWarnings("unchecked")
-	static <A,B> Consumer2<A,B> inSequence(Consumer2<A,B>... consumers)
+	static <A,B> Consumer2<A,B> sequence(Consumer2<A,B>... consumers)
     {
     	Validation.validateNotNull("consumers", consumers);
-    	/*
-    	 * The argument array can be empty but must not be null. Also no entry
-    	 * must be null.
-    	 */
-    	Validation.validateAllNotNull(consumers);
+    	Validation.validateEntriesNotNull("consumers", consumers);
     	
     	/*
     	 * If no operations are passed return empty operation.
@@ -183,7 +221,7 @@ public interface Consumer2<A,B> extends java.util.function.BiConsumer<A,B>
     }
     
     /**
-     * Composes a, b new {@link Consumer2} performing the given operations in
+     * Composes a new {@link Consumer2} performing the given operations in
      * sequence.
      * 
      * @param <A> The type of the first argument to the operation.
@@ -193,7 +231,38 @@ public interface Consumer2<A,B> extends java.util.function.BiConsumer<A,B>
      * 
      * @return A new {@link Consumer2} performing the operations.
      */
-    static <A,B> Consumer2<A,B> inSequence(Iterable<Consumer2<A,B>> consumers)
+	static <A,B> Consumer2<A,B> sequence(java.util.List<Consumer2<A,B>> consumers)
+    {
+    	Validation.validateNotNull("consumers", consumers);
+    	Validation.validateEntriesNotNull("consumers", consumers);
+    	
+    	int size = consumers.size();
+    	
+    	/*
+    	 * If no operations are passed return empty operation.
+    	 */
+    	if(size == 0) return (a, b) -> {};
+    	
+    	/*
+    	 * If exactly one operation is passed return the operation.
+    	 */
+    	if(size == 1) return consumers.get(0);
+    	
+    	return (a, b) -> {for(Consumer2<A,B> consumer : consumers) consumer.accept(a, b);};
+    }
+    
+    /**
+     * Composes a new {@link Consumer2} performing the given operations in
+     * sequence.
+     * 
+     * @param <A> The type of the first argument to the operation.
+     * @param <B> The type of the second argument to the operation.
+     * 
+     * @param consumers The operations to perform.
+     * 
+     * @return A new {@link Consumer2} performing the operations.
+     */
+    static <A,B> Consumer2<A,B> sequence(Iterable<Consumer2<A,B>> consumers)
     {
     	Validation.validateNotNull("consumers", consumers);
     	
