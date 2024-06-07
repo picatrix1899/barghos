@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class provides reflection utillities for types, classes and interfaces.
+ * This class provides reflection utilities for types, classes and interfaces.
  * 
  * @author picatrix1899
  */

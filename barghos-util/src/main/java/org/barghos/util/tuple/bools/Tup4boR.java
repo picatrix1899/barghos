@@ -6,7 +6,7 @@ import org.barghos.annotation.MinLength;
 import org.barghos.annotation.Nullable;
 
 import org.barghos.util.consumer.Consumer4;
-import org.barghos.util.consumer.bools.Consumer4bo;
+import org.barghos.util.consumer.bools.Consumer4Bo;
 
 import org.barghos.validation.Validation;
 
@@ -356,7 +356,7 @@ public interface Tup4boR extends TupboR
 	 * 
 	 * @param consumer The consumer receiving the tuple.
 	 */
-	default void passTo(Consumer4bo consumer)
+	default void passTo(Consumer4Bo consumer)
 	{
 		Validation.validateNotNull("consumer", consumer);
 		

@@ -1,7 +1,5 @@
 package org.barghos.math.bounds;
 
-import org.barghos.math.api.bv.CircleBV2fC;
-import org.barghos.math.api.bv.CircleBV2fR;
 import org.barghos.math.api.vector.SimpleVec2fC;
 import org.barghos.math.api.vector.SimpleVec2fR;
 

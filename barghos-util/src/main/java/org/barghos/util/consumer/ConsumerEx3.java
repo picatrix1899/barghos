@@ -1,15 +1,16 @@
 package org.barghos.util.consumer;
 
 import org.barghos.validation.ExceptionHandler;
-import org.barghos.validation.Validation;
+import org.barghos.validation.ParameterValidation;
 
 /**
  * Represents an operation that accepts three input arguments and returns no
- * result. Unlike {@link Consumer3} this may throw Exceptions.
+ * result. Unlike {@link Consumer3} this may throw exceptions.
  *  {@link ConsumerEx3} is expected to operate via side-effects.
  *
  * <p>
- * This is a functional interface whose functional method is {@link #accept}.
+ * This is a functional interface whose functional method is
+ * {@link #accept(Object, Object, Object)}.
  *
  * @param <A> The type of the first argument to the operation.
  * @param <B> The type of the second argument to the operation.
@@ -48,73 +49,13 @@ public interface ConsumerEx3<A,B,C>
      */
     default ConsumerEx3<A,B,C> then(ConsumerEx3<A,B,C> after)
     {
-    	Validation.validateNotNull("after", after);
+    	ParameterValidation.pvNotNull("after", after);
     	
-    	return (a, b, c) -> {accept(a, b, c); after.accept(a, b, c);};
-    }
-    
-    /**
-     * Performs the given operations in sequence after this operation.
-     * 
-     * @param after The operations to perform after this operation.
-     * 
-     * @return A new {@link ConsumerEx3} performing this operation and the
-     * operations after.
-     */
-    @SuppressWarnings("unchecked")
-	default ConsumerEx3<A,B,C> then(ConsumerEx3<A,B,C>... after)
-    {
-    	Validation.validateNotNull("after", after);
-    	Validation.validateEntriesNotNull("after", after);
-    	
-    	/*
-    	 * If no operations are passed return this operation.
-    	 */
-    	if(after.length == 0) return this;
-    	
-    	if(after.length == 1) return (a, b, c) -> {accept(a, b, c); after[0].accept(a, b, c);};
-
-    	return (a, b, c) -> {accept(a, b, c); for(ConsumerEx3<A,B,C> consumer : after) consumer.accept(a, b, c);};
-    }
-    
-    /**
-     * Performs the given operations in sequence after this operation.
-     * 
-     * @param after The operations to perform after this operation.
-     * 
-     * @return A new {@link ConsumerEx3} performing this operation and the
-     * operations after.
-     */
-	default ConsumerEx3<A,B,C> then(java.util.List<ConsumerEx3<A,B,C>> after)
-    {
-    	Validation.validateNotNull("after", after);
-    	Validation.validateEntriesNotNull("after", after);
-    	
-    	int size = after.size();
-    	
-    	/*
-    	 * If no operations are passed return this operation.
-    	 */
-    	if(size == 0) return this;
-    	
-    	if(size == 1) return (a, b, c) -> {accept(a, b, c); after.get(0).accept(a, b, c);};
-
-    	return (a, b, c) -> {accept(a, b, c); for(ConsumerEx3<A,B,C> consumer : after) consumer.accept(a, b, c);};
-    }
-    
-    /**
-     * Performs the given operations in sequence after this operation.
-     * 
-     * @param after The operations to perform after this operation.
-     * 
-     * @return A new {@link ConsumerEx3} performing this operation and the
-     * operations after.
-     */
-	default ConsumerEx3<A,B,C> then(Iterable<ConsumerEx3<A,B,C>> after)
-    {
-		Validation.validateNotNull("after", after);
-		
-    	return (a, b, c) -> {accept(a, b, c); for(ConsumerEx3<A,B,C> consumer : after) consumer.accept(a, b, c);};
+    	return (a, b, c) -> {
+    		accept(a, b, c);
+    		
+    		after.accept(a, b, c);
+    	};
     }
     
 	/**
@@ -127,155 +68,13 @@ public interface ConsumerEx3<A,B,C>
      */
     default ConsumerEx3<A,B,C> before(ConsumerEx3<A,B,C> before)
     {
-    	Validation.validateNotNull("before", before);
+    	ParameterValidation.pvNotNull("before", before);
     	
-    	return (a, b, c) -> {before.accept(a, b, c); accept(a, b, c);};
-    }
-    
-    /**
-     * Performs the given operations in sequence before this operation.
-     * 
-     * @param before The operations to perform before this operation.
-     * 
-     * @return A new {@link ConsumerEx3} performing the operations before and
-     * this operation.
-     */
-    @SuppressWarnings("unchecked")
-    default ConsumerEx3<A,B,C> before(ConsumerEx3<A,B,C>... before)
-    {
-    	Validation.validateNotNull("before", before);
-    	Validation.validateEntriesNotNull("before", before);
-    	
-    	/*
-    	 * If no operations are passed return this operation.
-    	 */
-    	if(before.length == 0) return this;
-    	
-    	if(before.length == 1) return (a, b, c) -> {before[0].accept(a, b, c); accept(a, b, c);};
-    
-    	return (a, b, c) -> {for(ConsumerEx3<A,B,C> consumer : before) consumer.accept(a, b, c); accept(a, b, c);};
-    }
-    
-    /**
-     * Performs the given operations in sequence before this operation.
-     * 
-     * @param before The operations to perform before this operation.
-     * 
-     * @return A new {@link ConsumerEx3} performing the operations before and
-     * this operation.
-     */
-    default ConsumerEx3<A,B,C> before(java.util.List<ConsumerEx3<A,B,C>> before)
-    {
-    	Validation.validateNotNull("before", before);
-    	Validation.validateEntriesNotNull("before", before);
-    	
-    	int size = before.size();
-    	
-    	/*
-    	 * If no operations are passed return this operation.
-    	 */
-    	if(size == 0) return this;
-    	
-    	if(size == 1) return (a, b, c) -> {before.get(0).accept(a, b, c); accept(a, b, c);};
-    
-    	return (a, b, c) -> {for(ConsumerEx3<A,B,C> consumer : before) consumer.accept(a, b, c); accept(a, b, c);};
-    }
-    
-    /**
-     * Performs the given operations in sequence before this operation.
-     * 
-     * @param before The operations to perform before this operation.
-     * 
-     * @return A new {@link ConsumerEx3} performing the operations before and
-     * this operation.
-     */
-    default ConsumerEx3<A,B,C> before(Iterable<ConsumerEx3<A,B,C>> before)
-    {
-    	Validation.validateNotNull("before", before);
-    	
-    	return (a, b, c) -> {for(ConsumerEx3<A,B,C> consumer : before) consumer.accept(a, b, c); accept(a, b, c);};
-    }
-    
-    /**
-     * Composes a, b, c new {@link ConsumerEx3} performing the given operations
-     * in sequence.
-     * 
-     * @param <A> The type of the first argument to the operation.
-     * @param <B> The type of the second argument to the operation.
-     * @param <C> The type of the third argument to the operation.
-     * 
-     * @param consumers The operations to perform.
-     * 
-     * @return A new {@link ConsumerEx3} performing the operations.
-     */
-    @SuppressWarnings("unchecked")
-	static <A,B,C> ConsumerEx3<A,B,C> sequence(ConsumerEx3<A,B,C>... consumers)
-    {
-    	Validation.validateNotNull("consumers", consumers);
-    	Validation.validateEntriesNotNull("consumers", consumers);
-    	
-    	/*
-    	 * If no operations are passed return empty operation.
-    	 */
-    	if(consumers.length == 0) return (a, b, c) -> {};
-    	
-    	/*
-    	 * If exactly one operation is passed return the operation.
-    	 */
-    	if(consumers.length == 1) return consumers[0];
-    	
-    	return (a, b, c) -> {for(ConsumerEx3<A,B,C> consumer : consumers) consumer.accept(a, b, c);};
-    }
-    
-    /**
-     * Composes a, b, c new {@link ConsumerEx3} performing the given operations
-     * in sequence.
-     * 
-     * @param <A> The type of the first argument to the operation.
-     * @param <B> The type of the second argument to the operation.
-     * @param <C> The type of the third argument to the operation.
-     * 
-     * @param consumers The operations to perform.
-     * 
-     * @return A new {@link ConsumerEx3} performing the operations.
-     */
-	static <A,B,C> ConsumerEx3<A,B,C> sequence(java.util.List<ConsumerEx3<A,B,C>> consumers)
-    {
-    	Validation.validateNotNull("consumers", consumers);
-    	Validation.validateEntriesNotNull("consumers", consumers);
-    	
-    	int size = consumers.size();
-    	
-    	/*
-    	 * If no operations are passed return empty operation.
-    	 */
-    	if(size == 0) return (a, b, c) -> {};
-    	
-    	/*
-    	 * If exactly one operation is passed return the operation.
-    	 */
-    	if(size == 1) return consumers.get(0);
-    	
-    	return (a, b, c) -> {for(ConsumerEx3<A,B,C> consumer : consumers) consumer.accept(a, b, c);};
-    }
-    
-    /**
-     * Composes a, b, c new {@link ConsumerEx3} performing the given operations
-     * in sequence.
-     * 
-     * @param <A> The type of the first argument to the operation.
-     * @param <B> The type of the second argument to the operation.
-     * @param <C> The type of the third argument to the operation.
-     * 
-     * @param consumers The operations to perform.
-     * 
-     * @return A new {@link ConsumerEx3} performing the operations.
-     */
-    static <A,B,C> ConsumerEx3<A,B,C> sequence(Iterable<ConsumerEx3<A,B,C>> consumers)
-    {
-    	Validation.validateNotNull("consumers", consumers);
-    	
-    	return (a, b, c) -> {for(ConsumerEx3<A,B,C> consumer : consumers) consumer.accept(a, b, c);};
+    	return (a, b, c) -> {
+    		before.accept(a, b, c);
+    		
+    		accept(a, b, c);
+    	};
     }
     
     /**
@@ -289,7 +88,7 @@ public interface ConsumerEx3<A,B,C>
      */
     default Consumer3<A,B,C> handled(ExceptionHandler handler)
     {
-    	Validation.validateNotNull("handler", handler);
+    	ParameterValidation.pvNotNull("handler", handler);
     	
     	return (a, b, c) -> {
     		try
@@ -315,7 +114,7 @@ public interface ConsumerEx3<A,B,C>
      */
     default ConsumerEx3<A,B,C> onException(ConsumerEx3<A,B,C> consumer)
     {
-    	Validation.validateNotNull("consumer", consumer);
+    	ParameterValidation.pvNotNull("consumer", consumer);
     	
     	return (a, b, c) -> {
     		try
@@ -340,7 +139,7 @@ public interface ConsumerEx3<A,B,C>
      */
     default Consumer3<A,B,C> onException(Consumer3<A,B,C> consumer)
     {
-    	Validation.validateNotNull("consumer", consumer);
+    	ParameterValidation.pvNotNull("consumer", consumer);
     	
     	return (a, b, c) -> {
     		try
@@ -348,6 +147,48 @@ public interface ConsumerEx3<A,B,C>
     			accept(a, b, c);
     		}
     		catch(Exception e)
+    		{
+    			consumer.accept(a, b, c);
+    		}
+    	};
+    }
+    
+    /**
+     * Composes a new {@link ConsumerEx3} performing the given operations
+     * in sequence.
+     * 
+     * @param <A> The type of the first argument to the operation.
+     * @param <B> The type of the second argument to the operation.
+     * @param <C> The type of the third argument to the operation.
+     * 
+     * @param consumers The operations to perform.
+     * 
+     * @return A new {@link ConsumerEx3} performing the operations.
+     */
+    @SafeVarargs
+	static <A,B,C> ConsumerEx3<A,B,C> of(ConsumerEx3<A,B,C>... consumers)
+    {
+    	ParameterValidation.pvNotNull("consumers", consumers);
+    	ParameterValidation.pvEntriesNotNull("consumers", consumers);
+    	
+    	/*
+    	 * If no operations are passed return empty operation.
+    	 */
+    	if(consumers.length == 0)
+    	{
+    		return (a, b, c) -> {};
+    	}
+    	
+    	/*
+    	 * If exactly one operation is passed return the operation.
+    	 */
+    	if(consumers.length == 1)
+    	{
+    		return consumers[0];
+    	}
+    	
+    	return (a, b, c) -> {
+    		for(ConsumerEx3<A,B,C> consumer : consumers)
     		{
     			consumer.accept(a, b, c);
     		}

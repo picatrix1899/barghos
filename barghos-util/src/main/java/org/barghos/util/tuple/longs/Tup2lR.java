@@ -7,7 +7,7 @@ import org.barghos.annotation.MinLength;
 import org.barghos.annotation.Nullable;
 
 import org.barghos.util.consumer.Consumer2;
-import org.barghos.util.consumer.longs.Consumer2l;
+import org.barghos.util.consumer.longs.Consumer2L;
 
 import org.barghos.validation.Validation;
 
@@ -320,7 +320,7 @@ public interface Tup2lR extends TuplR
 	 * 
 	 * @param consumer The consumer receiving the tuple.
 	 */
-	default void passTo(Consumer2l consumer)
+	default void passTo(Consumer2L consumer)
 	{
 		Validation.validateNotNull("consumer", consumer);
 		
