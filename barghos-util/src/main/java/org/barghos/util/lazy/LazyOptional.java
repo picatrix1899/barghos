@@ -35,21 +35,11 @@ public class LazyOptional<T>
 		return this.value.get();
 	}
 	
-	public T newValue()
-	{
-		return this.supplier.getGeneric();
-	}
-	
 	public Optional<T> optionalValue()
 	{
 		if(!hasValue) update();
 		
 		return this.value;
-	}
-	
-	public Optional<T> optionalNewValue()
-	{
-		return Optional.ofNullable(this.supplier.getGeneric());
 	}
 	
 	public void clear()
@@ -60,7 +50,7 @@ public class LazyOptional<T>
 	
 	public void update()
 	{
-		this.value = Optional.ofNullable(this.supplier.getGeneric());
+		this.value = Optional.ofNullable(this.supplier.get());
 		this.hasValue = true;
 	}
 	

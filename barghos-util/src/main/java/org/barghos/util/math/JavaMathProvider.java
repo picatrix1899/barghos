@@ -1,5 +1,8 @@
 package org.barghos.util.math;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+
 public class JavaMathProvider implements MathProvider
 {
 	public boolean useFMA = true;
@@ -84,6 +87,16 @@ public class JavaMathProvider implements MathProvider
 		return Math.max(a, b);
 	}
 
+	public BigDecimal abs(BigDecimal value)
+	{
+		return value.abs();
+	}
+	
+	public BigInteger abs(BigInteger value)
+	{
+		return value.abs();
+	}
+	
 	public double abs(double value)
 	{
 		return Math.abs(value);
@@ -94,26 +107,106 @@ public class JavaMathProvider implements MathProvider
 		return Math.abs(value);
 	}
 
-	public boolean isExactlyZero(double value)
+	public float abs(long value)
+	{
+		return Math.abs(value);
+	}
+	
+	public float abs(int value)
+	{
+		return Math.abs(value);
+	}
+	
+	public float abs(short value)
+	{
+		return Math.abs(value);
+	}
+	
+	public float abs(byte value)
+	{
+		return Math.abs(value);
+	}
+	
+	public boolean isZero(BigDecimal value)
+	{
+		return value.compareTo(BigDecimal.ZERO) == 0;
+	}
+	
+	public boolean isZero(BigInteger value)
+	{
+		return value.compareTo(BigInteger.ZERO) == 0;
+	}
+	
+	public boolean isZero(double value)
 	{
 		return value == 0.0f;
 	}
 
-	public boolean isExactlyZero(float value)
+	public boolean isZero(float value)
 	{
 		return value == 0.0;
 	}
 
-	public boolean isZero(float value, float tolerance)
+	public boolean isZero(long value)
+	{
+		return value == 0;
+	} 
+	
+	public boolean isZero(int value)
+	{
+		return value == 0;
+	} 
+	
+	public boolean isZero(short value)
+	{
+		return value == 0;
+	} 
+	
+	public boolean isZero(byte value)
+	{
+		return value == 0;
+	} 
+	
+	public boolean isZero(BigDecimal tolerance, BigDecimal value)
+	{
+		return value.abs().compareTo(tolerance) <= 0;
+	}
+	
+	public boolean isZero(BigInteger tolerance, BigInteger value)
+	{
+		return value.abs().compareTo(tolerance) <= 0;
+	}
+	
+	public boolean isZero(float tolerance, float value)
 	{
 		return Math.abs(value) <= tolerance;
 	}
 
-	public boolean isZero(double value, double tolerance)
+	public boolean isZero(double tolerance, double value)
 	{
 		return Math.abs(value) <= tolerance;
 	}
 
+	public boolean isZero(long tolerance, long value)
+	{
+		return Math.abs(value) <= tolerance;
+	}
+	
+	public boolean isZero(int tolerance, int value)
+	{
+		return Math.abs(value) <= tolerance;
+	}
+	
+	public boolean isZero(short tolerance, short value)
+	{
+		return Math.abs(value) <= tolerance;
+	}
+	
+	public boolean isZero(byte tolerance, byte value)
+	{
+		return Math.abs(value) <= tolerance;
+	}
+	
 	public double signum(double value)
 	{
 		return Math.signum(value);
@@ -189,4 +282,179 @@ public class JavaMathProvider implements MathProvider
 		return (float)Math.atan2(y, x);
 	}
 
+	public int compare(BigDecimal a, BigDecimal b)
+	{
+		return a.compareTo(b);
+	}
+	
+	public int compare(BigInteger a, BigInteger b)
+	{
+		return a.compareTo(b);
+	}
+	
+	public int compare(double a, double b)
+	{
+		return Double.compare(a, b);
+	}
+
+	public int compare(float a, float b)
+	{
+		return Float.compare(a, b);
+	}
+	
+	public int compare(long a, long b)
+	{
+		return Long.compare(a, b);
+	}
+	
+	public int compare(int a, int b)
+	{
+		return Integer.compare(a, b);
+	}
+	
+	public int compare(short a, short b)
+	{
+		return Short.compare(a, b);
+	}
+	
+	public int compare(byte a, byte b)
+	{
+		return Byte.compare(a, b);
+	}
+	
+	public int compare(BigDecimal tolerance, BigDecimal a, BigDecimal b)
+	{
+		if(a.subtract(b).abs().compareTo(tolerance) <= 0) return 0;
+		
+		return a.compareTo(b);
+	}
+	
+	public int compare(BigInteger tolerance, BigInteger a, BigInteger b)
+	{
+		if(a.subtract(b).abs().compareTo(tolerance) <= 0) return 0;
+		
+		return a.compareTo(b);
+	}
+	
+	public int compare(double tolerance, double a, double b)
+	{
+		if(abs(a - b) <= tolerance) return 0;
+		
+		return Double.compare(a, b);
+	}
+
+	public int compare(float tolerance, float a, float b)
+	{
+		if(abs(a - b) <= tolerance) return 0;
+		
+		return Float.compare(a, b);
+	}
+	
+	public int compare(long tolerance, long a, long b)
+	{
+		if(abs(a - b) <= tolerance) return 0;
+		
+		return Long.compare(a, b);
+	}
+	
+	public int compare(int tolerance, int a, int b)
+	{
+		if(abs(a - b) <= tolerance) return 0;
+		
+		return Integer.compare(a, b);
+	}
+	
+	public int compare(short tolerance, short a, short b)
+	{
+		if(abs(a - b) <= tolerance) return 0;
+		
+		return Short.compare(a, b);
+	}
+	
+	public int compare(byte tolerance, byte a, byte b)
+	{
+		if(abs(a - b) <= tolerance) return 0;
+		
+		return Byte.compare(a, b);
+	}
+	
+	public boolean equals(BigDecimal a, BigDecimal b)
+	{
+		return a.compareTo(b) == 0;
+	}
+	
+	public boolean equals(BigInteger a, BigInteger b)
+	{
+		return a.compareTo(b) == 0;
+	}
+	
+	public boolean equals(double a, double b)
+	{
+		return a == b;
+	}
+	
+	public boolean equals(float a, float b)
+	{
+		return a == b;
+	}
+	
+	public boolean equals(long a, long b)
+	{
+		return a == b;
+	}
+	
+	public boolean equals(int a, int b)
+	{
+		return a == b;
+	}
+	
+	public boolean equals(short a, short b)
+	{
+		return a == b;
+	}
+	
+	public boolean equals(byte a, byte b)
+	{
+		return a == b;
+	}
+	
+	public boolean equals(BigDecimal tolerance, BigDecimal a, BigDecimal b)
+	{
+		return a.subtract(b).abs().compareTo(tolerance) <= 0;
+	}
+	
+	public boolean equals(BigInteger tolerance, BigInteger a, BigInteger b)
+	{
+		return a.subtract(b).abs().compareTo(tolerance) <= 0;
+	}
+	
+	public boolean equals(double tolerance, double a, double b)
+	{
+		return abs(a - b) <= tolerance;
+	}
+	
+	public boolean equals(float tolerance, float a, float b)
+	{
+		return abs(a - b) <= tolerance;
+	}
+	
+	public boolean equals(long tolerance, long a, long b)
+	{
+		return abs(a - b) <= tolerance;
+	}
+	
+	public boolean equals(int tolerance, int a, int b)
+	{
+		return abs(a - b) <= tolerance;
+	}
+	
+	public boolean equals(short tolerance, short a, short b)
+	{
+		return abs(a - b) <= tolerance;
+	}
+	
+	public boolean equals(byte tolerance, byte a, byte b)
+	{
+		return abs(a - b) <= tolerance;
+	}
 }

@@ -2,26 +2,30 @@ package org.barghos.util.predicate;
 
 import java.util.Objects;
 
+import org.barghos.validation.ParameterValidation;
+
 /**
  * Represents a predicate (boolean-valued function) of one argument.
  *
- * <p>This is a <a href="package-summary.html">functional interface</a>
- * whose functional method is {@link #test(Object)}.
+ * <p>
+ * This is a functional interface whose functional method is
+ * {@link #getDouble()}.
  *
- * @param <T> the type of the input to the predicate
+ * @param <A> the type of the first input parameter of the predicate.
  */
 @FunctionalInterface
-public interface Predicate<T> extends java.util.function.Predicate<T>
+public interface Predicate<A> extends java.util.function.Predicate<A>
 {
 	/**
      * Evaluates this predicate on the given argument.
      *
-     * @param t the input argument
+     * @param a The first input parameter.
      * 
-     * @return {@code true} if the input argument matches the predicate,
-     * otherwise {@code false}
+     * @return {@code true} if the input parameter matches the predicate,
+     * otherwise {@code false}.
      */
-    boolean test(T t);
+    @Override
+	boolean test(A a);
 
     /**
      * Returns a composed predicate that represents a short-circuiting logical
@@ -33,19 +37,19 @@ public interface Predicate<T> extends java.util.function.Predicate<T>
      * to the caller; if evaluation of this predicate throws an exception, the
      * {@code other} predicate will not be evaluated.
      *
-     * @param other a predicate that will be logically-ANDed with this
-     *              predicate
+     * @param other
+     * a predicate that will be logically-ANDed with this predicate.
      *              
      * @return a composed predicate that represents the short-circuiting logical
      * AND of this predicate and the {@code other} predicate
      * 
      * @throws NullPointerException if other is null
      */
-    default Predicate<T> and(Predicate<T> other)
+    default Predicate<A> and(Predicate<A> other)
     {
-        Objects.requireNonNull(other);
+        ParameterValidation.pvNotNull("other", other);
         
-        return (t) -> test(t) && other.test(t);
+        return (a) -> test(a) && other.test(a);
     }
 
     /**
@@ -55,9 +59,9 @@ public interface Predicate<T> extends java.util.function.Predicate<T>
      * @return a predicate that represents the logical negation of this
      * predicate
      */
-    default Predicate<T> negate()
+    default Predicate<A> negate()
     {
-        return (t) -> !test(t);
+        return (a) -> !test(a);
     }
 
     /**
@@ -78,11 +82,11 @@ public interface Predicate<T> extends java.util.function.Predicate<T>
      * 
      * @throws NullPointerException if other is null
      */
-    default Predicate<T> or(Predicate<T> other)
+    default Predicate<A> or(Predicate<A> other)
     {
-        Objects.requireNonNull(other);
+        ParameterValidation.pvNotNull("other", other);
         
-        return (t) -> test(t) || other.test(t);
+        return (a) -> test(a) || other.test(a);
     }
 
     /**
@@ -97,9 +101,9 @@ public interface Predicate<T> extends java.util.function.Predicate<T>
      * @return a predicate that tests if two arguments are equal according
      * to {@link Objects#equals(Object, Object)}
      */
-    static <T> Predicate<T> isEqual(Object targetRef)
+    static <A> Predicate<A> isEqual(Object targetRef)
     {
-        return (null == targetRef) ? Objects::isNull : object -> targetRef.equals(object);
+        return (null == targetRef) ? Objects::isNull : (object) -> targetRef.equals(object);
     }
 
     /**
@@ -116,9 +120,9 @@ public interface Predicate<T> extends java.util.function.Predicate<T>
      *
      * @throws NullPointerException if target is null
      */
-    static <T> Predicate<T> not(Predicate<T> target)
+    static <A> Predicate<A> not(Predicate<A> target)
     {
-        Objects.requireNonNull(target);
+    	ParameterValidation.pvNotNull("target", target);
         
         return target.negate();
     }

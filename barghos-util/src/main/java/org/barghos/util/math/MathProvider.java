@@ -1,5 +1,8 @@
 package org.barghos.util.math;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+
 public interface MathProvider
 {
 	
@@ -149,23 +152,53 @@ public interface MathProvider
 	// MISSING_DOC
 	float max(float a, float b);
 	
-	// MISSING_DOC
+	BigDecimal abs(BigDecimal value);
+	
+	BigInteger abs(BigInteger value);
+	
 	double abs(double value);
-	
-	// MISSING_DOC
+
 	float abs(float value);
+
+	float abs(long value);
 	
-	// MISSING_DOC
-	boolean isExactlyZero(double value);
+	float abs(int value);
 	
-	// MISSING_DOC
-	boolean isExactlyZero(float value);
+	float abs(short value);
 	
-	// MISSING_DOC
-	boolean isZero(float value, float tolerance);
+	float abs(byte value);
 	
-	// MISSING_DOC
-	boolean isZero(double value, double tolerance);
+	boolean isZero(BigDecimal value);
+	
+	boolean isZero(BigInteger value);
+	
+	boolean isZero(double value);
+
+	boolean isZero(float value);
+
+	boolean isZero(long value);
+	
+	boolean isZero(int value);
+	
+	boolean isZero(short value);
+	
+	boolean isZero(byte value);
+	
+	boolean isZero(BigDecimal tolerance, BigDecimal value);
+	
+	boolean isZero(BigInteger tolerance, BigInteger value);
+	
+	boolean isZero(float tolerance, float value);
+
+	boolean isZero(double tolerance, double value);
+
+	boolean isZero(long tolerance, long value);
+	
+	boolean isZero(int tolerance, int value);
+	
+	boolean isZero(short tolerance, short value);
+	
+	boolean isZero(byte tolerance, byte value);
 	
 	// MISSING_DOC
 	double signum(double value);
@@ -198,8 +231,74 @@ public interface MathProvider
 	float fma(float a, float b, float c);
 	
 	double acos(double value);
+	
 	float acos(float value);
 	
 	double atan2(double y, double x);
+	
 	float atan2(float y, float x);
+	
+	int compare(BigDecimal a, BigDecimal b);
+	
+	int compare(BigInteger a, BigInteger b);
+	
+	int compare(double a, double b);
+
+	int compare(float a, float b);
+	
+	int compare(long a, long b);
+	
+	int compare(int a, int b);
+	
+	int compare(short a, short b);
+	
+	int compare(byte a, byte b);
+	
+	int compare(BigDecimal tolerance, BigDecimal a, BigDecimal b);
+	
+	int compare(BigInteger tolerance, BigInteger a, BigInteger b);
+	
+	int compare(double tolerance, double a, double b);
+
+	int compare(float tolerance, float a, float b);
+	
+	int compare(long tolerance, long a, long b);
+	
+	int compare(int tolerance, int a, int b);
+	
+	int compare(short tolerance, short a, short b);
+	
+	int compare(byte tolerance, byte a, byte b);
+	
+	boolean equals(BigDecimal a, BigDecimal b);
+	
+	boolean equals(BigInteger a, BigInteger b);
+	
+	boolean equals(double a, double b);
+	
+	boolean equals(float a, float b);
+	
+	boolean equals(long a, long b);
+	
+	boolean equals(int a, int b);
+	
+	boolean equals(short a, short b);
+	
+	boolean equals(byte a, byte b);
+
+	boolean equals(BigDecimal tolerance, BigDecimal a, BigDecimal b);
+	
+	boolean equals(BigInteger tolerance, BigInteger a, BigInteger b);
+	
+	boolean equals(double tolerance, double a, double b);
+	
+	boolean equals(float tolerance, float a, float b);
+	
+	boolean equals(long tolerance, long a, long b);
+	
+	boolean equals(int tolerance, int a, int b);
+	
+	boolean equals(short tolerance, short a, short b);
+	
+	boolean equals(byte tolerance, byte a, byte b);	
 }

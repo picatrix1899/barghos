@@ -1,7 +1,6 @@
 package org.barghos.math.quaternion;
 
 import org.barghos.core.tuple.Tup4fR;
-import org.barghos.math.api.quaternion.QuatfC;
 import org.barghos.math.api.vector.SimpleVec2fR;
 
 public class Quatf implements QuatfC

@@ -9,7 +9,7 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
-import org.barghos.util.consumer.floats.Consumerf;
+import org.barghos.util.consumer.floats.ConsumerF;
 
 /**
  * A container object which may or may not contain a non-{@code null} value.
@@ -139,7 +139,7 @@ public final class Optionalf
      * @throws NullPointerException if value is present and the given action is
      *         {@code null}
      */
-    public void ifPresent(Consumerf action)
+    public void ifPresent(ConsumerF action)
     {
         if(this.hasValue) action.acceptFloat(value);
     }
@@ -156,7 +156,7 @@ public final class Optionalf
      *         action is {@code null}.
      * @since 9
      */
-    public void ifPresentOrElse(Consumerf action, Runnable emptyAction)
+    public void ifPresentOrElse(ConsumerF action, Runnable emptyAction)
     {
         if(this.hasValue)
             action.acceptFloat(value);

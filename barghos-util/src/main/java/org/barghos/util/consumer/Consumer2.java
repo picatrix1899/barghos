@@ -1,14 +1,14 @@
 package org.barghos.util.consumer;
 
-import org.barghos.validation.Assert;
-import org.barghos.validation.Validation;
+import org.barghos.validation.ParameterValidation;
 
 /**
- * Represents an operation that accepts two input arguments and returns no result.
- * {@link Consumer2} is expected to operate via side-effects.
+ * Represents an operation that accepts two input arguments and returns no
+ * result. {@link Consumer2} is expected to operate via side-effects.
  *
  * <p>
- * This is a, b functional interface whose functional method is {@link #accept}.
+ * This is a functional interface whose functional method is
+ * {@link #accept(Object, Object)}.
  *
  * @param <A> The type of the first argument to the operation.
  * @param <B> The type of the second argument to the operation.
@@ -31,6 +31,7 @@ public interface Consumer2<A,B> extends java.util.function.BiConsumer<A,B>
      * @param a The first input argument.
      * @param b The second input argument.
      */
+	@Override
     void accept(A a, B b);
     
     /**
@@ -38,53 +39,29 @@ public interface Consumer2<A,B> extends java.util.function.BiConsumer<A,B>
      * 
      * @param after The operation to perform after this operation.
      * 
-     * @return A new {@link Consumer2} performing this operation and the operation after.
+     * @return A new {@link Consumer2} performing this operation and the
+     * operation after.
      */
-    default Consumer2<A,B> andThen(Consumer2<A,B> after)
+    default Consumer2<A,B> then(Consumer2<A,B> after)
     {
-    	Assert.assertNotNull("after", after);
+    	ParameterValidation.pvNotNull("after", after);
     	
-    	return (a, b) -> {accept(a, b); after.accept(a, b);};
+    	return (a, b) -> { accept(a, b); after.accept(a, b); };
     }
     
     /**
-     * Performs the given operations in sequence after this operation.
+     * Performs the given operation after this operation.
      * 
-     * @param after The operations to perform after this operation.
+     * @param after The operation to perform after this operation.
      * 
-     * @return A new {@link Consumer2} performing this operation and the operations after.
+     * @return A new {@link Consumer2} performing this operation and the
+     * operation after.
      */
-    @SuppressWarnings("unchecked")
-	default Consumer2<A,B> andThen(Consumer2<A,B>... after)
+    default Consumer2<A,B> then(java.util.function.BiConsumer<? super A,? super B> after)
     {
-    	Assert.assertNotNull("after", after);
-    	/*
-    	 * The argument array can be empty but must not be null. Also no entry must be null.
-    	 */
-    	Validation.validateAllNotNull(after);
+    	ParameterValidation.pvNotNull("after", after);
     	
-    	/*
-    	 * If no operations are passed return this operation.
-    	 */
-    	if(after.length == 0) return this;
-    	
-    	if(after.length == 1) return (a, b) -> {accept(a, b); after[0].accept(a, b);};
-
-    	return (a, b) -> {accept(a, b); for(Consumer2<A,B> consumer : after) consumer.accept(a, b);};
-    }
-    
-    /**
-     * Performs the given operations in sequence after this operation.
-     * 
-     * @param after The operations to perform after this operation.
-     * 
-     * @return A new {@link Consumer2} performing this operation and the operations after.
-     */
-	default Consumer2<A,B> andThen(Iterable<Consumer2<A,B>> after)
-    {
-		Assert.assertNotNull("after", after);
-		
-    	return (a, b) -> {accept(a, b); for(Consumer2<A,B> consumer : after) consumer.accept(a, b);};
+    	return (a, b) -> { accept(a, b); after.accept(a, b); };
     }
     
 	/**
@@ -92,57 +69,44 @@ public interface Consumer2<A,B> extends java.util.function.BiConsumer<A,B>
      * 
      * @param before The operation to perform before this operation.
      * 
-     * @return A new {@link Consumer2} performing the operation before and this operation.
+     * @return A new {@link Consumer2} performing the operation before and this
+     * operation.
      */
-    default Consumer2<A,B> beforeThat(Consumer2<A,B> before)
+    default Consumer2<A,B> before(Consumer2<A,B> before)
     {
-    	Assert.assertNotNull("before", before);
+    	ParameterValidation.pvNotNull("before", before);
     	
-    	return (a, b) -> {before.accept(a, b); accept(a, b);};
+    	return (a, b) -> { before.accept(a, b); accept(a, b); };
     }
     
     /**
-     * Performs the given operations in sequence before this operation.
+     * Performs the given operation before this operation.
      * 
-     * @param before The operations to perform before this operation.
+     * @param before The operation to perform before this operation.
      * 
-     * @return A new {@link Consumer2} performing the operations before and this operation.
+     * @return A new {@link Consumer2} performing the operation before and this
+     * operation.
      */
-    @SuppressWarnings("unchecked")
-    default Consumer2<A,B> beforeThat(Consumer2<A,B>... before)
+    default Consumer2<A,B> before(java.util.function.BiConsumer<? super A,? super B> before)
     {
-    	Assert.assertNotNull("before", before);
-    	/*
-    	 * The argument array can be empty but must not be null. Also no entry must be null.
-    	 */
-    	Validation.validateAllNotNull(before);
+    	ParameterValidation.pvNotNull("before", before);
     	
-    	/*
-    	 * If no operations are passed return this operation.
-    	 */
-    	if(before.length == 0) return this;
-    	
-    	if(before.length == 1) return (a, b) -> {before[0].accept(a, b); accept(a, b);};
-    
-    	return (a, b) -> {for(Consumer2<A,B> consumer : before) consumer.accept(a, b); accept(a, b);};
+    	return (a, b) -> { before.accept(a, b); accept(a, b); };
     }
     
     /**
-     * Performs the given operations in sequence before this operation.
-     * 
-     * @param before The operations to perform before this operation.
-     * 
-     * @return A new {@link Consumer2} performing the operations before and this operation.
+     * @deprecated Use {@link #then(java.util.function.BiConsumer)} instead.
      */
-    default Consumer2<A,B> beforeThat(Iterable<Consumer2<A,B>> before)
+    @Override
+    @Deprecated(since = "1.0", forRemoval = false)
+    default Consumer2<A,B> andThen(java.util.function.BiConsumer<? super A,? super B> after)
     {
-    	Assert.assertNotNull("before", before);
-    	
-    	return (a, b) -> {for(Consumer2<A,B> consumer : before) consumer.accept(a, b); accept(a, b);};
+    	return then(after);
     }
     
     /**
-     * Composes a, b new {@link Consumer2} performing the given operations in sequence.
+     * Composes a new {@link Consumer2} performing the given operations in
+     * sequence.
      * 
      * @param <A> The type of the first argument to the operation.
      * @param <B> The type of the second argument to the operation.
@@ -152,13 +116,10 @@ public interface Consumer2<A,B> extends java.util.function.BiConsumer<A,B>
      * @return A new {@link Consumer2} performing the operations.
      */
     @SuppressWarnings("unchecked")
-	static <A,B> Consumer2<A,B> inSequence(Consumer2<A,B>... consumers)
+	static <A,B> Consumer2<A,B> of(Consumer2<A,B>... consumers)
     {
-    	Assert.assertNotNull("consumers", consumers);
-    	/*
-    	 * The argument array can be empty but must not be null. Also no entry must be null.
-    	 */
-    	Validation.validateAllNotNull(consumers);
+    	ParameterValidation.pvNotNull("consumers", consumers);
+    	ParameterValidation.pvEntriesNotNull("consumers", consumers);
     	
     	/*
     	 * If no operations are passed return empty operation.
@@ -170,32 +131,6 @@ public interface Consumer2<A,B> extends java.util.function.BiConsumer<A,B>
     	 */
     	if(consumers.length == 1) return consumers[0];
     	
-    	return (a, b) -> {for(Consumer2<A,B> consumer : consumers) consumer.accept(a, b);};
-    }
-    
-    /**
-     * Composes a, b new {@link Consumer2} performing the given operations in sequence.
-     * 
-     * @param <A> The type of the first argument to the operation.
-     * @param <B> The type of the second argument to the operation.
-     * 
-     * @param consumers The operations to perform.
-     * 
-     * @return A new {@link Consumer2} performing the operations.
-     */
-    static <A,B> Consumer2<A,B> inSequence(Iterable<Consumer2<A,B>> consumers)
-    {
-    	Assert.assertNotNull("consumers", consumers);
-    	
-    	return (a, b) -> {for(Consumer2<A,B> consumer : consumers) consumer.accept(a, b);};
-    }
-    
-    /** {@inheritDoc}} */
-    @Override
-    default Consumer2<A,B> andThen(java.util.function.BiConsumer<? super A,? super B> after)
-    {
-    	Assert.assertNotNull("after", after);
-    	
-    	return (a, b) -> {accept(a, b); after.accept(a, b);};
+    	return (a, b) -> { for(Consumer2<A,B> consumer : consumers)consumer.accept(a, b); };
     }
 }

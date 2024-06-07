@@ -2,11 +2,9 @@ package org.barghos.math.bounds;
 
 import org.barghos.annotation.ExtractionParam;
 import org.barghos.annotation.MinLength;
-import org.barghos.math.api.bv.Aabb2fC;
-import org.barghos.math.api.bv.Aabb2fR;
 import org.barghos.math.api.vector.SimpleVec2fC;
 import org.barghos.math.api.vector.SimpleVec2fR;
-import org.barghos.math.api.vector.Vec2fUtils;
+import org.barghos.math.vector.Vec2fUtils;
 
 public class Aabb2f implements Aabb2fC
 {
