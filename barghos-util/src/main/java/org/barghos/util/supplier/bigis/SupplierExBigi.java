@@ -1,10 +1,12 @@
-package org.barghos.util.supplier.floats;
+package org.barghos.util.supplier.bigis;
+
+import java.math.BigInteger;
 
 import org.barghos.util.supplier.SupplierEx;
 
 /**
- * Represents a supplier of float.
- * Unlike {@link SupplierFA2} this may throw Exceptions.
+ * Represents a supplier of {@link BigInteger}.
+ * Unlike {@link SupplierBigi} this may throw Exceptions.
  *
  * <p>
  * There is no requirement that a new or distinct result be returned each
@@ -12,13 +14,13 @@ import org.barghos.util.supplier.SupplierEx;
  *
  * <p>
  * This is a functional interface whose functional method is
- * {@link #getFloat2DArray()}.
+ * {@link #getBigInt()}.
  * 
- * @see SupplierFA2
- * @see SupplierExFA2
+ * @see SupplierBigi
+ * @see SupplierExBigi
  */
 @FunctionalInterface
-public interface SupplierExFA2 extends SupplierEx<float[][]>
+public interface SupplierExBigi extends SupplierEx<BigInteger>
 {
     /**
      * Gets a result.
@@ -27,15 +29,15 @@ public interface SupplierExFA2 extends SupplierEx<float[][]>
      * 
      * @throws Exception May throw an exception during execution.
      */
-	float[][] getFloat2DArray() throws Exception;
-    
-    /**
-     * @deprecated Use {@link #getFloat2DArray()} instead.
+	BigInteger getBigInt() throws Exception;
+	
+	/**
+     * @deprecated Use {@link #getBigInt()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default float[][] getGeneric() throws Exception
+    default BigInteger getGeneric() throws Exception
     {
-    	return getFloat2DArray();
+    	return getBigInt();
     }
 }

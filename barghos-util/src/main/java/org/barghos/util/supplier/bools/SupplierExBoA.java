@@ -1,10 +1,10 @@
-package org.barghos.util.supplier.floats;
+package org.barghos.util.supplier.bools;
 
 import org.barghos.util.supplier.SupplierEx;
 
 /**
- * Represents a supplier of float.
- * Unlike {@link SupplierFA2} this may throw Exceptions.
+ * Represents a supplier of booleans.
+ * Unlike {@link SupplierBoA} this may throw Exceptions.
  *
  * <p>
  * There is no requirement that a new or distinct result be returned each
@@ -12,13 +12,13 @@ import org.barghos.util.supplier.SupplierEx;
  *
  * <p>
  * This is a functional interface whose functional method is
- * {@link #getFloat2DArray()}.
+ * {@link #getBoolArray()}.
  * 
- * @see SupplierFA2
- * @see SupplierExFA2
+ * @see SupplierBoA
+ * @see SupplierExBoA
  */
 @FunctionalInterface
-public interface SupplierExFA2 extends SupplierEx<float[][]>
+public interface SupplierExBoA extends SupplierEx<boolean[]>
 {
     /**
      * Gets a result.
@@ -27,15 +27,15 @@ public interface SupplierExFA2 extends SupplierEx<float[][]>
      * 
      * @throws Exception May throw an exception during execution.
      */
-	float[][] getFloat2DArray() throws Exception;
+    boolean[] getBoolArray() throws Exception;
     
     /**
-     * @deprecated Use {@link #getFloat2DArray()} instead.
+     * @deprecated Use {@link #getBoolArray()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default float[][] getGeneric() throws Exception
+    default boolean[] getGeneric() throws Exception
     {
-    	return getFloat2DArray();
+    	return getBoolArray();
     }
 }

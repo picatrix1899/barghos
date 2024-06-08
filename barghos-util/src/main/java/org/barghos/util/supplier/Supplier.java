@@ -8,7 +8,8 @@ package org.barghos.util.supplier;
  * time the supplier is invoked.
  *
  * <p>
- * This is a functional interface whose functional method is {@link #get()}.
+ * This is a functional interface whose functional method is
+ * {@link #getGeneric()}.
  *
  * @param <T> the type of the result supplied by this supplier.
  * 
@@ -23,5 +24,15 @@ public interface Supplier<T> extends java.util.function.Supplier<T>
      *
      * @return A result.
      */
-	T get();
+	T getGeneric();
+	
+	/**
+	 * @deprecated Use {@link #getGeneric()} instead.
+	 */
+	@Override
+	@Deprecated(since = "1.0", forRemoval = false)
+	default T get()
+	{
+		return getGeneric();
+	}
 }

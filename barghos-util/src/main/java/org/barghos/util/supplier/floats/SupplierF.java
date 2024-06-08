@@ -3,36 +3,35 @@ package org.barghos.util.supplier.floats;
 import org.barghos.util.supplier.Supplier;
 
 /**
- * Represents a supplier of 1-dimensional float arrays.
+ * Represents a supplier of float.
  *
  * <p>
  * There is no requirement that a new or distinct result be returned each
  * time the supplier is invoked.
  *
  * <p>
- * This is a functional interface whose functional method is
- * {@link #getFloatArray()}.
+ * This is a functional interface whose functional method is {@link #getFloat()}.
  * 
- * @see SupplierFA
- * @see SupplierExFA
+ * @see SupplierF
+ * @see SupplierExF
  */
 @FunctionalInterface
-public interface SupplierFA extends Supplier<float[]>
+public interface SupplierF extends Supplier<Float>
 {
     /**
      * Gets a result.
      *
      * @return A result.
      */
-	float[] getFloatArray();
+    float getFloat();
     
     /**
-     * @deprecated Use {@link #getFloatArray()} instead.
+     * @deprecated Use {@link #getFloat()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default float[] getGeneric()
+    default Float getGeneric()
     {
-    	return getFloatArray();
+    	return getFloat();
     }
 }

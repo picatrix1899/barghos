@@ -1,9 +1,9 @@
-package org.barghos.util.supplier.floats;
+package org.barghos.util.supplier.strings;
 
 import org.barghos.util.supplier.Supplier;
 
 /**
- * Represents a supplier of 1-dimensional float arrays.
+ * Represents a supplier of 1-dimensional string arrays.
  *
  * <p>
  * There is no requirement that a new or distinct result be returned each
@@ -11,28 +11,28 @@ import org.barghos.util.supplier.Supplier;
  *
  * <p>
  * This is a functional interface whose functional method is
- * {@link #getFloatArray()}.
+ * {@link #getStringArray()}.
  * 
- * @see SupplierFA
- * @see SupplierExFA
+ * @see SupplierStrA
+ * @see SupplierExStrA
  */
 @FunctionalInterface
-public interface SupplierFA extends Supplier<float[]>
+public interface SupplierStrA extends Supplier<String[]>
 {
     /**
      * Gets a result.
      *
      * @return A result.
      */
-	float[] getFloatArray();
+	String[] getStringArray();
     
     /**
-     * @deprecated Use {@link #getFloatArray()} instead.
+     * @deprecated Use {@link #getStringArray()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default float[] getGeneric()
+    default String[] getGeneric()
     {
-    	return getFloatArray();
+    	return getStringArray();
     }
 }

@@ -1,9 +1,9 @@
-package org.barghos.util.supplier.floats;
+package org.barghos.util.supplier.bools;
 
 import org.barghos.util.supplier.Supplier;
 
 /**
- * Represents a supplier of 1-dimensional float arrays.
+ * Represents a supplier of 1-dimensional booleans arrays.
  *
  * <p>
  * There is no requirement that a new or distinct result be returned each
@@ -11,28 +11,28 @@ import org.barghos.util.supplier.Supplier;
  *
  * <p>
  * This is a functional interface whose functional method is
- * {@link #getFloatArray()}.
+ * {@link #getBoolArray()}.
  * 
- * @see SupplierFA
- * @see SupplierExFA
+ * @see SupplierBoA
+ * @see SupplierExBoA
  */
 @FunctionalInterface
-public interface SupplierFA extends Supplier<float[]>
+public interface SupplierBoA extends Supplier<boolean[]>
 {
     /**
      * Gets a result.
      *
      * @return A result.
      */
-	float[] getFloatArray();
+    boolean[] getBoolArray();
     
     /**
-     * @deprecated Use {@link #getFloatArray()} instead.
+     * @deprecated Use {@link #getBoolArray()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default float[] getGeneric()
+    default boolean[] getGeneric()
     {
-    	return getFloatArray();
+    	return getBoolArray();
     }
 }

@@ -1,9 +1,9 @@
-package org.barghos.util.supplier.floats;
+package org.barghos.util.supplier.objs;
 
 import org.barghos.util.supplier.Supplier;
 
 /**
- * Represents a supplier of 1-dimensional float arrays.
+ * Represents a supplier of 3-dimensional object arrays.
  *
  * <p>
  * There is no requirement that a new or distinct result be returned each
@@ -11,28 +11,28 @@ import org.barghos.util.supplier.Supplier;
  *
  * <p>
  * This is a functional interface whose functional method is
- * {@link #getFloatArray()}.
+ * {@link #getObject3DArray()}.
  * 
- * @see SupplierFA
- * @see SupplierExFA
+ * @see SupplierObjA3
+ * @see SupplierExObjA3
  */
 @FunctionalInterface
-public interface SupplierFA extends Supplier<float[]>
+public interface SupplierObjA3 extends Supplier<Object[][][]>
 {
     /**
      * Gets a result.
      *
      * @return A result.
      */
-	float[] getFloatArray();
+	Object[][][] getObject3DArray();
     
     /**
-     * @deprecated Use {@link #getFloatArray()} instead.
+     * @deprecated Use {@link #getObject3DArray()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default float[] getGeneric()
+    default Object[][][] getGeneric()
     {
-    	return getFloatArray();
+    	return getObject3DArray();
     }
 }

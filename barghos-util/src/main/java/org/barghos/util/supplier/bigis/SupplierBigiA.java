@@ -1,9 +1,11 @@
-package org.barghos.util.supplier.floats;
+package org.barghos.util.supplier.bigis;
+
+import java.math.BigInteger;
 
 import org.barghos.util.supplier.Supplier;
 
 /**
- * Represents a supplier of 1-dimensional float arrays.
+ * Represents a supplier of 1-dimensional {@link BigInteger} arrays.
  *
  * <p>
  * There is no requirement that a new or distinct result be returned each
@@ -11,28 +13,28 @@ import org.barghos.util.supplier.Supplier;
  *
  * <p>
  * This is a functional interface whose functional method is
- * {@link #getFloatArray()}.
+ * {@link #getBigIntArray()}.
  * 
- * @see SupplierFA
- * @see SupplierExFA
+ * @see SupplierBigiA
+ * @see SupplierExBigiA
  */
 @FunctionalInterface
-public interface SupplierFA extends Supplier<float[]>
+public interface SupplierBigiA extends Supplier<BigInteger[]>
 {
     /**
      * Gets a result.
      *
      * @return A result.
      */
-	float[] getFloatArray();
+    BigInteger[] getBigIntArray();
     
     /**
-     * @deprecated Use {@link #getFloatArray()} instead.
+     * @deprecated Use {@link #getBigIntArray()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default float[] getGeneric()
+    default BigInteger[] getGeneric()
     {
-    	return getFloatArray();
+    	return getBigIntArray();
     }
 }

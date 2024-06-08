@@ -1,10 +1,12 @@
-package org.barghos.util.supplier.floats;
+package org.barghos.util.supplier.bigds;
+
+import java.math.BigDecimal;
 
 import org.barghos.util.supplier.SupplierEx;
 
 /**
- * Represents a supplier of float.
- * Unlike {@link SupplierFA2} this may throw Exceptions.
+ * Represents a supplier of {@link BigDecimal}.
+ * Unlike {@link SupplierBigd} this may throw Exceptions.
  *
  * <p>
  * There is no requirement that a new or distinct result be returned each
@@ -12,13 +14,13 @@ import org.barghos.util.supplier.SupplierEx;
  *
  * <p>
  * This is a functional interface whose functional method is
- * {@link #getFloat2DArray()}.
+ * {@link #getBigDec()}.
  * 
- * @see SupplierFA2
- * @see SupplierExFA2
+ * @see SupplierBigd
+ * @see SupplierExBigd
  */
 @FunctionalInterface
-public interface SupplierExFA2 extends SupplierEx<float[][]>
+public interface SupplierExBigd extends SupplierEx<BigDecimal>
 {
     /**
      * Gets a result.
@@ -27,15 +29,15 @@ public interface SupplierExFA2 extends SupplierEx<float[][]>
      * 
      * @throws Exception May throw an exception during execution.
      */
-	float[][] getFloat2DArray() throws Exception;
+    BigDecimal getBigDec() throws Exception;
     
     /**
-     * @deprecated Use {@link #getFloat2DArray()} instead.
+     * @deprecated Use {@link #getBigDec()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default float[][] getGeneric() throws Exception
+    default BigDecimal getGeneric() throws Exception
     {
-    	return getFloat2DArray();
+    	return getBigDec();
     }
 }

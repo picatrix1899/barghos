@@ -4,21 +4,20 @@ import org.barghos.util.supplier.SupplierEx;
 
 /**
  * Represents a supplier of float.
- * Unlike {@link SupplierFA2} this may throw Exceptions.
+ * Unlike {@link SupplierF} this may throw Exceptions.
  *
  * <p>
  * There is no requirement that a new or distinct result be returned each
  * time the supplier is invoked.
  *
  * <p>
- * This is a functional interface whose functional method is
- * {@link #getFloat2DArray()}.
+ * This is a functional interface whose functional method is {@link #getFloat()}.
  * 
- * @see SupplierFA2
- * @see SupplierExFA2
+ * @see SupplierF
+ * @see SupplierExF
  */
 @FunctionalInterface
-public interface SupplierExFA2 extends SupplierEx<float[][]>
+public interface SupplierExF extends SupplierEx<Float>
 {
     /**
      * Gets a result.
@@ -27,15 +26,15 @@ public interface SupplierExFA2 extends SupplierEx<float[][]>
      * 
      * @throws Exception May throw an exception during execution.
      */
-	float[][] getFloat2DArray() throws Exception;
+	float getFloat() throws Exception;
     
     /**
-     * @deprecated Use {@link #getFloat2DArray()} instead.
+     * @deprecated Use {@link #getFloat()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default float[][] getGeneric() throws Exception
+    default Float getGeneric() throws Exception
     {
-    	return getFloat2DArray();
+    	return getFloat();
     }
 }

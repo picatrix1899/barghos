@@ -9,7 +9,8 @@ package org.barghos.util.supplier;
  * time the supplier is invoked.
  *
  * <p>
- * This is a functional interface whose functional method is {@link #get()}.
+ * This is a functional interface whose functional method is
+ * {@link #getGeneric()}.
  *
  * @param <T> the type of the result supplied by this supplier.
  * 
@@ -26,5 +27,5 @@ public interface SupplierEx<T>
      * 
      * @throws Exception May throw an exception during execution.
      */
-	T get() throws Exception;
+	T getGeneric() throws Exception;
 }

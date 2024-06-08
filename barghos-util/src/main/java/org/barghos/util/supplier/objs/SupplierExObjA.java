@@ -1,10 +1,10 @@
-package org.barghos.util.supplier.floats;
+package org.barghos.util.supplier.objs;
 
 import org.barghos.util.supplier.SupplierEx;
 
 /**
- * Represents a supplier of float.
- * Unlike {@link SupplierFA2} this may throw Exceptions.
+ * Represents a supplier of object.
+ * Unlike {@link SupplierObjA} this may throw Exceptions.
  *
  * <p>
  * There is no requirement that a new or distinct result be returned each
@@ -12,13 +12,13 @@ import org.barghos.util.supplier.SupplierEx;
  *
  * <p>
  * This is a functional interface whose functional method is
- * {@link #getFloat2DArray()}.
+ * {@link #getObjectArray()}.
  * 
- * @see SupplierFA2
- * @see SupplierExFA2
+ * @see SupplierObjA
+ * @see SupplierExObjA
  */
 @FunctionalInterface
-public interface SupplierExFA2 extends SupplierEx<float[][]>
+public interface SupplierExObjA extends SupplierEx<Object[]>
 {
     /**
      * Gets a result.
@@ -27,15 +27,15 @@ public interface SupplierExFA2 extends SupplierEx<float[][]>
      * 
      * @throws Exception May throw an exception during execution.
      */
-	float[][] getFloat2DArray() throws Exception;
+	Object[] getObjectArray() throws Exception;
     
     /**
-     * @deprecated Use {@link #getFloat2DArray()} instead.
+     * @deprecated Use {@link #getObjectArray()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default float[][] getGeneric() throws Exception
+    default Object[] getGeneric() throws Exception
     {
-    	return getFloat2DArray();
+    	return getObjectArray();
     }
 }

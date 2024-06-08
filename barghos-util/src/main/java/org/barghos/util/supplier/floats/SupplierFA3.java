@@ -13,12 +13,6 @@ import org.barghos.util.supplier.Supplier;
  * This is a functional interface whose functional method is
  * {@link #getFloat3DArray()}.
  * 
- * @see SupplierF
- * @see SupplierExF
- * @see SupplierFA
- * @see SupplierExFA
- * @see SupplierFA2
- * @see SupplierExFA2
  * @see SupplierFA3
  * @see SupplierExFA3
  */
@@ -30,15 +24,14 @@ public interface SupplierFA3 extends Supplier<float[][][]>
      *
      * @return A result.
      */
-    float[][][] getFloat3DArray();
+	float[][][] getFloat3DArray();
     
     /**
-     * @deprecated
-     * Use {@link #getFloat3DArray()} instead.
+     * @deprecated Use {@link #getFloat3DArray()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default float[][][] get()
+    default float[][][] getGeneric()
     {
     	return getFloat3DArray();
     }

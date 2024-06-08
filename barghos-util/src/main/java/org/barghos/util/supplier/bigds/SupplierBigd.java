@@ -1,9 +1,11 @@
-package org.barghos.util.supplier.floats;
+package org.barghos.util.supplier.bigds;
+
+import java.math.BigDecimal;
 
 import org.barghos.util.supplier.Supplier;
 
 /**
- * Represents a supplier of 1-dimensional float arrays.
+ * Represents a supplier of {@link BigDecimal}.
  *
  * <p>
  * There is no requirement that a new or distinct result be returned each
@@ -11,28 +13,28 @@ import org.barghos.util.supplier.Supplier;
  *
  * <p>
  * This is a functional interface whose functional method is
- * {@link #getFloatArray()}.
+ * {@link #getBigDec()}.
  * 
- * @see SupplierFA
- * @see SupplierExFA
+ * @see SupplierBigd
+ * @see SupplierExBigd
  */
 @FunctionalInterface
-public interface SupplierFA extends Supplier<float[]>
+public interface SupplierBigd extends Supplier<BigDecimal>
 {
     /**
      * Gets a result.
      *
      * @return A result.
      */
-	float[] getFloatArray();
+    BigDecimal getBigDec();
     
     /**
-     * @deprecated Use {@link #getFloatArray()} instead.
+     * @deprecated Use {@link #getBigDec()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default float[] getGeneric()
+    default BigDecimal getGeneric()
     {
-    	return getFloatArray();
+    	return getBigDec();
     }
 }

@@ -3,7 +3,7 @@ package org.barghos.util.supplier.floats;
 import org.barghos.util.supplier.SupplierEx;
 
 /**
- * Represents a supplier of 1-dimensional float arrays.
+ * Represents a supplier of float.
  * Unlike {@link SupplierFA} this may throw Exceptions.
  *
  * <p>
@@ -14,14 +14,8 @@ import org.barghos.util.supplier.SupplierEx;
  * This is a functional interface whose functional method is
  * {@link #getFloatArray()}.
  * 
- * @see SupplierF
- * @see SupplierExF
  * @see SupplierFA
  * @see SupplierExFA
- * @see SupplierFA2
- * @see SupplierExFA2
- * @see SupplierFA3
- * @see SupplierExFA3
  */
 @FunctionalInterface
 public interface SupplierExFA extends SupplierEx<float[]>
@@ -33,15 +27,14 @@ public interface SupplierExFA extends SupplierEx<float[]>
      * 
      * @throws Exception May throw an exception during execution.
      */
-    float[] getFloatArray() throws Exception;
+	float[] getFloatArray() throws Exception;
     
     /**
-     * @deprecated
-     * Use {@link #getFloatArray()} instead.
+     * @deprecated Use {@link #getFloatArray()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default float[] get() throws Exception
+    default float[] getGeneric() throws Exception
     {
     	return getFloatArray();
     }
