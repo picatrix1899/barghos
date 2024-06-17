@@ -2,11 +2,11 @@ package org.barghos.util.lazy;
 
 /**
  * Represents a value provider, that determines the value to provide on the
- * first call to {@link #value()} and stores it for any further calls. This
- * allows to execute probably complex code for determining the value only if and
- * when the value is really needed. 
+ * first call to {@link #valueGeneric()} and stores it for any further calls.
+ * This allows to execute probably complex code for determining the value only
+ * if and when the value is really needed. 
  * 
- * @param <T> The type of the value.
+ * @param <T> The type of the provided value.
  */
 public interface Lazy<T>
 {
@@ -14,12 +14,14 @@ public interface Lazy<T>
 	 * Returns the provided value.
 	 * 
 	 * <p>
-	 * WARNING: This will execute the code to determine the value on the first
-	 * call.
+	 * WARNING: This will execute the code to determine the value, if the 
+	 * {@link #hasValue()} flag is false. After execution the determined value
+	 * is stored for any further calls and the {@link #hasValue()} flag is set
+	 * to true.
 	 * 
 	 * @return The provided value.
 	 */
-	T value();
+	T valueGeneric();
 	
 	/**
 	 * Returns if a value was determined. This is helpful if the provided value
