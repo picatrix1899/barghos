@@ -1,27 +1,28 @@
-package org.barghos.util.lazy.floats;
+package org.barghos.util.lazy.doubles;
 
-import org.barghos.util.supplier.floats.SupplierF;
+import org.barghos.util.supplier.doubles.SupplierD;
+
 import org.barghos.validation.ParameterValidation;
 
 /**
- * An implementation of the {@link UpdatableLazyF} interface where the provided
- * float value is determined via a given {@link SupplierF}.
+ * An implementation of the {@link UpdatableLazyD} interface where the provided
+ * double value is determined via a given {@link SupplierD}.
  */
-public class SuppliedLazyF implements UpdatableLazyF
+public class SuppliedLazyD implements UpdatableLazyD
 {
-	protected SupplierF supplier;
+	protected SupplierD supplier;
 	
-	protected float value;
+	protected double value;
 	protected boolean hasValue;
 	
 	/**
-	 * Creates a new instance of {@link SuppliedLazyF} with the given
-	 * {@link SupplierF} to determine the value to provide.
+	 * Creates a new instance of {@link SuppliedLazyD} with the given
+	 * {@link SupplierD} to determine the value to provide.
 	 * 
 	 * @param supplier
-	 * The {@link SupplierF} used to determine the value to provide.
+	 * The {@link SupplierD} used to determine the value to provide.
 	 */
-	public SuppliedLazyF(SupplierF supplier)
+	public SuppliedLazyD(SupplierD supplier)
 	{	
 		ParameterValidation.pvNotNull("supplier", supplier);
 		
@@ -30,7 +31,7 @@ public class SuppliedLazyF implements UpdatableLazyF
 	
 	/** {@inheritDoc} */
 	@Override
-	public float valueFloat()
+	public double valueDouble()
 	{
 		if(!this.hasValue) update();
 		
@@ -49,7 +50,7 @@ public class SuppliedLazyF implements UpdatableLazyF
 	@Override
 	public void update()
 	{
-		this.value = this.supplier.getFloat();
+		this.value = this.supplier.getDouble();
 		this.hasValue = true;
 	}
 	

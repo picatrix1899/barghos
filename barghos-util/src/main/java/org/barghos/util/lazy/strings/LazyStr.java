@@ -1,14 +1,14 @@
-package org.barghos.util.lazy.floats;
+package org.barghos.util.lazy.strings;
 
 import org.barghos.util.lazy.Lazy;
 
 /**
- * Represents a float value provider, that determines the value to provide on
- * the first call to {@link #valueFloat()} and stores it for any further calls.
+ * Represents a string value provider, that determines the value to provide on
+ * the first call to {@link #valueString()} and stores it for any further calls.
  * This allows to execute probably complex code for determining the value only
  * if and when the value is really needed. 
  */
-public interface LazyF extends Lazy<Float>
+public interface LazyStr extends Lazy<String>
 {
 	/**
 	 * Returns the provided value.
@@ -21,15 +21,15 @@ public interface LazyF extends Lazy<Float>
 	 * 
 	 * @return The provided value.
 	 */
-	float valueFloat();
+	String valueString();
 	
 	/**
-     * @deprecated Use {@link #valueFloat()} instead.
+     * @deprecated Use {@link #valueString()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-	default Float valueGeneric()
+	default String valueGeneric()
 	{
-		return valueFloat();
+		return valueString();
 	}
 }
