@@ -6,7 +6,7 @@ import org.barghos.util.lazy.Lazy;
 
 /**
  * Represents a {@link BigDecimal} value provider, that determines the value to
- * provide on the first call to {@link #valueBigDec()} and stores it for any
+ * provide on the first call to {@link #valueBigd()} and stores it for any
  * further calls. This allows to execute probably complex code for determining
  * the value only if and when the value is really needed. 
  */
@@ -23,15 +23,15 @@ public interface LazyBigd extends Lazy<BigDecimal>
 	 * 
 	 * @return The provided value.
 	 */
-	BigDecimal valueBigDec();
+	BigDecimal valueBigd();
 	
 	/**
-     * @deprecated Use {@link #valueBigDec()} instead.
+     * @deprecated Use {@link #valueBigd()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-	default BigDecimal valueGeneric()
+	default BigDecimal value()
 	{
-		return valueBigDec();
+		return valueBigd();
 	}
 }

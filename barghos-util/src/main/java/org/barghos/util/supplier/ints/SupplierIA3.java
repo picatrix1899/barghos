@@ -11,7 +11,7 @@ import org.barghos.util.supplier.Supplier;
  *
  * <p>
  * This is a functional interface whose functional method is
- * {@link #getInt3DArray()}.
+ * {@link #getIA3()}.
  * 
  * @see SupplierIA3
  * @see SupplierExIA3
@@ -24,15 +24,15 @@ public interface SupplierIA3 extends Supplier<int[][][]>
      *
      * @return A result.
      */
-	int[][][] getInt3DArray();
+	int[][][] getIA3();
     
     /**
-     * @deprecated Use {@link #getInt3DArray()} instead.
+     * @deprecated Use {@link #getIA3()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default int[][][] getGeneric()
+    default int[][][] get()
     {
-    	return getInt3DArray();
+    	return getIA3();
     }
 }

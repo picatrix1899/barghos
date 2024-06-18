@@ -11,7 +11,7 @@ import org.barghos.util.supplier.Supplier;
  *
  * <p>
  * This is a functional interface whose functional method is
- * {@link #getByteArray()}.
+ * {@link #getBA()}.
  * 
  * @see SupplierBA
  * @see SupplierExBA
@@ -24,15 +24,15 @@ public interface SupplierBA extends Supplier<byte[]>
      *
      * @return A result.
      */
-	byte[] getByteArray();
+	byte[] getBA();
     
     /**
-     * @deprecated Use {@link #getByteArray()} instead.
+     * @deprecated Use {@link #getBA()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default byte[] getGeneric()
+    default byte[] get()
     {
-    	return getByteArray();
+    	return getBA();
     }
 }

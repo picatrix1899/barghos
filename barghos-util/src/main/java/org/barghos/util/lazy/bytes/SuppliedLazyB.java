@@ -30,7 +30,7 @@ public class SuppliedLazyB implements UpdatableLazyB
 	
 	/** {@inheritDoc} */
 	@Override
-	public byte valueByte()
+	public byte valueB()
 	{
 		if(!this.hasValue) update();
 		
@@ -49,7 +49,7 @@ public class SuppliedLazyB implements UpdatableLazyB
 	@Override
 	public void update()
 	{
-		this.value = this.supplier.getByte();
+		this.value = this.supplier.getB();
 		this.hasValue = true;
 	}
 	

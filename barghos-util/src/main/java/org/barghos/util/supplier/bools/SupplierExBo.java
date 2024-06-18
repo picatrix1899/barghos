@@ -11,7 +11,7 @@ import org.barghos.util.supplier.SupplierEx;
  * time the supplier is invoked.
  *
  * <p>
- * This is a functional interface whose functional method is {@link #getBool()}.
+ * This is a functional interface whose functional method is {@link #getBo()}.
  * 
  * @see SupplierBo
  * @see SupplierExBo
@@ -26,15 +26,15 @@ public interface SupplierExBo extends SupplierEx<Boolean>
      * 
      * @throws Exception May throw an exception during execution.
      */
-    boolean getBool() throws Exception;
+    boolean getBo() throws Exception;
     
     /**
      * @deprecated Use {@link #getBool()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default Boolean getGeneric() throws Exception
+    default Boolean get() throws Exception
     {
-    	return getBool();
+    	return getBo();
     }
 }

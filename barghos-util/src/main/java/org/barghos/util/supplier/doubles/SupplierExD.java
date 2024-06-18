@@ -11,7 +11,7 @@ import org.barghos.util.supplier.SupplierEx;
  * time the supplier is invoked.
  *
  * <p>
- * This is a functional interface whose functional method is {@link #getDouble()}.
+ * This is a functional interface whose functional method is {@link #getD()}.
  * 
  * @see SupplierD
  * @see SupplierExD
@@ -26,15 +26,15 @@ public interface SupplierExD extends SupplierEx<Double>
      * 
      * @throws Exception May throw an exception during execution.
      */
-	double getDouble() throws Exception;
+	double getD() throws Exception;
     
     /**
-     * @deprecated Use {@link #getDouble()} instead.
+     * @deprecated Use {@link #getD()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default Double getGeneric() throws Exception
+    default Double get() throws Exception
     {
-    	return getDouble();
+    	return getD();
     }
 }

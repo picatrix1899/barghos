@@ -12,7 +12,7 @@ import org.barghos.util.supplier.SupplierEx;
  *
  * <p>
  * This is a functional interface whose functional method is
- * {@link #getBool2DArray()}.
+ * {@link #getBoA2()}.
  * 
  * @see SupplierBoA2
  * @see SupplierExBoA2
@@ -27,15 +27,15 @@ public interface SupplierExBoA2 extends SupplierEx<boolean[][]>
      * 
      * @throws Exception May throw an exception during execution.
      */
-    boolean[][] getBool2DArray() throws Exception;
+    boolean[][] getBoA2() throws Exception;
     
     /**
-     * @deprecated Use {@link #getBool2DArray()} instead.
+     * @deprecated Use {@link #getBoA2()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default boolean[][] getGeneric() throws Exception
+    default boolean[][] get() throws Exception
     {
-    	return getBool2DArray();
+    	return getBoA2();
     }
 }

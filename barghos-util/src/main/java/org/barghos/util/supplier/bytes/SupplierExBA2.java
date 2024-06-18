@@ -12,7 +12,7 @@ import org.barghos.util.supplier.SupplierEx;
  *
  * <p>
  * This is a functional interface whose functional method is
- * {@link #getByte2DArray()}.
+ * {@link #getBA2()}.
  * 
  * @see SupplierBA2
  * @see SupplierExBA2
@@ -27,15 +27,15 @@ public interface SupplierExBA2 extends SupplierEx<byte[][]>
      * 
      * @throws Exception May throw an exception during execution.
      */
-	byte[][] getByte2DArray() throws Exception;
+	byte[][] getBA2() throws Exception;
     
     /**
-     * @deprecated Use {@link #getByte2DArray()} instead.
+     * @deprecated Use {@link #getBA2()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default byte[][] getGeneric() throws Exception
+    default byte[][] get() throws Exception
     {
-    	return getByte2DArray();
+    	return getBA2();
     }
 }

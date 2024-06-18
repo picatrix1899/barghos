@@ -11,7 +11,7 @@ import org.barghos.util.supplier.Supplier;
  *
  * <p>
  * This is a functional interface whose functional method is
- * {@link #getIntArray()}.
+ * {@link #getIA()}.
  * 
  * @see SupplierIA
  * @see SupplierExIA
@@ -24,15 +24,15 @@ public interface SupplierIA extends Supplier<int[]>
      *
      * @return A result.
      */
-	int[] getIntArray();
+	int[] getIA();
     
     /**
-     * @deprecated Use {@link #getIntArray()} instead.
+     * @deprecated Use {@link #getIA()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default int[] getGeneric()
+    default int[] get()
     {
-    	return getIntArray();
+    	return getIA();
     }
 }

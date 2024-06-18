@@ -10,7 +10,7 @@ import org.barghos.util.supplier.Supplier;
  * time the supplier is invoked.
  *
  * <p>
- * This is a functional interface whose functional method is {@link #getByte()}.
+ * This is a functional interface whose functional method is {@link #getB()}.
  * 
  * @see SupplierB
  * @see SupplierExB
@@ -23,15 +23,15 @@ public interface SupplierB extends Supplier<Byte>
      *
      * @return A result.
      */
-    byte getByte();
+    byte getB();
     
     /**
-     * @deprecated Use {@link #getByte()} instead.
+     * @deprecated Use {@link #getB()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default Byte getGeneric()
+    default Byte get()
     {
-    	return getByte();
+    	return getB();
     }
 }

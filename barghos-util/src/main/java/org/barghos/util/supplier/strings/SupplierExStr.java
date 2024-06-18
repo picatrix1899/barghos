@@ -11,7 +11,7 @@ import org.barghos.util.supplier.SupplierEx;
  * time the supplier is invoked.
  *
  * <p>
- * This is a functional interface whose functional method is {@link #getString()}.
+ * This is a functional interface whose functional method is {@link #getStr()}.
  * 
  * @see SupplierStr
  * @see SupplierExStr
@@ -26,15 +26,15 @@ public interface SupplierExStr extends SupplierEx<String>
      * 
      * @throws Exception May throw an exception during execution.
      */
-	String getString() throws Exception;
+	String getStr() throws Exception;
     
     /**
-     * @deprecated Use {@link #getString()} instead.
+     * @deprecated Use {@link #getStr()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default String getGeneric() throws Exception
+    default String get() throws Exception
     {
-    	return getString();
+    	return getStr();
     }
 }

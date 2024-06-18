@@ -12,7 +12,7 @@ import org.barghos.util.supplier.SupplierEx;
  *
  * <p>
  * This is a functional interface whose functional method is
- * {@link #getDouble2DArray()}.
+ * {@link #getDA2()}.
  * 
  * @see SupplierDA2
  * @see SupplierExDA2
@@ -27,15 +27,15 @@ public interface SupplierExDA2 extends SupplierEx<double[][]>
      * 
      * @throws Exception May throw an exception during execution.
      */
-	double[][] getDouble2DArray() throws Exception;
+	double[][] getDA2() throws Exception;
     
     /**
-     * @deprecated Use {@link #getDouble2DArray()} instead.
+     * @deprecated Use {@link #getDA2()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default double[][] getGeneric() throws Exception
+    default double[][] get() throws Exception
     {
-    	return getDouble2DArray();
+    	return getDA2();
     }
 }

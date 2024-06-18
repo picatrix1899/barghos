@@ -30,7 +30,7 @@ public class SuppliedLazyS implements UpdatableLazyS
 	
 	/** {@inheritDoc} */
 	@Override
-	public short valueShort()
+	public short valueS()
 	{
 		if(!this.hasValue) update();
 		
@@ -49,7 +49,7 @@ public class SuppliedLazyS implements UpdatableLazyS
 	@Override
 	public void update()
 	{
-		this.value = this.supplier.getShort();
+		this.value = this.supplier.getS();
 		this.hasValue = true;
 	}
 	

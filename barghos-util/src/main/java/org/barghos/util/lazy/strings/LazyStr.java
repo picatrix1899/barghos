@@ -4,7 +4,7 @@ import org.barghos.util.lazy.Lazy;
 
 /**
  * Represents a string value provider, that determines the value to provide on
- * the first call to {@link #valueString()} and stores it for any further calls.
+ * the first call to {@link #valueStr()} and stores it for any further calls.
  * This allows to execute probably complex code for determining the value only
  * if and when the value is really needed. 
  */
@@ -21,15 +21,15 @@ public interface LazyStr extends Lazy<String>
 	 * 
 	 * @return The provided value.
 	 */
-	String valueString();
+	String valueStr();
 	
 	/**
-     * @deprecated Use {@link #valueString()} instead.
+     * @deprecated Use {@link #valueStr()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-	default String valueGeneric()
+	default String value()
 	{
-		return valueString();
+		return valueStr();
 	}
 }

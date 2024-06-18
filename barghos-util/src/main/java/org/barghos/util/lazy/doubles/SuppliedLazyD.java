@@ -31,7 +31,7 @@ public class SuppliedLazyD implements UpdatableLazyD
 	
 	/** {@inheritDoc} */
 	@Override
-	public double valueDouble()
+	public double valueD()
 	{
 		if(!this.hasValue) update();
 		
@@ -50,7 +50,7 @@ public class SuppliedLazyD implements UpdatableLazyD
 	@Override
 	public void update()
 	{
-		this.value = this.supplier.getDouble();
+		this.value = this.supplier.getD();
 		this.hasValue = true;
 	}
 	

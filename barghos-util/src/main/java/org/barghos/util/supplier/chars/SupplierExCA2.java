@@ -12,7 +12,7 @@ import org.barghos.util.supplier.SupplierEx;
  *
  * <p>
  * This is a functional interface whose functional method is
- * {@link #getChar2DArray()}.
+ * {@link #getCA2()}.
  * 
  * @see SupplierCA2
  * @see SupplierExCA2
@@ -27,15 +27,15 @@ public interface SupplierExCA2 extends SupplierEx<char[][]>
      * 
      * @throws Exception May throw an exception during execution.
      */
-	char[][] getChar2DArray() throws Exception;
+	char[][] getCA2() throws Exception;
     
     /**
-     * @deprecated Use {@link #getChar2DArray()} instead.
+     * @deprecated Use {@link #getCA2()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default char[][] getGeneric() throws Exception
+    default char[][] get() throws Exception
     {
-    	return getChar2DArray();
+    	return getCA2();
     }
 }

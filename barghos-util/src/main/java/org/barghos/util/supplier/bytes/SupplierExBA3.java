@@ -12,7 +12,7 @@ import org.barghos.util.supplier.SupplierEx;
  *
  * <p>
  * This is a functional interface whose functional method is
- * {@link #getByte3DArray()}.
+ * {@link #getBA3()}.
  * 
  * @see SupplierBA3
  * @see SupplierExBA3
@@ -27,15 +27,15 @@ public interface SupplierExBA3 extends SupplierEx<byte[][][]>
      * 
      * @throws Exception May throw an exception during execution.
      */
-	byte[][][] getByte3DArray() throws Exception;
+	byte[][][] getBA3() throws Exception;
     
     /**
-     * @deprecated Use {@link #getByte3DArray()} instead.
+     * @deprecated Use {@link #getBA3()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default byte[][][] getGeneric() throws Exception
+    default byte[][][] get() throws Exception
     {
-    	return getByte3DArray();
+    	return getBA3();
     }
 }

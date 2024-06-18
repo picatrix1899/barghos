@@ -11,7 +11,7 @@ import org.barghos.util.supplier.Supplier;
  *
  * <p>
  * This is a functional interface whose functional method is
- * {@link #getShort()}.
+ * {@link #getS()}.
  * 
  * @see SupplierS
  * @see SupplierExS
@@ -24,15 +24,15 @@ public interface SupplierS extends Supplier<Short>
      *
      * @return A result.
      */
-	short getShort();
+	short getS();
     
     /**
-     * @deprecated Use {@link #getShort()} instead.
+     * @deprecated Use {@link #getS()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default Short getGeneric()
+    default Short get()
     {
-    	return getShort();
+    	return getS();
     }
 }

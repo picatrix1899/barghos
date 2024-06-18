@@ -11,7 +11,7 @@ import org.barghos.util.supplier.Supplier;
  *
  * <p>
  * This is a functional interface whose functional method is
- * {@link #getLong3DArray()}.
+ * {@link #getLA3()}.
  * 
  * @see SupplierLA3
  * @see SupplierExLA3
@@ -24,15 +24,15 @@ public interface SupplierLA3 extends Supplier<long[][][]>
      *
      * @return A result.
      */
-	long[][][] getLong3DArray();
+	long[][][] getLA3();
     
     /**
-     * @deprecated Use {@link #getLong3DArray()} instead.
+     * @deprecated Use {@link #getLA3()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default long[][][] getGeneric()
+    default long[][][] get()
     {
-    	return getLong3DArray();
+    	return getLA3();
     }
 }

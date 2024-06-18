@@ -4,7 +4,7 @@ import org.barghos.util.lazy.Lazy;
 
 /**
  * Represents a float value provider, that determines the value to provide on
- * the first call to {@link #valueFloat()} and stores it for any further calls.
+ * the first call to {@link #valueF()} and stores it for any further calls.
  * This allows to execute probably complex code for determining the value only
  * if and when the value is really needed. 
  */
@@ -21,15 +21,15 @@ public interface LazyF extends Lazy<Float>
 	 * 
 	 * @return The provided value.
 	 */
-	float valueFloat();
+	float valueF();
 	
 	/**
-     * @deprecated Use {@link #valueFloat()} instead.
+     * @deprecated Use {@link #valueF()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-	default Float valueGeneric()
+	default Float value()
 	{
-		return valueFloat();
+		return valueF();
 	}
 }

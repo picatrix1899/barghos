@@ -21,7 +21,7 @@ public interface Lazy<T>
 	 * 
 	 * @return The provided value.
 	 */
-	T valueGeneric();
+	T value();
 	
 	/**
 	 * Returns if a value was determined. This is helpful if the provided value

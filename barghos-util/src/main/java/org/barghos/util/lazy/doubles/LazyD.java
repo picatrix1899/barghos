@@ -4,7 +4,7 @@ import org.barghos.util.lazy.Lazy;
 
 /**
  * Represents a double value provider, that determines the value to provide on
- * the first call to {@link #valueDouble()} and stores it for any further calls.
+ * the first call to {@link #valueD()} and stores it for any further calls.
  * This allows to execute probably complex code for determining the value only
  * if and when the value is really needed. 
  */
@@ -21,15 +21,15 @@ public interface LazyD extends Lazy<Double>
 	 * 
 	 * @return The provided value.
 	 */
-	double valueDouble();
+	double valueD();
 	
 	/**
-     * @deprecated Use {@link #valueDouble()} instead.
+     * @deprecated Use {@link #valueD()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-	default Double valueGeneric()
+	default Double value()
 	{
-		return valueDouble();
+		return valueD();
 	}
 }

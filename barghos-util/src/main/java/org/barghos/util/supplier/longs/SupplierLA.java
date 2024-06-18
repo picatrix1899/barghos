@@ -11,7 +11,7 @@ import org.barghos.util.supplier.Supplier;
  *
  * <p>
  * This is a functional interface whose functional method is
- * {@link #getLongArray()}.
+ * {@link #getLA()}.
  * 
  * @see SupplierLA
  * @see SupplierExLA
@@ -24,15 +24,15 @@ public interface SupplierLA extends Supplier<long[]>
      *
      * @return A result.
      */
-	long[] getLongArray();
+	long[] getLA();
     
     /**
-     * @deprecated Use {@link #getLongArray()} instead.
+     * @deprecated Use {@link #getLA()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default long[] getGeneric()
+    default long[] get()
     {
-    	return getLongArray();
+    	return getLA();
     }
 }

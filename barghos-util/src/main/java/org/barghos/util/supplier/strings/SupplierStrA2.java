@@ -11,7 +11,7 @@ import org.barghos.util.supplier.Supplier;
  *
  * <p>
  * This is a functional interface whose functional method is
- * {@link #getString2DArray()}.
+ * {@link #getStrA2()}.
  * 
  * @see SupplierStrA2
  * @see SupplierExStrA2
@@ -24,15 +24,15 @@ public interface SupplierStrA2 extends Supplier<String[][]>
      *
      * @return A result.
      */
-	String[][] getString2DArray();
+	String[][] getStrA2();
     
     /**
-     * @deprecated Use {@link #getString2DArray()} instead.
+     * @deprecated Use {@link #getStrA2()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default String[][] getGeneric()
+    default String[][] get()
     {
-    	return getString2DArray();
+    	return getStrA2();
     }
 }

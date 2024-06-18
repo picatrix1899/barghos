@@ -4,7 +4,7 @@ import org.barghos.util.lazy.Lazy;
 
 /**
  * Represents a char value provider, that determines the value to provide on
- * the first call to {@link #valueChar()} and stores it for any further calls.
+ * the first call to {@link #valueC()} and stores it for any further calls.
  * This allows to execute probably complex code for determining the value only
  * if and when the value is really needed. 
  */
@@ -21,15 +21,15 @@ public interface LazyC extends Lazy<Character>
 	 * 
 	 * @return The provided value.
 	 */
-	char valueChar();
+	char valueC();
 	
 	/**
-     * @deprecated Use {@link #valueChar()} instead.
+     * @deprecated Use {@link #valueC()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-	default Character valueGeneric()
+	default Character value()
 	{
-		return valueChar();
+		return valueC();
 	}
 }

@@ -14,7 +14,7 @@ import org.barghos.util.supplier.SupplierEx;
  *
  * <p>
  * This is a functional interface whose functional method is
- * {@link #getBigDec3DArray()}.
+ * {@link #getBigdA3()}.
  * 
  * @see SupplierBigdA3
  * @see SupplierExBigdA3
@@ -29,15 +29,15 @@ public interface SupplierExBigdA3 extends SupplierEx<BigDecimal[][][]>
      * 
      * @throws Exception May throw an exception during execution.
      */
-    BigDecimal[][][] getBigDec3DArray() throws Exception;
+    BigDecimal[][][] getBigdA3() throws Exception;
     
     /**
-     * @deprecated Use {@link #getBigDec3DArray()} instead.
+     * @deprecated Use {@link #getBigdA3()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default BigDecimal[][][] getGeneric() throws Exception
+    default BigDecimal[][][] get() throws Exception
     {
-    	return getBigDec3DArray();
+    	return getBigdA3();
     }
 }

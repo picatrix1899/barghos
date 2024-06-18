@@ -12,7 +12,7 @@ import org.barghos.util.supplier.SupplierEx;
  *
  * <p>
  * This is a functional interface whose functional method is
- * {@link #getShort()}.
+ * {@link #getS()}.
  * 
  * @see SupplierS
  * @see SupplierExS
@@ -27,15 +27,15 @@ public interface SupplierExS extends SupplierEx<Short>
      * 
      * @throws Exception May throw an exception during execution.
      */
-	short getShort() throws Exception;
+	short getS() throws Exception;
     
     /**
-     * @deprecated Use {@link #getShort()} instead.
+     * @deprecated Use {@link #getS()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default Short getGeneric() throws Exception
+    default Short get() throws Exception
     {
-    	return getShort();
+    	return getS();
     }
 }

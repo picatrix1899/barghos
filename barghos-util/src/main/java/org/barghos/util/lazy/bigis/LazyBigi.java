@@ -6,7 +6,7 @@ import org.barghos.util.lazy.Lazy;
 
 /**
  * Represents a {@link BigInteger} value provider, that determines the value to
- * provide on the first call to {@link #valueBigInt()} and stores it for any
+ * provide on the first call to {@link #valueBigi()} and stores it for any
  * further calls. This allows to execute probably complex code for determining
  * the value only if and when the value is really needed. 
  */
@@ -23,15 +23,15 @@ public interface LazyBigi extends Lazy<BigInteger>
 	 * 
 	 * @return The provided value.
 	 */
-	BigInteger valueBigInt();
+	BigInteger valueBigi();
 	
 	/**
-     * @deprecated Use {@link #valueBigInt()} instead.
+     * @deprecated Use {@link #valueBigi()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-	default BigInteger valueGeneric()
+	default BigInteger value()
 	{
-		return valueBigInt();
+		return valueBigi();
 	}
 }

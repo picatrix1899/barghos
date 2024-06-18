@@ -13,7 +13,7 @@ import org.barghos.util.supplier.Supplier;
  *
  * <p>
  * This is a functional interface whose functional method is
- * {@link #getBigDec()}.
+ * {@link #getBigd()}.
  * 
  * @see SupplierBigd
  * @see SupplierExBigd
@@ -26,15 +26,15 @@ public interface SupplierBigd extends Supplier<BigDecimal>
      *
      * @return A result.
      */
-    BigDecimal getBigDec();
+    BigDecimal getBigd();
     
     /**
-     * @deprecated Use {@link #getBigDec()} instead.
+     * @deprecated Use {@link #getBigd()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default BigDecimal getGeneric()
+    default BigDecimal get()
     {
-    	return getBigDec();
+    	return getBigd();
     }
 }

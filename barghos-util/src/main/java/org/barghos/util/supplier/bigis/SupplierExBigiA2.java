@@ -14,7 +14,7 @@ import org.barghos.util.supplier.SupplierEx;
  *
  * <p>
  * This is a functional interface whose functional method is
- * {@link #getBigInt2DArray()}.
+ * {@link #getBigiA2()}.
  * 
  * @see SupplierBigiA2
  * @see SupplierExBigiA2
@@ -29,15 +29,15 @@ public interface SupplierExBigiA2 extends SupplierEx<BigInteger>
      * 
      * @throws Exception May throw an exception during execution.
      */
-	BigInteger getBigInt2DArray() throws Exception;
+	BigInteger getBigiA2() throws Exception;
 	
 	/**
-     * @deprecated Use {@link #getBigInt2DArray()} instead.
+     * @deprecated Use {@link #getBigiA2()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default BigInteger getGeneric() throws Exception
+    default BigInteger get() throws Exception
     {
-    	return getBigInt2DArray();
+    	return getBigiA2();
     }
 }

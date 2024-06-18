@@ -12,7 +12,7 @@ import org.barghos.util.supplier.SupplierEx;
  *
  * <p>
  * This is a functional interface whose functional method is
- * {@link #getShortArray()}.
+ * {@link #getSA()}.
  * 
  * @see SupplierSA
  * @see SupplierExSA
@@ -27,15 +27,15 @@ public interface SupplierExSA extends SupplierEx<short[]>
      * 
      * @throws Exception May throw an exception during execution.
      */
-	short[] getShortArray() throws Exception;
+	short[] getSA() throws Exception;
     
     /**
-     * @deprecated Use {@link #getShortArray()} instead.
+     * @deprecated Use {@link #getSA()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default short[] getGeneric() throws Exception
+    default short[] get() throws Exception
     {
-    	return getShortArray();
+    	return getSA();
     }
 }

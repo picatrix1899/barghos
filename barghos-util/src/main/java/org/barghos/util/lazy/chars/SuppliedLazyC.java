@@ -30,7 +30,7 @@ public class SuppliedLazyC implements UpdatableLazyC
 	
 	/** {@inheritDoc} */
 	@Override
-	public char valueChar()
+	public char valueC()
 	{
 		if(!this.hasValue) update();
 		
@@ -49,7 +49,7 @@ public class SuppliedLazyC implements UpdatableLazyC
 	@Override
 	public void update()
 	{
-		this.value = this.supplier.getChar();
+		this.value = this.supplier.getC();
 		this.hasValue = true;
 	}
 	
