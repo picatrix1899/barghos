@@ -11,7 +11,7 @@ import org.barghos.util.supplier.Supplier;
  *
  * <p>
  * This is a functional interface whose functional method is
- * {@link #getChar2DArray()}.
+ * {@link #getCA2()}.
  * 
  * @see SupplierCA2
  * @see SupplierExCA2
@@ -24,15 +24,15 @@ public interface SupplierCA2 extends Supplier<char[][]>
      *
      * @return A result.
      */
-	char[][] getChar2DArray();
+	char[][] getCA2();
     
     /**
-     * @deprecated Use {@link #getChar2DArray()} instead.
+     * @deprecated Use {@link #getCA2()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default char[][] getGeneric()
+    default char[][] get()
     {
-    	return getChar2DArray();
+    	return getCA2();
     }
 }

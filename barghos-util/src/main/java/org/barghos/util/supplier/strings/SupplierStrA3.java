@@ -11,7 +11,7 @@ import org.barghos.util.supplier.Supplier;
  *
  * <p>
  * This is a functional interface whose functional method is
- * {@link #getString3DArray()}.
+ * {@link #getStrA3()}.
  * 
  * @see SupplierStrA3
  * @see SupplierExStrA3
@@ -24,15 +24,15 @@ public interface SupplierStrA3 extends Supplier<String[][][]>
      *
      * @return A result.
      */
-	String[][][] getString3DArray();
+	String[][][] getStrA3();
     
     /**
-     * @deprecated Use {@link #getString3DArray()} instead.
+     * @deprecated Use {@link #getStrA3()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default String[][][] getGeneric()
+    default String[][][] get()
     {
-    	return getString3DArray();
+    	return getStrA3();
     }
 }

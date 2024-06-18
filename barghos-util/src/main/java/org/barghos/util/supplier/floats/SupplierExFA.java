@@ -12,7 +12,7 @@ import org.barghos.util.supplier.SupplierEx;
  *
  * <p>
  * This is a functional interface whose functional method is
- * {@link #getFloatArray()}.
+ * {@link #getFA()}.
  * 
  * @see SupplierFA
  * @see SupplierExFA
@@ -27,15 +27,15 @@ public interface SupplierExFA extends SupplierEx<float[]>
      * 
      * @throws Exception May throw an exception during execution.
      */
-	float[] getFloatArray() throws Exception;
+	float[] getFA() throws Exception;
     
     /**
-     * @deprecated Use {@link #getFloatArray()} instead.
+     * @deprecated Use {@link #getFA()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default float[] getGeneric() throws Exception
+    default float[] get() throws Exception
     {
-    	return getFloatArray();
+    	return getFA();
     }
 }

@@ -4,7 +4,7 @@ import org.barghos.util.lazy.Lazy;
 
 /**
  * Represents an integer value provider, that determines the value to provide on
- * the first call to {@link #valueInt()} and stores it for any further calls.
+ * the first call to {@link #valueI()} and stores it for any further calls.
  * This allows to execute probably complex code for determining the value only
  * if and when the value is really needed. 
  */
@@ -21,15 +21,15 @@ public interface LazyI extends Lazy<Integer>
 	 * 
 	 * @return The provided value.
 	 */
-	int valueInt();
+	int valueI();
 	
 	/**
-     * @deprecated Use {@link #valueInt()} instead.
+     * @deprecated Use {@link #valueI()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-	default Integer valueGeneric()
+	default Integer value()
 	{
-		return valueInt();
+		return valueI();
 	}
 }

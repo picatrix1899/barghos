@@ -11,7 +11,7 @@ import org.barghos.util.supplier.Supplier;
  *
  * <p>
  * This is a functional interface whose functional method is
- * {@link #getCharArray()}.
+ * {@link #getCA()}.
  * 
  * @see SupplierCA
  * @see SupplierExCA
@@ -24,15 +24,15 @@ public interface SupplierCA extends Supplier<char[]>
      *
      * @return A result.
      */
-	char[] getCharArray();
+	char[] getCA();
     
     /**
-     * @deprecated Use {@link #getCharArray()} instead.
+     * @deprecated Use {@link #getCA()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default char[] getGeneric()
+    default char[] get()
     {
-    	return getCharArray();
+    	return getCA();
     }
 }

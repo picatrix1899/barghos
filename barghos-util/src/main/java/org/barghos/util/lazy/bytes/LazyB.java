@@ -4,7 +4,7 @@ import org.barghos.util.lazy.Lazy;
 
 /**
  * Represents a byte value provider, that determines the value to provide on
- * the first call to {@link #valueByte()} and stores it for any further calls.
+ * the first call to {@link #valueB()} and stores it for any further calls.
  * This allows to execute probably complex code for determining the value only
  * if and when the value is really needed. 
  */
@@ -21,15 +21,15 @@ public interface LazyB extends Lazy<Byte>
 	 * 
 	 * @return The provided value.
 	 */
-	byte valueByte();
+	byte valueB();
 	
 	/**
-     * @deprecated Use {@link #valueByte()} instead.
+     * @deprecated Use {@link #valueB()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-	default Byte valueGeneric()
+	default Byte value()
 	{
-		return valueByte();
+		return valueB();
 	}
 }

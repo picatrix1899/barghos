@@ -33,7 +33,7 @@ public class SuppliedLazyBigd implements UpdatableLazyBigd
 	
 	/** {@inheritDoc} */
 	@Override
-	public BigDecimal valueBigDec()
+	public BigDecimal valueBigd()
 	{
 		if(!this.hasValue) update();
 		
@@ -52,7 +52,7 @@ public class SuppliedLazyBigd implements UpdatableLazyBigd
 	@Override
 	public void update()
 	{
-		this.value = this.supplier.getBigDec();
+		this.value = this.supplier.getBigd();
 		this.hasValue = true;
 	}
 	

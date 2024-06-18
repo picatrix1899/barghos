@@ -14,7 +14,7 @@ import org.barghos.util.supplier.SupplierEx;
  *
  * <p>
  * This is a functional interface whose functional method is
- * {@link #getBigInt()}.
+ * {@link #getBigi()}.
  * 
  * @see SupplierBigi
  * @see SupplierExBigi
@@ -29,15 +29,15 @@ public interface SupplierExBigi extends SupplierEx<BigInteger>
      * 
      * @throws Exception May throw an exception during execution.
      */
-	BigInteger getBigInt() throws Exception;
+	BigInteger getBigi() throws Exception;
 	
 	/**
-     * @deprecated Use {@link #getBigInt()} instead.
+     * @deprecated Use {@link #getBigi()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default BigInteger getGeneric() throws Exception
+    default BigInteger get() throws Exception
     {
-    	return getBigInt();
+    	return getBigi();
     }
 }

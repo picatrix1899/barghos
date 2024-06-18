@@ -10,7 +10,7 @@ import org.barghos.util.supplier.Supplier;
  * time the supplier is invoked.
  *
  * <p>
- * This is a functional interface whose functional method is {@link #getBool()}.
+ * This is a functional interface whose functional method is {@link #getBo()}.
  * 
  * @see SupplierBo
  * @see SupplierExBo
@@ -23,15 +23,15 @@ public interface SupplierBo extends Supplier<Boolean>
      *
      * @return A result.
      */
-    boolean getBool();
+    boolean getBo();
     
     /**
-     * @deprecated Use {@link #getBool()} instead.
+     * @deprecated Use {@link #getBo()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default Boolean getGeneric()
+    default Boolean get()
     {
-    	return getBool();
+    	return getBo();
     }
 }

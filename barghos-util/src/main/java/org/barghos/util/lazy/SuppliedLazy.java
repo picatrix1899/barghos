@@ -32,7 +32,7 @@ public class SuppliedLazy<T> implements UpdatableLazy<T>
 	
 	/** {@inheritDoc} */
 	@Override
-	public T valueGeneric()
+	public T value()
 	{
 		if(!this.hasValue) update();
 		
@@ -51,7 +51,7 @@ public class SuppliedLazy<T> implements UpdatableLazy<T>
 	@Override
 	public void update()
 	{
-		this.value = this.supplier.getGeneric();
+		this.value = this.supplier.get();
 		this.hasValue = true;
 	}
 	

@@ -32,7 +32,7 @@ public class SuppliedLazyBigi implements UpdatableLazyBigi
 	
 	/** {@inheritDoc} */
 	@Override
-	public BigInteger valueBigInt()
+	public BigInteger valueBigi()
 	{
 		if(!this.hasValue) update();
 		
@@ -51,7 +51,7 @@ public class SuppliedLazyBigi implements UpdatableLazyBigi
 	@Override
 	public void update()
 	{
-		this.value = this.supplier.getBigInt();
+		this.value = this.supplier.getBigi();
 		this.hasValue = true;
 	}
 	

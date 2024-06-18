@@ -30,7 +30,7 @@ public class SuppliedLazyI implements UpdatableLazyI
 	
 	/** {@inheritDoc} */
 	@Override
-	public int valueInt()
+	public int valueI()
 	{
 		if(!this.hasValue) update();
 		
@@ -49,7 +49,7 @@ public class SuppliedLazyI implements UpdatableLazyI
 	@Override
 	public void update()
 	{
-		this.value = this.supplier.getInt();
+		this.value = this.supplier.getI();
 		this.hasValue = true;
 	}
 	

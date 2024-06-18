@@ -11,7 +11,7 @@ import org.barghos.util.supplier.Supplier;
  *
  * <p>
  * This is a functional interface whose functional method is
- * {@link #getFloat2DArray()}.
+ * {@link #getFA2()}.
  * 
  * @see SupplierFA2
  * @see SupplierExFA2
@@ -24,15 +24,15 @@ public interface SupplierFA2 extends Supplier<float[][]>
      *
      * @return A result.
      */
-	float[][] getFloat2DArray();
+	float[][] getFA2();
     
     /**
-     * @deprecated Use {@link #getFloat2DArray()} instead.
+     * @deprecated Use {@link #getFA2()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default float[][] getGeneric()
+    default float[][] get()
     {
-    	return getFloat2DArray();
+    	return getFA2();
     }
 }

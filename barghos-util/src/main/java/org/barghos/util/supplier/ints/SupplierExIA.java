@@ -12,7 +12,7 @@ import org.barghos.util.supplier.SupplierEx;
  *
  * <p>
  * This is a functional interface whose functional method is
- * {@link #getIntArray()}.
+ * {@link #getIA()}.
  * 
  * @see SupplierIA
  * @see SupplierExIA
@@ -27,15 +27,15 @@ public interface SupplierExIA extends SupplierEx<int[]>
      * 
      * @throws Exception May throw an exception during execution.
      */
-	int[] getIntArray() throws Exception;
+	int[] getIA() throws Exception;
     
     /**
-     * @deprecated Use {@link #getIntArray()} instead.
+     * @deprecated Use {@link #getIA()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default int[] getGeneric() throws Exception
+    default int[] get() throws Exception
     {
-    	return getIntArray();
+    	return getIA();
     }
 }

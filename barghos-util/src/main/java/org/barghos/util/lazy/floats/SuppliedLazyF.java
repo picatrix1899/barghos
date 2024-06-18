@@ -30,7 +30,7 @@ public class SuppliedLazyF implements UpdatableLazyF
 	
 	/** {@inheritDoc} */
 	@Override
-	public float valueFloat()
+	public float valueF()
 	{
 		if(!this.hasValue) update();
 		
@@ -49,7 +49,7 @@ public class SuppliedLazyF implements UpdatableLazyF
 	@Override
 	public void update()
 	{
-		this.value = this.supplier.getFloat();
+		this.value = this.supplier.getF();
 		this.hasValue = true;
 	}
 	

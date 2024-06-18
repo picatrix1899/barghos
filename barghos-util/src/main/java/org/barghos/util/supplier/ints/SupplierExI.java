@@ -11,7 +11,7 @@ import org.barghos.util.supplier.SupplierEx;
  * time the supplier is invoked.
  *
  * <p>
- * This is a functional interface whose functional method is {@link #getInt()}.
+ * This is a functional interface whose functional method is {@link #getI()}.
  * 
  * @see SupplierI
  * @see SupplierExI
@@ -26,15 +26,15 @@ public interface SupplierExI extends SupplierEx<Integer>
      * 
      * @throws Exception May throw an exception during execution.
      */
-	int getInt() throws Exception;
+	int getI() throws Exception;
     
     /**
-     * @deprecated Use {@link #getInt()} instead.
+     * @deprecated Use {@link #getI()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default Integer getGeneric() throws Exception
+    default Integer get() throws Exception
     {
-    	return getInt();
+    	return getI();
     }
 }

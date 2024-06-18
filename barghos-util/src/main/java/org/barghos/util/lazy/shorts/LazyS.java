@@ -4,7 +4,7 @@ import org.barghos.util.lazy.Lazy;
 
 /**
  * Represents a short value provider, that determines the value to provide on
- * the first call to {@link #valueShort()} and stores it for any further calls.
+ * the first call to {@link #valueS()} and stores it for any further calls.
  * This allows to execute probably complex code for determining the value only
  * if and when the value is really needed. 
  */
@@ -21,15 +21,15 @@ public interface LazyS extends Lazy<Short>
 	 * 
 	 * @return The provided value.
 	 */
-	short valueShort();
+	short valueS();
 	
 	/**
-     * @deprecated Use {@link #valueShort()} instead.
+     * @deprecated Use {@link #valueS()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-	default Short valueGeneric()
+	default Short value()
 	{
-		return valueShort();
+		return valueS();
 	}
 }

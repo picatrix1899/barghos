@@ -13,7 +13,7 @@ import org.barghos.util.supplier.Supplier;
  *
  * <p>
  * This is a functional interface whose functional method is
- * {@link #getBigInt2DArray()}.
+ * {@link #getBigiA2()}.
  * 
  * @see SupplierBigiA2
  * @see SupplierExBigiA2
@@ -26,15 +26,15 @@ public interface SupplierBigiA2 extends Supplier<BigInteger[][]>
      *
      * @return A result.
      */
-    BigInteger[][] getBigInt2DArray();
+    BigInteger[][] getBigiA2();
     
     /**
-     * @deprecated Use {@link #getBigInt2DArray()} instead.
+     * @deprecated Use {@link #getBigiA2()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default BigInteger[][] getGeneric()
+    default BigInteger[][] get()
     {
-    	return getBigInt2DArray();
+    	return getBigiA2();
     }
 }

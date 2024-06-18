@@ -13,7 +13,7 @@ import org.barghos.util.supplier.Supplier;
  *
  * <p>
  * This is a functional interface whose functional method is
- * {@link #getBigDec2DArray()}.
+ * {@link #getBigdA2()}.
  * 
  * @see SupplierBigdA2
  * @see SupplierExBigdA2
@@ -26,15 +26,15 @@ public interface SupplierBigdA2 extends Supplier<BigDecimal[][]>
      *
      * @return A result.
      */
-    BigDecimal[][] getBigDec2DArray();
+    BigDecimal[][] getBigdA2();
     
     /**
-     * @deprecated Use {@link #getBigDec2DArray()} instead.
+     * @deprecated Use {@link #getBigdA2()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default BigDecimal[][] getGeneric()
+    default BigDecimal[][] get()
     {
-    	return getBigDec2DArray();
+    	return getBigdA2();
     }
 }

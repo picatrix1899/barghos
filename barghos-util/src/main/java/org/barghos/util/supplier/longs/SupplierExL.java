@@ -11,7 +11,7 @@ import org.barghos.util.supplier.SupplierEx;
  * time the supplier is invoked.
  *
  * <p>
- * This is a functional interface whose functional method is {@link #getLong()}.
+ * This is a functional interface whose functional method is {@link #getL()}.
  * 
  * @see SupplierL
  * @see SupplierExL
@@ -26,15 +26,15 @@ public interface SupplierExL extends SupplierEx<Long>
      * 
      * @throws Exception May throw an exception during execution.
      */
-	long getLong() throws Exception;
+	long getL() throws Exception;
     
     /**
-     * @deprecated Use {@link #getLong()} instead.
+     * @deprecated Use {@link #getL()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default Long getGeneric() throws Exception
+    default Long get() throws Exception
     {
-    	return getLong();
+    	return getL();
     }
 }

@@ -30,7 +30,7 @@ public class SuppliedLazyL implements UpdatableLazyL
 	
 	/** {@inheritDoc} */
 	@Override
-	public long valueLong()
+	public long valueL()
 	{
 		if(!this.hasValue) update();
 		
@@ -49,7 +49,7 @@ public class SuppliedLazyL implements UpdatableLazyL
 	@Override
 	public void update()
 	{
-		this.value = this.supplier.getLong();
+		this.value = this.supplier.getL();
 		this.hasValue = true;
 	}
 	

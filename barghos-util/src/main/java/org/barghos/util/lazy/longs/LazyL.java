@@ -4,7 +4,7 @@ import org.barghos.util.lazy.Lazy;
 
 /**
  * Represents a long value provider, that determines the value to provide on
- * the first call to {@link #valueLong()} and stores it for any further calls.
+ * the first call to {@link #valueL()} and stores it for any further calls.
  * This allows to execute probably complex code for determining the value only
  * if and when the value is really needed. 
  */
@@ -21,15 +21,15 @@ public interface LazyL extends Lazy<Long>
 	 * 
 	 * @return The provided value.
 	 */
-	long valueLong();
+	long valueL();
 	
 	/**
-     * @deprecated Use {@link #valueLong()} instead.
+     * @deprecated Use {@link #valueL()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-	default Long valueGeneric()
+	default Long value()
 	{
-		return valueLong();
+		return valueL();
 	}
 }

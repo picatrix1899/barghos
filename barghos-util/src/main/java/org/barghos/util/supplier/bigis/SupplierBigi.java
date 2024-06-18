@@ -13,7 +13,7 @@ import org.barghos.util.supplier.Supplier;
  *
  * <p>
  * This is a functional interface whose functional method is
- * {@link #getBigInt()}.
+ * {@link #getBigi()}.
  * 
  * @see SupplierBigi
  * @see SupplierExBigi
@@ -26,15 +26,15 @@ public interface SupplierBigi extends Supplier<BigInteger>
      *
      * @return A result.
      */
-    BigInteger getBigInt();
+    BigInteger getBigi();
     
     /**
-     * @deprecated Use {@link #getBigInt()} instead.
+     * @deprecated Use {@link #getBigi()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default BigInteger getGeneric()
+    default BigInteger get()
     {
-    	return getBigInt();
+    	return getBigi();
     }
 }

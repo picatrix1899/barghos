@@ -30,7 +30,7 @@ public class SuppliedLazyStr implements UpdatableLazyStr
 	
 	/** {@inheritDoc} */
 	@Override
-	public String valueString()
+	public String valueStr()
 	{
 		if(!this.hasValue) update();
 		
@@ -49,7 +49,7 @@ public class SuppliedLazyStr implements UpdatableLazyStr
 	@Override
 	public void update()
 	{
-		this.value = this.supplier.getString();
+		this.value = this.supplier.getStr();
 		this.hasValue = true;
 	}
 	

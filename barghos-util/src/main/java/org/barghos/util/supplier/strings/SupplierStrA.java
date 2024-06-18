@@ -11,7 +11,7 @@ import org.barghos.util.supplier.Supplier;
  *
  * <p>
  * This is a functional interface whose functional method is
- * {@link #getStringArray()}.
+ * {@link #getStrA()}.
  * 
  * @see SupplierStrA
  * @see SupplierExStrA
@@ -24,15 +24,15 @@ public interface SupplierStrA extends Supplier<String[]>
      *
      * @return A result.
      */
-	String[] getStringArray();
+	String[] getStrA();
     
     /**
-     * @deprecated Use {@link #getStringArray()} instead.
+     * @deprecated Use {@link #getStrA()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default String[] getGeneric()
+    default String[] get()
     {
-    	return getStringArray();
+    	return getStrA();
     }
 }

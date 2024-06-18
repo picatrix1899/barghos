@@ -11,7 +11,7 @@ import org.barghos.util.supplier.Supplier;
  *
  * <p>
  * This is a functional interface whose functional method is
- * {@link #getDoubleArray()}.
+ * {@link #getDA()}.
  * 
  * @see SupplierDA
  * @see SupplierExDA
@@ -24,15 +24,15 @@ public interface SupplierDA extends Supplier<double[]>
      *
      * @return A result.
      */
-	double[] getDoubleArray();
+	double[] getDA();
     
     /**
-     * @deprecated Use {@link #getDoubleArray()} instead.
+     * @deprecated Use {@link #getDA()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default double[] getGeneric()
+    default double[] get()
     {
-    	return getDoubleArray();
+    	return getDA();
     }
 }

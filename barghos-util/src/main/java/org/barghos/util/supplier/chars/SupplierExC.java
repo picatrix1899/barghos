@@ -11,7 +11,7 @@ import org.barghos.util.supplier.SupplierEx;
  * time the supplier is invoked.
  *
  * <p>
- * This is a functional interface whose functional method is {@link #getChar()}.
+ * This is a functional interface whose functional method is {@link #getC()}.
  * 
  * @see SupplierC
  * @see SupplierExC
@@ -26,15 +26,15 @@ public interface SupplierExC extends SupplierEx<Character>
      * 
      * @throws Exception May throw an exception during execution.
      */
-	char getChar() throws Exception;
+	char getC() throws Exception;
     
     /**
-     * @deprecated Use {@link #getChar()} instead.
+     * @deprecated Use {@link #getC()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default Character getGeneric() throws Exception
+    default Character get() throws Exception
     {
-    	return getChar();
+    	return getC();
     }
 }

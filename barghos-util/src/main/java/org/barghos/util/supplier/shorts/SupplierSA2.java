@@ -11,7 +11,7 @@ import org.barghos.util.supplier.Supplier;
  *
  * <p>
  * This is a functional interface whose functional method is
- * {@link #getShort2DArray()}.
+ * {@link #getSA2()}.
  * 
  * @see SupplierSA2
  * @see SupplierExSA2
@@ -24,15 +24,15 @@ public interface SupplierSA2 extends Supplier<short[][]>
      *
      * @return A result.
      */
-	short[][] getShort2DArray();
+	short[][] getSA2();
     
     /**
-     * @deprecated Use {@link #getShort2DArray()} instead.
+     * @deprecated Use {@link #getSA2()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default short[][] getGeneric()
+    default short[][] get()
     {
-    	return getShort2DArray();
+    	return getSA2();
     }
 }

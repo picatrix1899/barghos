@@ -11,7 +11,7 @@ import org.barghos.util.supplier.SupplierEx;
  * time the supplier is invoked.
  *
  * <p>
- * This is a functional interface whose functional method is {@link #getFloat()}.
+ * This is a functional interface whose functional method is {@link #getF()}.
  * 
  * @see SupplierF
  * @see SupplierExF
@@ -26,15 +26,15 @@ public interface SupplierExF extends SupplierEx<Float>
      * 
      * @throws Exception May throw an exception during execution.
      */
-	float getFloat() throws Exception;
+	float getF() throws Exception;
     
     /**
-     * @deprecated Use {@link #getFloat()} instead.
+     * @deprecated Use {@link #getF()} instead.
      */
     @Override
     @Deprecated(since = "1.0", forRemoval = false)
-    default Float getGeneric() throws Exception
+    default Float get() throws Exception
     {
-    	return getFloat();
+    	return getF();
     }
 }
