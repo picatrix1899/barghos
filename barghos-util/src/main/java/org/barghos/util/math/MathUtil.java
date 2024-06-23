@@ -175,134 +175,134 @@ public class MathUtil
 	}
 	
 	/**
-     * Returns the largest (closest to positive infinity)
-     * {@code double} value that is less than or equal to the
-     * argument and is equal to a mathematical integer. Special cases:
-     * <ul><li>If the argument value is already equal to a
-     * mathematical integer, then the result is the same as the
-     * argument.  <li>If the argument is NaN or an infinity or
-     * positive zero or negative zero, then the result is the same as
-     * the argument.</ul>
-     *
-     * @param value A value.
-     * 
-     * @return The largest (closest to positive infinity) floating-point value that less than or
-     * equal to the argument and is equal to a mathematical integer.
-     */
+	 * Returns the largest (closest to positive infinity)
+	 * {@code double} value that is less than or equal to the
+	 * argument and is equal to a mathematical integer. Special cases:
+	 * <ul><li>If the argument value is already equal to a
+	 * mathematical integer, then the result is the same as the
+	 * argument.  <li>If the argument is NaN or an infinity or
+	 * positive zero or negative zero, then the result is the same as
+	 * the argument.</ul>
+	 *
+	 * @param value A value.
+	 * 
+	 * @return The largest (closest to positive infinity) floating-point value that less than or
+	 * equal to the argument and is equal to a mathematical integer.
+	 */
 	public static double floor(double value)
 	{
 		return MATH_PROVIDER.floor(value);
 	}
 	
 	/**
-     * Returns the largest (closest to positive infinity)
-     * {@code double} value that is less than or equal to the
-     * argument and is equal to a mathematical integer. Special cases:
-     * <ul><li>If the argument value is already equal to a
-     * mathematical integer, then the result is the same as the
-     * argument.  <li>If the argument is NaN or an infinity or
-     * positive zero or negative zero, then the result is the same as
-     * the argument.</ul>
-     *
-     * @param value A value.
-     * 
-     * @return The largest (closest to positive infinity) floating-point value that less than or
-     * equal to the argument and is equal to a mathematical integer.
-     */
+	 * Returns the largest (closest to positive infinity)
+	 * {@code double} value that is less than or equal to the
+	 * argument and is equal to a mathematical integer. Special cases:
+	 * <ul><li>If the argument value is already equal to a
+	 * mathematical integer, then the result is the same as the
+	 * argument.  <li>If the argument is NaN or an infinity or
+	 * positive zero or negative zero, then the result is the same as
+	 * the argument.</ul>
+	 *
+	 * @param value A value.
+	 * 
+	 * @return The largest (closest to positive infinity) floating-point value that less than or
+	 * equal to the argument and is equal to a mathematical integer.
+	 */
 	public static float floor(float value)
 	{
 		return MATH_PROVIDER.floor(value);
 	}
 	
 	/**
-     * Returns the smallest (closest to negative infinity)
-     * {@code double} value that is greater than or equal to the
-     * argument and is equal to a mathematical integer. Special cases:
-     * <ul><li>If the argument value is already equal to a
-     * mathematical integer, then the result is the same as the
-     * argument.  <li>If the argument is NaN or an infinity or
-     * positive zero or negative zero, then the result is the same as
-     * the argument.  <li>If the argument value is less than zero but
-     * greater than -1.0, then the result is negative zero.</ul> Note
-     * that the value of {@code Math.ceil(x)} is exactly the
-     * value of {@code -Math.floor(-x)}.
-     *
-     *
-     * @param value A value.
-     * 
-     * @return The smallest (closest to negative infinity) floating-point value that is greater than or
-     * equal to the argument and is equal to a mathematical integer.
-     */
+	 * Returns the smallest (closest to negative infinity)
+	 * {@code double} value that is greater than or equal to the
+	 * argument and is equal to a mathematical integer. Special cases:
+	 * <ul><li>If the argument value is already equal to a
+	 * mathematical integer, then the result is the same as the
+	 * argument.  <li>If the argument is NaN or an infinity or
+	 * positive zero or negative zero, then the result is the same as
+	 * the argument.  <li>If the argument value is less than zero but
+	 * greater than -1.0, then the result is negative zero.</ul> Note
+	 * that the value of {@code Math.ceil(x)} is exactly the
+	 * value of {@code -Math.floor(-x)}.
+	 *
+	 *
+	 * @param value A value.
+	 * 
+	 * @return The smallest (closest to negative infinity) floating-point value that is greater than or
+	 * equal to the argument and is equal to a mathematical integer.
+	 */
 	public static double ceil(double value)
 	{
 		return MATH_PROVIDER.ceil(value);
 	}
 	
 	/**
-     * Returns the smallest (closest to negative infinity)
-     * {@code double} value that is greater than or equal to the
-     * argument and is equal to a mathematical integer. Special cases:
-     * <ul><li>If the argument value is already equal to a
-     * mathematical integer, then the result is the same as the
-     * argument.  <li>If the argument is NaN or an infinity or
-     * positive zero or negative zero, then the result is the same as
-     * the argument.  <li>If the argument value is less than zero but
-     * greater than -1.0, then the result is negative zero.</ul> Note
-     * that the value of {@code Math.ceil(x)} is exactly the
-     * value of {@code -Math.floor(-x)}.
-     *
-     *
-     * @param value A value.
-     * 
-     * @return The smallest (closest to negative infinity) floating-point value that is greater than or
-     * equal to the argument and is equal to a mathematical integer.
-     */
+	 * Returns the smallest (closest to negative infinity)
+	 * {@code double} value that is greater than or equal to the
+	 * argument and is equal to a mathematical integer. Special cases:
+	 * <ul><li>If the argument value is already equal to a
+	 * mathematical integer, then the result is the same as the
+	 * argument.  <li>If the argument is NaN or an infinity or
+	 * positive zero or negative zero, then the result is the same as
+	 * the argument.  <li>If the argument value is less than zero but
+	 * greater than -1.0, then the result is negative zero.</ul> Note
+	 * that the value of {@code Math.ceil(x)} is exactly the
+	 * value of {@code -Math.floor(-x)}.
+	 *
+	 *
+	 * @param value A value.
+	 * 
+	 * @return The smallest (closest to negative infinity) floating-point value that is greater than or
+	 * equal to the argument and is equal to a mathematical integer.
+	 */
 	public static float ceil(float value)
 	{
 		return MATH_PROVIDER.ceil(value);
 	}
 	
 	 /**
-     * Returns the closest {@code long} to the argument, with ties
-     * rounding to positive infinity.
-     *
-     * <p>Special cases:
-     * <ul><li>If the argument is NaN, the result is 0.
-     * <li>If the argument is negative infinity or any value less than or
-     * equal to the value of {@code Long.MIN_VALUE}, the result is
-     * equal to the value of {@code Long.MIN_VALUE}.
-     * <li>If the argument is positive infinity or any value greater than or
-     * equal to the value of {@code Long.MAX_VALUE}, the result is
-     * equal to the value of {@code Long.MAX_VALUE}.</ul>
-     *
-     * @param value A floating-point value to be rounded to a {@code long}.
-     * @return The value of the argument rounded to the nearest {@code long} value.
-     * @see java.lang.Long#MAX_VALUE
-     * @see java.lang.Long#MIN_VALUE
-     */
+	 * Returns the closest {@code long} to the argument, with ties
+	 * rounding to positive infinity.
+	 *
+	 * <p>Special cases:
+	 * <ul><li>If the argument is NaN, the result is 0.
+	 * <li>If the argument is negative infinity or any value less than or
+	 * equal to the value of {@code Long.MIN_VALUE}, the result is
+	 * equal to the value of {@code Long.MIN_VALUE}.
+	 * <li>If the argument is positive infinity or any value greater than or
+	 * equal to the value of {@code Long.MAX_VALUE}, the result is
+	 * equal to the value of {@code Long.MAX_VALUE}.</ul>
+	 *
+	 * @param value A floating-point value to be rounded to a {@code long}.
+	 * @return The value of the argument rounded to the nearest {@code long} value.
+	 * @see java.lang.Long#MAX_VALUE
+	 * @see java.lang.Long#MIN_VALUE
+	 */
 	public static double round(double value)
 	{
 		return MATH_PROVIDER.round(value);
 	}
 	
 	/**
-     * Returns the closest {@code long} to the argument, with ties
-     * rounding to positive infinity.
-     *
-     * <p>Special cases:
-     * <ul><li>If the argument is NaN, the result is 0.
-     * <li>If the argument is negative infinity or any value less than or
-     * equal to the value of {@code Long.MIN_VALUE}, the result is
-     * equal to the value of {@code Long.MIN_VALUE}.
-     * <li>If the argument is positive infinity or any value greater than or
-     * equal to the value of {@code Long.MAX_VALUE}, the result is
-     * equal to the value of {@code Long.MAX_VALUE}.</ul>
-     *
-     * @param value A floating-point value to be rounded to a {@code long}.
-     * @return The value of the argument rounded to the nearest {@code long} value.
-     * @see java.lang.Long#MAX_VALUE
-     * @see java.lang.Long#MIN_VALUE
-     */
+	 * Returns the closest {@code long} to the argument, with ties
+	 * rounding to positive infinity.
+	 *
+	 * <p>Special cases:
+	 * <ul><li>If the argument is NaN, the result is 0.
+	 * <li>If the argument is negative infinity or any value less than or
+	 * equal to the value of {@code Long.MIN_VALUE}, the result is
+	 * equal to the value of {@code Long.MIN_VALUE}.
+	 * <li>If the argument is positive infinity or any value greater than or
+	 * equal to the value of {@code Long.MAX_VALUE}, the result is
+	 * equal to the value of {@code Long.MAX_VALUE}.</ul>
+	 *
+	 * @param value A floating-point value to be rounded to a {@code long}.
+	 * @return The value of the argument rounded to the nearest {@code long} value.
+	 * @see java.lang.Long#MAX_VALUE
+	 * @see java.lang.Long#MIN_VALUE
+	 */
 	public static float round(float value)
 	{
 		return MATH_PROVIDER.round(value);

@@ -26,10 +26,10 @@ public interface LazyBigi extends Lazy<BigInteger>
 	BigInteger valueBigi();
 	
 	/**
-     * @deprecated Use {@link #valueBigi()} instead.
-     */
-    @Override
-    @Deprecated(since = "1.0", forRemoval = false)
+	 * @deprecated Use {@link #valueBigi()} instead.
+	 */
+	@Override
+	@Deprecated(since = "1.0", forRemoval = false)
 	default BigInteger value()
 	{
 		return valueBigi();

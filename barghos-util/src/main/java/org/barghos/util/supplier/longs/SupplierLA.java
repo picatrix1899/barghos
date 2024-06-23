@@ -19,20 +19,20 @@ import org.barghos.util.supplier.Supplier;
 @FunctionalInterface
 public interface SupplierLA extends Supplier<long[]>
 {
-    /**
-     * Gets a result.
-     *
-     * @return A result.
-     */
+	/**
+	 * Gets a result.
+	 *
+	 * @return A result.
+	 */
 	long[] getLA();
-    
-    /**
-     * @deprecated Use {@link #getLA()} instead.
-     */
-    @Override
-    @Deprecated(since = "1.0", forRemoval = false)
-    default long[] get()
-    {
-    	return getLA();
-    }
+	
+	/**
+	 * @deprecated Use {@link #getLA()} instead.
+	 */
+	@Override
+	@Deprecated(since = "1.0", forRemoval = false)
+	default long[] get()
+	{
+		return getLA();
+	}
 }

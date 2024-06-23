@@ -20,22 +20,22 @@ import org.barghos.util.supplier.SupplierEx;
 @FunctionalInterface
 public interface SupplierExOA3 extends SupplierEx<Object[][][]>
 {
-    /**
-     * Gets a result.
-     *
-     * @return A result.
-     * 
-     * @throws Exception May throw an exception during execution.
-     */
+	/**
+	 * Gets a result.
+	 *
+	 * @return A result.
+	 * 
+	 * @throws Exception May throw an exception during execution.
+	 */
 	Object[][][] getOA3() throws Exception;
-    
-    /**
-     * @deprecated Use {@link #getOA3()} instead.
-     */
-    @Override
-    @Deprecated(since = "1.0", forRemoval = false)
-    default Object[][][] get() throws Exception
-    {
-    	return getOA3();
-    }
+	
+	/**
+	 * @deprecated Use {@link #getOA3()} instead.
+	 */
+	@Override
+	@Deprecated(since = "1.0", forRemoval = false)
+	default Object[][][] get() throws Exception
+	{
+		return getOA3();
+	}
 }

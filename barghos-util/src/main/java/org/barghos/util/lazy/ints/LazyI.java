@@ -24,10 +24,10 @@ public interface LazyI extends Lazy<Integer>
 	int valueI();
 	
 	/**
-     * @deprecated Use {@link #valueI()} instead.
-     */
-    @Override
-    @Deprecated(since = "1.0", forRemoval = false)
+	 * @deprecated Use {@link #valueI()} instead.
+	 */
+	@Override
+	@Deprecated(since = "1.0", forRemoval = false)
 	default Integer value()
 	{
 		return valueI();

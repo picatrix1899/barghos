@@ -24,10 +24,10 @@ public interface LazyL extends Lazy<Long>
 	long valueL();
 	
 	/**
-     * @deprecated Use {@link #valueL()} instead.
-     */
-    @Override
-    @Deprecated(since = "1.0", forRemoval = false)
+	 * @deprecated Use {@link #valueL()} instead.
+	 */
+	@Override
+	@Deprecated(since = "1.0", forRemoval = false)
 	default Long value()
 	{
 		return valueL();

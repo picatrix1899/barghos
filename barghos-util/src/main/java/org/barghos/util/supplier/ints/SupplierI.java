@@ -18,20 +18,20 @@ import org.barghos.util.supplier.Supplier;
 @FunctionalInterface
 public interface SupplierI extends Supplier<Integer>
 {
-    /**
-     * Gets a result.
-     *
-     * @return A result.
-     */
-    int getI();
-    
-    /**
-     * @deprecated Use {@link #getI()} instead.
-     */
-    @Override
-    @Deprecated(since = "1.0", forRemoval = false)
-    default Integer get()
-    {
-    	return getI();
-    }
+	/**
+	 * Gets a result.
+	 *
+	 * @return A result.
+	 */
+	int getI();
+	
+	/**
+	 * @deprecated Use {@link #getI()} instead.
+	 */
+	@Override
+	@Deprecated(since = "1.0", forRemoval = false)
+	default Integer get()
+	{
+		return getI();
+	}
 }

@@ -24,10 +24,10 @@ public interface LazyBo extends Lazy<Boolean>
 	boolean valueBo();
 	
 	/**
-     * @deprecated Use {@link #valueBo()} instead.
-     */
-    @Override
-    @Deprecated(since = "1.0", forRemoval = false)
+	 * @deprecated Use {@link #valueBo()} instead.
+	 */
+	@Override
+	@Deprecated(since = "1.0", forRemoval = false)
 	default Boolean value()
 	{
 		return valueBo();

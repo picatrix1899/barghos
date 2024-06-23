@@ -24,10 +24,10 @@ public interface LazyStr extends Lazy<String>
 	String valueStr();
 	
 	/**
-     * @deprecated Use {@link #valueStr()} instead.
-     */
-    @Override
-    @Deprecated(since = "1.0", forRemoval = false)
+	 * @deprecated Use {@link #valueStr()} instead.
+	 */
+	@Override
+	@Deprecated(since = "1.0", forRemoval = false)
 	default String value()
 	{
 		return valueStr();

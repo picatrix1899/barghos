@@ -24,10 +24,10 @@ public interface LazyF extends Lazy<Float>
 	float valueF();
 	
 	/**
-     * @deprecated Use {@link #valueF()} instead.
-     */
-    @Override
-    @Deprecated(since = "1.0", forRemoval = false)
+	 * @deprecated Use {@link #valueF()} instead.
+	 */
+	@Override
+	@Deprecated(since = "1.0", forRemoval = false)
 	default Float value()
 	{
 		return valueF();

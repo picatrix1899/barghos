@@ -20,22 +20,22 @@ import org.barghos.util.supplier.SupplierEx;
 @FunctionalInterface
 public interface SupplierExDA extends SupplierEx<double[]>
 {
-    /**
-     * Gets a result.
-     *
-     * @return A result.
-     * 
-     * @throws Exception May throw an exception during execution.
-     */
+	/**
+	 * Gets a result.
+	 *
+	 * @return A result.
+	 * 
+	 * @throws Exception May throw an exception during execution.
+	 */
 	double[] getDA() throws Exception;
-    
-    /**
-     * @deprecated Use {@link #getDA()} instead.
-     */
-    @Override
-    @Deprecated(since = "1.0", forRemoval = false)
-    default double[] get() throws Exception
-    {
-    	return getDA();
-    }
+	
+	/**
+	 * @deprecated Use {@link #getDA()} instead.
+	 */
+	@Override
+	@Deprecated(since = "1.0", forRemoval = false)
+	default double[] get() throws Exception
+	{
+		return getDA();
+	}
 }

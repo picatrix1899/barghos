@@ -18,20 +18,20 @@ import org.barghos.util.supplier.Supplier;
 @FunctionalInterface
 public interface SupplierBo extends Supplier<Boolean>
 {
-    /**
-     * Gets a result.
-     *
-     * @return A result.
-     */
-    boolean getBo();
-    
-    /**
-     * @deprecated Use {@link #getBo()} instead.
-     */
-    @Override
-    @Deprecated(since = "1.0", forRemoval = false)
-    default Boolean get()
-    {
-    	return getBo();
-    }
+	/**
+	 * Gets a result.
+	 *
+	 * @return A result.
+	 */
+	boolean getBo();
+	
+	/**
+	 * @deprecated Use {@link #getBo()} instead.
+	 */
+	@Override
+	@Deprecated(since = "1.0", forRemoval = false)
+	default Boolean get()
+	{
+		return getBo();
+	}
 }

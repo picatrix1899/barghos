@@ -19,20 +19,20 @@ import org.barghos.util.supplier.Supplier;
 @FunctionalInterface
 public interface SupplierBoA2 extends Supplier<boolean[][]>
 {
-    /**
-     * Gets a result.
-     *
-     * @return A result.
-     */
-    boolean[][] getBoA2();
-    
-    /**
-     * @deprecated Use {@link #getBoA2()} instead.
-     */
-    @Override
-    @Deprecated(since = "1.0", forRemoval = false)
-    default boolean[][] get()
-    {
-    	return getBoA2();
-    }
+	/**
+	 * Gets a result.
+	 *
+	 * @return A result.
+	 */
+	boolean[][] getBoA2();
+	
+	/**
+	 * @deprecated Use {@link #getBoA2()} instead.
+	 */
+	@Override
+	@Deprecated(since = "1.0", forRemoval = false)
+	default boolean[][] get()
+	{
+		return getBoA2();
+	}
 }

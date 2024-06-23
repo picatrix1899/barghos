@@ -22,22 +22,22 @@ import org.barghos.util.supplier.SupplierEx;
 @FunctionalInterface
 public interface SupplierExBigiA3 extends SupplierEx<BigInteger>
 {
-    /**
-     * Gets a result.
-     *
-     * @return A result.
-     * 
-     * @throws Exception May throw an exception during execution.
-     */
+	/**
+	 * Gets a result.
+	 *
+	 * @return A result.
+	 * 
+	 * @throws Exception May throw an exception during execution.
+	 */
 	BigInteger getBigiA3() throws Exception;
 	
 	/**
-     * @deprecated Use {@link #getBigiA3()} instead.
-     */
-    @Override
-    @Deprecated(since = "1.0", forRemoval = false)
-    default BigInteger get() throws Exception
-    {
-    	return getBigiA3();
-    }
+	 * @deprecated Use {@link #getBigiA3()} instead.
+	 */
+	@Override
+	@Deprecated(since = "1.0", forRemoval = false)
+	default BigInteger get() throws Exception
+	{
+		return getBigiA3();
+	}
 }

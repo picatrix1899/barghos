@@ -19,22 +19,22 @@ import org.barghos.util.supplier.SupplierEx;
 @FunctionalInterface
 public interface SupplierExF extends SupplierEx<Float>
 {
-    /**
-     * Gets a result.
-     *
-     * @return A result.
-     * 
-     * @throws Exception May throw an exception during execution.
-     */
+	/**
+	 * Gets a result.
+	 *
+	 * @return A result.
+	 * 
+	 * @throws Exception May throw an exception during execution.
+	 */
 	float getF() throws Exception;
-    
-    /**
-     * @deprecated Use {@link #getF()} instead.
-     */
-    @Override
-    @Deprecated(since = "1.0", forRemoval = false)
-    default Float get() throws Exception
-    {
-    	return getF();
-    }
+	
+	/**
+	 * @deprecated Use {@link #getF()} instead.
+	 */
+	@Override
+	@Deprecated(since = "1.0", forRemoval = false)
+	default Float get() throws Exception
+	{
+		return getF();
+	}
 }

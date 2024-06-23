@@ -19,20 +19,20 @@ import org.barghos.util.supplier.Supplier;
 @FunctionalInterface
 public interface SupplierDA3 extends Supplier<double[][][]>
 {
-    /**
-     * Gets a result.
-     *
-     * @return A result.
-     */
+	/**
+	 * Gets a result.
+	 *
+	 * @return A result.
+	 */
 	double[][][] getDA3();
-    
-    /**
-     * @deprecated Use {@link #getDA3()} instead.
-     */
-    @Override
-    @Deprecated(since = "1.0", forRemoval = false)
-    default double[][][] get()
-    {
-    	return getDA3();
-    }
+	
+	/**
+	 * @deprecated Use {@link #getDA3()} instead.
+	 */
+	@Override
+	@Deprecated(since = "1.0", forRemoval = false)
+	default double[][][] get()
+	{
+		return getDA3();
+	}
 }

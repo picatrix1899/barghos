@@ -22,22 +22,22 @@ import org.barghos.util.supplier.SupplierEx;
 @FunctionalInterface
 public interface SupplierExBigd extends SupplierEx<BigDecimal>
 {
-    /**
-     * Gets a result.
-     *
-     * @return A result.
-     * 
-     * @throws Exception May throw an exception during execution.
-     */
-    BigDecimal getBigd() throws Exception;
-    
-    /**
-     * @deprecated Use {@link #getBigd()} instead.
-     */
-    @Override
-    @Deprecated(since = "1.0", forRemoval = false)
-    default BigDecimal get() throws Exception
-    {
-    	return getBigd();
-    }
+	/**
+	 * Gets a result.
+	 *
+	 * @return A result.
+	 * 
+	 * @throws Exception May throw an exception during execution.
+	 */
+	BigDecimal getBigd() throws Exception;
+	
+	/**
+	 * @deprecated Use {@link #getBigd()} instead.
+	 */
+	@Override
+	@Deprecated(since = "1.0", forRemoval = false)
+	default BigDecimal get() throws Exception
+	{
+		return getBigd();
+	}
 }

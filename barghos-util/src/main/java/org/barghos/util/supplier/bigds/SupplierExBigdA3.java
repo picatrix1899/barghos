@@ -22,22 +22,22 @@ import org.barghos.util.supplier.SupplierEx;
 @FunctionalInterface
 public interface SupplierExBigdA3 extends SupplierEx<BigDecimal[][][]>
 {
-    /**
-     * Gets a result.
-     *
-     * @return A result.
-     * 
-     * @throws Exception May throw an exception during execution.
-     */
-    BigDecimal[][][] getBigdA3() throws Exception;
-    
-    /**
-     * @deprecated Use {@link #getBigdA3()} instead.
-     */
-    @Override
-    @Deprecated(since = "1.0", forRemoval = false)
-    default BigDecimal[][][] get() throws Exception
-    {
-    	return getBigdA3();
-    }
+	/**
+	 * Gets a result.
+	 *
+	 * @return A result.
+	 * 
+	 * @throws Exception May throw an exception during execution.
+	 */
+	BigDecimal[][][] getBigdA3() throws Exception;
+	
+	/**
+	 * @deprecated Use {@link #getBigdA3()} instead.
+	 */
+	@Override
+	@Deprecated(since = "1.0", forRemoval = false)
+	default BigDecimal[][][] get() throws Exception
+	{
+		return getBigdA3();
+	}
 }

@@ -157,7 +157,7 @@ public class FloatArrayList implements FloatList
 	public float[] toFloatArray(float[] res)
 	{
 		if (res.length < this.size) return Arrays.copyOf(this.data, this.size);
-		    
+			
 		System.arraycopy(this.data, 0, res, 0, this.size);
 		
 		return res;

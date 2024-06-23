@@ -19,20 +19,20 @@ import org.barghos.util.supplier.Supplier;
 @FunctionalInterface
 public interface SupplierStrA3 extends Supplier<String[][][]>
 {
-    /**
-     * Gets a result.
-     *
-     * @return A result.
-     */
+	/**
+	 * Gets a result.
+	 *
+	 * @return A result.
+	 */
 	String[][][] getStrA3();
-    
-    /**
-     * @deprecated Use {@link #getStrA3()} instead.
-     */
-    @Override
-    @Deprecated(since = "1.0", forRemoval = false)
-    default String[][][] get()
-    {
-    	return getStrA3();
-    }
+	
+	/**
+	 * @deprecated Use {@link #getStrA3()} instead.
+	 */
+	@Override
+	@Deprecated(since = "1.0", forRemoval = false)
+	default String[][][] get()
+	{
+		return getStrA3();
+	}
 }

@@ -20,22 +20,22 @@ import org.barghos.util.supplier.SupplierEx;
 @FunctionalInterface
 public interface SupplierExBoA3 extends SupplierEx<boolean[][][]>
 {
-    /**
-     * Gets a result.
-     *
-     * @return A result.
-     * 
-     * @throws Exception May throw an exception during execution.
-     */
-    boolean[][][] getBoA3() throws Exception;
-    
-    /**
-     * @deprecated Use {@link #getBoA3()} instead.
-     */
-    @Override
-    @Deprecated(since = "1.0", forRemoval = false)
-    default boolean[][][] get() throws Exception
-    {
-    	return getBoA3();
-    }
+	/**
+	 * Gets a result.
+	 *
+	 * @return A result.
+	 * 
+	 * @throws Exception May throw an exception during execution.
+	 */
+	boolean[][][] getBoA3() throws Exception;
+	
+	/**
+	 * @deprecated Use {@link #getBoA3()} instead.
+	 */
+	@Override
+	@Deprecated(since = "1.0", forRemoval = false)
+	default boolean[][][] get() throws Exception
+	{
+		return getBoA3();
+	}
 }

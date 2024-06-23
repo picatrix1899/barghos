@@ -20,22 +20,22 @@ import org.barghos.util.supplier.SupplierEx;
 @FunctionalInterface
 public interface SupplierExSA extends SupplierEx<short[]>
 {
-    /**
-     * Gets a result.
-     *
-     * @return A result.
-     * 
-     * @throws Exception May throw an exception during execution.
-     */
+	/**
+	 * Gets a result.
+	 *
+	 * @return A result.
+	 * 
+	 * @throws Exception May throw an exception during execution.
+	 */
 	short[] getSA() throws Exception;
-    
-    /**
-     * @deprecated Use {@link #getSA()} instead.
-     */
-    @Override
-    @Deprecated(since = "1.0", forRemoval = false)
-    default short[] get() throws Exception
-    {
-    	return getSA();
-    }
+	
+	/**
+	 * @deprecated Use {@link #getSA()} instead.
+	 */
+	@Override
+	@Deprecated(since = "1.0", forRemoval = false)
+	default short[] get() throws Exception
+	{
+		return getSA();
+	}
 }

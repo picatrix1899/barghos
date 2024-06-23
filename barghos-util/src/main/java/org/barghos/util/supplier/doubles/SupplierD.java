@@ -18,20 +18,20 @@ import org.barghos.util.supplier.Supplier;
 @FunctionalInterface
 public interface SupplierD extends Supplier<Double>
 {
-    /**
-     * Gets a result.
-     *
-     * @return A result.
-     */
+	/**
+	 * Gets a result.
+	 *
+	 * @return A result.
+	 */
 	double getD();
-    
-    /**
-     * @deprecated Use {@link #getD()} instead.
-     */
-    @Override
-    @Deprecated(since = "1.0", forRemoval = false)
-    default Double get()
-    {
-    	return getD();
-    }
+	
+	/**
+	 * @deprecated Use {@link #getD()} instead.
+	 */
+	@Override
+	@Deprecated(since = "1.0", forRemoval = false)
+	default Double get()
+	{
+		return getD();
+	}
 }

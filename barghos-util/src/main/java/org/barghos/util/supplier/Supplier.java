@@ -20,10 +20,10 @@ package org.barghos.util.supplier;
 public interface Supplier<T> extends java.util.function.Supplier<T>
 {
 	/**
-     * Gets a result.
-     *
-     * @return A result.
-     */
+	 * Gets a result.
+	 *
+	 * @return A result.
+	 */
 	@Override
 	T get();
 }

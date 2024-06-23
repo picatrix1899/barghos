@@ -1,7 +1,7 @@
 package org.barghos.util.consumer.shorts;
 
 import org.barghos.util.consumer.ConsumerEx3;
-import org.barghos.validation.Validation;
+import org.barghos.validation.ParameterValidation;
 
 /**
  * Represents an operation that accepts three 1-dimensional short array input
@@ -9,8 +9,11 @@ import org.barghos.validation.Validation;
  * exceptions. {@link ConsumerEx3SA} is expected to operate via side-effects.
  *
  * <p>
- * This is a functional interface whose functional method is
- * {@link #acceptShortArray}.
+ * This is a functional interface.
+ * 
+ * <p>
+ * Functional Method:
+ * {@link #accept3SA(short[], short[], short[])}
  * 
  * @see ConsumerSA
  * @see ConsumerExSA
@@ -25,353 +28,132 @@ import org.barghos.validation.Validation;
 public interface ConsumerEx3SA extends ConsumerEx3<short[],short[],short[]>
 {
 	/**
-     * Performs the operation on the given arguments.
-     *
-     * @param a The first input argument.
-     * @param b The second input argument.
-     * @param c The third input argument.
-     * 
-     * @throws Exception May throw an exception during operation.
-     */
-    void acceptShortArray(short[] a, short[] b, short[] c) throws Exception;
-    
-    /**
-     * Performs the given operation after this operation.
-     * 
-     * @param after The operation to perform after this operation.
-     * 
-     * @return A new {@link ConsumerEx3SA} performing this operation and the
-     * operation after.
-     */
-    default ConsumerEx3SA thenShort(ConsumerEx3SA after)
-    {
-    	Validation.validateNotNull("after", after);
-    	
-    	return (a, b, c) -> {acceptShortArray(a, b, c); after.acceptShortArray(a, b, c);};
-    }
-    
-    /**
-     * Performs the given operations in sequence after this operation.
-     * 
-     * @param after The operations to perform after this operation.
-     * 
-     * @return A new {@link ConsumerEx3SA} performing this operation and the
-     * operations after.
-     */
-	default ConsumerEx3SA thenShort(ConsumerEx3SA... after)
-    {
-		Validation.validateNotNull("after", after);
-		Validation.validateEntriesNotNull("after", after);
-    	
-    	/*
-    	 * If no operations are passed return this operation.
-    	 */
-    	if(after.length == 0) return this;
-    	
-    	if(after.length == 1) return (a, b, c) -> {acceptShortArray(a, b, c); after[0].acceptShortArray(a, b, c);};
-
-    	return (a, b, c) -> {acceptShortArray(a, b, c); for(ConsumerEx3SA consumer : after) consumer.acceptShortArray(a, b, c);};
-    }
-    
+	 * Performs the operation on the given arguments.
+	 *
+	 * @param a The first input argument.
+	 * @param b The second input argument.
+	 * @param c The third input argument.
+	 * 
+	 * @throws Exception May throw an exception during operation.
+	 */
+	void accept3SA(short[] a, short[] b, short[] c) throws Exception;
+	
 	/**
-     * Performs the given operation before this operation.
-     * 
-     * @param before The operation to perform before this operation.
-     * 
-     * @return A new {@link ConsumerEx3SA} performing the operation before and
-     * this operation.
-     */
-    default ConsumerEx3SA beforeShort(ConsumerEx3SA before)
-    {
-    	Validation.validateNotNull("before", before);
-    	
-    	return (a, b, c) -> {before.acceptShortArray(a, b, c); acceptShortArray(a, b, c);};
-    }
-    
-    /**
-     * Performs the given operations in sequence before this operation.
-     * 
-     * @param before The operations to perform before this operation.
-     * 
-     * @return A new {@link ConsumerEx3SA} performing the operations before and
-     * this operation.
-     */
-    default ConsumerEx3SA beforeShort(ConsumerEx3SA... before)
-    {
-    	Validation.validateNotNull("before", before);
-    	Validation.validateEntriesNotNull("before", before);
-    	
-    	/*
-    	 * If no operations are passed return this operation.
-    	 */
-    	if(before.length == 0) return this;
-    	
-    	if(before.length == 1) return (a, b, c) -> {before[0].acceptShortArray(a, b, c); acceptShortArray(a, b, c);};
-    	
-    	return (a, b, c) -> {for(ConsumerEx3SA consumer : before) consumer.acceptShortArray(a, b, c); acceptShortArray(a, b, c);};
-    }
-    
-    /**
-     * Composes a new {@link ConsumerEx3SA} performing the given operations in
-     * sequence.
-     * 
-     * @param consumers The operations to perform.
-     * 
-     * @return A new {@link ConsumerEx3SA} performing the operations.
-     */
-	static ConsumerEx3SA sequenceShort(ConsumerEx3SA... consumers)
-    {
-		Validation.validateNotNull("consumers", consumers);
-		Validation.validateEntriesNotNull("consumers", consumers);
-    	
-    	/*
-    	 * If no operations are passed return empty operation.
-    	 */
-    	if(consumers.length == 0) return (a, b, c) -> {};
-    	
-    	/*
-    	 * If exactly one operation is passed return the operation.
-    	 */
-    	if(consumers.length == 1) return consumers[0];
-    	
-    	return (a, b, c) -> {for(ConsumerEx3SA consumer : consumers) consumer.acceptShortArray(a, b, c);};
-    }
-    
-    /**
-     * {@inheritDoc}
-     * 
-     * @deprecated Use {@link acceptShortArray} instead.
-     */
-    @Override
-    @Deprecated
-    default void accept(short[] a, short[] b, short[] c) throws Exception
-    {
-    	acceptShortArray(a, b, c);
-    }
-    
-    /**
-     * Performs the given operation after this operation.
-     * 
-     * @param after The operation to perform after this operation.
-     * 
-     * @return A new {@link ConsumerEx3SA} performing this operation and the
-     * operation after.
-     */
-    default ConsumerEx3SA then(ConsumerEx3<short[],short[],short[]> after)
-    {
-    	Validation.validateNotNull("after", after);
-    	
-    	/*
-		 * If the passed operation is an instance of the desired type use it as
-		 * the desired type to avoid boxing.
-		 */
-    	if(after instanceof ConsumerEx3SA)
-    	{
-    		final ConsumerEx3SA originalAfter = (ConsumerEx3SA)after;
-    		
-    		return (a, b, c) -> {acceptShortArray(a, b, c); originalAfter.acceptShortArray(a, b, c);};
-    	}
-    	else
-    	{
-    		return (a, b, c) -> {acceptShortArray(a, b, c); after.accept(a, b, c);};
-    	}
-    }
-    
-    /**
-     * Performs the given operations in sequence after this operation.
-     * 
-     * @param after The operations to perform after this operation.
-     * 
-     * @return A new {@link ConsumerEx3SA} performing this operation and the
-     * operations after.
-     */
-    @SuppressWarnings("unchecked")
-	default ConsumerEx3SA then(ConsumerEx3<short[],short[],short[]>... after)
-    {
-    	Validation.validateNotNull("after", after);
-    	Validation.validateEntriesNotNull("after", after);
-    	
-    	/*
-    	 * If no operations are passed return this operation.
-    	 */
-    	if(after.length == 0) return this;
-    	
-    	/*
-    	 * If exactly one operation is passed try to optimize.
-    	 */
-    	if(after.length == 1)
-    	{
-    		/*
-    		 * If the passed operation is an instance of the desired type use it
-    		 * as the desired type to avoid boxing.
-    		 */
-    		if(after[0] instanceof ConsumerEx3SA)
-        	{
-        		final ConsumerEx3SA originalAfter = (ConsumerEx3SA)after[0];
-        		
-        		return (a, b, c) -> {acceptShortArray(a, b, c); originalAfter.acceptShortArray(a, b, c);};
-        	}
-        	else
-        	{
-        		return (a, b, c) -> {acceptShortArray(a, b, c); after[0].accept(a, b, c);};
-        	}
-    	}
-
-    	/*
-    	 * If multiple operations were passed it is not possible to optimize
-    	 * while composing the new operation anymore. The optimization had to be
-    	 * postponed to execution of the composite operation. The optimization
-    	 * prevents unnecessary auto-boxing if possible.
-    	 */
-    	return (a, b, c) -> {
-			acceptShortArray(a, b, c);
-			
-    		for(ConsumerEx3<short[],short[],short[]> consumer : after)
-    		{
-    			if(consumer instanceof ConsumerEx3SA)
-    				((ConsumerEx3SA)consumer).acceptShortArray(a, b, c);
-    			else
-    				consumer.accept(a, b, c);
-    		}
-    	};
-    }
-    
+	 * Performs the given operation after this operation.
+	 * 
+	 * @param after The operation to perform after this operation.
+	 * 
+	 * @return A new {@link ConsumerEx3SA} performing this operation and the
+	 * operation after.
+	 */
+	default ConsumerEx3SA then3SA(ConsumerEx3SA after)
+	{
+		ParameterValidation.pvNotNull("after", after);
+		
+		return (a, b, c) -> { accept3SA(a, b, c); after.accept3SA(a, b, c); };
+	}
+	
 	/**
-     * Performs the given operation before this operation.
-     * 
-     * @param before The operation to perform before this operation.
-     * 
-     * @return A new {@link ConsumerEx3SA} performing the operation before and
-     * this operation.
-     */
-    default ConsumerEx3SA before(ConsumerEx3<short[],short[],short[]> before)
-    {
-    	Validation.validateNotNull("before", before);
-    	
-    	/*
-		 * If the passed operation is an instance of the desired type use it as
-		 * the desired type to avoid boxing.
+	 * Performs the given operation before this operation.
+	 * 
+	 * @param before The operation to perform before this operation.
+	 * 
+	 * @return A new {@link ConsumerEx3SA} performing the operation before and
+	 * this operation.
+	 */
+	default ConsumerEx3SA before3SA(ConsumerEx3SA before)
+	{
+		ParameterValidation.pvNotNull("before", before);
+		
+		return (a, b, c) -> { before.accept3SA(a, b, c); accept3SA(a, b, c); };
+	}
+	
+	/**
+	 * Composes a new {@link ConsumerEx3SA} performing the given operations in
+	 * sequence.
+	 * 
+	 * @param consumers The operations to perform.
+	 * 
+	 * @return A new {@link ConsumerEx3SA} performing the operations.
+	 */
+	@SafeVarargs
+	static ConsumerEx3SA of3SA(ConsumerEx3SA... consumers)
+	{
+		ParameterValidation.pvNotNull("consumers", consumers);
+		ParameterValidation.pvEntriesNotNull("consumers", consumers);
+		
+		/*
+		 * If no operations are passed return empty operation.
 		 */
-    	if(before instanceof ConsumerEx3SA)
-    	{
-    		final ConsumerEx3SA originalBefore = (ConsumerEx3SA)before;
-    		
-    		return (a, b, c) -> {originalBefore.acceptShortArray(a, b, c); acceptShortArray(a, b, c);};
-    	}
-    	else
-    	{
-    		return (a, b, c) -> {before.accept(a, b, c); acceptShortArray(a, b, c);};
-    	}
-    }
-    
-    /**
-     * Performs the given operations in sequence before this operation.
-     * 
-     * @param before The operations to perform before this operation.
-     * 
-     * @return A new {@link ConsumerEx3SA} performing the operations before and
-     * this operation.
-     */
-    @SuppressWarnings("unchecked")
-    default ConsumerEx3SA before(ConsumerEx3<short[],short[],short[]>... before)
-    {
-    	Validation.validateNotNull("before", before);
-    	Validation.validateEntriesNotNull("before", before);
-    	
-    	/*
-    	 * If no operations are passed return this operation.
-    	 */
-    	if(before.length == 0) return this;
-    	
-    	/*
-    	 * If exactly one operation is passed try to optimize.
-    	 */
-    	if(before.length == 1)
-    	{
-    		/*
-    		 * If the passed operation is an instance of the desired type use it
-    		 * as the desired type to avoid boxing.
-    		 */
-    		if(before[0] instanceof ConsumerEx3SA)
-        	{
-        		final ConsumerEx3SA originalBefore = (ConsumerEx3SA)before[0];
-        		
-        		return (a, b, c) -> {originalBefore.acceptShortArray(a, b, c); acceptShortArray(a, b, c);};
-        	}
-        	else
-        	{
-        		return (a, b, c) -> {before[0].accept(a, b, c); acceptShortArray(a, b, c);};
-        	}
-    	}
-    	
-    	/*
-    	 * If multiple operations were passed it is not possible to optimize
-    	 * while composing the new operation anymore. The optimization had to be
-    	 * postponed to execution of the composite operation. The optimization
-    	 * prevents unnecessary auto-boxing if possible.
-    	 */
-    	return (a, b, c) -> {
-    		for(ConsumerEx3<short[],short[],short[]> consumer : before)
-    		{
-    			if(consumer instanceof ConsumerEx3SA)
-    				((ConsumerEx3SA)consumer).acceptShortArray(a, b, c);
-    			else
-    				consumer.accept(a, b, c);
-    		}
-    		
-    		acceptShortArray(a, b, c);
-    	};
-    }
-    
-    /**
-     * Composes a new {@link ConsumerEx3SA} performing the given operations in
-     * sequence.
-     * 
-     * @param consumers The operations to perform.
-     * 
-     * @return A new {@link ConsumerEx3SA} performing the operations.
-     */
-    @SuppressWarnings("unchecked")
-	static ConsumerEx3SA sequence(ConsumerEx3<short[],short[],short[]>... consumers)
-    {
-    	Validation.validateNotNull("consumers", consumers);
-    	Validation.validateEntriesNotNull("consumers", consumers);
-    	
-    	/*
-    	 * If no operations are passed return empty operation.
-    	 */
-    	if(consumers.length == 0) return (a, b, c) -> {};
-    	
-    	/*
-    	 * If exactly one operation is passed try to optimize. If the operation
-    	 * is an instance of the desired type return the operation directly
-    	 * without wrapping. Otherwise wrap the original operation in an
-    	 * operation of the desired type. The optimization prevents unnecessary
-    	 * auto-boxing if possible and also unnecessary creation of a new
-    	 * operation.
-    	 */
-    	if(consumers.length == 1)
-    	{
-    		if(consumers[0] instanceof ConsumerEx3SA)
-    			return (ConsumerEx3SA) consumers[0];
-    		else
-    			return (ConsumerEx3SA) consumers[0]::accept;
-    	}
-    	
-    	/*
-    	 * If multiple operations were passed it is not possible to optimize
-    	 * while composing the new operation anymore. The optimization had to be
-    	 * postponed to execution of the composite operation. The optimization
-    	 * prevents unnecessary auto-boxing if possible.
-    	 */
-    	return (a, b, c) -> {
-    		for(ConsumerEx3<short[],short[],short[]> consumer : consumers)
-    		{
-    			if(consumer instanceof ConsumerEx3SA)
-    				((ConsumerEx3SA)consumer).acceptShortArray(a, b, c);
-    			else
-    				consumer.accept(a, b, c);
-    		}
-    	};
-    }
+		if(consumers.length == 0) return (a, b, c) -> {};
+		
+		/*
+		 * If exactly one operation is passed return the operation.
+		 */
+		if(consumers.length == 1) return consumers[0];
+		
+		return (a, b, c) -> { for(ConsumerEx3SA consumer : consumers) consumer.accept3SA(a, b, c); };
+	}
+	
+	/**
+	 * @deprecated Use {@link #accept3SA(short[], short[], short[])} instead.
+	 */
+	@Override
+	@Deprecated(since = "1.0", forRemoval = false)
+	default void accept(short[] a, short[] b, short[] c) throws Exception
+	{
+		accept3SA(a, b, c);
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @return A new {@link ConsumerEx3SA} performing this operation and the
+	 * operation after.
+	 */
+	@Override
+	default ConsumerEx3SA then(ConsumerEx3<short[],short[],short[]> after)
+	{
+		ParameterValidation.pvNotNull("after", after);
+
+		return (a, b, c) -> { accept3SA(a, b, c); after.accept(a, b, c); };
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @return A new {@link ConsumerEx3SA} performing this operation and the
+	 * operation after.
+	 */
+	@Override
+	default ConsumerEx3SA before(ConsumerEx3<short[],short[],short[]> before)
+	{
+		ParameterValidation.pvNotNull("before", before);
+
+		return (a, b, c) -> { before.accept(a, b, c); accept3SA(a, b, c); };
+	}
+	
+	/**
+	 * Composes a new {@link ConsumerEx3SA} performing the given operations in
+	 * sequence.
+	 * 
+	 * @param consumers The operations to perform.
+	 * 
+	 * @return A new {@link ConsumerEx3SA} performing the operations.
+	 */
+	@SafeVarargs
+	static ConsumerEx3SA of(ConsumerEx3<short[],short[],short[]>... consumers)
+	{
+		ParameterValidation.pvNotNull("consumers", consumers);
+		ParameterValidation.pvEntriesNotNull("consumers", consumers);
+		
+		/*
+		 * If no operations are passed return empty operation.
+		 */
+		if(consumers.length == 0) return (a, b, c) -> {};
+
+		if(consumers.length == 1) return (ConsumerEx3SA) consumers[0]::accept;
+
+		return (a, b, c) -> { for(ConsumerEx3<short[],short[],short[]> consumer : consumers) consumer.accept(a, b, c); };
+	}
 }
