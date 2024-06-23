@@ -37,65 +37,65 @@ public interface Function2<A,B,T> extends java.util.function.BiFunction<A,B,T>
 	
 	/**
 	 * <p>
-     * Returns a composed function that first applies this function to
-     * its input, then applies the given function to the result of this function
-     * and finally returns the result of the given function.
-     * 
-     * <p>
-     * If evaluation of either function throws an exception, it is relayed to
-     * the caller of the composed function.
-     *
-     * @param <FT>
-     * The return type of the of the given function and of the return type of
-     * the returned composed function.
-     * 
-     * @param after The function to apply after this function is applied.
-     * 
-     * @return A composed function that first applies this function and then
-     * applies the given function to the result.
-     */
-    default <FT> Function2<A,B,FT> then(Function<T,FT> after)
-    {
-        Validation.validateNotNull("after", after);
-        
-        return (a, b) -> after.apply(apply(a, b));
-    }
-    
-    /**
+	 * Returns a composed function that first applies this function to
+	 * its input, then applies the given function to the result of this function
+	 * and finally returns the result of the given function.
+	 * 
 	 * <p>
-     * Returns a composed function that first applies this function to
-     * its input, then applies the given function to the result of this function
-     * and finally returns the result of the given function.
-     * 
-     * <p>
-     * If evaluation of either function throws an exception, it is relayed to
-     * the caller of the composed function.
-     *
-     * @param <FT>
-     * The return type of the of the given function and of the return type of
-     * the returned composed function.
-     * 
-     * @param after The function to apply after this function is applied.
-     * 
-     * @return A composed function that first applies this function and then
-     * applies the given function to the result.
-     */
-    default <FT> Function2<A,B,FT> then(java.util.function.Function<? super T,? extends FT> after)
-    {
-        Validation.validateNotNull("after", after);
-        
-        return (a, b) -> after.apply(apply(a, b));
-    }
-    
-    /**
-     * {@inheritDoc}
-     * 
-     * @deprecated Use {@link #thenGeneric(Function)} instead.
-     */
-    @Override
-    @Deprecated
-    default <FT> Function2<A,B,FT> andThen(java.util.function.Function<? super T,? extends FT> after)
-    {
-        return then(after);
-    }
+	 * If evaluation of either function throws an exception, it is relayed to
+	 * the caller of the composed function.
+	 *
+	 * @param <FT>
+	 * The return type of the of the given function and of the return type of
+	 * the returned composed function.
+	 * 
+	 * @param after The function to apply after this function is applied.
+	 * 
+	 * @return A composed function that first applies this function and then
+	 * applies the given function to the result.
+	 */
+	default <FT> Function2<A,B,FT> then(Function<T,FT> after)
+	{
+		Validation.validateNotNull("after", after);
+		
+		return (a, b) -> after.apply(apply(a, b));
+	}
+	
+	/**
+	 * <p>
+	 * Returns a composed function that first applies this function to
+	 * its input, then applies the given function to the result of this function
+	 * and finally returns the result of the given function.
+	 * 
+	 * <p>
+	 * If evaluation of either function throws an exception, it is relayed to
+	 * the caller of the composed function.
+	 *
+	 * @param <FT>
+	 * The return type of the of the given function and of the return type of
+	 * the returned composed function.
+	 * 
+	 * @param after The function to apply after this function is applied.
+	 * 
+	 * @return A composed function that first applies this function and then
+	 * applies the given function to the result.
+	 */
+	default <FT> Function2<A,B,FT> then(java.util.function.Function<? super T,? extends FT> after)
+	{
+		Validation.validateNotNull("after", after);
+		
+		return (a, b) -> after.apply(apply(a, b));
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @deprecated Use {@link #thenGeneric(Function)} instead.
+	 */
+	@Override
+	@Deprecated
+	default <FT> Function2<A,B,FT> andThen(java.util.function.Function<? super T,? extends FT> after)
+	{
+		return then(after);
+	}
 }

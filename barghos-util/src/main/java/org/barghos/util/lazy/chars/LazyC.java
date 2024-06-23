@@ -24,10 +24,10 @@ public interface LazyC extends Lazy<Character>
 	char valueC();
 	
 	/**
-     * @deprecated Use {@link #valueC()} instead.
-     */
-    @Override
-    @Deprecated(since = "1.0", forRemoval = false)
+	 * @deprecated Use {@link #valueC()} instead.
+	 */
+	@Override
+	@Deprecated(since = "1.0", forRemoval = false)
 	default Character value()
 	{
 		return valueC();

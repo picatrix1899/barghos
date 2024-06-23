@@ -19,20 +19,20 @@ import org.barghos.util.supplier.Supplier;
 @FunctionalInterface
 public interface SupplierCA extends Supplier<char[]>
 {
-    /**
-     * Gets a result.
-     *
-     * @return A result.
-     */
+	/**
+	 * Gets a result.
+	 *
+	 * @return A result.
+	 */
 	char[] getCA();
-    
-    /**
-     * @deprecated Use {@link #getCA()} instead.
-     */
-    @Override
-    @Deprecated(since = "1.0", forRemoval = false)
-    default char[] get()
-    {
-    	return getCA();
-    }
+	
+	/**
+	 * @deprecated Use {@link #getCA()} instead.
+	 */
+	@Override
+	@Deprecated(since = "1.0", forRemoval = false)
+	default char[] get()
+	{
+		return getCA();
+	}
 }

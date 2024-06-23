@@ -24,10 +24,10 @@ public interface LazyD extends Lazy<Double>
 	double valueD();
 	
 	/**
-     * @deprecated Use {@link #valueD()} instead.
-     */
-    @Override
-    @Deprecated(since = "1.0", forRemoval = false)
+	 * @deprecated Use {@link #valueD()} instead.
+	 */
+	@Override
+	@Deprecated(since = "1.0", forRemoval = false)
 	default Double value()
 	{
 		return valueD();

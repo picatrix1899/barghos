@@ -19,20 +19,20 @@ import org.barghos.util.supplier.Supplier;
 @FunctionalInterface
 public interface SupplierSA2 extends Supplier<short[][]>
 {
-    /**
-     * Gets a result.
-     *
-     * @return A result.
-     */
+	/**
+	 * Gets a result.
+	 *
+	 * @return A result.
+	 */
 	short[][] getSA2();
-    
-    /**
-     * @deprecated Use {@link #getSA2()} instead.
-     */
-    @Override
-    @Deprecated(since = "1.0", forRemoval = false)
-    default short[][] get()
-    {
-    	return getSA2();
-    }
+	
+	/**
+	 * @deprecated Use {@link #getSA2()} instead.
+	 */
+	@Override
+	@Deprecated(since = "1.0", forRemoval = false)
+	default short[][] get()
+	{
+		return getSA2();
+	}
 }

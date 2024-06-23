@@ -18,20 +18,20 @@ import org.barghos.util.supplier.Supplier;
 @FunctionalInterface
 public interface SupplierC extends Supplier<Character>
 {
-    /**
-     * Gets a result.
-     *
-     * @return A result.
-     */
-    char getC();
-    
-    /**
-     * @deprecated Use {@link #getC()} instead.
-     */
-    @Override
-    @Deprecated(since = "1.0", forRemoval = false)
-    default Character get()
-    {
-    	return getC();
-    }
+	/**
+	 * Gets a result.
+	 *
+	 * @return A result.
+	 */
+	char getC();
+	
+	/**
+	 * @deprecated Use {@link #getC()} instead.
+	 */
+	@Override
+	@Deprecated(since = "1.0", forRemoval = false)
+	default Character get()
+	{
+		return getC();
+	}
 }

@@ -1,7 +1,7 @@
 package org.barghos.util.consumer.strings;
 
 import org.barghos.util.consumer.Consumer3;
-import org.barghos.validation.Validation;
+import org.barghos.validation.ParameterValidation;
 
 /**
  * Represents an operation that accepts three 1-dimensional string array input
@@ -9,8 +9,11 @@ import org.barghos.validation.Validation;
  * via side-effects.
  *
  * <p>
- * This is a functional interface whose functional method is
- * {@link #acceptStringArray}.
+ * This is a functional interface.
+ * 
+ * <p>
+ * Functional Method:
+ * {@link #accept3StrA(String[], String[], String[])}
  * 
  * @see ConsumerStrA
  * @see ConsumerExStrA
@@ -25,351 +28,131 @@ import org.barghos.validation.Validation;
 public interface Consumer3StrA extends Consumer3<String[],String[],String[]>
 {
 	/**
-     * Performs the operation on the given arguments.
-     *
-     * @param a The first input argument.
-     * @param b The second input argument.
-     * @param c The third input argument.
-     */
-    void acceptStringArray(String[] a, String[] b, String[] c);
-    
-    /**
-     * Performs the given operation after this operation.
-     * 
-     * @param after The operation to perform after this operation.
-     * 
-     * @return A new {@link Consumer3StrA} performing this operation and the
-     * operation after.
-     */
-    default Consumer3StrA thenString(Consumer3StrA after)
-    {
-    	Validation.validateNotNull("after", after);
-    	
-    	return (a, b, c) -> {acceptStringArray(a, b, c); after.acceptStringArray(a, b, c);};
-    }
-    
-    /**
-     * Performs the given operations in sequence after this operation.
-     * 
-     * @param after The operations to perform after this operation.
-     * 
-     * @return A new {@link Consumer3StrA} performing this operation and the
-     * operations after.
-     */
-	default Consumer3StrA thenString(Consumer3StrA... after)
-    {
-		Validation.validateNotNull("after", after);
-		Validation.validateEntriesNotNull("after", after);
-    	
-    	/*
-    	 * If no operations are passed return this operation.
-    	 */
-    	if(after.length == 0) return this;
-    	
-    	if(after.length == 1) return (a, b, c) -> {acceptStringArray(a, b, c); after[0].acceptStringArray(a, b, c);};
-
-    	return (a, b, c) -> {acceptStringArray(a, b, c); for(Consumer3StrA consumer : after) consumer.acceptStringArray(a, b, c);};
-    }
-    
+	 * Performs the operation on the given arguments.
+	 *
+	 * @param a The first input argument.
+	 * @param b The second input argument.
+	 * @param c The third input argument.
+	 */
+	void accept3StrA(String[] a, String[] b, String[] c);
+	
 	/**
-     * Performs the given operation before this operation.
-     * 
-     * @param before The operation to perform before this operation.
-     * 
-     * @return A new {@link Consumer3StrA} performing the operation before and
-     * this operation.
-     */
-    default Consumer3StrA beforeString(Consumer3StrA before)
-    {
-    	Validation.validateNotNull("before", before);
-    	
-    	return (a, b, c) -> {before.acceptStringArray(a, b, c); acceptStringArray(a, b, c);};
-    }
-    
-    /**
-     * Performs the given operations in sequence before this operation.
-     * 
-     * @param before The operations to perform before this operation.
-     * 
-     * @return A new {@link Consumer3StrA} performing the operations before and
-     * this operation.
-     */
-    default Consumer3StrA beforeString(Consumer3StrA... before)
-    {
-    	Validation.validateNotNull("before", before);
-    	Validation.validateEntriesNotNull("before", before);
-    	
-    	/*
-    	 * If no operations are passed return this operation.
-    	 */
-    	if(before.length == 0) return this;
-    	
-    	if(before.length == 1) return (a, b, c) -> {before[0].acceptStringArray(a, b, c); acceptStringArray(a, b, c);};
-    	
-    	return (a, b, c) -> {for(Consumer3StrA consumer : before) consumer.acceptStringArray(a, b, c); acceptStringArray(a, b, c);};
-    }
-    
-    /**
-     * Composes a new {@link Consumer3StrA} performing the given operations in
-     * sequence.
-     * 
-     * @param consumers The operations to perform.
-     * 
-     * @return A new {@link Consumer3StrA} performing the operations.
-     */
-	static Consumer3StrA sequenceString(Consumer3StrA... consumers)
-    {
-		Validation.validateNotNull("consumers", consumers);
-		Validation.validateEntriesNotNull("consumers", consumers);
-    	
-    	/*
-    	 * If no operations are passed return empty operation.
-    	 */
-    	if(consumers.length == 0) return (a, b, c) -> {};
-    	
-    	/*
-    	 * If exactly one operation is passed return the operation.
-    	 */
-    	if(consumers.length == 1) return consumers[0];
-    	
-    	return (a, b, c) -> {for(Consumer3StrA consumer : consumers) consumer.acceptStringArray(a, b, c);};
-    }
-    
-    /**
-     * {@inheritDoc}
-     * 
-     * @deprecated Use {@link acceptStringArray} instead.
-     */
-    @Override
-    @Deprecated
-    default void accept(String[] a, String[] b, String[] c)
-    {
-    	acceptStringArray(a, b, c);
-    }
-    
-    /**
-     * Performs the given operation after this operation.
-     * 
-     * @param after The operation to perform after this operation.
-     * 
-     * @return A new {@link Consumer3StrA} performing this operation and the
-     * operation after.
-     */
-    default Consumer3StrA then(Consumer3<String[],String[],String[]> after)
-    {
-    	Validation.validateNotNull("after", after);
-    	
-    	/*
-		 * If the passed operation is an instance of the desired type use it as
-		 * the desired type to avoid boxing.
-		 */
-    	if(after instanceof Consumer3StrA)
-    	{
-    		final Consumer3StrA originalAfter = (Consumer3StrA)after;
-    		
-    		return (a, b, c) -> {acceptStringArray(a, b, c); originalAfter.acceptStringArray(a, b, c);};
-    	}
-    	else
-    	{
-    		return (a, b, c) -> {acceptStringArray(a, b, c); after.accept(a, b, c);};
-    	}
-    }
-    
-    /**
-     * Performs the given operations in sequence after this operation.
-     * 
-     * @param after The operations to perform after this operation.
-     * 
-     * @return A new {@link Consumer3StrA} performing this operation and the
-     * operations after.
-     */
-    @SuppressWarnings("unchecked")
-	default Consumer3StrA then(Consumer3<String[],String[],String[]>... after)
-    {
-    	Validation.validateNotNull("after", after);
-    	Validation.validateEntriesNotNull("after", after);
-    	
-    	/*
-    	 * If no operations are passed return this operation.
-    	 */
-    	if(after.length == 0) return this;
-    	
-    	/*
-    	 * If exactly one operation is passed try to optimize.
-    	 */
-    	if(after.length == 1)
-    	{
-    		/*
-    		 * If the passed operation is an instance of the desired type use it
-    		 * as the desired type to avoid boxing.
-    		 */
-    		if(after[0] instanceof Consumer3StrA)
-        	{
-        		final Consumer3StrA originalAfter = (Consumer3StrA)after[0];
-        		
-        		return (a, b, c) -> {acceptStringArray(a, b, c); originalAfter.acceptStringArray(a, b, c);};
-        	}
-        	else
-        	{
-        		return (a, b, c) -> {acceptStringArray(a, b, c); after[0].accept(a, b, c);};
-        	}
-    	}
-
-    	/*
-    	 * If multiple operations were passed it is not possible to optimize
-    	 * while composing the new operation anymore. The optimization had to be
-    	 * postponed to execution of the composite operation. The optimization
-    	 * prevents unnecessary auto-boxing if possible.
-    	 */
-    	return (a, b, c) -> {
-			acceptStringArray(a, b, c);
-			
-    		for(Consumer3<String[],String[],String[]> consumer : after)
-    		{
-    			if(consumer instanceof Consumer3StrA)
-    				((Consumer3StrA)consumer).acceptStringArray(a, b, c);
-    			else
-    				consumer.accept(a, b, c);
-    		}
-    	};
-    }
-    
+	 * Performs the given operation after this operation.
+	 * 
+	 * @param after The operation to perform after this operation.
+	 * 
+	 * @return A new {@link Consumer3StrA} performing this operation and the
+	 * operation after.
+	 */
+	default Consumer3StrA then3StrA(Consumer3StrA after)
+	{
+		ParameterValidation.pvNotNull("after", after);
+		
+		return (a, b, c) -> { accept3StrA(a, b, c); after.accept3StrA(a, b, c); };
+	}
+	
 	/**
-     * Performs the given operation before this operation.
-     * 
-     * @param before The operation to perform before this operation.
-     * 
-     * @return A new {@link Consumer3StrA} performing the operation before and
-     * this operation.
-     */
-    default Consumer3StrA before(Consumer3<String[],String[],String[]> before)
-    {
-    	Validation.validateNotNull("before", before);
-    	
-    	/*
-		 * If the passed operation is an instance of the desired type use it as
-		 * the desired type to avoid boxing.
+	 * Performs the given operation before this operation.
+	 * 
+	 * @param before The operation to perform before this operation.
+	 * 
+	 * @return A new {@link Consumer3StrA} performing the operation before and
+	 * this operation.
+	 */
+	default Consumer3StrA before3StrA(Consumer3StrA before)
+	{
+		ParameterValidation.pvNotNull("before", before);
+		
+		return (a, b, c) -> { before.accept3StrA(a, b, c); accept3StrA(a, b, c); };
+	}
+	
+	/**
+	 * Composes a new {@link Consumer3StrA} performing the given operations in
+	 * sequence.
+	 * 
+	 * @param consumers The operations to perform.
+	 * 
+	 * @return A new {@link Consumer3StrA} performing the operations.
+	 */
+	@SafeVarargs
+	static Consumer3StrA of3StrA(Consumer3StrA... consumers)
+	{
+		ParameterValidation.pvNotNull("consumers", consumers);
+		ParameterValidation.pvEntriesNotNull("consumers", consumers);
+		
+		/*
+		 * If no operations are passed return empty operation.
 		 */
-    	if(before instanceof Consumer3StrA)
-    	{
-    		final Consumer3StrA originalBefore = (Consumer3StrA)before;
-    		
-    		return (a, b, c) -> {originalBefore.acceptStringArray(a, b, c); acceptStringArray(a, b, c);};
-    	}
-    	else
-    	{
-    		return (a, b, c) -> {before.accept(a, b, c); acceptStringArray(a, b, c);};
-    	}
-    }
-    
-    /**
-     * Performs the given operations in sequence before this operation.
-     * 
-     * @param before The operations to perform before this operation.
-     * 
-     * @return A new {@link Consumer3StrA} performing the operations before and
-     * this operation.
-     */
-    @SuppressWarnings("unchecked")
-    default Consumer3StrA before(Consumer3<String[],String[],String[]>... before)
-    {
-    	Validation.validateNotNull("before", before);
-    	Validation.validateEntriesNotNull("before", before);
-    	
-    	/*
-    	 * If no operations are passed return this operation.
-    	 */
-    	if(before.length == 0) return this;
-    	
-    	/*
-    	 * If exactly one operation is passed try to optimize.
-    	 */
-    	if(before.length == 1)
-    	{
-    		/*
-    		 * If the passed operation is an instance of the desired type use it
-    		 * as the desired type to avoid boxing.
-    		 */
-    		if(before[0] instanceof Consumer3StrA)
-        	{
-        		final Consumer3StrA originalBefore = (Consumer3StrA)before[0];
-        		
-        		return (a, b, c) -> {originalBefore.acceptStringArray(a, b, c); acceptStringArray(a, b, c);};
-        	}
-        	else
-        	{
-        		return (a, b, c) -> {before[0].accept(a, b, c); acceptStringArray(a, b, c);};
-        	}
-    	}
-    	
-    	/*
-    	 * If multiple operations were passed it is not possible to optimize
-    	 * while composing the new operation anymore. The optimization had to be
-    	 * postponed to execution of the composite operation. The optimization
-    	 * prevents unnecessary auto-boxing if possible.
-    	 */
-    	return (a, b, c) -> {
-    		for(Consumer3<String[],String[],String[]> consumer : before)
-    		{
-    			if(consumer instanceof Consumer3StrA)
-    				((Consumer3StrA)consumer).acceptStringArray(a, b, c);
-    			else
-    				consumer.accept(a, b, c);
-    		}
-    		
-    		acceptStringArray(a, b, c);
-    	};
-    }
-    
-    /**
-     * Composes a new {@link Consumer3StrA} performing the given operations in
-     * sequence.
-     * 
-     * @param consumers The operations to perform.
-     * 
-     * @return A new {@link Consumer3StrA} performing the operations.
-     */
-    @SuppressWarnings("unchecked")
-	static Consumer3StrA sequence(Consumer3<String[],String[],String[]>... consumers)
-    {
-    	Validation.validateNotNull("consumers", consumers);
-    	Validation.validateEntriesNotNull("consumers", consumers);
-    	
-    	/*
-    	 * If no operations are passed return empty operation.
-    	 */
-    	if(consumers.length == 0) return (a, b, c) -> {};
-    	
-    	/*
-    	 * If exactly one operation is passed try to optimize. If the operation
-    	 * is an instance of the desired type return the operation directly
-    	 * without wrapping. Otherwise wrap the original operation in an
-    	 * operation of the desired type. The optimization prevents unnecessary
-    	 * auto-boxing if possible and also unnecessary creation of a new
-    	 * operation.
-    	 */
-    	if(consumers.length == 1)
-    	{
-    		if(consumers[0] instanceof Consumer3StrA)
-    			return (Consumer3StrA) consumers[0];
-    		else
-    			return (Consumer3StrA) consumers[0]::accept;
-    	}
-    	
-    	/*
-    	 * If multiple operations were passed it is not possible to optimize
-    	 * while composing the new operation anymore. The optimization had to be
-    	 * postponed to execution of the composite operation. The optimization
-    	 * prevents unnecessary auto-boxing if possible.
-    	 */
-    	return (a, b, c) -> {
-    		for(Consumer3<String[],String[],String[]> consumer : consumers)
-    		{
-    			if(consumer instanceof Consumer3StrA)
-    				((Consumer3StrA)consumer).acceptStringArray(a, b, c);
-    			else
-    				consumer.accept(a, b, c);
-    		}
-    	};
-    }
+		if(consumers.length == 0) return (a, b, c) -> {};
+		
+		/*
+		 * If exactly one operation is passed return the operation.
+		 */
+		if(consumers.length == 1) return consumers[0];
+		
+		return (a, b, c) -> { for(Consumer3StrA consumer : consumers) consumer.accept3StrA(a, b, c); };
+	}
+	
+	/**
+	 * @deprecated Use {@link #accept3StrA(String[], String[], String[])}
+	 * instead.
+	 */
+	@Override
+	@Deprecated(since = "1.0", forRemoval = false)
+	default void accept(String[] a, String[] b, String[] c)
+	{
+		accept3StrA(a, b, c);
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @return A new {@link Consumer3StrA} performing this operation and the
+	 * operation after.
+	 */
+	@Override
+	default Consumer3StrA then(Consumer3<String[],String[],String[]> after)
+	{
+		ParameterValidation.pvNotNull("after", after);
+
+		return (a, b, c) -> { accept3StrA(a, b, c); after.accept(a, b, c); };
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @return A new {@link Consumer3StrA} performing the operation before and
+	 * this operation.
+	 */
+	@Override
+	default Consumer3StrA before(Consumer3<String[],String[],String[]> before)
+	{
+		ParameterValidation.pvNotNull("before", before);
+
+		return (a, b, c) -> { before.accept(a, b, c); accept3StrA(a, b, c); };
+	}
+	
+	/**
+	 * Composes a new {@link Consumer3StrA} performing the given operations in
+	 * sequence.
+	 * 
+	 * @param consumers The operations to perform.
+	 * 
+	 * @return A new {@link Consumer3StrA} performing the operations.
+	 */
+	@SafeVarargs
+	static Consumer3StrA of(Consumer3<String[],String[],String[]>... consumers)
+	{
+		ParameterValidation.pvNotNull("consumers", consumers);
+		ParameterValidation.pvEntriesNotNull("consumers", consumers);
+		
+		/*
+		 * If no operations are passed return empty operation.
+		 */
+		if(consumers.length == 0) return (a, b, c) -> {};
+
+		if(consumers.length == 1) return (Consumer3StrA) consumers[0]::accept;
+		
+		return (a, b, c) -> { for(Consumer3<String[],String[],String[]> consumer : consumers) consumer.accept(a, b, c); };
+	}
 }

@@ -21,11 +21,11 @@ package org.barghos.util.supplier;
 public interface SupplierEx<T>
 {
 	/**
-     * Gets a result.
-     *
-     * @return A result.
-     * 
-     * @throws Exception May throw an exception during execution.
-     */
+	 * Gets a result.
+	 *
+	 * @return A result.
+	 * 
+	 * @throws Exception May throw an exception during execution.
+	 */
 	T get() throws Exception;
 }

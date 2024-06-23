@@ -21,20 +21,20 @@ import org.barghos.util.supplier.Supplier;
 @FunctionalInterface
 public interface SupplierBigi extends Supplier<BigInteger>
 {
-    /**
-     * Gets a result.
-     *
-     * @return A result.
-     */
-    BigInteger getBigi();
-    
-    /**
-     * @deprecated Use {@link #getBigi()} instead.
-     */
-    @Override
-    @Deprecated(since = "1.0", forRemoval = false)
-    default BigInteger get()
-    {
-    	return getBigi();
-    }
+	/**
+	 * Gets a result.
+	 *
+	 * @return A result.
+	 */
+	BigInteger getBigi();
+	
+	/**
+	 * @deprecated Use {@link #getBigi()} instead.
+	 */
+	@Override
+	@Deprecated(since = "1.0", forRemoval = false)
+	default BigInteger get()
+	{
+		return getBigi();
+	}
 }

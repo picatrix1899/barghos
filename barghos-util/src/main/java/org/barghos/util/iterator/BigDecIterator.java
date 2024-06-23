@@ -15,12 +15,12 @@ import org.barghostest.util.collection.core.consumer.BigDecMonoConsumer;
 public interface BigDecIterator extends PrimitiveIterator<BigDecimal, BigDecMonoConsumer>
 {
 	/**
-     * Returns the next value in the iteration.
-     *
-     * @return The next value in the iteration.
-     * 
-     * @throws NoSuchElementException If the iteration has no more values.
-     */
+	 * Returns the next value in the iteration.
+	 *
+	 * @return The next value in the iteration.
+	 * 
+	 * @throws NoSuchElementException If the iteration has no more values.
+	 */
 	BigDecimal nextBigDec();
 	
 	/**
@@ -44,8 +44,8 @@ public interface BigDecIterator extends PrimitiveIterator<BigDecimal, BigDecMono
 	@Deprecated
 	default void forEachRemaining(Consumer<? super BigDecimal> action)
 	{
-        forEachRemaining((BigDecMonoConsumer) action::accept);
-    }
+		forEachRemaining((BigDecMonoConsumer) action::accept);
+	}
 	
 	/**
 	 * Skips the given number of elements.

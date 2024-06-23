@@ -1,7 +1,7 @@
 package org.barghos.util.consumer.objs;
 
 import org.barghos.util.consumer.ConsumerEx2;
-import org.barghos.validation.Validation;
+import org.barghos.validation.ParameterValidation;
 
 /**
  * Represents an operation that accepts two 1-dimensional object array input
@@ -9,8 +9,11 @@ import org.barghos.validation.Validation;
  * exceptions. {@link ConsumerEx2OA} is expected to operate via side-effects.
  *
  * <p>
- * This is a functional interface whose functional method is
- * {@link #acceptObjectArray}.
+ * This is a functional interface.
+ * 
+ * <p>
+ * Functional Method:
+ * {@link #accept2OA(Object[], Object[])}
  * 
  * @see ConsumerOA
  * @see ConsumerExOA
@@ -25,352 +28,131 @@ import org.barghos.validation.Validation;
 public interface ConsumerEx2OA extends ConsumerEx2<Object[],Object[]>
 {
 	/**
-     * Performs the operation on the given arguments.
-     *
-     * @param a The first input argument.
-     * @param b The second input argument.
-     * 
-     * @throws Exception May throw an exception during operation.
-     */
-    void acceptObjectArray(Object[] a, Object[] b) throws Exception;
-    
-    /**
-     * Performs the given operation after this operation.
-     * 
-     * @param after The operation to perform after this operation.
-     * 
-     * @return A new {@link ConsumerEx2OA} performing this operation and the
-     * operation after.
-     */
-    default ConsumerEx2OA thenObject(ConsumerEx2OA after)
-    {
-    	Validation.validateNotNull("after", after);
-    	
-    	return (a, b) -> {acceptObjectArray(a, b); after.acceptObjectArray(a, b);};
-    }
-    
-    /**
-     * Performs the given operations in sequence after this operation.
-     * 
-     * @param after The operations to perform after this operation.
-     * 
-     * @return A new {@link ConsumerEx2OA} performing this operation and the
-     * operations after.
-     */
-	default ConsumerEx2OA thenObject(ConsumerEx2OA... after)
-    {
-		Validation.validateNotNull("after", after);
-		Validation.validateEntriesNotNull("after", after);
-    	
-    	/*
-    	 * If no operations are passed return this operation.
-    	 */
-    	if(after.length == 0) return this;
-    	
-    	if(after.length == 1) return (a, b) -> {acceptObjectArray(a, b); after[0].acceptObjectArray(a, b);};
-
-    	return (a, b) -> {acceptObjectArray(a, b); for(ConsumerEx2OA consumer : after) consumer.acceptObjectArray(a, b);};
-    }
-    
+	 * Performs the operation on the given arguments.
+	 *
+	 * @param a The first input argument.
+	 * @param b The second input argument.
+	 * 
+	 * @throws Exception May throw an exception during operation.
+	 */
+	void accept2OA(Object[] a, Object[] b) throws Exception;
+	
 	/**
-     * Performs the given operation before this operation.
-     * 
-     * @param before The operation to perform before this operation.
-     * 
-     * @return A new {@link ConsumerEx2OA} performing the operation before and
-     * this operation.
-     */
-    default ConsumerEx2OA beforeObject(ConsumerEx2OA before)
-    {
-    	Validation.validateNotNull("before", before);
-    	
-    	return (a, b) -> {before.acceptObjectArray(a, b); acceptObjectArray(a, b);};
-    }
-    
-    /**
-     * Performs the given operations in sequence before this operation.
-     * 
-     * @param before The operations to perform before this operation.
-     * 
-     * @return A new {@link ConsumerEx2OA} performing the operations before and
-     * this operation.
-     */
-    default ConsumerEx2OA beforeObject(ConsumerEx2OA... before)
-    {
-    	Validation.validateNotNull("before", before);
-    	Validation.validateEntriesNotNull("before", before);
-    	
-    	/*
-    	 * If no operations are passed return this operation.
-    	 */
-    	if(before.length == 0) return this;
-    	
-    	if(before.length == 1) return (a, b) -> {before[0].acceptObjectArray(a, b); acceptObjectArray(a, b);};
-    	
-    	return (a, b) -> {for(ConsumerEx2OA consumer : before) consumer.acceptObjectArray(a, b); acceptObjectArray(a, b);};
-    }
-    
-    /**
-     * Composes a new {@link ConsumerEx2OA} performing the given operations in
-     * sequence.
-     * 
-     * @param consumers The operations to perform.
-     * 
-     * @return A new {@link ConsumerEx2OA} performing the operations.
-     */
-	static ConsumerEx2OA sequenceObject(ConsumerEx2OA... consumers)
-    {
-		Validation.validateNotNull("consumers", consumers);
-		Validation.validateEntriesNotNull("consumers", consumers);
-    	
-    	/*
-    	 * If no operations are passed return empty operation.
-    	 */
-    	if(consumers.length == 0) return (a, b) -> {};
-    	
-    	/*
-    	 * If exactly one operation is passed return the operation.
-    	 */
-    	if(consumers.length == 1) return consumers[0];
-    	
-    	return (a, b) -> {for(ConsumerEx2OA consumer : consumers) consumer.acceptObjectArray(a, b);};
-    }
-    
-    /**
-     * {@inheritDoc}
-     * 
-     * @deprecated Use {@link acceptObjectArray} instead.
-     */
-    @Override
-    @Deprecated
-    default void accept(Object[] a, Object[] b) throws Exception
-    {
-    	acceptObjectArray(a, b);
-    }
-    
-    /**
-     * Performs the given operation after this operation.
-     * 
-     * @param after The operation to perform after this operation.
-     * 
-     * @return A new {@link ConsumerEx2OA} performing this operation and the
-     * operation after.
-     */
-    default ConsumerEx2OA then(ConsumerEx2<Object[],Object[]> after)
-    {
-    	Validation.validateNotNull("after", after);
-    	
-    	/*
-		 * If the passed operation is an instance of the desired type use it as
-		 * the desired type to avoid boxing.
-		 */
-    	if(after instanceof ConsumerEx2OA)
-    	{
-    		final ConsumerEx2OA originalAfter = (ConsumerEx2OA)after;
-    		
-    		return (a, b) -> {acceptObjectArray(a, b); originalAfter.acceptObjectArray(a, b);};
-    	}
-    	else
-    	{
-    		return (a, b) -> {acceptObjectArray(a, b); after.accept(a, b);};
-    	}
-    }
-    
-    /**
-     * Performs the given operations in sequence after this operation.
-     * 
-     * @param after The operations to perform after this operation.
-     * 
-     * @return A new {@link ConsumerEx2OA} performing this operation and the
-     * operations after.
-     */
-    @SuppressWarnings("unchecked")
-	default ConsumerEx2OA then(ConsumerEx2<Object[],Object[]>... after)
-    {
-    	Validation.validateNotNull("after", after);
-    	Validation.validateEntriesNotNull("after", after);
-    	
-    	/*
-    	 * If no operations are passed return this operation.
-    	 */
-    	if(after.length == 0) return this;
-    	
-    	/*
-    	 * If exactly one operation is passed try to optimize.
-    	 */
-    	if(after.length == 1)
-    	{
-    		/*
-    		 * If the passed operation is an instance of the desired type use it
-    		 * as the desired type to avoid boxing.
-    		 */
-    		if(after[0] instanceof ConsumerEx2OA)
-        	{
-        		final ConsumerEx2OA originalAfter = (ConsumerEx2OA)after[0];
-        		
-        		return (a, b) -> {acceptObjectArray(a, b); originalAfter.acceptObjectArray(a, b);};
-        	}
-        	else
-        	{
-        		return (a, b) -> {acceptObjectArray(a, b); after[0].accept(a, b);};
-        	}
-    	}
-
-    	/*
-    	 * If multiple operations were passed it is not possible to optimize
-    	 * while composing the new operation anymore. The optimization had to be
-    	 * postponed to execution of the composite operation. The optimization
-    	 * prevents unnecessary auto-boxing if possible.
-    	 */
-    	return (a, b) -> {
-			acceptObjectArray(a, b);
-			
-    		for(ConsumerEx2<Object[],Object[]> consumer : after)
-    		{
-    			if(consumer instanceof ConsumerEx2OA)
-    				((ConsumerEx2OA)consumer).acceptObjectArray(a, b);
-    			else
-    				consumer.accept(a, b);
-    		}
-    	};
-    }
-    
+	 * Performs the given operation after this operation.
+	 * 
+	 * @param after The operation to perform after this operation.
+	 * 
+	 * @return A new {@link ConsumerEx2OA} performing this operation and the
+	 * operation after.
+	 */
+	default ConsumerEx2OA then2OA(ConsumerEx2OA after)
+	{
+		ParameterValidation.pvNotNull("after", after);
+		
+		return (a, b) -> { accept2OA(a, b); after.accept2OA(a, b); };
+	}
+	
 	/**
-     * Performs the given operation before this operation.
-     * 
-     * @param before The operation to perform before this operation.
-     * 
-     * @return A new {@link ConsumerEx2OA} performing the operation before and
-     * this operation.
-     */
-    default ConsumerEx2OA before(ConsumerEx2<Object[],Object[]> before)
-    {
-    	Validation.validateNotNull("before", before);
-    	
-    	/*
-		 * If the passed operation is an instance of the desired type use it as
-		 * the desired type to avoid boxing.
+	 * Performs the given operation before this operation.
+	 * 
+	 * @param before The operation to perform before this operation.
+	 * 
+	 * @return A new {@link ConsumerEx2OA} performing the operation before and
+	 * this operation.
+	 */
+	default ConsumerEx2OA before2OA(ConsumerEx2OA before)
+	{
+		ParameterValidation.pvNotNull("before", before);
+		
+		return (a, b) -> { before.accept2OA(a, b); accept2OA(a, b); };
+	}
+	
+	/**
+	 * Composes a new {@link ConsumerEx2OA} performing the given operations in
+	 * sequence.
+	 * 
+	 * @param consumers The operations to perform.
+	 * 
+	 * @return A new {@link ConsumerEx2OA} performing the operations.
+	 */
+	@SafeVarargs
+	static ConsumerEx2OA of2OA(ConsumerEx2OA... consumers)
+	{
+		ParameterValidation.pvNotNull("consumers", consumers);
+		ParameterValidation.pvEntriesNotNull("consumers", consumers);
+		
+		/*
+		 * If no operations are passed return empty operation.
 		 */
-    	if(before instanceof ConsumerEx2OA)
-    	{
-    		final ConsumerEx2OA originalBefore = (ConsumerEx2OA)before;
-    		
-    		return (a, b) -> {originalBefore.acceptObjectArray(a, b); acceptObjectArray(a, b);};
-    	}
-    	else
-    	{
-    		return (a, b) -> {before.accept(a, b); acceptObjectArray(a, b);};
-    	}
-    }
-    
-    /**
-     * Performs the given operations in sequence before this operation.
-     * 
-     * @param before The operations to perform before this operation.
-     * 
-     * @return A new {@link ConsumerEx2OA} performing the operations before and
-     * this operation.
-     */
-    @SuppressWarnings("unchecked")
-    default ConsumerEx2OA before(ConsumerEx2<Object[],Object[]>... before)
-    {
-    	Validation.validateNotNull("before", before);
-    	Validation.validateEntriesNotNull("before", before);
-    	
-    	/*
-    	 * If no operations are passed return this operation.
-    	 */
-    	if(before.length == 0) return this;
-    	
-    	/*
-    	 * If exactly one operation is passed try to optimize.
-    	 */
-    	if(before.length == 1)
-    	{
-    		/*
-    		 * If the passed operation is an instance of the desired type use it
-    		 * as the desired type to avoid boxing.
-    		 */
-    		if(before[0] instanceof ConsumerEx2OA)
-        	{
-        		final ConsumerEx2OA originalBefore = (ConsumerEx2OA)before[0];
-        		
-        		return (a, b) -> {originalBefore.acceptObjectArray(a, b); acceptObjectArray(a, b);};
-        	}
-        	else
-        	{
-        		return (a, b) -> {before[0].accept(a, b); acceptObjectArray(a, b);};
-        	}
-    	}
-    	
-    	/*
-    	 * If multiple operations were passed it is not possible to optimize
-    	 * while composing the new operation anymore. The optimization had to be
-    	 * postponed to execution of the composite operation. The optimization
-    	 * prevents unnecessary auto-boxing if possible.
-    	 */
-    	return (a, b) -> {
-    		for(ConsumerEx2<Object[],Object[]> consumer : before)
-    		{
-    			if(consumer instanceof ConsumerEx2OA)
-    				((ConsumerEx2OA)consumer).acceptObjectArray(a, b);
-    			else
-    				consumer.accept(a, b);
-    		}
-    		
-    		acceptObjectArray(a, b);
-    	};
-    }
-    
-    /**
-     * Composes a new {@link ConsumerEx2OA} performing the given operations in
-     * sequence.
-     * 
-     * @param consumers The operations to perform.
-     * 
-     * @return A new {@link ConsumerEx2OA} performing the operations.
-     */
-    @SuppressWarnings("unchecked")
-	static ConsumerEx2OA sequence(ConsumerEx2<Object[],Object[]>... consumers)
-    {
-    	Validation.validateNotNull("consumers", consumers);
-    	Validation.validateEntriesNotNull("consumers", consumers);
-    	
-    	/*
-    	 * If no operations are passed return empty operation.
-    	 */
-    	if(consumers.length == 0) return (a, b) -> {};
-    	
-    	/*
-    	 * If exactly one operation is passed try to optimize. If the operation
-    	 * is an instance of the desired type return the operation directly
-    	 * without wrapping. Otherwise wrap the original operation in an
-    	 * operation of the desired type. The optimization prevents unnecessary
-    	 * auto-boxing if possible and also unnecessary creation of a new
-    	 * operation.
-    	 */
-    	if(consumers.length == 1)
-    	{
-    		if(consumers[0] instanceof ConsumerEx2OA)
-    			return (ConsumerEx2OA) consumers[0];
-    		else
-    			return (ConsumerEx2OA) consumers[0]::accept;
-    	}
-    	
-    	/*
-    	 * If multiple operations were passed it is not possible to optimize
-    	 * while composing the new operation anymore. The optimization had to be
-    	 * postponed to execution of the composite operation. The optimization
-    	 * prevents unnecessary auto-boxing if possible.
-    	 */
-    	return (a, b) -> {
-    		for(ConsumerEx2<Object[],Object[]> consumer : consumers)
-    		{
-    			if(consumer instanceof ConsumerEx2OA)
-    				((ConsumerEx2OA)consumer).acceptObjectArray(a, b);
-    			else
-    				consumer.accept(a, b);
-    		}
-    	};
-    }
+		if(consumers.length == 0) return (a, b) -> {};
+		
+		/*
+		 * If exactly one operation is passed return the operation.
+		 */
+		if(consumers.length == 1) return consumers[0];
+		
+		return (a, b) -> { for(ConsumerEx2OA consumer : consumers) consumer.accept2OA(a, b); };
+	}
+	
+	/**
+	 * @deprecated Use {@link #accept2OA(Object[], Object[])} instead.
+	 */
+	@Override
+	@Deprecated(since = "1.0", forRemoval = false)
+	default void accept(Object[] a, Object[] b) throws Exception
+	{
+		accept2OA(a, b);
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @return A new {@link ConsumerEx2OA} performing this operation and the
+	 * operation after.
+	 */
+	@Override
+	default ConsumerEx2OA then(ConsumerEx2<Object[],Object[]> after)
+	{
+		ParameterValidation.pvNotNull("after", after);
+
+		return (a, b) -> { accept2OA(a, b); after.accept(a, b); };
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @return A new {@link ConsumerEx2OA} performing this operation and the
+	 * operation after.
+	 */
+	@Override
+	default ConsumerEx2OA before(ConsumerEx2<Object[],Object[]> before)
+	{
+		ParameterValidation.pvNotNull("before", before);
+
+		return (a, b) -> { before.accept(a, b); accept2OA(a, b); };
+	}
+	
+	/**
+	 * Composes a new {@link ConsumerEx2OA} performing the given operations in
+	 * sequence.
+	 * 
+	 * @param consumers The operations to perform.
+	 * 
+	 * @return A new {@link ConsumerEx2OA} performing the operations.
+	 */
+	@SafeVarargs
+	static ConsumerEx2OA of(ConsumerEx2<Object[],Object[]>... consumers)
+	{
+		ParameterValidation.pvNotNull("consumers", consumers);
+		ParameterValidation.pvEntriesNotNull("consumers", consumers);
+		
+		/*
+		 * If no operations are passed return empty operation.
+		 */
+		if(consumers.length == 0) return (a, b) -> {};
+
+		if(consumers.length == 1) return (ConsumerEx2OA) consumers[0]::accept;
+
+		return (a, b) -> { for(ConsumerEx2<Object[],Object[]> consumer : consumers) consumer.accept(a, b); };
+	}
 }

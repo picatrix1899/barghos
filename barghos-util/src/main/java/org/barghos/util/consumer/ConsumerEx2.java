@@ -9,8 +9,11 @@ import org.barghos.validation.ParameterValidation;
  *  {@link ConsumerEx2} is expected to operate via side-effects.
  *
  * <p>
- * This is a functional interface whose functional method is
- * {@link #accept(Object, Object)}.
+ * This is a functional interface.
+ * 
+ * <p>
+ * Functional Method:
+ * {@link #accept(Object, Object)}
  *
  * @param <A> The type of the first argument to the operation.
  * @param <B> The type of the second argument to the operation.
@@ -28,167 +31,154 @@ import org.barghos.validation.ParameterValidation;
 public interface ConsumerEx2<A,B>
 {
 	/**
-     * Performs the operation on the given argument.
-     *
-     * @param a The first input argument.
-     * @param b The second input argument.
-     * 
-     * @throws Exception May throw an exception during operation.
-     */
-    void accept(A a, B b) throws Exception;
-    
-    /**
-     * Performs the given operation after this operation.
-     * 
-     * @param after The operation to perform after this operation.
-     * 
-     * @return A new {@link ConsumerEx2} performing this operation and the
-     * operation after.
-     */
-    default ConsumerEx2<A,B> then(ConsumerEx2<A,B> after)
-    {
-    	ParameterValidation.pvNotNull("after", after);
-    	
-    	return (a, b) -> {
-    		accept(a, b);
-    		
-    		after.accept(a, b);
-    	};
-    }
-    
+	 * Performs the operation on the given argument.
+	 *
+	 * @param a The first input argument.
+	 * @param b The second input argument.
+	 * 
+	 * @throws Exception May throw an exception during operation.
+	 */
+	void accept(A a, B b) throws Exception;
+	
 	/**
-     * Performs the given operation before this operation.
-     * 
-     * @param before The operation to perform before this operation.
-     * 
-     * @return A new {@link ConsumerEx2} performing the operation before and
-     * this operation.
-     */
-    default ConsumerEx2<A,B> before(ConsumerEx2<A,B> before)
-    {
-    	ParameterValidation.pvNotNull("before", before);
-    	
-    	return (a, b) -> {
-    		before.accept(a, b);
-    		
-    		accept(a, b);
-    	};
-    }
-    
-    /**
-     * Adds exception handling to the consumer and thus converts it into a
-     * {@link Consumer2}.
-     * 
-     * @param handler The exception handler called in case of an exception.
-     * 
-     * @return A new {@link Consumer2} performing the operations and exception
-     * handling.
-     */
-    default Consumer2<A,B> handled(ExceptionHandler handler)
-    {
-    	ParameterValidation.pvNotNull("handler", handler);
-    	
-    	return (a, b) -> {
-    		try
-    		{
-    			accept(a, b);
-    		}
-    		catch(Exception e)
-    		{
-    			handler.handle(e);
-    		}
-    	};
-    }
-    
-    /**
-     * Performs the passed operation in case of an exception in this consumer.
-     * As the passed consumer may throw an exception the returned consumer is
-     * again a {@link ConsumerEx2} relaying the exceptions of the passed
-     * consumer.
-     * 
-     * @param consumer The consumer called in case of an exception.
-     * 
-     * @return A new {@link ConsumerEx2} performing the operations.
-     */
-    default ConsumerEx2<A,B> onException(ConsumerEx2<A,B> consumer)
-    {
-    	ParameterValidation.pvNotNull("consumer", consumer);
-    	
-    	return (a, b) -> {
-    		try
-    		{
-    			accept(a, b);
-    		}
-    		catch(Exception e)
-    		{
-    			consumer.accept(a, b);
-    		}
-    	};
-    }
-    
-    /**
-     * Performs the passed operation in case of an exception in this consumer.
-     * As the passed consumer can not throw an exception the returned consumer
-     * is a {@link Consumer2}.
-     * 
-     * @param consumer The consumer called in case of an exception.
-     * 
-     * @return A new {@link Consumer2} performing the operations.
-     */
-    default Consumer2<A,B> onException(Consumer2<A,B> consumer)
-    {
-    	ParameterValidation.pvNotNull("consumer", consumer);
-    	
-    	return (a, b) -> {
-    		try
-    		{
-    			accept(a, b);
-    		}
-    		catch(Exception e)
-    		{
-    			consumer.accept(a, b);
-    		}
-    	};
-    }
-    
-    /**
-     * Composes a new {@link ConsumerEx2} performing the given operations in
-     * sequence.
-     * 
-     * @param <A> The type of the first argument to the operation.
-     * @param <B> The type of the second argument to the operation.
-     * 
-     * @param consumers The operations to perform.
-     * 
-     * @return A new {@link ConsumerEx2} performing the operations.
-     */
-    @SafeVarargs
+	 * Performs the given operation after this operation.
+	 * 
+	 * @param after The operation to perform after this operation.
+	 * 
+	 * @return A new {@link ConsumerEx2} performing this operation and the
+	 * operation after.
+	 */
+	default ConsumerEx2<A,B> then(ConsumerEx2<A,B> after)
+	{
+		ParameterValidation.pvNotNull("after", after);
+		
+		return (a, b) -> { accept(a, b); after.accept(a, b); };
+	}
+	
+	/**
+	 * Performs the given operation before this operation.
+	 * 
+	 * @param before The operation to perform before this operation.
+	 * 
+	 * @return A new {@link ConsumerEx2} performing the operation before and
+	 * this operation.
+	 */
+	default ConsumerEx2<A,B> before(ConsumerEx2<A,B> before)
+	{
+		ParameterValidation.pvNotNull("before", before);
+		
+		return (a, b) -> { before.accept(a, b); accept(a, b); };
+	}
+	
+	/**
+	 * Adds exception handling to the consumer and thus converts it into a
+	 * {@link Consumer2}.
+	 * 
+	 * @param handler The exception handler called in case of an exception.
+	 * 
+	 * @return A new {@link Consumer2} performing the operations and exception
+	 * handling.
+	 */
+	default Consumer2<A,B> handled(ExceptionHandler handler)
+	{
+		ParameterValidation.pvNotNull("handler", handler);
+		
+		return (a, b) -> {
+			try
+			{
+				accept(a, b);
+			}
+			catch(Exception e)
+			{
+				handler.handle(e);
+			}
+		};
+	}
+	
+	/**
+	 * Performs the passed operation in case of an exception in this consumer.
+	 * As the passed consumer may throw an exception the returned consumer is
+	 * again a {@link ConsumerEx2} relaying the exceptions of the passed
+	 * consumer.
+	 * 
+	 * @param consumer The consumer called in case of an exception.
+	 * 
+	 * @return A new {@link ConsumerEx2} performing the operations.
+	 */
+	default ConsumerEx2<A,B> onException(ConsumerEx2<A,B> consumer)
+	{
+		ParameterValidation.pvNotNull("consumer", consumer);
+		
+		return (a, b) -> {
+			try
+			{
+				accept(a, b);
+			}
+			catch(Exception e)
+			{
+				consumer.accept(a, b);
+			}
+		};
+	}
+	
+	/**
+	 * Performs the passed operation in case of an exception in this consumer.
+	 * As the passed consumer can not throw an exception the returned consumer
+	 * is a {@link Consumer2}.
+	 * 
+	 * @param consumer The consumer called in case of an exception.
+	 * 
+	 * @return A new {@link Consumer2} performing the operations.
+	 */
+	default Consumer2<A,B> onException(Consumer2<A,B> consumer)
+	{
+		ParameterValidation.pvNotNull("consumer", consumer);
+		
+		return (a, b) -> {
+			try
+			{
+				accept(a, b);
+			}
+			catch(Exception e)
+			{
+				consumer.accept(a, b);
+			}
+		};
+	}
+	
+	/**
+	 * Composes a new {@link ConsumerEx2} performing the given operations in
+	 * sequence.
+	 * 
+	 * @param <A> The type of the first argument to the operation.
+	 * @param <B> The type of the second argument to the operation.
+	 * 
+	 * @param consumers The operations to perform.
+	 * 
+	 * @return A new {@link ConsumerEx2} performing the operations.
+	 */
+	@SafeVarargs
 	static <A,B> ConsumerEx2<A,B> of(ConsumerEx2<A,B>... consumers)
-    {
-    	ParameterValidation.pvNotNull("consumers", consumers);
-    	ParameterValidation.pvEntriesNotNull("consumers", consumers);
-    	
-    	/*
-    	 * If no operations are passed return empty operation.
-    	 */
-    	if(consumers.length == 0)
-    	{
-    		return (a, b) -> {};
-    	}
-    	
-    	/*
-    	 * If exactly one operation is passed return the operation.
-    	 */
-    	if(consumers.length == 1)
-    	{
-    		return consumers[0];
-    	}
-    	
-    	return (a, b) -> {
-    		for(ConsumerEx2<A,B> consumer : consumers)
-    		{
-    			consumer.accept(a, b);
-    		}
-    	};
-    }
+	{
+		ParameterValidation.pvNotNull("consumers", consumers);
+		ParameterValidation.pvEntriesNotNull("consumers", consumers);
+		
+		/*
+		 * If no operations are passed return empty operation.
+		 */
+		if(consumers.length == 0) return (a, b) -> {};
+		{
+			
+		}
+		
+		/*
+		 * If exactly one operation is passed return the operation.
+		 */
+		if(consumers.length == 1) return consumers[0];
+		{
+			
+		}
+		
+		return (a, b) -> { for(ConsumerEx2<A,B> consumer : consumers) consumer.accept(a, b); };
+	}
 }

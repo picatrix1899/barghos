@@ -20,22 +20,22 @@ import org.barghos.util.supplier.SupplierEx;
 @FunctionalInterface
 public interface SupplierExFA2 extends SupplierEx<float[][]>
 {
-    /**
-     * Gets a result.
-     *
-     * @return A result.
-     * 
-     * @throws Exception May throw an exception during execution.
-     */
+	/**
+	 * Gets a result.
+	 *
+	 * @return A result.
+	 * 
+	 * @throws Exception May throw an exception during execution.
+	 */
 	float[][] getFA2() throws Exception;
-    
-    /**
-     * @deprecated Use {@link #getFA2()} instead.
-     */
-    @Override
-    @Deprecated(since = "1.0", forRemoval = false)
-    default float[][] get() throws Exception
-    {
-    	return getFA2();
-    }
+	
+	/**
+	 * @deprecated Use {@link #getFA2()} instead.
+	 */
+	@Override
+	@Deprecated(since = "1.0", forRemoval = false)
+	default float[][] get() throws Exception
+	{
+		return getFA2();
+	}
 }

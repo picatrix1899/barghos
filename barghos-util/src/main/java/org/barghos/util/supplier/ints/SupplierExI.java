@@ -19,22 +19,22 @@ import org.barghos.util.supplier.SupplierEx;
 @FunctionalInterface
 public interface SupplierExI extends SupplierEx<Integer>
 {
-    /**
-     * Gets a result.
-     *
-     * @return A result.
-     * 
-     * @throws Exception May throw an exception during execution.
-     */
+	/**
+	 * Gets a result.
+	 *
+	 * @return A result.
+	 * 
+	 * @throws Exception May throw an exception during execution.
+	 */
 	int getI() throws Exception;
-    
-    /**
-     * @deprecated Use {@link #getI()} instead.
-     */
-    @Override
-    @Deprecated(since = "1.0", forRemoval = false)
-    default Integer get() throws Exception
-    {
-    	return getI();
-    }
+	
+	/**
+	 * @deprecated Use {@link #getI()} instead.
+	 */
+	@Override
+	@Deprecated(since = "1.0", forRemoval = false)
+	default Integer get() throws Exception
+	{
+		return getI();
+	}
 }

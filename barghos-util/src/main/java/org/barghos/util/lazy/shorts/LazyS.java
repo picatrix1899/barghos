@@ -24,10 +24,10 @@ public interface LazyS extends Lazy<Short>
 	short valueS();
 	
 	/**
-     * @deprecated Use {@link #valueS()} instead.
-     */
-    @Override
-    @Deprecated(since = "1.0", forRemoval = false)
+	 * @deprecated Use {@link #valueS()} instead.
+	 */
+	@Override
+	@Deprecated(since = "1.0", forRemoval = false)
 	default Short value()
 	{
 		return valueS();

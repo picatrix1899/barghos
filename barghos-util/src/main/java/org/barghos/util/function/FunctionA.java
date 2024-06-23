@@ -32,25 +32,25 @@ public interface FunctionA<A,T> extends Function<A[],T>
 	T applyArray(A[] a);
 
 	/**
-     * Returns a function that always returns its input argument.
-     *
-     * @param <T> The type of the input and output objects to the function.
-     * 
-     * @return A function that always returns its input argument.
-     */
-    static <T> FunctionA<T,T[]> identity()
-    {
-        return t -> t;
-    }
-    
-    /**
-     * {@inheritDoc}
-     * 
-     * @deprecated Use {@link #applyArray(Object[])} instead.
-     */
-    @Override
-    default T apply(A[] a)
-    {
-    	return applyArray(a);
-    }
+	 * Returns a function that always returns its input argument.
+	 *
+	 * @param <T> The type of the input and output objects to the function.
+	 * 
+	 * @return A function that always returns its input argument.
+	 */
+	static <T> FunctionA<T,T[]> identity()
+	{
+		return t -> t;
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @deprecated Use {@link #applyArray(Object[])} instead.
+	 */
+	@Override
+	default T apply(A[] a)
+	{
+		return applyArray(a);
+	}
 }

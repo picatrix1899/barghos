@@ -19,20 +19,20 @@ import org.barghos.util.supplier.Supplier;
 @FunctionalInterface
 public interface SupplierIA extends Supplier<int[]>
 {
-    /**
-     * Gets a result.
-     *
-     * @return A result.
-     */
+	/**
+	 * Gets a result.
+	 *
+	 * @return A result.
+	 */
 	int[] getIA();
-    
-    /**
-     * @deprecated Use {@link #getIA()} instead.
-     */
-    @Override
-    @Deprecated(since = "1.0", forRemoval = false)
-    default int[] get()
-    {
-    	return getIA();
-    }
+	
+	/**
+	 * @deprecated Use {@link #getIA()} instead.
+	 */
+	@Override
+	@Deprecated(since = "1.0", forRemoval = false)
+	default int[] get()
+	{
+		return getIA();
+	}
 }

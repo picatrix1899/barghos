@@ -20,22 +20,22 @@ import org.barghos.util.supplier.SupplierEx;
 @FunctionalInterface
 public interface SupplierExBA2 extends SupplierEx<byte[][]>
 {
-    /**
-     * Gets a result.
-     *
-     * @return A result.
-     * 
-     * @throws Exception May throw an exception during execution.
-     */
+	/**
+	 * Gets a result.
+	 *
+	 * @return A result.
+	 * 
+	 * @throws Exception May throw an exception during execution.
+	 */
 	byte[][] getBA2() throws Exception;
-    
-    /**
-     * @deprecated Use {@link #getBA2()} instead.
-     */
-    @Override
-    @Deprecated(since = "1.0", forRemoval = false)
-    default byte[][] get() throws Exception
-    {
-    	return getBA2();
-    }
+	
+	/**
+	 * @deprecated Use {@link #getBA2()} instead.
+	 */
+	@Override
+	@Deprecated(since = "1.0", forRemoval = false)
+	default byte[][] get() throws Exception
+	{
+		return getBA2();
+	}
 }

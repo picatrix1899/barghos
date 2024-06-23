@@ -20,22 +20,22 @@ import org.barghos.util.supplier.SupplierEx;
 @FunctionalInterface
 public interface SupplierExLA2 extends SupplierEx<long[][]>
 {
-    /**
-     * Gets a result.
-     *
-     * @return A result.
-     * 
-     * @throws Exception May throw an exception during execution.
-     */
+	/**
+	 * Gets a result.
+	 *
+	 * @return A result.
+	 * 
+	 * @throws Exception May throw an exception during execution.
+	 */
 	long[][] getLA2() throws Exception;
-    
-    /**
-     * @deprecated Use {@link #getLA2()} instead.
-     */
-    @Override
-    @Deprecated(since = "1.0", forRemoval = false)
-    default long[][] get() throws Exception
-    {
-    	return getLA2();
-    }
+	
+	/**
+	 * @deprecated Use {@link #getLA2()} instead.
+	 */
+	@Override
+	@Deprecated(since = "1.0", forRemoval = false)
+	default long[][] get() throws Exception
+	{
+		return getLA2();
+	}
 }

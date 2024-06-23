@@ -26,10 +26,10 @@ public interface LazyBigd extends Lazy<BigDecimal>
 	BigDecimal valueBigd();
 	
 	/**
-     * @deprecated Use {@link #valueBigd()} instead.
-     */
-    @Override
-    @Deprecated(since = "1.0", forRemoval = false)
+	 * @deprecated Use {@link #valueBigd()} instead.
+	 */
+	@Override
+	@Deprecated(since = "1.0", forRemoval = false)
 	default BigDecimal value()
 	{
 		return valueBigd();

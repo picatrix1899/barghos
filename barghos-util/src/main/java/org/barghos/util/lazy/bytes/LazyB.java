@@ -24,10 +24,10 @@ public interface LazyB extends Lazy<Byte>
 	byte valueB();
 	
 	/**
-     * @deprecated Use {@link #valueB()} instead.
-     */
-    @Override
-    @Deprecated(since = "1.0", forRemoval = false)
+	 * @deprecated Use {@link #valueB()} instead.
+	 */
+	@Override
+	@Deprecated(since = "1.0", forRemoval = false)
 	default Byte value()
 	{
 		return valueB();

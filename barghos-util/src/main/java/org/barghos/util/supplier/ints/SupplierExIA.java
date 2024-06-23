@@ -20,22 +20,22 @@ import org.barghos.util.supplier.SupplierEx;
 @FunctionalInterface
 public interface SupplierExIA extends SupplierEx<int[]>
 {
-    /**
-     * Gets a result.
-     *
-     * @return A result.
-     * 
-     * @throws Exception May throw an exception during execution.
-     */
+	/**
+	 * Gets a result.
+	 *
+	 * @return A result.
+	 * 
+	 * @throws Exception May throw an exception during execution.
+	 */
 	int[] getIA() throws Exception;
-    
-    /**
-     * @deprecated Use {@link #getIA()} instead.
-     */
-    @Override
-    @Deprecated(since = "1.0", forRemoval = false)
-    default int[] get() throws Exception
-    {
-    	return getIA();
-    }
+	
+	/**
+	 * @deprecated Use {@link #getIA()} instead.
+	 */
+	@Override
+	@Deprecated(since = "1.0", forRemoval = false)
+	default int[] get() throws Exception
+	{
+		return getIA();
+	}
 }

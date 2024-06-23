@@ -19,20 +19,20 @@ import org.barghos.util.supplier.Supplier;
 @FunctionalInterface
 public interface SupplierBA3 extends Supplier<byte[][][]>
 {
-    /**
-     * Gets a result.
-     *
-     * @return A result.
-     */
+	/**
+	 * Gets a result.
+	 *
+	 * @return A result.
+	 */
 	byte[][][] getBA3();
-    
-    /**
-     * @deprecated Use {@link #getBA3()} instead.
-     */
-    @Override
-    @Deprecated(since = "1.0", forRemoval = false)
-    default byte[][][] get()
-    {
-    	return getBA3();
-    }
+	
+	/**
+	 * @deprecated Use {@link #getBA3()} instead.
+	 */
+	@Override
+	@Deprecated(since = "1.0", forRemoval = false)
+	default byte[][][] get()
+	{
+		return getBA3();
+	}
 }

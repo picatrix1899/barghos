@@ -11,46 +11,46 @@ import org.barghos.validation.ParameterValidation;
 public interface IteratorF extends Iterator<Float>
 {
 	/**
-     * Returns the next element in the iteration.
-     *
-     * @return The next element in the iteration.
-     */
-    float nextFloat();
+	 * Returns the next element in the iteration.
+	 *
+	 * @return The next element in the iteration.
+	 */
+	float nextFloat();
 
-    /**
-     * Performs the given action for each remaining element until all elements
-     * have been processed or the action throws an exception. Actions are
-     * performed in the order of iteration, if that order is specified.
-     * Exceptions thrown by the action are relayed to the caller.
-     * 
-     * <p>
-     * The behavior of an iterator is unspecified if the action modifies the
-     * collection in any way (even by calling the {@link #remove} method
-     * or other mutator methods of {@link Iterator} subtypes), unless an
-     * overriding class has specified a concurrent modification policy.
-     * 
-     * <p>
-     * Subsequent behavior of an iterator is unspecified if the action throws an
-     * exception.
-     *
-     * @param action The action to be performed for each element.
-     */
+	/**
+	 * Performs the given action for each remaining element until all elements
+	 * have been processed or the action throws an exception. Actions are
+	 * performed in the order of iteration, if that order is specified.
+	 * Exceptions thrown by the action are relayed to the caller.
+	 * 
+	 * <p>
+	 * The behavior of an iterator is unspecified if the action modifies the
+	 * collection in any way (even by calling the {@link #remove} method
+	 * or other mutator methods of {@link Iterator} subtypes), unless an
+	 * overriding class has specified a concurrent modification policy.
+	 * 
+	 * <p>
+	 * Subsequent behavior of an iterator is unspecified if the action throws an
+	 * exception.
+	 *
+	 * @param action The action to be performed for each element.
+	 */
 	default void forEachRemaining(ConsumerF action)
 	{
 		ParameterValidation.pvNotNull("action", action);
 
-        while (hasNext())
-        {
-        	action.acceptFloat(nextFloat());
-        }
+		while (hasNext())
+		{
+			action.acceptFloat(nextFloat());
+		}
 	}
 	
 	/**
-     * @deprecated
-     * Use {@link #nextFloat()} instead.
-     */
+	 * @deprecated
+	 * Use {@link #nextFloat()} instead.
+	 */
 	@Override
-    @Deprecated
+	@Deprecated
 	default Float next()
 	{
 		return nextFloat();
@@ -62,10 +62,10 @@ public interface IteratorF extends Iterator<Float>
 	{
 		ParameterValidation.pvNotNull("action", action);
 
-        while (hasNext())
-        {
-        	action.accept(nextFloat());
-        }
+		while (hasNext())
+		{
+			action.accept(nextFloat());
+		}
 	}
 	
 	/** {@inheritDoc} */
@@ -91,10 +91,10 @@ public interface IteratorF extends Iterator<Float>
 	default void forEachRemaining(java.util.function.Consumer<? super Float> action)
 	{
 		ParameterValidation.pvNotNull("action", action);
-    	
-        while (hasNext())
-        {
-        	action.accept(nextFloat());
-        } 
-    }
+		
+		while (hasNext())
+		{
+			action.accept(nextFloat());
+		} 
+	}
 }

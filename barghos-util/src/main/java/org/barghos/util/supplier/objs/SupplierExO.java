@@ -20,22 +20,22 @@ import org.barghos.util.supplier.SupplierEx;
 @FunctionalInterface
 public interface SupplierExO extends SupplierEx<Object>
 {
-    /**
-     * Gets a result.
-     *
-     * @return A result.
-     * 
-     * @throws Exception May throw an exception during execution.
-     */
+	/**
+	 * Gets a result.
+	 *
+	 * @return A result.
+	 * 
+	 * @throws Exception May throw an exception during execution.
+	 */
 	int getO() throws Exception;
-    
-    /**
-     * @deprecated Use {@link #getO()} instead.
-     */
-    @Override
-    @Deprecated(since = "1.0", forRemoval = false)
-    default Object get() throws Exception
-    {
-    	return getO();
-    }
+	
+	/**
+	 * @deprecated Use {@link #getO()} instead.
+	 */
+	@Override
+	@Deprecated(since = "1.0", forRemoval = false)
+	default Object get() throws Exception
+	{
+		return getO();
+	}
 }

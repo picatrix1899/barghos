@@ -39,24 +39,24 @@ public interface FunctionEx2<A,B,T>
 	T apply(A a, B b) throws Exception;
 	
 	/**
-     * Returns a composed function that first applies this function to
-     * its input, and then applies the {@code after} function to the result.
-     * If evaluation of either function throws an exception, it is relayed to
-     * the caller of the composed function.
-     *
-     * @param <V> The type of output of the {@code after} function, and of the composed function.
-     * 
-     * @param after The function to apply after this function is applied.
-     * 
-     * @return A composed function that first applies this function and then
-     * applies the {@code after} function.
-     * 
-     * @throws NullPointerException if after is null.
-     */
-    default <V> FunctionEx2<A,B,V> andThen(Function<T,V> after)
-    {
-        Validation.validateNotNull(after);
-        
-        return (a, b) -> after.apply(apply(a, b));
-    }
+	 * Returns a composed function that first applies this function to
+	 * its input, and then applies the {@code after} function to the result.
+	 * If evaluation of either function throws an exception, it is relayed to
+	 * the caller of the composed function.
+	 *
+	 * @param <V> The type of output of the {@code after} function, and of the composed function.
+	 * 
+	 * @param after The function to apply after this function is applied.
+	 * 
+	 * @return A composed function that first applies this function and then
+	 * applies the {@code after} function.
+	 * 
+	 * @throws NullPointerException if after is null.
+	 */
+	default <V> FunctionEx2<A,B,V> andThen(Function<T,V> after)
+	{
+		Validation.validateNotNull(after);
+		
+		return (a, b) -> after.apply(apply(a, b));
+	}
 }

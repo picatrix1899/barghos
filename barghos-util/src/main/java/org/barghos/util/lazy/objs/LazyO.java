@@ -24,10 +24,10 @@ public interface LazyO extends Lazy<Object>
 	Object valueO();
 	
 	/**
-     * @deprecated Use {@link #valueO()} instead.
-     */
-    @Override
-    @Deprecated(since = "1.0", forRemoval = false)
+	 * @deprecated Use {@link #valueO()} instead.
+	 */
+	@Override
+	@Deprecated(since = "1.0", forRemoval = false)
 	default Object value()
 	{
 		return valueO();

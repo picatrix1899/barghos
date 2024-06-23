@@ -21,20 +21,20 @@ import org.barghos.util.supplier.Supplier;
 @FunctionalInterface
 public interface SupplierBigdA3 extends Supplier<BigDecimal[][][]>
 {
-    /**
-     * Gets a result.
-     *
-     * @return A result.
-     */
-    BigDecimal[][][] getBigdA3();
-    
-    /**
-     * @deprecated Use {@link #getBigdA3()} instead.
-     */
-    @Override
-    @Deprecated(since = "1.0", forRemoval = false)
-    default BigDecimal[][][] get()
-    {
-    	return getBigdA3();
-    }
+	/**
+	 * Gets a result.
+	 *
+	 * @return A result.
+	 */
+	BigDecimal[][][] getBigdA3();
+	
+	/**
+	 * @deprecated Use {@link #getBigdA3()} instead.
+	 */
+	@Override
+	@Deprecated(since = "1.0", forRemoval = false)
+	default BigDecimal[][][] get()
+	{
+		return getBigdA3();
+	}
 }

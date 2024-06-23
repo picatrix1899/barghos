@@ -19,22 +19,22 @@ import org.barghos.util.supplier.SupplierEx;
 @FunctionalInterface
 public interface SupplierExC extends SupplierEx<Character>
 {
-    /**
-     * Gets a result.
-     *
-     * @return A result.
-     * 
-     * @throws Exception May throw an exception during execution.
-     */
+	/**
+	 * Gets a result.
+	 *
+	 * @return A result.
+	 * 
+	 * @throws Exception May throw an exception during execution.
+	 */
 	char getC() throws Exception;
-    
-    /**
-     * @deprecated Use {@link #getC()} instead.
-     */
-    @Override
-    @Deprecated(since = "1.0", forRemoval = false)
-    default Character get() throws Exception
-    {
-    	return getC();
-    }
+	
+	/**
+	 * @deprecated Use {@link #getC()} instead.
+	 */
+	@Override
+	@Deprecated(since = "1.0", forRemoval = false)
+	default Character get() throws Exception
+	{
+		return getC();
+	}
 }
