@@ -3,12 +3,12 @@
  * 
  * @author picatrix1899
  */
-module org.barghos.math.api
+module org.barghos.math
 {
 	requires org.barghos.annotation;
 	
 	requires transitive org.barghos.util;
-	
+
 	exports org.barghos.math.line;
 	exports org.barghos.math.orientation;
 	

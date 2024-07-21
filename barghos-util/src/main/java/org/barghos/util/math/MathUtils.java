@@ -5,7 +5,7 @@ import java.math.BigInteger;
 
 import org.barghos.util.BarghosUtilConfiguration;
 
-public class MathUtil
+public class MathUtils
 {
 	/**
 	 * The number PI with 11 digits after point.

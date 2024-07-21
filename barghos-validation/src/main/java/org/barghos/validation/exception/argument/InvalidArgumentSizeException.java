@@ -19,7 +19,7 @@ public class InvalidArgumentSizeException extends InvalidArgumentException
 	private final boolean hasSize;
 	
 	/**
-	 * Create a new instance of the exception without any additional details.
+	 * Creates a new instance of the exception without any additional details.
 	 */
 	public InvalidArgumentSizeException()
 	{
