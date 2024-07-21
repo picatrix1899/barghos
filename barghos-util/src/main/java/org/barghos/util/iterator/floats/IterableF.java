@@ -13,12 +13,12 @@ public interface IterableF extends Iterable<Float>
 	 * Returns an iterator over float elements.
 	 * @return A float iterator.
 	 */
-	IteratorF iteratorFloat();
+	IteratorF iteratorF();
 	
 	/** {@inheritDoc} */
 	@Override
 	default IteratorF iterator()
 	{
-		return iteratorFloat();
+		return iteratorF();
 	}
 }

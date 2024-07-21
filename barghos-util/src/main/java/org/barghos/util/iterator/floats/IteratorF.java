@@ -15,7 +15,7 @@ public interface IteratorF extends Iterator<Float>
 	 *
 	 * @return The next element in the iteration.
 	 */
-	float nextFloat();
+	float nextF();
 
 	/**
 	 * Performs the given action for each remaining element until all elements
@@ -35,13 +35,13 @@ public interface IteratorF extends Iterator<Float>
 	 *
 	 * @param action The action to be performed for each element.
 	 */
-	default void forEachRemaining(ConsumerF action)
+	default void forEachRemainingF(ConsumerF action)
 	{
 		ParameterValidation.pvNotNull("action", action);
 
 		while (hasNext())
 		{
-			action.acceptFloat(nextFloat());
+			action.acceptF(nextF());
 		}
 	}
 	
@@ -53,7 +53,7 @@ public interface IteratorF extends Iterator<Float>
 	@Deprecated
 	default Float next()
 	{
-		return nextFloat();
+		return nextF();
 	}
 	
 	/** {@inheritDoc} */
@@ -64,7 +64,7 @@ public interface IteratorF extends Iterator<Float>
 
 		while (hasNext())
 		{
-			action.accept(nextFloat());
+			action.accept(nextF());
 		}
 	}
 	
@@ -78,7 +78,7 @@ public interface IteratorF extends Iterator<Float>
 		
 		while (i < n && hasNext())
 		{
-			nextFloat();
+			nextF();
 			
 			i++;
 		}
@@ -94,7 +94,7 @@ public interface IteratorF extends Iterator<Float>
 		
 		while (hasNext())
 		{
-			action.accept(nextFloat());
+			action.accept(nextF());
 		} 
 	}
 }
