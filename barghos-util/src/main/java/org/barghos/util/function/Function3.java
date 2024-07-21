@@ -1,6 +1,6 @@
 package org.barghos.util.function;
 
-import org.barghos.validation.Validation;
+import org.barghos.validation.ParameterValidation;
 
 /**
  * Represents a function that accepts three arguments and returns a result.
@@ -54,7 +54,7 @@ public interface Function3<A,B,C,T>
 	 */
 	default <V> Function3<A,B,C,V> andThen(Function<T,V> after)
 	{
-		Validation.validateNotNull(after);
+		ParameterValidation.pvNotNull("after", after);
 		
 		return (a, b, c) -> after.apply(apply(a, b, c));
 	}

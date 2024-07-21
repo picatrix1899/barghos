@@ -1,6 +1,6 @@
 package org.barghos.util.function;
 
-import org.barghos.validation.Validation;
+import org.barghos.validation.ParameterValidation;
 
 /**
  * Represents a function that accepts four arguments and returns a result.
@@ -59,7 +59,7 @@ public interface FunctionEx4<A,B,C,D,T>
 	 */
 	default <V> FunctionEx4<A,B,C,D,V> andThen(Function<T,V> after)
 	{
-		Validation.validateNotNull(after);
+		ParameterValidation.pvNotNull("after", after);
 		
 		return (a, b, c, d) -> after.apply(apply(a, b, c, d));
 	}

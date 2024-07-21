@@ -13,7 +13,7 @@ import org.barghos.validation.ParameterValidation;
  * 
  * @see Function
  * @see FunctionEx
- * @see Function2FToF
+ * @see Function3FToF
  * @see FunctionEx2
  * @see Function3
  * @see FunctionEx3
@@ -21,7 +21,7 @@ import org.barghos.validation.ParameterValidation;
  * @see FunctionEx4
  */
 @FunctionalInterface
-public interface Function2FToF extends Function2F<Float>, Function2ToF<Float,Float>
+public interface Function3FToF extends Function3F<Float>, Function3ToF<Float,Float,Float>
 {
 	/**
 	 * Invokes the function.
@@ -31,7 +31,7 @@ public interface Function2FToF extends Function2F<Float>, Function2ToF<Float,Flo
 	 * 
 	 * @return The result of the function.
 	 */
-	float apply2FToF(float a, float b);
+	float apply3FToF(float a, float b, float c);
 	
 	/**
 	 * {@inheritDoc}
@@ -40,21 +40,9 @@ public interface Function2FToF extends Function2F<Float>, Function2ToF<Float,Flo
 	 */
 	@Override
 	@Deprecated
-	default Float apply2F(float a, float b)
+	default Float apply3F(float a, float b, float c)
 	{
-		return apply2FToF(a, b);
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @deprecated Use {@link #applyFloatToFloat(float, float)} instead.
-	 */
-	@Override
-	@Deprecated
-	default float apply2ToF(Float a, Float b)
-	{
-		return apply2FToF(a, b);
+		return apply3FToF(a, b, c);
 	}
 	
 	/**
@@ -64,176 +52,176 @@ public interface Function2FToF extends Function2F<Float>, Function2ToF<Float,Flo
 	 */
 	@Override
 	@Deprecated
-	default Float apply(Float a, Float b)
+	default float apply3ToF(Float a, Float b, Float c)
 	{
-		return apply2FToF(a, b);
-	}
-	
-	/**
-	 * <p>
-	 * Returns a composed function that first applies this function to
-	 * its input, then applies the given function to the result of this function
-	 * and finally returns the result of the given function.
-	 * 
-	 * <p>
-	 * If evaluation of either function throws an exception, it is relayed to
-	 * the caller of the composed function.
-	 *
-	 * @param <FT>
-	 * The return type of the of the given function and of the return type of
-	 * the returned composed function.
-	 * 
-	 * @param after The function to apply after this function is applied.
-	 * 
-	 * @return A composed function that first applies this function and then
-	 * applies the given function to the result.
-	 */
-	default <FT> Function2F<FT> thenF(FunctionF<FT> after)
-	{
-		ParameterValidation.pvNotNull("after", after);
-		
-		return (a, b) -> after.applyF(apply2FToF(a, b));
-	}
-	
-	/**
-	 * <p>
-	 * Returns a composed function that first applies this function to
-	 * its input, then applies the given function to the result of this function
-	 * and finally returns the result of the given function.
-	 * 
-	 * <p>
-	 * If evaluation of either function throws an exception, it is relayed to
-	 * the caller of the composed function.
-	 *
-	 * @param <FT>
-	 * The return type of the of the given function and of the return type of
-	 * the returned composed function.
-	 * 
-	 * @param after The function to apply after this function is applied.
-	 * 
-	 * @return A composed function that first applies this function and then
-	 * applies the given function to the result.
-	 */
-	default Function2FToF thenF(Function<Float,Float> after)
-	{
-		ParameterValidation.pvNotNull("after", after);
-		
-		return (a, b) -> after.apply(apply2FToF(a, b));
-	}
-	
-	/**
-	 * <p>
-	 * Returns a composed function that first applies this function to
-	 * its input, then applies the given function to the result of this function
-	 * and finally returns the result of the given function.
-	 * 
-	 * <p>
-	 * If evaluation of either function throws an exception, it is relayed to
-	 * the caller of the composed function.
-	 *
-	 * @param <FT>
-	 * The return type of the of the given function and of the return type of
-	 * the returned composed function.
-	 * 
-	 * @param after The function to apply after this function is applied.
-	 * 
-	 * @return A composed function that first applies this function and then
-	 * applies the given function to the result.
-	 */
-	default Function2FToF thenF(java.util.function.Function<? super Float,? extends Float> after)
-	{
-		ParameterValidation.pvNotNull("after", after);
-		
-		return (a, b) -> after.apply(apply2FToF(a, b));
-	}
-	
-	/**
-	 * <p>
-	 * Returns a composed function that first applies this function to
-	 * its input, then applies the given function to the result of this function
-	 * and finally returns the result of the given function.
-	 * 
-	 * <p>
-	 * If evaluation of either function throws an exception, it is relayed to
-	 * the caller of the composed function.
-	 *
-	 * @param <FT>
-	 * The return type of the of the given function and of the return type of
-	 * the returned composed function.
-	 * 
-	 * @param after The function to apply after this function is applied.
-	 * 
-	 * @return A composed function that first applies this function and then
-	 * applies the given function to the result.
-	 */
-	default <FT> Function2F<FT> then(FunctionF<FT> after)
-	{
-		ParameterValidation.pvNotNull("after", after);
-		
-		return (a, b) -> after.applyF(apply2FToF(a, b));
-	}
-	
-	/**
-	 * <p>
-	 * Returns a composed function that first applies this function to
-	 * its input, then applies the given function to the result of this function
-	 * and finally returns the result of the given function.
-	 * 
-	 * <p>
-	 * If evaluation of either function throws an exception, it is relayed to
-	 * the caller of the composed function.
-	 *
-	 * @param <FT>
-	 * The return type of the of the given function and of the return type of
-	 * the returned composed function.
-	 * 
-	 * @param after The function to apply after this function is applied.
-	 * 
-	 * @return A composed function that first applies this function and then
-	 * applies the given function to the result.
-	 */
-	default <FT> Function2F<FT> then(Function<Float,FT> after)
-	{
-		ParameterValidation.pvNotNull("after", after);
-		
-		return (a, b) -> after.apply(apply2FToF(a, b));
-	}
-	
-	/**
-	 * <p>
-	 * Returns a composed function that first applies this function to
-	 * its input, then applies the given function to the result of this function
-	 * and finally returns the result of the given function.
-	 * 
-	 * <p>
-	 * If evaluation of either function throws an exception, it is relayed to
-	 * the caller of the composed function.
-	 *
-	 * @param <FT>
-	 * The return type of the of the given function and of the return type of
-	 * the returned composed function.
-	 * 
-	 * @param after The function to apply after this function is applied.
-	 * 
-	 * @return A composed function that first applies this function and then
-	 * applies the given function to the result.
-	 */
-	default <FT> Function2F<FT> then(java.util.function.Function<? super Float,? extends FT> after)
-	{
-		ParameterValidation.pvNotNull("after", after);
-		
-		return (a, b) -> after.apply(apply2FToF(a, b));
+		return apply3FToF(a, b, c);
 	}
 	
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @deprecated Use {@link #thenGeneric(Function)} instead.
+	 * @deprecated Use {@link #applyFloatToFloat(float, float)} instead.
 	 */
 	@Override
 	@Deprecated
-	default <FT> Function2F<FT> andThen(java.util.function.Function<? super Float,? extends FT> after)
+	default Float apply(Float a, Float b, Float c)
 	{
-		return then(after);
+		return apply3FToF(a, b, c);
+	}
+	
+	/**
+	 * <p>
+	 * Returns a composed function that first applies this function to
+	 * its input, then applies the given function to the result of this function
+	 * and finally returns the result of the given function.
+	 * 
+	 * <p>
+	 * If evaluation of either function throws an exception, it is relayed to
+	 * the caller of the composed function.
+	 *
+	 * @param <FT>
+	 * The return type of the of the given function and of the return type of
+	 * the returned composed function.
+	 * 
+	 * @param after The function to apply after this function is applied.
+	 * 
+	 * @return A composed function that first applies this function and then
+	 * applies the given function to the result.
+	 */
+	default <FT> Function3F<FT> thenF(FunctionF<FT> after)
+	{
+		ParameterValidation.pvNotNull("after", after);
+		
+		return (a, b, c) -> after.applyF(apply3FToF(a, b, c));
+	}
+	
+	/**
+	 * <p>
+	 * Returns a composed function that first applies this function to
+	 * its input, then applies the given function to the result of this function
+	 * and finally returns the result of the given function.
+	 * 
+	 * <p>
+	 * If evaluation of either function throws an exception, it is relayed to
+	 * the caller of the composed function.
+	 *
+	 * @param <FT>
+	 * The return type of the of the given function and of the return type of
+	 * the returned composed function.
+	 * 
+	 * @param after The function to apply after this function is applied.
+	 * 
+	 * @return A composed function that first applies this function and then
+	 * applies the given function to the result.
+	 */
+	default Function3FToF thenF(Function<Float,Float> after)
+	{
+		ParameterValidation.pvNotNull("after", after);
+		
+		return (a, b, c) -> after.apply(apply3FToF(a, b, c));
+	}
+	
+	/**
+	 * <p>
+	 * Returns a composed function that first applies this function to
+	 * its input, then applies the given function to the result of this function
+	 * and finally returns the result of the given function.
+	 * 
+	 * <p>
+	 * If evaluation of either function throws an exception, it is relayed to
+	 * the caller of the composed function.
+	 *
+	 * @param <FT>
+	 * The return type of the of the given function and of the return type of
+	 * the returned composed function.
+	 * 
+	 * @param after The function to apply after this function is applied.
+	 * 
+	 * @return A composed function that first applies this function and then
+	 * applies the given function to the result.
+	 */
+	default Function3FToF thenF(java.util.function.Function<? super Float,? extends Float> after)
+	{
+		ParameterValidation.pvNotNull("after", after);
+		
+		return (a, b, c) -> after.apply(apply3FToF(a, b, c));
+	}
+	
+	/**
+	 * <p>
+	 * Returns a composed function that first applies this function to
+	 * its input, then applies the given function to the result of this function
+	 * and finally returns the result of the given function.
+	 * 
+	 * <p>
+	 * If evaluation of either function throws an exception, it is relayed to
+	 * the caller of the composed function.
+	 *
+	 * @param <FT>
+	 * The return type of the of the given function and of the return type of
+	 * the returned composed function.
+	 * 
+	 * @param after The function to apply after this function is applied.
+	 * 
+	 * @return A composed function that first applies this function and then
+	 * applies the given function to the result.
+	 */
+	default <FT> Function3F<FT> then(FunctionF<FT> after)
+	{
+		ParameterValidation.pvNotNull("after", after);
+		
+		return (a, b, c) -> after.applyF(apply3FToF(a, b, c));
+	}
+	
+	/**
+	 * <p>
+	 * Returns a composed function that first applies this function to
+	 * its input, then applies the given function to the result of this function
+	 * and finally returns the result of the given function.
+	 * 
+	 * <p>
+	 * If evaluation of either function throws an exception, it is relayed to
+	 * the caller of the composed function.
+	 *
+	 * @param <FT>
+	 * The return type of the of the given function and of the return type of
+	 * the returned composed function.
+	 * 
+	 * @param after The function to apply after this function is applied.
+	 * 
+	 * @return A composed function that first applies this function and then
+	 * applies the given function to the result.
+	 */
+	default <FT> Function3F<FT> then(Function<Float,FT> after)
+	{
+		ParameterValidation.pvNotNull("after", after);
+		
+		return (a, b, c) -> after.apply(apply3FToF(a, b, c));
+	}
+	
+	/**
+	 * <p>
+	 * Returns a composed function that first applies this function to
+	 * its input, then applies the given function to the result of this function
+	 * and finally returns the result of the given function.
+	 * 
+	 * <p>
+	 * If evaluation of either function throws an exception, it is relayed to
+	 * the caller of the composed function.
+	 *
+	 * @param <FT>
+	 * The return type of the of the given function and of the return type of
+	 * the returned composed function.
+	 * 
+	 * @param after The function to apply after this function is applied.
+	 * 
+	 * @return A composed function that first applies this function and then
+	 * applies the given function to the result.
+	 */
+	default <FT> Function3F<FT> then(java.util.function.Function<? super Float,? extends FT> after)
+	{
+		ParameterValidation.pvNotNull("after", after);
+		
+		return (a, b, c) -> after.apply(apply3FToF(a, b, c));
 	}
 }
