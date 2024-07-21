@@ -1,6 +1,6 @@
 package org.barghos.util.function;
 
-import org.barghos.validation.Validation;
+import org.barghos.validation.ParameterValidation;
 
 /**
  * Represents a function that accepts one argument and returns a result.
@@ -53,7 +53,7 @@ public interface FunctionEx<A,T>
 	 */
 	default <V> FunctionEx<V,T> beforeThat(FunctionEx<V,A> before)
 	{
-		Validation.validateNotNull(before);
+		ParameterValidation.pvNotNull("before", before);
 		
 		return (v) -> apply(before.apply(v));
 	}
@@ -75,7 +75,7 @@ public interface FunctionEx<A,T>
 	 */
 	default <V> FunctionEx<A,V> andThen(FunctionEx<T,V> after)
 	{
-		Validation.validateNotNull(after);
+		ParameterValidation.pvNotNull("after", after);
 		
 		return (t) -> after.apply(apply(t));
 	}

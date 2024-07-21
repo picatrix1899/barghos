@@ -1,6 +1,6 @@
 package org.barghos.util.function;
 
-import org.barghos.validation.Validation;
+import org.barghos.validation.ParameterValidation;
 
 /**
  * Represents a function that accepts two arguments and returns a result.
@@ -56,7 +56,7 @@ public interface Function2<A,B,T> extends java.util.function.BiFunction<A,B,T>
 	 */
 	default <FT> Function2<A,B,FT> then(Function<T,FT> after)
 	{
-		Validation.validateNotNull("after", after);
+		ParameterValidation.pvNotNull("after", after);
 		
 		return (a, b) -> after.apply(apply(a, b));
 	}
@@ -82,7 +82,7 @@ public interface Function2<A,B,T> extends java.util.function.BiFunction<A,B,T>
 	 */
 	default <FT> Function2<A,B,FT> then(java.util.function.Function<? super T,? extends FT> after)
 	{
-		Validation.validateNotNull("after", after);
+		ParameterValidation.pvNotNull("after", after);
 		
 		return (a, b) -> after.apply(apply(a, b));
 	}

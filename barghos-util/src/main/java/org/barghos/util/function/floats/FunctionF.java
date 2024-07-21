@@ -1,7 +1,7 @@
 package org.barghos.util.function.floats;
 
 import org.barghos.util.function.Function;
-import org.barghos.validation.Validation;
+import org.barghos.validation.ParameterValidation;
 
 /**
  * Represents a function that accepts one float argument and returns a result.
@@ -32,7 +32,7 @@ public interface FunctionF<T> extends Function<Float,T>
 	 * 
 	 * @return The result of the function.
 	 */
-	T applyFloat(float a);
+	T applyF(float a);
 	
 	/**
 	 * {@inheritDoc}
@@ -43,7 +43,7 @@ public interface FunctionF<T> extends Function<Float,T>
 	@Deprecated
 	default T apply(Float a)
 	{
-		return applyFloat(a);
+		return applyF(a);
 	}
 	
 	/**
@@ -67,9 +67,9 @@ public interface FunctionF<T> extends Function<Float,T>
 	 */
 	default <FT> FunctionF<FT> then(Function<T,FT> after)
 	{
-		Validation.validateNotNull("after", after);
+		ParameterValidation.pvNotNull("after", after);
 
-		return (t) -> after.apply(applyFloat(t));
+		return (t) -> after.apply(applyF(t));
 	}
 	
 	/**
@@ -93,9 +93,9 @@ public interface FunctionF<T> extends Function<Float,T>
 	 */
 	default <FT> FunctionF<FT> then(java.util.function.Function<? super T,? extends FT> after)
 	{
-		Validation.validateNotNull("after", after);
+		ParameterValidation.pvNotNull("after", after);
 
-		return (t) -> after.apply(applyFloat(t));
+		return (t) -> after.apply(applyF(t));
 	}
 	
 	/**
@@ -114,11 +114,11 @@ public interface FunctionF<T> extends Function<Float,T>
 	 * @return A new composed {@link FunctionFToF} that first applies this
 	 * function and then applies the given function to the result.
 	 */
-	default FunctionFToF thenFloat(FunctionToF<T> after)
+	default FunctionFToF thenF(FunctionToF<T> after)
 	{
-		Validation.validateNotNull("after", after);
+		ParameterValidation.pvNotNull("after", after);
 
-		return (t) -> after.applyToFloat(applyFloat(t));
+		return (t) -> after.applyToF(applyF(t));
 	}
 	
 	/**
@@ -137,11 +137,11 @@ public interface FunctionF<T> extends Function<Float,T>
 	 * @return A new composed {@link FunctionFToF} that first applies this
 	 * function and then applies the given function to the result.
 	 */
-	default FunctionFToF thenFloat(Function<T,Float> after)
+	default FunctionFToF thenF(Function<T,Float> after)
 	{
-		Validation.validateNotNull("after", after);
+		ParameterValidation.pvNotNull("after", after);
 
-		return (t) -> after.apply(applyFloat(t));
+		return (t) -> after.apply(applyF(t));
 	}
 	
 	/**
@@ -160,11 +160,11 @@ public interface FunctionF<T> extends Function<Float,T>
 	 * @return A new composed {@link FunctionFToF} that first applies this
 	 * function and then applies the given function to the result.
 	 */
-	default FunctionFToF thenFloat(java.util.function.Function<? super T,? extends Float> after)
+	default FunctionFToF thenF(java.util.function.Function<? super T,? extends Float> after)
 	{
-		Validation.validateNotNull("after", after);
+		ParameterValidation.pvNotNull("after", after);
 
-		return (t) -> after.apply(applyFloat(t));
+		return (t) -> after.apply(applyF(t));
 	}
 	
 	/**
@@ -188,9 +188,9 @@ public interface FunctionF<T> extends Function<Float,T>
 	 */
 	default <FA> Function<FA,T> before(FunctionToF<FA> before)
 	{
-		Validation.validateNotNull("before", before);
+		ParameterValidation.pvNotNull("before", before);
 		
-		return (v) -> applyFloat(before.applyToFloat(v));
+		return (v) -> applyF(before.applyToF(v));
 	}
 	
 	/**
@@ -214,9 +214,9 @@ public interface FunctionF<T> extends Function<Float,T>
 	 */
 	default <FA> Function<FA,T> before(Function<FA,Float> before)
 	{
-		Validation.validateNotNull("before", before);
+		ParameterValidation.pvNotNull("before", before);
 		
-		return (v) -> applyFloat(before.apply(v));
+		return (v) -> applyF(before.apply(v));
 	}
 	
 	/**
@@ -240,9 +240,9 @@ public interface FunctionF<T> extends Function<Float,T>
 	 */
 	default <FA> Function<FA,T> before(java.util.function.Function<? super FA,? extends Float> before)
 	{
-		Validation.validateNotNull("before", before);
+		ParameterValidation.pvNotNull("before", before);
 		
-		return (v) -> applyFloat(before.apply(v));
+		return (v) -> applyF(before.apply(v));
 	}
 	
 	/**
@@ -260,11 +260,11 @@ public interface FunctionF<T> extends Function<Float,T>
 	 * @return a new composed {@link FunctionF} that first applies the
 	 * given function and then applies this function to the result.
 	 */
-	default FunctionF<T> beforeFloat(FunctionFToF before)
+	default FunctionF<T> beforeF(FunctionFToF before)
 	{
-		Validation.validateNotNull("before", before);
+		ParameterValidation.pvNotNull("before", before);
 		
-		return (v) -> applyFloat(before.applyFloatToFloat(v));
+		return (v) -> applyF(before.applyFToF(v));
 	}
 	
 	/**
@@ -282,11 +282,11 @@ public interface FunctionF<T> extends Function<Float,T>
 	 * @return a new composed {@link FunctionF} that first applies the
 	 * given function and then applies this function to the result.
 	 */
-	default FunctionF<T> beforeFloat(FunctionToF<Float> before)
+	default FunctionF<T> beforeF(FunctionToF<Float> before)
 	{
-		Validation.validateNotNull("before", before);
+		ParameterValidation.pvNotNull("before", before);
 		
-		return (v) -> applyFloat(before.applyToFloat(v));
+		return (v) -> applyF(before.applyToF(v));
 	}
 	
 	/**
@@ -304,11 +304,11 @@ public interface FunctionF<T> extends Function<Float,T>
 	 * @return a new composed {@link FunctionF} that first applies the
 	 * given function and then applies this function to the result.
 	 */
-	default FunctionF<T> beforeFloat(FunctionF<Float> before)
+	default FunctionF<T> beforeF(FunctionF<Float> before)
 	{
-		Validation.validateNotNull("before", before);
+		ParameterValidation.pvNotNull("before", before);
 		
-		return (v) -> applyFloat(before.applyFloat(v));
+		return (v) -> applyF(before.applyF(v));
 	}
 	
 	/**
@@ -326,11 +326,11 @@ public interface FunctionF<T> extends Function<Float,T>
 	 * @return a new composed {@link FunctionF} that first applies the
 	 * given function and then applies this function to the result.
 	 */
-	default FunctionF<T> beforeFloat(Function<Float,Float> before)
+	default FunctionF<T> beforeF(Function<Float,Float> before)
 	{
-		Validation.validateNotNull("before", before);
+		ParameterValidation.pvNotNull("before", before);
 		
-		return (v) -> applyFloat(before.apply(v));
+		return (v) -> applyF(before.apply(v));
 	}
 	
 	/**
@@ -348,11 +348,11 @@ public interface FunctionF<T> extends Function<Float,T>
 	 * @return a new composed {@link FunctionF} that first applies the
 	 * given function and then applies this function to the result.
 	 */
-	default FunctionF<T> beforeFloat(java.util.function.Function<? super Float,? extends Float> before)
+	default FunctionF<T> beforeF(java.util.function.Function<? super Float,? extends Float> before)
 	{
-		Validation.validateNotNull("before", before);
+		ParameterValidation.pvNotNull("before", before);
 		
-		return (v) -> applyFloat(before.apply(v));
+		return (v) -> applyF(before.apply(v));
 	}
 	
 	/**

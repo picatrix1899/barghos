@@ -1,19 +1,27 @@
 package org.barghos.util.function.floats;
 
 import org.barghos.util.function.Function;
+import org.barghos.util.function.Function2;
+import org.barghos.util.function.Function3;
+import org.barghos.util.function.Function4;
+import org.barghos.util.function.FunctionEx;
+import org.barghos.util.function.FunctionEx2;
+import org.barghos.util.function.FunctionEx3;
+import org.barghos.util.function.FunctionEx4;
 import org.barghos.validation.ParameterValidation;
 
 /**
- * Represents a function that accepts two arguments and returns a result.
+ * Represents a function that accepts two float arguments and returns a result.
  * 
  * <p>
  * This is a functional interface
- * whose functional method is {@link #applyFloatToFloat(float, float)}.
+ * whose functional method is {@link #apply(float, float)}.
  * 
+ * @param <T> The return type.
  * 
  * @see Function
  * @see FunctionEx
- * @see Function2FToF
+ * @see Function2
  * @see FunctionEx2
  * @see Function3
  * @see FunctionEx3
@@ -21,52 +29,27 @@ import org.barghos.validation.ParameterValidation;
  * @see FunctionEx4
  */
 @FunctionalInterface
-public interface Function2FToF extends Function2F<Float>, Function2ToF<Float,Float>
+public interface Function4F<T> extends Function4<Float,Float,Float,Float,T>
 {
 	/**
 	 * Invokes the function.
 	 * 
 	 * @param a The first parameter.
-	 * @param b The second parameter.
 	 * 
 	 * @return The result of the function.
 	 */
-	float apply2FToF(float a, float b);
+	T apply4F(float a, float b, float c, float d);
 	
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @deprecated Use {@link #applyFloatToFloat(float, float)} instead.
+	 * @deprecated Use {@link #applyF(float, float)} instead.
 	 */
 	@Override
 	@Deprecated
-	default Float apply2F(float a, float b)
+	default T apply(Float a, Float b, Float c, Float d)
 	{
-		return apply2FToF(a, b);
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @deprecated Use {@link #applyFloatToFloat(float, float)} instead.
-	 */
-	@Override
-	@Deprecated
-	default float apply2ToF(Float a, Float b)
-	{
-		return apply2FToF(a, b);
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @deprecated Use {@link #applyFloatToFloat(float, float)} instead.
-	 */
-	@Override
-	@Deprecated
-	default Float apply(Float a, Float b)
-	{
-		return apply2FToF(a, b);
+		return apply4F(a, b, c, d);
 	}
 	
 	/**
@@ -88,11 +71,11 @@ public interface Function2FToF extends Function2F<Float>, Function2ToF<Float,Flo
 	 * @return A composed function that first applies this function and then
 	 * applies the given function to the result.
 	 */
-	default <FT> Function2F<FT> thenF(FunctionF<FT> after)
+	default Function4F<Float> thenF(FunctionToF<T> after)
 	{
 		ParameterValidation.pvNotNull("after", after);
 		
-		return (a, b) -> after.applyF(apply2FToF(a, b));
+		return (a, b, c, d) -> after.applyToF(apply4F(a, b, c, d));
 	}
 	
 	/**
@@ -114,11 +97,11 @@ public interface Function2FToF extends Function2F<Float>, Function2ToF<Float,Flo
 	 * @return A composed function that first applies this function and then
 	 * applies the given function to the result.
 	 */
-	default Function2FToF thenF(Function<Float,Float> after)
+	default Function4F<Float> thenF(Function<T,Float> after)
 	{
 		ParameterValidation.pvNotNull("after", after);
 		
-		return (a, b) -> after.apply(apply2FToF(a, b));
+		return (a, b, c, d) -> after.apply(apply4F(a, b, c, d));
 	}
 	
 	/**
@@ -140,11 +123,11 @@ public interface Function2FToF extends Function2F<Float>, Function2ToF<Float,Flo
 	 * @return A composed function that first applies this function and then
 	 * applies the given function to the result.
 	 */
-	default Function2FToF thenF(java.util.function.Function<? super Float,? extends Float> after)
+	default Function4F<Float> thenF(java.util.function.Function<? super T,? extends Float> after)
 	{
 		ParameterValidation.pvNotNull("after", after);
 		
-		return (a, b) -> after.apply(apply2FToF(a, b));
+		return (a, b, c, d) -> after.apply(apply4F(a, b, c, d));
 	}
 	
 	/**
@@ -166,11 +149,11 @@ public interface Function2FToF extends Function2F<Float>, Function2ToF<Float,Flo
 	 * @return A composed function that first applies this function and then
 	 * applies the given function to the result.
 	 */
-	default <FT> Function2F<FT> then(FunctionF<FT> after)
+	default <FT> Function4F<FT> then(Function<T,FT> after)
 	{
 		ParameterValidation.pvNotNull("after", after);
 		
-		return (a, b) -> after.applyF(apply2FToF(a, b));
+		return (a, b, c, d) -> after.apply(apply4F(a, b, c, d));
 	}
 	
 	/**
@@ -192,48 +175,10 @@ public interface Function2FToF extends Function2F<Float>, Function2ToF<Float,Flo
 	 * @return A composed function that first applies this function and then
 	 * applies the given function to the result.
 	 */
-	default <FT> Function2F<FT> then(Function<Float,FT> after)
+	default <FT> Function4F<FT> then(java.util.function.Function<? super T,? extends FT> after)
 	{
 		ParameterValidation.pvNotNull("after", after);
 		
-		return (a, b) -> after.apply(apply2FToF(a, b));
-	}
-	
-	/**
-	 * <p>
-	 * Returns a composed function that first applies this function to
-	 * its input, then applies the given function to the result of this function
-	 * and finally returns the result of the given function.
-	 * 
-	 * <p>
-	 * If evaluation of either function throws an exception, it is relayed to
-	 * the caller of the composed function.
-	 *
-	 * @param <FT>
-	 * The return type of the of the given function and of the return type of
-	 * the returned composed function.
-	 * 
-	 * @param after The function to apply after this function is applied.
-	 * 
-	 * @return A composed function that first applies this function and then
-	 * applies the given function to the result.
-	 */
-	default <FT> Function2F<FT> then(java.util.function.Function<? super Float,? extends FT> after)
-	{
-		ParameterValidation.pvNotNull("after", after);
-		
-		return (a, b) -> after.apply(apply2FToF(a, b));
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @deprecated Use {@link #thenGeneric(Function)} instead.
-	 */
-	@Override
-	@Deprecated
-	default <FT> Function2F<FT> andThen(java.util.function.Function<? super Float,? extends FT> after)
-	{
-		return then(after);
+		return (a, b, c, d) -> after.apply(apply4F(a, b, c, d));
 	}
 }

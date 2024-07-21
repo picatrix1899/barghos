@@ -1,7 +1,7 @@
 package org.barghos.util.function.floats;
 
 import org.barghos.util.function.Function;
-import org.barghos.util.function.Function2;
+import org.barghos.util.function.Function3;
 import org.barghos.validation.ParameterValidation;
 
 /**
@@ -16,7 +16,7 @@ import org.barghos.validation.ParameterValidation;
  * 
  * @see Function
  * @see FunctionEx
- * @see Function2ToF
+ * @see Function3ToF
  * @see FunctionEx2
  * @see Function3
  * @see FunctionEx3
@@ -24,7 +24,7 @@ import org.barghos.validation.ParameterValidation;
  * @see FunctionEx4
  */
 @FunctionalInterface
-public interface Function2ToF<A,B> extends Function2<A,B,Float>
+public interface Function3ToF<A,B,C> extends Function3<A,B,C,Float>
 {
 	/**
 	 * Invokes the function.
@@ -34,7 +34,7 @@ public interface Function2ToF<A,B> extends Function2<A,B,Float>
 	 * 
 	 * @return The result of the function.
 	 */
-	float apply2ToF(A a, B b);
+	float apply3ToF(A a, B b, C c);
 	
 	/**
 	 * {@inheritDoc}
@@ -43,9 +43,9 @@ public interface Function2ToF<A,B> extends Function2<A,B,Float>
 	 */
 	@Override
 	@Deprecated
-	default Float apply(A a, B b)
+	default Float apply(A a, B b, C c)
 	{
-		return apply2ToF(a, b);
+		return apply3ToF(a, b, c);
 	}
 	
 	/**
@@ -67,11 +67,11 @@ public interface Function2ToF<A,B> extends Function2<A,B,Float>
 	 * @return A composed function that first applies this function and then
 	 * applies the given function to the result.
 	 */
-	default <FT> Function2<A,B,FT> then(FunctionF<FT> after)
+	default <FT> Function3<A,B,C,FT> then(FunctionF<FT> after)
 	{
 		ParameterValidation.pvNotNull("after", after);
 		
-		return (a, b) -> after.applyF(apply2ToF(a, b));
+		return (a, b, c) -> after.applyF(apply3ToF(a, b, c));
 	}
 	
 	/**
@@ -93,11 +93,11 @@ public interface Function2ToF<A,B> extends Function2<A,B,Float>
 	 * @return A composed function that first applies this function and then
 	 * applies the given function to the result.
 	 */
-	default <FT> Function2<A,B,FT> then(Function<Float,FT> after)
+	default <FT> Function3<A,B,C,FT> then(Function<Float,FT> after)
 	{
 		ParameterValidation.pvNotNull("after", after);
 		
-		return (a, b) -> after.apply(apply2ToF(a, b));
+		return (a, b, c) -> after.apply(apply3ToF(a, b, c));
 	}
 	
 	/**
@@ -119,22 +119,10 @@ public interface Function2ToF<A,B> extends Function2<A,B,Float>
 	 * @return A composed function that first applies this function and then
 	 * applies the given function to the result.
 	 */
-	default <FT> Function2<A,B,FT> then(java.util.function.Function<? super Float,? extends FT> after)
+	default <FT> Function3<A,B,C,FT> then(java.util.function.Function<? super Float,? extends FT> after)
 	{
 		ParameterValidation.pvNotNull("after", after);
 		
-		return (a, b) -> after.apply(apply2ToF(a, b));
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @deprecated Use {@link #thenGeneric(Function)} instead.
-	 */
-	@Override
-	@Deprecated
-	default <FT> Function2<A,B,FT> andThen(java.util.function.Function<? super Float,? extends FT> after)
-	{
-		return then(after);
+		return (a, b, c) -> after.apply(apply3ToF(a, b, c));
 	}
 }
