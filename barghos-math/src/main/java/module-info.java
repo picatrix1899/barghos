@@ -9,9 +9,17 @@ module org.barghos.math
 	
 	requires transitive org.barghos.util;
 
-	exports org.barghos.math.line;
-	exports org.barghos.math.orientation;
+	exports org.barghos.math;
+	exports org.barghos.math.vector;
 	
-	opens org.barghos.math.line;
-	opens org.barghos.math.orientation;
+	
+	//exports org.barghos.math.line;
+	
+	
+	//exports org.barghos.math.orientation;
+	
+	opens org.barghos.math;
+	opens org.barghos.math.vector;
+	//opens org.barghos.math.line;
+	//opens org.barghos.math.orientation;
 }
