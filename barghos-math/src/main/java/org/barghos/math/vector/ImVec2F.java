@@ -12,7 +12,7 @@ import org.barghos.util.tuple.floats.TupRF;
 import org.barghos.util.tuple.floats.TupUtils2F;
 import org.barghos.validation.exception.IndexOutOfRangeException;
 
-public class Vec2F implements Vec2WF
+public class ImVec2F implements Vec2RF
 {
 	private static final VecFactory2F FACTORY;
 	
@@ -96,79 +96,68 @@ public class Vec2F implements Vec2WF
 		return FACTORY.immutable(x, y);
 	}
 
-	public float x;
-	public float y;
+	public final float x;
+	public final float y;
 	
-	public Vec2F()
+	public ImVec2F(Tup2RF t)
 	{
-		set(0);
+		this(t.v0(), t.v1());
 	}
 	
-	public Vec2F(Tup2RF t)
+	public ImVec2F(TupRF t)
 	{
-		set(t);
+		this(t.getAt(0), t.getAt(1));
 	}
 	
-	public Vec2F(TupRF t)
+	public ImVec2F(float value)
 	{
-		set(t);
+		this(value, value);
 	}
 	
-	public Vec2F(float value)
+	public ImVec2F(float... t)
 	{
-		set(value);
+		this(t[0], t[1]);
 	}
 	
-	public Vec2F(float... t)
+	public ImVec2F(float x, float y)
 	{
-		set(t);
-	}
-	
-	public Vec2F(float x, float y)
-	{
-		set(x, y);
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F createNew()
-	{
-		return new Vec2F();
+		this.x = x;
+		this.y = y;
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F createNew(Tup2RF t)
+	public ImVec2F createNew(Tup2RF t)
 	{
-		return new Vec2F(t);
+		return new ImVec2F(t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F createNew(TupRF t)
+	public ImVec2F createNew(TupRF t)
 	{
-		return new Vec2F(t);
+		return new ImVec2F(t);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F createNew(float... t)
+	public ImVec2F createNew(float... t)
 	{
-		return new Vec2F(t);
+		return new ImVec2F(t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F createNew(float value)
+	public ImVec2F createNew(float value)
 	{
-		return new Vec2F(value);
+		return new ImVec2F(value);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F createNew(float x, float y)
+	public ImVec2F createNew(float x, float y)
 	{
-		return new Vec2F(x, y);
+		return new ImVec2F(x, y);
 	}
 	
 	/** {@inheritDoc} */
@@ -230,101 +219,16 @@ public class Vec2F implements Vec2WF
 	
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F set(Tup2RF t)
+	public ImVec2F copy()
 	{
-		return set(t.v0(), t.v1());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F set(TupRF t)
-	{
-		return set(t.getAt(0), t.getAt(1));
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F set(float value)
-	{
-		return set(value, value);
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F set(float... values)
-	{
-		return set(values[0], values[1]);
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F set(float x, float y)
-	{
-		return x(x).y(y);
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F x(float x)
-	{
-		this.x = x;
-		
-		return this;
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F y(float y)
-	{
-		this.y = y;
-		
-		return this;
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F v0(float v0)
-	{
-		this.x = v0;
-		
-		return this;
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F v1(float v1)
-	{
-		this.y = v1;
-		
-		return this;
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F setAt(int index, float value)
-	{
-		switch(index)
-		{
-			case 0: this.x = value; break;
-			case 1: this.y = value; break;
-			default: throw new IndexOutOfRangeException(index, 1);
-		}
-		
-		return this;
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F copy()
-	{
-		return new Vec2F(this);
+		return new ImVec2F(this);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public String toString()
 	{
-		return "vec2(x=" + this.x + ", y=" + this.y + ")";
+		return "immutableVec2F(x=" + this.x + ", y=" + this.y + ")";
 	}
 
 	/** {@inheritDoc} */
@@ -1659,86 +1563,21 @@ public class Vec2F implements Vec2WF
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F arrangeN(int... indices)
+	public ImVec2F arrangeN(int... indices)
 	{
-		return new Vec2F(getAt(indices[0]), getAt(indices[1]));
+		return new ImVec2F(getAt(indices[0]), getAt(indices[1]));
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F arrangeN(int iv0, int iv1)
+	public ImVec2F arrangeN(int iv0, int iv1)
 	{
-		return new Vec2F(getAt(iv0), getAt(iv0));
+		return new ImVec2F(getAt(iv0), getAt(iv0));
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F swizzleN(int indexA, int indexB)
-	{
-		float a;
-		switch(indexA)
-		{
-			case 0: a = this.x; break;
-			case 1: a = this.y; break;
-			default: throw new IndexOutOfRangeException(indexA, 1);
-		}
-		
-		float b;
-		switch(indexB)
-		{
-			case 0: b = this.x; break;
-			case 1: b = this.y; break;
-			default: throw new IndexOutOfRangeException(indexB, 1);
-		}
-		
-		float x = this.x;
-		float y = this.y;
-		
-		switch(indexB)
-		{
-			case 0: x = a; break;
-			case 1: y = a; break;
-			default: throw new IndexOutOfRangeException(indexB, 1);
-		}
-		
-		switch(indexA)
-		{
-			case 0: x = b; break;
-			case 1: y = b; break;
-			default: throw new IndexOutOfRangeException(indexB, 1);
-		}
-		
-		return new Vec2F(x, y);
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F swizzleV0V1N()
-	{
-		return new Vec2F(this.y, this.x);
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F arrange(int... indices)
-	{
-		set(getAt(indices[0]), getAt(indices[1]));
-		
-		return this;
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F arrange(int iv0, int iv1)
-	{
-		set(getAt(iv0), getAt(iv1));
-		
-		return this;
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F swizzle(int indexA, int indexB)
+	public ImVec2F swizzleN(int indexA, int indexB)
 	{
 		float a;
 		switch(indexA)
@@ -1773,815 +1612,412 @@ public class Vec2F implements Vec2WF
 			default: throw new IndexOutOfRangeException(indexB, 1);
 		}
 		
-		set(x, y);
-		
-		return this;
+		return new ImVec2F(x, y);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F swizzleV0V1()
+	public ImVec2F swizzleV0V1N()
 	{
-		set(this.y, this.x);
-		
-		return this;
+		return new ImVec2F(this.y, this.x);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F add(Tup2RF v2)
+	public ImVec2F addN(Tup2RF v2)
 	{
-		return VecUtils2F.add(this, v2, this);
+		return VecUtils2F.addFunc(this, v2, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F add(float[] v2)
+	public ImVec2F addN(float[] v2)
 	{
-		return VecUtils2F.add(this, v2, this);
+		return VecUtils2F.addFunc(this, v2, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F add(float value)
+	public ImVec2F addN(float value)
 	{
-		return VecUtils2F.add(this, value, value, this);
+		return VecUtils2F.addFunc(this, value, value, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F add(float v2x, float v2y)
+	public ImVec2F addN(float v2x, float v2y)
 	{
-		return VecUtils2F.add(this, v2x, v2y, this);
+		return VecUtils2F.addFunc(this, v2x, v2y, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F sub(Tup2RF v2)
+	public ImVec2F subN(Tup2RF v2)
 	{
-		return VecUtils2F.sub(this, v2, this);
+		return VecUtils2F.subFunc(this, v2, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F sub(float[] v2)
+	public ImVec2F subN(float[] v2)
 	{
-		return VecUtils2F.sub(this, v2, this);
+		return VecUtils2F.subFunc(this, v2, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F sub(float value)
+	public ImVec2F subN(float value)
 	{
-		return VecUtils2F.sub(this, value, value, this);
+		return VecUtils2F.subFunc(this, value, value, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F sub(float v2x, float v2y)
+	public ImVec2F subN(float v2x, float v2y)
 	{
-		return VecUtils2F.sub(this, v2x, v2y, this);
+		return VecUtils2F.subFunc(this, v2x, v2y, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F revSub(Tup2RF v2)
+	public ImVec2F revSubN(Tup2RF v2)
 	{
-		return VecUtils2F.sub(v2, this, this);
+		return VecUtils2F.subFunc(v2, this, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F revSub(float[] v2)
+	public ImVec2F revSubN(float[] v2)
 	{
-		return VecUtils2F.sub(v2, this, this);
+		return VecUtils2F.subFunc(v2, this, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F revSub(float value)
+	public ImVec2F revSubN(float value)
 	{
-		return VecUtils2F.sub(value, value, this, this);
+		return VecUtils2F.subFunc(value, value, this,ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F revSub(float v2x, float v2y)
+	public ImVec2F revSubN(float v2x, float v2y)
 	{
-		return VecUtils2F.sub(v2x, v2y, this, this);
+		return VecUtils2F.subFunc(v2x, v2y, this, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F mul(Tup2RF v2)
+	public ImVec2F mulN(Tup2RF v2)
 	{
-		return VecUtils2F.mul(this, v2, this);
+		return VecUtils2F.mulFunc(this, v2, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F mul(float[] v2)
+	public ImVec2F mulN(float[] v2)
 	{
-		return VecUtils2F.mul(this, v2, this);
+		return VecUtils2F.mulFunc(this, v2, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F mul(float value)
+	public ImVec2F mulN(float value)
 	{
-		return VecUtils2F.mul(this, value, value, this);
+		return VecUtils2F.mulFunc(this, value, value, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F mul(float v2x, float v2y)
+	public ImVec2F mulN(float v2x, float v2y)
 	{
-		return VecUtils2F.mul(this, v2x, v2y, this);
+		return VecUtils2F.mulFunc(this, v2x, v2y, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F div(Tup2RF v2)
+	public ImVec2F divN(Tup2RF v2)
 	{
-		return VecUtils2F.div(this, v2, this);
+		return VecUtils2F.divFunc(this, v2, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F div(float[] v2)
+	public ImVec2F divN(float[] v2)
 	{
-		return VecUtils2F.div(this, v2, this);
+		return VecUtils2F.divFunc(this, v2, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F div(float value)
+	public ImVec2F divN(float value)
 	{
-		return VecUtils2F.div(this, value, value, this);
+		return VecUtils2F.divFunc(this, value, value, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F div(float v2x, float v2y)
+	public ImVec2F divN(float v2x, float v2y)
 	{
-		return VecUtils2F.div(this, v2x, v2y, this);
+		return VecUtils2F.divFunc(this, v2x, v2y, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F revDiv(Tup2RF v2)
+	public ImVec2F revDivN(Tup2RF v2)
 	{
-		return VecUtils2F.div(v2, this, this);
+		return VecUtils2F.divFunc(v2, this, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F revDiv(float[] v2)
+	public ImVec2F revDivN(float[] v2)
 	{
-		return VecUtils2F.div(v2, this, this);
+		return VecUtils2F.divFunc(v2, this, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F revDiv(float value)
+	public ImVec2F revDivN(float value)
 	{
-		return VecUtils2F.div(value, value, this, this);
+		return VecUtils2F.divFunc(value, value, this, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F revDiv(float v2x, float v2y)
+	public ImVec2F revDivN(float v2x, float v2y)
 	{
-		return VecUtils2F.div(v2x, v2y, this, this);
+		return VecUtils2F.divFunc(v2x, v2y, this, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F halfVec(Tup2RF v2)
+	public ImVec2F halfVecN(Tup2RF v2)
 	{
-		return VecUtils2F.halfVec(this, v2, this);
+		return VecUtils2F.halfVecFunc(this, v2, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F halfVec(float[] v2)
+	public ImVec2F halfVecN(float[] v2)
 	{
-		return VecUtils2F.halfVec(this, v2, this);
+		return VecUtils2F.halfVecFunc(this, v2, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F halfVec(float v2x, float v2y)
+	public ImVec2F halfVecN(float v2x, float v2y)
 	{
-		return VecUtils2F.halfVec(this, v2x, v2y, this);
+		return VecUtils2F.halfVecFunc(this, v2x, v2y, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F halfPoint(Tup2RF v2)
+	public ImVec2F halfPointN(Tup2RF v2)
 	{
-		return VecUtils2F.halfPoint(this, v2, this);
+		return VecUtils2F.halfPointFunc(this, v2, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F halfPoint(float[] v2)
+	public ImVec2F halfPointN(float[] v2)
 	{
-		return VecUtils2F.halfPoint(this, v2, this);
+		return VecUtils2F.halfPointFunc(this, v2, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F halfPoint(float v2x, float v2y)
+	public ImVec2F halfPointN(float v2x, float v2y)
 	{
-		return VecUtils2F.halfPoint(this, v2x, v2y, this);
+		return VecUtils2F.halfPointFunc(this, v2x, v2y, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F neg()
+	public ImVec2F negN()
 	{
-		return VecUtils2F.neg(this, this);
+		return VecUtils2F.negFunc(this, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F inv()
+	public ImVec2F invN()
 	{
-		return VecUtils2F.inv(this, this);
+		return VecUtils2F.invFunc(this, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F nrm()
+	public ImVec2F nrmN()
 	{
-		return VecUtils2F.nrm(this, this);
+		return VecUtils2F.nrmFunc(this, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F min(Tup2RF v2)
+	public ImVec2F minN(Tup2RF v2)
 	{
-		return VecUtils2F.min(this, v2, this);
+		return VecUtils2F.minFunc(this, v2, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F min(float[] v2)
+	public ImVec2F minN(float[] v2)
 	{
-		return VecUtils2F.min(this, v2, this);
+		return VecUtils2F.minFunc(this, v2, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F min(float v2x, float v2y)
+	public ImVec2F minN(float v2x, float v2y)
 	{
-		return VecUtils2F.min(this, v2x, v2y, this);
+		return VecUtils2F.minFunc(this, v2x, v2y, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F max(Tup2RF v2)
+	public ImVec2F maxN(Tup2RF v2)
 	{
-		return VecUtils2F.max(this, v2, this);
+		return VecUtils2F.maxFunc(this, v2, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F max(float[] v2)
+	public ImVec2F maxN(float[] v2)
 	{
-		return VecUtils2F.max(this, v2, this);
+		return VecUtils2F.maxFunc(this, v2, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F max(float v2x, float v2y)
+	public ImVec2F maxN(float v2x, float v2y)
 	{
-		return VecUtils2F.max(this, v2x, v2y, this);
+		return VecUtils2F.maxFunc(this, v2x, v2y, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F rotRad(float angle)
+	public ImVec2F rotRadN(float angle)
 	{
-		return VecUtils2F.rotRad(this, angle, this);
+		return VecUtils2F.rotRadFunc(this, angle, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F rotDeg(float angle)
+	public ImVec2F rotDegN(float angle)
 	{
-		return VecUtils2F.rotDeg(this, angle, this);
+		return VecUtils2F.rotDegFunc(this, angle, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F prj(Tup2RF t)
+	public ImVec2F prjN(Tup2RF t)
 	{
-		return VecUtils2F.prj(this, t, this);
+		return VecUtils2F.prjFunc(this, t, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F prj(float[] t)
+	public ImVec2F prjN(float[] t)
 	{
-		return VecUtils2F.prj(this, t, this);
+		return VecUtils2F.prjFunc(this, t, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F prj(float tx, float ty)
+	public ImVec2F prjN(float tx, float ty)
 	{
-		return VecUtils2F.prj(this, tx, ty, this);
+		return VecUtils2F.prjFunc(this, tx, ty, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F rfl(Tup2RF n)
+	public ImVec2F rflN(Tup2RF n)
 	{
-		return VecUtils2F.rfl(this, n, this);
+		return VecUtils2F.rflFunc(this, n, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F rfl(float[] n)
+	public ImVec2F rflN(float[] n)
 	{
-		return VecUtils2F.rfl(this, n, this);
+		return VecUtils2F.rflFunc(this, n, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F rfl(float nx, float ny)
+	public ImVec2F rflN(float nx, float ny)
 	{
-		return VecUtils2F.rfl(this, nx, ny, this);
+		return VecUtils2F.rflFunc(this, nx, ny, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F ceil()
+	public ImVec2F ceilN()
 	{
-		return VecUtils2F.ceil(this, this);
+		return VecUtils2F.ceilFunc(this, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F floor()
+	public ImVec2F floorN()
 	{
-		return VecUtils2F.floor(this, this);
+		return VecUtils2F.floorFunc(this, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F round()
+	public ImVec2F roundN()
 	{
-		return VecUtils2F.round(this, this);
+		return VecUtils2F.roundFunc(this, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F trunc()
+	public ImVec2F truncN()
 	{
-		return VecUtils2F.trunc(this, this);
+		return VecUtils2F.truncFunc(this, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F round(RoundMethodF method)
+	public ImVec2F roundN(RoundMethodF method)
 	{
-		return VecUtils2F.round(this, method, this);
+		return VecUtils2F.roundFunc(this, method, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F abs()
+	public ImVec2F absN()
 	{
-		return VecUtils2F.abs(this, this);
+		return VecUtils2F.absFunc(this, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F sign()
+	public ImVec2F signN()
 	{
-		return VecUtils2F.sign(this, this);
+		return VecUtils2F.signFunc(this, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F intVecLin(Tup2RF v2, float alpha)
+	public ImVec2F intVecLinN(Tup2RF v2, float alpha)
 	{
-		return VecUtils2F.intVecLin(this, v2, alpha, this);
+		return VecUtils2F.intVecLinFunc(this, v2, alpha, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F intVecLin(float[] v2, float alpha)
+	public ImVec2F intVecLinN(float[] v2, float alpha)
 	{
-		return VecUtils2F.intVecLin(this, v2, alpha, this);
+		return VecUtils2F.intVecLinFunc(this, v2, alpha, ImVec2F::new);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F intVecLin(float v2x, float v2y, float alpha)
+	public ImVec2F intVecLinN(float v2x, float v2y, float alpha)
 	{
-		return VecUtils2F.intVecLin(this, v2x, v2y, alpha, this);
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F addN(Tup2RF v2)
-	{
-		return VecUtils2F.add(this, v2, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F addN(float[] v2)
-	{
-		return VecUtils2F.add(this, v2, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F addN(float value)
-	{
-		return VecUtils2F.add(this, value, value, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F addN(float v2x, float v2y)
-	{
-		return VecUtils2F.add(this, v2x, v2y, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F subN(Tup2RF v2)
-	{
-		return VecUtils2F.sub(this, v2, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F subN(float[] v2)
-	{
-		return VecUtils2F.sub(this, v2, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F subN(float value)
-	{
-		return VecUtils2F.sub(this, value, value, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F subN(float v2x, float v2y)
-	{
-		return VecUtils2F.sub(this, v2x, v2y, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F revSubN(Tup2RF v2)
-	{
-		return VecUtils2F.sub(v2, this, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F revSubN(float[] v2)
-	{
-		return VecUtils2F.sub(v2, this, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F revSubN(float value)
-	{
-		return VecUtils2F.sub(value, value, this, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F revSubN(float v2x, float v2y)
-	{
-		return VecUtils2F.sub(v2x, v2y, this, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F mulN(Tup2RF v2)
-	{
-		return VecUtils2F.mul(this, v2, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F mulN(float[] v2)
-	{
-		return VecUtils2F.mul(this, v2, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F mulN(float value)
-	{
-		return VecUtils2F.mul(this, value, value, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F mulN(float v2x, float v2y)
-	{
-		return VecUtils2F.mul(this, v2x, v2y, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F divN(Tup2RF v2)
-	{
-		return VecUtils2F.div(this, v2, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F divN(float[] v2)
-	{
-		return VecUtils2F.div(this, v2, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F divN(float value)
-	{
-		return VecUtils2F.div(this, value, value, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F divN(float v2x, float v2y)
-	{
-		return VecUtils2F.div(this, v2x, v2y, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F revDivN(Tup2RF v2)
-	{
-		return VecUtils2F.div(v2, this, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F revDivN(float[] v2)
-	{
-		return VecUtils2F.div(v2, this, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F revDivN(float value)
-	{
-		return VecUtils2F.div(value, value, this, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F revDivN(float v2x, float v2y)
-	{
-		return VecUtils2F.div(v2x, v2y, this, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F halfVecN(Tup2RF v2)
-	{
-		return VecUtils2F.halfVec(this, v2, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F halfVecN(float[] v2)
-	{
-		return VecUtils2F.halfVec(this, v2, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F halfVecN(float v2x, float v2y)
-	{
-		return VecUtils2F.halfVec(this, v2x, v2y, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F halfPointN(Tup2RF v2)
-	{
-		return VecUtils2F.halfPoint(this, v2, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F halfPointN(float[] v2)
-	{
-		return VecUtils2F.halfPoint(this, v2, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F halfPointN(float v2x, float v2y)
-	{
-		return VecUtils2F.halfPoint(this, v2x, v2y, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F negN()
-	{
-		return VecUtils2F.neg(this, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F invN()
-	{
-		return VecUtils2F.inv(this, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F nrmN()
-	{
-		return VecUtils2F.nrm(this, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F minN(Tup2RF v2)
-	{
-		return VecUtils2F.min(this, v2, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F minN(float[] v2)
-	{
-		return VecUtils2F.min(this, v2, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F minN(float v2x, float v2y)
-	{
-		return VecUtils2F.min(this, v2x, v2y, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F maxN(Tup2RF v2)
-	{
-		return VecUtils2F.max(this, v2, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F maxN(float[] v2)
-	{
-		return VecUtils2F.max(this, v2, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F maxN(float v2x, float v2y)
-	{
-		return VecUtils2F.max(this, v2x, v2y, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F rotRadN(float angle)
-	{
-		return VecUtils2F.rotRad(this, angle, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F rotDegN(float angle)
-	{
-		return VecUtils2F.rotDeg(this, angle, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F prjN(Tup2RF t)
-	{
-		return VecUtils2F.prj(this, t, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F prjN(float[] t)
-	{
-		return VecUtils2F.prj(this, t, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F prjN(float tx, float ty)
-	{
-		return VecUtils2F.prj(this, tx, ty, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F rflN(Tup2RF n)
-	{
-		return VecUtils2F.rfl(this, n, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F rflN(float[] n)
-	{
-		return VecUtils2F.rfl(this, n, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F rflN(float nx, float ny)
-	{
-		return VecUtils2F.rfl(this, nx, ny, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F ceilN()
-	{
-		return VecUtils2F.ceil(this, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F floorN()
-	{
-		return VecUtils2F.floor(this, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F roundN()
-	{
-		return VecUtils2F.round(this, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F truncN()
-	{
-		return VecUtils2F.trunc(this, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F roundN(RoundMethodF method)
-	{
-		return VecUtils2F.round(this, method, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F absN()
-	{
-		return VecUtils2F.abs(this, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F signN()
-	{
-		return VecUtils2F.sign(this, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F intVecLinN(Tup2RF v2, float alpha)
-	{
-		return VecUtils2F.intVecLin(this, v2, alpha, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F intVecLinN(float[] v2, float alpha)
-	{
-		return VecUtils2F.intVecLin(this, v2, alpha, new Vec2F());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F intVecLinN(float v2x, float v2y, float alpha)
-	{
-		return VecUtils2F.intVecLin(this, v2x, v2y, alpha, new Vec2F());
+		return VecUtils2F.intVecLinFunc(this, v2x, v2y, alpha, ImVec2F::new);
 	}
 }

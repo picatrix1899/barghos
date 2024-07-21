@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.barghos.math.vector.Vec2F;
 import org.barghos.math.vector.VecUtils2F;
+import org.barghos.util.function.floats.Function2F;
 import org.barghos.util.math.MathUtils;
 import org.junit.jupiter.api.Test;
 
@@ -19,6 +20,8 @@ public class VecUtils2FTest
 		assertEquals(r, VecUtils2F.invLen(new Vec2F(x, y)));
 		assertEquals(r, VecUtils2F.invLen(new float[] {x, y}));
 		assertEquals(r, VecUtils2F.invLen(x, y));
+		
+		Function2F<Vec2F> test = Vec2F::new;
 	}
 	
 	@Test

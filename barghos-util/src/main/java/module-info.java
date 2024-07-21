@@ -14,11 +14,13 @@ module org.barghos.util
 	exports org.barghos.util.consumer;
 	exports org.barghos.util.consumer.floats;
 	
+	exports org.barghos.util.function;
+	exports org.barghos.util.function.floats;
+	
 	exports org.barghos.util.tuple;
 	exports org.barghos.util.tuple.floats;
 	
 	exports org.barghos.util.comparator;
-	exports org.barghos.util.function;
 	exports org.barghos.util.lazy;
 	exports org.barghos.util.optional;
 	exports org.barghos.util.predicate;
@@ -32,11 +34,13 @@ module org.barghos.util
 	opens org.barghos.util.consumer;
 	opens org.barghos.util.consumer.floats;
 	
+	opens org.barghos.util.function;
+	opens org.barghos.util.function.floats;
+	
 	opens org.barghos.util.tuple;
 	opens org.barghos.util.tuple.floats;
 	
 	opens org.barghos.util.comparator;
-	opens org.barghos.util.function;
 	opens org.barghos.util.lazy;
 	opens org.barghos.util.optional;
 	opens org.barghos.util.predicate;
