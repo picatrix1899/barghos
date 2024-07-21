@@ -15,7 +15,6 @@ public class InvalidArgumentException extends IllegalArgumentException
 	private static final long serialVersionUID = 1L;
 	
 	private final String argument;
-	private final boolean hasArgument;
 	
 	/**
 	 * Create a new instance of the exception without any additional details.
@@ -25,7 +24,6 @@ public class InvalidArgumentException extends IllegalArgumentException
 		super();
 		
 		this.argument = null;
-		this.hasArgument = false;
 	}
 	
 	/**
@@ -39,7 +37,6 @@ public class InvalidArgumentException extends IllegalArgumentException
 		super();
 		
 		this.argument = argument;
-		this.hasArgument = true;
 	}
 	
 	/**
@@ -54,7 +51,6 @@ public class InvalidArgumentException extends IllegalArgumentException
 		super(message);
 		
 		this.argument = argument;
-		this.hasArgument = true;
 	}
 	
 	/**
@@ -76,7 +72,7 @@ public class InvalidArgumentException extends IllegalArgumentException
 	 */
 	public boolean hasArgument()
 	{
-		return this.hasArgument;
+		return this.argument != null;
 	}
 	
 	/**

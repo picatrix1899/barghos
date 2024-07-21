@@ -8,8 +8,10 @@ module org.barghos.validation
 	requires transitive org.barghos.annotation;
 	
 	exports org.barghos.validation;
+	exports org.barghos.validation.exception;
 	exports org.barghos.validation.exception.argument;
 	
 	opens org.barghos.validation;
+	opens org.barghos.validation.exception;
 	opens org.barghos.validation.exception.argument;
 }

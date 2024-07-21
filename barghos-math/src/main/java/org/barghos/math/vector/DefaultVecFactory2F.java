@@ -7,7 +7,7 @@ public class DefaultVecFactory2F implements VecFactory2F
 {
 	@Override
 	public Vec2WF get()
-	{
+	{	
 		return new Vec2F();
 	}
 
