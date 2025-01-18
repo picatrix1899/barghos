@@ -1,8 +1,7 @@
-package templates.consumer;
-
+package org.barghos.util.consumer;
+//#ANCHOR:ADDITIONAL_IMPORTS
 import org.barghos.util.consumer.Consumer2;
 import org.barghos.util.consumer.ConsumerEx2;
-import org.barghos.util.consumer.bigi.Consumer2Bigi;
 import org.barghos.validation.ExceptionHandler;
 import org.barghos.validation.Validate;
 

@@ -1,6 +1,5 @@
 package org.barghos.utilgen;
 
-import java.io.File;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -29,19 +28,22 @@ public class CodeGenerator
 	
 	public static void generateConsumers(String path) throws Exception
 	{
-		generateConsumer(path, "boolean", "Booolean", "Bo", "bools");
-		generateConsumer(path, "byte", "Byte", "B", "bytes");
-		generateConsumer(path, "char", "Character", "C", "chars");
-		generateConsumer(path, "double", "Double", "D", "doubles");
-		generateConsumer(path, "float", "Float", "F", "floats");
-		generateConsumer(path, "int", "Integer", "I", "ints");
-		generateConsumer(path, "long", "Long", "L", "longs");
-		generateConsumer(path, "Object", "Object", "O", "objs");
-		generateConsumer(path, "short", "Short", "S", "shorts");
-		generateConsumer(path, "String", "String", "Str", "strings");
+		generateConsumer(path, "BigDecimal", "BigDecimal", "Bigd", "bigds", "\nimport java.math.BigDecimal;\n");
+		generateConsumer(path, "BigInteger", "BigInteger", "Bigi", "bigis", "\nimport java.math.BigInteger;\n");
+		generateConsumer(path, "boolean", "Boolean", "Bo", "bools", "");
+		generateConsumer(path, "boolean", "Boolean", "Bo", "bools", "");
+		generateConsumer(path, "byte", "Byte", "B", "bytes", "");
+		generateConsumer(path, "char", "Character", "C", "chars", "");
+		generateConsumer(path, "double", "Double", "D", "doubles", "");
+		generateConsumer(path, "float", "Float", "F", "floats", "");
+		generateConsumer(path, "int", "Integer", "I", "ints", "");
+		generateConsumer(path, "long", "Long", "L", "longs", "");
+		generateConsumer(path, "Object", "Object", "O", "objs", "");
+		generateConsumer(path, "short", "Short", "S", "shorts", "");
+		generateConsumer(path, "String", "String", "Str", "strings", "");
 	}
 	
-	public static void generateConsumer(String path, String primitiveTypeName, String boxedTypeName, String shortName, String subPackage) throws Exception
+	public static void generateConsumer(String path, String primitiveTypeName, String boxedTypeName, String shortName, String subPackage, String additionalImports) throws Exception
 	{
 		final String[] files = {
 			"ConsumerBo",
@@ -84,6 +86,8 @@ public class CodeGenerator
 		
 		final Function<String,String> processor = (c) -> {
 			
+			c = c.replaceAll("//#ANCHOR:ADDITIONAL_IMPORTS", additionalImports);
+			c = c.replaceAll("package org.barghos.util.consumer;", "package org.barghos.util.consumer." + subPackage + ";");
 			c = c.replaceAll("boolean", primitiveTypeName);
 			c = c.replaceAll("Boolean", boxedTypeName);
 			c = c.replaceAll("Bo", shortName);
@@ -115,7 +119,7 @@ public class CodeGenerator
 		
 		Files.createDirectories(outPath.getParent());
 
-		System.out.println(outPath.getParent());
+		System.out.println("Generated: " + outPath);
 		
 		Files.writeString(outPath, content);
 
