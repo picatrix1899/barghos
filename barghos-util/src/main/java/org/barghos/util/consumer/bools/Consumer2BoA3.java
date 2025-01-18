@@ -1,7 +1,8 @@
 package org.barghos.util.consumer.bools;
 
 import org.barghos.util.consumer.Consumer2;
-import org.barghos.validation.ParameterValidation;
+import org.barghos.util.consumer.bigd.Consumer2Bigd;
+import org.barghos.validation.Validate;
 
 /**
  * Represents an operation that accepts two 3-dimensional boolean array input
@@ -13,7 +14,7 @@ import org.barghos.validation.ParameterValidation;
  * 
  * <p>
  * Functional Method:
- * {@link #accept2BoA3(boolean[][][], boolean[][][])}
+ * {@link #acceptBo(boolean[][][], boolean[][][])}
  * 
  * @see ConsumerBoA3
  * @see ConsumerExBoA3
@@ -27,13 +28,20 @@ import org.barghos.validation.ParameterValidation;
 @FunctionalInterface
 public interface Consumer2BoA3 extends Consumer2<boolean[][][],boolean[][][]>
 {
+	
 	/**
 	 * Performs the operation on the given arguments.
 	 *
 	 * @param a The first input argument.
 	 * @param b The second input argument.
 	 */
-	void accept2BoA3(boolean[][][] a, boolean[][][] b);
+	void acceptBo(boolean[][][] a, boolean[][][] b);
+	
+	@Override
+	default void accept(boolean[][][] a, boolean[][][] b)
+	{
+		acceptBo(a, b);
+	}
 	
 	/**
 	 * Performs the given operation after this operation.
@@ -43,53 +51,11 @@ public interface Consumer2BoA3 extends Consumer2<boolean[][][],boolean[][][]>
 	 * @return A new {@link Consumer2BoA3} performing this operation and the
 	 * operation after.
 	 */
-	default Consumer2BoA3 then2BoA3(Consumer2BoA3 after)
+	default Consumer2BoA3 then(Consumer2BoA3 after)
 	{
-		ParameterValidation.pvNotNull("after", after);
+		Validate.Arg.checkNotNull("after", after);
 		
-		return (a, b) -> { accept2BoA3(a, b); after.accept2BoA3(a, b); };
-	}
-	
-	/**
-	 * Performs the given operation before this operation.
-	 * 
-	 * @param before The operation to perform before this operation.
-	 * 
-	 * @return A new {@link Consumer2BoA3} performing the operation before and
-	 * this operation.
-	 */
-	default Consumer2BoA3 before2BoA3(Consumer2BoA3 before)
-	{
-		ParameterValidation.pvNotNull("before", before);
-		
-		return (a, b) -> { before.accept2BoA3(a, b); accept2BoA3(a, b); };
-	}
-	
-	/**
-	 * Composes a new {@link Consumer2BoA3} performing the given operations in
-	 * sequence.
-	 * 
-	 * @param consumers The operations to perform.
-	 * 
-	 * @return A new {@link Consumer2BoA3} performing the operations.
-	 */
-	@SafeVarargs
-	static Consumer2BoA3 of2BoA3(Consumer2BoA3... consumers)
-	{
-		ParameterValidation.pvNotNull("consumers", consumers);
-		ParameterValidation.pvEntriesNotNull("consumers", consumers);
-		
-		/*
-		 * If no operations are passed return empty operation.
-		 */
-		if(consumers.length == 0) return (a, b) -> {};
-		
-		/*
-		 * If exactly one operation is passed return the operation.
-		 */
-		if(consumers.length == 1) return consumers[0];
-		
-		return (a, b) -> { for(Consumer2BoA3 consumer : consumers) consumer.accept2BoA3(a, b); };
+		return (a, b) -> { acceptBo(a, b); after.acceptBo(a, b); };
 	}
 	
 	/**
@@ -99,11 +65,11 @@ public interface Consumer2BoA3 extends Consumer2<boolean[][][],boolean[][][]>
 	 * operation after.
 	 */
 	@Override
-	default Consumer2BoA3 then(Consumer2<boolean[][][],boolean[][][]> after)
+	default Consumer2BoA3 then(Consumer2<? super boolean[][][],? super boolean[][][]> after)
 	{
-		ParameterValidation.pvNotNull("after", after);
+		Validate.Arg.checkNotNull("after", after);
 
-		return (a, b) -> { accept2BoA3(a, b); after.accept(a, b); };
+		return (a, b) -> { acceptBo(a, b); after.accept(a, b); };
 	}
 	
 	/**
@@ -115,9 +81,32 @@ public interface Consumer2BoA3 extends Consumer2<boolean[][][],boolean[][][]>
 	@Override
 	default Consumer2BoA3 then(java.util.function.BiConsumer<? super boolean[][][],? super boolean[][][]> after)
 	{
-		ParameterValidation.pvNotNull("after", after);
+		Validate.Arg.checkNotNull("after", after);
 
-		return (a, b) -> { accept2BoA3(a, b); after.accept(a, b); };
+		return (a, b) -> { acceptBo(a, b); after.accept(a, b); };
+	}
+	
+	@Override
+	default Consumer2BoA3 andThen(java.util.function.BiConsumer<? super boolean[][][],? super boolean[][][]> after)
+	{
+		Validate.Arg.checkNotNull("after", after);
+
+		return (a, b) -> { acceptBo(a, b); after.accept(a, b); };
+	}
+	
+	/**
+	 * Performs the given operation before this operation.
+	 * 
+	 * @param before The operation to perform before this operation.
+	 * 
+	 * @return A new {@link Consumer2BoA3} performing the operation before and
+	 * this operation.
+	 */
+	default Consumer2BoA3 before(Consumer2BoA3 before)
+	{
+		Validate.Arg.checkNotNull("before", before);
+		
+		return (a, b) -> { before.acceptBo(a, b); acceptBo(a, b); };
 	}
 	
 	/**
@@ -127,11 +116,11 @@ public interface Consumer2BoA3 extends Consumer2<boolean[][][],boolean[][][]>
 	 * this operation.
 	 */
 	@Override
-	default Consumer2BoA3 before(Consumer2<boolean[][][],boolean[][][]> before)
+	default Consumer2BoA3 before(Consumer2<? super boolean[][][],? super boolean[][][]> before)
 	{
-		ParameterValidation.pvNotNull("before", before);
+		Validate.Arg.checkNotNull("before", before);
 		
-		return (a, b) -> { before.accept(a, b); accept2BoA3(a, b); };
+		return (a, b) -> { before.accept(a, b); acceptBo(a, b); };
 	}
 	
 	/**
@@ -143,9 +132,9 @@ public interface Consumer2BoA3 extends Consumer2<boolean[][][],boolean[][][]>
 	@Override
 	default Consumer2BoA3 before(java.util.function.BiConsumer<? super boolean[][][],? super boolean[][][]> before)
 	{
-		ParameterValidation.pvNotNull("before", before);
+		Validate.Arg.checkNotNull("before", before);
 		
-		return (a, b) -> { before.accept(a, b); accept2BoA3(a, b); };
+		return (a, b) -> { before.accept(a, b); acceptBo(a, b); };
 	}
 	
 	/**
@@ -156,39 +145,62 @@ public interface Consumer2BoA3 extends Consumer2<boolean[][][],boolean[][][]>
 	 * 
 	 * @return A new {@link Consumer2BoA3} performing the operations.
 	 */
+	@SuppressWarnings("unused")
 	@SafeVarargs
-	static Consumer2BoA3 of(Consumer2<boolean[][][],boolean[][][]>... consumers)
+	static Consumer2BoA3 of(Consumer2BoA3... consumers)
 	{
-		ParameterValidation.pvNotNull("consumers", consumers);
-		ParameterValidation.pvEntriesNotNull("consumers", consumers);
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
+
+		if(consumers.length == 0) return (a, b) -> {};
+
+		if(consumers.length == 1) return consumers[0];
 		
-		/*
-		 * If no operations are passed return empty operation.
-		 */
+		return (a, b) -> { for(Consumer2BoA3 consumer : consumers) consumer.acceptBo(a, b); };
+	}
+
+	/**
+	 * Composes a new {@link Consumer2BoA3} performing the given operations in
+	 * sequence.
+	 * 
+	 * @param consumers The operations to perform.
+	 * 
+	 * @return A new {@link Consumer2BoA3} performing the operations.
+	 */
+	@SuppressWarnings("unused")
+	@SafeVarargs
+	static Consumer2BoA3 of(Consumer2<? super boolean[][][],? super boolean[][][]>... consumers)
+	{
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
+
 		if(consumers.length == 0) return (a, b) -> {};
 
 		if(consumers.length == 1) return (Consumer2BoA3) consumers[0]::accept;
 
-		return (a, b) -> { for(Consumer2<boolean[][][],boolean[][][]> consumer : consumers) consumer.accept(a, b); };
+		return (a, b) -> { for(Consumer2<? super boolean[][][],? super boolean[][][]> consumer : consumers) consumer.accept(a, b); };
 	}
 	
 	/**
-	 * @deprecated Use {@link #accept2BoA3(boolean[][][], boolean[][][])} instead.
+	 * Composes a new {@link Consumer2Bigd} performing the given operations in
+	 * sequence.
+	 * 
+	 * @param consumers The operations to perform.
+	 * 
+	 * @return A new {@link Consumer2Bigd} performing the operations.
 	 */
-	@Override
-	@Deprecated(since = "1.0", forRemoval = false)
-	default void accept(boolean[][][] a, boolean[][][] b)
+	@SuppressWarnings("unused")
+	@SafeVarargs
+	static Consumer2BoA3 of(java.util.function.BiConsumer<? super boolean[][][],? super boolean[][][]>... consumers)
 	{
-		accept2BoA3(a, b);
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
+		
+		if(consumers.length == 0) return (a, b) -> {};
+
+		if(consumers.length == 1) return (Consumer2BoA3)consumers[0]::accept;
+		
+		return (a, b) -> { for(java.util.function.BiConsumer<? super boolean[][][],? super boolean[][][]> consumer : consumers) consumer.accept(a, b); };
 	}
 	
-	/**
-	 * @deprecated Use {@link #then(java.util.function.BiConsumer)} instead.
-	 */
-	@Override
-	@Deprecated(since = "1.0", forRemoval = false)
-	default Consumer2BoA3 andThen(java.util.function.BiConsumer<? super boolean[][][],? super boolean[][][]> after)
-	{
-		return then(after);
-	}
 }

@@ -1,5 +1,7 @@
 package org.barghos.math.vector;
 
+import java.util.List;
+
 import org.barghos.annotation.ExtractionParam;
 import org.barghos.util.function.floats.Function2F;
 import org.barghos.util.math.MathProvider;
@@ -29,9 +31,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The inverse length of the vector.
 	 */
-	public static float invLen(Tup2RF v)
+	public static float recLen(Tup2RF v)
 	{
-		return invLen(v.v0(), v.v1());
+		return recLen(v.v0(), v.v1());
 	}
 	
 	/**
@@ -50,9 +52,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The reciprocal length of the vector.
 	 */
-	public static float invLen(float[] v)
+	public static float recLen(float[] v)
 	{
-		return invLen(v[0], v[1]);
+		return recLen(v[0], v[1]);
 	}
 	
 	/**
@@ -73,9 +75,66 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The reciprocal length of the vector.
 	 */
-	public static float invLen(float x, float y)
+	public static float recLen(float x, float y)
 	{
 		return MathUtils.invSqrt(sqrLen(x, y));
+	}
+	
+	public static float[] recLenBatch(Tup2RF[] v, float[] res)
+	{
+		int len = Math.min(v.length, res.length);
+
+		Tup2RF element;
+		for(int i = 0; i < len; i++)
+		{
+			element = v[i];
+			
+			res[i] = MathUtils.invSqrt(sqrLen(element.v0(), element.v1()));
+		}
+		
+		return res;
+	}
+	
+	public static float[] recLenBatch(List<Tup2RF> v, float[] res)
+	{
+		int len = Math.min(v.size(), res.length);
+
+		Tup2RF element;
+		for(int i = 0; i < len; i++)
+		{
+			element = v.get(i);
+			
+			res[i] = MathUtils.invSqrt(sqrLen(element.v0(), element.v1()));
+		}
+		
+		return res;
+	}
+	
+	public static float[] recLenBatch(float[][] v, float[] res)
+	{
+		int len = Math.min(v.length, res.length);
+
+		float[] element;
+		for(int i = 0; i < len; i++)
+		{
+			element = v[i];
+			
+			res[i] = MathUtils.invSqrt(sqrLen(element[0], element[1]));
+		}
+		
+		return res;
+	}
+	
+	public static float[] recLenBatch(float[] v, float[] res)
+	{
+		int len = Math.min(v.length, res.length);
+
+		for(int i = 0; i < len; i+=2)
+		{
+			res[i] = MathUtils.invSqrt(sqrLen(v[i+0], v[i+1]));
+		}
+		
+		return res;
 	}
 	
 	/**
@@ -415,7 +474,7 @@ public class VecUtils2F extends TupUtils2F
 			return res;
 		}
 		
-		float invLength = invLen(x, y);
+		float invLength = recLen(x, y);
 		
 		res[0] = x * invLength;
 		res[1] = y * invLength;
@@ -457,7 +516,7 @@ public class VecUtils2F extends TupUtils2F
 			return res;
 		}
 		
-		float invLength = invLen(x, y);
+		float invLength = recLen(x, y);
 		
 		res[0] = x * invLength;
 		res[1] = y * invLength;
@@ -612,7 +671,7 @@ public class VecUtils2F extends TupUtils2F
 			return res;
 		}
 		
-		float invLength = invLen(x, y);
+		float invLength = recLen(x, y);
 		
 		res.set(x * invLength, y * invLength);
 		
@@ -655,7 +714,7 @@ public class VecUtils2F extends TupUtils2F
 			return res;
 		}
 		
-		float invLength = invLen(x, y);
+		float invLength = recLen(x, y);
 		
 		res.set(x * invLength, y * invLength);
 		
@@ -807,7 +866,7 @@ public class VecUtils2F extends TupUtils2F
 			return func.apply2F(0.0f, 0.0f);
 		}
 		
-		float invLength = invLen(x, y);
+		float invLength = recLen(x, y);
 
 		return func.apply2F(x * invLength, y * invLength);
 	}
@@ -846,7 +905,7 @@ public class VecUtils2F extends TupUtils2F
 			return func.apply2F(0.0f, 0.0f);
 		}
 		
-		float invLength = invLen(x, y);
+		float invLength = recLen(x, y);
 		
 		return func.apply2F(x * invLength, y * invLength);
 	}
@@ -1317,9 +1376,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter with the result
 	 */
-	public static float[] prj(Tup2RF v, Tup2RF t, @ExtractionParam float[] res)
+	public static float[] project(Tup2RF v, Tup2RF t, @ExtractionParam float[] res)
 	{
-		return prj(v.v0(), v.v1(), t.v0(), t.v1(), res);
+		return project(v.v0(), v.v1(), t.v0(), t.v1(), res);
 	}
 	
 	/**
@@ -1339,9 +1398,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter with the result
 	 */
-	public static float[] prj(Tup2RF v, float[] t, @ExtractionParam float[] res)
+	public static float[] project(Tup2RF v, float[] t, @ExtractionParam float[] res)
 	{
-		return prj(v.v0(), v.v1(), t[0], t[1], res);
+		return project(v.v0(), v.v1(), t[0], t[1], res);
 	}
 	
 	/**
@@ -1363,9 +1422,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter with the result
 	 */
-	public static float[] prj(Tup2RF v, float tX, float tY, @ExtractionParam float[] res)
+	public static float[] project(Tup2RF v, float tX, float tY, @ExtractionParam float[] res)
 	{
-		return prj(v.v0(), v.v1(), tX, tY, res);
+		return project(v.v0(), v.v1(), tX, tY, res);
 	}
 	
 	/**
@@ -1385,9 +1444,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter with the result
 	 */
-	public static float[] prj(float[] v, Tup2RF t, @ExtractionParam float[] res)
+	public static float[] project(float[] v, Tup2RF t, @ExtractionParam float[] res)
 	{
-		return prj(v[0], v[1], t.v0(), t.v1(), res);
+		return project(v[0], v[1], t.v0(), t.v1(), res);
 	}
 	
 	/**
@@ -1407,9 +1466,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter with the result
 	 */
-	public static float[] prj(float[] v, float[] t, @ExtractionParam float[] res)
+	public static float[] project(float[] v, float[] t, @ExtractionParam float[] res)
 	{
-		return prj(v[0], v[1], t[0], t[1], res);
+		return project(v[0], v[1], t[0], t[1], res);
 	}
 	
 	/**
@@ -1431,9 +1490,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter with the result
 	 */
-	public static float[] prj(float[] v, float tX, float tY, @ExtractionParam float[] res)
+	public static float[] project(float[] v, float tX, float tY, @ExtractionParam float[] res)
 	{
-		return prj(v[0], v[1], tX, tY, res);
+		return project(v[0], v[1], tX, tY, res);
 	}
 	
 	/**
@@ -1455,9 +1514,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter with the result
 	 */
-	public static float[] prj(float vX, float vY, Tup2RF t, @ExtractionParam float[] res)
+	public static float[] project(float vX, float vY, Tup2RF t, @ExtractionParam float[] res)
 	{
-		return prj(vX, vY, t.v0(), t.v1(), res);
+		return project(vX, vY, t.v0(), t.v1(), res);
 	}
 	
 	/**
@@ -1479,9 +1538,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter with the result
 	 */
-	public static float[] prj(float vX, float vY, float[] t, @ExtractionParam float[] res)
+	public static float[] project(float vX, float vY, float[] t, @ExtractionParam float[] res)
 	{
-		return prj(vX, vY, t[0], t[1], res);
+		return project(vX, vY, t[0], t[1], res);
 	}
 	
 	/**
@@ -1505,7 +1564,7 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter with the result
 	 */
-	public static float[] prj(float vX, float vY, float tX, float tY, @ExtractionParam float[] res)
+	public static float[] project(float vX, float vY, float tX, float tY, @ExtractionParam float[] res)
 	{
 		float dot = dot(vX, vY, tX, tY);
 		
@@ -1535,9 +1594,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T prj(Tup2RF v, Tup2RF t, @ExtractionParam T res)
+	public static <T extends Tup2WF> T project(Tup2RF v, Tup2RF t, @ExtractionParam T res)
 	{
-		return prj(v.v0(), v.v1(), t.v0(), t.v1(), res);
+		return project(v.v0(), v.v1(), t.v0(), t.v1(), res);
 	}
 	
 	/**
@@ -1560,9 +1619,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T prj(Tup2RF v, float[] t, @ExtractionParam T res)
+	public static <T extends Tup2WF> T project(Tup2RF v, float[] t, @ExtractionParam T res)
 	{
-		return prj(v.v0(), v.v1(), t[0], t[1], res);
+		return project(v.v0(), v.v1(), t[0], t[1], res);
 	}
 	
 	/**
@@ -1587,9 +1646,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T prj(Tup2RF v, float tX, float tY, @ExtractionParam T res)
+	public static <T extends Tup2WF> T project(Tup2RF v, float tX, float tY, @ExtractionParam T res)
 	{
-		return prj(v.v0(), v.v1(), tX, tY, res);
+		return project(v.v0(), v.v1(), tX, tY, res);
 	}
 	
 	/**
@@ -1612,9 +1671,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T prj(float[] v, Tup2RF t, @ExtractionParam T res)
+	public static <T extends Tup2WF> T project(float[] v, Tup2RF t, @ExtractionParam T res)
 	{
-		return prj(v[0], v[1], t.v0(), t.v1(), res);
+		return project(v[0], v[1], t.v0(), t.v1(), res);
 	}
 	
 	/**
@@ -1637,9 +1696,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T prj(float[] v, float[] t, @ExtractionParam T res)
+	public static <T extends Tup2WF> T project(float[] v, float[] t, @ExtractionParam T res)
 	{
-		return prj(v[0], v[1], t[0], t[1], res);
+		return project(v[0], v[1], t[0], t[1], res);
 	}
 	
 	/**
@@ -1664,9 +1723,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T prj(float[] v, float tX, float tY, @ExtractionParam T res)
+	public static <T extends Tup2WF> T project(float[] v, float tX, float tY, @ExtractionParam T res)
 	{
-		return prj(v[0], v[1], tX, tY, res);
+		return project(v[0], v[1], tX, tY, res);
 	}
 	
 	/**
@@ -1691,9 +1750,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T prj(float vX, float vY, Tup2RF t, @ExtractionParam T res)
+	public static <T extends Tup2WF> T project(float vX, float vY, Tup2RF t, @ExtractionParam T res)
 	{
-		return prj(vX, vY, t.v0(), t.v1(), res);
+		return project(vX, vY, t.v0(), t.v1(), res);
 	}
 	
 	/**
@@ -1718,9 +1777,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T prj(float vX, float vY, float[] t, @ExtractionParam T res)
+	public static <T extends Tup2WF> T project(float vX, float vY, float[] t, @ExtractionParam T res)
 	{
-		return prj(vX, vY, t[0], t[1], res);
+		return project(vX, vY, t[0], t[1], res);
 	}
 	
 	/**
@@ -1747,7 +1806,7 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T prj(float vX, float vY, float tX, float tY, @ExtractionParam T res)
+	public static <T extends Tup2WF> T project(float vX, float vY, float tX, float tY, @ExtractionParam T res)
 	{
 		float dot = dot(vX, vY, tX, tY);
 		
@@ -1776,9 +1835,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T> T prjFunc(Tup2RF v, Tup2RF t, Function2F<T> func)
+	public static <T> T projectFunc(Tup2RF v, Tup2RF t, Function2F<T> func)
 	{
-		return prjFunc(v.v0(), v.v1(), t.v0(), t.v1(), func);
+		return projectFunc(v.v0(), v.v1(), t.v0(), t.v1(), func);
 	}
 	
 	/**
@@ -1801,9 +1860,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T> T prjFunc(Tup2RF v, float[] t, Function2F<T> func)
+	public static <T> T projectFunc(Tup2RF v, float[] t, Function2F<T> func)
 	{
-		return prjFunc(v.v0(), v.v1(), t[0], t[1], func);
+		return projectFunc(v.v0(), v.v1(), t[0], t[1], func);
 	}
 	
 	/**
@@ -1828,9 +1887,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T> T prjFunc(Tup2RF v, float tX, float tY, Function2F<T> func)
+	public static <T> T projectFunc(Tup2RF v, float tX, float tY, Function2F<T> func)
 	{
-		return prjFunc(v.v0(), v.v1(), tX, tY, func);
+		return projectFunc(v.v0(), v.v1(), tX, tY, func);
 	}
 	
 	/**
@@ -1853,9 +1912,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T> T prjFunc(float[] v, Tup2RF t, Function2F<T> func)
+	public static <T> T projectFunc(float[] v, Tup2RF t, Function2F<T> func)
 	{
-		return prjFunc(v[0], v[1], t.v0(), t.v1(), func);
+		return projectFunc(v[0], v[1], t.v0(), t.v1(), func);
 	}
 	
 	/**
@@ -1878,9 +1937,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T> T prjFunc(float[] v, float[] t, Function2F<T> func)
+	public static <T> T projectFunc(float[] v, float[] t, Function2F<T> func)
 	{
-		return prjFunc(v[0], v[1], t[0], t[1], func);
+		return projectFunc(v[0], v[1], t[0], t[1], func);
 	}
 	
 	/**
@@ -1905,9 +1964,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T> T prjFunc(float[] v, float tX, float tY, Function2F<T> func)
+	public static <T> T projectFunc(float[] v, float tX, float tY, Function2F<T> func)
 	{
-		return prjFunc(v[0], v[1], tX, tY, func);
+		return projectFunc(v[0], v[1], tX, tY, func);
 	}
 	
 	/**
@@ -1932,9 +1991,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T> T prjFunc(float vX, float vY, Tup2RF t, Function2F<T> func)
+	public static <T> T projectFunc(float vX, float vY, Tup2RF t, Function2F<T> func)
 	{
-		return prjFunc(vX, vY, t.v0(), t.v1(), func);
+		return projectFunc(vX, vY, t.v0(), t.v1(), func);
 	}
 	
 	/**
@@ -1959,9 +2018,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T> T prjFunc(float vX, float vY, float[] t, Function2F<T> func)
+	public static <T> T projectFunc(float vX, float vY, float[] t, Function2F<T> func)
 	{
-		return prjFunc(vX, vY, t[0], t[1], func);
+		return projectFunc(vX, vY, t[0], t[1], func);
 	}
 	
 	/**
@@ -1988,7 +2047,7 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T> T prjFunc(float vX, float vY, float tX, float tY, Function2F<T> func)
+	public static <T> T projectFunc(float vX, float vY, float tX, float tY, Function2F<T> func)
 	{
 		float dot = dot(vX, vY, tX, tY);
 
@@ -2008,9 +2067,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] rfl(Tup2RF v, Tup2RF n, @ExtractionParam float[] res)
+	public static float[] reflect(Tup2RF v, Tup2RF n, @ExtractionParam float[] res)
 	{
-		return rfl(v.v0(), v.v1(), n.v0(), n.v1(), res);
+		return reflect(v.v0(), v.v1(), n.v0(), n.v1(), res);
 	}
 	
 	/**
@@ -2026,9 +2085,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] rfl(Tup2RF v, float[] n, @ExtractionParam float[] res)
+	public static float[] reflect(Tup2RF v, float[] n, @ExtractionParam float[] res)
 	{
-		return rfl(v.v0(), v.v1(), n[0], n[1], res);
+		return reflect(v.v0(), v.v1(), n[0], n[1], res);
 	}
 	
 	/**
@@ -2046,9 +2105,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] rfl(Tup2RF v, float nX, float nY, @ExtractionParam float[] res)
+	public static float[] reflect(Tup2RF v, float nX, float nY, @ExtractionParam float[] res)
 	{
-		return rfl(v.v0(), v.v1(), nX, nY, res);
+		return reflect(v.v0(), v.v1(), nX, nY, res);
 	}
 	
 	/**
@@ -2064,9 +2123,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] rfl(float[] v, Tup2RF n, @ExtractionParam float[] res)
+	public static float[] reflect(float[] v, Tup2RF n, @ExtractionParam float[] res)
 	{
-		return rfl(v[0], v[1], n.v0(), n.v1(), res);
+		return reflect(v[0], v[1], n.v0(), n.v1(), res);
 	}
 	
 	/**
@@ -2082,9 +2141,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] rfl(float[] v, float[] n, @ExtractionParam float[] res)
+	public static float[] reflect(float[] v, float[] n, @ExtractionParam float[] res)
 	{
-		return rfl(v[0], v[1], n[0], n[1], res);
+		return reflect(v[0], v[1], n[0], n[1], res);
 	}
 	
 	/**
@@ -2102,9 +2161,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] rfl(float[] v, float nX, float nY, @ExtractionParam float[] res)
+	public static float[] reflect(float[] v, float nX, float nY, @ExtractionParam float[] res)
 	{
-		return rfl(v[0], v[1], nX, nY, res);
+		return reflect(v[0], v[1], nX, nY, res);
 	}
 	
 	/**
@@ -2122,9 +2181,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] rfl(float vX, float vY, Tup2RF n, @ExtractionParam float[] res)
+	public static float[] reflect(float vX, float vY, Tup2RF n, @ExtractionParam float[] res)
 	{
-		return rfl(vX, vY, n.v0(), n.v1(), res);
+		return reflect(vX, vY, n.v0(), n.v1(), res);
 	}
 	
 	/**
@@ -2142,9 +2201,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] rfl(float vX, float vY, float[] n, @ExtractionParam float[] res)
+	public static float[] reflect(float vX, float vY, float[] n, @ExtractionParam float[] res)
 	{
-		return rfl(vX, vY, n[0], n[1], res);
+		return reflect(vX, vY, n[0], n[1], res);
 	}
 	
 	/**
@@ -2164,7 +2223,7 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] rfl(float vX, float vY, float nX, float nY, @ExtractionParam float[] res)
+	public static float[] reflect(float vX, float vY, float nX, float nY, @ExtractionParam float[] res)
 	{
 		float dot = -2 * dot(vX, vY, nX, nY);
 		
@@ -2190,9 +2249,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T rfl(Tup2RF v, Tup2RF n, @ExtractionParam T res)
+	public static <T extends Tup2WF> T reflect(Tup2RF v, Tup2RF n, @ExtractionParam T res)
 	{
-		return rfl(v.v0(), v.v1(), n.v0(), n.v1(), res);
+		return reflect(v.v0(), v.v1(), n.v0(), n.v1(), res);
 	}
 	
 	/**
@@ -2211,9 +2270,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T rfl(Tup2RF v, float[] n, @ExtractionParam T res)
+	public static <T extends Tup2WF> T reflect(Tup2RF v, float[] n, @ExtractionParam T res)
 	{
-		return rfl(v.v0(), v.v1(), n[0], n[1], res);
+		return reflect(v.v0(), v.v1(), n[0], n[1], res);
 	}
 	
 	/**
@@ -2234,9 +2293,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T rfl(Tup2RF v, float nX, float nY, @ExtractionParam T res)
+	public static <T extends Tup2WF> T reflect(Tup2RF v, float nX, float nY, @ExtractionParam T res)
 	{
-		return rfl(v.v0(), v.v1(), nX, nY, res);
+		return reflect(v.v0(), v.v1(), nX, nY, res);
 	}
 	
 	/**
@@ -2255,9 +2314,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T rfl(float[] v, Tup2RF n, @ExtractionParam T res)
+	public static <T extends Tup2WF> T reflect(float[] v, Tup2RF n, @ExtractionParam T res)
 	{
-		return rfl(v[0], v[1], n.v0(), n.v1(), res);
+		return reflect(v[0], v[1], n.v0(), n.v1(), res);
 	}
 	
 	/**
@@ -2277,9 +2336,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T rfl(float[] v, float[] n, @ExtractionParam T res)
+	public static <T extends Tup2WF> T reflect(float[] v, float[] n, @ExtractionParam T res)
 	{
-		return rfl(v[0], v[1], n[0], n[1], res);
+		return reflect(v[0], v[1], n[0], n[1], res);
 	}
 	
 	/**
@@ -2301,9 +2360,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T rfl(float[] v, float nX, float nY, @ExtractionParam T res)
+	public static <T extends Tup2WF> T reflect(float[] v, float nX, float nY, @ExtractionParam T res)
 	{
-		return rfl(v[0], v[1], nX, nY, res);
+		return reflect(v[0], v[1], nX, nY, res);
 	}
 	
 	/**
@@ -2324,9 +2383,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T rfl(float vX, float vY, Tup2RF n, @ExtractionParam T res)
+	public static <T extends Tup2WF> T reflect(float vX, float vY, Tup2RF n, @ExtractionParam T res)
 	{
-		return rfl(vX, vY, n.v0(), n.v1(), res);
+		return reflect(vX, vY, n.v0(), n.v1(), res);
 	}
 	
 	/**
@@ -2348,9 +2407,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T rfl(float vX, float vY, float[] n, @ExtractionParam T res)
+	public static <T extends Tup2WF> T reflect(float vX, float vY, float[] n, @ExtractionParam T res)
 	{
-		return rfl(vX, vY, n[0], n[1], res);
+		return reflect(vX, vY, n[0], n[1], res);
 	}
 	
 	/**
@@ -2374,7 +2433,7 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T rfl(float vX, float vY, float nX, float nY, @ExtractionParam T res)
+	public static <T extends Tup2WF> T reflect(float vX, float vY, float nX, float nY, @ExtractionParam T res)
 	{
 		float dot = -2 * dot(vX, vY, nX, nY);
 		
@@ -2399,9 +2458,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T> T rflFunc(Tup2RF v, Tup2RF n, Function2F<T> func)
+	public static <T> T reflectFunc(Tup2RF v, Tup2RF n, Function2F<T> func)
 	{
-		return rflFunc(v.v0(), v.v1(), n.v0(), n.v1(), func);
+		return reflectFunc(v.v0(), v.v1(), n.v0(), n.v1(), func);
 	}
 	
 	/**
@@ -2420,9 +2479,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T> T rflFunc(Tup2RF v, float[] n, Function2F<T> func)
+	public static <T> T reflectFunc(Tup2RF v, float[] n, Function2F<T> func)
 	{
-		return rflFunc(v.v0(), v.v1(), n[0], n[1], func);
+		return reflectFunc(v.v0(), v.v1(), n[0], n[1], func);
 	}
 	
 	/**
@@ -2443,9 +2502,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T> T rflFunc(Tup2RF v, float nX, float nY, Function2F<T> func)
+	public static <T> T reflectFunc(Tup2RF v, float nX, float nY, Function2F<T> func)
 	{
-		return rflFunc(v.v0(), v.v1(), nX, nY, func);
+		return reflectFunc(v.v0(), v.v1(), nX, nY, func);
 	}
 	
 	/**
@@ -2464,9 +2523,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T> T rflFunc(float[] v, Tup2RF n, Function2F<T> func)
+	public static <T> T reflectFunc(float[] v, Tup2RF n, Function2F<T> func)
 	{
-		return rflFunc(v[0], v[1], n.v0(), n.v1(), func);
+		return reflectFunc(v[0], v[1], n.v0(), n.v1(), func);
 	}
 	
 	/**
@@ -2486,9 +2545,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T> T rflFunc(float[] v, float[] n, Function2F<T> func)
+	public static <T> T reflectFunc(float[] v, float[] n, Function2F<T> func)
 	{
-		return rflFunc(v[0], v[1], n[0], n[1], func);
+		return reflectFunc(v[0], v[1], n[0], n[1], func);
 	}
 	
 	/**
@@ -2510,9 +2569,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T> T rflFunc(float[] v, float nX, float nY, Function2F<T> func)
+	public static <T> T reflectFunc(float[] v, float nX, float nY, Function2F<T> func)
 	{
-		return rflFunc(v[0], v[1], nX, nY, func);
+		return reflectFunc(v[0], v[1], nX, nY, func);
 	}
 	
 	/**
@@ -2533,9 +2592,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T> T rflFunc(float vX, float vY, Tup2RF n, Function2F<T> func)
+	public static <T> T reflectFunc(float vX, float vY, Tup2RF n, Function2F<T> func)
 	{
-		return rflFunc(vX, vY, n.v0(), n.v1(), func);
+		return reflectFunc(vX, vY, n.v0(), n.v1(), func);
 	}
 	
 	/**
@@ -2557,9 +2616,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T> T rflFunc(float vX, float vY, float[] n, Function2F<T> func)
+	public static <T> T reflectFunc(float vX, float vY, float[] n, Function2F<T> func)
 	{
-		return rflFunc(vX, vY, n[0], n[1], func);
+		return reflectFunc(vX, vY, n[0], n[1], func);
 	}
 	
 	/**
@@ -2583,7 +2642,7 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T> T rflFunc(float vX, float vY, float nX, float nY, Function2F<T> func)
+	public static <T> T reflectFunc(float vX, float vY, float nX, float nY, Function2F<T> func)
 	{
 		float dot = -2 * dot(vX, vY, nX, nY);
 
@@ -2800,9 +2859,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] halfVec(Tup2RF v1, Tup2RF v2, @ExtractionParam float[] res)
+	public static float[] halfVecTo(Tup2RF v1, Tup2RF v2, @ExtractionParam float[] res)
 	{
-		return halfVec(v1.v0(), v1.v1(), v2.v0(), v2.v1(), res);
+		return halfVecTo(v1.v0(), v1.v1(), v2.v0(), v2.v1(), res);
 	}
 	
 	/**
@@ -2823,9 +2882,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] halfVec(Tup2RF v1, float[] v2, @ExtractionParam float[] res)
+	public static float[] halfVecTo(Tup2RF v1, float[] v2, @ExtractionParam float[] res)
 	{
-		return halfVec(v1.v0(), v1.v1(), v2[0], v2[1], res);
+		return halfVecTo(v1.v0(), v1.v1(), v2[0], v2[1], res);
 	}
 	
 	/**
@@ -2848,9 +2907,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] halfVec(Tup2RF v1, float v2x, float v2y, @ExtractionParam float[] res)
+	public static float[] halfVecTo(Tup2RF v1, float v2x, float v2y, @ExtractionParam float[] res)
 	{
-		return halfVec(v1.v0(), v1.v1(), v2x, v2y, res);
+		return halfVecTo(v1.v0(), v1.v1(), v2x, v2y, res);
 	}
 	
 	/**
@@ -2871,9 +2930,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] halfVec(float[] v1, Tup2RF v2, @ExtractionParam float[] res)
+	public static float[] halfVecTo(float[] v1, Tup2RF v2, @ExtractionParam float[] res)
 	{
-		return halfVec(v1[0], v1[1], v2.v0(), v2.v1(), res);
+		return halfVecTo(v1[0], v1[1], v2.v0(), v2.v1(), res);
 	}
 	
 	/**
@@ -2894,9 +2953,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] halfVec(float[] v1, float[] v2, @ExtractionParam float[] res)
+	public static float[] halfVecTo(float[] v1, float[] v2, @ExtractionParam float[] res)
 	{
-		return halfVec(v1[0], v1[1], v2[0], v2[1], res);
+		return halfVecTo(v1[0], v1[1], v2[0], v2[1], res);
 	}
 	
 	/**
@@ -2919,9 +2978,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] halfVec(float[] v1, float v2x, float v2y, @ExtractionParam float[] res)
+	public static float[] halfVecTo(float[] v1, float v2x, float v2y, @ExtractionParam float[] res)
 	{
-		return halfVec(v1[0], v1[1], v2x, v2y, res);
+		return halfVecTo(v1[0], v1[1], v2x, v2y, res);
 	}
 	
 	/**
@@ -2944,9 +3003,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] halfVec(float v1x, float v1y, Tup2RF v2, @ExtractionParam float[] res)
+	public static float[] halfVecTo(float v1x, float v1y, Tup2RF v2, @ExtractionParam float[] res)
 	{
-		return halfVec(v1x, v1y, v2.v0(), v2.v1(), res);
+		return halfVecTo(v1x, v1y, v2.v0(), v2.v1(), res);
 	}
 	
 	/**
@@ -2969,9 +3028,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] halfVec(float v1x, float v1y, float[] v2, @ExtractionParam float[] res)
+	public static float[] halfVecTo(float v1x, float v1y, float[] v2, @ExtractionParam float[] res)
 	{
-		return halfVec(v1x, v1y, v2[0], v2[1], res);
+		return halfVecTo(v1x, v1y, v2[0], v2[1], res);
 	}
 	
 	/**
@@ -2996,7 +3055,7 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] halfVec(float v1x, float v1y, float v2x, float v2y, @ExtractionParam float[] res)
+	public static float[] halfVecTo(float v1x, float v1y, float v2x, float v2y, @ExtractionParam float[] res)
 	{
 		res[0] = (v2x - v1x) * 0.5f;
 		res[1] = (v2y - v1y) * 0.5f;
@@ -3025,9 +3084,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T halfVec(Tup2RF v1, Tup2RF v2, @ExtractionParam T res)
+	public static <T extends Tup2WF> T halfVecTo(Tup2RF v1, Tup2RF v2, @ExtractionParam T res)
 	{
-		return halfVec(v1.v0(), v1.v1(), v2.v0(), v2.v1(), res);
+		return halfVecTo(v1.v0(), v1.v1(), v2.v0(), v2.v1(), res);
 	}
 	
 	/**
@@ -3051,9 +3110,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T halfVec(Tup2RF v1, float[] v2, @ExtractionParam T res)
+	public static <T extends Tup2WF> T halfVecTo(Tup2RF v1, float[] v2, @ExtractionParam T res)
 	{
-		return halfVec(v1.v0(), v1.v1(), v2[0], v2[1], res);
+		return halfVecTo(v1.v0(), v1.v1(), v2[0], v2[1], res);
 	}
 	
 	/**
@@ -3079,9 +3138,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T halfVec(Tup2RF v1, float v2x, float v2y, @ExtractionParam T res)
+	public static <T extends Tup2WF> T halfVecTo(Tup2RF v1, float v2x, float v2y, @ExtractionParam T res)
 	{
-		return halfVec(v1.v0(), v1.v1(), v2x, v2y, res);
+		return halfVecTo(v1.v0(), v1.v1(), v2x, v2y, res);
 	}
 	
 	/**
@@ -3105,9 +3164,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T halfVec(float[] v1, Tup2RF v2, @ExtractionParam T res)
+	public static <T extends Tup2WF> T halfVecTo(float[] v1, Tup2RF v2, @ExtractionParam T res)
 	{
-		return halfVec(v1[0], v1[1], v2.v0(), v2.v1(), res);
+		return halfVecTo(v1[0], v1[1], v2.v0(), v2.v1(), res);
 	}
 	
 	/**
@@ -3131,9 +3190,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T halfVec(float[] v1, float[] v2, @ExtractionParam T res)
+	public static <T extends Tup2WF> T halfVecTo(float[] v1, float[] v2, @ExtractionParam T res)
 	{
-		return halfVec(v1[0], v1[1], v2[0], v2[1], res);
+		return halfVecTo(v1[0], v1[1], v2[0], v2[1], res);
 	}
 	
 	/**
@@ -3159,9 +3218,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T halfVec(float[] v1, float v2x, float v2y, @ExtractionParam T res)
+	public static <T extends Tup2WF> T halfVecTo(float[] v1, float v2x, float v2y, @ExtractionParam T res)
 	{
-		return halfVec(v1[0], v1[1], v2x, v2y, res);
+		return halfVecTo(v1[0], v1[1], v2x, v2y, res);
 	}
 	
 	/**
@@ -3187,9 +3246,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T halfVec(float v1x, float v1y, Tup2RF v2, @ExtractionParam T res)
+	public static <T extends Tup2WF> T halfVecTo(float v1x, float v1y, Tup2RF v2, @ExtractionParam T res)
 	{
-		return halfVec(v1x, v1y, v2.v0(), v2.v1(), res);
+		return halfVecTo(v1x, v1y, v2.v0(), v2.v1(), res);
 	}
 	
 	/**
@@ -3215,9 +3274,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T halfVec(float v1x, float v1y, float[] v2, @ExtractionParam T res)
+	public static <T extends Tup2WF> T halfVecTo(float v1x, float v1y, float[] v2, @ExtractionParam T res)
 	{
-		return halfVec(v1x, v1y, v2[0], v2[1], res);
+		return halfVecTo(v1x, v1y, v2[0], v2[1], res);
 	}
 	
 	/**
@@ -3245,7 +3304,7 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T halfVec(float v1x, float v1y, float v2x, float v2y, @ExtractionParam T res)
+	public static <T extends Tup2WF> T halfVecTo(float v1x, float v1y, float v2x, float v2y, @ExtractionParam T res)
 	{
 		res.set((v2x - v1x) * 0.5f, (v2y - v1y) * 0.5f);
 		
@@ -3273,9 +3332,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T> T halfVecFunc(Tup2RF v1, Tup2RF v2, Function2F<T> func)
+	public static <T> T halfVecToFunc(Tup2RF v1, Tup2RF v2, Function2F<T> func)
 	{
-		return halfVecFunc(v1.v0(), v1.v1(), v2.v0(), v2.v1(), func);
+		return halfVecToFunc(v1.v0(), v1.v1(), v2.v0(), v2.v1(), func);
 	}
 	
 	/**
@@ -3299,9 +3358,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T> T halfVecFunc(Tup2RF v1, float[] v2, Function2F<T> func)
+	public static <T> T halfVecToFunc(Tup2RF v1, float[] v2, Function2F<T> func)
 	{
-		return halfVecFunc(v1.v0(), v1.v1(), v2[0], v2[1], func);
+		return halfVecToFunc(v1.v0(), v1.v1(), v2[0], v2[1], func);
 	}
 	
 	/**
@@ -3327,9 +3386,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T> T halfVecFunc(Tup2RF v1, float v2x, float v2y, Function2F<T> func)
+	public static <T> T halfVecToFunc(Tup2RF v1, float v2x, float v2y, Function2F<T> func)
 	{
-		return halfVecFunc(v1.v0(), v1.v1(), v2x, v2y, func);
+		return halfVecToFunc(v1.v0(), v1.v1(), v2x, v2y, func);
 	}
 	
 	/**
@@ -3353,9 +3412,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T> T halfVecFunc(float[] v1, Tup2RF v2, Function2F<T> func)
+	public static <T> T halfVecToFunc(float[] v1, Tup2RF v2, Function2F<T> func)
 	{
-		return halfVecFunc(v1[0], v1[1], v2.v0(), v2.v1(), func);
+		return halfVecToFunc(v1[0], v1[1], v2.v0(), v2.v1(), func);
 	}
 	
 	/**
@@ -3379,9 +3438,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T> T halfVecFunc(float[] v1, float[] v2, Function2F<T> func)
+	public static <T> T halfVecToFunc(float[] v1, float[] v2, Function2F<T> func)
 	{
-		return halfVecFunc(v1[0], v1[1], v2[0], v2[1], func);
+		return halfVecToFunc(v1[0], v1[1], v2[0], v2[1], func);
 	}
 	
 	/**
@@ -3407,9 +3466,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T> T halfVecFunc(float[] v1, float v2x, float v2y, Function2F<T> func)
+	public static <T> T halfVecToFunc(float[] v1, float v2x, float v2y, Function2F<T> func)
 	{
-		return halfVecFunc(v1[0], v1[1], v2x, v2y, func);
+		return halfVecToFunc(v1[0], v1[1], v2x, v2y, func);
 	}
 	
 	/**
@@ -3435,9 +3494,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T> T halfVecFunc(float v1x, float v1y, Tup2RF v2, Function2F<T> func)
+	public static <T> T halfVecToFunc(float v1x, float v1y, Tup2RF v2, Function2F<T> func)
 	{
-		return halfVecFunc(v1x, v1y, v2.v0(), v2.v1(), func);
+		return halfVecToFunc(v1x, v1y, v2.v0(), v2.v1(), func);
 	}
 	
 	/**
@@ -3463,9 +3522,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T> T halfVecFunc(float v1x, float v1y, float[] v2, Function2F<T> func)
+	public static <T> T halfVecToFunc(float v1x, float v1y, float[] v2, Function2F<T> func)
 	{
-		return halfVecFunc(v1x, v1y, v2[0], v2[1], func);
+		return halfVecToFunc(v1x, v1y, v2[0], v2[1], func);
 	}
 	
 	/**
@@ -3493,7 +3552,7 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T> T halfVecFunc(float v1x, float v1y, float v2x, float v2y, Function2F<T> func)
+	public static <T> T halfVecToFunc(float v1x, float v1y, float v2x, float v2y, Function2F<T> func)
 	{
 		return func.apply2F((v2x - v1x) * 0.5f, (v2y - v1y) * 0.5f);
 	}
@@ -3516,9 +3575,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] halfPoint(Tup2RF v1, Tup2RF v2, @ExtractionParam float[] res)
+	public static float[] midPointTo(Tup2RF v1, Tup2RF v2, @ExtractionParam float[] res)
 	{
-		return halfPoint(v1.v0(), v1.v1(), v2.v0(), v2.v1(), res);
+		return midPointTo(v1.v0(), v1.v1(), v2.v0(), v2.v1(), res);
 	}
 	
 	/**
@@ -3539,9 +3598,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] halfPoint(Tup2RF v1, float[] v2, @ExtractionParam float[] res)
+	public static float[] midPointTo(Tup2RF v1, float[] v2, @ExtractionParam float[] res)
 	{
-		return halfPoint(v1.v0(), v1.v1(), v2[0], v2[1], res);
+		return midPointTo(v1.v0(), v1.v1(), v2[0], v2[1], res);
 	}
 	
 	/**
@@ -3564,9 +3623,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] halfPoint(Tup2RF v1, float v2x, float v2y, @ExtractionParam float[] res)
+	public static float[] midPointTo(Tup2RF v1, float v2x, float v2y, @ExtractionParam float[] res)
 	{
-		return halfPoint(v1.v0(), v1.v1(), v2x, v2y, res);
+		return midPointTo(v1.v0(), v1.v1(), v2x, v2y, res);
 	}
 	
 	/**
@@ -3587,9 +3646,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] halfPoint(float[] v1, Tup2RF v2, @ExtractionParam float[] res)
+	public static float[] midPointTo(float[] v1, Tup2RF v2, @ExtractionParam float[] res)
 	{
-		return halfPoint(v1[0], v1[1], v2.v0(), v2.v1(), res);
+		return midPointTo(v1[0], v1[1], v2.v0(), v2.v1(), res);
 	}
 	
 	/**
@@ -3610,9 +3669,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] halfPoint(float[] v1, float[] v2, @ExtractionParam float[] res)
+	public static float[] midPointTo(float[] v1, float[] v2, @ExtractionParam float[] res)
 	{
-		return halfPoint(v1[0], v1[1], v2[0], v2[1], res);
+		return midPointTo(v1[0], v1[1], v2[0], v2[1], res);
 	}
 	
 	/**
@@ -3635,9 +3694,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] halfPoint(float[] v1, float v2x, float v2y, @ExtractionParam float[] res)
+	public static float[] midPointTo(float[] v1, float v2x, float v2y, @ExtractionParam float[] res)
 	{
-		return halfPoint(v1[0], v1[1], v2x, v2y, res);
+		return midPointTo(v1[0], v1[1], v2x, v2y, res);
 	}
 	
 	/**
@@ -3660,9 +3719,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] halfPoint(float v1x, float v1y, Tup2RF v2, @ExtractionParam float[] res)
+	public static float[] midPointTo(float v1x, float v1y, Tup2RF v2, @ExtractionParam float[] res)
 	{
-		return halfPoint(v1x, v1y, v2.v0(), v2.v1(), res);
+		return midPointTo(v1x, v1y, v2.v0(), v2.v1(), res);
 	}
 	
 	/**
@@ -3685,9 +3744,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] halfPoint(float v1x, float v1y, float[] v2, @ExtractionParam float[] res)
+	public static float[] midPointTo(float v1x, float v1y, float[] v2, @ExtractionParam float[] res)
 	{
-		return halfPoint(v1x, v1y, v2[0], v2[1], res);
+		return midPointTo(v1x, v1y, v2[0], v2[1], res);
 	}
 	
 	/**
@@ -3712,7 +3771,7 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] halfPoint(float v1x, float v1y, float v2x, float v2y, @ExtractionParam float[] res)
+	public static float[] midPointTo(float v1x, float v1y, float v2x, float v2y, @ExtractionParam float[] res)
 	{
 		res[0] = (v2x - v1x) * 0.5f;
 		res[1] = (v2y - v1y) * 0.5f;
@@ -3741,9 +3800,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T halfPoint(Tup2RF v1, Tup2RF v2, @ExtractionParam T res)
+	public static <T extends Tup2WF> T midPointTo(Tup2RF v1, Tup2RF v2, @ExtractionParam T res)
 	{
-		return halfPoint(v1.v0(), v1.v1(), v2.v0(), v2.v1(), res);
+		return midPointTo(v1.v0(), v1.v1(), v2.v0(), v2.v1(), res);
 	}
 	
 	/**
@@ -3767,9 +3826,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T halfPoint(Tup2RF v1, float[] v2, @ExtractionParam T res)
+	public static <T extends Tup2WF> T midPointTo(Tup2RF v1, float[] v2, @ExtractionParam T res)
 	{
-		return halfPoint(v1.v0(), v1.v1(), v2[0], v2[1], res);
+		return midPointTo(v1.v0(), v1.v1(), v2[0], v2[1], res);
 	}
 	
 	/**
@@ -3795,9 +3854,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T halfPoint(Tup2RF v1, float v2x, float v2y, @ExtractionParam T res)
+	public static <T extends Tup2WF> T midPointTo(Tup2RF v1, float v2x, float v2y, @ExtractionParam T res)
 	{
-		return halfPoint(v1.v0(), v1.v1(), v2x, v2y, res);
+		return midPointTo(v1.v0(), v1.v1(), v2x, v2y, res);
 	}
 	
 	/**
@@ -3821,9 +3880,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T halfPoint(float[] v1, Tup2RF v2, @ExtractionParam T res)
+	public static <T extends Tup2WF> T midPointTo(float[] v1, Tup2RF v2, @ExtractionParam T res)
 	{
-		return halfPoint(v1[0], v1[1], v2.v0(), v2.v1(), res);
+		return midPointTo(v1[0], v1[1], v2.v0(), v2.v1(), res);
 	}
 	
 	/**
@@ -3847,9 +3906,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T halfPoint(float[] v1, float[] v2, @ExtractionParam T res)
+	public static <T extends Tup2WF> T midPointTo(float[] v1, float[] v2, @ExtractionParam T res)
 	{
-		return halfPoint(v1[0], v1[1], v2[0], v2[1], res);
+		return midPointTo(v1[0], v1[1], v2[0], v2[1], res);
 	}
 	
 	/**
@@ -3875,9 +3934,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T halfPoint(float[] v1, float v2x, float v2y, @ExtractionParam T res)
+	public static <T extends Tup2WF> T midPointTo(float[] v1, float v2x, float v2y, @ExtractionParam T res)
 	{
-		return halfPoint(v1[0], v1[1], v2x, v2y, res);
+		return midPointTo(v1[0], v1[1], v2x, v2y, res);
 	}
 	
 	/**
@@ -3903,9 +3962,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T halfPoint(float v1x, float v1y, Tup2RF v2, @ExtractionParam T res)
+	public static <T extends Tup2WF> T midPointTo(float v1x, float v1y, Tup2RF v2, @ExtractionParam T res)
 	{
-		return halfPoint(v1x, v1y, v2.v0(), v2.v1(), res);
+		return midPointTo(v1x, v1y, v2.v0(), v2.v1(), res);
 	}
 	
 	/**
@@ -3931,9 +3990,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T halfPoint(float v1x, float v1y, float[] v2, @ExtractionParam T res)
+	public static <T extends Tup2WF> T midPointTo(float v1x, float v1y, float[] v2, @ExtractionParam T res)
 	{
-		return halfPoint(v1x, v1y, v2[0], v2[1], res);
+		return midPointTo(v1x, v1y, v2[0], v2[1], res);
 	}
 	
 	/**
@@ -3961,7 +4020,7 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T halfPoint(float v1x, float v1y, float v2x, float v2y, @ExtractionParam T res)
+	public static <T extends Tup2WF> T midPointTo(float v1x, float v1y, float v2x, float v2y, @ExtractionParam T res)
 	{
 		res.set((v2x - v1x) * 0.5f, (v2y - v1y) * 0.5f);
 		
@@ -3989,9 +4048,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T> T halfPointFunc(Tup2RF v1, Tup2RF v2, Function2F<T> func)
+	public static <T> T midPointToFunc(Tup2RF v1, Tup2RF v2, Function2F<T> func)
 	{
-		return halfPointFunc(v1.v0(), v1.v1(), v2.v0(), v2.v1(), func);
+		return midPointToFunc(v1.v0(), v1.v1(), v2.v0(), v2.v1(), func);
 	}
 	
 	/**
@@ -4015,9 +4074,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T> T halfPointFunc(Tup2RF v1, float[] v2, Function2F<T> func)
+	public static <T> T midPointToFunc(Tup2RF v1, float[] v2, Function2F<T> func)
 	{
-		return halfPointFunc(v1.v0(), v1.v1(), v2[0], v2[1], func);
+		return midPointToFunc(v1.v0(), v1.v1(), v2[0], v2[1], func);
 	}
 	
 	/**
@@ -4043,9 +4102,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T> T halfPointFunc(Tup2RF v1, float v2x, float v2y, Function2F<T> func)
+	public static <T> T midPointToFunc(Tup2RF v1, float v2x, float v2y, Function2F<T> func)
 	{
-		return halfPointFunc(v1.v0(), v1.v1(), v2x, v2y, func);
+		return midPointToFunc(v1.v0(), v1.v1(), v2x, v2y, func);
 	}
 	
 	/**
@@ -4069,9 +4128,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T> T halfPointFunc(float[] v1, Tup2RF v2, Function2F<T> func)
+	public static <T> T midPointToFunc(float[] v1, Tup2RF v2, Function2F<T> func)
 	{
-		return halfPointFunc(v1[0], v1[1], v2.v0(), v2.v1(), func);
+		return midPointToFunc(v1[0], v1[1], v2.v0(), v2.v1(), func);
 	}
 	
 	/**
@@ -4095,9 +4154,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T> T halfPointFunc(float[] v1, float[] v2, Function2F<T> func)
+	public static <T> T midPointToFunc(float[] v1, float[] v2, Function2F<T> func)
 	{
-		return halfPointFunc(v1[0], v1[1], v2[0], v2[1], func);
+		return midPointToFunc(v1[0], v1[1], v2[0], v2[1], func);
 	}
 	
 	/**
@@ -4123,9 +4182,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T> T halfPointFunc(float[] v1, float v2x, float v2y, Function2F<T> func)
+	public static <T> T midPointToFunc(float[] v1, float v2x, float v2y, Function2F<T> func)
 	{
-		return halfPointFunc(v1[0], v1[1], v2x, v2y, func);
+		return midPointToFunc(v1[0], v1[1], v2x, v2y, func);
 	}
 	
 	/**
@@ -4151,9 +4210,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T> T halfPointFunc(float v1x, float v1y, Tup2RF v2, Function2F<T> func)
+	public static <T> T midPointToFunc(float v1x, float v1y, Tup2RF v2, Function2F<T> func)
 	{
-		return halfPointFunc(v1x, v1y, v2.v0(), v2.v1(), func);
+		return midPointToFunc(v1x, v1y, v2.v0(), v2.v1(), func);
 	}
 	
 	/**
@@ -4179,9 +4238,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T> T halfPointFunc(float v1x, float v1y, float[] v2, Function2F<T> func)
+	public static <T> T midPointToFunc(float v1x, float v1y, float[] v2, Function2F<T> func)
 	{
-		return halfPointFunc(v1x, v1y, v2[0], v2[1], func);
+		return midPointToFunc(v1x, v1y, v2[0], v2[1], func);
 	}
 	
 	/**
@@ -4209,7 +4268,7 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T> T halfPointFunc(float v1x, float v1y, float v2x, float v2y, Function2F<T> func)
+	public static <T> T midPointToFunc(float v1x, float v1y, float v2x, float v2y, Function2F<T> func)
 	{
 		return func.apply2F((v2x - v1x) * 0.5f, (v2y - v1y) * 0.5f);
 	}
@@ -4233,9 +4292,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The distance between the points.
 	 */
-	public static float dist(Tup2RF v1, Tup2RF v2)
+	public static float lenTo(Tup2RF v1, Tup2RF v2)
 	{
-		return dist(v1.v0(), v1.v1(), v2.v0(), v2.v1());
+		return lenTo(v1.v0(), v1.v1(), v2.v0(), v2.v1());
 	}
 	
 	/**
@@ -4259,9 +4318,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The distance between the points.
 	 */
-	public static float dist(float tolerance, Tup2RF v1, Tup2RF v2)
+	public static float lenTo(float tolerance, Tup2RF v1, Tup2RF v2)
 	{
-		return dist(v1.v0(), v1.v1(), v2.v0(), v2.v1(), tolerance);
+		return lenTo(v1.v0(), v1.v1(), v2.v0(), v2.v1(), tolerance);
 	}
 	
 	/**
@@ -4283,9 +4342,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The distance between the points.
 	 */
-	public static float dist(Tup2RF v1, float[] v2)
+	public static float lenTo(Tup2RF v1, float[] v2)
 	{
-		return dist(v1.v0(), v1.v1(), v2[0], v2[1]);
+		return lenTo(v1.v0(), v1.v1(), v2[0], v2[1]);
 	}
 	
 	/**
@@ -4309,9 +4368,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The distance between the points.
 	 */
-	public static float dist(float tolerance, Tup2RF v1, float[] v2)
+	public static float lenTo(float tolerance, Tup2RF v1, float[] v2)
 	{
-		return dist(v1.v0(), v1.v1(), v2[0], v2[1], tolerance);
+		return lenTo(v1.v0(), v1.v1(), v2[0], v2[1], tolerance);
 	}
 	
 	/**
@@ -4335,9 +4394,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The distance between the points.
 	 */
-	public static float dist(Tup2RF v1, float v2x, float v2y)
+	public static float lenTo(Tup2RF v1, float v2x, float v2y)
 	{
-		return dist(v1.v0(), v1.v1(), v2x, v2y);
+		return lenTo(v1.v0(), v1.v1(), v2x, v2y);
 	}
 	
 	/**
@@ -4363,9 +4422,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The distance between the points.
 	 */
-	public static float dist(float tolerance, Tup2RF v1, float v2x, float v2y)
+	public static float lenTo(float tolerance, Tup2RF v1, float v2x, float v2y)
 	{
-		return dist(v1.v0(), v1.v1(), v2x, v2y, tolerance);
+		return lenTo(v1.v0(), v1.v1(), v2x, v2y, tolerance);
 	}
 	
 	/**
@@ -4387,9 +4446,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The distance between the points.
 	 */
-	public static float dist(float[] v1, Tup2RF v2)
+	public static float lenTo(float[] v1, Tup2RF v2)
 	{
-		return dist(v1[0], v1[1], v2.v0(), v2.v1());
+		return lenTo(v1[0], v1[1], v2.v0(), v2.v1());
 	}
 	
 	/**
@@ -4413,9 +4472,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The distance between the points.
 	 */
-	public static float dist(float tolerance, float[] v1, Tup2RF v2)
+	public static float lenTo(float tolerance, float[] v1, Tup2RF v2)
 	{
-		return dist(v1[0], v1[1], v2.v0(), v2.v1(), tolerance);
+		return lenTo(v1[0], v1[1], v2.v0(), v2.v1(), tolerance);
 	}
 	
 	/**
@@ -4437,9 +4496,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The distance between the points.
 	 */
-	public static float dist(float[] v1, float[] v2)
+	public static float lenTo(float[] v1, float[] v2)
 	{
-		return dist(v1[0], v1[1], v2[0], v2[1]);
+		return lenTo(v1[0], v1[1], v2[0], v2[1]);
 	}
 	
 	/**
@@ -4463,9 +4522,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The distance between the points.
 	 */
-	public static float dist(float tolerance, float[] v1, float[] v2)
+	public static float lenTo(float tolerance, float[] v1, float[] v2)
 	{
-		return dist(v1[0], v1[1], v2[0], v2[1], tolerance);
+		return lenTo(v1[0], v1[1], v2[0], v2[1], tolerance);
 	}
 	
 	/**
@@ -4489,9 +4548,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The distance between the points.
 	 */
-	public static float dist(float[] v1, float v2x, float v2y)
+	public static float lenTo(float[] v1, float v2x, float v2y)
 	{
-		return dist(v1[0], v1[1], v2x, v2y);
+		return lenTo(v1[0], v1[1], v2x, v2y);
 	}
 	
 	/**
@@ -4517,9 +4576,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The distance between the points.
 	 */
-	public static float dist(float tolerance, float[] v1, float v2x, float v2y)
+	public static float lenTo(float tolerance, float[] v1, float v2x, float v2y)
 	{
-		return dist(v1[0], v1[1], v2x, v2y, tolerance);
+		return lenTo(v1[0], v1[1], v2x, v2y, tolerance);
 	}
 	
 	/**
@@ -4543,9 +4602,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The distance between the points.
 	 */
-	public static float dist(float v1x, float v1y, Tup2RF v2)
+	public static float lenTo(float v1x, float v1y, Tup2RF v2)
 	{
-		return dist(v1x, v1y, v2.v0(), v2.v1());
+		return lenTo(v1x, v1y, v2.v0(), v2.v1());
 	}
 	
 	/**
@@ -4571,9 +4630,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The distance between the points.
 	 */
-	public static float dist(float tolerance, float v1x, float v1y, Tup2RF v2)
+	public static float lenTo(float tolerance, float v1x, float v1y, Tup2RF v2)
 	{
-		return dist(v1x, v1y, v2.v0(), v2.v1(), tolerance);
+		return lenTo(v1x, v1y, v2.v0(), v2.v1(), tolerance);
 	}
 	
 	/**
@@ -4597,9 +4656,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The distance between the points.
 	 */
-	public static float dist(float v1x, float v1y, float[] v2)
+	public static float lenTo(float v1x, float v1y, float[] v2)
 	{
-		return dist(v1x, v1y, v2[0], v2[1]);
+		return lenTo(v1x, v1y, v2[0], v2[1]);
 	}
 	
 	/**
@@ -4625,9 +4684,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The distance between the points.
 	 */
-	public static float dist(float tolerance, float v1x, float v1y, float[] v2)
+	public static float lenTo(float tolerance, float v1x, float v1y, float[] v2)
 	{
-		return dist(v1x, v1y, v2[0], v2[1], tolerance);
+		return lenTo(v1x, v1y, v2[0], v2[1], tolerance);
 	}
 	
 	/**
@@ -4653,7 +4712,7 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The distance between the points.
 	 */
-	public static float dist(float v1x, float v1y, float v2x, float v2y)
+	public static float lenTo(float v1x, float v1y, float v2x, float v2y)
 	{
 		return len(v2x - v1x, v2y - v1y);
 	}
@@ -4685,7 +4744,7 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The distance between the points.
 	 */
-	public static float dist(float tolerance, float v1x, float v1y, float v2x, float v2y)
+	public static float lenTo(float tolerance, float v1x, float v1y, float v2x, float v2y)
 	{
 		return len(v2x - v1x, v2y - v1y, tolerance);
 	}
@@ -4705,9 +4764,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The squared distance between the points.
 	 */
-	public static float sqrDist(Tup2RF v1, Tup2RF v2)
+	public static float sqrLenTo(Tup2RF v1, Tup2RF v2)
 	{
-		return sqrDist(v1.v0(), v1.v1(), v2.v0(), v2.v1());
+		return sqrLenTo(v1.v0(), v1.v1(), v2.v0(), v2.v1());
 	}
 	
 	/**
@@ -4725,9 +4784,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The squared distance between the points.
 	 */
-	public static float sqrDist(Tup2RF v1, float[] v2)
+	public static float sqrLenTo(Tup2RF v1, float[] v2)
 	{
-		return sqrDist(v1.v0(), v1.v1(), v2[0], v2[1]);
+		return sqrLenTo(v1.v0(), v1.v1(), v2[0], v2[1]);
 	}
 	
 	/**
@@ -4747,9 +4806,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The squared distance between the points.
 	 */
-	public static float sqrDist(Tup2RF v1, float v2x, float v2y)
+	public static float sqrLenTo(Tup2RF v1, float v2x, float v2y)
 	{
-		return sqrDist(v1.v0(), v1.v1(), v2x, v2y);
+		return sqrLenTo(v1.v0(), v1.v1(), v2x, v2y);
 	}
 	
 	/**
@@ -4767,9 +4826,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The squared distance between the points.
 	 */
-	public static float sqrDist(float[] v1, Tup2RF v2)
+	public static float sqrLenTo(float[] v1, Tup2RF v2)
 	{
-		return sqrDist(v1[0], v1[1], v2.v0(), v2.v1());
+		return sqrLenTo(v1[0], v1[1], v2.v0(), v2.v1());
 	}
 	
 	/**
@@ -4787,9 +4846,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The squared distance between the points.
 	 */
-	public static float sqrDist(float[] v1, float[] v2)
+	public static float sqrLenTo(float[] v1, float[] v2)
 	{
-		return sqrDist(v1[0], v1[1], v2[0], v2[1]);
+		return sqrLenTo(v1[0], v1[1], v2[0], v2[1]);
 	}
 	
 	/**
@@ -4809,9 +4868,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The squared distance between the points.
 	 */
-	public static float sqrDist(float[] v1, float v2x, float v2y)
+	public static float sqrLenTo(float[] v1, float v2x, float v2y)
 	{
-		return sqrDist(v1[0], v1[1], v2x, v2y);
+		return sqrLenTo(v1[0], v1[1], v2x, v2y);
 	}
 	
 	/**
@@ -4831,9 +4890,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The squared distance between the points.
 	 */
-	public static float sqrDist(float v1x, float v1y, Tup2RF v2)
+	public static float sqrLenTo(float v1x, float v1y, Tup2RF v2)
 	{
-		return sqrDist(v1x, v1y, v2.v0(), v2.v1());
+		return sqrLenTo(v1x, v1y, v2.v0(), v2.v1());
 	}
 	
 	/**
@@ -4853,9 +4912,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The squared distance between the points.
 	 */
-	public static float sqrDist(float v1x, float v1y, float[] v2)
+	public static float sqrLenTo(float v1x, float v1y, float[] v2)
 	{
-		return sqrDist(v1x, v1y, v2[0], v2[1]);
+		return sqrLenTo(v1x, v1y, v2[0], v2[1]);
 	}
 	
 	/**
@@ -4877,7 +4936,7 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The squared distance between the points.
 	 */
-	public static float sqrDist(float v1x, float v1y, float v2x, float v2y)
+	public static float sqrLenTo(float v1x, float v1y, float v2x, float v2y)
 	{
 		return sqrLen(v2x - v1x, v2y - v1y);
 	}
@@ -4901,9 +4960,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The invers distance between the points.
 	 */
-	public static float invDist(Tup2RF v1, Tup2RF v2)
+	public static float recLenTo(Tup2RF v1, Tup2RF v2)
 	{
-		return invDist(v1.v0(), v1.v1(), v2.v0(), v2.v1());
+		return recLenTo(v1.v0(), v1.v1(), v2.v0(), v2.v1());
 	}
 	
 	/**
@@ -4925,9 +4984,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The invers distance between the points.
 	 */
-	public static float invDist(Tup2RF v1, float[] v2)
+	public static float recLenTo(Tup2RF v1, float[] v2)
 	{
-		return invDist(v1.v0(), v1.v1(), v2[0], v2[1]);
+		return recLenTo(v1.v0(), v1.v1(), v2[0], v2[1]);
 	}
 	
 	/**
@@ -4951,9 +5010,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The invers distance between the points.
 	 */
-	public static float invDist(Tup2RF v1, float v2x, float v2y)
+	public static float recLenTo(Tup2RF v1, float v2x, float v2y)
 	{
-		return invDist(v1.v0(), v1.v1(), v2x, v2y);
+		return recLenTo(v1.v0(), v1.v1(), v2x, v2y);
 	}
 	
 	/**
@@ -4975,9 +5034,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The invers distance between the points.
 	 */
-	public static float invDist(float[] v1, Tup2RF v2)
+	public static float recLenTo(float[] v1, Tup2RF v2)
 	{
-		return invDist(v1[0], v1[1], v2.v0(), v2.v1());
+		return recLenTo(v1[0], v1[1], v2.v0(), v2.v1());
 	}
 	
 	/**
@@ -4999,9 +5058,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The invers distance between the points.
 	 */
-	public static float invDist(float[] v1, float[] v2)
+	public static float recLenTo(float[] v1, float[] v2)
 	{
-		return invDist(v1[0], v1[1], v2[0], v2[1]);
+		return recLenTo(v1[0], v1[1], v2[0], v2[1]);
 	}
 	
 	/**
@@ -5025,9 +5084,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The invers distance between the points.
 	 */
-	public static float invDist(float[] v1, float v2x, float v2y)
+	public static float recLenTo(float[] v1, float v2x, float v2y)
 	{
-		return invDist(v1[0], v1[1], v2x, v2y);
+		return recLenTo(v1[0], v1[1], v2x, v2y);
 	}
 	
 	/**
@@ -5051,9 +5110,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The invers distance between the points.
 	 */
-	public static float invDist(float v1x, float v1y, Tup2RF v2)
+	public static float recLenTo(float v1x, float v1y, Tup2RF v2)
 	{
-		return invDist(v1x, v1y, v2.v0(), v2.v1());
+		return recLenTo(v1x, v1y, v2.v0(), v2.v1());
 	}
 	
 	/**
@@ -5077,9 +5136,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The invers distance between the points.
 	 */
-	public static float invDist(float v1x, float v1y, float[] v2)
+	public static float recLenTo(float v1x, float v1y, float[] v2)
 	{
-		return invDist(v1x, v1y, v2[0], v2[1]);
+		return recLenTo(v1x, v1y, v2[0], v2[1]);
 	}
 	
 	/**
@@ -5105,9 +5164,9 @@ public class VecUtils2F extends TupUtils2F
 	 * 
 	 * @return The invers distance between the points.
 	 */
-	public static float invDist(float v1x, float v1y, float v2x, float v2y)
+	public static float recLenTo(float v1x, float v1y, float v2x, float v2y)
 	{
-		return invLen(v2x - v1x, v2y - v1y);
+		return recLen(v2x - v1x, v2y - v1y);
 	}
 	
 	public static float[] intLin(Tup2RF v, float alpha, @ExtractionParam float[] res)

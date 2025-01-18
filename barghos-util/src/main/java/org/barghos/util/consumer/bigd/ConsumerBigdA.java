@@ -3,7 +3,7 @@ package org.barghos.util.consumer.bigd;
 import java.math.BigDecimal;
 
 import org.barghos.util.consumer.Consumer;
-import org.barghos.validation.ParameterValidation;
+import org.barghos.validation.Validate;
 
 /**
  * Represents an operation that accepts one 1-dimensional {@link BigDecimal}
@@ -29,12 +29,19 @@ import org.barghos.validation.ParameterValidation;
 @FunctionalInterface
 public interface ConsumerBigdA extends Consumer<BigDecimal[]>
 {
+	
 	/**
 	 * Performs the operation on the given arguments.
 	 *
 	 * @param a The first input argument.
 	 */
-	void acceptBigdA(BigDecimal[] a);
+	void acceptBigd(BigDecimal[] a);
+	
+	@Override
+	default void accept(BigDecimal[] a)
+	{
+		acceptBigd(a);
+	}
 	
 	/**
 	 * Performs the given operation after this operation.
@@ -44,63 +51,11 @@ public interface ConsumerBigdA extends Consumer<BigDecimal[]>
 	 * @return A new {@link ConsumerBigdA} performing this operation and the
 	 * operation after.
 	 */
-	default ConsumerBigdA thenBigdA(ConsumerBigdA after)
+	default ConsumerBigdA then(ConsumerBigdA after)
 	{
-		ParameterValidation.pvNotNull("after", after);
+		Validate.Arg.checkNotNull("after", after);
 		
-		return (a) -> { acceptBigdA(a); after.acceptBigdA(a); };
-	}
-	
-	/**
-	 * Performs the given operation before this operation.
-	 * 
-	 * @param before The operation to perform before this operation.
-	 * 
-	 * @return A new {@link ConsumerBigdA} performing the operation before and
-	 * this operation.
-	 */
-	default ConsumerBigdA beforeBigdA(ConsumerBigdA before)
-	{
-		ParameterValidation.pvNotNull("before", before);
-		
-		return (a) -> { before.acceptBigdA(a); acceptBigdA(a); };
-	}
-	
-	/**
-	 * Composes a new {@link ConsumerBigdA} performing the given operations in
-	 * sequence.
-	 * 
-	 * @param consumers The operations to perform.
-	 * 
-	 * @return A new {@link ConsumerBigdA} performing the operations.
-	 */
-	@SafeVarargs
-	static ConsumerBigdA ofBigdA(ConsumerBigdA... consumers)
-	{
-		ParameterValidation.pvNotNull("consumers", consumers);
-		ParameterValidation.pvEntriesNotNull("consumers", consumers);
-		
-		/*
-		 * If no operations are passed return empty operation.
-		 */
-		if(consumers.length == 0) return (a) -> {};
-		
-		/*
-		 * If exactly one operation is passed return the operation.
-		 */
-		if(consumers.length == 1) return consumers[0];
-		
-		return (a) -> { for(ConsumerBigdA consumer : consumers) consumer.acceptBigdA(a); };
-	}
-
-	/**
-	 * @deprecated Use {@link #acceptBigdA(BigDecimal[])} instead.
-	 */
-	@Override
-	@Deprecated(since = "1.0", forRemoval = false)
-	default void accept(BigDecimal[] a)
-	{
-		acceptBigdA(a);
+		return (a) -> { acceptBigd(a); after.acceptBigd(a); };
 	}
 	
 	/**
@@ -110,11 +65,11 @@ public interface ConsumerBigdA extends Consumer<BigDecimal[]>
 	 * operation after.
 	 */
 	@Override
-	default ConsumerBigdA then(Consumer<BigDecimal[]> after)
+	default ConsumerBigdA then(Consumer<? super BigDecimal[]> after)
 	{
-		ParameterValidation.pvNotNull("after", after);
+		Validate.Arg.checkNotNull("after", after);
 
-		return (a) -> { acceptBigdA(a); after.accept(a); };
+		return (a) -> { acceptBigd(a); after.accept(a); };
 	}
 	
 	/**
@@ -126,9 +81,32 @@ public interface ConsumerBigdA extends Consumer<BigDecimal[]>
 	@Override
 	default ConsumerBigdA then(java.util.function.Consumer<? super BigDecimal[]> after)
 	{
-		ParameterValidation.pvNotNull("after", after);
+		Validate.Arg.checkNotNull("after", after);
 
-		return (a) -> { acceptBigdA(a); after.accept(a); };
+		return (a) -> { acceptBigd(a); after.accept(a); };
+	}
+	
+	@Override
+	default ConsumerBigdA andThen(java.util.function.Consumer<? super BigDecimal[]> after)
+	{
+		Validate.Arg.checkNotNull("after", after);
+		
+		return (a) -> { acceptBigd(a); after.accept(a); };
+	}
+	
+	/**
+	 * Performs the given operation before this operation.
+	 * 
+	 * @param before The operation to perform before this operation.
+	 * 
+	 * @return A new {@link ConsumerBigdA} performing the operation before and
+	 * this operation.
+	 */
+	default ConsumerBigdA before(ConsumerBigdA before)
+	{
+		Validate.Arg.checkNotNull("before", before);
+		
+		return (a) -> { before.acceptBigd(a); acceptBigd(a); };
 	}
 	
 	/**
@@ -138,11 +116,11 @@ public interface ConsumerBigdA extends Consumer<BigDecimal[]>
 	 * this operation.
 	 */
 	@Override
-	default ConsumerBigdA before(Consumer<BigDecimal[]> before)
+	default ConsumerBigdA before(Consumer<? super BigDecimal[]> before)
 	{
-		ParameterValidation.pvNotNull("before", before);
+		Validate.Arg.checkNotNull("before", before);
 
-		return (a) -> { before.accept(a); acceptBigdA(a); };
+		return (a) -> { before.accept(a); acceptBigd(a); };
 	}
 	
 	/**
@@ -154,9 +132,9 @@ public interface ConsumerBigdA extends Consumer<BigDecimal[]>
 	@Override
 	default ConsumerBigdA before(java.util.function.Consumer<? super BigDecimal[]> before)
 	{
-		ParameterValidation.pvNotNull("before", before);
+		Validate.Arg.checkNotNull("before", before);
 
-		return (a) -> { before.accept(a); acceptBigdA(a); };
+		return (a) -> { before.accept(a); acceptBigd(a); };
 	}
 	
 	/**
@@ -168,30 +146,58 @@ public interface ConsumerBigdA extends Consumer<BigDecimal[]>
 	 * @return A new {@link ConsumerBigdA} performing the operations.
 	 */
 	@SafeVarargs
-	static ConsumerBigdA of(Consumer<BigDecimal[]>... consumers)
+	static ConsumerBigdA of(ConsumerBigdA... consumers)
 	{
-		ParameterValidation.pvNotNull("consumers", consumers);
-		ParameterValidation.pvEntriesNotNull("consumers", consumers);
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		/*
-		 * If no operations are passed return empty operation.
-		 */
+		if(consumers.length == 0) return (a) -> {};
+		
+		if(consumers.length == 1) return consumers[0];
+		
+		return (a) -> { for(ConsumerBigdA consumer : consumers) consumer.acceptBigd(a); };
+	}
+
+	/**
+	 * Composes a new {@link ConsumerBigdA} performing the given operations in
+	 * sequence.
+	 * 
+	 * @param consumers The operations to perform.
+	 * 
+	 * @return A new {@link ConsumerBigdA} performing the operations.
+	 */
+	@SafeVarargs
+	static ConsumerBigdA of(Consumer<? super BigDecimal[]>... consumers)
+	{
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
+		
 		if(consumers.length == 0) return (a) -> {};
 
 		if(consumers.length == 1) return (ConsumerBigdA) consumers[0]::accept;
 
-		return (a) -> { for(Consumer<BigDecimal[]> consumer : consumers) consumer.accept(a); };
+		return (a) -> { for(Consumer<? super BigDecimal[]> consumer : consumers) consumer.accept(a); };
 	}
-
+	
 	/**
-	 * @deprecated
+	 * Composes a new {@link Consumer2Bigd} performing the given operations in
+	 * sequence.
 	 * 
-	 * Use {@link #then(java.util.function.Consumer)} instead.
+	 * @param consumers The operations to perform.
+	 * 
+	 * @return A new {@link Consumer2Bigd} performing the operations.
 	 */
-	@Override
-	@Deprecated(since = "1.0", forRemoval = false)
-	default ConsumerBigdA andThen(java.util.function.Consumer<? super BigDecimal[]> after)
+	@SafeVarargs
+	static ConsumerBigdA of(java.util.function.Consumer<? super BigDecimal[]>... consumers)
 	{
-		return then(after);
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
+		
+		if(consumers.length == 0) return (a) -> {};
+
+		if(consumers.length == 1) return (ConsumerBigdA)consumers[0]::accept;
+		
+		return (a) -> { for(java.util.function.Consumer<? super BigDecimal[]> consumer : consumers) consumer.accept(a); };
 	}
+	
 }

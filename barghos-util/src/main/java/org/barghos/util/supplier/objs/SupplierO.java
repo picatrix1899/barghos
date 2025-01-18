@@ -19,6 +19,7 @@ import org.barghos.util.supplier.Supplier;
 @FunctionalInterface
 public interface SupplierO extends Supplier<Object>
 {
+	
 	/**
 	 * Gets a result.
 	 *
@@ -26,13 +27,15 @@ public interface SupplierO extends Supplier<Object>
 	 */
 	Object getO();
 	
-	/**
-	 * @deprecated Use {@link #getO()} instead.
-	 */
 	@Override
-	@Deprecated(since = "1.0", forRemoval = false)
 	default Object get()
 	{
 		return getO();
 	}
+	
+	public static SupplierO of(Object value)
+	{
+		return () -> value;
+	}
+	
 }

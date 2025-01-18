@@ -1,7 +1,7 @@
 package org.barghos.util.consumer;
 
 import org.barghos.validation.ExceptionHandler;
-import org.barghos.validation.ParameterValidation;
+import org.barghos.validation.Validate;
 
 /**
  * Represents an operation that accepts two input arguments and returns no
@@ -48,9 +48,23 @@ public interface ConsumerEx2<A,B>
 	 * @return A new {@link ConsumerEx2} performing this operation and the
 	 * operation after.
 	 */
-	default ConsumerEx2<A,B> then(ConsumerEx2<A,B> after)
+	default ConsumerEx2<A,B> then(ConsumerEx2<? super A,? super B> after)
 	{
-		ParameterValidation.pvNotNull("after", after);
+		Validate.Arg.checkNotNull("after", after);
+		
+		return (a, b) -> { accept(a, b); after.accept(a, b); };
+	}
+	
+	default ConsumerEx2<A,B> then(Consumer2<? super A,? super B> after)
+	{
+		Validate.Arg.checkNotNull("after", after);
+		
+		return (a, b) -> { accept(a, b); after.accept(a, b); };
+	}
+	
+	default ConsumerEx2<A,B> then(java.util.function.BiConsumer<? super A,? super B> after)
+	{
+		Validate.Arg.checkNotNull("after", after);
 		
 		return (a, b) -> { accept(a, b); after.accept(a, b); };
 	}
@@ -63,9 +77,23 @@ public interface ConsumerEx2<A,B>
 	 * @return A new {@link ConsumerEx2} performing the operation before and
 	 * this operation.
 	 */
-	default ConsumerEx2<A,B> before(ConsumerEx2<A,B> before)
+	default ConsumerEx2<A,B> before(ConsumerEx2<? super A,? super B> before)
 	{
-		ParameterValidation.pvNotNull("before", before);
+		Validate.Arg.checkNotNull("before", before);
+		
+		return (a, b) -> { before.accept(a, b); accept(a, b); };
+	}
+	
+	default ConsumerEx2<A,B> before(Consumer2<? super A,? super B> before)
+	{
+		Validate.Arg.checkNotNull("before", before);
+		
+		return (a, b) -> { before.accept(a, b); accept(a, b); };
+	}
+	
+	default ConsumerEx2<A,B> before(java.util.function.BiConsumer<? super A,? super B> before)
+	{
+		Validate.Arg.checkNotNull("before", before);
 		
 		return (a, b) -> { before.accept(a, b); accept(a, b); };
 	}
@@ -79,9 +107,9 @@ public interface ConsumerEx2<A,B>
 	 * @return A new {@link Consumer2} performing the operations and exception
 	 * handling.
 	 */
-	default Consumer2<A,B> handled(ExceptionHandler handler)
+	default Consumer2<A,B> handleEx(ExceptionHandler handler)
 	{
-		ParameterValidation.pvNotNull("handler", handler);
+		Validate.Arg.checkNotNull("handler", handler);
 		
 		return (a, b) -> {
 			try
@@ -95,6 +123,17 @@ public interface ConsumerEx2<A,B>
 		};
 	}
 	
+	default Consumer2<A,B> ignoreEx()
+	{
+		return (a, b) -> {
+			try
+			{
+				accept(a, b);
+			}
+			catch(Exception e) { }
+		};
+	}
+	
 	/**
 	 * Performs the passed operation in case of an exception in this consumer.
 	 * As the passed consumer may throw an exception the returned consumer is
@@ -105,9 +144,9 @@ public interface ConsumerEx2<A,B>
 	 * 
 	 * @return A new {@link ConsumerEx2} performing the operations.
 	 */
-	default ConsumerEx2<A,B> onException(ConsumerEx2<A,B> consumer)
+	default ConsumerEx2<A,B> onEx(ConsumerEx2<? super A,? super B> consumer)
 	{
-		ParameterValidation.pvNotNull("consumer", consumer);
+		Validate.Arg.checkNotNull("consumer", consumer);
 		
 		return (a, b) -> {
 			try
@@ -130,9 +169,25 @@ public interface ConsumerEx2<A,B>
 	 * 
 	 * @return A new {@link Consumer2} performing the operations.
 	 */
-	default Consumer2<A,B> onException(Consumer2<A,B> consumer)
+	default Consumer2<A,B> onEx(Consumer2<? super A,? super B> consumer)
 	{
-		ParameterValidation.pvNotNull("consumer", consumer);
+		Validate.Arg.checkNotNull("consumer", consumer);
+		
+		return (a, b) -> {
+			try
+			{
+				accept(a, b);
+			}
+			catch(Exception e)
+			{
+				consumer.accept(a, b);
+			}
+		};
+	}
+	
+	default Consumer2<A,B> onEx(java.util.function.BiConsumer<? super A,? super B> consumer)
+	{
+		Validate.Arg.checkNotNull("consumer", consumer);
 		
 		return (a, b) -> {
 			try
@@ -157,28 +212,17 @@ public interface ConsumerEx2<A,B>
 	 * 
 	 * @return A new {@link ConsumerEx2} performing the operations.
 	 */
+	@SuppressWarnings("unchecked")
 	@SafeVarargs
-	static <A,B> ConsumerEx2<A,B> of(ConsumerEx2<A,B>... consumers)
+	static <A,B> ConsumerEx2<A,B> of(ConsumerEx2<? super A,? super B>... consumers)
 	{
-		ParameterValidation.pvNotNull("consumers", consumers);
-		ParameterValidation.pvEntriesNotNull("consumers", consumers);
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		/*
-		 * If no operations are passed return empty operation.
-		 */
 		if(consumers.length == 0) return (a, b) -> {};
-		{
-			
-		}
 		
-		/*
-		 * If exactly one operation is passed return the operation.
-		 */
-		if(consumers.length == 1) return consumers[0];
-		{
-			
-		}
+		if(consumers.length == 1) return (ConsumerEx2<A,B>)consumers[0];
 		
-		return (a, b) -> { for(ConsumerEx2<A,B> consumer : consumers) consumer.accept(a, b); };
+		return (a, b) -> { for(ConsumerEx2<? super A, ? super B> consumer : consumers) consumer.accept(a, b); };
 	}
 }

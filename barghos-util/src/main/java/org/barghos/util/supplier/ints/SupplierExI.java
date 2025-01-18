@@ -19,6 +19,7 @@ import org.barghos.util.supplier.SupplierEx;
 @FunctionalInterface
 public interface SupplierExI extends SupplierEx<Integer>
 {
+	
 	/**
 	 * Gets a result.
 	 *
@@ -28,13 +29,15 @@ public interface SupplierExI extends SupplierEx<Integer>
 	 */
 	int getI() throws Exception;
 	
-	/**
-	 * @deprecated Use {@link #getI()} instead.
-	 */
 	@Override
-	@Deprecated(since = "1.0", forRemoval = false)
 	default Integer get() throws Exception
 	{
 		return getI();
 	}
+	
+	public static SupplierExI of(int value)
+	{
+		return () -> value;
+	}
+	
 }

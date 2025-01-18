@@ -26,3 +26,17 @@ specify a common tolerance as the tolerated margin around zero is situational
 calculations, it should be sufficient to use a very small tolerance to
 counteract the FPE. However, to check for collision between two AABBs, a greater
 tolerance is probably required).
+
+## Reason for - Usage of "is", "has" prefix in functions
+
+The prefix "is" or "has" is used in function names whether the function returns
+a value that represents a detectable state that is not directly modifiable. For
+example The Nullable class contains a getter and setter called "value". But it
+also contains the function "hasValue", which determines whether the value is
+set or not. It is a member on the class but does not directly represent a value
+but a state the object is in.
+
+## Reason for - Usage of "to", "from" prefix in functions
+
+The prefix "to" or "from" is used in functions that perform a conversion. For
+example a function "toArray" converts logically the current object into an array.

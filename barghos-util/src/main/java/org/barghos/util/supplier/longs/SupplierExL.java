@@ -19,6 +19,7 @@ import org.barghos.util.supplier.SupplierEx;
 @FunctionalInterface
 public interface SupplierExL extends SupplierEx<Long>
 {
+	
 	/**
 	 * Gets a result.
 	 *
@@ -28,13 +29,15 @@ public interface SupplierExL extends SupplierEx<Long>
 	 */
 	long getL() throws Exception;
 	
-	/**
-	 * @deprecated Use {@link #getL()} instead.
-	 */
 	@Override
-	@Deprecated(since = "1.0", forRemoval = false)
 	default Long get() throws Exception
 	{
 		return getL();
 	}
+	
+	public static SupplierExL of(long value)
+	{
+		return () -> value;
+	}
+	
 }

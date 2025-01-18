@@ -3,9 +3,18 @@ plugins {
   id 'eclipse'
 }
 
+configurations {
+    compileOnlyResolvable {
+        canBeResolved = true // Ermöglicht das Auflösen für Tasks
+        canBeConsumed = false // Verhindert, dass diese Konfiguration in das JAR-Artefakt eingeht
+        extendsFrom compileOnly
+    }
+}
+
 dependencies {
 	api project(':barghos-annotation')
 	api project(':barghos-validation')
+	compileOnlyResolvable project(':barghos-util-gen')
 }
 
 publishing {
@@ -29,4 +38,36 @@ eclipse {
 	name = 'barghos-util'
 	comment = ''
   }
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs += 'src/generated/java'
+        }
+    }
+}
+
+tasks.register('customGenCode') {
+	group='custom'
+	dependsOn ':barghos-util-gen:jar'
+    doLast {
+    	println 'generateCode Task wurde geladen!'
+    	
+    	println "Classpath: ${sourceSets.main.runtimeClasspath.asPath}"
+    	
+    	// Verzeichnisse festlegen
+        def outputDir = file("src/generated/java")
+        outputDir.mkdirs()
+    	
+        javaexec {
+            main = 'org.barghos.utilgen.CodeGenerator'
+            classpath = configurations.compileOnlyResolvable
+            args = [outputDir.absolutePath]
+        }
+    }
+}
+
+tasks.named('compileJava') {
+    dependsOn tasks.named('customGenCode')
 }

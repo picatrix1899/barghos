@@ -2,8 +2,10 @@ package org.barghos.util.consumer.bigi;
 
 import java.math.BigInteger;
 
+import org.barghos.util.consumer.Consumer4;
 import org.barghos.util.consumer.ConsumerEx4;
-import org.barghos.validation.ParameterValidation;
+import org.barghos.validation.ExceptionHandler;
+import org.barghos.validation.Validate;
 
 /**
  * Represents an operation that accepts four 1-dimensional {@link BigInteger}
@@ -16,7 +18,7 @@ import org.barghos.validation.ParameterValidation;
  * 
  * <p>
  * Functional Method:
- * {@link #accept4BigiA(BigInteger[], BigInteger[], BigInteger[], BigInteger[])}
+ * {@link #acceptBigi(BigInteger[], BigInteger[], BigInteger[], BigInteger[])}
  * 
  * @see ConsumerBigiA
  * @see ConsumerExBigiA
@@ -30,6 +32,7 @@ import org.barghos.validation.ParameterValidation;
 @FunctionalInterface
 public interface ConsumerEx4BigiA extends ConsumerEx4<BigInteger[],BigInteger[],BigInteger[],BigInteger[]>
 {
+	
 	/**
 	 * Performs the operation on the given arguments.
 	 *
@@ -40,7 +43,13 @@ public interface ConsumerEx4BigiA extends ConsumerEx4<BigInteger[],BigInteger[],
 	 * 
 	 * @throws Exception May throw an exception during operation.
 	 */
-	void accept4BigiA(BigInteger[] a, BigInteger[] b, BigInteger[] c, BigInteger[] d) throws Exception;
+	void acceptBigi(BigInteger[] a, BigInteger[] b, BigInteger[] c, BigInteger[] d) throws Exception;
+
+	@Override
+	default void accept(BigInteger[] a, BigInteger[] b, BigInteger[] c, BigInteger[] d) throws Exception
+	{
+		acceptBigi(a, b, c, d);
+	}
 	
 	/**
 	 * Performs the given operation after this operation.
@@ -50,11 +59,25 @@ public interface ConsumerEx4BigiA extends ConsumerEx4<BigInteger[],BigInteger[],
 	 * @return A new {@link ConsumerEx4BigiA} performing this operation and the
 	 * operation after.
 	 */
-	default ConsumerEx4BigiA then4BigiA(ConsumerEx4BigiA after)
+	default ConsumerEx4BigiA then(ConsumerEx4BigiA after)
 	{
-		ParameterValidation.pvNotNull("after", after);
+		Validate.Arg.checkNotNull("after", after);
 		
-		return (a, b, c, d) -> { accept4BigiA(a, b, c, d); after.accept4BigiA(a, b, c, d); };
+		return (a, b, c, d) -> { acceptBigi(a, b, c, d); after.acceptBigi(a, b, c, d); };
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @return A new {@link ConsumerEx4BigiA} performing this operation and the
+	 * operation after.
+	 */
+	@Override
+	default ConsumerEx4BigiA then(ConsumerEx4<? super BigInteger[],? super BigInteger[],? super BigInteger[],? super BigInteger[]> after)
+	{
+		Validate.Arg.checkNotNull("after", after);
+
+		return (a, b, c, d) -> { acceptBigi(a, b, c, d); after.accept(a, b, c, d); };
 	}
 	
 	/**
@@ -65,11 +88,148 @@ public interface ConsumerEx4BigiA extends ConsumerEx4<BigInteger[],BigInteger[],
 	 * @return A new {@link ConsumerEx4BigiA} performing the operation before
 	 * and this operation.
 	 */
-	default ConsumerEx4BigiA before4BigiA(ConsumerEx4BigiA before)
+	default ConsumerEx4BigiA before(ConsumerEx4BigiA before)
 	{
-		ParameterValidation.pvNotNull("before", before);
+		Validate.Arg.checkNotNull("before", before);
 		
-		return (a, b, c, d) -> { before.accept4BigiA(a, b, c, d); accept4BigiA(a, b, c, d); };
+		return (a, b, c, d) -> { before.acceptBigi(a, b, c, d); acceptBigi(a, b, c, d); };
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @return A new {@link ConsumerEx4BigiA} performing this operation and the
+	 * operation after.
+	 */
+	@Override
+	default ConsumerEx4BigiA before(ConsumerEx4<? super BigInteger[],? super BigInteger[],? super BigInteger[],? super BigInteger[]> before)
+	{
+		Validate.Arg.checkNotNull("before", before);
+
+		return (a, b, c, d) -> { before.accept(a, b, c, d); acceptBigi(a, b, c, d); };
+	}
+	
+	/**
+	 * Adds exception handling to the consumer and thus converts it into a
+	 * {@link Consumer}.
+	 * 
+	 * @param handler The exception handler called in case of an exception.
+	 * 
+	 * @return A new {@link Consumer} performing the operations and exception
+	 * handling.
+	 */
+	@Override
+	default Consumer4BigiA handleEx(ExceptionHandler handler)
+	{
+		Validate.Arg.checkNotNull("handler", handler);
+		
+		return (a, b, c, d) -> {
+			try
+			{
+				acceptBigi(a, b, c, d);
+			}
+			catch(Exception e)
+			{
+				handler.handle(e);
+			}
+		};
+	}
+	
+	@Override
+	default Consumer4BigiA ignoreEx()
+	{
+		return (a, b, c, d) -> {
+			try
+			{
+				acceptBigi(a, b, c, d);
+			}
+			catch(Exception e) { }
+		};
+	}
+	
+	default ConsumerEx4BigiA onEx(ConsumerEx4BigiA consumer)
+	{
+		Validate.Arg.checkNotNull("consumer", consumer);
+		
+		return (a, b, c, d) -> {
+			try
+			{
+				acceptBigi(a, b, c, d);
+			}
+			catch(Exception e)
+			{
+				consumer.acceptBigi(a, b, c, d);
+			}
+		};
+	}
+	
+	/**
+	 * Performs the passed operation in case of an exception in this consumer.
+	 * As the passed consumer may throw an exception the returned consumer is
+	 * again a {@link ConsumerEx} relaying the exceptions of the passed
+	 * consumer.
+	 * 
+	 * @param consumer The consumer called in case of an exception.
+	 * 
+	 * @return A new {@link ConsumerEx} performing the operations.
+	 */
+	@Override
+	default ConsumerEx4BigiA onEx(ConsumerEx4<? super BigInteger[],? super BigInteger[],? super BigInteger[],? super BigInteger[]> consumer)
+	{
+		Validate.Arg.checkNotNull("consumer", consumer);
+		
+		return (a, b, c, d) -> {
+			try
+			{
+				acceptBigi(a, b, c, d);
+			}
+			catch(Exception e)
+			{
+				consumer.accept(a, b, c, d);
+			}
+		};
+	}
+	
+	default Consumer4BigiA onEx(Consumer4BigiA consumer)
+	{
+		Validate.Arg.checkNotNull("consumer", consumer);
+		
+		return (a, b, c, d) -> {
+			try
+			{
+				acceptBigi(a, b, c, d);
+			}
+			catch(Exception e)
+			{
+				consumer.acceptBigi(a, b, c, d);
+			}
+		};
+	}
+	
+	/**
+	 * Performs the passed operation in case of an exception in this consumer.
+	 * As the passed consumer can not throw an exception the returned consumer
+	 * is a {@link Consumer}.
+	 * 
+	 * @param consumer The consumer called in case of an exception.
+	 * 
+	 * @return A new {@link Consumer} performing the operations.
+	 */
+	@Override
+	default Consumer4BigiA onEx(Consumer4<? super BigInteger[],? super BigInteger[],? super BigInteger[],? super BigInteger[]> consumer)
+	{
+		Validate.Arg.checkNotNull("consumer", consumer);
+		
+		return (a, b, c, d) -> {
+			try
+			{
+				acceptBigi(a, b, c, d);
+			}
+			catch(Exception e)
+			{
+				consumer.accept(a, b, c, d);
+			}
+		};
 	}
 	
 	/**
@@ -81,63 +241,18 @@ public interface ConsumerEx4BigiA extends ConsumerEx4<BigInteger[],BigInteger[],
 	 * @return A new {@link ConsumerEx4BigiA} performing the operations.
 	 */
 	@SafeVarargs
-	static ConsumerEx4BigiA of4BigiA(ConsumerEx4BigiA... consumers)
+	static ConsumerEx4BigiA of(ConsumerEx4BigiA... consumers)
 	{
-		ParameterValidation.pvNotNull("consumers", consumers);
-		ParameterValidation.pvEntriesNotNull("consumers", consumers);
-		
-		/*
-		 * If no operations are passed return empty operation.
-		 */
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
+
 		if(consumers.length == 0) return (a, b, c, d) -> {};
-		
-		/*
-		 * If exactly one operation is passed return the operation.
-		 */
+
 		if(consumers.length == 1) return consumers[0];
 		
-		return (a, b, c, d) -> { for(ConsumerEx4BigiA consumer : consumers) consumer.accept4BigiA(a, b, c, d); };
+		return (a, b, c, d) -> { for(ConsumerEx4BigiA consumer : consumers) consumer.acceptBigi(a, b, c, d); };
 	}
-	
-	/**
-	 * @deprecated Use {@link #accept4BigiA(BigInteger[], BigInteger[], BigInteger[], BigInteger[])}
-	 * instead.
-	 */
-	@Override
-	@Deprecated(since = "1.0", forRemoval = false)
-	default void accept(BigInteger[] a, BigInteger[] b, BigInteger[] c, BigInteger[] d) throws Exception
-	{
-		accept4BigiA(a, b, c, d);
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @return A new {@link ConsumerEx4BigiA} performing this operation and the
-	 * operation after.
-	 */
-	@Override
-	default ConsumerEx4BigiA then(ConsumerEx4<BigInteger[],BigInteger[],BigInteger[],BigInteger[]> after)
-	{
-		ParameterValidation.pvNotNull("after", after);
 
-		return (a, b, c, d) -> { accept4BigiA(a, b, c, d); after.accept(a, b, c, d); };
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @return A new {@link ConsumerEx4BigiA} performing this operation and the
-	 * operation after.
-	 */
-	@Override
-	default ConsumerEx4BigiA before(ConsumerEx4<BigInteger[],BigInteger[],BigInteger[],BigInteger[]> before)
-	{
-		ParameterValidation.pvNotNull("before", before);
-
-		return (a, b, c, d) -> { before.accept(a, b, c, d); accept4BigiA(a, b, c, d); };
-	}
-	
 	/**
 	 * Composes a new {@link ConsumerEx4BigiA} performing the given operations
 	 * in sequence.
@@ -147,18 +262,57 @@ public interface ConsumerEx4BigiA extends ConsumerEx4<BigInteger[],BigInteger[],
 	 * @return A new {@link ConsumerEx4BigiA} performing the operations.
 	 */
 	@SafeVarargs
-	static ConsumerEx4BigiA of(ConsumerEx4<BigInteger[],BigInteger[],BigInteger[],BigInteger[]>... consumers)
+	static ConsumerEx4BigiA of(ConsumerEx4<? super BigInteger[],? super BigInteger[],? super BigInteger[],? super BigInteger[]>... consumers)
 	{
-		ParameterValidation.pvNotNull("consumers", consumers);
-		ParameterValidation.pvEntriesNotNull("consumers", consumers);
-		
-		/*
-		 * If no operations are passed return empty operation.
-		 */
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
+
 		if(consumers.length == 0) return (a, b, c, d) -> {};
 
 		if(consumers.length == 1) return (ConsumerEx4BigiA) consumers[0]::accept;
 
-		return (a, b, c, d) -> { for(ConsumerEx4<BigInteger[],BigInteger[],BigInteger[],BigInteger[]> consumer : consumers) consumer.accept(a, b, c, d); };
+		return (a, b, c, d) -> { for(ConsumerEx4<? super BigInteger[],? super BigInteger[],? super BigInteger[],? super BigInteger[]> consumer : consumers) consumer.accept(a, b, c, d); };
 	}
+
+	/**
+	 * Composes a new {@link ConsumerEx2Bigd} performing the given operations in
+	 * sequence.
+	 * 
+	 * @param consumers The operations to perform.
+	 * 
+	 * @return A new {@link ConsumerEx2Bigd} performing the operations.
+	 */
+	static ConsumerEx4BigiA of(Consumer4BigiA... consumers)
+	{
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
+		
+		if(consumers.length == 0) return (a, b, c, d) -> {};
+
+		if(consumers.length == 1) return (ConsumerEx4BigiA) consumers[0]::accept;
+
+		return (a, b, c, d) -> { for(Consumer4BigiA consumer : consumers) consumer.accept(a, b, c, d); };
+	}
+	
+	/**
+	 * Composes a new {@link ConsumerEx2Bigd} performing the given operations in
+	 * sequence.
+	 * 
+	 * @param consumers The operations to perform.
+	 * 
+	 * @return A new {@link ConsumerEx2Bigd} performing the operations.
+	 */
+	@SafeVarargs
+	static ConsumerEx4BigiA of(Consumer4<? super BigInteger[],? super BigInteger[],? super BigInteger[],? super BigInteger[]>... consumers)
+	{
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
+		
+		if(consumers.length == 0) return (a, b, c, d) -> {};
+
+		if(consumers.length == 1) return (ConsumerEx4BigiA) consumers[0]::accept;
+
+		return (a, b, c, d) -> { for(Consumer4<? super BigInteger[],? super BigInteger[],? super BigInteger[],? super BigInteger[]> consumer : consumers) consumer.accept(a, b, c, d); };
+	}
+	
 }

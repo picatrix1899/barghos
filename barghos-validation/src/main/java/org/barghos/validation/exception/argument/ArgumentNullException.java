@@ -2,9 +2,9 @@ package org.barghos.validation.exception.argument;
 
 /**
  * This exception indicates that a method has been passed an argument that is
- * null but must not be null. It extends the {@link IllegalArgumentException}.
+ * null but must not be null. It extends the {@link ArgumentInvalidException}.
  */
-public class ArgumentNullException extends InvalidArgumentException
+public class ArgumentNullException extends ArgumentInvalidException
 {
 	/**
 	 * This constant contains the current version of this class.
@@ -16,7 +16,7 @@ public class ArgumentNullException extends InvalidArgumentException
 	/**
 	 * Create a new instance of the exception without any additional details.
 	 */
-	public ArgumentNullException()
+	protected ArgumentNullException()
 	{
 		super();
 	}
@@ -27,9 +27,9 @@ public class ArgumentNullException extends InvalidArgumentException
 	 * 
 	 * @param argument The name of the argument that was null.
 	 */
-	public ArgumentNullException(String argument)
+	public ArgumentNullException(String parameter)
 	{
-		super(argument);
+		super(parameter);
 	}
 	
 	/**
@@ -39,45 +39,27 @@ public class ArgumentNullException extends InvalidArgumentException
 	 * @param argument The name of the argument that was null.
 	 * @param message A custom exception message.
 	 */
-	public ArgumentNullException(String argument, String message)
+	public ArgumentNullException(String parameter, String message)
 	{
-		super(argument, message);
+		super(parameter, message);
+	}
+	
+	@Override
+	public String localizationKey()
+	{
+		return "exception.argument.null";
 	}
 	
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public String getMessage()
+	public String defaultMessage()
 	{
-		/*
-		 * If a custom message is provided only output that.
-		 */
-		String customMsg = getCustomMessage();
-		if(customMsg != null && !customMsg.isBlank())
-		{
-			return customMsg;
-		}
-		
-		/*
-		 * If no custom message is provided build and return the default
-		 * one.
-		 */
-		String argument = getArgument();
-		boolean hasArgument = argument != null && !argument.isBlank();
-		
 		StringBuilder builder = new StringBuilder();
 
-		if(hasArgument)
-		{
-			builder.append("The argument ");
-			builder.append("\"").append(argument).append("\" ");
-		}
-		else
-		{
-			builder.append("One argument ");
-		}
-		
+		builder.append("The parameter argument ");
+		builder.append("\"").append(parameter()).append("\" ");
 		builder.append("is null but must not be null.");
 		
 		return builder.toString();

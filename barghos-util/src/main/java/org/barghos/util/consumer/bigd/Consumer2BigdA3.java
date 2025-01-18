@@ -3,7 +3,7 @@ package org.barghos.util.consumer.bigd;
 import java.math.BigDecimal;
 
 import org.barghos.util.consumer.Consumer2;
-import org.barghos.validation.ParameterValidation;
+import org.barghos.validation.Validate;
 
 /**
  * Represents an operation that accepts two 3-dimensional {@link BigDecimal}
@@ -29,13 +29,20 @@ import org.barghos.validation.ParameterValidation;
 @FunctionalInterface
 public interface Consumer2BigdA3 extends Consumer2<BigDecimal[][][],BigDecimal[][][]>
 {
+	
 	/**
 	 * Performs the operation on the given arguments.
 	 *
 	 * @param a The first input argument.
 	 * @param b The second input argument.
 	 */
-	void accept2BigdA3(BigDecimal[][][] a, BigDecimal[][][] b);
+	void acceptBigd(BigDecimal[][][] a, BigDecimal[][][] b);
+	
+	@Override
+	default void accept(BigDecimal[][][] a, BigDecimal[][][] b)
+	{
+		acceptBigd(a, b);
+	}
 	
 	/**
 	 * Performs the given operation after this operation.
@@ -45,53 +52,11 @@ public interface Consumer2BigdA3 extends Consumer2<BigDecimal[][][],BigDecimal[]
 	 * @return A new {@link Consumer2BigdA3} performing this operation and the
 	 * operation after.
 	 */
-	default Consumer2BigdA3 then2BigdA3(Consumer2BigdA3 after)
+	default Consumer2BigdA3 then(Consumer2BigdA3 after)
 	{
-		ParameterValidation.pvNotNull("after", after);
+		Validate.Arg.checkNotNull("after", after);
 		
-		return (a, b) -> { accept2BigdA3(a, b); after.accept2BigdA3(a, b); };
-	}
-	
-	/**
-	 * Performs the given operation before this operation.
-	 * 
-	 * @param before The operation to perform before this operation.
-	 * 
-	 * @return A new {@link Consumer2BigdA3} performing the operation before and
-	 * this operation.
-	 */
-	default Consumer2BigdA3 before2BigdA3(Consumer2BigdA3 before)
-	{
-		ParameterValidation.pvNotNull("before", before);
-		
-		return (a, b) -> { before.accept2BigdA3(a, b); accept2BigdA3(a, b); };
-	}
-	
-	/**
-	 * Composes a new {@link Consumer2BigdA3} performing the given operations in
-	 * sequence.
-	 * 
-	 * @param consumers The operations to perform.
-	 * 
-	 * @return A new {@link Consumer2BigdA3} performing the operations.
-	 */
-	@SafeVarargs
-	static Consumer2BigdA3 of2BigdA3(Consumer2BigdA3... consumers)
-	{
-		ParameterValidation.pvNotNull("consumers", consumers);
-		ParameterValidation.pvEntriesNotNull("consumers", consumers);
-		
-		/*
-		 * If no operations are passed return empty operation.
-		 */
-		if(consumers.length == 0) return (a, b) -> {};
-		
-		/*
-		 * If exactly one operation is passed return the operation.
-		 */
-		if(consumers.length == 1) return consumers[0];
-		
-		return (a, b) -> { for(Consumer2BigdA3 consumer : consumers) consumer.accept2BigdA3(a, b); };
+		return (a, b) -> { acceptBigd(a, b); after.acceptBigd(a, b); };
 	}
 	
 	/**
@@ -101,11 +66,11 @@ public interface Consumer2BigdA3 extends Consumer2<BigDecimal[][][],BigDecimal[]
 	 * operation after.
 	 */
 	@Override
-	default Consumer2BigdA3 then(Consumer2<BigDecimal[][][],BigDecimal[][][]> after)
+	default Consumer2BigdA3 then(Consumer2<? super BigDecimal[][][],? super BigDecimal[][][]> after)
 	{
-		ParameterValidation.pvNotNull("after", after);
+		Validate.Arg.checkNotNull("after", after);
 
-		return (a, b) -> { accept2BigdA3(a, b); after.accept(a, b); };
+		return (a, b) -> { acceptBigd(a, b); after.accept(a, b); };
 	}
 	
 	/**
@@ -117,9 +82,32 @@ public interface Consumer2BigdA3 extends Consumer2<BigDecimal[][][],BigDecimal[]
 	@Override
 	default Consumer2BigdA3 then(java.util.function.BiConsumer<? super BigDecimal[][][],? super BigDecimal[][][]> after)
 	{
-		ParameterValidation.pvNotNull("after", after);
+		Validate.Arg.checkNotNull("after", after);
 
-		return (a, b) -> { accept2BigdA3(a, b); after.accept(a, b); };
+		return (a, b) -> { acceptBigd(a, b); after.accept(a, b); };
+	}
+	
+	@Override
+	default Consumer2BigdA3 andThen(java.util.function.BiConsumer<? super BigDecimal[][][],? super BigDecimal[][][]> after)
+	{
+		Validate.Arg.checkNotNull("after", after);
+		
+		return (a, b) -> { acceptBigd(a, b); after.accept(a, b); };
+	}
+	
+	/**
+	 * Performs the given operation before this operation.
+	 * 
+	 * @param before The operation to perform before this operation.
+	 * 
+	 * @return A new {@link Consumer2BigdA3} performing the operation before and
+	 * this operation.
+	 */
+	default Consumer2BigdA3 before(Consumer2BigdA3 before)
+	{
+		Validate.Arg.checkNotNull("before", before);
+		
+		return (a, b) -> { before.acceptBigd(a, b); acceptBigd(a, b); };
 	}
 	
 	/**
@@ -129,11 +117,11 @@ public interface Consumer2BigdA3 extends Consumer2<BigDecimal[][][],BigDecimal[]
 	 * this operation.
 	 */
 	@Override
-	default Consumer2BigdA3 before(Consumer2<BigDecimal[][][],BigDecimal[][][]> before)
+	default Consumer2BigdA3 before(Consumer2<? super BigDecimal[][][],? super BigDecimal[][][]> before)
 	{
-		ParameterValidation.pvNotNull("before", before);
+		Validate.Arg.checkNotNull("before", before);
 		
-		return (a, b) -> { before.accept(a, b); accept2BigdA3(a, b); };
+		return (a, b) -> { before.accept(a, b); acceptBigd(a, b); };
 	}
 	
 	/**
@@ -145,9 +133,9 @@ public interface Consumer2BigdA3 extends Consumer2<BigDecimal[][][],BigDecimal[]
 	@Override
 	default Consumer2BigdA3 before(java.util.function.BiConsumer<? super BigDecimal[][][],? super BigDecimal[][][]> before)
 	{
-		ParameterValidation.pvNotNull("before", before);
+		Validate.Arg.checkNotNull("before", before);
 		
-		return (a, b) -> { before.accept(a, b); accept2BigdA3(a, b); };
+		return (a, b) -> { before.accept(a, b); acceptBigd(a, b); };
 	}
 	
 	/**
@@ -159,39 +147,58 @@ public interface Consumer2BigdA3 extends Consumer2<BigDecimal[][][],BigDecimal[]
 	 * @return A new {@link Consumer2BigdA3} performing the operations.
 	 */
 	@SafeVarargs
-	static Consumer2BigdA3 of(Consumer2<BigDecimal[][][],BigDecimal[][][]>... consumers)
+	static Consumer2BigdA3 of(Consumer2BigdA3... consumers)
 	{
-		ParameterValidation.pvNotNull("consumers", consumers);
-		ParameterValidation.pvEntriesNotNull("consumers", consumers);
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		/*
-		 * If no operations are passed return empty operation.
-		 */
+		if(consumers.length == 0) return (a, b) -> {};
+		
+		if(consumers.length == 1) return consumers[0];
+		
+		return (a, b) -> { for(Consumer2BigdA3 consumer : consumers) consumer.acceptBigd(a, b); };
+	}
+
+	/**
+	 * Composes a new {@link Consumer2BigdA3} performing the given operations in
+	 * sequence.
+	 * 
+	 * @param consumers The operations to perform.
+	 * 
+	 * @return A new {@link Consumer2BigdA3} performing the operations.
+	 */
+	@SafeVarargs
+	static Consumer2BigdA3 of(Consumer2<? super BigDecimal[][][],? super BigDecimal[][][]>... consumers)
+	{
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
+		
 		if(consumers.length == 0) return (a, b) -> {};
 
 		if(consumers.length == 1) return (Consumer2BigdA3) consumers[0]::accept;
 
-		return (a, b) -> { for(Consumer2<BigDecimal[][][],BigDecimal[][][]> consumer : consumers) consumer.accept(a, b); };
+		return (a, b) -> { for(Consumer2<? super BigDecimal[][][],? super BigDecimal[][][]> consumer : consumers) consumer.accept(a, b); };
+	}
+
+	/**
+	 * Composes a new {@link Consumer2BigdA3} performing the given operations in
+	 * sequence.
+	 * 
+	 * @param consumers The operations to perform.
+	 * 
+	 * @return A new {@link Consumer2BigdA3} performing the operations.
+	 */
+	@SafeVarargs
+	static Consumer2BigdA3 of(java.util.function.BiConsumer<? super BigDecimal[][][],? super BigDecimal[][][]>... consumers)
+	{
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
+		
+		if(consumers.length == 0) return (a, b) -> {};
+
+		if(consumers.length == 1) return (Consumer2BigdA3) consumers[0]::accept;
+
+		return (a, b) -> { for(java.util.function.BiConsumer<? super BigDecimal[][][],? super BigDecimal[][][]> consumer : consumers) consumer.accept(a, b); };
 	}
 	
-	/**
-	 * @deprecated Use {@link #accept2BigdA3(BigDecimal[][][], BigDecimal[][][])}
-	 * instead.
-	 */
-	@Override
-	@Deprecated(since = "1.0", forRemoval = false)
-	default void accept(BigDecimal[][][] a, BigDecimal[][][] b)
-	{
-		accept2BigdA3(a, b);
-	}
-	
-	/**
-	 * @deprecated Use {@link #then(java.util.function.BiConsumer)} instead.
-	 */
-	@Override
-	@Deprecated(since = "1.0", forRemoval = false)
-	default Consumer2BigdA3 andThen(java.util.function.BiConsumer<? super BigDecimal[][][],? super BigDecimal[][][]> after)
-	{
-		return then(after);
-	}
 }

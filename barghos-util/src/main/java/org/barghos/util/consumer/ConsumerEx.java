@@ -1,7 +1,7 @@
 package org.barghos.util.consumer;
 
 import org.barghos.validation.ExceptionHandler;
-import org.barghos.validation.ParameterValidation;
+import org.barghos.validation.Validate;
 
 /**
  * Represents an operation that accepts one input argument and returns no
@@ -46,9 +46,23 @@ public interface ConsumerEx<A>
 	 * @return A new {@link ConsumerEx} performing this operation and the
 	 * operation after.
 	 */
-	default ConsumerEx<A> then(ConsumerEx<A> after)
+	default ConsumerEx<A> then(ConsumerEx<? super A> after)
 	{
-		ParameterValidation.pvNotNull("after", after);
+		Validate.Arg.checkNotNull("after", after);
+		
+		return (a) -> { accept(a); after.accept(a); };
+	}
+	
+	default ConsumerEx<A> then(Consumer<? super A> after)
+	{
+		Validate.Arg.checkNotNull("after", after);
+		
+		return (a) -> { accept(a); after.accept(a); };
+	}
+	
+	default ConsumerEx<A> then(java.util.function.Consumer<? super A> after)
+	{
+		Validate.Arg.checkNotNull("after", after);
 		
 		return (a) -> { accept(a); after.accept(a); };
 	}
@@ -61,9 +75,23 @@ public interface ConsumerEx<A>
 	 * @return A new {@link ConsumerEx} performing the operation before and this
 	 * operation.
 	 */
-	default ConsumerEx<A> before(ConsumerEx<A> before)
+	default ConsumerEx<A> before(ConsumerEx<? super A> before)
 	{
-		ParameterValidation.pvNotNull("before", before);
+		Validate.Arg.checkNotNull("before", before);
+		
+		return (a) -> { before.accept(a); accept(a); };
+	}
+	
+	default ConsumerEx<A> before(Consumer<? super A> before)
+	{
+		Validate.Arg.checkNotNull("before", before);
+		
+		return (a) -> { before.accept(a); accept(a); };
+	}
+	
+	default ConsumerEx<A> before(java.util.function.Consumer<? super A> before)
+	{
+		Validate.Arg.checkNotNull("before", before);
 		
 		return (a) -> { before.accept(a); accept(a); };
 	}
@@ -77,9 +105,9 @@ public interface ConsumerEx<A>
 	 * @return A new {@link Consumer} performing the operations and exception
 	 * handling.
 	 */
-	default Consumer<A> handled(ExceptionHandler handler)
+	default Consumer<A> handleEx(ExceptionHandler handler)
 	{
-		ParameterValidation.pvNotNull("handler", handler);
+		Validate.Arg.checkNotNull("handler", handler);
 		
 		return (a) -> {
 			try
@@ -93,6 +121,17 @@ public interface ConsumerEx<A>
 		};
 	}
 	
+	default Consumer<A> ignoreEx()
+	{
+		return (a) -> {
+			try
+			{
+				accept(a);
+			}
+			catch(Exception e) { }
+		};
+	}
+	
 	/**
 	 * Performs the passed operation in case of an exception in this consumer.
 	 * As the passed consumer may throw an exception the returned consumer is
@@ -103,9 +142,9 @@ public interface ConsumerEx<A>
 	 * 
 	 * @return A new {@link ConsumerEx} performing the operations.
 	 */
-	default ConsumerEx<A> onException(ConsumerEx<A> consumer)
+	default ConsumerEx<A> onEx(ConsumerEx<? super A> consumer)
 	{
-		ParameterValidation.pvNotNull("consumer", consumer);
+		Validate.Arg.checkNotNull("consumer", consumer);
 		
 		return (a) -> {
 			try
@@ -128,9 +167,25 @@ public interface ConsumerEx<A>
 	 * 
 	 * @return A new {@link Consumer} performing the operations.
 	 */
-	default Consumer<A> onException(Consumer<A> consumer)
+	default Consumer<A> onEx(Consumer<? super A> consumer)
 	{
-		ParameterValidation.pvNotNull("consumer", consumer);
+		Validate.Arg.checkNotNull("consumer", consumer);
+		
+		return (a) -> {
+			try
+			{
+				accept(a);
+			}
+			catch(Exception e)
+			{
+				consumer.accept(a);
+			}
+		};
+	}
+	
+	default Consumer<A> onEx(java.util.function.Consumer<? super A> consumer)
+	{
+		Validate.Arg.checkNotNull("consumer", consumer);
 		
 		return (a) -> {
 			try
@@ -154,22 +209,17 @@ public interface ConsumerEx<A>
 	 * 
 	 * @return A new {@link ConsumerEx} performing the operations.
 	 */
+	@SuppressWarnings("unchecked")
 	@SafeVarargs
-	static <A> ConsumerEx<A> of(ConsumerEx<A>... consumers)
+	static <A> ConsumerEx<A> of(ConsumerEx<? super A>... consumers)
 	{
-		ParameterValidation.pvNotNull("consumers", consumers);
-		ParameterValidation.pvEntriesNotNull("consumers", consumers);
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		/*
-		 * If no operations are passed return empty operation.
-		 */
 		if(consumers.length == 0) return (a) -> {};
 		
-		/*
-		 * If exactly one operation is passed return the operation.
-		 */
-		if(consumers.length == 1) return consumers[0];
+		if(consumers.length == 1) return (ConsumerEx<A>)consumers[0];
 		
-		return (a) -> { for(ConsumerEx<A> consumer : consumers) consumer.accept(a); };
+		return (a) -> { for(ConsumerEx<? super A> consumer : consumers) consumer.accept(a); };
 	}
 }

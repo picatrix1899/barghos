@@ -8,7 +8,7 @@ import org.barghos.annotation.Nullable;
  * four components. Therefore the operations of this interface will not alter
  * the component values of this tuple.
  */
-public interface Tup4RF extends FixTupRF
+public interface Tup4RF extends TupRF
 {
 	/**
 	 * Creates a new instance of the original type of this tuple and adopts the
@@ -33,7 +33,6 @@ public interface Tup4RF extends FixTupRF
 	 * A new instance of the original type of this tuple with the adopted
 	 * component values.
 	 */
-	@Override
 	Tup4RF createNew(TupRF t);
 	
 	/**
@@ -47,8 +46,7 @@ public interface Tup4RF extends FixTupRF
 	 * A new instance of the original type of this tuple with the adopted
 	 * component values.
 	 */
-	@Override
-	Tup4RF createNew(float... t);
+	Tup4RF createNew(float[] t);
 	
 	/**
 	 * Creates a new instance of the type of this tuple and sets the component
@@ -615,7 +613,7 @@ public interface Tup4RF extends FixTupRF
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equals(@Nullable float... t);
+	boolean equals(@Nullable float[] t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -781,7 +779,7 @@ public interface Tup4RF extends FixTupRF
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equals(float tolerance, @Nullable float... t);
+	boolean equals(float tolerance, @Nullable float[] t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -932,7 +930,7 @@ public interface Tup4RF extends FixTupRF
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equalsAt(int index, @Nullable float... t);
+	boolean equalsAt(int index, @Nullable float[] t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -1106,7 +1104,7 @@ public interface Tup4RF extends FixTupRF
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equalsAt(float tolerance, int index, @Nullable float... t);
+	boolean equalsAt(float tolerance, int index, @Nullable float[] t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -2267,8 +2265,7 @@ public interface Tup4RF extends FixTupRF
 	 * 
 	 * @return A new instance of this type of tuple with the result.
 	 */
-	@Override
-	Tup4RF arrangeN(int... indices);
+	Tup4RF arrangeN(int[] indices);
 	
 	/**
 	 * Arranges the order of the component values by their indices and returns

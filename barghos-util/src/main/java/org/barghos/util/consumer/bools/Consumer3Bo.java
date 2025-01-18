@@ -1,7 +1,7 @@
 package org.barghos.util.consumer.bools;
 
 import org.barghos.util.consumer.Consumer3;
-import org.barghos.validation.ParameterValidation;
+import org.barghos.validation.Validate;
 
 /**
  * Represents an operation that accepts three boolean input arguments and
@@ -13,7 +13,7 @@ import org.barghos.validation.ParameterValidation;
  * 
  * <p>
  * Functional Method:
- * {@link #accept3Bo(boolean, boolean, boolean)}
+ * {@link #acceptBo(boolean, boolean, boolean)}
  * 
  * @see ConsumerBo
  * @see ConsumerExBo
@@ -27,6 +27,7 @@ import org.barghos.validation.ParameterValidation;
 @FunctionalInterface
 public interface Consumer3Bo extends Consumer3<Boolean,Boolean,Boolean>
 {
+	
 	/**
 	 * Performs the operation on the given arguments.
 	 *
@@ -34,7 +35,13 @@ public interface Consumer3Bo extends Consumer3<Boolean,Boolean,Boolean>
 	 * @param b The second input argument.
 	 * @param c The third input argument.
 	 */
-	void accept3Bo(boolean a, boolean b, boolean c);
+	void acceptBo(boolean a, boolean b, boolean c);
+	
+	@Override
+	default void accept(Boolean a, Boolean b, Boolean c)
+	{
+		acceptBo(a, b, c);
+	}
 	
 	/**
 	 * Performs the given operation after this operation.
@@ -44,11 +51,25 @@ public interface Consumer3Bo extends Consumer3<Boolean,Boolean,Boolean>
 	 * @return A new {@link Consumer3Bo} performing this operation and the
 	 * operation after.
 	 */
-	default Consumer3Bo then3Bo(Consumer3Bo after)
+	default Consumer3Bo then(Consumer3Bo after)
 	{
-		ParameterValidation.pvNotNull("after", after);
+		Validate.Arg.checkNotNull("after", after);
 		
-		return (a, b, c) -> { accept3Bo(a, b, c); after.accept3Bo(a, b, c); };
+		return (a, b, c) -> { acceptBo(a, b, c); after.acceptBo(a, b, c); };
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @return A new {@link Consumer3Bo} performing this operation and the
+	 * operation after.
+	 */
+	@Override
+	default Consumer3Bo then(Consumer3<? super Boolean,? super Boolean,? super Boolean> after)
+	{
+		Validate.Arg.checkNotNull("after", after);
+
+		return (a, b, c) -> { acceptBo(a, b, c); after.accept(a, b, c); };
 	}
 	
 	/**
@@ -59,62 +80,11 @@ public interface Consumer3Bo extends Consumer3<Boolean,Boolean,Boolean>
 	 * @return A new {@link Consumer3Bo} performing the operation before and
 	 * this operation.
 	 */
-	default Consumer3Bo before3Bo(Consumer3Bo before)
+	default Consumer3Bo before(Consumer3Bo before)
 	{
-		ParameterValidation.pvNotNull("before", before);
+		Validate.Arg.checkNotNull("before", before);
 		
-		return (a, b, c) -> { before.accept3Bo(a, b, c); accept3Bo(a, b, c); };
-	}
-	
-	/**
-	 * Composes a new {@link Consumer3Bo} performing the given operations in
-	 * sequence.
-	 * 
-	 * @param consumers The operations to perform.
-	 * 
-	 * @return A new {@link Consumer3Bo} performing the operations.
-	 */
-	@SafeVarargs
-	static Consumer3Bo of3Bo(Consumer3Bo... consumers)
-	{
-		ParameterValidation.pvNotNull("consumers", consumers);
-		ParameterValidation.pvEntriesNotNull("consumers", consumers);
-		
-		/*
-		 * If no operations are passed return empty operation.
-		 */ 
-		if(consumers.length == 0) return (a, b, c) -> {};
-		
-		/*
-		 * If exactly one operation is passed return the operation.
-		 */
-		if(consumers.length == 1) return consumers[0];
-		
-		return (a, b, c) -> { for(Consumer3Bo consumer : consumers) consumer.accept3Bo(a, b, c); };
-	}
-	
-	/**
-	 * @deprecated Use {@link #accept3Bo(boolean, boolean, boolean)} instead.
-	 */
-	@Override
-	@Deprecated(since = "1.0", forRemoval = false)
-	default void accept(Boolean a, Boolean b, Boolean c)
-	{
-		accept3Bo(a, b, c);
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @return A new {@link Consumer3Bo} performing this operation and the
-	 * operation after.
-	 */
-	@Override
-	default Consumer3Bo then(Consumer3<Boolean,Boolean,Boolean> after)
-	{
-		ParameterValidation.pvNotNull("after", after);
-
-		return (a, b, c) -> { accept3Bo(a, b, c); after.accept(a, b, c); };
+		return (a, b, c) -> { before.acceptBo(a, b, c); acceptBo(a, b, c); };
 	}
 	
 	/**
@@ -124,11 +94,11 @@ public interface Consumer3Bo extends Consumer3<Boolean,Boolean,Boolean>
 	 * this operation.
 	 */
 	@Override
-	default Consumer3Bo before(Consumer3<Boolean,Boolean,Boolean> before)
+	default Consumer3Bo before(Consumer3<? super Boolean,? super Boolean,? super Boolean> before)
 	{
-		ParameterValidation.pvNotNull("before", before);
+		Validate.Arg.checkNotNull("before", before);
 
-		return (a, b, c) -> { before.accept(a, b, c); accept3Bo(a, b, c); };
+		return (a, b, c) -> { before.accept(a, b, c); acceptBo(a, b, c); };
 	}
 	
 	/**
@@ -139,19 +109,40 @@ public interface Consumer3Bo extends Consumer3<Boolean,Boolean,Boolean>
 	 * 
 	 * @return A new {@link Consumer3Bo} performing the operations.
 	 */
+	@SuppressWarnings("unused")
 	@SafeVarargs
-	static Consumer3Bo of(Consumer3<Boolean,Boolean,Boolean>... consumers)
+	static Consumer3Bo of(Consumer3Bo... consumers)
 	{
-		ParameterValidation.pvNotNull("consumers", consumers);
-		ParameterValidation.pvEntriesNotNull("consumers", consumers);
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
+
+		if(consumers.length == 0) return (a, b, c) -> {};
+
+		if(consumers.length == 1) return consumers[0];
 		
-		/*
-		 * If no operations are passed return empty operation.
-		 */
+		return (a, b, c) -> { for(Consumer3Bo consumer : consumers) consumer.acceptBo(a, b, c); };
+	}
+
+	/**
+	 * Composes a new {@link Consumer3Bo} performing the given operations in
+	 * sequence.
+	 * 
+	 * @param consumers The operations to perform.
+	 * 
+	 * @return A new {@link Consumer3Bo} performing the operations.
+	 */
+	@SuppressWarnings("unused")
+	@SafeVarargs
+	static Consumer3Bo of(Consumer3<? super Boolean,? super Boolean,? super Boolean>... consumers)
+	{
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
+
 		if(consumers.length == 0) return (a, b, c) -> {};
 
 		if(consumers.length == 1) return (Consumer3Bo) consumers[0]::accept;
 		
-		return (a, b, c) -> { for(Consumer3<Boolean,Boolean,Boolean> consumer : consumers) consumer.accept(a, b, c); };
+		return (a, b, c) -> { for(Consumer3<? super Boolean,? super Boolean,? super Boolean> consumer : consumers) consumer.accept(a, b, c); };
 	}
+	
 }

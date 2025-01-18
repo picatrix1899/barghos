@@ -20,6 +20,7 @@ import org.barghos.util.supplier.SupplierEx;
 @FunctionalInterface
 public interface SupplierExO extends SupplierEx<Object>
 {
+	
 	/**
 	 * Gets a result.
 	 *
@@ -27,15 +28,17 @@ public interface SupplierExO extends SupplierEx<Object>
 	 * 
 	 * @throws Exception May throw an exception during execution.
 	 */
-	int getO() throws Exception;
+	Object getO() throws Exception;
 	
-	/**
-	 * @deprecated Use {@link #getO()} instead.
-	 */
 	@Override
-	@Deprecated(since = "1.0", forRemoval = false)
 	default Object get() throws Exception
 	{
 		return getO();
 	}
+	
+	public static SupplierExO of(Object value)
+	{
+		return () -> value;
+	}
+	
 }

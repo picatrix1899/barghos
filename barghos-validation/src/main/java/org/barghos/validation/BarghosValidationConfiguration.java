@@ -2,15 +2,15 @@ package org.barghos.validation;
 
 public class BarghosValidationConfiguration
 {
-	private static boolean PARAMETER_VALIDATION;
+	private static boolean VALIDATE_ARGS;
 	
-	public static void parameterValidation(boolean enabled)
+	public static void validateArgs(boolean enabled)
 	{
-		PARAMETER_VALIDATION = enabled;
+		VALIDATE_ARGS = enabled;
 	}
 	
-	public static boolean parameterValidation()
+	public static boolean validateArgs()
 	{
-		return PARAMETER_VALIDATION;
+		return VALIDATE_ARGS;
 	}
 }

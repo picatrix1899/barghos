@@ -19,6 +19,7 @@ import org.barghos.util.supplier.Supplier;
 @FunctionalInterface
 public interface SupplierBoA2 extends Supplier<boolean[][]>
 {
+	
 	/**
 	 * Gets a result.
 	 *
@@ -26,13 +27,15 @@ public interface SupplierBoA2 extends Supplier<boolean[][]>
 	 */
 	boolean[][] getBoA2();
 	
-	/**
-	 * @deprecated Use {@link #getBoA2()} instead.
-	 */
 	@Override
-	@Deprecated(since = "1.0", forRemoval = false)
 	default boolean[][] get()
 	{
 		return getBoA2();
 	}
+	
+	public static SupplierBoA2 of(boolean[][] value)
+	{
+		return () -> value;
+	}
+	
 }

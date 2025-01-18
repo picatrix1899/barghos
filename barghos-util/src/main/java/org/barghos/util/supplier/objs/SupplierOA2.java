@@ -19,6 +19,7 @@ import org.barghos.util.supplier.Supplier;
 @FunctionalInterface
 public interface SupplierOA2 extends Supplier<Object[][]>
 {
+	
 	/**
 	 * Gets a result.
 	 *
@@ -26,13 +27,15 @@ public interface SupplierOA2 extends Supplier<Object[][]>
 	 */
 	Object[][] getOA2();
 	
-	/**
-	 * @deprecated Use {@link #getOA2()} instead.
-	 */
 	@Override
-	@Deprecated(since = "1.0", forRemoval = false)
 	default Object[][] get()
 	{
 		return getOA2();
 	}
+	
+	public static SupplierOA2 of(Object[][] value)
+	{
+		return () -> value;
+	}
+	
 }

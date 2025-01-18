@@ -8,6 +8,7 @@ public interface ExceptionHandler
 {
 	void handle(Exception e);
 	
+	@SuppressWarnings("unused")
 	static ExceptionHandler ignore()
 	{
 		return (e) -> {};

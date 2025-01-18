@@ -20,6 +20,7 @@ import org.barghos.util.supplier.SupplierEx;
 @FunctionalInterface
 public interface SupplierExBA2 extends SupplierEx<byte[][]>
 {
+	
 	/**
 	 * Gets a result.
 	 *
@@ -29,13 +30,15 @@ public interface SupplierExBA2 extends SupplierEx<byte[][]>
 	 */
 	byte[][] getBA2() throws Exception;
 	
-	/**
-	 * @deprecated Use {@link #getBA2()} instead.
-	 */
 	@Override
-	@Deprecated(since = "1.0", forRemoval = false)
 	default byte[][] get() throws Exception
 	{
 		return getBA2();
 	}
+	
+	public static SupplierExBA2 of(byte[][] value)
+	{
+		return () -> value;
+	}
+	
 }

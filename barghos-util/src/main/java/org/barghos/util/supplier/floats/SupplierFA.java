@@ -19,6 +19,7 @@ import org.barghos.util.supplier.Supplier;
 @FunctionalInterface
 public interface SupplierFA extends Supplier<float[]>
 {
+	
 	/**
 	 * Gets a result.
 	 *
@@ -26,13 +27,15 @@ public interface SupplierFA extends Supplier<float[]>
 	 */
 	float[] getFA();
 	
-	/**
-	 * @deprecated Use {@link #getFA()} instead.
-	 */
 	@Override
-	@Deprecated(since = "1.0", forRemoval = false)
 	default float[] get()
 	{
 		return getFA();
 	}
+	
+	public static SupplierFA of(float[] value)
+	{
+		return () -> value;
+	}
+	
 }

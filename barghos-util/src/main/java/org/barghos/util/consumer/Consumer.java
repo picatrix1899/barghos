@@ -1,6 +1,6 @@
 package org.barghos.util.consumer;
 
-import org.barghos.validation.ParameterValidation;
+import org.barghos.validation.Validate;
 
 /**
  * Represents an operation that accepts one input argument and returns no
@@ -43,10 +43,10 @@ public interface Consumer<A> extends java.util.function.Consumer<A>
 	 * @return A new {@link Consumer} performing this operation and the
 	 * operation after.
 	 */
-	default Consumer<A> then(Consumer<A> after)
+	default Consumer<A> then(Consumer<? super A> after)
 	{
-		ParameterValidation.pvNotNull("after", after);
-		
+		Validate.Arg.checkNotNull("after", after);
+
 		return (a) -> { accept(a); after.accept(a); };
 	}
 	
@@ -60,9 +60,17 @@ public interface Consumer<A> extends java.util.function.Consumer<A>
 	 */
 	default Consumer<A> then(java.util.function.Consumer<? super A> after)
 	{
-		ParameterValidation.pvNotNull("after", after);
+		Validate.Arg.checkNotNull("after", after);
 		
-		return (a) -> { accept(a); after.accept(a); };
+		return then(after::accept);
+	}
+	
+	@Override
+	default Consumer<A> andThen(java.util.function.Consumer<? super A> after)
+	{
+		Validate.Arg.checkNotNull("after", after);
+		
+		return then(after::accept);
 	}
 	
 	/**
@@ -73,9 +81,9 @@ public interface Consumer<A> extends java.util.function.Consumer<A>
 	 * @return A new {@link Consumer} performing the operation before and this
 	 * operation.
 	 */
-	default Consumer<A> before(Consumer<A> before)
+	default Consumer<A> before(Consumer<? super A> before)
 	{
-		ParameterValidation.pvNotNull("before", before);
+		Validate.Arg.checkNotNull("before", before);
 		
 		return (a) -> { before.accept(a); accept(a); };
 	}
@@ -90,21 +98,11 @@ public interface Consumer<A> extends java.util.function.Consumer<A>
 	 */
 	default Consumer<A> before(java.util.function.Consumer<? super A> before)
 	{
-		ParameterValidation.pvNotNull("before", before);
+		Validate.Arg.checkNotNull("before", before);
 		
-		return (a) -> { before.accept(a); accept(a); };
+		return before(before::accept);
 	}
-	
-	/**
-	 * @deprecated Use {@link #then(java.util.function.Consumer)} instead.
-	 */
-	@Override
-	@Deprecated(since = "1.0", forRemoval = false)
-	default Consumer<A> andThen(java.util.function.Consumer<? super A> after)
-	{
-		return then(after);
-	}
-	
+
 	/**
 	 * Composes a new {@link Consumer} performing the given operations in
 	 * sequence.
@@ -115,22 +113,17 @@ public interface Consumer<A> extends java.util.function.Consumer<A>
 	 * 
 	 * @return A new {@link Consumer} performing the operations.
 	 */
+	@SuppressWarnings("unchecked")
 	@SafeVarargs
-	public static <A> Consumer<A> of(Consumer<A>... consumers)
+	public static <A> Consumer<A> of(Consumer<? super A>... consumers)
 	{
-		ParameterValidation.pvNotNull("consumers", consumers);
-		ParameterValidation.pvEntriesNotNull("consumers", consumers);
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		/*
-		 * If no operations are passed return empty operation.
-		 */
 		if(consumers.length == 0) return (a) -> {};
 		
-		/*
-		 * If exactly one operation is passed return the operation.
-		 */
-		if(consumers.length == 1) return consumers[0];
+		if(consumers.length == 1) return (Consumer<A>)consumers[0];
 		
-		return (a) -> { for(Consumer<A> consumer : consumers) consumer.accept(a); };
+		return (a) -> { for(Consumer<? super A> consumer : consumers) consumer.accept(a); };
 	}
 }

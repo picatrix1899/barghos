@@ -6,7 +6,7 @@ package org.barghos.validation.exception.argument;
  * possibility to specify and access also the expected minimum size outside of
  * the message.
  */
-public class ArgumentSizeTooSmallException extends InvalidArgumentSizeException
+public class ArgumentSizeTooSmallException extends ArgumentSizeInvalidException
 {
 	/**
 	 * This constant contains the current version of this class.
@@ -15,18 +15,14 @@ public class ArgumentSizeTooSmallException extends InvalidArgumentSizeException
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private final long minSize;
-	private final boolean hasMinSize;
+	private Object minSize;
 	
 	/**
 	 * Create a new instance of the exception without any additional details.
 	 */
-	public ArgumentSizeTooSmallException()
+	protected ArgumentSizeTooSmallException()
 	{
 		super();
-		
-		this.minSize = -1;
-		this.hasMinSize = false;
 	}
 	
 	/**
@@ -37,12 +33,11 @@ public class ArgumentSizeTooSmallException extends InvalidArgumentSizeException
 	 * @param size The size of the argument.
 	 * @param minSize The required minimum size for the argument.
 	 */
-	public ArgumentSizeTooSmallException(String argument, long size, long minSize)
+	public ArgumentSizeTooSmallException(String argument, Object size, Object minSize)
 	{
 		super(argument, size);
 		
 		this.minSize = minSize;
-		this.hasMinSize = true;
 	}
 	
 	/**
@@ -55,12 +50,11 @@ public class ArgumentSizeTooSmallException extends InvalidArgumentSizeException
 	 * @param minSize The required minimum size for the argument.
 	 * @param message A custom exception message.
 	 */
-	public ArgumentSizeTooSmallException(String argument, long size, long minSize, String message)
+	public ArgumentSizeTooSmallException(String argument, Object size, Object minSize, String message)
 	{
 		super(argument, size, message);
 		
 		this.minSize = minSize;
-		this.hasMinSize = true;
 	}
 	
 	/**
@@ -69,51 +63,31 @@ public class ArgumentSizeTooSmallException extends InvalidArgumentSizeException
 	 * 
 	 * @return The required minimum size for the argument.
 	 */
-	public Object getMinSize()
+	public Object minSize()
 	{
 		return this.minSize;
 	}
 	
-	/**
-	 * Returns if the required minimum size for the argument was specified for
-	 * which this exception was created for.
-	 * 
-	 * @return True, if the required minimum size was specified.
-	 */
-	public boolean hasMinSize()
+	@Override
+	public String localizationKey()
 	{
-		return this.hasMinSize;
+		return "exception.argument.sizetoosmall";
 	}
 	
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public String getMessage()
+	public String defaultMessage()
 	{
-		/*
-		 * If a custom message is provided only output that.
-		 */
-		String customMsg = getCustomMessage();
-		if(customMsg != null && !customMsg.isBlank())
-		{
-			return customMsg;
-		}
-		
-		/*
-		 * If no custom message is provided build and return the default
-		 * one.
-		 */
-		if(!hasArgument()) return "One argument has a size which is smaller than the required minimum size.";
-		
 		StringBuilder builder = new StringBuilder();
 
 		builder.append("The argument ");
-		builder.append("\"").append(getArgument()).append("\" ");
+		builder.append("\"").append(parameter()).append("\" ");
 		builder.append("has a size ");
-		builder.append("\"").append(getSize()).append("\" entries. ");
+		builder.append("\"").append(size()).append("\" entries. ");
 		builder.append("which is smaller than the required minimum size of ");
-		builder.append("\"").append(getMinSize()).append("\" entries.");
+		builder.append("\"").append(minSize()).append("\" entries.");
 		
 		return builder.toString();
 	}

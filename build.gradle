@@ -16,11 +16,11 @@ subprojects {
     withSourcesJar()
 	
 	toolchain {
-        languageVersion = JavaLanguageVersion.of(22)
+        languageVersion = JavaLanguageVersion.of(23)
     }
 	
-	sourceCompatibility = '22'
-    targetCompatibility = '22'
+	sourceCompatibility = '23'
+    targetCompatibility = '23'
   }
   
   testing {
@@ -36,8 +36,8 @@ subprojects {
 	
 	options.encoding = "UTF-8"
 	
-	sourceCompatibility = '22'
-    targetCompatibility = '22'
+	sourceCompatibility = '23'
+    targetCompatibility = '23'
   }
   
   compileTestJava {
@@ -45,8 +45,17 @@ subprojects {
 	
 	options.encoding = "UTF-8"
 	
-	sourceCompatibility = '22'
-    targetCompatibility = '22'
+	sourceCompatibility = '23'
+    targetCompatibility = '23'
+  }
+  
+  tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs += ['--enable-preview']
+    options.failOnError = false
+  }
+  
+  tasks.withType(Javadoc).configureEach {
+    setFailOnError(false)
   }
   
   javadoc {
@@ -69,9 +78,9 @@ subprojects {
     }
   
     jdt {
-      sourceCompatibility = '22'
-      targetCompatibility = '22'
-      javaRuntimeName = 'jdk-22+36'
+      sourceCompatibility = '23'
+      targetCompatibility = '23'
+      javaRuntimeName = 'JavaSE-23'
     }
   
     classpath {

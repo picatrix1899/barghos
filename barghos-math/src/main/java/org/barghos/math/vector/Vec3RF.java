@@ -4,10 +4,9 @@ import org.barghos.annotation.ExtractionParam;
 import org.barghos.annotation.FloatMinValue;
 import org.barghos.annotation.MinLength;
 import org.barghos.annotation.MinLength2d;
-import org.barghos.math.matrix.SimpleMat4fR;
 import org.barghos.math.quaternion.SimpleQuatfR;
-import org.barghos.util.collection.FloatIndexValuePair;
-import org.barghos.util.math.FloatRoundMethod;
+import org.barghos.util.collection.IndexValuePairF;
+import org.barghos.util.math.RoundMethodF;
 import org.barghos.util.math.MathProvider;
 import org.barghos.util.tuple.floats.Tup3RF;
 import org.barghos.util.tuple.floats.Tup3WF;
@@ -17,7 +16,7 @@ import org.barghos.util.tuple.floats.Tup4RF;
  * This interface provides non-invasive (read only) functions and methods for float vectors with
  * three dimensions.
  */
-public interface Vec3RF extends VecBase3RF
+public interface Vec3RF extends Tup3RF
 {
 	
 	/** {@inheritDoc} */

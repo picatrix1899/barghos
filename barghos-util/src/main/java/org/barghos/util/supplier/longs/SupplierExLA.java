@@ -20,6 +20,7 @@ import org.barghos.util.supplier.SupplierEx;
 @FunctionalInterface
 public interface SupplierExLA extends SupplierEx<long[]>
 {
+	
 	/**
 	 * Gets a result.
 	 *
@@ -38,4 +39,10 @@ public interface SupplierExLA extends SupplierEx<long[]>
 	{
 		return getLA();
 	}
+	
+	public static SupplierExLA of(long[] value)
+	{
+		return () -> value;
+	}
+	
 }

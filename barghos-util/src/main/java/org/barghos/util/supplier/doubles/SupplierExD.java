@@ -19,6 +19,7 @@ import org.barghos.util.supplier.SupplierEx;
 @FunctionalInterface
 public interface SupplierExD extends SupplierEx<Double>
 {
+	
 	/**
 	 * Gets a result.
 	 *
@@ -28,13 +29,15 @@ public interface SupplierExD extends SupplierEx<Double>
 	 */
 	double getD() throws Exception;
 	
-	/**
-	 * @deprecated Use {@link #getD()} instead.
-	 */
 	@Override
-	@Deprecated(since = "1.0", forRemoval = false)
 	default Double get() throws Exception
 	{
 		return getD();
 	}
+	
+	public static SupplierExD of(double value)
+	{
+		return () -> value;
+	}
+	
 }

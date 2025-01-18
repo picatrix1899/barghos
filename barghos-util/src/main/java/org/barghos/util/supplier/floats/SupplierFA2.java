@@ -26,13 +26,15 @@ public interface SupplierFA2 extends Supplier<float[][]>
 	 */
 	float[][] getFA2();
 	
-	/**
-	 * @deprecated Use {@link #getFA2()} instead.
-	 */
 	@Override
-	@Deprecated(since = "1.0", forRemoval = false)
 	default float[][] get()
 	{
 		return getFA2();
 	}
+	
+	public static SupplierFA2 of(float[][] value)
+	{
+		return () -> value;
+	}
+	
 }

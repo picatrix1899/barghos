@@ -2,8 +2,10 @@ package org.barghos.util.consumer.bigi;
 
 import java.math.BigInteger;
 
+import org.barghos.util.consumer.Consumer;
 import org.barghos.util.consumer.ConsumerEx;
-import org.barghos.validation.ParameterValidation;
+import org.barghos.validation.ExceptionHandler;
+import org.barghos.validation.Validate;
 
 /**
  * Represents an operation that accepts one 1-dimensional {@link BigInteger}
@@ -30,6 +32,7 @@ import org.barghos.validation.ParameterValidation;
 @FunctionalInterface
 public interface ConsumerExBigi extends ConsumerEx<BigInteger>
 {
+	
 	/**
 	 * Performs the operation on the given arguments.
 	 *
@@ -39,6 +42,12 @@ public interface ConsumerExBigi extends ConsumerEx<BigInteger>
 	 */
 	void acceptBigi(BigInteger a) throws Exception;
 	
+	@Override
+	default void accept(BigInteger a) throws Exception
+	{
+		acceptBigi(a);
+	}
+	
 	/**
 	 * Performs the given operation after this operation.
 	 * 
@@ -47,11 +56,39 @@ public interface ConsumerExBigi extends ConsumerEx<BigInteger>
 	 * @return A new {@link ConsumerExBigi} performing this operation and the
 	 * operation after.
 	 */
-	default ConsumerExBigi thenBigi(ConsumerExBigi after)
+	default ConsumerExBigi then(ConsumerExBigi after)
 	{
-		ParameterValidation.pvNotNull("after", after);
+		Validate.Arg.checkNotNull("after", after);
 		
 		return (a) -> { acceptBigi(a); after.acceptBigi(a); };
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @return A new {@link ConsumerExBigi} performing this operation and the
+	 * operation after.
+	 */
+	@Override
+	default ConsumerExBigi then(ConsumerEx<? super BigInteger> after)
+	{
+		Validate.Arg.checkNotNull("after", after);
+		
+		return (a) -> { acceptBigi(a); after.accept(a); };
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @return A new {@link ConsumerBigi} performing this operation and the
+	 * operation after.
+	 */
+	@Override
+	default ConsumerExBigi then(java.util.function.Consumer<? super BigInteger> after)
+	{
+		Validate.Arg.checkNotNull("after", after);
+
+		return (a) -> { acceptBigi(a); after.accept(a); };
 	}
 	
 	/**
@@ -62,79 +99,182 @@ public interface ConsumerExBigi extends ConsumerEx<BigInteger>
 	 * @return A new {@link ConsumerExBigi} performing the operation before and
 	 * this operation.
 	 */
-	default ConsumerExBigi beforeBigi(ConsumerExBigi before)
+	default ConsumerExBigi before(ConsumerExBigi before)
 	{
-		ParameterValidation.pvNotNull("before", before);
+		Validate.Arg.checkNotNull("before", before);
 		
 		return (a) -> { before.acceptBigi(a); acceptBigi(a); };
 	}
 	
 	/**
-	 * Composes a new {@link ConsumerExBigi} performing the given operations in
-	 * sequence.
-	 * 
-	 * @param consumers The operations to perform.
-	 * 
-	 * @return A new {@link ConsumerExBigi} performing the operations.
-	 */
-	@SafeVarargs
-	static ConsumerExBigi ofBigi(ConsumerExBigi... consumers)
-	{
-		ParameterValidation.pvNotNull("consumers", consumers);
-		ParameterValidation.pvEntriesNotNull("consumers", consumers);
-		
-		/*
-		 * If no operations are passed return empty operation.
-		 */
-		if(consumers.length == 0) return (a) -> {};
-		
-		/*
-		 * If exactly one operation is passed return the operation.
-		 */
-		if(consumers.length == 1) return consumers[0];
-		
-		return (a) -> { for(ConsumerExBigi consumer : consumers) consumer.acceptBigi(a); };
-	}
-	
-	/**
-	 * @deprecated Use {@link #acceptBigi(BigInteger)} instead.
-	 */
-	@Override
-	@Deprecated(since = "1.0", forRemoval = false)
-	default void accept(BigInteger a) throws Exception
-	{
-		acceptBigi(a);
-	}
-	
-	/**
 	 * {@inheritDoc}
 	 * 
 	 * @return A new {@link ConsumerExBigi} performing this operation and the
 	 * operation after.
 	 */
 	@Override
-	default ConsumerExBigi then(ConsumerEx<BigInteger> after)
+	default ConsumerExBigi before(ConsumerEx<? super BigInteger> before)
 	{
-		ParameterValidation.pvNotNull("after", after);
-		
-		return (a) -> { acceptBigi(a); after.accept(a); };
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @return A new {@link ConsumerExBigi} performing this operation and the
-	 * operation after.
-	 */
-	@Override
-	default ConsumerExBigi before(ConsumerEx<BigInteger> before)
-	{
-		ParameterValidation.pvNotNull("before", before);
+		Validate.Arg.checkNotNull("before", before);
 
 		return (a) -> { before.accept(a); acceptBigi(a); };
 	}
 	
 	/**
+	 * {@inheritDoc}
+	 * 
+	 * @return A new {@link ConsumerBigi} performing the operation before and
+	 * this operation.
+	 */
+	@Override
+	default ConsumerExBigi before(java.util.function.Consumer<? super BigInteger> before)
+	{
+		Validate.Arg.checkNotNull("before", before);
+
+		return (a) -> { before.accept(a); acceptBigi(a); };
+	}
+	
+	/**
+	 * Adds exception handling to the consumer and thus converts it into a
+	 * {@link Consumer}.
+	 * 
+	 * @param handler The exception handler called in case of an exception.
+	 * 
+	 * @return A new {@link Consumer} performing the operations and exception
+	 * handling.
+	 */
+	@Override
+	default ConsumerBigi handleEx(ExceptionHandler handler)
+	{
+		Validate.Arg.checkNotNull("handler", handler);
+		
+		return (a) -> {
+			try
+			{
+				acceptBigi(a);
+			}
+			catch(Exception e)
+			{
+				handler.handle(e);
+			}
+		};
+	}
+	
+	@Override
+	default ConsumerBigi ignoreEx()
+	{
+		return (a) -> {
+			try
+			{
+				acceptBigi(a);
+			}
+			catch(Exception e) { }
+		};
+	}
+	
+	default ConsumerExBigi onEx(ConsumerExBigi consumer)
+	{
+		Validate.Arg.checkNotNull("consumer", consumer);
+		
+		return (a) -> {
+			try
+			{
+				acceptBigi(a);
+			}
+			catch(Exception e)
+			{
+				consumer.acceptBigi(a);
+			}
+		};
+	}
+	
+	/**
+	 * Performs the passed operation in case of an exception in this consumer.
+	 * As the passed consumer may throw an exception the returned consumer is
+	 * again a {@link ConsumerEx} relaying the exceptions of the passed
+	 * consumer.
+	 * 
+	 * @param consumer The consumer called in case of an exception.
+	 * 
+	 * @return A new {@link ConsumerEx} performing the operations.
+	 */
+	@Override
+	default ConsumerExBigi onEx(ConsumerEx<? super BigInteger> consumer)
+	{
+		Validate.Arg.checkNotNull("consumer", consumer);
+		
+		return (a) -> {
+			try
+			{
+				acceptBigi(a);
+			}
+			catch(Exception e)
+			{
+				consumer.accept(a);
+			}
+		};
+	}
+	
+	default ConsumerBigi onEx(ConsumerBigi consumer)
+	{
+		Validate.Arg.checkNotNull("consumer", consumer);
+		
+		return (a) -> {
+			try
+			{
+				acceptBigi(a);
+			}
+			catch(Exception e)
+			{
+				consumer.acceptBigi(a);
+			}
+		};
+	}
+	
+	/**
+	 * Performs the passed operation in case of an exception in this consumer.
+	 * As the passed consumer can not throw an exception the returned consumer
+	 * is a {@link Consumer}.
+	 * 
+	 * @param consumer The consumer called in case of an exception.
+	 * 
+	 * @return A new {@link Consumer} performing the operations.
+	 */
+	@Override
+	default ConsumerBigi onEx(Consumer<? super BigInteger> consumer)
+	{
+		Validate.Arg.checkNotNull("consumer", consumer);
+		
+		return (a) -> {
+			try
+			{
+				acceptBigi(a);
+			}
+			catch(Exception e)
+			{
+				consumer.accept(a);
+			}
+		};
+	}
+	
+	@Override
+	default ConsumerBigi onEx(java.util.function.Consumer<? super BigInteger> consumer)
+	{
+		Validate.Arg.checkNotNull("consumer", consumer);
+		
+		return (a) -> {
+			try
+			{
+				acceptBigi(a);
+			}
+			catch(Exception e)
+			{
+				consumer.accept(a);
+			}
+		};
+	}
+	
+	/**
 	 * Composes a new {@link ConsumerExBigi} performing the given operations in
 	 * sequence.
 	 * 
@@ -143,18 +283,99 @@ public interface ConsumerExBigi extends ConsumerEx<BigInteger>
 	 * @return A new {@link ConsumerExBigi} performing the operations.
 	 */
 	@SafeVarargs
-	static ConsumerExBigi of(ConsumerEx<BigInteger>... consumers)
+	static ConsumerExBigi of(ConsumerExBigi... consumers)
 	{
-		ParameterValidation.pvNotNull("consumers", consumers);
-		ParameterValidation.pvEntriesNotNull("consumers", consumers);
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		/*
-		 * If no operations are passed return empty operation.
-		 */
+		if(consumers.length == 0) return (a) -> {};
+
+		if(consumers.length == 1) return consumers[0];
+		
+		return (a) -> { for(ConsumerExBigi consumer : consumers) consumer.acceptBigi(a); };
+	}
+
+	/**
+	 * Composes a new {@link ConsumerExBigi} performing the given operations in
+	 * sequence.
+	 * 
+	 * @param consumers The operations to perform.
+	 * 
+	 * @return A new {@link ConsumerExBigi} performing the operations.
+	 */
+	@SafeVarargs
+	static ConsumerExBigi of(ConsumerEx<? super BigInteger>... consumers)
+	{
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
+		
 		if(consumers.length == 0) return (a) -> {};
 
 		if(consumers.length == 1) return (ConsumerExBigi) consumers[0]::accept;
 
-		return (a) -> { for(ConsumerEx<BigInteger> consumer : consumers) consumer.accept(a); };
+		return (a) -> { for(ConsumerEx<? super BigInteger> consumer : consumers) consumer.accept(a); };
 	}
+	
+	/**
+	 * Composes a new {@link ConsumerEx2Bigd} performing the given operations in
+	 * sequence.
+	 * 
+	 * @param consumers The operations to perform.
+	 * 
+	 * @return A new {@link ConsumerEx2Bigd} performing the operations.
+	 */
+	static ConsumerExBigi of(ConsumerBigi... consumers)
+	{
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
+		
+		if(consumers.length == 0) return (a) -> {};
+
+		if(consumers.length == 1) return (ConsumerExBigi) consumers[0]::accept;
+
+		return (a) -> { for(ConsumerBigi consumer : consumers) consumer.accept(a); };
+	}
+	
+	/**
+	 * Composes a new {@link ConsumerEx2Bigd} performing the given operations in
+	 * sequence.
+	 * 
+	 * @param consumers The operations to perform.
+	 * 
+	 * @return A new {@link ConsumerEx2Bigd} performing the operations.
+	 */
+	@SafeVarargs
+	static ConsumerExBigi of(Consumer<? super BigInteger>... consumers)
+	{
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
+		
+		if(consumers.length == 0) return (a) -> {};
+
+		if(consumers.length == 1) return (ConsumerExBigi) consumers[0]::accept;
+
+		return (a) -> { for(Consumer<? super BigInteger> consumer : consumers) consumer.accept(a); };
+	}
+	
+	/**
+	 * Composes a new {@link ConsumerEx2Bigd} performing the given operations in
+	 * sequence.
+	 * 
+	 * @param consumers The operations to perform.
+	 * 
+	 * @return A new {@link ConsumerEx2Bigd} performing the operations.
+	 */
+	@SafeVarargs
+	static ConsumerExBigi of(java.util.function.Consumer<? super BigInteger>... consumers)
+	{
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
+		
+		if(consumers.length == 0) return (a) -> {};
+
+		if(consumers.length == 1) return (ConsumerExBigi) consumers[0]::accept;
+
+		return (a) -> { for(java.util.function.Consumer<? super BigInteger> consumer : consumers) consumer.accept(a); };
+	}
+	
 }

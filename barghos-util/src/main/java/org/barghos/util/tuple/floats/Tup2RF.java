@@ -8,8 +8,13 @@ import org.barghos.annotation.Nullable;
  * two components. Therefore the operations of this interface will not alter
  * the component values of this tuple.
  */
-public interface Tup2RF extends FixTupRF
+public interface Tup2RF extends TupRF
 {
+	public static final int SIZE = 2;
+	
+	public static final int INDEX_V0 = 0;
+	public static final int INDEX_V1 = 1;
+	
 	/**
 	 * Creates a new instance of the original type of this tuple and adopts the
 	 * component values from the given tuple {@code (t)}.
@@ -33,7 +38,6 @@ public interface Tup2RF extends FixTupRF
 	 * A new instance of the original type of this tuple with the adopted
 	 * component values.
 	 */
-	@Override
 	Tup2RF createNew(TupRF t);
 	
 	/**
@@ -47,8 +51,7 @@ public interface Tup2RF extends FixTupRF
 	 * A new instance of the original type of this tuple with the adopted
 	 * component values.
 	 */
-	@Override
-	Tup2RF createNew(float... t);
+	Tup2RF createNew(float[] t);
 	
 	/**
 	 * Creates a new instance of the type of this tuple and sets the component
@@ -89,7 +92,7 @@ public interface Tup2RF extends FixTupRF
 	@Override
 	default int size()
 	{
-		return 2;
+		return SIZE;
 	}
 	
 	/**
@@ -485,7 +488,7 @@ public interface Tup2RF extends FixTupRF
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equals(@Nullable float... t);
+	boolean equals(@Nullable float[] t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -641,7 +644,7 @@ public interface Tup2RF extends FixTupRF
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equals(float tolerance, @Nullable float... t);
+	boolean equals(float tolerance, @Nullable float[] t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -805,7 +808,7 @@ public interface Tup2RF extends FixTupRF
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equalsAt(int index, @Nullable float... t);
+	boolean equalsAt(int index, @Nullable float[] t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -1003,7 +1006,7 @@ public interface Tup2RF extends FixTupRF
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equalsAt(float tolerance, int index, @Nullable float... t);
+	boolean equalsAt(float tolerance, int index, @Nullable float[] t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -1139,7 +1142,7 @@ public interface Tup2RF extends FixTupRF
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(@Nullable float... t);
+	boolean equalsAtV0(@Nullable float[] t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and
@@ -1251,7 +1254,7 @@ public interface Tup2RF extends FixTupRF
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(@Nullable float... t);
+	boolean equalsAtV1(@Nullable float[] t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and
@@ -1402,7 +1405,7 @@ public interface Tup2RF extends FixTupRF
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(float tolerance, @Nullable float... t);
+	boolean equalsAtV0(float tolerance, @Nullable float[] t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and the given
@@ -1565,7 +1568,7 @@ public interface Tup2RF extends FixTupRF
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(float tolerance, @Nullable float... t);
+	boolean equalsAtV1(float tolerance, @Nullable float[] t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and the given
@@ -1620,8 +1623,7 @@ public interface Tup2RF extends FixTupRF
 	 * 
 	 * @return A new instance of this type of tuple with the result.
 	 */
-	@Override
-	Tup2RF arrangeN(int... indices);
+	Tup2RF arrangeN(int[] indices);
 	
 	/**
 	 * Arranges the order of the component values by their indices and returns

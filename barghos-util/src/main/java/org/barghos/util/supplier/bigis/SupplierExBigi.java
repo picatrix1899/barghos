@@ -22,6 +22,7 @@ import org.barghos.util.supplier.SupplierEx;
 @FunctionalInterface
 public interface SupplierExBigi extends SupplierEx<BigInteger>
 {
+	
 	/**
 	 * Gets a result.
 	 *
@@ -31,13 +32,15 @@ public interface SupplierExBigi extends SupplierEx<BigInteger>
 	 */
 	BigInteger getBigi() throws Exception;
 	
-	/**
-	 * @deprecated Use {@link #getBigi()} instead.
-	 */
 	@Override
-	@Deprecated(since = "1.0", forRemoval = false)
 	default BigInteger get() throws Exception
 	{
 		return getBigi();
 	}
+	
+	public static SupplierExBigi of(BigInteger value)
+	{
+		return () -> value;
+	}
+	
 }

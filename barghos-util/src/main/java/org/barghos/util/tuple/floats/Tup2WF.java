@@ -4,7 +4,7 @@ package org.barghos.util.tuple.floats;
  * This interface provides common operations for float tuples with two
  * components.
  */
-public interface Tup2WF extends Tup2RF, FixTupWF
+public interface Tup2WF extends Tup2RF, TupWF
 {
 	/** {@inheritDoc} */
 	@Override
@@ -16,7 +16,7 @@ public interface Tup2WF extends Tup2RF, FixTupWF
 	
 	/** {@inheritDoc} */
 	@Override
-	Tup2WF createNew(float... t);
+	Tup2WF createNew(float[] t);
 	
 	/** {@inheritDoc} */
 	@Override
@@ -100,7 +100,7 @@ public interface Tup2WF extends Tup2RF, FixTupWF
 	 * @return This tuple.
 	 */
 	@Override
-	Tup2WF set(float... t);
+	Tup2WF set(float[] t);
 	
 	/** {@inheritDoc} */
 	@Override
@@ -122,7 +122,7 @@ public interface Tup2WF extends Tup2RF, FixTupWF
 	
 	/** {@inheritDoc} */
 	@Override
-	Tup2WF arrangeN(int... indices);
+	Tup2WF arrangeN(int[] indices);
 	
 	/** {@inheritDoc} */
 	@Override
@@ -155,8 +155,7 @@ public interface Tup2WF extends Tup2RF, FixTupWF
 	 * 
 	 * @return This tuple.
 	 */
-	@Override
-	Tup2WF arrange(int... indices);
+	Tup2WF arrange(int[] indices);
 	
 	/**
 	 * Arranges the order of the component values by their indices. This does

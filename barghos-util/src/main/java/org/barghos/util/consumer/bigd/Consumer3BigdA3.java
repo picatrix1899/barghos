@@ -3,7 +3,7 @@ package org.barghos.util.consumer.bigd;
 import java.math.BigDecimal;
 
 import org.barghos.util.consumer.Consumer3;
-import org.barghos.validation.ParameterValidation;
+import org.barghos.validation.Validate;
 
 /**
  * Represents an operation that accepts three 3-dimensional {@link BigDecimal}
@@ -29,6 +29,7 @@ import org.barghos.validation.ParameterValidation;
 @FunctionalInterface
 public interface Consumer3BigdA3 extends Consumer3<BigDecimal[][][],BigDecimal[][][],BigDecimal[][][]>
 {
+	
 	/**
 	 * Performs the operation on the given arguments.
 	 *
@@ -36,7 +37,13 @@ public interface Consumer3BigdA3 extends Consumer3<BigDecimal[][][],BigDecimal[]
 	 * @param b The second input argument.
 	 * @param c The third input argument.
 	 */
-	void accept3BigdA3(BigDecimal[][][] a, BigDecimal[][][] b, BigDecimal[][][] c);
+	void acceptBigd(BigDecimal[][][] a, BigDecimal[][][] b, BigDecimal[][][] c);
+
+	@Override
+	default void accept(BigDecimal[][][] a, BigDecimal[][][] b, BigDecimal[][][] c)
+	{
+		acceptBigd(a, b, c);
+	}
 	
 	/**
 	 * Performs the given operation after this operation.
@@ -46,11 +53,25 @@ public interface Consumer3BigdA3 extends Consumer3<BigDecimal[][][],BigDecimal[]
 	 * @return A new {@link Consumer3BigdA3} performing this operation and the
 	 * operation after.
 	 */
-	default Consumer3BigdA3 then3BigdA3(Consumer3BigdA3 after)
+	default Consumer3BigdA3 then(Consumer3BigdA3 after)
 	{
-		ParameterValidation.pvNotNull("after", after);
+		Validate.Arg.checkNotNull("after", after);
 		
-		return (a, b, c) -> { accept3BigdA3(a, b, c); after.accept3BigdA3(a, b, c); };
+		return (a, b, c) -> { acceptBigd(a, b, c); after.acceptBigd(a, b, c); };
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @return A new {@link Consumer3BigdA3} performing this operation and the
+	 * operation after.
+	 */
+	@Override
+	default Consumer3BigdA3 then(Consumer3<? super BigDecimal[][][],? super BigDecimal[][][],? super BigDecimal[][][]> after)
+	{
+		Validate.Arg.checkNotNull("after", after);
+
+		return (a, b, c) -> { acceptBigd(a, b, c); after.accept(a, b, c); };
 	}
 	
 	/**
@@ -61,11 +82,25 @@ public interface Consumer3BigdA3 extends Consumer3<BigDecimal[][][],BigDecimal[]
 	 * @return A new {@link Consumer3BigdA3} performing the operation before and
 	 * this operation.
 	 */
-	default Consumer3BigdA3 before3BigdA3(Consumer3BigdA3 before)
+	default Consumer3BigdA3 before(Consumer3BigdA3 before)
 	{
-		ParameterValidation.pvNotNull("before", before);
+		Validate.Arg.checkNotNull("before", before);
 		
-		return (a, b, c) -> { before.accept3BigdA3(a, b, c); accept3BigdA3(a, b, c); };
+		return (a, b, c) -> { before.acceptBigd(a, b, c); acceptBigd(a, b, c); };
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @return A new {@link Consumer3BigdA3} performing this operation and the
+	 * operation after.
+	 */
+	@Override
+	default Consumer3BigdA3 before(Consumer3<? super BigDecimal[][][],? super BigDecimal[][][],? super BigDecimal[][][]> before)
+	{
+		Validate.Arg.checkNotNull("before", before);
+
+		return (a, b, c) -> { before.accept(a, b, c); acceptBigd(a, b, c); };
 	}
 	
 	/**
@@ -77,62 +112,16 @@ public interface Consumer3BigdA3 extends Consumer3<BigDecimal[][][],BigDecimal[]
 	 * @return A new {@link Consumer3BigdA3} performing the operations.
 	 */
 	@SafeVarargs
-	static Consumer3BigdA3 of3BigdA3(Consumer3BigdA3... consumers)
+	static Consumer3BigdA3 of(Consumer3BigdA3... consumers)
 	{
-		ParameterValidation.pvNotNull("consumers", consumers);
-		ParameterValidation.pvEntriesNotNull("consumers", consumers);
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		/*
-		 * If no operations are passed return empty operation.
-		 */
 		if(consumers.length == 0) return (a, b, c) -> {};
 		
-		/*
-		 * If exactly one operation is passed return the operation.
-		 */
 		if(consumers.length == 1) return consumers[0];
 		
-		return (a, b, c) -> { for(Consumer3BigdA3 consumer : consumers) consumer.accept3BigdA3(a, b, c); };
-	}
-	
-	/**
-	 * @deprecated Use
-	 * {@link #accept3BigdA3(BigDecimal[][][], BigDecimal[][][], BigDecimal[][][])}
-	 * instead.
-	 */
-	@Override
-	@Deprecated(since = "1.0", forRemoval = false)
-	default void accept(BigDecimal[][][] a, BigDecimal[][][] b, BigDecimal[][][] c)
-	{
-		accept3BigdA3(a, b, c);
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @return A new {@link Consumer3BigdA3} performing this operation and the
-	 * operation after.
-	 */
-	@Override
-	default Consumer3BigdA3 then(Consumer3<BigDecimal[][][],BigDecimal[][][],BigDecimal[][][]> after)
-	{
-		ParameterValidation.pvNotNull("after", after);
-
-		return (a, b, c) -> { accept3BigdA3(a, b, c); after.accept(a, b, c); };
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @return A new {@link Consumer3BigdA3} performing this operation and the
-	 * operation after.
-	 */
-	@Override
-	default Consumer3BigdA3 before(Consumer3<BigDecimal[][][],BigDecimal[][][],BigDecimal[][][]> before)
-	{
-		ParameterValidation.pvNotNull("before", before);
-
-		return (a, b, c) -> { before.accept(a, b, c); accept3BigdA3(a, b, c); };
+		return (a, b, c) -> { for(Consumer3BigdA3 consumer : consumers) consumer.acceptBigd(a, b, c); };
 	}
 	
 	/**
@@ -146,16 +135,14 @@ public interface Consumer3BigdA3 extends Consumer3<BigDecimal[][][],BigDecimal[]
 	@SafeVarargs
 	static Consumer3BigdA3 of(Consumer3<BigDecimal[][][],BigDecimal[][][],BigDecimal[][][]>... consumers)
 	{
-		ParameterValidation.pvNotNull("consumers", consumers);
-		ParameterValidation.pvEntriesNotNull("consumers", consumers);
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		/*
-		 * If no operations are passed return empty operation.
-		 */
 		if(consumers.length == 0) return (a, b, c) -> {};
 
 		if(consumers.length == 1) return (Consumer3BigdA3) consumers[0]::accept;
 
 		return (a, b, c) -> { for(Consumer3<BigDecimal[][][],BigDecimal[][][],BigDecimal[][][]> consumer : consumers) consumer.accept(a, b, c); };
 	}
+	
 }

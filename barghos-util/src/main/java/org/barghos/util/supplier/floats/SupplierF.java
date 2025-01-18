@@ -18,6 +18,7 @@ import org.barghos.util.supplier.Supplier;
 @FunctionalInterface
 public interface SupplierF extends Supplier<Float>
 {
+	
 	/**
 	 * Gets a result.
 	 *
@@ -25,13 +26,15 @@ public interface SupplierF extends Supplier<Float>
 	 */
 	float getF();
 	
-	/**
-	 * @deprecated Use {@link #getF()} instead.
-	 */
 	@Override
-	@Deprecated(since = "1.0", forRemoval = false)
 	default Float get()
 	{
 		return getF();
 	}
+	
+	public static SupplierF of(float value)
+	{
+		return () -> value;
+	}
+	
 }

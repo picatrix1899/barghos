@@ -18,6 +18,7 @@ import org.barghos.util.supplier.Supplier;
 @FunctionalInterface
 public interface SupplierBo extends Supplier<Boolean>
 {
+	
 	/**
 	 * Gets a result.
 	 *
@@ -25,13 +26,15 @@ public interface SupplierBo extends Supplier<Boolean>
 	 */
 	boolean getBo();
 	
-	/**
-	 * @deprecated Use {@link #getBo()} instead.
-	 */
 	@Override
-	@Deprecated(since = "1.0", forRemoval = false)
 	default Boolean get()
 	{
 		return getBo();
 	}
+	
+	public static SupplierBo of(boolean value)
+	{
+		return () -> value;
+	}
+	
 }

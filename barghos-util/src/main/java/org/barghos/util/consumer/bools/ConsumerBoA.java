@@ -1,7 +1,8 @@
 package org.barghos.util.consumer.bools;
 
 import org.barghos.util.consumer.Consumer;
-import org.barghos.validation.ParameterValidation;
+import org.barghos.util.consumer.bigd.Consumer2Bigd;
+import org.barghos.validation.Validate;
 
 /**
  * Represents an operation that accepts one 1-dimensional boolean array input
@@ -13,7 +14,7 @@ import org.barghos.validation.ParameterValidation;
  * 
  * <p>
  * Functional Method:
- * {@link #acceptBoA(boolean[])}
+ * {@link #acceptBo(boolean[])}
  * 
  * @see ConsumerBoA
  * @see ConsumerExBoA
@@ -27,12 +28,19 @@ import org.barghos.validation.ParameterValidation;
 @FunctionalInterface
 public interface ConsumerBoA extends Consumer<boolean[]>
 {
+	
 	/**
 	 * Performs the operation on the given arguments.
 	 *
 	 * @param a The first input argument.
 	 */
-	void acceptBoA(boolean[] a);
+	void acceptBo(boolean[] a);
+	
+	@Override
+	default void accept(boolean[] a)
+	{
+		acceptBo(a);
+	}
 	
 	/**
 	 * Performs the given operation after this operation.
@@ -42,63 +50,11 @@ public interface ConsumerBoA extends Consumer<boolean[]>
 	 * @return A new {@link ConsumerBoA} performing this operation and the
 	 * operation after.
 	 */
-	default ConsumerBoA thenBoA(ConsumerBoA after)
+	default ConsumerBoA then(ConsumerBoA after)
 	{
-		ParameterValidation.pvNotNull("after", after);
+		Validate.Arg.checkNotNull("after", after);
 		
-		return (a) -> { acceptBoA(a); after.acceptBoA(a); };
-	}
-	
-	/**
-	 * Performs the given operation before this operation.
-	 * 
-	 * @param before The operation to perform before this operation.
-	 * 
-	 * @return A new {@link ConsumerBoA} performing the operation before and
-	 * this operation.
-	 */
-	default ConsumerBoA beforeBoA(ConsumerBoA before)
-	{
-		ParameterValidation.pvNotNull("before", before);
-		
-		return (a) -> { before.acceptBoA(a); acceptBoA(a); };
-	}
-	
-	/**
-	 * Composes a new {@link ConsumerBoA} performing the given operations in
-	 * sequence.
-	 * 
-	 * @param consumers The operations to perform.
-	 * 
-	 * @return A new {@link ConsumerBoA} performing the operations.
-	 */
-	@SafeVarargs
-	static ConsumerBoA ofBoA(ConsumerBoA... consumers)
-	{
-		ParameterValidation.pvNotNull("consumers", consumers);
-		ParameterValidation.pvEntriesNotNull("consumers", consumers);
-		
-		/*
-		 * If no operations are passed return empty operation.
-		 */
-		if(consumers.length == 0) return (a) -> {};
-		
-		/*
-		 * If exactly one operation is passed return the operation.
-		 */
-		if(consumers.length == 1) return consumers[0];
-		
-		return (a) -> { for(ConsumerBoA consumer : consumers) consumer.acceptBoA(a); };
-	}
-
-	/**
-	 * @deprecated Use {@link #acceptBoA(boolean[])} instead.
-	 */
-	@Override
-	@Deprecated(since = "1.0", forRemoval = false)
-	default void accept(boolean[] a)
-	{
-		acceptBoA(a);
+		return (a) -> { acceptBo(a); after.acceptBo(a); };
 	}
 	
 	/**
@@ -108,11 +64,11 @@ public interface ConsumerBoA extends Consumer<boolean[]>
 	 * operation after.
 	 */
 	@Override
-	default ConsumerBoA then(Consumer<boolean[]> after)
+	default ConsumerBoA then(Consumer<? super boolean[]> after)
 	{
-		ParameterValidation.pvNotNull("after", after);
+		Validate.Arg.checkNotNull("after", after);
 
-		return (a) -> { acceptBoA(a); after.accept(a); };
+		return (a) -> { acceptBo(a); after.accept(a); };
 	}
 	
 	/**
@@ -124,9 +80,32 @@ public interface ConsumerBoA extends Consumer<boolean[]>
 	@Override
 	default ConsumerBoA then(java.util.function.Consumer<? super boolean[]> after)
 	{
-		ParameterValidation.pvNotNull("after", after);
+		Validate.Arg.checkNotNull("after", after);
 
-		return (a) -> { acceptBoA(a); after.accept(a); };
+		return (a) -> { acceptBo(a); after.accept(a); };
+	}
+	
+	@Override
+	default ConsumerBoA andThen(java.util.function.Consumer<? super boolean[]> after)
+	{
+		Validate.Arg.checkNotNull("after", after);
+
+		return (a) -> { acceptBo(a); after.accept(a); };
+	}
+	
+	/**
+	 * Performs the given operation before this operation.
+	 * 
+	 * @param before The operation to perform before this operation.
+	 * 
+	 * @return A new {@link ConsumerBoA} performing the operation before and
+	 * this operation.
+	 */
+	default ConsumerBoA before(ConsumerBoA before)
+	{
+		Validate.Arg.checkNotNull("before", before);
+		
+		return (a) -> { before.acceptBo(a); acceptBo(a); };
 	}
 	
 	/**
@@ -136,11 +115,11 @@ public interface ConsumerBoA extends Consumer<boolean[]>
 	 * this operation.
 	 */
 	@Override
-	default ConsumerBoA before(Consumer<boolean[]> before)
+	default ConsumerBoA before(Consumer<? super boolean[]> before)
 	{
-		ParameterValidation.pvNotNull("before", before);
+		Validate.Arg.checkNotNull("before", before);
 
-		return (a) -> { before.accept(a); acceptBoA(a); };
+		return (a) -> { before.accept(a); acceptBo(a); };
 	}
 	
 	/**
@@ -152,9 +131,9 @@ public interface ConsumerBoA extends Consumer<boolean[]>
 	@Override
 	default ConsumerBoA before(java.util.function.Consumer<? super boolean[]> before)
 	{
-		ParameterValidation.pvNotNull("before", before);
+		Validate.Arg.checkNotNull("before", before);
 
-		return (a) -> { before.accept(a); acceptBoA(a); };
+		return (a) -> { before.accept(a); acceptBo(a); };
 	}
 	
 	/**
@@ -165,31 +144,62 @@ public interface ConsumerBoA extends Consumer<boolean[]>
 	 * 
 	 * @return A new {@link ConsumerBoA} performing the operations.
 	 */
+	@SuppressWarnings("unused")
 	@SafeVarargs
-	static ConsumerBoA of(Consumer<boolean[]>... consumers)
+	static ConsumerBoA of(ConsumerBoA... consumers)
 	{
-		ParameterValidation.pvNotNull("consumers", consumers);
-		ParameterValidation.pvEntriesNotNull("consumers", consumers);
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		/*
-		 * If no operations are passed return empty operation.
-		 */
+		if(consumers.length == 0) return (a) -> {};
+
+		if(consumers.length == 1) return consumers[0];
+		
+		return (a) -> { for(ConsumerBoA consumer : consumers) consumer.acceptBo(a); };
+	}
+
+	/**
+	 * Composes a new {@link ConsumerBoA} performing the given operations in
+	 * sequence.
+	 * 
+	 * @param consumers The operations to perform.
+	 * 
+	 * @return A new {@link ConsumerBoA} performing the operations.
+	 */
+	@SuppressWarnings("unused")
+	@SafeVarargs
+	static ConsumerBoA of(Consumer<? super boolean[]>... consumers)
+	{
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
+
 		if(consumers.length == 0) return (a) -> {};
 
 		if(consumers.length == 1) return (ConsumerBoA) consumers[0]::accept;
 
-		return (a) -> { for(Consumer<boolean[]> consumer : consumers) consumer.accept(a); };
+		return (a) -> { for(Consumer<? super boolean[]> consumer : consumers) consumer.accept(a); };
 	}
-
+	
 	/**
-	 * @deprecated
+	 * Composes a new {@link Consumer2Bigd} performing the given operations in
+	 * sequence.
 	 * 
-	 * Use {@link #then(java.util.function.Consumer)} instead.
+	 * @param consumers The operations to perform.
+	 * 
+	 * @return A new {@link Consumer2Bigd} performing the operations.
 	 */
-	@Override
-	@Deprecated(since = "1.0", forRemoval = false)
-	default ConsumerBoA andThen(java.util.function.Consumer<? super boolean[]> after)
+	@SuppressWarnings("unused")
+	@SafeVarargs
+	static ConsumerBoA of(java.util.function.Consumer<? super boolean[]>... consumers)
 	{
-		return then(after);
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
+		
+		if(consumers.length == 0) return (a) -> {};
+
+		if(consumers.length == 1) return (ConsumerBoA)consumers[0]::accept;
+		
+		return (a) -> { for(java.util.function.Consumer<? super boolean[]> consumer : consumers) consumer.accept(a); };
 	}
+	
 }

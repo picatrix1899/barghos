@@ -21,6 +21,7 @@ import org.barghos.util.supplier.Supplier;
 @FunctionalInterface
 public interface SupplierBigd extends Supplier<BigDecimal>
 {
+	
 	/**
 	 * Gets a result.
 	 *
@@ -28,13 +29,15 @@ public interface SupplierBigd extends Supplier<BigDecimal>
 	 */
 	BigDecimal getBigd();
 	
-	/**
-	 * @deprecated Use {@link #getBigd()} instead.
-	 */
 	@Override
-	@Deprecated(since = "1.0", forRemoval = false)
 	default BigDecimal get()
 	{
 		return getBigd();
 	}
+	
+	public static SupplierBigd of(BigDecimal value)
+	{
+		return () -> value;
+	}
+	
 }

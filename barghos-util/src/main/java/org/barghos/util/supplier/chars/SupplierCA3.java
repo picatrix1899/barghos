@@ -19,6 +19,7 @@ import org.barghos.util.supplier.Supplier;
 @FunctionalInterface
 public interface SupplierCA3 extends Supplier<char[][][]>
 {
+	
 	/**
 	 * Gets a result.
 	 *
@@ -26,13 +27,15 @@ public interface SupplierCA3 extends Supplier<char[][][]>
 	 */
 	char[][][] getCA3();
 	
-	/**
-	 * @deprecated Use {@link #getCA3()} instead.
-	 */
 	@Override
-	@Deprecated(since = "1.0", forRemoval = false)
 	default char[][][] get()
 	{
 		return getCA3();
 	}
+	
+	public static SupplierCA3 of(char[][][] value)
+	{
+		return () -> value;
+	}
+	
 }

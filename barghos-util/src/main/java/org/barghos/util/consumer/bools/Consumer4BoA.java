@@ -1,7 +1,7 @@
 package org.barghos.util.consumer.bools;
 
 import org.barghos.util.consumer.Consumer4;
-import org.barghos.validation.ParameterValidation;
+import org.barghos.validation.Validate;
 
 /**
  * Represents an operation that accepts four 1-dimensional boolean array input
@@ -13,7 +13,7 @@ import org.barghos.validation.ParameterValidation;
  * 
  * <p>
  * Functional Method:
- * {@link #accept4BoA(boolean[], boolean[], boolean[], boolean[])}
+ * {@link #acceptBo(boolean[], boolean[], boolean[], boolean[])}
  * 
  * @see ConsumerBoA
  * @see ConsumerExBoA
@@ -27,6 +27,7 @@ import org.barghos.validation.ParameterValidation;
 @FunctionalInterface
 public interface Consumer4BoA extends Consumer4<boolean[],boolean[],boolean[],boolean[]>
 {
+	
 	/**
 	 * Performs the operation on the given arguments.
 	 *
@@ -35,7 +36,13 @@ public interface Consumer4BoA extends Consumer4<boolean[],boolean[],boolean[],bo
 	 * @param c The third input argument.
 	 * @param d The fourth input argument.
 	 */
-	void accept4BoA(boolean[] a, boolean[] b, boolean[] c, boolean[] d);
+	void acceptBo(boolean[] a, boolean[] b, boolean[] c, boolean[] d);
+	
+	@Override
+	default void accept(boolean[] a, boolean[] b, boolean[] c, boolean[] d)
+	{
+		acceptBo(a, b, c, d);
+	}
 	
 	/**
 	 * Performs the given operation after this operation.
@@ -45,11 +52,25 @@ public interface Consumer4BoA extends Consumer4<boolean[],boolean[],boolean[],bo
 	 * @return A new {@link Consumer4BoA} performing this operation and the
 	 * operation after.
 	 */
-	default Consumer4BoA then4BoA(Consumer4BoA after)
+	default Consumer4BoA then(Consumer4BoA after)
 	{
-		ParameterValidation.pvNotNull("after", after);
+		Validate.Arg.checkNotNull("after", after);
 		
-		return (a, b, c, d) -> { accept4BoA(a, b, c, d); after.accept4BoA(a, b, c, d); };
+		return (a, b, c, d) -> { acceptBo(a, b, c, d); after.acceptBo(a, b, c, d); };
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @return A new {@link Consumer4BoA} performing this operation and the
+	 * operation after.
+	 */
+	@Override
+	default Consumer4BoA then(Consumer4<? super boolean[],? super boolean[],? super boolean[],? super boolean[]> after)
+	{
+		Validate.Arg.checkNotNull("after", after);
+		
+		return (a, b, c, d) -> { acceptBo(a, b, c, d); after.accept(a, b, c, d); };
 	}
 	
 	/**
@@ -60,63 +81,11 @@ public interface Consumer4BoA extends Consumer4<boolean[],boolean[],boolean[],bo
 	 * @return A new {@link Consumer4BoA} performing the operation before and
 	 * this operation.
 	 */
-	default Consumer4BoA before4BoA(Consumer4BoA before)
+	default Consumer4BoA before(Consumer4BoA before)
 	{
-		ParameterValidation.pvNotNull("before", before);
+		Validate.Arg.checkNotNull("before", before);
 		
-		return (a, b, c, d) -> { before.accept4BoA(a, b, c, d); accept4BoA(a, b, c, d); };
-	}
-	
-	/**
-	 * Composes a new {@link Consumer4BoA} performing the given operations in
-	 * sequence.
-	 * 
-	 * @param consumers The operations to perform.
-	 * 
-	 * @return A new {@link Consumer4BoA} performing the operations.
-	 */
-	@SafeVarargs
-	static Consumer4BoA of4BoA(Consumer4BoA... consumers)
-	{
-		ParameterValidation.pvNotNull("consumers", consumers);
-		ParameterValidation.pvEntriesNotNull("consumers", consumers);
-		
-		/*
-		 * If no operations are passed return empty operation.
-		 */
-		if(consumers.length == 0) return (a, b, c, d) -> {};
-		
-		/*
-		 * If exactly one operation is passed return the operation.
-		 */
-		if(consumers.length == 1) return consumers[0];
-		
-		return (a, b, c, d) -> { for(Consumer4BoA consumer : consumers) consumer.accept4BoA(a, b, c, d); };
-	}
-	
-	/**
-	 * @deprecated Use {@link #accept4BoA(boolean[], boolean[], boolean[], boolean[])}
-	 * instead.
-	 */
-	@Override
-	@Deprecated(since = "1.0", forRemoval = false)
-	default void accept(boolean[] a, boolean[] b, boolean[] c, boolean[] d)
-	{
-		accept4BoA(a, b, c, d);
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @return A new {@link Consumer4BoA} performing this operation and the
-	 * operation after.
-	 */
-	@Override
-	default Consumer4BoA then(Consumer4<boolean[],boolean[],boolean[],boolean[]> after)
-	{
-		ParameterValidation.pvNotNull("after", after);
-		
-		return (a, b, c, d) -> { accept4BoA(a, b, c, d); after.accept(a, b, c, d); };
+		return (a, b, c, d) -> { before.acceptBo(a, b, c, d); acceptBo(a, b, c, d); };
 	}
 	
 	/**
@@ -126,11 +95,11 @@ public interface Consumer4BoA extends Consumer4<boolean[],boolean[],boolean[],bo
 	 * this operation.
 	 */
 	@Override
-	default Consumer4BoA before(Consumer4<boolean[],boolean[],boolean[],boolean[]> before)
+	default Consumer4BoA before(Consumer4<? super boolean[],? super boolean[],? super boolean[],? super boolean[]> before)
 	{
-		ParameterValidation.pvNotNull("before", before);
+		Validate.Arg.checkNotNull("before", before);
 
-		return (a, b, c, d) -> { before.accept(a, b, c, d); accept4BoA(a, b, c, d); };
+		return (a, b, c, d) -> { before.accept(a, b, c, d); acceptBo(a, b, c, d); };
 	}
 	
 	/**
@@ -141,19 +110,40 @@ public interface Consumer4BoA extends Consumer4<boolean[],boolean[],boolean[],bo
 	 * 
 	 * @return A new {@link Consumer4BoA} performing the operations.
 	 */
+	@SuppressWarnings("unused")
 	@SafeVarargs
-	static Consumer4BoA of(Consumer4<boolean[],boolean[],boolean[],boolean[]>... consumers)
+	static Consumer4BoA of(Consumer4BoA... consumers)
 	{
-		ParameterValidation.pvNotNull("consumers", consumers);
-		ParameterValidation.pvEntriesNotNull("consumers", consumers);
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
+
+		if(consumers.length == 0) return (a, b, c, d) -> {};
+
+		if(consumers.length == 1) return consumers[0];
 		
-		/*
-		 * If no operations are passed return empty operation.
-		 */
+		return (a, b, c, d) -> { for(Consumer4BoA consumer : consumers) consumer.acceptBo(a, b, c, d); };
+	}
+
+	/**
+	 * Composes a new {@link Consumer4BoA} performing the given operations in
+	 * sequence.
+	 * 
+	 * @param consumers The operations to perform.
+	 * 
+	 * @return A new {@link Consumer4BoA} performing the operations.
+	 */
+	@SuppressWarnings("unused")
+	@SafeVarargs
+	static Consumer4BoA of(Consumer4<? super boolean[],? super boolean[],? super boolean[],? super boolean[]>... consumers)
+	{
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
+
 		if(consumers.length == 0) return (a, b, c, d) -> {};
 
 		if(consumers.length == 1) return (Consumer4BoA) consumers[0]::accept;
 
-		return (a, b, c, d) -> { for(Consumer4<boolean[],boolean[],boolean[],boolean[]> consumer : consumers) consumer.accept(a, b, c, d); };
+		return (a, b, c, d) -> { for(Consumer4<? super boolean[],? super boolean[],? super boolean[],? super boolean[]> consumer : consumers) consumer.accept(a, b, c, d); };
 	}
+	
 }

@@ -1,7 +1,7 @@
 package org.barghos.util.consumer.bytes;
 
 import org.barghos.util.consumer.Consumer4;
-import org.barghos.validation.ParameterValidation;
+import org.barghos.validation.Validate;
 
 /**
  * Represents an operation that accepts four byte input arguments and returns
@@ -26,6 +26,7 @@ import org.barghos.validation.ParameterValidation;
 @FunctionalInterface
 public interface Consumer4B extends Consumer4<Byte,Byte,Byte,Byte>
 {
+	
 	/**
 	 * Performs the operation on the given arguments.
 	 *
@@ -36,6 +37,12 @@ public interface Consumer4B extends Consumer4<Byte,Byte,Byte,Byte>
 	 */
 	void accept4B(byte a, byte b, byte c, byte d);
 	
+	@Override
+	default void accept(Byte a, Byte b, Byte c, Byte d)
+	{
+		accept4B(a, b, c, d);
+	}
+	
 	/**
 	 * Performs the given operation after this operation.
 	 * 
@@ -44,11 +51,25 @@ public interface Consumer4B extends Consumer4<Byte,Byte,Byte,Byte>
 	 * @return A new {@link Consumer4B} performing this operation and the
 	 * operation after.
 	 */
-	default Consumer4B then4B(Consumer4B after)
+	default Consumer4B then(Consumer4B after)
 	{
-		ParameterValidation.pvNotNull("after", after);
+		Validate.Arg.checkNotNull("after", after);
 		
 		return (a, b, c, d) -> { accept4B(a, b, c, d); after.accept4B(a, b, c, d); };
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @return A new {@link Consumer4B} performing this operation and the
+	 * operation after.
+	 */
+	@Override
+	default Consumer4B then(Consumer4<? super Byte,? super Byte,? super Byte,? super Byte> after)
+	{
+		Validate.Arg.checkNotNull("after", after);
+		
+		return (a, b, c, d) -> { accept4B(a, b, c, d); after.accept(a, b, c, d); };
 	}
 	
 	/**
@@ -59,62 +80,11 @@ public interface Consumer4B extends Consumer4<Byte,Byte,Byte,Byte>
 	 * @return A new {@link Consumer4B} performing the operation before and this
 	 * operation.
 	 */
-	default Consumer4B before4B(Consumer4B before)
+	default Consumer4B before(Consumer4B before)
 	{
-		ParameterValidation.pvNotNull("before", before);
+		Validate.Arg.checkNotNull("before", before);
 		
 		return (a, b, c, d) -> { before.accept4B(a, b, c, d); accept4B(a, b, c, d); };
-	}
-	
-	/**
-	 * Composes a new {@link Consumer4B} performing the given operations in
-	 * sequence.
-	 * 
-	 * @param consumers The operations to perform.
-	 * 
-	 * @return A new {@link Consumer4B} performing the operations.
-	 */
-	@SafeVarargs
-	static Consumer4B of4B(Consumer4B... consumers)
-	{
-		ParameterValidation.pvNotNull("consumers", consumers);
-		ParameterValidation.pvEntriesNotNull("consumers", consumers);
-		
-		/*
-		 * If no operations are passed return empty operation.
-		 */
-		if(consumers.length == 0) return (a, b, c, d) -> {};
-		
-		/*
-		 * If exactly one operation is passed return the operation.
-		 */
-		if(consumers.length == 1) return consumers[0];
-		
-		return (a, b, c, d) -> { for(Consumer4B consumer : consumers) consumer.accept4B(a, b, c, d); };
-	}
-	
-	/**
-	 * @deprecated Use {@link #accept4B(byte, byte, byte, byte)} instead.
-	 */
-	@Override
-	@Deprecated(since = "1.0", forRemoval = false)
-	default void accept(Byte a, Byte b, Byte c, Byte d)
-	{
-		accept4B(a, b, c, d);
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @return A new {@link Consumer4B} performing this operation and the
-	 * operation after.
-	 */
-	@Override
-	default Consumer4B then(Consumer4<Byte,Byte,Byte,Byte> after)
-	{
-		ParameterValidation.pvNotNull("after", after);
-		
-		return (a, b, c, d) -> { accept4B(a, b, c, d); after.accept(a, b, c, d); };
 	}
 	
 	/**
@@ -124,9 +94,9 @@ public interface Consumer4B extends Consumer4<Byte,Byte,Byte,Byte>
 	 * operation.
 	 */
 	@Override
-	default Consumer4B before(Consumer4<Byte,Byte,Byte,Byte> before)
+	default Consumer4B before(Consumer4<? super Byte,? super Byte,? super Byte,? super Byte> before)
 	{
-		ParameterValidation.pvNotNull("before", before);
+		Validate.Arg.checkNotNull("before", before);
 
 		return (a, b, c, d) -> { before.accept(a, b, c, d); accept4B(a, b, c, d); };
 	}
@@ -140,18 +110,37 @@ public interface Consumer4B extends Consumer4<Byte,Byte,Byte,Byte>
 	 * @return A new {@link Consumer4B} performing the operations.
 	 */
 	@SafeVarargs
-	static Consumer4B of(Consumer4<Byte,Byte,Byte,Byte>... consumers)
+	static Consumer4B of(Consumer4B... consumers)
 	{
-		ParameterValidation.pvNotNull("consumers", consumers);
-		ParameterValidation.pvEntriesNotNull("consumers", consumers);
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
+
+		if(consumers.length == 0) return (a, b, c, d) -> {};
+
+		if(consumers.length == 1) return consumers[0];
 		
-		/*
-		 * If no operations are passed return empty operation.
-		 */
+		return (a, b, c, d) -> { for(Consumer4B consumer : consumers) consumer.accept4B(a, b, c, d); };
+	}
+	
+	/**
+	 * Composes a new {@link Consumer4B} performing the given operations in
+	 * sequence.
+	 * 
+	 * @param consumers The operations to perform.
+	 * 
+	 * @return A new {@link Consumer4B} performing the operations.
+	 */
+	@SafeVarargs
+	static Consumer4B of(Consumer4<? super Byte,? super Byte,? super Byte,? super Byte>... consumers)
+	{
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
+
 		if(consumers.length == 0) return (a, b, c, d) -> {};
 
 		if(consumers.length == 1) return (Consumer4B) consumers[0]::accept;
 
-		return (a, b, c, d) -> { for(Consumer4<Byte,Byte,Byte,Byte> consumer : consumers) consumer.accept(a, b, c, d); };
+		return (a, b, c, d) -> { for(Consumer4<? super Byte,? super Byte,? super Byte,? super Byte> consumer : consumers) consumer.accept(a, b, c, d); };
 	}
+	
 }

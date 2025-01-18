@@ -20,6 +20,7 @@ import org.barghos.util.supplier.SupplierEx;
 @FunctionalInterface
 public interface SupplierExFA extends SupplierEx<float[]>
 {
+	
 	/**
 	 * Gets a result.
 	 *
@@ -29,13 +30,15 @@ public interface SupplierExFA extends SupplierEx<float[]>
 	 */
 	float[] getFA() throws Exception;
 	
-	/**
-	 * @deprecated Use {@link #getFA()} instead.
-	 */
 	@Override
-	@Deprecated(since = "1.0", forRemoval = false)
 	default float[] get() throws Exception
 	{
 		return getFA();
 	}
+	
+	public static SupplierExFA of(float[] value)
+	{
+		return () -> value;
+	}
+	
 }

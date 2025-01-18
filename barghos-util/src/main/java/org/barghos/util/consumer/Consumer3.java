@@ -1,6 +1,6 @@
 package org.barghos.util.consumer;
 
-import org.barghos.validation.ParameterValidation;
+import org.barghos.validation.Validate;
 
 /**
  * Represents an operation that accepts three input arguments and returns no
@@ -46,9 +46,9 @@ public interface Consumer3<A,B,C>
 	 * @return A new {@link Consumer3} performing this operation and the
 	 * operation after.
 	 */
-	default Consumer3<A,B,C> then(Consumer3<A,B,C> after)
+	default Consumer3<A,B,C> then(Consumer3<? super A,? super B,? super C> after)
 	{
-		ParameterValidation.pvNotNull("after", after);
+		Validate.Arg.checkNotNull("after", after);
 		
 		return (a, b, c) -> { accept(a, b, c); after.accept(a, b, c); };
 	}
@@ -61,9 +61,9 @@ public interface Consumer3<A,B,C>
 	 * @return A new {@link Consumer3} performing the operation before and this
 	 * operation.
 	 */
-	default Consumer3<A,B,C> before(Consumer3<A,B,C> before)
+	default Consumer3<A,B,C> before(Consumer3<? super A,? super B,? super C> before)
 	{
-		ParameterValidation.pvNotNull("before", before);
+		Validate.Arg.checkNotNull("before", before);
 		
 		return (a, b, c) -> { before.accept(a, b, c); accept(a, b, c); };
 	}
@@ -80,22 +80,17 @@ public interface Consumer3<A,B,C>
 	 * 
 	 * @return A new {@link Consumer3} performing the operations.
 	 */
+	@SuppressWarnings("unchecked")
 	@SafeVarargs
-	static <A,B,C> Consumer3<A,B,C> of(Consumer3<A,B,C>... consumers)
+	static <A,B,C> Consumer3<A,B,C> of(Consumer3<? super A,? super B,? super C>... consumers)
 	{
-		ParameterValidation.pvNotNull("consumers", consumers);
-		ParameterValidation.pvEntriesNotNull("consumers", consumers);
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		/*
-		 * If no operations are passed return empty operation.
-		 */
 		if(consumers.length == 0) return (a, b, c) -> {};
 		
-		/*
-		 * If exactly one operation is passed return the operation.
-		 */
-		if(consumers.length == 1) return consumers[0];
+		if(consumers.length == 1) return (Consumer3<A,B,C>)consumers[0];
 		
-		return (a, b, c) -> { for(Consumer3<A,B,C> consumer : consumers) consumer.accept(a, b, c); };
+		return (a, b, c) -> { for(Consumer3<? super A,? super B,? super C> consumer : consumers) consumer.accept(a, b, c); };
 	}
 }

@@ -2,8 +2,10 @@ package org.barghos.util.consumer.bigd;
 
 import java.math.BigDecimal;
 
+import org.barghos.util.consumer.Consumer;
 import org.barghos.util.consumer.ConsumerEx;
-import org.barghos.validation.ParameterValidation;
+import org.barghos.validation.ExceptionHandler;
+import org.barghos.validation.Validate;
 
 /**
  * Represents an operation that accepts one 2-dimensional {@link BigDecimal}
@@ -16,7 +18,7 @@ import org.barghos.validation.ParameterValidation;
  * 
  * <p>
  * Functional Method:
- * {@link #acceptBigdA2(BigDecimal[][])}
+ * {@link #acceptBigd(BigDecimal[][])}
  * 
  * @see ConsumerBigdA2
  * @see ConsumerExBigdA2
@@ -30,6 +32,7 @@ import org.barghos.validation.ParameterValidation;
 @FunctionalInterface
 public interface ConsumerExBigdA2 extends ConsumerEx<BigDecimal[][]>
 {
+	
 	/**
 	 * Performs the operation on the given arguments.
 	 *
@@ -37,7 +40,13 @@ public interface ConsumerExBigdA2 extends ConsumerEx<BigDecimal[][]>
 	 * 
 	 * @throws Exception May throw an exception during operation.
 	 */
-	void acceptBigdA2(BigDecimal[][] a) throws Exception;
+	void acceptBigd(BigDecimal[][] a) throws Exception;
+	
+	@Override
+	default void accept(BigDecimal[][] a) throws Exception
+	{
+		acceptBigd(a);
+	}
 	
 	/**
 	 * Performs the given operation after this operation.
@@ -47,11 +56,41 @@ public interface ConsumerExBigdA2 extends ConsumerEx<BigDecimal[][]>
 	 * @return A new {@link ConsumerExBigdA2} performing this operation and the
 	 * operation after.
 	 */
-	default ConsumerExBigdA2 thenBigdA2(ConsumerExBigdA2 after)
+	default ConsumerExBigdA2 then(ConsumerExBigdA2 after)
 	{
-		ParameterValidation.pvNotNull("after", after);
+		Validate.Arg.checkNotNull("after", after);
 		
-		return (a) -> { acceptBigdA2(a); after.acceptBigdA2(a); };
+		return (a) -> { acceptBigd(a); after.acceptBigd(a); };
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @return A new {@link ConsumerExBigdA2} performing this operation and the
+	 * operation after.
+	 */
+	@Override
+	default ConsumerExBigdA2 then(ConsumerEx<? super BigDecimal[][]> after)
+	{
+		Validate.Arg.checkNotNull("after", after);
+
+		return (a) -> { acceptBigd(a); after.accept(a); };
+	}
+	
+	@Override
+	default ConsumerExBigdA2 then(Consumer<? super BigDecimal[][]> after)
+	{
+		Validate.Arg.checkNotNull("after", after);
+		
+		return (a) -> { acceptBigd(a); after.accept(a); };
+	}
+	
+	@Override
+	default ConsumerExBigdA2 then(java.util.function.Consumer<? super BigDecimal[][]> after)
+	{
+		Validate.Arg.checkNotNull("after", after);
+		
+		return (a) -> { acceptBigd(a); after.accept(a); };
 	}
 	
 	/**
@@ -62,11 +101,181 @@ public interface ConsumerExBigdA2 extends ConsumerEx<BigDecimal[][]>
 	 * @return A new {@link ConsumerExBigdA2} performing the operation before
 	 * and this operation.
 	 */
-	default ConsumerExBigdA2 beforeBigdA2(ConsumerExBigdA2 before)
+	default ConsumerExBigdA2 before(ConsumerExBigdA2 before)
 	{
-		ParameterValidation.pvNotNull("before", before);
+		Validate.Arg.checkNotNull("before", before);
 		
-		return (a) -> { before.acceptBigdA2(a); acceptBigdA2(a); };
+		return (a) -> { before.acceptBigd(a); acceptBigd(a); };
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @return A new {@link ConsumerExBigdA2} performing this operation and the
+	 * operation after.
+	 */
+	@Override
+	default ConsumerExBigdA2 before(ConsumerEx<? super BigDecimal[][]> before)
+	{
+		Validate.Arg.checkNotNull("before", before);
+
+		return (a) -> { before.accept(a); acceptBigd(a); };
+	}
+	
+	@Override
+	default ConsumerExBigdA2 before(Consumer<? super BigDecimal[][]> before)
+	{
+		Validate.Arg.checkNotNull("before", before);
+		
+		return (a) -> { before.accept(a); acceptBigd(a); };
+	}
+	
+	@Override
+	default ConsumerExBigdA2 before(java.util.function.Consumer<? super BigDecimal[][]> before)
+	{
+		Validate.Arg.checkNotNull("before", before);
+		
+		return (a) -> { before.accept(a); acceptBigd(a); };
+	}
+	
+	/**
+	 * Adds exception handling to the consumer and thus converts it into a
+	 * {@link Consumer}.
+	 * 
+	 * @param handler The exception handler called in case of an exception.
+	 * 
+	 * @return A new {@link Consumer} performing the operations and exception
+	 * handling.
+	 */
+	@Override
+	default ConsumerBigdA2 handleEx(ExceptionHandler handler)
+	{
+		Validate.Arg.checkNotNull("handler", handler);
+		
+		return (a) -> {
+			try
+			{
+				acceptBigd(a);
+			}
+			catch(Exception e)
+			{
+				handler.handle(e);
+			}
+		};
+	}
+	
+	@Override
+	default ConsumerBigdA2 ignoreEx()
+	{
+		return (a) -> {
+			try
+			{
+				acceptBigd(a);
+			}
+			catch(Exception e) { }
+		};
+	}
+	
+	default ConsumerExBigdA2 onEx(ConsumerExBigdA2 consumer)
+	{
+		Validate.Arg.checkNotNull("consumer", consumer);
+		
+		return (a) -> {
+			try
+			{
+				acceptBigd(a);
+			}
+			catch(Exception e)
+			{
+				consumer.acceptBigd(a);
+			}
+		};
+	}
+	
+	/**
+	 * Performs the passed operation in case of an exception in this consumer.
+	 * As the passed consumer may throw an exception the returned consumer is
+	 * again a {@link ConsumerEx} relaying the exceptions of the passed
+	 * consumer.
+	 * 
+	 * @param consumer The consumer called in case of an exception.
+	 * 
+	 * @return A new {@link ConsumerEx} performing the operations.
+	 */
+	@Override
+	default ConsumerExBigdA2 onEx(ConsumerEx<? super BigDecimal[][]> consumer)
+	{
+		Validate.Arg.checkNotNull("consumer", consumer);
+		
+		return (a) -> {
+			try
+			{
+				acceptBigd(a);
+			}
+			catch(Exception e)
+			{
+				consumer.accept(a);
+			}
+		};
+	}
+	
+	default ConsumerBigdA2 onEx(ConsumerBigdA2 consumer)
+	{
+		Validate.Arg.checkNotNull("consumer", consumer);
+		
+		return (a) -> {
+			try
+			{
+				acceptBigd(a);
+			}
+			catch(Exception e)
+			{
+				consumer.acceptBigd(a);
+			}
+		};
+	}
+	
+	/**
+	 * Performs the passed operation in case of an exception in this consumer.
+	 * As the passed consumer can not throw an exception the returned consumer
+	 * is a {@link Consumer}.
+	 * 
+	 * @param consumer The consumer called in case of an exception.
+	 * 
+	 * @return A new {@link Consumer} performing the operations.
+	 */
+	@Override
+	default ConsumerBigdA2 onEx(Consumer<? super BigDecimal[][]> consumer)
+	{
+		Validate.Arg.checkNotNull("consumer", consumer);
+		
+		return (a) -> {
+			try
+			{
+				acceptBigd(a);
+			}
+			catch(Exception e)
+			{
+				consumer.accept(a);
+			}
+		};
+	}
+	
+	@Override
+	default ConsumerBigdA2 onEx(java.util.function.Consumer<? super BigDecimal[][]> consumer)
+	{
+		Validate.Arg.checkNotNull("consumer", consumer);
+		
+		return (a) -> {
+			try
+			{
+				acceptBigd(a);
+			}
+			catch(Exception e)
+			{
+				consumer.accept(a);
+			}
+		};
 	}
 	
 	/**
@@ -78,62 +287,18 @@ public interface ConsumerExBigdA2 extends ConsumerEx<BigDecimal[][]>
 	 * @return A new {@link ConsumerExBigdA2} performing the operations.
 	 */
 	@SafeVarargs
-	static ConsumerExBigdA2 ofBigdA2(ConsumerExBigdA2... consumers)
+	static ConsumerExBigdA2 of(ConsumerExBigdA2... consumers)
 	{
-		ParameterValidation.pvNotNull("consumers", consumers);
-		ParameterValidation.pvEntriesNotNull("consumers", consumers);
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		/*
-		 * If no operations are passed return empty operation.
-		 */
 		if(consumers.length == 0) return (a) -> {};
 		
-		/*
-		 * If exactly one operation is passed return the operation.
-		 */
 		if(consumers.length == 1) return consumers[0];
 		
-		return (a) -> { for(ConsumerExBigdA2 consumer : consumers) consumer.acceptBigdA2(a); };
+		return (a) -> { for(ConsumerExBigdA2 consumer : consumers) consumer.acceptBigd(a); };
 	}
-	
-	/**
-	 * @deprecated Use {@link #acceptBigdA2(BigDecimal[][])} instead.
-	 */
-	@Override
-	@Deprecated(since = "1.0", forRemoval = false)
-	default void accept(BigDecimal[][] a) throws Exception
-	{
-		acceptBigdA2(a);
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @return A new {@link ConsumerExBigdA2} performing this operation and the
-	 * operation after.
-	 */
-	@Override
-	default ConsumerExBigdA2 then(ConsumerEx<BigDecimal[][]> after)
-	{
-		ParameterValidation.pvNotNull("after", after);
 
-		return (a) -> { acceptBigdA2(a); after.accept(a); };
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @return A new {@link ConsumerExBigdA2} performing this operation and the
-	 * operation after.
-	 */
-	@Override
-	default ConsumerExBigdA2 before(ConsumerEx<BigDecimal[][]> before)
-	{
-		ParameterValidation.pvNotNull("before", before);
-
-		return (a) -> { before.accept(a); acceptBigdA2(a); };
-	}
-	
 	/**
 	 * Composes a new {@link ConsumerExBigdA2} performing the given operations
 	 * in sequence.
@@ -143,18 +308,78 @@ public interface ConsumerExBigdA2 extends ConsumerEx<BigDecimal[][]>
 	 * @return A new {@link ConsumerExBigdA2} performing the operations.
 	 */
 	@SafeVarargs
-	static ConsumerExBigdA2 of(ConsumerEx<BigDecimal[][]>... consumers)
+	static ConsumerExBigdA2 of(ConsumerEx<? super BigDecimal[][]>... consumers)
 	{
-		ParameterValidation.pvNotNull("consumers", consumers);
-		ParameterValidation.pvEntriesNotNull("consumers", consumers);
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		/*
-		 * If no operations are passed return empty operation.
-		 */
 		if(consumers.length == 0) return (a) -> {};
 
 		if(consumers.length == 1) return (ConsumerExBigdA2) consumers[0]::accept;
 
-		return (a) -> { for(ConsumerEx<BigDecimal[][]> consumer : consumers) consumer.accept(a); };
+		return (a) -> { for(ConsumerEx<? super BigDecimal[][]> consumer : consumers) consumer.accept(a); };
 	}
+	
+	/**
+	 * Composes a new {@link ConsumerEx2Bigd} performing the given operations in
+	 * sequence.
+	 * 
+	 * @param consumers The operations to perform.
+	 * 
+	 * @return A new {@link ConsumerEx2Bigd} performing the operations.
+	 */
+	static ConsumerExBigdA2 of(ConsumerBigdA2... consumers)
+	{
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
+		
+		if(consumers.length == 0) return (a) -> {};
+
+		if(consumers.length == 1) return (ConsumerExBigdA2) consumers[0]::accept;
+
+		return (a) -> { for(ConsumerBigdA2 consumer : consumers) consumer.accept(a); };
+	}
+	
+	/**
+	 * Composes a new {@link ConsumerEx2Bigd} performing the given operations in
+	 * sequence.
+	 * 
+	 * @param consumers The operations to perform.
+	 * 
+	 * @return A new {@link ConsumerEx2Bigd} performing the operations.
+	 */
+	@SafeVarargs
+	static ConsumerExBigdA2 of(Consumer<? super BigDecimal[][]>... consumers)
+	{
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
+		
+		if(consumers.length == 0) return (a) -> {};
+
+		if(consumers.length == 1) return (ConsumerExBigdA2) consumers[0]::accept;
+
+		return (a) -> { for(Consumer<? super BigDecimal[][]> consumer : consumers) consumer.accept(a); };
+	}
+	
+	/**
+	 * Composes a new {@link ConsumerEx2Bigd} performing the given operations in
+	 * sequence.
+	 * 
+	 * @param consumers The operations to perform.
+	 * 
+	 * @return A new {@link ConsumerEx2Bigd} performing the operations.
+	 */
+	@SafeVarargs
+	static ConsumerExBigdA2 of(java.util.function.Consumer<? super BigDecimal[][]>... consumers)
+	{
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
+		
+		if(consumers.length == 0) return (a) -> {};
+
+		if(consumers.length == 1) return (ConsumerExBigdA2) consumers[0]::accept;
+
+		return (a) -> { for(java.util.function.Consumer<? super BigDecimal[][]> consumer : consumers) consumer.accept(a); };
+	}
+	
 }

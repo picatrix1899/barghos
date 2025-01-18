@@ -1,7 +1,7 @@
 package org.barghos.util.consumer.bytes;
 
 import org.barghos.util.consumer.Consumer3;
-import org.barghos.validation.ParameterValidation;
+import org.barghos.validation.Validate;
 
 /**
  * Represents an operation that accepts three byte input arguments and returns
@@ -26,6 +26,7 @@ import org.barghos.validation.ParameterValidation;
 @FunctionalInterface
 public interface Consumer3B extends Consumer3<Byte,Byte,Byte>
 {
+	
 	/**
 	 * Performs the operation on the given arguments.
 	 *
@@ -35,6 +36,12 @@ public interface Consumer3B extends Consumer3<Byte,Byte,Byte>
 	 */
 	void accept3B(byte a, byte b, byte c);
 	
+	@Override
+	default void accept(Byte a, Byte b, Byte c)
+	{
+		accept3B(a, b, c);
+	}
+	
 	/**
 	 * Performs the given operation after this operation.
 	 * 
@@ -43,11 +50,25 @@ public interface Consumer3B extends Consumer3<Byte,Byte,Byte>
 	 * @return A new {@link Consumer3B} performing this operation and the
 	 * operation after.
 	 */
-	default Consumer3B then3B(Consumer3B after)
+	default Consumer3B then(Consumer3B after)
 	{
-		ParameterValidation.pvNotNull("after", after);
+		Validate.Arg.checkNotNull("after", after);
 		
 		return (a, b, c) -> { accept3B(a, b, c); after.accept3B(a, b, c); };
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @return A new {@link Consumer3B} performing this operation and the
+	 * operation after.
+	 */
+	@Override
+	default Consumer3B then(Consumer3<? super Byte,? super Byte,? super Byte> after)
+	{
+		Validate.Arg.checkNotNull("after", after);
+
+		return (a, b, c) -> { accept3B(a, b, c); after.accept(a, b, c); };
 	}
 	
 	/**
@@ -58,62 +79,11 @@ public interface Consumer3B extends Consumer3<Byte,Byte,Byte>
 	 * @return A new {@link Consumer3B} performing the operation before and this
 	 * operation.
 	 */
-	default Consumer3B before3B(Consumer3B before)
+	default Consumer3B before(Consumer3B before)
 	{
-		ParameterValidation.pvNotNull("before", before);
+		Validate.Arg.checkNotNull("before", before);
 		
 		return (a, b, c) -> { before.accept3B(a, b, c); accept3B(a, b, c); };
-	}
-	
-	/**
-	 * Composes a new {@link Consumer3B} performing the given operations in
-	 * sequence.
-	 * 
-	 * @param consumers The operations to perform.
-	 * 
-	 * @return A new {@link Consumer3B} performing the operations.
-	 */
-	@SafeVarargs
-	static Consumer3B of3B(Consumer3B... consumers)
-	{
-		ParameterValidation.pvNotNull("consumers", consumers);
-		ParameterValidation.pvEntriesNotNull("consumers", consumers);
-		
-		/*
-		 * If no operations are passed return empty operation.
-		 */ 
-		if(consumers.length == 0) return (a, b, c) -> {};
-		
-		/*
-		 * If exactly one operation is passed return the operation.
-		 */
-		if(consumers.length == 1) return consumers[0];
-		
-		return (a, b, c) -> { for(Consumer3B consumer : consumers) consumer.accept3B(a, b, c); };
-	}
-	
-	/**
-	 * @deprecated Use {@link #accept3B(byte, byte, byte)} instead.
-	 */
-	@Override
-	@Deprecated(since = "1.0", forRemoval = false)
-	default void accept(Byte a, Byte b, Byte c)
-	{
-		accept3B(a, b, c);
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @return A new {@link Consumer3B} performing this operation and the
-	 * operation after.
-	 */
-	@Override
-	default Consumer3B then(Consumer3<Byte,Byte,Byte> after)
-	{
-		ParameterValidation.pvNotNull("after", after);
-
-		return (a, b, c) -> { accept3B(a, b, c); after.accept(a, b, c); };
 	}
 	
 	/**
@@ -123,9 +93,9 @@ public interface Consumer3B extends Consumer3<Byte,Byte,Byte>
 	 * operation.
 	 */
 	@Override
-	default Consumer3B before(Consumer3<Byte,Byte,Byte> before)
+	default Consumer3B before(Consumer3<? super Byte,? super Byte,? super Byte> before)
 	{
-		ParameterValidation.pvNotNull("before", before);
+		Validate.Arg.checkNotNull("before", before);
 
 		return (a, b, c) -> { before.accept(a, b, c); accept3B(a, b, c); };
 	}
@@ -139,18 +109,37 @@ public interface Consumer3B extends Consumer3<Byte,Byte,Byte>
 	 * @return A new {@link Consumer3B} performing the operations.
 	 */
 	@SafeVarargs
-	static Consumer3B of(Consumer3<Byte,Byte,Byte>... consumers)
+	static Consumer3B of(Consumer3B... consumers)
 	{
-		ParameterValidation.pvNotNull("consumers", consumers);
-		ParameterValidation.pvEntriesNotNull("consumers", consumers);
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
+
+		if(consumers.length == 0) return (a, b, c) -> {};
+
+		if(consumers.length == 1) return consumers[0];
 		
-		/*
-		 * If no operations are passed return empty operation.
-		 */
+		return (a, b, c) -> { for(Consumer3B consumer : consumers) consumer.accept3B(a, b, c); };
+	}
+	
+	/**
+	 * Composes a new {@link Consumer3B} performing the given operations in
+	 * sequence.
+	 * 
+	 * @param consumers The operations to perform.
+	 * 
+	 * @return A new {@link Consumer3B} performing the operations.
+	 */
+	@SafeVarargs
+	static Consumer3B of(Consumer3<? super Byte,? super Byte,? super Byte>... consumers)
+	{
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
+
 		if(consumers.length == 0) return (a, b, c) -> {};
 
 		if(consumers.length == 1) return (Consumer3B) consumers[0]::accept;
 		
-		return (a, b, c) -> { for(Consumer3<Byte,Byte,Byte> consumer : consumers) consumer.accept(a, b, c); };
+		return (a, b, c) -> { for(Consumer3<? super Byte,? super Byte,? super Byte> consumer : consumers) consumer.accept(a, b, c); };
 	}
+	
 }

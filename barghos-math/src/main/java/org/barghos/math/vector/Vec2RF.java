@@ -1,8 +1,6 @@
 package org.barghos.math.vector;
 
 import org.barghos.annotation.ExtractionParam;
-import org.barghos.annotation.FloatMinValue;
-import org.barghos.annotation.MinLength;
 import org.barghos.util.collection.IndexValuePairF;
 import org.barghos.util.math.MathProvider;
 import org.barghos.util.math.RoundMethodF;
@@ -15,13 +13,16 @@ import org.barghos.util.tuple.floats.Tup2WF;
  */
 public interface Vec2RF extends Tup2RF
 {	
+	public static final int INDEX_X = 0;
+	public static final int INDEX_Y = 1;
+	
 	/** {@inheritDoc} */
 	@Override
 	Vec2RF createNew(Tup2RF v);
 	
 	/** {@inheritDoc} */
 	@Override
-	Vec2RF createNew(@MinLength(2) float... v);
+	Vec2RF createNew(float[] v);
 	
 	/** {@inheritDoc} */
 	@Override
@@ -88,7 +89,7 @@ public interface Vec2RF extends Tup2RF
 	 * @throws IllegalArgumentException
 	 *     If the given {@code tolerance} is below zero.
 	 */
-	float len(@FloatMinValue(0.0f) float tolerance);
+	float len(float tolerance);
 	
 	/**
 	 * Returns the inverse (reciprocal) length (magnitude, norm) of this vector. If the length of
@@ -107,7 +108,7 @@ public interface Vec2RF extends Tup2RF
 	 * @throws ArithmeticException
 	 *     If the vector has a length of zero.
 	 */
-	float invLen();
+	float recLen();
 	
 	/**
 	 * Returns the distance between the endpoint of this vector and the endpoint of the given vector
@@ -127,7 +128,7 @@ public interface Vec2RF extends Tup2RF
 	 * @return The distance between the endpoint of this vector and the endpoint of the given
 	 * vector.
 	 */
-	float dist(Tup2RF v2);
+	float lenTo(Tup2RF v2);
 	
 	/**
 	 * Returns the distance between the endpoint of this vector and the endpoint of the given vector
@@ -156,7 +157,7 @@ public interface Vec2RF extends Tup2RF
 	 * @throws IllegalArgumentException
 	 *     If the given {@code tolerance} is below zero.
 	 */
-	float dist(Tup2RF v2, @FloatMinValue(0.0f) float tolerance);
+	float lenTo(Tup2RF v2, float tolerance);
 	
 	/**
 	 * Returns the distance between the endpoint of this vector and the endpoint of the given vector
@@ -176,7 +177,7 @@ public interface Vec2RF extends Tup2RF
 	 * @return The distance between the endpoint of this vector and the endpoint of the given
 	 * vector.
 	 */
-	float dist(@MinLength(2) float[] v2);
+	float lenTo(float[] v2);
 	
 	/**
 	 * Returns the distance between the endpoint of this vector and the endpoint of the given vector
@@ -205,7 +206,7 @@ public interface Vec2RF extends Tup2RF
 	 * @throws IllegalArgumentException
 	 *     If the given {@code tolerance} is below zero.
 	 */
-	float dist(@MinLength(2) float[] v2, @FloatMinValue(0.0f) float tolerance);
+	float lenTo(float[] v2, float tolerance);
 	
 	/**
 	 * Returns the distance between the endpoint of this vector and the endpoint of the given vector
@@ -227,7 +228,7 @@ public interface Vec2RF extends Tup2RF
 	 * @return The distance between the endpoint of this vector and the endpoint of the given
 	 * vector.
 	 */
-	float dist(float v2x, float v2y);
+	float lenTo(float v2x, float v2y);
 	
 	/**
 	 * Returns the distance between the endpoint of this vector and the endpoint of the given vector
@@ -258,7 +259,7 @@ public interface Vec2RF extends Tup2RF
 	 * @throws IllegalArgumentException
 	 *     If the given {@code tolerance} is below zero.
 	 */
-	float dist(float v2x, float v2y, @FloatMinValue(0.0f) float tolerance);
+	float lenTo(float v2x, float v2y, float tolerance);
 	
 	/**
 	 * Returns the inverse (reciprocal) distance between the endpoint of this vector and the
@@ -282,7 +283,7 @@ public interface Vec2RF extends Tup2RF
 	 * @throws ArithmeticException
 	 *     If the distance between the endpoints is zero.
 	 */
-	float invDist(Tup2RF v2);
+	float recLenTo(Tup2RF v2);
 	
 	/**
 	 * Returns the inverse (reciprocal) distance between the endpoint of this vector and the
@@ -306,7 +307,7 @@ public interface Vec2RF extends Tup2RF
 	 * @throws ArithmeticException
 	 *     If the distance between the endpoints is zero.
 	 */
-	float invDist(@MinLength(2) float[] v2);
+	float recLenTo(float[] v2);
 	
 	/**
 	 * Returns the inverse (reciprocal) distance between the endpoint of this vector and the
@@ -332,7 +333,7 @@ public interface Vec2RF extends Tup2RF
 	 * @throws ArithmeticException
 	 *     If the distance between the endpoints is zero.
 	 */
-	float invDist(float v2x, float v2y);
+	float recLenTo(float v2x, float v2y);
 	
 	/**
 	 * Returns the squared length (magnitude, norm) of this vector.
@@ -359,7 +360,7 @@ public interface Vec2RF extends Tup2RF
 	 * @return The squared distance between the endpoint of this vector and the endpoint of the
 	 * given vector.
 	 */
-	float sqrDist(Tup2RF v2);
+	float sqrLenTo(Tup2RF v2);
 	
 	/**
 	 * Returns the squared distance between the endpoint of this vector and the endpoint of the
@@ -375,7 +376,7 @@ public interface Vec2RF extends Tup2RF
 	 * @return The squared distance between the endpoint of this vector and the endpoint of the
 	 * given vector.
 	 */
-	float sqrDist(@MinLength(2) float[] v2);
+	float sqrLenTo(float[] v2);
 	
 	/**
 	 * Returns the squared distance between the endpoint of this vector and the endpoint of the
@@ -393,7 +394,7 @@ public interface Vec2RF extends Tup2RF
 	 * @return The squared distance between the endpoint of this vector and the endpoint of the
 	 * given vector.
 	 */
-	float sqrDist(float v2x, float v2y);
+	float sqrLenTo(float v2x, float v2y);
 	
 	/**
 	 * Returns the dot product (scalar product) between this vector and the given vector
@@ -423,7 +424,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The dot product.
 	 */
-	float dot(@MinLength(2) float[] v2);
+	float dot(float[] v2);
 	
 	/**
 	 * Returns the dot product (scalar product) between this vector and the given vector
@@ -475,7 +476,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return A new instance of this vector with the result.
 	 */
-	Vec2RF addN(@MinLength(2) float[] v2);
+	Vec2RF addN(float[] v2);
 	
 	/**
 	 * Adds the given value {@code (value)} to every component of this vector and saves the result
@@ -549,7 +550,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return A new instance of this vector with the result.
 	 */
-	Vec2RF subN(@MinLength(2) float[] v2);
+	Vec2RF subN(float[] v2);
 	
 	/**
 	 * Subtracts the given value {@code (value)} from every component of this vector and saves the
@@ -605,7 +606,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return A new instance of this vector with the result.
 	 */
-	Vec2RF revSubN(Tup2RF v2);
+	Vec2RF rSubN(Tup2RF v2);
 	
 	/**
 	 * Subtracts this vector from the given vector {@code (v2[0], v2[1])} and saves the result in a
@@ -623,7 +624,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return A new instance of this vector with the result.
 	 */
-	Vec2RF revSubN(@MinLength(2) float[] v2);
+	Vec2RF rSubN(float[] v2);
 	
 	/**
 	 * Subtracts every component of this vector from the given value {@code (value)} and saves the
@@ -641,7 +642,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return A new instance of this vector with the result.
 	 */
-	Vec2RF revSubN(float value);
+	Vec2RF rSubN(float value);
 	
 	/**
 	 * Subtracts this vector from the given vector {@code (v2x, v2y)} and saves the result in a new
@@ -661,7 +662,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return A new instance of this vector with the result.
 	 */
-	Vec2RF revSubN(float v2x, float v2y);
+	Vec2RF rSubN(float v2x, float v2y);
 	
 	/**
 	 * Multiplies this vector with the given vector {@code (v2)} and saves the result in a new
@@ -697,7 +698,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return A new instance of this vector with the result.
 	 */
-	Vec2RF mulN(@MinLength(2) float[] v2);
+	Vec2RF mulN(float[] v2);
 	
 	/**
 	 * Multiplies every component of this vector with the given value {@code (value)} and saves the
@@ -770,7 +771,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return A new instance of this vector with the result.
 	 */
-	Vec2RF divN(@MinLength(2) float[] v2);
+	Vec2RF divN(float[] v2);
 	
 	/**
 	 * Divides each component of this vector by the given value {@code (value)} and saves the result
@@ -825,7 +826,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return A new instance of this vector with the result.
 	 */
-	Vec2RF revDivN(Tup2RF v2);
+	Vec2RF rDivN(Tup2RF v2);
 	
 	/**
 	 * Divides the given vector {@code (v2[0], v2[1])} by this vector and saves the result in a new
@@ -843,7 +844,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return A new instance of this vector with the result.
 	 */
-	Vec2RF revDivN(@MinLength(2) float[] v2);
+	Vec2RF rDivN(float[] v2);
 	
 	/**
 	 * Divides the given value {@code (value)} by each component of this vector and saves the result
@@ -861,7 +862,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return A new instance of this vector with the result.
 	 */
-	Vec2RF revDivN(float value);
+	Vec2RF rDivN(float value);
 	
 	/**
 	 * Divides the given vector {@code (v2x, v2y)} by this vector and saves the result in a new
@@ -881,7 +882,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return A new instance of this vector with the result.
 	 */
-	Vec2RF revDivN(float v2x, float v2y);
+	Vec2RF rDivN(float v2x, float v2y);
 	
 	/**
 	 * Returns half the vector from the endpoint of this vector to the endpoint of the given vector
@@ -899,7 +900,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return A new instance of this vector with the result.
 	 */
-	Vec2RF halfVecN(Tup2RF v2);
+	Vec2RF halfVecToN(Tup2RF v2);
 	
 	/**
 	 * Returns half the vector from the endpoint of this vector to the endpoint of the given vector
@@ -917,7 +918,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return A new instance of this vector with the result.
 	 */
-	Vec2RF halfVecN(@MinLength(2) float[] v2);
+	Vec2RF halfVecToN(float[] v2);
 	
 	/**
 	 * Returns half the vector from the endpoint of this vector to the endpoint of the given vector
@@ -937,7 +938,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return A new instance of this vector with the result.
 	 */
-	Vec2RF halfVecN(float v2x, float v2y);
+	Vec2RF halfVecToN(float v2x, float v2y);
 	
 	/**
 	 * Returns the origin vector to the point that lies half way between the endpoint of this vector
@@ -955,7 +956,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return A new instance of this vector with the result.
 	 */
-	Vec2RF halfPointN(Tup2RF v2);
+	Vec2RF midPointToN(Tup2RF v2);
 	
 	/**
 	 * Returns the origin vector to the point that lies half way between the endpoint of this vector
@@ -973,7 +974,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return A new instance of this vector with the result.
 	 */
-	Vec2RF halfPointN(@MinLength(2) float[] v2);
+	Vec2RF midPointToN(float[] v2);
 	
 	/**
 	 * Returns the origin vector to the point that lies half way between the endpoint of this vector
@@ -993,7 +994,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return A new instance of this vector with the result.
 	 */
-	Vec2RF halfPointN(float v2x, float v2y);
+	Vec2RF midPointToN(float v2x, float v2y);
 	
 	/**
 	 * Negates this vector and returns the result as a new instance.
@@ -1021,7 +1022,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return A new instance of this vector with the result.
 	 */
-	Vec2RF invN();
+	Vec2RF recN();
 	
 	/**
 	 * Normalizes this vector and returns the result as a new instance.
@@ -1063,7 +1064,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return A new instance of this vector with the result.
 	 */
-	Vec2RF minN(@MinLength(2) float[] v2);
+	Vec2RF minN(float[] v2);
 	
 	/**
 	 * Compares each component of this vector with the corresponding component of the given vector
@@ -1107,7 +1108,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return A new instance of this vector with the result.
 	 */
-	Vec2RF maxN(@MinLength(2) float[] v2);
+	Vec2RF maxN(float[] v2);
 	
 	/**
 	 * Compares each component of this vector with the corresponding component of the given vector
@@ -1175,7 +1176,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return A new instance of this vector with the result.
 	 */
-	Vec2RF prjN(Tup2RF t);
+	Vec2RF projectN(Tup2RF t);
 	
 	/**
 	 * Calculates the orthogonal projection of this vector onto the normalized target vector
@@ -1193,7 +1194,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return A new instance of this vector with the result.
 	 */
-	Vec2RF prjN(@MinLength(2) float[] t);
+	Vec2RF projectN(float[] t);
 	
 	/**
 	 * Calculates the orthogonal projection of this vector onto the normalized target vector
@@ -1213,7 +1214,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return A new instance of this vector with the result.
 	 */
-	Vec2RF prjN(float tX, float tY);
+	Vec2RF projectN(float tX, float tY);
 	
 	/**
 	 * Calculates the reflection of this vector based on the given normalized surface normal
@@ -1227,7 +1228,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return A new instance of this vector with the result.
 	 */
-	Vec2RF rflN(Tup2RF n);
+	Vec2RF reflectN(Tup2RF n);
 	
 	/**
 	 * Calculates the reflection of this vector based on the given normalized surface normal
@@ -1241,7 +1242,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return A new instance of this vector with the result.
 	 */
-	Vec2RF rflN(@MinLength(2) float[] n);
+	Vec2RF reflectN(float[] n);
 	
 	/**
 	 * Calculates the reflection of this vector based on the given normalized surface normal
@@ -1257,7 +1258,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return A new instance of this vector with the result.
 	 */
-	Vec2RF rflN(float nX, float nY);
+	Vec2RF reflectN(float nX, float nY);
 	
 	/**
 	 * Rounds the components of this vector towards the next greater integer and saves the result in
@@ -1325,7 +1326,7 @@ public interface Vec2RF extends Tup2RF
 	 * @return An object containing the smallest value of the components and the index of the
 	 * corresponding component.
 	 */
-	IndexValuePairF minEntry();
+	IndexValuePairF minComp();
 	
 	/**
 	 * Determines the smallest value of the components and returns the value and the index of the
@@ -1338,23 +1339,8 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	IndexValuePairF minEntry(@ExtractionParam IndexValuePairF res);
-	
-	/**
-	 * Determines the smallest value of the components and returns it.
-	 * 
-	 * @return The smallest value of the components.
-	 */
-	float minValue();
-	
-	/**
-	 * Determines the smallest value of the componensts and returns the index of the component. The
-	 * index returned is limited to the range of {@code 0 to 1}. If two or more components have the
-	 * same value the smallest index will be returned.
-	 * 
-	 * @return The index of the smallest component.
-	 */
-	int minComponent();
+	IndexValuePairF minComp(@ExtractionParam IndexValuePairF res);
+
 	
 	/**
 	 * Determines the greatest value of the components and returns the value and the index of the
@@ -1365,7 +1351,7 @@ public interface Vec2RF extends Tup2RF
 	 * @return An object containing the greatest value of the components and the index of the
 	 * corresponding component.
 	 */
-	IndexValuePairF maxEntry();
+	IndexValuePairF maxComp();
 	
 	/**
 	 * Determines the greatest value of the components and returns the value and the index of the
@@ -1378,23 +1364,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	IndexValuePairF maxEntry(@ExtractionParam IndexValuePairF res);
-	
-	/**
-	 * Determines the greatest value of the components and returns it.
-	 * 
-	 * @return The greatest value of the components.
-	 */
-	float maxValue();
-	
-	/**
-	 * Determines the greatest value of the componensts and returns the index of the component. The
-	 * index returned is limited to the range of {@code 0 to getDimensions() - 1}. If two or more
-	 * components have the same value the smallest index will be returned.
-	 * 
-	 * @return The index of the greatest component.
-	 */
-	int maxComponent();
+	IndexValuePairF maxComp(@ExtractionParam IndexValuePairF res);
 	
 	/**
 	 * Calculates the absolute value of the component values and saves the result in a new instance.
@@ -1468,7 +1438,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return A new instance of this vector with the result.
 	 */
-	Vec2RF intVecLinN(@MinLength(2) float[] v2, float alpha);
+	Vec2RF intVecLinN(float[] v2, float alpha);
 	
 	/**
 	 * Linearly integrates over the second given vector {@code (v2x, v2y)} by the integrator
@@ -1522,7 +1492,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	<T extends Tup2WF> T addR(Tup2RF v2, @ExtractionParam T res);
+	<T extends Tup2WF> T addT(Tup2RF v2, @ExtractionParam T res);
 	
 	/**
 	 * Adds the given vector {@code (v2)} to this vector and saves the result in the extraction
@@ -1542,7 +1512,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] addR(Tup2RF v2, @ExtractionParam @MinLength(2) float[] res);
+	float[] addT(Tup2RF v2, @ExtractionParam float[] res);
 	
 	/**
 	 * Adds the given vector {@code (v2[0], v2[1])} to this vector and saves the result in the
@@ -1568,7 +1538,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	<T extends Tup2WF> T addR(@MinLength(2) float[] v2, @ExtractionParam T res);
+	<T extends Tup2WF> T addT(float[] v2, @ExtractionParam T res);
 	
 	/**
 	 * Adds the given vector {@code (v2[0], v2[1])} to this vector and saves the result in the
@@ -1591,7 +1561,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] addR(@MinLength(2) float[] v2, @ExtractionParam @MinLength(2) float[] res);
+	float[] addT(float[] v2, @ExtractionParam float[] res);
 	
 	/**
 	 * Adds the given value {@code (value)} to every component of this vector and saves the result
@@ -1617,7 +1587,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	<T extends Tup2WF> T addR(float value, @ExtractionParam T res);
+	<T extends Tup2WF> T addT(float value, @ExtractionParam T res);
 	
 	/**
 	 * Adds the given value {@code (value)} to every component of this vector and saves the result
@@ -1637,7 +1607,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] addR(float value, @ExtractionParam @MinLength(2) float[] res);
+	float[] addT(float value, @ExtractionParam float[] res);
 	
 	/**
 	 * Adds the given vector {@code (v2x, v2y)} to this vector and saves the result in the
@@ -1665,7 +1635,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	<T extends Tup2WF> T addR(float v2x, float v2y, @ExtractionParam T res);
+	<T extends Tup2WF> T addT(float v2x, float v2y, @ExtractionParam T res);
 	
 	/**
 	 * Adds the given vector {@code (v2x, v2y)} to this vector and saves the result in the
@@ -1687,7 +1657,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] addR(float v2x, float v2y, @ExtractionParam @MinLength(2) float[] res);
+	float[] addT(float v2x, float v2y, @ExtractionParam float[] res);
 	
 	/**
 	 * Subtracts the given vector {@code (v2)} from this vector and saves the result in the
@@ -1713,7 +1683,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	<T extends Tup2WF> T subR(Tup2RF v2, @ExtractionParam T res);
+	<T extends Tup2WF> T subT(Tup2RF v2, @ExtractionParam T res);
 	
 	/**
 	 * Subtracts the given vector {@code (v2)} from this vector and saves the result in the
@@ -1733,7 +1703,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] subR(Tup2RF v2, @ExtractionParam @MinLength(2) float[] res);
+	float[] subT(Tup2RF v2, @ExtractionParam float[] res);
 	
 	/**
 	 * Subtracts the given vector {@code (v2[0], v2[1])} from this vector and saves the result in
@@ -1759,7 +1729,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	<T extends Tup2WF> T subR(@MinLength(2) float[] v2, @ExtractionParam T res);
+	<T extends Tup2WF> T subT(float[] v2, @ExtractionParam T res);
 	
 	/**
 	 * Subtracts the given vector {@code (v2[0], v2[1])} from this vector and saves the result in
@@ -1783,7 +1753,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] subR(@MinLength(2) float[] v2, @ExtractionParam @MinLength(2) float[] res);
+	float[] subT(float[] v2, @ExtractionParam float[] res);
 	
 	/**
 	 * Subtracts the given value {@code (value)} from every component of this vector and saves the
@@ -1809,7 +1779,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	<T extends Tup2WF> T subR(float value, @ExtractionParam T res);
+	<T extends Tup2WF> T subT(float value, @ExtractionParam T res);
 	
 	/**
 	 * Subtracts the given value {@code (value)} from every component of this vector and saves the
@@ -1829,7 +1799,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] subR(float value, @ExtractionParam @MinLength(2) float[] res);
+	float[] subT(float value, @ExtractionParam float[] res);
 	
 	/**
 	 * Subtracts the given vector {@code (v2x, v2y)} from this vector and saves the result in the
@@ -1857,7 +1827,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	<T extends Tup2WF> T subR(float v2x, float v2y, @ExtractionParam T res);
+	<T extends Tup2WF> T subT(float v2x, float v2y, @ExtractionParam T res);
 	
 	/**
 	 * Subtracts the given vector {@code (v2x, v2y)} from this vector and saves the result in the
@@ -1881,7 +1851,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] subR(float v2x, float v2y, @ExtractionParam @MinLength(2) float[] res);
+	float[] subT(float v2x, float v2y, @ExtractionParam float[] res);
 	
 	/**
 	 * Subtracts this vector from the given vector {@code (v2)} and saves the result in the
@@ -1907,7 +1877,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	<T extends Tup2WF> T revSubR(Tup2RF v2, @ExtractionParam T res);
+	<T extends Tup2WF> T rSubT(Tup2RF v2, @ExtractionParam T res);
 	
 	/**
 	 * Subtracts this vector from the given vector {@code (v2)} and saves the result in the
@@ -1927,7 +1897,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] revSubR(Tup2RF v2, @ExtractionParam @MinLength(2) float[] res);
+	float[] rSubT(Tup2RF v2, @ExtractionParam float[] res);
 	
 	/**
 	 * Subtracts this vector from the given vector {@code (v2[0], v2[1])} and saves the result in
@@ -1953,7 +1923,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	<T extends Tup2WF> T revSubR(@MinLength(2) float[] v2, @ExtractionParam T res);
+	<T extends Tup2WF> T rSubT(float[] v2, @ExtractionParam T res);
 	
 	/**
 	 * Subtracts this vector from the given vector {@code (v2[0], v2[1])} and saves the result in
@@ -1976,7 +1946,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] revSubR(@MinLength(2) float[] v2, @ExtractionParam @MinLength(2) float[] res);
+	float[] rSubT(float[] v2, @ExtractionParam float[] res);
 	
 	/**
 	 * Subtracts every component of this vector from the given value {@code (value)} and saves the
@@ -2002,7 +1972,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	<T extends Tup2WF> T revSubR(float value, @ExtractionParam T res);
+	<T extends Tup2WF> T rSubT(float value, @ExtractionParam T res);
 	
 	/**
 	 * Subtracts every component of this vector from the given value {@code (value)} and saves the
@@ -2022,7 +1992,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] revSubR(float value, @ExtractionParam @MinLength(2) float[] res);
+	float[] rSubT(float value, @ExtractionParam float[] res);
 	
 	/**
 	 * Subtracts this vector from the given vector {@code (v2x, v2y)} and saves the result in the
@@ -2050,7 +2020,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	<T extends Tup2WF> T revSubR(float v2x, float v2y, @ExtractionParam T res);
+	<T extends Tup2WF> T rSubT(float v2x, float v2y, @ExtractionParam T res);
 
 	/**
 	 * Subtracts this vector from the given vector {@code (v2x, v2y)} and saves the result in the
@@ -2072,7 +2042,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] revSubR(float v2x, float v2y, @ExtractionParam @MinLength(2) float[] res);
+	float[] rSubT(float v2x, float v2y, @ExtractionParam float[] res);
 	
 	/**
 	 * Multiplies this vector with the given vector {@code (v2)} and saves the result in the
@@ -2098,7 +2068,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	<T extends Tup2WF> T mulR(Tup2RF v2, @ExtractionParam T res);
+	<T extends Tup2WF> T mulT(Tup2RF v2, @ExtractionParam T res);
 	
 	/**
 	 * Multiplies this vector with the given vector {@code (v2)} and saves the result in the
@@ -2118,7 +2088,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] mulR(Tup2RF v2, @ExtractionParam @MinLength(2) float[] res);
+	float[] mulT(Tup2RF v2, @ExtractionParam float[] res);
 	
 	/**
 	 * Multiplies this vector with the given vector {@code (v2[0], v2[1])} and saves the result in
@@ -2144,7 +2114,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	<T extends Tup2WF> T mulR(@MinLength(2) float[] v2, @ExtractionParam T res);
+	<T extends Tup2WF> T mulT(float[] v2, @ExtractionParam T res);
 	
 	/**
 	 * Multiplies this vector with the given vector {@code (v2[0], v2[1])} and saves the result in
@@ -2167,7 +2137,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] mulR(@MinLength(2) float[] v2, @ExtractionParam @MinLength(2) float[] res);
+	float[] mulT(float[] v2, @ExtractionParam float[] res);
 	
 	/**
 	 * Multiplies every component of this vector with the given value {@code (value)} and saves the
@@ -2193,7 +2163,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	<T extends Tup2WF> T mulR(float value, @ExtractionParam T res);
+	<T extends Tup2WF> T mulT(float value, @ExtractionParam T res);
 	
 	/**
 	 * Multiplies every component of this vector with the given value {@code (value)} and saves the
@@ -2213,7 +2183,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] mulR(float value, @ExtractionParam @MinLength(2) float[] res);
+	float[] mulT(float value, @ExtractionParam float[] res);
 	
 	/**
 	 * Multiplies this vector with the given vector {@code (v2x, v2y)} and saves the result in the
@@ -2241,7 +2211,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	<T extends Tup2WF> T mulR(float v2x, float v2y, @ExtractionParam T res);
+	<T extends Tup2WF> T mulT(float v2x, float v2y, @ExtractionParam T res);
 	
 	/**
 	 * Multiplies this vector with the given vector {@code (v2x, v2y)} and saves the result in the
@@ -2263,7 +2233,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] mulR(float v2x, float v2y, @ExtractionParam @MinLength(2) float[] res);
+	float[] mulT(float v2x, float v2y, @ExtractionParam float[] res);
 	
 	/**
 	 * Divides this vector by the given vector {@code (v2)} and saves the result in the extraction
@@ -2289,7 +2259,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	<T extends Tup2WF> T divR(Tup2RF v2, @ExtractionParam T res);
+	<T extends Tup2WF> T divT(Tup2RF v2, @ExtractionParam T res);
 	
 	/**
 	 * Divides this vector by the given vector {@code (v2)} and saves the result in the extraction
@@ -2309,7 +2279,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] divR(Tup2RF v2, @ExtractionParam @MinLength(2) float[] res);
+	float[] divT(Tup2RF v2, @ExtractionParam float[] res);
 	
 	/**
 	 * Divides this vector by the given vector {@code (v2[0], v2[1])} and saves the result in the
@@ -2335,7 +2305,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	<T extends Tup2WF> T divR(@MinLength(2) float[] v2, @ExtractionParam T res);
+	<T extends Tup2WF> T divT(float[] v2, @ExtractionParam T res);
 	
 	/**
 	 * Divides this vector by the given vector {@code (v2[0], v2[1])} and saves the result in the
@@ -2358,7 +2328,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] divR(@MinLength(2) float[] v2, @ExtractionParam @MinLength(2) float[] res);
+	float[] divT(float[] v2, @ExtractionParam float[] res);
 	
 	/**
 	 * Divides each component of this vector by the given value {@code (value)} and saves the result
@@ -2384,7 +2354,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	<T extends Tup2WF> T divR(float value, @ExtractionParam T res);
+	<T extends Tup2WF> T divT(float value, @ExtractionParam T res);
 	
 	/**
 	 * Divides each component of this vector by the given value {@code (value)} and saves the result
@@ -2404,7 +2374,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] divR(float value, @ExtractionParam @MinLength(2) float[] res);
+	float[] divT(float value, @ExtractionParam float[] res);
 	
 	/**
 	 * Divides this vector by the given vector {@code (v2x, v2y)} and saves the result in the
@@ -2432,7 +2402,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	<T extends Tup2WF> T divR(float v2x, float v2y, @ExtractionParam T res);
+	<T extends Tup2WF> T divT(float v2x, float v2y, @ExtractionParam T res);
 	
 	/**
 	 * Divides this vector by the given vector {@code (v2x, v2y)} and saves the result in the
@@ -2454,7 +2424,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] divR(float v2x, float v2y, @ExtractionParam @MinLength(2) float[] res);
+	float[] divT(float v2x, float v2y, @ExtractionParam float[] res);
 	
 	/**
 	 * Divides the given vector {@code (v2)} by this vector and saves the result in the extraction
@@ -2480,7 +2450,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	<T extends Tup2WF> T revDivR(Tup2RF v2, @ExtractionParam T res);
+	<T extends Tup2WF> T rDivT(Tup2RF v2, @ExtractionParam T res);
 	
 	/**
 	 * Divides the given vector {@code (v2)} by this vector and saves the result in the extraction
@@ -2500,7 +2470,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] revDivR(Tup2RF v2, @ExtractionParam float[] res);
+	float[] rDivT(Tup2RF v2, @ExtractionParam float[] res);
 	
 	/**
 	 * Divides the given vector {@code (v2[0], v2[1])} by this vector and saves the result in the
@@ -2526,7 +2496,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	<T extends Tup2WF> T revDivR(@MinLength(2) float[] v2, @ExtractionParam T res);
+	<T extends Tup2WF> T rDivT(float[] v2, @ExtractionParam T res);
 	
 	/**
 	 * Divides the given vector {@code (v2[0], v2[1])} by this vector and saves the result in the
@@ -2549,7 +2519,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] revDivR(@MinLength(2) float[] v2, @ExtractionParam @MinLength(2) float[] res);
+	float[] rDivT(float[] v2, @ExtractionParam float[] res);
 	
 	/**
 	 * Divides the given value {@code (value)} by each component of this vector and saves the result
@@ -2575,7 +2545,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	<T extends Tup2WF> T revDivR(float value, @ExtractionParam T res);
+	<T extends Tup2WF> T rDivT(float value, @ExtractionParam T res);
 	
 	/**
 	 * Divides the given value {@code (value)} by each component of this vector and saves the result
@@ -2595,7 +2565,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] revDivR(float value, @ExtractionParam @MinLength(2) float[] res);
+	float[] rDivT(float value, @ExtractionParam float[] res);
 	
 	/**
 	 * Divides the given vector {@code (v2x, v2y)} by this vector and saves the result in the
@@ -2623,7 +2593,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	<T extends Tup2WF> T revDivR(float v2x, float v2y, @ExtractionParam T res);
+	<T extends Tup2WF> T rDivT(float v2x, float v2y, @ExtractionParam T res);
 	
 	/**
 	 * Divides the given vector {@code (v2x, v2y)} by this vector and saves the result in the
@@ -2645,7 +2615,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] revDivR(float v2x, float v2y, @ExtractionParam @MinLength(2) float[] res);
+	float[] rDivT(float v2x, float v2y, @ExtractionParam float[] res);
 	
 	/**
 	 * Returns half the vector from the endpoint of this vector to the endpoint of the given vector
@@ -2671,7 +2641,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	<T extends Tup2WF> T halfVecR(Tup2RF v2, @ExtractionParam T res);
+	<T extends Tup2WF> T halfVecToT(Tup2RF v2, @ExtractionParam T res);
 	
 	/**
 	 * Returns half the vector from the endpoint of this vector to the endpoint of the given vector
@@ -2691,7 +2661,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] halfVecR(Tup2RF v2, @ExtractionParam @MinLength(2) float[] res);
+	float[] halfVecToT(Tup2RF v2, @ExtractionParam float[] res);
 	
 	/**
 	 * Returns half the vector from the endpoint of this vector to the endpoint of the given vector
@@ -2717,7 +2687,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	<T extends Tup2WF> T halfVecR(@MinLength(2) float[] v2, @ExtractionParam T res);
+	<T extends Tup2WF> T halfVecToT(float[] v2, @ExtractionParam T res);
 	
 	/**
 	 * Returns half the vector from the endpoint of this vector to the endpoint of the given vector
@@ -2740,7 +2710,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] halfVecR(@MinLength(2) float[] v2, @ExtractionParam @MinLength(2) float[] res);
+	float[] halfVecToT(float[] v2, @ExtractionParam float[] res);
 	
 	/**
 	 * Returns half the vector from the endpoint of this vector to the endpoint of the given vector
@@ -2768,7 +2738,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	<T extends Tup2WF> T halfVecR(float v2x, float v2y, @ExtractionParam T res);
+	<T extends Tup2WF> T halfVecToT(float v2x, float v2y, @ExtractionParam T res);
 	
 	/**
 	 * Returns half the vector from the endpoint of this vector to the endpoint of the given vector
@@ -2790,7 +2760,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] halfVecR(float v2x, float v2y, @ExtractionParam @MinLength(2) float[] res);
+	float[] halfVecToT(float v2x, float v2y, @ExtractionParam float[] res);
 	
 	/**
 	 * Returns the origin vector to the point that lies half way between the endpoint of this vector
@@ -2816,7 +2786,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	<T extends Tup2WF> T halfPointR(Tup2RF v2, @ExtractionParam T res);
+	<T extends Tup2WF> T midPointToT(Tup2RF v2, @ExtractionParam T res);
 	
 	/**
 	 * Returns the origin vector to the point that lies half way between the endpoint of this vector
@@ -2836,7 +2806,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] halfPointR(Tup2RF v2, @ExtractionParam @MinLength(2) float[] res);
+	float[] midPointToT(Tup2RF v2, @ExtractionParam float[] res);
 	
 	/**
 	 * Returns the origin vector to the point that lies half way between the endpoint of this vector
@@ -2863,7 +2833,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	<T extends Tup2WF> T halfPointR(@MinLength(2) float[] v2, @ExtractionParam T res);
+	<T extends Tup2WF> T midPointToT(float[] v2, @ExtractionParam T res);
 	
 	/**
 	 * Returns the origin vector to the point that lies half way between the endpoint of this vector
@@ -2887,7 +2857,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] halfPointR(@MinLength(2) float[] v2, @ExtractionParam @MinLength(2) float[] res);
+	float[] midPointToT(float[] v2, @ExtractionParam float[] res);
 	
 	/**
 	 * Returns the origin vector to the point that lies half way between the endpoint of this vector
@@ -2916,7 +2886,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	<T extends Tup2WF> T halfPointR(float v2x, float v2y, @ExtractionParam T res);
+	<T extends Tup2WF> T midPointToT(float v2x, float v2y, @ExtractionParam T res);
 	
 	/**
 	 * Returns the origin vector to the point that lies half way between the endpoint of this vector
@@ -2939,7 +2909,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] halfPointR(float v2x, float v2y, @ExtractionParam @MinLength(2) float[] res);
+	float[] midPointToT(float v2x, float v2y, @ExtractionParam float[] res);
 	
 	/**
 	 * Negates this vector and returns the result as the extraction parameter {@code res}.
@@ -2962,7 +2932,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	<T extends Tup2WF> T negR(@ExtractionParam T res);
+	<T extends Tup2WF> T negT(@ExtractionParam T res);
 	
 	/**
 	 * Negates this vector and returns the result as the extraction parameter {@code res}.
@@ -2979,7 +2949,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] negR(@ExtractionParam @MinLength(2) float[] res);
+	float[] negT(@ExtractionParam float[] res);
 	
 	/**
 	 * Inverses this vector and returns the result as the extraction parameter {@code res}.
@@ -3002,7 +2972,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	<T extends Tup2WF> T invR(@ExtractionParam T res);
+	<T extends Tup2WF> T recT(@ExtractionParam T res);
 	
 	/**
 	 * Inverses this vector and returns the result as the extraction parameter {@code res}.
@@ -3019,7 +2989,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] invR(@ExtractionParam @MinLength(2) float[] res);
+	float[] recT(@ExtractionParam float[] res);
 	
 	/**
 	 * Normalizes this vector and returns the result as the extraction parameter {@code res}.
@@ -3042,7 +3012,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	<T extends Tup2WF> T nrmR(@ExtractionParam T res);
+	<T extends Tup2WF> T nrmT(@ExtractionParam T res);
 	
 	/**
 	 * Normalizes this vector and returns the result as the extraction parameter {@code res}.
@@ -3059,7 +3029,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] nrmR(@ExtractionParam @MinLength(2) float[] res);
+	float[] nrmT(@ExtractionParam float[] res);
 	
 	/**
 	 * Compares each component of this vector with the corresponding component of the given vector
@@ -3081,7 +3051,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	<T extends Tup2WF> T minR(Tup2RF v2, @ExtractionParam T res);
+	<T extends Tup2WF> T minT(Tup2RF v2, @ExtractionParam T res);
 	
 	/**
 	 * Compares each component of this vector with the corresponding component of the given vector
@@ -3097,7 +3067,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] minR(Tup2RF v2, @ExtractionParam @MinLength(2) float[] res);
+	float[] minT(Tup2RF v2, @ExtractionParam float[] res);
 	
 	/**
 	 * Compares each component of this vector with the corresponding component of the given vector
@@ -3120,7 +3090,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	<T extends Tup2WF> T minR(@MinLength(2) float[] v2, @ExtractionParam T res);
+	<T extends Tup2WF> T minT(float[] v2, @ExtractionParam T res);
 	
 	/**
 	 * Compares each component of this vector with the corresponding component of the given vector
@@ -3140,7 +3110,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] minR(@MinLength(2) float[] v2, @ExtractionParam @MinLength(2) float[] res);
+	float[] minT(float[] v2, @ExtractionParam float[] res);
 	
 	/**
 	 * Compares each component of this vector with the corresponding component of the given vector
@@ -3164,7 +3134,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	<T extends Tup2WF> T minR(float v2x, float v2y, @ExtractionParam T res);
+	<T extends Tup2WF> T minT(float v2x, float v2y, @ExtractionParam T res);
 	
 	/**
 	 * Compares each component of this vector with the corresponding component of the given vector
@@ -3182,7 +3152,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] minR(float v2x, float v2y, @ExtractionParam @MinLength(2) float[] res);
+	float[] minT(float v2x, float v2y, @ExtractionParam float[] res);
 	
 	/**
 	 * Compares each component of this vector with the corresponding component of the given vector
@@ -3204,7 +3174,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	<T extends Tup2WF> T maxR(Tup2RF v2, @ExtractionParam T res);
+	<T extends Tup2WF> T maxT(Tup2RF v2, @ExtractionParam T res);
 	
 	/**
 	 * Compares each component of this vector with the corresponding component of the given vector
@@ -3220,7 +3190,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] maxR(Tup2RF v2, @ExtractionParam @MinLength(2) float[] res);
+	float[] maxT(Tup2RF v2, @ExtractionParam float[] res);
 	
 	/**
 	 * Compares each component of this vector with the corresponding component of the given vector
@@ -3243,7 +3213,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	<T extends Tup2WF> T maxR(@MinLength(2) float[] v2, @ExtractionParam T res);
+	<T extends Tup2WF> T maxT(float[] v2, @ExtractionParam T res);
 	
 	/**
 	 * Compares each component of this vector with the corresponding component of the given vector
@@ -3263,7 +3233,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] maxR(@MinLength(2) float[] v2, @ExtractionParam @MinLength(2) float[] res);
+	float[] maxT(float[] v2, @ExtractionParam float[] res);
 	
 	/**
 	 * Compares each component of this vector with the corresponding component of the given vector
@@ -3287,7 +3257,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	<T extends Tup2WF> T maxR(float v2x, float v2y, @ExtractionParam T res);
+	<T extends Tup2WF> T maxT(float v2x, float v2y, @ExtractionParam T res);
 	
 	/**
 	 * Compares each component of this vector with the corresponding component of the given vector
@@ -3305,7 +3275,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] maxR(float v2x, float v2y, @ExtractionParam @MinLength(2) float[] res);
+	float[] maxT(float v2x, float v2y, @ExtractionParam float[] res);
 	
 	/**
 	 * Rotates this vector by the given angle in radians and saves the result in the given
@@ -3331,7 +3301,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	<T extends Tup2WF> T rotRadR(float angle, @ExtractionParam T res);
+	<T extends Tup2WF> T rotRadT(float angle, @ExtractionParam T res);
 	
 	/**
 	 * Rotates this vector by the given angle in radians and saves the result in the given
@@ -3352,7 +3322,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] rotRadR(float angle, @ExtractionParam @MinLength(2) float[] res);
+	float[] rotRadT(float angle, @ExtractionParam float[] res);
 	
 	/**
 	 * Rotates this vector by the given angle in degrees and saves the result in the given
@@ -3378,7 +3348,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	<T extends Tup2WF> T rotDegR(float angle, @ExtractionParam T res);
+	<T extends Tup2WF> T rotDegT(float angle, @ExtractionParam T res);
 	
 	/**
 	 * Rotates this vector by the given angle in degrees and saves the result in the given
@@ -3399,7 +3369,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] rotDegR(float angle, @ExtractionParam @MinLength(2) float[] res);
+	float[] rotDegT(float angle, @ExtractionParam float[] res);
 	
 	/**
 	 * Calculates the orthogonal projection of this vector onto the normalized target vector
@@ -3425,7 +3395,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	<T extends Tup2WF> T prjR(Tup2RF t, @ExtractionParam T res);
+	<T extends Tup2WF> T projectT(Tup2RF t, @ExtractionParam T res);
 	
 	/**
 	 * Calculates the orthogonal projection of this vector onto the normalized target vector
@@ -3451,7 +3421,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	<T extends Tup2WF> T prjR(@MinLength(2) float[] t, @ExtractionParam T res);
+	<T extends Tup2WF> T projectT(float[] t, @ExtractionParam T res);
 	
 	/**
 	 * Calculates the orthogonal projection of this vector onto the normalized target vector
@@ -3479,7 +3449,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	<T extends Tup2WF> T prjR(float tX, float tY, @ExtractionParam T res);
+	<T extends Tup2WF> T projectT(float tX, float tY, @ExtractionParam T res);
 	
 	/**
 	 * Calculates the orthogonal projection of this vector onto the normalized target vector
@@ -3499,7 +3469,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] prjR(Tup2RF t, @ExtractionParam @MinLength(2) float[] res);
+	float[] projectT(Tup2RF t, @ExtractionParam float[] res);
 	
 	/**
 	 * Calculates the orthogonal projection of this vector onto the normalized target vector
@@ -3519,7 +3489,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] prjR(@MinLength(2) float[] t, @ExtractionParam @MinLength(2) float[] res);
+	float[] projectT(float[] t, @ExtractionParam float[] res);
 	
 	/**
 	 * Calculates the orthogonal projection of this vector onto the normalized target vector
@@ -3541,7 +3511,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] prjR(float tX, float tY, @ExtractionParam @MinLength(2) float[] res);
+	float[] projectT(float tX, float tY, @ExtractionParam float[] res);
 	
 	/**
 	 * Calculates the reflection of this vector based on the given normalized surface normal
@@ -3563,7 +3533,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	<T extends Tup2WF> T rflR(Tup2RF n, @ExtractionParam T res);
+	<T extends Tup2WF> T reflectT(Tup2RF n, @ExtractionParam T res);
 	
 	/**
 	 * Calculates the reflection of this vector based on the given normalized surface normal
@@ -3585,7 +3555,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	<T extends Tup2WF> T rflR(@MinLength(2) float[] n, @ExtractionParam T res);
+	<T extends Tup2WF> T reflectT(float[] n, @ExtractionParam T res);
 	
 	/**
 	 * Calculates the reflection of this vector based on the given normalized surface normal
@@ -3609,7 +3579,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	<T extends Tup2WF> T rflR(float nX, float nY, @ExtractionParam T res);
+	<T extends Tup2WF> T reflectT(float nX, float nY, @ExtractionParam T res);
 	
 	/**
 	 * Calculates the reflection of this vector based on the given normalized surface normal
@@ -3625,7 +3595,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] rflR(Tup2RF n, @ExtractionParam @MinLength(2) float[] res);
+	float[] reflectT(Tup2RF n, @ExtractionParam float[] res);
 	
 	/**
 	 * Calculates the reflection of this vector based on the given normalized surface normal
@@ -3641,7 +3611,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] rflR(@MinLength(2) float[] n, @ExtractionParam @MinLength(2) float[] res);
+	float[] reflectT(float[] n, @ExtractionParam float[] res);
 	
 	/**
 	 * Calculates the reflection of this vector based on the given normalized surface normal
@@ -3659,7 +3629,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] rflR(float nX, float nY, @ExtractionParam @MinLength(2) float[] res);
+	float[] reflectT(float nX, float nY, @ExtractionParam float[] res);
 	
 	/**
 	 * Rounds the components of this vector towards the next greater integer and saves the result in
@@ -3676,7 +3646,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	<T extends Tup2WF> T ceilR(@ExtractionParam T res);
+	<T extends Tup2WF> T ceilT(@ExtractionParam T res);
 	
 	/**
 	 * Rounds the components of this vector towards the next greater integer and saves the result in
@@ -3690,7 +3660,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] ceilR(@ExtractionParam @MinLength(2) float[] res);
+	float[] ceilT(@ExtractionParam float[] res);
 	
 	/**
 	 * Rounds the components of this vector towards the next smaller integer and saves the result in
@@ -3707,7 +3677,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	<T extends Tup2WF> T floorR(@ExtractionParam T res);
+	<T extends Tup2WF> T floorT(@ExtractionParam T res);
 	
 	/**
 	 * Rounds the components of this vector towards the next smaller integer and saves the result in
@@ -3721,7 +3691,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] floorR(@ExtractionParam @MinLength(2) float[] res);
+	float[] floorT(@ExtractionParam float[] res);
 	
 	/**
 	 * Rounds the components of this vector and saves the result in the given extraction parameter
@@ -3738,7 +3708,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	<T extends Tup2WF> T roundR(@ExtractionParam T res);
+	<T extends Tup2WF> T roundT(@ExtractionParam T res);
 	
 	/**
 	 * Rounds the components of this vector and saves the result in the extraction parameter.
@@ -3751,7 +3721,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] roundR(@ExtractionParam @MinLength(2) float[] res);
+	float[] roundT(@ExtractionParam float[] res);
 	
 	/**
 	 * Truncates the decimals of the components of this vector and saves the result in the given
@@ -3768,7 +3738,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	<T extends Tup2WF> T truncR(@ExtractionParam T res);
+	<T extends Tup2WF> T truncT(@ExtractionParam T res);
 	
 	/**
 	 * Truncates the decimals of the components of this vector and saves the result in the
@@ -3782,7 +3752,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] truncR(@ExtractionParam @MinLength(2) float[] res);
+	float[] truncT(@ExtractionParam float[] res);
 	
 	/**
 	 * Rounds the components of this vector using the given method and saves the result in the given
@@ -3798,7 +3768,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	<T extends Tup2WF> T roundR(RoundMethodF method, @ExtractionParam T res);
+	<T extends Tup2WF> T roundT(RoundMethodF method, @ExtractionParam T res);
 	
 	/**
 	 * Rounds the components of this vector using the given method and saves the result in the
@@ -3814,7 +3784,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] roundR(RoundMethodF method, @ExtractionParam @MinLength(2) float[] res);
+	float[] roundT(RoundMethodF method, @ExtractionParam float[] res);
 	
 	/**
 	 * Calculates the absolute values of the component values and saves the result in the extraction
@@ -3831,7 +3801,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	<T extends Tup2WF> T absR(@ExtractionParam T res);
+	<T extends Tup2WF> T absT(@ExtractionParam T res);
 	
 	/**
 	 * Calculates the absolute values of the component values and saves the result in the extraction
@@ -3845,7 +3815,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] absR(@ExtractionParam @MinLength(2) float[] res);
+	float[] absT(@ExtractionParam float[] res);
 	
 	/**
 	 * Calculates the {@link Math#signum(float) signum} of the components of this vector and saves
@@ -3862,7 +3832,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	<T extends Tup2WF> T signR(@ExtractionParam T res);
+	<T extends Tup2WF> T signT(@ExtractionParam T res);
 	
 	/**
 	 * Calculates the {@link Math#signum(float) signum} of the components of this vector and saves
@@ -3876,7 +3846,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] signR(@ExtractionParam @MinLength(2) float[] res);
+	float[] signT(@ExtractionParam float[] res);
 	
 	/**
 	 * Linearly integrates over the second given vector {@code (v2)} by the integrator
@@ -3907,7 +3877,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	<T extends Tup2WF> T intVecLinR(Tup2RF v2, float alpha, @ExtractionParam T res);
+	<T extends Tup2WF> T intVecLinT(Tup2RF v2, float alpha, @ExtractionParam T res);
 	
 	/**
 	 * Linearly integrates over the second given vector {@code (v2[0], v2[1])} by the integrator
@@ -3939,7 +3909,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	<T extends Tup2WF> T intVecLinR(@MinLength(2) float[] v2, float alpha, @ExtractionParam T res);
+	<T extends Tup2WF> T intVecLinT(float[] v2, float alpha, @ExtractionParam T res);
 	
 	/**
 	 * Linearly integrates over the second given vector {@code (v2x, v2y)} by the integrator
@@ -3972,7 +3942,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	<T extends Tup2WF> T intVecLinR(float v2x, float v2y, float alpha, @ExtractionParam T res);
+	<T extends Tup2WF> T intVecLinT(float v2x, float v2y, float alpha, @ExtractionParam T res);
 	
 	/**
 	 * Linearly integrates over the second given vector {@code (v2)} by the integrator
@@ -4000,7 +3970,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] intVecLinR(Tup2RF v2, float alpha, @ExtractionParam @MinLength(2) float[] res);
+	float[] intVecLinT(Tup2RF v2, float alpha, @ExtractionParam float[] res);
 	
 	/**
 	 * Linearly integrates over the second given vector {@code (v2[0], v2[1])} by the integrator
@@ -4029,7 +3999,7 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] intVecLinR(@MinLength(2) float[] v2, float alpha, @ExtractionParam @MinLength(2) float[] res);
+	float[] intVecLinR(float[] v2, float alpha, @ExtractionParam float[] res);
 	
 	/**
 	 * Linearly integrates over the second given vector {@code (v2x, v2y)} by the integrator
@@ -4059,5 +4029,5 @@ public interface Vec2RF extends Tup2RF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	float[] intVecLinR(float v2x, float v2y, float alpha, @ExtractionParam @MinLength(2) float[] res);
+	float[] intVecLinT(float v2x, float v2y, float alpha, @ExtractionParam float[] res);
 }

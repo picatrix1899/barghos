@@ -3,7 +3,7 @@ package org.barghos.util.consumer.bigi;
 import java.math.BigInteger;
 
 import org.barghos.util.consumer.Consumer3;
-import org.barghos.validation.ParameterValidation;
+import org.barghos.validation.Validate;
 
 /**
  * Represents an operation that accepts three 1-dimensional {@link BigInteger}
@@ -15,7 +15,7 @@ import org.barghos.validation.ParameterValidation;
  * 
  * <p>
  * Functional Method:
- * {@link #accept3BigiA(BigInteger[], BigInteger[], BigInteger[])}
+ * {@link #acceptBigi(BigInteger[], BigInteger[], BigInteger[])}
  * 
  * @see ConsumerBigiA
  * @see ConsumerExBigiA
@@ -29,6 +29,7 @@ import org.barghos.validation.ParameterValidation;
 @FunctionalInterface
 public interface Consumer3BigiA extends Consumer3<BigInteger[],BigInteger[],BigInteger[]>
 {
+	
 	/**
 	 * Performs the operation on the given arguments.
 	 *
@@ -36,7 +37,13 @@ public interface Consumer3BigiA extends Consumer3<BigInteger[],BigInteger[],BigI
 	 * @param b The second input argument.
 	 * @param c The third input argument.
 	 */
-	void accept3BigiA(BigInteger[] a, BigInteger[] b, BigInteger[] c);
+	void acceptBigi(BigInteger[] a, BigInteger[] b, BigInteger[] c);
+	
+	@Override
+	default void accept(BigInteger[] a, BigInteger[] b, BigInteger[] c)
+	{
+		acceptBigi(a, b, c);
+	}
 	
 	/**
 	 * Performs the given operation after this operation.
@@ -46,11 +53,25 @@ public interface Consumer3BigiA extends Consumer3<BigInteger[],BigInteger[],BigI
 	 * @return A new {@link Consumer3BigiA} performing this operation and the
 	 * operation after.
 	 */
-	default Consumer3BigiA then3BigiA(Consumer3BigiA after)
+	default Consumer3BigiA then(Consumer3BigiA after)
 	{
-		ParameterValidation.pvNotNull("after", after);
+		Validate.Arg.checkNotNull("after", after);
 		
-		return (a, b, c) -> { accept3BigiA(a, b, c); after.accept3BigiA(a, b, c); };
+		return (a, b, c) -> { acceptBigi(a, b, c); after.acceptBigi(a, b, c); };
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @return A new {@link Consumer3BigiA} performing this operation and the
+	 * operation after.
+	 */
+	@Override
+	default Consumer3BigiA then(Consumer3<? super BigInteger[],? super BigInteger[],? super BigInteger[]> after)
+	{
+		Validate.Arg.checkNotNull("after", after);
+
+		return (a, b, c) -> { acceptBigi(a, b, c); after.accept(a, b, c); };
 	}
 	
 	/**
@@ -61,63 +82,11 @@ public interface Consumer3BigiA extends Consumer3<BigInteger[],BigInteger[],BigI
 	 * @return A new {@link Consumer3BigiA} performing the operation before and
 	 * this operation.
 	 */
-	default Consumer3BigiA before3BigiA(Consumer3BigiA before)
+	default Consumer3BigiA before(Consumer3BigiA before)
 	{
-		ParameterValidation.pvNotNull("before", before);
+		Validate.Arg.checkNotNull("before", before);
 		
-		return (a, b, c) -> { before.accept3BigiA(a, b, c); accept3BigiA(a, b, c); };
-	}
-	
-	/**
-	 * Composes a new {@link Consumer3BigiA} performing the given operations in
-	 * sequence.
-	 * 
-	 * @param consumers The operations to perform.
-	 * 
-	 * @return A new {@link Consumer3BigiA} performing the operations.
-	 */
-	@SafeVarargs
-	static Consumer3BigiA of3BigiA(Consumer3BigiA... consumers)
-	{
-		ParameterValidation.pvNotNull("consumers", consumers);
-		ParameterValidation.pvEntriesNotNull("consumers", consumers);
-		
-		/*
-		 * If no operations are passed return empty operation.
-		 */
-		if(consumers.length == 0) return (a, b, c) -> {};
-		
-		/*
-		 * If exactly one operation is passed return the operation.
-		 */
-		if(consumers.length == 1) return consumers[0];
-		
-		return (a, b, c) -> { for(Consumer3BigiA consumer : consumers) consumer.accept3BigiA(a, b, c); };
-	}
-	
-	/**
-	 * @deprecated Use {@link #accept3BigiA(BigInteger[], BigInteger[], BigInteger[])}
-	 * instead.
-	 */
-	@Override
-	@Deprecated(since = "1.0", forRemoval = false)
-	default void accept(BigInteger[] a, BigInteger[] b, BigInteger[] c)
-	{
-		accept3BigiA(a, b, c);
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @return A new {@link Consumer3BigiA} performing this operation and the
-	 * operation after.
-	 */
-	@Override
-	default Consumer3BigiA then(Consumer3<BigInteger[],BigInteger[],BigInteger[]> after)
-	{
-		ParameterValidation.pvNotNull("after", after);
-
-		return (a, b, c) -> { accept3BigiA(a, b, c); after.accept(a, b, c); };
+		return (a, b, c) -> { before.acceptBigi(a, b, c); acceptBigi(a, b, c); };
 	}
 	
 	/**
@@ -127,11 +96,11 @@ public interface Consumer3BigiA extends Consumer3<BigInteger[],BigInteger[],BigI
 	 * this operation.
 	 */
 	@Override
-	default Consumer3BigiA before(Consumer3<BigInteger[],BigInteger[],BigInteger[]> before)
+	default Consumer3BigiA before(Consumer3<? super BigInteger[],? super BigInteger[],? super BigInteger[]> before)
 	{
-		ParameterValidation.pvNotNull("before", before);
+		Validate.Arg.checkNotNull("before", before);
 
-		return (a, b, c) -> { before.accept(a, b, c); accept3BigiA(a, b, c); };
+		return (a, b, c) -> { before.accept(a, b, c); acceptBigi(a, b, c); };
 	}
 	
 	/**
@@ -143,18 +112,37 @@ public interface Consumer3BigiA extends Consumer3<BigInteger[],BigInteger[],BigI
 	 * @return A new {@link Consumer3BigiA} performing the operations.
 	 */
 	@SafeVarargs
-	static Consumer3BigiA of(Consumer3<BigInteger[],BigInteger[],BigInteger[]>... consumers)
+	static Consumer3BigiA of(Consumer3BigiA... consumers)
 	{
-		ParameterValidation.pvNotNull("consumers", consumers);
-		ParameterValidation.pvEntriesNotNull("consumers", consumers);
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		/*
-		 * If no operations are passed return empty operation.
-		 */
+		if(consumers.length == 0) return (a, b, c) -> {};
+		
+		if(consumers.length == 1) return consumers[0];
+		
+		return (a, b, c) -> { for(Consumer3BigiA consumer : consumers) consumer.acceptBigi(a, b, c); };
+	}
+
+	/**
+	 * Composes a new {@link Consumer3BigiA} performing the given operations in
+	 * sequence.
+	 * 
+	 * @param consumers The operations to perform.
+	 * 
+	 * @return A new {@link Consumer3BigiA} performing the operations.
+	 */
+	@SafeVarargs
+	static Consumer3BigiA of(Consumer3<? super BigInteger[],? super BigInteger[],? super BigInteger[]>... consumers)
+	{
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
+		
 		if(consumers.length == 0) return (a, b, c) -> {};
 
 		if(consumers.length == 1) return (Consumer3BigiA) consumers[0]::accept;
 		
-		return (a, b, c) -> { for(Consumer3<BigInteger[],BigInteger[],BigInteger[]> consumer : consumers) consumer.accept(a, b, c); };
+		return (a, b, c) -> { for(Consumer3<? super BigInteger[],? super BigInteger[],? super BigInteger[]> consumer : consumers) consumer.accept(a, b, c); };
 	}
+	
 }

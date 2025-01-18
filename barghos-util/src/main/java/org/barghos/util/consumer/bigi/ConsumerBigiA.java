@@ -3,7 +3,8 @@ package org.barghos.util.consumer.bigi;
 import java.math.BigInteger;
 
 import org.barghos.util.consumer.Consumer;
-import org.barghos.validation.ParameterValidation;
+import org.barghos.util.consumer.bigd.Consumer2Bigd;
+import org.barghos.validation.Validate;
 
 /**
  * Represents an operation that accepts one 1-dimensional {@link BigInteger}
@@ -15,7 +16,7 @@ import org.barghos.validation.ParameterValidation;
  * 
  * <p>
  * Functional Method:
- * {@link #acceptBigiA(BigInteger[])}
+ * {@link #acceptBigi(BigInteger[])}
  * 
  * @see ConsumerBigiA
  * @see ConsumerExBigiA
@@ -29,12 +30,19 @@ import org.barghos.validation.ParameterValidation;
 @FunctionalInterface
 public interface ConsumerBigiA extends Consumer<BigInteger[]>
 {
+	
 	/**
 	 * Performs the operation on the given arguments.
 	 *
 	 * @param a The first input argument.
 	 */
-	void acceptBigiA(BigInteger[] a);
+	void acceptBigi(BigInteger[] a);
+	
+	@Override
+	default void accept(BigInteger[] a)
+	{
+		acceptBigi(a);
+	}
 	
 	/**
 	 * Performs the given operation after this operation.
@@ -44,63 +52,11 @@ public interface ConsumerBigiA extends Consumer<BigInteger[]>
 	 * @return A new {@link ConsumerBigiA} performing this operation and the
 	 * operation after.
 	 */
-	default ConsumerBigiA thenBigiA(ConsumerBigiA after)
+	default ConsumerBigiA then(ConsumerBigiA after)
 	{
-		ParameterValidation.pvNotNull("after", after);
+		Validate.Arg.checkNotNull("after", after);
 		
-		return (a) -> { acceptBigiA(a); after.acceptBigiA(a); };
-	}
-	
-	/**
-	 * Performs the given operation before this operation.
-	 * 
-	 * @param before The operation to perform before this operation.
-	 * 
-	 * @return A new {@link ConsumerBigiA} performing the operation before and
-	 * this operation.
-	 */
-	default ConsumerBigiA beforeBigiA(ConsumerBigiA before)
-	{
-		ParameterValidation.pvNotNull("before", before);
-		
-		return (a) -> { before.acceptBigiA(a); acceptBigiA(a); };
-	}
-	
-	/**
-	 * Composes a new {@link ConsumerBigiA} performing the given operations in
-	 * sequence.
-	 * 
-	 * @param consumers The operations to perform.
-	 * 
-	 * @return A new {@link ConsumerBigiA} performing the operations.
-	 */
-	@SafeVarargs
-	static ConsumerBigiA ofBigiA(ConsumerBigiA... consumers)
-	{
-		ParameterValidation.pvNotNull("consumers", consumers);
-		ParameterValidation.pvEntriesNotNull("consumers", consumers);
-		
-		/*
-		 * If no operations are passed return empty operation.
-		 */
-		if(consumers.length == 0) return (a) -> {};
-		
-		/*
-		 * If exactly one operation is passed return the operation.
-		 */
-		if(consumers.length == 1) return consumers[0];
-		
-		return (a) -> { for(ConsumerBigiA consumer : consumers) consumer.acceptBigiA(a); };
-	}
-
-	/**
-	 * @deprecated Use {@link #acceptBigiA(BigInteger[])} instead.
-	 */
-	@Override
-	@Deprecated(since = "1.0", forRemoval = false)
-	default void accept(BigInteger[] a)
-	{
-		acceptBigiA(a);
+		return (a) -> { acceptBigi(a); after.acceptBigi(a); };
 	}
 	
 	/**
@@ -110,11 +66,11 @@ public interface ConsumerBigiA extends Consumer<BigInteger[]>
 	 * operation after.
 	 */
 	@Override
-	default ConsumerBigiA then(Consumer<BigInteger[]> after)
+	default ConsumerBigiA then(Consumer<? super BigInteger[]> after)
 	{
-		ParameterValidation.pvNotNull("after", after);
+		Validate.Arg.checkNotNull("after", after);
 
-		return (a) -> { acceptBigiA(a); after.accept(a); };
+		return (a) -> { acceptBigi(a); after.accept(a); };
 	}
 	
 	/**
@@ -126,9 +82,32 @@ public interface ConsumerBigiA extends Consumer<BigInteger[]>
 	@Override
 	default ConsumerBigiA then(java.util.function.Consumer<? super BigInteger[]> after)
 	{
-		ParameterValidation.pvNotNull("after", after);
+		Validate.Arg.checkNotNull("after", after);
 
-		return (a) -> { acceptBigiA(a); after.accept(a); };
+		return (a) -> { acceptBigi(a); after.accept(a); };
+	}
+	
+	@Override
+	default ConsumerBigiA andThen(java.util.function.Consumer<? super BigInteger[]> after)
+	{
+		Validate.Arg.checkNotNull("after", after);
+		
+		return (a) -> { acceptBigi(a); after.accept(a); };
+	}
+	
+	/**
+	 * Performs the given operation before this operation.
+	 * 
+	 * @param before The operation to perform before this operation.
+	 * 
+	 * @return A new {@link ConsumerBigiA} performing the operation before and
+	 * this operation.
+	 */
+	default ConsumerBigiA before(ConsumerBigiA before)
+	{
+		Validate.Arg.checkNotNull("before", before);
+		
+		return (a) -> { before.acceptBigi(a); acceptBigi(a); };
 	}
 	
 	/**
@@ -138,11 +117,11 @@ public interface ConsumerBigiA extends Consumer<BigInteger[]>
 	 * this operation.
 	 */
 	@Override
-	default ConsumerBigiA before(Consumer<BigInteger[]> before)
+	default ConsumerBigiA before(Consumer<? super BigInteger[]> before)
 	{
-		ParameterValidation.pvNotNull("before", before);
+		Validate.Arg.checkNotNull("before", before);
 
-		return (a) -> { before.accept(a); acceptBigiA(a); };
+		return (a) -> { before.accept(a); acceptBigi(a); };
 	}
 	
 	/**
@@ -154,9 +133,9 @@ public interface ConsumerBigiA extends Consumer<BigInteger[]>
 	@Override
 	default ConsumerBigiA before(java.util.function.Consumer<? super BigInteger[]> before)
 	{
-		ParameterValidation.pvNotNull("before", before);
+		Validate.Arg.checkNotNull("before", before);
 
-		return (a) -> { before.accept(a); acceptBigiA(a); };
+		return (a) -> { before.accept(a); acceptBigi(a); };
 	}
 	
 	/**
@@ -168,30 +147,58 @@ public interface ConsumerBigiA extends Consumer<BigInteger[]>
 	 * @return A new {@link ConsumerBigiA} performing the operations.
 	 */
 	@SafeVarargs
-	static ConsumerBigiA of(Consumer<BigInteger[]>... consumers)
+	static ConsumerBigiA of(ConsumerBigiA... consumers)
 	{
-		ParameterValidation.pvNotNull("consumers", consumers);
-		ParameterValidation.pvEntriesNotNull("consumers", consumers);
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		/*
-		 * If no operations are passed return empty operation.
-		 */
+		if(consumers.length == 0) return (a) -> {};
+		
+		if(consumers.length == 1) return consumers[0];
+		
+		return (a) -> { for(ConsumerBigiA consumer : consumers) consumer.acceptBigi(a); };
+	}
+
+	/**
+	 * Composes a new {@link ConsumerBigiA} performing the given operations in
+	 * sequence.
+	 * 
+	 * @param consumers The operations to perform.
+	 * 
+	 * @return A new {@link ConsumerBigiA} performing the operations.
+	 */
+	@SafeVarargs
+	static ConsumerBigiA of(Consumer<? super BigInteger[]>... consumers)
+	{
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
+		
 		if(consumers.length == 0) return (a) -> {};
 
 		if(consumers.length == 1) return (ConsumerBigiA) consumers[0]::accept;
 
-		return (a) -> { for(Consumer<BigInteger[]> consumer : consumers) consumer.accept(a); };
+		return (a) -> { for(Consumer<? super BigInteger[]> consumer : consumers) consumer.accept(a); };
 	}
-
+	
 	/**
-	 * @deprecated
+	 * Composes a new {@link Consumer2Bigd} performing the given operations in
+	 * sequence.
 	 * 
-	 * Use {@link #then(java.util.function.Consumer)} instead.
+	 * @param consumers The operations to perform.
+	 * 
+	 * @return A new {@link Consumer2Bigd} performing the operations.
 	 */
-	@Override
-	@Deprecated(since = "1.0", forRemoval = false)
-	default ConsumerBigiA andThen(java.util.function.Consumer<? super BigInteger[]> after)
+	@SafeVarargs
+	static ConsumerBigiA of(java.util.function.Consumer<? super BigInteger[]>... consumers)
 	{
-		return then(after);
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
+		
+		if(consumers.length == 0) return (a) -> {};
+
+		if(consumers.length == 1) return (ConsumerBigiA)consumers[0]::accept;
+		
+		return (a) -> { for(java.util.function.Consumer<? super BigInteger[]> consumer : consumers) consumer.accept(a); };
 	}
+	
 }

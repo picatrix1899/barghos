@@ -19,6 +19,7 @@ import org.barghos.util.supplier.SupplierEx;
 @FunctionalInterface
 public interface SupplierExB extends SupplierEx<Byte>
 {
+	
 	/**
 	 * Gets a result.
 	 *
@@ -28,13 +29,15 @@ public interface SupplierExB extends SupplierEx<Byte>
 	 */
 	byte getB() throws Exception;
 	
-	/**
-	 * @deprecated Use {@link #getB()} instead.
-	 */
 	@Override
-	@Deprecated(since = "1.0", forRemoval = false)
 	default Byte get() throws Exception
 	{
 		return getB();
 	}
+	
+	public static SupplierExB of(byte value)
+	{
+		return () -> value;
+	}
+	
 }

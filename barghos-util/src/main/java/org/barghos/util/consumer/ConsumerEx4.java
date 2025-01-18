@@ -1,7 +1,7 @@
 package org.barghos.util.consumer;
 
 import org.barghos.validation.ExceptionHandler;
-import org.barghos.validation.ParameterValidation;
+import org.barghos.validation.Validate;
 
 /**
  * Represents an operation that accepts four input arguments and returns no
@@ -52,9 +52,16 @@ public interface ConsumerEx4<A,B,C,D>
 	 * @return A new {@link ConsumerEx4} performing this operation and the
 	 * operation after.
 	 */
-	default ConsumerEx4<A,B,C,D> then(ConsumerEx4<A,B,C,D> after)
+	default ConsumerEx4<A,B,C,D> then(ConsumerEx4<? super A,? super B,? super C,? super D> after)
 	{
-		ParameterValidation.pvNotNull("after", after);
+		Validate.Arg.checkNotNull("after", after);
+		
+		return (a, b, c, d) -> { accept(a, b, c, d); after.accept(a, b, c, d); };
+	}
+	
+	default ConsumerEx4<A,B,C,D> then(Consumer4<? super A,? super B,? super C,? super D> after)
+	{
+		Validate.Arg.checkNotNull("after", after);
 		
 		return (a, b, c, d) -> { accept(a, b, c, d); after.accept(a, b, c, d); };
 	}
@@ -67,9 +74,16 @@ public interface ConsumerEx4<A,B,C,D>
 	 * @return A new {@link ConsumerEx4} performing the operation before and
 	 * this operation.
 	 */
-	default ConsumerEx4<A,B,C,D> before(ConsumerEx4<A,B,C,D> before)
+	default ConsumerEx4<A,B,C,D> before(ConsumerEx4<? super A,? super B,? super C,? super D> before)
 	{
-		ParameterValidation.pvNotNull("before", before);
+		Validate.Arg.checkNotNull("before", before);
+		
+		return (a, b, c, d) -> { before.accept(a, b, c, d); accept(a, b, c, d); };
+	}
+	
+	default ConsumerEx4<A,B,C,D> before(Consumer4<? super A,? super B,? super C,? super D> before)
+	{
+		Validate.Arg.checkNotNull("before", before);
 		
 		return (a, b, c, d) -> { before.accept(a, b, c, d); accept(a, b, c, d); };
 	}
@@ -83,9 +97,9 @@ public interface ConsumerEx4<A,B,C,D>
 	 * @return A new {@link Consumer4} performing the operations and exception
 	 * handling.
 	 */
-	default Consumer4<A,B,C,D> handled(ExceptionHandler handler)
+	default Consumer4<A,B,C,D> handleEx(ExceptionHandler handler)
 	{
-		ParameterValidation.pvNotNull("handler", handler);
+		Validate.Arg.checkNotNull("handler", handler);
 		
 		return (a, b, c, d) -> {
 			try
@@ -99,6 +113,17 @@ public interface ConsumerEx4<A,B,C,D>
 		};
 	}
 	
+	default Consumer4<A,B,C,D> ignoreEx()
+	{
+		return (a, b, c, d) -> {
+			try
+			{
+				accept(a, b, c, d);
+			}
+			catch(Exception e) { }
+		};
+	}
+	
 	/**
 	 * Performs the passed operation in case of an exception in this consumer.
 	 * As the passed consumer may throw an exception the returned consumer is
@@ -109,9 +134,9 @@ public interface ConsumerEx4<A,B,C,D>
 	 * 
 	 * @return A new {@link ConsumerEx4} performing the operations.
 	 */
-	default ConsumerEx4<A,B,C,D> onException(ConsumerEx4<A,B,C,D> consumer)
+	default ConsumerEx4<A,B,C,D> onEx(ConsumerEx4<? super A,? super B,? super C,? super D> consumer)
 	{
-		ParameterValidation.pvNotNull("consumer", consumer);
+		Validate.Arg.checkNotNull("consumer", consumer);
 		
 		return (a, b, c, d) -> {
 			try
@@ -134,9 +159,9 @@ public interface ConsumerEx4<A,B,C,D>
 	 * 
 	 * @return A new {@link Consumer4} performing the operations.
 	 */
-	default Consumer4<A,B,C,D> onException(Consumer4<A,B,C,D> consumer)
+	default Consumer4<A,B,C,D> onEx(Consumer4<? super A,? super B,? super C,? super D> consumer)
 	{
-		ParameterValidation.pvNotNull("consumer", consumer);
+		Validate.Arg.checkNotNull("consumer", consumer);
 		
 		return (a, b, c, d) -> {
 			try
@@ -163,22 +188,17 @@ public interface ConsumerEx4<A,B,C,D>
 	 * 
 	 * @return A new {@link ConsumerEx4} performing the operations.
 	 */
+	@SuppressWarnings("unchecked")
 	@SafeVarargs
-	static <A,B,C,D> ConsumerEx4<A,B,C,D> of(ConsumerEx4<A,B,C,D>... consumers)
+	static <A,B,C,D> ConsumerEx4<A,B,C,D> of(ConsumerEx4<? super A,? super B,? super C,? super D>... consumers)
 	{
-		ParameterValidation.pvNotNull("consumers", consumers);
-		ParameterValidation.pvEntriesNotNull("consumers", consumers);
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		/*
-		 * If no operations are passed return empty operation.
-		 */
 		if(consumers.length == 0) return (a, b, c, d) -> {};
 		
-		/*
-		 * If exactly one operation is passed return the operation.
-		 */
-		if(consumers.length == 1) return consumers[0];
+		if(consumers.length == 1) return (ConsumerEx4<A,B,C,D>)consumers[0];
 		
-		return (a, b, c, d) -> { for(ConsumerEx4<A,B,C,D> consumer : consumers) consumer.accept(a, b, c, d); };
+		return (a, b, c, d) -> { for(ConsumerEx4<? super A,? super B,? super C,? super D> consumer : consumers) consumer.accept(a, b, c, d); };
 	}
 }

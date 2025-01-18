@@ -20,6 +20,7 @@ import org.barghos.util.supplier.SupplierEx;
 @FunctionalInterface
 public interface SupplierExCA extends SupplierEx<char[]>
 {
+	
 	/**
 	 * Gets a result.
 	 *
@@ -29,13 +30,15 @@ public interface SupplierExCA extends SupplierEx<char[]>
 	 */
 	char[] getCA() throws Exception;
 	
-	/**
-	 * @deprecated Use {@link #getCA()} instead.
-	 */
 	@Override
-	@Deprecated(since = "1.0", forRemoval = false)
 	default char[] get() throws Exception
 	{
 		return getCA();
 	}
+	
+	public static SupplierExCA of(char[] value)
+	{
+		return () -> value;
+	}
+	
 }

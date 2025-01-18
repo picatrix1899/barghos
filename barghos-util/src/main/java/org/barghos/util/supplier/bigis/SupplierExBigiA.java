@@ -20,8 +20,9 @@ import org.barghos.util.supplier.SupplierEx;
  * @see SupplierExBigiA
  */
 @FunctionalInterface
-public interface SupplierExBigiA extends SupplierEx<BigInteger>
+public interface SupplierExBigiA extends SupplierEx<BigInteger[]>
 {
+	
 	/**
 	 * Gets a result.
 	 *
@@ -29,15 +30,17 @@ public interface SupplierExBigiA extends SupplierEx<BigInteger>
 	 * 
 	 * @throws Exception May throw an exception during execution.
 	 */
-	BigInteger getBigiA() throws Exception;
+	BigInteger[] getBigiA() throws Exception;
 	
-	/**
-	 * @deprecated Use {@link #getBigiA()} instead.
-	 */
 	@Override
-	@Deprecated(since = "1.0", forRemoval = false)
-	default BigInteger get() throws Exception
+	default BigInteger[] get() throws Exception
 	{
 		return getBigiA();
 	}
+	
+	public static SupplierExBigiA of(BigInteger... value)
+	{
+		return () -> value;
+	}
+	
 }

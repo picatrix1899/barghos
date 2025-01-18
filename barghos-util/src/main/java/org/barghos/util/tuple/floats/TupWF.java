@@ -12,6 +12,45 @@ package org.barghos.util.tuple.floats;
 public interface TupWF extends TupRF
 {
 	/**
+	 * Creates a new instance of the original type of this tuple and adopts the
+	 * component values from the given tuple {@code (t)}. The size of the given
+	 * tuple {@code (t)} has to be a minimum of two components.
+	 * 
+	 * @param t The tuple to adopt the component values from.
+	 * 
+	 * @return
+	 * A new instance of the original type of this tuple with the adopted
+	 * component values.
+	 */
+	TupWF createNew(TupRF t);
+	
+	/**
+	 * Creates a new instance of the type of this tuple and adopts the component
+	 * values from the given tuple {@code (t)}. The size of the given tuple
+	 * {@code (t)} has to be a minimum of two entries.
+	 * 
+	 * @param t The tuple to adopt the component values from as an array.
+	 * 
+	 * @return
+	 * A new instance of the original type of this tuple with the adopted
+	 * component values.
+	 */
+	TupWF createNew(float[] t);
+	
+	/**
+	 * Creates a new instance of the type of this tuple and sets the component
+	 * values to the given value.
+	 * 
+	 * @param value The value that will be used for all component values.
+	 * 
+	 * @return
+	 * A new instance of the original type of this tuple with the component
+	 * values set to the given value.
+	 */
+	TupWF createNew(float value);
+	
+	
+	/**
 	 * Sets the value of the component at the given index.
 	 *
 	 * <p>
@@ -53,7 +92,7 @@ public interface TupWF extends TupRF
 	 *
 	 * @return This tuple.
 	 */
-	TupWF set(float... t);
+	TupWF set(float[] t);
 	
 	/**
 	 * Sets all component values to a single value.
@@ -88,4 +127,48 @@ public interface TupWF extends TupRF
 	 * @return This tuple.
 	 */
 	TupWF swizzle(int indexA, int indexB);
+	
+	/**
+	 * Arranges the order of the component values by their indices and returns
+	 * the result as a new instance of the original type of this tuple.
+	 * This does not change the size of the tuple.
+	 * 
+	 * <p>
+	 * The passed indices array contains the current indices at the new
+	 * positions. If the value at the current index 7 in this tuple should be
+	 * placed at the new index 2, the value 7 would be passed at index 2 in the
+	 * indices array.
+	 * 
+	 * <p>
+	 * The valid index range is from 0 to 1. The given array has to have at
+	 * least two entries. It is however not required to use all indices, neither
+	 * is it required that each index is only used once.
+	 * 
+	 * @param indices The indices of the components of this tuple in new order.
+	 * 
+	 * @return A new instance of this type of tuple with the result.
+	 */
+	TupWF arrangeN(int[] indices);
+	
+	/**
+	 * Arranges the order of the component values by their indices and returns
+	 * the result as a new instance of the original type of this tuple.
+	 * This does not change the size of the tuple.
+	 * 
+	 * <p>
+	 * The passed indices array contains the current indices at the new
+	 * positions. If the value at the current index 7 in this tuple should be
+	 * placed at the new index 2, the value 7 would be passed at index 2 in the
+	 * indices array.
+	 * 
+	 * <p>
+	 * The valid index range is from 0 to 1. The given array has to have at
+	 * least two entries. It is however not required to use all indices, neither
+	 * is it required that each index is only used once.
+	 * 
+	 * @param indices The indices of the components of this tuple in new order.
+	 * 
+	 * @return A new instance of this type of tuple with the result.
+	 */
+	TupWF arrange(int[] indices);
 }

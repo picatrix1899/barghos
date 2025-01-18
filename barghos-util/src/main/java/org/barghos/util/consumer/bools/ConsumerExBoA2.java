@@ -1,7 +1,9 @@
 package org.barghos.util.consumer.bools;
 
+import org.barghos.util.consumer.Consumer;
 import org.barghos.util.consumer.ConsumerEx;
-import org.barghos.validation.ParameterValidation;
+import org.barghos.validation.ExceptionHandler;
+import org.barghos.validation.Validate;
 
 /**
  * Represents an operation that accepts one 2-dimensional boolean array input
@@ -13,7 +15,7 @@ import org.barghos.validation.ParameterValidation;
  * 
  * <p>
  * Functional Method:
- * {@link #acceptBoA2(boolean[][])}
+ * {@link #acceptBo(boolean[][])}
  * 
  * @see ConsumerBoA2
  * @see ConsumerExBoA2
@@ -27,6 +29,7 @@ import org.barghos.validation.ParameterValidation;
 @FunctionalInterface
 public interface ConsumerExBoA2 extends ConsumerEx<boolean[][]>
 {
+	
 	/**
 	 * Performs the operation on the given arguments.
 	 *
@@ -34,7 +37,13 @@ public interface ConsumerExBoA2 extends ConsumerEx<boolean[][]>
 	 * 
 	 * @throws Exception May throw an exception during operation.
 	 */
-	void acceptBoA2(boolean[][] a) throws Exception;
+	void acceptBo(boolean[][] a) throws Exception;
+
+	@Override
+	default void accept(boolean[][] a) throws Exception
+	{
+		acceptBo(a);
+	}
 	
 	/**
 	 * Performs the given operation after this operation.
@@ -44,11 +53,39 @@ public interface ConsumerExBoA2 extends ConsumerEx<boolean[][]>
 	 * @return A new {@link ConsumerExBoA2} performing this operation and the
 	 * operation after.
 	 */
-	default ConsumerExBoA2 thenBoA2(ConsumerExBoA2 after)
+	default ConsumerExBoA2 then(ConsumerExBoA2 after)
 	{
-		ParameterValidation.pvNotNull("after", after);
+		Validate.Arg.checkNotNull("after", after);
 		
-		return (a) -> { acceptBoA2(a); after.acceptBoA2(a); };
+		return (a) -> { acceptBo(a); after.acceptBo(a); };
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @return A new {@link ConsumerExBoA2} performing this operation and the
+	 * operation after.
+	 */
+	@Override
+	default ConsumerExBoA2 then(ConsumerEx<? super boolean[][]> after)
+	{
+		Validate.Arg.checkNotNull("after", after);
+
+		return (a) -> { acceptBo(a); after.accept(a); };
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @return A new {@link ConsumerBigi} performing this operation and the
+	 * operation after.
+	 */
+	@Override
+	default ConsumerExBoA2 then(java.util.function.Consumer<? super boolean[][]> after)
+	{
+		Validate.Arg.checkNotNull("after", after);
+
+		return (a) -> { acceptBo(a); after.accept(a); };
 	}
 	
 	/**
@@ -59,11 +96,179 @@ public interface ConsumerExBoA2 extends ConsumerEx<boolean[][]>
 	 * @return A new {@link ConsumerExBoA2} performing the operation before and
 	 * this operation.
 	 */
-	default ConsumerExBoA2 beforeBoA2(ConsumerExBoA2 before)
+	default ConsumerExBoA2 before(ConsumerExBoA2 before)
 	{
-		ParameterValidation.pvNotNull("before", before);
+		Validate.Arg.checkNotNull("before", before);
 		
-		return (a) -> { before.acceptBoA2(a); acceptBoA2(a); };
+		return (a) -> { before.acceptBo(a); acceptBo(a); };
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @return A new {@link ConsumerExBoA2} performing this operation and the
+	 * operation after.
+	 */
+	@Override
+	default ConsumerExBoA2 before(ConsumerEx<? super boolean[][]> before)
+	{
+		Validate.Arg.checkNotNull("before", before);
+
+		return (a) -> { before.accept(a); acceptBo(a); };
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @return A new {@link ConsumerBigi} performing the operation before and
+	 * this operation.
+	 */
+	@Override
+	default ConsumerExBoA2 before(java.util.function.Consumer<? super boolean[][]> before)
+	{
+		Validate.Arg.checkNotNull("before", before);
+
+		return (a) -> { before.accept(a); acceptBo(a); };
+	}
+	
+	/**
+	 * Adds exception handling to the consumer and thus converts it into a
+	 * {@link Consumer}.
+	 * 
+	 * @param handler The exception handler called in case of an exception.
+	 * 
+	 * @return A new {@link Consumer} performing the operations and exception
+	 * handling.
+	 */
+	@Override
+	default ConsumerBoA2 handleEx(ExceptionHandler handler)
+	{
+		Validate.Arg.checkNotNull("handler", handler);
+		
+		return (a) -> {
+			try
+			{
+				acceptBo(a);
+			}
+			catch(Exception e)
+			{
+				handler.handle(e);
+			}
+		};
+	}
+	
+	@Override
+	default ConsumerBoA2 ignoreEx()
+	{
+		return (a) -> {
+			try
+			{
+				acceptBo(a);
+			}
+			catch(Exception e) { }
+		};
+	}
+	
+	default ConsumerExBoA2 onEx(ConsumerExBoA2 consumer)
+	{
+		Validate.Arg.checkNotNull("consumer", consumer);
+		
+		return (a) -> {
+			try
+			{
+				acceptBo(a);
+			}
+			catch(Exception e)
+			{
+				consumer.acceptBo(a);
+			}
+		};
+	}
+	
+	/**
+	 * Performs the passed operation in case of an exception in this consumer.
+	 * As the passed consumer may throw an exception the returned consumer is
+	 * again a {@link ConsumerEx} relaying the exceptions of the passed
+	 * consumer.
+	 * 
+	 * @param consumer The consumer called in case of an exception.
+	 * 
+	 * @return A new {@link ConsumerEx} performing the operations.
+	 */
+	@Override
+	default ConsumerExBoA2 onEx(ConsumerEx<? super boolean[][]> consumer)
+	{
+		Validate.Arg.checkNotNull("consumer", consumer);
+		
+		return (a) -> {
+			try
+			{
+				acceptBo(a);
+			}
+			catch(Exception e)
+			{
+				consumer.accept(a);
+			}
+		};
+	}
+	
+	default ConsumerBoA2 onEx(ConsumerBoA2 consumer)
+	{
+		Validate.Arg.checkNotNull("consumer", consumer);
+		
+		return (a) -> {
+			try
+			{
+				acceptBo(a);
+			}
+			catch(Exception e)
+			{
+				consumer.acceptBo(a);
+			}
+		};
+	}
+	
+	/**
+	 * Performs the passed operation in case of an exception in this consumer.
+	 * As the passed consumer can not throw an exception the returned consumer
+	 * is a {@link Consumer}.
+	 * 
+	 * @param consumer The consumer called in case of an exception.
+	 * 
+	 * @return A new {@link Consumer} performing the operations.
+	 */
+	@Override
+	default ConsumerBoA2 onEx(Consumer<? super boolean[][]> consumer)
+	{
+		Validate.Arg.checkNotNull("consumer", consumer);
+		
+		return (a) -> {
+			try
+			{
+				acceptBo(a);
+			}
+			catch(Exception e)
+			{
+				consumer.accept(a);
+			}
+		};
+	}
+	
+	@Override
+	default ConsumerBoA2 onEx(java.util.function.Consumer<? super boolean[][]> consumer)
+	{
+		Validate.Arg.checkNotNull("consumer", consumer);
+		
+		return (a) -> {
+			try
+			{
+				acceptBo(a);
+			}
+			catch(Exception e)
+			{
+				consumer.accept(a);
+			}
+		};
 	}
 	
 	/**
@@ -74,63 +279,20 @@ public interface ConsumerExBoA2 extends ConsumerEx<boolean[][]>
 	 * 
 	 * @return A new {@link ConsumerExBoA2} performing the operations.
 	 */
+	@SuppressWarnings("unused")
 	@SafeVarargs
-	static ConsumerExBoA2 ofBoA2(ConsumerExBoA2... consumers)
+	static ConsumerExBoA2 of(ConsumerExBoA2... consumers)
 	{
-		ParameterValidation.pvNotNull("consumers", consumers);
-		ParameterValidation.pvEntriesNotNull("consumers", consumers);
-		
-		/*
-		 * If no operations are passed return empty operation.
-		 */
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
+
 		if(consumers.length == 0) return (a) -> {};
-		
-		/*
-		 * If exactly one operation is passed return the operation.
-		 */
+
 		if(consumers.length == 1) return consumers[0];
 		
-		return (a) -> { for(ConsumerExBoA2 consumer : consumers) consumer.acceptBoA2(a); };
+		return (a) -> { for(ConsumerExBoA2 consumer : consumers) consumer.acceptBo(a); };
 	}
-	
-	/**
-	 * @deprecated Use {@link #acceptBoA2(boolean[][])} instead.
-	 */
-	@Override
-	@Deprecated(since = "1.0", forRemoval = false)
-	default void accept(boolean[][] a) throws Exception
-	{
-		acceptBoA2(a);
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @return A new {@link ConsumerExBoA2} performing this operation and the
-	 * operation after.
-	 */
-	@Override
-	default ConsumerExBoA2 then(ConsumerEx<boolean[][]> after)
-	{
-		ParameterValidation.pvNotNull("after", after);
 
-		return (a) -> { acceptBoA2(a); after.accept(a); };
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @return A new {@link ConsumerExBoA2} performing this operation and the
-	 * operation after.
-	 */
-	@Override
-	default ConsumerExBoA2 before(ConsumerEx<boolean[][]> before)
-	{
-		ParameterValidation.pvNotNull("before", before);
-
-		return (a) -> { before.accept(a); acceptBoA2(a); };
-	}
-	
 	/**
 	 * Composes a new {@link ConsumerExBoA2} performing the given operations in
 	 * sequence.
@@ -139,19 +301,84 @@ public interface ConsumerExBoA2 extends ConsumerEx<boolean[][]>
 	 * 
 	 * @return A new {@link ConsumerExBoA2} performing the operations.
 	 */
+	@SuppressWarnings("unused")
 	@SafeVarargs
-	static ConsumerExBoA2 of(ConsumerEx<boolean[][]>... consumers)
+	static ConsumerExBoA2 of(ConsumerEx<? super boolean[][]>... consumers)
 	{
-		ParameterValidation.pvNotNull("consumers", consumers);
-		ParameterValidation.pvEntriesNotNull("consumers", consumers);
-		
-		/*
-		 * If no operations are passed return empty operation.
-		 */
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
+
 		if(consumers.length == 0) return (a) -> {};
 
 		if(consumers.length == 1) return (ConsumerExBoA2) consumers[0]::accept;
 
-		return (a) -> { for(ConsumerEx<boolean[][]> consumer : consumers) consumer.accept(a); };
+		return (a) -> { for(ConsumerEx<? super boolean[][]> consumer : consumers) consumer.accept(a); };
 	}
+
+	/**
+	 * Composes a new {@link ConsumerEx2Bigd} performing the given operations in
+	 * sequence.
+	 * 
+	 * @param consumers The operations to perform.
+	 * 
+	 * @return A new {@link ConsumerEx2Bigd} performing the operations.
+	 */
+	@SuppressWarnings("unused")
+	@SafeVarargs
+	static ConsumerExBoA2 of(ConsumerBoA2... consumers)
+	{
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
+		
+		if(consumers.length == 0) return (a) -> {};
+
+		if(consumers.length == 1) return (ConsumerExBoA2) consumers[0]::accept;
+
+		return (a) -> { for(ConsumerBoA2 consumer : consumers) consumer.accept(a); };
+	}
+	
+	/**
+	 * Composes a new {@link ConsumerEx2Bigd} performing the given operations in
+	 * sequence.
+	 * 
+	 * @param consumers The operations to perform.
+	 * 
+	 * @return A new {@link ConsumerEx2Bigd} performing the operations.
+	 */
+	@SuppressWarnings("unused")
+	@SafeVarargs
+	static ConsumerExBoA2 of(Consumer<? super boolean[][]>... consumers)
+	{
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
+		
+		if(consumers.length == 0) return (a) -> {};
+
+		if(consumers.length == 1) return (ConsumerExBoA2) consumers[0]::accept;
+
+		return (a) -> { for(Consumer<? super boolean[][]> consumer : consumers) consumer.accept(a); };
+	}
+	
+	/**
+	 * Composes a new {@link ConsumerEx2Bigd} performing the given operations in
+	 * sequence.
+	 * 
+	 * @param consumers The operations to perform.
+	 * 
+	 * @return A new {@link ConsumerEx2Bigd} performing the operations.
+	 */
+	@SuppressWarnings("unused")
+	@SafeVarargs
+	static ConsumerExBoA2 of(java.util.function.Consumer<? super boolean[][]>... consumers)
+	{
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
+		
+		if(consumers.length == 0) return (a) -> {};
+
+		if(consumers.length == 1) return (ConsumerExBoA2) consumers[0]::accept;
+
+		return (a) -> { for(java.util.function.Consumer<? super boolean[][]> consumer : consumers) consumer.accept(a); };
+	}
+	
 }

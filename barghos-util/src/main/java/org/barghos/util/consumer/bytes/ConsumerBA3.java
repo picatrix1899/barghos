@@ -1,7 +1,8 @@
 package org.barghos.util.consumer.bytes;
 
 import org.barghos.util.consumer.Consumer;
-import org.barghos.validation.ParameterValidation;
+import org.barghos.util.consumer.bigd.Consumer2Bigd;
+import org.barghos.validation.Validate;
 
 /**
  * Represents an operation that accepts one 3-dimensional byte array input
@@ -27,12 +28,19 @@ import org.barghos.validation.ParameterValidation;
 @FunctionalInterface
 public interface ConsumerBA3 extends Consumer<byte[][][]>
 {
+	
 	/**
 	 * Performs the operation on the given arguments.
 	 *
 	 * @param a The first input argument.
 	 */
 	void acceptBA3(byte[][][] a);
+	
+	@Override
+	default void accept(byte[][][] a)
+	{
+		acceptBA3(a);
+	}
 	
 	/**
 	 * Performs the given operation after this operation.
@@ -42,63 +50,11 @@ public interface ConsumerBA3 extends Consumer<byte[][][]>
 	 * @return A new {@link ConsumerBA3} performing this operation and the
 	 * operation after.
 	 */
-	default ConsumerBA3 thenBA3(ConsumerBA3 after)
+	default ConsumerBA3 then(ConsumerBA3 after)
 	{
-		ParameterValidation.pvNotNull("after", after);
+		Validate.Arg.checkNotNull("after", after);
 		
 		return (a) -> { acceptBA3(a); after.acceptBA3(a); };
-	}
-	
-	/**
-	 * Performs the given operation before this operation.
-	 * 
-	 * @param before The operation to perform before this operation.
-	 * 
-	 * @return A new {@link ConsumerBA3} performing the operation before and
-	 * this operation.
-	 */
-	default ConsumerBA3 beforeBA3(ConsumerBA3 before)
-	{
-		ParameterValidation.pvNotNull("before", before);
-		
-		return (a) -> { before.acceptBA3(a); acceptBA3(a); };
-	}
-	
-	/**
-	 * Composes a new {@link ConsumerBA3} performing the given operations in
-	 * sequence.
-	 * 
-	 * @param consumers The operations to perform.
-	 * 
-	 * @return A new {@link ConsumerBA3} performing the operations.
-	 */
-	@SafeVarargs
-	static ConsumerBA3 ofBA3(ConsumerBA3... consumers)
-	{
-		ParameterValidation.pvNotNull("consumers", consumers);
-		ParameterValidation.pvEntriesNotNull("consumers", consumers);
-		
-		/*
-		 * If no operations are passed return empty operation.
-		 */
-		if(consumers.length == 0) return (a) -> {};
-		
-		/*
-		 * If exactly one operation is passed return the operation.
-		 */
-		if(consumers.length == 1) return consumers[0];
-		
-		return (a) -> { for(ConsumerBA3 consumer : consumers) consumer.acceptBA3(a); };
-	}
-	
-	/**
-	 * @deprecated Use {@link #acceptBA3(byte[][][])} instead.
-	 */
-	@Override
-	@Deprecated(since = "1.0", forRemoval = false)
-	default void accept(byte[][][] a)
-	{
-		acceptBA3(a);
 	}
 	
 	/**
@@ -108,9 +64,9 @@ public interface ConsumerBA3 extends Consumer<byte[][][]>
 	 * operation after.
 	 */
 	@Override
-	default ConsumerBA3 then(Consumer<byte[][][]> after)
+	default ConsumerBA3 then(Consumer<? super byte[][][]> after)
 	{
-		ParameterValidation.pvNotNull("after", after);
+		Validate.Arg.checkNotNull("after", after);
 
 		return (a) -> { acceptBA3(a); after.accept(a); };
 	}
@@ -124,9 +80,30 @@ public interface ConsumerBA3 extends Consumer<byte[][][]>
 	@Override
 	default ConsumerBA3 then(java.util.function.Consumer<? super byte[][][]> after)
 	{
-		ParameterValidation.pvNotNull("after", after);
+		Validate.Arg.checkNotNull("after", after);
 
 		return (a) -> { acceptBA3(a); after.accept(a); };
+	}
+	
+	@Override
+	default ConsumerBA3 andThen(java.util.function.Consumer<? super byte[][][]> after)
+	{
+		return then(after);
+	}
+	
+	/**
+	 * Performs the given operation before this operation.
+	 * 
+	 * @param before The operation to perform before this operation.
+	 * 
+	 * @return A new {@link ConsumerBA3} performing the operation before and
+	 * this operation.
+	 */
+	default ConsumerBA3 before(ConsumerBA3 before)
+	{
+		Validate.Arg.checkNotNull("before", before);
+		
+		return (a) -> { before.acceptBA3(a); acceptBA3(a); };
 	}
 	
 	/**
@@ -136,9 +113,9 @@ public interface ConsumerBA3 extends Consumer<byte[][][]>
 	 * operation after.
 	 */
 	@Override
-	default ConsumerBA3 before(Consumer<byte[][][]> before)
+	default ConsumerBA3 before(Consumer<? super byte[][][]> before)
 	{
-		ParameterValidation.pvNotNull("before", before);
+		Validate.Arg.checkNotNull("before", before);
 
 		return (a) -> { before.accept(a); acceptBA3(a); };
 	}
@@ -152,7 +129,7 @@ public interface ConsumerBA3 extends Consumer<byte[][][]>
 	@Override
 	default ConsumerBA3 before(java.util.function.Consumer<? super byte[][][]> before)
 	{
-		ParameterValidation.pvNotNull("before", before);
+		Validate.Arg.checkNotNull("before", before);
 
 		return (a) -> { before.accept(a); acceptBA3(a); };
 	}
@@ -166,28 +143,58 @@ public interface ConsumerBA3 extends Consumer<byte[][][]>
 	 * @return A new {@link ConsumerBA3} performing the operations.
 	 */
 	@SafeVarargs
-	static ConsumerBA3 of(Consumer<byte[][][]>... consumers)
+	static ConsumerBA3 of(ConsumerBA3... consumers)
 	{
-		ParameterValidation.pvNotNull("consumers", consumers);
-		ParameterValidation.pvEntriesNotNull("consumers", consumers);
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
+
+		if(consumers.length == 0) return (a) -> {};
+
+		if(consumers.length == 1) return consumers[0];
 		
-		/*
-		 * If no operations are passed return empty operation.
-		 */
+		return (a) -> { for(ConsumerBA3 consumer : consumers) consumer.acceptBA3(a); };
+	}
+	
+	/**
+	 * Composes a new {@link ConsumerBA3} performing the given operations in
+	 * sequence.
+	 * 
+	 * @param consumers The operations to perform.
+	 * 
+	 * @return A new {@link ConsumerBA3} performing the operations.
+	 */
+	@SafeVarargs
+	static ConsumerBA3 of(Consumer<? super byte[][][]>... consumers)
+	{
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
+
 		if(consumers.length == 0) return (a) -> {};
 
 		if(consumers.length == 1) return (ConsumerBA3) consumers[0]::accept;
 
-		return (a) -> { for(Consumer<byte[][][]> consumer : consumers) consumer.accept(a); };
+		return (a) -> { for(Consumer<? super byte[][][]> consumer : consumers) consumer.accept(a); };
 	}
 	
 	/**
-	 * @deprecated Use {@link #then(java.util.function.Consumer)} instead.
+	 * Composes a new {@link Consumer2Bigd} performing the given operations in
+	 * sequence.
+	 * 
+	 * @param consumers The operations to perform.
+	 * 
+	 * @return A new {@link Consumer2Bigd} performing the operations.
 	 */
-	@Override
-	@Deprecated(since = "1.0", forRemoval = false)
-	default ConsumerBA3 andThen(java.util.function.Consumer<? super byte[][][]> after)
+	@SafeVarargs
+	static ConsumerBA3 of(java.util.function.Consumer<? super byte[][][]>... consumers)
 	{
-		return then(after);
+		Validate.Arg.checkNotNull("consumers", consumers);
+		Validate.Arg.checkEntriesNotNull("consumers", consumers);
+		
+		if(consumers.length == 0) return (a) -> {};
+
+		if(consumers.length == 1) return (ConsumerBA3)consumers[0]::accept;
+		
+		return (a) -> { for(java.util.function.Consumer<? super byte[][][]> consumer : consumers) consumer.accept(a); };
 	}
+	
 }

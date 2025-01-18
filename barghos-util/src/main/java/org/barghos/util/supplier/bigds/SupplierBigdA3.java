@@ -21,6 +21,7 @@ import org.barghos.util.supplier.Supplier;
 @FunctionalInterface
 public interface SupplierBigdA3 extends Supplier<BigDecimal[][][]>
 {
+	
 	/**
 	 * Gets a result.
 	 *
@@ -28,13 +29,15 @@ public interface SupplierBigdA3 extends Supplier<BigDecimal[][][]>
 	 */
 	BigDecimal[][][] getBigdA3();
 	
-	/**
-	 * @deprecated Use {@link #getBigdA3()} instead.
-	 */
 	@Override
-	@Deprecated(since = "1.0", forRemoval = false)
 	default BigDecimal[][][] get()
 	{
 		return getBigdA3();
 	}
+	
+	public static SupplierBigdA3 of(BigDecimal[][][] value)
+	{
+		return () -> value;
+	}
+	
 }

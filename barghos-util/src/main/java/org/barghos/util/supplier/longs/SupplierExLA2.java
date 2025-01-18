@@ -20,6 +20,7 @@ import org.barghos.util.supplier.SupplierEx;
 @FunctionalInterface
 public interface SupplierExLA2 extends SupplierEx<long[][]>
 {
+	
 	/**
 	 * Gets a result.
 	 *
@@ -29,13 +30,15 @@ public interface SupplierExLA2 extends SupplierEx<long[][]>
 	 */
 	long[][] getLA2() throws Exception;
 	
-	/**
-	 * @deprecated Use {@link #getLA2()} instead.
-	 */
 	@Override
-	@Deprecated(since = "1.0", forRemoval = false)
 	default long[][] get() throws Exception
 	{
 		return getLA2();
 	}
+	
+	public static SupplierExLA2 of(long[][] value)
+	{
+		return () -> value;
+	}
+	
 }

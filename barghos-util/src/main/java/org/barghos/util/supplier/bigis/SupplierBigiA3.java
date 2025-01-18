@@ -21,6 +21,7 @@ import org.barghos.util.supplier.Supplier;
 @FunctionalInterface
 public interface SupplierBigiA3 extends Supplier<BigInteger[][][]>
 {
+	
 	/**
 	 * Gets a result.
 	 *
@@ -28,13 +29,15 @@ public interface SupplierBigiA3 extends Supplier<BigInteger[][][]>
 	 */
 	BigInteger[][][] getBigiA3();
 	
-	/**
-	 * @deprecated Use {@link #getBigiA3()} instead.
-	 */
 	@Override
-	@Deprecated(since = "1.0", forRemoval = false)
 	default BigInteger[][][] get()
 	{
 		return getBigiA3();
 	}
+	
+	public static SupplierBigiA3 of(BigInteger[][][] value)
+	{
+		return () -> value;
+	}
+	
 }
