@@ -2,6 +2,7 @@ package org.barghos.util.tuple.floats;
 
 import org.barghos.annotation.ExtractionParam;
 import org.barghos.annotation.Nullable;
+import org.barghos.util.math.RoundMethodF;
 
 /**
  * This interface provides non-modifying operations for float tuples with 
@@ -1234,7 +1235,7 @@ public interface Tup4RF extends TupRF
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(@Nullable float... t);
+	boolean equalsAtV0(@Nullable float[] t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and
@@ -1346,7 +1347,7 @@ public interface Tup4RF extends TupRF
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(@Nullable float... t);
+	boolean equalsAtV1(@Nullable float[] t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and
@@ -1458,7 +1459,7 @@ public interface Tup4RF extends TupRF
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV2(@Nullable float... t);
+	boolean equalsAtV2(@Nullable float[] t);
 	
 	/**
 	 * Returns whether the third component value of this tuple and
@@ -1570,7 +1571,7 @@ public interface Tup4RF extends TupRF
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV3(@Nullable float... t);
+	boolean equalsAtV3(@Nullable float[] t);
 	
 	/**
 	 * Returns whether the fourth component value of this tuple and
@@ -1721,7 +1722,7 @@ public interface Tup4RF extends TupRF
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(float tolerance, @Nullable float... t);
+	boolean equalsAtV0(float tolerance, @Nullable float[] t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and the given
@@ -1884,7 +1885,7 @@ public interface Tup4RF extends TupRF
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(float tolerance, @Nullable float... t);
+	boolean equalsAtV1(float tolerance, @Nullable float[] t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and the given
@@ -2047,7 +2048,7 @@ public interface Tup4RF extends TupRF
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV2(float tolerance, @Nullable float... t);
+	boolean equalsAtV2(float tolerance, @Nullable float[] t);
 	
 	/**
 	 * Returns whether the third component value of this tuple and the given
@@ -2210,7 +2211,7 @@ public interface Tup4RF extends TupRF
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV3(float tolerance, @Nullable float... t);
+	boolean equalsAtV3(float tolerance, @Nullable float[] t);
 	
 	/**
 	 * Returns whether the fourth component value of this tuple and the given
@@ -2267,6 +2268,8 @@ public interface Tup4RF extends TupRF
 	 */
 	Tup4RF arrangeN(int[] indices);
 	
+	<T extends Tup4WF> T arrangeT(int[] indices, T res);
+	
 	/**
 	 * Arranges the order of the component values by their indices and returns
 	 * the result as a new instance of the original type of this tuple.
@@ -2299,6 +2302,8 @@ public interface Tup4RF extends TupRF
 	 */
 	Tup4RF arrangeN(int i0, int i1, int i2, int i3);
 	
+	<T extends Tup4WF> T arrangeT(int i0, int i1, int i2, int i3, T res);
+	
 	/**
 	 * Swaps two component values at the given indices and returns the result
 	 * as a new instance of the original type of this tuple, so that the value
@@ -2318,6 +2323,8 @@ public interface Tup4RF extends TupRF
 	@Override
 	Tup4RF swizzleN(int indexA, int indexB);
 	
+	<T extends Tup4WF> T swizzleT(int indexA, int indexB, T res);
+	
 	/**
 	 * Swaps the values of the components {@code v0} and {@code v1} and returns
 	 * the result as a new instance of the type of this tuple.
@@ -2325,6 +2332,10 @@ public interface Tup4RF extends TupRF
 	 * @return A new instance of the type of this tuple with the result.
 	 */
 	Tup4RF swizzleV0V1N();
+	
+	<T extends Tup4WF> T swizzleV0V1T(T res);
+	
+	float[] swizzleV0V1T(float[] res);
 	
 	/**
 	 * Swaps the values of the components {@code v0} and {@code v2} and returns
@@ -2334,6 +2345,10 @@ public interface Tup4RF extends TupRF
 	 */
 	Tup4RF swizzleV0V2N();
 	
+	<T extends Tup4WF> T swizzleV0V2T(T res);
+	
+	float[] swizzleV0V2T(float[] res);
+	
 	/**
 	 * Swaps the values of the components {@code v0} and {@code v3} and returns
 	 * the result as a new instance of the type of this tuple.
@@ -2341,6 +2356,10 @@ public interface Tup4RF extends TupRF
 	 * @return A new instance of the type of this tuple with the result.
 	 */
 	Tup4RF swizzleV0V3N();
+	
+	<T extends Tup4WF> T swizzleV0V3T(T res);
+	
+	float[] swizzleV0V3T(float[] res);
 	
 	/**
 	 * Swaps the values of the components {@code v1} and {@code v2} and returns
@@ -2350,6 +2369,10 @@ public interface Tup4RF extends TupRF
 	 */
 	Tup4RF swizzleV1V2N();
 	
+	<T extends Tup4WF> T swizzleV1V2T(T res);
+	
+	float[] swizzleV1V2T(float[] res);
+	
 	/**
 	 * Swaps the values of the components {@code v1} and {@code v3} and returns
 	 * the result as a new instance of the type of this tuple.
@@ -2358,6 +2381,10 @@ public interface Tup4RF extends TupRF
 	 */
 	Tup4RF swizzleV1V3N();
 	
+	<T extends Tup4WF> T swizzleV1V3T(T res);
+	
+	float[] swizzleV1V3T(float[] res);
+	
 	/**
 	 * Swaps the values of the components {@code v2} and {@code v3} and returns
 	 * the result as a new instance of the type of this tuple.
@@ -2365,4 +2392,40 @@ public interface Tup4RF extends TupRF
 	 * @return A new instance of the type of this tuple with the result.
 	 */
 	Tup4RF swizzleV2V3N();
+	
+	<T extends Tup4WF> T swizzleV2V3T(T res);
+
+	float[] swizzleV2V3T(float[] res);
+	
+	Tup4RF minComponentsN();
+	
+	<T extends Tup4WF> T minComponentsT(T res);
+
+	Tup4RF maxComponentsN();
+	
+	<T extends Tup4WF> T maxComponentsT(T res);
+	
+	Tup4RF ceilN();
+	
+	<T extends Tup4WF> T ceilT(T res);
+	
+	Tup4RF floorN();
+	
+	<T extends Tup4WF> T floorT(T res);
+	
+	Tup4RF roundN();
+	
+	<T extends Tup4WF> T roundT(T res);
+	
+	Tup4RF truncN();
+	
+	<T extends Tup4WF> T truncT(T res);
+	
+	Tup4RF roundN(RoundMethodF method);
+	
+	<T extends Tup4WF> T roundT(RoundMethodF method, T res);
+	
+	Tup4RF absN();
+	
+	<T extends Tup4WF> T absT(T res);
 }

@@ -1,4 +1,4 @@
-package templates.consumer;
+package org.barghos.util.consumer.bools;
 
 import org.barghos.util.consumer.Consumer4;
 import org.barghos.util.consumer.ConsumerEx4;
@@ -27,7 +27,7 @@ import org.barghos.validation.Validate;
  * @see ConsumerEx4Bo
  */
 @FunctionalInterface
-public interface ConsumerEx4Bo extends ConsumerEx4<Booolean,Booolean,Booolean,Booolean>
+public interface ConsumerEx4Bo extends ConsumerEx4<Boolean,Boolean,Boolean,Boolean>
 {
 	
 	/**
@@ -43,7 +43,7 @@ public interface ConsumerEx4Bo extends ConsumerEx4<Booolean,Booolean,Booolean,Bo
 	void acceptBo(boolean a, boolean b, boolean c, boolean d) throws Exception;
 
 	@Override
-	default void accept(Booolean a, Booolean b, Booolean c, Booolean d) throws Exception
+	default void accept(Boolean a, Boolean b, Boolean c, Boolean d) throws Exception
 	{
 		acceptBo(a, b, c, d);
 	}
@@ -70,7 +70,7 @@ public interface ConsumerEx4Bo extends ConsumerEx4<Booolean,Booolean,Booolean,Bo
 	 * operation after.
 	 */
 	@Override
-	default ConsumerEx4Bo then(ConsumerEx4<? super Booolean,? super Booolean,? super Booolean,? super Booolean> after)
+	default ConsumerEx4Bo then(ConsumerEx4<? super Boolean,? super Boolean,? super Boolean,? super Boolean> after)
 	{
 		Validate.Arg.checkNotNull("after", after);
 
@@ -99,7 +99,7 @@ public interface ConsumerEx4Bo extends ConsumerEx4<Booolean,Booolean,Booolean,Bo
 	 * operation after.
 	 */
 	@Override
-	default ConsumerEx4Bo before(ConsumerEx4<? super Booolean,? super Booolean,? super Booolean,? super Booolean> before)
+	default ConsumerEx4Bo before(ConsumerEx4<? super Boolean,? super Boolean,? super Boolean,? super Boolean> before)
 	{
 		Validate.Arg.checkNotNull("before", before);
 
@@ -171,7 +171,7 @@ public interface ConsumerEx4Bo extends ConsumerEx4<Booolean,Booolean,Booolean,Bo
 	 * @return A new {@link ConsumerEx} performing the operations.
 	 */
 	@Override
-	default ConsumerEx4Bo onEx(ConsumerEx4<? super Booolean,? super Booolean,? super Booolean,? super Booolean> consumer)
+	default ConsumerEx4Bo onEx(ConsumerEx4<? super Boolean,? super Boolean,? super Boolean,? super Boolean> consumer)
 	{
 		Validate.Arg.checkNotNull("consumer", consumer);
 		
@@ -213,7 +213,7 @@ public interface ConsumerEx4Bo extends ConsumerEx4<Booolean,Booolean,Booolean,Bo
 	 * @return A new {@link Consumer} performing the operations.
 	 */
 	@Override
-	default Consumer4Bo onEx(Consumer4<? super Booolean,? super Booolean,? super Booolean,? super Booolean> consumer)
+	default Consumer4Bo onEx(Consumer4<? super Boolean,? super Boolean,? super Boolean,? super Boolean> consumer)
 	{
 		Validate.Arg.checkNotNull("consumer", consumer);
 		
@@ -237,14 +237,13 @@ public interface ConsumerEx4Bo extends ConsumerEx4<Booolean,Booolean,Booolean,Bo
 	 * 
 	 * @return A new {@link ConsumerEx4Bo} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerEx4Bo of(ConsumerEx4Bo... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 
-		if(consumers.length == 0) return (a, b, c, d) -> {};
+		if(consumers.length == 0) return (_, _, _, _) -> {};
 
 		if(consumers.length == 1) return consumers[0];
 		
@@ -259,18 +258,17 @@ public interface ConsumerEx4Bo extends ConsumerEx4<Booolean,Booolean,Booolean,Bo
 	 * 
 	 * @return A new {@link ConsumerEx4Bo} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
-	static ConsumerEx4Bo of(ConsumerEx4<? super Booolean,? super Booolean,? super Booolean,? super Booolean>... consumers)
+	static ConsumerEx4Bo of(ConsumerEx4<? super Boolean,? super Boolean,? super Boolean,? super Boolean>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 
-		if(consumers.length == 0) return (a, b, c, d) -> {};
+		if(consumers.length == 0) return (_, _, _, _) -> {};
 
 		if(consumers.length == 1) return (ConsumerEx4Bo) consumers[0]::accept;
 
-		return (a, b, c, d) -> { for(ConsumerEx4<? super Booolean,? super Booolean,? super Booolean,? super Booolean> consumer : consumers) consumer.accept(a, b, c, d); };
+		return (a, b, c, d) -> { for(ConsumerEx4<? super Boolean,? super Boolean,? super Boolean,? super Boolean> consumer : consumers) consumer.accept(a, b, c, d); };
 	}
 	
 	/**
@@ -281,14 +279,13 @@ public interface ConsumerEx4Bo extends ConsumerEx4<Booolean,Booolean,Booolean,Bo
 	 * 
 	 * @return A new {@link ConsumerEx2Bigd} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerEx4Bo of(Consumer4Bo... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		if(consumers.length == 0) return (a, b, c, d) -> {};
+		if(consumers.length == 0) return (_, _, _, _) -> {};
 
 		if(consumers.length == 1) return (ConsumerEx4Bo) consumers[0]::accept;
 
@@ -303,18 +300,17 @@ public interface ConsumerEx4Bo extends ConsumerEx4<Booolean,Booolean,Booolean,Bo
 	 * 
 	 * @return A new {@link ConsumerEx2Bigd} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
-	static ConsumerEx4Bo of(Consumer4<? super Booolean,? super Booolean,? super Booolean,? super Booolean>... consumers)
+	static ConsumerEx4Bo of(Consumer4<? super Boolean,? super Boolean,? super Boolean,? super Boolean>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		if(consumers.length == 0) return (a, b, c, d) -> {};
+		if(consumers.length == 0) return (_, _, _, _) -> {};
 
 		if(consumers.length == 1) return (ConsumerEx4Bo) consumers[0]::accept;
 
-		return (a, b, c, d) -> { for(Consumer4<? super Booolean,? super Booolean,? super Booolean,? super Booolean> consumer : consumers) consumer.accept(a, b, c, d); };
+		return (a, b, c, d) -> { for(Consumer4<? super Boolean,? super Boolean,? super Boolean,? super Boolean> consumer : consumers) consumer.accept(a, b, c, d); };
 	}
 	
 }

@@ -279,14 +279,13 @@ public interface ConsumerExBo extends ConsumerEx<Boolean>
 	 * 
 	 * @return A new {@link ConsumerExBo} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerExBo of(ConsumerExBo... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 
-		if(consumers.length == 0) return (a) -> {};
+		if(consumers.length == 0) return (_) -> {};
 
 		if(consumers.length == 1) return consumers[0];
 		
@@ -301,14 +300,13 @@ public interface ConsumerExBo extends ConsumerEx<Boolean>
 	 * 
 	 * @return A new {@link ConsumerExBo} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerExBo of(ConsumerEx<? super Boolean>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 
-		if(consumers.length == 0) return (a) -> {};
+		if(consumers.length == 0) return (_) -> {};
 
 		if(consumers.length == 1) return (ConsumerExBo) consumers[0]::accept;
 
@@ -323,14 +321,13 @@ public interface ConsumerExBo extends ConsumerEx<Boolean>
 	 * 
 	 * @return A new {@link ConsumerEx2Bigd} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerExBo of(ConsumerBo... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		if(consumers.length == 0) return (a) -> {};
+		if(consumers.length == 0) return (_) -> {};
 
 		if(consumers.length == 1) return (ConsumerExBo) consumers[0]::accept;
 
@@ -345,14 +342,13 @@ public interface ConsumerExBo extends ConsumerEx<Boolean>
 	 * 
 	 * @return A new {@link ConsumerEx2Bigd} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerExBo of(Consumer<? super Boolean>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		if(consumers.length == 0) return (a) -> {};
+		if(consumers.length == 0) return (_) -> {};
 
 		if(consumers.length == 1) return (ConsumerExBo) consumers[0]::accept;
 
@@ -367,14 +363,13 @@ public interface ConsumerExBo extends ConsumerEx<Boolean>
 	 * 
 	 * @return A new {@link ConsumerEx2Bigd} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerExBo of(java.util.function.Consumer<? super Boolean>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		if(consumers.length == 0) return (a) -> {};
+		if(consumers.length == 0) return (_) -> {};
 
 		if(consumers.length == 1) return (ConsumerExBo) consumers[0]::accept;
 

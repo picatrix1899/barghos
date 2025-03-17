@@ -236,14 +236,13 @@ public interface ConsumerEx3C extends ConsumerEx3<Character,Character,Character>
 	 * 
 	 * @return A new {@link ConsumerEx3C} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerEx3C of(ConsumerEx3C... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 
-		if(consumers.length == 0) return (a, b, c) -> {};
+		if(consumers.length == 0) return (_, _, _) -> {};
 
 		if(consumers.length == 1) return consumers[0];
 		
@@ -258,14 +257,13 @@ public interface ConsumerEx3C extends ConsumerEx3<Character,Character,Character>
 	 * 
 	 * @return A new {@link ConsumerEx3C} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerEx3C of(ConsumerEx3<? super Character,? super Character,? super Character>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 
-		if(consumers.length == 0) return (a, b, c) -> {};
+		if(consumers.length == 0) return (_, _, _) -> {};
 
 		if(consumers.length == 1) return (ConsumerEx3C) consumers[0]::accept;
 
@@ -280,14 +278,13 @@ public interface ConsumerEx3C extends ConsumerEx3<Character,Character,Character>
 	 * 
 	 * @return A new {@link ConsumerEx2Bigd} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerEx3C of(Consumer3C... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		if(consumers.length == 0) return (a, b, c) -> {};
+		if(consumers.length == 0) return (_, _, _) -> {};
 
 		if(consumers.length == 1) return (ConsumerEx3C) consumers[0]::accept;
 
@@ -302,14 +299,13 @@ public interface ConsumerEx3C extends ConsumerEx3<Character,Character,Character>
 	 * 
 	 * @return A new {@link ConsumerEx2Bigd} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerEx3C of(Consumer3<? super Character,? super Character,? super Character>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		if(consumers.length == 0) return (a, b, c) -> {};
+		if(consumers.length == 0) return (_, _, _) -> {};
 
 		if(consumers.length == 1) return (ConsumerEx3C) consumers[0]::accept;
 

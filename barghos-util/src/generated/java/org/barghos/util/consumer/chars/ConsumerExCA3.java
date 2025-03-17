@@ -279,14 +279,13 @@ public interface ConsumerExCA3 extends ConsumerEx<char[][][]>
 	 * 
 	 * @return A new {@link ConsumerExCA3} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerExCA3 of(ConsumerExCA3... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 
-		if(consumers.length == 0) return (a) -> {};
+		if(consumers.length == 0) return (_) -> {};
 
 		if(consumers.length == 1) return consumers[0];
 		
@@ -301,14 +300,13 @@ public interface ConsumerExCA3 extends ConsumerEx<char[][][]>
 	 * 
 	 * @return A new {@link ConsumerExCA3} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerExCA3 of(ConsumerEx<? super char[][][]>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 
-		if(consumers.length == 0) return (a) -> {};
+		if(consumers.length == 0) return (_) -> {};
 
 		if(consumers.length == 1) return (ConsumerExCA3) consumers[0]::accept;
 
@@ -323,14 +321,13 @@ public interface ConsumerExCA3 extends ConsumerEx<char[][][]>
 	 * 
 	 * @return A new {@link ConsumerEx2Bigd} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerExCA3 of(ConsumerCA3... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		if(consumers.length == 0) return (a) -> {};
+		if(consumers.length == 0) return (_) -> {};
 
 		if(consumers.length == 1) return (ConsumerExCA3) consumers[0]::accept;
 
@@ -345,14 +342,13 @@ public interface ConsumerExCA3 extends ConsumerEx<char[][][]>
 	 * 
 	 * @return A new {@link ConsumerEx2Bigd} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerExCA3 of(Consumer<? super char[][][]>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		if(consumers.length == 0) return (a) -> {};
+		if(consumers.length == 0) return (_) -> {};
 
 		if(consumers.length == 1) return (ConsumerExCA3) consumers[0]::accept;
 
@@ -367,14 +363,13 @@ public interface ConsumerExCA3 extends ConsumerEx<char[][][]>
 	 * 
 	 * @return A new {@link ConsumerEx2Bigd} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerExCA3 of(java.util.function.Consumer<? super char[][][]>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		if(consumers.length == 0) return (a) -> {};
+		if(consumers.length == 0) return (_) -> {};
 
 		if(consumers.length == 1) return (ConsumerExCA3) consumers[0]::accept;
 

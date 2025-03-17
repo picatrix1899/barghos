@@ -1,5 +1,7 @@
 package org.barghos.util.tuple.floats;
 
+import org.barghos.util.math.RoundMethodF;
+
 /**
  * This interface provides common operations for float tuples with three
  * components.
@@ -247,4 +249,36 @@ public interface Tup3WF extends Tup3RF, TupWF
 	 * @return This tuple.
 	 */
 	Tup3WF swizzleV1V2();
+	
+	Tup3WF minComponents();
+	
+	Tup3WF minComponentsN();
+
+	Tup3WF maxComponents();
+	
+	Tup3WF maxComponentsN();
+
+	Tup3WF ceil();
+	
+	Tup3WF ceilN();
+
+	Tup3WF floor();
+	
+	Tup3WF floorN();
+
+	Tup3WF round();
+	
+	Tup3WF roundN();
+	
+	Tup3WF trunc();
+	
+	Tup3WF truncN();
+	
+	Tup3WF round(RoundMethodF method);
+	
+	Tup3WF roundN(RoundMethodF method);
+	
+	Tup3WF abs();
+	
+	Tup3WF absN();
 }

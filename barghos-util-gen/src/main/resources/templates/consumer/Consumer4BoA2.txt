@@ -110,14 +110,13 @@ public interface Consumer4BoA2 extends Consumer4<boolean[][],boolean[][],boolean
 	 * 
 	 * @return A new {@link Consumer4BoA2} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static Consumer4BoA2 of(Consumer4BoA2... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 
-		if(consumers.length == 0) return (a, b, c, d) -> {};
+		if(consumers.length == 0) return (_, _, _, _) -> {};
 
 		if(consumers.length == 1) return consumers[0];
 		
@@ -132,14 +131,13 @@ public interface Consumer4BoA2 extends Consumer4<boolean[][],boolean[][],boolean
 	 * 
 	 * @return A new {@link Consumer4BoA2} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static Consumer4BoA2 of(Consumer4<? super boolean[][],? super boolean[][],? super boolean[][],? super boolean[][]>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 
-		if(consumers.length == 0) return (a, b, c, d) -> {};
+		if(consumers.length == 0) return (_, _, _, _) -> {};
 
 		if(consumers.length == 1) return (Consumer4BoA2) consumers[0]::accept;
 

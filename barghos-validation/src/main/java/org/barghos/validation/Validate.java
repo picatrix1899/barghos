@@ -17,7 +17,7 @@ public class Validate
 {
 	public static class Arg
 	{
-		private static final boolean enabled;
+		public static final boolean enabled;
 
 		static
 		{
@@ -3197,6 +3197,34 @@ public class Validate
 			if(size != expectedSize) throw new ArgumentSizeUnexpectedException(paramName, size, expectedSize);
 		}
 		
+		public static void checkExpectSize(String paramName, int expectedSize, int size)
+		{
+			if(!enabled) return;
+			
+			requireExpectSize(paramName, expectedSize, size);
+		}
+		
+		/**
+		 * Checks whether the passed argument {@code arg} has the expected
+		 * number of elements {@code expectedSize}.
+		 * If the check fails, the method throws an
+		 * {@link ArgumentUnexpectedSizeException} for the parameter specified
+		 * by {@code paramName}.
+		 * 
+		 * @param paramName The name of the parameter to check.
+		 * @param expectedSize The expected number of elements in the argument.
+		 * @param arg The value of the parameter to check.
+		 * 
+		 * @throws ArgumentUnexpectedSizeException If the check fails.
+		 */
+		public static void requireExpectSize(String paramName, int expectedSize, int size)
+		{
+			assert expectedSize >= 0 : "Expected size must be non-negative: " + expectedSize;
+			assert size >= 0 : "Size must be non-negative: " + size;
+
+			if(size != expectedSize) throw new ArgumentSizeUnexpectedException(paramName, size, expectedSize);
+		}
+		
 		/**
 		 * Checks whether the passed argument {@code arg} has at least the
 		 * minimum number of elements {@code minSize}.
@@ -3759,6 +3787,22 @@ public class Validate
 			if(size < minSize) throw new ArgumentSizeTooSmallException(paramName, size, minSize);
 		}
 
+		public static void checkMinSize(String paramName, int minSize, int size)
+		{
+			if(!enabled) return;
+			
+			requireMinSize(paramName, minSize, size);
+		}
+		
+
+		public static void requireMinSize(String paramName, int minSize, int size)
+		{
+			//assert minSize >= 0 : "Minimum size must be non-negative: " + minSize;
+			//assert size >= 0 : "Size must be non-negative: " + size;
+
+			if(size < minSize) throw new ArgumentSizeTooSmallException(paramName, size, minSize);
+		}
+		
 		/**
 		 * Checks whether the passed argument {@code arg} has at most the
 		 * maximum number of elements {@code minSize}.
@@ -4320,7 +4364,22 @@ public class Validate
 			
 			if(size > maxSize) throw new ArgumentSizeTooBigException(paramName, size, maxSize);
 		}
+		
+		public static void checkMaxSize(String paramName, int maxSize, int size)
+		{
+			if(!enabled) return;
+			
+			requireMaxSize(paramName, maxSize, size);
+		}
 
+		public static void requireMaxSize(String paramName, int maxSize, int size)
+		{
+			assert maxSize >= 0 : "Maximum size must be non-negative: " + maxSize;
+			assert size >= 0 : "Size must be non-negative: " + size;
+
+			if(size > maxSize) throw new ArgumentSizeTooBigException(paramName, size, maxSize);
+		}
+		
 		/**
 		 * Checks whether the passed argument {@code arg} contains no null
 		 * entries.

@@ -1,4 +1,4 @@
-package templates.consumer;
+package org.barghos.util.consumer.bools;
 
 import org.barghos.util.consumer.Consumer3;
 import org.barghos.validation.Validate;
@@ -109,14 +109,13 @@ public interface Consumer3BoA3 extends Consumer3<boolean[][][],boolean[][][],boo
 	 * 
 	 * @return A new {@link Consumer3BoA3} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static Consumer3BoA3 of(Consumer3BoA3... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 
-		if(consumers.length == 0) return (a, b, c) -> {};
+		if(consumers.length == 0) return (_, _, _) -> {};
 
 		if(consumers.length == 1) return consumers[0];
 		
@@ -131,14 +130,13 @@ public interface Consumer3BoA3 extends Consumer3<boolean[][][],boolean[][][],boo
 	 * 
 	 * @return A new {@link Consumer3BoA3} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static Consumer3BoA3 of(Consumer3<? super boolean[][][],? super boolean[][][],? super boolean[][][]>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 
-		if(consumers.length == 0) return (a, b, c) -> {};
+		if(consumers.length == 0) return (_, _, _) -> {};
 
 		if(consumers.length == 1) return (Consumer3BoA3) consumers[0]::accept;
 

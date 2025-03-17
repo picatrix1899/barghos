@@ -109,14 +109,13 @@ public interface Consumer3Bo extends Consumer3<Boolean,Boolean,Boolean>
 	 * 
 	 * @return A new {@link Consumer3Bo} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static Consumer3Bo of(Consumer3Bo... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 
-		if(consumers.length == 0) return (a, b, c) -> {};
+		if(consumers.length == 0) return (_, _, _) -> {};
 
 		if(consumers.length == 1) return consumers[0];
 		
@@ -131,14 +130,13 @@ public interface Consumer3Bo extends Consumer3<Boolean,Boolean,Boolean>
 	 * 
 	 * @return A new {@link Consumer3Bo} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static Consumer3Bo of(Consumer3<? super Boolean,? super Boolean,? super Boolean>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 
-		if(consumers.length == 0) return (a, b, c) -> {};
+		if(consumers.length == 0) return (_, _, _) -> {};
 
 		if(consumers.length == 1) return (Consumer3Bo) consumers[0]::accept;
 		

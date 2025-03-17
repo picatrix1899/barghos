@@ -110,14 +110,13 @@ public interface Consumer4CA2 extends Consumer4<char[][],char[][],char[][],char[
 	 * 
 	 * @return A new {@link Consumer4CA2} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static Consumer4CA2 of(Consumer4CA2... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 
-		if(consumers.length == 0) return (a, b, c, d) -> {};
+		if(consumers.length == 0) return (_, _, _, _) -> {};
 
 		if(consumers.length == 1) return consumers[0];
 		
@@ -132,14 +131,13 @@ public interface Consumer4CA2 extends Consumer4<char[][],char[][],char[][],char[
 	 * 
 	 * @return A new {@link Consumer4CA2} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static Consumer4CA2 of(Consumer4<? super char[][],? super char[][],? super char[][],? super char[][]>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 
-		if(consumers.length == 0) return (a, b, c, d) -> {};
+		if(consumers.length == 0) return (_, _, _, _) -> {};
 
 		if(consumers.length == 1) return (Consumer4CA2) consumers[0]::accept;
 

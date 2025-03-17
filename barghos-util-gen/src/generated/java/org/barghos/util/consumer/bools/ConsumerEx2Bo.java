@@ -1,4 +1,4 @@
-package templates.consumer;
+package org.barghos.util.consumer.bools;
 
 import org.barghos.util.consumer.Consumer2;
 import org.barghos.util.consumer.ConsumerEx2;
@@ -27,7 +27,7 @@ import org.barghos.validation.Validate;
  * @see ConsumerEx4Bo
  */
 @FunctionalInterface
-public interface ConsumerEx2Bo extends ConsumerEx2<Booolean,Booolean>
+public interface ConsumerEx2Bo extends ConsumerEx2<Boolean,Boolean>
 {
 	
 	/**
@@ -41,7 +41,7 @@ public interface ConsumerEx2Bo extends ConsumerEx2<Booolean,Booolean>
 	void acceptBo(boolean a, boolean b) throws Exception;
 	
 	@Override
-	default void accept(Booolean a, Booolean b) throws Exception
+	default void accept(Boolean a, Boolean b) throws Exception
 	{
 		acceptBo(a, b);
 	}
@@ -68,7 +68,7 @@ public interface ConsumerEx2Bo extends ConsumerEx2<Booolean,Booolean>
 	 * operation after.
 	 */
 	@Override
-	default ConsumerEx2Bo then(ConsumerEx2<? super Booolean,? super Booolean> after)
+	default ConsumerEx2Bo then(ConsumerEx2<? super Boolean,? super Boolean> after)
 	{
 		Validate.Arg.checkNotNull("after", after);
 
@@ -82,7 +82,7 @@ public interface ConsumerEx2Bo extends ConsumerEx2<Booolean,Booolean>
 	 * operation after.
 	 */
 	@Override
-	default ConsumerEx2Bo then(java.util.function.BiConsumer<? super Booolean,? super Booolean> after)
+	default ConsumerEx2Bo then(java.util.function.BiConsumer<? super Boolean,? super Boolean> after)
 	{
 		Validate.Arg.checkNotNull("after", after);
 
@@ -111,7 +111,7 @@ public interface ConsumerEx2Bo extends ConsumerEx2<Booolean,Booolean>
 	 * operation after.
 	 */
 	@Override
-	default ConsumerEx2Bo before(ConsumerEx2<? super Booolean,? super Booolean> before)
+	default ConsumerEx2Bo before(ConsumerEx2<? super Boolean,? super Boolean> before)
 	{
 		Validate.Arg.checkNotNull("before", before);
 
@@ -125,7 +125,7 @@ public interface ConsumerEx2Bo extends ConsumerEx2<Booolean,Booolean>
 	 * this operation.
 	 */
 	@Override
-	default ConsumerEx2Bo before(java.util.function.BiConsumer<? super Booolean,? super Booolean> before)
+	default ConsumerEx2Bo before(java.util.function.BiConsumer<? super Boolean,? super Boolean> before)
 	{
 		Validate.Arg.checkNotNull("before", before);
 		
@@ -197,7 +197,7 @@ public interface ConsumerEx2Bo extends ConsumerEx2<Booolean,Booolean>
 	 * @return A new {@link ConsumerEx} performing the operations.
 	 */
 	@Override
-	default ConsumerEx2Bo onEx(ConsumerEx2<? super Booolean,? super Booolean> consumer)
+	default ConsumerEx2Bo onEx(ConsumerEx2<? super Boolean,? super Boolean> consumer)
 	{
 		Validate.Arg.checkNotNull("consumer", consumer);
 		
@@ -239,7 +239,7 @@ public interface ConsumerEx2Bo extends ConsumerEx2<Booolean,Booolean>
 	 * @return A new {@link Consumer} performing the operations.
 	 */
 	@Override
-	default Consumer2Bo onEx(Consumer2<? super Booolean, ? super Booolean> consumer)
+	default Consumer2Bo onEx(Consumer2<? super Boolean, ? super Boolean> consumer)
 	{
 		Validate.Arg.checkNotNull("consumer", consumer);
 		
@@ -256,7 +256,7 @@ public interface ConsumerEx2Bo extends ConsumerEx2<Booolean,Booolean>
 	}
 	
 	@Override
-	default Consumer2Bo onEx(java.util.function.BiConsumer<? super Booolean,? super Booolean> consumer)
+	default Consumer2Bo onEx(java.util.function.BiConsumer<? super Boolean,? super Boolean> consumer)
 	{
 		Validate.Arg.checkNotNull("consumer", consumer);
 		
@@ -280,14 +280,13 @@ public interface ConsumerEx2Bo extends ConsumerEx2<Booolean,Booolean>
 	 * 
 	 * @return A new {@link ConsumerEx2Bo} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerEx2Bo of(ConsumerEx2Bo... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 
-		if(consumers.length == 0) return (a, b) -> {};
+		if(consumers.length == 0) return (_, _) -> {};
 
 		if(consumers.length == 1) return consumers[0];
 		
@@ -302,18 +301,17 @@ public interface ConsumerEx2Bo extends ConsumerEx2<Booolean,Booolean>
 	 * 
 	 * @return A new {@link ConsumerEx2Bo} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
-	static ConsumerEx2Bo of(ConsumerEx2<? super Booolean,? super Booolean>... consumers)
+	static ConsumerEx2Bo of(ConsumerEx2<? super Boolean,? super Boolean>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 
-		if(consumers.length == 0) return (a, b) -> {};
+		if(consumers.length == 0) return (_, _) -> {};
 
 		if(consumers.length == 1) return (ConsumerEx2Bo) consumers[0]::accept;
 
-		return (a, b) -> { for(ConsumerEx2<? super Booolean,? super Booolean> consumer : consumers) consumer.accept(a, b); };
+		return (a, b) -> { for(ConsumerEx2<? super Boolean,? super Boolean> consumer : consumers) consumer.accept(a, b); };
 	}
 	
 	/**
@@ -324,14 +322,13 @@ public interface ConsumerEx2Bo extends ConsumerEx2<Booolean,Booolean>
 	 * 
 	 * @return A new {@link ConsumerEx2Bigd} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerEx2Bo of(Consumer2Bo... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		if(consumers.length == 0) return (a, b) -> {};
+		if(consumers.length == 0) return (_, _) -> {};
 
 		if(consumers.length == 1) return (ConsumerEx2Bo) consumers[0]::accept;
 
@@ -346,18 +343,17 @@ public interface ConsumerEx2Bo extends ConsumerEx2<Booolean,Booolean>
 	 * 
 	 * @return A new {@link ConsumerEx2Bigd} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
-	static ConsumerEx2Bo of(Consumer2<? super Booolean,? super Booolean>... consumers)
+	static ConsumerEx2Bo of(Consumer2<? super Boolean,? super Boolean>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		if(consumers.length == 0) return (a, b) -> {};
+		if(consumers.length == 0) return (_, _) -> {};
 
 		if(consumers.length == 1) return (ConsumerEx2Bo) consumers[0]::accept;
 
-		return (a, b) -> { for(Consumer2<? super Booolean,? super Booolean> consumer : consumers) consumer.accept(a, b); };
+		return (a, b) -> { for(Consumer2<? super Boolean,? super Boolean> consumer : consumers) consumer.accept(a, b); };
 	}
 	
 	/**
@@ -368,18 +364,17 @@ public interface ConsumerEx2Bo extends ConsumerEx2<Booolean,Booolean>
 	 * 
 	 * @return A new {@link ConsumerEx2Bigd} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
-	static ConsumerEx2Bo of(java.util.function.BiConsumer<? super Booolean,? super Booolean>... consumers)
+	static ConsumerEx2Bo of(java.util.function.BiConsumer<? super Boolean,? super Boolean>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		if(consumers.length == 0) return (a, b) -> {};
+		if(consumers.length == 0) return (_, _) -> {};
 
 		if(consumers.length == 1) return (ConsumerEx2Bo) consumers[0]::accept;
 
-		return (a, b) -> { for(java.util.function.BiConsumer<? super Booolean,? super Booolean> consumer : consumers) consumer.accept(a, b); };
+		return (a, b) -> { for(java.util.function.BiConsumer<? super Boolean,? super Boolean> consumer : consumers) consumer.accept(a, b); };
 	}
 	
 }

@@ -126,7 +126,7 @@ public interface Tup2WF extends Tup2RF, TupWF
 	
 	/** {@inheritDoc} */
 	@Override
-	Tup2WF arrangeN(int iV0, int iV1);
+	Tup2WF arrangeN(int indexV0, int indexV1);
 	
 	/** {@inheritDoc} */
 	@Override
@@ -180,7 +180,7 @@ public interface Tup2WF extends Tup2RF, TupWF
 	 * 
 	 * @return This tuple.
 	 */
-	Tup2WF arrange(int iV0, int iV1);
+	Tup2WF arrange(int indexV0, int indexV1);
 	
 	/**
 	 * Swaps two component values at the given indices, so that the value at the
@@ -206,4 +206,12 @@ public interface Tup2WF extends Tup2RF, TupWF
 	 * @return This tuple.
 	 */
 	Tup2WF swizzleV0V1();
+
+	Tup2WF minComponents(Tup2RF t);
+	
+	Tup2WF minComponentsN(Tup2RF t);
+
+	Tup2WF maxComponents(Tup2RF t);
+	
+	Tup2WF maxComponentsN(Tup2RF t);
 }

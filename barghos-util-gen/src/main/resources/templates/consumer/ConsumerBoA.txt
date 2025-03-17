@@ -143,14 +143,13 @@ public interface ConsumerBoA extends Consumer<boolean[]>
 	 * 
 	 * @return A new {@link ConsumerBoA} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerBoA of(ConsumerBoA... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		if(consumers.length == 0) return (a) -> {};
+		if(consumers.length == 0) return (_) -> {};
 
 		if(consumers.length == 1) return consumers[0];
 		
@@ -165,14 +164,13 @@ public interface ConsumerBoA extends Consumer<boolean[]>
 	 * 
 	 * @return A new {@link ConsumerBoA} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerBoA of(Consumer<? super boolean[]>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 
-		if(consumers.length == 0) return (a) -> {};
+		if(consumers.length == 0) return (_) -> {};
 
 		if(consumers.length == 1) return (ConsumerBoA) consumers[0]::accept;
 
@@ -187,14 +185,13 @@ public interface ConsumerBoA extends Consumer<boolean[]>
 	 * 
 	 * @return A new {@link Consumer2Bigd} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerBoA of(java.util.function.Consumer<? super boolean[]>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		if(consumers.length == 0) return (a) -> {};
+		if(consumers.length == 0) return (_) -> {};
 
 		if(consumers.length == 1) return (ConsumerBoA)consumers[0]::accept;
 		

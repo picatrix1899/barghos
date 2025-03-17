@@ -2,6 +2,8 @@ package org.barghos.util.tuple.floats;
 
 import org.barghos.annotation.ExtractionParam;
 import org.barghos.annotation.Nullable;
+import org.barghos.util.collection.IndexValuePairF;
+import org.barghos.util.math.RoundMethodF;
 
 /**
  * This interface provides non-modifying operations for float tuples with 
@@ -1625,6 +1627,10 @@ public interface Tup2RF extends TupRF
 	 */
 	Tup2RF arrangeN(int[] indices);
 	
+	float[] arrangeT(int[] indices, @ExtractionParam float[] res);
+	
+	<T extends Tup2WF> T arrangeT(int[] indices, @ExtractionParam T res);
+	
 	/**
 	 * Arranges the order of the component values by their indices and returns
 	 * the result as a new instance of the original type of this tuple.
@@ -1649,7 +1655,11 @@ public interface Tup2RF extends TupRF
 	 * 
 	 * @return A new instance of this type of tuple with the result.
 	 */
-	Tup2RF arrangeN(int i0, int i1);
+	Tup2RF arrangeN(int indexV0, int indexV1);
+	
+	float[] arrangeT(int indexV0, int indexV1, @ExtractionParam float[] res);
+	
+	<T extends Tup2WF> T arrangeT(int indexV0, int indexV1, @ExtractionParam T res);
 	
 	/**
 	 * Swaps two component values at the given indices and returns the result
@@ -1670,6 +1680,10 @@ public interface Tup2RF extends TupRF
 	@Override
 	Tup2RF swizzleN(int indexA, int indexB);
 	
+	float[] swizzleT(int indexA, int indexB, @ExtractionParam float[] res);
+	
+	<T extends Tup2WF> T swizzleT(int indexA, int indexB, @ExtractionParam T res);
+	
 	/**
 	 * Swaps the values of the components {@code v0} and {@code v1} and returns
 	 * the result as a new instance of the type of this tuple.
@@ -1677,4 +1691,28 @@ public interface Tup2RF extends TupRF
 	 * @return A new instance of the type of this tuple with the result.
 	 */
 	Tup2RF swizzleV0V1N();
+	
+	float[] swizzleV0V1T(@ExtractionParam float[] res);
+	
+	<T extends Tup2WF> T swizzleV0V1T(@ExtractionParam T res);
+
+	Tup2RF minComponentsN(Tup2RF t);
+	
+	Tup2RF minComponentsN(TupRF t);
+	
+	float[] minComponentsT(Tup2RF t, @ExtractionParam float[] res);
+	
+	<T extends Tup2WF> T minComponentsT(Tup2RF t, @ExtractionParam T res);
+	
+	<T extends Tup2WF> T minComponentsT(TupRF t, @ExtractionParam T res);
+
+	Tup2RF maxComponentsN(Tup2RF t);
+	
+	Tup2RF maxComponentsN(TupRF t);
+	
+	float[] maxComponentsT(Tup2RF t, @ExtractionParam float[] res);
+	
+	<T extends Tup2WF> T maxComponentsT(Tup2RF t, @ExtractionParam T res);
+	
+	<T extends Tup2WF> T maxComponentsT(TupRF t, @ExtractionParam T res);
 }

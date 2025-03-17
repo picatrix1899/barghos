@@ -14,5 +14,5 @@ public interface RoundMethodF
 	 * 
 	 * @return The rounded value.
 	 */
-	float round(float value);
+	float roundF(float value);
 }

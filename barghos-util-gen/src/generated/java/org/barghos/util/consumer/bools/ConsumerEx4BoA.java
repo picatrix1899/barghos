@@ -1,4 +1,4 @@
-package templates.consumer;
+package org.barghos.util.consumer.bools;
 
 import org.barghos.util.consumer.Consumer4;
 import org.barghos.util.consumer.ConsumerEx4;
@@ -237,14 +237,13 @@ public interface ConsumerEx4BoA extends ConsumerEx4<boolean[],boolean[],boolean[
 	 * 
 	 * @return A new {@link ConsumerEx4BoA} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerEx4BoA of(ConsumerEx4BoA... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 
-		if(consumers.length == 0) return (a, b, c, d) -> {};
+		if(consumers.length == 0) return (_, _, _, _) -> {};
 
 		if(consumers.length == 1) return consumers[0];
 		
@@ -259,14 +258,13 @@ public interface ConsumerEx4BoA extends ConsumerEx4<boolean[],boolean[],boolean[
 	 * 
 	 * @return A new {@link ConsumerEx4BoA} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerEx4BoA of(ConsumerEx4<? super boolean[],? super boolean[],? super boolean[],? super boolean[]>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 
-		if(consumers.length == 0) return (a, b, c, d) -> {};
+		if(consumers.length == 0) return (_, _, _, _) -> {};
 
 		if(consumers.length == 1) return (ConsumerEx4BoA) consumers[0]::accept;
 
@@ -281,14 +279,13 @@ public interface ConsumerEx4BoA extends ConsumerEx4<boolean[],boolean[],boolean[
 	 * 
 	 * @return A new {@link ConsumerEx2Bigd} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerEx4BoA of(Consumer4BoA... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		if(consumers.length == 0) return (a, b, c, d) -> {};
+		if(consumers.length == 0) return (_, _, _, _) -> {};
 
 		if(consumers.length == 1) return (ConsumerEx4BoA) consumers[0]::accept;
 
@@ -303,14 +300,13 @@ public interface ConsumerEx4BoA extends ConsumerEx4<boolean[],boolean[],boolean[
 	 * 
 	 * @return A new {@link ConsumerEx2Bigd} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerEx4BoA of(Consumer4<? super boolean[],? super boolean[],? super boolean[],? super boolean[]>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		if(consumers.length == 0) return (a, b, c, d) -> {};
+		if(consumers.length == 0) return (_, _, _, _) -> {};
 
 		if(consumers.length == 1) return (ConsumerEx4BoA) consumers[0]::accept;
 

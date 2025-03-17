@@ -2,6 +2,7 @@ package org.barghos.util.tuple.floats;
 
 import org.barghos.annotation.ExtractionParam;
 import org.barghos.annotation.Nullable;
+import org.barghos.util.collection.IndexValuePairF;
 
 /**
  * This interface provides non-modifying operations for float tuples.
@@ -651,6 +652,12 @@ public interface TupRF
 	 */
 	TupRF swizzleN(int indexA, int indexB);
 	
+	float[] swizzleT(int indexA, int indexB, @ExtractionParam float[] res);
+	
+	<T extends TupWF> T swizzleT(int indexA, int indexB, @ExtractionParam T res);
+	
+	
+	
 	/**
 	 * Arranges the order of the component values by their indices and returns
 	 * the result as a new instance of the original type of this tuple.
@@ -672,4 +679,28 @@ public interface TupRF
 	 * @return A new instance of this type of tuple with the result.
 	 */
 	TupRF arrangeN(int[] indices);
+	
+	float[] arrangeT(int[] indices, @ExtractionParam float[] res);
+	
+	<T extends TupWF> T arrangeT(int[] indices, @ExtractionParam T res);
+
+	TupRF minComponentsN(TupRF t);
+	
+	float[] minComponentsT(TupRF t, @ExtractionParam float[] res);
+	
+	<T extends TupWF> T minComponentsT(TupRF t, @ExtractionParam T res);
+	
+	TupRF maxComponentsN(TupRF t);
+	
+	float[] maxComponentsT(TupRF t, @ExtractionParam float[] res);
+	
+	<T extends TupWF> T maxComponentsT(TupRF t, @ExtractionParam T res);
+	
+	IndexValuePairF min();
+	
+	IndexValuePairF min(@ExtractionParam IndexValuePairF res);
+
+	IndexValuePairF max();
+	
+	IndexValuePairF max(@ExtractionParam IndexValuePairF res);
 }

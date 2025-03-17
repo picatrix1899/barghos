@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.barghos.math.vector.Vec2F;
 import org.barghos.math.vector.VecUtils2F;
-import org.barghos.util.function.floats.Function2F;
+import org.barghos.util.functions.floats.Function2F;
 import org.barghos.util.math.MathUtils;
 import org.junit.jupiter.api.Test;
 

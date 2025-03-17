@@ -1,4 +1,4 @@
-package templates.consumer;
+package org.barghos.util.consumer.chars;
 
 import org.barghos.util.consumer.Consumer4;
 import org.barghos.util.consumer.ConsumerEx4;
@@ -237,14 +237,13 @@ public interface ConsumerEx4C extends ConsumerEx4<Character,Character,Character,
 	 * 
 	 * @return A new {@link ConsumerEx4C} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerEx4C of(ConsumerEx4C... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 
-		if(consumers.length == 0) return (a, b, c, d) -> {};
+		if(consumers.length == 0) return (_, _, _, _) -> {};
 
 		if(consumers.length == 1) return consumers[0];
 		
@@ -259,14 +258,13 @@ public interface ConsumerEx4C extends ConsumerEx4<Character,Character,Character,
 	 * 
 	 * @return A new {@link ConsumerEx4C} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerEx4C of(ConsumerEx4<? super Character,? super Character,? super Character,? super Character>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 
-		if(consumers.length == 0) return (a, b, c, d) -> {};
+		if(consumers.length == 0) return (_, _, _, _) -> {};
 
 		if(consumers.length == 1) return (ConsumerEx4C) consumers[0]::accept;
 
@@ -281,14 +279,13 @@ public interface ConsumerEx4C extends ConsumerEx4<Character,Character,Character,
 	 * 
 	 * @return A new {@link ConsumerEx2Bigd} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerEx4C of(Consumer4C... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		if(consumers.length == 0) return (a, b, c, d) -> {};
+		if(consumers.length == 0) return (_, _, _, _) -> {};
 
 		if(consumers.length == 1) return (ConsumerEx4C) consumers[0]::accept;
 
@@ -303,14 +300,13 @@ public interface ConsumerEx4C extends ConsumerEx4<Character,Character,Character,
 	 * 
 	 * @return A new {@link ConsumerEx2Bigd} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerEx4C of(Consumer4<? super Character,? super Character,? super Character,? super Character>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		if(consumers.length == 0) return (a, b, c, d) -> {};
+		if(consumers.length == 0) return (_, _, _, _) -> {};
 
 		if(consumers.length == 1) return (ConsumerEx4C) consumers[0]::accept;
 

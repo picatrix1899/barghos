@@ -1,7 +1,6 @@
-package templates.consumer;
+package org.barghos.util.consumer.chars;
 
 import org.barghos.util.consumer.Consumer2;
-import org.barghos.util.consumer.bigd.Consumer2Bigd;
 import org.barghos.validation.Validate;
 
 /**
@@ -144,14 +143,13 @@ public interface Consumer2C extends Consumer2<Character,Character>
 	 * 
 	 * @return A new {@link Consumer2C} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static Consumer2C of(Consumer2C... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 
-		if(consumers.length == 0) return (a, b) -> {};
+		if(consumers.length == 0) return (_, _) -> {};
 
 		if(consumers.length == 1) return consumers[0];
 		
@@ -166,14 +164,13 @@ public interface Consumer2C extends Consumer2<Character,Character>
 	 * 
 	 * @return A new {@link Consumer2C} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static Consumer2C of(Consumer2<? super Character,? super Character>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 
-		if(consumers.length == 0) return (a, b) -> {};
+		if(consumers.length == 0) return (_, _) -> {};
 
 		if(consumers.length == 1) return (Consumer2C) consumers[0]::accept;
 		
@@ -188,14 +185,13 @@ public interface Consumer2C extends Consumer2<Character,Character>
 	 * 
 	 * @return A new {@link Consumer2Bigd} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static Consumer2C of(java.util.function.BiConsumer<? super Character,? super Character>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		if(consumers.length == 0) return (a, b) -> {};
+		if(consumers.length == 0) return (_, _) -> {};
 
 		if(consumers.length == 1) return (Consumer2C)consumers[0]::accept;
 		

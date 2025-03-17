@@ -113,17 +113,23 @@ public interface Consumer<A> extends java.util.function.Consumer<A>
 	 * 
 	 * @return A new {@link Consumer} performing the operations.
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked" })
 	@SafeVarargs
 	public static <A> Consumer<A> of(Consumer<? super A>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		if(consumers.length == 0) return (a) -> {};
+		if(consumers.length == 0) return (_) -> {};
 		
 		if(consumers.length == 1) return (Consumer<A>)consumers[0];
 		
 		return (a) -> { for(Consumer<? super A> consumer : consumers) consumer.accept(a); };
+	}
+	
+	@SuppressWarnings("unused")
+	public static <A> Consumer<A> empty()
+	{
+		return a -> {};
 	}
 }

@@ -1,7 +1,6 @@
-package templates.consumer;
+package org.barghos.util.consumer.bools;
 
 import org.barghos.util.consumer.Consumer;
-import org.barghos.util.consumer.bigd.Consumer2Bigd;
 import org.barghos.validation.Validate;
 
 /**
@@ -144,14 +143,13 @@ public interface ConsumerBoA2 extends Consumer<boolean[][]>
 	 * 
 	 * @return A new {@link ConsumerBoA2} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerBoA2 of(ConsumerBoA2... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 
-		if(consumers.length == 0) return (a) -> {};
+		if(consumers.length == 0) return (_) -> {};
 
 		if(consumers.length == 1) return consumers[0];
 		
@@ -166,14 +164,13 @@ public interface ConsumerBoA2 extends Consumer<boolean[][]>
 	 * 
 	 * @return A new {@link ConsumerBoA2} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerBoA2 of(Consumer<? super boolean[][]>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 
-		if(consumers.length == 0) return (a) -> {};
+		if(consumers.length == 0) return (_) -> {};
 
 		if(consumers.length == 1) return (ConsumerBoA2) consumers[0]::accept;
 
@@ -188,14 +185,13 @@ public interface ConsumerBoA2 extends Consumer<boolean[][]>
 	 * 
 	 * @return A new {@link Consumer2Bigd} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerBoA2 of(java.util.function.Consumer<? super boolean[][]>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		if(consumers.length == 0) return (a) -> {};
+		if(consumers.length == 0) return (_) -> {};
 
 		if(consumers.length == 1) return (ConsumerBoA2)consumers[0]::accept;
 		

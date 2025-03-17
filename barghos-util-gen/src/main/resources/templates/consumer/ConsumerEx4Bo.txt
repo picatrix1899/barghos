@@ -237,14 +237,13 @@ public interface ConsumerEx4Bo extends ConsumerEx4<Boolean,Boolean,Boolean,Boole
 	 * 
 	 * @return A new {@link ConsumerEx4Bo} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerEx4Bo of(ConsumerEx4Bo... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 
-		if(consumers.length == 0) return (a, b, c, d) -> {};
+		if(consumers.length == 0) return (_, _, _, _) -> {};
 
 		if(consumers.length == 1) return consumers[0];
 		
@@ -259,14 +258,13 @@ public interface ConsumerEx4Bo extends ConsumerEx4<Boolean,Boolean,Boolean,Boole
 	 * 
 	 * @return A new {@link ConsumerEx4Bo} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerEx4Bo of(ConsumerEx4<? super Boolean,? super Boolean,? super Boolean,? super Boolean>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 
-		if(consumers.length == 0) return (a, b, c, d) -> {};
+		if(consumers.length == 0) return (_, _, _, _) -> {};
 
 		if(consumers.length == 1) return (ConsumerEx4Bo) consumers[0]::accept;
 
@@ -281,14 +279,13 @@ public interface ConsumerEx4Bo extends ConsumerEx4<Boolean,Boolean,Boolean,Boole
 	 * 
 	 * @return A new {@link ConsumerEx2Bigd} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerEx4Bo of(Consumer4Bo... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		if(consumers.length == 0) return (a, b, c, d) -> {};
+		if(consumers.length == 0) return (_, _, _, _) -> {};
 
 		if(consumers.length == 1) return (ConsumerEx4Bo) consumers[0]::accept;
 
@@ -303,14 +300,13 @@ public interface ConsumerEx4Bo extends ConsumerEx4<Boolean,Boolean,Boolean,Boole
 	 * 
 	 * @return A new {@link ConsumerEx2Bigd} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerEx4Bo of(Consumer4<? super Boolean,? super Boolean,? super Boolean,? super Boolean>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		if(consumers.length == 0) return (a, b, c, d) -> {};
+		if(consumers.length == 0) return (_, _, _, _) -> {};
 
 		if(consumers.length == 1) return (ConsumerEx4Bo) consumers[0]::accept;
 

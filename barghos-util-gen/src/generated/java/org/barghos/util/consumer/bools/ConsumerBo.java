@@ -1,7 +1,6 @@
-package templates.consumer;
+package org.barghos.util.consumer.bools;
 
 import org.barghos.util.consumer.Consumer;
-import org.barghos.util.consumer.bigd.Consumer2Bigd;
 import org.barghos.validation.Validate;
 
 /**
@@ -25,7 +24,7 @@ import org.barghos.validation.Validate;
  * @see ConsumerEx4Bo
  */
 @FunctionalInterface
-public interface ConsumerBo extends Consumer<Booolean>
+public interface ConsumerBo extends Consumer<Boolean>
 {
 	
 	/**
@@ -36,7 +35,7 @@ public interface ConsumerBo extends Consumer<Booolean>
 	void acceptBo(boolean a);
 	
 	@Override
-	default void accept(Booolean a)
+	default void accept(Boolean a)
 	{
 		acceptBo(a);
 	}
@@ -63,7 +62,7 @@ public interface ConsumerBo extends Consumer<Booolean>
 	 * operation after.
 	 */
 	@Override
-	default ConsumerBo then(Consumer<? super Booolean> after)
+	default ConsumerBo then(Consumer<? super Boolean> after)
 	{
 		Validate.Arg.checkNotNull("after", after);
 
@@ -77,7 +76,7 @@ public interface ConsumerBo extends Consumer<Booolean>
 	 * operation after.
 	 */
 	@Override
-	default ConsumerBo then(java.util.function.Consumer<? super Booolean> after)
+	default ConsumerBo then(java.util.function.Consumer<? super Boolean> after)
 	{
 		Validate.Arg.checkNotNull("after", after);
 
@@ -85,7 +84,7 @@ public interface ConsumerBo extends Consumer<Booolean>
 	}
 	
 	@Override
-	default ConsumerBo andThen(java.util.function.Consumer<? super Booolean> after)
+	default ConsumerBo andThen(java.util.function.Consumer<? super Boolean> after)
 	{
 		Validate.Arg.checkNotNull("after", after);
 		
@@ -114,7 +113,7 @@ public interface ConsumerBo extends Consumer<Booolean>
 	 * operation.
 	 */
 	@Override
-	default ConsumerBo before(Consumer<? super Booolean> before)
+	default ConsumerBo before(Consumer<? super Boolean> before)
 	{
 		Validate.Arg.checkNotNull("before", before);
 
@@ -128,7 +127,7 @@ public interface ConsumerBo extends Consumer<Booolean>
 	 * operation.
 	 */
 	@Override
-	default ConsumerBo before(java.util.function.Consumer<? super Booolean> before)
+	default ConsumerBo before(java.util.function.Consumer<? super Boolean> before)
 	{
 		Validate.Arg.checkNotNull("before", before);
 
@@ -143,14 +142,13 @@ public interface ConsumerBo extends Consumer<Booolean>
 	 * 
 	 * @return A new {@link ConsumerBo} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerBo of(ConsumerBo... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 
-		if(consumers.length == 0) return (a) -> {};
+		if(consumers.length == 0) return (_) -> {};
 
 		if(consumers.length == 1) return consumers[0];
 		
@@ -165,18 +163,17 @@ public interface ConsumerBo extends Consumer<Booolean>
 	 * 
 	 * @return A new {@link ConsumerBo} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
-	static ConsumerBo of(Consumer<? super Booolean>... consumers)
+	static ConsumerBo of(Consumer<? super Boolean>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		if(consumers.length == 0) return (a) -> {};
+		if(consumers.length == 0) return (_) -> {};
 
 		if(consumers.length == 1) return (ConsumerBo) consumers[0]::accept;
 
-		return (a) -> { for(Consumer<? super Booolean> consumer : consumers) consumer.accept(a); };
+		return (a) -> { for(Consumer<? super Boolean> consumer : consumers) consumer.accept(a); };
 	}
 	
 	/**
@@ -187,18 +184,17 @@ public interface ConsumerBo extends Consumer<Booolean>
 	 * 
 	 * @return A new {@link Consumer2Bigd} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
-	static ConsumerBo of(java.util.function.Consumer<? super Booolean>... consumers)
+	static ConsumerBo of(java.util.function.Consumer<? super Boolean>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		if(consumers.length == 0) return (a) -> {};
+		if(consumers.length == 0) return (_) -> {};
 
 		if(consumers.length == 1) return (ConsumerBo)consumers[0]::accept;
 		
-		return (a) -> { for(java.util.function.Consumer<? super Booolean> consumer : consumers) consumer.accept(a); };
+		return (a) -> { for(java.util.function.Consumer<? super Boolean> consumer : consumers) consumer.accept(a); };
 	}
 	
 }

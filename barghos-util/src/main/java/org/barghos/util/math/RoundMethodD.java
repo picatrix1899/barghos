@@ -14,5 +14,5 @@ public interface RoundMethodD
 	 * 
 	 * @return The rounded value.
 	 */
-	double round(double value);
+	double roundD(double value);
 }

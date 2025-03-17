@@ -4,7 +4,6 @@ import org.barghos.annotation.ExtractionParam;
 import org.barghos.annotation.Nullable;
 import org.barghos.util.collection.IndexValuePairF;
 import org.barghos.util.math.MathUtils;
-import org.barghos.util.math.RoundMethodF;
 
 /**
  * This class provides tuple operations for n dimensions.
@@ -1737,7 +1736,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.length; i++)
 		{
-			res[i] = MathUtils.min(v1.getAt(i), v2.getAt(i));
+			res[i] = MathUtils.Num.min(v1.getAt(i), v2.getAt(i));
 		}
 		
 		return res;
@@ -1764,7 +1763,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.length; i++)
 		{
-			res[i] = MathUtils.min(v1.getAt(i), v2[i]);
+			res[i] = MathUtils.Num.min(v1.getAt(i), v2[i]);
 		}
 		
 		return res;
@@ -1791,7 +1790,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.length; i++)
 		{
-			res[i] = MathUtils.min(v1[i], v2.getAt(i));
+			res[i] = MathUtils.Num.min(v1[i], v2.getAt(i));
 		}
 		
 		return res;
@@ -1818,7 +1817,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.length; i++)
 		{
-			res[i] = MathUtils.min(v1[i], v2[i]);
+			res[i] = MathUtils.Num.min(v1[i], v2[i]);
 		}
 		
 		return res;
@@ -1848,7 +1847,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
-			res.setAt(i, MathUtils.min(v1.getAt(i), v2.getAt(i)));
+			res.setAt(i, MathUtils.Num.min(v1.getAt(i), v2.getAt(i)));
 		}
 		
 		return res;
@@ -1878,7 +1877,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
-			res.setAt(i, MathUtils.min(v1.getAt(i), v2[i]));
+			res.setAt(i, MathUtils.Num.min(v1.getAt(i), v2[i]));
 		}
 		
 		return res;
@@ -1908,7 +1907,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
-			res.setAt(i, MathUtils.min(v1[i], v2.getAt(i)));
+			res.setAt(i, MathUtils.Num.min(v1[i], v2.getAt(i)));
 		}
 		
 		return res;
@@ -1938,7 +1937,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
-			res.setAt(i, MathUtils.min(v1[i], v2[i]));
+			res.setAt(i, MathUtils.Num.min(v1[i], v2[i]));
 		}
 		
 		return res;
@@ -1965,7 +1964,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.length; i++)
 		{
-			res[i] = MathUtils.max(v1.getAt(i), v2.getAt(i));
+			res[i] = MathUtils.Num.max(v1.getAt(i), v2.getAt(i));
 		}
 		
 		return res;
@@ -1992,7 +1991,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.length; i++)
 		{
-			res[i] = MathUtils.max(v1.getAt(i), v2[i]);
+			res[i] = MathUtils.Num.max(v1.getAt(i), v2[i]);
 		}
 		
 		return res;
@@ -2019,7 +2018,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.length; i++)
 		{
-			res[i] = MathUtils.max(v1[i], v2.getAt(i));
+			res[i] = MathUtils.Num.max(v1[i], v2.getAt(i));
 		}
 		
 		return res;
@@ -2046,7 +2045,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.length; i++)
 		{
-			res[i] = MathUtils.max(v1[i], v2[i]);
+			res[i] = MathUtils.Num.max(v1[i], v2[i]);
 		}
 		
 		return res;
@@ -2076,7 +2075,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
-			res.setAt(i, MathUtils.max(v1.getAt(i), v2.getAt(i)));
+			res.setAt(i, MathUtils.Num.max(v1.getAt(i), v2.getAt(i)));
 		}
 		
 		return res;
@@ -2106,7 +2105,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
-			res.setAt(i, MathUtils.max(v1.getAt(i), v2[i]));
+			res.setAt(i, MathUtils.Num.max(v1.getAt(i), v2[i]));
 		}
 		
 		return res;
@@ -2136,7 +2135,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
-			res.setAt(i, MathUtils.max(v1[i], v2.getAt(i)));
+			res.setAt(i, MathUtils.Num.max(v1[i], v2.getAt(i)));
 		}
 		
 		return res;
@@ -2166,7 +2165,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
-			res.setAt(i, MathUtils.max(v1[i], v2[i]));
+			res.setAt(i, MathUtils.Num.max(v1[i], v2[i]));
 		}
 		
 		return res;
@@ -2546,365 +2545,365 @@ public class TupUtilsF
 		return maxIndex;
 	}
 
-	/**
-	 * Rounds the components of the vector {@code (v)} towards the next greater integer and saves
-	 * the result in the extraction parameter.
-	 * 
-	 * @param v
-	 *     The vector.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
-	public static float[] ceil(TupRF v, @ExtractionParam float[] res)
-	{
-		for(int i = 0; i < res.length; i++)
-		{
-			res[i] = MathUtils.ceil(v.getAt(i));
-		}
-		
-		return res;
-	}
-
-	/**
-	 * Rounds the components of the vector {@code (v[0], v[1])} towards the next greater integer and
-	 * saves the result in the extraction parameter.
-	 * 
-	 * @param v
-	 *     The vector as an array with at least two entries.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
-	public static float[] ceil(float[] v, @ExtractionParam float[] res)
-	{
-		for(int i = 0; i < res.length; i++)
-		{
-			res[i] = MathUtils.ceil(v[i]);
-		}
-		
-		return res;
-	}
-	
-	/**
-	 * Rounds the components of the vector {@code (v)} towards the next greater integer and saves
-	 * the result in the given extraction parameter object.
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v
-	 *     The vector.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends TupWF> T ceil(TupRF v, @ExtractionParam T res)
-	{
-		for(int i = 0; i < res.size(); i++)
-		{
-			res.setAt(i, MathUtils.ceil(v.getAt(i)));
-		}
-		
-		return res;
-	}
-
-	/**
-	 * Rounds the components of the vector {@code (v[0], v[1])} towards the next greater integer and
-	 * saves the result in the given extraction parameter object.
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v
-	 *     The vector as an array with at least two entries.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends TupWF> T ceil(float[] v, @ExtractionParam T res)
-	{
-		for(int i = 0; i < res.size(); i++)
-		{
-			res.setAt(i, MathUtils.ceil(v[i]));
-		}
-		
-		return res;
-	}
-
-	/**
-	 * Rounds the components of the vector {@code (v)} towards the next smaller integer and saves
-	 * the result in the extraction parameter.
-	 * 
-	 * @param v
-	 *     The vector.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
-	public static float[] floor(TupRF v, @ExtractionParam float[] res)
-	{
-		for(int i = 0; i < res.length; i++)
-		{
-			res[i] = MathUtils.floor(v.getAt(i));
-		}
-		
-		return res;
-	}
-
-	/**
-	 * Rounds the components of the vector {@code (v[0], v[1])} towards the next smaller integer and
-	 * saves the result in the extraction parameter.
-	 * 
-	 * @param v
-	 *     The vector as an array with at least two entries.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
-	public static float[] floor(float[] v, @ExtractionParam float[] res)
-	{
-		for(int i = 0; i < res.length; i++)
-		{
-			res[i] = MathUtils.floor(v[i]);
-		}
-		
-		return res;
-	}
-	
-	/**
-	 * Rounds the components of the vector {@code (v)} towards the next smaller integer and saves
-	 * the result in the given extraction parameter object.
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v
-	 *     The vector.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends TupWF> T floor(TupRF v, @ExtractionParam T res)
-	{
-		for(int i = 0; i < res.size(); i++)
-		{
-			res.setAt(i, MathUtils.floor(v.getAt(i)));
-		}
-		
-		return res;
-	}
-
-	/**
-	 * Rounds the components of the vector {@code (v[0], v[1])} towards the next smaller integer and
-	 * saves the result in the given extraction parameter object.
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v
-	 *     The vector as an array with at least two entries.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends TupWF> T floor(float[] v, @ExtractionParam T res)
-	{
-		for(int i = 0; i < res.size(); i++)
-		{
-			res.setAt(i, MathUtils.floor(v[i]));
-		}
-		
-		return res;
-	}
-
-	/**
-	 * Rounds the components of the vector {@code (v)} and saves the result in the extraction
-	 * parameter.
-	 * 
-	 * @param v
-	 *     The vector.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
-	public static float[] round(TupRF v, @ExtractionParam float[] res)
-	{
-		for(int i = 0; i < res.length; i++)
-		{
-			res[i] = MathUtils.round(v.getAt(i));
-		}
-		
-		return res;
-	}
-	
-	/**
-	 * Rounds the components of the vector {@code (v[0], v[1])} and saves the result in the
-	 * extraction parameter.
-	 * 
-	 * @param v
-	 *     The vector as an array with at least two entries.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
-	public static float[] round(float[] v, @ExtractionParam float[] res)
-	{
-		for(int i = 0; i < res.length; i++)
-		{
-			res[i] = MathUtils.round(v[i]);
-		}
-		
-		return res;
-	}
-	
-	/**
-	 * Rounds the components of the vector {@code (v)} and saves the result in the given extraction
-	 * parameter object.
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v
-	 *     The vector.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends TupWF> T round(TupRF v, @ExtractionParam T res)
-	{
-		for(int i = 0; i < res.size(); i++)
-		{
-			res.setAt(i, MathUtils.round(v.getAt(i)));
-		}
-		
-		return res;
-	}
-
-	/**
-	 * Rounds the components of the vector {@code (v[0], v[1])} and saves the result in the given
-	 * extraction parameter object.
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v
-	 *     The vector as an array with at least two entries.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends TupWF> T round(float[] v, @ExtractionParam T res)
-	{
-		for(int i = 0; i < res.size(); i++)
-		{
-			res.setAt(i, MathUtils.round(v[i]));
-		}
-		
-		return res;
-	}
-
-	/**
-	 * Rounds the components of the vector {@code (v)} and saves the result in the extraction
-	 * parameter.
-	 * 
-	 * @param v
-	 *     The vector.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
-	public static float[] round(TupRF v, RoundMethodF method, @ExtractionParam float[] res)
-	{
-		for(int i = 0; i < res.length; i++)
-		{
-			res[i] = method.round(v.getAt(i));
-		}
-		
-		return res;
-	}
-
-	/**
-	 * Rounds the components of the vector {@code (v[0], v[1])} and saves the result in the
-	 * extraction parameter.
-	 * 
-	 * @param v
-	 *     The vector as an array with at least two entries.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
-	public static float[] round(float[] v, RoundMethodF method, @ExtractionParam float[] res)
-	{
-		for(int i = 0; i < res.length; i++)
-		{
-			res[i] = method.round(v[i]);
-		}
-		
-		return res;
-	}
-	
-	/**
-	 * Rounds the components of the vector {@code (v)} and saves the result in the given extraction
-	 * parameter object.
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v
-	 *     The vector.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends TupWF> T round(TupRF v, RoundMethodF method, @ExtractionParam T res)
-	{
-		for(int i = 0; i < res.size(); i++)
-		{
-			res.setAt(i, method.round(v.getAt(i)));
-		}
-		
-		return res;
-	}
-	
-	/**
-	 * Rounds the components of the vector {@code (v[0], v[1])} and saves the result in the given
-	 * extraction parameter object.
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v
-	 *     The vector as an array with at least two entries.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends TupWF> T round(float[] v, RoundMethodF method, @ExtractionParam T res)
-	{
-		for(int i = 0; i < res.size(); i++)
-		{
-			res.setAt(i, method.round(v[i]));
-		}
-		
-		return res;
-	}
+//	/**
+//	 * Rounds the components of the vector {@code (v)} towards the next greater integer and saves
+//	 * the result in the extraction parameter.
+//	 * 
+//	 * @param v
+//	 *     The vector.
+//	 * @param res
+//	 *     The extraction parameter for the result as an array with at least two entries.
+//	 * 
+//	 * @return The extraction parameter with the result.
+//	 */
+//	public static float[] ceil(TupRF v, @ExtractionParam float[] res)
+//	{
+//		for(int i = 0; i < res.length; i++)
+//		{
+//			res[i] = MathUtils.ceil(v.getAt(i));
+//		}
+//		
+//		return res;
+//	}
+//
+//	/**
+//	 * Rounds the components of the vector {@code (v[0], v[1])} towards the next greater integer and
+//	 * saves the result in the extraction parameter.
+//	 * 
+//	 * @param v
+//	 *     The vector as an array with at least two entries.
+//	 * @param res
+//	 *     The extraction parameter for the result as an array with at least two entries.
+//	 * 
+//	 * @return The extraction parameter with the result.
+//	 */
+//	public static float[] ceil(float[] v, @ExtractionParam float[] res)
+//	{
+//		for(int i = 0; i < res.length; i++)
+//		{
+//			res[i] = MathUtils.ceil(v[i]);
+//		}
+//		
+//		return res;
+//	}
+//	
+//	/**
+//	 * Rounds the components of the vector {@code (v)} towards the next greater integer and saves
+//	 * the result in the given extraction parameter object.
+//	 * 
+//	 * @param <T>
+//	 *     The type of the extraction parameter object.
+//	 * 
+//	 * @param v
+//	 *     The vector.
+//	 * @param res
+//	 *     The extraction parameter object for the result.
+//	 * 
+//	 * @return The extraction parameter object with the result.
+//	 */
+//	public static <T extends TupWF> T ceil(TupRF v, @ExtractionParam T res)
+//	{
+//		for(int i = 0; i < res.size(); i++)
+//		{
+//			res.setAt(i, MathUtils.ceil(v.getAt(i)));
+//		}
+//		
+//		return res;
+//	}
+//
+//	/**
+//	 * Rounds the components of the vector {@code (v[0], v[1])} towards the next greater integer and
+//	 * saves the result in the given extraction parameter object.
+//	 * 
+//	 * @param <T>
+//	 *     The type of the extraction parameter object.
+//	 * 
+//	 * @param v
+//	 *     The vector as an array with at least two entries.
+//	 * @param res
+//	 *     The extraction parameter object for the result.
+//	 * 
+//	 * @return The extraction parameter object with the result.
+//	 */
+//	public static <T extends TupWF> T ceil(float[] v, @ExtractionParam T res)
+//	{
+//		for(int i = 0; i < res.size(); i++)
+//		{
+//			res.setAt(i, MathUtils.ceil(v[i]));
+//		}
+//		
+//		return res;
+//	}
+//
+//	/**
+//	 * Rounds the components of the vector {@code (v)} towards the next smaller integer and saves
+//	 * the result in the extraction parameter.
+//	 * 
+//	 * @param v
+//	 *     The vector.
+//	 * @param res
+//	 *     The extraction parameter for the result as an array with at least two entries.
+//	 * 
+//	 * @return The extraction parameter with the result.
+//	 */
+//	public static float[] floor(TupRF v, @ExtractionParam float[] res)
+//	{
+//		for(int i = 0; i < res.length; i++)
+//		{
+//			res[i] = MathUtils.floor(v.getAt(i));
+//		}
+//		
+//		return res;
+//	}
+//
+//	/**
+//	 * Rounds the components of the vector {@code (v[0], v[1])} towards the next smaller integer and
+//	 * saves the result in the extraction parameter.
+//	 * 
+//	 * @param v
+//	 *     The vector as an array with at least two entries.
+//	 * @param res
+//	 *     The extraction parameter for the result as an array with at least two entries.
+//	 * 
+//	 * @return The extraction parameter with the result.
+//	 */
+//	public static float[] floor(float[] v, @ExtractionParam float[] res)
+//	{
+//		for(int i = 0; i < res.length; i++)
+//		{
+//			res[i] = MathUtils.floor(v[i]);
+//		}
+//		
+//		return res;
+//	}
+//	
+//	/**
+//	 * Rounds the components of the vector {@code (v)} towards the next smaller integer and saves
+//	 * the result in the given extraction parameter object.
+//	 * 
+//	 * @param <T>
+//	 *     The type of the extraction parameter object.
+//	 * 
+//	 * @param v
+//	 *     The vector.
+//	 * @param res
+//	 *     The extraction parameter object for the result.
+//	 * 
+//	 * @return The extraction parameter object with the result.
+//	 */
+//	public static <T extends TupWF> T floor(TupRF v, @ExtractionParam T res)
+//	{
+//		for(int i = 0; i < res.size(); i++)
+//		{
+//			res.setAt(i, MathUtils.floor(v.getAt(i)));
+//		}
+//		
+//		return res;
+//	}
+//
+//	/**
+//	 * Rounds the components of the vector {@code (v[0], v[1])} towards the next smaller integer and
+//	 * saves the result in the given extraction parameter object.
+//	 * 
+//	 * @param <T>
+//	 *     The type of the extraction parameter object.
+//	 * 
+//	 * @param v
+//	 *     The vector as an array with at least two entries.
+//	 * @param res
+//	 *     The extraction parameter object for the result.
+//	 * 
+//	 * @return The extraction parameter object with the result.
+//	 */
+//	public static <T extends TupWF> T floor(float[] v, @ExtractionParam T res)
+//	{
+//		for(int i = 0; i < res.size(); i++)
+//		{
+//			res.setAt(i, MathUtils.floor(v[i]));
+//		}
+//		
+//		return res;
+//	}
+//
+//	/**
+//	 * Rounds the components of the vector {@code (v)} and saves the result in the extraction
+//	 * parameter.
+//	 * 
+//	 * @param v
+//	 *     The vector.
+//	 * @param res
+//	 *     The extraction parameter for the result as an array with at least two entries.
+//	 * 
+//	 * @return The extraction parameter with the result.
+//	 */
+//	public static float[] round(TupRF v, @ExtractionParam float[] res)
+//	{
+//		for(int i = 0; i < res.length; i++)
+//		{
+//			res[i] = MathUtils.round(v.getAt(i));
+//		}
+//		
+//		return res;
+//	}
+//	
+//	/**
+//	 * Rounds the components of the vector {@code (v[0], v[1])} and saves the result in the
+//	 * extraction parameter.
+//	 * 
+//	 * @param v
+//	 *     The vector as an array with at least two entries.
+//	 * @param res
+//	 *     The extraction parameter for the result as an array with at least two entries.
+//	 * 
+//	 * @return The extraction parameter with the result.
+//	 */
+//	public static float[] round(float[] v, @ExtractionParam float[] res)
+//	{
+//		for(int i = 0; i < res.length; i++)
+//		{
+//			res[i] = MathUtils.round(v[i]);
+//		}
+//		
+//		return res;
+//	}
+//	
+//	/**
+//	 * Rounds the components of the vector {@code (v)} and saves the result in the given extraction
+//	 * parameter object.
+//	 * 
+//	 * @param <T>
+//	 *     The type of the extraction parameter object.
+//	 * 
+//	 * @param v
+//	 *     The vector.
+//	 * @param res
+//	 *     The extraction parameter object for the result.
+//	 * 
+//	 * @return The extraction parameter object with the result.
+//	 */
+//	public static <T extends TupWF> T round(TupRF v, @ExtractionParam T res)
+//	{
+//		for(int i = 0; i < res.size(); i++)
+//		{
+//			res.setAt(i, MathUtils.round(v.getAt(i)));
+//		}
+//		
+//		return res;
+//	}
+//
+//	/**
+//	 * Rounds the components of the vector {@code (v[0], v[1])} and saves the result in the given
+//	 * extraction parameter object.
+//	 * 
+//	 * @param <T>
+//	 *     The type of the extraction parameter object.
+//	 * 
+//	 * @param v
+//	 *     The vector as an array with at least two entries.
+//	 * @param res
+//	 *     The extraction parameter object for the result.
+//	 * 
+//	 * @return The extraction parameter object with the result.
+//	 */
+//	public static <T extends TupWF> T round(float[] v, @ExtractionParam T res)
+//	{
+//		for(int i = 0; i < res.size(); i++)
+//		{
+//			res.setAt(i, MathUtils.round(v[i]));
+//		}
+//		
+//		return res;
+//	}
+//
+//	/**
+//	 * Rounds the components of the vector {@code (v)} and saves the result in the extraction
+//	 * parameter.
+//	 * 
+//	 * @param v
+//	 *     The vector.
+//	 * @param res
+//	 *     The extraction parameter for the result as an array with at least two entries.
+//	 * 
+//	 * @return The extraction parameter with the result.
+//	 */
+//	public static float[] round(TupRF v, RoundMethodF method, @ExtractionParam float[] res)
+//	{
+//		for(int i = 0; i < res.length; i++)
+//		{
+//			res[i] = method.round(v.getAt(i));
+//		}
+//		
+//		return res;
+//	}
+//
+//	/**
+//	 * Rounds the components of the vector {@code (v[0], v[1])} and saves the result in the
+//	 * extraction parameter.
+//	 * 
+//	 * @param v
+//	 *     The vector as an array with at least two entries.
+//	 * @param res
+//	 *     The extraction parameter for the result as an array with at least two entries.
+//	 * 
+//	 * @return The extraction parameter with the result.
+//	 */
+//	public static float[] round(float[] v, RoundMethodF method, @ExtractionParam float[] res)
+//	{
+//		for(int i = 0; i < res.length; i++)
+//		{
+//			res[i] = method.round(v[i]);
+//		}
+//		
+//		return res;
+//	}
+//	
+//	/**
+//	 * Rounds the components of the vector {@code (v)} and saves the result in the given extraction
+//	 * parameter object.
+//	 * 
+//	 * @param <T>
+//	 *     The type of the extraction parameter object.
+//	 * 
+//	 * @param v
+//	 *     The vector.
+//	 * @param res
+//	 *     The extraction parameter object for the result.
+//	 * 
+//	 * @return The extraction parameter object with the result.
+//	 */
+//	public static <T extends TupWF> T round(TupRF v, RoundMethodF method, @ExtractionParam T res)
+//	{
+//		for(int i = 0; i < res.size(); i++)
+//		{
+//			res.setAt(i, method.round(v.getAt(i)));
+//		}
+//		
+//		return res;
+//	}
+//	
+//	/**
+//	 * Rounds the components of the vector {@code (v[0], v[1])} and saves the result in the given
+//	 * extraction parameter object.
+//	 * 
+//	 * @param <T>
+//	 *     The type of the extraction parameter object.
+//	 * 
+//	 * @param v
+//	 *     The vector as an array with at least two entries.
+//	 * @param res
+//	 *     The extraction parameter object for the result.
+//	 * 
+//	 * @return The extraction parameter object with the result.
+//	 */
+//	public static <T extends TupWF> T round(float[] v, RoundMethodF method, @ExtractionParam T res)
+//	{
+//		for(int i = 0; i < res.size(); i++)
+//		{
+//			res.setAt(i, method.round(v[i]));
+//		}
+//		
+//		return res;
+//	}
 
 	/**
 	 * Truncates the decimals of the components of the vector {@code (v)} and saves the result in
@@ -3011,7 +3010,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.length; i++)
 		{
-			res[i] = MathUtils.abs(v.getAt(i));
+			res[i] = MathUtils.Num.abs(v.getAt(i));
 		}
 		
 		return res;
@@ -3032,7 +3031,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.length; i++)
 		{
-			res[i] = MathUtils.abs(v[i]);
+			res[i] = MathUtils.Num.abs(v[i]);
 		}
 		
 		return res;
@@ -3056,7 +3055,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
-			res.setAt(i, MathUtils.abs(v.getAt(i)));
+			res.setAt(i, MathUtils.Num.abs(v.getAt(i)));
 		}
 		
 		return res;
@@ -3080,7 +3079,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
-			res.setAt(i, MathUtils.abs(v[i]));
+			res.setAt(i, MathUtils.Num.abs(v[i]));
 		}
 		
 		return res;
@@ -3101,7 +3100,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.length; i++)
 		{
-			res[i] = MathUtils.signum(v.getAt(i));
+			res[i] = MathUtils.Num.sign(v.getAt(i));
 		}
 		
 		return res;
@@ -3122,7 +3121,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.length; i++)
 		{
-			res[i] = MathUtils.signum(v[i]);
+			res[i] = MathUtils.Num.sign(v[i]);
 		}
 		
 		return res;
@@ -3146,7 +3145,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
-			res.setAt(i, MathUtils.signum(v.getAt(i)));
+			res.setAt(i, MathUtils.Num.sign(v.getAt(i)));
 		}
 		
 		return res;
@@ -3170,7 +3169,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
-			res.setAt(i, MathUtils.signum(v[i]));
+			res.setAt(i, MathUtils.Num.sign(v[i]));
 		}
 		
 		return res;
@@ -3557,7 +3556,7 @@ public class TupUtilsF
 		
 		for(int i = 0; i < t1.size(); i++)
 		{
-			if(!MathUtils.equals(tolerance, t1.getAt(i), t2.getAt(0))) return false;
+			if(!MathUtils.Num.equals(tolerance, t1.getAt(i), t2.getAt(0))) return false;
 		}
 		
 		return true;
@@ -3612,7 +3611,7 @@ public class TupUtilsF
 		
 		for(int i = 0; i < t1.size(); i++)
 		{
-			if(!MathUtils.equals(tolerance, t1.getAt(i), t2[i])) return false;
+			if(!MathUtils.Num.equals(tolerance, t1.getAt(i), t2[i])) return false;
 		}
 
 		return true;
@@ -3667,7 +3666,7 @@ public class TupUtilsF
 		
 		for(int i = 0; i < t1.length; i++)
 		{
-			if(!MathUtils.equals(tolerance, t1[i], t2[i])) return false;
+			if(!MathUtils.Num.equals(tolerance, t1[i], t2[i])) return false;
 		}
 
 		return true;
@@ -3928,7 +3927,7 @@ public class TupUtilsF
 		if(t1.size() <= index) return false;
 		if(t2.size() <= index) return false;
 		
-		return MathUtils.equals(tolerance, t1.getAt(index), t2.getAt(index));
+		return MathUtils.Num.equals(tolerance, t1.getAt(index), t2.getAt(index));
 	}
 
 	/**
@@ -3985,7 +3984,7 @@ public class TupUtilsF
 		if(t1.size() <= index) return false;
 		if(t2.length <= index) return false;
 		
-		return MathUtils.equals(tolerance, t1.getAt(index), t2[index]);
+		return MathUtils.Num.equals(tolerance, t1.getAt(index), t2[index]);
 	}
 
 	/**
@@ -4042,7 +4041,7 @@ public class TupUtilsF
 		if(t1.length <= index) return false;
 		if(t2.length <= index) return false;
 		
-		return MathUtils.equals(tolerance, t1[index], t2[index]);
+		return MathUtils.Num.equals(tolerance, t1[index], t2[index]);
 	}
 	
 	/**
@@ -4086,7 +4085,7 @@ public class TupUtilsF
 		if(t == null) return false;
 		if(t.size() <= index) return false;
 		
-		return MathUtils.equals(tolerance, t.getAt(index), value);
+		return MathUtils.Num.equals(tolerance, t.getAt(index), value);
 	}
 	
 	/**
@@ -4130,6 +4129,6 @@ public class TupUtilsF
 		if(t == null) return false;
 		if(t.length <= index) return false;
 		
-		return MathUtils.equals(tolerance, t[index], value);
+		return MathUtils.Num.equals(tolerance, t[index], value);
 	}
 }

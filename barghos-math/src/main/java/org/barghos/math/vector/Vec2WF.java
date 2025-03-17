@@ -1,7 +1,5 @@
 package org.barghos.math.vector;
 
-import org.barghos.util.math.MathProvider;
-import org.barghos.util.math.RoundMethodF;
 import org.barghos.util.tuple.floats.Tup2RF;
 import org.barghos.util.tuple.floats.Tup2WF;
 import org.barghos.util.tuple.floats.TupRF;
@@ -17,11 +15,15 @@ public interface Vec2WF extends Vec2RF, Tup2WF
 	
 	/** {@inheritDoc} */
 	@Override
-	Vec2WF createNew(Tup2RF v);
+	Vec2WF createNew(Tup2RF t);
 	
 	/** {@inheritDoc} */
 	@Override
-	Vec2WF createNew(float[] v);
+	Vec2WF createNew(TupRF t);
+	
+	/** {@inheritDoc} */
+	@Override
+	Vec2WF createNew(float[] t);
 	
 	/** {@inheritDoc} */
 	@Override
@@ -47,6 +49,14 @@ public interface Vec2WF extends Vec2RF, Tup2WF
 	
 	/** {@inheritDoc} */
 	@Override
+	Vec2WF set(TupRF t);
+	
+	/** {@inheritDoc} */
+	@Override
+	Vec2WF set(float[] values);
+	
+	/** {@inheritDoc} */
+	@Override
 	Vec2WF set(float value);
 	
 	/** {@inheritDoc} */
@@ -55,15 +65,7 @@ public interface Vec2WF extends Vec2RF, Tup2WF
 	
 	/** {@inheritDoc} */
 	@Override
-	Vec2WF set(TupRF t);
-	
-	/** {@inheritDoc} */
-	@Override
 	Vec2WF setAt(int index, float value);
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF set(float[] values);
 	
 	/**
 	 * Adds the given vector {@code (v2)} to this vector
@@ -80,7 +82,7 @@ public interface Vec2WF extends Vec2RF, Tup2WF
 	 * 
 	 * @return The current vector.
 	 */
-	Vec2WF add(Tup2RF v2);
+	Vec2WF add(Tup2RF t);
 	
 	/**
 	 * Adds the given vector {@code (v2[0], v2[1])} to this vector.
@@ -97,7 +99,7 @@ public interface Vec2WF extends Vec2RF, Tup2WF
 	 * 
 	 * @return The current vector.
 	 */
-	Vec2WF add(float[] v2);
+	Vec2WF add(float[] t);
 	
 	/**
 	 * Adds the given value {@code (value)} to every component of this vector.
@@ -133,7 +135,23 @@ public interface Vec2WF extends Vec2RF, Tup2WF
 	 * 
 	 * @return The current vector.
 	 */
-	Vec2WF add(float v2x, float v2y);
+	Vec2WF add(float tx, float ty);
+	
+	/** {@inheritDoc} */
+	@Override
+	Vec2WF addN(Tup2RF t);
+	
+	/** {@inheritDoc} */
+	@Override
+	Vec2WF addN(float[] t);
+	
+	/** {@inheritDoc} */
+	@Override
+	Vec2WF addN(float value);
+	
+	/** {@inheritDoc} */
+	@Override
+	Vec2WF addN(float tx, float ty);
 	
 	/**
 	 * Subtracts the given vector {@code (v2)} from this vector.
@@ -150,7 +168,7 @@ public interface Vec2WF extends Vec2RF, Tup2WF
 	 * 
 	 * @return The current vector.
 	 */
-	Vec2WF sub(Tup2RF v2);
+	Vec2WF sub(Tup2RF t);
 	
 	/**
 	 * Subtracts the given vector {@code (v2[0], v2[1])} from this vector.
@@ -167,7 +185,7 @@ public interface Vec2WF extends Vec2RF, Tup2WF
 	 * 
 	 * @return The current vector.
 	 */
-	Vec2WF sub(float[] v2);
+	Vec2WF sub(float[] t);
 	
 	/**
 	 * Subtracts the given value {@code (value)} from every component of this vector.
@@ -203,7 +221,23 @@ public interface Vec2WF extends Vec2RF, Tup2WF
 	 * 
 	 * @return The current vector.
 	 */
-	Vec2WF sub(float v2x, float v2y);
+	Vec2WF sub(float tx, float ty);
+	
+	/** {@inheritDoc} */
+	@Override
+	Vec2WF subN(Tup2RF t);
+	
+	/** {@inheritDoc} */
+	@Override
+	Vec2WF subN(float[] t);
+	
+	/** {@inheritDoc} */
+	@Override
+	Vec2WF subN(float value);
+	
+	/** {@inheritDoc} */
+	@Override
+	Vec2WF subN(float tx, float ty);
 	
 	/**
 	 * Subtracts this vector from the given vector {@code (v2)}.
@@ -220,7 +254,7 @@ public interface Vec2WF extends Vec2RF, Tup2WF
 	 * 
 	 * @return The current vector.
 	 */
-	Vec2WF rSub(Tup2RF v2);
+	Vec2WF rSub(Tup2RF t);
 	
 	/**
 	 * Subtracts this vector from the given vector {@code (v2[0], v2[1])}.
@@ -237,7 +271,7 @@ public interface Vec2WF extends Vec2RF, Tup2WF
 	 * 
 	 * @return The current vector.
 	 */
-	Vec2WF rSub(float[] v2);
+	Vec2WF rSub(float[] t);
 	
 	/**
 	 * Subtracts every component of this vector from the given value {@code (value)}.
@@ -273,7 +307,23 @@ public interface Vec2WF extends Vec2RF, Tup2WF
 	 * 
 	 * @return The current vector.
 	 */
-	Vec2WF rSub(float v2x, float v2y);
+	Vec2WF rSub(float tx, float ty);
+	
+	/** {@inheritDoc} */
+	@Override
+	Vec2WF rSubN(Tup2RF t);
+	
+	/** {@inheritDoc} */
+	@Override
+	Vec2WF rSubN(float[] t);
+	
+	/** {@inheritDoc} */
+	@Override
+	Vec2WF rSubN(float value);
+	
+	/** {@inheritDoc} */
+	@Override
+	Vec2WF rSubN(float tx, float ty);
 	
 	/**
 	 * Multiplies this vector with the given vector {@code (v2)}.
@@ -290,7 +340,7 @@ public interface Vec2WF extends Vec2RF, Tup2WF
 	 * 
 	 * @return The current vector.
 	 */
-	Vec2WF mul(Tup2RF v2);
+	Vec2WF mul(Tup2RF t);
 	
 	/**
 	 * Multiplies this vector with the given vector {@code (v2[0], v2[1])}.
@@ -307,7 +357,7 @@ public interface Vec2WF extends Vec2RF, Tup2WF
 	 * 
 	 * @return The current vector.
 	 */
-	Vec2WF mul(float[] v2);
+	Vec2WF mul(float[] t);
 	
 	/**
 	 * Multiplies every component of this vector with the given value {@code (value)}.
@@ -343,7 +393,23 @@ public interface Vec2WF extends Vec2RF, Tup2WF
 	 * 
 	 * @return The current vector.
 	 */
-	Vec2WF mul(float v2x, float v2y);
+	Vec2WF mul(float tx, float ty);
+	
+	/** {@inheritDoc} */
+	@Override
+	Vec2WF mulN(Tup2RF t);
+	
+	/** {@inheritDoc} */
+	@Override
+	Vec2WF mulN(float[] t);
+	
+	/** {@inheritDoc} */
+	@Override
+	Vec2WF mulN(float value);
+	
+	/** {@inheritDoc} */
+	@Override
+	Vec2WF mulN(float tx, float ty);
 	
 	/**
 	 * Divides this vector by the given vector {@code (v2)}.
@@ -360,7 +426,7 @@ public interface Vec2WF extends Vec2RF, Tup2WF
 	 * 
 	 * @return The current vector.
 	 */
-	Vec2WF div(Tup2RF v2);
+	Vec2WF div(Tup2RF t);
 	
 	/**
 	 * Divides this vector by the given vector {@code (v2[0], v2[1])}.
@@ -377,7 +443,7 @@ public interface Vec2WF extends Vec2RF, Tup2WF
 	 * 
 	 * @return The current vector.
 	 */
-	Vec2WF div(float[] v2);
+	Vec2WF div(float[] t);
 	
 	/**
 	 * Divides each component of this vector by the given value {@code (value)}.
@@ -413,7 +479,23 @@ public interface Vec2WF extends Vec2RF, Tup2WF
 	 * 
 	 * @return The current vector.
 	 */
-	Vec2WF div(float v2x, float v2y);
+	Vec2WF div(float tx, float ty);
+	
+	/** {@inheritDoc} */
+	@Override
+	Vec2WF divN(Tup2RF t);
+	
+	/** {@inheritDoc} */
+	@Override
+	Vec2WF divN(float[] t);
+	
+	/** {@inheritDoc} */
+	@Override
+	Vec2WF divN(float value);
+	
+	/** {@inheritDoc} */
+	@Override
+	Vec2WF divN(float tx, float ty);
 	
 	/**
 	 * Divides the given vector {@code (v2)} by this vector.
@@ -430,7 +512,7 @@ public interface Vec2WF extends Vec2RF, Tup2WF
 	 * 
 	 * @return The current vector.
 	 */
-	Vec2WF rDiv(Tup2RF v2);
+	Vec2WF rDiv(Tup2RF t);
 	
 	/**
 	 * Divides the given vector {@code (v2[0], v2[1])} by this vector.
@@ -447,7 +529,7 @@ public interface Vec2WF extends Vec2RF, Tup2WF
 	 * 
 	 * @return The current vector.
 	 */
-	Vec2WF rDiv(float[] v2);
+	Vec2WF rDiv(float[] t);
 	
 	/**
 	 * Divides the given value {@code (value)} by each component of this vector.
@@ -483,7 +565,23 @@ public interface Vec2WF extends Vec2RF, Tup2WF
 	 * 
 	 * @return The current vector.
 	 */
-	Vec2WF rDiv(float v2x, float v2y);
+	Vec2WF rDiv(float tx, float ty);
+	
+	/** {@inheritDoc} */
+	@Override
+	Vec2WF rDivN(Tup2RF t);
+	
+	/** {@inheritDoc} */
+	@Override
+	Vec2WF rDivN(float[] t);
+	
+	/** {@inheritDoc} */
+	@Override
+	Vec2WF rDivN(float value);
+	
+	/** {@inheritDoc} */
+	@Override
+	Vec2WF rDivN(float tx, float ty);
 	
 	/**
 	 * Calculates half the vector from the endpoint of this vector to the endpoint of the given
@@ -501,7 +599,7 @@ public interface Vec2WF extends Vec2RF, Tup2WF
 	 * 
 	 * @return The current vector.
 	 */
-	Vec2WF halfVecTo(Tup2RF v2);
+	Vec2WF halfVecTo(Tup2RF t);
 	
 	/**
 	 * Calculates half the vector from the endpoint of this vector to the endpoint of the given
@@ -519,7 +617,7 @@ public interface Vec2WF extends Vec2RF, Tup2WF
 	 * 
 	 * @return The current vector.
 	 */
-	Vec2WF halfVecTo(float[] v2);
+	Vec2WF halfVecTo(float[] t);
 	
 	/**
 	 * Calculates half the vector from the endpoint of this vector to the endpoint of the given
@@ -539,7 +637,19 @@ public interface Vec2WF extends Vec2RF, Tup2WF
 	 * 
 	 * @return The current vector.
 	 */
-	Vec2WF halfVecTo(float v2x, float v2y);
+	Vec2WF halfVecTo(float tx, float ty);
+	
+	/** {@inheritDoc} */
+	@Override
+	Vec2WF halfVecToN(Tup2RF t);
+	
+	/** {@inheritDoc} */
+	@Override
+	Vec2WF halfVecToN(float[] t);
+	
+	/** {@inheritDoc} */
+	@Override
+	Vec2WF halfVecToN(float tx, float ty);
 	
 	/**
 	 * Calculates the origin vector to the point that lies half way between the endpoint of this
@@ -557,7 +667,7 @@ public interface Vec2WF extends Vec2RF, Tup2WF
 	 * 
 	 * @return The current vector.
 	 */
-	Vec2WF midPointTo(Tup2RF v2);
+	Vec2WF midPointTo(Tup2RF t);
 	
 	/**
 	 * Calculates the origin vector to the point that lies half way between the endpoint of this
@@ -575,7 +685,7 @@ public interface Vec2WF extends Vec2RF, Tup2WF
 	 * 
 	 * @return The current vector.
 	 */
-	Vec2WF midPointTo(float[] v2);
+	Vec2WF midPointTo(float[] t);
 	
 	/**
 	 * Calculates the origin vector to the point that lies half way between the endpoint of this
@@ -595,7 +705,19 @@ public interface Vec2WF extends Vec2RF, Tup2WF
 	 * 
 	 * @return The current vector.
 	 */
-	Vec2WF midPointTo(float v2x, float v2y);
+	Vec2WF midPointTo(float tx, float ty);
+	
+	/** {@inheritDoc} */
+	@Override
+	Vec2WF midPointToN(Tup2RF t);
+	
+	/** {@inheritDoc} */
+	@Override
+	Vec2WF midPointToN(float[] t);
+	
+	/** {@inheritDoc} */
+	@Override
+	Vec2WF midPointToN(float tx, float ty);
 	
 	/**
 	 * Negates this vector.
@@ -611,6 +733,10 @@ public interface Vec2WF extends Vec2RF, Tup2WF
 	 */
 	Vec2WF neg();
 	
+	/** {@inheritDoc} */
+	@Override
+	Vec2WF negN();
+	
 	/**
 	 * Inverses this vector.
 	 * 
@@ -624,6 +750,10 @@ public interface Vec2WF extends Vec2RF, Tup2WF
 	 * @return The current vector.
 	 */
 	Vec2WF rec();
+	
+	/** {@inheritDoc} */
+	@Override
+	Vec2WF recN();
 	
 	/**
 	 * Normalizes this vector.
@@ -639,93 +769,9 @@ public interface Vec2WF extends Vec2RF, Tup2WF
 	 */
 	Vec2WF nrm();
 	
-	/**
-	 * Compares each component of this vector with the corresponding component of the given vector
-	 * {@code (v2)} and returns the smallest values.
-	 * 
-	 * <p>
-	 * This operation <u><b>does</b></u> alter the vector.
-	 * 
-	 * @param v2
-	 *     The second vector.
-	 * 
-	 * @return The current vector.
-	 */
-	Vec2WF min(Tup2RF v2);
-	
-	/**
-	 * Compares each component of this vector with the corresponding component of the given vector
-	 * {@code (v2[0], v2[1])} and returns the smallest.
-	 * 
-	 * <p>
-	 * This operation <u><b>does</b></u> alter the vector.
-	 * 
-	 * @param v2
-	 *     The second vector as an array with at least two entries.
-	 * 
-	 * @return The current vector.
-	 */
-	Vec2WF min(float[] v2);
-	
-	/**
-	 * Compares each component of this vector with the corresponding component of the given vector
-	 * {@code (v2x, v2y)} and returns the smallest values.
-	 * 
-	 * <p>
-	 * This operation <u><b>does</b></u> alter the vector.
-	 * 
-	 * @param v2x
-	 *     The value of the x component of the second vector.
-	 * @param v2y
-	 *     The value of the y component of the second vector.
-	 * 
-	 * @return The current vector.
-	 */
-	Vec2WF min(float v2x, float v2y);
-	
-	/**
-	 * Compares each component of this vector with the corresponding component of the given vector
-	 * {@code (v2)} and returns the greatest values.
-	 * 
-	 * <p>
-	 * This operation <u><b>does</b></u> alter the vector.
-	 * 
-	 * @param v2
-	 *     The second vector.
-	 * 
-	 * @return The current vector.
-	 */
-	Vec2WF max(Tup2RF v2);
-	
-	/**
-	 * Compares each component of this vector with the corresponding component of the given vector
-	 * {@code (v2[0], v2[1])} and returns the greatest values.
-	 * 
-	 * <p>
-	 * This operation <u><b>does</b></u> alter the vector.
-	 * 
-	 * @param v2
-	 *     The second vector as an array with at least two entries.
-	 * 
-	 * @return The current vector.
-	 */
-	Vec2WF max(float[] v2);
-	
-	/**
-	 * Compares each component of this vector with the corresponding component of the given vector
-	 * {@code (v2x, v2y)} and returns the greatest values.
-	 * 
-	 * <p>
-	 * This operation <u><b>does</b></u> alter the vector.
-	 * 
-	 * @param v2x
-	 *     The value of the x component of the second vector.
-	 * @param v2y
-	 *     The value of the y component of the second vector.
-	 * 
-	 * @return The current vector.
-	 */
-	Vec2WF max(float v2x, float v2y);
+	/** {@inheritDoc} */
+	@Override
+	Vec2WF nrmN();
 	
 	/**
 	 * Rotates this vector by the given angle in radians.
@@ -742,7 +788,11 @@ public interface Vec2WF extends Vec2RF, Tup2WF
 	 * 
 	 * @return The current vector.
 	 */
-	Vec2WF rotRad(float angle);
+	Vec2WF rotRad(double angle);
+	
+	/** {@inheritDoc} */
+	@Override
+	Vec2WF rotRadN(double angle);
 	
 	/**
 	 * Rotates this vector by the given angle in degrees.
@@ -759,7 +809,11 @@ public interface Vec2WF extends Vec2RF, Tup2WF
 	 * 
 	 * @return The current vector.
 	 */
-	Vec2WF rotDeg(float angle);
+	Vec2WF rotDeg(double angle);
+	
+	/** {@inheritDoc} */
+	@Override
+	Vec2WF rotDegN(double angle);
 	
 	/**
 	 * Calculates the orthogonal projection of this vector onto the normalized target vector
@@ -815,7 +869,19 @@ public interface Vec2WF extends Vec2RF, Tup2WF
 	 * 
 	 * @return The current vector.
 	 */
-	Vec2WF project(float tX, float tY);
+	Vec2WF project(float tx, float ty);
+	
+	/** {@inheritDoc} */
+	@Override
+	Vec2WF projectN(Tup2RF t);
+	
+	/** {@inheritDoc} */
+	@Override
+	Vec2WF projectN(float[] t);
+	
+	/** {@inheritDoc} */
+	@Override
+	Vec2WF projectN(float tx, float ty);
 	
 	/**
 	 * Calculates the reflection of this vector based on the given normalized surface normal
@@ -859,334 +925,7 @@ public interface Vec2WF extends Vec2RF, Tup2WF
 	 * 
 	 * @return The current vector.
 	 */
-	Vec2WF reflect(float nX, float nY);
-	
-	/**
-	 * Rounds the components of this vector towards the next greater integer.
-	 * 
-	 * <p>
-	 * This operation <u><b>does</b></u> alter the vector.
-	 * 
-	 * @return The current vector.
-	 */
-	Vec2WF ceil();
-	
-	/**
-	 * Rounds the components of this vector towards the next smaller integer.
-	 * 
-	 * <p>
-	 * This operation <u><b>does</b></u> alter the vector.
-	 * 
-	 * @return The current vector.
-	 */
-	Vec2WF floor();
-	
-	/**
-	 * Rounds the components of this vector.
-	 * 
-	 * <p>
-	 * This operation <u><b>does</b></u> alter the vector.
-	 * 
-	 * @return The current vector.
-	 */
-	Vec2WF round();
-	
-	/**
-	 * Truncates the decimals of the components of this vector.
-	 * 
-	 * <p>
-	 * This operation <u><b>does</b></u> alter the vector.
-	 * 
-	 * @return The current vector.
-	 */
-	Vec2WF trunc();
-	
-	/**
-	 * Rounds the components of this vector using the given method.
-	 * 
-	 * <p>
-	 * This operation <u><b>does</b></u> alter the vector.
-	 * 
-	 * @param method
-	 *     The Method to use for rounding.
-	 * 
-	 * @return The current vector.
-	 */
-	Vec2WF round(RoundMethodF method);
-	
-	/**
-	 * Calculates the absolute value of the component values.
-	 * 
-	 * <p>
-	 * This operation <u><b>does</b></u> alter the vector.
-	 * 
-	 * @return The current vector.
-	 */
-	Vec2WF abs();
-	
-	/**
-	 * Calculates the {@link Math#signum(float) signum} of the components of this vector.
-	 * 
-	 * <p>
-	 * This operation <u><b>does</b></u> alter the vector.
-	 * 
-	 * @return The current vector.
-	 */
-	Vec2WF sign();
-	
-	/**
-	 * Linearly integrates over the second given vector {@code (v2)} by the integrator
-	 * {@code (alpha)} and adds the result to this vector. This assumes an integration delta of 1.0
-	 * so that the integration is over {@code (alpha / 1.0)}, therefore if {@code (alpha)} is 1.0
-	 * the unscaled second vector is added. Otherwise it will be scaled before adding.
-	 * 
-	 * <p>
-	 * The main difference between interpolation and integration is that interpolation is by default
-	 * designed to map a alpha value between 0.0 and 1.0 to the range between a zero-vector and a
-	 * given vector. If the alpha value exceeds the range between 0.0 and 1.0 the result might be
-	 * unexpected. Whereas an integration can exceed the range and will scale the given vector by
-	 * the factor.
-	 * 
-	 * <p>
-	 * This operation <u><b>does</b></u> alter the vector.
-	 * 
-	 * @param v2
-	 *     The second vector. This vector will be integrated over.
-	 * @param alpha
-	 *     The integrator with an integration delta of 1.0f {@code (alpha / 1.0f)}.
-	 * 
-	 * @return A new instance of this vector with the result.
-	 */
-	Vec2WF intVecLin(Tup2RF v2, float alpha);
-	
-	/**
-	 * Linearly integrates over the second given vector {@code (v2[0], v2[1])} by the integrator
-	 * {@code (alpha)} and adds the result to this vector. This assumes an integration delta of 1.0
-	 * so that the integration is over {@code (alpha / 1.0)}, therefore if {@code (alpha)} is 1.0
-	 * the unscaled second vector is added. Otherwise it will be scaled before adding.
-	 * 
-	 * <p>
-	 * The main difference between interpolation and integration is that interpolation is by default
-	 * designed to map a alpha value between 0.0 and 1.0 to the range between a zero-vector and a
-	 * given vector. If the alpha value exceeds the range between 0.0 and 1.0 the result might be
-	 * unexpected. Whereas an integration can exceed the range and will scale the given vector by
-	 * the factor.
-	 * 
-	 * <p>
-	 * This operation <u><b>does</b></u> alter the vector.
-	 * 
-	 * @param v2
-	 *     The second vector as an array with at least two entries. This vector will be integrated
-	 *     over.
-	 * @param alpha
-	 *     The integrator with an integration delta of 1.0f {@code (alpha / 1.0f)}.
-	 * 
-	 * @return A new instance of this vector with the result.
-	 */
-	Vec2WF intVecLin(float[] v2, float alpha);
-	
-	/**
-	 * Linearly integrates over the second given vector {@code (v2x, v2y)} by the integrator
-	 * {@code (alpha)} and adds the result to this vector. This assumes an integration delta of 1.0
-	 * so that the integration is over {@code (alpha / 1.0)}, therefore if {@code (alpha)} is 1.0
-	 * the unscaled second vector is added. Otherwise it will be scaled before adding.
-	 * 
-	 * <p>
-	 * The main difference between interpolation and integration is that interpolation is by default
-	 * designed to map a alpha value between 0.0 and 1.0 to the range between a zero-vector and a
-	 * given vector. If the alpha value exceeds the range between 0.0 and 1.0 the result might be
-	 * unexpected. Whereas an integration can exceed the range and will scale the given vector by
-	 * the factor.
-	 * 
-	 * <p>
-	 * This operation <u><b>does</b></u> alter the vector.
-	 * 
-	 * @param v2x
-	 *     The value of the x component of the second vector. This vector will be integrated over.
-	 * @param v2y
-	 *     The value of the y component of the second vector. This vector will be integrated over.
-	 * @param alpha
-	 *     The integrator with an integration delta of 1.0f {@code (alpha / 1.0f)}.
-	 * 
-	 * @return A new instance of this vector with the result.
-	 */
-	Vec2WF intVecLin(float v2x, float v2y, float alpha);
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF addN(Tup2RF v2);
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF addN(float[] v2);
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF addN(float value);
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF addN(float v2x, float v2y);
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF subN(Tup2RF v2);
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF subN(float[] v2);
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF subN(float value);
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF subN(float v2x, float v2y);
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF rSubN(Tup2RF v2);
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF rSubN(float[] v2);
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF rSubN(float value);
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF rSubN(float v2x, float v2y);
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF mulN(Tup2RF v2);
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF mulN(float[] v2);
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF mulN(float value);
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF mulN(float v2x, float v2y);
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF divN(Tup2RF v2);
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF divN(float[] v2);
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF divN(float value);
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF divN(float v2x, float v2y);
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF rDivN(Tup2RF v2);
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF rDivN(float[] v2);
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF rDivN(float value);
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF rDivN(float v2x, float v2y);
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF halfVecToN(Tup2RF v2);
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF halfVecToN(float[] v2);
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF halfVecToN(float v2x, float v2y);
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF midPointToN(Tup2RF v2);
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF midPointToN(float[] v2);
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF midPointToN(float v2x, float v2y);
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF negN();
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF recN();
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF nrmN();
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF minN(Tup2RF v2);
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF minN(float[] v2);
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF minN(float v2x, float v2y);
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF maxN(Tup2RF v2);
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF maxN(float[] v2);
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF maxN(float v2x, float v2y);
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF rotRadN(float angle);
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF rotDegN(float angle);
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF projectN(Tup2RF t);
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF projectN(float[] t);
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF projectN(float tX, float tY);
+	Vec2WF reflect(float nx, float ny);
 	
 	/** {@inheritDoc} */
 	@Override
@@ -1198,31 +937,31 @@ public interface Vec2WF extends Vec2RF, Tup2WF
 	
 	/** {@inheritDoc} */
 	@Override
-	Vec2WF reflectN(float nX, float nY);
+	Vec2WF reflectN(float nx, float ny);
 	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF ceilN();
-
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF floorN();
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF roundN();
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF truncN();
-	
-	/** {@inheritDoc} */
-	@Override
-	Vec2WF roundN(RoundMethodF method);
+	/**
+	 * Calculates the absolute value of the component values.
+	 * 
+	 * <p>
+	 * This operation <u><b>does</b></u> alter the vector.
+	 * 
+	 * @return The current vector.
+	 */
+	Vec2WF abs();
 	
 	/** {@inheritDoc} */
 	@Override
 	Vec2WF absN();
+	
+	/**
+	 * Calculates the {@link Math#signum(float) signum} of the components of this vector.
+	 * 
+	 * <p>
+	 * This operation <u><b>does</b></u> alter the vector.
+	 * 
+	 * @return The current vector.
+	 */
+	Vec2WF sign();
 	
 	/** {@inheritDoc} */
 	@Override
@@ -1230,13 +969,49 @@ public interface Vec2WF extends Vec2RF, Tup2WF
 	
 	/** {@inheritDoc} */
 	@Override
-	Vec2WF intVecLinN(Tup2RF v2, float alpha);
+	Vec2WF arrange(int[] indices);
 	
 	/** {@inheritDoc} */
 	@Override
-	Vec2WF intVecLinN(float[] v2, float alpha);
+	Vec2WF arrangeN(int[] indices);
 	
 	/** {@inheritDoc} */
 	@Override
-	Vec2WF intVecLinN(float v2x, float v2y, float alpha);
+	Vec2WF arrange(int indexX, int indexY);
+
+	/** {@inheritDoc} */
+	@Override
+	Vec2WF arrangeN(int indexX, int indexY);
+	
+	/** {@inheritDoc} */
+	@Override
+	Vec2WF swizzle(int indexA, int indexB);
+	
+	/** {@inheritDoc} */
+	@Override
+	Vec2WF swizzleN(int indexA, int indexB);
+	
+	/** {@inheritDoc} */
+	@Override
+	Vec2WF swizzleV0V1();
+	
+	/** {@inheritDoc} */
+	@Override
+	Vec2WF swizzleV0V1N();
+	
+	Vec2WF swizzleXY();
+	
+	Vec2WF swizzleXYN();
+
+	Vec2WF minComponents(Tup2RF t);
+	
+	Vec2WF minComponentsN(Tup2RF t);
+	
+	Vec2WF minComponentsN(TupRF t);
+
+	Vec2WF maxComponents(Tup2RF t);
+	
+	Vec2WF maxComponentsN(Tup2RF t);
+	
+	Vec2WF maxComponentsN(TupRF t);
 }

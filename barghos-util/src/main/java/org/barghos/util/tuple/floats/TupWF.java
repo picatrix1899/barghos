@@ -171,4 +171,12 @@ public interface TupWF extends TupRF
 	 * @return A new instance of this type of tuple with the result.
 	 */
 	TupWF arrange(int[] indices);
+
+	TupWF minComponents(TupRF t);
+	
+	TupWF minComponentsN(TupRF t);
+
+	TupWF maxComponents(TupRF t);
+	
+	TupWF maxComponentsN(TupRF t);
 }

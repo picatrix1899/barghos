@@ -280,14 +280,13 @@ public interface ConsumerEx2C extends ConsumerEx2<Character,Character>
 	 * 
 	 * @return A new {@link ConsumerEx2C} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerEx2C of(ConsumerEx2C... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 
-		if(consumers.length == 0) return (a, b) -> {};
+		if(consumers.length == 0) return (_, _) -> {};
 
 		if(consumers.length == 1) return consumers[0];
 		
@@ -302,14 +301,13 @@ public interface ConsumerEx2C extends ConsumerEx2<Character,Character>
 	 * 
 	 * @return A new {@link ConsumerEx2C} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerEx2C of(ConsumerEx2<? super Character,? super Character>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 
-		if(consumers.length == 0) return (a, b) -> {};
+		if(consumers.length == 0) return (_, _) -> {};
 
 		if(consumers.length == 1) return (ConsumerEx2C) consumers[0]::accept;
 
@@ -324,14 +322,13 @@ public interface ConsumerEx2C extends ConsumerEx2<Character,Character>
 	 * 
 	 * @return A new {@link ConsumerEx2Bigd} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerEx2C of(Consumer2C... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		if(consumers.length == 0) return (a, b) -> {};
+		if(consumers.length == 0) return (_, _) -> {};
 
 		if(consumers.length == 1) return (ConsumerEx2C) consumers[0]::accept;
 
@@ -346,14 +343,13 @@ public interface ConsumerEx2C extends ConsumerEx2<Character,Character>
 	 * 
 	 * @return A new {@link ConsumerEx2Bigd} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerEx2C of(Consumer2<? super Character,? super Character>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		if(consumers.length == 0) return (a, b) -> {};
+		if(consumers.length == 0) return (_, _) -> {};
 
 		if(consumers.length == 1) return (ConsumerEx2C) consumers[0]::accept;
 
@@ -368,14 +364,13 @@ public interface ConsumerEx2C extends ConsumerEx2<Character,Character>
 	 * 
 	 * @return A new {@link ConsumerEx2Bigd} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerEx2C of(java.util.function.BiConsumer<? super Character,? super Character>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		if(consumers.length == 0) return (a, b) -> {};
+		if(consumers.length == 0) return (_, _) -> {};
 
 		if(consumers.length == 1) return (ConsumerEx2C) consumers[0]::accept;
 

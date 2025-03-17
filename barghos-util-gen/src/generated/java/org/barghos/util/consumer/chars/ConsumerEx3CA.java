@@ -1,4 +1,4 @@
-package templates.consumer;
+package org.barghos.util.consumer.chars;
 
 import org.barghos.util.consumer.Consumer3;
 import org.barghos.util.consumer.ConsumerEx3;
@@ -236,14 +236,13 @@ public interface ConsumerEx3CA extends ConsumerEx3<char[],char[],char[]>
 	 * 
 	 * @return A new {@link ConsumerEx3CA} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerEx3CA of3CA(ConsumerEx3CA... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 
-		if(consumers.length == 0) return (a, b, c) -> {};
+		if(consumers.length == 0) return (_, _, _) -> {};
 
 		if(consumers.length == 1) return consumers[0];
 		
@@ -258,14 +257,13 @@ public interface ConsumerEx3CA extends ConsumerEx3<char[],char[],char[]>
 	 * 
 	 * @return A new {@link ConsumerEx3CA} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerEx3CA of(ConsumerEx3<? super char[],? super char[],? super char[]>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 
-		if(consumers.length == 0) return (a, b, c) -> {};
+		if(consumers.length == 0) return (_, _, _) -> {};
 
 		if(consumers.length == 1) return (ConsumerEx3CA) consumers[0]::accept;
 
@@ -280,14 +278,13 @@ public interface ConsumerEx3CA extends ConsumerEx3<char[],char[],char[]>
 	 * 
 	 * @return A new {@link ConsumerEx2Bigd} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerEx3CA of(Consumer3CA... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		if(consumers.length == 0) return (a, b, c) -> {};
+		if(consumers.length == 0) return (_, _, _) -> {};
 
 		if(consumers.length == 1) return (ConsumerEx3CA) consumers[0]::accept;
 
@@ -302,14 +299,13 @@ public interface ConsumerEx3CA extends ConsumerEx3<char[],char[],char[]>
 	 * 
 	 * @return A new {@link ConsumerEx2Bigd} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerEx3CA of(Consumer3<? super char[],? super char[],? super char[]>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		if(consumers.length == 0) return (a, b, c) -> {};
+		if(consumers.length == 0) return (_, _, _) -> {};
 
 		if(consumers.length == 1) return (ConsumerEx3CA) consumers[0]::accept;
 

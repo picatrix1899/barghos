@@ -1,4 +1,4 @@
-package templates.consumer;
+package org.barghos.util.consumer.chars;
 
 import org.barghos.util.consumer.Consumer3;
 import org.barghos.validation.Validate;
@@ -109,14 +109,13 @@ public interface Consumer3CA2 extends Consumer3<char[][],char[][],char[][]>
 	 * 
 	 * @return A new {@link Consumer3CA2} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static Consumer3CA2 of(Consumer3CA2... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 
-		if(consumers.length == 0) return (a, b, c) -> {};
+		if(consumers.length == 0) return (_, _, _) -> {};
 
 		if(consumers.length == 1) return consumers[0];
 		
@@ -131,14 +130,13 @@ public interface Consumer3CA2 extends Consumer3<char[][],char[][],char[][]>
 	 * 
 	 * @return A new {@link Consumer3CA2} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static Consumer3CA2 of(Consumer3<? super char[][],? super char[][],? super char[][]>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 
-		if(consumers.length == 0) return (a, b, c) -> {};
+		if(consumers.length == 0) return (_, _, _) -> {};
 		
 		if(consumers.length == 1) return (Consumer3CA2) consumers[0]::accept;
 		

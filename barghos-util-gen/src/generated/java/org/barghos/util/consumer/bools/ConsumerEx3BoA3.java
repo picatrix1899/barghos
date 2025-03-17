@@ -1,4 +1,4 @@
-package templates.consumer;
+package org.barghos.util.consumer.bools;
 
 import org.barghos.util.consumer.Consumer3;
 import org.barghos.util.consumer.ConsumerEx3;
@@ -236,14 +236,13 @@ public interface ConsumerEx3BoA3 extends ConsumerEx3<boolean[][][],boolean[][][]
 	 * 
 	 * @return A new {@link ConsumerEx3BoA3} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerEx3BoA3 of(ConsumerEx3BoA3... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		if(consumers.length == 0) return (a, b, c) -> {};
+		if(consumers.length == 0) return (_, _, _) -> {};
 
 		if(consumers.length == 1) return consumers[0];
 		
@@ -258,14 +257,13 @@ public interface ConsumerEx3BoA3 extends ConsumerEx3<boolean[][][],boolean[][][]
 	 * 
 	 * @return A new {@link ConsumerEx3BoA3} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerEx3BoA3 of(ConsumerEx3<? super boolean[][][],? super boolean[][][],? super boolean[][][]>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 
-		if(consumers.length == 0) return (a, b, c) -> {};
+		if(consumers.length == 0) return (_, _, _) -> {};
 
 		if(consumers.length == 1) return (ConsumerEx3BoA3) consumers[0]::accept;
 		
@@ -280,14 +278,13 @@ public interface ConsumerEx3BoA3 extends ConsumerEx3<boolean[][][],boolean[][][]
 	 * 
 	 * @return A new {@link ConsumerEx2Bigd} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerEx3BoA3 of(Consumer3BoA3... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		if(consumers.length == 0) return (a, b, c) -> {};
+		if(consumers.length == 0) return (_, _, _) -> {};
 
 		if(consumers.length == 1) return (ConsumerEx3BoA3) consumers[0]::accept;
 
@@ -302,14 +299,13 @@ public interface ConsumerEx3BoA3 extends ConsumerEx3<boolean[][][],boolean[][][]
 	 * 
 	 * @return A new {@link ConsumerEx2Bigd} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerEx3BoA3 of(Consumer3<? super boolean[][][],? super boolean[][][],? super boolean[][][]>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		if(consumers.length == 0) return (a, b, c) -> {};
+		if(consumers.length == 0) return (_, _, _) -> {};
 
 		if(consumers.length == 1) return (ConsumerEx3BoA3) consumers[0]::accept;
 

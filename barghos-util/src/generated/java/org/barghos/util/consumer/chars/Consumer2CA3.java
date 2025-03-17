@@ -144,14 +144,13 @@ public interface Consumer2CA3 extends Consumer2<char[][][],char[][][]>
 	 * 
 	 * @return A new {@link Consumer2CA3} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static Consumer2CA3 of(Consumer2CA3... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 
-		if(consumers.length == 0) return (a, b) -> {};
+		if(consumers.length == 0) return (_, _) -> {};
 
 		if(consumers.length == 1) return consumers[0];
 		
@@ -166,14 +165,13 @@ public interface Consumer2CA3 extends Consumer2<char[][][],char[][][]>
 	 * 
 	 * @return A new {@link Consumer2CA3} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static Consumer2CA3 of(Consumer2<? super char[][][],? super char[][][]>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 
-		if(consumers.length == 0) return (a, b) -> {};
+		if(consumers.length == 0) return (_, _) -> {};
 
 		if(consumers.length == 1) return (Consumer2CA3) consumers[0]::accept;
 
@@ -188,14 +186,13 @@ public interface Consumer2CA3 extends Consumer2<char[][][],char[][][]>
 	 * 
 	 * @return A new {@link Consumer2Bigd} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static Consumer2CA3 of(java.util.function.BiConsumer<? super char[][][],? super char[][][]>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		if(consumers.length == 0) return (a, b) -> {};
+		if(consumers.length == 0) return (_, _) -> {};
 
 		if(consumers.length == 1) return (Consumer2CA3)consumers[0]::accept;
 		

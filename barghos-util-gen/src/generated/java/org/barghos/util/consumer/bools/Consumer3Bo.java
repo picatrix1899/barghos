@@ -1,4 +1,4 @@
-package templates.consumer;
+package org.barghos.util.consumer.bools;
 
 import org.barghos.util.consumer.Consumer3;
 import org.barghos.validation.Validate;
@@ -25,7 +25,7 @@ import org.barghos.validation.Validate;
  * @see ConsumerEx4Bo
  */
 @FunctionalInterface
-public interface Consumer3Bo extends Consumer3<Booolean,Booolean,Booolean>
+public interface Consumer3Bo extends Consumer3<Boolean,Boolean,Boolean>
 {
 	
 	/**
@@ -38,7 +38,7 @@ public interface Consumer3Bo extends Consumer3<Booolean,Booolean,Booolean>
 	void acceptBo(boolean a, boolean b, boolean c);
 	
 	@Override
-	default void accept(Booolean a, Booolean b, Booolean c)
+	default void accept(Boolean a, Boolean b, Boolean c)
 	{
 		acceptBo(a, b, c);
 	}
@@ -65,7 +65,7 @@ public interface Consumer3Bo extends Consumer3<Booolean,Booolean,Booolean>
 	 * operation after.
 	 */
 	@Override
-	default Consumer3Bo then(Consumer3<? super Booolean,? super Booolean,? super Booolean> after)
+	default Consumer3Bo then(Consumer3<? super Boolean,? super Boolean,? super Boolean> after)
 	{
 		Validate.Arg.checkNotNull("after", after);
 
@@ -94,7 +94,7 @@ public interface Consumer3Bo extends Consumer3<Booolean,Booolean,Booolean>
 	 * this operation.
 	 */
 	@Override
-	default Consumer3Bo before(Consumer3<? super Booolean,? super Booolean,? super Booolean> before)
+	default Consumer3Bo before(Consumer3<? super Boolean,? super Boolean,? super Boolean> before)
 	{
 		Validate.Arg.checkNotNull("before", before);
 
@@ -109,14 +109,13 @@ public interface Consumer3Bo extends Consumer3<Booolean,Booolean,Booolean>
 	 * 
 	 * @return A new {@link Consumer3Bo} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static Consumer3Bo of(Consumer3Bo... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 
-		if(consumers.length == 0) return (a, b, c) -> {};
+		if(consumers.length == 0) return (_, _, _) -> {};
 
 		if(consumers.length == 1) return consumers[0];
 		
@@ -131,18 +130,17 @@ public interface Consumer3Bo extends Consumer3<Booolean,Booolean,Booolean>
 	 * 
 	 * @return A new {@link Consumer3Bo} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
-	static Consumer3Bo of(Consumer3<? super Booolean,? super Booolean,? super Booolean>... consumers)
+	static Consumer3Bo of(Consumer3<? super Boolean,? super Boolean,? super Boolean>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 
-		if(consumers.length == 0) return (a, b, c) -> {};
+		if(consumers.length == 0) return (_, _, _) -> {};
 
 		if(consumers.length == 1) return (Consumer3Bo) consumers[0]::accept;
 		
-		return (a, b, c) -> { for(Consumer3<? super Booolean,? super Booolean,? super Booolean> consumer : consumers) consumer.accept(a, b, c); };
+		return (a, b, c) -> { for(Consumer3<? super Boolean,? super Boolean,? super Boolean> consumer : consumers) consumer.accept(a, b, c); };
 	}
 	
 }

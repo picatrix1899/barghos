@@ -1,4 +1,4 @@
-package templates.consumer;
+package org.barghos.util.consumer.bools;
 
 import org.barghos.util.consumer.Consumer4;
 import org.barghos.validation.Validate;
@@ -24,7 +24,7 @@ import org.barghos.validation.Validate;
  * @see ConsumerEx4Bo
  */
 @FunctionalInterface
-public interface Consumer4Bo extends Consumer4<Booolean,Booolean,Booolean,Booolean>
+public interface Consumer4Bo extends Consumer4<Boolean,Boolean,Boolean,Boolean>
 {
 	
 	/**
@@ -38,7 +38,7 @@ public interface Consumer4Bo extends Consumer4<Booolean,Booolean,Booolean,Booole
 	void acceptBo(boolean a, boolean b, boolean c, boolean d);
 	
 	@Override
-	default void accept(Booolean a, Booolean b, Booolean c, Booolean d)
+	default void accept(Boolean a, Boolean b, Boolean c, Boolean d)
 	{
 		acceptBo(a, b, c, d);
 	}
@@ -65,7 +65,7 @@ public interface Consumer4Bo extends Consumer4<Booolean,Booolean,Booolean,Booole
 	 * operation after.
 	 */
 	@Override
-	default Consumer4Bo then(Consumer4<? super Booolean,? super Booolean,? super Booolean,? super Booolean> after)
+	default Consumer4Bo then(Consumer4<? super Boolean,? super Boolean,? super Boolean,? super Boolean> after)
 	{
 		Validate.Arg.checkNotNull("after", after);
 		
@@ -94,7 +94,7 @@ public interface Consumer4Bo extends Consumer4<Booolean,Booolean,Booolean,Booole
 	 * this operation.
 	 */
 	@Override
-	default Consumer4Bo before(Consumer4<? super Booolean,? super Booolean,? super Booolean,? super Booolean> before)
+	default Consumer4Bo before(Consumer4<? super Boolean,? super Boolean,? super Boolean,? super Boolean> before)
 	{
 		Validate.Arg.checkNotNull("before", before);
 
@@ -116,7 +116,7 @@ public interface Consumer4Bo extends Consumer4<Booolean,Booolean,Booolean,Booole
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 
-		if(consumers.length == 0) return (a, b, c, d) -> {};
+		if(consumers.length == 0) return (_, _, _, _) -> {};
 
 		if(consumers.length == 1) return consumers[0];
 		
@@ -133,16 +133,16 @@ public interface Consumer4Bo extends Consumer4<Booolean,Booolean,Booolean,Booole
 	 */
 	@SuppressWarnings("unused")
 	@SafeVarargs
-	static Consumer4Bo of(Consumer4<? super Booolean,? super Booolean,? super Booolean,? super Booolean>... consumers)
+	static Consumer4Bo of(Consumer4<? super Boolean,? super Boolean,? super Boolean,? super Boolean>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 
-		if(consumers.length == 0) return (a, b, c, d) -> {};
+		if(consumers.length == 0) return (_, _, _, _) -> {};
 
 		if(consumers.length == 1) return (Consumer4Bo) consumers[0]::accept;
 
-		return (a, b, c, d) -> { for(Consumer4<? super Booolean,? super Booolean,? super Booolean,? super Booolean> consumer : consumers) consumer.accept(a, b, c, d); };
+		return (a, b, c, d) -> { for(Consumer4<? super Boolean,? super Boolean,? super Boolean,? super Boolean> consumer : consumers) consumer.accept(a, b, c, d); };
 	}
 	
 }

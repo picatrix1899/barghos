@@ -2,6 +2,7 @@ package org.barghos.util.tuple.floats;
 
 import org.barghos.annotation.ExtractionParam;
 import org.barghos.annotation.Nullable;
+import org.barghos.util.math.RoundMethodF;
 
 /**
  * This interface provides non-modifying operations for float tuples with 
@@ -1149,7 +1150,7 @@ public interface Tup3RF extends TupRF
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(@Nullable float... t);
+	boolean equalsAtV0(@Nullable float[] t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and
@@ -1261,7 +1262,7 @@ public interface Tup3RF extends TupRF
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(@Nullable float... t);
+	boolean equalsAtV1(@Nullable float[] t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and
@@ -1373,7 +1374,7 @@ public interface Tup3RF extends TupRF
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV2(@Nullable float... t);
+	boolean equalsAtV2(@Nullable float[] t);
 	
 	/**
 	 * Returns whether the third component value of this tuple and
@@ -1524,7 +1525,7 @@ public interface Tup3RF extends TupRF
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(float tolerance, @Nullable float... t);
+	boolean equalsAtV0(float tolerance, @Nullable float[] t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and the given
@@ -1687,7 +1688,7 @@ public interface Tup3RF extends TupRF
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(float tolerance, @Nullable float... t);
+	boolean equalsAtV1(float tolerance, @Nullable float[] t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and the given
@@ -1850,7 +1851,7 @@ public interface Tup3RF extends TupRF
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV2(float tolerance, @Nullable float... t);
+	boolean equalsAtV2(float tolerance, @Nullable float[] t);
 	
 	/**
 	 * Returns whether the third component value of this tuple and the given
@@ -1907,6 +1908,8 @@ public interface Tup3RF extends TupRF
 	 */
 	Tup3RF arrangeN(int[] indices);
 	
+	<T extends Tup3WF> T arrangeT(int[] indices, T res);
+	
 	/**
 	 * Arranges the order of the component values by their indices and returns
 	 * the result as a new instance of the original type of this tuple.
@@ -1936,6 +1939,8 @@ public interface Tup3RF extends TupRF
 	 */
 	Tup3RF arrangeN(int i0, int i1, int i2);
 	
+	<T extends Tup3WF> T arrangeT(int i0, int i1, int i2, T res);
+	
 	/**
 	 * Swaps two component values at the given indices and returns the result
 	 * as a new instance of the original type of this tuple, so that the value
@@ -1955,6 +1960,8 @@ public interface Tup3RF extends TupRF
 	@Override
 	Tup3RF swizzleN(int indexA, int indexB);
 	
+	<T extends Tup3WF> T swizzleT(int indexA, int indexB, T res);
+	
 	/**
 	 * Swaps the values of the components {@code v0} and {@code v1} and returns
 	 * the result as a new instance of the type of this tuple.
@@ -1962,6 +1969,10 @@ public interface Tup3RF extends TupRF
 	 * @return A new instance of the type of this tuple with the result.
 	 */
 	Tup3RF swizzleV0V1N();
+	
+	<T extends Tup3WF> T swizzleV0V1T(T res);
+	
+	float[] swizzleV0V1T(float[] res);
 	
 	/**
 	 * Swaps the values of the components {@code v0} and {@code v2} and returns
@@ -1971,6 +1982,10 @@ public interface Tup3RF extends TupRF
 	 */
 	Tup3RF swizzleV0V2N();
 	
+	<T extends Tup3WF> T swizzleV0V2T(T res);
+	
+	float[] swizzleV0V2T(float[] res);
+	
 	/**
 	 * Swaps the values of the components {@code v1} and {@code v2} and returns
 	 * the result as a new instance of the type of this tuple.
@@ -1978,4 +1993,40 @@ public interface Tup3RF extends TupRF
 	 * @return A new instance of the type of this tuple with the result.
 	 */
 	Tup3RF swizzleV1V2N();
+	
+	<T extends Tup3WF> T swizzleV1V2T(T res);
+	
+	float[] swizzleV1V2T(float[] res);
+	
+	Tup3RF minComponentsN();
+	
+	<T extends Tup3WF> T minComponentsT(T res);
+
+	Tup3RF maxComponentsN();
+	
+	<T extends Tup3WF> T maxComponentsT(T res);
+	
+	Tup3RF ceilN();
+	
+	<T extends Tup3WF> T ceilT(T res);
+	
+	Tup3RF floorN();
+	
+	<T extends Tup3WF> T floorT(T res);
+	
+	Tup3RF roundN();
+	
+	<T extends Tup3WF> T roundT(T res);
+	
+	Tup3RF truncN();
+	
+	<T extends Tup3WF> T truncT(T res);
+	
+	Tup3RF roundN(RoundMethodF method);
+	
+	<T extends Tup3WF> T roundT(RoundMethodF method, T res);
+	
+	Tup3RF absN();
+	
+	<T extends Tup3WF> T absT(T res);
 }

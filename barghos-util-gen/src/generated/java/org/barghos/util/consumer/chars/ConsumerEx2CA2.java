@@ -1,8 +1,7 @@
-package templates.consumer;
+package org.barghos.util.consumer.chars;
 
 import org.barghos.util.consumer.Consumer2;
 import org.barghos.util.consumer.ConsumerEx2;
-import org.barghos.util.consumer.bigi.Consumer2Bigi;
 import org.barghos.validation.ExceptionHandler;
 import org.barghos.validation.Validate;
 
@@ -281,14 +280,13 @@ public interface ConsumerEx2CA2 extends ConsumerEx2<char[][],char[][]>
 	 * 
 	 * @return A new {@link ConsumerEx2CA2} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerEx2CA2 of(ConsumerEx2CA2... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		if(consumers.length == 0) return (a, b) -> {};
+		if(consumers.length == 0) return (_, _) -> {};
 
 		if(consumers.length == 1) return consumers[0];
 		
@@ -303,14 +301,13 @@ public interface ConsumerEx2CA2 extends ConsumerEx2<char[][],char[][]>
 	 * 
 	 * @return A new {@link ConsumerEx2CA2} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerEx2CA2 of(ConsumerEx2<? super char[][],? super char[][]>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 
-		if(consumers.length == 0) return (a, b) -> {};
+		if(consumers.length == 0) return (_, _) -> {};
 
 		if(consumers.length == 1) return (ConsumerEx2CA2) consumers[0]::accept;
 
@@ -325,14 +322,13 @@ public interface ConsumerEx2CA2 extends ConsumerEx2<char[][],char[][]>
 	 * 
 	 * @return A new {@link ConsumerEx2Bigd} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerEx2CA2 of(Consumer2CA2... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		if(consumers.length == 0) return (a, b) -> {};
+		if(consumers.length == 0) return (_, _) -> {};
 
 		if(consumers.length == 1) return (ConsumerEx2CA2) consumers[0]::accept;
 
@@ -347,14 +343,13 @@ public interface ConsumerEx2CA2 extends ConsumerEx2<char[][],char[][]>
 	 * 
 	 * @return A new {@link ConsumerEx2Bigd} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerEx2CA2 of(Consumer2<? super char[][],? super char[][]>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		if(consumers.length == 0) return (a, b) -> {};
+		if(consumers.length == 0) return (_, _) -> {};
 
 		if(consumers.length == 1) return (ConsumerEx2CA2) consumers[0]::accept;
 
@@ -369,14 +364,13 @@ public interface ConsumerEx2CA2 extends ConsumerEx2<char[][],char[][]>
 	 * 
 	 * @return A new {@link ConsumerEx2Bigd} performing the operations.
 	 */
-	@SuppressWarnings("unused")
 	@SafeVarargs
 	static ConsumerEx2CA2 of(java.util.function.BiConsumer<? super char[][],? super char[][]>... consumers)
 	{
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		if(consumers.length == 0) return (a, b) -> {};
+		if(consumers.length == 0) return (_, _) -> {};
 
 		if(consumers.length == 1) return (ConsumerEx2CA2) consumers[0]::accept;
 
