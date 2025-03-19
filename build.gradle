@@ -4,6 +4,7 @@ subprojects {
   apply plugin: 'eclipse'
   
   repositories {
+  	mavenLocal()
     mavenCentral()
   }
   
