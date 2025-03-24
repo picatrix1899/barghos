@@ -5,7 +5,9 @@ public interface NullableR<T>
 	
 	T value();
 	
-	boolean isPresent();
+	boolean isNull();
+	
+	boolean isNotNull();
 
 	boolean equals(Object obj);
 	

@@ -219,7 +219,7 @@ public interface ConsumerEx2<A,B>
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		if(consumers.length == 0) return (a, b) -> {};
+		if(consumers.length == 0) return (_, _) -> {};
 		
 		if(consumers.length == 1) return (ConsumerEx2<A,B>)consumers[0];
 		

@@ -2,8 +2,6 @@ package org.barghos.util.tuple.floats;
 
 import org.barghos.annotation.ExtractionParam;
 import org.barghos.annotation.Nullable;
-import org.barghos.util.collection.IndexValuePairF;
-import org.barghos.util.math.RoundMethodF;
 
 /**
  * This interface provides non-modifying operations for float tuples with 

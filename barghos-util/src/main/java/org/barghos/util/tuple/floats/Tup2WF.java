@@ -210,8 +210,12 @@ public interface Tup2WF extends Tup2RF, TupWF
 	Tup2WF minComponents(Tup2RF t);
 	
 	Tup2WF minComponentsN(Tup2RF t);
+	
+	Tup2WF minComponentsN(TupRF t);
 
 	Tup2WF maxComponents(Tup2RF t);
 	
 	Tup2WF maxComponentsN(Tup2RF t);
+	
+	Tup2WF maxComponentsN(TupRF t);
 }

@@ -195,7 +195,7 @@ public interface ConsumerEx4<A,B,C,D>
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		if(consumers.length == 0) return (a, b, c, d) -> {};
+		if(consumers.length == 0) return (_, _, _, _) -> {};
 		
 		if(consumers.length == 1) return (ConsumerEx4<A,B,C,D>)consumers[0];
 		

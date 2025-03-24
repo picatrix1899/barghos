@@ -1736,7 +1736,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.length; i++)
 		{
-			res[i] = MathUtils.Num.min(v1.getAt(i), v2.getAt(i));
+			res[i] = MathUtils.min(v1.getAt(i), v2.getAt(i));
 		}
 		
 		return res;
@@ -1763,7 +1763,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.length; i++)
 		{
-			res[i] = MathUtils.Num.min(v1.getAt(i), v2[i]);
+			res[i] = MathUtils.min(v1.getAt(i), v2[i]);
 		}
 		
 		return res;
@@ -1790,7 +1790,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.length; i++)
 		{
-			res[i] = MathUtils.Num.min(v1[i], v2.getAt(i));
+			res[i] = MathUtils.min(v1[i], v2.getAt(i));
 		}
 		
 		return res;
@@ -1817,7 +1817,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.length; i++)
 		{
-			res[i] = MathUtils.Num.min(v1[i], v2[i]);
+			res[i] = MathUtils.min(v1[i], v2[i]);
 		}
 		
 		return res;
@@ -1847,7 +1847,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
-			res.setAt(i, MathUtils.Num.min(v1.getAt(i), v2.getAt(i)));
+			res.setAt(i, MathUtils.min(v1.getAt(i), v2.getAt(i)));
 		}
 		
 		return res;
@@ -1877,7 +1877,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
-			res.setAt(i, MathUtils.Num.min(v1.getAt(i), v2[i]));
+			res.setAt(i, MathUtils.min(v1.getAt(i), v2[i]));
 		}
 		
 		return res;
@@ -1907,7 +1907,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
-			res.setAt(i, MathUtils.Num.min(v1[i], v2.getAt(i)));
+			res.setAt(i, MathUtils.min(v1[i], v2.getAt(i)));
 		}
 		
 		return res;
@@ -1937,7 +1937,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
-			res.setAt(i, MathUtils.Num.min(v1[i], v2[i]));
+			res.setAt(i, MathUtils.min(v1[i], v2[i]));
 		}
 		
 		return res;
@@ -1964,7 +1964,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.length; i++)
 		{
-			res[i] = MathUtils.Num.max(v1.getAt(i), v2.getAt(i));
+			res[i] = MathUtils.max(v1.getAt(i), v2.getAt(i));
 		}
 		
 		return res;
@@ -1991,7 +1991,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.length; i++)
 		{
-			res[i] = MathUtils.Num.max(v1.getAt(i), v2[i]);
+			res[i] = MathUtils.max(v1.getAt(i), v2[i]);
 		}
 		
 		return res;
@@ -2018,7 +2018,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.length; i++)
 		{
-			res[i] = MathUtils.Num.max(v1[i], v2.getAt(i));
+			res[i] = MathUtils.max(v1[i], v2.getAt(i));
 		}
 		
 		return res;
@@ -2045,7 +2045,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.length; i++)
 		{
-			res[i] = MathUtils.Num.max(v1[i], v2[i]);
+			res[i] = MathUtils.max(v1[i], v2[i]);
 		}
 		
 		return res;
@@ -2075,7 +2075,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
-			res.setAt(i, MathUtils.Num.max(v1.getAt(i), v2.getAt(i)));
+			res.setAt(i, MathUtils.max(v1.getAt(i), v2.getAt(i)));
 		}
 		
 		return res;
@@ -2105,7 +2105,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
-			res.setAt(i, MathUtils.Num.max(v1.getAt(i), v2[i]));
+			res.setAt(i, MathUtils.max(v1.getAt(i), v2[i]));
 		}
 		
 		return res;
@@ -2135,7 +2135,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
-			res.setAt(i, MathUtils.Num.max(v1[i], v2.getAt(i)));
+			res.setAt(i, MathUtils.max(v1[i], v2.getAt(i)));
 		}
 		
 		return res;
@@ -2165,7 +2165,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
-			res.setAt(i, MathUtils.Num.max(v1[i], v2[i]));
+			res.setAt(i, MathUtils.max(v1[i], v2[i]));
 		}
 		
 		return res;
@@ -3010,7 +3010,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.length; i++)
 		{
-			res[i] = MathUtils.Num.abs(v.getAt(i));
+			res[i] = MathUtils.abs(v.getAt(i));
 		}
 		
 		return res;
@@ -3031,7 +3031,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.length; i++)
 		{
-			res[i] = MathUtils.Num.abs(v[i]);
+			res[i] = MathUtils.abs(v[i]);
 		}
 		
 		return res;
@@ -3055,7 +3055,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
-			res.setAt(i, MathUtils.Num.abs(v.getAt(i)));
+			res.setAt(i, MathUtils.abs(v.getAt(i)));
 		}
 		
 		return res;
@@ -3079,7 +3079,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
-			res.setAt(i, MathUtils.Num.abs(v[i]));
+			res.setAt(i, MathUtils.abs(v[i]));
 		}
 		
 		return res;
@@ -3100,7 +3100,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.length; i++)
 		{
-			res[i] = MathUtils.Num.sign(v.getAt(i));
+			res[i] = MathUtils.sign(v.getAt(i));
 		}
 		
 		return res;
@@ -3121,7 +3121,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.length; i++)
 		{
-			res[i] = MathUtils.Num.sign(v[i]);
+			res[i] = MathUtils.sign(v[i]);
 		}
 		
 		return res;
@@ -3145,7 +3145,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
-			res.setAt(i, MathUtils.Num.sign(v.getAt(i)));
+			res.setAt(i, MathUtils.sign(v.getAt(i)));
 		}
 		
 		return res;
@@ -3169,7 +3169,7 @@ public class TupUtilsF
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
-			res.setAt(i, MathUtils.Num.sign(v[i]));
+			res.setAt(i, MathUtils.sign(v[i]));
 		}
 		
 		return res;
@@ -3556,7 +3556,7 @@ public class TupUtilsF
 		
 		for(int i = 0; i < t1.size(); i++)
 		{
-			if(!MathUtils.Num.equals(tolerance, t1.getAt(i), t2.getAt(0))) return false;
+			if(!MathUtils.Comp.equals(tolerance, t1.getAt(i), t2.getAt(0))) return false;
 		}
 		
 		return true;
@@ -3611,7 +3611,7 @@ public class TupUtilsF
 		
 		for(int i = 0; i < t1.size(); i++)
 		{
-			if(!MathUtils.Num.equals(tolerance, t1.getAt(i), t2[i])) return false;
+			if(!MathUtils.Comp.equals(tolerance, t1.getAt(i), t2[i])) return false;
 		}
 
 		return true;
@@ -3666,7 +3666,7 @@ public class TupUtilsF
 		
 		for(int i = 0; i < t1.length; i++)
 		{
-			if(!MathUtils.Num.equals(tolerance, t1[i], t2[i])) return false;
+			if(!MathUtils.Comp.equals(tolerance, t1[i], t2[i])) return false;
 		}
 
 		return true;
@@ -3927,7 +3927,7 @@ public class TupUtilsF
 		if(t1.size() <= index) return false;
 		if(t2.size() <= index) return false;
 		
-		return MathUtils.Num.equals(tolerance, t1.getAt(index), t2.getAt(index));
+		return MathUtils.Comp.equals(tolerance, t1.getAt(index), t2.getAt(index));
 	}
 
 	/**
@@ -3984,7 +3984,7 @@ public class TupUtilsF
 		if(t1.size() <= index) return false;
 		if(t2.length <= index) return false;
 		
-		return MathUtils.Num.equals(tolerance, t1.getAt(index), t2[index]);
+		return MathUtils.Comp.equals(tolerance, t1.getAt(index), t2[index]);
 	}
 
 	/**
@@ -4041,7 +4041,7 @@ public class TupUtilsF
 		if(t1.length <= index) return false;
 		if(t2.length <= index) return false;
 		
-		return MathUtils.Num.equals(tolerance, t1[index], t2[index]);
+		return MathUtils.Comp.equals(tolerance, t1[index], t2[index]);
 	}
 	
 	/**
@@ -4085,7 +4085,7 @@ public class TupUtilsF
 		if(t == null) return false;
 		if(t.size() <= index) return false;
 		
-		return MathUtils.Num.equals(tolerance, t.getAt(index), value);
+		return MathUtils.Comp.equals(tolerance, t.getAt(index), value);
 	}
 	
 	/**
@@ -4129,6 +4129,6 @@ public class TupUtilsF
 		if(t == null) return false;
 		if(t.length <= index) return false;
 		
-		return MathUtils.Num.equals(tolerance, t[index], value);
+		return MathUtils.Comp.equals(tolerance, t[index], value);
 	}
 }

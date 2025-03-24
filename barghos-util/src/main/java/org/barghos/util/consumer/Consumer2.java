@@ -123,7 +123,7 @@ public interface Consumer2<A,B> extends java.util.function.BiConsumer<A,B>
 		Validate.Arg.checkNotNull("consumers", consumers);
 		Validate.Arg.checkEntriesNotNull("consumers", consumers);
 		
-		if(consumers.length == 0) return (a, b) -> {};
+		if(consumers.length == 0) return (_, _) -> {};
 		
 		if(consumers.length == 1) return (Consumer2<A,B>)consumers[0];
 		

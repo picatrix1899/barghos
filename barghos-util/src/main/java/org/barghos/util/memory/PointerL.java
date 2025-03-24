@@ -34,7 +34,7 @@ public class PointerL
 		return this.segment.get(ValueLayout.JAVA_LONG, 0);
 	}
 	
-	public long get(long index)
+	public long getAt(long index)
 	{
 		return this.segment.get(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG.byteSize() * index);
 	}
@@ -44,7 +44,7 @@ public class PointerL
 		this.segment.set(ValueLayout.JAVA_LONG, 0, value);
 	}
 	
-	public void set(long index, long value)
+	public void setAt(long index, long value)
 	{
 		this.segment.set(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG.byteSize() * index, value);
 	}

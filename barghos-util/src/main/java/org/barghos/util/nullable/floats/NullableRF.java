@@ -6,18 +6,13 @@ public interface NullableRF extends NullableR<Float>
 {
 	
 	float valueF();
-	default Float value()
-	{
-		return valueF();
-	}
+	
+	Float value();
 	
 	boolean equals(NullableRF obj);
 	
-	default boolean equalsValue(Float obj)
-	{
-		return equalsValueF(obj);
-	}
-	
 	boolean equalsValueF(float obj);
+	
+	boolean equalsValue(Float obj);
 	
 }
