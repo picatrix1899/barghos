@@ -7,7 +7,18 @@ public interface NullableRB extends NullableR<Byte>
 	
 	byte valueB();
 	
+	byte valueOrDefaultB(byte def);
+	
+	byte valueOrDefaultB();
+	
+	@Override
 	Byte value();
+	
+	@Override
+	Byte valueOrDefault(Byte def);
+	
+	@Override
+	Byte valueOrDefault();
 	
 	boolean equals(NullableRB obj);
 	

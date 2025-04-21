@@ -1,25 +1,3 @@
-/*******************************************************************************
- * Copyright (C) 2021 picatrix1899 (Florian Zilkenat)
- * 
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- * 
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- ******************************************************************************/
-
 package org.barghos.util;
 
 /**
@@ -29,38 +7,29 @@ package org.barghos.util;
  * The debug output can also be disabled.
  * 
  * @author picatrix1899
- *
- * @since 1.0.0.0
  */
 public class Debug
 {
 	/**
 	 * By setting this to true, calls to the print methods actually output data to the System.out stream.
 	 * Otherwise the output will be suppressed.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public static boolean DEBUG_MODE = false;
 	
 	/**
 	 * By setting this to true, the exact location of the print call is appended before the output data as long as
 	 * DEBUG_MODE is <code>true</code>.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public static boolean PRINT_STACK_ELEMENT = false;
 	
 	/**
 	 * Prints the entire stack of the current thread to the standard error stream if {@link Debug#DEBUG_MODE} is true.
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public static void printCurrentStack()
 	{
-		if(DEBUG_MODE)
-		{
-			Thread.dumpStack();
-		}
+		if(!DEBUG_MODE) return;
+		
+		Thread.dumpStack();
 	}
 	
 	/**
@@ -70,16 +39,13 @@ public class Debug
 	 * is appended before the value.
 	 * 
 	 * @param b The boolean to be printed
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public static void print(boolean b)
 	{
-		if(DEBUG_MODE)
-		{
-			if(PRINT_STACK_ELEMENT) System.out.print(getCurrentStackElement() + ": ");
-			System.out.print(b);
-		}
+		if(!DEBUG_MODE) return;
+		
+		if(PRINT_STACK_ELEMENT) System.out.print(getCurrentStackElement() + ": ");
+		System.out.print(b);
 	}
 	
 	/**
@@ -89,16 +55,13 @@ public class Debug
 	 * is appended before the value.
 	 * 
 	 * @param c The character to be printed
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public static void print(char c)
 	{
-		if(DEBUG_MODE)
-		{
-			if(PRINT_STACK_ELEMENT) System.out.print(getCurrentStackElement() + ": ");
-			System.out.print(c);
-		}
+		if(!DEBUG_MODE) return;
+		
+		if(PRINT_STACK_ELEMENT) System.out.print(getCurrentStackElement() + ": ");
+		System.out.print(c);
 	}
 	
 	/**
@@ -108,16 +71,13 @@ public class Debug
 	 * is appended before the value.
 	 * 
 	 * @param c The characters to be printed
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public static void print(char... c)
 	{
-		if(DEBUG_MODE)
-		{
-			if(PRINT_STACK_ELEMENT) System.out.print(getCurrentStackElement() + ": ");
-			System.out.print(c);
-		}
+		if(!DEBUG_MODE) return;
+		
+		if(PRINT_STACK_ELEMENT) System.out.print(getCurrentStackElement() + ": ");
+		System.out.print(c);
 	}
 	
 	/**
@@ -127,16 +87,13 @@ public class Debug
 	 * is appended before the value.
 	 * 
 	 * @param f The float to be printed
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public static void print(float f)
 	{
-		if(DEBUG_MODE)
-		{
-			if(PRINT_STACK_ELEMENT) System.out.print(getCurrentStackElement() + ": ");
-			System.out.print(f);
-		}
+		if(!DEBUG_MODE) return;
+		
+		if(PRINT_STACK_ELEMENT) System.out.print(getCurrentStackElement() + ": ");
+		System.out.print(f);
 	}
 	
 	/**
@@ -146,16 +103,13 @@ public class Debug
 	 * is appended before the value.
 	 * 
 	 * @param d The double to be printed
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public static void print(double d)
 	{
-		if(DEBUG_MODE)
-		{
-			if(PRINT_STACK_ELEMENT) System.out.print(getCurrentStackElement() + ": ");
-			System.out.print(d);
-		}
+		if(!DEBUG_MODE) return;
+		
+		if(PRINT_STACK_ELEMENT) System.out.print(getCurrentStackElement() + ": ");
+		System.out.print(d);
 	}
 	
 	/**
@@ -165,16 +119,13 @@ public class Debug
 	 * is appended before the value.
 	 * 
 	 * @param i The interger to be printed
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public static void print(int i)
 	{
-		if(DEBUG_MODE)
-		{
-			if(PRINT_STACK_ELEMENT) System.out.print(getCurrentStackElement() + ": ");
-			System.out.print(i);
-		}
+		if(!DEBUG_MODE) return;
+		
+		if(PRINT_STACK_ELEMENT) System.out.print(getCurrentStackElement() + ": ");
+		System.out.print(i);
 	}
 	
 	/**
@@ -184,16 +135,13 @@ public class Debug
 	 * is appended before the value.
 	 * 
 	 * @param l The long to be printed
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public static void print(long l)
 	{
-		if(DEBUG_MODE)
-		{
-			if(PRINT_STACK_ELEMENT) System.out.print(getCurrentStackElement() + ": ");
-			System.out.print(l);
-		}
+		if(!DEBUG_MODE) return;
+		
+		if(PRINT_STACK_ELEMENT) System.out.print(getCurrentStackElement() + ": ");
+		System.out.print(l);
 	}
 	
 	/**
@@ -203,16 +151,13 @@ public class Debug
 	 * is appended before the value.
 	 * 
 	 * @param o The object to be printed
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public static void print(Object o)
 	{
-		if(DEBUG_MODE)
-		{
-			if(PRINT_STACK_ELEMENT) System.out.print(getCurrentStackElement() + ": ");
-			System.out.print(o);
-		}
+		if(!DEBUG_MODE) return;
+		
+		if(PRINT_STACK_ELEMENT) System.out.print(getCurrentStackElement() + ": ");
+		System.out.print(o);
 	}
 	
 	/**
@@ -222,16 +167,13 @@ public class Debug
 	 * is appended before the value.
 	 * 
 	 * @param s The string to be printed
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public static void print(String s)
 	{
-		if(DEBUG_MODE)
-		{
-			if(PRINT_STACK_ELEMENT) System.out.print(getCurrentStackElement() + ": ");
-			System.out.print(s);
-		}
+		if(!DEBUG_MODE) return;
+		
+		if(PRINT_STACK_ELEMENT) System.out.print(getCurrentStackElement() + ": ");
+		System.out.print(s);
 	}
 
 	/**
@@ -241,16 +183,13 @@ public class Debug
 	 * is appended before the value.
 	 * 
 	 * @param b The boolean to be printed
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public static void println(boolean b)
 	{
-		if(DEBUG_MODE)
-		{
-			if(PRINT_STACK_ELEMENT) System.out.print(getCurrentStackElement() + ": ");
-			System.out.println(b);
-		}
+		if(!DEBUG_MODE) return;
+		
+		if(PRINT_STACK_ELEMENT) System.out.print(getCurrentStackElement() + ": ");
+		System.out.println(b);
 	}
 	
 	/**
@@ -260,16 +199,13 @@ public class Debug
 	 * is appended before the value.
 	 * 
 	 * @param c The character to be printed
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public static void println(char c)
 	{
-		if(DEBUG_MODE)
-		{
-			if(PRINT_STACK_ELEMENT) System.out.print(getCurrentStackElement() + ": ");
-			System.out.println(c);
-		}
+		if(!DEBUG_MODE) return;
+		
+		if(PRINT_STACK_ELEMENT) System.out.print(getCurrentStackElement() + ": ");
+		System.out.println(c);
 	}
 	
 	/**
@@ -279,16 +215,13 @@ public class Debug
 	 * is appended before the value.
 	 * 
 	 * @param c The characters to be printed
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public static void println(char... c)
 	{
-		if(DEBUG_MODE)
-		{
-			if(PRINT_STACK_ELEMENT) System.out.print(getCurrentStackElement() + ": ");
-			System.out.println(c);
-		}
+		if(!DEBUG_MODE) return;
+		
+		if(PRINT_STACK_ELEMENT) System.out.print(getCurrentStackElement() + ": ");
+		System.out.println(c);
 	}
 	
 	/**
@@ -298,16 +231,13 @@ public class Debug
 	 * is appended before the value.
 	 * 
 	 * @param f The float to be printed
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public static void println(float f)
 	{
-		if(DEBUG_MODE)
-		{
-			if(PRINT_STACK_ELEMENT) System.out.print(getCurrentStackElement() + ": ");
-			System.out.println(f);
-		}
+		if(!DEBUG_MODE) return;
+		
+		if(PRINT_STACK_ELEMENT) System.out.print(getCurrentStackElement() + ": ");
+		System.out.println(f);
 	}
 	
 	/**
@@ -317,16 +247,13 @@ public class Debug
 	 * is appended before the value.
 	 * 
 	 * @param d The double to be printed
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public static void println(double d)
 	{
-		if(DEBUG_MODE)
-		{
-			if(PRINT_STACK_ELEMENT) System.out.print(getCurrentStackElement() + ": ");
-			System.out.println(d);
-		}
+		if(!DEBUG_MODE) return;
+		
+		if(PRINT_STACK_ELEMENT) System.out.print(getCurrentStackElement() + ": ");
+		System.out.println(d);
 	}
 	
 	/**
@@ -336,16 +263,13 @@ public class Debug
 	 * is appended before the value.
 	 * 
 	 * @param i The int to be printed
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public static void println(int i)
 	{
-		if(DEBUG_MODE)
-		{
-			if(PRINT_STACK_ELEMENT) System.out.print(getCurrentStackElement() + ": ");
-			System.out.println(i);
-		}
+		if(!DEBUG_MODE) return;
+		
+		if(PRINT_STACK_ELEMENT) System.out.print(getCurrentStackElement() + ": ");
+		System.out.println(i);
 	}
 	
 	/**
@@ -355,16 +279,13 @@ public class Debug
 	 * is appended before the value.
 	 * 
 	 * @param l The long to be printed
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public static void println(long l)
 	{
-		if(DEBUG_MODE)
-		{
-			if(PRINT_STACK_ELEMENT) System.out.print(getCurrentStackElement() + ": ");
-			System.out.println(l);
-		}
+		if(!DEBUG_MODE) return;
+		
+		if(PRINT_STACK_ELEMENT) System.out.print(getCurrentStackElement() + ": ");
+		System.out.println(l);
 	}
 	
 	/**
@@ -374,16 +295,13 @@ public class Debug
 	 * is appended before the value.
 	 * 
 	 * @param o The object to be printed
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public static void println(Object o)
 	{
-		if(DEBUG_MODE)
-		{
-			if(PRINT_STACK_ELEMENT) System.out.print(getCurrentStackElement() + ": ");
-			System.out.println(o);
-		}
+		if(!DEBUG_MODE) return;
+		
+		if(PRINT_STACK_ELEMENT) System.out.print(getCurrentStackElement() + ": ");
+		System.out.println(o);
 	}
 	
 	/**
@@ -393,16 +311,13 @@ public class Debug
 	 * is appended before the value.
 	 * 
 	 * @param s The string to be printed
-	 * 
-	 * @since 1.0.0.0
 	 */
 	public static void println(String s)
 	{
-		if(DEBUG_MODE)
-		{
-			if(PRINT_STACK_ELEMENT) System.out.print(getCurrentStackElement() + ": ");
-			System.out.println(s);
-		}
+		if(!DEBUG_MODE) return;
+		
+		if(PRINT_STACK_ELEMENT) System.out.print(getCurrentStackElement() + ": ");
+		System.out.println(s);
 	}
 	
 	/**
@@ -410,8 +325,6 @@ public class Debug
 	 * the method name, the java file and if present the line number.
 	 * 
 	 * @return the current stack element
-	 * 
-	 * @since 1.0.0.0
 	 */
 	private static String getCurrentStackElement()
 	{
@@ -419,7 +332,6 @@ public class Debug
 		
 		StackTraceElement element = elements[3];
 		
-		return element.getClassName() + "." + element.getMethodName() + "(" + element.getFileName() +
-				(element.getLineNumber() >= 0 ? ":" + element.getLineNumber() : "") + ")";
+		return element.getClassName() + "." + element.getMethodName() + "(" + element.getFileName() + (element.getLineNumber() >= 0 ? ":" + element.getLineNumber() : "") + ")";
 	}
 }

@@ -7,7 +7,7 @@ import org.barghos.util.nullable.NullableR;
 public class NullableC implements NullableWC
 {
 	public char value;
-	public boolean isNotNull;
+	public boolean hasValue;
 	
 	public NullableC()
 	{
@@ -41,28 +41,60 @@ public class NullableC implements NullableWC
 	}
 
 	@Override
+	public char valueOrDefaultC(char def)
+	{
+		if(this.hasValue) return this.value;
+		
+		return def;
+	}
+	
+	@Override
+	public char valueOrDefaultC()
+	{
+		if(this.hasValue) return this.value;
+		
+		return 0;
+	}
+	
+	@Override
 	public Character value()
 	{
 		return this.value;
 	}
 	
 	@Override
+	public Character valueOrDefault(Character def)
+	{
+		if(this.hasValue) return this.value;
+		
+		return def;
+	}
+	
+	@Override
+	public Character valueOrDefault()
+	{
+		if(this.hasValue) return this.value;
+		
+		return 0;
+	}
+	
+	@Override
 	public boolean isNull()
 	{
-		return !this.isNotNull;
+		return !this.hasValue;
 	}
 
 	@Override
 	public boolean isNotNull()
 	{
-		return this.isNotNull;
+		return this.hasValue;
 	}
 	
 	@Override
 	public NullableC valueC(char value)
 	{
 		this.value = value;
-		this.isNotNull = true;
+		this.hasValue = true;
 		
 		return this;
 	}
@@ -71,7 +103,7 @@ public class NullableC implements NullableWC
 	public NullableC value(Character value)
 	{
 		this.value = value;
-		this.isNotNull = true;
+		this.hasValue = true;
 		
 		return this;
 	}
@@ -79,8 +111,8 @@ public class NullableC implements NullableWC
 	@Override
 	public NullableC set(NullableRC value)
 	{
-		this.isNotNull = value.isNotNull();
-		if(this.isNotNull) this.value = value.valueC();
+		this.hasValue = value.isNotNull();
+		if(this.hasValue) this.value = value.valueC();
 		
 		return this;
 	}
@@ -88,8 +120,8 @@ public class NullableC implements NullableWC
 	@Override
 	public NullableC set(NullableR<Character> value)
 	{
-		this.isNotNull = value.isNotNull();
-		if(this.isNotNull) this.value = value.value();
+		this.hasValue = value.isNotNull();
+		if(this.hasValue) this.value = value.value();
 		
 		return this;
 	}
@@ -98,7 +130,7 @@ public class NullableC implements NullableWC
 	public NullableC setNull()
 	{
 		this.value = 0;
-		this.isNotNull = false;
+		this.hasValue = false;
 		
 		return this;
 	}
@@ -106,7 +138,7 @@ public class NullableC implements NullableWC
 	@Override
 	public boolean equals(Object obj)
 	{
-		if(obj == null) return !this.isNotNull;
+		if(obj == null) return !this.hasValue;
 		if(obj == this) return true;
 		
 		if(obj instanceof NullableR<?> n)
@@ -125,11 +157,11 @@ public class NullableC implements NullableWC
 	@Override
 	public boolean equals(NullableRC obj)
 	{
-		if(obj == null) return !this.isNotNull;
+		if(obj == null) return !this.hasValue;
 		if(obj == this) return true;
-		if(obj.isNotNull() != this.isNotNull) return false;
+		if(obj.isNotNull() != this.hasValue) return false;
 		
-		if(this.isNotNull)
+		if(this.hasValue)
 		{
 			return obj.valueC() == this.value;
 		}
@@ -140,11 +172,11 @@ public class NullableC implements NullableWC
 	@Override
 	public boolean equals(NullableR<?> obj)
 	{
-		if(obj == null) return !this.isNotNull;
+		if(obj == null) return !this.hasValue;
 		if(obj == this) return true;
-		if(obj.isNotNull() != this.isNotNull) return false;
+		if(obj.isNotNull() != this.hasValue) return false;
 		
-		if(this.isNotNull)
+		if(this.hasValue)
 		{
 			if(obj.value() instanceof Character f)
 			{
@@ -160,7 +192,7 @@ public class NullableC implements NullableWC
 	@Override
 	public boolean equalsValueC(char obj)
 	{
-		if(!this.isNotNull) return false;
+		if(!this.hasValue) return false;
 		
 		return this.value == obj;
 	}
@@ -168,19 +200,19 @@ public class NullableC implements NullableWC
 	@Override
 	public boolean equalsValue(Character obj)
 	{
-		if(!this.isNotNull) return false;
+		if(!this.hasValue) return false;
 		
 		return this.value == obj;
 	}
 	
 	public int hashCode()
 	{
-		return Objects.hash(this.isNotNull, this.value);
+		return Objects.hash(this.hasValue, this.value);
 	}
 	
 	public String toString()
 	{
-		return "nullableC(" + (this.isNotNull ? this.value : "null") + ")";
+		return "nullableC(" + (this.hasValue ? this.value : "null") + ")";
 	}
 	
 }

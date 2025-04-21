@@ -7,7 +7,18 @@ public interface NullableRC extends NullableR<Character>
 	
 	char valueC();
 	
+	char valueOrDefaultC(char def);
+	
+	char valueOrDefaultC();
+	
+	@Override
 	Character value();
+	
+	@Override
+	Character valueOrDefault(Character def);
+	
+	@Override
+	Character valueOrDefault();
 	
 	boolean equals(NullableRC obj);
 	

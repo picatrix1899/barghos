@@ -5,6 +5,10 @@ public interface NullableR<T>
 	
 	T value();
 	
+	T valueOrDefault(T def);
+	
+	T valueOrDefault();
+	
 	boolean isNull();
 	
 	boolean isNotNull();

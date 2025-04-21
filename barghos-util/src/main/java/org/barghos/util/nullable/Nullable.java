@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Nullable<T> implements NullableW<T>
 {
 	public T value;
-	public boolean isNotNull;
+	public boolean hasValue;
 	
 	public Nullable()
 	{
@@ -29,22 +29,38 @@ public class Nullable<T> implements NullableW<T>
 	}
 	
 	@Override
+	public T valueOrDefault(T def)
+	{
+		if(this.hasValue) return this.value;
+		
+		return def;
+	}
+	
+	@Override
+	public T valueOrDefault()
+	{
+		if(this.hasValue) return this.value;
+		
+		return null;
+	}
+	
+	@Override
 	public boolean isNull()
 	{
-		return !this.isNotNull;
+		return !this.hasValue;
 	}
 
 	@Override
 	public boolean isNotNull()
 	{
-		return this.isNotNull;
+		return this.hasValue;
 	}
 	
 	@Override
 	public Nullable<T> value(T value)
 	{
 		this.value = value;
-		this.isNotNull = true;
+		this.hasValue = true;
 		
 		return this;
 	}
@@ -52,8 +68,8 @@ public class Nullable<T> implements NullableW<T>
 	@Override
 	public Nullable<T> set(NullableR<T> value)
 	{
-		this.isNotNull = value.isNotNull();
-		if(this.isNotNull) this.value = value.value();
+		this.hasValue = value.isNotNull();
+		if(this.hasValue) this.value = value.value();
 		
 		return this;
 	}
@@ -62,7 +78,7 @@ public class Nullable<T> implements NullableW<T>
 	public Nullable<T> setNull()
 	{
 		this.value = null;
-		this.isNotNull = false;
+		this.hasValue = false;
 		
 		return this;
 	}
@@ -70,7 +86,7 @@ public class Nullable<T> implements NullableW<T>
 	@Override
 	public boolean equals(Object obj)
 	{
-		if(obj == null) return !this.isNotNull;
+		if(obj == null) return !this.hasValue;
 		if(obj == this) return true;
 		
 		if(obj instanceof NullableR<?> n)
@@ -78,7 +94,7 @@ public class Nullable<T> implements NullableW<T>
 			return equals(n);
 		}
 		
-		if(this.isNotNull)
+		if(this.hasValue)
 		{
 			return this.value.equals(obj);
 		}
@@ -89,7 +105,7 @@ public class Nullable<T> implements NullableW<T>
 	@Override
 	public boolean equalsValue(T obj)
 	{
-		if(!this.isNotNull) return false;
+		if(!this.hasValue) return false;
 		
 		return this.value.equals(obj);
 	}
@@ -97,11 +113,11 @@ public class Nullable<T> implements NullableW<T>
 	@Override
 	public boolean equals(NullableR<?> obj)
 	{
-		if(obj == null) return !this.isNotNull;
+		if(obj == null) return !this.hasValue;
 		if(obj == this) return true;
-		if(obj.isNotNull() != this.isNotNull) return false;
+		if(obj.isNotNull() != this.hasValue) return false;
 		
-		if(this.isNotNull)
+		if(this.hasValue)
 		{
 			if(obj.value() instanceof Float f)
 			{
@@ -116,12 +132,12 @@ public class Nullable<T> implements NullableW<T>
 	
 	public int hashCode()
 	{
-		return Objects.hash(this.isNotNull, this.value);
+		return Objects.hash(this.hasValue, this.value);
 	}
 	
 	public String toString()
 	{
-		return "nullable(" + (this.isNotNull ? this.value : "null") + ")";
+		return "nullable(" + (this.hasValue ? this.value : "null") + ")";
 	}
 	
 }

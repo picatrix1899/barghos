@@ -7,7 +7,7 @@ import org.barghos.util.nullable.NullableR;
 public class NullableL implements NullableWL
 {
 	public long value;
-	public boolean isNotNull;
+	public boolean hasValue;
 	
 	public NullableL()
 	{
@@ -41,28 +41,60 @@ public class NullableL implements NullableWL
 	}
 
 	@Override
+	public long valueOrDefaultL(long def)
+	{
+		if(this.hasValue) return this.value;
+		
+		return def;
+	}
+	
+	@Override
+	public long valueOrDefaultL()
+	{
+		if(this.hasValue) return this.value;
+		
+		return 0l;
+	}
+	
+	@Override
 	public Long value()
 	{
 		return this.value;
 	}
 	
 	@Override
+	public Long valueOrDefault(Long def)
+	{
+		if(this.hasValue) return this.value;
+		
+		return def;
+	}
+	
+	@Override
+	public Long valueOrDefault()
+	{
+		if(this.hasValue) return this.value;
+		
+		return 0l;
+	}
+	
+	@Override
 	public boolean isNull()
 	{
-		return !this.isNotNull;
+		return !this.hasValue;
 	}
 
 	@Override
 	public boolean isNotNull()
 	{
-		return this.isNotNull;
+		return this.hasValue;
 	}
 	
 	@Override
 	public NullableL valueI(long value)
 	{
 		this.value = value;
-		this.isNotNull = true;
+		this.hasValue = true;
 		
 		return this;
 	}
@@ -71,7 +103,7 @@ public class NullableL implements NullableWL
 	public NullableL value(Long value)
 	{
 		this.value = value;
-		this.isNotNull = true;
+		this.hasValue = true;
 		
 		return this;
 	}
@@ -79,8 +111,8 @@ public class NullableL implements NullableWL
 	@Override
 	public NullableL set(NullableRL value)
 	{
-		this.isNotNull = value.isNotNull();
-		if(this.isNotNull) this.value = value.valueL();
+		this.hasValue = value.isNotNull();
+		if(this.hasValue) this.value = value.valueL();
 		
 		return this;
 	}
@@ -88,8 +120,8 @@ public class NullableL implements NullableWL
 	@Override
 	public NullableL set(NullableR<Long> value)
 	{
-		this.isNotNull = value.isNotNull();
-		if(this.isNotNull) this.value = value.value();
+		this.hasValue = value.isNotNull();
+		if(this.hasValue) this.value = value.value();
 		
 		return this;
 	}
@@ -98,7 +130,7 @@ public class NullableL implements NullableWL
 	public NullableL setNull()
 	{
 		this.value = 0;
-		this.isNotNull = false;
+		this.hasValue = false;
 		
 		return this;
 	}
@@ -106,7 +138,7 @@ public class NullableL implements NullableWL
 	@Override
 	public boolean equals(Object obj)
 	{
-		if(obj == null) return !this.isNotNull;
+		if(obj == null) return !this.hasValue;
 		if(obj == this) return true;
 		
 		if(obj instanceof NullableR<?> n)
@@ -125,11 +157,11 @@ public class NullableL implements NullableWL
 	@Override
 	public boolean equals(NullableRL obj)
 	{
-		if(obj == null) return !this.isNotNull;
+		if(obj == null) return !this.hasValue;
 		if(obj == this) return true;
-		if(obj.isNotNull() != this.isNotNull) return false;
+		if(obj.isNotNull() != this.hasValue) return false;
 		
-		if(this.isNotNull)
+		if(this.hasValue)
 		{
 			return obj.valueL() == this.value;
 		}
@@ -140,11 +172,11 @@ public class NullableL implements NullableWL
 	@Override
 	public boolean equals(NullableR<?> obj)
 	{
-		if(obj == null) return !this.isNotNull;
+		if(obj == null) return !this.hasValue;
 		if(obj == this) return true;
-		if(obj.isNotNull() != this.isNotNull) return false;
+		if(obj.isNotNull() != this.hasValue) return false;
 		
-		if(this.isNotNull)
+		if(this.hasValue)
 		{
 			if(obj.value() instanceof Long f)
 			{
@@ -160,7 +192,7 @@ public class NullableL implements NullableWL
 	@Override
 	public boolean equalsValueL(long obj)
 	{
-		if(!this.isNotNull) return false;
+		if(!this.hasValue) return false;
 		
 		return this.value == obj;
 	}
@@ -168,19 +200,19 @@ public class NullableL implements NullableWL
 	@Override
 	public boolean equalsValue(Long obj)
 	{
-		if(!this.isNotNull) return false;
+		if(!this.hasValue) return false;
 		
 		return this.value == obj;
 	}
 	
 	public int hashCode()
 	{
-		return Objects.hash(this.isNotNull, this.value);
+		return Objects.hash(this.hasValue, this.value);
 	}
 	
 	public String toString()
 	{
-		return "nullableL(" + (this.isNotNull ? this.value : "null") + ")";
+		return "nullableL(" + (this.hasValue ? this.value : "null") + ")";
 	}
 	
 }

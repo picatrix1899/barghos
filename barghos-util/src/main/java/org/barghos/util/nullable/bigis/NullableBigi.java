@@ -1,47 +1,43 @@
-package org.barghos.util.nullable.shorts;
+package org.barghos.util.nullable.bigis;
 
+import java.math.BigInteger;
 import java.util.Objects;
 
 import org.barghos.util.nullable.NullableR;
 
-public class NullableS implements NullableWS
+public class NullableBigi implements NullableWBigi
 {
-	public short value;
+	public BigInteger value;
 	public boolean hasValue;
 	
-	public NullableS()
+	public NullableBigi()
 	{
 		setNull();
 	}
 	
-	public NullableS(NullableRS value)
+	public NullableBigi(NullableRBigi value)
 	{
 		set(value);
 	}
 	
-	public NullableS(NullableR<Short> value)
+	public NullableBigi(NullableR<BigInteger> value)
 	{
 		set(value);
 	}
 	
-	public NullableS(short value)
+	public NullableBigi(BigInteger value)
 	{
-		valueS(value);
-	}
-	
-	public NullableS(Short value)
-	{
-		value(value);
+		valueBigi(value);
 	}
 	
 	@Override
-	public short valueS()
+	public BigInteger valueBigi()
 	{
 		return this.value;
 	}
 
 	@Override
-	public short valueOrDefaultS(short def)
+	public BigInteger valueOrDefaultBigi(BigInteger def)
 	{
 		if(this.hasValue) return this.value;
 		
@@ -49,21 +45,21 @@ public class NullableS implements NullableWS
 	}
 	
 	@Override
-	public short valueOrDefaultS()
+	public BigInteger valueOrDefaultBigi()
 	{
 		if(this.hasValue) return this.value;
 		
-		return (short)0;
+		return BigInteger.ZERO;
 	}
 	
 	@Override
-	public Short value()
+	public BigInteger value()
 	{
 		return this.value;
 	}
 	
 	@Override
-	public Short valueOrDefault(Short def)
+	public BigInteger valueOrDefault(BigInteger def)
 	{
 		if(this.hasValue) return this.value;
 		
@@ -71,11 +67,11 @@ public class NullableS implements NullableWS
 	}
 	
 	@Override
-	public Short valueOrDefault()
+	public BigInteger valueOrDefault()
 	{
 		if(this.hasValue) return this.value;
 		
-		return (short)0;
+		return BigInteger.ZERO;
 	}
 	
 	@Override
@@ -91,7 +87,7 @@ public class NullableS implements NullableWS
 	}
 	
 	@Override
-	public NullableS valueS(short value)
+	public NullableBigi valueBigi(BigInteger value)
 	{
 		this.value = value;
 		this.hasValue = true;
@@ -100,7 +96,7 @@ public class NullableS implements NullableWS
 	}
 
 	@Override
-	public NullableS value(Short value)
+	public NullableBigi value(BigInteger value)
 	{
 		this.value = value;
 		this.hasValue = true;
@@ -109,16 +105,16 @@ public class NullableS implements NullableWS
 	}
 	
 	@Override
-	public NullableS set(NullableRS value)
+	public NullableBigi set(NullableRBigi value)
 	{
 		this.hasValue = value.isNotNull();
-		if(this.hasValue) this.value = value.valueS();
+		if(this.hasValue) this.value = value.valueBigi();
 		
 		return this;
 	}
 	
 	@Override
-	public NullableS set(NullableR<Short> value)
+	public NullableBigi set(NullableR<BigInteger> value)
 	{
 		this.hasValue = value.isNotNull();
 		if(this.hasValue) this.value = value.value();
@@ -127,9 +123,9 @@ public class NullableS implements NullableWS
 	}
 	
 	@Override
-	public NullableS setNull()
+	public NullableBigi setNull()
 	{
-		this.value = 0;
+		this.value = BigInteger.ZERO;
 		this.hasValue = false;
 		
 		return this;
@@ -146,16 +142,16 @@ public class NullableS implements NullableWS
 			return equals(n);
 		}
 		
-		if(obj instanceof Short f)
+		if(obj instanceof BigInteger f)
 		{
-			return equalsValueS(f);
+			return equalsValueBigi(f);
 		}
 		
 		return false;
 	}
 	
 	@Override
-	public boolean equals(NullableRS obj)
+	public boolean equals(NullableRBigi obj)
 	{
 		if(obj == null) return !this.hasValue;
 		if(obj == this) return true;
@@ -163,7 +159,7 @@ public class NullableS implements NullableWS
 		
 		if(this.hasValue)
 		{
-			return obj.valueS() == this.value;
+			return obj.valueBigi() == this.value;
 		}
 		
 		return true;
@@ -178,7 +174,7 @@ public class NullableS implements NullableWS
 		
 		if(this.hasValue)
 		{
-			if(obj.value() instanceof Short f)
+			if(obj.value() instanceof BigInteger f)
 			{
 				return f == this.value;
 			}
@@ -190,7 +186,7 @@ public class NullableS implements NullableWS
 	}
 	
 	@Override
-	public boolean equalsValueS(short obj)
+	public boolean equalsValueBigi(BigInteger obj)
 	{
 		if(!this.hasValue) return false;
 		
@@ -198,7 +194,7 @@ public class NullableS implements NullableWS
 	}
 	
 	@Override
-	public boolean equalsValue(Short obj)
+	public boolean equalsValue(BigInteger obj)
 	{
 		if(!this.hasValue) return false;
 		
@@ -212,7 +208,6 @@ public class NullableS implements NullableWS
 	
 	public String toString()
 	{
-		return "nullableS(" + (this.hasValue ? this.value : "null") + ")";
+		return "nullableBigi(" + (this.hasValue ? this.value : "null") + ")";
 	}
-	
 }

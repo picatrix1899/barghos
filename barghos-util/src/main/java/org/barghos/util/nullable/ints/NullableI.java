@@ -7,7 +7,7 @@ import org.barghos.util.nullable.NullableR;
 public class NullableI implements NullableWI
 {
 	public int value;
-	public boolean isNotNull;
+	public boolean hasValue;
 	
 	public NullableI()
 	{
@@ -41,28 +41,60 @@ public class NullableI implements NullableWI
 	}
 
 	@Override
+	public int valueOrDefaultI(int def)
+	{
+		if(this.hasValue) return this.value;
+		
+		return def;
+	}
+	
+	@Override
+	public int valueOrDefaultI()
+	{
+		if(this.hasValue) return this.value;
+		
+		return 0;
+	}
+	
+	@Override
 	public Integer value()
 	{
 		return this.value;
 	}
 	
 	@Override
+	public Integer valueOrDefault(Integer def)
+	{
+		if(this.hasValue) return this.value;
+		
+		return def;
+	}
+	
+	@Override
+	public Integer valueOrDefault()
+	{
+		if(this.hasValue) return this.value;
+		
+		return 0;
+	}
+	
+	@Override
 	public boolean isNull()
 	{
-		return !this.isNotNull;
+		return !this.hasValue;
 	}
 
 	@Override
 	public boolean isNotNull()
 	{
-		return this.isNotNull;
+		return this.hasValue;
 	}
 	
 	@Override
 	public NullableI valueI(int value)
 	{
 		this.value = value;
-		this.isNotNull = true;
+		this.hasValue = true;
 		
 		return this;
 	}
@@ -71,7 +103,7 @@ public class NullableI implements NullableWI
 	public NullableI value(Integer value)
 	{
 		this.value = value;
-		this.isNotNull = true;
+		this.hasValue = true;
 		
 		return this;
 	}
@@ -79,8 +111,8 @@ public class NullableI implements NullableWI
 	@Override
 	public NullableI set(NullableRI value)
 	{
-		this.isNotNull = value.isNotNull();
-		if(this.isNotNull) this.value = value.valueI();
+		this.hasValue = value.isNotNull();
+		if(this.hasValue) this.value = value.valueI();
 		
 		return this;
 	}
@@ -88,8 +120,8 @@ public class NullableI implements NullableWI
 	@Override
 	public NullableI set(NullableR<Integer> value)
 	{
-		this.isNotNull = value.isNotNull();
-		if(this.isNotNull) this.value = value.value();
+		this.hasValue = value.isNotNull();
+		if(this.hasValue) this.value = value.value();
 		
 		return this;
 	}
@@ -98,7 +130,7 @@ public class NullableI implements NullableWI
 	public NullableI setNull()
 	{
 		this.value = 0;
-		this.isNotNull = false;
+		this.hasValue = false;
 		
 		return this;
 	}
@@ -106,7 +138,7 @@ public class NullableI implements NullableWI
 	@Override
 	public boolean equals(Object obj)
 	{
-		if(obj == null) return !this.isNotNull;
+		if(obj == null) return !this.hasValue;
 		if(obj == this) return true;
 		
 		if(obj instanceof NullableR<?> n)
@@ -125,11 +157,11 @@ public class NullableI implements NullableWI
 	@Override
 	public boolean equals(NullableRI obj)
 	{
-		if(obj == null) return !this.isNotNull;
+		if(obj == null) return !this.hasValue;
 		if(obj == this) return true;
-		if(obj.isNotNull() != this.isNotNull) return false;
+		if(obj.isNotNull() != this.hasValue) return false;
 		
-		if(this.isNotNull)
+		if(this.hasValue)
 		{
 			return obj.valueI() == this.value;
 		}
@@ -140,11 +172,11 @@ public class NullableI implements NullableWI
 	@Override
 	public boolean equals(NullableR<?> obj)
 	{
-		if(obj == null) return !this.isNotNull;
+		if(obj == null) return !this.hasValue;
 		if(obj == this) return true;
-		if(obj.isNotNull() != this.isNotNull) return false;
+		if(obj.isNotNull() != this.hasValue) return false;
 		
-		if(this.isNotNull)
+		if(this.hasValue)
 		{
 			if(obj.value() instanceof Integer f)
 			{
@@ -160,7 +192,7 @@ public class NullableI implements NullableWI
 	@Override
 	public boolean equalsValueI(int obj)
 	{
-		if(!this.isNotNull) return false;
+		if(!this.hasValue) return false;
 		
 		return this.value == obj;
 	}
@@ -168,19 +200,19 @@ public class NullableI implements NullableWI
 	@Override
 	public boolean equalsValue(Integer obj)
 	{
-		if(!this.isNotNull) return false;
+		if(!this.hasValue) return false;
 		
 		return this.value == obj;
 	}
 	
 	public int hashCode()
 	{
-		return Objects.hash(this.isNotNull, this.value);
+		return Objects.hash(this.hasValue, this.value);
 	}
 	
 	public String toString()
 	{
-		return "nullableI(" + (this.isNotNull ? this.value : "null") + ")";
+		return "nullableI(" + (this.hasValue ? this.value : "null") + ")";
 	}
 	
 }

@@ -7,7 +7,18 @@ public interface NullableRF extends NullableR<Float>
 	
 	float valueF();
 	
+	float valueOrDefaultF(float def);
+	
+	float valueOrDefaultF();
+	
+	@Override
 	Float value();
+	
+	@Override
+	Float valueOrDefault(Float def);
+	
+	@Override
+	Float valueOrDefault();
 	
 	boolean equals(NullableRF obj);
 	

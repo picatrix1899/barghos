@@ -7,7 +7,18 @@ public interface NullableRD extends NullableR<Double>
 	
 	double valueD();
 	
+	double valueOrDefaultD(double def);
+	
+	double valueOrDefaultD();
+	
+	@Override
 	Double value();
+	
+	@Override
+	Double valueOrDefault(Double def);
+	
+	@Override
+	Double valueOrDefault();
 	
 	boolean equals(NullableRD obj);
 	

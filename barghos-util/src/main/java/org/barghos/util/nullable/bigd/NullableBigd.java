@@ -1,47 +1,44 @@
-package org.barghos.util.nullable.shorts;
+package org.barghos.util.nullable.bigd;
+
+import java.math.BigDecimal;
 
 import java.util.Objects;
 
 import org.barghos.util.nullable.NullableR;
 
-public class NullableS implements NullableWS
+public class NullableBigd implements NullableWBigd
 {
-	public short value;
+	public BigDecimal value;
 	public boolean hasValue;
 	
-	public NullableS()
+	public NullableBigd()
 	{
 		setNull();
 	}
 	
-	public NullableS(NullableRS value)
+	public NullableBigd(NullableRBigd value)
 	{
 		set(value);
 	}
 	
-	public NullableS(NullableR<Short> value)
+	public NullableBigd(NullableR<BigDecimal> value)
 	{
 		set(value);
 	}
 	
-	public NullableS(short value)
+	public NullableBigd(BigDecimal value)
 	{
-		valueS(value);
-	}
-	
-	public NullableS(Short value)
-	{
-		value(value);
+		valueBigi(value);
 	}
 	
 	@Override
-	public short valueS()
+	public BigDecimal valueBigd()
 	{
 		return this.value;
 	}
 
 	@Override
-	public short valueOrDefaultS(short def)
+	public BigDecimal valueOrDefaultBigd(BigDecimal def)
 	{
 		if(this.hasValue) return this.value;
 		
@@ -49,21 +46,21 @@ public class NullableS implements NullableWS
 	}
 	
 	@Override
-	public short valueOrDefaultS()
+	public BigDecimal valueOrDefaultBigd()
 	{
 		if(this.hasValue) return this.value;
 		
-		return (short)0;
+		return BigDecimal.ZERO;
 	}
 	
 	@Override
-	public Short value()
+	public BigDecimal value()
 	{
 		return this.value;
 	}
 	
 	@Override
-	public Short valueOrDefault(Short def)
+	public BigDecimal valueOrDefault(BigDecimal def)
 	{
 		if(this.hasValue) return this.value;
 		
@@ -71,11 +68,11 @@ public class NullableS implements NullableWS
 	}
 	
 	@Override
-	public Short valueOrDefault()
+	public BigDecimal valueOrDefault()
 	{
 		if(this.hasValue) return this.value;
 		
-		return (short)0;
+		return BigDecimal.ZERO;
 	}
 	
 	@Override
@@ -91,7 +88,7 @@ public class NullableS implements NullableWS
 	}
 	
 	@Override
-	public NullableS valueS(short value)
+	public NullableBigd valueBigi(BigDecimal value)
 	{
 		this.value = value;
 		this.hasValue = true;
@@ -100,7 +97,7 @@ public class NullableS implements NullableWS
 	}
 
 	@Override
-	public NullableS value(Short value)
+	public NullableBigd value(BigDecimal value)
 	{
 		this.value = value;
 		this.hasValue = true;
@@ -109,16 +106,16 @@ public class NullableS implements NullableWS
 	}
 	
 	@Override
-	public NullableS set(NullableRS value)
+	public NullableBigd set(NullableRBigd value)
 	{
 		this.hasValue = value.isNotNull();
-		if(this.hasValue) this.value = value.valueS();
+		if(this.hasValue) this.value = value.valueBigd();
 		
 		return this;
 	}
 	
 	@Override
-	public NullableS set(NullableR<Short> value)
+	public NullableBigd set(NullableR<BigDecimal> value)
 	{
 		this.hasValue = value.isNotNull();
 		if(this.hasValue) this.value = value.value();
@@ -127,9 +124,9 @@ public class NullableS implements NullableWS
 	}
 	
 	@Override
-	public NullableS setNull()
+	public NullableBigd setNull()
 	{
-		this.value = 0;
+		this.value = BigDecimal.ZERO;
 		this.hasValue = false;
 		
 		return this;
@@ -146,16 +143,16 @@ public class NullableS implements NullableWS
 			return equals(n);
 		}
 		
-		if(obj instanceof Short f)
+		if(obj instanceof BigDecimal f)
 		{
-			return equalsValueS(f);
+			return equalsValueBigd(f);
 		}
 		
 		return false;
 	}
 	
 	@Override
-	public boolean equals(NullableRS obj)
+	public boolean equals(NullableRBigd obj)
 	{
 		if(obj == null) return !this.hasValue;
 		if(obj == this) return true;
@@ -163,7 +160,7 @@ public class NullableS implements NullableWS
 		
 		if(this.hasValue)
 		{
-			return obj.valueS() == this.value;
+			return obj.valueBigd() == this.value;
 		}
 		
 		return true;
@@ -178,7 +175,7 @@ public class NullableS implements NullableWS
 		
 		if(this.hasValue)
 		{
-			if(obj.value() instanceof Short f)
+			if(obj.value() instanceof BigDecimal f)
 			{
 				return f == this.value;
 			}
@@ -190,7 +187,7 @@ public class NullableS implements NullableWS
 	}
 	
 	@Override
-	public boolean equalsValueS(short obj)
+	public boolean equalsValueBigd(BigDecimal obj)
 	{
 		if(!this.hasValue) return false;
 		
@@ -198,7 +195,7 @@ public class NullableS implements NullableWS
 	}
 	
 	@Override
-	public boolean equalsValue(Short obj)
+	public boolean equalsValue(BigDecimal obj)
 	{
 		if(!this.hasValue) return false;
 		
@@ -212,7 +209,6 @@ public class NullableS implements NullableWS
 	
 	public String toString()
 	{
-		return "nullableS(" + (this.hasValue ? this.value : "null") + ")";
+		return "nullableBigd(" + (this.hasValue ? this.value : "null") + ")";
 	}
-	
 }

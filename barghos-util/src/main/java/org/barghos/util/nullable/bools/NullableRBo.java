@@ -7,7 +7,18 @@ public interface NullableRBo extends NullableR<Boolean>
 	
 	boolean valueBo();
 	
+	boolean valueOrDefaultB(boolean def);
+	
+	boolean valueOrDefaultB();
+	
+	@Override
 	Boolean value();
+	
+	@Override
+	Boolean valueOrDefault(Boolean def);
+	
+	@Override
+	Boolean valueOrDefault();
 	
 	boolean equals(NullableRBo obj);
 	
