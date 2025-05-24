@@ -1,7 +1,7 @@
 package org.barghos.util.tuple.bytes;
 
 import org.barghos.annotation.ExtractionParam;
-import org.barghos.annotation.Nullable;
+import org.barghos.annotation.AllowNull;
 
 /**
  * This interface provides non-modifying operations for byte tuples with 
@@ -411,7 +411,7 @@ public interface Tup3RB extends FixTupRB
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equals(@Nullable Tup3RB t);
+	boolean equals(@AllowNull Tup3RB t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -445,7 +445,7 @@ public interface Tup3RB extends FixTupRB
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equals(@Nullable TupRB t);
+	boolean equals(@AllowNull TupRB t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -479,7 +479,7 @@ public interface Tup3RB extends FixTupRB
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equals(@Nullable byte... t);
+	boolean equals(@AllowNull byte... t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -548,7 +548,7 @@ public interface Tup3RB extends FixTupRB
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equals(byte tolerance, @Nullable Tup3RB t);
+	boolean equals(byte tolerance, @AllowNull Tup3RB t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -594,7 +594,7 @@ public interface Tup3RB extends FixTupRB
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equals(byte tolerance, @Nullable TupRB t);
+	boolean equals(byte tolerance, @AllowNull TupRB t);
 
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -640,7 +640,7 @@ public interface Tup3RB extends FixTupRB
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equals(byte tolerance, @Nullable byte... t);
+	boolean equals(byte tolerance, @AllowNull byte... t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -712,7 +712,7 @@ public interface Tup3RB extends FixTupRB
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAt(int index, @Nullable Tup3RB t);
+	boolean equalsAt(int index, @AllowNull Tup3RB t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -750,7 +750,7 @@ public interface Tup3RB extends FixTupRB
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equalsAt(int index, @Nullable TupRB t);
+	boolean equalsAt(int index, @AllowNull TupRB t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -788,7 +788,7 @@ public interface Tup3RB extends FixTupRB
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equalsAt(int index, @Nullable byte... t);
+	boolean equalsAt(int index, @AllowNull byte... t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -862,7 +862,7 @@ public interface Tup3RB extends FixTupRB
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAt(byte tolerance, int index, @Nullable Tup3RB t);
+	boolean equalsAt(byte tolerance, int index, @AllowNull Tup3RB t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -912,7 +912,7 @@ public interface Tup3RB extends FixTupRB
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equalsAt(byte tolerance, int index, @Nullable TupRB t);
+	boolean equalsAt(byte tolerance, int index, @AllowNull TupRB t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -962,7 +962,7 @@ public interface Tup3RB extends FixTupRB
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equalsAt(byte tolerance, int index, @Nullable byte... t);
+	boolean equalsAt(byte tolerance, int index, @AllowNull byte... t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -1030,7 +1030,7 @@ public interface Tup3RB extends FixTupRB
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(@Nullable Tup3RB t);
+	boolean equalsAtV0(@AllowNull Tup3RB t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and
@@ -1061,7 +1061,7 @@ public interface Tup3RB extends FixTupRB
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(@Nullable TupRB t);
+	boolean equalsAtV0(@AllowNull TupRB t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and
@@ -1092,7 +1092,7 @@ public interface Tup3RB extends FixTupRB
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(@Nullable byte... t);
+	boolean equalsAtV0(@AllowNull byte... t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and
@@ -1142,7 +1142,7 @@ public interface Tup3RB extends FixTupRB
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(@Nullable Tup3RB t);
+	boolean equalsAtV1(@AllowNull Tup3RB t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and
@@ -1173,7 +1173,7 @@ public interface Tup3RB extends FixTupRB
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(@Nullable TupRB t);
+	boolean equalsAtV1(@AllowNull TupRB t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and
@@ -1204,7 +1204,7 @@ public interface Tup3RB extends FixTupRB
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(@Nullable byte... t);
+	boolean equalsAtV1(@AllowNull byte... t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and
@@ -1254,7 +1254,7 @@ public interface Tup3RB extends FixTupRB
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV2(@Nullable Tup3RB t);
+	boolean equalsAtV2(@AllowNull Tup3RB t);
 	
 	/**
 	 * Returns whether the third component value of this tuple and
@@ -1285,7 +1285,7 @@ public interface Tup3RB extends FixTupRB
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV2(@Nullable TupRB t);
+	boolean equalsAtV2(@AllowNull TupRB t);
 	
 	/**
 	 * Returns whether the third component value of this tuple and
@@ -1316,7 +1316,7 @@ public interface Tup3RB extends FixTupRB
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV2(@Nullable byte... t);
+	boolean equalsAtV2(@AllowNull byte... t);
 	
 	/**
 	 * Returns whether the third component value of this tuple and
@@ -1379,7 +1379,7 @@ public interface Tup3RB extends FixTupRB
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(byte tolerance, @Nullable Tup3RB t);
+	boolean equalsAtV0(byte tolerance, @AllowNull Tup3RB t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and of the given
@@ -1423,7 +1423,7 @@ public interface Tup3RB extends FixTupRB
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(byte tolerance, @Nullable TupRB t);
+	boolean equalsAtV0(byte tolerance, @AllowNull TupRB t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and of the given
@@ -1467,7 +1467,7 @@ public interface Tup3RB extends FixTupRB
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(byte tolerance, @Nullable byte... t);
+	boolean equalsAtV0(byte tolerance, @AllowNull byte... t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and the given
@@ -1542,7 +1542,7 @@ public interface Tup3RB extends FixTupRB
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(byte tolerance, @Nullable Tup3RB t);
+	boolean equalsAtV1(byte tolerance, @AllowNull Tup3RB t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and of the given
@@ -1586,7 +1586,7 @@ public interface Tup3RB extends FixTupRB
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(byte tolerance, @Nullable TupRB t);
+	boolean equalsAtV1(byte tolerance, @AllowNull TupRB t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and of the given
@@ -1630,7 +1630,7 @@ public interface Tup3RB extends FixTupRB
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(byte tolerance, @Nullable byte... t);
+	boolean equalsAtV1(byte tolerance, @AllowNull byte... t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and the given
@@ -1705,7 +1705,7 @@ public interface Tup3RB extends FixTupRB
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV2(byte tolerance, @Nullable Tup3RB t);
+	boolean equalsAtV2(byte tolerance, @AllowNull Tup3RB t);
 	
 	/**
 	 * Returns whether the third component value of this tuple and of the given
@@ -1749,7 +1749,7 @@ public interface Tup3RB extends FixTupRB
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV2(byte tolerance, @Nullable TupRB t);
+	boolean equalsAtV2(byte tolerance, @AllowNull TupRB t);
 	
 	/**
 	 * Returns whether the third component value of this tuple and of the given
@@ -1793,7 +1793,7 @@ public interface Tup3RB extends FixTupRB
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV2(byte tolerance, @Nullable byte... t);
+	boolean equalsAtV2(byte tolerance, @AllowNull byte... t);
 	
 	/**
 	 * Returns whether the third component value of this tuple and the given

@@ -1,7 +1,7 @@
 package org.barghos.util.tuple.bools;
 
 import org.barghos.annotation.ExtractionParam;
-import org.barghos.annotation.Nullable;
+import org.barghos.annotation.AllowNull;
 
 /**
  * This interface provides non-modifying operations for boolean tuples with 
@@ -200,7 +200,7 @@ public interface Tup2RBo extends FixTupRBo
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equals(@Nullable Tup2RBo t);
+	boolean equals(@AllowNull Tup2RBo t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -233,7 +233,7 @@ public interface Tup2RBo extends FixTupRBo
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equals(@Nullable TupRBo t);
+	boolean equals(@AllowNull TupRBo t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -266,7 +266,7 @@ public interface Tup2RBo extends FixTupRBo
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equals(@Nullable boolean... t);
+	boolean equals(@AllowNull boolean... t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -330,7 +330,7 @@ public interface Tup2RBo extends FixTupRBo
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAt(int index, @Nullable Tup2RBo t);
+	boolean equalsAt(int index, @AllowNull Tup2RBo t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -374,7 +374,7 @@ public interface Tup2RBo extends FixTupRBo
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equalsAt(int index, @Nullable TupRBo t);
+	boolean equalsAt(int index, @AllowNull TupRBo t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -418,7 +418,7 @@ public interface Tup2RBo extends FixTupRBo
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equalsAt(int index, @Nullable boolean... t);
+	boolean equalsAt(int index, @AllowNull boolean... t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -480,7 +480,7 @@ public interface Tup2RBo extends FixTupRBo
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(@Nullable Tup2RBo t);
+	boolean equalsAtV0(@AllowNull Tup2RBo t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and
@@ -511,7 +511,7 @@ public interface Tup2RBo extends FixTupRBo
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(@Nullable TupRBo t);
+	boolean equalsAtV0(@AllowNull TupRBo t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and
@@ -542,7 +542,7 @@ public interface Tup2RBo extends FixTupRBo
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(@Nullable boolean... t);
+	boolean equalsAtV0(@AllowNull boolean... t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and
@@ -592,7 +592,7 @@ public interface Tup2RBo extends FixTupRBo
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(@Nullable Tup2RBo t);
+	boolean equalsAtV1(@AllowNull Tup2RBo t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and
@@ -623,7 +623,7 @@ public interface Tup2RBo extends FixTupRBo
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(@Nullable TupRBo t);
+	boolean equalsAtV1(@AllowNull TupRBo t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and
@@ -654,7 +654,7 @@ public interface Tup2RBo extends FixTupRBo
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(@Nullable boolean... t);
+	boolean equalsAtV1(@AllowNull boolean... t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and

@@ -1,0 +1,49 @@
+plugins {
+  id 'java-library'
+  id 'eclipse'
+}
+
+configurations {
+    compileOnlyResolvable {
+        canBeResolved = true // Ermöglicht das Auflösen für Tasks
+        canBeConsumed = false // Verhindert, dass diese Konfiguration in das JAR-Artefakt eingeht
+        extendsFrom compileOnly
+    }
+}
+
+dependencies {
+  api project(':barghos-util')
+  
+  implementation platform("org.lwjgl:lwjgl-bom:$lwjglVersion")
+  
+  implementation "org.lwjgl:lwjgl"
+  implementation "org.lwjgl:lwjgl-vulkan"
+  
+  runtimeOnly "org.lwjgl:lwjgl::natives-windows"
+  runtimeOnly "org.lwjgl:lwjgl::natives-linux"
+  runtimeOnly "org.lwjgl:lwjgl::natives-macos"
+}
+
+publishing {
+  publications {
+    mavenJava(MavenPublication) {
+      artifactId = 'barghos-compat-lwjgl-vulkan'
+		
+      from components.java
+		
+      pom {
+        name = 'Project Barghos LWJGL GLFW Compatibility Library'
+        url = 'https://github.com/picatrix1899/barghos/'
+      }
+    }
+  }
+}
+
+eclipse {
+  project {
+	name = 'barghos-compat-lwjgl-vulkan'
+	comment = ''
+  }
+}
+
+tasks.withType(Javadoc).all { failOnError = false }

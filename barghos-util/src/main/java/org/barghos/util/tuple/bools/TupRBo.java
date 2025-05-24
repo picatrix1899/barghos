@@ -1,7 +1,7 @@
 package org.barghos.util.tuple.bools;
 
 import org.barghos.annotation.ExtractionParam;
-import org.barghos.annotation.Nullable;
+import org.barghos.annotation.AllowNull;
 
 /**
  * This interface provides non-modifying operations for boolean tuples.
@@ -102,7 +102,7 @@ public interface TupRBo
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equals(@Nullable TupRBo t);
+	boolean equals(@AllowNull TupRBo t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -133,7 +133,7 @@ public interface TupRBo
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equals(@Nullable boolean... t);
+	boolean equals(@AllowNull boolean... t);
 
 	
 	/**
@@ -171,7 +171,7 @@ public interface TupRBo
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAt(int index, @Nullable TupRBo t);
+	boolean equalsAt(int index, @AllowNull TupRBo t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -208,7 +208,7 @@ public interface TupRBo
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAt(int index, @Nullable boolean... t);
+	boolean equalsAt(int index, @AllowNull boolean... t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and

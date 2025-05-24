@@ -62,13 +62,6 @@ public interface ConsumerEx2<A,B>
 		return (a, b) -> { accept(a, b); after.accept(a, b); };
 	}
 	
-	default ConsumerEx2<A,B> then(java.util.function.BiConsumer<? super A,? super B> after)
-	{
-		Validate.Arg.checkNotNull("after", after);
-		
-		return (a, b) -> { accept(a, b); after.accept(a, b); };
-	}
-	
 	/**
 	 * Performs the given operation before this operation.
 	 * 
@@ -85,13 +78,6 @@ public interface ConsumerEx2<A,B>
 	}
 	
 	default ConsumerEx2<A,B> before(Consumer2<? super A,? super B> before)
-	{
-		Validate.Arg.checkNotNull("before", before);
-		
-		return (a, b) -> { before.accept(a, b); accept(a, b); };
-	}
-	
-	default ConsumerEx2<A,B> before(java.util.function.BiConsumer<? super A,? super B> before)
 	{
 		Validate.Arg.checkNotNull("before", before);
 		
@@ -170,22 +156,6 @@ public interface ConsumerEx2<A,B>
 	 * @return A new {@link Consumer2} performing the operations.
 	 */
 	default Consumer2<A,B> onEx(Consumer2<? super A,? super B> consumer)
-	{
-		Validate.Arg.checkNotNull("consumer", consumer);
-		
-		return (a, b) -> {
-			try
-			{
-				accept(a, b);
-			}
-			catch(Exception e)
-			{
-				consumer.accept(a, b);
-			}
-		};
-	}
-	
-	default Consumer2<A,B> onEx(java.util.function.BiConsumer<? super A,? super B> consumer)
 	{
 		Validate.Arg.checkNotNull("consumer", consumer);
 		

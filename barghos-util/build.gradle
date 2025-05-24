@@ -43,7 +43,7 @@ eclipse {
 sourceSets {
     main {
         java {
-            srcDirs += 'src/generated/java'
+            //srcDirs += 'src/generated/java'
         }
     }
 }

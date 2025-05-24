@@ -1,7 +1,7 @@
 package org.barghos.util.tuple.longs;
 
 import org.barghos.annotation.ExtractionParam;
-import org.barghos.annotation.Nullable;
+import org.barghos.annotation.AllowNull;
 
 /**
  * This interface provides non-modifying operations for long tuples.
@@ -208,7 +208,7 @@ public interface TupRL
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equals(@Nullable TupRL t);
+	boolean equals(@AllowNull TupRL t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -239,7 +239,7 @@ public interface TupRL
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equals(@Nullable long... t);
+	boolean equals(@AllowNull long... t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -325,7 +325,7 @@ public interface TupRL
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equals(long tolerance, @Nullable long... t);
+	boolean equals(long tolerance, @AllowNull long... t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -362,7 +362,7 @@ public interface TupRL
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAt(int index, @Nullable TupRL t);
+	boolean equalsAt(int index, @AllowNull TupRL t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -399,7 +399,7 @@ public interface TupRL
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAt(int index, @Nullable long... t);
+	boolean equalsAt(int index, @AllowNull long... t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -474,7 +474,7 @@ public interface TupRL
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAt(long tolerance, int index, @Nullable TupRL t);
+	boolean equalsAt(long tolerance, int index, @AllowNull TupRL t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -523,7 +523,7 @@ public interface TupRL
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAt(long tolerance, int index, @Nullable long... t);
+	boolean equalsAt(long tolerance, int index, @AllowNull long... t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and

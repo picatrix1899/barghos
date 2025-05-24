@@ -1,7 +1,7 @@
 package org.barghos.util.tuple.longs;
 
 import org.barghos.annotation.ExtractionParam;
-import org.barghos.annotation.Nullable;
+import org.barghos.annotation.AllowNull;
 
 /**
  * This interface provides non-modifying operations for long tuples with 
@@ -367,7 +367,7 @@ public interface Tup2RL extends FixTupRL
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equals(@Nullable Tup2RL t);
+	boolean equals(@AllowNull Tup2RL t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -400,7 +400,7 @@ public interface Tup2RL extends FixTupRL
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equals(@Nullable TupRL t);
+	boolean equals(@AllowNull TupRL t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -433,7 +433,7 @@ public interface Tup2RL extends FixTupRL
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equals(@Nullable long... t);
+	boolean equals(@AllowNull long... t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -499,7 +499,7 @@ public interface Tup2RL extends FixTupRL
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equals(long tolerance, @Nullable Tup2RL t);
+	boolean equals(long tolerance, @AllowNull Tup2RL t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -544,7 +544,7 @@ public interface Tup2RL extends FixTupRL
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equals(long tolerance, @Nullable TupRL t);
+	boolean equals(long tolerance, @AllowNull TupRL t);
 
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -589,7 +589,7 @@ public interface Tup2RL extends FixTupRL
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equals(long tolerance, @Nullable long... t);
+	boolean equals(long tolerance, @AllowNull long... t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -665,7 +665,7 @@ public interface Tup2RL extends FixTupRL
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAt(int index, @Nullable Tup2RL t);
+	boolean equalsAt(int index, @AllowNull Tup2RL t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -709,7 +709,7 @@ public interface Tup2RL extends FixTupRL
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equalsAt(int index, @Nullable TupRL t);
+	boolean equalsAt(int index, @AllowNull TupRL t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -753,7 +753,7 @@ public interface Tup2RL extends FixTupRL
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equalsAt(int index, @Nullable long... t);
+	boolean equalsAt(int index, @AllowNull long... t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -839,7 +839,7 @@ public interface Tup2RL extends FixTupRL
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAt(long tolerance, int index, @Nullable Tup2RL t);
+	boolean equalsAt(long tolerance, int index, @AllowNull Tup2RL t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -895,7 +895,7 @@ public interface Tup2RL extends FixTupRL
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equalsAt(long tolerance, int index, @Nullable TupRL t);
+	boolean equalsAt(long tolerance, int index, @AllowNull TupRL t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -951,7 +951,7 @@ public interface Tup2RL extends FixTupRL
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equalsAt(long tolerance, int index, @Nullable long... t);
+	boolean equalsAt(long tolerance, int index, @AllowNull long... t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -1025,7 +1025,7 @@ public interface Tup2RL extends FixTupRL
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(@Nullable Tup2RL t);
+	boolean equalsAtV0(@AllowNull Tup2RL t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and
@@ -1056,7 +1056,7 @@ public interface Tup2RL extends FixTupRL
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(@Nullable TupRL t);
+	boolean equalsAtV0(@AllowNull TupRL t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and
@@ -1087,7 +1087,7 @@ public interface Tup2RL extends FixTupRL
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(@Nullable long... t);
+	boolean equalsAtV0(@AllowNull long... t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and
@@ -1137,7 +1137,7 @@ public interface Tup2RL extends FixTupRL
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(@Nullable Tup2RL t);
+	boolean equalsAtV1(@AllowNull Tup2RL t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and
@@ -1168,7 +1168,7 @@ public interface Tup2RL extends FixTupRL
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(@Nullable TupRL t);
+	boolean equalsAtV1(@AllowNull TupRL t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and
@@ -1199,7 +1199,7 @@ public interface Tup2RL extends FixTupRL
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(@Nullable long... t);
+	boolean equalsAtV1(@AllowNull long... t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and
@@ -1262,7 +1262,7 @@ public interface Tup2RL extends FixTupRL
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(long tolerance, @Nullable Tup2RL t);
+	boolean equalsAtV0(long tolerance, @AllowNull Tup2RL t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and of the given
@@ -1306,7 +1306,7 @@ public interface Tup2RL extends FixTupRL
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(long tolerance, @Nullable TupRL t);
+	boolean equalsAtV0(long tolerance, @AllowNull TupRL t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and of the given
@@ -1350,7 +1350,7 @@ public interface Tup2RL extends FixTupRL
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(long tolerance, @Nullable long... t);
+	boolean equalsAtV0(long tolerance, @AllowNull long... t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and the given
@@ -1425,7 +1425,7 @@ public interface Tup2RL extends FixTupRL
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(long tolerance, @Nullable Tup2RL t);
+	boolean equalsAtV1(long tolerance, @AllowNull Tup2RL t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and of the given
@@ -1469,7 +1469,7 @@ public interface Tup2RL extends FixTupRL
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(long tolerance, @Nullable TupRL t);
+	boolean equalsAtV1(long tolerance, @AllowNull TupRL t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and of the given
@@ -1513,7 +1513,7 @@ public interface Tup2RL extends FixTupRL
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(long tolerance, @Nullable long... t);
+	boolean equalsAtV1(long tolerance, @AllowNull long... t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and the given

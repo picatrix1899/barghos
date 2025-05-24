@@ -1,54 +1,30 @@
 package org.barghos.util.nullable.objs;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-import org.barghos.util.nullable.NullableR;
+import org.barghos.annotation.AllowNull;
 
-public class NullableO implements NullableWO
+public class NullableO implements INullableWO, Serializable
 {
-	public Object value;
-	public boolean hasValue;
+	private static final long serialVersionUID = 1L;
+	
+	private Object value;
+	private boolean hasValue;
 	
 	public NullableO()
 	{
 		setNull();
 	}
 	
-	public NullableO(NullableRO value)
+	public NullableO(@AllowNull INullableRO value)
 	{
 		set(value);
-	}
-	
-	public NullableO(NullableR<Object> value)
-	{
-		set(value);
-	}
-	
-	public NullableO(Object value)
-	{
-		valueStr(value);
-	}
-	
-	@Override
-	public Object valueStr()
-	{
-		return this.value;
 	}
 
-	@Override
-	public Object valueOrDefaultStr(Object def)
+	public NullableO(@AllowNull Object value)
 	{
-		if(this.hasValue) return this.value;
-		
-		return def;
-	}
-	
-	@Override
-	public Object valueOrDefaultStr()
-	{
-		if(this.hasValue) return this.value;
-		
-		return "";
+		value(value);
 	}
 	
 	@Override
@@ -56,9 +32,9 @@ public class NullableO implements NullableWO
 	{
 		return this.value;
 	}
-	
+
 	@Override
-	public Object valueOrDefault(Object def)
+	public Object valueOrDefault(@AllowNull Object def)
 	{
 		if(this.hasValue) return this.value;
 		
@@ -70,7 +46,7 @@ public class NullableO implements NullableWO
 	{
 		if(this.hasValue) return this.value;
 		
-		return "";
+		return null;
 	}
 	
 	@Override
@@ -84,73 +60,47 @@ public class NullableO implements NullableWO
 	{
 		return this.hasValue;
 	}
+
+	@Override
+	public NullableO value(@AllowNull Object value)
+	{
+		this.hasValue = value != null;
+		this.value = this.hasValue ? value : null;
+
+		return this;
+	}
 	
 	@Override
-	public NullableO valueStr(Object value)
+	public NullableO set(@AllowNull INullableRO value)
 	{
-		this.value = value;
-		this.hasValue = true;
+		this.hasValue = value != null && value.isNotNull();
+		this.value = this.hasValue ? value.value() : null;
 		
 		return this;
 	}
 
 	@Override
-	public NullableO value(Object value)
-	{
-		this.value = value;
-		this.hasValue = true;
-		
-		return this;
-	}
-	
-	@Override
-	public NullableO set(NullableRO value)
-	{
-		this.hasValue = value.isNotNull();
-		if(this.hasValue) this.value = value.valueStr();
-		
-		return this;
-	}
-	
-	@Override
-	public NullableO set(NullableR<Object> value)
-	{
-		this.hasValue = value.isNotNull();
-		if(this.hasValue) this.value = value.value();
-		
-		return this;
-	}
-	
-	@Override
 	public NullableO setNull()
 	{
-		this.value = "";
+		this.value = null;
 		this.hasValue = false;
 		
 		return this;
 	}
 	
 	@Override
-	public boolean equals(Object obj)
+	public boolean equals(@AllowNull Object obj)
 	{
 		if(obj == null) return !this.hasValue;
 		if(obj == this) return true;
 		
-		if(obj instanceof NullableR<?> n)
-		{
-			return equals(n);
-		}
+		if(obj instanceof INullableRO n) return equals(n);
 		
-		if(obj instanceof String f)
-		{
-			return equalsValueStr(f);
-		}
-		
-		return false;
+		return this.value.equals(obj);
 	}
 	
 	@Override
-	public boolean equals(NullableRO obj)
+	public boolean equals(@AllowNull INullableRO obj)
 	{
 		if(obj == null) return !this.hasValue;
 		if(obj == this) return true;
@@ -158,55 +108,21 @@ public class NullableO implements NullableWO
 		
 		if(this.hasValue)
 		{
-			return obj.valueStr() == this.value;
+			return obj.value() == this.value;
 		}
 		
 		return true;
 	}
 	
 	@Override
-	public boolean equals(NullableR<?> obj)
-	{
-		if(obj == null) return !this.hasValue;
-		if(obj == this) return true;
-		if(obj.isNotNull() != this.hasValue) return false;
-		
-		if(this.hasValue)
-		{
-			if(obj.value() instanceof Object f)
-			{
-				return f == this.value;
-			}
-			
-			return false;
-		}
-		
-		return true;
-	}
-	
-	@Override
-	public boolean equalsValueStr(Object obj)
-	{
-		if(!this.hasValue) return false;
-		
-		return this.value == obj;
-	}
-	
-	@Override
-	public boolean equalsValue(Object obj)
-	{
-		if(!this.hasValue) return false;
-		
-		return this.value == obj;
-	}
-	
 	public int hashCode()
 	{
 		return Objects.hash(this.hasValue, this.value);
 	}
 	
+	@Override
 	public String toString()
 	{
-		return "nullableO(" + (this.hasValue ? this.value : "null") + ")";
+		return "Object?(" + (this.hasValue ? this.value : "null") + ")";
 	}
 }

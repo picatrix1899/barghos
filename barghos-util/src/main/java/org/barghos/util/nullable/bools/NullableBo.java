@@ -1,47 +1,45 @@
 package org.barghos.util.nullable.bools;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-import org.barghos.util.nullable.NullableR;
+import org.barghos.annotation.AllowNull;
 
-public class NullableBo implements NullableWBo
+public class NullableBo implements INullableWBo, Serializable
 {
-	public boolean value;
-	public boolean hasValue;
+	private static final long serialVersionUID = 1L;
+	
+	private boolean value;
+	private boolean hasValue;
 	
 	public NullableBo()
 	{
 		setNull();
 	}
 	
-	public NullableBo(NullableRBo value)
+	public NullableBo(@AllowNull INullableRBo value)
 	{
 		set(value);
 	}
-	
-	public NullableBo(NullableR<Boolean> value)
-	{
-		set(value);
-	}
-	
+
 	public NullableBo(boolean value)
 	{
-		valueBo(value);
+		value(value);
 	}
 	
-	public NullableBo(Boolean value)
+	public NullableBo(@AllowNull Boolean value)
 	{
 		value(value);
 	}
 	
 	@Override
-	public boolean valueBo()
+	public boolean value()
 	{
 		return this.value;
 	}
 
 	@Override
-	public boolean valueOrDefaultB(boolean def)
+	public boolean valueOrDefault(boolean def)
 	{
 		if(this.hasValue) return this.value;
 		
@@ -49,29 +47,7 @@ public class NullableBo implements NullableWBo
 	}
 	
 	@Override
-	public boolean valueOrDefaultB()
-	{
-		if(this.hasValue) return this.value;
-		
-		return false;
-	}
-	
-	@Override
-	public Boolean value()
-	{
-		return this.value;
-	}
-	
-	@Override
-	public Boolean valueOrDefault(Boolean def)
-	{
-		if(this.hasValue) return this.value;
-		
-		return def;
-	}
-	
-	@Override
-	public Boolean valueOrDefault()
+	public boolean valueOrDefault()
 	{
 		if(this.hasValue) return this.value;
 		
@@ -91,7 +67,7 @@ public class NullableBo implements NullableWBo
 	}
 	
 	@Override
-	public NullableBo valueBo(boolean value)
+	public NullableBo value(boolean value)
 	{
 		this.value = value;
 		this.hasValue = true;
@@ -100,32 +76,23 @@ public class NullableBo implements NullableWBo
 	}
 
 	@Override
-	public NullableBo value(Boolean value)
+	public NullableBo value(@AllowNull Boolean value)
 	{
-		this.value = value;
-		this.hasValue = true;
-		
+		this.hasValue = value != null;
+		this.value = this.hasValue ? value : false;
+
 		return this;
 	}
 	
 	@Override
-	public NullableBo set(NullableRBo value)
+	public NullableBo set(@AllowNull INullableRBo value)
 	{
-		this.hasValue = value.isNotNull();
-		if(this.hasValue) this.value = value.valueBo();
+		this.hasValue = value != null && value.isNotNull();
+		this.value = this.hasValue ? value.value() : false;
 		
 		return this;
 	}
-	
-	@Override
-	public NullableBo set(NullableR<Boolean> value)
-	{
-		this.hasValue = value.isNotNull();
-		if(this.hasValue) this.value = value.value();
-		
-		return this;
-	}
-	
+
 	@Override
 	public NullableBo setNull()
 	{
@@ -136,61 +103,32 @@ public class NullableBo implements NullableWBo
 	}
 	
 	@Override
-	public boolean equals(Object obj)
+	public boolean equals(@AllowNull Object obj)
 	{
 		if(obj == null) return !this.hasValue;
 		if(obj == this) return true;
 		
-		if(obj instanceof NullableR<?> n)
-		{
-			return equals(n);
-		}
+		if(obj instanceof INullableRBo n) return equals(n);
 		
-		if(obj instanceof Boolean f)
-		{
-			return equalsValueBo(f);
-		}
+		if(obj instanceof Byte val) return equals(val);
 		
 		return false;
 	}
 	
 	@Override
-	public boolean equals(NullableRBo obj)
+	public boolean equals(@AllowNull INullableRBo obj)
 	{
 		if(obj == null) return !this.hasValue;
 		if(obj == this) return true;
 		if(obj.isNotNull() != this.hasValue) return false;
 		
-		if(this.hasValue)
-		{
-			return obj.valueBo() == this.value;
-		}
+		if(this.hasValue) return obj.value() == this.value;
 		
 		return true;
 	}
 	
 	@Override
-	public boolean equals(NullableR<?> obj)
-	{
-		if(obj == null) return !this.hasValue;
-		if(obj == this) return true;
-		if(obj.isNotNull() != this.hasValue) return false;
-		
-		if(this.hasValue)
-		{
-			if(obj.value() instanceof Boolean f)
-			{
-				return f == this.value;
-			}
-			
-			return false;
-		}
-		
-		return true;
-	}
-	
-	@Override
-	public boolean equalsValueBo(boolean obj)
+	public boolean equals(boolean obj)
 	{
 		if(!this.hasValue) return false;
 		
@@ -198,21 +136,23 @@ public class NullableBo implements NullableWBo
 	}
 	
 	@Override
-	public boolean equalsValue(Boolean obj)
+	public boolean equals(@AllowNull Boolean obj)
 	{
+		if(!this.hasValue && obj == null) return true;
 		if(!this.hasValue) return false;
 		
 		return this.value == obj;
 	}
 	
+	@Override
 	public int hashCode()
 	{
 		return Objects.hash(this.hasValue, this.value);
 	}
 	
+	@Override
 	public String toString()
 	{
-		return "nullableBo(" + (this.hasValue ? this.value : "null") + ")";
+		return "boolean?(" + (this.hasValue ? this.value : "null") + ")";
 	}
-	
 }

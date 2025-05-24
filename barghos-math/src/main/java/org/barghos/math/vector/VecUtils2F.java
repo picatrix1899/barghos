@@ -2,9 +2,10 @@ package org.barghos.math.vector;
 
 import org.barghos.annotation.ExtractionParam;
 import org.barghos.util.math.MathUtils;
-import org.barghos.util.tuple.floats.Tup2RF;
-import org.barghos.util.tuple.floats.Tup2WF;
-import org.barghos.util.tuple.floats.TupRF;
+import org.barghos.util.tuple.floats.ITup2RF;
+import org.barghos.util.tuple.floats.ITup2WF;
+import org.barghos.util.tuple.floats.ITupRF;
+import org.barghos.util.tuple.floats.TupUtils2F;
 
 /**
  * This class provides vector operations for two dimensions.
@@ -34,7 +35,7 @@ public class VecUtils2F
 	 * 
 	 * @return The result array from the extraction parameter with the result.
 	 */
-	public static float[] add(Tup2RF t1, Tup2RF t2, @ExtractionParam float[] res)
+	public static float[] add(ITup2RF t1, ITup2RF t2, @ExtractionParam float[] res)
 	{
 		res[0] = t1.v0() + t2.v0();
 		res[1] = t1.v1() + t2.v1();
@@ -42,7 +43,7 @@ public class VecUtils2F
 		return res;
 	}
 	
-	public static float[] add(Tup2RF t1, TupRF t2, @ExtractionParam float[] res)
+	public static float[] add(ITup2RF t1, ITupRF t2, @ExtractionParam float[] res)
 	{
 		res[0] = t1.v0() + t2.getAt(0);
 		res[1] = t1.v1() + t2.getAt(1);
@@ -50,7 +51,7 @@ public class VecUtils2F
 		return res;
 	}
 	
-	public static float[] add(Tup2RF t1, float[] t2, @ExtractionParam float[] res)
+	public static float[] add(ITup2RF t1, float[] t2, @ExtractionParam float[] res)
 	{
 		res[0] = t1.v0() + t2[0];
 		res[1] = t1.v1() + t2[1];
@@ -58,7 +59,7 @@ public class VecUtils2F
 		return res;
 	}
 
-	public static float[] add(Tup2RF t1, float t2v0, float t2v1, @ExtractionParam float[] res)
+	public static float[] add(ITup2RF t1, float t2v0, float t2v1, @ExtractionParam float[] res)
 	{
 		res[0] = t1.v0() + t2v0;
 		res[1] = t1.v1() + t2v1;
@@ -66,7 +67,7 @@ public class VecUtils2F
 		return res;
 	}
 	
-	public static float[] add(TupRF t1, Tup2RF t2, @ExtractionParam float[] res)
+	public static float[] add(ITupRF t1, ITup2RF t2, @ExtractionParam float[] res)
 	{
 		res[0] = t1.getAt(0) + t2.v0();
 		res[1] = t1.getAt(1) + t2.v1();
@@ -74,7 +75,7 @@ public class VecUtils2F
 		return res;
 	}
 	
-	public static float[] add(TupRF t1, TupRF t2, @ExtractionParam float[] res)
+	public static float[] add(ITupRF t1, ITupRF t2, @ExtractionParam float[] res)
 	{
 		res[0] = t1.getAt(0) + t2.getAt(0);
 		res[1] = t1.getAt(1) + t2.getAt(1);
@@ -82,7 +83,7 @@ public class VecUtils2F
 		return res;
 	}
 
-	public static float[] add(TupRF t1, float[] t2, @ExtractionParam float[] res)
+	public static float[] add(ITupRF t1, float[] t2, @ExtractionParam float[] res)
 	{
 		res[0] = t1.getAt(0) + t2[0];
 		res[1] = t1.getAt(1) + t2[1];
@@ -90,7 +91,7 @@ public class VecUtils2F
 		return res;
 	}
 
-	public static float[] add(TupRF t1, float t2v0, float t2v1, @ExtractionParam float[] res)
+	public static float[] add(ITupRF t1, float t2v0, float t2v1, @ExtractionParam float[] res)
 	{
 		res[0] = t1.getAt(0) + t2v0;
 		res[1] = t1.getAt(1) + t2v1;
@@ -98,7 +99,7 @@ public class VecUtils2F
 		return res;
 	}
 
-	public static float[] add(float[] t1, Tup2RF t2, @ExtractionParam float[] res)
+	public static float[] add(float[] t1, ITup2RF t2, @ExtractionParam float[] res)
 	{
 		res[0] = t1[0] + t2.v0();
 		res[1] = t1[1] + t2.v1();
@@ -106,7 +107,7 @@ public class VecUtils2F
 		return res;
 	}
 
-	public static float[] add(float[] t1, TupRF t2, @ExtractionParam float[] res)
+	public static float[] add(float[] t1, ITupRF t2, @ExtractionParam float[] res)
 	{
 		res[0] = t1[0] + t2.getAt(0);
 		res[1] = t1[1] + t2.getAt(1);
@@ -130,7 +131,7 @@ public class VecUtils2F
 		return res;
 	}
 
-	public static float[] add(float t1v0, float t1v1, Tup2RF t2, @ExtractionParam float[] res)
+	public static float[] add(float t1v0, float t1v1, ITup2RF t2, @ExtractionParam float[] res)
 	{
 		res[0] = t1v0 + t2.v0();
 		res[1] = t1v1 + t2.v1();
@@ -138,7 +139,7 @@ public class VecUtils2F
 		return res;
 	}
 
-	public static float[] add(float t1v0, float t1v1, TupRF t2, @ExtractionParam float[] res)
+	public static float[] add(float t1v0, float t1v1, ITupRF t2, @ExtractionParam float[] res)
 	{
 		res[0] = t1v0 + t2.getAt(0);
 		res[1] = t1v1 + t2.getAt(1);
@@ -182,84 +183,112 @@ public class VecUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T add(Tup2RF t1, Tup2RF t2, @ExtractionParam T res)
+	public static <T extends ITup2WF> T add(ITup2RF t1, ITup2RF t2, @ExtractionParam T res)
 	{
 		res.set(t1.v0() + t2.v0(), t1.v1() + t2.v1());
 		
 		return res;
 	}
 
-	public static <T extends Tup2WF> T add(Tup2RF t1, TupRF t2, @ExtractionParam T res)
+	public static <T extends ITup2WF> T add(ITup2RF t1, ITupRF t2, @ExtractionParam T res)
 	{
 		res.set(t1.v0() + t2.getAt(0), t1.v1() + t2.getAt(1));
 		
 		return res;
 	}
 
-	public static <T extends Tup2WF> T add(Tup2RF t1, float[] t2, @ExtractionParam T res)
+	public static <T extends ITup2WF> T add(ITup2RF t1, float[] t2, @ExtractionParam T res)
 	{
 		res.set(t1.v0() + t2[0], t1.v1() + t2[1]);
 		
 		return res;
 	}
 
-	public static <T extends Tup2WF> T add(Tup2RF t1, float t2v0, float t2v1, @ExtractionParam T res)
+	public static <T extends ITup2WF> T add(ITup2RF t1, float t2v0, float t2v1, @ExtractionParam T res)
 	{
 		res.set(t1.v0() + t2v0, t1.v1() + t2v1);
 		
 		return res;
 	}
 
-	public static <T extends Tup2WF> T add(float[] t1, Tup2RF t2, @ExtractionParam T res)
+	public static <T extends ITup2WF> T add(ITupRF t1, ITup2RF t2, @ExtractionParam T res)
+	{
+		res.set(t1.getAt(0) + t2.v0(), t1.getAt(1) + t2.v1());
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T add(ITupRF t1, ITupRF t2, @ExtractionParam T res)
+	{
+		res.set(t1.getAt(0) + t2.getAt(0), t1.getAt(1) + t2.getAt(1));
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T add(ITupRF t1, float[] t2, @ExtractionParam T res)
+	{
+		res.set(t1.getAt(0) + t2[0], t1.getAt(1) + t2[1]);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T add(ITupRF t1, float t2v0, float t2v1, @ExtractionParam T res)
+	{
+		res.set(t1.getAt(0) + t2v0, t1.getAt(1) + t2v1);
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T add(float[] t1, ITup2RF t2, @ExtractionParam T res)
 	{
 		res.set(t1[0] + t2.v0(), t1[1] + t2.v1());
 		
 		return res;
 	}
 
-	public static <T extends Tup2WF> T add(float[] t1, TupRF t2, @ExtractionParam T res)
+	public static <T extends ITup2WF> T add(float[] t1, ITupRF t2, @ExtractionParam T res)
 	{
 		res.set(t1[0] + t2.getAt(0), t1[1] + t2.getAt(1));
 		
 		return res;
 	}
 
-	public static <T extends Tup2WF> T add(float[] t1, float[] t2, @ExtractionParam T res)
+	public static <T extends ITup2WF> T add(float[] t1, float[] t2, @ExtractionParam T res)
 	{
 		res.set(t1[0] + t2[0], t1[1] + t2[1]);
 		
 		return res;
 	}
 
-	public static <T extends Tup2WF> T add(float[] t1, float t2v0, float t2v1, @ExtractionParam T res)
+	public static <T extends ITup2WF> T add(float[] t1, float t2v0, float t2v1, @ExtractionParam T res)
 	{
 		res.set(t1[0] + t2v0, t1[1] + t2v1);
 		
 		return res;
 	}
 
-	public static <T extends Tup2WF> T add(float t1v0, float t1v1, Tup2RF t2, @ExtractionParam T res)
+	public static <T extends ITup2WF> T add(float t1v0, float t1v1, ITup2RF t2, @ExtractionParam T res)
 	{
 		res.set(t1v0 + t2.v0(), t1v1 + t2.v1());
 		
 		return res;
 	}
 
-	public static <T extends Tup2WF> T add(float t1v0, float t1v1, TupRF t2, @ExtractionParam T res)
+	public static <T extends ITup2WF> T add(float t1v0, float t1v1, ITupRF t2, @ExtractionParam T res)
 	{
 		res.set(t1v0 + t2.getAt(0), t1v1 + t2.getAt(1));
 		
 		return res;
 	}
 	
-	public static <T extends Tup2WF> T add(float t1v0, float t1v1, float[] t2, @ExtractionParam T res)
+	public static <T extends ITup2WF> T add(float t1v0, float t1v1, float[] t2, @ExtractionParam T res)
 	{
 		res.set(t1v0 + t2[0], t1v1 + t2[1]);
 		
 		return res;
 	}
 
-	public static <T extends Tup2WF> T add(float t1v0, float t1v1, float t2v0, float t2v1, @ExtractionParam T res)
+	public static <T extends ITup2WF> T add(float t1v0, float t1v1, float t2v0, float t2v1, @ExtractionParam T res)
 	{
 		res.set(t1v0 + t2v0, t1v1 + t2v1);
 		
@@ -287,55 +316,97 @@ public class VecUtils2F
 	 * @return The extraction parameter object with the result.
 	 */
 	@SuppressWarnings("unchecked")
-	public static <T extends Tup2RF> T addCreateNew(Tup2RF t1, Tup2RF t2, T prototype)
+	public static <T extends ITup2RF> T addCreateNew(ITup2RF t1, ITup2RF t2, T prototype)
 	{
 		return (T) prototype.createNew(t1.v0() + t2.v0(), t1.v1() + t2.v1());
 	}
 
 	@SuppressWarnings("unchecked")
-	public static <T extends Tup2RF> T addCreateNew(Tup2RF t1, float[] t2, T prototype)
+	public static <T extends ITup2RF> T addCreateNew(ITup2RF t1, ITupRF t2, T prototype)
+	{
+		return (T) prototype.createNew(t1.v0() + t2.getAt(0), t1.v1() + t2.getAt(1));
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T addCreateNew(ITup2RF t1, float[] t2, T prototype)
 	{
 		return (T) prototype.createNew(t1.v0() + t2[0], t1.v1() + t2[1]);
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static <T extends Tup2RF> T addCreateNew(Tup2RF t1, float t2v0, float t2v1, T prototype)
+	public static <T extends ITup2RF> T addCreateNew(ITup2RF t1, float t2v0, float t2v1, T prototype)
 	{
 		return (T) prototype.createNew(t1.v0() + t2v0, t1.v1() + t2v1);
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static <T extends Tup2RF> T addCreateNew(float[] t1, Tup2RF t2, T prototype)
+	public static <T extends ITup2RF> T addCreateNew(ITupRF t1, ITup2RF t2, T prototype)
+	{
+		return (T) prototype.createNew(t1.getAt(0) + t2.v0(), t1.getAt(1) + t2.v1());
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T addCreateNew(ITupRF t1, ITupRF t2, T prototype)
+	{
+		return (T) prototype.createNew(t1.getAt(0) + t2.getAt(0), t1.getAt(1) + t2.getAt(1));
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T addCreateNew(ITupRF t1, float[] t2, T prototype)
+	{
+		return (T) prototype.createNew(t1.getAt(0) + t2[0], t1.getAt(1) + t2[1]);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T addCreateNew(ITupRF t1, float t2v0, float t2v1, T prototype)
+	{
+		return (T) prototype.createNew(t1.getAt(0) + t2v0, t1.getAt(1) + t2v1);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T addCreateNew(float[] t1, ITup2RF t2, T prototype)
 	{
 		return (T) prototype.createNew(t1[0] + t2.v0(), t1[1] + t2.v1());
 	}
 
 	@SuppressWarnings("unchecked")
-	public static <T extends Tup2RF> T addCreateNew(float[] t1, float[] t2, T prototype)
+	public static <T extends ITup2RF> T addCreateNew(float[] t1, ITupRF t2, T prototype)
+	{
+		return (T) prototype.createNew(t1[0] + t2.getAt(0), t1[1] + t2.getAt(1));
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T addCreateNew(float[] t1, float[] t2, T prototype)
 	{
 		return (T) prototype.createNew(t1[0] + t2[0], t1[1] + t2[1]);
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static <T extends Tup2RF> T addCreateNew(float[] t1, float t2v0, float t2v1, T prototype)
+	public static <T extends ITup2RF> T addCreateNew(float[] t1, float t2v0, float t2v1, T prototype)
 	{
 		return (T) prototype.createNew(t1[0] + t2v0, t1[1] + t2v1);
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static <T extends Tup2RF> T addCreateNew(float t1v0, float t1v1, Tup2RF t2, T prototype)
+	public static <T extends ITup2RF> T addCreateNew(float t1v0, float t1v1, ITup2RF t2, T prototype)
 	{
 		return (T) prototype.createNew(t1v0 + t2.v0(), t1v1 + t2.v1());
 	}
 
 	@SuppressWarnings("unchecked")
-	public static <T extends Tup2RF> T addCreateNew(float t1v0, float t1v1, float[] t2, T prototype)
+	public static <T extends ITup2RF> T addCreateNew(float t1v0, float t1v1, ITupRF t2, T prototype)
+	{
+		return (T) prototype.createNew(t1v0 + t2.getAt(0), t1v1 + t2.getAt(1));
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T addCreateNew(float t1v0, float t1v1, float[] t2, T prototype)
 	{
 		return (T) prototype.createNew(t1v0 + t2[0], t1v1 + t2[1]);
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static <T extends Tup2RF> T addCreateNew(float t1v0, float t1v1, float t2v0, float t2v1, T prototype)
+	public static <T extends ITup2RF> T addCreateNew(float t1v0, float t1v1, float t2v0, float t2v1, T prototype)
 	{
 		return (T) prototype.createNew(t1v0 + t2v0, t1v1 + t2v1);
 	}
@@ -357,7 +428,7 @@ public class VecUtils2F
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] sub(Tup2RF t1, Tup2RF t2, @ExtractionParam float[] res)
+	public static float[] sub(ITup2RF t1, ITup2RF t2, @ExtractionParam float[] res)
 	{
 		res[0] = t1.v0() - t2.v0();
 		res[1] = t1.v1() - t2.v1();
@@ -365,7 +436,15 @@ public class VecUtils2F
 		return res;
 	}
 
-	public static float[] sub(Tup2RF t1, float[] t2, @ExtractionParam float[] res)
+	public static float[] sub(ITup2RF t1, ITupRF t2, @ExtractionParam float[] res)
+	{
+		res[0] = t1.v0() - t2.getAt(0);
+		res[1] = t1.v1() - t2.getAt(1);
+		
+		return res;
+	}
+	
+	public static float[] sub(ITup2RF t1, float[] t2, @ExtractionParam float[] res)
 	{
 		res[0] = t1.v0() - t2[0];
 		res[1] = t1.v1() - t2[1];
@@ -373,7 +452,7 @@ public class VecUtils2F
 		return res;
 	}
 
-	public static float[] sub(Tup2RF t1, float t2v0, float t2v1, @ExtractionParam float[] res)
+	public static float[] sub(ITup2RF t1, float t2v0, float t2v1, @ExtractionParam float[] res)
 	{
 		res[0] = t1.v0() - t2v0;
 		res[1] = t1.v1() - t2v1;
@@ -381,7 +460,39 @@ public class VecUtils2F
 		return res;
 	}
 
-	public static float[] sub(float[] t1, Tup2RF t2, @ExtractionParam float[] res)
+	public static float[] sub(ITupRF t1, ITup2RF t2, @ExtractionParam float[] res)
+	{
+		res[0] = t1.getAt(0) - t2.v0();
+		res[1] = t1.getAt(1) - t2.v1();
+		
+		return res;
+	}
+
+	public static float[] sub(ITupRF t1, ITupRF t2, @ExtractionParam float[] res)
+	{
+		res[0] = t1.getAt(0) - t2.getAt(0);
+		res[1] = t1.getAt(1) - t2.getAt(1);
+		
+		return res;
+	}
+	
+	public static float[] sub(ITupRF t1, float[] t2, @ExtractionParam float[] res)
+	{
+		res[0] = t1.getAt(0) - t2[0];
+		res[1] = t1.getAt(1) - t2[1];
+		
+		return res;
+	}
+
+	public static float[] sub(ITupRF t1, float t2v0, float t2v1, @ExtractionParam float[] res)
+	{
+		res[0] = t1.getAt(0) - t2v0;
+		res[1] = t1.getAt(1) - t2v1;
+		
+		return res;
+	}
+	
+	public static float[] sub(float[] t1, ITup2RF t2, @ExtractionParam float[] res)
 	{
 		res[0] = t1[0] - t2.v0();
 		res[1] = t1[1] - t2.v1();
@@ -389,6 +500,14 @@ public class VecUtils2F
 		return res;
 	}
 
+	public static float[] sub(float[] t1, ITupRF t2, @ExtractionParam float[] res)
+	{
+		res[0] = t1[0] - t2.getAt(0);
+		res[1] = t1[1] - t2.getAt(1);
+		
+		return res;
+	}
+	
 	public static float[] sub(float[] t1, float[] t2, @ExtractionParam float[] res)
 	{
 		res[0] = t1[0] - t2[0];
@@ -405,7 +524,7 @@ public class VecUtils2F
 		return res;
 	}
 
-	public static float[] sub(float t1v0, float t1v1, Tup2RF t2, @ExtractionParam float[] res)
+	public static float[] sub(float t1v0, float t1v1, ITup2RF t2, @ExtractionParam float[] res)
 	{
 		res[0] = t1v0 - t2.v0();
 		res[1] = t1v1 - t2.v1();
@@ -413,6 +532,14 @@ public class VecUtils2F
 		return res;
 	}
 
+	public static float[] sub(float t1v0, float t1v1, ITupRF t2, @ExtractionParam float[] res)
+	{
+		res[0] = t1v0 - t2.getAt(0);
+		res[1] = t1v1 - t2.getAt(1);
+		
+		return res;
+	}
+	
 	public static float[] sub(float t1v0, float t1v1, float[] t2, @ExtractionParam float[] res)
 	{
 		res[0] = t1v0 - t2[0];
@@ -429,63 +556,112 @@ public class VecUtils2F
 		return res;
 	}
 
-	public static <T extends Tup2WF> T sub(Tup2RF t1, Tup2RF t2, @ExtractionParam T res)
+	public static <T extends ITup2WF> T sub(ITup2RF t1, ITup2RF t2, @ExtractionParam T res)
 	{
 		res.set(t1.v0() - t2.v0(), t1.v1() - t2.v1());
 		
 		return res;
 	}
 
-	public static <T extends Tup2WF> T sub(Tup2RF t1, float[] t2, @ExtractionParam T res)
+	public static <T extends ITup2WF> T sub(ITup2RF t1, ITupRF t2, @ExtractionParam T res)
+	{
+		res.set(t1.v0() - t2.getAt(0), t1.v1() - t2.getAt(1));
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T sub(ITup2RF t1, float[] t2, @ExtractionParam T res)
 	{
 		res.set(t1.v0() - t2[0], t1.v1() - t2[1]);
 		
 		return res;
 	}
 
-	public static <T extends Tup2WF> T sub(Tup2RF t1, float t2v0, float t2v1, @ExtractionParam T res)
+	public static <T extends ITup2WF> T sub(ITup2RF t1, float t2v0, float t2v1, @ExtractionParam T res)
 	{
 		res.set(t1.v0() - t2v0, t1.v1() - t2v1);
 		
 		return res;
 	}
 
-	public static <T extends Tup2WF> T sub(float[] t1, Tup2RF t2, @ExtractionParam T res)
+	public static <T extends ITup2WF> T sub(ITupRF t1, ITup2RF t2, @ExtractionParam T res)
+	{
+		res.set(t1.getAt(0) - t2.v0(), t1.getAt(1) - t2.v1());
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T sub(ITupRF t1, ITupRF t2, @ExtractionParam T res)
+	{
+		res.set(t1.getAt(0) - t2.getAt(0), t1.getAt(1) - t2.getAt(1));
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T sub(ITupRF t1, float[] t2, @ExtractionParam T res)
+	{
+		res.set(t1.getAt(0) - t2[0], t1.getAt(1) - t2[1]);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T sub(ITupRF t1, float t2v0, float t2v1, @ExtractionParam T res)
+	{
+		res.set(t1.getAt(0) - t2v0, t1.getAt(1) - t2v1);
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T sub(float[] t1, ITup2RF t2, @ExtractionParam T res)
 	{
 		res.set(t1[0] - t2.v0(), t1[1] - t2.v1());
 		
 		return res;
 	}
 
-	public static <T extends Tup2WF> T sub(float[] t1, float[] t2, @ExtractionParam T res)
+	public static <T extends ITup2WF> T sub(float[] t1, ITupRF t2, @ExtractionParam T res)
+	{
+		res.set(t1[0] - t2.getAt(0), t1[1] - t2.getAt(1));
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T sub(float[] t1, float[] t2, @ExtractionParam T res)
 	{
 		res.set(t1[0] - t2[0], t1[1] - t2[1]);
 		
 		return res;
 	}
 
-	public static <T extends Tup2WF> T sub(float[] t1, float t2v0, float t2v1, @ExtractionParam T res)
+	public static <T extends ITup2WF> T sub(float[] t1, float t2v0, float t2v1, @ExtractionParam T res)
 	{
 		res.set(t1[0] - t2v0, t1[1] - t2v1);
 		
 		return res;
 	}
 
-	public static <T extends Tup2WF> T sub(float t1v0, float t1v1, Tup2RF t2, @ExtractionParam T res)
+	public static <T extends ITup2WF> T sub(float t1v0, float t1v1, ITup2RF t2, @ExtractionParam T res)
 	{
 		res.set(t1v0 - t2.v0(), t1v1 - t2.v1());
 		
 		return res;
 	}
 
-	public static <T extends Tup2WF> T sub(float t1v0, float t1v1, float[] t2, @ExtractionParam T res)
+	public static <T extends ITup2WF> T sub(float t1v0, float t1v1, ITupRF t2, @ExtractionParam T res)
+	{
+		res.set(t1v0 - t2.getAt(0), t1v1 - t2.getAt(1));
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T sub(float t1v0, float t1v1, float[] t2, @ExtractionParam T res)
 	{
 		res.set(t1v0 - t2[0], t1v1 - t2[1]);
 		
 		return res;
 	}
 
-	public static <T extends Tup2WF> T sub(float t1v0, float t1v1, float t2v0, float t2v1, @ExtractionParam T res)
+	public static <T extends ITup2WF> T sub(float t1v0, float t1v1, float t2v0, float t2v1, @ExtractionParam T res)
 	{
 		res.set(t1v0 - t2v0, t1v1 - t2v1);
 		
@@ -493,55 +669,97 @@ public class VecUtils2F
 	}
 
 	@SuppressWarnings("unchecked")
-	public static <T extends Tup2RF> T subCreateNew(Tup2RF t1, Tup2RF t2, T prototype)
+	public static <T extends ITup2RF> T subCreateNew(ITup2RF t1, ITup2RF t2, T prototype)
 	{
 		return (T) prototype.createNew(t1.v0() - t2.v0(), t1.v1() - t2.v1());
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static <T extends Tup2RF> T subCreateNew(Tup2RF t1, float[] t2, T prototype)
+	public static <T extends ITup2RF> T subCreateNew(ITup2RF t1, ITupRF t2, T prototype)
+	{
+		return (T) prototype.createNew(t1.v0() - t2.getAt(0), t1.v1() - t2.getAt(1));
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T subCreateNew(ITup2RF t1, float[] t2, T prototype)
 	{
 		return (T) prototype.createNew(t1.v0() - t2[0], t1.v1() - t2[1]);
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static <T extends Tup2RF> T subCreateNew(Tup2RF t1, float t2v0, float t2v1, T prototype)
+	public static <T extends ITup2RF> T subCreateNew(ITup2RF t1, float t2v0, float t2v1, T prototype)
 	{
 		return (T) prototype.createNew(t1.v0() - t2v0, t1.v1() - t2v1);
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static <T extends Tup2RF> T subCreateNew(float[] t1, Tup2RF t2, T prototype)
+	public static <T extends ITup2RF> T subCreateNew(ITupRF t1, ITup2RF t2, T prototype)
+	{
+		return (T) prototype.createNew(t1.getAt(0) - t2.v0(), t1.getAt(1) - t2.v1());
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T subCreateNew(ITupRF t1, ITupRF t2, T prototype)
+	{
+		return (T) prototype.createNew(t1.getAt(0) - t2.getAt(0), t1.getAt(1) - t2.getAt(1));
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T subCreateNew(ITupRF t1, float[] t2, T prototype)
+	{
+		return (T) prototype.createNew(t1.getAt(0) - t2[0], t1.getAt(1) - t2[1]);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T subCreateNew(ITupRF t1, float t2v0, float t2v1, T prototype)
+	{
+		return (T) prototype.createNew(t1.getAt(0) - t2v0, t1.getAt(1) - t2v1);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T subCreateNew(float[] t1, ITup2RF t2, T prototype)
 	{
 		return (T) prototype.createNew(t1[0] - t2.v0(), t1[1] - t2.v1());
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static <T extends Tup2RF> T subCreateNew(float[] t1, float[] t2, T prototype)
+	public static <T extends ITup2RF> T subCreateNew(float[] t1, ITupRF t2, T prototype)
+	{
+		return (T) prototype.createNew(t1[0] - t2.getAt(0), t1[1] - t2.getAt(1));
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T subCreateNew(float[] t1, float[] t2, T prototype)
 	{
 		return (T) prototype.createNew(t1[0] - t2[0], t1[1] - t2[1]);
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static <T extends Tup2RF> T subCreateNew(float[] t1, float t2v0, float t2v1, T prototype)
+	public static <T extends ITup2RF> T subCreateNew(float[] t1, float t2v0, float t2v1, T prototype)
 	{
 		return (T) prototype.createNew(t1[0] - t2v0, t1[1] - t2v1);
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static <T extends Tup2RF> T subCreateNew(float t1v0, float t1v1, Tup2RF t2, T prototype)
+	public static <T extends ITup2RF> T subCreateNew(float t1v0, float t1v1, ITup2RF t2, T prototype)
 	{
 		return (T) prototype.createNew(t1v0 - t2.v0(), t1v1 - t2.v1());
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static <T extends Tup2RF> T subCreateNew(float t1v0, float t1v1, float[] t2, T prototype)
+	public static <T extends ITup2RF> T subCreateNew(float t1v0, float t1v1, ITupRF t2, T prototype)
+	{
+		return (T) prototype.createNew(t1v0 - t2.getAt(0), t1v1 - t2.getAt(1));
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T subCreateNew(float t1v0, float t1v1, float[] t2, T prototype)
 	{
 		return (T) prototype.createNew(t1v0 - t2[0], t1v1 - t2[1]);
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static <T extends Tup2RF> T subCreateNew(float t1v0, float t1v1, float t2v0, float t2v1, T prototype)
+	public static <T extends ITup2RF> T subCreateNew(float t1v0, float t1v1, float t2v0, float t2v1, T prototype)
 	{
 		return (T) prototype.createNew(t1v0 - t2v0, t1v1 - t2v1);
 	}
@@ -563,7 +781,7 @@ public class VecUtils2F
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] mul(Tup2RF t1, Tup2RF t2, @ExtractionParam float[] res)
+	public static float[] mul(ITup2RF t1, ITup2RF t2, @ExtractionParam float[] res)
 	{
 		res[0] = t1.v0() * t2.v0();
 		res[1] = t1.v1() * t2.v1();
@@ -571,7 +789,15 @@ public class VecUtils2F
 		return res;
 	}
 
-	public static float[] mul(Tup2RF t1, float[] t2, @ExtractionParam float[] res)
+	public static float[] mul(ITup2RF t1, ITupRF t2, @ExtractionParam float[] res)
+	{
+		res[0] = t1.v0() * t2.getAt(0);
+		res[1] = t1.v1() * t2.getAt(1);
+		
+		return res;
+	}
+	
+	public static float[] mul(ITup2RF t1, float[] t2, @ExtractionParam float[] res)
 	{
 		res[0] = t1.v0() * t2[0];
 		res[1] = t1.v1() * t2[1];
@@ -579,7 +805,7 @@ public class VecUtils2F
 		return res;
 	}
 
-	public static float[] mul(Tup2RF t1, float t2v0, float t2v1, @ExtractionParam float[] res)
+	public static float[] mul(ITup2RF t1, float t2v0, float t2v1, @ExtractionParam float[] res)
 	{
 		res[0] = t1.v0() * t2v0;
 		res[1] = t1.v1() * t2v1;
@@ -587,7 +813,40 @@ public class VecUtils2F
 		return res;
 	}
 
-	public static float[] mul(float[] t1, Tup2RF t2, @ExtractionParam float[] res)
+	public static float[] mul(ITupRF t1, ITup2RF t2, @ExtractionParam float[] res)
+	{
+		res[0] = t1.getAt(0) * t2.v0();
+		res[1] = t1.getAt(1) * t2.v1();
+		
+		return res;
+	}
+
+	public static float[] mul(ITupRF t1, ITupRF t2, @ExtractionParam float[] res)
+	{
+		res[0] = t1.getAt(0) * t2.getAt(0);
+		res[1] = t1.getAt(1)  * t2.getAt(1);
+		
+		return res;
+	}
+	
+	public static float[] mul(ITupRF t1, float[] t2, @ExtractionParam float[] res)
+	{
+		res[0] = t1.getAt(0) * t2[0];
+		res[1] = t1.getAt(1) * t2[1];
+		
+		return res;
+	}
+
+	public static float[] mul(ITupRF t1, float t2v0, float t2v1, @ExtractionParam float[] res)
+	{
+		res[0] = t1.getAt(0) * t2v0;
+		res[1] = t1.getAt(1) * t2v1;
+		
+		return res;
+	}
+
+	
+	public static float[] mul(float[] t1, ITup2RF t2, @ExtractionParam float[] res)
 	{
 		res[0] = t1[0] * t2.v0();
 		res[1] = t1[1] * t2.v1();
@@ -595,6 +854,14 @@ public class VecUtils2F
 		return res;
 	}
 
+	public static float[] mul(float[] t1, ITupRF t2, @ExtractionParam float[] res)
+	{
+		res[0] = t1[0] * t2.getAt(0);
+		res[1] = t1[1] * t2.getAt(1);
+		
+		return res;
+	}
+	
 	public static float[] mul(float[] t1, float[] t2, @ExtractionParam float[] res)
 	{
 		res[0] = t1[0] * t2[0];
@@ -611,7 +878,7 @@ public class VecUtils2F
 		return res;
 	}
 
-	public static float[] mul(float t1v0, float t1v1, Tup2RF t2, @ExtractionParam float[] res)
+	public static float[] mul(float t1v0, float t1v1, ITup2RF t2, @ExtractionParam float[] res)
 	{
 		res[0] = t1v0 * t2.v0();
 		res[1] = t1v1 * t2.v1();
@@ -619,6 +886,14 @@ public class VecUtils2F
 		return res;
 	}
 
+	public static float[] mul(float t1v0, float t1v1, ITupRF t2, @ExtractionParam float[] res)
+	{
+		res[0] = t1v0 * t2.getAt(0);
+		res[1] = t1v1 * t2.getAt(1);
+		
+		return res;
+	}
+	
 	public static float[] mul(float t1v0, float t1v1, float[] t2, @ExtractionParam float[] res)
 	{
 		res[0] = t1v0 * t2[0];
@@ -635,63 +910,112 @@ public class VecUtils2F
 		return res;
 	}
 
-	public static <T extends Tup2WF> T mul(Tup2RF t1, Tup2RF t2, @ExtractionParam T res)
+	public static <T extends ITup2WF> T mul(ITup2RF t1, ITup2RF t2, @ExtractionParam T res)
 	{
 		res.set(t1.v0() * t2.v0(), t1.v1() * t2.v1());
 		
 		return res;
 	}
 
-	public static <T extends Tup2WF> T mul(Tup2RF t1, float[] t2, @ExtractionParam T res)
+	public static <T extends ITup2WF> T mul(ITup2RF t1, ITupRF t2, @ExtractionParam T res)
+	{
+		res.set(t1.v0() * t2.getAt(0), t1.v1() * t2.getAt(1));
+		
+		return res;
+	}	
+	
+	public static <T extends ITup2WF> T mul(ITup2RF t1, float[] t2, @ExtractionParam T res)
 	{
 		res.set(t1.v0() * t2[0], t1.v1() * t2[1]);
 		
 		return res;
 	}
 
-	public static <T extends Tup2WF> T mul(Tup2RF t1, float t2v0, float t2v1, @ExtractionParam T res)
+	public static <T extends ITup2WF> T mul(ITup2RF t1, float t2v0, float t2v1, @ExtractionParam T res)
 	{
 		res.set(t1.v0() * t2v0, t1.v1() * t2v1);
 		
 		return res;
 	}
 
-	public static <T extends Tup2WF> T mul(float[] t1, Tup2RF t2, @ExtractionParam T res)
+	public static <T extends ITup2WF> T mul(ITupRF t1, ITup2RF t2, @ExtractionParam T res)
+	{
+		res.set(t1.getAt(0) * t2.v0(), t1.getAt(1) * t2.v1());
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T mul(ITupRF t1, ITupRF t2, @ExtractionParam T res)
+	{
+		res.set(t1.getAt(0) * t2.getAt(0), t1.getAt(1) * t2.getAt(1));
+		
+		return res;
+	}	
+	
+	public static <T extends ITup2WF> T mul(ITupRF t1, float[] t2, @ExtractionParam T res)
+	{
+		res.set(t1.getAt(0) * t2[0], t1.getAt(1) * t2[1]);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T mul(ITupRF t1, float t2v0, float t2v1, @ExtractionParam T res)
+	{
+		res.set(t1.getAt(0) * t2v0, t1.getAt(1) * t2v1);
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T mul(float[] t1, ITup2RF t2, @ExtractionParam T res)
 	{
 		res.set(t1[0] * t2.v0(), t1[1] * t2.v1());
 		
 		return res;
 	}
 
-	public static <T extends Tup2WF> T mul(float[] t1, float[] t2, @ExtractionParam T res)
+	public static <T extends ITup2WF> T mul(float[] t1, ITupRF t2, @ExtractionParam T res)
+	{
+		res.set(t1[0] * t2.getAt(0), t1[1] * t2.getAt(1));
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T mul(float[] t1, float[] t2, @ExtractionParam T res)
 	{
 		res.set(t1[0] * t2[0], t1[1] * t2[1]);
 		
 		return res;
 	}
 
-	public static <T extends Tup2WF> T mul(float[] t1, float t2v0, float t2v1, @ExtractionParam T res)
+	public static <T extends ITup2WF> T mul(float[] t1, float t2v0, float t2v1, @ExtractionParam T res)
 	{
 		res.set(t1[0] * t2v0, t1[1] * t2v1);
 		
 		return res;
 	}
 
-	public static <T extends Tup2WF> T mul(float t1v0, float t1v1, Tup2RF t2, @ExtractionParam T res)
+	public static <T extends ITup2WF> T mul(float t1v0, float t1v1, ITup2RF t2, @ExtractionParam T res)
 	{
 		res.set(t1v0 * t2.v0(), t1v1 * t2.v1());
 		
 		return res;
 	}
 
-	public static <T extends Tup2WF> T mul(float t1v0, float t1v1, float[] t2, @ExtractionParam T res)
+	public static <T extends ITup2WF> T mul(float t1v0, float t1v1, ITupRF t2, @ExtractionParam T res)
+	{
+		res.set(t1v0 * t2.getAt(0), t1v1 * t2.getAt(1));
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T mul(float t1v0, float t1v1, float[] t2, @ExtractionParam T res)
 	{
 		res.set(t1v0 * t2[0], t1v1 * t2[1]);
 		
 		return res;
 	}
 
-	public static <T extends Tup2WF> T mul(float t1v0, float t1v1, float t2v0, float t2v1, @ExtractionParam T res)
+	public static <T extends ITup2WF> T mul(float t1v0, float t1v1, float t2v0, float t2v1, @ExtractionParam T res)
 	{
 		res.set(t1v0 * t2v0, t1v1 * t2v1);
 		
@@ -699,55 +1023,97 @@ public class VecUtils2F
 	}
 
 	@SuppressWarnings("unchecked")
-	public static <T extends Tup2RF> T mulCreateNew(Tup2RF t1, Tup2RF t2, T prototype)
+	public static <T extends ITup2RF> T mulCreateNew(ITup2RF t1, ITup2RF t2, T prototype)
 	{
 		return (T) prototype.createNew(t1.v0() * t2.v0(), t1.v1() * t2.v1());
 	}
-	
+
 	@SuppressWarnings("unchecked")
-	public static <T extends Tup2RF> T mulCreateNew(Tup2RF t1, float[] t2, T prototype)
+	public static <T extends ITup2RF> T mulCreateNew(ITup2RF t1, ITupRF t2, T prototype)
+	{
+		return (T) prototype.createNew(t1.v0() * t2.getAt(0), t1.v1() * t2.getAt(1));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T mulCreateNew(ITup2RF t1, float[] t2, T prototype)
 	{
 		return (T) prototype.createNew(t1.v0() * t2[0], t1.v1() * t2[1]);
 	}
-	
+
 	@SuppressWarnings("unchecked")
-	public static <T extends Tup2RF> T mulCreateNew(Tup2RF t1, float t2v0, float t2v1, T prototype)
+	public static <T extends ITup2RF> T mulCreateNew(ITup2RF t1, float t2v0, float t2v1, T prototype)
 	{
 		return (T) prototype.createNew(t1.v0() * t2v0, t1.v1() * t2v1);
 	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T mulCreateNew(ITupRF t1, ITup2RF t2, T prototype)
+	{
+		return (T) prototype.createNew(t1.getAt(0) * t2.v0(), t1.getAt(1) * t2.v1());
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T mulCreateNew(ITupRF t1, ITupRF t2, T prototype)
+	{
+		return (T) prototype.createNew(t1.getAt(0) * t2.getAt(0), t1.getAt(1) * t2.getAt(1));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T mulCreateNew(ITupRF t1, float[] t2, T prototype)
+	{
+		return (T) prototype.createNew(t1.getAt(0) * t2[0], t1.getAt(1) * t2[1]);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T mulCreateNew(ITupRF t1, float t2v0, float t2v1, T prototype)
+	{
+		return (T) prototype.createNew(t1.getAt(0) * t2v0, t1.getAt(1) * t2v1);
+	}
 	
 	@SuppressWarnings("unchecked")
-	public static <T extends Tup2RF> T mulCreateNew(float[] t1, Tup2RF t2, T prototype)
+	public static <T extends ITup2RF> T mulCreateNew(float[] t1, ITup2RF t2, T prototype)
 	{
 		return (T) prototype.createNew(t1[0] * t2.v0(), t1[1] * t2.v1());
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static <T extends Tup2RF> T mulCreateNew(float[] t1, float[] t2, T prototype)
+	public static <T extends ITup2RF> T mulCreateNew(float[] t1, ITupRF t2, T prototype)
+	{
+		return (T) prototype.createNew(t1[0] * t2.getAt(0), t1[1] * t2.getAt(1));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T mulCreateNew(float[] t1, float[] t2, T prototype)
 	{
 		return (T) prototype.createNew(t1[0] * t2[0], t1[1] * t2[1]);
 	}
-	
+
 	@SuppressWarnings("unchecked")
-	public static <T extends Tup2RF> T mulCreateNew(float[] t1, float t2v0, float t2v1, T prototype)
+	public static <T extends ITup2RF> T mulCreateNew(float[] t1, float t2v0, float t2v1, T prototype)
 	{
 		return (T) prototype.createNew(t1[0] * t2v0, t1[1] * t2v1);
 	}
-	
+
 	@SuppressWarnings("unchecked")
-	public static <T extends Tup2RF> T mulCreateNew(float t1v0, float t1v1, Tup2RF t2, T prototype)
+	public static <T extends ITup2RF> T mulCreateNew(float t1v0, float t1v1, ITup2RF t2, T prototype)
 	{
 		return (T) prototype.createNew(t1v0 * t2.v0(), t1v1 * t2.v1());
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static <T extends Tup2RF> T mulCreateNew(float t1v0, float t1v1, float[] t2, T prototype)
+	public static <T extends ITup2RF> T mulCreateNew(float t1v0, float t1v1, ITupRF t2, T prototype)
+	{
+		return (T) prototype.createNew(t1v0 * t2.getAt(0), t1v1 * t2.getAt(1));
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T mulCreateNew(float t1v0, float t1v1, float[] t2, T prototype)
 	{
 		return (T) prototype.createNew(t1v0 * t2[0], t1v1 * t2[1]);
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static <T extends Tup2RF> T mulCreateNew(float t1v0, float t1v1, float t2v0, float t2v1, T prototype)
+	public static <T extends ITup2RF> T mulCreateNew(float t1v0, float t1v1, float t2v0, float t2v1, T prototype)
 	{
 		return (T) prototype.createNew(t1v0 * t2v0, t1v1 * t2v1);
 	}
@@ -769,7 +1135,7 @@ public class VecUtils2F
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] div(Tup2RF t1, Tup2RF t2, @ExtractionParam float[] res)
+	public static float[] div(ITup2RF t1, ITup2RF t2, @ExtractionParam float[] res)
 	{
 		res[0] = t1.v0() / t2.v0();
 		res[1] = t1.v1() / t2.v1();
@@ -777,7 +1143,15 @@ public class VecUtils2F
 		return res;
 	}
 
-	public static float[] div(Tup2RF t1, float[] t2, @ExtractionParam float[] res)
+	public static float[] div(ITup2RF t1, ITupRF t2, @ExtractionParam float[] res)
+	{
+		res[0] = t1.v0() / t2.getAt(0);
+		res[1] = t1.v1() / t2.getAt(1);
+		
+		return res;
+	}
+	
+	public static float[] div(ITup2RF t1, float[] t2, @ExtractionParam float[] res)
 	{
 		res[0] = t1.v0() / t2[0];
 		res[1] = t1.v1() / t2[1];
@@ -785,7 +1159,7 @@ public class VecUtils2F
 		return res;
 	}
 
-	public static float[] div(Tup2RF t1, float t2v0, float t2v1, @ExtractionParam float[] res)
+	public static float[] div(ITup2RF t1, float t2v0, float t2v1, @ExtractionParam float[] res)
 	{
 		res[0] = t1.v0() / t2v0;
 		res[1] = t1.v1() / t2v1;
@@ -793,7 +1167,39 @@ public class VecUtils2F
 		return res;
 	}
 
-	public static float[] div(float[] t1, Tup2RF t2, @ExtractionParam float[] res)
+	public static float[] div(ITupRF t1, ITup2RF t2, @ExtractionParam float[] res)
+	{
+		res[0] = t1.getAt(0) / t2.v0();
+		res[1] = t1.getAt(1) / t2.v1();
+		
+		return res;
+	}
+
+	public static float[] div(ITupRF t1, ITupRF t2, @ExtractionParam float[] res)
+	{
+		res[0] = t1.getAt(0) / t2.getAt(0);
+		res[1] = t1.getAt(1) / t2.getAt(1);
+		
+		return res;
+	}
+	
+	public static float[] div(ITupRF t1, float[] t2, @ExtractionParam float[] res)
+	{
+		res[0] = t1.getAt(0) / t2[0];
+		res[1] = t1.getAt(1) / t2[1];
+		
+		return res;
+	}
+
+	public static float[] div(ITupRF t1, float t2v0, float t2v1, @ExtractionParam float[] res)
+	{
+		res[0] = t1.getAt(0) / t2v0;
+		res[1] = t1.getAt(1) / t2v1;
+		
+		return res;
+	}
+	
+	public static float[] div(float[] t1, ITup2RF t2, @ExtractionParam float[] res)
 	{
 		res[0] = t1[0] / t2.v0();
 		res[1] = t1[1] / t2.v1();
@@ -801,6 +1207,14 @@ public class VecUtils2F
 		return res;
 	}
 
+	public static float[] div(float[] t1, ITupRF t2, @ExtractionParam float[] res)
+	{
+		res[0] = t1[0] / t2.getAt(0);
+		res[1] = t1[1] / t2.getAt(1);
+		
+		return res;
+	}
+	
 	public static float[] div(float[] t1, float[] t2, @ExtractionParam float[] res)
 	{
 		res[0] = t1[0] / t2[0];
@@ -817,7 +1231,7 @@ public class VecUtils2F
 		return res;
 	}
 
-	public static float[] div(float t1v0, float t1v1, Tup2RF t2, @ExtractionParam float[] res)
+	public static float[] div(float t1v0, float t1v1, ITup2RF t2, @ExtractionParam float[] res)
 	{
 		res[0] = t1v0 / t2.v0();
 		res[1] = t1v1 / t2.v1();
@@ -825,6 +1239,14 @@ public class VecUtils2F
 		return res;
 	}
 
+	public static float[] div(float t1v0, float t1v1, ITupRF t2, @ExtractionParam float[] res)
+	{
+		res[0] = t1v0 / t2.getAt(0);
+		res[1] = t1v1 / t2.getAt(1);
+		
+		return res;
+	}
+	
 	public static float[] div(float t1v0, float t1v1, float[] t2, @ExtractionParam float[] res)
 	{
 		res[0] = t1v0 / t2[0];
@@ -841,63 +1263,112 @@ public class VecUtils2F
 		return res;
 	}
 
-	public static <T extends Tup2WF> T div(Tup2RF t1, Tup2RF t2, @ExtractionParam T res)
+	public static <T extends ITup2WF> T div(ITup2RF t1, ITup2RF t2, @ExtractionParam T res)
 	{
 		res.set(t1.v0() / t2.v0(), t1.v1() / t2.v1());
 		
 		return res;
 	}
 
-	public static <T extends Tup2WF> T div(Tup2RF t1, float[] t2, @ExtractionParam T res)
+	public static <T extends ITup2WF> T div(ITup2RF t1, ITupRF t2, @ExtractionParam T res)
+	{
+		res.set(t1.v0() / t2.getAt(0), t1.v1() / t2.getAt(1));
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T div(ITup2RF t1, float[] t2, @ExtractionParam T res)
 	{
 		res.set(t1.v0() / t2[0], t1.v1() / t2[1]);
 		
 		return res;
 	}
 
-	public static <T extends Tup2WF> T div(Tup2RF t1, float t2v0, float t2v1, @ExtractionParam T res)
+	public static <T extends ITup2WF> T div(ITup2RF t1, float t2v0, float t2v1, @ExtractionParam T res)
 	{
 		res.set(t1.v0() / t2v0, t1.v1() / t2v1);
 		
 		return res;
 	}
 
-	public static <T extends Tup2WF> T div(float[] t1, Tup2RF t2, @ExtractionParam T res)
+	public static <T extends ITup2WF> T div(ITupRF t1, ITup2RF t2, @ExtractionParam T res)
+	{
+		res.set(t1.getAt(0) / t2.v0(), t1.getAt(1) / t2.v1());
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T div(ITupRF t1, ITupRF t2, @ExtractionParam T res)
+	{
+		res.set(t1.getAt(0) / t2.getAt(0), t1.getAt(1) / t2.getAt(1));
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T div(ITupRF t1, float[] t2, @ExtractionParam T res)
+	{
+		res.set(t1.getAt(0) / t2[0], t1.getAt(1) / t2[1]);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T div(ITupRF t1, float t2v0, float t2v1, @ExtractionParam T res)
+	{
+		res.set(t1.getAt(0) / t2v0, t1.getAt(1) / t2v1);
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T div(float[] t1, ITup2RF t2, @ExtractionParam T res)
 	{
 		res.set(t1[0] / t2.v0(), t1[1] / t2.v1());
 		
 		return res;
 	}
 
-	public static <T extends Tup2WF> T div(float[] t1, float[] t2, @ExtractionParam T res)
+	public static <T extends ITup2WF> T div(float[] t1, ITupRF t2, @ExtractionParam T res)
+	{
+		res.set(t1[0] / t2.getAt(0), t1[1] / t2.getAt(1));
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T div(float[] t1, float[] t2, @ExtractionParam T res)
 	{
 		res.set(t1[0] / t2[0], t1[1] / t2[1]);
 		
 		return res;
 	}
 
-	public static <T extends Tup2WF> T div(float[] t1, float t2v0, float t2v1, @ExtractionParam T res)
+	public static <T extends ITup2WF> T div(float[] t1, float t2v0, float t2v1, @ExtractionParam T res)
 	{
 		res.set(t1[0] / t2v0, t1[1] / t2v1);
 		
 		return res;
 	}
 
-	public static <T extends Tup2WF> T div(float t1v0, float t1v1, Tup2RF t2, @ExtractionParam T res)
+	public static <T extends ITup2WF> T div(float t1v0, float t1v1, ITup2RF t2, @ExtractionParam T res)
 	{
 		res.set(t1v0 / t2.v0(), t1v1 / t2.v1());
 		
 		return res;
 	}
 
-	public static <T extends Tup2WF> T div(float t1v0, float t1v1, float[] t2, @ExtractionParam T res)
+	public static <T extends ITup2WF> T div(float t1v0, float t1v1, ITupRF t2, @ExtractionParam T res)
+	{
+		res.set(t1v0 / t2.getAt(0), t1v1 / t2.getAt(1));
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T div(float t1v0, float t1v1, float[] t2, @ExtractionParam T res)
 	{
 		res.set(t1v0 / t2[0], t1v1 / t2[1]);
 		
 		return res;
 	}
 
-	public static <T extends Tup2WF> T div(float t1v0, float t1v1, float t2v0, float t2v1, @ExtractionParam T res)
+	public static <T extends ITup2WF> T div(float t1v0, float t1v1, float t2v0, float t2v1, @ExtractionParam T res)
 	{
 		res.set(t1v0 / t2v0, t1v1 / t2v1);
 		
@@ -905,55 +1376,97 @@ public class VecUtils2F
 	}
 
 	@SuppressWarnings("unchecked")
-	public static <T extends Tup2RF> T divCreateNew(Tup2RF t1, Tup2RF t2, T prototype)
+	public static <T extends ITup2RF> T divCreateNew(ITup2RF t1, ITup2RF t2, T prototype)
 	{
 		return (T) prototype.createNew(t1.v0() / t2.v0(), t1.v1() / t2.v1());
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static <T extends Tup2RF> T divCreateNew(Tup2RF t1, float[] t2, T prototype)
+	public static <T extends ITup2RF> T divCreateNew(ITup2RF t1, ITupRF t2, T prototype)
+	{
+		return (T) prototype.createNew(t1.v0() / t2.getAt(0), t1.v1() / t2.getAt(1));
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T divCreateNew(ITup2RF t1, float[] t2, T prototype)
 	{
 		return (T) prototype.createNew(t1.v0() / t2[0], t1.v1() / t2[1]);
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static <T extends Tup2RF> T divCreateNew(Tup2RF t1, float t2v0, float t2v1, T prototype)
+	public static <T extends ITup2RF> T divCreateNew(ITup2RF t1, float t2v0, float t2v1, T prototype)
 	{
 		return (T) prototype.createNew(t1.v0() / t2v0, t1.v1() / t2v1);
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static <T extends Tup2RF> T divCreateNew(float[] t1, Tup2RF t2, T prototype)
+	public static <T extends ITup2RF> T divCreateNew(ITupRF t1, ITup2RF t2, T prototype)
+	{
+		return (T) prototype.createNew(t1.getAt(0) / t2.v0(), t1.getAt(1) / t2.v1());
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T divCreateNew(ITupRF t1, ITupRF t2, T prototype)
+	{
+		return (T) prototype.createNew(t1.getAt(0) / t2.getAt(0), t1.getAt(1) / t2.getAt(1));
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T divCreateNew(ITupRF t1, float[] t2, T prototype)
+	{
+		return (T) prototype.createNew(t1.getAt(0) / t2[0], t1.getAt(1) / t2[1]);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T divCreateNew(ITupRF t1, float t2v0, float t2v1, T prototype)
+	{
+		return (T) prototype.createNew(t1.getAt(0) / t2v0, t1.getAt(1) / t2v1);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T divCreateNew(float[] t1, ITup2RF t2, T prototype)
 	{
 		return (T) prototype.createNew(t1[0] / t2.v0(), t1[1] / t2.v1());
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static <T extends Tup2RF> T divCreateNew(float[] t1, float[] t2, T prototype)
+	public static <T extends ITup2RF> T divCreateNew(float[] t1, ITupRF t2, T prototype)
+	{
+		return (T) prototype.createNew(t1[0] / t2.getAt(0), t1[1] / t2.getAt(1));
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T divCreateNew(float[] t1, float[] t2, T prototype)
 	{
 		return (T) prototype.createNew(t1[0] / t2[0], t1[1] / t2[1]);
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static <T extends Tup2RF> T divCreateNew(float[] t1, float t2v0, float t2v1, T prototype)
+	public static <T extends ITup2RF> T divCreateNew(float[] t1, float t2v0, float t2v1, T prototype)
 	{
 		return (T) prototype.createNew(t1[0] / t2v0, t1[1] / t2v1);
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static <T extends Tup2RF> T divCreateNew(float t1v0, float t1v1, Tup2RF t2, T prototype)
+	public static <T extends ITup2RF> T divCreateNew(float t1v0, float t1v1, ITup2RF t2, T prototype)
 	{
 		return (T) prototype.createNew(t1v0 / t2.v0(), t1v1 / t2.v1());
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static <T extends Tup2RF> T divCreateNew(float t1v0, float t1v1, float[] t2, T prototype)
+	public static <T extends ITup2RF> T divCreateNew(float t1v0, float t1v1, ITupRF t2, T prototype)
+	{
+		return (T) prototype.createNew(t1v0 / t2.getAt(0), t1v1 / t2.getAt(1));
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T divCreateNew(float t1v0, float t1v1, float[] t2, T prototype)
 	{
 		return (T) prototype.createNew(t1v0 / t2[0], t1v1 / t2[1]);
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static <T extends Tup2RF> T divCreateNew(float t1v0, float t1v1, float t2v0, float t2v1, T prototype)
+	public static <T extends ITup2RF> T divCreateNew(float t1v0, float t1v1, float t2v0, float t2v1, T prototype)
 	{
 		return (T) prototype.createNew(t1v0 / t2v0, t1v1 / t2v1);
 	}
@@ -987,134 +1500,508 @@ public class VecUtils2F
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] fma(Tup2RF t1, Tup2RF t2, Tup2RF t3, @ExtractionParam float[] res)
+	public static float[] fma(ITup2RF t1, ITup2RF t2, ITup2RF t3, @ExtractionParam float[] res)
 	{
-		return fma(t1.v0(), t1.v1(), t2.v0(), t2.v1(), t3.v0(), t3.v1(), res);
+		res[0] = MathUtils.fma(t1.v0(), t2.v0(), t3.v0());
+		res[1] = MathUtils.fma(t1.v1(), t2.v1(), t3.v1());
+		
+		return res;
 	}
 
-	public static float[] fma(Tup2RF t1, Tup2RF t2, float[] t3, @ExtractionParam float[] res)
+	public static float[] fma(ITup2RF t1, ITup2RF t2, ITupRF t3, @ExtractionParam float[] res)
 	{
-		return fma(t1.v0(), t1.v1(), t2.v0(), t2.v1(), t3[0], t3[1], res);
+		res[0] = MathUtils.fma(t1.v0(), t2.v0(), t3.getAt(0));
+		res[1] = MathUtils.fma(t1.v1(), t2.v1(), t3.getAt(1));
+		
+		return res;
+	}
+	
+	public static float[] fma(ITup2RF t1, ITup2RF t2, float[] t3, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.fma(t1.v0(), t2.v0(), t3[0]);
+		res[1] = MathUtils.fma(t1.v1(), t2.v1(), t3[1]);
+		
+		return res;
 	}
 
-	public static float[] fma(Tup2RF t1, Tup2RF t2, float t3v0, float t3v1, @ExtractionParam float[] res)
+	public static float[] fma(ITup2RF t1, ITup2RF t2, float t3v0, float t3v1, @ExtractionParam float[] res)
 	{
-		return fma(t1.v0(), t1.v1(), t2.v0(), t2.v1(), t3v0, t3v1, res);
+		res[0] = MathUtils.fma(t1.v0(), t2.v0(), t3v0);
+		res[1] = MathUtils.fma(t1.v1(), t2.v1(), t3v1);
+		
+		return res;
 	}
 
-	public static float[] fma(Tup2RF t1, float[] t2, Tup2RF t3, @ExtractionParam float[] res)
+	public static float[] fma(ITup2RF t1, ITupRF t2, ITup2RF t3, @ExtractionParam float[] res)
 	{
-		return fma(t1.v0(), t1.v1(), t2[0], t2[1], t3.v0(), t3.v1(), res);
+		res[0] = MathUtils.fma(t1.v0(), t2.getAt(0), t3.v0());
+		res[1] = MathUtils.fma(t1.v1(), t2.getAt(1), t3.v1());
+		
+		return res;
 	}
 
-	public static float[] fma(Tup2RF t1, float[] t2, float[] t3, @ExtractionParam float[] res)
+	public static float[] fma(ITup2RF t1, ITupRF t2, ITupRF t3, @ExtractionParam float[] res)
 	{
-		return fma(t1.v0(), t1.v1(), t2[0], t2[1], t3[0], t3[1], res);
+		res[0] = MathUtils.fma(t1.v0(), t2.getAt(0), t3.getAt(0));
+		res[1] = MathUtils.fma(t1.v1(), t2.getAt(1), t3.getAt(1));
+		
+		return res;
+	}
+	
+	public static float[] fma(ITup2RF t1, ITupRF t2, float[] t3, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.fma(t1.v0(), t2.getAt(0), t3[0]);
+		res[1] = MathUtils.fma(t1.v1(), t2.getAt(1), t3[1]);
+		
+		return res;
 	}
 
-	public static float[] fma(Tup2RF t1, float[] t2, float t3v0, float t3v1, @ExtractionParam float[] res)
+	public static float[] fma(ITup2RF t1, ITupRF t2, float t3v0, float t3v1, @ExtractionParam float[] res)
 	{
-		return fma(t1.v0(), t1.v1(), t2[0], t2[1], t3v0, t3v1, res);
+		res[0] = MathUtils.fma(t1.v0(), t2.getAt(0), t3v0);
+		res[1] = MathUtils.fma(t1.v1(), t2.getAt(1), t3v1);
+		
+		return res;
+	}
+	
+	public static float[] fma(ITup2RF t1, float[] t2, ITup2RF t3, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.fma(t1.v0(), t2[0], t3.v0());
+		res[1] = MathUtils.fma(t1.v1(), t2[1], t3.v1());
+		
+		return res;
 	}
 
-	public static float[] fma(Tup2RF t1, float t2v0, float t2v1, Tup2RF t3, @ExtractionParam float[] res)
+	public static float[] fma(ITup2RF t1, float[] t2, ITupRF t3, @ExtractionParam float[] res)
 	{
-		return fma(t1.v0(), t1.v1(), t2v0, t2v1, t3.v0(), t3.v1(), res);
+		res[0] = MathUtils.fma(t1.v0(), t2[0], t3.getAt(0));
+		res[1] = MathUtils.fma(t1.v1(), t2[1], t3.getAt(1));
+		
+		return res;
+	}
+	
+	public static float[] fma(ITup2RF t1, float[] t2, float[] t3, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.fma(t1.v0(), t2[0], t3[0]);
+		res[1] = MathUtils.fma(t1.v1(), t2[1], t3[1]);
+		
+		return res;
 	}
 
-	public static float[] fma(Tup2RF t1, float t2v0, float t2v1, float[] t3, @ExtractionParam float[] res)
+	public static float[] fma(ITup2RF t1, float[] t2, float t3v0, float t3v1, @ExtractionParam float[] res)
 	{
-		return fma(t1.v0(), t1.v1(), t2v0, t2v1, t3[0], t3[1], res);
+		res[0] = MathUtils.fma(t1.v0(), t2[0], t3v0);
+		res[1] = MathUtils.fma(t1.v1(), t2[1], t3v1);
+		
+		return res;
 	}
 
-	public static float[] fma(Tup2RF t1, float t2v0, float t2v1, float t3v0, float t3v1, @ExtractionParam float[] res)
+	public static float[] fma(ITup2RF t1, float t2v0, float t2v1, ITup2RF t3, @ExtractionParam float[] res)
 	{
-		return fma(t1.v0(), t1.v1(), t2v0, t2v1, t3v0, t3v1, res);
+		res[0] = MathUtils.fma(t1.v0(), t2v0, t3.v0());
+		res[1] = MathUtils.fma(t1.v1(), t2v1, t3.v1());
+		
+		return res;
 	}
 
-	public static float[] fma(float[] t1, Tup2RF t2, Tup2RF t3, @ExtractionParam float[] res)
+	public static float[] fma(ITup2RF t1, float t2v0, float t2v1, ITupRF t3, @ExtractionParam float[] res)
 	{
-		return fma(t1[0], t1[1], t2.v0(), t2.v1(), t3.v0(), t3.v1(), res);
+		res[0] = MathUtils.fma(t1.v0(), t2v0, t3.getAt(0));
+		res[1] = MathUtils.fma(t1.v1(), t2v1, t3.getAt(1));
+		
+		return res;
+	}
+	
+	public static float[] fma(ITup2RF t1, float t2v0, float t2v1, float[] t3, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.fma(t1.v0(), t2v0, t3[0]);
+		res[1] = MathUtils.fma(t1.v1(), t2v1, t3[1]);
+		
+		return res;
 	}
 
-	public static float[] fma(float[] t1, Tup2RF t2, float[] t3, @ExtractionParam float[] res)
+	public static float[] fma(ITup2RF t1, float t2v0, float t2v1, float t3v0, float t3v1, @ExtractionParam float[] res)
 	{
-		return fma(t1[0], t1[1], t2.v0(), t2.v1(), t3[0], t3[1], res);
+		res[0] = MathUtils.fma(t1.v0(), t2v0, t3v0);
+		res[1] = MathUtils.fma(t1.v1(), t2v1, t3v1);
+		
+		return res;
 	}
 
-	public static float[] fma(float[] t1, Tup2RF t2, float t3v0, float t3v1, @ExtractionParam float[] res)
+	public static float[] fma(ITupRF t1, ITup2RF t2, ITup2RF t3, @ExtractionParam float[] res)
 	{
-		return fma(t1[0], t1[1], t2.v0(), t2.v1(), t3v0, t3v1, res);
+		res[0] = MathUtils.fma(t1.getAt(0), t2.v0(), t3.v0());
+		res[1] = MathUtils.fma(t1.getAt(1), t2.v1(), t3.v1());
+		
+		return res;
 	}
 
-	public static float[] fma(float[] t1, float[] t2, Tup2RF t3, @ExtractionParam float[] res)
+	public static float[] fma(ITupRF t1, ITup2RF t2, ITupRF t3, @ExtractionParam float[] res)
 	{
-		return fma(t1[0], t1[1], t2[0], t2[1], t3.v0(), t3.v1(), res);
+		res[0] = MathUtils.fma(t1.getAt(0), t2.v0(), t3.getAt(0));
+		res[1] = MathUtils.fma(t1.getAt(1), t2.v1(), t3.getAt(1));
+		
+		return res;
+	}
+	
+	public static float[] fma(ITupRF t1, ITup2RF t2, float[] t3, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.fma(t1.getAt(0), t2.v0(), t3[0]);
+		res[1] = MathUtils.fma(t1.getAt(1), t2.v1(), t3[1]);
+		
+		return res;
 	}
 
+	public static float[] fma(ITupRF t1, ITup2RF t2, float t3v0, float t3v1, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.fma(t1.getAt(0), t2.v0(), t3v0);
+		res[1] = MathUtils.fma(t1.getAt(1), t2.v1(), t3v1);
+		
+		return res;
+	}
+
+	public static float[] fma(ITupRF t1, ITupRF t2, ITup2RF t3, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.fma(t1.getAt(0), t2.getAt(0), t3.v0());
+		res[1] = MathUtils.fma(t1.getAt(1), t2.getAt(1), t3.v1());
+		
+		return res;
+	}
+
+	public static float[] fma(ITupRF t1, ITupRF t2, ITupRF t3, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.fma(t1.getAt(0), t2.getAt(0), t3.getAt(0));
+		res[1] = MathUtils.fma(t1.getAt(1), t2.getAt(1), t3.getAt(1));
+		
+		return res;
+	}
+	
+	public static float[] fma(ITupRF t1, ITupRF t2, float[] t3, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.fma(t1.getAt(0), t2.getAt(0), t3[0]);
+		res[1] = MathUtils.fma(t1.getAt(1), t2.getAt(1), t3[1]);
+		
+		return res;
+	}
+
+	public static float[] fma(ITupRF t1, ITupRF t2, float t3v0, float t3v1, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.fma(t1.getAt(0), t2.getAt(0), t3v0);
+		res[1] = MathUtils.fma(t1.getAt(1), t2.getAt(1), t3v1);
+		
+		return res;
+	}
+	
+	public static float[] fma(ITupRF t1, float[] t2, ITup2RF t3, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.fma(t1.getAt(0), t2[0], t3.v0());
+		res[1] = MathUtils.fma(t1.getAt(1), t2[1], t3.v1());
+		
+		return res;
+	}
+
+	public static float[] fma(ITupRF t1, float[] t2, ITupRF t3, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.fma(t1.getAt(0), t2[0], t3.getAt(0));
+		res[1] = MathUtils.fma(t1.getAt(1), t2[1], t3.getAt(1));
+		
+		return res;
+	}
+	
+	public static float[] fma(ITupRF t1, float[] t2, float[] t3, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.fma(t1.getAt(0), t2[0], t3[0]);
+		res[1] = MathUtils.fma(t1.getAt(1), t2[1], t3[1]);
+		
+		return res;
+	}
+
+	public static float[] fma(ITupRF t1, float[] t2, float t3v0, float t3v1, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.fma(t1.getAt(0), t2[0], t3v0);
+		res[1] = MathUtils.fma(t1.getAt(1), t2[1], t3v1);
+		
+		return res;
+	}
+
+	public static float[] fma(ITupRF t1, float t2v0, float t2v1, ITup2RF t3, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.fma(t1.getAt(0), t2v0, t3.v0());
+		res[1] = MathUtils.fma(t1.getAt(1), t2v1, t3.v1());
+		
+		return res;
+	}
+
+	public static float[] fma(ITupRF t1, float t2v0, float t2v1, ITupRF t3, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.fma(t1.getAt(0), t2v0, t3.getAt(0));
+		res[1] = MathUtils.fma(t1.getAt(1), t2v1, t3.getAt(1));
+		
+		return res;
+	}
+	
+	public static float[] fma(ITupRF t1, float t2v0, float t2v1, float[] t3, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.fma(t1.getAt(0), t2v0, t3[0]);
+		res[1] = MathUtils.fma(t1.getAt(1), t2v1, t3[1]);
+		
+		return res;
+	}
+
+	public static float[] fma(ITupRF t1, float t2v0, float t2v1, float t3v0, float t3v1, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.fma(t1.getAt(0), t2v0, t3v0);
+		res[1] = MathUtils.fma(t1.getAt(1), t2v1, t3v1);
+		
+		return res;
+	}
+	
+	public static float[] fma(float[] t1, ITup2RF t2, ITup2RF t3, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.fma(t1[0], t2.getAt(0), t3.v0());
+		res[1] = MathUtils.fma(t1[1], t2.getAt(1), t3.v1());
+		
+		return res;
+	}
+
+	public static float[] fma(float[] t1, ITup2RF t2, ITupRF t3, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.fma(t1[0], t2.getAt(0), t3.getAt(0));
+		res[1] = MathUtils.fma(t1[1], t2.getAt(1), t3.getAt(1));
+		
+		return res;
+	}
+	
+	public static float[] fma(float[] t1, ITup2RF t2, float[] t3, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.fma(t1[0], t2.getAt(0), t3[0]);
+		res[1] = MathUtils.fma(t1[1], t2.getAt(1), t3[1]);
+		
+		return res;
+	}
+
+	public static float[] fma(float[] t1, ITup2RF t2, float t3v0, float t3v1, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.fma(t1[0], t2.getAt(0), t3v0);
+		res[1] = MathUtils.fma(t1[1], t2.getAt(1), t3v1);
+		
+		return res;
+	}
+
+	public static float[] fma(float[] t1, ITupRF t2, ITup2RF t3, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.fma(t1[0], t2.getAt(0), t3.v0());
+		res[1] = MathUtils.fma(t1[1], t2.getAt(1), t3.v1());
+		
+		return res;
+	}
+
+	public static float[] fma(float[] t1, ITupRF t2, ITupRF t3, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.fma(t1[0], t2.getAt(0), t3.getAt(0));
+		res[1] = MathUtils.fma(t1[1], t2.getAt(1), t3.getAt(1));
+		
+		return res;
+	}
+	
+	public static float[] fma(float[] t1, ITupRF t2, float[] t3, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.fma(t1[0], t2.getAt(0), t3[0]);
+		res[1] = MathUtils.fma(t1[1], t2.getAt(1), t3[2]);
+		
+		return res;
+	}
+
+	public static float[] fma(float[] t1, ITupRF t2, float t3v0, float t3v1, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.fma(t1[0], t2.getAt(0), t3v0);
+		res[1] = MathUtils.fma(t1[1], t2.getAt(1), t3v1);
+		
+		return res;
+	}
+	
+	public static float[] fma(float[] t1, float[] t2, ITup2RF t3, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.fma(t1[0], t2[0], t3.v0());
+		res[1] = MathUtils.fma(t1[1], t2[1], t3.v1());
+		
+		return res;
+	}
+
+	public static float[] fma(float[] t1, float[] t2, ITupRF t3, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.fma(t1[0], t2[0], t3.getAt(0));
+		res[1] = MathUtils.fma(t1[1], t2[1], t3.getAt(1));
+		
+		return res;
+	}
+	
 	public static float[] fma(float[] t1, float[] t2, float[] t3, @ExtractionParam float[] res)
 	{
-		return fma(t1[0], t1[1], t2[0], t2[1], t3[0], t3[1], res);
+		res[0] = MathUtils.fma(t1[0], t2[0], t3[0]);
+		res[1] = MathUtils.fma(t1[1], t2[1], t3[1]);
+		
+		return res;
 	}
 
 	public static float[] fma(float[] t1, float[] t2, float t3v0, float t3v1, @ExtractionParam float[] res)
 	{
-		return fma(t1[0], t1[1], t2[0], t2[1], t3v0, t3v1, res);
+		res[0] = MathUtils.fma(t1[0], t2[0], t3v0);
+		res[1] = MathUtils.fma(t1[1], t2[1], t3v1);
+		
+		return res;
 	}
 
-	public static float[] fma(float[] t1, float t2v0, float t2v1, Tup2RF t3, @ExtractionParam float[] res)
+	public static float[] fma(float[] t1, float t2v0, float t2v1, ITup2RF t3, @ExtractionParam float[] res)
 	{
-		return fma(t1[0], t1[1], t2v0, t2v1, t3.v0(), t3.v1(), res);
+		res[0] = MathUtils.fma(t1[0], t2v0, t3.v0());
+		res[1] = MathUtils.fma(t1[1], t2v1, t3.v1());
+		
+		return res;
 	}
 
+	public static float[] fma(float[] t1, float t2v0, float t2v1, ITupRF t3, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.fma(t1[0], t2v0, t3.getAt(0));
+		res[1] = MathUtils.fma(t1[1], t2v1, t3.getAt(1));
+		
+		return res;
+	}
+	
 	public static float[] fma(float[] t1, float t2v0, float t2v1, float[] t3, @ExtractionParam float[] res)
 	{
-		return fma(t1[0], t1[1], t2v0, t2v1, t3[0], t3[1], res);
+		res[0] = MathUtils.fma(t1[0], t2v0, t3[0]);
+		res[1] = MathUtils.fma(t1[1], t2v1, t3[1]);
+		
+		return res;
 	}
 
 	public static float[] fma(float[] t1, float t2v0, float t2v1, float t3v0, float t3v1, @ExtractionParam float[] res)
 	{
-		return fma(t1[0], t1[1], t2v0, t2v1, t3v0, t3v1, res);
+		res[0] = MathUtils.fma(t1[0], t2v0, t3v0);
+		res[1] = MathUtils.fma(t1[1], t2v1, t3v1);
+		
+		return res;
 	}
 
-	public static float[] fma(float t1v0, float t1v1, Tup2RF t2, Tup2RF t3, @ExtractionParam float[] res)
+	public static float[] fma(float t1v0, float t1v1, ITup2RF t2, ITup2RF t3, @ExtractionParam float[] res)
 	{
-		return fma(t1v0, t1v1, t2.v0(), t2.v1(), t3.v0(), t3.v1(), res);
+		res[0] = MathUtils.fma(t1v0, t2.v0(), t3.v0());
+		res[1] = MathUtils.fma(t1v1, t2.v1(), t3.v1());
+		
+		return res;
 	}
 
-	public static float[] fma(float t1v0, float t1v1, Tup2RF t2, float[] t3, @ExtractionParam float[] res)
+	public static float[] fma(float t1v0, float t1v1, ITup2RF t2, ITupRF t3, @ExtractionParam float[] res)
 	{
-		return fma(t1v0, t1v1, t2.v0(), t2.v1(), t3[0], t3[1], res);
+		res[0] = MathUtils.fma(t1v0, t2.v0(), t3.getAt(0));
+		res[1] = MathUtils.fma(t1v1, t2.v1(), t3.getAt(1));
+		
+		return res;
 	}
-
-	public static float[] fma(float t1v0, float t1v1, Tup2RF t2, float t3v0, float t3v1, @ExtractionParam float[] res)
+	
+	public static float[] fma(float t1v0, float t1v1, ITup2RF t2, float[] t3, @ExtractionParam float[] res)
 	{
-		return fma(t1v0, t1v1, t2.v0(), t2.v1(), t3v0, t3v1, res);
+		res[0] = MathUtils.fma(t1v0, t2.v0(), t3[0]);
+		res[1] = MathUtils.fma(t1v1, t2.v1(), t3[1]);
+		
+		return res;
 	}
 
-	public static float[] fma(float t1v0, float t1v1, float[] t2, Tup2RF t3, @ExtractionParam float[] res)
+	public static float[] fma(float t1v0, float t1v1, ITup2RF t2, float t3v0, float t3v1, @ExtractionParam float[] res)
 	{
-		return fma(t1v0, t1v1, t2[0], t2[1], t3.v0(), t3.v1(), res);
+		res[0] = MathUtils.fma(t1v0, t2.v0(), t3v0);
+		res[1] = MathUtils.fma(t1v1, t2.v1(), t3v1);
+		
+		return res;
 	}
 
+	public static float[] fma(float t1v0, float t1v1, ITupRF t2, ITup2RF t3, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.fma(t1v0, t2.getAt(0), t3.v0());
+		res[1] = MathUtils.fma(t1v1, t2.getAt(1), t3.v1());
+		
+		return res;
+	}
+
+	public static float[] fma(float t1v0, float t1v1, ITupRF t2, ITupRF t3, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.fma(t1v0, t2.getAt(0), t3.getAt(0));
+		res[1] = MathUtils.fma(t1v1, t2.getAt(1), t3.getAt(1));
+		
+		return res;
+	}
+	
+	public static float[] fma(float t1v0, float t1v1, ITupRF t2, float[] t3, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.fma(t1v0, t2.getAt(0), t3[0]);
+		res[1] = MathUtils.fma(t1v1, t2.getAt(1), t3[1]);
+		
+		return res;
+	}
+
+	public static float[] fma(float t1v0, float t1v1, ITupRF t2, float t3v0, float t3v1, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.fma(t1v0, t2.getAt(0), t3v0);
+		res[1] = MathUtils.fma(t1v1, t2.getAt(1), t3v1);
+		
+		return res;
+	}
+	
+	public static float[] fma(float t1v0, float t1v1, float[] t2, ITup2RF t3, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.fma(t1v0, t2[0], t3.v0());
+		res[1] = MathUtils.fma(t1v1, t2[1], t3.v1());
+		
+		return res;
+	}
+
+	public static float[] fma(float t1v0, float t1v1, float[] t2, ITupRF t3, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.fma(t1v0, t2[0], t3.getAt(0));
+		res[1] = MathUtils.fma(t1v1, t2[1], t3.getAt(1));
+		
+		return res;
+	}
+	
 	public static float[] fma(float t1v0, float t1v1, float[] t2, float[] t3, @ExtractionParam float[] res)
 	{
-		return fma(t1v0, t1v1, t2[0], t2[1], t3[0], t3[1], res);
+		res[0] = MathUtils.fma(t1v0, t2[0], t3[0]);
+		res[1] = MathUtils.fma(t1v1, t2[1], t3[1]);
+		
+		return res;
 	}
 
 	public static float[] fma(float t1v0, float t1v1, float[] t2, float t3v0, float t3v1, @ExtractionParam float[] res)
 	{
-		return fma(t1v0, t1v1, t2[0], t2[1], t3v0, t3v1, res);
+		res[0] = MathUtils.fma(t1v0, t2[0], t3v0);
+		res[1] = MathUtils.fma(t1v1, t2[1], t3v1);
+		
+		return res;
 	}
 
-	public static float[] fma(float t1v0, float t1v1, float t2v0, float t2v1, Tup2RF t3, @ExtractionParam float[] res)
+	public static float[] fma(float t1v0, float t1v1, float t2v0, float t2v1, ITup2RF t3, @ExtractionParam float[] res)
 	{
-		return fma(t1v0, t1v1, t2v0, t2v1, t3.v0(), t3.v1(), res);
+		res[0] = MathUtils.fma(t1v0, t2v0, t3.v0());
+		res[1] = MathUtils.fma(t1v1, t2v1, t3.v1());
+		
+		return res;
 	}
 
+	public static float[] fma(float t1v0, float t1v1, float t2v0, float t2v1, ITupRF t3, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.fma(t1v0, t2v0, t3.getAt(0));
+		res[1] = MathUtils.fma(t1v1, t2v1, t3.getAt(1));
+		
+		return res;
+	}
+	
 	public static float[] fma(float t1v0, float t1v1, float t2v0, float t2v1, float[] t3, @ExtractionParam float[] res)
 	{
-		return fma(t1v0, t1v1, t2v0, t2v1, t3[0], t3[1], res);
+		res[0] = MathUtils.fma(t1v0, t2v0, t3[0]);
+		res[1] = MathUtils.fma(t1v1, t2v1, t3[1]);
+		
+		return res;
 	}
 
 	public static float[] fma(float t1v0, float t1v1, float t2v0, float t2v1, float t3v0, float t3v1, @ExtractionParam float[] res)
@@ -1125,143 +2012,838 @@ public class VecUtils2F
 		return res;
 	}
 
-	public static <T extends Tup2WF> T fma(Tup2RF t1, Tup2RF t2, Tup2RF t3, @ExtractionParam T res)
+	public static <T extends ITup2WF> T fma(ITup2RF t1, ITup2RF t2, ITup2RF t3, @ExtractionParam T res)
 	{
-		return fma(t1.v0(), t1.v1(), t2.v0(), t2.v1(), t3.v0(), t3.v1(), res);
+		res.set(MathUtils.fma(t1.v0(), t2.getAt(0), t3.v0()), MathUtils.fma(t1.v1(), t2.getAt(1), t3.v1()));
+		
+		return res;
 	}
 
-	public static <T extends Tup2WF> T fma(Tup2RF t1, Tup2RF t2, float[] t3, @ExtractionParam T res)
+	public static <T extends ITup2WF> T fma(ITup2RF t1, ITup2RF t2, ITupRF t3, @ExtractionParam T res)
 	{
-		return fma(t1.v0(), t1.v1(), t2.v0(), t2.v1(), t3[0], t3[1], res);
+		res.set(MathUtils.fma(t1.v0(), t2.getAt(0), t3.getAt(0)), MathUtils.fma(t1.v1(), t2.getAt(1), t3.getAt(1)));
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T fma(ITup2RF t1, ITup2RF t2, float[] t3, @ExtractionParam T res)
+	{
+		res.set(MathUtils.fma(t1.v0(), t2.getAt(0), t3[0]), MathUtils.fma(t1.v1(), t2.getAt(1), t3[1]));
+		
+		return res;
 	}
 
-	public static <T extends Tup2WF> T fma(Tup2RF t1, Tup2RF t2, float t3v0, float t3v1, @ExtractionParam T res)
+	public static <T extends ITup2WF> T fma(ITup2RF t1, ITup2RF t2, float t3v0, float t3v1, @ExtractionParam T res)
 	{
-		return fma(t1.v0(), t1.v1(), t2.v0(), t2.v1(), t3v0, t3v1, res);
+		res.set(MathUtils.fma(t1.v0(), t2.getAt(0), t3v0), MathUtils.fma(t1.v1(), t2.getAt(1), t3v1));
+		
+		return res;
 	}
 
-	public static <T extends Tup2WF> T fma(Tup2RF t1, float[] t2, Tup2RF t3, @ExtractionParam T res)
+	public static <T extends ITup2WF> T fma(ITup2RF t1, ITupRF t2, ITup2RF t3, @ExtractionParam T res)
 	{
-		return fma(t1.v0(), t1.v1(), t2[0], t2[1], t3.v0(), t3.v1(), res);
+		res.set(MathUtils.fma(t1.v0(), t2.getAt(0), t3.v0()), MathUtils.fma(t1.v1(), t2.getAt(1), t3.v1()));
+		
+		return res;
 	}
 
-	public static <T extends Tup2WF> T fma(Tup2RF t1, float[] t2, float[] t3, @ExtractionParam T res)
+	public static <T extends ITup2WF> T fma(ITup2RF t1, ITupRF t2, ITupRF t3, @ExtractionParam T res)
 	{
-		return fma(t1.v0(), t1.v1(), t2[0], t2[1], t3[0], t3[1], res);
+		res.set(MathUtils.fma(t1.v0(), t2.getAt(0), t3.getAt(0)), MathUtils.fma(t1.v1(), t2.getAt(1), t3.getAt(1)));
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T fma(ITup2RF t1, ITupRF t2, float[] t3, @ExtractionParam T res)
+	{
+		res.set(MathUtils.fma(t1.v0(), t2.getAt(0), t3[0]), MathUtils.fma(t1.v1(), t2.getAt(1), t3[1]));
+		
+		return res;
 	}
 
-	public static <T extends Tup2WF> T fma(Tup2RF t1, float[] t2, float t3v0, float t3v1, @ExtractionParam T res)
+	public static <T extends ITup2WF> T fma(ITup2RF t1, ITupRF t2, float t3v0, float t3v1, @ExtractionParam T res)
 	{
-		return fma(t1.v0(), t1.v1(), t2[0], t2[1], t3v0, t3v1, res);
+		res.set(MathUtils.fma(t1.v0(), t2.getAt(0), t3v0), MathUtils.fma(t1.v1(), t2.getAt(1), t3v1));
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T fma(ITup2RF t1, float[] t2, ITup2RF t3, @ExtractionParam T res)
+	{
+		res.set(MathUtils.fma(t1.v0(), t2[0], t3.v0()), MathUtils.fma(t1.v1(), t2[1], t3.v1()));
+		
+		return res;
 	}
 
-	public static <T extends Tup2WF> T fma(Tup2RF t1, float t2v0, float t2v1, Tup2RF t3, @ExtractionParam T res)
+	public static <T extends ITup2WF> T fma(ITup2RF t1, float[] t2, ITupRF t3, @ExtractionParam T res)
 	{
-		return fma(t1.v0(), t1.v1(), t2v0, t2v1, t3.v0(), t3.v1(), res);
+		res.set(MathUtils.fma(t1.v0(), t2[0], t3.getAt(0)), MathUtils.fma(t1.v1(), t2[1], t3.getAt(1)));
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T fma(ITup2RF t1, float[] t2, float[] t3, @ExtractionParam T res)
+	{
+		res.set(MathUtils.fma(t1.v0(), t2[0], t3[0]), MathUtils.fma(t1.v1(), t2[1], t3[1]));
+		
+		return res;
 	}
 
-	public static <T extends Tup2WF> T fma(Tup2RF t1, float t2v0, float t2v1, float[] t3, @ExtractionParam T res)
+	public static <T extends ITup2WF> T fma(ITup2RF t1, float[] t2, float t3v0, float t3v1, @ExtractionParam T res)
 	{
-		return fma(t1.v0(), t1.v1(), t2v0, t2v1, t3[0], t3[1], res);
+		res.set(MathUtils.fma(t1.v0(), t2[0], t3v0), MathUtils.fma(t1.v1(), t2[1], t3v1));
+		
+		return res;
 	}
 
-	public static <T extends Tup2WF> T fma(Tup2RF t1, float t2v0, float t2v1, float t3v0, float t3v1, @ExtractionParam T res)
+	public static <T extends ITup2WF> T fma(ITup2RF t1, float t2v0, float t2v1, ITup2RF t3, @ExtractionParam T res)
 	{
-		return fma(t1.v0(), t1.v1(), t2v0, t2v1, t3v0, t3v1, res);
+		res.set(MathUtils.fma(t1.v0(), t2v0, t3.v0()), MathUtils.fma(t1.v1(), t2v1, t3.v1()));
+		
+		return res;
 	}
 
-	public static <T extends Tup2WF> T fma(float[] t1, Tup2RF t2, Tup2RF t3, @ExtractionParam T res)
+	public static <T extends ITup2WF> T fma(ITup2RF t1, float t2v0, float t2v1, ITupRF t3, @ExtractionParam T res)
 	{
-		return fma(t1[0], t1[1], t2.v0(), t2.v1(), t3.v0(), t3.v1(), res);
+		res.set(MathUtils.fma(t1.v0(), t2v0, t3.getAt(0)), MathUtils.fma(t1.v1(), t2v1, t3.getAt(1)));
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T fma(ITup2RF t1, float t2v0, float t2v1, float[] t3, @ExtractionParam T res)
+	{
+		res.set(MathUtils.fma(t1.v0(), t2v0, t3[0]), MathUtils.fma(t1.v1(), t2v1, t3[1]));
+		
+		return res;
 	}
 
-	public static <T extends Tup2WF> T fma(float[] t1, Tup2RF t2, float[] t3, @ExtractionParam T res)
+	public static <T extends ITup2WF> T fma(ITup2RF t1, float t2v0, float t2v1, float t3v0, float t3v1, @ExtractionParam T res)
 	{
-		return fma(t1[0], t1[1], t2.v0(), t2.v1(), t3[0], t3[1], res);
+		res.set(MathUtils.fma(t1.v0(), t2v0, t3v0), MathUtils.fma(t1.v1(), t2v1, t3v1));
+		
+		return res;
 	}
 
-	public static <T extends Tup2WF> T fma(float[] t1, Tup2RF t2, float t3v0, float t3v1, @ExtractionParam T res)
+	public static <T extends ITup2WF> T fma(ITupRF t1, ITup2RF t2, ITup2RF t3, @ExtractionParam T res)
 	{
-		return fma(t1[0], t1[1], t2.v0(), t2.v1(), t3v0, t3v1, res);
+		res.set(MathUtils.fma(t1.getAt(0), t2.v0(), t3.v0()), MathUtils.fma(t1.getAt(1), t2.v1(), t3.v1()));
+		
+		return res;
 	}
 
-	public static <T extends Tup2WF> T fma(float[] t1, float[] t2, Tup2RF t3, @ExtractionParam T res)
+	public static <T extends ITup2WF> T fma(ITupRF t1, ITup2RF t2, ITupRF t3, @ExtractionParam T res)
 	{
-		return fma(t1[0], t1[1], t2[0], t2[1], t3.v0(), t3.v1(), res);
+		res.set(MathUtils.fma(t1.getAt(0), t2.v0(), t3.getAt(0)), MathUtils.fma(t1.getAt(1), t2.v1(), t3.getAt(1)));
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T fma(ITupRF t1, ITup2RF t2, float[] t3, @ExtractionParam T res)
+	{
+		res.set(MathUtils.fma(t1.getAt(0), t2.v0(), t3[0]), MathUtils.fma(t1.getAt(1), t2.v1(), t3[1]));
+		
+		return res;
 	}
 
-	public static <T extends Tup2WF> T fma(float[] t1, float[] t2, float[] t3, @ExtractionParam T res)
+	public static <T extends ITup2WF> T fma(ITupRF t1, ITup2RF t2, float t3v0, float t3v1, @ExtractionParam T res)
 	{
-		return fma(t1[0], t1[1], t2[0], t2[1], t3[0], t3[1], res);
+		res.set(MathUtils.fma(t1.getAt(0), t2.v0(), t3v0), MathUtils.fma(t1.getAt(1), t2.v1(), t3v1));
+		
+		return res;
 	}
 
-	public static <T extends Tup2WF> T fma(float[] t1, float[] t2, float t3v0, float t3v1, @ExtractionParam T res)
+	public static <T extends ITup2WF> T fma(ITupRF t1, ITupRF t2, ITup2RF t3, @ExtractionParam T res)
 	{
-		return fma(t1[0], t1[1], t2[0], t2[1], t3v0, t3v1, res);
+		res.set(MathUtils.fma(t1.getAt(0), t2.getAt(0), t3.v0()), MathUtils.fma(t1.getAt(1), t2.getAt(1), t3.v1()));
+		
+		return res;
 	}
 
-	public static <T extends Tup2WF> T fma(float[] t1, float t2v0, float t2v1, Tup2RF t3, @ExtractionParam T res)
+	public static <T extends ITup2WF> T fma(ITupRF t1, ITupRF t2, ITupRF t3, @ExtractionParam T res)
 	{
-		return fma(t1[0], t1[1], t2v0, t2v1, t3.v0(), t3.v1(), res);
+		res.set(MathUtils.fma(t1.getAt(0), t2.getAt(0), t3.getAt(0)), MathUtils.fma(t1.getAt(1), t2.getAt(1), t3.getAt(1)));
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T fma(ITupRF t1, ITupRF t2, float[] t3, @ExtractionParam T res)
+	{
+		res.set(MathUtils.fma(t1.getAt(0), t2.getAt(0), t3[0]), MathUtils.fma(t1.getAt(1), t2.getAt(1), t3[1]));
+		
+		return res;
 	}
 
-	public static <T extends Tup2WF> T fma(float[] t1, float t2v0, float t2v1, float[] t3, @ExtractionParam T res)
+	public static <T extends ITup2WF> T fma(ITupRF t1, ITupRF t2, float t3v0, float t3v1, @ExtractionParam T res)
 	{
-		return fma(t1[0], t1[1], t2v0, t2v1, t3[0], t3[1], res);
+		res.set(MathUtils.fma(t1.getAt(0), t2.getAt(0), t3v0), MathUtils.fma(t1.getAt(1), t2.getAt(1), t3v1));
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T fma(ITupRF t1, float[] t2, ITup2RF t3, @ExtractionParam T res)
+	{
+		res.set(MathUtils.fma(t1.getAt(0), t2[0], t3.v0()), MathUtils.fma(t1.getAt(1), t2[1], t3.v1()));
+		
+		return res;
 	}
 
-	public static <T extends Tup2WF> T fma(float[] t1, float t2v0, float t2v1, float t3v0, float t3v1, @ExtractionParam T res)
+	public static <T extends ITup2WF> T fma(ITupRF t1, float[] t2, ITupRF t3, @ExtractionParam T res)
 	{
-		return fma(t1[0], t1[1], t2v0, t2v1, t3v0, t3v1, res);
+		res.set(MathUtils.fma(t1.getAt(0), t2[0], t3.getAt(0)), MathUtils.fma(t1.getAt(1), t2[1], t3.getAt(1)));
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T fma(ITupRF t1, float[] t2, float[] t3, @ExtractionParam T res)
+	{
+		res.set(MathUtils.fma(t1.getAt(0), t2[0], t3[0]), MathUtils.fma(t1.getAt(1), t2[1], t3[1]));
+		
+		return res;
 	}
 
-	public static <T extends Tup2WF> T fma(float t1v0, float t1v1, Tup2RF t2, Tup2RF t3, @ExtractionParam T res)
+	public static <T extends ITup2WF> T fma(ITupRF t1, float[] t2, float t3v0, float t3v1, @ExtractionParam T res)
 	{
-		return fma(t1v0, t1v1, t2.v0(), t2.v1(), t3.v0(), t3.v1(), res);
+		res.set(MathUtils.fma(t1.getAt(0), t2[0], t3v0), MathUtils.fma(t1.getAt(1), t2[1], t3v1));
+		
+		return res;
 	}
 
-	public static <T extends Tup2WF> T fma(float t1v0, float t1v1, Tup2RF t2, float[] t3, @ExtractionParam T res)
+	public static <T extends ITup2WF> T fma(ITupRF t1, float t2v0, float t2v1, ITup2RF t3, @ExtractionParam T res)
 	{
-		return fma(t1v0, t1v1, t2.v0(), t2.v1(), t3[0], t3[1], res);
+		res.set(MathUtils.fma(t1.getAt(0), t2v0, t3.v0()), MathUtils.fma(t1.getAt(1), t2v1, t3.v1()));
+		
+		return res;
 	}
 
-	public static <T extends Tup2WF> T fma(float t1v0, float t1v1, Tup2RF t2, float t3v0, float t3v1, @ExtractionParam T res)
+	public static <T extends ITup2WF> T fma(ITupRF t1, float t2v0, float t2v1, ITupRF t3, @ExtractionParam T res)
 	{
-		return fma(t1v0, t1v1, t2.v0(), t2.v1(), t3v0, t3v1, res);
+		res.set(MathUtils.fma(t1.getAt(0), t2v0, t3.getAt(0)), MathUtils.fma(t1.getAt(1), t2v1, t3.getAt(1)));
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T fma(ITupRF t1, float t2v0, float t2v1, float[] t3, @ExtractionParam T res)
+	{
+		res.set(MathUtils.fma(t1.getAt(0), t2v0, t3[0]), MathUtils.fma(t1.getAt(1), t2v1, t3[1]));
+		
+		return res;
 	}
 
-	public static <T extends Tup2WF> T fma(float t1v0, float t1v1, float[] t2, Tup2RF t3, @ExtractionParam T res)
+	public static <T extends ITup2WF> T fma(ITupRF t1, float t2v0, float t2v1, float t3v0, float t3v1, @ExtractionParam T res)
 	{
-		return fma(t1v0, t1v1, t2[0], t2[1], t3.v0(), t3.v1(), res);
+		res.set(MathUtils.fma(t1.getAt(0), t2v0, t3v0), MathUtils.fma(t1.getAt(1), t2v1, t3v1));
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T fma(float[] t1, ITup2RF t2, ITup2RF t3, @ExtractionParam T res)
+	{
+		res.set(MathUtils.fma(t1[0], t2.v0(), t3.v0()), MathUtils.fma(t1[1], t2.v1(), t3.v1()));
+		
+		return res;
 	}
 
-	public static <T extends Tup2WF> T fma(float t1v0, float t1v1, float[] t2, float[] t3, @ExtractionParam T res)
+	public static <T extends ITup2WF> T fma(float[] t1, ITup2RF t2, ITupRF t3, @ExtractionParam T res)
 	{
-		return fma(t1v0, t1v1, t2[0], t2[1], t3[0], t3[1], res);
+		res.set(MathUtils.fma(t1[0], t2.v0(), t3.getAt(0)), MathUtils.fma(t1[1], t2.v1(), t3.getAt(1)));
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T fma(float[] t1, ITup2RF t2, float[] t3, @ExtractionParam T res)
+	{
+		res.set(MathUtils.fma(t1[0], t2.v0(), t3[0]), MathUtils.fma(t1[1], t2.v1(), t3[1]));
+		
+		return res;
 	}
 
-	public static <T extends Tup2WF> T fma(float t1v0, float t1v1, float[] t2, float t3v0, float t3v1, @ExtractionParam T res)
+	public static <T extends ITup2WF> T fma(float[] t1, ITup2RF t2, float t3v0, float t3v1, @ExtractionParam T res)
 	{
-		return fma(t1v0, t1v1, t2[0], t2[1], t3v0, t3v1, res);
+		res.set(MathUtils.fma(t1[0], t2.v0(), t3v0), MathUtils.fma(t1[1], t2.v1(), t3v1));
+		
+		return res;
 	}
 
-	public static <T extends Tup2WF> T fma(float t1v0, float t1v1, float t2v0, float t2v1, Tup2RF t3, @ExtractionParam T res)
+	public static <T extends ITup2WF> T fma(float[] t1, ITupRF t2, ITup2RF t3, @ExtractionParam T res)
 	{
-		return fma(t1v0, t1v1, t2v0, t2v1, t3.v0(), t3.v1(), res);
+		res.set(MathUtils.fma(t1[0], t2.getAt(0), t3.v0()), MathUtils.fma(t1[1], t2.getAt(1), t3.v1()));
+		
+		return res;
 	}
 
-	public static <T extends Tup2WF> T fma(float t1v0, float t1v1, float t2v0, float t2v1, float[] t3, @ExtractionParam T res)
+	public static <T extends ITup2WF> T fma(float[] t1, ITupRF t2, ITupRF t3, @ExtractionParam T res)
 	{
-		return fma(t1v0, t1v1, t2v0, t2v1, t3[0], t3[1], res);
+		res.set(MathUtils.fma(t1[0], t2.getAt(0), t3.getAt(0)), MathUtils.fma(t1[1], t2.getAt(1), t3.getAt(1)));
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T fma(float[] t1, ITupRF t2, float[] t3, @ExtractionParam T res)
+	{
+		res.set(MathUtils.fma(t1[0], t2.getAt(0), t3[0]), MathUtils.fma(t1[1], t2.getAt(1), t3[1]));
+		
+		return res;
 	}
 
-	public static <T extends Tup2WF> T fma(float t1v0, float t1v1, float t2v0, float t2v1, float t3v0, float t3v1, @ExtractionParam T res)
+	public static <T extends ITup2WF> T fma(float[] t1, ITupRF t2, float t3v0, float t3v1, @ExtractionParam T res)
+	{
+		res.set(MathUtils.fma(t1[0], t2.getAt(0), t3v0), MathUtils.fma(t1[1], t2.getAt(1), t3v1));
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T fma(float[] t1, float[] t2, ITup2RF t3, @ExtractionParam T res)
+	{
+		res.set(MathUtils.fma(t1[0], t2[0], t3.v0()), MathUtils.fma(t1[1], t2[1], t3.v1()));
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T fma(float[] t1, float[] t2, ITupRF t3, @ExtractionParam T res)
+	{
+		res.set(MathUtils.fma(t1[0], t2[0], t3.getAt(0)), MathUtils.fma(t1[1], t2[1], t3.getAt(1)));
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T fma(float[] t1, float[] t2, float[] t3, @ExtractionParam T res)
+	{
+		res.set(MathUtils.fma(t1[0], t2[0], t3[0]), MathUtils.fma(t1[1], t2[1], t3[1]));
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T fma(float[] t1, float[] t2, float t3v0, float t3v1, @ExtractionParam T res)
+	{
+		res.set(MathUtils.fma(t1[0], t2[0], t3v0), MathUtils.fma(t1[1], t2[1], t3v1));
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T fma(float[] t1, float t2v0, float t2v1, ITup2RF t3, @ExtractionParam T res)
+	{
+		res.set(MathUtils.fma(t1[0], t2v0, t3.v0()), MathUtils.fma(t1[1], t2v1, t3.v1()));
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T fma(float[] t1, float t2v0, float t2v1, ITupRF t3, @ExtractionParam T res)
+	{
+		res.set(MathUtils.fma(t1[0], t2v0, t3.getAt(0)), MathUtils.fma(t1[1], t2v1, t3.getAt(1)));
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T fma(float[] t1, float t2v0, float t2v1, float[] t3, @ExtractionParam T res)
+	{
+		res.set(MathUtils.fma(t1[0], t2v0, t3[0]), MathUtils.fma(t1[1], t2v1, t3[1]));
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T fma(float[] t1, float t2v0, float t2v1, float t3v0, float t3v1, @ExtractionParam T res)
+	{
+		res.set(MathUtils.fma(t1[0], t2v0, t3v0), MathUtils.fma(t1[1], t2v1, t3v1));
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T fma(float t1v0, float t1v1, ITup2RF t2, ITup2RF t3, @ExtractionParam T res)
+	{
+		res.set(MathUtils.fma(t1v0, t2.v0(), t3.v0()), MathUtils.fma(t1v1, t2.v1(), t3.v1()));
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T fma(float t1v0, float t1v1, ITup2RF t2, ITupRF t3, @ExtractionParam T res)
+	{
+		res.set(MathUtils.fma(t1v0, t2.v0(), t3.getAt(0)), MathUtils.fma(t1v1, t2.v1(), t3.getAt(1)));
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T fma(float t1v0, float t1v1, ITup2RF t2, float[] t3, @ExtractionParam T res)
+	{
+		res.set(MathUtils.fma(t1v0, t2.v0(), t3[0]), MathUtils.fma(t1v1, t2.v1(), t3[1]));
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T fma(float t1v0, float t1v1, ITup2RF t2, float t3v0, float t3v1, @ExtractionParam T res)
+	{
+		res.set(MathUtils.fma(t1v0, t2.v0(), t3v0), MathUtils.fma(t1v1, t2.v1(), t3v1));
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T fma(float t1v0, float t1v1, ITupRF t2, ITup2RF t3, @ExtractionParam T res)
+	{
+		res.set(MathUtils.fma(t1v0, t2.getAt(0), t3.v0()), MathUtils.fma(t1v1, t2.getAt(1), t3.v1()));
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T fma(float t1v0, float t1v1, ITupRF t2, ITupRF t3, @ExtractionParam T res)
+	{
+		res.set(MathUtils.fma(t1v0, t2.getAt(0), t3.getAt(0)), MathUtils.fma(t1v1, t2.getAt(1), t3.getAt(1)));
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T fma(float t1v0, float t1v1, ITupRF t2, float[] t3, @ExtractionParam T res)
+	{
+		res.set(MathUtils.fma(t1v0, t2.getAt(0), t3[0]), MathUtils.fma(t1v1, t2.getAt(1), t3[1]));
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T fma(float t1v0, float t1v1, ITupRF t2, float t3v0, float t3v1, @ExtractionParam T res)
+	{
+		res.set(MathUtils.fma(t1v0, t2.getAt(0), t3v0), MathUtils.fma(t1v1, t2.getAt(1), t3v1));
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T fma(float t1v0, float t1v1, float[] t2, ITup2RF t3, @ExtractionParam T res)
+	{
+		res.set(MathUtils.fma(t1v0, t2[0], t3.v0()), MathUtils.fma(t1v1, t2[1], t3.v1()));
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T fma(float t1v0, float t1v1, float[] t2, ITupRF t3, @ExtractionParam T res)
+	{
+		res.set(MathUtils.fma(t1v0, t2[0], t3.getAt(0)), MathUtils.fma(t1v1, t2[1], t3.getAt(1)));
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T fma(float t1v0, float t1v1, float[] t2, float[] t3, @ExtractionParam T res)
+	{
+		res.set(MathUtils.fma(t1v0, t2[0], t3[0]), MathUtils.fma(t1v1, t2[1], t3[1]));
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T fma(float t1v0, float t1v1, float[] t2, float t3v0, float t3v1, @ExtractionParam T res)
+	{
+		res.set(MathUtils.fma(t1v0, t2[0], t3v0), MathUtils.fma(t1v1, t2[1], t3v1));
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T fma(float t1v0, float t1v1, float t2v0, float t2v1, ITup2RF t3, @ExtractionParam T res)
+	{
+		res.set(MathUtils.fma(t1v0, t2v0, t3.v0()), MathUtils.fma(t1v1, t2v1, t3.v1()));
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T fma(float t1v0, float t1v1, float t2v0, float t2v1, ITupRF t3, @ExtractionParam T res)
+	{
+		res.set(MathUtils.fma(t1v0, t2v0, t3.getAt(0)), MathUtils.fma(t1v1, t2v1, t3.getAt(1)));
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T fma(float t1v0, float t1v1, float t2v0, float t2v1, float[] t3, @ExtractionParam T res)
+	{
+		res.set(MathUtils.fma(t1v0, t2v0, t3[0]), MathUtils.fma(t1v1, t2v1, t3[1]));
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T fma(float t1v0, float t1v1, float t2v0, float t2v1, float t3v0, float t3v1, @ExtractionParam T res)
 	{
 		res.set(MathUtils.fma(t1v0, t2v0, t3v0), MathUtils.fma(t1v1, t2v1, t3v1));
 		
 		return res;
 	}
 	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(ITup2RF t1, ITup2RF t2, ITup2RF t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1.v0(), t2.getAt(0), t3.v0()), MathUtils.fma(t1.v1(), t2.getAt(1), t3.v1()));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(ITup2RF t1, ITup2RF t2, ITupRF t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1.v0(), t2.getAt(0), t3.getAt(0)), MathUtils.fma(t1.v1(), t2.getAt(1), t3.getAt(1)));
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(ITup2RF t1, ITup2RF t2, float[] t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1.v0(), t2.getAt(0), t3[0]), MathUtils.fma(t1.v1(), t2.getAt(1), t3[1]));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(ITup2RF t1, ITup2RF t2, float t3v0, float t3v1, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1.v0(), t2.getAt(0), t3v0), MathUtils.fma(t1.v1(), t2.getAt(1), t3v1));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(ITup2RF t1, ITupRF t2, ITup2RF t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1.v0(), t2.getAt(0), t3.v0()), MathUtils.fma(t1.v1(), t2.getAt(1), t3.v1()));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(ITup2RF t1, ITupRF t2, ITupRF t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1.v0(), t2.getAt(0), t3.getAt(0)), MathUtils.fma(t1.v1(), t2.getAt(1), t3.getAt(1)));
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(ITup2RF t1, ITupRF t2, float[] t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1.v0(), t2.getAt(0), t3[0]), MathUtils.fma(t1.v1(), t2.getAt(1), t3[1]));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(ITup2RF t1, ITupRF t2, float t3v0, float t3v1, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1.v0(), t2.getAt(0), t3v0), MathUtils.fma(t1.v1(), t2.getAt(1), t3v1));
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(ITup2RF t1, float[] t2, ITup2RF t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1.v0(), t2[0], t3.v0()), MathUtils.fma(t1.v1(), t2[1], t3.v1()));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(ITup2RF t1, float[] t2, ITupRF t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1.v0(), t2[0], t3.getAt(0)), MathUtils.fma(t1.v1(), t2[1], t3.getAt(1)));
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(ITup2RF t1, float[] t2, float[] t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1.v0(), t2[0], t3[0]), MathUtils.fma(t1.v1(), t2[1], t3[1]));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(ITup2RF t1, float[] t2, float t3v0, float t3v1, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1.v0(), t2[0], t3v0), MathUtils.fma(t1.v1(), t2[1], t3v1));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(ITup2RF t1, float t2v0, float t2v1, ITup2RF t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1.v0(), t2v0, t3.v0()), MathUtils.fma(t1.v1(), t2v1, t3.v1()));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(ITup2RF t1, float t2v0, float t2v1, ITupRF t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1.v0(), t2v0, t3.getAt(0)), MathUtils.fma(t1.v1(), t2v1, t3.getAt(1)));
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(ITup2RF t1, float t2v0, float t2v1, float[] t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1.v0(), t2v0, t3[0]), MathUtils.fma(t1.v1(), t2v1, t3[1]));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(ITup2RF t1, float t2v0, float t2v1, float t3v0, float t3v1, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1.v0(), t2v0, t3v0), MathUtils.fma(t1.v1(), t2v1, t3v1));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(ITupRF t1, ITup2RF t2, ITup2RF t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1.getAt(0), t2.v0(), t3.v0()), MathUtils.fma(t1.getAt(1), t2.v1(), t3.v1()));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(ITupRF t1, ITup2RF t2, ITupRF t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1.getAt(0), t2.v0(), t3.getAt(0)), MathUtils.fma(t1.getAt(1), t2.v1(), t3.getAt(1)));
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(ITupRF t1, ITup2RF t2, float[] t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1.getAt(0), t2.v0(), t3[0]), MathUtils.fma(t1.getAt(1), t2.v1(), t3[1]));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(ITupRF t1, ITup2RF t2, float t3v0, float t3v1, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1.getAt(0), t2.v0(), t3v0), MathUtils.fma(t1.getAt(1), t2.v1(), t3v1));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(ITupRF t1, ITupRF t2, ITup2RF t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1.getAt(0), t2.getAt(0), t3.v0()), MathUtils.fma(t1.getAt(1), t2.getAt(1), t3.v1()));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(ITupRF t1, ITupRF t2, ITupRF t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1.getAt(0), t2.getAt(0), t3.getAt(0)), MathUtils.fma(t1.getAt(1), t2.getAt(1), t3.getAt(1)));
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(ITupRF t1, ITupRF t2, float[] t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1.getAt(0), t2.getAt(0), t3[0]), MathUtils.fma(t1.getAt(1), t2.getAt(1), t3[1]));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(ITupRF t1, ITupRF t2, float t3v0, float t3v1, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1.getAt(0), t2.getAt(0), t3v0), MathUtils.fma(t1.getAt(1), t2.getAt(1), t3v1));
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(ITupRF t1, float[] t2, ITup2RF t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1.getAt(0), t2[0], t3.v0()), MathUtils.fma(t1.getAt(1), t2[1], t3.v1()));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(ITupRF t1, float[] t2, ITupRF t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1.getAt(0), t2[0], t3.getAt(0)), MathUtils.fma(t1.getAt(1), t2[1], t3.getAt(1)));
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(ITupRF t1, float[] t2, float[] t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1.getAt(0), t2[0], t3[0]), MathUtils.fma(t1.getAt(1), t2[1], t3[1]));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(ITupRF t1, float[] t2, float t3v0, float t3v1, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1.getAt(0), t2[0], t3v0), MathUtils.fma(t1.getAt(1), t2[1], t3v1));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(ITupRF t1, float t2v0, float t2v1, ITup2RF t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1.getAt(0), t2v0, t3.v0()), MathUtils.fma(t1.getAt(1), t2v1, t3.v1()));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(ITupRF t1, float t2v0, float t2v1, ITupRF t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1.getAt(0), t2v0, t3.getAt(0)), MathUtils.fma(t1.getAt(1), t2v1, t3.getAt(1)));
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(ITupRF t1, float t2v0, float t2v1, float[] t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1.getAt(0), t2v0, t3[0]), MathUtils.fma(t1.getAt(1), t2v1, t3[1]));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(ITupRF t1, float t2v0, float t2v1, float t3v0, float t3v1, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1.getAt(0), t2v0, t3v0), MathUtils.fma(t1.getAt(1), t2v1, t3v1));
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(float[] t1, ITup2RF t2, ITup2RF t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1[0], t2.v0(), t3.v0()), MathUtils.fma(t1[1], t2.v1(), t3.v1()));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(float[] t1, ITup2RF t2, ITupRF t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1[0], t2.v0(), t3.getAt(0)), MathUtils.fma(t1[1], t2.v1(), t3.getAt(1)));
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(float[] t1, ITup2RF t2, float[] t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1[0], t2.v0(), t3[0]), MathUtils.fma(t1[1], t2.v1(), t3[1]));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(float[] t1, ITup2RF t2, float t3v0, float t3v1, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1[0], t2.v0(), t3v0), MathUtils.fma(t1[1], t2.v1(), t3v1));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(float[] t1, ITupRF t2, ITup2RF t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1[0], t2.getAt(0), t3.v0()), MathUtils.fma(t1[1], t2.getAt(1), t3.v1()));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(float[] t1, ITupRF t2, ITupRF t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1[0], t2.getAt(0), t3.getAt(0)), MathUtils.fma(t1[1], t2.getAt(1), t3.getAt(1)));
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(float[] t1, ITupRF t2, float[] t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1[0], t2.getAt(0), t3[0]), MathUtils.fma(t1[1], t2.getAt(1), t3[1]));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(float[] t1, ITupRF t2, float t3v0, float t3v1, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1[0], t2.getAt(0), t3v0), MathUtils.fma(t1[1], t2.getAt(1), t3v1));
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(float[] t1, float[] t2, ITup2RF t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1[0], t2[0], t3.v0()), MathUtils.fma(t1[1], t2[1], t3.v1()));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(float[] t1, float[] t2, ITupRF t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1[0], t2[0], t3.getAt(0)), MathUtils.fma(t1[1], t2[1], t3.getAt(1)));
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(float[] t1, float[] t2, float[] t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1[0], t2[0], t3[0]), MathUtils.fma(t1[1], t2[1], t3[1]));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(float[] t1, float[] t2, float t3v0, float t3v1, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1[0], t2[0], t3v0), MathUtils.fma(t1[1], t2[1], t3v1));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(float[] t1, float t2v0, float t2v1, ITup2RF t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1[0], t2v0, t3.v0()), MathUtils.fma(t1[1], t2v1, t3.v1()));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(float[] t1, float t2v0, float t2v1, ITupRF t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1[0], t2v0, t3.getAt(0)), MathUtils.fma(t1[1], t2v1, t3.getAt(1)));
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(float[] t1, float t2v0, float t2v1, float[] t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1[0], t2v0, t3[0]), MathUtils.fma(t1[1], t2v1, t3[1]));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(float[] t1, float t2v0, float t2v1, float t3v0, float t3v1, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1[0], t2v0, t3v0), MathUtils.fma(t1[1], t2v1, t3v1));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(float t1v0, float t1v1, ITup2RF t2, ITup2RF t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1v0, t2.v0(), t3.v0()), MathUtils.fma(t1v1, t2.v1(), t3.v1()));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(float t1v0, float t1v1, ITup2RF t2, ITupRF t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1v0, t2.v0(), t3.getAt(0)), MathUtils.fma(t1v1, t2.v1(), t3.getAt(1)));
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(float t1v0, float t1v1, ITup2RF t2, float[] t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1v0, t2.v0(), t3[0]), MathUtils.fma(t1v1, t2.v1(), t3[1]));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(float t1v0, float t1v1, ITup2RF t2, float t3v0, float t3v1, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1v0, t2.v0(), t3v0), MathUtils.fma(t1v1, t2.v1(), t3v1));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(float t1v0, float t1v1, ITupRF t2, ITup2RF t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1v0, t2.getAt(0), t3.v0()), MathUtils.fma(t1v1, t2.getAt(1), t3.v1()));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(float t1v0, float t1v1, ITupRF t2, ITupRF t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1v0, t2.getAt(0), t3.getAt(0)), MathUtils.fma(t1v1, t2.getAt(1), t3.getAt(1)));
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(float t1v0, float t1v1, ITupRF t2, float[] t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1v0, t2.getAt(0), t3[0]), MathUtils.fma(t1v1, t2.getAt(1), t3[1]));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(float t1v0, float t1v1, ITupRF t2, float t3v0, float t3v1, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1v0, t2.getAt(0), t3v0), MathUtils.fma(t1v1, t2.getAt(1), t3v1));
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(float t1v0, float t1v1, float[] t2, ITup2RF t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1v0, t2[0], t3.v0()), MathUtils.fma(t1v1, t2[1], t3.v1()));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(float t1v0, float t1v1, float[] t2, ITupRF t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1v0, t2[0], t3.getAt(0)), MathUtils.fma(t1v1, t2[1], t3.getAt(1)));
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(float t1v0, float t1v1, float[] t2, float[] t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1v0, t2[0], t3[0]), MathUtils.fma(t1v1, t2[1], t3[1]));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(float t1v0, float t1v1, float[] t2, float t3v0, float t3v1, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1v0, t2[0], t3v0), MathUtils.fma(t1v1, t2[1], t3v1));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(float t1v0, float t1v1, float t2v0, float t2v1, ITup2RF t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1v0, t2v0, t3.v0()), MathUtils.fma(t1v1, t2v1, t3.v1()));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(float t1v0, float t1v1, float t2v0, float t2v1, ITupRF t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1v0, t2v0, t3.getAt(0)), MathUtils.fma(t1v1, t2v1, t3.getAt(1)));
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(float t1v0, float t1v1, float t2v0, float t2v1, float[] t3, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1v0, t2v0, t3[0]), MathUtils.fma(t1v1, t2v1, t3[1]));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T fmaCreateNew(float t1v0, float t1v1, float t2v0, float t2v1, float t3v0, float t3v1, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.fma(t1v0, t2v0, t3v0), MathUtils.fma(t1v1, t2v1, t3v1));
+	}
+	
 	/**
 	 * Truncates the decimals of the components of the vector {@code (v)} and saves the result in
 	 * the extraction parameter.
@@ -1273,44 +2855,34 @@ public class VecUtils2F
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] trunc(Tup2RF v, @ExtractionParam float[] res)
+	public static float[] trunc(ITup2RF v, @ExtractionParam float[] res)
 	{
-		return trunc(v.v0(), v.v1(), res);
+		res[0] = (int)v.v0();
+		res[1] = (int)v.v1();
+		
+		return res;
 	}
 
-	/**
-	 * Truncates the decimals of the components of the vector {@code (v[0], v[1])} and saves the
-	 * result in the extraction parameter.
-	 * 
-	 * @param v
-	 *     The vector as an array with at least two entries.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
+	public static float[] trunc(ITupRF v, @ExtractionParam float[] res)
+	{
+		res[0] = (int)v.getAt(0);
+		res[1] = (int)v.getAt(1);
+		
+		return res;
+	}
+	
 	public static float[] trunc(float[] v, @ExtractionParam float[] res)
 	{
-		return trunc(v[0], v[1], res);
+		res[0] = (int)v[0];
+		res[1] = (int)v[1];
+		
+		return res;
 	}
 
-	/**
-	 * Truncates the decimals of the components of the vector {@code (x, y)} and saves the result in
-	 * the extraction parameter.
-	 * 
-	 * @param x
-	 *     The value of the x component of the vector.
-	 * @param y
-	 *     The value of the y component of the vector.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
-	public static float[] trunc(float x, float y, @ExtractionParam float[] res)
+	public static float[] trunc(float v0, float v1, @ExtractionParam float[] res)
 	{
-		res[0] = (int)x;
-		res[1] = (int)y;
+		res[0] = (int)v0;
+		res[1] = (int)v1;
 		
 		return res;
 	}
@@ -1329,53 +2901,72 @@ public class VecUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T trunc(Tup2RF v, @ExtractionParam T res)
+	public static <T extends ITup2WF> T trunc(ITup2RF v, @ExtractionParam T res)
 	{
-		return trunc(v.v0(), v.v1(), res);
+		res.set((int)v.v0(), (int)v.v1());
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T trunc(ITupRF v, @ExtractionParam T res)
+	{
+		res.set((int)v.getAt(0), (int)v.getAt(1));
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T trunc(float[] v, @ExtractionParam T res)
+	{
+		res.set((int)v[0], (int)v[1]);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T trunc(float v0, float v1, @ExtractionParam T res)
+	{
+		res.set((int)v0, (int)v1);
+		
+		return res;
 	}
 
 	/**
-	 * Truncates the decimals of the components of the vector {@code (v[0], v[1])} and saves the
-	 * result in the given extraction parameter object.
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v
-	 *     The vector as an array with at least two entries.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends Tup2WF> T trunc(float[] v, @ExtractionParam T res)
-	{
-		return trunc(v[0], v[1], res);
-	}
-
-	/**
-	 * Truncates the decimals of the components of the vector {@code (x, y)} and saves the result in
+	 * Truncates the decimals of the components of the vector {@code (v)} and saves the result in
 	 * the given extraction parameter object.
 	 * 
 	 * @param <T>
 	 *     The type of the extraction parameter object.
 	 * 
-	 * @param x
-	 *     The value of the x component of the vector.
-	 * @param y
-	 *     The value of the y component of the vector.
+	 * @param v
+	 *     The vector.
 	 * @param res
 	 *     The extraction parameter object for the result.
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T trunc(float x, float y, @ExtractionParam T res)
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T truncCreateNew(ITup2RF v, T prototype)
 	{
-		res.set((int)x, (int)y);
-		
-		return res;
+		return (T) prototype.createNew((int)v.v0(), (int)v.v1());
 	}
 
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T truncCreateNew(ITupRF v, T prototype)
+	{
+		return (T) prototype.createNew((int)v.getAt(0), (int)v.getAt(1));
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T truncCreateNew(float[] v, T prototype)
+	{
+		return (T) prototype.createNew((int)v[0], (int)v[1]);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T truncCreateNew(float v0, float v1, T prototype)
+	{
+		return (T) prototype.createNew((int)v0, (int)v1);
+	}
+	
 	/**
 	 * Calculates the absolute value of the component values of the vector {@code (v)} and saves the
 	 * result in the extraction parameter.
@@ -1387,44 +2978,34 @@ public class VecUtils2F
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] abs(Tup2RF v, @ExtractionParam float[] res)
+	public static float[] abs(ITup2RF v, @ExtractionParam float[] res)
 	{
-		return abs(v.v0(), v.v1(), res);
+		res[0] = MathUtils.abs(v.v0());
+		res[1] = MathUtils.abs(v.v1());
+		
+		return res;
 	}
 
-	/**
-	 * Calculates the absolute value of the component values of the vector {@code (v[0], v[1])} and
-	 * saves the result in the extraction parameter.
-	 * 
-	 * @param v
-	 *     The vector as an array with at least two entries.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
+	public static float[] abs(ITupRF v, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.abs(v.getAt(0));
+		res[1] = MathUtils.abs(v.getAt(1));
+		
+		return res;
+	}
+	
 	public static float[] abs(float[] v, @ExtractionParam float[] res)
 	{
-		return abs(v[0], v[1], res);
+		res[0] = MathUtils.abs(v[0]);
+		res[1] = MathUtils.abs(v[1]);
+		
+		return res;
 	}
 
-	/**
-	 * Calculates the absolute value of the component values of the vector {@code (x, y)} and saves
-	 * the result in the extraction parameter.
-	 * 
-	 * @param x
-	 *     The value of the x component of the vector.
-	 * @param y
-	 *     The value of the y component of the vector.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
-	public static float[] abs(float x, float y, @ExtractionParam float[] res)
+	public static float[] abs(float v0, float v1, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.abs(x);
-		res[1] = MathUtils.abs(y);
+		res[0] = MathUtils.abs(v0);
+		res[1] = MathUtils.abs(v1);
 		
 		return res;
 	}
@@ -1443,53 +3024,72 @@ public class VecUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T abs(Tup2RF v, @ExtractionParam T res)
+	public static <T extends ITup2WF> T abs(ITup2RF v, @ExtractionParam T res)
 	{
-		return abs(v.v0(), v.v1(), res);
+		res.set(MathUtils.abs(v.v0()), MathUtils.abs(v.v1()));
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T abs(ITupRF v, @ExtractionParam T res)
+	{
+		res.set(MathUtils.abs(v.getAt(0)), MathUtils.abs(v.getAt(1)));
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T abs(float[] v, @ExtractionParam T res)
+	{
+		res.set(MathUtils.abs(v[0]), MathUtils.abs(v[1]));
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T abs(float v0, float v1, @ExtractionParam T res)
+	{
+		res.set(MathUtils.abs(v0), MathUtils.abs(v1));
+		
+		return res;
 	}
 
 	/**
-	 * Calculates the absolute value of the component values of the vector {@code (v[0], v[1])} and
-	 * saves the result in the given extraction parameter object.
+	 * Calculates the absolute value of the component values of the vector {@code (v)} and saves the
+	 * result in the given extraction parameter object.
 	 * 
 	 * @param <T>
 	 *     The type of the extraction parameter object.
 	 * 
 	 * @param v
-	 *     The vector as an array with at least two entries.
+	 *     The vector.
 	 * @param res
 	 *     The extraction parameter object for the result.
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T abs(float[] v, @ExtractionParam T res)
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T absCreateNew(ITup2RF v, T prototype)
 	{
-		return abs(v[0], v[1], res);
+		return (T) prototype.createNew(MathUtils.abs(v.v0()), MathUtils.abs(v.v1()));
 	}
 
-	/**
-	 * Calculates the absolute value of the component values of the vector {@code (x, y)} and saves
-	 * the result in the given extraction parameter object.
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param x
-	 *     The value of the x component of the vector.
-	 * @param y
-	 *     The value of the y component of the vector.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends Tup2WF> T abs(float x, float y, @ExtractionParam T res)
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T absCreateNew(ITupRF v, T prototype)
 	{
-		res.set(MathUtils.abs(x), MathUtils.abs(y));
-		
-		return res;
+		return (T) prototype.createNew(MathUtils.abs(v.getAt(0)), MathUtils.abs(v.getAt(1)));
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T absCreateNew(float[] v, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.abs(v[0]), MathUtils.abs(v[1]));
 	}
 
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T absCreateNew(float v0, float v1, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.abs(v0), MathUtils.abs(v1));
+	}
+	
 	/**
 	 * Calculates the {@link Math#signum(float) signum} of the components of the given vector
 	 * {@code (v)} and saves the result in the extraction parameter.
@@ -1501,44 +3101,34 @@ public class VecUtils2F
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] sign(Tup2RF v, @ExtractionParam float[] res)
+	public static float[] sign(ITup2RF v, @ExtractionParam float[] res)
 	{
-		return sign(v.v0(), v.v1(), res);
+		res[0] = MathUtils.sign(v.v0());
+		res[1] = MathUtils.sign(v.v1());
+		
+		return res;
 	}
 
-	/**
-	 * Calculates the {@link Math#signum(float) signum} of the components of the given vector
-	 * {@code (v[0], v[1])} and saves the result in the extraction parameter.
-	 * 
-	 * @param v
-	 *     The vector as an array with at least two entries.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
+	public static float[] sign(ITupRF v, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.sign(v.getAt(0));
+		res[1] = MathUtils.sign(v.getAt(1));
+		
+		return res;
+	}
+	
 	public static float[] sign(float[] v, @ExtractionParam float[] res)
 	{
-		return sign(v[0], v[1], res);
+		res[0] = MathUtils.sign(v[0]);
+		res[1] = MathUtils.sign(v[1]);
+		
+		return res;
 	}
 
-	/**
-	 * Calculates the {@link Math#signum(float) signum} of the components of the given vector
-	 * {@code (x, y)} and saves the result in the extraction parameter.
-	 * 
-	 * @param x
-	 *     The value of the x component of the vector.
-	 * @param y
-	 *     The value of the y component of the vector.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
-	public static float[] sign(float x, float y, @ExtractionParam float[] res)
+	public static float[] sign(float v0, float v1, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.sign(x);
-		res[1] = MathUtils.sign(y);
+		res[0] = MathUtils.sign(v0);
+		res[1] = MathUtils.sign(v1);
 		
 		return res;
 	}
@@ -1557,53 +3147,72 @@ public class VecUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T sign(Tup2RF v, @ExtractionParam T res)
+	public static <T extends ITup2WF> T sign(ITup2RF v, @ExtractionParam T res)
 	{
-		return sign(v.v0(), v.v1(), res);
+		res.set(MathUtils.sign(v.v0()), MathUtils.sign(v.v1()));
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T sign(ITupRF v, @ExtractionParam T res)
+	{
+		res.set(MathUtils.sign(v.getAt(0)), MathUtils.sign(v.getAt(1)));
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T sign(float[] v, @ExtractionParam T res)
+	{
+		res.set(MathUtils.sign(v[0]), MathUtils.sign(v[1]));
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T sign(float v0, float v1, @ExtractionParam T res)
+	{
+		res.set(MathUtils.sign(v0), MathUtils.sign(v1));
+		
+		return res;
 	}
 
 	/**
 	 * Calculates the {@link Math#signum(float) signum} of the components of the given vector
-	 * {@code (v[0], v[1])} and saves the result in the given extraction parameter object.
+	 * {@code (v)} and saves the result in the given extraction parameter object.
 	 * 
 	 * @param <T>
 	 *     The type of the extraction parameter object.
 	 * 
 	 * @param v
-	 *     The vector as an array with at least two entries.
+	 *     The vector as an array with at leasts two entries.
 	 * @param res
 	 *     The extraction parameter object for the result.
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T sign(float[] v, @ExtractionParam T res)
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T signCreateNew(ITup2RF v, T prototype)
 	{
-		return sign(v[0], v[1], res);
+		return (T) prototype.createNew(MathUtils.sign(v.v0()), MathUtils.sign(v.v1()));
 	}
 
-	/**
-	 * Calculates the {@link Math#signum(float) signum} of the components of the given vector
-	 * {@code (x, y)} and saves the result in the given extraction parameter object.
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param x
-	 *     The value of the x component of the vector.
-	 * @param y
-	 *     The value of the y component of the vector.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends Tup2WF> T sign(float x, float y, @ExtractionParam T res)
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T signCreateNew(ITupRF v, T prototype)
 	{
-		res.set(MathUtils.sign(x), MathUtils.sign(y));
-		
-		return res;
+		return (T) prototype.createNew(MathUtils.sign(v.getAt(0)), MathUtils.sign(v.getAt(1)));
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T signCreateNew(float[] v, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.sign(v[0]), MathUtils.sign(v[1]));
 	}
 
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T signCreateNew(float v0, float v1, T prototype)
+	{
+		return (T) prototype.createNew(MathUtils.sign(v0), MathUtils.sign(v1));
+	}
+	
 	/**
 	 * Negates the vector {@code (v)} and saves the result in the given extraction parameter.
 	 * 
@@ -1617,49 +3226,34 @@ public class VecUtils2F
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] neg(Tup2RF v, @ExtractionParam float[] res)
+	public static float[] neg(ITup2RF v, @ExtractionParam float[] res)
 	{
-		return neg(v.v0(), v.v1(), res);
+		res[0] = -v.v0();
+		res[1] = -v.v1();
+		
+		return res;
 	}
 
-	/**
-	 * Negates the vector {@code (v[0], v[1])} and saves the result in the given extraction
-	 * parameter.
-	 * 
-	 * <p>
-	 * Operation: {@code -(v[0], v[1])}
-	 * 
-	 * @param v
-	 *     The vector as an array with at least two entries.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
+	public static float[] neg(ITupRF v, @ExtractionParam float[] res)
+	{
+		res[0] = -v.getAt(0);
+		res[1] = -v.getAt(1);
+		
+		return res;
+	}
+	
 	public static float[] neg(float[] v, @ExtractionParam float[] res)
 	{
-		return neg(v[0], v[1], res);
+		res[0] = -v[0];
+		res[1] = -v[1];
+		
+		return res;
 	}
 
-	/**
-	 * Negates the vector {@code (x, y)} and saves the result in the given extraction parameter.
-	 * 
-	 * <p>
-	 * Operation: {@code -(x, y)}
-	 * 
-	 * @param x
-	 *     The value of the x component of the vector.
-	 * @param y
-	 *     The value of the y component of the vector.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
-	public static float[] neg(float x, float y, @ExtractionParam float[] res)
+	public static float[] neg(float v0, float v1, @ExtractionParam float[] res)
 	{
-		res[0] = -x;
-		res[1] = -y;
+		res[0] = -v0;
+		res[1] = -v1;
 		
 		return res;
 	}
@@ -1680,59 +3274,74 @@ public class VecUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T neg(Tup2RF v, @ExtractionParam T res)
+	public static <T extends ITup2WF> T neg(ITup2RF v, @ExtractionParam T res)
 	{
-		return neg(v.v0(), v.v1(), res);
+		res.set(-v.v0(), -v.v1());
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T neg(ITupRF v, @ExtractionParam T res)
+	{
+		res.set(-v.getAt(0), -v.getAt(1));
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T neg(float[] v, @ExtractionParam T res)
+	{
+		res.set(-v[0], -v[1]);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T neg(float v0, float v1, @ExtractionParam T res)
+	{
+		res.set(-v0, -v1);
+		
+		return res;
 	}
 
 	/**
-	 * Negates the vector {@code (v[0], v[1])} and saves the result in the given extraction
-	 * parameter object.
+	 * Negates the vector {@code (v)} and saves the result in the given extraction parameter object.
 	 * 
 	 * <p>
-	 * Operation: {@code -(v[0], v[1])}
+	 * Operation: {@code -v}
 	 * 
 	 * @param <T>
 	 *     The type of the extraction parameter object.
 	 * 
 	 * @param v
-	 *     The vector as an array with at least two entries.
+	 *     The vector.
 	 * @param res
 	 *     The extraction parameter object for the result.
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T neg(float[] v, @ExtractionParam T res)
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T negCreateNew(ITup2RF v, T prototype)
 	{
-		return neg(v[0], v[1], res);
+		return (T) prototype.createNew(-v.v0(), -v.v1());
 	}
 
-	/**
-	 * Negates the vector {@code (x, y)} and saves the result in the given extraction parameter
-	 * object.
-	 * 
-	 * <p>
-	 * Operation: {@code -(x, y)}
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param x
-	 *     The value of the x component of the vector.
-	 * @param y
-	 *     The value of the y component of the vector.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends Tup2WF> T neg(float x, float y, @ExtractionParam T res)
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T negCreateNew(ITupRF v, T prototype)
 	{
-		res.set(-x, -y);
-		
-		return res;
+		return (T) prototype.createNew(-v.getAt(0), -v.getAt(1));
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T negCreateNew(float[] v, T prototype)
+	{
+		return (T) prototype.createNew(-v[0], -v[1]);
 	}
 
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T negCreateNew(float v0, float v1, T prototype)
+	{
+		return (T) prototype.createNew(-v0, -v1);
+	}
+	
 	/**
 	 * Inverses the vector {@code (v)} and saves the result in the given extraction parameter.
 	 * 
@@ -1746,49 +3355,34 @@ public class VecUtils2F
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] rec(Tup2RF v, @ExtractionParam float[] res)
+	public static float[] rec(ITup2RF v, @ExtractionParam float[] res)
 	{
-		return rec(v.v0(), v.v1(), res);
+		res[0] = 1.0f / v.v0();
+		res[1] = 1.0f / v.v1();
+		
+		return res;
 	}
 
-	/**
-	 * Inverses the vector {@code (v[0], v[1])} and saves the result in the given extraction
-	 * parameter.
-	 * 
-	 * <p>
-	 * Operation: {@code 1.0 / (v[0], v[1])}
-	 * 
-	 * @param v
-	 *     The vector as an array with at least two entries.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
+	public static float[] rec(ITupRF v, @ExtractionParam float[] res)
+	{
+		res[0] = 1.0f / v.getAt(0);
+		res[1] = 1.0f / v.getAt(1);
+		
+		return res;
+	}
+	
 	public static float[] rec(float[] v, @ExtractionParam float[] res)
 	{
-		return rec(v[0], v[1], res);
+		res[0] = 1.0f / v[0];
+		res[1] = 1.0f / v[1];
+		
+		return res;
 	}
 
-	/**
-	 * Inverses the vector {@code (x, y)} and saves the result in the given extraction parameter.
-	 * 
-	 * <p>
-	 * Operation: {@code 1.0 / (x, y)}
-	 * 
-	 * @param x
-	 *     The value of the x component of the vector.
-	 * @param y
-	 *     The value of the y component of the vector.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
-	public static float[] rec(float x, float y, @ExtractionParam float[] res)
+	public static float[] rec(float v0, float v1, @ExtractionParam float[] res)
 	{
-		res[0] = 1.0f / x;
-		res[1] = 1.0f / y;
+		res[0] = 1.0f / v0;
+		res[1] = 1.0f / v1;
 		
 		return res;
 	}
@@ -1810,57 +3404,73 @@ public class VecUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T rec(Tup2RF v, @ExtractionParam T res)
+	public static <T extends ITup2WF> T rec(ITup2RF v, @ExtractionParam T res)
 	{
-		return rec(v.v0(), v.v1(), res);
+		res.set(1.0f / v.v0(), 1.0f / v.v1());
+		
+		return res;
 	}
 
+	public static <T extends ITup2WF> T rec(ITupRF v, @ExtractionParam T res)
+	{
+		res.set(1.0f / v.getAt(0), 1.0f / v.getAt(1));
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T rec(float[] v, @ExtractionParam T res)
+	{
+		res.set(1.0f / v[0], 1.0f / v[1]);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T rec(float v0, float v1, @ExtractionParam T res)
+	{
+		res.set(1.0f / v0, 1.0f / v1);
+		
+		return res;
+	}
+	
 	/**
-	 * Inverses the vector {@code (v[0], v[1])} and saves the result in the given extraction
-	 * parameter object.
+	 * Inverses the vector {@code (v)} and saves the result in the given extraction parameter
+	 * object.
 	 * 
 	 * <p>
-	 * Operation: {@code 1.0 / (v[0], v[1])}
+	 * Operation: {@code 1.0 / v}
 	 * 
 	 * @param <T>
 	 *     The type of the extraction parameter object.
 	 * 
 	 * @param v
-	 *     The vector as an array with at least two entries.
+	 *     The vector.
 	 * @param res
 	 *     The extraction parameter object for the result.
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T rec(float[] v, @ExtractionParam T res)
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T recCreateNew(ITup2RF v, T prototype)
 	{
-		return rec(v[0], v[1], res);
+		return (T) prototype.createNew(1.0f / v.v0(), 1.0f / v.v1());
 	}
 
-	/**
-	 * Inverses the vector {@code (x, y)} and saves the result in the given extraction parameter
-	 * object.
-	 * 
-	 * <p>
-	 * Operation: {@code 1.0 / (x, y)}
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param x
-	 *     The value of the x component of the vector.
-	 * @param y
-	 *     The value of the y component of the vector.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends Tup2WF> T rec(float x, float y, @ExtractionParam T res)
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T recCreateNew(ITupRF v, T prototype)
 	{
-		res.set(1.0f / x, 1.0f / y);
-		
-		return res;
+		return (T) prototype.createNew(1.0f / v.getAt(0), 1.0f / v.getAt(1));
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T recCreateNew(float[] v, T prototype)
+	{
+		return (T) prototype.createNew(1.0f / v[0], 1.0f / v[1]);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T recCreateNew(float v0, float v1, T prototype)
+	{
+		return (T) prototype.createNew(1.0f / v0, 1.0f / v1);
 	}
 	
 	/**
@@ -1879,53 +3489,30 @@ public class VecUtils2F
 	 * 
 	 * @return The inverse length of the vector.
 	 */
-	public static float recLen(Tup2RF v)
+	public static float recLen(ITup2RF v)
 	{
-		return recLen(v.v0(), v.v1());
+		float v0 = v.v0();
+		float v1 = v.v1();
+		
+		return MathUtils.invSqrt(v0 * v0 + v1 * v1);
 	}
 	
-	/**
-	 * Returns the inverse (reciprocal) length (magnitude, norm) of the vector {@code (v[0], v[1])}.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code 1 / |(v[0], v[1])|}
-	 * 
-	 * @param v
-	 *     The vector as an array with at least two entries.
-	 * 
-	 * @return The reciprocal length of the vector.
-	 */
+	public static float recLen(ITupRF v)
+	{
+		float v0 = v.getAt(0);
+		float v1 = v.getAt(1);
+		
+		return MathUtils.invSqrt(v0 * v0 + v1 * v1);
+	}
+	
 	public static float recLen(float[] v)
 	{
-		return recLen(v[0], v[1]);
+		return MathUtils.invSqrt(v[0] * v[0] + v[1] * v[1]);
 	}
-	
-	/**
-	 * Returns the inverse (reciprocal) length (magnitude, norm) of the vector {@code (x, y)}.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code 1 / |(x, y)|}
-	 * 
-	 * @param x
-	 *     The value of the x component of the vector.
-	 * @param y
-	 *     The value of the y component of the vector.
-	 * 
-	 * @return The reciprocal length of the vector.
-	 */
-	public static float recLen(float x, float y)
+
+	public static float recLen(float v0, float v1)
 	{
-		return MathUtils.invSqrt(sqrLen(x, y));
+		return MathUtils.invSqrt(v0 * v0 + v1 * v1);
 	}
 	
 	/**
@@ -1944,9 +3531,46 @@ public class VecUtils2F
 	 * 
 	 * @return The length of the vector.
 	 */
-	public static float len(Tup2RF v)
+	public static float len(ITup2RF v)
 	{
-		return len(v.v0(), v.v1());
+		float v0 = v.v0();
+		float v1 = v.v1();
+		
+		float sqareLength = v0 * v0 + v1 * v1;
+		
+		if(MathUtils.Comp.isZero(sqareLength)) return 0.0f;
+		
+		return MathUtils.sqrt(sqareLength);
+	}
+	
+	public static float len(ITupRF v)
+	{
+		float v0 = v.getAt(0);
+		float v1 = v.getAt(1);
+		
+		float sqareLength = v0 * v0 + v1 * v1;
+		
+		if(MathUtils.Comp.isZero(sqareLength)) return 0.0f;
+		
+		return MathUtils.sqrt(sqareLength);
+	}
+
+	public static float len(float[] v)
+	{
+		float sqareLength = v[0] * v[0] + v[1] * v[1];
+		
+		if(MathUtils.Comp.isZero(sqareLength)) return 0.0f;
+		
+		return MathUtils.sqrt(sqareLength);
+	}
+
+	public static float len(float v0, float v1)
+	{
+		float sqareLength = v0 * v0 + v1 * v1;
+		
+		if(MathUtils.Comp.isZero(sqareLength)) return 0.0f;
+		
+		return MathUtils.sqrt(sqareLength);
 	}
 	
 	/**
@@ -1969,109 +3593,42 @@ public class VecUtils2F
 	 * 
 	 * @return The length of the vector.
 	 */
-	public static float len(float tolerance, Tup2RF v)
+	public static float len(float tolerance, ITup2RF v)
 	{
-		return len(v.v0(), v.v1(), tolerance);
-	}
-	
-	/**
-	 * Returns the length (magnitude, norm) of the vector {@code (v[0], v[1])}.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code |(v[0], v[1])|}
-	 * 
-	 * @param v
-	 *     The vector as an array with at least two entries.
-	 * 
-	 * @return The length of the vector.
-	 */
-	public static float len(float[] v)
-	{
-		return len(v[0], v[1]);
-	}
-	
-	/**
-	 * Returns the length (magnitude, norm) of the vector {@code (v[0], v[1])}. If the values of all
-	 * components are within the margin defined by {@code (-tolerance <= value <= tolerance)} the
-	 * result will be zero.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code |(v[0], v[1])|}
-	 * 
-	 * @param v
-	 *     The vector as an array with at least two entries.
-	 * @param tolerance
-	 *     The tolerance for defining the margin around zero. Must be positive.
-	 * 
-	 * @return The length of the vector.
-	 */
-	public static float len(float tolerance, float[] v)
-	{
-		return len(v[0], v[1], tolerance);
-	}
-	
-	/**
-	 * Returns the length (magnitude, norm) of the vector {@code (x, y)}.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code |(x, y)|}
-	 * 
-	 * @param x
-	 *     The value of the x component of the vector.
-	 * @param y
-	 *     The value of the y component of the vector.
-	 * 
-	 * @return The length of the vector.
-	 */
-	public static float len(float x, float y)
-	{
-		float sqareLength = sqrLen(x, y);
+		float v0 = v.v0();
+		float v1 = v.v1();
 		
-		if(MathUtils.Comp.isZero(sqareLength)) return 0.0f;
+		float sqareLength = v0 * v0 + v1 * v1;
+		
+		if(MathUtils.Comp.isZero(tolerance, sqareLength)) return 0.0f;
+		
+		return MathUtils.sqrt(sqareLength);
+	}
+
+	public static float len(float tolerance, ITupRF v)
+	{
+		float v0 = v.getAt(0);
+		float v1 = v.getAt(1);
+		
+		float sqareLength = v0 * v0 + v1 * v1;
+		
+		if(MathUtils.Comp.isZero(tolerance, sqareLength)) return 0.0f;
 		
 		return MathUtils.sqrt(sqareLength);
 	}
 	
-	/**
-	 * Returns the length (magnitude, norm) of the vector {@code (x, y)}. If the values of all
-	 * components are within the margin defined by {@code (-tolerance <= value <= tolerance)} the
-	 * result will be zero.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code |(x, y)|}
-	 * 
-	 * @param x
-	 *     The value of the x component of the vector.
-	 * @param y
-	 *     The value of the y component of the vector.
-	 * @param tolerance
-	 *     The tolerance for defining the margin around zero. Must be positive.
-	 * 
-	 * @return The length of the vector.
-	 */
-	public static float len(float tolerance, float x, float y)
+	public static float len(float tolerance, float[] v)
 	{
-		float sqareLength = sqrLen(x, y);
+		float sqareLength = v[0] * v[0] + v[1] * v[1];
+		
+		if(MathUtils.Comp.isZero(tolerance, sqareLength)) return 0.0f;
+		
+		return MathUtils.sqrt(sqareLength);
+	}
+
+	public static float len(float tolerance, float v0, float v1)
+	{
+		float sqareLength = v0 * v0 + v1 * v1;
 		
 		if(MathUtils.Comp.isZero(tolerance, sqareLength)) return 0.0f;
 		
@@ -2091,47 +3648,30 @@ public class VecUtils2F
 	 * 
 	 * @return The squared length of the vector.
 	 */
-	public static float sqrLen(Tup2RF v)
+	public static float sqrLen(ITup2RF v)
 	{
-		return sqrLen(v.v0(), v.v1());
+		float v0 = v.v0();
+		float v1 = v.v1();
+		
+		return v0 * v0 + v1 * v1;
 	}
 	
-	/**
-	 * Returns the squared length (magnitude, norm) of the vector {@code (v[0], v[1])}. It doesn't
-	 * account for zero-length vectors.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code |(v[0], v[1])|²}
-	 * 
-	 * @param v
-	 *     The vector as an array with at least two entries.
-	 * 
-	 * @return The squared length of the vector.
-	 */
+	public static float sqrLen(ITupRF v)
+	{
+		float v0 = v.getAt(0);
+		float v1 = v.getAt(1);
+		
+		return v0 * v0 + v1 * v1;
+	}
+
 	public static float sqrLen(float[] v)
 	{
-		return sqrLen(v[0], v[1]);
+		return v[0] * v[0] + v[1] * v[1];
 	}
-	
-	/**
-	 * Returns the squared length (magnitude, norm) of the vector {@code (x, y)}. It doesn't account
-	 * for zero-length vectors.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code |(x, y)|²}
-	 * 
-	 * @param x
-	 *     The value of the x component of the vector.
-	 * @param y
-	 *     The value of the y component of the vector.
-	 * 
-	 * @return The squared length of the vector.
-	 */
-	public static float sqrLen(float x, float y)
+
+	public static float sqrLen(float v0, float v1)
 	{
-		return x * x + y * y;
+		return v0 * v0 + v1 * v1;
 	}
 	
 	/**
@@ -2152,9 +3692,82 @@ public class VecUtils2F
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] nrm(Tup2RF v, @ExtractionParam float[] res)
+	public static float[] nrm(ITup2RF v, @ExtractionParam float[] res)
 	{
-		return nrm(v.v0(), v.v1(), res);
+		float v0 = v.v0();
+		float v1 = v.v1();
+
+		if (TupUtils2F.Comp.isZero(v0, v1))
+		{
+			res[0] = 0.0f;
+			res[1] = 0.0f;
+			
+			return res;
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		res[0] = v0 * invLength;
+		res[1] = v1 * invLength;
+		
+		return res;
+	}
+
+	public static float[] nrm(ITupRF v, @ExtractionParam float[] res)
+	{
+		float v0 = v.getAt(0);
+		float v1 = v.getAt(1);
+		
+		if (TupUtils2F.Comp.isZero(v0, v1))
+		{
+			res[0] = 0.0f;
+			res[1] = 0.0f;
+			
+			return res;
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		res[0] = v0 * invLength;
+		res[1] = v1 * invLength;
+		
+		return res;
+	}
+	
+	public static float[] nrm(float[] v, @ExtractionParam float[] res)
+	{
+		if (TupUtils2F.Comp.isZero(v))
+		{
+			res[0] = 0.0f;
+			res[1] = 0.0f;
+			
+			return res;
+		}
+		
+		float invLength = MathUtils.invSqrt(v[0] * v[0] + v[1] * v[1]);
+		
+		res[0] = v[0] * invLength;
+		res[1] = v[1] * invLength;
+		
+		return res;
+	}
+
+	public static float[] nrm(float v0, float v1, @ExtractionParam float[] res)
+	{
+		if (TupUtils2F.Comp.isZero(v0, v1))
+		{
+			res[0] = 0.0f;
+			res[1] = 0.0f;
+			
+			return res;
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		res[0] = v0 * invLength;
+		res[1] = v1 * invLength;
+		
+		return res;
 	}
 	
 	/**
@@ -2179,85 +3792,51 @@ public class VecUtils2F
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] nrm(float tolerance, Tup2RF v, @ExtractionParam float[] res)
+	public static float[] nrm(float tolerance, ITup2RF v, @ExtractionParam float[] res)
 	{
-		return nrm(v.v0(), v.v1(), tolerance, res);
+		float v0 = v.v0();
+		float v1 = v.v1();
+		
+		if (TupUtils2F.Comp.isZero(tolerance, v0, v1))
+		{
+			res[0] = 0.0f;
+			res[1] = 0.0f;
+			
+			return res;
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		res[0] = v0 * invLength;
+		res[1] = v1 * invLength;
+		
+		return res;
+	}
+
+	public static float[] nrm(float tolerance, ITupRF v, @ExtractionParam float[] res)
+	{
+		float v0 = v.getAt(0);
+		float v1 = v.getAt(1);
+		
+		if (TupUtils2F.Comp.isZero(tolerance, v0, v1))
+		{
+			res[0] = 0.0f;
+			res[1] = 0.0f;
+			
+			return res;
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		res[0] = v0 * invLength;
+		res[1] = v1 * invLength;
+		
+		return res;
 	}
 	
-	/**
-	 * Normalizes the vector {@code (v[0], v[1])} and saves the result in the given extraction
-	 * parameter.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code (v[0], v[1]) / |(v[0], v[1])|}
-	 * 
-	 * @param v
-	 *     The vector as an array with at least two entries.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
-	public static float[] nrm(float[] v, @ExtractionParam float[] res)
-	{
-		return nrm(v[0], v[1], res);
-	}
-	
-	/**
-	 * Normalizes the vector {@code (v[0], v[1])} and saves the result in the given extraction
-	 * parameter. If the values of all components are within the margin defined by
-	 * {@code (-tolerance <= value <= tolerance)} the result will be a zero vector.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code (v[0], v[1]) / |(v[0], v[1])|}
-	 * 
-	 * @param v
-	 *     The vector as an array with at least two entries.
-	 * @param tolerance
-	 *     The tolerance for defining the margin around zero. Must be positive.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
 	public static float[] nrm(float tolerance, float[] v, @ExtractionParam float[] res)
 	{
-		return nrm(v[0], v[1], tolerance, res);
-	}
-	
-	/**
-	 * Normalizes the vector {@code (x, y)} and saves the result in the given extraction parameter.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code (x, y) / |(x, y)|}
-	 * 
-	 * @param x
-	 *     The value of the x component of the vector.
-	 * @param y
-	 *     The value of the y component of the vector.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
-	public static float[] nrm(float x, float y, @ExtractionParam float[] res)
-	{
-		if (x == 0.0f && y == 0.0f)
+		if (TupUtils2F.Comp.isZero(tolerance, v))
 		{
 			res[0] = 0.0f;
 			res[1] = 0.0f;
@@ -2265,41 +3844,17 @@ public class VecUtils2F
 			return res;
 		}
 		
-		float invLength = recLen(x, y);
+		float invLength = MathUtils.invSqrt(v[0] * v[0] + v[1] * v[1]);
 		
-		res[0] = x * invLength;
-		res[1] = y * invLength;
+		res[0] = v[0] * invLength;
+		res[1] = v[1] * invLength;
 		
 		return res;
 	}
-	
-	/**
-	 * Normalizes the vector {@code (x, y)} and saves the result in the given extraction parameter.
-	 * If the values of all components are within the margin defined by
-	 * {@code (-tolerance <= value <= tolerance)} the result will be a zero vector.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code (x, y) / |(x, y)|}
-	 * 
-	 * @param x
-	 *     The value of the x component of the vector.
-	 * @param y
-	 *     The value of the y component of the vector.
-	 * @param tolerance
-	 *     The tolerance for defining the margin around zero. Must be positive.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
-	public static float[] nrm(float tolerance, float x, float y, @ExtractionParam float[] res)
+
+	public static float[] nrm(float tolerance, float v0, float v1, @ExtractionParam float[] res)
 	{
-		if (Math.abs(x) <= tolerance && Math.abs(y) <= tolerance)
+		if (TupUtils2F.Comp.isZero(tolerance, v0, v1))
 		{
 			res[0] = 0.0f;
 			res[1] = 0.0f;
@@ -2307,10 +3862,10 @@ public class VecUtils2F
 			return res;
 		}
 		
-		float invLength = recLen(x, y);
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
 		
-		res[0] = x * invLength;
-		res[1] = y * invLength;
+		res[0] = v0 * invLength;
+		res[1] = v1 * invLength;
 		
 		return res;
 	}
@@ -2337,9 +3892,74 @@ public class VecUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T nrm(Tup2RF v, @ExtractionParam T res)
+	public static <T extends ITup2WF> T nrm(ITup2RF v, @ExtractionParam T res)
 	{
-		return nrm(v.v0(), v.v1(), res);
+		float v0 = v.v0();
+		float v1 = v.v1();
+		
+		if (TupUtils2F.Comp.isZero(v0, v1))
+		{
+			res.set(0.0f, 0.0f);
+			
+			return res;
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		res.set(v0 * invLength, v1 * invLength);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T nrm(ITupRF v, @ExtractionParam T res)
+	{
+		float v0 = v.getAt(0);
+		float v1 = v.getAt(1);
+		
+		if (TupUtils2F.Comp.isZero(v0, v1))
+		{
+			res.set(0.0f, 0.0f);
+			
+			return res;
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		res.set(v0 * invLength, v1 * invLength);
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T nrm(float[] v, @ExtractionParam T res)
+	{
+		if (TupUtils2F.Comp.isZero(v))
+		{
+			res.set(0.0f, 0.0f);
+			
+			return res;
+		}
+		
+		float invLength = MathUtils.invSqrt(v[0] * v[0] + v[1] * v[1]);
+		
+		res.set(v[0] * invLength, v[1] * invLength);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T nrm(float v0, float v1, @ExtractionParam T res)
+	{
+		if (TupUtils2F.Comp.isZero(v0, v1))
+		{
+			res.set(0.0f, 0.0f);
+			
+			return res;
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		res.set(v0 * invLength, v1 * invLength);
+		
+		return res;
 	}
 	
 	/**
@@ -2367,70 +3987,78 @@ public class VecUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T nrm(float tolerance, Tup2RF v, @ExtractionParam T res)
+	public static <T extends ITup2WF> T nrm(float tolerance, ITup2RF v, @ExtractionParam T res)
 	{
-		return nrm(v.v0(), v.v1(), tolerance, res);
+		float v0 = v.v0();
+		float v1 = v.v1();
+		
+		if (TupUtils2F.Comp.isZero(tolerance, v0, v1))
+		{
+			res.set(0.0f, 0.0f);
+			
+			return res;
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		res.set(v0 * invLength, v1 * invLength);
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T nrm(float tolerance, ITupRF v, @ExtractionParam T res)
+	{
+		float v0 = v.getAt(0);
+		float v1 = v.getAt(1);
+		
+		if (TupUtils2F.Comp.isZero(tolerance, v0, v1))
+		{
+			res.set(0.0f, 0.0f);
+			
+			return res;
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		res.set(v0 * invLength, v1 * invLength);
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T nrm(float tolerance, float[] v, @ExtractionParam T res)
+	{
+		if (TupUtils2F.Comp.isZero(tolerance, v))
+		{
+			res.set(0.0f, 0.0f);
+			
+			return res;
+		}
+		
+		float invLength = MathUtils.invSqrt(v[0] * v[0] + v[1] * v[1]);
+		
+		res.set(v[0] * invLength, v[1] * invLength);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T nrm(float tolerance, float v0, float v1, @ExtractionParam T res)
+	{
+		if (TupUtils2F.Comp.isZero(tolerance, v0, v1))
+		{
+			res.set(0.0f, 0.0f);
+			
+			return res;
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		res.set(v0 * invLength, v1 * invLength);
+		
+		return res;
 	}
 	
 	/**
-	 * Normalizes the vector {@code (v[0], v[1])} and saves the result in the given extraction
-	 * parameter object.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code (v[0], v[1]) / |(v[0], v[1])|}
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v
-	 *     The vector as an array with at least two entries.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends Tup2WF> T nrm(float[] v, @ExtractionParam T res)
-	{
-		return nrm(v[0], v[1], res);
-	}
-	
-	/**
-	 * Normalizes the vector {@code (v[0], v[1])} and saves the result in the given extraction
-	 * parameter object. If the values of all components are within the margin defined by
-	 * {@code (-tolerance <= value <= tolerance)} the result will be a zero vector.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code (v[0], v[1]) / |(v[0], v[1])|}
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v
-	 *     The vector as an array with at least two entries.
-	 * @param tolerance
-	 *     The tolerance for defining the margin around zero. Must be positive.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends Tup2WF> T nrm(float tolerance, float[] v, @ExtractionParam T res)
-	{
-		return nrm(v[0], v[1], tolerance, res);
-	}
-	
-	/**
-	 * Normalizes the vector {@code (x, y)} and saves the result in the given extraction parameter
+	 * Normalizes the vector {@code (v)} and saves the result in the given extraction parameter
 	 * object.
 	 * 
 	 * <p>
@@ -2439,38 +4067,78 @@ public class VecUtils2F
 	 * 
 	 * <p>
 	 * Operation:<br>
-	 * {@code (x, y) / |(x, y)|}
+	 * {@code v / |v|}
 	 * 
 	 * @param <T>
 	 *     The type of the extraction parameter object.
 	 * 
-	 * @param x
-	 *     The value of the x component of the vector.
-	 * @param y
-	 *     The value of the y component of the vector.
+	 * @param v
+	 *     The vector.
 	 * @param res
 	 *     The extraction parameter object for the result.
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T nrm(float x, float y, @ExtractionParam T res)
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T nrmCreateNew(ITup2RF v, T prototype)
 	{
-		if (x == 0.0f && y == 0.0f)
+		float v0 = v.v0();
+		float v1 = v.v1();
+		
+		if (TupUtils2F.Comp.isZero(v0, v1))
 		{
-			res.set(0.0f, 0.0f);
-			
-			return res;
+			return (T) prototype.createNew(0.0f, 0.0f);
 		}
 		
-		float invLength = recLen(x, y);
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
 		
-		res.set(x * invLength, y * invLength);
+		return (T) prototype.createNew(v0 * invLength, v1 * invLength);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T nrmCreateNew(ITupRF v, T prototype)
+	{
+		float v0 = v.getAt(0);
+		float v1 = v.getAt(1);
 		
-		return res;
+		if (TupUtils2F.Comp.isZero(v0, v1))
+		{
+			return (T) prototype.createNew(0.0f, 0.0f);
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		return (T) prototype.createNew(v0 * invLength, v1 * invLength);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T nrmCreateNew(float[] v, T prototype)
+	{
+		if (TupUtils2F.Comp.isZero(v))
+		{
+			return (T) prototype.createNew(0.0f, 0.0f);
+		}
+		
+		float invLength = MathUtils.invSqrt(v[0] * v[0] + v[1] * v[1]);
+		
+		return (T) prototype.createNew(v[0] * invLength, v[1] * invLength);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T nrmCreateNew(float v0, float v1, T prototype)
+	{
+		if (TupUtils2F.Comp.isZero(v0, v1))
+		{
+			return (T) prototype.createNew(0.0f, 0.0f);
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		return (T) prototype.createNew(v0 * invLength, v1 * invLength);
 	}
 	
 	/**
-	 * Normalizes the vector {@code (x, y)} and saves the result in the given extraction parameter
+	 * Normalizes the vector {@code (v)} and saves the result in the given extraction parameter
 	 * object. If the values of all components are within the margin defined by
 	 * {@code (-tolerance <= value <= tolerance)} the result will be a zero vector.
 	 * 
@@ -2480,15 +4148,13 @@ public class VecUtils2F
 	 * 
 	 * <p>
 	 * Operation:<br>
-	 * {@code (x, y) / |(x, y)|}
+	 * {@code v / |v|}
 	 * 
 	 * @param <T>
 	 *     The type of the extraction parameter object.
 	 * 
-	 * @param x
-	 *     The value of the x component of the vector.
-	 * @param y
-	 *     The value of the y component of the vector.
+	 * @param v
+	 *     The vector.
 	 * @param tolerance
 	 *     The tolerance for defining the margin around zero. Must be positive.
 	 * @param res
@@ -2496,20 +4162,62 @@ public class VecUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T nrm(float tolerance, float x, float y, @ExtractionParam T res)
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T nrmCreateNew(float tolerance, ITup2RF v, T prototype)
 	{
-		if (Math.abs(x) <= tolerance && Math.abs(y) <= tolerance)
+		float v0 = v.v0();
+		float v1 = v.v1();
+		
+		if (TupUtils2F.Comp.isZero(tolerance, v0, v1))
 		{
-			res.set(0.0f, 0.0f);
-			
-			return res;
+			return (T) prototype.createNew(0.0f, 0.0f);
 		}
 		
-		float invLength = recLen(x, y);
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
 		
-		res.set(x * invLength, y * invLength);
+		return (T) prototype.createNew(v0 * invLength, v1 * invLength);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T nrmCreateNew(float tolerance, ITupRF v, T prototype)
+	{
+		float v0 = v.getAt(0);
+		float v1 = v.getAt(1);
 		
-		return res;
+		if (TupUtils2F.Comp.isZero(tolerance, v0, v1))
+		{
+			return (T) prototype.createNew(0.0f, 0.0f);
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		return (T) prototype.createNew(v0 * invLength, v1 * invLength);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T nrmCreateNew(float tolerance, float[] v, T prototype)
+	{
+		if (TupUtils2F.Comp.isZero(tolerance, v))
+		{
+			return (T) prototype.createNew(0.0f, 0.0f);
+		}
+		
+		float invLength = MathUtils.invSqrt(v[0] * v[0] + v[1] * v[1]);
+		
+		return (T) prototype.createNew(v[0] * invLength, v[1] * invLength);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T nrmCreateNew(float tolerance, float v0, float v1, T prototype)
+	{
+		if (TupUtils2F.Comp.isZero(tolerance, v0, v1))
+		{
+			return (T) prototype.createNew(0.0f, 0.0f);
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		return (T) prototype.createNew(v0 * invLength, v1 * invLength);
 	}
 	
 	/**
@@ -2529,56 +4237,40 @@ public class VecUtils2F
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] rotRad(double angle, Tup2RF v, @ExtractionParam float[] res)
+	public static float[] rotRad(double angle, ITup2RF v, @ExtractionParam float[] res)
 	{
-		return rotRad(angle, v.v0(), v.v1(), res);
+		float v0 = v.v0();
+		float v1 = v.v1();
+		
+		res[0] = (float)(v0 * MathUtils.cos(angle) - v1 * MathUtils.sin(angle));
+		res[1] = (float)(v0 * MathUtils.sin(angle) + v1 * MathUtils.cos(angle));
+		
+		return res;
+	}
+
+	public static float[] rotRad(double angle, ITupRF v, @ExtractionParam float[] res)
+	{
+		float v0 = v.getAt(0);
+		float v1 = v.getAt(1);
+		
+		res[0] = (float)(v0 * MathUtils.cos(angle) - v1 * MathUtils.sin(angle));
+		res[1] = (float)(v0 * MathUtils.sin(angle) + v1 * MathUtils.cos(angle));
+		
+		return res;
 	}
 	
-	/**
-	 * Rotates the vector {@code (v[0], v[1])} by the given angle in radians and saves the result in
-	 * the given extraction parameter.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * @param v
-	 *     The vector as an array with at least two entries.
-	 * @param angle
-	 *     The angle in radians.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
 	public static float[] rotRad(double angle, float[] v, @ExtractionParam float[] res)
 	{
-		return rotRad(angle, v[0], v[1], res);
+		res[0] = (float)(v[0] * MathUtils.cos(angle) - v[1] * MathUtils.sin(angle));
+		res[1] = (float)(v[0] * MathUtils.sin(angle) + v[1] * MathUtils.cos(angle));
+		
+		return res;
 	}
-	
-	/**
-	 * Rotates the vector {@code (x, y)} by the given angle in radians and saves the result in the
-	 * given extraction parameter.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * @param x
-	 *     The value of the x component of the vector.
-	 * @param y
-	 *     The value of the y component of the vector.
-	 * @param angle
-	 *     The angle in radians.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
-	public static float[] rotRad(double angle, float x, float y, @ExtractionParam float[] res)
+
+	public static float[] rotRad(double angle, float v0, float v1, @ExtractionParam float[] res)
 	{
-		res[0] = (float)(x * MathUtils.cos(angle) - y * MathUtils.sin(angle));
-		res[1] = (float)(x * MathUtils.sin(angle) + y * MathUtils.cos(angle));
+		res[0] = (float)(v0 * MathUtils.cos(angle) - v1 * MathUtils.sin(angle));
+		res[1] = (float)(v0 * MathUtils.sin(angle) + v1 * MathUtils.cos(angle));
 		
 		return res;
 	}
@@ -2603,14 +4295,43 @@ public class VecUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T rotRad(double angle, Tup2RF v, @ExtractionParam T res)
+	public static <T extends ITup2WF> T rotRad(double angle, ITup2RF v, @ExtractionParam T res)
 	{
-		return rotRad(angle, v.v0(), v.v1(), res);
+		float v0 = v.v0();
+		float v1 = v.v1();
+		
+		res.set((float)(v0 * MathUtils.cos(angle) - v1 * MathUtils.sin(angle)), (float)(v0 * MathUtils.sin(angle) + v1 * MathUtils.cos(angle)));
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T rotRad(double angle, ITupRF v, @ExtractionParam T res)
+	{
+		float v0 = v.getAt(0);
+		float v1 = v.getAt(1);
+		
+		res.set((float)(v0 * MathUtils.cos(angle) - v1 * MathUtils.sin(angle)), (float)(v0 * MathUtils.sin(angle) + v1 * MathUtils.cos(angle)));
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T rotRad(double angle, float[] v, @ExtractionParam T res)
+	{
+		res.set((float)(v[0] * MathUtils.cos(angle) - v[1] * MathUtils.sin(angle)), (float)(v[0] * MathUtils.sin(angle) + v[1] * MathUtils.cos(angle)));
+		
+		return res;
+	}
+	
+	public static  <T extends ITup2WF> T rotRad(double angle, float v0, float v1, @ExtractionParam T res)
+	{
+		res.set((float)(v0 * MathUtils.cos(angle) - v1 * MathUtils.sin(angle)), (float)(v0 * MathUtils.sin(angle) + v1 * MathUtils.cos(angle)));
+		
+		return res;
 	}
 	
 	/**
-	 * Rotates the vector {@code (v[0], v[1])} by the given angle in radians and saves the result in
-	 * the given extraction parameter object.
+	 * Rotates the vector {@code (v)} by the given angle in radians and saves the result in the
+	 * given extraction parameter object.
 	 * 
 	 * <p>
 	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
@@ -2620,7 +4341,7 @@ public class VecUtils2F
 	 *     The type of the extraction parameter object.
 	 * 
 	 * @param v
-	 *     The vector as an array with at least two entries.
+	 *     The.
 	 * @param angle
 	 *     The angle in radians.
 	 * @param res
@@ -2628,84 +4349,155 @@ public class VecUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T rotRad(double angle, float[] v, @ExtractionParam T res)
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T rotRadCreateNew(double angle, ITup2RF v, T prototype)
 	{
-		return rotRad(angle, v[0], v[1], res);
+		float v0 = v.v0();
+		float v1 = v.v1();
+		
+		return (T) prototype.createNew((float)(v0 * MathUtils.cos(angle) - v1 * MathUtils.sin(angle)), (float)(v0 * MathUtils.sin(angle) + v1 * MathUtils.cos(angle)));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T rotRadCreateNew(double angle, ITupRF v, T prototype)
+	{
+		float v0 = v.getAt(0);
+		float v1 = v.getAt(1);
+		
+		return (T) prototype.createNew((float)(v0 * MathUtils.cos(angle) - v1 * MathUtils.sin(angle)), (float)(v0 * MathUtils.sin(angle) + v1 * MathUtils.cos(angle)));
 	}
 	
-	public static  <T extends Tup2WF> T rotRad(double angle, float x, float y, @ExtractionParam T res)
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T rotRadCreateNew(double angle, float[] v, T prototype)
 	{
-		res.set((float)(x * MathUtils.cos(angle) - y * MathUtils.sin(angle)), (float)(x * MathUtils.sin(angle) + y * MathUtils.cos(angle)));
+		return (T) prototype.createNew((float)(v[0] * MathUtils.cos(angle) - v[1] * MathUtils.sin(angle)), (float)(v[0] * MathUtils.sin(angle) + v[1] * MathUtils.cos(angle)));
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static  <T extends ITup2RF> T rotRadCreateNew(double angle, float v0, float v1, T prototype)
+	{
+		return (T) prototype.createNew((float)(v0 * MathUtils.cos(angle) - v1 * MathUtils.sin(angle)), (float)(v0 * MathUtils.sin(angle) + v1 * MathUtils.cos(angle)));
+	}
+	
+	/**
+	 * Rotates the vector {@code (v)} by the given angle in degrees and saves the result in the
+	 * given extraction parameter.
+	 * 
+	 * <p>
+	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
+	 * calculation.
+	 * 
+	 * @param v
+	 *     The vector.
+	 * @param angle
+	 *     The angle in degrees.
+	 * @param res
+	 *     The extraction parameter for the result as an array with at least two entries.
+	 * 
+	 * @return The extraction parameter with the result.
+	 */
+	public static float[] rotDeg(double angle, ITup2RF v, @ExtractionParam float[] res)
+	{
+		double radAngle = angle * MathUtils.DEG_TO_RAD;
+		float v0 = v.v0();
+		float v1 = v.v1();
+		
+		res[0] = (float)(v0 * MathUtils.cos(radAngle) - v1 * MathUtils.sin(radAngle));
+		res[1] = (float)(v0 * MathUtils.sin(radAngle) + v1 * MathUtils.cos(radAngle));
+		
+		return res;
+	}
+
+	public static float[] rotDeg(double angle, ITupRF v, @ExtractionParam float[] res)
+	{
+		double radAngle = angle * MathUtils.DEG_TO_RAD;
+		float v0 = v.getAt(0);
+		float v1 = v.getAt(1);
+		
+		res[0] = (float)(v0 * MathUtils.cos(radAngle) - v1 * MathUtils.sin(radAngle));
+		res[1] = (float)(v0 * MathUtils.sin(radAngle) + v1 * MathUtils.cos(radAngle));
+		
+		return res;
+	}
+	
+	public static float[] rotDeg(double angle, float[] v, @ExtractionParam float[] res)
+	{
+		double radAngle = angle * MathUtils.DEG_TO_RAD;
+		
+		res[0] = (float)(v[0] * MathUtils.cos(radAngle) - v[1] * MathUtils.sin(radAngle));
+		res[1] = (float)(v[0] * MathUtils.sin(radAngle) + v[1] * MathUtils.cos(radAngle));
+		
+		return res;
+	}
+
+	public static float[] rotDeg(double angle, float v0, float v1, @ExtractionParam float[] res)
+	{
+		double radAngle = angle * MathUtils.DEG_TO_RAD;
+		
+		res[0] = (float)(v0 * MathUtils.cos(radAngle) - v1 * MathUtils.sin(radAngle));
+		res[1] = (float)(v0 * MathUtils.sin(radAngle) + v1 * MathUtils.cos(radAngle));
 		
 		return res;
 	}
 	
 	/**
 	 * Rotates the vector {@code (v)} by the given angle in degrees and saves the result in the
-	 * given extraction parameter.
+	 * given extraction parameter object.
 	 * 
 	 * <p>
 	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
 	 * calculation.
+	 * 
+	 * @param <T>
+	 *     The type of the extraction parameter object.
 	 * 
 	 * @param v
 	 *     The vector.
 	 * @param angle
 	 *     The angle in degrees.
 	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
+	 *     The extraction parameter object for the result.
 	 * 
-	 * @return The extraction parameter with the result.
+	 * @return The extraction parameter object with the result.
 	 */
-	public static float[] rotDeg(double angle, Tup2RF v, @ExtractionParam float[] res)
+	public static <T extends ITup2WF> T rotDeg(double angle, ITup2RF v, @ExtractionParam T res)
 	{
-		return rotDeg(angle, v.v0(), v.v1(), res);
+		double radAngle = angle * MathUtils.DEG_TO_RAD;
+		float v0 = v.v0();
+		float v1 = v.v1();
+		
+		res.set((float)(v0 * MathUtils.cos(radAngle) - v1 * MathUtils.sin(radAngle)), (float)(v0 * MathUtils.sin(radAngle) + v1 * MathUtils.cos(radAngle)));
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T rotDeg(double angle, ITupRF v, @ExtractionParam T res)
+	{
+		double radAngle = angle * MathUtils.DEG_TO_RAD;
+		float v0 = v.getAt(0);
+		float v1 = v.getAt(1);
+		
+		res.set((float)(v0 * MathUtils.cos(radAngle) - v1 * MathUtils.sin(radAngle)), (float)(v0 * MathUtils.sin(radAngle) + v1 * MathUtils.cos(radAngle)));
+		
+		return res;
 	}
 	
-	/**
-	 * Rotates the vector {@code (v[0], v[1])} by the given angle in degrees and saves the result in
-	 * the given extraction parameter.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * @param v
-	 *     The vector as an array with at least two entries.
-	 * @param angle
-	 *     The angle in degrees.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
-	public static float[] rotDeg(double angle, float[] v, @ExtractionParam float[] res)
+	public static <T extends ITup2WF> T rotDeg(double angle, float[] v, @ExtractionParam T res)
 	{
-		return rotDeg(angle, v[0], v[1], res);
+		double radAngle = angle * MathUtils.DEG_TO_RAD;
+		
+		res.set((float)(v[0] * MathUtils.cos(radAngle) - v[1] * MathUtils.sin(radAngle)), (float)(v[0] * MathUtils.sin(radAngle) + v[1] * MathUtils.cos(radAngle)));
+		
+		return res;
 	}
-	
-	/**
-	 * Rotates the vector {@code (x, y)} by the given angle in degrees and saves the result in the
-	 * given extraction parameter.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * @param x
-	 *     The value of the x component of the vector.
-	 * @param y
-	 *     The value of the y component of the vector.
-	 * @param angle
-	 *     The angle in degrees.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
-	public static float[] rotDeg(double angle, float x, float y, @ExtractionParam float[] res)
+
+	public static <T extends ITup2WF> T rotDeg(double angle, float v0, float v1, @ExtractionParam T res)
 	{
-		return rotRad(angle * MathUtils.DEG_TO_RADf, x, y, res);
+		double radAngle = angle * MathUtils.DEG_TO_RAD;
+		
+		res.set((float)(v0 * MathUtils.cos(radAngle) - v1 * MathUtils.sin(radAngle)), (float)(v0 * MathUtils.sin(radAngle) + v1 * MathUtils.cos(radAngle)));
+		
+		return res;
 	}
 	
 	/**
@@ -2728,61 +4520,40 @@ public class VecUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T rotDeg(double angle, Tup2RF v, @ExtractionParam T res)
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T rotDegCreateNew(double angle, ITup2RF v, T prototype)
 	{
-		return rotDeg(angle, v.v0(), v.v1(), res);
+		double radAngle = angle * MathUtils.DEG_TO_RAD;
+		float v0 = v.v0();
+		float v1 = v.v1();
+		
+		return (T) prototype.createNew((float)(v0 * MathUtils.cos(radAngle) - v1 * MathUtils.sin(radAngle)), (float)(v0 * MathUtils.sin(radAngle) + v1 * MathUtils.cos(radAngle)));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T rotDegCreateNew(double angle, ITupRF v, T prototype)
+	{
+		double radAngle = angle * MathUtils.DEG_TO_RAD;
+		float v0 = v.getAt(0);
+		float v1 = v.getAt(1);
+		
+		return (T) prototype.createNew((float)(v0 * MathUtils.cos(radAngle) - v1 * MathUtils.sin(radAngle)), (float)(v0 * MathUtils.sin(radAngle) + v1 * MathUtils.cos(radAngle)));
 	}
 	
-	/**
-	 * Rotates the vector {@code (v[0], v[1])} by the given angle in degrees and saves the result in
-	 * the given extraction parameter object.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v
-	 *     The vector as an array with at least two entries.
-	 * @param angle
-	 *     The angle in degrees.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends Tup2WF> T rotDeg(double angle, float[] v, @ExtractionParam T res)
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T rotDegCreateNew(double angle, float[] v, T prototype)
 	{
-		return rotDeg(angle, v[0], v[1], res);
+		double radAngle = angle * MathUtils.DEG_TO_RAD;
+		
+		return (T) prototype.createNew((float)(v[0] * MathUtils.cos(radAngle) - v[1] * MathUtils.sin(radAngle)), (float)(v[0] * MathUtils.sin(radAngle) + v[1] * MathUtils.cos(radAngle)));
 	}
-	
-	/**
-	 * Rotates the vector {@code (x, y)} by the given angle in degrees and saves the result in the
-	 * given extraction parameter object.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param x
-	 *     The value of the x component of the vector.
-	 * @param y
-	 *     The value of the y component of the vector.
-	 * @param angle
-	 *     The angle in degrees.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends Tup2WF> T rotDeg(double angle, float x, float y, @ExtractionParam T res)
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T rotDegCreateNew(double angle, float v0, float v1, T prototype)
 	{
-		return rotRad(angle * MathUtils.DEG_TO_RADf, x, y, res);
+		double radAngle = angle * MathUtils.DEG_TO_RAD;
+		
+		return (T) prototype.createNew((float)(v0 * MathUtils.cos(radAngle) - v1 * MathUtils.sin(radAngle)), (float)(v0 * MathUtils.sin(radAngle) + v1 * MathUtils.cos(radAngle)));
 	}
 	
 	/**
@@ -2802,200 +4573,206 @@ public class VecUtils2F
 	 * 
 	 * @return The extraction parameter with the result
 	 */
-	public static float[] project(Tup2RF v, Tup2RF t, @ExtractionParam float[] res)
+	public static float[] project(ITup2RF v, ITup2RF t, @ExtractionParam float[] res)
 	{
-		return project(v.v0(), v.v1(), t.v0(), t.v1(), res);
+		float vV0 = v.v0();
+		float vV1 = v.v1();
+		float tV0 = t.v0();
+		float tV1 = t.v1();		
+		
+		float dot = vV0 * tV0 + vV1 * tV1;
+		
+		res[0] = tV0 * dot;
+		res[1] = tV1 * dot;
+		
+		return res;
+	}
+
+	public static float[] project(ITup2RF v, ITupRF t, @ExtractionParam float[] res)
+	{
+		float vV0 = v.v0();
+		float vV1 = v.v1();
+		float tV0 = t.getAt(0);
+		float tV1 = t.getAt(1);		
+		
+		float dot = vV0 * tV0 + vV1 * tV1;
+		
+		res[0] = tV0 * dot;
+		res[1] = tV1 * dot;
+		
+		return res;
 	}
 	
-	/**
-	 * Calculates the orthogonal projection of the vector {@code (v)} onto the normalized target
-	 * vector {@code (t[0], t[1])} and saves the result in the extraction parameter.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code (t[0], t[1]) * (v . (t[0], t[1]))}
-	 * 
-	 * @param v
-	 *     The vector.
-	 * @param t
-	 *     The projection target vector as an array with at least two entries.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result
-	 */
-	public static float[] project(Tup2RF v, float[] t, @ExtractionParam float[] res)
+	public static float[] project(ITup2RF v, float[] t, @ExtractionParam float[] res)
 	{
-		return project(v.v0(), v.v1(), t[0], t[1], res);
+		float vV0 = v.v0();
+		float vV1 = v.v1();
+		
+		float dot = vV0 * t[0] + vV1 * t[1];
+		
+		res[0] = t[0] * dot;
+		res[1] = t[1] * dot;
+		
+		return res;
+	}
+
+	public static float[] project(ITup2RF v, float tV0, float tV1, @ExtractionParam float[] res)
+	{
+		float vV0 = v.v0();
+		float vV1 = v.v1();
+		
+		float dot = vV0 * tV0 + vV1 * tV1;
+		
+		res[0] = tV0 * dot;
+		res[1] = tV1 * dot;
+		
+		return res;
+	}
+
+	public static float[] project(ITupRF v, ITup2RF t, @ExtractionParam float[] res)
+	{
+		float vV0 = v.getAt(0);
+		float vV1 = v.getAt(1);
+		float tV0 = t.v0();
+		float tV1 = t.v1();		
+		
+		float dot = vV0 * tV0 + vV1 * tV1;
+		
+		res[0] = tV0 * dot;
+		res[1] = tV1 * dot;
+		
+		return res;
+	}
+
+	public static float[] project(ITupRF v, ITupRF t, @ExtractionParam float[] res)
+	{
+		float vV0 = v.getAt(0);
+		float vV1 = v.getAt(1);
+		float tV0 = t.getAt(0);
+		float tV1 = t.getAt(1);		
+		
+		float dot = vV0 * tV0 + vV1 * tV1;
+		
+		res[0] = tV0 * dot;
+		res[1] = tV1 * dot;
+		
+		return res;
 	}
 	
-	/**
-	 * Calculates the orthogonal projection of the vector {@code (v)} onto the normalized target
-	 * vector {@code (tX, tY)} and saves the result in the extraction parameter.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code (tX, tY) * (v . (tX, tY))}
-	 * 
-	 * @param v
-	 *     The vector.
-	 * @param tX
-	 *     The value of the x component of the projection target vector.
-	 * @param tY
-	 *     The value of the y component of the projection target vector.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result
-	 */
-	public static float[] project(Tup2RF v, float tX, float tY, @ExtractionParam float[] res)
+	public static float[] project(ITupRF v, float[] t, @ExtractionParam float[] res)
 	{
-		return project(v.v0(), v.v1(), tX, tY, res);
+		float vV0 = v.getAt(0);
+		float vV1 = v.getAt(1);
+		
+		float dot = vV0 * t[0] + vV1 * t[1];
+		
+		res[0] = t[0] * dot;
+		res[1] = t[1] * dot;
+		
+		return res;
+	}
+
+	public static float[] project(ITupRF v, float tV0, float tV1, @ExtractionParam float[] res)
+	{
+		float vV0 = v.getAt(0);
+		float vV1 = v.getAt(1);
+		
+		float dot = vV0 * tV0 + vV1 * tV1;
+		
+		res[0] = tV0 * dot;
+		res[1] = tV1 * dot;
+		
+		return res;
 	}
 	
-	/**
-	 * Calculates the orthogonal projection of the vector {@code (v[0], v[1])} onto the normalized
-	 * target vector {@code (t)} and saves the result in the extraction parameter.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code t * ((v[0], v[1]) . t)}
-	 * 
-	 * @param v
-	 *     The vector as an array with at least two entries.
-	 * @param t
-	 *     The projection target vector.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result
-	 */
-	public static float[] project(float[] v, Tup2RF t, @ExtractionParam float[] res)
+	public static float[] project(float[] v, ITup2RF t, @ExtractionParam float[] res)
 	{
-		return project(v[0], v[1], t.v0(), t.v1(), res);
+		float tV0 = t.v0();
+		float tV1 = t.v1();
+		
+		float dot = v[0] * tV0 + v[1] * tV1;
+		
+		res[0] = tV0 * dot;
+		res[1] = tV1 * dot;
+		
+		return res;
+	}
+
+	public static float[] project(float[] v, ITupRF t, @ExtractionParam float[] res)
+	{
+		float tV0 = t.getAt(0);
+		float tV1 = t.getAt(1);
+		
+		float dot = v[0] * tV0 + v[1] * tV1;
+		
+		res[0] = tV0 * dot;
+		res[1] = tV1 * dot;
+		
+		return res;
 	}
 	
-	/**
-	 * Calculates the orthogonal projection of the vector {@code (v[0], v[1])} onto the normalized
-	 * target vector {@code (t[0], t[1])} and saves the result in the extraction parameter.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code (t[0], t[1]) * ((v[0], v[1]) . (t[0], t[1]))}
-	 * 
-	 * @param v
-	 *     The vector as an array with at least two entries.
-	 * @param t
-	 *     The projection target vector as an array with at least two entries.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result
-	 */
 	public static float[] project(float[] v, float[] t, @ExtractionParam float[] res)
 	{
-		return project(v[0], v[1], t[0], t[1], res);
-	}
-	
-	/**
-	 * Calculates the orthogonal projection of the vector {@code (v[0], v[1])} onto the normalized
-	 * target vector {@code (tX, tY)} and saves the result in the extraction parameter.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code (tX, tY) * ((v[0], v[1]) . (tX, tY))}
-	 * 
-	 * @param v
-	 *     The vector as an array with at least two entries.
-	 * @param tX
-	 *     The value of the x component of the projection target vector.
-	 * @param tY
-	 *     The value of the y component of the projection target vector.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result
-	 */
-	public static float[] project(float[] v, float tX, float tY, @ExtractionParam float[] res)
-	{
-		return project(v[0], v[1], tX, tY, res);
-	}
-	
-	/**
-	 * Calculates the orthogonal projection of the vector {@code (vX, vY)} onto the normalized
-	 * target vector {@code (t)} and saves the result in the extraction parameter.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code t * ((vX, vY) . t)}
-	 * 
-	 * @param vX
-	 *     The value of the x component of the vector.
-	 * @param vY
-	 *     The value of the y component of the vector.
-	 * @param t
-	 *     The projection target vector.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result
-	 */
-	public static float[] project(float vX, float vY, Tup2RF t, @ExtractionParam float[] res)
-	{
-		return project(vX, vY, t.v0(), t.v1(), res);
-	}
-	
-	/**
-	 * Calculates the orthogonal projection of the vector {@code (vX, vY)} onto the normalized
-	 * target vector {@code (t[0], t[1])} and saves the result in the extraction parameter.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code (t[0], t[1]) * ((vX, vY) . (t[0], t[1]))}
-	 * 
-	 * @param vX
-	 *     The value of the x component of the vector.
-	 * @param vY
-	 *     The value of the y component of the vector.
-	 * @param t
-	 *     The projection target vector as an array with at least two entries.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result
-	 */
-	public static float[] project(float vX, float vY, float[] t, @ExtractionParam float[] res)
-	{
-		return project(vX, vY, t[0], t[1], res);
-	}
-	
-	/**
-	 * Calculates the orthogonal projection of the vector {@code (vX, vY)} onto the normalized
-	 * target vector {@code (tX, tY)} and saves the result in the extraction parameter.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code (tX, tY) * ((vX, vY) . (tX, tY))}
-	 * 
-	 * @param vX
-	 *     The value of the x component of the vector.
-	 * @param vY
-	 *     The value of the y component of the vector.
-	 * @param tX
-	 *     The value of the x component of the projection target vector.
-	 * @param tY
-	 *     The value of the y component of the projection target vector.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result
-	 */
-	public static float[] project(float vX, float vY, float tX, float tY, @ExtractionParam float[] res)
-	{
-		float dot = dot(vX, vY, tX, tY);
+		float dot = v[0] * t[0] + v[1] * t[1];
 		
-		res[0] = tX * dot;
-		res[1] = tY * dot;
+		res[0] = t[0] * dot;
+		res[1] = t[1] * dot;
+		
+		return res;
+	}
+
+	public static float[] project(float[] v, float tV0, float tV1, @ExtractionParam float[] res)
+	{
+		float dot = v[0] * tV0 + v[1] * tV1;
+		
+		res[0] = tV0 * dot;
+		res[1] = tV1 * dot;
+		
+		return res;
+	}
+
+	public static float[] project(float vV0, float vV1, ITup2RF t, @ExtractionParam float[] res)
+	{
+		float tV0 = t.v0();
+		float tV1 = t.v1();
+		
+		float dot = vV0 * tV0 + vV1 * tV1;
+		
+		res[0] = tV0 * dot;
+		res[1] = tV1 * dot;
+		
+		return res;
+	}
+
+	public static float[] project(float vV0, float vV1, ITupRF t, @ExtractionParam float[] res)
+	{
+		float tV0 = t.getAt(0);
+		float tV1 = t.getAt(1);
+		
+		float dot = vV0 * tV0 + vV1 * tV1;
+		
+		res[0] = tV0 * dot;
+		res[1] = tV1 * dot;
+		
+		return res;
+	}
+	
+	public static float[] project(float vV0, float vV1, float[] t, @ExtractionParam float[] res)
+	{
+		float dot = vV0 * t[0] + vV1 * t[1];
+		
+		res[0] = t[0] * dot;
+		res[1] = t[1] * dot;
+		
+		return res;
+	}
+
+	public static float[] project(float vV0, float vV1, float tV0, float tV1, @ExtractionParam float[] res)
+	{
+		float dot = vV0 * tV0 + vV1 * tV1;
+		
+		res[0] = tV0 * dot;
+		res[1] = tV1 * dot;
 		
 		return res;
 	}
@@ -3020,225 +4797,383 @@ public class VecUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T project(Tup2RF v, Tup2RF t, @ExtractionParam T res)
+	public static <T extends ITup2WF> T project(ITup2RF v, ITup2RF t, @ExtractionParam T res)
 	{
-		return project(v.v0(), v.v1(), t.v0(), t.v1(), res);
-	}
-	
-	/**
-	 * Calculates the orthogonal projection of the vector {@code (v)} onto the normalized target
-	 * vector {@code (t[0], t[1])} and saves the result in the extraction parameter object.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code (t[0], t[1]) * (v . (t[0], t[1]))}
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v
-	 *     The vector.
-	 * @param t
-	 *     The projection target vector as an array with at least two entries.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends Tup2WF> T project(Tup2RF v, float[] t, @ExtractionParam T res)
-	{
-		return project(v.v0(), v.v1(), t[0], t[1], res);
-	}
-	
-	/**
-	 * Calculates the orthogonal projection of the vector {@code (v)} onto the normalized target
-	 * vector {@code (tX, tY)} and saves the result in the extraction parameter object.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code (tX, tY) * (v . (tX, tY))}
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v
-	 *     The vector.
-	 * @param tX
-	 *     The value of the x component of the projection target vector.
-	 * @param tY
-	 *     The value of the y component of the projection target vector.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends Tup2WF> T project(Tup2RF v, float tX, float tY, @ExtractionParam T res)
-	{
-		return project(v.v0(), v.v1(), tX, tY, res);
-	}
-	
-	/**
-	 * Calculates the orthogonal projection of the vector {@code (v[0], v[1])} onto the normalized
-	 * target vector {@code (t)} and saves the result in the extraction parameter object.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code t * ((v[0], v[1]) . t)}
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v
-	 *     The vector as an array with at least two entries.
-	 * @param t
-	 *     The projection target vector.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends Tup2WF> T project(float[] v, Tup2RF t, @ExtractionParam T res)
-	{
-		return project(v[0], v[1], t.v0(), t.v1(), res);
-	}
-	
-	/**
-	 * Calculates the orthogonal projection of the vector {@code (v[0], v[1])} onto the normalized
-	 * target vector {@code (t[0], t[1])} and saves the result in the extraction parameter object.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code (t[0], t[1]) * ((v[0], v[1]) . (t[0], t[1]))}
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v
-	 *     The vector as an array with at least two entries.
-	 * @param t
-	 *     The projection target vector as an array with at least two entries.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends Tup2WF> T project(float[] v, float[] t, @ExtractionParam T res)
-	{
-		return project(v[0], v[1], t[0], t[1], res);
-	}
-	
-	/**
-	 * Calculates the orthogonal projection of the vector {@code (v[0], v[1])} onto the normalized
-	 * target vector {@code (tX, tY)} and saves the result in the extraction parameter object.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code (tX, tY) * ((v[0], v[1]) . (tX, tY))}
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v
-	 *     The vector as an array with at least two entries.
-	 * @param tX
-	 *     The value of the x component of the projection target vector.
-	 * @param tY
-	 *     The value of the y component of the projection target vector.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends Tup2WF> T project(float[] v, float tX, float tY, @ExtractionParam T res)
-	{
-		return project(v[0], v[1], tX, tY, res);
-	}
-	
-	/**
-	 * Calculates the orthogonal projection of the vector {@code (vX, vY)} onto the normalized
-	 * target vector {@code (t)} and saves the result in the extraction parameter object.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code t * ((vX, vY) . t)}
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param vX
-	 *     The value of the x component of the vector.
-	 * @param vY
-	 *     The value of the y component of the vector.
-	 * @param t
-	 *     The projection target vector.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends Tup2WF> T project(float vX, float vY, Tup2RF t, @ExtractionParam T res)
-	{
-		return project(vX, vY, t.v0(), t.v1(), res);
-	}
-	
-	/**
-	 * Calculates the orthogonal projection of the vector {@code (vX, vY)} onto the normalized
-	 * target vector {@code (t[0], t[1])} and saves the result in the extraction parameter object.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code (t[0], t[1]) * ((vX, vY) . (t[0], t[1]))}
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param vX
-	 *     The value of the x component of the vector.
-	 * @param vY
-	 *     The value of the y component of the vector.
-	 * @param t
-	 *     The projection target vector as an array with at least two entries.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends Tup2WF> T project(float vX, float vY, float[] t, @ExtractionParam T res)
-	{
-		return project(vX, vY, t[0], t[1], res);
-	}
-	
-	/**
-	 * Calculates the orthogonal projection of the vector {@code (vX, vY)} onto the normalized
-	 * target vector {@code (tX, tY)} and saves the result in the extraction parameter object.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code (tX, tY) * ((vX, vY) . (tX, tY))}
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param vX
-	 *     The value of the x component of the vector.
-	 * @param vY
-	 *     The value of the y component of the vector.
-	 * @param tX
-	 *     The value of the x component of the projection target vector.
-	 * @param tY
-	 *     The value of the y component of the projection target vector.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends Tup2WF> T project(float vX, float vY, float tX, float tY, @ExtractionParam T res)
-	{
-		float dot = dot(vX, vY, tX, tY);
+		float vV0 = v.v0();
+		float vV1 = v.v1();
+		float tV0 = t.v0();
+		float tV1 = t.v1();
 		
-		res.set(tX * dot, tY * dot);
+		float dot = vV0 * tV0 + vV1 * tV1;
+		
+		res.set(tV0 * dot, tV1 * dot);
 		
 		return res;
+	}
+	
+	public static <T extends ITup2WF> T project(ITup2RF v, ITupRF t, @ExtractionParam T res)
+	{
+		float vV0 = v.v0();
+		float vV1 = v.v1();
+		float tV0 = t.getAt(0);
+		float tV1 = t.getAt(1);
+		
+		float dot = vV0 * tV0 + vV1 * tV1;
+		
+		res.set(tV0 * dot, tV1 * dot);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T project(ITup2RF v, float[] t, @ExtractionParam T res)
+	{
+		float vV0 = v.v0();
+		float vV1 = v.v1();
+		
+		float dot = vV0 * t[0] + vV1 * t[1];
+		
+		res.set(t[0] * dot, t[1] * dot);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T project(ITup2RF v, float tV0, float tV1, @ExtractionParam T res)
+	{
+		float vV0 = v.v0();
+		float vV1 = v.v1();
+		
+		float dot = vV0 * tV0 + vV1 * tV1;
+		
+		res.set(tV0 * dot, tV1 * dot);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T project(ITupRF v, ITup2RF t, @ExtractionParam T res)
+	{
+		float vV0 = v.getAt(0);
+		float vV1 = v.getAt(1);
+		float tV0 = t.v0();
+		float tV1 = t.v1();
+		
+		float dot = vV0 * tV0 + vV1 * tV1;
+		
+		res.set(tV0 * dot, tV1 * dot);
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T project(ITupRF v, ITupRF t, @ExtractionParam T res)
+	{
+		float vV0 = v.getAt(0);
+		float vV1 = v.getAt(1);
+		float tV0 = t.getAt(0);
+		float tV1 = t.getAt(1);
+		
+		float dot = vV0 * tV0 + vV1 * tV1;
+		
+		res.set(tV0 * dot, tV1 * dot);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T project(ITupRF v, float[] t, @ExtractionParam T res)
+	{
+		float vV0 = v.getAt(0);
+		float vV1 = v.getAt(1);
+		
+		float dot = vV0 * t[0] + vV1 * t[1];
+		
+		res.set(t[0] * dot, t[1] * dot);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T project(ITupRF v, float tV0, float tV1, @ExtractionParam T res)
+	{
+		float vV0 = v.getAt(0);
+		float vV1 = v.getAt(1);
+		
+		float dot = vV0 * tV0 + vV1 * tV1;
+		
+		res.set(tV0 * dot, tV1 * dot);
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T project(float[] v, ITup2RF t, @ExtractionParam T res)
+	{
+		float tV0 = t.v0();
+		float tV1 = t.v1();
+		
+		float dot = v[0] * tV0 + v[1] * tV1;
+		
+		res.set(tV0 * dot, tV1 * dot);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T project(float[] v, ITupRF t, @ExtractionParam T res)
+	{
+		float tV0 = t.getAt(0);
+		float tV1 = t.getAt(1);
+		
+		float dot = v[0] * tV0 + v[1] * tV1;
+		
+		res.set(tV0 * dot, tV1 * dot);
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T project(float[] v, float[] t, @ExtractionParam T res)
+	{
+		float dot = v[0] * t[0] + v[1] * t[1];
+		
+		res.set(t[0] * dot, t[1] * dot);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T project(float[] v, float tV0, float tV1, @ExtractionParam T res)
+	{
+		float dot = v[0] * tV0 + v[1] * tV1;
+		
+		res.set(tV0 * dot, tV1 * dot);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T project(float vV0, float vV1, ITup2RF t, @ExtractionParam T res)
+	{
+		float tV0 = t.v0();
+		float tV1 = t.v1();
+		
+		float dot = vV0 * tV0 + vV1 * tV1;
+		
+		res.set(tV0 * dot, tV1 * dot);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T project(float vV0, float vV1, ITupRF t, @ExtractionParam T res)
+	{
+		float tV0 = t.getAt(0);
+		float tV1 = t.getAt(1);
+		
+		float dot = vV0 * tV0 + vV1 * tV1;
+		
+		res.set(tV0 * dot, tV1 * dot);
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T project(float vV0, float vV1, float[] t, @ExtractionParam T res)
+	{
+		float dot = vV0 * t[0] + vV1 * t[1];
+		
+		res.set(t[0] * dot, t[1] * dot);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T project(float vV0, float vV1, float tV0, float tV1, @ExtractionParam T res)
+	{
+		float dot = vV0 * tV0 + vV1 * tV1;
+		
+		res.set(tV0 * dot, tV1 * dot);
+		
+		return res;
+	}
+	
+	/**
+	 * Calculates the orthogonal projection of the vector {@code (v)} onto the normalized target
+	 * vector {@code (t)} and saves the result in the extraction parameter object.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code t * (v . t)}
+	 * 
+	 * @param <T>
+	 *     The type of the extraction parameter object.
+	 * 
+	 * @param v
+	 *     The vector.
+	 * @param t
+	 *     The projection target vector as an array with at least two entries.
+	 * @param res
+	 *     The extraction parameter object for the result.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T projectCreateNew(ITup2RF v, ITup2RF t, T prototype)
+	{
+		float vV0 = v.v0();
+		float vV1 = v.v1();
+		float tV0 = t.v0();
+		float tV1 = t.v1();
+		
+		float dot = vV0 * tV0 + vV1 * tV1;
+		
+		return (T) prototype.createNew(tV0 * dot, tV1 * dot);
+	}
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T projectCreateNew(ITup2RF v, ITupRF t, T prototype)
+	{
+		float vV0 = v.v0();
+		float vV1 = v.v1();
+		float tV0 = t.getAt(0);
+		float tV1 = t.getAt(1);
+		
+		float dot = vV0 * tV0 + vV1 * tV1;
+		
+		return (T) prototype.createNew(tV0 * dot, tV1 * dot);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T projectCreateNew(ITup2RF v, float[] t, T prototype)
+	{
+		float vV0 = v.v0();
+		float vV1 = v.v1();
+		
+		float dot = vV0 * t[0] + vV1 * t[1];
+		
+		return (T) prototype.createNew(t[0] * dot, t[1] * dot);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T projectCreateNew(ITup2RF v, float tV0, float tV1, T prototype)
+	{
+		float vV0 = v.v0();
+		float vV1 = v.v1();
+		
+		float dot = vV0 * tV0 + vV1 * tV1;
+		
+		return (T) prototype.createNew(tV0 * dot, tV1 * dot);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T projectCreateNew(ITupRF v, ITup2RF t, T prototype)
+	{
+		float vV0 = v.getAt(0);
+		float vV1 = v.getAt(1);
+		float tV0 = t.v0();
+		float tV1 = t.v1();
+		
+		float dot = vV0 * tV0 + vV1 * tV1;
+		
+		return (T) prototype.createNew(tV0 * dot, tV1 * dot);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T projectCreateNew(ITupRF v, ITupRF t, T prototype)
+	{
+		float vV0 = v.getAt(0);
+		float vV1 = v.getAt(1);
+		float tV0 = t.getAt(0);
+		float tV1 = t.getAt(1);
+		
+		float dot = vV0 * tV0 + vV1 * tV1;
+		
+		return (T) prototype.createNew(tV0 * dot, tV1 * dot);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T projectCreateNew(ITupRF v, float[] t, T prototype)
+	{
+		float vV0 = v.getAt(0);
+		float vV1 = v.getAt(1);
+		
+		float dot = vV0 * t[0] + vV1 * t[1];
+		
+		return (T) prototype.createNew(t[0] * dot, t[1] * dot);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T projectCreateNew(ITupRF v, float tV0, float tV1, T prototype)
+	{
+		float vV0 = v.getAt(0);
+		float vV1 = v.getAt(1);
+		
+		float dot = vV0 * tV0 + vV1 * tV1;
+		
+		return (T) prototype.createNew(tV0 * dot, tV1 * dot);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T projectCreateNew(float[] v, ITup2RF t, T prototype)
+	{
+		float tV0 = t.v0();
+		float tV1 = t.v1();
+		
+		float dot = v[0] * tV0 + v[1] * tV1;
+		
+		return (T) prototype.createNew(tV0 * dot, tV1 * dot);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T projectCreateNew(float[] v, ITupRF t, T prototype)
+	{
+		float tV0 = t.getAt(0);
+		float tV1 = t.getAt(1);
+		
+		float dot = v[0] * tV0 + v[1] * tV1;
+		
+		return (T) prototype.createNew(tV0 * dot, tV1 * dot);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T projectCreateNew(float[] v, float[] t, T prototype)
+	{
+		float dot = v[0] * t[0] + v[1] * t[1];
+		
+		return (T) prototype.createNew(t[0] * dot, t[1] * dot);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T projectCreateNew(float[] v, float tV0, float tV1, T prototype)
+	{
+		float dot = v[0] * tV0 + v[1] * tV1;
+		
+		return (T) prototype.createNew(tV0 * dot, tV1 * dot);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T projectCreateNew(float vV0, float vV1, ITup2RF t, T prototype)
+	{
+		float tV0 = t.v0();
+		float tV1 = t.v1();
+		
+		float dot = vV0 * tV0 + vV1 * tV1;
+		
+		return (T) prototype.createNew(tV0 * dot, tV1 * dot);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T projectCreateNew(float vV0, float vV1, ITupRF t, T prototype)
+	{
+		float tV0 = t.getAt(0);
+		float tV1 = t.getAt(1);
+		
+		float dot = vV0 * tV0 + vV1 * tV1;
+		
+		return (T) prototype.createNew(tV0 * dot, tV1 * dot);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T projectCreateNew(float vV0, float vV1, float[] t, T prototype)
+	{
+		float dot = vV0 * t[0] + vV1 * t[1];
+		
+		return (T) prototype.createNew(t[0] * dot, t[1] * dot);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T projectCreateNew(float vV0, float vV1, float tV0, float tV1, T prototype)
+	{
+		float dot = vV0 * tV0 + vV1 * tV1;
+		
+		return (T) prototype.createNew(tV0 * dot, tV1 * dot);
 	}
 	
 	/**
@@ -3254,168 +5189,206 @@ public class VecUtils2F
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] reflect(Tup2RF v, Tup2RF n, @ExtractionParam float[] res)
+	public static float[] reflect(ITup2RF v, ITup2RF n, @ExtractionParam float[] res)
 	{
-		return reflect(v.v0(), v.v1(), n.v0(), n.v1(), res);
+		float vV0 = v.v0();
+		float vV1 = v.v1();
+		float nV0 = n.v0();
+		float nV1 = n.v1();
+		
+		float dot = -2 * (vV0 * nV0 + vV1 * nV1);
+		
+		res[0] = nV0 * dot + vV0;
+		res[1] = nV1 * dot + vV1;
+		
+		return res;
+	}
+
+	public static float[] reflect(ITup2RF v, ITupRF n, @ExtractionParam float[] res)
+	{
+		float vV0 = v.v0();
+		float vV1 = v.v1();
+		float nV0 = n.getAt(0);
+		float nV1 = n.getAt(1);
+		
+		float dot = -2 * (vV0 * nV0 + vV1 * nV1);
+		
+		res[0] = nV0 * dot + vV0;
+		res[1] = nV1 * dot + vV1;
+		
+		return res;
 	}
 	
-	/**
-	 * Calculates the reflection of the vector {@code (v)} based on the given normalized surface
-	 * normal {@code (n[0], n[1])} and saves the result in the given extraction parameter.
-	 * 
-	 * @param v
-	 *     The vector.
-	 * @param n
-	 *     The surface normal vector as an array with at least two entries.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
-	public static float[] reflect(Tup2RF v, float[] n, @ExtractionParam float[] res)
+	public static float[] reflect(ITup2RF v, float[] n, @ExtractionParam float[] res)
 	{
-		return reflect(v.v0(), v.v1(), n[0], n[1], res);
+		float vV0 = v.v0();
+		float vV1 = v.v1();
+		
+		float dot = -2 * (vV0 * n[0] + vV1 * n[1]);
+		
+		res[0] = n[0] * dot + vV0;
+		res[1] = n[1] * dot + vV1;
+		
+		return res;
+	}
+
+	public static float[] reflect(ITup2RF v, float nV0, float nV1, @ExtractionParam float[] res)
+	{
+		float vV0 = v.v0();
+		float vV1 = v.v1();
+		
+		float dot = -2 * (vV0 * nV0 + vV1 * nV1);
+		
+		res[0] = nV0 * dot + vV0;
+		res[1] = nV1 * dot + vV1;
+		
+		return res;
+	}
+
+	public static float[] reflect(ITupRF v, ITup2RF n, @ExtractionParam float[] res)
+	{
+		float vV0 = v.getAt(0);
+		float vV1 = v.getAt(1);
+		float nV0 = n.v0();
+		float nV1 = n.v1();
+		
+		float dot = -2 * (vV0 * nV0 + vV1 * nV1);
+		
+		res[0] = nV0 * dot + vV0;
+		res[1] = nV1 * dot + vV1;
+		
+		return res;
+	}
+
+	public static float[] reflect(ITupRF v, ITupRF n, @ExtractionParam float[] res)
+	{
+		float vV0 = v.getAt(0);
+		float vV1 = v.getAt(1);
+		float nV0 = n.getAt(0);
+		float nV1 = n.getAt(1);
+		
+		float dot = -2 * (vV0 * nV0 + vV1 * nV1);
+		
+		res[0] = nV0 * dot + vV0;
+		res[1] = nV1 * dot + vV1;
+		
+		return res;
 	}
 	
-	/**
-	 * Calculates the reflection of the vector {@code (v)} based on the given normalized surface
-	 * normal {@code (nX, nY)} and saves the result in the given extraction parameter.
-	 * 
-	 * @param v
-	 *     The vector.
-	 * @param nX
-	 *     The value of the x component of the surface normal vector.
-	 * @param nY
-	 *     The value of the y component of the surface normal vector.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
-	public static float[] reflect(Tup2RF v, float nX, float nY, @ExtractionParam float[] res)
+	public static float[] reflect(ITupRF v, float[] n, @ExtractionParam float[] res)
 	{
-		return reflect(v.v0(), v.v1(), nX, nY, res);
+		float vV0 = v.getAt(0);
+		float vV1 = v.getAt(1);
+		
+		float dot = -2 * (vV0 * n[0] + vV1 * n[1]);
+		
+		res[0] = n[0] * dot + vV0;
+		res[1] = n[1] * dot + vV1;
+		
+		return res;
+	}
+
+	public static float[] reflect(ITupRF v, float nV0, float nV1, @ExtractionParam float[] res)
+	{
+		float vV0 = v.getAt(0);
+		float vV1 = v.getAt(1);
+		
+		float dot = -2 * (vV0 * nV0 + vV1 * nV1);
+		
+		res[0] = nV0 * dot + vV0;
+		res[1] = nV1 * dot + vV1;
+		
+		return res;
 	}
 	
-	/**
-	 * Calculates the reflection of the vector {@code (v[0], v[1])} based on the given normalized
-	 * surface normal {@code (n)} and saves the result in the given extraction parameter.
-	 * 
-	 * @param v
-	 *     The vector as an array with at least two entries.
-	 * @param n
-	 *     The surface normal vector.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
-	public static float[] reflect(float[] v, Tup2RF n, @ExtractionParam float[] res)
+	public static float[] reflect(float[] v, ITup2RF n, @ExtractionParam float[] res)
 	{
-		return reflect(v[0], v[1], n.v0(), n.v1(), res);
+		float nV0 = n.v0();
+		float nV1 = n.v1();
+		
+		float dot = -2 * (v[0] * nV0 + v[1] * nV1);
+		
+		res[0] = nV0 * dot + v[0];
+		res[1] = nV1 * dot + v[1];
+		
+		return res;
+	}
+
+	public static float[] reflect(float[] v, ITupRF n, @ExtractionParam float[] res)
+	{
+		float nV0 = n.getAt(0);
+		float nV1 = n.getAt(1);
+		
+		float dot = -2 * (v[0] * nV0 + v[1] * nV1);
+		
+		res[0] = nV0 * dot + v[0];
+		res[1] = nV1 * dot + v[1];
+		
+		return res;
 	}
 	
-	/**
-	 * Calculates the reflection of the vector {@code (v[0], v[1])} based on the given normalized
-	 * surface normal {@code (n[0], n[1])} and saves the result in the given extraction parameter.
-	 * 
-	 * @param v
-	 *     The vector as an array with at least two entries.
-	 * @param n
-	 *     The surface normal vector as an array with at least two entries.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
 	public static float[] reflect(float[] v, float[] n, @ExtractionParam float[] res)
 	{
-		return reflect(v[0], v[1], n[0], n[1], res);
-	}
-	
-	/**
-	 * Calculates the reflection of the vector {@code (v[0], v[1])} based on the given normalized
-	 * surface normal {@code (nX, nY)} and saves the result in the given extraction parameter.
-	 * 
-	 * @param v
-	 *     The vector as an array with at least two entries.
-	 * @param nX
-	 *     The value of the x component of the surface normal vector.
-	 * @param nY
-	 *     The value of the y component of the surface normal vector.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
-	public static float[] reflect(float[] v, float nX, float nY, @ExtractionParam float[] res)
-	{
-		return reflect(v[0], v[1], nX, nY, res);
-	}
-	
-	/**
-	 * Calculates the reflection of the vector {@code (vX, vY)} based on the given normalized
-	 * surface normal {@code (n)} and saves the result in the given extraction parameter.
-	 * 
-	 * @param vX
-	 *     The value of the x component of the vector.
-	 * @param vY
-	 *     The value of the y component of the vector.
-	 * @param n
-	 *     The surface normal vector.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
-	public static float[] reflect(float vX, float vY, Tup2RF n, @ExtractionParam float[] res)
-	{
-		return reflect(vX, vY, n.v0(), n.v1(), res);
-	}
-	
-	/**
-	 * Calculates the reflection of the vector {@code (vX, vY)} based on the given normalized
-	 * surface normal {@code (n[0], n[1])} and saves the result in the given extraction parameter.
-	 * 
-	 * @param vX
-	 *     The value of the x component of the vector.
-	 * @param vY
-	 *     The value of the y component of the vector.
-	 * @param n
-	 *     The surface normal vector as an array with at least two entries.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
-	public static float[] reflect(float vX, float vY, float[] n, @ExtractionParam float[] res)
-	{
-		return reflect(vX, vY, n[0], n[1], res);
-	}
-	
-	/**
-	 * Calculates the reflection of the vector {@code (vX, vY)} based on the given normalized
-	 * surface normal {@code (nX, nY)} and saves the result in the given extraction parameter.
-	 * 
-	 * @param vX
-	 *     The value of the x component of the vector.
-	 * @param vY
-	 *     The value of the y component of the vector.
-	 * @param nX
-	 *     The value of the x component of the surface normal vector.
-	 * @param nY
-	 *     The value of the y component of the surface normal vector.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
-	public static float[] reflect(float vX, float vY, float nX, float nY, @ExtractionParam float[] res)
-	{
-		float dot = -2 * dot(vX, vY, nX, nY);
+		float dot = -2 * (v[0] * n[0] + v[1] * n[1]);
 		
-		res[0] = nX * dot + vX;
-		res[1] = nY * dot + vY;
+		res[0] = n[0] * dot + v[0];
+		res[1] = n[1] * dot + v[1];
+		
+		return res;
+	}
+
+	public static float[] reflect(float[] v, float nV0, float nV1, @ExtractionParam float[] res)
+	{
+		float dot = -2 * (v[0] * nV0 + v[1] * nV1);
+		
+		res[0] = nV0 * dot + v[0];
+		res[1] = nV1 * dot + v[1];
+		
+		return res;
+	}
+
+	public static float[] reflect(float vV0, float vV1, ITup2RF n, @ExtractionParam float[] res)
+	{
+		float nV0 = n.v0();
+		float nV1 = n.v1();
+		
+		float dot = -2 * (vV0 * nV0 + vV1 * nV1);
+		
+		res[0] = nV0 * dot + vV0;
+		res[1] = nV1 * dot + vV1;
+		
+		return res;
+	}
+
+	public static float[] reflect(float vV0, float vV1, ITupRF n, @ExtractionParam float[] res)
+	{
+		float nV0 = n.getAt(0);
+		float nV1 = n.getAt(1);
+		
+		float dot = -2 * (vV0 * nV0 + vV1 * nV1);
+		
+		res[0] = nV0 * dot + vV0;
+		res[1] = nV1 * dot + vV1;
+		
+		return res;
+	}
+	
+	public static float[] reflect(float vV0, float vV1, float[] n, @ExtractionParam float[] res)
+	{
+		float dot = -2 * (vV0 * n[0] + vV1 * n[1]);
+		
+		res[0] = n[0] * dot + vV0;
+		res[1] = n[1] * dot + vV1;
+		
+		return res;
+	}
+
+	public static float[] reflect(float vV0, float vV1, float nV0, float nV1, @ExtractionParam float[] res)
+	{
+		float dot = -2 * (vV0 * nV0 + vV1 * nV1);
+		
+		res[0] = nV0 * dot + vV0;
+		res[1] = nV1 * dot + vV1;
 		
 		return res;
 	}
@@ -3436,197 +5409,380 @@ public class VecUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T reflect(Tup2RF v, Tup2RF n, @ExtractionParam T res)
+	public static <T extends ITup2WF> T reflect(ITup2RF v, ITup2RF n, @ExtractionParam T res)
 	{
-		return reflect(v.v0(), v.v1(), n.v0(), n.v1(), res);
-	}
-	
-	/**
-	 * Calculates the reflection of the vector {@code (v)} based on the given normalized surface
-	 * normal {@code (n[0], n[1])} and saves the result in the given extraction parameter object.
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v
-	 *     The vector.
-	 * @param n
-	 *     The surface normal vector as an array with at least two entries.
-	 * @param res
-	 *     The extraction parameter object.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends Tup2WF> T reflect(Tup2RF v, float[] n, @ExtractionParam T res)
-	{
-		return reflect(v.v0(), v.v1(), n[0], n[1], res);
-	}
-	
-	/**
-	 * Calculates the reflection of the vector {@code (v)} based on the given normalized surface
-	 * normal {@code (nX, nY)} and saves the result in the given extraction parameter object.
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v
-	 *     The vector.
-	 * @param nX
-	 *     The value of the x component of the surface normal vector.
-	 * @param nY
-	 *     The value of the y component of the surface normal vector.
-	 * @param res
-	 *     The extraction parameter object.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends Tup2WF> T reflect(Tup2RF v, float nX, float nY, @ExtractionParam T res)
-	{
-		return reflect(v.v0(), v.v1(), nX, nY, res);
-	}
-	
-	/**
-	 * Calculates the reflection of the vector {@code (v[0], v[1])} based on the given normalized
-	 * surface normal {@code (n)} and saves the result in the given extraction parameter object.
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v
-	 *     The vector as an array with at least two entries.
-	 * @param n
-	 *     The surface normal vector.
-	 * @param res
-	 *     The extraction parameter object.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends Tup2WF> T reflect(float[] v, Tup2RF n, @ExtractionParam T res)
-	{
-		return reflect(v[0], v[1], n.v0(), n.v1(), res);
-	}
-	
-	/**
-	 * Calculates the reflection of the vector {@code (v[0], v[1])} based on the given normalized
-	 * surface normal {@code (n[0], n[1])} and saves the result in the given extraction parameter
-	 * object.
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v
-	 *     The vector as an array with at least two entries.
-	 * @param n
-	 *     The surface normal vector as an array with at least two entries.
-	 * @param res
-	 *     The extraction parameter object.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends Tup2WF> T reflect(float[] v, float[] n, @ExtractionParam T res)
-	{
-		return reflect(v[0], v[1], n[0], n[1], res);
-	}
-	
-	/**
-	 * Calculates the reflection of the vector {@code (v[0], v[1])} based on the given normalized
-	 * surface normal {@code (nX, nY)} and saves the result in the given extraction parameter
-	 * object.
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v
-	 *     The vector as an array with at least two entries.
-	 * @param nX
-	 *     The value of the x component of the surface normal vector.
-	 * @param nY
-	 *     The value of the y component of the surface normal vector.
-	 * @param res
-	 *     The extraction parameter object.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends Tup2WF> T reflect(float[] v, float nX, float nY, @ExtractionParam T res)
-	{
-		return reflect(v[0], v[1], nX, nY, res);
-	}
-	
-	/**
-	 * Calculates the reflection of the vector {@code (vX, vY)} based on the given normalized
-	 * surface normal {@code (n)} and saves the result in the given extraction parameter object.
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param vX
-	 *     The value of the x component of the vector.
-	 * @param vY
-	 *     The value of the y component of the vector.
-	 * @param n
-	 *     The surface normal vector.
-	 * @param res
-	 *     The extraction parameter object.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends Tup2WF> T reflect(float vX, float vY, Tup2RF n, @ExtractionParam T res)
-	{
-		return reflect(vX, vY, n.v0(), n.v1(), res);
-	}
-	
-	/**
-	 * Calculates the reflection of the vector {@code (vX, vY)} based on the given normalized
-	 * surface normal {@code (n[0], n[1])} and saves the result in the given extraction parameter
-	 * object.
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param vX
-	 *     The value of the x component of the vector.
-	 * @param vY
-	 *     The value of the y component of the vector.
-	 * @param n
-	 *     The surface normal vector as an array with at least two entries.
-	 * @param res
-	 *     The extraction parameter object.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends Tup2WF> T reflect(float vX, float vY, float[] n, @ExtractionParam T res)
-	{
-		return reflect(vX, vY, n[0], n[1], res);
-	}
-	
-	/**
-	 * Calculates the reflection of the vector {@code (vX, vY)} based on the given normalized
-	 * surface normal {@code (nX, nY)} and saves the result in the given extraction parameter
-	 * object.
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param vX
-	 *     The value of the x component of the vector.
-	 * @param vY
-	 *     The value of the y component of the vector.
-	 * @param nX
-	 *     The value of the x component of the surface normal vector.
-	 * @param nY
-	 *     The value of the y component of the surface normal vector.
-	 * @param res
-	 *     The extraction parameter object.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends Tup2WF> T reflect(float vX, float vY, float nX, float nY, @ExtractionParam T res)
-	{
-		float dot = -2 * dot(vX, vY, nX, nY);
+		float vV0 = v.v0();
+		float vV1 = v.v1();
+		float nV0 = n.v0();
+		float nV1 = n.v1();
 		
-		res.set(nX * dot + vX, nY * dot + vY);
+		float dot = -2 * (vV0 * nV0 + vV1 * nV1);
+		
+		res.set(nV0 * dot + vV0, nV1 * dot + vV1);
 		
 		return res;
+	}
+
+	public static <T extends ITup2WF> T reflect(ITup2RF v, ITupRF n, @ExtractionParam T res)
+	{
+		float vV0 = v.v0();
+		float vV1 = v.v1();
+		float nV0 = n.getAt(0);
+		float nV1 = n.getAt(1);
+		
+		float dot = -2 * (vV0 * nV0 + vV1 * nV1);
+		
+		res.set(nV0 * dot + vV0, nV1 * dot + vV1);
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T reflect(ITup2RF v, float[] n, @ExtractionParam T res)
+	{
+		float vV0 = v.v0();
+		float vV1 = v.v1();
+		
+		float dot = -2 * (vV0 * n[0] + vV1 * n[1]);
+		
+		res.set(n[0] * dot + vV0, n[1] * dot + vV1);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T reflect(ITup2RF v, float nV0, float nV1, @ExtractionParam T res)
+	{
+		float vV0 = v.v0();
+		float vV1 = v.v1();
+		
+		float dot = -2 * (vV0 * nV0 + vV1 * nV1);
+		
+		res.set(nV0 * dot + vV0, nV1 * dot + vV1);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T reflect(ITupRF v, ITup2RF n, @ExtractionParam T res)
+	{
+		float vV0 = v.getAt(0);
+		float vV1 = v.getAt(1);
+		float nV0 = n.v0();
+		float nV1 = n.v1();
+		
+		float dot = -2 * (vV0 * nV0 + vV1 * nV1);
+		
+		res.set(nV0 * dot + vV0, nV1 * dot + vV1);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T reflect(ITupRF v, ITupRF n, @ExtractionParam T res)
+	{
+		float vV0 = v.getAt(0);
+		float vV1 = v.getAt(1);
+		float nV0 = n.getAt(0);
+		float nV1 = n.getAt(1);
+		
+		float dot = -2 * (vV0 * nV0 + vV1 * nV1);
+		
+		res.set(nV0 * dot + vV0, nV1 * dot + vV1);
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T reflect(ITupRF v, float[] n, @ExtractionParam T res)
+	{
+		float vV0 = v.getAt(0);
+		float vV1 = v.getAt(1);
+		
+		float dot = -2 * (vV0 * n[0] + vV1 * n[1]);
+		
+		res.set(n[0] * dot + vV0, n[1] * dot + vV1);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T reflect(ITupRF v, float nV0, float nV1, @ExtractionParam T res)
+	{
+		float vV0 = v.getAt(0);
+		float vV1 = v.getAt(1);
+		
+		float dot = -2 * (vV0 * nV0 + vV1 * nV1);
+		
+		res.set(nV0 * dot + vV0, nV1 * dot + vV1);
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T reflect(float[] v, ITup2RF n, @ExtractionParam T res)
+	{
+		float nV0 = n.v0();
+		float nV1 = n.v1();
+		
+		float dot = -2 * (v[0] * nV0 + v[1] * nV1);
+		
+		res.set(nV0 * dot + v[0], nV1 * dot + v[1]);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T reflect(float[] v, ITupRF n, @ExtractionParam T res)
+	{
+		float nV0 = n.getAt(0);
+		float nV1 = n.getAt(1);
+		
+		float dot = -2 * (v[0] * nV0 + v[1] * nV1);
+		
+		res.set(nV0 * dot + v[0], nV1 * dot + v[1]);
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T reflect(float[] v, float[] n, @ExtractionParam T res)
+	{
+		float dot = -2 * (v[0] * n[0] + v[1] * n[1]);
+		
+		res.set(n[0] * dot + v[0], n[1] * dot + v[1]);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T reflect(float[] v, float nV0, float nV1, @ExtractionParam T res)
+	{
+		float dot = -2 * (v[0] * nV0 + v[1] * nV1);
+		
+		res.set(nV0 * dot + v[0], nV1 * dot + v[1]);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T reflect(float vV0, float vV1, ITup2RF n, @ExtractionParam T res)
+	{
+		float nV0 = n.v0();
+		float nV1 = n.v1();
+		
+		float dot = -2 * (vV0 * nV0 + vV1 * nV1);
+		
+		res.set(nV0 * dot + vV0, nV1 * dot + vV1);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T reflect(float vV0, float vV1, ITupRF n, @ExtractionParam T res)
+	{
+		float nV0 = n.getAt(0);
+		float nV1 = n.getAt(1);
+		
+		float dot = -2 * (vV0 * nV0 + vV1 * nV1);
+		
+		res.set(nV0 * dot + vV0, nV1 * dot + vV1);
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T reflect(float vV0, float vV1, float[] n, @ExtractionParam T res)
+	{
+		float dot = -2 * (vV0 * n[0] + vV1 * n[1]);
+		
+		res.set(n[0] * dot + vV0, n[1] * dot + vV1);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T reflect(float vV0, float vV1, float nV0, float nV1, @ExtractionParam T res)
+	{
+		float dot = -2 * (vV0 * nV0 + vV1 * nV1);
+		
+		res.set(nV0 * dot + vV0, nV1 * dot + vV1);
+		
+		return res;
+	}
+	
+	/**
+	 * Calculates the reflection of the vector {@code (v)} based on the given normalized surface
+	 * normal {@code (n)} and saves the result in the given extraction parameter object.
+	 * 
+	 * @param <T>
+	 *     The type of the extraction parameter object.
+	 * 
+	 * @param v
+	 *     The vector.
+	 * @param n
+	 *     The surface normal vector.
+	 * @param res
+	 *     The extraction parameter object.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T reflectCreateNew(ITup2RF v, ITup2RF n, T prototype)
+	{
+		float vV0 = v.v0();
+		float vV1 = v.v1();
+		float nV0 = n.v0();
+		float nV1 = n.v1();
+		
+		float dot = -2 * (vV0 * nV0 + vV1 * nV1);
+		
+		return (T) prototype.createNew(nV0 * dot + vV0, nV1 * dot + vV1);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T reflectCreateNew(ITup2RF v, ITupRF n, T prototype)
+	{
+		float vV0 = v.v0();
+		float vV1 = v.v1();
+		float nV0 = n.getAt(0);
+		float nV1 = n.getAt(1);
+		
+		float dot = -2 * (vV0 * nV0 + vV1 * nV1);
+		
+		return (T) prototype.createNew(nV0 * dot + vV0, nV1 * dot + vV1);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T reflectCreateNew(ITup2RF v, float[] n, T prototype)
+	{
+		float vV0 = v.v0();
+		float vV1 = v.v1();
+		
+		float dot = -2 * (vV0 * n[0] + vV1 * n[1]);
+		
+		return (T) prototype.createNew(n[0] * dot + vV0, n[1] * dot + vV1);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T reflectCreateNew(ITup2RF v, float nV0, float nV1, T prototype)
+	{
+		float vV0 = v.v0();
+		float vV1 = v.v1();
+		
+		float dot = -2 * (vV0 * nV0 + vV1 * nV1);
+		
+		return (T) prototype.createNew(nV0 * dot + vV0, nV1 * dot + vV1);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T reflectCreateNew(ITupRF v, ITup2RF n, T prototype)
+	{
+		float vV0 = v.getAt(0);
+		float vV1 = v.getAt(1);
+		float nV0 = n.v0();
+		float nV1 = n.v1();
+		
+		float dot = -2 * (vV0 * nV0 + vV1 * nV1);
+		
+		return (T) prototype.createNew(nV0 * dot + vV0, nV1 * dot + vV1);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T reflectCreateNew(ITupRF v, ITupRF n, T prototype)
+	{
+		float vV0 = v.getAt(0);
+		float vV1 = v.getAt(1);
+		float nV0 = n.getAt(0);
+		float nV1 = n.getAt(1);
+		
+		float dot = -2 * (vV0 * nV0 + vV1 * nV1);
+		
+		return (T) prototype.createNew(nV0 * dot + vV0, nV1 * dot + vV1);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T reflectCreateNew(ITupRF v, float[] n, T prototype)
+	{
+		float vV0 = v.getAt(0);
+		float vV1 = v.getAt(1);
+		
+		float dot = -2 * (vV0 * n[0] + vV1 * n[1]);
+		
+		return (T) prototype.createNew(n[0] * dot + vV0, n[1] * dot + vV1);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T reflectCreateNew(ITupRF v, float nV0, float nV1, T prototype)
+	{
+		float vV0 = v.getAt(0);
+		float vV1 = v.getAt(1);
+		
+		float dot = -2 * (vV0 * nV0 + vV1 * nV1);
+		
+		return (T) prototype.createNew(nV0 * dot + vV0, nV1 * dot + vV1);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T reflectCreateNew(float[] v, ITup2RF n, T prototype)
+	{
+		float nV0 = n.v0();
+		float nV1 = n.v1();
+		
+		float dot = -2 * (v[0] * nV0 + v[1] * nV1);
+		
+		return (T) prototype.createNew(nV0 * dot + v[0], nV1 * dot + v[1]);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T reflectCreateNew(float[] v, ITupRF n, T prototype)
+	{
+		float nV0 = n.getAt(0);
+		float nV1 = n.getAt(1);
+		
+		float dot = -2 * (v[0] * nV0 + v[1] * nV1);
+		
+		return (T) prototype.createNew(nV0 * dot + v[0], nV1 * dot + v[1]);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T reflectCreateNew(float[] v, float[] n, T prototype)
+	{
+		float dot = -2 * (v[0] * n[0] + v[1] * n[1]);
+		
+		return (T) prototype.createNew(n[0] * dot + v[0], n[1] * dot + v[1]);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T reflectCreateNew(float[] v, float nV0, float nV1, T prototype)
+	{
+		float dot = -2 * (v[0] * nV0 + v[1] * nV1);
+		
+		return (T) prototype.createNew(nV0 * dot + v[0], nV1 * dot + v[1]);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T reflectCreateNew(float vV0, float vV1, ITup2RF n, T prototype)
+	{
+		float nV0 = n.v0();
+		float nV1 = n.v1();
+		
+		float dot = -2 * (vV0 * nV0 + vV1 * nV1);
+		
+		return (T) prototype.createNew(nV0 * dot + vV0, nV1 * dot + vV1);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T reflectCreateNew(float vV0, float vV1, ITupRF n, T prototype)
+	{
+		float nV0 = n.getAt(0);
+		float nV1 = n.getAt(1);
+		
+		float dot = -2 * (vV0 * nV0 + vV1 * nV1);
+		
+		return (T) prototype.createNew(nV0 * dot + vV0, nV1 * dot + vV1);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T reflectCreateNew(float vV0, float vV1, float[] n, T prototype)
+	{
+		float dot = -2 * (vV0 * n[0] + vV1 * n[1]);
+		
+		return (T) prototype.createNew(n[0] * dot + vV0, n[1] * dot + vV1);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T reflectCreateNew(float vV0, float vV1, float nV0, float nV1, T prototype)
+	{
+		float dot = -2 * (vV0 * nV0 + vV1 * nV1);
+		
+		return (T) prototype.createNew(nV0 * dot + vV0, nV1 * dot + vV1);
 	}
 	
 	/**
@@ -3644,178 +5800,81 @@ public class VecUtils2F
 	 * 
 	 * @return The dot product (scalar product).
 	 */
-	public static float dot(Tup2RF t1, Tup2RF t2)
+	public static float dot(ITup2RF t1, ITup2RF t2)
 	{
-		return dot(t1.v0(), t1.v1(), t2.v0(), t2.v1());
+		return t1.v0() * t2.v0() + t1.v1() * t2.v1();
+	}
+
+	public static float dot(ITup2RF t1, ITupRF t2)
+	{
+		return t1.v0() * t2.getAt(0) + t1.v1() * t2.getAt(1);
 	}
 	
-	/**
-	 * Returns the dot product (scalar product) between the first vector {@code (v1)} and the second
-	 * vector {@code (t2[0], t2[1])}.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code v1 . (t2[0], t2[1])}
-	 * 
-	 * @param v1
-	 *     The first vector.
-	 * @param v2
-	 *     The second vector as an array with at least two entries.
-	 * 
-	 * @return The dot product (scalar product).
-	 */
-	public static float dot(Tup2RF t1, float[] t2)
+	public static float dot(ITup2RF t1, float[] t2)
 	{
-		return dot(t1.v0(), t1.v1(), t2[0], t2[1]);
+		return t1.v0() * t2[0] + t1.v1() * t2[1];
+	}
+
+	public static float dot(ITup2RF t1, float t2v0, float t2v1)
+	{
+		return t1.v0() * t2v0 + t1.v1() * t2v1;
+	}
+
+	public static float dot(ITupRF t1, ITup2RF t2)
+	{
+		return t1.getAt(0) * t2.v0() + t1.getAt(1) * t2.v1();
+	}
+
+	public static float dot(ITupRF t1, ITupRF t2)
+	{
+		return t1.getAt(0) * t2.getAt(0) + t1.getAt(1) * t2.getAt(1);
 	}
 	
-	/**
-	 * Returns the dot product (scalar product) between the first vector {@code (v1)} and the second
-	 * vector {@code (t2v0, t2v1)}.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code v1 . (t2v0, t2v1)}
-	 * 
-	 * @param v1
-	 *     The first vector.
-	 * @param t2v0
-	 *     The value of the x component of the second vector.
-	 * @param t2v1
-	 *     The value of the y component of the second vector.
-	 * 
-	 * @return The dot product (scalar product).
-	 */
-	public static float dot(Tup2RF t1, float t2v0, float t2v1)
+	public static float dot(ITupRF t1, float[] t2)
 	{
-		return dot(t1.v0(), t1.v1(), t2v0, t2v1);
+		return t1.getAt(0) * t2[0] + t1.getAt(1) * t2[1];
+	}
+
+	public static float dot(ITupRF t1, float t2v0, float t2v1)
+	{
+		return t1.getAt(0) * t2v0 + t1.getAt(1) * t2v1;
 	}
 	
-	/**
-	 * Returns the dot product (scalar product) between the first vector {@code (t1[0], t1[1])} and
-	 * the second vector {@code (t2)}.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code (t1[0], t1[1]) . v2}
-	 * 
-	 * @param v1
-	 *     The first vector as an array with at least two entries.
-	 * @param v2
-	 *     The second vector.
-	 * 
-	 * @return The dot product (scalar product).
-	 */
-	public static float dot(float[] t1, Tup2RF t2)
+	public static float dot(float[] t1, ITup2RF t2)
 	{
-		return dot(t1[0], t1[1], t2.v0(), t2.v1());
+		return t1[0] * t2.v0() + t1[1] * t2.v1();
+	}
+
+	public static float dot(float[] t1, ITupRF t2)
+	{
+		return t1[0] * t2.getAt(0) + t1[1] * t2.getAt(1);
 	}
 	
-	/**
-	 * Returns the dot product (scalar product) between the first vector {@code (t1[0], t1[1])} and
-	 * the second vector {@code (t2[0], t2[1])}.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code (t1[0], t1[1]) . (t2[0], t2[1])}
-	 * 
-	 * @param v1
-	 *     The first vector as an array with at least two entries.
-	 * @param v2
-	 *     The second vector as an array with at least two entries.
-	 * 
-	 * @return The dot product (scalar product).
-	 */
 	public static float dot(float[] t1, float[] t2)
 	{
-		return dot(t1[0], t1[1], t2[0], t2[1]);
+		return t1[0] * t2[0] + t1[1] * t2[1];
 	}
-	
-	/**
-	 * Returns the dot product (scalar product) between the first vector {@code (t1[0], t1[1])} and
-	 * the second vector {@code (t2v0, t2v1)}.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code (t1[0], t1[1]) . (t2v0, t2v1)}
-	 * 
-	 * @param v1
-	 *     The first vector as an array with at least two entries.
-	 * @param t2v0
-	 *     The value of the x component of the second vector.
-	 * @param t2v1
-	 *     The value of the y component of the second vector.
-	 * 
-	 * @return The dot product (scalar product).
-	 */
+
 	public static float dot(float[] t1, float t2v0, float t2v1)
 	{
-		return dot(t1[0], t1[1], t2v0, t2v1);
+		return t1[0] * t2v0 + t1[1] * t2v1;
 	}
-	
-	/**
-	 * Returns the dot product (scalar product) between the first vector {@code (t1v0, t1v1)} and the
-	 * second vector {@code (t2)}.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code (t1v0, t1v1) . v2}
-	 * 
-	 * @param t1v0
-	 *     The value of the x component of the first vector.
-	 * @param t1v1
-	 *     The value of the y component of the first vector.
-	 * @param v2
-	 *     The second vector.
-	 * 
-	 * @return The dot product (scalar product).
-	 */
-	public static float dot(float t1v0, float t1v1, Tup2RF t2)
+
+	public static float dot(float t1v0, float t1v1, ITup2RF t2)
 	{
-		return dot(t1v0, t1v1, t2.v0(), t2.v1());
+		return t1v0 * t2.v0() + t1v1 * t2.v1();
 	}
 	
-	/**
-	 * Returns the dot product (scalar product) between the first vector {@code (t1v0, t1v1)} and the
-	 * second vector {@code (t2[0], t2[1])}.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code (t1v0, t1v1) . (t2[0], t2[1])}
-	 * 
-	 * @param t1v0
-	 *     The value of the x component of the first vector.
-	 * @param t1v1
-	 *     The value of the y component of the first vector.
-	 * @param v2
-	 *     The second vector as an array with at least two entries.
-	 * 
-	 * @return The dot product (scalar product).
-	 */
+	public static float dot(float t1v0, float t1v1, ITupRF t2)
+	{
+		return t1v0 * t2.getAt(0) + t1v1 * t2.getAt(1);
+	}
+	
 	public static float dot(float t1v0, float t1v1, float[] t2)
 	{
-		return dot(t1v0, t1v1, t2[0], t2[1]);
+		return t1v0 * t2[0] + t1v1 * t2[1];
 	}
-	
-	/**
-	 * Returns the dot product (scalar product) between the first vector {@code (t1v0, t1v1)} and the
-	 * second vector {@code (t2v0, t2v1)}.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code (t1v0, t1v1) . (t2v0, t2v1)}
-	 * 
-	 * @param t1v0
-	 *     The value of the x component of the first vector.
-	 * @param t1v1
-	 *     The value of the y component of the first vector.
-	 * @param t2v0
-	 *     The value of the x component of the second vector.
-	 * @param t2v1
-	 *     The value of the y component of the second vector.
-	 * 
-	 * @return The dot product (scalar product).
-	 */
+
 	public static float dot(float t1v0, float t1v1, float t2v0, float t2v1)
 	{
 		return t1v0 * t2v0 + t1v1 * t2v1;
@@ -3839,202 +5898,126 @@ public class VecUtils2F
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] halfVecTo(Tup2RF t1, Tup2RF t2, @ExtractionParam float[] res)
+	public static float[] halfVecTo(ITup2RF t1, ITup2RF t2, @ExtractionParam float[] res)
 	{
-		return halfVecTo(t1.v0(), t1.v1(), t2.v0(), t2.v1(), res);
+		res[0] = (t2.v0() - t1.v0()) * 0.5f;
+		res[1] = (t2.v1() - t1.v1()) * 0.5f;
+		
+		return res;
+	}
+
+	public static float[] halfVecTo(ITup2RF t1, ITupRF t2, @ExtractionParam float[] res)
+	{
+		res[0] = (t2.getAt(0) - t1.v0()) * 0.5f;
+		res[1] = (t2.getAt(1) - t1.v1()) * 0.5f;
+		
+		return res;
 	}
 	
-	/**
-	 * Calculates half the vector from the point given by the origin vector {@code (v1)} to the
-	 * point given by the origin vector {@code (t2[0], t2[1])} and saves the result in the
-	 * extraction parameter.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code ((t2[0], t2[1]) - v1) / 2}
-	 * 
-	 * @param v1
-	 *     The first point.
-	 * @param v2
-	 *     The second point as an array with at least two entries.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
-	public static float[] halfVecTo(Tup2RF t1, float[] t2, @ExtractionParam float[] res)
+	public static float[] halfVecTo(ITup2RF t1, float[] t2, @ExtractionParam float[] res)
 	{
-		return halfVecTo(t1.v0(), t1.v1(), t2[0], t2[1], res);
+		res[0] = (t2[0] - t1.v0()) * 0.5f;
+		res[1] = (t2[1] - t1.v1()) * 0.5f;
+		
+		return res;
+	}
+
+	public static float[] halfVecTo(ITup2RF t1, float t2v0, float t2v1, @ExtractionParam float[] res)
+	{
+		res[0] = (t2v0 - t1.v0()) * 0.5f;
+		res[1] = (t2v1 - t1.v1()) * 0.5f;
+		
+		return res;
+	}
+
+	public static float[] halfVecTo(ITupRF t1, ITup2RF t2, @ExtractionParam float[] res)
+	{
+		res[0] = (t2.v0() - t1.getAt(0)) * 0.5f;
+		res[1] = (t2.v1() - t1.getAt(1)) * 0.5f;
+		
+		return res;
+	}
+
+	public static float[] halfVecTo(ITupRF t1, ITupRF t2, @ExtractionParam float[] res)
+	{
+		res[0] = (t2.getAt(0) - t1.getAt(0)) * 0.5f;
+		res[1] = (t2.getAt(1) - t1.getAt(1)) * 0.5f;
+		
+		return res;
 	}
 	
-	/**
-	 * Calculates half the vector from the point given by the origin vector {@code (v1)} to the
-	 * point given by the origin vector {@code (t2v0, t2v1)} and saves the result in the extraction
-	 * parameter.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code ((t2v0, t2v1) - v1) / 2}
-	 * 
-	 * @param v1
-	 *     The first point.
-	 * @param t2v0
-	 *     The value of the x component of the second point.
-	 * @param t2v1
-	 *     The value of the y component of the second point.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
-	public static float[] halfVecTo(Tup2RF t1, float t2v0, float t2v1, @ExtractionParam float[] res)
+	public static float[] halfVecTo(ITupRF t1, float[] t2, @ExtractionParam float[] res)
 	{
-		return halfVecTo(t1.v0(), t1.v1(), t2v0, t2v1, res);
+		res[0] = (t2[0] - t1.getAt(0)) * 0.5f;
+		res[1] = (t2[1] - t1.getAt(1)) * 0.5f;
+		
+		return res;
+	}
+
+	public static float[] halfVecTo(ITupRF t1, float t2v0, float t2v1, @ExtractionParam float[] res)
+	{
+		res[0] = (t2v0 - t1.getAt(0)) * 0.5f;
+		res[1] = (t2v1 - t1.getAt(1)) * 0.5f;
+		
+		return res;
 	}
 	
-	/**
-	 * Calculates half the vector from the point given by the origin vector {@code (t1[0], t1[1])}
-	 * to the point given by the origin vector {@code (t2)} and saves the result in the extraction
-	 * parameter.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code (v2 - (t1[0], t1[1])) / 2}
-	 * 
-	 * @param v1
-	 *     The first point as an array with at least two entries.
-	 * @param v2
-	 *     The second point.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
-	public static float[] halfVecTo(float[] t1, Tup2RF t2, @ExtractionParam float[] res)
+	public static float[] halfVecTo(float[] t1, ITup2RF t2, @ExtractionParam float[] res)
 	{
-		return halfVecTo(t1[0], t1[1], t2.v0(), t2.v1(), res);
+		res[0] = (t2.v0() - t1[0]) * 0.5f;
+		res[1] = (t2.v1() - t1[1]) * 0.5f;
+		
+		return res;
+	}
+
+	public static float[] halfVecTo(float[] t1, ITupRF t2, @ExtractionParam float[] res)
+	{
+		res[0] = (t2.getAt(0) - t1[0]) * 0.5f;
+		res[1] = (t2.getAt(1) - t1[1]) * 0.5f;
+		
+		return res;
 	}
 	
-	/**
-	 * Calculates half the vector from the point given by the origin vector {@code (t1[0], t1[1])}
-	 * to the point given by the origin vector {@code (t2[0], t2[1])} and saves the result in the
-	 * extraction parameter.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code ((t2[0], t2[1]) - (t1[0], t1[1])) / 2}
-	 * 
-	 * @param v1
-	 *     The first point as an array with at least two entries.
-	 * @param v2
-	 *     The second point as an array with at least two entries.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
 	public static float[] halfVecTo(float[] t1, float[] t2, @ExtractionParam float[] res)
 	{
-		return halfVecTo(t1[0], t1[1], t2[0], t2[1], res);
+		res[0] = (t2[0] - t1[0]) * 0.5f;
+		res[1] = (t2[1] - t1[1]) * 0.5f;
+		
+		return res;
 	}
-	
-	/**
-	 * Calculates half the vector from the point given by the origin vector {@code (t1[0], t1[1])}
-	 * to the point given by the origin vector {@code (t2v0, t2v1)} and saves the result in the
-	 * extraction parameter.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code ((t2v0, t2v1) - (t1[0], t1[1])) / 2}
-	 * 
-	 * @param v1
-	 *     The first point as an array with at least two entries.
-	 * @param t2v0
-	 *     The value of the x component of the second point.
-	 * @param t2v1
-	 *     The value of the y component of the second point.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
+
 	public static float[] halfVecTo(float[] t1, float t2v0, float t2v1, @ExtractionParam float[] res)
 	{
-		return halfVecTo(t1[0], t1[1], t2v0, t2v1, res);
+		res[0] = (t2v0 - t1[0]) * 0.5f;
+		res[1] = (t2v1 - t1[1]) * 0.5f;
+		
+		return res;
 	}
-	
-	/**
-	 * Calculates half the vector from the point given by the origin vector {@code (t1v0, t1v1)} to
-	 * the point given by the origin vector {@code (t2)} and saves the result in the extraction
-	 * parameter.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code (v2 - (t1v0, t1v1)) / 2}
-	 * 
-	 * @param t1v0
-	 *     The value of the x component of the first point.
-	 * @param t1v1
-	 *     The value of the y component of the first point.
-	 * @param v2
-	 *     The second point.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
-	public static float[] halfVecTo(float t1v0, float t1v1, Tup2RF t2, @ExtractionParam float[] res)
+
+	public static float[] halfVecTo(float t1v0, float t1v1, ITup2RF t2, @ExtractionParam float[] res)
 	{
-		return halfVecTo(t1v0, t1v1, t2.v0(), t2.v1(), res);
+		res[0] = (t2.v0() - t1v0) * 0.5f;
+		res[1] = (t2.v1() - t1v1) * 0.5f;
+		
+		return res;
 	}
 	
-	/**
-	 * Calculates half the vector from the point given by the origin vector {@code (t1v0, t1v1)} to
-	 * the point given by the origin vector {@code (t2[0], t2[1])} and saves the result in the
-	 * extraction parameter.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code ((t2[0], t2[1]) - (t1v0, t1v1)) / 2}
-	 * 
-	 * @param t1v0
-	 *     The value of the x component of the first point.
-	 * @param t1v1
-	 *     The value of the y component of the first point.
-	 * @param v2
-	 *     The second point as an array with at least two entries.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
+	public static float[] halfVecTo(float t1v0, float t1v1, ITupRF t2, @ExtractionParam float[] res)
+	{
+		res[0] = (t2.getAt(0) - t1v0) * 0.5f;
+		res[1] = (t2.getAt(1) - t1v1) * 0.5f;
+		
+		return res;
+	}
+
 	public static float[] halfVecTo(float t1v0, float t1v1, float[] t2, @ExtractionParam float[] res)
 	{
-		return halfVecTo(t1v0, t1v1, t2[0], t2[1], res);
+		res[0] = (t2[0] - t1v0) * 0.5f;
+		res[1] = (t2[1] - t1v1) * 0.5f;
+		
+		return res;
 	}
-	
-	/**
-	 * Calculates half the vector from the point given by the origin vector {@code (t1v0, t1v1)} to
-	 * the point given by the origin vector {@code (t2v0, t2v1)} and saves the result in the
-	 * extraction parameter.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code ((t2v0, t2v1) - (t1v0, t1v1)) / 2}
-	 * 
-	 * @param t1v0
-	 *     The value of the x component of the first point.
-	 * @param t1v1
-	 *     The value of the y component of the first point.
-	 * @param t2v0
-	 *     The value of the x component of the second point.
-	 * @param t2v1
-	 *     The value of the y component of the second point.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
+
 	public static float[] halfVecTo(float t1v0, float t1v1, float t2v0, float t2v1, @ExtractionParam float[] res)
 	{
 		res[0] = (t2v0 - t1v0) * 0.5f;
@@ -4064,231 +6047,233 @@ public class VecUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T halfVecTo(Tup2RF t1, Tup2RF t2, @ExtractionParam T res)
+	public static <T extends ITup2WF> T halfVecTo(ITup2RF t1, ITup2RF t2, @ExtractionParam T res)
 	{
-		return halfVecTo(t1.v0(), t1.v1(), t2.v0(), t2.v1(), res);
+		res.set((t2.v0() - t1.v0()) * 0.5f, (t2.v1() - t1.v1()) * 0.5f);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T halfVecTo(ITup2RF t1, ITupRF t2, @ExtractionParam T res)
+	{
+		res.set((t2.getAt(0) - t1.v0()) * 0.5f, (t2.getAt(1) - t1.v1()) * 0.5f);
+		
+		return res;
 	}
 	
-	/**
-	 * Calculates half the vector from the point given by the origin vector {@code (v1)} to the
-	 * point given by the origin vector {@code (t2[0], t2[1])} and saves the result in the
-	 * extraction parameter object.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code ((t2[0], t2[1]) - v1) / 2}
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v1
-	 *     The first point.
-	 * @param v2
-	 *     The second point as an array with at least two entries.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends Tup2WF> T halfVecTo(Tup2RF t1, float[] t2, @ExtractionParam T res)
+	public static <T extends ITup2WF> T halfVecTo(ITup2RF t1, float[] t2, @ExtractionParam T res)
 	{
-		return halfVecTo(t1.v0(), t1.v1(), t2[0], t2[1], res);
+		res.set((t2[0] - t1.v0()) * 0.5f, (t2[1] - t1.v1()) * 0.5f);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T halfVecTo(ITup2RF t1, float t2v0, float t2v1, @ExtractionParam T res)
+	{
+		res.set((t2v0 - t1.v0()) * 0.5f, (t2v1 - t1.v1()) * 0.5f);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T halfVecTo(ITupRF t1, ITup2RF t2, @ExtractionParam T res)
+	{
+		res.set((t2.v0() - t1.getAt(0)) * 0.5f, (t2.v1() - t1.getAt(1)) * 0.5f);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T halfVecTo(ITupRF t1, ITupRF t2, @ExtractionParam T res)
+	{
+		res.set((t2.getAt(0) - t1.getAt(0)) * 0.5f, (t2.getAt(1) - t1.getAt(1)) * 0.5f);
+		
+		return res;
 	}
 	
-	/**
-	 * Calculates half the vector from the point given by the origin vector {@code (v1)} to the
-	 * point given by the origin vector {@code (t2v0, t2v1)} and saves the result in the extraction
-	 * parameter object.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code ((t2v0, t2v1) - v1) / 2}
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v1
-	 *     The first point.
-	 * @param t2v0
-	 *     The value of the x component of the second point.
-	 * @param t2v1
-	 *     The value of the y component of the second point.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends Tup2WF> T halfVecTo(Tup2RF t1, float t2v0, float t2v1, @ExtractionParam T res)
+	public static <T extends ITup2WF> T halfVecTo(ITupRF t1, float[] t2, @ExtractionParam T res)
 	{
-		return halfVecTo(t1.v0(), t1.v1(), t2v0, t2v1, res);
+		res.set((t2[0] - t1.getAt(0)) * 0.5f, (t2[1] - t1.getAt(1)) * 0.5f);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T halfVecTo(ITupRF t1, float t2v0, float t2v1, @ExtractionParam T res)
+	{
+		res.set((t2v0 - t1.getAt(0)) * 0.5f, (t2v1 - t1.getAt(1)) * 0.5f);
+		
+		return res;
 	}
 	
-	/**
-	 * Calculates half the vector from the point given by the origin vector {@code (t1[0], t1[1])}
-	 * to the point given by the origin vector {@code (t2)} and saves the result in the extraction
-	 * parameter object.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code (v2 - (t1[0], t1[1])) / 2}
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v1
-	 *     The first point as an array with at least two entries.
-	 * @param v2
-	 *     The second point.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends Tup2WF> T halfVecTo(float[] t1, Tup2RF t2, @ExtractionParam T res)
+	public static <T extends ITup2WF> T halfVecTo(float[] t1, ITup2RF t2, @ExtractionParam T res)
 	{
-		return halfVecTo(t1[0], t1[1], t2.v0(), t2.v1(), res);
+		res.set((t2.v0() - t1[0]) * 0.5f, (t2.v1() - t1[1]) * 0.5f);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T halfVecTo(float[] t1, ITupRF t2, @ExtractionParam T res)
+	{
+		res.set((t2.getAt(0) - t1[0]) * 0.5f, (t2.getAt(1) - t1[1]) * 0.5f);
+		
+		return res;
 	}
 	
-	/**
-	 * Calculates half the vector from the point given by the origin vector {@code (t1[0], t1[1])}
-	 * to the point given by the origin vector {@code (t2[0], t2[1])} and saves the result in the
-	 * extraction parameter object.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code ((t2[0], t2[1]) - (t1[0], t1[1])) / 2}
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v1
-	 *     The first point as an array with at least two entries.
-	 * @param v2
-	 *     The second point as an array with at least two entries.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends Tup2WF> T halfVecTo(float[] t1, float[] t2, @ExtractionParam T res)
+	public static <T extends ITup2WF> T halfVecTo(float[] t1, float[] t2, @ExtractionParam T res)
 	{
-		return halfVecTo(t1[0], t1[1], t2[0], t2[1], res);
+		res.set((t2[0] - t1[0]) * 0.5f, (t2[1] - t1[1]) * 0.5f);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T halfVecTo(float[] t1, float t2v0, float t2v1, @ExtractionParam T res)
+	{
+		res.set((t2v0 - t1[0]) * 0.5f, (t2v1 - t1[1]) * 0.5f);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T halfVecTo(float t1v0, float t1v1, ITup2RF t2, @ExtractionParam T res)
+	{
+		res.set((t2.v0() - t1v0) * 0.5f, (t2.v1() - t1v1) * 0.5f);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T halfVecTo(float t1v0, float t1v1, ITupRF t2, @ExtractionParam T res)
+	{
+		res.set((t2.getAt(0) - t1v0) * 0.5f, (t2.getAt(1) - t1v1) * 0.5f);
+		
+		return res;
 	}
 	
-	/**
-	 * Calculates half the vector from the point given by the origin vector {@code (t1[0], t1[1])}
-	 * to the point given by the origin vector {@code (t2v0, t2v1)} and saves the result in the
-	 * extraction parameter object.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code ((t2v0, t2v1) - (t1[0], t1[1])) / 2}
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v1
-	 *     The first point as an array with at least two entries.
-	 * @param t2v0
-	 *     The value of the x component of the second point.
-	 * @param t2v1
-	 *     The value of the y component of the second point.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends Tup2WF> T halfVecTo(float[] t1, float t2v0, float t2v1, @ExtractionParam T res)
+	public static <T extends ITup2WF> T halfVecTo(float t1v0, float t1v1, float[] t2, @ExtractionParam T res)
 	{
-		return halfVecTo(t1[0], t1[1], t2v0, t2v1, res);
+		res.set((t2[0] - t1v0) * 0.5f, (t2[1] - t1v1) * 0.5f);
+		
+		return res;
 	}
-	
-	/**
-	 * Calculates half the vector from the point given by the origin vector {@code (t1v0, t1v1)} to
-	 * the point given by the origin vector {@code (t2)} and saves the result in the extraction
-	 * parameter object.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code (v2 - (t1v0, t1v1)) / 2}
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param t1v0
-	 *     The value of the x component of the first point.
-	 * @param t1v1
-	 *     The value of the y component of the first point.
-	 * @param v2
-	 *     The second point.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends Tup2WF> T halfVecTo(float t1v0, float t1v1, Tup2RF t2, @ExtractionParam T res)
-	{
-		return halfVecTo(t1v0, t1v1, t2.v0(), t2.v1(), res);
-	}
-	
-	/**
-	 * Calculates half the vector from the point given by the origin vector {@code (t1v0, t1v1)} to
-	 * the point given by the origin vector {@code (t2[0], t2[1])} and saves the result in the
-	 * extraction parameter object.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code ((t2[0], t2[1]) - (t1v0, t1v1)) / 2}
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param t1v0
-	 *     The value of the x component of the first point.
-	 * @param t1v1
-	 *     The value of the y component of the first point.
-	 * @param v2
-	 *     The second point as an array with at least two entries.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends Tup2WF> T halfVecTo(float t1v0, float t1v1, float[] t2, @ExtractionParam T res)
-	{
-		return halfVecTo(t1v0, t1v1, t2[0], t2[1], res);
-	}
-	
-	/**
-	 * Calculates half the vector from the point given by the origin vector {@code (t1v0, t1v1)} to
-	 * the point given by the origin vector {@code (t2v0, t2v1)} and saves the result in the
-	 * extraction parameter object.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code ((t2v0, t2v1) - (t1v0, t1v1)) / 2}
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param t1v0
-	 *     The value of the x component of the first point.
-	 * @param t1v1
-	 *     The value of the y component of the first point.
-	 * @param t2v0
-	 *     The value of the x component of the second point.
-	 * @param t2v1
-	 *     The value of the y component of the second point.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends Tup2WF> T halfVecTo(float t1v0, float t1v1, float t2v0, float t2v1, @ExtractionParam T res)
+
+	public static <T extends ITup2WF> T halfVecTo(float t1v0, float t1v1, float t2v0, float t2v1, @ExtractionParam T res)
 	{
 		res.set((t2v0 - t1v0) * 0.5f, (t2v1 - t1v1) * 0.5f);
 		
 		return res;
+	}
+	
+	/**
+	 * Calculates half the vector from the point given by the origin vector {@code (v1)} to the
+	 * point given by the origin vector {@code (t2)} and saves the result in the extraction
+	 * parameter object.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code (v2 - v1) / 2}
+	 * 
+	 * @param <T>
+	 *     The type of the extraction parameter object.
+	 * 
+	 * @param v1
+	 *     The first point.
+	 * @param v2
+	 *     The second point.
+	 * @param res
+	 *     The extraction parameter object for the result.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T halfVecToCreateNew(ITup2RF t1, ITup2RF t2, T prototype)
+	{
+		return (T) prototype.createNew((t2.v0() - t1.v0()) * 0.5f, (t2.v1() - t1.v1()) * 0.5f);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T halfVecToCreateNew(ITup2RF t1, ITupRF t2, T prototype)
+	{
+		return (T) prototype.createNew((t2.getAt(0) - t1.v0()) * 0.5f, (t2.getAt(1) - t1.v1()) * 0.5f);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T halfVecToCreateNew(ITup2RF t1, float[] t2, T prototype)
+	{
+		return (T) prototype.createNew((t2[0] - t1.v0()) * 0.5f, (t2[1] - t1.v1()) * 0.5f);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T halfVecToCreateNew(ITup2RF t1, float t2v0, float t2v1, T prototype)
+	{
+		return (T) prototype.createNew((t2v0 - t1.v0()) * 0.5f, (t2v1 - t1.v1()) * 0.5f);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T halfVecToCreateNew(ITupRF t1, ITup2RF t2, T prototype)
+	{
+		return (T) prototype.createNew((t2.v0() - t1.getAt(0)) * 0.5f, (t2.v1() - t1.getAt(1)) * 0.5f);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T halfVecToCreateNew(ITupRF t1, ITupRF t2, T prototype)
+	{
+		return (T) prototype.createNew((t2.getAt(0) - t1.getAt(0)) * 0.5f, (t2.getAt(1) - t1.getAt(1)) * 0.5f);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T halfVecToCreateNew(ITupRF t1, float[] t2, T prototype)
+	{
+		return (T) prototype.createNew((t2[0] - t1.getAt(0)) * 0.5f, (t2[1] - t1.getAt(1)) * 0.5f);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T halfVecToCreateNew(ITupRF t1, float t2v0, float t2v1, T prototype)
+	{
+		return (T) prototype.createNew((t2v0 - t1.getAt(0)) * 0.5f, (t2v1 - t1.getAt(1)) * 0.5f);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T halfVecToCreateNew(float[] t1, ITup2RF t2, T prototype)
+	{
+		return (T) prototype.createNew((t2.v0() - t1[0]) * 0.5f, (t2.v1() - t1[1]) * 0.5f);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T halfVecToCreateNew(float[] t1, ITupRF t2, T prototype)
+	{
+		return (T) prototype.createNew((t2.getAt(0) - t1[0]) * 0.5f, (t2.getAt(1) - t1[1]) * 0.5f);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T halfVecToCreateNew(float[] t1, float[] t2, T prototype)
+	{
+		return (T) prototype.createNew((t2[0] - t1[0]) * 0.5f, (t2[1] - t1[1]) * 0.5f);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T halfVecToCreateNew(float[] t1, float t2v0, float t2v1, T prototype)
+	{
+		return (T) prototype.createNew((t2v0 - t1[0]) * 0.5f, (t2v1 - t1[1]) * 0.5f);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T halfVecToCreateNew(float t1v0, float t1v1, ITup2RF t2, T prototype)
+	{
+		return (T) prototype.createNew((t2.v0() - t1v0) * 0.5f, (t2.v1() - t1v1) * 0.5f);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T halfVecToCreateNew(float t1v0, float t1v1, ITupRF t2, T prototype)
+	{
+		return (T) prototype.createNew((t2.getAt(0) - t1v0) * 0.5f, (t2.getAt(1) - t1v1) * 0.5f);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T halfVecToCreateNew(float t1v0, float t1v1, float[] t2, T prototype)
+	{
+		return (T) prototype.createNew((t2[0] - t1v0) * 0.5f, (t2[1] - t1v1) * 0.5f);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T halfVecToCreateNew(float t1v0, float t1v1, float t2v0, float t2v1, T prototype)
+	{
+		return (T) prototype.createNew((t2v0 - t1v0) * 0.5f, (t2v1 - t1v1) * 0.5f);
 	}
 	
 	/**
@@ -4309,202 +6294,94 @@ public class VecUtils2F
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] midPointTo(Tup2RF t1, Tup2RF t2, @ExtractionParam float[] res)
+	public static float[] midPointTo(ITup2RF t1, ITup2RF t2, @ExtractionParam float[] res)
 	{
-		return midPointTo(t1.v0(), t1.v1(), t2.v0(), t2.v1(), res);
+		res[0] = (t2.v0() - t1.v0()) * 0.5f;
+		res[1] = (t2.v1() - t1.v1()) * 0.5f;
+		
+		return res;
+	}
+
+	public static float[] midPointTo(ITup2RF t1, ITupRF t2, @ExtractionParam float[] res)
+	{
+		res[0] = (t2.getAt(0) - t1.v0()) * 0.5f;
+		res[1] = (t2.getAt(1) - t1.v1()) * 0.5f;
+		
+		return res;
 	}
 	
-	/**
-	 * Calculates the point that lies half way between the point given by the origin vector
-	 * {@code (v1)} and the point given by the origin vector {@code (t2[0], t2[1])} and saves the
-	 * result in the extraction parameter.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code ((t2[0], t2[1]) + v1) / 2}
-	 * 
-	 * @param v1
-	 *     The first point.
-	 * @param v2
-	 *     The second point as an array with at least two entries.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
-	public static float[] midPointTo(Tup2RF t1, float[] t2, @ExtractionParam float[] res)
+	public static float[] midPointTo(ITup2RF t1, float[] t2, @ExtractionParam float[] res)
 	{
-		return midPointTo(t1.v0(), t1.v1(), t2[0], t2[1], res);
+		res[0] = (t2[0] - t1.v0()) * 0.5f;
+		res[1] = (t2[1] - t1.v1()) * 0.5f;
+		
+		return res;
+	}
+
+	public static float[] midPointTo(ITup2RF t1, float t2v0, float t2v1, @ExtractionParam float[] res)
+	{
+		res[0] = (t2v0 - t1.v0()) * 0.5f;
+		res[1] = (t2v1 - t1.v1()) * 0.5f;
+		
+		return res;
+	}
+
+	public static float[] midPointTo(float[] t1, ITup2RF t2, @ExtractionParam float[] res)
+	{
+		res[0] = (t2.v0() - t1[0]) * 0.5f;
+		res[1] = (t2.v1() - t1[1]) * 0.5f;
+		
+		return res;
+	}
+
+	public static float[] midPointTo(float[] t1, ITupRF t2, @ExtractionParam float[] res)
+	{
+		res[0] = (t2.getAt(0) - t1[0]) * 0.5f;
+		res[1] = (t2.getAt(1) - t1[1]) * 0.5f;
+		
+		return res;
 	}
 	
-	/**
-	 * Calculates the point that lies half way between the point given by the origin vector
-	 * {@code (v1)} and the point given by the origin vector {@code (t2v0, t2v1)} and saves the result
-	 * in the extraction parameter.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code ((t2v0, t2v1) + v1) / 2}
-	 * 
-	 * @param v1
-	 *     The first point.
-	 * @param t2v0
-	 *     The value of the x component of the second point.
-	 * @param t2v1
-	 *     The value of the y component of the second point.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
-	public static float[] midPointTo(Tup2RF t1, float t2v0, float t2v1, @ExtractionParam float[] res)
-	{
-		return midPointTo(t1.v0(), t1.v1(), t2v0, t2v1, res);
-	}
-	
-	/**
-	 * Calculates the point that lies half way between the point given by the origin vector
-	 * {@code (t1[0], t1[1])} and the point given by the origin vector {@code (t2)} and saves the
-	 * result in the extraction parameter.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code (v2 + (t1[0], t1[1])) / 2}
-	 * 
-	 * @param v1
-	 *     The first point as an array with at least two entries.
-	 * @param v2
-	 *     The second point.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
-	public static float[] midPointTo(float[] t1, Tup2RF t2, @ExtractionParam float[] res)
-	{
-		return midPointTo(t1[0], t1[1], t2.v0(), t2.v1(), res);
-	}
-	
-	/**
-	 * Calculates the point that lies half way between the point given by the origin vector
-	 * {@code (t1[0], t1[1])} and the point given by the origin vector {@code (t2[0], t2[1])} and
-	 * saves the result in the extraction parameter.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code ((t2[0], t2[1]) + (t1[0], t1[1])) / 2}
-	 * 
-	 * @param v1
-	 *     The first point as an array with at least two entries.
-	 * @param v2
-	 *     The second point as an array with at least two entries.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
 	public static float[] midPointTo(float[] t1, float[] t2, @ExtractionParam float[] res)
 	{
-		return midPointTo(t1[0], t1[1], t2[0], t2[1], res);
+		res[0] = (t2[0] - t1[0]) * 0.5f;
+		res[1] = (t2[1] - t1[1]) * 0.5f;
+		
+		return res;
 	}
-	
-	/**
-	 * Calculates the point that lies half way between the point given by the origin vector
-	 * {@code (t1[0], t1[1])} and the point given by the origin vector {@code (t2v0, t2v1)} and saves
-	 * the result in the extraction parameter.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code ((t2v0, t2v1) + (t1[0], t1[1])) / 2}
-	 * 
-	 * @param v1
-	 *     The first point as an array with at least two entries.
-	 * @param t2v0
-	 *     The value of the x component of the second point.
-	 * @param t2v1
-	 *     The value of the y component of the second point.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
+
 	public static float[] midPointTo(float[] t1, float t2v0, float t2v1, @ExtractionParam float[] res)
 	{
-		return midPointTo(t1[0], t1[1], t2v0, t2v1, res);
+		res[0] = (t2v0 - t1[0]) * 0.5f;
+		res[1] = (t2v1 - t1[1]) * 0.5f;
+		
+		return res;
 	}
-	
-	/**
-	 * Calculates the point that lies half way between the point given by the origin vector
-	 * {@code (t1v0, t1v1)} and the point given by the origin vector {@code (t2)} and saves the result
-	 * in the extraction parameter.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code (v2 + (t1v0, t1v1)) / 2}
-	 * 
-	 * @param t1v0
-	 *     The value of the x component of the first point.
-	 * @param t1v1
-	 *     The value of the y component of the first point.
-	 * @param v2
-	 *     The second point.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
-	public static float[] midPointTo(float t1v0, float t1v1, Tup2RF t2, @ExtractionParam float[] res)
+
+	public static float[] midPointTo(float t1v0, float t1v1, ITup2RF t2, @ExtractionParam float[] res)
 	{
-		return midPointTo(t1v0, t1v1, t2.v0(), t2.v1(), res);
+		res[0] = (t2.v0() - t1v0) * 0.5f;
+		res[1] = (t2.v1() - t1v1) * 0.5f;
+		
+		return res;
+	}
+
+	public static float[] midPointTo(float t1v0, float t1v1, ITupRF t2, @ExtractionParam float[] res)
+	{
+		res[0] = (t2.getAt(0) - t1v0) * 0.5f;
+		res[1] = (t2.getAt(1) - t1v1) * 0.5f;
+		
+		return res;
 	}
 	
-	/**
-	 * Calculates the point that lies half way between the point given by the origin vector
-	 * {@code (t1v0, t1v1)} and the point given by the origin vector {@code (t2[0], t2[1])} and saves
-	 * the result in the extraction parameter.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code ((t2[0], t2[1]) + (t1v0, t1v1)) / 2}
-	 * 
-	 * @param t1v0
-	 *     The value of the x component of the first point.
-	 * @param t1v1
-	 *     The value of the y component of the first point.
-	 * @param v2
-	 *     The second point as an array with at least two entries.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
 	public static float[] midPointTo(float t1v0, float t1v1, float[] t2, @ExtractionParam float[] res)
 	{
-		return midPointTo(t1v0, t1v1, t2[0], t2[1], res);
+		res[0] = (t2[0] - t1v0) * 0.5f;
+		res[1] = (t2[1] - t1v1) * 0.5f;
+		
+		return res;
 	}
-	
-	/**
-	 * Calculates the point that lies half way between the point given by the origin vector
-	 * {@code (t1v0, t1v1)} and the point given by the origin vector {@code (t2v0, t2v1)} and saves the
-	 * result in the extraction parameter.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code ((t2v0, t2v1) + (t1v0, t1v1)) / 2}
-	 * 
-	 * @param t1v0
-	 *     The value of the x component of the first point.
-	 * @param t1v1
-	 *     The value of the y component of the first point.
-	 * @param t2v0
-	 *     The value of the x component of the second point.
-	 * @param t2v1
-	 *     The value of the y component of the second point.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
+
 	public static float[] midPointTo(float t1v0, float t1v1, float t2v0, float t2v1, @ExtractionParam float[] res)
 	{
 		res[0] = (t2v0 - t1v0) * 0.5f;
@@ -4534,227 +6411,112 @@ public class VecUtils2F
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T midPointTo(Tup2RF t1, Tup2RF t2, @ExtractionParam T res)
+	public static <T extends ITup2WF> T midPointTo(ITup2RF t1, ITup2RF t2, @ExtractionParam T res)
 	{
-		return midPointTo(t1.v0(), t1.v1(), t2.v0(), t2.v1(), res);
+		res.set((t2.v0() - t1.v0()) * 0.5f, (t2.v1() - t1.v1()) * 0.5f);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T midPointTo(ITup2RF t1, ITupRF t2, @ExtractionParam T res)
+	{
+		res.set((t2.getAt(0) - t1.v0()) * 0.5f, (t2.getAt(1) - t1.v1()) * 0.5f);
+		
+		return res;
 	}
 	
-	/**
-	 * Calculates the point that lies half way between the point given by the origin vector
-	 * {@code (v1)} and the point given by the origin vector {@code (t2[0], t2[1])} and saves the
-	 * result in the extraction parameter object.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code ((t2[0], t2[1]) + v1) / 2}
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v1
-	 *     The first point.
-	 * @param v2
-	 *     The second point as an array with at least two entries.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends Tup2WF> T midPointTo(Tup2RF t1, float[] t2, @ExtractionParam T res)
+	public static <T extends ITup2WF> T midPointTo(ITup2RF t1, float[] t2, @ExtractionParam T res)
 	{
-		return midPointTo(t1.v0(), t1.v1(), t2[0], t2[1], res);
+		res.set((t2[0] - t1.v0()) * 0.5f, (t2[1] - t1.v1()) * 0.5f);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T midPointTo(ITup2RF t1, float t2v0, float t2v1, @ExtractionParam T res)
+	{
+		res.set((t2v0 - t1.v0()) * 0.5f, (t2v1 - t1.v1()) * 0.5f);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T midPointTo(ITupRF t1, ITup2RF t2, @ExtractionParam T res)
+	{
+		res.set((t2.v0() - t1.getAt(0)) * 0.5f, (t2.v1() - t1.getAt(1)) * 0.5f);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T midPointTo(ITupRF t1, ITupRF t2, @ExtractionParam T res)
+	{
+		res.set((t2.getAt(0) - t1.getAt(0)) * 0.5f, (t2.getAt(1) - t1.getAt(1)) * 0.5f);
+		
+		return res;
 	}
 	
-	/**
-	 * Calculates the point that lies half way between the point given by the origin vector
-	 * {@code (v1)} and the point given by the origin vector {@code (t2v0, t2v1)} and saves the result
-	 * in the extraction parameter object.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code ((t2v0, t2v1) + v1) / 2}
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v1
-	 *     The first point.
-	 * @param t2v0
-	 *     The value of the x component of the second point.
-	 * @param t2v1
-	 *     The value of the y component of the second point.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends Tup2WF> T midPointTo(Tup2RF t1, float t2v0, float t2v1, @ExtractionParam T res)
+	public static <T extends ITup2WF> T midPointTo(ITupRF t1, float[] t2, @ExtractionParam T res)
 	{
-		return midPointTo(t1.v0(), t1.v1(), t2v0, t2v1, res);
+		res.set((t2[0] - t1.getAt(0)) * 0.5f, (t2[1] - t1.getAt(1)) * 0.5f);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T midPointTo(ITupRF t1, float t2v0, float t2v1, @ExtractionParam T res)
+	{
+		res.set((t2v0 - t1.getAt(0)) * 0.5f, (t2v1 - t1.getAt(1)) * 0.5f);
+		
+		return res;
 	}
 	
-	/**
-	 * Calculates the point that lies half way between the point given by the origin vector
-	 * {@code (t1[0], t1[1])} and the point given by the origin vector {@code (t2)} and saves the
-	 * result in the extraction parameter object.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code (v2 + (t1[0], t1[1])) / 2}
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v1
-	 *     The first point as an array with at least two entries.
-	 * @param v2
-	 *     The second point
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends Tup2WF> T midPointTo(float[] t1, Tup2RF t2, @ExtractionParam T res)
+	public static <T extends ITup2WF> T midPointTo(float[] t1, ITup2RF t2, @ExtractionParam T res)
 	{
-		return midPointTo(t1[0], t1[1], t2.v0(), t2.v1(), res);
+		res.set((t2.v0() - t1[0]) * 0.5f, (t2.v1() - t1[1]) * 0.5f);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T midPointTo(float[] t1, ITupRF t2, @ExtractionParam T res)
+	{
+		res.set((t2.getAt(0) - t1[0]) * 0.5f, (t2.getAt(1) - t1[1]) * 0.5f);
+		
+		return res;
 	}
 	
-	/**
-	 * Calculates the point that lies half way between the point given by the origin vector
-	 * {@code (t1[0], t1[1])} and the point given by the origin vector {@code (t2[0], t2[1])} and
-	 * saves the result in the extraction parameter object.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code ((t2[0], t2[1]) + (t1[0], t1[1])) / 2}
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v1
-	 *     The first point as an array with at least two entries.
-	 * @param v2
-	 *     The second point as an array with at least two entries.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends Tup2WF> T midPointTo(float[] t1, float[] t2, @ExtractionParam T res)
+	public static <T extends ITup2WF> T midPointTo(float[] t1, float[] t2, @ExtractionParam T res)
 	{
-		return midPointTo(t1[0], t1[1], t2[0], t2[1], res);
+		res.set((t2[0] - t1[0]) * 0.5f, (t2[1] - t1[1]) * 0.5f);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T midPointTo(float[] t1, float t2v0, float t2v1, @ExtractionParam T res)
+	{
+		res.set((t2v0 - t1[0]) * 0.5f, (t2v1 - t1[1]) * 0.5f);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T midPointTo(float t1v0, float t1v1, ITup2RF t2, @ExtractionParam T res)
+	{
+		res.set((t2.v0() - t1v0) * 0.5f, (t2.v1() - t1v1) * 0.5f);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T midPointTo(float t1v0, float t1v1, ITupRF t2, @ExtractionParam T res)
+	{
+		res.set((t2.getAt(0) - t1v0) * 0.5f, (t2.getAt(1) - t1v1) * 0.5f);
+		
+		return res;
 	}
 	
-	/**
-	 * Calculates the point that lies half way between the point given by the origin vector
-	 * {@code (t1[0], t1[1])} and the point given by the origin vector {@code (t2v0, t2v1)} and saves
-	 * the result in the extraction parameter object.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code ((t2v0, t2v1) + (t1[0], t1[1])) / 2}
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v1
-	 *     The first point as an array with at least two entries.
-	 * @param t2v0
-	 *     The value of the x component of the second point.
-	 * @param t2v1
-	 *     The value of the y component of the second point.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends Tup2WF> T midPointTo(float[] t1, float t2v0, float t2v1, @ExtractionParam T res)
+	public static <T extends ITup2WF> T midPointTo(float t1v0, float t1v1, float[] t2, @ExtractionParam T res)
 	{
-		return midPointTo(t1[0], t1[1], t2v0, t2v1, res);
+		res.set((t2[0] - t1v0) * 0.5f, (t2[1] - t1v1) * 0.5f);
+		
+		return res;
 	}
-	
-	/**
-	 * Calculates the point that lies half way between the point given by the origin vector
-	 * {@code (t1v0, t1v1)} and the point given by the origin vector {@code (t2)} and saves the result
-	 * in the extraction parameter object.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code (v2 + (t1v0, t1v1)) / 2}
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param t1v0
-	 *     The value of the x component of the first point.
-	 * @param t1v1
-	 *     The value of the y component of the first point.
-	 * @param v2
-	 *     The second point.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends Tup2WF> T midPointTo(float t1v0, float t1v1, Tup2RF t2, @ExtractionParam T res)
-	{
-		return midPointTo(t1v0, t1v1, t2.v0(), t2.v1(), res);
-	}
-	
-	/**
-	 * Calculates the point that lies half way between the point given by the origin vector
-	 * {@code (t1v0, t1v1)} and the point given by the origin vector {@code (t2[0], t2[1])} and saves
-	 * the result in the extraction parameter object.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code ((t2[0], t2[1]) + (t1v0, t1v1)) / 2}
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param t1v0
-	 *     The value of the x component of the first point.
-	 * @param t1v1
-	 *     The value of the y component of the first point.
-	 * @param v2
-	 *     The second point as an array with at least two entries.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends Tup2WF> T midPointTo(float t1v0, float t1v1, float[] t2, @ExtractionParam T res)
-	{
-		return midPointTo(t1v0, t1v1, t2[0], t2[1], res);
-	}
-	
-	/**
-	 * Calculates the point that lies half way between the point given by the origin vector
-	 * {@code (t1v0, t1v1)} and the point given by the origin vector {@code (t2v0, t2v1)} and saves the
-	 * result in the extraction parameter object.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code ((t2v0, t2v1) + (t1v0, t1v1)) / 2}
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param t1v0
-	 *     The value of the x component of the first point.
-	 * @param t1v1
-	 *     The value of the y component of the first point.
-	 * @param t2v0
-	 *     The value of the x component of the second point.
-	 * @param t2v1
-	 *     The value of the y component of the second point.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends Tup2WF> T midPointTo(float t1v0, float t1v1, float t2v0, float t2v1, @ExtractionParam T res)
+
+	public static <T extends ITup2WF> T midPointTo(float t1v0, float t1v1, float t2v0, float t2v1, @ExtractionParam T res)
 	{
 		res.set((t2v0 - t1v0) * 0.5f, (t2v1 - t1v1) * 0.5f);
 		
@@ -4762,6 +6524,123 @@ public class VecUtils2F
 	}
 	
 	/**
+	 * Calculates the point that lies half way between the point given by the origin vector
+	 * {@code (v1)} and the point given by the origin vector {@code (t2)} and saves the result in
+	 * the extraction parameter object.
+	 * 
+	 * <p>
+	 * Operation:<br>
+	 * {@code (v2 + v1) / 2}
+	 * 
+	 * @param <T>
+	 *     The type of the extraction parameter object.
+	 * 
+	 * @param v1
+	 *     The first point.
+	 * @param v2
+	 *     The second point.
+	 * @param res
+	 *     The extraction parameter object for the result.
+	 * 
+	 * @return The extraction parameter object with the result.
+	 */
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T midPointToCreateNew(ITup2RF t1, ITup2RF t2, T prototype)
+	{
+		return (T) prototype.createNew((t2.v0() - t1.v0()) * 0.5f, (t2.v1() - t1.v1()) * 0.5f);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T midPointToCreateNew(ITup2RF t1, ITupRF t2, T prototype)
+	{
+		return (T) prototype.createNew((t2.getAt(0) - t1.v0()) * 0.5f, (t2.getAt(1) - t1.v1()) * 0.5f);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T midPointToCreateNew(ITup2RF t1, float[] t2, T prototype)
+	{
+		return (T) prototype.createNew((t2[0] - t1.v0()) * 0.5f, (t2[1] - t1.v1()) * 0.5f);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T midPointToCreateNew(ITup2RF t1, float t2v0, float t2v1, T prototype)
+	{
+		return (T) prototype.createNew((t2v0 - t1.v0()) * 0.5f, (t2v1 - t1.v1()) * 0.5f);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T midPointToCreateNew(ITupRF t1, ITup2RF t2, T prototype)
+	{
+		return (T) prototype.createNew((t2.v0() - t1.getAt(0)) * 0.5f, (t2.v1() - t1.getAt(1)) * 0.5f);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T midPointToCreateNew(ITupRF t1, ITupRF t2, T prototype)
+	{
+		return (T) prototype.createNew((t2.getAt(0) - t1.getAt(0)) * 0.5f, (t2.getAt(1) - t1.getAt(1)) * 0.5f);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T midPointToCreateNew(ITupRF t1, float[] t2, T prototype)
+	{
+		return (T) prototype.createNew((t2[0] - t1.getAt(0)) * 0.5f, (t2[1] - t1.getAt(1)) * 0.5f);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T midPointToCreateNew(ITupRF t1, float t2v0, float t2v1, T prototype)
+	{
+		return (T) prototype.createNew((t2v0 - t1.getAt(0)) * 0.5f, (t2v1 - t1.getAt(1)) * 0.5f);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T midPointToCreateNew(float[] t1, ITup2RF t2, T prototype)
+	{
+		return (T) prototype.createNew((t2.v0() - t1[0]) * 0.5f, (t2.v1() - t1[1]) * 0.5f);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T midPointToCreateNew(float[] t1, ITupRF t2, T prototype)
+	{
+		return (T) prototype.createNew((t2.getAt(0) - t1[0]) * 0.5f, (t2.getAt(1) - t1[1]) * 0.5f);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T midPointToCreateNew(float[] t1, float[] t2, T prototype)
+	{
+		return (T) prototype.createNew((t2[0] - t1[0]) * 0.5f, (t2[1] - t1[1]) * 0.5f);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T midPointToCreateNew(float[] t1, float t2v0, float t2v1, T prototype)
+	{
+		return (T) prototype.createNew((t2v0 - t1[0]) * 0.5f, (t2v1 - t1[1]) * 0.5f);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T midPointToCreateNew(float t1v0, float t1v1, ITup2RF t2, T prototype)
+	{
+		return (T) prototype.createNew((t2.v0() - t1v0) * 0.5f, (t2.v1() - t1v1) * 0.5f);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T midPointToCreateNew(float t1v0, float t1v1, ITupRF t2, T prototype)
+	{
+		return (T) prototype.createNew((t2.getAt(0) - t1v0) * 0.5f, (t2.getAt(1) - t1v1) * 0.5f);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T midPointToCreateNew(float t1v0, float t1v1, float[] t2, T prototype)
+	{
+		return (T) prototype.createNew((t2[0] - t1v0) * 0.5f, (t2[1] - t1v1) * 0.5f);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <T extends ITup2RF> T midPointToCreateNew(float t1v0, float t1v1, float t2v0, float t2v1, T prototype)
+	{
+		return (T) prototype.createNew((t2v0 - t1v0) * 0.5f, (t2v1 - t1v1) * 0.5f);
+	}
+	
+	/**
 	 * Returns the distance from the point given by the origin vector {@code (v1)} to the point
 	 * given by the origin vector {@code (t2)}.
 	 * 
@@ -4780,436 +6659,185 @@ public class VecUtils2F
 	 * 
 	 * @return The distance between the points.
 	 */
-	public static float lenTo(Tup2RF t1, Tup2RF t2)
+	public static float lenTo(ITup2RF t1, ITup2RF t2)
 	{
-		return lenTo(t1.v0(), t1.v1(), t2.v0(), t2.v1());
+		float v0 = t2.v0() - t1.v0();
+		float v1 = t2.v1() - t1.v1();
+		float sqareLength = v0 * v0 + v1 * v1;
+		
+		if(MathUtils.Comp.isZero(sqareLength)) return 0.0f;
+		
+		return MathUtils.sqrt(sqareLength);
 	}
 	
-	/**
-	 * Returns the distance from the point given by the origin vector {@code (v1)} to the point
-	 * given by the origin vector {@code (t2)}.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code |v2 - v1|}
-	 * 
-	 * @param v1
-	 *     The first point.
-	 * @param v2
-	 *     The second point.
-	 * @param tolerance
-	 *     The tolerance for defining the margin around zero. Must be positive.
-	 * 
-	 * @return The distance between the points.
-	 */
-	public static float lenTo(float tolerance, Tup2RF t1, Tup2RF t2)
+	public static float lenTo(ITup2RF t1, ITupRF t2)
 	{
-		return lenTo(t1.v0(), t1.v1(), t2.v0(), t2.v1(), tolerance);
+		float v0 = t2.getAt(0) - t1.v0();
+		float v1 = t2.getAt(1) - t1.v1();
+		float sqareLength = v0 * v0 + v1 * v1;
+		
+		if(MathUtils.Comp.isZero(sqareLength)) return 0.0f;
+		
+		return MathUtils.sqrt(sqareLength);
 	}
 	
-	/**
-	 * Returns the distance from the point given by the origin vector {@code (v1)} to the point
-	 * given by the origin vector {@code (t2[0], t2[1])}.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code |(t2[0], t2[1]) - v1|}
-	 * 
-	 * @param v1
-	 *     The first point.
-	 * @param v2
-	 *     The second point as an array with at least two entries.
-	 * 
-	 * @return The distance between the points.
-	 */
-	public static float lenTo(Tup2RF t1, float[] t2)
+	public static float lenTo(ITup2RF t1, float[] t2)
 	{
-		return lenTo(t1.v0(), t1.v1(), t2[0], t2[1]);
+		float v0 = t2[0] - t1.v0();
+		float v1 = t2[1] - t1.v1();
+		float sqareLength = v0 * v0 + v1 * v1;
+		
+		if(MathUtils.Comp.isZero(sqareLength)) return 0.0f;
+		
+		return MathUtils.sqrt(sqareLength);
 	}
 	
-	/**
-	 * Returns the distance from the point given by the origin vector {@code (v1)} to the point
-	 * given by the origin vector {@code (t2[0], t2[1])}.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code |(t2[0], t2[1]) - v1|}
-	 * 
-	 * @param v1
-	 *     The first point.
-	 * @param v2
-	 *     The second point as an array with at least two entries.
-	 * @param tolerance
-	 *     The tolerance for defining the margin around zero. Must be positive.
-	 * 
-	 * @return The distance between the points.
-	 */
-	public static float lenTo(float tolerance, Tup2RF t1, float[] t2)
+	public static float lenTo(ITup2RF t1, float t2v0, float t2v1)
 	{
-		return lenTo(t1.v0(), t1.v1(), t2[0], t2[1], tolerance);
+		float v0 = t2v0 - t1.v0();
+		float v1 = t2v1 - t1.v1();
+		float sqareLength = v0 * v0 + v1 * v1;
+		
+		if(MathUtils.Comp.isZero(sqareLength)) return 0.0f;
+		
+		return MathUtils.sqrt(sqareLength);
 	}
 	
-	/**
-	 * Returns the distance from the point given by the origin vector {@code (v1)} to the point
-	 * given by the origin vector {@code (t2v0, t2v1)}.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code |(t2v0, t2v1) - v1|}
-	 * 
-	 * @param v1
-	 *     The first point.
-	 * @param t2v0
-	 *     The value of the x component of the second point.
-	 * @param t2v1
-	 *     The value of the y component of the second point.
-	 * 
-	 * @return The distance between the points.
-	 */
-	public static float lenTo(Tup2RF t1, float t2v0, float t2v1)
+	public static float lenTo(ITupRF t1, ITup2RF t2)
 	{
-		return lenTo(t1.v0(), t1.v1(), t2v0, t2v1);
+		float v0 = t2.v0() - t1.getAt(0);
+		float v1 = t2.v1() - t1.getAt(1);
+		float sqareLength = v0 * v0 + v1 * v1;
+		
+		if(MathUtils.Comp.isZero(sqareLength)) return 0.0f;
+		
+		return MathUtils.sqrt(sqareLength);
 	}
 	
-	/**
-	 * Returns the distance from the point given by the origin vector {@code (v1)} to the point
-	 * given by the origin vector {@code (t2v0, t2v1)}.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code |(t2v0, t2v1) - v1|}
-	 * 
-	 * @param v1
-	 *     The first point.
-	 * @param t2v0
-	 *     The value of the x component of the second point.
-	 * @param t2v1
-	 *     The value of the y component of the second point.
-	 * @param tolerance
-	 *     The tolerance for defining the margin around zero. Must be positive.
-	 * 
-	 * @return The distance between the points.
-	 */
-	public static float lenTo(float tolerance, Tup2RF t1, float t2v0, float t2v1)
+	public static float lenTo(ITupRF t1, ITupRF t2)
 	{
-		return lenTo(t1.v0(), t1.v1(), t2v0, t2v1, tolerance);
+		float v0 = t2.getAt(0) - t1.getAt(0);
+		float v1 = t2.getAt(1) - t1.getAt(1);
+		float sqareLength = v0 * v0 + v1 * v1;
+		
+		if(MathUtils.Comp.isZero(sqareLength)) return 0.0f;
+		
+		return MathUtils.sqrt(sqareLength);
 	}
 	
-	/**
-	 * Returns the distance from the point given by the origin vector {@code (t1[0], t1[1])} to the
-	 * point given by the origin vector {@code (t2)}.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code |v2 - (t1[0], t1[1])|}
-	 * 
-	 * @param v1
-	 *     The first point as an array with at least two entries.
-	 * @param v2
-	 *     The second point.
-	 * 
-	 * @return The distance between the points.
-	 */
-	public static float lenTo(float[] t1, Tup2RF t2)
+	public static float lenTo(ITupRF t1, float[] t2)
 	{
-		return lenTo(t1[0], t1[1], t2.v0(), t2.v1());
+		float v0 = t2[0] - t1.getAt(0);
+		float v1 = t2[1] - t1.getAt(1);
+		float sqareLength = v0 * v0 + v1 * v1;
+		
+		if(MathUtils.Comp.isZero(sqareLength)) return 0.0f;
+		
+		return MathUtils.sqrt(sqareLength);
 	}
 	
-	/**
-	 * Returns the distance from the point given by the origin vector {@code (t1[0], t1[1])} to the
-	 * point given by the origin vector {@code (t2)}.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code |v2 - (t1[0], t1[1])|}
-	 * 
-	 * @param v1
-	 *     The first point as an array with at least two entries.
-	 * @param v2
-	 *     The second point.
-	 * @param tolerance
-	 *     The tolerance for defining the margin around zero. Must be positive.
-	 * 
-	 * @return The distance between the points.
-	 */
-	public static float lenTo(float tolerance, float[] t1, Tup2RF t2)
+	public static float lenTo(ITupRF t1, float t2v0, float t2v1)
 	{
-		return lenTo(t1[0], t1[1], t2.v0(), t2.v1(), tolerance);
+		float v0 = t2v0 - t1.getAt(0);
+		float v1 = t2v1 - t1.getAt(1);
+		float sqareLength = v0 * v0 + v1 * v1;
+		
+		if(MathUtils.Comp.isZero(sqareLength)) return 0.0f;
+		
+		return MathUtils.sqrt(sqareLength);
 	}
 	
-	/**
-	 * Returns the distance from the point given by the origin vector {@code (t1[0], t1[1])} to the
-	 * point given by the origin vector {@code (t2[0], t2[1])}.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code |(t2[0], t2[1]) - (t1[0], t1[1])|}
-	 * 
-	 * @param v1
-	 *     The first point as an array with at least two entries.
-	 * @param v2
-	 *     The second point as an array with at least two entries.
-	 * 
-	 * @return The distance between the points.
-	 */
+	public static float lenTo(float[] t1, ITup2RF t2)
+	{
+		float v0 = t2.v0() - t1[0];
+		float v1 = t2.v1() - t1[1];
+		float sqareLength = v0 * v0 + v1 * v1;
+		
+		if(MathUtils.Comp.isZero(sqareLength)) return 0.0f;
+		
+		return MathUtils.sqrt(sqareLength);
+	}
+	
+	public static float lenTo(float[] t1, ITupRF t2)
+	{
+		float v0 = t2.getAt(0) - t1[0];
+		float v1 = t2.getAt(1) - t1[1];
+		float sqareLength = v0 * v0 + v1 * v1;
+		
+		if(MathUtils.Comp.isZero(sqareLength)) return 0.0f;
+		
+		return MathUtils.sqrt(sqareLength);
+	}
+	
 	public static float lenTo(float[] t1, float[] t2)
 	{
-		return lenTo(t1[0], t1[1], t2[0], t2[1]);
+		float v0 = t2[0] - t1[0];
+		float v1 = t2[1] - t1[1];
+		float sqareLength = v0 * v0 + v1 * v1;
+		
+		if(MathUtils.Comp.isZero(sqareLength)) return 0.0f;
+		
+		return MathUtils.sqrt(sqareLength);
 	}
 	
-	/**
-	 * Returns the distance from the point given by the origin vector {@code (t1[0], t1[1])} to the
-	 * point given by the origin vector {@code (t2[0], t2[1])}.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code |(t2[0], t2[1]) - (t1[0], t1[1])|}
-	 * 
-	 * @param v1
-	 *     The first point as an array with at least two entries.
-	 * @param v2
-	 *     The second point as an array with at least two entries.
-	 * @param tolerance
-	 *     The tolerance for defining the margin around zero. Must be positive.
-	 * 
-	 * @return The distance between the points.
-	 */
-	public static float lenTo(float tolerance, float[] t1, float[] t2)
-	{
-		return lenTo(t1[0], t1[1], t2[0], t2[1], tolerance);
-	}
-	
-	/**
-	 * Returns the distance from the point given by the origin vector {@code (t1[0], t1[1])} to the
-	 * point given by the origin vector {@code (t2v0, t2v1)}.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code |(t2v0, t2v1) - (t1[0], t1[1])|}
-	 * 
-	 * @param v1
-	 *     The first point as an array with at least two entries.
-	 * @param t2v0
-	 *     The value of the x component of the second point.
-	 * @param t2v1
-	 *     The value of the y component of the second point.
-	 * 
-	 * @return The distance between the points.
-	 */
 	public static float lenTo(float[] t1, float t2v0, float t2v1)
 	{
-		return lenTo(t1[0], t1[1], t2v0, t2v1);
+		float v0 = t2v0 - t1[0];
+		float v1 = t2v1 - t1[1];
+		float sqareLength = v0 * v0 + v1 * v1;
+		
+		if(MathUtils.Comp.isZero(sqareLength)) return 0.0f;
+		
+		return MathUtils.sqrt(sqareLength);
 	}
 	
-	/**
-	 * Returns the distance from the point given by the origin vector {@code (t1[0], t1[1])} to the
-	 * point given by the origin vector {@code (t2v0, t2v1)}.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code |(t2v0, t2v1) - (t1[0], t1[1])|}
-	 * 
-	 * @param v1
-	 *     The first point as an array with at least two entries.
-	 * @param t2v0
-	 *     The value of the x component of the second point.
-	 * @param t2v1
-	 *     The value of the y component of the second point.
-	 * @param tolerance
-	 *     The tolerance for defining the margin around zero. Must be positive.
-	 * 
-	 * @return The distance between the points.
-	 */
-	public static float lenTo(float tolerance, float[] t1, float t2v0, float t2v1)
+	public static float lenTo(float t1v0, float t1v1, ITup2RF t2)
 	{
-		return lenTo(t1[0], t1[1], t2v0, t2v1, tolerance);
+		float v0 = t2.v0() - t1v0;
+		float v1 = t2.v1() - t1v1;
+		float sqareLength = v0 * v0 + v1 * v1;
+		
+		if(MathUtils.Comp.isZero(sqareLength)) return 0.0f;
+		
+		return MathUtils.sqrt(sqareLength);
 	}
 	
-	/**
-	 * Returns the distance from the point given by the origin vector {@code (t1v0, t1v1)} to the
-	 * point given by the origin vector {@code (t2)}.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code |v2 - (t1v0, t1v1)|}
-	 * 
-	 * @param t1v0
-	 *     The value of the x component of the first point.
-	 * @param t1v1
-	 *     The value of the y component of the first point.
-	 * @param v2
-	 *     The second point.
-	 * 
-	 * @return The distance between the points.
-	 */
-	public static float lenTo(float t1v0, float t1v1, Tup2RF t2)
+	public static float lenTo(float t1v0, float t1v1, ITupRF t2)
 	{
-		return lenTo(t1v0, t1v1, t2.v0(), t2.v1());
+		float v0 = t2.getAt(0) - t1v0;
+		float v1 = t2.getAt(1) - t1v1;
+		float sqareLength = v0 * v0 + v1 * v1;
+		
+		if(MathUtils.Comp.isZero(sqareLength)) return 0.0f;
+		
+		return MathUtils.sqrt(sqareLength);
 	}
 	
-	/**
-	 * Returns the distance from the point given by the origin vector {@code (t1v0, t1v1)} to the
-	 * point given by the origin vector {@code (t2)}.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code |v2 - (t1v0, t1v1)|}
-	 * 
-	 * @param t1v0
-	 *     The value of the x component of the first point.
-	 * @param t1v1
-	 *     The value of the y component of the first point.
-	 * @param v2
-	 *     The second point.
-	 * @param tolerance
-	 *     The tolerance for defining the margin around zero. Must be positive.
-	 * 
-	 * @return The distance between the points.
-	 */
-	public static float lenTo(float tolerance, float t1v0, float t1v1, Tup2RF t2)
-	{
-		return lenTo(t1v0, t1v1, t2.v0(), t2.v1(), tolerance);
-	}
-	
-	/**
-	 * Returns the distance from the point given by the origin vector {@code (t1v0, t1v1)} to the
-	 * point given by the origin vector {@code (t2[0], t2[1])}.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code |(t2[0], t2[1]) - (t1v0, t1v1)|}
-	 * 
-	 * @param t1v0
-	 *     The value of the x component of the first point.
-	 * @param t1v1
-	 *     The value of the y component of the first point.
-	 * @param v2
-	 *     The second point as an array with at least two entries.
-	 * 
-	 * @return The distance between the points.
-	 */
 	public static float lenTo(float t1v0, float t1v1, float[] t2)
 	{
-		return lenTo(t1v0, t1v1, t2[0], t2[1]);
+		float v0 = t2[0] - t1v0;
+		float v1 = t2[1] - t1v1;
+		float sqareLength = v0 * v0 + v1 * v1;
+		
+		if(MathUtils.Comp.isZero(sqareLength)) return 0.0f;
+		
+		return MathUtils.sqrt(sqareLength);
 	}
 	
-	/**
-	 * Returns the distance from the point given by the origin vector {@code (t1v0, t1v1)} to the
-	 * point given by the origin vector {@code (t2[0], t2[1])}.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code |(t2[0], t2[1]) - (t1v0, t1v1)|}
-	 * 
-	 * @param t1v0
-	 *     The value of the x component of the first point.
-	 * @param t1v1
-	 *     The value of the y component of the first point.
-	 * @param v2
-	 *     The second point as an array with at least two entries.
-	 * @param tolerance
-	 *     The tolerance for defining the margin around zero. Must be positive.
-	 * 
-	 * @return The distance between the points.
-	 */
-	public static float lenTo(float tolerance, float t1v0, float t1v1, float[] t2)
-	{
-		return lenTo(t1v0, t1v1, t2[0], t2[1], tolerance);
-	}
-	
-	/**
-	 * Returns the distance from the point given by the origin vector {@code (t1v0, t1v1)} to the
-	 * point given by the origin vector {@code (t2v0, t2v1)}.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code |(t2v0, t2v1) - (t1v0, t1v1)|}
-	 * 
-	 * @param t1v0
-	 *     The value of the x component of the first point.
-	 * @param t1v1
-	 *     The value of the y component of the first point.
-	 * @param t2v0
-	 *     The value of the x component of the second point.
-	 * @param t2v1
-	 *     The value of the y component of the second point.
-	 * 
-	 * @return The distance between the points.
-	 */
 	public static float lenTo(float t1v0, float t1v1, float t2v0, float t2v1)
 	{
-		return len(t2v0 - t1v0, t2v1 - t1v1);
+		float v0 = t2v0 - t1v0;
+		float v1 = t2v1 - t1v1;
+		float sqareLength = v0 * v0 + v1 * v1;
+		
+		if(MathUtils.Comp.isZero(sqareLength)) return 0.0f;
+		
+		return MathUtils.sqrt(sqareLength);
 	}
 	
 	/**
-	 * Returns the distance from the point given by the origin vector {@code (t1v0, t1v1)} to the
-	 * point given by the origin vector {@code (t2v0, t2v1)}. If the values of all components are
-	 * within the margin defined by {@code (-tolerance <= value <= tolerance)} around the other
-	 * vectors components the result will be zero.
+	 * Returns the distance from the point given by the origin vector {@code (v1)} to the point
+	 * given by the origin vector {@code (t2)}.
 	 * 
 	 * <p>
 	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
@@ -5217,24 +6845,191 @@ public class VecUtils2F
 	 * 
 	 * <p>
 	 * Operation:<br>
-	 * {@code |(t2v0, t2v1) - (t1v0, t1v1)|}
+	 * {@code |v2 - v1|}
 	 * 
-	 * @param t1v0
-	 *     The value of the x component of the first point.
-	 * @param t1v1
-	 *     The value of the y component of the first point.
-	 * @param t2v0
-	 *     The value of the x component of the second point.
-	 * @param t2v1
-	 *     The value of the y component of the second point.
+	 * @param v1
+	 *     The first point.
+	 * @param v2
+	 *     The second point.
 	 * @param tolerance
 	 *     The tolerance for defining the margin around zero. Must be positive.
 	 * 
 	 * @return The distance between the points.
 	 */
+	public static float lenTo(float tolerance, ITup2RF t1, ITup2RF t2)
+	{
+		float v0 = t2.v0() - t1.v0();
+		float v1 = t2.v1() - t1.v1();
+		float sqareLength = v0 * v0 + v1 * v1;
+		
+		if(MathUtils.Comp.isZero(tolerance, sqareLength)) return 0.0f;
+		
+		return MathUtils.sqrt(sqareLength);
+	}
+
+	public static float lenTo(float tolerance, ITup2RF t1, ITupRF t2)
+	{
+		float v0 = t2.getAt(0) - t1.v0();
+		float v1 = t2.getAt(1) - t1.v1();
+		float sqareLength = v0 * v0 + v1 * v1;
+		
+		if(MathUtils.Comp.isZero(tolerance, sqareLength)) return 0.0f;
+		
+		return MathUtils.sqrt(sqareLength);
+	}
+	
+	public static float lenTo(float tolerance, ITup2RF t1, float[] t2)
+	{
+		float v0 = t2[0] - t1.v0();
+		float v1 = t2[1] - t1.v1();
+		float sqareLength = v0 * v0 + v1 * v1;
+		
+		if(MathUtils.Comp.isZero(tolerance, sqareLength)) return 0.0f;
+		
+		return MathUtils.sqrt(sqareLength);
+	}
+	
+	public static float lenTo(float tolerance, ITup2RF t1, float t2v0, float t2v1)
+	{
+		float v0 = t2v0 - t1.v0();
+		float v1 = t2v1 - t1.v1();
+		float sqareLength = v0 * v0 + v1 * v1;
+		
+		if(MathUtils.Comp.isZero(tolerance, sqareLength)) return 0.0f;
+		
+		return MathUtils.sqrt(sqareLength);
+	}
+	
+	public static float lenTo(float tolerance, ITupRF t1, ITup2RF t2)
+	{
+		float v0 = t2.v0() - t1.getAt(0);
+		float v1 = t2.v1() - t1.getAt(1);
+		float sqareLength = v0 * v0 + v1 * v1;
+		
+		if(MathUtils.Comp.isZero(tolerance, sqareLength)) return 0.0f;
+		
+		return MathUtils.sqrt(sqareLength);
+	}
+
+	public static float lenTo(float tolerance, ITupRF t1, ITupRF t2)
+	{
+		float v0 = t2.getAt(0) - t1.getAt(0);
+		float v1 = t2.getAt(1) - t1.getAt(1);
+		float sqareLength = v0 * v0 + v1 * v1;
+		
+		if(MathUtils.Comp.isZero(tolerance, sqareLength)) return 0.0f;
+		
+		return MathUtils.sqrt(sqareLength);
+	}
+	
+	public static float lenTo(float tolerance, ITupRF t1, float[] t2)
+	{
+		float v0 = t2[0] - t1.getAt(0);
+		float v1 = t2[1] - t1.getAt(1);
+		float sqareLength = v0 * v0 + v1 * v1;
+		
+		if(MathUtils.Comp.isZero(tolerance, sqareLength)) return 0.0f;
+		
+		return MathUtils.sqrt(sqareLength);
+	}
+	
+	public static float lenTo(float tolerance, ITupRF t1, float t2v0, float t2v1)
+	{
+		float v0 = t2v0 - t1.getAt(0);
+		float v1 = t2v1 - t1.getAt(1);
+		float sqareLength = v0 * v0 + v1 * v1;
+		
+		if(MathUtils.Comp.isZero(tolerance, sqareLength)) return 0.0f;
+		
+		return MathUtils.sqrt(sqareLength);
+	}
+	
+	public static float lenTo(float tolerance, float[] t1, ITup2RF t2)
+	{
+		float v0 = t2.v0() - t1[0];
+		float v1 = t2.v1() - t1[1];
+		float sqareLength = v0 * v0 + v1 * v1;
+		
+		if(MathUtils.Comp.isZero(tolerance, sqareLength)) return 0.0f;
+		
+		return MathUtils.sqrt(sqareLength);
+	}
+	
+	public static float lenTo(float tolerance, float[] t1, ITupRF t2)
+	{
+		float v0 = t2.getAt(0) - t1[0];
+		float v1 = t2.getAt(1) - t1[1];
+		float sqareLength = v0 * v0 + v1 * v1;
+		
+		if(MathUtils.Comp.isZero(tolerance, sqareLength)) return 0.0f;
+		
+		return MathUtils.sqrt(sqareLength);
+	}
+	
+	public static float lenTo(float tolerance, float[] t1, float[] t2)
+	{
+		float v0 = t2[0] - t1[0];
+		float v1 = t2[1] - t1[1];
+		float sqareLength = v0 * v0 + v1 * v1;
+		
+		if(MathUtils.Comp.isZero(tolerance, sqareLength)) return 0.0f;
+		
+		return MathUtils.sqrt(sqareLength);
+	}
+	
+	public static float lenTo(float tolerance, float[] t1, float t2v0, float t2v1)
+	{
+		float v0 = t2v0 - t1[0];
+		float v1 = t2v1 - t1[1];
+		float sqareLength = v0 * v0 + v1 * v1;
+		
+		if(MathUtils.Comp.isZero(tolerance, sqareLength)) return 0.0f;
+		
+		return MathUtils.sqrt(sqareLength);
+	}
+	
+	public static float lenTo(float tolerance, float t1v0, float t1v1, ITup2RF t2)
+	{
+		float v0 = t2.v0() - t1v0;
+		float v1 = t2.v1() - t1v1;
+		float sqareLength = v0 * v0 + v1 * v1;
+		
+		if(MathUtils.Comp.isZero(tolerance, sqareLength)) return 0.0f;
+		
+		return MathUtils.sqrt(sqareLength);
+	}
+	
+	public static float lenTo(float tolerance, float t1v0, float t1v1, ITupRF t2)
+	{
+		float v0 = t2.getAt(0) - t1v0;
+		float v1 = t2.getAt(1) - t1v1;
+		float sqareLength = v0 * v0 + v1 * v1;
+		
+		if(MathUtils.Comp.isZero(tolerance, sqareLength)) return 0.0f;
+		
+		return MathUtils.sqrt(sqareLength);
+	}
+	
+	public static float lenTo(float tolerance, float t1v0, float t1v1, float[] t2)
+	{
+		float v0 = t2[0] - t1v0;
+		float v1 = t2[1] - t1v1;
+		float sqareLength = v0 * v0 + v1 * v1;
+		
+		if(MathUtils.Comp.isZero(tolerance, sqareLength)) return 0.0f;
+		
+		return MathUtils.sqrt(sqareLength);
+	}
+	
 	public static float lenTo(float tolerance, float t1v0, float t1v1, float t2v0, float t2v1)
 	{
-		return len(t2v0 - t1v0, t2v1 - t1v1, tolerance);
+		float v0 = t2v0 - t1v0;
+		float v1 = t2v1 - t1v1;
+		float sqareLength = v0 * v0 + v1 * v1;
+		
+		if(MathUtils.Comp.isZero(tolerance, sqareLength)) return 0.0f;
+		
+		return MathUtils.sqrt(sqareLength);
 	}
 	
 	/**
@@ -5252,181 +7047,132 @@ public class VecUtils2F
 	 * 
 	 * @return The squared distance between the points.
 	 */
-	public static float sqrLenTo(Tup2RF t1, Tup2RF t2)
+	public static float sqrLenTo(ITup2RF t1, ITup2RF t2)
 	{
-		return sqrLenTo(t1.v0(), t1.v1(), t2.v0(), t2.v1());
+		float v0 = t2.v0() - t1.v0();
+		float v1 = t2.v1() - t1.v1();
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float sqrLenTo(ITup2RF t1, ITupRF t2)
+	{
+		float v0 = t2.getAt(0) - t1.v0();
+		float v1 = t2.getAt(1) - t1.v1();
+		
+		return v0 * v0 + v1 * v1;
 	}
 	
-	/**
-	 * Returns the squared distance from the point given by the origin vector {@code (v1)} to the
-	 * point given by the origin vector {@code (t2[0], t2[1])}.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code |(t2[0], t2[1]) - v1|²}
-	 * 
-	 * @param v1
-	 *     The first point.
-	 * @param v2
-	 *     The second point as an array with at least two entries.
-	 * 
-	 * @return The squared distance between the points.
-	 */
-	public static float sqrLenTo(Tup2RF t1, float[] t2)
+	public static float sqrLenTo(ITup2RF t1, float[] t2)
 	{
-		return sqrLenTo(t1.v0(), t1.v1(), t2[0], t2[1]);
+		float v0 = t2[0] - t1.v0();
+		float v1 = t2[1] - t1.v1();
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float sqrLenTo(ITup2RF t1, float t2v0, float t2v1)
+	{
+		float v0 = t2v0 - t1.v0();
+		float v1 = t2v1 - t1.v1();
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float sqrLenTo(ITupRF t1, ITup2RF t2)
+	{
+		float v0 = t2.v0() - t1.getAt(0);
+		float v1 = t2.v1() - t1.getAt(1);
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float sqrLenTo(ITupRF t1, ITupRF t2)
+	{
+		float v0 = t2.getAt(0) - t1.getAt(0);
+		float v1 = t2.getAt(1) - t1.getAt(1);
+		
+		return v0 * v0 + v1 * v1;
 	}
 	
-	/**
-	 * Returns the squared distance from the point given by the origin vector {@code (v1)} to the
-	 * point given by the origin vector {@code (t2v0, t2v1)}.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code |(t2v0, t2v1) - v1|²}
-	 * 
-	 * @param v1
-	 *     The first point.
-	 * @param t2v0
-	 *     The value of the x component of the second point.
-	 * @param t2v1
-	 *     The value of the y component of the second point.
-	 * 
-	 * @return The squared distance between the points.
-	 */
-	public static float sqrLenTo(Tup2RF t1, float t2v0, float t2v1)
+	public static float sqrLenTo(ITupRF t1, float[] t2)
 	{
-		return sqrLenTo(t1.v0(), t1.v1(), t2v0, t2v1);
+		float v0 = t2[0] - t1.getAt(0);
+		float v1 = t2[1] - t1.getAt(1);
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float sqrLenTo(ITupRF t1, float t2v0, float t2v1)
+	{
+		float v0 = t2v0 - t1.getAt(0);
+		float v1 = t2v1 - t1.getAt(1);
+		
+		return v0 * v0 + v1 * v1;
 	}
 	
-	/**
-	 * Returns the squared distance from the point given by the origin vector {@code (t1[0], t1[1])}
-	 * to the point given by the origin vector {@code (t2)}.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code |v2 - (t1[0], t1[1])|²}
-	 * 
-	 * @param v1
-	 *     The first point as an array with at least two entries.
-	 * @param v2
-	 *     The second point.
-	 * 
-	 * @return The squared distance between the points.
-	 */
-	public static float sqrLenTo(float[] t1, Tup2RF t2)
+	public static float sqrLenTo(float[] t1, ITup2RF t2)
 	{
-		return sqrLenTo(t1[0], t1[1], t2.v0(), t2.v1());
+		float v0 = t2.v0() - t1[0];
+		float v1 = t2.v1() - t1[1];
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float sqrLenTo(float[] t1, ITupRF t2)
+	{
+		float v0 = t2.getAt(0) - t1[0];
+		float v1 = t2.getAt(1) - t1[1];
+		
+		return v0 * v0 + v1 * v1;
 	}
 	
-	/**
-	 * Returns the squared distance from the point given by the origin vector {@code (t1[0], t1[1])}
-	 * to the point given by the origin vector {@code (t2[0], t2[1])}.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code |(t2[0], t2[1]) - (t1[0], t1[1])|²}
-	 * 
-	 * @param v1
-	 *     The first point as an array with at least two entries.
-	 * @param v2
-	 *     The second point as an array with at least two entries.
-	 * 
-	 * @return The squared distance between the points.
-	 */
 	public static float sqrLenTo(float[] t1, float[] t2)
 	{
-		return sqrLenTo(t1[0], t1[1], t2[0], t2[1]);
+		float v0 = t2[0] - t1[0];
+		float v1 = t2[1] - t1[1];
+		
+		return v0 * v0 + v1 * v1;
 	}
-	
-	/**
-	 * Returns the squared distance from the point given by the origin vector {@code (t1[0], t1[1])}
-	 * to the point given by the origin vector {@code (t2v0, t2v1)}.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code |(t2v0, t2v1) - (t1[0], t1[1])|²}
-	 * 
-	 * @param v1
-	 *     The first point as an array with at least two entries.
-	 * @param t2v0
-	 *     The value of the x component of the second point.
-	 * @param t2v1
-	 *     The value of the y component of the second point.
-	 * 
-	 * @return The squared distance between the points.
-	 */
+
 	public static float sqrLenTo(float[] t1, float t2v0, float t2v1)
 	{
-		return sqrLenTo(t1[0], t1[1], t2v0, t2v1);
+		float v0 = t2v0 - t1[0];
+		float v1 = t2v1 - t1[1];
+		
+		return v0 * v0 + v1 * v1;
 	}
-	
-	/**
-	 * Returns the squared distance from the point given by the origin vector {@code (t1v0, t1v1)} to
-	 * the point given by the origin vector {@code (t2)}.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code |v2 - (t1v0, t1v1)|²}
-	 * 
-	 * @param t1v0
-	 *     The value of the x component of the first point.
-	 * @param t1v1
-	 *     The value of the y component of the first point.
-	 * @param v2
-	 *     The second point.
-	 * 
-	 * @return The squared distance between the points.
-	 */
-	public static float sqrLenTo(float t1v0, float t1v1, Tup2RF t2)
+
+	public static float sqrLenTo(float t1v0, float t1v1, ITup2RF t2)
 	{
-		return sqrLenTo(t1v0, t1v1, t2.v0(), t2.v1());
+		float v0 = t2.v0() - t1v0;
+		float v1 = t2.v1() - t1v1;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float sqrLenTo(float t1v0, float t1v1, ITupRF t2)
+	{
+		float v0 = t2.getAt(0) - t1v0;
+		float v1 = t2.getAt(1) - t1v1;
+		
+		return v0 * v0 + v1 * v1;
 	}
 	
-	/**
-	 * Returns the squared distance from the point given by the origin vector {@code (t1v0, t1v1)} to
-	 * the point given by the origin vector {@code (t2[0], t2[1])}.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code |(t2[0], t2[1]) - (t1v0, t1v1)|²}
-	 * 
-	 * @param t1v0
-	 *     The value of the x component of the first point.
-	 * @param t1v1
-	 *     The value of the y component of the first point.
-	 * @param v2
-	 *     The second point as an array with at least two entries.
-	 * 
-	 * @return The squared distance between the points.
-	 */
 	public static float sqrLenTo(float t1v0, float t1v1, float[] t2)
 	{
-		return sqrLenTo(t1v0, t1v1, t2[0], t2[1]);
+		float v0 = t2[0] - t1v0;
+		float v1 = t2[1] - t1v1;
+		
+		return v0 * v0 + v1 * v1;
 	}
-	
-	/**
-	 * Returns the squared distance from the point given by the origin vector {@code (t1v0, t1v1)} to
-	 * the point given by the origin vector {@code (t2v0, t2v1)}.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code |(t2v0, t2v1) - (t1v0, t1v1)|²}
-	 * 
-	 * @param t1v0
-	 *     The value of the x component of the first point.
-	 * @param t1v1
-	 *     The value of the y component of the first point.
-	 * @param t2v0
-	 *     The value of the x component of the second point.
-	 * @param t2v1
-	 *     The value of the y component of the second point.
-	 * 
-	 * @return The squared distance between the points.
-	 */
+
 	public static float sqrLenTo(float t1v0, float t1v1, float t2v0, float t2v1)
 	{
-		return sqrLen(t2v0 - t1v0, t2v1 - t1v1);
+		float v0 = t2v0 - t1v0;
+		float v1 = t2v1 - t1v1;
+		
+		return v0 * v0 + v1 * v1;
 	}
 	
 	/**
@@ -5448,212 +7194,131 @@ public class VecUtils2F
 	 * 
 	 * @return The invers distance between the points.
 	 */
-	public static float recLenTo(Tup2RF t1, Tup2RF t2)
+	public static float recLenTo(ITup2RF t1, ITup2RF t2)
 	{
-		return recLenTo(t1.v0(), t1.v1(), t2.v0(), t2.v1());
+		float v0 = t2.v0() - t1.v0();
+		float v1 = t2.v1() - t1.v1();
+		
+		return MathUtils.invSqrt(v0 * v0 + v1 * v1);
+	}
+
+	public static float recLenTo(ITup2RF t1, ITupRF t2)
+	{
+		float v0 = t2.getAt(0) - t1.v0();
+		float v1 = t2.getAt(1) - t1.v1();
+		
+		return MathUtils.invSqrt(v0 * v0 + v1 * v1);
 	}
 	
-	/**
-	 * Returns the inverse distance from the point given by the origin vector {@code (v1)} to the
-	 * point given by the origin vector {@code (t2[0], t2[1])}.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code 1 / |(t2[0], t2[1]) - v1|}
-	 * 
-	 * @param v1
-	 *     The first point.
-	 * @param v2
-	 *     The second point as an array with at least two entries.
-	 * 
-	 * @return The invers distance between the points.
-	 */
-	public static float recLenTo(Tup2RF t1, float[] t2)
+	public static float recLenTo(ITup2RF t1, float[] t2)
 	{
-		return recLenTo(t1.v0(), t1.v1(), t2[0], t2[1]);
+		float v0 = t2[0] - t1.v0();
+		float v1 = t2[1] - t1.v1();
+		
+		return MathUtils.invSqrt(v0 * v0 + v1 * v1);
+	}
+
+	public static float recLenTo(ITup2RF t1, float t2v0, float t2v1)
+	{
+		float v0 = t2v0 - t1.v0();
+		float v1 = t2v1 - t1.v1();
+		
+		return MathUtils.invSqrt(v0 * v0 + v1 * v1);
 	}
 	
-	/**
-	 * Returns the inverse distance from the point given by the origin vector {@code (v1)} to the
-	 * point given by the origin vector {@code (t2v0, t2v1)}.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code 1 / |(t2v0, t2v1) - v1|}
-	 * 
-	 * @param v1
-	 *     The first point.
-	 * @param t2v0
-	 *     The value of the x component of the second point.
-	 * @param t2v1
-	 *     The value of the y component of the second point.
-	 * 
-	 * @return The invers distance between the points.
-	 */
-	public static float recLenTo(Tup2RF t1, float t2v0, float t2v1)
+	public static float recLenTo(ITupRF t1, ITup2RF t2)
 	{
-		return recLenTo(t1.v0(), t1.v1(), t2v0, t2v1);
+		float v0 = t2.v0() - t1.getAt(0);
+		float v1 = t2.v1() - t1.getAt(1);
+		
+		return MathUtils.invSqrt(v0 * v0 + v1 * v1);
+	}
+
+	public static float recLenTo(ITupRF t1, ITupRF t2)
+	{
+		float v0 = t2.getAt(0) - t1.getAt(0);
+		float v1 = t2.getAt(1) - t1.getAt(1);
+		
+		return MathUtils.invSqrt(v0 * v0 + v1 * v1);
 	}
 	
-	/**
-	 * Returns the inverse distance from the point given by the origin vector {@code (t1[0], t1[1])}
-	 * to the point given by the origin vector {@code (t2)}.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code 1 / |v2 - (t1[0], t1[1])|}
-	 * 
-	 * @param v1
-	 *     The first point as an array with at least two entries.
-	 * @param v2
-	 *     The second point.
-	 * 
-	 * @return The invers distance between the points.
-	 */
-	public static float recLenTo(float[] t1, Tup2RF t2)
+	public static float recLenTo(ITupRF t1, float[] t2)
 	{
-		return recLenTo(t1[0], t1[1], t2.v0(), t2.v1());
+		float v0 = t2[0] - t1.getAt(0);
+		float v1 = t2[1] - t1.getAt(1);
+		
+		return MathUtils.invSqrt(v0 * v0 + v1 * v1);
+	}
+
+	public static float recLenTo(ITupRF t1, float t2v0, float t2v1)
+	{
+		float v0 = t2v0 - t1.getAt(0);
+		float v1 = t2v1 - t1.getAt(1);
+		
+		return MathUtils.invSqrt(v0 * v0 + v1 * v1);
 	}
 	
-	/**
-	 * Returns the inverse distance from the point given by the origin vector {@code (t1[0], t1[1])}
-	 * to the point given by the origin vector {@code (t2[0], t2[1])}.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code 1 / |(t2[0], t2[1]) - (t1[0], t1[1])|}
-	 * 
-	 * @param v1
-	 *     The first point as an array with at least two entries.
-	 * @param v2
-	 *     The second point as an array with at least two entries.
-	 * 
-	 * @return The invers distance between the points.
-	 */
+	public static float recLenTo(float[] t1, ITup2RF t2)
+	{
+		float v0 = t2.v0() - t1[0];
+		float v1 = t2.v1() - t1[1];
+		
+		return MathUtils.invSqrt(v0 * v0 + v1 * v1);
+	}
+
+	public static float recLenTo(float[] t1, ITupRF t2)
+	{
+		float v0 = t2.getAt(0) - t1[0];
+		float v1 = t2.getAt(1) - t1[1];
+		
+		return MathUtils.invSqrt(v0 * v0 + v1 * v1);
+	}
+	
 	public static float recLenTo(float[] t1, float[] t2)
 	{
-		return recLenTo(t1[0], t1[1], t2[0], t2[1]);
+		float v0 = t2[0] - t1[0];
+		float v1 = t2[1] - t1[1];
+		
+		return MathUtils.invSqrt(v0 * v0 + v1 * v1);
 	}
-	
-	/**
-	 * Returns the inverse distance from the point given by the origin vector {@code (t1[0], t1[1])}
-	 * to the point given by the origin vector {@code (t2v0, t2v1)}.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code 1 / |(t2v0, t2v1) - (t1[0], t1[1])|}
-	 * 
-	 * @param v1
-	 *     The first point as an array with at least two entries.
-	 * @param t2v0
-	 *     The value of the x component of the second point.
-	 * @param t2v1
-	 *     The value of the y component of the second point.
-	 * 
-	 * @return The invers distance between the points.
-	 */
+
 	public static float recLenTo(float[] t1, float t2v0, float t2v1)
 	{
-		return recLenTo(t1[0], t1[1], t2v0, t2v1);
+		float v0 = t2v0 - t1[0];
+		float v1 = t2v1 - t1[1];
+		
+		return MathUtils.invSqrt(v0 * v0 + v1 * v1);
 	}
-	
-	/**
-	 * Returns the inverse distance from the point given by the origin vector {@code (t1v0, t1v1)} to
-	 * the point given by the origin vector {@code (t2)}.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code 1 / |v2 - (t1v0, t1v1)|}
-	 * 
-	 * @param t1v0
-	 *     The value of the x component of the first point.
-	 * @param t1v1
-	 *     The value of the y component of the first point.
-	 * @param v2
-	 *     The second point.
-	 * 
-	 * @return The invers distance between the points.
-	 */
-	public static float recLenTo(float t1v0, float t1v1, Tup2RF t2)
+
+	public static float recLenTo(float t1v0, float t1v1, ITup2RF t2)
 	{
-		return recLenTo(t1v0, t1v1, t2.v0(), t2.v1());
+		float v0 = t2.v0() - t1v0;
+		float v1 = t2.v1() - t1v1;
+		
+		return MathUtils.invSqrt(v0 * v0 + v1 * v1);
+	}
+
+	public static float recLenTo(float t1v0, float t1v1, ITupRF t2)
+	{
+		float v0 = t2.getAt(0) - t1v0;
+		float v1 = t2.getAt(1) - t1v1;
+		
+		return MathUtils.invSqrt(v0 * v0 + v1 * v1);
 	}
 	
-	/**
-	 * Returns the inverse distance from the point given by the origin vector {@code (t1v0, t1v1)} to
-	 * the point given by the origin vector {@code (t2[0], t2[1])}.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code 1 / |(t2[0], t2[1]) - (t1v0, t1v1)|}
-	 * 
-	 * @param t1v0
-	 *     The value of the x component of the first point.
-	 * @param t1v1
-	 *     The value of the y component of the first point.
-	 * @param v2
-	 *     The second point as an array with at least two entries.
-	 * 
-	 * @return The invers distance between the points.
-	 */
 	public static float recLenTo(float t1v0, float t1v1, float[] t2)
 	{
-		return recLenTo(t1v0, t1v1, t2[0], t2[1]);
+		float v0 = t2[0] - t1v0;
+		float v1 = t2[1] - t1v1;
+		
+		return MathUtils.invSqrt(v0 * v0 + v1 * v1);
 	}
-	
-	/**
-	 * Returns the inverse distance from the point given by the origin vector {@code (t1v0, t1v1)} to
-	 * the point given by the origin vector {@code (t2v0, t2v1)}.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code 1 / |(t2v0, t2v1) - (t1v0, t1v1)|}
-	 * 
-	 * @param t1v0
-	 *     The value of the x component of the first point.
-	 * @param t1v1
-	 *     The value of the y component of the first point.
-	 * @param t2v0
-	 *     The value of the x component of the second point.
-	 * @param t2v1
-	 *     The value of the y component of the second point.
-	 * 
-	 * @return The invers distance between the points.
-	 */
+
 	public static float recLenTo(float t1v0, float t1v1, float t2v0, float t2v1)
 	{
-		return recLen(t2v0 - t1v0, t2v1 - t1v1);
+		float v0 = t2v0 - t1v0;
+		float v1 = t2v1 - t1v1;
+		
+		return MathUtils.invSqrt(v0 * v0 + v1 * v1);
 	}
 }

@@ -15,3 +15,4 @@ include('barghos-util')
 include('barghos-nio-buffer')
 
 include('barghos-compat-lwjgl-glfw')
+include('barghos-compat-lwjgl-vulkan')

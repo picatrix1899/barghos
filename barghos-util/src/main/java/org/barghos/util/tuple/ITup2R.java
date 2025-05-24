@@ -1,6 +1,6 @@
 package org.barghos.util.tuple;
 
-import org.barghos.annotation.Nullable;
+import org.barghos.annotation.AllowNull;
 
 /**
  * This interface provides non-modifying operations for generic tuples with two
@@ -86,7 +86,7 @@ public interface ITup2R<V0,V1>
 	 * True, if the component values of this tuple and the component
 	 * values of the given tuple {@code t} are equal. Otherwise false.
 	 */
-	boolean equals(@Nullable ITup2R<V0,V1> t);
+	boolean equals(@AllowNull ITup2R<V0,V1> t);
 	
 	/**
 	 * Returns if the component values of this tuple and the component values

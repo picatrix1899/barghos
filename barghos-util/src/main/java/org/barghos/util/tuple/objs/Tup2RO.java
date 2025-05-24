@@ -1,7 +1,7 @@
 package org.barghos.util.tuple.objs;
 
 import org.barghos.annotation.ExtractionParam;
-import org.barghos.annotation.Nullable;
+import org.barghos.annotation.AllowNull;
 
 /**
  * This interface provides non-modifying operations for Object tuples with 
@@ -200,7 +200,7 @@ public interface Tup2RO extends FixTupRO
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equals(@Nullable Tup2RO t);
+	boolean equals(@AllowNull Tup2RO t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -233,7 +233,7 @@ public interface Tup2RO extends FixTupRO
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equals(@Nullable TupRO t);
+	boolean equals(@AllowNull TupRO t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -266,7 +266,7 @@ public interface Tup2RO extends FixTupRO
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equals(@Nullable Object... t);
+	boolean equals(@AllowNull Object... t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -330,7 +330,7 @@ public interface Tup2RO extends FixTupRO
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAt(int index, @Nullable Tup2RO t);
+	boolean equalsAt(int index, @AllowNull Tup2RO t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -374,7 +374,7 @@ public interface Tup2RO extends FixTupRO
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equalsAt(int index, @Nullable TupRO t);
+	boolean equalsAt(int index, @AllowNull TupRO t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -418,7 +418,7 @@ public interface Tup2RO extends FixTupRO
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equalsAt(int index, @Nullable Object... t);
+	boolean equalsAt(int index, @AllowNull Object... t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -480,7 +480,7 @@ public interface Tup2RO extends FixTupRO
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(@Nullable Tup2RO t);
+	boolean equalsAtV0(@AllowNull Tup2RO t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and
@@ -511,7 +511,7 @@ public interface Tup2RO extends FixTupRO
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(@Nullable TupRO t);
+	boolean equalsAtV0(@AllowNull TupRO t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and
@@ -542,7 +542,7 @@ public interface Tup2RO extends FixTupRO
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(@Nullable Object... t);
+	boolean equalsAtV0(@AllowNull Object... t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and
@@ -592,7 +592,7 @@ public interface Tup2RO extends FixTupRO
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(@Nullable Tup2RO t);
+	boolean equalsAtV1(@AllowNull Tup2RO t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and
@@ -623,7 +623,7 @@ public interface Tup2RO extends FixTupRO
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(@Nullable TupRO t);
+	boolean equalsAtV1(@AllowNull TupRO t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and
@@ -654,7 +654,7 @@ public interface Tup2RO extends FixTupRO
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(@Nullable Object... t);
+	boolean equalsAtV1(@AllowNull Object... t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and

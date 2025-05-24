@@ -1,7 +1,7 @@
 package org.barghos.util.tuple.chars;
 
 import org.barghos.annotation.ExtractionParam;
-import org.barghos.annotation.Nullable;
+import org.barghos.annotation.AllowNull;
 
 /**
  * This interface provides non-modifying operations for char tuples with 
@@ -209,7 +209,7 @@ public interface Tup3RC extends FixTupRC
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equals(@Nullable Tup3RC t);
+	boolean equals(@AllowNull Tup3RC t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -243,7 +243,7 @@ public interface Tup3RC extends FixTupRC
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equals(@Nullable TupRC t);
+	boolean equals(@AllowNull TupRC t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -277,7 +277,7 @@ public interface Tup3RC extends FixTupRC
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equals(@Nullable char... t);
+	boolean equals(@AllowNull char... t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -337,7 +337,7 @@ public interface Tup3RC extends FixTupRC
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAt(int index, @Nullable Tup3RC t);
+	boolean equalsAt(int index, @AllowNull Tup3RC t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -375,7 +375,7 @@ public interface Tup3RC extends FixTupRC
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equalsAt(int index, @Nullable TupRC t);
+	boolean equalsAt(int index, @AllowNull TupRC t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -413,7 +413,7 @@ public interface Tup3RC extends FixTupRC
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equalsAt(int index, @Nullable char... t);
+	boolean equalsAt(int index, @AllowNull char... t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -469,7 +469,7 @@ public interface Tup3RC extends FixTupRC
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(@Nullable Tup3RC t);
+	boolean equalsAtV0(@AllowNull Tup3RC t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and
@@ -500,7 +500,7 @@ public interface Tup3RC extends FixTupRC
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(@Nullable TupRC t);
+	boolean equalsAtV0(@AllowNull TupRC t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and
@@ -531,7 +531,7 @@ public interface Tup3RC extends FixTupRC
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(@Nullable char... t);
+	boolean equalsAtV0(@AllowNull char... t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and
@@ -581,7 +581,7 @@ public interface Tup3RC extends FixTupRC
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(@Nullable Tup3RC t);
+	boolean equalsAtV1(@AllowNull Tup3RC t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and
@@ -612,7 +612,7 @@ public interface Tup3RC extends FixTupRC
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(@Nullable TupRC t);
+	boolean equalsAtV1(@AllowNull TupRC t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and
@@ -643,7 +643,7 @@ public interface Tup3RC extends FixTupRC
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(@Nullable char... t);
+	boolean equalsAtV1(@AllowNull char... t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and
@@ -693,7 +693,7 @@ public interface Tup3RC extends FixTupRC
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV2(@Nullable Tup3RC t);
+	boolean equalsAtV2(@AllowNull Tup3RC t);
 	
 	/**
 	 * Returns whether the third component value of this tuple and
@@ -724,7 +724,7 @@ public interface Tup3RC extends FixTupRC
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV2(@Nullable TupRC t);
+	boolean equalsAtV2(@AllowNull TupRC t);
 	
 	/**
 	 * Returns whether the third component value of this tuple and
@@ -755,7 +755,7 @@ public interface Tup3RC extends FixTupRC
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV2(@Nullable char... t);
+	boolean equalsAtV2(@AllowNull char... t);
 	
 	/**
 	 * Returns whether the third component value of this tuple and

@@ -1,7 +1,7 @@
 package org.barghos.util.tuple.ints;
 
 import org.barghos.annotation.ExtractionParam;
-import org.barghos.annotation.Nullable;
+import org.barghos.annotation.AllowNull;
 
 /**
  * This interface provides non-modifying operations for int tuples with 
@@ -367,7 +367,7 @@ public interface Tup2RI extends FixTupRI
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equals(@Nullable Tup2RI t);
+	boolean equals(@AllowNull Tup2RI t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -400,7 +400,7 @@ public interface Tup2RI extends FixTupRI
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equals(@Nullable TupRI t);
+	boolean equals(@AllowNull TupRI t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -433,7 +433,7 @@ public interface Tup2RI extends FixTupRI
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equals(@Nullable int... t);
+	boolean equals(@AllowNull int... t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -499,7 +499,7 @@ public interface Tup2RI extends FixTupRI
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equals(int tolerance, @Nullable Tup2RI t);
+	boolean equals(int tolerance, @AllowNull Tup2RI t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -544,7 +544,7 @@ public interface Tup2RI extends FixTupRI
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equals(int tolerance, @Nullable TupRI t);
+	boolean equals(int tolerance, @AllowNull TupRI t);
 
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -589,7 +589,7 @@ public interface Tup2RI extends FixTupRI
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equals(int tolerance, @Nullable int... t);
+	boolean equals(int tolerance, @AllowNull int... t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -665,7 +665,7 @@ public interface Tup2RI extends FixTupRI
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAt(int index, @Nullable Tup2RI t);
+	boolean equalsAt(int index, @AllowNull Tup2RI t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -709,7 +709,7 @@ public interface Tup2RI extends FixTupRI
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equalsAt(int index, @Nullable TupRI t);
+	boolean equalsAt(int index, @AllowNull TupRI t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -753,7 +753,7 @@ public interface Tup2RI extends FixTupRI
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equalsAt(int index, @Nullable int... t);
+	boolean equalsAt(int index, @AllowNull int... t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -839,7 +839,7 @@ public interface Tup2RI extends FixTupRI
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAt(int tolerance, int index, @Nullable Tup2RI t);
+	boolean equalsAt(int tolerance, int index, @AllowNull Tup2RI t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -895,7 +895,7 @@ public interface Tup2RI extends FixTupRI
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equalsAt(int tolerance, int index, @Nullable TupRI t);
+	boolean equalsAt(int tolerance, int index, @AllowNull TupRI t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -951,7 +951,7 @@ public interface Tup2RI extends FixTupRI
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equalsAt(int tolerance, int index, @Nullable int... t);
+	boolean equalsAt(int tolerance, int index, @AllowNull int... t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -1025,7 +1025,7 @@ public interface Tup2RI extends FixTupRI
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(@Nullable Tup2RI t);
+	boolean equalsAtV0(@AllowNull Tup2RI t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and
@@ -1056,7 +1056,7 @@ public interface Tup2RI extends FixTupRI
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(@Nullable TupRI t);
+	boolean equalsAtV0(@AllowNull TupRI t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and
@@ -1087,7 +1087,7 @@ public interface Tup2RI extends FixTupRI
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(@Nullable int... t);
+	boolean equalsAtV0(@AllowNull int... t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and
@@ -1137,7 +1137,7 @@ public interface Tup2RI extends FixTupRI
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(@Nullable Tup2RI t);
+	boolean equalsAtV1(@AllowNull Tup2RI t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and
@@ -1168,7 +1168,7 @@ public interface Tup2RI extends FixTupRI
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(@Nullable TupRI t);
+	boolean equalsAtV1(@AllowNull TupRI t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and
@@ -1199,7 +1199,7 @@ public interface Tup2RI extends FixTupRI
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(@Nullable int... t);
+	boolean equalsAtV1(@AllowNull int... t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and
@@ -1262,7 +1262,7 @@ public interface Tup2RI extends FixTupRI
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(int tolerance, @Nullable Tup2RI t);
+	boolean equalsAtV0(int tolerance, @AllowNull Tup2RI t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and of the given
@@ -1306,7 +1306,7 @@ public interface Tup2RI extends FixTupRI
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(int tolerance, @Nullable TupRI t);
+	boolean equalsAtV0(int tolerance, @AllowNull TupRI t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and of the given
@@ -1350,7 +1350,7 @@ public interface Tup2RI extends FixTupRI
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(int tolerance, @Nullable int... t);
+	boolean equalsAtV0(int tolerance, @AllowNull int... t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and the given
@@ -1425,7 +1425,7 @@ public interface Tup2RI extends FixTupRI
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(int tolerance, @Nullable Tup2RI t);
+	boolean equalsAtV1(int tolerance, @AllowNull Tup2RI t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and of the given
@@ -1469,7 +1469,7 @@ public interface Tup2RI extends FixTupRI
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(int tolerance, @Nullable TupRI t);
+	boolean equalsAtV1(int tolerance, @AllowNull TupRI t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and of the given
@@ -1513,7 +1513,7 @@ public interface Tup2RI extends FixTupRI
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(int tolerance, @Nullable int... t);
+	boolean equalsAtV1(int tolerance, @AllowNull int... t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and the given

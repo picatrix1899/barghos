@@ -25,14 +25,13 @@ import org.barghos.validation.Validate;
  * @see ConsumerEx4
  */
 @FunctionalInterface
-public interface Consumer<A> extends java.util.function.Consumer<A>
+public interface Consumer<A>
 {
 	/**
 	 * Performs the operation on the given argument.
 	 *
 	 * @param a The first input argument.
 	 */
-	@Override
 	void accept(A a);
 	
 	/**
@@ -51,29 +50,6 @@ public interface Consumer<A> extends java.util.function.Consumer<A>
 	}
 	
 	/**
-	 * Performs the given operation after this operation.
-	 * 
-	 * @param after The operation to perform after this operation.
-	 * 
-	 * @return A new {@link Consumer} performing this operation and the
-	 * operation after.
-	 */
-	default Consumer<A> then(java.util.function.Consumer<? super A> after)
-	{
-		Validate.Arg.checkNotNull("after", after);
-		
-		return then(after::accept);
-	}
-	
-	@Override
-	default Consumer<A> andThen(java.util.function.Consumer<? super A> after)
-	{
-		Validate.Arg.checkNotNull("after", after);
-		
-		return then(after::accept);
-	}
-	
-	/**
 	 * Performs the given operation before this operation.
 	 * 
 	 * @param before The operation to perform before this operation.
@@ -86,21 +62,6 @@ public interface Consumer<A> extends java.util.function.Consumer<A>
 		Validate.Arg.checkNotNull("before", before);
 		
 		return (a) -> { before.accept(a); accept(a); };
-	}
-	
-	/**
-	 * Performs the given operation before this operation.
-	 * 
-	 * @param before The operation to perform before this operation.
-	 * 
-	 * @return A new {@link Consumer} performing the operation before and this
-	 * operation.
-	 */
-	default Consumer<A> before(java.util.function.Consumer<? super A> before)
-	{
-		Validate.Arg.checkNotNull("before", before);
-		
-		return before(before::accept);
 	}
 
 	/**

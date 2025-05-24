@@ -496,3 +496,196 @@ public static <T extends QuatC> T lerp(QuatR a, QuatR b, double alpha, @Extracti
 //		
 //		return res;
 //	}
+
+public float signedAngleTo(float x, float y, float z)
+//	{
+//		Vec3fC cross = crossN(x, y, z);
+//		
+//		float length = cross.length();
+//		
+//		float dot = dot(x, y, z);
+//		
+//		return (float)Math.atan2(length, dot);
+//	}
+
+//	public Vec3fC rotateX(float angle)
+//	{
+//		float cosAngle = (float)Math.cos(angle);
+//		float sinAngle = (float)Math.sin(angle);
+//		
+//		float y = this.y;
+//		float z = this.z;
+//
+//		this.y = Math.fma(cosAngle, y, -sinAngle * z);
+//		this.z = Math.fma(sinAngle, y, cosAngle * z);
+//		
+//		return this;
+//	}
+//
+//	public Vec3fC rotateXDeg(float angle)
+//	{
+//		float ang = angle * Maths.DEG_TO_RADf;
+//		float cosAngle = (float)Math.cos(ang);
+//		float sinAngle = (float)Math.sin(ang);
+//		
+//		float y = this.y;
+//		float z = this.z;
+//
+//		this.y = Math.fma(cosAngle, y, -sinAngle * z);
+//		this.z = Math.fma(sinAngle, y, cosAngle * z);
+//		
+//		return this;
+//	}
+//
+//	public Vec3fC rotateY(float angle)
+//	{
+//		float cosAngle = (float)Math.cos(angle);
+//		float sinAngle = (float)Math.sin(angle);
+//		
+//		float x = this.x;
+//		float z = this.z;
+//
+//		this.x = Math.fma(cosAngle, x, sinAngle * z);
+//		this.z = Math.fma(-sinAngle, x, cosAngle * z);
+//		
+//		return this;
+//	}
+//
+//	public Vec3fC rotateYDeg(float angle)
+//	{
+//		float ang = angle * Maths.DEG_TO_RADf;
+//		float cosAngle = (float)Math.cos(ang);
+//		float sinAngle = (float)Math.sin(ang);
+//		
+//		float x = this.x;
+//		float z = this.z;
+//
+//		this.x = Math.fma(cosAngle, x, sinAngle * z);
+//		this.z = Math.fma(-sinAngle, x, cosAngle * z);
+//		
+//		return this;
+//	}
+//
+//	public Vec3fC rotateZ(float angle)
+//	{
+//		float cosAngle = (float)Math.cos(angle);
+//		float sinAngle = (float)Math.sin(angle);
+//		
+//		float x = this.x;
+//		float y = this.y;
+//
+//		this.x = Math.fma(cosAngle, x, -sinAngle * y);
+//		this.y = Math.fma(sinAngle, x, cosAngle * y);
+//		
+//		return this;
+//	}
+//
+//	public Vec3fC rotateZDeg(float angle)
+//	{
+//		float ang = angle * Maths.DEG_TO_RADf;
+//		float cosAngle = (float)Math.cos(ang);
+//		float sinAngle = (float)Math.sin(ang);
+//		
+//		float x = this.x;
+//		float y = this.y;
+//
+//		this.x = Math.fma(cosAngle, x, -sinAngle * y);
+//		this.y = Math.fma(sinAngle, x, cosAngle * y);
+//		
+//		return this;
+//	}
+//
+//	public Vec3fC rotate(float axisX, float axisY, float axisZ, float angle)
+//	{
+//		// Rodrigues' rotation formula
+//		float cosAngle = (float)Math.cos(angle);
+//		float sinAngle = (float)Math.sin(angle);
+//		float invCosAngle = 1.0f - cosAngle;
+//		float dot = x * axisX + y * axisY + z * axisZ;
+//		
+//		float x = this.x;
+//		float y = this.y;
+//		float z = this.z;
+//		
+//		this.x = cosAngle * x + sinAngle * (axisY * z - axisZ * y) + invCosAngle * dot * axisX;
+//		this.y = cosAngle * y + sinAngle * (axisZ * x - axisX * z) + invCosAngle * dot * axisY;
+//		this.z = cosAngle * z + sinAngle * (axisX * y - axisY * x) + invCosAngle * dot * axisZ;
+//		
+//		return this;
+//	}
+//
+//	public Vec3fC rotateDeg(float axisX, float axisY, float axisZ, float angle)
+//	{
+//		// Rodrigues' rotation formula
+//		float ang = angle * Maths.DEG_TO_RADf;
+//		float cosAngle = (float)Math.cos(ang);
+//		float sinAngle = (float)Math.sin(ang);
+//		float invCosAngle = 1.0f - cosAngle;
+//		float dot = x * axisX + y * axisY + z * axisZ;
+//		
+//		float x = this.x;
+//		float y = this.y;
+//		float z = this.z;
+//		
+//		this.x = cosAngle * x + sinAngle * (axisY * z - axisZ * y) + invCosAngle * dot * axisX;
+//		this.y = cosAngle * y + sinAngle * (axisZ * x - axisX * z) + invCosAngle * dot * axisY;
+//		this.z = cosAngle * z + sinAngle * (axisX * y - axisY * x) + invCosAngle * dot * axisZ;
+//		
+//		return this;
+//	}
+//
+//	public Vec3fC rotate(AxisAngle3fR aa)
+//	{
+//		// Rodrigues' rotation formula
+//		
+//		float angle = aa.getAngle();
+//		float aX = aa.getAxisX();
+//		float aY = aa.getAxisY();
+//		float aZ = aa.getAxisZ();
+//		float cosAngle = (float)Math.cos(angle);
+//		float sinAngle = (float)Math.sin(angle);
+//		float invCosAngle = 1.0f - cosAngle;
+//		float dot = x * aX + y * aY + z * aZ;
+//		
+//		float x = this.x;
+//		float y = this.y;
+//		float z = this.z;
+//		
+//		this.x = cosAngle * x + sinAngle * (aY * z - aZ * y) + invCosAngle * dot * aX;
+//		this.y = cosAngle * y + sinAngle * (aZ * x - aX * z) + invCosAngle * dot * aY;
+//		this.z = cosAngle * z + sinAngle * (aX * y - aY * x) + invCosAngle * dot * aZ;
+//		
+//		return this;
+//	}
+
+
+
+
+//	public static <T extends Tup3WF> T transformMat4(float vX, float vY, float vZ, boolean useW, float[][] m, T res)
+//	{
+//		float x_ = m[0][0] * vX + m[0][1] * vY + m[0][2] * vZ;
+//		float y_ = m[1][0] * vX + m[1][1] * vY + m[1][2] * vZ;
+//		float z_ = m[2][0] * vX + m[2][1] * vY + m[2][2] * vZ;
+//
+//		if(useW)
+//		{
+//			x_ += m[0][3];
+//			y_ += m[1][3];
+//			z_ += m[2][3];
+//		}
+//		
+//		res.set(x_, y_, z_);
+//
+//		return res;
+//	}
+
+//	public static <T extends Tup3WF> T transformQuat(float vX, float vY, float vZ, float qW, float qX, float qY, float qZ, @ExtractionParam T res)
+//	{
+//		float[] conjugate = QuatfUtils.conjugate(qW, qX, qY, qZ, new float[4]);
+//		float[] result = QuatfUtils.mulUnnormalized(qW, qX, qY, qZ, vX, vY, vZ, 0.0f, new float[4]);
+//		result = QuatfUtils.mulUnnormalized(result, conjugate, result);
+//		
+//		res.set(result[1], result[2], result[3]);
+//		
+//		return res;
+//	}

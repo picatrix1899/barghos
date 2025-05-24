@@ -1,7 +1,7 @@
 package org.barghos.util.tuple.ints;
 
 import org.barghos.annotation.ExtractionParam;
-import org.barghos.annotation.Nullable;
+import org.barghos.annotation.AllowNull;
 
 /**
  * This interface provides non-modifying operations for int tuples.
@@ -208,7 +208,7 @@ public interface TupRI
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equals(@Nullable TupRI t);
+	boolean equals(@AllowNull TupRI t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -239,7 +239,7 @@ public interface TupRI
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equals(@Nullable int... t);
+	boolean equals(@AllowNull int... t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -325,7 +325,7 @@ public interface TupRI
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equals(int tolerance, @Nullable int... t);
+	boolean equals(int tolerance, @AllowNull int... t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -362,7 +362,7 @@ public interface TupRI
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAt(int index, @Nullable TupRI t);
+	boolean equalsAt(int index, @AllowNull TupRI t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -399,7 +399,7 @@ public interface TupRI
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAt(int index, @Nullable int... t);
+	boolean equalsAt(int index, @AllowNull int... t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -474,7 +474,7 @@ public interface TupRI
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAt(int tolerance, int index, @Nullable TupRI t);
+	boolean equalsAt(int tolerance, int index, @AllowNull TupRI t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -523,7 +523,7 @@ public interface TupRI
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAt(int tolerance, int index, @Nullable int... t);
+	boolean equalsAt(int tolerance, int index, @AllowNull int... t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and

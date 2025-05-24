@@ -1,7 +1,7 @@
 package org.barghos.util.tuple.doubles;
 
 import org.barghos.annotation.ExtractionParam;
-import org.barghos.annotation.Nullable;
+import org.barghos.annotation.AllowNull;
 
 /**
  * This interface provides non-modifying operations for double tuples.
@@ -240,7 +240,7 @@ public interface TupRD
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equals(@Nullable TupRD t);
+	boolean equals(@AllowNull TupRD t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -271,7 +271,7 @@ public interface TupRD
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equals(@Nullable double... t);
+	boolean equals(@AllowNull double... t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -357,7 +357,7 @@ public interface TupRD
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equals(double tolerance, @Nullable double... t);
+	boolean equals(double tolerance, @AllowNull double... t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -394,7 +394,7 @@ public interface TupRD
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAt(int index, @Nullable TupRD t);
+	boolean equalsAt(int index, @AllowNull TupRD t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -431,7 +431,7 @@ public interface TupRD
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAt(int index, @Nullable double... t);
+	boolean equalsAt(int index, @AllowNull double... t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -506,7 +506,7 @@ public interface TupRD
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAt(double tolerance, int index, @Nullable TupRD t);
+	boolean equalsAt(double tolerance, int index, @AllowNull TupRD t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -555,7 +555,7 @@ public interface TupRD
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAt(double tolerance, int index, @Nullable double... t);
+	boolean equalsAt(double tolerance, int index, @AllowNull double... t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and

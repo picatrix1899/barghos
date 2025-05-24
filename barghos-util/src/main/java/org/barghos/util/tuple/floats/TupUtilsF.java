@@ -1,7 +1,7 @@
 package org.barghos.util.tuple.floats;
 
 import org.barghos.annotation.ExtractionParam;
-import org.barghos.annotation.Nullable;
+import org.barghos.annotation.AllowNull;
 import org.barghos.util.collection.IndexValuePairF;
 import org.barghos.util.math.MathUtils;
 
@@ -34,7 +34,7 @@ public class TupUtilsF
 	 * 
 	 * @return The result array from the extraction parameter with the result.
 	 */
-	public static float[] add(TupRF v1, TupRF v2, @ExtractionParam float[] res)
+	public static float[] add(ITupRF v1, ITupRF v2, @ExtractionParam float[] res)
 	{
 		for(int i = 0; i < res.length; i++)
 		{
@@ -72,7 +72,7 @@ public class TupUtilsF
 	 * 
 	 * @return The result array from the extraction parameter with the result.
 	 */
-	public static float[] add(TupRF v1, float[] v2, @ExtractionParam float[] res)
+	public static float[] add(ITupRF v1, float[] v2, @ExtractionParam float[] res)
 	{
 		for(int i = 0; i < res.length; i++)
 		{
@@ -111,7 +111,7 @@ public class TupUtilsF
 	 * 
 	 * @return The result array from the extraction parameter with the result.
 	 */
-	public static float[] add(float[] v1, TupRF v2, @ExtractionParam float[] res)
+	public static float[] add(float[] v1, ITupRF v2, @ExtractionParam float[] res)
 	{
 		for(int i = 0; i < res.length; i++)
 		{
@@ -178,7 +178,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends TupWF> T add(TupRF v1, TupRF v2, @ExtractionParam T res)
+	public static <T extends ITupWF> T add(ITupRF v1, ITupRF v2, @ExtractionParam T res)
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
@@ -211,7 +211,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends TupWF> T add(TupRF v1, float[] v2, @ExtractionParam T res)
+	public static <T extends ITupWF> T add(ITupRF v1, float[] v2, @ExtractionParam T res)
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
@@ -244,7 +244,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends TupWF> T add(float[] v1, TupRF v2, @ExtractionParam T res)
+	public static <T extends ITupWF> T add(float[] v1, ITupRF v2, @ExtractionParam T res)
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
@@ -278,7 +278,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T add(float[] v1, float[] v2, @ExtractionParam T res)
+	public static <T extends ITup2WF> T add(float[] v1, float[] v2, @ExtractionParam T res)
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
@@ -311,7 +311,7 @@ public class TupUtilsF
 	 * 
 	 * @return The result array from the extraction parameter with the result.
 	 */
-	public static float[] sub(TupRF v1, TupRF v2, @ExtractionParam float[] res)
+	public static float[] sub(ITupRF v1, ITupRF v2, @ExtractionParam float[] res)
 	{
 		for(int i = 0; i < res.length; i++)
 		{
@@ -350,7 +350,7 @@ public class TupUtilsF
 	 * 
 	 * @return The result array from the extraction parameter with the result.
 	 */
-	public static float[] sub(TupRF v1, float[] v2, @ExtractionParam float[] res)
+	public static float[] sub(ITupRF v1, float[] v2, @ExtractionParam float[] res)
 	{
 		for(int i = 0; i < res.length; i++)
 		{
@@ -388,7 +388,7 @@ public class TupUtilsF
 	 * 
 	 * @return The result array from the extraction parameter with the result.
 	 */
-	public static float[] sub(float[] v1, TupRF v2, @ExtractionParam float[] res)
+	public static float[] sub(float[] v1, ITupRF v2, @ExtractionParam float[] res)
 	{
 		for(int i = 0; i < res.length; i++)
 		{
@@ -450,7 +450,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends TupWF> T sub(TupRF v1, TupRF v2, @ExtractionParam T res)
+	public static <T extends ITupWF> T sub(ITupRF v1, ITupRF v2, @ExtractionParam T res)
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
@@ -484,7 +484,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends TupWF> T sub(TupRF v1, float[] v2, @ExtractionParam T res)
+	public static <T extends ITupWF> T sub(ITupRF v1, float[] v2, @ExtractionParam T res)
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
@@ -517,7 +517,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends TupWF> T sub(float[] v1, TupRF v2, @ExtractionParam T res)
+	public static <T extends ITupWF> T sub(float[] v1, ITupRF v2, @ExtractionParam T res)
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
@@ -551,7 +551,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends TupWF> T sub(float[] v1, float[] v2, @ExtractionParam T res)
+	public static <T extends ITupWF> T sub(float[] v1, float[] v2, @ExtractionParam T res)
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
@@ -584,7 +584,7 @@ public class TupUtilsF
 	 * 
 	 * @return The result array from the extraction parameter with the result.
 	 */
-	public static float[] mul(TupRF v1, TupRF v2, @ExtractionParam float[] res)
+	public static float[] mul(ITupRF v1, ITupRF v2, @ExtractionParam float[] res)
 	{
 		for(int i = 0; i < res.length; i++)
 		{
@@ -623,7 +623,7 @@ public class TupUtilsF
 	 * 
 	 * @return The result array from the extraction parameter with the result.
 	 */
-	public static float[] mul(TupRF v1, float[] v2, @ExtractionParam float[] res)
+	public static float[] mul(ITupRF v1, float[] v2, @ExtractionParam float[] res)
 	{
 		for(int i = 0; i < res.length; i++)
 		{
@@ -661,7 +661,7 @@ public class TupUtilsF
 	 * 
 	 * @return The result array from the extraction parameter with the result.
 	 */
-	public static float[] mul(float[] v1, TupRF v2, @ExtractionParam float[] res)
+	public static float[] mul(float[] v1, ITupRF v2, @ExtractionParam float[] res)
 	{
 		for(int i = 0; i < res.length; i++)
 		{
@@ -728,7 +728,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends TupWF> T mul(TupRF v1, TupRF v2, @ExtractionParam T res)
+	public static <T extends ITupWF> T mul(ITupRF v1, ITupRF v2, @ExtractionParam T res)
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
@@ -762,7 +762,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends TupWF> T mul(TupRF v1, float[] v2, @ExtractionParam T res)
+	public static <T extends ITupWF> T mul(ITupRF v1, float[] v2, @ExtractionParam T res)
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
@@ -795,7 +795,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends TupWF> T mul(float[] v1, TupRF v2, @ExtractionParam T res)
+	public static <T extends ITupWF> T mul(float[] v1, ITupRF v2, @ExtractionParam T res)
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
@@ -829,7 +829,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends TupWF> T mul(float[] v1, float[] v2, @ExtractionParam T res)
+	public static <T extends ITupWF> T mul(float[] v1, float[] v2, @ExtractionParam T res)
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
@@ -856,7 +856,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] div(TupRF v1, TupRF v2, @ExtractionParam float[] res)
+	public static float[] div(ITupRF v1, ITupRF v2, @ExtractionParam float[] res)
 	{
 		for(int i = 0; i < res.length; i++)
 		{
@@ -883,7 +883,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] div(TupRF v1, float[] v2, @ExtractionParam float[] res)
+	public static float[] div(ITupRF v1, float[] v2, @ExtractionParam float[] res)
 	{
 		for(int i = 0; i < res.length; i++)
 		{
@@ -910,7 +910,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] div(float[] v1, TupRF v2, @ExtractionParam float[] res)
+	public static float[] div(float[] v1, ITupRF v2, @ExtractionParam float[] res)
 	{
 		for(int i = 0; i < res.length; i++)
 		{
@@ -967,7 +967,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends TupWF> T div(TupRF v1, TupRF v2, @ExtractionParam T res)
+	public static <T extends ITupWF> T div(ITupRF v1, ITupRF v2, @ExtractionParam T res)
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
@@ -997,7 +997,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends TupWF> T div(TupRF v1, float[] v2, @ExtractionParam T res)
+	public static <T extends ITupWF> T div(ITupRF v1, float[] v2, @ExtractionParam T res)
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
@@ -1027,7 +1027,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends TupWF> T div(float[] v1, TupRF v2, @ExtractionParam T res)
+	public static <T extends ITupWF> T div(float[] v1, ITupRF v2, @ExtractionParam T res)
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
@@ -1057,7 +1057,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends TupWF> T div(float[] v1, float[] v2, @ExtractionParam T res)
+	public static <T extends ITupWF> T div(float[] v1, float[] v2, @ExtractionParam T res)
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
@@ -1096,7 +1096,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] fma(TupRF v1, TupRF v2, TupRF v3, @ExtractionParam float[] res)
+	public static float[] fma(ITupRF v1, ITupRF v2, ITupRF v3, @ExtractionParam float[] res)
 	{
 		for(int i = 0; i < res.length; i++)
 		{
@@ -1135,7 +1135,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] fma(TupRF v1, TupRF v2, float[] v3, @ExtractionParam float[] res)
+	public static float[] fma(ITupRF v1, ITupRF v2, float[] v3, @ExtractionParam float[] res)
 	{
 		for(int i = 0; i < res.length; i++)
 		{
@@ -1174,7 +1174,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] fma(TupRF v1, float[] v2, TupRF v3, @ExtractionParam float[] res)
+	public static float[] fma(ITupRF v1, float[] v2, ITupRF v3, @ExtractionParam float[] res)
 	{
 		for(int i = 0; i < res.length; i++)
 		{
@@ -1213,7 +1213,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] fma(TupRF v1, float[] v2, float[] v3, @ExtractionParam float[] res)
+	public static float[] fma(ITupRF v1, float[] v2, float[] v3, @ExtractionParam float[] res)
 	{
 		for(int i = 0; i < res.length; i++)
 		{
@@ -1252,7 +1252,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] fma(float[] v1, TupRF v2, TupRF v3, @ExtractionParam float[] res)
+	public static float[] fma(float[] v1, ITupRF v2, ITupRF v3, @ExtractionParam float[] res)
 	{
 		for(int i = 0; i < res.length; i++)
 		{
@@ -1291,7 +1291,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] fma(float[] v1, TupRF v2, float[] v3, @ExtractionParam float[] res)
+	public static float[] fma(float[] v1, ITupRF v2, float[] v3, @ExtractionParam float[] res)
 	{
 		for(int i = 0; i < res.length; i++)
 		{
@@ -1330,7 +1330,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] fma(float[] v1, float[] v2, TupRF v3, @ExtractionParam float[] res)
+	public static float[] fma(float[] v1, float[] v2, ITupRF v3, @ExtractionParam float[] res)
 	{
 		for(int i = 0; i < res.length; i++)
 		{
@@ -1411,7 +1411,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends TupWF> T fma(TupRF v1, TupRF v2, TupRF v3, @ExtractionParam T res)
+	public static <T extends ITupWF> T fma(ITupRF v1, ITupRF v2, ITupRF v3, @ExtractionParam T res)
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
@@ -1453,7 +1453,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends TupWF> T fma(TupRF v1, TupRF v2, float[] v3, @ExtractionParam T res)
+	public static <T extends ITupWF> T fma(ITupRF v1, ITupRF v2, float[] v3, @ExtractionParam T res)
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
@@ -1495,7 +1495,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends TupWF> T fma(TupRF v1, float[] v2, TupRF v3, @ExtractionParam T res)
+	public static <T extends ITupWF> T fma(ITupRF v1, float[] v2, ITupRF v3, @ExtractionParam T res)
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
@@ -1537,7 +1537,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends TupWF> T fma(TupRF v1, float[] v2, float[] v3, @ExtractionParam T res)
+	public static <T extends ITupWF> T fma(ITupRF v1, float[] v2, float[] v3, @ExtractionParam T res)
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
@@ -1579,7 +1579,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends TupWF> T fma(float[] v1, TupRF v2, TupRF v3, @ExtractionParam T res)
+	public static <T extends ITupWF> T fma(float[] v1, ITupRF v2, ITupRF v3, @ExtractionParam T res)
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
@@ -1621,7 +1621,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T fma(float[] v1, TupRF v2, float[] v3, @ExtractionParam T res)
+	public static <T extends ITup2WF> T fma(float[] v1, ITupRF v2, float[] v3, @ExtractionParam T res)
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
@@ -1663,7 +1663,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T fma(float[] v1, float[] v2, TupRF v3, @ExtractionParam T res)
+	public static <T extends ITup2WF> T fma(float[] v1, float[] v2, ITupRF v3, @ExtractionParam T res)
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
@@ -1705,7 +1705,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T fma(float[] v1, float[] v2, float[] v3, @ExtractionParam T res)
+	public static <T extends ITup2WF> T fma(float[] v1, float[] v2, float[] v3, @ExtractionParam T res)
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
@@ -1732,7 +1732,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] min(TupRF v1, TupRF v2, @ExtractionParam float[] res)
+	public static float[] min(ITupRF v1, ITupRF v2, @ExtractionParam float[] res)
 	{
 		for(int i = 0; i < res.length; i++)
 		{
@@ -1759,7 +1759,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] min(TupRF v1, float[] v2, @ExtractionParam float[] res)
+	public static float[] min(ITupRF v1, float[] v2, @ExtractionParam float[] res)
 	{
 		for(int i = 0; i < res.length; i++)
 		{
@@ -1786,7 +1786,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] min(float[] v1, TupRF v2, @ExtractionParam float[] res)
+	public static float[] min(float[] v1, ITupRF v2, @ExtractionParam float[] res)
 	{
 		for(int i = 0; i < res.length; i++)
 		{
@@ -1843,7 +1843,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends TupWF> T min(TupRF v1, TupRF v2, @ExtractionParam T res)
+	public static <T extends ITupWF> T min(ITupRF v1, ITupRF v2, @ExtractionParam T res)
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
@@ -1873,7 +1873,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends TupWF> T min(TupRF v1, float[] v2, @ExtractionParam T res)
+	public static <T extends ITupWF> T min(ITupRF v1, float[] v2, @ExtractionParam T res)
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
@@ -1903,7 +1903,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends TupWF> T min(float[] v1, TupRF v2, @ExtractionParam T res)
+	public static <T extends ITupWF> T min(float[] v1, ITupRF v2, @ExtractionParam T res)
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
@@ -1933,7 +1933,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends TupWF> T min(float[] v1, float[] v2, @ExtractionParam T res)
+	public static <T extends ITupWF> T min(float[] v1, float[] v2, @ExtractionParam T res)
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
@@ -1960,7 +1960,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] max(TupRF v1, TupRF v2, @ExtractionParam float[] res)
+	public static float[] max(ITupRF v1, ITupRF v2, @ExtractionParam float[] res)
 	{
 		for(int i = 0; i < res.length; i++)
 		{
@@ -1987,7 +1987,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] max(TupRF v1, float[] v2, @ExtractionParam float[] res)
+	public static float[] max(ITupRF v1, float[] v2, @ExtractionParam float[] res)
 	{
 		for(int i = 0; i < res.length; i++)
 		{
@@ -2014,7 +2014,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] max(float[] v1, TupRF v2, @ExtractionParam float[] res)
+	public static float[] max(float[] v1, ITupRF v2, @ExtractionParam float[] res)
 	{
 		for(int i = 0; i < res.length; i++)
 		{
@@ -2071,7 +2071,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends TupWF> T max(TupRF v1, TupRF v2, @ExtractionParam T res)
+	public static <T extends ITupWF> T max(ITupRF v1, ITupRF v2, @ExtractionParam T res)
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
@@ -2101,7 +2101,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends TupWF> T max(TupRF v1, float[] v2, @ExtractionParam T res)
+	public static <T extends ITupWF> T max(ITupRF v1, float[] v2, @ExtractionParam T res)
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
@@ -2131,7 +2131,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends TupWF> T max(float[] v1, TupRF v2, @ExtractionParam T res)
+	public static <T extends ITupWF> T max(float[] v1, ITupRF v2, @ExtractionParam T res)
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
@@ -2161,7 +2161,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends Tup2WF> T max(float[] v1, float[] v2, @ExtractionParam T res)
+	public static <T extends ITupWF> T max(float[] v1, float[] v2, @ExtractionParam T res)
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
@@ -2186,7 +2186,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static IndexValuePairF minEntry(TupRF v, @ExtractionParam IndexValuePairF res)
+	public static IndexValuePairF minEntry(ITupRF v, @ExtractionParam IndexValuePairF res)
 	{
 		float minValue = Float.MAX_VALUE;
 		int minIndex = -1;
@@ -2251,7 +2251,7 @@ public class TupUtilsF
 	 * 
 	 * @return The smallest value of the components.
 	 */
-	public static float minValue(TupRF v)
+	public static float minValue(ITupRF v)
 	{
 		float minValue = Float.MAX_VALUE;
 		
@@ -2307,7 +2307,7 @@ public class TupUtilsF
 	 * 
 	 * @return The index of the smallest component.
 	 */
-	public static int minComponent(TupRF v)
+	public static int minComponent(ITupRF v)
 	{
 		float minValue = Float.MAX_VALUE;
 		int minIndex = -1;
@@ -2373,7 +2373,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static IndexValuePairF maxEntry(TupRF v, @ExtractionParam IndexValuePairF res)
+	public static IndexValuePairF maxEntry(ITupRF v, @ExtractionParam IndexValuePairF res)
 	{
 		float maxValue = Float.MIN_VALUE;
 		int maxIndex = -1;
@@ -2438,7 +2438,7 @@ public class TupUtilsF
 	 * 
 	 * @return The greatest value of the components.
 	 */
-	public static float maxValue(TupRF v)
+	public static float maxValue(ITupRF v)
 	{
 		float maxValue = Float.MIN_VALUE;
 		
@@ -2494,7 +2494,7 @@ public class TupUtilsF
 	 * 
 	 * @return The index of the greatest component.
 	 */
-	public static int maxComponent(TupRF v)
+	public static int maxComponent(ITupRF v)
 	{
 		float maxValue = Float.MIN_VALUE;
 		int maxIndex = -1;
@@ -2556,7 +2556,7 @@ public class TupUtilsF
 //	 * 
 //	 * @return The extraction parameter with the result.
 //	 */
-//	public static float[] ceil(TupRF v, @ExtractionParam float[] res)
+//	public static float[] ceil(ITupRF v, @ExtractionParam float[] res)
 //	{
 //		for(int i = 0; i < res.length; i++)
 //		{
@@ -2601,7 +2601,7 @@ public class TupUtilsF
 //	 * 
 //	 * @return The extraction parameter object with the result.
 //	 */
-//	public static <T extends TupWF> T ceil(TupRF v, @ExtractionParam T res)
+//	public static <T extends ITupWF> T ceil(ITupRF v, @ExtractionParam T res)
 //	{
 //		for(int i = 0; i < res.size(); i++)
 //		{
@@ -2625,7 +2625,7 @@ public class TupUtilsF
 //	 * 
 //	 * @return The extraction parameter object with the result.
 //	 */
-//	public static <T extends TupWF> T ceil(float[] v, @ExtractionParam T res)
+//	public static <T extends ITupWF> T ceil(float[] v, @ExtractionParam T res)
 //	{
 //		for(int i = 0; i < res.size(); i++)
 //		{
@@ -2646,7 +2646,7 @@ public class TupUtilsF
 //	 * 
 //	 * @return The extraction parameter with the result.
 //	 */
-//	public static float[] floor(TupRF v, @ExtractionParam float[] res)
+//	public static float[] floor(ITupRF v, @ExtractionParam float[] res)
 //	{
 //		for(int i = 0; i < res.length; i++)
 //		{
@@ -2691,7 +2691,7 @@ public class TupUtilsF
 //	 * 
 //	 * @return The extraction parameter object with the result.
 //	 */
-//	public static <T extends TupWF> T floor(TupRF v, @ExtractionParam T res)
+//	public static <T extends ITupWF> T floor(ITupRF v, @ExtractionParam T res)
 //	{
 //		for(int i = 0; i < res.size(); i++)
 //		{
@@ -2715,7 +2715,7 @@ public class TupUtilsF
 //	 * 
 //	 * @return The extraction parameter object with the result.
 //	 */
-//	public static <T extends TupWF> T floor(float[] v, @ExtractionParam T res)
+//	public static <T extends ITupWF> T floor(float[] v, @ExtractionParam T res)
 //	{
 //		for(int i = 0; i < res.size(); i++)
 //		{
@@ -2736,7 +2736,7 @@ public class TupUtilsF
 //	 * 
 //	 * @return The extraction parameter with the result.
 //	 */
-//	public static float[] round(TupRF v, @ExtractionParam float[] res)
+//	public static float[] round(ITupRF v, @ExtractionParam float[] res)
 //	{
 //		for(int i = 0; i < res.length; i++)
 //		{
@@ -2781,7 +2781,7 @@ public class TupUtilsF
 //	 * 
 //	 * @return The extraction parameter object with the result.
 //	 */
-//	public static <T extends TupWF> T round(TupRF v, @ExtractionParam T res)
+//	public static <T extends ITupWF> T round(ITupRF v, @ExtractionParam T res)
 //	{
 //		for(int i = 0; i < res.size(); i++)
 //		{
@@ -2805,7 +2805,7 @@ public class TupUtilsF
 //	 * 
 //	 * @return The extraction parameter object with the result.
 //	 */
-//	public static <T extends TupWF> T round(float[] v, @ExtractionParam T res)
+//	public static <T extends ITupWF> T round(float[] v, @ExtractionParam T res)
 //	{
 //		for(int i = 0; i < res.size(); i++)
 //		{
@@ -2826,7 +2826,7 @@ public class TupUtilsF
 //	 * 
 //	 * @return The extraction parameter with the result.
 //	 */
-//	public static float[] round(TupRF v, RoundMethodF method, @ExtractionParam float[] res)
+//	public static float[] round(ITupRF v, RoundMethodF method, @ExtractionParam float[] res)
 //	{
 //		for(int i = 0; i < res.length; i++)
 //		{
@@ -2871,7 +2871,7 @@ public class TupUtilsF
 //	 * 
 //	 * @return The extraction parameter object with the result.
 //	 */
-//	public static <T extends TupWF> T round(TupRF v, RoundMethodF method, @ExtractionParam T res)
+//	public static <T extends ITupWF> T round(ITupRF v, RoundMethodF method, @ExtractionParam T res)
 //	{
 //		for(int i = 0; i < res.size(); i++)
 //		{
@@ -2895,7 +2895,7 @@ public class TupUtilsF
 //	 * 
 //	 * @return The extraction parameter object with the result.
 //	 */
-//	public static <T extends TupWF> T round(float[] v, RoundMethodF method, @ExtractionParam T res)
+//	public static <T extends ITupWF> T round(float[] v, RoundMethodF method, @ExtractionParam T res)
 //	{
 //		for(int i = 0; i < res.size(); i++)
 //		{
@@ -2916,7 +2916,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] trunc(TupRF v, @ExtractionParam float[] res)
+	public static float[] trunc(ITupRF v, @ExtractionParam float[] res)
 	{
 		for(int i = 0; i < res.length; i++)
 		{
@@ -2961,7 +2961,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends TupWF> T trunc(TupRF v, @ExtractionParam T res)
+	public static <T extends ITupWF> T trunc(ITupRF v, @ExtractionParam T res)
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
@@ -2985,7 +2985,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends TupWF> T trunc(float[] v, @ExtractionParam T res)
+	public static <T extends ITupWF> T trunc(float[] v, @ExtractionParam T res)
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
@@ -3006,7 +3006,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] abs(TupRF v, @ExtractionParam float[] res)
+	public static float[] abs(ITupRF v, @ExtractionParam float[] res)
 	{
 		for(int i = 0; i < res.length; i++)
 		{
@@ -3051,7 +3051,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends TupWF> T abs(TupRF v, @ExtractionParam T res)
+	public static <T extends ITupWF> T abs(ITupRF v, @ExtractionParam T res)
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
@@ -3075,7 +3075,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends TupWF> T abs(float[] v, @ExtractionParam T res)
+	public static <T extends ITupWF> T abs(float[] v, @ExtractionParam T res)
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
@@ -3096,7 +3096,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] sign(TupRF v, @ExtractionParam float[] res)
+	public static float[] sign(ITupRF v, @ExtractionParam float[] res)
 	{
 		for(int i = 0; i < res.length; i++)
 		{
@@ -3141,7 +3141,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends TupWF> T sign(TupRF v, @ExtractionParam T res)
+	public static <T extends ITupWF> T sign(ITupRF v, @ExtractionParam T res)
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
@@ -3165,7 +3165,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends TupWF> T sign(float[] v, @ExtractionParam T res)
+	public static <T extends ITupWF> T sign(float[] v, @ExtractionParam T res)
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
@@ -3188,7 +3188,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] neg(TupRF v, @ExtractionParam float[] res)
+	public static float[] neg(ITupRF v, @ExtractionParam float[] res)
 	{
 		for(int i = 0; i < res.length; i++)
 		{
@@ -3238,7 +3238,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends TupWF> T neg(TupRF v, @ExtractionParam T res)
+	public static <T extends ITupWF> T neg(ITupRF v, @ExtractionParam T res)
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
@@ -3265,7 +3265,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends TupWF> T neg(float[] v, @ExtractionParam T res)
+	public static <T extends ITupWF> T neg(float[] v, @ExtractionParam T res)
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
@@ -3288,7 +3288,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter with the result.
 	 */
-	public static float[] inv(TupRF v, @ExtractionParam float[] res)
+	public static float[] inv(ITupRF v, @ExtractionParam float[] res)
 	{
 		for(int i = 0; i < res.length; i++)
 		{
@@ -3339,7 +3339,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends TupWF> T inv(TupRF v, @ExtractionParam T res)
+	public static <T extends ITupWF> T inv(ITupRF v, @ExtractionParam T res)
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
@@ -3366,7 +3366,7 @@ public class TupUtilsF
 	 * 
 	 * @return The extraction parameter object with the result.
 	 */
-	public static <T extends TupWF> T inv(float[] v, @ExtractionParam T res)
+	public static <T extends ITupWF> T inv(float[] v, @ExtractionParam T res)
 	{
 		for(int i = 0; i < res.size(); i++)
 		{
@@ -3405,7 +3405,7 @@ public class TupUtilsF
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	public static boolean equals(@Nullable TupRF t1, @Nullable TupRF t2)
+	public static boolean equals(@AllowNull ITupRF t1, @AllowNull ITupRF t2)
 	{
 		if(t1 == t2) return true;
 		if(t1 == null) return false;
@@ -3449,7 +3449,7 @@ public class TupUtilsF
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	public static boolean equals(@Nullable TupRF t1, @Nullable float... t2)
+	public static boolean equals(@AllowNull ITupRF t1, @AllowNull float... t2)
 	{
 		if(t1 == null) return false;
 		if(t2 == null) return false;
@@ -3492,7 +3492,7 @@ public class TupUtilsF
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	public static boolean equals(@Nullable float[] t1, @Nullable float... t2)
+	public static boolean equals(@AllowNull float[] t1, @AllowNull float... t2)
 	{
 		if(t1 == null) return false;
 		if(t2 == null) return false;
@@ -3527,7 +3527,7 @@ public class TupUtilsF
 	 * 
 	 * <p>
 	 * The minimum allowed tolerance is 0.0f. A tolerance of 0.0f behaves like
-	 * {@link #equals(TupRF)}.
+	 * {@link #equals(ITupRF)}.
 	 * 
 	 * <p>
 	 * <b>Formula:</b>
@@ -3547,7 +3547,7 @@ public class TupUtilsF
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	public static boolean equals(float tolerance, @Nullable TupRF t1, @Nullable TupRF t2)
+	public static boolean equals(float tolerance, @AllowNull ITupRF t1, @AllowNull ITupRF t2)
 	{
 		if(t1 == t2) return true;
 		if(t1 == null) return false;
@@ -3603,7 +3603,7 @@ public class TupUtilsF
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	public static boolean equals(float tolerance, @Nullable TupRF t1, @Nullable float... t2)
+	public static boolean equals(float tolerance, @AllowNull ITupRF t1, @AllowNull float... t2)
 	{
 		if(t1 == null) return false;
 		if(t2 == null) return false;
@@ -3658,7 +3658,7 @@ public class TupUtilsF
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	public static boolean equals(float tolerance, @Nullable float[] t1, @Nullable float... t2)
+	public static boolean equals(float tolerance, @AllowNull float[] t1, @AllowNull float... t2)
 	{
 		if(t1 == null) return false;
 		if(t2 == null) return false;
@@ -3707,7 +3707,7 @@ public class TupUtilsF
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	public static boolean equalsAt(int index, @Nullable TupRF t1, @Nullable TupRF t2)
+	public static boolean equalsAt(int index, @AllowNull ITupRF t1, @AllowNull ITupRF t2)
 	{
 		if(t1 == t2) return true;
 		if(t1 == null) return false;
@@ -3753,7 +3753,7 @@ public class TupUtilsF
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	public static boolean equalsAt(int index, @Nullable TupRF t1, @Nullable float... t2)
+	public static boolean equalsAt(int index, @AllowNull ITupRF t1, @AllowNull float... t2)
 	{
 		if(t1 == null) return false;
 		if(t2 == null) return false;
@@ -3798,7 +3798,7 @@ public class TupUtilsF
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	public static boolean equalsAt(int index, @Nullable float[] t1, @Nullable float... t2)
+	public static boolean equalsAt(int index, @AllowNull float[] t1, @AllowNull float... t2)
 	{
 		if(t1 == null) return false;
 		if(t2 == null) return false;
@@ -3832,7 +3832,7 @@ public class TupUtilsF
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	public static boolean equalsAt(int index, @Nullable TupRF t, float value)
+	public static boolean equalsAt(int index, @AllowNull ITupRF t, float value)
 	{
 		if(t == null) return false;
 		if(t.size() <= index) return false;
@@ -3864,7 +3864,7 @@ public class TupUtilsF
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	public static boolean equalsAt(int index, @Nullable float[] t, float value)
+	public static boolean equalsAt(int index, @AllowNull float[] t, float value)
 	{
 		if(t == null) return false;
 		if(t.length <= index) return false;
@@ -3893,7 +3893,7 @@ public class TupUtilsF
 	 * 
 	 * <p>
 	 * The minimum allowed tolerance is 0.0f. A tolerance of 0.0f behaves like
-	 * {@link #equalsAt(int, TupRF)}.
+	 * {@link #equalsAt(int, ITupRF)}.
 	 * 
 	 * <p>
 	 * The valid index range is from 0 to {@link #size()} - 1.
@@ -3919,7 +3919,7 @@ public class TupUtilsF
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	public static boolean equalsAt(float tolerance, int index, @Nullable TupRF t1, @Nullable TupRF t2)
+	public static boolean equalsAt(float tolerance, int index, @AllowNull ITupRF t1, @AllowNull ITupRF t2)
 	{
 		if(t1 == t2) return true;
 		if(t1 == null) return false;
@@ -3977,7 +3977,7 @@ public class TupUtilsF
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	public static boolean equalsAt(float tolerance, int index, @Nullable TupRF t1, @Nullable float... t2)
+	public static boolean equalsAt(float tolerance, int index, @AllowNull ITupRF t1, @AllowNull float... t2)
 	{
 		if(t1 == null) return false;
 		if(t2 == null) return false;
@@ -4034,7 +4034,7 @@ public class TupUtilsF
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	public static boolean equalsAt(float tolerance, int index, @Nullable float[] t1, @Nullable float... t2)
+	public static boolean equalsAt(float tolerance, int index, @AllowNull float[] t1, @AllowNull float... t2)
 	{
 		if(t1 == null) return false;
 		if(t2 == null) return false;
@@ -4080,7 +4080,7 @@ public class TupUtilsF
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	public static boolean equalsAt(float tolerance, int index, @Nullable TupRF t, float value)
+	public static boolean equalsAt(float tolerance, int index, @AllowNull ITupRF t, float value)
 	{
 		if(t == null) return false;
 		if(t.size() <= index) return false;
@@ -4124,7 +4124,7 @@ public class TupUtilsF
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	public static boolean equalsAt(float tolerance, int index, @Nullable float[] t, float value)
+	public static boolean equalsAt(float tolerance, int index, @AllowNull float[] t, float value)
 	{
 		if(t == null) return false;
 		if(t.length <= index) return false;

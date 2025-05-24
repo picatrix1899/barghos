@@ -1,7 +1,7 @@
 package org.barghos.util.tuple.shorts;
 
 import org.barghos.annotation.ExtractionParam;
-import org.barghos.annotation.Nullable;
+import org.barghos.annotation.AllowNull;
 
 /**
  * This interface provides non-modifying operations for short tuples.
@@ -208,7 +208,7 @@ public interface TupRS
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equals(@Nullable TupRS t);
+	boolean equals(@AllowNull TupRS t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -239,7 +239,7 @@ public interface TupRS
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equals(@Nullable short... t);
+	boolean equals(@AllowNull short... t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -325,7 +325,7 @@ public interface TupRS
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equals(short tolerance, @Nullable short... t);
+	boolean equals(short tolerance, @AllowNull short... t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -362,7 +362,7 @@ public interface TupRS
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAt(int index, @Nullable TupRS t);
+	boolean equalsAt(int index, @AllowNull TupRS t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -399,7 +399,7 @@ public interface TupRS
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAt(int index, @Nullable short... t);
+	boolean equalsAt(int index, @AllowNull short... t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -474,7 +474,7 @@ public interface TupRS
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAt(short tolerance, int index, @Nullable TupRS t);
+	boolean equalsAt(short tolerance, int index, @AllowNull TupRS t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -523,7 +523,7 @@ public interface TupRS
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAt(short tolerance, int index, @Nullable short... t);
+	boolean equalsAt(short tolerance, int index, @AllowNull short... t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and

@@ -60,13 +60,6 @@ public interface ConsumerEx<A>
 		return (a) -> { accept(a); after.accept(a); };
 	}
 	
-	default ConsumerEx<A> then(java.util.function.Consumer<? super A> after)
-	{
-		Validate.Arg.checkNotNull("after", after);
-		
-		return (a) -> { accept(a); after.accept(a); };
-	}
-	
 	/**
 	 * Performs the given operation before this operation.
 	 * 
@@ -83,13 +76,6 @@ public interface ConsumerEx<A>
 	}
 	
 	default ConsumerEx<A> before(Consumer<? super A> before)
-	{
-		Validate.Arg.checkNotNull("before", before);
-		
-		return (a) -> { before.accept(a); accept(a); };
-	}
-	
-	default ConsumerEx<A> before(java.util.function.Consumer<? super A> before)
 	{
 		Validate.Arg.checkNotNull("before", before);
 		
@@ -168,22 +154,6 @@ public interface ConsumerEx<A>
 	 * @return A new {@link Consumer} performing the operations.
 	 */
 	default Consumer<A> onEx(Consumer<? super A> consumer)
-	{
-		Validate.Arg.checkNotNull("consumer", consumer);
-		
-		return (a) -> {
-			try
-			{
-				accept(a);
-			}
-			catch(Exception e)
-			{
-				consumer.accept(a);
-			}
-		};
-	}
-	
-	default Consumer<A> onEx(java.util.function.Consumer<? super A> consumer)
 	{
 		Validate.Arg.checkNotNull("consumer", consumer);
 		

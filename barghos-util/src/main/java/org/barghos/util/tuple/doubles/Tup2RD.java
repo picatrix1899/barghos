@@ -1,7 +1,7 @@
 package org.barghos.util.tuple.doubles;
 
 import org.barghos.annotation.ExtractionParam;
-import org.barghos.annotation.Nullable;
+import org.barghos.annotation.AllowNull;
 
 /**
  * This interface provides non-modifying operations for double tuples with 
@@ -419,7 +419,7 @@ public interface Tup2RD extends FixTupRD
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equals(@Nullable Tup2RD t);
+	boolean equals(@AllowNull Tup2RD t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -452,7 +452,7 @@ public interface Tup2RD extends FixTupRD
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equals(@Nullable TupRD t);
+	boolean equals(@AllowNull TupRD t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -485,7 +485,7 @@ public interface Tup2RD extends FixTupRD
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equals(@Nullable double... t);
+	boolean equals(@AllowNull double... t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -551,7 +551,7 @@ public interface Tup2RD extends FixTupRD
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equals(double tolerance, @Nullable Tup2RD t);
+	boolean equals(double tolerance, @AllowNull Tup2RD t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -596,7 +596,7 @@ public interface Tup2RD extends FixTupRD
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equals(double tolerance, @Nullable TupRD t);
+	boolean equals(double tolerance, @AllowNull TupRD t);
 
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -641,7 +641,7 @@ public interface Tup2RD extends FixTupRD
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equals(double tolerance, @Nullable double... t);
+	boolean equals(double tolerance, @AllowNull double... t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -717,7 +717,7 @@ public interface Tup2RD extends FixTupRD
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAt(int index, @Nullable Tup2RD t);
+	boolean equalsAt(int index, @AllowNull Tup2RD t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -761,7 +761,7 @@ public interface Tup2RD extends FixTupRD
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equalsAt(int index, @Nullable TupRD t);
+	boolean equalsAt(int index, @AllowNull TupRD t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -805,7 +805,7 @@ public interface Tup2RD extends FixTupRD
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equalsAt(int index, @Nullable double... t);
+	boolean equalsAt(int index, @AllowNull double... t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -891,7 +891,7 @@ public interface Tup2RD extends FixTupRD
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAt(double tolerance, int index, @Nullable Tup2RD t);
+	boolean equalsAt(double tolerance, int index, @AllowNull Tup2RD t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -947,7 +947,7 @@ public interface Tup2RD extends FixTupRD
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equalsAt(double tolerance, int index, @Nullable TupRD t);
+	boolean equalsAt(double tolerance, int index, @AllowNull TupRD t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -1003,7 +1003,7 @@ public interface Tup2RD extends FixTupRD
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equalsAt(double tolerance, int index, @Nullable double... t);
+	boolean equalsAt(double tolerance, int index, @AllowNull double... t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -1077,7 +1077,7 @@ public interface Tup2RD extends FixTupRD
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(@Nullable Tup2RD t);
+	boolean equalsAtV0(@AllowNull Tup2RD t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and
@@ -1108,7 +1108,7 @@ public interface Tup2RD extends FixTupRD
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(@Nullable TupRD t);
+	boolean equalsAtV0(@AllowNull TupRD t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and
@@ -1139,7 +1139,7 @@ public interface Tup2RD extends FixTupRD
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(@Nullable double... t);
+	boolean equalsAtV0(@AllowNull double... t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and
@@ -1189,7 +1189,7 @@ public interface Tup2RD extends FixTupRD
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(@Nullable Tup2RD t);
+	boolean equalsAtV1(@AllowNull Tup2RD t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and
@@ -1220,7 +1220,7 @@ public interface Tup2RD extends FixTupRD
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(@Nullable TupRD t);
+	boolean equalsAtV1(@AllowNull TupRD t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and
@@ -1251,7 +1251,7 @@ public interface Tup2RD extends FixTupRD
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(@Nullable double... t);
+	boolean equalsAtV1(@AllowNull double... t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and
@@ -1314,7 +1314,7 @@ public interface Tup2RD extends FixTupRD
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(double tolerance, @Nullable Tup2RD t);
+	boolean equalsAtV0(double tolerance, @AllowNull Tup2RD t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and of the given
@@ -1358,7 +1358,7 @@ public interface Tup2RD extends FixTupRD
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(double tolerance, @Nullable TupRD t);
+	boolean equalsAtV0(double tolerance, @AllowNull TupRD t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and of the given
@@ -1402,7 +1402,7 @@ public interface Tup2RD extends FixTupRD
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(double tolerance, @Nullable double... t);
+	boolean equalsAtV0(double tolerance, @AllowNull double... t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and the given
@@ -1477,7 +1477,7 @@ public interface Tup2RD extends FixTupRD
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(double tolerance, @Nullable Tup2RD t);
+	boolean equalsAtV1(double tolerance, @AllowNull Tup2RD t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and of the given
@@ -1521,7 +1521,7 @@ public interface Tup2RD extends FixTupRD
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(double tolerance, @Nullable TupRD t);
+	boolean equalsAtV1(double tolerance, @AllowNull TupRD t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and of the given
@@ -1565,7 +1565,7 @@ public interface Tup2RD extends FixTupRD
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(double tolerance, @Nullable double... t);
+	boolean equalsAtV1(double tolerance, @AllowNull double... t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and the given

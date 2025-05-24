@@ -1,47 +1,45 @@
 package org.barghos.util.nullable.shorts;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-import org.barghos.util.nullable.NullableR;
+import org.barghos.annotation.AllowNull;
 
-public class NullableS implements NullableWS
+public class NullableS implements INullableWS, Serializable
 {
-	public short value;
-	public boolean hasValue;
+	private static final long serialVersionUID = 1L;
+	
+	private short value;
+	private boolean hasValue;
 	
 	public NullableS()
 	{
 		setNull();
 	}
 	
-	public NullableS(NullableRS value)
+	public NullableS(@AllowNull INullableRS value)
 	{
 		set(value);
 	}
-	
-	public NullableS(NullableR<Short> value)
-	{
-		set(value);
-	}
-	
+
 	public NullableS(short value)
 	{
-		valueS(value);
+		value(value);
 	}
 	
-	public NullableS(Short value)
+	public NullableS(@AllowNull Short value)
 	{
 		value(value);
 	}
 	
 	@Override
-	public short valueS()
+	public short value()
 	{
 		return this.value;
 	}
 
 	@Override
-	public short valueOrDefaultS(short def)
+	public short valueOrDefault(short def)
 	{
 		if(this.hasValue) return this.value;
 		
@@ -49,33 +47,11 @@ public class NullableS implements NullableWS
 	}
 	
 	@Override
-	public short valueOrDefaultS()
+	public short valueOrDefault()
 	{
 		if(this.hasValue) return this.value;
 		
-		return (short)0;
-	}
-	
-	@Override
-	public Short value()
-	{
-		return this.value;
-	}
-	
-	@Override
-	public Short valueOrDefault(Short def)
-	{
-		if(this.hasValue) return this.value;
-		
-		return def;
-	}
-	
-	@Override
-	public Short valueOrDefault()
-	{
-		if(this.hasValue) return this.value;
-		
-		return (short)0;
+		return 0;
 	}
 	
 	@Override
@@ -91,7 +67,7 @@ public class NullableS implements NullableWS
 	}
 	
 	@Override
-	public NullableS valueS(short value)
+	public NullableS value(short value)
 	{
 		this.value = value;
 		this.hasValue = true;
@@ -100,32 +76,23 @@ public class NullableS implements NullableWS
 	}
 
 	@Override
-	public NullableS value(Short value)
+	public NullableS value(@AllowNull Short value)
 	{
-		this.value = value;
-		this.hasValue = true;
-		
+		this.hasValue = value != null;
+		this.value = this.hasValue ? value : 0;
+
 		return this;
 	}
 	
 	@Override
-	public NullableS set(NullableRS value)
+	public NullableS set(@AllowNull INullableRS value)
 	{
-		this.hasValue = value.isNotNull();
-		if(this.hasValue) this.value = value.valueS();
+		this.hasValue = value != null && value.isNotNull();
+		this.value = this.hasValue ? value.value() : 0;
 		
 		return this;
 	}
-	
-	@Override
-	public NullableS set(NullableR<Short> value)
-	{
-		this.hasValue = value.isNotNull();
-		if(this.hasValue) this.value = value.value();
-		
-		return this;
-	}
-	
+
 	@Override
 	public NullableS setNull()
 	{
@@ -136,61 +103,32 @@ public class NullableS implements NullableWS
 	}
 	
 	@Override
-	public boolean equals(Object obj)
+	public boolean equals(@AllowNull Object obj)
 	{
 		if(obj == null) return !this.hasValue;
 		if(obj == this) return true;
 		
-		if(obj instanceof NullableR<?> n)
-		{
-			return equals(n);
-		}
+		if(obj instanceof INullableRS n) return equals(n);
 		
-		if(obj instanceof Short f)
-		{
-			return equalsValueS(f);
-		}
+		if(obj instanceof Short val) return equals(val);
 		
 		return false;
 	}
 	
 	@Override
-	public boolean equals(NullableRS obj)
+	public boolean equals(@AllowNull INullableRS obj)
 	{
 		if(obj == null) return !this.hasValue;
 		if(obj == this) return true;
 		if(obj.isNotNull() != this.hasValue) return false;
 		
-		if(this.hasValue)
-		{
-			return obj.valueS() == this.value;
-		}
+		if(this.hasValue) return obj.value() == this.value;
 		
 		return true;
 	}
 	
 	@Override
-	public boolean equals(NullableR<?> obj)
-	{
-		if(obj == null) return !this.hasValue;
-		if(obj == this) return true;
-		if(obj.isNotNull() != this.hasValue) return false;
-		
-		if(this.hasValue)
-		{
-			if(obj.value() instanceof Short f)
-			{
-				return f == this.value;
-			}
-			
-			return false;
-		}
-		
-		return true;
-	}
-	
-	@Override
-	public boolean equalsValueS(short obj)
+	public boolean equals(short obj)
 	{
 		if(!this.hasValue) return false;
 		
@@ -198,21 +136,23 @@ public class NullableS implements NullableWS
 	}
 	
 	@Override
-	public boolean equalsValue(Short obj)
+	public boolean equals(@AllowNull Short obj)
 	{
+		if(!this.hasValue && obj == null) return true;
 		if(!this.hasValue) return false;
 		
 		return this.value == obj;
 	}
 	
+	@Override
 	public int hashCode()
 	{
 		return Objects.hash(this.hasValue, this.value);
 	}
 	
+	@Override
 	public String toString()
 	{
-		return "nullableS(" + (this.hasValue ? this.value : "null") + ")";
+		return "short?(" + (this.hasValue ? this.value : "null") + ")";
 	}
-	
 }

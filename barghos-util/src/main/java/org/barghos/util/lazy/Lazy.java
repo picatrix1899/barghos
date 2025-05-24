@@ -1,33 +1,61 @@
 package org.barghos.util.lazy;
 
+import org.barghos.util.supplier.Supplier;
+
 /**
- * Represents a value provider, that determines the value to provide on the
- * first call to {@link #valueGeneric()} and stores it for any further calls.
- * This allows to execute probably complex code for determining the value only
- * if and when the value is really needed. 
+ * An implementation of the {@link UpdatableLazy} interface where the provided
+ * value is determined via a given {@link Supplier}.
  * 
  * @param <T> The type of the provided value.
  */
-public interface Lazy<T>
+public class Lazy<T> implements ILazyW<T>
 {
-	/**
-	 * Returns the provided value.
-	 * 
-	 * <p>
-	 * WARNING: This will execute the code to determine the value, if the 
-	 * {@link #hasValue()} flag is false. After execution the determined value
-	 * is stored for any further calls and the {@link #hasValue()} flag is set
-	 * to true.
-	 * 
-	 * @return The provided value.
-	 */
-	T value();
+	protected Supplier<T> supplier;
+	
+	protected T value;
+	protected boolean hasValue;
 	
 	/**
-	 * Returns if a value was determined. This is helpful if the provided value
-	 * is null.
+	 * Creates a new instance of {@link SuppliedLazy} with the given
+	 * {@link Supplier} to determine the value to provide.
 	 * 
-	 * @return True, if the value was determined. False otherwise.
+	 * @param supplier
+	 * The {@link Supplier} used to determine the value to provide.
 	 */
-	boolean hasValue();
+	public Lazy(Supplier<T> supplier)
+	{	
+		this.supplier = supplier;
+	}	
+	
+	/** {@inheritDoc} */
+	@Override
+	public T value()
+	{
+		if(!this.hasValue) update();
+		
+		return this.value;
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public void clear()
+	{
+		this.value = null;
+		this.hasValue = false;
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public void update()
+	{
+		this.value = this.supplier.get();
+		this.hasValue = true;
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public boolean hasValue()
+	{
+		return this.hasValue;
+	}
 }

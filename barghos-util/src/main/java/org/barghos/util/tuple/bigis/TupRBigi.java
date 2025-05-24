@@ -3,7 +3,7 @@ package org.barghos.util.tuple.bigis;
 import java.math.BigInteger;
 
 import org.barghos.annotation.ExtractionParam;
-import org.barghos.annotation.Nullable;
+import org.barghos.annotation.AllowNull;
 
 /**
  * This interface provides non-modifying operations for {@link BigInteger}
@@ -210,7 +210,7 @@ public interface TupRBigi
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equals(@Nullable TupRBigi t);
+	boolean equals(@AllowNull TupRBigi t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -241,7 +241,7 @@ public interface TupRBigi
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equals(@Nullable BigInteger... t);
+	boolean equals(@AllowNull BigInteger... t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -327,7 +327,7 @@ public interface TupRBigi
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equals(BigInteger tolerance, @Nullable BigInteger... t);
+	boolean equals(BigInteger tolerance, @AllowNull BigInteger... t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -364,7 +364,7 @@ public interface TupRBigi
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAt(int index, @Nullable TupRBigi t);
+	boolean equalsAt(int index, @AllowNull TupRBigi t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -401,7 +401,7 @@ public interface TupRBigi
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAt(int index, @Nullable BigInteger... t);
+	boolean equalsAt(int index, @AllowNull BigInteger... t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -476,7 +476,7 @@ public interface TupRBigi
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAt(BigInteger tolerance, int index, @Nullable TupRBigi t);
+	boolean equalsAt(BigInteger tolerance, int index, @AllowNull TupRBigi t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -525,7 +525,7 @@ public interface TupRBigi
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAt(BigInteger tolerance, int index, @Nullable BigInteger... t);
+	boolean equalsAt(BigInteger tolerance, int index, @AllowNull BigInteger... t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and

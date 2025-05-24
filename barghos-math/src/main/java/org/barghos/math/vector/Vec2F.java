@@ -4,13 +4,13 @@ import java.util.Arrays;
 import java.util.Objects;
 
 import org.barghos.util.collection.IndexValuePairF;
-import org.barghos.util.tuple.floats.Tup2RF;
-import org.barghos.util.tuple.floats.Tup2WF;
-import org.barghos.util.tuple.floats.TupRF;
+import org.barghos.util.tuple.floats.ITup2RF;
+import org.barghos.util.tuple.floats.ITup2WF;
+import org.barghos.util.tuple.floats.ITupRF;
 import org.barghos.util.tuple.floats.TupUtils2F;
-import org.barghos.util.tuple.floats.TupWF;
+import org.barghos.util.tuple.floats.ITupWF;
 
-public class Vec2F implements Vec2WF
+public class Vec2F implements IVec2WF
 {
 	public final float[] v = new float[SIZE];
 	
@@ -19,12 +19,12 @@ public class Vec2F implements Vec2WF
 		set(0.0f);
 	}
 	
-	public Vec2F(Tup2RF t)
+	public Vec2F(ITup2RF t)
 	{
 		set(t);
 	}
 	
-	public Vec2F(TupRF t)
+	public Vec2F(ITupRF t)
 	{
 		set(t);
 	}
@@ -45,37 +45,37 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public Vec2WF createNew()
+	public Vec2F createNew()
 	{
 		return new Vec2F();
 	}
 	
 	@Override
-	public Vec2WF createNew(Tup2RF t)
+	public Vec2F createNew(ITup2RF t)
 	{
 		return new Vec2F(t);
 	}
 	
 	@Override
-	public Vec2WF createNew(TupRF t)
+	public Vec2F createNew(ITupRF t)
 	{
 		return new Vec2F(t);
 	}
 
 	@Override
-	public Vec2WF createNew(float[] t)
+	public Vec2F createNew(float[] t)
 	{
 		return new Vec2F(t);
 	}
 
 	@Override
-	public Vec2WF createNew(float value)
+	public Vec2F createNew(float value)
 	{
 		return new Vec2F(value);
 	}
 
 	@Override
-	public Vec2WF createNew(float x, float y)
+	public Vec2F createNew(float x, float y)
 	{
 		return new Vec2F(x, y);
 	}
@@ -111,7 +111,7 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public Vec2WF x(float x)
+	public Vec2F x(float x)
 	{
 		this.v[0] = x;
 		
@@ -119,7 +119,7 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public Vec2WF y(float y)
+	public Vec2F y(float y)
 	{
 		this.v[1] = y;
 		
@@ -127,7 +127,7 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public Tup2WF v0(float v0)
+	public ITup2WF v0(float v0)
 	{
 		this.v[0] = v0;
 		
@@ -135,7 +135,7 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public Tup2WF v1(float v1)
+	public ITup2WF v1(float v1)
 	{
 		this.v[1] = v1;
 		
@@ -143,7 +143,7 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public Vec2WF set(Tup2RF t)
+	public Vec2F set(ITup2RF t)
 	{
 		t.toArray(this.v);
 		
@@ -151,7 +151,7 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public Vec2WF set(TupRF t)
+	public Vec2F set(ITupRF t)
 	{
 		t.toArray(this.v);
 		
@@ -159,7 +159,7 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public Vec2WF set(float[] values)
+	public Vec2F set(float[] values)
 	{
 		System.arraycopy(values, 0, this.v, 0, 2);
 		
@@ -167,7 +167,7 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public Vec2WF set(float value)
+	public Vec2F set(float value)
 	{
 		Arrays.fill(this.v, value);
 		
@@ -175,7 +175,7 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public Vec2WF set(float x, float y)
+	public Vec2F set(float x, float y)
 	{
 		this.v[0] = x;
 		this.v[1] = y;
@@ -184,7 +184,7 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public Vec2WF setAt(int index, float value)
+	public Vec2F setAt(int index, float value)
 	{
 		this.v[index] = value;
 		
@@ -206,7 +206,7 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public Vec2WF copy()
+	public Vec2F copy()
 	{
 		return new Vec2F(this);
 	}
@@ -229,7 +229,7 @@ public class Vec2F implements Vec2WF
 		if(obj == null) return false;
 		if(obj == this) return true;
 		
-		if(obj instanceof Tup2RF t)
+		if(obj instanceof ITup2RF t)
 		{
 			return equals(t);
 		}
@@ -238,7 +238,7 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public Vec2WF add(Tup2RF t)
+	public Vec2F add(ITup2RF t)
 	{
 		VecUtils2F.add(this.v, t, this.v);
 		
@@ -246,7 +246,15 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public Vec2WF add(float[] t)
+	public Vec2F add(ITupRF t)
+	{
+		VecUtils2F.add(this.v, t, this.v);
+		
+		return this;
+	}
+	
+	@Override
+	public Vec2F add(float[] t)
 	{
 		VecUtils2F.add(this.v, t, this.v);
 		
@@ -254,7 +262,7 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public Vec2WF add(float value)
+	public Vec2F add(float value)
 	{
 		VecUtils2F.add(this.v, value, value, this.v);
 		
@@ -262,7 +270,7 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public Vec2WF add(float tx, float ty)
+	public Vec2F add(float tx, float ty)
 	{
 		VecUtils2F.add(this.v, tx, ty, this.v);
 		
@@ -270,31 +278,43 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public Vec2WF addN(Tup2RF t)
+	public Vec2F addN(ITup2RF t)
 	{
 		return VecUtils2F.addCreateNew(this.v, t, this);
 	}
 
 	@Override
-	public Vec2WF addN(float[] t)
+	public Vec2F addN(ITupRF t)
+	{
+		return VecUtils2F.addCreateNew(this.v, t, this);
+	}
+	
+	@Override
+	public Vec2F addN(float[] t)
 	{
 		return VecUtils2F.addCreateNew(this.v, t, this);
 	}
 
 	@Override
-	public Vec2WF addN(float value)
+	public Vec2F addN(float value)
 	{
 		return VecUtils2F.addCreateNew(this.v, value, value, this);
 	}
 
 	@Override
-	public Vec2WF addN(float tx, float ty)
+	public Vec2F addN(float tx, float ty)
 	{
 		return VecUtils2F.addCreateNew(this.v, tx, ty, this);
 	}
 	
 	@Override
-	public float[] addT(Tup2RF t, float[] res)
+	public float[] addT(ITup2RF t, float[] res)
+	{
+		return VecUtils2F.add(this.v, t, res);
+	}
+	
+	@Override
+	public float[] addT(ITupRF t, float[] res)
 	{
 		return VecUtils2F.add(this.v, t, res);
 	}
@@ -318,31 +338,37 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public <T extends Tup2WF> T addT(Tup2RF t, T res)
+	public <T extends ITup2WF> T addT(ITup2RF t, T res)
 	{
 		return VecUtils2F.add(this.v, t, res);
 	}
 
 	@Override
-	public <T extends Tup2WF> T addT(float[] t, T res)
+	public <T extends ITup2WF> T addT(ITupRF t, T res)
 	{
 		return VecUtils2F.add(this.v, t, res);
 	}
 	
 	@Override
-	public <T extends Tup2WF> T addT(float value, T res)
+	public <T extends ITup2WF> T addT(float[] t, T res)
+	{
+		return VecUtils2F.add(this.v, t, res);
+	}
+	
+	@Override
+	public <T extends ITup2WF> T addT(float value, T res)
 	{
 		return VecUtils2F.add(this.v, value, value, res);
 	}
 
 	@Override
-	public <T extends Tup2WF> T addT(float tx, float ty, T res)
+	public <T extends ITup2WF> T addT(float tx, float ty, T res)
 	{
 		return VecUtils2F.add(this.v, tx, ty, res);
 	}
 
 	@Override
-	public Vec2WF sub(Tup2RF t)
+	public Vec2F sub(ITup2RF t)
 	{
 		VecUtils2F.sub(this.v, t, this.v);
 		
@@ -350,7 +376,15 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public Vec2WF sub(float[] t)
+	public Vec2F sub(ITupRF t)
+	{
+		VecUtils2F.sub(this.v, t, this.v);
+		
+		return this;
+	}
+	
+	@Override
+	public Vec2F sub(float[] t)
 	{
 		VecUtils2F.sub(this.v, t, this.v);
 		
@@ -358,7 +392,7 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public Vec2WF sub(float value)
+	public Vec2F sub(float value)
 	{
 		VecUtils2F.sub(this.v, value, value, this.v);
 		
@@ -366,7 +400,7 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public Vec2WF sub(float tx, float ty)
+	public Vec2F sub(float tx, float ty)
 	{
 		VecUtils2F.sub(this.v, tx, ty, this.v);
 		
@@ -374,35 +408,47 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public Vec2WF subN(Tup2RF t)
+	public Vec2F subN(ITup2RF t)
 	{
 		return VecUtils2F.subCreateNew(this.v, t, this);
 	}
 
 	@Override
-	public Vec2WF subN(float[] t)
+	public Vec2F subN(ITupRF t)
+	{
+		return VecUtils2F.subCreateNew(this.v, t, this);
+	}
+	
+	@Override
+	public Vec2F subN(float[] t)
 	{
 		return VecUtils2F.subCreateNew(this.v, t, this);
 	}
 
 	@Override
-	public Vec2WF subN(float value)
+	public Vec2F subN(float value)
 	{
 		return VecUtils2F.subCreateNew(this.v, value, value, this);
 	}
 
 	@Override
-	public Vec2WF subN(float tx, float ty)
+	public Vec2F subN(float tx, float ty)
 	{
 		return VecUtils2F.subCreateNew(this.v, tx, ty, this);
 	}
 	
 	@Override
-	public float[] subT(Tup2RF t, float[] res)
+	public float[] subT(ITup2RF t, float[] res)
 	{
 		return VecUtils2F.sub(this.v, t, res);
 	}
 
+	@Override
+	public float[] subT(ITupRF t, float[] res)
+	{
+		return VecUtils2F.sub(this.v, t, res);
+	}
+	
 	@Override
 	public float[] subT(float[] t, float[] res)
 	{
@@ -422,31 +468,37 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public <T extends Tup2WF> T subT(Tup2RF t, T res)
+	public <T extends ITup2WF> T subT(ITup2RF t, T res)
 	{
 		return VecUtils2F.sub(this.v, t, res);
 	}
 	
 	@Override
-	public <T extends Tup2WF> T subT(float[] t, T res)
+	public <T extends ITup2WF> T subT(ITupRF t, T res)
+	{
+		return VecUtils2F.sub(this.v, t, res);
+	}
+	
+	@Override
+	public <T extends ITup2WF> T subT(float[] t, T res)
 	{
 		return VecUtils2F.sub(this.v, t, res);
 	}
 
 	@Override
-	public <T extends Tup2WF> T subT(float value, T res)
+	public <T extends ITup2WF> T subT(float value, T res)
 	{
 		return VecUtils2F.sub(this.v, value, value, res);
 	}
 
 	@Override
-	public <T extends Tup2WF> T subT(float tx, float ty, T res)
+	public <T extends ITup2WF> T subT(float tx, float ty, T res)
 	{
 		return VecUtils2F.sub(this.v, tx, ty, res);
 	}
 
 	@Override
-	public Vec2WF rSub(Tup2RF t)
+	public Vec2F rSub(ITup2RF t)
 	{
 		VecUtils2F.sub(t, this.v, this.v);
 		
@@ -454,7 +506,15 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public Vec2WF rSub(float[] t)
+	public Vec2F rSub(ITupRF t)
+	{
+		VecUtils2F.sub(t, this.v, this.v);
+		
+		return this;
+	}
+	
+	@Override
+	public Vec2F rSub(float[] t)
 	{
 		VecUtils2F.sub(t, this.v, this.v);
 		
@@ -462,7 +522,7 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public Vec2WF rSub(float value)
+	public Vec2F rSub(float value)
 	{
 		VecUtils2F.sub(value, value, this.v, this.v);
 		
@@ -470,7 +530,7 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public Vec2WF rSub(float tx, float ty)
+	public Vec2F rSub(float tx, float ty)
 	{
 		VecUtils2F.sub(tx, ty, this.v, this.v);
 		
@@ -478,31 +538,44 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public Vec2WF rSubN(Tup2RF t)
+	public Vec2F rSubN(ITup2RF t)
 	{
 		return VecUtils2F.subCreateNew(t, this.v, this);
 	}
 
 	@Override
-	public Vec2WF rSubN(float[] t)
+	public Vec2F rSubN(ITupRF t)
+	{
+		return VecUtils2F.subCreateNew(t, this.v, this);
+	}
+
+	
+	@Override
+	public Vec2F rSubN(float[] t)
 	{
 		return VecUtils2F.subCreateNew(t, this.v, this);
 	}
 
 	@Override
-	public Vec2WF rSubN(float value)
+	public Vec2F rSubN(float value)
 	{
 		return VecUtils2F.subCreateNew(value, value, this.v, this);
 	}
 
 	@Override
-	public Vec2WF rSubN(float tx, float ty)
+	public Vec2F rSubN(float tx, float ty)
 	{
 		return VecUtils2F.subCreateNew(tx, ty, this.v, this);
 	}
 	
 	@Override
-	public float[] rSubT(Tup2RF t, float[] res)
+	public float[] rSubT(ITup2RF t, float[] res)
+	{
+		return VecUtils2F.sub(t, this.v, res);
+	}
+	
+	@Override
+	public float[] rSubT(ITupRF t, float[] res)
 	{
 		return VecUtils2F.sub(t, this.v, res);
 	}
@@ -520,11 +593,17 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public <T extends Tup2WF> T rSubT(Tup2RF t, T res)
+	public <T extends ITup2WF> T rSubT(ITup2RF t, T res)
 	{
 		return VecUtils2F.sub(t, this.v, res);
 	}
 
+	@Override
+	public <T extends ITup2WF> T rSubT(ITupRF t, T res)
+	{
+		return VecUtils2F.sub(t, this.v, res);
+	}
+	
 	@Override
 	public float[] rSubT(float tx, float ty, float[] res)
 	{
@@ -532,25 +611,25 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public <T extends Tup2WF> T rSubT(float[] t, T res)
+	public <T extends ITup2WF> T rSubT(float[] t, T res)
 	{
 		return VecUtils2F.sub(t, this.v, res);
 	}
 
 	@Override
-	public <T extends Tup2WF> T rSubT(float value, T res)
+	public <T extends ITup2WF> T rSubT(float value, T res)
 	{
 		return VecUtils2F.sub(value, value, this.v, res);
 	}
 
 	@Override
-	public <T extends Tup2WF> T rSubT(float tx, float ty, T res)
+	public <T extends ITup2WF> T rSubT(float tx, float ty, T res)
 	{
 		return VecUtils2F.sub(tx, ty, this.v, res);
 	}
 
 	@Override
-	public Vec2WF mul(Tup2RF t)
+	public Vec2F mul(ITup2RF t)
 	{
 		VecUtils2F.mul(this.v, t, this.v);
 		
@@ -558,7 +637,15 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public Vec2WF mul(float[] t)
+	public Vec2F mul(ITupRF t)
+	{
+		VecUtils2F.mul(this.v, t, this.v);
+		
+		return this;
+	}
+	
+	@Override
+	public Vec2F mul(float[] t)
 	{
 		VecUtils2F.mul(this.v, t, this.v);
 		
@@ -566,7 +653,7 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public Vec2WF mul(float value)
+	public Vec2F mul(float value)
 	{
 		VecUtils2F.mul(this.v, value, value, this.v);
 		
@@ -574,7 +661,7 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public Vec2WF mul(float tx, float ty)
+	public Vec2F mul(float tx, float ty)
 	{
 		VecUtils2F.mul(this.v, tx, ty, this.v);
 		
@@ -582,31 +669,43 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public Vec2WF mulN(Tup2RF t)
+	public Vec2F mulN(ITup2RF t)
 	{
 		return VecUtils2F.mulCreateNew(this.v, t, this);
 	}
 
 	@Override
-	public Vec2WF mulN(float[] t)
+	public Vec2F mulN(ITupRF t)
+	{
+		return VecUtils2F.mulCreateNew(this.v, t, this);
+	}
+	
+	@Override
+	public Vec2F mulN(float[] t)
 	{
 		return VecUtils2F.mulCreateNew(this.v, t, this);
 	}
 
 	@Override
-	public Vec2WF mulN(float value)
+	public Vec2F mulN(float value)
 	{
 		return VecUtils2F.mulCreateNew(this.v, value, value, this);
 	}
 
 	@Override
-	public Vec2WF mulN(float tx, float ty)
+	public Vec2F mulN(float tx, float ty)
 	{
 		return VecUtils2F.mulCreateNew(this.v, tx, ty, this);
 	}
 	
 	@Override
-	public float[] mulT(Tup2RF t, float[] res)
+	public float[] mulT(ITup2RF t, float[] res)
+	{
+		return VecUtils2F.mul(this.v, t, res);
+	}
+	
+	@Override
+	public float[] mulT(ITupRF t, float[] res)
 	{
 		return VecUtils2F.mul(this.v, t, res);
 	}
@@ -630,31 +729,37 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public <T extends Tup2WF> T mulT(Tup2RF t, T res)
+	public <T extends ITup2WF> T mulT(ITup2RF t, T res)
 	{
 		return VecUtils2F.mul(this.v, t, res);
 	}
 
 	@Override
-	public <T extends Tup2WF> T mulT(float[] t, T res)
+	public <T extends ITup2WF> T mulT(ITupRF t, T res)
+	{
+		return VecUtils2F.mul(this.v, t, res);
+	}
+	
+	@Override
+	public <T extends ITup2WF> T mulT(float[] t, T res)
 	{
 		return VecUtils2F.mul(this.v, t, res);
 	}
 
 	@Override
-	public <T extends Tup2WF> T mulT(float value, T res)
+	public <T extends ITup2WF> T mulT(float value, T res)
 	{
 		return VecUtils2F.mul(this.v, value, value, res);
 	}
 
 	@Override
-	public <T extends Tup2WF> T mulT(float tx, float ty, T res)
+	public <T extends ITup2WF> T mulT(float tx, float ty, T res)
 	{
 		return VecUtils2F.mul(this.v, tx, ty, res);
 	}
 
 	@Override
-	public Vec2WF div(Tup2RF t)
+	public Vec2F div(ITup2RF t)
 	{
 		VecUtils2F.div(this.v, t, this.v);
 		
@@ -662,7 +767,15 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public Vec2WF div(float[] t)
+	public Vec2F div(ITupRF t)
+	{
+		VecUtils2F.div(this.v, t, this.v);
+		
+		return this;
+	}
+	
+	@Override
+	public Vec2F div(float[] t)
 	{
 		VecUtils2F.div(this.v, t, this.v);
 		
@@ -670,7 +783,7 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public Vec2WF div(float value)
+	public Vec2F div(float value)
 	{
 		VecUtils2F.div(this.v, value, value, this.v);
 		
@@ -678,7 +791,7 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public Vec2WF div(float tx, float ty)
+	public Vec2F div(float tx, float ty)
 	{
 		VecUtils2F.div(this.v, tx, ty, this.v);
 		
@@ -686,31 +799,43 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public Vec2WF divN(Tup2RF t)
+	public Vec2F divN(ITup2RF t)
 	{
 		return VecUtils2F.divCreateNew(this.v, t, this);
 	}
 
 	@Override
-	public Vec2WF divN(float[] t)
+	public Vec2F divN(ITupRF t)
+	{
+		return VecUtils2F.divCreateNew(this.v, t, this);
+	}
+	
+	@Override
+	public Vec2F divN(float[] t)
 	{
 		return VecUtils2F.divCreateNew(this.v, t, this);
 	}
 
 	@Override
-	public Vec2WF divN(float value)
+	public Vec2F divN(float value)
 	{
 		return VecUtils2F.divCreateNew(this.v, value, value, this);
 	}
 
 	@Override
-	public Vec2WF divN(float tx, float ty)
+	public Vec2F divN(float tx, float ty)
 	{
 		return VecUtils2F.divCreateNew(this.v, tx, ty, this);
 	}
 	
 	@Override
-	public float[] divT(Tup2RF t, float[] res)
+	public float[] divT(ITup2RF t, float[] res)
+	{
+		return VecUtils2F.div(this.v, t, res);
+	}
+	
+	@Override
+	public float[] divT(ITupRF t, float[] res)
 	{
 		return VecUtils2F.div(this.v, t, res);
 	}
@@ -734,31 +859,37 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public <T extends Tup2WF> T divT(Tup2RF t, T res)
+	public <T extends ITup2WF> T divT(ITup2RF t, T res)
 	{
 		return VecUtils2F.div(this.v, t, res);
 	}
 
 	@Override
-	public <T extends Tup2WF> T divT(float[] t, T res)
+	public <T extends ITup2WF> T divT(ITupRF t, T res)
+	{
+		return VecUtils2F.div(this.v, t, res);
+	}
+	
+	@Override
+	public <T extends ITup2WF> T divT(float[] t, T res)
 	{
 		return VecUtils2F.div(this.v, t, res);
 	}
 
 	@Override
-	public <T extends Tup2WF> T divT(float value, T res)
+	public <T extends ITup2WF> T divT(float value, T res)
 	{
 		return VecUtils2F.div(this.v, value, value, res);
 	}
 	
 	@Override
-	public <T extends Tup2WF> T divT(float tx, float ty, T res)
+	public <T extends ITup2WF> T divT(float tx, float ty, T res)
 	{
 		return VecUtils2F.div(this.v, tx, ty, res);
 	}
 
 	@Override
-	public Vec2WF rDiv(Tup2RF t)
+	public Vec2F rDiv(ITup2RF t)
 	{
 		VecUtils2F.div(t, this.v, this.v);
 		
@@ -766,7 +897,15 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public Vec2WF rDiv(float[] t)
+	public Vec2F rDiv(ITupRF t)
+	{
+		VecUtils2F.div(t, this.v, this.v);
+		
+		return this;
+	}
+	
+	@Override
+	public Vec2F rDiv(float[] t)
 	{
 		VecUtils2F.div(t, this.v, this.v);
 		
@@ -774,7 +913,7 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public Vec2WF rDiv(float value)
+	public Vec2F rDiv(float value)
 	{
 		VecUtils2F.div(value, value, this.v, this.v);
 		
@@ -782,7 +921,7 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public Vec2WF rDiv(float tx, float ty)
+	public Vec2F rDiv(float tx, float ty)
 	{
 		VecUtils2F.div(tx, ty, this.v, this.v);
 		
@@ -790,31 +929,43 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public Vec2WF rDivN(Tup2RF t)
+	public Vec2F rDivN(ITup2RF t)
 	{
 		return VecUtils2F.divCreateNew(t, this.v, this);
 	}
 
 	@Override
-	public Vec2WF rDivN(float[] t)
+	public Vec2F rDivN(ITupRF t)
+	{
+		return VecUtils2F.divCreateNew(t, this.v, this);
+	}
+	
+	@Override
+	public Vec2F rDivN(float[] t)
 	{
 		return VecUtils2F.divCreateNew(t, this.v, this);
 	}
 
 	@Override
-	public Vec2WF rDivN(float value)
+	public Vec2F rDivN(float value)
 	{
 		return VecUtils2F.divCreateNew(value, value, this.v, this);
 	}
 
 	@Override
-	public Vec2WF rDivN(float tx, float ty)
+	public Vec2F rDivN(float tx, float ty)
 	{
 		return VecUtils2F.divCreateNew(tx, ty, this.v, this);
 	}
 	
 	@Override
-	public float[] rDivT(Tup2RF t, float[] res)
+	public float[] rDivT(ITup2RF t, float[] res)
+	{
+		return VecUtils2F.div(t, this.v, res);
+	}
+	
+	@Override
+	public float[] rDivT(ITupRF t, float[] res)
 	{
 		return VecUtils2F.div(t, this.v, res);
 	}
@@ -838,25 +989,31 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public <T extends Tup2WF> T rDivT(Tup2RF t, T res)
+	public <T extends ITup2WF> T rDivT(ITup2RF t, T res)
 	{
 		return VecUtils2F.div(t, this.v, res);
 	}
 
 	@Override
-	public <T extends Tup2WF> T rDivT(float[] t, T res)
+	public <T extends ITup2WF> T rDivT(ITupRF t, T res)
+	{
+		return VecUtils2F.div(t, this.v, res);
+	}
+	
+	@Override
+	public <T extends ITup2WF> T rDivT(float[] t, T res)
 	{
 		return VecUtils2F.div(t, this.v, res);
 	}
 
 	@Override
-	public <T extends Tup2WF> T rDivT(float value, T res)
+	public <T extends ITup2WF> T rDivT(float value, T res)
 	{
 		return VecUtils2F.div(value, value, this.v, res);
 	}
 
 	@Override
-	public <T extends Tup2WF> T rDivT(float tx, float ty, T res)
+	public <T extends ITup2WF> T rDivT(float tx, float ty, T res)
 	{
 		return VecUtils2F.div(tx, ty, this.v, res);
 	}
@@ -880,17 +1037,29 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public float lenTo(Tup2RF t)
+	public float lenTo(ITup2RF t)
 	{
 		return VecUtils2F.lenTo(this.v, t);
 	}
 
 	@Override
-	public float lenTo(float tolerance, Tup2RF t)
+	public float lenTo(ITupRF t)
+	{
+		return VecUtils2F.lenTo(this.v, t);
+	}
+	
+	@Override
+	public float lenTo(float tolerance, ITup2RF t)
 	{
 		return VecUtils2F.lenTo(tolerance, this.v, t);
 	}
 
+	@Override
+	public float lenTo(float tolerance, ITupRF t)
+	{
+		return VecUtils2F.lenTo(tolerance, this.v, t);
+	}
+	
 	@Override
 	public float lenTo(float[] t)
 	{
@@ -916,11 +1085,17 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public float recLenTo(Tup2RF t)
+	public float recLenTo(ITup2RF t)
 	{
 		return VecUtils2F.recLenTo(this.v, t);
 	}
 
+	@Override
+	public float recLenTo(ITupRF t)
+	{
+		return VecUtils2F.recLenTo(this.v, t);
+	}
+	
 	@Override
 	public float recLenTo(float[] t)
 	{
@@ -940,11 +1115,17 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public float sqrLenTo(Tup2RF t)
+	public float sqrLenTo(ITup2RF t)
 	{
 		return VecUtils2F.sqrLenTo(this.v, t);
 	}
 
+	@Override
+	public float sqrLenTo(ITupRF t)
+	{
+		return VecUtils2F.sqrLenTo(this.v, t);
+	}
+	
 	@Override
 	public float sqrLenTo(float[] t)
 	{
@@ -958,11 +1139,17 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public float dot(Tup2RF t)
+	public float dot(ITup2RF t)
 	{
 		return VecUtils2F.dot(this.v, t);
 	}
 
+	@Override
+	public float dot(ITupRF t)
+	{
+		return VecUtils2F.dot(this.v, t);
+	}
+	
 	@Override
 	public float dot(float[] t)
 	{
@@ -976,7 +1163,7 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public Vec2WF halfVecTo(Tup2RF t)
+	public Vec2F halfVecTo(ITup2RF t)
 	{
 		VecUtils2F.halfVecTo(this.v, t, this.v);
 		
@@ -984,7 +1171,15 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public Vec2WF halfVecTo(float[] t)
+	public Vec2F halfVecTo(ITupRF t)
+	{
+		VecUtils2F.halfVecTo(this.v, t, this.v);
+		
+		return this;
+	}
+	
+	@Override
+	public Vec2F halfVecTo(float[] t)
 	{
 		VecUtils2F.halfVecTo(this.v, t, this.v);
 		
@@ -992,7 +1187,7 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public Vec2WF halfVecTo(float tx, float ty)
+	public Vec2F halfVecTo(float tx, float ty)
 	{
 		VecUtils2F.halfVecTo(this.v, tx, ty, this.v);
 		
@@ -1000,25 +1195,37 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public Vec2WF halfVecToN(Tup2RF t)
+	public Vec2F halfVecToN(ITup2RF t)
 	{
 		return VecUtils2F.halfVecTo(this.v, t, createNew());
 	}
 
 	@Override
-	public Vec2WF halfVecToN(float[] t)
+	public Vec2F halfVecToN(ITupRF t)
+	{
+		return VecUtils2F.halfVecTo(this.v, t, createNew());
+	}
+	
+	@Override
+	public Vec2F halfVecToN(float[] t)
 	{
 		return VecUtils2F.halfVecTo(this.v, t, createNew());
 	}
 
 	@Override
-	public Vec2WF halfVecToN(float tx, float ty)
+	public Vec2F halfVecToN(float tx, float ty)
 	{
 		return VecUtils2F.halfVecTo(this.v, tx, ty, createNew());
 	}
 	
 	@Override
-	public float[] halfVecToT(Tup2RF t, float[] res)
+	public float[] halfVecToT(ITup2RF t, float[] res)
+	{
+		return VecUtils2F.halfVecTo(this.v, t, res);
+	}
+	
+	@Override
+	public float[] halfVecToT(ITupRF t, float[] res)
 	{
 		return VecUtils2F.halfVecTo(this.v, t, res);
 	}
@@ -1036,25 +1243,31 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public <T extends Tup2WF> T halfVecToT(Tup2RF t, T res)
+	public <T extends ITup2WF> T halfVecToT(ITup2RF t, T res)
 	{
 		return VecUtils2F.halfVecTo(this.v, t, res);
 	}
 
 	@Override
-	public <T extends Tup2WF> T halfVecToT(float[] t, T res)
+	public <T extends ITup2WF> T halfVecToT(ITupRF t, T res)
+	{
+		return VecUtils2F.halfVecTo(this.v, t, res);
+	}
+	
+	@Override
+	public <T extends ITup2WF> T halfVecToT(float[] t, T res)
 	{
 		return VecUtils2F.halfVecTo(this.v, t, res);
 	}
 
 	@Override
-	public <T extends Tup2WF> T halfVecToT(float tx, float ty, T res)
+	public <T extends ITup2WF> T halfVecToT(float tx, float ty, T res)
 	{
 		return VecUtils2F.halfVecTo(this.v, tx, ty, res);
 	}
 
 	@Override
-	public Vec2WF midPointTo(Tup2RF t)
+	public Vec2F midPointTo(ITup2RF t)
 	{
 		VecUtils2F.midPointTo(this.v, t, this.v);
 		
@@ -1062,7 +1275,15 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public Vec2WF midPointTo(float[] t)
+	public Vec2F midPointTo(ITupRF t)
+	{
+		VecUtils2F.midPointTo(this.v, t, this.v);
+		
+		return this;
+	}
+	
+	@Override
+	public Vec2F midPointTo(float[] t)
 	{
 		VecUtils2F.midPointTo(this.v, t, this.v);
 		
@@ -1070,7 +1291,7 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public Vec2WF midPointTo(float tx, float ty)
+	public Vec2F midPointTo(float tx, float ty)
 	{
 		VecUtils2F.midPointTo(this.v, tx, ty, this.v);
 		
@@ -1078,29 +1299,41 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public Vec2WF midPointToN(Tup2RF t)
+	public Vec2F midPointToN(ITup2RF t)
 	{
 		return VecUtils2F.midPointTo(this.v, t, createNew());
 	}
 
 	@Override
-	public Vec2WF midPointToN(float[] t)
+	public Vec2F midPointToN(ITupRF t)
+	{
+		return VecUtils2F.midPointTo(this.v, t, createNew());
+	}
+	
+	@Override
+	public Vec2F midPointToN(float[] t)
 	{
 		return VecUtils2F.midPointTo(this.v, t, createNew());
 	}
 
 	@Override
-	public Vec2WF midPointToN(float tx, float ty)
+	public Vec2F midPointToN(float tx, float ty)
 	{
 		return VecUtils2F.midPointTo(this.v, tx, ty, createNew());
 	}
 	
 	@Override
-	public float[] midPointToT(Tup2RF t, float[] res)
+	public float[] midPointToT(ITup2RF t, float[] res)
 	{
 		return VecUtils2F.midPointTo(this.v, t, res);
 	}
 
+	@Override
+	public float[] midPointToT(ITupRF t, float[] res)
+	{
+		return VecUtils2F.midPointTo(this.v, t, res);
+	}
+	
 	@Override
 	public float[] midPointToT(float[] t, float[] res)
 	{
@@ -1114,25 +1347,31 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public <T extends Tup2WF> T midPointToT(Tup2RF t, T res)
+	public <T extends ITup2WF> T midPointToT(ITup2RF t, T res)
 	{
 		return VecUtils2F.midPointTo(this.v, t, res);
 	}
 
 	@Override
-	public <T extends Tup2WF> T midPointToT(float[] t, T res)
+	public <T extends ITup2WF> T midPointToT(ITupRF t, T res)
+	{
+		return VecUtils2F.midPointTo(this.v, t, res);
+	}
+	
+	@Override
+	public <T extends ITup2WF> T midPointToT(float[] t, T res)
 	{
 		return VecUtils2F.midPointTo(this.v, t, res);
 	}
 
 	@Override
-	public <T extends Tup2WF> T midPointToT(float tx, float ty, T res)
+	public <T extends ITup2WF> T midPointToT(float tx, float ty, T res)
 	{
 		return VecUtils2F.midPointTo(this.v, tx, ty, res);
 	}
 
 	@Override
-	public Vec2WF neg()
+	public Vec2F neg()
 	{
 		VecUtils2F.neg(this.v, this.v);
 		
@@ -1140,7 +1379,7 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public Vec2WF negN()
+	public Vec2F negN()
 	{
 		return VecUtils2F.neg(this.v, createNew());
 	}
@@ -1152,13 +1391,13 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public <T extends Tup2WF> T negT(T res)
+	public <T extends ITup2WF> T negT(T res)
 	{
 		return VecUtils2F.neg(this.v, res);
 	}
 
 	@Override
-	public Vec2WF rec()
+	public Vec2F rec()
 	{
 		VecUtils2F.rec(this.v, this.v);
 		
@@ -1166,7 +1405,7 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public Vec2WF recN()
+	public Vec2F recN()
 	{
 		return VecUtils2F.rec(this.v, createNew());
 	}
@@ -1178,13 +1417,13 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public <T extends Tup2WF> T recT(T res)
+	public <T extends ITup2WF> T recT(T res)
 	{
 		return VecUtils2F.rec(this.v, res);
 	}
 
 	@Override
-	public Vec2WF nrm()
+	public Vec2F nrm()
 	{
 		VecUtils2F.nrm(this.v, this.v);
 		
@@ -1192,7 +1431,7 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public Vec2WF nrmN()
+	public Vec2F nrmN()
 	{
 		return VecUtils2F.nrm(this.v, createNew());
 	}
@@ -1204,13 +1443,13 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public <T extends Tup2WF> T nrmT(T res)
+	public <T extends ITup2WF> T nrmT(T res)
 	{
 		return VecUtils2F.nrm(this.v, res);
 	}
 
 	@Override
-	public Vec2WF rotRad(double angle)
+	public Vec2F rotRad(double angle)
 	{
 		VecUtils2F.rotRad(angle, this.v, this.v);
 		
@@ -1218,7 +1457,7 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public Vec2WF rotRadN(double angle)
+	public Vec2F rotRadN(double angle)
 	{
 		return VecUtils2F.rotRad(angle, this.v, createNew());
 	}
@@ -1230,13 +1469,13 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public <T extends Tup2WF> T rotRadT(double angle, T res)
+	public <T extends ITup2WF> T rotRadT(double angle, T res)
 	{
 		return VecUtils2F.rotRad(angle, this.v, res);
 	}
 
 	@Override
-	public Vec2WF rotDeg(double angle)
+	public Vec2F rotDeg(double angle)
 	{
 		VecUtils2F.rotDeg(angle, this.v, this.v);
 		
@@ -1244,7 +1483,7 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public Vec2WF rotDegN(double angle)
+	public Vec2F rotDegN(double angle)
 	{
 		return VecUtils2F.rotDeg(angle, this.v, createNew());
 	}
@@ -1256,13 +1495,13 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public <T extends Tup2WF> T rotDegT(double angle, T res)
+	public <T extends ITup2WF> T rotDegT(double angle, T res)
 	{
 		return VecUtils2F.rotDeg(angle, this.v, res);
 	}
 
 	@Override
-	public Vec2WF project(Tup2RF t)
+	public Vec2F project(ITup2RF t)
 	{
 		VecUtils2F.project(this.v, t, this.v);
 		
@@ -1270,7 +1509,15 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public Vec2WF project(float[] t)
+	public Vec2F project(ITupRF t)
+	{
+		VecUtils2F.project(this.v, t, this.v);
+		
+		return this;
+	}
+	
+	@Override
+	public Vec2F project(float[] t)
 	{
 		VecUtils2F.project(this.v, t, this.v);
 		
@@ -1278,7 +1525,7 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public Vec2WF project(float tx, float ty)
+	public Vec2F project(float tx, float ty)
 	{
 		VecUtils2F.project(this.v, tx, ty, this.v);
 		
@@ -1286,29 +1533,41 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public Vec2WF projectN(Tup2RF t)
+	public Vec2F projectN(ITup2RF t)
 	{
 		return VecUtils2F.project(this.v, t, createNew());
 	}
 
 	@Override
-	public Vec2WF projectN(float[] t)
+	public Vec2F projectN(ITupRF t)
+	{
+		return VecUtils2F.project(this.v, t, createNew());
+	}
+	
+	@Override
+	public Vec2F projectN(float[] t)
 	{
 		return VecUtils2F.project(this.v, t, createNew());
 	}
 
 	@Override
-	public Vec2WF projectN(float tx, float ty)
+	public Vec2F projectN(float tx, float ty)
 	{
 		return VecUtils2F.project(this.v, tx, ty, createNew());
 	}
 	
 	@Override
-	public float[] projectT(Tup2RF t, float[] res)
+	public float[] projectT(ITup2RF t, float[] res)
 	{
 		return VecUtils2F.project(this.v, t, res);
 	}
 
+	@Override
+	public float[] projectT(ITupRF t, float[] res)
+	{
+		return VecUtils2F.project(this.v, t, res);
+	}
+	
 	@Override
 	public float[] projectT(float[] t, float[] res)
 	{
@@ -1322,25 +1581,31 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public <T extends Tup2WF> T projectT(Tup2RF t, T res)
+	public <T extends ITup2WF> T projectT(ITup2RF t, T res)
 	{
 		return VecUtils2F.project(this.v, t, res);
 	}
 
 	@Override
-	public <T extends Tup2WF> T projectT(float[] t, T res)
+	public <T extends ITup2WF> T projectT(ITupRF t, T res)
+	{
+		return VecUtils2F.project(this.v, t, res);
+	}
+	
+	@Override
+	public <T extends ITup2WF> T projectT(float[] t, T res)
 	{
 		return VecUtils2F.project(this.v, t, res);
 	}
 
 	@Override
-	public <T extends Tup2WF> T projectT(float tx, float ty, T res)
+	public <T extends ITup2WF> T projectT(float tx, float ty, T res)
 	{
 		return VecUtils2F.project(this.v, tx, ty, res);
 	}
 
 	@Override
-	public Vec2WF reflect(Tup2RF n)
+	public Vec2F reflect(ITup2RF n)
 	{
 		VecUtils2F.reflect(this.v, n, this.v);
 		
@@ -1348,7 +1613,15 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public Vec2WF reflect(float[] n)
+	public Vec2F reflect(ITupRF n)
+	{
+		VecUtils2F.reflect(this.v, n, this.v);
+		
+		return this;
+	}
+	
+	@Override
+	public Vec2F reflect(float[] n)
 	{
 		VecUtils2F.reflect(this.v, n, this.v);
 		
@@ -1356,7 +1629,7 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public Vec2WF reflect(float nx, float ny)
+	public Vec2F reflect(float nx, float ny)
 	{
 		VecUtils2F.reflect(this.v, nx, ny, this.v);
 		
@@ -1364,29 +1637,41 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public Vec2WF reflectN(Tup2RF n)
+	public Vec2F reflectN(ITup2RF n)
 	{
 		return VecUtils2F.reflect(this.v, n, createNew());
 	}
 
 	@Override
-	public Vec2WF reflectN(float[] n)
+	public Vec2F reflectN(ITupRF n)
+	{
+		return VecUtils2F.reflect(this.v, n, createNew());
+	}
+	
+	@Override
+	public Vec2F reflectN(float[] n)
 	{
 		return VecUtils2F.reflect(this.v, n, createNew());
 	}
 
 	@Override
-	public Vec2WF reflectN(float nx, float ny)
+	public Vec2F reflectN(float nx, float ny)
 	{
 		return VecUtils2F.reflect(this.v, nx, ny, createNew());
 	}
 	
 	@Override
-	public float[] reflectT(Tup2RF n, float[] res)
+	public float[] reflectT(ITup2RF n, float[] res)
 	{
 		return VecUtils2F.reflect(this.v, n, res);
 	}
 
+	@Override
+	public float[] reflectT(ITupRF n, float[] res)
+	{
+		return VecUtils2F.reflect(this.v, n, res);
+	}
+	
 	@Override
 	public float[] reflectT(float[] n, float[] res)
 	{
@@ -1400,25 +1685,31 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public <T extends Tup2WF> T reflectT(Tup2RF n, T res)
+	public <T extends ITup2WF> T reflectT(ITup2RF n, T res)
 	{
 		return VecUtils2F.reflect(this.v, n, res);
 	}
 
 	@Override
-	public <T extends Tup2WF> T reflectT(float[] n, T res)
+	public <T extends ITup2WF> T reflectT(ITupRF n, T res)
+	{
+		return VecUtils2F.reflect(this.v, n, res);
+	}
+	
+	@Override
+	public <T extends ITup2WF> T reflectT(float[] n, T res)
 	{
 		return VecUtils2F.reflect(this.v, n, res);
 	}
 
 	@Override
-	public <T extends Tup2WF> T reflectT(float nx, float ny, T res)
+	public <T extends ITup2WF> T reflectT(float nx, float ny, T res)
 	{
 		return VecUtils2F.reflect(this.v, nx, ny, res);
 	}
 
 	@Override
-	public Vec2WF abs()
+	public Vec2F abs()
 	{
 		VecUtils2F.abs(this.v, this.v);
 		
@@ -1426,7 +1717,7 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public Vec2WF absN()
+	public Vec2F absN()
 	{
 		return VecUtils2F.abs(this.v, createNew());
 	}
@@ -1438,13 +1729,13 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public <T extends Tup2WF> T absT(T res)
+	public <T extends ITup2WF> T absT(T res)
 	{
 		return VecUtils2F.abs(this.v, res);
 	}
 
 	@Override
-	public Vec2WF sign()
+	public Vec2F sign()
 	{
 		VecUtils2F.sign(this.v, this.v);
 		
@@ -1452,7 +1743,7 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public Vec2WF signN()
+	public Vec2F signN()
 	{
 		return VecUtils2F.sign(this.v, createNew());
 	}
@@ -1464,7 +1755,7 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public <T extends Tup2WF> T signT(T res)
+	public <T extends ITup2WF> T signT(T res)
 	{
 		return VecUtils2F.sign(this.v, res);
 	}
@@ -1524,13 +1815,13 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public boolean equals(Tup2RF t)
+	public boolean equals(ITup2RF t)
 	{
 		return TupUtils2F.Comp.equals(this.v, t);
 	}
 
 	@Override
-	public boolean equals(TupRF t)
+	public boolean equals(ITupRF t)
 	{
 		return TupUtils2F.Comp.equals(this.v, t);
 	}
@@ -1548,13 +1839,13 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public boolean equals(float tolerance, Tup2RF t)
+	public boolean equals(float tolerance, ITup2RF t)
 	{
 		return TupUtils2F.Comp.equals(tolerance, this.v, t);
 	}
 
 	@Override
-	public boolean equals(float tolerance, TupRF t)
+	public boolean equals(float tolerance, ITupRF t)
 	{
 		return TupUtils2F.Comp.equals(tolerance, this.v, t);
 	}
@@ -1572,13 +1863,13 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public boolean equalsAt(int index, Tup2RF t)
+	public boolean equalsAt(int index, ITup2RF t)
 	{
 		return TupUtils2F.Comp.equalsAt(index, this.v, t);
 	}
 
 	@Override
-	public boolean equalsAt(int index, TupRF t)
+	public boolean equalsAt(int index, ITupRF t)
 	{
 		return TupUtils2F.Comp.equalsAt(index, this.v, t);
 	}
@@ -1596,13 +1887,13 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public boolean equalsAt(float tolerance, int index, Tup2RF t)
+	public boolean equalsAt(float tolerance, int index, ITup2RF t)
 	{
 		return TupUtils2F.Comp.equalsAt(tolerance, index, this.v, t);
 	}
 
 	@Override
-	public boolean equalsAt(float tolerance, int index, TupRF t)
+	public boolean equalsAt(float tolerance, int index, ITupRF t)
 	{
 		return TupUtils2F.Comp.equalsAt(tolerance, index, this.v, t);
 	}
@@ -1620,13 +1911,13 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public boolean equalsAtV0(Tup2RF t)
+	public boolean equalsAtV0(ITup2RF t)
 	{
 		return TupUtils2F.Comp.equalsAtV0(this.v, t);
 	}
 
 	@Override
-	public boolean equalsAtV0(TupRF t)
+	public boolean equalsAtV0(ITupRF t)
 	{
 		return TupUtils2F.Comp.equalsAtV0(this.v, t);
 	}
@@ -1644,13 +1935,13 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public boolean equalsAtV1(Tup2RF t)
+	public boolean equalsAtV1(ITup2RF t)
 	{
 		return TupUtils2F.Comp.equalsAtV1(this.v, t);
 	}
 
 	@Override
-	public boolean equalsAtV1(TupRF t)
+	public boolean equalsAtV1(ITupRF t)
 	{
 		return TupUtils2F.Comp.equalsAtV1(this.v, t);
 	}
@@ -1668,13 +1959,13 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public boolean equalsAtV0(float tolerance, Tup2RF t)
+	public boolean equalsAtV0(float tolerance, ITup2RF t)
 	{
 		return TupUtils2F.Comp.equalsAtV0(tolerance, this.v, t);
 	}
 
 	@Override
-	public boolean equalsAtV0(float tolerance, TupRF t)
+	public boolean equalsAtV0(float tolerance, ITupRF t)
 	{
 		return TupUtils2F.Comp.equalsAtV0(tolerance, this.v, t);
 	}
@@ -1692,13 +1983,13 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public boolean equalsAtV1(float tolerance, Tup2RF t)
+	public boolean equalsAtV1(float tolerance, ITup2RF t)
 	{
 		return TupUtils2F.Comp.equalsAtV1(tolerance, this.v, t);
 	}
 
 	@Override
-	public boolean equalsAtV1(float tolerance, TupRF t)
+	public boolean equalsAtV1(float tolerance, ITupRF t)
 	{
 		return TupUtils2F.Comp.equalsAtV1(tolerance, this.v, t);
 	}
@@ -1716,7 +2007,7 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public Vec2WF arrange(int[] indices)
+	public Vec2F arrange(int[] indices)
 	{
 		TupUtils2F.arrange(this.v, indices, this.v);
 		
@@ -1724,7 +2015,7 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public Vec2WF arrangeN(int[] indices)
+	public Vec2F arrangeN(int[] indices)
 	{
 		return TupUtils2F.arrange(this.v, indices, createNew());
 	}
@@ -1736,19 +2027,19 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public <T extends Tup2WF> T arrangeT(int[] indices, T res)
+	public <T extends ITup2WF> T arrangeT(int[] indices, T res)
 	{
 		return TupUtils2F.arrange(this.v, indices, res);
 	}
 
 	@Override
-	public <T extends TupWF> T arrangeT(int[] indices, T res)
+	public <T extends ITupWF> T arrangeT(int[] indices, T res)
 	{
 		throw new UnsupportedOperationException("Not implemented yet.");
 	}
 	
 	@Override
-	public Vec2WF arrange(int indexX, int indexY)
+	public Vec2F arrange(int indexX, int indexY)
 	{
 		TupUtils2F.arrange(this.v, indexX, indexY, this.v);
 		
@@ -1756,7 +2047,7 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public Vec2WF arrangeN(int indexX, int indexY)
+	public Vec2F arrangeN(int indexX, int indexY)
 	{
 		return TupUtils2F.arrange(this.v, indexX, indexY, createNew());
 	}
@@ -1768,13 +2059,13 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public <T extends Tup2WF> T arrangeT(int indexX, int indexY, T res)
+	public <T extends ITup2WF> T arrangeT(int indexX, int indexY, T res)
 	{
 		return TupUtils2F.arrange(this.v, indexX, indexY, res);
 	}
 
 	@Override
-	public Vec2WF swizzle(int indexA, int indexB)
+	public Vec2F swizzle(int indexA, int indexB)
 	{
 		TupUtils2F.swizzle(this.v, indexA, indexB, this.v);
 		
@@ -1782,7 +2073,7 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public Vec2WF swizzleN(int indexA, int indexB)
+	public Vec2F swizzleN(int indexA, int indexB)
 	{
 		return TupUtils2F.swizzle(this.v, indexA, indexB, createNew());
 	}
@@ -1794,19 +2085,19 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public <T extends Tup2WF> T swizzleT(int indexA, int indexB, T res)
+	public <T extends ITup2WF> T swizzleT(int indexA, int indexB, T res)
 	{
 		return TupUtils2F.swizzle(this.v, indexA, indexB, res);
 	}
 
 	@Override
-	public <T extends TupWF> T swizzleT(int indexA, int indexB, T res)
+	public <T extends ITupWF> T swizzleT(int indexA, int indexB, T res)
 	{
 		throw new UnsupportedOperationException("Not implemented yet.");
 	}
 	
 	@Override
-	public Vec2WF swizzleV0V1()
+	public Vec2F swizzleV0V1()
 	{
 		TupUtils2F.swizzleV0V1(this.v, this.v);
 		
@@ -1814,7 +2105,7 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public Vec2WF swizzleV0V1N()
+	public Vec2F swizzleV0V1N()
 	{
 		return TupUtils2F.swizzleV0V1(this.v, createNew());
 	}
@@ -1826,13 +2117,13 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public <T extends Tup2WF> T swizzleV0V1T(T res)
+	public <T extends ITup2WF> T swizzleV0V1T(T res)
 	{
 		return TupUtils2F.swizzleV0V1(this.v, res);
 	}
 
 	@Override
-	public Vec2WF swizzleXY()
+	public Vec2F swizzleXY()
 	{
 		TupUtils2F.swizzleV0V1(this.v, this.v);
 		
@@ -1840,7 +2131,7 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public Vec2WF swizzleXYN()
+	public Vec2F swizzleXYN()
 	{
 		return TupUtils2F.swizzleV0V1(this.v, createNew());
 	}
@@ -1864,7 +2155,7 @@ public class Vec2F implements Vec2WF
 	}
 
 	@Override
-	public Vec2WF minComponents(Tup2RF t)
+	public Vec2F minComponents(ITup2RF t)
 	{
 		TupUtils2F.minComponents(this.v, t, this.v);
 		
@@ -1872,57 +2163,109 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public Vec2WF minComponents(TupRF t)
+	public Vec2F minComponents(ITupRF t)
 	{
-		TupUtils2F.minComponents(this.v, t.toArray(), this.v);
+		TupUtils2F.minComponents(this.v, t, this.v);
 		
 		return this;
 	}
 
 	@Override
-	public Vec2WF minComponentsN(Tup2RF t)
+	public Vec2F minComponents(float[] t)
+	{
+		TupUtils2F.minComponents(this.v, t, this.v);
+		
+		return this;
+	}
+	
+	@Override
+	public Vec2F minComponents(float tv0, float tv1)
+	{
+		TupUtils2F.minComponents(this.v, tv0, tv1, this.v);
+		
+		return this;
+	}
+	
+	@Override
+	public Vec2F minComponentsN(ITup2RF t)
 	{
 		return TupUtils2F.minComponents(this.v, t, createNew());
 	}
 
 	@Override
-	public Vec2WF minComponentsN(TupRF t)
+	public Vec2F minComponentsN(ITupRF t)
 	{
-		return TupUtils2F.minComponents(this.v, t.toArray(), createNew());
+		return TupUtils2F.minComponents(this.v, t, createNew());
 	}
 
 	@Override
-	public float[] minComponentsT(Tup2RF t, float[] res)
+	public Vec2F minComponentsN(float[] t)
+	{
+		return TupUtils2F.minComponents(this.v, t, createNew());
+	}
+	
+	@Override
+	public Vec2F minComponentsN(float tv0, float tv1)
+	{
+		return TupUtils2F.minComponents(this.v, tv0, tv1, createNew());
+	}
+	
+	@Override
+	public float[] minComponentsT(ITup2RF t, float[] res)
 	{
 		return TupUtils2F.minComponents(this.v, t, res);
 	}
 	
 	@Override
-	public float[] minComponentsT(TupRF t, float[] res)
+	public float[] minComponentsT(ITupRF t, float[] res)
 	{
-		return TupUtils2F.minComponents(this.v, t.toArray(), res);
+		return TupUtils2F.minComponents(this.v, t, res);
 	}
 	
 	@Override
-	public <T extends Tup2WF> T minComponentsT(Tup2RF t, T res)
+	public float[] minComponentsT(float[] t, float[] res)
+	{
+		return TupUtils2F.minComponents(this.v, t, res);
+	}
+	
+	@Override
+	public float[] minComponentsT(float tv0, float tv1, float[] res)
+	{
+		return TupUtils2F.minComponents(this.v, tv0, tv1, res);
+	}
+	
+	@Override
+	public <T extends ITup2WF> T minComponentsT(ITup2RF t, T res)
 	{
 		return TupUtils2F.minComponents(this.v, t, res);
 	}
 
 	@Override
-	public <T extends Tup2WF> T minComponentsT(TupRF t, T res)
+	public <T extends ITup2WF> T minComponentsT(ITupRF t, T res)
 	{
-		return TupUtils2F.minComponents(this.v, t.toArray(), res);
+		return TupUtils2F.minComponents(this.v, t, res);
 	}
 
 	@Override
-	public <T extends TupWF> T minComponentsT(TupRF t, T res)
+	public <T extends ITup2WF> T minComponentsT(float[] t, T res)
+	{
+		return TupUtils2F.minComponents(this.v, t, res);
+	}
+	
+	@Override
+	public <T extends ITup2WF> T minComponentsT(float tv0, float tv1, T res)
+	{
+		return TupUtils2F.minComponents(this.v, tv0, tv1, res);
+	}
+	
+	@Override
+	public <T extends ITupWF> T minComponentsT(ITupRF t, T res)
 	{
 		throw new UnsupportedOperationException("Not implemented yet.");
 	}
 	
 	@Override
-	public Vec2WF maxComponents(Tup2RF t)
+	public Vec2F maxComponents(ITup2RF t)
 	{
 		TupUtils2F.maxComponents(this.v, t, this.v);
 		
@@ -1930,51 +2273,103 @@ public class Vec2F implements Vec2WF
 	}
 	
 	@Override
-	public Vec2WF maxComponents(TupRF t)
+	public Vec2F maxComponents(ITupRF t)
 	{
-		TupUtils2F.maxComponents(this.v, t.toArray(), this.v);
+		TupUtils2F.maxComponents(this.v, t, this.v);
 		
 		return this;
 	}
 	
 	@Override
-	public Vec2WF maxComponentsN(Tup2RF t)
+	public Vec2F maxComponents(float[] t)
+	{
+		TupUtils2F.maxComponents(this.v, t, this.v);
+		
+		return this;
+	}
+	
+	@Override
+	public Vec2F maxComponents(float tv0, float tv1)
+	{
+		TupUtils2F.maxComponents(this.v, tv0, tv1, this.v);
+		
+		return this;
+	}
+	
+	@Override
+	public Vec2F maxComponentsN(ITup2RF t)
 	{
 		return TupUtils2F.maxComponents(this.v, t, createNew());
 	}
 
 	@Override
-	public Vec2WF maxComponentsN(TupRF t)
+	public Vec2F maxComponentsN(ITupRF t)
 	{
-		return TupUtils2F.maxComponents(this.v, t.toArray(), createNew());
+		return TupUtils2F.maxComponents(this.v, t, createNew());
 	}
 
 	@Override
-	public float[] maxComponentsT(Tup2RF t, float[] res)
+	public Vec2F maxComponentsN(float[] t)
+	{
+		return TupUtils2F.maxComponents(this.v, t, createNew());
+	}
+	
+	@Override
+	public Vec2F maxComponentsN(float tv0, float tv1)
+	{
+		return TupUtils2F.maxComponents(this.v, tv0, tv1, createNew());
+	}
+	
+	@Override
+	public float[] maxComponentsT(ITup2RF t, float[] res)
 	{
 		return TupUtils2F.maxComponents(this.v, t, res);
 	}
 
 	@Override
-	public float[] maxComponentsT(TupRF t, float[] res)
-	{
-		return TupUtils2F.maxComponents(this.v, t.toArray(), res);
-	}
-
-	@Override
-	public <T extends Tup2WF> T maxComponentsT(Tup2RF t, T res)
+	public float[] maxComponentsT(ITupRF t, float[] res)
 	{
 		return TupUtils2F.maxComponents(this.v, t, res);
 	}
 
 	@Override
-	public <T extends Tup2WF> T maxComponentsT(TupRF t, T res)
+	public float[] maxComponentsT(float[] t, float[] res)
 	{
-		return TupUtils2F.maxComponents(this.v, t.toArray(), res);
+		return TupUtils2F.maxComponents(this.v, t, res);
+	}
+	
+	@Override
+	public float[] maxComponentsT(float tv0, float tv1, float[] res)
+	{
+		return TupUtils2F.maxComponents(this.v, tv0, tv1, res);
+	}
+	
+	@Override
+	public <T extends ITup2WF> T maxComponentsT(ITup2RF t, T res)
+	{
+		return TupUtils2F.maxComponents(this.v, t, res);
 	}
 
 	@Override
-	public <T extends TupWF> T maxComponentsT(TupRF t, T res)
+	public <T extends ITup2WF> T maxComponentsT(ITupRF t, T res)
+	{
+		return TupUtils2F.maxComponents(this.v, t, res);
+	}
+
+	@Override
+	public <T extends ITup2WF> T maxComponentsT(float[] t, T res)
+	{
+		return TupUtils2F.maxComponents(this.v, t, res);
+	}
+	
+	@Override
+	public <T extends ITup2WF> T maxComponentsT(float tv0, float tv1, T res)
+	{
+		return TupUtils2F.maxComponents(this.v, tv0, tv1, res);
+	}
+	
+	@Override
+	public <T extends ITupWF> T maxComponentsT(ITupRF t, T res)
 	{
 		throw new UnsupportedOperationException("Not implemented yet.");
 	}
@@ -2002,5 +2397,4 @@ public class Vec2F implements Vec2WF
 	{
 		return TupUtils2F.max(this.v, res);
 	}
-
 }

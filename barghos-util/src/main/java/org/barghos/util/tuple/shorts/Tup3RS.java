@@ -1,7 +1,7 @@
 package org.barghos.util.tuple.shorts;
 
 import org.barghos.annotation.ExtractionParam;
-import org.barghos.annotation.Nullable;
+import org.barghos.annotation.AllowNull;
 
 /**
  * This interface provides non-modifying operations for short tuples with 
@@ -411,7 +411,7 @@ public interface Tup3RS extends FixTupRS
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equals(@Nullable Tup3RS t);
+	boolean equals(@AllowNull Tup3RS t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -445,7 +445,7 @@ public interface Tup3RS extends FixTupRS
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equals(@Nullable TupRS t);
+	boolean equals(@AllowNull TupRS t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -479,7 +479,7 @@ public interface Tup3RS extends FixTupRS
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equals(@Nullable short... t);
+	boolean equals(@AllowNull short... t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -548,7 +548,7 @@ public interface Tup3RS extends FixTupRS
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equals(short tolerance, @Nullable Tup3RS t);
+	boolean equals(short tolerance, @AllowNull Tup3RS t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -594,7 +594,7 @@ public interface Tup3RS extends FixTupRS
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equals(short tolerance, @Nullable TupRS t);
+	boolean equals(short tolerance, @AllowNull TupRS t);
 
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -640,7 +640,7 @@ public interface Tup3RS extends FixTupRS
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equals(short tolerance, @Nullable short... t);
+	boolean equals(short tolerance, @AllowNull short... t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -712,7 +712,7 @@ public interface Tup3RS extends FixTupRS
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAt(int index, @Nullable Tup3RS t);
+	boolean equalsAt(int index, @AllowNull Tup3RS t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -750,7 +750,7 @@ public interface Tup3RS extends FixTupRS
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equalsAt(int index, @Nullable TupRS t);
+	boolean equalsAt(int index, @AllowNull TupRS t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -788,7 +788,7 @@ public interface Tup3RS extends FixTupRS
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equalsAt(int index, @Nullable short... t);
+	boolean equalsAt(int index, @AllowNull short... t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -862,7 +862,7 @@ public interface Tup3RS extends FixTupRS
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAt(short tolerance, int index, @Nullable Tup3RS t);
+	boolean equalsAt(short tolerance, int index, @AllowNull Tup3RS t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -912,7 +912,7 @@ public interface Tup3RS extends FixTupRS
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equalsAt(short tolerance, int index, @Nullable TupRS t);
+	boolean equalsAt(short tolerance, int index, @AllowNull TupRS t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -962,7 +962,7 @@ public interface Tup3RS extends FixTupRS
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equalsAt(short tolerance, int index, @Nullable short... t);
+	boolean equalsAt(short tolerance, int index, @AllowNull short... t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -1030,7 +1030,7 @@ public interface Tup3RS extends FixTupRS
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(@Nullable Tup3RS t);
+	boolean equalsAtV0(@AllowNull Tup3RS t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and
@@ -1061,7 +1061,7 @@ public interface Tup3RS extends FixTupRS
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(@Nullable TupRS t);
+	boolean equalsAtV0(@AllowNull TupRS t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and
@@ -1092,7 +1092,7 @@ public interface Tup3RS extends FixTupRS
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(@Nullable short... t);
+	boolean equalsAtV0(@AllowNull short... t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and
@@ -1142,7 +1142,7 @@ public interface Tup3RS extends FixTupRS
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(@Nullable Tup3RS t);
+	boolean equalsAtV1(@AllowNull Tup3RS t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and
@@ -1173,7 +1173,7 @@ public interface Tup3RS extends FixTupRS
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(@Nullable TupRS t);
+	boolean equalsAtV1(@AllowNull TupRS t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and
@@ -1204,7 +1204,7 @@ public interface Tup3RS extends FixTupRS
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(@Nullable short... t);
+	boolean equalsAtV1(@AllowNull short... t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and
@@ -1254,7 +1254,7 @@ public interface Tup3RS extends FixTupRS
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV2(@Nullable Tup3RS t);
+	boolean equalsAtV2(@AllowNull Tup3RS t);
 	
 	/**
 	 * Returns whether the third component value of this tuple and
@@ -1285,7 +1285,7 @@ public interface Tup3RS extends FixTupRS
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV2(@Nullable TupRS t);
+	boolean equalsAtV2(@AllowNull TupRS t);
 	
 	/**
 	 * Returns whether the third component value of this tuple and
@@ -1316,7 +1316,7 @@ public interface Tup3RS extends FixTupRS
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV2(@Nullable short... t);
+	boolean equalsAtV2(@AllowNull short... t);
 	
 	/**
 	 * Returns whether the third component value of this tuple and
@@ -1379,7 +1379,7 @@ public interface Tup3RS extends FixTupRS
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(short tolerance, @Nullable Tup3RS t);
+	boolean equalsAtV0(short tolerance, @AllowNull Tup3RS t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and of the given
@@ -1423,7 +1423,7 @@ public interface Tup3RS extends FixTupRS
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(short tolerance, @Nullable TupRS t);
+	boolean equalsAtV0(short tolerance, @AllowNull TupRS t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and of the given
@@ -1467,7 +1467,7 @@ public interface Tup3RS extends FixTupRS
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(short tolerance, @Nullable short... t);
+	boolean equalsAtV0(short tolerance, @AllowNull short... t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and the given
@@ -1542,7 +1542,7 @@ public interface Tup3RS extends FixTupRS
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(short tolerance, @Nullable Tup3RS t);
+	boolean equalsAtV1(short tolerance, @AllowNull Tup3RS t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and of the given
@@ -1586,7 +1586,7 @@ public interface Tup3RS extends FixTupRS
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(short tolerance, @Nullable TupRS t);
+	boolean equalsAtV1(short tolerance, @AllowNull TupRS t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and of the given
@@ -1630,7 +1630,7 @@ public interface Tup3RS extends FixTupRS
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(short tolerance, @Nullable short... t);
+	boolean equalsAtV1(short tolerance, @AllowNull short... t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and the given
@@ -1705,7 +1705,7 @@ public interface Tup3RS extends FixTupRS
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV2(short tolerance, @Nullable Tup3RS t);
+	boolean equalsAtV2(short tolerance, @AllowNull Tup3RS t);
 	
 	/**
 	 * Returns whether the third component value of this tuple and of the given
@@ -1749,7 +1749,7 @@ public interface Tup3RS extends FixTupRS
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV2(short tolerance, @Nullable TupRS t);
+	boolean equalsAtV2(short tolerance, @AllowNull TupRS t);
 	
 	/**
 	 * Returns whether the third component value of this tuple and of the given
@@ -1793,7 +1793,7 @@ public interface Tup3RS extends FixTupRS
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV2(short tolerance, @Nullable short... t);
+	boolean equalsAtV2(short tolerance, @AllowNull short... t);
 	
 	/**
 	 * Returns whether the third component value of this tuple and the given

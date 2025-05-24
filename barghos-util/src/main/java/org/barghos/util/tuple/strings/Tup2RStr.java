@@ -1,7 +1,7 @@
 package org.barghos.util.tuple.strings;
 
 import org.barghos.annotation.ExtractionParam;
-import org.barghos.annotation.Nullable;
+import org.barghos.annotation.AllowNull;
 
 /**
  * This interface provides non-modifying operations for string tuples with 
@@ -200,7 +200,7 @@ public interface Tup2RStr extends FixTupRStr
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equals(@Nullable Tup2RStr t);
+	boolean equals(@AllowNull Tup2RStr t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -233,7 +233,7 @@ public interface Tup2RStr extends FixTupRStr
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equals(@Nullable TupRStr t);
+	boolean equals(@AllowNull TupRStr t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -266,7 +266,7 @@ public interface Tup2RStr extends FixTupRStr
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equals(@Nullable String... t);
+	boolean equals(@AllowNull String... t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -330,7 +330,7 @@ public interface Tup2RStr extends FixTupRStr
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAt(int index, @Nullable Tup2RStr t);
+	boolean equalsAt(int index, @AllowNull Tup2RStr t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -374,7 +374,7 @@ public interface Tup2RStr extends FixTupRStr
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equalsAt(int index, @Nullable TupRStr t);
+	boolean equalsAt(int index, @AllowNull TupRStr t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -418,7 +418,7 @@ public interface Tup2RStr extends FixTupRStr
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equalsAt(int index, @Nullable String... t);
+	boolean equalsAt(int index, @AllowNull String... t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -480,7 +480,7 @@ public interface Tup2RStr extends FixTupRStr
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(@Nullable Tup2RStr t);
+	boolean equalsAtV0(@AllowNull Tup2RStr t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and
@@ -511,7 +511,7 @@ public interface Tup2RStr extends FixTupRStr
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(@Nullable TupRStr t);
+	boolean equalsAtV0(@AllowNull TupRStr t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and
@@ -542,7 +542,7 @@ public interface Tup2RStr extends FixTupRStr
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(@Nullable String... t);
+	boolean equalsAtV0(@AllowNull String... t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and
@@ -592,7 +592,7 @@ public interface Tup2RStr extends FixTupRStr
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(@Nullable Tup2RStr t);
+	boolean equalsAtV1(@AllowNull Tup2RStr t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and
@@ -623,7 +623,7 @@ public interface Tup2RStr extends FixTupRStr
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(@Nullable TupRStr t);
+	boolean equalsAtV1(@AllowNull TupRStr t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and
@@ -654,7 +654,7 @@ public interface Tup2RStr extends FixTupRStr
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(@Nullable String... t);
+	boolean equalsAtV1(@AllowNull String... t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and

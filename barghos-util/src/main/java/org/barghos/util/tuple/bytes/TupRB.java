@@ -1,7 +1,7 @@
 package org.barghos.util.tuple.bytes;
 
 import org.barghos.annotation.ExtractionParam;
-import org.barghos.annotation.Nullable;
+import org.barghos.annotation.AllowNull;
 
 /**
  * This interface provides non-modifying operations for byte tuples.
@@ -208,7 +208,7 @@ public interface TupRB
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equals(@Nullable TupRB t);
+	boolean equals(@AllowNull TupRB t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -239,7 +239,7 @@ public interface TupRB
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equals(@Nullable byte... t);
+	boolean equals(@AllowNull byte... t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -325,7 +325,7 @@ public interface TupRB
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equals(byte tolerance, @Nullable byte... t);
+	boolean equals(byte tolerance, @AllowNull byte... t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -362,7 +362,7 @@ public interface TupRB
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAt(int index, @Nullable TupRB t);
+	boolean equalsAt(int index, @AllowNull TupRB t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -399,7 +399,7 @@ public interface TupRB
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAt(int index, @Nullable byte... t);
+	boolean equalsAt(int index, @AllowNull byte... t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -474,7 +474,7 @@ public interface TupRB
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAt(byte tolerance, int index, @Nullable TupRB t);
+	boolean equalsAt(byte tolerance, int index, @AllowNull TupRB t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -523,7 +523,7 @@ public interface TupRB
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAt(byte tolerance, int index, @Nullable byte... t);
+	boolean equalsAt(byte tolerance, int index, @AllowNull byte... t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and

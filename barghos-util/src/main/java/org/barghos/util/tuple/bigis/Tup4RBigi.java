@@ -3,7 +3,7 @@ package org.barghos.util.tuple.bigis;
 import java.math.BigInteger;
 
 import org.barghos.annotation.ExtractionParam;
-import org.barghos.annotation.Nullable;
+import org.barghos.annotation.AllowNull;
 
 /**
  * This interface provides non-modifying operations for {@link BigInteger}
@@ -475,7 +475,7 @@ public interface Tup4RBigi extends FixTupRBigi
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equals(@Nullable Tup4RBigi t);
+	boolean equals(@AllowNull Tup4RBigi t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -510,7 +510,7 @@ public interface Tup4RBigi extends FixTupRBigi
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equals(@Nullable TupRBigi t);
+	boolean equals(@AllowNull TupRBigi t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -545,7 +545,7 @@ public interface Tup4RBigi extends FixTupRBigi
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equals(@Nullable BigInteger... t);
+	boolean equals(@AllowNull BigInteger... t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -617,7 +617,7 @@ public interface Tup4RBigi extends FixTupRBigi
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equals(BigInteger tolerance, @Nullable Tup4RBigi t);
+	boolean equals(BigInteger tolerance, @AllowNull Tup4RBigi t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -664,7 +664,7 @@ public interface Tup4RBigi extends FixTupRBigi
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equals(BigInteger tolerance, @Nullable TupRBigi t);
+	boolean equals(BigInteger tolerance, @AllowNull TupRBigi t);
 
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -711,7 +711,7 @@ public interface Tup4RBigi extends FixTupRBigi
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equals(BigInteger tolerance, @Nullable BigInteger... t);
+	boolean equals(BigInteger tolerance, @AllowNull BigInteger... t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -786,7 +786,7 @@ public interface Tup4RBigi extends FixTupRBigi
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAt(int index, @Nullable Tup4RBigi t);
+	boolean equalsAt(int index, @AllowNull Tup4RBigi t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -824,7 +824,7 @@ public interface Tup4RBigi extends FixTupRBigi
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equalsAt(int index, @Nullable TupRBigi t);
+	boolean equalsAt(int index, @AllowNull TupRBigi t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -862,7 +862,7 @@ public interface Tup4RBigi extends FixTupRBigi
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equalsAt(int index, @Nullable BigInteger... t);
+	boolean equalsAt(int index, @AllowNull BigInteger... t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -936,7 +936,7 @@ public interface Tup4RBigi extends FixTupRBigi
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAt(BigInteger tolerance, int index, @Nullable Tup4RBigi t);
+	boolean equalsAt(BigInteger tolerance, int index, @AllowNull Tup4RBigi t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -986,7 +986,7 @@ public interface Tup4RBigi extends FixTupRBigi
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equalsAt(BigInteger tolerance, int index, @Nullable TupRBigi t);
+	boolean equalsAt(BigInteger tolerance, int index, @AllowNull TupRBigi t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -1036,7 +1036,7 @@ public interface Tup4RBigi extends FixTupRBigi
 	 * {@code false} - Otherwise.
 	 */
 	@Override
-	boolean equalsAt(BigInteger tolerance, int index, @Nullable BigInteger... t);
+	boolean equalsAt(BigInteger tolerance, int index, @AllowNull BigInteger... t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -1104,7 +1104,7 @@ public interface Tup4RBigi extends FixTupRBigi
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(@Nullable Tup4RBigi t);
+	boolean equalsAtV0(@AllowNull Tup4RBigi t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and
@@ -1135,7 +1135,7 @@ public interface Tup4RBigi extends FixTupRBigi
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(@Nullable TupRBigi t);
+	boolean equalsAtV0(@AllowNull TupRBigi t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and
@@ -1166,7 +1166,7 @@ public interface Tup4RBigi extends FixTupRBigi
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(@Nullable BigInteger... t);
+	boolean equalsAtV0(@AllowNull BigInteger... t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and
@@ -1216,7 +1216,7 @@ public interface Tup4RBigi extends FixTupRBigi
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(@Nullable Tup4RBigi t);
+	boolean equalsAtV1(@AllowNull Tup4RBigi t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and
@@ -1247,7 +1247,7 @@ public interface Tup4RBigi extends FixTupRBigi
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(@Nullable TupRBigi t);
+	boolean equalsAtV1(@AllowNull TupRBigi t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and
@@ -1278,7 +1278,7 @@ public interface Tup4RBigi extends FixTupRBigi
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(@Nullable BigInteger... t);
+	boolean equalsAtV1(@AllowNull BigInteger... t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and
@@ -1328,7 +1328,7 @@ public interface Tup4RBigi extends FixTupRBigi
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV2(@Nullable Tup4RBigi t);
+	boolean equalsAtV2(@AllowNull Tup4RBigi t);
 	
 	/**
 	 * Returns whether the third component value of this tuple and
@@ -1359,7 +1359,7 @@ public interface Tup4RBigi extends FixTupRBigi
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV2(@Nullable TupRBigi t);
+	boolean equalsAtV2(@AllowNull TupRBigi t);
 	
 	/**
 	 * Returns whether the third component value of this tuple and
@@ -1390,7 +1390,7 @@ public interface Tup4RBigi extends FixTupRBigi
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV2(@Nullable BigInteger... t);
+	boolean equalsAtV2(@AllowNull BigInteger... t);
 	
 	/**
 	 * Returns whether the third component value of this tuple and
@@ -1440,7 +1440,7 @@ public interface Tup4RBigi extends FixTupRBigi
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV3(@Nullable Tup4RBigi t);
+	boolean equalsAtV3(@AllowNull Tup4RBigi t);
 	
 	/**
 	 * Returns whether the fourth component value of this tuple and
@@ -1471,7 +1471,7 @@ public interface Tup4RBigi extends FixTupRBigi
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV3(@Nullable TupRBigi t);
+	boolean equalsAtV3(@AllowNull TupRBigi t);
 	
 	/**
 	 * Returns whether the fourth component value of this tuple and
@@ -1502,7 +1502,7 @@ public interface Tup4RBigi extends FixTupRBigi
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV3(@Nullable BigInteger... t);
+	boolean equalsAtV3(@AllowNull BigInteger... t);
 	
 	/**
 	 * Returns whether the fourth component value of this tuple and
@@ -1565,7 +1565,7 @@ public interface Tup4RBigi extends FixTupRBigi
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(BigInteger tolerance, @Nullable Tup4RBigi t);
+	boolean equalsAtV0(BigInteger tolerance, @AllowNull Tup4RBigi t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and of the given
@@ -1609,7 +1609,7 @@ public interface Tup4RBigi extends FixTupRBigi
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(BigInteger tolerance, @Nullable TupRBigi t);
+	boolean equalsAtV0(BigInteger tolerance, @AllowNull TupRBigi t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and of the given
@@ -1653,7 +1653,7 @@ public interface Tup4RBigi extends FixTupRBigi
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV0(BigInteger tolerance, @Nullable BigInteger... t);
+	boolean equalsAtV0(BigInteger tolerance, @AllowNull BigInteger... t);
 	
 	/**
 	 * Returns whether the first component value of this tuple and the given
@@ -1728,7 +1728,7 @@ public interface Tup4RBigi extends FixTupRBigi
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(BigInteger tolerance, @Nullable Tup4RBigi t);
+	boolean equalsAtV1(BigInteger tolerance, @AllowNull Tup4RBigi t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and of the given
@@ -1772,7 +1772,7 @@ public interface Tup4RBigi extends FixTupRBigi
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(BigInteger tolerance, @Nullable TupRBigi t);
+	boolean equalsAtV1(BigInteger tolerance, @AllowNull TupRBigi t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and of the given
@@ -1816,7 +1816,7 @@ public interface Tup4RBigi extends FixTupRBigi
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV1(BigInteger tolerance, @Nullable BigInteger... t);
+	boolean equalsAtV1(BigInteger tolerance, @AllowNull BigInteger... t);
 	
 	/**
 	 * Returns whether the second component value of this tuple and the given
@@ -1891,7 +1891,7 @@ public interface Tup4RBigi extends FixTupRBigi
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV2(BigInteger tolerance, @Nullable Tup4RBigi t);
+	boolean equalsAtV2(BigInteger tolerance, @AllowNull Tup4RBigi t);
 	
 	/**
 	 * Returns whether the third component value of this tuple and of the given
@@ -1935,7 +1935,7 @@ public interface Tup4RBigi extends FixTupRBigi
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV2(BigInteger tolerance, @Nullable TupRBigi t);
+	boolean equalsAtV2(BigInteger tolerance, @AllowNull TupRBigi t);
 	
 	/**
 	 * Returns whether the third component value of this tuple and of the given
@@ -1979,7 +1979,7 @@ public interface Tup4RBigi extends FixTupRBigi
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV2(BigInteger tolerance, @Nullable BigInteger... t);
+	boolean equalsAtV2(BigInteger tolerance, @AllowNull BigInteger... t);
 	
 	/**
 	 * Returns whether the third component value of this tuple and the given
@@ -2054,7 +2054,7 @@ public interface Tup4RBigi extends FixTupRBigi
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV3(BigInteger tolerance, @Nullable Tup4RBigi t);
+	boolean equalsAtV3(BigInteger tolerance, @AllowNull Tup4RBigi t);
 	
 	/**
 	 * Returns whether the fourth component value of this tuple and of the given
@@ -2098,7 +2098,7 @@ public interface Tup4RBigi extends FixTupRBigi
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV3(BigInteger tolerance, @Nullable TupRBigi t);
+	boolean equalsAtV3(BigInteger tolerance, @AllowNull TupRBigi t);
 	
 	/**
 	 * Returns whether the fourth component value of this tuple and of the given
@@ -2142,7 +2142,7 @@ public interface Tup4RBigi extends FixTupRBigi
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAtV3(BigInteger tolerance, @Nullable BigInteger... t);
+	boolean equalsAtV3(BigInteger tolerance, @AllowNull BigInteger... t);
 	
 	/**
 	 * Returns whether the fourth component value of this tuple and the given

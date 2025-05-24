@@ -7,7 +7,7 @@ import org.barghos.util.BarghosUtilConfiguration;
 
 public class MathUtils
 {
-	public static final MathUtilsProvider PROVIDER;
+	public static final IMathUtilsProvider PROVIDER;
 	
 	static
 	{
@@ -121,6 +121,26 @@ public class MathUtils
 	 * This is a precalculated square-root of the number 3 (sqrt(3));
 	 */
 	public static final float SQRT3f = 1.7320508075688772f;
+	
+	public static long ceilDiv(long v0, long v1)
+	{
+		return PROVIDER.ceilDiv(v0, v1);
+	}
+
+	public static int ceilDiv(int v0, int v1)
+	{
+		return PROVIDER.ceilDiv(v0, v1);
+	}
+
+	public static long floorDiv(long v0, long v1)
+	{
+		return PROVIDER.floorDiv(v0, v1);
+	}
+
+	public static int floorDiv(int v0, int v1)
+	{
+		return PROVIDER.floorDiv(v0, v1);
+	}
 	
 	public static double sqrt(double value)
 	{
@@ -1764,7 +1784,7 @@ public class MathUtils
 	
 	public static class Lerp
 	{
-		public static final MathUtilsProvider.LerpProvider PROVIDER;
+		public static final IMathUtilsProvider.ILerpProvider PROVIDER;
 		
 		static
 		{
@@ -1864,7 +1884,7 @@ public class MathUtils
 	
 	public class Comp
 	{
-		public static final MathUtilsProvider.CompareProvider PROVIDER;
+		public static final IMathUtilsProvider.ICompareProvider PROVIDER;
 		
 		static
 		{
@@ -2114,7 +2134,7 @@ public class MathUtils
 	
 	public class Round
 	{
-		public static final MathUtilsProvider.RoundProvider PROVIDER;
+		public static final IMathUtilsProvider.IRoundProvider PROVIDER;
 		
 		static
 		{
@@ -2211,32 +2231,32 @@ public class MathUtils
 			return PROVIDER.roundF2I(value);
 		}
 		
-		public static double round(double value, RoundMethodD method)
+		public static double round(double value, IRoundMethodD method)
 		{
 			return PROVIDER.round(value);
 		}
 		
-		public static double roundF2D(float value, RoundMethodF method)
+		public static double roundF2D(float value, IRoundMethodF method)
 		{
 			return PROVIDER.roundF2D(value);
 		}
 		
-		public static float round(float value, RoundMethodF method)
+		public static float round(float value, IRoundMethodF method)
 		{
 			return PROVIDER.round(value);
 		}
 		
-		public static long roundD2L(double value, RoundMethodD method)
+		public static long roundD2L(double value, IRoundMethodD method)
 		{
 			return PROVIDER.roundD2L(value);
 		}
 		
-		public static long roundF2L(float value, RoundMethodF method)
+		public static long roundF2L(float value, IRoundMethodF method)
 		{
 			return PROVIDER.roundF2L(value);
 		}
 		
-		public static int roundF2I(float value, RoundMethodF method)
+		public static int roundF2I(float value, IRoundMethodF method)
 		{
 			return PROVIDER.roundF2I(value);
 		}

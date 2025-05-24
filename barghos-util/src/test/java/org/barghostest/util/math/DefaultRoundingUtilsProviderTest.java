@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.function.Function;
 
-import org.barghos.util.math.DefaultRoundingUtilsProvider;
-
+import org.barghos.util.math.DefaultMathUtilsProvider;
+import org.barghos.util.math.MathUtilsProvider;
 import org.junit.jupiter.api.Test;
 
 public class DefaultRoundingUtilsProviderTest
@@ -13,7 +13,7 @@ public class DefaultRoundingUtilsProviderTest
 	@Test
 	void floorEvenTest()
 	{
-		DefaultRoundingUtilsProvider p = new DefaultRoundingUtilsProvider();
+		MathUtilsProvider.RoundProvider p = new DefaultMathUtilsProvider.DefaultRoundProvider();
 		
 		Function<Double,Double> f = p::floorEven;
 		
@@ -53,7 +53,7 @@ public class DefaultRoundingUtilsProviderTest
 	@Test
 	void floorOddTest()
 	{
-		DefaultRoundingUtilsProvider p = new DefaultRoundingUtilsProvider();
+		MathUtilsProvider.RoundProvider p = new DefaultMathUtilsProvider.DefaultRoundProvider();
 		
 		Function<Double,Double> f = p::floorOdd;
 		
@@ -93,7 +93,7 @@ public class DefaultRoundingUtilsProviderTest
 	@Test
 	void floorOddZeroTest()
 	{
-		DefaultRoundingUtilsProvider p = new DefaultRoundingUtilsProvider();
+		MathUtilsProvider.RoundProvider p = new DefaultMathUtilsProvider.DefaultRoundProvider();
 		
 		Function<Double,Double> f = p::floorOddZero;
 		
@@ -133,7 +133,7 @@ public class DefaultRoundingUtilsProviderTest
 	@Test
 	void ceilEvenTest()
 	{
-		DefaultRoundingUtilsProvider p = new DefaultRoundingUtilsProvider();
+		MathUtilsProvider.RoundProvider p = new DefaultMathUtilsProvider.DefaultRoundProvider();
 		
 		Function<Double,Double> f = p::ceilEven;
 		
@@ -173,7 +173,7 @@ public class DefaultRoundingUtilsProviderTest
 	@Test
 	void ceilOddTest()
 	{
-		DefaultRoundingUtilsProvider p = new DefaultRoundingUtilsProvider();
+		MathUtilsProvider.RoundProvider p = new DefaultMathUtilsProvider.DefaultRoundProvider();
 		
 		Function<Double,Double> f = p::ceilOdd;
 		
@@ -213,7 +213,7 @@ public class DefaultRoundingUtilsProviderTest
 	@Test
 	void ceilOddZeroTest()
 	{
-		DefaultRoundingUtilsProvider p = new DefaultRoundingUtilsProvider();
+		MathUtilsProvider.RoundProvider p = new DefaultMathUtilsProvider.DefaultRoundProvider();
 		
 		Function<Double,Double> f = p::ceilOddZero;
 		
@@ -253,7 +253,7 @@ public class DefaultRoundingUtilsProviderTest
 	@Test
 	void roundEvenTest()
 	{
-		DefaultRoundingUtilsProvider p = new DefaultRoundingUtilsProvider();
+		MathUtilsProvider.RoundProvider p = new DefaultMathUtilsProvider.DefaultRoundProvider();
 		
 		Function<Double,Double> f = p::roundEven;
 		
@@ -293,7 +293,7 @@ public class DefaultRoundingUtilsProviderTest
 	@Test
 	void roundOddTest()
 	{
-		DefaultRoundingUtilsProvider p = new DefaultRoundingUtilsProvider();
+		MathUtilsProvider.RoundProvider p = new DefaultMathUtilsProvider.DefaultRoundProvider();
 		
 		Function<Double,Double> f = p::roundOdd;
 		
@@ -333,7 +333,7 @@ public class DefaultRoundingUtilsProviderTest
 	@Test
 	void roundOddZeroTest()
 	{
-		DefaultRoundingUtilsProvider p = new DefaultRoundingUtilsProvider();
+		MathUtilsProvider.RoundProvider p = new DefaultMathUtilsProvider.DefaultRoundProvider();
 		
 		Function<Double,Double> f = p::roundOddZero;
 		

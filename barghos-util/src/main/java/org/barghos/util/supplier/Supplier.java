@@ -17,7 +17,7 @@ package org.barghos.util.supplier;
  * @see SupplierEx
  */
 @FunctionalInterface
-public interface Supplier<T> extends java.util.function.Supplier<T>
+public interface Supplier<T>
 {
 	
 	/**
@@ -25,7 +25,6 @@ public interface Supplier<T> extends java.util.function.Supplier<T>
 	 *
 	 * @return A result.
 	 */
-	@Override
 	T get();
 	
 	public static <T> Supplier<T> of(T value)

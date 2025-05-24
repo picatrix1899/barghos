@@ -1,7 +1,7 @@
 package org.barghos.util.tuple.chars;
 
 import org.barghos.annotation.ExtractionParam;
-import org.barghos.annotation.Nullable;
+import org.barghos.annotation.AllowNull;
 
 /**
  * This interface provides non-modifying operations for char tuples.
@@ -102,7 +102,7 @@ public interface TupRC
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equals(@Nullable TupRC t);
+	boolean equals(@AllowNull TupRC t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -133,7 +133,7 @@ public interface TupRC
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equals(@Nullable char... t);
+	boolean equals(@AllowNull char... t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -170,7 +170,7 @@ public interface TupRC
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAt(int index, @Nullable TupRC t);
+	boolean equalsAt(int index, @AllowNull TupRC t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -207,7 +207,7 @@ public interface TupRC
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAt(int index, @Nullable char... t);
+	boolean equalsAt(int index, @AllowNull char... t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and

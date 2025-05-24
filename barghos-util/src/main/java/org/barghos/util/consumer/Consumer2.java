@@ -26,7 +26,7 @@ import org.barghos.validation.Validate;
  * @see ConsumerEx4
  */
 @FunctionalInterface
-public interface Consumer2<A,B> extends java.util.function.BiConsumer<A,B>
+public interface Consumer2<A,B>
 {
 	/**
 	 * Performs the operation on the given argument.
@@ -34,7 +34,6 @@ public interface Consumer2<A,B> extends java.util.function.BiConsumer<A,B>
 	 * @param a The first input argument.
 	 * @param b The second input argument.
 	 */
-	@Override
 	void accept(A a, B b);
 	
 	/**
@@ -53,29 +52,6 @@ public interface Consumer2<A,B> extends java.util.function.BiConsumer<A,B>
 	}
 	
 	/**
-	 * Performs the given operation after this operation.
-	 * 
-	 * @param after The operation to perform after this operation.
-	 * 
-	 * @return A new {@link Consumer2} performing this operation and the
-	 * operation after.
-	 */
-	default Consumer2<A,B> then(java.util.function.BiConsumer<? super A,? super B> after)
-	{
-		Validate.Arg.checkNotNull("after", after);
-		
-		return then(after::accept);
-	}
-	
-	@Override
-	default Consumer2<A,B> andThen(java.util.function.BiConsumer<? super A,? super B> after)
-	{
-		Validate.Arg.checkNotNull("after", after);
-		
-		return then(after::accept);
-	}
-	
-	/**
 	 * Performs the given operation before this operation.
 	 * 
 	 * @param before The operation to perform before this operation.
@@ -87,22 +63,7 @@ public interface Consumer2<A,B> extends java.util.function.BiConsumer<A,B>
 	{
 		Validate.Arg.checkNotNull("before", before);
 		
-		return before(before::accept);
-	}
-	
-	/**
-	 * Performs the given operation before this operation.
-	 * 
-	 * @param before The operation to perform before this operation.
-	 * 
-	 * @return A new {@link Consumer2} performing the operation before and this
-	 * operation.
-	 */
-	default Consumer2<A,B> before(java.util.function.BiConsumer<? super A,? super B> before)
-	{
-		Validate.Arg.checkNotNull("before", before);
-		
-		return before(before::accept);
+		return (a, b) -> { before.accept(a, b); accept(a, b); };
 	}
 
 	/**

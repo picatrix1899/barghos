@@ -2,7 +2,7 @@ package org.barghos.util.tuple.strings;
 
 import org.barghos.annotation.ExtractionParam;
 import org.barghos.annotation.IntMinValue;
-import org.barghos.annotation.Nullable;
+import org.barghos.annotation.AllowNull;
 
 /**
  * This interface provides non-modifying operations for string tuples.
@@ -103,7 +103,7 @@ public interface TupRStr
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equals(@Nullable TupRStr t);
+	boolean equals(@AllowNull TupRStr t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -134,7 +134,7 @@ public interface TupRStr
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equals(@Nullable String... t);
+	boolean equals(@AllowNull String... t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -171,7 +171,7 @@ public interface TupRStr
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAt(int index, @Nullable TupRStr t);
+	boolean equalsAt(int index, @AllowNull TupRStr t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -208,7 +208,7 @@ public interface TupRStr
 	 * <p>
 	 * {@code false} - Otherwise.
 	 */
-	boolean equalsAt(int index, @Nullable String... t);
+	boolean equalsAt(int index, @AllowNull String... t);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and

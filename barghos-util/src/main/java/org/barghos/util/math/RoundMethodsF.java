@@ -4,9 +4,9 @@ public class RoundMethodsF
 {
 	private RoundMethodsF() {}
 	
-	RoundMethodF NONE = (v) -> v;
-	RoundMethodF FLOOR = (v) -> (float)Math.floor(v);
-	RoundMethodF CEIL = (v) -> (float)Math.ceil(v);
-	RoundMethodF ROUND = (v) -> (float)Math.round(v);
-	RoundMethodF TRUNCATE = (v) -> (float)(int)v;
+	IRoundMethodF NONE = (v) -> v;
+	IRoundMethodF FLOOR = (v) -> (float)Math.floor(v);
+	IRoundMethodF CEIL = (v) -> (float)Math.ceil(v);
+	IRoundMethodF ROUND = (v) -> (float)Math.round(v);
+	IRoundMethodF TRUNCATE = (v) -> (float)(int)v;
 }

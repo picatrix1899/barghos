@@ -89,25 +89,6 @@ public interface SupplierEx<T>
 		};
 	}
 	
-	default Supplier<T> handleEx(ExceptionHandler handler, java.util.function.Supplier<? extends T> supplier)
-	{
-		Validate.Arg.checkNotNull("handler", handler);
-		Validate.Arg.checkNotNull("supplier", supplier);
-		
-		return () -> {
-			try
-			{
-				return get();
-			}
-			catch(Exception e)
-			{
-				handler.handle(e);
-				
-				return supplier.get();
-			}
-		};
-	}
-	
 	default SupplierEx<T> onEx(T exValue)
 	{
 		return () -> {
@@ -139,22 +120,6 @@ public interface SupplierEx<T>
 	}
 	
 	default Supplier<T> onEx(Supplier<? extends T> supplier)
-	{
-		Validate.Arg.checkNotNull("supplier", supplier);
-		
-		return () -> {
-			try
-			{
-				return get();
-			}
-			catch(Exception e)
-			{
-				return supplier.get();
-			}
-		};
-	}
-	
-	default Supplier<T> onEx(java.util.function.Supplier<? extends T> supplier)
 	{
 		Validate.Arg.checkNotNull("supplier", supplier);
 		

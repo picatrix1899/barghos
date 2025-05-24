@@ -3,7 +3,7 @@ package org.barghos.util.metrics;
 import java.util.Objects;
 import java.util.function.LongSupplier;
 
-import org.barghos.annotation.Nullable;
+import org.barghos.annotation.AllowNull;
 
 public class CumulativeStopwatch
 {
@@ -24,7 +24,7 @@ public class CumulativeStopwatch
 		setTimeSupplier(timeSupplier, timeResolution);
 	}
 	
-	public CumulativeStopwatch setTimeSupplier(LongSupplier timeSupplier, @Nullable Resolution timeResolution)
+	public CumulativeStopwatch setTimeSupplier(LongSupplier timeSupplier, @AllowNull Resolution timeResolution)
 	{
 		this.timeSupplier = Objects.requireNonNull(timeSupplier);
 		this.timeResolution = Objects.requireNonNullElse(timeResolution, DEFAULT_TIME_RESOLUTION);

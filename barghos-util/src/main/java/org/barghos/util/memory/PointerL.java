@@ -13,13 +13,13 @@ public class PointerL
 	
 	public PointerL(Arena arena)
 	{
-		this.segment = arena.allocate(ValueLayout.JAVA_INT);
+		this.segment = arena.allocate(ValueLayout.JAVA_LONG);
 		this.size = 1;
 	}
 	
 	public PointerL(Arena arena, long size)
 	{
-		this.segment = arena.allocate(ValueLayout.JAVA_INT, size);
+		this.segment = arena.allocate(ValueLayout.JAVA_LONG, size);
 		this.size = size;
 	}
 	

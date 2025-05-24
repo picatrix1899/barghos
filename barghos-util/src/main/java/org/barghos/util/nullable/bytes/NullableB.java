@@ -1,47 +1,45 @@
 package org.barghos.util.nullable.bytes;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-import org.barghos.util.nullable.NullableR;
+import org.barghos.annotation.AllowNull;
 
-public class NullableB implements NullableWB
+public class NullableB implements INullableWB, Serializable
 {
-	public byte value;
-	public boolean hasValue;
+	private static final long serialVersionUID = 1L;
+	
+	private byte value;
+	private boolean hasValue;
 	
 	public NullableB()
 	{
 		setNull();
 	}
 	
-	public NullableB(NullableRB value)
+	public NullableB(@AllowNull INullableRB value)
 	{
 		set(value);
 	}
-	
-	public NullableB(NullableR<Byte> value)
-	{
-		set(value);
-	}
-	
+
 	public NullableB(byte value)
 	{
-		valueB(value);
+		value(value);
 	}
 	
-	public NullableB(Byte value)
+	public NullableB(@AllowNull Byte value)
 	{
 		value(value);
 	}
 	
 	@Override
-	public byte valueB()
+	public byte value()
 	{
 		return this.value;
 	}
 
 	@Override
-	public byte valueOrDefaultB(byte def)
+	public byte valueOrDefault(byte def)
 	{
 		if(this.hasValue) return this.value;
 		
@@ -49,29 +47,7 @@ public class NullableB implements NullableWB
 	}
 	
 	@Override
-	public byte valueOrDefaultB()
-	{
-		if(this.hasValue) return this.value;
-		
-		return 0;
-	}
-	
-	@Override
-	public Byte value()
-	{
-		return this.value;
-	}
-	
-	@Override
-	public Byte valueOrDefault(Byte def)
-	{
-		if(this.hasValue) return this.value;
-		
-		return def;
-	}
-	
-	@Override
-	public Byte valueOrDefault()
+	public byte valueOrDefault()
 	{
 		if(this.hasValue) return this.value;
 		
@@ -91,7 +67,7 @@ public class NullableB implements NullableWB
 	}
 	
 	@Override
-	public NullableB valueB(byte value)
+	public NullableB value(byte value)
 	{
 		this.value = value;
 		this.hasValue = true;
@@ -100,32 +76,23 @@ public class NullableB implements NullableWB
 	}
 
 	@Override
-	public NullableB value(Byte value)
+	public NullableB value(@AllowNull Byte value)
 	{
-		this.value = value;
-		this.hasValue = true;
-		
+		this.hasValue = value != null;
+		this.value = this.hasValue ? value : 0;
+
 		return this;
 	}
 	
 	@Override
-	public NullableB set(NullableRB value)
+	public NullableB set(@AllowNull INullableRB value)
 	{
-		this.hasValue = value.isNotNull();
-		if(this.hasValue) this.value = value.valueB();
+		this.hasValue = value != null && value.isNotNull();
+		this.value = this.hasValue ? value.value() : 0;
 		
 		return this;
 	}
-	
-	@Override
-	public NullableB set(NullableR<Byte> value)
-	{
-		this.hasValue = value.isNotNull();
-		if(this.hasValue) this.value = value.value();
-		
-		return this;
-	}
-	
+
 	@Override
 	public NullableB setNull()
 	{
@@ -136,61 +103,32 @@ public class NullableB implements NullableWB
 	}
 	
 	@Override
-	public boolean equals(Object obj)
+	public boolean equals(@AllowNull Object obj)
 	{
 		if(obj == null) return !this.hasValue;
 		if(obj == this) return true;
 		
-		if(obj instanceof NullableR<?> n)
-		{
-			return equals(n);
-		}
+		if(obj instanceof INullableRB n) return equals(n);
 		
-		if(obj instanceof Byte f)
-		{
-			return equalsValueB(f);
-		}
+		if(obj instanceof Byte val) return equals(val);
 		
 		return false;
 	}
 	
 	@Override
-	public boolean equals(NullableRB obj)
+	public boolean equals(@AllowNull INullableRB obj)
 	{
 		if(obj == null) return !this.hasValue;
 		if(obj == this) return true;
 		if(obj.isNotNull() != this.hasValue) return false;
 		
-		if(this.hasValue)
-		{
-			return obj.valueB() == this.value;
-		}
+		if(this.hasValue) return obj.value() == this.value;
 		
 		return true;
 	}
 	
 	@Override
-	public boolean equals(NullableR<?> obj)
-	{
-		if(obj == null) return !this.hasValue;
-		if(obj == this) return true;
-		if(obj.isNotNull() != this.hasValue) return false;
-		
-		if(this.hasValue)
-		{
-			if(obj.value() instanceof Byte f)
-			{
-				return f == this.value;
-			}
-			
-			return false;
-		}
-		
-		return true;
-	}
-	
-	@Override
-	public boolean equalsValueB(byte obj)
+	public boolean equals(byte obj)
 	{
 		if(!this.hasValue) return false;
 		
@@ -198,21 +136,23 @@ public class NullableB implements NullableWB
 	}
 	
 	@Override
-	public boolean equalsValue(Byte obj)
+	public boolean equals(@AllowNull Byte obj)
 	{
+		if(!this.hasValue && obj == null) return true;
 		if(!this.hasValue) return false;
 		
 		return this.value == obj;
 	}
 	
+	@Override
 	public int hashCode()
 	{
 		return Objects.hash(this.hasValue, this.value);
 	}
 	
+	@Override
 	public String toString()
 	{
-		return "nullableB(" + (this.hasValue ? this.value : "null") + ")";
+		return "byte?(" + (this.hasValue ? this.value : "null") + ")";
 	}
-	
 }

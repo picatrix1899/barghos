@@ -1,55 +1,31 @@
 package org.barghos.util.nullable.bigis;
 
+import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Objects;
 
-import org.barghos.util.nullable.NullableR;
+import org.barghos.annotation.AllowNull;
 
-public class NullableBigi implements NullableWBigi
+public class NullableBigi implements INullableWBigi, Serializable
 {
-	public BigInteger value;
-	public boolean hasValue;
+	private static final long serialVersionUID = 1L;
+	
+	private BigInteger value;
+	private boolean hasValue;
 	
 	public NullableBigi()
 	{
 		setNull();
 	}
 	
-	public NullableBigi(NullableRBigi value)
+	public NullableBigi(@AllowNull INullableRBigi value)
 	{
 		set(value);
-	}
-	
-	public NullableBigi(NullableR<BigInteger> value)
-	{
-		set(value);
-	}
-	
-	public NullableBigi(BigInteger value)
-	{
-		valueBigi(value);
-	}
-	
-	@Override
-	public BigInteger valueBigi()
-	{
-		return this.value;
 	}
 
-	@Override
-	public BigInteger valueOrDefaultBigi(BigInteger def)
+	public NullableBigi(@AllowNull BigInteger value)
 	{
-		if(this.hasValue) return this.value;
-		
-		return def;
-	}
-	
-	@Override
-	public BigInteger valueOrDefaultBigi()
-	{
-		if(this.hasValue) return this.value;
-		
-		return BigInteger.ZERO;
+		value(value);
 	}
 	
 	@Override
@@ -57,9 +33,9 @@ public class NullableBigi implements NullableWBigi
 	{
 		return this.value;
 	}
-	
+
 	@Override
-	public BigInteger valueOrDefault(BigInteger def)
+	public BigInteger valueOrDefault(@AllowNull BigInteger def)
 	{
 		if(this.hasValue) return this.value;
 		
@@ -71,7 +47,7 @@ public class NullableBigi implements NullableWBigi
 	{
 		if(this.hasValue) return this.value;
 		
-		return BigInteger.ZERO;
+		return null;
 	}
 	
 	@Override
@@ -85,73 +61,57 @@ public class NullableBigi implements NullableWBigi
 	{
 		return this.hasValue;
 	}
+
+	@Override
+	public NullableBigi value(@AllowNull BigInteger value)
+	{
+		this.hasValue = value != null;
+		this.value = this.hasValue ? value : null;
+
+		return this;
+	}
 	
 	@Override
-	public NullableBigi valueBigi(BigInteger value)
+	public NullableBigi set(@AllowNull INullableRBigi value)
 	{
-		this.value = value;
-		this.hasValue = true;
+		this.hasValue = value != null && value.isNotNull();
+		this.value = this.hasValue ? value.value() : null;
 		
 		return this;
 	}
 
 	@Override
-	public NullableBigi value(BigInteger value)
-	{
-		this.value = value;
-		this.hasValue = true;
-		
-		return this;
-	}
-	
-	@Override
-	public NullableBigi set(NullableRBigi value)
-	{
-		this.hasValue = value.isNotNull();
-		if(this.hasValue) this.value = value.valueBigi();
-		
-		return this;
-	}
-	
-	@Override
-	public NullableBigi set(NullableR<BigInteger> value)
-	{
-		this.hasValue = value.isNotNull();
-		if(this.hasValue) this.value = value.value();
-		
-		return this;
-	}
-	
-	@Override
 	public NullableBigi setNull()
 	{
-		this.value = BigInteger.ZERO;
+		this.value = null;
 		this.hasValue = false;
 		
 		return this;
 	}
 	
 	@Override
-	public boolean equals(Object obj)
+	public boolean equals(@AllowNull Object obj)
 	{
 		if(obj == null) return !this.hasValue;
 		if(obj == this) return true;
 		
-		if(obj instanceof NullableR<?> n)
-		{
-			return equals(n);
-		}
+		if(obj instanceof INullableRBigi n) return equals(n);
 		
-		if(obj instanceof BigInteger f)
-		{
-			return equalsValueBigi(f);
-		}
+		if(obj instanceof BigInteger val) return equals(val);
 		
-		return false;
+		return this.value.equals(obj);
 	}
 	
 	@Override
-	public boolean equals(NullableRBigi obj)
+	public boolean equals(BigInteger obj)
+	{
+		if(!this.hasValue) return false;
+		
+		return this.value.equals(obj);
+	}
+	
+	@Override
+	public boolean equals(@AllowNull INullableRBigi obj)
 	{
 		if(obj == null) return !this.hasValue;
 		if(obj == this) return true;
@@ -159,55 +119,21 @@ public class NullableBigi implements NullableWBigi
 		
 		if(this.hasValue)
 		{
-			return obj.valueBigi() == this.value;
+			return obj.value() == this.value;
 		}
 		
 		return true;
 	}
 	
 	@Override
-	public boolean equals(NullableR<?> obj)
-	{
-		if(obj == null) return !this.hasValue;
-		if(obj == this) return true;
-		if(obj.isNotNull() != this.hasValue) return false;
-		
-		if(this.hasValue)
-		{
-			if(obj.value() instanceof BigInteger f)
-			{
-				return f == this.value;
-			}
-			
-			return false;
-		}
-		
-		return true;
-	}
-	
-	@Override
-	public boolean equalsValueBigi(BigInteger obj)
-	{
-		if(!this.hasValue) return false;
-		
-		return this.value == obj;
-	}
-	
-	@Override
-	public boolean equalsValue(BigInteger obj)
-	{
-		if(!this.hasValue) return false;
-		
-		return this.value == obj;
-	}
-	
 	public int hashCode()
 	{
 		return Objects.hash(this.hasValue, this.value);
 	}
 	
+	@Override
 	public String toString()
 	{
-		return "nullableBigi(" + (this.hasValue ? this.value : "null") + ")";
+		return "BigInteger?(" + (this.hasValue ? this.value : "null") + ")";
 	}
 }

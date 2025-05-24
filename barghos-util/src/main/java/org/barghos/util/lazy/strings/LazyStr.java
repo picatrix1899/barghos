@@ -1,35 +1,59 @@
 package org.barghos.util.lazy.strings;
 
-import org.barghos.util.lazy.Lazy;
+import org.barghos.util.supplier.strings.SupplierStr;
 
 /**
- * Represents a string value provider, that determines the value to provide on
- * the first call to {@link #valueStr()} and stores it for any further calls.
- * This allows to execute probably complex code for determining the value only
- * if and when the value is really needed. 
+ * An implementation of the {@link UpdatableLazyStr} interface where the provided
+ * short value is determined via a given {@link SupplierStr}.
  */
-public interface LazyStr extends Lazy<String>
+public class LazyStr implements ILazyWStr
 {
-	/**
-	 * Returns the provided value.
-	 * 
-	 * <p>
-	 * WARNING: This will execute the code to determine the value, if the 
-	 * {@link #hasValue()} flag is false. After execution the determined value
-	 * is stored for any further calls and the {@link #hasValue()} flag is set
-	 * to true.
-	 * 
-	 * @return The provided value.
-	 */
-	String valueStr();
+	protected SupplierStr supplier;
+	
+	protected String value;
+	protected boolean hasValue;
 	
 	/**
-	 * @deprecated Use {@link #valueStr()} instead.
+	 * Creates a new instance of {@link SuppliedLazyStr} with the given
+	 * {@link SupplierStr} to determine the value to provide.
+	 * 
+	 * @param supplier
+	 * The {@link SupplierStr} used to determine the value to provide.
 	 */
+	public LazyStr(SupplierStr supplier)
+	{	
+		this.supplier = supplier;
+	}	
+	
+	/** {@inheritDoc} */
 	@Override
-	@Deprecated(since = "1.0", forRemoval = false)
-	default String value()
+	public String value()
 	{
-		return valueStr();
+		if(!this.hasValue) update();
+		
+		return this.value;
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public void clear()
+	{
+		this.value = "";
+		this.hasValue = false;
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public void update()
+	{
+		this.value = this.supplier.getStr();
+		this.hasValue = true;
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public boolean hasValue()
+	{
+		return this.hasValue;
 	}
 }
