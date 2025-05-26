@@ -436,9 +436,21 @@ public interface IVec3RF extends ITup3RF
 
 	IVec3RF swizzleXYN();
 
+	<T extends ITup3WF> T swizzleXYT(T res);
+	
+	float[] swizzleXYT(float[] res);
+	
 	IVec3RF swizzleXZN();
 
+	<T extends ITup3WF> T swizzleXZT(T res);
+	
+	float[] swizzleXZT(float[] res);
+	
 	IVec3RF swizzleYZN();
+	
+	<T extends ITup3WF> T swizzleYZT(T res);
+	
+	float[] swizzleYZT(float[] res);
 	
 	/** {@inheritDoc} */
 	@Override

@@ -12,7 +12,7 @@ import org.barghos.util.tuple.floats.ITupWF;
 
 public class Vec2F implements IVec2WF
 {
-	public final float[] v = new float[SIZE];
+	private final float[] v = new float[SIZE];
 	
 	public Vec2F()
 	{
