@@ -8,20 +8,6 @@ public interface IMat4WF extends IMat4RF, ISqrMatWF
 {
 	/** {@inheritDoc} */
 	@Override
-	IMat4WF createNew();
-	
-	/** {@inheritDoc} */
-	@Override
-	IMat4WF createNew(IMat4RF m);
-	
-	/** {@inheritDoc} */
-	@Override
-	IMat4WF createNew(float[] m);
-	
-	IMat4WF createNew(float m00, float m01, float m02, float m03, float m10, float m11, float m12, float m13, float m20, float m21, float m22, float m23, float m30, float m31, float m32, float m33);
-	
-	/** {@inheritDoc} */
-	@Override
 	IMat4WF setAt(int row, int col, float value);
 	
 	/** {@inheritDoc} */
@@ -450,27 +436,123 @@ public interface IMat4WF extends IMat4RF, ISqrMatWF
 	
 	/** {@inheritDoc} */
 	@Override
-	IMat4WF initZero();
+	IMat4WF setZero();
 	
 	/** {@inheritDoc} */
 	@Override
-	IMat4WF initIdentity();
+	IMat4WF setIdentity();
 	
-	IMat4WF initTranslation3(ITup3RF v);
+	IMat4WF setTranslation2(ITup2RF v);
 	
-	IMat4WF initTranslation3(float[] v);
+	IMat4WF setTranslation2(float[] v);
 	
-	IMat4WF initTranslation3(float v0, float v1, float v2);
+	IMat4WF setTranslation2(float v0, float v1);
 	
-	IMat4WF initScale3(ITup3RF v);
+	IMat4WF setTranslation3(ITup3RF v);
 	
-	IMat4WF initScale3(float[] v);
+	IMat4WF setTranslation3(float[] v);
 	
-	IMat4WF initScale3(float v0, float v1, float v2);
+	IMat4WF setTranslation3(float v0, float v1, float v2);
 	
-	IMat4WF initScale4(ITup4RF v);
+	IMat4WF setScaling2(ITup2RF v);
 	
-	IMat4WF initScale4(float[] v);
+	IMat4WF setScaling2(float[] v);
 	
-	IMat4WF initScale4(float v0, float v1, float v2, float v3);
+	IMat4WF setScaling2(float v0, float v1);
+	
+	IMat4WF setScaling3(ITup3RF v);
+	
+	IMat4WF setScaling3(float[] v);
+	
+	IMat4WF setScaling3(float v0, float v1, float v2);
+	
+	IMat4WF setScaling4(ITup4RF v);
+	
+	IMat4WF setScaling4(float[] v);
+	
+	IMat4WF setScaling4(float v0, float v1, float v2, float v3);
+	
+	IMat4WF setBaseChanging(float rv0, float rv1, float rv2, float uv0, float uv1, float uv2, float fv0, float fv1, float fv2);
+	
+	IMat4WF setRotationByQuat(ITup4RF q);
+	
+	IMat4WF setRotationRad(float av0, float av1, float av2, float angle);
+	
+	IMat4WF setRotationDeg(float av0, float av1, float av2, float angle);
+	
+	IMat4WF setPerspective(float fovY, float aspectRatio, float near, float far);
+	
+	IMat4WF setOrtho(float left, float right, float bottom, float top, float near, float far);
+	
+	IMat4WF translate2(ITup2RF v);
+	
+	IMat4WF translate2(float[] v);
+	
+	IMat4WF translate2(float v0, float v1);
+	
+	IMat4WF translate2N(ITup2RF v);
+	
+	IMat4WF translate2N(float[] v);
+	
+	IMat4WF translate2N(float v0, float v1);
+	
+	IMat4WF translate3(ITup3RF v);
+	
+	IMat4WF translate3(float[] v);
+	
+	IMat4WF translate3(float v0, float v1, float v2);
+	
+	IMat4WF translate3N(ITup3RF v);
+	
+	IMat4WF translate3N(float[] v);
+	
+	IMat4WF translate3N(float v0, float v1, float v2);
+	
+	IMat4WF scale2(ITup2RF v);
+	
+	IMat4WF scale2(float[] v);
+	
+	IMat4WF scale2(float v0, float v1);
+	
+	IMat4WF scale2N(ITup2RF v);
+	
+	IMat4WF scale2N(float[] v);
+	
+	IMat4WF scale2N(float v0, float v1);
+	
+	IMat4WF scale3(ITup3RF v);
+	
+	IMat4WF scale3(float[] v);
+	
+	IMat4WF scale3(float v0, float v1, float v2);
+	
+	IMat4WF scale3N(ITup3RF v);
+	
+	IMat4WF scale3N(float[] v);
+	
+	IMat4WF scale3N(float v0, float v1, float v2);
+	
+	IMat4WF scale4(ITup4RF v);
+	
+	IMat4WF scale4(float[] v);
+	
+	IMat4WF scale4(float v0, float v1, float v2, float v3);
+	
+	IMat4WF scale4N(ITup4RF v);
+	
+	IMat4WF scale4N(float[] v);
+	
+	IMat4WF scale4N(float v0, float v1, float v2, float v3);
+	
+	IMat4WF baseChange(float rv0, float rv1, float rv2, float uv0, float uv1, float uv2, float fv0, float fv1, float fv2);
+	
+	IMat4WF baseChangeN(float rv0, float rv1, float rv2, float uv0, float uv1, float uv2, float fv0, float fv1, float fv2);
+	
+	IMat4WF rotateRad(float av0, float av1, float av2, float angle);
+	
+	IMat4WF rotateRadN(float av0, float av1, float av2, float angle);
+	
+	IMat4WF rotateDeg(float av0, float av1, float av2, float angle);
+	
+	IMat4WF rotateDegN(float av0, float av1, float av2, float angle);
 }

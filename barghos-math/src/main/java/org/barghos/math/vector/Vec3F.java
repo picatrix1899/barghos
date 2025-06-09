@@ -4,19 +4,21 @@ import java.util.Arrays;
 import java.util.Objects;
 
 import org.barghos.util.collection.IndexValuePairF;
+import org.barghos.util.function.floats.IFunc3F;
 import org.barghos.util.tuple.floats.ITup3RF;
 import org.barghos.util.tuple.floats.ITup3WF;
 import org.barghos.util.tuple.floats.ITupRF;
 import org.barghos.util.tuple.floats.TupUtils3F;
-import org.barghos.util.tuple.floats.ITupWF;
 
 public class Vec3F implements IVec3WF
 {
+	public static final IFunc3F<Vec3F> CTOR = Vec3F::new;
+	
 	private final float[] v = new float[SIZE];
 	
 	public Vec3F()
 	{
-		set(0.0f);
+		set(0.0f, 0.0f, 0.0f);
 	}
 	
 	public Vec3F(ITup3RF t)
@@ -34,56 +36,9 @@ public class Vec3F implements IVec3WF
 		set(t);
 	}
 	
-	public Vec3F(float value)
-	{
-		set(value);
-	}
-	
 	public Vec3F(float x, float y, float z)
 	{
 		set(x, y, z);
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public Vec3F createNew()
-	{
-		return new Vec3F();
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public Vec3F createNew(ITup3RF t)
-	{
-		return new Vec3F(t);
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public Vec3F createNew(ITupRF t)
-	{
-		return new Vec3F(t);
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec3F createNew(float[] t)
-	{
-		return new Vec3F(t);
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec3F createNew(float value)
-	{
-		return new Vec3F(value);
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public Vec3F createNew(float x, float y, float z)
-	{
-		return new Vec3F(x, y, z);
 	}
 
 	/** {@inheritDoc} */
@@ -215,15 +170,6 @@ public class Vec3F implements IVec3WF
 		
 		return this;
 	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public Vec3F set(float value)
-	{
-		Arrays.fill(this.v, value);
-		
-		return this;
-	}
 
 	/** {@inheritDoc} */
 	@Override
@@ -261,13 +207,6 @@ public class Vec3F implements IVec3WF
 		return res;
 	}
 	
-	/** {@inheritDoc} */
-	@Override
-	public Vec3F copy()
-	{
-		return new Vec3F(this);
-	}
-
 	/** {@inheritDoc} */
 	@Override
 	public String toString()
@@ -346,35 +285,35 @@ public class Vec3F implements IVec3WF
 	@Override
 	public Vec3F addN(ITup3RF t)
 	{
-		return VecUtils3F.addCreateNew(this.v, t, this);
+		return VecUtils3F.addFunc(this.v, t, CTOR);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public Vec3F addN(ITupRF t)
 	{
-		return VecUtils3F.addCreateNew(this.v, t, this);
+		return VecUtils3F.addFunc(this.v, t, CTOR);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public Vec3F addN(float[] t)
 	{
-		return VecUtils3F.addCreateNew(this.v, t, this);
+		return VecUtils3F.addFunc(this.v, t, CTOR);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public Vec3F addN(float value)
 	{
-		return VecUtils3F.addCreateNew(this.v, value, value, value, this);
+		return VecUtils3F.addFunc(this.v, value, value, value, CTOR);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public Vec3F addN(float tx, float ty, float tz)
 	{
-		return VecUtils3F.addCreateNew(this.v, tx, ty, tz, this);
+		return VecUtils3F.addFunc(this.v, tx, ty, tz, CTOR);
 	}
 	
 	/** {@inheritDoc} */
@@ -496,35 +435,35 @@ public class Vec3F implements IVec3WF
 	@Override
 	public Vec3F subN(ITup3RF t)
 	{
-		return VecUtils3F.subCreateNew(this.v, t, this);
+		return VecUtils3F.subFunc(this.v, t, CTOR);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public Vec3F subN(ITupRF t)
 	{
-		return VecUtils3F.subCreateNew(this.v, t, this);
+		return VecUtils3F.subFunc(this.v, t, CTOR);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public Vec3F subN(float[] t)
 	{
-		return VecUtils3F.subCreateNew(this.v, t, this);
+		return VecUtils3F.subFunc(this.v, t, CTOR);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public Vec3F subN(float value)
 	{
-		return VecUtils3F.subCreateNew(this.v, value, value, value, this);
+		return VecUtils3F.subFunc(this.v, value, value, value, CTOR);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public Vec3F subN(float tx, float ty, float tz)
 	{
-		return VecUtils3F.subCreateNew(this.v, tx, ty, tz, this);
+		return VecUtils3F.subFunc(this.v, tx, ty, tz, CTOR);
 	}
 	
 	/** {@inheritDoc} */
@@ -646,35 +585,35 @@ public class Vec3F implements IVec3WF
 	@Override
 	public Vec3F rSubN(ITup3RF t)
 	{
-		return VecUtils3F.subCreateNew(t, this.v, this);
+		return VecUtils3F.subFunc(t, this.v, CTOR);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public Vec3F rSubN(ITupRF t)
 	{
-		return VecUtils3F.subCreateNew(t, this.v, this);
+		return VecUtils3F.subFunc(t, this.v, CTOR);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public Vec3F rSubN(float[] t)
 	{
-		return VecUtils3F.subCreateNew(t, this.v, this);
+		return VecUtils3F.subFunc(t, this.v, CTOR);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public Vec3F rSubN(float value)
 	{
-		return VecUtils3F.subCreateNew(value, value, value, this.v, this);
+		return VecUtils3F.subFunc(value, value, value, this.v, CTOR);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public Vec3F rSubN(float tx, float ty, float tz)
 	{
-		return VecUtils3F.subCreateNew(tx, ty, tz, this.v, this);
+		return VecUtils3F.subFunc(tx, ty, tz, this.v, CTOR);
 	}
 	
 	/** {@inheritDoc} */
@@ -796,35 +735,35 @@ public class Vec3F implements IVec3WF
 	@Override
 	public Vec3F mulN(ITup3RF t)
 	{
-		return VecUtils3F.mulCreateNew(this.v, t, this);
+		return VecUtils3F.mulFunc(this.v, t, CTOR);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public Vec3F mulN(ITupRF t)
 	{
-		return VecUtils3F.mulCreateNew(this.v, t, this);
+		return VecUtils3F.mulFunc(this.v, t, CTOR);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public Vec3F mulN(float[] t)
 	{
-		return VecUtils3F.mulCreateNew(this.v, t, this);
+		return VecUtils3F.mulFunc(this.v, t, CTOR);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public Vec3F mulN(float value)
 	{
-		return VecUtils3F.mulCreateNew(this.v, value, value, value, this);
+		return VecUtils3F.mulFunc(this.v, value, value, value, CTOR);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public Vec3F mulN(float tx, float ty, float tz)
 	{
-		return VecUtils3F.mulCreateNew(this.v, tx, ty, tz, this);
+		return VecUtils3F.mulFunc(this.v, tx, ty, tz, CTOR);
 	}
 	
 	/** {@inheritDoc} */
@@ -947,35 +886,35 @@ public class Vec3F implements IVec3WF
 	@Override
 	public Vec3F divN(ITup3RF t)
 	{
-		return VecUtils3F.divCreateNew(this.v, t, this);
+		return VecUtils3F.divFunc(this.v, t, CTOR);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public Vec3F divN(ITupRF t)
 	{
-		return VecUtils3F.divCreateNew(this.v, t, this);
+		return VecUtils3F.divFunc(this.v, t, CTOR);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public Vec3F divN(float[] t)
 	{
-		return VecUtils3F.divCreateNew(this.v, t, this);
+		return VecUtils3F.divFunc(this.v, t, CTOR);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public Vec3F divN(float value)
 	{
-		return VecUtils3F.divCreateNew(this.v, value, value, value, this);
+		return VecUtils3F.divFunc(this.v, value, value, value, CTOR);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public Vec3F divN(float tx, float ty, float tz)
 	{
-		return VecUtils3F.divCreateNew(this.v, tx, ty, tz, this);
+		return VecUtils3F.divFunc(this.v, tx, ty, tz, CTOR);
 	}
 	
 	/** {@inheritDoc} */
@@ -1097,35 +1036,35 @@ public class Vec3F implements IVec3WF
 	@Override
 	public Vec3F rDivN(ITup3RF t)
 	{
-		return VecUtils3F.divCreateNew(t, this.v, this);
+		return VecUtils3F.divFunc(t, this.v, CTOR);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public Vec3F rDivN(ITupRF t)
 	{
-		return VecUtils3F.divCreateNew(t, this.v, this);
+		return VecUtils3F.divFunc(t, this.v, CTOR);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public Vec3F rDivN(float[] t)
 	{
-		return VecUtils3F.divCreateNew(t, this.v, this);
+		return VecUtils3F.divFunc(t, this.v, CTOR);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public Vec3F rDivN(float value)
 	{
-		return VecUtils3F.divCreateNew(value, value, value, this.v, this);
+		return VecUtils3F.divFunc(value, value, value, this.v, CTOR);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public Vec3F rDivN(float tx, float ty, float tz)
 	{
-		return VecUtils3F.divCreateNew(tx, ty, tz, this.v, this);
+		return VecUtils3F.divFunc(tx, ty, tz, this.v, CTOR);
 	}
 	
 	/** {@inheritDoc} */
@@ -1214,9 +1153,9 @@ public class Vec3F implements IVec3WF
 
 	/** {@inheritDoc} */
 	@Override
-	public float recLen()
+	public float lenRc()
 	{
-		return VecUtils3F.recLen(this.v);
+		return VecUtils3F.lenRc(this.v);
 	}
 
 	/** {@inheritDoc} */
@@ -1277,65 +1216,65 @@ public class Vec3F implements IVec3WF
 
 	/** {@inheritDoc} */
 	@Override
-	public float recLenTo(ITup3RF t)
+	public float lenRcTo(ITup3RF t)
 	{
-		return VecUtils3F.recLenTo(this.v, t);
+		return VecUtils3F.lenRcTo(this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public float recLenTo(ITupRF t)
+	public float lenRcTo(ITupRF t)
 	{
-		return VecUtils3F.recLenTo(this.v, t);
+		return VecUtils3F.lenRcTo(this.v, t);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float recLenTo(float[] t)
+	public float lenRcTo(float[] t)
 	{
-		return VecUtils3F.recLenTo(this.v, t);
+		return VecUtils3F.lenRcTo(this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public float recLenTo(float tx, float ty, float tz)
+	public float lenRcTo(float tx, float ty, float tz)
 	{
-		return VecUtils3F.recLenTo(this.v, tx, ty, tz);
+		return VecUtils3F.lenRcTo(this.v, tx, ty, tz);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public float sqrLen()
+	public float lenSq()
 	{
-		return VecUtils3F.sqrLen(this.v);
+		return VecUtils3F.lenSq(this.v);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public float sqrLenTo(ITup3RF t)
+	public float lenSqTo(ITup3RF t)
 	{
-		return VecUtils3F.sqrLenTo(this.v, t);
+		return VecUtils3F.lenSqTo(this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public float sqrLenTo(ITupRF t)
+	public float lenSqTo(ITupRF t)
 	{
-		return VecUtils3F.sqrLenTo(this.v, t);
+		return VecUtils3F.lenSqTo(this.v, t);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float sqrLenTo(float[] t)
+	public float lenSqTo(float[] t)
 	{
-		return VecUtils3F.sqrLenTo(this.v, t);
+		return VecUtils3F.lenSqTo(this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public float sqrLenTo(float tx, float ty, float tz)
+	public float lenSqTo(float tx, float ty, float tz)
 	{
-		return VecUtils3F.sqrLenTo(this.v, tx, ty, tz);
+		return VecUtils3F.lenSqTo(this.v, tx, ty, tz);
 	}
 
 	/** {@inheritDoc} */
@@ -1406,28 +1345,28 @@ public class Vec3F implements IVec3WF
 	@Override
 	public Vec3F halfVecToN(ITup3RF t)
 	{
-		return VecUtils3F.halfVecToCreateNew(this.v, t, this);
+		return VecUtils3F.halfVecToFunc(this.v, t, CTOR);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public Vec3F halfVecToN(ITupRF t)
 	{
-		return VecUtils3F.halfVecToCreateNew(this.v, t, this);
+		return VecUtils3F.halfVecToFunc(this.v, t, CTOR);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public Vec3F halfVecToN(float[] t)
 	{
-		return VecUtils3F.halfVecToCreateNew(this.v, t, this);
+		return VecUtils3F.halfVecToFunc(this.v, t, CTOR);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public Vec3F halfVecToN(float tx, float ty, float tz)
 	{
-		return VecUtils3F.halfVecToCreateNew(this.v, tx, ty, tz, this);
+		return VecUtils3F.halfVecToFunc(this.v, tx, ty, tz, CTOR);
 	}
 	
 	/** {@inheritDoc} */
@@ -1526,28 +1465,28 @@ public class Vec3F implements IVec3WF
 	@Override
 	public Vec3F midPointToN(ITup3RF t)
 	{
-		return VecUtils3F.midPointToCreateNew(this.v, t, this);
+		return VecUtils3F.midPointToFunc(this.v, t, CTOR);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public Vec3F midPointToN(ITupRF t)
 	{
-		return VecUtils3F.midPointToCreateNew(this.v, t, this);
+		return VecUtils3F.midPointToFunc(this.v, t, CTOR);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public Vec3F midPointToN(float[] t)
 	{
-		return VecUtils3F.midPointToCreateNew(this.v, t, this);
+		return VecUtils3F.midPointToFunc(this.v, t, CTOR);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public Vec3F midPointToN(float tx, float ty, float tz)
 	{
-		return VecUtils3F.midPointToCreateNew(this.v, tx, ty, tz, this);
+		return VecUtils3F.midPointToFunc(this.v, tx, ty, tz, CTOR);
 	}
 	
 	/** {@inheritDoc} */
@@ -1619,7 +1558,7 @@ public class Vec3F implements IVec3WF
 	@Override
 	public Vec3F negN()
 	{
-		return VecUtils3F.negCreateNew(this.v, this);
+		return VecUtils3F.negFunc(this.v, CTOR);
 	}
 	
 	/** {@inheritDoc} */
@@ -1649,7 +1588,7 @@ public class Vec3F implements IVec3WF
 	@Override
 	public Vec3F recN()
 	{
-		return VecUtils3F.recCreateNew(this.v, this);
+		return VecUtils3F.recFunc(this.v, CTOR);
 	}
 	
 	/** {@inheritDoc} */
@@ -1679,7 +1618,7 @@ public class Vec3F implements IVec3WF
 	@Override
 	public Vec3F nrmN()
 	{
-		return VecUtils3F.nrmCreateNew(this.v, this);
+		return VecUtils3F.nrmFunc(this.v, CTOR);
 	}
 	
 	/** {@inheritDoc} */
@@ -1736,28 +1675,28 @@ public class Vec3F implements IVec3WF
 	@Override
 	public Vec3F projectN(ITup3RF t)
 	{
-		return VecUtils3F.projectCreateNew(this.v, t, this);
+		return VecUtils3F.projectFunc(this.v, t, CTOR);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public Vec3F projectN(ITupRF t)
 	{
-		return VecUtils3F.projectCreateNew(this.v, t, this);
+		return VecUtils3F.projectFunc(this.v, t, CTOR);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public Vec3F projectN(float[] t)
 	{
-		return VecUtils3F.projectCreateNew(this.v, t, this);
+		return VecUtils3F.projectFunc(this.v, t, CTOR);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public Vec3F projectN(float tx, float ty, float tz)
 	{
-		return VecUtils3F.projectCreateNew(this.v, tx, ty, tz, this);
+		return VecUtils3F.projectFunc(this.v, tx, ty, tz, CTOR);
 	}
 	
 	/** {@inheritDoc} */
@@ -1856,28 +1795,28 @@ public class Vec3F implements IVec3WF
 	@Override
 	public Vec3F reflectN(ITup3RF n)
 	{
-		return VecUtils3F.reflectCreateNew(this.v, n, this);
+		return VecUtils3F.reflectFunc(this.v, n, CTOR);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public Vec3F reflectN(ITupRF n)
 	{
-		return VecUtils3F.reflectCreateNew(this.v, n, this);
+		return VecUtils3F.reflectFunc(this.v, n, CTOR);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public Vec3F reflectN(float[] n)
 	{
-		return VecUtils3F.reflectCreateNew(this.v, n, this);
+		return VecUtils3F.reflectFunc(this.v, n, CTOR);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public Vec3F reflectN(float nx, float ny, float nz)
 	{
-		return VecUtils3F.reflectCreateNew(this.v, nx, ny, nz, this);
+		return VecUtils3F.reflectFunc(this.v, nx, ny, nz, CTOR);
 	}
 	
 	/** {@inheritDoc} */
@@ -1949,7 +1888,7 @@ public class Vec3F implements IVec3WF
 	@Override
 	public Vec3F absN()
 	{
-		return VecUtils3F.absCreateNew(this.v, this);
+		return VecUtils3F.absFunc(this.v, CTOR);
 	}
 	
 	/** {@inheritDoc} */
@@ -1979,7 +1918,7 @@ public class Vec3F implements IVec3WF
 	@Override
 	public Vec3F signN()
 	{
-		return VecUtils3F.signCreateNew(this.v, this);
+		return VecUtils3F.signFunc(this.v, CTOR);
 	}
 
 	/** {@inheritDoc} */
@@ -2000,676 +1939,662 @@ public class Vec3F implements IVec3WF
 	@Override
 	public boolean isFiniteAt(int index)
 	{
-		return TupUtils3F.Comp.isFiniteAt(index, this.v);
+		return TupUtils3F.isFiniteAt(index, this.v);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean isFiniteAtV0()
 	{
-		return TupUtils3F.Comp.isFiniteAtV0(this.v);
+		return TupUtils3F.isFiniteAtV0(this.v);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean isFiniteAtV1()
 	{
-		return TupUtils3F.Comp.isFiniteAtV1(this.v);
+		return TupUtils3F.isFiniteAtV1(this.v);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean isFiniteAtV2()
 	{
-		return TupUtils3F.Comp.isFiniteAtV2(this.v);
+		return TupUtils3F.isFiniteAtV2(this.v);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public boolean isZeroAt(int index)
 	{
-		return TupUtils3F.Comp.isZeroAt(index, this.v);
+		return TupUtils3F.isZeroAt(index, this.v);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean isZeroAtV0()
 	{
-		return TupUtils3F.Comp.isZeroAtV0(this.v);
+		return TupUtils3F.isZeroAtV0(this.v);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean isZeroAtV1()
 	{
-		return TupUtils3F.Comp.isZeroAtV1(this.v);
+		return TupUtils3F.isZeroAtV1(this.v);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean isZeroAtV2()
 	{
-		return TupUtils3F.Comp.isZeroAtV2(this.v);
+		return TupUtils3F.isZeroAtV2(this.v);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public boolean isZeroAt(float tolerance, int index)
 	{
-		return TupUtils3F.Comp.isZeroAt(tolerance, index, this.v);
+		return TupUtils3F.isZeroAt(tolerance, index, this.v);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public boolean isZeroAtV0(float tolerance)
 	{
-		return TupUtils3F.Comp.isZeroAtV0(tolerance, this.v);
+		return TupUtils3F.isZeroAtV0(tolerance, this.v);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean isZeroAtV1(float tolerance)
 	{
-		return TupUtils3F.Comp.isZeroAtV1(tolerance, this.v);
+		return TupUtils3F.isZeroAtV1(tolerance, this.v);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean isZeroAtV2(float tolerance)
 	{
-		return TupUtils3F.Comp.isZeroAtV2(tolerance, this.v);
+		return TupUtils3F.isZeroAtV2(tolerance, this.v);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public boolean equals(ITup3RF t)
 	{
-		return TupUtils3F.Comp.equals(this.v, t);
+		return TupUtils3F.equals(this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equals(ITupRF t)
 	{
-		return TupUtils3F.Comp.equals(this.v, t);
+		return TupUtils3F.equals(this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equals(float[] t)
 	{
-		return TupUtils3F.Comp.equals(this.v, t);
+		return TupUtils3F.equals(this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equals(float tv0, float tv1, float tv2)
 	{
-		return TupUtils3F.Comp.equals(this.v, tv0, tv1, tv2);
+		return TupUtils3F.equals(this.v, tv0, tv1, tv2);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equals(float tolerance, ITup3RF t)
 	{
-		return TupUtils3F.Comp.equals(tolerance, this.v, t);
+		return TupUtils3F.equals(tolerance, this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equals(float tolerance, ITupRF t)
 	{
-		return TupUtils3F.Comp.equals(tolerance, this.v, t);
+		return TupUtils3F.equals(tolerance, this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equals(float tolerance, float[] t)
 	{
-		return TupUtils3F.Comp.equals(tolerance, this.v, t);
+		return TupUtils3F.equals(tolerance, this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equals(float tolerance, float tv0, float tv1, float tv2)
 	{
-		return TupUtils3F.Comp.equals(tolerance, this.v, tv0, tv1, tv2);
+		return TupUtils3F.equals(tolerance, this.v, tv0, tv1, tv2);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAt(int index, ITup3RF t)
 	{
-		return TupUtils3F.Comp.equalsAt(index, this.v, t);
+		return TupUtils3F.equalsAt(index, this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAt(int index, ITupRF t)
 	{
-		return TupUtils3F.Comp.equalsAt(index, this.v, t);
+		return TupUtils3F.equalsAt(index, this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAt(int index, float[] t)
 	{
-		return TupUtils3F.Comp.equalsAt(index, this.v, t);
+		return TupUtils3F.equalsAt(index, this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAt(int index, float value)
 	{
-		return TupUtils3F.Comp.equalsAt(index, this.v, value);
+		return TupUtils3F.equalsAt(index, this.v, value);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAt(float tolerance, int index, ITup3RF t)
 	{
-		return TupUtils3F.Comp.equalsAt(tolerance, index, this.v, t);
+		return TupUtils3F.equalsAt(tolerance, index, this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAt(float tolerance, int index, ITupRF t)
 	{
-		return TupUtils3F.Comp.equalsAt(tolerance, index, this.v, t);
+		return TupUtils3F.equalsAt(tolerance, index, this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAt(float tolerance, int index, float[] t)
 	{
-		return TupUtils3F.Comp.equalsAt(tolerance, index, this.v, t);
+		return TupUtils3F.equalsAt(tolerance, index, this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAt(float tolerance, int index, float value)
 	{
-		return TupUtils3F.Comp.equalsAt(tolerance, index, this.v, value);
+		return TupUtils3F.equalsAt(tolerance, index, this.v, value);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV0(ITup3RF t)
 	{
-		return TupUtils3F.Comp.equalsAtV0(this.v, t);
+		return TupUtils3F.equalsAtV0(this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV0(ITupRF t)
 	{
-		return TupUtils3F.Comp.equalsAtV0(this.v, t);
+		return TupUtils3F.equalsAtV0(this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV0(float[] t)
 	{
-		return TupUtils3F.Comp.equalsAtV0(this.v, t);
+		return TupUtils3F.equalsAtV0(this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV0(float value)
 	{
-		return TupUtils3F.Comp.equalsAtV0(this.v, value);
+		return TupUtils3F.equalsAtV0(this.v, value);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV1(ITup3RF t)
 	{
-		return TupUtils3F.Comp.equalsAtV1(this.v, t);
+		return TupUtils3F.equalsAtV1(this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV1(ITupRF t)
 	{
-		return TupUtils3F.Comp.equalsAtV1(this.v, t);
+		return TupUtils3F.equalsAtV1(this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV1(float[] t)
 	{
-		return TupUtils3F.Comp.equalsAtV1(this.v, t);
+		return TupUtils3F.equalsAtV1(this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV1(float value)
 	{
-		return TupUtils3F.Comp.equalsAtV1(this.v, value);
+		return TupUtils3F.equalsAtV1(this.v, value);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV2(ITup3RF t)
 	{
-		return TupUtils3F.Comp.equalsAtV2(this.v, t);
+		return TupUtils3F.equalsAtV2(this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV2(ITupRF t)
 	{
-		return TupUtils3F.Comp.equalsAtV2(this.v, t);
+		return TupUtils3F.equalsAtV2(this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV2(float[] t)
 	{
-		return TupUtils3F.Comp.equalsAtV2(this.v, t);
+		return TupUtils3F.equalsAtV2(this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV2(float value)
 	{
-		return TupUtils3F.Comp.equalsAtV2(this.v, value);
+		return TupUtils3F.equalsAtV2(this.v, value);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV0(float tolerance, ITup3RF t)
 	{
-		return TupUtils3F.Comp.equalsAtV0(tolerance, this.v, t);
+		return TupUtils3F.equalsAtV0(tolerance, this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV0(float tolerance, ITupRF t)
 	{
-		return TupUtils3F.Comp.equalsAtV0(tolerance, this.v, t);
+		return TupUtils3F.equalsAtV0(tolerance, this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV0(float tolerance, float[] t)
 	{
-		return TupUtils3F.Comp.equalsAtV0(tolerance, this.v, t);
+		return TupUtils3F.equalsAtV0(tolerance, this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV0(float tolerance, float value)
 	{
-		return TupUtils3F.Comp.equalsAtV0(tolerance, this.v, value);
+		return TupUtils3F.equalsAtV0(tolerance, this.v, value);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV1(float tolerance, ITup3RF t)
 	{
-		return TupUtils3F.Comp.equalsAtV1(tolerance, this.v, t);
+		return TupUtils3F.equalsAtV1(tolerance, this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV1(float tolerance, ITupRF t)
 	{
-		return TupUtils3F.Comp.equalsAtV1(tolerance, this.v, t);
+		return TupUtils3F.equalsAtV1(tolerance, this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV1(float tolerance, float[] t)
 	{
-		return TupUtils3F.Comp.equalsAtV1(tolerance, this.v, t);
+		return TupUtils3F.equalsAtV1(tolerance, this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV1(float tolerance, float value)
 	{
-		return TupUtils3F.Comp.equalsAtV1(tolerance, this.v, value);
+		return TupUtils3F.equalsAtV1(tolerance, this.v, value);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV2(float tolerance, ITup3RF t)
 	{
-		return TupUtils3F.Comp.equalsAtV2(tolerance, this.v, t);
+		return TupUtils3F.equalsAtV2(tolerance, this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV2(float tolerance, ITupRF t)
 	{
-		return TupUtils3F.Comp.equalsAtV2(tolerance, this.v, t);
+		return TupUtils3F.equalsAtV2(tolerance, this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV2(float tolerance, float[] t)
 	{
-		return TupUtils3F.Comp.equalsAtV2(tolerance, this.v, t);
+		return TupUtils3F.equalsAtV2(tolerance, this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV2(float tolerance, float value)
 	{
-		return TupUtils3F.Comp.equalsAtV2(tolerance, this.v, value);
+		return TupUtils3F.equalsAtV2(tolerance, this.v, value);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public Vec3F arrange(int[] indices)
+	public Vec3F swizzle(int[] indices)
 	{
-		TupUtils3F.arrange(this.v, indices, this.v);
+		VecUtils3F.swizzle(this.v, indices, this.v);
 		
 		return this;
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public Vec3F arrangeN(int[] indices)
+	public Vec3F swizzleN(int[] indices)
 	{
-		return TupUtils3F.arrange(this.v, indices, createNew());
+		return VecUtils3F.swizzleFunc(this.v, indices, CTOR);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float[] arrangeT(int[] indices, float[] res)
+	public float[] swizzleT(int[] indices, float[] res)
 	{
-		return TupUtils3F.arrange(this.v, indices, res);
+		return VecUtils3F.swizzle(this.v, indices, res);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public <T extends ITup3WF> T arrangeT(int[] indices, T res)
+	public <T extends ITup3WF> T swizzleT(int[] indices, T res)
 	{
-		return TupUtils3F.arrange(this.v, indices, res);
+		return VecUtils3F.swizzle(this.v, indices, res);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public Vec3F swizzle(int indexX, int indexY, int indexZ)
+	{
+		VecUtils3F.swizzle(this.v, indexX, indexY, indexZ, this.v);
+		
+		return this;
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public Vec3F swizzleN(int indexX, int indexY, int indexZ)
+	{
+		return VecUtils3F.swizzleFunc(this.v, indexX, indexY, indexZ, CTOR);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public float[] swizzleT(int indexX, int indexY, int indexZ, float[] res)
+	{
+		return VecUtils3F.swizzle(this.v, indexX, indexY, indexZ, res);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public <T extends ITup3WF> T swizzleT(int indexX, int indexY, int indexZ, T res)
+	{
+		return VecUtils3F.swizzle(this.v, indexX, indexY, indexZ, res);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public <T extends ITupWF> T arrangeT(int[] indices, T res)
+	public Vec3F swap(int indexA, int indexB)
 	{
-		throw new UnsupportedOperationException("Not implemented yet.");
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public Vec3F arrange(int indexX, int indexY, int indexZ)
-	{
-		TupUtils3F.arrange(this.v, indexX, indexY, indexZ, this.v);
+		VecUtils3F.swap(this.v, indexA, indexB, this.v);
 		
 		return this;
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public Vec3F arrangeN(int indexX, int indexY, int indexZ)
+	public Vec3F swapN(int indexA, int indexB)
 	{
-		return TupUtils3F.arrangeCreateNew(this.v, indexX, indexY, indexZ, this);
+		return VecUtils3F.swapFunc(this.v, indexA, indexB, CTOR);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float[] arrangeT(int indexX, int indexY, int indexZ, float[] res)
+	public float[] swapT(int indexA, int indexB, float[] res)
 	{
-		return TupUtils3F.arrange(this.v, indexX, indexY, indexZ, res);
+		return VecUtils3F.swap(this.v, indexA, indexB, res);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public <T extends ITup3WF> T arrangeT(int indexX, int indexY, int indexZ, T res)
+	public <T extends ITup3WF> T swapT(int indexA, int indexB, T res)
 	{
-		return TupUtils3F.arrange(this.v, indexX, indexY, indexZ, res);
+		return VecUtils3F.swap(this.v, indexA, indexB, res);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public Vec3F swapV0V1()
+	{
+		VecUtils3F.swapV0V1(this.v, this.v);
+		
+		return this;
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public Vec3F swapV0V2()
+	{
+		VecUtils3F.swapV0V2(this.v, this.v);
+		
+		return this;
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public Vec3F swapV1V2()
+	{
+		VecUtils3F.swapV1V2(this.v, this.v);
+		
+		return this;
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public Vec3F swapV0V1N()
+	{
+		return VecUtils3F.swapV0V1Func(this.v, CTOR);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public Vec3F swapV0V2N()
+	{
+		return VecUtils3F.swapV0V2Func(this.v, CTOR);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public Vec3F swapV1V2N()
+	{
+		return VecUtils3F.swapV1V2Func(this.v, CTOR);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public float[] swapV0V1T(float[] res)
+	{
+		return VecUtils3F.swapV0V1(this.v, res);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public float[] swapV0V2T(float[] res)
+	{
+		return VecUtils3F.swapV0V2(this.v, res);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public float[] swapV1V2T(float[] res)
+	{
+		return VecUtils3F.swapV1V2(this.v, res);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public <T extends ITup3WF> T swapV0V1T(T res)
+	{
+		return VecUtils3F.swapV0V1(this.v, res);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec3F swizzle(int indexA, int indexB)
+	public <T extends ITup3WF> T swapV0V2T(T res)
 	{
-		TupUtils3F.swizzle(this.v, indexA, indexB, this.v);
+		return VecUtils3F.swapV0V2(this.v, res);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public <T extends ITup3WF> T swapV1V2T(T res)
+	{
+		return VecUtils3F.swapV1V2(this.v, res);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public Vec3F swapXY()
+	{
+		VecUtils3F.swapV0V1(this.v, this.v);
 		
 		return this;
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public Vec3F swizzleN(int indexA, int indexB)
+	public Vec3F swapXZ()
 	{
-		return TupUtils3F.swizzleCreateNew(this.v, indexA, indexB, this);
+		VecUtils3F.swapV0V2(this.v, this.v);
+		
+		return this;
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float[] swizzleT(int indexA, int indexB, float[] res)
+	public Vec3F swapYZ()
 	{
-		return TupUtils3F.swizzle(this.v, indexA, indexB, res);
+		VecUtils3F.swapV1V2(this.v, this.v);
+		
+		return this;
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public <T extends ITup3WF> T swizzleT(int indexA, int indexB, T res)
+	public Vec3F swapXYN()
 	{
-		return TupUtils3F.swizzle(this.v, indexA, indexB, res);
+		return VecUtils3F.swapV0V1Func(this.v, CTOR);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public Vec3F swapXZN()
+	{
+		return VecUtils3F.swapV0V2Func(this.v, CTOR);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public Vec3F swapYZN()
+	{
+		return VecUtils3F.swapV1V2Func(this.v, CTOR);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public float[] swapXYT(float[] res)
+	{
+		return VecUtils3F.swapV0V1(this.v, res);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public float[] swapXZT(float[] res)
+	{
+		return VecUtils3F.swapV0V2(this.v, res);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public float[] swapYZT(float[] res)
+	{
+		return VecUtils3F.swapV1V2(this.v, res);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public <T extends ITup3WF> T swapXYT(T res)
+	{
+		return VecUtils3F.swapV0V1(this.v, res);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public <T extends ITupWF> T swizzleT(int indexA, int indexB, T res)
+	public <T extends ITup3WF> T swapXZT(T res)
 	{
-		throw new UnsupportedOperationException("Not implemented yet.");
+		return VecUtils3F.swapV0V2(this.v, res);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public Vec3F swizzleV0V1()
+	public <T extends ITup3WF> T swapYZT(T res)
 	{
-		TupUtils3F.swizzleV0V1(this.v, this.v);
-		
-		return this;
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public Vec3F swizzleV0V2()
-	{
-		TupUtils3F.swizzleV0V2(this.v, this.v);
-		
-		return this;
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public Vec3F swizzleV1V2()
-	{
-		TupUtils3F.swizzleV1V2(this.v, this.v);
-		
-		return this;
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public Vec3F swizzleV0V1N()
-	{
-		return TupUtils3F.swizzleV0V1CreateNew(this.v, this);
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public Vec3F swizzleV0V2N()
-	{
-		return TupUtils3F.swizzleV0V2CreateNew(this.v, this);
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public Vec3F swizzleV1V2N()
-	{
-		return TupUtils3F.swizzleV1V2CreateNew(this.v, this);
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public float[] swizzleV0V1T(float[] res)
-	{
-		return TupUtils3F.swizzleV0V1(this.v, res);
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public float[] swizzleV0V2T(float[] res)
-	{
-		return TupUtils3F.swizzleV0V2(this.v, res);
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public float[] swizzleV1V2T(float[] res)
-	{
-		return TupUtils3F.swizzleV1V2(this.v, res);
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public <T extends ITup3WF> T swizzleV0V1T(T res)
-	{
-		return TupUtils3F.swizzleV0V1(this.v, res);
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public <T extends ITup3WF> T swizzleV0V2T(T res)
-	{
-		return TupUtils3F.swizzleV0V2(this.v, res);
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public <T extends ITup3WF> T swizzleV1V2T(T res)
-	{
-		return TupUtils3F.swizzleV1V2(this.v, res);
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public Vec3F swizzleXY()
-	{
-		TupUtils3F.swizzleV0V1(this.v, this.v);
-		
-		return this;
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public Vec3F swizzleXZ()
-	{
-		TupUtils3F.swizzleV0V2(this.v, this.v);
-		
-		return this;
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public Vec3F swizzleYZ()
-	{
-		TupUtils3F.swizzleV1V2(this.v, this.v);
-		
-		return this;
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public Vec3F swizzleXYN()
-	{
-		return TupUtils3F.swizzleV0V1CreateNew(this.v, this);
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public Vec3F swizzleXZN()
-	{
-		return TupUtils3F.swizzleV0V2CreateNew(this.v, this);
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public Vec3F swizzleYZN()
-	{
-		return TupUtils3F.swizzleV1V2CreateNew(this.v, this);
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public float[] swizzleXYT(float[] res)
-	{
-		return TupUtils3F.swizzleV0V1(this.v, res);
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public float[] swizzleXZT(float[] res)
-	{
-		return TupUtils3F.swizzleV0V2(this.v, res);
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public float[] swizzleYZT(float[] res)
-	{
-		return TupUtils3F.swizzleV1V2(this.v, res);
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public <T extends ITup3WF> T swizzleXYT(T res)
-	{
-		return TupUtils3F.swizzleV0V1(this.v, res);
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public <T extends ITup3WF> T swizzleXZT(T res)
-	{
-		return TupUtils3F.swizzleV0V2(this.v, res);
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public <T extends ITup3WF> T swizzleYZT(T res)
-	{
-		return TupUtils3F.swizzleV1V2(this.v, res);
+		return VecUtils3F.swapV1V2(this.v, res);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public boolean isFinite()
 	{
-		return TupUtils3F.Comp.isFinite(this.v);
+		return TupUtils3F.isFinite(this.v);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean isZero()
 	{
-		return TupUtils3F.Comp.isZero(this.v);
+		return TupUtils3F.isZero(this.v);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean isZero(float tolerance)
 	{
-		return TupUtils3F.Comp.isZero(tolerance, this.v);
+		return TupUtils3F.isZero(tolerance, this.v);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public Vec3F minComponents(ITup3RF t)
 	{
-		TupUtils3F.minComponents(this.v, t, this.v);
+		VecUtils3F.minComponents(this.v, t, this.v);
 		
 		return this;
 	}
@@ -2678,7 +2603,7 @@ public class Vec3F implements IVec3WF
 	@Override
 	public Vec3F minComponents(ITupRF t)
 	{
-		TupUtils3F.minComponents(this.v, t, this.v);
+		VecUtils3F.minComponents(this.v, t, this.v);
 		
 		return this;
 	}
@@ -2687,7 +2612,7 @@ public class Vec3F implements IVec3WF
 	@Override
 	public Vec3F minComponents(float[] t)
 	{
-		TupUtils3F.minComponents(this.v, t, this.v);
+		VecUtils3F.minComponents(this.v, t, this.v);
 		
 		return this;
 	}
@@ -2696,7 +2621,7 @@ public class Vec3F implements IVec3WF
 	@Override
 	public Vec3F minComponents(float tv0, float tv1, float tv2)
 	{
-		TupUtils3F.minComponents(this.v, tv0, tv1, tv2, this.v);
+		VecUtils3F.minComponents(this.v, tv0, tv1, tv2, this.v);
 		
 		return this;
 	}
@@ -2705,98 +2630,91 @@ public class Vec3F implements IVec3WF
 	@Override
 	public Vec3F minComponentsN(ITup3RF t)
 	{
-		return TupUtils3F.minComponentsCreateNew(this.v, t, this);
+		return VecUtils3F.minComponentsFunc(this.v, t, CTOR);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public Vec3F minComponentsN(ITupRF t)
 	{
-		return TupUtils3F.minComponentsCreateNew(this.v, t, this);
+		return VecUtils3F.minComponentsFunc(this.v, t, CTOR);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public Vec3F minComponentsN(float[] t)
 	{
-		return TupUtils3F.minComponentsCreateNew(this.v, t, this);
+		return VecUtils3F.minComponentsFunc(this.v, t, CTOR);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public Vec3F minComponentsN(float tv0, float tv1, float tv2)
 	{
-		return TupUtils3F.minComponentsCreateNew(this.v, tv0, tv1, tv2, this);
+		return VecUtils3F.minComponentsFunc(this.v, tv0, tv1, tv2, CTOR);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public float[] minComponentsT(ITup3RF t, float[] res)
 	{
-		return TupUtils3F.minComponents(this.v, t, res);
+		return VecUtils3F.minComponents(this.v, t, res);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public float[] minComponentsT(ITupRF t, float[] res)
 	{
-		return TupUtils3F.minComponents(this.v, t, res);
+		return VecUtils3F.minComponents(this.v, t, res);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public float[] minComponentsT(float[] t, float[] res)
 	{
-		return TupUtils3F.minComponents(this.v, t, res);
+		return VecUtils3F.minComponents(this.v, t, res);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public float[] minComponentsT(float tv0, float tv1, float tv2, float[] res)
 	{
-		return TupUtils3F.minComponents(this.v, tv0, tv1, tv2, res);
+		return VecUtils3F.minComponents(this.v, tv0, tv1, tv2, res);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public <T extends ITup3WF> T minComponentsT(ITup3RF t, T res)
 	{
-		return TupUtils3F.minComponents(this.v, t, res);
+		return VecUtils3F.minComponents(this.v, t, res);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public <T extends ITup3WF> T minComponentsT(ITupRF t, T res)
 	{
-		return TupUtils3F.minComponents(this.v, t, res);
+		return VecUtils3F.minComponents(this.v, t, res);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public <T extends ITup3WF> T minComponentsT(float[] t, T res)
 	{
-		return TupUtils3F.minComponents(this.v, t, res);
+		return VecUtils3F.minComponents(this.v, t, res);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public <T extends ITup3WF> T minComponentsT(float tv0, float tv1, float tv2, T res)
 	{
-		return TupUtils3F.minComponents(this.v, tv0, tv1, tv2, res);
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public <T extends ITupWF> T minComponentsT(ITupRF t, T res)
-	{
-		throw new UnsupportedOperationException("Not implemented yet.");
+		return VecUtils3F.minComponents(this.v, tv0, tv1, tv2, res);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public Vec3F maxComponents(ITup3RF t)
 	{
-		TupUtils3F.maxComponents(this.v, t, this.v);
+		VecUtils3F.maxComponents(this.v, t, this.v);
 		
 		return this;
 	}
@@ -2805,7 +2723,7 @@ public class Vec3F implements IVec3WF
 	@Override
 	public Vec3F maxComponents(ITupRF t)
 	{
-		TupUtils3F.maxComponents(this.v, t, this.v);
+		VecUtils3F.maxComponents(this.v, t, this.v);
 		
 		return this;
 	}
@@ -2814,7 +2732,7 @@ public class Vec3F implements IVec3WF
 	@Override
 	public Vec3F maxComponents(float[] t)
 	{
-		TupUtils3F.maxComponents(this.v, t, this.v);
+		VecUtils3F.maxComponents(this.v, t, this.v);
 		
 		return this;
 	}
@@ -2823,7 +2741,7 @@ public class Vec3F implements IVec3WF
 	@Override
 	public Vec3F maxComponents(float tv0, float tv1, float tv2)
 	{
-		TupUtils3F.maxComponents(this.v, tv0, tv1, tv2, this.v);
+		VecUtils3F.maxComponents(this.v, tv0, tv1, tv2, this.v);
 		
 		return this;
 	}
@@ -2832,119 +2750,112 @@ public class Vec3F implements IVec3WF
 	@Override
 	public Vec3F maxComponentsN(ITup3RF t)
 	{
-		return TupUtils3F.maxComponentsCreateNew(this.v, t, this);
+		return VecUtils3F.maxComponentsFunc(this.v, t, CTOR);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public Vec3F maxComponentsN(ITupRF t)
 	{
-		return TupUtils3F.maxComponentsCreateNew(this.v, t, this);
+		return VecUtils3F.maxComponentsFunc(this.v, t, CTOR);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public Vec3F maxComponentsN(float[] t)
 	{
-		return TupUtils3F.maxComponentsCreateNew(this.v, t, this);
+		return VecUtils3F.maxComponentsFunc(this.v, t, CTOR);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public Vec3F maxComponentsN(float tv0, float tv1, float tv2)
 	{
-		return TupUtils3F.maxComponentsCreateNew(this.v, tv0, tv1, tv2, this);
+		return VecUtils3F.maxComponentsFunc(this.v, tv0, tv1, tv2, CTOR);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public float[] maxComponentsT(ITup3RF t, float[] res)
 	{
-		return TupUtils3F.maxComponents(this.v, t, res);
+		return VecUtils3F.maxComponents(this.v, t, res);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public float[] maxComponentsT(ITupRF t, float[] res)
 	{
-		return TupUtils3F.maxComponents(this.v, t, res);
+		return VecUtils3F.maxComponents(this.v, t, res);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public float[] maxComponentsT(float[] t, float[] res)
 	{
-		return TupUtils3F.maxComponents(this.v, t, res);
+		return VecUtils3F.maxComponents(this.v, t, res);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public float[] maxComponentsT(float tv0, float tv1, float tv2, float[] res)
 	{
-		return TupUtils3F.maxComponents(this.v, tv0, tv1, tv2, res);
+		return VecUtils3F.maxComponents(this.v, tv0, tv1, tv2, res);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public <T extends ITup3WF> T maxComponentsT(ITup3RF t, T res)
 	{
-		return TupUtils3F.maxComponents(this.v, t, res);
+		return VecUtils3F.maxComponents(this.v, t, res);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public <T extends ITup3WF> T maxComponentsT(ITupRF t, T res)
 	{
-		return TupUtils3F.maxComponents(this.v, t, res);
+		return VecUtils3F.maxComponents(this.v, t, res);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public <T extends ITup3WF> T maxComponentsT(float[] t, T res)
 	{
-		return TupUtils3F.maxComponents(this.v, t, res);
+		return VecUtils3F.maxComponents(this.v, t, res);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public <T extends ITup3WF> T maxComponentsT(float tv0, float tv1, float tv2, T res)
 	{
-		return TupUtils3F.maxComponents(this.v, tv0, tv1, tv2, res);
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public <T extends ITupWF> T maxComponentsT(ITupRF t, T res)
-	{
-		throw new UnsupportedOperationException("Not implemented yet.");
+		return VecUtils3F.maxComponents(this.v, tv0, tv1, tv2, res);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public IndexValuePairF min()
 	{
-		return TupUtils3F.min(this.v, new IndexValuePairF());
+		return VecUtils3F.min(this.v, new IndexValuePairF());
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public IndexValuePairF min(IndexValuePairF res)
 	{
-		return TupUtils3F.min(this.v, res);
+		return VecUtils3F.min(this.v, res);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public IndexValuePairF max()
 	{
-		return TupUtils3F.max(this.v, new IndexValuePairF());
+		return VecUtils3F.max(this.v, new IndexValuePairF());
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public IndexValuePairF max(IndexValuePairF res)
 	{
-		return TupUtils3F.max(this.v, res);
+		return VecUtils3F.max(this.v, res);
 	}
 	
 	/** {@inheritDoc} */
@@ -2979,28 +2890,28 @@ public class Vec3F implements IVec3WF
 	@Override
 	public IVec3WF crossN(ITup3RF t)
 	{
-		return VecUtils3F.crossCreateNew(this, t, this);
+		return VecUtils3F.crossFunc(this, t, CTOR);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public IVec3WF crossN(ITupRF t)
 	{
-		return VecUtils3F.crossCreateNew(this, t, this);
+		return VecUtils3F.crossFunc(this, t, CTOR);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public IVec3WF crossN(float[] t)
 	{
-		return VecUtils3F.crossCreateNew(this, t, this);
+		return VecUtils3F.crossFunc(this, t, CTOR);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public IVec3WF crossN(float tv0, float tv1, float tv2)
 	{
-		return VecUtils3F.crossCreateNew(this, tv0, tv1, tv2, this);
+		return VecUtils3F.crossFunc(this, tv0, tv1, tv2, CTOR);
 	}
 	
 	/** {@inheritDoc} */
@@ -3091,28 +3002,28 @@ public class Vec3F implements IVec3WF
 	@Override
 	public IVec3WF rCrossN(ITup3RF t)
 	{
-		return VecUtils3F.crossCreateNew(t, this, this);
+		return VecUtils3F.crossFunc(t, this, CTOR);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public IVec3WF rCrossN(ITupRF t)
 	{
-		return VecUtils3F.crossCreateNew(t, this, this);
+		return VecUtils3F.crossFunc(t, this, CTOR);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public IVec3WF rCrossN(float[] t)
 	{
-		return VecUtils3F.crossCreateNew(t, this, this);
+		return VecUtils3F.crossFunc(t, this, CTOR);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public IVec3WF rCrossN(float tv0, float tv1, float tv2)
 	{
-		return VecUtils3F.crossCreateNew(tv0, tv1, tv2, this, this);
+		return VecUtils3F.crossFunc(tv0, tv1, tv2, this, CTOR);
 	}
 	
 	/** {@inheritDoc} */

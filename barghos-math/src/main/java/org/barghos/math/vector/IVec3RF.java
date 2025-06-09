@@ -1,6 +1,7 @@
 package org.barghos.math.vector;
 
 import org.barghos.annotation.ExtractionParam;
+import org.barghos.util.collection.IndexValuePairF;
 import org.barghos.util.tuple.floats.ITup3RF;
 import org.barghos.util.tuple.floats.ITup3WF;
 import org.barghos.util.tuple.floats.ITupRF;
@@ -11,30 +12,6 @@ import org.barghos.util.tuple.floats.ITupRF;
  */
 public interface IVec3RF extends ITup3RF
 {	
-	/** {@inheritDoc} */
-	@Override
-	IVec3RF createNew(ITup3RF t);
-	
-	/** {@inheritDoc} */
-	@Override
-	IVec3RF createNew(ITupRF t);
-	
-	/** {@inheritDoc} */
-	@Override
-	IVec3RF createNew(float[] t);
-	
-	/** {@inheritDoc} */
-	@Override
-	IVec3RF createNew(float value);
-	
-	/** {@inheritDoc} */
-	@Override
-	IVec3RF createNew(float x, float y, float z);
-	
-	/** {@inheritDoc} */
-	@Override
-	IVec3RF copy();
-	
 	/**
 	 * Returns the x component of the vector.
 	 * 
@@ -60,9 +37,9 @@ public interface IVec3RF extends ITup3RF
 
 	float len(float tolerance);
 
-	float recLen();
+	float lenRc();
 	
-	float sqrLen();
+	float lenSq();
 	
 	float lenTo(ITup3RF t);
 	
@@ -80,21 +57,21 @@ public interface IVec3RF extends ITup3RF
 
 	float lenTo(float tolerance, float tx, float ty, float tz);
 	
-	float recLenTo(ITup3RF t);
+	float lenRcTo(ITup3RF t);
 	
-	float recLenTo(ITupRF t);
+	float lenRcTo(ITupRF t);
 
-	float recLenTo(float[] t);
+	float lenRcTo(float[] t);
 
-	float recLenTo(float tx, float ty, float tz);
+	float lenRcTo(float tx, float ty, float tz);
 
-	float sqrLenTo(ITup3RF t);
+	float lenSqTo(ITup3RF t);
 	
-	float sqrLenTo(ITupRF t);
+	float lenSqTo(ITupRF t);
 
-	float sqrLenTo(float[] t);
+	float lenSqTo(float[] t);
 
-	float sqrLenTo(float tx, float ty, float tz);
+	float lenSqTo(float tx, float ty, float tz);
 
 	float dot(ITup3RF t);
 	
@@ -410,80 +387,116 @@ public interface IVec3RF extends ITup3RF
 
 	<T extends ITup3WF> T signT(@ExtractionParam T res);
 
-	/** {@inheritDoc} */
-	@Override
-	IVec3RF arrangeN(int[] indices);
+	IVec3RF swizzleN(int[] indices);
 
-	/** {@inheritDoc} */
-	@Override
-	IVec3RF arrangeN(int indexX, int indexY, int indexZ);
-
-	/** {@inheritDoc} */
-	@Override
-	IVec3RF swizzleN(int indexA, int indexB);
-
-	/** {@inheritDoc} */
-	@Override
-	IVec3RF swizzleV0V1N();
-
-	/** {@inheritDoc} */
-	@Override
-	IVec3RF swizzleV0V2N();
-
-	/** {@inheritDoc} */
-	@Override
-	IVec3RF swizzleV1V2N();
-
-	IVec3RF swizzleXYN();
-
-	<T extends ITup3WF> T swizzleXYT(T res);
+	float[] swizzleT(int[] indices, float[] res);
 	
-	float[] swizzleXYT(float[] res);
+	<T extends ITup3WF> T swizzleT(int[] indices, T res);
 	
-	IVec3RF swizzleXZN();
+	IVec3RF swizzleN(int indexX, int indexY, int indexZ);
+	
+	float[] swizzleT(int i0, int i1, int i2, float[] res);
+	
+	<T extends ITup3WF> T swizzleT(int i0, int i1, int i2, T res);
+	
+	IVec3RF swapN(int indexA, int indexB);
+	
+	float[] swapT(int indexA, int indexB, float[] res);
+	
+	<T extends ITup3WF> T swapT(int indexA, int indexB, T res);
+	
+	IVec3RF swapV0V1N();
 
-	<T extends ITup3WF> T swizzleXZT(T res);
+	float[] swapV0V1T(float[] res);
 	
-	float[] swizzleXZT(float[] res);
+	<T extends ITup3WF> T swapV0V1T(T res);
+
+	IVec3RF swapV0V2N();
+
+	float[] swapV0V2T(float[] res);
 	
-	IVec3RF swizzleYZN();
+	<T extends ITup3WF> T swapV0V2T(T res);
+
+	IVec3RF swapV1V2N();
+
+	float[] swapV1V2T(float[] res);
 	
-	<T extends ITup3WF> T swizzleYZT(T res);
+	<T extends ITup3WF> T swapV1V2T(T res);
+
+	IVec3RF swapXYN();
+
+	<T extends ITup3WF> T swapXYT(T res);
 	
-	float[] swizzleYZT(float[] res);
+	float[] swapXYT(float[] res);
 	
-	/** {@inheritDoc} */
-	@Override
+	IVec3RF swapXZN();
+
+	<T extends ITup3WF> T swapXZT(T res);
+	
+	float[] swapXZT(float[] res);
+	
+	IVec3RF swapYZN();
+	
+	<T extends ITup3WF> T swapYZT(T res);
+	
+	float[] swapYZT(float[] res);
+	
 	IVec3RF minComponentsN(ITup3RF t);
 	
-	/** {@inheritDoc} */
-	@Override
 	IVec3RF minComponentsN(ITupRF t);
 	
-	/** {@inheritDoc} */
-	@Override
 	IVec3RF minComponentsN(float[] t);
 	
-	/** {@inheritDoc} */
-	@Override
 	IVec3RF minComponentsN(float tv0, float tv1, float tv2);
 
-	/** {@inheritDoc} */
-	@Override
+	float[] minComponentsT(ITup3RF t, @ExtractionParam float[] res);
+	
+	float[] minComponentsT(ITupRF t, @ExtractionParam float[] res);
+	
+	float[] minComponentsT(float[] t, @ExtractionParam float[] res);
+	
+	float[] minComponentsT(float tv0, float tv1, float tv2, @ExtractionParam float[] res);
+	
+	<T extends ITup3WF> T minComponentsT(ITup3RF t, @ExtractionParam T res);
+	
+	<T extends ITup3WF> T minComponentsT(ITupRF t, @ExtractionParam T res);
+	
+	<T extends ITup3WF> T minComponentsT(float[] t, @ExtractionParam T res);
+	
+	<T extends ITup3WF> T minComponentsT(float tv0, float tv1, float tv2, @ExtractionParam T res);
+	
 	IVec3RF maxComponentsN(ITup3RF t);
 	
-	/** {@inheritDoc} */
-	@Override
 	IVec3RF maxComponentsN(ITupRF t);
 	
-	/** {@inheritDoc} */
-	@Override
 	IVec3RF maxComponentsN(float[] t);
 	
-	/** {@inheritDoc} */
-	@Override
 	IVec3RF maxComponentsN(float tv0, float tv1, float tv2);
+
+	float[] maxComponentsT(ITup3RF t, @ExtractionParam float[] res);
 	
+	float[] maxComponentsT(ITupRF t, @ExtractionParam float[] res);
+	
+	float[] maxComponentsT(float[] t, @ExtractionParam float[] res);
+	
+	float[] maxComponentsT(float tv0, float tv1, float tv2, @ExtractionParam float[] res);
+	
+	<T extends ITup3WF> T maxComponentsT(ITup3RF t, @ExtractionParam T res);
+	
+	<T extends ITup3WF> T maxComponentsT(ITupRF t, @ExtractionParam T res);
+	
+	<T extends ITup3WF> T maxComponentsT(float[] t, @ExtractionParam T res);
+	
+	<T extends ITup3WF> T maxComponentsT(float tv0, float tv1, float tv2, @ExtractionParam T res);
+	
+	IndexValuePairF min();
+	
+	IndexValuePairF min(@ExtractionParam IndexValuePairF res);
+
+	IndexValuePairF max();
+	
+	IndexValuePairF max(@ExtractionParam IndexValuePairF res);
+
 	IVec3RF crossN(ITup3RF t);
 	
 	IVec3RF crossN(ITupRF t);

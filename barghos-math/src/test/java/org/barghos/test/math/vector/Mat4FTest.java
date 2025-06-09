@@ -9,12 +9,7 @@ public class Mat4FTest
 	@Test
 	public void test()
 	{
-		Mat4F mt = new Mat4F().initTranslation3(3.0f, 2.0f, 1.0f);
-		Mat4F ms = new Mat4F().initScale3(0.5f, 0.5f, 0.5f);
-		
-		Mat4F m = new Mat4F();
-		
-		m.set(ms).mul(mt);
+		Mat4F m = new Mat4F().setBaseChanging(-1, 0, 0, 0, 1, 0, 0, 0, 1);
 		
 		Vec3F v = new Vec3F(1.0f, 1.0f, 1.0f);
 		

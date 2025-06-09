@@ -1,6 +1,10 @@
 package org.barghos.math.matrix;
 
 import org.barghos.annotation.ExtractionParam;
+import org.barghos.util.function.floats.IFunc16F;
+import org.barghos.util.function.floats.IFunc2F;
+import org.barghos.util.function.floats.IFunc3F;
+import org.barghos.util.function.floats.IFunc4F;
 import org.barghos.util.tuple.floats.ITup2RF;
 import org.barghos.util.tuple.floats.ITup2WF;
 import org.barghos.util.tuple.floats.ITup3RF;
@@ -10,11 +14,13 @@ import org.barghos.util.tuple.floats.ITup4WF;
 
 public class Mat4F implements IMat4WF
 {
+	public static final IFunc16F<Mat4F> CTOR = Mat4F::new;
+	
 	private final float[] m = new float[SIZE];
 	
 	public Mat4F()
 	{
-		initIdentity();
+		setIdentity();
 	}
 	
 	public Mat4F(IMat4RF m)
@@ -30,30 +36,6 @@ public class Mat4F implements IMat4WF
 	public Mat4F(float m00, float m01, float m02, float m03, float m10, float m11, float m12, float m13, float m20, float m21, float m22, float m23, float m30, float m31, float m32, float m33)
 	{
 		set(m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, m30, m31, m32, m33);
-	}
-	
-	@Override
-	public Mat4F createNew()
-	{
-		return new Mat4F();
-	}
-
-	@Override
-	public Mat4F createNew(IMat4RF m)
-	{
-		return new Mat4F(m);
-	}
-
-	@Override
-	public Mat4F createNew(float[] m)
-	{
-		return new Mat4F(m);
-	}
-
-	@Override
-	public Mat4F createNew(float m00, float m01, float m02, float m03, float m10, float m11, float m12, float m13, float m20, float m21, float m22, float m23, float m30, float m31, float m32, float m33)
-	{
-		return new Mat4F(m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, m30, m31, m32, m33);
 	}
 	
 	@Override
@@ -2647,9 +2629,62 @@ public class Mat4F implements IMat4WF
 	@Override
 	public Mat4F invertN()
 	{
-		return MatUtils4F.invertCreateNew(this.m, this);
+		return MatUtils4F.invertFunc(this.m, CTOR);
 	}
 
+	@Override
+	public Mat4F transpose()
+	{
+		MatUtils4F.transpose(this.m, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F transposeN()
+	{
+		return MatUtils4F.transposeFunc(this.m, CTOR);
+	}
+
+	@Override
+	public Mat4F mul(IMat4RF m)
+	{
+		MatUtils4F.mul(m, this.m, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F mulN(IMat4RF m)
+	{
+		return MatUtils4F.mulFunc(m, this.m, CTOR);
+	}
+
+	@Override
+	public Mat4F revMul(IMat4RF m)
+	{
+		MatUtils4F.mul(this.m, m, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F revMulN(IMat4RF m)
+	{
+		return MatUtils4F.mulFunc(this.m, m, CTOR);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public String toString()
+	{
+		return	"mat4f(" + 
+				m[0] + ", " + m[4] + ", " + m[8] + ", " + m[12] + "\n" +
+				m[1] + ", " + m[5] + ", " + m[9] + ", " + m[13] + "\n" +
+				m[2] + ", " + m[6] + ", " + m[10] + ", " + m[14] + "\n" +
+				m[3] + ", " + m[7] + ", " + m[11] + ", " + m[15] + ")";
+	}
+	
 	public float[] transform2T(boolean isPoint, ITup2RF v, @ExtractionParam float[] res)
 	{
 		MatUtils4F.transform2(isPoint, v, this.m, res);
@@ -2692,19 +2727,19 @@ public class Mat4F implements IMat4WF
 		return res;
 	}
 	
-	public <T extends ITup2RF> T transform2N(boolean isPoint, ITup2RF v, @ExtractionParam T prototype)
+	public <T> T transform2Func(boolean isPoint, ITup2RF v, IFunc2F<T> func)
 	{
-		return MatUtils4F.transform2CreateNew(isPoint, v, this.m, prototype);
+		return MatUtils4F.transform2Func(isPoint, v, this.m, func);
 	}
 	
-	public <T extends ITup2RF> T transform2N(boolean isPoint, float[] v, @ExtractionParam T prototype)
+	public <T> T transform2Func(boolean isPoint, float[] v, IFunc2F<T> func)
 	{
-		return MatUtils4F.transform2CreateNew(isPoint, v, this.m, prototype);
+		return MatUtils4F.transform2Func(isPoint, v, this.m, func);
 	}
 	
-	public <T extends ITup2RF> T transform2N(boolean isPoint, float v0, float v1, @ExtractionParam T prototype)
+	public <T> T transform2Func(boolean isPoint, float v0, float v1, IFunc2F<T> func)
 	{
-		return MatUtils4F.transform2CreateNew(isPoint, v0, v1, this.m, prototype);
+		return MatUtils4F.transform2Func(isPoint, v0, v1, this.m, func);
 	}
 	
 	public float[] transformPoint2T(ITup2RF v, @ExtractionParam float[] res)
@@ -2749,19 +2784,19 @@ public class Mat4F implements IMat4WF
 		return res;
 	}
 	
-	public <T extends ITup2RF> T transformPoint2N(ITup2RF v, @ExtractionParam T prototype)
+	public <T> T transformPoint2Func(ITup2RF v, IFunc2F<T> func)
 	{
-		return MatUtils4F.transformPoint2CreateNew(v, this.m, prototype);
+		return MatUtils4F.transformPoint2Func(v, this.m, func);
 	}
 	
-	public <T extends ITup2RF> T transformPoint2N(float[] v, @ExtractionParam T prototype)
+	public <T> T transformPoint2Func(float[] v, IFunc2F<T> func)
 	{
-		return MatUtils4F.transformPoint2CreateNew(v, this.m, prototype);
+		return MatUtils4F.transformPoint2Func(v, this.m, func);
 	}
 	
-	public <T extends ITup2RF> T transformPoint2N(float v0, float v1, @ExtractionParam T prototype)
+	public <T> T transformPoint2Func(float v0, float v1, IFunc2F<T> func)
 	{
-		return MatUtils4F.transformPoint2CreateNew(v0, v1, this.m, prototype);
+		return MatUtils4F.transformPoint2Func(v0, v1, this.m, func);
 	}
 	
 	public float[] transformVec2T(ITup2RF v, @ExtractionParam float[] res)
@@ -2806,19 +2841,19 @@ public class Mat4F implements IMat4WF
 		return res;
 	}
 	
-	public <T extends ITup2RF> T transformVec2N(ITup2RF v, @ExtractionParam T prototype)
+	public <T> T transformVec2Func(ITup2RF v, IFunc2F<T> func)
 	{
-		return MatUtils4F.transformVec2CreateNew(v, this.m, prototype);
+		return MatUtils4F.transformVec2Func(v, this.m, func);
 	}
 	
-	public <T extends ITup2RF> T transformVec2N(float[] v, @ExtractionParam T prototype)
+	public <T> T transformVec2Func(float[] v, IFunc2F<T> func)
 	{
-		return MatUtils4F.transformVec2CreateNew(v, this.m, prototype);
+		return MatUtils4F.transformVec2Func(v, this.m, func);
 	}
 	
-	public <T extends ITup2RF> T transformVec2N(float v0, float v1, @ExtractionParam T prototype)
+	public <T> T transformVec2Func(float v0, float v1, IFunc2F<T> func)
 	{
-		return MatUtils4F.transformVec2CreateNew(v0, v1, this.m, prototype);
+		return MatUtils4F.transformVec2Func(v0, v1, this.m, func);
 	}
 	
 	public float[] transform3T(boolean isPoint, ITup3RF v, @ExtractionParam float[] res)
@@ -2863,19 +2898,19 @@ public class Mat4F implements IMat4WF
 		return res;
 	}
 	
-	public <T extends ITup3RF> T transform3N(boolean isPoint, ITup3RF v, @ExtractionParam T prototype)
+	public <T> T transform3Func(boolean isPoint, ITup3RF v, IFunc3F<T> func)
 	{
-		return MatUtils4F.transform3CreateNew(isPoint, v, this.m, prototype);
+		return MatUtils4F.transform3Func(isPoint, v, this.m, func);
 	}
 	
-	public <T extends ITup3RF> T transform3N(boolean isPoint, float[] v, @ExtractionParam T prototype)
+	public <T> T transform3Func(boolean isPoint, float[] v, IFunc3F<T> func)
 	{
-		return MatUtils4F.transform3CreateNew(isPoint, v, this.m, prototype);
+		return MatUtils4F.transform3Func(isPoint, v, this.m, func);
 	}
 	
-	public <T extends ITup3RF> T transform3N(boolean isPoint, float v0, float v1, float v2, @ExtractionParam T prototype)
+	public <T> T transform3Func(boolean isPoint, float v0, float v1, float v2, IFunc3F<T> func)
 	{
-		return MatUtils4F.transform3CreateNew(isPoint, v0, v1, v2, this.m, prototype);
+		return MatUtils4F.transform3Func(isPoint, v0, v1, v2, this.m, func);
 	}
 	
 	public float[] transformPoint3T(ITup3RF v, @ExtractionParam float[] res)
@@ -2920,19 +2955,19 @@ public class Mat4F implements IMat4WF
 		return res;
 	}
 	
-	public <T extends ITup3RF> T transformPoint3N(ITup3RF v, @ExtractionParam T prototype)
+	public <T> T transformPoint3Func(ITup3RF v, IFunc3F<T> func)
 	{
-		return MatUtils4F.transformPoint3CreateNew(v, this.m, prototype);
+		return MatUtils4F.transformPoint3Func(v, this.m, func);
 	}
 	
-	public <T extends ITup3RF> T transformPoint3N(float[] v, @ExtractionParam T prototype)
+	public <T> T transformPoint3Func(float[] v, IFunc3F<T> func)
 	{
-		return MatUtils4F.transformPoint3CreateNew(v, this.m, prototype);
+		return MatUtils4F.transformPoint3Func(v, this.m, func);
 	}
 	
-	public <T extends ITup3RF> T transformPoint3N(float v0, float v1, float v2, @ExtractionParam T prototype)
+	public <T> T transformPoint3Func(float v0, float v1, float v2, IFunc3F<T> func)
 	{
-		return MatUtils4F.transformPoint3CreateNew(v0, v1, v2, this.m, prototype);
+		return MatUtils4F.transformPoint3Func(v0, v1, v2, this.m, func);
 	}
 	
 	public float[] transformVec3T(ITup3RF v, @ExtractionParam float[] res)
@@ -2977,19 +3012,19 @@ public class Mat4F implements IMat4WF
 		return res;
 	}
 	
-	public <T extends ITup3RF> T transformVec3N(ITup3RF v, @ExtractionParam T prototype)
+	public <T> T transformVec3Func(ITup3RF v, IFunc3F<T> func)
 	{
-		return MatUtils4F.transformVec3CreateNew(v, this.m, prototype);
+		return MatUtils4F.transformVec3Func(v, this.m, func);
 	}
 	
-	public <T extends ITup3RF> T transformVec3N(float[] v, @ExtractionParam T prototype)
+	public <T> T transformVec3Func(float[] v, IFunc3F<T> func)
 	{
-		return MatUtils4F.transformVec3CreateNew(v, this.m, prototype);
+		return MatUtils4F.transformVec3Func(v, this.m, func);
 	}
 	
-	public <T extends ITup3RF> T transformVec3N(float v0, float v1, float v2, @ExtractionParam T prototype)
+	public <T> T transformVec3Func(float v0, float v1, float v2, IFunc3F<T> func)
 	{
-		return MatUtils4F.transformVec3CreateNew(v0, v1, v2, this.m, prototype);
+		return MatUtils4F.transformVec3Func(v0, v1, v2, this.m, func);
 	}
 	
 	public float[] transform4T(ITup4RF v, @ExtractionParam float[] res)
@@ -3034,159 +3069,454 @@ public class Mat4F implements IMat4WF
 		return res;
 	}
 	
-	public <T extends ITup4RF> T transform4N(ITup4RF v, @ExtractionParam T prototype)
+	public <T> T transform4Func(ITup4RF v, IFunc4F<T> func)
 	{
-		return MatUtils4F.transform4CreateNew(v, this.m, prototype);
+		return MatUtils4F.transform4Func(v, this.m, func);
 	}
 	
-	public <T extends ITup4RF> T transform4N(float[] v, @ExtractionParam T prototype)
+	public <T> T transform4Func(float[] v, IFunc4F<T> func)
 	{
-		return MatUtils4F.transform4CreateNew(v, this.m, prototype);
+		return MatUtils4F.transform4Func(v, this.m, func);
 	}
 	
-	public <T extends ITup4RF> T transform4N(float v0, float v1, float v2, float v3, @ExtractionParam T prototype)
+	public <T> T transform4Func(float v0, float v1, float v2, float v3, IFunc4F<T> func)
 	{
-		return MatUtils4F.transform4CreateNew(v0, v1, v2, v3, this.m, prototype);
-	}
-	
-	@Override
-	public Mat4F transpose()
-	{
-		MatUtils4F.transpose(this.m, this.m);
-		
-		return this;
+		return MatUtils4F.transform4Func(v0, v1, v2, v3, this.m, func);
 	}
 	
 	@Override
-	public Mat4F transposeN()
+	public Mat4F setZero()
 	{
-		return MatUtils4F.transposeCreateNew(this.m, this);
-	}
-
-	@Override
-	public Mat4F mul(IMat4RF m)
-	{
-		MatUtils4F.mul(m, this.m, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F mulN(IMat4RF m)
-	{
-		return MatUtils4F.mulCreateNew(m, this.m, this);
-	}
-
-	@Override
-	public Mat4F revMul(IMat4RF m)
-	{
-		MatUtils4F.mul(this.m, m, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F revMulN(IMat4RF m)
-	{
-		return MatUtils4F.mulCreateNew(this.m, m, this);
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public String toString()
-	{
-		return	"mat4f(" + 
-				m[0] + ", " + m[4] + ", " + m[8] + ", " + m[12] + "\n" +
-				m[1] + ", " + m[5] + ", " + m[9] + ", " + m[13] + "\n" +
-				m[2] + ", " + m[6] + ", " + m[10] + ", " + m[14] + "\n" +
-				m[3] + ", " + m[7] + ", " + m[11] + ", " + m[15] + ")";
-	}
-	
-	@Override
-	public Mat4F initZero()
-	{
-		MatUtils4F.initZero(this.m);
+		MatUtils4F.setZero(this.m);
 		
 		return this;
 	}
 
 	@Override
-	public Mat4F initIdentity()
+	public Mat4F setIdentity()
 	{
-		MatUtils4F.initIdentity(this.m);
+		MatUtils4F.setIdentity(this.m);
 		
 		return this;
 	}
 	
 	@Override
-	public Mat4F initTranslation3(ITup3RF v)
+	public Mat4F setTranslation2(ITup2RF v)
 	{
-		MatUtils4F.initTranslation3(v, this.m);
+		MatUtils4F.setTranslation2(v, this.m);
 		
 		return this;
 	}
 	
 	@Override
-	public Mat4F initTranslation3(float[] v)
+	public Mat4F setTranslation2(float[] v)
 	{
-		MatUtils4F.initTranslation3(v, this.m);
+		MatUtils4F.setTranslation2(v, this.m);
 		
 		return this;
 	}
 	
 	@Override
-	public Mat4F initTranslation3(float v0, float v1, float v2)
+	public Mat4F setTranslation2(float v0, float v1)
 	{
-		MatUtils4F.initTranslation3(v0, v1, v2, this.m);
+		MatUtils4F.setTranslation2(v0, v1, this.m);
 		
 		return this;
 	}
 	
 	@Override
-	public Mat4F initScale3(ITup3RF v)
+	public Mat4F setTranslation3(ITup3RF v)
 	{
-		MatUtils4F.initScale3(v, this.m);
+		MatUtils4F.setTranslation3(v, this.m);
 		
 		return this;
 	}
 	
 	@Override
-	public Mat4F initScale3(float[] v)
+	public Mat4F setTranslation3(float[] v)
 	{
-		MatUtils4F.initScale3(v, this.m);
+		MatUtils4F.setTranslation3(v, this.m);
 		
 		return this;
 	}
 	
 	@Override
-	public Mat4F initScale3(float v0, float v1, float v2)
+	public Mat4F setTranslation3(float v0, float v1, float v2)
 	{
-		MatUtils4F.initScale3(v0, v1, v2, this.m);
+		MatUtils4F.setTranslation3(v0, v1, v2, this.m);
 		
 		return this;
 	}
 	
 	@Override
-	public Mat4F initScale4(ITup4RF v)
+	public Mat4F setScaling2(ITup2RF v)
 	{
-		MatUtils4F.initScale4(v, this.m);
+		MatUtils4F.setScaling2(v, this.m);
 		
 		return this;
 	}
 	
 	@Override
-	public Mat4F initScale4(float[] v)
+	public Mat4F setScaling2(float[] v)
 	{
-		MatUtils4F.initScale4(v, this.m);
+		MatUtils4F.setScaling2(v, this.m);
 		
 		return this;
 	}
 	
 	@Override
-	public Mat4F initScale4(float v0, float v1, float v2, float v3)
+	public Mat4F setScaling2(float v0, float v1)
 	{
-		MatUtils4F.initScale4(v0, v1, v2, v3, this.m);
+		MatUtils4F.setScaling2(v0, v1, this.m);
 		
 		return this;
+	}
+	
+	@Override
+	public Mat4F setScaling3(ITup3RF v)
+	{
+		MatUtils4F.setScaling3(v, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F setScaling3(float[] v)
+	{
+		MatUtils4F.setScaling3(v, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F setScaling3(float v0, float v1, float v2)
+	{
+		MatUtils4F.setScaling3(v0, v1, v2, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F setScaling4(ITup4RF v)
+	{
+		MatUtils4F.setScaling4(v, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F setScaling4(float[] v)
+	{
+		MatUtils4F.setScaling4(v, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F setScaling4(float v0, float v1, float v2, float v3)
+	{
+		MatUtils4F.setScaling4(v0, v1, v2, v3, this.m);
+		
+		return this;
+	}
+
+	@Override
+	public Mat4F setBaseChanging(float rV0, float rV1, float rV2, float uV0, float uV1, float uV2, float fV0, float fV1, float fV2)
+	{
+		MatUtils4F.setBaseChanging(rV0, rV1, rV2, uV0, uV1, uV2, fV0, fV1, fV2, this.m);
+		
+		return this;
+	}
+
+	@Override
+	public Mat4F setRotationByQuat(ITup4RF q)
+	{
+		MatUtils4F.setRotationByQuat(q, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F setRotationRad(float aV0, float aV1, float aV2, float angle)
+	{
+		MatUtils4F.setRotationRad(aV0, aV1, aV2, angle, this.m);
+		
+		return this;
+	}
+
+	@Override
+	public Mat4F setRotationDeg(float aV0, float aV1, float aV2, float angle)
+	{
+		MatUtils4F.setRotationDeg(aV0, aV1, aV2, angle, this.m);
+		
+		return this;
+	}
+
+	@Override
+	public Mat4F setPerspective(float fovY, float aspectRatio, float near, float far)
+	{
+		MatUtils4F.setPerspective(fovY, aspectRatio, near, far, this.m);
+		
+		return this;
+	}
+
+	@Override
+	public Mat4F setOrtho(float left, float right, float bottom, float top, float near, float far)
+	{
+		MatUtils4F.setOrtho(left, right, bottom, top, near, far, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F translate2(ITup2RF v)
+	{
+		MatUtils4F.translate2(this.m, v, this.m);
+		
+		return this;
+	}
+
+	@Override
+	public Mat4F translate2(float[] v)
+	{
+		MatUtils4F.translate2(this.m, v, this.m);
+		
+		return this;
+	}
+
+	@Override
+	public Mat4F translate2(float v0, float v1)
+	{
+		MatUtils4F.translate2(this.m, v0, v1, this.m);
+		
+		return this;
+	}
+
+	@Override
+	public Mat4F translate2N(ITup2RF v)
+	{
+		return MatUtils4F.translate2Func(this.m, v, CTOR);
+	}
+
+	@Override
+	public Mat4F translate2N(float[] v)
+	{
+		return MatUtils4F.translate2Func(this.m, v, CTOR);
+	}
+
+	@Override
+	public Mat4F translate2N(float v0, float v1)
+	{
+		return MatUtils4F.translate2Func(this.m, v0, v1, CTOR);
+	}
+
+	@Override
+	public Mat4F translate3(ITup3RF v)
+	{
+		MatUtils4F.translate3(this.m, v, this.m);
+		
+		return this;
+	}
+
+	@Override
+	public Mat4F translate3(float[] v)
+	{
+		MatUtils4F.translate3(this.m, v, this.m);
+		
+		return this;
+	}
+
+	@Override
+	public Mat4F translate3(float v0, float v1, float v2)
+	{
+		MatUtils4F.translate3(this.m, v0, v1, v2, this.m);
+		
+		return this;
+	}
+
+	@Override
+	public Mat4F translate3N(ITup3RF v)
+	{
+		return MatUtils4F.translate3Func(this.m, v, CTOR);
+	}
+
+	@Override
+	public Mat4F translate3N(float[] v)
+	{
+		return MatUtils4F.translate3Func(this.m, v, CTOR);
+	}
+
+	@Override
+	public Mat4F translate3N(float v0, float v1, float v2)
+	{
+		return MatUtils4F.translate3Func(this.m, v0, v1, v2, CTOR);
+	}
+
+	@Override
+	public Mat4F scale2(ITup2RF v)
+	{
+		MatUtils4F.scale2(this.m, v, this.m);
+		
+		return this;
+	}
+
+	@Override
+	public Mat4F scale2(float[] v)
+	{
+		MatUtils4F.scale2(this.m, v, this.m);
+		
+		return this;
+	}
+
+	@Override
+	public Mat4F scale2(float v0, float v1)
+	{
+		MatUtils4F.scale2(this.m, v0, v1, this.m);
+		
+		return this;
+	}
+
+	@Override
+	public Mat4F scale2N(ITup2RF v)
+	{
+		return MatUtils4F.scale2Func(this.m, v, CTOR);
+	}
+
+	@Override
+	public Mat4F scale2N(float[] v)
+	{
+		return MatUtils4F.scale2Func(this.m, v, CTOR);
+	}
+
+	@Override
+	public Mat4F scale2N(float v0, float v1)
+	{
+		return MatUtils4F.scale2Func(this.m, v0, v1, CTOR);
+	}
+
+	@Override
+	public Mat4F scale3(ITup3RF v)
+	{
+		MatUtils4F.scale3(this.m, v, this.m);
+		
+		return this;
+	}
+
+	@Override
+	public Mat4F scale3(float[] v)
+	{
+		MatUtils4F.scale3(this.m, v, this.m);
+		
+		return this;
+	}
+
+	@Override
+	public Mat4F scale3(float v0, float v1, float v2)
+	{
+		MatUtils4F.scale3(this.m, v0, v1, v2, this.m);
+		
+		return this;
+	}
+
+	@Override
+	public Mat4F scale3N(ITup3RF v)
+	{
+		return MatUtils4F.scale3Func(this.m, v, CTOR);
+	}
+
+	@Override
+	public Mat4F scale3N(float[] v)
+	{
+		return MatUtils4F.scale3Func(this.m, v, CTOR);
+	}
+
+	@Override
+	public Mat4F scale3N(float v0, float v1, float v2)
+	{
+		return MatUtils4F.scale3Func(this.m, v0, v1, v2, CTOR);
+	}
+
+	@Override
+	public Mat4F scale4(ITup4RF v)
+	{
+		MatUtils4F.scale4(this.m, v, this.m);
+		
+		return this;
+	}
+
+	@Override
+	public Mat4F scale4(float[] v)
+	{
+		MatUtils4F.scale4(this.m, v, this.m);
+		
+		return this;
+	}
+
+	@Override
+	public Mat4F scale4(float v0, float v1, float v2, float v3)
+	{
+		MatUtils4F.scale4(this.m, v0, v1, v2, v3, this.m);
+		
+		return this;
+	}
+
+	@Override
+	public Mat4F scale4N(ITup4RF v)
+	{
+		return MatUtils4F.scale4Func(this.m, v, CTOR);
+	}
+
+	@Override
+	public Mat4F scale4N(float[] v)
+	{
+		return MatUtils4F.scale4Func(this.m, v, CTOR);
+	}
+
+	@Override
+	public Mat4F scale4N(float v0, float v1, float v2, float v3)
+	{
+		return MatUtils4F.scale4Func(this.m, v0, v1, v2, v3, CTOR);
+	}
+
+	@Override
+	public Mat4F baseChange(float rv0, float rv1, float rv2, float uv0, float uv1, float uv2, float fv0, float fv1, float fv2)
+	{
+		MatUtils4F.baseChange(this.m, rv0, rv1, rv2, uv0, uv1, uv2, fv0, fv1, fv2, this.m);
+		
+		return this;
+	}
+
+	@Override
+	public Mat4F baseChangeN(float rv0, float rv1, float rv2, float uv0, float uv1, float uv2, float fv0, float fv1, float fv2)
+	{
+		return MatUtils4F.baseChangeFunc(this.m, rv0, rv1, rv2, uv0, uv1, uv2, fv0, fv1, fv2, CTOR);
+	}
+
+	@Override
+	public Mat4F rotateRad(float av0, float av1, float av2, float angle)
+	{
+		MatUtils4F.rotateRad(this.m, av0, av1, av2, angle, this.m);
+		
+		return this;
+	}
+
+	@Override
+	public Mat4F rotateRadN(float av0, float av1, float av2, float angle)
+	{
+		return MatUtils4F.rotateRadFunc(this.m, av0, av1, av2, angle, CTOR);
+	}
+
+	@Override
+	public Mat4F rotateDeg(float av0, float av1, float av2, float angle)
+	{
+		MatUtils4F.rotateDeg(this.m, av0, av1, av2, angle, this.m);
+		
+		return this;
+	}
+
+	@Override
+	public Mat4F rotateDegN(float av0, float av1, float av2, float angle)
+	{
+		return MatUtils4F.rotateDegFunc(this.m, av0, av1, av2, angle, CTOR);
 	}
 }

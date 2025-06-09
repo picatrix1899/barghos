@@ -7,14 +7,6 @@ public interface ISqrMatWF extends ISqrMatRF, IMatWF
 {
 	/** {@inheritDoc} */
 	@Override
-	ISqrMatWF createNew();
-	
-	/** {@inheritDoc} */
-	@Override
-	ISqrMatWF createNew(float[] m);
-	
-	/** {@inheritDoc} */
-	@Override
 	ISqrMatWF setAt(int row, int column, float value);
 
 	/** {@inheritDoc} */
@@ -31,7 +23,7 @@ public interface ISqrMatWF extends ISqrMatRF, IMatWF
 
 	/** {@inheritDoc} */
 	@Override
-	ISqrMatWF initZero();
+	ISqrMatWF setZero();
 
-	ISqrMatWF initIdentity();
+	ISqrMatWF setIdentity();
 }

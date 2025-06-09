@@ -4,10 +4,6 @@ import org.barghos.annotation.ExtractionParam;
 
 public interface IMatRF
 {
-	IMatRF createNew();
-
-	IMatRF createNew(float[] m);	
-
 	int rowSize();
 
 	int colSize();

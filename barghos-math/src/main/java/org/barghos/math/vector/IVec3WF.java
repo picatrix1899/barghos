@@ -9,34 +9,6 @@ import org.barghos.util.tuple.floats.ITupRF;
  */
 public interface IVec3WF extends IVec3RF, ITup3WF
 {
-	
-	/** {@inheritDoc} */
-	IVec3WF createNew();
-	
-	/** {@inheritDoc} */
-	@Override
-	IVec3WF createNew(ITup3RF t);
-	
-	/** {@inheritDoc} */
-	@Override
-	IVec3WF createNew(ITupRF t);
-	
-	/** {@inheritDoc} */
-	@Override
-	IVec3WF createNew(float[] t);
-	
-	/** {@inheritDoc} */
-	@Override
-	IVec3WF createNew(float value);
-	
-	/** {@inheritDoc} */
-	@Override
-	IVec3WF createNew(float x, float y, float z);
-	
-	/** {@inheritDoc} */
-	@Override
-	IVec3WF copy();
-	
 	/** {@inheritDoc} */
 	IVec3WF x(float x);
 	
@@ -57,10 +29,6 @@ public interface IVec3WF extends IVec3RF, ITup3WF
 	/** {@inheritDoc} */
 	@Override
 	IVec3WF set(float[] values);
-	
-	/** {@inheritDoc} */
-	@Override
-	IVec3WF set(float value);
 	
 	/** {@inheritDoc} */
 	@Override
@@ -376,71 +344,59 @@ public interface IVec3WF extends IVec3RF, ITup3WF
 	@Override
 	IVec3WF signN();
 	
-	/** {@inheritDoc} */
-	@Override
-	IVec3WF arrange(int[] indices);
+	IVec3WF swizzle(int[] indices);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF arrangeN(int[] indices);
+	IVec3WF swizzleN(int[] indices);
 	
-	/** {@inheritDoc} */
-	@Override
-	IVec3WF arrange(int indexX, int indexY, int indexZ);
+	IVec3WF swizzle(int indexX, int indexY, int indexZ);
 
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF arrangeN(int indexX, int indexY, int indexZ);
+	IVec3WF swizzleN(int indexX, int indexY, int indexZ);
+	
+	IVec3WF swap(int indexA, int indexB);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF swizzle(int indexA, int indexB);
+	IVec3WF swapN(int indexA, int indexB);
+	
+	IVec3WF swapV0V1();
+	
+	IVec3WF swapV0V2();
+	
+	IVec3WF swapV1V2();
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF swizzleN(int indexA, int indexB);
+	IVec3WF swapV0V1N();
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF swizzleV0V1();
+	IVec3WF swapV0V2N();
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF swizzleV0V2();
+	IVec3WF swapV1V2N();
+	
+	IVec3WF swapXY();
+	
+	IVec3WF swapXZ();
+	
+	IVec3WF swapYZ();
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF swizzleV1V2();
+	IVec3WF swapXYN();
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF swizzleV0V1N();
+	IVec3WF swapXZN();
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF swizzleV0V2N();
-	
-	/** {@inheritDoc} */
-	@Override
-	IVec3WF swizzleV1V2N();
-	
-	IVec3WF swizzleXY();
-	
-	IVec3WF swizzleXZ();
-	
-	IVec3WF swizzleYZ();
-	
-	/** {@inheritDoc} */
-	@Override
-	IVec3WF swizzleXYN();
-	
-	/** {@inheritDoc} */
-	@Override
-	IVec3WF swizzleXZN();
-	
-	/** {@inheritDoc} */
-	@Override
-	IVec3WF swizzleYZN();
+	IVec3WF swapYZN();
 
 	IVec3WF minComponents(ITup3RF t);
 	

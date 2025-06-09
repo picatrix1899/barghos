@@ -1,6 +1,9 @@
 package org.barghos.math.matrix;
 
 import org.barghos.annotation.ExtractionParam;
+import org.barghos.util.function.floats.IFunc2F;
+import org.barghos.util.function.floats.IFunc3F;
+import org.barghos.util.function.floats.IFunc4F;
 import org.barghos.util.tuple.floats.ITup2RF;
 import org.barghos.util.tuple.floats.ITup2WF;
 import org.barghos.util.tuple.floats.ITup3RF;
@@ -13,14 +16,6 @@ public interface IMat4RF extends ISqrMatRF
 	public static final int ROW_SIZE = 4;
 	public static final int COL_SIZE = 4;
 	public static final int SIZE = ROW_SIZE * COL_SIZE;
-	
-	IMat4RF createNew();
-
-	IMat4RF createNew(IMat4RF m);
-
-	IMat4RF createNew(float[] m);
-	
-	IMat4RF createNew(float m00, float m01, float m02, float m03, float m10, float m11, float m12, float m13, float m20, float m21, float m22, float m23, float m30, float m31, float m32, float m33);
 
 	default int rowSize()
 	{
@@ -109,11 +104,11 @@ public interface IMat4RF extends ISqrMatRF
 	
 	<T extends ITup2WF> T transform2T(boolean isPoint, float v0, float v1, @ExtractionParam T res);
 	
-	<T extends ITup2RF> T transform2N(boolean isPoint, ITup2RF v, @ExtractionParam T prototype);
+	<T> T transform2Func(boolean isPoint, ITup2RF v, IFunc2F<T> func);
 	
-	<T extends ITup2RF> T transform2N(boolean isPoint, float[] v, @ExtractionParam T prototype);
+	<T> T transform2Func(boolean isPoint, float[] v, IFunc2F<T> func);
 	
-	<T extends ITup2RF> T transform2N(boolean isPoint, float v0, float v1, @ExtractionParam T prototype);
+	<T> T transform2Func(boolean isPoint, float v0, float v1, IFunc2F<T> func);
 	
 	float[] transformPoint2T(ITup2RF v, @ExtractionParam float[] res);
 	
@@ -127,11 +122,11 @@ public interface IMat4RF extends ISqrMatRF
 	
 	<T extends ITup2WF> T transformPoint2T(float v0, float v1, @ExtractionParam T res);
 	
-	<T extends ITup2RF> T transformPoint2N(ITup2RF v, @ExtractionParam T prototype);
+	<T> T transformPoint2Func(ITup2RF v, IFunc2F<T> func);
 	
-	<T extends ITup2RF> T transformPoint2N(float[] v, @ExtractionParam T prototype);
+	<T> T transformPoint2Func(float[] v, IFunc2F<T> func);
 	
-	<T extends ITup2RF> T transformPoint2N(float v0, float v1, @ExtractionParam T prototype);
+	<T> T transformPoint2Func(float v0, float v1, IFunc2F<T> func);
 	
 	float[] transformVec2T(ITup2RF v, @ExtractionParam float[] res);
 	
@@ -145,11 +140,11 @@ public interface IMat4RF extends ISqrMatRF
 	
 	<T extends ITup2WF> T transformVec2T(float v0, float v1, @ExtractionParam T res);
 	
-	<T extends ITup2RF> T transformVec2N(ITup2RF v, @ExtractionParam T prototype);
+	<T> T transformVec2Func(ITup2RF v, IFunc2F<T> func);
 	
-	<T extends ITup2RF> T transformVec2N(float[] v, @ExtractionParam T prototype);
+	<T> T transformVec2Func(float[] v, IFunc2F<T> func);
 	
-	<T extends ITup2RF> T transformVec2N(float v0, float v1, @ExtractionParam T prototype);
+	<T> T transformVec2Func(float v0, float v1, IFunc2F<T> func);
 	
 	float[] transform3T(boolean isPoint, ITup3RF v, @ExtractionParam float[] res);
 	
@@ -163,11 +158,11 @@ public interface IMat4RF extends ISqrMatRF
 	
 	<T extends ITup3WF> T transform3T(boolean isPoint, float v0, float v1, float v2, @ExtractionParam T res);
 	
-	<T extends ITup3RF> T transform3N(boolean isPoint, ITup3RF v, @ExtractionParam T prototype);
+	<T> T transform3Func(boolean isPoint, ITup3RF v, IFunc3F<T> func);
 	
-	<T extends ITup3RF> T transform3N(boolean isPoint, float[] v, @ExtractionParam T prototype);
+	<T> T transform3Func(boolean isPoint, float[] v, IFunc3F<T> func);
 	
-	<T extends ITup3RF> T transform3N(boolean isPoint, float v0, float v1, float v2, @ExtractionParam T prototype);
+	<T> T transform3Func(boolean isPoint, float v0, float v1, float v2, IFunc3F<T> func);
 	
 	float[] transformPoint3T(ITup3RF v, @ExtractionParam float[] res);
 	
@@ -181,11 +176,11 @@ public interface IMat4RF extends ISqrMatRF
 	
 	<T extends ITup3WF> T transformPoint3T(float v0, float v1, float v2, @ExtractionParam T res);
 	
-	<T extends ITup3RF> T transformPoint3N(ITup3RF v, @ExtractionParam T prototype);
+	<T> T transformPoint3Func(ITup3RF v, IFunc3F<T> func);
 	
-	<T extends ITup3RF> T transformPoint3N(float[] v, @ExtractionParam T prototype);
+	<T> T transformPoint3Func(float[] v, IFunc3F<T> func);
 	
-	<T extends ITup3RF> T transformPoint3N(float v0, float v1, float v2, @ExtractionParam T prototype);
+	<T> T transformPoint3Func(float v0, float v1, float v2, IFunc3F<T> func);
 	
 	float[] transformVec3T(ITup3RF v, @ExtractionParam float[] res);
 	
@@ -199,11 +194,11 @@ public interface IMat4RF extends ISqrMatRF
 	
 	<T extends ITup3WF> T transformVec3T(float v0, float v1, float v2, @ExtractionParam T res);
 	
-	<T extends ITup3RF> T transformVec3N(ITup3RF v, @ExtractionParam T prototype);
+	<T> T transformVec3Func(ITup3RF v, IFunc3F<T> func);
 	
-	<T extends ITup3RF> T transformVec3N(float[] v, @ExtractionParam T prototype);
+	<T> T transformVec3Func(float[] v, IFunc3F<T> func);
 	
-	<T extends ITup3RF> T transformVec3N(float v0, float v1, float v2, @ExtractionParam T prototype);
+	<T> T transformVec3Func(float v0, float v1, float v2, IFunc3F<T> func);
 	
 	float[] transform4T(ITup4RF v, @ExtractionParam float[] res);
 	
@@ -217,9 +212,9 @@ public interface IMat4RF extends ISqrMatRF
 	
 	<T extends ITup4WF> T transform4T(float v0, float v1, float v2, float v3, @ExtractionParam T res);
 	
-	<T extends ITup4RF> T transform4N(ITup4RF v, @ExtractionParam T prototype);
+	<T> T transform4Func(ITup4RF v, IFunc4F<T> func);
 	
-	<T extends ITup4RF> T transform4N(float[] v, @ExtractionParam T prototype);
+	<T> T transform4Func(float[] v, IFunc4F<T> func);
 	
-	<T extends ITup4RF> T transform4N(float v0, float v1, float v2, float v3, @ExtractionParam T prototype);
+	<T> T transform4Func(float v0, float v1, float v2, float v3, IFunc4F<T> func);
 }

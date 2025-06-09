@@ -3556,7 +3556,7 @@ public class TupUtilsF
 		
 		for(int i = 0; i < t1.size(); i++)
 		{
-			if(!MathUtils.Comp.equals(tolerance, t1.getAt(i), t2.getAt(0))) return false;
+			if(!MathUtils.equals(tolerance, t1.getAt(i), t2.getAt(0))) return false;
 		}
 		
 		return true;
@@ -3611,7 +3611,7 @@ public class TupUtilsF
 		
 		for(int i = 0; i < t1.size(); i++)
 		{
-			if(!MathUtils.Comp.equals(tolerance, t1.getAt(i), t2[i])) return false;
+			if(!MathUtils.equals(tolerance, t1.getAt(i), t2[i])) return false;
 		}
 
 		return true;
@@ -3666,7 +3666,7 @@ public class TupUtilsF
 		
 		for(int i = 0; i < t1.length; i++)
 		{
-			if(!MathUtils.Comp.equals(tolerance, t1[i], t2[i])) return false;
+			if(!MathUtils.equals(tolerance, t1[i], t2[i])) return false;
 		}
 
 		return true;
@@ -3927,7 +3927,7 @@ public class TupUtilsF
 		if(t1.size() <= index) return false;
 		if(t2.size() <= index) return false;
 		
-		return MathUtils.Comp.equals(tolerance, t1.getAt(index), t2.getAt(index));
+		return MathUtils.equals(tolerance, t1.getAt(index), t2.getAt(index));
 	}
 
 	/**
@@ -3984,7 +3984,7 @@ public class TupUtilsF
 		if(t1.size() <= index) return false;
 		if(t2.length <= index) return false;
 		
-		return MathUtils.Comp.equals(tolerance, t1.getAt(index), t2[index]);
+		return MathUtils.equals(tolerance, t1.getAt(index), t2[index]);
 	}
 
 	/**
@@ -4041,7 +4041,7 @@ public class TupUtilsF
 		if(t1.length <= index) return false;
 		if(t2.length <= index) return false;
 		
-		return MathUtils.Comp.equals(tolerance, t1[index], t2[index]);
+		return MathUtils.equals(tolerance, t1[index], t2[index]);
 	}
 	
 	/**
@@ -4085,7 +4085,7 @@ public class TupUtilsF
 		if(t == null) return false;
 		if(t.size() <= index) return false;
 		
-		return MathUtils.Comp.equals(tolerance, t.getAt(index), value);
+		return MathUtils.equals(tolerance, t.getAt(index), value);
 	}
 	
 	/**
@@ -4129,6 +4129,6 @@ public class TupUtilsF
 		if(t == null) return false;
 		if(t.length <= index) return false;
 		
-		return MathUtils.Comp.equals(tolerance, t[index], value);
+		return MathUtils.equals(tolerance, t[index], value);
 	}
 }

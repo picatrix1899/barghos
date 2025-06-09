@@ -1,6 +1,7 @@
 package org.barghos.math.vector;
 
 import org.barghos.annotation.ExtractionParam;
+import org.barghos.util.collection.IndexValuePairF;
 import org.barghos.util.tuple.floats.ITup2RF;
 import org.barghos.util.tuple.floats.ITup2WF;
 import org.barghos.util.tuple.floats.ITupRF;
@@ -10,31 +11,7 @@ import org.barghos.util.tuple.floats.ITupRF;
  * dimensions.
  */
 public interface IVec2RF extends ITup2RF
-{	
-	/** {@inheritDoc} */
-	@Override
-	IVec2RF createNew(ITup2RF t);
-	
-	/** {@inheritDoc} */
-	@Override
-	IVec2RF createNew(ITupRF t);
-	
-	/** {@inheritDoc} */
-	@Override
-	IVec2RF createNew(float[] t);
-	
-	/** {@inheritDoc} */
-	@Override
-	IVec2RF createNew(float value);
-	
-	/** {@inheritDoc} */
-	@Override
-	IVec2RF createNew(float x, float y);
-	
-	/** {@inheritDoc} */
-	@Override
-	IVec2RF copy();
-	
+{
 	/**
 	 * Returns the x component of the vector.
 	 * 
@@ -107,7 +84,7 @@ public interface IVec2RF extends ITup2RF
 	 * @throws ArithmeticException
 	 *     If the vector has a length of zero.
 	 */
-	float recLen();
+	float lenRc();
 	
 	/**
 	 * Returns the distance between the endpoint of this vector and the endpoint of the given vector
@@ -286,9 +263,9 @@ public interface IVec2RF extends ITup2RF
 	 * @throws ArithmeticException
 	 *     If the distance between the endpoints is zero.
 	 */
-	float recLenTo(ITup2RF t);
+	float lenRcTo(ITup2RF t);
 	
-	float recLenTo(ITupRF t);
+	float lenRcTo(ITupRF t);
 	
 	/**
 	 * Returns the inverse (reciprocal) distance between the endpoint of this vector and the
@@ -312,7 +289,7 @@ public interface IVec2RF extends ITup2RF
 	 * @throws ArithmeticException
 	 *     If the distance between the endpoints is zero.
 	 */
-	float recLenTo(float[] t);
+	float lenRcTo(float[] t);
 	
 	/**
 	 * Returns the inverse (reciprocal) distance between the endpoint of this vector and the
@@ -338,7 +315,7 @@ public interface IVec2RF extends ITup2RF
 	 * @throws ArithmeticException
 	 *     If the distance between the endpoints is zero.
 	 */
-	float recLenTo(float tx, float ty);
+	float lenRcTo(float tx, float ty);
 	
 	/**
 	 * Returns the squared length (magnitude, norm) of this vector.
@@ -349,7 +326,7 @@ public interface IVec2RF extends ITup2RF
 	 * 
 	 * @return The squared length of this vector.
 	 */
-	float sqrLen();
+	float lenSq();
 	
 	/**
 	 * Returns the squared distance between the endpoint of this vector and the endpoint of the
@@ -365,9 +342,9 @@ public interface IVec2RF extends ITup2RF
 	 * @return The squared distance between the endpoint of this vector and the endpoint of the
 	 * given vector.
 	 */
-	float sqrLenTo(ITup2RF t);
+	float lenSqTo(ITup2RF t);
 	
-	float sqrLenTo(ITupRF t);
+	float lenSqTo(ITupRF t);
 	
 	/**
 	 * Returns the squared distance between the endpoint of this vector and the endpoint of the
@@ -383,7 +360,7 @@ public interface IVec2RF extends ITup2RF
 	 * @return The squared distance between the endpoint of this vector and the endpoint of the
 	 * given vector.
 	 */
-	float sqrLenTo(float[] t);
+	float lenSqTo(float[] t);
 	
 	/**
 	 * Returns the squared distance between the endpoint of this vector and the endpoint of the
@@ -401,7 +378,7 @@ public interface IVec2RF extends ITup2RF
 	 * @return The squared distance between the endpoint of this vector and the endpoint of the
 	 * given vector.
 	 */
-	float sqrLenTo(float tx, float ty);
+	float lenSqTo(float tx, float ty);
 	
 	/**
 	 * Returns the dot product (scalar product) between this vector and the given vector
@@ -3255,7 +3232,11 @@ public interface IVec2RF extends ITup2RF
 	 * 
 	 * @return A new instance of this type of tuple with the result.
 	 */
-	IVec2RF arrangeN(int[] indices);
+	IVec2RF swizzleN(int[] indices);
+	
+	float[] swizzleT(int[] indices, @ExtractionParam float[] res);
+	
+	<T extends ITup2WF> T swizzleT(int[] indices, @ExtractionParam T res);
 	
 	/**
 	 * Arranges the order of the component values by their indices and returns
@@ -3281,7 +3262,11 @@ public interface IVec2RF extends ITup2RF
 	 * 
 	 * @return A new instance of this type of tuple with the result.
 	 */
-	IVec2RF arrangeN(int indexX, int indexY);
+	IVec2RF swizzleN(int indexX, int indexY);
+	
+	float[] swizzleT(int indexV0, int indexV1, @ExtractionParam float[] res);
+	
+	<T extends ITup2WF> T swizzleT(int indexV0, int indexV1, @ExtractionParam T res);
 	
 	/**
 	 * Swaps two component values at the given indices and returns the result
@@ -3299,8 +3284,11 @@ public interface IVec2RF extends ITup2RF
 	 * 
 	 * @return A new instance of this type of tuple with the result.
 	 */
-	@Override
-	IVec2RF swizzleN(int indexA, int indexB);
+	IVec2RF swapN(int indexA, int indexB);
+	
+	float[] swapT(int indexA, int indexB, @ExtractionParam float[] res);
+	
+	<T extends ITup2WF> T swapT(int indexA, int indexB, @ExtractionParam T res);
 	
 	/**
 	 * Swaps the values of the components {@code v0} and {@code v1} and returns
@@ -3308,9 +3296,13 @@ public interface IVec2RF extends ITup2RF
 	 * 
 	 * @return A new instance of the type of this tuple with the result.
 	 */
-	IVec2RF swizzleV0V1N();
+	IVec2RF swapV0V1N();
 
-	IVec2RF swizzleXYN();
+	float[] swapV0V1T(@ExtractionParam float[] res);
+	
+	<T extends ITup2WF> T swapV0V1T(@ExtractionParam T res);
+	
+	IVec2RF swapXYN();
 	
 	IVec2RF minComponentsN(ITup2RF t);
 	
@@ -3320,6 +3312,22 @@ public interface IVec2RF extends ITup2RF
 	
 	IVec2RF minComponentsN(float tv0, float tv1);
 
+	float[] minComponentsT(ITup2RF t, @ExtractionParam float[] res);
+	
+	float[] minComponentsT(ITupRF t, @ExtractionParam float[] res);
+	
+	float[] minComponentsT(float[] t, @ExtractionParam float[] res);
+	
+	float[] minComponentsT(float tv0, float tv1, @ExtractionParam float[] res);
+	
+	<T extends ITup2WF> T minComponentsT(ITup2RF t, @ExtractionParam T res);
+	
+	<T extends ITup2WF> T minComponentsT(ITupRF t, @ExtractionParam T res);
+	
+	<T extends ITup2WF> T minComponentsT(float[] t, @ExtractionParam T res);
+	
+	<T extends ITup2WF> T minComponentsT(float tv0, float tv1, @ExtractionParam T res);
+	
 	IVec2RF maxComponentsN(ITup2RF t);
 	
 	IVec2RF maxComponentsN(ITupRF t);
@@ -3327,4 +3335,28 @@ public interface IVec2RF extends ITup2RF
 	IVec2RF maxComponentsN(float[] t);
 	
 	IVec2RF maxComponentsN(float tv0, float tv1);
+	
+	float[] maxComponentsT(ITup2RF t, @ExtractionParam float[] res);
+	
+	float[] maxComponentsT(ITupRF t, @ExtractionParam float[] res);
+	
+	float[] maxComponentsT(float[] t, @ExtractionParam float[] res);
+	
+	float[] maxComponentsT(float tv0, float tv1, @ExtractionParam float[] res);
+	
+	<T extends ITup2WF> T maxComponentsT(ITup2RF t, @ExtractionParam T res);
+	
+	<T extends ITup2WF> T maxComponentsT(ITupRF t, @ExtractionParam T res);
+	
+	<T extends ITup2WF> T maxComponentsT(float[] t, @ExtractionParam T res);
+	
+	<T extends ITup2WF> T maxComponentsT(float tv0, float tv1, @ExtractionParam T res);
+
+	IndexValuePairF min();
+	
+	IndexValuePairF min(@ExtractionParam IndexValuePairF res);
+
+	IndexValuePairF max();
+	
+	IndexValuePairF max(@ExtractionParam IndexValuePairF res);
 }

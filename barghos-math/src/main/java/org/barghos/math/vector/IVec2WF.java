@@ -9,34 +9,6 @@ import org.barghos.util.tuple.floats.ITupRF;
  */
 public interface IVec2WF extends IVec2RF, ITup2WF
 {
-	
-	/** {@inheritDoc} */
-	IVec2WF createNew();
-	
-	/** {@inheritDoc} */
-	@Override
-	IVec2WF createNew(ITup2RF t);
-	
-	/** {@inheritDoc} */
-	@Override
-	IVec2WF createNew(ITupRF t);
-	
-	/** {@inheritDoc} */
-	@Override
-	IVec2WF createNew(float[] t);
-	
-	/** {@inheritDoc} */
-	@Override
-	IVec2WF createNew(float value);
-	
-	/** {@inheritDoc} */
-	@Override
-	IVec2WF createNew(float x, float y);
-	
-	/** {@inheritDoc} */
-	@Override
-	IVec2WF copy();
-	
 	/** {@inheritDoc} */
 	IVec2WF x(float x);
 	
@@ -54,10 +26,6 @@ public interface IVec2WF extends IVec2RF, ITup2WF
 	/** {@inheritDoc} */
 	@Override
 	IVec2WF set(float[] values);
-	
-	/** {@inheritDoc} */
-	@Override
-	IVec2WF set(float value);
 	
 	/** {@inheritDoc} */
 	@Override
@@ -1026,40 +994,36 @@ public interface IVec2WF extends IVec2RF, ITup2WF
 	IVec2WF signN();
 	
 	/** {@inheritDoc} */
-	@Override
-	IVec2WF arrange(int[] indices);
+	IVec2WF swizzle(int[] indices);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec2WF arrangeN(int[] indices);
+	IVec2WF swizzleN(int[] indices);
 	
 	/** {@inheritDoc} */
-	@Override
-	IVec2WF arrange(int indexX, int indexY);
+	IVec2WF swizzle(int indexX, int indexY);
 
 	/** {@inheritDoc} */
 	@Override
-	IVec2WF arrangeN(int indexX, int indexY);
+	IVec2WF swizzleN(int indexX, int indexY);
+	
+	/** {@inheritDoc} */
+	IVec2WF swap(int indexA, int indexB);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec2WF swizzle(int indexA, int indexB);
+	IVec2WF swapN(int indexA, int indexB);
+	
+	/** {@inheritDoc} */
+	IVec2WF swapV0V1();
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec2WF swizzleN(int indexA, int indexB);
+	IVec2WF swapV0V1N();
 	
-	/** {@inheritDoc} */
-	@Override
-	IVec2WF swizzleV0V1();
+	IVec2WF swapXY();
 	
-	/** {@inheritDoc} */
-	@Override
-	IVec2WF swizzleV0V1N();
-	
-	IVec2WF swizzleXY();
-	
-	IVec2WF swizzleXYN();
+	IVec2WF swapXYN();
 
 	IVec2WF minComponents(ITup2RF t);
 	
