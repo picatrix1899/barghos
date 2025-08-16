@@ -1,6 +1,6 @@
 package org.barghos.util.lazy.strings;
 
-import org.barghos.util.supplier.strings.SupplierStr;
+import org.barghos.util.supplier.strings.SuppStr;
 
 /**
  * An implementation of the {@link UpdatableLazyStr} interface where the provided
@@ -8,7 +8,7 @@ import org.barghos.util.supplier.strings.SupplierStr;
  */
 public class LazyStr implements ILazyWStr
 {
-	protected SupplierStr supplier;
+	protected SuppStr supplier;
 	
 	protected String value;
 	protected boolean hasValue;
@@ -20,7 +20,7 @@ public class LazyStr implements ILazyWStr
 	 * @param supplier
 	 * The {@link SupplierStr} used to determine the value to provide.
 	 */
-	public LazyStr(SupplierStr supplier)
+	public LazyStr(SuppStr supplier)
 	{	
 		this.supplier = supplier;
 	}	
@@ -46,7 +46,7 @@ public class LazyStr implements ILazyWStr
 	@Override
 	public void update()
 	{
-		this.value = this.supplier.getStr();
+		this.value = this.supplier.get();
 		this.hasValue = true;
 	}
 	

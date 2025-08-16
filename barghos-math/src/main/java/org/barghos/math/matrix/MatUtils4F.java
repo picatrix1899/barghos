@@ -3414,10 +3414,10 @@ public class MatUtils4F
 		float v1 = v.v1();
 		
 		set(
-			1.0f, 0.0f, 0.0f, v0,
-			0.0f, 1.0f, 0.0f, v1,
+			1.0f, 0.0f, 0.0f, 0.0f,
+			0.0f, 1.0f, 0.0f, 0.0f,
 			0.0f, 0.0f, 1.0f, 0.0f,
-			0.0f, 0.0f, 0.0f, 1.0f, res);
+			v0, v1, 0.0f, 1.0f, res);
 		
 		return res;
 	}
@@ -3428,10 +3428,10 @@ public class MatUtils4F
 		float v1 = v[1];
 		
 		set(
-			1.0f, 0.0f, 0.0f, v0,
-			0.0f, 1.0f, 0.0f, v1,
+			1.0f, 0.0f, 0.0f, 0.0f,
+			0.0f, 1.0f, 0.0f, 0.0f,
 			0.0f, 0.0f, 1.0f, 0.0f,
-			0.0f, 0.0f, 0.0f, 1.0f, res);
+			v0, v1, 0.0f, 1.0f, res);
 		
 		return res;
 	}
@@ -3439,10 +3439,10 @@ public class MatUtils4F
 	public static float[] setTranslation2(float v0, float v1, @ExtractionParam float[] res)
 	{
 		set(
-			1.0f, 0.0f, 0.0f, v0,
-			0.0f, 1.0f, 0.0f, v1,
+			1.0f, 0.0f, 0.0f, 0.0f,
+			0.0f, 1.0f, 0.0f, 0.0f,
 			0.0f, 0.0f, 1.0f, 0.0f,
-			0.0f, 0.0f, 0.0f, 1.0f, res);
+			v0, v1, 0.0f, 1.0f, res);
 		
 		return res;
 	}
@@ -3453,10 +3453,10 @@ public class MatUtils4F
 		float v1 = v.v1();
 		
 		res.set(
-			1.0f, 0.0f, 0.0f, v0,
-			0.0f, 1.0f, 0.0f, v1,
+			1.0f, 0.0f, 0.0f, 0.0f,
+			0.0f, 1.0f, 0.0f, 0.0f,
 			0.0f, 0.0f, 1.0f, 0.0f,
-			0.0f, 0.0f, 0.0f, 1.0f);
+			v0, v1, 0.0f, 1.0f);
 		
 		return res;
 	}
@@ -3467,10 +3467,10 @@ public class MatUtils4F
 		float v1 = v[1];
 		
 		res.set(
-			1.0f, 0.0f, 0.0f, v0,
-			0.0f, 1.0f, 0.0f, v1,
+			1.0f, 0.0f, 0.0f, 0.0f,
+			0.0f, 1.0f, 0.0f, 0.0f,
 			0.0f, 0.0f, 1.0f, 0.0f,
-			0.0f, 0.0f, 0.0f, 1.0f);
+			v0, v1, 0.0f, 1.0f);
 		
 		return res;
 	}
@@ -3478,10 +3478,10 @@ public class MatUtils4F
 	public static <T extends IMat4WF> T setTranslation2(float v0, float v1, @ExtractionParam T res)
 	{
 		res.set(
-			1.0f, 0.0f, 0.0f, v0,
-			0.0f, 1.0f, 0.0f, v1,
+			1.0f, 0.0f, 0.0f, 0.0f,
+			0.0f, 1.0f, 0.0f, 0.0f,
 			0.0f, 0.0f, 1.0f, 0.0f,
-			0.0f, 0.0f, 0.0f, 1.0f);
+			v0, v1, 0.0f, 1.0f);
 		
 		return res;
 	}
@@ -3492,10 +3492,10 @@ public class MatUtils4F
 		float v1 = v.v1();
 		
 		return func.apply(
-			1.0f, 0.0f, 0.0f, v0,
-			0.0f, 1.0f, 0.0f, v1,
+			1.0f, 0.0f, 0.0f, 0.0f,
+			0.0f, 1.0f, 0.0f, 0.0f,
 			0.0f, 0.0f, 1.0f, 0.0f,
-			0.0f, 0.0f, 0.0f, 1.0f);
+			v0, v1, 0.0f, 1.0f);
 	}
 	
 	public static <T> T setTranslation2Func(float[] v, IFunc16F<T> func)
@@ -3504,19 +3504,19 @@ public class MatUtils4F
 		float v1 = v[1];
 		
 		return func.apply(
-			1.0f, 0.0f, 0.0f, v0,
-			0.0f, 1.0f, 0.0f, v1,
+			1.0f, 0.0f, 0.0f, 0.0f,
+			0.0f, 1.0f, 0.0f, 0.0f,
 			0.0f, 0.0f, 1.0f, 0.0f,
-			0.0f, 0.0f, 0.0f, 1.0f);
+			v0, v1, 0.0f, 1.0f);
 	}
 	
 	public static <T> T setTranslation2Func(float v0, float v1, IFunc16F<T> func)
 	{
 		return func.apply(
-			1.0f, 0.0f, 0.0f, v0,
-			0.0f, 1.0f, 0.0f, v1,
+			1.0f, 0.0f, 0.0f, 0.0f,
+			0.0f, 1.0f, 0.0f, 0.0f,
 			0.0f, 0.0f, 1.0f, 0.0f,
-			0.0f, 0.0f, 0.0f, 1.0f);
+			v0, v1, 0.0f, 1.0f);
 	}
 	
 	public static float[] setTranslation3(ITup3RF v, @ExtractionParam float[] res)
@@ -3526,10 +3526,10 @@ public class MatUtils4F
 		float v2 = v.v2();
 		
 		set(
-			1.0f, 0.0f, 0.0f, v0,
-			0.0f, 1.0f, 0.0f, v1,
-			0.0f, 0.0f, 1.0f, v2,
-			0.0f, 0.0f, 0.0f, 1.0f, res);
+			1.0f, 0.0f, 0.0f, 0.0f,
+			0.0f, 1.0f, 0.0f, 0.0f,
+			0.0f, 0.0f, 1.0f, 0.0f,
+			v0, v1, v2, 1.0f, res);
 		
 		return res;
 	}
@@ -3541,10 +3541,10 @@ public class MatUtils4F
 		float v2 = v[2];
 		
 		set(
-			1.0f, 0.0f, 0.0f, v0,
-			0.0f, 1.0f, 0.0f, v1,
-			0.0f, 0.0f, 1.0f, v2,
-			0.0f, 0.0f, 0.0f, 1.0f, res);
+			1.0f, 0.0f, 0.0f, 0.0f,
+			0.0f, 1.0f, 0.0f, 0.0f,
+			0.0f, 0.0f, 1.0f, 0.0f,
+			v0, v1, v2, 1.0f, res);
 		
 		return res;
 	}
@@ -3552,10 +3552,10 @@ public class MatUtils4F
 	public static float[] setTranslation3(float v0, float v1, float v2, @ExtractionParam float[] res)
 	{
 		set(
-			1.0f, 0.0f, 0.0f, v0,
-			0.0f, 1.0f, 0.0f, v1,
-			0.0f, 0.0f, 1.0f, v2,
-			0.0f, 0.0f, 0.0f, 1.0f, res);
+			1.0f, 0.0f, 0.0f, 0.0f,
+			0.0f, 1.0f, 0.0f, 0.0f,
+			0.0f, 0.0f, 1.0f, 0.0f,
+			v0, v1, v2, 1.0f, res);
 		
 		return res;
 	}
@@ -3567,10 +3567,10 @@ public class MatUtils4F
 		float v2 = v.v2();
 		
 		res.set(
-			1.0f, 0.0f, 0.0f, v0,
-			0.0f, 1.0f, 0.0f, v1,
-			0.0f, 0.0f, 1.0f, v2,
-			0.0f, 0.0f, 0.0f, 1.0f);
+			1.0f, 0.0f, 0.0f, 0.0f,
+			0.0f, 1.0f, 0.0f, 0.0f,
+			0.0f, 0.0f, 1.0f, 0.0f,
+			v0, v1, v2, 1.0f);
 		
 		return res;
 	}
@@ -3582,10 +3582,10 @@ public class MatUtils4F
 		float v2 = v[2];
 		
 		res.set(
-			1.0f, 0.0f, 0.0f, v0,
-			0.0f, 1.0f, 0.0f, v1,
-			0.0f, 0.0f, 1.0f, v2,
-			0.0f, 0.0f, 0.0f, 1.0f);
+			1.0f, 0.0f, 0.0f, 0.0f,
+			0.0f, 1.0f, 0.0f, 0.0f,
+			0.0f, 0.0f, 1.0f, 0.0f,
+			v0, v1, v2, 1.0f);
 		
 		return res;
 	}
@@ -3593,10 +3593,10 @@ public class MatUtils4F
 	public static <T extends IMat4WF> T setTranslation3(float v0, float v1, float v2, @ExtractionParam T res)
 	{
 		res.set(
-			1.0f, 0.0f, 0.0f, v0,
-			0.0f, 1.0f, 0.0f, v1,
-			0.0f, 0.0f, 1.0f, v2,
-			0.0f, 0.0f, 0.0f, 1.0f);
+			1.0f, 0.0f, 0.0f, 0.0f,
+			0.0f, 1.0f, 0.0f, 0.0f,
+			0.0f, 0.0f, 1.0f, 0.0f,
+			v0, v1, v2, 1.0f);
 		
 		return res;
 	}
@@ -3608,10 +3608,10 @@ public class MatUtils4F
 		float v2 = v.v2();
 		
 		return func.apply(
-			1.0f, 0.0f, 0.0f, v0,
-			0.0f, 1.0f, 0.0f, v1,
-			0.0f, 0.0f, 1.0f, v2,
-			0.0f, 0.0f, 0.0f, 1.0f);
+			1.0f, 0.0f, 0.0f, 0.0f,
+			0.0f, 1.0f, 0.0f, 0.0f,
+			0.0f, 0.0f, 1.0f, 0.0f,
+			v0, v1, v2, 1.0f);
 	}
 	
 	public static <T> T setTranslation3Func(float[] v, IFunc16F<T> func)
@@ -3621,19 +3621,19 @@ public class MatUtils4F
 		float v2 = v[2];
 		
 		return func.apply(
-			1.0f, 0.0f, 0.0f, v0,
-			0.0f, 1.0f, 0.0f, v1,
-			0.0f, 0.0f, 1.0f, v2,
-			0.0f, 0.0f, 0.0f, 1.0f);
+			1.0f, 0.0f, 0.0f, 0.0f,
+			0.0f, 1.0f, 0.0f, 0.0f,
+			0.0f, 0.0f, 1.0f, 0.0f,
+			v0, v1, v2, 1.0f);
 	}
 	
 	public static <T> T setTranslation3Func(float v0, float v1, float v2, IFunc16F<T> func)
 	{
 		return func.apply(
-			1.0f, 0.0f, 0.0f, v0,
-			0.0f, 1.0f, 0.0f, v1,
-			0.0f, 0.0f, 1.0f, v2,
-			0.0f, 0.0f, 0.0f, 1.0f);
+			1.0f, 0.0f, 0.0f, 0.0f,
+			0.0f, 1.0f, 0.0f, 0.0f,
+			0.0f, 0.0f, 1.0f, 0.0f,
+			v0, v1, v2, 1.0f);
 	}
 	
 	public static float[] setScaling2(ITup2RF v, @ExtractionParam float[] res)
@@ -4002,9 +4002,9 @@ public class MatUtils4F
 		float fv2 = f.v2();
 		
 		set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f, res);
 		
 		return res;
@@ -4025,9 +4025,9 @@ public class MatUtils4F
 		float fv2 = f[2];
 		
 		set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f, res);
 		
 		return res;
@@ -4044,9 +4044,9 @@ public class MatUtils4F
 		float uv2 = u.v2();
 		
 		set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f, res);
 		
 		return res;
@@ -4067,9 +4067,9 @@ public class MatUtils4F
 		float fv2 = f.v2();
 		
 		set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f, res);
 		
 		return res;
@@ -4090,9 +4090,9 @@ public class MatUtils4F
 		float fv2 = f[2];
 		
 		set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f, res);
 		
 		return res;
@@ -4109,9 +4109,9 @@ public class MatUtils4F
 		float uv2 = u[2];
 		
 		set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f, res);
 		
 		return res;
@@ -4128,9 +4128,9 @@ public class MatUtils4F
 		float fv2 = f.v2();
 		
 		set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f, res);
 		
 		return res;
@@ -4147,9 +4147,9 @@ public class MatUtils4F
 		float fv2 = f[2];
 		
 		set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f, res);
 		
 		return res;
@@ -4162,9 +4162,9 @@ public class MatUtils4F
 		float rv2 = r.v2();
 		
 		set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f, res);
 		
 		return res;
@@ -4185,9 +4185,9 @@ public class MatUtils4F
 		float fv2 = f.v2();
 		
 		set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f, res);
 		
 		return res;
@@ -4208,9 +4208,9 @@ public class MatUtils4F
 		float fv2 = f[2];
 		
 		set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f, res);
 		
 		return res;
@@ -4227,9 +4227,9 @@ public class MatUtils4F
 		float uv2 = u.v2();
 		
 		set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f, res);
 		
 		return res;
@@ -4250,9 +4250,9 @@ public class MatUtils4F
 		float fv2 = f.v2();
 		
 		set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f, res);
 		
 		return res;
@@ -4273,9 +4273,9 @@ public class MatUtils4F
 		float fv2 = f[2];
 		
 		set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f, res);
 		
 		return res;
@@ -4292,9 +4292,9 @@ public class MatUtils4F
 		float uv2 = u[2];
 		
 		set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f, res);
 		
 		return res;
@@ -4311,9 +4311,9 @@ public class MatUtils4F
 		float fv2 = f.v2();
 		
 		set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f, res);
 		
 		return res;
@@ -4330,9 +4330,9 @@ public class MatUtils4F
 		float fv2 = f[2];
 		
 		set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f, res);
 		
 		return res;
@@ -4345,9 +4345,9 @@ public class MatUtils4F
 		float rv2 = r[2];
 		
 		set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f, res);
 		
 		return res;
@@ -4364,9 +4364,9 @@ public class MatUtils4F
 		float fv2 = f.v2();
 		
 		set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f, res);
 		
 		return res;
@@ -4383,9 +4383,9 @@ public class MatUtils4F
 		float fv2 = f[2];
 		
 		set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f, res);
 		
 		return res;
@@ -4398,9 +4398,9 @@ public class MatUtils4F
 		float uv2 = u.v2();
 		
 		set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f, res);
 		
 		return res;
@@ -4417,9 +4417,9 @@ public class MatUtils4F
 		float fv2 = f.v2();
 		
 		set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f, res);
 		
 		return res;
@@ -4436,9 +4436,9 @@ public class MatUtils4F
 		float fv2 = f[2];
 		
 		set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f, res);
 		
 		return res;
@@ -4451,9 +4451,9 @@ public class MatUtils4F
 		float uv2 = u[2];
 		
 		set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f, res);
 		
 		return res;
@@ -4466,9 +4466,9 @@ public class MatUtils4F
 		float fv2 = f.v2();
 		
 		set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f, res);
 		
 		return res;
@@ -4481,9 +4481,9 @@ public class MatUtils4F
 		float fv2 = f[2];
 		
 		set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f, res);
 		
 		return res;
@@ -4492,9 +4492,9 @@ public class MatUtils4F
 	public static float[] setBaseChanging(float rv0, float rv1, float rv2, float uv0, float uv1, float uv2, float fv0, float fv1, float fv2, @ExtractionParam float[] res)
 	{
 		set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f, res);
 		
 		return res;
@@ -4515,9 +4515,9 @@ public class MatUtils4F
 		float fv2 = f.v2();
 		
 		res.set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 		
 		return res;
@@ -4538,9 +4538,9 @@ public class MatUtils4F
 		float fv2 = f[2];
 		
 		res.set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 		
 		return res;
@@ -4557,9 +4557,9 @@ public class MatUtils4F
 		float uv2 = u.v2();
 		
 		res.set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 		
 		return res;
@@ -4580,9 +4580,9 @@ public class MatUtils4F
 		float fv2 = f.v2();
 		
 		res.set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 		
 		return res;
@@ -4603,9 +4603,9 @@ public class MatUtils4F
 		float fv2 = f[2];
 		
 		res.set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 		
 		return res;
@@ -4622,9 +4622,9 @@ public class MatUtils4F
 		float uv2 = u[2];
 		
 		res.set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 		
 		return res;
@@ -4641,9 +4641,9 @@ public class MatUtils4F
 		float fv2 = f.v2();
 		
 		res.set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 		
 		return res;
@@ -4660,9 +4660,9 @@ public class MatUtils4F
 		float fv2 = f[2];
 		
 		res.set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 		
 		return res;
@@ -4675,9 +4675,9 @@ public class MatUtils4F
 		float rv2 = r.v2();
 		
 		res.set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 		
 		return res;
@@ -4698,9 +4698,9 @@ public class MatUtils4F
 		float fv2 = f.v2();
 		
 		res.set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 		
 		return res;
@@ -4721,9 +4721,9 @@ public class MatUtils4F
 		float fv2 = f[2];
 		
 		res.set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 		
 		return res;
@@ -4740,9 +4740,9 @@ public class MatUtils4F
 		float uv2 = u.v2();
 		
 		res.set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 		
 		return res;
@@ -4763,9 +4763,9 @@ public class MatUtils4F
 		float fv2 = f.v2();
 		
 		res.set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 		
 		return res;
@@ -4786,9 +4786,9 @@ public class MatUtils4F
 		float fv2 = f[2];
 		
 		res.set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 		
 		return res;
@@ -4805,9 +4805,9 @@ public class MatUtils4F
 		float uv2 = u[2];
 		
 		res.set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 		
 		return res;
@@ -4824,9 +4824,9 @@ public class MatUtils4F
 		float fv2 = f.v2();
 		
 		res.set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 		
 		return res;
@@ -4843,9 +4843,9 @@ public class MatUtils4F
 		float fv2 = f[2];
 		
 		res.set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 		
 		return res;
@@ -4858,9 +4858,9 @@ public class MatUtils4F
 		float rv2 = r[2];
 		
 		res.set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 		
 		return res;
@@ -4877,9 +4877,9 @@ public class MatUtils4F
 		float fv2 = f.v2();
 		
 		res.set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 		
 		return res;
@@ -4896,9 +4896,9 @@ public class MatUtils4F
 		float fv2 = f[2];
 		
 		res.set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 		
 		return res;
@@ -4911,9 +4911,9 @@ public class MatUtils4F
 		float uv2 = u.v2();
 		
 		res.set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 		
 		return res;
@@ -4930,9 +4930,9 @@ public class MatUtils4F
 		float fv2 = f.v2();
 		
 		res.set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 		
 		return res;
@@ -4949,9 +4949,9 @@ public class MatUtils4F
 		float fv2 = f[2];
 		
 		res.set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 		
 		return res;
@@ -4964,9 +4964,9 @@ public class MatUtils4F
 		float uv2 = u[2];
 		
 		res.set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 		
 		return res;
@@ -4979,9 +4979,9 @@ public class MatUtils4F
 		float fv2 = f.v2();
 		
 		res.set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 		
 		return res;
@@ -4994,9 +4994,9 @@ public class MatUtils4F
 		float fv2 = f[2];
 		
 		res.set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 		
 		return res;
@@ -5005,9 +5005,9 @@ public class MatUtils4F
 	public static <T extends IMat4WF> T setBaseChanging(float rv0, float rv1, float rv2, float uv0, float uv1, float uv2, float fv0, float fv1, float fv2, @ExtractionParam T res)
 	{
 		res.set(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 		
 		return res;
@@ -5028,9 +5028,9 @@ public class MatUtils4F
 		float fv2 = f.v2();
 		
 		return func.apply(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 	}
 	
@@ -5049,9 +5049,9 @@ public class MatUtils4F
 		float fv2 = f[2];
 		
 		return func.apply(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 	}
 	
@@ -5066,9 +5066,9 @@ public class MatUtils4F
 		float uv2 = u.v2();
 		
 		return func.apply(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 	}
 	
@@ -5087,9 +5087,9 @@ public class MatUtils4F
 		float fv2 = f.v2();
 		
 		return func.apply(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 	}
 	
@@ -5108,9 +5108,9 @@ public class MatUtils4F
 		float fv2 = f[2];
 		
 		return func.apply(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 	}
 	
@@ -5125,9 +5125,9 @@ public class MatUtils4F
 		float uv2 = u[2];
 		
 		return func.apply(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 	}
 	
@@ -5142,9 +5142,9 @@ public class MatUtils4F
 		float fv2 = f.v2();
 		
 		return func.apply(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 	}
 	
@@ -5159,9 +5159,9 @@ public class MatUtils4F
 		float fv2 = f[2];
 		
 		return func.apply(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 	}
 	
@@ -5172,9 +5172,9 @@ public class MatUtils4F
 		float rv2 = r.v2();
 		
 		return func.apply(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 	}
 	
@@ -5193,9 +5193,9 @@ public class MatUtils4F
 		float fv2 = f.v2();
 		
 		return func.apply(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 	}
 	
@@ -5214,9 +5214,9 @@ public class MatUtils4F
 		float fv2 = f[2];
 		
 		return func.apply(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 	}
 	
@@ -5231,9 +5231,9 @@ public class MatUtils4F
 		float uv2 = u.v2();
 		
 		return func.apply(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 	}
 	
@@ -5252,9 +5252,9 @@ public class MatUtils4F
 		float fv2 = f.v2();
 		
 		return func.apply(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 	}
 	
@@ -5273,9 +5273,9 @@ public class MatUtils4F
 		float fv2 = f[2];
 		
 		return func.apply(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 	}
 	
@@ -5290,9 +5290,9 @@ public class MatUtils4F
 		float uv2 = u[2];
 		
 		return func.apply(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 	}
 	
@@ -5307,9 +5307,9 @@ public class MatUtils4F
 		float fv2 = f.v2();
 		
 		return func.apply(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 	}
 	
@@ -5324,9 +5324,9 @@ public class MatUtils4F
 		float fv2 = f[2];
 		
 		return func.apply(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 	}
 	
@@ -5337,9 +5337,9 @@ public class MatUtils4F
 		float rv2 = r[2];
 		
 		return func.apply(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 	}
 	
@@ -5354,9 +5354,9 @@ public class MatUtils4F
 		float fv2 = f.v2();
 		
 		return func.apply(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 	}
 	
@@ -5371,9 +5371,9 @@ public class MatUtils4F
 		float fv2 = f[2];
 		
 		return func.apply(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 	}
 	
@@ -5384,9 +5384,9 @@ public class MatUtils4F
 		float uv2 = u.v2();
 		
 		return func.apply(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 	}
 	
@@ -5401,9 +5401,9 @@ public class MatUtils4F
 		float fv2 = f.v2();
 		
 		return func.apply(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 	}
 	
@@ -5418,9 +5418,9 @@ public class MatUtils4F
 		float fv2 = f[2];
 		
 		return func.apply(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 	}
 	
@@ -5431,9 +5431,9 @@ public class MatUtils4F
 		float uv2 = u[2];
 		
 		return func.apply(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 	}
 	
@@ -5444,9 +5444,9 @@ public class MatUtils4F
 		float fv2 = f.v2();
 		
 		return func.apply(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 	}
 	
@@ -5457,18 +5457,18 @@ public class MatUtils4F
 		float fv2 = f[2];
 		
 		return func.apply(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 	}
 	
 	public static <T> T setBaseChangingFunc(float rv0, float rv1, float rv2, float uv0, float uv1, float uv2, float fv0, float fv1, float fv2, IFunc16F<T> func)
 	{
 		return func.apply(
-			rv0, uv0, fv0, 0.0f,
-			rv1, uv1, fv1, 0.0f,
-			rv2, uv2, fv2, 0.0f,
+			rv0, rv1, rv2, 0.0f,
+			uv0, uv1, uv2, 0.0f,
+			fv0, fv1, fv2, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 	}
 	
@@ -5488,9 +5488,9 @@ public class MatUtils4F
 		float av1av2recCosAngle = av1 * av2 * recCosAngle;
 		
 		set(
-			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle + av2 * sinAngle, av0av2recCosAngle - av1 * sinAngle, 0.0f,
-			av0av1recCosAngle - av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle + av0 * sinAngle, 0.0f,
-			av0av2recCosAngle + av1 * sinAngle, av1av2recCosAngle - av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
+			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle - av2 * sinAngle, av0av2recCosAngle + av1 * sinAngle, 0.0f,
+			av0av1recCosAngle + av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle - av0 * sinAngle, 0.0f,
+			av0av2recCosAngle - av1 * sinAngle, av1av2recCosAngle + av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f, res);
 		
 		return res;
@@ -5512,9 +5512,9 @@ public class MatUtils4F
 		float av1av2recCosAngle = av1 * av2 * recCosAngle;
 		
 		set(
-			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle + av2 * sinAngle, av0av2recCosAngle - av1 * sinAngle, 0.0f,
-			av0av1recCosAngle - av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle + av0 * sinAngle, 0.0f,
-			av0av2recCosAngle + av1 * sinAngle, av1av2recCosAngle - av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
+			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle - av2 * sinAngle, av0av2recCosAngle + av1 * sinAngle, 0.0f,
+			av0av1recCosAngle + av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle - av0 * sinAngle, 0.0f,
+			av0av2recCosAngle - av1 * sinAngle, av1av2recCosAngle + av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f, res);
 		
 		return res;
@@ -5532,9 +5532,9 @@ public class MatUtils4F
 		float av1av2recCosAngle = av1 * av2 * recCosAngle;
 		
 		set(
-			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle + av2 * sinAngle, av0av2recCosAngle - av1 * sinAngle, 0.0f,
-			av0av1recCosAngle - av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle + av0 * sinAngle, 0.0f,
-			av0av2recCosAngle + av1 * sinAngle, av1av2recCosAngle - av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
+			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle - av2 * sinAngle, av0av2recCosAngle + av1 * sinAngle, 0.0f,
+			av0av1recCosAngle + av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle - av0 * sinAngle, 0.0f,
+			av0av2recCosAngle - av1 * sinAngle, av1av2recCosAngle + av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f, res);
 		
 		return res;
@@ -5556,9 +5556,9 @@ public class MatUtils4F
 		float av1av2recCosAngle = av1 * av2 * recCosAngle;
 		
 		res.set(
-			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle + av2 * sinAngle, av0av2recCosAngle - av1 * sinAngle, 0.0f,
-			av0av1recCosAngle - av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle + av0 * sinAngle, 0.0f,
-			av0av2recCosAngle + av1 * sinAngle, av1av2recCosAngle - av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
+			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle - av2 * sinAngle, av0av2recCosAngle + av1 * sinAngle, 0.0f,
+			av0av1recCosAngle + av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle - av0 * sinAngle, 0.0f,
+			av0av2recCosAngle - av1 * sinAngle, av1av2recCosAngle + av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 		
 		return res;
@@ -5580,9 +5580,9 @@ public class MatUtils4F
 		float av1av2recCosAngle = av1 * av2 * recCosAngle;
 		
 		res.set(
-			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle + av2 * sinAngle, av0av2recCosAngle - av1 * sinAngle, 0.0f,
-			av0av1recCosAngle - av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle + av0 * sinAngle, 0.0f,
-			av0av2recCosAngle + av1 * sinAngle, av1av2recCosAngle - av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
+			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle - av2 * sinAngle, av0av2recCosAngle + av1 * sinAngle, 0.0f,
+			av0av1recCosAngle + av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle - av0 * sinAngle, 0.0f,
+			av0av2recCosAngle - av1 * sinAngle, av1av2recCosAngle + av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 		
 		return res;
@@ -5600,9 +5600,9 @@ public class MatUtils4F
 		float av1av2recCosAngle = av1 * av2 * recCosAngle;
 		
 		res.set(
-			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle + av2 * sinAngle, av0av2recCosAngle - av1 * sinAngle, 0.0f,
-			av0av1recCosAngle - av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle + av0 * sinAngle, 0.0f,
-			av0av2recCosAngle + av1 * sinAngle, av1av2recCosAngle - av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
+			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle - av2 * sinAngle, av0av2recCosAngle + av1 * sinAngle, 0.0f,
+			av0av1recCosAngle + av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle - av0 * sinAngle, 0.0f,
+			av0av2recCosAngle - av1 * sinAngle, av1av2recCosAngle + av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 		
 		return res;
@@ -5624,9 +5624,9 @@ public class MatUtils4F
 		float av1av2recCosAngle = av1 * av2 * recCosAngle;
 		
 		return func.apply(
-			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle + av2 * sinAngle, av0av2recCosAngle - av1 * sinAngle, 0.0f,
-			av0av1recCosAngle - av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle + av0 * sinAngle, 0.0f,
-			av0av2recCosAngle + av1 * sinAngle, av1av2recCosAngle - av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
+			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle - av2 * sinAngle, av0av2recCosAngle + av1 * sinAngle, 0.0f,
+			av0av1recCosAngle + av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle - av0 * sinAngle, 0.0f,
+			av0av2recCosAngle - av1 * sinAngle, av1av2recCosAngle + av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 	}
 	
@@ -5646,9 +5646,9 @@ public class MatUtils4F
 		float av1av2recCosAngle = av1 * av2 * recCosAngle;
 		
 		return func.apply(
-			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle + av2 * sinAngle, av0av2recCosAngle - av1 * sinAngle, 0.0f,
-			av0av1recCosAngle - av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle + av0 * sinAngle, 0.0f,
-			av0av2recCosAngle + av1 * sinAngle, av1av2recCosAngle - av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
+			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle - av2 * sinAngle, av0av2recCosAngle + av1 * sinAngle, 0.0f,
+			av0av1recCosAngle + av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle - av0 * sinAngle, 0.0f,
+			av0av2recCosAngle - av1 * sinAngle, av1av2recCosAngle + av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 	}
 	
@@ -5664,9 +5664,9 @@ public class MatUtils4F
 		float av1av2recCosAngle = av1 * av2 * recCosAngle;
 		
 		return func.apply(
-			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle + av2 * sinAngle, av0av2recCosAngle - av1 * sinAngle, 0.0f,
-			av0av1recCosAngle - av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle + av0 * sinAngle, 0.0f,
-			av0av2recCosAngle + av1 * sinAngle, av1av2recCosAngle - av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
+			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle - av2 * sinAngle, av0av2recCosAngle + av1 * sinAngle, 0.0f,
+			av0av1recCosAngle + av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle - av0 * sinAngle, 0.0f,
+			av0av2recCosAngle - av1 * sinAngle, av1av2recCosAngle + av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 	}
 	
@@ -5688,9 +5688,9 @@ public class MatUtils4F
 		float av1av2recCosAngle = av1 * av2 * recCosAngle;
 		
 		set(
-			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle + av2 * sinAngle, av0av2recCosAngle - av1 * sinAngle, 0.0f,
-			av0av1recCosAngle - av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle + av0 * sinAngle, 0.0f,
-			av0av2recCosAngle + av1 * sinAngle, av1av2recCosAngle - av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
+			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle - av2 * sinAngle, av0av2recCosAngle + av1 * sinAngle, 0.0f,
+			av0av1recCosAngle + av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle - av0 * sinAngle, 0.0f,
+			av0av2recCosAngle - av1 * sinAngle, av1av2recCosAngle + av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f, res);
 		
 		return res;
@@ -5714,9 +5714,9 @@ public class MatUtils4F
 		float av1av2recCosAngle = av1 * av2 * recCosAngle;
 		
 		set(
-			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle + av2 * sinAngle, av0av2recCosAngle - av1 * sinAngle, 0.0f,
-			av0av1recCosAngle - av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle + av0 * sinAngle, 0.0f,
-			av0av2recCosAngle + av1 * sinAngle, av1av2recCosAngle - av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
+			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle - av2 * sinAngle, av0av2recCosAngle + av1 * sinAngle, 0.0f,
+			av0av1recCosAngle + av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle - av0 * sinAngle, 0.0f,
+			av0av2recCosAngle - av1 * sinAngle, av1av2recCosAngle + av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f, res);
 		
 		return res;
@@ -5736,9 +5736,9 @@ public class MatUtils4F
 		float av1av2recCosAngle = av1 * av2 * recCosAngle;
 		
 		set(
-			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle + av2 * sinAngle, av0av2recCosAngle - av1 * sinAngle, 0.0f,
-			av0av1recCosAngle - av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle + av0 * sinAngle, 0.0f,
-			av0av2recCosAngle + av1 * sinAngle, av1av2recCosAngle - av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
+			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle - av2 * sinAngle, av0av2recCosAngle + av1 * sinAngle, 0.0f,
+			av0av1recCosAngle + av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle - av0 * sinAngle, 0.0f,
+			av0av2recCosAngle - av1 * sinAngle, av1av2recCosAngle + av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f, res);
 		
 		return res;
@@ -5762,9 +5762,9 @@ public class MatUtils4F
 		float av1av2recCosAngle = av1 * av2 * recCosAngle;
 		
 		res.set(
-			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle + av2 * sinAngle, av0av2recCosAngle - av1 * sinAngle, 0.0f,
-			av0av1recCosAngle - av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle + av0 * sinAngle, 0.0f,
-			av0av2recCosAngle + av1 * sinAngle, av1av2recCosAngle - av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
+			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle - av2 * sinAngle, av0av2recCosAngle + av1 * sinAngle, 0.0f,
+			av0av1recCosAngle + av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle - av0 * sinAngle, 0.0f,
+			av0av2recCosAngle - av1 * sinAngle, av1av2recCosAngle + av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 		
 		return res;
@@ -5788,9 +5788,9 @@ public class MatUtils4F
 		float av1av2recCosAngle = av1 * av2 * recCosAngle;
 		
 		res.set(
-			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle + av2 * sinAngle, av0av2recCosAngle - av1 * sinAngle, 0.0f,
-			av0av1recCosAngle - av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle + av0 * sinAngle, 0.0f,
-			av0av2recCosAngle + av1 * sinAngle, av1av2recCosAngle - av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
+			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle - av2 * sinAngle, av0av2recCosAngle + av1 * sinAngle, 0.0f,
+			av0av1recCosAngle + av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle - av0 * sinAngle, 0.0f,
+			av0av2recCosAngle - av1 * sinAngle, av1av2recCosAngle + av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 		
 		return res;
@@ -5810,9 +5810,9 @@ public class MatUtils4F
 		float av1av2recCosAngle = av1 * av2 * recCosAngle;
 		
 		res.set(
-			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle + av2 * sinAngle, av0av2recCosAngle - av1 * sinAngle, 0.0f,
-			av0av1recCosAngle - av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle + av0 * sinAngle, 0.0f,
-			av0av2recCosAngle + av1 * sinAngle, av1av2recCosAngle - av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
+			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle - av2 * sinAngle, av0av2recCosAngle + av1 * sinAngle, 0.0f,
+			av0av1recCosAngle + av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle - av0 * sinAngle, 0.0f,
+			av0av2recCosAngle - av1 * sinAngle, av1av2recCosAngle + av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 		
 		return res;
@@ -5836,9 +5836,9 @@ public class MatUtils4F
 		float av1av2recCosAngle = av1 * av2 * recCosAngle;
 		
 		return func.apply(
-			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle + av2 * sinAngle, av0av2recCosAngle - av1 * sinAngle, 0.0f,
-			av0av1recCosAngle - av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle + av0 * sinAngle, 0.0f,
-			av0av2recCosAngle + av1 * sinAngle, av1av2recCosAngle - av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
+			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle - av2 * sinAngle, av0av2recCosAngle + av1 * sinAngle, 0.0f,
+			av0av1recCosAngle + av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle - av0 * sinAngle, 0.0f,
+			av0av2recCosAngle - av1 * sinAngle, av1av2recCosAngle + av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 	}
 	
@@ -5860,9 +5860,9 @@ public class MatUtils4F
 		float av1av2recCosAngle = av1 * av2 * recCosAngle;
 		
 		return func.apply(
-			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle + av2 * sinAngle, av0av2recCosAngle - av1 * sinAngle, 0.0f,
-			av0av1recCosAngle - av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle + av0 * sinAngle, 0.0f,
-			av0av2recCosAngle + av1 * sinAngle, av1av2recCosAngle - av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
+			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle - av2 * sinAngle, av0av2recCosAngle + av1 * sinAngle, 0.0f,
+			av0av1recCosAngle + av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle - av0 * sinAngle, 0.0f,
+			av0av2recCosAngle - av1 * sinAngle, av1av2recCosAngle + av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 	}
 	
@@ -5878,9 +5878,9 @@ public class MatUtils4F
 		float av1av2recCosAngle = av1 * av2 * recCosAngle;
 		
 		return func.apply(
-			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle + av2 * sinAngle, av0av2recCosAngle - av1 * sinAngle, 0.0f,
-			av0av1recCosAngle - av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle + av0 * sinAngle, 0.0f,
-			av0av2recCosAngle + av1 * sinAngle, av1av2recCosAngle - av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
+			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle - av2 * sinAngle, av0av2recCosAngle + av1 * sinAngle, 0.0f,
+			av0av1recCosAngle + av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle - av0 * sinAngle, 0.0f,
+			av0av2recCosAngle - av1 * sinAngle, av1av2recCosAngle + av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 	}
 	

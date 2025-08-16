@@ -1,0 +1,7 @@
+package org.barghos.util.consumer.floats;
+
+@FunctionalInterface
+public interface Cons4F2A
+{
+	void accept(float[][] v0, float[][] v1, float[][] v2, float[][] v3);
+}

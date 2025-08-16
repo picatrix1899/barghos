@@ -1,7 +1,7 @@
 package org.barghos.util.function.floats;
 
 @FunctionalInterface
-public interface IFuncFA<T>
+public interface IFuncFA<R>
 {
-	T apply(float[] v);
+	R apply(float[] v0);
 }

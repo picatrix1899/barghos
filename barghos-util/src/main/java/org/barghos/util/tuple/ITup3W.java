@@ -11,24 +11,6 @@ package org.barghos.util.tuple;
 public interface ITup3W<V0,V1,V2> extends ITup3R<V0,V1,V2>
 {
 	/**
-	 * Creates a new instance of the type of this tuple with all components
-	 * left as default values.
-	 * 
-	 * @return
-	 * A new instance of the type of this tuple with the respective component
-	 * values.
-	 */
-	ITup3W<V0,V1,V2> createNew();
-	
-	/** {@inheritDoc} */
-	@Override
-	ITup3W<V0,V1,V2> createNew(ITup3R<V0,V1,V2> t);
-	
-	/** {@inheritDoc} */
-	@Override
-	ITup3W<V0,V1,V2> createNew(V0 v0, V1 v1, V2 v2);
-	
-	/**
 	 * Sets the value of the first component of the tuple.
 	 * 
 	 * @param v0 The new value.
@@ -92,8 +74,4 @@ public interface ITup3W<V0,V1,V2> extends ITup3R<V0,V1,V2>
 	 * @return This tuple.
 	 */
 	ITup3W<V0,V1,V2> set(V0 v0, V1 v1, V2 v2);
-	
-	/** {@inheritDoc} */
-	@Override
-	ITup3W<V0,V1,V2> copy();
 }

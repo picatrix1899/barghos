@@ -1,16 +1,19 @@
 package org.barghos.math.vector;
 
+import java.nio.FloatBuffer;
 import java.util.Arrays;
 import java.util.Objects;
 
 import org.barghos.util.collection.IndexValuePairF;
 import org.barghos.util.function.floats.IFunc3F;
+import org.barghos.util.nio.buffer.IBufferableRF;
+import org.barghos.util.nio.buffer.IBufferableWF;
 import org.barghos.util.tuple.floats.ITup3RF;
 import org.barghos.util.tuple.floats.ITup3WF;
 import org.barghos.util.tuple.floats.ITupRF;
 import org.barghos.util.tuple.floats.TupUtils3F;
 
-public class Vec3F implements IVec3WF
+public class Vec3F implements IVec3WF, IBufferableRF, IBufferableWF
 {
 	public static final IFunc3F<Vec3F> CTOR = Vec3F::new;
 	
@@ -234,6 +237,22 @@ public class Vec3F implements IVec3WF
 		}
 		
 		return false;
+	}
+	
+	@Override
+	public Vec3F writeTo(FloatBuffer buffer)
+	{
+		buffer.put(this.v);
+		
+		return this;
+	}
+	
+	@Override
+	public Vec3F readFrom(FloatBuffer buffer, int offset)
+	{
+		buffer.get(offset, this.v);
+		
+		return this;
 	}
 	
 	/** {@inheritDoc} */

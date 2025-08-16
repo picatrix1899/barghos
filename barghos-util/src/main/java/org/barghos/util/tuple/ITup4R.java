@@ -13,34 +13,6 @@ import org.barghos.annotation.AllowNull;
  */
 public interface ITup4R<V0,V1,V2,V3>
 {
-	
-	/**
-	 * Creates a new instance of the type of this tuple and adopts the component
-	 * values from the given tuple {@code (t)}.
-	 * 
-	 * @param t The tuple to adopt the component values from.
-	 * 
-	 * @return
-	 * A new instance of the type of this tuple with the respective component
-	 * values.
-	 */
-	ITup4R<V0,V1,V2,V3> createNew(ITup4R<V0,V1,V2,V3> t);
-	
-	/**
-	 * Creates a new instance of the type of this tuple and adopts the component
-	 * values from the given tuple {@code (v0, v1, v2, v3)}.
-	 * 
-	 * @param v0 The value of the first component.
-	 * @param v1 The value of the second component.
-	 * @param v2 The value of the third component.
-	 * @param v3 The value of the fourth component.
-	 * 
-	 * @return
-	 * A new instance of the type of this tuple with the respective component
-	 * values.
-	 */
-	ITup4R<V0,V1,V2,V3> createNew(V0 v0, V1 v1, V2 v2, V3 v3);
-	
 	/**
 	 * Returns the value of the first component of the tuple.
 	 * 
@@ -92,15 +64,6 @@ public interface ITup4R<V0,V1,V2,V3>
 	 * even create conflicts hence it was changed.
 	 */
 	V3 v3();
-	
-	/**
-	 * Creates a shallow copy of this tuple with adopted component values.
-	 * Therefore it creates a new instance of the type of this tuple and
-	 * adopts the component values from this tuple.
-	 * 
-	 * @return A shallow copy of this tuple with the component values adopted.
-	 */
-	ITup4R<V0,V1,V2,V3> copy();
 	
 	/**
 	 * Returns if the component values of this tuple and the component values

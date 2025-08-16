@@ -1,6 +1,6 @@
 package org.barghos.util.lazy;
 
-import org.barghos.util.supplier.Supplier;
+import org.barghos.util.supplier.Supp;
 
 /**
  * An implementation of the {@link UpdatableLazy} interface where the provided
@@ -10,7 +10,7 @@ import org.barghos.util.supplier.Supplier;
  */
 public class Lazy<T> implements ILazyW<T>
 {
-	protected Supplier<T> supplier;
+	protected Supp<T> supplier;
 	
 	protected T value;
 	protected boolean hasValue;
@@ -22,7 +22,7 @@ public class Lazy<T> implements ILazyW<T>
 	 * @param supplier
 	 * The {@link Supplier} used to determine the value to provide.
 	 */
-	public Lazy(Supplier<T> supplier)
+	public Lazy(Supp<T> supplier)
 	{	
 		this.supplier = supplier;
 	}	

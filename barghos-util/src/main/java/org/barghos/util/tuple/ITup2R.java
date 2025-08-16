@@ -12,31 +12,6 @@ import org.barghos.annotation.AllowNull;
 public interface ITup2R<V0,V1>
 {
 	/**
-	 * Creates a new instance of the type of this tuple and adopts the component
-	 * values from the given tuple {@code (t)}.
-	 * 
-	 * @param t The tuple to adopt the component values from.
-	 * 
-	 * @return
-	 * A new instance of the type of this tuple with the respective component
-	 * values.
-	 */
-	ITup2R<V0,V1> createNew(ITup2R<V0,V1> t);
-	
-	/**
-	 * Creates a new instance of the type of this tuple and adopts the component
-	 * values from the given tuple {@code (v0, v1)}.
-	 * 
-	 * @param v0 The value of the first component.
-	 * @param v1 The value of the second component.
-	 * 
-	 * @return
-	 * A new instance of the type of this tuple with the respective component
-	 * values.
-	 */
-	ITup2R<V0,V1> createNew(V0 v0, V1 v1);
-	
-	/**
 	 * Returns the value of the first component of the tuple.
 	 * 
 	 * @return The value of the first component.
@@ -61,15 +36,6 @@ public interface ITup2R<V0,V1>
 	 * even create conflicts hence it was changed.
 	 */
 	V1 v1();
-	
-	/**
-	 * Creates a shallow copy of this tuple with adopted component values.
-	 * Therefore it creates a new instance of the type of this tuple and
-	 * adopts the component values from this tuple.
-	 * 
-	 * @return A shallow copy of this tuple with the component values adopted.
-	 */
-	ITup2R<V0,V1> copy();
 	
 	/**
 	 * Returns if the component values of this tuple and the component values
