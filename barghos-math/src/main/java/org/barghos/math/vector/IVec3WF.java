@@ -20,15 +20,15 @@ public interface IVec3WF extends IVec3RF, ITup3WF
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF set(ITup3RF t);
+	IVec3WF set(ITup3RF v);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF set(ITupRF t);
+	IVec3WF set(ITupRF v);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF set(float[] values);
+	IVec3WF set(float[] v);
 	
 	/** {@inheritDoc} */
 	@Override
@@ -38,27 +38,27 @@ public interface IVec3WF extends IVec3RF, ITup3WF
 	@Override
 	IVec3WF setAt(int index, float value);
 
-	IVec3WF add(ITup3RF t);
+	IVec3WF add(ITup3RF v);
 	
-	IVec3WF add(ITupRF t);
+	IVec3WF add(ITupRF v);
 	
-	IVec3WF add(float[] t);
+	IVec3WF add(float[] v);
 
 	IVec3WF add(float value);
 
-	IVec3WF add(float tx, float ty, float tz);
+	IVec3WF add(float x, float y, float z);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF addN(ITup3RF t);
+	IVec3WF addN(ITup3RF v);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF addN(ITupRF t);
+	IVec3WF addN(ITupRF v);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF addN(float[] t);
+	IVec3WF addN(float[] v);
 	
 	/** {@inheritDoc} */
 	@Override
@@ -66,29 +66,29 @@ public interface IVec3WF extends IVec3RF, ITup3WF
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF addN(float tx, float ty, float tz);
+	IVec3WF addN(float x, float y, float z);
 
-	IVec3WF sub(ITup3RF t);
+	IVec3WF sub(ITup3RF v);
 	
-	IVec3WF sub(ITupRF t);
+	IVec3WF sub(ITupRF v);
 
-	IVec3WF sub(float[] t);
+	IVec3WF sub(float[] v);
 
 	IVec3WF sub(float value);
 
-	IVec3WF sub(float tx, float ty, float tz);
+	IVec3WF sub(float x, float y, float z);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF subN(ITup3RF t);
+	IVec3WF subN(ITup3RF v);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF subN(ITupRF t);
+	IVec3WF subN(ITupRF v);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF subN(float[] t);
+	IVec3WF subN(float[] v);
 	
 	/** {@inheritDoc} */
 	@Override
@@ -96,29 +96,29 @@ public interface IVec3WF extends IVec3RF, ITup3WF
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF subN(float tx, float ty, float tz);
+	IVec3WF subN(float x, float y, float z);
 
-	IVec3WF rSub(ITup3RF t);
+	IVec3WF rSub(ITup3RF v);
 	
-	IVec3WF rSub(ITupRF t);
+	IVec3WF rSub(ITupRF v);
 
-	IVec3WF rSub(float[] t);
+	IVec3WF rSub(float[] v);
 
 	IVec3WF rSub(float value);
 
-	IVec3WF rSub(float tx, float ty, float tz);
+	IVec3WF rSub(float x, float y, float z);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF rSubN(ITup3RF t);
+	IVec3WF rSubN(ITup3RF v);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF rSubN(ITupRF t);
+	IVec3WF rSubN(ITupRF v);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF rSubN(float[] t);
+	IVec3WF rSubN(float[] v);
 	
 	/** {@inheritDoc} */
 	@Override
@@ -126,29 +126,29 @@ public interface IVec3WF extends IVec3RF, ITup3WF
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF rSubN(float tx, float ty, float tz);
+	IVec3WF rSubN(float x, float y, float z);
 
-	IVec3WF mul(ITup3RF t);
+	IVec3WF mul(ITup3RF v);
 	
-	IVec3WF mul(ITupRF t);
+	IVec3WF mul(ITupRF v);
 
-	IVec3WF mul(float[] t);
+	IVec3WF mul(float[] v);
 
 	IVec3WF mul(float value);
 
-	IVec3WF mul(float tx, float ty, float tz);
+	IVec3WF mul(float x, float y, float z);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF mulN(ITup3RF t);
+	IVec3WF mulN(ITup3RF v);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF mulN(ITupRF t);
+	IVec3WF mulN(ITupRF v);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF mulN(float[] t);
+	IVec3WF mulN(float[] v);
 	
 	/** {@inheritDoc} */
 	@Override
@@ -156,29 +156,29 @@ public interface IVec3WF extends IVec3RF, ITup3WF
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF mulN(float tx, float ty, float tz);
+	IVec3WF mulN(float x, float y, float z);
 
-	IVec3WF div(ITup3RF t);
+	IVec3WF div(ITup3RF v);
 	
-	IVec3WF div(ITupRF t);
+	IVec3WF div(ITupRF v);
 
-	IVec3WF div(float[] t);
+	IVec3WF div(float[] v);
 
 	IVec3WF div(float value);
 
-	IVec3WF div(float tx, float ty, float tz);
+	IVec3WF div(float x, float y, float z);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF divN(ITup3RF t);
+	IVec3WF divN(ITup3RF v);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF divN(ITupRF t);
+	IVec3WF divN(ITupRF v);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF divN(float[] t);
+	IVec3WF divN(float[] v);
 	
 	/** {@inheritDoc} */
 	@Override
@@ -186,29 +186,29 @@ public interface IVec3WF extends IVec3RF, ITup3WF
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF divN(float tx, float ty, float tz);
+	IVec3WF divN(float x, float y, float z);
 
-	IVec3WF rDiv(ITup3RF t);
+	IVec3WF rDiv(ITup3RF v);
 	
-	IVec3WF rDiv(ITupRF t);
+	IVec3WF rDiv(ITupRF v);
 
-	IVec3WF rDiv(float[] t);
+	IVec3WF rDiv(float[] v);
 	
 	IVec3WF rDiv(float value);
 
-	IVec3WF rDiv(float tx, float ty, float tz);
+	IVec3WF rDiv(float x, float y, float z);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF rDivN(ITup3RF t);
+	IVec3WF rDivN(ITup3RF v);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF rDivN(ITupRF t);
+	IVec3WF rDivN(ITupRF v);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF rDivN(float[] t);
+	IVec3WF rDivN(float[] v);
 	
 	/** {@inheritDoc} */
 	@Override
@@ -216,55 +216,79 @@ public interface IVec3WF extends IVec3RF, ITup3WF
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF rDivN(float tx, float ty, float tz);
+	IVec3WF rDivN(float x, float y, float z);
 
-	IVec3WF halfVecTo(ITup3RF t);
+	IVec3WF vecTo(ITup3RF v);
 	
-	IVec3WF halfVecTo(ITupRF t);
+	IVec3WF vecTo(ITupRF v);
 
-	IVec3WF halfVecTo(float[] t);
+	IVec3WF vecTo(float[] v);
 
-	IVec3WF halfVecTo(float tx, float ty, float tz);
+	IVec3WF vecTo(float x, float y, float z);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF halfVecToN(ITup3RF t);
+	IVec3WF vecToN(ITup3RF v);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF halfVecToN(ITupRF t);
-	
-	/** {@inheritDoc} */
-	@Override
-	IVec3WF halfVecToN(float[] t);
-	
-	/** {@inheritDoc} */
-	@Override
-	IVec3WF halfVecToN(float tx, float ty, float tz);
+	IVec3WF vecToN(ITupRF v);
 
-	IVec3WF midPointTo(ITup3RF t);
-	
-	IVec3WF midPointTo(ITupRF t);
+	/** {@inheritDoc} */
+	@Override
+	IVec3WF vecToN(float[] v);
 
-	IVec3WF midPointTo(float[] t);
+	/** {@inheritDoc} */
+	@Override
+	IVec3WF vecToN(float x, float y, float z);
+	
+	IVec3WF halfVecTo(ITup3RF v);
+	
+	IVec3WF halfVecTo(ITupRF v);
 
-	IVec3WF midPointTo(float tx, float ty, float tz);
+	IVec3WF halfVecTo(float[] v);
+
+	IVec3WF halfVecTo(float x, float y, float z);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF midPointToN(ITup3RF t);
+	IVec3WF halfVecToN(ITup3RF v);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF midPointToN(ITupRF t);
+	IVec3WF halfVecToN(ITupRF v);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF midPointToN(float[] t);
+	IVec3WF halfVecToN(float[] v);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF midPointToN(float tx, float ty, float tz);
+	IVec3WF halfVecToN(float x, float y, float z);
+
+	IVec3WF midPointTo(ITup3RF v);
+	
+	IVec3WF midPointTo(ITupRF v);
+
+	IVec3WF midPointTo(float[] v);
+
+	IVec3WF midPointTo(float x, float y, float z);
+	
+	/** {@inheritDoc} */
+	@Override
+	IVec3WF midPointToN(ITup3RF v);
+	
+	/** {@inheritDoc} */
+	@Override
+	IVec3WF midPointToN(ITupRF v);
+	
+	/** {@inheritDoc} */
+	@Override
+	IVec3WF midPointToN(float[] v);
+	
+	/** {@inheritDoc} */
+	@Override
+	IVec3WF midPointToN(float x, float y, float z);
 
 	IVec3WF neg();
 	
@@ -290,7 +314,7 @@ public interface IVec3WF extends IVec3RF, ITup3WF
 
 	IVec3WF project(float[] t);
 
-	IVec3WF project(float tx, float ty, float tz);
+	IVec3WF project(float tX, float tY, float tZ);
 	
 	/** {@inheritDoc} */
 	@Override
@@ -306,7 +330,7 @@ public interface IVec3WF extends IVec3RF, ITup3WF
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF projectN(float tx, float ty, float tz);
+	IVec3WF projectN(float tX, float tY, float tZ);
 
 	IVec3WF reflect(ITup3RF n);
 	
@@ -314,7 +338,7 @@ public interface IVec3WF extends IVec3RF, ITup3WF
 
 	IVec3WF reflect(float[] n);
 
-	IVec3WF reflect(float nx, float ny, float nz);
+	IVec3WF reflect(float nX, float nY, float nZ);
 	
 	/** {@inheritDoc} */
 	@Override
@@ -330,7 +354,7 @@ public interface IVec3WF extends IVec3RF, ITup3WF
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF reflectN(float nx, float ny, float nz);
+	IVec3WF reflectN(float nX, float nY, float nZ);
 
 	IVec3WF abs();
 	
@@ -398,99 +422,99 @@ public interface IVec3WF extends IVec3RF, ITup3WF
 	@Override
 	IVec3WF swapYZN();
 
-	IVec3WF minComponents(ITup3RF t);
+	IVec3WF minComponents(ITup3RF v);
 	
-	IVec3WF minComponents(ITupRF t);
+	IVec3WF minComponents(ITupRF v);
 	
-	IVec3WF minComponents(float[] t);
+	IVec3WF minComponents(float[] v);
 	
-	IVec3WF minComponents(float tv0, float tv1, float tv2);
-	
-	/** {@inheritDoc} */
-	@Override
-	IVec3WF minComponentsN(ITup3RF t);
+	IVec3WF minComponents(float x, float y, float z);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF minComponentsN(ITupRF t);
+	IVec3WF minComponentsN(ITup3RF v);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF minComponentsN(float[] t);
+	IVec3WF minComponentsN(ITupRF v);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF minComponentsN(float tv0, float tv1, float tv2);
+	IVec3WF minComponentsN(float[] v);
+	
+	/** {@inheritDoc} */
+	@Override
+	IVec3WF minComponentsN(float x, float y, float z);
 
-	IVec3WF maxComponents(ITup3RF t);
+	IVec3WF maxComponents(ITup3RF v);
 	
-	IVec3WF maxComponents(ITupRF t);
+	IVec3WF maxComponents(ITupRF v);
 	
-	IVec3WF maxComponents(float[] t);
+	IVec3WF maxComponents(float[] v);
 	
-	IVec3WF maxComponents(float tv0, float tv1, float tv2);
-	
-	/** {@inheritDoc} */
-	@Override
-	IVec3WF maxComponentsN(ITup3RF t);
+	IVec3WF maxComponents(float x, float y, float z);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF maxComponentsN(ITupRF t);
+	IVec3WF maxComponentsN(ITup3RF v);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF maxComponentsN(float[] t);
+	IVec3WF maxComponentsN(ITupRF v);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF maxComponentsN(float tv0, float tv1, float tv2);
-	
-	IVec3WF cross(ITup3RF t);
-	
-	IVec3WF cross(ITupRF t);
-	
-	IVec3WF cross(float[] t);
-	
-	IVec3WF cross(float tv0, float tv1, float tv2);
+	IVec3WF maxComponentsN(float[] v);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF crossN(ITup3RF t);
+	IVec3WF maxComponentsN(float x, float y, float z);
+	
+	IVec3WF cross(ITup3RF v);
+	
+	IVec3WF cross(ITupRF v);
+	
+	IVec3WF cross(float[] v);
+	
+	IVec3WF cross(float x, float y, float z);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF crossN(ITupRF t);
+	IVec3WF crossN(ITup3RF v);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF crossN(float[] t);
+	IVec3WF crossN(ITupRF v);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF crossN(float tv0, float tv1, float tv2);
-	
-	IVec3WF rCross(ITup3RF t);
-	
-	IVec3WF rCross(ITupRF t);
-	
-	IVec3WF rCross(float[] t);
-	
-	IVec3WF rCross(float tv0, float tv1, float tv2);
+	IVec3WF crossN(float[] v);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF rCrossN(ITup3RF t);
+	IVec3WF crossN(float x, float y, float z);
+	
+	IVec3WF rCross(ITup3RF v);
+	
+	IVec3WF rCross(ITupRF v);
+	
+	IVec3WF rCross(float[] v);
+	
+	IVec3WF rCross(float x, float y, float z);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF rCrossN(ITupRF t);
+	IVec3WF rCrossN(ITup3RF v);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF rCrossN(float[] t);
+	IVec3WF rCrossN(ITupRF v);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF rCrossN(float tv0, float tv1, float tv2);
+	IVec3WF rCrossN(float[] v);
+	
+	/** {@inheritDoc} */
+	@Override
+	IVec3WF rCrossN(float x, float y, float z);
 }

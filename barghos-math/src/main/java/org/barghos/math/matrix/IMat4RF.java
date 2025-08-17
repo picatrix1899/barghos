@@ -217,4 +217,92 @@ public interface IMat4RF extends ISqrMatRF
 	<T> T transform4Func(float[] v, IFunc4F<T> func);
 	
 	<T> T transform4Func(float v0, float v1, float v2, float v3, IFunc4F<T> func);
+	
+	IMat4RF translate2N(ITup2RF v);
+	
+	IMat4RF translate2N(float[] v);
+	
+	IMat4RF translate2N(float v0, float v1);
+	
+	IMat4RF translate3N(ITup3RF v);
+	
+	IMat4RF translate3N(float[] v);
+	
+	IMat4RF translate3N(float v0, float v1, float v2);
+	
+	IMat4RF scale2N(ITup2RF v);
+	
+	IMat4RF scale2N(float[] v);
+	
+	IMat4RF scale2N(float v0, float v1);
+	
+	IMat4RF scale3N(ITup3RF v);
+	
+	IMat4RF scale3N(float[] v);
+	
+	IMat4RF scale3N(float v0, float v1, float v2);
+	
+	IMat4RF scale4N(ITup4RF v);
+	
+	IMat4RF scale4N(float[] v);
+	
+	IMat4RF scale4N(float v0, float v1, float v2, float v3);
+	
+	IMat4RF baseChangeN(ITup3RF u, ITup3RF v, ITup3RF w);
+	
+	IMat4RF baseChangeN(ITup3RF u, ITup3RF v, float[] w);
+	
+	IMat4RF baseChangeN(ITup3RF u, ITup3RF v, float wV0, float wV1, float wV2);
+	
+	IMat4RF baseChangeN(ITup3RF u, float[] v, ITup3RF w);
+	
+	IMat4RF baseChangeN(ITup3RF u, float[] v, float[] w);
+	
+	IMat4RF baseChangeN(ITup3RF u, float[] v, float wV0, float wV1, float wV2);
+	
+	IMat4RF baseChangeN(ITup3RF u, float vV0, float vV1, float vV2, ITup3RF w);
+	
+	IMat4RF baseChangeN(ITup3RF u, float vV0, float vV1, float vV2, float[] w);
+	
+	IMat4RF baseChangeN(ITup3RF u, float vV0, float vV1, float vV2, float wV0, float wV1, float wV2);
+	
+	IMat4RF baseChangeN(float[] u, ITup3RF v, ITup3RF w);
+	
+	IMat4RF baseChangeN(float[] u, ITup3RF v, float[] w);
+	
+	IMat4RF baseChangeN(float[] u, ITup3RF v, float wV0, float wV1, float wV2);
+	
+	IMat4RF baseChangeN(float[] u, float[] v, ITup3RF w);
+	
+	IMat4RF baseChangeN(float[] u, float[] v, float[] w);
+	
+	IMat4RF baseChangeN(float[] u, float[] v, float wV0, float wV1, float wV2);
+	
+	IMat4RF baseChangeN(float[] u, float vV0, float vV1, float vV2, ITup3RF w);
+	
+	IMat4RF baseChangeN(float[] u, float vV0, float vV1, float vV2, float[] w);
+	
+	IMat4RF baseChangeN(float[] u, float vV0, float vV1, float vV2, float wV0, float wV1, float wV2);
+	
+	IMat4RF baseChangeN(float uV0, float uV1, float uV2, ITup3RF v, ITup3RF w);
+	
+	IMat4RF baseChangeN(float uV0, float uV1, float uV2, ITup3RF v, float[] w);
+	
+	IMat4RF baseChangeN(float uV0, float uV1, float uV2, ITup3RF v, float wV0, float wV1, float wV2);
+	
+	IMat4RF baseChangeN(float uV0, float uV1, float uV2, float[] v, ITup3RF w);
+	
+	IMat4RF baseChangeN(float uV0, float uV1, float uV2, float[] v, float[] w);
+	
+	IMat4RF baseChangeN(float uV0, float uV1, float uV2, float[] v, float wV0, float wV1, float wV2);
+	
+	IMat4RF baseChangeN(float uV0, float uV1, float uV2, float vV0, float vV1, float vV2, ITup3RF w);
+	
+	IMat4RF baseChangeN(float uV0, float uV1, float uV2, float vV0, float vV1, float vV2, float[] w);
+	
+	IMat4RF baseChangeN(float uV0, float uV1, float uV2, float vV0, float vV1, float vV2, float wV0, float wV1, float wV2);
+	
+	IMat4RF rotateRadN(float aV0, float aV1, float aV2, float angle);
+	
+	IMat4RF rotateDegN(float aV0, float aV1, float aV2, float angle);
 }

@@ -12,7 +12,7 @@ import org.barghos.util.tuple.floats.TupUtils3F;
 /**
  * This class provides vector operations for two dimensions.
  */
-public class VecUtils3F
+public final class VecUtils3F
 {
 	public static IndexValuePairF min(ITup3RF t, @ExtractionParam IndexValuePairF res)
 	{

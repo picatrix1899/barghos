@@ -3221,9 +3221,217 @@ public class Mat4F implements IMat4WF
 	}
 
 	@Override
-	public Mat4F setBaseChanging(float rV0, float rV1, float rV2, float uV0, float uV1, float uV2, float fV0, float fV1, float fV2)
+	public Mat4F setBaseChanging(ITup3RF u, ITup3RF v, ITup3RF w)
 	{
-		MatUtils4F.setBaseChanging(rV0, rV1, rV2, uV0, uV1, uV2, fV0, fV1, fV2, this.m);
+		MatUtils4F.setBaseChanging(u, v, w, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F setBaseChanging(ITup3RF u, ITup3RF v, float[] w)
+	{
+		MatUtils4F.setBaseChanging(u, v, w, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F setBaseChanging(ITup3RF u, ITup3RF v, float wV0, float wV1, float wV2)
+	{
+		MatUtils4F.setBaseChanging(u, v, wV0, wV1, wV2, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F setBaseChanging(ITup3RF u, float[] v, ITup3RF w)
+	{
+		MatUtils4F.setBaseChanging(u, v, w, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F setBaseChanging(ITup3RF u, float[] v, float[] w)
+	{
+		MatUtils4F.setBaseChanging(u, v, w, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F setBaseChanging(ITup3RF u, float[] v, float wV0, float wV1, float wV2)
+	{
+		MatUtils4F.setBaseChanging(u, v, wV0, wV1, wV2, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F setBaseChanging(ITup3RF u, float vV0, float vV1, float vV2, ITup3RF w)
+	{
+		MatUtils4F.setBaseChanging(u, vV0, vV1, vV2, w, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F setBaseChanging(ITup3RF u, float vV0, float vV1, float vV2, float[] w)
+	{
+		MatUtils4F.setBaseChanging(u, vV0, vV1, vV2, w, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F setBaseChanging(ITup3RF u, float vV0, float vV1, float vV2, float wV0, float wV1, float wV2)
+	{
+		MatUtils4F.setBaseChanging(u, vV0, vV1, vV2, wV0, wV1, wV2, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F setBaseChanging(float[] u, ITup3RF v, ITup3RF w)
+	{
+		MatUtils4F.setBaseChanging(u, v, w, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F setBaseChanging(float[] u, ITup3RF v, float[] w)
+	{
+		MatUtils4F.setBaseChanging(u, v, w, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F setBaseChanging(float[] u, ITup3RF v, float wV0, float wV1, float wV2)
+	{
+		MatUtils4F.setBaseChanging(u, v, wV0, wV1, wV2, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F setBaseChanging(float[] u, float[] v, ITup3RF w)
+	{
+		MatUtils4F.setBaseChanging(u, v, w, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F setBaseChanging(float[] u, float[] v, float[] w)
+	{
+		MatUtils4F.setBaseChanging(u, v, w, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F setBaseChanging(float[] u, float[] v, float wV0, float wV1, float wV2)
+	{
+		MatUtils4F.setBaseChanging(u, v, wV0, wV1, wV2, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F setBaseChanging(float[] u, float vV0, float vV1, float vV2, ITup3RF w)
+	{
+		MatUtils4F.setBaseChanging(u, vV0, vV1, vV2, w, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F setBaseChanging(float[] u, float vV0, float vV1, float vV2, float[] w)
+	{
+		MatUtils4F.setBaseChanging(u, vV0, vV1, vV2, w, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F setBaseChanging(float[] u, float vV0, float vV1, float vV2, float wV0, float wV1, float wV2)
+	{
+		MatUtils4F.setBaseChanging(u, vV0, vV1, vV2, wV0, wV1, wV2, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F setBaseChanging(float uV0, float uV1, float uV2, ITup3RF v, ITup3RF w)
+	{
+		MatUtils4F.setBaseChanging(uV0, uV1, uV2, v, w, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F setBaseChanging(float uV0, float uV1, float uV2, ITup3RF v, float[] w)
+	{
+		MatUtils4F.setBaseChanging(uV0, uV1, uV2, v, w, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F setBaseChanging(float uV0, float uV1, float uV2, ITup3RF v, float wV0, float wV1, float wV2)
+	{
+		MatUtils4F.setBaseChanging(uV0, uV1, uV2, v, wV0, wV1, wV2, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F setBaseChanging(float uV0, float uV1, float uV2, float[] v, ITup3RF w)
+	{
+		MatUtils4F.setBaseChanging(uV0, uV1, uV2, v, w, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F setBaseChanging(float uV0, float uV1, float uV2, float[] v, float[] w)
+	{
+		MatUtils4F.setBaseChanging(uV0, uV1, uV2, v, w, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F setBaseChanging(float uV0, float uV1, float uV2, float[] v, float wV0, float wV1, float wV2)
+	{
+		MatUtils4F.setBaseChanging(uV0, uV1, uV2, v, wV0, wV1, wV2, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F setBaseChanging(float uV0, float uV1, float uV2, float vV0, float vV1, float vV2, ITup3RF w)
+	{
+		MatUtils4F.setBaseChanging(uV0, uV1, uV2, vV0, vV1, vV2, w, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F setBaseChanging(float uV0, float uV1, float uV2, float vV0, float vV1, float vV2, float[] w)
+	{
+		MatUtils4F.setBaseChanging(uV0, uV1, uV2, vV0, vV1, vV2, w, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F setBaseChanging(float uV0, float uV1, float uV2, float vV0, float vV1, float vV2, float wV0, float wV1, float wV2)
+	{
+		MatUtils4F.setBaseChanging(uV0, uV1, uV2, vV0, vV1, vV2, wV0, wV1, wV2, this.m);
 		
 		return this;
 	}
@@ -3479,6 +3687,214 @@ public class Mat4F implements IMat4WF
 	}
 
 	@Override
+	public Mat4F baseChange(ITup3RF u, ITup3RF v, ITup3RF w)
+	{
+		MatUtils4F.baseChange(this.m, u, v, w, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChange(ITup3RF u, ITup3RF v, float[] w)
+	{
+		MatUtils4F.baseChange(this.m, u, v, w, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChange(ITup3RF u, ITup3RF v, float wV0, float wV1, float wV2)
+	{
+		MatUtils4F.baseChange(this.m, u, v, wV0, wV1, wV2, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChange(ITup3RF u, float[] v, ITup3RF w)
+	{
+		MatUtils4F.baseChange(this.m, u, v, w, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChange(ITup3RF u, float[] v, float[] w)
+	{
+		MatUtils4F.baseChange(this.m, u, v, w, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChange(ITup3RF u, float[] v, float wV0, float wV1, float wV2)
+	{
+		MatUtils4F.baseChange(this.m, u, v, wV0, wV1, wV2, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChange(ITup3RF u, float vV0, float vV1, float vV2, ITup3RF w)
+	{
+		MatUtils4F.baseChange(this.m, u, vV0, vV1, vV2, w, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChange(ITup3RF u, float vV0, float vV1, float vV2, float[] w)
+	{
+		MatUtils4F.baseChange(this.m, u, vV0, vV1, vV2, w, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChange(ITup3RF u, float vV0, float vV1, float vV2, float wV0, float wV1, float wV2)
+	{
+		MatUtils4F.baseChange(this.m, u, vV0, vV1, vV2, wV0, wV1, wV2, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChange(float[] u, ITup3RF v, ITup3RF w)
+	{
+		MatUtils4F.baseChange(this.m, u, v, w, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChange(float[] u, ITup3RF v, float[] w)
+	{
+		MatUtils4F.baseChange(this.m, u, v, w, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChange(float[] u, ITup3RF v, float wV0, float wV1, float wV2)
+	{
+		MatUtils4F.baseChange(this.m, u, v, wV0, wV1, wV2, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChange(float[] u, float[] v, ITup3RF w)
+	{
+		MatUtils4F.baseChange(this.m, u, v, w, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChange(float[] u, float[] v, float[] w)
+	{
+		MatUtils4F.baseChange(this.m, u, v, w, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChange(float[] u, float[] v, float wV0, float wV1, float wV2)
+	{
+		MatUtils4F.baseChange(this.m, u, v, wV0, wV1, wV2, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChange(float[] u, float vV0, float vV1, float vV2, ITup3RF w)
+	{
+		MatUtils4F.baseChange(this.m, u, vV0, vV1, vV2, w, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChange(float[] u, float vV0, float vV1, float vV2, float[] w)
+	{
+		MatUtils4F.baseChange(this.m, u, vV0, vV1, vV2, w, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChange(float[] u, float vV0, float vV1, float vV2, float wV0, float wV1, float wV2)
+	{
+		MatUtils4F.baseChange(this.m, u, vV0, vV1, vV2, wV0, wV1, wV2, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChange(float uV0, float uV1, float uV2, ITup3RF v, ITup3RF w)
+	{
+		MatUtils4F.baseChange(this.m, uV0, uV1, uV2, v, w, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChange(float uV0, float uV1, float uV2, ITup3RF v, float[] w)
+	{
+		MatUtils4F.baseChange(this.m, uV0, uV1, uV2, v, w, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChange(float uV0, float uV1, float uV2, ITup3RF v, float wV0, float wV1, float wV2)
+	{
+		MatUtils4F.baseChange(this.m, uV0, uV1, uV2, v, wV0, wV1, wV2, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChange(float uV0, float uV1, float uV2, float[] v, ITup3RF w)
+	{
+		MatUtils4F.baseChange(this.m, uV0, uV1, uV2, v, w, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChange(float uV0, float uV1, float uV2, float[] v, float[] w)
+	{
+		MatUtils4F.baseChange(this.m, uV0, uV1, uV2, v, w, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChange(float uV0, float uV1, float uV2, float[] v, float wV0, float wV1, float wV2)
+	{
+		MatUtils4F.baseChange(this.m, uV0, uV1, uV2, v, wV0, wV1, wV2, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChange(float uV0, float uV1, float uV2, float vV0, float vV1, float vV2, ITup3RF w)
+	{
+		MatUtils4F.baseChange(this.m, uV0, uV1, uV2, vV0, vV1, vV2, w, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChange(float uV0, float uV1, float uV2, float vV0, float vV1, float vV2, float[] w)
+	{
+		MatUtils4F.baseChange(this.m, uV0, uV1, uV2, vV0, vV1, vV2, w, this.m);
+		
+		return this;
+	}
+	
+	@Override
 	public Mat4F baseChange(float rv0, float rv1, float rv2, float uv0, float uv1, float uv2, float fv0, float fv1, float fv2)
 	{
 		MatUtils4F.baseChange(this.m, rv0, rv1, rv2, uv0, uv1, uv2, fv0, fv1, fv2, this.m);
@@ -3486,6 +3902,214 @@ public class Mat4F implements IMat4WF
 		return this;
 	}
 
+	@Override
+	public Mat4F baseChangeN(ITup3RF u, ITup3RF v, ITup3RF w)
+	{
+		MatUtils4F.baseChangeFunc(this.m, u, v, w, CTOR);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChangeN(ITup3RF u, ITup3RF v, float[] w)
+	{
+		MatUtils4F.baseChangeFunc(this.m, u, v, w, CTOR);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChangeN(ITup3RF u, ITup3RF v, float wV0, float wV1, float wV2)
+	{
+		MatUtils4F.baseChangeFunc(this.m, u, v, wV0, wV1, wV2, CTOR);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChangeN(ITup3RF u, float[] v, ITup3RF w)
+	{
+		MatUtils4F.baseChangeFunc(this.m, u, v, w, CTOR);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChangeN(ITup3RF u, float[] v, float[] w)
+	{
+		MatUtils4F.baseChangeFunc(this.m, u, v, w, CTOR);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChangeN(ITup3RF u, float[] v, float wV0, float wV1, float wV2)
+	{
+		MatUtils4F.baseChangeFunc(this.m, u, v, wV0, wV1, wV2, CTOR);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChangeN(ITup3RF u, float vV0, float vV1, float vV2, ITup3RF w)
+	{
+		MatUtils4F.baseChangeFunc(this.m, u, vV0, vV1, vV2, w, CTOR);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChangeN(ITup3RF u, float vV0, float vV1, float vV2, float[] w)
+	{
+		MatUtils4F.baseChangeFunc(this.m, u, vV0, vV1, vV2, w, CTOR);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChangeN(ITup3RF u, float vV0, float vV1, float vV2, float wV0, float wV1, float wV2)
+	{
+		MatUtils4F.baseChangeFunc(this.m, u, vV0, vV1, vV2, wV0, wV1, wV2, CTOR);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChangeN(float[] u, ITup3RF v, ITup3RF w)
+	{
+		MatUtils4F.baseChangeFunc(this.m, u, v, w, CTOR);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChangeN(float[] u, ITup3RF v, float[] w)
+	{
+		MatUtils4F.baseChangeFunc(this.m, u, v, w, CTOR);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChangeN(float[] u, ITup3RF v, float wV0, float wV1, float wV2)
+	{
+		MatUtils4F.baseChangeFunc(this.m, u, v, wV0, wV1, wV2, CTOR);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChangeN(float[] u, float[] v, ITup3RF w)
+	{
+		MatUtils4F.baseChangeFunc(this.m, u, v, w, CTOR);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChangeN(float[] u, float[] v, float[] w)
+	{
+		MatUtils4F.baseChangeFunc(this.m, u, v, w, CTOR);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChangeN(float[] u, float[] v, float wV0, float wV1, float wV2)
+	{
+		MatUtils4F.baseChangeFunc(this.m, u, v, wV0, wV1, wV2, CTOR);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChangeN(float[] u, float vV0, float vV1, float vV2, ITup3RF w)
+	{
+		MatUtils4F.baseChangeFunc(this.m, u, vV0, vV1, vV2, w, CTOR);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChangeN(float[] u, float vV0, float vV1, float vV2, float[] w)
+	{
+		MatUtils4F.baseChangeFunc(this.m, u, vV0, vV1, vV2, w, CTOR);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChangeN(float[] u, float vV0, float vV1, float vV2, float wV0, float wV1, float wV2)
+	{
+		MatUtils4F.baseChangeFunc(this.m, u, vV0, vV1, vV2, wV0, wV1, wV2, CTOR);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChangeN(float uV0, float uV1, float uV2, ITup3RF v, ITup3RF w)
+	{
+		MatUtils4F.baseChangeFunc(this.m, uV0, uV1, uV2, v, w, CTOR);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChangeN(float uV0, float uV1, float uV2, ITup3RF v, float[] w)
+	{
+		MatUtils4F.baseChangeFunc(this.m, uV0, uV1, uV2, v, w, CTOR);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChangeN(float uV0, float uV1, float uV2, ITup3RF v, float wV0, float wV1, float wV2)
+	{
+		MatUtils4F.baseChangeFunc(this.m, uV0, uV1, uV2, v, wV0, wV1, wV2, CTOR);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChangeN(float uV0, float uV1, float uV2, float[] v, ITup3RF w)
+	{
+		MatUtils4F.baseChangeFunc(this.m, uV0, uV1, uV2, v, w, CTOR);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChangeN(float uV0, float uV1, float uV2, float[] v, float[] w)
+	{
+		MatUtils4F.baseChangeFunc(this.m, uV0, uV1, uV2, v, w, CTOR);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChangeN(float uV0, float uV1, float uV2, float[] v, float wV0, float wV1, float wV2)
+	{
+		MatUtils4F.baseChangeFunc(this.m, uV0, uV1, uV2, v, wV0, wV1, wV2, CTOR);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChangeN(float uV0, float uV1, float uV2, float vV0, float vV1, float vV2, ITup3RF w)
+	{
+		MatUtils4F.baseChangeFunc(this.m, uV0, uV1, uV2, vV0, vV1, vV2, w, CTOR);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F baseChangeN(float uV0, float uV1, float uV2, float vV0, float vV1, float vV2, float[] w)
+	{
+		MatUtils4F.baseChangeFunc(this.m, uV0, uV1, uV2, vV0, vV1, vV2, w, CTOR);
+		
+		return this;
+	}
+	
 	@Override
 	public Mat4F baseChangeN(float rv0, float rv1, float rv2, float uv0, float uv1, float uv2, float fv0, float fv1, float fv2)
 	{
@@ -3518,5 +4142,90 @@ public class Mat4F implements IMat4WF
 	public Mat4F rotateDegN(float av0, float av1, float av2, float angle)
 	{
 		return MatUtils4F.rotateDegFunc(this.m, av0, av1, av2, angle, CTOR);
+	}
+	
+	public static Mat4F zero()
+	{
+		return new Mat4F().setZero();
+	}
+	
+	public static Mat4F identity()
+	{
+		return new Mat4F().setIdentity();
+	}
+	
+	public static Mat4F translation2(ITup2RF t)
+	{
+		return new Mat4F().setTranslation2(t);
+	}
+	
+	public static Mat4F translation2(float[] t)
+	{
+		return new Mat4F().setTranslation2(t);
+	}
+	
+	public static Mat4F translation2(float v0, float v1)
+	{
+		return new Mat4F().setTranslation2(v0, v1);
+	}
+	
+	public static Mat4F translation3(ITup3RF t)
+	{
+		return new Mat4F().setTranslation3(t);
+	}
+	
+	public static Mat4F translation3(float[] t)
+	{
+		return new Mat4F().setTranslation3(t);
+	}
+	
+	public static Mat4F translation3(float v0, float v1, float v2)
+	{
+		return new Mat4F().setTranslation3(v0, v1, v2);
+	}
+	
+	public static Mat4F scaling2(ITup2RF t)
+	{
+		return new Mat4F().setScaling2(t);
+	}
+	
+	public static Mat4F scaling2(float[] t)
+	{
+		return new Mat4F().setScaling2(t);
+	}
+	
+	public static Mat4F scaling2(float v0, float v1)
+	{
+		return new Mat4F().setScaling2(v0, v1);
+	}
+	
+	public static Mat4F scaling3(ITup3RF t)
+	{
+		return new Mat4F().setScaling3(t);
+	}
+	
+	public static Mat4F scaling3(float[] t)
+	{
+		return new Mat4F().setScaling3(t);
+	}
+	
+	public static Mat4F scaling3(float v0, float v1, float v2)
+	{
+		return new Mat4F().setScaling3(v0, v1, v2);
+	}
+	
+	public static Mat4F scaling4(ITup4RF t)
+	{
+		return new Mat4F().setScaling4(t);
+	}
+	
+	public static Mat4F scaling4(float[] t)
+	{
+		return new Mat4F().setScaling4(t);
+	}
+	
+	public static Mat4F scaling4(float v0, float v1, float v2, float v3)
+	{
+		return new Mat4F().setScaling4(v0, v1, v2, v3);
 	}
 }

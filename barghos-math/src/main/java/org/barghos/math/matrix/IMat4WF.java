@@ -472,13 +472,65 @@ public interface IMat4WF extends IMat4RF, ISqrMatWF
 	
 	IMat4WF setScaling4(float v0, float v1, float v2, float v3);
 	
-	IMat4WF setBaseChanging(float rv0, float rv1, float rv2, float uv0, float uv1, float uv2, float fv0, float fv1, float fv2);
+	IMat4WF setBaseChanging(ITup3RF u, ITup3RF v, ITup3RF w);
 	
+	IMat4WF setBaseChanging(ITup3RF u, ITup3RF v, float[] w);
+	
+	IMat4WF setBaseChanging(ITup3RF u, ITup3RF v, float wV0, float wV1, float wV2);
+	
+	IMat4WF setBaseChanging(ITup3RF u, float[] v, ITup3RF w);
+	
+	IMat4WF setBaseChanging(ITup3RF u, float[] v, float[] w);
+	
+	IMat4WF setBaseChanging(ITup3RF u, float[] v, float wV0, float wV1, float wV2);
+	
+	IMat4WF setBaseChanging(ITup3RF u, float vV0, float vV1, float vV2, ITup3RF w);
+	
+	IMat4WF setBaseChanging(ITup3RF u, float vV0, float vV1, float vV2, float[] w);
+	
+	IMat4WF setBaseChanging(ITup3RF u, float vV0, float vV1, float vV2, float wV0, float wV1, float wV2);
+	
+	IMat4WF setBaseChanging(float[] u, ITup3RF v, ITup3RF w);
+	
+	IMat4WF setBaseChanging(float[] u, ITup3RF v, float[] w);
+	
+	IMat4WF setBaseChanging(float[] u, ITup3RF v, float wV0, float wV1, float wV2);
+	
+	IMat4WF setBaseChanging(float[] u, float[] v, ITup3RF w);
+	
+	IMat4WF setBaseChanging(float[] u, float[] v, float[] w);
+	
+	IMat4WF setBaseChanging(float[] u, float[] v, float wV0, float wV1, float wV2);
+	
+	IMat4WF setBaseChanging(float[] u, float vV0, float vV1, float vV2, ITup3RF w);
+	
+	IMat4WF setBaseChanging(float[] u, float vV0, float vV1, float vV2, float[] w);
+	
+	IMat4WF setBaseChanging(float[] u, float vV0, float vV1, float vV2, float wV0, float wV1, float wV2);
+	
+	IMat4WF setBaseChanging(float uV0, float uV1, float uV2, ITup3RF v, ITup3RF w);
+	
+	IMat4WF setBaseChanging(float uV0, float uV1, float uV2, ITup3RF v, float[] w);
+	
+	IMat4WF setBaseChanging(float uV0, float uV1, float uV2, ITup3RF v, float wV0, float wV1, float wV2);
+	
+	IMat4WF setBaseChanging(float uV0, float uV1, float uV2, float[] v, ITup3RF w);
+	
+	IMat4WF setBaseChanging(float uV0, float uV1, float uV2, float[] v, float[] w);
+	
+	IMat4WF setBaseChanging(float uV0, float uV1, float uV2, float[] v, float wV0, float wV1, float wV2);
+	
+	IMat4WF setBaseChanging(float uV0, float uV1, float uV2, float vV0, float vV1, float vV2, ITup3RF w);
+	
+	IMat4WF setBaseChanging(float uV0, float uV1, float uV2, float vV0, float vV1, float vV2, float[] w);
+	
+	IMat4WF setBaseChanging(float uV0, float uV1, float uV2, float vV0, float vV1, float vV2, float wV0, float wV1, float wV2);
+
 	IMat4WF setRotationByQuat(ITup4RF q);
 	
-	IMat4WF setRotationRad(float av0, float av1, float av2, float angle);
+	IMat4WF setRotationRad(float aV0, float aV1, float aV2, float angle);
 	
-	IMat4WF setRotationDeg(float av0, float av1, float av2, float angle);
+	IMat4WF setRotationDeg(float aV0, float aV1, float aV2, float angle);
 	
 	IMat4WF setPerspective(float fovY, float aspectRatio, float near, float far);
 	
@@ -490,10 +542,16 @@ public interface IMat4WF extends IMat4RF, ISqrMatWF
 	
 	IMat4WF translate2(float v0, float v1);
 	
+	/** {@inheritDoc} */
+	@Override
 	IMat4WF translate2N(ITup2RF v);
 	
+	/** {@inheritDoc} */
+	@Override
 	IMat4WF translate2N(float[] v);
 	
+	/** {@inheritDoc} */
+	@Override
 	IMat4WF translate2N(float v0, float v1);
 	
 	IMat4WF translate3(ITup3RF v);
@@ -502,10 +560,16 @@ public interface IMat4WF extends IMat4RF, ISqrMatWF
 	
 	IMat4WF translate3(float v0, float v1, float v2);
 	
+	/** {@inheritDoc} */
+	@Override
 	IMat4WF translate3N(ITup3RF v);
 	
+	/** {@inheritDoc} */
+	@Override
 	IMat4WF translate3N(float[] v);
 	
+	/** {@inheritDoc} */
+	@Override
 	IMat4WF translate3N(float v0, float v1, float v2);
 	
 	IMat4WF scale2(ITup2RF v);
@@ -514,10 +578,16 @@ public interface IMat4WF extends IMat4RF, ISqrMatWF
 	
 	IMat4WF scale2(float v0, float v1);
 	
+	/** {@inheritDoc} */
+	@Override
 	IMat4WF scale2N(ITup2RF v);
 	
+	/** {@inheritDoc} */
+	@Override
 	IMat4WF scale2N(float[] v);
 	
+	/** {@inheritDoc} */
+	@Override
 	IMat4WF scale2N(float v0, float v1);
 	
 	IMat4WF scale3(ITup3RF v);
@@ -526,10 +596,16 @@ public interface IMat4WF extends IMat4RF, ISqrMatWF
 	
 	IMat4WF scale3(float v0, float v1, float v2);
 	
+	/** {@inheritDoc} */
+	@Override
 	IMat4WF scale3N(ITup3RF v);
 	
+	/** {@inheritDoc} */
+	@Override
 	IMat4WF scale3N(float[] v);
 	
+	/** {@inheritDoc} */
+	@Override
 	IMat4WF scale3N(float v0, float v1, float v2);
 	
 	IMat4WF scale4(ITup4RF v);
@@ -538,21 +614,189 @@ public interface IMat4WF extends IMat4RF, ISqrMatWF
 	
 	IMat4WF scale4(float v0, float v1, float v2, float v3);
 	
+	/** {@inheritDoc} */
+	@Override
 	IMat4WF scale4N(ITup4RF v);
 	
+	/** {@inheritDoc} */
+	@Override
 	IMat4WF scale4N(float[] v);
 	
+	/** {@inheritDoc} */
+	@Override
 	IMat4WF scale4N(float v0, float v1, float v2, float v3);
 	
-	IMat4WF baseChange(float rv0, float rv1, float rv2, float uv0, float uv1, float uv2, float fv0, float fv1, float fv2);
+	IMat4WF baseChange(ITup3RF u, ITup3RF v, ITup3RF w);
 	
-	IMat4WF baseChangeN(float rv0, float rv1, float rv2, float uv0, float uv1, float uv2, float fv0, float fv1, float fv2);
+	IMat4WF baseChange(ITup3RF u, ITup3RF v, float[] w);
 	
-	IMat4WF rotateRad(float av0, float av1, float av2, float angle);
+	IMat4WF baseChange(ITup3RF u, ITup3RF v, float wV0, float wV1, float wV2);
 	
-	IMat4WF rotateRadN(float av0, float av1, float av2, float angle);
+	IMat4WF baseChange(ITup3RF u, float[] v, ITup3RF w);
 	
-	IMat4WF rotateDeg(float av0, float av1, float av2, float angle);
+	IMat4WF baseChange(ITup3RF u, float[] v, float[] w);
 	
-	IMat4WF rotateDegN(float av0, float av1, float av2, float angle);
+	IMat4WF baseChange(ITup3RF u, float[] v, float wV0, float wV1, float wV2);
+	
+	IMat4WF baseChange(ITup3RF u, float vV0, float vV1, float vV2, ITup3RF w);
+	
+	IMat4WF baseChange(ITup3RF u, float vV0, float vV1, float vV2, float[] w);
+	
+	IMat4WF baseChange(ITup3RF u, float vV0, float vV1, float vV2, float wV0, float wV1, float wV2);
+	
+	IMat4WF baseChange(float[] u, ITup3RF v, ITup3RF w);
+	
+	IMat4WF baseChange(float[] u, ITup3RF v, float[] w);
+	
+	IMat4WF baseChange(float[] u, ITup3RF v, float wV0, float wV1, float wV2);
+	
+	IMat4WF baseChange(float[] u, float[] v, ITup3RF w);
+	
+	IMat4WF baseChange(float[] u, float[] v, float[] w);
+	
+	IMat4WF baseChange(float[] u, float[] v, float wV0, float wV1, float wV2);
+	
+	IMat4WF baseChange(float[] u, float vV0, float vV1, float vV2, ITup3RF w);
+	
+	IMat4WF baseChange(float[] u, float vV0, float vV1, float vV2, float[] w);
+	
+	IMat4WF baseChange(float[] u, float vV0, float vV1, float vV2, float wV0, float wV1, float wV2);
+	
+	IMat4WF baseChange(float uV0, float uV1, float uV2, ITup3RF v, ITup3RF w);
+	
+	IMat4WF baseChange(float uV0, float uV1, float uV2, ITup3RF v, float[] w);
+	
+	IMat4WF baseChange(float uV0, float uV1, float uV2, ITup3RF v, float wV0, float wV1, float wV2);
+	
+	IMat4WF baseChange(float uV0, float uV1, float uV2, float[] v, ITup3RF w);
+	
+	IMat4WF baseChange(float uV0, float uV1, float uV2, float[] v, float[] w);
+	
+	IMat4WF baseChange(float uV0, float uV1, float uV2, float[] v, float wV0, float wV1, float wV2);
+	
+	IMat4WF baseChange(float uV0, float uV1, float uV2, float vV0, float vV1, float vV2, ITup3RF w);
+	
+	IMat4WF baseChange(float uV0, float uV1, float uV2, float vV0, float vV1, float vV2, float[] w);
+	
+	IMat4WF baseChange(float uV0, float uV1, float uV2, float vV0, float vV1, float vV2, float wV0, float wV1, float wV2);
+	
+	/** {@inheritDoc} */
+	@Override
+	IMat4WF baseChangeN(ITup3RF u, ITup3RF v, ITup3RF w);
+	
+	/** {@inheritDoc} */
+	@Override
+	IMat4WF baseChangeN(ITup3RF u, ITup3RF v, float[] w);
+	
+	/** {@inheritDoc} */
+	@Override
+	IMat4WF baseChangeN(ITup3RF u, ITup3RF v, float wV0, float wV1, float wV2);
+	
+	/** {@inheritDoc} */
+	@Override
+	IMat4WF baseChangeN(ITup3RF u, float[] v, ITup3RF w);
+	
+	/** {@inheritDoc} */
+	@Override
+	IMat4WF baseChangeN(ITup3RF u, float[] v, float[] w);
+	
+	/** {@inheritDoc} */
+	@Override
+	IMat4WF baseChangeN(ITup3RF u, float[] v, float wV0, float wV1, float wV2);
+	
+	/** {@inheritDoc} */
+	@Override
+	IMat4WF baseChangeN(ITup3RF u, float vV0, float vV1, float vV2, ITup3RF w);
+	
+	/** {@inheritDoc} */
+	@Override
+	IMat4WF baseChangeN(ITup3RF u, float vV0, float vV1, float vV2, float[] w);
+	
+	/** {@inheritDoc} */
+	@Override
+	IMat4WF baseChangeN(ITup3RF u, float vV0, float vV1, float vV2, float wV0, float wV1, float wV2);
+	
+	/** {@inheritDoc} */
+	@Override
+	IMat4WF baseChangeN(float[] u, ITup3RF v, ITup3RF w);
+	
+	/** {@inheritDoc} */
+	@Override
+	IMat4WF baseChangeN(float[] u, ITup3RF v, float[] w);
+	
+	/** {@inheritDoc} */
+	@Override
+	IMat4WF baseChangeN(float[] u, ITup3RF v, float wV0, float wV1, float wV2);
+	
+	/** {@inheritDoc} */
+	@Override
+	IMat4WF baseChangeN(float[] u, float[] v, ITup3RF w);
+	
+	/** {@inheritDoc} */
+	@Override
+	IMat4WF baseChangeN(float[] u, float[] v, float[] w);
+	
+	/** {@inheritDoc} */
+	@Override
+	IMat4WF baseChangeN(float[] u, float[] v, float wV0, float wV1, float wV2);
+	
+	/** {@inheritDoc} */
+	@Override
+	IMat4WF baseChangeN(float[] u, float vV0, float vV1, float vV2, ITup3RF w);
+	
+	/** {@inheritDoc} */
+	@Override
+	IMat4WF baseChangeN(float[] u, float vV0, float vV1, float vV2, float[] w);
+	
+	/** {@inheritDoc} */
+	@Override
+	IMat4WF baseChangeN(float[] u, float vV0, float vV1, float vV2, float wV0, float wV1, float wV2);
+	
+	/** {@inheritDoc} */
+	@Override
+	IMat4WF baseChangeN(float uV0, float uV1, float uV2, ITup3RF v, ITup3RF w);
+	
+	/** {@inheritDoc} */
+	@Override
+	IMat4WF baseChangeN(float uV0, float uV1, float uV2, ITup3RF v, float[] w);
+	
+	/** {@inheritDoc} */
+	@Override
+	IMat4WF baseChangeN(float uV0, float uV1, float uV2, ITup3RF v, float wV0, float wV1, float wV2);
+	
+	/** {@inheritDoc} */
+	@Override
+	IMat4WF baseChangeN(float uV0, float uV1, float uV2, float[] v, ITup3RF w);
+	
+	/** {@inheritDoc} */
+	@Override
+	IMat4WF baseChangeN(float uV0, float uV1, float uV2, float[] v, float[] w);
+	
+	/** {@inheritDoc} */
+	@Override
+	IMat4WF baseChangeN(float uV0, float uV1, float uV2, float[] v, float wV0, float wV1, float wV2);
+	
+	/** {@inheritDoc} */
+	@Override
+	IMat4WF baseChangeN(float uV0, float uV1, float uV2, float vV0, float vV1, float vV2, ITup3RF w);
+	
+	/** {@inheritDoc} */
+	@Override
+	IMat4WF baseChangeN(float uV0, float uV1, float uV2, float vV0, float vV1, float vV2, float[] w);
+	
+	/** {@inheritDoc} */
+	@Override
+	IMat4WF baseChangeN(float uV0, float uV1, float uV2, float vV0, float vV1, float vV2, float wV0, float wV1, float wV2);
+	
+	IMat4WF rotateRad(float aV0, float aV1, float aV2, float angle);
+	
+	/** {@inheritDoc} */
+	@Override
+	IMat4WF rotateRadN(float aV0, float aV1, float aV2, float angle);
+	
+	IMat4WF rotateDeg(float aV0, float aV1, float aV2, float angle);
+	
+	/** {@inheritDoc} */
+	@Override
+	IMat4WF rotateDegN(float aV0, float aV1, float aV2, float angle);
 }
