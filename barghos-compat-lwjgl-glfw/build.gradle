@@ -14,7 +14,7 @@ project.ext.lwjglVersion = "3.3.0"
 project.ext.lwjglNatives = "natives-windows"
 
 dependencies {
-  api project(':barghos-util')
+  api project(':barghos-core-impl')
   
   implementation platform("org.lwjgl:lwjgl-bom:$lwjglVersion")
   

@@ -1,7 +1,7 @@
 package org.barghos.glfw;
 
-import org.barghos.annotation.Nullable;
-import org.barghos.util.memory.PointerI;
+import org.barghos.annotation.AllowNull;
+import org.barghos.impl.core.memory.PointerI;
 import org.lwjgl.glfw.GLFWFramebufferSizeCallbackI;
 import org.lwjgl.glfw.GLFWWindowPosCallbackI;
 import org.lwjgl.glfw.GLFWWindowSizeCallbackI;
@@ -44,9 +44,9 @@ public interface GlfwProvider
 	
 	void glfwSetWindowSize(long window, int width, int height);
 	
-	void glfwSetWindowSizeCallback(long window, @Nullable GLFWWindowSizeCallbackI cbfun);
+	void glfwSetWindowSizeCallback(long window, @AllowNull GLFWWindowSizeCallbackI cbfun);
 	
-	void glfwSetFramebufferSizeCallback(long window, @Nullable GLFWFramebufferSizeCallbackI cbfun);
+	void glfwSetFramebufferSizeCallback(long window, @AllowNull GLFWFramebufferSizeCallbackI cbfun);
 	
-	void glfwSetWindowPosCallback(long window, @Nullable GLFWWindowPosCallbackI cbfun);
+	void glfwSetWindowPosCallback(long window, @AllowNull GLFWWindowPosCallbackI cbfun);
 }

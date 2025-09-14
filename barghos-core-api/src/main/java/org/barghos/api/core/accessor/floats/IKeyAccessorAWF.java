@@ -1,0 +1,6 @@
+package org.barghos.api.core.accessor.floats;
+
+public interface IKeyAccessorAWF<T>
+{
+	T set(T obj, Object[] keys, float[] values);
+}

@@ -3,7 +3,7 @@ package org.barghos.glfw.window;
 import java.lang.foreign.Arena;
 
 import org.barghos.glfw.Glfw;
-import org.barghos.util.memory.PointerI;
+import org.barghos.impl.core.memory.PointerI;
 
 public class Window 
 {

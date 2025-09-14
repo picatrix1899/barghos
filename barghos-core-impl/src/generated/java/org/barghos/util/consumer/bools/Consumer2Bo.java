@@ -1,0 +1,43 @@
+package org.barghos.util.consumer.bools;
+
+import org.barghos.util.consumer.Consumer2;
+import org.barghos.validation.Validate;
+
+/**
+ * Represents an operation that accepts two boolean input arguments and returns
+ * no result. {@link Consumer2Bo} is expected to operate via side-effects.
+ *
+ * <p>
+ * This is a functional interface.
+ * 
+ * <p>
+ * Functional Method:
+ * {@link #acceptBo(boolean, boolean)}
+ * 
+ * @see ConsumerBo
+ * @see ConsumerExBo
+ * @see Consumer2Bo
+ * @see ConsumerEx2Bo
+ * @see Consumer3Bo
+ * @see ConsumerEx3Bo
+ * @see Consumer4Bo
+ * @see ConsumerEx4Bo
+ */
+@FunctionalInterface
+public interface Consumer2Bo extends Consumer2<Boolean,Boolean>
+{
+	
+	/**
+	 * Performs the operation on the given arguments.
+	 *
+	 * @param a The first input argument.
+	 * @param b The second input argument.
+	 */
+	void acceptBo(boolean a, boolean b);
+	
+	@Override
+	default void accept(Boolean a, Boolean b)
+	{
+		acceptBo(a, b);
+	}
+}

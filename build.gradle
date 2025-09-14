@@ -18,10 +18,6 @@ subprojects {
     withJavadocJar()
     withSourcesJar()
 	
-	toolchain {
-        languageVersion = JavaLanguageVersion.of(23)
-    }
-	
 	sourceCompatibility = '23'
     targetCompatibility = '23'
   }
@@ -54,8 +50,11 @@ subprojects {
   }
   
   tasks.withType(JavaCompile).configureEach {
-    options.compilerArgs += ['--enable-preview']
+//    options.compilerArgs += ['--enable-preview']
     options.failOnError = false
+	options.compilerArgs += ['-Xmaxerrs', '999999']
+	options.compilerArgs += ['-Xmaxwarns', '999999']
+	options.encoding = "UTF-8"
   }
   
   tasks.withType(Javadoc).configureEach {
@@ -85,6 +84,13 @@ subprojects {
       sourceCompatibility = '23'
       targetCompatibility = '23'
       javaRuntimeName = 'JavaSE-23'
+	  
+	  file {
+            // setzt das Standard-Encoding in Eclipse
+            withProperties { props ->
+                props['encoding'] = 'UTF-8'
+            }
+        }
     }
   
     classpath {

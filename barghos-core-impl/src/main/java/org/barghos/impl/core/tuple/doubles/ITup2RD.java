@@ -1,0 +1,1536 @@
+package org.barghos.impl.core.tuple.doubles;
+
+import org.barghos.annotation.ExtractionParam;
+import org.barghos.annotation.AllowNull;
+
+/**
+ * This interface provides non-modifying operations for double tuples with 
+ * two components. Therefore the operations of this interface will not alter
+ * the component values of this tuple.
+ */
+public interface ITup2RD extends ITupRD
+{
+	public static final int SIZE = 2;
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * <p>
+	 * For any derivative or implementation of {@link ITup2RD} this will
+	 * be always two.
+	 * 
+	 * @apiNote
+	 * Do not override this function, as it already returns the correct value
+	 * for any tuple with two components.
+	 */
+	@Override
+	default int size()
+	{
+		return SIZE;
+	}
+	
+	/**
+	 * Returns the value of the first component of the tuple.
+	 * 
+	 * @return The value of the first component.
+	 * 
+	 * @implNote The abstract naming concept of "Value n" (Vn; i.e. "v0") was
+	 * introduced, as the original concept was too close to the naming
+	 * conventions of vectors. Because not all tuples are necessarily vectors,
+	 * the vector naming convention might be confusing to understand or could
+	 * even create conflicts hence it was changed.
+	 */
+	double v0();
+	
+	/**
+	 * Returns the value of the second component of the tuple.
+	 * 
+	 * @return The value of the second component.
+	 * 
+	 * @implNote The abstract naming concept of "Value n" (Vn; i.e. "v0") was
+	 * introduced, as the original concept was too close to the naming
+	 * conventions of vectors. Because not all tuples are necessarily vectors,
+	 * the vector naming convention might be confusing to understand or could
+	 * even create conflicts hence it was changed.
+	 */
+	double v1();
+	
+	/**
+	 * Returns the value of the component at the given index from the tuple.
+	 *
+	 * <p>
+	 * The valid index range is from 0 to 1.
+	 *
+	 * <table>
+	 * <tr><th>Index</th><th>Component</th></tr>
+	 * <tr><td>0</td><td>v0</td></tr>
+	 * <tr><td>1</td><td>v1</td></tr>
+	 * </table>
+	 *
+	 * @param index
+	 * The index of the component of which the value is to be returned.
+	 *
+	 * @return The value of the component at the given index.
+	 */
+	@Override
+	double getAt(int index);
+	
+	/**
+	 * Returns all component values of the tuple in order as a new array of the
+	 * size of two entries.
+	 * 
+	 * <p>
+	 * Modifications made to the returned array will not alter the values in the
+	 * tuple.
+	 *
+	 * @return An array of the size of two entries,
+	 * filled with the component values at their respective original index.
+	 */
+	@Override
+	double[] toArray();
+	
+	/**
+	 * Fills the given result array {@code res} with the component values of the
+	 * tuple in order and returns it. The size of the result array has to be
+	 * equal to or greater than two entries.
+	 * 
+	 * <p>
+	 * Modifications made to the result array will not alter the values in the
+	 * tuple.
+	 *
+	 * @param res The result array to fill with the component values.
+	 *
+	 * @return The result array {@code res} filled with the component values.
+	 */
+	@Override
+	double[] toArray(@ExtractionParam double[] res);
+	
+	/**
+	 * Returns whether the component value at the given index is finite and is
+	 * therefore neither {@code NaN} nor {@code +/-Infinity}.
+	 *
+	 * <p>
+	 * The valid index range is from 0 to 1.
+	 *
+	 * <table>
+	 * <tr><th>Index</th><th>Component</th></tr>
+	 * <tr><td>0</td><td>v0</td></tr>
+	 * <tr><td>1</td><td>v1</td></tr>
+	 * </table>
+	 *
+	 * @param index
+	 * The index of the component of which the value is to be checked.
+	 *
+	 * @return
+	 * <p>
+	 * {@code true} - If the component value at the given index is finite.
+	 * 
+	 * <p>
+	 * {@code false} - Otherwise.
+	 */
+	@Override
+	boolean isFiniteAt(int index);
+	
+	/**
+	 * Returns whether the first component value is finite and is therefore
+	 * neither {@code NaN} nor {@code +/-Infinity}.
+	 *
+	 * @return
+	 * <p>
+	 * {@code true} - If the first component value is finite.
+	 * 
+	 * <p>
+	 * {@code false} - Otherwise.
+	 */
+	boolean isFiniteAtV0();
+	
+	/**
+	 * Returns whether the second component value is finite and is therefore
+	 * neither {@code NaN} nor {@code +/-Infinity}.
+	 *
+	 * @return
+	 * <p>
+	 * {@code true} - If the second component value is finite.
+	 * 
+	 * <p>
+	 * {@code false} - Otherwise.
+	 */
+	boolean isFiniteAtV1();
+	
+	/**
+	 * Returns whether the component value at the given index is exactly zero.
+	 *
+	 * <p>
+	 * The valid index range is from 0 to 1.
+	 *
+	 * <table>
+	 * <tr><th>Index</th><th>Component</th></tr>
+	 * <tr><td>0</td><td>v0</td></tr>
+	 * <tr><td>1</td><td>v1</td></tr>
+	 * </table>
+	 *
+	 * <p>
+	 * <b>Formula:</b>
+	 * <br>
+	 * {@code v(index) = 0.0f}
+	 *
+	 * @param index
+	 * The index of the component of which the value is to be checked.
+	 *
+	 * @return
+	 * <p>
+	 * {@code true} - If the component value at the given index is exactly zero.
+	 * 
+	 * <p>
+	 * {@code false} - Otherwise.
+	 */
+	@Override
+	boolean isZeroAt(int index);
+	
+	/**
+	 * Returns whether the component value at the given index is approximately
+	 * zero.
+	 * 
+	 * <p>
+	 * This takes into account an inclusive margin of the given tolerance around
+	 * zero in positive and negative direction. This margin allows for example
+	 * to compensate for doubleing point precision errors.
+	 * 
+	 * <p>
+	 * The minimum allowed tolerance is 0.0f. A tolerance of 0.0f behaves like
+	 * {@link #zeroAt(int)}.
+	 * 
+	 * <p>
+	 * The valid index range is from 0 to 1.
+	 * 
+	 * <table>
+	 * <tr><th>Index</th><th>Component</th></tr>
+	 * <tr><td>0</td><td>v0</td></tr>
+	 * <tr><td>1</td><td>v1</td></tr>
+	 * </table>
+	 * 
+	 * <p>
+	 * <b>Formula:</b>
+	 * <br>
+	 * {@code -tolerance <= v(index) <= tolerance}
+	 *
+	 * @param tolerance
+	 * The tolerance around zero, that should still count as zero. 
+	 * @param index
+	 * The index of the component of which the value is to be checked.
+	 *
+	 * @return
+	 * <p>
+	 * {@code true} - If the component value at the given index is zero, taking
+	 * into account the given tolerance.
+	 * 
+	 * <p>
+	 * {@code false} - Otherwise.
+	 */
+	@Override
+	boolean isZeroAt(double tolerance, int index);
+	
+	/**
+	 * Returns whether the first component value is exactly zero.
+	 *
+	 * <p>
+	 * <b>Formula:</b>
+	 * <br>
+	 * {@code v(0) = 0.0f}
+	 *
+	 * @return
+	 * <p>
+	 * {@code true} - If the first component value is exactly zero.
+	 * 
+	 * <p>
+	 * {@code false} - Otherwise.
+	 */
+	boolean isZeroAtV0();
+	
+	/**
+	 * Returns whether the second component value is exactly zero.
+	 *
+	 * <p>
+	 * <b>Formula:</b>
+	 * <br>
+	 * {@code v(1) = 0.0f}
+	 *
+	 * @return
+	 * <p>
+	 * {@code true} - If the second component value is exactly zero.
+	 * 
+	 * <p>
+	 * {@code false} - Otherwise.
+	 */
+	boolean isZeroAtV1();
+	
+	/**
+	 * Returns whether the first component value is approximately zero.
+	 * 
+	 * <p>
+	 * This takes into account an inclusive margin of the given tolerance around
+	 * zero in positive and negative direction. This margin allows for example
+	 * to compensate for doubleing point precision errors.
+	 * 
+	 * <p>
+	 * The minimum allowed tolerance is 0.0f. A tolerance of 0.0f behaves like
+	 * {@link #zeroAtV0()}.
+	 * 
+	 * <p>
+	 * <b>Formula:</b>
+	 * <br>
+	 * {@code -tolerance <= v(0) <= tolerance}
+	 *
+	 * @param tolerance
+	 * The tolerance around zero, that should still count as zero. 
+	 *
+	 * @return
+	 * <p>
+	 * {@code true} - If the first component value is zero, taking into account
+	 * the given tolerance.
+	 * 
+	 * <p>
+	 * {@code false} - Otherwise.
+	 */
+	boolean isZeroAtV0(double tolerance);
+	
+	/**
+	 * Returns whether the second component value is approximately zero.
+	 * 
+	 * <p>
+	 * This takes into account an inclusive margin of the given tolerance around
+	 * zero in positive and negative direction. This margin allows for example
+	 * to compensate for doubleing point precision errors.
+	 * 
+	 * <p>
+	 * The minimum allowed tolerance is 0.0f. A tolerance of 0.0f behaves like
+	 * {@link #zeroAtV1()}.
+	 * 
+	 * <p>
+	 * <b>Formula:</b>
+	 * <br>
+	 * {@code -tolerance <= v(1) <= tolerance}
+	 *
+	 * @param tolerance
+	 * The tolerance around zero, that should still count as zero. 
+	 *
+	 * @return
+	 * <p>
+	 * {@code true} - If the second component value is zero, taking into account
+	 * the given tolerance.
+	 * 
+	 * <p>
+	 * {@code false} - Otherwise.
+	 */
+	boolean isZeroAtV1(double tolerance);
+	
+	/**
+	 * Returns whether the component values of this tuple and the component
+	 * values of the given tuple {@code (t)} are exactly equal.
+	 * 
+	 * <p>
+	 * If the given tuple {@code (t)} is null this returns false.
+	 * 
+	 * <p>
+	 * As in most situations only the component values of the tuple are relevant
+	 * when working with tuples, this does not require this tuple and the given
+	 * tuple {@code (t)} to be the same instance.
+	 * 
+	 * <p>
+	 * <b>Formula:</b>
+	 * <br>
+	 * {@code v(0) = t.v0}<br>
+	 * {@code v(1) = t.v1}<br>
+	 * 
+	 * @param t The tuple to compare with.
+	 * 
+	 * @return
+	 * <p>
+	 * {@code true} - If the given tuple {@code (t)} is not {@code null} and the
+	 * component values of this tuple and the given tuple are equal.
+	 * 
+	 * <p>
+	 * {@code false} - Otherwise.
+	 */
+	boolean equals(@AllowNull ITup2RD t);
+	
+	/**
+	 * Returns whether the component values of this tuple and the component
+	 * values of the given tuple {@code (t)} are exactly equal.
+	 * 
+	 * <p>
+	 * If the given tuple {@code (t)} is null or of different size this returns
+	 * false.
+	 * 
+	 * <p>
+	 * As in most situations only the component values of the tuple are relevant
+	 * when working with tuples, this does not require this tuple and the given
+	 * tuple {@code (t)} to be the same instance.
+	 * 
+	 * <p>
+	 * <b>Formula:</b>
+	 * <br>
+	 * {@code v(0) = t.v(0)}<b>
+	 * {@code v(1) = t.v(1)}<b>
+	 * 
+	 * @param t The tuple to compare with.
+	 * 
+	 * @return
+	 * <p>
+	 * {@code true} - If the given tuple {@code (t)} is not {@code null}, is of
+	 * the same size as this tuple and the component values of this tuple and
+	 * the given tuple are equal.
+	 * 
+	 * <p>
+	 * {@code false} - Otherwise.
+	 */
+	@Override
+	boolean equals(@AllowNull ITupRD t);
+	
+	/**
+	 * Returns whether the component values of this tuple and the component
+	 * values of the given tuple {@code (t)} are exactly equal.
+	 * 
+	 * <p>
+	 * If the given tuple {@code (t)} is null or of different size this returns
+	 * false.
+	 * 
+	 * <p>
+	 * As in most situations only the component values of the tuple are relevant
+	 * when working with tuples, this does not require this tuple and the given
+	 * tuple {@code (t)} to be the same instance.
+	 * 
+	 * <p>
+	 * <b>Formula:</b>
+	 * <br>
+	 * {@code v(0) = t[0]}<br>
+	 * {@code v(1) = t[1]}<br>
+	 * 
+	 * @param t The tuple to compare with as an array.
+	 * 
+	 * @return
+	 * <p>
+	 * {@code true} - If the given tuple {@code (t)} is not {@code null}, is of
+	 * the same size as this tuple and the component values of this tuple and
+	 * the given tuple are equal.
+	 * 
+	 * <p>
+	 * {@code false} - Otherwise.
+	 */
+	@Override
+	boolean equals(@AllowNull double[] t);
+	
+	/**
+	 * Returns whether the component values of this tuple and the component
+	 * values of the given tuple {@code (v0, v1)} are exactly equal.
+	 * 
+	 * <p>
+	 * <b>Formula:</b>
+	 * <br>
+	 * {@code v(0) = v0}<br>
+	 * {@code v(1) = v1}
+	 * 
+	 * @param v0 The value of the first component of the tuple to compare with.
+	 * @param v1 The value of the second component of the tuple to compare with.
+	 * 
+	 * @return
+	 * <p>
+	 * {@code true} - If the component values of this tuple and the given tuple
+	 * are equal.
+	 * 
+	 * <p>
+	 * {@code false} - Otherwise.
+	 */
+	boolean equals(double v0, double v1);
+	
+	/**
+	 * Returns whether the component values of this tuple and the component
+	 * values of the given tuple {@code (t)} are approximately equal.
+	 * 
+	 * <p>
+	 * This takes into account an inclusive margin of the given tolerance around
+	 * the compared values in positive and negative direction.
+	 * This margin allows for example to compensate for doubleing point precision
+	 * errors.
+	 * 
+	 * <p>
+	 * If the given tuple {@code (t)} is null this returns false.
+	 * 
+	 * <p>
+	 * As in most situations only the component values of the tuple are relevant
+	 * when working with tuples, this does require this tuple and the given
+	 * tuple {@code t} to be the same instance.
+	 * 
+	 * <p>
+	 * The minimum allowed tolerance is 0.0f. A tolerance of 0.0f behaves like
+	 * {@link #equals(ITup2RD)}.
+	 * 
+	 * <p>
+	 * <b>Formula:</b>
+	 * <br>
+	 * {@code -tolerance <= (v(0) - t.v0) <= tolerance}<br>
+	 * {@code -tolerance <= (v(1) - t.v1) <= tolerance}<br>
+	 * 
+	 * @param tolerance
+	 * The tolerance around the values, that should still count as the value.
+	 * @param t The tuple to compare with.
+	 * 
+	 * @return
+	 * <p>
+	 * {@code true} - If the given tuple {@code (t)} is not {@code null} and the
+	 * component values of this tuple and the given tuple are equal, taking into
+	 * account the given tolerance.
+	 * 
+	 * <p>
+	 * {@code false} - Otherwise.
+	 */
+	boolean equals(double tolerance, @AllowNull ITup2RD t);
+	
+	/**
+	 * Returns whether the component values of this tuple and the component
+	 * values of the given tuple {@code (t)} are approximately equal.
+	 * 
+	 * <p>
+	 * This takes into account an inclusive margin of the given tolerance around
+	 * the compared values in positive and negative direction.
+	 * This margin allows for example to compensate for doubleing point precision
+	 * errors.
+	 * 
+	 * <p>
+	 * If the given tuple {@code (t)} is null or of different size this returns
+	 * false.
+	 * 
+	 * <p>
+	 * As in most situations only the component values of the tuple are relevant
+	 * when working with tuples, this does require this tuple and the given
+	 * tuple {@code t} to be the same instance.
+	 * 
+	 * <p>
+	 * The minimum allowed tolerance is 0.0f. A tolerance of 0.0f behaves like
+	 * {@link #equals(ITupRD)}.
+	 * 
+	 * <p>
+	 * <b>Formula:</b>
+	 * <br>
+	 * {@code -tolerance <= (v(0) - t.v(0)) <= tolerance}<br>
+	 * {@code -tolerance <= (v(1) - t.v(1)) <= tolerance}<br>
+	 * 
+	 * @param tolerance
+	 * The tolerance around the values, that should still count as the value.
+	 * @param t The tuple to compare with.
+	 * 
+	 * @return
+	 * <p>
+	 * {@code true} - If the given tuple {@code (t)} is not {@code null}, is of
+	 * the same size as this tuple and the component values of this tuple and
+	 * the given tuple are equal, taking into account the given tolerance.
+	 * 
+	 * <p>
+	 * {@code false} - Otherwise.
+	 */
+	@Override
+	boolean equals(double tolerance, @AllowNull ITupRD t);
+
+	/**
+	 * Returns whether the component values of this tuple and the component
+	 * values of the given tuple {@code (t)} are approximately equal.
+	 * 
+	 * <p>
+	 * This takes into account an inclusive margin of the given tolerance around
+	 * the compared values in positive and negative direction.
+	 * This margin allows for example to compensate for doubleing point precision
+	 * errors.
+	 * 
+	 * <p>
+	 * If the given tuple {@code (t)} is null or of different size this returns
+	 * false.
+	 * 
+	 * <p>
+	 * As in most situations only the component values of the tuple are relevant
+	 * when working with tuples, this does require this tuple and the given
+	 * tuple {@code t} to be the same instance.
+	 * 
+	 * <p>
+	 * The minimum allowed tolerance is 0.0f. A tolerance of 0.0f behaves like
+	 * {@link #equals(double[]) equals(double...)}.
+	 * 
+	 * <p>
+	 * <b>Formula:</b>
+	 * <br>
+	 * {@code -tolerance <= (v(0) - t[0]) <= tolerance}<br>
+	 * {@code -tolerance <= (v(1) - t[1]) <= tolerance}<br>
+	 * 
+	 * @param tolerance
+	 * The tolerance around the values, that should still count as the value.
+	 * @param t The tuple to compare with as an array.
+	 * 
+	 * @return
+	 * <p>
+	 * {@code true} - If the given tuple {@code (t)} is not {@code null}, is of
+	 * the same size as this tuple and the component values of this tuple and
+	 * the given tuple are equal, taking into account the given tolerance.
+	 * 
+	 * <p>
+	 * {@code false} - Otherwise.
+	 */
+	@Override
+	boolean equals(double tolerance, @AllowNull double[] t);
+	
+	/**
+	 * Returns whether the component values of this tuple and the component
+	 * values of the given tuple {@code (v0, v1)} are approximately equal.
+	 * 
+	 * <p>
+	 * This takes into account an inclusive margin of the given tolerance around
+	 * the compared values in positive and negative direction.
+	 * This margin allows for example to compensate for doubleing point precision
+	 * errors.
+	 * 
+	 * <p>
+	 * The minimum allowed tolerance is 0.0f. A tolerance of 0.0f behaves like
+	 * {@link #equals(double, double)}.
+	 * 
+	 * <p>
+	 * <b>Formula:</b>
+	 * <br>
+	 * {@code -tolerance <= (v(0) - v0) <= tolerance}<br>
+	 * {@code -tolerance <= (v(1) - v1) <= tolerance}
+	 * 
+	 * @param tolerance
+	 * The tolerance around the values, that should still count as the value.
+	 * @param v0 The value of the first component of the tuple to compare with.
+	 * @param v1 The value of the second component of the tuple to compare with.
+	 * 
+	 * @return
+	 * <p>
+	 * {@code true} - If the component values of this tuple and the given tuple
+	 * are equal, taking into account the given tolerance.
+	 * 
+	 * <p>
+	 * {@code false} - Otherwise.
+	 */
+	boolean equals(double tolerance, double v0, double v1);
+	
+	/**
+	 * Returns whether the component value at the given index of this tuple and
+	 * of the given tuple {@code (t)} are exactly equal.
+	 * 
+	 * <p>
+	 * If the given tuple {@code (t)} is null this returns false.
+	 * 
+	 * <p>
+	 * As in most situations only the component values of the tuple are relevant
+	 * when working with tuples, this does not require this tuple and the given
+	 * tuple {@code (t)} to be the same instance.
+	 * 
+	 * <p>
+	 * The valid index range is from 0 to 1.
+	 * 
+	 * <table>
+	 * <tr><th>Index</th><th>Component</th></tr>
+	 * <tr><td>0</td><td>v0</td></tr>
+	 * <tr><td>1</td><td>v1</td></tr>
+	 * </table>
+	 * 
+	 * <p>
+	 * <b>Formula:</b>
+	 * <br>
+	 * {@code v(index) = t.v(index)}
+	 * 
+	 * @param index
+	 * The index of the component of which the value is to be checked.
+	 * @param t The tuple to compare with.
+	 * 
+	 * @return
+	 * <p>
+	 * {@code true} - If the given tuple {@code (t)} is not {@code null} and
+	 * the component value at the given index of this tuple and the given tuple
+	 * are equal.
+	 * 
+	 * <p>
+	 * {@code false} - Otherwise.
+	 */
+	boolean equalsAt(int index, @AllowNull ITup2RD t);
+	
+	/**
+	 * Returns whether the component value at the given index of this tuple and
+	 * of the given tuple {@code (t)} are exactly equal.
+	 * 
+	 * <p>
+	 * If the given tuple {@code (t)} is null or the given index is not
+	 * available in the given tuple this returns false.
+	 * 
+	 * <p>
+	 * As in most situations only the component values of the tuple are relevant
+	 * when working with tuples, this does not require this tuple and the given
+	 * tuple {@code (t)} to be the same instance.
+	 * 
+	 * <p>
+	 * The valid index range is from 0 to 1.
+	 * 
+	 * <table>
+	 * <tr><th>Index</th><th>Component</th></tr>
+	 * <tr><td>0</td><td>v0</td></tr>
+	 * <tr><td>1</td><td>v1</td></tr>
+	 * </table>
+	 * 
+	 * <p>
+	 * <b>Formula:</b>
+	 * <br>
+	 * {@code v(index) = t.v(index)}
+	 * 
+	 * @param index
+	 * The index of the component of which the value is to be checked.
+	 * @param t The tuple to compare with.
+	 * 
+	 * @return
+	 * <p>
+	 * {@code true} - If the given tuple {@code (t)} is not {@code null}, the
+	 * component value at the given index is available in the given tuple and
+	 * the component value at the given index of this tuple and the given tuple
+	 * are equal.
+	 * 
+	 * <p>
+	 * {@code false} - Otherwise.
+	 */
+	@Override
+	boolean equalsAt(int index, @AllowNull ITupRD t);
+	
+	/**
+	 * Returns whether the component value at the given index of this tuple and
+	 * of the given tuple {@code (t)} are exactly equal.
+	 * 
+	 * <p>
+	 * If the given tuple {@code (t)} is null or the given index is not
+	 * available in the given tuple this returns false.
+	 * 
+	 * <p>
+	 * As in most situations only the component values of the tuple are relevant
+	 * when working with tuples, this does not require this tuple and the given
+	 * tuple {@code (t)} to be the same instance.
+	 * 
+	 * <p>
+	 * The valid index range is from 0 to 1.
+	 * 
+	 * <table>
+	 * <tr><th>Index</th><th>Component</th></tr>
+	 * <tr><td>0</td><td>v0</td></tr>
+	 * <tr><td>1</td><td>v1</td></tr>
+	 * </table>
+	 * 
+	 * <p>
+	 * <b>Formula:</b>
+	 * <br>
+	 * {@code v(index) = t[index]}
+	 * 
+	 * @param index
+	 * The index of the component of which the value is to be checked.
+	 * @param t The tuple to compare with as an array.
+	 * 
+	 * @return
+	 * <p>
+	 * {@code true} - If the given tuple {@code (t)} is not {@code null}, the
+	 * component value at the given index is available in the given tuple and
+	 * the component value at the given index of this tuple and the given tuple
+	 * are equal.
+	 * 
+	 * <p>
+	 * {@code false} - Otherwise.
+	 */
+	@Override
+	boolean equalsAt(int index, @AllowNull double[] t);
+	
+	/**
+	 * Returns whether the component value at the given index of this tuple and
+	 * the given value are exactly equal.
+	 * 
+	 * <p>
+	 * The valid index range is from 0 to 1.
+	 * 
+	 * <table>
+	 * <tr><th>Index</th><th>Component</th></tr>
+	 * <tr><td>0</td><td>v0</td></tr>
+	 * <tr><td>1</td><td>v1</td></tr>
+	 * </table>
+	 * 
+	 * <p>
+	 * <b>Formula:</b>
+	 * <br>
+	 * {@code v(index) = value}
+	 * 
+	 * @param index
+	 * The index of the component of which the value is to be checked.
+	 * @param value The value to compare with.
+	 * 
+	 * @return
+	 * <p>
+	 * {@code true} - If the component value at the given index of this tuple
+	 * and the given value are equal.
+	 * 
+	 * <p>
+	 * {@code false} - Otherwise.
+	 */
+	@Override
+	boolean equalsAt(int index, double value);
+	
+	/**
+	 * Returns whether the component value at the given index of this tuple and
+	 * of the given tuple {@code (t)} are approximately equal.
+	 * 
+	 * <p>
+	 * This takes into account an inclusive margin of the given tolerance around
+	 * the compared values in positive and negative direction.
+	 * This margin allows for example to compensate for doubleing point precision
+	 * errors.
+	 * 
+	 * <p>
+	 * If the given tuple {@code (t)} is null this returns false.
+	 * 
+	 * <p>
+	 * As in most situations only the component values of the tuple are relevant
+	 * when working with tuples, this does require this tuple and the given
+	 * tuple {@code t} to be the same instance.
+	 * 
+	 * <p>
+	 * The minimum allowed tolerance is 0.0f. A tolerance of 0.0f behaves like
+	 * {@link #equalsAt(int, ITup2RD)}.
+	 * 
+	 * <p>
+	 * The valid index range is from 0 to 1.
+	 * 
+	 * <table>
+	 * <tr><th>Index</th><th>Component</th></tr>
+	 * <tr><td>0</td><td>v0</td></tr>
+	 * <tr><td>1</td><td>v1</td></tr>
+	 * </table>
+	 * 
+	 * <p>
+	 * <b>Formula:</b>
+	 * <br>
+	 * {@code -tolerance <= (v(index) - t.v(index)) <= tolerance}
+	 * 
+	 * @param tolerance
+	 * The tolerance around the values, that should still count as the value.
+	 * @param index
+	 * The index of the component of which the value is to be checked.
+	 * @param t The tuple to compare with.
+	 * 
+	 * @return
+	 * <p>
+	 * {@code true} - If the given tuple {@code (t)} is not {@code null} and
+	 * the component value at the given index of this tuple and the given tuple
+	 * are equal, taking into account the given tolerance.
+	 * 
+	 * <p>
+	 * {@code false} - Otherwise.
+	 */
+	boolean equalsAt(double tolerance, int index, @AllowNull ITup2RD t);
+	
+	/**
+	 * Returns whether the component value at the given index of this tuple and
+	 * of the given tuple {@code (t)} are approximately equal.
+	 * 
+	 * <p>
+	 * This takes into account an inclusive margin of the given tolerance around
+	 * the compared values in positive and negative direction.
+	 * This margin allows for example to compensate for doubleing point precision
+	 * errors.
+	 * 
+	 * <p>
+	 * If the given tuple {@code (t)} is null or the given index is not
+	 * available in the given tuple this returns false.
+	 * 
+	 * <p>
+	 * As in most situations only the component values of the tuple are relevant
+	 * when working with tuples, this does require this tuple and the given
+	 * tuple {@code t} to be the same instance.
+	 * 
+	 * <p>
+	 * The minimum allowed tolerance is 0.0f. A tolerance of 0.0f behaves like
+	 * {@link #equalsAt(int, ITupRD)}.
+	 * 
+	 * <p>
+	 * The valid index range is from 0 to 1.
+	 * 
+	 * <table>
+	 * <tr><th>Index</th><th>Component</th></tr>
+	 * <tr><td>0</td><td>v0</td></tr>
+	 * <tr><td>1</td><td>v1</td></tr>
+	 * </table>
+	 * 
+	 * <p>
+	 * <b>Formula:</b>
+	 * <br>
+	 * {@code -tolerance <= (v(index) - t.v(index)) <= tolerance}
+	 * 
+	 * @param tolerance
+	 * The tolerance around the values, that should still count as the value.
+	 * @param index
+	 * The index of the component of which the value is to be checked.
+	 * @param t The tuple to compare with.
+	 * 
+	 * @return
+	 * <p>
+	 * {@code true} - If the given tuple {@code (t)} is not {@code null}, the
+	 * component value at the given index is available in the given tuple and
+	 * the component value at the given index of this tuple and the given tuple
+	 * are equal, taking into account the given tolerance.
+	 * 
+	 * <p>
+	 * {@code false} - Otherwise.
+	 */
+	@Override
+	boolean equalsAt(double tolerance, int index, @AllowNull ITupRD t);
+	
+	/**
+	 * Returns whether the component value at the given index of this tuple and
+	 * of the given tuple {@code (t)} are approximately equal.
+	 * 
+	 * <p>
+	 * This takes into account an inclusive margin of the given tolerance around
+	 * the compared values in positive and negative direction.
+	 * This margin allows for example to compensate for doubleing point precision
+	 * errors.
+	 * 
+	 * <p>
+	 * If the given tuple {@code (t)} is null or the given index is not
+	 * available in the given tuple this returns false.
+	 * 
+	 * <p>
+	 * As in most situations only the component values of the tuple are relevant
+	 * when working with tuples, this does require this tuple and the given
+	 * tuple {@code t} to be the same instance.
+	 * 
+	 * <p>
+	 * The minimum allowed tolerance is 0.0f. A tolerance of 0.0f behaves like
+	 * {@link #equalsAt(int, double[]) equalsAt(int, double...)}.
+	 * 
+	 * <p>
+	 * The valid index range is from 0 to 1.
+	 * 
+	 * <table>
+	 * <tr><th>Index</th><th>Component</th></tr>
+	 * <tr><td>0</td><td>v0</td></tr>
+	 * <tr><td>1</td><td>v1</td></tr>
+	 * </table>
+	 * 
+	 * <p>
+	 * <b>Formula:</b>
+	 * <br>
+	 * {@code -tolerance <= (v(index) - t[index]) <= tolerance}
+	 * 
+	 * @param tolerance
+	 * The tolerance around the values, that should still count as the value.
+	 * @param index
+	 * The index of the component of which the value is to be checked.
+	 * @param t The tuple to compare with as an array.
+	 * 
+	 * @return
+	 * <p>
+	 * {@code true} - If the given tuple {@code (t)} is not {@code null}, the
+	 * component value at the given index is available in the given tuple and
+	 * the component values at the given index of this tuple and the given tuple
+	 * are equal, taking into account the given tolerance.
+	 * 
+	 * <p>
+	 * {@code false} - Otherwise.
+	 */
+	@Override
+	boolean equalsAt(double tolerance, int index, @AllowNull double[] t);
+	
+	/**
+	 * Returns whether the component value at the given index of this tuple and
+	 * the given value are approximately equal.
+	 * 
+	 * <p>
+	 * This takes into account an inclusive margin of the given tolerance around
+	 * the compared values in positive and negative direction.
+	 * This margin allows for example to compensate for doubleing point precision
+	 * errors.
+	 * 
+	 * <p>
+	 * The minimum allowed tolerance is 0.0f. A tolerance of 0.0f behaves like
+	 * {@link #equalsAt(int, double)}.
+	 * 
+	 * <p>
+	 * The valid index range is from 0 to 1.
+	 * 
+	 * <table>
+	 * <tr><th>Index</th><th>Component</th></tr>
+	 * <tr><td>0</td><td>v0</td></tr>
+	 * <tr><td>1</td><td>v1</td></tr>
+	 * </table>
+	 * 
+	 * <p>
+	 * <b>Formula:</b>
+	 * <br>
+	 * {@code -tolerance <= (v(index) - value) <= tolerance}
+	 * 
+	 * @param tolerance
+	 * The tolerance around the values, that should still count as the value.
+	 * @param index
+	 * The index of the component of which the value is to be checked.
+	 * @param value The value to compare with.
+	 * 
+	 * @return
+	 * <p>
+	 * {@code true} - If the component value at the given index of this tuple
+	 * and the given value are equal, taking into account the given tolerance.
+	 * 
+	 * <p>
+	 * {@code false} - Otherwise.
+	 */
+	@Override
+	boolean equalsAt(double tolerance, int index, double value);
+	
+	/**
+	 * Returns whether the first component value of this tuple and
+	 * of the given tuple {@code (t)} are exactly equal.
+	 * 
+	 * <p>
+	 * If the given tuple {@code (t)} is null this returns false.
+	 * 
+	 * <p>
+	 * As in most situations only the component values of the tuple are relevant
+	 * when working with tuples, this does not require this tuple and the given
+	 * tuple {@code (t)} to be the same instance.
+	 * 
+	 * <p>
+	 * <b>Formula:</b>
+	 * <br>
+	 * {@code v(0) = t.v0}
+	 * 
+	 * @param t The tuple to compare with.
+	 * 
+	 * @return
+	 * <p>
+	 * {@code true} - If the given tuple {@code (t)} is not {@code null} and the
+	 * first component value of this tuple and the given tuple are equal.
+	 * 
+	 * <p>
+	 * {@code false} - Otherwise.
+	 */
+	boolean equalsAtV0(@AllowNull ITup2RD t);
+	
+	/**
+	 * Returns whether the first component value of this tuple and
+	 * of the given tuple {@code (t)} are exactly equal.
+	 * 
+	 * <p>
+	 * If the given tuple {@code (t)} is null or the given tuple has no first
+	 * component this returns false.
+	 * 
+	 * <p>
+	 * As in most situations only the component values of the tuple are relevant
+	 * when working with tuples, this does not require this tuple and the given
+	 * tuple {@code (t)} to be the same instance.
+	 * 
+	 * <p>
+	 * <b>Formula:</b>
+	 * <br>
+	 * {@code v(0) = t.v(0)}
+	 * 
+	 * @param t The tuple to compare with.
+	 * 
+	 * @return
+	 * <p>
+	 * {@code true} - If the given tuple {@code (t)} is not {@code null}, the
+	 * first component value is available in the given tuple and the first
+	 * component value of this tuple and the given tuple are equal.
+	 * 
+	 * <p>
+	 * {@code false} - Otherwise.
+	 */
+	boolean equalsAtV0(@AllowNull ITupRD t);
+	
+	/**
+	 * Returns whether the first component value of this tuple and
+	 * of the given tuple {@code (t)} are exactly equal.
+	 * 
+	 * <p>
+	 * If the given tuple {@code (t)} is null or the given tuple has no first
+	 * component this returns false.
+	 * 
+	 * <p>
+	 * As in most situations only the component values of the tuple are relevant
+	 * when working with tuples, this does not require this tuple and the given
+	 * tuple {@code (t)} to be the same instance.
+	 * 
+	 * <p>
+	 * <b>Formula:</b>
+	 * <br>
+	 * {@code v(0) = t[0]}
+	 * 
+	 * @param t The tuple to compare with as an array.
+	 * 
+	 * @return
+	 * <p>
+	 * {@code true} - If the given tuple {@code (t)} is not {@code null}, the
+	 * first component value is available in the given tuple and the first
+	 * component value of this tuple and the given tuple are equal.
+	 * 
+	 * <p>
+	 * {@code false} - Otherwise.
+	 */
+	boolean equalsAtV0(@AllowNull double[] t);
+	
+	/**
+	 * Returns whether the first component value of this tuple and
+	 * the given value are exactly equal.
+	 * 
+	 * <p>
+	 * <b>Formula:</b>
+	 * <br>
+	 * {@code v(0) = value}
+	 * 
+	 * @param t The value to compare with.
+	 * 
+	 * @return
+	 * <p>
+	 * {@code true} - If the first component value of this tuple and the given
+	 * value are equal.
+	 * 
+	 * <p>
+	 * {@code false} - Otherwise.
+	 */
+	boolean equalsAtV0(double value);
+	
+	/**
+	 * Returns whether the second component value of this tuple and
+	 * of the given tuple {@code (t)} are exactly equal.
+	 * 
+	 * <p>
+	 * If the given tuple {@code (t)} is null this returns false.
+	 * 
+	 * <p>
+	 * As in most situations only the component values of the tuple are relevant
+	 * when working with tuples, this does not require this tuple and the given
+	 * tuple {@code (t)} to be the same instance.
+	 * 
+	 * <p>
+	 * <b>Formula:</b>
+	 * <br>
+	 * {@code v(1) = t.v1}
+	 * 
+	 * @param t The tuple to compare with.
+	 * 
+	 * @return
+	 * <p>
+	 * {@code true} - If the given tuple {@code (t)} is not {@code null} and the
+	 * second component value of this tuple and the given tuple are equal.
+	 * 
+	 * <p>
+	 * {@code false} - Otherwise.
+	 */
+	boolean equalsAtV1(@AllowNull ITup2RD t);
+	
+	/**
+	 * Returns whether the second component value of this tuple and
+	 * of the given tuple {@code (t)} are exactly equal.
+	 * 
+	 * <p>
+	 * If the given tuple {@code (t)} is null or the given tuple has no second
+	 * component this returns false.
+	 * 
+	 * <p>
+	 * As in most situations only the component values of the tuple are relevant
+	 * when working with tuples, this does not require this tuple and the given
+	 * tuple {@code (t)} to be the same instance.
+	 * 
+	 * <p>
+	 * <b>Formula:</b>
+	 * <br>
+	 * {@code v(1) = t.v(1)}
+	 * 
+	 * @param t The tuple to compare with.
+	 * 
+	 * @return
+	 * <p>
+	 * {@code true} - If the given tuple {@code (t)} is not {@code null}, the
+	 * second component value is available in the given tuple and the second
+	 * component value of this tuple and the given tuple are equal.
+	 * 
+	 * <p>
+	 * {@code false} - Otherwise.
+	 */
+	boolean equalsAtV1(@AllowNull ITupRD t);
+	
+	/**
+	 * Returns whether the second component value of this tuple and
+	 * of the given tuple {@code (t)} are exactly equal.
+	 * 
+	 * <p>
+	 * If the given tuple {@code (t)} is null or the given tuple has no second
+	 * component this returns false.
+	 * 
+	 * <p>
+	 * As in most situations only the component values of the tuple are relevant
+	 * when working with tuples, this does not require this tuple and the given
+	 * tuple {@code (t)} to be the same instance.
+	 * 
+	 * <p>
+	 * <b>Formula:</b>
+	 * <br>
+	 * {@code v(1) = t[1]}
+	 * 
+	 * @param t The tuple to compare with as an array.
+	 * 
+	 * @return
+	 * <p>
+	 * {@code true} - If the given tuple {@code (t)} is not {@code null}, the
+	 * second component value is available in the given tuple and the second
+	 * component value of this tuple and the given tuple are equal.
+	 * 
+	 * <p>
+	 * {@code false} - Otherwise.
+	 */
+	boolean equalsAtV1(@AllowNull double[] t);
+	
+	/**
+	 * Returns whether the second component value of this tuple and
+	 * the given value are exactly equal.
+	 * 
+	 * <p>
+	 * <b>Formula:</b>
+	 * <br>
+	 * {@code v(1) = value}
+	 * 
+	 * @param t The value to compare with.
+	 * 
+	 * @return
+	 * <p>
+	 * {@code true} - If the second component value of this tuple and the given
+	 * value are equal.
+	 * 
+	 * <p>
+	 * {@code false} - Otherwise.
+	 */
+	boolean equalsAtV1(double value);
+	
+	/**
+	 * Returns whether the first component value of this tuple and of the given
+	 * tuple {@code (t)} are approximately equal.
+	 * 
+	 * <p>
+	 * This takes into account an inclusive margin of the given tolerance around
+	 * the compared values in positive and negative direction.
+	 * This margin allows for example to compensate for doubleing point precision
+	 * errors.
+	 * 
+	 * <p>
+	 * If the given tuple {@code (t)} is null this returns false.
+	 * 
+	 * <p>
+	 * As in most situations only the component values of the tuple are relevant
+	 * when working with tuples, this does require this tuple and the given
+	 * tuple {@code t} to be the same instance.
+	 * 
+	 * <p>
+	 * The minimum allowed tolerance is 0.0f. A tolerance of 0.0f behaves like
+	 * {@link #equalsAtV0(ITup2RD)}.
+	 * 
+	 * <p>
+	 * <b>Formula:</b>
+	 * <br>
+	 * {@code -tolerance <= (v(0) - t.v0) <= tolerance}
+	 * 
+	 * @param tolerance
+	 * The tolerance around the values, that should still count as the value.
+	 * @param t The tuple to compare with.
+	 * 
+	 * @return
+	 * <p>
+	 * {@code true} - If the given tuple {@code (t)} is not {@code null} and the
+	 * first component value of this tuple and the given tuple are equal, taking
+	 * into account the given tolerance.
+	 * 
+	 * <p>
+	 * {@code false} - Otherwise.
+	 */
+	boolean equalsAtV0(double tolerance, @AllowNull ITup2RD t);
+	
+	/**
+	 * Returns whether the first component value of this tuple and of the given
+	 * tuple {@code (t)} are approximately equal.
+	 * 
+	 * <p>
+	 * This takes into account an inclusive margin of the given tolerance around
+	 * the compared values in positive and negative direction.
+	 * This margin allows for example to compensate for doubleing point precision
+	 * errors.
+	 * 
+	 * <p>
+	 * If the given tuple {@code (t)} is null or the given tuple has no first
+	 * component this returns false.
+	 * 
+	 * <p>
+	 * As in most situations only the component values of the tuple are relevant
+	 * when working with tuples, this does require this tuple and the given
+	 * tuple {@code t} to be the same instance.
+	 * 
+	 * <p>
+	 * The minimum allowed tolerance is 0.0f. A tolerance of 0.0f behaves like
+	 * {@link #equalsAtV0(ITupRD)}.
+	 * 
+	 * <p>
+	 * <b>Formula:</b>
+	 * <br>
+	 * {@code -tolerance <= (v(0) - t.v(0)) <= tolerance}
+	 * 
+	 * @param tolerance
+	 * The tolerance around the values, that should still count as the value.
+	 * @param t The tuple to compare with.
+	 * 
+	 * @return
+	 * <p>
+	 * {@code true} - If the given tuple {@code (t)} is not {@code null}, the
+	 * first component value is available in the given tuple and the first
+	 * component value of this tuple and the given tuple are equal, taking into
+	 * account the given tolerance.
+	 * 
+	 * <p>
+	 * {@code false} - Otherwise.
+	 */
+	boolean equalsAtV0(double tolerance, @AllowNull ITupRD t);
+	
+	/**
+	 * Returns whether the first component value of this tuple and of the given
+	 * tuple {@code (t)} are approximately equal.
+	 * 
+	 * <p>
+	 * This takes into account an inclusive margin of the given tolerance around
+	 * the compared values in positive and negative direction.
+	 * This margin allows for example to compensate for doubleing point precision
+	 * errors.
+	 * 
+	 * <p>
+	 * If the given tuple {@code (t)} is null or the given tuple has no first
+	 * component this returns false.
+	 * 
+	 * <p>
+	 * As in most situations only the component values of the tuple are relevant
+	 * when working with tuples, this does require this tuple and the given
+	 * tuple {@code t} to be the same instance.
+	 * 
+	 * <p>
+	 * The minimum allowed tolerance is 0.0f. A tolerance of 0.0f behaves like
+	 * {@link #equalsAtV0(double[]) equalsAtV0(double...)}.
+	 * 
+	 * <p>
+	 * <b>Formula:</b>
+	 * <br>
+	 * {@code -tolerance <= (v(0) - t[0]) <= tolerance}
+	 * 
+	 * @param tolerance
+	 * The tolerance around the values, that should still count as the value.
+	 * @param t The tuple to compare with as an array.
+	 * 
+	 * @return
+	 * <p>
+	 * {@code true} - If the given tuple {@code (t)} is not {@code null}, the
+	 * first component value is available in the given tuple and the first
+	 * component value of this tuple and the given tuple are equal, taking into
+	 * account the given tolerance.
+	 * 
+	 * <p>
+	 * {@code false} - Otherwise.
+	 */
+	boolean equalsAtV0(double tolerance, @AllowNull double[] t);
+	
+	/**
+	 * Returns whether the first component value of this tuple and the given
+	 * value are approximately equal.
+	 * 
+	 * <p>
+	 * This takes into account an inclusive margin of the given tolerance around
+	 * the compared values in positive and negative direction.
+	 * This margin allows for example to compensate for doubleing point precision
+	 * errors.
+	 * 
+	 * <p>
+	 * The minimum allowed tolerance is 0.0f. A tolerance of 0.0f behaves like
+	 * {@link #equalsAtV0(double)}.
+	 * 
+	 * <p>
+	 * <b>Formula:</b>
+	 * <br>
+	 * {@code -tolerance <= (v(0) - value) <= tolerance}
+	 * 
+	 * @param tolerance
+	 * The tolerance around the values, that should still count as the value.
+	 * @param t The value to compare with.
+	 * 
+	 * @return
+	 * <p>
+	 * {@code true} - If the first component value of this tuple and the given
+	 * value are equal, taking into account the given tolerance.
+	 * 
+	 * <p>
+	 * {@code false} - Otherwise.
+	 */
+	boolean equalsAtV0(double tolerance, double value);
+	
+	/**
+	 * Returns whether the second component value of this tuple and of the given
+	 * tuple {@code (t)} are approximately equal.
+	 * 
+	 * <p>
+	 * This takes into account an inclusive margin of the given tolerance around
+	 * the compared values in positive and negative direction.
+	 * This margin allows for example to compensate for doubleing point precision
+	 * errors.
+	 * 
+	 * <p>
+	 * If the given tuple {@code (t)} is null this returns false.
+	 * 
+	 * <p>
+	 * As in most situations only the component values of the tuple are relevant
+	 * when working with tuples, this does require this tuple and the given
+	 * tuple {@code t} to be the same instance.
+	 * 
+	 * <p>
+	 * The minimum allowed tolerance is 0.0f. A tolerance of 0.0f behaves like
+	 * {@link #equalsAtV1(ITup2RD)}.
+	 * 
+	 * <p>
+	 * <b>Formula:</b>
+	 * <br>
+	 * {@code -tolerance <= (v(1) - t.v1) <= tolerance}
+	 * 
+	 * @param tolerance
+	 * The tolerance around the values, that should still count as the value.
+	 * @param t The tuple to compare with.
+	 * 
+	 * @return
+	 * <p>
+	 * {@code true} - If the given tuple {@code (t)} is not {@code null} and the
+	 * second component value of this tuple and the given tuple are equal,
+	 * taking into account the given tolerance.
+	 * 
+	 * <p>
+	 * {@code false} - Otherwise.
+	 */
+	boolean equalsAtV1(double tolerance, @AllowNull ITup2RD t);
+	
+	/**
+	 * Returns whether the second component value of this tuple and of the given
+	 * tuple {@code (t)} are approximately equal.
+	 * 
+	 * <p>
+	 * This takes into account an inclusive margin of the given tolerance around
+	 * the compared values in positive and negative direction.
+	 * This margin allows for example to compensate for doubleing point precision
+	 * errors.
+	 * 
+	 * <p>
+	 * If the given tuple {@code (t)} is null or the given tuple has no second
+	 * component this returns false.
+	 * 
+	 * <p>
+	 * As in most situations only the component values of the tuple are relevant
+	 * when working with tuples, this does require this tuple and the given
+	 * tuple {@code t} to be the same instance.
+	 * 
+	 * <p>
+	 * The minimum allowed tolerance is 0.0f. A tolerance of 0.0f behaves like
+	 * {@link #equalsAtV1(ITupRD)}.
+	 * 
+	 * <p>
+	 * <b>Formula:</b>
+	 * <br>
+	 * {@code -tolerance <= (v(1) - t.v(1)) <= tolerance}
+	 * 
+	 * @param tolerance
+	 * The tolerance around the values, that should still count as the value.
+	 * @param t The tuple to compare with.
+	 * 
+	 * @return
+	 * <p>
+	 * {@code true} - If the given tuple {@code (t)} is not {@code null}, the
+	 * second component value is available in the given tuple and the second
+	 * component value of this tuple and the given tuple are equal, taking into
+	 * account the given tolerance.
+	 * 
+	 * <p>
+	 * {@code false} - Otherwise.
+	 */
+	boolean equalsAtV1(double tolerance, @AllowNull ITupRD t);
+	
+	/**
+	 * Returns whether the second component value of this tuple and of the given
+	 * tuple {@code (t)} are approximately equal.
+	 * 
+	 * <p>
+	 * This takes into account an inclusive margin of the given tolerance around
+	 * the compared values in positive and negative direction.
+	 * This margin allows for example to compensate for doubleing point precision
+	 * errors.
+	 * 
+	 * <p>
+	 * If the given tuple {@code (t)} is null or the given tuple has no second
+	 * component this returns false.
+	 * 
+	 * <p>
+	 * As in most situations only the component values of the tuple are relevant
+	 * when working with tuples, this does require this tuple and the given
+	 * tuple {@code t} to be the same instance.
+	 * 
+	 * <p>
+	 * The minimum allowed tolerance is 0.0f. A tolerance of 0.0f behaves like
+	 * {@link #equalsAtV1(double[]) equalsAtV1(double...)}.
+	 * 
+	 * <p>
+	 * <b>Formula:</b>
+	 * <br>
+	 * {@code -tolerance <= (v(1) - t[1]) <= tolerance}
+	 * 
+	 * @param tolerance
+	 * The tolerance around the values, that should still count as the value.
+	 * @param t The tuple to compare with as an array.
+	 * 
+	 * @return
+	 * <p>
+	 * {@code true} - If the given tuple {@code (t)} is not {@code null}, the
+	 * second component value is available in the given tuple and the second
+	 * component value of this tuple and the given tuple are equal, taking into
+	 * account the given tolerance.
+	 * 
+	 * <p>
+	 * {@code false} - Otherwise.
+	 */
+	boolean equalsAtV1(double tolerance, @AllowNull double[] t);
+	
+	/**
+	 * Returns whether the second component value of this tuple and the given
+	 * value are approximately equal.
+	 * 
+	 * <p>
+	 * This takes into account an inclusive margin of the given tolerance around
+	 * the compared values in positive and negative direction.
+	 * This margin allows for example to compensate for doubleing point precision
+	 * errors.
+	 * 
+	 * <p>
+	 * The minimum allowed tolerance is 0.0f. A tolerance of 0.0f behaves like
+	 * {@link #equalsAtV1(double)}.
+	 * 
+	 * <p>
+	 * <b>Formula:</b>
+	 * <br>
+	 * {@code -tolerance <= (v(1) - value) <= tolerance}
+	 * 
+	 * @param tolerance
+	 * The tolerance around the values, that should still count as the value.
+	 * @param t The value to compare with.
+	 * 
+	 * @return
+	 * <p>
+	 * {@code true} - If the second component value of this tuple and the given
+	 * value are equal, taking into account the given tolerance.
+	 * 
+	 * <p>
+	 * {@code false} - Otherwise.
+	 */
+	boolean equalsAtV1(double tolerance, double value);
+	
+}
