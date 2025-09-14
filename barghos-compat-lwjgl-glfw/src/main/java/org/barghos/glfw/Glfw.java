@@ -1,7 +1,7 @@
 package org.barghos.glfw;
 
-import org.barghos.annotation.Nullable;
-import org.barghos.util.memory.PointerI;
+import org.barghos.annotation.AllowNull;
+import org.barghos.impl.core.memory.PointerI;
 import org.lwjgl.glfw.GLFWFramebufferSizeCallbackI;
 import org.lwjgl.glfw.GLFWWindowPosCallbackI;
 import org.lwjgl.glfw.GLFWWindowSizeCallbackI;
@@ -100,17 +100,17 @@ public class Glfw
 		PROVIDER.glfwSetWindowSize(window, width, height);
 	}
 	
-	public static void glfwSetWindowSizeCallback(long window, @Nullable GLFWWindowSizeCallbackI cbfun)
+	public static void glfwSetWindowSizeCallback(long window, @AllowNull GLFWWindowSizeCallbackI cbfun)
 	{
 		PROVIDER.glfwSetWindowSizeCallback(window, cbfun);
 	}
 	
-	public static void glfwSetFramebufferSizeCallback(long window, @Nullable GLFWFramebufferSizeCallbackI cbfun)
+	public static void glfwSetFramebufferSizeCallback(long window, @AllowNull GLFWFramebufferSizeCallbackI cbfun)
 	{
 		PROVIDER.glfwSetFramebufferSizeCallback(window, cbfun);
 	}
 	
-	public static void glfwSetWindowPosCallback(long window, @Nullable GLFWWindowPosCallbackI cbfun)
+	public static void glfwSetWindowPosCallback(long window, @AllowNull GLFWWindowPosCallbackI cbfun)
 	{
 		PROVIDER.glfwSetWindowPosCallback(window, cbfun);
 	}

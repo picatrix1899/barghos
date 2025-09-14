@@ -12,7 +12,7 @@ configurations {
 }
 
 dependencies {
-  api project(':barghos-util')
+  api project(':barghos-core-impl')
   
   implementation platform("org.lwjgl:lwjgl-bom:$lwjglVersion")
   

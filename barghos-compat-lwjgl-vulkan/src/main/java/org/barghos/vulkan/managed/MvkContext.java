@@ -1,6 +1,6 @@
 package org.barghos.vulkan.managed;
 
-import org.barghos.util.id.IdGeneratorL;
+import org.barghos.impl.core.id.IdGeneratorL;
 import org.lwjgl.vulkan.VkDevice;
 import org.lwjgl.vulkan.VkInstance;
 

@@ -2,8 +2,8 @@ package org.barghos.glfw;
 
 import java.nio.IntBuffer;
 
-import org.barghos.annotation.Nullable;
-import org.barghos.util.memory.PointerI;
+import org.barghos.annotation.AllowNull;
+import org.barghos.impl.core.memory.PointerI;
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.glfw.GLFWFramebufferSizeCallbackI;
 import org.lwjgl.glfw.GLFWWindowPosCallbackI;
@@ -107,17 +107,17 @@ public class JNIGlfwProvider implements GlfwProvider
 		GLFW.glfwSetWindowSize(window, width, height);
 	}
 	
-	public void glfwSetWindowSizeCallback(long window, @Nullable GLFWWindowSizeCallbackI cbfun)
+	public void glfwSetWindowSizeCallback(long window, @AllowNull GLFWWindowSizeCallbackI cbfun)
 	{
 		GLFW.glfwSetWindowSizeCallback(window, cbfun);
 	}
 	
-	public void glfwSetFramebufferSizeCallback(long window, @Nullable GLFWFramebufferSizeCallbackI cbfun)
+	public void glfwSetFramebufferSizeCallback(long window, @AllowNull GLFWFramebufferSizeCallbackI cbfun)
 	{
 		GLFW.glfwSetFramebufferSizeCallback(window, cbfun);
 	}
 	
-	public void glfwSetWindowPosCallback(long window, @Nullable GLFWWindowPosCallbackI cbfun)
+	public void glfwSetWindowPosCallback(long window, @AllowNull GLFWWindowPosCallbackI cbfun)
 	{
 		GLFW.glfwSetWindowPosCallback(window, cbfun);
 	}
