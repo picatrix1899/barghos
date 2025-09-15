@@ -71,7 +71,7 @@ public class QuatUtilsF
 		
 		float sqareLength = v0 * v0 + v1 * v1 + v2 * v2 + v3 * v3;
 		
-		if(MathUtils.isZero(sqareLength)) return 0.0f;
+		if(sqareLength == 0.0f) return 0.0f;
 		
 		return MathUtils.sqrt(sqareLength);
 	}
@@ -85,7 +85,7 @@ public class QuatUtilsF
 		
 		float sqareLength = v0 * v0 + v1 * v1 + v2 * v2 + v3 * v3;
 		
-		if(MathUtils.isZero(sqareLength)) return 0.0f;
+		if(sqareLength == 0.0f) return 0.0f;
 		
 		return MathUtils.sqrt(sqareLength);
 	}
@@ -94,7 +94,7 @@ public class QuatUtilsF
 	{
 		float sqareLength = v0 * v0 + v1 * v1 + v2 * v2 + v3 * v3;
 		
-		if(MathUtils.isZero(sqareLength)) return 0.0f;
+		if(sqareLength == 0.0f) return 0.0f;
 		
 		return MathUtils.sqrt(sqareLength);
 	}

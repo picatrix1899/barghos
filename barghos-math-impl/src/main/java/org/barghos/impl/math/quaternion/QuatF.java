@@ -7,7 +7,10 @@ import org.barghos.api.core.function.floats.IFunc4F;
 import org.barghos.api.core.math.MathUtils;
 import org.barghos.api.core.tuple.floats.ITup4RF;
 import org.barghos.api.core.tuple.floats.ITupRF;
+import org.barghos.api.core.tuple.floats.RawTupUtils4F;
 import org.barghos.api.core.tuple.floats.TupUtils4F;
+import org.barghos.api.math.quaternion.IQuatWF;
+import org.barghos.api.math.quaternion.QuatUtilsF;
 
 public class QuatF implements IQuatWF
 {
@@ -103,6 +106,7 @@ public class QuatF implements IQuatWF
 		return this.q[index];
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public QuatF x(float x)
 	{
@@ -111,6 +115,7 @@ public class QuatF implements IQuatWF
 		return this;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public QuatF y(float y)
 	{
@@ -119,6 +124,7 @@ public class QuatF implements IQuatWF
 		return this;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public QuatF z(float z)
 	{
@@ -127,6 +133,7 @@ public class QuatF implements IQuatWF
 		return this;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public QuatF w(float w)
 	{
@@ -135,6 +142,7 @@ public class QuatF implements IQuatWF
 		return this;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public QuatF v0(float v0)
 	{
@@ -143,6 +151,7 @@ public class QuatF implements IQuatWF
 		return this;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public QuatF v1(float v1)
 	{
@@ -151,6 +160,7 @@ public class QuatF implements IQuatWF
 		return this;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public QuatF v2(float v2)
 	{
@@ -159,6 +169,7 @@ public class QuatF implements IQuatWF
 		return this;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public QuatF v3(float v3)
 	{
@@ -167,6 +178,7 @@ public class QuatF implements IQuatWF
 		return this;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public QuatF set(ITup4RF t)
 	{
@@ -175,6 +187,7 @@ public class QuatF implements IQuatWF
 		return this;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public QuatF set(ITupRF t)
 	{
@@ -183,6 +196,7 @@ public class QuatF implements IQuatWF
 		return this;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public QuatF set(float[] values)
 	{
@@ -191,6 +205,7 @@ public class QuatF implements IQuatWF
 		return this;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public QuatF set(float x, float y, float z, float w)
 	{
@@ -202,6 +217,7 @@ public class QuatF implements IQuatWF
 		return this;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public QuatF setAt(int index, float value)
 	{
@@ -210,6 +226,8 @@ public class QuatF implements IQuatWF
 		return this;
 	}
 	
+	/** {@inheritDoc} */
+	@Override
 	public QuatF setFromAxisAngle(float ax, float ay, float az, float angle)
 	{
 		float halfAngle = angle * 0.5f;
@@ -225,12 +243,14 @@ public class QuatF implements IQuatWF
 		return set(x_ * invLength, y_ * invLength, z_ * invLength, w_ * invLength);
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public float[] toArray()
 	{
 		return Arrays.copyOf(this.q, 4);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public float[] toArray(float[] res)
 	{
@@ -239,18 +259,21 @@ public class QuatF implements IQuatWF
 		return res;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public String toString()
 	{
 		return "quatf(x=" + this.q[0] + ", y=" + this.q[1] + ", z=" + this.q[2] + "; w=" + this.q[3] + ")";
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public int hashCode()
 	{
 		return Objects.hash(this.q);
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -265,402 +288,1099 @@ public class QuatF implements IQuatWF
 		return false;
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public boolean isFiniteAt(int index)
 	{
-		return TupUtils4F.isFiniteAt(index, this.q);
+		return RawTupUtils4F.isFiniteAt(index, this.q);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean isFiniteAtV0()
 	{
-		return TupUtils4F.isFiniteAtV0(this.q);
+		return RawTupUtils4F.isFiniteAtV0(this.q);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean isFiniteAtV1()
 	{
-		return TupUtils4F.isFiniteAtV1(this.q);
+		return RawTupUtils4F.isFiniteAtV1(this.q);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean isFiniteAtV2()
 	{
-		return TupUtils4F.isFiniteAtV2(this.q);
+		return RawTupUtils4F.isFiniteAtV2(this.q);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean isFiniteAtV3()
 	{
-		return TupUtils4F.isFiniteAtV3(this.q);
+		return RawTupUtils4F.isFiniteAtV3(this.q);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean isZeroAt(int index)
 	{
-		return TupUtils4F.isZeroAt(index, this.q);
+		return RawTupUtils4F.isZeroAt(index, this.q);
 	}
 
+	/** {@inheritDoc} */
+	@Override
+	public boolean isZeroAtEM4(int index)
+	{
+		return RawTupUtils4F.isZeroAtEM4(index, this.q);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public boolean isZeroAtEM6(int index)
+	{
+		return RawTupUtils4F.isZeroAtEM6(index, this.q);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean isZeroAtEM8(int index)
+	{
+		return RawTupUtils4F.isZeroAtEM8(index, this.q);
+	}
+	
+	/** {@inheritDoc} */
 	@Override
 	public boolean isZeroAt(float tolerance, int index)
 	{
-		return TupUtils4F.isZeroAt(tolerance, index, this.q);
+		return RawTupUtils4F.isZeroAt(tolerance, index, this.q);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean isZeroAtV0()
 	{
-		return TupUtils4F.isZeroAtV0(this.q);
+		return RawTupUtils4F.isZeroAtV0(this.q);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean isZeroAtV1()
 	{
-		return TupUtils4F.isZeroAtV1(this.q);
+		return RawTupUtils4F.isZeroAtV1(this.q);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean isZeroAtV2()
 	{
-		return TupUtils4F.isZeroAtV2(this.q);
+		return RawTupUtils4F.isZeroAtV2(this.q);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean isZeroAtV3()
 	{
-		return TupUtils4F.isZeroAtV3(this.q);
+		return RawTupUtils4F.isZeroAtV3(this.q);
 	}
 
+	/** {@inheritDoc} */
+	@Override
+	public boolean isZeroAtV0EM4()
+	{
+		return RawTupUtils4F.isZeroAtV0EM4(this.q);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean isZeroAtV1EM4()
+	{
+		return RawTupUtils4F.isZeroAtV1EM4(this.q);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean isZeroAtV2EM4()
+	{
+		return RawTupUtils4F.isZeroAtV2EM4(this.q);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean isZeroAtV3EM4()
+	{
+		return RawTupUtils4F.isZeroAtV3EM4(this.q);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public boolean isZeroAtV0EM6()
+	{
+		return RawTupUtils4F.isZeroAtV0EM6(this.q);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean isZeroAtV1EM6()
+	{
+		return RawTupUtils4F.isZeroAtV1EM6(this.q);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean isZeroAtV2EM6()
+	{
+		return RawTupUtils4F.isZeroAtV2EM6(this.q);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean isZeroAtV3EM6()
+	{
+		return RawTupUtils4F.isZeroAtV3EM6(this.q);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public boolean isZeroAtV0EM8()
+	{
+		return RawTupUtils4F.isZeroAtV0EM8(this.q);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean isZeroAtV1EM8()
+	{
+		return RawTupUtils4F.isZeroAtV1EM8(this.q);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean isZeroAtV2EM8()
+	{
+		return RawTupUtils4F.isZeroAtV2EM8(this.q);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean isZeroAtV3EM8()
+	{
+		return RawTupUtils4F.isZeroAtV3EM8(this.q);
+	}
+	
+	/** {@inheritDoc} */
 	@Override
 	public boolean isZeroAtV0(float tolerance)
 	{
-		return TupUtils4F.isZeroAtV0(tolerance, this.q);
+		return RawTupUtils4F.isZeroAtV0(tolerance, this.q);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean isZeroAtV1(float tolerance)
 	{
-		return TupUtils4F.isZeroAtV1(tolerance, this.q);
+		return RawTupUtils4F.isZeroAtV1(tolerance, this.q);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean isZeroAtV2(float tolerance)
 	{
-		return TupUtils4F.isZeroAtV2(tolerance, this.q);
+		return RawTupUtils4F.isZeroAtV2(tolerance, this.q);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean isZeroAtV3(float tolerance)
 	{
-		return TupUtils4F.isZeroAtV3(tolerance, this.q);
+		return RawTupUtils4F.isZeroAtV3(tolerance, this.q);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equals(ITup4RF t)
 	{
 		return TupUtils4F.equals(this.q, t);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equals(ITupRF t)
 	{
 		return TupUtils4F.equals(this.q, t);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equals(float[] t)
 	{
-		return TupUtils4F.equals(this.q, t);
+		return RawTupUtils4F.equals(this.q, t);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equals(float v0, float v1, float v2, float v3)
 	{
-		return TupUtils4F.equals(this.q, v0, v1, v2, v3);
+		return RawTupUtils4F.equals(this.q, v0, v1, v2, v3);
 	}
 
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsEM4(ITup4RF t)
+	{
+		return TupUtils4F.equalsEM4(this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsEM4(ITupRF t)
+	{
+		return TupUtils4F.equalsEM4(this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsEM4(float[] t)
+	{
+		return RawTupUtils4F.equalsEM4(this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsEM4(float v0, float v1, float v2, float v3)
+	{
+		return RawTupUtils4F.equalsEM4(this.q, v0, v1, v2, v3);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsEM6(ITup4RF t)
+	{
+		return TupUtils4F.equalsEM6(this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsEM6(ITupRF t)
+	{
+		return TupUtils4F.equalsEM6(this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsEM6(float[] t)
+	{
+		return RawTupUtils4F.equalsEM6(this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsEM6(float v0, float v1, float v2, float v3)
+	{
+		return RawTupUtils4F.equalsEM6(this.q, v0, v1, v2, v3);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsEM8(ITup4RF t)
+	{
+		return TupUtils4F.equalsEM8(this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsEM8(ITupRF t)
+	{
+		return TupUtils4F.equalsEM8(this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsEM8(float[] t)
+	{
+		return RawTupUtils4F.equalsEM8(this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsEM8(float v0, float v1, float v2, float v3)
+	{
+		return RawTupUtils4F.equalsEM8(this.q, v0, v1, v2, v3);
+	}
+	
+	/** {@inheritDoc} */
 	@Override
 	public boolean equals(float tolerance, ITup4RF t)
 	{
 		return TupUtils4F.equals(tolerance, this.q, t);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equals(float tolerance, ITupRF t)
 	{
 		return TupUtils4F.equals(tolerance, this.q, t);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equals(float tolerance, float[] t)
 	{
-		return TupUtils4F.equals(tolerance, this.q, t);
+		return RawTupUtils4F.equals(tolerance, this.q, t);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equals(float tolerance, float v0, float v1, float v2, float v3)
 	{
-		return TupUtils4F.equals(tolerance, this.q, v0, v1, v2, v3);
+		return RawTupUtils4F.equals(tolerance, this.q, v0, v1, v2, v3);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAt(int index, ITup4RF t)
 	{
 		return TupUtils4F.equalsAt(index, this.q, t);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAt(int index, ITupRF t)
 	{
 		return TupUtils4F.equalsAt(index, this.q, t);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAt(int index, float[] t)
 	{
-		return TupUtils4F.equalsAt(index, this.q, t);
+		return RawTupUtils4F.equalsAt(index, this.q, t);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAt(int index, float value)
 	{
-		return TupUtils4F.equalsAt(index, this.q, value);
+		return RawTupUtils4F.equalsAt(index, this.q, value);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtEM4(int index, ITup4RF t)
+	{
+		return TupUtils4F.equalsAtEM4(index, this.q, t);
 	}
 
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtEM4(int index, ITupRF t)
+	{
+		return TupUtils4F.equalsAtEM4(index, this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtEM4(int index, float[] t)
+	{
+		return RawTupUtils4F.equalsAtEM4(index, this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtEM4(int index, float value)
+	{
+		return RawTupUtils4F.equalsAtEM4(index, this.q, value);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtEM6(int index, ITup4RF t)
+	{
+		return TupUtils4F.equalsAtEM6(index, this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtEM6(int index, ITupRF t)
+	{
+		return TupUtils4F.equalsAtEM6(index, this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtEM6(int index, float[] t)
+	{
+		return RawTupUtils4F.equalsAtEM6(index, this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtEM6(int index, float value)
+	{
+		return RawTupUtils4F.equalsAtEM6(index, this.q, value);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtEM8(int index, ITup4RF t)
+	{
+		return TupUtils4F.equalsAtEM8(index, this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtEM8(int index, ITupRF t)
+	{
+		return TupUtils4F.equalsAtEM8(index, this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtEM8(int index, float[] t)
+	{
+		return RawTupUtils4F.equalsAtEM8(index, this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtEM8(int index, float value)
+	{
+		return RawTupUtils4F.equalsAtEM8(index, this.q, value);
+	}
+	
+	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAt(float tolerance, int index, ITup4RF t)
 	{
 		return TupUtils4F.equalsAt(tolerance, index, this.q, t);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAt(float tolerance, int index, ITupRF t)
 	{
 		return TupUtils4F.equalsAt(tolerance, index, this.q, t);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAt(float tolerance, int index, float[] t)
 	{
-		return TupUtils4F.equalsAt(tolerance, index, this.q, t);
+		return RawTupUtils4F.equalsAt(tolerance, index, this.q, t);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAt(float tolerance, int index, float value)
 	{
-		return TupUtils4F.equalsAt(tolerance, index, this.q, value);
+		return RawTupUtils4F.equalsAt(tolerance, index, this.q, value);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV0(ITup4RF t)
 	{
 		return TupUtils4F.equalsAtV0(this.q, t);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV0(ITupRF t)
 	{
 		return TupUtils4F.equalsAtV0(this.q, t);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV0(float[] t)
 	{
-		return TupUtils4F.equalsAtV0(this.q, t);
+		return RawTupUtils4F.equalsAtV0(this.q, t);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV0(float value)
 	{
-		return TupUtils4F.equalsAtV0(this.q, value);
+		return RawTupUtils4F.equalsAtV0(this.q, value);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV1(ITup4RF t)
 	{
 		return TupUtils4F.equalsAtV1(this.q, t);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV1(ITupRF t)
 	{
 		return TupUtils4F.equalsAtV1(this.q, t);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV1(float[] t)
 	{
-		return TupUtils4F.equalsAtV1(this.q, t);
+		return RawTupUtils4F.equalsAtV1(this.q, t);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV1(float value)
 	{
-		return TupUtils4F.equalsAtV1(this.q, value);
+		return RawTupUtils4F.equalsAtV1(this.q, value);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV2(ITup4RF t)
 	{
 		return TupUtils4F.equalsAtV2(this.q, t);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV2(ITupRF t)
 	{
 		return TupUtils4F.equalsAtV2(this.q, t);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV2(float[] t)
 	{
-		return TupUtils4F.equalsAtV2(this.q, t);
+		return RawTupUtils4F.equalsAtV2(this.q, t);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV2(float value)
 	{
-		return TupUtils4F.equalsAtV2(this.q, value);
+		return RawTupUtils4F.equalsAtV2(this.q, value);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV3(ITup4RF t)
 	{
 		return TupUtils4F.equalsAtV3(this.q, t);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV3(ITupRF t)
 	{
 		return TupUtils4F.equalsAtV3(this.q, t);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV3(float[] t)
 	{
-		return TupUtils4F.equalsAtV3(this.q, t);
+		return RawTupUtils4F.equalsAtV3(this.q, t);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV3(float value)
 	{
-		return TupUtils4F.equalsAtV3(this.q, value);
+		return RawTupUtils4F.equalsAtV3(this.q, value);
 	}
 
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV0EM4(ITup4RF t)
+	{
+		return TupUtils4F.equalsAtV0EM4(this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV0EM4(ITupRF t)
+	{
+		return TupUtils4F.equalsAtV0EM4(this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV0EM4(float[] t)
+	{
+		return RawTupUtils4F.equalsAtV0EM4(this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV0EM4(float value)
+	{
+		return RawTupUtils4F.equalsAtV0EM4(this.q, value);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV1EM4(ITup4RF t)
+	{
+		return TupUtils4F.equalsAtV1EM4(this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV1EM4(ITupRF t)
+	{
+		return TupUtils4F.equalsAtV1EM4(this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV1EM4(float[] t)
+	{
+		return RawTupUtils4F.equalsAtV1EM4(this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV1EM4(float value)
+	{
+		return RawTupUtils4F.equalsAtV1EM4(this.q, value);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV2EM4(ITup4RF t)
+	{
+		return TupUtils4F.equalsAtV2EM4(this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV2EM4(ITupRF t)
+	{
+		return TupUtils4F.equalsAtV2EM4(this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV2EM4(float[] t)
+	{
+		return RawTupUtils4F.equalsAtV2EM4(this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV2EM4(float value)
+	{
+		return RawTupUtils4F.equalsAtV2EM4(this.q, value);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV3EM4(ITup4RF t)
+	{
+		return TupUtils4F.equalsAtV3EM4(this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV3EM4(ITupRF t)
+	{
+		return TupUtils4F.equalsAtV3EM4(this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV3EM4(float[] t)
+	{
+		return RawTupUtils4F.equalsAtV3EM4(this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV3EM4(float value)
+	{
+		return RawTupUtils4F.equalsAtV3EM4(this.q, value);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV0EM6(ITup4RF t)
+	{
+		return TupUtils4F.equalsAtV0EM6(this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV0EM6(ITupRF t)
+	{
+		return TupUtils4F.equalsAtV0EM6(this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV0EM6(float[] t)
+	{
+		return RawTupUtils4F.equalsAtV0EM6(this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV0EM6(float value)
+	{
+		return RawTupUtils4F.equalsAtV0EM6(this.q, value);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV1EM6(ITup4RF t)
+	{
+		return TupUtils4F.equalsAtV1EM6(this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV1EM6(ITupRF t)
+	{
+		return TupUtils4F.equalsAtV1EM6(this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV1EM6(float[] t)
+	{
+		return RawTupUtils4F.equalsAtV1EM6(this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV1EM6(float value)
+	{
+		return RawTupUtils4F.equalsAtV1EM6(this.q, value);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV2EM6(ITup4RF t)
+	{
+		return TupUtils4F.equalsAtV2EM6(this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV2EM6(ITupRF t)
+	{
+		return TupUtils4F.equalsAtV2EM6(this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV2EM6(float[] t)
+	{
+		return RawTupUtils4F.equalsAtV2EM6(this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV2EM6(float value)
+	{
+		return RawTupUtils4F.equalsAtV2EM6(this.q, value);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV3EM6(ITup4RF t)
+	{
+		return TupUtils4F.equalsAtV3EM6(this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV3EM6(ITupRF t)
+	{
+		return TupUtils4F.equalsAtV3EM6(this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV3EM6(float[] t)
+	{
+		return RawTupUtils4F.equalsAtV3EM6(this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV3EM6(float value)
+	{
+		return RawTupUtils4F.equalsAtV3EM6(this.q, value);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV0EM8(ITup4RF t)
+	{
+		return TupUtils4F.equalsAtV0EM8(this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV0EM8(ITupRF t)
+	{
+		return TupUtils4F.equalsAtV0EM8(this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV0EM8(float[] t)
+	{
+		return RawTupUtils4F.equalsAtV0EM8(this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV0EM8(float value)
+	{
+		return RawTupUtils4F.equalsAtV0EM8(this.q, value);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV1EM8(ITup4RF t)
+	{
+		return TupUtils4F.equalsAtV1EM8(this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV1EM8(ITupRF t)
+	{
+		return TupUtils4F.equalsAtV1EM8(this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV1EM8(float[] t)
+	{
+		return RawTupUtils4F.equalsAtV1EM8(this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV1EM8(float value)
+	{
+		return RawTupUtils4F.equalsAtV1EM8(this.q, value);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV2EM8(ITup4RF t)
+	{
+		return TupUtils4F.equalsAtV2EM8(this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV2EM8(ITupRF t)
+	{
+		return TupUtils4F.equalsAtV2EM8(this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV2EM8(float[] t)
+	{
+		return RawTupUtils4F.equalsAtV2EM8(this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV2EM8(float value)
+	{
+		return RawTupUtils4F.equalsAtV2EM8(this.q, value);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV3EM8(ITup4RF t)
+	{
+		return TupUtils4F.equalsAtV3EM8(this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV3EM8(ITupRF t)
+	{
+		return TupUtils4F.equalsAtV3EM8(this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV3EM8(float[] t)
+	{
+		return RawTupUtils4F.equalsAtV3EM8(this.q, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV3EM8(float value)
+	{
+		return RawTupUtils4F.equalsAtV3EM8(this.q, value);
+	}
+	
+	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV0(float tolerance, ITup4RF t)
 	{
 		return TupUtils4F.equalsAtV0(tolerance, this.q, t);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV0(float tolerance, ITupRF t)
 	{
 		return TupUtils4F.equalsAtV0(tolerance, this.q, t);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV0(float tolerance, float[] t)
 	{
-		return TupUtils4F.equalsAtV0(tolerance, this.q, t);
+		return RawTupUtils4F.equalsAtV0(tolerance, this.q, t);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV0(float tolerance, float value)
 	{
-		return TupUtils4F.equalsAtV0(tolerance, this.q, value);
+		return RawTupUtils4F.equalsAtV0(tolerance, this.q, value);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV1(float tolerance, ITup4RF t)
 	{
 		return TupUtils4F.equalsAtV1(tolerance, this.q, t);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV1(float tolerance, ITupRF t)
 	{
 		return TupUtils4F.equalsAtV1(tolerance, this.q, t);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV1(float tolerance, float[] t)
 	{
-		return TupUtils4F.equalsAtV1(tolerance, this.q, t);
+		return RawTupUtils4F.equalsAtV1(tolerance, this.q, t);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV1(float tolerance, float value)
 	{
-		return TupUtils4F.equalsAtV1(tolerance, this.q, value);
+		return RawTupUtils4F.equalsAtV1(tolerance, this.q, value);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV2(float tolerance, ITup4RF t)
 	{
 		return TupUtils4F.equalsAtV2(tolerance, this.q, t);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV2(float tolerance, ITupRF t)
 	{
 		return TupUtils4F.equalsAtV2(tolerance, this.q, t);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV2(float tolerance, float[] t)
 	{
-		return TupUtils4F.equalsAtV2(tolerance, this.q, t);
+		return RawTupUtils4F.equalsAtV2(tolerance, this.q, t);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV2(float tolerance, float value)
 	{
-		return TupUtils4F.equalsAtV2(tolerance, this.q, value);
+		return RawTupUtils4F.equalsAtV2(tolerance, this.q, value);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV3(float tolerance, ITup4RF t)
 	{
 		return TupUtils4F.equalsAtV3(tolerance, this.q, t);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV3(float tolerance, ITupRF t)
 	{
 		return TupUtils4F.equalsAtV3(tolerance, this.q, t);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV3(float tolerance, float[] t)
 	{
-		return TupUtils4F.equalsAtV3(tolerance, this.q, t);
+		return RawTupUtils4F.equalsAtV3(tolerance, this.q, t);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV3(float tolerance, float value)
 	{
-		return TupUtils4F.equalsAtV3(tolerance, this.q, value);
+		return RawTupUtils4F.equalsAtV3(tolerance, this.q, value);
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public boolean isFinite()
 	{
-		return TupUtils4F.isFinite(this.q);
+		return RawTupUtils4F.isFinite(this.q);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean isZero()
 	{
-		return TupUtils4F.isZero(this.q);
+		return RawTupUtils4F.isZero(this.q);
 	}
 
+	/** {@inheritDoc} */
+	@Override
+	public boolean isZeroEM4()
+	{
+		return RawTupUtils4F.isZeroEM4(this.q);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public boolean isZeroEM6()
+	{
+		return RawTupUtils4F.isZeroEM6(this.q);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public boolean isZeroEM8()
+	{
+		return RawTupUtils4F.isZeroEM8(this.q);
+	}
+	
+	/** {@inheritDoc} */
 	@Override
 	public boolean isZero(float tolerance)
 	{
-		return TupUtils4F.isZero(tolerance, this.q);
+		return RawTupUtils4F.isZero(tolerance, this.q);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public QuatF conj()
 	{
@@ -669,12 +1389,14 @@ public class QuatF implements IQuatWF
 		return this;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public QuatF conjN()
 	{
 		return QuatUtilsF.conjFunc(this.q, CTOR);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public float[] conjT(float[] res)
 	{
@@ -683,6 +1405,7 @@ public class QuatF implements IQuatWF
 		return res;
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public <T extends IQuatWF> T conjT(T res)
 	{
@@ -691,6 +1414,7 @@ public class QuatF implements IQuatWF
 		return res;
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public QuatF inv()
 	{
@@ -699,12 +1423,14 @@ public class QuatF implements IQuatWF
 		return this;
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public QuatF invN()
 	{
 		return QuatUtilsF.invFunc(this.q, CTOR);
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public float[] invT(float[] res)
 	{
@@ -713,6 +1439,7 @@ public class QuatF implements IQuatWF
 		return res;
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public <T extends IQuatWF> T invT(T res)
 	{
@@ -721,6 +1448,7 @@ public class QuatF implements IQuatWF
 		return res;
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public QuatF nrm()
 	{
@@ -729,12 +1457,14 @@ public class QuatF implements IQuatWF
 		return this;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public QuatF nrmN()
 	{
 		return QuatUtilsF.nrmFunc(this.q, CTOR);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public float[] nrmT(float[] res)
 	{
@@ -743,6 +1473,7 @@ public class QuatF implements IQuatWF
 		return res;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public <T extends IQuatWF> T nrmT(T res)
 	{
@@ -751,36 +1482,42 @@ public class QuatF implements IQuatWF
 		return res;
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public float len()
 	{
 		return QuatUtilsF.len(this.q);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public float lenSq()
 	{
 		return QuatUtilsF.lenSq(this.q);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public float lenRc()
 	{
 		return QuatUtilsF.lenRc(this.q);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public float dot(ITup4RF q)
 	{
 		return QuatUtilsF.dot(this.q, q);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public float dot(float[] q)
 	{
 		return QuatUtilsF.dot(this.q, q);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public float dot(float x, float y, float z, float w)
 	{

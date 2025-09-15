@@ -11,6 +11,9 @@ import org.barghos.api.core.tuple.floats.ITup3RF;
 import org.barghos.api.core.tuple.floats.ITup3WF;
 import org.barghos.api.core.tuple.floats.ITup4RF;
 import org.barghos.api.core.tuple.floats.ITup4WF;
+import org.barghos.api.math.matrix.IMat4RF;
+import org.barghos.api.math.matrix.IMat4WF;
+import org.barghos.api.math.matrix.MatUtils4F;
 
 public class Mat4F implements IMat4WF
 {

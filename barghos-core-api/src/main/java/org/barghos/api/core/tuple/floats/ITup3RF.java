@@ -195,6 +195,15 @@ public interface ITup3RF extends ITupRF
 	@Override
 	boolean isZeroAt(int index);
 	
+	@Override
+	boolean isZeroAtEM4(int index);
+	
+	@Override
+	boolean isZeroAtEM6(int index);
+	
+	@Override
+	boolean isZeroAtEM8(int index);
+	
 	/**
 	 * Returns whether the component value at the given index is approximately
 	 * zero.
@@ -282,6 +291,24 @@ public interface ITup3RF extends ITupRF
 	 * {@code false} - Otherwise.
 	 */
 	boolean isZeroAtV2();
+	
+	boolean isZeroAtV0EM4();
+
+	boolean isZeroAtV1EM4();
+
+	boolean isZeroAtV2EM4();
+	
+	boolean isZeroAtV0EM6();
+
+	boolean isZeroAtV1EM6();
+
+	boolean isZeroAtV2EM6();
+	
+	boolean isZeroAtV0EM8();
+
+	boolean isZeroAtV1EM8();
+
+	boolean isZeroAtV2EM8();
 	
 	/**
 	 * Returns whether the first component value is approximately zero.
@@ -496,6 +523,36 @@ public interface ITup3RF extends ITupRF
 	 * {@code false} - Otherwise.
 	 */
 	boolean equals(float v0, float v1, float v2);
+	
+	boolean equalsEM4(@AllowNull ITup3RF t);
+	
+	@Override
+	boolean equalsEM4(@AllowNull ITupRF t);
+
+	@Override
+	boolean equalsEM4(@AllowNull float[] t);
+
+	boolean equalsEM4(float v0, float v1, float v2);
+	
+	boolean equalsEM6(@AllowNull ITup3RF t);
+	
+	@Override
+	boolean equalsEM6(@AllowNull ITupRF t);
+
+	@Override
+	boolean equalsEM6(@AllowNull float[] t);
+
+	boolean equalsEM6(float v0, float v1, float v2);
+	
+	boolean equalsEM8(@AllowNull ITup3RF t);
+	
+	@Override
+	boolean equalsEM8(@AllowNull ITupRF t);
+
+	@Override
+	boolean equalsEM8(@AllowNull float[] t);
+
+	boolean equalsEM8(float v0, float v1, float v2);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -807,6 +864,39 @@ public interface ITup3RF extends ITupRF
 	 */
 	@Override
 	boolean equalsAt(int index, float value);
+	
+	boolean equalsAtEM4(int index, @AllowNull ITup3RF t);
+
+	@Override
+	boolean equalsAtEM4(int index, @AllowNull ITupRF t);
+
+	@Override
+	boolean equalsAtEM4(int index, @AllowNull float[] t);
+
+	@Override
+	boolean equalsAtEM4(int index, float value);
+	
+	boolean equalsAtEM6(int index, @AllowNull ITup3RF t);
+
+	@Override
+	boolean equalsAtEM6(int index, @AllowNull ITupRF t);
+
+	@Override
+	boolean equalsAtEM6(int index, @AllowNull float[] t);
+
+	@Override
+	boolean equalsAtEM6(int index, float value);
+	
+	boolean equalsAtEM8(int index, @AllowNull ITup3RF t);
+
+	@Override
+	boolean equalsAtEM8(int index, @AllowNull ITupRF t);
+
+	@Override
+	boolean equalsAtEM8(int index, @AllowNull float[] t);
+
+	@Override
+	boolean equalsAtEM8(int index, float value);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and
@@ -1329,6 +1419,78 @@ public interface ITup3RF extends ITupRF
 	 * {@code false} - Otherwise.
 	 */
 	boolean equalsAtV2(float value);
+	
+	boolean equalsAtV0EM4(@AllowNull ITup3RF t);
+
+	boolean equalsAtV0EM4(@AllowNull ITupRF t);
+
+	boolean equalsAtV0EM4(@AllowNull float[] t);
+
+	boolean equalsAtV0EM4(float value);
+
+	boolean equalsAtV1EM4(@AllowNull ITup3RF t);
+
+	boolean equalsAtV1EM4(@AllowNull ITupRF t);
+
+	boolean equalsAtV1EM4(@AllowNull float[] t);
+
+	boolean equalsAtV1EM4(float value);
+
+	boolean equalsAtV2EM4(@AllowNull ITup3RF t);
+	
+	boolean equalsAtV2EM4(@AllowNull ITupRF t);
+
+	boolean equalsAtV2EM4(@AllowNull float[] t);
+
+	boolean equalsAtV2EM4(float value);
+	
+	boolean equalsAtV0EM6(@AllowNull ITup3RF t);
+
+	boolean equalsAtV0EM6(@AllowNull ITupRF t);
+
+	boolean equalsAtV0EM6(@AllowNull float[] t);
+
+	boolean equalsAtV0EM6(float value);
+
+	boolean equalsAtV1EM6(@AllowNull ITup3RF t);
+
+	boolean equalsAtV1EM6(@AllowNull ITupRF t);
+
+	boolean equalsAtV1EM6(@AllowNull float[] t);
+
+	boolean equalsAtV1EM6(float value);
+
+	boolean equalsAtV2EM6(@AllowNull ITup3RF t);
+	
+	boolean equalsAtV2EM6(@AllowNull ITupRF t);
+
+	boolean equalsAtV2EM6(@AllowNull float[] t);
+
+	boolean equalsAtV2EM6(float value);
+	
+	boolean equalsAtV0EM8(@AllowNull ITup3RF t);
+
+	boolean equalsAtV0EM8(@AllowNull ITupRF t);
+
+	boolean equalsAtV0EM8(@AllowNull float[] t);
+
+	boolean equalsAtV0EM8(float value);
+
+	boolean equalsAtV1EM8(@AllowNull ITup3RF t);
+
+	boolean equalsAtV1EM8(@AllowNull ITupRF t);
+
+	boolean equalsAtV1EM8(@AllowNull float[] t);
+
+	boolean equalsAtV1EM8(float value);
+
+	boolean equalsAtV2EM8(@AllowNull ITup3RF t);
+	
+	boolean equalsAtV2EM8(@AllowNull ITupRF t);
+
+	boolean equalsAtV2EM8(@AllowNull float[] t);
+
+	boolean equalsAtV2EM8(float value);
 	
 	/**
 	 * Returns whether the first component value of this tuple and of the given

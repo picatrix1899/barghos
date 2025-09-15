@@ -9,6 +9,7 @@ import org.barghos.api.core.nio.buffer.IBufferableWF;
 import org.barghos.api.core.tuple.floats.ITup2RF;
 import org.barghos.api.core.tuple.floats.ITup2WF;
 import org.barghos.api.core.tuple.floats.ITupRF;
+import org.barghos.api.core.tuple.floats.RawTupUtils2F;
 import org.barghos.api.core.tuple.floats.TupUtils2F;
 
 public class Tup2F implements ITup2WF, IBufferableRF, IBufferableWF
@@ -174,73 +175,145 @@ public class Tup2F implements ITup2WF, IBufferableRF, IBufferableWF
 	@Override
 	public boolean isFinite()
 	{
-		return TupUtils2F.isFinite(this.v);
+		return RawTupUtils2F.isFinite(this.v);
 	}
 	
 	@Override
 	public boolean isFiniteAt(int index)
 	{
-		return TupUtils2F.isFiniteAt(index, this.v);
+		return RawTupUtils2F.isFiniteAt(index, this.v);
 	}
 
 	@Override
 	public boolean isFiniteAtV0()
 	{
-		return TupUtils2F.isFiniteAtV0(this.v);
+		return RawTupUtils2F.isFiniteAtV0(this.v);
 	}
 
 	@Override
 	public boolean isFiniteAtV1()
 	{
-		return TupUtils2F.isFiniteAtV1(this.v);
+		return RawTupUtils2F.isFiniteAtV1(this.v);
 	}
 
 	@Override
 	public boolean isZero()
 	{
-		return TupUtils2F.isZero(this.v);
+		return RawTupUtils2F.isZero(this.v);
+	}
+	
+	@Override
+	public boolean isZeroEM4()
+	{
+		return RawTupUtils2F.isZeroEM4(this.v);
+	}
+	
+	@Override
+	public boolean isZeroEM6()
+	{
+		return RawTupUtils2F.isZeroEM6(this.v);
+	}
+	
+	@Override
+	public boolean isZeroEM8()
+	{
+		return RawTupUtils2F.isZeroEM8(this.v);
 	}
 	
 	@Override
 	public boolean isZeroAt(int index)
 	{
-		return TupUtils2F.isZeroAt(index, this.v);
+		return RawTupUtils2F.isZeroAt(index, this.v);
+	}
+	
+	@Override
+	public boolean isZeroAtEM4(int index)
+	{
+		return RawTupUtils2F.isZeroAtEM4(index, this.v);
+	}
+	
+	@Override
+	public boolean isZeroAtEM6(int index)
+	{
+		return RawTupUtils2F.isZeroAtEM6(index, this.v);
+	}
+	
+	@Override
+	public boolean isZeroAtEM8(int index)
+	{
+		return RawTupUtils2F.isZeroAtEM8(index, this.v);
 	}
 	
 	@Override
 	public boolean isZeroAtV0()
 	{
-		return TupUtils2F.isZeroAtV0(this.v);
+		return RawTupUtils2F.isZeroAtV0(this.v);
 	}
 
 	@Override
 	public boolean isZeroAtV1()
 	{
-		return TupUtils2F.isZeroAtV1(this.v);
+		return RawTupUtils2F.isZeroAtV1(this.v);
 	}
 
 	@Override
+	public boolean isZeroAtV0EM4()
+	{
+		return RawTupUtils2F.isZeroAtV0EM4(this.v);
+	}
+
+	@Override
+	public boolean isZeroAtV1EM4()
+	{
+		return RawTupUtils2F.isZeroAtV1EM4(this.v);
+	}
+	
+	@Override
+	public boolean isZeroAtV0EM6()
+	{
+		return RawTupUtils2F.isZeroAtV0EM6(this.v);
+	}
+
+	@Override
+	public boolean isZeroAtV1EM6()
+	{
+		return RawTupUtils2F.isZeroAtV1EM6(this.v);
+	}
+	
+	@Override
+	public boolean isZeroAtV0EM8()
+	{
+		return RawTupUtils2F.isZeroAtV0EM8(this.v);
+	}
+
+	@Override
+	public boolean isZeroAtV1EM8()
+	{
+		return RawTupUtils2F.isZeroAtV1EM8(this.v);
+	}
+	
+	@Override
 	public boolean isZero(float tolerance)
 	{
-		return TupUtils2F.isZero(tolerance, this.v);
+		return RawTupUtils2F.isZero(tolerance, this.v);
 	}
 	
 	@Override
 	public boolean isZeroAt(float tolerance, int index)
 	{
-		return TupUtils2F.isZeroAt(tolerance, index, this.v);
+		return RawTupUtils2F.isZeroAt(tolerance, index, this.v);
 	}
 	
 	@Override
 	public boolean isZeroAtV0(float tolerance)
 	{
-		return TupUtils2F.isZeroAtV0(tolerance, this.v);
+		return RawTupUtils2F.isZeroAtV0(tolerance, this.v);
 	}
 
 	@Override
 	public boolean isZeroAtV1(float tolerance)
 	{
-		return TupUtils2F.isZeroAtV1(tolerance, this.v);
+		return RawTupUtils2F.isZeroAtV1(tolerance, this.v);
 	}
 
 	@Override
@@ -258,15 +331,87 @@ public class Tup2F implements ITup2WF, IBufferableRF, IBufferableWF
 	@Override
 	public boolean equals(float[] t)
 	{
-		return TupUtils2F.equals(this.v, t);
+		return RawTupUtils2F.equals(this.v, t);
 	}
 
 	@Override
 	public boolean equals(float v0, float v1)
 	{
-		return TupUtils2F.equals(this.v, v0, v1);
+		return RawTupUtils2F.equals(this.v, v0, v1);
+	}
+	
+	@Override
+	public boolean equalsEM4(ITup2RF t)
+	{
+		return TupUtils2F.equalsEM4(this.v, t);
 	}
 
+	@Override
+	public boolean equalsEM4(ITupRF t)
+	{
+		return TupUtils2F.equalsEM4(this.v, t);
+	}
+
+	@Override
+	public boolean equalsEM4(float[] t)
+	{
+		return RawTupUtils2F.equalsEM4(this.v, t);
+	}
+
+	@Override
+	public boolean equalsEM4(float v0, float v1)
+	{
+		return RawTupUtils2F.equalsEM4(this.v, v0, v1);
+	}
+	
+	@Override
+	public boolean equalsEM6(ITup2RF t)
+	{
+		return TupUtils2F.equalsEM6(this.v, t);
+	}
+
+	@Override
+	public boolean equalsEM6(ITupRF t)
+	{
+		return TupUtils2F.equalsEM6(this.v, t);
+	}
+
+	@Override
+	public boolean equalsEM6(float[] t)
+	{
+		return RawTupUtils2F.equalsEM6(this.v, t);
+	}
+
+	@Override
+	public boolean equalsEM6(float v0, float v1)
+	{
+		return RawTupUtils2F.equalsEM6(this.v, v0, v1);
+	}
+	
+	@Override
+	public boolean equalsEM8(ITup2RF t)
+	{
+		return TupUtils2F.equalsEM8(this.v, t);
+	}
+
+	@Override
+	public boolean equalsEM8(ITupRF t)
+	{
+		return TupUtils2F.equalsEM8(this.v, t);
+	}
+
+	@Override
+	public boolean equalsEM8(float[] t)
+	{
+		return RawTupUtils2F.equalsEM8(this.v, t);
+	}
+
+	@Override
+	public boolean equalsEM8(float v0, float v1)
+	{
+		return RawTupUtils2F.equalsEM8(this.v, v0, v1);
+	}
+	
 	@Override
 	public boolean equals(float tolerance, ITup2RF t)
 	{
@@ -282,13 +427,13 @@ public class Tup2F implements ITup2WF, IBufferableRF, IBufferableWF
 	@Override
 	public boolean equals(float tolerance, float[] t)
 	{
-		return TupUtils2F.equals(tolerance, this.v, t);
+		return RawTupUtils2F.equals(tolerance, this.v, t);
 	}
 
 	@Override
 	public boolean equals(float tolerance, float v0, float v1)
 	{
-		return TupUtils2F.equals(tolerance, this.v, v0, v1);
+		return RawTupUtils2F.equals(tolerance, this.v, v0, v1);
 	}
 
 	@Override
@@ -306,15 +451,87 @@ public class Tup2F implements ITup2WF, IBufferableRF, IBufferableWF
 	@Override
 	public boolean equalsAt(int index, float[] t)
 	{
-		return TupUtils2F.equalsAt(index, this.v, t);
+		return RawTupUtils2F.equalsAt(index, this.v, t);
 	}
 
 	@Override
 	public boolean equalsAt(int index, float value)
 	{
-		return TupUtils2F.equalsAt(index, this.v, value);
+		return RawTupUtils2F.equalsAt(index, this.v, value);
 	}
 
+	@Override
+	public boolean equalsAtEM4(int index, ITup2RF t)
+	{
+		return TupUtils2F.equalsAtEM4(index, this.v, t);
+	}
+
+	@Override
+	public boolean equalsAtEM4(int index, ITupRF t)
+	{
+		return TupUtils2F.equalsAtEM4(index, this.v, t);
+	}
+
+	@Override
+	public boolean equalsAtEM4(int index, float[] t)
+	{
+		return RawTupUtils2F.equalsAtEM4(index, this.v, t);
+	}
+
+	@Override
+	public boolean equalsAtEM4(int index, float value)
+	{
+		return RawTupUtils2F.equalsAtEM4(index, this.v, value);
+	}
+	
+	@Override
+	public boolean equalsAtEM6(int index, ITup2RF t)
+	{
+		return TupUtils2F.equalsAtEM6(index, this.v, t);
+	}
+
+	@Override
+	public boolean equalsAtEM6(int index, ITupRF t)
+	{
+		return TupUtils2F.equalsAtEM6(index, this.v, t);
+	}
+
+	@Override
+	public boolean equalsAtEM6(int index, float[] t)
+	{
+		return RawTupUtils2F.equalsAtEM6(index, this.v, t);
+	}
+
+	@Override
+	public boolean equalsAtEM6(int index, float value)
+	{
+		return RawTupUtils2F.equalsAtEM6(index, this.v, value);
+	}
+	
+	@Override
+	public boolean equalsAtEM8(int index, ITup2RF t)
+	{
+		return TupUtils2F.equalsAtEM8(index, this.v, t);
+	}
+
+	@Override
+	public boolean equalsAtEM8(int index, ITupRF t)
+	{
+		return TupUtils2F.equalsAtEM8(index, this.v, t);
+	}
+
+	@Override
+	public boolean equalsAtEM8(int index, float[] t)
+	{
+		return RawTupUtils2F.equalsAtEM8(index, this.v, t);
+	}
+
+	@Override
+	public boolean equalsAtEM8(int index, float value)
+	{
+		return RawTupUtils2F.equalsAtEM8(index, this.v, value);
+	}
+	
 	@Override
 	public boolean equalsAt(float tolerance, int index, ITup2RF t)
 	{
@@ -330,13 +547,13 @@ public class Tup2F implements ITup2WF, IBufferableRF, IBufferableWF
 	@Override
 	public boolean equalsAt(float tolerance, int index, float[] t)
 	{
-		return TupUtils2F.equalsAt(tolerance, index, this.v, t);
+		return RawTupUtils2F.equalsAt(tolerance, index, this.v, t);
 	}
 
 	@Override
 	public boolean equalsAt(float tolerance, int index, float value)
 	{
-		return TupUtils2F.equalsAt(tolerance, index, this.v, value);
+		return RawTupUtils2F.equalsAt(tolerance, index, this.v, value);
 	}
 
 	@Override
@@ -354,13 +571,13 @@ public class Tup2F implements ITup2WF, IBufferableRF, IBufferableWF
 	@Override
 	public boolean equalsAtV0(float[] t)
 	{
-		return TupUtils2F.equalsAtV0(this.v, t);
+		return RawTupUtils2F.equalsAtV0(this.v, t);
 	}
 
 	@Override
 	public boolean equalsAtV0(float value)
 	{
-		return TupUtils2F.equalsAtV0(this.v, value);
+		return RawTupUtils2F.equalsAtV0(this.v, value);
 	}
 
 	@Override
@@ -378,15 +595,159 @@ public class Tup2F implements ITup2WF, IBufferableRF, IBufferableWF
 	@Override
 	public boolean equalsAtV1(float[] t)
 	{
-		return TupUtils2F.equalsAtV1(this.v, t);
+		return RawTupUtils2F.equalsAtV1(this.v, t);
 	}
 
 	@Override
 	public boolean equalsAtV1(float value)
 	{
-		return TupUtils2F.equalsAtV1(this.v, value);
+		return RawTupUtils2F.equalsAtV1(this.v, value);
 	}
 
+	@Override
+	public boolean equalsAtV0EM4(ITup2RF t)
+	{
+		return TupUtils2F.equalsAtV0EM4(this.v, t);
+	}
+
+	@Override
+	public boolean equalsAtV0EM4(ITupRF t)
+	{
+		return TupUtils2F.equalsAtV0EM4(this.v, t);
+	}
+
+	@Override
+	public boolean equalsAtV0EM4(float[] t)
+	{
+		return RawTupUtils2F.equalsAtV0EM4(this.v, t);
+	}
+
+	@Override
+	public boolean equalsAtV0EM4(float value)
+	{
+		return RawTupUtils2F.equalsAtV0EM4(this.v, value);
+	}
+
+	@Override
+	public boolean equalsAtV1EM4(ITup2RF t)
+	{
+		return TupUtils2F.equalsAtV1EM4(this.v, t);
+	}
+
+	@Override
+	public boolean equalsAtV1EM4(ITupRF t)
+	{
+		return TupUtils2F.equalsAtV1EM4(this.v, t);
+	}
+
+	@Override
+	public boolean equalsAtV1EM4(float[] t)
+	{
+		return RawTupUtils2F.equalsAtV1EM4(this.v, t);
+	}
+
+	@Override
+	public boolean equalsAtV1EM4(float value)
+	{
+		return RawTupUtils2F.equalsAtV1EM4(this.v, value);
+	}
+	
+	@Override
+	public boolean equalsAtV0EM6(ITup2RF t)
+	{
+		return TupUtils2F.equalsAtV0EM6(this.v, t);
+	}
+
+	@Override
+	public boolean equalsAtV0EM6(ITupRF t)
+	{
+		return TupUtils2F.equalsAtV0EM6(this.v, t);
+	}
+
+	@Override
+	public boolean equalsAtV0EM6(float[] t)
+	{
+		return RawTupUtils2F.equalsAtV0EM6(this.v, t);
+	}
+
+	@Override
+	public boolean equalsAtV0EM6(float value)
+	{
+		return RawTupUtils2F.equalsAtV0EM6(this.v, value);
+	}
+
+	@Override
+	public boolean equalsAtV1EM6(ITup2RF t)
+	{
+		return TupUtils2F.equalsAtV1EM6(this.v, t);
+	}
+
+	@Override
+	public boolean equalsAtV1EM6(ITupRF t)
+	{
+		return TupUtils2F.equalsAtV1EM6(this.v, t);
+	}
+
+	@Override
+	public boolean equalsAtV1EM6(float[] t)
+	{
+		return RawTupUtils2F.equalsAtV1EM6(this.v, t);
+	}
+
+	@Override
+	public boolean equalsAtV1EM6(float value)
+	{
+		return RawTupUtils2F.equalsAtV1EM6(this.v, value);
+	}
+	
+	@Override
+	public boolean equalsAtV0EM8(ITup2RF t)
+	{
+		return TupUtils2F.equalsAtV0EM8(this.v, t);
+	}
+
+	@Override
+	public boolean equalsAtV0EM8(ITupRF t)
+	{
+		return TupUtils2F.equalsAtV0EM8(this.v, t);
+	}
+
+	@Override
+	public boolean equalsAtV0EM8(float[] t)
+	{
+		return RawTupUtils2F.equalsAtV0EM8(this.v, t);
+	}
+
+	@Override
+	public boolean equalsAtV0EM8(float value)
+	{
+		return RawTupUtils2F.equalsAtV0EM8(this.v, value);
+	}
+
+	@Override
+	public boolean equalsAtV1EM8(ITup2RF t)
+	{
+		return TupUtils2F.equalsAtV1EM8(this.v, t);
+	}
+
+	@Override
+	public boolean equalsAtV1EM8(ITupRF t)
+	{
+		return TupUtils2F.equalsAtV1EM8(this.v, t);
+	}
+
+	@Override
+	public boolean equalsAtV1EM8(float[] t)
+	{
+		return RawTupUtils2F.equalsAtV1EM8(this.v, t);
+	}
+
+	@Override
+	public boolean equalsAtV1EM8(float value)
+	{
+		return RawTupUtils2F.equalsAtV1EM8(this.v, value);
+	}
+	
 	@Override
 	public boolean equalsAtV0(float tolerance, ITup2RF t)
 	{
@@ -402,13 +763,13 @@ public class Tup2F implements ITup2WF, IBufferableRF, IBufferableWF
 	@Override
 	public boolean equalsAtV0(float tolerance, float[] t)
 	{
-		return TupUtils2F.equalsAtV0(tolerance, this.v, t);
+		return RawTupUtils2F.equalsAtV0(tolerance, this.v, t);
 	}
 
 	@Override
 	public boolean equalsAtV0(float tolerance, float value)
 	{
-		return TupUtils2F.equalsAtV1(tolerance, this.v, value);
+		return RawTupUtils2F.equalsAtV1(tolerance, this.v, value);
 	}
 
 	@Override
@@ -426,12 +787,12 @@ public class Tup2F implements ITup2WF, IBufferableRF, IBufferableWF
 	@Override
 	public boolean equalsAtV1(float tolerance, float[] t)
 	{
-		return TupUtils2F.equalsAtV1(tolerance, this.v, t);
+		return RawTupUtils2F.equalsAtV1(tolerance, this.v, t);
 	}
 
 	@Override
 	public boolean equalsAtV1(float tolerance, float value)
 	{
-		return TupUtils2F.equalsAtV1(tolerance, this.v, value);
+		return RawTupUtils2F.equalsAtV1(tolerance, this.v, value);
 	}
 }

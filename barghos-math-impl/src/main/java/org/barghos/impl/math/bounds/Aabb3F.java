@@ -7,6 +7,9 @@ import org.barghos.api.core.function.floats.IFunc6F;
 import org.barghos.api.core.math.MathUtils;
 import org.barghos.api.core.tuple.floats.ITup3RF;
 import org.barghos.api.core.tuple.floats.ITup3WF;
+import org.barghos.api.math.bounds.AabbUtils3F;
+import org.barghos.api.math.bounds.IAabb3RF;
+import org.barghos.api.math.bounds.IAabb3WF;
 
 public class Aabb3F implements IAabb3WF
 {

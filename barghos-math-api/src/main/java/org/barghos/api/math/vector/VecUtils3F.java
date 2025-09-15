@@ -7,7 +7,7 @@ import org.barghos.api.core.math.MathUtils;
 import org.barghos.api.core.tuple.floats.ITup3RF;
 import org.barghos.api.core.tuple.floats.ITup3WF;
 import org.barghos.api.core.tuple.floats.ITupRF;
-import org.barghos.api.core.tuple.floats.TupUtils3F;
+import org.barghos.api.core.tuple.floats.RawTupUtils3F;
 
 /**
  * This class provides vector operations for two dimensions.
@@ -7301,7 +7301,7 @@ public final class VecUtils3F
 		
 		float sqareLength = v0 * v0 + v1 * v1 + v2 * v2;
 		
-		if(MathUtils.isZero(sqareLength)) return 0.0f;
+		if(sqareLength == 0.0f) return 0.0f;
 		
 		return MathUtils.sqrt(sqareLength);
 	}
@@ -7314,7 +7314,7 @@ public final class VecUtils3F
 		
 		float sqareLength = v0 * v0 + v1 * v1 + v2 * v2;
 		
-		if(MathUtils.isZero(sqareLength)) return 0.0f;
+		if(sqareLength == 0.0f) return 0.0f;
 		
 		return MathUtils.sqrt(sqareLength);
 	}
@@ -7323,7 +7323,7 @@ public final class VecUtils3F
 	{
 		float sqareLength = v[0] * v[0] + v[1] * v[1] + v[2] * v[2];
 		
-		if(MathUtils.isZero(sqareLength)) return 0.0f;
+		if(sqareLength == 0.0f) return 0.0f;
 		
 		return MathUtils.sqrt(sqareLength);
 	}
@@ -7332,7 +7332,7 @@ public final class VecUtils3F
 	{
 		float sqareLength = v0 * v0 + v1 * v1 + v2 * v2;
 		
-		if(MathUtils.isZero(sqareLength)) return 0.0f;
+		if(sqareLength == 0.0f) return 0.0f;
 		
 		return MathUtils.sqrt(sqareLength);
 	}
@@ -7466,7 +7466,7 @@ public final class VecUtils3F
 		float v1 = v.v1();
 		float v2 = v.v2();
 
-		if (TupUtils3F.isZero(MathUtils.EM6f, v0, v1, v2))
+		if (RawTupUtils3F.isZero(v0, v1, v2))
 		{
 			res[0] = 0.0f;
 			res[1] = 0.0f;
@@ -7490,7 +7490,7 @@ public final class VecUtils3F
 		float v1 = v.getAt(1);
 		float v2 = v.getAt(2);
 		
-		if (TupUtils3F.isZero(v0, v1, v2))
+		if (RawTupUtils3F.isZero(v0, v1, v2))
 		{
 			res[0] = 0.0f;
 			res[1] = 0.0f;
@@ -7510,7 +7510,7 @@ public final class VecUtils3F
 	
 	public static float[] nrm(float[] v, @ExtractionParam float[] res)
 	{
-		if (TupUtils3F.isZero(v))
+		if (RawTupUtils3F.isZero(v))
 		{
 			res[0] = 0.0f;
 			res[1] = 0.0f;
@@ -7530,7 +7530,7 @@ public final class VecUtils3F
 
 	public static float[] nrm(float v0, float v1, float v2, @ExtractionParam float[] res)
 	{
-		if (TupUtils3F.isZero(v0, v1, v2))
+		if (RawTupUtils3F.isZero(v0, v1, v2))
 		{
 			res[0] = 0.0f;
 			res[1] = 0.0f;
@@ -7576,7 +7576,7 @@ public final class VecUtils3F
 		float v1 = v.v1();
 		float v2 = v.v2();
 		
-		if (TupUtils3F.isZero(tolerance, v0, v1, v2))
+		if (RawTupUtils3F.isZero(tolerance, v0, v1, v2))
 		{
 			res[0] = 0.0f;
 			res[1] = 0.0f;
@@ -7600,7 +7600,7 @@ public final class VecUtils3F
 		float v1 = v.getAt(1);
 		float v2 = v.getAt(2);
 		
-		if (TupUtils3F.isZero(tolerance, v0, v1, v2))
+		if (RawTupUtils3F.isZero(tolerance, v0, v1, v2))
 		{
 			res[0] = 0.0f;
 			res[1] = 0.0f;
@@ -7620,7 +7620,7 @@ public final class VecUtils3F
 	
 	public static float[] nrm(float tolerance, float[] v, @ExtractionParam float[] res)
 	{
-		if (TupUtils3F.isZero(tolerance, v))
+		if (RawTupUtils3F.isZero(tolerance, v))
 		{
 			res[0] = 0.0f;
 			res[1] = 0.0f;
@@ -7640,7 +7640,7 @@ public final class VecUtils3F
 
 	public static float[] nrm(float tolerance, float v0, float v1, float v2, @ExtractionParam float[] res)
 	{
-		if (TupUtils3F.isZero(tolerance, v0, v1, v2))
+		if (RawTupUtils3F.isZero(tolerance, v0, v1, v2))
 		{
 			res[0] = 0.0f;
 			res[1] = 0.0f;
@@ -7686,7 +7686,7 @@ public final class VecUtils3F
 		float v1 = v.v1();
 		float v2 = v.v2();
 		
-		if (TupUtils3F.isZero(v0, v1, v2))
+		if (RawTupUtils3F.isZero(v0, v1, v2))
 		{
 			res.set(0.0f, 0.0f, 0.0f);
 			
@@ -7706,7 +7706,7 @@ public final class VecUtils3F
 		float v1 = v.getAt(1);
 		float v2 = v.getAt(2);
 		
-		if (TupUtils3F.isZero(v0, v1, v2))
+		if (RawTupUtils3F.isZero(v0, v1, v2))
 		{
 			res.set(0.0f, 0.0f, 0.0f);
 			
@@ -7722,7 +7722,7 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3WF> T nrm(float[] v, @ExtractionParam T res)
 	{
-		if (TupUtils3F.isZero(v))
+		if (RawTupUtils3F.isZero(v))
 		{
 			res.set(0.0f, 0.0f, 0.0f);
 			
@@ -7738,7 +7738,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T nrm(float v0, float v1, float v2, @ExtractionParam T res)
 	{
-		if (TupUtils3F.isZero(v0, v1, v2))
+		if (RawTupUtils3F.isZero(v0, v1, v2))
 		{
 			res.set(0.0f, 0.0f, 0.0f);
 			
@@ -7783,7 +7783,7 @@ public final class VecUtils3F
 		float v1 = v.v1();
 		float v2 = v.v2();
 		
-		if (TupUtils3F.isZero(tolerance, v0, v1, v2))
+		if (RawTupUtils3F.isZero(tolerance, v0, v1, v2))
 		{
 			res.set(0.0f, 0.0f, 0.0f);
 			
@@ -7803,7 +7803,7 @@ public final class VecUtils3F
 		float v1 = v.getAt(1);
 		float v2 = v.getAt(2);
 		
-		if (TupUtils3F.isZero(tolerance, v0, v1, v2))
+		if (RawTupUtils3F.isZero(tolerance, v0, v1, v2))
 		{
 			res.set(0.0f, 0.0f, 0.0f);
 			
@@ -7819,7 +7819,7 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3WF> T nrm(float tolerance, float[] v, @ExtractionParam T res)
 	{
-		if (TupUtils3F.isZero(tolerance, v))
+		if (RawTupUtils3F.isZero(tolerance, v))
 		{
 			res.set(0.0f, 0.0f, 0.0f);
 			
@@ -7835,7 +7835,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T nrm(float tolerance, float v0, float v1, float v2, @ExtractionParam T res)
 	{
-		if (TupUtils3F.isZero(tolerance, v0, v1, v2))
+		if (RawTupUtils3F.isZero(tolerance, v0, v1, v2))
 		{
 			res.set(0.0f, 0.0f, 0.0f);
 			
@@ -7877,7 +7877,7 @@ public final class VecUtils3F
 		float v1 = v.v1();
 		float v2 = v.v2();
 		
-		if (TupUtils3F.isZero(v0, v1, v2))
+		if (RawTupUtils3F.isZero(v0, v1, v2))
 		{
 			return func.apply(0.0f, 0.0f, 0.0f);
 		}
@@ -7893,7 +7893,7 @@ public final class VecUtils3F
 		float v1 = v.getAt(1);
 		float v2 = v.getAt(2);
 		
-		if (TupUtils3F.isZero(v0, v1, v2))
+		if (RawTupUtils3F.isZero(v0, v1, v2))
 		{
 			return func.apply(0.0f, 0.0f, 0.0f);
 		}
@@ -7905,7 +7905,7 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T nrmFunc(float[] v, IFunc3F<T> func)
 	{
-		if (TupUtils3F.isZero(v))
+		if (RawTupUtils3F.isZero(v))
 		{
 			return func.apply(0.0f, 0.0f, 0.0f);
 		}
@@ -7917,7 +7917,7 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T nrmFunc(float v0, float v1, float v2, IFunc3F<T> func)
 	{
-		if (TupUtils3F.isZero(v0, v1, v2))
+		if (RawTupUtils3F.isZero(v0, v1, v2))
 		{
 			return func.apply(0.0f, 0.0f, 0.0f);
 		}
@@ -7958,7 +7958,7 @@ public final class VecUtils3F
 		float v1 = v.v1();
 		float v2 = v.v2();
 		
-		if (TupUtils3F.isZero(tolerance, v0, v1, v2))
+		if (RawTupUtils3F.isZero(tolerance, v0, v1, v2))
 		{
 			return func.apply(0.0f, 0.0f, 0.0f);
 		}
@@ -7974,7 +7974,7 @@ public final class VecUtils3F
 		float v1 = v.getAt(1);
 		float v2 = v.getAt(2);
 		
-		if (TupUtils3F.isZero(tolerance, v0, v1, v2))
+		if (RawTupUtils3F.isZero(tolerance, v0, v1, v2))
 		{
 			return func.apply(0.0f, 0.0f, 0.0f);
 		}
@@ -7986,7 +7986,7 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T nrmFunc(float tolerance, float[] v, IFunc3F<T> func)
 	{
-		if (TupUtils3F.isZero(tolerance, v))
+		if (RawTupUtils3F.isZero(tolerance, v))
 		{
 			return func.apply(0.0f, 0.0f, 0.0f);
 		}
@@ -7998,7 +7998,7 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T nrmFunc(float tolerance, float v0, float v1, float v2, IFunc3F<T> func)
 	{
-		if (TupUtils3F.isZero(tolerance, v0, v1, v2))
+		if (RawTupUtils3F.isZero(tolerance, v0, v1, v2))
 		{
 			return func.apply(0.0f, 0.0f, 0.0f);
 		}
@@ -10211,7 +10211,7 @@ public final class VecUtils3F
 		float v2 = t2.v2() - t1.v2();
 		float sqareLength = v0 * v0 + v1 * v1 + v2 * v2;
 		
-		if(MathUtils.isZero(sqareLength)) return 0.0f;
+		if(sqareLength == 0.0f) return 0.0f;
 		
 		return MathUtils.sqrt(sqareLength);
 	}
@@ -10223,7 +10223,7 @@ public final class VecUtils3F
 		float v2 = t2.getAt(2) - t1.v2();
 		float sqareLength = v0 * v0 + v1 * v1 + v2 * v2;
 		
-		if(MathUtils.isZero(sqareLength)) return 0.0f;
+		if(sqareLength == 0.0f) return 0.0f;
 		
 		return MathUtils.sqrt(sqareLength);
 	}
@@ -10235,7 +10235,7 @@ public final class VecUtils3F
 		float v2 = t2[2] - t1.v2();
 		float sqareLength = v0 * v0 + v1 * v1 + v2 * v2;
 		
-		if(MathUtils.isZero(sqareLength)) return 0.0f;
+		if(sqareLength == 0.0f) return 0.0f;
 		
 		return MathUtils.sqrt(sqareLength);
 	}
@@ -10247,7 +10247,7 @@ public final class VecUtils3F
 		float v2 = t2v2 - t1.v2();
 		float sqareLength = v0 * v0 + v1 * v1 + v2 * v2;
 		
-		if(MathUtils.isZero(sqareLength)) return 0.0f;
+		if(sqareLength == 0.0f) return 0.0f;
 		
 		return MathUtils.sqrt(sqareLength);
 	}
@@ -10259,7 +10259,7 @@ public final class VecUtils3F
 		float v2 = t2.v2() - t1.getAt(2);
 		float sqareLength = v0 * v0 + v1 * v1 + v2 * v2;
 		
-		if(MathUtils.isZero(sqareLength)) return 0.0f;
+		if(sqareLength == 0.0f) return 0.0f;
 		
 		return MathUtils.sqrt(sqareLength);
 	}
@@ -10271,7 +10271,7 @@ public final class VecUtils3F
 		float v2 = t2.getAt(2) - t1.getAt(2);
 		float sqareLength = v0 * v0 + v1 * v1 + v2 * v2;
 		
-		if(MathUtils.isZero(sqareLength)) return 0.0f;
+		if(sqareLength == 0.0f) return 0.0f;
 		
 		return MathUtils.sqrt(sqareLength);
 	}
@@ -10283,7 +10283,7 @@ public final class VecUtils3F
 		float v2 = t2[2] - t1.getAt(2);
 		float sqareLength = v0 * v0 + v1 * v1 + v2 * v2;
 		
-		if(MathUtils.isZero(sqareLength)) return 0.0f;
+		if(sqareLength == 0.0f) return 0.0f;
 		
 		return MathUtils.sqrt(sqareLength);
 	}
@@ -10295,7 +10295,7 @@ public final class VecUtils3F
 		float v2 = t2v2 - t1.getAt(2);
 		float sqareLength = v0 * v0 + v1 * v1 + v2 * v2;
 		
-		if(MathUtils.isZero(sqareLength)) return 0.0f;
+		if(sqareLength == 0.0f) return 0.0f;
 		
 		return MathUtils.sqrt(sqareLength);
 	}
@@ -10307,7 +10307,7 @@ public final class VecUtils3F
 		float v2 = t2.v2() - t1[2];
 		float sqareLength = v0 * v0 + v1 * v1  + v2 * v2;
 		
-		if(MathUtils.isZero(sqareLength)) return 0.0f;
+		if(sqareLength == 0.0f) return 0.0f;
 		
 		return MathUtils.sqrt(sqareLength);
 	}
@@ -10319,7 +10319,7 @@ public final class VecUtils3F
 		float v2 = t2.getAt(2) - t1[2];
 		float sqareLength = v0 * v0 + v1 * v1 + v2 * v2;
 		
-		if(MathUtils.isZero(sqareLength)) return 0.0f;
+		if(sqareLength == 0.0f) return 0.0f;
 		
 		return MathUtils.sqrt(sqareLength);
 	}
@@ -10331,7 +10331,7 @@ public final class VecUtils3F
 		float v2 = t2[2] - t1[2];
 		float sqareLength = v0 * v0 + v1 * v1 + v2 * v2;
 		
-		if(MathUtils.isZero(sqareLength)) return 0.0f;
+		if(sqareLength == 0.0f) return 0.0f;
 		
 		return MathUtils.sqrt(sqareLength);
 	}
@@ -10343,7 +10343,7 @@ public final class VecUtils3F
 		float v2 = t2v2 - t1[2];
 		float sqareLength = v0 * v0 + v1 * v1 + v2 * v2;
 		
-		if(MathUtils.isZero(sqareLength)) return 0.0f;
+		if(sqareLength == 0.0f) return 0.0f;
 		
 		return MathUtils.sqrt(sqareLength);
 	}
@@ -10355,7 +10355,7 @@ public final class VecUtils3F
 		float v2 = t2.v2() - t1v2;
 		float sqareLength = v0 * v0 + v1 * v1 + v2 * v2;
 		
-		if(MathUtils.isZero(sqareLength)) return 0.0f;
+		if(sqareLength == 0.0f) return 0.0f;
 		
 		return MathUtils.sqrt(sqareLength);
 	}
@@ -10367,7 +10367,7 @@ public final class VecUtils3F
 		float v2 = t2.getAt(2) - t1v2;
 		float sqareLength = v0 * v0 + v1 * v1 + v2 * v2;
 		
-		if(MathUtils.isZero(sqareLength)) return 0.0f;
+		if(sqareLength == 0.0f) return 0.0f;
 		
 		return MathUtils.sqrt(sqareLength);
 	}
@@ -10379,7 +10379,7 @@ public final class VecUtils3F
 		float v2 = t2[2] - t1v2;
 		float sqareLength = v0 * v0 + v1 * v1 + v2 * v2;
 		
-		if(MathUtils.isZero(sqareLength)) return 0.0f;
+		if(sqareLength == 0.0f) return 0.0f;
 		
 		return MathUtils.sqrt(sqareLength);
 	}
@@ -10391,7 +10391,7 @@ public final class VecUtils3F
 		float v2 = t2v2 - t1v2;
 		float sqareLength = v0 * v0 + v1 * v1 + v2 * v2;
 		
-		if(MathUtils.isZero(sqareLength)) return 0.0f;
+		if(sqareLength == 0.0f) return 0.0f;
 		
 		return MathUtils.sqrt(sqareLength);
 	}

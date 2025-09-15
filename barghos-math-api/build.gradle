@@ -6,7 +6,6 @@ plugins {
 dependencies {
 	api project(':barghos-annotation')
 	api project(':barghos-core-api')
-	api project(':barghos-math-api')
 }
 
 publishing {

@@ -11,7 +11,10 @@ import org.barghos.api.core.nio.buffer.IBufferableWF;
 import org.barghos.api.core.tuple.floats.ITup3RF;
 import org.barghos.api.core.tuple.floats.ITup3WF;
 import org.barghos.api.core.tuple.floats.ITupRF;
+import org.barghos.api.core.tuple.floats.RawTupUtils3F;
 import org.barghos.api.core.tuple.floats.TupUtils3F;
+import org.barghos.api.math.vector.IVec3WF;
+import org.barghos.api.math.vector.VecUtils3F;
 
 public class Vec3F implements IVec3WF, IBufferableRF, IBufferableWF
 {
@@ -2078,84 +2081,168 @@ public class Vec3F implements IVec3WF, IBufferableRF, IBufferableWF
 	@Override
 	public boolean isFiniteAt(int index)
 	{
-		return TupUtils3F.isFiniteAt(index, this.v);
+		return RawTupUtils3F.isFiniteAt(index, this.v);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean isFiniteAtV0()
 	{
-		return TupUtils3F.isFiniteAtV0(this.v);
+		return RawTupUtils3F.isFiniteAtV0(this.v);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean isFiniteAtV1()
 	{
-		return TupUtils3F.isFiniteAtV1(this.v);
+		return RawTupUtils3F.isFiniteAtV1(this.v);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean isFiniteAtV2()
 	{
-		return TupUtils3F.isFiniteAtV2(this.v);
+		return RawTupUtils3F.isFiniteAtV2(this.v);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public boolean isZeroAt(int index)
 	{
-		return TupUtils3F.isZeroAt(index, this.v);
+		return RawTupUtils3F.isZeroAt(index, this.v);
 	}
 
 	/** {@inheritDoc} */
 	@Override
+	public boolean isZeroAtEM4(int index)
+	{
+		return RawTupUtils3F.isZeroAtEM4(index, this.v);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public boolean isZeroAtEM6(int index)
+	{
+		return RawTupUtils3F.isZeroAtEM6(index, this.v);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public boolean isZeroAtEM8(int index)
+	{
+		return RawTupUtils3F.isZeroAtEM8(index, this.v);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
 	public boolean isZeroAtV0()
 	{
-		return TupUtils3F.isZeroAtV0(this.v);
+		return RawTupUtils3F.isZeroAtV0(this.v);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean isZeroAtV1()
 	{
-		return TupUtils3F.isZeroAtV1(this.v);
+		return RawTupUtils3F.isZeroAtV1(this.v);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean isZeroAtV2()
 	{
-		return TupUtils3F.isZeroAtV2(this.v);
+		return RawTupUtils3F.isZeroAtV2(this.v);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public boolean isZeroAtV0EM4()
+	{
+		return RawTupUtils3F.isZeroAtV0EM4(this.v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean isZeroAtV1EM4()
+	{
+		return RawTupUtils3F.isZeroAtV1EM4(this.v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean isZeroAtV2EM4()
+	{
+		return RawTupUtils3F.isZeroAtV2EM4(this.v);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public boolean isZeroAtV0EM6()
+	{
+		return RawTupUtils3F.isZeroAtV0EM6(this.v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean isZeroAtV1EM6()
+	{
+		return RawTupUtils3F.isZeroAtV1EM6(this.v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean isZeroAtV2EM6()
+	{
+		return RawTupUtils3F.isZeroAtV2EM6(this.v);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public boolean isZeroAtV0EM8()
+	{
+		return RawTupUtils3F.isZeroAtV0EM8(this.v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean isZeroAtV1EM8()
+	{
+		return RawTupUtils3F.isZeroAtV1EM8(this.v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean isZeroAtV2EM8()
+	{
+		return RawTupUtils3F.isZeroAtV2EM8(this.v);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public boolean isZeroAt(float tolerance, int index)
 	{
-		return TupUtils3F.isZeroAt(tolerance, index, this.v);
+		return RawTupUtils3F.isZeroAt(tolerance, index, this.v);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public boolean isZeroAtV0(float tolerance)
 	{
-		return TupUtils3F.isZeroAtV0(tolerance, this.v);
+		return RawTupUtils3F.isZeroAtV0(tolerance, this.v);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean isZeroAtV1(float tolerance)
 	{
-		return TupUtils3F.isZeroAtV1(tolerance, this.v);
+		return RawTupUtils3F.isZeroAtV1(tolerance, this.v);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean isZeroAtV2(float tolerance)
 	{
-		return TupUtils3F.isZeroAtV2(tolerance, this.v);
+		return RawTupUtils3F.isZeroAtV2(tolerance, this.v);
 	}
 	
 	/** {@inheritDoc} */
@@ -2176,16 +2263,100 @@ public class Vec3F implements IVec3WF, IBufferableRF, IBufferableWF
 	@Override
 	public boolean equals(float[] v)
 	{
-		return TupUtils3F.equals(this.v, v);
+		return RawTupUtils3F.equals(this.v, v);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equals(float x, float y, float z)
 	{
-		return TupUtils3F.equals(this.v, x, y, z);
+		return RawTupUtils3F.equals(this.v, x, y, z);
 	}
 
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsEM4(ITup3RF v)
+	{
+		return TupUtils3F.equalsEM4(this.v, v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsEM4(ITupRF v)
+	{
+		return TupUtils3F.equalsEM4(this.v, v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsEM4(float[] v)
+	{
+		return RawTupUtils3F.equalsEM4(this.v, v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsEM4(float x, float y, float z)
+	{
+		return RawTupUtils3F.equalsEM4(this.v, x, y, z);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsEM6(ITup3RF v)
+	{
+		return TupUtils3F.equalsEM6(this.v, v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsEM6(ITupRF v)
+	{
+		return TupUtils3F.equalsEM6(this.v, v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsEM6(float[] v)
+	{
+		return RawTupUtils3F.equalsEM6(this.v, v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsEM6(float x, float y, float z)
+	{
+		return RawTupUtils3F.equalsEM6(this.v, x, y, z);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsEM8(ITup3RF v)
+	{
+		return TupUtils3F.equalsEM8(this.v, v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsEM8(ITupRF v)
+	{
+		return TupUtils3F.equalsEM8(this.v, v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsEM8(float[] v)
+	{
+		return RawTupUtils3F.equalsEM8(this.v, v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsEM8(float x, float y, float z)
+	{
+		return RawTupUtils3F.equalsEM8(this.v, x, y, z);
+	}
+	
 	/** {@inheritDoc} */
 	@Override
 	public boolean equals(float tolerance, ITup3RF v)
@@ -2204,14 +2375,14 @@ public class Vec3F implements IVec3WF, IBufferableRF, IBufferableWF
 	@Override
 	public boolean equals(float tolerance, float[] v)
 	{
-		return TupUtils3F.equals(tolerance, this.v, v);
+		return RawTupUtils3F.equals(tolerance, this.v, v);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equals(float tolerance, float x, float y, float z)
 	{
-		return TupUtils3F.equals(tolerance, this.v, x, y, z);
+		return RawTupUtils3F.equals(tolerance, this.v, x, y, z);
 	}
 
 	/** {@inheritDoc} */
@@ -2232,16 +2403,100 @@ public class Vec3F implements IVec3WF, IBufferableRF, IBufferableWF
 	@Override
 	public boolean equalsAt(int index, float[] v)
 	{
-		return TupUtils3F.equalsAt(index, this.v, v);
+		return RawTupUtils3F.equalsAt(index, this.v, v);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAt(int index, float value)
 	{
-		return TupUtils3F.equalsAt(index, this.v, value);
+		return RawTupUtils3F.equalsAt(index, this.v, value);
 	}
 
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtEM4(int index, ITup3RF v)
+	{
+		return TupUtils3F.equalsAtEM4(index, this.v, v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtEM4(int index, ITupRF v)
+	{
+		return TupUtils3F.equalsAtEM4(index, this.v, v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtEM4(int index, float[] v)
+	{
+		return RawTupUtils3F.equalsAtEM4(index, this.v, v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtEM4(int index, float value)
+	{
+		return RawTupUtils3F.equalsAtEM4(index, this.v, value);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtEM6(int index, ITup3RF v)
+	{
+		return TupUtils3F.equalsAtEM6(index, this.v, v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtEM6(int index, ITupRF v)
+	{
+		return TupUtils3F.equalsAtEM6(index, this.v, v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtEM6(int index, float[] v)
+	{
+		return RawTupUtils3F.equalsAtEM6(index, this.v, v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtEM6(int index, float value)
+	{
+		return RawTupUtils3F.equalsAtEM6(index, this.v, value);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtEM8(int index, ITup3RF v)
+	{
+		return TupUtils3F.equalsAtEM8(index, this.v, v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtEM8(int index, ITupRF v)
+	{
+		return TupUtils3F.equalsAtEM8(index, this.v, v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtEM8(int index, float[] v)
+	{
+		return RawTupUtils3F.equalsAtEM8(index, this.v, v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtEM8(int index, float value)
+	{
+		return RawTupUtils3F.equalsAtEM8(index, this.v, value);
+	}
+	
 	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAt(float tolerance, int index, ITup3RF v)
@@ -2260,14 +2515,14 @@ public class Vec3F implements IVec3WF, IBufferableRF, IBufferableWF
 	@Override
 	public boolean equalsAt(float tolerance, int index, float[] v)
 	{
-		return TupUtils3F.equalsAt(tolerance, index, this.v, v);
+		return RawTupUtils3F.equalsAt(tolerance, index, this.v, v);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAt(float tolerance, int index, float value)
 	{
-		return TupUtils3F.equalsAt(tolerance, index, this.v, value);
+		return RawTupUtils3F.equalsAt(tolerance, index, this.v, value);
 	}
 
 	/** {@inheritDoc} */
@@ -2288,14 +2543,14 @@ public class Vec3F implements IVec3WF, IBufferableRF, IBufferableWF
 	@Override
 	public boolean equalsAtV0(float[] v)
 	{
-		return TupUtils3F.equalsAtV0(this.v, v);
+		return RawTupUtils3F.equalsAtV0(this.v, v);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV0(float value)
 	{
-		return TupUtils3F.equalsAtV0(this.v, value);
+		return RawTupUtils3F.equalsAtV0(this.v, value);
 	}
 
 	/** {@inheritDoc} */
@@ -2316,14 +2571,14 @@ public class Vec3F implements IVec3WF, IBufferableRF, IBufferableWF
 	@Override
 	public boolean equalsAtV1(float[] v)
 	{
-		return TupUtils3F.equalsAtV1(this.v, v);
+		return RawTupUtils3F.equalsAtV1(this.v, v);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV1(float value)
 	{
-		return TupUtils3F.equalsAtV1(this.v, value);
+		return RawTupUtils3F.equalsAtV1(this.v, value);
 	}
 
 	/** {@inheritDoc} */
@@ -2344,14 +2599,266 @@ public class Vec3F implements IVec3WF, IBufferableRF, IBufferableWF
 	@Override
 	public boolean equalsAtV2(float[] v)
 	{
-		return TupUtils3F.equalsAtV2(this.v, v);
+		return RawTupUtils3F.equalsAtV2(this.v, v);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV2(float value)
 	{
-		return TupUtils3F.equalsAtV2(this.v, value);
+		return RawTupUtils3F.equalsAtV2(this.v, value);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV0EM4(ITup3RF v)
+	{
+		return TupUtils3F.equalsAtV0EM4(this.v, v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV0EM4(ITupRF v)
+	{
+		return TupUtils3F.equalsAtV0EM4(this.v, v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV0EM4(float[] v)
+	{
+		return RawTupUtils3F.equalsAtV0EM4(this.v, v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV0EM4(float value)
+	{
+		return RawTupUtils3F.equalsAtV0EM4(this.v, value);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV1EM4(ITup3RF v)
+	{
+		return TupUtils3F.equalsAtV1EM4(this.v, v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV1EM4(ITupRF v)
+	{
+		return TupUtils3F.equalsAtV1EM4(this.v, v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV1EM4(float[] v)
+	{
+		return RawTupUtils3F.equalsAtV1EM4(this.v, v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV1EM4(float value)
+	{
+		return RawTupUtils3F.equalsAtV1EM4(this.v, value);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV2EM4(ITup3RF v)
+	{
+		return TupUtils3F.equalsAtV2EM4(this.v, v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV2EM4(ITupRF v)
+	{
+		return TupUtils3F.equalsAtV2EM4(this.v, v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV2EM4(float[] v)
+	{
+		return RawTupUtils3F.equalsAtV2EM4(this.v, v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV2EM4(float value)
+	{
+		return RawTupUtils3F.equalsAtV2EM4(this.v, value);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV0EM6(ITup3RF v)
+	{
+		return TupUtils3F.equalsAtV0EM6(this.v, v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV0EM6(ITupRF v)
+	{
+		return TupUtils3F.equalsAtV0EM6(this.v, v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV0EM6(float[] v)
+	{
+		return RawTupUtils3F.equalsAtV0EM6(this.v, v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV0EM6(float value)
+	{
+		return RawTupUtils3F.equalsAtV0EM6(this.v, value);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV1EM6(ITup3RF v)
+	{
+		return TupUtils3F.equalsAtV1EM6(this.v, v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV1EM6(ITupRF v)
+	{
+		return TupUtils3F.equalsAtV1EM6(this.v, v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV1EM6(float[] v)
+	{
+		return RawTupUtils3F.equalsAtV1EM6(this.v, v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV1EM6(float value)
+	{
+		return RawTupUtils3F.equalsAtV1EM6(this.v, value);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV2EM6(ITup3RF v)
+	{
+		return TupUtils3F.equalsAtV2EM6(this.v, v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV2EM6(ITupRF v)
+	{
+		return TupUtils3F.equalsAtV2EM6(this.v, v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV2EM6(float[] v)
+	{
+		return RawTupUtils3F.equalsAtV2EM6(this.v, v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV2EM6(float value)
+	{
+		return RawTupUtils3F.equalsAtV2EM6(this.v, value);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV0EM8(ITup3RF v)
+	{
+		return TupUtils3F.equalsAtV0EM8(this.v, v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV0EM8(ITupRF v)
+	{
+		return TupUtils3F.equalsAtV0EM8(this.v, v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV0EM8(float[] v)
+	{
+		return RawTupUtils3F.equalsAtV0EM8(this.v, v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV0EM8(float value)
+	{
+		return RawTupUtils3F.equalsAtV0EM8(this.v, value);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV1EM8(ITup3RF v)
+	{
+		return TupUtils3F.equalsAtV1EM8(this.v, v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV1EM8(ITupRF v)
+	{
+		return TupUtils3F.equalsAtV1EM8(this.v, v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV1EM8(float[] v)
+	{
+		return RawTupUtils3F.equalsAtV1EM8(this.v, v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV1EM8(float value)
+	{
+		return RawTupUtils3F.equalsAtV1EM8(this.v, value);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV2EM8(ITup3RF v)
+	{
+		return TupUtils3F.equalsAtV2EM8(this.v, v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV2EM8(ITupRF v)
+	{
+		return TupUtils3F.equalsAtV2EM8(this.v, v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV2EM8(float[] v)
+	{
+		return RawTupUtils3F.equalsAtV2EM8(this.v, v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV2EM8(float value)
+	{
+		return RawTupUtils3F.equalsAtV2EM8(this.v, value);
 	}
 	
 	/** {@inheritDoc} */
@@ -2372,14 +2879,14 @@ public class Vec3F implements IVec3WF, IBufferableRF, IBufferableWF
 	@Override
 	public boolean equalsAtV0(float tolerance, float[] v)
 	{
-		return TupUtils3F.equalsAtV0(tolerance, this.v, v);
+		return RawTupUtils3F.equalsAtV0(tolerance, this.v, v);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV0(float tolerance, float value)
 	{
-		return TupUtils3F.equalsAtV0(tolerance, this.v, value);
+		return RawTupUtils3F.equalsAtV0(tolerance, this.v, value);
 	}
 
 	/** {@inheritDoc} */
@@ -2400,14 +2907,14 @@ public class Vec3F implements IVec3WF, IBufferableRF, IBufferableWF
 	@Override
 	public boolean equalsAtV1(float tolerance, float[] v)
 	{
-		return TupUtils3F.equalsAtV1(tolerance, this.v, v);
+		return RawTupUtils3F.equalsAtV1(tolerance, this.v, v);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV1(float tolerance, float value)
 	{
-		return TupUtils3F.equalsAtV1(tolerance, this.v, value);
+		return RawTupUtils3F.equalsAtV1(tolerance, this.v, value);
 	}
 
 	/** {@inheritDoc} */
@@ -2428,14 +2935,14 @@ public class Vec3F implements IVec3WF, IBufferableRF, IBufferableWF
 	@Override
 	public boolean equalsAtV2(float tolerance, float[] v)
 	{
-		return TupUtils3F.equalsAtV2(tolerance, this.v, v);
+		return RawTupUtils3F.equalsAtV2(tolerance, this.v, v);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV2(float tolerance, float value)
 	{
-		return TupUtils3F.equalsAtV2(tolerance, this.v, value);
+		return RawTupUtils3F.equalsAtV2(tolerance, this.v, value);
 	}
 	
 	/** {@inheritDoc} */
@@ -2712,21 +3219,42 @@ public class Vec3F implements IVec3WF, IBufferableRF, IBufferableWF
 	@Override
 	public boolean isFinite()
 	{
-		return TupUtils3F.isFinite(this.v);
+		return RawTupUtils3F.isFinite(this.v);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public boolean isZero()
 	{
-		return TupUtils3F.isZero(this.v);
+		return RawTupUtils3F.isZero(this.v);
 	}
 
 	/** {@inheritDoc} */
 	@Override
+	public boolean isZeroEM4()
+	{
+		return RawTupUtils3F.isZeroEM4(this.v);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public boolean isZeroEM6()
+	{
+		return RawTupUtils3F.isZeroEM6(this.v);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public boolean isZeroEM8()
+	{
+		return RawTupUtils3F.isZeroEM8(this.v);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
 	public boolean isZero(float tolerance)
 	{
-		return TupUtils3F.isZero(tolerance, this.v);
+		return RawTupUtils3F.isZero(tolerance, this.v);
 	}
 
 	/** {@inheritDoc} */

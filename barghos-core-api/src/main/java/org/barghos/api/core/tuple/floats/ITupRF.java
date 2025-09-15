@@ -114,6 +114,12 @@ public interface ITupRF
 	 */
 	boolean isZero();
 	
+	boolean isZeroEM4();
+	
+	boolean isZeroEM6();
+	
+	boolean isZeroEM8();
+	
 	/**
 	 * Returns whether all component values are approximately zero.
 	 * 
@@ -166,6 +172,12 @@ public interface ITupRF
 	 * {@code false} - Otherwise.
 	 */
 	boolean isZeroAt(int index);
+	
+	boolean isZeroAtEM4(int index);
+	
+	boolean isZeroAtEM6(int index);
+	
+	boolean isZeroAtEM8(int index);
 	
 	/**
 	 * Returns whether the component value at the given index is approximately
@@ -264,6 +276,18 @@ public interface ITupRF
 	 * {@code false} - Otherwise.
 	 */
 	boolean equals(@AllowNull float[] t);
+	
+	boolean equalsEM4(@AllowNull ITupRF t);
+
+	boolean equalsEM4(@AllowNull float[] t);
+	
+	boolean equalsEM6(@AllowNull ITupRF t);
+
+	boolean equalsEM6(@AllowNull float[] t);
+	
+	boolean equalsEM8(@AllowNull ITupRF t);
+
+	boolean equalsEM8(@AllowNull float[] t);
 	
 	/**
 	 * Returns whether the component values of this tuple and the component
@@ -450,6 +474,24 @@ public interface ITupRF
 	 * {@code false} - Otherwise.
 	 */
 	boolean equalsAt(int index, float value);
+	
+	boolean equalsAtEM4(int index, @AllowNull ITupRF t);
+
+	boolean equalsAtEM4(int index, @AllowNull float[] t);
+
+	boolean equalsAtEM4(int index, float value);
+	
+	boolean equalsAtEM6(int index, @AllowNull ITupRF t);
+	
+	boolean equalsAtEM6(int index, @AllowNull float[] t);
+
+	boolean equalsAtEM6(int index, float value);
+	
+	boolean equalsAtEM8(int index, @AllowNull ITupRF t);
+
+	boolean equalsAtEM8(int index, @AllowNull float[] t);
+
+	boolean equalsAtEM8(int index, float value);
 	
 	/**
 	 * Returns whether the component value at the given index of this tuple and

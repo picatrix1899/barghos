@@ -150,7 +150,7 @@ public class MathUtils
 		return Math.sqrt(value);
 	}
 	
-	public static double sqrt$F2D(float value)
+	public static double sqrtF2D(float value)
 	{
 		return Math.sqrt(value);
 	}
@@ -165,7 +165,7 @@ public class MathUtils
 		return 1.0 / Math.sqrt(value);
 	}
 	
-	public static double recSqrt$F2D(float value)
+	public static double recSqrtF2D(float value)
 	{
 		return 1.0 / Math.sqrt(value);
 	}
@@ -180,7 +180,7 @@ public class MathUtils
 		return 1.0 / Math.sqrt(value);
 	}
 	
-	public static double invSqrt$F2D(float value)
+	public static double invSqrtF2D(float value)
 	{
 		return 1.0 / Math.sqrt(value);
 	}
@@ -195,7 +195,7 @@ public class MathUtils
 		return Math.cbrt(value);
 	}
 	
-	public static double cbrt$F2D(float value)
+	public static double cbrtF2D(float value)
 	{
 		return Math.cbrt(value);
 	}
@@ -210,7 +210,7 @@ public class MathUtils
 		return 1.0 / Math.cbrt(value);
 	}
 	
-	public static double recCbrt$F2D(float value)
+	public static double recCbrtF2D(float value)
 	{
 		return 1.0 / Math.cbrt(value);
 	}
@@ -225,7 +225,7 @@ public class MathUtils
 		return 1.0 / Math.cbrt(value);
 	}
 	
-	public static double invCbrt$F2D(float value)
+	public static double invCbrtF2D(float value)
 	{
 		return 1.0 / Math.cbrt(value);
 	}
@@ -240,7 +240,7 @@ public class MathUtils
 		return Math.log(value);
 	}
 	
-	public static double log$F2D(float value)
+	public static double logF2D(float value)
 	{
 		return Math.log(value);
 	}
@@ -250,7 +250,7 @@ public class MathUtils
 		return Math.log10(value);
 	}
 
-	public static double log10$F2D(float value)
+	public static double log10F2D(float value)
 	{
 		return Math.log10(value);
 	}
@@ -265,7 +265,7 @@ public class MathUtils
 		return Math.log1p(value);
 	}
 
-	public static double log1p$F2D(float value)
+	public static double log1pF2D(float value)
 	{
 		return Math.log1p(value);
 	}
@@ -280,7 +280,7 @@ public class MathUtils
 		return Math.exp(value);
 	}
 
-	public static double exp$F2D(float value)
+	public static double expF2D(float value)
 	{
 		return Math.exp(value);
 	}
@@ -295,7 +295,7 @@ public class MathUtils
 		return Math.expm1(value);
 	}
 
-	public static double expm1$F2D(float value)
+	public static double expm1F2D(float value)
 	{
 		return Math.expm1(value);
 	}
@@ -310,7 +310,7 @@ public class MathUtils
 		return Math.pow(base, power);
 	}
 
-	public static double pow$F2D(float base, float power)
+	public static double powF2D(float base, float power)
 	{
 		return Math.pow(base, power);
 	}
@@ -325,7 +325,7 @@ public class MathUtils
 		return Math.fma(a, b, c);
 	}
 
-	public static double fma$F2D(float a, float b, float c)
+	public static double fmaF2D(float a, float b, float c)
 	{
 		return Math.fma(a, b, c);
 	}
@@ -340,7 +340,7 @@ public class MathUtils
 		return Math.sin(angle);
 	}
 	
-	public static double sin$F2D(float angle)
+	public static double sinF2D(float angle)
 	{
 		return Math.sin(angle);
 	}
@@ -355,7 +355,7 @@ public class MathUtils
 		return Math.cos(angle);
 	}
 
-	public static double cos$F2D(float angle)
+	public static double cosF2D(float angle)
 	{
 		return Math.cos(angle);
 	}
@@ -370,7 +370,7 @@ public class MathUtils
 		return Math.tan(angle);
 	}
 
-	public static double tan$F2D(float angle)
+	public static double tanF2D(float angle)
 	{
 		return Math.tan(angle);
 	}
@@ -385,7 +385,7 @@ public class MathUtils
 		return Math.asin(value);
 	}
 
-	public static double asin$F2D(float value)
+	public static double asinF2D(float value)
 	{
 		return Math.asin(value);
 	}
@@ -400,7 +400,7 @@ public class MathUtils
 		return Math.acos(value);
 	}
 	
-	public static double acos$F2D(float value)
+	public static double acosF2D(float value)
 	{
 		return Math.acos(value);
 	}
@@ -415,7 +415,7 @@ public class MathUtils
 		return Math.atan(value);
 	}
 
-	public static double atan$F2D(float value)
+	public static double atanF2D(float value)
 	{
 		return Math.atan(value);
 	}
@@ -430,7 +430,7 @@ public class MathUtils
 		return Math.atan2(y, x);
 	}
 
-	public static double atan2$F2D(float y, float x)
+	public static double atan2F2D(float y, float x)
 	{
 		return Math.atan2(y, x);
 	}
@@ -445,7 +445,7 @@ public class MathUtils
 		return Math.sinh(angle);
 	}
 
-	public static double sinh$F2D(float angle)
+	public static double sinhF2D(float angle)
 	{
 		return Math.sinh(angle);
 	}
@@ -460,7 +460,7 @@ public class MathUtils
 		return Math.cosh(angle);
 	}
 
-	public static double cosh$F2D(float angle)
+	public static double coshF2D(float angle)
 	{
 		return Math.cosh(angle);
 	}
@@ -470,7 +470,7 @@ public class MathUtils
 		return (float)Math.cosh(angle);
 	}
 	
-	public static double tanh$F2D(float angle)
+	public static double tanhF2D(float angle)
 	{
 		return Math.tanh(angle);
 	}
@@ -490,7 +490,7 @@ public class MathUtils
 		return Math.hypot(x, y);
 	}
 
-	public static double hypot$F2D(float x, float y)
+	public static double hypotF2D(float x, float y)
 	{
 		return Math.hypot(x, y);
 	}
@@ -505,7 +505,7 @@ public class MathUtils
 		return  1.0 / Math.tan(angle);
 	}
 	
-	public static double cot$F2D(float angle)
+	public static double cotF2D(float angle)
 	{
 		return 1.0 / Math.tan(angle);
 	}
@@ -520,7 +520,7 @@ public class MathUtils
 		return 1.0 / Math.cos(angle);
 	}
 
-	public static double sec$F2D(float angle)
+	public static double secF2D(float angle)
 	{
 		return 1.0 / Math.cos(angle);
 	}
@@ -535,7 +535,7 @@ public class MathUtils
 		return 1.0 / Math.sin(angle);
 	}
 	
-	public static double csc$F2D(float angle)
+	public static double cscF2D(float angle)
 	{
 		return 1.0 / Math.sin(angle);
 	}
@@ -550,7 +550,7 @@ public class MathUtils
 		return value - (long)value;
 	}
 	
-	public static double frac$F2D(float value)
+	public static double fracF2D(float value)
 	{
 		return value - (int)value;
 	}
@@ -565,7 +565,7 @@ public class MathUtils
 		return (long)value;
 	}
 	
-	public static double integer$F2D(float value)
+	public static double integerF2D(float value)
 	{
 		return (int)value;
 	}
@@ -575,17 +575,17 @@ public class MathUtils
 		return (int)value;
 	}
 	
-	public static long integer$D2L(double value)
+	public static long integerD2L(double value)
 	{
 		return (long)value;
 	}
 	
-	public static long integer$F2L(float value)
+	public static long integerF2L(float value)
 	{
 		return (int)value;
 	}
 	
-	public static int integer$F2I(float value)
+	public static int integerF2I(float value)
 	{
 		return (int)value;
 	}
@@ -595,42 +595,42 @@ public class MathUtils
 		return BigDecimal.valueOf(value.signum());
 	}
 	
-	public static BigDecimal sign$D2Bigd(double value)
+	public static BigDecimal signD2Bigd(double value)
 	{
 		return BigDecimal.valueOf(Math.signum(value));
 	}
 	
-	public static BigDecimal sign$F2Bigd(float value)
+	public static BigDecimal signF2Bigd(float value)
 	{
 		return BigDecimal.valueOf(Math.signum(value));
 	}
 	
-	public static BigDecimal sign$Bigi2Bigd(BigInteger value)
+	public static BigDecimal signBigi2Bigd(BigInteger value)
 	{
 		return BigDecimal.valueOf(value.signum());
 	}
 	
-	public static BigDecimal sign$L2Bigd(long value)
+	public static BigDecimal signL2Bigd(long value)
 	{
 		return BigDecimal.valueOf(Math.signum(value));
 	}
 	
-	public static BigDecimal sign$I2Bigd(int value)
+	public static BigDecimal signI2Bigd(int value)
 	{
 		return BigDecimal.valueOf(Math.signum(value));
 	}
 	
-	public static BigDecimal sign$S2Bigd(short value)
+	public static BigDecimal signS2Bigd(short value)
 	{
 		return BigDecimal.valueOf(Math.signum(value));
 	}
 	
-	public static BigDecimal sign$SB2Bigd(byte value)
+	public static BigDecimal signSB2Bigd(byte value)
 	{
 		return BigDecimal.valueOf(Math.signum(value));
 	}
 	
-	public static double sign$Bigd2D(BigDecimal value)
+	public static double signBigd2D(BigDecimal value)
 	{
 		return value.signum();
 	}
@@ -640,42 +640,42 @@ public class MathUtils
 		return Math.signum(value);
 	}
 	
-	public static double sign$F2D(float value)
+	public static double signF2D(float value)
 	{
 		return Math.signum(value);
 	}
 	
-	public static double sign$Bigi2D(BigInteger value)
+	public static double signBigi2D(BigInteger value)
 	{
 		return value.signum();
 	}
 	
-	public static double sign$L2D(long value)
+	public static double signL2D(long value)
 	{
 		return Math.signum(value);
 	}
 	
-	public static double sign$I2D(int value)
+	public static double signI2D(int value)
 	{
 		return Math.signum(value);
 	}
 	
-	public static double sign$S2D(short value)
+	public static double signS2D(short value)
 	{
 		return Math.signum(value);
 	}
 	
-	public static double sign$SB2D(byte value)
+	public static double signSB2D(byte value)
 	{
 		return Math.signum(value);
 	}
 	
-	public static float sign$Bigd2F(BigDecimal value)
+	public static float signBigd2F(BigDecimal value)
 	{
 		return value.signum();
 	}
 	
-	public static float sign$D2F(double value)
+	public static float signD2F(double value)
 	{
 		return (float)Math.signum(value);
 	}
@@ -685,42 +685,42 @@ public class MathUtils
 		return Math.signum(value);
 	}
 	
-	public static float sign$Bigi2F(BigInteger value)
+	public static float signBigi2F(BigInteger value)
 	{
 		return value.signum();
 	}
 	
-	public static float sign$L2F(long value)
+	public static float signL2F(long value)
 	{
 		return Math.signum(value);
 	}
 	
-	public static float sign$I2F(int value)
+	public static float signI2F(int value)
 	{
 		return Math.signum(value);
 	}
 	
-	public static float sign$S2F(short value)
+	public static float signS2F(short value)
 	{
 		return Math.signum(value);
 	}
 	
-	public static float sign$SB2F(byte value)
+	public static float signSB2F(byte value)
 	{
 		return Math.signum(value);
 	}
 	
-	public static BigInteger sign$Bigd2Bigi(BigDecimal value)
+	public static BigInteger signBigd2Bigi(BigDecimal value)
 	{
 		return BigInteger.valueOf(value.signum());
 	}
 	
-	public static BigInteger sign$D2Bigi(double value)
+	public static BigInteger signD2Bigi(double value)
 	{
 		return BigInteger.valueOf((int)Math.signum(value));
 	}
 	
-	public static BigInteger sign$F2Bigi(float value)
+	public static BigInteger signF2Bigi(float value)
 	{
 		return BigInteger.valueOf((int)Math.signum(value));
 	}
@@ -730,37 +730,37 @@ public class MathUtils
 		return BigInteger.valueOf(value.signum());
 	}
 	
-	public static BigInteger sign$L2Bigi(long value)
+	public static BigInteger signL2Bigi(long value)
 	{
 		return BigInteger.valueOf((int)Math.signum(value));
 	}
 	
-	public static BigInteger sign$I2Bigi(int value)
+	public static BigInteger signI2Bigi(int value)
 	{
 		return BigInteger.valueOf((int)Math.signum(value));
 	}
 	
-	public static BigInteger sign$S2Bigi(short value)
+	public static BigInteger signS2Bigi(short value)
 	{
 		return BigInteger.valueOf((int)Math.signum(value));
 	}
 	
-	public static BigInteger sign$SB2Bigi(byte value)
+	public static BigInteger signSB2Bigi(byte value)
 	{
 		return BigInteger.valueOf((int)Math.signum(value));
 	}
 	
-	public static long sign$Bigd2L(BigDecimal value)
+	public static long signBigd2L(BigDecimal value)
 	{
 		return value.signum();
 	}
 	
-	public static long sign$D2L(double value)
+	public static long signD2L(double value)
 	{
 		return (long)Math.signum(value);
 	}
 	
-	public static long sign$F2L(float value)
+	public static long signF2L(float value)
 	{
 		return (long)Math.signum(value);
 	}
@@ -775,42 +775,42 @@ public class MathUtils
 		return (long)Math.signum(value);
 	}
 	
-	public static long sign$I2L(int value)
+	public static long signI2L(int value)
 	{
 		return(long)Math.signum(value);
 	}
 	
-	public static long sign$S2L(short value)
+	public static long signS2L(short value)
 	{
 		return (long)Math.signum(value);
 	}
 	
-	public static long sign$SB2L(byte value)
+	public static long signSB2L(byte value)
 	{
 		return (long)Math.signum(value);
 	}
 	
-	public static int sign$Bigd2I(BigDecimal value)
+	public static int signBigd2I(BigDecimal value)
 	{
 		return value.signum();
 	}
 	
-	public static int sign$D2I(double value)
+	public static int signD2I(double value)
 	{
 		return (int)Math.signum(value);
 	}
 	
-	public static int sign$F2I(float value)
+	public static int signF2I(float value)
 	{
 		return (int)Math.signum(value);
 	}
 	
-	public static int sign$Bigi2I(BigInteger value)
+	public static int signBigi2I(BigInteger value)
 	{
 		return value.signum();
 	}
 	
-	public static int sign$L2I(long value)
+	public static int signL2I(long value)
 	{
 		return (int)Math.signum(value);
 	}
@@ -820,42 +820,42 @@ public class MathUtils
 		return (int)Math.signum(value);
 	}
 
-	public static int sign$S2I(short value)
+	public static int signS2I(short value)
 	{
 		return (int)Math.signum(value);
 	}
 	
-	public static int sign$SB2I(byte value)
+	public static int signSB2I(byte value)
 	{
 		return (int)Math.signum(value);
 	}
 	
-	public static short sign$Bigd2S(BigDecimal value)
+	public static short signBigd2S(BigDecimal value)
 	{
 		return (short)value.signum();
 	}
 	
-	public static short sign$D2S(double value)
+	public static short signD2S(double value)
 	{
 		return (short)Math.signum(value);
 	}
 	
-	public static short sign$F2S(float value)
+	public static short signF2S(float value)
 	{
 		return (short)Math.signum(value);
 	}
 	
-	public static short sign$Bigi2S(BigInteger value)
+	public static short signBigi2S(BigInteger value)
 	{
 		return (short)value.signum();
 	}
 	
-	public static short sign$L2S(long value)
+	public static short signL2S(long value)
 	{
 		return (short)Math.signum(value);
 	}
 	
-	public static short sign$I2S(int value)
+	public static short signI2S(int value)
 	{
 		return (short)Math.signum(value);
 	}
@@ -865,42 +865,42 @@ public class MathUtils
 		return (short)Math.signum(value);
 	}
 	
-	public static short sign$SB2S(byte value)
+	public static short signSB2S(byte value)
 	{
 		return (short)Math.signum(value);
 	}
 	
-	public static byte sign$Bigd2SB(BigDecimal value)
+	public static byte signBigd2SB(BigDecimal value)
 	{
 		return (byte)value.signum();
 	}
 	
-	public static byte sign$D2SB(double value)
+	public static byte signD2SB(double value)
 	{
 		return (byte)Math.signum(value);
 	}
 	
-	public static byte sign$F2SB(float value)
+	public static byte signF2SB(float value)
 	{
 		return (byte)Math.signum(value);
 	}
 	
-	public static byte sign$Bigi2SB(BigInteger value)
+	public static byte signBigi2SB(BigInteger value)
 	{
 		return (byte)value.signum();
 	}
 	
-	public static byte sign$L2SB(long value)
+	public static byte signL2SB(long value)
 	{
 		return (byte)Math.signum(value);
 	}
 	
-	public static byte sign$I2SB(int value)
+	public static byte signI2SB(int value)
 	{
 		return (byte)Math.signum(value);
 	}
 	
-	public static byte sign$S2SB(short value)
+	public static byte signS2SB(short value)
 	{
 		return (byte)Math.signum(value);
 	}
@@ -915,32 +915,32 @@ public class MathUtils
 		return value.abs();
 	}
 	
-	public static BigDecimal abs$D2Bigd(double value)
+	public static BigDecimal absD2Bigd(double value)
 	{
 		return BigDecimal.valueOf(Math.abs(value));
 	}
 	
-	public static BigDecimal abs$F2Bigd(float value)
+	public static BigDecimal absF2Bigd(float value)
 	{
 		return BigDecimal.valueOf(Math.abs(value));
 	}
 	
-	public static BigDecimal abs$L2Bigd(long value)
+	public static BigDecimal absL2Bigd(long value)
 	{
 		return BigDecimal.valueOf(Math.abs(value));
 	}
 	
-	public static BigDecimal abs$I2Bigd(int value)
+	public static BigDecimal absI2Bigd(int value)
 	{
 		return BigDecimal.valueOf(Math.abs(value));
 	}
 	
-	public static BigDecimal abs$S2Bigd(short value)
+	public static BigDecimal absS2Bigd(short value)
 	{
 		return BigDecimal.valueOf(Math.abs(value));
 	}
 	
-	public static BigDecimal abs$SB2Bigd(byte value)
+	public static BigDecimal absSB2Bigd(byte value)
 	{
 		return BigDecimal.valueOf(Math.abs(value));
 	}
@@ -950,27 +950,27 @@ public class MathUtils
 		return Math.abs(value);
 	}
 
-	public static double abs$F2D(float value)
+	public static double absF2D(float value)
 	{
 		return Math.abs(value);
 	}
 	
-	public static double abs$L2D(long value)
+	public static double absL2D(long value)
 	{
 		return Math.abs(value);
 	}
 	
-	public static double abs$I2D(int value)
+	public static double absI2D(int value)
 	{
 		return Math.abs(value);
 	}
 	
-	public static double abs$S2D(short value)
+	public static double absS2D(short value)
 	{
 		return Math.abs(value);
 	}
 	
-	public static double abs$SB2D(byte value)
+	public static double absSB2D(byte value)
 	{
 		return Math.abs(value);
 	}
@@ -980,17 +980,17 @@ public class MathUtils
 		return Math.abs(value);
 	}
 
-	public static float abs$I2F(int value)
+	public static float absI2F(int value)
 	{
 		return Math.abs(value);
 	}
 	
-	public static float abs$S2F(short value)
+	public static float absS2F(short value)
 	{
 		return Math.abs(value);
 	}
 	
-	public static float abs$SB2F(byte value)
+	public static float absSB2F(byte value)
 	{
 		return Math.abs(value);
 	}
@@ -1000,22 +1000,22 @@ public class MathUtils
 		return value.abs();
 	}
 	
-	public static BigInteger abs$L2Bigi(long value)
+	public static BigInteger absL2Bigi(long value)
 	{
 		return BigInteger.valueOf(Math.abs(value));
 	}
 	
-	public static BigInteger abs$I2Bigi(int value)
+	public static BigInteger absI2Bigi(int value)
 	{
 		return BigInteger.valueOf(Math.abs(value));
 	}
 	
-	public static BigInteger abs$S2Bigi(short value)
+	public static BigInteger absS2Bigi(short value)
 	{
 		return BigInteger.valueOf(Math.abs(value));
 	}
 	
-	public static BigInteger abs$SB2Bigi(byte value)
+	public static BigInteger absSB2Bigi(byte value)
 	{
 		return BigInteger.valueOf(Math.abs(value));
 	}
@@ -1025,17 +1025,17 @@ public class MathUtils
 		return Math.abs(value);
 	}
 	
-	public static long abs$I2L(int value)
+	public static long absI2L(int value)
 	{
 		return Math.abs(value);
 	}
 	
-	public static long abs$S2L(short value)
+	public static long absS2L(short value)
 	{
 		return Math.abs(value);
 	}
 	
-	public static long abs$SB2L(byte value)
+	public static long absSB2L(byte value)
 	{
 		return Math.abs(value);
 	}
@@ -1045,12 +1045,12 @@ public class MathUtils
 		return Math.abs(value);
 	}
 	
-	public static int abs$S2I(short value)
+	public static int absS2I(short value)
 	{
 		return Math.abs(value);
 	}
 	
-	public static int abs$SB2I(byte value)
+	public static int absSB2I(byte value)
 	{
 		return Math.abs(value);
 	}
@@ -1060,7 +1060,7 @@ public class MathUtils
 		return (short)Math.abs(value);
 	}
 	
-	public static short abs$SB2S(byte value)
+	public static short absSB2S(byte value)
 	{
 		return (short)Math.abs(value);
 	}
@@ -1969,73 +1969,33 @@ public class MathUtils
 	{
 		return (float)(a + alpha * (b - a));
 	}
-	
-	public static boolean isZero(BigDecimal value)
-	{
-		return value.compareTo(BigDecimal.ZERO) == 0;
-	}
-	
-	public static boolean isZero(double value)
-	{
-		return value == 0.0f;
-	}
-	
-	public static boolean isZero(float value)
-	{
-		return value == 0.0;
-	}
-	
-	public static boolean isZero(BigInteger value)
-	{
-		return value.compareTo(BigInteger.ZERO) == 0;
-	}
-	
-	public static boolean isZero(long value)
-	{
-		return value == 0;
-	} 
-	
-	public static boolean isZero(int value)
-	{
-		return value == 0;
-	} 
-	
-	public static boolean isZero(short value)
-	{
-		return value == 0;
-	} 
-	
-	public static boolean isZero(byte value)
-	{
-		return value == 0;
-	} 
-	
-	public static boolean isZero$EM4(double value)
+
+	public static boolean isZeroEM4(double value)
 	{
 		return Math.abs(value) <= EM4;
 	}
 	
-	public static boolean isZero$EM4(float value)
+	public static boolean isZeroEM4(float value)
 	{
 		return Math.abs(value) <= EM4f;
 	}
 
-	public static boolean isZero$EM6(double value)
+	public static boolean isZeroEM6(double value)
 	{
 		return Math.abs(value) <= EM6;
 	}
 	
-	public static boolean isZero$EM6(float value)
+	public static boolean isZeroEM6(float value)
 	{
 		return Math.abs(value) <= EM6f;
 	}
 	
-	public static boolean isZero$EM8(double value)
+	public static boolean isZeroEM8(double value)
 	{
 		return Math.abs(value) <= EM8;
 	}
 	
-	public static boolean isZero$EM8(float value)
+	public static boolean isZeroEM8(float value)
 	{
 		return Math.abs(value) <= EM8f;
 	}
@@ -2176,86 +2136,46 @@ public class MathUtils
 		return Byte.compare(a, b);
 	}
 	
-	public static int compare$EM4(double a, double b)
+	public static int compareEM4(double a, double b)
 	{
 		if(MathUtils.abs(a - b) <= EM4) return 0;
 		
 		return Double.compare(a, b);
 	}
 	
-	public static int compare$EM4(float a, float b)
+	public static int compareEM4(float a, float b)
 	{
 		if(MathUtils.abs(a - b) <= EM4f) return 0;
 		
 		return Float.compare(a, b);
 	}
 	
-	public static int compare$EM6(double a, double b)
+	public static int compareEM6(double a, double b)
 	{
 		if(MathUtils.abs(a - b) <= EM6) return 0;
 		
 		return Double.compare(a, b);
 	}
 	
-	public static int compare$EM6(float a, float b)
+	public static int compareEM6(float a, float b)
 	{
 		if(MathUtils.abs(a - b) <= EM6f) return 0;
 		
 		return Float.compare(a, b);
 	}
 	
-	public static int compare$EM8(double a, double b)
+	public static int compareEM8(double a, double b)
 	{
 		if(MathUtils.abs(a - b) <= EM8) return 0;
 		
 		return Double.compare(a, b);
 	}
 	
-	public static int compare$EM8(float a, float b)
+	public static int compareEM8(float a, float b)
 	{
 		if(MathUtils.abs(a - b) <= EM8f) return 0;
 		
 		return Float.compare(a, b);
-	}
-	
-	public static boolean equals(BigDecimal a, BigDecimal b)
-	{
-		return a.compareTo(b) == 0;
-	}
-	
-	public static boolean equals(double a, double b)
-	{
-		return a == b;
-	}
-	
-	public static boolean equals(float a, float b)
-	{
-		return a == b;
-	}
-	
-	public static boolean equals(BigInteger a, BigInteger b)
-	{
-		return a.compareTo(b) == 0;
-	}
-	
-	public static boolean equals(long a, long b)
-	{
-		return a == b;
-	}
-	
-	public static boolean equals(int a, int b)
-	{
-		return a == b;
-	}
-	
-	public static boolean equals(short a, short b)
-	{
-		return a == b;
-	}
-	
-	public static boolean equals(byte a, byte b)
-	{
-		return a == b;
 	}
 	
 	public static boolean equals(BigDecimal tolerance, BigDecimal a, BigDecimal b)
@@ -2298,34 +2218,314 @@ public class MathUtils
 		return MathUtils.abs(a - b) <= tolerance;
 	}
 	
-	public static boolean equals$EM4(double a, double b)
+	public static boolean equalsEM4(double a, double b)
 	{
 		return MathUtils.abs(a - b) <= EM4;
 	}
 	
-	public static boolean equals$EM4(float a, float b)
+	public static boolean equalsEM4(float a, float b)
 	{
 		return MathUtils.abs(a - b) <= EM4f;
 	}
 	
-	public static boolean equals$EM6(double a, double b)
+	public static boolean equalsEM6(double a, double b)
 	{
 		return MathUtils.abs(a - b) <= EM6;
 	}
 	
-	public static boolean equals$EM6(float a, float b)
+	public static boolean equalsEM6(float a, float b)
 	{
 		return MathUtils.abs(a - b) <= EM6f;
 	}
 	
-	public static boolean equals$EM8(double a, double b)
+	public static boolean equalsEM8(double a, double b)
 	{
 		return MathUtils.abs(a - b) <= EM8;
 	}
 	
-	public static boolean equals$EM8(float a, float b)
+	public static boolean equalsEM8(float a, float b)
 	{
 		return MathUtils.abs(a - b) <= EM8f;
+	}
+	
+	public static boolean less(BigDecimal tolerance, BigDecimal a, BigDecimal b)
+	{
+		return a.add(tolerance).compareTo(b) < 0;
+	}
+	
+	public static boolean less(double tolerance, double a, double b)
+	{
+		return a + tolerance < b;
+	}
+	
+	public static boolean less(float tolerance, float a, float b)
+	{
+		return a + tolerance < b;
+	}
+	
+	public static boolean less(BigInteger tolerance, BigInteger a, BigInteger b)
+	{
+		return a.add(tolerance).compareTo(b) < 0;
+	}
+	
+	public static boolean less(long tolerance, long a, long b)
+	{
+		return a + tolerance < b;
+	}
+	
+	public static boolean less(int tolerance, int a, int b)
+	{
+		return a + tolerance < b;
+	}
+	
+	public static boolean less(short tolerance, short a, short b)
+	{
+		return a + tolerance < b;
+	}
+
+	public static boolean less(byte tolerance, byte a, byte b)
+	{
+		return a + tolerance < b;
+	}
+	
+	public static boolean lessEM4(double a, double b)
+	{
+		return a + EM4 < b;
+	}
+	
+	public static boolean lessEM4(float a, float b)
+	{
+		return a + EM4f < b;
+	}
+	
+	public static boolean lessEM6(double a, double b)
+	{
+		return a + EM6 < b;
+	}
+	
+	public static boolean lessEM6(float a, float b)
+	{
+		return a + EM6f < b;
+	}
+	
+	public static boolean lessEM8(double a, double b)
+	{
+		return a + EM8 < b;
+	}
+	
+	public static boolean lessEM8(float a, float b)
+	{
+		return a + EM8f < b;
+	}
+	
+	public static boolean lessEqual(BigDecimal tolerance, BigDecimal a, BigDecimal b)
+	{
+		return a.compareTo(b.add(tolerance)) <= 0;
+	}
+	
+	public static boolean lessEqual(double tolerance, double a, double b)
+	{
+		return a <= b + tolerance;
+	}
+	
+	public static boolean lessEqual(float tolerance, float a, float b)
+	{
+		return a <= b + tolerance;
+	}
+	
+	public static boolean lessEqual(BigInteger tolerance, BigInteger a, BigInteger b)
+	{
+		return a.compareTo(b.add(tolerance)) <= 0;
+	}
+	
+	public static boolean lessEqual(long tolerance, long a, long b)
+	{
+		return a <= b + tolerance;
+	}
+	
+	public static boolean lessEqual(int tolerance, int a, int b)
+	{
+		return a <= b + tolerance;
+	}
+	
+	public static boolean lessEqual(short tolerance, short a, short b)
+	{
+		return a <= b + tolerance;
+	}
+
+	public static boolean lessEqual(byte tolerance, byte a, byte b)
+	{
+		return a <= b + tolerance;
+	}
+	
+	public static boolean lessEqualEM4(double a, double b)
+	{
+		return a <= b + EM4;
+	}
+	
+	public static boolean lessEqualEM4(float a, float b)
+	{
+		return a <= b + EM4f;
+	}
+	
+	public static boolean lessEqualEM6(double a, double b)
+	{
+		return a <= b + EM6;
+	}
+	
+	public static boolean lessEqualEM6(float a, float b)
+	{
+		return a <= b + EM6f;
+	}
+	
+	public static boolean lessEqualEM8(double a, double b)
+	{
+		return a <= b + EM8;
+	}
+	
+	public static boolean lessEqualEM8(float a, float b)
+	{
+		return a <= b + EM8f;
+	}
+	
+	public static boolean greater(BigDecimal tolerance, BigDecimal a, BigDecimal b)
+	{
+		return a.compareTo(b.add(tolerance)) > 0;
+	}
+	
+	public static boolean greater(double tolerance, double a, double b)
+	{
+		return a > b + tolerance;
+	}
+	
+	public static boolean greater(float tolerance, float a, float b)
+	{
+		return a > b + tolerance;
+	}
+	
+	public static boolean greater(BigInteger tolerance, BigInteger a, BigInteger b)
+	{
+		return a.compareTo(b.add(tolerance)) > 0;
+	}
+	
+	public static boolean greater(long tolerance, long a, long b)
+	{
+		return a > b + tolerance;
+	}
+	
+	public static boolean greater(int tolerance, int a, int b)
+	{
+		return a > b + tolerance;
+	}
+	
+	public static boolean greater(short tolerance, short a, short b)
+	{
+		return a > b + tolerance;
+	}
+
+	public static boolean greater(byte tolerance, byte a, byte b)
+	{
+		return a > b + tolerance;
+	}
+	
+	public static boolean greaterEM4(double a, double b)
+	{
+		return a > b + EM4;
+	}
+	
+	public static boolean greaterEM4(float a, float b)
+	{
+		return a > b + EM4f;
+	}
+	
+	public static boolean greaterEM6(double a, double b)
+	{
+		return a > b + EM6;
+	}
+	
+	public static boolean greaterEM6(float a, float b)
+	{
+		return a > b + EM6f;
+	}
+	
+	public static boolean greaterEM8(double a, double b)
+	{
+		return a > b + EM8;
+	}
+	
+	public static boolean greaterEM8(float a, float b)
+	{
+		return a > b + EM8f;
+	}
+	
+	public static boolean greaterEqual(BigDecimal tolerance, BigDecimal a, BigDecimal b)
+	{
+		return a.add(tolerance).compareTo(b) >= 0;
+	}
+	
+	public static boolean greaterEqual(double tolerance, double a, double b)
+	{
+		return a + tolerance >= b;
+	}
+	
+	public static boolean greaterEqual(float tolerance, float a, float b)
+	{
+		return a + tolerance >= b;
+	}
+	
+	public static boolean greaterEqual(BigInteger tolerance, BigInteger a, BigInteger b)
+	{
+		return a.add(tolerance).compareTo(b) >= 0;
+	}
+	
+	public static boolean greaterEqual(long tolerance, long a, long b)
+	{
+		return a + tolerance >= b;
+	}
+	
+	public static boolean greaterEqual(int tolerance, int a, int b)
+	{
+		return a + tolerance >= b;
+	}
+	
+	public static boolean greaterEqual(short tolerance, short a, short b)
+	{
+		return a + tolerance >= b;
+	}
+
+	public static boolean greaterEqual(byte tolerance, byte a, byte b)
+	{
+		return a + tolerance >= b;
+	}
+	
+	public static boolean greaterEqualEM4(double a, double b)
+	{
+		return a + EM4 >= b;
+	}
+	
+	public static boolean greaterEqualEM4(float a, float b)
+	{
+		return a + EM4f >= b;
+	}
+	
+	public static boolean greaterEqualEM6(double a, double b)
+	{
+		return a + EM6 >= b;
+	}
+	
+	public static boolean greaterEqualEM6(float a, float b)
+	{
+		return a + EM6f >= b;
+	}
+	
+	public static boolean greaterEqualEM8(double a, double b)
+	{
+		return a + EM8 >= b;
+	}
+	
+	public static boolean greaterEqualEM8(float a, float b)
+	{
+		return a + EM8f >= b;
 	}
 	
 	public static double floor(double value)
@@ -2333,7 +2533,7 @@ public class MathUtils
 		return Math.floor(value);
 	}
 
-	public static double floor$F2D(float value)
+	public static double floorF2D(float value)
 	{
 		return Math.floor(value);
 	}
@@ -2343,17 +2543,17 @@ public class MathUtils
 		return (float)Math.floor(value);
 	}
 
-	public static long floor$D2L(double value)
+	public static long floorD2L(double value)
 	{
 		return (long)Math.floor(value);
 	}
 
-	public static long floor$F2L(float value)
+	public static long floorF2L(float value)
 	{
 		return (long)Math.floor(value);
 	}
 
-	public static int floor$F2I(float value)
+	public static int floorF2I(float value)
 	{
 		return (int)Math.floor(value);
 	}
@@ -2363,7 +2563,7 @@ public class MathUtils
 		return Math.ceil(value);
 	}
 
-	public static double ceil$F2D(float value)
+	public static double ceilF2D(float value)
 	{
 		return Math.ceil(value);
 	}
@@ -2373,17 +2573,17 @@ public class MathUtils
 		return (float)Math.ceil(value);
 	}
 
-	public static long ceil$D2L(double value)
+	public static long ceilD2L(double value)
 	{
 		return (long)Math.ceil(value);
 	}
 
-	public static long ceil$F2L(float value)
+	public static long ceilF2L(float value)
 	{
 		return (long)Math.ceil(value);
 	}
 
-	public static int ceil$F2I(float value)
+	public static int ceilF2I(float value)
 	{
 		return (int)Math.ceil(value);
 	}
@@ -2393,7 +2593,7 @@ public class MathUtils
 		return Math.round(value);
 	}
 
-	public static double round$F2D(float value)
+	public static double roundF2D(float value)
 	{
 		return Math.round(value);
 	}
@@ -2403,17 +2603,17 @@ public class MathUtils
 		return (float)Math.round(value);
 	}
 
-	public static long round$D2L(double value)
+	public static long roundD2L(double value)
 	{
 		return (long)Math.round(value);
 	}
 
-	public static long round$F2L(float value)
+	public static long roundF2L(float value)
 	{
 		return (long)Math.round(value);
 	}
 
-	public static int round$F2I(float value)
+	public static int roundF2I(float value)
 	{
 		return (int)Math.round(value);
 	}
@@ -2423,7 +2623,7 @@ public class MathUtils
 		return method.roundD(value);
 	}
 
-	public static double round$F2D(float value, IRoundMethodF method)
+	public static double roundF2D(float value, IRoundMethodF method)
 	{
 		return method.roundF(value);
 	}
@@ -2433,17 +2633,17 @@ public class MathUtils
 		return method.roundF(value);
 	}
 	
-	public static long round$D2L(double value, IRoundMethodD method)
+	public static long roundD2L(double value, IRoundMethodD method)
 	{
 		return (long)method.roundD(value);
 	}
 
-	public static long round$F2L(float value, IRoundMethodF method)
+	public static long roundF2L(float value, IRoundMethodF method)
 	{
 		return (long)method.roundF(value);
 	}
 	
-	public static int round$F2I(float value, IRoundMethodF method)
+	public static int roundF2I(float value, IRoundMethodF method)
 	{
 		return (int)method.roundF(value);
 	}
@@ -2453,7 +2653,7 @@ public class MathUtils
 		return (long)value;
 	}
 	
-	public static double trunc$F2D(float value)
+	public static double truncF2D(float value)
 	{
 		return (int)value;
 	}
@@ -2463,17 +2663,17 @@ public class MathUtils
 		return (int)value;
 	}
 	
-	public static long trunc$D2L(double value)
+	public static long truncD2L(double value)
 	{
 		return (long)value;
 	}
 
-	public static long trunc$F2L(float value)
+	public static long truncF2L(float value)
 	{
 		return (int)value;
 	}
 
-	public static int trunc$F2I(float value)
+	public static int truncF2I(float value)
 	{
 		return (int)value;
 	}
@@ -2486,7 +2686,7 @@ public class MathUtils
 		return (((long)val & 1) == 0 ? val : val + 1);
 	}
 
-	public static double ceilEven$F2D(float value)
+	public static double ceilEvenF2D(float value)
 	{
 		if(value == 0.0f || !Float.isFinite(value)) return value;
 		
@@ -2494,14 +2694,14 @@ public class MathUtils
 		return (((long)val & 1) == 0 ? val : val + 1);
 	}
 	
-	public static double ceilEven$L2D(long value)
+	public static double ceilEvenL2D(long value)
 	{
 		if(value == 0l) return 0.0;
 		
 		return ((value & 1) == 0 ? value : value + 1);
 	}
 
-	public static double ceilEven$I2D(int value)
+	public static double ceilEvenI2D(int value)
 	{
 		if(value == 0) return 0.0;
 		
@@ -2516,14 +2716,14 @@ public class MathUtils
 		return (float)(((long)val & 1) == 0 ? val : val + 1);
 	}
 	
-	public static float ceilEven$I2F(int value)
+	public static float ceilEvenI2F(int value)
 	{
 		if(value == 0) return 0.0f;
 		
 		return (float)((value & 1) == 0 ? value : value + 1);
 	}
 	
-	public static long ceilEven$D2L(double value)
+	public static long ceilEvenD2L(double value)
 	{
 		if(!Double.isFinite(value)) throw new NumberFormatException("Infinite or NaN");
 		if(value == 0.0) return 0l;
@@ -2532,7 +2732,7 @@ public class MathUtils
 		return (long)(((long)val & 1) == 0 ? val : val + 1);
 	}
 	
-	public static long ceilEven$F2L(float value)
+	public static long ceilEvenF2L(float value)
 	{
 		if(!Float.isFinite(value)) throw new NumberFormatException("Infinite or NaN");
 		if(value == 0.0f) return 0l;
@@ -2548,14 +2748,14 @@ public class MathUtils
 		return ((value & 1) == 0 ? value : value + 1);
 	}
 	
-	public static long ceilEven$I2L(int value)
+	public static long ceilEvenI2L(int value)
 	{
 		if(value == 0) return 0l;
 		
 		return ((value & 1) == 0 ? value : value + 1);
 	}
 	
-	public static int ceilEven$F2I(float value)
+	public static int ceilEvenF2I(float value)
 	{
 		if(!Float.isFinite(value)) throw new NumberFormatException("Infinite or NaN");
 		if(value == 0.0f) return 0;
@@ -2579,7 +2779,7 @@ public class MathUtils
 		return (((long)val & 1) == 0 ? val + 1 : val);
 	}
 	
-	public static double ceilOdd$F2D(float value)
+	public static double ceilOddF2D(float value)
 	{
 		if(!Float.isFinite(value)) return value;
 		
@@ -2587,12 +2787,12 @@ public class MathUtils
 		return (((long)val & 1) == 0 ? val + 1 : val);
 	}
 	
-	public static double ceilOdd$L2D(long value)
+	public static double ceilOddL2D(long value)
 	{
 		return ((value & 1) == 0 ? value + 1 : value);
 	}
 	
-	public static double ceilOdd$I2D(int value)
+	public static double ceilOddI2D(int value)
 	{
 		return ((value & 1) == 0 ? value + 1 : value);
 	}
@@ -2605,12 +2805,12 @@ public class MathUtils
 		return (float)(((long)val & 1) == 0 ? val + 1 : val);
 	}
 	
-	public static float ceilOdd$I2F(int value)
+	public static float ceilOddI2F(int value)
 	{
 		return ((value & 1) == 0 ? value + 1: value);
 	}
 	
-	public static long ceilOdd$D2L(double value)
+	public static long ceilOddD2L(double value)
 	{
 		if(!Double.isFinite(value)) throw new NumberFormatException("Infinite or NaN");
 		
@@ -2618,7 +2818,7 @@ public class MathUtils
 		return (long)(((long)val & 1) == 0 ? val + 1 : val);
 	}
 	
-	public static long ceilOdd$F2L(float value)
+	public static long ceilOddF2L(float value)
 	{
 		if(!Float.isFinite(value)) throw new NumberFormatException("Infinite or NaN");
 		
@@ -2631,12 +2831,12 @@ public class MathUtils
 		return ((value & 1) == 0 ? value + 1 : value);
 	}
 	
-	public static long ceilOdd$I2L(int value)
+	public static long ceilOddI2L(int value)
 	{
 		return ((value & 1) == 0 ? value + 1 : value);
 	}
 	
-	public static int ceilOdd$F2I(float value)
+	public static int ceilOddF2I(float value)
 	{
 		if(!Float.isFinite(value)) throw new NumberFormatException("Infinite or NaN");
 
@@ -2657,7 +2857,7 @@ public class MathUtils
 		return (((long)val & 1) == 0 ? val + 1 : val);
 	}
 	
-	public static double ceilOddZero$F2D(float value)
+	public static double ceilOddZeroF2D(float value)
 	{
 		if(value == 0.0f || !Float.isFinite(value)) return value;
 		
@@ -2665,14 +2865,14 @@ public class MathUtils
 		return (((long)val & 1) == 0 ? val + 1 : val);
 	}
 	
-	public static double ceilOddZero$L2D(long value)
+	public static double ceilOddZeroL2D(long value)
 	{
 		if(value == 0l) return 0.0;
 		
 		return ((value & 1) == 0 ? value + 1 : value);
 	}
 	
-	public static double ceilOddZero$I2D(int value)
+	public static double ceilOddZeroI2D(int value)
 	{
 		if(value == 0l) return 0.0;
 		
@@ -2687,14 +2887,14 @@ public class MathUtils
 		return (float)(((long)val & 1) == 0 ? val + 1 : val);
 	}
 	
-	public static float ceilOddZero$I2F(int value)
+	public static float ceilOddZeroI2F(int value)
 	{
 		if(value == 0) return 0.0f;
 		
 		return ((value & 1) == 0 ? value + 1 : value);
 	}
 	
-	public static long ceilOddZero$D2L(double value)
+	public static long ceilOddZeroD2L(double value)
 	{
 		if(!Double.isFinite(value)) throw new NumberFormatException("Infinite or NaN");
 		if(value == 0.0) return (long)value;
@@ -2703,7 +2903,7 @@ public class MathUtils
 		return (long)(((long)val & 1) == 0 ? val + 1 : val);
 	}
 	
-	public static long ceilOddZero$F2L(float value)
+	public static long ceilOddZeroF2L(float value)
 	{
 		if(!Float.isFinite(value)) throw new NumberFormatException("Infinite or NaN");
 		if(value == 0.0f) return (long)value;
@@ -2719,14 +2919,14 @@ public class MathUtils
 		return ((value & 1) == 0 ? value + 1 : value);
 	}
 	
-	public static long ceilOddZero$I2L(int value)
+	public static long ceilOddZeroI2L(int value)
 	{
 		if(value == 0) return 0l;
 		
 		return ((value & 1) == 0 ? value + 1 : value);
 	}
 	
-	public static int ceilOddZero$F2I(float value)
+	public static int ceilOddZeroF2I(float value)
 	{
 		if(!Float.isFinite(value)) throw new NumberFormatException("Infinite or NaN");
 		if(value == 0.0f) return (int)value;
@@ -2750,7 +2950,7 @@ public class MathUtils
 		return (((long)val & 1) == 0 ? val : val - 1);
 	}
 	
-	public static double floorEven$F2D(float value)
+	public static double floorEvenF2D(float value)
 	{
 		if(value == 0.0f || !Float.isFinite(value)) return value;
 		
@@ -2758,14 +2958,14 @@ public class MathUtils
 		return (((long)val & 1) == 0 ? val : val - 1);
 	}
 	
-	public static double floorEven$L2D(long value)
+	public static double floorEvenL2D(long value)
 	{
 		if(value == 0l) return 0.0;
 		
 		return ((value & 1) == 0 ? value : value - 1);
 	}
 	
-	public static double floorEven$I2D(int value)
+	public static double floorEvenI2D(int value)
 	{
 		if(value == 0) return 0.0;
 		
@@ -2780,14 +2980,14 @@ public class MathUtils
 		return (float)(((long)val & 1) == 0 ? val : val - 1);
 	}
 	
-	public static float floorEven$I2F(int value)
+	public static float floorEvenI2F(int value)
 	{
 		if(value == 0) return 0.0f;
 		
 		return ((value & 1) == 0 ? value : value - 1);
 	}
 	
-	public static long floorEven$D2L(double value)
+	public static long floorEvenD2L(double value)
 	{
 		if(!Double.isFinite(value)) throw new NumberFormatException("Infinite or NaN");
 		if(value == 0.0) return 0l;
@@ -2796,7 +2996,7 @@ public class MathUtils
 		return (long)(((long)val & 1) == 0 ? val : val - 1);
 	}
 	
-	public static long floorEven$F2L(float value)
+	public static long floorEvenF2L(float value)
 	{
 		if(!Float.isFinite(value)) throw new NumberFormatException("Infinite or NaN");
 		if(value == 0.0f) return 0l;
@@ -2812,14 +3012,14 @@ public class MathUtils
 		return ((value & 1) == 0 ? value : value - 1);
 	}
 	
-	public static long floorEven$I2L(int value)
+	public static long floorEvenI2L(int value)
 	{
 		if(value == 0) return 0l;
 		
 		return ((value & 1) == 0 ? value : value - 1);
 	}
 	
-	public static int floorEven$F2I(float value)
+	public static int floorEvenF2I(float value)
 	{
 		if(!Float.isFinite(value)) throw new NumberFormatException("Infinite or NaN");
 		if(value == 0.0f) return 0;
@@ -2843,7 +3043,7 @@ public class MathUtils
 		return (((long)val & 1) == 0 ? val - 1 : val);
 	}
 	
-	public static double floorOdd$F2D(float value)
+	public static double floorOddF2D(float value)
 	{
 		if(!Float.isFinite(value)) return value;
 		
@@ -2851,12 +3051,12 @@ public class MathUtils
 		return (((long)val & 1) == 0 ? val - 1 : val);
 	}
 	
-	public static double floorOdd$L2D(long value)
+	public static double floorOddL2D(long value)
 	{
 		return ((value & 1) == 0 ? value - 1 : value);
 	}
 	
-	public static double floorOdd$I2D(int value)
+	public static double floorOddI2D(int value)
 	{
 		return ((value & 1) == 0 ? value - 1 : value);
 	}
@@ -2869,12 +3069,12 @@ public class MathUtils
 		return (float)(((long)val & 1) == 0 ? val - 1 : val);
 	}
 	
-	public static float floorOdd$I2F(int value)
+	public static float floorOddI2F(int value)
 	{
 		return ((value & 1) == 0 ? value - 1 : value);
 	}
 	
-	public static long floorOdd$D2L(double value)
+	public static long floorOddD2L(double value)
 	{
 		if(!Double.isFinite(value)) throw new NumberFormatException("Infinite or NaN");
 		
@@ -2882,7 +3082,7 @@ public class MathUtils
 		return (long)(((long)val & 1) == 0 ? val - 1 : val);
 	}
 	
-	public static long floorOdd$F2L(float value)
+	public static long floorOddF2L(float value)
 	{
 		if(!Float.isFinite(value)) throw new NumberFormatException("Infinite or NaN");
 		
@@ -2895,12 +3095,12 @@ public class MathUtils
 		return ((value & 1) == 0 ? value - 1 : value);
 	}
 	
-	public static long floorOdd$I2L(int value)
+	public static long floorOddI2L(int value)
 	{
 		return ((value & 1) == 0 ? value - 1 : value);
 	}
 	
-	public static int floorOdd$F2I(float value)
+	public static int floorOddF2I(float value)
 	{
 		if(!Float.isFinite(value)) throw new NumberFormatException("Infinite or NaN");
 		
@@ -2921,7 +3121,7 @@ public class MathUtils
 		return (((long)val & 1) == 0 ? val - 1 : val);
 	}
 	
-	public static double floorOddZero$F2D(float value)
+	public static double floorOddZeroF2D(float value)
 	{
 		if(value == 0.0f || !Float.isFinite(value)) return value;
 		
@@ -2929,14 +3129,14 @@ public class MathUtils
 		return (((long)val & 1) == 0 ? val - 1 : val);
 	}
 	
-	public static double floorOddZero$L2D(long value)
+	public static double floorOddZeroL2D(long value)
 	{
 		if(value == 0) return 0.0;
 		
 		return ((value & 1) == 0 ? value - 1 : value);
 	}
 	
-	public static double floorOddZero$I2D(int value)
+	public static double floorOddZeroI2D(int value)
 	{
 		if(value == 0) return 0.0;
 		
@@ -2951,14 +3151,14 @@ public class MathUtils
 		return (float)(((long)val & 1) == 0 ? val - 1 : val);
 	}
 	
-	public static float floorOddZero$I2F(int value)
+	public static float floorOddZeroI2F(int value)
 	{
 		if(value == 0) return 0.0f;
 		
 		return ((value & 1) == 0 ? value - 1 : value);
 	}
 	
-	public static long floorOddZero$D2L(double value)
+	public static long floorOddZeroD2L(double value)
 	{
 		if(!Double.isFinite(value)) throw new NumberFormatException("Infinite or NaN");
 		if(value == 0.0) return 0l;
@@ -2967,7 +3167,7 @@ public class MathUtils
 		return (long)(((long)val & 1) == 0 ? val - 1 : val);
 	}
 	
-	public static long floorOddZero$F2L(float value)
+	public static long floorOddZeroF2L(float value)
 	{
 		if(!Float.isFinite(value)) throw new NumberFormatException("Infinite or NaN");
 		if(value == 0.0f) return 0l;
@@ -2983,14 +3183,14 @@ public class MathUtils
 		return ((value & 1) == 0 ? value - 1 : value);
 	}
 	
-	public static long floorOddZero$I2L(int value)
+	public static long floorOddZeroI2L(int value)
 	{
 		if(value == 0) return 0l;
 		
 		return ((value & 1) == 0 ? value - 1 : value);
 	}
 	
-	public static int floorOddZero$F2I(float value)
+	public static int floorOddZeroF2I(float value)
 	{
 		if(!Float.isFinite(value)) throw new NumberFormatException("Infinite or NaN");
 		if(value == 0.0f) return 0;
@@ -3014,7 +3214,7 @@ public class MathUtils
 		return (mid + (value >= mid ? 1 : -1)); 
 	}
 	
-	public static double roundEven$F2D(float value)
+	public static double roundEvenF2D(float value)
 	{
 		if(value == 0.0f || !Float.isFinite(value)) return value;
 		
@@ -3030,7 +3230,7 @@ public class MathUtils
 		return (float)(mid + (value >= mid ? 1 : -1)); 
 	}
 	
-	public static long roundEven$D2L(double value)
+	public static long roundEvenD2L(double value)
 	{
 		if(!Double.isFinite(value)) throw new NumberFormatException("Infinite or NaN");
 		if(value == 0.0) return 0l;
@@ -3039,7 +3239,7 @@ public class MathUtils
 		return (long)(mid + (value >= mid ? 1 : -1)); 
 	}
 	
-	public static long roundEven$F2L(float value)
+	public static long roundEvenF2L(float value)
 	{
 		if(!Float.isFinite(value)) throw new NumberFormatException("Infinite or NaN");
 		if(value == 0.0f) return 0l;
@@ -3048,7 +3248,7 @@ public class MathUtils
 		return (long)(mid + (value >= mid ? 1 : -1)); 
 	}
 	
-	public static int roundEven$F2I(float value)
+	public static int roundEvenF2I(float value)
 	{
 		if(!Float.isFinite(value)) throw new NumberFormatException("Infinite or NaN");
 		if(value == 0.0f) return 0;
@@ -3065,7 +3265,7 @@ public class MathUtils
 		return (mid + (value >= mid ? 1 : -1)); 
 	}
 	
-	public static double roundOdd$F2D(float value)
+	public static double roundOddF2D(float value)
 	{
 		if(!Float.isFinite(value)) return value;
 		
@@ -3081,7 +3281,7 @@ public class MathUtils
 		return (float)(mid + (value >= mid ? 1 : -1)); 
 	}
 	
-	public static long roundOdd$D2L(double value)
+	public static long roundOddD2L(double value)
 	{
 		if(!Double.isFinite(value)) throw new NumberFormatException("Infinite or NaN");
 		
@@ -3089,7 +3289,7 @@ public class MathUtils
 		return (long)(mid + (value >= mid ? 1 : -1)); 
 	}
 	
-	public static long roundOdd$F2L(float value)
+	public static long roundOddF2L(float value)
 	{
 		if(!Float.isFinite(value)) throw new NumberFormatException("Infinite or NaN");
 		
@@ -3097,7 +3297,7 @@ public class MathUtils
 		return (long)(mid + (value >= mid ? 1 : -1)); 
 	}
 	
-	public static int roundOdd$F2I(float value)
+	public static int roundOddF2I(float value)
 	{
 		if(!Float.isFinite(value)) throw new NumberFormatException("Infinite or NaN");
 		
@@ -3113,7 +3313,7 @@ public class MathUtils
 		return (mid + (value >= mid ? 1 : -1)); 
 	}
 	
-	public static double roundOddZero$F2D(float value)
+	public static double roundOddZeroF2D(float value)
 	{
 		if(value == 0.0f || !Float.isFinite(value)) return value;
 		
@@ -3129,7 +3329,7 @@ public class MathUtils
 		return (float)(mid + (value >= mid ? 1 : -1)); 
 	}
 	
-	public static long roundOddZero$D2L(double value)
+	public static long roundOddZeroD2L(double value)
 	{
 		if(!Double.isFinite(value)) throw new NumberFormatException("Infinite or NaN");
 		if(value == 0.0) return 0l;
@@ -3138,7 +3338,7 @@ public class MathUtils
 		return (long)(mid + (value >= mid ? 1 : -1)); 
 	}
 	
-	public static long roundOddZero$F2L(float value)
+	public static long roundOddZeroF2L(float value)
 	{
 		if(!Float.isFinite(value)) throw new NumberFormatException("Infinite or NaN");
 		if(value == 0.0f) return 0l;
@@ -3147,7 +3347,7 @@ public class MathUtils
 		return (long)(mid + (value >= mid ? 1 : -1)); 
 	}
 	
-	public static int roundOddZero$F2I(float value)
+	public static int roundOddZeroF2I(float value)
 	{
 		if(!Float.isFinite(value)) throw new NumberFormatException("Infinite or NaN");
 		if(value == 0.0f) return 0;
@@ -3163,21 +3363,21 @@ public class MathUtils
 		return (Math.ceil(value / x) * x);
 	}
 	
-	public static double ceilMultiple$F2D(float value, double x)
+	public static double ceilMultipleF2D(float value, double x)
 	{
 		if(value == 0.0f) return 0;
 		
 		return (Math.ceil(value / x) * x);
 	}
 	
-	public static double ceilMultiple$L2D(long value, double x)
+	public static double ceilMultipleL2D(long value, double x)
 	{
 		if(value == 0l) return 0;
 		
 		return (Math.ceil(value / x) * x);
 	}
 	
-	public static double ceilMultiple$I2D(int value, double x)
+	public static double ceilMultipleI2D(int value, double x)
 	{
 		if(value == 0) return 0;
 		
@@ -3191,14 +3391,14 @@ public class MathUtils
 		return (float)(Math.ceil(value / x) * x);
 	}
 	
-	public static float ceilMultiple$I2F(int value, float x)
+	public static float ceilMultipleI2F(int value, float x)
 	{
 		if(value == 0) return 0.0f;
 		
 		return (float)(Math.ceil(value / x) * x);
 	}
 	
-	public static long ceilMultiple$D2L(double value, long x)
+	public static long ceilMultipleD2L(double value, long x)
 	{
 		if(!Double.isFinite(value)) throw new NumberFormatException("Infinite or NaN");
 		if(value == 0.0) return 0l;
@@ -3206,7 +3406,7 @@ public class MathUtils
 		return (long)(Math.ceil(value / x) * x);
 	}
 	
-	public static long ceilMultiple$F2L(float value, long x)
+	public static long ceilMultipleF2L(float value, long x)
 	{
 		if(!Float.isFinite(value)) throw new NumberFormatException("Infinite or NaN");
 		if(value == 0.0f) return 0l;
@@ -3221,14 +3421,14 @@ public class MathUtils
 		return (long)(Math.ceil(value / x) * x);
 	}
 	
-	public static long ceilMultiple$I2L(int value, long x)
+	public static long ceilMultipleI2L(int value, long x)
 	{
 		if(value == 0) return 0l;
 		
 		return (long)(Math.ceil(value / x) * x);
 	}
 	
-	public static int ceilMultiple$F2I(float value, int x)
+	public static int ceilMultipleF2I(float value, int x)
 	{
 		if(!Float.isFinite(value)) throw new NumberFormatException("Infinite or NaN");
 		if(value == 0.0f) return 0;
@@ -3250,21 +3450,21 @@ public class MathUtils
 		return (Math.floor(value / x) * x);
 	}
 	
-	public static double floorMultiple$F2D(float value, double x)
+	public static double floorMultipleF2D(float value, double x)
 	{
 		if(value == 0.0f) return 0.0;
 		
 		return (Math.floor(value / x) * x);
 	}
 	
-	public static double floorMultiple$L2D(long value, double x)
+	public static double floorMultipleL2D(long value, double x)
 	{
 		if(value == 0l) return 0.0;
 		
 		return (Math.floor(value / x) * x);
 	}
 	
-	public static double floorMultiple$I2D(int value, double x)
+	public static double floorMultipleI2D(int value, double x)
 	{
 		if(value == 0) return 0.0;
 		
@@ -3278,14 +3478,14 @@ public class MathUtils
 		return (float)(Math.floor(value / x) * x);
 	}
 	
-	public static float floorMultiple$I2F(int value, float x)
+	public static float floorMultipleI2F(int value, float x)
 	{
 		if(value == 0) return 0.0f;
 		
 		return (float)(Math.floor(value / x) * x);
 	}
 	
-	public static long floorMultiple$D2L(double value, long x)
+	public static long floorMultipleD2L(double value, long x)
 	{
 		if(!Double.isFinite(value)) throw new NumberFormatException("Infinite or NaN");
 		if(value == 0.0) return 0l;
@@ -3293,7 +3493,7 @@ public class MathUtils
 		return (long)(Math.floor(value / x) * x);
 	}
 	
-	public static long floorMultiple$F2L(float value, long x)
+	public static long floorMultipleF2L(float value, long x)
 	{
 		if(!Float.isFinite(value)) throw new NumberFormatException("Infinite or NaN");
 		if(value == 0.0f) return 0l;
@@ -3308,14 +3508,14 @@ public class MathUtils
 		return (long)(Math.floor(value / x) * x);
 	}
 	
-	public static long floorMultiple$I2L(int value, long x)
+	public static long floorMultipleI2L(int value, long x)
 	{
 		if(value == 0) return 0l;
 		
 		return (long)(Math.floor(value / x) * x);
 	}
 	
-	public static int floorMultiple$F2I(float value, int x)
+	public static int floorMultipleF2I(float value, int x)
 	{
 		if(!Float.isFinite(value)) throw new NumberFormatException("Infinite or NaN");
 		if(value == 0.0f) return 0;
@@ -3337,21 +3537,21 @@ public class MathUtils
 		return (Math.round(value / x) * x);
 	}
 	
-	public static double roundMultiple$F2D(float value, double x)
+	public static double roundMultipleF2D(float value, double x)
 	{
 		if(value == 0.0f) return 0.0;
 		
 		return (Math.round(value / x) * x);
 	}
 	
-	public static double roundMultiple$L2D(long value, double x)
+	public static double roundMultipleL2D(long value, double x)
 	{
 		if(value == 0l) return 0.0;
 		
 		return (Math.round(value / x) * x);
 	}
 	
-	public static double roundMultiple$I2D(int value, double x)
+	public static double roundMultipleI2D(int value, double x)
 	{
 		if(value == 0) return 0.0;
 		
@@ -3365,14 +3565,14 @@ public class MathUtils
 		return (float)(Math.round(value / x) * x);
 	}
 	
-	public static float roundMultiple$I2F(int value, float x)
+	public static float roundMultipleI2F(int value, float x)
 	{
 		if(value == 0) return 0.0f;
 		
 		return (float)(Math.round(value / x) * x);
 	}
 	
-	public static long roundMultiple$D2L(double value, long x)
+	public static long roundMultipleD2L(double value, long x)
 	{
 		if(!Double.isFinite(value)) throw new NumberFormatException("Infinite or NaN");
 		if(value == 0.0) return 0l;
@@ -3380,7 +3580,7 @@ public class MathUtils
 		return (long)(Math.round(value / x) * x);
 	}
 	
-	public static long roundMultiple$F2L(float value, long x)
+	public static long roundMultipleF2L(float value, long x)
 	{
 		if(!Float.isFinite(value)) throw new NumberFormatException("Infinite or NaN");
 		if(value == 0.0f) return 0l;
@@ -3395,14 +3595,14 @@ public class MathUtils
 		return (long)(Math.round(value / x) * x);
 	}
 	
-	public static long roundMultiple$I2L(int value, long x)
+	public static long roundMultipleI2L(int value, long x)
 	{
 		if(value == 0) return 0l;
 		
 		return (long)(Math.round(value / x) * x);
 	}
 	
-	public static int roundMultiple$F2I(float value, int x)
+	public static int roundMultipleF2I(float value, int x)
 	{
 		if(!Float.isFinite(value)) throw new NumberFormatException("Infinite or NaN");
 		if(value == 0.0f) return 0;

@@ -1,7 +1,7 @@
 package org.barghos.impl.math.shapes;
 
 import org.barghos.api.core.tuple.floats.ITup3RF;
-import org.barghos.impl.math.matrix.IMat4RF;
+import org.barghos.api.math.matrix.IMat4RF;
 import org.barghos.impl.math.vector.Vec3F;
 
 public class Triangle3F
