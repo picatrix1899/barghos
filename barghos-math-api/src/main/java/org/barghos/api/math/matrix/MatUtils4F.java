@@ -12,7 +12,7 @@ import org.barghos.api.core.tuple.floats.ITup3RF;
 import org.barghos.api.core.tuple.floats.ITup3WF;
 import org.barghos.api.core.tuple.floats.ITup4RF;
 import org.barghos.api.core.tuple.floats.ITup4WF;
-import org.barghos.api.math.vector.VecUtils3F;
+import org.barghos.api.math.vector.RawVecUtils3F;
 
 // Row-Major
 // 00 01 02 03
@@ -5994,7 +5994,7 @@ public class MatUtils4F
 	    float forwardY = centerY - eyeY;
 	    float forwardZ = centerZ - eyeZ;
 	    
-	    float forwardInvLen = VecUtils3F.lenRc(forwardX, forwardY, forwardZ);
+	    float forwardInvLen = RawVecUtils3F.lenRc(forwardX, forwardY, forwardZ);
 	    
 	    forwardX *= forwardInvLen;
 	    forwardY *= forwardInvLen;
@@ -6005,7 +6005,7 @@ public class MatUtils4F
 	    float rightY = forwardZ * upX - forwardX * upZ;
 	    float rightZ = forwardX * upY - forwardY * upX;
 	    
-	    float rightInvLen = VecUtils3F.lenRc(rightX, rightY, rightZ);
+	    float rightInvLen = RawVecUtils3F.lenRc(rightX, rightY, rightZ);
 	    rightX *= rightInvLen;
 	    rightY *= rightInvLen;
 	    rightZ *= rightInvLen;

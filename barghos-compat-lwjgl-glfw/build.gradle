@@ -3,23 +3,12 @@ plugins {
   id 'eclipse'
 }
 
-configurations {
-    compileOnlyResolvable {
-        canBeResolved = true // Ermöglicht das Auflösen für Tasks
-        canBeConsumed = false // Verhindert, dass diese Konfiguration in das JAR-Artefakt eingeht
-        extendsFrom compileOnly
-    }
-}
-project.ext.lwjglVersion = "3.3.0"
-project.ext.lwjglNatives = "natives-windows"
-
 dependencies {
   api project(':barghos-core-impl')
   
   implementation platform("org.lwjgl:lwjgl-bom:$lwjglVersion")
-  
   implementation "org.lwjgl:lwjgl-glfw"
-  runtimeOnly "org.lwjgl:lwjgl-glfw::$lwjglNatives"
+  runtimeOnly "org.lwjgl:lwjgl-glfw::natives-windows"
 }
 
 publishing {
@@ -43,5 +32,3 @@ eclipse {
 	comment = ''
   }
 }
-
-tasks.withType(Javadoc).all { failOnError = false }

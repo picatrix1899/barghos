@@ -3770,30 +3770,7 @@ public class VecUtils2F
 	{
 		return func.apply(MathUtils.intLerp(alpha, t1v0, t2v0), MathUtils.intLerp(alpha, t1v1, t2v1));
 	}
-	
-	/**
-	 * Adds each component value of the second vector {@code v2} to the value of
-	 * the same component of the first vector {@code v1} and saves the result in
-	 * the given extraction parameter {@code res}.
-	 * 
-	 * <p>
-	 * The result array of the extraction parameter is required to have at least
-	 * two entries. Only the values at the indices 0 and 1 are set, the rest is
-	 * left as it is.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code res = v1 + v2}<br>
-	 * <br>
-	 * {@code res[0] = (t1.x + t2.x)}<br>
-	 * {@code res[1] = (t1.y + t2.y)}
-	 * 
-	 * @param v1 The first vector.
-	 * @param v2 The second vector.
-	 * @param res The extraction parameter containing the result array.
-	 * 
-	 * @return The result array from the extraction parameter with the result.
-	 */
+
 	public static float[] add(ITup2RF t1, ITup2RF t2, @ExtractionParam float[] res)
 	{
 		res[0] = t1.v0() + t2.v0();
@@ -3922,26 +3899,6 @@ public class VecUtils2F
 		return res;
 	}
 
-	/**
-	 * Adds the second vector {@code (t2)} to the first vector {@code (v1)} and saves the result in
-	 * the given extraction parameter object.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code v1 + v2}
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v1
-	 *     The first vector.
-	 * @param v2
-	 *     The second vector.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
 	public static <T extends ITup2WF> T add(ITup2RF t1, ITup2RF t2, @ExtractionParam T res)
 	{
 		res.set(t1.v0() + t2.v0(), t1.v1() + t2.v1());
@@ -4053,27 +4010,7 @@ public class VecUtils2F
 		
 		return res;
 	}
-	
-	/**
-	 * Adds the second vector {@code (t2)} to the first vector {@code (v1)} and saves the result in
-	 * the given extraction parameter object.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code v1 + v2}
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v1
-	 *     The first vector.
-	 * @param v2
-	 *     The second vector.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
+
 	public static <T> T addFunc(ITup2RF t1, ITup2RF t2, IFunc2F<T> func)
 	{
 		return func.apply(t1.v0() + t2.v0(), t1.v1() + t2.v1());
@@ -4153,24 +4090,7 @@ public class VecUtils2F
 	{
 		return func.apply(t1v0 + t2v0, t1v1 + t2v1);
 	}
-	
-	/**
-	 * Subtracts the second vector {@code (t2)} from the first vector {@code (v1)} and saves the
-	 * result in the given extraction parameter.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code v1 - v2}
-	 * 
-	 * @param v1
-	 *     The first vector.
-	 * @param v2
-	 *     The second vector.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
+
 	public static float[] sub(ITup2RF t1, ITup2RF t2, @ExtractionParam float[] res)
 	{
 		res[0] = t1.v0() - t2.v0();
@@ -4490,24 +4410,7 @@ public class VecUtils2F
 	{
 		return func.apply(t1v0 - t2v0, t1v1 - t2v1);
 	}
-	
-	/**
-	 * Multiplies the first vector {@code (v1)} with the second vector {@code (t2)} and saves the
-	 * result in the given extraction parameter.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code (v1 * v2}
-	 * 
-	 * @param v1
-	 *     The first vector.
-	 * @param v2
-	 *     The second vector.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
+
 	public static float[] mul(ITup2RF t1, ITup2RF t2, @ExtractionParam float[] res)
 	{
 		res[0] = t1.v0() * t2.v0();
@@ -4828,24 +4731,7 @@ public class VecUtils2F
 	{
 		return func.apply(t1v0 * t2v0, t1v1 * t2v1);
 	}
-	
-	/**
-	 * Divides the first vector {@code (v1)} by the second vector [@code (t2)} and saves the result
-	 * in the given extraction parameter.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code v1 / v2}
-	 * 
-	 * @param v1
-	 *     The first vector.
-	 * @param v2
-	 *     The second vector.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
+
 	public static float[] div(ITup2RF t1, ITup2RF t2, @ExtractionParam float[] res)
 	{
 		res[0] = t1.v0() / t2.v0();
@@ -5165,36 +5051,7 @@ public class VecUtils2F
 	{
 		return func.apply(t1v0 / t2v0, t1v1 / t2v1);
 	}
-	
-	/**
-	 * Multiplies the given vector {@code (v1)} with the given vector {@code (t2)}, adds the given
-	 * vector {@code (v3)} to the product result and saves the result in the given extraction
-	 * parameter.
-	 * 
-	 * <p>
-	 * This performs a {@link Math#fma(float, float, float)} style fused multiplication and
-	 * addition. The actual way of calculation depends on the implementation of the used
-	 * {@link MathProvider}.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code  v1 * v2 + v3}
-	 * 
-	 * @param v1
-	 *     The first multiplicant vector.
-	 * @param v2
-	 *     The second multiplicant vector.
-	 * @param v3
-	 *     The addend vector.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
+
 	public static float[] fma(ITup2RF t1, ITup2RF t2, ITup2RF t3, @ExtractionParam float[] res)
 	{
 		res[0] = MathUtils.fma(t1.v0(), t2.v0(), t3.v0());
@@ -6474,18 +6331,7 @@ public class VecUtils2F
 	{
 		return func.apply(MathUtils.fma(t1v0, t2v0, t3v0), MathUtils.fma(t1v1, t2v1, t3v1));
 	}
-	
-	/**
-	 * Truncates the decimals of the components of the vector {@code (v)} and saves the result in
-	 * the extraction parameter.
-	 * 
-	 * @param v
-	 *     The vector.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
+
 	public static float[] trunc(ITup2RF v, @ExtractionParam float[] res)
 	{
 		res[0] = (int)v.v0();
@@ -6517,21 +6363,7 @@ public class VecUtils2F
 		
 		return res;
 	}
-	
-	/**
-	 * Truncates the decimals of the components of the vector {@code (v)} and saves the result in
-	 * the given extraction parameter object.
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v
-	 *     The vector.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
+
 	public static <T extends ITup2WF> T trunc(ITup2RF v, @ExtractionParam T res)
 	{
 		res.set((int)v.v0(), (int)v.v1());
@@ -6560,20 +6392,6 @@ public class VecUtils2F
 		return res;
 	}
 
-	/**
-	 * Truncates the decimals of the components of the vector {@code (v)} and saves the result in
-	 * the given extraction parameter object.
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v
-	 *     The vector.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
 	public static <T> T truncFunc(ITup2RF v, IFunc2F<T> func)
 	{
 		return func.apply((int)v.v0(), (int)v.v1());
@@ -6593,18 +6411,7 @@ public class VecUtils2F
 	{
 		return func.apply((int)v0, (int)v1);
 	}
-	
-	/**
-	 * Calculates the absolute value of the component values of the vector {@code (v)} and saves the
-	 * result in the extraction parameter.
-	 * 
-	 * @param v
-	 *     The vector.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
+
 	public static float[] abs(ITup2RF v, @ExtractionParam float[] res)
 	{
 		res[0] = MathUtils.abs(v.v0());
@@ -6637,20 +6444,6 @@ public class VecUtils2F
 		return res;
 	}
 
-	/**
-	 * Calculates the absolute value of the component values of the vector {@code (v)} and saves the
-	 * result in the given extraction parameter object.
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v
-	 *     The vector.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
 	public static <T extends ITup2WF> T abs(ITup2RF v, @ExtractionParam T res)
 	{
 		res.set(MathUtils.abs(v.v0()), MathUtils.abs(v.v1()));
@@ -6679,20 +6472,6 @@ public class VecUtils2F
 		return res;
 	}
 
-	/**
-	 * Calculates the absolute value of the component values of the vector {@code (v)} and saves the
-	 * result in the given extraction parameter object.
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v
-	 *     The vector.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
 	public static <T> T absFunc(ITup2RF v, IFunc2F<T> func)
 	{
 		return func.apply(MathUtils.abs(v.v0()), MathUtils.abs(v.v1()));
@@ -6712,139 +6491,407 @@ public class VecUtils2F
 	{
 		return func.apply(MathUtils.abs(v0), MathUtils.abs(v1));
 	}
-	
-	/**
-	 * Calculates the {@link Math#signum(float) signum} of the components of the given vector
-	 * {@code (v)} and saves the result in the extraction parameter.
-	 * 
-	 * @param v
-	 *     The vector.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
-	public static float[] sign(ITup2RF v, @ExtractionParam float[] res)
+
+	public static float[] signum(ITup2RF v, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.sign(v.v0());
-		res[1] = MathUtils.sign(v.v1());
+		res[0] = MathUtils.signum(v.v0());
+		res[1] = MathUtils.signum(v.v1());
 		
 		return res;
 	}
 
-	public static float[] sign(ITupRF v, @ExtractionParam float[] res)
+	public static float[] signum(ITupRF v, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.sign(v.getAt(0));
-		res[1] = MathUtils.sign(v.getAt(1));
+		res[0] = MathUtils.signum(v.getAt(0));
+		res[1] = MathUtils.signum(v.getAt(1));
 		
 		return res;
 	}
 	
-	public static float[] sign(float[] v, @ExtractionParam float[] res)
+	public static float[] signum(float[] v, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.sign(v[0]);
-		res[1] = MathUtils.sign(v[1]);
+		res[0] = MathUtils.signum(v[0]);
+		res[1] = MathUtils.signum(v[1]);
 		
 		return res;
 	}
 
-	public static float[] sign(float v0, float v1, @ExtractionParam float[] res)
+	public static float[] signum(float v0, float v1, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.sign(v0);
-		res[1] = MathUtils.sign(v1);
+		res[0] = MathUtils.signum(v0);
+		res[1] = MathUtils.signum(v1);
 		
 		return res;
 	}
 
-	/**
-	 * Calculates the {@link Math#signum(float) signum} of the components of the given vector
-	 * {@code (v)} and saves the result in the given extraction parameter object.
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v
-	 *     The vector as an array with at leasts two entries.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends ITup2WF> T sign(ITup2RF v, @ExtractionParam T res)
+	public static <T extends ITup2WF> T signum(ITup2RF v, @ExtractionParam T res)
 	{
-		res.set(MathUtils.sign(v.v0()), MathUtils.sign(v.v1()));
+		res.set(MathUtils.signum(v.v0()), MathUtils.signum(v.v1()));
 		
 		return res;
 	}
 
-	public static <T extends ITup2WF> T sign(ITupRF v, @ExtractionParam T res)
+	public static <T extends ITup2WF> T signum(ITupRF v, @ExtractionParam T res)
 	{
-		res.set(MathUtils.sign(v.getAt(0)), MathUtils.sign(v.getAt(1)));
+		res.set(MathUtils.signum(v.getAt(0)), MathUtils.signum(v.getAt(1)));
 		
 		return res;
 	}
 	
-	public static <T extends ITup2WF> T sign(float[] v, @ExtractionParam T res)
+	public static <T extends ITup2WF> T signum(float[] v, @ExtractionParam T res)
 	{
-		res.set(MathUtils.sign(v[0]), MathUtils.sign(v[1]));
-		
-		return res;
-	}
-
-	public static <T extends ITup2WF> T sign(float v0, float v1, @ExtractionParam T res)
-	{
-		res.set(MathUtils.sign(v0), MathUtils.sign(v1));
+		res.set(MathUtils.signum(v[0]), MathUtils.signum(v[1]));
 		
 		return res;
 	}
 
-	/**
-	 * Calculates the {@link Math#signum(float) signum} of the components of the given vector
-	 * {@code (v)} and saves the result in the given extraction parameter object.
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v
-	 *     The vector as an array with at leasts two entries.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T> T signFunc(ITup2RF v, IFunc2F<T> func)
+	public static <T extends ITup2WF> T signum(float v0, float v1, @ExtractionParam T res)
 	{
-		return func.apply(MathUtils.sign(v.v0()), MathUtils.sign(v.v1()));
+		res.set(MathUtils.signum(v0), MathUtils.signum(v1));
+		
+		return res;
+	}
+
+	public static <T> T signumFunc(ITup2RF v, IFunc2F<T> func)
+	{
+		return func.apply(MathUtils.signum(v.v0()), MathUtils.signum(v.v1()));
 	}
 	
-	public static <T> T signFunc(ITupRF v, IFunc2F<T> func)
+	public static <T> T signumFunc(ITupRF v, IFunc2F<T> func)
 	{
-		return func.apply(MathUtils.sign(v.getAt(0)), MathUtils.sign(v.getAt(1)));
+		return func.apply(MathUtils.signum(v.getAt(0)), MathUtils.signum(v.getAt(1)));
 	}
 	
-	public static <T> T signFunc(float[] v, IFunc2F<T> func)
+	public static <T> T signumFunc(float[] v, IFunc2F<T> func)
 	{
-		return func.apply(MathUtils.sign(v[0]), MathUtils.sign(v[1]));
+		return func.apply(MathUtils.signum(v[0]), MathUtils.signum(v[1]));
 	}
 	
-	public static <T> T signFunc(float v0, float v1, IFunc2F<T> func)
+	public static <T> T signumFunc(float v0, float v1, IFunc2F<T> func)
 	{
-		return func.apply(MathUtils.sign(v0), MathUtils.sign(v1));
+		return func.apply(MathUtils.signum(v0), MathUtils.signum(v1));
+	}
+
+	public static float[] signumEM(float tolerance, ITup2RF v, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.signumEM(tolerance, v.v0());
+		res[1] = MathUtils.signumEM(tolerance, v.v1());
+		
+		return res;
+	}
+
+	public static float[] signumEM(float tolerance, ITupRF v, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.signumEM(tolerance, v.getAt(0));
+		res[1] = MathUtils.signumEM(tolerance, v.getAt(1));
+		
+		return res;
 	}
 	
-	/**
-	 * Negates the vector {@code (v)} and saves the result in the given extraction parameter.
-	 * 
-	 * <p>
-	 * Operation: {@code -v}
-	 * 
-	 * @param v
-	 *     The vector.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
+	public static float[] signumEM(float tolerance, float[] v, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.signumEM(tolerance, v[0]);
+		res[1] = MathUtils.signumEM(tolerance, v[1]);
+		
+		return res;
+	}
+
+	public static float[] signumEM(float tolerance, float v0, float v1, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.signumEM(tolerance, v0);
+		res[1] = MathUtils.signumEM(tolerance, v1);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T signumEM(float tolerance, ITup2RF v, @ExtractionParam T res)
+	{
+		res.set(MathUtils.signumEM(tolerance, v.v0()), MathUtils.signumEM(tolerance, v.v1()));
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T signumEM(float tolerance, ITupRF v, @ExtractionParam T res)
+	{
+		res.set(MathUtils.signumEM(tolerance, v.getAt(0)), MathUtils.signumEM(tolerance, v.getAt(1)));
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T signumEM(float tolerance, float[] v, @ExtractionParam T res)
+	{
+		res.set(MathUtils.signumEM(tolerance, v[0]), MathUtils.signumEM(tolerance, v[1]));
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T signumEM(float tolerance, float v0, float v1, @ExtractionParam T res)
+	{
+		res.set(MathUtils.signumEM(tolerance, v0), MathUtils.signumEM(tolerance, v1));
+		
+		return res;
+	}
+
+	public static <T> T signumFuncEM(float tolerance, ITup2RF v, IFunc2F<T> func)
+	{
+		return func.apply(MathUtils.signumEM(tolerance, v.v0()), MathUtils.signumEM(tolerance, v.v1()));
+	}
+	
+	public static <T> T signumFuncEM(float tolerance, ITupRF v, IFunc2F<T> func)
+	{
+		return func.apply(MathUtils.signumEM(tolerance, v.getAt(0)), MathUtils.signumEM(tolerance, v.getAt(1)));
+	}
+	
+	public static <T> T signumFuncEM(float tolerance, float[] v, IFunc2F<T> func)
+	{
+		return func.apply(MathUtils.signumEM(tolerance, v[0]), MathUtils.signumEM(tolerance, v[1]));
+	}
+	
+	public static <T> T signumFuncEM(float tolerance, float v0, float v1, IFunc2F<T> func)
+	{
+		return func.apply(MathUtils.signumEM(tolerance, v0), MathUtils.signumEM(tolerance, v1));
+	}
+
+	public static float[] signumEM4(ITup2RF v, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.signumEM4(v.v0());
+		res[1] = MathUtils.signumEM4(v.v1());
+		
+		return res;
+	}
+
+	public static float[] signumEM4(ITupRF v, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.signumEM4(v.getAt(0));
+		res[1] = MathUtils.signumEM4(v.getAt(1));
+		
+		return res;
+	}
+	
+	public static float[] signumEM4(float[] v, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.signumEM4(v[0]);
+		res[1] = MathUtils.signumEM4(v[1]);
+		
+		return res;
+	}
+
+	public static float[] signumEM4(float v0, float v1, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.signumEM4(v0);
+		res[1] = MathUtils.signumEM4(v1);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T signumEM4(ITup2RF v, @ExtractionParam T res)
+	{
+		res.set(MathUtils.signumEM4(v.v0()), MathUtils.signumEM4(v.v1()));
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T signumEM4(ITupRF v, @ExtractionParam T res)
+	{
+		res.set(MathUtils.signumEM4(v.getAt(0)), MathUtils.signumEM4(v.getAt(1)));
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T signumEM4(float[] v, @ExtractionParam T res)
+	{
+		res.set(MathUtils.signumEM4(v[0]), MathUtils.signumEM4(v[1]));
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T signumEM4(float v0, float v1, @ExtractionParam T res)
+	{
+		res.set(MathUtils.signumEM4(v0), MathUtils.signumEM4(v1));
+		
+		return res;
+	}
+
+	public static <T> T signumFuncEM4(ITup2RF v, IFunc2F<T> func)
+	{
+		return func.apply(MathUtils.signumEM4(v.v0()), MathUtils.signumEM4(v.v1()));
+	}
+	
+	public static <T> T signumFuncEM4(ITupRF v, IFunc2F<T> func)
+	{
+		return func.apply(MathUtils.signumEM4(v.getAt(0)), MathUtils.signumEM4(v.getAt(1)));
+	}
+	
+	public static <T> T signumFuncEM4(float[] v, IFunc2F<T> func)
+	{
+		return func.apply(MathUtils.signumEM4(v[0]), MathUtils.signumEM4(v[1]));
+	}
+	
+	public static <T> T signumFuncEM4(float v0, float v1, IFunc2F<T> func)
+	{
+		return func.apply(MathUtils.signumEM4(v0), MathUtils.signumEM4(v1));
+	}
+
+	public static float[] signumEM6(ITup2RF v, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.signumEM6(v.v0());
+		res[1] = MathUtils.signumEM6(v.v1());
+		
+		return res;
+	}
+
+	public static float[] signumEM6(ITupRF v, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.signumEM6(v.getAt(0));
+		res[1] = MathUtils.signumEM6(v.getAt(1));
+		
+		return res;
+	}
+	
+	public static float[] signumEM6(float[] v, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.signumEM6(v[0]);
+		res[1] = MathUtils.signumEM6(v[1]);
+		
+		return res;
+	}
+
+	public static float[] signumEM6(float v0, float v1, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.signumEM6(v0);
+		res[1] = MathUtils.signumEM6(v1);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T signumEM6(ITup2RF v, @ExtractionParam T res)
+	{
+		res.set(MathUtils.signumEM6(v.v0()), MathUtils.signumEM6(v.v1()));
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T signumEM6(ITupRF v, @ExtractionParam T res)
+	{
+		res.set(MathUtils.signumEM6(v.getAt(0)), MathUtils.signumEM6(v.getAt(1)));
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T signumEM6(float[] v, @ExtractionParam T res)
+	{
+		res.set(MathUtils.signumEM6(v[0]), MathUtils.signumEM6(v[1]));
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T signumEM6(float v0, float v1, @ExtractionParam T res)
+	{
+		res.set(MathUtils.signumEM6(v0), MathUtils.signumEM6(v1));
+		
+		return res;
+	}
+
+	public static <T> T signumFuncEM6(ITup2RF v, IFunc2F<T> func)
+	{
+		return func.apply(MathUtils.signumEM6(v.v0()), MathUtils.signumEM6(v.v1()));
+	}
+	
+	public static <T> T signumFuncEM6(ITupRF v, IFunc2F<T> func)
+	{
+		return func.apply(MathUtils.signumEM6(v.getAt(0)), MathUtils.signumEM6(v.getAt(1)));
+	}
+	
+	public static <T> T signumFuncEM6(float[] v, IFunc2F<T> func)
+	{
+		return func.apply(MathUtils.signumEM6(v[0]), MathUtils.signumEM6(v[1]));
+	}
+	
+	public static <T> T signumFuncEM6(float v0, float v1, IFunc2F<T> func)
+	{
+		return func.apply(MathUtils.signumEM6(v0), MathUtils.signumEM6(v1));
+	}
+
+	public static float[] signumEM8(ITup2RF v, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.signumEM8(v.v0());
+		res[1] = MathUtils.signumEM8(v.v1());
+		
+		return res;
+	}
+
+	public static float[] signumEM8(ITupRF v, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.signumEM8(v.getAt(0));
+		res[1] = MathUtils.signumEM8(v.getAt(1));
+		
+		return res;
+	}
+	
+	public static float[] signumEM8(float[] v, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.signumEM8(v[0]);
+		res[1] = MathUtils.signumEM8(v[1]);
+		
+		return res;
+	}
+
+	public static float[] signumEM8(float v0, float v1, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.signumEM8(v0);
+		res[1] = MathUtils.signumEM8(v1);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T signumEM8(ITup2RF v, @ExtractionParam T res)
+	{
+		res.set(MathUtils.signumEM8(v.v0()), MathUtils.signumEM8(v.v1()));
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T signumEM8(ITupRF v, @ExtractionParam T res)
+	{
+		res.set(MathUtils.signumEM8(v.getAt(0)), MathUtils.signumEM8(v.getAt(1)));
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T signumEM8(float[] v, @ExtractionParam T res)
+	{
+		res.set(MathUtils.signumEM8(v[0]), MathUtils.signumEM8(v[1]));
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T signumEM8(float v0, float v1, @ExtractionParam T res)
+	{
+		res.set(MathUtils.signumEM8(v0), MathUtils.signumEM8(v1));
+		
+		return res;
+	}
+
+	public static <T> T signumFuncEM8(ITup2RF v, IFunc2F<T> func)
+	{
+		return func.apply(MathUtils.signumEM8(v.v0()), MathUtils.signumEM8(v.v1()));
+	}
+	
+	public static <T> T signumFuncEM8(ITupRF v, IFunc2F<T> func)
+	{
+		return func.apply(MathUtils.signumEM8(v.getAt(0)), MathUtils.signumEM8(v.getAt(1)));
+	}
+	
+	public static <T> T signumFuncEM8(float[] v, IFunc2F<T> func)
+	{
+		return func.apply(MathUtils.signumEM8(v[0]), MathUtils.signumEM8(v[1]));
+	}
+	
+	public static <T> T signumFuncEM8(float v0, float v1, IFunc2F<T> func)
+	{
+		return func.apply(MathUtils.signumEM8(v0), MathUtils.signumEM8(v1));
+	}
+
 	public static float[] neg(ITup2RF v, @ExtractionParam float[] res)
 	{
 		res[0] = -v.v0();
@@ -6877,22 +6924,6 @@ public class VecUtils2F
 		return res;
 	}
 
-	/**
-	 * Negates the vector {@code (v)} and saves the result in the given extraction parameter object.
-	 * 
-	 * <p>
-	 * Operation: {@code -v}
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v
-	 *     The vector.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
 	public static <T extends ITup2WF> T neg(ITup2RF v, @ExtractionParam T res)
 	{
 		res.set(-v.v0(), -v.v1());
@@ -6921,22 +6952,6 @@ public class VecUtils2F
 		return res;
 	}
 
-	/**
-	 * Negates the vector {@code (v)} and saves the result in the given extraction parameter object.
-	 * 
-	 * <p>
-	 * Operation: {@code -v}
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v
-	 *     The vector.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
 	public static <T> T negFunc(ITup2RF v, IFunc2F<T> func)
 	{
 		return func.apply(-v.v0(), -v.v1());
@@ -6956,20 +6971,7 @@ public class VecUtils2F
 	{
 		return func.apply(-v0, -v1);
 	}
-	
-	/**
-	 * Inverses the vector {@code (v)} and saves the result in the given extraction parameter.
-	 * 
-	 * <p>
-	 * Operation: {@code 1.0 / v}
-	 * 
-	 * @param v
-	 *     The vector.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
+
 	public static float[] rec(ITup2RF v, @ExtractionParam float[] res)
 	{
 		res[0] = 1.0f / v.v0();
@@ -7002,23 +7004,6 @@ public class VecUtils2F
 		return res;
 	}
 
-	/**
-	 * Inverses the vector {@code (v)} and saves the result in the given extraction parameter
-	 * object.
-	 * 
-	 * <p>
-	 * Operation: {@code 1.0 / v}
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v
-	 *     The vector.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
 	public static <T extends ITup2WF> T rec(ITup2RF v, @ExtractionParam T res)
 	{
 		res.set(1.0f / v.v0(), 1.0f / v.v1());
@@ -7046,24 +7031,7 @@ public class VecUtils2F
 		
 		return res;
 	}
-	
-	/**
-	 * Inverses the vector {@code (v)} and saves the result in the given extraction parameter
-	 * object.
-	 * 
-	 * <p>
-	 * Operation: {@code 1.0 / v}
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v
-	 *     The vector.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
+
 	public static <T> T recFunc(ITup2RF v, IFunc2F<T> func)
 	{
 		return func.apply(1.0f / v.v0(), 1.0f / v.v1());
@@ -7083,23 +7051,7 @@ public class VecUtils2F
 	{
 		return func.apply(1.0f / v0, 1.0f / v1);
 	}
-	
-	/**
-	 * Returns the inverse (reciprocal) length (magnitude, norm) of the vector {@code (v)}.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code 1 / |v|}
-	 * 
-	 * @param v
-	 *     The vector.
-	 * 
-	 * @return The inverse length of the vector.
-	 */
+
 	public static float lenRc(ITup2RF v)
 	{
 		float v0 = v.v0();
@@ -7125,33 +7077,15 @@ public class VecUtils2F
 	{
 		return MathUtils.invSqrt(v0 * v0 + v1 * v1);
 	}
-	
-	/**
-	 * Returns the length (magnitude, norm) of the vector {@code (v)}.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code |v|}
-	 * 
-	 * @param v
-	 *     The vector.
-	 * 
-	 * @return The length of the vector.
-	 */
+
 	public static float len(ITup2RF v)
 	{
 		float v0 = v.v0();
 		float v1 = v.v1();
 		
-		float sqareLength = v0 * v0 + v1 * v1;
-		
-		if(sqareLength == 0.0f) return 0.0f;
-		
-		return MathUtils.sqrt(sqareLength);
+		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
+
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
 	
 	public static float len(ITupRF v)
@@ -7159,110 +7093,182 @@ public class VecUtils2F
 		float v0 = v.getAt(0);
 		float v1 = v.getAt(1);
 		
-		float sqareLength = v0 * v0 + v1 * v1;
-		
-		if(sqareLength == 0.0f) return 0.0f;
-		
-		return MathUtils.sqrt(sqareLength);
+		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
+
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
 
 	public static float len(float[] v)
 	{
-		float sqareLength = v[0] * v[0] + v[1] * v[1];
+		float v0 = v[0];
+		float v1 = v[1];
 		
-		if(sqareLength == 0.0f) return 0.0f;
+		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
 		
-		return MathUtils.sqrt(sqareLength);
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
 
 	public static float len(float v0, float v1)
 	{
-		float sqareLength = v0 * v0 + v1 * v1;
+		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
 		
-		if(sqareLength == 0.0f) return 0.0f;
-		
-		return MathUtils.sqrt(sqareLength);
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
-	
-	/**
-	 * Returns the length (magnitude, norm) of the vector {@code (v)}. If the values of all
-	 * components are within the margin defined by {@code (-tolerance <= value <= tolerance)} the
-	 * result will be zero.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code |v|}
-	 * 
-	 * @param v
-	 *     The vector.
-	 * @param tolerance
-	 *     The tolerance for defining the margin around zero. Must be positive.
-	 * 
-	 * @return The length of the vector.
-	 */
-	public static float len(float tolerance, ITup2RF v)
+
+	public static float lenEM(float tolerance, ITup2RF v)
 	{
 		float v0 = v.v0();
 		float v1 = v.v1();
 		
-		float sqareLength = v0 * v0 + v1 * v1;
-		
-		if(MathUtils.isZero(tolerance, sqareLength)) return 0.0f;
-		
-		return MathUtils.sqrt(sqareLength);
-	}
+		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
 
-	public static float len(float tolerance, ITupRF v)
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenEM(float tolerance, ITupRF v)
 	{
 		float v0 = v.getAt(0);
 		float v1 = v.getAt(1);
 		
-		float sqareLength = v0 * v0 + v1 * v1;
-		
-		if(MathUtils.isZero(tolerance, sqareLength)) return 0.0f;
-		
-		return MathUtils.sqrt(sqareLength);
-	}
-	
-	public static float len(float tolerance, float[] v)
-	{
-		float sqareLength = v[0] * v[0] + v[1] * v[1];
-		
-		if(MathUtils.isZero(tolerance, sqareLength)) return 0.0f;
-		
-		return MathUtils.sqrt(sqareLength);
+		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
+
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
 
-	public static float len(float tolerance, float v0, float v1)
+	public static float lenEM(float tolerance, float[] v)
 	{
-		float sqareLength = v0 * v0 + v1 * v1;
+		float v0 = v[0];
+		float v1 = v[1];
 		
-		if(MathUtils.isZero(tolerance, sqareLength)) return 0.0f;
+		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
 		
-		return MathUtils.sqrt(sqareLength);
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+
+	public static float lenEM(float tolerance, float v0, float v1)
+	{
+		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+
+	public static float lenEM4(ITup2RF v)
+	{
+		float v0 = v.v0();
+		float v1 = v.v1();
+		
+		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
 	
-	/**
-	 * Returns the squared length (magnitude, norm) of the vector {@code (x, y)}. It doesn't account
-	 * for zero-length vectors.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code |v|²}
-	 * 
-	 * @param v
-	 *     The vector.
-	 * 
-	 * @return The squared length of the vector.
-	 */
+	public static float lenEM4(ITupRF v)
+	{
+		float v0 = v.getAt(0);
+		float v1 = v.getAt(1);
+		
+		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+
+	public static float lenEM4(float[] v)
+	{
+		float v0 = v[0];
+		float v1 = v[1];
+		
+		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+
+	public static float lenEM4(float v0, float v1)
+	{
+		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+
+	public static float lenEM6(ITup2RF v)
+	{
+		float v0 = v.v0();
+		float v1 = v.v1();
+		
+		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenEM6(ITupRF v)
+	{
+		float v0 = v.getAt(0);
+		float v1 = v.getAt(1);
+		
+		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+
+	public static float lenEM6(float[] v)
+	{
+		float v0 = v[0];
+		float v1 = v[1];
+		
+		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+
+	public static float lenEM6(float v0, float v1)
+	{
+		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+
+	public static float lenEM8(ITup2RF v)
+	{
+		float v0 = v.v0();
+		float v1 = v.v1();
+		
+		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenEM8(ITupRF v)
+	{
+		float v0 = v.getAt(0);
+		float v1 = v.getAt(1);
+		
+		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+
+	public static float lenEM8(float[] v)
+	{
+		float v0 = v[0];
+		float v1 = v[1];
+		
+		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+
+	public static float lenEM8(float v0, float v1)
+	{
+		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+
 	public static float lenSq(ITup2RF v)
 	{
 		float v0 = v.v0();
 		float v1 = v.v1();
+		
+		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
 		
 		return v0 * v0 + v1 * v1;
 	}
@@ -7272,37 +7278,176 @@ public class VecUtils2F
 		float v0 = v.getAt(0);
 		float v1 = v.getAt(1);
 		
+		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
+		
 		return v0 * v0 + v1 * v1;
 	}
 
 	public static float lenSq(float[] v)
 	{
-		return v[0] * v[0] + v[1] * v[1];
+		float v0 = v[0];
+		float v1 = v[1];
+		
+		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
 	}
 
 	public static float lenSq(float v0, float v1)
 	{
+		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqEM(float tolerance, ITup2RF v)
+	{
+		float v0 = v.v0();
+		float v1 = v.v1();
+		
+		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
+		
 		return v0 * v0 + v1 * v1;
 	}
 	
-	/**
-	 * Normalizes the vector {@code (v)} and saves the result in the given extraction parameter.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code v / |v|}
-	 * 
-	 * @param v
-	 *     The vector.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
+	public static float lenSqEM(float tolerance, ITupRF v)
+	{
+		float v0 = v.getAt(0);
+		float v1 = v.getAt(1);
+		
+		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqEM(float tolerance, float[] v)
+	{
+		float v0 = v[0];
+		float v1 = v[1];
+		
+		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqEM(float tolerance, float v0, float v1)
+	{
+		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqEM4(ITup2RF v)
+	{
+		float v0 = v.v0();
+		float v1 = v.v1();
+		
+		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+	
+	public static float lenSqEM4(ITupRF v)
+	{
+		float v0 = v.getAt(0);
+		float v1 = v.getAt(1);
+		
+		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqEM4(float[] v)
+	{
+		float v0 = v[0];
+		float v1 = v[1];
+		
+		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqEM4(float v0, float v1)
+	{
+		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqEM6(ITup2RF v)
+	{
+		float v0 = v.v0();
+		float v1 = v.v1();
+		
+		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+	
+	public static float lenSqEM6(ITupRF v)
+	{
+		float v0 = v.getAt(0);
+		float v1 = v.getAt(1);
+		
+		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqEM6(float[] v)
+	{
+		float v0 = v[0];
+		float v1 = v[1];
+		
+		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqEM6(float v0, float v1)
+	{
+		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqEM8(ITup2RF v)
+	{
+		float v0 = v.v0();
+		float v1 = v.v1();
+		
+		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+	
+	public static float lenSqEM8(ITupRF v)
+	{
+		float v0 = v.getAt(0);
+		float v1 = v.getAt(1);
+		
+		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqEM8(float[] v)
+	{
+		float v0 = v[0];
+		float v1 = v[1];
+		
+		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqEM8(float v0, float v1)
+	{
+		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
 	public static float[] nrm(ITup2RF v, @ExtractionParam float[] res)
 	{
 		float v0 = v.v0();
@@ -7380,129 +7525,7 @@ public class VecUtils2F
 		
 		return res;
 	}
-	
-	/**
-	 * Normalizes the vector {@code (v)} and saves the result in the given extraction parameter. If
-	 * the values of all components are within the margin defined by
-	 * {@code (-tolerance <= value <= tolerance)} the result will be a zero vector.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code v / |v|}
-	 * 
-	 * @param v
-	 *     The vector.
-	 * @param tolerance
-	 *     The tolerance for defining the margin around zero. Must be positive.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
-	public static float[] nrm(float tolerance, ITup2RF v, @ExtractionParam float[] res)
-	{
-		float v0 = v.v0();
-		float v1 = v.v1();
-		
-		if (RawTupUtils2F.isZero(tolerance, v0, v1))
-		{
-			res[0] = 0.0f;
-			res[1] = 0.0f;
-			
-			return res;
-		}
-		
-		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
-		
-		res[0] = v0 * invLength;
-		res[1] = v1 * invLength;
-		
-		return res;
-	}
 
-	public static float[] nrm(float tolerance, ITupRF v, @ExtractionParam float[] res)
-	{
-		float v0 = v.getAt(0);
-		float v1 = v.getAt(1);
-		
-		if (RawTupUtils2F.isZero(tolerance, v0, v1))
-		{
-			res[0] = 0.0f;
-			res[1] = 0.0f;
-			
-			return res;
-		}
-		
-		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
-		
-		res[0] = v0 * invLength;
-		res[1] = v1 * invLength;
-		
-		return res;
-	}
-	
-	public static float[] nrm(float tolerance, float[] v, @ExtractionParam float[] res)
-	{
-		if (RawTupUtils2F.isZero(tolerance, v))
-		{
-			res[0] = 0.0f;
-			res[1] = 0.0f;
-			
-			return res;
-		}
-		
-		float invLength = MathUtils.invSqrt(v[0] * v[0] + v[1] * v[1]);
-		
-		res[0] = v[0] * invLength;
-		res[1] = v[1] * invLength;
-		
-		return res;
-	}
-
-	public static float[] nrm(float tolerance, float v0, float v1, @ExtractionParam float[] res)
-	{
-		if (RawTupUtils2F.isZero(tolerance, v0, v1))
-		{
-			res[0] = 0.0f;
-			res[1] = 0.0f;
-			
-			return res;
-		}
-		
-		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
-		
-		res[0] = v0 * invLength;
-		res[1] = v1 * invLength;
-		
-		return res;
-	}
-	
-	/**
-	 * Normalizes the vector {@code (v)} and saves the result in the given extraction parameter
-	 * object.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code v / |v|}
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v
-	 *     The vector.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
 	public static <T extends ITup2WF> T nrm(ITup2RF v, @ExtractionParam T res)
 	{
 		float v0 = v.v0();
@@ -7572,124 +7595,7 @@ public class VecUtils2F
 		
 		return res;
 	}
-	
-	/**
-	 * Normalizes the vector {@code (v)} and saves the result in the given extraction parameter
-	 * object. If the values of all components are within the margin defined by
-	 * {@code (-tolerance <= value <= tolerance)} the result will be a zero vector.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code v / |v|}
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v
-	 *     The vector.
-	 * @param tolerance
-	 *     The tolerance for defining the margin around zero. Must be positive.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T extends ITup2WF> T nrm(float tolerance, ITup2RF v, @ExtractionParam T res)
-	{
-		float v0 = v.v0();
-		float v1 = v.v1();
-		
-		if (RawTupUtils2F.isZero(tolerance, v0, v1))
-		{
-			res.set(0.0f, 0.0f);
-			
-			return res;
-		}
-		
-		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
-		
-		res.set(v0 * invLength, v1 * invLength);
-		
-		return res;
-	}
-	
-	public static <T extends ITup2WF> T nrm(float tolerance, ITupRF v, @ExtractionParam T res)
-	{
-		float v0 = v.getAt(0);
-		float v1 = v.getAt(1);
-		
-		if (RawTupUtils2F.isZero(tolerance, v0, v1))
-		{
-			res.set(0.0f, 0.0f);
-			
-			return res;
-		}
-		
-		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
-		
-		res.set(v0 * invLength, v1 * invLength);
-		
-		return res;
-	}
-	
-	public static <T extends ITup2WF> T nrm(float tolerance, float[] v, @ExtractionParam T res)
-	{
-		if (RawTupUtils2F.isZero(tolerance, v))
-		{
-			res.set(0.0f, 0.0f);
-			
-			return res;
-		}
-		
-		float invLength = MathUtils.invSqrt(v[0] * v[0] + v[1] * v[1]);
-		
-		res.set(v[0] * invLength, v[1] * invLength);
-		
-		return res;
-	}
 
-	public static <T extends ITup2WF> T nrm(float tolerance, float v0, float v1, @ExtractionParam T res)
-	{
-		if (RawTupUtils2F.isZero(tolerance, v0, v1))
-		{
-			res.set(0.0f, 0.0f);
-			
-			return res;
-		}
-		
-		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
-		
-		res.set(v0 * invLength, v1 * invLength);
-		
-		return res;
-	}
-	
-	/**
-	 * Normalizes the vector {@code (v)} and saves the result in the given extraction parameter
-	 * object.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code v / |v|}
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v
-	 *     The vector.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
 	public static <T> T nrmFunc(ITup2RF v, IFunc2F<T> func)
 	{
 		float v0 = v.v0();
@@ -7743,53 +7649,161 @@ public class VecUtils2F
 		
 		return func.apply(v0 * invLength, v1 * invLength);
 	}
-	
-	/**
-	 * Normalizes the vector {@code (v)} and saves the result in the given extraction parameter
-	 * object. If the values of all components are within the margin defined by
-	 * {@code (-tolerance <= value <= tolerance)} the result will be a zero vector.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code v / |v|}
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v
-	 *     The vector.
-	 * @param tolerance
-	 *     The tolerance for defining the margin around zero. Must be positive.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
-	public static <T> T nrmFunc(float tolerance, ITup2RF v, IFunc2F<T> func)
+
+	public static float[] nrmEM(float tolerance, ITup2RF v, @ExtractionParam float[] res)
 	{
 		float v0 = v.v0();
 		float v1 = v.v1();
-		
-		if (RawTupUtils2F.isZero(tolerance, v0, v1))
+
+		if (RawTupUtils2F.isZeroEM(tolerance, v0, v1))
 		{
-			return func.apply(0.0f, 0.0f);
+			res[0] = 0.0f;
+			res[1] = 0.0f;
+			
+			return res;
 		}
 		
 		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
 		
-		return func.apply(v0 * invLength, v1 * invLength);
+		res[0] = v0 * invLength;
+		res[1] = v1 * invLength;
+		
+		return res;
 	}
-	
-	public static <T> T nrmFunc(float tolerance, ITupRF v, IFunc2F<T> func)
+
+	public static float[] nrmEM(float tolerance, ITupRF v, @ExtractionParam float[] res)
 	{
 		float v0 = v.getAt(0);
 		float v1 = v.getAt(1);
 		
-		if (RawTupUtils2F.isZero(tolerance, v0, v1))
+		if (RawTupUtils2F.isZeroEM(tolerance, v0, v1))
+		{
+			res[0] = 0.0f;
+			res[1] = 0.0f;
+			
+			return res;
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		res[0] = v0 * invLength;
+		res[1] = v1 * invLength;
+		
+		return res;
+	}
+	
+	public static float[] nrmEM(float tolerance, float[] v, @ExtractionParam float[] res)
+	{
+		if (RawTupUtils2F.isZeroEM(tolerance, v))
+		{
+			res[0] = 0.0f;
+			res[1] = 0.0f;
+			
+			return res;
+		}
+		
+		float invLength = MathUtils.invSqrt(v[0] * v[0] + v[1] * v[1]);
+		
+		res[0] = v[0] * invLength;
+		res[1] = v[1] * invLength;
+		
+		return res;
+	}
+
+	public static float[] nrmEM(float tolerance, float v0, float v1, @ExtractionParam float[] res)
+	{
+		if (RawTupUtils2F.isZeroEM(tolerance, v0, v1))
+		{
+			res[0] = 0.0f;
+			res[1] = 0.0f;
+			
+			return res;
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		res[0] = v0 * invLength;
+		res[1] = v1 * invLength;
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T nrmEM(float tolerance, ITup2RF v, @ExtractionParam T res)
+	{
+		float v0 = v.v0();
+		float v1 = v.v1();
+		
+		if (RawTupUtils2F.isZeroEM(tolerance, v0, v1))
+		{
+			res.set(0.0f, 0.0f);
+			
+			return res;
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		res.set(v0 * invLength, v1 * invLength);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T nrmEM(float tolerance, ITupRF v, @ExtractionParam T res)
+	{
+		float v0 = v.getAt(0);
+		float v1 = v.getAt(1);
+		
+		if (RawTupUtils2F.isZeroEM(tolerance, v0, v1))
+		{
+			res.set(0.0f, 0.0f);
+			
+			return res;
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		res.set(v0 * invLength, v1 * invLength);
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T nrmEM(float tolerance, float[] v, @ExtractionParam T res)
+	{
+		if (RawTupUtils2F.isZeroEM(tolerance, v))
+		{
+			res.set(0.0f, 0.0f);
+			
+			return res;
+		}
+		
+		float invLength = MathUtils.invSqrt(v[0] * v[0] + v[1] * v[1]);
+		
+		res.set(v[0] * invLength, v[1] * invLength);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T nrmEM(float tolerance, float v0, float v1, @ExtractionParam T res)
+	{
+		if (RawTupUtils2F.isZeroEM(tolerance, v0, v1))
+		{
+			res.set(0.0f, 0.0f);
+			
+			return res;
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		res.set(v0 * invLength, v1 * invLength);
+		
+		return res;
+	}
+
+	public static <T> T nrmFuncEM(float tolerance, ITup2RF v, IFunc2F<T> func)
+	{
+		float v0 = v.v0();
+		float v1 = v.v1();
+		
+		if (RawTupUtils2F.isZeroEM(tolerance, v0, v1))
 		{
 			return func.apply(0.0f, 0.0f);
 		}
@@ -7799,9 +7813,24 @@ public class VecUtils2F
 		return func.apply(v0 * invLength, v1 * invLength);
 	}
 	
-	public static <T> T nrmFunc(float tolerance, float[] v, IFunc2F<T> func)
+	public static <T> T nrmFuncEM(float tolerance, ITupRF v, IFunc2F<T> func)
 	{
-		if (RawTupUtils2F.isZero(tolerance, v))
+		float v0 = v.getAt(0);
+		float v1 = v.getAt(1);
+		
+		if (RawTupUtils2F.isZeroEM(tolerance, v0, v1))
+		{
+			return func.apply(0.0f, 0.0f);
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		return func.apply(v0 * invLength, v1 * invLength);
+	}
+	
+	public static <T> T nrmFuncEM(float tolerance, float[] v, IFunc2F<T> func)
+	{
+		if (RawTupUtils2F.isZeroEM(tolerance, v))
 		{
 			return func.apply(0.0f, 0.0f);
 		}
@@ -7811,9 +7840,172 @@ public class VecUtils2F
 		return func.apply(v[0] * invLength, v[1] * invLength);
 	}
 	
-	public static <T> T nrmFunc(float tolerance, float v0, float v1, IFunc2F<T> func)
+	public static <T> T nrmFuncEM(float tolerance, float v0, float v1, IFunc2F<T> func)
 	{
-		if (RawTupUtils2F.isZero(tolerance, v0, v1))
+		if (RawTupUtils2F.isZeroEM(tolerance, v0, v1))
+		{
+			return func.apply(0.0f, 0.0f);
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		return func.apply(v0 * invLength, v1 * invLength);
+	}
+
+	public static float[] nrmEM4(ITup2RF v, @ExtractionParam float[] res)
+	{
+		float v0 = v.v0();
+		float v1 = v.v1();
+
+		if (RawTupUtils2F.isZeroEM4(v0, v1))
+		{
+			res[0] = 0.0f;
+			res[1] = 0.0f;
+			
+			return res;
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		res[0] = v0 * invLength;
+		res[1] = v1 * invLength;
+		
+		return res;
+	}
+
+	public static float[] nrmEM4(ITupRF v, @ExtractionParam float[] res)
+	{
+		float v0 = v.getAt(0);
+		float v1 = v.getAt(1);
+		
+		if (RawTupUtils2F.isZeroEM4(v0, v1))
+		{
+			res[0] = 0.0f;
+			res[1] = 0.0f;
+			
+			return res;
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		res[0] = v0 * invLength;
+		res[1] = v1 * invLength;
+		
+		return res;
+	}
+	
+	public static float[] nrmEM4(float[] v, @ExtractionParam float[] res)
+	{
+		if (RawTupUtils2F.isZeroEM4(v))
+		{
+			res[0] = 0.0f;
+			res[1] = 0.0f;
+			
+			return res;
+		}
+		
+		float invLength = MathUtils.invSqrt(v[0] * v[0] + v[1] * v[1]);
+		
+		res[0] = v[0] * invLength;
+		res[1] = v[1] * invLength;
+		
+		return res;
+	}
+
+	public static float[] nrmEM4(float v0, float v1, @ExtractionParam float[] res)
+	{
+		if (RawTupUtils2F.isZeroEM4(v0, v1))
+		{
+			res[0] = 0.0f;
+			res[1] = 0.0f;
+			
+			return res;
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		res[0] = v0 * invLength;
+		res[1] = v1 * invLength;
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T nrmEM4(ITup2RF v, @ExtractionParam T res)
+	{
+		float v0 = v.v0();
+		float v1 = v.v1();
+		
+		if (RawTupUtils2F.isZeroEM4(v0, v1))
+		{
+			res.set(0.0f, 0.0f);
+			
+			return res;
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		res.set(v0 * invLength, v1 * invLength);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T nrmEM4(ITupRF v, @ExtractionParam T res)
+	{
+		float v0 = v.getAt(0);
+		float v1 = v.getAt(1);
+		
+		if (RawTupUtils2F.isZeroEM4(v0, v1))
+		{
+			res.set(0.0f, 0.0f);
+			
+			return res;
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		res.set(v0 * invLength, v1 * invLength);
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T nrmEM4(float[] v, @ExtractionParam T res)
+	{
+		if (RawTupUtils2F.isZeroEM4(v))
+		{
+			res.set(0.0f, 0.0f);
+			
+			return res;
+		}
+		
+		float invLength = MathUtils.invSqrt(v[0] * v[0] + v[1] * v[1]);
+		
+		res.set(v[0] * invLength, v[1] * invLength);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T nrmEM4(float v0, float v1, @ExtractionParam T res)
+	{
+		if (RawTupUtils2F.isZeroEM4(v0, v1))
+		{
+			res.set(0.0f, 0.0f);
+			
+			return res;
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		res.set(v0 * invLength, v1 * invLength);
+		
+		return res;
+	}
+
+	public static <T> T nrmFuncEM4(ITup2RF v, IFunc2F<T> func)
+	{
+		float v0 = v.v0();
+		float v1 = v.v1();
+		
+		if (RawTupUtils2F.isZeroEM4(v0, v1))
 		{
 			return func.apply(0.0f, 0.0f);
 		}
@@ -7823,23 +8015,449 @@ public class VecUtils2F
 		return func.apply(v0 * invLength, v1 * invLength);
 	}
 	
-	/**
-	 * Rotates the vector {@code (v)} by the given angle in radians and saves the result in the
-	 * given extraction parameter.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * @param v
-	 *     The vector.
-	 * @param angle
-	 *     The angle in radians.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
+	public static <T> T nrmFuncEM4(ITupRF v, IFunc2F<T> func)
+	{
+		float v0 = v.getAt(0);
+		float v1 = v.getAt(1);
+		
+		if (RawTupUtils2F.isZeroEM4(v0, v1))
+		{
+			return func.apply(0.0f, 0.0f);
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		return func.apply(v0 * invLength, v1 * invLength);
+	}
+	
+	public static <T> T nrmFuncEM4(float[] v, IFunc2F<T> func)
+	{
+		if (RawTupUtils2F.isZeroEM4(v))
+		{
+			return func.apply(0.0f, 0.0f);
+		}
+		
+		float invLength = MathUtils.invSqrt(v[0] * v[0] + v[1] * v[1]);
+		
+		return func.apply(v[0] * invLength, v[1] * invLength);
+	}
+	
+	public static <T> T nrmFuncEM4(float v0, float v1, IFunc2F<T> func)
+	{
+		if (RawTupUtils2F.isZeroEM4(v0, v1))
+		{
+			return func.apply(0.0f, 0.0f);
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		return func.apply(v0 * invLength, v1 * invLength);
+	}
+
+	public static float[] nrmEM6(ITup2RF v, @ExtractionParam float[] res)
+	{
+		float v0 = v.v0();
+		float v1 = v.v1();
+
+		if (RawTupUtils2F.isZeroEM6(v0, v1))
+		{
+			res[0] = 0.0f;
+			res[1] = 0.0f;
+			
+			return res;
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		res[0] = v0 * invLength;
+		res[1] = v1 * invLength;
+		
+		return res;
+	}
+
+	public static float[] nrmEM6(ITupRF v, @ExtractionParam float[] res)
+	{
+		float v0 = v.getAt(0);
+		float v1 = v.getAt(1);
+		
+		if (RawTupUtils2F.isZeroEM6(v0, v1))
+		{
+			res[0] = 0.0f;
+			res[1] = 0.0f;
+			
+			return res;
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		res[0] = v0 * invLength;
+		res[1] = v1 * invLength;
+		
+		return res;
+	}
+	
+	public static float[] nrmEM6(float[] v, @ExtractionParam float[] res)
+	{
+		if (RawTupUtils2F.isZeroEM6(v))
+		{
+			res[0] = 0.0f;
+			res[1] = 0.0f;
+			
+			return res;
+		}
+		
+		float invLength = MathUtils.invSqrt(v[0] * v[0] + v[1] * v[1]);
+		
+		res[0] = v[0] * invLength;
+		res[1] = v[1] * invLength;
+		
+		return res;
+	}
+
+	public static float[] nrmEM6(float v0, float v1, @ExtractionParam float[] res)
+	{
+		if (RawTupUtils2F.isZeroEM6(v0, v1))
+		{
+			res[0] = 0.0f;
+			res[1] = 0.0f;
+			
+			return res;
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		res[0] = v0 * invLength;
+		res[1] = v1 * invLength;
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T nrmEM6(ITup2RF v, @ExtractionParam T res)
+	{
+		float v0 = v.v0();
+		float v1 = v.v1();
+		
+		if (RawTupUtils2F.isZeroEM6(v0, v1))
+		{
+			res.set(0.0f, 0.0f);
+			
+			return res;
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		res.set(v0 * invLength, v1 * invLength);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T nrmEM6(ITupRF v, @ExtractionParam T res)
+	{
+		float v0 = v.getAt(0);
+		float v1 = v.getAt(1);
+		
+		if (RawTupUtils2F.isZeroEM6(v0, v1))
+		{
+			res.set(0.0f, 0.0f);
+			
+			return res;
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		res.set(v0 * invLength, v1 * invLength);
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T nrmEM6(float[] v, @ExtractionParam T res)
+	{
+		if (RawTupUtils2F.isZeroEM6(v))
+		{
+			res.set(0.0f, 0.0f);
+			
+			return res;
+		}
+		
+		float invLength = MathUtils.invSqrt(v[0] * v[0] + v[1] * v[1]);
+		
+		res.set(v[0] * invLength, v[1] * invLength);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T nrmEM6(float v0, float v1, @ExtractionParam T res)
+	{
+		if (RawTupUtils2F.isZeroEM6(v0, v1))
+		{
+			res.set(0.0f, 0.0f);
+			
+			return res;
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		res.set(v0 * invLength, v1 * invLength);
+		
+		return res;
+	}
+
+	public static <T> T nrmFuncEM6(ITup2RF v, IFunc2F<T> func)
+	{
+		float v0 = v.v0();
+		float v1 = v.v1();
+		
+		if (RawTupUtils2F.isZeroEM6(v0, v1))
+		{
+			return func.apply(0.0f, 0.0f);
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		return func.apply(v0 * invLength, v1 * invLength);
+	}
+	
+	public static <T> T nrmFuncEM6(ITupRF v, IFunc2F<T> func)
+	{
+		float v0 = v.getAt(0);
+		float v1 = v.getAt(1);
+		
+		if (RawTupUtils2F.isZeroEM6(v0, v1))
+		{
+			return func.apply(0.0f, 0.0f);
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		return func.apply(v0 * invLength, v1 * invLength);
+	}
+	
+	public static <T> T nrmFuncEM6(float[] v, IFunc2F<T> func)
+	{
+		if (RawTupUtils2F.isZeroEM6(v))
+		{
+			return func.apply(0.0f, 0.0f);
+		}
+		
+		float invLength = MathUtils.invSqrt(v[0] * v[0] + v[1] * v[1]);
+		
+		return func.apply(v[0] * invLength, v[1] * invLength);
+	}
+	
+	public static <T> T nrmFuncEM6(float v0, float v1, IFunc2F<T> func)
+	{
+		if (RawTupUtils2F.isZeroEM6(v0, v1))
+		{
+			return func.apply(0.0f, 0.0f);
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		return func.apply(v0 * invLength, v1 * invLength);
+	}
+
+	public static float[] nrmEM8(ITup2RF v, @ExtractionParam float[] res)
+	{
+		float v0 = v.v0();
+		float v1 = v.v1();
+
+		if (RawTupUtils2F.isZeroEM8(v0, v1))
+		{
+			res[0] = 0.0f;
+			res[1] = 0.0f;
+			
+			return res;
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		res[0] = v0 * invLength;
+		res[1] = v1 * invLength;
+		
+		return res;
+	}
+
+	public static float[] nrmEM8(ITupRF v, @ExtractionParam float[] res)
+	{
+		float v0 = v.getAt(0);
+		float v1 = v.getAt(1);
+		
+		if (RawTupUtils2F.isZeroEM8(v0, v1))
+		{
+			res[0] = 0.0f;
+			res[1] = 0.0f;
+			
+			return res;
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		res[0] = v0 * invLength;
+		res[1] = v1 * invLength;
+		
+		return res;
+	}
+	
+	public static float[] nrmEM8(float[] v, @ExtractionParam float[] res)
+	{
+		if (RawTupUtils2F.isZeroEM8(v))
+		{
+			res[0] = 0.0f;
+			res[1] = 0.0f;
+			
+			return res;
+		}
+		
+		float invLength = MathUtils.invSqrt(v[0] * v[0] + v[1] * v[1]);
+		
+		res[0] = v[0] * invLength;
+		res[1] = v[1] * invLength;
+		
+		return res;
+	}
+
+	public static float[] nrmEM8(float v0, float v1, @ExtractionParam float[] res)
+	{
+		if (RawTupUtils2F.isZeroEM8(v0, v1))
+		{
+			res[0] = 0.0f;
+			res[1] = 0.0f;
+			
+			return res;
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		res[0] = v0 * invLength;
+		res[1] = v1 * invLength;
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T nrmEM8(ITup2RF v, @ExtractionParam T res)
+	{
+		float v0 = v.v0();
+		float v1 = v.v1();
+		
+		if (RawTupUtils2F.isZeroEM8(v0, v1))
+		{
+			res.set(0.0f, 0.0f);
+			
+			return res;
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		res.set(v0 * invLength, v1 * invLength);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T nrmEM8(ITupRF v, @ExtractionParam T res)
+	{
+		float v0 = v.getAt(0);
+		float v1 = v.getAt(1);
+		
+		if (RawTupUtils2F.isZeroEM8(v0, v1))
+		{
+			res.set(0.0f, 0.0f);
+			
+			return res;
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		res.set(v0 * invLength, v1 * invLength);
+		
+		return res;
+	}
+	
+	public static <T extends ITup2WF> T nrmEM8(float[] v, @ExtractionParam T res)
+	{
+		if (RawTupUtils2F.isZeroEM8(v))
+		{
+			res.set(0.0f, 0.0f);
+			
+			return res;
+		}
+		
+		float invLength = MathUtils.invSqrt(v[0] * v[0] + v[1] * v[1]);
+		
+		res.set(v[0] * invLength, v[1] * invLength);
+		
+		return res;
+	}
+
+	public static <T extends ITup2WF> T nrmEM8(float v0, float v1, @ExtractionParam T res)
+	{
+		if (RawTupUtils2F.isZeroEM8(v0, v1))
+		{
+			res.set(0.0f, 0.0f);
+			
+			return res;
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		res.set(v0 * invLength, v1 * invLength);
+		
+		return res;
+	}
+
+	public static <T> T nrmFuncEM8(ITup2RF v, IFunc2F<T> func)
+	{
+		float v0 = v.v0();
+		float v1 = v.v1();
+		
+		if (RawTupUtils2F.isZeroEM8(v0, v1))
+		{
+			return func.apply(0.0f, 0.0f);
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		return func.apply(v0 * invLength, v1 * invLength);
+	}
+	
+	public static <T> T nrmFuncEM8(ITupRF v, IFunc2F<T> func)
+	{
+		float v0 = v.getAt(0);
+		float v1 = v.getAt(1);
+		
+		if (RawTupUtils2F.isZeroEM8(v0, v1))
+		{
+			return func.apply(0.0f, 0.0f);
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		return func.apply(v0 * invLength, v1 * invLength);
+	}
+	
+	public static <T> T nrmFuncEM8(float[] v, IFunc2F<T> func)
+	{
+		if (RawTupUtils2F.isZeroEM8(v))
+		{
+			return func.apply(0.0f, 0.0f);
+		}
+		
+		float invLength = MathUtils.invSqrt(v[0] * v[0] + v[1] * v[1]);
+		
+		return func.apply(v[0] * invLength, v[1] * invLength);
+	}
+	
+	public static <T> T nrmFuncEM8(float v0, float v1, IFunc2F<T> func)
+	{
+		if (RawTupUtils2F.isZeroEM8(v0, v1))
+		{
+			return func.apply(0.0f, 0.0f);
+		}
+		
+		float invLength = MathUtils.invSqrt(v0 * v0 + v1 * v1);
+		
+		return func.apply(v0 * invLength, v1 * invLength);
+	}
+
 	public static float[] rotRad(double angle, ITup2RF v, @ExtractionParam float[] res)
 	{
 		float v0 = v.v0();
@@ -7877,27 +8495,7 @@ public class VecUtils2F
 		
 		return res;
 	}
-	
-	/**
-	 * Rotates the vector {@code (v)} by the given angle in radians and saves the result in the
-	 * given extraction parameter object.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v
-	 *     The.
-	 * @param angle
-	 *     The angle in radians.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
+
 	public static <T extends ITup2WF> T rotRad(double angle, ITup2RF v, @ExtractionParam T res)
 	{
 		float v0 = v.v0();
@@ -7931,27 +8529,7 @@ public class VecUtils2F
 		
 		return res;
 	}
-	
-	/**
-	 * Rotates the vector {@code (v)} by the given angle in radians and saves the result in the
-	 * given extraction parameter object.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v
-	 *     The.
-	 * @param angle
-	 *     The angle in radians.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
+
 	public static <T> T rotRadFunc(double angle, ITup2RF v, IFunc2F<T> func)
 	{
 		float v0 = v.v0();
@@ -7977,24 +8555,7 @@ public class VecUtils2F
 	{
 		return func.apply((float)(v0 * MathUtils.cos(angle) - v1 * MathUtils.sin(angle)), (float)(v0 * MathUtils.sin(angle) + v1 * MathUtils.cos(angle)));
 	}
-	
-	/**
-	 * Rotates the vector {@code (v)} by the given angle in degrees and saves the result in the
-	 * given extraction parameter.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * @param v
-	 *     The vector.
-	 * @param angle
-	 *     The angle in degrees.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
+
 	public static float[] rotDeg(double angle, ITup2RF v, @ExtractionParam float[] res)
 	{
 		double radAngle = angle * MathUtils.DEG_TO_RAD;
@@ -8038,27 +8599,7 @@ public class VecUtils2F
 		
 		return res;
 	}
-	
-	/**
-	 * Rotates the vector {@code (v)} by the given angle in degrees and saves the result in the
-	 * given extraction parameter object.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v
-	 *     The vector.
-	 * @param angle
-	 *     The angle in degrees.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
+
 	public static <T extends ITup2WF> T rotDeg(double angle, ITup2RF v, @ExtractionParam T res)
 	{
 		double radAngle = angle * MathUtils.DEG_TO_RAD;
@@ -8098,27 +8639,7 @@ public class VecUtils2F
 		
 		return res;
 	}
-	
-	/**
-	 * Rotates the vector {@code (v)} by the given angle in degrees and saves the result in the
-	 * given extraction parameter object.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v
-	 *     The vector.
-	 * @param angle
-	 *     The angle in degrees.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
+
 	public static <T> T rotDegFunc(double angle, ITup2RF v, IFunc2F<T> func)
 	{
 		double radAngle = angle * MathUtils.DEG_TO_RAD;
@@ -8150,24 +8671,7 @@ public class VecUtils2F
 		
 		return func.apply((float)(v0 * MathUtils.cos(radAngle) - v1 * MathUtils.sin(radAngle)), (float)(v0 * MathUtils.sin(radAngle) + v1 * MathUtils.cos(radAngle)));
 	}
-	
-	/**
-	 * Calculates the orthogonal projection of the vector {@code (v)} onto the normalized target
-	 * vector {@code (t)} and saves the result in the extraction parameter.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code t * (v . t)}
-	 * 
-	 * @param v
-	 *     The vector.
-	 * @param t
-	 *     The projection target vector.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result
-	 */
+
 	public static float[] project(ITup2RF v, ITup2RF t, @ExtractionParam float[] res)
 	{
 		float vV0 = v.v0();
@@ -8371,27 +8875,7 @@ public class VecUtils2F
 		
 		return res;
 	}
-	
-	/**
-	 * Calculates the orthogonal projection of the vector {@code (v)} onto the normalized target
-	 * vector {@code (t)} and saves the result in the extraction parameter object.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code t * (v . t)}
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v
-	 *     The vector.
-	 * @param t
-	 *     The projection target vector as an array with at least two entries.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
+
 	public static <T extends ITup2WF> T project(ITup2RF v, ITup2RF t, @ExtractionParam T res)
 	{
 		float vV0 = v.v0();
@@ -8579,27 +9063,7 @@ public class VecUtils2F
 		
 		return res;
 	}
-	
-	/**
-	 * Calculates the orthogonal projection of the vector {@code (v)} onto the normalized target
-	 * vector {@code (t)} and saves the result in the extraction parameter object.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code t * (v . t)}
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v
-	 *     The vector.
-	 * @param t
-	 *     The projection target vector as an array with at least two entries.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
+
 	public static <T> T projectFunc(ITup2RF v, ITup2RF t, IFunc2F<T> func)
 	{
 		float vV0 = v.v0();
@@ -8755,20 +9219,7 @@ public class VecUtils2F
 		
 		return func.apply(tV0 * dot, tV1 * dot);
 	}
-	
-	/**
-	 * Calculates the reflection of the vector {@code (v)} based on the given normalized surface
-	 * normal {@code (n)} and saves the result in the given extraction parameter.
-	 * 
-	 * @param v
-	 *     The vector.
-	 * @param n
-	 *     The surface normal vector.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
+
 	public static float[] reflect(ITup2RF v, ITup2RF n, @ExtractionParam float[] res)
 	{
 		float vV0 = v.v0();
@@ -8972,23 +9423,7 @@ public class VecUtils2F
 		
 		return res;
 	}
-	
-	/**
-	 * Calculates the reflection of the vector {@code (v)} based on the given normalized surface
-	 * normal {@code (n)} and saves the result in the given extraction parameter object.
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v
-	 *     The vector.
-	 * @param n
-	 *     The surface normal vector.
-	 * @param res
-	 *     The extraction parameter object.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
+
 	public static <T extends ITup2WF> T reflect(ITup2RF v, ITup2RF n, @ExtractionParam T res)
 	{
 		float vV0 = v.v0();
@@ -9176,23 +9611,7 @@ public class VecUtils2F
 		
 		return res;
 	}
-	
-	/**
-	 * Calculates the reflection of the vector {@code (v)} based on the given normalized surface
-	 * normal {@code (n)} and saves the result in the given extraction parameter object.
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v
-	 *     The vector.
-	 * @param n
-	 *     The surface normal vector.
-	 * @param res
-	 *     The extraction parameter object.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
+
 	public static <T> T reflectFunc(ITup2RF v, ITup2RF n, IFunc2F<T> func)
 	{
 		float vV0 = v.v0();
@@ -9348,22 +9767,7 @@ public class VecUtils2F
 		
 		return func.apply(nV0 * dot + vV0, nV1 * dot + vV1);
 	}
-	
-	/**
-	 * Returns the dot product (scalar product) between the first vector {@code (v1)} and the second
-	 * vector {@code (t2)}.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code v1 . v2}
-	 * 
-	 * @param v1
-	 *     The first vector.
-	 * @param v2
-	 *     The second vector.
-	 * 
-	 * @return The dot product (scalar product).
-	 */
+
 	public static float dot(ITup2RF t1, ITup2RF t2)
 	{
 		return t1.v0() * t2.v0() + t1.v1() * t2.v1();
@@ -9443,25 +9847,7 @@ public class VecUtils2F
 	{
 		return t1v0 * t2v0 + t1v1 * t2v1;
 	}
-	
-	/**
-	 * Calculates half the vector from the point given by the origin vector {@code (v1)} to the
-	 * point given by the origin vector {@code (t2)} and saves the result in the extraction
-	 * parameter.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code (v2 - v1) / 2}
-	 * 
-	 * @param v1
-	 *     The first point.
-	 * @param v2
-	 *     The second point.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
+
 	public static float[] halfVecTo(ITup2RF t1, ITup2RF t2, @ExtractionParam float[] res)
 	{
 		res[0] = (t2.v0() - t1.v0()) * 0.5f;
@@ -9589,28 +9975,7 @@ public class VecUtils2F
 		
 		return res;
 	}
-	
-	/**
-	 * Calculates half the vector from the point given by the origin vector {@code (v1)} to the
-	 * point given by the origin vector {@code (t2)} and saves the result in the extraction
-	 * parameter object.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code (v2 - v1) / 2}
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v1
-	 *     The first point.
-	 * @param v2
-	 *     The second point.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
+
 	public static <T extends ITup2WF> T halfVecTo(ITup2RF t1, ITup2RF t2, @ExtractionParam T res)
 	{
 		res.set((t2.v0() - t1.v0()) * 0.5f, (t2.v1() - t1.v1()) * 0.5f);
@@ -9722,28 +10087,7 @@ public class VecUtils2F
 		
 		return res;
 	}
-	
-	/**
-	 * Calculates half the vector from the point given by the origin vector {@code (v1)} to the
-	 * point given by the origin vector {@code (t2)} and saves the result in the extraction
-	 * parameter object.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code (v2 - v1) / 2}
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v1
-	 *     The first point.
-	 * @param v2
-	 *     The second point.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
+
 	public static <T> T halfVecToFunc(ITup2RF t1, ITup2RF t2, IFunc2F<T> func)
 	{
 		return func.apply((t2.v0() - t1.v0()) * 0.5f, (t2.v1() - t1.v1()) * 0.5f);
@@ -9823,25 +10167,7 @@ public class VecUtils2F
 	{
 		return func.apply((t2v0 - t1v0) * 0.5f, (t2v1 - t1v1) * 0.5f);
 	}
-	
-	/**
-	 * Calculates the point that lies half way between the point given by the origin vector
-	 * {@code (v1)} and the point given by the origin vector {@code (t2)} and saves the result in
-	 * the extraction parameter.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code (v2 + v1) / 2}
-	 * 
-	 * @param v1
-	 *     The first point.
-	 * @param v2
-	 *     The second point.
-	 * @param res
-	 *     The extraction parameter for the result as an array with at least two entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
+
 	public static float[] midPointTo(ITup2RF t1, ITup2RF t2, @ExtractionParam float[] res)
 	{
 		res[0] = (t2.v0() - t1.v0()) * 0.5f;
@@ -9937,28 +10263,7 @@ public class VecUtils2F
 		
 		return res;
 	}
-	
-	/**
-	 * Calculates the point that lies half way between the point given by the origin vector
-	 * {@code (v1)} and the point given by the origin vector {@code (t2)} and saves the result in
-	 * the extraction parameter object.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code (v2 + v1) / 2}
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v1
-	 *     The first point.
-	 * @param v2
-	 *     The second point.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
+
 	public static <T extends ITup2WF> T midPointTo(ITup2RF t1, ITup2RF t2, @ExtractionParam T res)
 	{
 		res.set((t2.v0() - t1.v0()) * 0.5f, (t2.v1() - t1.v1()) * 0.5f);
@@ -10070,28 +10375,7 @@ public class VecUtils2F
 		
 		return res;
 	}
-	
-	/**
-	 * Calculates the point that lies half way between the point given by the origin vector
-	 * {@code (v1)} and the point given by the origin vector {@code (t2)} and saves the result in
-	 * the extraction parameter object.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code (v2 + v1) / 2}
-	 * 
-	 * @param <T>
-	 *     The type of the extraction parameter object.
-	 * 
-	 * @param v1
-	 *     The first point.
-	 * @param v2
-	 *     The second point.
-	 * @param res
-	 *     The extraction parameter object for the result.
-	 * 
-	 * @return The extraction parameter object with the result.
-	 */
+
 	public static <T> T midPointToFunc(ITup2RF t1, ITup2RF t2, IFunc2F<T> func)
 	{
 		return func.apply((t2.v0() - t1.v0()) * 0.5f, (t2.v1() - t1.v1()) * 0.5f);
@@ -10171,418 +10455,813 @@ public class VecUtils2F
 	{
 		return func.apply((t2v0 - t1v0) * 0.5f, (t2v1 - t1v1) * 0.5f);
 	}
-	
-	/**
-	 * Returns the distance from the point given by the origin vector {@code (v1)} to the point
-	 * given by the origin vector {@code (t2)}.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code |v2 - v1|}
-	 * 
-	 * @param v1
-	 *     The first point.
-	 * @param v2
-	 *     The second point.
-	 * 
-	 * @return The distance between the points.
-	 */
+
 	public static float lenTo(ITup2RF t1, ITup2RF t2)
 	{
 		float v0 = t2.v0() - t1.v0();
 		float v1 = t2.v1() - t1.v1();
-		float sqareLength = v0 * v0 + v1 * v1;
 		
-		if(sqareLength == 0.0f) return 0.0f;
+		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
 		
-		return MathUtils.sqrt(sqareLength);
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
 	
 	public static float lenTo(ITup2RF t1, ITupRF t2)
 	{
 		float v0 = t2.getAt(0) - t1.v0();
 		float v1 = t2.getAt(1) - t1.v1();
-		float sqareLength = v0 * v0 + v1 * v1;
 		
-		if(sqareLength == 0.0f) return 0.0f;
+		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
 		
-		return MathUtils.sqrt(sqareLength);
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
 	
 	public static float lenTo(ITup2RF t1, float[] t2)
 	{
 		float v0 = t2[0] - t1.v0();
 		float v1 = t2[1] - t1.v1();
-		float sqareLength = v0 * v0 + v1 * v1;
 		
-		if(sqareLength == 0.0f) return 0.0f;
+		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
 		
-		return MathUtils.sqrt(sqareLength);
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
 	
 	public static float lenTo(ITup2RF t1, float t2v0, float t2v1)
 	{
 		float v0 = t2v0 - t1.v0();
 		float v1 = t2v1 - t1.v1();
-		float sqareLength = v0 * v0 + v1 * v1;
 		
-		if(sqareLength == 0.0f) return 0.0f;
+		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
 		
-		return MathUtils.sqrt(sqareLength);
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
 	
 	public static float lenTo(ITupRF t1, ITup2RF t2)
 	{
 		float v0 = t2.v0() - t1.getAt(0);
 		float v1 = t2.v1() - t1.getAt(1);
-		float sqareLength = v0 * v0 + v1 * v1;
 		
-		if(sqareLength == 0.0f) return 0.0f;
+		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
 		
-		return MathUtils.sqrt(sqareLength);
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
 	
 	public static float lenTo(ITupRF t1, ITupRF t2)
 	{
 		float v0 = t2.getAt(0) - t1.getAt(0);
 		float v1 = t2.getAt(1) - t1.getAt(1);
-		float sqareLength = v0 * v0 + v1 * v1;
 		
-		if(sqareLength == 0.0f) return 0.0f;
+		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
 		
-		return MathUtils.sqrt(sqareLength);
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
 	
 	public static float lenTo(ITupRF t1, float[] t2)
 	{
 		float v0 = t2[0] - t1.getAt(0);
 		float v1 = t2[1] - t1.getAt(1);
-		float sqareLength = v0 * v0 + v1 * v1;
 		
-		if(sqareLength == 0.0f) return 0.0f;
+		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
 		
-		return MathUtils.sqrt(sqareLength);
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
 	
 	public static float lenTo(ITupRF t1, float t2v0, float t2v1)
 	{
 		float v0 = t2v0 - t1.getAt(0);
 		float v1 = t2v1 - t1.getAt(1);
-		float sqareLength = v0 * v0 + v1 * v1;
 		
-		if(sqareLength == 0.0f) return 0.0f;
+		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
 		
-		return MathUtils.sqrt(sqareLength);
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
 	
 	public static float lenTo(float[] t1, ITup2RF t2)
 	{
 		float v0 = t2.v0() - t1[0];
 		float v1 = t2.v1() - t1[1];
-		float sqareLength = v0 * v0 + v1 * v1;
 		
-		if(sqareLength == 0.0f) return 0.0f;
+		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
 		
-		return MathUtils.sqrt(sqareLength);
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
 	
 	public static float lenTo(float[] t1, ITupRF t2)
 	{
 		float v0 = t2.getAt(0) - t1[0];
 		float v1 = t2.getAt(1) - t1[1];
-		float sqareLength = v0 * v0 + v1 * v1;
 		
-		if(sqareLength == 0.0f) return 0.0f;
+		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
 		
-		return MathUtils.sqrt(sqareLength);
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
 	
 	public static float lenTo(float[] t1, float[] t2)
 	{
 		float v0 = t2[0] - t1[0];
 		float v1 = t2[1] - t1[1];
-		float sqareLength = v0 * v0 + v1 * v1;
 		
-		if(sqareLength == 0.0f) return 0.0f;
+		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
 		
-		return MathUtils.sqrt(sqareLength);
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
 	
 	public static float lenTo(float[] t1, float t2v0, float t2v1)
 	{
 		float v0 = t2v0 - t1[0];
 		float v1 = t2v1 - t1[1];
-		float sqareLength = v0 * v0 + v1 * v1;
 		
-		if(sqareLength == 0.0f) return 0.0f;
+		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
 		
-		return MathUtils.sqrt(sqareLength);
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
 	
 	public static float lenTo(float t1v0, float t1v1, ITup2RF t2)
 	{
 		float v0 = t2.v0() - t1v0;
 		float v1 = t2.v1() - t1v1;
-		float sqareLength = v0 * v0 + v1 * v1;
 		
-		if(sqareLength == 0.0f) return 0.0f;
+		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
 		
-		return MathUtils.sqrt(sqareLength);
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
 	
 	public static float lenTo(float t1v0, float t1v1, ITupRF t2)
 	{
 		float v0 = t2.getAt(0) - t1v0;
 		float v1 = t2.getAt(1) - t1v1;
-		float sqareLength = v0 * v0 + v1 * v1;
 		
-		if(sqareLength == 0.0f) return 0.0f;
+		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
 		
-		return MathUtils.sqrt(sqareLength);
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
 	
 	public static float lenTo(float t1v0, float t1v1, float[] t2)
 	{
 		float v0 = t2[0] - t1v0;
 		float v1 = t2[1] - t1v1;
-		float sqareLength = v0 * v0 + v1 * v1;
 		
-		if(sqareLength == 0.0f) return 0.0f;
+		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
 		
-		return MathUtils.sqrt(sqareLength);
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
 	
 	public static float lenTo(float t1v0, float t1v1, float t2v0, float t2v1)
 	{
 		float v0 = t2v0 - t1v0;
 		float v1 = t2v1 - t1v1;
-		float sqareLength = v0 * v0 + v1 * v1;
 		
-		if(sqareLength == 0.0f) return 0.0f;
+		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
 		
-		return MathUtils.sqrt(sqareLength);
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
-	
-	/**
-	 * Returns the distance from the point given by the origin vector {@code (v1)} to the point
-	 * given by the origin vector {@code (t2)}.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code |v2 - v1|}
-	 * 
-	 * @param v1
-	 *     The first point.
-	 * @param v2
-	 *     The second point.
-	 * @param tolerance
-	 *     The tolerance for defining the margin around zero. Must be positive.
-	 * 
-	 * @return The distance between the points.
-	 */
-	public static float lenTo(float tolerance, ITup2RF t1, ITup2RF t2)
+
+	public static float lenToEM(float tolerance, ITup2RF t1, ITup2RF t2)
 	{
 		float v0 = t2.v0() - t1.v0();
 		float v1 = t2.v1() - t1.v1();
-		float sqareLength = v0 * v0 + v1 * v1;
 		
-		if(MathUtils.isZero(tolerance, sqareLength)) return 0.0f;
+		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
 		
-		return MathUtils.sqrt(sqareLength);
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
-
-	public static float lenTo(float tolerance, ITup2RF t1, ITupRF t2)
+	
+	public static float lenToEM(float tolerance, ITup2RF t1, ITupRF t2)
 	{
 		float v0 = t2.getAt(0) - t1.v0();
 		float v1 = t2.getAt(1) - t1.v1();
-		float sqareLength = v0 * v0 + v1 * v1;
 		
-		if(MathUtils.isZero(tolerance, sqareLength)) return 0.0f;
+		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
 		
-		return MathUtils.sqrt(sqareLength);
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
 	
-	public static float lenTo(float tolerance, ITup2RF t1, float[] t2)
+	public static float lenToEM(float tolerance, ITup2RF t1, float[] t2)
 	{
 		float v0 = t2[0] - t1.v0();
 		float v1 = t2[1] - t1.v1();
-		float sqareLength = v0 * v0 + v1 * v1;
 		
-		if(MathUtils.isZero(tolerance, sqareLength)) return 0.0f;
+		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
 		
-		return MathUtils.sqrt(sqareLength);
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
 	
-	public static float lenTo(float tolerance, ITup2RF t1, float t2v0, float t2v1)
+	public static float lenToEM(float tolerance, ITup2RF t1, float t2v0, float t2v1)
 	{
 		float v0 = t2v0 - t1.v0();
 		float v1 = t2v1 - t1.v1();
-		float sqareLength = v0 * v0 + v1 * v1;
 		
-		if(MathUtils.isZero(tolerance, sqareLength)) return 0.0f;
+		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
 		
-		return MathUtils.sqrt(sqareLength);
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
 	
-	public static float lenTo(float tolerance, ITupRF t1, ITup2RF t2)
+	public static float lenToEM(float tolerance, ITupRF t1, ITup2RF t2)
 	{
 		float v0 = t2.v0() - t1.getAt(0);
 		float v1 = t2.v1() - t1.getAt(1);
-		float sqareLength = v0 * v0 + v1 * v1;
 		
-		if(MathUtils.isZero(tolerance, sqareLength)) return 0.0f;
+		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
 		
-		return MathUtils.sqrt(sqareLength);
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
-
-	public static float lenTo(float tolerance, ITupRF t1, ITupRF t2)
+	
+	public static float lenToEM(float tolerance, ITupRF t1, ITupRF t2)
 	{
 		float v0 = t2.getAt(0) - t1.getAt(0);
 		float v1 = t2.getAt(1) - t1.getAt(1);
-		float sqareLength = v0 * v0 + v1 * v1;
 		
-		if(MathUtils.isZero(tolerance, sqareLength)) return 0.0f;
+		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
 		
-		return MathUtils.sqrt(sqareLength);
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
 	
-	public static float lenTo(float tolerance, ITupRF t1, float[] t2)
+	public static float lenToEM(float tolerance, ITupRF t1, float[] t2)
 	{
 		float v0 = t2[0] - t1.getAt(0);
 		float v1 = t2[1] - t1.getAt(1);
-		float sqareLength = v0 * v0 + v1 * v1;
 		
-		if(MathUtils.isZero(tolerance, sqareLength)) return 0.0f;
+		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
 		
-		return MathUtils.sqrt(sqareLength);
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
 	
-	public static float lenTo(float tolerance, ITupRF t1, float t2v0, float t2v1)
+	public static float lenToEM(float tolerance, ITupRF t1, float t2v0, float t2v1)
 	{
 		float v0 = t2v0 - t1.getAt(0);
 		float v1 = t2v1 - t1.getAt(1);
-		float sqareLength = v0 * v0 + v1 * v1;
 		
-		if(MathUtils.isZero(tolerance, sqareLength)) return 0.0f;
+		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
 		
-		return MathUtils.sqrt(sqareLength);
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
 	
-	public static float lenTo(float tolerance, float[] t1, ITup2RF t2)
+	public static float lenToEM(float tolerance, float[] t1, ITup2RF t2)
 	{
 		float v0 = t2.v0() - t1[0];
 		float v1 = t2.v1() - t1[1];
-		float sqareLength = v0 * v0 + v1 * v1;
 		
-		if(MathUtils.isZero(tolerance, sqareLength)) return 0.0f;
+		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
 		
-		return MathUtils.sqrt(sqareLength);
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
 	
-	public static float lenTo(float tolerance, float[] t1, ITupRF t2)
+	public static float lenToEM(float tolerance, float[] t1, ITupRF t2)
 	{
 		float v0 = t2.getAt(0) - t1[0];
 		float v1 = t2.getAt(1) - t1[1];
-		float sqareLength = v0 * v0 + v1 * v1;
 		
-		if(MathUtils.isZero(tolerance, sqareLength)) return 0.0f;
+		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
 		
-		return MathUtils.sqrt(sqareLength);
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
 	
-	public static float lenTo(float tolerance, float[] t1, float[] t2)
+	public static float lenToEM(float tolerance, float[] t1, float[] t2)
 	{
 		float v0 = t2[0] - t1[0];
 		float v1 = t2[1] - t1[1];
-		float sqareLength = v0 * v0 + v1 * v1;
 		
-		if(MathUtils.isZero(tolerance, sqareLength)) return 0.0f;
+		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
 		
-		return MathUtils.sqrt(sqareLength);
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
 	
-	public static float lenTo(float tolerance, float[] t1, float t2v0, float t2v1)
+	public static float lenToEM(float tolerance, float[] t1, float t2v0, float t2v1)
 	{
 		float v0 = t2v0 - t1[0];
 		float v1 = t2v1 - t1[1];
-		float sqareLength = v0 * v0 + v1 * v1;
 		
-		if(MathUtils.isZero(tolerance, sqareLength)) return 0.0f;
+		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
 		
-		return MathUtils.sqrt(sqareLength);
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
 	
-	public static float lenTo(float tolerance, float t1v0, float t1v1, ITup2RF t2)
+	public static float lenToEM(float tolerance, float t1v0, float t1v1, ITup2RF t2)
 	{
 		float v0 = t2.v0() - t1v0;
 		float v1 = t2.v1() - t1v1;
-		float sqareLength = v0 * v0 + v1 * v1;
 		
-		if(MathUtils.isZero(tolerance, sqareLength)) return 0.0f;
+		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
 		
-		return MathUtils.sqrt(sqareLength);
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
 	
-	public static float lenTo(float tolerance, float t1v0, float t1v1, ITupRF t2)
+	public static float lenToEM(float tolerance, float t1v0, float t1v1, ITupRF t2)
 	{
 		float v0 = t2.getAt(0) - t1v0;
 		float v1 = t2.getAt(1) - t1v1;
-		float sqareLength = v0 * v0 + v1 * v1;
 		
-		if(MathUtils.isZero(tolerance, sqareLength)) return 0.0f;
+		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
 		
-		return MathUtils.sqrt(sqareLength);
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
 	
-	public static float lenTo(float tolerance, float t1v0, float t1v1, float[] t2)
+	public static float lenToEM(float tolerance, float t1v0, float t1v1, float[] t2)
 	{
 		float v0 = t2[0] - t1v0;
 		float v1 = t2[1] - t1v1;
-		float sqareLength = v0 * v0 + v1 * v1;
 		
-		if(MathUtils.isZero(tolerance, sqareLength)) return 0.0f;
+		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
 		
-		return MathUtils.sqrt(sqareLength);
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
 	
-	public static float lenTo(float tolerance, float t1v0, float t1v1, float t2v0, float t2v1)
+	public static float lenToEM(float tolerance, float t1v0, float t1v1, float t2v0, float t2v1)
 	{
 		float v0 = t2v0 - t1v0;
 		float v1 = t2v1 - t1v1;
-		float sqareLength = v0 * v0 + v1 * v1;
 		
-		if(MathUtils.isZero(tolerance, sqareLength)) return 0.0f;
+		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
 		
-		return MathUtils.sqrt(sqareLength);
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+
+	public static float lenToEM4(ITup2RF t1, ITup2RF t2)
+	{
+		float v0 = t2.v0() - t1.v0();
+		float v1 = t2.v1() - t1.v1();
+		
+		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
 	
-	/**
-	 * Returns the squared distance from the point given by the origin vector {@code (v1)} to the
-	 * point given by the origin vector {@code (t2)}.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code |v2 - v1|²}
-	 * 
-	 * @param v1
-	 *     The first point.
-	 * @param v2
-	 *     The second point.
-	 * 
-	 * @return The squared distance between the points.
-	 */
+	public static float lenToEM4(ITup2RF t1, ITupRF t2)
+	{
+		float v0 = t2.getAt(0) - t1.v0();
+		float v1 = t2.getAt(1) - t1.v1();
+		
+		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenToEM4(ITup2RF t1, float[] t2)
+	{
+		float v0 = t2[0] - t1.v0();
+		float v1 = t2[1] - t1.v1();
+		
+		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenToEM4(ITup2RF t1, float t2v0, float t2v1)
+	{
+		float v0 = t2v0 - t1.v0();
+		float v1 = t2v1 - t1.v1();
+		
+		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenToEM4(ITupRF t1, ITup2RF t2)
+	{
+		float v0 = t2.v0() - t1.getAt(0);
+		float v1 = t2.v1() - t1.getAt(1);
+		
+		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenToEM4(ITupRF t1, ITupRF t2)
+	{
+		float v0 = t2.getAt(0) - t1.getAt(0);
+		float v1 = t2.getAt(1) - t1.getAt(1);
+		
+		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenToEM4(ITupRF t1, float[] t2)
+	{
+		float v0 = t2[0] - t1.getAt(0);
+		float v1 = t2[1] - t1.getAt(1);
+		
+		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenToEM4(ITupRF t1, float t2v0, float t2v1)
+	{
+		float v0 = t2v0 - t1.getAt(0);
+		float v1 = t2v1 - t1.getAt(1);
+		
+		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenToEM4(float[] t1, ITup2RF t2)
+	{
+		float v0 = t2.v0() - t1[0];
+		float v1 = t2.v1() - t1[1];
+		
+		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenToEM4(float[] t1, ITupRF t2)
+	{
+		float v0 = t2.getAt(0) - t1[0];
+		float v1 = t2.getAt(1) - t1[1];
+		
+		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenToEM4(float[] t1, float[] t2)
+	{
+		float v0 = t2[0] - t1[0];
+		float v1 = t2[1] - t1[1];
+		
+		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenToEM4(float[] t1, float t2v0, float t2v1)
+	{
+		float v0 = t2v0 - t1[0];
+		float v1 = t2v1 - t1[1];
+		
+		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenToEM4(float t1v0, float t1v1, ITup2RF t2)
+	{
+		float v0 = t2.v0() - t1v0;
+		float v1 = t2.v1() - t1v1;
+		
+		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenToEM4(float t1v0, float t1v1, ITupRF t2)
+	{
+		float v0 = t2.getAt(0) - t1v0;
+		float v1 = t2.getAt(1) - t1v1;
+		
+		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenToEM4(float t1v0, float t1v1, float[] t2)
+	{
+		float v0 = t2[0] - t1v0;
+		float v1 = t2[1] - t1v1;
+		
+		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenToEM4(float t1v0, float t1v1, float t2v0, float t2v1)
+	{
+		float v0 = t2v0 - t1v0;
+		float v1 = t2v1 - t1v1;
+		
+		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+
+	public static float lenToEM6(ITup2RF t1, ITup2RF t2)
+	{
+		float v0 = t2.v0() - t1.v0();
+		float v1 = t2.v1() - t1.v1();
+		
+		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenToEM6(ITup2RF t1, ITupRF t2)
+	{
+		float v0 = t2.getAt(0) - t1.v0();
+		float v1 = t2.getAt(1) - t1.v1();
+		
+		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenToEM6(ITup2RF t1, float[] t2)
+	{
+		float v0 = t2[0] - t1.v0();
+		float v1 = t2[1] - t1.v1();
+		
+		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenToEM6(ITup2RF t1, float t2v0, float t2v1)
+	{
+		float v0 = t2v0 - t1.v0();
+		float v1 = t2v1 - t1.v1();
+		
+		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenToEM6(ITupRF t1, ITup2RF t2)
+	{
+		float v0 = t2.v0() - t1.getAt(0);
+		float v1 = t2.v1() - t1.getAt(1);
+		
+		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenToEM6(ITupRF t1, ITupRF t2)
+	{
+		float v0 = t2.getAt(0) - t1.getAt(0);
+		float v1 = t2.getAt(1) - t1.getAt(1);
+		
+		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenToEM6(ITupRF t1, float[] t2)
+	{
+		float v0 = t2[0] - t1.getAt(0);
+		float v1 = t2[1] - t1.getAt(1);
+		
+		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenToEM6(ITupRF t1, float t2v0, float t2v1)
+	{
+		float v0 = t2v0 - t1.getAt(0);
+		float v1 = t2v1 - t1.getAt(1);
+		
+		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenToEM6(float[] t1, ITup2RF t2)
+	{
+		float v0 = t2.v0() - t1[0];
+		float v1 = t2.v1() - t1[1];
+		
+		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenToEM6(float[] t1, ITupRF t2)
+	{
+		float v0 = t2.getAt(0) - t1[0];
+		float v1 = t2.getAt(1) - t1[1];
+		
+		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenToEM6(float[] t1, float[] t2)
+	{
+		float v0 = t2[0] - t1[0];
+		float v1 = t2[1] - t1[1];
+		
+		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenToEM6(float[] t1, float t2v0, float t2v1)
+	{
+		float v0 = t2v0 - t1[0];
+		float v1 = t2v1 - t1[1];
+		
+		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenToEM6(float t1v0, float t1v1, ITup2RF t2)
+	{
+		float v0 = t2.v0() - t1v0;
+		float v1 = t2.v1() - t1v1;
+		
+		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenToEM6(float t1v0, float t1v1, ITupRF t2)
+	{
+		float v0 = t2.getAt(0) - t1v0;
+		float v1 = t2.getAt(1) - t1v1;
+		
+		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenToEM6(float t1v0, float t1v1, float[] t2)
+	{
+		float v0 = t2[0] - t1v0;
+		float v1 = t2[1] - t1v1;
+		
+		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenToEM6(float t1v0, float t1v1, float t2v0, float t2v1)
+	{
+		float v0 = t2v0 - t1v0;
+		float v1 = t2v1 - t1v1;
+		
+		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+
+	public static float lenToEM8(ITup2RF t1, ITup2RF t2)
+	{
+		float v0 = t2.v0() - t1.v0();
+		float v1 = t2.v1() - t1.v1();
+		
+		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenToEM8(ITup2RF t1, ITupRF t2)
+	{
+		float v0 = t2.getAt(0) - t1.v0();
+		float v1 = t2.getAt(1) - t1.v1();
+		
+		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenToEM8(ITup2RF t1, float[] t2)
+	{
+		float v0 = t2[0] - t1.v0();
+		float v1 = t2[1] - t1.v1();
+		
+		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenToEM8(ITup2RF t1, float t2v0, float t2v1)
+	{
+		float v0 = t2v0 - t1.v0();
+		float v1 = t2v1 - t1.v1();
+		
+		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenToEM8(ITupRF t1, ITup2RF t2)
+	{
+		float v0 = t2.v0() - t1.getAt(0);
+		float v1 = t2.v1() - t1.getAt(1);
+		
+		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenToEM8(ITupRF t1, ITupRF t2)
+	{
+		float v0 = t2.getAt(0) - t1.getAt(0);
+		float v1 = t2.getAt(1) - t1.getAt(1);
+		
+		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenToEM8(ITupRF t1, float[] t2)
+	{
+		float v0 = t2[0] - t1.getAt(0);
+		float v1 = t2[1] - t1.getAt(1);
+		
+		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenToEM8(ITupRF t1, float t2v0, float t2v1)
+	{
+		float v0 = t2v0 - t1.getAt(0);
+		float v1 = t2v1 - t1.getAt(1);
+		
+		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenToEM8(float[] t1, ITup2RF t2)
+	{
+		float v0 = t2.v0() - t1[0];
+		float v1 = t2.v1() - t1[1];
+		
+		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenToEM8(float[] t1, ITupRF t2)
+	{
+		float v0 = t2.getAt(0) - t1[0];
+		float v1 = t2.getAt(1) - t1[1];
+		
+		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenToEM8(float[] t1, float[] t2)
+	{
+		float v0 = t2[0] - t1[0];
+		float v1 = t2[1] - t1[1];
+		
+		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenToEM8(float[] t1, float t2v0, float t2v1)
+	{
+		float v0 = t2v0 - t1[0];
+		float v1 = t2v1 - t1[1];
+		
+		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenToEM8(float t1v0, float t1v1, ITup2RF t2)
+	{
+		float v0 = t2.v0() - t1v0;
+		float v1 = t2.v1() - t1v1;
+		
+		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenToEM8(float t1v0, float t1v1, ITupRF t2)
+	{
+		float v0 = t2.getAt(0) - t1v0;
+		float v1 = t2.getAt(1) - t1v1;
+		
+		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenToEM8(float t1v0, float t1v1, float[] t2)
+	{
+		float v0 = t2[0] - t1v0;
+		float v1 = t2[1] - t1v1;
+		
+		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+	
+	public static float lenToEM8(float t1v0, float t1v1, float t2v0, float t2v1)
+	{
+		float v0 = t2v0 - t1v0;
+		float v1 = t2v1 - t1v1;
+		
+		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		
+		return MathUtils.sqrt(v0 * v0 + v1 * v1);
+	}
+
 	public static float lenSqTo(ITup2RF t1, ITup2RF t2)
 	{
 		float v0 = t2.v0() - t1.v0();
 		float v1 = t2.v1() - t1.v1();
+		
+		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
 		
 		return v0 * v0 + v1 * v1;
 	}
@@ -10592,6 +11271,8 @@ public class VecUtils2F
 		float v0 = t2.getAt(0) - t1.v0();
 		float v1 = t2.getAt(1) - t1.v1();
 		
+		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
+		
 		return v0 * v0 + v1 * v1;
 	}
 	
@@ -10599,6 +11280,8 @@ public class VecUtils2F
 	{
 		float v0 = t2[0] - t1.v0();
 		float v1 = t2[1] - t1.v1();
+		
+		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
 		
 		return v0 * v0 + v1 * v1;
 	}
@@ -10608,6 +11291,8 @@ public class VecUtils2F
 		float v0 = t2v0 - t1.v0();
 		float v1 = t2v1 - t1.v1();
 		
+		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
+		
 		return v0 * v0 + v1 * v1;
 	}
 
@@ -10615,6 +11300,8 @@ public class VecUtils2F
 	{
 		float v0 = t2.v0() - t1.getAt(0);
 		float v1 = t2.v1() - t1.getAt(1);
+		
+		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
 		
 		return v0 * v0 + v1 * v1;
 	}
@@ -10624,6 +11311,8 @@ public class VecUtils2F
 		float v0 = t2.getAt(0) - t1.getAt(0);
 		float v1 = t2.getAt(1) - t1.getAt(1);
 		
+		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
+		
 		return v0 * v0 + v1 * v1;
 	}
 	
@@ -10631,6 +11320,8 @@ public class VecUtils2F
 	{
 		float v0 = t2[0] - t1.getAt(0);
 		float v1 = t2[1] - t1.getAt(1);
+		
+		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
 		
 		return v0 * v0 + v1 * v1;
 	}
@@ -10640,6 +11331,8 @@ public class VecUtils2F
 		float v0 = t2v0 - t1.getAt(0);
 		float v1 = t2v1 - t1.getAt(1);
 		
+		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
+		
 		return v0 * v0 + v1 * v1;
 	}
 	
@@ -10647,6 +11340,8 @@ public class VecUtils2F
 	{
 		float v0 = t2.v0() - t1[0];
 		float v1 = t2.v1() - t1[1];
+		
+		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
 		
 		return v0 * v0 + v1 * v1;
 	}
@@ -10656,6 +11351,8 @@ public class VecUtils2F
 		float v0 = t2.getAt(0) - t1[0];
 		float v1 = t2.getAt(1) - t1[1];
 		
+		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
+		
 		return v0 * v0 + v1 * v1;
 	}
 	
@@ -10663,6 +11360,8 @@ public class VecUtils2F
 	{
 		float v0 = t2[0] - t1[0];
 		float v1 = t2[1] - t1[1];
+		
+		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
 		
 		return v0 * v0 + v1 * v1;
 	}
@@ -10672,6 +11371,8 @@ public class VecUtils2F
 		float v0 = t2v0 - t1[0];
 		float v1 = t2v1 - t1[1];
 		
+		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
+		
 		return v0 * v0 + v1 * v1;
 	}
 
@@ -10679,6 +11380,8 @@ public class VecUtils2F
 	{
 		float v0 = t2.v0() - t1v0;
 		float v1 = t2.v1() - t1v1;
+		
+		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
 		
 		return v0 * v0 + v1 * v1;
 	}
@@ -10688,6 +11391,8 @@ public class VecUtils2F
 		float v0 = t2.getAt(0) - t1v0;
 		float v1 = t2.getAt(1) - t1v1;
 		
+		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
+		
 		return v0 * v0 + v1 * v1;
 	}
 	
@@ -10695,6 +11400,8 @@ public class VecUtils2F
 	{
 		float v0 = t2[0] - t1v0;
 		float v1 = t2[1] - t1v1;
+		
+		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
 		
 		return v0 * v0 + v1 * v1;
 	}
@@ -10704,28 +11411,651 @@ public class VecUtils2F
 		float v0 = t2v0 - t1v0;
 		float v1 = t2v1 - t1v1;
 		
+		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqToEM(float tolerance, ITup2RF t1, ITup2RF t2)
+	{
+		float v0 = t2.v0() - t1.v0();
+		float v1 = t2.v1() - t1.v1();
+		
+		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqToEM(float tolerance, ITup2RF t1, ITupRF t2)
+	{
+		float v0 = t2.getAt(0) - t1.v0();
+		float v1 = t2.getAt(1) - t1.v1();
+		
+		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
+		
 		return v0 * v0 + v1 * v1;
 	}
 	
-	/**
-	 * Returns the inverse distance from the point given by the origin vector {@code (v1)} to the
-	 * point given by the origin vector {@code (t2)}.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link MathUtil#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code 1 / |v2 - v1|}
-	 * 
-	 * @param v1
-	 *     The first point.
-	 * @param v2
-	 *     The second point.
-	 * 
-	 * @return The invers distance between the points.
-	 */
+	public static float lenSqToEM(float tolerance, ITup2RF t1, float[] t2)
+	{
+		float v0 = t2[0] - t1.v0();
+		float v1 = t2[1] - t1.v1();
+		
+		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqToEM(float tolerance, ITup2RF t1, float t2v0, float t2v1)
+	{
+		float v0 = t2v0 - t1.v0();
+		float v1 = t2v1 - t1.v1();
+		
+		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqToEM(float tolerance, ITupRF t1, ITup2RF t2)
+	{
+		float v0 = t2.v0() - t1.getAt(0);
+		float v1 = t2.v1() - t1.getAt(1);
+		
+		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqToEM(float tolerance, ITupRF t1, ITupRF t2)
+	{
+		float v0 = t2.getAt(0) - t1.getAt(0);
+		float v1 = t2.getAt(1) - t1.getAt(1);
+		
+		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+	
+	public static float lenSqToEM(float tolerance, ITupRF t1, float[] t2)
+	{
+		float v0 = t2[0] - t1.getAt(0);
+		float v1 = t2[1] - t1.getAt(1);
+		
+		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqToEM(float tolerance, ITupRF t1, float t2v0, float t2v1)
+	{
+		float v0 = t2v0 - t1.getAt(0);
+		float v1 = t2v1 - t1.getAt(1);
+		
+		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+	
+	public static float lenSqToEM(float tolerance, float[] t1, ITup2RF t2)
+	{
+		float v0 = t2.v0() - t1[0];
+		float v1 = t2.v1() - t1[1];
+		
+		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqToEM(float tolerance, float[] t1, ITupRF t2)
+	{
+		float v0 = t2.getAt(0) - t1[0];
+		float v1 = t2.getAt(1) - t1[1];
+		
+		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+	
+	public static float lenSqToEM(float tolerance, float[] t1, float[] t2)
+	{
+		float v0 = t2[0] - t1[0];
+		float v1 = t2[1] - t1[1];
+		
+		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqToEM(float tolerance, float[] t1, float t2v0, float t2v1)
+	{
+		float v0 = t2v0 - t1[0];
+		float v1 = t2v1 - t1[1];
+		
+		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqToEM(float tolerance, float t1v0, float t1v1, ITup2RF t2)
+	{
+		float v0 = t2.v0() - t1v0;
+		float v1 = t2.v1() - t1v1;
+		
+		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqToEM(float tolerance, float t1v0, float t1v1, ITupRF t2)
+	{
+		float v0 = t2.getAt(0) - t1v0;
+		float v1 = t2.getAt(1) - t1v1;
+		
+		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+	
+	public static float lenSqToEM(float tolerance, float t1v0, float t1v1, float[] t2)
+	{
+		float v0 = t2[0] - t1v0;
+		float v1 = t2[1] - t1v1;
+		
+		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqToEM(float tolerance, float t1v0, float t1v1, float t2v0, float t2v1)
+	{
+		float v0 = t2v0 - t1v0;
+		float v1 = t2v1 - t1v1;
+		
+		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqToEM4(ITup2RF t1, ITup2RF t2)
+	{
+		float v0 = t2.v0() - t1.v0();
+		float v1 = t2.v1() - t1.v1();
+		
+		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqToEM4(ITup2RF t1, ITupRF t2)
+	{
+		float v0 = t2.getAt(0) - t1.v0();
+		float v1 = t2.getAt(1) - t1.v1();
+		
+		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+	
+	public static float lenSqToEM4(ITup2RF t1, float[] t2)
+	{
+		float v0 = t2[0] - t1.v0();
+		float v1 = t2[1] - t1.v1();
+		
+		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqToEM4(ITup2RF t1, float t2v0, float t2v1)
+	{
+		float v0 = t2v0 - t1.v0();
+		float v1 = t2v1 - t1.v1();
+		
+		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqToEM4(ITupRF t1, ITup2RF t2)
+	{
+		float v0 = t2.v0() - t1.getAt(0);
+		float v1 = t2.v1() - t1.getAt(1);
+		
+		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqToEM4(ITupRF t1, ITupRF t2)
+	{
+		float v0 = t2.getAt(0) - t1.getAt(0);
+		float v1 = t2.getAt(1) - t1.getAt(1);
+		
+		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+	
+	public static float lenSqToEM4(ITupRF t1, float[] t2)
+	{
+		float v0 = t2[0] - t1.getAt(0);
+		float v1 = t2[1] - t1.getAt(1);
+		
+		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqToEM4(ITupRF t1, float t2v0, float t2v1)
+	{
+		float v0 = t2v0 - t1.getAt(0);
+		float v1 = t2v1 - t1.getAt(1);
+		
+		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+	
+	public static float lenSqToEM4(float[] t1, ITup2RF t2)
+	{
+		float v0 = t2.v0() - t1[0];
+		float v1 = t2.v1() - t1[1];
+		
+		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqToEM4(float[] t1, ITupRF t2)
+	{
+		float v0 = t2.getAt(0) - t1[0];
+		float v1 = t2.getAt(1) - t1[1];
+		
+		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+	
+	public static float lenSqToEM4(float[] t1, float[] t2)
+	{
+		float v0 = t2[0] - t1[0];
+		float v1 = t2[1] - t1[1];
+		
+		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqToEM4(float[] t1, float t2v0, float t2v1)
+	{
+		float v0 = t2v0 - t1[0];
+		float v1 = t2v1 - t1[1];
+		
+		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqToEM4(float t1v0, float t1v1, ITup2RF t2)
+	{
+		float v0 = t2.v0() - t1v0;
+		float v1 = t2.v1() - t1v1;
+		
+		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqToEM4(float t1v0, float t1v1, ITupRF t2)
+	{
+		float v0 = t2.getAt(0) - t1v0;
+		float v1 = t2.getAt(1) - t1v1;
+		
+		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+	
+	public static float lenSqToEM4(float t1v0, float t1v1, float[] t2)
+	{
+		float v0 = t2[0] - t1v0;
+		float v1 = t2[1] - t1v1;
+		
+		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqToEM4(float t1v0, float t1v1, float t2v0, float t2v1)
+	{
+		float v0 = t2v0 - t1v0;
+		float v1 = t2v1 - t1v1;
+		
+		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqToEM6(ITup2RF t1, ITup2RF t2)
+	{
+		float v0 = t2.v0() - t1.v0();
+		float v1 = t2.v1() - t1.v1();
+		
+		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqToEM6(ITup2RF t1, ITupRF t2)
+	{
+		float v0 = t2.getAt(0) - t1.v0();
+		float v1 = t2.getAt(1) - t1.v1();
+		
+		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+	
+	public static float lenSqToEM6(ITup2RF t1, float[] t2)
+	{
+		float v0 = t2[0] - t1.v0();
+		float v1 = t2[1] - t1.v1();
+		
+		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqToEM6(ITup2RF t1, float t2v0, float t2v1)
+	{
+		float v0 = t2v0 - t1.v0();
+		float v1 = t2v1 - t1.v1();
+		
+		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqToEM6(ITupRF t1, ITup2RF t2)
+	{
+		float v0 = t2.v0() - t1.getAt(0);
+		float v1 = t2.v1() - t1.getAt(1);
+		
+		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqToEM6(ITupRF t1, ITupRF t2)
+	{
+		float v0 = t2.getAt(0) - t1.getAt(0);
+		float v1 = t2.getAt(1) - t1.getAt(1);
+		
+		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+	
+	public static float lenSqToEM6(ITupRF t1, float[] t2)
+	{
+		float v0 = t2[0] - t1.getAt(0);
+		float v1 = t2[1] - t1.getAt(1);
+		
+		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqToEM6(ITupRF t1, float t2v0, float t2v1)
+	{
+		float v0 = t2v0 - t1.getAt(0);
+		float v1 = t2v1 - t1.getAt(1);
+		
+		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+	
+	public static float lenSqToEM6(float[] t1, ITup2RF t2)
+	{
+		float v0 = t2.v0() - t1[0];
+		float v1 = t2.v1() - t1[1];
+		
+		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqToEM6(float[] t1, ITupRF t2)
+	{
+		float v0 = t2.getAt(0) - t1[0];
+		float v1 = t2.getAt(1) - t1[1];
+		
+		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+	
+	public static float lenSqToEM6(float[] t1, float[] t2)
+	{
+		float v0 = t2[0] - t1[0];
+		float v1 = t2[1] - t1[1];
+		
+		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqToEM6(float[] t1, float t2v0, float t2v1)
+	{
+		float v0 = t2v0 - t1[0];
+		float v1 = t2v1 - t1[1];
+		
+		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqToEM6(float t1v0, float t1v1, ITup2RF t2)
+	{
+		float v0 = t2.v0() - t1v0;
+		float v1 = t2.v1() - t1v1;
+		
+		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqToEM6(float t1v0, float t1v1, ITupRF t2)
+	{
+		float v0 = t2.getAt(0) - t1v0;
+		float v1 = t2.getAt(1) - t1v1;
+		
+		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+	
+	public static float lenSqToEM6(float t1v0, float t1v1, float[] t2)
+	{
+		float v0 = t2[0] - t1v0;
+		float v1 = t2[1] - t1v1;
+		
+		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqToEM6(float t1v0, float t1v1, float t2v0, float t2v1)
+	{
+		float v0 = t2v0 - t1v0;
+		float v1 = t2v1 - t1v1;
+		
+		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqToEM8(ITup2RF t1, ITup2RF t2)
+	{
+		float v0 = t2.v0() - t1.v0();
+		float v1 = t2.v1() - t1.v1();
+		
+		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqToEM8(ITup2RF t1, ITupRF t2)
+	{
+		float v0 = t2.getAt(0) - t1.v0();
+		float v1 = t2.getAt(1) - t1.v1();
+		
+		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+	
+	public static float lenSqToEM8(ITup2RF t1, float[] t2)
+	{
+		float v0 = t2[0] - t1.v0();
+		float v1 = t2[1] - t1.v1();
+		
+		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqToEM8(ITup2RF t1, float t2v0, float t2v1)
+	{
+		float v0 = t2v0 - t1.v0();
+		float v1 = t2v1 - t1.v1();
+		
+		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqToEM8(ITupRF t1, ITup2RF t2)
+	{
+		float v0 = t2.v0() - t1.getAt(0);
+		float v1 = t2.v1() - t1.getAt(1);
+		
+		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqToEM8(ITupRF t1, ITupRF t2)
+	{
+		float v0 = t2.getAt(0) - t1.getAt(0);
+		float v1 = t2.getAt(1) - t1.getAt(1);
+		
+		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+	
+	public static float lenSqToEM8(ITupRF t1, float[] t2)
+	{
+		float v0 = t2[0] - t1.getAt(0);
+		float v1 = t2[1] - t1.getAt(1);
+		
+		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqToEM8(ITupRF t1, float t2v0, float t2v1)
+	{
+		float v0 = t2v0 - t1.getAt(0);
+		float v1 = t2v1 - t1.getAt(1);
+		
+		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+	
+	public static float lenSqToEM8(float[] t1, ITup2RF t2)
+	{
+		float v0 = t2.v0() - t1[0];
+		float v1 = t2.v1() - t1[1];
+		
+		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqToEM8(float[] t1, ITupRF t2)
+	{
+		float v0 = t2.getAt(0) - t1[0];
+		float v1 = t2.getAt(1) - t1[1];
+		
+		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+	
+	public static float lenSqToEM8(float[] t1, float[] t2)
+	{
+		float v0 = t2[0] - t1[0];
+		float v1 = t2[1] - t1[1];
+		
+		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqToEM8(float[] t1, float t2v0, float t2v1)
+	{
+		float v0 = t2v0 - t1[0];
+		float v1 = t2v1 - t1[1];
+		
+		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqToEM8(float t1v0, float t1v1, ITup2RF t2)
+	{
+		float v0 = t2.v0() - t1v0;
+		float v1 = t2.v1() - t1v1;
+		
+		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqToEM8(float t1v0, float t1v1, ITupRF t2)
+	{
+		float v0 = t2.getAt(0) - t1v0;
+		float v1 = t2.getAt(1) - t1v1;
+		
+		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+	
+	public static float lenSqToEM8(float t1v0, float t1v1, float[] t2)
+	{
+		float v0 = t2[0] - t1v0;
+		float v1 = t2[1] - t1v1;
+		
+		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
+	public static float lenSqToEM8(float t1v0, float t1v1, float t2v0, float t2v1)
+	{
+		float v0 = t2v0 - t1v0;
+		float v1 = t2v1 - t1v1;
+		
+		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		
+		return v0 * v0 + v1 * v1;
+	}
+
 	public static float lenRcTo(ITup2RF t1, ITup2RF t2)
 	{
 		float v0 = t2.v0() - t1.v0();

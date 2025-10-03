@@ -16,13 +16,7 @@ import java.lang.annotation.Target;
 @Target(PARAMETER)
 public @interface MinLength2d
 {
-	/**
-	 * This parameter contains the minimum required amount of entries of the
-	 * annotated array or collection.
-	 * 
-	 * @return the minimum required amount of entries of the annotated array or
-	 * collection.
-	 */
 	int a0();
+	
 	int a1();
 }

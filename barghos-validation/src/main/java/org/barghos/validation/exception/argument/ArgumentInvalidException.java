@@ -2,55 +2,26 @@ package org.barghos.validation.exception.argument;
 
 import org.barghos.validation.internal.Nullable;
 
-/**
- * Thrown to indicate that a function argument has an invalid or unexpected
- * value. Unlike {@link IllegalArgumentException} this provides the possibility
- * to specify and access the argument name outside of the message.
- */
 public class ArgumentInvalidException extends RuntimeException implements LocalizableException
 {
-	/**
-	 * This constant contains the current version of this class.
-	 * It is used to distinguish between different serialized versions of this
-	 * class.
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	private String parameter;
 	private Nullable<String> customMessage = new Nullable<>();
 	private Nullable<Object> argument = new Nullable<>();
 	
-	/**
-	 * Creates a new instance of the exception with an argument name as
-	 * additional information.
-	 * 
-	 * @param argument The name of the argument that was null.
-	 */
 	protected ArgumentInvalidException()
 	{
 		super();
 	}
 	
-	/**
-	 * Creates a new instance of the exception with an argument name as
-	 * additional information.
-	 * 
-	 * @param argument The name of the argument that was null.
-	 */
 	public ArgumentInvalidException(String parameter)
 	{
 		super();
 		
 		this.parameter = parameter;
 	}
-	
-	/**
-	 * Creates a new instance of the exception with an argument name and a
-	 * custom message as additional information.
-	 * 
-	 * @param argument The name of the argument that was null.
-	 * @param message A custom exception message.
-	 */
+
 	public ArgumentInvalidException(String parameter, String message)
 	{
 		super();
@@ -58,14 +29,7 @@ public class ArgumentInvalidException extends RuntimeException implements Locali
 		this.parameter = parameter;
 		this.customMessage.set(message);
 	}
-	
-	/**
-	 * Creates a new instance of the exception with an argument name and a
-	 * custom message as additional information.
-	 * 
-	 * @param argument The name of the argument that was null.
-	 * @param message A custom exception message.
-	 */
+
 	public ArgumentInvalidException(String parameter, Object argument)
 	{
 		super();
@@ -73,14 +37,7 @@ public class ArgumentInvalidException extends RuntimeException implements Locali
 		this.parameter = parameter;
 		this.argument.set(argument);
 	}
-	
-	/**
-	 * Creates a new instance of the exception with an argument name and a
-	 * custom message as additional information.
-	 * 
-	 * @param argument The name of the argument that was null.
-	 * @param message A custom exception message.
-	 */
+
 	public ArgumentInvalidException(String parameter, Object argument, String message)
 	{
 		super(message);
@@ -89,13 +46,7 @@ public class ArgumentInvalidException extends RuntimeException implements Locali
 		this.argument.set(argument);
 		this.customMessage.set(message);
 	}
-	
-	/**
-	 * Returns the name of the argument for which this exception was created
-	 * for.
-	 * 
-	 * @return The argument name.
-	 */
+
 	public String parameter()
 	{
 		return this.parameter;
@@ -110,12 +61,7 @@ public class ArgumentInvalidException extends RuntimeException implements Locali
 	{
 		return this.argument.isSet();
 	}
-	
-	/**
-	 * Returns the custom message for this exception.
-	 * 
-	 * @return The custom message.
-	 */
+
 	public String customMessage()
 	{
 		return this.customMessage();

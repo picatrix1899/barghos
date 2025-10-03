@@ -11,17 +11,6 @@ import org.barghos.api.core.tuple.floats.ITup4WF;
  */
 public class QuatUtilsF
 {
-	/**
-	 * Returns the squared length (magnitude, norm) of the quaternion {@code (q)}.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code |q|²}
-	 * 
-	 * @param q The quaternion.
-	 * 
-	 * @return The squared length of the quaternion.
-	 */
 	public static float lenSq(ITup4RF q)
 	{
 		float v0 = q.v0();
@@ -46,22 +35,7 @@ public class QuatUtilsF
 	{
 		return v0 * v0 + v1 * v1 + v2 * v2 + v3 * v3;
 	}
-	
-	/**
-	 * Returns the length (magnitude, norm) of the quaternion {@code (q)}.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link BarghosMath#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code |q|}
-	 * 
-	 * @param q The quaternion.
-	 * 
-	 * @return The length of the quaternion.
-	 */
+
 	public static float len(ITup4RF q)
 	{
 		float v0 = q.v0();
@@ -70,8 +44,6 @@ public class QuatUtilsF
 		float v3 = q.v3();
 		
 		float sqareLength = v0 * v0 + v1 * v1 + v2 * v2 + v3 * v3;
-		
-		if(sqareLength == 0.0f) return 0.0f;
 		
 		return MathUtils.sqrt(sqareLength);
 	}
@@ -85,8 +57,6 @@ public class QuatUtilsF
 		
 		float sqareLength = v0 * v0 + v1 * v1 + v2 * v2 + v3 * v3;
 		
-		if(sqareLength == 0.0f) return 0.0f;
-		
 		return MathUtils.sqrt(sqareLength);
 	}
 
@@ -94,26 +64,9 @@ public class QuatUtilsF
 	{
 		float sqareLength = v0 * v0 + v1 * v1 + v2 * v2 + v3 * v3;
 		
-		if(sqareLength == 0.0f) return 0.0f;
-		
 		return MathUtils.sqrt(sqareLength);
 	}
-	
-	/**
-	 * Returns the inverse (reciprocal) length (magnitude, norm) of the quaternion {@code (q)}.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link BarghosMath#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code 1 / |q|}
-	 * 
-	 * @param q The quaternion.
-	 * 
-	 * @return The reciprocal length of the quaternion.
-	 */
+
 	public static float lenRc(ITup4RF q)
 	{
 		float v0 = q.v0();
@@ -144,20 +97,7 @@ public class QuatUtilsF
 		
 		return MathUtils.invSqrt(sqareLength);
 	}
-	
-	/**
-	 * Calculates the dot (scalar) product between the first given quaternion {@code (q1)} and the
-	 * second given quaternion {@code (q2)}.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code q1 . q2}
-	 * 
-	 * @param q1 The first quaternion.
-	 * @param q2 The second quaternion.
-	 * 
-	 * @return The dot (scalar) product.
-	 */
+
 	public static float dot(ITup4RF q1, ITup4RF q2)
 	{
 		float q1v0 = q1.v0();
@@ -262,20 +202,7 @@ public class QuatUtilsF
 	{
 		return q1v0 * q2v0 + q1v1 * q2v1 + q1v2 * q2v2 + q1v3 * q2v3;
 	}
-	
-	/**
-	 * Calculates the conjugate of the quaternion {@code (q)} and saves the result in the given
-	 * extraction parameter.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code q* }
-	 * 
-	 * @param q The quaternion as an array with at least four entries.
-	 * @param res The extraction parameter for the result as an array with at least four entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
+
 	public static float[] conj(ITup4RF q, @ExtractionParam float[] res)
 	{
 		float v0 = q.v0();
@@ -371,20 +298,7 @@ public class QuatUtilsF
 	{
 		return func.apply(-v0, -v1, -v2, v3);
 	}
-	
-	/**
-	 * Calculates the inverse of the quaternion {@code (q)} and saves the result in the given
-	 * extraction parameter.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code q* / |q|² }
-	 * 
-	 * @param q The quaternion.
-	 * @param res The extraction parameter for the result as an array with at least four entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
+
 	public static float[] inv(ITup4RF q, @ExtractionParam float[] res)
 	{
 		float v0 = q.v0();
@@ -498,26 +412,7 @@ public class QuatUtilsF
 		
 		return func.apply(-v0 * invLength, -v1 * invLength, -v2 * invLength, v3 * invLength);
 	}
-	
 
-
-	
-	/**
-	 * Normalizes the quaternion {@code (q)} and saves the result in the given extraction parameter.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link BarghosMath#PROVIDER} is used for
-	 * calculation.
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code q / |q|}
-	 * 
-	 * @param q The quaternion.
-	 * @param res The extraction parameter for the result as an array with at least four entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
 	public static float[] nrm(ITup4RF q, @ExtractionParam float[] res)
 	{
 		float v0 = q.v0();
@@ -631,23 +526,7 @@ public class QuatUtilsF
 		
 		return func.apply(v0 * invLength, v1 * invLength, v2 * invLength, v3 * invLength);
 	}	
-	
-	/**
-	 * Multiplies the first given quaternion {@code (q1)} with the second given quaternion {@code (q2)}, normalizes the result and saves the result in the given extraction parameter.
-	 * 
-	 * <p>
-	 * Here the default {@link MathProvider} from {@link BarghosMath#PROVIDER} is used for
-	 * 
-	 * <p>
-	 * Operation:<br>
-	 * {@code q1 * q2}
-	 * 
-	 * @param q1 The first quaternion.
-	 * @param q2 The second quaternion.
-	 * @param res The extraction parameter for the result as an array with at least four entries.
-	 * 
-	 * @return The extraction parameter with the result.
-	 */
+
 	public static float[] mul(ITup4RF q1, ITup4RF q2, @ExtractionParam float[] res)
 	{
 		float q1v0 = q1.v0();

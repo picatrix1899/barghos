@@ -36,11 +36,25 @@ public interface IVec3RF extends ITup3RF
 
 	float len();
 
-	float len(float tolerance);
+	float lenEM(float tolerance);
+	
+	float lenEM4();
+	
+	float lenEM6();
+	
+	float lenEM8();
 
 	float lenRc();
 	
 	float lenSq();
+	
+	float lenSqEM(float tolerance);
+	
+	float lenSqEM4();
+	
+	float lenSqEM6();
+	
+	float lenSqEM8();
 	
 	float lenTo(ITup3RF v);
 	
@@ -50,13 +64,37 @@ public interface IVec3RF extends ITup3RF
 
 	float lenTo(float x, float y, float z);
 	
-	float lenTo(float tolerance, ITup3RF v);
+	float lenToEM(float tolerance, ITup3RF v);
 	
-	float lenTo(float tolerance, ITupRF v);
+	float lenToEM(float tolerance, ITupRF v);
 
-	float lenTo(float tolerance, float[] v);
+	float lenToEM(float tolerance, float[] v);
 
-	float lenTo(float tolerance, float x, float y, float z);
+	float lenToEM(float tolerance, float x, float y, float z);
+	
+	float lenToEM4(ITup3RF v);
+	
+	float lenToEM4(ITupRF v);
+
+	float lenToEM4(float[] v);
+
+	float lenToEM4(float x, float y, float z);
+	
+	float lenToEM6(ITup3RF v);
+	
+	float lenToEM6(ITupRF v);
+
+	float lenToEM6(float[] v);
+
+	float lenToEM6(float x, float y, float z);
+	
+	float lenToEM8(ITup3RF v);
+	
+	float lenToEM8(ITupRF v);
+
+	float lenToEM8(float[] v);
+
+	float lenToEM8(float x, float y, float z);
 	
 	float lenRcTo(ITup3RF v);
 	
@@ -74,6 +112,38 @@ public interface IVec3RF extends ITup3RF
 
 	float lenSqTo(float x, float y, float z);
 
+	float lenSqToEM(float tolerance, ITup3RF v);
+	
+	float lenSqToEM(float tolerance, ITupRF v);
+
+	float lenSqToEM(float tolerance, float[] v);
+
+	float lenSqToEM(float tolerance, float x, float y, float z);
+	
+	float lenSqToEM4(ITup3RF v);
+	
+	float lenSqToEM4(ITupRF v);
+
+	float lenSqToEM4(float[] v);
+
+	float lenSqToEM4(float x, float y, float z);
+	
+	float lenSqToEM6(ITup3RF v);
+	
+	float lenSqToEM6(ITupRF v);
+
+	float lenSqToEM6(float[] v);
+
+	float lenSqToEM6(float x, float y, float z);
+	
+	float lenSqToEM8(ITup3RF v);
+	
+	float lenSqToEM8(ITupRF v);
+
+	float lenSqToEM8(float[] v);
+
+	float lenSqToEM8(float x, float y, float z);
+	
 	float dot(ITup3RF v);
 	
 	float dot(ITupRF v);
@@ -352,6 +422,30 @@ public interface IVec3RF extends ITup3RF
 
 	<T extends ITup3WF> T nrmT(@ExtractionParam T res);
 
+	IVec3RF nrmNEM(float tolerance);
+
+	float[] nrmTEM(float tolerance, @ExtractionParam float[] res);
+
+	<T extends ITup3WF> T nrmTEM(float tolerance, @ExtractionParam T res);
+	
+	IVec3RF nrmNEM4();
+
+	float[] nrmTEM4(@ExtractionParam float[] res);
+
+	<T extends ITup3WF> T nrmTEM4(@ExtractionParam T res);
+	
+	IVec3RF nrmNEM6();
+
+	float[] nrmTEM6(@ExtractionParam float[] res);
+
+	<T extends ITup3WF> T nrmTEM6(@ExtractionParam T res);
+	
+	IVec3RF nrmNEM8();
+
+	float[] nrmTEM8(@ExtractionParam float[] res);
+
+	<T extends ITup3WF> T nrmTEM8(@ExtractionParam T res);
+	
 	IVec3RF projectN(ITup3RF t);
 	
 	IVec3RF projectN(ITupRF t);
@@ -406,12 +500,36 @@ public interface IVec3RF extends ITup3RF
 
 	<T extends ITup3WF> T absT(@ExtractionParam T res);
 
-	IVec3RF signN();
+	IVec3RF signumN();
 
-	float[] signT(@ExtractionParam float[] res);
+	float[] signumT(@ExtractionParam float[] res);
 
-	<T extends ITup3WF> T signT(@ExtractionParam T res);
+	<T extends ITup3WF> T signumT(@ExtractionParam T res);
 
+	IVec3RF signumNEM(float tolerance);
+
+	float[] signumTEM(float tolerance, @ExtractionParam float[] res);
+
+	<T extends ITup3WF> T signumTEM(float tolerance, @ExtractionParam T res);
+	
+	IVec3RF signumNEM4();
+
+	float[] signumTEM4(@ExtractionParam float[] res);
+
+	<T extends ITup3WF> T signumTEM4(@ExtractionParam T res);
+	
+	IVec3RF signumNEM6();
+
+	float[] signumTEM6(@ExtractionParam float[] res);
+
+	<T extends ITup3WF> T signumTEM6(@ExtractionParam T res);
+	
+	IVec3RF signumNEM8();
+
+	float[] signumTEM8(@ExtractionParam float[] res);
+
+	<T extends ITup3WF> T signumTEM8(@ExtractionParam T res);
+	
 	IVec3RF swizzleN(int[] indices);
 
 	float[] swizzleT(int[] indices, float[] res);

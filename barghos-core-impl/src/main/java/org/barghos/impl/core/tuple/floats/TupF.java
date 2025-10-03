@@ -137,9 +137,39 @@ public class TupF implements ITupWF
 	}
 
 	@Override
+	public boolean isInfinite()
+	{
+		return RawTupUtilsF.isInfinite(this.v);
+	}
+
+	@Override
+	public boolean isInfiniteAt(int index)
+	{
+		return RawTupUtilsF.isInfiniteAt(index, this.v);
+	}
+	
+	@Override
+	public boolean isNaN()
+	{
+		return RawTupUtilsF.isNaN(this.v);
+	}
+
+	@Override
+	public boolean isNaNAt(int index)
+	{
+		return RawTupUtilsF.isNaNAt(index, this.v);
+	}
+	
+	@Override
 	public boolean isZero()
 	{
 		return RawTupUtilsF.isZero(this.v);
+	}
+	
+	@Override
+	public boolean isZeroEM(float tolerance)
+	{
+		return RawTupUtilsF.isZeroEM(tolerance, this.v);
 	}
 	
 	@Override
@@ -161,17 +191,17 @@ public class TupF implements ITupWF
 	}
 	
 	@Override
-	public boolean isZero(float tolerance)
-	{
-		return RawTupUtilsF.isZero(tolerance, this.v);
-	}
-
-	@Override
 	public boolean isZeroAt(int index)
 	{
 		return RawTupUtilsF.isZeroAt(index, this.v);
 	}
 
+	@Override
+	public boolean isZeroAtEM(float tolerance, int index)
+	{
+		return RawTupUtilsF.isZeroAtEM(tolerance, index, this.v);
+	}
+	
 	@Override
 	public boolean isZeroAtEM4(int index)
 	{
@@ -189,12 +219,6 @@ public class TupF implements ITupWF
 	{
 		return RawTupUtilsF.isZeroAtEM8(index, this.v);
 	}
-	
-	@Override
-	public boolean isZeroAt(float tolerance, int index)
-	{
-		return RawTupUtilsF.isZeroAt(tolerance, index, this.v);
-	}
 
 	@Override
 	public boolean equals(ITupRF t)
@@ -208,6 +232,18 @@ public class TupF implements ITupWF
 		return RawTupUtilsF.equals(this.v, t);
 	}
 
+	@Override
+	public boolean equalsEM(float tolerance, ITupRF t)
+	{
+		return TupUtilsF.equalsEM(tolerance, this.v, t);
+	}
+
+	@Override
+	public boolean equalsEM(float tolerance, float[] t)
+	{
+		return RawTupUtilsF.equalsEM(tolerance, this.v, t);
+	}
+	
 	@Override
 	public boolean equalsEM4(ITupRF t)
 	{
@@ -245,18 +281,6 @@ public class TupF implements ITupWF
 	}
 	
 	@Override
-	public boolean equals(float tolerance, ITupRF t)
-	{
-		return TupUtilsF.equals(tolerance, this.v, t);
-	}
-
-	@Override
-	public boolean equals(float tolerance, float[] t)
-	{
-		return RawTupUtilsF.equals(tolerance, this.v, t);
-	}
-
-	@Override
 	public boolean equalsAt(int index, ITupRF t)
 	{
 		return TupUtilsF.equalsAt(index, this.v, t);
@@ -274,6 +298,24 @@ public class TupF implements ITupWF
 		return RawTupUtilsF.equalsAt(index, this.v, value);
 	}
 
+	@Override
+	public boolean equalsAtEM(float tolerance, int index, ITupRF t)
+	{
+		return TupUtilsF.equalsAtEM(tolerance, index, this.v, t);
+	}
+
+	@Override
+	public boolean equalsAtEM(float tolerance, int index, float[] t)
+	{
+		return RawTupUtilsF.equalsAtEM(tolerance, index, this.v, t);
+	}
+
+	@Override
+	public boolean equalsAtEM(float tolerance, int index, float value)
+	{
+		return RawTupUtilsF.equalsAtEM(tolerance, index, this.v, value);
+	}
+	
 	@Override
 	public boolean equalsAtEM4(int index, ITupRF t)
 	{
@@ -328,21 +370,4 @@ public class TupF implements ITupWF
 		return RawTupUtilsF.equalsAtEM8(index, this.v, value);
 	}
 	
-	@Override
-	public boolean equalsAt(float tolerance, int index, ITupRF t)
-	{
-		return TupUtilsF.equalsAt(tolerance, index, this.v, t);
-	}
-
-	@Override
-	public boolean equalsAt(float tolerance, int index, float[] t)
-	{
-		return RawTupUtilsF.equalsAt(tolerance, index, this.v, t);
-	}
-
-	@Override
-	public boolean equalsAt(float tolerance, int index, float value)
-	{
-		return RawTupUtilsF.equalsAt(tolerance, index, this.v, value);
-	}
 }

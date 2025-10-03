@@ -5,8 +5,6 @@ plugins {
 
 dependencies {
   api project(':barghos-annotation')
-
-  testImplementation project(':barghos-testutils')
 }
 
 publishing {

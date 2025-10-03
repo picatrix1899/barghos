@@ -8,25 +8,6 @@ components r, g, b). Because of this, a neutral naming convention has been
 choosen to prevent conflicts and confusion (A color with the components x, y, z
 does not make much sense).
 
-## Reason for - Functions with tolerance have the same names as the exact functions
-
-There is no different naming convention for functions with tolerance and exact
-functions because it would be hard to describe every possible use case with a
-single name (For example a possible name could be isNearlyZero, but that would
-implicate the intention to check for zero taking into account floating point
-error, but the tolerance can be much higher. At the same time a name like
-isAproxZero doesn't give any hint on the operation).
-
-## Reason for - No functions with tolerance using common tolerance available
-
-There is no separate function with tolerance that uses a common tolerance
-instead of a parameter. The reason is, that it does not make much sense to
-specify a common tolerance as the tolerated margin around zero is situational
-(For example, to compare two vectors after floating point error prone
-calculations, it should be sufficient to use a very small tolerance to
-counteract the FPE. However, to check for collision between two AABBs, a greater
-tolerance is probably required).
-
 ## Reason for - Usage of "is", "has" prefix in functions
 
 The prefix "is" or "has" is used in function names whether the function returns
@@ -40,3 +21,18 @@ but a state the object is in.
 
 The prefix "to" or "from" is used in functions that perform a conversion. For
 example a function "toArray" converts logically the current object into an array.
+
+## Reason for - Usage of per component isZero instead of isZero on squared length in vectors
+
+The reason for using a per component check against zero instead of first calculating
+the squared length and checking that against zero is, that the available tolerance for
+the squared length actually scales with dimensions. therefore a vec2 has more tolerance
+per component that a vec4. by checking each component, the tolerance is always the same.
+it also removes the need for transforming the tolerance to quadric space.
+
+## Reason for - Tolerance functions
+
+Certain functions have an overload with a tolerance parameter. The functions are suffixed with
+"EM", standing either for "E minus" (1.e-x) the scientific exponential expression, or "Error Margin".
+There is also always overloads for predefined tolerances "EM4", "EM6" and "EM8", which correspond
+to the values "1.e-4", "1.e-6" and "1.e-8".

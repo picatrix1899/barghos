@@ -2,7 +2,6 @@ rootProject.name = 'barghos'
 
 include('barghos-annotation')
 include('barghos-validation')
-include('barghos-testutils')
 include('barghos-pool')
 
 include('barghos-math-api')
@@ -12,4 +11,3 @@ include('barghos-core-api')
 include('barghos-core-impl')
 
 include('barghos-compat-lwjgl-glfw')
-include('barghos-compat-lwjgl-vulkan')

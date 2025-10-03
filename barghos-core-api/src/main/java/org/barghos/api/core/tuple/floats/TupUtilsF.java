@@ -8,9 +8,7 @@ public class TupUtilsF
 	public static boolean equals(@AllowNull ITupRF t1, @AllowNull ITupRF t2)
 	{
 		if (t1 == t2) return true;
-		if (t1 == null && t2 == null) return true;
-		if (t1 == null) return false;
-		if (t2 == null) return false;
+		if (t1 == null || t2 == null) return false;
 		
 		int size = t1.size();
 		
@@ -27,8 +25,7 @@ public class TupUtilsF
 	public static boolean equals(@AllowNull ITupRF t1, @AllowNull float[] t2)
 	{
 		if (t1 == null && t2 == null) return true;
-		if (t1 == null) return false;
-		if (t2 == null) return false;
+		if (t1 == null || t2 == null) return false;
 		
 		int size = t1.size();
 		
@@ -45,8 +42,7 @@ public class TupUtilsF
 	public static boolean equals(@AllowNull float[] t1, @AllowNull ITupRF t2)
 	{
 		if (t1 == null && t2 == null) return true;
-		if (t1 == null) return false;
-		if (t2 == null) return false;
+		if (t1 == null || t2 == null) return false;
 		
 		int size = t1.length;
 		
@@ -60,12 +56,61 @@ public class TupUtilsF
 		return true;
 	}
 	
+	public static boolean equalsEM(float tolerance, @AllowNull ITupRF t1, @AllowNull ITupRF t2)
+	{
+		if (t1 == t2) return true;
+		if (t1 == null || t2 == null) return false;
+		
+		int size = t1.size();
+		
+		if (size != t2.size()) return false;
+
+		for(int i = 0; i < size; i++)
+		{
+			if (MathUtils.equalsEM(tolerance, t1.getAt(i), t2.getAt(i))) return false;
+		}
+
+		return true;
+	}
+	
+	public static boolean equalsEM(float tolerance, @AllowNull ITupRF t1, @AllowNull float[] t2)
+	{
+		if (t1 == null && t2 == null) return true;
+		if (t1 == null || t2 == null) return false;
+		
+		int size = t1.size();
+		
+		if (size != t2.length) return false;
+
+		for(int i = 0; i < size; i++)
+		{
+			if (MathUtils.equalsEM(tolerance, t1.getAt(i), t2[i])) return false;
+		}
+
+		return true;
+	}
+	
+	public static boolean equalsEM(float tolerance, @AllowNull float[] t1, @AllowNull ITupRF t2)
+	{
+		if (t1 == null && t2 == null) return true;
+		if (t1 == null || t2 == null) return false;
+		
+		int size = t1.length;
+		
+		if (size != t2.size()) return false;
+
+		for(int i = 0; i < size; i++)
+		{
+			if (MathUtils.equalsEM(tolerance, t1[i], t2.getAt(i))) return false;
+		}
+
+		return true;
+	}
+	
 	public static boolean equalsEM4(@AllowNull ITupRF t1, @AllowNull ITupRF t2)
 	{
 		if (t1 == t2) return true;
-		if (t1 == null && t2 == null) return true;
-		if (t1 == null) return false;
-		if (t2 == null) return false;
+		if (t1 == null || t2 == null) return false;
 		
 		int size = t1.size();
 		
@@ -82,8 +127,7 @@ public class TupUtilsF
 	public static boolean equalsEM4(@AllowNull ITupRF t1, @AllowNull float[] t2)
 	{
 		if (t1 == null && t2 == null) return true;
-		if (t1 == null) return false;
-		if (t2 == null) return false;
+		if (t1 == null || t2 == null) return false;
 		
 		int size = t1.size();
 		
@@ -100,8 +144,7 @@ public class TupUtilsF
 	public static boolean equalsEM4(@AllowNull float[] t1, @AllowNull ITupRF t2)
 	{
 		if (t1 == null && t2 == null) return true;
-		if (t1 == null) return false;
-		if (t2 == null) return false;
+		if (t1 == null || t2 == null) return false;
 		
 		int size = t1.length;
 		
@@ -118,9 +161,7 @@ public class TupUtilsF
 	public static boolean equalsEM6(@AllowNull ITupRF t1, @AllowNull ITupRF t2)
 	{
 		if (t1 == t2) return true;
-		if (t1 == null && t2 == null) return true;
-		if (t1 == null) return false;
-		if (t2 == null) return false;
+		if (t1 == null || t2 == null) return false;
 		
 		int size = t1.size();
 		
@@ -137,8 +178,7 @@ public class TupUtilsF
 	public static boolean equalsEM6(@AllowNull ITupRF t1, @AllowNull float[] t2)
 	{
 		if (t1 == null && t2 == null) return true;
-		if (t1 == null) return false;
-		if (t2 == null) return false;
+		if (t1 == null || t2 == null) return false;
 		
 		int size = t1.size();
 		
@@ -155,8 +195,7 @@ public class TupUtilsF
 	public static boolean equalsEM6(@AllowNull float[] t1, @AllowNull ITupRF t2)
 	{
 		if (t1 == null && t2 == null) return true;
-		if (t1 == null) return false;
-		if (t2 == null) return false;
+		if (t1 == null || t2 == null) return false;
 		
 		int size = t1.length;
 		
@@ -173,9 +212,7 @@ public class TupUtilsF
 	public static boolean equalsEM8(@AllowNull ITupRF t1, @AllowNull ITupRF t2)
 	{
 		if (t1 == t2) return true;
-		if (t1 == null && t2 == null) return true;
-		if (t1 == null) return false;
-		if (t2 == null) return false;
+		if (t1 == null || t2 == null) return false;
 		
 		int size = t1.size();
 		
@@ -192,8 +229,7 @@ public class TupUtilsF
 	public static boolean equalsEM8(@AllowNull ITupRF t1, @AllowNull float[] t2)
 	{
 		if (t1 == null && t2 == null) return true;
-		if (t1 == null) return false;
-		if (t2 == null) return false;
+		if (t1 == null || t2 == null) return false;
 		
 		int size = t1.size();
 		
@@ -210,8 +246,7 @@ public class TupUtilsF
 	public static boolean equalsEM8(@AllowNull float[] t1, @AllowNull ITupRF t2)
 	{
 		if (t1 == null && t2 == null) return true;
-		if (t1 == null) return false;
-		if (t2 == null) return false;
+		if (t1 == null || t2 == null) return false;
 		
 		int size = t1.length;
 		
@@ -225,67 +260,10 @@ public class TupUtilsF
 		return true;
 	}
 	
-	public static boolean equals(float tolerance, @AllowNull ITupRF t1, @AllowNull ITupRF t2)
-	{
-		if (t1 == t2) return true;
-		if (t1 == null && t2 == null) return true;
-		if (t1 == null) return false;
-		if (t2 == null) return false;
-		
-		int size = t1.size();
-		
-		if (size != t2.size()) return false;
-
-		for(int i = 0; i < size; i++)
-		{
-			if (MathUtils.equals(tolerance, t1.getAt(i), t2.getAt(i))) return false;
-		}
-
-		return true;
-	}
-	
-	public static boolean equals(float tolerance, @AllowNull ITupRF t1, @AllowNull float[] t2)
-	{
-		if (t1 == null && t2 == null) return true;
-		if (t1 == null) return false;
-		if (t2 == null) return false;
-		
-		int size = t1.size();
-		
-		if (size != t2.length) return false;
-
-		for(int i = 0; i < size; i++)
-		{
-			if (MathUtils.equals(tolerance, t1.getAt(i), t2[i])) return false;
-		}
-
-		return true;
-	}
-	
-	public static boolean equals(float tolerance, @AllowNull float[] t1, @AllowNull ITupRF t2)
-	{
-		if (t1 == null && t2 == null) return true;
-		if (t1 == null) return false;
-		if (t2 == null) return false;
-		
-		int size = t1.length;
-		
-		if (size != t2.size()) return false;
-
-		for(int i = 0; i < size; i++)
-		{
-			if (MathUtils.equals(tolerance, t1[i], t2.getAt(i))) return false;
-		}
-
-		return true;
-	}
-	
 	public static boolean equalsAt(int index, @AllowNull ITupRF t1, @AllowNull ITupRF t2)
 	{
 		if (t1 == t2) return true;
-		if (t1 == null && t2 == null) return true;
-		if (t1 == null) return false;
-		if (t2 == null) return false;
+		if (t1 == null || t2 == null) return false;
 		
 		int size = t1.size();
 		
@@ -297,8 +275,7 @@ public class TupUtilsF
 	public static boolean equalsAt(int index, @AllowNull ITupRF t1, @AllowNull float[] t2)
 	{
 		if (t1 == null && t2 == null) return true;
-		if (t1 == null) return false;
-		if (t2 == null) return false;
+		if (t1 == null || t2 == null) return false;
 		
 		int size = t1.size();
 		
@@ -317,8 +294,7 @@ public class TupUtilsF
 	public static boolean equalsAt(int index, @AllowNull float[] t1, @AllowNull ITupRF t2)
 	{
 		if (t1 == null && t2 == null) return true;
-		if (t1 == null) return false;
-		if (t2 == null) return false;
+		if (t1 == null || t2 == null) return false;
 		
 		int size = t1.length;
 		
@@ -327,12 +303,53 @@ public class TupUtilsF
 		return t1[index] == t2.getAt(index);
 	}
 	
+	public static boolean equalsAtEM(float tolerance, int index, @AllowNull ITupRF t1, @AllowNull ITupRF t2)
+	{
+		if (t1 == t2) return true;
+		if (t1 == null || t2 == null) return false;
+
+		int size = t1.size();
+		
+		if (size != t2.size()) return false;
+
+		return MathUtils.equalsEM(tolerance, t1.getAt(index), t2.getAt(index));
+	}
+	
+	public static boolean equalsAtEM(float tolerance, int index, @AllowNull ITupRF t1, @AllowNull float[] t2)
+	{
+		if (t1 == null && t2 == null) return true;
+		if (t1 == null || t2 == null) return false;
+
+		int size = t1.size();
+		
+		if (size != t2.length) return false;
+
+		return MathUtils.equalsEM(tolerance, t1.getAt(index), t2[index]);
+	}
+	
+	public static boolean equalsAtEM(float tolerance, int index, @AllowNull ITupRF t1, float value)
+	{
+		if (t1 == null) return false;
+
+		return MathUtils.equalsEM(tolerance, t1.getAt(index), value);
+	}
+	
+	public static boolean equalsAtEM(float tolerance, int index, @AllowNull float[] t1, @AllowNull ITupRF t2)
+	{
+		if (t1 == null && t2 == null) return true;
+		if (t1 == null || t2 == null) return false;
+
+		int size = t1.length;
+		
+		if (size != t2.size()) return false;
+
+		return MathUtils.equalsEM(tolerance, t1[index], t2.getAt(index));
+	}
+	
 	public static boolean equalsAtEM4(int index, @AllowNull ITupRF t1, @AllowNull ITupRF t2)
 	{
 		if (t1 == t2) return true;
-		if (t1 == null && t2 == null) return true;
-		if (t1 == null) return false;
-		if (t2 == null) return false;
+		if (t1 == null || t2 == null) return false;
 		
 		int size = t1.size();
 		
@@ -344,8 +361,7 @@ public class TupUtilsF
 	public static boolean equalsAtEM4(int index, @AllowNull ITupRF t1, @AllowNull float[] t2)
 	{
 		if (t1 == null && t2 == null) return true;
-		if (t1 == null) return false;
-		if (t2 == null) return false;
+		if (t1 == null || t2 == null) return false;
 		
 		int size = t1.size();
 		
@@ -364,8 +380,7 @@ public class TupUtilsF
 	public static boolean equalsAtEM4(int index, @AllowNull float[] t1, @AllowNull ITupRF t2)
 	{
 		if (t1 == null && t2 == null) return true;
-		if (t1 == null) return false;
-		if (t2 == null) return false;
+		if (t1 == null || t2 == null) return false;
 		
 		int size = t1.length;
 		
@@ -377,9 +392,7 @@ public class TupUtilsF
 	public static boolean equalsAtEM6(int index, @AllowNull ITupRF t1, @AllowNull ITupRF t2)
 	{
 		if (t1 == t2) return true;
-		if (t1 == null && t2 == null) return true;
-		if (t1 == null) return false;
-		if (t2 == null) return false;
+		if (t1 == null || t2 == null) return false;
 		
 		int size = t1.size();
 		
@@ -391,8 +404,7 @@ public class TupUtilsF
 	public static boolean equalsAtEM6(int index, @AllowNull ITupRF t1, @AllowNull float[] t2)
 	{
 		if (t1 == null && t2 == null) return true;
-		if (t1 == null) return false;
-		if (t2 == null) return false;
+		if (t1 == null || t2 == null) return false;
 		
 		int size = t1.size();
 		
@@ -411,8 +423,7 @@ public class TupUtilsF
 	public static boolean equalsAtEM6(int index, @AllowNull float[] t1, @AllowNull ITupRF t2)
 	{
 		if (t1 == null && t2 == null) return true;
-		if (t1 == null) return false;
-		if (t2 == null) return false;
+		if (t1 == null || t2 == null) return false;
 		
 		int size = t1.length;
 		
@@ -424,9 +435,7 @@ public class TupUtilsF
 	public static boolean equalsAtEM8(int index, @AllowNull ITupRF t1, @AllowNull ITupRF t2)
 	{
 		if (t1 == t2) return true;
-		if (t1 == null && t2 == null) return true;
-		if (t1 == null) return false;
-		if (t2 == null) return false;
+		if (t1 == null || t2 == null) return false;
 		
 		int size = t1.size();
 		
@@ -438,8 +447,7 @@ public class TupUtilsF
 	public static boolean equalsAtEM8(int index, @AllowNull ITupRF t1, @AllowNull float[] t2)
 	{
 		if (t1 == null && t2 == null) return true;
-		if (t1 == null) return false;
-		if (t2 == null) return false;
+		if (t1 == null || t2 == null) return false;
 		
 		int size = t1.size();
 		
@@ -458,61 +466,13 @@ public class TupUtilsF
 	public static boolean equalsAtEM8(int index, @AllowNull float[] t1, @AllowNull ITupRF t2)
 	{
 		if (t1 == null && t2 == null) return true;
-		if (t1 == null) return false;
-		if (t2 == null) return false;
+		if (t1 == null || t2 == null) return false;
 		
 		int size = t1.length;
 		
 		if (size != t2.size()) return false;
 
 		return MathUtils.equalsEM8(t1[index], t2.getAt(index));
-	}
-	
-	public static boolean equalsAt(float tolerance, int index, @AllowNull ITupRF t1, @AllowNull ITupRF t2)
-	{
-		if (t1 == t2) return true;
-		if (t1 == null && t2 == null) return true;
-		if (t1 == null) return false;
-		if (t2 == null) return false;
-
-		int size = t1.size();
-		
-		if (size != t2.size()) return false;
-
-		return MathUtils.equals(tolerance, t1.getAt(index), t2.getAt(index));
-	}
-	
-	public static boolean equalsAt(float tolerance, int index, @AllowNull ITupRF t1, @AllowNull float[] t2)
-	{
-		if (t1 == null && t2 == null) return true;
-		if (t1 == null) return false;
-		if (t2 == null) return false;
-
-		int size = t1.size();
-		
-		if (size != t2.length) return false;
-
-		return MathUtils.equals(tolerance, t1.getAt(index), t2[index]);
-	}
-	
-	public static boolean equalsAt(float tolerance, int index, @AllowNull ITupRF t1, float value)
-	{
-		if (t1 == null) return false;
-
-		return MathUtils.equals(tolerance, t1.getAt(index), value);
-	}
-	
-	public static boolean equalsAt(float tolerance, int index, @AllowNull float[] t1, @AllowNull ITupRF t2)
-	{
-		if (t1 == null && t2 == null) return true;
-		if (t1 == null) return false;
-		if (t2 == null) return false;
-
-		int size = t1.length;
-		
-		if (size != t2.size()) return false;
-
-		return MathUtils.equals(tolerance, t1[index], t2.getAt(index));
 	}
 	
 	public static boolean isFinite(ITupRF t)
@@ -530,11 +490,51 @@ public class TupUtilsF
 		return Float.isFinite(t.getAt(index));
 	}
 	
+	public static boolean isInfinite(ITupRF t)
+	{
+		for(int i = 0, size = t.size(); i < size; i++)
+		{
+			if(!Float.isInfinite(t.getAt(i))) return false;
+		}
+		
+		return true;
+	}
+	
+	public static boolean isInfiniteAt(int index, ITupRF t)
+	{
+		return Float.isInfinite(t.getAt(index));
+	}
+	
+	public static boolean isNaN(ITupRF t)
+	{
+		for(int i = 0, size = t.size(); i < size; i++)
+		{
+			if(!Float.isNaN(t.getAt(i))) return false;
+		}
+		
+		return true;
+	}
+	
+	public static boolean isNaNAt(int index, ITupRF t)
+	{
+		return Float.isNaN(t.getAt(index));
+	}
+	
 	public static boolean isZero(ITupRF t)
 	{
 		for(int i = 0, size = t.size(); i < size; i++)
 		{
 			if(t.getAt(i) != 0.0f) return false;
+		}
+		
+		return true;
+	}
+	
+	public static boolean isZeroEM(float tolerance, ITupRF t)
+	{
+		for(int i = 0, size = t.size(); i < size; i++)
+		{
+			if(!MathUtils.isZeroEM(tolerance, t.getAt(i))) return false;
 		}
 		
 		return true;
@@ -570,19 +570,14 @@ public class TupUtilsF
 		return true;
 	}
 	
-	public static boolean isZero(float tolerance, ITupRF t)
-	{
-		for(int i = 0, size = t.size(); i < size; i++)
-		{
-			if(!MathUtils.isZero(tolerance, t.getAt(i))) return false;
-		}
-		
-		return true;
-	}
-	
 	public static boolean isZeroAt(int index, ITupRF t)
 	{
 		return t.getAt(index) == 0.0f;
+	}
+	
+	public static boolean isZeroAtEM(float tolerance, int index, ITupRF t)
+	{
+		return MathUtils.isZeroEM(tolerance, t.getAt(index));
 	}
 	
 	public static boolean isZeroAtEM4(int index, ITupRF t)
@@ -600,8 +595,4 @@ public class TupUtilsF
 		return MathUtils.isZeroEM8(t.getAt(index));
 	}
 	
-	public static boolean isZeroAt(float tolerance, int index, ITupRF t)
-	{
-		return MathUtils.isZero(tolerance, t.getAt(index));
-	}
 }

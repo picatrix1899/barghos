@@ -1137,11 +1137,32 @@ public class Vec2F implements IVec2WF, IBufferableRF, IBufferableWF
 
 	/** {@inheritDoc} */
 	@Override
-	public float len(float tolerance)
+	public float lenEM(float tolerance)
 	{
-		return VecUtils2F.len(tolerance, this.v);
+		return VecUtils2F.lenEM(tolerance, this.v);
 	}
 
+	/** {@inheritDoc} */
+	@Override
+	public float lenEM4()
+	{
+		return VecUtils2F.lenEM4(this.v);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public float lenEM6()
+	{
+		return VecUtils2F.lenEM6(this.v);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public float lenEM8()
+	{
+		return VecUtils2F.lenEM8(this.v);
+	}
+	
 	/** {@inheritDoc} */
 	@Override
 	public float lenRc()
@@ -1165,46 +1186,130 @@ public class Vec2F implements IVec2WF, IBufferableRF, IBufferableWF
 	
 	/** {@inheritDoc} */
 	@Override
-	public float lenTo(float tolerance, ITup2RF t)
-	{
-		return VecUtils2F.lenTo(tolerance, this.v, t);
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public float lenTo(float tolerance, ITupRF t)
-	{
-		return VecUtils2F.lenTo(tolerance, this.v, t);
-	}
-	
-	/** {@inheritDoc} */
-	@Override
 	public float lenTo(float[] t)
 	{
 		return VecUtils2F.lenTo(this.v, t);
 	}
-
-	/** {@inheritDoc} */
-	@Override
-	public float lenTo(float tolerance, float[] t)
-	{
-		return VecUtils2F.lenTo(tolerance, this.v, t);
-	}
-
+	
 	/** {@inheritDoc} */
 	@Override
 	public float lenTo(float tx, float ty)
 	{
 		return VecUtils2F.lenTo(this.v, tx, ty);
 	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public float lenToEM(float tolerance, ITup2RF t)
+	{
+		return VecUtils2F.lenToEM(tolerance, this.v, t);
+	}
 
 	/** {@inheritDoc} */
 	@Override
-	public float lenTo(float tolerance, float tx, float ty)
+	public float lenToEM(float tolerance, ITupRF t)
 	{
-		return VecUtils2F.lenTo(tolerance, this.v, tx, ty);
+		return VecUtils2F.lenToEM(tolerance, this.v, t);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public float lenToEM(float tolerance, float[] t)
+	{
+		return VecUtils2F.lenToEM(tolerance, this.v, t);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public float lenToEM(float tolerance, float tx, float ty)
+	{
+		return VecUtils2F.lenToEM(tolerance, this.v, tx, ty);
 	}
 
+	/** {@inheritDoc} */
+	@Override
+	public float lenToEM4(ITup2RF t)
+	{
+		return VecUtils2F.lenToEM4(this.v, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public float lenToEM4(ITupRF t)
+	{
+		return VecUtils2F.lenToEM4(this.v, t);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public float lenToEM4(float[] t)
+	{
+		return VecUtils2F.lenToEM4(this.v, t);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public float lenToEM4(float tx, float ty)
+	{
+		return VecUtils2F.lenToEM4(this.v, tx, ty);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public float lenToEM6(ITup2RF t)
+	{
+		return VecUtils2F.lenToEM6(this.v, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public float lenToEM6(ITupRF t)
+	{
+		return VecUtils2F.lenToEM6(this.v, t);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public float lenToEM6(float[] t)
+	{
+		return VecUtils2F.lenToEM6(this.v, t);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public float lenToEM6(float tx, float ty)
+	{
+		return VecUtils2F.lenToEM6(this.v, tx, ty);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public float lenToEM8(ITup2RF t)
+	{
+		return VecUtils2F.lenToEM8(this.v, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public float lenToEM8(ITupRF t)
+	{
+		return VecUtils2F.lenToEM8(this.v, t);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public float lenToEM8(float[] t)
+	{
+		return VecUtils2F.lenToEM8(this.v, t);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public float lenToEM8(float tx, float ty)
+	{
+		return VecUtils2F.lenToEM8(this.v, tx, ty);
+	}
+	
 	/** {@inheritDoc} */
 	@Override
 	public float lenRcTo(ITup2RF t)
@@ -1242,6 +1347,34 @@ public class Vec2F implements IVec2WF, IBufferableRF, IBufferableWF
 
 	/** {@inheritDoc} */
 	@Override
+	public float lenSqEM(float tolerance)
+	{
+		return VecUtils2F.lenSqEM(tolerance, this.v);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public float lenSqEM4()
+	{
+		return VecUtils2F.lenSqEM4(this.v);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public float lenSqEM6()
+	{
+		return VecUtils2F.lenSqEM6(this.v);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public float lenSqEM8()
+	{
+		return VecUtils2F.lenSqEM8(this.v);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
 	public float lenSqTo(ITup2RF t)
 	{
 		return VecUtils2F.lenSqTo(this.v, t);
@@ -1267,7 +1400,119 @@ public class Vec2F implements IVec2WF, IBufferableRF, IBufferableWF
 	{
 		return VecUtils2F.lenSqTo(this.v, tx, ty);
 	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public float lenSqToEM(float tolerance, ITup2RF t)
+	{
+		return VecUtils2F.lenSqToEM(tolerance, this.v, t);
+	}
 
+	/** {@inheritDoc} */
+	@Override
+	public float lenSqToEM(float tolerance, ITupRF t)
+	{
+		return VecUtils2F.lenSqToEM(tolerance, this.v, t);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public float lenSqToEM(float tolerance, float[] t)
+	{
+		return VecUtils2F.lenSqToEM(tolerance, this.v, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public float lenSqToEM(float tolerance, float tx, float ty)
+	{
+		return VecUtils2F.lenSqToEM(tolerance, this.v, tx, ty);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public float lenSqToEM4(ITup2RF t)
+	{
+		return VecUtils2F.lenSqToEM4(this.v, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public float lenSqToEM4(ITupRF t)
+	{
+		return VecUtils2F.lenSqToEM4(this.v, t);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public float lenSqToEM4(float[] t)
+	{
+		return VecUtils2F.lenSqToEM4(this.v, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public float lenSqToEM4(float tx, float ty)
+	{
+		return VecUtils2F.lenSqToEM4(this.v, tx, ty);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public float lenSqToEM6(ITup2RF t)
+	{
+		return VecUtils2F.lenSqToEM6(this.v, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public float lenSqToEM6(ITupRF t)
+	{
+		return VecUtils2F.lenSqToEM6(this.v, t);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public float lenSqToEM6(float[] t)
+	{
+		return VecUtils2F.lenSqToEM6(this.v, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public float lenSqToEM6(float tx, float ty)
+	{
+		return VecUtils2F.lenSqToEM6(this.v, tx, ty);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public float lenSqToEM8(ITup2RF t)
+	{
+		return VecUtils2F.lenSqToEM8(this.v, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public float lenSqToEM8(ITupRF t)
+	{
+		return VecUtils2F.lenSqToEM8(this.v, t);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public float lenSqToEM8(float[] t)
+	{
+		return VecUtils2F.lenSqToEM8(this.v, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public float lenSqToEM8(float tx, float ty)
+	{
+		return VecUtils2F.lenSqToEM8(this.v, tx, ty);
+	}
+	
 	/** {@inheritDoc} */
 	@Override
 	public float dot(ITup2RF t)
@@ -1628,6 +1873,126 @@ public class Vec2F implements IVec2WF, IBufferableRF, IBufferableWF
 
 	/** {@inheritDoc} */
 	@Override
+	public Vec2F nrmEM(float tolerance)
+	{
+		VecUtils2F.nrmEM(tolerance, this.v, this.v);
+		
+		return this;
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public Vec2F nrmNEM(float tolerance)
+	{
+		return VecUtils2F.nrmFuncEM(tolerance, this.v, CTOR);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public float[] nrmTEM(float tolerance, float[] res)
+	{
+		return VecUtils2F.nrmEM(tolerance, this.v, res);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public <T extends ITup2WF> T nrmTEM(float tolerance, T res)
+	{
+		return VecUtils2F.nrmEM(tolerance, this.v, res);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public Vec2F nrmEM4()
+	{
+		VecUtils2F.nrmEM4(this.v, this.v);
+		
+		return this;
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public Vec2F nrmNEM4()
+	{
+		return VecUtils2F.nrmFuncEM4(this.v, CTOR);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public float[] nrmTEM4(float[] res)
+	{
+		return VecUtils2F.nrmEM4(this.v, res);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public <T extends ITup2WF> T nrmTEM4(T res)
+	{
+		return VecUtils2F.nrmEM4(this.v, res);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public Vec2F nrmEM6()
+	{
+		VecUtils2F.nrmEM6(this.v, this.v);
+		
+		return this;
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public Vec2F nrmNEM6()
+	{
+		return VecUtils2F.nrmFuncEM6(this.v, CTOR);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public float[] nrmTEM6(float[] res)
+	{
+		return VecUtils2F.nrmEM6(this.v, res);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public <T extends ITup2WF> T nrmTEM6(T res)
+	{
+		return VecUtils2F.nrmEM6(this.v, res);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public Vec2F nrmEM8()
+	{
+		VecUtils2F.nrmEM8(this.v, this.v);
+		
+		return this;
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public Vec2F nrmNEM8()
+	{
+		return VecUtils2F.nrmFuncEM8(this.v, CTOR);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public float[] nrmTEM8(float[] res)
+	{
+		return VecUtils2F.nrmEM8(this.v, res);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public <T extends ITup2WF> T nrmTEM8(T res)
+	{
+		return VecUtils2F.nrmEM8(this.v, res);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
 	public Vec2F rotRad(double angle)
 	{
 		VecUtils2F.rotRad(angle, this.v, this.v);
@@ -1958,34 +2323,161 @@ public class Vec2F implements IVec2WF, IBufferableRF, IBufferableWF
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F sign()
+	public Vec2F signum()
 	{
-		VecUtils2F.sign(this.v, this.v);
+		VecUtils2F.signum(this.v, this.v);
 		
 		return this;
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F signN()
+	public Vec2F signumN()
 	{
-		return VecUtils2F.signFunc(this.v, CTOR);
+		return VecUtils2F.signumFunc(this.v, CTOR);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public float[] signT(float[] res)
+	public float[] signumT(float[] res)
 	{
-		return VecUtils2F.sign(this.v, res);
+		return VecUtils2F.signum(this.v, res);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public <T extends ITup2WF> T signT(T res)
+	public <T extends ITup2WF> T signumT(T res)
 	{
-		return VecUtils2F.sign(this.v, res);
+		return VecUtils2F.signum(this.v, res);
 	}
 
+	/** {@inheritDoc} */
+	@Override
+	public Vec2F signumEM(float tolerance)
+	{
+		VecUtils2F.signumEM(tolerance, this.v, this.v);
+		
+		return this;
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public Vec2F signumNEM(float tolerance)
+	{
+		return VecUtils2F.signumFuncEM(tolerance, this.v, CTOR);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public float[] signumTEM(float tolerance, float[] res)
+	{
+		return VecUtils2F.signumEM(tolerance, this.v, res);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public <T extends ITup2WF> T signumTEM(float tolerance, T res)
+	{
+		return VecUtils2F.signumEM(tolerance, this.v, res);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public Vec2F signumEM4()
+	{
+		VecUtils2F.signumEM4(this.v, this.v);
+		
+		return this;
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public Vec2F signumNEM4()
+	{
+		return VecUtils2F.signumFuncEM4(this.v, CTOR);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public float[] signumTEM4(float[] res)
+	{
+		return VecUtils2F.signumEM4(this.v, res);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public <T extends ITup2WF> T signumTEM4(T res)
+	{
+		return VecUtils2F.signumEM4(this.v, res);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public Vec2F signumEM6()
+	{
+		VecUtils2F.signumEM6(this.v, this.v);
+		
+		return this;
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public Vec2F signumNEM6()
+	{
+		return VecUtils2F.signumFuncEM6(this.v, CTOR);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public float[] signumTEM6(float[] res)
+	{
+		return VecUtils2F.signumEM6(this.v, res);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public <T extends ITup2WF> T signumTEM6(T res)
+	{
+		return VecUtils2F.signumEM6(this.v, res);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public Vec2F signumEM8()
+	{
+		VecUtils2F.signumEM8(this.v, this.v);
+		
+		return this;
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public Vec2F signumNEM8()
+	{
+		return VecUtils2F.signumFuncEM8(this.v, CTOR);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public float[] signumTEM8(float[] res)
+	{
+		return VecUtils2F.signumEM8(this.v, res);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public <T extends ITup2WF> T signumTEM8(T res)
+	{
+		return VecUtils2F.signumEM8(this.v, res);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public boolean isFinite()
+	{
+		return RawTupUtils2F.isFinite(this.v);
+	}
+	
 	/** {@inheritDoc} */
 	@Override
 	public boolean isFiniteAt(int index)
@@ -2009,11 +2501,105 @@ public class Vec2F implements IVec2WF, IBufferableRF, IBufferableWF
 
 	/** {@inheritDoc} */
 	@Override
+	public boolean isInfinite()
+	{
+		return RawTupUtils2F.isInfinite(this.v);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public boolean isInfiniteAt(int index)
+	{
+		return RawTupUtils2F.isInfiniteAt(index, this.v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean isInfiniteAtV0()
+	{
+		return RawTupUtils2F.isInfiniteAtV0(this.v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean isInfiniteAtV1()
+	{
+		return RawTupUtils2F.isInfiniteAtV1(this.v);
+	}
+	
+	@Override
+	public boolean isNaN()
+	{
+		return RawTupUtils2F.isNaN(this.v);
+	}
+	
+	@Override
+	public boolean isNaNAt(int index)
+	{
+		return RawTupUtils2F.isNaNAt(index, this.v);
+	}
+	
+	@Override
+	public boolean isNaNAtV0()
+	{
+		return RawTupUtils2F.isNaNAtV0(this.v);
+	}
+	
+	@Override
+	public boolean isNaNAtV1()
+	{
+		return RawTupUtils2F.isNaNAtV1(this.v);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public boolean isZero()
+	{
+		return RawTupUtils2F.isZero(this.v);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean isZeroEM(float tolerance)
+	{
+		return RawTupUtils2F.isZeroEM(tolerance, this.v);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public boolean isZeroEM4()
+	{
+		return RawTupUtils2F.isZeroEM4(this.v);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public boolean isZeroEM6()
+	{
+		return RawTupUtils2F.isZeroEM6(this.v);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public boolean isZeroEM8()
+	{
+		return RawTupUtils2F.isZeroEM8(this.v);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
 	public boolean isZeroAt(int index)
 	{
 		return RawTupUtils2F.isZeroAt(index, this.v);
 	}
 
+	/** {@inheritDoc} */
+	@Override
+	public boolean isZeroAtEM(float tolerance, int index)
+	{
+		return RawTupUtils2F.isZeroAtEM(tolerance, index, this.v);
+	}
+	
 	/** {@inheritDoc} */
 	@Override
 	public boolean isZeroAtEM4(int index)
@@ -2034,13 +2620,6 @@ public class Vec2F implements IVec2WF, IBufferableRF, IBufferableWF
 	{
 		return RawTupUtils2F.isZeroAtEM8(index, this.v);
 	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public boolean isZeroAt(float tolerance, int index)
-	{
-		return RawTupUtils2F.isZeroAt(tolerance, index, this.v);
-	}
 
 	/** {@inheritDoc} */
 	@Override
@@ -2051,18 +2630,46 @@ public class Vec2F implements IVec2WF, IBufferableRF, IBufferableWF
 
 	/** {@inheritDoc} */
 	@Override
-	public boolean isZeroAtV1()
+	public boolean isZeroAtV0EM(float tolerance)
 	{
-		return RawTupUtils2F.isZeroAtV1(this.v);
+		return RawTupUtils2F.isZeroAtV0EM(tolerance, this.v);
 	}
-
+	
 	/** {@inheritDoc} */
 	@Override
 	public boolean isZeroAtV0EM4()
 	{
 		return RawTupUtils2F.isZeroAtV0EM4(this.v);
 	}
-
+	
+	/** {@inheritDoc} */
+	@Override
+	public boolean isZeroAtV0EM6()
+	{
+		return RawTupUtils2F.isZeroAtV0EM6(this.v);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public boolean isZeroAtV0EM8()
+	{
+		return RawTupUtils2F.isZeroAtV0EM8(this.v);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public boolean isZeroAtV1()
+	{
+		return RawTupUtils2F.isZeroAtV1(this.v);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public boolean isZeroAtV1EM(float tolerance)
+	{
+		return RawTupUtils2F.isZeroAtV1EM(tolerance, this.v);
+	}
+	
 	/** {@inheritDoc} */
 	@Override
 	public boolean isZeroAtV1EM4()
@@ -2072,13 +2679,6 @@ public class Vec2F implements IVec2WF, IBufferableRF, IBufferableWF
 	
 	/** {@inheritDoc} */
 	@Override
-	public boolean isZeroAtV0EM6()
-	{
-		return RawTupUtils2F.isZeroAtV0EM6(this.v);
-	}
-
-	/** {@inheritDoc} */
-	@Override
 	public boolean isZeroAtV1EM6()
 	{
 		return RawTupUtils2F.isZeroAtV1EM6(this.v);
@@ -2086,32 +2686,11 @@ public class Vec2F implements IVec2WF, IBufferableRF, IBufferableWF
 	
 	/** {@inheritDoc} */
 	@Override
-	public boolean isZeroAtV0EM8()
-	{
-		return RawTupUtils2F.isZeroAtV0EM8(this.v);
-	}
-
-	/** {@inheritDoc} */
-	@Override
 	public boolean isZeroAtV1EM8()
 	{
 		return RawTupUtils2F.isZeroAtV1EM8(this.v);
 	}
 	
-	/** {@inheritDoc} */
-	@Override
-	public boolean isZeroAtV0(float tolerance)
-	{
-		return RawTupUtils2F.isZeroAtV0(tolerance, this.v);
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public boolean isZeroAtV1(float tolerance)
-	{
-		return RawTupUtils2F.isZeroAtV1(tolerance, this.v);
-	}
-
 	/** {@inheritDoc} */
 	@Override
 	public boolean equals(ITup2RF t)
@@ -2140,6 +2719,34 @@ public class Vec2F implements IVec2WF, IBufferableRF, IBufferableWF
 		return RawTupUtils2F.equals(this.v, tv0, tv1);
 	}
 
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsEM(float tolerance, ITup2RF t)
+	{
+		return TupUtils2F.equalsEM(tolerance, this.v, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsEM(float tolerance, ITupRF t)
+	{
+		return TupUtils2F.equalsEM(tolerance, this.v, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsEM(float tolerance, float[] t)
+	{
+		return RawTupUtils2F.equalsEM(tolerance, this.v, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsEM(float tolerance, float tv0, float tv1)
+	{
+		return RawTupUtils2F.equalsEM(tolerance, this.v, tv0, tv1);
+	}
+	
 	/** {@inheritDoc} */
 	@Override
 	public boolean equalsEM4(ITup2RF t)
@@ -2223,34 +2830,6 @@ public class Vec2F implements IVec2WF, IBufferableRF, IBufferableWF
 	{
 		return RawTupUtils2F.equalsEM8(this.v, tv0, tv1);
 	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public boolean equals(float tolerance, ITup2RF t)
-	{
-		return TupUtils2F.equals(tolerance, this.v, t);
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public boolean equals(float tolerance, ITupRF t)
-	{
-		return TupUtils2F.equals(tolerance, this.v, t);
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public boolean equals(float tolerance, float[] t)
-	{
-		return RawTupUtils2F.equals(tolerance, this.v, t);
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public boolean equals(float tolerance, float tv0, float tv1)
-	{
-		return RawTupUtils2F.equals(tolerance, this.v, tv0, tv1);
-	}
 
 	/** {@inheritDoc} */
 	@Override
@@ -2280,6 +2859,34 @@ public class Vec2F implements IVec2WF, IBufferableRF, IBufferableWF
 		return RawTupUtils2F.equalsAt(index, this.v, value);
 	}
 
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtEM(float tolerance, int index, ITup2RF t)
+	{
+		return TupUtils2F.equalsAtEM(tolerance, index, this.v, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtEM(float tolerance, int index, ITupRF t)
+	{
+		return TupUtils2F.equalsAtEM(tolerance, index, this.v, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtEM(float tolerance, int index, float[] t)
+	{
+		return RawTupUtils2F.equalsAtEM(tolerance, index, this.v, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtEM(float tolerance, int index, float value)
+	{
+		return RawTupUtils2F.equalsAtEM(tolerance, index, this.v, value);
+	}
+	
 	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtEM4(int index, ITup2RF t)
@@ -2363,34 +2970,6 @@ public class Vec2F implements IVec2WF, IBufferableRF, IBufferableWF
 	{
 		return RawTupUtils2F.equalsAtEM8(index, this.v, value);
 	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public boolean equalsAt(float tolerance, int index, ITup2RF t)
-	{
-		return TupUtils2F.equalsAt(tolerance, index, this.v, t);
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public boolean equalsAt(float tolerance, int index, ITupRF t)
-	{
-		return TupUtils2F.equalsAt(tolerance, index, this.v, t);
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public boolean equalsAt(float tolerance, int index, float[] t)
-	{
-		return RawTupUtils2F.equalsAt(tolerance, index, this.v, t);
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public boolean equalsAt(float tolerance, int index, float value)
-	{
-		return RawTupUtils2F.equalsAt(tolerance, index, this.v, value);
-	}
 
 	/** {@inheritDoc} */
 	@Override
@@ -2422,32 +3001,32 @@ public class Vec2F implements IVec2WF, IBufferableRF, IBufferableWF
 
 	/** {@inheritDoc} */
 	@Override
-	public boolean equalsAtV1(ITup2RF t)
+	public boolean equalsAtV0EM(float tolerance, ITup2RF t)
 	{
-		return TupUtils2F.equalsAtV1(this.v, t);
+		return TupUtils2F.equalsAtV0EM(tolerance, this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public boolean equalsAtV1(ITupRF t)
+	public boolean equalsAtV0EM(float tolerance, ITupRF t)
 	{
-		return TupUtils2F.equalsAtV1(this.v, t);
+		return TupUtils2F.equalsAtV0EM(tolerance, this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public boolean equalsAtV1(float[] t)
+	public boolean equalsAtV0EM(float tolerance, float[] t)
 	{
-		return RawTupUtils2F.equalsAtV1(this.v, t);
+		return RawTupUtils2F.equalsAtV0EM(tolerance, this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public boolean equalsAtV1(float value)
+	public boolean equalsAtV0EM(float tolerance, float value)
 	{
-		return RawTupUtils2F.equalsAtV1(this.v, value);
+		return RawTupUtils2F.equalsAtV0EM(tolerance, this.v, value);
 	}
-
+	
 	/** {@inheritDoc} */
 	@Override
 	public boolean equalsAtV0EM4(ITup2RF t)
@@ -2474,34 +3053,6 @@ public class Vec2F implements IVec2WF, IBufferableRF, IBufferableWF
 	public boolean equalsAtV0EM4(float value)
 	{
 		return RawTupUtils2F.equalsAtV0EM4(this.v, value);
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public boolean equalsAtV1EM4(ITup2RF t)
-	{
-		return TupUtils2F.equalsAtV1EM4(this.v, t);
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public boolean equalsAtV1EM4(ITupRF t)
-	{
-		return TupUtils2F.equalsAtV1EM4(this.v, t);
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public boolean equalsAtV1EM4(float[] t)
-	{
-		return RawTupUtils2F.equalsAtV1EM4(this.v, t);
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public boolean equalsAtV1EM4(float value)
-	{
-		return RawTupUtils2F.equalsAtV1EM4(this.v, value);
 	}
 	
 	/** {@inheritDoc} */
@@ -2531,34 +3082,6 @@ public class Vec2F implements IVec2WF, IBufferableRF, IBufferableWF
 	{
 		return RawTupUtils2F.equalsAtV0EM6(this.v, value);
 	}
-
-	/** {@inheritDoc} */
-	@Override
-	public boolean equalsAtV1EM6(ITup2RF t)
-	{
-		return TupUtils2F.equalsAtV1EM6(this.v, t);
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public boolean equalsAtV1EM6(ITupRF t)
-	{
-		return TupUtils2F.equalsAtV1EM6(this.v, t);
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public boolean equalsAtV1EM6(float[] t)
-	{
-		return RawTupUtils2F.equalsAtV1EM6(this.v, t);
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public boolean equalsAtV1EM6(float value)
-	{
-		return RawTupUtils2F.equalsAtV1EM6(this.v, value);
-	}
 	
 	/** {@inheritDoc} */
 	@Override
@@ -2587,6 +3110,118 @@ public class Vec2F implements IVec2WF, IBufferableRF, IBufferableWF
 	{
 		return RawTupUtils2F.equalsAtV0EM8(this.v, value);
 	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV1(ITup2RF t)
+	{
+		return TupUtils2F.equalsAtV1(this.v, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV1(ITupRF t)
+	{
+		return TupUtils2F.equalsAtV1(this.v, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV1(float[] t)
+	{
+		return RawTupUtils2F.equalsAtV1(this.v, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV1(float value)
+	{
+		return RawTupUtils2F.equalsAtV1(this.v, value);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV1EM(float tolerance, ITup2RF t)
+	{
+		return TupUtils2F.equalsAtV1EM(tolerance, this.v, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV1EM(float tolerance, ITupRF t)
+	{
+		return TupUtils2F.equalsAtV1EM(tolerance, this.v, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV1EM(float tolerance, float[] t)
+	{
+		return RawTupUtils2F.equalsAtV1EM(tolerance, this.v, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV1EM(float tolerance, float value)
+	{
+		return RawTupUtils2F.equalsAtV1EM(tolerance, this.v, value);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV1EM4(ITup2RF t)
+	{
+		return TupUtils2F.equalsAtV1EM4(this.v, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV1EM4(ITupRF t)
+	{
+		return TupUtils2F.equalsAtV1EM4(this.v, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV1EM4(float[] t)
+	{
+		return RawTupUtils2F.equalsAtV1EM4(this.v, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV1EM4(float value)
+	{
+		return RawTupUtils2F.equalsAtV1EM4(this.v, value);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV1EM6(ITup2RF t)
+	{
+		return TupUtils2F.equalsAtV1EM6(this.v, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV1EM6(ITupRF t)
+	{
+		return TupUtils2F.equalsAtV1EM6(this.v, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV1EM6(float[] t)
+	{
+		return RawTupUtils2F.equalsAtV1EM6(this.v, t);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equalsAtV1EM6(float value)
+	{
+		return RawTupUtils2F.equalsAtV1EM6(this.v, value);
+	}
 
 	/** {@inheritDoc} */
 	@Override
@@ -2614,62 +3249,6 @@ public class Vec2F implements IVec2WF, IBufferableRF, IBufferableWF
 	public boolean equalsAtV1EM8(float value)
 	{
 		return RawTupUtils2F.equalsAtV1EM8(this.v, value);
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public boolean equalsAtV0(float tolerance, ITup2RF t)
-	{
-		return TupUtils2F.equalsAtV0(tolerance, this.v, t);
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public boolean equalsAtV0(float tolerance, ITupRF t)
-	{
-		return TupUtils2F.equalsAtV0(tolerance, this.v, t);
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public boolean equalsAtV0(float tolerance, float[] t)
-	{
-		return RawTupUtils2F.equalsAtV0(tolerance, this.v, t);
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public boolean equalsAtV0(float tolerance, float value)
-	{
-		return RawTupUtils2F.equalsAtV0(tolerance, this.v, value);
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public boolean equalsAtV1(float tolerance, ITup2RF t)
-	{
-		return TupUtils2F.equalsAtV1(tolerance, this.v, t);
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public boolean equalsAtV1(float tolerance, ITupRF t)
-	{
-		return TupUtils2F.equalsAtV1(tolerance, this.v, t);
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public boolean equalsAtV1(float tolerance, float[] t)
-	{
-		return RawTupUtils2F.equalsAtV1(tolerance, this.v, t);
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public boolean equalsAtV1(float tolerance, float value)
-	{
-		return RawTupUtils2F.equalsAtV1(tolerance, this.v, value);
 	}
 
 	/** {@inheritDoc} */
@@ -2806,48 +3385,6 @@ public class Vec2F implements IVec2WF, IBufferableRF, IBufferableWF
 	public Vec2F swapXYN()
 	{
 		return VecUtils2F.swapV0V1Func(this.v, CTOR);
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public boolean isFinite()
-	{
-		return RawTupUtils2F.isFinite(this.v);
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public boolean isZero()
-	{
-		return RawTupUtils2F.isZero(this.v);
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public boolean isZeroEM4()
-	{
-		return RawTupUtils2F.isZeroEM4(this.v);
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public boolean isZeroEM6()
-	{
-		return RawTupUtils2F.isZeroEM6(this.v);
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public boolean isZeroEM8()
-	{
-		return RawTupUtils2F.isZeroEM8(this.v);
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public boolean isZero(float tolerance)
-	{
-		return RawTupUtils2F.isZero(tolerance, this.v);
 	}
 
 	/** {@inheritDoc} */

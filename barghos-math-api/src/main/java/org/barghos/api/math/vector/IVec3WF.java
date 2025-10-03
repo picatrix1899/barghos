@@ -308,6 +308,30 @@ public interface IVec3WF extends IVec3RF, ITup3WF
 	@Override
 	IVec3WF nrmN();
 
+	IVec3WF nrmEM(float tolerance);
+	
+	/** {@inheritDoc} */
+	@Override
+	IVec3WF nrmNEM(float tolerance);
+	
+	IVec3WF nrmEM4();
+	
+	/** {@inheritDoc} */
+	@Override
+	IVec3WF nrmNEM4();
+	
+	IVec3WF nrmEM6();
+	
+	/** {@inheritDoc} */
+	@Override
+	IVec3WF nrmNEM6();
+	
+	IVec3WF nrmEM8();
+	
+	/** {@inheritDoc} */
+	@Override
+	IVec3WF nrmNEM8();
+	
 	IVec3WF project(ITup3RF t);
 	
 	IVec3WF project(ITupRF t);
@@ -362,11 +386,35 @@ public interface IVec3WF extends IVec3RF, ITup3WF
 	@Override
 	IVec3WF absN();
 
-	IVec3WF sign();
+	IVec3WF signum();
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec3WF signN();
+	IVec3WF signumN();
+	
+	IVec3WF signumEM(float tolerance);
+	
+	/** {@inheritDoc} */
+	@Override
+	IVec3WF signumNEM(float tolerance);
+	
+	IVec3WF signumEM4();
+	
+	/** {@inheritDoc} */
+	@Override
+	IVec3WF signumNEM4();
+	
+	IVec3WF signumEM6();
+	
+	/** {@inheritDoc} */
+	@Override
+	IVec3WF signumNEM6();
+	
+	IVec3WF signumEM8();
+	
+	/** {@inheritDoc} */
+	@Override
+	IVec3WF signumNEM8();
 	
 	IVec3WF swizzle(int[] indices);
 	
