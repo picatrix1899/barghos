@@ -5,6 +5,7 @@ import org.barghos.api.core.collection.IndexValuePairF;
 import org.barghos.api.core.tuple.floats.ITup2RF;
 import org.barghos.api.core.tuple.floats.ITup2WF;
 import org.barghos.api.core.tuple.floats.ITupRF;
+import org.barghos.api.core.tuple.floats.ITupWF;
 
 /**
  * This interface provides non-invasive (read only) functions and methods for float vectors with two
@@ -26,115 +27,119 @@ public interface IVec2RF extends ITup2RF
 	 */
 	float y();
 	
-	float len();
-
-	float lenEM(float tolerance);
-
-	float lenEM4();
-
-	float lenEM6();
-
-	float lenEM8();
-
-	float lenRc();
-
-	float lenTo(ITup2RF t);
+	float[] write(float[] res);
 	
-	float lenTo(ITupRF t);
+	ITupWF write(ITupWF res);
+	
+	float length();
 
-	float lenTo(float[] t);
-	
-	float lenTo(float tx, float ty);
-	
-	float lenToEM(float tolerance, ITup2RF t);
-	
-	float lenToEM(float tolerance, ITupRF t);
+	float lengthEM(float tolerance);
 
-	float lenToEM(float tolerance, float[] t);
+	float lengthEM4();
 
-	float lenToEM(float tolerance, float tx, float ty);
-	
-	float lenToEM4(ITup2RF t);
-	
-	float lenToEM4(ITupRF t);
+	float lengthEM6();
 
-	float lenToEM4(float[] t);
-	
-	float lenToEM4(float tx, float ty);
-	
-	float lenToEM6(ITup2RF t);
-	
-	float lenToEM6(ITupRF t);
+	float lengthEM8();
 
-	float lenToEM6(float[] t);
-	
-	float lenToEM6(float tx, float ty);
-	
-	float lenToEM8(ITup2RF t);
-	
-	float lenToEM8(ITupRF t);
+	float lengthReciprocal();
 
-	float lenToEM8(float[] t);
+	float lengthTo(ITup2RF t);
 	
-	float lenToEM8(float tx, float ty);
+	float lengthTo(ITupRF t);
 
-	float lenRcTo(ITup2RF t);
+	float lengthTo(float[] t);
 	
-	float lenRcTo(ITupRF t);
-
-	float lenRcTo(float[] t);
-
-	float lenRcTo(float tx, float ty);
-
-	float lenSq();
+	float lengthTo(float tx, float ty);
 	
-	float lenSqEM(float tolerance);
-
-	float lenSqEM4();
+	float lengthToEM(float tolerance, ITup2RF t);
 	
-	float lenSqEM6();
+	float lengthToEM(float tolerance, ITupRF t);
+
+	float lengthToEM(float tolerance, float[] t);
+
+	float lengthToEM(float tolerance, float tx, float ty);
 	
-	float lenSqEM8();
+	float lengthToEM4(ITup2RF t);
 	
-	float lenSqTo(ITup2RF t);
+	float lengthToEM4(ITupRF t);
+
+	float lengthToEM4(float[] t);
 	
-	float lenSqTo(ITupRF t);
-
-	float lenSqTo(float[] t);
-
-	float lenSqTo(float tx, float ty);
-
-	float lenSqToEM(float tolerance, ITup2RF t);
+	float lengthToEM4(float tx, float ty);
 	
-	float lenSqToEM(float tolerance, ITupRF t);
-
-	float lenSqToEM(float tolerance, float[] t);
-
-	float lenSqToEM(float tolerance, float tx, float ty);
+	float lengthToEM6(ITup2RF t);
 	
-	float lenSqToEM4(ITup2RF t);
+	float lengthToEM6(ITupRF t);
+
+	float lengthToEM6(float[] t);
 	
-	float lenSqToEM4(ITupRF t);
-
-	float lenSqToEM4(float[] t);
-
-	float lenSqToEM4(float tx, float ty);
+	float lengthToEM6(float tx, float ty);
 	
-	float lenSqToEM6(ITup2RF t);
+	float lengthToEM8(ITup2RF t);
 	
-	float lenSqToEM6(ITupRF t);
+	float lengthToEM8(ITupRF t);
 
-	float lenSqToEM6(float[] t);
-
-	float lenSqToEM6(float tx, float ty);
+	float lengthToEM8(float[] t);
 	
-	float lenSqToEM8(ITup2RF t);
+	float lengthToEM8(float tx, float ty);
+
+	float lengthReciprocalTo(ITup2RF t);
 	
-	float lenSqToEM8(ITupRF t);
+	float lengthReciprocalTo(ITupRF t);
 
-	float lenSqToEM8(float[] t);
+	float lengthReciprocalTo(float[] t);
 
-	float lenSqToEM8(float tx, float ty);
+	float lengthReciprocalTo(float tx, float ty);
+
+	float lengthSquared();
+	
+	float lengthSquaredEM(float tolerance);
+
+	float lengthSquaredEM4();
+	
+	float lengthSquaredEM6();
+	
+	float lengthSquaredEM8();
+	
+	float lengthSquaredTo(ITup2RF t);
+	
+	float lengthSquaredTo(ITupRF t);
+
+	float lengthSquaredTo(float[] t);
+
+	float lengthSquaredTo(float tx, float ty);
+
+	float lengthSquaredToEM(float tolerance, ITup2RF t);
+	
+	float lengthSquaredToEM(float tolerance, ITupRF t);
+
+	float lengthSquaredToEM(float tolerance, float[] t);
+
+	float lengthSquaredToEM(float tolerance, float tx, float ty);
+	
+	float lengthSquaredToEM4(ITup2RF t);
+	
+	float lengthSquaredToEM4(ITupRF t);
+
+	float lengthSquaredToEM4(float[] t);
+
+	float lengthSquaredToEM4(float tx, float ty);
+	
+	float lengthSquaredToEM6(ITup2RF t);
+	
+	float lengthSquaredToEM6(ITupRF t);
+
+	float lengthSquaredToEM6(float[] t);
+
+	float lengthSquaredToEM6(float tx, float ty);
+	
+	float lengthSquaredToEM8(ITup2RF t);
+	
+	float lengthSquaredToEM8(ITupRF t);
+
+	float lengthSquaredToEM8(float[] t);
+
+	float lengthSquaredToEM8(float tx, float ty);
 	
 	float dot(ITup2RF t);
 	
@@ -147,12 +152,12 @@ public interface IVec2RF extends ITup2RF
 	IVec2RF addN(ITup2RF t);
 	
 	IVec2RF addN(ITupRF t);
-
+	
 	IVec2RF addN(float[] t);
+	
+	IVec2RF addN(float t);
 
-	IVec2RF addN(float value);
-
-	IVec2RF addN(float tx, float ty);
+	IVec2RF addN(float tX, float tY);
 
 	float[] addT(ITup2RF t, @ExtractionParam float[] res);
 	
@@ -162,7 +167,7 @@ public interface IVec2RF extends ITup2RF
 
 	float[] addT(float value, @ExtractionParam float[] res);
 
-	float[] addT(float tx, float ty, @ExtractionParam float[] res);
+	float[] addT(float tX, float tY, @ExtractionParam float[] res);
 
 	<T extends ITup2WF> T addT(ITup2RF t, @ExtractionParam T res);
 	
@@ -172,8 +177,18 @@ public interface IVec2RF extends ITup2RF
 
 	<T extends ITup2WF> T addT(float value, @ExtractionParam T res);
 
-	<T extends ITup2WF> T addT(float tx, float ty, @ExtractionParam T res);
+	<T extends ITup2WF> T addT(float tX, float tY, @ExtractionParam T res);
 
+	<T extends ITupWF> T addT(ITup2RF t, @ExtractionParam T res);
+	
+	<T extends ITupWF> T addT(ITupRF t, @ExtractionParam T res);
+
+	<T extends ITupWF> T addT(float[] t, @ExtractionParam T res);
+
+	<T extends ITupWF> T addT(float value, @ExtractionParam T res);
+
+	<T extends ITupWF> T addT(float tX, float tY, @ExtractionParam T res);
+	
 	IVec2RF subN(ITup2RF t);
 	
 	IVec2RF subN(ITupRF t);
@@ -372,59 +387,59 @@ public interface IVec2RF extends ITup2RF
 
 	<T extends ITup2WF> T midPointToT(float tx, float ty, @ExtractionParam T res);
 
-	IVec2RF negN();
+	IVec2RF negateN();
 
-	float[] negT(@ExtractionParam float[] res);
+	float[] negateT(@ExtractionParam float[] res);
 
-	<T extends ITup2WF> T negT(@ExtractionParam T res);
+	<T extends ITup2WF> T negateT(@ExtractionParam T res);
 
-	IVec2RF recN();
+	IVec2RF reciprocalN();
 
-	float[] recT(@ExtractionParam float[] res);
+	float[] reciprocalT(@ExtractionParam float[] res);
 
-	<T extends ITup2WF> T recT(@ExtractionParam T res);
+	<T extends ITup2WF> T reciprocalT(@ExtractionParam T res);
 
-	IVec2RF nrmN();
+	IVec2RF normalizeN();
 
-	float[] nrmT(@ExtractionParam float[] res);
+	float[] normalizeT(@ExtractionParam float[] res);
 
-	<T extends ITup2WF> T nrmT(@ExtractionParam T res);
+	<T extends ITup2WF> T normalizeT(@ExtractionParam T res);
 
-	IVec2RF nrmNEM(float tolerance);
+	IVec2RF normalizeNEM(float tolerance);
 
-	float[] nrmTEM(float tolerance, @ExtractionParam float[] res);
+	float[] normalizeTEM(float tolerance, @ExtractionParam float[] res);
 
-	<T extends ITup2WF> T nrmTEM(float tolerance, @ExtractionParam T res);
+	<T extends ITup2WF> T normalizeTEM(float tolerance, @ExtractionParam T res);
 
-	IVec2RF nrmNEM4();
+	IVec2RF normalizeNEM4();
 
-	float[] nrmTEM4(@ExtractionParam float[] res);
+	float[] normalizeTEM4(@ExtractionParam float[] res);
 
-	<T extends ITup2WF> T nrmTEM4(@ExtractionParam T res);
+	<T extends ITup2WF> T normalizeTEM4(@ExtractionParam T res);
 
-	IVec2RF nrmNEM6();
+	IVec2RF normalizeNEM6();
 
-	float[] nrmTEM6(@ExtractionParam float[] res);
+	float[] normalizeTEM6(@ExtractionParam float[] res);
 
-	<T extends ITup2WF> T nrmTEM6(@ExtractionParam T res);
+	<T extends ITup2WF> T normalizeTEM6(@ExtractionParam T res);
 
-	IVec2RF nrmNEM8();
+	IVec2RF normalizeNEM8();
 
-	float[] nrmTEM8(@ExtractionParam float[] res);
+	float[] normalizeTEM8(@ExtractionParam float[] res);
 
-	<T extends ITup2WF> T nrmTEM8(@ExtractionParam T res);
+	<T extends ITup2WF> T normalizeTEM8(@ExtractionParam T res);
 
-	IVec2RF rotRadN(double angle);
+	IVec2RF rotateRadN(double angle);
 
-	float[] rotRadT(double angle, @ExtractionParam float[] res);
+	float[] rotateRadT(double angle, @ExtractionParam float[] res);
 
-	<T extends ITup2WF> T rotRadT(double angle, @ExtractionParam T res);
+	<T extends ITup2WF> T rotateRadT(double angle, @ExtractionParam T res);
 
-	IVec2RF rotDegN(double angle);
+	IVec2RF rotateDegN(double angle);
 
-	float[] rotDegT(double angle, @ExtractionParam float[] res);
+	float[] rotateDegT(double angle, @ExtractionParam float[] res);
 
-	<T extends ITup2WF> T rotDegT(double angle, @ExtractionParam T res);
+	<T extends ITup2WF> T rotateDegT(double angle, @ExtractionParam T res);
 
 	IVec2RF projectN(ITup2RF t);
 	

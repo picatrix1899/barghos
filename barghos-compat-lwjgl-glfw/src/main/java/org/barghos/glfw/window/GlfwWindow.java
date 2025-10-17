@@ -5,6 +5,7 @@ import static org.lwjgl.glfw.GLFW.*;
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
+import java.nio.ByteOrder;
 import java.nio.IntBuffer;
 
 import org.lwjgl.PointerBuffer;
@@ -66,11 +67,11 @@ public final class GlfwWindow
 	{
 		this.handle = handle;
 		
-		this.tempArena = Arena.ofAuto();
+		this.tempArena = Arena.ofConfined();
 		this.tempSegA = tempArena.allocate(ValueLayout.JAVA_INT, 1);
 		this.tempSegB = tempArena.allocate(ValueLayout.JAVA_INT, 1);
-		this.tempBufA = this.tempSegA.asByteBuffer().asIntBuffer();
-		this.tempBufB = this.tempSegB.asByteBuffer().asIntBuffer();
+		this.tempBufA = this.tempSegA.asByteBuffer().order(ByteOrder.LITTLE_ENDIAN).asIntBuffer();
+		this.tempBufB = this.tempSegB.asByteBuffer().order(ByteOrder.LITTLE_ENDIAN).asIntBuffer();
 		
 		this.title = settings.title;
 		
@@ -149,6 +150,8 @@ public final class GlfwWindow
 	public void releaseResources()
 	{
 		glfwDestroyWindow(this.handle);
+		
+		this.tempArena.close();
 	}
 	
 	public int framebufferWidth()
@@ -226,6 +229,9 @@ public final class GlfwWindow
 	
 	private void updateWindowSize()
 	{
+		this.tempBufA.position(0);
+		this.tempBufB.position(0);
+		
 		glfwGetWindowSize(this.handle, this.tempBufA, this.tempBufB);
 		
 		this.windowWidth = this.tempBufA.get(0);
@@ -234,6 +240,9 @@ public final class GlfwWindow
 	
 	private void updateFramebufferSize()
 	{
+		this.tempBufA.position(0);
+		this.tempBufB.position(0);
+		
 		glfwGetFramebufferSize(this.handle, this.tempBufA, this.tempBufB);
 		
 		this.framebufferWidth = this.tempBufA.get(0);
@@ -242,6 +251,9 @@ public final class GlfwWindow
 	
 	private void updateWindowPos()
 	{
+		this.tempBufA.position(0);
+		this.tempBufB.position(0);
+		
 		glfwGetWindowPos(this.handle, this.tempBufA, this.tempBufB);
 		
 		this.windowPosX = this.tempBufA.get(0);

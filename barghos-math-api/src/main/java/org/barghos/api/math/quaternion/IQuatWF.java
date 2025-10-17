@@ -49,21 +49,45 @@ public interface IQuatWF extends IQuatRF, ITup4WF
 	
 	IQuatWF setFromAxisAngle(float ax, float ay, float az, float angle);
 	
-	IQuatWF conj();
+	IQuatWF conjugate();
 	
 	/** {@inheritDoc} */
 	@Override
-	IQuatWF conjN();
+	IQuatWF conjugateN();
 
-	IQuatWF inv();
+	IQuatWF inverse();
 
 	/** {@inheritDoc} */
 	@Override
-	IQuatWF invN();
+	IQuatWF inverseN();
 	
-	IQuatWF nrm();
+	IQuatWF normalize();
 	
 	/** {@inheritDoc} */
 	@Override
-	IQuatWF nrmN();
+	IQuatWF normalizeN();
+	
+	IQuatWF mul(ITup4RF q);
+	
+	IQuatWF mul(float[] q);
+	
+	IQuatWF mul(float x, float y, float z, float w);
+	
+	IQuatWF mulN(ITup4RF q);
+	
+	IQuatWF mulN(float[] q);
+	
+	IQuatWF mulN(float x, float y, float z, float w);
+	
+	IQuatWF rMul(ITup4RF q);
+	
+	IQuatWF rMul(float[] q);
+	
+	IQuatWF rMul(float x, float y, float z, float w);
+	
+	IQuatWF rMulN(ITup4RF q);
+	
+	IQuatWF rMulN(float[] q);
+	
+	IQuatWF rMulN(float x, float y, float z, float w);
 }

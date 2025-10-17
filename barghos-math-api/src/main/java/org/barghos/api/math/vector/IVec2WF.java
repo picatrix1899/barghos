@@ -40,10 +40,10 @@ public interface IVec2WF extends IVec2RF, ITup2WF
 	IVec2WF add(ITupRF t);
 
 	IVec2WF add(float[] t);
+	
+	IVec2WF add(float t);
 
-	IVec2WF add(float value);
-
-	IVec2WF add(float tx, float ty);
+	IVec2WF add(float tX, float tY);
 	
 	/** {@inheritDoc} */
 	@Override
@@ -263,59 +263,59 @@ public interface IVec2WF extends IVec2RF, ITup2WF
 	@Override
 	IVec2WF midPointToN(float tx, float ty);
 
-	IVec2WF neg();
+	IVec2WF negate();
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec2WF negN();
+	IVec2WF negateN();
 
-	IVec2WF rec();
+	IVec2WF reciprocal();
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec2WF recN();
+	IVec2WF reciprocalN();
 
-	IVec2WF nrm();
+	IVec2WF normalize();
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec2WF nrmN();
+	IVec2WF normalizeN();
 
-	IVec2WF nrmEM(float tolerance);
+	IVec2WF normalizeEM(float tolerance);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec2WF nrmNEM(float tolerance);
+	IVec2WF normalizeNEM(float tolerance);
 
-	IVec2WF nrmEM4();
+	IVec2WF normalizeEM4();
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec2WF nrmNEM4();
+	IVec2WF normalizeNEM4();
 	
-	IVec2WF nrmEM6();
+	IVec2WF normalizeEM6();
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec2WF nrmNEM6();
+	IVec2WF normalizeNEM6();
 
-	IVec2WF nrmEM8();
+	IVec2WF normalizeEM8();
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec2WF nrmNEM8();
+	IVec2WF normalizeNEM8();
 
-	IVec2WF rotRad(double angle);
+	IVec2WF rotateRad(double angle);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec2WF rotRadN(double angle);
+	IVec2WF rotateRadN(double angle);
 
-	IVec2WF rotDeg(double angle);
+	IVec2WF rotateDeg(double angle);
 	
 	/** {@inheritDoc} */
 	@Override
-	IVec2WF rotDegN(double angle);
+	IVec2WF rotateDegN(double angle);
 	
 	IVec2WF project(ITup2RF t);
 	

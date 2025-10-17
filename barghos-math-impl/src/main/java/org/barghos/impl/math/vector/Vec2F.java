@@ -1,26 +1,43 @@
 package org.barghos.impl.math.vector;
 
+import java.lang.foreign.MemoryLayout;
+import java.lang.foreign.MemorySegment;
+
+import static java.lang.foreign.ValueLayout.*;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.ByteBuffer;
 import java.nio.FloatBuffer;
-import java.util.Arrays;
 import java.util.Objects;
 
 import org.barghos.api.core.collection.IndexValuePairF;
 import org.barghos.api.core.function.floats.IFunc2F;
-import org.barghos.api.core.nio.buffer.IBufferableRF;
-import org.barghos.api.core.nio.buffer.IBufferableWF;
+import org.barghos.api.core.nio.ByteUtils;
+import org.barghos.api.core.nio.Endian;
 import org.barghos.api.core.tuple.floats.ITup2RF;
 import org.barghos.api.core.tuple.floats.ITup2WF;
 import org.barghos.api.core.tuple.floats.ITupRF;
+import org.barghos.api.core.tuple.floats.ITupWF;
 import org.barghos.api.core.tuple.floats.RawTupUtils2F;
 import org.barghos.api.core.tuple.floats.TupUtils2F;
 import org.barghos.api.math.vector.IVec2WF;
 import org.barghos.api.math.vector.VecUtils2F;
 
-public class Vec2F implements IVec2WF, IBufferableRF, IBufferableWF
+public class Vec2F implements IVec2WF
 {
 	public static final IFunc2F<Vec2F> CTOR = Vec2F::new;
 	
-	private final float[] v = new float[SIZE];
+	public static final long BYTES = 8;
+	public static final long OFFSET_X = 0;
+	public static final long OFFSET_Y = 4;
+	public static final MemoryLayout MEM_LAYOUT = MemoryLayout.sequenceLayout(2, JAVA_FLOAT);
+	public static final MemoryLayout MEM_LAYOUT_8 = MemoryLayout.sequenceLayout(2, JAVA_FLOAT);
+	public static final MemoryLayout MEM_LAYOUT_16 = MemoryLayout.structLayout(MemoryLayout.sequenceLayout(2, JAVA_FLOAT), MemoryLayout.paddingLayout(8));
+	public static final MemoryLayout MEM_LAYOUT_32 = MemoryLayout.structLayout(MemoryLayout.sequenceLayout(2, JAVA_FLOAT), MemoryLayout.paddingLayout(40));
+	
+	public final float[] v = new float[SIZE];
 	
 	public Vec2F()
 	{
@@ -40,6 +57,11 @@ public class Vec2F implements IVec2WF, IBufferableRF, IBufferableWF
 	public Vec2F(float[] t)
 	{
 		set(t);
+	}
+	
+	public Vec2F(float value)
+	{
+		set(value, value);
 	}
 	
 	public Vec2F(float x, float y)
@@ -145,6 +167,14 @@ public class Vec2F implements IVec2WF, IBufferableRF, IBufferableWF
 		return this;
 	}
 
+	public Vec2F set(float value)
+	{
+		this.v[0] = value;
+		this.v[1] = value;
+		
+		return this;
+	}
+	
 	/** {@inheritDoc} */
 	@Override
 	public Vec2F set(float x, float y)
@@ -168,7 +198,10 @@ public class Vec2F implements IVec2WF, IBufferableRF, IBufferableWF
 	@Override
 	public float[] toArray()
 	{
-		return Arrays.copyOf(this.v, 2);
+		float[] res = new float[2];
+		System.arraycopy(this.v, 0, res, 0, 2);
+		
+		return res;
 	}
 
 	/** {@inheritDoc} */
@@ -209,21 +242,151 @@ public class Vec2F implements IVec2WF, IBufferableRF, IBufferableWF
 		return false;
 	}
 	
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F writeTo(FloatBuffer buffer)
+	public float[] write(float[] res)
 	{
-		buffer.put(this.v);
+		System.arraycopy(this.v, 0, res, 0, 2);
+		
+		return res;
+	}
+	
+	public ITupWF write(ITupWF res)
+	{
+		res.setAt(0, this.v[0]);
+		res.setAt(1, this.v[1]);
+		
+		return res;
+	}
+	
+	public MemorySegment write(MemorySegment res)
+	{
+		res.set(JAVA_FLOAT, 0, this.v[0]);
+		res.set(JAVA_FLOAT, OFFSET_Y, this.v[1]);
+		
+		return res;
+	}
+	
+	public FloatBuffer write(FloatBuffer res)
+	{
+		res.put(this.v);
+		
+		return res;
+	}
+	
+	public ByteBuffer write(ByteBuffer res) throws IOException
+	{
+		byte[] temp = new byte[(int)BYTES];
+		
+		ByteUtils.setFloat(this.v[0], Endian.BIG, OFFSET_X, temp);
+		ByteUtils.setFloat(this.v[1], Endian.BIG, OFFSET_Y, temp);
+
+		res.put(temp);
+		
+		return res;
+	}
+	
+	public ByteBuffer write(Endian endian, ByteBuffer res) throws IOException
+	{
+		byte[] temp = new byte[(int)BYTES];
+		
+		ByteUtils.setFloat(this.v[0], endian, OFFSET_X, temp);
+		ByteUtils.setFloat(this.v[1], endian, OFFSET_Y, temp);
+
+		res.put(temp);
+		
+		return res;
+	}
+	
+	public void write(OutputStream stream) throws IOException
+	{
+		byte[] temp = new byte[(int)BYTES];
+		
+		ByteUtils.setFloat(this.v[0], Endian.BIG, OFFSET_X, temp);
+		ByteUtils.setFloat(this.v[1], Endian.BIG, OFFSET_Y, temp);
+		
+		stream.write(temp, 0, 8);
+	}
+	
+	public void write(Endian endian, OutputStream stream) throws IOException
+	{
+		byte[] temp = new byte[(int)BYTES];
+		
+		ByteUtils.setFloat(this.v[0], endian, OFFSET_X, temp);
+		ByteUtils.setFloat(this.v[1], endian, OFFSET_Y, temp);
+		
+		stream.write(temp, 0, 8);
+	}
+	
+	public Vec2F read(float[] buf)
+	{
+		System.arraycopy(buf, 0, this.v, 0, 2);
 		
 		return this;
 	}
 	
-	/** {@inheritDoc} */
-	@Override
-	public Vec2F readFrom(FloatBuffer buffer, int offset)
+	public Vec2F read(ITupRF buf)
 	{
-		buffer.get(offset, this.v);
+		this.v[0] = buf.getAt(0);
+		this.v[1] = buf.getAt(1);
 		
+		return this;
+	}
+	
+	public Vec2F read(MemorySegment buf)
+	{
+		this.v[0] = buf.get(JAVA_FLOAT, 0);
+		this.v[1] = buf.get(JAVA_FLOAT, OFFSET_Y);
+		
+		return this;
+	}
+	
+	public Vec2F read(FloatBuffer buf)
+	{
+		buf.get(this.v);
+		
+		return this;
+	}
+	
+	public Vec2F read(ByteBuffer stream) throws IOException
+	{
+		byte[] temp = new byte[(int)BYTES];
+		
+		stream.get(temp);
+		
+		this.v[0] = ByteUtils.getFloat(OFFSET_X, temp, Endian.BIG);
+		this.v[1] = ByteUtils.getFloat(OFFSET_Y, temp, Endian.BIG);
+		
+		return this;
+	}
+	
+	public Vec2F read(Endian endian, ByteBuffer stream) throws IOException
+	{
+		byte[] temp = new byte[(int)BYTES];
+		
+		stream.get(temp);
+		
+		this.v[0] = ByteUtils.getFloat(OFFSET_X, temp, endian);
+		this.v[1] = ByteUtils.getFloat(OFFSET_Y, temp, endian);
+		
+		return this;
+	}
+	
+	public Vec2F read(Endian endian, InputStream stream) throws IOException
+	{
+		byte[] temp = new byte[(int)BYTES];
+		
+		stream.read(temp);
+		
+		this.v[0] = ByteUtils.getFloat(OFFSET_X, temp, endian);
+		this.v[1] = ByteUtils.getFloat(OFFSET_Y, temp, endian);
+		
+		return this;
+	}
+	
+	public Vec2F add(Vec2F t)
+	{
+		this.v[0] += t.v[0];
+		this.v[1] += t.v[1];
+
 		return this;
 	}
 	
@@ -231,7 +394,8 @@ public class Vec2F implements IVec2WF, IBufferableRF, IBufferableWF
 	@Override
 	public Vec2F add(ITup2RF t)
 	{
-		VecUtils2F.add(this.v, t, this.v);
+		this.v[0] += t.v0();
+		this.v[1] += t.v1();
 		
 		return this;
 	}
@@ -240,7 +404,8 @@ public class Vec2F implements IVec2WF, IBufferableRF, IBufferableWF
 	@Override
 	public Vec2F add(ITupRF t)
 	{
-		VecUtils2F.add(this.v, t, this.v);
+		this.v[0] += t.getAt(0);
+		this.v[1] += t.getAt(1);
 		
 		return this;
 	}
@@ -249,139 +414,310 @@ public class Vec2F implements IVec2WF, IBufferableRF, IBufferableWF
 	@Override
 	public Vec2F add(float[] t)
 	{
-		VecUtils2F.add(this.v, t, this.v);
+		this.v[0] += t[0];
+		this.v[1] += t[1];
 		
 		return this;
 	}
-
+	
 	/** {@inheritDoc} */
 	@Override
 	public Vec2F add(float value)
 	{
-		VecUtils2F.add(this.v, value, value, this.v);
+		this.v[0] += value;
+		this.v[1] += value;
 		
 		return this;
 	}
-
+	
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F add(float tx, float ty)
+	public Vec2F add(float tX, float tY)
 	{
-		VecUtils2F.add(this.v, tx, ty, this.v);
+		this.v[0] += tX;
+		this.v[1] += tY;
 		
 		return this;
+	}
+	
+	public Vec2F addN(Vec2F t)
+	{
+		return new Vec2F(
+				this.v[0] + t.v[0],
+				this.v[1] + t.v[1]);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public Vec2F addN(ITup2RF t)
 	{
-		return VecUtils2F.addFunc(this.v, t, CTOR);
+		return new Vec2F(
+				this.v[0] + t.v0(),
+				this.v[1] + t.v1());
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public Vec2F addN(ITupRF t)
 	{
-		return VecUtils2F.addFunc(this.v, t, CTOR);
+		return new Vec2F(
+				this.v[0] + t.getAt(0),
+				this.v[1] + t.getAt(1));
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public Vec2F addN(float[] t)
 	{
-		return VecUtils2F.addFunc(this.v, t, CTOR);
+		return new Vec2F(
+				this.v[0] + t[0],
+				this.v[1] + t[1]);
 	}
-
+	
 	/** {@inheritDoc} */
 	@Override
 	public Vec2F addN(float value)
 	{
-		return VecUtils2F.addFunc(this.v, value, value, CTOR);
+		return new Vec2F(
+				this.v[0] + value,
+				this.v[1] + value);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F addN(float tx, float ty)
+	public Vec2F addN(float tX, float tY)
 	{
-		return VecUtils2F.addFunc(this.v, tx, ty, CTOR);
+		return new Vec2F(
+				this.v[0] + tX,
+				this.v[1] + tY);
+	}
+	
+	public float[] addT(Vec2F t, float[] res)
+	{
+		res[0] = this.v[0] + t.v[0];
+		res[1] = this.v[1] + t.v[1];
+		
+		return res;
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public float[] addT(ITup2RF t, float[] res)
 	{
-		return VecUtils2F.add(this.v, t, res);
+		res[0] = this.v[0] + t.v0();
+		res[1] = this.v[1] + t.v1();
+		
+		return res;
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public float[] addT(ITupRF t, float[] res)
 	{
-		return VecUtils2F.add(this.v, t, res);
+		res[0] = this.v[0] + t.getAt(0);
+		res[1] = this.v[1] + t.getAt(1);
+		
+		return res;
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public float[] addT(float[] t, float[] res)
 	{
-		return VecUtils2F.add(this.v, t, res);
+		res[0] = this.v[0] + t[0];
+		res[1] = this.v[1] + t[1];
+		
+		return res;
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public float[] addT(float value, float[] res)
 	{
-		return VecUtils2F.add(this.v, value, value, res);
+		res[0] = this.v[0] + value;
+		res[1] = this.v[1] + value;
+		
+		return res;
 	}
-
+	
 	/** {@inheritDoc} */
 	@Override
-	public float[] addT(float tx, float ty, float[] res)
+	public float[] addT(float tX, float tY, float[] res)
 	{
-		return VecUtils2F.add(this.v, tx, ty, res);
+		res[0] = this.v[0] + tX;
+		res[1] = this.v[1] + tY;
+		
+		return res;
+	}
+	
+	public <T extends ITup2WF> T addT(Vec2F t, T res)
+	{
+		res.set(
+				this.v[0] + t.v[0],
+				this.v[1] + t.v[1]);
+		
+		return res;
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public <T extends ITup2WF> T addT(ITup2RF t, T res)
 	{
-		return VecUtils2F.add(this.v, t, res);
+		res.set(
+				this.v[0] + t.v0(),
+				this.v[1] + t.v1());
+		
+		return res;
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public <T extends ITup2WF> T addT(ITupRF t, T res)
 	{
-		return VecUtils2F.add(this.v, t, res);
+		res.set(
+				this.v[0] + t.getAt(0),
+				this.v[1] + t.getAt(1));
+		
+		return res;
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public <T extends ITup2WF> T addT(float[] t, T res)
 	{
-		return VecUtils2F.add(this.v, t, res);
+		res.set(
+				this.v[0] + t[0],
+				this.v[1] + t[1]);
+		
+		return res;
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public <T extends ITup2WF> T addT(float value, T res)
 	{
-		return VecUtils2F.add(this.v, value, value, res);
+		res.set(
+				this.v[0] + value,
+				this.v[1] + value);
+		
+		return res;
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public <T extends ITup2WF> T addT(float tx, float ty, T res)
+	public <T extends ITup2WF> T addT(float tX, float tY, T res)
 	{
-		return VecUtils2F.add(this.v, tx, ty, res);
+		res.set(
+				this.v[0] + tX,
+				this.v[1] + tY);
+		
+		return res;
 	}
 
+	public <T extends ITupWF> T addT(Vec2F t, T res)
+	{
+		res.setAt(0, this.v[0] + t.v[0]);
+		res.setAt(1, this.v[1] + t.v[1]);
+		
+		return res;
+	}
+	
+	public <T extends ITupWF> T addT(ITup2RF t, T res)
+	{
+		res.setAt(0, this.v[0] + t.v0());
+		res.setAt(1, this.v[1] + t.v1());
+		
+		return res;
+	}
+	
+	public <T extends ITupWF> T addT(ITupRF t, T res)
+	{
+		res.setAt(0, this.v[0] + t.getAt(0));
+		res.setAt(1, this.v[1] + t.getAt(1));
+		
+		return res;
+	}
+	
+	public <T extends ITupWF> T addT(float[] t, T res)
+	{
+		res.setAt(0, this.v[0] + t[0]);
+		res.setAt(1, this.v[1] + t[1]);
+		
+		return res;
+	}
+	
+	public <T extends ITupWF> T addT(float value, T res)
+	{
+		res.setAt(0, this.v[0] + value);
+		res.setAt(1, this.v[1] + value);
+		
+		return res;
+	}
+	
+	public <T extends ITupWF> T addT(float tX, float tY, T res)
+	{
+		res.setAt(0, this.v[0] + tX);
+		res.setAt(1, this.v[1] + tY);
+		
+		return res;
+	}
+	
+	public <T> T addFunc(Vec2F t, IFunc2F<T> func)
+	{
+		return func.apply(
+				this.v[0] + t.v[0],
+				this.v[1] + t.v[1]);
+	}
+	
+	public <T> T addFunc(ITup2RF t, IFunc2F<T> func)
+	{
+		return func.apply(
+				this.v[0] + t.v0(),
+				this.v[1] + t.v1());
+	}
+	
+	public <T> T addFunc(ITupRF t, IFunc2F<T> func)
+	{
+		return func.apply(
+				this.v[0] + t.getAt(0),
+				this.v[1] + t.getAt(1));
+	}
+	
+	public <T> T addFunc(float[] t, IFunc2F<T> func)
+	{
+		return func.apply(
+				this.v[0] + t[0],
+				this.v[1] + t[1]);
+	}
+	
+	public <T> T addFunc(float value, IFunc2F<T> func)
+	{
+		return func.apply(
+				this.v[0] + value,
+				this.v[1] + value);
+	}
+	
+	public <T> T addFunc(float tX, float tY, IFunc2F<T> func)
+	{
+		return func.apply(
+				this.v[0] + tX,
+				this.v[1] + tY);
+	}
+	
+	public Vec2F sub(Vec2F t)
+	{
+		this.v[0] -= t.v[0];
+		this.v[1] -= t.v[1];
+		
+		return this;
+	}
+	
 	/** {@inheritDoc} */
 	@Override
 	public Vec2F sub(ITup2RF t)
 	{
-		VecUtils2F.sub(this.v, t, this.v);
+		this.v[0] -= t.v0();
+		this.v[1] -= t.v1();
 		
 		return this;
 	}
@@ -390,7 +726,8 @@ public class Vec2F implements IVec2WF, IBufferableRF, IBufferableWF
 	@Override
 	public Vec2F sub(ITupRF t)
 	{
-		VecUtils2F.sub(this.v, t, this.v);
+		this.v[0] -= t.getAt(0);
+		this.v[1] -= t.getAt(1);
 		
 		return this;
 	}
@@ -399,139 +736,289 @@ public class Vec2F implements IVec2WF, IBufferableRF, IBufferableWF
 	@Override
 	public Vec2F sub(float[] t)
 	{
-		VecUtils2F.sub(this.v, t, this.v);
+		this.v[0] -= t[0];
+		this.v[1] -= t[1];
 		
 		return this;
 	}
-
+	
 	/** {@inheritDoc} */
 	@Override
 	public Vec2F sub(float value)
 	{
-		VecUtils2F.sub(this.v, value, value, this.v);
+		this.v[0] -= value;
+		this.v[1] -= value;
 		
 		return this;
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F sub(float tx, float ty)
+	public Vec2F sub(float tX, float tY)
 	{
-		VecUtils2F.sub(this.v, tx, ty, this.v);
+		this.v[0] -= tX;
+		this.v[1] -= tY;
 		
 		return this;
+	}
+	
+	public Vec2F subN(Vec2F t)
+	{
+		return new Vec2F(
+				this.v[0] - t.v[0],
+				this.v[1] - t.v[1]);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public Vec2F subN(ITup2RF t)
 	{
-		return VecUtils2F.subFunc(this.v, t, CTOR);
+		return new Vec2F(
+				this.v[0] - t.v0(),
+				this.v[1] - t.v1());
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public Vec2F subN(ITupRF t)
 	{
-		return VecUtils2F.subFunc(this.v, t, CTOR);
+		return new Vec2F(
+				this.v[0] - t.getAt(0),
+				this.v[1] - t.getAt(1));
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public Vec2F subN(float[] t)
 	{
-		return VecUtils2F.subFunc(this.v, t, CTOR);
+		return new Vec2F(
+				this.v[0] - t[0],
+				this.v[1] - t[1]);
 	}
-
+	
 	/** {@inheritDoc} */
 	@Override
 	public Vec2F subN(float value)
 	{
-		return VecUtils2F.subFunc(this.v, value, value, CTOR);
+		return new Vec2F(
+				this.v[0] - value,
+				this.v[1] - value);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public Vec2F subN(float tx, float ty)
 	{
-		return VecUtils2F.subFunc(this.v, tx, ty, CTOR);
+		return new Vec2F(
+				this.v[0] - tx,
+				this.v[1] - ty);
+	}
+	
+	public float[] subT(Vec2F t, float[] res)
+	{
+		res[0] = this.v[0] - t.v[0];
+		res[1] = this.v[1] - t.v[1];
+		
+		return res;
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public float[] subT(ITup2RF t, float[] res)
 	{
-		return VecUtils2F.sub(this.v, t, res);
+		res[0] = this.v[0] - t.v0();
+		res[1] = this.v[1] - t.v1();
+		
+		return res;
 	}
-
+	
 	/** {@inheritDoc} */
 	@Override
 	public float[] subT(ITupRF t, float[] res)
 	{
-		return VecUtils2F.sub(this.v, t, res);
+		res[0] = this.v[0] - t.getAt(0);
+		res[1] = this.v[1] - t.getAt(1);
+		
+		return res;
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public float[] subT(float[] t, float[] res)
 	{
-		return VecUtils2F.sub(this.v, t, res);
+		res[0] = this.v[0] - t[0];
+		res[1] = this.v[1] - t[1];
+		
+		return res;
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public float[] subT(float value, float[] res)
 	{
-		return VecUtils2F.sub(this.v, value, value, res);
+		res[0] = this.v[0] - value;
+		res[1] = this.v[1] - value;
+		
+		return res;
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public float[] subT(float tx, float ty, float[] res)
 	{
-		return VecUtils2F.sub(this.v, tx, ty, res);
+		res[0] = this.v[0] - tx;
+		res[1] = this.v[1] - ty;
+		
+		return res;
+	}
+	
+	public <T extends ITup2WF> T subT(Vec2F t, T res)
+	{
+		res.set(
+				this.v[0] - t.v[0],
+				this.v[1] - t.v[1]);
+		
+		return res;
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public <T extends ITup2WF> T subT(ITup2RF t, T res)
 	{
-		return VecUtils2F.sub(this.v, t, res);
+		res.set(
+				this.v[0] - t.v0(),
+				this.v[1] - t.v1());
+		
+		return res;
 	}
-	
+
 	/** {@inheritDoc} */
 	@Override
 	public <T extends ITup2WF> T subT(ITupRF t, T res)
 	{
-		return VecUtils2F.sub(this.v, t, res);
+		res.set(
+				this.v[0] - t.getAt(0),
+				this.v[1] - t.getAt(1));
+		
+		return res;
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public <T extends ITup2WF> T subT(float[] t, T res)
 	{
-		return VecUtils2F.sub(this.v, t, res);
+		res.set(
+				this.v[0] - t[0],
+				this.v[1] - t[1]);
+		
+		return res;
 	}
-
+	
 	/** {@inheritDoc} */
 	@Override
 	public <T extends ITup2WF> T subT(float value, T res)
 	{
-		return VecUtils2F.sub(this.v, value, value, res);
+		res.set(
+				this.v[0] - value,
+				this.v[1] - value);
+		
+		return res;
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public <T extends ITup2WF> T subT(float tx, float ty, T res)
+	public <T extends ITup2WF> T subT(float tX, float tY, T res)
 	{
-		return VecUtils2F.sub(this.v, tx, ty, res);
+		res.set(
+				this.v[0] - tX,
+				this.v[1] - tY);
+		
+		return res;
 	}
 
+	public <T extends ITupWF> T subT(Vec2F t, T res)
+	{
+		res.setAt(0, this.v[0] - t.v[0]);
+		res.setAt(1, this.v[1] - t.v[1]);
+		
+		return res;
+	}
+	
+	public <T extends ITupWF> T subT(ITup2RF t, T res)
+	{
+		res.setAt(0, this.v[0] - t.v0());
+		res.setAt(1, this.v[1] - t.v1());
+		
+		return res;
+	}
+	
+	public <T extends ITupWF> T subT(ITupRF t, T res)
+	{
+		res.setAt(0, this.v[0] - t.getAt(0));
+		res.setAt(1, this.v[1] - t.getAt(1));
+		
+		return res;
+	}
+	
+	public <T extends ITupWF> T subT(float[] t, T res)
+	{
+		res.setAt(0, this.v[0] - t[0]);
+		res.setAt(1, this.v[1] - t[1]);
+		
+		return res;
+	}
+	
+	public <T extends ITupWF> T subT(float value, T res)
+	{
+		res.setAt(0, this.v[0] - value);
+		res.setAt(1, this.v[1] - value);
+		
+		return res;
+	}
+	
+	public <T extends ITupWF> T subT(float tX, float tY, T res)
+	{
+		res.setAt(0, this.v[0] - tX);
+		res.setAt(1, this.v[1] - tY);
+		
+		return res;
+	}
+
+	public <T> T subFunc(float[] t, IFunc2F<T> func)
+	{
+		return func.apply(
+				this.v[0] - t[0],
+				this.v[1] - t[1]);
+	}
+	
+	public <T> T subFunc(float value, IFunc2F<T> func)
+	{
+		return func.apply(
+				this.v[0] - value,
+				this.v[1] - value);
+	}
+	
+	public <T> T subFunc(float tX, float tY, IFunc2F<T> func)
+	{
+		return func.apply(
+				this.v[0] - tX,
+				this.v[1] - tY);
+	}
+	
+	public Vec2F rSub(Vec2F t)
+	{
+		this.v[0] = t.v[0] - this.v[0];
+		this.v[1] = t.v[1] - this.v[1];
+		
+		return this;
+	}
+	
 	/** {@inheritDoc} */
 	@Override
 	public Vec2F rSub(ITup2RF t)
 	{
-		VecUtils2F.sub(t, this.v, this.v);
+		this.v[0] = t.v0() - this.v[0];
+		this.v[1] = t.v1() - this.v[1];
 		
 		return this;
 	}
@@ -540,7 +1027,8 @@ public class Vec2F implements IVec2WF, IBufferableRF, IBufferableWF
 	@Override
 	public Vec2F rSub(ITupRF t)
 	{
-		VecUtils2F.sub(t, this.v, this.v);
+		this.v[0] = t.getAt(0) - this.v[0];
+		this.v[1] = t.getAt(1) - this.v[1];
 		
 		return this;
 	}
@@ -549,140 +1037,310 @@ public class Vec2F implements IVec2WF, IBufferableRF, IBufferableWF
 	@Override
 	public Vec2F rSub(float[] t)
 	{
-		VecUtils2F.sub(t, this.v, this.v);
+		this.v[0] = t[0] - this.v[0];
+		this.v[1] = t[1] - this.v[1];
 		
 		return this;
 	}
-
+	
 	/** {@inheritDoc} */
 	@Override
 	public Vec2F rSub(float value)
 	{
-		VecUtils2F.sub(value, value, this.v, this.v);
+		this.v[0] = value - this.v[0];
+		this.v[1] = value - this.v[1];
 		
 		return this;
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F rSub(float tx, float ty)
+	public Vec2F rSub(float tX, float tY)
 	{
-		VecUtils2F.sub(tx, ty, this.v, this.v);
+		this.v[0] = tX - this.v[0];
+		this.v[1] = tY - this.v[1];
 		
 		return this;
+	}
+	
+	public Vec2F rSubN(Vec2F t)
+	{
+		return new Vec2F(
+				t.v[0] - this.v[0],
+				t.v[1] - this.v[1]);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public Vec2F rSubN(ITup2RF t)
 	{
-		return VecUtils2F.subFunc(t, this.v, CTOR);
+		return new Vec2F(
+				t.v0() - this.v[0],
+				t.v1() - this.v[1]);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public Vec2F rSubN(ITupRF t)
 	{
-		return VecUtils2F.subFunc(t, this.v, CTOR);
+		return new Vec2F(
+				t.getAt(0) - this.v[0],
+				t.getAt(1) - this.v[1]);
 	}
-
 	
 	/** {@inheritDoc} */
 	@Override
 	public Vec2F rSubN(float[] t)
 	{
-		return VecUtils2F.subFunc(t, this.v, CTOR);
+		return new Vec2F(
+				t[0] - this.v[0],
+				t[1] - this.v[1]);
 	}
-
+	
 	/** {@inheritDoc} */
 	@Override
 	public Vec2F rSubN(float value)
 	{
-		return VecUtils2F.subFunc(value, value, this.v, CTOR);
+		return new Vec2F(
+				value - this.v[0],
+				value - this.v[1]);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public Vec2F rSubN(float tx, float ty)
 	{
-		return VecUtils2F.subFunc(tx, ty, this.v, CTOR);
+		return new Vec2F(
+				tx - this.v[0],
+				ty - this.v[1]);
+	}
+	
+	public float[] rSubT(Vec2F t, float[] res)
+	{
+		res[0] = t.v[0] - this.v[0];
+		res[1] = t.v[1] - this.v[1];
+		
+		return res;
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public float[] rSubT(ITup2RF t, float[] res)
 	{
-		return VecUtils2F.sub(t, this.v, res);
+		res[0] = t.v0() - this.v[0];
+		res[1] = t.v1() - this.v[1];
+		
+		return res;
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public float[] rSubT(ITupRF t, float[] res)
 	{
-		return VecUtils2F.sub(t, this.v, res);
+		res[0] = t.getAt(0) - this.v[0];
+		res[1] = t.getAt(1) - this.v[1];
+		
+		return res;
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public float[] rSubT(float[] t, float[] res)
 	{
-		return VecUtils2F.sub(t, this.v, res);
+		res[0] = t[0] - this.v[0];
+		res[1] = t[1] - this.v[1];
+		
+		return res;
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public float[] rSubT(float value, float[] res)
 	{
-		return VecUtils2F.sub(value, value, this.v, res);
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public <T extends ITup2WF> T rSubT(ITup2RF t, T res)
-	{
-		return VecUtils2F.sub(t, this.v, res);
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public <T extends ITup2WF> T rSubT(ITupRF t, T res)
-	{
-		return VecUtils2F.sub(t, this.v, res);
+		res[0] = value - this.v[0];
+		res[1] = value - this.v[1];
+		
+		return res;
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public float[] rSubT(float tx, float ty, float[] res)
 	{
-		return VecUtils2F.sub(tx, ty, this.v, res);
+		res[0] = tx - this.v[0];
+		res[1] = ty - this.v[1];
+		
+		return res;
+	}
+	
+	public <T extends ITup2WF> T rSubT(Vec2F t, T res)
+	{
+		res.set(
+				t.v[0] - this.v[0],
+				t.v[1] - this.v[1]);
+		
+		return res;
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public <T extends ITup2WF> T rSubT(ITup2RF t, T res)
+	{
+		res.set(
+				t.v0() - this.v[0],
+				t.v1() - this.v[1]);
+		
+		return res;
 	}
 
+	/** {@inheritDoc} */
+	@Override
+	public <T extends ITup2WF> T rSubT(ITupRF t, T res)
+	{
+		res.set(
+				t.getAt(0) - this.v[0],
+				t.getAt(1) - this.v[1]);
+		
+		return res;
+	}
+	
 	/** {@inheritDoc} */
 	@Override
 	public <T extends ITup2WF> T rSubT(float[] t, T res)
 	{
-		return VecUtils2F.sub(t, this.v, res);
+		res.set(
+				t[0] - this.v[0],
+				t[1] - this.v[1]);
+		
+		return res;
 	}
-
+	
 	/** {@inheritDoc} */
 	@Override
 	public <T extends ITup2WF> T rSubT(float value, T res)
 	{
-		return VecUtils2F.sub(value, value, this.v, res);
+		res.set(
+				value - this.v[0],
+				value - this.v[1]);
+		
+		return res;
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public <T extends ITup2WF> T rSubT(float tx, float ty, T res)
+	public <T extends ITup2WF> T rSubT(float tX, float tY, T res)
 	{
-		return VecUtils2F.sub(tx, ty, this.v, res);
+		res.set(
+				tX - this.v[0],
+				tY - this.v[1]);
+		
+		return res;
 	}
 
+	public <T extends ITupWF> T rSubT(Vec2F t, T res)
+	{
+		res.setAt(0, t.v[0] - this.v[0]);
+		res.setAt(1, t.v[1] - this.v[1]);
+		
+		return res;
+	}
+	
+	public <T extends ITupWF> T rSubT(ITup2RF t, T res)
+	{
+		res.setAt(0, t.v0() - this.v[0]);
+		res.setAt(1, t.v1() - this.v[1]);
+		
+		return res;
+	}
+	
+	public <T extends ITupWF> T rSubT(ITupRF t, T res)
+	{
+		res.setAt(0, t.getAt(0) - this.v[0]);
+		res.setAt(1, t.getAt(1) - this.v[1]);
+		
+		return res;
+	}
+	
+	public <T extends ITupWF> T rSubT(float[] t, T res)
+	{
+		res.setAt(0, t[0] - this.v[0]);
+		res.setAt(1, t[1] - this.v[1]);
+		
+		return res;
+	}
+	
+	public <T extends ITupWF> T rSubT(float value, T res)
+	{
+		res.setAt(0, value - this.v[0]);
+		res.setAt(1, value - this.v[1]);
+		
+		return res;
+	}
+	
+	public <T extends ITupWF> T rSubT(float tX, float tY, T res)
+	{
+		res.setAt(0, tX - this.v[0]);
+		res.setAt(1, tY - this.v[1]);
+		
+		return res;
+	}
+
+	public <T> T rSubFunc(Vec2F t, IFunc2F<T> func)
+	{
+		return func.apply(
+				t.v[0] - this.v[0],
+				t.v[1] - this.v[1]);
+	}
+	
+	public <T> T rSubFunc(ITup2RF t, IFunc2F<T> func)
+	{
+		return func.apply(
+				t.v0() - this.v[0],
+				t.v1() - this.v[1]);
+	}
+	
+	public <T> T rSubFunc(ITupRF t, IFunc2F<T> func)
+	{
+		return func.apply(
+				t.getAt(0) - this.v[0],
+				t.getAt(1) - this.v[1]);
+	}
+	
+	public <T> T rSubFunc(float[] t, IFunc2F<T> func)
+	{
+		return func.apply(
+				t[0] - this.v[0],
+				t[1] - this.v[1]);
+	}
+	
+	public <T> T rSubFunc(float value, IFunc2F<T> func)
+	{
+		return func.apply(
+				value - this.v[0],
+				value - this.v[1]);
+	}
+	
+	public <T> T rSubFunc(float tX, float tY, IFunc2F<T> func)
+	{
+		return func.apply(
+				tX - this.v[0],
+				tY - this.v[1]);
+	}
+	
+	public Vec2F mul(Vec2F t)
+	{
+		this.v[0] *= t.v[0];
+		this.v[1] *= t.v[1];
+
+		return this;
+	}
+	
 	/** {@inheritDoc} */
 	@Override
 	public Vec2F mul(ITup2RF t)
 	{
-		VecUtils2F.mul(this.v, t, this.v);
+		this.v[0] *= t.v0();
+		this.v[1] *= t.v1();
 		
 		return this;
 	}
@@ -691,7 +1349,8 @@ public class Vec2F implements IVec2WF, IBufferableRF, IBufferableWF
 	@Override
 	public Vec2F mul(ITupRF t)
 	{
-		VecUtils2F.mul(this.v, t, this.v);
+		this.v[0] *= t.getAt(0);
+		this.v[1] *= t.getAt(1);
 		
 		return this;
 	}
@@ -700,132 +1359,294 @@ public class Vec2F implements IVec2WF, IBufferableRF, IBufferableWF
 	@Override
 	public Vec2F mul(float[] t)
 	{
-		VecUtils2F.mul(this.v, t, this.v);
+		this.v[0] *= t[0];
+		this.v[1] *= t[1];
 		
 		return this;
 	}
-
+	
 	/** {@inheritDoc} */
 	@Override
 	public Vec2F mul(float value)
 	{
-		VecUtils2F.mul(this.v, value, value, this.v);
+		this.v[0] *= value;
+		this.v[1] *= value;
 		
 		return this;
 	}
-
+	
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F mul(float tx, float ty)
+	public Vec2F mul(float tX, float tY)
 	{
-		VecUtils2F.mul(this.v, tx, ty, this.v);
+		this.v[0] *= tX;
+		this.v[1] *= tY;
 		
 		return this;
+	}
+	
+	public Vec2F mulN(Vec2F t)
+	{
+		return new Vec2F(
+				this.v[0] * t.v[0],
+				this.v[1] * t.v[1]);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public Vec2F mulN(ITup2RF t)
 	{
-		return VecUtils2F.mulFunc(this.v, t, CTOR);
+		return new Vec2F(
+				this.v[0] * t.v0(),
+				this.v[1] * t.v1());
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public Vec2F mulN(ITupRF t)
 	{
-		return VecUtils2F.mulFunc(this.v, t, CTOR);
+		return new Vec2F(
+				this.v[0] * t.getAt(0),
+				this.v[1] * t.getAt(1));
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public Vec2F mulN(float[] t)
 	{
-		return VecUtils2F.mulFunc(this.v, t, CTOR);
+		return new Vec2F(
+				this.v[0] * t[0],
+				this.v[1] * t[1]);
 	}
-
+	
 	/** {@inheritDoc} */
 	@Override
 	public Vec2F mulN(float value)
 	{
-		return VecUtils2F.mulFunc(this.v, value, value, CTOR);
+		return new Vec2F(
+				this.v[0] * value,
+				this.v[1] * value);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F mulN(float tx, float ty)
+	public Vec2F mulN(float tX, float tY)
 	{
-		return VecUtils2F.mulFunc(this.v, tx, ty, CTOR);
+		return new Vec2F(
+				this.v[0] * tX,
+				this.v[1] * tY);
+	}
+	
+	public float[] mulT(Vec2F t, float[] res)
+	{
+		res[0] = this.v[0] * t.v[0];
+		res[1] = this.v[1] * t.v[1];
+		
+		return res;
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public float[] mulT(ITup2RF t, float[] res)
 	{
-		return VecUtils2F.mul(this.v, t, res);
+		res[0] = this.v[0] * t.v0();
+		res[1] = this.v[1] * t.v1();
+		
+		return res;
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public float[] mulT(ITupRF t, float[] res)
 	{
-		return VecUtils2F.mul(this.v, t, res);
+		res[0] = this.v[0] * t.getAt(0);
+		res[1] = this.v[1] * t.getAt(1);
+		
+		return res;
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public float[] mulT(float[] t, float[] res)
 	{
-		return VecUtils2F.mul(this.v, t, res);
+		res[0] = this.v[0] * t[0];
+		res[1] = this.v[1] * t[1];
+		
+		return res;
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public float[] mulT(float value, float[] res)
 	{
-		return VecUtils2F.mul(this.v, value, value, res);
+		res[0] = this.v[0] * value;
+		res[1] = this.v[1] * value;
+		
+		return res;
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float[] mulT(float tx, float ty, float[] res)
+	public float[] mulT(float tX, float tY, float[] res)
 	{
-		return VecUtils2F.mul(this.v, tx, ty, res);
+		res[0] = this.v[0] * tX;
+		res[1] = this.v[1] * tY;
+		
+		return res;
+	}
+	
+	public <T extends ITup2WF> T mulT(Vec2F t, T res)
+	{
+		res.set(
+				this.v[0] * t.v[0],
+				this.v[1] * t.v[1]);
+		
+		return res;
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public <T extends ITup2WF> T mulT(ITup2RF t, T res)
 	{
-		return VecUtils2F.mul(this.v, t, res);
+		res.set(
+				this.v[0] * t.v0(),
+				this.v[1] * t.v1());
+		
+		return res;
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public <T extends ITup2WF> T mulT(ITupRF t, T res)
 	{
-		return VecUtils2F.mul(this.v, t, res);
+		res.set(
+				this.v[0] * t.getAt(0),
+				this.v[1] * t.getAt(1));
+		
+		return res;
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public <T extends ITup2WF> T mulT(float[] t, T res)
 	{
-		return VecUtils2F.mul(this.v, t, res);
+		res.set(
+				this.v[0] * t[0],
+				this.v[1] * t[1]);
+		
+		return res;
 	}
-
+	
 	/** {@inheritDoc} */
 	@Override
 	public <T extends ITup2WF> T mulT(float value, T res)
 	{
-		return VecUtils2F.mul(this.v, value, value, res);
+		res.set(
+				this.v[0] * value,
+				this.v[1] * value);
+		
+		return res;
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public <T extends ITup2WF> T mulT(float tx, float ty, T res)
+	public <T extends ITup2WF> T mulT(float tX, float tY, T res)
 	{
-		return VecUtils2F.mul(this.v, tx, ty, res);
+		res.set(
+				this.v[0] * tX,
+				this.v[1] * tY);
+		
+		return res;
+	}
+
+	public <T extends ITupWF> T mulT(Vec2F t, T res)
+	{
+		res.setAt(0, this.v[0] * t.v[0]);
+		res.setAt(1, this.v[1] * t.v[1]);
+		
+		return res;
+	}
+	
+	public <T extends ITupWF> T mulT(ITup2RF t, T res)
+	{
+		res.setAt(0, this.v[0] * t.v0());
+		res.setAt(1, this.v[1] * t.v1());
+		
+		return res;
+	}
+	
+	public <T extends ITupWF> T mulT(ITupRF t, T res)
+	{
+		res.setAt(0, this.v[0] * t.getAt(0));
+		res.setAt(1, this.v[1] * t.getAt(1));
+		
+		return res;
+	}
+	
+	public <T extends ITupWF> T mulT(float[] t, T res)
+	{
+		res.setAt(0, this.v[0] * t[0]);
+		res.setAt(1, this.v[1] * t[1]);
+		
+		return res;
+	}
+	
+	public <T extends ITupWF> T mulT(float value, T res)
+	{
+		res.setAt(0, this.v[0] * value);
+		res.setAt(1, this.v[1] * value);
+		
+		return res;
+	}
+	
+	public <T extends ITupWF> T mulT(float tX, float tY, T res)
+	{
+		res.setAt(0, this.v[0] * tX);
+		res.setAt(1, this.v[1] * tY);
+		
+		return res;
+	}
+	
+	public <T> T mulFunc(Vec2F t, IFunc2F<T> func)
+	{
+		return func.apply(
+				this.v[0] * t.v[0],
+				this.v[1] * t.v[1]);
+	}
+	
+	public <T> T mulFunc(ITup2RF t, IFunc2F<T> func)
+	{
+		return func.apply(
+				this.v[0] * t.v0(),
+				this.v[1] * t.v1());
+	}
+	
+	public <T> T mulFunc(ITupRF t, IFunc2F<T> func)
+	{
+		return func.apply(
+				this.v[0] * t.getAt(0),
+				this.v[1] * t.getAt(1));
+	}
+	
+	public <T> T mulFunc(float[] t, IFunc2F<T> func)
+	{
+		return func.apply(
+				this.v[0] * t[0],
+				this.v[1] * t[1]);
+	}
+	
+	public <T> T mulFunc(float value, IFunc2F<T> func)
+	{
+		return func.apply(
+				this.v[0] * value,
+				this.v[1] * value);
+	}
+	
+	public <T> T mulFunc(float tX, float tY, IFunc2F<T> func)
+	{
+		return func.apply(
+				this.v[0] * tX,
+				this.v[1] * tY);
 	}
 
 	/** {@inheritDoc} */
@@ -1130,385 +1951,385 @@ public class Vec2F implements IVec2WF, IBufferableRF, IBufferableWF
 	
 	/** {@inheritDoc} */
 	@Override
-	public float len()
+	public float length()
 	{
 		return VecUtils2F.len(this.v);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public float lenEM(float tolerance)
+	public float lengthEM(float tolerance)
 	{
 		return VecUtils2F.lenEM(tolerance, this.v);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public float lenEM4()
+	public float lengthEM4()
 	{
 		return VecUtils2F.lenEM4(this.v);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float lenEM6()
+	public float lengthEM6()
 	{
 		return VecUtils2F.lenEM6(this.v);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float lenEM8()
+	public float lengthEM8()
 	{
 		return VecUtils2F.lenEM8(this.v);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float lenRc()
+	public float lengthReciprocal()
 	{
 		return VecUtils2F.lenRc(this.v);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public float lenTo(ITup2RF t)
+	public float lengthTo(ITup2RF t)
 	{
 		return VecUtils2F.lenTo(this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public float lenTo(ITupRF t)
+	public float lengthTo(ITupRF t)
 	{
 		return VecUtils2F.lenTo(this.v, t);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float lenTo(float[] t)
+	public float lengthTo(float[] t)
 	{
 		return VecUtils2F.lenTo(this.v, t);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float lenTo(float tx, float ty)
+	public float lengthTo(float tx, float ty)
 	{
 		return VecUtils2F.lenTo(this.v, tx, ty);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float lenToEM(float tolerance, ITup2RF t)
+	public float lengthToEM(float tolerance, ITup2RF t)
 	{
 		return VecUtils2F.lenToEM(tolerance, this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public float lenToEM(float tolerance, ITupRF t)
+	public float lengthToEM(float tolerance, ITupRF t)
 	{
 		return VecUtils2F.lenToEM(tolerance, this.v, t);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float lenToEM(float tolerance, float[] t)
+	public float lengthToEM(float tolerance, float[] t)
 	{
 		return VecUtils2F.lenToEM(tolerance, this.v, t);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float lenToEM(float tolerance, float tx, float ty)
+	public float lengthToEM(float tolerance, float tx, float ty)
 	{
 		return VecUtils2F.lenToEM(tolerance, this.v, tx, ty);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public float lenToEM4(ITup2RF t)
+	public float lengthToEM4(ITup2RF t)
 	{
 		return VecUtils2F.lenToEM4(this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public float lenToEM4(ITupRF t)
+	public float lengthToEM4(ITupRF t)
 	{
 		return VecUtils2F.lenToEM4(this.v, t);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float lenToEM4(float[] t)
+	public float lengthToEM4(float[] t)
 	{
 		return VecUtils2F.lenToEM4(this.v, t);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float lenToEM4(float tx, float ty)
+	public float lengthToEM4(float tx, float ty)
 	{
 		return VecUtils2F.lenToEM4(this.v, tx, ty);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float lenToEM6(ITup2RF t)
+	public float lengthToEM6(ITup2RF t)
 	{
 		return VecUtils2F.lenToEM6(this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public float lenToEM6(ITupRF t)
+	public float lengthToEM6(ITupRF t)
 	{
 		return VecUtils2F.lenToEM6(this.v, t);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float lenToEM6(float[] t)
+	public float lengthToEM6(float[] t)
 	{
 		return VecUtils2F.lenToEM6(this.v, t);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float lenToEM6(float tx, float ty)
+	public float lengthToEM6(float tx, float ty)
 	{
 		return VecUtils2F.lenToEM6(this.v, tx, ty);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float lenToEM8(ITup2RF t)
+	public float lengthToEM8(ITup2RF t)
 	{
 		return VecUtils2F.lenToEM8(this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public float lenToEM8(ITupRF t)
+	public float lengthToEM8(ITupRF t)
 	{
 		return VecUtils2F.lenToEM8(this.v, t);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float lenToEM8(float[] t)
+	public float lengthToEM8(float[] t)
 	{
 		return VecUtils2F.lenToEM8(this.v, t);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float lenToEM8(float tx, float ty)
+	public float lengthToEM8(float tx, float ty)
 	{
 		return VecUtils2F.lenToEM8(this.v, tx, ty);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float lenRcTo(ITup2RF t)
+	public float lengthReciprocalTo(ITup2RF t)
 	{
 		return VecUtils2F.lenRcTo(this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public float lenRcTo(ITupRF t)
+	public float lengthReciprocalTo(ITupRF t)
 	{
 		return VecUtils2F.lenRcTo(this.v, t);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float lenRcTo(float[] t)
+	public float lengthReciprocalTo(float[] t)
 	{
 		return VecUtils2F.lenRcTo(this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public float lenRcTo(float tx, float ty)
+	public float lengthReciprocalTo(float tx, float ty)
 	{
 		return VecUtils2F.lenRcTo(this.v, tx, ty);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public float lenSq()
+	public float lengthSquared()
 	{
 		return VecUtils2F.lenSq(this.v);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public float lenSqEM(float tolerance)
+	public float lengthSquaredEM(float tolerance)
 	{
 		return VecUtils2F.lenSqEM(tolerance, this.v);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float lenSqEM4()
+	public float lengthSquaredEM4()
 	{
 		return VecUtils2F.lenSqEM4(this.v);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float lenSqEM6()
+	public float lengthSquaredEM6()
 	{
 		return VecUtils2F.lenSqEM6(this.v);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float lenSqEM8()
+	public float lengthSquaredEM8()
 	{
 		return VecUtils2F.lenSqEM8(this.v);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float lenSqTo(ITup2RF t)
+	public float lengthSquaredTo(ITup2RF t)
 	{
 		return VecUtils2F.lenSqTo(this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public float lenSqTo(ITupRF t)
+	public float lengthSquaredTo(ITupRF t)
 	{
 		return VecUtils2F.lenSqTo(this.v, t);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float lenSqTo(float[] t)
+	public float lengthSquaredTo(float[] t)
 	{
 		return VecUtils2F.lenSqTo(this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public float lenSqTo(float tx, float ty)
+	public float lengthSquaredTo(float tx, float ty)
 	{
 		return VecUtils2F.lenSqTo(this.v, tx, ty);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float lenSqToEM(float tolerance, ITup2RF t)
+	public float lengthSquaredToEM(float tolerance, ITup2RF t)
 	{
 		return VecUtils2F.lenSqToEM(tolerance, this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public float lenSqToEM(float tolerance, ITupRF t)
+	public float lengthSquaredToEM(float tolerance, ITupRF t)
 	{
 		return VecUtils2F.lenSqToEM(tolerance, this.v, t);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float lenSqToEM(float tolerance, float[] t)
+	public float lengthSquaredToEM(float tolerance, float[] t)
 	{
 		return VecUtils2F.lenSqToEM(tolerance, this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public float lenSqToEM(float tolerance, float tx, float ty)
+	public float lengthSquaredToEM(float tolerance, float tx, float ty)
 	{
 		return VecUtils2F.lenSqToEM(tolerance, this.v, tx, ty);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float lenSqToEM4(ITup2RF t)
+	public float lengthSquaredToEM4(ITup2RF t)
 	{
 		return VecUtils2F.lenSqToEM4(this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public float lenSqToEM4(ITupRF t)
+	public float lengthSquaredToEM4(ITupRF t)
 	{
 		return VecUtils2F.lenSqToEM4(this.v, t);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float lenSqToEM4(float[] t)
+	public float lengthSquaredToEM4(float[] t)
 	{
 		return VecUtils2F.lenSqToEM4(this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public float lenSqToEM4(float tx, float ty)
+	public float lengthSquaredToEM4(float tx, float ty)
 	{
 		return VecUtils2F.lenSqToEM4(this.v, tx, ty);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float lenSqToEM6(ITup2RF t)
+	public float lengthSquaredToEM6(ITup2RF t)
 	{
 		return VecUtils2F.lenSqToEM6(this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public float lenSqToEM6(ITupRF t)
+	public float lengthSquaredToEM6(ITupRF t)
 	{
 		return VecUtils2F.lenSqToEM6(this.v, t);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float lenSqToEM6(float[] t)
+	public float lengthSquaredToEM6(float[] t)
 	{
 		return VecUtils2F.lenSqToEM6(this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public float lenSqToEM6(float tx, float ty)
+	public float lengthSquaredToEM6(float tx, float ty)
 	{
 		return VecUtils2F.lenSqToEM6(this.v, tx, ty);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float lenSqToEM8(ITup2RF t)
+	public float lengthSquaredToEM8(ITup2RF t)
 	{
 		return VecUtils2F.lenSqToEM8(this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public float lenSqToEM8(ITupRF t)
+	public float lengthSquaredToEM8(ITupRF t)
 	{
 		return VecUtils2F.lenSqToEM8(this.v, t);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float lenSqToEM8(float[] t)
+	public float lengthSquaredToEM8(float[] t)
 	{
 		return VecUtils2F.lenSqToEM8(this.v, t);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public float lenSqToEM8(float tx, float ty)
+	public float lengthSquaredToEM8(float tx, float ty)
 	{
 		return VecUtils2F.lenSqToEM8(this.v, tx, ty);
 	}
@@ -1783,7 +2604,7 @@ public class Vec2F implements IVec2WF, IBufferableRF, IBufferableWF
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F neg()
+	public Vec2F negate()
 	{
 		VecUtils2F.neg(this.v, this.v);
 		
@@ -1792,28 +2613,28 @@ public class Vec2F implements IVec2WF, IBufferableRF, IBufferableWF
 	
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F negN()
+	public Vec2F negateN()
 	{
 		return VecUtils2F.negFunc(this.v, CTOR);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float[] negT(float[] res)
+	public float[] negateT(float[] res)
 	{
 		return VecUtils2F.neg(this.v, res);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public <T extends ITup2WF> T negT(T res)
+	public <T extends ITup2WF> T negateT(T res)
 	{
 		return VecUtils2F.neg(this.v, res);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F rec()
+	public Vec2F reciprocal()
 	{
 		VecUtils2F.rec(this.v, this.v);
 		
@@ -1822,28 +2643,28 @@ public class Vec2F implements IVec2WF, IBufferableRF, IBufferableWF
 	
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F recN()
+	public Vec2F reciprocalN()
 	{
 		return VecUtils2F.recFunc(this.v, CTOR);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float[] recT(float[] res)
+	public float[] reciprocalT(float[] res)
 	{
 		return VecUtils2F.rec(this.v, res);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public <T extends ITup2WF> T recT(T res)
+	public <T extends ITup2WF> T reciprocalT(T res)
 	{
 		return VecUtils2F.rec(this.v, res);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F nrm()
+	public Vec2F normalize()
 	{
 		VecUtils2F.nrm(this.v, this.v);
 		
@@ -1852,28 +2673,28 @@ public class Vec2F implements IVec2WF, IBufferableRF, IBufferableWF
 	
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F nrmN()
+	public Vec2F normalizeN()
 	{
 		return VecUtils2F.nrmFunc(this.v, CTOR);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float[] nrmT(float[] res)
+	public float[] normalizeT(float[] res)
 	{
 		return VecUtils2F.nrm(this.v, res);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public <T extends ITup2WF> T nrmT(T res)
+	public <T extends ITup2WF> T normalizeT(T res)
 	{
 		return VecUtils2F.nrm(this.v, res);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F nrmEM(float tolerance)
+	public Vec2F normalizeEM(float tolerance)
 	{
 		VecUtils2F.nrmEM(tolerance, this.v, this.v);
 		
@@ -1882,28 +2703,28 @@ public class Vec2F implements IVec2WF, IBufferableRF, IBufferableWF
 	
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F nrmNEM(float tolerance)
+	public Vec2F normalizeNEM(float tolerance)
 	{
 		return VecUtils2F.nrmFuncEM(tolerance, this.v, CTOR);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float[] nrmTEM(float tolerance, float[] res)
+	public float[] normalizeTEM(float tolerance, float[] res)
 	{
 		return VecUtils2F.nrmEM(tolerance, this.v, res);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public <T extends ITup2WF> T nrmTEM(float tolerance, T res)
+	public <T extends ITup2WF> T normalizeTEM(float tolerance, T res)
 	{
 		return VecUtils2F.nrmEM(tolerance, this.v, res);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F nrmEM4()
+	public Vec2F normalizeEM4()
 	{
 		VecUtils2F.nrmEM4(this.v, this.v);
 		
@@ -1912,28 +2733,28 @@ public class Vec2F implements IVec2WF, IBufferableRF, IBufferableWF
 	
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F nrmNEM4()
+	public Vec2F normalizeNEM4()
 	{
 		return VecUtils2F.nrmFuncEM4(this.v, CTOR);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float[] nrmTEM4(float[] res)
+	public float[] normalizeTEM4(float[] res)
 	{
 		return VecUtils2F.nrmEM4(this.v, res);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public <T extends ITup2WF> T nrmTEM4(T res)
+	public <T extends ITup2WF> T normalizeTEM4(T res)
 	{
 		return VecUtils2F.nrmEM4(this.v, res);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F nrmEM6()
+	public Vec2F normalizeEM6()
 	{
 		VecUtils2F.nrmEM6(this.v, this.v);
 		
@@ -1942,28 +2763,28 @@ public class Vec2F implements IVec2WF, IBufferableRF, IBufferableWF
 	
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F nrmNEM6()
+	public Vec2F normalizeNEM6()
 	{
 		return VecUtils2F.nrmFuncEM6(this.v, CTOR);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float[] nrmTEM6(float[] res)
+	public float[] normalizeTEM6(float[] res)
 	{
 		return VecUtils2F.nrmEM6(this.v, res);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public <T extends ITup2WF> T nrmTEM6(T res)
+	public <T extends ITup2WF> T normalizeTEM6(T res)
 	{
 		return VecUtils2F.nrmEM6(this.v, res);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F nrmEM8()
+	public Vec2F normalizeEM8()
 	{
 		VecUtils2F.nrmEM8(this.v, this.v);
 		
@@ -1972,28 +2793,28 @@ public class Vec2F implements IVec2WF, IBufferableRF, IBufferableWF
 	
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F nrmNEM8()
+	public Vec2F normalizeNEM8()
 	{
 		return VecUtils2F.nrmFuncEM8(this.v, CTOR);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float[] nrmTEM8(float[] res)
+	public float[] normalizeTEM8(float[] res)
 	{
 		return VecUtils2F.nrmEM8(this.v, res);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public <T extends ITup2WF> T nrmTEM8(T res)
+	public <T extends ITup2WF> T normalizeTEM8(T res)
 	{
 		return VecUtils2F.nrmEM8(this.v, res);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F rotRad(double angle)
+	public Vec2F rotateRad(double angle)
 	{
 		VecUtils2F.rotRad(angle, this.v, this.v);
 		
@@ -2002,28 +2823,28 @@ public class Vec2F implements IVec2WF, IBufferableRF, IBufferableWF
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F rotRadN(double angle)
+	public Vec2F rotateRadN(double angle)
 	{
 		return VecUtils2F.rotRadFunc(angle, this.v, CTOR);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float[] rotRadT(double angle, float[] res)
+	public float[] rotateRadT(double angle, float[] res)
 	{
 		return VecUtils2F.rotRad(angle, this.v, res);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public <T extends ITup2WF> T rotRadT(double angle, T res)
+	public <T extends ITup2WF> T rotateRadT(double angle, T res)
 	{
 		return VecUtils2F.rotRad(angle, this.v, res);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F rotDeg(double angle)
+	public Vec2F rotateDeg(double angle)
 	{
 		VecUtils2F.rotDeg(angle, this.v, this.v);
 		
@@ -2032,21 +2853,21 @@ public class Vec2F implements IVec2WF, IBufferableRF, IBufferableWF
 	
 	/** {@inheritDoc} */
 	@Override
-	public Vec2F rotDegN(double angle)
+	public Vec2F rotateDegN(double angle)
 	{
 		return VecUtils2F.rotDegFunc(angle, this.v, CTOR);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float[] rotDegT(double angle, float[] res)
+	public float[] rotateDegT(double angle, float[] res)
 	{
 		return VecUtils2F.rotDeg(angle, this.v, res);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public <T extends ITup2WF> T rotDegT(double angle, T res)
+	public <T extends ITup2WF> T rotateDegT(double angle, T res)
 	{
 		return VecUtils2F.rotDeg(angle, this.v, res);
 	}

@@ -2664,7 +2664,7 @@ public class Mat4F implements IMat4WF
 	}
 
 	@Override
-	public Mat4F revMul(IMat4RF m)
+	public Mat4F rMul(IMat4RF m)
 	{
 		MatUtils4F.mul(this.m, m, this.m);
 		
@@ -2672,7 +2672,7 @@ public class Mat4F implements IMat4WF
 	}
 	
 	@Override
-	public Mat4F revMulN(IMat4RF m)
+	public Mat4F rMulN(IMat4RF m)
 	{
 		return MatUtils4F.mulFunc(this.m, m, CTOR);
 	}

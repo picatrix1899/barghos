@@ -90,7 +90,7 @@ public interface IMat4RF extends ISqrMatRF
 	
 	IMat4RF mulN(IMat4RF m);
 	
-	IMat4RF revMulN(IMat4RF m);
+	IMat4RF rMulN(IMat4RF m);
 	
 	float[] transform2T(boolean isPoint, ITup2RF v, @ExtractionParam float[] res);
 	

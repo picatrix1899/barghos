@@ -5,6 +5,8 @@ import java.util.Objects;
 
 import org.barghos.api.core.function.floats.IFunc4F;
 import org.barghos.api.core.math.MathUtils;
+import org.barghos.api.core.tuple.floats.ITup3RF;
+import org.barghos.api.core.tuple.floats.ITup3WF;
 import org.barghos.api.core.tuple.floats.ITup4RF;
 import org.barghos.api.core.tuple.floats.ITupRF;
 import org.barghos.api.core.tuple.floats.RawTupUtils4F;
@@ -1466,7 +1468,7 @@ public class QuatF implements IQuatWF
 
 	/** {@inheritDoc} */
 	@Override
-	public QuatF conj()
+	public QuatF conjugate()
 	{
 		QuatUtilsF.conj(this.q, this.q);
 		
@@ -1475,14 +1477,14 @@ public class QuatF implements IQuatWF
 
 	/** {@inheritDoc} */
 	@Override
-	public QuatF conjN()
+	public QuatF conjugateN()
 	{
 		return QuatUtilsF.conjFunc(this.q, CTOR);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public float[] conjT(float[] res)
+	public float[] conjugateT(float[] res)
 	{
 		QuatUtilsF.conj(this.q, res);
 		
@@ -1491,7 +1493,7 @@ public class QuatF implements IQuatWF
 	
 	/** {@inheritDoc} */
 	@Override
-	public <T extends IQuatWF> T conjT(T res)
+	public <T extends IQuatWF> T conjugateT(T res)
 	{
 		QuatUtilsF.conj(this.q, res);
 		
@@ -1500,7 +1502,7 @@ public class QuatF implements IQuatWF
 	
 	/** {@inheritDoc} */
 	@Override
-	public QuatF inv()
+	public QuatF inverse()
 	{
 		QuatUtilsF.inv(this.q, this.q);
 		
@@ -1509,14 +1511,14 @@ public class QuatF implements IQuatWF
 	
 	/** {@inheritDoc} */
 	@Override
-	public QuatF invN()
+	public QuatF inverseN()
 	{
 		return QuatUtilsF.invFunc(this.q, CTOR);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public float[] invT(float[] res)
+	public float[] inverseT(float[] res)
 	{
 		QuatUtilsF.inv(this.q, res);
 		
@@ -1525,7 +1527,7 @@ public class QuatF implements IQuatWF
 	
 	/** {@inheritDoc} */
 	@Override
-	public <T extends IQuatWF> T invT(T res)
+	public <T extends IQuatWF> T inverseT(T res)
 	{
 		QuatUtilsF.inv(this.q, res);
 		
@@ -1534,7 +1536,7 @@ public class QuatF implements IQuatWF
 	
 	/** {@inheritDoc} */
 	@Override
-	public QuatF nrm()
+	public QuatF normalize()
 	{
 		QuatUtilsF.nrm(this.q, this.q);
 		
@@ -1543,14 +1545,14 @@ public class QuatF implements IQuatWF
 
 	/** {@inheritDoc} */
 	@Override
-	public QuatF nrmN()
+	public QuatF normalizeN()
 	{
 		return QuatUtilsF.nrmFunc(this.q, CTOR);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public float[] nrmT(float[] res)
+	public float[] normalizeT(float[] res)
 	{
 		QuatUtilsF.nrm(this.q, res);
 		
@@ -1559,7 +1561,7 @@ public class QuatF implements IQuatWF
 
 	/** {@inheritDoc} */
 	@Override
-	public <T extends IQuatWF> T nrmT(T res)
+	public <T extends IQuatWF> T normalizeT(T res)
 	{
 		QuatUtilsF.nrm(this.q, res);
 		
@@ -1568,21 +1570,21 @@ public class QuatF implements IQuatWF
 	
 	/** {@inheritDoc} */
 	@Override
-	public float len()
+	public float length()
 	{
 		return QuatUtilsF.len(this.q);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public float lenSq()
+	public float lengthSquared()
 	{
 		return QuatUtilsF.lenSq(this.q);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public float lenRc()
+	public float lengthReciprocal()
 	{
 		return QuatUtilsF.lenRc(this.q);
 	}
@@ -1606,5 +1608,498 @@ public class QuatF implements IQuatWF
 	public float dot(float x, float y, float z, float w)
 	{
 		return QuatUtilsF.dot(this.q, x, y, z, w);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public QuatF mul(ITup4RF q)
+	{
+		float w_ = this.q[3] * q.v3() - this.q[0] * q.v0() - this.q[1] * q.v1() - this.q[2] * q.v2(); // w * w' - v * v'
+		
+		float x_ = this.q[3] * q.v0() + q.v3() * this.q[0] + this.q[1] * q.v2() - this.q[2] * q.v1(); // s * v'.x + s' * v.x + (V x V').x
+		float y_ = this.q[3] * q.v1() + q.v3() * this.q[1] + this.q[2] * q.v0() - this.q[0] * q.v2(); // s * v'.y + s' * v.y + (V x V').y
+		float z_ = this.q[3] * q.v2() + q.v3() * this.q[2] + this.q[0] * q.v1() - this.q[1] * q.v0(); // s * v'.z + s' * v.z + (V x V').z
+		
+		this.q[0] = x_;
+		this.q[1] = y_;
+		this.q[2] = z_;
+		this.q[3] = w_;
+		
+		return this;
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public QuatF mul(float[] q)
+	{
+		float w_ = this.q[3] * q[3] - this.q[0] * q[0] - this.q[1] * q[1] - this.q[2] * q[2]; // w * w' - v * v'
+		
+		float x_ = this.q[3] * q[0] + q[3] * this.q[0] + this.q[1] * q[2] - this.q[2] * q[1]; // s * v'.x + s' * v.x + (V x V').x
+		float y_ = this.q[3] * q[1] + q[3] * this.q[1] + this.q[2] * q[0] - this.q[0] * q[2]; // s * v'.y + s' * v.y + (V x V').y
+		float z_ = this.q[3] * q[2] + q[3] * this.q[2] + this.q[0] * q[1] - this.q[1] * q[0]; // s * v'.z + s' * v.z + (V x V').z
+		
+		this.q[0] = x_;
+		this.q[1] = y_;
+		this.q[2] = z_;
+		this.q[3] = w_;
+		
+		return this;
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public QuatF mul(float x, float y, float z, float w)
+	{
+		float w_ = this.q[3] * w - this.q[0] * x - this.q[1] * y - this.q[2] * z; // w * w' - v * v'
+		
+		float x_ = this.q[3] * x + w * this.q[0] + this.q[1] * z - this.q[2] * y; // s * v'.x + s' * v.x + (V x V').x
+		float y_ = this.q[3] * y + w * this.q[1] + this.q[2] * x - this.q[0] * z; // s * v'.y + s' * v.y + (V x V').y
+		float z_ = this.q[3] * z + w * this.q[2] + this.q[0] * y - this.q[1] * x; // s * v'.z + s' * v.z + (V x V').z
+		
+		this.q[0] = x_;
+		this.q[1] = y_;
+		this.q[2] = z_;
+		this.q[3] = w_;
+		
+		return this;
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public QuatF mulN(ITup4RF q)
+	{
+		float w_ = this.q[3] * q.v3() - this.q[0] * q.v0() - this.q[1] * q.v1() - this.q[2] * q.v2(); // w * w' - v * v'
+		
+		float x_ = this.q[3] * q.v0() + q.v3() * this.q[0] + this.q[1] * q.v2() - this.q[2] * q.v1(); // s * v'.x + s' * v.x + (V x V').x
+		float y_ = this.q[3] * q.v1() + q.v3() * this.q[1] + this.q[2] * q.v0() - this.q[0] * q.v2(); // s * v'.y + s' * v.y + (V x V').y
+		float z_ = this.q[3] * q.v2() + q.v3() * this.q[2] + this.q[0] * q.v1() - this.q[1] * q.v0(); // s * v'.z + s' * v.z + (V x V').z
+		
+		return new QuatF(x_, y_, z_, w_);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public QuatF mulN(float[] q)
+	{
+		float w_ = this.q[3] * q[3] - this.q[0] * q[0] - this.q[1] * q[1] - this.q[2] * q[2]; // w * w' - v * v'
+		
+		float x_ = this.q[3] * q[0] + q[3] * this.q[0] + this.q[1] * q[2] - this.q[2] * q[1]; // s * v'.x + s' * v.x + (V x V').x
+		float y_ = this.q[3] * q[1] + q[3] * this.q[1] + this.q[2] * q[0] - this.q[0] * q[2]; // s * v'.y + s' * v.y + (V x V').y
+		float z_ = this.q[3] * q[2] + q[3] * this.q[2] + this.q[0] * q[1] - this.q[1] * q[0]; // s * v'.z + s' * v.z + (V x V').z
+		
+		return new QuatF(x_, y_, z_, w_);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public QuatF mulN(float x, float y, float z, float w)
+	{
+		float w_ = this.q[3] * w - this.q[0] * x - this.q[1] * y - this.q[2] * z; // w * w' - v * v'
+		
+		float x_ = this.q[3] * x + w * this.q[0] + this.q[1] * z - this.q[2] * y; // s * v'.x + s' * v.x + (V x V').x
+		float y_ = this.q[3] * y + w * this.q[1] + this.q[2] * x - this.q[0] * z; // s * v'.y + s' * v.y + (V x V').y
+		float z_ = this.q[3] * z + w * this.q[2] + this.q[0] * y - this.q[1] * x; // s * v'.z + s' * v.z + (V x V').z
+		
+		return new QuatF(x_, y_, z_, w_);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public <T extends IQuatWF> T mulT(ITup4RF q, T res)
+	{
+		float w_ = this.q[3] * q.v3() - this.q[0] * q.v0() - this.q[1] * q.v1() - this.q[2] * q.v2(); // w * w' - v * v'
+		
+		float x_ = this.q[3] * q.v0() + q.v3() * this.q[0] + this.q[1] * q.v2() - this.q[2] * q.v1(); // s * v'.x + s' * v.x + (V x V').x
+		float y_ = this.q[3] * q.v1() + q.v3() * this.q[1] + this.q[2] * q.v0() - this.q[0] * q.v2(); // s * v'.y + s' * v.y + (V x V').y
+		float z_ = this.q[3] * q.v2() + q.v3() * this.q[2] + this.q[0] * q.v1() - this.q[1] * q.v0(); // s * v'.z + s' * v.z + (V x V').z
+		
+		res.set(x_, y_, z_, w_);
+		
+		return res;
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public <T extends IQuatWF> T mulT(float[] q, T res)
+	{
+		float w_ = this.q[3] * q[3] - this.q[0] * q[0] - this.q[1] * q[1] - this.q[2] * q[2]; // w * w' - v * v'
+		
+		float x_ = this.q[3] * q[0] + q[3] * this.q[0] + this.q[1] * q[2] - this.q[2] * q[1]; // s * v'.x + s' * v.x + (V x V').x
+		float y_ = this.q[3] * q[1] + q[3] * this.q[1] + this.q[2] * q[0] - this.q[0] * q[2]; // s * v'.y + s' * v.y + (V x V').y
+		float z_ = this.q[3] * q[2] + q[3] * this.q[2] + this.q[0] * q[1] - this.q[1] * q[0]; // s * v'.z + s' * v.z + (V x V').z
+		
+		res.set(x_, y_, z_, w_);
+		
+		return res;
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public <T extends IQuatWF> T mulT(float x, float y, float z, float w, T res)
+	{
+		float w_ = this.q[3] * w - this.q[0] * x - this.q[1] * y - this.q[2] * z; // w * w' - v * v'
+		
+		float x_ = this.q[3] * x + w * this.q[0] + this.q[1] * z - this.q[2] * y; // s * v'.x + s' * v.x + (V x V').x
+		float y_ = this.q[3] * y + w * this.q[1] + this.q[2] * x - this.q[0] * z; // s * v'.y + s' * v.y + (V x V').y
+		float z_ = this.q[3] * z + w * this.q[2] + this.q[0] * y - this.q[1] * x; // s * v'.z + s' * v.z + (V x V').z
+		
+		res.set(x_, y_, z_, w_);
+		
+		return res;
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public float[] mulT(ITup4RF q, float[] res)
+	{
+		float w_ = this.q[3] * q.v3() - this.q[0] * q.v0() - this.q[1] * q.v1() - this.q[2] * q.v2(); // w * w' - v * v'
+		
+		float x_ = this.q[3] * q.v0() + q.v3() * this.q[0] + this.q[1] * q.v2() - this.q[2] * q.v1(); // s * v'.x + s' * v.x + (V x V').x
+		float y_ = this.q[3] * q.v1() + q.v3() * this.q[1] + this.q[2] * q.v0() - this.q[0] * q.v2(); // s * v'.y + s' * v.y + (V x V').y
+		float z_ = this.q[3] * q.v2() + q.v3() * this.q[2] + this.q[0] * q.v1() - this.q[1] * q.v0(); // s * v'.z + s' * v.z + (V x V').z
+		
+		res[0] = x_;
+		res[1] = y_;
+		res[2] = z_;
+		res[3] = w_;
+		
+		return res;
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public float[] mulT(float[] q, float[] res)
+	{
+		float w_ = this.q[3] * q[3] - this.q[0] * q[0] - this.q[1] * q[1] - this.q[2] * q[2]; // w * w' - v * v'
+		
+		float x_ = this.q[3] * q[0] + q[3] * this.q[0] + this.q[1] * q[2] - this.q[2] * q[1]; // s * v'.x + s' * v.x + (V x V').x
+		float y_ = this.q[3] * q[1] + q[3] * this.q[1] + this.q[2] * q[0] - this.q[0] * q[2]; // s * v'.y + s' * v.y + (V x V').y
+		float z_ = this.q[3] * q[2] + q[3] * this.q[2] + this.q[0] * q[1] - this.q[1] * q[0]; // s * v'.z + s' * v.z + (V x V').z
+		
+		res[0] = x_;
+		res[1] = y_;
+		res[2] = z_;
+		res[3] = w_;
+		
+		return res;
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public float[] mulT(float x, float y, float z, float w, float[] res)
+	{
+		float w_ = this.q[3] * w - this.q[0] * x - this.q[1] * y - this.q[2] * z; // w * w' - v * v'
+		
+		float x_ = this.q[3] * x + w * this.q[0] + this.q[1] * z - this.q[2] * y; // s * v'.x + s' * v.x + (V x V').x
+		float y_ = this.q[3] * y + w * this.q[1] + this.q[2] * x - this.q[0] * z; // s * v'.y + s' * v.y + (V x V').y
+		float z_ = this.q[3] * z + w * this.q[2] + this.q[0] * y - this.q[1] * x; // s * v'.z + s' * v.z + (V x V').z
+		
+		res[0] = x_;
+		res[1] = y_;
+		res[2] = z_;
+		res[3] = w_;
+		
+		return res;
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public QuatF rMul(ITup4RF q)
+	{
+		float w_ = q.v3() * this.q[3] - q.v0() * this.q[0] - q.v1() * this.q[1] - q.v2() * this.q[2]; // w * w' - v * v'
+		
+		float x_ = q.v3() * this.q[0] + this.q[3] * q.v0() + q.v1() * this.q[2] - q.v2() * this.q[1]; // s * v'.x + s' * v.x + (V x V').x
+		float y_ = q.v3() * this.q[1] + this.q[3] * q.v1() + q.v2() * this.q[0] - q.v0() * this.q[2]; // s * v'.y + s' * v.y + (V x V').y
+		float z_ = q.v3() * this.q[2] + this.q[3] * q.v2() + q.v0() * this.q[1] - q.v1() * this.q[0]; // s * v'.z + s' * v.z + (V x V').z
+		
+		this.q[0] = x_;
+		this.q[1] = y_;
+		this.q[2] = z_;
+		this.q[3] = w_;
+		
+		return this;
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public QuatF rMul(float[] q)
+	{
+		float w_ = q[3] * this.q[3] - q[0] * this.q[0] - q[1] * this.q[1] - q[2] * this.q[2]; // w * w' - v * v'
+		
+		float x_ = q[3] * this.q[0] + this.q[3] * q[0] + q[1] * this.q[2] - q[2] * this.q[1]; // s * v'.x + s' * v.x + (V x V').x
+		float y_ = q[3] * this.q[1] + this.q[3] * q[1] + q[2] * this.q[0] - q[0] * this.q[2]; // s * v'.y + s' * v.y + (V x V').y
+		float z_ = q[3] * this.q[2] + this.q[3] * q[2] + q[0] * this.q[1] - q[1] * this.q[0]; // s * v'.z + s' * v.z + (V x V').z
+		
+		this.q[0] = x_;
+		this.q[1] = y_;
+		this.q[2] = z_;
+		this.q[3] = w_;
+		
+		return this;
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public QuatF rMul(float x, float y, float z, float w)
+	{
+		float w_ = w * this.q[3] - x * this.q[0] - y * this.q[1] - z * this.q[2]; // w * w' - v * v'
+		
+		float x_ = w * this.q[0] + this.q[3] * x + y * this.q[2] - z * this.q[1]; // s * v'.x + s' * v.x + (V x V').x
+		float y_ = w * this.q[1] + this.q[3] * y + z * this.q[0] - x * this.q[2]; // s * v'.y + s' * v.y + (V x V').y
+		float z_ = w * this.q[2] + this.q[3] * z + x * this.q[1] - y * this.q[0]; // s * v'.z + s' * v.z + (V x V').z
+		
+		this.q[0] = x_;
+		this.q[1] = y_;
+		this.q[2] = z_;
+		this.q[3] = w_;
+		
+		return this;
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public QuatF rMulN(ITup4RF q)
+	{
+		float w_ = q.v3() * this.q[3] - q.v0() * this.q[0] - q.v1() * this.q[1] - q.v2() * this.q[2]; // w * w' - v * v'
+		
+		float x_ = q.v3() * this.q[0] + this.q[3] * q.v0() + q.v1() * this.q[2] - q.v2() * this.q[1]; // s * v'.x + s' * v.x + (V x V').x
+		float y_ = q.v3() * this.q[1] + this.q[3] * q.v1() + q.v2() * this.q[0] - q.v0() * this.q[2]; // s * v'.y + s' * v.y + (V x V').y
+		float z_ = q.v3() * this.q[2] + this.q[3] * q.v2() + q.v0() * this.q[1] - q.v1() * this.q[0]; // s * v'.z + s' * v.z + (V x V').z
+		
+		return new QuatF(x_, y_, z_, w_);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public QuatF rMulN(float[] q)
+	{
+		float w_ = q[3] * this.q[3] - q[0] * this.q[0] - q[1] * this.q[1] - q[2] * this.q[2]; // w * w' - v * v'
+		
+		float x_ = q[3] * this.q[0] + this.q[3] * q[0] + q[1] * this.q[2] - q[2] * this.q[1]; // s * v'.x + s' * v.x + (V x V').x
+		float y_ = q[3] * this.q[1] + this.q[3] * q[1] + q[2] * this.q[0] - q[0] * this.q[2]; // s * v'.y + s' * v.y + (V x V').y
+		float z_ = q[3] * this.q[2] + this.q[3] * q[2] + q[0] * this.q[1] - q[1] * this.q[0]; // s * v'.z + s' * v.z + (V x V').z
+		
+		return new QuatF(x_, y_, z_, w_);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public QuatF rMulN(float x, float y, float z, float w)
+	{
+		float w_ = w * this.q[3] - x * this.q[0] - y * this.q[1] - z * this.q[2]; // w * w' - v * v'
+		
+		float x_ = w * this.q[0] + this.q[3] * x + y * this.q[2] - z * this.q[1]; // s * v'.x + s' * v.x + (V x V').x
+		float y_ = w * this.q[1] + this.q[3] * y + z * this.q[0] - x * this.q[2]; // s * v'.y + s' * v.y + (V x V').y
+		float z_ = w * this.q[2] + this.q[3] * z + x * this.q[1] - y * this.q[0]; // s * v'.z + s' * v.z + (V x V').z
+		
+		return new QuatF(x_, y_, z_, w_);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public float[] rMulT(ITup4RF q, float[] res)
+	{
+		float w_ = q.v3() * this.q[3] - q.v0() * this.q[0] - q.v1() * this.q[1] - q.v2() * this.q[2]; // w * w' - v * v'
+		
+		float x_ = q.v3() * this.q[0] + this.q[3] * q.v0() + q.v1() * this.q[2] - q.v2() * this.q[1]; // s * v'.x + s' * v.x + (V x V').x
+		float y_ = q.v3() * this.q[1] + this.q[3] * q.v1() + q.v2() * this.q[0] - q.v0() * this.q[2]; // s * v'.y + s' * v.y + (V x V').y
+		float z_ = q.v3() * this.q[2] + this.q[3] * q.v2() + q.v0() * this.q[1] - q.v1() * this.q[0]; // s * v'.z + s' * v.z + (V x V').z
+		
+		res[0] = x_;
+		res[1] = y_;
+		res[2] = z_;
+		res[3] = w_;
+		
+		return res;
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public float[] rMulT(float[] q, float[] res)
+	{
+		float w_ = q[3] * this.q[3] - q[0] * this.q[0] - q[1] * this.q[1] - q[2] * this.q[2]; // w * w' - v * v'
+		
+		float x_ = q[3] * this.q[0] + this.q[3] * q[0] + q[1] * this.q[2] - q[2] * this.q[1]; // s * v'.x + s' * v.x + (V x V').x
+		float y_ = q[3] * this.q[1] + this.q[3] * q[1] + q[2] * this.q[0] - q[0] * this.q[2]; // s * v'.y + s' * v.y + (V x V').y
+		float z_ = q[3] * this.q[2] + this.q[3] * q[2] + q[0] * this.q[1] - q[1] * this.q[0]; // s * v'.z + s' * v.z + (V x V').z
+		
+		res[0] = x_;
+		res[1] = y_;
+		res[2] = z_;
+		res[3] = w_;
+		
+		return res;
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public float[] rMulT(float x, float y, float z, float w, float[] res)
+	{
+		float w_ = w * this.q[3] - x * this.q[0] - y * this.q[1] - z * this.q[2]; // w * w' - v * v'
+		
+		float x_ = w * this.q[0] + this.q[3] * x + y * this.q[2] - z * this.q[1]; // s * v'.x + s' * v.x + (V x V').x
+		float y_ = w * this.q[1] + this.q[3] * y + z * this.q[0] - x * this.q[2]; // s * v'.y + s' * v.y + (V x V').y
+		float z_ = w * this.q[2] + this.q[3] * z + x * this.q[1] - y * this.q[0]; // s * v'.z + s' * v.z + (V x V').z
+		
+		res[0] = x_;
+		res[1] = y_;
+		res[2] = z_;
+		res[3] = w_;
+		
+		return res;
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public <T extends IQuatWF> T rMulT(ITup4RF q, T res)
+	{
+		float w_ = q.v3() * this.q[3] - q.v0() * this.q[0] - q.v1() * this.q[1] - q.v2() * this.q[2]; // w * w' - v * v'
+		
+		float x_ = q.v3() * this.q[0] + this.q[3] * q.v0() + q.v1() * this.q[2] - q.v2() * this.q[1]; // s * v'.x + s' * v.x + (V x V').x
+		float y_ = q.v3() * this.q[1] + this.q[3] * q.v1() + q.v2() * this.q[0] - q.v0() * this.q[2]; // s * v'.y + s' * v.y + (V x V').y
+		float z_ = q.v3() * this.q[2] + this.q[3] * q.v2() + q.v0() * this.q[1] - q.v1() * this.q[0]; // s * v'.z + s' * v.z + (V x V').z
+		
+		res.set(x_, y_, z_, w_);
+		
+		return res;
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public <T extends IQuatWF> T rMulT(float[] q, T res)
+	{
+		float w_ = q[3] * this.q[3] - q[0] * this.q[0] - q[1] * this.q[1] - q[2] * this.q[2]; // w * w' - v * v'
+		
+		float x_ = q[3] * this.q[0] + this.q[3] * q[0] + q[1] * this.q[2] - q[2] * this.q[1]; // s * v'.x + s' * v.x + (V x V').x
+		float y_ = q[3] * this.q[1] + this.q[3] * q[1] + q[2] * this.q[0] - q[0] * this.q[2]; // s * v'.y + s' * v.y + (V x V').y
+		float z_ = q[3] * this.q[2] + this.q[3] * q[2] + q[0] * this.q[1] - q[1] * this.q[0]; // s * v'.z + s' * v.z + (V x V').z
+		
+		res.set(x_, y_, z_, w_);
+		
+		return res;
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public <T extends IQuatWF> T rMulT(float x, float y, float z, float w, T res)
+	{
+		float w_ = w * this.q[3] - x * this.q[0] - y * this.q[1] - z * this.q[2]; // w * w' - v * v'
+		
+		float x_ = w * this.q[0] + this.q[3] * x + y * this.q[2] - z * this.q[1]; // s * v'.x + s' * v.x + (V x V').x
+		float y_ = w * this.q[1] + this.q[3] * y + z * this.q[0] - x * this.q[2]; // s * v'.y + s' * v.y + (V x V').y
+		float z_ = w * this.q[2] + this.q[3] * z + x * this.q[1] - y * this.q[0]; // s * v'.z + s' * v.z + (V x V').z
+		
+		res.set(x_, y_, z_, w_);
+		
+		return res;
+	}
+
+	
+	/** {@inheritDoc} */
+	@Override
+	public float[] transformT(ITup3RF v, float[] res)
+	{
+		float tx = 2.0f * (this.q[1] * v.v2() - this.q[2] * v.v1());
+		float ty = 2.0f * (this.q[2] * v.v0() - this.q[0] * v.v2());
+		float tz = 2.0f * (this.q[0] * v.v1() - this.q[1] * v.v0());
+		
+		float rv0 = v.v0() + this.q[3] * tx + (this.q[1] * tz - this.q[2] * ty);
+		float rv1 = v.v1() + this.q[3] * ty + (this.q[2] * tx - this.q[0] * tz);
+		float rv2 = v.v2() + this.q[3] * tz + (this.q[0] * ty - this.q[1] * tx);
+		
+		res[0] = rv0;
+		res[1] = rv1;
+		res[2] = rv2;
+		
+		return res;
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public float[] transformT(float[] v, float[] res)
+	{
+		float tx = 2.0f * (this.q[1] * v[2] - this.q[2] * v[1]);
+		float ty = 2.0f * (this.q[2] * v[0] - this.q[0] * v[2]);
+		float tz = 2.0f * (this.q[0] * v[1] - this.q[1] * v[0]);
+		
+		float rv0 = v[0] + this.q[3] * tx + (this.q[1] * tz - this.q[2] * ty);
+		float rv1 = v[1] + this.q[3] * ty + (this.q[2] * tx - this.q[0] * tz);
+		float rv2 = v[2] + this.q[3] * tz + (this.q[0] * ty - this.q[1] * tx);
+		
+		res[0] = rv0;
+		res[1] = rv1;
+		res[2] = rv2;
+		
+		return res;
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public float[] transformT(float v0, float v1, float v2, float[] res)
+	{
+		float tx = 2.0f * (this.q[1] * v2 - this.q[2] * v1);
+		float ty = 2.0f * (this.q[2] * v0 - this.q[0] * v2);
+		float tz = 2.0f * (this.q[0] * v1 - this.q[1] * v0);
+		
+		float rv0 = v0 + this.q[3] * tx + (this.q[1] * tz - this.q[2] * ty);
+		float rv1 = v1 + this.q[3] * ty + (this.q[2] * tx - this.q[0] * tz);
+		float rv2 = v2 + this.q[3] * tz + (this.q[0] * ty - this.q[1] * tx);
+		
+		res[0] = rv0;
+		res[1] = rv1;
+		res[2] = rv2;
+		
+		return res;
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public <T extends ITup3WF> T transformT(ITup3RF v, T res)
+	{
+		float tx = 2.0f * (this.q[1] * v.v2() - this.q[2] * v.v1());
+		float ty = 2.0f * (this.q[2] * v.v0() - this.q[0] * v.v2());
+		float tz = 2.0f * (this.q[0] * v.v1() - this.q[1] * v.v0());
+		
+		float rv0 = v.v0() + this.q[3] * tx + (this.q[1] * tz - this.q[2] * ty);
+		float rv1 = v.v1() + this.q[3] * ty + (this.q[2] * tx - this.q[0] * tz);
+		float rv2 = v.v2() + this.q[3] * tz + (this.q[0] * ty - this.q[1] * tx);
+		
+		res.set(rv0, rv1, rv2);
+		
+		return res;
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public <T extends ITup3WF> T transformT(float[] v, T res)
+	{
+		float tx = 2.0f * (this.q[1] * v[2] - this.q[2] * v[1]);
+		float ty = 2.0f * (this.q[2] * v[0] - this.q[0] * v[2]);
+		float tz = 2.0f * (this.q[0] * v[1] - this.q[1] * v[0]);
+		
+		float rv0 = v[0] + this.q[3] * tx + (this.q[1] * tz - this.q[2] * ty);
+		float rv1 = v[1] + this.q[3] * ty + (this.q[2] * tx - this.q[0] * tz);
+		float rv2 = v[2] + this.q[3] * tz + (this.q[0] * ty - this.q[1] * tx);
+		
+		res.set(rv0, rv1, rv2);
+		
+		return res;
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public <T extends ITup3WF> T transformT(float v0, float v1, float v2, T res)
+	{
+		float tx = 2.0f * (this.q[1] * v2 - this.q[2] * v1);
+		float ty = 2.0f * (this.q[2] * v0 - this.q[0] * v2);
+		float tz = 2.0f * (this.q[0] * v1 - this.q[1] * v0);
+		
+		float rv0 = v0 + this.q[3] * tx + (this.q[1] * tz - this.q[2] * ty);
+		float rv1 = v1 + this.q[3] * ty + (this.q[2] * tx - this.q[0] * tz);
+		float rv2 = v2 + this.q[3] * tz + (this.q[0] * ty - this.q[1] * tx);
+		
+		res.set(rv0, rv1, rv2);
+		
+		return res;
 	}
 }

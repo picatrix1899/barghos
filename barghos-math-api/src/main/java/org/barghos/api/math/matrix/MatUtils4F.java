@@ -1631,8 +1631,8 @@ public class MatUtils4F
 		
 		float w = isPoint ? 1.0f : 0.0f;
 
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, w * m.m03()));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, w * m.m13()));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, w * m.m30()));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, w * m.m31()));
 		
 		res[0] = r0;
 		res[1] = r1;
@@ -1647,8 +1647,8 @@ public class MatUtils4F
 		
 		float w = isPoint ? 1.0f : 0.0f;
 
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, w * m[3]));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, w * m[7]));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, w * m[12]));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, w * m[13]));
 		
 		res[0] = r0;
 		res[1] = r1;
@@ -1663,8 +1663,8 @@ public class MatUtils4F
 		
 		float w = isPoint ? 1.0f : 0.0f;
 
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, w * m.m03()));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, w * m.m13()));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, w * m.m30()));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, w * m.m31()));
 		
 		res[0] = r0;
 		res[1] = r1;
@@ -1679,8 +1679,8 @@ public class MatUtils4F
 		
 		float w = isPoint ? 1.0f : 0.0f;
 
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, w * m[3]));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, w * m[7]));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, w * m[12]));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, w * m[13]));
 		
 		res[0] = r0;
 		res[1] = r1;
@@ -1692,8 +1692,8 @@ public class MatUtils4F
 	{
 		float w = isPoint ? 1.0f : 0.0f;
 
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, w * m.m03()));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, w * m.m13()));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, w * m.m30()));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, w * m.m31()));
 		
 		res[0] = r0;
 		res[1] = r1;
@@ -1705,8 +1705,8 @@ public class MatUtils4F
 	{
 		float w = isPoint ? 1.0f : 0.0f;
 
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, w * m[3]));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, w * m[7]));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, w * m[12]));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, w * m[13]));
 		
 		res[0] = r0;
 		res[1] = r1;
@@ -1721,8 +1721,8 @@ public class MatUtils4F
 		
 		float w = isPoint ? 1.0f : 0.0f;
 
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, w * m.m03()));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, w * m.m13()));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, w * m.m30()));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, w * m.m31()));
 		
 		res.set(r0, r1);
 
@@ -1736,8 +1736,8 @@ public class MatUtils4F
 		
 		float w = isPoint ? 1.0f : 0.0f;
 
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, w * m[3]));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, w * m[7]));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, w * m[12]));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, w * m[13]));
 
 		res.set(r0, r1);
 		
@@ -1751,8 +1751,8 @@ public class MatUtils4F
 		
 		float w = isPoint ? 1.0f : 0.0f;
 
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, w * m.m03()));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, w * m.m13()));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, w * m.m30()));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, w * m.m31()));
 		
 		res.set(r0, r1);
 
@@ -1766,8 +1766,8 @@ public class MatUtils4F
 		
 		float w = isPoint ? 1.0f : 0.0f;
 
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, w * m[3]));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, w * m[7]));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, w * m[12]));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, w * m[13]));
 
 		res.set(r0, r1);
 		
@@ -1778,8 +1778,8 @@ public class MatUtils4F
 	{
 		float w = isPoint ? 1.0f : 0.0f;
 
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, w * m.m03()));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, w * m.m13()));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, w * m.m30()));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, w * m.m31()));
 		
 		res.set(r0, r1);
 
@@ -1790,8 +1790,8 @@ public class MatUtils4F
 	{
 		float w = isPoint ? 1.0f : 0.0f;
 
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, w * m[3]));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, w * m[7]));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, w * m[12]));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, w * m[13]));
 
 		res.set(r0, r1);
 		
@@ -1805,8 +1805,8 @@ public class MatUtils4F
 		
 		float w = isPoint ? 1.0f : 0.0f;
 
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, w * m.m03()));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, w * m.m13()));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, w * m.m30()));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, w * m.m31()));
 		
 		return func.apply(r0, r1);
 	}
@@ -1818,8 +1818,8 @@ public class MatUtils4F
 		
 		float w = isPoint ? 1.0f : 0.0f;
 
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, w * m[3]));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, w * m[7]));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, w * m[12]));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, w * m[13]));
 
 		return func.apply(r0, r1);
 	}
@@ -1831,8 +1831,8 @@ public class MatUtils4F
 		
 		float w = isPoint ? 1.0f : 0.0f;
 
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, w * m.m03()));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, w * m.m13()));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, w * m.m30()));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, w * m.m31()));
 		
 		return func.apply(r0, r1);
 	}
@@ -1844,8 +1844,8 @@ public class MatUtils4F
 		
 		float w = isPoint ? 1.0f : 0.0f;
 
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, w * m[3]));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, w * m[7]));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, w * m[12]));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, w * m[13]));
 
 		return func.apply(r0, r1);
 	}
@@ -1854,8 +1854,8 @@ public class MatUtils4F
 	{
 		float w = isPoint ? 1.0f : 0.0f;
 
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, w * m.m03()));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, w * m.m13()));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, w * m.m30()));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, w * m.m31()));
 		
 		return func.apply(r0, r1);
 	}
@@ -1864,8 +1864,8 @@ public class MatUtils4F
 	{
 		float w = isPoint ? 1.0f : 0.0f;
 
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, w * m[3]));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, w * m[7]));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, w * m[12]));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, w * m[13]));
 
 		return func.apply(r0, r1);
 	}
@@ -1875,8 +1875,8 @@ public class MatUtils4F
 		float v0 = v.v0();
 		float v1 = v.v1();
 		
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, m.m03()));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, m.m13()));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, m.m30()));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, m.m31()));
 
 		res[0] = r0;
 		res[1] = r1;
@@ -1889,8 +1889,8 @@ public class MatUtils4F
 		float v0 = v.v0();
 		float v1 = v.v1();
 		
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, m[3]));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, m[7]));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, m[12]));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, m[13]));
 		
 		res[0] = r0;
 		res[1] = r1;
@@ -1903,8 +1903,8 @@ public class MatUtils4F
 		float v0 = v[0];
 		float v1 = v[1];
 		
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, m.m03()));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, m.m13()));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, m.m30()));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, m.m31()));
 
 		res[0] = r0;
 		res[1] = r1;
@@ -1917,8 +1917,8 @@ public class MatUtils4F
 		float v0 = v[0];
 		float v1 = v[1];
 		
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, m[3]));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, m[7]));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, m[12]));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, m[13]));
 		
 		res[0] = r0;
 		res[1] = r1;
@@ -1928,8 +1928,8 @@ public class MatUtils4F
 	
 	public static float[] transformPoint2(float v0, float v1, IMat4RF m, @ExtractionParam float[] res)
 	{
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, m.m03()));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, m.m13()));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, m.m30()));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, m.m31()));
 
 		res[0] = r0;
 		res[1] = r1;
@@ -1939,8 +1939,8 @@ public class MatUtils4F
 	
 	public static float[] transformPoint2(float v0, float v1, float[] m, @ExtractionParam float[] res)
 	{
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, m[3]));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, m[7]));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, m[12]));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, m[13]));
 		
 		res[0] = r0;
 		res[1] = r1;
@@ -1953,8 +1953,8 @@ public class MatUtils4F
 		float v0 = v.v0();
 		float v1 = v.v1();
 		
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, m.m03()));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, m.m13()));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, m.m30()));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, m.m31()));
 		
 		res.set(r0, r1);
 
@@ -1966,8 +1966,8 @@ public class MatUtils4F
 		float v0 = v.v0();
 		float v1 = v.v1();
 		
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, m[3]));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, m[7]));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, m[12]));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, m[13]));
 		
 		res.set(r0, r1);
 
@@ -1979,8 +1979,8 @@ public class MatUtils4F
 		float v0 = v[0];
 		float v1 = v[1];
 		
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, m.m03()));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, m.m13()));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, m.m30()));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, m.m31()));
 		
 		res.set(r0, r1);
 
@@ -1992,8 +1992,8 @@ public class MatUtils4F
 		float v0 = v[0];
 		float v1 = v[1];
 		
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, m[3]));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, m[7]));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, m[12]));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, m[13]));
 		
 		res.set(r0, r1);
 
@@ -2002,8 +2002,8 @@ public class MatUtils4F
 	
 	public static <T extends ITup2WF> T transformPoint2(float v0, float v1, IMat4RF m, @ExtractionParam T res)
 	{
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, m.m03()));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, m.m13()));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, m.m30()));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, m.m31()));
 		
 		res.set(r0, r1);
 
@@ -2012,8 +2012,8 @@ public class MatUtils4F
 	
 	public static <T extends ITup2WF> T transformPoint2(float v0, float v1, float[] m, @ExtractionParam T res)
 	{
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, m[3]));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, m[7]));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, m[12]));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, m[13]));
 		
 		res.set(r0, r1);
 
@@ -2025,8 +2025,8 @@ public class MatUtils4F
 		float v0 = v.v0();
 		float v1 = v.v1();
 		
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, m.m03()));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, m.m13()));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, m.m30()));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, m.m31()));
 		
 		return func.apply(r0, r1);
 	}
@@ -2036,8 +2036,8 @@ public class MatUtils4F
 		float v0 = v.v0();
 		float v1 = v.v1();
 		
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, m[3]));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, m[7]));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, m[12]));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, m[13]));
 		
 		return func.apply(r0, r1);
 	}
@@ -2047,8 +2047,8 @@ public class MatUtils4F
 		float v0 = v[0];
 		float v1 = v[1];
 		
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, m.m03()));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, m.m13()));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, m.m30()));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, m.m31()));
 		
 		return func.apply(r0, r1);
 	}
@@ -2058,24 +2058,24 @@ public class MatUtils4F
 		float v0 = v[0];
 		float v1 = v[1];
 		
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, m[3]));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, m[7]));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, m[12]));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, m[13]));
 		
 		return func.apply(r0, r1);
 	}
 	
 	public static <T> T transformPoint2Func(float v0, float v1, IMat4RF m, IFunc2F<T> func)
 	{
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, m.m03()));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, m.m13()));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, m.m30()));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, m.m31()));
 		
 		return func.apply(r0, r1);
 	}
 	
 	public static <T> T transformPoint2Func(float v0, float v1, float[] m, IFunc2F<T> func)
 	{
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, m[3]));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, m[7]));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, m[12]));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, m[13]));
 		
 		return func.apply(r0, r1);
 	}
@@ -2085,8 +2085,8 @@ public class MatUtils4F
 		float v0 = v.v0();
 		float v1 = v.v1();
 		
-		float r0 = MathUtils.fma(m.m00(), v0, m.m01() * v1);
-		float r1 = MathUtils.fma(m.m10(), v0, m.m11()* v1);
+		float r0 = MathUtils.fma(m.m00(), v0, m.m10() * v1);
+		float r1 = MathUtils.fma(m.m01(), v0, m.m11() * v1);
 		
 		res[0] = r0;
 		res[1] = r1;
@@ -2099,8 +2099,8 @@ public class MatUtils4F
 		float v0 = v.v0();
 		float v1 = v.v1();
 		
-		float r0 = MathUtils.fma(m[0], v0, m[1] * v1);
-		float r1 = MathUtils.fma(m[4], v0, m[5] * v1);
+		float r0 = MathUtils.fma(m[0], v0, m[4] * v1);
+		float r1 = MathUtils.fma(m[1], v0, m[5] * v1);
 		
 		res[0] = r0;
 		res[1] = r1;
@@ -2113,8 +2113,8 @@ public class MatUtils4F
 		float v0 = v[0];
 		float v1 = v[1];
 		
-		float r0 = MathUtils.fma(m.m00(), v0, m.m01() * v1);
-		float r1 = MathUtils.fma(m.m10(), v0, m.m11()* v1);
+		float r0 = MathUtils.fma(m.m00(), v0, m.m10() * v1);
+		float r1 = MathUtils.fma(m.m01(), v0, m.m11() * v1);
 		
 		res[0] = r0;
 		res[1] = r1;
@@ -2127,8 +2127,8 @@ public class MatUtils4F
 		float v0 = v[0];
 		float v1 = v[1];
 		
-		float r0 = MathUtils.fma(m[0], v0, m[1] * v1);
-		float r1 = MathUtils.fma(m[4], v0, m[5] * v1);
+		float r0 = MathUtils.fma(m[0], v0, m[4] * v1);
+		float r1 = MathUtils.fma(m[1], v0, m[5] * v1);
 		
 		res[0] = r0;
 		res[1] = r1;
@@ -2138,8 +2138,8 @@ public class MatUtils4F
 	
 	public static float[] transformVec2(float v0, float v1, IMat4RF m, float[] res)
 	{
-		float r0 = MathUtils.fma(m.m00(), v0, m.m01() * v1);
-		float r1 = MathUtils.fma(m.m10(), v0, m.m11()* v1);
+		float r0 = MathUtils.fma(m.m00(), v0, m.m10() * v1);
+		float r1 = MathUtils.fma(m.m01(), v0, m.m11() * v1);
 		
 		res[0] = r0;
 		res[1] = r1;
@@ -2149,8 +2149,8 @@ public class MatUtils4F
 	
 	public static float[] transformVec2(float v0, float v1, float[] m, float[] res)
 	{
-		float r0 = MathUtils.fma(m[0], v0, m[1] * v1);
-		float r1 = MathUtils.fma(m[4], v0, m[5] * v1);
+		float r0 = MathUtils.fma(m[0], v0, m[4] * v1);
+		float r1 = MathUtils.fma(m[1], v0, m[5] * v1);
 		
 		res[0] = r0;
 		res[1] = r1;
@@ -2163,8 +2163,8 @@ public class MatUtils4F
 		float v0 = v.v0();
 		float v1 = v.v1();
 		
-		float r0 = MathUtils.fma(m.m00(), v0, m.m01() * v1);
-		float r1 = MathUtils.fma(m.m10(), v0, m.m11() * v1);
+		float r0 = MathUtils.fma(m.m00(), v0, m.m10() * v1);
+		float r1 = MathUtils.fma(m.m01(), v0, m.m11() * v1);
 		
 		res.set(r0, r1);
 
@@ -2176,8 +2176,8 @@ public class MatUtils4F
 		float v0 = v.v0();
 		float v1 = v.v1();
 		
-		float r0 = MathUtils.fma(m[0], v0, m[1] * v1);
-		float r1 = MathUtils.fma(m[4], v0, m[5] * v1);
+		float r0 = MathUtils.fma(m[0], v0, m[4] * v1);
+		float r1 = MathUtils.fma(m[1], v0, m[5] * v1);
 		
 		res.set(r0, r1);
 
@@ -2189,8 +2189,8 @@ public class MatUtils4F
 		float v0 = v[0];
 		float v1 = v[1];
 		
-		float r0 = MathUtils.fma(m.m00(), v0, m.m01() * v1);
-		float r1 = MathUtils.fma(m.m10(), v0, m.m11() * v1);
+		float r0 = MathUtils.fma(m.m00(), v0, m.m10() * v1);
+		float r1 = MathUtils.fma(m.m01(), v0, m.m11() * v1);
 		
 		res.set(r0, r1);
 
@@ -2202,8 +2202,8 @@ public class MatUtils4F
 		float v0 = v[0];
 		float v1 = v[1];
 		
-		float r0 = MathUtils.fma(m[0], v0, m[1] * v1);
-		float r1 = MathUtils.fma(m[4], v0, m[5] * v1);
+		float r0 = MathUtils.fma(m[0], v0, m[4] * v1);
+		float r1 = MathUtils.fma(m[1], v0, m[5] * v1);
 		
 		res.set(r0, r1);
 
@@ -2212,8 +2212,8 @@ public class MatUtils4F
 	
 	public static <T extends ITup2WF> T transformVec2(float v0, float v1, IMat4RF m, @ExtractionParam T res)
 	{
-		float r0 = MathUtils.fma(m.m00(), v0, m.m01() * v1);
-		float r1 = MathUtils.fma(m.m10(), v0, m.m11() * v1);
+		float r0 = MathUtils.fma(m.m00(), v0, m.m10() * v1);
+		float r1 = MathUtils.fma(m.m01(), v0, m.m11() * v1);
 		
 		res.set(r0, r1);
 
@@ -2222,8 +2222,8 @@ public class MatUtils4F
 	
 	public static <T extends ITup2WF> T transformVec2(float v0, float v1, float[] m, @ExtractionParam T res)
 	{
-		float r0 = MathUtils.fma(m[0], v0, m[1] * v1);
-		float r1 = MathUtils.fma(m[4], v0, m[5] * v1);
+		float r0 = MathUtils.fma(m[0], v0, m[4] * v1);
+		float r1 = MathUtils.fma(m[1], v0, m[5] * v1);
 		
 		res.set(r0, r1);
 
@@ -2235,8 +2235,8 @@ public class MatUtils4F
 		float v0 = v.v0();
 		float v1 = v.v1();
 		
-		float r0 = MathUtils.fma(m.m00(), v0, m.m01() * v1);
-		float r1 = MathUtils.fma(m.m10(), v0, m.m11() * v1);
+		float r0 = MathUtils.fma(m.m00(), v0, m.m10() * v1);
+		float r1 = MathUtils.fma(m.m01(), v0, m.m11() * v1);
 		
 		return func.apply(r0, r1);
 	}
@@ -2246,8 +2246,8 @@ public class MatUtils4F
 		float v0 = v.v0();
 		float v1 = v.v1();
 		
-		float r0 = MathUtils.fma(m[0], v0, m[1] * v1);
-		float r1 = MathUtils.fma(m[4], v0, m[5] * v1);
+		float r0 = MathUtils.fma(m[0], v0, m[4] * v1);
+		float r1 = MathUtils.fma(m[1], v0, m[5] * v1);
 		
 		return func.apply(r0, r1);
 	}
@@ -2257,8 +2257,8 @@ public class MatUtils4F
 		float v0 = v[0];
 		float v1 = v[1];
 		
-		float r0 = MathUtils.fma(m.m00(), v0, m.m01() * v1);
-		float r1 = MathUtils.fma(m.m10(), v0, m.m11() * v1);
+		float r0 = MathUtils.fma(m.m00(), v0, m.m10() * v1);
+		float r1 = MathUtils.fma(m.m01(), v0, m.m11() * v1);
 		
 		return func.apply(r0, r1);
 	}
@@ -2268,24 +2268,24 @@ public class MatUtils4F
 		float v0 = v[0];
 		float v1 = v[1];
 		
-		float r0 = MathUtils.fma(m[0], v0, m[1] * v1);
-		float r1 = MathUtils.fma(m[4], v0, m[5] * v1);
+		float r0 = MathUtils.fma(m[0], v0, m[4] * v1);
+		float r1 = MathUtils.fma(m[1], v0, m[5] * v1);
 		
 		return func.apply(r0, r1);
 	}
 	
 	public static <T> T transformVec2Func(float v0, float v1, IMat4RF m, IFunc2F<T> func)
 	{
-		float r0 = MathUtils.fma(m.m00(), v0, m.m01() * v1);
-		float r1 = MathUtils.fma(m.m10(), v0, m.m11() * v1);
+		float r0 = MathUtils.fma(m.m00(), v0, m.m10() * v1);
+		float r1 = MathUtils.fma(m.m01(), v0, m.m11() * v1);
 		
 		return func.apply(r0, r1);
 	}
 	
 	public static <T> T transformVec2Func(float v0, float v1, float[] m, IFunc2F<T> func)
 	{
-		float r0 = MathUtils.fma(m[0], v0, m[1] * v1);
-		float r1 = MathUtils.fma(m[4], v0, m[5] * v1);
+		float r0 = MathUtils.fma(m[0], v0, m[4] * v1);
+		float r1 = MathUtils.fma(m[1], v0, m[5] * v1);
 		
 		return func.apply(r0, r1);
 	}
@@ -2298,9 +2298,9 @@ public class MatUtils4F
 		
 		float w = isPoint ? 1.0f : 0.0f;
 
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, MathUtils.fma(m.m02(), v2, w * m.m03())));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m12(), v2, w * m.m13())));
-		float r2 = MathUtils.fma(m.m20(), v0, MathUtils.fma(m.m21(), v1, MathUtils.fma(m.m22(), v2, w * m.m23())));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, MathUtils.fma(m.m20(), v2, w * m.m30())));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m21(), v2, w * m.m31())));
+		float r2 = MathUtils.fma(m.m02(), v0, MathUtils.fma(m.m12(), v1, MathUtils.fma(m.m22(), v2, w * m.m32())));
 		
 		res[0] = r0;
 		res[1] = r1;
@@ -2317,9 +2317,9 @@ public class MatUtils4F
 		
 		float w = isPoint ? 1.0f : 0.0f;
 
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, MathUtils.fma(m[2], v2, w * m[3])));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[6], v2, w * m[7])));
-		float r2 = MathUtils.fma(m[8], v0, MathUtils.fma(m[9], v1, MathUtils.fma(m[10], v2, w * m[11])));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, MathUtils.fma(m[8], v2, w * m[12])));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[9], v2, w * m[13])));
+		float r2 = MathUtils.fma(m[2], v0, MathUtils.fma(m[6], v1, MathUtils.fma(m[10], v2, w * m[14])));
 		
 		res[0] = r0;
 		res[1] = r1;
@@ -2336,9 +2336,9 @@ public class MatUtils4F
 		
 		float w = isPoint ? 1.0f : 0.0f;
 
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, MathUtils.fma(m.m02(), v2, w * m.m03())));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m12(), v2, w * m.m13())));
-		float r2 = MathUtils.fma(m.m20(), v0, MathUtils.fma(m.m21(), v1, MathUtils.fma(m.m22(), v2, w * m.m23())));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, MathUtils.fma(m.m20(), v2, w * m.m30())));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m21(), v2, w * m.m31())));
+		float r2 = MathUtils.fma(m.m02(), v0, MathUtils.fma(m.m12(), v1, MathUtils.fma(m.m22(), v2, w * m.m32())));
 		
 		res[0] = r0;
 		res[1] = r1;
@@ -2355,9 +2355,9 @@ public class MatUtils4F
 		
 		float w = isPoint ? 1.0f : 0.0f;
 
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, MathUtils.fma(m[2], v2, w * m[3])));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[6], v2, w * m[7])));
-		float r2 = MathUtils.fma(m[8], v0, MathUtils.fma(m[9], v1, MathUtils.fma(m[10], v2, w * m[11])));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, MathUtils.fma(m[8], v2, w * m[12])));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[9], v2, w * m[13])));
+		float r2 = MathUtils.fma(m[2], v0, MathUtils.fma(m[6], v1, MathUtils.fma(m[10], v2, w * m[14])));
 		
 		res[0] = r0;
 		res[1] = r1;
@@ -2370,9 +2370,9 @@ public class MatUtils4F
 	{
 		float w = isPoint ? 1.0f : 0.0f;
 
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, MathUtils.fma(m.m02(), v2, w * m.m03())));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m12(), v2, w * m.m13())));
-		float r2 = MathUtils.fma(m.m20(), v0, MathUtils.fma(m.m21(), v1, MathUtils.fma(m.m22(), v2, w * m.m23())));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, MathUtils.fma(m.m20(), v2, w * m.m30())));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m21(), v2, w * m.m31())));
+		float r2 = MathUtils.fma(m.m02(), v0, MathUtils.fma(m.m12(), v1, MathUtils.fma(m.m22(), v2, w * m.m32())));
 		
 		res[0] = r0;
 		res[1] = r1;
@@ -2385,9 +2385,9 @@ public class MatUtils4F
 	{
 		float w = isPoint ? 1.0f : 0.0f;
 
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, MathUtils.fma(m[2], v2, w * m[3])));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[6], v2, w * m[7])));
-		float r2 = MathUtils.fma(m[8], v0, MathUtils.fma(m[9], v1, MathUtils.fma(m[10], v2, w * m[11])));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, MathUtils.fma(m[8], v2, w * m[12])));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[9], v2, w * m[13])));
+		float r2 = MathUtils.fma(m[2], v0, MathUtils.fma(m[6], v1, MathUtils.fma(m[10], v2, w * m[14])));
 		
 		res[0] = r0;
 		res[1] = r1;
@@ -2404,9 +2404,9 @@ public class MatUtils4F
 		
 		float w = isPoint ? 1.0f : 0.0f;
 
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, MathUtils.fma(m.m02(), v2, w * m.m03())));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m12(), v2, w * m.m13())));
-		float r2 = MathUtils.fma(m.m20(), v0, MathUtils.fma(m.m21(), v1, MathUtils.fma(m.m22(), v2, w * m.m23())));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, MathUtils.fma(m.m20(), v2, w * m.m30())));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m21(), v2, w * m.m31())));
+		float r2 = MathUtils.fma(m.m02(), v0, MathUtils.fma(m.m12(), v1, MathUtils.fma(m.m22(), v2, w * m.m32())));
 		
 		res.set(r0, r1, r2);
 
@@ -2421,9 +2421,9 @@ public class MatUtils4F
 		
 		float w = isPoint ? 1.0f : 0.0f;
 
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, MathUtils.fma(m[2], v2, w * m[3])));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[6], v2, w * m[7])));
-		float r2 = MathUtils.fma(m[8], v0, MathUtils.fma(m[9], v1, MathUtils.fma(m[10], v2, w * m[11])));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, MathUtils.fma(m[8], v2, w * m[12])));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[9], v2, w * m[13])));
+		float r2 = MathUtils.fma(m[2], v0, MathUtils.fma(m[6], v1, MathUtils.fma(m[10], v2, w * m[14])));
 
 		res.set(r0, r1, r2);
 		
@@ -2438,9 +2438,9 @@ public class MatUtils4F
 		
 		float w = isPoint ? 1.0f : 0.0f;
 
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, MathUtils.fma(m.m02(), v2, w * m.m03())));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m12(), v2, w * m.m13())));
-		float r2 = MathUtils.fma(m.m20(), v0, MathUtils.fma(m.m21(), v1, MathUtils.fma(m.m22(), v2, w * m.m23())));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, MathUtils.fma(m.m20(), v2, w * m.m30())));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m21(), v2, w * m.m31())));
+		float r2 = MathUtils.fma(m.m02(), v0, MathUtils.fma(m.m12(), v1, MathUtils.fma(m.m22(), v2, w * m.m32())));
 		
 		res.set(r0, r1, r2);
 
@@ -2455,9 +2455,9 @@ public class MatUtils4F
 		
 		float w = isPoint ? 1.0f : 0.0f;
 
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, MathUtils.fma(m[2], v2, w * m[3])));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[6], v2, w * m[7])));
-		float r2 = MathUtils.fma(m[8], v0, MathUtils.fma(m[9], v1, MathUtils.fma(m[10], v2, w * m[11])));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, MathUtils.fma(m[8], v2, w * m[12])));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[9], v2, w * m[13])));
+		float r2 = MathUtils.fma(m[2], v0, MathUtils.fma(m[6], v1, MathUtils.fma(m[10], v2, w * m[14])));
 
 		res.set(r0, r1, r2);
 		
@@ -2468,9 +2468,9 @@ public class MatUtils4F
 	{
 		float w = isPoint ? 1.0f : 0.0f;
 
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, MathUtils.fma(m.m02(), v2, w * m.m03())));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m12(), v2, w * m.m13())));
-		float r2 = MathUtils.fma(m.m20(), v0, MathUtils.fma(m.m21(), v1, MathUtils.fma(m.m22(), v2, w * m.m23())));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, MathUtils.fma(m.m20(), v2, w * m.m30())));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m21(), v2, w * m.m31())));
+		float r2 = MathUtils.fma(m.m02(), v0, MathUtils.fma(m.m12(), v1, MathUtils.fma(m.m22(), v2, w * m.m32())));
 		
 		res.set(r0, r1, r2);
 
@@ -2481,9 +2481,9 @@ public class MatUtils4F
 	{
 		float w = isPoint ? 1.0f : 0.0f;
 
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, MathUtils.fma(m[2], v2, w * m[3])));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[6], v2, w * m[7])));
-		float r2 = MathUtils.fma(m[8], v0, MathUtils.fma(m[9], v1, MathUtils.fma(m[10], v2, w * m[11])));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, MathUtils.fma(m[8], v2, w * m[12])));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[9], v2, w * m[13])));
+		float r2 = MathUtils.fma(m[2], v0, MathUtils.fma(m[6], v1, MathUtils.fma(m[10], v2, w * m[14])));
 
 		res.set(r0, r1, r2);
 		
@@ -2498,9 +2498,9 @@ public class MatUtils4F
 		
 		float w = isPoint ? 1.0f : 0.0f;
 
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, MathUtils.fma(m.m02(), v2, w * m.m03())));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m12(), v2, w * m.m13())));
-		float r2 = MathUtils.fma(m.m20(), v0, MathUtils.fma(m.m21(), v1, MathUtils.fma(m.m22(), v2, w * m.m23())));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, MathUtils.fma(m.m20(), v2, w * m.m30())));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m21(), v2, w * m.m31())));
+		float r2 = MathUtils.fma(m.m02(), v0, MathUtils.fma(m.m12(), v1, MathUtils.fma(m.m22(), v2, w * m.m32())));
 		
 		return func.apply(r0, r1, r2);
 	}
@@ -2513,9 +2513,9 @@ public class MatUtils4F
 		
 		float w = isPoint ? 1.0f : 0.0f;
 
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, MathUtils.fma(m[2], v2, w * m[3])));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[6], v2, w * m[7])));
-		float r2 = MathUtils.fma(m[8], v0, MathUtils.fma(m[9], v1, MathUtils.fma(m[10], v2, w * m[11])));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, MathUtils.fma(m[8], v2, w * m[12])));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[9], v2, w * m[13])));
+		float r2 = MathUtils.fma(m[2], v0, MathUtils.fma(m[6], v1, MathUtils.fma(m[10], v2, w * m[14])));
 
 		return func.apply(r0, r1, r2);
 	}
@@ -2528,9 +2528,9 @@ public class MatUtils4F
 		
 		float w = isPoint ? 1.0f : 0.0f;
 
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, MathUtils.fma(m.m02(), v2, w * m.m03())));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m12(), v2, w * m.m13())));
-		float r2 = MathUtils.fma(m.m20(), v0, MathUtils.fma(m.m21(), v1, MathUtils.fma(m.m22(), v2, w * m.m23())));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, MathUtils.fma(m.m20(), v2, w * m.m30())));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m21(), v2, w * m.m31())));
+		float r2 = MathUtils.fma(m.m02(), v0, MathUtils.fma(m.m12(), v1, MathUtils.fma(m.m22(), v2, w * m.m32())));
 		
 		return func.apply(r0, r1, r2);
 	}
@@ -2543,9 +2543,9 @@ public class MatUtils4F
 		
 		float w = isPoint ? 1.0f : 0.0f;
 
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, MathUtils.fma(m[2], v2, w * m[3])));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[6], v2, w * m[7])));
-		float r2 = MathUtils.fma(m[8], v0, MathUtils.fma(m[9], v1, MathUtils.fma(m[10], v2, w * m[11])));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, MathUtils.fma(m[8], v2, w * m[12])));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[9], v2, w * m[13])));
+		float r2 = MathUtils.fma(m[2], v0, MathUtils.fma(m[6], v1, MathUtils.fma(m[10], v2, w * m[14])));
 
 		return func.apply(r0, r1, r2);
 	}
@@ -2554,9 +2554,9 @@ public class MatUtils4F
 	{
 		float w = isPoint ? 1.0f : 0.0f;
 
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, MathUtils.fma(m.m02(), v2, w * m.m03())));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m12(), v2, w * m.m13())));
-		float r2 = MathUtils.fma(m.m20(), v0, MathUtils.fma(m.m21(), v1, MathUtils.fma(m.m22(), v2, w * m.m23())));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, MathUtils.fma(m.m20(), v2, w * m.m30())));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m21(), v2, w * m.m31())));
+		float r2 = MathUtils.fma(m.m02(), v0, MathUtils.fma(m.m12(), v1, MathUtils.fma(m.m22(), v2, w * m.m32())));
 		
 		return func.apply(r0, r1, r2);
 	}
@@ -2565,9 +2565,9 @@ public class MatUtils4F
 	{
 		float w = isPoint ? 1.0f : 0.0f;
 
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, MathUtils.fma(m[2], v2, w * m[3])));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[6], v2, w * m[7])));
-		float r2 = MathUtils.fma(m[8], v0, MathUtils.fma(m[9], v1, MathUtils.fma(m[10], v2, w * m[11])));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, MathUtils.fma(m[8], v2, w * m[12])));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[9], v2, w * m[13])));
+		float r2 = MathUtils.fma(m[2], v0, MathUtils.fma(m[6], v1, MathUtils.fma(m[10], v2, w * m[14])));
 
 		return func.apply(r0, r1, r2);
 	}
@@ -2578,9 +2578,9 @@ public class MatUtils4F
 		float v1 = v.v1();
 		float v2 = v.v2();
 		
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, MathUtils.fma(m.m02(), v2, m.m03())));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m12(), v2, m.m13())));
-		float r2 = MathUtils.fma(m.m20(), v0, MathUtils.fma(m.m21(), v1, MathUtils.fma(m.m22(), v2, m.m23())));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, MathUtils.fma(m.m20(), v2, m.m30())));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m21(), v2, m.m31())));
+		float r2 = MathUtils.fma(m.m02(), v0, MathUtils.fma(m.m12(), v1, MathUtils.fma(m.m22(), v2, m.m32())));
 
 		res[0] = r0;
 		res[1] = r1;
@@ -2595,9 +2595,9 @@ public class MatUtils4F
 		float v1 = v.v1();
 		float v2 = v.v2();
 		
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, MathUtils.fma(m[2], v2, m[3])));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[6], v2, m[7])));
-		float r2 = MathUtils.fma(m[8], v0, MathUtils.fma(m[9], v1, MathUtils.fma(m[10], v2, m[11])));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, MathUtils.fma(m[8], v2, m[12])));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[9], v2, m[13])));
+		float r2 = MathUtils.fma(m[2], v0, MathUtils.fma(m[6], v1, MathUtils.fma(m[10], v2, m[14])));
 		
 		res[0] = r0;
 		res[1] = r1;
@@ -2612,9 +2612,9 @@ public class MatUtils4F
 		float v1 = v[1];
 		float v2 = v[2];
 		
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, MathUtils.fma(m.m02(), v2, m.m03())));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m12(), v2, m.m13())));
-		float r2 = MathUtils.fma(m.m20(), v0, MathUtils.fma(m.m21(), v1, MathUtils.fma(m.m22(), v2, m.m23())));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, MathUtils.fma(m.m20(), v2, m.m30())));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m21(), v2, m.m31())));
+		float r2 = MathUtils.fma(m.m02(), v0, MathUtils.fma(m.m12(), v1, MathUtils.fma(m.m22(), v2, m.m32())));
 
 		res[0] = r0;
 		res[1] = r1;
@@ -2629,9 +2629,9 @@ public class MatUtils4F
 		float v1 = v[1];
 		float v2 = v[2];
 		
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, MathUtils.fma(m[2], v2, m[3])));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[6], v2, m[7])));
-		float r2 = MathUtils.fma(m[8], v0, MathUtils.fma(m[9], v1, MathUtils.fma(m[10], v2, m[11])));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, MathUtils.fma(m[8], v2, m[12])));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[9], v2, m[13])));
+		float r2 = MathUtils.fma(m[2], v0, MathUtils.fma(m[6], v1, MathUtils.fma(m[10], v2, m[14])));
 		
 		res[0] = r0;
 		res[1] = r1;
@@ -2642,9 +2642,9 @@ public class MatUtils4F
 	
 	public static float[] transformPoint3(float v0, float v1, float v2, IMat4RF m, @ExtractionParam float[] res)
 	{
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, MathUtils.fma(m.m02(), v2, m.m03())));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m12(), v2, m.m13())));
-		float r2 = MathUtils.fma(m.m20(), v0, MathUtils.fma(m.m21(), v1, MathUtils.fma(m.m22(), v2, m.m23())));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, MathUtils.fma(m.m20(), v2, m.m30())));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m21(), v2, m.m31())));
+		float r2 = MathUtils.fma(m.m02(), v0, MathUtils.fma(m.m12(), v1, MathUtils.fma(m.m22(), v2, m.m32())));
 
 		res[0] = r0;
 		res[1] = r1;
@@ -2655,9 +2655,9 @@ public class MatUtils4F
 	
 	public static float[] transformPoint3(float v0, float v1, float v2, float[] m, @ExtractionParam float[] res)
 	{
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, MathUtils.fma(m[2], v2, m[3])));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[6], v2, m[7])));
-		float r2 = MathUtils.fma(m[8], v0, MathUtils.fma(m[9], v1, MathUtils.fma(m[10], v2, m[11])));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, MathUtils.fma(m[8], v2, m[12])));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[9], v2, m[13])));
+		float r2 = MathUtils.fma(m[2], v0, MathUtils.fma(m[6], v1, MathUtils.fma(m[10], v2, m[14])));
 		
 		res[0] = r0;
 		res[1] = r1;
@@ -2672,9 +2672,9 @@ public class MatUtils4F
 		float v1 = v.v1();
 		float v2 = v.v2();
 		
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, MathUtils.fma(m.m02(), v2, m.m03())));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m12(), v2, m.m13())));
-		float r2 = MathUtils.fma(m.m20(), v0, MathUtils.fma(m.m21(), v1, MathUtils.fma(m.m22(), v2, m.m23())));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, MathUtils.fma(m.m20(), v2, m.m30())));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m21(), v2, m.m31())));
+		float r2 = MathUtils.fma(m.m02(), v0, MathUtils.fma(m.m12(), v1, MathUtils.fma(m.m22(), v2, m.m32())));
 		
 		res.set(r0, r1, r2);
 
@@ -2687,9 +2687,9 @@ public class MatUtils4F
 		float v1 = v.v1();
 		float v2 = v.v2();
 		
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, MathUtils.fma(m[2], v2, m[3])));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[6], v2, m[7])));
-		float r2 = MathUtils.fma(m[8], v0, MathUtils.fma(m[9], v1, MathUtils.fma(m[10], v2, m[11])));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, MathUtils.fma(m[8], v2, m[12])));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[9], v2, m[13])));
+		float r2 = MathUtils.fma(m[2], v0, MathUtils.fma(m[6], v1, MathUtils.fma(m[10], v2, m[14])));
 		
 		res.set(r0, r1, r2);
 
@@ -2702,9 +2702,9 @@ public class MatUtils4F
 		float v1 = v[1];
 		float v2 = v[2];
 		
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, MathUtils.fma(m.m02(), v2, m.m03())));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m12(), v2, m.m13())));
-		float r2 = MathUtils.fma(m.m20(), v0, MathUtils.fma(m.m21(), v1, MathUtils.fma(m.m22(), v2, m.m23())));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, MathUtils.fma(m.m20(), v2, m.m30())));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m21(), v2, m.m31())));
+		float r2 = MathUtils.fma(m.m02(), v0, MathUtils.fma(m.m12(), v1, MathUtils.fma(m.m22(), v2, m.m32())));
 		
 		res.set(r0, r1, r2);
 
@@ -2717,9 +2717,9 @@ public class MatUtils4F
 		float v1 = v[1];
 		float v2 = v[2];
 		
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, MathUtils.fma(m[2], v2, m[3])));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[6], v2, m[7])));
-		float r2 = MathUtils.fma(m[8], v0, MathUtils.fma(m[9], v1, MathUtils.fma(m[10], v2, m[11])));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, MathUtils.fma(m[8], v2, m[12])));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[9], v2, m[13])));
+		float r2 = MathUtils.fma(m[2], v0, MathUtils.fma(m[6], v1, MathUtils.fma(m[10], v2, m[14])));
 		
 		res.set(r0, r1, r2);
 
@@ -2728,9 +2728,9 @@ public class MatUtils4F
 	
 	public static <T extends ITup3WF> T transformPoint3(float v0, float v1, float v2, IMat4RF m, @ExtractionParam T res)
 	{
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, MathUtils.fma(m.m02(), v2, m.m03())));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m12(), v2, m.m13())));
-		float r2 = MathUtils.fma(m.m20(), v0, MathUtils.fma(m.m21(), v1, MathUtils.fma(m.m22(), v2, m.m23())));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, MathUtils.fma(m.m20(), v2, m.m30())));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m21(), v2, m.m31())));
+		float r2 = MathUtils.fma(m.m02(), v0, MathUtils.fma(m.m12(), v1, MathUtils.fma(m.m22(), v2, m.m32())));
 		
 		res.set(r0, r1, r2);
 
@@ -2739,9 +2739,9 @@ public class MatUtils4F
 	
 	public static <T extends ITup3WF> T transformPoint3(float v0, float v1,float v2, float[] m, @ExtractionParam T res)
 	{
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, MathUtils.fma(m[2], v2, m[3])));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[6], v2, m[7])));
-		float r2 = MathUtils.fma(m[8], v0, MathUtils.fma(m[9], v1, MathUtils.fma(m[10], v2, m[11])));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, MathUtils.fma(m[8], v2, m[12])));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[9], v2, m[13])));
+		float r2 = MathUtils.fma(m[2], v0, MathUtils.fma(m[6], v1, MathUtils.fma(m[10], v2, m[14])));
 		
 		res.set(r0, r1, r2);
 
@@ -2754,9 +2754,9 @@ public class MatUtils4F
 		float v1 = v.v1();
 		float v2 = v.v2();
 		
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, MathUtils.fma(m.m02(), v2, m.m03())));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m12(), v2, m.m13())));
-		float r2 = MathUtils.fma(m.m20(), v0, MathUtils.fma(m.m21(), v1, MathUtils.fma(m.m22(), v2, m.m23())));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, MathUtils.fma(m.m20(), v2, m.m30())));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m21(), v2, m.m31())));
+		float r2 = MathUtils.fma(m.m02(), v0, MathUtils.fma(m.m12(), v1, MathUtils.fma(m.m22(), v2, m.m32())));
 		
 		return func.apply(r0, r1, r2);
 	}
@@ -2767,9 +2767,9 @@ public class MatUtils4F
 		float v1 = v.v1();
 		float v2 = v.v2();
 		
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, MathUtils.fma(m[2], v2, m[3])));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[6], v2, m[7])));
-		float r2 = MathUtils.fma(m[8], v0, MathUtils.fma(m[9], v1, MathUtils.fma(m[10], v2, m[11])));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, MathUtils.fma(m[8], v2, m[12])));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[9], v2, m[13])));
+		float r2 = MathUtils.fma(m[2], v0, MathUtils.fma(m[6], v1, MathUtils.fma(m[10], v2, m[14])));
 		
 		return func.apply(r0, r1, r2);
 	}
@@ -2780,9 +2780,9 @@ public class MatUtils4F
 		float v1 = v[1];
 		float v2 = v[2];
 		
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, MathUtils.fma(m.m02(), v2, m.m03())));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m12(), v2, m.m13())));
-		float r2 = MathUtils.fma(m.m20(), v0, MathUtils.fma(m.m21(), v1, MathUtils.fma(m.m22(), v2, m.m23())));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, MathUtils.fma(m.m20(), v2, m.m30())));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m21(), v2, m.m31())));
+		float r2 = MathUtils.fma(m.m02(), v0, MathUtils.fma(m.m12(), v1, MathUtils.fma(m.m22(), v2, m.m32())));
 		
 		return func.apply(r0, r1, r2);
 	}
@@ -2793,27 +2793,27 @@ public class MatUtils4F
 		float v1 = v[1];
 		float v2 = v[2];
 		
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, MathUtils.fma(m[2], v2, m[3])));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[6], v2, m[7])));
-		float r2 = MathUtils.fma(m[8], v0, MathUtils.fma(m[9], v1, MathUtils.fma(m[10], v2, m[11])));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, MathUtils.fma(m[8], v2, m[12])));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[9], v2, m[13])));
+		float r2 = MathUtils.fma(m[2], v0, MathUtils.fma(m[6], v1, MathUtils.fma(m[10], v2, m[14])));
 		
 		return func.apply(r0, r1, r2);
 	}
 	
 	public static <T> T transformPoint3Func(float v0, float v1, float v2, IMat4RF m, IFunc3F<T> func)
 	{
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, MathUtils.fma(m.m02(), v2, m.m03())));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m12(), v2, m.m13())));
-		float r2 = MathUtils.fma(m.m20(), v0, MathUtils.fma(m.m21(), v1, MathUtils.fma(m.m22(), v2, m.m23())));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, MathUtils.fma(m.m20(), v2, m.m30())));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m21(), v2, m.m31())));
+		float r2 = MathUtils.fma(m.m02(), v0, MathUtils.fma(m.m12(), v1, MathUtils.fma(m.m22(), v2, m.m32())));
 		
 		return func.apply(r0, r1, r2);
 	}
 	
 	public static <T> T transformPoint3Func(float v0, float v1, float v2, float[] m, IFunc3F<T> func)
 	{
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, MathUtils.fma(m[2], v2, m[3])));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[6], v2, m[7])));
-		float r2 = MathUtils.fma(m[8], v0, MathUtils.fma(m[9], v1, MathUtils.fma(m[10], v2, m[11])));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, MathUtils.fma(m[8], v2, m[12])));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[9], v2, m[13])));
+		float r2 = MathUtils.fma(m[2], v0, MathUtils.fma(m[6], v1, MathUtils.fma(m[10], v2, m[14])));
 		
 		return func.apply(r0, r1, r2);
 	}
@@ -2824,9 +2824,9 @@ public class MatUtils4F
 		float v1 = v.v1();
 		float v2 = v.v2();
 		
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, m.m02() * v2));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, m.m12() * v2));
-		float r2 = MathUtils.fma(m.m20(), v0, MathUtils.fma(m.m21(), v1, m.m22() * v2));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, m.m20() * v2));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, m.m21() * v2));
+		float r2 = MathUtils.fma(m.m02(), v0, MathUtils.fma(m.m12(), v1, m.m22() * v2));
 		
 		res[0] = r0;
 		res[1] = r1;
@@ -2841,9 +2841,9 @@ public class MatUtils4F
 		float v1 = v.v1();
 		float v2 = v.v2();
 		
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, m[2] * v2));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, m[6] * v2));
-		float r2 = MathUtils.fma(m[8], v0, MathUtils.fma(m[9], v1, m[10] * v2));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, m[8] * v2));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, m[9] * v2));
+		float r2 = MathUtils.fma(m[2], v0, MathUtils.fma(m[6], v1, m[10] * v2));
 		
 		res[0] = r0;
 		res[1] = r1;
@@ -2858,9 +2858,9 @@ public class MatUtils4F
 		float v1 = v[1];
 		float v2 = v[2];
 		
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, m.m02() * v2));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, m.m12() * v2));
-		float r2 = MathUtils.fma(m.m20(), v0, MathUtils.fma(m.m21(), v1, m.m22() * v2));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, m.m20() * v2));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, m.m21() * v2));
+		float r2 = MathUtils.fma(m.m02(), v0, MathUtils.fma(m.m12(), v1, m.m22() * v2));
 		
 		res[0] = r0;
 		res[1] = r1;
@@ -2875,9 +2875,9 @@ public class MatUtils4F
 		float v1 = v[1];
 		float v2 = v[2];
 		
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, m[2] * v2));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, m[6] * v2));
-		float r2 = MathUtils.fma(m[8], v0, MathUtils.fma(m[9], v1, m[10] * v2));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, m[8] * v2));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, m[9] * v2));
+		float r2 = MathUtils.fma(m[2], v0, MathUtils.fma(m[6], v1, m[10] * v2));
 		
 		res[0] = r0;
 		res[1] = r1;
@@ -2888,9 +2888,9 @@ public class MatUtils4F
 	
 	public static float[] transformVec3(float v0, float v1, float v2, IMat4RF m, float[] res)
 	{
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, m.m02() * v2));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, m.m12() * v2));
-		float r2 = MathUtils.fma(m.m20(), v0, MathUtils.fma(m.m21(), v1, m.m22() * v2));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, m.m20() * v2));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, m.m21() * v2));
+		float r2 = MathUtils.fma(m.m02(), v0, MathUtils.fma(m.m12(), v1, m.m22() * v2));
 		
 		res[0] = r0;
 		res[1] = r1;
@@ -2901,9 +2901,9 @@ public class MatUtils4F
 	
 	public static float[] transformVec3(float v0, float v1, float v2, float[] m, float[] res)
 	{
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, m[2] * v2));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, m[6] * v2));
-		float r2 = MathUtils.fma(m[8], v0, MathUtils.fma(m[9], v1, m[10] * v2));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, m[8] * v2));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, m[9] * v2));
+		float r2 = MathUtils.fma(m[2], v0, MathUtils.fma(m[6], v1, m[10] * v2));
 		
 		res[0] = r0;
 		res[1] = r1;
@@ -2918,9 +2918,9 @@ public class MatUtils4F
 		float v1 = v.v1();
 		float v2 = v.v2();
 		
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, m.m02() * v2));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, m.m12() * v2));
-		float r2 = MathUtils.fma(m.m20(), v0, MathUtils.fma(m.m21(), v1, m.m22() * v2));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, m.m20() * v2));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, m.m21() * v2));
+		float r2 = MathUtils.fma(m.m02(), v0, MathUtils.fma(m.m12(), v1, m.m22() * v2));
 		
 		res.set(r0, r1, r2);
 
@@ -2933,9 +2933,9 @@ public class MatUtils4F
 		float v1 = v.v1();
 		float v2 = v.v2();
 		
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, m[2] * v2));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, m[6] * v2));
-		float r2 = MathUtils.fma(m[8], v0, MathUtils.fma(m[9], v1, m[10] * v2));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, m[8] * v2));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, m[9] * v2));
+		float r2 = MathUtils.fma(m[2], v0, MathUtils.fma(m[6], v1, m[10] * v2));
 		
 		res.set(r0, r1, r2);
 
@@ -2948,9 +2948,9 @@ public class MatUtils4F
 		float v1 = v[1];
 		float v2 = v[2];
 		
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, m.m02() * v2));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, m.m12() * v2));
-		float r2 = MathUtils.fma(m.m20(), v0, MathUtils.fma(m.m21(), v1, m.m22() * v2));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, m.m20() * v2));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, m.m21() * v2));
+		float r2 = MathUtils.fma(m.m02(), v0, MathUtils.fma(m.m12(), v1, m.m22() * v2));
 		
 		res.set(r0, r1, r2);
 
@@ -2963,9 +2963,9 @@ public class MatUtils4F
 		float v1 = v[1];
 		float v2 = v[2];
 		
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, m[2] * v2));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, m[6] * v2));
-		float r2 = MathUtils.fma(m[8], v0, MathUtils.fma(m[9], v1, m[10] * v2));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, m[8] * v2));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, m[9] * v2));
+		float r2 = MathUtils.fma(m[2], v0, MathUtils.fma(m[6], v1, m[10] * v2));
 		
 		res.set(r0, r1, r2);
 
@@ -2974,9 +2974,9 @@ public class MatUtils4F
 	
 	public static <T extends ITup3WF> T transformVec3(float v0, float v1, float v2, IMat4RF m, @ExtractionParam T res)
 	{
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, m.m02() * v2));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, m.m12() * v2));
-		float r2 = MathUtils.fma(m.m20(), v0, MathUtils.fma(m.m21(), v1, m.m22() * v2));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, m.m20() * v2));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, m.m21() * v2));
+		float r2 = MathUtils.fma(m.m02(), v0, MathUtils.fma(m.m12(), v1, m.m22() * v2));
 		
 		res.set(r0, r1, r2);
 
@@ -2985,9 +2985,9 @@ public class MatUtils4F
 	
 	public static <T extends ITup3WF> T transformVec3(float v0, float v1, float v2, float[] m, @ExtractionParam T res)
 	{
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, m[2] * v2));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, m[6] * v2));
-		float r2 = MathUtils.fma(m[8], v0, MathUtils.fma(m[9], v1, m[10] * v2));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, m[8] * v2));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, m[9] * v2));
+		float r2 = MathUtils.fma(m[2], v0, MathUtils.fma(m[6], v1, m[10] * v2));
 		
 		res.set(r0, r1, r2);
 
@@ -3000,9 +3000,9 @@ public class MatUtils4F
 		float v1 = v.v1();
 		float v2 = v.v2();
 		
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, m.m02() * v2));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, m.m12() * v2));
-		float r2 = MathUtils.fma(m.m20(), v0, MathUtils.fma(m.m21(), v1, m.m22() * v2));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, m.m20() * v2));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, m.m21() * v2));
+		float r2 = MathUtils.fma(m.m02(), v0, MathUtils.fma(m.m12(), v1, m.m22() * v2));
 		
 		return func.apply(r0, r1, r2);
 	}
@@ -3013,9 +3013,9 @@ public class MatUtils4F
 		float v1 = v.v1();
 		float v2 = v.v2();
 		
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, m[2] * v2));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, m[6] * v2));
-		float r2 = MathUtils.fma(m[8], v0, MathUtils.fma(m[9], v1, m[10] * v2));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, m[8] * v2));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, m[9] * v2));
+		float r2 = MathUtils.fma(m[2], v0, MathUtils.fma(m[6], v1, m[10] * v2));
 		
 		return func.apply(r0, r1, r2);
 	}
@@ -3026,9 +3026,9 @@ public class MatUtils4F
 		float v1 = v[1];
 		float v2 = v[2];
 		
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, m.m02() * v2));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, m.m12() * v2));
-		float r2 = MathUtils.fma(m.m20(), v0, MathUtils.fma(m.m21(), v1, m.m22() * v2));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, m.m20() * v2));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, m.m21() * v2));
+		float r2 = MathUtils.fma(m.m02(), v0, MathUtils.fma(m.m12(), v1, m.m22() * v2));
 		
 		return func.apply(r0, r1, r2);
 	}
@@ -3039,27 +3039,27 @@ public class MatUtils4F
 		float v1 = v[1];
 		float v2 = v[2];
 		
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, m[2] * v2));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, m[6] * v2));
-		float r2 = MathUtils.fma(m[8], v0, MathUtils.fma(m[9], v1, m[10] * v2));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, m[8] * v2));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, m[9] * v2));
+		float r2 = MathUtils.fma(m[2], v0, MathUtils.fma(m[6], v1, m[10] * v2));
 		
 		return func.apply(r0, r1, r2);
 	}
 	
 	public static <T> T transformVec3Func(float v0, float v1, float v2, IMat4RF m, IFunc3F<T> func)
 	{
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, m.m02() * v2));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, m.m12() * v2));
-		float r2 = MathUtils.fma(m.m20(), v0, MathUtils.fma(m.m21(), v1, m.m22() * v2));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, m.m20() * v2));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, m.m21() * v2));
+		float r2 = MathUtils.fma(m.m02(), v0, MathUtils.fma(m.m12(), v1, m.m22() * v2));
 		
 		return func.apply(r0, r1, r2);
 	}
 	
 	public static <T> T transformVec3Func(float v0, float v1, float v2, float[] m, IFunc3F<T> func)
 	{
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, m[2] * v2));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, m[6] * v2));
-		float r2 = MathUtils.fma(m[8], v0, MathUtils.fma(m[9], v1, m[10] * v2));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, m[8] * v2));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, m[9] * v2));
+		float r2 = MathUtils.fma(m[2], v0, MathUtils.fma(m[6], v1, m[10] * v2));
 		
 		return func.apply(r0, r1, r2);
 	}
@@ -3071,10 +3071,10 @@ public class MatUtils4F
 		float v2 = v.v2();
 		float v3 = v.v3();
 		
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, MathUtils.fma(m.m02(), v2, m.m03() * v3)));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m12(), v2, m.m13() * v3)));
-		float r2 = MathUtils.fma(m.m20(), v0, MathUtils.fma(m.m21(), v1, MathUtils.fma(m.m22(), v2, m.m23() * v3)));
-		float r3 = MathUtils.fma(m.m30(), v0, MathUtils.fma(m.m31(), v1, MathUtils.fma(m.m32(), v2, m.m33() * v3)));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, MathUtils.fma(m.m20(), v2, m.m30() * v3)));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m21(), v2, m.m31() * v3)));
+		float r2 = MathUtils.fma(m.m02(), v0, MathUtils.fma(m.m12(), v1, MathUtils.fma(m.m22(), v2, m.m32() * v3)));
+		float r3 = MathUtils.fma(m.m03(), v0, MathUtils.fma(m.m13(), v1, MathUtils.fma(m.m23(), v2, m.m33() * v3)));
 
 		res[0] = r0;
 		res[1] = r1;
@@ -3091,10 +3091,10 @@ public class MatUtils4F
 		float v2 = v.v2();
 		float v3 = v.v3();
 		
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, MathUtils.fma(m[2], v2, m[3] * v3)));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[6], v2, m[7] * v3)));
-		float r2 = MathUtils.fma(m[8], v0, MathUtils.fma(m[9], v1, MathUtils.fma(m[10], v2, m[11] * v3)));
-		float r3 = MathUtils.fma(m[12], v0, MathUtils.fma(m[13], v1, MathUtils.fma(m[14], v2, m[15] * v3)));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, MathUtils.fma(m[8], v2, m[12] * v3)));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[9], v2, m[13] * v3)));
+		float r2 = MathUtils.fma(m[2], v0, MathUtils.fma(m[6], v1, MathUtils.fma(m[10], v2, m[14] * v3)));
+		float r3 = MathUtils.fma(m[3], v0, MathUtils.fma(m[7], v1, MathUtils.fma(m[11], v2, m[15] * v3)));
 		
 		res[0] = r0;
 		res[1] = r1;
@@ -3111,10 +3111,10 @@ public class MatUtils4F
 		float v2 = v[2];
 		float v3 = v[3];
 		
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, MathUtils.fma(m.m02(), v2, m.m03() * v3)));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m12(), v2, m.m13() * v3)));
-		float r2 = MathUtils.fma(m.m20(), v0, MathUtils.fma(m.m21(), v1, MathUtils.fma(m.m22(), v2, m.m23() * v3)));
-		float r3 = MathUtils.fma(m.m30(), v0, MathUtils.fma(m.m31(), v1, MathUtils.fma(m.m32(), v2, m.m33() * v3)));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, MathUtils.fma(m.m20(), v2, m.m30() * v3)));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m21(), v2, m.m31() * v3)));
+		float r2 = MathUtils.fma(m.m02(), v0, MathUtils.fma(m.m12(), v1, MathUtils.fma(m.m22(), v2, m.m32() * v3)));
+		float r3 = MathUtils.fma(m.m03(), v0, MathUtils.fma(m.m13(), v1, MathUtils.fma(m.m23(), v2, m.m33() * v3)));
 
 		
 		res[0] = r0;
@@ -3132,10 +3132,10 @@ public class MatUtils4F
 		float v2 = v[2];
 		float v3 = v[3];
 		
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, MathUtils.fma(m[2], v2, m[3] * v3)));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[6], v2, m[7] * v3)));
-		float r2 = MathUtils.fma(m[8], v0, MathUtils.fma(m[9], v1, MathUtils.fma(m[10], v2, m[11] * v3)));
-		float r3 = MathUtils.fma(m[12], v0, MathUtils.fma(m[13], v1, MathUtils.fma(m[14], v2, m[15] * v3)));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, MathUtils.fma(m[8], v2, m[12] * v3)));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[9], v2, m[13] * v3)));
+		float r2 = MathUtils.fma(m[2], v0, MathUtils.fma(m[6], v1, MathUtils.fma(m[10], v2, m[14] * v3)));
+		float r3 = MathUtils.fma(m[3], v0, MathUtils.fma(m[7], v1, MathUtils.fma(m[11], v2, m[15] * v3)));
 		
 		res[0] = r0;
 		res[1] = r1;
@@ -3147,10 +3147,10 @@ public class MatUtils4F
 	
 	public static float[] transform4(float v0, float v1, float v2, float v3, IMat4RF m, @ExtractionParam float[] res)
 	{
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, MathUtils.fma(m.m02(), v2, m.m03() * v3)));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m12(), v2, m.m13() * v3)));
-		float r2 = MathUtils.fma(m.m20(), v0, MathUtils.fma(m.m21(), v1, MathUtils.fma(m.m22(), v2, m.m23() * v3)));
-		float r3 = MathUtils.fma(m.m30(), v0, MathUtils.fma(m.m31(), v1, MathUtils.fma(m.m32(), v2, m.m33() * v3)));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, MathUtils.fma(m.m20(), v2, m.m30() * v3)));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m21(), v2, m.m31() * v3)));
+		float r2 = MathUtils.fma(m.m02(), v0, MathUtils.fma(m.m12(), v1, MathUtils.fma(m.m22(), v2, m.m32() * v3)));
+		float r3 = MathUtils.fma(m.m03(), v0, MathUtils.fma(m.m13(), v1, MathUtils.fma(m.m23(), v2, m.m33() * v3)));
 
 		res[0] = r0;
 		res[1] = r1;
@@ -3162,10 +3162,10 @@ public class MatUtils4F
 	
 	public static float[] transform4(float v0, float v1, float v2, float v3, float[] m, @ExtractionParam float[] res)
 	{
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, MathUtils.fma(m[2], v2, m[3] * v3)));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[6], v2, m[7] * v3)));
-		float r2 = MathUtils.fma(m[8], v0, MathUtils.fma(m[9], v1, MathUtils.fma(m[10], v2, m[11] * v3)));
-		float r3 = MathUtils.fma(m[12], v0, MathUtils.fma(m[13], v1, MathUtils.fma(m[14], v2, m[15] * v3)));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, MathUtils.fma(m[8], v2, m[12] * v3)));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[9], v2, m[13] * v3)));
+		float r2 = MathUtils.fma(m[2], v0, MathUtils.fma(m[6], v1, MathUtils.fma(m[10], v2, m[14] * v3)));
+		float r3 = MathUtils.fma(m[3], v0, MathUtils.fma(m[7], v1, MathUtils.fma(m[11], v2, m[15] * v3)));
 		
 		res[0] = r0;
 		res[1] = r1;
@@ -3182,10 +3182,10 @@ public class MatUtils4F
 		float v2 = v.v2();
 		float v3 = v.v3();
 		
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, MathUtils.fma(m.m02(), v2, m.m03() * v3)));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m12(), v2, m.m13() * v3)));
-		float r2 = MathUtils.fma(m.m20(), v0, MathUtils.fma(m.m21(), v1, MathUtils.fma(m.m22(), v2, m.m23() * v3)));
-		float r3 = MathUtils.fma(m.m30(), v0, MathUtils.fma(m.m31(), v1, MathUtils.fma(m.m32(), v2, m.m33() * v3)));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, MathUtils.fma(m.m20(), v2, m.m30() * v3)));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m21(), v2, m.m31() * v3)));
+		float r2 = MathUtils.fma(m.m02(), v0, MathUtils.fma(m.m12(), v1, MathUtils.fma(m.m22(), v2, m.m32() * v3)));
+		float r3 = MathUtils.fma(m.m03(), v0, MathUtils.fma(m.m13(), v1, MathUtils.fma(m.m23(), v2, m.m33() * v3)));
 		
 		res.set(r0, r1, r2, r3);
 
@@ -3199,10 +3199,10 @@ public class MatUtils4F
 		float v2 = v.v2();
 		float v3 = v.v3();
 		
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, MathUtils.fma(m[2], v2, m[3] * v3)));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[6], v2, m[7] * v3)));
-		float r2 = MathUtils.fma(m[8], v0, MathUtils.fma(m[9], v1, MathUtils.fma(m[10], v2, m[11] * v3)));
-		float r3 = MathUtils.fma(m[12], v0, MathUtils.fma(m[13], v1, MathUtils.fma(m[14], v2, m[15] * v3)));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, MathUtils.fma(m[8], v2, m[12] * v3)));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[9], v2, m[13] * v3)));
+		float r2 = MathUtils.fma(m[2], v0, MathUtils.fma(m[6], v1, MathUtils.fma(m[10], v2, m[14] * v3)));
+		float r3 = MathUtils.fma(m[3], v0, MathUtils.fma(m[7], v1, MathUtils.fma(m[11], v2, m[15] * v3)));
 		
 		res.set(r0, r1, r2, r3);
 
@@ -3216,10 +3216,10 @@ public class MatUtils4F
 		float v2 = v[2];
 		float v3 = v[3];
 		
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, MathUtils.fma(m.m02(), v2, m.m03() * v3)));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m12(), v2, m.m13() * v3)));
-		float r2 = MathUtils.fma(m.m20(), v0, MathUtils.fma(m.m21(), v1, MathUtils.fma(m.m22(), v2, m.m23() * v3)));
-		float r3 = MathUtils.fma(m.m30(), v0, MathUtils.fma(m.m31(), v1, MathUtils.fma(m.m32(), v2, m.m33() * v3)));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, MathUtils.fma(m.m20(), v2, m.m30() * v3)));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m21(), v2, m.m31() * v3)));
+		float r2 = MathUtils.fma(m.m02(), v0, MathUtils.fma(m.m12(), v1, MathUtils.fma(m.m22(), v2, m.m32() * v3)));
+		float r3 = MathUtils.fma(m.m03(), v0, MathUtils.fma(m.m13(), v1, MathUtils.fma(m.m23(), v2, m.m33() * v3)));
 		
 		res.set(r0, r1, r2, r3);
 
@@ -3233,10 +3233,10 @@ public class MatUtils4F
 		float v2 = v[2];
 		float v3 = v[3];
 		
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, MathUtils.fma(m[2], v2, m[3] * v3)));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[6], v2, m[7] * v3)));
-		float r2 = MathUtils.fma(m[8], v0, MathUtils.fma(m[9], v1, MathUtils.fma(m[10], v2, m[11] * v3)));
-		float r3 = MathUtils.fma(m[12], v0, MathUtils.fma(m[13], v1, MathUtils.fma(m[14], v2, m[15] * v3)));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, MathUtils.fma(m[8], v2, m[12] * v3)));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[9], v2, m[13] * v3)));
+		float r2 = MathUtils.fma(m[2], v0, MathUtils.fma(m[6], v1, MathUtils.fma(m[10], v2, m[14] * v3)));
+		float r3 = MathUtils.fma(m[3], v0, MathUtils.fma(m[7], v1, MathUtils.fma(m[11], v2, m[15] * v3)));
 		
 		res.set(r0, r1, r2, r3);
 
@@ -3245,10 +3245,10 @@ public class MatUtils4F
 	
 	public static <T extends ITup4WF> T transform4(float v0, float v1, float v2, float v3, IMat4RF m, @ExtractionParam T res)
 	{
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, MathUtils.fma(m.m02(), v2, m.m03() * v3)));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m12(), v2, m.m13() * v3)));
-		float r2 = MathUtils.fma(m.m20(), v0, MathUtils.fma(m.m21(), v1, MathUtils.fma(m.m22(), v2, m.m23() * v3)));
-		float r3 = MathUtils.fma(m.m30(), v0, MathUtils.fma(m.m31(), v1, MathUtils.fma(m.m32(), v2, m.m33() * v3)));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, MathUtils.fma(m.m20(), v2, m.m30() * v3)));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m21(), v2, m.m31() * v3)));
+		float r2 = MathUtils.fma(m.m02(), v0, MathUtils.fma(m.m12(), v1, MathUtils.fma(m.m22(), v2, m.m32() * v3)));
+		float r3 = MathUtils.fma(m.m03(), v0, MathUtils.fma(m.m13(), v1, MathUtils.fma(m.m23(), v2, m.m33() * v3)));
 		
 		res.set(r0, r1, r2, r3);
 
@@ -3257,10 +3257,10 @@ public class MatUtils4F
 	
 	public static <T extends ITup4WF> T transform4(float v0, float v1,float v2, float v3, float[] m, @ExtractionParam T res)
 	{
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, MathUtils.fma(m[2], v2, m[3] * v3)));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[6], v2, m[7] * v3)));
-		float r2 = MathUtils.fma(m[8], v0, MathUtils.fma(m[9], v1, MathUtils.fma(m[10], v2, m[11] * v3)));
-		float r3 = MathUtils.fma(m[12], v0, MathUtils.fma(m[13], v1, MathUtils.fma(m[14], v2, m[15] * v3)));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, MathUtils.fma(m[8], v2, m[12] * v3)));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[9], v2, m[13] * v3)));
+		float r2 = MathUtils.fma(m[2], v0, MathUtils.fma(m[6], v1, MathUtils.fma(m[10], v2, m[14] * v3)));
+		float r3 = MathUtils.fma(m[3], v0, MathUtils.fma(m[7], v1, MathUtils.fma(m[11], v2, m[15] * v3)));
 		
 		res.set(r0, r1, r2, r3);
 
@@ -3274,10 +3274,10 @@ public class MatUtils4F
 		float v2 = v.v2();
 		float v3 = v.v3();
 		
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, MathUtils.fma(m.m02(), v2, m.m03() * v3)));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m12(), v2, m.m13() * v3)));
-		float r2 = MathUtils.fma(m.m20(), v0, MathUtils.fma(m.m21(), v1, MathUtils.fma(m.m22(), v2, m.m23() * v3)));
-		float r3 = MathUtils.fma(m.m30(), v0, MathUtils.fma(m.m31(), v1, MathUtils.fma(m.m32(), v2, m.m33() * v3)));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, MathUtils.fma(m.m20(), v2, m.m30() * v3)));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m21(), v2, m.m31() * v3)));
+		float r2 = MathUtils.fma(m.m02(), v0, MathUtils.fma(m.m12(), v1, MathUtils.fma(m.m22(), v2, m.m32() * v3)));
+		float r3 = MathUtils.fma(m.m03(), v0, MathUtils.fma(m.m13(), v1, MathUtils.fma(m.m23(), v2, m.m33() * v3)));
 		
 		return func.apply(r0, r1, r2, r3);
 	}
@@ -3289,10 +3289,10 @@ public class MatUtils4F
 		float v2 = v.v2();
 		float v3 = v.v3();
 		
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, MathUtils.fma(m[2], v2, m[3] * v3)));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[6], v2, m[7] * v3)));
-		float r2 = MathUtils.fma(m[8], v0, MathUtils.fma(m[9], v1, MathUtils.fma(m[10], v2, m[11] * v3)));
-		float r3 = MathUtils.fma(m[12], v0, MathUtils.fma(m[13], v1, MathUtils.fma(m[14], v2, m[15] * v3)));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, MathUtils.fma(m[8], v2, m[12] * v3)));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[9], v2, m[13] * v3)));
+		float r2 = MathUtils.fma(m[2], v0, MathUtils.fma(m[6], v1, MathUtils.fma(m[10], v2, m[14] * v3)));
+		float r3 = MathUtils.fma(m[3], v0, MathUtils.fma(m[7], v1, MathUtils.fma(m[11], v2, m[15] * v3)));
 		
 		return func.apply(r0, r1, r2, r3);
 	}
@@ -3304,10 +3304,10 @@ public class MatUtils4F
 		float v2 = v[2];
 		float v3 = v[3];
 		
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, MathUtils.fma(m.m02(), v2, m.m03() * v3)));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m12(), v2, m.m13() * v3)));
-		float r2 = MathUtils.fma(m.m20(), v0, MathUtils.fma(m.m21(), v1, MathUtils.fma(m.m22(), v2, m.m23() * v3)));
-		float r3 = MathUtils.fma(m.m30(), v0, MathUtils.fma(m.m31(), v1, MathUtils.fma(m.m32(), v2, m.m33() * v3)));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, MathUtils.fma(m.m20(), v2, m.m30() * v3)));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m21(), v2, m.m31() * v3)));
+		float r2 = MathUtils.fma(m.m02(), v0, MathUtils.fma(m.m12(), v1, MathUtils.fma(m.m22(), v2, m.m32() * v3)));
+		float r3 = MathUtils.fma(m.m03(), v0, MathUtils.fma(m.m13(), v1, MathUtils.fma(m.m23(), v2, m.m33() * v3)));
 		
 		return func.apply(r0, r1, r2, r3);
 	}
@@ -3319,30 +3319,30 @@ public class MatUtils4F
 		float v2 = v[2];
 		float v3 = v[3];
 		
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, MathUtils.fma(m[2], v2, m[3] * v3)));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[6], v2, m[7] * v3)));
-		float r2 = MathUtils.fma(m[8], v0, MathUtils.fma(m[9], v1, MathUtils.fma(m[10], v2, m[11] * v3)));
-		float r3 = MathUtils.fma(m[12], v0, MathUtils.fma(m[13], v1, MathUtils.fma(m[14], v2, m[15] * v3)));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, MathUtils.fma(m[8], v2, m[12] * v3)));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[9], v2, m[13] * v3)));
+		float r2 = MathUtils.fma(m[2], v0, MathUtils.fma(m[6], v1, MathUtils.fma(m[10], v2, m[14] * v3)));
+		float r3 = MathUtils.fma(m[3], v0, MathUtils.fma(m[7], v1, MathUtils.fma(m[11], v2, m[15] * v3)));
 		
 		return func.apply(r0, r1, r2, r3);
 	}
 	
 	public static <T> T transform4Func(float v0, float v1, float v2, float v3, IMat4RF m, IFunc4F<T> func)
 	{
-		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m01(), v1, MathUtils.fma(m.m02(), v2, m.m03() * v3)));
-		float r1 = MathUtils.fma(m.m10(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m12(), v2, m.m13() * v3)));
-		float r2 = MathUtils.fma(m.m20(), v0, MathUtils.fma(m.m21(), v1, MathUtils.fma(m.m22(), v2, m.m23() * v3)));
-		float r3 = MathUtils.fma(m.m30(), v0, MathUtils.fma(m.m31(), v1, MathUtils.fma(m.m32(), v2, m.m33() * v3)));
+		float r0 = MathUtils.fma(m.m00(), v0, MathUtils.fma(m.m10(), v1, MathUtils.fma(m.m20(), v2, m.m30() * v3)));
+		float r1 = MathUtils.fma(m.m01(), v0, MathUtils.fma(m.m11(), v1, MathUtils.fma(m.m21(), v2, m.m31() * v3)));
+		float r2 = MathUtils.fma(m.m02(), v0, MathUtils.fma(m.m12(), v1, MathUtils.fma(m.m22(), v2, m.m32() * v3)));
+		float r3 = MathUtils.fma(m.m03(), v0, MathUtils.fma(m.m13(), v1, MathUtils.fma(m.m23(), v2, m.m33() * v3)));
 		
 		return func.apply(r0, r1, r2, r3);
 	}
 	
 	public static <T> T transform4Func(float v0, float v1, float v2, float v3, float[] m, IFunc4F<T> func)
 	{
-		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[1], v1, MathUtils.fma(m[2], v2, m[3] * v3)));
-		float r1 = MathUtils.fma(m[4], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[6], v2, m[7] * v3)));
-		float r2 = MathUtils.fma(m[8], v0, MathUtils.fma(m[9], v1, MathUtils.fma(m[10], v2, m[11] * v3)));
-		float r3 = MathUtils.fma(m[12], v0, MathUtils.fma(m[13], v1, MathUtils.fma(m[14], v2, m[15] * v3)));
+		float r0 = MathUtils.fma(m[0], v0, MathUtils.fma(m[4], v1, MathUtils.fma(m[8], v2, m[12] * v3)));
+		float r1 = MathUtils.fma(m[1], v0, MathUtils.fma(m[5], v1, MathUtils.fma(m[9], v2, m[13] * v3)));
+		float r2 = MathUtils.fma(m[2], v0, MathUtils.fma(m[6], v1, MathUtils.fma(m[10], v2, m[14] * v3)));
+		float r3 = MathUtils.fma(m[3], v0, MathUtils.fma(m[7], v1, MathUtils.fma(m[11], v2, m[15] * v3)));
 		
 		return func.apply(r0, r1, r2, r3);
 	}
@@ -5489,9 +5489,9 @@ public class MatUtils4F
 		float av1av2recCosAngle = av1 * av2 * recCosAngle;
 		
 		set(
-			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle - av2 * sinAngle, av0av2recCosAngle + av1 * sinAngle, 0.0f,
-			av0av1recCosAngle + av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle - av0 * sinAngle, 0.0f,
-			av0av2recCosAngle - av1 * sinAngle, av1av2recCosAngle + av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
+			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle + av2 * sinAngle, av0av2recCosAngle - av1 * sinAngle, 0.0f,
+			av0av1recCosAngle - av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle + av0 * sinAngle, 0.0f,
+			av0av2recCosAngle + av1 * sinAngle, av1av2recCosAngle - av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f, res);
 		
 		return res;
@@ -5513,9 +5513,9 @@ public class MatUtils4F
 		float av1av2recCosAngle = av1 * av2 * recCosAngle;
 		
 		set(
-			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle - av2 * sinAngle, av0av2recCosAngle + av1 * sinAngle, 0.0f,
-			av0av1recCosAngle + av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle - av0 * sinAngle, 0.0f,
-			av0av2recCosAngle - av1 * sinAngle, av1av2recCosAngle + av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
+			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle + av2 * sinAngle, av0av2recCosAngle - av1 * sinAngle, 0.0f,
+			av0av1recCosAngle - av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle + av0 * sinAngle, 0.0f,
+			av0av2recCosAngle + av1 * sinAngle, av1av2recCosAngle - av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f, res);
 		
 		return res;
@@ -5533,9 +5533,9 @@ public class MatUtils4F
 		float av1av2recCosAngle = av1 * av2 * recCosAngle;
 		
 		set(
-			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle - av2 * sinAngle, av0av2recCosAngle + av1 * sinAngle, 0.0f,
-			av0av1recCosAngle + av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle - av0 * sinAngle, 0.0f,
-			av0av2recCosAngle - av1 * sinAngle, av1av2recCosAngle + av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
+			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle + av2 * sinAngle, av0av2recCosAngle - av1 * sinAngle, 0.0f,
+			av0av1recCosAngle - av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle + av0 * sinAngle, 0.0f,
+			av0av2recCosAngle + av1 * sinAngle, av1av2recCosAngle - av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f, res);
 		
 		return res;
@@ -5557,9 +5557,9 @@ public class MatUtils4F
 		float av1av2recCosAngle = av1 * av2 * recCosAngle;
 		
 		res.set(
-			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle - av2 * sinAngle, av0av2recCosAngle + av1 * sinAngle, 0.0f,
-			av0av1recCosAngle + av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle - av0 * sinAngle, 0.0f,
-			av0av2recCosAngle - av1 * sinAngle, av1av2recCosAngle + av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
+			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle + av2 * sinAngle, av0av2recCosAngle - av1 * sinAngle, 0.0f,
+			av0av1recCosAngle - av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle + av0 * sinAngle, 0.0f,
+			av0av2recCosAngle + av1 * sinAngle, av1av2recCosAngle - av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 		
 		return res;
@@ -5581,9 +5581,9 @@ public class MatUtils4F
 		float av1av2recCosAngle = av1 * av2 * recCosAngle;
 		
 		res.set(
-			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle - av2 * sinAngle, av0av2recCosAngle + av1 * sinAngle, 0.0f,
-			av0av1recCosAngle + av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle - av0 * sinAngle, 0.0f,
-			av0av2recCosAngle - av1 * sinAngle, av1av2recCosAngle + av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
+			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle + av2 * sinAngle, av0av2recCosAngle - av1 * sinAngle, 0.0f,
+			av0av1recCosAngle - av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle + av0 * sinAngle, 0.0f,
+			av0av2recCosAngle + av1 * sinAngle, av1av2recCosAngle - av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 		
 		return res;
@@ -5601,9 +5601,9 @@ public class MatUtils4F
 		float av1av2recCosAngle = av1 * av2 * recCosAngle;
 		
 		res.set(
-			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle - av2 * sinAngle, av0av2recCosAngle + av1 * sinAngle, 0.0f,
-			av0av1recCosAngle + av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle - av0 * sinAngle, 0.0f,
-			av0av2recCosAngle - av1 * sinAngle, av1av2recCosAngle + av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
+			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle + av2 * sinAngle, av0av2recCosAngle - av1 * sinAngle, 0.0f,
+			av0av1recCosAngle - av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle + av0 * sinAngle, 0.0f,
+			av0av2recCosAngle + av1 * sinAngle, av1av2recCosAngle - av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 		
 		return res;
@@ -5625,9 +5625,9 @@ public class MatUtils4F
 		float av1av2recCosAngle = av1 * av2 * recCosAngle;
 		
 		return func.apply(
-			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle - av2 * sinAngle, av0av2recCosAngle + av1 * sinAngle, 0.0f,
-			av0av1recCosAngle + av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle - av0 * sinAngle, 0.0f,
-			av0av2recCosAngle - av1 * sinAngle, av1av2recCosAngle + av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
+			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle + av2 * sinAngle, av0av2recCosAngle - av1 * sinAngle, 0.0f,
+			av0av1recCosAngle - av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle + av0 * sinAngle, 0.0f,
+			av0av2recCosAngle + av1 * sinAngle, av1av2recCosAngle - av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 	}
 	
@@ -5647,9 +5647,9 @@ public class MatUtils4F
 		float av1av2recCosAngle = av1 * av2 * recCosAngle;
 		
 		return func.apply(
-			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle - av2 * sinAngle, av0av2recCosAngle + av1 * sinAngle, 0.0f,
-			av0av1recCosAngle + av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle - av0 * sinAngle, 0.0f,
-			av0av2recCosAngle - av1 * sinAngle, av1av2recCosAngle + av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
+			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle + av2 * sinAngle, av0av2recCosAngle - av1 * sinAngle, 0.0f,
+			av0av1recCosAngle - av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle + av0 * sinAngle, 0.0f,
+			av0av2recCosAngle + av1 * sinAngle, av1av2recCosAngle - av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 	}
 	
@@ -5665,9 +5665,9 @@ public class MatUtils4F
 		float av1av2recCosAngle = av1 * av2 * recCosAngle;
 		
 		return func.apply(
-			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle - av2 * sinAngle, av0av2recCosAngle + av1 * sinAngle, 0.0f,
-			av0av1recCosAngle + av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle - av0 * sinAngle, 0.0f,
-			av0av2recCosAngle - av1 * sinAngle, av1av2recCosAngle + av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
+			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle + av2 * sinAngle, av0av2recCosAngle - av1 * sinAngle, 0.0f,
+			av0av1recCosAngle - av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle + av0 * sinAngle, 0.0f,
+			av0av2recCosAngle + av1 * sinAngle, av1av2recCosAngle - av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 	}
 	
@@ -5689,9 +5689,9 @@ public class MatUtils4F
 		float av1av2recCosAngle = av1 * av2 * recCosAngle;
 		
 		set(
-			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle - av2 * sinAngle, av0av2recCosAngle + av1 * sinAngle, 0.0f,
-			av0av1recCosAngle + av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle - av0 * sinAngle, 0.0f,
-			av0av2recCosAngle - av1 * sinAngle, av1av2recCosAngle + av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
+			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle + av2 * sinAngle, av0av2recCosAngle - av1 * sinAngle, 0.0f,
+			av0av1recCosAngle - av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle + av0 * sinAngle, 0.0f,
+			av0av2recCosAngle + av1 * sinAngle, av1av2recCosAngle - av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f, res);
 		
 		return res;
@@ -5715,9 +5715,9 @@ public class MatUtils4F
 		float av1av2recCosAngle = av1 * av2 * recCosAngle;
 		
 		set(
-			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle - av2 * sinAngle, av0av2recCosAngle + av1 * sinAngle, 0.0f,
-			av0av1recCosAngle + av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle - av0 * sinAngle, 0.0f,
-			av0av2recCosAngle - av1 * sinAngle, av1av2recCosAngle + av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
+			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle + av2 * sinAngle, av0av2recCosAngle - av1 * sinAngle, 0.0f,
+			av0av1recCosAngle - av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle + av0 * sinAngle, 0.0f,
+			av0av2recCosAngle + av1 * sinAngle, av1av2recCosAngle - av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f, res);
 		
 		return res;
@@ -5737,9 +5737,9 @@ public class MatUtils4F
 		float av1av2recCosAngle = av1 * av2 * recCosAngle;
 		
 		set(
-			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle - av2 * sinAngle, av0av2recCosAngle + av1 * sinAngle, 0.0f,
-			av0av1recCosAngle + av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle - av0 * sinAngle, 0.0f,
-			av0av2recCosAngle - av1 * sinAngle, av1av2recCosAngle + av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
+			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle + av2 * sinAngle, av0av2recCosAngle - av1 * sinAngle, 0.0f,
+			av0av1recCosAngle - av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle + av0 * sinAngle, 0.0f,
+			av0av2recCosAngle + av1 * sinAngle, av1av2recCosAngle - av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f, res);
 		
 		return res;
@@ -5763,9 +5763,9 @@ public class MatUtils4F
 		float av1av2recCosAngle = av1 * av2 * recCosAngle;
 		
 		res.set(
-			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle - av2 * sinAngle, av0av2recCosAngle + av1 * sinAngle, 0.0f,
-			av0av1recCosAngle + av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle - av0 * sinAngle, 0.0f,
-			av0av2recCosAngle - av1 * sinAngle, av1av2recCosAngle + av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
+			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle + av2 * sinAngle, av0av2recCosAngle - av1 * sinAngle, 0.0f,
+			av0av1recCosAngle - av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle + av0 * sinAngle, 0.0f,
+			av0av2recCosAngle + av1 * sinAngle, av1av2recCosAngle - av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 		
 		return res;
@@ -5789,9 +5789,9 @@ public class MatUtils4F
 		float av1av2recCosAngle = av1 * av2 * recCosAngle;
 		
 		res.set(
-			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle - av2 * sinAngle, av0av2recCosAngle + av1 * sinAngle, 0.0f,
-			av0av1recCosAngle + av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle - av0 * sinAngle, 0.0f,
-			av0av2recCosAngle - av1 * sinAngle, av1av2recCosAngle + av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
+			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle + av2 * sinAngle, av0av2recCosAngle - av1 * sinAngle, 0.0f,
+			av0av1recCosAngle - av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle + av0 * sinAngle, 0.0f,
+			av0av2recCosAngle + av1 * sinAngle, av1av2recCosAngle - av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 		
 		return res;
@@ -5811,9 +5811,9 @@ public class MatUtils4F
 		float av1av2recCosAngle = av1 * av2 * recCosAngle;
 		
 		res.set(
-			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle - av2 * sinAngle, av0av2recCosAngle + av1 * sinAngle, 0.0f,
-			av0av1recCosAngle + av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle - av0 * sinAngle, 0.0f,
-			av0av2recCosAngle - av1 * sinAngle, av1av2recCosAngle + av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
+			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle + av2 * sinAngle, av0av2recCosAngle - av1 * sinAngle, 0.0f,
+			av0av1recCosAngle - av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle + av0 * sinAngle, 0.0f,
+			av0av2recCosAngle + av1 * sinAngle, av1av2recCosAngle - av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 		
 		return res;
@@ -5837,9 +5837,9 @@ public class MatUtils4F
 		float av1av2recCosAngle = av1 * av2 * recCosAngle;
 		
 		return func.apply(
-			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle - av2 * sinAngle, av0av2recCosAngle + av1 * sinAngle, 0.0f,
-			av0av1recCosAngle + av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle - av0 * sinAngle, 0.0f,
-			av0av2recCosAngle - av1 * sinAngle, av1av2recCosAngle + av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
+			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle + av2 * sinAngle, av0av2recCosAngle - av1 * sinAngle, 0.0f,
+			av0av1recCosAngle - av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle + av0 * sinAngle, 0.0f,
+			av0av2recCosAngle + av1 * sinAngle, av1av2recCosAngle - av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 	}
 	
@@ -5861,9 +5861,9 @@ public class MatUtils4F
 		float av1av2recCosAngle = av1 * av2 * recCosAngle;
 		
 		return func.apply(
-			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle - av2 * sinAngle, av0av2recCosAngle + av1 * sinAngle, 0.0f,
-			av0av1recCosAngle + av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle - av0 * sinAngle, 0.0f,
-			av0av2recCosAngle - av1 * sinAngle, av1av2recCosAngle + av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
+			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle + av2 * sinAngle, av0av2recCosAngle - av1 * sinAngle, 0.0f,
+			av0av1recCosAngle - av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle + av0 * sinAngle, 0.0f,
+			av0av2recCosAngle + av1 * sinAngle, av1av2recCosAngle - av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 	}
 	
@@ -5879,9 +5879,9 @@ public class MatUtils4F
 		float av1av2recCosAngle = av1 * av2 * recCosAngle;
 		
 		return func.apply(
-			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle - av2 * sinAngle, av0av2recCosAngle + av1 * sinAngle, 0.0f,
-			av0av1recCosAngle + av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle - av0 * sinAngle, 0.0f,
-			av0av2recCosAngle - av1 * sinAngle, av1av2recCosAngle + av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
+			cosAngle + (av0 * av0) * recCosAngle, av0av1recCosAngle + av2 * sinAngle, av0av2recCosAngle - av1 * sinAngle, 0.0f,
+			av0av1recCosAngle - av2 * sinAngle, cosAngle + (av1 * av1) * recCosAngle, av1av2recCosAngle + av0 * sinAngle, 0.0f,
+			av0av2recCosAngle + av1 * sinAngle, av1av2recCosAngle - av0 * sinAngle, cosAngle + (av2 * av2) * recCosAngle, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f);
 	}
 	

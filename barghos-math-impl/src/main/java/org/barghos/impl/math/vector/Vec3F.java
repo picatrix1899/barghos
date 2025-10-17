@@ -4139,56 +4139,56 @@ public class Vec3F implements IVec3WF, IBufferableRF, IBufferableWF
 	
 	/** {@inheritDoc} */
 	@Override
-	public IVec3WF cross(ITup3RF v)
+	public Vec3F cross(ITup3RF v)
 	{
 		return VecUtils3F.cross(this, v, this);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public IVec3WF cross(ITupRF v)
+	public Vec3F cross(ITupRF v)
 	{
 		return VecUtils3F.cross(this, v, this);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public IVec3WF cross(float[] v)
+	public Vec3F cross(float[] v)
 	{
 		return VecUtils3F.cross(this, v, this);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public IVec3WF cross(float x, float y, float z)
+	public Vec3F cross(float x, float y, float z)
 	{
 		return VecUtils3F.cross(this, x, y, z, this);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public IVec3WF crossN(ITup3RF v)
+	public Vec3F crossN(ITup3RF v)
 	{
 		return VecUtils3F.crossFunc(this, v, CTOR);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public IVec3WF crossN(ITupRF v)
+	public Vec3F crossN(ITupRF v)
 	{
 		return VecUtils3F.crossFunc(this, v, CTOR);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public IVec3WF crossN(float[] v)
+	public Vec3F crossN(float[] v)
 	{
 		return VecUtils3F.crossFunc(this, v, CTOR);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public IVec3WF crossN(float x, float y, float z)
+	public Vec3F crossN(float x, float y, float z)
 	{
 		return VecUtils3F.crossFunc(this, x, y, z, CTOR);
 	}
@@ -4251,56 +4251,56 @@ public class Vec3F implements IVec3WF, IBufferableRF, IBufferableWF
 
 	/** {@inheritDoc} */
 	@Override
-	public IVec3WF rCross(ITup3RF v)
+	public Vec3F rCross(ITup3RF v)
 	{
 		return VecUtils3F.cross(v, this, this);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public IVec3WF rCross(ITupRF v)
+	public Vec3F rCross(ITupRF v)
 	{
 		return VecUtils3F.cross(v, this, this);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public IVec3WF rCross(float[] v)
+	public Vec3F rCross(float[] v)
 	{
 		return VecUtils3F.cross(v, this, this);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public IVec3WF rCross(float x, float y, float z)
+	public Vec3F rCross(float x, float y, float z)
 	{
 		return VecUtils3F.cross(x, y, z, this, this);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public IVec3WF rCrossN(ITup3RF v)
+	public Vec3F rCrossN(ITup3RF v)
 	{
 		return VecUtils3F.crossFunc(v, this, CTOR);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public IVec3WF rCrossN(ITupRF v)
+	public Vec3F rCrossN(ITupRF v)
 	{
 		return VecUtils3F.crossFunc(v, this, CTOR);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public IVec3WF rCrossN(float[] v)
+	public Vec3F rCrossN(float[] v)
 	{
 		return VecUtils3F.crossFunc(v, this, CTOR);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public IVec3WF rCrossN(float x, float y, float z)
+	public Vec3F rCrossN(float x, float y, float z)
 	{
 		return VecUtils3F.crossFunc(x, y, z, this, CTOR);
 	}

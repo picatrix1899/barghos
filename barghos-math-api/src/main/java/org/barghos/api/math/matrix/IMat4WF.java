@@ -430,9 +430,9 @@ public interface IMat4WF extends IMat4RF, ISqrMatWF
 	
 	IMat4WF mulN(IMat4RF m);
 	
-	IMat4WF revMul(IMat4RF m);
+	IMat4WF rMul(IMat4RF m);
 	
-	IMat4WF revMulN(IMat4RF m);
+	IMat4WF rMulN(IMat4RF m);
 	
 	/** {@inheritDoc} */
 	@Override
