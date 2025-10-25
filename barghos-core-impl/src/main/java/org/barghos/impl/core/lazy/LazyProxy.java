@@ -4,12 +4,12 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
-import org.barghos.api.core.supplier.Supp;
+import org.barghos.api.core.supplier.ISupp;
 
 public class LazyProxy
 {
 	@SuppressWarnings("unchecked")
-	public static <T> T create(Class<T> type, Supp<T> supplier, Class<?>... additional)
+	public static <T> T create(Class<T> type, ISupp<T> supplier, Class<?>... additional)
 	{
 		Class<?>[] types = new Class<?>[1 + additional.length];
 		types[0] = type;

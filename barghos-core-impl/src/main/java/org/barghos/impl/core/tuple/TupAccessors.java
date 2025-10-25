@@ -24,8 +24,8 @@ public class TupAccessors
 		@Override
 		public ITup2WF set(ITup2WF obj, int[] indices, float[] values)
 		{
-			obj.setAt(indices[0], values[0]);
-			obj.setAt(indices[1], values[1]);
+			obj.at(indices[0], values[0]);
+			obj.at(indices[1], values[1]);
 			
 			return obj;
 		}
@@ -33,8 +33,8 @@ public class TupAccessors
 		@Override
 		public ITup2WF set(ITup2WF obj, int index0, int index1, float value0, float value1)
 		{
-			obj.setAt(index0, value0);
-			obj.setAt(index1, value1);
+			obj.at(index0, value0);
+			obj.at(index1, value1);
 			
 			return obj;
 		}
@@ -42,7 +42,7 @@ public class TupAccessors
 		@Override
 		public ITup2WF set(ITup2WF obj, int index, float value)
 		{
-			obj.setAt(index, value);
+			obj.at(index, value);
 			
 			return obj;
 		}
@@ -50,7 +50,7 @@ public class TupAccessors
 		@Override
 		public float get(ITup2RF obj, int index)
 		{
-			return obj.getAt(index);
+			return obj.at(index);
 		}
 	}
 	
@@ -59,9 +59,9 @@ public class TupAccessors
 		@Override
 		public ITup3WF set(ITup3WF obj, int[] indices, float[] values)
 		{
-			obj.setAt(indices[0], values[0]);
-			obj.setAt(indices[1], values[1]);
-			obj.setAt(indices[2], values[2]);
+			obj.at(indices[0], values[0]);
+			obj.at(indices[1], values[1]);
+			obj.at(indices[2], values[2]);
 			
 			return obj;
 		}
@@ -69,9 +69,9 @@ public class TupAccessors
 		@Override
 		public ITup3WF set(ITup3WF obj, int index0, int index1, int index2, float value0, float value1, float value2)
 		{
-			obj.setAt(index0, value0);
-			obj.setAt(index1, value1);
-			obj.setAt(index2, value2);
+			obj.at(index0, value0);
+			obj.at(index1, value1);
+			obj.at(index2, value2);
 			
 			return obj;
 		}
@@ -79,7 +79,7 @@ public class TupAccessors
 		@Override
 		public ITup3WF set(ITup3WF obj, int index, float value)
 		{
-			obj.setAt(index, value);
+			obj.at(index, value);
 			
 			return obj;
 		}
@@ -87,7 +87,7 @@ public class TupAccessors
 		@Override
 		public float get(ITup3RF obj, int index)
 		{
-			return obj.getAt(index);
+			return obj.at(index);
 		}
 	}
 	
@@ -96,10 +96,10 @@ public class TupAccessors
 		@Override
 		public ITup4WF set(ITup4WF obj, int[] indices, float[] values)
 		{
-			obj.setAt(indices[0], values[0]);
-			obj.setAt(indices[1], values[1]);
-			obj.setAt(indices[2], values[2]);
-			obj.setAt(indices[3], values[3]);
+			obj.at(indices[0], values[0]);
+			obj.at(indices[1], values[1]);
+			obj.at(indices[2], values[2]);
+			obj.at(indices[3], values[3]);
 			
 			return obj;
 		}
@@ -107,10 +107,10 @@ public class TupAccessors
 		@Override
 		public ITup4WF set(ITup4WF obj, int index0, int index1, int index2, int index3, float value0, float value1, float value2, float value3)
 		{
-			obj.setAt(index0, value0);
-			obj.setAt(index1, value1);
-			obj.setAt(index2, value2);
-			obj.setAt(index3, value3);
+			obj.at(index0, value0);
+			obj.at(index1, value1);
+			obj.at(index2, value2);
+			obj.at(index3, value3);
 			
 			return obj;
 		}
@@ -118,7 +118,7 @@ public class TupAccessors
 		@Override
 		public ITup4WF set(ITup4WF obj, int index, float value)
 		{
-			obj.setAt(index, value);
+			obj.at(index, value);
 			
 			return obj;
 		}
@@ -126,7 +126,7 @@ public class TupAccessors
 		@Override
 		public float get(ITup4RF obj, int index)
 		{
-			return obj.getAt(index);
+			return obj.at(index);
 		}
 	}
 }

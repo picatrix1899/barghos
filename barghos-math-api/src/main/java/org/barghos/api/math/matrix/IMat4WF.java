@@ -528,7 +528,19 @@ public interface IMat4WF extends IMat4RF, ISqrMatWF
 
 	IMat4WF setRotationByQuat(ITup4RF q);
 	
+	IMat4WF setRotationByQuat(float[] q);
+	
+	IMat4WF setRotationByQuat(float qv0, float qv1, float qv2, float qv3);
+	
+	IMat4WF setRotationRad(ITup3RF a, float angle);
+	
+	IMat4WF setRotationRad(float[] a, float angle);
+	
 	IMat4WF setRotationRad(float aV0, float aV1, float aV2, float angle);
+	
+	IMat4WF setRotationDeg(ITup3RF a, float angle);
+	
+	IMat4WF setRotationDeg(float[] a, float angle);
 	
 	IMat4WF setRotationDeg(float aV0, float aV1, float aV2, float angle);
 	
@@ -788,13 +800,37 @@ public interface IMat4WF extends IMat4RF, ISqrMatWF
 	@Override
 	IMat4WF baseChangeN(float uV0, float uV1, float uV2, float vV0, float vV1, float vV2, float wV0, float wV1, float wV2);
 	
+	IMat4WF rotateRad(ITup3RF a, float angle);
+	
+	IMat4WF rotateRad(float[] a, float angle);
+	
 	IMat4WF rotateRad(float aV0, float aV1, float aV2, float angle);
+	
+	/** {@inheritDoc} */
+	@Override
+	IMat4WF rotateRadN(ITup3RF a, float angle);
+	
+	/** {@inheritDoc} */
+	@Override
+	IMat4WF rotateRadN(float[] a, float angle);
 	
 	/** {@inheritDoc} */
 	@Override
 	IMat4WF rotateRadN(float aV0, float aV1, float aV2, float angle);
 	
+	IMat4WF rotateDeg(ITup3RF a, float angle);
+	
+	IMat4WF rotateDeg(float[] a, float angle);
+	
 	IMat4WF rotateDeg(float aV0, float aV1, float aV2, float angle);
+	
+	/** {@inheritDoc} */
+	@Override
+	IMat4WF rotateDegN(ITup3RF a, float angle);
+	
+	/** {@inheritDoc} */
+	@Override
+	IMat4WF rotateDegN(float[] a, float angle);
 	
 	/** {@inheritDoc} */
 	@Override

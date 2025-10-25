@@ -3090,7 +3090,25 @@ public class Mat4F implements IMat4WF
 	@Override
 	public Mat4F setZero()
 	{
-		MatUtils4F.setZero(this.m);
+		this.m[ 0] = 0.0f;
+		this.m[ 1] = 0.0f;
+		this.m[ 2] = 0.0f;
+		this.m[ 3] = 0.0f;
+		
+		this.m[ 4] = 0.0f;
+		this.m[ 5] = 0.0f;
+		this.m[ 6] = 0.0f;
+		this.m[ 7] = 0.0f;
+		
+		this.m[ 8] = 0.0f;
+		this.m[ 9] = 0.0f;
+		this.m[10] = 0.0f;
+		this.m[11] = 0.0f;
+		
+		this.m[12] = 0.0f;
+		this.m[13] = 0.0f;
+		this.m[14] = 0.0f;
+		this.m[15] = 0.0f;
 		
 		return this;
 	}
@@ -3098,7 +3116,25 @@ public class Mat4F implements IMat4WF
 	@Override
 	public Mat4F setIdentity()
 	{
-		MatUtils4F.setIdentity(this.m);
+		this.m[ 0] = 1.0f;
+		this.m[ 1] = 0.0f;
+		this.m[ 2] = 0.0f;
+		this.m[ 3] = 0.0f;
+		
+		this.m[ 4] = 0.0f;
+		this.m[ 5] = 1.0f;
+		this.m[ 6] = 0.0f;
+		this.m[ 7] = 0.0f;
+		
+		this.m[ 8] = 0.0f;
+		this.m[ 9] = 0.0f;
+		this.m[10] = 1.0f;
+		this.m[11] = 0.0f;
+		
+		this.m[12] = 0.0f;
+		this.m[13] = 0.0f;
+		this.m[14] = 0.0f;
+		this.m[15] = 1.0f;
 		
 		return this;
 	}
@@ -3106,7 +3142,28 @@ public class Mat4F implements IMat4WF
 	@Override
 	public Mat4F setTranslation2(ITup2RF v)
 	{
-		MatUtils4F.setTranslation2(v, this.m);
+		float vX = v.v0();
+		float vY = v.v1();
+		
+		this.m[ 0] = 1.0f;
+		this.m[ 1] = 0.0f;
+		this.m[ 2] = 0.0f;
+		this.m[ 3] = 0.0f;
+		
+		this.m[ 4] = 0.0f;
+		this.m[ 5] = 1.0f;
+		this.m[ 6] = 0.0f;
+		this.m[ 7] = 0.0f;
+		
+		this.m[ 8] = 0.0f;
+		this.m[ 9] = 0.0f;
+		this.m[10] = 1.0f;
+		this.m[11] = 0.0f;
+		
+		this.m[12] = vX;
+		this.m[13] = vY;
+		this.m[14] = 0.0f;
+		this.m[15] = 1.0f;
 		
 		return this;
 	}
@@ -3114,15 +3171,54 @@ public class Mat4F implements IMat4WF
 	@Override
 	public Mat4F setTranslation2(float[] v)
 	{
-		MatUtils4F.setTranslation2(v, this.m);
+		float vX = v[0];
+		float vY = v[1];
+		
+		this.m[ 0] = 1.0f;
+		this.m[ 1] = 0.0f;
+		this.m[ 2] = 0.0f;
+		this.m[ 3] = 0.0f;
+		
+		this.m[ 4] = 0.0f;
+		this.m[ 5] = 1.0f;
+		this.m[ 6] = 0.0f;
+		this.m[ 7] = 0.0f;
+		
+		this.m[ 8] = 0.0f;
+		this.m[ 9] = 0.0f;
+		this.m[10] = 1.0f;
+		this.m[11] = 0.0f;
+		
+		this.m[12] = vX;
+		this.m[13] = vY;
+		this.m[14] = 0.0f;
+		this.m[15] = 1.0f;
 		
 		return this;
 	}
 	
 	@Override
-	public Mat4F setTranslation2(float v0, float v1)
+	public Mat4F setTranslation2(float vX, float vY)
 	{
-		MatUtils4F.setTranslation2(v0, v1, this.m);
+		this.m[ 0] = 1.0f;
+		this.m[ 1] = 0.0f;
+		this.m[ 2] = 0.0f;
+		this.m[ 3] = 0.0f;
+		
+		this.m[ 4] = 0.0f;
+		this.m[ 5] = 1.0f;
+		this.m[ 6] = 0.0f;
+		this.m[ 7] = 0.0f;
+		
+		this.m[ 8] = 0.0f;
+		this.m[ 9] = 0.0f;
+		this.m[10] = 1.0f;
+		this.m[11] = 0.0f;
+		
+		this.m[12] = vX;
+		this.m[13] = vY;
+		this.m[14] = 0.0f;
+		this.m[15] = 1.0f;
 		
 		return this;
 	}
@@ -3130,7 +3226,29 @@ public class Mat4F implements IMat4WF
 	@Override
 	public Mat4F setTranslation3(ITup3RF v)
 	{
-		MatUtils4F.setTranslation3(v, this.m);
+		float vX = v.v0();
+		float vY = v.v1();
+		float vZ = v.v2();
+		
+		this.m[ 0] = 1.0f;
+		this.m[ 1] = 0.0f;
+		this.m[ 2] = 0.0f;
+		this.m[ 3] = 0.0f;
+		
+		this.m[ 4] = 0.0f;
+		this.m[ 5] = 1.0f;
+		this.m[ 6] = 0.0f;
+		this.m[ 7] = 0.0f;
+		
+		this.m[ 8] = 0.0f;
+		this.m[ 9] = 0.0f;
+		this.m[10] = 1.0f;
+		this.m[11] = 0.0f;
+		
+		this.m[12] = vX;
+		this.m[13] = vY;
+		this.m[14] = vZ;
+		this.m[15] = 1.0f;
 		
 		return this;
 	}
@@ -3138,87 +3256,313 @@ public class Mat4F implements IMat4WF
 	@Override
 	public Mat4F setTranslation3(float[] v)
 	{
-		MatUtils4F.setTranslation3(v, this.m);
+		float vX = v[0];
+		float vY = v[1];
+		float vZ = v[2];
+		
+		this.m[ 0] = 1.0f;
+		this.m[ 1] = 0.0f;
+		this.m[ 2] = 0.0f;
+		this.m[ 3] = 0.0f;
+		
+		this.m[ 4] = 0.0f;
+		this.m[ 5] = 1.0f;
+		this.m[ 6] = 0.0f;
+		this.m[ 7] = 0.0f;
+		
+		this.m[ 8] = 0.0f;
+		this.m[ 9] = 0.0f;
+		this.m[10] = 1.0f;
+		this.m[11] = 0.0f;
+		
+		this.m[12] = vX;
+		this.m[13] = vY;
+		this.m[14] = vZ;
+		this.m[15] = 1.0f;
 		
 		return this;
 	}
 	
 	@Override
-	public Mat4F setTranslation3(float v0, float v1, float v2)
+	public Mat4F setTranslation3(float vX, float vY, float vZ)
 	{
-		MatUtils4F.setTranslation3(v0, v1, v2, this.m);
+		this.m[ 0] = 1.0f;
+		this.m[ 1] = 0.0f;
+		this.m[ 2] = 0.0f;
+		this.m[ 3] = 0.0f;
+		
+		this.m[ 4] = 0.0f;
+		this.m[ 5] = 1.0f;
+		this.m[ 6] = 0.0f;
+		this.m[ 7] = 0.0f;
+		
+		this.m[ 8] = 0.0f;
+		this.m[ 9] = 0.0f;
+		this.m[10] = 1.0f;
+		this.m[11] = 0.0f;
+		
+		this.m[12] = vX;
+		this.m[13] = vY;
+		this.m[14] = vZ;
+		this.m[15] = 1.0f;
 		
 		return this;
 	}
 	
 	@Override
-	public Mat4F setScaling2(ITup2RF v)
+	public Mat4F setScaling2(ITup2RF s)
 	{
-		MatUtils4F.setScaling2(v, this.m);
+		float sX = s.v0();
+		float sY = s.v1();
+		
+		this.m[ 0] = sX;
+		this.m[ 1] = 0.0f;
+		this.m[ 2] = 0.0f;
+		this.m[ 3] = 0.0f;
+		
+		this.m[ 4] = 0.0f;
+		this.m[ 5] = sY;
+		this.m[ 6] = 0.0f;
+		this.m[ 7] = 0.0f;
+		
+		this.m[ 8] = 0.0f;
+		this.m[ 9] = 0.0f;
+		this.m[10] = 1.0f;
+		this.m[11] = 0.0f;
+		
+		this.m[12] = 0.0f;
+		this.m[13] = 0.0f;
+		this.m[14] = 0.0f;
+		this.m[15] = 1.0f;
 		
 		return this;
 	}
 	
 	@Override
-	public Mat4F setScaling2(float[] v)
+	public Mat4F setScaling2(float[] s)
 	{
-		MatUtils4F.setScaling2(v, this.m);
+		float sX = s[0];
+		float sY = s[1];
+		
+		this.m[ 0] = sX;
+		this.m[ 1] = 0.0f;
+		this.m[ 2] = 0.0f;
+		this.m[ 3] = 0.0f;
+		
+		this.m[ 4] = 0.0f;
+		this.m[ 5] = sY;
+		this.m[ 6] = 0.0f;
+		this.m[ 7] = 0.0f;
+		
+		this.m[ 8] = 0.0f;
+		this.m[ 9] = 0.0f;
+		this.m[10] = 1.0f;
+		this.m[11] = 0.0f;
+		
+		this.m[12] = 0.0f;
+		this.m[13] = 0.0f;
+		this.m[14] = 0.0f;
+		this.m[15] = 1.0f;
 		
 		return this;
 	}
 	
 	@Override
-	public Mat4F setScaling2(float v0, float v1)
+	public Mat4F setScaling2(float sX, float sY)
 	{
-		MatUtils4F.setScaling2(v0, v1, this.m);
+		this.m[ 0] = sX;
+		this.m[ 1] = 0.0f;
+		this.m[ 2] = 0.0f;
+		this.m[ 3] = 0.0f;
+		
+		this.m[ 4] = 0.0f;
+		this.m[ 5] = sY;
+		this.m[ 6] = 0.0f;
+		this.m[ 7] = 0.0f;
+		
+		this.m[ 8] = 0.0f;
+		this.m[ 9] = 0.0f;
+		this.m[10] = 1.0f;
+		this.m[11] = 0.0f;
+		
+		this.m[12] = 0.0f;
+		this.m[13] = 0.0f;
+		this.m[14] = 0.0f;
+		this.m[15] = 1.0f;
 		
 		return this;
 	}
 	
 	@Override
-	public Mat4F setScaling3(ITup3RF v)
+	public Mat4F setScaling3(ITup3RF s)
 	{
-		MatUtils4F.setScaling3(v, this.m);
+		float sX = s.v0();
+		float sY = s.v1();
+		float sZ = s.v2();
+		
+		this.m[ 0] = sX;
+		this.m[ 1] = 0.0f;
+		this.m[ 2] = 0.0f;
+		this.m[ 3] = 0.0f;
+		
+		this.m[ 4] = 0.0f;
+		this.m[ 5] = sY;
+		this.m[ 6] = 0.0f;
+		this.m[ 7] = 0.0f;
+		
+		this.m[ 8] = 0.0f;
+		this.m[ 9] = 0.0f;
+		this.m[10] = sZ;
+		this.m[11] = 0.0f;
+		
+		this.m[12] = 0.0f;
+		this.m[13] = 0.0f;
+		this.m[14] = 0.0f;
+		this.m[15] = 1.0f;
 		
 		return this;
 	}
 	
 	@Override
-	public Mat4F setScaling3(float[] v)
+	public Mat4F setScaling3(float[] s)
 	{
-		MatUtils4F.setScaling3(v, this.m);
+		float sX = s[0];
+		float sY = s[1];
+		float sZ = s[2];
+		
+		this.m[ 0] = sX;
+		this.m[ 1] = 0.0f;
+		this.m[ 2] = 0.0f;
+		this.m[ 3] = 0.0f;
+		
+		this.m[ 4] = 0.0f;
+		this.m[ 5] = sY;
+		this.m[ 6] = 0.0f;
+		this.m[ 7] = 0.0f;
+		
+		this.m[ 8] = 0.0f;
+		this.m[ 9] = 0.0f;
+		this.m[10] = sZ;
+		this.m[11] = 0.0f;
+		
+		this.m[12] = 0.0f;
+		this.m[13] = 0.0f;
+		this.m[14] = 0.0f;
+		this.m[15] = 1.0f;
 		
 		return this;
 	}
 	
 	@Override
-	public Mat4F setScaling3(float v0, float v1, float v2)
+	public Mat4F setScaling3(float sX, float sY, float sZ)
 	{
-		MatUtils4F.setScaling3(v0, v1, v2, this.m);
+		this.m[ 0] = sX;
+		this.m[ 1] = 0.0f;
+		this.m[ 2] = 0.0f;
+		this.m[ 3] = 0.0f;
+		
+		this.m[ 4] = 0.0f;
+		this.m[ 5] = sY;
+		this.m[ 6] = 0.0f;
+		this.m[ 7] = 0.0f;
+		
+		this.m[ 8] = 0.0f;
+		this.m[ 9] = 0.0f;
+		this.m[10] = sZ;
+		this.m[11] = 0.0f;
+		
+		this.m[12] = 0.0f;
+		this.m[13] = 0.0f;
+		this.m[14] = 0.0f;
+		this.m[15] = 1.0f;
 		
 		return this;
 	}
 	
 	@Override
-	public Mat4F setScaling4(ITup4RF v)
+	public Mat4F setScaling4(ITup4RF s)
 	{
-		MatUtils4F.setScaling4(v, this.m);
+		float sX = s.v0();
+		float sY = s.v1();
+		float sZ = s.v2();
+		float sW = s.v3();
+		
+		this.m[ 0] = sX;
+		this.m[ 1] = 0.0f;
+		this.m[ 2] = 0.0f;
+		this.m[ 3] = 0.0f;
+		
+		this.m[ 4] = 0.0f;
+		this.m[ 5] = sY;
+		this.m[ 6] = 0.0f;
+		this.m[ 7] = 0.0f;
+		
+		this.m[ 8] = 0.0f;
+		this.m[ 9] = 0.0f;
+		this.m[10] = sZ;
+		this.m[11] = 0.0f;
+		
+		this.m[12] = 0.0f;
+		this.m[13] = 0.0f;
+		this.m[14] = 0.0f;
+		this.m[15] = sW;
 		
 		return this;
 	}
 	
 	@Override
-	public Mat4F setScaling4(float[] v)
+	public Mat4F setScaling4(float[] s)
 	{
-		MatUtils4F.setScaling4(v, this.m);
+		float sX = s[0];
+		float sY = s[1];
+		float sZ = s[2];
+		float sW = s[3];
+		
+		this.m[ 0] = sX;
+		this.m[ 1] = 0.0f;
+		this.m[ 2] = 0.0f;
+		this.m[ 3] = 0.0f;
+		
+		this.m[ 4] = 0.0f;
+		this.m[ 5] = sY;
+		this.m[ 6] = 0.0f;
+		this.m[ 7] = 0.0f;
+		
+		this.m[ 8] = 0.0f;
+		this.m[ 9] = 0.0f;
+		this.m[10] = sZ;
+		this.m[11] = 0.0f;
+		
+		this.m[12] = 0.0f;
+		this.m[13] = 0.0f;
+		this.m[14] = 0.0f;
+		this.m[15] = sW;
 		
 		return this;
 	}
 	
 	@Override
-	public Mat4F setScaling4(float v0, float v1, float v2, float v3)
+	public Mat4F setScaling4(float sX, float sY, float sZ, float sW)
 	{
-		MatUtils4F.setScaling4(v0, v1, v2, v3, this.m);
+		this.m[ 0] = sX;
+		this.m[ 1] = 0.0f;
+		this.m[ 2] = 0.0f;
+		this.m[ 3] = 0.0f;
+		
+		this.m[ 4] = 0.0f;
+		this.m[ 5] = sY;
+		this.m[ 6] = 0.0f;
+		this.m[ 7] = 0.0f;
+		
+		this.m[ 8] = 0.0f;
+		this.m[ 9] = 0.0f;
+		this.m[10] = sZ;
+		this.m[11] = 0.0f;
+		
+		this.m[12] = 0.0f;
+		this.m[13] = 0.0f;
+		this.m[14] = 0.0f;
+		this.m[15] = sW;
 		
 		return this;
 	}
@@ -3442,7 +3786,103 @@ public class Mat4F implements IMat4WF
 	@Override
 	public Mat4F setRotationByQuat(ITup4RF q)
 	{
-		MatUtils4F.setRotationByQuat(q, this.m);
+		float qX = q.v0();
+		float qY = q.v1();
+		float qZ = q.v2();
+		float qW = q.v3();
+		
+		this.m[ 0] = 1.0f - 2.0f * (qY * qY + qZ * qZ);
+		this.m[ 1] = 2.0f * (qX * qY + qZ * qW);
+		this.m[ 2] = 2.0f * (qX * qZ - qW * qY);
+		this.m[ 3] = 0.0f;
+		
+		this.m[ 4] = 2.0f * (qX * qY - qZ * qW);
+		this.m[ 5] = 1.0f - 2.0f * (qX * qX + qZ * qZ);
+		this.m[ 6] = 2.0f * (qY * qZ + qW * qX);
+		this.m[ 7] = 0.0f;
+		
+		this.m[ 8] = 2.0f * (qX * qZ + qW * qY);
+		this.m[ 9] = 2.0f * (qY * qZ - qW * qX);
+		this.m[10] = 1.0f - 2.0f * (qX * qX + qY * qY);
+		this.m[11] = 0.0f;
+		
+		this.m[12] = 0.0f;
+		this.m[13] = 0.0f;
+		this.m[14] = 0.0f;
+		this.m[15] = 1.0f;
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F setRotationByQuat(float[] q)
+	{
+		float qX = q[0];
+		float qY = q[1];
+		float qZ = q[2];
+		float qW = q[3];
+		
+		this.m[ 0] = 1.0f - 2.0f * (qY * qY + qZ * qZ);
+		this.m[ 1] = 2.0f * (qX * qY + qZ * qW);
+		this.m[ 2] = 2.0f * (qX * qZ - qW * qY);
+		this.m[ 3] = 0.0f;
+		
+		this.m[ 4] = 2.0f * (qX * qY - qZ * qW);
+		this.m[ 5] = 1.0f - 2.0f * (qX * qX + qZ * qZ);
+		this.m[ 6] = 2.0f * (qY * qZ + qW * qX);
+		this.m[ 7] = 0.0f;
+		
+		this.m[ 8] = 2.0f * (qX * qZ + qW * qY);
+		this.m[ 9] = 2.0f * (qY * qZ - qW * qX);
+		this.m[10] = 1.0f - 2.0f * (qX * qX + qY * qY);
+		this.m[11] = 0.0f;
+		
+		this.m[12] = 0.0f;
+		this.m[13] = 0.0f;
+		this.m[14] = 0.0f;
+		this.m[15] = 1.0f;
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F setRotationByQuat(float qX, float qY, float qZ, float qW)
+	{
+		this.m[ 0] = 1.0f - 2.0f * (qY * qY + qZ * qZ);
+		this.m[ 1] = 2.0f * (qX * qY + qZ * qW);
+		this.m[ 2] = 2.0f * (qX * qZ - qW * qY);
+		this.m[ 3] = 0.0f;
+		
+		this.m[ 4] = 2.0f * (qX * qY - qZ * qW);
+		this.m[ 5] = 1.0f - 2.0f * (qX * qX + qZ * qZ);
+		this.m[ 6] = 2.0f * (qY * qZ + qW * qX);
+		this.m[ 7] = 0.0f;
+		
+		this.m[ 8] = 2.0f * (qX * qZ + qW * qY);
+		this.m[ 9] = 2.0f * (qY * qZ - qW * qX);
+		this.m[10] = 1.0f - 2.0f * (qX * qX + qY * qY);
+		this.m[11] = 0.0f;
+		
+		this.m[12] = 0.0f;
+		this.m[13] = 0.0f;
+		this.m[14] = 0.0f;
+		this.m[15] = 1.0f;
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F setRotationRad(ITup3RF a, float angle)
+	{
+		MatUtils4F.setRotationRad(a, angle, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F setRotationRad(float[] a, float angle)
+	{
+		MatUtils4F.setRotationRad(a, angle, this.m);
 		
 		return this;
 	}
@@ -3455,6 +3895,22 @@ public class Mat4F implements IMat4WF
 		return this;
 	}
 
+	@Override
+	public Mat4F setRotationDeg(ITup3RF a, float angle)
+	{
+		MatUtils4F.setRotationDeg(a, angle, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F setRotationDeg(float[] a, float angle)
+	{
+		MatUtils4F.setRotationDeg(a, angle, this.m);
+		
+		return this;
+	}
+	
 	@Override
 	public Mat4F setRotationDeg(float aV0, float aV1, float aV2, float angle)
 	{
@@ -4120,6 +4576,22 @@ public class Mat4F implements IMat4WF
 	}
 
 	@Override
+	public Mat4F rotateRad(ITup3RF a, float angle)
+	{
+		MatUtils4F.rotateRad(this.m, a, angle, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F rotateRad(float[] a, float angle)
+	{
+		MatUtils4F.rotateRad(this.m, a, angle, this.m);
+		
+		return this;
+	}
+	
+	@Override
 	public Mat4F rotateRad(float av0, float av1, float av2, float angle)
 	{
 		MatUtils4F.rotateRad(this.m, av0, av1, av2, angle, this.m);
@@ -4128,11 +4600,39 @@ public class Mat4F implements IMat4WF
 	}
 
 	@Override
+	public Mat4F rotateRadN(ITup3RF a, float angle)
+	{
+		return MatUtils4F.rotateRadFunc(this.m, a, angle, CTOR);
+	}
+	
+	@Override
+	public Mat4F rotateRadN(float[] a, float angle)
+	{
+		return MatUtils4F.rotateRadFunc(this.m, a, angle, CTOR);
+	}
+	
+	@Override
 	public Mat4F rotateRadN(float av0, float av1, float av2, float angle)
 	{
 		return MatUtils4F.rotateRadFunc(this.m, av0, av1, av2, angle, CTOR);
 	}
 
+	@Override
+	public Mat4F rotateDeg(ITup3RF a, float angle)
+	{
+		MatUtils4F.rotateDeg(this.m, a, angle, this.m);
+		
+		return this;
+	}
+	
+	@Override
+	public Mat4F rotateDeg(float[] a, float angle)
+	{
+		MatUtils4F.rotateDeg(this.m, a, angle, this.m);
+		
+		return this;
+	}
+	
 	@Override
 	public Mat4F rotateDeg(float av0, float av1, float av2, float angle)
 	{
@@ -4141,6 +4641,18 @@ public class Mat4F implements IMat4WF
 		return this;
 	}
 
+	@Override
+	public Mat4F rotateDegN(ITup3RF a, float angle)
+	{
+		return MatUtils4F.rotateDegFunc(this.m, a, angle, CTOR);
+	}
+	
+	@Override
+	public Mat4F rotateDegN(float[] a, float angle)
+	{
+		return MatUtils4F.rotateDegFunc(this.m, a, angle, CTOR);
+	}
+	
 	@Override
 	public Mat4F rotateDegN(float av0, float av1, float av2, float angle)
 	{
@@ -4230,5 +4742,50 @@ public class Mat4F implements IMat4WF
 	public static Mat4F scaling4(float v0, float v1, float v2, float v3)
 	{
 		return new Mat4F().setScaling4(v0, v1, v2, v3);
+	}
+	
+	public static Mat4F rotationByQuat(ITup4RF a)
+	{
+		return new Mat4F().setRotationByQuat(a);
+	}
+	
+	public static Mat4F rotationByQuat(float[] a)
+	{
+		return new Mat4F().setRotationByQuat(a);
+	}
+	
+	public static Mat4F rotationByQuat(float aV0, float aV1, float aV2, float aV3)
+	{
+		return new Mat4F().setRotationByQuat(aV0, aV1, aV2, aV3);
+	}
+	
+	public static Mat4F rotationRad(ITup3RF a, float angle)
+	{
+		return new Mat4F().setRotationRad(a, angle);
+	}
+	
+	public static Mat4F rotationRad(float[] a, float angle)
+	{
+		return new Mat4F().setRotationRad(a, angle);
+	}
+	
+	public static Mat4F rotationRad(float aV0, float aV1, float aV2, float angle)
+	{
+		return new Mat4F().setRotationRad(aV0, aV1, aV2, angle);
+	}
+	
+	public static Mat4F rotationDeg(ITup3RF a, float angle)
+	{
+		return new Mat4F().setRotationDeg(a, angle);
+	}
+	
+	public static Mat4F rotationDeg(float[] a, float angle)
+	{
+		return new Mat4F().setRotationDeg(a, angle);
+	}
+	
+	public static Mat4F rotationDeg(float aV0, float aV1, float aV2, float angle)
+	{
+		return new Mat4F().setRotationDeg(aV0, aV1, aV2, angle);
 	}
 }

@@ -12,9 +12,10 @@ package org.barghos.api.core.tuple.floats;
 public interface ITupWF extends ITupRF
 {
 
-	ITupWF setAt(int index, float value);
+	ITupWF at(int index, float value);
 
 	ITupWF set(ITupRF t);
 
 	ITupWF set(float[] t);
+	
 }

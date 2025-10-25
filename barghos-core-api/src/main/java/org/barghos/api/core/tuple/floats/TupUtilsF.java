@@ -16,7 +16,7 @@ public class TupUtilsF
 
 		for(int i = 0; i < size; i++)
 		{
-			if (t1.getAt(i) != t2.getAt(i)) return false;
+			if (t1.at(i) != t2.at(i)) return false;
 		}
 
 		return true;
@@ -33,7 +33,7 @@ public class TupUtilsF
 
 		for(int i = 0; i < size; i++)
 		{
-			if (t1.getAt(i) != t2[i]) return false;
+			if (t1.at(i) != t2[i]) return false;
 		}
 
 		return true;
@@ -50,7 +50,7 @@ public class TupUtilsF
 
 		for(int i = 0; i < size; i++)
 		{
-			if (t1[i] != t2.getAt(i)) return false;
+			if (t1[i] != t2.at(i)) return false;
 		}
 
 		return true;
@@ -67,7 +67,7 @@ public class TupUtilsF
 
 		for(int i = 0; i < size; i++)
 		{
-			if (MathUtils.equalsEM(tolerance, t1.getAt(i), t2.getAt(i))) return false;
+			if (MathUtils.equalsEM(tolerance, t1.at(i), t2.at(i))) return false;
 		}
 
 		return true;
@@ -84,7 +84,7 @@ public class TupUtilsF
 
 		for(int i = 0; i < size; i++)
 		{
-			if (MathUtils.equalsEM(tolerance, t1.getAt(i), t2[i])) return false;
+			if (MathUtils.equalsEM(tolerance, t1.at(i), t2[i])) return false;
 		}
 
 		return true;
@@ -101,7 +101,7 @@ public class TupUtilsF
 
 		for(int i = 0; i < size; i++)
 		{
-			if (MathUtils.equalsEM(tolerance, t1[i], t2.getAt(i))) return false;
+			if (MathUtils.equalsEM(tolerance, t1[i], t2.at(i))) return false;
 		}
 
 		return true;
@@ -118,7 +118,7 @@ public class TupUtilsF
 
 		for(int i = 0; i < size; i++)
 		{
-			if (!MathUtils.equalsEM4(t1.getAt(i), t2.getAt(i))) return false;
+			if (!MathUtils.equalsEM4(t1.at(i), t2.at(i))) return false;
 		}
 
 		return true;
@@ -135,7 +135,7 @@ public class TupUtilsF
 
 		for(int i = 0; i < size; i++)
 		{
-			if (!MathUtils.equalsEM4(t1.getAt(i), t2[i])) return false;
+			if (!MathUtils.equalsEM4(t1.at(i), t2[i])) return false;
 		}
 
 		return true;
@@ -152,7 +152,7 @@ public class TupUtilsF
 
 		for(int i = 0; i < size; i++)
 		{
-			if (!MathUtils.equalsEM4(t1[i], t2.getAt(i))) return false;
+			if (!MathUtils.equalsEM4(t1[i], t2.at(i))) return false;
 		}
 
 		return true;
@@ -169,7 +169,7 @@ public class TupUtilsF
 
 		for(int i = 0; i < size; i++)
 		{
-			if (!MathUtils.equalsEM6(t1.getAt(i), t2.getAt(i))) return false;
+			if (!MathUtils.equalsEM6(t1.at(i), t2.at(i))) return false;
 		}
 
 		return true;
@@ -186,7 +186,7 @@ public class TupUtilsF
 
 		for(int i = 0; i < size; i++)
 		{
-			if (!MathUtils.equalsEM6(t1.getAt(i), t2[i])) return false;
+			if (!MathUtils.equalsEM6(t1.at(i), t2[i])) return false;
 		}
 
 		return true;
@@ -203,7 +203,7 @@ public class TupUtilsF
 
 		for(int i = 0; i < size; i++)
 		{
-			if (!MathUtils.equalsEM6(t1[i], t2.getAt(i))) return false;
+			if (!MathUtils.equalsEM6(t1[i], t2.at(i))) return false;
 		}
 
 		return true;
@@ -220,7 +220,7 @@ public class TupUtilsF
 
 		for(int i = 0; i < size; i++)
 		{
-			if (!MathUtils.equalsEM8(t1.getAt(i), t2.getAt(i))) return false;
+			if (!MathUtils.equalsEM8(t1.at(i), t2.at(i))) return false;
 		}
 
 		return true;
@@ -237,7 +237,7 @@ public class TupUtilsF
 
 		for(int i = 0; i < size; i++)
 		{
-			if (!MathUtils.equalsEM8(t1.getAt(i), t2[i])) return false;
+			if (!MathUtils.equalsEM8(t1.at(i), t2[i])) return false;
 		}
 
 		return true;
@@ -254,7 +254,7 @@ public class TupUtilsF
 
 		for(int i = 0; i < size; i++)
 		{
-			if (!MathUtils.equalsEM8(t1[i], t2.getAt(i))) return false;
+			if (!MathUtils.equalsEM8(t1[i], t2.at(i))) return false;
 		}
 
 		return true;
@@ -269,7 +269,7 @@ public class TupUtilsF
 		
 		if (size != t2.size()) return false;
 
-		return t1.getAt(index) == t2.getAt(index);
+		return t1.at(index) == t2.at(index);
 	}
 	
 	public static boolean equalsAt(int index, @AllowNull ITupRF t1, @AllowNull float[] t2)
@@ -281,14 +281,14 @@ public class TupUtilsF
 		
 		if (size != t2.length) return false;
 
-		return t1.getAt(index) == t2[index];
+		return t1.at(index) == t2[index];
 	}
 	
 	public static boolean equalsAt(int index, @AllowNull ITupRF t1, float value)
 	{
 		if (t1 == null) return false;
 
-		return t1.getAt(index) == value;
+		return t1.at(index) == value;
 	}
 	
 	public static boolean equalsAt(int index, @AllowNull float[] t1, @AllowNull ITupRF t2)
@@ -300,7 +300,7 @@ public class TupUtilsF
 		
 		if (size != t2.size()) return false;
 
-		return t1[index] == t2.getAt(index);
+		return t1[index] == t2.at(index);
 	}
 	
 	public static boolean equalsAtEM(float tolerance, int index, @AllowNull ITupRF t1, @AllowNull ITupRF t2)
@@ -312,7 +312,7 @@ public class TupUtilsF
 		
 		if (size != t2.size()) return false;
 
-		return MathUtils.equalsEM(tolerance, t1.getAt(index), t2.getAt(index));
+		return MathUtils.equalsEM(tolerance, t1.at(index), t2.at(index));
 	}
 	
 	public static boolean equalsAtEM(float tolerance, int index, @AllowNull ITupRF t1, @AllowNull float[] t2)
@@ -324,14 +324,14 @@ public class TupUtilsF
 		
 		if (size != t2.length) return false;
 
-		return MathUtils.equalsEM(tolerance, t1.getAt(index), t2[index]);
+		return MathUtils.equalsEM(tolerance, t1.at(index), t2[index]);
 	}
 	
 	public static boolean equalsAtEM(float tolerance, int index, @AllowNull ITupRF t1, float value)
 	{
 		if (t1 == null) return false;
 
-		return MathUtils.equalsEM(tolerance, t1.getAt(index), value);
+		return MathUtils.equalsEM(tolerance, t1.at(index), value);
 	}
 	
 	public static boolean equalsAtEM(float tolerance, int index, @AllowNull float[] t1, @AllowNull ITupRF t2)
@@ -343,7 +343,7 @@ public class TupUtilsF
 		
 		if (size != t2.size()) return false;
 
-		return MathUtils.equalsEM(tolerance, t1[index], t2.getAt(index));
+		return MathUtils.equalsEM(tolerance, t1[index], t2.at(index));
 	}
 	
 	public static boolean equalsAtEM4(int index, @AllowNull ITupRF t1, @AllowNull ITupRF t2)
@@ -355,7 +355,7 @@ public class TupUtilsF
 		
 		if (size != t2.size()) return false;
 
-		return MathUtils.equalsEM4(t1.getAt(index), t2.getAt(index));
+		return MathUtils.equalsEM4(t1.at(index), t2.at(index));
 	}
 	
 	public static boolean equalsAtEM4(int index, @AllowNull ITupRF t1, @AllowNull float[] t2)
@@ -367,14 +367,14 @@ public class TupUtilsF
 		
 		if (size != t2.length) return false;
 
-		return MathUtils.equalsEM4(t1.getAt(index), t2[index]);
+		return MathUtils.equalsEM4(t1.at(index), t2[index]);
 	}
 	
 	public static boolean equalsAtEM4(int index, @AllowNull ITupRF t1, float value)
 	{
 		if (t1 == null) return false;
 
-		return MathUtils.equalsEM4(t1.getAt(index), value);
+		return MathUtils.equalsEM4(t1.at(index), value);
 	}
 	
 	public static boolean equalsAtEM4(int index, @AllowNull float[] t1, @AllowNull ITupRF t2)
@@ -386,7 +386,7 @@ public class TupUtilsF
 		
 		if (size != t2.size()) return false;
 
-		return MathUtils.equalsEM4(t1[index], t2.getAt(index));
+		return MathUtils.equalsEM4(t1[index], t2.at(index));
 	}
 	
 	public static boolean equalsAtEM6(int index, @AllowNull ITupRF t1, @AllowNull ITupRF t2)
@@ -398,7 +398,7 @@ public class TupUtilsF
 		
 		if (size != t2.size()) return false;
 
-		return MathUtils.equalsEM6(t1.getAt(index), t2.getAt(index));
+		return MathUtils.equalsEM6(t1.at(index), t2.at(index));
 	}
 	
 	public static boolean equalsAtEM6(int index, @AllowNull ITupRF t1, @AllowNull float[] t2)
@@ -410,14 +410,14 @@ public class TupUtilsF
 		
 		if (size != t2.length) return false;
 
-		return MathUtils.equalsEM6(t1.getAt(index), t2[index]);
+		return MathUtils.equalsEM6(t1.at(index), t2[index]);
 	}
 	
 	public static boolean equalsAtEM6(int index, @AllowNull ITupRF t1, float value)
 	{
 		if (t1 == null) return false;
 
-		return MathUtils.equalsEM6(t1.getAt(index), value);
+		return MathUtils.equalsEM6(t1.at(index), value);
 	}
 	
 	public static boolean equalsAtEM6(int index, @AllowNull float[] t1, @AllowNull ITupRF t2)
@@ -429,7 +429,7 @@ public class TupUtilsF
 		
 		if (size != t2.size()) return false;
 
-		return MathUtils.equalsEM6(t1[index], t2.getAt(index));
+		return MathUtils.equalsEM6(t1[index], t2.at(index));
 	}
 	
 	public static boolean equalsAtEM8(int index, @AllowNull ITupRF t1, @AllowNull ITupRF t2)
@@ -441,7 +441,7 @@ public class TupUtilsF
 		
 		if (size != t2.size()) return false;
 
-		return MathUtils.equalsEM8(t1.getAt(index), t2.getAt(index));
+		return MathUtils.equalsEM8(t1.at(index), t2.at(index));
 	}
 	
 	public static boolean equalsAtEM8(int index, @AllowNull ITupRF t1, @AllowNull float[] t2)
@@ -453,14 +453,14 @@ public class TupUtilsF
 		
 		if (size != t2.length) return false;
 
-		return MathUtils.equalsEM8(t1.getAt(index), t2[index]);
+		return MathUtils.equalsEM8(t1.at(index), t2[index]);
 	}
 	
 	public static boolean equalsAtEM8(int index, @AllowNull ITupRF t1, float value)
 	{
 		if (t1 == null) return false;
 
-		return MathUtils.equalsEM8(t1.getAt(index), value);
+		return MathUtils.equalsEM8(t1.at(index), value);
 	}
 	
 	public static boolean equalsAtEM8(int index, @AllowNull float[] t1, @AllowNull ITupRF t2)
@@ -472,14 +472,14 @@ public class TupUtilsF
 		
 		if (size != t2.size()) return false;
 
-		return MathUtils.equalsEM8(t1[index], t2.getAt(index));
+		return MathUtils.equalsEM8(t1[index], t2.at(index));
 	}
 	
 	public static boolean isFinite(ITupRF t)
 	{
 		for(int i = 0, size = t.size(); i < size; i++)
 		{
-			if(!Float.isFinite(t.getAt(i))) return false;
+			if(!Float.isFinite(t.at(i))) return false;
 		}
 		
 		return true;
@@ -487,14 +487,14 @@ public class TupUtilsF
 	
 	public static boolean isFiniteAt(int index, ITupRF t)
 	{
-		return Float.isFinite(t.getAt(index));
+		return Float.isFinite(t.at(index));
 	}
 	
 	public static boolean isInfinite(ITupRF t)
 	{
 		for(int i = 0, size = t.size(); i < size; i++)
 		{
-			if(!Float.isInfinite(t.getAt(i))) return false;
+			if(!Float.isInfinite(t.at(i))) return false;
 		}
 		
 		return true;
@@ -502,14 +502,14 @@ public class TupUtilsF
 	
 	public static boolean isInfiniteAt(int index, ITupRF t)
 	{
-		return Float.isInfinite(t.getAt(index));
+		return Float.isInfinite(t.at(index));
 	}
 	
 	public static boolean isNaN(ITupRF t)
 	{
 		for(int i = 0, size = t.size(); i < size; i++)
 		{
-			if(!Float.isNaN(t.getAt(i))) return false;
+			if(!Float.isNaN(t.at(i))) return false;
 		}
 		
 		return true;
@@ -517,14 +517,14 @@ public class TupUtilsF
 	
 	public static boolean isNaNAt(int index, ITupRF t)
 	{
-		return Float.isNaN(t.getAt(index));
+		return Float.isNaN(t.at(index));
 	}
 	
 	public static boolean isZero(ITupRF t)
 	{
 		for(int i = 0, size = t.size(); i < size; i++)
 		{
-			if(t.getAt(i) != 0.0f) return false;
+			if(t.at(i) != 0.0f) return false;
 		}
 		
 		return true;
@@ -534,7 +534,7 @@ public class TupUtilsF
 	{
 		for(int i = 0, size = t.size(); i < size; i++)
 		{
-			if(!MathUtils.isZeroEM(tolerance, t.getAt(i))) return false;
+			if(!MathUtils.isZeroEM(tolerance, t.at(i))) return false;
 		}
 		
 		return true;
@@ -544,7 +544,7 @@ public class TupUtilsF
 	{
 		for(int i = 0, size = t.size(); i < size; i++)
 		{
-			if(!MathUtils.isZeroEM4(t.getAt(i))) return false;
+			if(!MathUtils.isZeroEM4(t.at(i))) return false;
 		}
 		
 		return true;
@@ -554,7 +554,7 @@ public class TupUtilsF
 	{
 		for(int i = 0, size = t.size(); i < size; i++)
 		{
-			if(!MathUtils.isZeroEM6(t.getAt(i))) return false;
+			if(!MathUtils.isZeroEM6(t.at(i))) return false;
 		}
 		
 		return true;
@@ -564,7 +564,7 @@ public class TupUtilsF
 	{
 		for(int i = 0, size = t.size(); i < size; i++)
 		{
-			if(!MathUtils.isZeroEM8(t.getAt(i))) return false;
+			if(!MathUtils.isZeroEM8(t.at(i))) return false;
 		}
 		
 		return true;
@@ -572,27 +572,27 @@ public class TupUtilsF
 	
 	public static boolean isZeroAt(int index, ITupRF t)
 	{
-		return t.getAt(index) == 0.0f;
+		return t.at(index) == 0.0f;
 	}
 	
 	public static boolean isZeroAtEM(float tolerance, int index, ITupRF t)
 	{
-		return MathUtils.isZeroEM(tolerance, t.getAt(index));
+		return MathUtils.isZeroEM(tolerance, t.at(index));
 	}
 	
 	public static boolean isZeroAtEM4(int index, ITupRF t)
 	{
-		return MathUtils.isZeroEM4(t.getAt(index));
+		return MathUtils.isZeroEM4(t.at(index));
 	}
 	
 	public static boolean isZeroAtEM6(int index, ITupRF t)
 	{
-		return MathUtils.isZeroEM6(t.getAt(index));
+		return MathUtils.isZeroEM6(t.at(index));
 	}
 	
 	public static boolean isZeroAtEM8(int index, ITupRF t)
 	{
-		return MathUtils.isZeroEM8(t.getAt(index));
+		return MathUtils.isZeroEM8(t.at(index));
 	}
 	
 }

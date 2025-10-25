@@ -15,16 +15,20 @@ public interface ITup4WF extends ITup4RF, ITupWF
 
 	ITup4WF v3(float v3);
 
+	/** {@inheritDoc} */
 	@Override
-	ITup4WF setAt(int index, float value);
+	ITup4WF at(int index, float value);
 
 	ITup4WF set(ITup4RF t);
 
+	/** {@inheritDoc} */
 	@Override
 	ITup4WF set(ITupRF t);
 
+	/** {@inheritDoc} */
 	@Override
 	ITup4WF set(float[] t);
 
 	ITup4WF set(float v0, float v1, float v2, float v3);
+	
 }

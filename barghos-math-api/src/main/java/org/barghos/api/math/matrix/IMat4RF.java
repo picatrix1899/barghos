@@ -302,7 +302,15 @@ public interface IMat4RF extends ISqrMatRF
 	
 	IMat4RF baseChangeN(float uV0, float uV1, float uV2, float vV0, float vV1, float vV2, float wV0, float wV1, float wV2);
 	
+	IMat4RF rotateRadN(ITup3RF a, float angle);
+	
+	IMat4RF rotateRadN(float[] a, float angle);
+	
 	IMat4RF rotateRadN(float aV0, float aV1, float aV2, float angle);
+	
+	IMat4RF rotateDegN(ITup3RF a, float angle);
+	
+	IMat4RF rotateDegN(float[] a, float angle);
 	
 	IMat4RF rotateDegN(float aV0, float aV1, float aV2, float angle);
 }

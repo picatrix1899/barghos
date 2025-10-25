@@ -4,7 +4,7 @@ import org.barghos.annotation.ExtractionParam;
 
 import org.barghos.api.core.collection.IndexValuePairF;
 import org.barghos.api.core.math.MathUtils;
-import org.barghos.api.core.tuple.floats.RawTupUtils2F;
+import static org.barghos.api.core.tuple.floats.CompareOps2F.*;
 
 /**
  * This class provides vector operations for two dimensions.
@@ -915,70 +915,70 @@ public class RawVecUtils2F
 	
 	public static float len(float[] v)
 	{
-		if(RawTupUtils2F.isZero(v)) return 0.0f;
+		if(tup_isZero_2f(v)) return 0.0f;
 		
 		return MathUtils.sqrt(v[0] * v[0] + v[1] * v[1]);
 	}
 
 	public static float len(float v0, float v1)
 	{
-		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
+		if(tup_isZero_2f(v0, v1)) return 0.0f;
 		
 		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
 	
 	public static float lenEM(float tolerance, float[] v)
 	{
-		if(RawTupUtils2F.isZeroEM(tolerance, v)) return 0.0f;
+		if(tup_isZeroEM_2f(tolerance, v)) return 0.0f;
 		
 		return MathUtils.sqrt(v[0] * v[0] + v[1] * v[1]);
 	}
 
 	public static float lenEM(float tolerance, float v0, float v1)
 	{
-		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
+		if(tup_isZeroEM_2f(tolerance, v0, v1)) return 0.0f;
 
 		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
 	
 	public static float lenEM4(float[] v)
 	{
-		if(RawTupUtils2F.isZeroEM4(v)) return 0.0f;
+		if(tup_isZeroEM4_2f(v)) return 0.0f;
 
 		return MathUtils.sqrt(v[0] * v[0] + v[1] * v[1]);
 	}
 
 	public static float lenEM4(float v0, float v1)
 	{
-		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		if(tup_isZeroEM4_2f(v0, v1)) return 0.0f;
 
 		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
 	
 	public static float lenEM6(float[] v)
 	{
-		if(RawTupUtils2F.isZeroEM6(v)) return 0.0f;
+		if(tup_isZeroEM6_2f(v)) return 0.0f;
 
 		return MathUtils.sqrt(v[0] * v[0] + v[1] * v[1]);
 	}
 
 	public static float lenEM6(float v0, float v1)
 	{
-		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		if(tup_isZeroEM6_2f(v0, v1)) return 0.0f;
 		
 		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
 	
 	public static float lenEM8(float[] v)
 	{
-		if(RawTupUtils2F.isZeroEM8(v)) return 0.0f;
+		if(tup_isZeroEM8_2f(v)) return 0.0f;
 		
 		return MathUtils.sqrt(v[0] * v[0] + v[1] * v[1]);
 	}
 
 	public static float lenEM8(float v0, float v1)
 	{
-		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		if(tup_isZeroEM8_2f(v0, v1)) return 0.0f;
 		
 		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
@@ -995,63 +995,63 @@ public class RawVecUtils2F
 	
 	public static float lenSqEM(float tolerance, float[] v)
 	{
-		if(RawTupUtils2F.isZeroEM(tolerance, v)) return 0.0f;
+		if(tup_isZeroEM_2f(tolerance, v)) return 0.0f;
 		
 		return v[0] * v[0] + v[1] * v[1];
 	}
 
 	public static float lenSqEM(float tolerance, float v0, float v1)
 	{
-		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
+		if(tup_isZeroEM_2f(tolerance, v0, v1)) return 0.0f;
 		
 		return v0 * v0 + v1 * v1;
 	}
 	
 	public static float lenSqEM4(float[] v)
 	{
-		if(RawTupUtils2F.isZeroEM4(v)) return 0.0f;
+		if(tup_isZeroEM4_2f(v)) return 0.0f;
 		
 		return v[0] * v[0] + v[1] * v[1];
 	}
 
 	public static float lenSqEM4(float v0, float v1)
 	{
-		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		if(tup_isZeroEM4_2f(v0, v1)) return 0.0f;
 		
 		return v0 * v0 + v1 * v1;
 	}
 	
 	public static float lenSqEM6(float[] v)
 	{
-		if(RawTupUtils2F.isZeroEM6(v)) return 0.0f;
+		if(tup_isZeroEM6_2f(v)) return 0.0f;
 		
 		return v[0] * v[0] + v[1] * v[1];
 	}
 
 	public static float lenSqEM6(float v0, float v1)
 	{
-		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		if(tup_isZeroEM6_2f(v0, v1)) return 0.0f;
 		
 		return v0 * v0 + v1 * v1;
 	}
 	
 	public static float lenSqEM8(float[] v)
 	{
-		if(RawTupUtils2F.isZeroEM8(v)) return 0.0f;
+		if(tup_isZeroEM8_2f(v)) return 0.0f;
 		
 		return v[0] * v[0] + v[1] * v[1];
 	}
 
 	public static float lenSqEM8(float v0, float v1)
 	{
-		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		if(tup_isZeroEM8_2f(v0, v1)) return 0.0f;
 		
 		return v0 * v0 + v1 * v1;
 	}
 	
 	public static float[] nrm(float[] v, @ExtractionParam float[] res)
 	{
-		if (RawTupUtils2F.isZero(v))
+		if (tup_isZero_2f(v))
 		{
 			res[0] = 0.0f;
 			res[1] = 0.0f;
@@ -1069,7 +1069,7 @@ public class RawVecUtils2F
 
 	public static float[] nrm(float v0, float v1, @ExtractionParam float[] res)
 	{
-		if (RawTupUtils2F.isZero(v0, v1))
+		if (tup_isZero_2f(v0, v1))
 		{
 			res[0] = 0.0f;
 			res[1] = 0.0f;
@@ -1087,7 +1087,7 @@ public class RawVecUtils2F
 	
 	public static float[] nrmEM(float tolerance, float[] v, @ExtractionParam float[] res)
 	{
-		if (RawTupUtils2F.isZeroEM(tolerance, v))
+		if (tup_isZeroEM_2f(tolerance, v))
 		{
 			res[0] = 0.0f;
 			res[1] = 0.0f;
@@ -1105,7 +1105,7 @@ public class RawVecUtils2F
 
 	public static float[] nrmEM(float tolerance, float v0, float v1, @ExtractionParam float[] res)
 	{
-		if (RawTupUtils2F.isZeroEM(tolerance, v0, v1))
+		if (tup_isZeroEM_2f(tolerance, v0, v1))
 		{
 			res[0] = 0.0f;
 			res[1] = 0.0f;
@@ -1123,7 +1123,7 @@ public class RawVecUtils2F
 	
 	public static float[] nrmEM4(float[] v, @ExtractionParam float[] res)
 	{
-		if (RawTupUtils2F.isZeroEM4(v))
+		if (tup_isZeroEM4_2f(v))
 		{
 			res[0] = 0.0f;
 			res[1] = 0.0f;
@@ -1141,7 +1141,7 @@ public class RawVecUtils2F
 
 	public static float[] nrmEM4(float v0, float v1, @ExtractionParam float[] res)
 	{
-		if (RawTupUtils2F.isZeroEM4(v0, v1))
+		if (tup_isZeroEM4_2f(v0, v1))
 		{
 			res[0] = 0.0f;
 			res[1] = 0.0f;
@@ -1159,7 +1159,7 @@ public class RawVecUtils2F
 	
 	public static float[] nrmEM6(float[] v, @ExtractionParam float[] res)
 	{
-		if (RawTupUtils2F.isZeroEM6(v))
+		if (tup_isZeroEM6_2f(v))
 		{
 			res[0] = 0.0f;
 			res[1] = 0.0f;
@@ -1177,7 +1177,7 @@ public class RawVecUtils2F
 
 	public static float[] nrmEM6(float v0, float v1, @ExtractionParam float[] res)
 	{
-		if (RawTupUtils2F.isZeroEM6(v0, v1))
+		if (tup_isZeroEM6_2f(v0, v1))
 		{
 			res[0] = 0.0f;
 			res[1] = 0.0f;
@@ -1195,7 +1195,7 @@ public class RawVecUtils2F
 	
 	public static float[] nrmEM8(float[] v, @ExtractionParam float[] res)
 	{
-		if (RawTupUtils2F.isZeroEM8(v))
+		if (tup_isZeroEM8_2f(v))
 		{
 			res[0] = 0.0f;
 			res[1] = 0.0f;
@@ -1213,7 +1213,7 @@ public class RawVecUtils2F
 
 	public static float[] nrmEM8(float v0, float v1, @ExtractionParam float[] res)
 	{
-		if (RawTupUtils2F.isZeroEM8(v0, v1))
+		if (tup_isZeroEM8_2f(v0, v1))
 		{
 			res[0] = 0.0f;
 			res[1] = 0.0f;
@@ -1399,32 +1399,32 @@ public class RawVecUtils2F
 	
 	public static float[] midPointTo(float[] t1, float[] t2, @ExtractionParam float[] res)
 	{
-		res[0] = (t2[0] - t1[0]) * 0.5f;
-		res[1] = (t2[1] - t1[1]) * 0.5f;
+		res[0] = (t2[0] + t1[0]) * 0.5f;
+		res[1] = (t2[1] + t1[1]) * 0.5f;
 		
 		return res;
 	}
 
 	public static float[] midPointTo(float[] t1, float t2v0, float t2v1, @ExtractionParam float[] res)
 	{
-		res[0] = (t2v0 - t1[0]) * 0.5f;
-		res[1] = (t2v1 - t1[1]) * 0.5f;
+		res[0] = (t2v0 + t1[0]) * 0.5f;
+		res[1] = (t2v1 + t1[1]) * 0.5f;
 		
 		return res;
 	}
 	
 	public static float[] midPointTo(float t1v0, float t1v1, float[] t2, @ExtractionParam float[] res)
 	{
-		res[0] = (t2[0] - t1v0) * 0.5f;
-		res[1] = (t2[1] - t1v1) * 0.5f;
+		res[0] = (t2[0] + t1v0) * 0.5f;
+		res[1] = (t2[1] + t1v1) * 0.5f;
 		
 		return res;
 	}
 
 	public static float[] midPointTo(float t1v0, float t1v1, float t2v0, float t2v1, @ExtractionParam float[] res)
 	{
-		res[0] = (t2v0 - t1v0) * 0.5f;
-		res[1] = (t2v1 - t1v1) * 0.5f;
+		res[0] = (t2v0 + t1v0) * 0.5f;
+		res[1] = (t2v1 + t1v1) * 0.5f;
 		
 		return res;
 	}
@@ -1434,7 +1434,7 @@ public class RawVecUtils2F
 		float v0 = t2[0] - t1[0];
 		float v1 = t2[1] - t1[1];
 		
-		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
+		if(tup_isZero_2f(v0, v1)) return 0.0f;
 
 		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
@@ -1444,7 +1444,7 @@ public class RawVecUtils2F
 		float v0 = t2v0 - t1[0];
 		float v1 = t2v1 - t1[1];
 		
-		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
+		if(tup_isZero_2f(v0, v1)) return 0.0f;
 		
 		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
@@ -1454,7 +1454,7 @@ public class RawVecUtils2F
 		float v0 = t2[0] - t1v0;
 		float v1 = t2[1] - t1v1;
 
-		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
+		if(tup_isZero_2f(v0, v1)) return 0.0f;
 		
 		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
@@ -1464,7 +1464,7 @@ public class RawVecUtils2F
 		float v0 = t2v0 - t1v0;
 		float v1 = t2v1 - t1v1;
 		
-		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
+		if(tup_isZero_2f(v0, v1)) return 0.0f;
 		
 		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
@@ -1474,7 +1474,7 @@ public class RawVecUtils2F
 		float v0 = t2[0] - t1[0];
 		float v1 = t2[1] - t1[1];
 		
-		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
+		if(tup_isZeroEM_2f(tolerance, v0, v1)) return 0.0f;
 		
 		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
@@ -1484,7 +1484,7 @@ public class RawVecUtils2F
 		float v0 = t2v0 - t1[0];
 		float v1 = t2v1 - t1[1];
 		
-		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
+		if(tup_isZeroEM_2f(tolerance, v0, v1)) return 0.0f;
 		
 		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
@@ -1494,7 +1494,7 @@ public class RawVecUtils2F
 		float v0 = t2[0] - t1v0;
 		float v1 = t2[1] - t1v1;
 		
-		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
+		if(tup_isZeroEM_2f(tolerance, v0, v1)) return 0.0f;
 		
 		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
@@ -1504,7 +1504,7 @@ public class RawVecUtils2F
 		float v0 = t2v0 - t1v0;
 		float v1 = t2v1 - t1v1;
 		
-		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
+		if(tup_isZeroEM_2f(tolerance, v0, v1)) return 0.0f;
 		
 		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
@@ -1514,7 +1514,7 @@ public class RawVecUtils2F
 		float v0 = t2[0] - t1[0];
 		float v1 = t2[1] - t1[1];
 		
-		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		if(tup_isZeroEM4_2f(v0, v1)) return 0.0f;
 		
 		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
@@ -1524,7 +1524,7 @@ public class RawVecUtils2F
 		float v0 = t2v0 - t1[0];
 		float v1 = t2v1 - t1[1];
 		
-		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		if(tup_isZeroEM4_2f(v0, v1)) return 0.0f;
 		
 		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
@@ -1534,7 +1534,7 @@ public class RawVecUtils2F
 		float v0 = t2[0] - t1v0;
 		float v1 = t2[1] - t1v1;
 		
-		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		if(tup_isZeroEM4_2f(v0, v1)) return 0.0f;
 		
 		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
@@ -1544,7 +1544,7 @@ public class RawVecUtils2F
 		float v0 = t2v0 - t1v0;
 		float v1 = t2v1 - t1v1;
 		
-		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		if(tup_isZeroEM4_2f(v0, v1)) return 0.0f;
 		
 		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
@@ -1554,7 +1554,7 @@ public class RawVecUtils2F
 		float v0 = t2[0] - t1[0];
 		float v1 = t2[1] - t1[1];
 		
-		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		if(tup_isZeroEM6_2f(v0, v1)) return 0.0f;
 		
 		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
@@ -1564,7 +1564,7 @@ public class RawVecUtils2F
 		float v0 = t2v0 - t1[0];
 		float v1 = t2v1 - t1[1];
 		
-		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		if(tup_isZeroEM6_2f(v0, v1)) return 0.0f;
 		
 		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
@@ -1574,7 +1574,7 @@ public class RawVecUtils2F
 		float v0 = t2[0] - t1v0;
 		float v1 = t2[1] - t1v1;
 		
-		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		if(tup_isZeroEM6_2f(v0, v1)) return 0.0f;
 		
 		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
@@ -1584,7 +1584,7 @@ public class RawVecUtils2F
 		float v0 = t2v0 - t1v0;
 		float v1 = t2v1 - t1v1;
 		
-		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		if(tup_isZeroEM6_2f(v0, v1)) return 0.0f;
 		
 		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
@@ -1594,7 +1594,7 @@ public class RawVecUtils2F
 		float v0 = t2[0] - t1[0];
 		float v1 = t2[1] - t1[1];
 		
-		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		if(tup_isZeroEM8_2f(v0, v1)) return 0.0f;
 		
 		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
@@ -1604,7 +1604,7 @@ public class RawVecUtils2F
 		float v0 = t2v0 - t1[0];
 		float v1 = t2v1 - t1[1];
 		
-		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		if(tup_isZeroEM8_2f(v0, v1)) return 0.0f;
 		
 		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
@@ -1614,7 +1614,7 @@ public class RawVecUtils2F
 		float v0 = t2[0] - t1v0;
 		float v1 = t2[1] - t1v1;
 		
-		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		if(tup_isZeroEM8_2f(v0, v1)) return 0.0f;
 		
 		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
@@ -1624,7 +1624,7 @@ public class RawVecUtils2F
 		float v0 = t2v0 - t1v0;
 		float v1 = t2v1 - t1v1;
 		
-		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		if(tup_isZeroEM8_2f(v0, v1)) return 0.0f;
 		
 		return MathUtils.sqrt(v0 * v0 + v1 * v1);
 	}
@@ -1634,7 +1634,7 @@ public class RawVecUtils2F
 		float v0 = t2[0] - t1[0];
 		float v1 = t2[1] - t1[1];
 		
-		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
+		if(tup_isZero_2f(v0, v1)) return 0.0f;
 		
 		return v0 * v0 + v1 * v1;
 	}
@@ -1644,7 +1644,7 @@ public class RawVecUtils2F
 		float v0 = t2v0 - t1[0];
 		float v1 = t2v1 - t1[1];
 		
-		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
+		if(tup_isZero_2f(v0, v1)) return 0.0f;
 		
 		return v0 * v0 + v1 * v1;
 	}
@@ -1654,7 +1654,7 @@ public class RawVecUtils2F
 		float v0 = t2[0] - t1v0;
 		float v1 = t2[1] - t1v1;
 		
-		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
+		if(tup_isZero_2f(v0, v1)) return 0.0f;
 		
 		return v0 * v0 + v1 * v1;
 	}
@@ -1664,7 +1664,7 @@ public class RawVecUtils2F
 		float v0 = t2v0 - t1v0;
 		float v1 = t2v1 - t1v1;
 		
-		if(RawTupUtils2F.isZero(v0, v1)) return 0.0f;
+		if(tup_isZero_2f(v0, v1)) return 0.0f;
 		
 		return v0 * v0 + v1 * v1;
 	}
@@ -1674,7 +1674,7 @@ public class RawVecUtils2F
 		float v0 = t2[0] - t1[0];
 		float v1 = t2[1] - t1[1];
 		
-		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
+		if(tup_isZeroEM_2f(tolerance, v0, v1)) return 0.0f;
 		
 		return v0 * v0 + v1 * v1;
 	}
@@ -1684,7 +1684,7 @@ public class RawVecUtils2F
 		float v0 = t2v0 - t1[0];
 		float v1 = t2v1 - t1[1];
 		
-		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
+		if(tup_isZeroEM_2f(tolerance, v0, v1)) return 0.0f;
 		
 		return v0 * v0 + v1 * v1;
 	}
@@ -1694,7 +1694,7 @@ public class RawVecUtils2F
 		float v0 = t2[0] - t1v0;
 		float v1 = t2[1] - t1v1;
 		
-		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
+		if(tup_isZeroEM_2f(tolerance, v0, v1)) return 0.0f;
 		
 		return v0 * v0 + v1 * v1;
 	}
@@ -1704,7 +1704,7 @@ public class RawVecUtils2F
 		float v0 = t2v0 - t1v0;
 		float v1 = t2v1 - t1v1;
 		
-		if(RawTupUtils2F.isZeroEM(tolerance, v0, v1)) return 0.0f;
+		if(tup_isZeroEM_2f(tolerance, v0, v1)) return 0.0f;
 		
 		return v0 * v0 + v1 * v1;
 	}
@@ -1714,7 +1714,7 @@ public class RawVecUtils2F
 		float v0 = t2[0] - t1[0];
 		float v1 = t2[1] - t1[1];
 		
-		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		if(tup_isZeroEM4_2f(v0, v1)) return 0.0f;
 		
 		return v0 * v0 + v1 * v1;
 	}
@@ -1724,7 +1724,7 @@ public class RawVecUtils2F
 		float v0 = t2v0 - t1[0];
 		float v1 = t2v1 - t1[1];
 		
-		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		if(tup_isZeroEM4_2f(v0, v1)) return 0.0f;
 		
 		return v0 * v0 + v1 * v1;
 	}
@@ -1734,7 +1734,7 @@ public class RawVecUtils2F
 		float v0 = t2[0] - t1v0;
 		float v1 = t2[1] - t1v1;
 		
-		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		if(tup_isZeroEM4_2f(v0, v1)) return 0.0f;
 		
 		return v0 * v0 + v1 * v1;
 	}
@@ -1744,7 +1744,7 @@ public class RawVecUtils2F
 		float v0 = t2v0 - t1v0;
 		float v1 = t2v1 - t1v1;
 		
-		if(RawTupUtils2F.isZeroEM4(v0, v1)) return 0.0f;
+		if(tup_isZeroEM4_2f(v0, v1)) return 0.0f;
 		
 		return v0 * v0 + v1 * v1;
 	}
@@ -1754,7 +1754,7 @@ public class RawVecUtils2F
 		float v0 = t2[0] - t1[0];
 		float v1 = t2[1] - t1[1];
 		
-		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		if(tup_isZeroEM6_2f(v0, v1)) return 0.0f;
 		
 		return v0 * v0 + v1 * v1;
 	}
@@ -1764,7 +1764,7 @@ public class RawVecUtils2F
 		float v0 = t2v0 - t1[0];
 		float v1 = t2v1 - t1[1];
 		
-		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		if(tup_isZeroEM6_2f(v0, v1)) return 0.0f;
 		
 		return v0 * v0 + v1 * v1;
 	}
@@ -1774,7 +1774,7 @@ public class RawVecUtils2F
 		float v0 = t2[0] - t1v0;
 		float v1 = t2[1] - t1v1;
 		
-		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		if(tup_isZeroEM6_2f(v0, v1)) return 0.0f;
 		
 		return v0 * v0 + v1 * v1;
 	}
@@ -1784,7 +1784,7 @@ public class RawVecUtils2F
 		float v0 = t2v0 - t1v0;
 		float v1 = t2v1 - t1v1;
 		
-		if(RawTupUtils2F.isZeroEM6(v0, v1)) return 0.0f;
+		if(tup_isZeroEM6_2f(v0, v1)) return 0.0f;
 		
 		return v0 * v0 + v1 * v1;
 	}
@@ -1794,7 +1794,7 @@ public class RawVecUtils2F
 		float v0 = t2[0] - t1[0];
 		float v1 = t2[1] - t1[1];
 		
-		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		if(tup_isZeroEM8_2f(v0, v1)) return 0.0f;
 		
 		return v0 * v0 + v1 * v1;
 	}
@@ -1804,7 +1804,7 @@ public class RawVecUtils2F
 		float v0 = t2v0 - t1[0];
 		float v1 = t2v1 - t1[1];
 		
-		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		if(tup_isZeroEM8_2f(v0, v1)) return 0.0f;
 		
 		return v0 * v0 + v1 * v1;
 	}
@@ -1814,7 +1814,7 @@ public class RawVecUtils2F
 		float v0 = t2[0] - t1v0;
 		float v1 = t2[1] - t1v1;
 		
-		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		if(tup_isZeroEM8_2f(v0, v1)) return 0.0f;
 		
 		return v0 * v0 + v1 * v1;
 	}
@@ -1824,7 +1824,7 @@ public class RawVecUtils2F
 		float v0 = t2v0 - t1v0;
 		float v1 = t2v1 - t1v1;
 		
-		if(RawTupUtils2F.isZeroEM8(v0, v1)) return 0.0f;
+		if(tup_isZeroEM8_2f(v0, v1)) return 0.0f;
 		
 		return v0 * v0 + v1 * v1;
 	}

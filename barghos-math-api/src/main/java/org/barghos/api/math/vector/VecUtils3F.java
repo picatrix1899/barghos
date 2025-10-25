@@ -42,10 +42,10 @@ public final class VecUtils3F
 
 	public static IndexValuePairF min(ITupRF t, @ExtractionParam IndexValuePairF res)
 	{
-		float value = t.getAt(0);
+		float value = t.at(0);
 		int index = 0;
 
-		float tv1 = t.getAt(1);
+		float tv1 = t.at(1);
 
 		if (tv1 < value)
 		{
@@ -53,7 +53,7 @@ public final class VecUtils3F
 			index = 1;
 		}
 
-		float tv2 = t.getAt(2);
+		float tv2 = t.at(2);
 
 		if (tv2 < value)
 		{
@@ -94,10 +94,10 @@ public final class VecUtils3F
 
 	public static IndexValuePairF max(ITupRF t, @ExtractionParam IndexValuePairF res)
 	{
-		float value = t.getAt(0);
+		float value = t.at(0);
 		int index = 0;
 
-		float tv1 = t.getAt(1);
+		float tv1 = t.at(1);
 
 		if (tv1 > value)
 		{
@@ -105,7 +105,7 @@ public final class VecUtils3F
 			index = 1;
 		}
 
-		float tv2 = t.getAt(1);
+		float tv2 = t.at(1);
 
 		if (tv2 > value)
 		{
@@ -129,9 +129,9 @@ public final class VecUtils3F
 
 	public static float[] minComponents(ITup3RF t1, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = Math.min(t1.v0(), t2.getAt(0));
-		res[1] = Math.min(t1.v1(), t2.getAt(1));
-		res[2] = Math.min(t1.v2(), t2.getAt(2));
+		res[0] = Math.min(t1.v0(), t2.at(0));
+		res[1] = Math.min(t1.v1(), t2.at(1));
+		res[2] = Math.min(t1.v2(), t2.at(2));
 
 		return res;
 	}
@@ -156,36 +156,36 @@ public final class VecUtils3F
 
 	public static float[] minComponents(ITupRF t1, ITup3RF t2, @ExtractionParam float[] res)
 	{
-		res[0] = Math.min(t1.getAt(0), t2.v0());
-		res[1] = Math.min(t1.getAt(1), t2.v1());
-		res[2] = Math.min(t1.getAt(2), t2.v2());
+		res[0] = Math.min(t1.at(0), t2.v0());
+		res[1] = Math.min(t1.at(1), t2.v1());
+		res[2] = Math.min(t1.at(2), t2.v2());
 
 		return res;
 	}
 
 	public static float[] minComponents(ITupRF t1, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = Math.min(t1.getAt(0), t2.getAt(0));
-		res[1] = Math.min(t1.getAt(1), t2.getAt(1));
-		res[2] = Math.min(t1.getAt(2), t2.getAt(2));
+		res[0] = Math.min(t1.at(0), t2.at(0));
+		res[1] = Math.min(t1.at(1), t2.at(1));
+		res[2] = Math.min(t1.at(2), t2.at(2));
 
 		return res;
 	}
 
 	public static float[] minComponents(ITupRF t1, float[] t2, @ExtractionParam float[] res)
 	{
-		res[0] = Math.min(t1.getAt(0), t2[0]);
-		res[1] = Math.min(t1.getAt(1), t2[1]);
-		res[2] = Math.min(t1.getAt(2), t2[2]);
+		res[0] = Math.min(t1.at(0), t2[0]);
+		res[1] = Math.min(t1.at(1), t2[1]);
+		res[2] = Math.min(t1.at(2), t2[2]);
 
 		return res;
 	}
 
 	public static float[] minComponents(ITupRF t1, float t2v0, float t2v1, float t2v2, @ExtractionParam float[] res)
 	{
-		res[0] = Math.min(t1.getAt(0), t2v0);
-		res[1] = Math.min(t1.getAt(1), t2v1);
-		res[2] = Math.min(t1.getAt(2), t2v2);
+		res[0] = Math.min(t1.at(0), t2v0);
+		res[1] = Math.min(t1.at(1), t2v1);
+		res[2] = Math.min(t1.at(2), t2v2);
 
 		return res;
 	}
@@ -201,9 +201,9 @@ public final class VecUtils3F
 
 	public static float[] minComponents(float[] t1, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = Math.min(t1[0], t2.getAt(0));
-		res[1] = Math.min(t1[1], t2.getAt(1));
-		res[2] = Math.min(t1[2], t2.getAt(2));
+		res[0] = Math.min(t1[0], t2.at(0));
+		res[1] = Math.min(t1[1], t2.at(1));
+		res[2] = Math.min(t1[2], t2.at(2));
 
 		return res;
 	}
@@ -219,9 +219,9 @@ public final class VecUtils3F
 
 	public static float[] minComponents(float t1v0, float t1v1, float t1v2, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = Math.min(t1v0, t2.getAt(0));
-		res[1] = Math.min(t1v1, t2.getAt(1));
-		res[2] = Math.min(t1v2, t2.getAt(2));
+		res[0] = Math.min(t1v0, t2.at(0));
+		res[1] = Math.min(t1v1, t2.at(1));
+		res[2] = Math.min(t1v2, t2.at(2));
 
 		return res;
 	}
@@ -235,7 +235,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T minComponents(ITup3RF t1, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set(Math.min(t1.v0(), t2.getAt(0)), Math.min(t1.v1(), t2.getAt(1)), Math.min(t1.v2(), t2.getAt(2)));
+		res.set(Math.min(t1.v0(), t2.at(0)), Math.min(t1.v1(), t2.at(1)), Math.min(t1.v2(), t2.at(2)));
 
 		return res;
 	}
@@ -256,28 +256,28 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T minComponents(ITupRF t1, ITup3RF t2, @ExtractionParam T res)
 	{
-		res.set(Math.min(t1.getAt(0), t2.v0()), Math.min(t1.getAt(1), t2.v1()), Math.min(t1.getAt(2), t2.v2()));
+		res.set(Math.min(t1.at(0), t2.v0()), Math.min(t1.at(1), t2.v1()), Math.min(t1.at(2), t2.v2()));
 
 		return res;
 	}
 
 	public static <T extends ITup3WF> T minComponents(ITupRF t1, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set(Math.min(t1.getAt(0), t2.getAt(0)), Math.min(t1.getAt(1), t2.getAt(1)), Math.min(t1.getAt(2), t2.getAt(2)));
+		res.set(Math.min(t1.at(0), t2.at(0)), Math.min(t1.at(1), t2.at(1)), Math.min(t1.at(2), t2.at(2)));
 
 		return res;
 	}
 
 	public static <T extends ITup3WF> T minComponents(ITupRF t1, float[] t2, @ExtractionParam T res)
 	{
-		res.set(Math.min(t1.getAt(0), t2[0]), Math.min(t1.getAt(1), t2[1]), Math.min(t1.getAt(2), t2[2]));
+		res.set(Math.min(t1.at(0), t2[0]), Math.min(t1.at(1), t2[1]), Math.min(t1.at(2), t2[2]));
 
 		return res;
 	}
 
 	public static <T extends ITup3WF> T minComponents(ITupRF t1, float t2v0, float t2v1, float t2v2, @ExtractionParam T res)
 	{
-		res.set(Math.min(t1.getAt(0), t2v0), Math.min(t1.getAt(1), t2v1), Math.min(t1.getAt(2), t2v2));
+		res.set(Math.min(t1.at(0), t2v0), Math.min(t1.at(1), t2v1), Math.min(t1.at(2), t2v2));
 
 		return res;
 	}
@@ -291,7 +291,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T minComponents(float[] t1, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set(Math.min(t1[0], t2.getAt(0)), Math.min(t1[1], t2.getAt(1)), Math.min(t1[2], t2.getAt(2)));
+		res.set(Math.min(t1[0], t2.at(0)), Math.min(t1[1], t2.at(1)), Math.min(t1[2], t2.at(2)));
 
 		return res;
 	}
@@ -319,7 +319,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T minComponents(float t1v0, float t1v1, float t1v2, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set(Math.min(t1v0, t2.getAt(0)), Math.min(t1v1, t2.getAt(1)), Math.min(t1v2, t2.getAt(2)));
+		res.set(Math.min(t1v0, t2.at(0)), Math.min(t1v1, t2.at(1)), Math.min(t1v2, t2.at(2)));
 
 		return res;
 	}
@@ -345,7 +345,7 @@ public final class VecUtils3F
 
 	public static <T> T minComponentsFunc(ITup3RF t1, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply(Math.min(t1.v0(), t2.getAt(0)), Math.min(t1.v1(), t2.getAt(1)), Math.min(t1.v2(), t2.getAt(2)));
+		return func.apply(Math.min(t1.v0(), t2.at(0)), Math.min(t1.v1(), t2.at(1)), Math.min(t1.v2(), t2.at(2)));
 	}
 
 	public static <T> T minComponentsFunc(ITup3RF t1, float[] t2, IFunc3F<T> func)
@@ -360,22 +360,22 @@ public final class VecUtils3F
 
 	public static <T> T minComponentsFunc(ITupRF t1, ITup3RF t2, IFunc3F<T> func)
 	{
-		return func.apply(Math.min(t1.getAt(0), t2.v0()), Math.min(t1.getAt(1), t2.v1()), Math.min(t1.getAt(2), t2.v2()));
+		return func.apply(Math.min(t1.at(0), t2.v0()), Math.min(t1.at(1), t2.v1()), Math.min(t1.at(2), t2.v2()));
 	}
 
 	public static <T> T minComponentsFunc(ITupRF t1, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply(Math.min(t1.getAt(0), t2.getAt(0)), Math.min(t1.getAt(1), t2.getAt(1)), Math.min(t1.getAt(2), t2.getAt(2)));
+		return func.apply(Math.min(t1.at(0), t2.at(0)), Math.min(t1.at(1), t2.at(1)), Math.min(t1.at(2), t2.at(2)));
 	}
 
 	public static <T> T minComponentsFunc(ITupRF t1, float[] t2, IFunc3F<T> func)
 	{
-		return func.apply(Math.min(t1.getAt(0), t2[0]), Math.min(t1.getAt(1), t2[1]), Math.min(t1.getAt(2), t2[2]));
+		return func.apply(Math.min(t1.at(0), t2[0]), Math.min(t1.at(1), t2[1]), Math.min(t1.at(2), t2[2]));
 	}
 
 	public static <T> T minComponentsFunc(ITupRF t1, float t2v0, float t2v1, float t2v2, IFunc3F<T> func)
 	{
-		return func.apply(Math.min(t1.getAt(0), t2v0), Math.min(t1.getAt(1), t2v1), Math.min(t1.getAt(2), t2v2));
+		return func.apply(Math.min(t1.at(0), t2v0), Math.min(t1.at(1), t2v1), Math.min(t1.at(2), t2v2));
 	}
 
 	public static <T> T minComponentsFunc(float[] t1, ITup3RF t2, IFunc3F<T> func)
@@ -385,7 +385,7 @@ public final class VecUtils3F
 
 	public static <T> T minComponentsFunc(float[] t1, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply(Math.min(t1[0], t2.getAt(0)), Math.min(t1[1], t2.getAt(1)), Math.min(t1[2], t2.getAt(2)));
+		return func.apply(Math.min(t1[0], t2.at(0)), Math.min(t1[1], t2.at(1)), Math.min(t1[2], t2.at(2)));
 	}
 
 	public static <T> T minComponentsFunc(float[] t1, float[] t2, IFunc3F<T> func)
@@ -405,7 +405,7 @@ public final class VecUtils3F
 
 	public static <T> T minComponentsFunc(float t1v0, float t1v1, float t1v2, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply(Math.min(t1v0, t2.getAt(0)), Math.min(t1v1, t2.getAt(1)), Math.min(t1v2, t2.getAt(2)));
+		return func.apply(Math.min(t1v0, t2.at(0)), Math.min(t1v1, t2.at(1)), Math.min(t1v2, t2.at(2)));
 	}
 
 	public static <T> T minComponentsFunc(float t1v0, float t1v1, float t1v2, float[] t2, IFunc3F<T> func)
@@ -429,9 +429,9 @@ public final class VecUtils3F
 
 	public static float[] maxComponents(ITup3RF t1, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = Math.max(t1.v0(), t2.getAt(0));
-		res[1] = Math.max(t1.v1(), t2.getAt(1));
-		res[2] = Math.max(t1.v2(), t2.getAt(2));
+		res[0] = Math.max(t1.v0(), t2.at(0));
+		res[1] = Math.max(t1.v1(), t2.at(1));
+		res[2] = Math.max(t1.v2(), t2.at(2));
 
 		return res;
 	}
@@ -456,36 +456,36 @@ public final class VecUtils3F
 
 	public static float[] maxComponents(ITupRF t1, ITup3RF t2, @ExtractionParam float[] res)
 	{
-		res[0] = Math.max(t1.getAt(0), t2.v0());
-		res[1] = Math.max(t1.getAt(1), t2.v1());
-		res[2] = Math.max(t1.getAt(2), t2.v2());
+		res[0] = Math.max(t1.at(0), t2.v0());
+		res[1] = Math.max(t1.at(1), t2.v1());
+		res[2] = Math.max(t1.at(2), t2.v2());
 
 		return res;
 	}
 
 	public static float[] maxComponents(ITupRF t1, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = Math.max(t1.getAt(0), t2.getAt(0));
-		res[1] = Math.max(t1.getAt(1), t2.getAt(1));
-		res[2] = Math.max(t1.getAt(2), t2.getAt(2));
+		res[0] = Math.max(t1.at(0), t2.at(0));
+		res[1] = Math.max(t1.at(1), t2.at(1));
+		res[2] = Math.max(t1.at(2), t2.at(2));
 
 		return res;
 	}
 
 	public static float[] maxComponents(ITupRF t1, float[] t2, @ExtractionParam float[] res)
 	{
-		res[0] = Math.max(t1.getAt(0), t2[0]);
-		res[1] = Math.max(t1.getAt(1), t2[1]);
-		res[2] = Math.max(t1.getAt(2), t2[2]);
+		res[0] = Math.max(t1.at(0), t2[0]);
+		res[1] = Math.max(t1.at(1), t2[1]);
+		res[2] = Math.max(t1.at(2), t2[2]);
 
 		return res;
 	}
 
 	public static float[] maxComponents(ITupRF t1, float t2v0, float t2v1, float t2v2, @ExtractionParam float[] res)
 	{
-		res[0] = Math.max(t1.getAt(0), t2v0);
-		res[1] = Math.max(t1.getAt(1), t2v1);
-		res[2] = Math.max(t1.getAt(2), t2v2);
+		res[0] = Math.max(t1.at(0), t2v0);
+		res[1] = Math.max(t1.at(1), t2v1);
+		res[2] = Math.max(t1.at(2), t2v2);
 
 		return res;
 	}
@@ -501,9 +501,9 @@ public final class VecUtils3F
 
 	public static float[] maxComponents(float[] t1, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = Math.max(t1[0], t2.getAt(0));
-		res[1] = Math.max(t1[1], t2.getAt(1));
-		res[2] = Math.max(t1[2], t2.getAt(2));
+		res[0] = Math.max(t1[0], t2.at(0));
+		res[1] = Math.max(t1[1], t2.at(1));
+		res[2] = Math.max(t1[2], t2.at(2));
 
 		return res;
 	}
@@ -519,9 +519,9 @@ public final class VecUtils3F
 
 	public static float[] maxComponents(float t1v0, float t1v1, float t1v2, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = Math.max(t1v0, t2.getAt(0));
-		res[1] = Math.max(t1v1, t2.getAt(1));
-		res[2] = Math.max(t1v2, t2.getAt(2));
+		res[0] = Math.max(t1v0, t2.at(0));
+		res[1] = Math.max(t1v1, t2.at(1));
+		res[2] = Math.max(t1v2, t2.at(2));
 
 		return res;
 	}
@@ -535,7 +535,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T maxComponents(ITup3RF t1, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set(Math.max(t1.v0(), t2.getAt(0)), Math.max(t1.v1(), t2.getAt(1)), Math.max(t1.v2(), t2.getAt(2)));
+		res.set(Math.max(t1.v0(), t2.at(0)), Math.max(t1.v1(), t2.at(1)), Math.max(t1.v2(), t2.at(2)));
 
 		return res;
 	}
@@ -556,28 +556,28 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T maxComponents(ITupRF t1, ITup3RF t2, @ExtractionParam T res)
 	{
-		res.set(Math.max(t1.getAt(0), t2.v0()), Math.max(t1.getAt(1), t2.v1()), Math.max(t1.getAt(2), t2.v2()));
+		res.set(Math.max(t1.at(0), t2.v0()), Math.max(t1.at(1), t2.v1()), Math.max(t1.at(2), t2.v2()));
 
 		return res;
 	}
 
 	public static <T extends ITup3WF> T maxComponents(ITupRF t1, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set(Math.max(t1.getAt(0), t2.getAt(0)), Math.max(t1.getAt(1), t2.getAt(1)), Math.max(t1.getAt(2), t2.getAt(2)));
+		res.set(Math.max(t1.at(0), t2.at(0)), Math.max(t1.at(1), t2.at(1)), Math.max(t1.at(2), t2.at(2)));
 
 		return res;
 	}
 
 	public static <T extends ITup3WF> T maxComponents(ITupRF t1, float[] t2, @ExtractionParam T res)
 	{
-		res.set(Math.max(t1.getAt(0), t2[0]), Math.max(t1.getAt(1), t2[1]), Math.max(t1.getAt(2), t2[2]));
+		res.set(Math.max(t1.at(0), t2[0]), Math.max(t1.at(1), t2[1]), Math.max(t1.at(2), t2[2]));
 
 		return res;
 	}
 
 	public static <T extends ITup3WF> T maxComponents(ITupRF t1, float t2v0, float t2v1, float t2v2, @ExtractionParam T res)
 	{
-		res.set(Math.max(t1.getAt(0), t2v0), Math.max(t1.getAt(1), t2v1), Math.max(t1.getAt(2), t2v2));
+		res.set(Math.max(t1.at(0), t2v0), Math.max(t1.at(1), t2v1), Math.max(t1.at(2), t2v2));
 
 		return res;
 	}
@@ -591,7 +591,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T maxComponents(float[] t1, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set(Math.max(t1[0], t2.getAt(0)), Math.max(t1[1], t2.getAt(1)), Math.max(t1[2], t2.getAt(2)));
+		res.set(Math.max(t1[0], t2.at(0)), Math.max(t1[1], t2.at(1)), Math.max(t1[2], t2.at(2)));
 
 		return res;
 	}
@@ -619,7 +619,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T maxComponents(float t1v0, float t1v1, float t1v2, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set(Math.max(t1v0, t2.getAt(0)), Math.max(t1v1, t2.getAt(1)), Math.max(t1v2, t2.getAt(2)));
+		res.set(Math.max(t1v0, t2.at(0)), Math.max(t1v1, t2.at(1)), Math.max(t1v2, t2.at(2)));
 
 		return res;
 	}
@@ -645,7 +645,7 @@ public final class VecUtils3F
 
 	public static <T> T maxComponentsFunc(ITup3RF t1, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply(Math.max(t1.v0(), t2.getAt(0)), Math.max(t1.v1(), t2.getAt(1)), Math.max(t1.v2(), t2.getAt(2)));
+		return func.apply(Math.max(t1.v0(), t2.at(0)), Math.max(t1.v1(), t2.at(1)), Math.max(t1.v2(), t2.at(2)));
 	}
 
 	public static <T> T maxComponentsFunc(ITup3RF t1, float[] t2, IFunc3F<T> func)
@@ -660,22 +660,22 @@ public final class VecUtils3F
 
 	public static <T> T maxComponentsFunc(ITupRF t1, ITup3RF t2, IFunc3F<T> func)
 	{
-		return func.apply(Math.max(t1.getAt(0), t2.v0()), Math.max(t1.getAt(1), t2.v1()), Math.max(t1.getAt(2), t2.v2()));
+		return func.apply(Math.max(t1.at(0), t2.v0()), Math.max(t1.at(1), t2.v1()), Math.max(t1.at(2), t2.v2()));
 	}
 
 	public static <T> T maxComponentsFunc(ITupRF t1, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply(Math.max(t1.getAt(0), t2.getAt(0)), Math.max(t1.getAt(1), t2.getAt(1)), Math.max(t1.getAt(2), t2.getAt(2)));
+		return func.apply(Math.max(t1.at(0), t2.at(0)), Math.max(t1.at(1), t2.at(1)), Math.max(t1.at(2), t2.at(2)));
 	}
 
 	public static <T> T maxComponentsFunc(ITupRF t1, float[] t2, IFunc3F<T> func)
 	{
-		return func.apply(Math.max(t1.getAt(0), t2[0]), Math.max(t1.getAt(1), t2[1]), Math.max(t1.getAt(2), t2[2]));
+		return func.apply(Math.max(t1.at(0), t2[0]), Math.max(t1.at(1), t2[1]), Math.max(t1.at(2), t2[2]));
 	}
 
 	public static <T> T maxComponentsFunc(ITupRF t1, float t2v0, float t2v1, float t2v2, IFunc3F<T> func)
 	{
-		return func.apply(Math.max(t1.getAt(0), t2v0), Math.max(t1.getAt(1), t2v1), Math.max(t1.getAt(2), t2v2));
+		return func.apply(Math.max(t1.at(0), t2v0), Math.max(t1.at(1), t2v1), Math.max(t1.at(2), t2v2));
 	}
 
 	public static <T> T maxComponentsFunc(float[] t1, ITup3RF t2, IFunc3F<T> func)
@@ -685,7 +685,7 @@ public final class VecUtils3F
 
 	public static <T> T maxComponentsFunc(float[] t1, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply(Math.max(t1[0], t2.getAt(0)), Math.max(t1[1], t2.getAt(1)), Math.max(t1[2], t2.getAt(2)));
+		return func.apply(Math.max(t1[0], t2.at(0)), Math.max(t1[1], t2.at(1)), Math.max(t1[2], t2.at(2)));
 	}
 
 	public static <T> T maxComponentsFunc(float[] t1, float[] t2, IFunc3F<T> func)
@@ -705,7 +705,7 @@ public final class VecUtils3F
 
 	public static <T> T maxComponentsFunc(float t1v0, float t1v1, float t1v2, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply(Math.max(t1v0, t2.getAt(0)), Math.max(t1v1, t2.getAt(1)), Math.max(t1v2, t2.getAt(2)));
+		return func.apply(Math.max(t1v0, t2.at(0)), Math.max(t1v1, t2.at(1)), Math.max(t1v2, t2.at(2)));
 	}
 
 	public static <T> T maxComponentsFunc(float t1v0, float t1v1, float t1v2, float[] t2, IFunc3F<T> func)
@@ -720,32 +720,32 @@ public final class VecUtils3F
 
 	public static float[] swizzle(ITup3RF t, int[] indices, float[] res)
 	{
-		res[0] = t.getAt(indices[0]);
-		res[1] = t.getAt(indices[1]);
-		res[2] = t.getAt(indices[2]);
+		res[0] = t.at(indices[0]);
+		res[1] = t.at(indices[1]);
+		res[2] = t.at(indices[2]);
 
 		return res;
 	}
 
 	public static float[] swizzle(ITupRF t, int[] indices, float[] res)
 	{
-		res[0] = t.getAt(indices[0]);
-		res[1] = t.getAt(indices[1]);
-		res[2] = t.getAt(indices[2]);
+		res[0] = t.at(indices[0]);
+		res[1] = t.at(indices[1]);
+		res[2] = t.at(indices[2]);
 
 		return res;
 	}
 
 	public static <T extends ITup3WF> T swizzle(ITup3RF t, int[] indices, T res)
 	{
-		res.set(t.getAt(indices[0]), t.getAt(indices[1]), t.getAt(indices[2]));
+		res.set(t.at(indices[0]), t.at(indices[1]), t.at(indices[2]));
 
 		return res;
 	}
 
 	public static <T extends ITup3WF> T swizzle(ITupRF t, int[] indices, T res)
 	{
-		res.set(t.getAt(indices[0]), t.getAt(indices[1]), t.getAt(indices[2]));
+		res.set(t.at(indices[0]), t.at(indices[1]), t.at(indices[2]));
 
 		return res;
 	}
@@ -787,12 +787,12 @@ public final class VecUtils3F
 
 	public static <T> T swizzleFunc(ITup3RF t, int[] indices, IFunc3F<T> func)
 	{
-		return func.apply(t.getAt(indices[0]), t.getAt(indices[1]), t.getAt(indices[2]));
+		return func.apply(t.at(indices[0]), t.at(indices[1]), t.at(indices[2]));
 	}
 
 	public static <T> T swizzleFunc(ITupRF t, int[] indices, IFunc3F<T> func)
 	{
-		return func.apply(t.getAt(indices[0]), t.getAt(indices[1]), t.getAt(indices[2]));
+		return func.apply(t.at(indices[0]), t.at(indices[1]), t.at(indices[2]));
 	}
 
 	public static <T> T swizzleFunc(float[] t, int[] indices, IFunc3F<T> func)
@@ -828,32 +828,32 @@ public final class VecUtils3F
 
 	public static float[] swizzle(ITup3RF t, int index0, int index1, int index2, float[] res)
 	{
-		res[0] = t.getAt(index0);
-		res[1] = t.getAt(index1);
-		res[2] = t.getAt(index2);
+		res[0] = t.at(index0);
+		res[1] = t.at(index1);
+		res[2] = t.at(index2);
 
 		return res;
 	}
 
 	public static float[] swizzle(ITupRF t, int index0, int index1, int index2, float[] res)
 	{
-		res[0] = t.getAt(index0);
-		res[1] = t.getAt(index1);
-		res[2] = t.getAt(index2);
+		res[0] = t.at(index0);
+		res[1] = t.at(index1);
+		res[2] = t.at(index2);
 
 		return res;
 	}
 
 	public static <T extends ITup3WF> T swizzle(ITup3RF t, int index0, int index1, int index2, T res)
 	{
-		res.set(t.getAt(index0), t.getAt(index1), t.getAt(index2));
+		res.set(t.at(index0), t.at(index1), t.at(index2));
 
 		return res;
 	}
 
 	public static <T extends ITup3WF> T swizzle(ITupRF t, int index0, int index1, int index2, T res)
 	{
-		res.set(t.getAt(index0), t.getAt(index1), t.getAt(index2));
+		res.set(t.at(index0), t.at(index1), t.at(index2));
 
 		return res;
 	}
@@ -895,12 +895,12 @@ public final class VecUtils3F
 
 	public static <T> T swizzleFunc(ITup3RF t, int index0, int index1, int index2, IFunc3F<T> func)
 	{
-		return func.apply(t.getAt(index0), t.getAt(index1), t.getAt(index2));
+		return func.apply(t.at(index0), t.at(index1), t.at(index2));
 	}
 
 	public static <T> T swizzleFunc(ITupRF t, int index0, int index1, int index2, IFunc3F<T> func)
 	{
-		return func.apply(t.getAt(index0), t.getAt(index1), t.getAt(index2));
+		return func.apply(t.at(index0), t.at(index1), t.at(index2));
 	}
 
 	public static <T> T swizzleFunc(float[] t, int index0, int index1, int index2, IFunc3F<T> func)
@@ -990,9 +990,9 @@ public final class VecUtils3F
 
 	public static float[] swap(ITupRF t, int indexA, int indexB, float[] res)
 	{
-		float tv0 = t.getAt(0);
-		float tv1 = t.getAt(1);
-		float tv2 = t.getAt(2);
+		float tv0 = t.at(0);
+		float tv1 = t.at(1);
+		float tv2 = t.at(2);
 		
 		if(indexA == indexB)
 		{
@@ -1094,9 +1094,9 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T swap(ITupRF t, int indexA, int indexB, T res)
 	{
-		float tv0 = t.getAt(0);
-		float tv1 = t.getAt(1);
-		float tv2 = t.getAt(2);
+		float tv0 = t.at(0);
+		float tv1 = t.at(1);
+		float tv2 = t.at(2);
 		
 		if(indexA == indexB)
 		{
@@ -1283,9 +1283,9 @@ public final class VecUtils3F
 
 	public static <T> T swapFunc(ITupRF t, int indexA, int indexB, IFunc3F<T> func)
 	{
-		float tv0 = t.getAt(0);
-		float tv1 = t.getAt(1);
-		float tv2 = t.getAt(2);
+		float tv0 = t.at(0);
+		float tv1 = t.at(1);
+		float tv2 = t.at(2);
 		
 		if(indexA == indexB) return func.apply(tv0, tv1, tv2);
 		
@@ -1417,9 +1417,9 @@ public final class VecUtils3F
 
 	public static float[] swapV0V1(ITupRF t, float[] res)
 	{
-		res[0] = t.getAt(0);
-		res[1] = t.getAt(1);
-		res[2] = t.getAt(2);
+		res[0] = t.at(0);
+		res[1] = t.at(1);
+		res[2] = t.at(2);
 
 		return res;
 	}
@@ -1435,9 +1435,9 @@ public final class VecUtils3F
 
 	public static float[] swapV0V2(ITupRF t, float[] res)
 	{
-		res[0] = t.getAt(0);
-		res[1] = t.getAt(1);
-		res[2] = t.getAt(2);
+		res[0] = t.at(0);
+		res[1] = t.at(1);
+		res[2] = t.at(2);
 
 		return res;
 	}
@@ -1453,9 +1453,9 @@ public final class VecUtils3F
 
 	public static float[] swapV1V2(ITupRF t, float[] res)
 	{
-		res[0] = t.getAt(0);
-		res[1] = t.getAt(1);
-		res[2] = t.getAt(2);
+		res[0] = t.at(0);
+		res[1] = t.at(1);
+		res[2] = t.at(2);
 
 		return res;
 	}
@@ -1469,7 +1469,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T swapV0V1(ITupRF t, T res)
 	{
-		res.set(t.getAt(1), t.getAt(0), t.getAt(2));
+		res.set(t.at(1), t.at(0), t.at(2));
 
 		return res;
 	}
@@ -1497,7 +1497,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T swapV0V2(ITupRF t, T res)
 	{
-		res.set(t.getAt(2), t.getAt(1), t.getAt(0));
+		res.set(t.at(2), t.at(1), t.at(0));
 
 		return res;
 	}
@@ -1525,7 +1525,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T swapV1V2(ITupRF t, T res)
 	{
-		res.set(t.getAt(0), t.getAt(2), t.getAt(1));
+		res.set(t.at(0), t.at(2), t.at(1));
 
 		return res;
 	}
@@ -1551,7 +1551,7 @@ public final class VecUtils3F
 
 	public static <T> T swapV0V1Func(ITupRF t, IFunc3F<T> func)
 	{
-		return func.apply(t.getAt(1), t.getAt(0), t.getAt(2));
+		return func.apply(t.at(1), t.at(0), t.at(2));
 	}
 
 	public static <T> T swapV0V1Func(float[] t, IFunc3F<T> func)
@@ -1571,7 +1571,7 @@ public final class VecUtils3F
 
 	public static <T> T swapV0V2Func(ITupRF t, IFunc3F<T> func)
 	{
-		return func.apply(t.getAt(2), t.getAt(1), t.getAt(0));
+		return func.apply(t.at(2), t.at(1), t.at(0));
 	}
 
 	public static <T> T swapV0V2Func(float[] t, IFunc3F<T> func)
@@ -1591,7 +1591,7 @@ public final class VecUtils3F
 
 	public static <T> T swapV1V2Func(ITupRF t, IFunc3F<T> func)
 	{
-		return func.apply(t.getAt(0), t.getAt(2), t.getAt(1));
+		return func.apply(t.at(0), t.at(2), t.at(1));
 	}
 
 	public static <T> T swapV1V2Func(float[] t, IFunc3F<T> func)
@@ -1615,9 +1615,9 @@ public final class VecUtils3F
 
 	public static float[] lerp(double alpha, ITup3RF t1, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.lerp(alpha, t1.v0(), t2.getAt(0));
-		res[1] = MathUtils.lerp(alpha, t1.v1(), t2.getAt(1));
-		res[2] = MathUtils.lerp(alpha, t1.v2(), t2.getAt(2));
+		res[0] = MathUtils.lerp(alpha, t1.v0(), t2.at(0));
+		res[1] = MathUtils.lerp(alpha, t1.v1(), t2.at(1));
+		res[2] = MathUtils.lerp(alpha, t1.v2(), t2.at(2));
 
 		return res;
 	}
@@ -1642,36 +1642,36 @@ public final class VecUtils3F
 
 	public static float[] lerp(double alpha, ITupRF t1, ITup3RF t2, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.lerp(alpha, t1.getAt(0), t2.v0());
-		res[1] = MathUtils.lerp(alpha, t1.getAt(1), t2.v1());
-		res[2] = MathUtils.lerp(alpha, t1.getAt(2), t2.v2());
+		res[0] = MathUtils.lerp(alpha, t1.at(0), t2.v0());
+		res[1] = MathUtils.lerp(alpha, t1.at(1), t2.v1());
+		res[2] = MathUtils.lerp(alpha, t1.at(2), t2.v2());
 
 		return res;
 	}
 
 	public static float[] lerp(double alpha, ITupRF t1, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.lerp(alpha, t1.getAt(0), t2.getAt(0));
-		res[1] = MathUtils.lerp(alpha, t1.getAt(1), t2.getAt(1));
-		res[2] = MathUtils.lerp(alpha, t1.getAt(2), t2.getAt(2));
+		res[0] = MathUtils.lerp(alpha, t1.at(0), t2.at(0));
+		res[1] = MathUtils.lerp(alpha, t1.at(1), t2.at(1));
+		res[2] = MathUtils.lerp(alpha, t1.at(2), t2.at(2));
 
 		return res;
 	}
 
 	public static float[] lerp(double alpha, ITupRF t1, float[] t2, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.lerp(alpha, t1.getAt(0), t2[0]);
-		res[1] = MathUtils.lerp(alpha, t1.getAt(1), t2[1]);
-		res[2] = MathUtils.lerp(alpha, t1.getAt(2), t2[2]);
+		res[0] = MathUtils.lerp(alpha, t1.at(0), t2[0]);
+		res[1] = MathUtils.lerp(alpha, t1.at(1), t2[1]);
+		res[2] = MathUtils.lerp(alpha, t1.at(2), t2[2]);
 
 		return res;
 	}
 
 	public static float[] lerp(double alpha, ITupRF t1, float t2v0, float t2v1, float t2v2, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.lerp(alpha, t1.getAt(0), t2v0);
-		res[1] = MathUtils.lerp(alpha, t1.getAt(1), t2v1);
-		res[2] = MathUtils.lerp(alpha, t1.getAt(2), t2v2);
+		res[0] = MathUtils.lerp(alpha, t1.at(0), t2v0);
+		res[1] = MathUtils.lerp(alpha, t1.at(1), t2v1);
+		res[2] = MathUtils.lerp(alpha, t1.at(2), t2v2);
 
 		return res;
 	}
@@ -1687,9 +1687,9 @@ public final class VecUtils3F
 
 	public static float[] lerp(double alpha, float[] t1, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.lerp(alpha, t1[0], t2.getAt(0));
-		res[1] = MathUtils.lerp(alpha, t1[1], t2.getAt(1));
-		res[2] = MathUtils.lerp(alpha, t1[2], t2.getAt(2));
+		res[0] = MathUtils.lerp(alpha, t1[0], t2.at(0));
+		res[1] = MathUtils.lerp(alpha, t1[1], t2.at(1));
+		res[2] = MathUtils.lerp(alpha, t1[2], t2.at(2));
 
 		return res;
 	}
@@ -1705,9 +1705,9 @@ public final class VecUtils3F
 
 	public static float[] lerp(double alpha, float t1v0, float t1v1, float t1v2, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.lerp(alpha, t1v0, t2.getAt(0));
-		res[1] = MathUtils.lerp(alpha, t1v1, t2.getAt(1));
-		res[2] = MathUtils.lerp(alpha, t1v2, t2.getAt(2));
+		res[0] = MathUtils.lerp(alpha, t1v0, t2.at(0));
+		res[1] = MathUtils.lerp(alpha, t1v1, t2.at(1));
+		res[2] = MathUtils.lerp(alpha, t1v2, t2.at(2));
 
 		return res;
 	}
@@ -1721,7 +1721,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T lerp(double alpha, ITup3RF t1, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set(MathUtils.lerp(alpha, t1.v0(), t2.getAt(0)), MathUtils.lerp(alpha, t1.v1(), t2.getAt(1)), MathUtils.lerp(alpha, t1.v2(), t2.getAt(2)));
+		res.set(MathUtils.lerp(alpha, t1.v0(), t2.at(0)), MathUtils.lerp(alpha, t1.v1(), t2.at(1)), MathUtils.lerp(alpha, t1.v2(), t2.at(2)));
 
 		return res;
 	}
@@ -1742,28 +1742,28 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T lerp(double alpha, ITupRF t1, ITup3RF t2, @ExtractionParam T res)
 	{
-		res.set(MathUtils.lerp(alpha, t1.getAt(0), t2.v0()), MathUtils.lerp(alpha, t1.getAt(1), t2.v1()), MathUtils.lerp(alpha, t1.getAt(2), t2.v2()));
+		res.set(MathUtils.lerp(alpha, t1.at(0), t2.v0()), MathUtils.lerp(alpha, t1.at(1), t2.v1()), MathUtils.lerp(alpha, t1.at(2), t2.v2()));
 
 		return res;
 	}
 
 	public static <T extends ITup3WF> T lerp(double alpha, ITupRF t1, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set(MathUtils.lerp(alpha, t1.getAt(0), t2.getAt(0)), MathUtils.lerp(alpha, t1.getAt(1), t2.getAt(1)), MathUtils.lerp(alpha, t1.getAt(2), t2.getAt(2)));
+		res.set(MathUtils.lerp(alpha, t1.at(0), t2.at(0)), MathUtils.lerp(alpha, t1.at(1), t2.at(1)), MathUtils.lerp(alpha, t1.at(2), t2.at(2)));
 
 		return res;
 	}
 
 	public static <T extends ITup3WF> T lerp(double alpha, ITupRF t1, float[] t2, @ExtractionParam T res)
 	{
-		res.set(MathUtils.lerp(alpha, t1.getAt(0), t2[0]), MathUtils.lerp(alpha, t1.getAt(1), t2[1]), MathUtils.lerp(alpha, t1.getAt(2), t2[2]));
+		res.set(MathUtils.lerp(alpha, t1.at(0), t2[0]), MathUtils.lerp(alpha, t1.at(1), t2[1]), MathUtils.lerp(alpha, t1.at(2), t2[2]));
 
 		return res;
 	}
 
 	public static <T extends ITup3WF> T lerp(double alpha, ITupRF t1, float t2v0, float t2v1, float t2v2, @ExtractionParam T res)
 	{
-		res.set(MathUtils.lerp(alpha, t1.getAt(0), t2v0), MathUtils.lerp(alpha, t1.getAt(1), t2v1), MathUtils.lerp(alpha, t1.getAt(2), t2v2));
+		res.set(MathUtils.lerp(alpha, t1.at(0), t2v0), MathUtils.lerp(alpha, t1.at(1), t2v1), MathUtils.lerp(alpha, t1.at(2), t2v2));
 
 		return res;
 	}
@@ -1777,7 +1777,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T lerp(double alpha, float[] t1, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set(MathUtils.lerp(alpha, t1[0], t2.getAt(0)), MathUtils.lerp(alpha, t1[1], t2.getAt(1)), MathUtils.lerp(alpha, t1[2], t2.getAt(2)));
+		res.set(MathUtils.lerp(alpha, t1[0], t2.at(0)), MathUtils.lerp(alpha, t1[1], t2.at(1)), MathUtils.lerp(alpha, t1[2], t2.at(2)));
 
 		return res;
 	}
@@ -1805,7 +1805,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T lerp(double alpha, float t1v0, float t1v1, float t1v2, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set(MathUtils.lerp(alpha, t1v0, t2.getAt(0)), MathUtils.lerp(alpha, t1v1, t2.getAt(1)), MathUtils.lerp(alpha, t1v2, t2.getAt(2)));
+		res.set(MathUtils.lerp(alpha, t1v0, t2.at(0)), MathUtils.lerp(alpha, t1v1, t2.at(1)), MathUtils.lerp(alpha, t1v2, t2.at(2)));
 
 		return res;
 	}
@@ -1831,7 +1831,7 @@ public final class VecUtils3F
 
 	public static <T> T lerpFunc(double alpha, ITup3RF t1, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.lerp(alpha, t1.v0(), t2.getAt(0)), MathUtils.lerp(alpha, t1.v1(), t2.getAt(1)), MathUtils.lerp(alpha, t1.v2(), t2.getAt(2)));
+		return func.apply(MathUtils.lerp(alpha, t1.v0(), t2.at(0)), MathUtils.lerp(alpha, t1.v1(), t2.at(1)), MathUtils.lerp(alpha, t1.v2(), t2.at(2)));
 	}
 
 	public static <T> T lerpFunc(double alpha, ITup3RF t1, float[] t2, IFunc3F<T> func)
@@ -1846,22 +1846,22 @@ public final class VecUtils3F
 
 	public static <T> T lerpFunc(double alpha, ITupRF t1, ITup3RF t2, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.lerp(alpha, t1.getAt(0), t2.v0()), MathUtils.lerp(alpha, t1.getAt(1), t2.v1()), MathUtils.lerp(alpha, t1.getAt(2), t2.v2()));
+		return func.apply(MathUtils.lerp(alpha, t1.at(0), t2.v0()), MathUtils.lerp(alpha, t1.at(1), t2.v1()), MathUtils.lerp(alpha, t1.at(2), t2.v2()));
 	}
 
 	public static <T> T lerpFunc(double alpha, ITupRF t1, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.lerp(alpha, t1.getAt(0), t2.getAt(0)), MathUtils.lerp(alpha, t1.getAt(1), t2.getAt(1)), MathUtils.lerp(alpha, t1.getAt(2), t2.getAt(2)));
+		return func.apply(MathUtils.lerp(alpha, t1.at(0), t2.at(0)), MathUtils.lerp(alpha, t1.at(1), t2.at(1)), MathUtils.lerp(alpha, t1.at(2), t2.at(2)));
 	}
 
 	public static <T> T lerpFunc(double alpha, ITupRF t1, float[] t2, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.lerp(alpha, t1.getAt(0), t2[0]), MathUtils.lerp(alpha, t1.getAt(1), t2[1]), MathUtils.lerp(alpha, t1.getAt(2), t2[2]));
+		return func.apply(MathUtils.lerp(alpha, t1.at(0), t2[0]), MathUtils.lerp(alpha, t1.at(1), t2[1]), MathUtils.lerp(alpha, t1.at(2), t2[2]));
 	}
 
 	public static <T> T lerpFunc(double alpha, ITupRF t1, float t2v0, float t2v1, float t2v2, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.lerp(alpha, t1.getAt(0), t2v0), MathUtils.lerp(alpha, t1.getAt(1), t2v1), MathUtils.lerp(alpha, t1.getAt(2), t2v2));
+		return func.apply(MathUtils.lerp(alpha, t1.at(0), t2v0), MathUtils.lerp(alpha, t1.at(1), t2v1), MathUtils.lerp(alpha, t1.at(2), t2v2));
 	}
 
 	public static <T> T lerpFunc(double alpha, float[] t1, ITup3RF t2, IFunc3F<T> func)
@@ -1871,7 +1871,7 @@ public final class VecUtils3F
 
 	public static <T> T lerpFunc(double alpha, float[] t1, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.lerp(alpha, t1[0], t2.getAt(0)), MathUtils.lerp(alpha, t1[1], t2.getAt(1)), MathUtils.lerp(alpha, t1[2], t2.getAt(2)));
+		return func.apply(MathUtils.lerp(alpha, t1[0], t2.at(0)), MathUtils.lerp(alpha, t1[1], t2.at(1)), MathUtils.lerp(alpha, t1[2], t2.at(2)));
 	}
 
 	public static <T> T lerpFunc(double alpha, float[] t1, float[] t2, IFunc3F<T> func)
@@ -1891,7 +1891,7 @@ public final class VecUtils3F
 
 	public static <T> T lerpFunc(double alpha, float t1v0, float t1v1, float t1v2, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.lerp(alpha, t1v0, t2.getAt(0)), MathUtils.lerp(alpha, t1v1, t2.getAt(1)), MathUtils.lerp(alpha, t1v2, t2.getAt(2)));
+		return func.apply(MathUtils.lerp(alpha, t1v0, t2.at(0)), MathUtils.lerp(alpha, t1v1, t2.at(1)), MathUtils.lerp(alpha, t1v2, t2.at(2)));
 	}
 
 	public static <T> T lerpFunc(double alpha, float t1v0, float t1v1, float t1v2, float[] t2, IFunc3F<T> func)
@@ -1915,9 +1915,9 @@ public final class VecUtils3F
 
 	public static float[] step(double alpha, double midpoint, ITup3RF t1, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.step(alpha, midpoint, t1.v0(), t2.getAt(0));
-		res[1] = MathUtils.step(alpha, midpoint, t1.v1(), t2.getAt(1));
-		res[2] = MathUtils.step(alpha, midpoint, t1.v2(), t2.getAt(2));
+		res[0] = MathUtils.step(alpha, midpoint, t1.v0(), t2.at(0));
+		res[1] = MathUtils.step(alpha, midpoint, t1.v1(), t2.at(1));
+		res[2] = MathUtils.step(alpha, midpoint, t1.v2(), t2.at(2));
 
 		return res;
 	}
@@ -1942,36 +1942,36 @@ public final class VecUtils3F
 
 	public static float[] step(double alpha, double midpoint, ITupRF t1, ITup3RF t2, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.step(alpha, midpoint, t1.getAt(0), t2.v0());
-		res[1] = MathUtils.step(alpha, midpoint, t1.getAt(1), t2.v1());
-		res[2] = MathUtils.step(alpha, midpoint, t1.getAt(2), t2.v2());
+		res[0] = MathUtils.step(alpha, midpoint, t1.at(0), t2.v0());
+		res[1] = MathUtils.step(alpha, midpoint, t1.at(1), t2.v1());
+		res[2] = MathUtils.step(alpha, midpoint, t1.at(2), t2.v2());
 
 		return res;
 	}
 
 	public static float[] step(double alpha, double midpoint, ITupRF t1, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.step(alpha, midpoint, t1.getAt(0), t2.getAt(0));
-		res[1] = MathUtils.step(alpha, midpoint, t1.getAt(1), t2.getAt(1));
-		res[2] = MathUtils.step(alpha, midpoint, t1.getAt(2), t2.getAt(2));
+		res[0] = MathUtils.step(alpha, midpoint, t1.at(0), t2.at(0));
+		res[1] = MathUtils.step(alpha, midpoint, t1.at(1), t2.at(1));
+		res[2] = MathUtils.step(alpha, midpoint, t1.at(2), t2.at(2));
 
 		return res;
 	}
 
 	public static float[] step(double alpha, double midpoint, ITupRF t1, float[] t2, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.step(alpha, midpoint, t1.getAt(0), t2[0]);
-		res[1] = MathUtils.step(alpha, midpoint, t1.getAt(1), t2[1]);
-		res[2] = MathUtils.step(alpha, midpoint, t1.getAt(2), t2[2]);
+		res[0] = MathUtils.step(alpha, midpoint, t1.at(0), t2[0]);
+		res[1] = MathUtils.step(alpha, midpoint, t1.at(1), t2[1]);
+		res[2] = MathUtils.step(alpha, midpoint, t1.at(2), t2[2]);
 
 		return res;
 	}
 
 	public static float[] step(double alpha, double midpoint, ITupRF t1, float t2v0, float t2v1, float t2v2, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.step(alpha, midpoint, t1.getAt(0), t2v0);
-		res[1] = MathUtils.step(alpha, midpoint, t1.getAt(1), t2v1);
-		res[2] = MathUtils.step(alpha, midpoint, t1.getAt(2), t2v2);
+		res[0] = MathUtils.step(alpha, midpoint, t1.at(0), t2v0);
+		res[1] = MathUtils.step(alpha, midpoint, t1.at(1), t2v1);
+		res[2] = MathUtils.step(alpha, midpoint, t1.at(2), t2v2);
 
 		return res;
 	}
@@ -1987,9 +1987,9 @@ public final class VecUtils3F
 
 	public static float[] step(double alpha, double midpoint, float[] t1, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.step(alpha, midpoint, t1[0], t2.getAt(0));
-		res[1] = MathUtils.step(alpha, midpoint, t1[1], t2.getAt(1));
-		res[2] = MathUtils.step(alpha, midpoint, t1[2], t2.getAt(2));
+		res[0] = MathUtils.step(alpha, midpoint, t1[0], t2.at(0));
+		res[1] = MathUtils.step(alpha, midpoint, t1[1], t2.at(1));
+		res[2] = MathUtils.step(alpha, midpoint, t1[2], t2.at(2));
 
 		return res;
 	}
@@ -2005,9 +2005,9 @@ public final class VecUtils3F
 
 	public static float[] step(double alpha, double midpoint, float t1v0, float t1v1, float t1v2, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.step(alpha, midpoint, t1v0, t2.getAt(0));
-		res[1] = MathUtils.step(alpha, midpoint, t1v1, t2.getAt(1));
-		res[2] = MathUtils.step(alpha, midpoint, t1v2, t2.getAt(2));
+		res[0] = MathUtils.step(alpha, midpoint, t1v0, t2.at(0));
+		res[1] = MathUtils.step(alpha, midpoint, t1v1, t2.at(1));
+		res[2] = MathUtils.step(alpha, midpoint, t1v2, t2.at(2));
 
 		return res;
 	}
@@ -2021,7 +2021,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T step(double alpha, double midpoint, ITup3RF t1, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set(MathUtils.step(alpha, midpoint, t1.v0(), t2.getAt(0)), MathUtils.step(alpha, midpoint, t1.v1(), t2.getAt(1)), MathUtils.step(alpha, midpoint, t1.v2(), t2.getAt(2)));
+		res.set(MathUtils.step(alpha, midpoint, t1.v0(), t2.at(0)), MathUtils.step(alpha, midpoint, t1.v1(), t2.at(1)), MathUtils.step(alpha, midpoint, t1.v2(), t2.at(2)));
 
 		return res;
 	}
@@ -2042,28 +2042,28 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T step(double alpha, double midpoint, ITupRF t1, ITup3RF t2, @ExtractionParam T res)
 	{
-		res.set(MathUtils.step(alpha, midpoint, t1.getAt(0), t2.v0()), MathUtils.step(alpha, midpoint, t1.getAt(1), t2.v1()), MathUtils.step(alpha, midpoint, t1.getAt(2), t2.v2()));
+		res.set(MathUtils.step(alpha, midpoint, t1.at(0), t2.v0()), MathUtils.step(alpha, midpoint, t1.at(1), t2.v1()), MathUtils.step(alpha, midpoint, t1.at(2), t2.v2()));
 
 		return res;
 	}
 
 	public static <T extends ITup3WF> T step(double alpha, double midpoint, ITupRF t1, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set(MathUtils.step(alpha, midpoint, t1.getAt(0), t2.getAt(0)), MathUtils.step(alpha, midpoint, t1.getAt(1), t2.getAt(1)), MathUtils.step(alpha, midpoint, t1.getAt(2), t2.getAt(2)));
+		res.set(MathUtils.step(alpha, midpoint, t1.at(0), t2.at(0)), MathUtils.step(alpha, midpoint, t1.at(1), t2.at(1)), MathUtils.step(alpha, midpoint, t1.at(2), t2.at(2)));
 
 		return res;
 	}
 
 	public static <T extends ITup3WF> T step(double alpha, double midpoint, ITupRF t1, float[] t2, @ExtractionParam T res)
 	{
-		res.set(MathUtils.step(alpha, midpoint, t1.getAt(0), t2[0]), MathUtils.step(alpha, midpoint, t1.getAt(1), t2[1]), MathUtils.step(alpha, midpoint, t1.getAt(2), t2[2]));
+		res.set(MathUtils.step(alpha, midpoint, t1.at(0), t2[0]), MathUtils.step(alpha, midpoint, t1.at(1), t2[1]), MathUtils.step(alpha, midpoint, t1.at(2), t2[2]));
 
 		return res;
 	}
 
 	public static <T extends ITup3WF> T step(double alpha, double midpoint, ITupRF t1, float t2v0, float t2v1, float t2v2, @ExtractionParam T res)
 	{
-		res.set(MathUtils.step(alpha, midpoint, t1.getAt(0), t2v0), MathUtils.step(alpha, midpoint, t1.getAt(1), t2v1), MathUtils.step(alpha, midpoint, t1.getAt(2), t2v2));
+		res.set(MathUtils.step(alpha, midpoint, t1.at(0), t2v0), MathUtils.step(alpha, midpoint, t1.at(1), t2v1), MathUtils.step(alpha, midpoint, t1.at(2), t2v2));
 
 		return res;
 	}
@@ -2077,7 +2077,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T step(double alpha, double midpoint, float[] t1, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set(MathUtils.step(alpha, midpoint, t1[0], t2.getAt(0)), MathUtils.step(alpha, midpoint, t1[1], t2.getAt(1)), MathUtils.step(alpha, midpoint, t1[2], t2.getAt(2)));
+		res.set(MathUtils.step(alpha, midpoint, t1[0], t2.at(0)), MathUtils.step(alpha, midpoint, t1[1], t2.at(1)), MathUtils.step(alpha, midpoint, t1[2], t2.at(2)));
 
 		return res;
 	}
@@ -2105,7 +2105,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T step(double alpha, double midpoint, float t1v0, float t1v1, float t1v2, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set(MathUtils.step(alpha, midpoint, t1v0, t2.getAt(0)), MathUtils.step(alpha, midpoint, t1v1, t2.getAt(1)), MathUtils.step(alpha, midpoint, t1v2, t2.getAt(2)));
+		res.set(MathUtils.step(alpha, midpoint, t1v0, t2.at(0)), MathUtils.step(alpha, midpoint, t1v1, t2.at(1)), MathUtils.step(alpha, midpoint, t1v2, t2.at(2)));
 
 		return res;
 	}
@@ -2131,7 +2131,7 @@ public final class VecUtils3F
 
 	public static <T> T stepFunc(double alpha, double midpoint, ITup3RF t1, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.step(alpha, midpoint, t1.v0(), t2.getAt(0)), MathUtils.step(alpha, midpoint, t1.v1(), t2.getAt(1)), MathUtils.step(alpha, midpoint, t1.v2(), t2.getAt(2)));
+		return func.apply(MathUtils.step(alpha, midpoint, t1.v0(), t2.at(0)), MathUtils.step(alpha, midpoint, t1.v1(), t2.at(1)), MathUtils.step(alpha, midpoint, t1.v2(), t2.at(2)));
 	}
 
 	public static <T> T stepFunc(double alpha, double midpoint, ITup3RF t1, float[] t2, IFunc3F<T> func)
@@ -2146,22 +2146,22 @@ public final class VecUtils3F
 
 	public static <T> T stepFunc(double alpha, double midpoint, ITupRF t1, ITup3RF t2, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.step(alpha, midpoint, t1.getAt(0), t2.v0()), MathUtils.step(alpha, midpoint, t1.getAt(1), t2.v1()), MathUtils.step(alpha, midpoint, t1.getAt(2), t2.v2()));
+		return func.apply(MathUtils.step(alpha, midpoint, t1.at(0), t2.v0()), MathUtils.step(alpha, midpoint, t1.at(1), t2.v1()), MathUtils.step(alpha, midpoint, t1.at(2), t2.v2()));
 	}
 
 	public static <T> T stepFunc(double alpha, double midpoint, ITupRF t1, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.step(alpha, midpoint, t1.getAt(0), t2.getAt(0)), MathUtils.step(alpha, midpoint, t1.getAt(1), t2.getAt(1)), MathUtils.step(alpha, midpoint, t1.getAt(2), t2.getAt(2)));
+		return func.apply(MathUtils.step(alpha, midpoint, t1.at(0), t2.at(0)), MathUtils.step(alpha, midpoint, t1.at(1), t2.at(1)), MathUtils.step(alpha, midpoint, t1.at(2), t2.at(2)));
 	}
 
 	public static <T> T stepFunc(double alpha, double midpoint, ITupRF t1, float[] t2, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.step(alpha, midpoint, t1.getAt(0), t2[0]), MathUtils.step(alpha, midpoint, t1.getAt(1), t2[1]), MathUtils.step(alpha, midpoint, t1.getAt(2), t2[2]));
+		return func.apply(MathUtils.step(alpha, midpoint, t1.at(0), t2[0]), MathUtils.step(alpha, midpoint, t1.at(1), t2[1]), MathUtils.step(alpha, midpoint, t1.at(2), t2[2]));
 	}
 
 	public static <T> T stepFunc(double alpha, double midpoint, ITupRF t1, float t2v0, float t2v1, float t2v2, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.step(alpha, midpoint, t1.getAt(0), t2v0), MathUtils.step(alpha, midpoint, t1.getAt(1), t2v1), MathUtils.step(alpha, midpoint, t1.getAt(2), t2v2));
+		return func.apply(MathUtils.step(alpha, midpoint, t1.at(0), t2v0), MathUtils.step(alpha, midpoint, t1.at(1), t2v1), MathUtils.step(alpha, midpoint, t1.at(2), t2v2));
 	}
 
 	public static <T> T stepFunc(double alpha, double midpoint, float[] t1, ITup3RF t2, IFunc3F<T> func)
@@ -2171,7 +2171,7 @@ public final class VecUtils3F
 
 	public static <T> T stepFunc(double alpha, double midpoint, float[] t1, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.step(alpha, midpoint, t1[0], t2.getAt(0)), MathUtils.step(alpha, midpoint, t1[1], t2.getAt(1)), MathUtils.step(alpha, midpoint, t1[2], t2.getAt(2)));
+		return func.apply(MathUtils.step(alpha, midpoint, t1[0], t2.at(0)), MathUtils.step(alpha, midpoint, t1[1], t2.at(1)), MathUtils.step(alpha, midpoint, t1[2], t2.at(2)));
 	}
 
 	public static <T> T stepFunc(double alpha, double midpoint, float[] t1, float[] t2, IFunc3F<T> func)
@@ -2191,7 +2191,7 @@ public final class VecUtils3F
 
 	public static <T> T stepFunc(double alpha, double midpoint, float t1v0, float t1v1, float t1v2, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.step(alpha, midpoint, t1v0, t2.getAt(0)), MathUtils.step(alpha, midpoint, t1v1, t2.getAt(1)), MathUtils.step(alpha, midpoint, t1v2, t2.getAt(2)));
+		return func.apply(MathUtils.step(alpha, midpoint, t1v0, t2.at(0)), MathUtils.step(alpha, midpoint, t1v1, t2.at(1)), MathUtils.step(alpha, midpoint, t1v2, t2.at(2)));
 	}
 
 	public static <T> T stepFunc(double alpha, double midpoint, float t1v0, float t1v1, float t1v2, float[] t2, IFunc3F<T> func)
@@ -2215,9 +2215,9 @@ public final class VecUtils3F
 
 	public static float[] smoothstep(double alpha, ITup3RF t1, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.smoothstep(alpha, t1.v0(), t2.getAt(0));
-		res[1] = MathUtils.smoothstep(alpha, t1.v1(), t2.getAt(1));
-		res[2] = MathUtils.smoothstep(alpha, t1.v2(), t2.getAt(2));
+		res[0] = MathUtils.smoothstep(alpha, t1.v0(), t2.at(0));
+		res[1] = MathUtils.smoothstep(alpha, t1.v1(), t2.at(1));
+		res[2] = MathUtils.smoothstep(alpha, t1.v2(), t2.at(2));
 
 		return res;
 	}
@@ -2242,36 +2242,36 @@ public final class VecUtils3F
 
 	public static float[] smoothstep(double alpha, ITupRF t1, ITup3RF t2, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.smoothstep(alpha, t1.getAt(0), t2.v0());
-		res[1] = MathUtils.smoothstep(alpha, t1.getAt(1), t2.v1());
-		res[2] = MathUtils.smoothstep(alpha, t1.getAt(2), t2.v2());
+		res[0] = MathUtils.smoothstep(alpha, t1.at(0), t2.v0());
+		res[1] = MathUtils.smoothstep(alpha, t1.at(1), t2.v1());
+		res[2] = MathUtils.smoothstep(alpha, t1.at(2), t2.v2());
 
 		return res;
 	}
 
 	public static float[] smoothstep(double alpha, ITupRF t1, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.smoothstep(alpha, t1.getAt(0), t2.getAt(0));
-		res[1] = MathUtils.smoothstep(alpha, t1.getAt(1), t2.getAt(1));
-		res[2] = MathUtils.smoothstep(alpha, t1.getAt(2), t2.getAt(2));
+		res[0] = MathUtils.smoothstep(alpha, t1.at(0), t2.at(0));
+		res[1] = MathUtils.smoothstep(alpha, t1.at(1), t2.at(1));
+		res[2] = MathUtils.smoothstep(alpha, t1.at(2), t2.at(2));
 
 		return res;
 	}
 
 	public static float[] smoothstep(double alpha, ITupRF t1, float[] t2, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.smoothstep(alpha, t1.getAt(0), t2[0]);
-		res[1] = MathUtils.smoothstep(alpha, t1.getAt(1), t2[1]);
-		res[2] = MathUtils.smoothstep(alpha, t1.getAt(2), t2[2]);
+		res[0] = MathUtils.smoothstep(alpha, t1.at(0), t2[0]);
+		res[1] = MathUtils.smoothstep(alpha, t1.at(1), t2[1]);
+		res[2] = MathUtils.smoothstep(alpha, t1.at(2), t2[2]);
 
 		return res;
 	}
 
 	public static float[] smoothstep(double alpha, ITupRF t1, float t2v0, float t2v1, float t2v2, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.smoothstep(alpha, t1.getAt(0), t2v0);
-		res[1] = MathUtils.smoothstep(alpha, t1.getAt(1), t2v1);
-		res[2] = MathUtils.smoothstep(alpha, t1.getAt(2), t2v2);
+		res[0] = MathUtils.smoothstep(alpha, t1.at(0), t2v0);
+		res[1] = MathUtils.smoothstep(alpha, t1.at(1), t2v1);
+		res[2] = MathUtils.smoothstep(alpha, t1.at(2), t2v2);
 
 		return res;
 	}
@@ -2287,9 +2287,9 @@ public final class VecUtils3F
 
 	public static float[] smoothstep(double alpha, float[] t1, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.smoothstep(alpha, t1[0], t2.getAt(0));
-		res[1] = MathUtils.smoothstep(alpha, t1[1], t2.getAt(1));
-		res[2] = MathUtils.smoothstep(alpha, t1[2], t2.getAt(2));
+		res[0] = MathUtils.smoothstep(alpha, t1[0], t2.at(0));
+		res[1] = MathUtils.smoothstep(alpha, t1[1], t2.at(1));
+		res[2] = MathUtils.smoothstep(alpha, t1[2], t2.at(2));
 
 		return res;
 	}
@@ -2305,9 +2305,9 @@ public final class VecUtils3F
 
 	public static float[] smoothstep(double alpha, float t1v0, float t1v1, float t1v2, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.smoothstep(alpha, t1v0, t2.getAt(0));
-		res[1] = MathUtils.smoothstep(alpha, t1v1, t2.getAt(1));
-		res[2] = MathUtils.smoothstep(alpha, t1v2, t2.getAt(2));
+		res[0] = MathUtils.smoothstep(alpha, t1v0, t2.at(0));
+		res[1] = MathUtils.smoothstep(alpha, t1v1, t2.at(1));
+		res[2] = MathUtils.smoothstep(alpha, t1v2, t2.at(2));
 
 		return res;
 	}
@@ -2321,7 +2321,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T smoothstep(double alpha, ITup3RF t1, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set(MathUtils.smoothstep(alpha, t1.v0(), t2.getAt(0)), MathUtils.smoothstep(alpha, t1.v1(), t2.getAt(1)), MathUtils.smoothstep(alpha, t1.v2(), t2.getAt(2)));
+		res.set(MathUtils.smoothstep(alpha, t1.v0(), t2.at(0)), MathUtils.smoothstep(alpha, t1.v1(), t2.at(1)), MathUtils.smoothstep(alpha, t1.v2(), t2.at(2)));
 
 		return res;
 	}
@@ -2342,28 +2342,28 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T smoothstep(double alpha, ITupRF t1, ITup3RF t2, @ExtractionParam T res)
 	{
-		res.set(MathUtils.smoothstep(alpha, t1.getAt(0), t2.v0()), MathUtils.smoothstep(alpha, t1.getAt(1), t2.v1()), MathUtils.smoothstep(alpha, t1.getAt(2), t2.v2()));
+		res.set(MathUtils.smoothstep(alpha, t1.at(0), t2.v0()), MathUtils.smoothstep(alpha, t1.at(1), t2.v1()), MathUtils.smoothstep(alpha, t1.at(2), t2.v2()));
 
 		return res;
 	}
 
 	public static <T extends ITup3WF> T smoothstep(double alpha, ITupRF t1, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set(MathUtils.smoothstep(alpha, t1.getAt(0), t2.getAt(0)), MathUtils.smoothstep(alpha, t1.getAt(1), t2.getAt(1)), MathUtils.smoothstep(alpha, t1.getAt(2), t2.getAt(2)));
+		res.set(MathUtils.smoothstep(alpha, t1.at(0), t2.at(0)), MathUtils.smoothstep(alpha, t1.at(1), t2.at(1)), MathUtils.smoothstep(alpha, t1.at(2), t2.at(2)));
 
 		return res;
 	}
 
 	public static <T extends ITup3WF> T smoothstep(double alpha, ITupRF t1, float[] t2, @ExtractionParam T res)
 	{
-		res.set(MathUtils.smoothstep(alpha, t1.getAt(0), t2[0]), MathUtils.smoothstep(alpha, t1.getAt(1), t2[1]), MathUtils.smoothstep(alpha, t1.getAt(2), t2[2]));
+		res.set(MathUtils.smoothstep(alpha, t1.at(0), t2[0]), MathUtils.smoothstep(alpha, t1.at(1), t2[1]), MathUtils.smoothstep(alpha, t1.at(2), t2[2]));
 
 		return res;
 	}
 
 	public static <T extends ITup3WF> T smoothstep(double alpha, ITupRF t1, float t2v0, float t2v1, float t2v2, @ExtractionParam T res)
 	{
-		res.set(MathUtils.smoothstep(alpha, t1.getAt(0), t2v0), MathUtils.smoothstep(alpha, t1.getAt(1), t2v1), MathUtils.smoothstep(alpha, t1.getAt(2), t2v2));
+		res.set(MathUtils.smoothstep(alpha, t1.at(0), t2v0), MathUtils.smoothstep(alpha, t1.at(1), t2v1), MathUtils.smoothstep(alpha, t1.at(2), t2v2));
 
 		return res;
 	}
@@ -2377,7 +2377,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T smoothstep(double alpha, float[] t1, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set(MathUtils.smoothstep(alpha, t1[0], t2.getAt(0)), MathUtils.smoothstep(alpha, t1[1], t2.getAt(1)), MathUtils.smoothstep(alpha, t1[2], t2.getAt(2)));
+		res.set(MathUtils.smoothstep(alpha, t1[0], t2.at(0)), MathUtils.smoothstep(alpha, t1[1], t2.at(1)), MathUtils.smoothstep(alpha, t1[2], t2.at(2)));
 
 		return res;
 	}
@@ -2405,7 +2405,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T smoothstep(double alpha, float t1v0, float t1v1, float t1v2, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set(MathUtils.smoothstep(alpha, t1v0, t2.getAt(0)), MathUtils.smoothstep(alpha, t1v1, t2.getAt(1)), MathUtils.smoothstep(alpha, t1v2, t2.getAt(2)));
+		res.set(MathUtils.smoothstep(alpha, t1v0, t2.at(0)), MathUtils.smoothstep(alpha, t1v1, t2.at(1)), MathUtils.smoothstep(alpha, t1v2, t2.at(2)));
 
 		return res;
 	}
@@ -2431,7 +2431,7 @@ public final class VecUtils3F
 
 	public static <T> T smoothstepFunc(double alpha, ITup3RF t1, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.smoothstep(alpha, t1.v0(), t2.getAt(0)), MathUtils.smoothstep(alpha, t1.v1(), t2.getAt(1)), MathUtils.smoothstep(alpha, t1.v2(), t2.getAt(2)));
+		return func.apply(MathUtils.smoothstep(alpha, t1.v0(), t2.at(0)), MathUtils.smoothstep(alpha, t1.v1(), t2.at(1)), MathUtils.smoothstep(alpha, t1.v2(), t2.at(2)));
 	}
 
 	public static <T> T smoothstepFunc(double alpha, ITup3RF t1, float[] t2, IFunc3F<T> func)
@@ -2446,22 +2446,22 @@ public final class VecUtils3F
 
 	public static <T> T smoothstepFunc(double alpha, ITupRF t1, ITup3RF t2, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.smoothstep(alpha, t1.getAt(0), t2.v0()), MathUtils.smoothstep(alpha, t1.getAt(1), t2.v1()), MathUtils.smoothstep(alpha, t1.getAt(2), t2.v2()));
+		return func.apply(MathUtils.smoothstep(alpha, t1.at(0), t2.v0()), MathUtils.smoothstep(alpha, t1.at(1), t2.v1()), MathUtils.smoothstep(alpha, t1.at(2), t2.v2()));
 	}
 
 	public static <T> T smoothstepFunc(double alpha, ITupRF t1, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.smoothstep(alpha, t1.getAt(0), t2.getAt(0)), MathUtils.smoothstep(alpha, t1.getAt(1), t2.getAt(1)), MathUtils.smoothstep(alpha, t1.getAt(2), t2.getAt(2)));
+		return func.apply(MathUtils.smoothstep(alpha, t1.at(0), t2.at(0)), MathUtils.smoothstep(alpha, t1.at(1), t2.at(1)), MathUtils.smoothstep(alpha, t1.at(2), t2.at(2)));
 	}
 
 	public static <T> T smoothstepFunc(double alpha, ITupRF t1, float[] t2, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.smoothstep(alpha, t1.getAt(0), t2[0]), MathUtils.smoothstep(alpha, t1.getAt(1), t2[1]), MathUtils.smoothstep(alpha, t1.getAt(2), t2[2]));
+		return func.apply(MathUtils.smoothstep(alpha, t1.at(0), t2[0]), MathUtils.smoothstep(alpha, t1.at(1), t2[1]), MathUtils.smoothstep(alpha, t1.at(2), t2[2]));
 	}
 
 	public static <T> T smoothstepFunc(double alpha, ITupRF t1, float t2v0, float t2v1, float t2v2, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.smoothstep(alpha, t1.getAt(0), t2v0), MathUtils.smoothstep(alpha, t1.getAt(1), t2v1), MathUtils.smoothstep(alpha, t1.getAt(2), t2v2));
+		return func.apply(MathUtils.smoothstep(alpha, t1.at(0), t2v0), MathUtils.smoothstep(alpha, t1.at(1), t2v1), MathUtils.smoothstep(alpha, t1.at(2), t2v2));
 	}
 
 	public static <T> T smoothstepFunc(double alpha, float[] t1, ITup3RF t2, IFunc3F<T> func)
@@ -2471,7 +2471,7 @@ public final class VecUtils3F
 
 	public static <T> T smoothstepFunc(double alpha, float[] t1, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.smoothstep(alpha, t1[0], t2.getAt(0)), MathUtils.smoothstep(alpha, t1[1], t2.getAt(1)), MathUtils.smoothstep(alpha, t1[2], t2.getAt(2)));
+		return func.apply(MathUtils.smoothstep(alpha, t1[0], t2.at(0)), MathUtils.smoothstep(alpha, t1[1], t2.at(1)), MathUtils.smoothstep(alpha, t1[2], t2.at(2)));
 	}
 
 	public static <T> T smoothstepFunc(double alpha, float[] t1, float[] t2, IFunc3F<T> func)
@@ -2491,7 +2491,7 @@ public final class VecUtils3F
 
 	public static <T> T smoothstepFunc(double alpha, float t1v0, float t1v1, float t1v2, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.smoothstep(alpha, t1v0, t2.getAt(0)), MathUtils.smoothstep(alpha, t1v1, t2.getAt(1)), MathUtils.smoothstep(alpha, t1v2, t2.getAt(2)));
+		return func.apply(MathUtils.smoothstep(alpha, t1v0, t2.at(0)), MathUtils.smoothstep(alpha, t1v1, t2.at(1)), MathUtils.smoothstep(alpha, t1v2, t2.at(2)));
 	}
 
 	public static <T> T smoothstepFunc(double alpha, float t1v0, float t1v1, float t1v2, float[] t2, IFunc3F<T> func)
@@ -2515,9 +2515,9 @@ public final class VecUtils3F
 
 	public static float[] smootherstep(double alpha, ITup3RF t1, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.smootherstep(alpha, t1.v0(), t2.getAt(0));
-		res[1] = MathUtils.smootherstep(alpha, t1.v1(), t2.getAt(1));
-		res[2] = MathUtils.smootherstep(alpha, t1.v2(), t2.getAt(2));
+		res[0] = MathUtils.smootherstep(alpha, t1.v0(), t2.at(0));
+		res[1] = MathUtils.smootherstep(alpha, t1.v1(), t2.at(1));
+		res[2] = MathUtils.smootherstep(alpha, t1.v2(), t2.at(2));
 
 		return res;
 	}
@@ -2542,36 +2542,36 @@ public final class VecUtils3F
 
 	public static float[] smootherstep(double alpha, ITupRF t1, ITup3RF t2, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.smootherstep(alpha, t1.getAt(0), t2.v0());
-		res[1] = MathUtils.smootherstep(alpha, t1.getAt(1), t2.v1());
-		res[2] = MathUtils.smootherstep(alpha, t1.getAt(2), t2.v2());
+		res[0] = MathUtils.smootherstep(alpha, t1.at(0), t2.v0());
+		res[1] = MathUtils.smootherstep(alpha, t1.at(1), t2.v1());
+		res[2] = MathUtils.smootherstep(alpha, t1.at(2), t2.v2());
 
 		return res;
 	}
 
 	public static float[] smootherstep(double alpha, ITupRF t1, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.smootherstep(alpha, t1.getAt(0), t2.getAt(0));
-		res[1] = MathUtils.smootherstep(alpha, t1.getAt(1), t2.getAt(1));
-		res[2] = MathUtils.smootherstep(alpha, t1.getAt(2), t2.getAt(2));
+		res[0] = MathUtils.smootherstep(alpha, t1.at(0), t2.at(0));
+		res[1] = MathUtils.smootherstep(alpha, t1.at(1), t2.at(1));
+		res[2] = MathUtils.smootherstep(alpha, t1.at(2), t2.at(2));
 
 		return res;
 	}
 
 	public static float[] smootherstep(double alpha, ITupRF t1, float[] t2, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.smootherstep(alpha, t1.getAt(0), t2[0]);
-		res[1] = MathUtils.smootherstep(alpha, t1.getAt(1), t2[1]);
-		res[2] = MathUtils.smootherstep(alpha, t1.getAt(2), t2[2]);
+		res[0] = MathUtils.smootherstep(alpha, t1.at(0), t2[0]);
+		res[1] = MathUtils.smootherstep(alpha, t1.at(1), t2[1]);
+		res[2] = MathUtils.smootherstep(alpha, t1.at(2), t2[2]);
 
 		return res;
 	}
 
 	public static float[] smootherstep(double alpha, ITupRF t1, float t2v0, float t2v1, float t2v2, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.smootherstep(alpha, t1.getAt(0), t2v0);
-		res[1] = MathUtils.smootherstep(alpha, t1.getAt(1), t2v1);
-		res[2] = MathUtils.smootherstep(alpha, t1.getAt(2), t2v2);
+		res[0] = MathUtils.smootherstep(alpha, t1.at(0), t2v0);
+		res[1] = MathUtils.smootherstep(alpha, t1.at(1), t2v1);
+		res[2] = MathUtils.smootherstep(alpha, t1.at(2), t2v2);
 
 		return res;
 	}
@@ -2587,9 +2587,9 @@ public final class VecUtils3F
 
 	public static float[] smootherstep(double alpha, float[] t1, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.smootherstep(alpha, t1[0], t2.getAt(0));
-		res[1] = MathUtils.smootherstep(alpha, t1[1], t2.getAt(1));
-		res[2] = MathUtils.smootherstep(alpha, t1[2], t2.getAt(2));
+		res[0] = MathUtils.smootherstep(alpha, t1[0], t2.at(0));
+		res[1] = MathUtils.smootherstep(alpha, t1[1], t2.at(1));
+		res[2] = MathUtils.smootherstep(alpha, t1[2], t2.at(2));
 
 		return res;
 	}
@@ -2605,9 +2605,9 @@ public final class VecUtils3F
 
 	public static float[] smootherstep(double alpha, float t1v0, float t1v1, float t1v2, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.smootherstep(alpha, t1v0, t2.getAt(0));
-		res[1] = MathUtils.smootherstep(alpha, t1v1, t2.getAt(1));
-		res[2] = MathUtils.smootherstep(alpha, t1v2, t2.getAt(2));
+		res[0] = MathUtils.smootherstep(alpha, t1v0, t2.at(0));
+		res[1] = MathUtils.smootherstep(alpha, t1v1, t2.at(1));
+		res[2] = MathUtils.smootherstep(alpha, t1v2, t2.at(2));
 
 		return res;
 	}
@@ -2621,7 +2621,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T smootherstep(double alpha, ITup3RF t1, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set(MathUtils.smootherstep(alpha, t1.v0(), t2.getAt(0)), MathUtils.smootherstep(alpha, t1.v1(), t2.getAt(1)), MathUtils.smootherstep(alpha, t1.v2(), t2.getAt(2)));
+		res.set(MathUtils.smootherstep(alpha, t1.v0(), t2.at(0)), MathUtils.smootherstep(alpha, t1.v1(), t2.at(1)), MathUtils.smootherstep(alpha, t1.v2(), t2.at(2)));
 
 		return res;
 	}
@@ -2642,28 +2642,28 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T smootherstep(double alpha, ITupRF t1, ITup3RF t2, @ExtractionParam T res)
 	{
-		res.set(MathUtils.smootherstep(alpha, t1.getAt(0), t2.v0()), MathUtils.smootherstep(alpha, t1.getAt(1), t2.v1()), MathUtils.smootherstep(alpha, t1.getAt(2), t2.v2()));
+		res.set(MathUtils.smootherstep(alpha, t1.at(0), t2.v0()), MathUtils.smootherstep(alpha, t1.at(1), t2.v1()), MathUtils.smootherstep(alpha, t1.at(2), t2.v2()));
 
 		return res;
 	}
 
 	public static <T extends ITup3WF> T smootherstep(double alpha, ITupRF t1, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set(MathUtils.smootherstep(alpha, t1.getAt(0), t2.getAt(0)), MathUtils.smootherstep(alpha, t1.getAt(1), t2.getAt(1)), MathUtils.smootherstep(alpha, t1.getAt(2), t2.getAt(2)));
+		res.set(MathUtils.smootherstep(alpha, t1.at(0), t2.at(0)), MathUtils.smootherstep(alpha, t1.at(1), t2.at(1)), MathUtils.smootherstep(alpha, t1.at(2), t2.at(2)));
 
 		return res;
 	}
 
 	public static <T extends ITup3WF> T smootherstep(double alpha, ITupRF t1, float[] t2, @ExtractionParam T res)
 	{
-		res.set(MathUtils.smootherstep(alpha, t1.getAt(0), t2[0]), MathUtils.smootherstep(alpha, t1.getAt(1), t2[1]), MathUtils.smootherstep(alpha, t1.getAt(2), t2[2]));
+		res.set(MathUtils.smootherstep(alpha, t1.at(0), t2[0]), MathUtils.smootherstep(alpha, t1.at(1), t2[1]), MathUtils.smootherstep(alpha, t1.at(2), t2[2]));
 
 		return res;
 	}
 
 	public static <T extends ITup3WF> T smootherstep(double alpha, ITupRF t1, float t2v0, float t2v1, float t2v2, @ExtractionParam T res)
 	{
-		res.set(MathUtils.smootherstep(alpha, t1.getAt(0), t2v0), MathUtils.smootherstep(alpha, t1.getAt(1), t2v1), MathUtils.smootherstep(alpha, t1.getAt(2), t2v2));
+		res.set(MathUtils.smootherstep(alpha, t1.at(0), t2v0), MathUtils.smootherstep(alpha, t1.at(1), t2v1), MathUtils.smootherstep(alpha, t1.at(2), t2v2));
 
 		return res;
 	}
@@ -2677,7 +2677,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T smootherstep(double alpha, float[] t1, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set(MathUtils.smootherstep(alpha, t1[0], t2.getAt(0)), MathUtils.smootherstep(alpha, t1[1], t2.getAt(1)), MathUtils.smootherstep(alpha, t1[2], t2.getAt(2)));
+		res.set(MathUtils.smootherstep(alpha, t1[0], t2.at(0)), MathUtils.smootherstep(alpha, t1[1], t2.at(1)), MathUtils.smootherstep(alpha, t1[2], t2.at(2)));
 
 		return res;
 	}
@@ -2705,7 +2705,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T smootherstep(double alpha, float t1v0, float t1v1, float t1v2, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set(MathUtils.smootherstep(alpha, t1v0, t2.getAt(0)), MathUtils.smootherstep(alpha, t1v1, t2.getAt(1)), MathUtils.smootherstep(alpha, t1v2, t2.getAt(2)));
+		res.set(MathUtils.smootherstep(alpha, t1v0, t2.at(0)), MathUtils.smootherstep(alpha, t1v1, t2.at(1)), MathUtils.smootherstep(alpha, t1v2, t2.at(2)));
 
 		return res;
 	}
@@ -2731,7 +2731,7 @@ public final class VecUtils3F
 
 	public static <T> T smootherstepFunc(double alpha, ITup3RF t1, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.smootherstep(alpha, t1.v0(), t2.getAt(0)), MathUtils.smootherstep(alpha, t1.v1(), t2.getAt(1)), MathUtils.smootherstep(alpha, t1.v2(), t2.getAt(2)));
+		return func.apply(MathUtils.smootherstep(alpha, t1.v0(), t2.at(0)), MathUtils.smootherstep(alpha, t1.v1(), t2.at(1)), MathUtils.smootherstep(alpha, t1.v2(), t2.at(2)));
 	}
 
 	public static <T> T smootherstepFunc(double alpha, ITup3RF t1, float[] t2, IFunc3F<T> func)
@@ -2746,22 +2746,22 @@ public final class VecUtils3F
 
 	public static <T> T smootherstepFunc(double alpha, ITupRF t1, ITup3RF t2, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.smootherstep(alpha, t1.getAt(0), t2.v0()), MathUtils.smootherstep(alpha, t1.getAt(1), t2.v1()), MathUtils.smootherstep(alpha, t1.getAt(2), t2.v2()));
+		return func.apply(MathUtils.smootherstep(alpha, t1.at(0), t2.v0()), MathUtils.smootherstep(alpha, t1.at(1), t2.v1()), MathUtils.smootherstep(alpha, t1.at(2), t2.v2()));
 	}
 
 	public static <T> T smootherstepFunc(double alpha, ITupRF t1, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.smootherstep(alpha, t1.getAt(0), t2.getAt(0)), MathUtils.smootherstep(alpha, t1.getAt(1), t2.getAt(1)), MathUtils.smootherstep(alpha, t1.getAt(2), t2.getAt(2)));
+		return func.apply(MathUtils.smootherstep(alpha, t1.at(0), t2.at(0)), MathUtils.smootherstep(alpha, t1.at(1), t2.at(1)), MathUtils.smootherstep(alpha, t1.at(2), t2.at(2)));
 	}
 
 	public static <T> T smootherstepFunc(double alpha, ITupRF t1, float[] t2, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.smootherstep(alpha, t1.getAt(0), t2[0]), MathUtils.smootherstep(alpha, t1.getAt(1), t2[1]), MathUtils.smootherstep(alpha, t1.getAt(2), t2[2]));
+		return func.apply(MathUtils.smootherstep(alpha, t1.at(0), t2[0]), MathUtils.smootherstep(alpha, t1.at(1), t2[1]), MathUtils.smootherstep(alpha, t1.at(2), t2[2]));
 	}
 
 	public static <T> T smootherstepFunc(double alpha, ITupRF t1, float t2v0, float t2v1, float t2v2, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.smootherstep(alpha, t1.getAt(0), t2v0), MathUtils.smootherstep(alpha, t1.getAt(1), t2v1), MathUtils.smootherstep(alpha, t1.getAt(2), t2v2));
+		return func.apply(MathUtils.smootherstep(alpha, t1.at(0), t2v0), MathUtils.smootherstep(alpha, t1.at(1), t2v1), MathUtils.smootherstep(alpha, t1.at(2), t2v2));
 	}
 
 	public static <T> T smootherstepFunc(double alpha, float[] t1, ITup3RF t2, IFunc3F<T> func)
@@ -2771,7 +2771,7 @@ public final class VecUtils3F
 
 	public static <T> T smootherstepFunc(double alpha, float[] t1, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.smootherstep(alpha, t1[0], t2.getAt(0)), MathUtils.smootherstep(alpha, t1[1], t2.getAt(1)), MathUtils.smootherstep(alpha, t1[2], t2.getAt(2)));
+		return func.apply(MathUtils.smootherstep(alpha, t1[0], t2.at(0)), MathUtils.smootherstep(alpha, t1[1], t2.at(1)), MathUtils.smootherstep(alpha, t1[2], t2.at(2)));
 	}
 
 	public static <T> T smootherstepFunc(double alpha, float[] t1, float[] t2, IFunc3F<T> func)
@@ -2791,7 +2791,7 @@ public final class VecUtils3F
 
 	public static <T> T smootherstepFunc(double alpha, float t1v0, float t1v1, float t1v2, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.smootherstep(alpha, t1v0, t2.getAt(0)), MathUtils.smootherstep(alpha, t1v1, t2.getAt(1)), MathUtils.smootherstep(alpha, t1v2, t2.getAt(2)));
+		return func.apply(MathUtils.smootherstep(alpha, t1v0, t2.at(0)), MathUtils.smootherstep(alpha, t1v1, t2.at(1)), MathUtils.smootherstep(alpha, t1v2, t2.at(2)));
 	}
 
 	public static <T> T smootherstepFunc(double alpha, float t1v0, float t1v1, float t1v2, float[] t2, IFunc3F<T> func)
@@ -2815,9 +2815,9 @@ public final class VecUtils3F
 
 	public static float[] intLerp(double alpha, ITupRF t, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.intLerp(alpha, t.getAt(0));
-		res[1] = MathUtils.intLerp(alpha, t.getAt(1));
-		res[2] = MathUtils.intLerp(alpha, t.getAt(2));
+		res[0] = MathUtils.intLerp(alpha, t.at(0));
+		res[1] = MathUtils.intLerp(alpha, t.at(1));
+		res[2] = MathUtils.intLerp(alpha, t.at(2));
 
 		return res;
 	}
@@ -2831,7 +2831,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T intLerp(double alpha, ITupRF t, @ExtractionParam T res)
 	{
-		res.set(MathUtils.intLerp(alpha, t.getAt(0)), MathUtils.intLerp(alpha, t.getAt(1)), MathUtils.intLerp(alpha, t.getAt(2)));
+		res.set(MathUtils.intLerp(alpha, t.at(0)), MathUtils.intLerp(alpha, t.at(1)), MathUtils.intLerp(alpha, t.at(2)));
 
 		return res;
 	}
@@ -2857,7 +2857,7 @@ public final class VecUtils3F
 
 	public static <T> T intLerpFunc(double alpha, ITupRF t, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.intLerp(alpha, t.getAt(0)), MathUtils.intLerp(alpha, t.getAt(1)), MathUtils.intLerp(alpha, t.getAt(2)));
+		return func.apply(MathUtils.intLerp(alpha, t.at(0)), MathUtils.intLerp(alpha, t.at(1)), MathUtils.intLerp(alpha, t.at(2)));
 	}
 
 	public static <T> T intLerpFunc(double alpha, float[] t, IFunc3F<T> func)
@@ -2881,9 +2881,9 @@ public final class VecUtils3F
 
 	public static float[] intLerp(double alpha, ITup3RF t1, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.intLerp(alpha, t1.v0(), t2.getAt(0));
-		res[1] = MathUtils.intLerp(alpha, t1.v1(), t2.getAt(1));
-		res[2] = MathUtils.intLerp(alpha, t1.v2(), t2.getAt(2));
+		res[0] = MathUtils.intLerp(alpha, t1.v0(), t2.at(0));
+		res[1] = MathUtils.intLerp(alpha, t1.v1(), t2.at(1));
+		res[2] = MathUtils.intLerp(alpha, t1.v2(), t2.at(2));
 
 		return res;
 	}
@@ -2908,36 +2908,36 @@ public final class VecUtils3F
 
 	public static float[] intLerp(double alpha, ITupRF t1, ITup3RF t2, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.intLerp(alpha, t1.getAt(0), t2.v0());
-		res[1] = MathUtils.intLerp(alpha, t1.getAt(1), t2.v1());
-		res[2] = MathUtils.intLerp(alpha, t1.getAt(2), t2.v2());
+		res[0] = MathUtils.intLerp(alpha, t1.at(0), t2.v0());
+		res[1] = MathUtils.intLerp(alpha, t1.at(1), t2.v1());
+		res[2] = MathUtils.intLerp(alpha, t1.at(2), t2.v2());
 
 		return res;
 	}
 
 	public static float[] intLerp(double alpha, ITupRF t1, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.intLerp(alpha, t1.getAt(0), t2.getAt(0));
-		res[1] = MathUtils.intLerp(alpha, t1.getAt(1), t2.getAt(1));
-		res[2] = MathUtils.intLerp(alpha, t1.getAt(2), t2.getAt(2));
+		res[0] = MathUtils.intLerp(alpha, t1.at(0), t2.at(0));
+		res[1] = MathUtils.intLerp(alpha, t1.at(1), t2.at(1));
+		res[2] = MathUtils.intLerp(alpha, t1.at(2), t2.at(2));
 
 		return res;
 	}
 
 	public static float[] intLerp(double alpha, ITupRF t1, float[] t2, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.intLerp(alpha, t1.getAt(0), t2[0]);
-		res[1] = MathUtils.intLerp(alpha, t1.getAt(1), t2[1]);
-		res[2] = MathUtils.intLerp(alpha, t1.getAt(2), t2[2]);
+		res[0] = MathUtils.intLerp(alpha, t1.at(0), t2[0]);
+		res[1] = MathUtils.intLerp(alpha, t1.at(1), t2[1]);
+		res[2] = MathUtils.intLerp(alpha, t1.at(2), t2[2]);
 
 		return res;
 	}
 
 	public static float[] intLerp(double alpha, ITupRF t1, float t2v0, float t2v1, float t2v2, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.intLerp(alpha, t1.getAt(0), t2v0);
-		res[1] = MathUtils.intLerp(alpha, t1.getAt(1), t2v1);
-		res[2] = MathUtils.intLerp(alpha, t1.getAt(2), t2v2);
+		res[0] = MathUtils.intLerp(alpha, t1.at(0), t2v0);
+		res[1] = MathUtils.intLerp(alpha, t1.at(1), t2v1);
+		res[2] = MathUtils.intLerp(alpha, t1.at(2), t2v2);
 
 		return res;
 	}
@@ -2953,9 +2953,9 @@ public final class VecUtils3F
 
 	public static float[] intLerp(double alpha, float[] t1, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.intLerp(alpha, t1[0], t2.getAt(0));
-		res[1] = MathUtils.intLerp(alpha, t1[1], t2.getAt(1));
-		res[2] = MathUtils.intLerp(alpha, t1[2], t2.getAt(2));
+		res[0] = MathUtils.intLerp(alpha, t1[0], t2.at(0));
+		res[1] = MathUtils.intLerp(alpha, t1[1], t2.at(1));
+		res[2] = MathUtils.intLerp(alpha, t1[2], t2.at(2));
 
 		return res;
 	}
@@ -2971,9 +2971,9 @@ public final class VecUtils3F
 
 	public static float[] intLerp(double alpha, float t1v0, float t1v1, float t1v2, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.intLerp(alpha, t1v0, t2.getAt(0));
-		res[1] = MathUtils.intLerp(alpha, t1v1, t2.getAt(1));
-		res[2] = MathUtils.intLerp(alpha, t1v2, t2.getAt(2));
+		res[0] = MathUtils.intLerp(alpha, t1v0, t2.at(0));
+		res[1] = MathUtils.intLerp(alpha, t1v1, t2.at(1));
+		res[2] = MathUtils.intLerp(alpha, t1v2, t2.at(2));
 
 		return res;
 	}
@@ -2987,7 +2987,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T intLerp(double alpha, ITup3RF t1, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set(MathUtils.intLerp(alpha, t1.v0(), t2.getAt(0)), MathUtils.intLerp(alpha, t1.v1(), t2.getAt(1)), MathUtils.intLerp(alpha, t1.v2(), t2.getAt(2)));
+		res.set(MathUtils.intLerp(alpha, t1.v0(), t2.at(0)), MathUtils.intLerp(alpha, t1.v1(), t2.at(1)), MathUtils.intLerp(alpha, t1.v2(), t2.at(2)));
 
 		return res;
 	}
@@ -3008,28 +3008,28 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T intLerp(double alpha, ITupRF t1, ITup3RF t2, @ExtractionParam T res)
 	{
-		res.set(MathUtils.intLerp(alpha, t1.getAt(0), t2.v0()), MathUtils.intLerp(alpha, t1.getAt(1), t2.v1()), MathUtils.intLerp(alpha, t1.getAt(2), t2.v2()));
+		res.set(MathUtils.intLerp(alpha, t1.at(0), t2.v0()), MathUtils.intLerp(alpha, t1.at(1), t2.v1()), MathUtils.intLerp(alpha, t1.at(2), t2.v2()));
 
 		return res;
 	}
 
 	public static <T extends ITup3WF> T intLerp(double alpha, ITupRF t1, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set(MathUtils.intLerp(alpha, t1.getAt(0), t2.getAt(0)), MathUtils.intLerp(alpha, t1.getAt(1), t2.getAt(1)), MathUtils.intLerp(alpha, t1.getAt(2), t2.getAt(2)));
+		res.set(MathUtils.intLerp(alpha, t1.at(0), t2.at(0)), MathUtils.intLerp(alpha, t1.at(1), t2.at(1)), MathUtils.intLerp(alpha, t1.at(2), t2.at(2)));
 
 		return res;
 	}
 
 	public static <T extends ITup3WF> T intLerp(double alpha, ITupRF t1, float[] t2, @ExtractionParam T res)
 	{
-		res.set(MathUtils.intLerp(alpha, t1.getAt(0), t2[0]), MathUtils.intLerp(alpha, t1.getAt(1), t2[1]), MathUtils.intLerp(alpha, t1.getAt(2), t2[2]));
+		res.set(MathUtils.intLerp(alpha, t1.at(0), t2[0]), MathUtils.intLerp(alpha, t1.at(1), t2[1]), MathUtils.intLerp(alpha, t1.at(2), t2[2]));
 
 		return res;
 	}
 
 	public static <T extends ITup3WF> T intLerp(double alpha, ITupRF t1, float t2v0, float t2v1, float t2v2, @ExtractionParam T res)
 	{
-		res.set(MathUtils.intLerp(alpha, t1.getAt(0), t2v0), MathUtils.intLerp(alpha, t1.getAt(1), t2v1), MathUtils.intLerp(alpha, t1.getAt(2), t2v2));
+		res.set(MathUtils.intLerp(alpha, t1.at(0), t2v0), MathUtils.intLerp(alpha, t1.at(1), t2v1), MathUtils.intLerp(alpha, t1.at(2), t2v2));
 
 		return res;
 	}
@@ -3043,7 +3043,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T intLerp(double alpha, float[] t1, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set(MathUtils.intLerp(alpha, t1[0], t2.getAt(0)), MathUtils.intLerp(alpha, t1[1], t2.getAt(1)), MathUtils.intLerp(alpha, t1[2], t2.getAt(2)));
+		res.set(MathUtils.intLerp(alpha, t1[0], t2.at(0)), MathUtils.intLerp(alpha, t1[1], t2.at(1)), MathUtils.intLerp(alpha, t1[2], t2.at(2)));
 
 		return res;
 	}
@@ -3071,7 +3071,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T intLerp(double alpha, float t1v0, float t1v1, float t1v2, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set(MathUtils.intLerp(alpha, t1v0, t2.getAt(0)), MathUtils.intLerp(alpha, t1v1, t2.getAt(1)), MathUtils.intLerp(alpha, t1v2, t2.getAt(2)));
+		res.set(MathUtils.intLerp(alpha, t1v0, t2.at(0)), MathUtils.intLerp(alpha, t1v1, t2.at(1)), MathUtils.intLerp(alpha, t1v2, t2.at(2)));
 
 		return res;
 	}
@@ -3097,7 +3097,7 @@ public final class VecUtils3F
 
 	public static <T> T intLerpFunc(double alpha, ITup3RF t1, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.intLerp(alpha, t1.v0(), t2.getAt(0)), MathUtils.intLerp(alpha, t1.v1(), t2.getAt(1)), MathUtils.intLerp(alpha, t1.v2(), t2.getAt(2)));
+		return func.apply(MathUtils.intLerp(alpha, t1.v0(), t2.at(0)), MathUtils.intLerp(alpha, t1.v1(), t2.at(1)), MathUtils.intLerp(alpha, t1.v2(), t2.at(2)));
 	}
 
 	public static <T> T intLerpFunc(double alpha, ITup3RF t1, float[] t2, IFunc3F<T> func)
@@ -3112,22 +3112,22 @@ public final class VecUtils3F
 
 	public static <T> T intLerpFunc(double alpha, ITupRF t1, ITup3RF t2, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.intLerp(alpha, t1.getAt(0), t2.v0()), MathUtils.intLerp(alpha, t1.getAt(1), t2.v1()), MathUtils.intLerp(alpha, t1.getAt(2), t2.v2()));
+		return func.apply(MathUtils.intLerp(alpha, t1.at(0), t2.v0()), MathUtils.intLerp(alpha, t1.at(1), t2.v1()), MathUtils.intLerp(alpha, t1.at(2), t2.v2()));
 	}
 
 	public static <T> T intLerpFunc(double alpha, ITupRF t1, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.intLerp(alpha, t1.getAt(0), t2.getAt(0)), MathUtils.intLerp(alpha, t1.getAt(1), t2.getAt(1)), MathUtils.intLerp(alpha, t1.getAt(2), t2.getAt(2)));
+		return func.apply(MathUtils.intLerp(alpha, t1.at(0), t2.at(0)), MathUtils.intLerp(alpha, t1.at(1), t2.at(1)), MathUtils.intLerp(alpha, t1.at(2), t2.at(2)));
 	}
 
 	public static <T> T intLerpFunc(double alpha, ITupRF t1, float[] t2, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.intLerp(alpha, t1.getAt(0), t2[0]), MathUtils.intLerp(alpha, t1.getAt(1), t2[1]), MathUtils.intLerp(alpha, t1.getAt(2), t2[2]));
+		return func.apply(MathUtils.intLerp(alpha, t1.at(0), t2[0]), MathUtils.intLerp(alpha, t1.at(1), t2[1]), MathUtils.intLerp(alpha, t1.at(2), t2[2]));
 	}
 
 	public static <T> T intLerpFunc(double alpha, ITupRF t1, float t2v0, float t2v1, float t2v2, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.intLerp(alpha, t1.getAt(0), t2v0), MathUtils.intLerp(alpha, t1.getAt(1), t2v1), MathUtils.intLerp(alpha, t1.getAt(2), t2v2));
+		return func.apply(MathUtils.intLerp(alpha, t1.at(0), t2v0), MathUtils.intLerp(alpha, t1.at(1), t2v1), MathUtils.intLerp(alpha, t1.at(2), t2v2));
 	}
 
 	public static <T> T intLerpFunc(double alpha, float[] t1, ITup3RF t2, IFunc3F<T> func)
@@ -3137,7 +3137,7 @@ public final class VecUtils3F
 
 	public static <T> T intLerpFunc(double alpha, float[] t1, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.intLerp(alpha, t1[0], t2.getAt(0)), MathUtils.intLerp(alpha, t1[1], t2.getAt(1)), MathUtils.intLerp(alpha, t1[2], t2.getAt(2)));
+		return func.apply(MathUtils.intLerp(alpha, t1[0], t2.at(0)), MathUtils.intLerp(alpha, t1[1], t2.at(1)), MathUtils.intLerp(alpha, t1[2], t2.at(2)));
 	}
 
 	public static <T> T intLerpFunc(double alpha, float[] t1, float[] t2, IFunc3F<T> func)
@@ -3157,7 +3157,7 @@ public final class VecUtils3F
 
 	public static <T> T intLerpFunc(double alpha, float t1v0, float t1v1, float t1v2, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.intLerp(alpha, t1v0, t2.getAt(0)), MathUtils.intLerp(alpha, t1v1, t2.getAt(1)), MathUtils.intLerp(alpha, t1v2, t2.getAt(2)));
+		return func.apply(MathUtils.intLerp(alpha, t1v0, t2.at(0)), MathUtils.intLerp(alpha, t1v1, t2.at(1)), MathUtils.intLerp(alpha, t1v2, t2.at(2)));
 	}
 
 	public static <T> T intLerpFunc(double alpha, float t1v0, float t1v1, float t1v2, float[] t2, IFunc3F<T> func)
@@ -3181,9 +3181,9 @@ public final class VecUtils3F
 	
 	public static float[] add(ITup3RF t1, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = t1.v0() + t2.getAt(0);
-		res[1] = t1.v1() + t2.getAt(1);
-		res[2] = t1.v2() + t2.getAt(2);
+		res[0] = t1.v0() + t2.at(0);
+		res[1] = t1.v1() + t2.at(1);
+		res[2] = t1.v2() + t2.at(2);
 		
 		return res;
 	}
@@ -3208,36 +3208,36 @@ public final class VecUtils3F
 	
 	public static float[] add(ITupRF t1, ITup3RF t2, @ExtractionParam float[] res)
 	{
-		res[0] = t1.getAt(0) + t2.v0();
-		res[1] = t1.getAt(1) + t2.v1();
-		res[2] = t1.getAt(2) + t2.v2();
+		res[0] = t1.at(0) + t2.v0();
+		res[1] = t1.at(1) + t2.v1();
+		res[2] = t1.at(2) + t2.v2();
 		
 		return res;
 	}
 	
 	public static float[] add(ITupRF t1, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = t1.getAt(0) + t2.getAt(0);
-		res[1] = t1.getAt(1) + t2.getAt(1);
-		res[2] = t1.getAt(2) + t2.getAt(2);
+		res[0] = t1.at(0) + t2.at(0);
+		res[1] = t1.at(1) + t2.at(1);
+		res[2] = t1.at(2) + t2.at(2);
 		
 		return res;
 	}
 
 	public static float[] add(ITupRF t1, float[] t2, @ExtractionParam float[] res)
 	{
-		res[0] = t1.getAt(0) + t2[0];
-		res[1] = t1.getAt(1) + t2[1];
-		res[2] = t1.getAt(2) + t2[2];
+		res[0] = t1.at(0) + t2[0];
+		res[1] = t1.at(1) + t2[1];
+		res[2] = t1.at(2) + t2[2];
 	
 		return res;
 	}
 
 	public static float[] add(ITupRF t1, float t2v0, float t2v1, float t2v2, @ExtractionParam float[] res)
 	{
-		res[0] = t1.getAt(0) + t2v0;
-		res[1] = t1.getAt(1) + t2v1;
-		res[2] = t1.getAt(2) + t2v2;
+		res[0] = t1.at(0) + t2v0;
+		res[1] = t1.at(1) + t2v1;
+		res[2] = t1.at(2) + t2v2;
 		
 		return res;
 	}
@@ -3253,9 +3253,9 @@ public final class VecUtils3F
 
 	public static float[] add(float[] t1, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = t1[0] + t2.getAt(0);
-		res[1] = t1[1] + t2.getAt(1);
-		res[2] = t1[2] + t2.getAt(2);
+		res[0] = t1[0] + t2.at(0);
+		res[1] = t1[1] + t2.at(1);
+		res[2] = t1[2] + t2.at(2);
 		
 		return res;
 	}
@@ -3271,9 +3271,9 @@ public final class VecUtils3F
 
 	public static float[] add(float t1v0, float t1v1, float t1v2, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = t1v0 + t2.getAt(0);
-		res[1] = t1v1 + t2.getAt(1);
-		res[2] = t1v2 + t2.getAt(2);
+		res[0] = t1v0 + t2.at(0);
+		res[1] = t1v1 + t2.at(1);
+		res[2] = t1v2 + t2.at(2);
 		
 		return res;
 	}
@@ -3287,7 +3287,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T add(ITup3RF t1, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set(t1.v0() + t2.getAt(0), t1.v1() + t2.getAt(1), t1.v2() + t2.getAt(2));
+		res.set(t1.v0() + t2.at(0), t1.v1() + t2.at(1), t1.v2() + t2.at(2));
 		
 		return res;
 	}
@@ -3308,28 +3308,28 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T add(ITupRF t1, ITup3RF t2, @ExtractionParam T res)
 	{
-		res.set(t1.getAt(0) + t2.v0(), t1.getAt(1) + t2.v1(), t1.getAt(2) + t2.v2());
+		res.set(t1.at(0) + t2.v0(), t1.at(1) + t2.v1(), t1.at(2) + t2.v2());
 		
 		return res;
 	}
 
 	public static <T extends ITup3WF> T add(ITupRF t1, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set(t1.getAt(0) + t2.getAt(0), t1.getAt(1) + t2.getAt(1), t1.getAt(2) + t2.getAt(2));
+		res.set(t1.at(0) + t2.at(0), t1.at(1) + t2.at(1), t1.at(2) + t2.at(2));
 		
 		return res;
 	}
 
 	public static <T extends ITup3WF> T add(ITupRF t1, float[] t2, @ExtractionParam T res)
 	{
-		res.set(t1.getAt(0) + t2[0], t1.getAt(1) + t2[1], t1.getAt(2) + t2[2]);
+		res.set(t1.at(0) + t2[0], t1.at(1) + t2[1], t1.at(2) + t2[2]);
 		
 		return res;
 	}
 
 	public static <T extends ITup3WF> T add(ITupRF t1, float t2v0, float t2v1, float t2v2, @ExtractionParam T res)
 	{
-		res.set(t1.getAt(0) + t2v0, t1.getAt(1) + t2v1, t1.getAt(2) + t2v2);
+		res.set(t1.at(0) + t2v0, t1.at(1) + t2v1, t1.at(2) + t2v2);
 		
 		return res;
 	}
@@ -3343,7 +3343,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T add(float[] t1, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set(t1[0] + t2.getAt(0), t1[1] + t2.getAt(1), t1[2] + t2.getAt(2));
+		res.set(t1[0] + t2.at(0), t1[1] + t2.at(1), t1[2] + t2.at(2));
 		
 		return res;
 	}
@@ -3371,7 +3371,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T add(float t1v0, float t1v1, float t1v2, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set(t1v0 + t2.getAt(0), t1v1 + t2.getAt(1), t1v2 + t2.getAt(2));
+		res.set(t1v0 + t2.at(0), t1v1 + t2.at(1), t1v2 + t2.at(2));
 		
 		return res;
 	}
@@ -3397,7 +3397,7 @@ public final class VecUtils3F
 	
 	public static <T> T addFunc(ITup3RF t1, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply(t1.v0() + t2.getAt(0), t1.v1() + t2.getAt(1), t1.v2() + t2.getAt(2));
+		return func.apply(t1.v0() + t2.at(0), t1.v1() + t2.at(1), t1.v2() + t2.at(2));
 	}
 	
 	public static <T> T addFunc(ITup3RF t1, float[] t2, IFunc3F<T> func)
@@ -3412,22 +3412,22 @@ public final class VecUtils3F
 	
 	public static <T> T addFunc(ITupRF t1, ITup3RF t2, IFunc3F<T> func)
 	{
-		return func.apply(t1.getAt(0) + t2.v0(), t1.getAt(1) + t2.v1(), t1.getAt(2) + t2.v2());
+		return func.apply(t1.at(0) + t2.v0(), t1.at(1) + t2.v1(), t1.at(2) + t2.v2());
 	}
 	
 	public static <T> T addFunc(ITupRF t1, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply(t1.getAt(0) + t2.getAt(0), t1.getAt(1) + t2.getAt(1), t1.getAt(2) + t2.getAt(2));
+		return func.apply(t1.at(0) + t2.at(0), t1.at(1) + t2.at(1), t1.at(2) + t2.at(2));
 	}
 	
 	public static <T> T addFunc(ITupRF t1, float[] t2, IFunc3F<T> func)
 	{
-		return func.apply(t1.getAt(0) + t2[0], t1.getAt(1) + t2[1], t1.getAt(2) + t2[2]);
+		return func.apply(t1.at(0) + t2[0], t1.at(1) + t2[1], t1.at(2) + t2[2]);
 	}
 	
 	public static <T> T addFunc(ITupRF t1, float t2v0, float t2v1, float t2v2, IFunc3F<T> func)
 	{
-		return func.apply(t1.getAt(0) + t2v0, t1.getAt(1) + t2v1, t1.getAt(2) + t2v2);
+		return func.apply(t1.at(0) + t2v0, t1.at(1) + t2v1, t1.at(2) + t2v2);
 	}
 	
 	public static <T> T addFunc(float[] t1, ITup3RF t2, IFunc3F<T> func)
@@ -3437,7 +3437,7 @@ public final class VecUtils3F
 	
 	public static <T> T addFunc(float[] t1, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply(t1[0] + t2.getAt(0), t1[1] + t2.getAt(1), t1[2] + t2.getAt(2));
+		return func.apply(t1[0] + t2.at(0), t1[1] + t2.at(1), t1[2] + t2.at(2));
 	}
 	
 	public static <T> T addFunc(float[] t1, float[] t2, IFunc3F<T> func)
@@ -3457,7 +3457,7 @@ public final class VecUtils3F
 	
 	public static <T> T addFunc(float t1v0, float t1v1, float t1v2, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply(t1v0 + t2.getAt(0), t1v1 + t2.getAt(1), t1v2 + t2.getAt(2));
+		return func.apply(t1v0 + t2.at(0), t1v1 + t2.at(1), t1v2 + t2.at(2));
 	}
 	
 	public static <T> T addFunc(float t1v0, float t1v1, float t1v2, float[] t2, IFunc3F<T> func)
@@ -3481,9 +3481,9 @@ public final class VecUtils3F
 
 	public static float[] sub(ITup3RF t1, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = t1.v0() - t2.getAt(0);
-		res[1] = t1.v1() - t2.getAt(1);
-		res[2] = t1.v2() - t2.getAt(2);
+		res[0] = t1.v0() - t2.at(0);
+		res[1] = t1.v1() - t2.at(1);
+		res[2] = t1.v2() - t2.at(2);
 		
 		return res;
 	}
@@ -3508,36 +3508,36 @@ public final class VecUtils3F
 
 	public static float[] sub(ITupRF t1, ITup3RF t2, @ExtractionParam float[] res)
 	{
-		res[0] = t1.getAt(0) - t2.v0();
-		res[1] = t1.getAt(1) - t2.v1();
-		res[2] = t1.getAt(2) - t2.v2();
+		res[0] = t1.at(0) - t2.v0();
+		res[1] = t1.at(1) - t2.v1();
+		res[2] = t1.at(2) - t2.v2();
 		
 		return res;
 	}
 
 	public static float[] sub(ITupRF t1, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = t1.getAt(0) - t2.getAt(0);
-		res[1] = t1.getAt(1) - t2.getAt(1);
-		res[2] = t1.getAt(2) - t2.getAt(2);
+		res[0] = t1.at(0) - t2.at(0);
+		res[1] = t1.at(1) - t2.at(1);
+		res[2] = t1.at(2) - t2.at(2);
 		
 		return res;
 	}
 	
 	public static float[] sub(ITupRF t1, float[] t2, @ExtractionParam float[] res)
 	{
-		res[0] = t1.getAt(0) - t2[0];
-		res[1] = t1.getAt(1) - t2[1];
-		res[2] = t1.getAt(2) - t2[2];
+		res[0] = t1.at(0) - t2[0];
+		res[1] = t1.at(1) - t2[1];
+		res[2] = t1.at(2) - t2[2];
 		
 		return res;
 	}
 
 	public static float[] sub(ITupRF t1, float t2v0, float t2v1, float t2v2, @ExtractionParam float[] res)
 	{
-		res[0] = t1.getAt(0) - t2v0;
-		res[1] = t1.getAt(1) - t2v1;
-		res[2] = t1.getAt(2) - t2v2;
+		res[0] = t1.at(0) - t2v0;
+		res[1] = t1.at(1) - t2v1;
+		res[2] = t1.at(2) - t2v2;
 		
 		return res;
 	}
@@ -3553,9 +3553,9 @@ public final class VecUtils3F
 
 	public static float[] sub(float[] t1, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = t1[0] - t2.getAt(0);
-		res[1] = t1[1] - t2.getAt(1);
-		res[2] = t1[2] - t2.getAt(2);
+		res[0] = t1[0] - t2.at(0);
+		res[1] = t1[1] - t2.at(1);
+		res[2] = t1[2] - t2.at(2);
 		
 		return res;
 	}
@@ -3571,9 +3571,9 @@ public final class VecUtils3F
 
 	public static float[] sub(float t1v0, float t1v1, float t1v2, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = t1v0 - t2.getAt(0);
-		res[1] = t1v1 - t2.getAt(1);
-		res[2] = t1v2 - t2.getAt(2);
+		res[0] = t1v0 - t2.at(0);
+		res[1] = t1v1 - t2.at(1);
+		res[2] = t1v2 - t2.at(2);
 		
 		return res;
 	}
@@ -3587,7 +3587,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T sub(ITup3RF t1, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set(t1.v0() - t2.getAt(0), t1.v1() - t2.getAt(1), t1.v2() - t2.getAt(2));
+		res.set(t1.v0() - t2.at(0), t1.v1() - t2.at(1), t1.v2() - t2.at(2));
 		
 		return res;
 	}
@@ -3608,28 +3608,28 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T sub(ITupRF t1, ITup3RF t2, @ExtractionParam T res)
 	{
-		res.set(t1.getAt(0) - t2.v0(), t1.getAt(1) - t2.v1(), t1.getAt(2) - t2.v2());
+		res.set(t1.at(0) - t2.v0(), t1.at(1) - t2.v1(), t1.at(2) - t2.v2());
 		
 		return res;
 	}
 
 	public static <T extends ITup3WF> T sub(ITupRF t1, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set(t1.getAt(0) - t2.getAt(0), t1.getAt(1) - t2.getAt(1), t1.getAt(2) - t2.getAt(2));
+		res.set(t1.at(0) - t2.at(0), t1.at(1) - t2.at(1), t1.at(2) - t2.at(2));
 		
 		return res;
 	}
 	
 	public static <T extends ITup3WF> T sub(ITupRF t1, float[] t2, @ExtractionParam T res)
 	{
-		res.set(t1.getAt(0) - t2[0], t1.getAt(1) - t2[1], t1.getAt(2) - t2[2]);
+		res.set(t1.at(0) - t2[0], t1.at(1) - t2[1], t1.at(2) - t2[2]);
 		
 		return res;
 	}
 
 	public static <T extends ITup3WF> T sub(ITupRF t1, float t2v0, float t2v1, float t2v2, @ExtractionParam T res)
 	{
-		res.set(t1.getAt(0) - t2v0, t1.getAt(1) - t2v1, t1.getAt(2) - t2v2);
+		res.set(t1.at(0) - t2v0, t1.at(1) - t2v1, t1.at(2) - t2v2);
 		
 		return res;
 	}
@@ -3643,7 +3643,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T sub(float[] t1, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set(t1[0] - t2.getAt(0), t1[1] - t2.getAt(1), t1[2] - t2.getAt(2));
+		res.set(t1[0] - t2.at(0), t1[1] - t2.at(1), t1[2] - t2.at(2));
 		
 		return res;
 	}
@@ -3671,7 +3671,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T sub(float t1v0, float t1v1, float t1v2, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set(t1v0 - t2.getAt(0), t1v1 - t2.getAt(1), t1v2 - t2.getAt(2));
+		res.set(t1v0 - t2.at(0), t1v1 - t2.at(1), t1v2 - t2.at(2));
 		
 		return res;
 	}
@@ -3697,7 +3697,7 @@ public final class VecUtils3F
 	
 	public static <T> T subFunc(ITup3RF t1, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply(t1.v0() - t2.getAt(0), t1.v1() - t2.getAt(1), t1.v2() - t2.getAt(2));
+		return func.apply(t1.v0() - t2.at(0), t1.v1() - t2.at(1), t1.v2() - t2.at(2));
 	}
 	
 	public static <T> T subFunc(ITup3RF t1, float[] t2, IFunc3F<T> func)
@@ -3712,22 +3712,22 @@ public final class VecUtils3F
 	
 	public static <T> T subFunc(ITupRF t1, ITup3RF t2, IFunc3F<T> func)
 	{
-		return func.apply(t1.getAt(0) - t2.v0(), t1.getAt(1) - t2.v1(), t1.getAt(2) - t2.v2());
+		return func.apply(t1.at(0) - t2.v0(), t1.at(1) - t2.v1(), t1.at(2) - t2.v2());
 	}
 	
 	public static <T> T subFunc(ITupRF t1, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply(t1.getAt(0) - t2.getAt(0), t1.getAt(1) - t2.getAt(1), t1.getAt(2) - t2.getAt(2));
+		return func.apply(t1.at(0) - t2.at(0), t1.at(1) - t2.at(1), t1.at(2) - t2.at(2));
 	}
 	
 	public static <T> T subFunc(ITupRF t1, float[] t2, IFunc3F<T> func)
 	{
-		return func.apply(t1.getAt(0) - t2[0], t1.getAt(1) - t2[1], t1.getAt(2) - t2[2]);
+		return func.apply(t1.at(0) - t2[0], t1.at(1) - t2[1], t1.at(2) - t2[2]);
 	}
 	
 	public static <T> T subFunc(ITupRF t1, float t2v0, float t2v1, float t2v2, IFunc3F<T> func)
 	{
-		return func.apply(t1.getAt(0) - t2v0, t1.getAt(1) - t2v1, t1.getAt(2) - t2v2);
+		return func.apply(t1.at(0) - t2v0, t1.at(1) - t2v1, t1.at(2) - t2v2);
 	}
 	
 	public static <T> T subFunc(float[] t1, ITup3RF t2, IFunc3F<T> func)
@@ -3737,7 +3737,7 @@ public final class VecUtils3F
 	
 	public static <T> T subFunc(float[] t1, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply(t1[0] - t2.getAt(0), t1[1] - t2.getAt(1), t1[2] - t2.getAt(2));
+		return func.apply(t1[0] - t2.at(0), t1[1] - t2.at(1), t1[2] - t2.at(2));
 	}
 	
 	public static <T> T subFunc(float[] t1, float[] t2, IFunc3F<T> func)
@@ -3757,7 +3757,7 @@ public final class VecUtils3F
 	
 	public static <T> T subFunc(float t1v0, float t1v1, float t1v2, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply(t1v0 - t2.getAt(0), t1v1 - t2.getAt(1), t1v2 - t2.getAt(2));
+		return func.apply(t1v0 - t2.at(0), t1v1 - t2.at(1), t1v2 - t2.at(2));
 	}
 	
 	public static <T> T subFunc(float t1v0, float t1v1, float t1v2, float[] t2, IFunc3F<T> func)
@@ -3781,9 +3781,9 @@ public final class VecUtils3F
 
 	public static float[] mul(ITup3RF t1, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = t1.v0() * t2.getAt(0);
-		res[1] = t1.v1() * t2.getAt(1);
-		res[2] = t1.v2() * t2.getAt(2);
+		res[0] = t1.v0() * t2.at(0);
+		res[1] = t1.v1() * t2.at(1);
+		res[2] = t1.v2() * t2.at(2);
 		
 		return res;
 	}
@@ -3808,36 +3808,36 @@ public final class VecUtils3F
 
 	public static float[] mul(ITupRF t1, ITup3RF t2, @ExtractionParam float[] res)
 	{
-		res[0] = t1.getAt(0) * t2.v0();
-		res[1] = t1.getAt(1) * t2.v1();
-		res[2] = t1.getAt(2) * t2.v2();
+		res[0] = t1.at(0) * t2.v0();
+		res[1] = t1.at(1) * t2.v1();
+		res[2] = t1.at(2) * t2.v2();
 		
 		return res;
 	}
 
 	public static float[] mul(ITupRF t1, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = t1.getAt(0) * t2.getAt(0);
-		res[1] = t1.getAt(1)  * t2.getAt(1);
-		res[2] = t1.getAt(2)  * t2.getAt(2);
+		res[0] = t1.at(0) * t2.at(0);
+		res[1] = t1.at(1)  * t2.at(1);
+		res[2] = t1.at(2)  * t2.at(2);
 		
 		return res;
 	}
 	
 	public static float[] mul(ITupRF t1, float[] t2, @ExtractionParam float[] res)
 	{
-		res[0] = t1.getAt(0) * t2[0];
-		res[1] = t1.getAt(1) * t2[1];
-		res[2] = t1.getAt(2) * t2[2];
+		res[0] = t1.at(0) * t2[0];
+		res[1] = t1.at(1) * t2[1];
+		res[2] = t1.at(2) * t2[2];
 		
 		return res;
 	}
 
 	public static float[] mul(ITupRF t1, float t2v0, float t2v1, float t2v2, @ExtractionParam float[] res)
 	{
-		res[0] = t1.getAt(0) * t2v0;
-		res[1] = t1.getAt(1) * t2v1;
-		res[2] = t1.getAt(2) * t2v2;
+		res[0] = t1.at(0) * t2v0;
+		res[1] = t1.at(1) * t2v1;
+		res[2] = t1.at(2) * t2v2;
 		
 		return res;
 	}
@@ -3854,9 +3854,9 @@ public final class VecUtils3F
 
 	public static float[] mul(float[] t1, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = t1[0] * t2.getAt(0);
-		res[1] = t1[1] * t2.getAt(1);
-		res[2] = t1[2] * t2.getAt(2);
+		res[0] = t1[0] * t2.at(0);
+		res[1] = t1[1] * t2.at(1);
+		res[2] = t1[2] * t2.at(2);
 		
 		return res;
 	}
@@ -3872,9 +3872,9 @@ public final class VecUtils3F
 
 	public static float[] mul(float t1v0, float t1v1, float t1v2, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = t1v0 * t2.getAt(0);
-		res[1] = t1v1 * t2.getAt(1);
-		res[2] = t1v2 * t2.getAt(2);
+		res[0] = t1v0 * t2.at(0);
+		res[1] = t1v1 * t2.at(1);
+		res[2] = t1v2 * t2.at(2);
 		
 		return res;
 	}
@@ -3888,7 +3888,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T mul(ITup3RF t1, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set(t1.v0() * t2.getAt(0), t1.v1() * t2.getAt(1), t1.v2() * t2.getAt(2));
+		res.set(t1.v0() * t2.at(0), t1.v1() * t2.at(1), t1.v2() * t2.at(2));
 		
 		return res;
 	}	
@@ -3909,28 +3909,28 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T mul(ITupRF t1, ITup3RF t2, @ExtractionParam T res)
 	{
-		res.set(t1.getAt(0) * t2.v0(), t1.getAt(1) * t2.v1(), t1.getAt(2) * t2.v2());
+		res.set(t1.at(0) * t2.v0(), t1.at(1) * t2.v1(), t1.at(2) * t2.v2());
 		
 		return res;
 	}
 
 	public static <T extends ITup3WF> T mul(ITupRF t1, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set(t1.getAt(0) * t2.getAt(0), t1.getAt(1) * t2.getAt(1), t1.getAt(2) * t2.getAt(2));
+		res.set(t1.at(0) * t2.at(0), t1.at(1) * t2.at(1), t1.at(2) * t2.at(2));
 		
 		return res;
 	}	
 	
 	public static <T extends ITup3WF> T mul(ITupRF t1, float[] t2, @ExtractionParam T res)
 	{
-		res.set(t1.getAt(0) * t2[0], t1.getAt(1) * t2[1], t1.getAt(2) * t2[2]);
+		res.set(t1.at(0) * t2[0], t1.at(1) * t2[1], t1.at(2) * t2[2]);
 		
 		return res;
 	}
 
 	public static <T extends ITup3WF> T mul(ITupRF t1, float t2v0, float t2v1, float t2v2, @ExtractionParam T res)
 	{
-		res.set(t1.getAt(0) * t2v0, t1.getAt(1) * t2v1,t1.getAt(2) * t2v2);
+		res.set(t1.at(0) * t2v0, t1.at(1) * t2v1,t1.at(2) * t2v2);
 		
 		return res;
 	}
@@ -3944,7 +3944,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T mul(float[] t1, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set(t1[0] * t2.getAt(0), t1[1] * t2.getAt(1), t1[2] * t2.getAt(2));
+		res.set(t1[0] * t2.at(0), t1[1] * t2.at(1), t1[2] * t2.at(2));
 		
 		return res;
 	}
@@ -3972,7 +3972,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T mul(float t1v0, float t1v1, float t1v2, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set(t1v0 * t2.getAt(0), t1v1 * t2.getAt(1), t1v2 * t2.getAt(2));
+		res.set(t1v0 * t2.at(0), t1v1 * t2.at(1), t1v2 * t2.at(2));
 		
 		return res;
 	}
@@ -3998,7 +3998,7 @@ public final class VecUtils3F
 	
 	public static <T> T mulFunc(ITup3RF t1, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply(t1.v0() * t2.getAt(0), t1.v1() * t2.getAt(1), t1.v2() * t2.getAt(2));
+		return func.apply(t1.v0() * t2.at(0), t1.v1() * t2.at(1), t1.v2() * t2.at(2));
 	}
 	
 	public static <T> T mulFunc(ITup3RF t1, float[] t2, IFunc3F<T> func)
@@ -4013,22 +4013,22 @@ public final class VecUtils3F
 	
 	public static <T> T mulFunc(ITupRF t1, ITup3RF t2, IFunc3F<T> func)
 	{
-		return func.apply(t1.getAt(0) * t2.v0(), t1.getAt(1) * t2.v1(), t1.getAt(2) * t2.v2());
+		return func.apply(t1.at(0) * t2.v0(), t1.at(1) * t2.v1(), t1.at(2) * t2.v2());
 	}
 	
 	public static <T> T mulFunc(ITupRF t1, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply(t1.getAt(0) * t2.getAt(0), t1.getAt(1) * t2.getAt(1), t1.getAt(2) * t2.getAt(2));
+		return func.apply(t1.at(0) * t2.at(0), t1.at(1) * t2.at(1), t1.at(2) * t2.at(2));
 	}
 	
 	public static <T> T mulFunc(ITupRF t1, float[] t2, IFunc3F<T> func)
 	{
-		return func.apply(t1.getAt(0) * t2[0], t1.getAt(1) * t2[1], t1.getAt(2) * t2[2]);
+		return func.apply(t1.at(0) * t2[0], t1.at(1) * t2[1], t1.at(2) * t2[2]);
 	}
 	
 	public static <T> T mulFunc(ITupRF t1, float t2v0, float t2v1, float t2v2, IFunc3F<T> func)
 	{
-		return func.apply(t1.getAt(0) * t2v0, t1.getAt(1) * t2v1, t1.getAt(2) * t2v2);
+		return func.apply(t1.at(0) * t2v0, t1.at(1) * t2v1, t1.at(2) * t2v2);
 	}
 	
 	public static <T> T mulFunc(float[] t1, ITup3RF t2, IFunc3F<T> func)
@@ -4038,7 +4038,7 @@ public final class VecUtils3F
 	
 	public static <T> T mulFunc(float[] t1, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply(t1[0] * t2.getAt(0), t1[1] * t2.getAt(1), t1[2] * t2.getAt(2));
+		return func.apply(t1[0] * t2.at(0), t1[1] * t2.at(1), t1[2] * t2.at(2));
 	}
 	
 	public static <T> T mulFunc(float[] t1, float[] t2, IFunc3F<T> func)
@@ -4058,7 +4058,7 @@ public final class VecUtils3F
 	
 	public static <T> T mulFunc(float t1v0, float t1v1, float t1v2, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply(t1v0 * t2.getAt(0), t1v1 * t2.getAt(1), t1v2 * t2.getAt(2));
+		return func.apply(t1v0 * t2.at(0), t1v1 * t2.at(1), t1v2 * t2.at(2));
 	}
 	
 	public static <T> T mulFunc(float t1v0, float t1v1, float t1v2, float[] t2, IFunc3F<T> func)
@@ -4082,9 +4082,9 @@ public final class VecUtils3F
 
 	public static float[] div(ITup3RF t1, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = t1.v0() / t2.getAt(0);
-		res[1] = t1.v1() / t2.getAt(1);
-		res[2] = t1.v2() / t2.getAt(2);
+		res[0] = t1.v0() / t2.at(0);
+		res[1] = t1.v1() / t2.at(1);
+		res[2] = t1.v2() / t2.at(2);
 		
 		return res;
 	}
@@ -4109,36 +4109,36 @@ public final class VecUtils3F
 
 	public static float[] div(ITupRF t1, ITup3RF t2, @ExtractionParam float[] res)
 	{
-		res[0] = t1.getAt(0) / t2.v0();
-		res[1] = t1.getAt(1) / t2.v1();
-		res[2] = t1.getAt(2) / t2.v2();
+		res[0] = t1.at(0) / t2.v0();
+		res[1] = t1.at(1) / t2.v1();
+		res[2] = t1.at(2) / t2.v2();
 		
 		return res;
 	}
 
 	public static float[] div(ITupRF t1, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = t1.getAt(0) / t2.getAt(0);
-		res[1] = t1.getAt(1) / t2.getAt(1);
-		res[2] = t1.getAt(2) / t2.getAt(2);
+		res[0] = t1.at(0) / t2.at(0);
+		res[1] = t1.at(1) / t2.at(1);
+		res[2] = t1.at(2) / t2.at(2);
 		
 		return res;
 	}
 	
 	public static float[] div(ITupRF t1, float[] t2, @ExtractionParam float[] res)
 	{
-		res[0] = t1.getAt(0) / t2[0];
-		res[1] = t1.getAt(1) / t2[1];
-		res[2] = t1.getAt(2) / t2[2];
+		res[0] = t1.at(0) / t2[0];
+		res[1] = t1.at(1) / t2[1];
+		res[2] = t1.at(2) / t2[2];
 		
 		return res;
 	}
 
 	public static float[] div(ITupRF t1, float t2v0, float t2v1, float t2v2, @ExtractionParam float[] res)
 	{
-		res[0] = t1.getAt(0) / t2v0;
-		res[1] = t1.getAt(1) / t2v1;
-		res[2] = t1.getAt(2) / t2v2;
+		res[0] = t1.at(0) / t2v0;
+		res[1] = t1.at(1) / t2v1;
+		res[2] = t1.at(2) / t2v2;
 		
 		return res;
 	}
@@ -4154,9 +4154,9 @@ public final class VecUtils3F
 
 	public static float[] div(float[] t1, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = t1[0] / t2.getAt(0);
-		res[1] = t1[1] / t2.getAt(1);
-		res[2] = t1[2] / t2.getAt(2);
+		res[0] = t1[0] / t2.at(0);
+		res[1] = t1[1] / t2.at(1);
+		res[2] = t1[2] / t2.at(2);
 		
 		return res;
 	}
@@ -4172,9 +4172,9 @@ public final class VecUtils3F
 
 	public static float[] div(float t1v0, float t1v1, float t1v2, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = t1v0 / t2.getAt(0);
-		res[1] = t1v1 / t2.getAt(1);
-		res[2] = t1v2 / t2.getAt(2);
+		res[0] = t1v0 / t2.at(0);
+		res[1] = t1v1 / t2.at(1);
+		res[2] = t1v2 / t2.at(2);
 		
 		return res;
 	}
@@ -4188,7 +4188,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T div(ITup3RF t1, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set(t1.v0() / t2.getAt(0), t1.v1() / t2.getAt(1), t1.v2() / t2.getAt(2));
+		res.set(t1.v0() / t2.at(0), t1.v1() / t2.at(1), t1.v2() / t2.at(2));
 		
 		return res;
 	}
@@ -4209,28 +4209,28 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T div(ITupRF t1, ITup3RF t2, @ExtractionParam T res)
 	{
-		res.set(t1.getAt(0) / t2.v0(), t1.getAt(1) / t2.v1(), t1.getAt(2) / t2.v2());
+		res.set(t1.at(0) / t2.v0(), t1.at(1) / t2.v1(), t1.at(2) / t2.v2());
 		
 		return res;
 	}
 
 	public static <T extends ITup3WF> T div(ITupRF t1, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set(t1.getAt(0) / t2.getAt(0), t1.getAt(1) / t2.getAt(1), t1.getAt(2) / t2.getAt(2));
+		res.set(t1.at(0) / t2.at(0), t1.at(1) / t2.at(1), t1.at(2) / t2.at(2));
 		
 		return res;
 	}
 	
 	public static <T extends ITup3WF> T div(ITupRF t1, float[] t2, @ExtractionParam T res)
 	{
-		res.set(t1.getAt(0) / t2[0], t1.getAt(1) / t2[1], t1.getAt(2) / t2[2]);
+		res.set(t1.at(0) / t2[0], t1.at(1) / t2[1], t1.at(2) / t2[2]);
 		
 		return res;
 	}
 
 	public static <T extends ITup3WF> T div(ITupRF t1, float t2v0, float t2v1, float t2v2, @ExtractionParam T res)
 	{
-		res.set(t1.getAt(0) / t2v0, t1.getAt(1) / t2v1, t1.getAt(2) / t2v2);
+		res.set(t1.at(0) / t2v0, t1.at(1) / t2v1, t1.at(2) / t2v2);
 		
 		return res;
 	}
@@ -4244,7 +4244,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T div(float[] t1, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set(t1[0] / t2.getAt(0), t1[1] / t2.getAt(1), t1[2] / t2.getAt(2));
+		res.set(t1[0] / t2.at(0), t1[1] / t2.at(1), t1[2] / t2.at(2));
 		
 		return res;
 	}
@@ -4272,7 +4272,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T div(float t1v0, float t1v1, float t1v2, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set(t1v0 / t2.getAt(0), t1v1 / t2.getAt(1), t1v2 / t2.getAt(2));
+		res.set(t1v0 / t2.at(0), t1v1 / t2.at(1), t1v2 / t2.at(2));
 		
 		return res;
 	}
@@ -4298,7 +4298,7 @@ public final class VecUtils3F
 	
 	public static <T> T divFunc(ITup3RF t1, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply(t1.v0() / t2.getAt(0), t1.v1() / t2.getAt(1), t1.v2() / t2.getAt(2));
+		return func.apply(t1.v0() / t2.at(0), t1.v1() / t2.at(1), t1.v2() / t2.at(2));
 	}
 	
 	public static <T> T divFunc(ITup3RF t1, float[] t2, IFunc3F<T> func)
@@ -4313,22 +4313,22 @@ public final class VecUtils3F
 	
 	public static <T> T divFunc(ITupRF t1, ITup3RF t2, IFunc3F<T> func)
 	{
-		return func.apply(t1.getAt(0) / t2.v0(), t1.getAt(1) / t2.v1(), t1.getAt(2) / t2.v2());
+		return func.apply(t1.at(0) / t2.v0(), t1.at(1) / t2.v1(), t1.at(2) / t2.v2());
 	}
 	
 	public static <T> T divFunc(ITupRF t1, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply(t1.getAt(0) / t2.getAt(0), t1.getAt(1) / t2.getAt(1), t1.getAt(2) / t2.getAt(2));
+		return func.apply(t1.at(0) / t2.at(0), t1.at(1) / t2.at(1), t1.at(2) / t2.at(2));
 	}
 	
 	public static <T> T divFunc(ITupRF t1, float[] t2, IFunc3F<T> func)
 	{
-		return func.apply(t1.getAt(0) / t2[0], t1.getAt(1) / t2[1], t1.getAt(2) / t2[2]);
+		return func.apply(t1.at(0) / t2[0], t1.at(1) / t2[1], t1.at(2) / t2[2]);
 	}
 	
 	public static <T> T divFunc(ITupRF t1, float t2v0, float t2v1, float t2v2, IFunc3F<T> func)
 	{
-		return func.apply(t1.getAt(0) / t2v0, t1.getAt(1) / t2v1, t1.getAt(2) / t2v2);
+		return func.apply(t1.at(0) / t2v0, t1.at(1) / t2v1, t1.at(2) / t2v2);
 	}
 	
 	public static <T> T divFunc(float[] t1, ITup3RF t2, IFunc3F<T> func)
@@ -4338,7 +4338,7 @@ public final class VecUtils3F
 	
 	public static <T> T divFunc(float[] t1, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply(t1[0] / t2.getAt(0), t1[1] / t2.getAt(1), t1[2] / t2.getAt(2));
+		return func.apply(t1[0] / t2.at(0), t1[1] / t2.at(1), t1[2] / t2.at(2));
 	}
 	
 	public static <T> T divFunc(float[] t1, float[] t2, IFunc3F<T> func)
@@ -4358,7 +4358,7 @@ public final class VecUtils3F
 	
 	public static <T> T divFunc(float t1v0, float t1v1, float t1v2, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply(t1v0 / t2.getAt(0), t1v1 / t2.getAt(1), t1v2 / t2.getAt(2));
+		return func.apply(t1v0 / t2.at(0), t1v1 / t2.at(1), t1v2 / t2.at(2));
 	}
 	
 	public static <T> T divFunc(float t1v0, float t1v1, float t1v2, float[] t2, IFunc3F<T> func)
@@ -4382,9 +4382,9 @@ public final class VecUtils3F
 
 	public static float[] fma(ITup3RF t1, ITup3RF t2, ITupRF t3, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.fma(t1.v0(), t2.v0(), t3.getAt(0));
-		res[1] = MathUtils.fma(t1.v1(), t2.v1(), t3.getAt(1));
-		res[2] = MathUtils.fma(t1.v2(), t2.v2(), t3.getAt(2));
+		res[0] = MathUtils.fma(t1.v0(), t2.v0(), t3.at(0));
+		res[1] = MathUtils.fma(t1.v1(), t2.v1(), t3.at(1));
+		res[2] = MathUtils.fma(t1.v2(), t2.v2(), t3.at(2));
 		
 		return res;
 	}
@@ -4409,36 +4409,36 @@ public final class VecUtils3F
 
 	public static float[] fma(ITup3RF t1, ITupRF t2, ITup3RF t3, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.fma(t1.v0(), t2.getAt(0), t3.v0());
-		res[1] = MathUtils.fma(t1.v1(), t2.getAt(1), t3.v1());
-		res[2] = MathUtils.fma(t1.v2(), t2.getAt(2), t3.v2());
+		res[0] = MathUtils.fma(t1.v0(), t2.at(0), t3.v0());
+		res[1] = MathUtils.fma(t1.v1(), t2.at(1), t3.v1());
+		res[2] = MathUtils.fma(t1.v2(), t2.at(2), t3.v2());
 		
 		return res;
 	}
 
 	public static float[] fma(ITup3RF t1, ITupRF t2, ITupRF t3, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.fma(t1.v0(), t2.getAt(0), t3.getAt(0));
-		res[1] = MathUtils.fma(t1.v1(), t2.getAt(1), t3.getAt(1));
-		res[2] = MathUtils.fma(t1.v2(), t2.getAt(2), t3.getAt(2));
+		res[0] = MathUtils.fma(t1.v0(), t2.at(0), t3.at(0));
+		res[1] = MathUtils.fma(t1.v1(), t2.at(1), t3.at(1));
+		res[2] = MathUtils.fma(t1.v2(), t2.at(2), t3.at(2));
 		
 		return res;
 	}
 	
 	public static float[] fma(ITup3RF t1, ITupRF t2, float[] t3, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.fma(t1.v0(), t2.getAt(0), t3[0]);
-		res[1] = MathUtils.fma(t1.v1(), t2.getAt(1), t3[1]);
-		res[2] = MathUtils.fma(t1.v2(), t2.getAt(2), t3[2]);
+		res[0] = MathUtils.fma(t1.v0(), t2.at(0), t3[0]);
+		res[1] = MathUtils.fma(t1.v1(), t2.at(1), t3[1]);
+		res[2] = MathUtils.fma(t1.v2(), t2.at(2), t3[2]);
 		
 		return res;
 	}
 
 	public static float[] fma(ITup3RF t1, ITupRF t2, float t3v0, float t3v1, float t3v2, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.fma(t1.v0(), t2.getAt(0), t3v0);
-		res[1] = MathUtils.fma(t1.v1(), t2.getAt(1), t3v1);
-		res[2] = MathUtils.fma(t1.v2(), t2.getAt(2), t3v2);
+		res[0] = MathUtils.fma(t1.v0(), t2.at(0), t3v0);
+		res[1] = MathUtils.fma(t1.v1(), t2.at(1), t3v1);
+		res[2] = MathUtils.fma(t1.v2(), t2.at(2), t3v2);
 		
 		return res;
 	}
@@ -4454,9 +4454,9 @@ public final class VecUtils3F
 
 	public static float[] fma(ITup3RF t1, float[] t2, ITupRF t3, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.fma(t1.v0(), t2[0], t3.getAt(0));
-		res[1] = MathUtils.fma(t1.v1(), t2[1], t3.getAt(1));
-		res[2] = MathUtils.fma(t1.v2(), t2[2], t3.getAt(2));
+		res[0] = MathUtils.fma(t1.v0(), t2[0], t3.at(0));
+		res[1] = MathUtils.fma(t1.v1(), t2[1], t3.at(1));
+		res[2] = MathUtils.fma(t1.v2(), t2[2], t3.at(2));
 		
 		return res;
 	}
@@ -4490,9 +4490,9 @@ public final class VecUtils3F
 
 	public static float[] fma(ITup3RF t1, float t2v0, float t2v1, float t2v2, ITupRF t3, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.fma(t1.v0(), t2v0, t3.getAt(0));
-		res[1] = MathUtils.fma(t1.v1(), t2v1, t3.getAt(1));
-		res[2] = MathUtils.fma(t1.v2(), t2v2, t3.getAt(2));
+		res[0] = MathUtils.fma(t1.v0(), t2v0, t3.at(0));
+		res[1] = MathUtils.fma(t1.v1(), t2v1, t3.at(1));
+		res[2] = MathUtils.fma(t1.v2(), t2v2, t3.at(2));
 		
 		return res;
 	}
@@ -4517,216 +4517,216 @@ public final class VecUtils3F
 
 	public static float[] fma(ITupRF t1, ITup3RF t2, ITup3RF t3, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.fma(t1.getAt(0), t2.v0(), t3.v0());
-		res[1] = MathUtils.fma(t1.getAt(1), t2.v1(), t3.v1());
-		res[2] = MathUtils.fma(t1.getAt(2), t2.v2(), t3.v2());
+		res[0] = MathUtils.fma(t1.at(0), t2.v0(), t3.v0());
+		res[1] = MathUtils.fma(t1.at(1), t2.v1(), t3.v1());
+		res[2] = MathUtils.fma(t1.at(2), t2.v2(), t3.v2());
 		
 		return res;
 	}
 
 	public static float[] fma(ITupRF t1, ITup3RF t2, ITupRF t3, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.fma(t1.getAt(0), t2.v0(), t3.getAt(0));
-		res[1] = MathUtils.fma(t1.getAt(1), t2.v1(), t3.getAt(1));
-		res[2] = MathUtils.fma(t1.getAt(2), t2.v2(), t3.getAt(2));
+		res[0] = MathUtils.fma(t1.at(0), t2.v0(), t3.at(0));
+		res[1] = MathUtils.fma(t1.at(1), t2.v1(), t3.at(1));
+		res[2] = MathUtils.fma(t1.at(2), t2.v2(), t3.at(2));
 		
 		return res;
 	}
 	
 	public static float[] fma(ITupRF t1, ITup3RF t2, float[] t3, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.fma(t1.getAt(0), t2.v0(), t3[0]);
-		res[1] = MathUtils.fma(t1.getAt(1), t2.v1(), t3[1]);
-		res[2] = MathUtils.fma(t1.getAt(2), t2.v2(), t3[2]);
+		res[0] = MathUtils.fma(t1.at(0), t2.v0(), t3[0]);
+		res[1] = MathUtils.fma(t1.at(1), t2.v1(), t3[1]);
+		res[2] = MathUtils.fma(t1.at(2), t2.v2(), t3[2]);
 		
 		return res;
 	}
 
 	public static float[] fma(ITupRF t1, ITup3RF t2, float t3v0, float t3v1, float t3v2, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.fma(t1.getAt(0), t2.v0(), t3v0);
-		res[1] = MathUtils.fma(t1.getAt(1), t2.v1(), t3v1);
-		res[2] = MathUtils.fma(t1.getAt(2), t2.v2(), t3v2);
+		res[0] = MathUtils.fma(t1.at(0), t2.v0(), t3v0);
+		res[1] = MathUtils.fma(t1.at(1), t2.v1(), t3v1);
+		res[2] = MathUtils.fma(t1.at(2), t2.v2(), t3v2);
 		
 		return res;
 	}
 
 	public static float[] fma(ITupRF t1, ITupRF t2, ITup3RF t3, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.fma(t1.getAt(0), t2.getAt(0), t3.v0());
-		res[1] = MathUtils.fma(t1.getAt(1), t2.getAt(1), t3.v1());
-		res[2] = MathUtils.fma(t1.getAt(2), t2.getAt(2), t3.v2());
+		res[0] = MathUtils.fma(t1.at(0), t2.at(0), t3.v0());
+		res[1] = MathUtils.fma(t1.at(1), t2.at(1), t3.v1());
+		res[2] = MathUtils.fma(t1.at(2), t2.at(2), t3.v2());
 		
 		return res;
 	}
 
 	public static float[] fma(ITupRF t1, ITupRF t2, ITupRF t3, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.fma(t1.getAt(0), t2.getAt(0), t3.getAt(0));
-		res[1] = MathUtils.fma(t1.getAt(1), t2.getAt(1), t3.getAt(1));
-		res[2] = MathUtils.fma(t1.getAt(2), t2.getAt(2), t3.getAt(2));
+		res[0] = MathUtils.fma(t1.at(0), t2.at(0), t3.at(0));
+		res[1] = MathUtils.fma(t1.at(1), t2.at(1), t3.at(1));
+		res[2] = MathUtils.fma(t1.at(2), t2.at(2), t3.at(2));
 		
 		return res;
 	}
 	
 	public static float[] fma(ITupRF t1, ITupRF t2, float[] t3, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.fma(t1.getAt(0), t2.getAt(0), t3[0]);
-		res[1] = MathUtils.fma(t1.getAt(1), t2.getAt(1), t3[1]);
-		res[2] = MathUtils.fma(t1.getAt(2), t2.getAt(2), t3[2]);
+		res[0] = MathUtils.fma(t1.at(0), t2.at(0), t3[0]);
+		res[1] = MathUtils.fma(t1.at(1), t2.at(1), t3[1]);
+		res[2] = MathUtils.fma(t1.at(2), t2.at(2), t3[2]);
 		
 		return res;
 	}
 
 	public static float[] fma(ITupRF t1, ITupRF t2, float t3v0, float t3v1, float t3v2, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.fma(t1.getAt(0), t2.getAt(0), t3v0);
-		res[1] = MathUtils.fma(t1.getAt(1), t2.getAt(1), t3v1);
-		res[2] = MathUtils.fma(t1.getAt(2), t2.getAt(2), t3v2);
+		res[0] = MathUtils.fma(t1.at(0), t2.at(0), t3v0);
+		res[1] = MathUtils.fma(t1.at(1), t2.at(1), t3v1);
+		res[2] = MathUtils.fma(t1.at(2), t2.at(2), t3v2);
 		
 		return res;
 	}
 	
 	public static float[] fma(ITupRF t1, float[] t2, ITup3RF t3, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.fma(t1.getAt(0), t2[0], t3.v0());
-		res[1] = MathUtils.fma(t1.getAt(1), t2[1], t3.v1());
-		res[2] = MathUtils.fma(t1.getAt(2), t2[2], t3.v2());
+		res[0] = MathUtils.fma(t1.at(0), t2[0], t3.v0());
+		res[1] = MathUtils.fma(t1.at(1), t2[1], t3.v1());
+		res[2] = MathUtils.fma(t1.at(2), t2[2], t3.v2());
 		
 		return res;
 	}
 
 	public static float[] fma(ITupRF t1, float[] t2, ITupRF t3, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.fma(t1.getAt(0), t2[0], t3.getAt(0));
-		res[1] = MathUtils.fma(t1.getAt(1), t2[1], t3.getAt(1));
-		res[2] = MathUtils.fma(t1.getAt(2), t2[2], t3.getAt(2));
+		res[0] = MathUtils.fma(t1.at(0), t2[0], t3.at(0));
+		res[1] = MathUtils.fma(t1.at(1), t2[1], t3.at(1));
+		res[2] = MathUtils.fma(t1.at(2), t2[2], t3.at(2));
 		
 		return res;
 	}
 	
 	public static float[] fma(ITupRF t1, float[] t2, float[] t3, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.fma(t1.getAt(0), t2[0], t3[0]);
-		res[1] = MathUtils.fma(t1.getAt(1), t2[1], t3[1]);
-		res[2] = MathUtils.fma(t1.getAt(2), t2[2], t3[2]);
+		res[0] = MathUtils.fma(t1.at(0), t2[0], t3[0]);
+		res[1] = MathUtils.fma(t1.at(1), t2[1], t3[1]);
+		res[2] = MathUtils.fma(t1.at(2), t2[2], t3[2]);
 		
 		return res;
 	}
 
 	public static float[] fma(ITupRF t1, float[] t2, float t3v0, float t3v1, float t3v2, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.fma(t1.getAt(0), t2[0], t3v0);
-		res[1] = MathUtils.fma(t1.getAt(1), t2[1], t3v1);
-		res[2] = MathUtils.fma(t1.getAt(2), t2[2], t3v2);
+		res[0] = MathUtils.fma(t1.at(0), t2[0], t3v0);
+		res[1] = MathUtils.fma(t1.at(1), t2[1], t3v1);
+		res[2] = MathUtils.fma(t1.at(2), t2[2], t3v2);
 		
 		return res;
 	}
 
 	public static float[] fma(ITupRF t1, float t2v0, float t2v1, float t2v2, ITup3RF t3, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.fma(t1.getAt(0), t2v0, t3.v0());
-		res[1] = MathUtils.fma(t1.getAt(1), t2v1, t3.v1());
-		res[2] = MathUtils.fma(t1.getAt(2), t2v2, t3.v2());
+		res[0] = MathUtils.fma(t1.at(0), t2v0, t3.v0());
+		res[1] = MathUtils.fma(t1.at(1), t2v1, t3.v1());
+		res[2] = MathUtils.fma(t1.at(2), t2v2, t3.v2());
 		
 		return res;
 	}
 
 	public static float[] fma(ITupRF t1, float t2v0, float t2v1, float t2v2, ITupRF t3, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.fma(t1.getAt(0), t2v0, t3.getAt(0));
-		res[1] = MathUtils.fma(t1.getAt(1), t2v1, t3.getAt(1));
-		res[2] = MathUtils.fma(t1.getAt(2), t2v2, t3.getAt(2));
+		res[0] = MathUtils.fma(t1.at(0), t2v0, t3.at(0));
+		res[1] = MathUtils.fma(t1.at(1), t2v1, t3.at(1));
+		res[2] = MathUtils.fma(t1.at(2), t2v2, t3.at(2));
 		
 		return res;
 	}
 	
 	public static float[] fma(ITupRF t1, float t2v0, float t2v1, float t2v2, float[] t3, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.fma(t1.getAt(0), t2v0, t3[0]);
-		res[1] = MathUtils.fma(t1.getAt(1), t2v1, t3[1]);
-		res[2] = MathUtils.fma(t1.getAt(2), t2v2, t3[2]);
+		res[0] = MathUtils.fma(t1.at(0), t2v0, t3[0]);
+		res[1] = MathUtils.fma(t1.at(1), t2v1, t3[1]);
+		res[2] = MathUtils.fma(t1.at(2), t2v2, t3[2]);
 		
 		return res;
 	}
 
 	public static float[] fma(ITupRF t1, float t2v0, float t2v1, float t2v2, float t3v0, float t3v1, float t3v2, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.fma(t1.getAt(0), t2v0, t3v0);
-		res[1] = MathUtils.fma(t1.getAt(1), t2v1, t3v1);
-		res[2] = MathUtils.fma(t1.getAt(2), t2v2, t3v2);
+		res[0] = MathUtils.fma(t1.at(0), t2v0, t3v0);
+		res[1] = MathUtils.fma(t1.at(1), t2v1, t3v1);
+		res[2] = MathUtils.fma(t1.at(2), t2v2, t3v2);
 		
 		return res;
 	}
 	
 	public static float[] fma(float[] t1, ITup3RF t2, ITup3RF t3, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.fma(t1[0], t2.getAt(0), t3.v0());
-		res[1] = MathUtils.fma(t1[1], t2.getAt(1), t3.v1());
-		res[2] = MathUtils.fma(t1[2], t2.getAt(2), t3.v2());
+		res[0] = MathUtils.fma(t1[0], t2.at(0), t3.v0());
+		res[1] = MathUtils.fma(t1[1], t2.at(1), t3.v1());
+		res[2] = MathUtils.fma(t1[2], t2.at(2), t3.v2());
 		
 		return res;
 	}
 
 	public static float[] fma(float[] t1, ITup3RF t2, ITupRF t3, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.fma(t1[0], t2.getAt(0), t3.getAt(0));
-		res[1] = MathUtils.fma(t1[1], t2.getAt(1), t3.getAt(1));
-		res[2] = MathUtils.fma(t1[2], t2.getAt(2), t3.getAt(2));
+		res[0] = MathUtils.fma(t1[0], t2.at(0), t3.at(0));
+		res[1] = MathUtils.fma(t1[1], t2.at(1), t3.at(1));
+		res[2] = MathUtils.fma(t1[2], t2.at(2), t3.at(2));
 		
 		return res;
 	}
 	
 	public static float[] fma(float[] t1, ITup3RF t2, float[] t3, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.fma(t1[0], t2.getAt(0), t3[0]);
-		res[1] = MathUtils.fma(t1[1], t2.getAt(1), t3[1]);
-		res[2] = MathUtils.fma(t1[2], t2.getAt(2), t3[2]);
+		res[0] = MathUtils.fma(t1[0], t2.at(0), t3[0]);
+		res[1] = MathUtils.fma(t1[1], t2.at(1), t3[1]);
+		res[2] = MathUtils.fma(t1[2], t2.at(2), t3[2]);
 		
 		return res;
 	}
 
 	public static float[] fma(float[] t1, ITup3RF t2, float t3v0, float t3v1, float t3v2, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.fma(t1[0], t2.getAt(0), t3v0);
-		res[1] = MathUtils.fma(t1[1], t2.getAt(1), t3v1);
-		res[2] = MathUtils.fma(t1[2], t2.getAt(2), t3v2);
+		res[0] = MathUtils.fma(t1[0], t2.at(0), t3v0);
+		res[1] = MathUtils.fma(t1[1], t2.at(1), t3v1);
+		res[2] = MathUtils.fma(t1[2], t2.at(2), t3v2);
 		
 		return res;
 	}
 
 	public static float[] fma(float[] t1, ITupRF t2, ITup3RF t3, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.fma(t1[0], t2.getAt(0), t3.v0());
-		res[1] = MathUtils.fma(t1[1], t2.getAt(1), t3.v1());
-		res[2] = MathUtils.fma(t1[2], t2.getAt(2), t3.v2());
+		res[0] = MathUtils.fma(t1[0], t2.at(0), t3.v0());
+		res[1] = MathUtils.fma(t1[1], t2.at(1), t3.v1());
+		res[2] = MathUtils.fma(t1[2], t2.at(2), t3.v2());
 		
 		return res;
 	}
 
 	public static float[] fma(float[] t1, ITupRF t2, ITupRF t3, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.fma(t1[0], t2.getAt(0), t3.getAt(0));
-		res[1] = MathUtils.fma(t1[1], t2.getAt(1), t3.getAt(1));
-		res[2] = MathUtils.fma(t1[2], t2.getAt(2), t3.getAt(2));
+		res[0] = MathUtils.fma(t1[0], t2.at(0), t3.at(0));
+		res[1] = MathUtils.fma(t1[1], t2.at(1), t3.at(1));
+		res[2] = MathUtils.fma(t1[2], t2.at(2), t3.at(2));
 		
 		return res;
 	}
 	
 	public static float[] fma(float[] t1, ITupRF t2, float[] t3, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.fma(t1[0], t2.getAt(0), t3[0]);
-		res[1] = MathUtils.fma(t1[1], t2.getAt(1), t3[1]);
-		res[2] = MathUtils.fma(t1[2], t2.getAt(2), t3[2]);
+		res[0] = MathUtils.fma(t1[0], t2.at(0), t3[0]);
+		res[1] = MathUtils.fma(t1[1], t2.at(1), t3[1]);
+		res[2] = MathUtils.fma(t1[2], t2.at(2), t3[2]);
 		
 		return res;
 	}
 
 	public static float[] fma(float[] t1, ITupRF t2, float t3v0, float t3v1, float t3v2, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.fma(t1[0], t2.getAt(0), t3v0);
-		res[1] = MathUtils.fma(t1[1], t2.getAt(1), t3v1);
-		res[2] = MathUtils.fma(t1[2], t2.getAt(2), t3v2);
+		res[0] = MathUtils.fma(t1[0], t2.at(0), t3v0);
+		res[1] = MathUtils.fma(t1[1], t2.at(1), t3v1);
+		res[2] = MathUtils.fma(t1[2], t2.at(2), t3v2);
 		
 		return res;
 	}
@@ -4742,9 +4742,9 @@ public final class VecUtils3F
 
 	public static float[] fma(float[] t1, float[] t2, ITupRF t3, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.fma(t1[0], t2[0], t3.getAt(0));
-		res[1] = MathUtils.fma(t1[1], t2[1], t3.getAt(1));
-		res[2] = MathUtils.fma(t1[2], t2[2], t3.getAt(2));
+		res[0] = MathUtils.fma(t1[0], t2[0], t3.at(0));
+		res[1] = MathUtils.fma(t1[1], t2[1], t3.at(1));
+		res[2] = MathUtils.fma(t1[2], t2[2], t3.at(2));
 		
 		return res;
 	}
@@ -4760,9 +4760,9 @@ public final class VecUtils3F
 
 	public static float[] fma(float[] t1, float t2v0, float t2v1, float t2v2, ITupRF t3, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.fma(t1[0], t2v0, t3.getAt(0));
-		res[1] = MathUtils.fma(t1[1], t2v1, t3.getAt(1));
-		res[2] = MathUtils.fma(t1[2], t2v2, t3.getAt(2));
+		res[0] = MathUtils.fma(t1[0], t2v0, t3.at(0));
+		res[1] = MathUtils.fma(t1[1], t2v1, t3.at(1));
+		res[2] = MathUtils.fma(t1[2], t2v2, t3.at(2));
 		
 		return res;
 	}
@@ -4778,9 +4778,9 @@ public final class VecUtils3F
 
 	public static float[] fma(float t1v0, float t1v1, float t1v2, ITup3RF t2, ITupRF t3, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.fma(t1v0, t2.v0(), t3.getAt(0));
-		res[1] = MathUtils.fma(t1v1, t2.v1(), t3.getAt(1));
-		res[2] = MathUtils.fma(t1v2, t2.v2(), t3.getAt(2));
+		res[0] = MathUtils.fma(t1v0, t2.v0(), t3.at(0));
+		res[1] = MathUtils.fma(t1v1, t2.v1(), t3.at(1));
+		res[2] = MathUtils.fma(t1v2, t2.v2(), t3.at(2));
 		
 		return res;
 	}
@@ -4805,36 +4805,36 @@ public final class VecUtils3F
 
 	public static float[] fma(float t1v0, float t1v1, float t1v2, ITupRF t2, ITup3RF t3, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.fma(t1v0, t2.getAt(0), t3.v0());
-		res[1] = MathUtils.fma(t1v1, t2.getAt(1), t3.v1());
-		res[2] = MathUtils.fma(t1v2, t2.getAt(2), t3.v2());
+		res[0] = MathUtils.fma(t1v0, t2.at(0), t3.v0());
+		res[1] = MathUtils.fma(t1v1, t2.at(1), t3.v1());
+		res[2] = MathUtils.fma(t1v2, t2.at(2), t3.v2());
 		
 		return res;
 	}
 
 	public static float[] fma(float t1v0, float t1v1, float t1v2, ITupRF t2, ITupRF t3, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.fma(t1v0, t2.getAt(0), t3.getAt(0));
-		res[1] = MathUtils.fma(t1v1, t2.getAt(1), t3.getAt(1));
-		res[2] = MathUtils.fma(t1v2, t2.getAt(2), t3.getAt(2));
+		res[0] = MathUtils.fma(t1v0, t2.at(0), t3.at(0));
+		res[1] = MathUtils.fma(t1v1, t2.at(1), t3.at(1));
+		res[2] = MathUtils.fma(t1v2, t2.at(2), t3.at(2));
 		
 		return res;
 	}
 	
 	public static float[] fma(float t1v0, float t1v1, float t1v2, ITupRF t2, float[] t3, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.fma(t1v0, t2.getAt(0), t3[0]);
-		res[1] = MathUtils.fma(t1v1, t2.getAt(1), t3[1]);
-		res[2] = MathUtils.fma(t1v2, t2.getAt(2), t3[2]);
+		res[0] = MathUtils.fma(t1v0, t2.at(0), t3[0]);
+		res[1] = MathUtils.fma(t1v1, t2.at(1), t3[1]);
+		res[2] = MathUtils.fma(t1v2, t2.at(2), t3[2]);
 		
 		return res;
 	}
 
 	public static float[] fma(float t1v0, float t1v1, float t1v2, ITupRF t2, float t3v0, float t3v1, float t3v2, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.fma(t1v0, t2.getAt(0), t3v0);
-		res[1] = MathUtils.fma(t1v1, t2.getAt(1), t3v1);
-		res[2] = MathUtils.fma(t1v2, t2.getAt(2), t3v2);
+		res[0] = MathUtils.fma(t1v0, t2.at(0), t3v0);
+		res[1] = MathUtils.fma(t1v1, t2.at(1), t3v1);
+		res[2] = MathUtils.fma(t1v2, t2.at(2), t3v2);
 		
 		return res;
 	}
@@ -4850,9 +4850,9 @@ public final class VecUtils3F
 
 	public static float[] fma(float t1v0, float t1v1, float t1v2, float[] t2, ITupRF t3, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.fma(t1v0, t2[0], t3.getAt(0));
-		res[1] = MathUtils.fma(t1v1, t2[1], t3.getAt(1));
-		res[2] = MathUtils.fma(t1v2, t2[2], t3.getAt(2));
+		res[0] = MathUtils.fma(t1v0, t2[0], t3.at(0));
+		res[1] = MathUtils.fma(t1v1, t2[1], t3.at(1));
+		res[2] = MathUtils.fma(t1v2, t2[2], t3.at(2));
 		
 		return res;
 	}
@@ -4868,65 +4868,65 @@ public final class VecUtils3F
 
 	public static float[] fma(float t1v0, float t1v1, float t1v2, float t2v0, float t2v1, float t2v2, ITupRF t3, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.fma(t1v0, t2v0, t3.getAt(0));
-		res[1] = MathUtils.fma(t1v1, t2v1, t3.getAt(1));
-		res[2] = MathUtils.fma(t1v2, t2v2, t3.getAt(2));
+		res[0] = MathUtils.fma(t1v0, t2v0, t3.at(0));
+		res[1] = MathUtils.fma(t1v1, t2v1, t3.at(1));
+		res[2] = MathUtils.fma(t1v2, t2v2, t3.at(2));
 		
 		return res;
 	}
 
 	public static <T extends ITup3WF> T fma(ITup3RF t1, ITup3RF t2, ITup3RF t3, @ExtractionParam T res)
 	{
-		res.set(MathUtils.fma(t1.v0(), t2.getAt(0), t3.v0()), MathUtils.fma(t1.v1(), t2.getAt(1), t3.v1()), MathUtils.fma(t1.v2(), t2.getAt(2), t3.v2()));
+		res.set(MathUtils.fma(t1.v0(), t2.at(0), t3.v0()), MathUtils.fma(t1.v1(), t2.at(1), t3.v1()), MathUtils.fma(t1.v2(), t2.at(2), t3.v2()));
 		
 		return res;
 	}
 
 	public static <T extends ITup3WF> T fma(ITup3RF t1, ITup3RF t2, ITupRF t3, @ExtractionParam T res)
 	{
-		res.set(MathUtils.fma(t1.v0(), t2.getAt(0), t3.getAt(0)), MathUtils.fma(t1.v1(), t2.getAt(1), t3.getAt(1)), MathUtils.fma(t1.v2(), t2.getAt(2), t3.getAt(2)));
+		res.set(MathUtils.fma(t1.v0(), t2.at(0), t3.at(0)), MathUtils.fma(t1.v1(), t2.at(1), t3.at(1)), MathUtils.fma(t1.v2(), t2.at(2), t3.at(2)));
 		
 		return res;
 	}
 	
 	public static <T extends ITup3WF> T fma(ITup3RF t1, ITup3RF t2, float[] t3, @ExtractionParam T res)
 	{
-		res.set(MathUtils.fma(t1.v0(), t2.getAt(0), t3[0]), MathUtils.fma(t1.v1(), t2.getAt(1), t3[1]), MathUtils.fma(t1.v2(), t2.getAt(2), t3[2]));
+		res.set(MathUtils.fma(t1.v0(), t2.at(0), t3[0]), MathUtils.fma(t1.v1(), t2.at(1), t3[1]), MathUtils.fma(t1.v2(), t2.at(2), t3[2]));
 		
 		return res;
 	}
 
 	public static <T extends ITup3WF> T fma(ITup3RF t1, ITup3RF t2, float t3v0, float t3v1, float t3v2, @ExtractionParam T res)
 	{
-		res.set(MathUtils.fma(t1.v0(), t2.getAt(0), t3v0), MathUtils.fma(t1.v1(), t2.getAt(1), t3v1), MathUtils.fma(t1.v2(), t2.getAt(2), t3v2));
+		res.set(MathUtils.fma(t1.v0(), t2.at(0), t3v0), MathUtils.fma(t1.v1(), t2.at(1), t3v1), MathUtils.fma(t1.v2(), t2.at(2), t3v2));
 		
 		return res;
 	}
 
 	public static <T extends ITup3WF> T fma(ITup3RF t1, ITupRF t2, ITup3RF t3, @ExtractionParam T res)
 	{
-		res.set(MathUtils.fma(t1.v0(), t2.getAt(0), t3.v0()), MathUtils.fma(t1.v1(), t2.getAt(1), t3.v1()), MathUtils.fma(t1.v2(), t2.getAt(2), t3.v2()));
+		res.set(MathUtils.fma(t1.v0(), t2.at(0), t3.v0()), MathUtils.fma(t1.v1(), t2.at(1), t3.v1()), MathUtils.fma(t1.v2(), t2.at(2), t3.v2()));
 		
 		return res;
 	}
 
 	public static <T extends ITup3WF> T fma(ITup3RF t1, ITupRF t2, ITupRF t3, @ExtractionParam T res)
 	{
-		res.set(MathUtils.fma(t1.v0(), t2.getAt(0), t3.getAt(0)), MathUtils.fma(t1.v1(), t2.getAt(1), t3.getAt(1)), MathUtils.fma(t1.v2(), t2.getAt(2), t3.getAt(2)));
+		res.set(MathUtils.fma(t1.v0(), t2.at(0), t3.at(0)), MathUtils.fma(t1.v1(), t2.at(1), t3.at(1)), MathUtils.fma(t1.v2(), t2.at(2), t3.at(2)));
 		
 		return res;
 	}
 	
 	public static <T extends ITup3WF> T fma(ITup3RF t1, ITupRF t2, float[] t3, @ExtractionParam T res)
 	{
-		res.set(MathUtils.fma(t1.v0(), t2.getAt(0), t3[0]), MathUtils.fma(t1.v1(), t2.getAt(1), t3[1]), MathUtils.fma(t1.v2(), t2.getAt(2), t3[2]));
+		res.set(MathUtils.fma(t1.v0(), t2.at(0), t3[0]), MathUtils.fma(t1.v1(), t2.at(1), t3[1]), MathUtils.fma(t1.v2(), t2.at(2), t3[2]));
 		
 		return res;
 	}
 
 	public static <T extends ITup3WF> T fma(ITup3RF t1, ITupRF t2, float t3v0, float t3v1, float t3v2, @ExtractionParam T res)
 	{
-		res.set(MathUtils.fma(t1.v0(), t2.getAt(0), t3v0), MathUtils.fma(t1.v1(), t2.getAt(1), t3v1), MathUtils.fma(t1.v2(), t2.getAt(2), t3v2));
+		res.set(MathUtils.fma(t1.v0(), t2.at(0), t3v0), MathUtils.fma(t1.v1(), t2.at(1), t3v1), MathUtils.fma(t1.v2(), t2.at(2), t3v2));
 		
 		return res;
 	}
@@ -4940,7 +4940,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T fma(ITup3RF t1, float[] t2, ITupRF t3, @ExtractionParam T res)
 	{
-		res.set(MathUtils.fma(t1.v0(), t2[0], t3.getAt(0)), MathUtils.fma(t1.v1(), t2[1], t3.getAt(1)), MathUtils.fma(t1.v2(), t2[2], t3.getAt(2)));
+		res.set(MathUtils.fma(t1.v0(), t2[0], t3.at(0)), MathUtils.fma(t1.v1(), t2[1], t3.at(1)), MathUtils.fma(t1.v2(), t2[2], t3.at(2)));
 		
 		return res;
 	}
@@ -4968,7 +4968,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T fma(ITup3RF t1, float t2v0, float t2v1, float t2v2, ITupRF t3, @ExtractionParam T res)
 	{
-		res.set(MathUtils.fma(t1.v0(), t2v0, t3.getAt(0)), MathUtils.fma(t1.v1(), t2v1, t3.getAt(1)), MathUtils.fma(t1.v2(), t2v2, t3.getAt(2)));
+		res.set(MathUtils.fma(t1.v0(), t2v0, t3.at(0)), MathUtils.fma(t1.v1(), t2v1, t3.at(1)), MathUtils.fma(t1.v2(), t2v2, t3.at(2)));
 		
 		return res;
 	}
@@ -4989,112 +4989,112 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T fma(ITupRF t1, ITup3RF t2, ITup3RF t3, @ExtractionParam T res)
 	{
-		res.set(MathUtils.fma(t1.getAt(0), t2.v0(), t3.v0()), MathUtils.fma(t1.getAt(1), t2.v1(), t3.v1()), MathUtils.fma(t1.getAt(2), t2.v2(), t3.v2()));
+		res.set(MathUtils.fma(t1.at(0), t2.v0(), t3.v0()), MathUtils.fma(t1.at(1), t2.v1(), t3.v1()), MathUtils.fma(t1.at(2), t2.v2(), t3.v2()));
 		
 		return res;
 	}
 
 	public static <T extends ITup3WF> T fma(ITupRF t1, ITup3RF t2, ITupRF t3, @ExtractionParam T res)
 	{
-		res.set(MathUtils.fma(t1.getAt(0), t2.v0(), t3.getAt(0)), MathUtils.fma(t1.getAt(1), t2.v1(), t3.getAt(1)), MathUtils.fma(t1.getAt(2), t2.v2(), t3.getAt(2)));
+		res.set(MathUtils.fma(t1.at(0), t2.v0(), t3.at(0)), MathUtils.fma(t1.at(1), t2.v1(), t3.at(1)), MathUtils.fma(t1.at(2), t2.v2(), t3.at(2)));
 		
 		return res;
 	}
 	
 	public static <T extends ITup3WF> T fma(ITupRF t1, ITup3RF t2, float[] t3, @ExtractionParam T res)
 	{
-		res.set(MathUtils.fma(t1.getAt(0), t2.v0(), t3[0]), MathUtils.fma(t1.getAt(1), t2.v1(), t3[1]), MathUtils.fma(t1.getAt(2), t2.v2(), t3[2]));
+		res.set(MathUtils.fma(t1.at(0), t2.v0(), t3[0]), MathUtils.fma(t1.at(1), t2.v1(), t3[1]), MathUtils.fma(t1.at(2), t2.v2(), t3[2]));
 		
 		return res;
 	}
 
 	public static <T extends ITup3WF> T fma(ITupRF t1, ITup3RF t2, float t3v0, float t3v1, float t3v2, @ExtractionParam T res)
 	{
-		res.set(MathUtils.fma(t1.getAt(0), t2.v0(), t3v0), MathUtils.fma(t1.getAt(1), t2.v1(), t3v1), MathUtils.fma(t1.getAt(2), t2.v2(), t3v2));
+		res.set(MathUtils.fma(t1.at(0), t2.v0(), t3v0), MathUtils.fma(t1.at(1), t2.v1(), t3v1), MathUtils.fma(t1.at(2), t2.v2(), t3v2));
 		
 		return res;
 	}
 
 	public static <T extends ITup3WF> T fma(ITupRF t1, ITupRF t2, ITup3RF t3, @ExtractionParam T res)
 	{
-		res.set(MathUtils.fma(t1.getAt(0), t2.getAt(0), t3.v0()), MathUtils.fma(t1.getAt(1), t2.getAt(1), t3.v1()), MathUtils.fma(t1.getAt(2), t2.getAt(2), t3.v2()));
+		res.set(MathUtils.fma(t1.at(0), t2.at(0), t3.v0()), MathUtils.fma(t1.at(1), t2.at(1), t3.v1()), MathUtils.fma(t1.at(2), t2.at(2), t3.v2()));
 		
 		return res;
 	}
 
 	public static <T extends ITup3WF> T fma(ITupRF t1, ITupRF t2, ITupRF t3, @ExtractionParam T res)
 	{
-		res.set(MathUtils.fma(t1.getAt(0), t2.getAt(0), t3.getAt(0)), MathUtils.fma(t1.getAt(1), t2.getAt(1), t3.getAt(1)), MathUtils.fma(t1.getAt(2), t2.getAt(2), t3.getAt(2)));
+		res.set(MathUtils.fma(t1.at(0), t2.at(0), t3.at(0)), MathUtils.fma(t1.at(1), t2.at(1), t3.at(1)), MathUtils.fma(t1.at(2), t2.at(2), t3.at(2)));
 		
 		return res;
 	}
 	
 	public static <T extends ITup3WF> T fma(ITupRF t1, ITupRF t2, float[] t3, @ExtractionParam T res)
 	{
-		res.set(MathUtils.fma(t1.getAt(0), t2.getAt(0), t3[0]), MathUtils.fma(t1.getAt(1), t2.getAt(1), t3[1]), MathUtils.fma(t1.getAt(2), t2.getAt(2), t3[2]));
+		res.set(MathUtils.fma(t1.at(0), t2.at(0), t3[0]), MathUtils.fma(t1.at(1), t2.at(1), t3[1]), MathUtils.fma(t1.at(2), t2.at(2), t3[2]));
 		
 		return res;
 	}
 
 	public static <T extends ITup3WF> T fma(ITupRF t1, ITupRF t2, float t3v0, float t3v1, float t3v2, @ExtractionParam T res)
 	{
-		res.set(MathUtils.fma(t1.getAt(0), t2.getAt(0), t3v0), MathUtils.fma(t1.getAt(1), t2.getAt(1), t3v1), MathUtils.fma(t1.getAt(2), t2.getAt(2), t3v2));
+		res.set(MathUtils.fma(t1.at(0), t2.at(0), t3v0), MathUtils.fma(t1.at(1), t2.at(1), t3v1), MathUtils.fma(t1.at(2), t2.at(2), t3v2));
 		
 		return res;
 	}
 	
 	public static <T extends ITup3WF> T fma(ITupRF t1, float[] t2, ITup3RF t3, @ExtractionParam T res)
 	{
-		res.set(MathUtils.fma(t1.getAt(0), t2[0], t3.v0()), MathUtils.fma(t1.getAt(1), t2[1], t3.v1()), MathUtils.fma(t1.getAt(2), t2[2], t3.v2()));
+		res.set(MathUtils.fma(t1.at(0), t2[0], t3.v0()), MathUtils.fma(t1.at(1), t2[1], t3.v1()), MathUtils.fma(t1.at(2), t2[2], t3.v2()));
 		
 		return res;
 	}
 
 	public static <T extends ITup3WF> T fma(ITupRF t1, float[] t2, ITupRF t3, @ExtractionParam T res)
 	{
-		res.set(MathUtils.fma(t1.getAt(0), t2[0], t3.getAt(0)), MathUtils.fma(t1.getAt(1), t2[1], t3.getAt(1)), MathUtils.fma(t1.getAt(2), t2[2], t3.getAt(2)));
+		res.set(MathUtils.fma(t1.at(0), t2[0], t3.at(0)), MathUtils.fma(t1.at(1), t2[1], t3.at(1)), MathUtils.fma(t1.at(2), t2[2], t3.at(2)));
 		
 		return res;
 	}
 	
 	public static <T extends ITup3WF> T fma(ITupRF t1, float[] t2, float[] t3, @ExtractionParam T res)
 	{
-		res.set(MathUtils.fma(t1.getAt(0), t2[0], t3[0]), MathUtils.fma(t1.getAt(1), t2[1], t3[1]), MathUtils.fma(t1.getAt(2), t2[2], t3[2]));
+		res.set(MathUtils.fma(t1.at(0), t2[0], t3[0]), MathUtils.fma(t1.at(1), t2[1], t3[1]), MathUtils.fma(t1.at(2), t2[2], t3[2]));
 		
 		return res;
 	}
 
 	public static <T extends ITup3WF> T fma(ITupRF t1, float[] t2, float t3v0, float t3v1, float t3v2, @ExtractionParam T res)
 	{
-		res.set(MathUtils.fma(t1.getAt(0), t2[0], t3v0), MathUtils.fma(t1.getAt(1), t2[1], t3v1), MathUtils.fma(t1.getAt(2), t2[2], t3v2));
+		res.set(MathUtils.fma(t1.at(0), t2[0], t3v0), MathUtils.fma(t1.at(1), t2[1], t3v1), MathUtils.fma(t1.at(2), t2[2], t3v2));
 		
 		return res;
 	}
 
 	public static <T extends ITup3WF> T fma(ITupRF t1, float t2v0, float t2v1, float t2v2, ITup3RF t3, @ExtractionParam T res)
 	{
-		res.set(MathUtils.fma(t1.getAt(0), t2v0, t3.v0()), MathUtils.fma(t1.getAt(1), t2v1, t3.v1()), MathUtils.fma(t1.getAt(2), t2v2, t3.v2()));
+		res.set(MathUtils.fma(t1.at(0), t2v0, t3.v0()), MathUtils.fma(t1.at(1), t2v1, t3.v1()), MathUtils.fma(t1.at(2), t2v2, t3.v2()));
 		
 		return res;
 	}
 
 	public static <T extends ITup3WF> T fma(ITupRF t1, float t2v0, float t2v1, float t2v2, ITupRF t3, @ExtractionParam T res)
 	{
-		res.set(MathUtils.fma(t1.getAt(0), t2v0, t3.getAt(0)), MathUtils.fma(t1.getAt(1), t2v1, t3.getAt(1)), MathUtils.fma(t1.getAt(2), t2v2, t3.getAt(2)));
+		res.set(MathUtils.fma(t1.at(0), t2v0, t3.at(0)), MathUtils.fma(t1.at(1), t2v1, t3.at(1)), MathUtils.fma(t1.at(2), t2v2, t3.at(2)));
 		
 		return res;
 	}
 	
 	public static <T extends ITup3WF> T fma(ITupRF t1, float t2v0, float t2v1, float t2v2, float[] t3, @ExtractionParam T res)
 	{
-		res.set(MathUtils.fma(t1.getAt(0), t2v0, t3[0]), MathUtils.fma(t1.getAt(1), t2v1, t3[1]), MathUtils.fma(t1.getAt(2), t2v2, t3[2]));
+		res.set(MathUtils.fma(t1.at(0), t2v0, t3[0]), MathUtils.fma(t1.at(1), t2v1, t3[1]), MathUtils.fma(t1.at(2), t2v2, t3[2]));
 		
 		return res;
 	}
 
 	public static <T extends ITup3WF> T fma(ITupRF t1, float t2v0, float t2v1, float t2v2, float t3v0, float t3v1, float t3v2, @ExtractionParam T res)
 	{
-		res.set(MathUtils.fma(t1.getAt(0), t2v0, t3v0), MathUtils.fma(t1.getAt(1), t2v1, t3v1), MathUtils.fma(t1.getAt(2), t2v2, t3v2));
+		res.set(MathUtils.fma(t1.at(0), t2v0, t3v0), MathUtils.fma(t1.at(1), t2v1, t3v1), MathUtils.fma(t1.at(2), t2v2, t3v2));
 		
 		return res;
 	}
@@ -5108,7 +5108,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T fma(float[] t1, ITup3RF t2, ITupRF t3, @ExtractionParam T res)
 	{
-		res.set(MathUtils.fma(t1[0], t2.v0(), t3.getAt(0)), MathUtils.fma(t1[1], t2.v1(), t3.getAt(1)), MathUtils.fma(t1[2], t2.v2(), t3.getAt(2)));
+		res.set(MathUtils.fma(t1[0], t2.v0(), t3.at(0)), MathUtils.fma(t1[1], t2.v1(), t3.at(1)), MathUtils.fma(t1[2], t2.v2(), t3.at(2)));
 		
 		return res;
 	}
@@ -5129,28 +5129,28 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T fma(float[] t1, ITupRF t2, ITup3RF t3, @ExtractionParam T res)
 	{
-		res.set(MathUtils.fma(t1[0], t2.getAt(0), t3.v0()), MathUtils.fma(t1[1], t2.getAt(1), t3.v1()), MathUtils.fma(t1[2], t2.getAt(2), t3.v2()));
+		res.set(MathUtils.fma(t1[0], t2.at(0), t3.v0()), MathUtils.fma(t1[1], t2.at(1), t3.v1()), MathUtils.fma(t1[2], t2.at(2), t3.v2()));
 		
 		return res;
 	}
 
 	public static <T extends ITup3WF> T fma(float[] t1, ITupRF t2, ITupRF t3, @ExtractionParam T res)
 	{
-		res.set(MathUtils.fma(t1[0], t2.getAt(0), t3.getAt(0)), MathUtils.fma(t1[1], t2.getAt(1), t3.getAt(1)), MathUtils.fma(t1[2], t2.getAt(2), t3.getAt(2)));
+		res.set(MathUtils.fma(t1[0], t2.at(0), t3.at(0)), MathUtils.fma(t1[1], t2.at(1), t3.at(1)), MathUtils.fma(t1[2], t2.at(2), t3.at(2)));
 		
 		return res;
 	}
 	
 	public static <T extends ITup3WF> T fma(float[] t1, ITupRF t2, float[] t3, @ExtractionParam T res)
 	{
-		res.set(MathUtils.fma(t1[0], t2.getAt(0), t3[0]), MathUtils.fma(t1[1], t2.getAt(1), t3[1]), MathUtils.fma(t1[2], t2.getAt(2), t3[2]));
+		res.set(MathUtils.fma(t1[0], t2.at(0), t3[0]), MathUtils.fma(t1[1], t2.at(1), t3[1]), MathUtils.fma(t1[2], t2.at(2), t3[2]));
 		
 		return res;
 	}
 
 	public static <T extends ITup3WF> T fma(float[] t1, ITupRF t2, float t3v0, float t3v1, float t3v2, @ExtractionParam T res)
 	{
-		res.set(MathUtils.fma(t1[0], t2.getAt(0), t3v0), MathUtils.fma(t1[1], t2.getAt(1), t3v1), MathUtils.fma(t1[2], t2.getAt(2), t3v2));
+		res.set(MathUtils.fma(t1[0], t2.at(0), t3v0), MathUtils.fma(t1[1], t2.at(1), t3v1), MathUtils.fma(t1[2], t2.at(2), t3v2));
 		
 		return res;
 	}
@@ -5164,7 +5164,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T fma(float[] t1, float[] t2, ITupRF t3, @ExtractionParam T res)
 	{
-		res.set(MathUtils.fma(t1[0], t2[0], t3.getAt(0)), MathUtils.fma(t1[1], t2[1], t3.getAt(1)), MathUtils.fma(t1[2], t2[2], t3.getAt(2)));
+		res.set(MathUtils.fma(t1[0], t2[0], t3.at(0)), MathUtils.fma(t1[1], t2[1], t3.at(1)), MathUtils.fma(t1[2], t2[2], t3.at(2)));
 		
 		return res;
 	}
@@ -5192,7 +5192,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T fma(float[] t1, float t2v0, float t2v1, float t2v2, ITupRF t3, @ExtractionParam T res)
 	{
-		res.set(MathUtils.fma(t1[0], t2v0, t3.getAt(0)), MathUtils.fma(t1[1], t2v1, t3.getAt(1)), MathUtils.fma(t1[2], t2v2, t3.getAt(2)));
+		res.set(MathUtils.fma(t1[0], t2v0, t3.at(0)), MathUtils.fma(t1[1], t2v1, t3.at(1)), MathUtils.fma(t1[2], t2v2, t3.at(2)));
 		
 		return res;
 	}
@@ -5220,7 +5220,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T fma(float t1v0, float t1v1, float t1v2, ITup3RF t2, ITupRF t3, @ExtractionParam T res)
 	{
-		res.set(MathUtils.fma(t1v0, t2.v0(), t3.getAt(0)), MathUtils.fma(t1v1, t2.v1(), t3.getAt(1)), MathUtils.fma(t1v2, t2.v2(), t3.getAt(2)));
+		res.set(MathUtils.fma(t1v0, t2.v0(), t3.at(0)), MathUtils.fma(t1v1, t2.v1(), t3.at(1)), MathUtils.fma(t1v2, t2.v2(), t3.at(2)));
 		
 		return res;
 	}
@@ -5241,28 +5241,28 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T fma(float t1v0, float t1v1, float t1v2, ITupRF t2, ITup3RF t3, @ExtractionParam T res)
 	{
-		res.set(MathUtils.fma(t1v0, t2.getAt(0), t3.v0()), MathUtils.fma(t1v1, t2.getAt(1), t3.v1()), MathUtils.fma(t1v2, t2.getAt(2), t3.v2()));
+		res.set(MathUtils.fma(t1v0, t2.at(0), t3.v0()), MathUtils.fma(t1v1, t2.at(1), t3.v1()), MathUtils.fma(t1v2, t2.at(2), t3.v2()));
 		
 		return res;
 	}
 
 	public static <T extends ITup3WF> T fma(float t1v0, float t1v1, float t1v2, ITupRF t2, ITupRF t3, @ExtractionParam T res)
 	{
-		res.set(MathUtils.fma(t1v0, t2.getAt(0), t3.getAt(0)), MathUtils.fma(t1v1, t2.getAt(1), t3.getAt(1)), MathUtils.fma(t1v2, t2.getAt(2), t3.getAt(2)));
+		res.set(MathUtils.fma(t1v0, t2.at(0), t3.at(0)), MathUtils.fma(t1v1, t2.at(1), t3.at(1)), MathUtils.fma(t1v2, t2.at(2), t3.at(2)));
 		
 		return res;
 	}
 	
 	public static <T extends ITup3WF> T fma(float t1v0, float t1v1, float t1v2, ITupRF t2, float[] t3, @ExtractionParam T res)
 	{
-		res.set(MathUtils.fma(t1v0, t2.getAt(0), t3[0]), MathUtils.fma(t1v1, t2.getAt(1), t3[1]), MathUtils.fma(t1v2, t2.getAt(2), t3[2]));
+		res.set(MathUtils.fma(t1v0, t2.at(0), t3[0]), MathUtils.fma(t1v1, t2.at(1), t3[1]), MathUtils.fma(t1v2, t2.at(2), t3[2]));
 		
 		return res;
 	}
 
 	public static <T extends ITup3WF> T fma(float t1v0, float t1v1, float t1v2, ITupRF t2, float t3v0, float t3v1, float t3v2, @ExtractionParam T res)
 	{
-		res.set(MathUtils.fma(t1v0, t2.getAt(0), t3v0), MathUtils.fma(t1v1, t2.getAt(1), t3v1), MathUtils.fma(t1v2, t2.getAt(2), t3v2));
+		res.set(MathUtils.fma(t1v0, t2.at(0), t3v0), MathUtils.fma(t1v1, t2.at(1), t3v1), MathUtils.fma(t1v2, t2.at(2), t3v2));
 		
 		return res;
 	}
@@ -5276,7 +5276,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T fma(float t1v0, float t1v1, float t1v2, float[] t2, ITupRF t3, @ExtractionParam T res)
 	{
-		res.set(MathUtils.fma(t1v0, t2[0], t3.getAt(0)), MathUtils.fma(t1v1, t2[1], t3.getAt(1)), MathUtils.fma(t1v2, t2[2], t3.getAt(2)));
+		res.set(MathUtils.fma(t1v0, t2[0], t3.at(0)), MathUtils.fma(t1v1, t2[1], t3.at(1)), MathUtils.fma(t1v2, t2[2], t3.at(2)));
 		
 		return res;
 	}
@@ -5304,7 +5304,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T fma(float t1v0, float t1v1, float t1v2, float t2v0, float t2v1, float t2v2, ITupRF t3, @ExtractionParam T res)
 	{
-		res.set(MathUtils.fma(t1v0, t2v0, t3.getAt(0)), MathUtils.fma(t1v1, t2v1, t3.getAt(1)), MathUtils.fma(t1v2, t2v2, t3.getAt(2)));
+		res.set(MathUtils.fma(t1v0, t2v0, t3.at(0)), MathUtils.fma(t1v1, t2v1, t3.at(1)), MathUtils.fma(t1v2, t2v2, t3.at(2)));
 		
 		return res;
 	}
@@ -5330,7 +5330,7 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T fmaFunc(ITup3RF t1, ITup3RF t2, ITupRF t3, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.fma(t1.v0(), t2.v0(), t3.getAt(0)), MathUtils.fma(t1.v1(), t2.v1(), t3.getAt(1)), MathUtils.fma(t1.v2(), t2.v2(), t3.getAt(2)));
+		return func.apply(MathUtils.fma(t1.v0(), t2.v0(), t3.at(0)), MathUtils.fma(t1.v1(), t2.v1(), t3.at(1)), MathUtils.fma(t1.v2(), t2.v2(), t3.at(2)));
 	}
 	
 	public static <T extends ITup3RF> T fmaFunc(ITup3RF t1, ITup3RF t2, float[] t3, IFunc3F<T> func)
@@ -5345,22 +5345,22 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T fmaFunc(ITup3RF t1, ITupRF t2, ITup3RF t3, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.fma(t1.v0(), t2.getAt(0), t3.v0()), MathUtils.fma(t1.v1(), t2.getAt(1), t3.v1()), MathUtils.fma(t1.v2(), t2.getAt(2), t3.v2()));
+		return func.apply(MathUtils.fma(t1.v0(), t2.at(0), t3.v0()), MathUtils.fma(t1.v1(), t2.at(1), t3.v1()), MathUtils.fma(t1.v2(), t2.at(2), t3.v2()));
 	}
 	
 	public static <T extends ITup3RF> T fmaFunc(ITup3RF t1, ITupRF t2, ITupRF t3, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.fma(t1.v0(), t2.getAt(0), t3.getAt(0)), MathUtils.fma(t1.v1(), t2.getAt(1), t3.getAt(1)), MathUtils.fma(t1.v2(), t2.getAt(2), t3.getAt(2)));
+		return func.apply(MathUtils.fma(t1.v0(), t2.at(0), t3.at(0)), MathUtils.fma(t1.v1(), t2.at(1), t3.at(1)), MathUtils.fma(t1.v2(), t2.at(2), t3.at(2)));
 	}
 	
 	public static <T extends ITup3RF> T fmaFunc(ITup3RF t1, ITupRF t2, float[] t3, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.fma(t1.v0(), t2.getAt(0), t3[0]), MathUtils.fma(t1.v1(), t2.getAt(1), t3[1]), MathUtils.fma(t1.v2(), t2.getAt(2), t3[2]));
+		return func.apply(MathUtils.fma(t1.v0(), t2.at(0), t3[0]), MathUtils.fma(t1.v1(), t2.at(1), t3[1]), MathUtils.fma(t1.v2(), t2.at(2), t3[2]));
 	}
 	
 	public static <T extends ITup3RF> T fmaFunc(ITup3RF t1, ITupRF t2, float t3v0, float t3v1, float t3v2, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.fma(t1.v0(), t2.getAt(0), t3v0), MathUtils.fma(t1.v1(), t2.getAt(1), t3v1), MathUtils.fma(t1.v2(), t2.getAt(2), t3v2));
+		return func.apply(MathUtils.fma(t1.v0(), t2.at(0), t3v0), MathUtils.fma(t1.v1(), t2.at(1), t3v1), MathUtils.fma(t1.v2(), t2.at(2), t3v2));
 	}
 	
 	public static <T extends ITup3RF> T fmaFunc(ITup3RF t1, float[] t2, ITup3RF t3, IFunc3F<T> func)
@@ -5370,7 +5370,7 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T fmaFunc(ITup3RF t1, float[] t2, ITupRF t3, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.fma(t1.v0(), t2[0], t3.getAt(0)), MathUtils.fma(t1.v1(), t2[1], t3.getAt(1)), MathUtils.fma(t1.v2(), t2[2], t3.getAt(2)));
+		return func.apply(MathUtils.fma(t1.v0(), t2[0], t3.at(0)), MathUtils.fma(t1.v1(), t2[1], t3.at(1)), MathUtils.fma(t1.v2(), t2[2], t3.at(2)));
 	}
 	
 	public static <T extends ITup3RF> T fmaFunc(ITup3RF t1, float[] t2, float[] t3, IFunc3F<T> func)
@@ -5390,7 +5390,7 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T fmaFunc(ITup3RF t1, float t2v0, float t2v1, float t2v2, ITupRF t3, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.fma(t1.v0(), t2v0, t3.getAt(0)), MathUtils.fma(t1.v1(), t2v1, t3.getAt(1)), MathUtils.fma(t1.v2(), t2v2, t3.getAt(2)));
+		return func.apply(MathUtils.fma(t1.v0(), t2v0, t3.at(0)), MathUtils.fma(t1.v1(), t2v1, t3.at(1)), MathUtils.fma(t1.v2(), t2v2, t3.at(2)));
 	}
 	
 	public static <T extends ITup3RF> T fmaFunc(ITup3RF t1, float t2v0, float t2v1, float t2v2, float[] t3, IFunc3F<T> func)
@@ -5405,82 +5405,82 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T fmaFunc(ITupRF t1, ITup3RF t2, ITup3RF t3, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.fma(t1.getAt(0), t2.v0(), t3.v0()), MathUtils.fma(t1.getAt(1), t2.v1(), t3.v1()), MathUtils.fma(t1.getAt(2), t2.v2(), t3.v2()));
+		return func.apply(MathUtils.fma(t1.at(0), t2.v0(), t3.v0()), MathUtils.fma(t1.at(1), t2.v1(), t3.v1()), MathUtils.fma(t1.at(2), t2.v2(), t3.v2()));
 	}
 	
 	public static <T extends ITup3RF> T fmaFunc(ITupRF t1, ITup3RF t2, ITupRF t3, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.fma(t1.getAt(0), t2.v0(), t3.getAt(0)), MathUtils.fma(t1.getAt(1), t2.v1(), t3.getAt(1)), MathUtils.fma(t1.getAt(2), t2.v2(), t3.getAt(2)));
+		return func.apply(MathUtils.fma(t1.at(0), t2.v0(), t3.at(0)), MathUtils.fma(t1.at(1), t2.v1(), t3.at(1)), MathUtils.fma(t1.at(2), t2.v2(), t3.at(2)));
 	}
 	
 	public static <T extends ITup3RF> T fmaFunc(ITupRF t1, ITup3RF t2, float[] t3, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.fma(t1.getAt(0), t2.v0(), t3[0]), MathUtils.fma(t1.getAt(1), t2.v1(), t3[1]), MathUtils.fma(t1.getAt(2), t2.v2(), t3[2]));
+		return func.apply(MathUtils.fma(t1.at(0), t2.v0(), t3[0]), MathUtils.fma(t1.at(1), t2.v1(), t3[1]), MathUtils.fma(t1.at(2), t2.v2(), t3[2]));
 	}
 	
 	public static <T extends ITup3RF> T fmaFunc(ITupRF t1, ITup3RF t2, float t3v0, float t3v1, float t3v2, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.fma(t1.getAt(0), t2.v0(), t3v0), MathUtils.fma(t1.getAt(1), t2.v1(), t3v1), MathUtils.fma(t1.getAt(2), t2.v2(), t3v2));
+		return func.apply(MathUtils.fma(t1.at(0), t2.v0(), t3v0), MathUtils.fma(t1.at(1), t2.v1(), t3v1), MathUtils.fma(t1.at(2), t2.v2(), t3v2));
 	}
 	
 	public static <T extends ITup3RF> T fmaFunc(ITupRF t1, ITupRF t2, ITup3RF t3, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.fma(t1.getAt(0), t2.getAt(0), t3.v0()), MathUtils.fma(t1.getAt(1), t2.getAt(1), t3.v1()), MathUtils.fma(t1.getAt(2), t2.getAt(2), t3.v2()));
+		return func.apply(MathUtils.fma(t1.at(0), t2.at(0), t3.v0()), MathUtils.fma(t1.at(1), t2.at(1), t3.v1()), MathUtils.fma(t1.at(2), t2.at(2), t3.v2()));
 	}
 	
 	public static <T extends ITup3RF> T fmaFunc(ITupRF t1, ITupRF t2, ITupRF t3, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.fma(t1.getAt(0), t2.getAt(0), t3.getAt(0)), MathUtils.fma(t1.getAt(1), t2.getAt(1), t3.getAt(1)), MathUtils.fma(t1.getAt(2), t2.getAt(2), t3.getAt(2)));
+		return func.apply(MathUtils.fma(t1.at(0), t2.at(0), t3.at(0)), MathUtils.fma(t1.at(1), t2.at(1), t3.at(1)), MathUtils.fma(t1.at(2), t2.at(2), t3.at(2)));
 	}
 	
 	public static <T extends ITup3RF> T fmaFunc(ITupRF t1, ITupRF t2, float[] t3, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.fma(t1.getAt(0), t2.getAt(0), t3[0]), MathUtils.fma(t1.getAt(1), t2.getAt(1), t3[1]), MathUtils.fma(t1.getAt(2), t2.getAt(2), t3[2]));
+		return func.apply(MathUtils.fma(t1.at(0), t2.at(0), t3[0]), MathUtils.fma(t1.at(1), t2.at(1), t3[1]), MathUtils.fma(t1.at(2), t2.at(2), t3[2]));
 	}
 	
 	public static <T extends ITup3RF> T fmaFunc(ITupRF t1, ITupRF t2, float t3v0, float t3v1, float t3v2, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.fma(t1.getAt(0), t2.getAt(0), t3v0), MathUtils.fma(t1.getAt(1), t2.getAt(1), t3v1), MathUtils.fma(t1.getAt(2), t2.getAt(2), t3v2));
+		return func.apply(MathUtils.fma(t1.at(0), t2.at(0), t3v0), MathUtils.fma(t1.at(1), t2.at(1), t3v1), MathUtils.fma(t1.at(2), t2.at(2), t3v2));
 	}
 	
 	public static <T extends ITup3RF> T fmaFunc(ITupRF t1, float[] t2, ITup3RF t3, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.fma(t1.getAt(0), t2[0], t3.v0()), MathUtils.fma(t1.getAt(1), t2[1], t3.v1()), MathUtils.fma(t1.getAt(2), t2[2], t3.v2()));
+		return func.apply(MathUtils.fma(t1.at(0), t2[0], t3.v0()), MathUtils.fma(t1.at(1), t2[1], t3.v1()), MathUtils.fma(t1.at(2), t2[2], t3.v2()));
 	}
 	
 	public static <T extends ITup3RF> T fmaFunc(ITupRF t1, float[] t2, ITupRF t3, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.fma(t1.getAt(0), t2[0], t3.getAt(0)), MathUtils.fma(t1.getAt(1), t2[1], t3.getAt(1)), MathUtils.fma(t1.getAt(2), t2[2], t3.getAt(2)));
+		return func.apply(MathUtils.fma(t1.at(0), t2[0], t3.at(0)), MathUtils.fma(t1.at(1), t2[1], t3.at(1)), MathUtils.fma(t1.at(2), t2[2], t3.at(2)));
 	}
 	
 	public static <T extends ITup3RF> T fmaFunc(ITupRF t1, float[] t2, float[] t3, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.fma(t1.getAt(0), t2[0], t3[0]), MathUtils.fma(t1.getAt(1), t2[1], t3[1]), MathUtils.fma(t1.getAt(2), t2[2], t3[2]));
+		return func.apply(MathUtils.fma(t1.at(0), t2[0], t3[0]), MathUtils.fma(t1.at(1), t2[1], t3[1]), MathUtils.fma(t1.at(2), t2[2], t3[2]));
 	}
 	
 	public static <T extends ITup3RF> T fmaFunc(ITupRF t1, float[] t2, float t3v0, float t3v1, float t3v2, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.fma(t1.getAt(0), t2[0], t3v0), MathUtils.fma(t1.getAt(1), t2[1], t3v1), MathUtils.fma(t1.getAt(2), t2[2], t3v2));
+		return func.apply(MathUtils.fma(t1.at(0), t2[0], t3v0), MathUtils.fma(t1.at(1), t2[1], t3v1), MathUtils.fma(t1.at(2), t2[2], t3v2));
 	}
 	
 	public static <T extends ITup3RF> T fmaFunc(ITupRF t1, float t2v0, float t2v1, float t2v2, ITup3RF t3, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.fma(t1.getAt(0), t2v0, t3.v0()), MathUtils.fma(t1.getAt(1), t2v1, t3.v1()), MathUtils.fma(t1.getAt(2), t2v2, t3.v2()));
+		return func.apply(MathUtils.fma(t1.at(0), t2v0, t3.v0()), MathUtils.fma(t1.at(1), t2v1, t3.v1()), MathUtils.fma(t1.at(2), t2v2, t3.v2()));
 	}
 	
 	public static <T extends ITup3RF> T fmaFunc(ITupRF t1, float t2v0, float t2v1, float t2v2, ITupRF t3, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.fma(t1.getAt(0), t2v0, t3.getAt(0)), MathUtils.fma(t1.getAt(1), t2v1, t3.getAt(1)), MathUtils.fma(t1.getAt(2), t2v2, t3.getAt(2)));
+		return func.apply(MathUtils.fma(t1.at(0), t2v0, t3.at(0)), MathUtils.fma(t1.at(1), t2v1, t3.at(1)), MathUtils.fma(t1.at(2), t2v2, t3.at(2)));
 	}
 	
 	public static <T extends ITup3RF> T fmaFunc(ITupRF t1, float t2v0, float t2v1, float t2v2, float[] t3, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.fma(t1.getAt(0), t2v0, t3[0]), MathUtils.fma(t1.getAt(1), t2v1, t3[1]), MathUtils.fma(t1.getAt(2), t2v2, t3[2]));
+		return func.apply(MathUtils.fma(t1.at(0), t2v0, t3[0]), MathUtils.fma(t1.at(1), t2v1, t3[1]), MathUtils.fma(t1.at(2), t2v2, t3[2]));
 	}
 	
 	public static <T extends ITup3RF> T fmaFunc(ITupRF t1, float t2v0, float t2v1, float t2v2, float t3v0, float t3v1, float t3v2, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.fma(t1.getAt(0), t2v0, t3v0), MathUtils.fma(t1.getAt(1), t2v1, t3v1), MathUtils.fma(t1.getAt(2), t2v2, t3v2));
+		return func.apply(MathUtils.fma(t1.at(0), t2v0, t3v0), MathUtils.fma(t1.at(1), t2v1, t3v1), MathUtils.fma(t1.at(2), t2v2, t3v2));
 	}
 	
 	public static <T extends ITup3RF> T fmaFunc(float[] t1, ITup3RF t2, ITup3RF t3, IFunc3F<T> func)
@@ -5490,7 +5490,7 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T fmaFunc(float[] t1, ITup3RF t2, ITupRF t3, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.fma(t1[0], t2.v0(), t3.getAt(0)), MathUtils.fma(t1[1], t2.v1(), t3.getAt(1)), MathUtils.fma(t1[2], t2.v2(), t3.getAt(2)));
+		return func.apply(MathUtils.fma(t1[0], t2.v0(), t3.at(0)), MathUtils.fma(t1[1], t2.v1(), t3.at(1)), MathUtils.fma(t1[2], t2.v2(), t3.at(2)));
 	}
 	
 	public static <T extends ITup3RF> T fmaFunc(float[] t1, ITup3RF t2, float[] t3, IFunc3F<T> func)
@@ -5505,22 +5505,22 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T fmaFunc(float[] t1, ITupRF t2, ITup3RF t3, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.fma(t1[0], t2.getAt(0), t3.v0()), MathUtils.fma(t1[1], t2.getAt(1), t3.v1()), MathUtils.fma(t1[2], t2.getAt(2), t3.v2()));
+		return func.apply(MathUtils.fma(t1[0], t2.at(0), t3.v0()), MathUtils.fma(t1[1], t2.at(1), t3.v1()), MathUtils.fma(t1[2], t2.at(2), t3.v2()));
 	}
 	
 	public static <T extends ITup3RF> T fmaFunc(float[] t1, ITupRF t2, ITupRF t3, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.fma(t1[0], t2.getAt(0), t3.getAt(0)), MathUtils.fma(t1[1], t2.getAt(1), t3.getAt(1)), MathUtils.fma(t1[2], t2.getAt(2), t3.getAt(2)));
+		return func.apply(MathUtils.fma(t1[0], t2.at(0), t3.at(0)), MathUtils.fma(t1[1], t2.at(1), t3.at(1)), MathUtils.fma(t1[2], t2.at(2), t3.at(2)));
 	}
 	
 	public static <T extends ITup3RF> T fmaFunc(float[] t1, ITupRF t2, float[] t3, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.fma(t1[0], t2.getAt(0), t3[0]), MathUtils.fma(t1[1], t2.getAt(1), t3[1]), MathUtils.fma(t1[2], t2.getAt(2), t3[2]));
+		return func.apply(MathUtils.fma(t1[0], t2.at(0), t3[0]), MathUtils.fma(t1[1], t2.at(1), t3[1]), MathUtils.fma(t1[2], t2.at(2), t3[2]));
 	}
 	
 	public static <T extends ITup3RF> T fmaFunc(float[] t1, ITupRF t2, float t3v0, float t3v1, float t3v2, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.fma(t1[0], t2.getAt(0), t3v0), MathUtils.fma(t1[1], t2.getAt(1), t3v1), MathUtils.fma(t1[2], t2.getAt(2), t3v2));
+		return func.apply(MathUtils.fma(t1[0], t2.at(0), t3v0), MathUtils.fma(t1[1], t2.at(1), t3v1), MathUtils.fma(t1[2], t2.at(2), t3v2));
 	}
 	
 	public static <T extends ITup3RF> T fmaFunc(float[] t1, float[] t2, ITup3RF t3, IFunc3F<T> func)
@@ -5530,7 +5530,7 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T fmaFunc(float[] t1, float[] t2, ITupRF t3, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.fma(t1[0], t2[0], t3.getAt(0)), MathUtils.fma(t1[1], t2[1], t3.getAt(1)), MathUtils.fma(t1[2], t2[2], t3.getAt(2)));
+		return func.apply(MathUtils.fma(t1[0], t2[0], t3.at(0)), MathUtils.fma(t1[1], t2[1], t3.at(1)), MathUtils.fma(t1[2], t2[2], t3.at(2)));
 	}
 	
 	public static <T extends ITup3RF> T fmaFunc(float[] t1, float[] t2, float[] t3, IFunc3F<T> func)
@@ -5550,7 +5550,7 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T fmaFunc(float[] t1, float t2v0, float t2v1, float t2v2, ITupRF t3, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.fma(t1[0], t2v0, t3.getAt(0)), MathUtils.fma(t1[1], t2v1, t3.getAt(1)), MathUtils.fma(t1[2], t2v2, t3.getAt(2)));
+		return func.apply(MathUtils.fma(t1[0], t2v0, t3.at(0)), MathUtils.fma(t1[1], t2v1, t3.at(1)), MathUtils.fma(t1[2], t2v2, t3.at(2)));
 	}
 	
 	public static <T extends ITup3RF> T fmaFunc(float[] t1, float t2v0, float t2v1, float t2v2, float[] t3, IFunc3F<T> func)
@@ -5570,7 +5570,7 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T fmaFunc(float t1v0, float t1v1, float t1v2, ITup3RF t2, ITupRF t3, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.fma(t1v0, t2.v0(), t3.getAt(0)), MathUtils.fma(t1v1, t2.v1(), t3.getAt(1)), MathUtils.fma(t1v2, t2.v2(), t3.getAt(2)));
+		return func.apply(MathUtils.fma(t1v0, t2.v0(), t3.at(0)), MathUtils.fma(t1v1, t2.v1(), t3.at(1)), MathUtils.fma(t1v2, t2.v2(), t3.at(2)));
 	}
 	
 	public static <T extends ITup3RF> T fmaFunc(float t1v0, float t1v1, float t1v2, ITup3RF t2, float[] t3, IFunc3F<T> func)
@@ -5585,22 +5585,22 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T fmaFunc(float t1v0, float t1v1, float t1v2, ITupRF t2, ITup3RF t3, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.fma(t1v0, t2.getAt(0), t3.v0()), MathUtils.fma(t1v1, t2.getAt(1), t3.v1()), MathUtils.fma(t1v2, t2.getAt(2), t3.v2()));
+		return func.apply(MathUtils.fma(t1v0, t2.at(0), t3.v0()), MathUtils.fma(t1v1, t2.at(1), t3.v1()), MathUtils.fma(t1v2, t2.at(2), t3.v2()));
 	}
 	
 	public static <T extends ITup3RF> T fmaFunc(float t1v0, float t1v1, float t1v2, ITupRF t2, ITupRF t3, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.fma(t1v0, t2.getAt(0), t3.getAt(0)), MathUtils.fma(t1v1, t2.getAt(1), t3.getAt(1)), MathUtils.fma(t1v2, t2.getAt(2), t3.getAt(2)));
+		return func.apply(MathUtils.fma(t1v0, t2.at(0), t3.at(0)), MathUtils.fma(t1v1, t2.at(1), t3.at(1)), MathUtils.fma(t1v2, t2.at(2), t3.at(2)));
 	}
 	
 	public static <T extends ITup3RF> T fmaFunc(float t1v0, float t1v1, float t1v2, ITupRF t2, float[] t3, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.fma(t1v0, t2.getAt(0), t3[0]), MathUtils.fma(t1v1, t2.getAt(1), t3[1]), MathUtils.fma(t1v2, t2.getAt(2), t3[2]));
+		return func.apply(MathUtils.fma(t1v0, t2.at(0), t3[0]), MathUtils.fma(t1v1, t2.at(1), t3[1]), MathUtils.fma(t1v2, t2.at(2), t3[2]));
 	}
 	
 	public static <T extends ITup3RF> T fmaFunc(float t1v0, float t1v1, float t1v2, ITupRF t2, float t3v0, float t3v1, float t3v2, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.fma(t1v0, t2.getAt(0), t3v0), MathUtils.fma(t1v1, t2.getAt(1), t3v1), MathUtils.fma(t1v2, t2.getAt(2), t3v2));
+		return func.apply(MathUtils.fma(t1v0, t2.at(0), t3v0), MathUtils.fma(t1v1, t2.at(1), t3v1), MathUtils.fma(t1v2, t2.at(2), t3v2));
 	}
 	
 	public static <T extends ITup3RF> T fmaFunc(float t1v0, float t1v1, float t1v2, float[] t2, ITup3RF t3, IFunc3F<T> func)
@@ -5610,7 +5610,7 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T fmaFunc(float t1v0, float t1v1, float t1v2, float[] t2, ITupRF t3, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.fma(t1v0, t2[0], t3.getAt(0)), MathUtils.fma(t1v1, t2[1], t3.getAt(1)), MathUtils.fma(t1v2, t2[2], t3.getAt(2)));
+		return func.apply(MathUtils.fma(t1v0, t2[0], t3.at(0)), MathUtils.fma(t1v1, t2[1], t3.at(1)), MathUtils.fma(t1v2, t2[2], t3.at(2)));
 	}
 	
 	public static <T extends ITup3RF> T fmaFunc(float t1v0, float t1v1, float t1v2, float[] t2, float[] t3, IFunc3F<T> func)
@@ -5630,7 +5630,7 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T fmaFunc(float t1v0, float t1v1, float t1v2, float t2v0, float t2v1, float t2v2, ITupRF t3, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.fma(t1v0, t2v0, t3.getAt(0)), MathUtils.fma(t1v1, t2v1, t3.getAt(1)), MathUtils.fma(t1v2, t2v2, t3.getAt(2)));
+		return func.apply(MathUtils.fma(t1v0, t2v0, t3.at(0)), MathUtils.fma(t1v1, t2v1, t3.at(1)), MathUtils.fma(t1v2, t2v2, t3.at(2)));
 	}
 	
 	public static <T extends ITup3RF> T fmaFunc(float t1v0, float t1v1, float t1v2, float t2v0, float t2v1, float t2v2, float[] t3, IFunc3F<T> func)
@@ -5654,9 +5654,9 @@ public final class VecUtils3F
 
 	public static float[] trunc(ITupRF v, @ExtractionParam float[] res)
 	{
-		res[0] = (int)v.getAt(0);
-		res[1] = (int)v.getAt(1);
-		res[2] = (int)v.getAt(2);
+		res[0] = (int)v.at(0);
+		res[1] = (int)v.at(1);
+		res[2] = (int)v.at(2);
 		
 		return res;
 	}
@@ -5670,7 +5670,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T trunc(ITupRF v, @ExtractionParam T res)
 	{
-		res.set((int)v.getAt(0), (int)v.getAt(1), (int)v.getAt(2));
+		res.set((int)v.at(0), (int)v.at(1), (int)v.at(2));
 		
 		return res;
 	}
@@ -5696,7 +5696,7 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T truncFunc(ITupRF v, IFunc3F<T> func)
 	{
-		return func.apply((int)v.getAt(0), (int)v.getAt(1), (int)v.getAt(2));
+		return func.apply((int)v.at(0), (int)v.at(1), (int)v.at(2));
 	}
 	
 	public static <T extends ITup3RF> T truncFunc(float[] v, IFunc3F<T> func)
@@ -5720,9 +5720,9 @@ public final class VecUtils3F
 
 	public static float[] abs(ITupRF v, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.abs(v.getAt(0));
-		res[1] = MathUtils.abs(v.getAt(1));
-		res[2] = MathUtils.abs(v.getAt(2));
+		res[0] = MathUtils.abs(v.at(0));
+		res[1] = MathUtils.abs(v.at(1));
+		res[2] = MathUtils.abs(v.at(2));
 		
 		return res;
 	}
@@ -5736,7 +5736,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T abs(ITupRF v, @ExtractionParam T res)
 	{
-		res.set(MathUtils.abs(v.getAt(0)), MathUtils.abs(v.getAt(1)), MathUtils.abs(v.getAt(2)));
+		res.set(MathUtils.abs(v.at(0)), MathUtils.abs(v.at(1)), MathUtils.abs(v.at(2)));
 		
 		return res;
 	}
@@ -5762,7 +5762,7 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T absFunc(ITupRF v, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.abs(v.getAt(0)), MathUtils.abs(v.getAt(1)), MathUtils.abs(v.getAt(2)));
+		return func.apply(MathUtils.abs(v.at(0)), MathUtils.abs(v.at(1)), MathUtils.abs(v.at(2)));
 	}
 	
 	public static <T extends ITup3RF> T absFunc(float[] v, IFunc3F<T> func)
@@ -5786,9 +5786,9 @@ public final class VecUtils3F
 
 	public static float[] signum(ITupRF v, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.signum(v.getAt(0));
-		res[1] = MathUtils.signum(v.getAt(1));
-		res[2] = MathUtils.signum(v.getAt(2));
+		res[0] = MathUtils.signum(v.at(0));
+		res[1] = MathUtils.signum(v.at(1));
+		res[2] = MathUtils.signum(v.at(2));
 		
 		return res;
 	}
@@ -5802,7 +5802,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T signum(ITupRF v, @ExtractionParam T res)
 	{
-		res.set(MathUtils.signum(v.getAt(0)), MathUtils.signum(v.getAt(1)), MathUtils.signum(v.getAt(2)));
+		res.set(MathUtils.signum(v.at(0)), MathUtils.signum(v.at(1)), MathUtils.signum(v.at(2)));
 		
 		return res;
 	}
@@ -5828,7 +5828,7 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T signumFunc(ITupRF v, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.signum(v.getAt(0)), MathUtils.signum(v.getAt(1)), MathUtils.signum(v.getAt(2)));
+		return func.apply(MathUtils.signum(v.at(0)), MathUtils.signum(v.at(1)), MathUtils.signum(v.at(2)));
 	}
 	
 	public static <T extends ITup3RF> T signumFunc(float[] v, IFunc3F<T> func)
@@ -5852,9 +5852,9 @@ public final class VecUtils3F
 
 	public static float[] signumEM(float tolerance, ITupRF v, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.signumEM(tolerance, v.getAt(0));
-		res[1] = MathUtils.signumEM(tolerance, v.getAt(1));
-		res[2] = MathUtils.signumEM(tolerance, v.getAt(2));
+		res[0] = MathUtils.signumEM(tolerance, v.at(0));
+		res[1] = MathUtils.signumEM(tolerance, v.at(1));
+		res[2] = MathUtils.signumEM(tolerance, v.at(2));
 		
 		return res;
 	}
@@ -5868,7 +5868,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T signumEM(float tolerance, ITupRF v, @ExtractionParam T res)
 	{
-		res.set(MathUtils.signumEM(tolerance, v.getAt(0)), MathUtils.signumEM(tolerance, v.getAt(1)), MathUtils.signumEM(tolerance, v.getAt(2)));
+		res.set(MathUtils.signumEM(tolerance, v.at(0)), MathUtils.signumEM(tolerance, v.at(1)), MathUtils.signumEM(tolerance, v.at(2)));
 		
 		return res;
 	}
@@ -5894,7 +5894,7 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T signumFuncEM(float tolerance, ITupRF v, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.signumEM(tolerance, v.getAt(0)), MathUtils.signumEM(tolerance, v.getAt(1)), MathUtils.signumEM(tolerance, v.getAt(2)));
+		return func.apply(MathUtils.signumEM(tolerance, v.at(0)), MathUtils.signumEM(tolerance, v.at(1)), MathUtils.signumEM(tolerance, v.at(2)));
 	}
 	
 	public static <T extends ITup3RF> T signumFuncEM(float tolerance, float[] v, IFunc3F<T> func)
@@ -5918,9 +5918,9 @@ public final class VecUtils3F
 
 	public static float[] signumEM4(ITupRF v, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.signumEM4(v.getAt(0));
-		res[1] = MathUtils.signumEM4(v.getAt(1));
-		res[2] = MathUtils.signumEM4(v.getAt(2));
+		res[0] = MathUtils.signumEM4(v.at(0));
+		res[1] = MathUtils.signumEM4(v.at(1));
+		res[2] = MathUtils.signumEM4(v.at(2));
 		
 		return res;
 	}
@@ -5934,7 +5934,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T signumEM4(ITupRF v, @ExtractionParam T res)
 	{
-		res.set(MathUtils.signumEM4(v.getAt(0)), MathUtils.signumEM4(v.getAt(1)), MathUtils.signumEM4(v.getAt(2)));
+		res.set(MathUtils.signumEM4(v.at(0)), MathUtils.signumEM4(v.at(1)), MathUtils.signumEM4(v.at(2)));
 		
 		return res;
 	}
@@ -5960,7 +5960,7 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T signumFuncEM4(ITupRF v, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.signumEM4(v.getAt(0)), MathUtils.signumEM4(v.getAt(1)), MathUtils.signumEM4(v.getAt(2)));
+		return func.apply(MathUtils.signumEM4(v.at(0)), MathUtils.signumEM4(v.at(1)), MathUtils.signumEM4(v.at(2)));
 	}
 	
 	public static <T extends ITup3RF> T signumFuncEM4(float[] v, IFunc3F<T> func)
@@ -5984,9 +5984,9 @@ public final class VecUtils3F
 
 	public static float[] signumEM6(ITupRF v, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.signumEM6(v.getAt(0));
-		res[1] = MathUtils.signumEM6(v.getAt(1));
-		res[2] = MathUtils.signumEM6(v.getAt(2));
+		res[0] = MathUtils.signumEM6(v.at(0));
+		res[1] = MathUtils.signumEM6(v.at(1));
+		res[2] = MathUtils.signumEM6(v.at(2));
 		
 		return res;
 	}
@@ -6000,7 +6000,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T signumEM6(ITupRF v, @ExtractionParam T res)
 	{
-		res.set(MathUtils.signumEM6(v.getAt(0)), MathUtils.signumEM6(v.getAt(1)), MathUtils.signumEM6(v.getAt(2)));
+		res.set(MathUtils.signumEM6(v.at(0)), MathUtils.signumEM6(v.at(1)), MathUtils.signumEM6(v.at(2)));
 		
 		return res;
 	}
@@ -6026,7 +6026,7 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T signumFuncEM6(ITupRF v, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.signumEM6(v.getAt(0)), MathUtils.signumEM6(v.getAt(1)), MathUtils.signumEM6(v.getAt(2)));
+		return func.apply(MathUtils.signumEM6(v.at(0)), MathUtils.signumEM6(v.at(1)), MathUtils.signumEM6(v.at(2)));
 	}
 	
 	public static <T extends ITup3RF> T signumFuncEM6(float[] v, IFunc3F<T> func)
@@ -6050,9 +6050,9 @@ public final class VecUtils3F
 
 	public static float[] signumEM8(ITupRF v, @ExtractionParam float[] res)
 	{
-		res[0] = MathUtils.signumEM8(v.getAt(0));
-		res[1] = MathUtils.signumEM8(v.getAt(1));
-		res[2] = MathUtils.signumEM8(v.getAt(2));
+		res[0] = MathUtils.signumEM8(v.at(0));
+		res[1] = MathUtils.signumEM8(v.at(1));
+		res[2] = MathUtils.signumEM8(v.at(2));
 		
 		return res;
 	}
@@ -6066,7 +6066,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T signumEM8(ITupRF v, @ExtractionParam T res)
 	{
-		res.set(MathUtils.signumEM8(v.getAt(0)), MathUtils.signumEM8(v.getAt(1)), MathUtils.signumEM8(v.getAt(2)));
+		res.set(MathUtils.signumEM8(v.at(0)), MathUtils.signumEM8(v.at(1)), MathUtils.signumEM8(v.at(2)));
 		
 		return res;
 	}
@@ -6092,7 +6092,7 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T signumFuncEM8(ITupRF v, IFunc3F<T> func)
 	{
-		return func.apply(MathUtils.signumEM8(v.getAt(0)), MathUtils.signumEM8(v.getAt(1)), MathUtils.signumEM8(v.getAt(2)));
+		return func.apply(MathUtils.signumEM8(v.at(0)), MathUtils.signumEM8(v.at(1)), MathUtils.signumEM8(v.at(2)));
 	}
 	
 	public static <T extends ITup3RF> T signumFuncEM8(float[] v, IFunc3F<T> func)
@@ -6116,9 +6116,9 @@ public final class VecUtils3F
 
 	public static float[] neg(ITupRF v, @ExtractionParam float[] res)
 	{
-		res[0] = -v.getAt(0);
-		res[1] = -v.getAt(1);
-		res[2] = -v.getAt(2);
+		res[0] = -v.at(0);
+		res[1] = -v.at(1);
+		res[2] = -v.at(2);
 		
 		return res;
 	}
@@ -6132,7 +6132,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T neg(ITupRF v, @ExtractionParam T res)
 	{
-		res.set(-v.getAt(0), -v.getAt(1), -v.getAt(2));
+		res.set(-v.at(0), -v.at(1), -v.at(2));
 		
 		return res;
 	}
@@ -6158,7 +6158,7 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T negFunc(ITupRF v, IFunc3F<T> func)
 	{
-		return func.apply(-v.getAt(0), -v.getAt(1), -v.getAt(2));
+		return func.apply(-v.at(0), -v.at(1), -v.at(2));
 	}
 	
 	public static <T extends ITup3RF> T negFunc(float[] v, IFunc3F<T> func)
@@ -6182,9 +6182,9 @@ public final class VecUtils3F
 
 	public static float[] rec(ITupRF v, @ExtractionParam float[] res)
 	{
-		res[0] = 1.0f / v.getAt(0);
-		res[1] = 1.0f / v.getAt(1);
-		res[2] = 1.0f / v.getAt(2);
+		res[0] = 1.0f / v.at(0);
+		res[1] = 1.0f / v.at(1);
+		res[2] = 1.0f / v.at(2);
 		
 		return res;
 	}
@@ -6198,7 +6198,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T rec(ITupRF v, @ExtractionParam T res)
 	{
-		res.set(1.0f / v.getAt(0), 1.0f / v.getAt(1), 1.0f / v.getAt(2));
+		res.set(1.0f / v.at(0), 1.0f / v.at(1), 1.0f / v.at(2));
 		
 		return res;
 	}
@@ -6224,7 +6224,7 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T recFunc(ITupRF v, IFunc3F<T> func)
 	{
-		return func.apply(1.0f / v.getAt(0), 1.0f / v.getAt(1), 1.0f / v.getAt(2));
+		return func.apply(1.0f / v.at(0), 1.0f / v.at(1), 1.0f / v.at(2));
 	}
 	
 	public static <T extends ITup3RF> T recFunc(float[] v, IFunc3F<T> func)
@@ -6248,9 +6248,9 @@ public final class VecUtils3F
 	
 	public static float lenRc(ITupRF v)
 	{
-		float v0 = v.getAt(0);
-		float v1 = v.getAt(1);
-		float v2 = v.getAt(2);
+		float v0 = v.at(0);
+		float v1 = v.at(1);
+		float v2 = v.at(2);
 		
 		return MathUtils.invSqrt(v0 * v0 + v1 * v1 + v2 * v2);
 	}
@@ -6268,9 +6268,9 @@ public final class VecUtils3F
 	
 	public static float len(ITupRF v)
 	{
-		float v0 = v.getAt(0);
-		float v1 = v.getAt(1);
-		float v2 = v.getAt(2);
+		float v0 = v.at(0);
+		float v1 = v.at(1);
+		float v2 = v.at(2);
 		
 		if(RawTupUtils3F.isZero(v0, v1, v2)) return 0.0f;
 		
@@ -6290,9 +6290,9 @@ public final class VecUtils3F
 	
 	public static float lenEM(float tolerance, ITupRF v)
 	{
-		float v0 = v.getAt(0);
-		float v1 = v.getAt(1);
-		float v2 = v.getAt(2);
+		float v0 = v.at(0);
+		float v1 = v.at(1);
+		float v2 = v.at(2);
 		
 		if(RawTupUtils3F.isZeroEM(tolerance, v0, v1, v2)) return 0.0f;
 		
@@ -6312,9 +6312,9 @@ public final class VecUtils3F
 	
 	public static float lenEM4(ITupRF v)
 	{
-		float v0 = v.getAt(0);
-		float v1 = v.getAt(1);
-		float v2 = v.getAt(2);
+		float v0 = v.at(0);
+		float v1 = v.at(1);
+		float v2 = v.at(2);
 		
 		if(RawTupUtils3F.isZeroEM4(v0, v1, v2)) return 0.0f;
 		
@@ -6334,9 +6334,9 @@ public final class VecUtils3F
 	
 	public static float lenEM6(ITupRF v)
 	{
-		float v0 = v.getAt(0);
-		float v1 = v.getAt(1);
-		float v2 = v.getAt(2);
+		float v0 = v.at(0);
+		float v1 = v.at(1);
+		float v2 = v.at(2);
 		
 		if(RawTupUtils3F.isZeroEM6(v0, v1, v2)) return 0.0f;
 		
@@ -6356,9 +6356,9 @@ public final class VecUtils3F
 	
 	public static float lenEM8(ITupRF v)
 	{
-		float v0 = v.getAt(0);
-		float v1 = v.getAt(1);
-		float v2 = v.getAt(2);
+		float v0 = v.at(0);
+		float v1 = v.at(1);
+		float v2 = v.at(2);
 		
 		if(RawTupUtils3F.isZeroEM8(v0, v1, v2)) return 0.0f;
 		
@@ -6378,9 +6378,9 @@ public final class VecUtils3F
 	
 	public static float lenSq(ITupRF v)
 	{
-		float v0 = v.getAt(0);
-		float v1 = v.getAt(1);
-		float v2 = v.getAt(2);
+		float v0 = v.at(0);
+		float v1 = v.at(1);
+		float v2 = v.at(2);
 		
 		if(RawTupUtils3F.isZero(v0, v1, v2)) return 0.0f;
 		
@@ -6400,9 +6400,9 @@ public final class VecUtils3F
 	
 	public static float lenSqEM(float tolerance, ITupRF v)
 	{
-		float v0 = v.getAt(0);
-		float v1 = v.getAt(1);
-		float v2 = v.getAt(2);
+		float v0 = v.at(0);
+		float v1 = v.at(1);
+		float v2 = v.at(2);
 		
 		if(RawTupUtils3F.isZeroEM(tolerance, v0, v1, v2)) return 0.0f;
 		
@@ -6422,9 +6422,9 @@ public final class VecUtils3F
 	
 	public static float lenSqEM4(ITupRF v)
 	{
-		float v0 = v.getAt(0);
-		float v1 = v.getAt(1);
-		float v2 = v.getAt(2);
+		float v0 = v.at(0);
+		float v1 = v.at(1);
+		float v2 = v.at(2);
 		
 		if(RawTupUtils3F.isZeroEM4(v0, v1, v2)) return 0.0f;
 		
@@ -6444,9 +6444,9 @@ public final class VecUtils3F
 	
 	public static float lenSqEM6(ITupRF v)
 	{
-		float v0 = v.getAt(0);
-		float v1 = v.getAt(1);
-		float v2 = v.getAt(2);
+		float v0 = v.at(0);
+		float v1 = v.at(1);
+		float v2 = v.at(2);
 		
 		if(RawTupUtils3F.isZeroEM6(v0, v1, v2)) return 0.0f;
 		
@@ -6466,9 +6466,9 @@ public final class VecUtils3F
 	
 	public static float lenSqEM8(ITupRF v)
 	{
-		float v0 = v.getAt(0);
-		float v1 = v.getAt(1);
-		float v2 = v.getAt(2);
+		float v0 = v.at(0);
+		float v1 = v.at(1);
+		float v2 = v.at(2);
 		
 		if(RawTupUtils3F.isZeroEM8(v0, v1, v2)) return 0.0f;
 		
@@ -6501,9 +6501,9 @@ public final class VecUtils3F
 
 	public static float[] nrm(ITupRF v, @ExtractionParam float[] res)
 	{
-		float v0 = v.getAt(0);
-		float v1 = v.getAt(1);
-		float v2 = v.getAt(2);
+		float v0 = v.at(0);
+		float v1 = v.at(1);
+		float v2 = v.at(2);
 		
 		if (RawTupUtils3F.isZero(v0, v1, v2))
 		{
@@ -6545,9 +6545,9 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T nrm(ITupRF v, @ExtractionParam T res)
 	{
-		float v0 = v.getAt(0);
-		float v1 = v.getAt(1);
-		float v2 = v.getAt(2);
+		float v0 = v.at(0);
+		float v1 = v.at(1);
+		float v2 = v.at(2);
 		
 		if (RawTupUtils3F.isZero(v0, v1, v2))
 		{
@@ -6613,9 +6613,9 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T nrmFunc(ITupRF v, IFunc3F<T> func)
 	{
-		float v0 = v.getAt(0);
-		float v1 = v.getAt(1);
-		float v2 = v.getAt(2);
+		float v0 = v.at(0);
+		float v1 = v.at(1);
+		float v2 = v.at(2);
 		
 		if (RawTupUtils3F.isZero(v0, v1, v2))
 		{
@@ -6677,9 +6677,9 @@ public final class VecUtils3F
 
 	public static float[] nrmEM(float tolerance, ITupRF v, @ExtractionParam float[] res)
 	{
-		float v0 = v.getAt(0);
-		float v1 = v.getAt(1);
-		float v2 = v.getAt(2);
+		float v0 = v.at(0);
+		float v1 = v.at(1);
+		float v2 = v.at(2);
 		
 		if (RawTupUtils3F.isZeroEM(tolerance, v0, v1, v2))
 		{
@@ -6721,9 +6721,9 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T nrmEM(float tolerance, ITupRF v, @ExtractionParam T res)
 	{
-		float v0 = v.getAt(0);
-		float v1 = v.getAt(1);
-		float v2 = v.getAt(2);
+		float v0 = v.at(0);
+		float v1 = v.at(1);
+		float v2 = v.at(2);
 		
 		if (RawTupUtils3F.isZeroEM(tolerance, v0, v1, v2))
 		{
@@ -6789,9 +6789,9 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T nrmFuncEM(float tolerance, ITupRF v, IFunc3F<T> func)
 	{
-		float v0 = v.getAt(0);
-		float v1 = v.getAt(1);
-		float v2 = v.getAt(2);
+		float v0 = v.at(0);
+		float v1 = v.at(1);
+		float v2 = v.at(2);
 		
 		if (RawTupUtils3F.isZeroEM(tolerance, v0, v1, v2))
 		{
@@ -6853,9 +6853,9 @@ public final class VecUtils3F
 
 	public static float[] nrmEM4(ITupRF v, @ExtractionParam float[] res)
 	{
-		float v0 = v.getAt(0);
-		float v1 = v.getAt(1);
-		float v2 = v.getAt(2);
+		float v0 = v.at(0);
+		float v1 = v.at(1);
+		float v2 = v.at(2);
 		
 		if (RawTupUtils3F.isZeroEM4(v0, v1, v2))
 		{
@@ -6897,9 +6897,9 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T nrmEM4(ITupRF v, @ExtractionParam T res)
 	{
-		float v0 = v.getAt(0);
-		float v1 = v.getAt(1);
-		float v2 = v.getAt(2);
+		float v0 = v.at(0);
+		float v1 = v.at(1);
+		float v2 = v.at(2);
 		
 		if (RawTupUtils3F.isZeroEM4(v0, v1, v2))
 		{
@@ -6965,9 +6965,9 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T nrmFuncEM4(ITupRF v, IFunc3F<T> func)
 	{
-		float v0 = v.getAt(0);
-		float v1 = v.getAt(1);
-		float v2 = v.getAt(2);
+		float v0 = v.at(0);
+		float v1 = v.at(1);
+		float v2 = v.at(2);
 		
 		if (RawTupUtils3F.isZeroEM4(v0, v1, v2))
 		{
@@ -7029,9 +7029,9 @@ public final class VecUtils3F
 
 	public static float[] nrmEM6(ITupRF v, @ExtractionParam float[] res)
 	{
-		float v0 = v.getAt(0);
-		float v1 = v.getAt(1);
-		float v2 = v.getAt(2);
+		float v0 = v.at(0);
+		float v1 = v.at(1);
+		float v2 = v.at(2);
 		
 		if (RawTupUtils3F.isZeroEM6(v0, v1, v2))
 		{
@@ -7073,9 +7073,9 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T nrmEM6(ITupRF v, @ExtractionParam T res)
 	{
-		float v0 = v.getAt(0);
-		float v1 = v.getAt(1);
-		float v2 = v.getAt(2);
+		float v0 = v.at(0);
+		float v1 = v.at(1);
+		float v2 = v.at(2);
 		
 		if (RawTupUtils3F.isZeroEM6(v0, v1, v2))
 		{
@@ -7141,9 +7141,9 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T nrmFuncEM6(ITupRF v, IFunc3F<T> func)
 	{
-		float v0 = v.getAt(0);
-		float v1 = v.getAt(1);
-		float v2 = v.getAt(2);
+		float v0 = v.at(0);
+		float v1 = v.at(1);
+		float v2 = v.at(2);
 		
 		if (RawTupUtils3F.isZeroEM6(v0, v1, v2))
 		{
@@ -7205,9 +7205,9 @@ public final class VecUtils3F
 
 	public static float[] nrmEM8(ITupRF v, @ExtractionParam float[] res)
 	{
-		float v0 = v.getAt(0);
-		float v1 = v.getAt(1);
-		float v2 = v.getAt(2);
+		float v0 = v.at(0);
+		float v1 = v.at(1);
+		float v2 = v.at(2);
 		
 		if (RawTupUtils3F.isZeroEM8(v0, v1, v2))
 		{
@@ -7249,9 +7249,9 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T nrmEM8(ITupRF v, @ExtractionParam T res)
 	{
-		float v0 = v.getAt(0);
-		float v1 = v.getAt(1);
-		float v2 = v.getAt(2);
+		float v0 = v.at(0);
+		float v1 = v.at(1);
+		float v2 = v.at(2);
 		
 		if (RawTupUtils3F.isZeroEM8(v0, v1, v2))
 		{
@@ -7317,9 +7317,9 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T nrmFuncEM8(ITupRF v, IFunc3F<T> func)
 	{
-		float v0 = v.getAt(0);
-		float v1 = v.getAt(1);
-		float v2 = v.getAt(2);
+		float v0 = v.at(0);
+		float v1 = v.at(1);
+		float v2 = v.at(2);
 		
 		if (RawTupUtils3F.isZeroEM8(v0, v1, v2))
 		{
@@ -7378,9 +7378,9 @@ public final class VecUtils3F
 		float vV0 = v.v0();
 		float vV1 = v.v1();
 		float vV2 = v.v2();
-		float tV0 = t.getAt(0);
-		float tV1 = t.getAt(1);		
-		float tV2 = t.getAt(2);		
+		float tV0 = t.at(0);
+		float tV1 = t.at(1);		
+		float tV2 = t.at(2);		
 		
 		float dot = vV0 * tV0 + vV1 * tV1 + vV2 * tV2;
 		
@@ -7423,9 +7423,9 @@ public final class VecUtils3F
 
 	public static float[] project(ITupRF v, ITup3RF t, @ExtractionParam float[] res)
 	{
-		float vV0 = v.getAt(0);
-		float vV1 = v.getAt(1);
-		float vV2 = v.getAt(2);
+		float vV0 = v.at(0);
+		float vV1 = v.at(1);
+		float vV2 = v.at(2);
 		float tV0 = t.v0();
 		float tV1 = t.v1();		
 		float tV2 = t.v2();		
@@ -7441,12 +7441,12 @@ public final class VecUtils3F
 
 	public static float[] project(ITupRF v, ITupRF t, @ExtractionParam float[] res)
 	{
-		float vV0 = v.getAt(0);
-		float vV1 = v.getAt(1);
-		float vV2 = v.getAt(2);
-		float tV0 = t.getAt(0);
-		float tV1 = t.getAt(1);		
-		float tV2 = t.getAt(2);		
+		float vV0 = v.at(0);
+		float vV1 = v.at(1);
+		float vV2 = v.at(2);
+		float tV0 = t.at(0);
+		float tV1 = t.at(1);		
+		float tV2 = t.at(2);		
 		
 		float dot = vV0 * tV0 + vV1 * tV1 + vV2 * tV2;
 		
@@ -7459,9 +7459,9 @@ public final class VecUtils3F
 	
 	public static float[] project(ITupRF v, float[] t, @ExtractionParam float[] res)
 	{
-		float vV0 = v.getAt(0);
-		float vV1 = v.getAt(1);
-		float vV2 = v.getAt(2);
+		float vV0 = v.at(0);
+		float vV1 = v.at(1);
+		float vV2 = v.at(2);
 		
 		float dot = vV0 * t[0] + vV1 * t[1] + vV2 * t[2];
 		
@@ -7474,9 +7474,9 @@ public final class VecUtils3F
 
 	public static float[] project(ITupRF v, float tV0, float tV1, float tV2, @ExtractionParam float[] res)
 	{
-		float vV0 = v.getAt(0);
-		float vV1 = v.getAt(1);
-		float vV2 = v.getAt(2);
+		float vV0 = v.at(0);
+		float vV1 = v.at(1);
+		float vV2 = v.at(2);
 		
 		float dot = vV0 * tV0 + vV1 * tV1 + vV2 * tV2;
 		
@@ -7504,9 +7504,9 @@ public final class VecUtils3F
 
 	public static float[] project(float[] v, ITupRF t, @ExtractionParam float[] res)
 	{
-		float tV0 = t.getAt(0);
-		float tV1 = t.getAt(1);
-		float tV2 = t.getAt(2);
+		float tV0 = t.at(0);
+		float tV1 = t.at(1);
+		float tV2 = t.at(2);
 		
 		float dot = v[0] * tV0 + v[1] * tV1 + v[2] * tV2;
 		
@@ -7534,9 +7534,9 @@ public final class VecUtils3F
 
 	public static float[] project(float vV0, float vV1, float vV2, ITupRF t, @ExtractionParam float[] res)
 	{
-		float tV0 = t.getAt(0);
-		float tV1 = t.getAt(1);
-		float tV2 = t.getAt(2);
+		float tV0 = t.at(0);
+		float tV1 = t.at(1);
+		float tV2 = t.at(2);
 		
 		float dot = vV0 * tV0 + vV1 * tV1 + vV2 * tV2;
 		
@@ -7568,9 +7568,9 @@ public final class VecUtils3F
 		float vV0 = v.v0();
 		float vV1 = v.v1();
 		float vV2 = v.v2();
-		float tV0 = t.getAt(0);
-		float tV1 = t.getAt(1);
-		float tV2 = t.getAt(2);
+		float tV0 = t.at(0);
+		float tV1 = t.at(1);
+		float tV2 = t.at(2);
 		
 		float dot = vV0 * tV0 + vV1 * tV1 + vV2 * tV2;
 		
@@ -7607,9 +7607,9 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T project(ITupRF v, ITup3RF t, @ExtractionParam T res)
 	{
-		float vV0 = v.getAt(0);
-		float vV1 = v.getAt(1);
-		float vV2 = v.getAt(2);
+		float vV0 = v.at(0);
+		float vV1 = v.at(1);
+		float vV2 = v.at(2);
 		float tV0 = t.v0();
 		float tV1 = t.v1();
 		float tV2 = t.v2();
@@ -7623,12 +7623,12 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3WF> T project(ITupRF v, ITupRF t, @ExtractionParam T res)
 	{
-		float vV0 = v.getAt(0);
-		float vV1 = v.getAt(1);
-		float vV2 = v.getAt(2);
-		float tV0 = t.getAt(0);
-		float tV1 = t.getAt(1);
-		float tV2 = t.getAt(2);
+		float vV0 = v.at(0);
+		float vV1 = v.at(1);
+		float vV2 = v.at(2);
+		float tV0 = t.at(0);
+		float tV1 = t.at(1);
+		float tV2 = t.at(2);
 		
 		float dot = vV0 * tV0 + vV1 * tV1 + vV2 * tV2;
 		
@@ -7639,9 +7639,9 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T project(ITupRF v, float[] t, @ExtractionParam T res)
 	{
-		float vV0 = v.getAt(0);
-		float vV1 = v.getAt(1);
-		float vV2 = v.getAt(2);
+		float vV0 = v.at(0);
+		float vV1 = v.at(1);
+		float vV2 = v.at(2);
 		
 		float dot = vV0 * t[0] + vV1 * t[1] + vV2 * t[2];
 		
@@ -7652,9 +7652,9 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T project(ITupRF v, float tV0, float tV1, float tV2, @ExtractionParam T res)
 	{
-		float vV0 = v.getAt(0);
-		float vV1 = v.getAt(1);
-		float vV2 = v.getAt(2);
+		float vV0 = v.at(0);
+		float vV1 = v.at(1);
+		float vV2 = v.at(2);
 		
 		float dot = vV0 * tV0 + vV1 * tV1 + vV2 * tV2;
 		
@@ -7678,9 +7678,9 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T project(float[] v, ITupRF t, @ExtractionParam T res)
 	{
-		float tV0 = t.getAt(0);
-		float tV1 = t.getAt(1);
-		float tV2 = t.getAt(2);
+		float tV0 = t.at(0);
+		float tV1 = t.at(1);
+		float tV2 = t.at(2);
 		
 		float dot = v[0] * tV0 + v[1] * tV1 + v[2] * tV2;
 		
@@ -7722,9 +7722,9 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T project(float vV0, float vV1, float vV2, ITupRF t, @ExtractionParam T res)
 	{
-		float tV0 = t.getAt(0);
-		float tV1 = t.getAt(1);
-		float tV2 = t.getAt(2);
+		float tV0 = t.at(0);
+		float tV1 = t.at(1);
+		float tV2 = t.at(2);
 		
 		float dot = vV0 * tV0 + vV1 * tV1 + vV2 * tV2;
 		
@@ -7770,9 +7770,9 @@ public final class VecUtils3F
 		float vV0 = v.v0();
 		float vV1 = v.v1();
 		float vV2 = v.v2();
-		float tV0 = t.getAt(0);
-		float tV1 = t.getAt(1);
-		float tV2 = t.getAt(2);
+		float tV0 = t.at(0);
+		float tV1 = t.at(1);
+		float tV2 = t.at(2);
 		
 		float dot = vV0 * tV0 + vV1 * tV1 + vV2 * tV2;
 		
@@ -7803,9 +7803,9 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T projectFunc(ITupRF v, ITup3RF t, IFunc3F<T> func)
 	{
-		float vV0 = v.getAt(0);
-		float vV1 = v.getAt(1);
-		float vV2 = v.getAt(2);
+		float vV0 = v.at(0);
+		float vV1 = v.at(1);
+		float vV2 = v.at(2);
 		float tV0 = t.v0();
 		float tV1 = t.v1();
 		float tV2 = t.v2();
@@ -7817,12 +7817,12 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T projectFunc(ITupRF v, ITupRF t, IFunc3F<T> func)
 	{
-		float vV0 = v.getAt(0);
-		float vV1 = v.getAt(1);
-		float vV2 = v.getAt(2);
-		float tV0 = t.getAt(0);
-		float tV1 = t.getAt(1);
-		float tV2 = t.getAt(2);
+		float vV0 = v.at(0);
+		float vV1 = v.at(1);
+		float vV2 = v.at(2);
+		float tV0 = t.at(0);
+		float tV1 = t.at(1);
+		float tV2 = t.at(2);
 		
 		float dot = vV0 * tV0 + vV1 * tV1 + vV2 * tV2;
 		
@@ -7831,9 +7831,9 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T projectFunc(ITupRF v, float[] t, IFunc3F<T> func)
 	{
-		float vV0 = v.getAt(0);
-		float vV1 = v.getAt(1);
-		float vV2 = v.getAt(2);
+		float vV0 = v.at(0);
+		float vV1 = v.at(1);
+		float vV2 = v.at(2);
 		
 		float dot = vV0 * t[0] + vV1 * t[1] + vV2 * t[2];
 		
@@ -7842,9 +7842,9 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T projectFunc(ITupRF v, float tV0, float tV1, float tV2, IFunc3F<T> func)
 	{
-		float vV0 = v.getAt(0);
-		float vV1 = v.getAt(1);
-		float vV2 = v.getAt(2);
+		float vV0 = v.at(0);
+		float vV1 = v.at(1);
+		float vV2 = v.at(2);
 		
 		float dot = vV0 * tV0 + vV1 * tV1 + vV2 * tV2;
 		
@@ -7864,9 +7864,9 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T projectFunc(float[] v, ITupRF t, IFunc3F<T> func)
 	{
-		float tV0 = t.getAt(0);
-		float tV1 = t.getAt(1);
-		float tV2 = t.getAt(2);
+		float tV0 = t.at(0);
+		float tV1 = t.at(1);
+		float tV2 = t.at(2);
 		
 		float dot = v[0] * tV0 + v[1] * tV1 + v[2] * tV2;
 		
@@ -7900,9 +7900,9 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T projectFunc(float vV0, float vV1, float vV2, ITupRF t, IFunc3F<T> func)
 	{
-		float tV0 = t.getAt(0);
-		float tV1 = t.getAt(1);
-		float tV2 = t.getAt(2);
+		float tV0 = t.at(0);
+		float tV1 = t.at(1);
+		float tV2 = t.at(2);
 		
 		float dot = vV0 * tV0 + vV1 * tV1 + vV2 * tV2;
 		
@@ -7946,9 +7946,9 @@ public final class VecUtils3F
 		float vV0 = v.v0();
 		float vV1 = v.v1();
 		float vV2 = v.v2();
-		float nV0 = n.getAt(0);
-		float nV1 = n.getAt(1);
-		float nV2 = n.getAt(2);
+		float nV0 = n.at(0);
+		float nV1 = n.at(1);
+		float nV2 = n.at(2);
 		
 		float dot = -2 * (vV0 * nV0 + vV1 * nV1 + vV2 * nV2);
 		
@@ -7991,9 +7991,9 @@ public final class VecUtils3F
 
 	public static float[] reflect(ITupRF v, ITup3RF n, @ExtractionParam float[] res)
 	{
-		float vV0 = v.getAt(0);
-		float vV1 = v.getAt(1);
-		float vV2 = v.getAt(2);
+		float vV0 = v.at(0);
+		float vV1 = v.at(1);
+		float vV2 = v.at(2);
 		float nV0 = n.v0();
 		float nV1 = n.v1();
 		float nV2 = n.v2();
@@ -8009,12 +8009,12 @@ public final class VecUtils3F
 
 	public static float[] reflect(ITupRF v, ITupRF n, @ExtractionParam float[] res)
 	{
-		float vV0 = v.getAt(0);
-		float vV1 = v.getAt(1);
-		float vV2 = v.getAt(2);
-		float nV0 = n.getAt(0);
-		float nV1 = n.getAt(1);
-		float nV2 = n.getAt(2);
+		float vV0 = v.at(0);
+		float vV1 = v.at(1);
+		float vV2 = v.at(2);
+		float nV0 = n.at(0);
+		float nV1 = n.at(1);
+		float nV2 = n.at(2);
 		
 		float dot = -2 * (vV0 * nV0 + vV1 * nV1 + vV2 * nV2);
 		
@@ -8027,9 +8027,9 @@ public final class VecUtils3F
 	
 	public static float[] reflect(ITupRF v, float[] n, @ExtractionParam float[] res)
 	{
-		float vV0 = v.getAt(0);
-		float vV1 = v.getAt(1);
-		float vV2 = v.getAt(2);
+		float vV0 = v.at(0);
+		float vV1 = v.at(1);
+		float vV2 = v.at(2);
 		
 		float dot = -2 * (vV0 * n[0] + vV1 * n[1] + vV2 * n[2]);
 		
@@ -8042,9 +8042,9 @@ public final class VecUtils3F
 
 	public static float[] reflect(ITupRF v, float nV0, float nV1, float nV2, @ExtractionParam float[] res)
 	{
-		float vV0 = v.getAt(0);
-		float vV1 = v.getAt(1);
-		float vV2 = v.getAt(2);
+		float vV0 = v.at(0);
+		float vV1 = v.at(1);
+		float vV2 = v.at(2);
 		
 		float dot = -2 * (vV0 * nV0 + vV1 * nV1 + vV2 * nV2);
 		
@@ -8072,9 +8072,9 @@ public final class VecUtils3F
 
 	public static float[] reflect(float[] v, ITupRF n, @ExtractionParam float[] res)
 	{
-		float nV0 = n.getAt(0);
-		float nV1 = n.getAt(1);
-		float nV2 = n.getAt(2);
+		float nV0 = n.at(0);
+		float nV1 = n.at(1);
+		float nV2 = n.at(2);
 		
 		float dot = -2 * (v[0] * nV0 + v[1] * nV1 + v[2] * nV2);
 		
@@ -8102,9 +8102,9 @@ public final class VecUtils3F
 
 	public static float[] reflect(float vV0, float vV1, float vV2, ITupRF n, @ExtractionParam float[] res)
 	{
-		float nV0 = n.getAt(0);
-		float nV1 = n.getAt(1);
-		float nV2 = n.getAt(2);
+		float nV0 = n.at(0);
+		float nV1 = n.at(1);
+		float nV2 = n.at(2);
 		
 		float dot = -2 * (vV0 * nV0 + vV1 * nV1 + vV2 * nV2);
 		
@@ -8136,9 +8136,9 @@ public final class VecUtils3F
 		float vV0 = v.v0();
 		float vV1 = v.v1();
 		float vV2 = v.v2();
-		float nV0 = n.getAt(0);
-		float nV1 = n.getAt(1);
-		float nV2 = n.getAt(2);
+		float nV0 = n.at(0);
+		float nV1 = n.at(1);
+		float nV2 = n.at(2);
 		
 		float dot = -2 * (vV0 * nV0 + vV1 * nV1 + vV2 * nV2);
 		
@@ -8175,9 +8175,9 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T reflect(ITupRF v, ITup3RF n, @ExtractionParam T res)
 	{
-		float vV0 = v.getAt(0);
-		float vV1 = v.getAt(1);
-		float vV2 = v.getAt(2);
+		float vV0 = v.at(0);
+		float vV1 = v.at(1);
+		float vV2 = v.at(2);
 		float nV0 = n.v0();
 		float nV1 = n.v1();
 		float nV2 = n.v2();
@@ -8191,12 +8191,12 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T reflect(ITupRF v, ITupRF n, @ExtractionParam T res)
 	{
-		float vV0 = v.getAt(0);
-		float vV1 = v.getAt(1);
-		float vV2 = v.getAt(2);
-		float nV0 = n.getAt(0);
-		float nV1 = n.getAt(1);
-		float nV2 = n.getAt(2);
+		float vV0 = v.at(0);
+		float vV1 = v.at(1);
+		float vV2 = v.at(2);
+		float nV0 = n.at(0);
+		float nV1 = n.at(1);
+		float nV2 = n.at(2);
 		
 		float dot = -2 * (vV0 * nV0 + vV1 * nV1 + vV2 * nV2);
 		
@@ -8207,9 +8207,9 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3WF> T reflect(ITupRF v, float[] n, @ExtractionParam T res)
 	{
-		float vV0 = v.getAt(0);
-		float vV1 = v.getAt(1);
-		float vV2 = v.getAt(2);
+		float vV0 = v.at(0);
+		float vV1 = v.at(1);
+		float vV2 = v.at(2);
 		
 		float dot = -2 * (vV0 * n[0] + vV1 * n[1] + vV2 * n[2]);
 		
@@ -8220,9 +8220,9 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T reflect(ITupRF v, float nV0, float nV1, float nV2, @ExtractionParam T res)
 	{
-		float vV0 = v.getAt(0);
-		float vV1 = v.getAt(1);
-		float vV2 = v.getAt(2);
+		float vV0 = v.at(0);
+		float vV1 = v.at(1);
+		float vV2 = v.at(2);
 		
 		float dot = -2 * (vV0 * nV0 + vV1 * nV1 + vV2 * nV2);
 		
@@ -8246,9 +8246,9 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T reflect(float[] v, ITupRF n, @ExtractionParam T res)
 	{
-		float nV0 = n.getAt(0);
-		float nV1 = n.getAt(1);
-		float nV2 = n.getAt(2);
+		float nV0 = n.at(0);
+		float nV1 = n.at(1);
+		float nV2 = n.at(2);
 		
 		float dot = -2 * (v[0] * nV0 + v[1] * nV1 + v[2] * nV2);
 		
@@ -8290,9 +8290,9 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T reflect(float vV0, float vV1, float vV2, ITupRF n, @ExtractionParam T res)
 	{
-		float nV0 = n.getAt(0);
-		float nV1 = n.getAt(1);
-		float nV2 = n.getAt(2);
+		float nV0 = n.at(0);
+		float nV1 = n.at(1);
+		float nV2 = n.at(2);
 		
 		float dot = -2 * (vV0 * nV0 + vV1 * nV1 + vV2 * nV2);
 		
@@ -8338,9 +8338,9 @@ public final class VecUtils3F
 		float vV0 = v.v0();
 		float vV1 = v.v1();
 		float vV2 = v.v2();
-		float nV0 = n.getAt(0);
-		float nV1 = n.getAt(1);
-		float nV2 = n.getAt(2);
+		float nV0 = n.at(0);
+		float nV1 = n.at(1);
+		float nV2 = n.at(2);
 		
 		float dot = -2 * (vV0 * nV0 + vV1 * nV1 + vV2 * nV2);
 		
@@ -8371,9 +8371,9 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T reflectFunc(ITupRF v, ITup3RF n, IFunc3F<T> func)
 	{
-		float vV0 = v.getAt(0);
-		float vV1 = v.getAt(1);
-		float vV2 = v.getAt(2);
+		float vV0 = v.at(0);
+		float vV1 = v.at(1);
+		float vV2 = v.at(2);
 		float nV0 = n.v0();
 		float nV1 = n.v1();
 		float nV2 = n.v2();
@@ -8385,12 +8385,12 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T reflectFunc(ITupRF v, ITupRF n, IFunc3F<T> func)
 	{
-		float vV0 = v.getAt(0);
-		float vV1 = v.getAt(1);
-		float vV2 = v.getAt(2);
-		float nV0 = n.getAt(0);
-		float nV1 = n.getAt(1);
-		float nV2 = n.getAt(2);
+		float vV0 = v.at(0);
+		float vV1 = v.at(1);
+		float vV2 = v.at(2);
+		float nV0 = n.at(0);
+		float nV1 = n.at(1);
+		float nV2 = n.at(2);
 		
 		float dot = -2 * (vV0 * nV0 + vV1 * nV1 + vV2 * nV2);
 		
@@ -8399,9 +8399,9 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T reflectFunc(ITupRF v, float[] n, IFunc3F<T> func)
 	{
-		float vV0 = v.getAt(0);
-		float vV1 = v.getAt(1);
-		float vV2 = v.getAt(2);
+		float vV0 = v.at(0);
+		float vV1 = v.at(1);
+		float vV2 = v.at(2);
 		
 		float dot = -2 * (vV0 * n[0] + vV1 * n[1] + vV2 * n[2]);
 		
@@ -8410,9 +8410,9 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T reflectFunc(ITupRF v, float nV0, float nV1, float nV2, IFunc3F<T> func)
 	{
-		float vV0 = v.getAt(0);
-		float vV1 = v.getAt(1);
-		float vV2 = v.getAt(2);
+		float vV0 = v.at(0);
+		float vV1 = v.at(1);
+		float vV2 = v.at(2);
 		
 		float dot = -2 * (vV0 * nV0 + vV1 * nV1 + vV2 * nV2);
 		
@@ -8432,9 +8432,9 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T reflectFunc(float[] v, ITupRF n, IFunc3F<T> func)
 	{
-		float nV0 = n.getAt(0);
-		float nV1 = n.getAt(1);
-		float nV2 = n.getAt(2);
+		float nV0 = n.at(0);
+		float nV1 = n.at(1);
+		float nV2 = n.at(2);
 		
 		float dot = -2 * (v[0] * nV0 + v[1] * nV1 + v[2] * nV2);
 		
@@ -8468,9 +8468,9 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T reflectFunc(float vV0, float vV1, float vV2, ITupRF n, IFunc3F<T> func)
 	{
-		float nV0 = n.getAt(0);
-		float nV1 = n.getAt(1);
-		float nV2 = n.getAt(2);
+		float nV0 = n.at(0);
+		float nV1 = n.at(1);
+		float nV2 = n.at(2);
 		
 		float dot = -2 * (vV0 * nV0 + vV1 * nV1 + vV2 * nV2);
 		
@@ -8498,7 +8498,7 @@ public final class VecUtils3F
 
 	public static float dot(ITup3RF t1, ITupRF t2)
 	{
-		return t1.v0() * t2.getAt(0) + t1.v1() * t2.getAt(1) + t1.v2() * t2.getAt(2);
+		return t1.v0() * t2.at(0) + t1.v1() * t2.at(1) + t1.v2() * t2.at(2);
 	}
 	
 	public static float dot(ITup3RF t1, float[] t2)
@@ -8513,22 +8513,22 @@ public final class VecUtils3F
 
 	public static float dot(ITupRF t1, ITup3RF t2)
 	{
-		return t1.getAt(0) * t2.v0() + t1.getAt(1) * t2.v1() + t1.getAt(2) * t2.v2();
+		return t1.at(0) * t2.v0() + t1.at(1) * t2.v1() + t1.at(2) * t2.v2();
 	}
 
 	public static float dot(ITupRF t1, ITupRF t2)
 	{
-		return t1.getAt(0) * t2.getAt(0) + t1.getAt(1) * t2.getAt(1) + t1.getAt(2) * t2.getAt(2);
+		return t1.at(0) * t2.at(0) + t1.at(1) * t2.at(1) + t1.at(2) * t2.at(2);
 	}
 	
 	public static float dot(ITupRF t1, float[] t2)
 	{
-		return t1.getAt(0) * t2[0] + t1.getAt(1) * t2[1] + t1.getAt(2) * t2[2];
+		return t1.at(0) * t2[0] + t1.at(1) * t2[1] + t1.at(2) * t2[2];
 	}
 
 	public static float dot(ITupRF t1, float t2v0, float t2v1, float t2v2)
 	{
-		return t1.getAt(0) * t2v0 + t1.getAt(1) * t2v1 + t1.getAt(2) * t2v2;
+		return t1.at(0) * t2v0 + t1.at(1) * t2v1 + t1.at(2) * t2v2;
 	}
 	
 	public static float dot(float[] t1, ITup3RF t2)
@@ -8538,7 +8538,7 @@ public final class VecUtils3F
 
 	public static float dot(float[] t1, ITupRF t2)
 	{
-		return t1[0] * t2.getAt(0) + t1[1] * t2.getAt(1) + t1[2] * t2.getAt(2);
+		return t1[0] * t2.at(0) + t1[1] * t2.at(1) + t1[2] * t2.at(2);
 	}
 
 	public static float dot(float t1v0, float t1v1, float t1v2, ITup3RF t2)
@@ -8548,7 +8548,7 @@ public final class VecUtils3F
 	
 	public static float dot(float t1v0, float t1v1, float t1v2, ITupRF t2)
 	{
-		return t1v0 * t2.getAt(0) + t1v1 * t2.getAt(1) + t1v2 * t2.getAt(2);
+		return t1v0 * t2.at(0) + t1v1 * t2.at(1) + t1v2 * t2.at(2);
 	}
 
 	public static float[] halfVecTo(ITup3RF t1, ITup3RF t2, @ExtractionParam float[] res)
@@ -8562,9 +8562,9 @@ public final class VecUtils3F
 
 	public static float[] halfVecTo(ITup3RF t1, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = (t2.getAt(0) - t1.v0()) * 0.5f;
-		res[1] = (t2.getAt(1) - t1.v1()) * 0.5f;
-		res[2] = (t2.getAt(2) - t1.v2()) * 0.5f;
+		res[0] = (t2.at(0) - t1.v0()) * 0.5f;
+		res[1] = (t2.at(1) - t1.v1()) * 0.5f;
+		res[2] = (t2.at(2) - t1.v2()) * 0.5f;
 		
 		return res;
 	}
@@ -8589,36 +8589,36 @@ public final class VecUtils3F
 
 	public static float[] halfVecTo(ITupRF t1, ITup3RF t2, @ExtractionParam float[] res)
 	{
-		res[0] = (t2.v0() - t1.getAt(0)) * 0.5f;
-		res[1] = (t2.v1() - t1.getAt(1)) * 0.5f;
-		res[2] = (t2.v2() - t1.getAt(2)) * 0.5f;
+		res[0] = (t2.v0() - t1.at(0)) * 0.5f;
+		res[1] = (t2.v1() - t1.at(1)) * 0.5f;
+		res[2] = (t2.v2() - t1.at(2)) * 0.5f;
 		
 		return res;
 	}
 
 	public static float[] halfVecTo(ITupRF t1, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = (t2.getAt(0) - t1.getAt(0)) * 0.5f;
-		res[1] = (t2.getAt(1) - t1.getAt(1)) * 0.5f;
-		res[2] = (t2.getAt(2) - t1.getAt(2)) * 0.5f;
+		res[0] = (t2.at(0) - t1.at(0)) * 0.5f;
+		res[1] = (t2.at(1) - t1.at(1)) * 0.5f;
+		res[2] = (t2.at(2) - t1.at(2)) * 0.5f;
 		
 		return res;
 	}
 	
 	public static float[] halfVecTo(ITupRF t1, float[] t2, @ExtractionParam float[] res)
 	{
-		res[0] = (t2[0] - t1.getAt(0)) * 0.5f;
-		res[1] = (t2[1] - t1.getAt(1)) * 0.5f;
-		res[2] = (t2[2] - t1.getAt(2)) * 0.5f;
+		res[0] = (t2[0] - t1.at(0)) * 0.5f;
+		res[1] = (t2[1] - t1.at(1)) * 0.5f;
+		res[2] = (t2[2] - t1.at(2)) * 0.5f;
 		
 		return res;
 	}
 
 	public static float[] halfVecTo(ITupRF t1, float t2v0, float t2v1, float t2v2, @ExtractionParam float[] res)
 	{
-		res[0] = (t2v0 - t1.getAt(0)) * 0.5f;
-		res[1] = (t2v1 - t1.getAt(1)) * 0.5f;
-		res[2] = (t2v2 - t1.getAt(2)) * 0.5f;
+		res[0] = (t2v0 - t1.at(0)) * 0.5f;
+		res[1] = (t2v1 - t1.at(1)) * 0.5f;
+		res[2] = (t2v2 - t1.at(2)) * 0.5f;
 		
 		return res;
 	}
@@ -8634,9 +8634,9 @@ public final class VecUtils3F
 
 	public static float[] halfVecTo(float[] t1, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = (t2.getAt(0) - t1[0]) * 0.5f;
-		res[1] = (t2.getAt(1) - t1[1]) * 0.5f;
-		res[2] = (t2.getAt(2) - t1[2]) * 0.5f;
+		res[0] = (t2.at(0) - t1[0]) * 0.5f;
+		res[1] = (t2.at(1) - t1[1]) * 0.5f;
+		res[2] = (t2.at(2) - t1[2]) * 0.5f;
 		
 		return res;
 	}
@@ -8652,9 +8652,9 @@ public final class VecUtils3F
 	
 	public static float[] halfVecTo(float t1v0, float t1v1, float t1v2, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = (t2.getAt(0) - t1v0) * 0.5f;
-		res[1] = (t2.getAt(1) - t1v1) * 0.5f;
-		res[2] = (t2.getAt(2) - t1v2) * 0.5f;
+		res[0] = (t2.at(0) - t1v0) * 0.5f;
+		res[1] = (t2.at(1) - t1v1) * 0.5f;
+		res[2] = (t2.at(2) - t1v2) * 0.5f;
 		
 		return res;
 	}
@@ -8668,7 +8668,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T halfVecTo(ITup3RF t1, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set((t2.getAt(0) - t1.v0()) * 0.5f, (t2.getAt(1) - t1.v1()) * 0.5f, (t2.getAt(2) - t1.v2()) * 0.5f);
+		res.set((t2.at(0) - t1.v0()) * 0.5f, (t2.at(1) - t1.v1()) * 0.5f, (t2.at(2) - t1.v2()) * 0.5f);
 		
 		return res;
 	}
@@ -8689,28 +8689,28 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T halfVecTo(ITupRF t1, ITup3RF t2, @ExtractionParam T res)
 	{
-		res.set((t2.v0() - t1.getAt(0)) * 0.5f, (t2.v1() - t1.getAt(1)) * 0.5f, (t2.v2() - t1.getAt(2)) * 0.5f);
+		res.set((t2.v0() - t1.at(0)) * 0.5f, (t2.v1() - t1.at(1)) * 0.5f, (t2.v2() - t1.at(2)) * 0.5f);
 		
 		return res;
 	}
 
 	public static <T extends ITup3WF> T halfVecTo(ITupRF t1, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set((t2.getAt(0) - t1.getAt(0)) * 0.5f, (t2.getAt(1) - t1.getAt(1)) * 0.5f, (t2.getAt(2) - t1.getAt(2)) * 0.5f);
+		res.set((t2.at(0) - t1.at(0)) * 0.5f, (t2.at(1) - t1.at(1)) * 0.5f, (t2.at(2) - t1.at(2)) * 0.5f);
 		
 		return res;
 	}
 	
 	public static <T extends ITup3WF> T halfVecTo(ITupRF t1, float[] t2, @ExtractionParam T res)
 	{
-		res.set((t2[0] - t1.getAt(0)) * 0.5f, (t2[1] - t1.getAt(1)) * 0.5f, (t2[2] - t1.getAt(2)) * 0.5f);
+		res.set((t2[0] - t1.at(0)) * 0.5f, (t2[1] - t1.at(1)) * 0.5f, (t2[2] - t1.at(2)) * 0.5f);
 		
 		return res;
 	}
 
 	public static <T extends ITup3WF> T halfVecTo(ITupRF t1, float t2v0, float t2v1, float t2v2, @ExtractionParam T res)
 	{
-		res.set((t2v0 - t1.getAt(0)) * 0.5f, (t2v1 - t1.getAt(1)) * 0.5f, (t2v2 - t1.getAt(2)) * 0.5f);
+		res.set((t2v0 - t1.at(0)) * 0.5f, (t2v1 - t1.at(1)) * 0.5f, (t2v2 - t1.at(2)) * 0.5f);
 		
 		return res;
 	}
@@ -8724,7 +8724,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T halfVecTo(float[] t1, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set((t2.getAt(0) - t1[0]) * 0.5f, (t2.getAt(1) - t1[1]) * 0.5f, (t2.getAt(2) - t1[2]) * 0.5f);
+		res.set((t2.at(0) - t1[0]) * 0.5f, (t2.at(1) - t1[1]) * 0.5f, (t2.at(2) - t1[2]) * 0.5f);
 		
 		return res;
 	}
@@ -8752,7 +8752,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T halfVecTo(float t1v0, float t1v1, float t1v2, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set((t2.getAt(0) - t1v0) * 0.5f, (t2.getAt(1) - t1v1) * 0.5f, (t2.getAt(2) - t1v2) * 0.5f);
+		res.set((t2.at(0) - t1v0) * 0.5f, (t2.at(1) - t1v1) * 0.5f, (t2.at(2) - t1v2) * 0.5f);
 		
 		return res;
 	}
@@ -8778,7 +8778,7 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T halfVecToFunc(ITup3RF t1, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply((t2.getAt(0) - t1.v0()) * 0.5f, (t2.getAt(1) - t1.v1()) * 0.5f, (t2.getAt(2) - t1.v2()) * 0.5f);
+		return func.apply((t2.at(0) - t1.v0()) * 0.5f, (t2.at(1) - t1.v1()) * 0.5f, (t2.at(2) - t1.v2()) * 0.5f);
 	}
 	
 	public static <T extends ITup3RF> T halfVecToFunc(ITup3RF t1, float[] t2, IFunc3F<T> func)
@@ -8793,22 +8793,22 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T halfVecToFunc(ITupRF t1, ITup3RF t2, IFunc3F<T> func)
 	{
-		return func.apply((t2.v0() - t1.getAt(0)) * 0.5f, (t2.v1() - t1.getAt(1)) * 0.5f, (t2.v2() - t1.getAt(2)) * 0.5f);
+		return func.apply((t2.v0() - t1.at(0)) * 0.5f, (t2.v1() - t1.at(1)) * 0.5f, (t2.v2() - t1.at(2)) * 0.5f);
 	}
 	
 	public static <T extends ITup3RF> T halfVecToFunc(ITupRF t1, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply((t2.getAt(0) - t1.getAt(0)) * 0.5f, (t2.getAt(1) - t1.getAt(1)) * 0.5f, (t2.getAt(2) - t1.getAt(2)) * 0.5f);
+		return func.apply((t2.at(0) - t1.at(0)) * 0.5f, (t2.at(1) - t1.at(1)) * 0.5f, (t2.at(2) - t1.at(2)) * 0.5f);
 	}
 	
 	public static <T extends ITup3RF> T halfVecToFunc(ITupRF t1, float[] t2, IFunc3F<T> func)
 	{
-		return func.apply((t2[0] - t1.getAt(0)) * 0.5f, (t2[1] - t1.getAt(1)) * 0.5f, (t2[2] - t1.getAt(2)) * 0.5f);
+		return func.apply((t2[0] - t1.at(0)) * 0.5f, (t2[1] - t1.at(1)) * 0.5f, (t2[2] - t1.at(2)) * 0.5f);
 	}
 	
 	public static <T extends ITup3RF> T halfVecToFunc(ITupRF t1, float t2v0, float t2v1, float t2v2, IFunc3F<T> func)
 	{
-		return func.apply((t2v0 - t1.getAt(0)) * 0.5f, (t2v1 - t1.getAt(1)) * 0.5f, (t2v2 - t1.getAt(2)) * 0.5f);
+		return func.apply((t2v0 - t1.at(0)) * 0.5f, (t2v1 - t1.at(1)) * 0.5f, (t2v2 - t1.at(2)) * 0.5f);
 	}
 	
 	public static <T extends ITup3RF> T halfVecToFunc(float[] t1, ITup3RF t2, IFunc3F<T> func)
@@ -8818,7 +8818,7 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T halfVecToFunc(float[] t1, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply((t2.getAt(0) - t1[0]) * 0.5f, (t2.getAt(1) - t1[1]) * 0.5f, (t2.getAt(2) - t1[2]) * 0.5f);
+		return func.apply((t2.at(0) - t1[0]) * 0.5f, (t2.at(1) - t1[1]) * 0.5f, (t2.at(2) - t1[2]) * 0.5f);
 	}
 	
 	public static <T extends ITup3RF> T halfVecToFunc(float[] t1, float[] t2, IFunc3F<T> func)
@@ -8838,7 +8838,7 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T halfVecToFunc(float t1v0, float t1v1, float t1v2, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply((t2.getAt(0) - t1v0) * 0.5f, (t2.getAt(1) - t1v1) * 0.5f, (t2.getAt(2) - t1v2) * 0.5f);
+		return func.apply((t2.at(0) - t1v0) * 0.5f, (t2.at(1) - t1v1) * 0.5f, (t2.at(2) - t1v2) * 0.5f);
 	}
 	
 	public static <T extends ITup3RF> T halfVecToFunc(float t1v0, float t1v1, float t1v2, float[] t2, IFunc3F<T> func)
@@ -8862,9 +8862,9 @@ public final class VecUtils3F
 
 	public static float[] midPointTo(ITup3RF t1, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = (t2.getAt(0) - t1.v0()) * 0.5f;
-		res[1] = (t2.getAt(1) - t1.v1()) * 0.5f;
-		res[2] = (t2.getAt(2) - t1.v2()) * 0.5f;
+		res[0] = (t2.at(0) - t1.v0()) * 0.5f;
+		res[1] = (t2.at(1) - t1.v1()) * 0.5f;
+		res[2] = (t2.at(2) - t1.v2()) * 0.5f;
 		
 		return res;
 	}
@@ -8898,9 +8898,9 @@ public final class VecUtils3F
 
 	public static float[] midPointTo(float[] t1, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = (t2.getAt(0) - t1[0]) * 0.5f;
-		res[1] = (t2.getAt(1) - t1[1]) * 0.5f;
-		res[2] = (t2.getAt(2) - t1[2]) * 0.5f;
+		res[0] = (t2.at(0) - t1[0]) * 0.5f;
+		res[1] = (t2.at(1) - t1[1]) * 0.5f;
+		res[2] = (t2.at(2) - t1[2]) * 0.5f;
 		
 		return res;
 	}
@@ -8916,9 +8916,9 @@ public final class VecUtils3F
 
 	public static float[] midPointTo(float t1v0, float t1v1, float t1v2, ITupRF t2, @ExtractionParam float[] res)
 	{
-		res[0] = (t2.getAt(0) - t1v0) * 0.5f;
-		res[1] = (t2.getAt(1) - t1v1) * 0.5f;
-		res[2] = (t2.getAt(2) - t1v2) * 0.5f;
+		res[0] = (t2.at(0) - t1v0) * 0.5f;
+		res[1] = (t2.at(1) - t1v1) * 0.5f;
+		res[2] = (t2.at(2) - t1v2) * 0.5f;
 		
 		return res;
 	}
@@ -8932,7 +8932,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T midPointTo(ITup3RF t1, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set((t2.getAt(0) - t1.v0()) * 0.5f, (t2.getAt(1) - t1.v1()) * 0.5f, (t2.getAt(2) - t1.v2()) * 0.5f);
+		res.set((t2.at(0) - t1.v0()) * 0.5f, (t2.at(1) - t1.v1()) * 0.5f, (t2.at(2) - t1.v2()) * 0.5f);
 		
 		return res;
 	}
@@ -8953,28 +8953,28 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T midPointTo(ITupRF t1, ITup3RF t2, @ExtractionParam T res)
 	{
-		res.set((t2.v0() - t1.getAt(0)) * 0.5f, (t2.v1() - t1.getAt(1)) * 0.5f, (t2.v2() - t1.getAt(2)) * 0.5f);
+		res.set((t2.v0() - t1.at(0)) * 0.5f, (t2.v1() - t1.at(1)) * 0.5f, (t2.v2() - t1.at(2)) * 0.5f);
 		
 		return res;
 	}
 
 	public static <T extends ITup3WF> T midPointTo(ITupRF t1, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set((t2.getAt(0) - t1.getAt(0)) * 0.5f, (t2.getAt(1) - t1.getAt(1)) * 0.5f, (t2.getAt(2) - t1.getAt(2)) * 0.5f);
+		res.set((t2.at(0) - t1.at(0)) * 0.5f, (t2.at(1) - t1.at(1)) * 0.5f, (t2.at(2) - t1.at(2)) * 0.5f);
 		
 		return res;
 	}
 	
 	public static <T extends ITup3WF> T midPointTo(ITupRF t1, float[] t2, @ExtractionParam T res)
 	{
-		res.set((t2[0] - t1.getAt(0)) * 0.5f, (t2[1] - t1.getAt(1)) * 0.5f, (t2[2] - t1.getAt(2)) * 0.5f);
+		res.set((t2[0] - t1.at(0)) * 0.5f, (t2[1] - t1.at(1)) * 0.5f, (t2[2] - t1.at(2)) * 0.5f);
 		
 		return res;
 	}
 
 	public static <T extends ITup3WF> T midPointTo(ITupRF t1, float t2v0, float t2v1, float t2v2, @ExtractionParam T res)
 	{
-		res.set((t2v0 - t1.getAt(0)) * 0.5f, (t2v1 - t1.getAt(1)) * 0.5f, (t2v2 - t1.getAt(2)) * 0.5f);
+		res.set((t2v0 - t1.at(0)) * 0.5f, (t2v1 - t1.at(1)) * 0.5f, (t2v2 - t1.at(2)) * 0.5f);
 		
 		return res;
 	}
@@ -8988,7 +8988,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T midPointTo(float[] t1, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set((t2.getAt(0) - t1[0]) * 0.5f, (t2.getAt(1) - t1[1]) * 0.5f, (t2.getAt(2) - t1[2]) * 0.5f);
+		res.set((t2.at(0) - t1[0]) * 0.5f, (t2.at(1) - t1[1]) * 0.5f, (t2.at(2) - t1[2]) * 0.5f);
 		
 		return res;
 	}
@@ -9016,7 +9016,7 @@ public final class VecUtils3F
 
 	public static <T extends ITup3WF> T midPointTo(float t1v0, float t1v1, float t1v2, ITupRF t2, @ExtractionParam T res)
 	{
-		res.set((t2.getAt(0) - t1v0) * 0.5f, (t2.getAt(1) - t1v1) * 0.5f, (t2.getAt(2) - t1v2) * 0.5f);
+		res.set((t2.at(0) - t1v0) * 0.5f, (t2.at(1) - t1v1) * 0.5f, (t2.at(2) - t1v2) * 0.5f);
 		
 		return res;
 	}
@@ -9042,7 +9042,7 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T midPointToFunc(ITup3RF t1, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply((t2.getAt(0) - t1.v0()) * 0.5f, (t2.getAt(1) - t1.v1()) * 0.5f, (t2.getAt(2) - t1.v2()) * 0.5f);
+		return func.apply((t2.at(0) - t1.v0()) * 0.5f, (t2.at(1) - t1.v1()) * 0.5f, (t2.at(2) - t1.v2()) * 0.5f);
 	}
 	
 	public static <T extends ITup3RF> T midPointToFunc(ITup3RF t1, float[] t2, IFunc3F<T> func)
@@ -9057,22 +9057,22 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T midPointToFunc(ITupRF t1, ITup3RF t2, IFunc3F<T> func)
 	{
-		return func.apply((t2.v0() - t1.getAt(0)) * 0.5f, (t2.v1() - t1.getAt(1)) * 0.5f, (t2.v2() - t1.getAt(2)) * 0.5f);
+		return func.apply((t2.v0() - t1.at(0)) * 0.5f, (t2.v1() - t1.at(1)) * 0.5f, (t2.v2() - t1.at(2)) * 0.5f);
 	}
 	
 	public static <T extends ITup3RF> T midPointToFunc(ITupRF t1, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply((t2.getAt(0) - t1.getAt(0)) * 0.5f, (t2.getAt(1) - t1.getAt(1)) * 0.5f, (t2.getAt(2) - t1.getAt(2)) * 0.5f);
+		return func.apply((t2.at(0) - t1.at(0)) * 0.5f, (t2.at(1) - t1.at(1)) * 0.5f, (t2.at(2) - t1.at(2)) * 0.5f);
 	}
 	
 	public static <T extends ITup3RF> T midPointToFunc(ITupRF t1, float[] t2, IFunc3F<T> func)
 	{
-		return func.apply((t2[0] - t1.getAt(0)) * 0.5f, (t2[1] - t1.getAt(1)) * 0.5f, (t2[2] - t1.getAt(2)) * 0.5f);
+		return func.apply((t2[0] - t1.at(0)) * 0.5f, (t2[1] - t1.at(1)) * 0.5f, (t2[2] - t1.at(2)) * 0.5f);
 	}
 	
 	public static <T extends ITup3RF> T midPointToFunc(ITupRF t1, float t2v0, float t2v1, float t2v2, IFunc3F<T> func)
 	{
-		return func.apply((t2v0 - t1.getAt(0)) * 0.5f, (t2v1 - t1.getAt(1)) * 0.5f, (t2v2 - t1.getAt(2)) * 0.5f);
+		return func.apply((t2v0 - t1.at(0)) * 0.5f, (t2v1 - t1.at(1)) * 0.5f, (t2v2 - t1.at(2)) * 0.5f);
 	}
 	
 	public static <T extends ITup3RF> T midPointToFunc(float[] t1, ITup3RF t2, IFunc3F<T> func)
@@ -9082,7 +9082,7 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T midPointToFunc(float[] t1, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply((t2.getAt(0) - t1[0]) * 0.5f, (t2.getAt(1) - t1[1]) * 0.5f, (t2.getAt(2) - t1[2]) * 0.5f);
+		return func.apply((t2.at(0) - t1[0]) * 0.5f, (t2.at(1) - t1[1]) * 0.5f, (t2.at(2) - t1[2]) * 0.5f);
 	}
 	
 	public static <T extends ITup3RF> T midPointToFunc(float[] t1, float[] t2, IFunc3F<T> func)
@@ -9102,7 +9102,7 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T midPointToFunc(float t1v0, float t1v1, float t1v2, ITupRF t2, IFunc3F<T> func)
 	{
-		return func.apply((t2.getAt(0) - t1v0) * 0.5f, (t2.getAt(1) - t1v1) * 0.5f, (t2.getAt(2) - t1v2) * 0.5f);
+		return func.apply((t2.at(0) - t1v0) * 0.5f, (t2.at(1) - t1v1) * 0.5f, (t2.at(2) - t1v2) * 0.5f);
 	}
 	
 	public static <T extends ITup3RF> T midPointToFunc(float t1v0, float t1v1, float t1v2, float[] t2, IFunc3F<T> func)
@@ -9128,9 +9128,9 @@ public final class VecUtils3F
 	
 	public static float lenTo(ITup3RF t1, ITupRF t2)
 	{
-		float v0 = t2.getAt(0) - t1.v0();
-		float v1 = t2.getAt(1) - t1.v1();
-		float v2 = t2.getAt(2) - t1.v2();
+		float v0 = t2.at(0) - t1.v0();
+		float v1 = t2.at(1) - t1.v1();
+		float v2 = t2.at(2) - t1.v2();
 		
 		if(RawTupUtils3F.isZero(v0, v1, v2)) return 0.0f;
 
@@ -9161,9 +9161,9 @@ public final class VecUtils3F
 	
 	public static float lenTo(ITupRF t1, ITup3RF t2)
 	{
-		float v0 = t2.v0() - t1.getAt(0);
-		float v1 = t2.v1() - t1.getAt(1);
-		float v2 = t2.v2() - t1.getAt(2);
+		float v0 = t2.v0() - t1.at(0);
+		float v1 = t2.v1() - t1.at(1);
+		float v2 = t2.v2() - t1.at(2);
 		
 		if(RawTupUtils3F.isZero(v0, v1, v2)) return 0.0f;
 
@@ -9172,9 +9172,9 @@ public final class VecUtils3F
 	
 	public static float lenTo(ITupRF t1, ITupRF t2)
 	{
-		float v0 = t2.getAt(0) - t1.getAt(0);
-		float v1 = t2.getAt(1) - t1.getAt(1);
-		float v2 = t2.getAt(2) - t1.getAt(2);
+		float v0 = t2.at(0) - t1.at(0);
+		float v1 = t2.at(1) - t1.at(1);
+		float v2 = t2.at(2) - t1.at(2);
 		
 		if(RawTupUtils3F.isZero(v0, v1, v2)) return 0.0f;
 
@@ -9183,9 +9183,9 @@ public final class VecUtils3F
 	
 	public static float lenTo(ITupRF t1, float[] t2)
 	{
-		float v0 = t2[0] - t1.getAt(0);
-		float v1 = t2[1] - t1.getAt(1);
-		float v2 = t2[2] - t1.getAt(2);
+		float v0 = t2[0] - t1.at(0);
+		float v1 = t2[1] - t1.at(1);
+		float v2 = t2[2] - t1.at(2);
 		
 		if(RawTupUtils3F.isZero(v0, v1, v2)) return 0.0f;
 
@@ -9194,9 +9194,9 @@ public final class VecUtils3F
 	
 	public static float lenTo(ITupRF t1, float t2v0, float t2v1, float t2v2)
 	{
-		float v0 = t2v0 - t1.getAt(0);
-		float v1 = t2v1 - t1.getAt(1);
-		float v2 = t2v2 - t1.getAt(2);
+		float v0 = t2v0 - t1.at(0);
+		float v1 = t2v1 - t1.at(1);
+		float v2 = t2v2 - t1.at(2);
 		
 		if(RawTupUtils3F.isZero(v0, v1, v2)) return 0.0f;
 
@@ -9216,9 +9216,9 @@ public final class VecUtils3F
 	
 	public static float lenTo(float[] t1, ITupRF t2)
 	{
-		float v0 = t2.getAt(0) - t1[0];
-		float v1 = t2.getAt(1) - t1[1];
-		float v2 = t2.getAt(2) - t1[2];
+		float v0 = t2.at(0) - t1[0];
+		float v1 = t2.at(1) - t1[1];
+		float v2 = t2.at(2) - t1[2];
 		
 		if(RawTupUtils3F.isZero(v0, v1, v2)) return 0.0f;
 
@@ -9238,9 +9238,9 @@ public final class VecUtils3F
 	
 	public static float lenTo(float t1v0, float t1v1, float t1v2, ITupRF t2)
 	{
-		float v0 = t2.getAt(0) - t1v0;
-		float v1 = t2.getAt(1) - t1v1;
-		float v2 = t2.getAt(2) - t1v2;
+		float v0 = t2.at(0) - t1v0;
+		float v1 = t2.at(1) - t1v1;
+		float v2 = t2.at(2) - t1v2;
 		
 		if(RawTupUtils3F.isZero(v0, v1, v2)) return 0.0f;
 
@@ -9260,9 +9260,9 @@ public final class VecUtils3F
 	
 	public static float lenToEM(float tolerance, ITup3RF t1, ITupRF t2)
 	{
-		float v0 = t2.getAt(0) - t1.v0();
-		float v1 = t2.getAt(1) - t1.v1();
-		float v2 = t2.getAt(2) - t1.v2();
+		float v0 = t2.at(0) - t1.v0();
+		float v1 = t2.at(1) - t1.v1();
+		float v2 = t2.at(2) - t1.v2();
 		
 		if(RawTupUtils3F.isZeroEM(tolerance, v0, v1, v2)) return 0.0f;
 
@@ -9293,9 +9293,9 @@ public final class VecUtils3F
 	
 	public static float lenToEM(float tolerance, ITupRF t1, ITup3RF t2)
 	{
-		float v0 = t2.v0() - t1.getAt(0);
-		float v1 = t2.v1() - t1.getAt(1);
-		float v2 = t2.v2() - t1.getAt(2);
+		float v0 = t2.v0() - t1.at(0);
+		float v1 = t2.v1() - t1.at(1);
+		float v2 = t2.v2() - t1.at(2);
 		
 		if(RawTupUtils3F.isZeroEM(tolerance, v0, v1, v2)) return 0.0f;
 
@@ -9304,9 +9304,9 @@ public final class VecUtils3F
 	
 	public static float lenToEM(float tolerance, ITupRF t1, ITupRF t2)
 	{
-		float v0 = t2.getAt(0) - t1.getAt(0);
-		float v1 = t2.getAt(1) - t1.getAt(1);
-		float v2 = t2.getAt(2) - t1.getAt(2);
+		float v0 = t2.at(0) - t1.at(0);
+		float v1 = t2.at(1) - t1.at(1);
+		float v2 = t2.at(2) - t1.at(2);
 		
 		if(RawTupUtils3F.isZeroEM(tolerance, v0, v1, v2)) return 0.0f;
 
@@ -9315,9 +9315,9 @@ public final class VecUtils3F
 	
 	public static float lenToEM(float tolerance, ITupRF t1, float[] t2)
 	{
-		float v0 = t2[0] - t1.getAt(0);
-		float v1 = t2[1] - t1.getAt(1);
-		float v2 = t2[2] - t1.getAt(2);
+		float v0 = t2[0] - t1.at(0);
+		float v1 = t2[1] - t1.at(1);
+		float v2 = t2[2] - t1.at(2);
 		
 		if(RawTupUtils3F.isZeroEM(tolerance, v0, v1, v2)) return 0.0f;
 
@@ -9326,9 +9326,9 @@ public final class VecUtils3F
 	
 	public static float lenToEM(float tolerance, ITupRF t1, float t2v0, float t2v1, float t2v2)
 	{
-		float v0 = t2v0 - t1.getAt(0);
-		float v1 = t2v1 - t1.getAt(1);
-		float v2 = t2v2 - t1.getAt(2);
+		float v0 = t2v0 - t1.at(0);
+		float v1 = t2v1 - t1.at(1);
+		float v2 = t2v2 - t1.at(2);
 		
 		if(RawTupUtils3F.isZeroEM(tolerance, v0, v1, v2)) return 0.0f;
 
@@ -9348,9 +9348,9 @@ public final class VecUtils3F
 	
 	public static float lenToEM(float tolerance, float[] t1, ITupRF t2)
 	{
-		float v0 = t2.getAt(0) - t1[0];
-		float v1 = t2.getAt(1) - t1[1];
-		float v2 = t2.getAt(2) - t1[2];
+		float v0 = t2.at(0) - t1[0];
+		float v1 = t2.at(1) - t1[1];
+		float v2 = t2.at(2) - t1[2];
 		
 		if(RawTupUtils3F.isZeroEM(tolerance, v0, v1, v2)) return 0.0f;
 
@@ -9370,9 +9370,9 @@ public final class VecUtils3F
 	
 	public static float lenToEM(float tolerance, float t1v0, float t1v1, float t1v2, ITupRF t2)
 	{
-		float v0 = t2.getAt(0) - t1v0;
-		float v1 = t2.getAt(1) - t1v1;
-		float v2 = t2.getAt(2) - t1v2;
+		float v0 = t2.at(0) - t1v0;
+		float v1 = t2.at(1) - t1v1;
+		float v2 = t2.at(2) - t1v2;
 		
 		if(RawTupUtils3F.isZeroEM(tolerance, v0, v1, v2)) return 0.0f;
 
@@ -9392,9 +9392,9 @@ public final class VecUtils3F
 	
 	public static float lenToEM4(ITup3RF t1, ITupRF t2)
 	{
-		float v0 = t2.getAt(0) - t1.v0();
-		float v1 = t2.getAt(1) - t1.v1();
-		float v2 = t2.getAt(2) - t1.v2();
+		float v0 = t2.at(0) - t1.v0();
+		float v1 = t2.at(1) - t1.v1();
+		float v2 = t2.at(2) - t1.v2();
 		
 		if(RawTupUtils3F.isZeroEM4(v0, v1, v2)) return 0.0f;
 
@@ -9425,9 +9425,9 @@ public final class VecUtils3F
 	
 	public static float lenToEM4(ITupRF t1, ITup3RF t2)
 	{
-		float v0 = t2.v0() - t1.getAt(0);
-		float v1 = t2.v1() - t1.getAt(1);
-		float v2 = t2.v2() - t1.getAt(2);
+		float v0 = t2.v0() - t1.at(0);
+		float v1 = t2.v1() - t1.at(1);
+		float v2 = t2.v2() - t1.at(2);
 		
 		if(RawTupUtils3F.isZeroEM4(v0, v1, v2)) return 0.0f;
 
@@ -9436,9 +9436,9 @@ public final class VecUtils3F
 	
 	public static float lenToEM4(ITupRF t1, ITupRF t2)
 	{
-		float v0 = t2.getAt(0) - t1.getAt(0);
-		float v1 = t2.getAt(1) - t1.getAt(1);
-		float v2 = t2.getAt(2) - t1.getAt(2);
+		float v0 = t2.at(0) - t1.at(0);
+		float v1 = t2.at(1) - t1.at(1);
+		float v2 = t2.at(2) - t1.at(2);
 		
 		if(RawTupUtils3F.isZeroEM4(v0, v1, v2)) return 0.0f;
 
@@ -9447,9 +9447,9 @@ public final class VecUtils3F
 	
 	public static float lenToEM4(ITupRF t1, float[] t2)
 	{
-		float v0 = t2[0] - t1.getAt(0);
-		float v1 = t2[1] - t1.getAt(1);
-		float v2 = t2[2] - t1.getAt(2);
+		float v0 = t2[0] - t1.at(0);
+		float v1 = t2[1] - t1.at(1);
+		float v2 = t2[2] - t1.at(2);
 		
 		if(RawTupUtils3F.isZeroEM4(v0, v1, v2)) return 0.0f;
 
@@ -9458,9 +9458,9 @@ public final class VecUtils3F
 	
 	public static float lenToEM4(ITupRF t1, float t2v0, float t2v1, float t2v2)
 	{
-		float v0 = t2v0 - t1.getAt(0);
-		float v1 = t2v1 - t1.getAt(1);
-		float v2 = t2v2 - t1.getAt(2);
+		float v0 = t2v0 - t1.at(0);
+		float v1 = t2v1 - t1.at(1);
+		float v2 = t2v2 - t1.at(2);
 		
 		if(RawTupUtils3F.isZeroEM4(v0, v1, v2)) return 0.0f;
 
@@ -9480,9 +9480,9 @@ public final class VecUtils3F
 	
 	public static float lenToEM4(float[] t1, ITupRF t2)
 	{
-		float v0 = t2.getAt(0) - t1[0];
-		float v1 = t2.getAt(1) - t1[1];
-		float v2 = t2.getAt(2) - t1[2];
+		float v0 = t2.at(0) - t1[0];
+		float v1 = t2.at(1) - t1[1];
+		float v2 = t2.at(2) - t1[2];
 		
 		if(RawTupUtils3F.isZeroEM4(v0, v1, v2)) return 0.0f;
 
@@ -9502,9 +9502,9 @@ public final class VecUtils3F
 	
 	public static float lenToEM4(float t1v0, float t1v1, float t1v2, ITupRF t2)
 	{
-		float v0 = t2.getAt(0) - t1v0;
-		float v1 = t2.getAt(1) - t1v1;
-		float v2 = t2.getAt(2) - t1v2;
+		float v0 = t2.at(0) - t1v0;
+		float v1 = t2.at(1) - t1v1;
+		float v2 = t2.at(2) - t1v2;
 		
 		if(RawTupUtils3F.isZeroEM4(v0, v1, v2)) return 0.0f;
 
@@ -9524,9 +9524,9 @@ public final class VecUtils3F
 	
 	public static float lenToEM6(ITup3RF t1, ITupRF t2)
 	{
-		float v0 = t2.getAt(0) - t1.v0();
-		float v1 = t2.getAt(1) - t1.v1();
-		float v2 = t2.getAt(2) - t1.v2();
+		float v0 = t2.at(0) - t1.v0();
+		float v1 = t2.at(1) - t1.v1();
+		float v2 = t2.at(2) - t1.v2();
 		
 		if(RawTupUtils3F.isZeroEM6(v0, v1, v2)) return 0.0f;
 
@@ -9557,9 +9557,9 @@ public final class VecUtils3F
 	
 	public static float lenToEM6(ITupRF t1, ITup3RF t2)
 	{
-		float v0 = t2.v0() - t1.getAt(0);
-		float v1 = t2.v1() - t1.getAt(1);
-		float v2 = t2.v2() - t1.getAt(2);
+		float v0 = t2.v0() - t1.at(0);
+		float v1 = t2.v1() - t1.at(1);
+		float v2 = t2.v2() - t1.at(2);
 		
 		if(RawTupUtils3F.isZeroEM6(v0, v1, v2)) return 0.0f;
 
@@ -9568,9 +9568,9 @@ public final class VecUtils3F
 	
 	public static float lenToEM6(ITupRF t1, ITupRF t2)
 	{
-		float v0 = t2.getAt(0) - t1.getAt(0);
-		float v1 = t2.getAt(1) - t1.getAt(1);
-		float v2 = t2.getAt(2) - t1.getAt(2);
+		float v0 = t2.at(0) - t1.at(0);
+		float v1 = t2.at(1) - t1.at(1);
+		float v2 = t2.at(2) - t1.at(2);
 		
 		if(RawTupUtils3F.isZeroEM6(v0, v1, v2)) return 0.0f;
 
@@ -9579,9 +9579,9 @@ public final class VecUtils3F
 	
 	public static float lenToEM6(ITupRF t1, float[] t2)
 	{
-		float v0 = t2[0] - t1.getAt(0);
-		float v1 = t2[1] - t1.getAt(1);
-		float v2 = t2[2] - t1.getAt(2);
+		float v0 = t2[0] - t1.at(0);
+		float v1 = t2[1] - t1.at(1);
+		float v2 = t2[2] - t1.at(2);
 		
 		if(RawTupUtils3F.isZeroEM6(v0, v1, v2)) return 0.0f;
 
@@ -9590,9 +9590,9 @@ public final class VecUtils3F
 	
 	public static float lenToEM6(ITupRF t1, float t2v0, float t2v1, float t2v2)
 	{
-		float v0 = t2v0 - t1.getAt(0);
-		float v1 = t2v1 - t1.getAt(1);
-		float v2 = t2v2 - t1.getAt(2);
+		float v0 = t2v0 - t1.at(0);
+		float v1 = t2v1 - t1.at(1);
+		float v2 = t2v2 - t1.at(2);
 		
 		if(RawTupUtils3F.isZeroEM6(v0, v1, v2)) return 0.0f;
 
@@ -9612,9 +9612,9 @@ public final class VecUtils3F
 	
 	public static float lenToEM6(float[] t1, ITupRF t2)
 	{
-		float v0 = t2.getAt(0) - t1[0];
-		float v1 = t2.getAt(1) - t1[1];
-		float v2 = t2.getAt(2) - t1[2];
+		float v0 = t2.at(0) - t1[0];
+		float v1 = t2.at(1) - t1[1];
+		float v2 = t2.at(2) - t1[2];
 		
 		if(RawTupUtils3F.isZeroEM6(v0, v1, v2)) return 0.0f;
 
@@ -9634,9 +9634,9 @@ public final class VecUtils3F
 	
 	public static float lenToEM6(float t1v0, float t1v1, float t1v2, ITupRF t2)
 	{
-		float v0 = t2.getAt(0) - t1v0;
-		float v1 = t2.getAt(1) - t1v1;
-		float v2 = t2.getAt(2) - t1v2;
+		float v0 = t2.at(0) - t1v0;
+		float v1 = t2.at(1) - t1v1;
+		float v2 = t2.at(2) - t1v2;
 		
 		if(RawTupUtils3F.isZeroEM6(v0, v1, v2)) return 0.0f;
 
@@ -9656,9 +9656,9 @@ public final class VecUtils3F
 	
 	public static float lenToEM8(ITup3RF t1, ITupRF t2)
 	{
-		float v0 = t2.getAt(0) - t1.v0();
-		float v1 = t2.getAt(1) - t1.v1();
-		float v2 = t2.getAt(2) - t1.v2();
+		float v0 = t2.at(0) - t1.v0();
+		float v1 = t2.at(1) - t1.v1();
+		float v2 = t2.at(2) - t1.v2();
 		
 		if(RawTupUtils3F.isZeroEM8(v0, v1, v2)) return 0.0f;
 
@@ -9689,9 +9689,9 @@ public final class VecUtils3F
 	
 	public static float lenToEM8(ITupRF t1, ITup3RF t2)
 	{
-		float v0 = t2.v0() - t1.getAt(0);
-		float v1 = t2.v1() - t1.getAt(1);
-		float v2 = t2.v2() - t1.getAt(2);
+		float v0 = t2.v0() - t1.at(0);
+		float v1 = t2.v1() - t1.at(1);
+		float v2 = t2.v2() - t1.at(2);
 		
 		if(RawTupUtils3F.isZeroEM8(v0, v1, v2)) return 0.0f;
 
@@ -9700,9 +9700,9 @@ public final class VecUtils3F
 	
 	public static float lenToEM8(ITupRF t1, ITupRF t2)
 	{
-		float v0 = t2.getAt(0) - t1.getAt(0);
-		float v1 = t2.getAt(1) - t1.getAt(1);
-		float v2 = t2.getAt(2) - t1.getAt(2);
+		float v0 = t2.at(0) - t1.at(0);
+		float v1 = t2.at(1) - t1.at(1);
+		float v2 = t2.at(2) - t1.at(2);
 		
 		if(RawTupUtils3F.isZeroEM8(v0, v1, v2)) return 0.0f;
 
@@ -9711,9 +9711,9 @@ public final class VecUtils3F
 	
 	public static float lenToEM8(ITupRF t1, float[] t2)
 	{
-		float v0 = t2[0] - t1.getAt(0);
-		float v1 = t2[1] - t1.getAt(1);
-		float v2 = t2[2] - t1.getAt(2);
+		float v0 = t2[0] - t1.at(0);
+		float v1 = t2[1] - t1.at(1);
+		float v2 = t2[2] - t1.at(2);
 		
 		if(RawTupUtils3F.isZeroEM8(v0, v1, v2)) return 0.0f;
 
@@ -9722,9 +9722,9 @@ public final class VecUtils3F
 	
 	public static float lenToEM8(ITupRF t1, float t2v0, float t2v1, float t2v2)
 	{
-		float v0 = t2v0 - t1.getAt(0);
-		float v1 = t2v1 - t1.getAt(1);
-		float v2 = t2v2 - t1.getAt(2);
+		float v0 = t2v0 - t1.at(0);
+		float v1 = t2v1 - t1.at(1);
+		float v2 = t2v2 - t1.at(2);
 		
 		if(RawTupUtils3F.isZeroEM8(v0, v1, v2)) return 0.0f;
 
@@ -9744,9 +9744,9 @@ public final class VecUtils3F
 	
 	public static float lenToEM8(float[] t1, ITupRF t2)
 	{
-		float v0 = t2.getAt(0) - t1[0];
-		float v1 = t2.getAt(1) - t1[1];
-		float v2 = t2.getAt(2) - t1[2];
+		float v0 = t2.at(0) - t1[0];
+		float v1 = t2.at(1) - t1[1];
+		float v2 = t2.at(2) - t1[2];
 		
 		if(RawTupUtils3F.isZeroEM8(v0, v1, v2)) return 0.0f;
 
@@ -9766,9 +9766,9 @@ public final class VecUtils3F
 	
 	public static float lenToEM8(float t1v0, float t1v1, float t1v2, ITupRF t2)
 	{
-		float v0 = t2.getAt(0) - t1v0;
-		float v1 = t2.getAt(1) - t1v1;
-		float v2 = t2.getAt(2) - t1v2;
+		float v0 = t2.at(0) - t1v0;
+		float v1 = t2.at(1) - t1v1;
+		float v2 = t2.at(2) - t1v2;
 		
 		if(RawTupUtils3F.isZeroEM8(v0, v1, v2)) return 0.0f;
 
@@ -9788,9 +9788,9 @@ public final class VecUtils3F
 
 	public static float lenSqTo(ITup3RF t1, ITupRF t2)
 	{
-		float v0 = t2.getAt(0) - t1.v0();
-		float v1 = t2.getAt(1) - t1.v1();
-		float v2 = t2.getAt(2) - t1.v2();
+		float v0 = t2.at(0) - t1.v0();
+		float v1 = t2.at(1) - t1.v1();
+		float v2 = t2.at(2) - t1.v2();
 		
 		if(RawTupUtils3F.isZero(v0, v1, v2)) return 0.0f;
 		
@@ -9821,9 +9821,9 @@ public final class VecUtils3F
 
 	public static float lenSqTo(ITupRF t1, ITup3RF t2)
 	{
-		float v0 = t2.v0() - t1.getAt(0);
-		float v1 = t2.v1() - t1.getAt(1);
-		float v2 = t2.v2() - t1.getAt(2);
+		float v0 = t2.v0() - t1.at(0);
+		float v1 = t2.v1() - t1.at(1);
+		float v2 = t2.v2() - t1.at(2);
 		
 		if(RawTupUtils3F.isZero(v0, v1, v2)) return 0.0f;
 		
@@ -9832,9 +9832,9 @@ public final class VecUtils3F
 
 	public static float lenSqTo(ITupRF t1, ITupRF t2)
 	{
-		float v0 = t2.getAt(0) - t1.getAt(0);
-		float v1 = t2.getAt(1) - t1.getAt(1);
-		float v2 = t2.getAt(2) - t1.getAt(2);
+		float v0 = t2.at(0) - t1.at(0);
+		float v1 = t2.at(1) - t1.at(1);
+		float v2 = t2.at(2) - t1.at(2);
 		
 		if(RawTupUtils3F.isZero(v0, v1, v2)) return 0.0f;
 		
@@ -9843,9 +9843,9 @@ public final class VecUtils3F
 	
 	public static float lenSqTo(ITupRF t1, float[] t2)
 	{
-		float v0 = t2[0] - t1.getAt(0);
-		float v1 = t2[1] - t1.getAt(1);
-		float v2 = t2[2] - t1.getAt(2);
+		float v0 = t2[0] - t1.at(0);
+		float v1 = t2[1] - t1.at(1);
+		float v2 = t2[2] - t1.at(2);
 		
 		if(RawTupUtils3F.isZero(v0, v1, v2)) return 0.0f;
 		
@@ -9854,9 +9854,9 @@ public final class VecUtils3F
 
 	public static float lenSqTo(ITupRF t1, float t2v0, float t2v1, float t2v2)
 	{
-		float v0 = t2v0 - t1.getAt(0);
-		float v1 = t2v1 - t1.getAt(1);
-		float v2 = t2v2 - t1.getAt(2);
+		float v0 = t2v0 - t1.at(0);
+		float v1 = t2v1 - t1.at(1);
+		float v2 = t2v2 - t1.at(2);
 		
 		if(RawTupUtils3F.isZero(v0, v1, v2)) return 0.0f;
 		
@@ -9876,9 +9876,9 @@ public final class VecUtils3F
 
 	public static float lenSqTo(float[] t1, ITupRF t2)
 	{
-		float v0 = t2.getAt(0) - t1[0];
-		float v1 = t2.getAt(1) - t1[1];
-		float v2 = t2.getAt(2) - t1[2];
+		float v0 = t2.at(0) - t1[0];
+		float v1 = t2.at(1) - t1[1];
+		float v2 = t2.at(2) - t1[2];
 		
 		if(RawTupUtils3F.isZero(v0, v1, v2)) return 0.0f;
 		
@@ -9898,9 +9898,9 @@ public final class VecUtils3F
 
 	public static float lenSqTo(float t1v0, float t1v1, float t1v2, ITupRF t2)
 	{
-		float v0 = t2.getAt(0) - t1v0;
-		float v1 = t2.getAt(1) - t1v1;
-		float v2 = t2.getAt(2) - t1v2;
+		float v0 = t2.at(0) - t1v0;
+		float v1 = t2.at(1) - t1v1;
+		float v2 = t2.at(2) - t1v2;
 		
 		if(RawTupUtils3F.isZero(v0, v1, v2)) return 0.0f;
 		
@@ -9920,9 +9920,9 @@ public final class VecUtils3F
 
 	public static float lenSqToEM(float tolerance, ITup3RF t1, ITupRF t2)
 	{
-		float v0 = t2.getAt(0) - t1.v0();
-		float v1 = t2.getAt(1) - t1.v1();
-		float v2 = t2.getAt(2) - t1.v2();
+		float v0 = t2.at(0) - t1.v0();
+		float v1 = t2.at(1) - t1.v1();
+		float v2 = t2.at(2) - t1.v2();
 		
 		if(RawTupUtils3F.isZeroEM(tolerance, v0, v1, v2)) return 0.0f;
 		
@@ -9953,9 +9953,9 @@ public final class VecUtils3F
 
 	public static float lenSqToEM(float tolerance, ITupRF t1, ITup3RF t2)
 	{
-		float v0 = t2.v0() - t1.getAt(0);
-		float v1 = t2.v1() - t1.getAt(1);
-		float v2 = t2.v2() - t1.getAt(2);
+		float v0 = t2.v0() - t1.at(0);
+		float v1 = t2.v1() - t1.at(1);
+		float v2 = t2.v2() - t1.at(2);
 		
 		if(RawTupUtils3F.isZeroEM(tolerance, v0, v1, v2)) return 0.0f;
 		
@@ -9964,9 +9964,9 @@ public final class VecUtils3F
 
 	public static float lenSqToEM(float tolerance, ITupRF t1, ITupRF t2)
 	{
-		float v0 = t2.getAt(0) - t1.getAt(0);
-		float v1 = t2.getAt(1) - t1.getAt(1);
-		float v2 = t2.getAt(2) - t1.getAt(2);
+		float v0 = t2.at(0) - t1.at(0);
+		float v1 = t2.at(1) - t1.at(1);
+		float v2 = t2.at(2) - t1.at(2);
 		
 		if(RawTupUtils3F.isZeroEM(tolerance, v0, v1, v2)) return 0.0f;
 		
@@ -9975,9 +9975,9 @@ public final class VecUtils3F
 	
 	public static float lenSqToEM(float tolerance, ITupRF t1, float[] t2)
 	{
-		float v0 = t2[0] - t1.getAt(0);
-		float v1 = t2[1] - t1.getAt(1);
-		float v2 = t2[2] - t1.getAt(2);
+		float v0 = t2[0] - t1.at(0);
+		float v1 = t2[1] - t1.at(1);
+		float v2 = t2[2] - t1.at(2);
 		
 		if(RawTupUtils3F.isZeroEM(tolerance, v0, v1, v2)) return 0.0f;
 		
@@ -9986,9 +9986,9 @@ public final class VecUtils3F
 
 	public static float lenSqToEM(float tolerance, ITupRF t1, float t2v0, float t2v1, float t2v2)
 	{
-		float v0 = t2v0 - t1.getAt(0);
-		float v1 = t2v1 - t1.getAt(1);
-		float v2 = t2v2 - t1.getAt(2);
+		float v0 = t2v0 - t1.at(0);
+		float v1 = t2v1 - t1.at(1);
+		float v2 = t2v2 - t1.at(2);
 		
 		if(RawTupUtils3F.isZeroEM(tolerance, v0, v1, v2)) return 0.0f;
 		
@@ -10008,9 +10008,9 @@ public final class VecUtils3F
 
 	public static float lenSqToEM(float tolerance, float[] t1, ITupRF t2)
 	{
-		float v0 = t2.getAt(0) - t1[0];
-		float v1 = t2.getAt(1) - t1[1];
-		float v2 = t2.getAt(2) - t1[2];
+		float v0 = t2.at(0) - t1[0];
+		float v1 = t2.at(1) - t1[1];
+		float v2 = t2.at(2) - t1[2];
 		
 		if(RawTupUtils3F.isZeroEM(tolerance, v0, v1, v2)) return 0.0f;
 		
@@ -10030,9 +10030,9 @@ public final class VecUtils3F
 
 	public static float lenSqToEM(float tolerance, float t1v0, float t1v1, float t1v2, ITupRF t2)
 	{
-		float v0 = t2.getAt(0) - t1v0;
-		float v1 = t2.getAt(1) - t1v1;
-		float v2 = t2.getAt(2) - t1v2;
+		float v0 = t2.at(0) - t1v0;
+		float v1 = t2.at(1) - t1v1;
+		float v2 = t2.at(2) - t1v2;
 		
 		if(RawTupUtils3F.isZeroEM(tolerance, v0, v1, v2)) return 0.0f;
 		
@@ -10052,9 +10052,9 @@ public final class VecUtils3F
 
 	public static float lenSqToEM4(ITup3RF t1, ITupRF t2)
 	{
-		float v0 = t2.getAt(0) - t1.v0();
-		float v1 = t2.getAt(1) - t1.v1();
-		float v2 = t2.getAt(2) - t1.v2();
+		float v0 = t2.at(0) - t1.v0();
+		float v1 = t2.at(1) - t1.v1();
+		float v2 = t2.at(2) - t1.v2();
 		
 		if(RawTupUtils3F.isZeroEM4(v0, v1, v2)) return 0.0f;
 		
@@ -10085,9 +10085,9 @@ public final class VecUtils3F
 
 	public static float lenSqToEM4(ITupRF t1, ITup3RF t2)
 	{
-		float v0 = t2.v0() - t1.getAt(0);
-		float v1 = t2.v1() - t1.getAt(1);
-		float v2 = t2.v2() - t1.getAt(2);
+		float v0 = t2.v0() - t1.at(0);
+		float v1 = t2.v1() - t1.at(1);
+		float v2 = t2.v2() - t1.at(2);
 		
 		if(RawTupUtils3F.isZeroEM4(v0, v1, v2)) return 0.0f;
 		
@@ -10096,9 +10096,9 @@ public final class VecUtils3F
 
 	public static float lenSqToEM4(ITupRF t1, ITupRF t2)
 	{
-		float v0 = t2.getAt(0) - t1.getAt(0);
-		float v1 = t2.getAt(1) - t1.getAt(1);
-		float v2 = t2.getAt(2) - t1.getAt(2);
+		float v0 = t2.at(0) - t1.at(0);
+		float v1 = t2.at(1) - t1.at(1);
+		float v2 = t2.at(2) - t1.at(2);
 		
 		if(RawTupUtils3F.isZeroEM4(v0, v1, v2)) return 0.0f;
 		
@@ -10107,9 +10107,9 @@ public final class VecUtils3F
 	
 	public static float lenSqToEM4(ITupRF t1, float[] t2)
 	{
-		float v0 = t2[0] - t1.getAt(0);
-		float v1 = t2[1] - t1.getAt(1);
-		float v2 = t2[2] - t1.getAt(2);
+		float v0 = t2[0] - t1.at(0);
+		float v1 = t2[1] - t1.at(1);
+		float v2 = t2[2] - t1.at(2);
 		
 		if(RawTupUtils3F.isZeroEM4(v0, v1, v2)) return 0.0f;
 		
@@ -10118,9 +10118,9 @@ public final class VecUtils3F
 
 	public static float lenSqToEM4(ITupRF t1, float t2v0, float t2v1, float t2v2)
 	{
-		float v0 = t2v0 - t1.getAt(0);
-		float v1 = t2v1 - t1.getAt(1);
-		float v2 = t2v2 - t1.getAt(2);
+		float v0 = t2v0 - t1.at(0);
+		float v1 = t2v1 - t1.at(1);
+		float v2 = t2v2 - t1.at(2);
 		
 		if(RawTupUtils3F.isZeroEM4(v0, v1, v2)) return 0.0f;
 		
@@ -10140,9 +10140,9 @@ public final class VecUtils3F
 
 	public static float lenSqToEM4(float[] t1, ITupRF t2)
 	{
-		float v0 = t2.getAt(0) - t1[0];
-		float v1 = t2.getAt(1) - t1[1];
-		float v2 = t2.getAt(2) - t1[2];
+		float v0 = t2.at(0) - t1[0];
+		float v1 = t2.at(1) - t1[1];
+		float v2 = t2.at(2) - t1[2];
 		
 		if(RawTupUtils3F.isZeroEM4(v0, v1, v2)) return 0.0f;
 		
@@ -10162,9 +10162,9 @@ public final class VecUtils3F
 
 	public static float lenSqToEM4(float t1v0, float t1v1, float t1v2, ITupRF t2)
 	{
-		float v0 = t2.getAt(0) - t1v0;
-		float v1 = t2.getAt(1) - t1v1;
-		float v2 = t2.getAt(2) - t1v2;
+		float v0 = t2.at(0) - t1v0;
+		float v1 = t2.at(1) - t1v1;
+		float v2 = t2.at(2) - t1v2;
 		
 		if(RawTupUtils3F.isZeroEM4(v0, v1, v2)) return 0.0f;
 		
@@ -10184,9 +10184,9 @@ public final class VecUtils3F
 
 	public static float lenSqToEM6(ITup3RF t1, ITupRF t2)
 	{
-		float v0 = t2.getAt(0) - t1.v0();
-		float v1 = t2.getAt(1) - t1.v1();
-		float v2 = t2.getAt(2) - t1.v2();
+		float v0 = t2.at(0) - t1.v0();
+		float v1 = t2.at(1) - t1.v1();
+		float v2 = t2.at(2) - t1.v2();
 		
 		if(RawTupUtils3F.isZeroEM6(v0, v1, v2)) return 0.0f;
 		
@@ -10217,9 +10217,9 @@ public final class VecUtils3F
 
 	public static float lenSqToEM6(ITupRF t1, ITup3RF t2)
 	{
-		float v0 = t2.v0() - t1.getAt(0);
-		float v1 = t2.v1() - t1.getAt(1);
-		float v2 = t2.v2() - t1.getAt(2);
+		float v0 = t2.v0() - t1.at(0);
+		float v1 = t2.v1() - t1.at(1);
+		float v2 = t2.v2() - t1.at(2);
 		
 		if(RawTupUtils3F.isZeroEM6(v0, v1, v2)) return 0.0f;
 		
@@ -10228,9 +10228,9 @@ public final class VecUtils3F
 
 	public static float lenSqToEM6(ITupRF t1, ITupRF t2)
 	{
-		float v0 = t2.getAt(0) - t1.getAt(0);
-		float v1 = t2.getAt(1) - t1.getAt(1);
-		float v2 = t2.getAt(2) - t1.getAt(2);
+		float v0 = t2.at(0) - t1.at(0);
+		float v1 = t2.at(1) - t1.at(1);
+		float v2 = t2.at(2) - t1.at(2);
 		
 		if(RawTupUtils3F.isZeroEM6(v0, v1, v2)) return 0.0f;
 		
@@ -10239,9 +10239,9 @@ public final class VecUtils3F
 	
 	public static float lenSqToEM6(ITupRF t1, float[] t2)
 	{
-		float v0 = t2[0] - t1.getAt(0);
-		float v1 = t2[1] - t1.getAt(1);
-		float v2 = t2[2] - t1.getAt(2);
+		float v0 = t2[0] - t1.at(0);
+		float v1 = t2[1] - t1.at(1);
+		float v2 = t2[2] - t1.at(2);
 		
 		if(RawTupUtils3F.isZeroEM6(v0, v1, v2)) return 0.0f;
 		
@@ -10250,9 +10250,9 @@ public final class VecUtils3F
 
 	public static float lenSqToEM6(ITupRF t1, float t2v0, float t2v1, float t2v2)
 	{
-		float v0 = t2v0 - t1.getAt(0);
-		float v1 = t2v1 - t1.getAt(1);
-		float v2 = t2v2 - t1.getAt(2);
+		float v0 = t2v0 - t1.at(0);
+		float v1 = t2v1 - t1.at(1);
+		float v2 = t2v2 - t1.at(2);
 		
 		if(RawTupUtils3F.isZeroEM6(v0, v1, v2)) return 0.0f;
 		
@@ -10272,9 +10272,9 @@ public final class VecUtils3F
 
 	public static float lenSqToEM6(float[] t1, ITupRF t2)
 	{
-		float v0 = t2.getAt(0) - t1[0];
-		float v1 = t2.getAt(1) - t1[1];
-		float v2 = t2.getAt(2) - t1[2];
+		float v0 = t2.at(0) - t1[0];
+		float v1 = t2.at(1) - t1[1];
+		float v2 = t2.at(2) - t1[2];
 		
 		if(RawTupUtils3F.isZeroEM6(v0, v1, v2)) return 0.0f;
 		
@@ -10294,9 +10294,9 @@ public final class VecUtils3F
 
 	public static float lenSqToEM6(float t1v0, float t1v1, float t1v2, ITupRF t2)
 	{
-		float v0 = t2.getAt(0) - t1v0;
-		float v1 = t2.getAt(1) - t1v1;
-		float v2 = t2.getAt(2) - t1v2;
+		float v0 = t2.at(0) - t1v0;
+		float v1 = t2.at(1) - t1v1;
+		float v2 = t2.at(2) - t1v2;
 		
 		if(RawTupUtils3F.isZeroEM6(v0, v1, v2)) return 0.0f;
 		
@@ -10316,9 +10316,9 @@ public final class VecUtils3F
 
 	public static float lenSqToEM8(ITup3RF t1, ITupRF t2)
 	{
-		float v0 = t2.getAt(0) - t1.v0();
-		float v1 = t2.getAt(1) - t1.v1();
-		float v2 = t2.getAt(2) - t1.v2();
+		float v0 = t2.at(0) - t1.v0();
+		float v1 = t2.at(1) - t1.v1();
+		float v2 = t2.at(2) - t1.v2();
 		
 		if(RawTupUtils3F.isZeroEM8(v0, v1, v2)) return 0.0f;
 		
@@ -10349,9 +10349,9 @@ public final class VecUtils3F
 
 	public static float lenSqToEM8(ITupRF t1, ITup3RF t2)
 	{
-		float v0 = t2.v0() - t1.getAt(0);
-		float v1 = t2.v1() - t1.getAt(1);
-		float v2 = t2.v2() - t1.getAt(2);
+		float v0 = t2.v0() - t1.at(0);
+		float v1 = t2.v1() - t1.at(1);
+		float v2 = t2.v2() - t1.at(2);
 		
 		if(RawTupUtils3F.isZeroEM8(v0, v1, v2)) return 0.0f;
 		
@@ -10360,9 +10360,9 @@ public final class VecUtils3F
 
 	public static float lenSqToEM8(ITupRF t1, ITupRF t2)
 	{
-		float v0 = t2.getAt(0) - t1.getAt(0);
-		float v1 = t2.getAt(1) - t1.getAt(1);
-		float v2 = t2.getAt(2) - t1.getAt(2);
+		float v0 = t2.at(0) - t1.at(0);
+		float v1 = t2.at(1) - t1.at(1);
+		float v2 = t2.at(2) - t1.at(2);
 		
 		if(RawTupUtils3F.isZeroEM8(v0, v1, v2)) return 0.0f;
 		
@@ -10371,9 +10371,9 @@ public final class VecUtils3F
 	
 	public static float lenSqToEM8(ITupRF t1, float[] t2)
 	{
-		float v0 = t2[0] - t1.getAt(0);
-		float v1 = t2[1] - t1.getAt(1);
-		float v2 = t2[2] - t1.getAt(2);
+		float v0 = t2[0] - t1.at(0);
+		float v1 = t2[1] - t1.at(1);
+		float v2 = t2[2] - t1.at(2);
 		
 		if(RawTupUtils3F.isZeroEM8(v0, v1, v2)) return 0.0f;
 		
@@ -10382,9 +10382,9 @@ public final class VecUtils3F
 
 	public static float lenSqToEM8(ITupRF t1, float t2v0, float t2v1, float t2v2)
 	{
-		float v0 = t2v0 - t1.getAt(0);
-		float v1 = t2v1 - t1.getAt(1);
-		float v2 = t2v2 - t1.getAt(2);
+		float v0 = t2v0 - t1.at(0);
+		float v1 = t2v1 - t1.at(1);
+		float v2 = t2v2 - t1.at(2);
 		
 		if(RawTupUtils3F.isZeroEM8(v0, v1, v2)) return 0.0f;
 		
@@ -10404,9 +10404,9 @@ public final class VecUtils3F
 
 	public static float lenSqToEM8(float[] t1, ITupRF t2)
 	{
-		float v0 = t2.getAt(0) - t1[0];
-		float v1 = t2.getAt(1) - t1[1];
-		float v2 = t2.getAt(2) - t1[2];
+		float v0 = t2.at(0) - t1[0];
+		float v1 = t2.at(1) - t1[1];
+		float v2 = t2.at(2) - t1[2];
 		
 		if(RawTupUtils3F.isZeroEM8(v0, v1, v2)) return 0.0f;
 		
@@ -10426,9 +10426,9 @@ public final class VecUtils3F
 
 	public static float lenSqToEM8(float t1v0, float t1v1, float t1v2, ITupRF t2)
 	{
-		float v0 = t2.getAt(0) - t1v0;
-		float v1 = t2.getAt(1) - t1v1;
-		float v2 = t2.getAt(2) - t1v2;
+		float v0 = t2.at(0) - t1v0;
+		float v1 = t2.at(1) - t1v1;
+		float v2 = t2.at(2) - t1v2;
 		
 		if(RawTupUtils3F.isZeroEM8(v0, v1, v2)) return 0.0f;
 		
@@ -10446,9 +10446,9 @@ public final class VecUtils3F
 
 	public static float lenRcTo(ITup3RF t1, ITupRF t2)
 	{
-		float v0 = t2.getAt(0) - t1.v0();
-		float v1 = t2.getAt(1) - t1.v1();
-		float v2 = t2.getAt(2) - t1.v2();
+		float v0 = t2.at(0) - t1.v0();
+		float v1 = t2.at(1) - t1.v1();
+		float v2 = t2.at(2) - t1.v2();
 		
 		return MathUtils.invSqrt(v0 * v0 + v1 * v1 + v2 * v2);
 	}
@@ -10473,36 +10473,36 @@ public final class VecUtils3F
 	
 	public static float lenRcTo(ITupRF t1, ITup3RF t2)
 	{
-		float v0 = t2.v0() - t1.getAt(0);
-		float v1 = t2.v1() - t1.getAt(1);
-		float v2 = t2.v2() - t1.getAt(2);
+		float v0 = t2.v0() - t1.at(0);
+		float v1 = t2.v1() - t1.at(1);
+		float v2 = t2.v2() - t1.at(2);
 		
 		return MathUtils.invSqrt(v0 * v0 + v1 * v1 + v2 * v2);
 	}
 
 	public static float lenRcTo(ITupRF t1, ITupRF t2)
 	{
-		float v0 = t2.getAt(0) - t1.getAt(0);
-		float v1 = t2.getAt(1) - t1.getAt(1);
-		float v2 = t2.getAt(2) - t1.getAt(2);
+		float v0 = t2.at(0) - t1.at(0);
+		float v1 = t2.at(1) - t1.at(1);
+		float v2 = t2.at(2) - t1.at(2);
 		
 		return MathUtils.invSqrt(v0 * v0 + v1 * v1 + v2 * v2);
 	}
 	
 	public static float lenRcTo(ITupRF t1, float[] t2)
 	{
-		float v0 = t2[0] - t1.getAt(0);
-		float v1 = t2[1] - t1.getAt(1);
-		float v2 = t2[2] - t1.getAt(2);
+		float v0 = t2[0] - t1.at(0);
+		float v1 = t2[1] - t1.at(1);
+		float v2 = t2[2] - t1.at(2);
 		
 		return MathUtils.invSqrt(v0 * v0 + v1 * v1 + v2 * v2);
 	}
 
 	public static float lenRcTo(ITupRF t1, float t2v0, float t2v1, float t2v2)
 	{
-		float v0 = t2v0 - t1.getAt(0);
-		float v1 = t2v1 - t1.getAt(1);
-		float v2 = t2v2 - t1.getAt(2);
+		float v0 = t2v0 - t1.at(0);
+		float v1 = t2v1 - t1.at(1);
+		float v2 = t2v2 - t1.at(2);
 		
 		return MathUtils.invSqrt(v0 * v0 + v1 * v1 + v2 * v2);
 	}
@@ -10518,9 +10518,9 @@ public final class VecUtils3F
 
 	public static float lenRcTo(float[] t1, ITupRF t2)
 	{
-		float v0 = t2.getAt(0) - t1[0];
-		float v1 = t2.getAt(1) - t1[1];
-		float v2 = t2.getAt(2) - t1[2];
+		float v0 = t2.at(0) - t1[0];
+		float v1 = t2.at(1) - t1[1];
+		float v2 = t2.at(2) - t1[2];
 		
 		return MathUtils.invSqrt(v0 * v0 + v1 * v1 + v2 * v2);
 	}
@@ -10536,9 +10536,9 @@ public final class VecUtils3F
 
 	public static float lenRcTo(float t1v0, float t1v1, float t1v2, ITupRF t2)
 	{
-		float v0 = t2.getAt(0) - t1v0;
-		float v1 = t2.getAt(1) - t1v1;
-		float v2 = t2.getAt(2) - t1v2;
+		float v0 = t2.at(0) - t1v0;
+		float v1 = t2.at(1) - t1v1;
+		float v2 = t2.at(2) - t1v2;
 		
 		return MathUtils.invSqrt(v0 * v0 + v1 * v1 + v2 * v2);
 	}
@@ -10566,9 +10566,9 @@ public final class VecUtils3F
 		float t1v1 = t1.v1();
 		float t1v2 = t1.v2();
 		
-		float t2v0 = t2.getAt(0);
-		float t2v1 = t2.getAt(1);
-		float t2v2 = t2.getAt(2);
+		float t2v0 = t2.at(0);
+		float t2v1 = t2.at(1);
+		float t2v2 = t2.at(2);
 
 		res[0] = t1v1 * t2v2 - t1v2 * t2v1;
 		res[1] = t1v2 * t2v0 - t1v0 * t2v2;
@@ -10609,9 +10609,9 @@ public final class VecUtils3F
 	
 	public static float[] cross(ITupRF t1, ITup3RF t2, @ExtractionParam float[] res)
 	{
-		float t1v0 = t1.getAt(0);
-		float t1v1 = t1.getAt(1);
-		float t1v2 = t1.getAt(2);
+		float t1v0 = t1.at(0);
+		float t1v1 = t1.at(1);
+		float t1v2 = t1.at(2);
 		
 		float t2v0 = t2.v0();
 		float t2v1 = t2.v1();
@@ -10626,13 +10626,13 @@ public final class VecUtils3F
 	
 	public static float[] cross(ITupRF t1, ITupRF t2, @ExtractionParam float[] res)
 	{
-		float t1v0 = t1.getAt(0);
-		float t1v1 = t1.getAt(1);
-		float t1v2 = t1.getAt(2);
+		float t1v0 = t1.at(0);
+		float t1v1 = t1.at(1);
+		float t1v2 = t1.at(2);
 		
-		float t2v0 = t2.getAt(0);
-		float t2v1 = t2.getAt(1);
-		float t2v2 = t2.getAt(2);
+		float t2v0 = t2.at(0);
+		float t2v1 = t2.at(1);
+		float t2v2 = t2.at(2);
 
 		res[0] = t1v1 * t2v2 - t1v2 * t2v1;
 		res[1] = t1v2 * t2v0 - t1v0 * t2v2;
@@ -10643,9 +10643,9 @@ public final class VecUtils3F
 	
 	public static float[] cross(ITupRF t1, float[] t2, @ExtractionParam float[] res)
 	{
-		float t1v0 = t1.getAt(0);
-		float t1v1 = t1.getAt(1);
-		float t1v2 = t1.getAt(2);
+		float t1v0 = t1.at(0);
+		float t1v1 = t1.at(1);
+		float t1v2 = t1.at(2);
 		
 		float r0 = t1v1 * t2[2] - t1v2 * t2[1];
 		float r1 = t1v2 * t2[0] - t1v0 * t2[2];
@@ -10660,9 +10660,9 @@ public final class VecUtils3F
 	
 	public static float[] cross(ITupRF t1, float t2v0, float t2v1, float t2v2, @ExtractionParam float[] res)
 	{
-		float t1v0 = t1.getAt(0);
-		float t1v1 = t1.getAt(1);
-		float t1v2 = t1.getAt(2);
+		float t1v0 = t1.at(0);
+		float t1v1 = t1.at(1);
+		float t1v2 = t1.at(2);
 		
 		res[0] = t1v1 * t2v2 - t1v2 * t2v1;
 		res[1] = t1v2 * t2v0 - t1v0 * t2v2;
@@ -10690,9 +10690,9 @@ public final class VecUtils3F
 	
 	public static float[] cross(float[] t1, ITupRF t2, @ExtractionParam float[] res)
 	{
-		float t2v0 = t2.getAt(0);
-		float t2v1 = t2.getAt(1);
-		float t2v2 = t2.getAt(2);
+		float t2v0 = t2.at(0);
+		float t2v1 = t2.at(1);
+		float t2v2 = t2.at(2);
 
 		float r0 = t1[1] * t2v2 - t1[2] * t2v1;
 		float r1 = t1[2] * t2v0 - t1[0] * t2v2;
@@ -10720,9 +10720,9 @@ public final class VecUtils3F
 	
 	public static float[] cross(float t1v0, float t1v1, float t1v2, ITupRF t2, @ExtractionParam float[] res)
 	{
-		float t2v0 = t2.getAt(0);
-		float t2v1 = t2.getAt(1);
-		float t2v2 = t2.getAt(2);
+		float t2v0 = t2.at(0);
+		float t2v1 = t2.at(1);
+		float t2v2 = t2.at(2);
 
 		res[0] = t1v1 * t2v2 - t1v2 * t2v1;
 		res[1] = t1v2 * t2v0 - t1v0 * t2v2;
@@ -10752,9 +10752,9 @@ public final class VecUtils3F
 		float t1v1 = t1.v1();
 		float t1v2 = t1.v2();
 		
-		float t2v0 = t2.getAt(0);
-		float t2v1 = t2.getAt(1);
-		float t2v2 = t2.getAt(2);
+		float t2v0 = t2.at(0);
+		float t2v1 = t2.at(1);
+		float t2v2 = t2.at(2);
 
 		res.set(t1v1 * t2v2 - t1v2 * t2v1, t1v2 * t2v0 - t1v0 * t2v2, t1v0 * t2v1 - t1v1 * t2v0);
 		
@@ -10785,9 +10785,9 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3WF> T cross(ITupRF t1, ITup3RF t2, @ExtractionParam T res)
 	{
-		float t1v0 = t1.getAt(0);
-		float t1v1 = t1.getAt(1);
-		float t1v2 = t1.getAt(2);
+		float t1v0 = t1.at(0);
+		float t1v1 = t1.at(1);
+		float t1v2 = t1.at(2);
 		
 		float t2v0 = t2.v0();
 		float t2v1 = t2.v1();
@@ -10800,13 +10800,13 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3WF> T cross(ITupRF t1, ITupRF t2, @ExtractionParam T res)
 	{
-		float t1v0 = t1.getAt(0);
-		float t1v1 = t1.getAt(1);
-		float t1v2 = t1.getAt(2);
+		float t1v0 = t1.at(0);
+		float t1v1 = t1.at(1);
+		float t1v2 = t1.at(2);
 		
-		float t2v0 = t2.getAt(0);
-		float t2v1 = t2.getAt(1);
-		float t2v2 = t2.getAt(2);
+		float t2v0 = t2.at(0);
+		float t2v1 = t2.at(1);
+		float t2v2 = t2.at(2);
 
 		res.set(t1v1 * t2v2 - t1v2 * t2v1, t1v2 * t2v0 - t1v0 * t2v2, t1v0 * t2v1 - t1v1 * t2v0);
 		
@@ -10815,9 +10815,9 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3WF> T cross(ITupRF t1, float[] t2, @ExtractionParam T res)
 	{
-		float t1v0 = t1.getAt(0);
-		float t1v1 = t1.getAt(1);
-		float t1v2 = t1.getAt(2);
+		float t1v0 = t1.at(0);
+		float t1v1 = t1.at(1);
+		float t1v2 = t1.at(2);
 		
 		res.set(t1v1 * t2[2] - t1v2 * t2[1], t1v2 * t2[0] - t1v0 * t2[2], t1v0 * t2[1] - t1v1 * t2[0]);
 		
@@ -10826,9 +10826,9 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3WF> T cross(ITupRF t1, float t2v0, float t2v1, float t2v2, @ExtractionParam T res)
 	{
-		float t1v0 = t1.getAt(0);
-		float t1v1 = t1.getAt(1);
-		float t1v2 = t1.getAt(2);
+		float t1v0 = t1.at(0);
+		float t1v1 = t1.at(1);
+		float t1v2 = t1.at(2);
 		
 		res.set(t1v1 * t2v2 - t1v2 * t2v1, t1v2 * t2v0 - t1v0 * t2v2, t1v0 * t2v1 - t1v1 * t2v0);
 		
@@ -10848,9 +10848,9 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3WF> T cross(float[] t1, ITupRF t2, @ExtractionParam T res)
 	{
-		float t2v0 = t2.getAt(0);
-		float t2v1 = t2.getAt(1);
-		float t2v2 = t2.getAt(2);
+		float t2v0 = t2.at(0);
+		float t2v1 = t2.at(1);
+		float t2v2 = t2.at(2);
 
 		res.set(t1[1] * t2v2 - t1[2] * t2v1, t1[2] * t2v0 - t1[0] * t2v2, t1[0] * t2v1 - t1[1] * t2v0);
 		
@@ -10884,9 +10884,9 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3WF> T cross(float t1v0, float t1v1, float t1v2, ITupRF t2, @ExtractionParam T res)
 	{
-		float t2v0 = t2.getAt(0);
-		float t2v1 = t2.getAt(1);
-		float t2v2 = t2.getAt(2);
+		float t2v0 = t2.at(0);
+		float t2v1 = t2.at(1);
+		float t2v2 = t2.at(2);
 
 		res.set(t1v1 * t2v2 - t1v2 * t2v1, t1v2 * t2v0 - t1v0 * t2v2, t1v0 * t2v1 - t1v1 * t2v0);
 		
@@ -10926,9 +10926,9 @@ public final class VecUtils3F
 		float t1v1 = t1.v1();
 		float t1v2 = t1.v2();
 		
-		float t2v0 = t2.getAt(0);
-		float t2v1 = t2.getAt(1);
-		float t2v2 = t2.getAt(2);
+		float t2v0 = t2.at(0);
+		float t2v1 = t2.at(1);
+		float t2v2 = t2.at(2);
 
 		return func.apply(t1v1 * t2v2 - t1v2 * t2v1, t1v2 * t2v0 - t1v0 * t2v2, t1v0 * t2v1 - t1v1 * t2v0);
 	}
@@ -10953,9 +10953,9 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T crossFunc(ITupRF t1, ITup3RF t2, IFunc3F<T> func)
 	{
-		float t1v0 = t1.getAt(0);
-		float t1v1 = t1.getAt(1);
-		float t1v2 = t1.getAt(2);
+		float t1v0 = t1.at(0);
+		float t1v1 = t1.at(1);
+		float t1v2 = t1.at(2);
 		
 		float t2v0 = t2.v0();
 		float t2v1 = t2.v1();
@@ -10966,31 +10966,31 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T crossFunc(ITupRF t1, ITupRF t2, IFunc3F<T> func)
 	{
-		float t1v0 = t1.getAt(0);
-		float t1v1 = t1.getAt(1);
-		float t1v2 = t1.getAt(2);
+		float t1v0 = t1.at(0);
+		float t1v1 = t1.at(1);
+		float t1v2 = t1.at(2);
 		
-		float t2v0 = t2.getAt(0);
-		float t2v1 = t2.getAt(1);
-		float t2v2 = t2.getAt(2);
+		float t2v0 = t2.at(0);
+		float t2v1 = t2.at(1);
+		float t2v2 = t2.at(2);
 
 		return func.apply(t1v1 * t2v2 - t1v2 * t2v1, t1v2 * t2v0 - t1v0 * t2v2, t1v0 * t2v1 - t1v1 * t2v0);
 	}
 	
 	public static <T extends ITup3RF> T crossFunc(ITupRF t1, float[] t2, IFunc3F<T> func)
 	{
-		float t1v0 = t1.getAt(0);
-		float t1v1 = t1.getAt(1);
-		float t1v2 = t1.getAt(2);
+		float t1v0 = t1.at(0);
+		float t1v1 = t1.at(1);
+		float t1v2 = t1.at(2);
 
 		return func.apply(t1v1 * t2[2] - t1v2 * t2[1], t1v2 * t2[0] - t1v0 * t2[2], t1v0 * t2[1] - t1v1 * t2[0]);
 	}
 	
 	public static <T extends ITup3RF> T crossFunc(ITupRF t1, float t2v0, float t2v1, float t2v2, IFunc3F<T> func)
 	{
-		float t1v0 = t1.getAt(0);
-		float t1v1 = t1.getAt(1);
-		float t1v2 = t1.getAt(2);
+		float t1v0 = t1.at(0);
+		float t1v1 = t1.at(1);
+		float t1v2 = t1.at(2);
 
 		return func.apply(t1v1 * t2v2 - t1v2 * t2v1, t1v2 * t2v0 - t1v0 * t2v2, t1v0 * t2v1 - t1v1 * t2v0);
 	}
@@ -11006,9 +11006,9 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T crossFunc(float[] t1, ITupRF t2, IFunc3F<T> func)
 	{
-		float t2v0 = t2.getAt(0);
-		float t2v1 = t2.getAt(1);
-		float t2v2 = t2.getAt(2);
+		float t2v0 = t2.at(0);
+		float t2v1 = t2.at(1);
+		float t2v2 = t2.at(2);
 
 		return func.apply(t1[1] * t2v2 - t1[2] * t2v1, t1[2] * t2v0 - t1[0] * t2v2, t1[0] * t2v1 - t1[1] * t2v0);
 	}
@@ -11034,9 +11034,9 @@ public final class VecUtils3F
 	
 	public static <T extends ITup3RF> T crossFunc(float t1v0, float t1v1, float t1v2, ITupRF t2, IFunc3F<T> func)
 	{
-		float t2v0 = t2.getAt(0);
-		float t2v1 = t2.getAt(1);
-		float t2v2 = t2.getAt(2);
+		float t2v0 = t2.at(0);
+		float t2v1 = t2.at(1);
+		float t2v2 = t2.at(2);
 
 		return func.apply(t1v1 * t2v2 - t1v2 * t2v1, t1v2 * t2v0 - t1v0 * t2v2, t1v0 * t2v1 - t1v1 * t2v0);
 	}

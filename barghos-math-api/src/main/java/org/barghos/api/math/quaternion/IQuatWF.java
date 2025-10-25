@@ -45,7 +45,7 @@ public interface IQuatWF extends IQuatRF, ITup4WF
 
 	/** {@inheritDoc} */
 	@Override
-	IQuatWF setAt(int index, float value);
+	IQuatWF at(int index, float value);
 	
 	IQuatWF setFromAxisAngle(float ax, float ay, float az, float angle);
 	
