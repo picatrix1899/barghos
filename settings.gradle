@@ -4,9 +4,15 @@ include('barghos-annotation')
 include('barghos-validation')
 include('barghos-pool')
 
+include('barghos-audio')
+include('barghos-audio-api')
+include('barghos-audio-impl')
+
+include('barghos-math')
 include('barghos-math-api')
 include('barghos-math-impl')
 
+include('barghos-core')
 include('barghos-core-api')
 include('barghos-core-impl')
 

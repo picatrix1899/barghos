@@ -1,6 +1,6 @@
 package org.barghos.api.math.line;
 
-import org.barghos.api.core.tuple.floats.ITup3RF;
+import org.barghos.api.math.vector.floats.IVec3RF;
 
 public interface IRay3WF extends IRay3RF
 {
@@ -8,25 +8,25 @@ public interface IRay3WF extends IRay3RF
 	
 	IRay3WF set(float[] ray);
 	
-	IRay3WF set(ITup3RF o, ITup3RF d);
+	IRay3WF set(IVec3RF o, IVec3RF d);
 	
-	IRay3WF set(ITup3RF o, float[] d);
+	IRay3WF set(IVec3RF o, float[] d);
 	
-	IRay3WF set(ITup3RF o, float dX, float dY, float dZ);
+	IRay3WF set(IVec3RF o, float dX, float dY, float dZ);
 	
-	IRay3WF set(float[] o, ITup3RF d);
+	IRay3WF set(float[] o, IVec3RF d);
 	
 	IRay3WF set(float[] o, float[] d);
 	
 	IRay3WF set(float[] o, float dX, float dY, float dZ);
 	
-	IRay3WF set(float oX, float oY, float oZ, ITup3RF d);
+	IRay3WF set(float oX, float oY, float oZ, IVec3RF d);
 	
 	IRay3WF set(float oX, float oY, float oZ, float[] d);
 	
 	IRay3WF set(float oX, float oY, float oZ, float dX, float dY, float dZ);
 	
-	IRay3WF setOrigin(ITup3RF o);
+	IRay3WF setOrigin(IVec3RF o);
 	
 	IRay3WF setOrigin(float[] o);
 	
@@ -38,7 +38,7 @@ public interface IRay3WF extends IRay3RF
 	
 	IRay3WF originZ(float z);
 	
-	IRay3WF setDirection(ITup3RF o);
+	IRay3WF setDirection(IVec3RF o);
 	
 	IRay3WF setDirection(float[] d);
 	

@@ -17,6 +17,7 @@ configurations {
 dependencies {
 	api project(':barghos-annotation')
 	api project(':barghos-validation')
+	api project(':barghos-core')
 	//compileOnlyResolvable project(':barghos-util-gen')
 }
 

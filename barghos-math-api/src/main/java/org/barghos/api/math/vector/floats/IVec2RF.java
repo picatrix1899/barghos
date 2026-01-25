@@ -1,0 +1,32 @@
+package org.barghos.api.math.vector.floats;
+
+import org.barghos.annotation.ExtractionParam;
+
+/**
+ * This interface provides non-invasive (read only) functions and methods for float vectors with two
+ * dimensions.
+ */
+public interface IVec2RF
+{
+	
+	/**
+	 * Returns the x component of the vector.
+	 * 
+	 * @return The x component.
+	 */
+	float x();
+	
+	/**
+	 * Returns the y component of the vector.
+	 * 
+	 * @return The y component.
+	 */
+	float y();
+	
+	float at(int index);
+	
+	float[] toArray();
+
+	float[] toArray(@ExtractionParam float[] res);
+	
+}

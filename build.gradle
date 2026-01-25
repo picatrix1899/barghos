@@ -18,8 +18,8 @@ subprojects {
     //withJavadocJar()
     withSourcesJar()
 	
-	sourceCompatibility = '23'
-    targetCompatibility = '23'
+	sourceCompatibility = '24'
+    targetCompatibility = '24'
   }
   
   testing {
@@ -38,15 +38,15 @@ subprojects {
   compileJava {
 	options.encoding = "UTF-8"
 	
-	sourceCompatibility = '23'
-    targetCompatibility = '23'
+	sourceCompatibility = '24'
+    targetCompatibility = '24'
   }
   
   compileTestJava {
 	options.encoding = "UTF-8"
 	
-	sourceCompatibility = '23'
-    targetCompatibility = '23'
+	sourceCompatibility = '24'
+    targetCompatibility = '24'
   }
   
   tasks.withType(JavaCompile).configureEach {
@@ -81,9 +81,9 @@ subprojects {
     }
   
     jdt {
-      sourceCompatibility = '23'
-      targetCompatibility = '23'
-      javaRuntimeName = 'JavaSE-23'
+      sourceCompatibility = '24'
+      targetCompatibility = '24'
+      javaRuntimeName = 'JavaSE-24'
 	  
 	  file {
             // setzt das Standard-Encoding in Eclipse

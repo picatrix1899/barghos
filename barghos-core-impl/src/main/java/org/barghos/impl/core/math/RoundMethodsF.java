@@ -1,6 +1,6 @@
 package org.barghos.impl.core.math;
 
-import org.barghos.api.core.math.IRoundMethodF;
+import org.barghos.core.math.IRoundMethodF;
 
 public class RoundMethodsF
 {

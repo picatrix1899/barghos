@@ -1,30 +1,31 @@
 package org.barghos.impl.math.matrix;
 
-import org.barghos.annotation.ExtractionParam;
-import org.barghos.api.core.function.floats.IFunc16F;
-import org.barghos.api.core.function.floats.IFunc2F;
-import org.barghos.api.core.function.floats.IFunc3F;
-import org.barghos.api.core.function.floats.IFunc4F;
-import org.barghos.api.core.tuple.floats.ITup2RF;
-import org.barghos.api.core.tuple.floats.ITup2WF;
-import org.barghos.api.core.tuple.floats.ITup3RF;
-import org.barghos.api.core.tuple.floats.ITup3WF;
-import org.barghos.api.core.tuple.floats.ITup4RF;
-import org.barghos.api.core.tuple.floats.ITup4WF;
 import org.barghos.api.math.matrix.IMat4RF;
 import org.barghos.api.math.matrix.IMat4WF;
-import org.barghos.api.math.matrix.MatUtils4F;
 
 public class Mat4F implements IMat4WF
 {
-	public static final IFunc16F<Mat4F> CTOR = Mat4F::new;
+	public float m00;
+	public float m01;
+	public float m02;
+	public float m03;
 	
-	private final float[] m = new float[SIZE];
+	public float m10;
+	public float m11;
+	public float m12;
+	public float m13;
 	
-	public Mat4F()
-	{
-		setIdentity();
-	}
+	public float m20;
+	public float m21;
+	public float m22;
+	public float m23;
+	
+	public float m30;
+	public float m31;
+	public float m32;
+	public float m33;
+	
+	public Mat4F() { }
 	
 	public Mat4F(IMat4RF m)
 	{
@@ -44,271 +45,136 @@ public class Mat4F implements IMat4WF
 	@Override
 	public float m00()
 	{
-		return this.m[0];
+		return this.m00;
 	}
 
 	@Override
 	public float m01()
 	{
-		return this.m[1];
+		return this.m01;
 	}
 
 	@Override
 	public float m02()
 	{
-		return this.m[2];
+		return this.m02;
 	}
 
 	@Override
 	public float m03()
 	{
-		return this.m[3];
+		return this.m03;
 	}
 
 	@Override
 	public float m10()
 	{
-		return this.m[4];
+		return this.m10;
 	}
 
 	@Override
 	public float m11()
 	{
-		return this.m[5];
+		return this.m11;
 	}
 
 	@Override
 	public float m12()
 	{
-		return this.m[6];
+		return this.m12;
 	}
 
 	@Override
 	public float m13()
 	{
-		return this.m[7];
+		return this.m13;
 	}
 
 	@Override
 	public float m20()
 	{
-		return this.m[8];
+		return this.m20;
 	}
 
 	@Override
 	public float m21()
 	{
-		return this.m[9];
+		return this.m21;
 	}
 
 	@Override
 	public float m22()
 	{
-		return this.m[10];
+		return this.m22;
 	}
 
 	@Override
 	public float m23()
 	{
-		return this.m[11];
+		return this.m23;
 	}
 
 	@Override
 	public float m30()
 	{
-		return this.m[12];
+		return this.m30;
 	}
 
 	@Override
 	public float m31()
 	{
-		return this.m[13];
+		return this.m31;
 	}
 
 	@Override
 	public float m32()
 	{
-		return this.m[14];
+		return this.m32;
 	}
 
 	@Override
 	public float m33()
 	{
-		return this.m[15];
-	}
-
-	@Override
-	public float[] getRow0()
-	{
-		return new float[] {this.m[0], this.m[4], this.m[8], this.m[12]};
-	}
-
-	@Override
-	public float[] getRow0(float[] res)
-	{
-		res[0] = this.m[0];
-		res[1] = this.m[4];
-		res[2] = this.m[8];
-		res[3] = this.m[12];
-		
-		return res;
-	}
-
-	@Override
-	public float[] getRow1()
-	{
-		return new float[] {this.m[1], this.m[5], this.m[9], this.m[13]};
-	}
-
-	@Override
-	public float[] getRow1(float[] res)
-	{
-		res[0] = this.m[1];
-		res[1] = this.m[5];
-		res[2] = this.m[9];
-		res[3] = this.m[13];
-		
-		return res;
-	}
-
-	@Override
-	public float[] getRow2()
-	{
-		return new float[] {this.m[2], this.m[6], this.m[10], this.m[14]};
-	}
-
-	@Override
-	public float[] getRow2(float[] res)
-	{
-		res[0] = this.m[2];
-		res[1] = this.m[6];
-		res[2] = this.m[10];
-		res[3] = this.m[14];
-		
-		return res;
-	}
-
-	@Override
-	public float[] getRow3()
-	{
-		return new float[] {this.m[3], this.m[7], this.m[11], this.m[15]};
-	}
-
-	@Override
-	public float[] getRow3(float[] res)
-	{
-		res[0] = this.m[3];
-		res[1] = this.m[7];
-		res[2] = this.m[11];
-		res[3] = this.m[15];
-		
-		return res;
-	}
-
-	@Override
-	public float[] getCol0()
-	{
-		return new float[] {this.m[0], this.m[1], this.m[2], this.m[3]};
-	}
-
-	@Override
-	public float[] getCol0(float[] res)
-	{
-		System.arraycopy(this.m, 0, res, 0, 4);
-		
-		return res;
-	}
-
-	@Override
-	public float[] getCol1()
-	{
-		return new float[] {this.m[4], this.m[5], this.m[6], this.m[7]};
-	}
-
-	@Override
-	public float[] getCol1(float[] res)
-	{
-		System.arraycopy(this.m, 4, res, 0, 4);
-		
-		return res;
-	}
-
-	@Override
-	public float[] getCol2()
-	{
-		return new float[] {this.m[8], this.m[9], this.m[10], this.m[11]};
-	}
-
-	@Override
-	public float[] getCol2(float[] res)
-	{
-		System.arraycopy(this.m, 8, res, 0, 4);
-		
-		return res;
-	}
-
-	@Override
-	public float[] getCol3()
-	{
-		return new float[] {this.m[12], this.m[13], this.m[14], this.m[15]};
-	}
-
-	@Override
-	public float[] getCol3(float[] res)
-	{
-		System.arraycopy(this.m, 12, res, 0, 4);
-		
-		return res;
-	}
-
-	@Override
-	public float[] getRowAt(int row)
-	{
-		return new float[] {this.m[row], this.m[4 + row], this.m[8 + row], this.m[12 + row]};
-	}
-
-	@Override
-	public float[] getRowAt(int row, float[] res)
-	{
-		res[0] = this.m[row];
-		res[1] = this.m[4 + row];
-		res[2] = this.m[8 + row];
-		res[3] = this.m[12 + row];
-		
-		return res;
-	}
-
-	@Override
-	public float[] getColAt(int col)
-	{
-		int base = col * 4;
-		
-		return new float[] {this.m[base], this.m[base + 1], this.m[base + 2], this.m[base + 3]};
-	}
-
-	@Override
-	public float[] getColAt(int col, float[] res)
-	{
-		int base = col * 4;
-		
-		res[0] = this.m[base];
-		res[1] = this.m[base + 1];
-		res[2] = this.m[base + 2];
-		res[3] = this.m[base + 3];
-		
-		return res;
+		return this.m33;
 	}
 	
 	@Override
-	public float getAt(int row, int col)
+	public float at(int row, int col)
 	{
-		return this.m[col * 4 + row];
+		if(row < 0 || row > 3) throw new IndexOutOfBoundsException();
+		if(col < 0 || col > 3) throw new IndexOutOfBoundsException();
+		
+		int index = col * 4 + row;
+		
+		return switch(index) {
+			case  0 -> this.m00;
+			case  1 -> this.m01;
+			case  2 -> this.m02;
+			case  3 -> this.m03;
+			
+			case  4 -> this.m10;
+			case  5 -> this.m11;
+			case  6 -> this.m12;
+			case  7 -> this.m13;
+			
+			case  8 -> this.m20;
+			case  9 -> this.m21;
+			case 10 -> this.m22;
+			case 11 -> this.m23;
+			
+			case 12 -> this.m20;
+			case 13 -> this.m21;
+			case 14 -> this.m22;
+			case 15 -> this.m23;
+			
+			default -> throw new AssertionError();
+		};
 	}
 	
 	@Override
 	public Mat4F m00(float value)
 	{
-		this.m[0] = value;
+		this.m00 = value;
 		
 		return this;
 	}
@@ -316,7 +182,7 @@ public class Mat4F implements IMat4WF
 	@Override
 	public Mat4F m01(float value)
 	{
-		this.m[1] = value;
+		this.m01 = value;
 		
 		return this;
 	}
@@ -324,7 +190,7 @@ public class Mat4F implements IMat4WF
 	@Override
 	public Mat4F m02(float value)
 	{
-		this.m[2] = value;
+		this.m02 = value;
 		
 		return this;
 	}
@@ -332,7 +198,7 @@ public class Mat4F implements IMat4WF
 	@Override
 	public Mat4F m03(float value)
 	{
-		this.m[3] = value;
+		this.m03 = value;
 		
 		return this;
 	}
@@ -340,7 +206,7 @@ public class Mat4F implements IMat4WF
 	@Override
 	public Mat4F m10(float value)
 	{
-		this.m[4] = value;
+		this.m10 = value;
 		
 		return this;
 	}
@@ -348,7 +214,7 @@ public class Mat4F implements IMat4WF
 	@Override
 	public Mat4F m11(float value)
 	{
-		this.m[5] = value;
+		this.m11 = value;
 		
 		return this;
 	}
@@ -356,7 +222,7 @@ public class Mat4F implements IMat4WF
 	@Override
 	public Mat4F m12(float value)
 	{
-		this.m[6] = value;
+		this.m12 = value;
 		
 		return this;
 	}
@@ -364,7 +230,7 @@ public class Mat4F implements IMat4WF
 	@Override
 	public Mat4F m13(float value)
 	{
-		this.m[7] = value;
+		this.m13 = value;
 		
 		return this;
 	}
@@ -372,7 +238,7 @@ public class Mat4F implements IMat4WF
 	@Override
 	public Mat4F m20(float value)
 	{
-		this.m[8] = value;
+		this.m20 = value;
 		
 		return this;
 	}
@@ -380,7 +246,7 @@ public class Mat4F implements IMat4WF
 	@Override
 	public Mat4F m21(float value)
 	{
-		this.m[9] = value;
+		this.m21 = value;
 		
 		return this;
 	}
@@ -388,7 +254,7 @@ public class Mat4F implements IMat4WF
 	@Override
 	public Mat4F m22(float value)
 	{
-		this.m[10] = value;
+		this.m22 = value;
 		
 		return this;
 	}
@@ -396,7 +262,7 @@ public class Mat4F implements IMat4WF
 	@Override
 	public Mat4F m23(float value)
 	{
-		this.m[11] = value;
+		this.m23 = value;
 		
 		return this;
 	}
@@ -404,7 +270,7 @@ public class Mat4F implements IMat4WF
 	@Override
 	public Mat4F m30(float value)
 	{
-		this.m[12] = value;
+		this.m30 = value;
 		
 		return this;
 	}
@@ -412,7 +278,7 @@ public class Mat4F implements IMat4WF
 	@Override
 	public Mat4F m31(float value)
 	{
-		this.m[13] = value;
+		this.m31 = value;
 		
 		return this;
 	}
@@ -420,7 +286,7 @@ public class Mat4F implements IMat4WF
 	@Override
 	public Mat4F m32(float value)
 	{
-		this.m[14] = value;
+		this.m32 = value;
 		
 		return this;
 	}
@@ -428,2087 +294,42 @@ public class Mat4F implements IMat4WF
 	@Override
 	public Mat4F m33(float value)
 	{
-		this.m[14] = value;
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setRow0(ITup4RF v)
-	{
-		this.m[0] = v.v0();
-		this.m[4] = v.v1();
-		this.m[8] = v.v2();
-		this.m[12] = v.v3();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow0V1V2V3V0(ITup3RF v, float v0)
-	{
-		this.m[0] = v0;
-		this.m[4] = v.v0();
-		this.m[8] = v.v1();
-		this.m[12] = v.v2();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow0V0V2V3V1(ITup3RF v, float v1)
-	{
-		this.m[0] = v.v0();
-		this.m[4] = v1;
-		this.m[8] = v.v1();
-		this.m[12] = v.v2();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow0V0V1V3V2(ITup3RF v, float v2)
-	{
-		this.m[0] = v.v0();
-		this.m[4] = v.v1();
-		this.m[8] = v2;
-		this.m[12] = v.v2();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow0V0V1V2V3(ITup3RF v, float v3)
-	{
-		this.m[0] = v.v0();
-		this.m[4] = v.v1();
-		this.m[8] = v.v2();
-		this.m[12] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow0V2V3V0V1(ITup2RF v, float v0, float v1)
-	{
-		this.m[0] = v0;
-		this.m[4] = v1;
-		this.m[8] = v.v0();
-		this.m[12] = v.v1();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow0V1V3V0V2(ITup2RF v, float v0, float v2)
-	{
-		this.m[0] = v0;
-		this.m[4] = v.v0();
-		this.m[8] = v2;
-		this.m[12] = v.v1();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow0V1V2V0V3(ITup2RF v, float v0, float v3)
-	{
-		this.m[0] = v0;
-		this.m[4] = v.v0();
-		this.m[8] = v.v1();
-		this.m[12] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow0V0V3V1V2(ITup2RF v, float v1, float v2)
-	{
-		this.m[0] = v.v0();
-		this.m[4] = v1;
-		this.m[8] = v2;
-		this.m[12] = v.v1();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow0V0V2V1V3(ITup2RF v, float v1, float v3)
-	{
-		this.m[0] = v.v0();
-		this.m[4] = v1;
-		this.m[8] = v.v1();
-		this.m[12] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow0V0V1V2V3(ITup2RF v, float v2, float v3)
-	{
-		this.m[0] = v.v0();
-		this.m[4] = v.v1();
-		this.m[8] = v2;
-		this.m[12] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow0(float[] v)
-	{
-		this.m[0] = v[0];
-		this.m[4] = v[1];
-		this.m[8] = v[2];
-		this.m[12] = v[3];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow0V1V2V3V0(float[] v, float v0)
-	{
-		this.m[0] = v0;
-		this.m[4] = v[0];
-		this.m[8] = v[1];
-		this.m[12] = v[2];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow0V0V2V3V1(float[] v, float v1)
-	{
-		this.m[0] = v[0];
-		this.m[4] = v1;
-		this.m[8] = v[1];
-		this.m[12] = v[2];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow0V0V1V3V2(float[] v, float v2)
-	{
-		this.m[0] = v[0];
-		this.m[4] = v[1];
-		this.m[8] = v2;
-		this.m[12] = v[2];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow0V0V1V2V3(float[] v, float v3)
-	{
-		this.m[0] = v[0];
-		this.m[4] = v[1];
-		this.m[8] = v[2];
-		this.m[12] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow0V2V3V0V1(float[] v, float v0, float v1)
-	{
-		this.m[0] = v0;
-		this.m[4] = v1;
-		this.m[8] = v[0];
-		this.m[12] = v[1];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow0V1V3V0V2(float[] v, float v0, float v2)
-	{
-		this.m[0] = v0;
-		this.m[4] = v[0];
-		this.m[8] = v2;
-		this.m[12] = v[1];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow0V1V2V0V3(float[] v, float v0, float v3)
-	{
-		this.m[0] = v0;
-		this.m[4] = v[0];
-		this.m[8] = v[1];
-		this.m[12] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow0V0V3V1V2(float[] v, float v1, float v2)
-	{
-		this.m[0] = v[0];
-		this.m[4] = v1;
-		this.m[8] = v2;
-		this.m[12] = v[1];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow0V0V2V1V3(float[] v, float v1, float v3)
-	{
-		this.m[0] = v[0];
-		this.m[4] = v1;
-		this.m[8] = v[1];
-		this.m[12] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow0V0V1V2V3(float[] v, float v2, float v3)
-	{
-		this.m[0] = v[0];
-		this.m[4] = v[1];
-		this.m[8] = v2;
-		this.m[12] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow0(float v0, float v1, float v2, float v3)
-	{
-		this.m[0] = v0;
-		this.m[4] = v1;
-		this.m[8] = v2;
-		this.m[12] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow1(ITup4RF v)
-	{
-		this.m[1] = v.v0();
-		this.m[5] = v.v1();
-		this.m[9] = v.v2();
-		this.m[13] = v.v3();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow1V1V2V3V0(ITup3RF v, float v0)
-	{
-		this.m[1] = v0;
-		this.m[5] = v.v0();
-		this.m[9] = v.v1();
-		this.m[13] = v.v2();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow1V0V2V3V1(ITup3RF v, float v1)
-	{
-		this.m[1] = v.v0();
-		this.m[5] = v1;
-		this.m[9] = v.v1();
-		this.m[13] = v.v2();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow1V0V1V3V2(ITup3RF v, float v2)
-	{
-		this.m[1] = v.v0();
-		this.m[5] = v.v1();
-		this.m[9] = v2;
-		this.m[13] = v.v2();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow1V0V1V2V3(ITup3RF v, float v3)
-	{
-		this.m[1] = v.v0();
-		this.m[5] = v.v1();
-		this.m[9] = v.v2();
-		this.m[13] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow1V2V3V0V1(ITup2RF v, float v0, float v1)
-	{
-		this.m[1] = v0;
-		this.m[5] = v1;
-		this.m[9] = v.v0();
-		this.m[13] = v.v1();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow1V1V3V0V2(ITup2RF v, float v0, float v2)
-	{
-		this.m[1] = v0;
-		this.m[5] = v.v0();
-		this.m[9] = v2;
-		this.m[13] = v.v1();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow1V1V2V0V3(ITup2RF v, float v0, float v3)
-	{
-		this.m[1] = v0;
-		this.m[5] = v.v0();
-		this.m[9] = v.v1();
-		this.m[13] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow1V0V3V1V2(ITup2RF v, float v1, float v2)
-	{
-		this.m[1] = v.v0();
-		this.m[5] = v1;
-		this.m[9] = v2;
-		this.m[13] = v.v1();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow1V0V2V1V3(ITup2RF v, float v1, float v3)
-	{
-		this.m[1] = v.v0();
-		this.m[5] = v1;
-		this.m[9] = v.v1();
-		this.m[13] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow1V0V1V2V3(ITup2RF v, float v2, float v3)
-	{
-		this.m[1] = v.v0();
-		this.m[5] = v.v1();
-		this.m[9] = v2;
-		this.m[13] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow1(float[] v)
-	{
-		this.m[1] = v[0];
-		this.m[5] = v[1];
-		this.m[9] = v[2];
-		this.m[13] = v[3];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow1V1V2V3V0(float[] v, float v0)
-	{
-		this.m[1] = v0;
-		this.m[5] = v[0];
-		this.m[9] = v[1];
-		this.m[13] = v[2];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow1V0V2V3V1(float[] v, float v1)
-	{
-		this.m[1] = v[0];
-		this.m[5] = v1;
-		this.m[9] = v[1];
-		this.m[13] = v[2];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow1V0V1V3V2(float[] v, float v2)
-	{
-		this.m[1] = v[0];
-		this.m[5] = v[1];
-		this.m[9] = v2;
-		this.m[13] = v[2];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow1V0V1V2V3(float[] v, float v3)
-	{
-		this.m[1] = v[0];
-		this.m[5] = v[1];
-		this.m[9] = v[2];
-		this.m[13] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow1V2V3V0V1(float[] v, float v0, float v1)
-	{
-		this.m[1] = v0;
-		this.m[5] = v1;
-		this.m[9] = v[0];
-		this.m[13] = v[31];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow1V1V3V0V2(float[] v, float v0, float v2)
-	{
-		this.m[1] = v0;
-		this.m[5] = v[0];
-		this.m[9] = v2;
-		this.m[13] = v[1];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow1V1V2V0V3(float[] v, float v0, float v3)
-	{
-		this.m[1] = v0;
-		this.m[5] = v[0];
-		this.m[9] = v[1];
-		this.m[13] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow1V0V3V1V2(float[] v, float v1, float v2)
-	{
-		this.m[1] = v[0];
-		this.m[5] = v1;
-		this.m[9] = v2;
-		this.m[13] = v[1];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow1V0V2V1V3(float[] v, float v1, float v3)
-	{
-		this.m[1] = v[0];
-		this.m[5] = v1;
-		this.m[9] = v[1];
-		this.m[13] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow1V0V1V2V3(float[] v, float v2, float v3)
-	{
-		this.m[1] = v[0];
-		this.m[5] = v[1];
-		this.m[9] = v2;
-		this.m[13] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow1(float v0, float v1, float v2, float v3)
-	{
-		this.m[1] = v0;
-		this.m[5] = v1;
-		this.m[9] = v2;
-		this.m[13] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow2(ITup4RF v)
-	{
-		this.m[2] = v.v0();
-		this.m[6] = v.v1();
-		this.m[10] = v.v2();
-		this.m[14] = v.v3();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow2V1V2V3V0(ITup3RF v, float v0)
-	{
-		this.m[2] = v0;
-		this.m[6] = v.v0();
-		this.m[10] = v.v1();
-		this.m[14] = v.v2();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow2V0V2V3V1(ITup3RF v, float v1)
-	{
-		this.m[2] = v.v0();
-		this.m[6] = v1;
-		this.m[10] = v.v1();
-		this.m[14] = v.v2();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow2V0V1V3V2(ITup3RF v, float v2)
-	{
-		this.m[2] = v.v0();
-		this.m[6] = v.v1();
-		this.m[10] = v2;
-		this.m[14] = v.v2();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow2V0V1V2V3(ITup3RF v, float v3)
-	{
-		this.m[2] = v.v0();
-		this.m[6] = v.v1();
-		this.m[10] = v.v2();
-		this.m[14] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow2V2V3V0V1(ITup2RF v, float v0, float v1)
-	{
-		this.m[2] = v0;
-		this.m[6] = v1;
-		this.m[10] = v.v0();
-		this.m[14] = v.v1();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow2V1V3V0V2(ITup2RF v, float v0, float v2)
-	{
-		this.m[2] = v0;
-		this.m[6] = v.v0();
-		this.m[10] = v2;
-		this.m[14] = v.v1();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow2V1V2V0V3(ITup2RF v, float v0, float v3)
-	{
-		this.m[2] = v0;
-		this.m[6] = v.v0();
-		this.m[10] = v.v1();
-		this.m[14] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow2V0V3V1V2(ITup2RF v, float v1, float v2)
-	{
-		this.m[2] = v.v0();
-		this.m[6] = v1;
-		this.m[10] = v2;
-		this.m[14] = v.v1();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow2V0V2V1V3(ITup2RF v, float v1, float v3)
-	{
-		this.m[2] = v.v0();
-		this.m[6] = v1;
-		this.m[10] = v.v1();
-		this.m[14] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow2V0V1V2V3(ITup2RF v, float v2, float v3)
-	{
-		this.m[2] = v.v0();
-		this.m[6] = v.v1();
-		this.m[10] = v2;
-		this.m[14] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow2(float[] v)
-	{
-		this.m[2] = v[0];
-		this.m[6] = v[1];
-		this.m[10] = v[2];
-		this.m[14] = v[3];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow2V1V2V3V0(float[] v, float v0)
-	{
-		this.m[2] = v0;
-		this.m[6] = v[0];
-		this.m[10] = v[1];
-		this.m[14] = v[2];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow2V0V2V3V1(float[] v, float v1)
-	{
-		this.m[2] = v[0];
-		this.m[6] = v1;
-		this.m[10] = v[1];
-		this.m[14] = v[2];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow2V0V1V3V2(float[] v, float v2)
-	{
-		this.m[2] = v[0];
-		this.m[6] = v[1];
-		this.m[10] = v2;
-		this.m[14] = v[2];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow2V0V1V2V3(float[] v, float v3)
-	{
-		this.m[2] = v[0];
-		this.m[6] = v[1];
-		this.m[10] = v[2];
-		this.m[14] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow2V2V3V0V1(float[] v, float v0, float v1)
-	{
-		this.m[2] = v0;
-		this.m[6] = v1;
-		this.m[10] = v[0];
-		this.m[14] = v[1];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow2V1V3V0V2(float[] v, float v0, float v2)
-	{
-		this.m[2] = v0;
-		this.m[6] = v[0];
-		this.m[10] = v2;
-		this.m[14] = v[1];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow2V1V2V0V3(float[] v, float v0, float v3)
-	{
-		this.m[2] = v0;
-		this.m[6] = v[0];
-		this.m[10] = v[1];
-		this.m[14] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow2V0V3V1V2(float[] v, float v1, float v2)
-	{
-		this.m[2] = v[0];
-		this.m[6] = v1;
-		this.m[10] = v2;
-		this.m[14] = v[1];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow2V0V2V1V3(float[] v, float v1, float v3)
-	{
-		this.m[2] = v[0];
-		this.m[6] = v1;
-		this.m[10] = v[1];
-		this.m[14] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow2V0V1V2V3(float[] v, float v2, float v3)
-	{
-		this.m[2] = v[0];
-		this.m[6] = v[1];
-		this.m[10] = v2;
-		this.m[14] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow2(float v0, float v1, float v2, float v3)
-	{
-		this.m[2] = v0;
-		this.m[6] = v1;
-		this.m[10] = v2;
-		this.m[14] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow3(ITup4RF v)
-	{
-		this.m[3] = v.v0();
-		this.m[7] = v.v1();
-		this.m[11] = v.v2();
-		this.m[15] = v.v3();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow3V1V2V3V0(ITup3RF v, float v0)
-	{
-		this.m[3] = v0;
-		this.m[7] = v.v0();
-		this.m[11] = v.v1();
-		this.m[15] = v.v2();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow3V0V2V3V1(ITup3RF v, float v1)
-	{
-		this.m[3] = v.v0();
-		this.m[7] = v1;
-		this.m[11] = v.v1();
-		this.m[15] = v.v2();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow3V0V1V3V2(ITup3RF v, float v2)
-	{
-		this.m[3] = v.v0();
-		this.m[7] = v.v1();
-		this.m[11] = v2;
-		this.m[15] = v.v2();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow3V0V1V2V3(ITup3RF v, float v3)
-	{
-		this.m[3] = v.v0();
-		this.m[7] = v.v1();
-		this.m[11] = v.v2();
-		this.m[15] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow3V2V3V0V1(ITup2RF v, float v0, float v1)
-	{
-		this.m[3] = v0;
-		this.m[7] = v1;
-		this.m[11] = v.v0();
-		this.m[15] = v.v1();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow3V1V3V0V2(ITup2RF v, float v0, float v2)
-	{
-		this.m[3] = v0;
-		this.m[7] = v.v0();
-		this.m[11] = v2;
-		this.m[15] = v.v1();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow3V1V2V0V3(ITup2RF v, float v0, float v3)
-	{
-		this.m[3] = v0;
-		this.m[7] = v.v0();
-		this.m[11] = v.v1();
-		this.m[15] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow3V0V3V1V2(ITup2RF v, float v1, float v2)
-	{
-		this.m[3] = v.v0();
-		this.m[7] = v1;
-		this.m[11] = v2;
-		this.m[15] = v.v1();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow3V0V2V1V3(ITup2RF v, float v1, float v3)
-	{
-		this.m[3] = v.v0();
-		this.m[7] = v1;
-		this.m[11] = v.v1();
-		this.m[15] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow3V0V1V2V3(ITup2RF v, float v2, float v3)
-	{
-		this.m[3] = v.v0();
-		this.m[7] = v.v1();
-		this.m[11] = v2;
-		this.m[15] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow3(float[] v)
-	{
-		this.m[3] = v[0];
-		this.m[7] = v[1];
-		this.m[11] = v[2];
-		this.m[15] = v[3];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow3V1V2V3V0(float[] v, float v0)
-	{
-		this.m[3] = v0;
-		this.m[7] = v[0];
-		this.m[11] = v[1];
-		this.m[15] = v[2];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow3V0V2V3V1(float[] v, float v1)
-	{
-		this.m[3] = v[0];
-		this.m[7] = v1;
-		this.m[11] = v[1];
-		this.m[15] = v[2];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow3V0V1V3V2(float[] v, float v2)
-	{
-		this.m[3] = v[0];
-		this.m[7] = v[1];
-		this.m[11] = v2;
-		this.m[15] = v[2];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow3V0V1V2V3(float[] v, float v3)
-	{
-		this.m[3] = v[0];
-		this.m[7] = v[1];
-		this.m[11] = v[2];
-		this.m[15] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow3V2V3V0V1(float[] v, float v0, float v1)
-	{
-		this.m[3] = v0;
-		this.m[7] = v1;
-		this.m[11] = v[0];
-		this.m[15] = v[1];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow3V1V3V0V2(float[] v, float v0, float v2)
-	{
-		this.m[3] = v0;
-		this.m[7] = v[0];
-		this.m[11] = v2;
-		this.m[15] = v[1];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow3V1V2V0V3(float[] v, float v0, float v3)
-	{
-		this.m[3] = v0;
-		this.m[7] = v[0];
-		this.m[11] = v[1];
-		this.m[15] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow3V0V3V1V2(float[] v, float v1, float v2)
-	{
-		this.m[3] = v[0];
-		this.m[7] = v1;
-		this.m[11] = v2;
-		this.m[15] = v[1];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow3V0V2V1V3(float[] v, float v1, float v3)
-	{
-		this.m[3] = v[0];
-		this.m[7] = v1;
-		this.m[11] = v[1];
-		this.m[15] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow3V0V1V2V3(float[] v, float v2, float v3)
-	{
-		this.m[3] = v[0];
-		this.m[7] = v[1];
-		this.m[11] = v2;
-		this.m[15] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRow3(float v0, float v1, float v2, float v3)
-	{
-		this.m[3] = v0;
-		this.m[7] = v1;
-		this.m[11] = v2;
-		this.m[15] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol0(ITup4RF v)
-	{
-		this.m[0] = v.v0();
-		this.m[1] = v.v1();
-		this.m[2] = v.v2();
-		this.m[3] = v.v3();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol0V1V2V3V0(ITup3RF v, float v0)
-	{
-		this.m[0] = v0;
-		this.m[1] = v.v0();
-		this.m[2] = v.v1();
-		this.m[3] = v.v2();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol0V0V2V3V1(ITup3RF v, float v1)
-	{
-		this.m[0] = v.v0();
-		this.m[1] = v1;
-		this.m[2] = v.v1();
-		this.m[3] = v.v2();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol0V0V1V3V2(ITup3RF v, float v2)
-	{
-		this.m[0] = v.v0();
-		this.m[1] = v.v1();
-		this.m[2] = v2;
-		this.m[3] = v.v2();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol0V0V1V2V3(ITup3RF v, float v3)
-	{
-		this.m[0] = v.v0();
-		this.m[1] = v.v1();
-		this.m[2] = v.v2();
-		this.m[3] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol0V2V3V0V1(ITup2RF v, float v0, float v1)
-	{
-		this.m[0] = v0;
-		this.m[1] = v1;
-		this.m[2] = v.v0();
-		this.m[3] = v.v1();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol0V1V3V0V2(ITup2RF v, float v0, float v2)
-	{
-		this.m[0] = v0;
-		this.m[1] = v.v0();
-		this.m[2] = v2;
-		this.m[3] = v.v1();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol0V1V2V0V3(ITup2RF v, float v0, float v3)
-	{
-		this.m[0] = v0;
-		this.m[1] = v.v0();
-		this.m[2] = v.v1();
-		this.m[3] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol0V0V3V1V2(ITup2RF v, float v1, float v2)
-	{
-		this.m[0] = v.v0();
-		this.m[1] = v1;
-		this.m[2] = v2;
-		this.m[3] = v.v1();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol0V0V2V1V3(ITup2RF v, float v1, float v3)
-	{
-		this.m[0] = v.v0();
-		this.m[1] = v1;
-		this.m[2] = v.v1();
-		this.m[3] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol0V0V1V2V3(ITup2RF v, float v2, float v3)
-	{
-		this.m[0] = v.v0();
-		this.m[1] = v.v1();
-		this.m[2] = v2;
-		this.m[3] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol0(float[] v)
-	{
-		this.m[0] = v[0];
-		this.m[1] = v[1];
-		this.m[2] = v[2];
-		this.m[3] = v[3];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol0V1V2V3V0(float[] v, float v0)
-	{
-		this.m[0] = v0;
-		this.m[1] = v[0];
-		this.m[2] = v[1];
-		this.m[3] = v[2];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol0V0V2V3V1(float[] v, float v1)
-	{
-		this.m[0] = v[0];
-		this.m[1] = v1;
-		this.m[2] = v[1];
-		this.m[3] = v[2];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol0V0V1V3V2(float[] v, float v2)
-	{
-		this.m[0] = v[0];
-		this.m[1] = v[1];
-		this.m[2] = v2;
-		this.m[3] = v[2];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol0V0V1V2V3(float[] v, float v3)
-	{
-		this.m[0] = v[0];
-		this.m[1] = v[1];
-		this.m[2] = v[2];
-		this.m[3] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol0V2V3V0V1(float[] v, float v0, float v1)
-	{
-		this.m[0] = v0;
-		this.m[1] = v1;
-		this.m[2] = v[0];
-		this.m[3] = v[1];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol0V1V3V0V2(float[] v, float v0, float v2)
-	{
-		this.m[0] = v0;
-		this.m[1] = v[0];
-		this.m[2] = v2;
-		this.m[3] = v[1];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol0V1V2V0V3(float[] v, float v0, float v3)
-	{
-		this.m[0] = v0;
-		this.m[1] = v[0];
-		this.m[2] = v[1];
-		this.m[3] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol0V0V3V1V2(float[] v, float v1, float v2)
-	{
-		this.m[0] = v[0];
-		this.m[1] = v1;
-		this.m[2] = v2;
-		this.m[3] = v[1];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol0V0V2V1V3(float[] v, float v1, float v3)
-	{
-		this.m[0] = v[0];
-		this.m[1] = v1;
-		this.m[2] = v[1];
-		this.m[3] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol0V0V1V2V3(float[] v, float v2, float v3)
-	{
-		this.m[0] = v[0];
-		this.m[1] = v[1];
-		this.m[2] = v2;
-		this.m[3] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol0(float v0, float v1, float v2, float v3)
-	{
-		this.m[0] = v0;
-		this.m[1] = v1;
-		this.m[2] = v2;
-		this.m[3] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol1(ITup4RF v)
-	{
-		this.m[4] = v.v0();
-		this.m[5] = v.v1();
-		this.m[6] = v.v2();
-		this.m[7] = v.v3();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol1V1V2V3V0(ITup3RF v, float v0)
-	{
-		this.m[4] = v0;
-		this.m[5] = v.v0();
-		this.m[6] = v.v1();
-		this.m[7] = v.v2();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol1V0V2V3V1(ITup3RF v, float v1)
-	{
-		this.m[4] = v.v0();
-		this.m[5] = v1;
-		this.m[6] = v.v1();
-		this.m[7] = v.v2();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol1V0V1V3V2(ITup3RF v, float v2)
-	{
-		this.m[4] = v.v0();
-		this.m[5] = v.v1();
-		this.m[6] = v2;
-		this.m[7] = v.v2();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol1V0V1V2V3(ITup3RF v, float v3)
-	{
-		this.m[4] = v.v0();
-		this.m[5] = v.v1();
-		this.m[6] = v.v2();
-		this.m[7] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol1V2V3V0V1(ITup2RF v, float v0, float v1)
-	{
-		this.m[4] = v0;
-		this.m[5] = v1;
-		this.m[6] = v.v0();
-		this.m[7] = v.v1();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol1V1V3V0V2(ITup2RF v, float v0, float v2)
-	{
-		this.m[4] = v0;
-		this.m[5] = v.v0();
-		this.m[6] = v2;
-		this.m[7] = v.v1();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol1V1V2V0V3(ITup2RF v, float v0, float v3)
-	{
-		this.m[4] = v0;
-		this.m[5] = v.v0();
-		this.m[6] = v.v1();
-		this.m[7] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol1V0V3V1V2(ITup2RF v, float v1, float v2)
-	{
-		this.m[4] = v.v0();
-		this.m[5] = v1;
-		this.m[6] = v2;
-		this.m[7] = v.v1();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol1V0V2V1V3(ITup2RF v, float v1, float v3)
-	{
-		this.m[4] = v.v0();
-		this.m[5] = v1;
-		this.m[6] = v.v1();
-		this.m[7] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol1V0V1V2V3(ITup2RF v, float v2, float v3)
-	{
-		this.m[4] = v.v0();
-		this.m[5] = v.v1();
-		this.m[6] = v2;
-		this.m[7] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol1(float[] v)
-	{
-		this.m[4] = v[0];
-		this.m[5] = v[1];
-		this.m[6] = v[2];
-		this.m[7] = v[3];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol1V1V2V3V0(float[] v, float v0)
-	{
-		this.m[4] = v0;
-		this.m[5] = v[0];
-		this.m[6] = v[1];
-		this.m[7] = v[2];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol1V0V2V3V1(float[] v, float v1)
-	{
-		this.m[4] = v[0];
-		this.m[5] = v1;
-		this.m[6] = v[1];
-		this.m[7] = v[2];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol1V0V1V3V2(float[] v, float v2)
-	{
-		this.m[4] = v[0];
-		this.m[5] = v[1];
-		this.m[6] = v2;
-		this.m[7] = v[2];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol1V0V1V2V3(float[] v, float v3)
-	{
-		this.m[4] = v[0];
-		this.m[5] = v[1];
-		this.m[6] = v[2];
-		this.m[7] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol1V2V3V0V1(float[] v, float v0, float v1)
-	{
-		this.m[4] = v0;
-		this.m[5] = v1;
-		this.m[6] = v[0];
-		this.m[7] = v[1];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol1V1V3V0V2(float[] v, float v0, float v2)
-	{
-		this.m[4] = v0;
-		this.m[5] = v[0];
-		this.m[6] = v2;
-		this.m[7] = v[1];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol1V1V2V0V3(float[] v, float v0, float v3)
-	{
-		this.m[4] = v0;
-		this.m[5] = v[0];
-		this.m[6] = v[1];
-		this.m[7] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol1V0V3V1V2(float[] v, float v1, float v2)
-	{
-		this.m[4] = v[0];
-		this.m[5] = v1;
-		this.m[6] = v2;
-		this.m[7] = v[1];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol1V0V2V1V3(float[] v, float v1, float v3)
-	{
-		this.m[4] = v[0];
-		this.m[5] = v1;
-		this.m[6] = v[1];
-		this.m[7] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol1V0V1V2V3(float[] v, float v2, float v3)
-	{
-		this.m[4] = v[0];
-		this.m[5] = v[1];
-		this.m[6] = v2;
-		this.m[7] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol1(float v0, float v1, float v2, float v3)
-	{
-		this.m[4] = v0;
-		this.m[5] = v1;
-		this.m[6] = v2;
-		this.m[7] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol2(ITup4RF v)
-	{
-		this.m[8] = v.v0();
-		this.m[9] = v.v1();
-		this.m[10] = v.v2();
-		this.m[11] = v.v3();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol2V1V2V3V0(ITup3RF v, float v0)
-	{
-		this.m[8] = v0;
-		this.m[9] = v.v0();
-		this.m[10] = v.v1();
-		this.m[11] = v.v2();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol2V0V2V3V1(ITup3RF v, float v1)
-	{
-		this.m[8] = v.v0();
-		this.m[9] = v1;
-		this.m[10] = v.v1();
-		this.m[11] = v.v2();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol2V0V1V3V2(ITup3RF v, float v2)
-	{
-		this.m[8] = v.v0();
-		this.m[9] = v.v1();
-		this.m[10] = v2;
-		this.m[11] = v.v2();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol2V0V1V2V3(ITup3RF v, float v3)
-	{
-		this.m[8] = v.v0();
-		this.m[9] = v.v1();
-		this.m[10] = v.v2();
-		this.m[11] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol2V2V3V0V1(ITup2RF v, float v0, float v1)
-	{
-		this.m[8] = v0;
-		this.m[9] = v1;
-		this.m[10] = v.v0();
-		this.m[11] = v.v1();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol2V1V3V0V2(ITup2RF v, float v0, float v2)
-	{
-		this.m[8] = v0;
-		this.m[9] = v.v0();
-		this.m[10] = v2;
-		this.m[11] = v.v1();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol2V1V2V0V3(ITup2RF v, float v0, float v3)
-	{
-		this.m[8] = v0;
-		this.m[9] = v.v0();
-		this.m[10] = v.v1();
-		this.m[11] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol2V0V3V1V2(ITup2RF v, float v1, float v2)
-	{
-		this.m[8] = v.v0();
-		this.m[9] = v1;
-		this.m[10] = v2;
-		this.m[11] = v.v1();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol2V0V2V1V3(ITup2RF v, float v1, float v3)
-	{
-		this.m[8] = v.v0();
-		this.m[9] = v1;
-		this.m[10] = v.v1();
-		this.m[11] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol2V0V1V2V3(ITup2RF v, float v2, float v3)
-	{
-		this.m[8] = v.v0();
-		this.m[9] = v.v1();
-		this.m[10] = v2;
-		this.m[11] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol2(float[] v)
-	{
-		this.m[8] = v[0];
-		this.m[9] = v[1];
-		this.m[10] = v[2];
-		this.m[11] = v[3];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol2V1V2V3V0(float[] v, float v0)
-	{
-		this.m[8] = v0;
-		this.m[9] = v[0];
-		this.m[10] = v[1];
-		this.m[11] = v[2];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol2V0V2V3V1(float[] v, float v1)
-	{
-		this.m[8] = v[0];
-		this.m[9] = v1;
-		this.m[10] = v[1];
-		this.m[11] = v[2];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol2V0V1V3V2(float[] v, float v2)
-	{
-		this.m[8] = v[0];
-		this.m[9] = v[1];
-		this.m[10] = v2;
-		this.m[11] = v[2];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol2V0V1V2V3(float[] v, float v3)
-	{
-		this.m[8] = v[0];
-		this.m[9] = v[1];
-		this.m[10] = v[2];
-		this.m[11] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol2V2V3V0V1(float[] v, float v0, float v1)
-	{
-		this.m[8] = v0;
-		this.m[9] = v1;
-		this.m[10] = v[0];
-		this.m[11] = v[1];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol2V1V3V0V2(float[] v, float v0, float v2)
-	{
-		this.m[8] = v0;
-		this.m[9] = v[0];
-		this.m[10] = v2;
-		this.m[11] = v[1];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol2V1V2V0V3(float[] v, float v0, float v3)
-	{
-		this.m[8] = v0;
-		this.m[9] = v[0];
-		this.m[10] = v[1];
-		this.m[11] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol2V0V3V1V2(float[] v, float v1, float v2)
-	{
-		this.m[8] = v[0];
-		this.m[9] = v1;
-		this.m[10] = v2;
-		this.m[11] = v[1];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol2V0V2V1V3(float[] v, float v1, float v3)
-	{
-		this.m[8] = v[0];
-		this.m[9] = v1;
-		this.m[10] = v[1];
-		this.m[11] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol2V0V1V2V3(float[] v, float v2, float v3)
-	{
-		this.m[8] = v[0];
-		this.m[9] = v[1];
-		this.m[10] = v2;
-		this.m[11] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol2(float v0, float v1, float v2, float v3)
-	{
-		this.m[8] = v0;
-		this.m[9] = v1;
-		this.m[10] = v2;
-		this.m[11] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol3(ITup4RF v)
-	{
-		this.m[12] = v.v0();
-		this.m[13] = v.v1();
-		this.m[14] = v.v2();
-		this.m[15] = v.v3();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol3V1V2V3V0(ITup3RF v, float v0)
-	{
-		this.m[12] = v0;
-		this.m[13] = v.v0();
-		this.m[14] = v.v1();
-		this.m[15] = v.v2();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol3V0V2V3V1(ITup3RF v, float v1)
-	{
-		this.m[12] = v.v0();
-		this.m[13] = v1;
-		this.m[14] = v.v1();
-		this.m[15] = v.v2();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol3V0V1V3V2(ITup3RF v, float v2)
-	{
-		this.m[12] = v.v0();
-		this.m[13] = v.v1();
-		this.m[14] = v2;
-		this.m[15] = v.v2();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol3V0V1V2V3(ITup3RF v, float v3)
-	{
-		this.m[12] = v.v0();
-		this.m[13] = v.v1();
-		this.m[14] = v.v2();
-		this.m[15] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol3V2V3V0V1(ITup2RF v, float v0, float v1)
-	{
-		this.m[12] = v0;
-		this.m[13] = v1;
-		this.m[14] = v.v0();
-		this.m[15] = v.v1();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol3V1V3V0V2(ITup2RF v, float v0, float v2)
-	{
-		this.m[12] = v0;
-		this.m[13] = v.v0();
-		this.m[14] = v2;
-		this.m[15] = v.v1();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol3V1V2V0V3(ITup2RF v, float v0, float v3)
-	{
-		this.m[12] = v0;
-		this.m[13] = v.v0();
-		this.m[14] = v.v1();
-		this.m[15] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol3V0V3V1V2(ITup2RF v, float v1, float v2)
-	{
-		this.m[12] = v.v0();
-		this.m[13] = v1;
-		this.m[14] = v2;
-		this.m[15] = v.v1();
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol3V0V2V1V3(ITup2RF v, float v1, float v3)
-	{
-		this.m[12] = v.v0();
-		this.m[13] = v1;
-		this.m[14] = v.v1();
-		this.m[15] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol3V0V1V2V3(ITup2RF v, float v2, float v3)
-	{
-		this.m[12] = v.v0();
-		this.m[13] = v.v1();
-		this.m[14] = v2;
-		this.m[15] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol3(float[] v)
-	{
-		this.m[12] = v[0];
-		this.m[13] = v[1];
-		this.m[14] = v[2];
-		this.m[15] = v[3];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol3V1V2V3V0(float[] v, float v0)
-	{
-		this.m[12] = v0;
-		this.m[13] = v[0];
-		this.m[14] = v[1];
-		this.m[15] = v[2];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol3V0V2V3V1(float[] v, float v1)
-	{
-		this.m[12] = v[0];
-		this.m[13] = v1;
-		this.m[14] = v[1];
-		this.m[15] = v[2];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol3V0V1V3V2(float[] v, float v2)
-	{
-		this.m[12] = v[0];
-		this.m[13] = v[1];
-		this.m[14] = v2;
-		this.m[15] = v[1];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol3V0V1V2V3(float[] v, float v3)
-	{
-		this.m[12] = v[0];
-		this.m[13] = v[1];
-		this.m[14] = v[2];
-		this.m[15] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol3V2V3V0V1(float[] v, float v0, float v1)
-	{
-		this.m[12] = v0;
-		this.m[13] = v1;
-		this.m[14] = v[0];
-		this.m[15] = v[1];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol3V1V3V0V2(float[] v, float v0, float v2)
-	{
-		this.m[12] = v0;
-		this.m[13] = v[0];
-		this.m[14] = v2;
-		this.m[15] = v[1];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol3V1V2V0V3(float[] v, float v0, float v3)
-	{
-		this.m[12] = v0;
-		this.m[13] = v[0];
-		this.m[14] = v[1];
-		this.m[15] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol3V0V3V1V2(float[] v, float v1, float v2)
-	{
-		this.m[12] = v[0];
-		this.m[13] = v1;
-		this.m[14] = v2;
-		this.m[15] = v[1];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol3V0V2V1V3(float[] v, float v1, float v3)
-	{
-		this.m[12] = v[0];
-		this.m[13] = v1;
-		this.m[14] = v[1];
-		this.m[15] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol3V0V1V2V3(float[] v, float v2, float v3)
-	{
-		this.m[12] = v[0];
-		this.m[13] = v[1];
-		this.m[14] = v2;
-		this.m[15] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setCol3(float v0, float v1, float v2, float v3)
-	{
-		this.m[12] = v0;
-		this.m[13] = v1;
-		this.m[14] = v2;
-		this.m[15] = v3;
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setRowAt(int row, float[] values)
-	{
-		this.m[row] = values[0];
-		this.m[4 + row] = values[1];
-		this.m[8 + row] = values[2];
-		this.m[12 + row] = values[3];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRowAt(int row, float v0, float v1, float v2, float v3)
-	{
-		this.m[row] = v0;
-		this.m[4 + row] = v1;
-		this.m[8 + row] = v2;
-		this.m[12 + row] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setColAt(int col, float[] values)
-	{
-		int base = col * 4;
-		
-		this.m[base] = values[0];
-		this.m[base + 1] = values[1];
-		this.m[base + 2] = values[2];
-		this.m[base + 3] = values[3];
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setColAt(int col, float v0, float v1, float v2, float v3)
-	{
-		int base = col * 4;
-		
-		this.m[base] = v0;
-		this.m[base + 1] = v1;
-		this.m[base + 2] = v2;
-		this.m[base + 3] = v3;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setAt(int row, int col, float value)
-	{
-		this.m[col * 4 + row] = value;
+		this.m32 = value;
+		
+		return this;
+	}
+
+	@Override
+	public Mat4F at(int row, int col, float value)
+	{
+		if(row < 0 || row > 3) throw new IndexOutOfBoundsException();
+		if(col < 0 || col > 3) throw new IndexOutOfBoundsException();
+		
+		int index = col * 4 + row;
+		
+		switch(index) {
+			case  0 -> this.m00 = value;
+			case  1 -> this.m01 = value;
+			case  2 -> this.m02 = value;
+			case  3 -> this.m03 = value;
+			
+			case  4 -> this.m10 = value;
+			case  5 -> this.m11 = value;
+			case  6 -> this.m12 = value;
+			case  7 -> this.m13 = value;
+			
+			case  8 -> this.m20 = value;
+			case  9 -> this.m21 = value;
+			case 10 -> this.m22 = value;
+			case 11 -> this.m23 = value;
+			
+			case 12 -> this.m20 = value;
+			case 13 -> this.m21 = value;
+			case 14 -> this.m22 = value;
+			case 15 -> this.m23 = value;
+			
+			default -> throw new AssertionError();
+		};
 		
 		return this;
 	}
@@ -2516,7 +337,25 @@ public class Mat4F implements IMat4WF
 	@Override
 	public Mat4F set(IMat4RF m)
 	{
-		m.toArray(this.m);
+		this.m00 = m.m00();
+		this.m01 = m.m01();
+		this.m02 = m.m02();
+		this.m03 = m.m03();
+		
+		this.m10 = m.m10();
+		this.m11 = m.m11();
+		this.m12 = m.m12();
+		this.m13 = m.m13();
+
+		this.m20 = m.m20();
+		this.m21 = m.m21();
+		this.m22 = m.m22();
+		this.m23 = m.m23();
+		
+		this.m30 = m.m30();
+		this.m31 = m.m31();
+		this.m32 = m.m32();
+		this.m33 = m.m33();
 		
 		return this;
 	}
@@ -2524,7 +363,25 @@ public class Mat4F implements IMat4WF
 	@Override
 	public Mat4F set(float[] m)
 	{
-		System.arraycopy(m, 0, this.m, 0, 16);
+		this.m00 = m[ 0];
+		this.m01 = m[ 1];
+		this.m02 = m[ 2];
+		this.m03 = m[ 3];
+		
+		this.m10 = m[ 4];
+		this.m11 = m[ 5];
+		this.m12 = m[ 6];
+		this.m13 = m[ 7];
+
+		this.m20 = m[ 8];
+		this.m21 = m[ 9];
+		this.m22 = m[10];
+		this.m23 = m[11];
+		
+		this.m30 = m[12];
+		this.m31 = m[13];
+		this.m32 = m[14];
+		this.m33 = m[15];
 		
 		return this;
 	}
@@ -2532,25 +389,25 @@ public class Mat4F implements IMat4WF
 	@Override
 	public Mat4F set(float m00, float m01, float m02, float m03, float m10, float m11, float m12, float m13, float m20, float m21, float m22, float m23, float m30, float m31, float m32, float m33)
 	{
-		this.m[0] = m00;
-		this.m[1] = m01;
-		this.m[2] = m02;
-		this.m[3] = m03;
+		this.m00 = m00;
+		this.m01 = m01;
+		this.m02 = m02;
+		this.m03 = m03;
 
-		this.m[4] = m10;
-		this.m[5] = m11;
-		this.m[6] = m12;
-		this.m[7] = m13;
+		this.m10 = m10;
+		this.m11 = m11;
+		this.m12 = m12;
+		this.m13 = m13;
 		
-		this.m[8] = m20;
-		this.m[9] = m21;
-		this.m[10] = m22;
-		this.m[11] = m23;
+		this.m20 = m20;
+		this.m21 = m21;
+		this.m22 = m22;
+		this.m23 = m23;
 		
-		this.m[12] = m30;
-		this.m[13] = m31;
-		this.m[14] = m32;
-		this.m[15] = m33;
+		this.m30 = m30;
+		this.m31 = m31;
+		this.m32 = m32;
+		this.m33 = m33;
 		
 		return this;
 	}
@@ -2558,17 +415,31 @@ public class Mat4F implements IMat4WF
 	@Override
 	public float[] toArray()
 	{
-		float[] res = new float[16];
-		
-		System.arraycopy(this.m, 0, res, 0, 16);
-		
-		return res;
+		return new float[] {this.m00, this.m01, this.m02, this.m03, this.m10, this.m11, this.m12, this.m13, this.m20, this.m21, this.m22, this.m23, this.m30, this.m31, this.m32, this.m33};
 	}
 
 	@Override
 	public float[] toArray(float[] res)
 	{
-		System.arraycopy(this.m, 0, res, 0, 16);
+		res[ 0] = this.m00;
+		res[ 1] = this.m01;
+		res[ 2] = this.m02;
+		res[ 3] = this.m03;
+
+		res[ 4] = this.m10;
+		res[ 5] = this.m11;
+		res[ 6] = this.m12;
+		res[ 7] = this.m13;
+
+		res[ 8] = this.m20;
+		res[ 9] = this.m21;
+		res[10] = this.m22;
+		res[11] = this.m23;
+
+		res[12] = this.m30;
+		res[13] = this.m31;
+		res[14] = this.m32;
+		res[15] = this.m33;
 		
 		return res;
 	}
@@ -2576,17 +447,31 @@ public class Mat4F implements IMat4WF
 	@Override
 	public float[] toArrayRowMajor()
 	{
-		float[] res = new float[16];
-
-		MatUtils4F.transpose(this.m, res);
-		
-		return res;
+		return new float[] {this.m00, this.m10, this.m20, this.m30, this.m01, this.m11, this.m21, this.m31, this.m02, this.m12, this.m22, this.m32, this.m03, this.m13, this.m23, this.m33};
 	}
 
 	@Override
 	public float[] toArrayRowMajor(float[] res)
 	{
-		MatUtils4F.transpose(this.m, res);
+		res[ 0] = this.m00;
+		res[ 1] = this.m10;
+		res[ 2] = this.m20;
+		res[ 3] = this.m30;
+
+		res[ 4] = this.m01;
+		res[ 5] = this.m11;
+		res[ 6] = this.m21;
+		res[ 7] = this.m31;
+
+		res[ 8] = this.m02;
+		res[ 9] = this.m12;
+		res[10] = this.m22;
+		res[11] = this.m32;
+
+		res[12] = this.m03;
+		res[13] = this.m13;
+		res[14] = this.m23;
+		res[15] = this.m33;
 		
 		return res;
 	}
@@ -2594,2198 +479,44 @@ public class Mat4F implements IMat4WF
 	@Override
 	public float[] toArrayColumnMajor()
 	{
-		float[] res = new float[16];
-		
-		System.arraycopy(this.m, 0, res, 0, 16);
-		
-		return res;
+		return new float[] {this.m00, this.m01, this.m02, this.m03, this.m10, this.m11, this.m12, this.m13, this.m20, this.m21, this.m22, this.m23, this.m30, this.m31, this.m32, this.m33};
 	}
 
 	@Override
 	public float[] toArrayColumnMajor(float[] res)
 	{
-		System.arraycopy(this.m, 0, res, 0, 16);
+		res[ 0] = this.m00;
+		res[ 1] = this.m01;
+		res[ 2] = this.m02;
+		res[ 3] = this.m03;
+
+		res[ 4] = this.m10;
+		res[ 5] = this.m11;
+		res[ 6] = this.m12;
+		res[ 7] = this.m13;
+
+		res[ 8] = this.m20;
+		res[ 9] = this.m21;
+		res[10] = this.m22;
+		res[11] = this.m23;
+
+		res[12] = this.m30;
+		res[13] = this.m31;
+		res[14] = this.m32;
+		res[15] = this.m33;
 		
 		return res;
 	}
 	
-	@Override
-	public float trace()
-	{
-		return MatUtils4F.trace(this.m);
-	}
-
-	@Override
-	public float det()
-	{
-		return MatUtils4F.det(this.m);
-	}
-
-	@Override
-	public Mat4F invert()
-	{
-		MatUtils4F.invert(this.m, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F invertN()
-	{
-		return MatUtils4F.invertFunc(this.m, CTOR);
-	}
-
-	@Override
-	public Mat4F transpose()
-	{
-		MatUtils4F.transpose(this.m, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F transposeN()
-	{
-		return MatUtils4F.transposeFunc(this.m, CTOR);
-	}
-
-	@Override
-	public Mat4F mul(IMat4RF m)
-	{
-		MatUtils4F.mul(m, this.m, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F mulN(IMat4RF m)
-	{
-		return MatUtils4F.mulFunc(m, this.m, CTOR);
-	}
-
-	@Override
-	public Mat4F rMul(IMat4RF m)
-	{
-		MatUtils4F.mul(this.m, m, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F rMulN(IMat4RF m)
-	{
-		return MatUtils4F.mulFunc(this.m, m, CTOR);
-	}
-
 	/** {@inheritDoc} */
 	@Override
 	public String toString()
 	{
 		return	"mat4f(" + 
-				m[0] + ", " + m[4] + ", " + m[8] + ", " + m[12] + "\n" +
-				m[1] + ", " + m[5] + ", " + m[9] + ", " + m[13] + "\n" +
-				m[2] + ", " + m[6] + ", " + m[10] + ", " + m[14] + "\n" +
-				m[3] + ", " + m[7] + ", " + m[11] + ", " + m[15] + ")";
+				this.m00 + ", " + this.m10 + ", " + this.m20 + ", " + this.m30 + "\n" +
+				this.m01 + ", " + this.m11 + ", " + this.m21 + ", " + this.m31 + "\n" +
+				this.m02 + ", " + this.m12 + ", " + this.m22 + ", " + this.m32 + "\n" +
+				this.m03 + ", " + this.m13 + ", " + this.m23 + ", " + this.m33 + ")";
 	}
 	
-	public float[] transform2T(boolean isPoint, ITup2RF v, @ExtractionParam float[] res)
-	{
-		MatUtils4F.transform2(isPoint, v, this.m, res);
-		
-		return res;
-	}
-	
-	public float[] transform2T(boolean isPoint, float[] v, @ExtractionParam float[] res)
-	{
-		MatUtils4F.transform2(isPoint, v, this.m, res);
-		
-		return res;
-	}
-	
-	public float[] transform2T(boolean isPoint, float v0, float v1, @ExtractionParam float[] res)
-	{
-		MatUtils4F.transform2(isPoint, v0, v1, this.m, res);
-		
-		return res;
-	}
-	
-	public <T extends ITup2WF> T transform2T(boolean isPoint, ITup2RF v, @ExtractionParam T res)
-	{
-		MatUtils4F.transform2(isPoint, v, this.m, res);
-		
-		return res;
-	}
-	
-	public <T extends ITup2WF> T transform2T(boolean isPoint, float[] v, @ExtractionParam T res)
-	{
-		MatUtils4F.transform2(isPoint, v, this.m, res);
-		
-		return res;
-	}
-	
-	public <T extends ITup2WF> T transform2T(boolean isPoint, float v0, float v1, @ExtractionParam T res)
-	{
-		MatUtils4F.transform2(isPoint, v0, v1, this.m, res);
-		
-		return res;
-	}
-	
-	public <T> T transform2Func(boolean isPoint, ITup2RF v, IFunc2F<T> func)
-	{
-		return MatUtils4F.transform2Func(isPoint, v, this.m, func);
-	}
-	
-	public <T> T transform2Func(boolean isPoint, float[] v, IFunc2F<T> func)
-	{
-		return MatUtils4F.transform2Func(isPoint, v, this.m, func);
-	}
-	
-	public <T> T transform2Func(boolean isPoint, float v0, float v1, IFunc2F<T> func)
-	{
-		return MatUtils4F.transform2Func(isPoint, v0, v1, this.m, func);
-	}
-	
-	public float[] transformPoint2T(ITup2RF v, @ExtractionParam float[] res)
-	{
-		MatUtils4F.transformPoint2(v, this.m, res);
-		
-		return res;
-	}
-	
-	public float[] transformPoint2T(float[] v, @ExtractionParam float[] res)
-	{
-		MatUtils4F.transformPoint2(v, this.m, res);
-		
-		return res;
-	}
-	
-	public float[] transformPoint2T(float v0, float v1, @ExtractionParam float[] res)
-	{
-		MatUtils4F.transformPoint2(v0, v1, this.m, res);
-		
-		return res;
-	}
-	
-	public <T extends ITup2WF> T transformPoint2T(ITup2RF v, @ExtractionParam T res)
-	{
-		MatUtils4F.transformPoint2(v, this.m, res);
-		
-		return res;
-	}
-	
-	public <T extends ITup2WF> T transformPoint2T(float[] v, @ExtractionParam T res)
-	{
-		MatUtils4F.transformPoint2(v, this.m, res);
-		
-		return res;
-	}
-	
-	public <T extends ITup2WF> T transformPoint2T(float v0, float v1, @ExtractionParam T res)
-	{
-		MatUtils4F.transformPoint2(v0, v1, this.m, res);
-		
-		return res;
-	}
-	
-	public <T> T transformPoint2Func(ITup2RF v, IFunc2F<T> func)
-	{
-		return MatUtils4F.transformPoint2Func(v, this.m, func);
-	}
-	
-	public <T> T transformPoint2Func(float[] v, IFunc2F<T> func)
-	{
-		return MatUtils4F.transformPoint2Func(v, this.m, func);
-	}
-	
-	public <T> T transformPoint2Func(float v0, float v1, IFunc2F<T> func)
-	{
-		return MatUtils4F.transformPoint2Func(v0, v1, this.m, func);
-	}
-	
-	public float[] transformVec2T(ITup2RF v, @ExtractionParam float[] res)
-	{
-		MatUtils4F.transformVec2(v, this.m, res);
-		
-		return res;
-	}
-	
-	public float[] transformVec2T(float[] v, @ExtractionParam float[] res)
-	{
-		MatUtils4F.transformVec2(v, this.m, res);
-		
-		return res;
-	}
-	
-	public float[] transformVec2T(float v0, float v1, @ExtractionParam float[] res)
-	{
-		MatUtils4F.transformVec2(v0, v1, this.m, res);
-		
-		return res;
-	}
-	
-	public <T extends ITup2WF> T transformVec2T(ITup2RF v, @ExtractionParam T res)
-	{
-		MatUtils4F.transformVec2(v, this.m, res);
-		
-		return res;
-	}
-	
-	public <T extends ITup2WF> T transformVec2T(float[] v, @ExtractionParam T res)
-	{
-		MatUtils4F.transformVec2(v, this.m, res);
-		
-		return res;
-	}
-	
-	public <T extends ITup2WF> T transformVec2T(float v0, float v1, @ExtractionParam T res)
-	{
-		MatUtils4F.transformVec2(v0, v1, this.m, res);
-		
-		return res;
-	}
-	
-	public <T> T transformVec2Func(ITup2RF v, IFunc2F<T> func)
-	{
-		return MatUtils4F.transformVec2Func(v, this.m, func);
-	}
-	
-	public <T> T transformVec2Func(float[] v, IFunc2F<T> func)
-	{
-		return MatUtils4F.transformVec2Func(v, this.m, func);
-	}
-	
-	public <T> T transformVec2Func(float v0, float v1, IFunc2F<T> func)
-	{
-		return MatUtils4F.transformVec2Func(v0, v1, this.m, func);
-	}
-	
-	public float[] transform3T(boolean isPoint, ITup3RF v, @ExtractionParam float[] res)
-	{
-		MatUtils4F.transform3(isPoint, v, this.m, res);
-		
-		return res;
-	}
-	
-	public float[] transform3T(boolean isPoint, float[] v, @ExtractionParam float[] res)
-	{
-		MatUtils4F.transform3(isPoint, v, this.m, res);
-		
-		return res;
-	}
-	
-	public float[] transform3T(boolean isPoint, float v0, float v1, float v2, @ExtractionParam float[] res)
-	{
-		MatUtils4F.transform3(isPoint, v0, v1, v2, this.m, res);
-		
-		return res;
-	}
-	
-	public <T extends ITup3WF> T transform3T(boolean isPoint, ITup3RF v, @ExtractionParam T res)
-	{
-		MatUtils4F.transform3(isPoint, v, this.m, res);
-		
-		return res;
-	}
-	
-	public <T extends ITup3WF> T transform3T(boolean isPoint, float[] v, @ExtractionParam T res)
-	{
-		MatUtils4F.transform3(isPoint, v, this.m, res);
-		
-		return res;
-	}
-	
-	public <T extends ITup3WF> T transform3T(boolean isPoint, float v0, float v1, float v2, @ExtractionParam T res)
-	{
-		MatUtils4F.transform3(isPoint, v0, v1, v2, this.m, res);
-		
-		return res;
-	}
-	
-	public <T> T transform3Func(boolean isPoint, ITup3RF v, IFunc3F<T> func)
-	{
-		return MatUtils4F.transform3Func(isPoint, v, this.m, func);
-	}
-	
-	public <T> T transform3Func(boolean isPoint, float[] v, IFunc3F<T> func)
-	{
-		return MatUtils4F.transform3Func(isPoint, v, this.m, func);
-	}
-	
-	public <T> T transform3Func(boolean isPoint, float v0, float v1, float v2, IFunc3F<T> func)
-	{
-		return MatUtils4F.transform3Func(isPoint, v0, v1, v2, this.m, func);
-	}
-	
-	public float[] transformPoint3T(ITup3RF v, @ExtractionParam float[] res)
-	{
-		MatUtils4F.transformPoint3(v, this.m, res);
-		
-		return res;
-	}
-	
-	public float[] transformPoint3T(float[] v, @ExtractionParam float[] res)
-	{
-		MatUtils4F.transformPoint3(v, this.m, res);
-		
-		return res;
-	}
-	
-	public float[] transformPoint3T(float v0, float v1, float v2, @ExtractionParam float[] res)
-	{
-		MatUtils4F.transformPoint3(v0, v1, v2, this.m, res);
-		
-		return res;
-	}
-	
-	public <T extends ITup3WF> T transformPoint3T(ITup3RF v, @ExtractionParam T res)
-	{
-		MatUtils4F.transformPoint3(v, this.m, res);
-		
-		return res;
-	}
-	
-	public <T extends ITup3WF> T transformPoint3T(float[] v, @ExtractionParam T res)
-	{
-		MatUtils4F.transformPoint3(v, this.m, res);
-		
-		return res;
-	}
-	
-	public <T extends ITup3WF> T transformPoint3T(float v0, float v1, float v2, @ExtractionParam T res)
-	{
-		MatUtils4F.transformPoint3(v0, v1, v2, this.m, res);
-		
-		return res;
-	}
-	
-	public <T> T transformPoint3Func(ITup3RF v, IFunc3F<T> func)
-	{
-		return MatUtils4F.transformPoint3Func(v, this.m, func);
-	}
-	
-	public <T> T transformPoint3Func(float[] v, IFunc3F<T> func)
-	{
-		return MatUtils4F.transformPoint3Func(v, this.m, func);
-	}
-	
-	public <T> T transformPoint3Func(float v0, float v1, float v2, IFunc3F<T> func)
-	{
-		return MatUtils4F.transformPoint3Func(v0, v1, v2, this.m, func);
-	}
-	
-	public float[] transformVec3T(ITup3RF v, @ExtractionParam float[] res)
-	{
-		MatUtils4F.transformVec3(v, this.m, res);
-		
-		return res;
-	}
-	
-	public float[] transformVec3T(float[] v, @ExtractionParam float[] res)
-	{
-		MatUtils4F.transformVec3(v, this.m, res);
-		
-		return res;
-	}
-	
-	public float[] transformVec3T(float v0, float v1, float v2, @ExtractionParam float[] res)
-	{
-		MatUtils4F.transformVec3(v0, v1, v2, this.m, res);
-		
-		return res;
-	}
-	
-	public <T extends ITup3WF> T transformVec3T(ITup3RF v, @ExtractionParam T res)
-	{
-		MatUtils4F.transformVec3(v, this.m, res);
-		
-		return res;
-	}
-	
-	public <T extends ITup3WF> T transformVec3T(float[] v, @ExtractionParam T res)
-	{
-		MatUtils4F.transformVec3(v, this.m, res);
-		
-		return res;
-	}
-	
-	public <T extends ITup3WF> T transformVec3T(float v0, float v1, float v2, @ExtractionParam T res)
-	{
-		MatUtils4F.transformVec3(v0, v1, v2, this.m, res);
-		
-		return res;
-	}
-	
-	public <T> T transformVec3Func(ITup3RF v, IFunc3F<T> func)
-	{
-		return MatUtils4F.transformVec3Func(v, this.m, func);
-	}
-	
-	public <T> T transformVec3Func(float[] v, IFunc3F<T> func)
-	{
-		return MatUtils4F.transformVec3Func(v, this.m, func);
-	}
-	
-	public <T> T transformVec3Func(float v0, float v1, float v2, IFunc3F<T> func)
-	{
-		return MatUtils4F.transformVec3Func(v0, v1, v2, this.m, func);
-	}
-	
-	public float[] transform4T(ITup4RF v, @ExtractionParam float[] res)
-	{
-		MatUtils4F.transform4(v, this.m, res);
-		
-		return res;
-	}
-	
-	public float[] transform4T(float[] v, @ExtractionParam float[] res)
-	{
-		MatUtils4F.transform4(v, this.m, res);
-		
-		return res;
-	}
-	
-	public float[] transform4T(float v0, float v1, float v2, float v3, @ExtractionParam float[] res)
-	{
-		MatUtils4F.transform4(v0, v1, v2, v3, this.m, res);
-		
-		return res;
-	}
-	
-	public <T extends ITup4WF> T transform4T(ITup4RF v, @ExtractionParam T res)
-	{
-		MatUtils4F.transform4(v, this.m, res);
-		
-		return res;
-	}
-	
-	public <T extends ITup4WF> T transform4T(float[] v, @ExtractionParam T res)
-	{
-		MatUtils4F.transform4(v, this.m, res);
-		
-		return res;
-	}
-	
-	public <T extends ITup4WF> T transform4T(float v0, float v1, float v2, float v3, @ExtractionParam T res)
-	{
-		MatUtils4F.transform4(v0, v1, v2, v3, this.m, res);
-		
-		return res;
-	}
-	
-	public <T> T transform4Func(ITup4RF v, IFunc4F<T> func)
-	{
-		return MatUtils4F.transform4Func(v, this.m, func);
-	}
-	
-	public <T> T transform4Func(float[] v, IFunc4F<T> func)
-	{
-		return MatUtils4F.transform4Func(v, this.m, func);
-	}
-	
-	public <T> T transform4Func(float v0, float v1, float v2, float v3, IFunc4F<T> func)
-	{
-		return MatUtils4F.transform4Func(v0, v1, v2, v3, this.m, func);
-	}
-	
-	@Override
-	public Mat4F setZero()
-	{
-		this.m[ 0] = 0.0f;
-		this.m[ 1] = 0.0f;
-		this.m[ 2] = 0.0f;
-		this.m[ 3] = 0.0f;
-		
-		this.m[ 4] = 0.0f;
-		this.m[ 5] = 0.0f;
-		this.m[ 6] = 0.0f;
-		this.m[ 7] = 0.0f;
-		
-		this.m[ 8] = 0.0f;
-		this.m[ 9] = 0.0f;
-		this.m[10] = 0.0f;
-		this.m[11] = 0.0f;
-		
-		this.m[12] = 0.0f;
-		this.m[13] = 0.0f;
-		this.m[14] = 0.0f;
-		this.m[15] = 0.0f;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setIdentity()
-	{
-		this.m[ 0] = 1.0f;
-		this.m[ 1] = 0.0f;
-		this.m[ 2] = 0.0f;
-		this.m[ 3] = 0.0f;
-		
-		this.m[ 4] = 0.0f;
-		this.m[ 5] = 1.0f;
-		this.m[ 6] = 0.0f;
-		this.m[ 7] = 0.0f;
-		
-		this.m[ 8] = 0.0f;
-		this.m[ 9] = 0.0f;
-		this.m[10] = 1.0f;
-		this.m[11] = 0.0f;
-		
-		this.m[12] = 0.0f;
-		this.m[13] = 0.0f;
-		this.m[14] = 0.0f;
-		this.m[15] = 1.0f;
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setTranslation2(ITup2RF v)
-	{
-		float vX = v.v0();
-		float vY = v.v1();
-		
-		this.m[ 0] = 1.0f;
-		this.m[ 1] = 0.0f;
-		this.m[ 2] = 0.0f;
-		this.m[ 3] = 0.0f;
-		
-		this.m[ 4] = 0.0f;
-		this.m[ 5] = 1.0f;
-		this.m[ 6] = 0.0f;
-		this.m[ 7] = 0.0f;
-		
-		this.m[ 8] = 0.0f;
-		this.m[ 9] = 0.0f;
-		this.m[10] = 1.0f;
-		this.m[11] = 0.0f;
-		
-		this.m[12] = vX;
-		this.m[13] = vY;
-		this.m[14] = 0.0f;
-		this.m[15] = 1.0f;
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setTranslation2(float[] v)
-	{
-		float vX = v[0];
-		float vY = v[1];
-		
-		this.m[ 0] = 1.0f;
-		this.m[ 1] = 0.0f;
-		this.m[ 2] = 0.0f;
-		this.m[ 3] = 0.0f;
-		
-		this.m[ 4] = 0.0f;
-		this.m[ 5] = 1.0f;
-		this.m[ 6] = 0.0f;
-		this.m[ 7] = 0.0f;
-		
-		this.m[ 8] = 0.0f;
-		this.m[ 9] = 0.0f;
-		this.m[10] = 1.0f;
-		this.m[11] = 0.0f;
-		
-		this.m[12] = vX;
-		this.m[13] = vY;
-		this.m[14] = 0.0f;
-		this.m[15] = 1.0f;
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setTranslation2(float vX, float vY)
-	{
-		this.m[ 0] = 1.0f;
-		this.m[ 1] = 0.0f;
-		this.m[ 2] = 0.0f;
-		this.m[ 3] = 0.0f;
-		
-		this.m[ 4] = 0.0f;
-		this.m[ 5] = 1.0f;
-		this.m[ 6] = 0.0f;
-		this.m[ 7] = 0.0f;
-		
-		this.m[ 8] = 0.0f;
-		this.m[ 9] = 0.0f;
-		this.m[10] = 1.0f;
-		this.m[11] = 0.0f;
-		
-		this.m[12] = vX;
-		this.m[13] = vY;
-		this.m[14] = 0.0f;
-		this.m[15] = 1.0f;
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setTranslation3(ITup3RF v)
-	{
-		float vX = v.v0();
-		float vY = v.v1();
-		float vZ = v.v2();
-		
-		this.m[ 0] = 1.0f;
-		this.m[ 1] = 0.0f;
-		this.m[ 2] = 0.0f;
-		this.m[ 3] = 0.0f;
-		
-		this.m[ 4] = 0.0f;
-		this.m[ 5] = 1.0f;
-		this.m[ 6] = 0.0f;
-		this.m[ 7] = 0.0f;
-		
-		this.m[ 8] = 0.0f;
-		this.m[ 9] = 0.0f;
-		this.m[10] = 1.0f;
-		this.m[11] = 0.0f;
-		
-		this.m[12] = vX;
-		this.m[13] = vY;
-		this.m[14] = vZ;
-		this.m[15] = 1.0f;
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setTranslation3(float[] v)
-	{
-		float vX = v[0];
-		float vY = v[1];
-		float vZ = v[2];
-		
-		this.m[ 0] = 1.0f;
-		this.m[ 1] = 0.0f;
-		this.m[ 2] = 0.0f;
-		this.m[ 3] = 0.0f;
-		
-		this.m[ 4] = 0.0f;
-		this.m[ 5] = 1.0f;
-		this.m[ 6] = 0.0f;
-		this.m[ 7] = 0.0f;
-		
-		this.m[ 8] = 0.0f;
-		this.m[ 9] = 0.0f;
-		this.m[10] = 1.0f;
-		this.m[11] = 0.0f;
-		
-		this.m[12] = vX;
-		this.m[13] = vY;
-		this.m[14] = vZ;
-		this.m[15] = 1.0f;
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setTranslation3(float vX, float vY, float vZ)
-	{
-		this.m[ 0] = 1.0f;
-		this.m[ 1] = 0.0f;
-		this.m[ 2] = 0.0f;
-		this.m[ 3] = 0.0f;
-		
-		this.m[ 4] = 0.0f;
-		this.m[ 5] = 1.0f;
-		this.m[ 6] = 0.0f;
-		this.m[ 7] = 0.0f;
-		
-		this.m[ 8] = 0.0f;
-		this.m[ 9] = 0.0f;
-		this.m[10] = 1.0f;
-		this.m[11] = 0.0f;
-		
-		this.m[12] = vX;
-		this.m[13] = vY;
-		this.m[14] = vZ;
-		this.m[15] = 1.0f;
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setScaling2(ITup2RF s)
-	{
-		float sX = s.v0();
-		float sY = s.v1();
-		
-		this.m[ 0] = sX;
-		this.m[ 1] = 0.0f;
-		this.m[ 2] = 0.0f;
-		this.m[ 3] = 0.0f;
-		
-		this.m[ 4] = 0.0f;
-		this.m[ 5] = sY;
-		this.m[ 6] = 0.0f;
-		this.m[ 7] = 0.0f;
-		
-		this.m[ 8] = 0.0f;
-		this.m[ 9] = 0.0f;
-		this.m[10] = 1.0f;
-		this.m[11] = 0.0f;
-		
-		this.m[12] = 0.0f;
-		this.m[13] = 0.0f;
-		this.m[14] = 0.0f;
-		this.m[15] = 1.0f;
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setScaling2(float[] s)
-	{
-		float sX = s[0];
-		float sY = s[1];
-		
-		this.m[ 0] = sX;
-		this.m[ 1] = 0.0f;
-		this.m[ 2] = 0.0f;
-		this.m[ 3] = 0.0f;
-		
-		this.m[ 4] = 0.0f;
-		this.m[ 5] = sY;
-		this.m[ 6] = 0.0f;
-		this.m[ 7] = 0.0f;
-		
-		this.m[ 8] = 0.0f;
-		this.m[ 9] = 0.0f;
-		this.m[10] = 1.0f;
-		this.m[11] = 0.0f;
-		
-		this.m[12] = 0.0f;
-		this.m[13] = 0.0f;
-		this.m[14] = 0.0f;
-		this.m[15] = 1.0f;
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setScaling2(float sX, float sY)
-	{
-		this.m[ 0] = sX;
-		this.m[ 1] = 0.0f;
-		this.m[ 2] = 0.0f;
-		this.m[ 3] = 0.0f;
-		
-		this.m[ 4] = 0.0f;
-		this.m[ 5] = sY;
-		this.m[ 6] = 0.0f;
-		this.m[ 7] = 0.0f;
-		
-		this.m[ 8] = 0.0f;
-		this.m[ 9] = 0.0f;
-		this.m[10] = 1.0f;
-		this.m[11] = 0.0f;
-		
-		this.m[12] = 0.0f;
-		this.m[13] = 0.0f;
-		this.m[14] = 0.0f;
-		this.m[15] = 1.0f;
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setScaling3(ITup3RF s)
-	{
-		float sX = s.v0();
-		float sY = s.v1();
-		float sZ = s.v2();
-		
-		this.m[ 0] = sX;
-		this.m[ 1] = 0.0f;
-		this.m[ 2] = 0.0f;
-		this.m[ 3] = 0.0f;
-		
-		this.m[ 4] = 0.0f;
-		this.m[ 5] = sY;
-		this.m[ 6] = 0.0f;
-		this.m[ 7] = 0.0f;
-		
-		this.m[ 8] = 0.0f;
-		this.m[ 9] = 0.0f;
-		this.m[10] = sZ;
-		this.m[11] = 0.0f;
-		
-		this.m[12] = 0.0f;
-		this.m[13] = 0.0f;
-		this.m[14] = 0.0f;
-		this.m[15] = 1.0f;
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setScaling3(float[] s)
-	{
-		float sX = s[0];
-		float sY = s[1];
-		float sZ = s[2];
-		
-		this.m[ 0] = sX;
-		this.m[ 1] = 0.0f;
-		this.m[ 2] = 0.0f;
-		this.m[ 3] = 0.0f;
-		
-		this.m[ 4] = 0.0f;
-		this.m[ 5] = sY;
-		this.m[ 6] = 0.0f;
-		this.m[ 7] = 0.0f;
-		
-		this.m[ 8] = 0.0f;
-		this.m[ 9] = 0.0f;
-		this.m[10] = sZ;
-		this.m[11] = 0.0f;
-		
-		this.m[12] = 0.0f;
-		this.m[13] = 0.0f;
-		this.m[14] = 0.0f;
-		this.m[15] = 1.0f;
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setScaling3(float sX, float sY, float sZ)
-	{
-		this.m[ 0] = sX;
-		this.m[ 1] = 0.0f;
-		this.m[ 2] = 0.0f;
-		this.m[ 3] = 0.0f;
-		
-		this.m[ 4] = 0.0f;
-		this.m[ 5] = sY;
-		this.m[ 6] = 0.0f;
-		this.m[ 7] = 0.0f;
-		
-		this.m[ 8] = 0.0f;
-		this.m[ 9] = 0.0f;
-		this.m[10] = sZ;
-		this.m[11] = 0.0f;
-		
-		this.m[12] = 0.0f;
-		this.m[13] = 0.0f;
-		this.m[14] = 0.0f;
-		this.m[15] = 1.0f;
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setScaling4(ITup4RF s)
-	{
-		float sX = s.v0();
-		float sY = s.v1();
-		float sZ = s.v2();
-		float sW = s.v3();
-		
-		this.m[ 0] = sX;
-		this.m[ 1] = 0.0f;
-		this.m[ 2] = 0.0f;
-		this.m[ 3] = 0.0f;
-		
-		this.m[ 4] = 0.0f;
-		this.m[ 5] = sY;
-		this.m[ 6] = 0.0f;
-		this.m[ 7] = 0.0f;
-		
-		this.m[ 8] = 0.0f;
-		this.m[ 9] = 0.0f;
-		this.m[10] = sZ;
-		this.m[11] = 0.0f;
-		
-		this.m[12] = 0.0f;
-		this.m[13] = 0.0f;
-		this.m[14] = 0.0f;
-		this.m[15] = sW;
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setScaling4(float[] s)
-	{
-		float sX = s[0];
-		float sY = s[1];
-		float sZ = s[2];
-		float sW = s[3];
-		
-		this.m[ 0] = sX;
-		this.m[ 1] = 0.0f;
-		this.m[ 2] = 0.0f;
-		this.m[ 3] = 0.0f;
-		
-		this.m[ 4] = 0.0f;
-		this.m[ 5] = sY;
-		this.m[ 6] = 0.0f;
-		this.m[ 7] = 0.0f;
-		
-		this.m[ 8] = 0.0f;
-		this.m[ 9] = 0.0f;
-		this.m[10] = sZ;
-		this.m[11] = 0.0f;
-		
-		this.m[12] = 0.0f;
-		this.m[13] = 0.0f;
-		this.m[14] = 0.0f;
-		this.m[15] = sW;
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setScaling4(float sX, float sY, float sZ, float sW)
-	{
-		this.m[ 0] = sX;
-		this.m[ 1] = 0.0f;
-		this.m[ 2] = 0.0f;
-		this.m[ 3] = 0.0f;
-		
-		this.m[ 4] = 0.0f;
-		this.m[ 5] = sY;
-		this.m[ 6] = 0.0f;
-		this.m[ 7] = 0.0f;
-		
-		this.m[ 8] = 0.0f;
-		this.m[ 9] = 0.0f;
-		this.m[10] = sZ;
-		this.m[11] = 0.0f;
-		
-		this.m[12] = 0.0f;
-		this.m[13] = 0.0f;
-		this.m[14] = 0.0f;
-		this.m[15] = sW;
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setBaseChanging(ITup3RF u, ITup3RF v, ITup3RF w)
-	{
-		MatUtils4F.setBaseChanging(u, v, w, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setBaseChanging(ITup3RF u, ITup3RF v, float[] w)
-	{
-		MatUtils4F.setBaseChanging(u, v, w, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setBaseChanging(ITup3RF u, ITup3RF v, float wV0, float wV1, float wV2)
-	{
-		MatUtils4F.setBaseChanging(u, v, wV0, wV1, wV2, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setBaseChanging(ITup3RF u, float[] v, ITup3RF w)
-	{
-		MatUtils4F.setBaseChanging(u, v, w, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setBaseChanging(ITup3RF u, float[] v, float[] w)
-	{
-		MatUtils4F.setBaseChanging(u, v, w, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setBaseChanging(ITup3RF u, float[] v, float wV0, float wV1, float wV2)
-	{
-		MatUtils4F.setBaseChanging(u, v, wV0, wV1, wV2, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setBaseChanging(ITup3RF u, float vV0, float vV1, float vV2, ITup3RF w)
-	{
-		MatUtils4F.setBaseChanging(u, vV0, vV1, vV2, w, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setBaseChanging(ITup3RF u, float vV0, float vV1, float vV2, float[] w)
-	{
-		MatUtils4F.setBaseChanging(u, vV0, vV1, vV2, w, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setBaseChanging(ITup3RF u, float vV0, float vV1, float vV2, float wV0, float wV1, float wV2)
-	{
-		MatUtils4F.setBaseChanging(u, vV0, vV1, vV2, wV0, wV1, wV2, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setBaseChanging(float[] u, ITup3RF v, ITup3RF w)
-	{
-		MatUtils4F.setBaseChanging(u, v, w, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setBaseChanging(float[] u, ITup3RF v, float[] w)
-	{
-		MatUtils4F.setBaseChanging(u, v, w, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setBaseChanging(float[] u, ITup3RF v, float wV0, float wV1, float wV2)
-	{
-		MatUtils4F.setBaseChanging(u, v, wV0, wV1, wV2, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setBaseChanging(float[] u, float[] v, ITup3RF w)
-	{
-		MatUtils4F.setBaseChanging(u, v, w, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setBaseChanging(float[] u, float[] v, float[] w)
-	{
-		MatUtils4F.setBaseChanging(u, v, w, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setBaseChanging(float[] u, float[] v, float wV0, float wV1, float wV2)
-	{
-		MatUtils4F.setBaseChanging(u, v, wV0, wV1, wV2, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setBaseChanging(float[] u, float vV0, float vV1, float vV2, ITup3RF w)
-	{
-		MatUtils4F.setBaseChanging(u, vV0, vV1, vV2, w, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setBaseChanging(float[] u, float vV0, float vV1, float vV2, float[] w)
-	{
-		MatUtils4F.setBaseChanging(u, vV0, vV1, vV2, w, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setBaseChanging(float[] u, float vV0, float vV1, float vV2, float wV0, float wV1, float wV2)
-	{
-		MatUtils4F.setBaseChanging(u, vV0, vV1, vV2, wV0, wV1, wV2, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setBaseChanging(float uV0, float uV1, float uV2, ITup3RF v, ITup3RF w)
-	{
-		MatUtils4F.setBaseChanging(uV0, uV1, uV2, v, w, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setBaseChanging(float uV0, float uV1, float uV2, ITup3RF v, float[] w)
-	{
-		MatUtils4F.setBaseChanging(uV0, uV1, uV2, v, w, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setBaseChanging(float uV0, float uV1, float uV2, ITup3RF v, float wV0, float wV1, float wV2)
-	{
-		MatUtils4F.setBaseChanging(uV0, uV1, uV2, v, wV0, wV1, wV2, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setBaseChanging(float uV0, float uV1, float uV2, float[] v, ITup3RF w)
-	{
-		MatUtils4F.setBaseChanging(uV0, uV1, uV2, v, w, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setBaseChanging(float uV0, float uV1, float uV2, float[] v, float[] w)
-	{
-		MatUtils4F.setBaseChanging(uV0, uV1, uV2, v, w, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setBaseChanging(float uV0, float uV1, float uV2, float[] v, float wV0, float wV1, float wV2)
-	{
-		MatUtils4F.setBaseChanging(uV0, uV1, uV2, v, wV0, wV1, wV2, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setBaseChanging(float uV0, float uV1, float uV2, float vV0, float vV1, float vV2, ITup3RF w)
-	{
-		MatUtils4F.setBaseChanging(uV0, uV1, uV2, vV0, vV1, vV2, w, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setBaseChanging(float uV0, float uV1, float uV2, float vV0, float vV1, float vV2, float[] w)
-	{
-		MatUtils4F.setBaseChanging(uV0, uV1, uV2, vV0, vV1, vV2, w, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setBaseChanging(float uV0, float uV1, float uV2, float vV0, float vV1, float vV2, float wV0, float wV1, float wV2)
-	{
-		MatUtils4F.setBaseChanging(uV0, uV1, uV2, vV0, vV1, vV2, wV0, wV1, wV2, this.m);
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRotationByQuat(ITup4RF q)
-	{
-		float qX = q.v0();
-		float qY = q.v1();
-		float qZ = q.v2();
-		float qW = q.v3();
-		
-		this.m[ 0] = 1.0f - 2.0f * (qY * qY + qZ * qZ);
-		this.m[ 1] = 2.0f * (qX * qY + qZ * qW);
-		this.m[ 2] = 2.0f * (qX * qZ - qW * qY);
-		this.m[ 3] = 0.0f;
-		
-		this.m[ 4] = 2.0f * (qX * qY - qZ * qW);
-		this.m[ 5] = 1.0f - 2.0f * (qX * qX + qZ * qZ);
-		this.m[ 6] = 2.0f * (qY * qZ + qW * qX);
-		this.m[ 7] = 0.0f;
-		
-		this.m[ 8] = 2.0f * (qX * qZ + qW * qY);
-		this.m[ 9] = 2.0f * (qY * qZ - qW * qX);
-		this.m[10] = 1.0f - 2.0f * (qX * qX + qY * qY);
-		this.m[11] = 0.0f;
-		
-		this.m[12] = 0.0f;
-		this.m[13] = 0.0f;
-		this.m[14] = 0.0f;
-		this.m[15] = 1.0f;
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setRotationByQuat(float[] q)
-	{
-		float qX = q[0];
-		float qY = q[1];
-		float qZ = q[2];
-		float qW = q[3];
-		
-		this.m[ 0] = 1.0f - 2.0f * (qY * qY + qZ * qZ);
-		this.m[ 1] = 2.0f * (qX * qY + qZ * qW);
-		this.m[ 2] = 2.0f * (qX * qZ - qW * qY);
-		this.m[ 3] = 0.0f;
-		
-		this.m[ 4] = 2.0f * (qX * qY - qZ * qW);
-		this.m[ 5] = 1.0f - 2.0f * (qX * qX + qZ * qZ);
-		this.m[ 6] = 2.0f * (qY * qZ + qW * qX);
-		this.m[ 7] = 0.0f;
-		
-		this.m[ 8] = 2.0f * (qX * qZ + qW * qY);
-		this.m[ 9] = 2.0f * (qY * qZ - qW * qX);
-		this.m[10] = 1.0f - 2.0f * (qX * qX + qY * qY);
-		this.m[11] = 0.0f;
-		
-		this.m[12] = 0.0f;
-		this.m[13] = 0.0f;
-		this.m[14] = 0.0f;
-		this.m[15] = 1.0f;
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setRotationByQuat(float qX, float qY, float qZ, float qW)
-	{
-		this.m[ 0] = 1.0f - 2.0f * (qY * qY + qZ * qZ);
-		this.m[ 1] = 2.0f * (qX * qY + qZ * qW);
-		this.m[ 2] = 2.0f * (qX * qZ - qW * qY);
-		this.m[ 3] = 0.0f;
-		
-		this.m[ 4] = 2.0f * (qX * qY - qZ * qW);
-		this.m[ 5] = 1.0f - 2.0f * (qX * qX + qZ * qZ);
-		this.m[ 6] = 2.0f * (qY * qZ + qW * qX);
-		this.m[ 7] = 0.0f;
-		
-		this.m[ 8] = 2.0f * (qX * qZ + qW * qY);
-		this.m[ 9] = 2.0f * (qY * qZ - qW * qX);
-		this.m[10] = 1.0f - 2.0f * (qX * qX + qY * qY);
-		this.m[11] = 0.0f;
-		
-		this.m[12] = 0.0f;
-		this.m[13] = 0.0f;
-		this.m[14] = 0.0f;
-		this.m[15] = 1.0f;
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setRotationRad(ITup3RF a, float angle)
-	{
-		MatUtils4F.setRotationRad(a, angle, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setRotationRad(float[] a, float angle)
-	{
-		MatUtils4F.setRotationRad(a, angle, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setRotationRad(float aV0, float aV1, float aV2, float angle)
-	{
-		MatUtils4F.setRotationRad(aV0, aV1, aV2, angle, this.m);
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setRotationDeg(ITup3RF a, float angle)
-	{
-		MatUtils4F.setRotationDeg(a, angle, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setRotationDeg(float[] a, float angle)
-	{
-		MatUtils4F.setRotationDeg(a, angle, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F setRotationDeg(float aV0, float aV1, float aV2, float angle)
-	{
-		MatUtils4F.setRotationDeg(aV0, aV1, aV2, angle, this.m);
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setPerspective(float fovY, float aspectRatio, float near, float far)
-	{
-		MatUtils4F.setPerspective(fovY, aspectRatio, near, far, this.m);
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F setOrtho(float left, float right, float bottom, float top, float near, float far)
-	{
-		MatUtils4F.setOrtho(left, right, bottom, top, near, far, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F translate2(ITup2RF v)
-	{
-		MatUtils4F.translate2(this.m, v, this.m);
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F translate2(float[] v)
-	{
-		MatUtils4F.translate2(this.m, v, this.m);
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F translate2(float v0, float v1)
-	{
-		MatUtils4F.translate2(this.m, v0, v1, this.m);
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F translate2N(ITup2RF v)
-	{
-		return MatUtils4F.translate2Func(this.m, v, CTOR);
-	}
-
-	@Override
-	public Mat4F translate2N(float[] v)
-	{
-		return MatUtils4F.translate2Func(this.m, v, CTOR);
-	}
-
-	@Override
-	public Mat4F translate2N(float v0, float v1)
-	{
-		return MatUtils4F.translate2Func(this.m, v0, v1, CTOR);
-	}
-
-	@Override
-	public Mat4F translate3(ITup3RF v)
-	{
-		MatUtils4F.translate3(this.m, v, this.m);
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F translate3(float[] v)
-	{
-		MatUtils4F.translate3(this.m, v, this.m);
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F translate3(float v0, float v1, float v2)
-	{
-		MatUtils4F.translate3(this.m, v0, v1, v2, this.m);
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F translate3N(ITup3RF v)
-	{
-		return MatUtils4F.translate3Func(this.m, v, CTOR);
-	}
-
-	@Override
-	public Mat4F translate3N(float[] v)
-	{
-		return MatUtils4F.translate3Func(this.m, v, CTOR);
-	}
-
-	@Override
-	public Mat4F translate3N(float v0, float v1, float v2)
-	{
-		return MatUtils4F.translate3Func(this.m, v0, v1, v2, CTOR);
-	}
-
-	@Override
-	public Mat4F scale2(ITup2RF v)
-	{
-		MatUtils4F.scale2(this.m, v, this.m);
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F scale2(float[] v)
-	{
-		MatUtils4F.scale2(this.m, v, this.m);
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F scale2(float v0, float v1)
-	{
-		MatUtils4F.scale2(this.m, v0, v1, this.m);
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F scale2N(ITup2RF v)
-	{
-		return MatUtils4F.scale2Func(this.m, v, CTOR);
-	}
-
-	@Override
-	public Mat4F scale2N(float[] v)
-	{
-		return MatUtils4F.scale2Func(this.m, v, CTOR);
-	}
-
-	@Override
-	public Mat4F scale2N(float v0, float v1)
-	{
-		return MatUtils4F.scale2Func(this.m, v0, v1, CTOR);
-	}
-
-	@Override
-	public Mat4F scale3(ITup3RF v)
-	{
-		MatUtils4F.scale3(this.m, v, this.m);
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F scale3(float[] v)
-	{
-		MatUtils4F.scale3(this.m, v, this.m);
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F scale3(float v0, float v1, float v2)
-	{
-		MatUtils4F.scale3(this.m, v0, v1, v2, this.m);
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F scale3N(ITup3RF v)
-	{
-		return MatUtils4F.scale3Func(this.m, v, CTOR);
-	}
-
-	@Override
-	public Mat4F scale3N(float[] v)
-	{
-		return MatUtils4F.scale3Func(this.m, v, CTOR);
-	}
-
-	@Override
-	public Mat4F scale3N(float v0, float v1, float v2)
-	{
-		return MatUtils4F.scale3Func(this.m, v0, v1, v2, CTOR);
-	}
-
-	@Override
-	public Mat4F scale4(ITup4RF v)
-	{
-		MatUtils4F.scale4(this.m, v, this.m);
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F scale4(float[] v)
-	{
-		MatUtils4F.scale4(this.m, v, this.m);
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F scale4(float v0, float v1, float v2, float v3)
-	{
-		MatUtils4F.scale4(this.m, v0, v1, v2, v3, this.m);
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F scale4N(ITup4RF v)
-	{
-		return MatUtils4F.scale4Func(this.m, v, CTOR);
-	}
-
-	@Override
-	public Mat4F scale4N(float[] v)
-	{
-		return MatUtils4F.scale4Func(this.m, v, CTOR);
-	}
-
-	@Override
-	public Mat4F scale4N(float v0, float v1, float v2, float v3)
-	{
-		return MatUtils4F.scale4Func(this.m, v0, v1, v2, v3, CTOR);
-	}
-
-	@Override
-	public Mat4F baseChange(ITup3RF u, ITup3RF v, ITup3RF w)
-	{
-		MatUtils4F.baseChange(this.m, u, v, w, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChange(ITup3RF u, ITup3RF v, float[] w)
-	{
-		MatUtils4F.baseChange(this.m, u, v, w, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChange(ITup3RF u, ITup3RF v, float wV0, float wV1, float wV2)
-	{
-		MatUtils4F.baseChange(this.m, u, v, wV0, wV1, wV2, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChange(ITup3RF u, float[] v, ITup3RF w)
-	{
-		MatUtils4F.baseChange(this.m, u, v, w, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChange(ITup3RF u, float[] v, float[] w)
-	{
-		MatUtils4F.baseChange(this.m, u, v, w, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChange(ITup3RF u, float[] v, float wV0, float wV1, float wV2)
-	{
-		MatUtils4F.baseChange(this.m, u, v, wV0, wV1, wV2, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChange(ITup3RF u, float vV0, float vV1, float vV2, ITup3RF w)
-	{
-		MatUtils4F.baseChange(this.m, u, vV0, vV1, vV2, w, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChange(ITup3RF u, float vV0, float vV1, float vV2, float[] w)
-	{
-		MatUtils4F.baseChange(this.m, u, vV0, vV1, vV2, w, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChange(ITup3RF u, float vV0, float vV1, float vV2, float wV0, float wV1, float wV2)
-	{
-		MatUtils4F.baseChange(this.m, u, vV0, vV1, vV2, wV0, wV1, wV2, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChange(float[] u, ITup3RF v, ITup3RF w)
-	{
-		MatUtils4F.baseChange(this.m, u, v, w, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChange(float[] u, ITup3RF v, float[] w)
-	{
-		MatUtils4F.baseChange(this.m, u, v, w, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChange(float[] u, ITup3RF v, float wV0, float wV1, float wV2)
-	{
-		MatUtils4F.baseChange(this.m, u, v, wV0, wV1, wV2, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChange(float[] u, float[] v, ITup3RF w)
-	{
-		MatUtils4F.baseChange(this.m, u, v, w, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChange(float[] u, float[] v, float[] w)
-	{
-		MatUtils4F.baseChange(this.m, u, v, w, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChange(float[] u, float[] v, float wV0, float wV1, float wV2)
-	{
-		MatUtils4F.baseChange(this.m, u, v, wV0, wV1, wV2, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChange(float[] u, float vV0, float vV1, float vV2, ITup3RF w)
-	{
-		MatUtils4F.baseChange(this.m, u, vV0, vV1, vV2, w, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChange(float[] u, float vV0, float vV1, float vV2, float[] w)
-	{
-		MatUtils4F.baseChange(this.m, u, vV0, vV1, vV2, w, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChange(float[] u, float vV0, float vV1, float vV2, float wV0, float wV1, float wV2)
-	{
-		MatUtils4F.baseChange(this.m, u, vV0, vV1, vV2, wV0, wV1, wV2, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChange(float uV0, float uV1, float uV2, ITup3RF v, ITup3RF w)
-	{
-		MatUtils4F.baseChange(this.m, uV0, uV1, uV2, v, w, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChange(float uV0, float uV1, float uV2, ITup3RF v, float[] w)
-	{
-		MatUtils4F.baseChange(this.m, uV0, uV1, uV2, v, w, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChange(float uV0, float uV1, float uV2, ITup3RF v, float wV0, float wV1, float wV2)
-	{
-		MatUtils4F.baseChange(this.m, uV0, uV1, uV2, v, wV0, wV1, wV2, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChange(float uV0, float uV1, float uV2, float[] v, ITup3RF w)
-	{
-		MatUtils4F.baseChange(this.m, uV0, uV1, uV2, v, w, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChange(float uV0, float uV1, float uV2, float[] v, float[] w)
-	{
-		MatUtils4F.baseChange(this.m, uV0, uV1, uV2, v, w, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChange(float uV0, float uV1, float uV2, float[] v, float wV0, float wV1, float wV2)
-	{
-		MatUtils4F.baseChange(this.m, uV0, uV1, uV2, v, wV0, wV1, wV2, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChange(float uV0, float uV1, float uV2, float vV0, float vV1, float vV2, ITup3RF w)
-	{
-		MatUtils4F.baseChange(this.m, uV0, uV1, uV2, vV0, vV1, vV2, w, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChange(float uV0, float uV1, float uV2, float vV0, float vV1, float vV2, float[] w)
-	{
-		MatUtils4F.baseChange(this.m, uV0, uV1, uV2, vV0, vV1, vV2, w, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChange(float rv0, float rv1, float rv2, float uv0, float uv1, float uv2, float fv0, float fv1, float fv2)
-	{
-		MatUtils4F.baseChange(this.m, rv0, rv1, rv2, uv0, uv1, uv2, fv0, fv1, fv2, this.m);
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F baseChangeN(ITup3RF u, ITup3RF v, ITup3RF w)
-	{
-		MatUtils4F.baseChangeFunc(this.m, u, v, w, CTOR);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChangeN(ITup3RF u, ITup3RF v, float[] w)
-	{
-		MatUtils4F.baseChangeFunc(this.m, u, v, w, CTOR);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChangeN(ITup3RF u, ITup3RF v, float wV0, float wV1, float wV2)
-	{
-		MatUtils4F.baseChangeFunc(this.m, u, v, wV0, wV1, wV2, CTOR);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChangeN(ITup3RF u, float[] v, ITup3RF w)
-	{
-		MatUtils4F.baseChangeFunc(this.m, u, v, w, CTOR);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChangeN(ITup3RF u, float[] v, float[] w)
-	{
-		MatUtils4F.baseChangeFunc(this.m, u, v, w, CTOR);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChangeN(ITup3RF u, float[] v, float wV0, float wV1, float wV2)
-	{
-		MatUtils4F.baseChangeFunc(this.m, u, v, wV0, wV1, wV2, CTOR);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChangeN(ITup3RF u, float vV0, float vV1, float vV2, ITup3RF w)
-	{
-		MatUtils4F.baseChangeFunc(this.m, u, vV0, vV1, vV2, w, CTOR);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChangeN(ITup3RF u, float vV0, float vV1, float vV2, float[] w)
-	{
-		MatUtils4F.baseChangeFunc(this.m, u, vV0, vV1, vV2, w, CTOR);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChangeN(ITup3RF u, float vV0, float vV1, float vV2, float wV0, float wV1, float wV2)
-	{
-		MatUtils4F.baseChangeFunc(this.m, u, vV0, vV1, vV2, wV0, wV1, wV2, CTOR);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChangeN(float[] u, ITup3RF v, ITup3RF w)
-	{
-		MatUtils4F.baseChangeFunc(this.m, u, v, w, CTOR);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChangeN(float[] u, ITup3RF v, float[] w)
-	{
-		MatUtils4F.baseChangeFunc(this.m, u, v, w, CTOR);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChangeN(float[] u, ITup3RF v, float wV0, float wV1, float wV2)
-	{
-		MatUtils4F.baseChangeFunc(this.m, u, v, wV0, wV1, wV2, CTOR);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChangeN(float[] u, float[] v, ITup3RF w)
-	{
-		MatUtils4F.baseChangeFunc(this.m, u, v, w, CTOR);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChangeN(float[] u, float[] v, float[] w)
-	{
-		MatUtils4F.baseChangeFunc(this.m, u, v, w, CTOR);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChangeN(float[] u, float[] v, float wV0, float wV1, float wV2)
-	{
-		MatUtils4F.baseChangeFunc(this.m, u, v, wV0, wV1, wV2, CTOR);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChangeN(float[] u, float vV0, float vV1, float vV2, ITup3RF w)
-	{
-		MatUtils4F.baseChangeFunc(this.m, u, vV0, vV1, vV2, w, CTOR);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChangeN(float[] u, float vV0, float vV1, float vV2, float[] w)
-	{
-		MatUtils4F.baseChangeFunc(this.m, u, vV0, vV1, vV2, w, CTOR);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChangeN(float[] u, float vV0, float vV1, float vV2, float wV0, float wV1, float wV2)
-	{
-		MatUtils4F.baseChangeFunc(this.m, u, vV0, vV1, vV2, wV0, wV1, wV2, CTOR);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChangeN(float uV0, float uV1, float uV2, ITup3RF v, ITup3RF w)
-	{
-		MatUtils4F.baseChangeFunc(this.m, uV0, uV1, uV2, v, w, CTOR);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChangeN(float uV0, float uV1, float uV2, ITup3RF v, float[] w)
-	{
-		MatUtils4F.baseChangeFunc(this.m, uV0, uV1, uV2, v, w, CTOR);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChangeN(float uV0, float uV1, float uV2, ITup3RF v, float wV0, float wV1, float wV2)
-	{
-		MatUtils4F.baseChangeFunc(this.m, uV0, uV1, uV2, v, wV0, wV1, wV2, CTOR);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChangeN(float uV0, float uV1, float uV2, float[] v, ITup3RF w)
-	{
-		MatUtils4F.baseChangeFunc(this.m, uV0, uV1, uV2, v, w, CTOR);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChangeN(float uV0, float uV1, float uV2, float[] v, float[] w)
-	{
-		MatUtils4F.baseChangeFunc(this.m, uV0, uV1, uV2, v, w, CTOR);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChangeN(float uV0, float uV1, float uV2, float[] v, float wV0, float wV1, float wV2)
-	{
-		MatUtils4F.baseChangeFunc(this.m, uV0, uV1, uV2, v, wV0, wV1, wV2, CTOR);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChangeN(float uV0, float uV1, float uV2, float vV0, float vV1, float vV2, ITup3RF w)
-	{
-		MatUtils4F.baseChangeFunc(this.m, uV0, uV1, uV2, vV0, vV1, vV2, w, CTOR);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChangeN(float uV0, float uV1, float uV2, float vV0, float vV1, float vV2, float[] w)
-	{
-		MatUtils4F.baseChangeFunc(this.m, uV0, uV1, uV2, vV0, vV1, vV2, w, CTOR);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F baseChangeN(float rv0, float rv1, float rv2, float uv0, float uv1, float uv2, float fv0, float fv1, float fv2)
-	{
-		return MatUtils4F.baseChangeFunc(this.m, rv0, rv1, rv2, uv0, uv1, uv2, fv0, fv1, fv2, CTOR);
-	}
-
-	@Override
-	public Mat4F rotateRad(ITup3RF a, float angle)
-	{
-		MatUtils4F.rotateRad(this.m, a, angle, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F rotateRad(float[] a, float angle)
-	{
-		MatUtils4F.rotateRad(this.m, a, angle, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F rotateRad(float av0, float av1, float av2, float angle)
-	{
-		MatUtils4F.rotateRad(this.m, av0, av1, av2, angle, this.m);
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F rotateRadN(ITup3RF a, float angle)
-	{
-		return MatUtils4F.rotateRadFunc(this.m, a, angle, CTOR);
-	}
-	
-	@Override
-	public Mat4F rotateRadN(float[] a, float angle)
-	{
-		return MatUtils4F.rotateRadFunc(this.m, a, angle, CTOR);
-	}
-	
-	@Override
-	public Mat4F rotateRadN(float av0, float av1, float av2, float angle)
-	{
-		return MatUtils4F.rotateRadFunc(this.m, av0, av1, av2, angle, CTOR);
-	}
-
-	@Override
-	public Mat4F rotateDeg(ITup3RF a, float angle)
-	{
-		MatUtils4F.rotateDeg(this.m, a, angle, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F rotateDeg(float[] a, float angle)
-	{
-		MatUtils4F.rotateDeg(this.m, a, angle, this.m);
-		
-		return this;
-	}
-	
-	@Override
-	public Mat4F rotateDeg(float av0, float av1, float av2, float angle)
-	{
-		MatUtils4F.rotateDeg(this.m, av0, av1, av2, angle, this.m);
-		
-		return this;
-	}
-
-	@Override
-	public Mat4F rotateDegN(ITup3RF a, float angle)
-	{
-		return MatUtils4F.rotateDegFunc(this.m, a, angle, CTOR);
-	}
-	
-	@Override
-	public Mat4F rotateDegN(float[] a, float angle)
-	{
-		return MatUtils4F.rotateDegFunc(this.m, a, angle, CTOR);
-	}
-	
-	@Override
-	public Mat4F rotateDegN(float av0, float av1, float av2, float angle)
-	{
-		return MatUtils4F.rotateDegFunc(this.m, av0, av1, av2, angle, CTOR);
-	}
-	
-	public static Mat4F zero()
-	{
-		return new Mat4F().setZero();
-	}
-	
-	public static Mat4F identity()
-	{
-		return new Mat4F().setIdentity();
-	}
-	
-	public static Mat4F translation2(ITup2RF t)
-	{
-		return new Mat4F().setTranslation2(t);
-	}
-	
-	public static Mat4F translation2(float[] t)
-	{
-		return new Mat4F().setTranslation2(t);
-	}
-	
-	public static Mat4F translation2(float v0, float v1)
-	{
-		return new Mat4F().setTranslation2(v0, v1);
-	}
-	
-	public static Mat4F translation3(ITup3RF t)
-	{
-		return new Mat4F().setTranslation3(t);
-	}
-	
-	public static Mat4F translation3(float[] t)
-	{
-		return new Mat4F().setTranslation3(t);
-	}
-	
-	public static Mat4F translation3(float v0, float v1, float v2)
-	{
-		return new Mat4F().setTranslation3(v0, v1, v2);
-	}
-	
-	public static Mat4F scaling2(ITup2RF t)
-	{
-		return new Mat4F().setScaling2(t);
-	}
-	
-	public static Mat4F scaling2(float[] t)
-	{
-		return new Mat4F().setScaling2(t);
-	}
-	
-	public static Mat4F scaling2(float v0, float v1)
-	{
-		return new Mat4F().setScaling2(v0, v1);
-	}
-	
-	public static Mat4F scaling3(ITup3RF t)
-	{
-		return new Mat4F().setScaling3(t);
-	}
-	
-	public static Mat4F scaling3(float[] t)
-	{
-		return new Mat4F().setScaling3(t);
-	}
-	
-	public static Mat4F scaling3(float v0, float v1, float v2)
-	{
-		return new Mat4F().setScaling3(v0, v1, v2);
-	}
-	
-	public static Mat4F scaling4(ITup4RF t)
-	{
-		return new Mat4F().setScaling4(t);
-	}
-	
-	public static Mat4F scaling4(float[] t)
-	{
-		return new Mat4F().setScaling4(t);
-	}
-	
-	public static Mat4F scaling4(float v0, float v1, float v2, float v3)
-	{
-		return new Mat4F().setScaling4(v0, v1, v2, v3);
-	}
-	
-	public static Mat4F rotationByQuat(ITup4RF a)
-	{
-		return new Mat4F().setRotationByQuat(a);
-	}
-	
-	public static Mat4F rotationByQuat(float[] a)
-	{
-		return new Mat4F().setRotationByQuat(a);
-	}
-	
-	public static Mat4F rotationByQuat(float aV0, float aV1, float aV2, float aV3)
-	{
-		return new Mat4F().setRotationByQuat(aV0, aV1, aV2, aV3);
-	}
-	
-	public static Mat4F rotationRad(ITup3RF a, float angle)
-	{
-		return new Mat4F().setRotationRad(a, angle);
-	}
-	
-	public static Mat4F rotationRad(float[] a, float angle)
-	{
-		return new Mat4F().setRotationRad(a, angle);
-	}
-	
-	public static Mat4F rotationRad(float aV0, float aV1, float aV2, float angle)
-	{
-		return new Mat4F().setRotationRad(aV0, aV1, aV2, angle);
-	}
-	
-	public static Mat4F rotationDeg(ITup3RF a, float angle)
-	{
-		return new Mat4F().setRotationDeg(a, angle);
-	}
-	
-	public static Mat4F rotationDeg(float[] a, float angle)
-	{
-		return new Mat4F().setRotationDeg(a, angle);
-	}
-	
-	public static Mat4F rotationDeg(float aV0, float aV1, float aV2, float angle)
-	{
-		return new Mat4F().setRotationDeg(aV0, aV1, aV2, angle);
-	}
 }

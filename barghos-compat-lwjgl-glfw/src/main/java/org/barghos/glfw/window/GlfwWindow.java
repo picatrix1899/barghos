@@ -25,9 +25,11 @@ public final class GlfwWindow
 	
 	private int windowWidth;
 	private int windowHeight;
+	private float windowAspectRatio;
 	
 	private int framebufferWidth;
 	private int framebufferHeight;
+	private float framebufferAspectRatio;
 	
 	private long monitor;
 	
@@ -159,7 +161,27 @@ public final class GlfwWindow
 		return this.framebufferWidth;
 	}
 	
+	public double framebufferWidthd()
+	{
+		return this.framebufferWidth;
+	}
+	
+	public float framebufferWidthf()
+	{
+		return this.framebufferWidth;
+	}
+	
 	public int framebufferHeight()
+	{
+		return this.framebufferHeight;
+	}
+	
+	public double framebufferHeightd()
+	{
+		return this.framebufferHeight;
+	}
+	
+	public float framebufferHeightf()
 	{
 		return this.framebufferHeight;
 	}
@@ -169,7 +191,27 @@ public final class GlfwWindow
 		return this.windowWidth;
 	}
 	
+	public double windowWidthd()
+	{
+		return this.windowWidth;
+	}
+	
+	public float windowWidthf()
+	{
+		return this.windowWidth;
+	}
+	
 	public int windowHeight()
+	{
+		return this.windowHeight;
+	}
+	
+	public double windowHeightd()
+	{
+		return this.windowHeight;
+	}
+	
+	public float windowHeightf()
 	{
 		return this.windowHeight;
 	}
@@ -184,19 +226,49 @@ public final class GlfwWindow
 		return this.windowPosX;
 	}
 	
+	public double windowPosXd()
+	{
+		return this.windowPosX;
+	}
+	
+	public float windowPosXf()
+	{
+		return this.windowPosX;
+	}
+	
 	public int windowPosY()
+	{
+		return this.windowPosY;
+	}
+	
+	public double windowPosYd()
+	{
+		return this.windowPosY;
+	}
+	
+	public float windowPosYf()
 	{
 		return this.windowPosY;
 	}
 	
 	public double windowAspectRatio()
 	{
-		return (double)this.windowWidth / (double)this.windowHeight;
+		return this.windowAspectRatio;
+	}
+	
+	public float windowAspectRatiof()
+	{
+		return this.windowAspectRatio;
 	}
 	
 	public double framebufferAspectRatio()
 	{
-		return (double)this.framebufferWidth / (double)this.framebufferHeight;
+		return this.framebufferAspectRatio;
+	}
+	
+	public float framebufferAspectRatiof()
+	{
+		return this.framebufferAspectRatio;
 	}
 	
 	public long monitor()
@@ -225,6 +297,7 @@ public final class GlfwWindow
 		
 		this.windowWidth = width;
 		this.windowHeight = height;
+		this.windowAspectRatio = (float)this.windowWidth / (float)this.windowHeight;
 	}
 	
 	private void updateWindowSize()
@@ -236,6 +309,7 @@ public final class GlfwWindow
 		
 		this.windowWidth = this.tempBufA.get(0);
 		this.windowHeight = this.tempBufB.get(0);
+		this.windowAspectRatio = (float)this.windowWidth / (float)this.windowHeight;
 	}
 	
 	private void updateFramebufferSize()
@@ -247,6 +321,7 @@ public final class GlfwWindow
 		
 		this.framebufferWidth = this.tempBufA.get(0);
 		this.framebufferHeight = this.tempBufB.get(0);
+		this.framebufferAspectRatio = (float)this.framebufferWidth / (float)this.framebufferHeight;
 	}
 	
 	private void updateWindowPos()
@@ -340,6 +415,7 @@ public final class GlfwWindow
 		
 		this.windowWidth = width;
 		this.windowHeight = height;
+		this.windowAspectRatio = (float)this.windowWidth / (float)this.windowHeight;
 		
 		this.onWindowResizeCallback.call(oldWidth, oldHeight, this.windowWidth, this.windowHeight);
 	}
@@ -361,6 +437,7 @@ public final class GlfwWindow
 		
 		this.framebufferWidth = width;
 		this.framebufferHeight = height;
+		this.framebufferAspectRatio = (float)this.framebufferWidth / (float)this.framebufferHeight;
 		
 		this.onFramebufferResizeCallback.call(oldWidth, oldHeight, this.framebufferWidth, this.framebufferHeight);
 	}
