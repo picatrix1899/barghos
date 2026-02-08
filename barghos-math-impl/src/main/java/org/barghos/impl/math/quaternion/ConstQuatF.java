@@ -3,24 +3,15 @@ package org.barghos.impl.math.quaternion;
 import java.util.Objects;
 
 import org.barghos.api.math.quaternion.IQuatRF;
-import org.barghos.api.math.quaternion.IQuatWF;
 
-public class QuatF implements IQuatWF
+public class ConstQuatF implements IQuatRF
 {
-	public float x;
-	public float y;
-	public float z;
-	public float w;
+	public final float x;
+	public final float y;
+	public final float z;
+	public final float w;
 	
-	public QuatF()
-	{
-		this.x = 0.0f;
-		this.y = 0.0f;
-		this.z = 0.0f;
-		this.w = 1.0f;
-	}
-	
-	public QuatF(ConstQuatF q)
+	public ConstQuatF(ConstQuatF q)
 	{
 		this.x = q.x;
 		this.y = q.y;
@@ -28,7 +19,7 @@ public class QuatF implements IQuatWF
 		this.w = q.w;
 	}
 	
-	public QuatF(QuatF q)
+	public ConstQuatF(QuatF q)
 	{
 		this.x = q.x;
 		this.y = q.y;
@@ -36,7 +27,7 @@ public class QuatF implements IQuatWF
 		this.w = q.w;
 	}
 	
-	public QuatF(IQuatRF q)
+	public ConstQuatF(IQuatRF q)
 	{
 		this.x = q.x();
 		this.y = q.y();
@@ -44,7 +35,7 @@ public class QuatF implements IQuatWF
 		this.w = q.w();
 	}
 	
-	public QuatF(float[] q)
+	public ConstQuatF(float[] q)
 	{
 		this.x = q[0];
 		this.y = q[1];
@@ -52,7 +43,7 @@ public class QuatF implements IQuatWF
 		this.w = q[3];
 	}
 	
-	public QuatF(float x, float y, float z, float w)
+	public ConstQuatF(float x, float y, float z, float w)
 	{
 		this.x = x;
 		this.y = y;
@@ -99,103 +90,6 @@ public class QuatF implements IQuatWF
 			case 3 -> this.w;
 			default -> throw new IndexOutOfBoundsException();
 		};
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public QuatF x(float x)
-	{
-		this.x = x;
-		
-		return this;
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public QuatF y(float y)
-	{
-		this.y = y;
-		
-		return this;
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public QuatF z(float z)
-	{
-		this.z = z;
-		
-		return this;
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public QuatF w(float w)
-	{
-		this.w = w;
-		
-		return this;
-	}
-
-	public QuatF set(QuatF q)
-	{
-		this.x = q.x;
-		this.y = q.y;
-		this.z = q.z;
-		this.w = q.w;
-		
-		return this;
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public QuatF set(IQuatRF q)
-	{
-		this.x = q.x();
-		this.y = q.y();
-		this.z = q.z();
-		this.w = q.w();
-		
-		return this;
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public QuatF set(float[] q)
-	{
-		this.x = q[0];
-		this.y = q[1];
-		this.z = q[2];
-		this.w = q[3];
-		
-		return this;
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public QuatF set(float x, float y, float z, float w)
-	{
-		this.x = x;
-		this.y = y;
-		this.z = z;
-		this.w = w;
-		
-		return this;
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public QuatF at(int index, float value)
-	{
-		switch(index) {
-			case 0 -> this.x = value;
-			case 1 -> this.y = value;
-			case 2 -> this.z = value;
-			case 3 -> this.w = value;
-			default -> throw new IndexOutOfBoundsException();
-		};
-		
-		return this;
 	}
 	
 	/** {@inheritDoc} */

@@ -1,6 +1,7 @@
 package org.barghos.api.math.vector.floats;
 
 import org.barghos.annotation.ExtractionParam;
+import org.barghos.api.core.collection.IndexValuePairF;
 import org.barghos.core.math.MathUtils;
 
 public class BaseVecOpsI3F
@@ -1441,6 +1442,1263 @@ public class BaseVecOpsI3F
 		return v1;
 	}
 	
+	public static float[] mulAdd(IVec3RF v1, IVec3RF v2, IVec3RF c, @ExtractionParam float[] res)
+	{
+		res[0] = Math.fma(v1.x(), v2.x(), c.x());
+		res[1] = Math.fma(v1.y(), v2.y(), c.y());
+		res[2] = Math.fma(v1.z(), v2.z(), c.z());
+		
+		return res;
+	}
+	
+	public static float[] mulAdd(IVec3RF v1, IVec3RF v2, float[] c, @ExtractionParam float[] res)
+	{
+		res[0] = Math.fma(v1.x(), v2.x(), c[0]);
+		res[1] = Math.fma(v1.y(), v2.y(), c[1]);
+		res[2] = Math.fma(v1.z(), v2.z(), c[2]);
+		
+		return res;
+	}
+	
+	public static float[] mulAdd(IVec3RF v1, IVec3RF v2, float cX, float cY, float cZ, @ExtractionParam float[] res)
+	{
+		res[0] = Math.fma(v1.x(), v2.x(), cX);
+		res[1] = Math.fma(v1.y(), v2.y(), cY);
+		res[2] = Math.fma(v1.z(), v2.z(), cZ);
+		
+		return res;
+	}
+	
+	public static float[] mulAdd(IVec3RF v1, float[] v2, IVec3RF c, @ExtractionParam float[] res)
+	{
+		res[0] = Math.fma(v1.x(), v2[0], c.x());
+		res[1] = Math.fma(v1.y(), v2[1], c.y());
+		res[2] = Math.fma(v1.z(), v2[2], c.z());
+		
+		return res;
+	}
+	
+	public static float[] mulAdd(IVec3RF v1, float[] v2, float[] c, @ExtractionParam float[] res)
+	{
+		res[0] = Math.fma(v1.x(), v2[0], c[0]);
+		res[1] = Math.fma(v1.y(), v2[1], c[1]);
+		res[2] = Math.fma(v1.z(), v2[2], c[2]);
+		
+		return res;
+	}
+	
+	public static float[] mulAdd(IVec3RF v1, float[] v2, float cX, float cY, float cZ, @ExtractionParam float[] res)
+	{
+		res[0] = Math.fma(v1.x(), v2[0], cX);
+		res[1] = Math.fma(v1.y(), v2[1], cY);
+		res[2] = Math.fma(v1.z(), v2[2], cZ);
+		
+		return res;
+	}
+	
+	public static float[] mulAdd(IVec3RF v1, float v2X, float v2Y, float v2Z, IVec3RF c, @ExtractionParam float[] res)
+	{
+		res[0] = Math.fma(v1.x(), v2X, c.x());
+		res[1] = Math.fma(v1.y(), v2Y, c.y());
+		res[2] = Math.fma(v1.z(), v2Z, c.z());
+		
+		return res;
+	}
+	
+	public static float[] mulAdd(IVec3RF v1, float v2X, float v2Y, float v2Z, float[] c, @ExtractionParam float[] res)
+	{
+		res[0] = Math.fma(v1.x(), v2X, c[0]);
+		res[1] = Math.fma(v1.y(), v2Y, c[1]);
+		res[2] = Math.fma(v1.z(), v2Z, c[2]);
+		
+		return res;
+	}
+	
+	public static float[] mulAdd(IVec3RF v1, float v2X, float v2Y, float v2Z, float cX, float cY, float cZ, @ExtractionParam float[] res)
+	{
+		res[0] = Math.fma(v1.x(), v2X, cX);
+		res[1] = Math.fma(v1.y(), v2Y, cY);
+		res[2] = Math.fma(v1.z(), v2Z, cZ);
+		
+		return res;
+	}
+	
+	public static float[] mulAdd(float[] v1, IVec3RF v2, IVec3RF c, @ExtractionParam float[] res)
+	{
+		res[0] = Math.fma(v1[0], v2.x(), c.x());
+		res[1] = Math.fma(v1[1], v2.y(), c.y());
+		res[2] = Math.fma(v1[2], v2.z(), c.z());
+		
+		return res;
+	}
+	
+	public static float[] mulAdd(float[] v1, IVec3RF v2, float[] c, @ExtractionParam float[] res)
+	{
+		res[0] = Math.fma(v1[0], v2.x(), c[0]);
+		res[1] = Math.fma(v1[1], v2.y(), c[1]);
+		res[2] = Math.fma(v1[2], v2.z(), c[2]);
+		
+		return res;
+	}
+	
+	public static float[] mulAdd(float[] v1, IVec3RF v2, float cX, float cY, float cZ, @ExtractionParam float[] res)
+	{
+		res[0] = Math.fma(v1[0], v2.x(), cX);
+		res[1] = Math.fma(v1[1], v2.y(), cY);
+		res[2] = Math.fma(v1[2], v2.z(), cZ);
+		
+		return res;
+	}
+	
+	public static float[] mulAdd(float[] v1, float[] v2, IVec3RF c, @ExtractionParam float[] res)
+	{
+		res[0] = Math.fma(v1[0], v2[0], c.x());
+		res[1] = Math.fma(v1[1], v2[1], c.y());
+		res[2] = Math.fma(v1[2], v2[2], c.z());
+		
+		return res;
+	}
+	
+	public static float[] mulAdd(float[] v1, float v2X, float v2Y, float v2Z, IVec3RF c, @ExtractionParam float[] res)
+	{
+		res[0] = Math.fma(v1[0], v2X, c.x());
+		res[1] = Math.fma(v1[1], v2Y, c.y());
+		res[2] = Math.fma(v1[2], v2Z, c.z());
+		
+		return res;
+	}
+	
+	public static float[] mulAdd(float v1X, float v1Y, float v1Z, IVec3RF v2, IVec3RF c, @ExtractionParam float[] res)
+	{
+		res[0] = Math.fma(v1X, v2.x(), c.x());
+		res[1] = Math.fma(v1Y, v2.y(), c.y());
+		res[2] = Math.fma(v1Z, v2.z(), c.z());
+		
+		return res;
+	}
+	
+	public static float[] mulAdd(float v1X, float v1Y, float v1Z, IVec3RF v2, float[] c, @ExtractionParam float[] res)
+	{
+		res[0] = Math.fma(v1X, v2.x(), c[0]);
+		res[1] = Math.fma(v1Y, v2.y(), c[1]);
+		res[2] = Math.fma(v1Z, v2.z(), c[2]);
+		
+		return res;
+	}
+	
+	public static float[] mulAdd(float v1X, float v1Y, float v1Z, IVec3RF v2, float cX, float cY, float cZ, @ExtractionParam float[] res)
+	{
+		res[0] = Math.fma(v1X, v2.x(), cX);
+		res[1] = Math.fma(v1Y, v2.y(), cY);
+		res[2] = Math.fma(v1Z, v2.z(), cZ);
+		
+		return res;
+	}
+	
+	public static float[] mulAdd(float v1X, float v1Y, float v1Z, float[] v2, IVec3RF c, @ExtractionParam float[] res)
+	{
+		res[0] = Math.fma(v1X, v2[0], c.x());
+		res[1] = Math.fma(v1Y, v2[1], c.y());
+		res[2] = Math.fma(v1Z, v2[2], c.z());
+		
+		return res;
+	}
+	
+	public static float[] mulAdd(float v1X, float v1Y, float v1Z, float v2X, float v2Y, float v2Z, IVec3RF c, @ExtractionParam float[] res)
+	{
+		res[0] = Math.fma(v1X, v2X, c.x());
+		res[1] = Math.fma(v1Y, v2Y, c.y());
+		res[2] = Math.fma(v1Z, v2Z, c.z());
+		
+		return res;
+	}
+	
+	public static float[] mulAddAssign(@ExtractionParam float[] v1, IVec3RF v2, IVec3RF c)
+	{
+		v1[0] = Math.fma(v1[0], v2.x(), c.x());
+		v1[1] = Math.fma(v1[1], v2.y(), c.y());
+		v1[2] = Math.fma(v1[2], v2.z(), c.z());
+		
+		return v1;
+	}
+	
+	public static float[] mulAddAssign(@ExtractionParam float[] v1, IVec3RF v2, float[] c)
+	{
+		v1[0] = Math.fma(v1[0], v2.x(), c[0]);
+		v1[1] = Math.fma(v1[1], v2.y(), c[1]);
+		v1[2] = Math.fma(v1[2], v2.z(), c[2]);
+		
+		return v1;
+	}
+	
+	public static float[] mulAddAssign(@ExtractionParam float[] v1, IVec3RF v2, float cX, float cY, float cZ)
+	{
+		v1[0] = Math.fma(v1[0], v2.x(), cX);
+		v1[1] = Math.fma(v1[1], v2.y(), cY);
+		v1[2] = Math.fma(v1[2], v2.z(), cZ);
+		
+		return v1;
+	}
+	
+	public static float[] mulAddAssign(@ExtractionParam float[] v1, float[] v2, IVec3RF c)
+	{
+		v1[0] = Math.fma(v1[0], v2[0], c.x());
+		v1[1] = Math.fma(v1[1], v2[1], c.y());
+		v1[2] = Math.fma(v1[2], v2[2], c.z());
+		
+		return v1;
+	}
+	
+	public static float[] mulAddAssign(@ExtractionParam float[] v1, float v2X, float v2Y, float v2Z, IVec3RF c)
+	{
+		v1[0] = Math.fma(v1[0], v2X, c.x());
+		v1[1] = Math.fma(v1[1], v2Y, c.y());
+		v1[2] = Math.fma(v1[2], v2Z, c.z());
+		
+		return v1;
+	}
+	
+	public static <T extends IVec3WF> T mulAdd(IVec3RF v1, IVec3RF v2, IVec3RF c, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v1.x(), v2.x(), c.x()),
+			Math.fma(v1.y(), v2.y(), c.y()),
+			Math.fma(v1.z(), v2.z(), c.z())
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T mulAdd(IVec3RF v1, IVec3RF v2, float[] c, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v1.x(), v2.x(), c[0]),
+			Math.fma(v1.y(), v2.y(), c[1]),
+			Math.fma(v1.z(), v2.z(), c[2])
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T mulAdd(IVec3RF v1, IVec3RF v2, float cX, float cY, float cZ, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v1.x(), v2.x(), cX),
+			Math.fma(v1.y(), v2.y(), cY),
+			Math.fma(v1.z(), v2.z(), cZ)
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T mulAdd(IVec3RF v1, float[] v2, IVec3RF c, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v1.x(), v2[0], c.x()),
+			Math.fma(v1.y(), v2[1], c.y()),
+			Math.fma(v1.z(), v2[2], c.z())
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T mulAdd(IVec3RF v1, float[] v2, float[] c, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v1.x(), v2[0], c[0]),
+			Math.fma(v1.y(), v2[1], c[1]),
+			Math.fma(v1.z(), v2[2], c[2])
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T mulAdd(IVec3RF v1, float[] v2, float cX, float cY, float cZ, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v1.x(), v2[0], cX),
+			Math.fma(v1.y(), v2[1], cY),
+			Math.fma(v1.z(), v2[2], cZ)
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T mulAdd(IVec3RF v1, float v2X, float v2Y, float v2Z, IVec3RF c, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v1.x(), v2X, c.x()),
+			Math.fma(v1.y(), v2Y, c.y()),
+			Math.fma(v1.z(), v2Z, c.z())
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T mulAdd(IVec3RF v1, float v2X, float v2Y, float v2Z, float[] c, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v1.x(), v2X, c[0]),
+			Math.fma(v1.y(), v2Y, c[1]),
+			Math.fma(v1.z(), v2Z, c[2])
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T mulAdd(IVec3RF v1, float v2X, float v2Y, float v2Z, float cX, float cY, float cZ, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v1.x(), v2X, cX),
+			Math.fma(v1.y(), v2Y, cY),
+			Math.fma(v1.z(), v2Z, cZ)
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T mulAdd(float[] v1, IVec3RF v2, IVec3RF c, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v1[0], v2.x(), c.x()),
+			Math.fma(v1[1], v2.y(), c.y()),
+			Math.fma(v1[2], v2.z(), c.z())
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T mulAdd(float[] v1, IVec3RF v2, float[] c, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v1[0], v2.x(), c[0]),
+			Math.fma(v1[1], v2.y(), c[1]),
+			Math.fma(v1[2], v2.z(), c[2])
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T mulAdd(float[] v1, IVec3RF v2, float cX, float cY, float cZ, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v1[0], v2.x(), cX),
+			Math.fma(v1[1], v2.y(), cY),
+			Math.fma(v1[2], v2.z(), cZ)
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T mulAdd(float[] v1, float[] v2, IVec3RF c, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v1[0], v2[0], c.x()),
+			Math.fma(v1[1], v2[1], c.y()),
+			Math.fma(v1[2], v2[2], c.z())
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T mulAdd(float[] v1, float[] v2, float[] c, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v1[0], v2[0], c[0]),
+			Math.fma(v1[1], v2[1], c[1]),
+			Math.fma(v1[2], v2[2], c[2])
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T mulAdd(float[] v1, float[] v2, float cX, float cY, float cZ, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v1[0], v2[0], cX),
+			Math.fma(v1[1], v2[1], cY),
+			Math.fma(v1[2], v2[2], cZ)
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T mulAdd(float[] v1, float v2X, float v2Y, float v2Z, IVec3RF c, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v1[0], v2X, c.x()),
+			Math.fma(v1[1], v2Y, c.y()),
+			Math.fma(v1[2], v2Z, c.z())
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T mulAdd(float[] v1, float v2X, float v2Y, float v2Z, float[] c, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v1[0], v2X, c[0]),
+			Math.fma(v1[1], v2Y, c[1]),
+			Math.fma(v1[2], v2Z, c[2])
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T mulAdd(float[] v1, float v2X, float v2Y, float v2Z, float cX, float cY, float cZ, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v1[0], v2X, cX),
+			Math.fma(v1[1], v2Y, cY),
+			Math.fma(v1[2], v2Z, cZ)
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T mulAdd(float v1X, float v1Y, float v1Z, IVec3RF v2, IVec3RF c, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v1X, v2.x(), c.x()),
+			Math.fma(v1Y, v2.y(), c.y()),
+			Math.fma(v1Z, v2.z(), c.z())
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T mulAdd(float v1X, float v1Y, float v1Z, IVec3RF v2, float[] c, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v1X, v2.x(), c[0]),
+			Math.fma(v1Y, v2.y(), c[1]),
+			Math.fma(v1Z, v2.z(), c[2])
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T mulAdd(float v1X, float v1Y, float v1Z, IVec3RF v2, float cX, float cY, float cZ, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v1X, v2.x(), cX),
+			Math.fma(v1Y, v2.y(), cY),
+			Math.fma(v1Z, v2.z(), cZ)
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T mulAdd(float v1X, float v1Y, float v1Z, float[] v2, IVec3RF c, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v1X, v2[0], c.x()),
+			Math.fma(v1Y, v2[1], c.y()),
+			Math.fma(v1Z, v2[2], c.z())
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T mulAdd(float v1X, float v1Y, float v1Z, float[] v2, float[] c, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v1X, v2[0], c[0]),
+			Math.fma(v1Y, v2[1], c[1]),
+			Math.fma(v1Z, v2[2], c[2])
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T mulAdd(float v1X, float v1Y, float v1Z, float[] v2, float cX, float cY, float cZ, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v1X, v2[0], cX),
+			Math.fma(v1Y, v2[1], cY),
+			Math.fma(v1Z, v2[2], cZ)
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T mulAdd(float v1X, float v1Y, float v1Z, float v2X, float v2Y, float v2Z, IVec3RF c, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v1X, v2X, c.x()),
+			Math.fma(v1Y, v2Y, c.y()),
+			Math.fma(v1Z, v2Z, c.z())
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T mulAdd(float v1X, float v1Y, float v1Z, float v2X, float v2Y, float v2Z, float[] c, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v1X, v2X, c[0]),
+			Math.fma(v1Y, v2Y, c[1]),
+			Math.fma(v1Z, v2Z, c[2])
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T mulAdd(float v1X, float v1Y, float v1Z, float v2X, float v2Y, float v2Z, float cX, float cY, float cZ, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v1X, v2X, cX),
+			Math.fma(v1Y, v2Y, cY),
+			Math.fma(v1Z, v2Z, cZ)
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T mulAddAssign(@ExtractionParam T v1, IVec3RF v2, IVec3RF c)
+	{
+		v1.set(
+			Math.fma(v1.x(), v2.x(), c.x()),
+			Math.fma(v1.y(), v2.y(), c.y()),
+			Math.fma(v1.z(), v2.z(), c.z())
+		);
+		
+		return v1;
+	}
+	
+	public static <T extends IVec3WF> T mulAddAssign(@ExtractionParam T v1, IVec3RF v2, float[] c)
+	{
+		v1.set(
+			Math.fma(v1.x(), v2.x(), c[0]),
+			Math.fma(v1.y(), v2.y(), c[1]),
+			Math.fma(v1.z(), v2.z(), c[2])
+		);
+		
+		return v1;
+	}
+	
+	public static <T extends IVec3WF> T mulAddAssign(@ExtractionParam T v1, IVec3RF v2, float cX, float cY, float cZ)
+	{
+		v1.set(
+			Math.fma(v1.x(), v2.x(), cX),
+			Math.fma(v1.y(), v2.y(), cY),
+			Math.fma(v1.z(), v2.z(), cZ)
+		);
+		
+		return v1;
+	}
+	
+	public static <T extends IVec3WF> T mulAddAssign(@ExtractionParam T v1, float[] v2, IVec3RF c)
+	{
+		v1.set(
+			Math.fma(v1.x(), v2[0], c.x()),
+			Math.fma(v1.y(), v2[1], c.y()),
+			Math.fma(v1.z(), v2[2], c.z())
+		);
+		
+		return v1;
+	}
+	
+	public static <T extends IVec3WF> T mulAddAssign(@ExtractionParam T v1, float[] v2, float[] c)
+	{
+		v1.set(
+			Math.fma(v1.x(), v2[0], c[0]),
+			Math.fma(v1.y(), v2[1], c[1]),
+			Math.fma(v1.z(), v2[2], c[2])
+		);
+		
+		return v1;
+	}
+	
+	public static <T extends IVec3WF> T mulAddAssign(@ExtractionParam T v1, float[] v2, float cX, float cY, float cZ)
+	{
+		v1.set(
+			Math.fma(v1.x(), v2[0], cX),
+			Math.fma(v1.y(), v2[1], cY),
+			Math.fma(v1.z(), v2[2], cZ)
+		);
+		
+		return v1;
+	}
+	
+	public static <T extends IVec3WF> T mulAddAssign(@ExtractionParam T v1, float v2, IVec3RF c)
+	{
+		v1.set(
+			Math.fma(v1.x(), v2, c.x()),
+			Math.fma(v1.y(), v2, c.y()),
+			Math.fma(v1.z(), v2, c.z())
+		);
+		
+		return v1;
+	}
+	
+	public static <T extends IVec3WF> T mulAddAssign(@ExtractionParam T v1, float v2, float[] c)
+	{
+		v1.set(
+			Math.fma(v1.x(), v2, c[0]),
+			Math.fma(v1.y(), v2, c[1]),
+			Math.fma(v1.z(), v2, c[2])
+		);
+		
+		return v1;
+	}
+	
+	public static <T extends IVec3WF> T mulAddAssign(@ExtractionParam T v1, float v2, float cX, float cY, float cZ)
+	{
+		v1.set(
+			Math.fma(v1.x(), v2, cX),
+			Math.fma(v1.y(), v2, cY),
+			Math.fma(v1.z(), v2, cZ)
+		);
+		
+		return v1;
+	}
+	
+	public static <T extends IVec3WF> T mulAddAssign(@ExtractionParam T v1, float v2X, float v2Y, float v2Z, IVec3RF c)
+	{
+		v1.set(
+			Math.fma(v1.x(), v2X, c.x()),
+			Math.fma(v1.y(), v2Y, c.y()),
+			Math.fma(v1.z(), v2Z, c.z())
+		);
+		
+		return v1;
+	}
+	
+	public static <T extends IVec3WF> T mulAddAssign(@ExtractionParam T v1, float v2X, float v2Y, float v2Z, float[] c)
+	{
+		v1.set(
+			Math.fma(v1.x(), v2X, c[0]),
+			Math.fma(v1.y(), v2Y, c[1]),
+			Math.fma(v1.z(), v2Z, c[2])
+		);
+		
+		return v1;
+	}
+	
+	public static <T extends IVec3WF> T mulAddAssign(@ExtractionParam T v1, float v2X, float v2Y, float v2Z, float cX, float cY, float cZ)
+	{
+		v1.set(
+			Math.fma(v1.x(), v2X, cX),
+			Math.fma(v1.y(), v2Y, cY),
+			Math.fma(v1.z(), v2Z, cZ)
+		);
+		
+		return v1;
+	}
+	
+	public static float[] revMulAdd(IVec3RF v1, IVec3RF v2, IVec3RF c, @ExtractionParam float[] res)
+	{
+		res[0] = Math.fma(v2.x(), c.x(), v1.x());
+		res[1] = Math.fma(v2.y(), c.y(), v1.y());
+		res[2] = Math.fma(v2.z(), c.z(), v1.z());
+		
+		return res;
+	}
+	
+	public static float[] revMulAdd(IVec3RF v1, IVec3RF v2, float[] c, @ExtractionParam float[] res)
+	{
+		res[0] = Math.fma(v2.x(), c[0], v1.x());
+		res[1] = Math.fma(v2.y(), c[1], v1.y());
+		res[2] = Math.fma(v2.z(), c[2], v1.z());
+		
+		return res;
+	}
+	
+	public static float[] revMulAdd(IVec3RF v1, IVec3RF v2, float cX, float cY, float cZ, @ExtractionParam float[] res)
+	{
+		res[0] = Math.fma(v2.x(), cX, v1.x());
+		res[1] = Math.fma(v2.y(), cY, v1.y());
+		res[2] = Math.fma(v2.z(), cZ, v1.z());
+		
+		return res;
+	}
+	
+	public static float[] revMulAdd(IVec3RF v1, float[] v2, IVec3RF c, @ExtractionParam float[] res)
+	{
+		res[0] = Math.fma(v2[0], c.x(), v1.x());
+		res[1] = Math.fma(v2[1], c.y(), v1.y());
+		res[2] = Math.fma(v2[2], c.z(), v1.z());
+		
+		return res;
+	}
+	
+	public static float[] revMulAdd(IVec3RF v1, float[] v2, float[] c, @ExtractionParam float[] res)
+	{
+		res[0] = Math.fma(v2[0], c[0], v1.x());
+		res[1] = Math.fma(v2[1], c[1], v1.y());
+		res[2] = Math.fma(v2[2], c[2], v1.z());
+		
+		return res;
+	}
+	
+	public static float[] revMulAdd(IVec3RF v1, float[] v2, float cX, float cY, float cZ, @ExtractionParam float[] res)
+	{
+		res[0] = Math.fma(v2[0], cX, v1.x());
+		res[1] = Math.fma(v2[1], cY, v1.y());
+		res[2] = Math.fma(v2[2], cZ, v1.z());
+		
+		return res;
+	}
+	
+	public static float[] revMulAdd(IVec3RF v1, float v2X, float v2Y, float v2Z, IVec3RF c, @ExtractionParam float[] res)
+	{
+		res[0] = Math.fma(v2X, c.x(), v1.x());
+		res[1] = Math.fma(v2Y, c.y(), v1.y());
+		res[2] = Math.fma(v2Z, c.z(), v1.z());
+		
+		return res;
+	}
+	
+	public static float[] revMulAdd(IVec3RF v1, float v2X, float v2Y, float v2Z, float[] c, @ExtractionParam float[] res)
+	{
+		res[0] = Math.fma(v2X, c[0], v1.x());
+		res[1] = Math.fma(v2Y, c[1], v1.y());
+		res[2] = Math.fma(v2Z, c[2], v1.z());
+		
+		return res;
+	}
+	
+	public static float[] revMulAdd(IVec3RF v1, float v2X, float v2Y, float v2Z, float cX, float cY, float cZ, @ExtractionParam float[] res)
+	{
+		res[0] = Math.fma(v2X, cX, v1.x());
+		res[1] = Math.fma(v2Y, cY, v1.y());
+		res[2] = Math.fma(v2Z, cZ, v1.z());
+		
+		return res;
+	}
+	
+	public static float[] revMulAdd(float[] v1, IVec3RF v2, IVec3RF c, @ExtractionParam float[] res)
+	{
+		res[0] = Math.fma(v2.x(), c.x(), v1[0]);
+		res[1] = Math.fma(v2.y(), c.y(), v1[1]);
+		res[2] = Math.fma(v2.z(), c.z(), v1[2]);
+		
+		return res;
+	}
+	
+	public static float[] revMulAdd(float[] v1, IVec3RF v2, float[] c, @ExtractionParam float[] res)
+	{
+		res[0] = Math.fma(v2.x(), c[0], v1[0]);
+		res[1] = Math.fma(v2.y(), c[1], v1[1]);
+		res[2] = Math.fma(v2.z(), c[2], v1[2]);
+		
+		return res;
+	}
+	
+	public static float[] revMulAdd(float[] v1, IVec3RF v2, float cX, float cY, float cZ, @ExtractionParam float[] res)
+	{
+		res[0] = Math.fma(v2.x(), cX, v1[0]);
+		res[1] = Math.fma(v2.y(), cY, v1[1]);
+		res[2] = Math.fma(v2.z(), cZ, v1[2]);
+		
+		return res;
+	}
+	
+	public static float[] revMulAdd(float[] v1, float[] v2, IVec3RF c, @ExtractionParam float[] res)
+	{
+		res[0] = Math.fma(v2[0], c.x(), v1[0]);
+		res[1] = Math.fma(v2[1], c.y(), v1[1]);
+		res[2] = Math.fma(v2[2], c.z(), v1[2]);
+		
+		return res;
+	}
+	
+	public static float[] revMulAdd(float[] v1, float v2X, float v2Y, float v2Z, IVec3RF c, @ExtractionParam float[] res)
+	{
+		res[0] = Math.fma(v2X, c.x(), v1[0]);
+		res[1] = Math.fma(v2Y, c.y(), v1[1]);
+		res[2] = Math.fma(v2Z, c.z(), v1[2]);
+		
+		return res;
+	}
+	
+	public static float[] revMulAdd(float v1X, float v1Y, float v1Z, IVec3RF v2, IVec3RF c, @ExtractionParam float[] res)
+	{
+		res[0] = Math.fma(v2.x(), c.x(), v1X);
+		res[1] = Math.fma(v2.y(), c.y(), v1Y);
+		res[2] = Math.fma(v2.z(), c.z(), v1Z);
+		
+		return res;
+	}
+	
+	public static float[] revMulAdd(float v1X, float v1Y, float v1Z, IVec3RF v2, float[] c, @ExtractionParam float[] res)
+	{
+		res[0] = Math.fma(v2.x(), c[0], v1X);
+		res[1] = Math.fma(v2.y(), c[1], v1Y);
+		res[2] = Math.fma(v2.z(), c[2], v1Z);
+		
+		return res;
+	}
+	
+	public static float[] revMulAdd(float v1X, float v1Y, float v1Z, IVec3RF v2, float cX, float cY, float cZ, @ExtractionParam float[] res)
+	{
+		res[0] = Math.fma(v2.x(), cX, v1X);
+		res[1] = Math.fma(v2.y(), cY, v1Y);
+		res[2] = Math.fma(v2.z(), cZ, v1Z);
+		
+		return res;
+	}
+	
+	public static float[] revMulAdd(float v1X, float v1Y, float v1Z, float[] v2, IVec3RF c, @ExtractionParam float[] res)
+	{
+		res[0] = Math.fma(v2[0], c.x(), v1X);
+		res[1] = Math.fma(v2[1], c.y(), v1Y);
+		res[2] = Math.fma(v2[2], c.z(), v1Z);
+		
+		return res;
+	}
+	
+	public static float[] revMulAdd(float v1X, float v1Y, float v1Z, float v2X, float v2Y, float v2Z, IVec3RF c, @ExtractionParam float[] res)
+	{
+		res[0] = Math.fma(v2X, c.x(), v1X);
+		res[1] = Math.fma(v2Y, c.y(), v1Y);
+		res[2] = Math.fma(v2Z, c.z(), v1Z);
+		
+		return res;
+	}
+	
+	public static float[] revMulAddAssign(@ExtractionParam float[] v1, IVec3RF v2, IVec3RF c)
+	{
+		v1[0] = Math.fma(v2.x(), c.x(), v1[0]);
+		v1[1] = Math.fma(v2.y(), c.y(), v1[1]);
+		v1[2] = Math.fma(v2.z(), c.z(), v1[2]);
+		
+		return v1;
+	}
+	
+	public static float[] revMulAddAssign(@ExtractionParam float[] v1, IVec3RF v2, float[] c)
+	{
+		v1[0] = Math.fma(v2.x(), c[0], v1[0]);
+		v1[1] = Math.fma(v2.y(), c[1], v1[1]);
+		v1[2] = Math.fma(v2.z(), c[2], v1[2]);
+		
+		return v1;
+	}
+	
+	public static float[] revMulAddAssign(@ExtractionParam float[] v1, IVec3RF v2, float cX, float cY, float cZ)
+	{
+		v1[0] = Math.fma(v2.x(), cX, v1[0]);
+		v1[1] = Math.fma(v2.y(), cY, v1[1]);
+		v1[2] = Math.fma(v2.z(), cZ, v1[2]);
+		
+		return v1;
+	}
+	
+	public static float[] revMulAddAssign(@ExtractionParam float[] v1, float[] v2, IVec3RF c)
+	{
+		v1[0] = Math.fma(v2[0], c.x(), v1[0]);
+		v1[1] = Math.fma(v2[1], c.y(), v1[1]);
+		v1[2] = Math.fma(v2[2], c.z(), v1[2]);
+		
+		return v1;
+	}
+	
+	public static float[] revMulAddAssign(@ExtractionParam float[] v1, float v2X, float v2Y, float v2Z, IVec3RF c)
+	{
+		v1[0] = Math.fma(v2X, c.x(), v1[0]);
+		v1[1] = Math.fma(v2Y, c.y(), v1[1]);
+		v1[2] = Math.fma(v2Z, c.z(), v1[2]);
+		
+		return v1;
+	}
+	
+	public static <T extends IVec3WF> T revMulAdd(IVec3RF v1, IVec3RF v2, IVec3RF c, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v2.x(), c.x(), v1.x()),
+			Math.fma(v2.y(), c.y(), v1.y()),
+			Math.fma(v2.z(), c.z(), v1.z())
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T revMulAdd(IVec3RF v1, IVec3RF v2, float[] c, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v2.x(), c[0], v1.x()),
+			Math.fma(v2.y(), c[1], v1.y()),
+			Math.fma(v2.z(), c[2], v1.z())
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T revMulAdd(IVec3RF v1, IVec3RF v2, float cX, float cY, float cZ, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v2.x(), cX, v1.x()),
+			Math.fma(v2.y(), cY, v1.y()),
+			Math.fma(v2.z(), cZ, v1.z())
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T revMulAdd(IVec3RF v1, float[] v2, IVec3RF c, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v2[0], c.x(), v1.x()),
+			Math.fma(v2[1], c.y(), v1.y()),
+			Math.fma(v2[2], c.z(), v1.z())
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T revMulAdd(IVec3RF v1, float[] v2, float[] c, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v2[0], c[0], v1.x()),
+			Math.fma(v2[1], c[1], v1.y()),
+			Math.fma(v2[2], c[2], v1.z())
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T revMulAdd(IVec3RF v1, float[] v2, float cX, float cY, float cZ, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v2[0], cX, v1.x()),
+			Math.fma(v2[1], cY, v1.y()),
+			Math.fma(v2[2], cZ, v1.z())
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T revMulAdd(IVec3RF v1, float v2X, float v2Y, float v2Z, IVec3RF c, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v2X, c.x(), v1.x()),
+			Math.fma(v2Y, c.y(), v1.y()),
+			Math.fma(v2Z, c.z(), v1.z())
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T revMulAdd(IVec3RF v1, float v2X, float v2Y, float v2Z, float[] c, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v2X, c[0], v1.x()),
+			Math.fma(v2Y, c[1], v1.y()),
+			Math.fma(v2Z, c[2], v1.z())
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T revMulAdd(IVec3RF v1, float v2X, float v2Y, float v2Z, float cX, float cY, float cZ, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v2X, cX, v1.x()),
+			Math.fma(v2Y, cY, v1.y()),
+			Math.fma(v2Z, cZ, v1.z())
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T revMulAdd(float[] v1, IVec3RF v2, IVec3RF c, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v2.x(), c.x(), v1[0]),
+			Math.fma(v2.y(), c.y(), v1[1]),
+			Math.fma(v2.z(), c.z(), v1[2])
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T revMulAdd(float[] v1, IVec3RF v2, float[] c, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v2.x(), c[0], v1[0]),
+			Math.fma(v2.y(), c[1], v1[1]),
+			Math.fma(v2.z(), c[2], v1[2])
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T revMulAdd(float[] v1, IVec3RF v2, float cX, float cY, float cZ, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v2.x(), cX, v1[0]),
+			Math.fma(v2.y(), cY, v1[1]),
+			Math.fma(v2.z(), cZ, v1[2])
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T revMulAdd(float[] v1, float[] v2, IVec3RF c, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v2[0], c.x(), v1[0]),
+			Math.fma(v2[1], c.y(), v1[1]),
+			Math.fma(v2[2], c.z(), v1[2])
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T revMulAdd(float[] v1, float[] v2, float[] c, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v2[0], c[0], v1[0]),
+			Math.fma(v2[1], c[1], v1[1]),
+			Math.fma(v2[2], c[2], v1[2])
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T revMulAdd(float[] v1, float[] v2, float cX, float cY, float cZ, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v2[0], cX, v1[0]),
+			Math.fma(v2[1], cY, v1[1]),
+			Math.fma(v2[2], cZ, v1[2])
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T revMulAdd(float[] v1, float v2X, float v2Y, float v2Z, IVec3RF c, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v2X, c.x(), v1[0]),
+			Math.fma(v2Y, c.y(), v1[1]),
+			Math.fma(v2Z, c.z(), v1[2])
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T revMulAdd(float[] v1, float v2X, float v2Y, float v2Z, float[] c, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v2X, c[0], v1[0]),
+			Math.fma(v2Y, c[1], v1[1]),
+			Math.fma(v2Z, c[2], v1[2])
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T revMulAdd(float[] v1, float v2X, float v2Y, float v2Z, float cX, float cY, float cZ, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v2X, cX, v1[0]),
+			Math.fma(v2Y, cY, v1[1]),
+			Math.fma(v2Z, cZ, v1[2])
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T revMulAdd(float v1X, float v1Y, float v1Z, IVec3RF v2, IVec3RF c, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v2.x(), c.x(), v1X),
+			Math.fma(v2.y(), c.y(), v1Y),
+			Math.fma(v2.z(), c.z(), v1Z)
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T revMulAdd(float v1X, float v1Y, float v1Z, IVec3RF v2, float[] c, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v2.x(), c[0], v1X),
+			Math.fma(v2.y(), c[1], v1Y),
+			Math.fma(v2.z(), c[2], v1Z)
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T revMulAdd(float v1X, float v1Y, float v1Z, IVec3RF v2, float cX, float cY, float cZ, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v2.x(), cX, v1X),
+			Math.fma(v2.y(), cY, v1Y),
+			Math.fma(v2.z(), cZ, v1Z)
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T revMulAdd(float v1X, float v1Y, float v1Z, float[] v2, IVec3RF c, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v2[0], c.x(), v1X),
+			Math.fma(v2[1], c.y(), v1Y),
+			Math.fma(v2[2], c.z(), v1Z)
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T revMulAdd(float v1X, float v1Y, float v1Z, float[] v2, float[] c, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v2[0], c[0], v1X),
+			Math.fma(v2[1], c[1], v1Y),
+			Math.fma(v2[2], c[2], v1Z)
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T revMulAdd(float v1X, float v1Y, float v1Z, float[] v2, float cX, float cY, float cZ, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v2[0], cX, v1X),
+			Math.fma(v2[1], cY, v1Y),
+			Math.fma(v2[2], cZ, v1Z)
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T revMulAdd(float v1X, float v1Y, float v1Z, float v2X, float v2Y, float v2Z, IVec3RF c, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v2X, c.x(), v1X),
+			Math.fma(v2Y, c.y(), v1Y),
+			Math.fma(v2Z, c.z(), v1Z)
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T revMulAdd(float v1X, float v1Y, float v1Z, float v2X, float v2Y, float v2Z, float[] c, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v2X, c[0], v1X),
+			Math.fma(v2Y, c[1], v1Y),
+			Math.fma(v2Z, c[2], v1Z)
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T revMulAdd(float v1X, float v1Y, float v1Z, float v2X, float v2Y, float v2Z, float cX, float cY, float cZ, @ExtractionParam T res)
+	{
+		res.set(
+			Math.fma(v2X, cX, v1X),
+			Math.fma(v2Y, cY, v1Y),
+			Math.fma(v2Z, cZ, v1Z)
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T revMulAddAssign(@ExtractionParam T v1, IVec3RF v2, IVec3RF c)
+	{
+		v1.set(
+			Math.fma(v2.x(), c.x(), v1.x()),
+			Math.fma(v2.y(), c.y(), v1.y()),
+			Math.fma(v2.z(), c.z(), v1.z())
+		);
+		
+		return v1;
+	}
+	
+	public static <T extends IVec3WF> T revMulAddAssign(@ExtractionParam T v1, IVec3RF v2, float[] c)
+	{
+		v1.set(
+			Math.fma(v2.x(), c[0], v1.x()),
+			Math.fma(v2.y(), c[1], v1.y()),
+			Math.fma(v2.z(), c[2], v1.z())
+		);
+		
+		return v1;
+	}
+	
+	public static <T extends IVec3WF> T revMulAddAssign(@ExtractionParam T v1, IVec3RF v2, float cX, float cY, float cZ)
+	{
+		v1.set(
+			Math.fma(v2.x(), cX, v1.x()),
+			Math.fma(v2.y(), cY, v1.y()),
+			Math.fma(v2.z(), cZ, v1.z())
+		);
+		
+		return v1;
+	}
+	
+	public static <T extends IVec3WF> T revMulAddAssign(@ExtractionParam T v1, float[] v2, IVec3RF c)
+	{
+		v1.set(
+			Math.fma(v2[0], c.x(), v1.x()),
+			Math.fma(v2[1], c.y(), v1.y()),
+			Math.fma(v2[2], c.z(), v1.z())
+		);
+		
+		return v1;
+	}
+	
+	public static <T extends IVec3WF> T revMulAddAssign(@ExtractionParam T v1, float[] v2, float[] c)
+	{
+		v1.set(
+			Math.fma(v2[0], c[0], v1.x()),
+			Math.fma(v2[1], c[1], v1.y()),
+			Math.fma(v2[2], c[2], v1.z())
+		);
+		
+		return v1;
+	}
+	
+	public static <T extends IVec3WF> T revMulAddAssign(@ExtractionParam T v1, float[] v2, float cX, float cY, float cZ)
+	{
+		v1.set(
+			Math.fma(v2[0], cX, v1.x()),
+			Math.fma(v2[1], cY, v1.y()),
+			Math.fma(v2[2], cZ, v1.z())
+		);
+		
+		return v1;
+	}
+	
+	public static <T extends IVec3WF> T revMulAddAssign(@ExtractionParam T v1, float v2X, float v2Y, float v2Z, IVec3RF c)
+	{
+		v1.set(
+			Math.fma(v2X, c.x(), v1.x()),
+			Math.fma(v2Y, c.y(), v1.y()),
+			Math.fma(v2Z, c.z(), v1.z())
+		);
+		
+		return v1;
+	}
+	
+	public static <T extends IVec3WF> T revMulAddAssign(@ExtractionParam T v1, float v2X, float v2Y, float v2Z, float[] c)
+	{
+		v1.set(
+			Math.fma(v2X, c[0], v1.x()),
+			Math.fma(v2Y, c[1], v1.y()),
+			Math.fma(v2Z, c[2], v1.z())
+		);
+		
+		return v1;
+	}
+	
+	public static <T extends IVec3WF> T revMulAddAssign(@ExtractionParam T v1, float v2X, float v2Y, float v2Z, float cX, float cY, float cZ)
+	{
+		v1.set(
+			Math.fma(v2X, cX, v1.x()),
+			Math.fma(v2Y, cY, v1.y()),
+			Math.fma(v2Z, cZ, v1.z())
+		);
+		
+		return v1;
+	}
+	
 	public static float[] pow(IVec3RF v1, IVec3RF v2, @ExtractionParam float[] res)
 	{
 		res[0] = MathUtils.pow(v1.x(), v2.x());
@@ -2836,1260 +4094,3157 @@ public class BaseVecOpsI3F
 		return v1;
 	}
 	
-	public static float[] mulAdd(IVec3RF v1, IVec3RF v2, IVec3RF c, @ExtractionParam float[] res)
+	public static float minValue(IVec3RF v1)
 	{
-		res[0] = Math.fma(v1.x(), v2.x(), c.x());
-		res[1] = Math.fma(v1.y(), v2.y(), c.y());
-		res[2] = Math.fma(v1.z(), v2.z(), c.z());
+		return MathUtils.min(v1.x(), v1.y(), v1.z());
+	}
+	
+	public static int minComponent(IVec3RF v1)
+	{
+		float value = v1.x();
+		int index = 0;
+
+		float v1Y = v1.y();
+
+		if (v1Y < value)
+		{
+			index = 1;
+		}
+		
+		float v1Z = v1.z();
+
+		if (v1Z < value)
+		{
+			index = 2;
+		}
+		
+		return index;
+	}
+	
+	public static IndexValuePairF min(IVec3RF v1)
+	{
+		float value = v1.x();
+		int index = 0;
+
+		float v1Y = v1.y();
+
+		if (v1Y < value)
+		{
+			value = v1Y;
+			index = 1;
+		}
+
+		float v1Z = v1.z();
+
+		if (v1Z < value)
+		{
+			value = v1Z;
+			index = 2;
+		}
+		
+		return new IndexValuePairF(value, index);
+	}
+	
+	public static IndexValuePairF min(IVec3RF v1, @ExtractionParam IndexValuePairF res)
+	{
+		float value = v1.x();
+		int index = 0;
+
+		float v1Y = v1.y();
+
+		if (v1Y < value)
+		{
+			value = v1Y;
+			index = 1;
+		}
+
+		float v1Z = v1.z();
+
+		if (v1Z < value)
+		{
+			value = v1Z;
+			index = 2;
+		}
+		
+		res.set(value, index);
+
+		return res;
+	}
+	
+	public static float[] min(IVec3RF v1, IVec3RF v2, @ExtractionParam float[] res)
+	{
+		res[0] = Math.min(v1.x(), v2.x());
+		res[1] = Math.min(v1.y(), v2.y());
+		res[2] = Math.min(v1.z(), v2.z());
 		
 		return res;
 	}
 	
-	public static float[] mulAdd(IVec3RF v1, IVec3RF v2, float[] c, @ExtractionParam float[] res)
+	public static float[] min(IVec3RF v1, float[] v2, @ExtractionParam float[] res)
 	{
-		res[0] = Math.fma(v1.x(), v2.x(), c[0]);
-		res[1] = Math.fma(v1.y(), v2.y(), c[1]);
-		res[2] = Math.fma(v1.z(), v2.z(), c[2]);
+		res[0] = Math.min(v1.x(), v2[0]);
+		res[1] = Math.min(v1.y(), v2[1]);
+		res[2] = Math.min(v1.z(), v2[2]);
 		
 		return res;
 	}
 	
-	public static float[] mulAdd(IVec3RF v1, IVec3RF v2, float cX, float cY, float cZ, @ExtractionParam float[] res)
+	public static float[] min(IVec3RF v1, float v2, @ExtractionParam float[] res)
 	{
-		res[0] = Math.fma(v1.x(), v2.x(), cX);
-		res[1] = Math.fma(v1.y(), v2.y(), cY);
-		res[2] = Math.fma(v1.z(), v2.z(), cZ);
+		res[0] = Math.min(v1.x(), v2);
+		res[1] = Math.min(v1.y(), v2);
+		res[2] = Math.min(v1.z(), v2);
 		
 		return res;
 	}
 	
-	public static float[] mulAdd(IVec3RF v1, float[] v2, IVec3RF c, @ExtractionParam float[] res)
+	public static float[] min(IVec3RF v1, float v2X, float v2Y, float v2Z, @ExtractionParam float[] res)
 	{
-		res[0] = Math.fma(v1.x(), v2[0], c.x());
-		res[1] = Math.fma(v1.y(), v2[1], c.y());
-		res[2] = Math.fma(v1.z(), v2[2], c.z());
+		res[0] = Math.min(v1.x(), v2X);
+		res[1] = Math.min(v1.y(), v2Y);
+		res[2] = Math.min(v1.z(), v2Z);
 		
 		return res;
 	}
 	
-	public static float[] mulAdd(IVec3RF v1, float[] v2, float[] c, @ExtractionParam float[] res)
+	public static float[] min(float[] v1, IVec3RF v2, @ExtractionParam float[] res)
 	{
-		res[0] = Math.fma(v1.x(), v2[0], c[0]);
-		res[1] = Math.fma(v1.y(), v2[1], c[1]);
-		res[2] = Math.fma(v1.z(), v2[2], c[2]);
+		res[0] = Math.min(v1[0], v2.x());
+		res[1] = Math.min(v1[1], v2.y());
+		res[2] = Math.min(v1[2], v2.z());
 		
 		return res;
 	}
 	
-	public static float[] mulAdd(IVec3RF v1, float[] v2, float cX, float cY, float cZ, @ExtractionParam float[] res)
+	public static float[] min(float v1X, float v1Y, float v1Z, IVec3RF v2, @ExtractionParam float[] res)
 	{
-		res[0] = Math.fma(v1.x(), v2[0], cX);
-		res[1] = Math.fma(v1.y(), v2[1], cY);
-		res[2] = Math.fma(v1.z(), v2[2], cZ);
+		res[0] = Math.min(v1X, v2.x());
+		res[1] = Math.min(v1Y, v2.y());
+		res[2] = Math.min(v1Z, v2.z());
 		
 		return res;
 	}
 	
-	public static float[] mulAdd(IVec3RF v1, float v2X, float v2Y, float v2Z, IVec3RF c, @ExtractionParam float[] res)
+	public static float[] minAssign(@ExtractionParam float[] v1, IVec3RF v2)
 	{
-		res[0] = Math.fma(v1.x(), v2X, c.x());
-		res[1] = Math.fma(v1.y(), v2Y, c.y());
-		res[2] = Math.fma(v1.z(), v2Z, c.z());
-		
-		return res;
-	}
-	
-	public static float[] mulAdd(IVec3RF v1, float v2X, float v2Y, float v2Z, float[] c, @ExtractionParam float[] res)
-	{
-		res[0] = Math.fma(v1.x(), v2X, c[0]);
-		res[1] = Math.fma(v1.y(), v2Y, c[1]);
-		res[2] = Math.fma(v1.z(), v2Z, c[2]);
-		
-		return res;
-	}
-	
-	public static float[] mulAdd(IVec3RF v1, float v2X, float v2Y, float v2Z, float cX, float cY, float cZ, @ExtractionParam float[] res)
-	{
-		res[0] = Math.fma(v1.x(), v2X, cX);
-		res[1] = Math.fma(v1.y(), v2Y, cY);
-		res[2] = Math.fma(v1.z(), v2Z, cZ);
-		
-		return res;
-	}
-	
-	public static float[] mulAdd(float[] v1, IVec3RF v2, IVec3RF c, @ExtractionParam float[] res)
-	{
-		res[0] = Math.fma(v1[0], v2.x(), c.x());
-		res[1] = Math.fma(v1[1], v2.y(), c.y());
-		res[2] = Math.fma(v1[2], v2.z(), c.z());
-		
-		return res;
-	}
-	
-	public static float[] mulAdd(float[] v1, IVec3RF v2, float[] c, @ExtractionParam float[] res)
-	{
-		res[0] = Math.fma(v1[0], v2.x(), c[0]);
-		res[1] = Math.fma(v1[1], v2.y(), c[1]);
-		res[2] = Math.fma(v1[2], v2.z(), c[2]);
-		
-		return res;
-	}
-	
-	public static float[] mulAdd(float[] v1, IVec3RF v2, float cX, float cY, float cZ, @ExtractionParam float[] res)
-	{
-		res[0] = Math.fma(v1[0], v2.x(), cX);
-		res[1] = Math.fma(v1[1], v2.y(), cY);
-		res[2] = Math.fma(v1[2], v2.z(), cZ);
-		
-		return res;
-	}
-	
-	public static float[] mulAdd(float[] v1, float[] v2, IVec3RF c, @ExtractionParam float[] res)
-	{
-		res[0] = Math.fma(v1[0], v2[0], c.x());
-		res[1] = Math.fma(v1[1], v2[1], c.y());
-		res[2] = Math.fma(v1[2], v2[2], c.z());
-		
-		return res;
-	}
-	
-	public static float[] mulAdd(float[] v1, float v2X, float v2Y, float v2Z, IVec3RF c, @ExtractionParam float[] res)
-	{
-		res[0] = Math.fma(v1[0], v2X, c.x());
-		res[1] = Math.fma(v1[1], v2Y, c.y());
-		res[2] = Math.fma(v1[2], v2Z, c.z());
-		
-		return res;
-	}
-	
-	public static float[] mulAdd(float v1X, float v1Y, float v1Z, IVec3RF v2, IVec3RF c, @ExtractionParam float[] res)
-	{
-		res[0] = Math.fma(v1X, v2.x(), c.x());
-		res[1] = Math.fma(v1Y, v2.y(), c.y());
-		res[2] = Math.fma(v1Z, v2.z(), c.z());
-		
-		return res;
-	}
-	
-	public static float[] mulAdd(float v1X, float v1Y, float v1Z, IVec3RF v2, float[] c, @ExtractionParam float[] res)
-	{
-		res[0] = Math.fma(v1X, v2.x(), c[0]);
-		res[1] = Math.fma(v1Y, v2.y(), c[1]);
-		res[2] = Math.fma(v1Z, v2.z(), c[2]);
-		
-		return res;
-	}
-	
-	public static float[] mulAdd(float v1X, float v1Y, float v1Z, IVec3RF v2, float cX, float cY, float cZ, @ExtractionParam float[] res)
-	{
-		res[0] = Math.fma(v1X, v2.x(), cX);
-		res[1] = Math.fma(v1Y, v2.y(), cY);
-		res[2] = Math.fma(v1Z, v2.z(), cZ);
-		
-		return res;
-	}
-	
-	public static float[] mulAdd(float v1X, float v1Y, float v1Z, float[] v2, IVec3RF c, @ExtractionParam float[] res)
-	{
-		res[0] = Math.fma(v1X, v2[0], c.x());
-		res[1] = Math.fma(v1Y, v2[1], c.y());
-		res[2] = Math.fma(v1Z, v2[2], c.z());
-		
-		return res;
-	}
-	
-	public static float[] mulAdd(float v1X, float v1Y, float v1Z, float v2X, float v2Y, float v2Z, IVec3RF c, @ExtractionParam float[] res)
-	{
-		res[0] = Math.fma(v1X, v2X, c.x());
-		res[1] = Math.fma(v1Y, v2Y, c.y());
-		res[2] = Math.fma(v1Z, v2Z, c.z());
-		
-		return res;
-	}
-	
-	public static float[] mulAddAssign(@ExtractionParam float[] v1, IVec3RF v2, IVec3RF c)
-	{
-		v1[0] = Math.fma(v1[0], v2.x(), c.x());
-		v1[1] = Math.fma(v1[1], v2.y(), c.y());
-		v1[2] = Math.fma(v1[2], v2.z(), c.z());
+		v1[0] = Math.min(v1[0], v2.x());
+		v1[1] = Math.min(v1[1], v2.y());
+		v1[2] = Math.min(v1[2], v2.z());
 		
 		return v1;
 	}
 	
-	public static float[] mulAddAssign(@ExtractionParam float[] v1, IVec3RF v2, float[] c)
-	{
-		v1[0] = Math.fma(v1[0], v2.x(), c[0]);
-		v1[1] = Math.fma(v1[1], v2.y(), c[1]);
-		v1[2] = Math.fma(v1[2], v2.z(), c[2]);
-		
-		return v1;
-	}
-	
-	public static float[] mulAddAssign(@ExtractionParam float[] v1, IVec3RF v2, float cX, float cY, float cZ)
-	{
-		v1[0] = Math.fma(v1[0], v2.x(), cX);
-		v1[1] = Math.fma(v1[1], v2.y(), cY);
-		v1[2] = Math.fma(v1[2], v2.z(), cZ);
-		
-		return v1;
-	}
-	
-	public static float[] mulAddAssign(@ExtractionParam float[] v1, float[] v2, IVec3RF c)
-	{
-		v1[0] = Math.fma(v1[0], v2[0], c.x());
-		v1[1] = Math.fma(v1[1], v2[1], c.y());
-		v1[2] = Math.fma(v1[2], v2[2], c.z());
-		
-		return v1;
-	}
-	
-	public static float[] mulAddAssign(@ExtractionParam float[] v1, float v2X, float v2Y, float v2Z, IVec3RF c)
-	{
-		v1[0] = Math.fma(v1[0], v2X, c.x());
-		v1[1] = Math.fma(v1[1], v2Y, c.y());
-		v1[2] = Math.fma(v1[2], v2Z, c.z());
-		
-		return v1;
-	}
-	
-	public static <T extends IVec3WF> T mulAdd(IVec3RF v1, IVec3RF v2, IVec3RF c, @ExtractionParam T res)
+	public static <T extends IVec3WF> T min(IVec3RF v1, IVec3RF v2, @ExtractionParam T res)
 	{
 		res.set(
-			Math.fma(v1.x(), v2.x(), c.x()),
-			Math.fma(v1.y(), v2.y(), c.y()),
-			Math.fma(v1.z(), v2.z(), c.z())
+			Math.min(v1.x(), v2.x()),
+			Math.min(v1.y(), v2.y()),
+			Math.min(v1.z(), v2.z())
 		);
 		
 		return res;
 	}
 	
-	public static <T extends IVec3WF> T mulAdd(IVec3RF v1, IVec3RF v2, float[] c, @ExtractionParam T res)
+	public static <T extends IVec3WF> T min(IVec3RF v1, float[] v2, @ExtractionParam T res)
 	{
 		res.set(
-			Math.fma(v1.x(), v2.x(), c[0]),
-			Math.fma(v1.y(), v2.y(), c[1]),
-			Math.fma(v1.z(), v2.z(), c[2])
+			Math.min(v1.x(), v2[0]),
+			Math.min(v1.y(), v2[1]),
+			Math.min(v1.z(), v2[2])
 		);
 		
 		return res;
 	}
 	
-	public static <T extends IVec3WF> T mulAdd(IVec3RF v1, IVec3RF v2, float cX, float cY, float cZ, @ExtractionParam T res)
+	public static <T extends IVec3WF> T min(IVec3RF v1, float v2, @ExtractionParam T res)
 	{
 		res.set(
-			Math.fma(v1.x(), v2.x(), cX),
-			Math.fma(v1.y(), v2.y(), cY),
-			Math.fma(v1.z(), v2.z(), cZ)
+			Math.min(v1.x(), v2),
+			Math.min(v1.y(), v2),
+			Math.min(v1.z(), v2)
 		);
 		
 		return res;
 	}
 	
-	public static <T extends IVec3WF> T mulAdd(IVec3RF v1, float[] v2, IVec3RF c, @ExtractionParam T res)
+	public static <T extends IVec3WF> T min(IVec3RF v1, float v2X, float v2Y, float v2Z, @ExtractionParam T res)
 	{
 		res.set(
-			Math.fma(v1.x(), v2[0], c.x()),
-			Math.fma(v1.y(), v2[1], c.y()),
-			Math.fma(v1.z(), v2[2], c.z())
+			Math.min(v1.x(), v2X),
+			Math.min(v1.y(), v2Y),
+			Math.min(v1.z(), v2Z)
 		);
 		
 		return res;
 	}
 	
-	public static <T extends IVec3WF> T mulAdd(IVec3RF v1, float[] v2, float[] c, @ExtractionParam T res)
+	public static <T extends IVec3WF> T min(float[] v1, IVec3RF v2, @ExtractionParam T res)
 	{
 		res.set(
-			Math.fma(v1.x(), v2[0], c[0]),
-			Math.fma(v1.y(), v2[1], c[1]),
-			Math.fma(v1.z(), v2[2], c[2])
+			Math.min(v1[0], v2.x()),
+			Math.min(v1[1], v2.y()),
+			Math.min(v1[2], v2.z())
 		);
 		
 		return res;
 	}
 	
-	public static <T extends IVec3WF> T mulAdd(IVec3RF v1, float[] v2, float cX, float cY, float cZ, @ExtractionParam T res)
+	public static <T extends IVec3WF> T min(float[] v1, float[] v2, @ExtractionParam T res)
 	{
 		res.set(
-			Math.fma(v1.x(), v2[0], cX),
-			Math.fma(v1.y(), v2[1], cY),
-			Math.fma(v1.z(), v2[2], cZ)
+			Math.min(v1[0], v2[0]),
+			Math.min(v1[1], v2[1]),
+			Math.min(v1[2], v2[2])
 		);
 		
 		return res;
 	}
 	
-	public static <T extends IVec3WF> T mulAdd(IVec3RF v1, float v2X, float v2Y, float v2Z, IVec3RF c, @ExtractionParam T res)
+	public static <T extends IVec3WF> T min(float[] v1, float v2, @ExtractionParam T res)
 	{
 		res.set(
-			Math.fma(v1.x(), v2X, c.x()),
-			Math.fma(v1.y(), v2Y, c.y()),
-			Math.fma(v1.z(), v2Z, c.z())
+			Math.min(v1[0], v2),
+			Math.min(v1[1], v2),
+			Math.min(v1[2], v2)
 		);
 		
 		return res;
 	}
 	
-	public static <T extends IVec3WF> T mulAdd(IVec3RF v1, float v2X, float v2Y, float v2Z, float[] c, @ExtractionParam T res)
+	public static <T extends IVec3WF> T min(float[] v1, float v2X, float v2Y, float v2Z, @ExtractionParam T res)
 	{
 		res.set(
-			Math.fma(v1.x(), v2X, c[0]),
-			Math.fma(v1.y(), v2Y, c[1]),
-			Math.fma(v1.z(), v2Z, c[2])
+			Math.min(v1[0], v2X),
+			Math.min(v1[1], v2Y),
+			Math.min(v1[2], v2Z)
 		);
 		
 		return res;
 	}
 	
-	public static <T extends IVec3WF> T mulAdd(IVec3RF v1, float v2X, float v2Y, float v2Z, float cX, float cY, float cZ, @ExtractionParam T res)
+	public static <T extends IVec3WF> T min(float v1X, float v1Y, float v1Z, IVec3RF v2, @ExtractionParam T res)
 	{
 		res.set(
-			Math.fma(v1.x(), v2X, cX),
-			Math.fma(v1.y(), v2Y, cY),
-			Math.fma(v1.z(), v2Z, cZ)
+			Math.min(v1X, v2.x()),
+			Math.min(v1Y, v2.y()),
+			Math.min(v1Z, v2.z())
 		);
 		
 		return res;
 	}
 	
-	public static <T extends IVec3WF> T mulAdd(float[] v1, IVec3RF v2, IVec3RF c, @ExtractionParam T res)
+	public static <T extends IVec3WF> T min(float v1X, float v1Y, float v1Z, float[] v2, @ExtractionParam T res)
 	{
 		res.set(
-			Math.fma(v1[0], v2.x(), c.x()),
-			Math.fma(v1[1], v2.y(), c.y()),
-			Math.fma(v1[2], v2.z(), c.z())
+			Math.min(v1X, v2[0]),
+			Math.min(v1Y, v2[1]),
+			Math.min(v1Z, v2[2])
 		);
 		
 		return res;
 	}
 	
-	public static <T extends IVec3WF> T mulAdd(float[] v1, IVec3RF v2, float[] c, @ExtractionParam T res)
+	public static <T extends IVec3WF> T min(float v1X, float v1Y, float v1Z, float v2X, float v2Y, float v2Z, @ExtractionParam T res)
 	{
 		res.set(
-			Math.fma(v1[0], v2.x(), c[0]),
-			Math.fma(v1[1], v2.y(), c[1]),
-			Math.fma(v1[2], v2.z(), c[2])
+			Math.min(v1X, v2X),
+			Math.min(v1Y, v2Y),
+			Math.min(v1Z, v2Z)
 		);
 		
 		return res;
 	}
 	
-	public static <T extends IVec3WF> T mulAdd(float[] v1, IVec3RF v2, float cX, float cY, float cZ, @ExtractionParam T res)
-	{
-		res.set(
-			Math.fma(v1[0], v2.x(), cX),
-			Math.fma(v1[1], v2.y(), cY),
-			Math.fma(v1[2], v2.z(), cZ)
-		);
-		
-		return res;
-	}
-	
-	public static <T extends IVec3WF> T mulAdd(float[] v1, float[] v2, IVec3RF c, @ExtractionParam T res)
-	{
-		res.set(
-			Math.fma(v1[0], v2[0], c.x()),
-			Math.fma(v1[1], v2[1], c.y()),
-			Math.fma(v1[2], v2[2], c.z())
-		);
-		
-		return res;
-	}
-	
-	public static <T extends IVec3WF> T mulAdd(float[] v1, float[] v2, float[] c, @ExtractionParam T res)
-	{
-		res.set(
-			Math.fma(v1[0], v2[0], c[0]),
-			Math.fma(v1[1], v2[1], c[1]),
-			Math.fma(v1[2], v2[2], c[2])
-		);
-		
-		return res;
-	}
-	
-	public static <T extends IVec3WF> T mulAdd(float[] v1, float[] v2, float cX, float cY, float cZ, @ExtractionParam T res)
-	{
-		res.set(
-			Math.fma(v1[0], v2[0], cX),
-			Math.fma(v1[1], v2[1], cY),
-			Math.fma(v1[2], v2[2], cZ)
-		);
-		
-		return res;
-	}
-	
-	public static <T extends IVec3WF> T mulAdd(float[] v1, float v2X, float v2Y, float v2Z, IVec3RF c, @ExtractionParam T res)
-	{
-		res.set(
-			Math.fma(v1[0], v2X, c.x()),
-			Math.fma(v1[1], v2Y, c.y()),
-			Math.fma(v1[2], v2Z, c.z())
-		);
-		
-		return res;
-	}
-	
-	public static <T extends IVec3WF> T mulAdd(float[] v1, float v2X, float v2Y, float v2Z, float[] c, @ExtractionParam T res)
-	{
-		res.set(
-			Math.fma(v1[0], v2X, c[0]),
-			Math.fma(v1[1], v2Y, c[1]),
-			Math.fma(v1[2], v2Z, c[2])
-		);
-		
-		return res;
-	}
-	
-	public static <T extends IVec3WF> T mulAdd(float[] v1, float v2X, float v2Y, float v2Z, float cX, float cY, float cZ, @ExtractionParam T res)
-	{
-		res.set(
-			Math.fma(v1[0], v2X, cX),
-			Math.fma(v1[1], v2Y, cY),
-			Math.fma(v1[2], v2Z, cZ)
-		);
-		
-		return res;
-	}
-	
-	public static <T extends IVec3WF> T mulAdd(float v1X, float v1Y, float v1Z, IVec3RF v2, IVec3RF c, @ExtractionParam T res)
-	{
-		res.set(
-			Math.fma(v1X, v2.x(), c.x()),
-			Math.fma(v1Y, v2.y(), c.y()),
-			Math.fma(v1Z, v2.z(), c.z())
-		);
-		
-		return res;
-	}
-	
-	public static <T extends IVec3WF> T mulAdd(float v1X, float v1Y, float v1Z, IVec3RF v2, float[] c, @ExtractionParam T res)
-	{
-		res.set(
-			Math.fma(v1X, v2.x(), c[0]),
-			Math.fma(v1Y, v2.y(), c[1]),
-			Math.fma(v1Z, v2.z(), c[2])
-		);
-		
-		return res;
-	}
-	
-	public static <T extends IVec3WF> T mulAdd(float v1X, float v1Y, float v1Z, IVec3RF v2, float cX, float cY, float cZ, @ExtractionParam T res)
-	{
-		res.set(
-			Math.fma(v1X, v2.x(), cX),
-			Math.fma(v1Y, v2.y(), cY),
-			Math.fma(v1Z, v2.z(), cZ)
-		);
-		
-		return res;
-	}
-	
-	public static <T extends IVec3WF> T mulAdd(float v1X, float v1Y, float v1Z, float[] v2, IVec3RF c, @ExtractionParam T res)
-	{
-		res.set(
-			Math.fma(v1X, v2[0], c.x()),
-			Math.fma(v1Y, v2[1], c.y()),
-			Math.fma(v1Z, v2[2], c.z())
-		);
-		
-		return res;
-	}
-	
-	public static <T extends IVec3WF> T mulAdd(float v1X, float v1Y, float v1Z, float[] v2, float[] c, @ExtractionParam T res)
-	{
-		res.set(
-			Math.fma(v1X, v2[0], c[0]),
-			Math.fma(v1Y, v2[1], c[1]),
-			Math.fma(v1Z, v2[2], c[2])
-		);
-		
-		return res;
-	}
-	
-	public static <T extends IVec3WF> T mulAdd(float v1X, float v1Y, float v1Z, float[] v2, float cX, float cY, float cZ, @ExtractionParam T res)
-	{
-		res.set(
-			Math.fma(v1X, v2[0], cX),
-			Math.fma(v1Y, v2[1], cY),
-			Math.fma(v1Z, v2[2], cZ)
-		);
-		
-		return res;
-	}
-	
-	public static <T extends IVec3WF> T mulAdd(float v1X, float v1Y, float v1Z, float v2X, float v2Y, float v2Z, IVec3RF c, @ExtractionParam T res)
-	{
-		res.set(
-			Math.fma(v1X, v2X, c.x()),
-			Math.fma(v1Y, v2Y, c.y()),
-			Math.fma(v1Z, v2Z, c.z())
-		);
-		
-		return res;
-	}
-	
-	public static <T extends IVec3WF> T mulAdd(float v1X, float v1Y, float v1Z, float v2X, float v2Y, float v2Z, float[] c, @ExtractionParam T res)
-	{
-		res.set(
-			Math.fma(v1X, v2X, c[0]),
-			Math.fma(v1Y, v2Y, c[1]),
-			Math.fma(v1Z, v2Z, c[2])
-		);
-		
-		return res;
-	}
-	
-	public static <T extends IVec3WF> T mulAdd(float v1X, float v1Y, float v1Z, float v2X, float v2Y, float v2Z, float cX, float cY, float cZ, @ExtractionParam T res)
-	{
-		res.set(
-			Math.fma(v1X, v2X, cX),
-			Math.fma(v1Y, v2Y, cY),
-			Math.fma(v1Z, v2Z, cZ)
-		);
-		
-		return res;
-	}
-	
-	public static <T extends IVec3WF> T mulAddAssign(@ExtractionParam T v1, IVec3RF v2, IVec3RF c)
+	public static <T extends IVec3WF> T minAssign(@ExtractionParam T v1, IVec3RF v2)
 	{
 		v1.set(
-			Math.fma(v1.x(), v2.x(), c.x()),
-			Math.fma(v1.y(), v2.y(), c.y()),
-			Math.fma(v1.z(), v2.z(), c.z())
+			Math.min(v1.x(), v2.x()),
+			Math.min(v1.y(), v2.y()),
+			Math.min(v1.z(), v2.z())
 		);
 		
 		return v1;
 	}
 	
-	public static <T extends IVec3WF> T mulAddAssign(@ExtractionParam T v1, IVec3RF v2, float[] c)
+	public static <T extends IVec3WF> T minAssign(@ExtractionParam T v1, float[] v2)
 	{
 		v1.set(
-			Math.fma(v1.x(), v2.x(), c[0]),
-			Math.fma(v1.y(), v2.y(), c[1]),
-			Math.fma(v1.z(), v2.z(), c[2])
+			Math.min(v1.x(), v2[0]),
+			Math.min(v1.y(), v2[1]),
+			Math.min(v1.z(), v2[2])
 		);
 		
 		return v1;
 	}
 	
-	public static <T extends IVec3WF> T mulAddAssign(@ExtractionParam T v1, IVec3RF v2, float cX, float cY, float cZ)
+	public static <T extends IVec3WF> T minAssign(@ExtractionParam T v1, float v2)
 	{
 		v1.set(
-			Math.fma(v1.x(), v2.x(), cX),
-			Math.fma(v1.y(), v2.y(), cY),
-			Math.fma(v1.z(), v2.z(), cZ)
+			Math.min(v1.x(), v2),
+			Math.min(v1.y(), v2),
+			Math.min(v1.z(), v2)
 		);
 		
 		return v1;
 	}
 	
-	public static <T extends IVec3WF> T mulAddAssign(@ExtractionParam T v1, float[] v2, IVec3RF c)
+	public static <T extends IVec3WF> T minAssign(@ExtractionParam T v1, float v2X, float v2Y, float v2Z)
 	{
 		v1.set(
-			Math.fma(v1.x(), v2[0], c.x()),
-			Math.fma(v1.y(), v2[1], c.y()),
-			Math.fma(v1.z(), v2[2], c.z())
+			Math.min(v1.x(), v2X),
+			Math.min(v1.y(), v2Y),
+			Math.min(v1.z(), v2Z)
 		);
 		
 		return v1;
 	}
 	
-	public static <T extends IVec3WF> T mulAddAssign(@ExtractionParam T v1, float[] v2, float[] c)
+	public static float maxValue(IVec3RF v1)
+	{
+		return MathUtils.max(v1.x(), v1.y(), v1.z());
+	}
+	
+	public static int maxComponent(IVec3RF v1)
+	{
+		float value = v1.x();
+		int index = 0;
+
+		float v1Y = v1.y();
+
+		if (v1Y > value)
+		{
+			index = 1;
+		}
+		
+		float v1Z = v1.z();
+
+		if (v1Z > value)
+		{
+			index = 2;
+		}
+		
+		return index;
+	}
+	
+	public static IndexValuePairF max(IVec3RF v1)
+	{
+		float value = v1.x();
+		int index = 0;
+
+		float v1Y = v1.y();
+
+		if (v1Y > value)
+		{
+			value = v1Y;
+			index = 1;
+		}
+
+		float v1Z = v1.z();
+
+		if (v1Z > value)
+		{
+			value = v1Z;
+			index = 2;
+		}
+		
+		return new IndexValuePairF(value, index);
+	}
+	
+	public static IndexValuePairF max(IVec3RF v1, @ExtractionParam IndexValuePairF res)
+	{
+		float value = v1.x();
+		int index = 0;
+
+		float v1Y = v1.y();
+
+		if (v1Y < value)
+		{
+			value = v1Y;
+			index = 1;
+		}
+
+		float v1Z = v1.z();
+
+		if (v1Z < value)
+		{
+			value = v1Z;
+			index = 2;
+		}
+		
+		res.set(value, index);
+
+		return res;
+	}
+	
+	public static float[] max(IVec3RF v1, IVec3RF v2, @ExtractionParam float[] res)
+	{
+		res[0] = Math.max(v1.x(), v2.x());
+		res[1] = Math.max(v1.y(), v2.y());
+		res[2] = Math.max(v1.z(), v2.z());
+		
+		return res;
+	}
+	
+	public static float[] max(IVec3RF v1, float[] v2, @ExtractionParam float[] res)
+	{
+		res[0] = Math.max(v1.x(), v2[0]);
+		res[1] = Math.max(v1.y(), v2[1]);
+		res[2] = Math.max(v1.z(), v2[2]);
+		
+		return res;
+	}
+	
+	public static float[] max(IVec3RF v1, float v2, @ExtractionParam float[] res)
+	{
+		res[0] = Math.max(v1.x(), v2);
+		res[1] = Math.max(v1.y(), v2);
+		res[2] = Math.max(v1.z(), v2);
+		
+		return res;
+	}
+	
+	public static float[] max(IVec3RF v1, float v2X, float v2Y, float v2Z, @ExtractionParam float[] res)
+	{
+		res[0] = Math.max(v1.x(), v2X);
+		res[1] = Math.max(v1.y(), v2Y);
+		res[2] = Math.max(v1.z(), v2Z);
+		
+		return res;
+	}
+	
+	public static float[] max(float[] v1, IVec3RF v2, @ExtractionParam float[] res)
+	{
+		res[0] = Math.max(v1[0], v2.x());
+		res[1] = Math.max(v1[1], v2.y());
+		res[2] = Math.max(v1[2], v2.z());
+		
+		return res;
+	}
+	
+	public static float[] max(float v1X, float v1Y, float v1Z, IVec3RF v2, @ExtractionParam float[] res)
+	{
+		res[0] = Math.max(v1X, v2.x());
+		res[1] = Math.max(v1Y, v2.y());
+		res[2] = Math.max(v1Z, v2.z());
+		
+		return res;
+	}
+	
+	public static float[] maxAssign(@ExtractionParam float[] v1, IVec3RF v2)
+	{
+		v1[0] = Math.max(v1[0], v2.x());
+		v1[1] = Math.max(v1[1], v2.y());
+		v1[2] = Math.max(v1[2], v2.z());
+		
+		return v1;
+	}
+	
+	public static <T extends IVec3WF> T max(IVec3RF v1, IVec3RF v2, @ExtractionParam T res)
+	{
+		res.set(
+			Math.max(v1.x(), v2.x()),
+			Math.max(v1.y(), v2.y()),
+			Math.max(v1.z(), v2.z())
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T max(IVec3RF v1, float[] v2, @ExtractionParam T res)
+	{
+		res.set(
+			Math.max(v1.x(), v2[0]),
+			Math.max(v1.y(), v2[1]),
+			Math.max(v1.z(), v2[2])
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T max(IVec3RF v1, float v2, @ExtractionParam T res)
+	{
+		res.set(
+			Math.max(v1.x(), v2),
+			Math.max(v1.y(), v2),
+			Math.max(v1.z(), v2)
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T max(IVec3RF v1, float v2X, float v2Y, float v2Z, @ExtractionParam T res)
+	{
+		res.set(
+			Math.max(v1.x(), v2X),
+			Math.max(v1.y(), v2Y),
+			Math.max(v1.z(), v2Z)
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T max(float[] v1, IVec3RF v2, @ExtractionParam T res)
+	{
+		res.set(
+			Math.max(v1[0], v2.x()),
+			Math.max(v1[1], v2.y()),
+			Math.max(v1[2], v2.z())
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T max(float[] v1, float[] v2, @ExtractionParam T res)
+	{
+		res.set(
+			Math.max(v1[0], v2[0]),
+			Math.max(v1[1], v2[1]),
+			Math.max(v1[2], v2[2])
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T max(float[] v1, float v2, @ExtractionParam T res)
+	{
+		res.set(
+			Math.max(v1[0], v2),
+			Math.max(v1[1], v2),
+			Math.max(v1[2], v2)
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T max(float[] v1, float v2X, float v2Y, float v2Z, @ExtractionParam T res)
+	{
+		res.set(
+			Math.max(v1[0], v2X),
+			Math.max(v1[1], v2Y),
+			Math.max(v1[2], v2Z)
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T max(float v1X, float v1Y, float v1Z, IVec3RF v2, @ExtractionParam T res)
+	{
+		res.set(
+			Math.max(v1X, v2.x()),
+			Math.max(v1Y, v2.y()),
+			Math.max(v1Z, v2.z())
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T max(float v1X, float v1Y, float v1Z, float[] v2, @ExtractionParam T res)
+	{
+		res.set(
+			Math.max(v1X, v2[0]),
+			Math.max(v1Y, v2[1]),
+			Math.max(v1Z, v2[2])
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T max(float v1X, float v1Y, float v1Z, float v2X, float v2Y, float v2Z, @ExtractionParam T res)
+	{
+		res.set(
+			Math.max(v1X, v2X),
+			Math.max(v1Y, v2Y),
+			Math.max(v1Z, v2Z)
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T maxAssign(@ExtractionParam T v1, IVec3RF v2)
 	{
 		v1.set(
-			Math.fma(v1.x(), v2[0], c[0]),
-			Math.fma(v1.y(), v2[1], c[1]),
-			Math.fma(v1.z(), v2[2], c[2])
+			Math.max(v1.x(), v2.x()),
+			Math.max(v1.y(), v2.y()),
+			Math.max(v1.z(), v2.z())
 		);
 		
 		return v1;
 	}
 	
-	public static <T extends IVec3WF> T mulAddAssign(@ExtractionParam T v1, float[] v2, float cX, float cY, float cZ)
+	public static <T extends IVec3WF> T maxAssign(@ExtractionParam T v1, float[] v2)
 	{
 		v1.set(
-			Math.fma(v1.x(), v2[0], cX),
-			Math.fma(v1.y(), v2[1], cY),
-			Math.fma(v1.z(), v2[2], cZ)
+			Math.max(v1.x(), v2[0]),
+			Math.max(v1.y(), v2[1]),
+			Math.max(v1.z(), v2[2])
 		);
 		
 		return v1;
 	}
 	
-	public static <T extends IVec3WF> T mulAddAssign(@ExtractionParam T v1, float v2, IVec3RF c)
+	public static <T extends IVec3WF> T maxAssign(@ExtractionParam T v1, float v2)
 	{
 		v1.set(
-			Math.fma(v1.x(), v2, c.x()),
-			Math.fma(v1.y(), v2, c.y()),
-			Math.fma(v1.z(), v2, c.z())
+			Math.max(v1.x(), v2),
+			Math.max(v1.y(), v2),
+			Math.max(v1.z(), v2)
 		);
 		
 		return v1;
 	}
 	
-	public static <T extends IVec3WF> T mulAddAssign(@ExtractionParam T v1, float v2, float[] c)
+	public static <T extends IVec3WF> T maxAssign(@ExtractionParam T v1, float v2X, float v2Y, float v2Z)
 	{
 		v1.set(
-			Math.fma(v1.x(), v2, c[0]),
-			Math.fma(v1.y(), v2, c[1]),
-			Math.fma(v1.z(), v2, c[2])
+			Math.max(v1.x(), v2X),
+			Math.max(v1.y(), v2Y),
+			Math.max(v1.z(), v2Z)
 		);
 		
 		return v1;
 	}
 	
-	public static <T extends IVec3WF> T mulAddAssign(@ExtractionParam T v1, float v2, float cX, float cY, float cZ)
+	public static float[] signum(IVec3RF v1, @ExtractionParam float[] res)
+	{
+		res[0] = Math.signum(v1.x());
+		res[1] = Math.signum(v1.y());
+		res[2] = Math.signum(v1.z());
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T signum(IVec3RF v1, @ExtractionParam T res)
+	{
+		res.set(
+			Math.signum(v1.x()),
+			Math.signum(v1.y()),
+			Math.signum(v1.z())
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T signum(float[] v1, @ExtractionParam T res)
+	{
+		res.set(
+			Math.signum(v1[0]),
+			Math.signum(v1[1]),
+			Math.signum(v1[2])
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T signum(float v1X, float v1Y, float v1Z, @ExtractionParam T res)
+	{
+		res.set(
+			Math.signum(v1X),
+			Math.signum(v1Y),
+			Math.signum(v1Z)
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T signumAssign(@ExtractionParam T v1)
 	{
 		v1.set(
-			Math.fma(v1.x(), v2, cX),
-			Math.fma(v1.y(), v2, cY),
-			Math.fma(v1.z(), v2, cZ)
+			Math.signum(v1.x()),
+			Math.signum(v1.y()),
+			Math.signum(v1.z())
 		);
 		
 		return v1;
 	}
 	
-	public static <T extends IVec3WF> T mulAddAssign(@ExtractionParam T v1, float v2X, float v2Y, float v2Z, IVec3RF c)
+	public static <T extends IVec3WF> T signumEps4(IVec3RF v1, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.signumEps4(v1.x()),
+			MathUtils.signumEps4(v1.y()),
+			MathUtils.signumEps4(v1.z())
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T signumEps4(float[] v1, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.signumEps4(v1[0]),
+			MathUtils.signumEps4(v1[1]),
+			MathUtils.signumEps4(v1[2])
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T signumEps4(float v1X, float v1Y, float v1Z, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.signumEps4(v1X),
+			MathUtils.signumEps4(v1Y),
+			MathUtils.signumEps4(v1Z)
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T signumEps4Assign(@ExtractionParam T v1)
 	{
 		v1.set(
-			Math.fma(v1.x(), v2X, c.x()),
-			Math.fma(v1.y(), v2Y, c.y()),
-			Math.fma(v1.z(), v2Z, c.z())
+			MathUtils.signumEps4(v1.x()),
+			MathUtils.signumEps4(v1.y()),
+			MathUtils.signumEps4(v1.z())
 		);
 		
 		return v1;
 	}
 	
-	public static <T extends IVec3WF> T mulAddAssign(@ExtractionParam T v1, float v2X, float v2Y, float v2Z, float[] c)
+	public static <T extends IVec3WF> T signumEps6(IVec3RF v1, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.signumEps6(v1.x()),
+			MathUtils.signumEps6(v1.y()),
+			MathUtils.signumEps6(v1.z())
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T signumEps6(float[] v1, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.signumEps6(v1[0]),
+			MathUtils.signumEps6(v1[1]),
+			MathUtils.signumEps6(v1[2])
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T signumEps6(float v1X, float v1Y, float v1Z, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.signumEps6(v1X),
+			MathUtils.signumEps6(v1Y),
+			MathUtils.signumEps6(v1Z)
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T signumEps6Assign(@ExtractionParam T v1)
 	{
 		v1.set(
-			Math.fma(v1.x(), v2X, c[0]),
-			Math.fma(v1.y(), v2Y, c[1]),
-			Math.fma(v1.z(), v2Z, c[2])
+			MathUtils.signumEps6(v1.x()),
+			MathUtils.signumEps6(v1.y()),
+			MathUtils.signumEps6(v1.z())
 		);
 		
 		return v1;
 	}
 	
-	public static <T extends IVec3WF> T mulAddAssign(@ExtractionParam T v1, float v2X, float v2Y, float v2Z, float cX, float cY, float cZ)
+	public static <T extends IVec3WF> T signumEps8(IVec3RF v1, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.signumEps8(v1.x()),
+			MathUtils.signumEps8(v1.y()),
+			MathUtils.signumEps8(v1.z())
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T signumEps8(float[] v1, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.signumEps8(v1[0]),
+			MathUtils.signumEps8(v1[1]),
+			MathUtils.signumEps8(v1[2])
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T signumEps8(float v1X, float v1Y, float v1Z, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.signumEps8(v1X),
+			MathUtils.signumEps8(v1Y),
+			MathUtils.signumEps8(v1Z)
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T signumEps8Assign(@ExtractionParam T v1)
 	{
 		v1.set(
-			Math.fma(v1.x(), v2X, cX),
-			Math.fma(v1.y(), v2Y, cY),
-			Math.fma(v1.z(), v2Z, cZ)
+			MathUtils.signumEps8(v1.x()),
+			MathUtils.signumEps8(v1.y()),
+			MathUtils.signumEps8(v1.z())
 		);
 		
 		return v1;
 	}
 	
-	public static float[] revMulAdd(IVec3RF v1, IVec3RF v2, IVec3RF c, @ExtractionParam float[] res)
+	public static float[] clampMin(IVec3RF v1, IVec3RF min, @ExtractionParam float[] res)
 	{
-		res[0] = Math.fma(v2.x(), c.x(), v1.x());
-		res[1] = Math.fma(v2.y(), c.y(), v1.y());
-		res[2] = Math.fma(v2.z(), c.z(), v1.z());
+		res[0] = MathUtils.clampMin(v1.x(), min.x());
+		res[1] = MathUtils.clampMin(v1.y(), min.y());
+		res[2] = MathUtils.clampMin(v1.z(), min.z());
 		
 		return res;
 	}
 	
-	public static float[] revMulAdd(IVec3RF v1, IVec3RF v2, float[] c, @ExtractionParam float[] res)
+	public static float[] clampMin(IVec3RF v1, float[] min, @ExtractionParam float[] res)
 	{
-		res[0] = Math.fma(v2.x(), c[0], v1.x());
-		res[1] = Math.fma(v2.y(), c[1], v1.y());
-		res[2] = Math.fma(v2.z(), c[2], v1.z());
+		res[0] = MathUtils.clampMin(v1.x(), min[0]);
+		res[1] = MathUtils.clampMin(v1.y(), min[1]);
+		res[2] = MathUtils.clampMin(v1.z(), min[2]);
 		
 		return res;
 	}
 	
-	public static float[] revMulAdd(IVec3RF v1, IVec3RF v2, float cX, float cY, float cZ, @ExtractionParam float[] res)
+	public static float[] clampMin(IVec3RF v1, float min, @ExtractionParam float[] res)
 	{
-		res[0] = Math.fma(v2.x(), cX, v1.x());
-		res[1] = Math.fma(v2.y(), cY, v1.y());
-		res[2] = Math.fma(v2.z(), cZ, v1.z());
+		res[0] = MathUtils.clampMin(v1.x(), min);
+		res[1] = MathUtils.clampMin(v1.y(), min);
+		res[2] = MathUtils.clampMin(v1.z(), min);
 		
 		return res;
 	}
 	
-	public static float[] revMulAdd(IVec3RF v1, float[] v2, IVec3RF c, @ExtractionParam float[] res)
+	public static float[] clampMin(IVec3RF v1, float minX, float minY, float minZ, @ExtractionParam float[] res)
 	{
-		res[0] = Math.fma(v2[0], c.x(), v1.x());
-		res[1] = Math.fma(v2[1], c.y(), v1.y());
-		res[2] = Math.fma(v2[2], c.z(), v1.z());
+		res[0] = MathUtils.clampMin(v1.x(), minX);
+		res[1] = MathUtils.clampMin(v1.y(), minY);
+		res[2] = MathUtils.clampMin(v1.z(), minZ);
 		
 		return res;
 	}
 	
-	public static float[] revMulAdd(IVec3RF v1, float[] v2, float[] c, @ExtractionParam float[] res)
+	public static float[] clampMin(float[] v1, IVec3RF min, @ExtractionParam float[] res)
 	{
-		res[0] = Math.fma(v2[0], c[0], v1.x());
-		res[1] = Math.fma(v2[1], c[1], v1.y());
-		res[2] = Math.fma(v2[2], c[2], v1.z());
+		res[0] = MathUtils.clampMin(v1[0], min.x());
+		res[1] = MathUtils.clampMin(v1[1], min.y());
+		res[2] = MathUtils.clampMin(v1[2], min.z());
 		
 		return res;
 	}
 	
-	public static float[] revMulAdd(IVec3RF v1, float[] v2, float cX, float cY, float cZ, @ExtractionParam float[] res)
+	public static float[] clampMin(float v1X, float v1Y, float v1Z, IVec3RF min, @ExtractionParam float[] res)
 	{
-		res[0] = Math.fma(v2[0], cX, v1.x());
-		res[1] = Math.fma(v2[1], cY, v1.y());
-		res[2] = Math.fma(v2[2], cZ, v1.z());
+		res[0] = MathUtils.clampMin(v1X, min.x());
+		res[1] = MathUtils.clampMin(v1Y, min.y());
+		res[2] = MathUtils.clampMin(v1Z, min.z());
 		
 		return res;
 	}
 	
-	public static float[] revMulAdd(IVec3RF v1, float v2X, float v2Y, float v2Z, IVec3RF c, @ExtractionParam float[] res)
+	public static float[] clampMinAssign(@ExtractionParam float[] v1, IVec3RF min)
 	{
-		res[0] = Math.fma(v2X, c.x(), v1.x());
-		res[1] = Math.fma(v2Y, c.y(), v1.y());
-		res[2] = Math.fma(v2Z, c.z(), v1.z());
-		
-		return res;
-	}
-	
-	public static float[] revMulAdd(IVec3RF v1, float v2X, float v2Y, float v2Z, float[] c, @ExtractionParam float[] res)
-	{
-		res[0] = Math.fma(v2X, c[0], v1.x());
-		res[1] = Math.fma(v2Y, c[1], v1.y());
-		res[2] = Math.fma(v2Z, c[2], v1.z());
-		
-		return res;
-	}
-	
-	public static float[] revMulAdd(IVec3RF v1, float v2X, float v2Y, float v2Z, float cX, float cY, float cZ, @ExtractionParam float[] res)
-	{
-		res[0] = Math.fma(v2X, cX, v1.x());
-		res[1] = Math.fma(v2Y, cY, v1.y());
-		res[2] = Math.fma(v2Z, cZ, v1.z());
-		
-		return res;
-	}
-	
-	public static float[] revMulAdd(float[] v1, IVec3RF v2, IVec3RF c, @ExtractionParam float[] res)
-	{
-		res[0] = Math.fma(v2.x(), c.x(), v1[0]);
-		res[1] = Math.fma(v2.y(), c.y(), v1[1]);
-		res[2] = Math.fma(v2.z(), c.z(), v1[2]);
-		
-		return res;
-	}
-	
-	public static float[] revMulAdd(float[] v1, IVec3RF v2, float[] c, @ExtractionParam float[] res)
-	{
-		res[0] = Math.fma(v2.x(), c[0], v1[0]);
-		res[1] = Math.fma(v2.y(), c[1], v1[1]);
-		res[2] = Math.fma(v2.z(), c[2], v1[2]);
-		
-		return res;
-	}
-	
-	public static float[] revMulAdd(float[] v1, IVec3RF v2, float cX, float cY, float cZ, @ExtractionParam float[] res)
-	{
-		res[0] = Math.fma(v2.x(), cX, v1[0]);
-		res[1] = Math.fma(v2.y(), cY, v1[1]);
-		res[2] = Math.fma(v2.z(), cZ, v1[2]);
-		
-		return res;
-	}
-	
-	public static float[] revMulAdd(float[] v1, float[] v2, IVec3RF c, @ExtractionParam float[] res)
-	{
-		res[0] = Math.fma(v2[0], c.x(), v1[0]);
-		res[1] = Math.fma(v2[1], c.y(), v1[1]);
-		res[2] = Math.fma(v2[2], c.z(), v1[2]);
-		
-		return res;
-	}
-	
-	public static float[] revMulAdd(float[] v1, float v2X, float v2Y, float v2Z, IVec3RF c, @ExtractionParam float[] res)
-	{
-		res[0] = Math.fma(v2X, c.x(), v1[0]);
-		res[1] = Math.fma(v2Y, c.y(), v1[1]);
-		res[2] = Math.fma(v2Z, c.z(), v1[2]);
-		
-		return res;
-	}
-	
-	public static float[] revMulAdd(float v1X, float v1Y, float v1Z, IVec3RF v2, IVec3RF c, @ExtractionParam float[] res)
-	{
-		res[0] = Math.fma(v2.x(), c.x(), v1X);
-		res[1] = Math.fma(v2.y(), c.y(), v1Y);
-		res[2] = Math.fma(v2.z(), c.z(), v1Z);
-		
-		return res;
-	}
-	
-	public static float[] revMulAdd(float v1X, float v1Y, float v1Z, IVec3RF v2, float[] c, @ExtractionParam float[] res)
-	{
-		res[0] = Math.fma(v2.x(), c[0], v1X);
-		res[1] = Math.fma(v2.y(), c[1], v1Y);
-		res[2] = Math.fma(v2.z(), c[2], v1Z);
-		
-		return res;
-	}
-	
-	public static float[] revMulAdd(float v1X, float v1Y, float v1Z, IVec3RF v2, float cX, float cY, float cZ, @ExtractionParam float[] res)
-	{
-		res[0] = Math.fma(v2.x(), cX, v1X);
-		res[1] = Math.fma(v2.y(), cY, v1Y);
-		res[2] = Math.fma(v2.z(), cZ, v1Z);
-		
-		return res;
-	}
-	
-	public static float[] revMulAdd(float v1X, float v1Y, float v1Z, float[] v2, IVec3RF c, @ExtractionParam float[] res)
-	{
-		res[0] = Math.fma(v2[0], c.x(), v1X);
-		res[1] = Math.fma(v2[1], c.y(), v1Y);
-		res[2] = Math.fma(v2[2], c.z(), v1Z);
-		
-		return res;
-	}
-	
-	public static float[] revMulAdd(float v1X, float v1Y, float v1Z, float v2X, float v2Y, float v2Z, IVec3RF c, @ExtractionParam float[] res)
-	{
-		res[0] = Math.fma(v2X, c.x(), v1X);
-		res[1] = Math.fma(v2Y, c.y(), v1Y);
-		res[2] = Math.fma(v2Z, c.z(), v1Z);
-		
-		return res;
-	}
-	
-	public static float[] revMulAddAssign(@ExtractionParam float[] v1, IVec3RF v2, IVec3RF c)
-	{
-		v1[0] = Math.fma(v2.x(), c.x(), v1[0]);
-		v1[1] = Math.fma(v2.y(), c.y(), v1[1]);
-		v1[2] = Math.fma(v2.z(), c.z(), v1[2]);
+		v1[0] = MathUtils.clampMin(v1[0], min.x());
+		v1[1] = MathUtils.clampMin(v1[1], min.y());
+		v1[2] = MathUtils.clampMin(v1[2], min.z());
 		
 		return v1;
 	}
 	
-	public static float[] revMulAddAssign(@ExtractionParam float[] v1, IVec3RF v2, float[] c)
-	{
-		v1[0] = Math.fma(v2.x(), c[0], v1[0]);
-		v1[1] = Math.fma(v2.y(), c[1], v1[1]);
-		v1[2] = Math.fma(v2.z(), c[2], v1[2]);
-		
-		return v1;
-	}
-	
-	public static float[] revMulAddAssign(@ExtractionParam float[] v1, IVec3RF v2, float cX, float cY, float cZ)
-	{
-		v1[0] = Math.fma(v2.x(), cX, v1[0]);
-		v1[1] = Math.fma(v2.y(), cY, v1[1]);
-		v1[2] = Math.fma(v2.z(), cZ, v1[2]);
-		
-		return v1;
-	}
-	
-	public static float[] revMulAddAssign(@ExtractionParam float[] v1, float[] v2, IVec3RF c)
-	{
-		v1[0] = Math.fma(v2[0], c.x(), v1[0]);
-		v1[1] = Math.fma(v2[1], c.y(), v1[1]);
-		v1[2] = Math.fma(v2[2], c.z(), v1[2]);
-		
-		return v1;
-	}
-	
-	public static float[] revMulAddAssign(@ExtractionParam float[] v1, float v2X, float v2Y, float v2Z, IVec3RF c)
-	{
-		v1[0] = Math.fma(v2X, c.x(), v1[0]);
-		v1[1] = Math.fma(v2Y, c.y(), v1[1]);
-		v1[2] = Math.fma(v2Z, c.z(), v1[2]);
-		
-		return v1;
-	}
-	
-	public static <T extends IVec3WF> T revMulAdd(IVec3RF v1, IVec3RF v2, IVec3RF c, @ExtractionParam T res)
+	public static <T extends IVec3WF> T clampMin(IVec3RF v1, IVec3RF v2, @ExtractionParam T res)
 	{
 		res.set(
-			Math.fma(v2.x(), c.x(), v1.x()),
-			Math.fma(v2.y(), c.y(), v1.y()),
-			Math.fma(v2.z(), c.z(), v1.z())
+			MathUtils.clampMin(v1.x(), v2.x()),
+			MathUtils.clampMin(v1.y(), v2.y()),
+			MathUtils.clampMin(v1.z(), v2.z())
 		);
 		
 		return res;
 	}
 	
-	public static <T extends IVec3WF> T revMulAdd(IVec3RF v1, IVec3RF v2, float[] c, @ExtractionParam T res)
+	public static <T extends IVec3WF> T clampMin(IVec3RF v1, float[] v2, @ExtractionParam T res)
 	{
 		res.set(
-			Math.fma(v2.x(), c[0], v1.x()),
-			Math.fma(v2.y(), c[1], v1.y()),
-			Math.fma(v2.z(), c[2], v1.z())
+			MathUtils.clampMin(v1.x(), v2[0]),
+			MathUtils.clampMin(v1.y(), v2[1]),
+			MathUtils.clampMin(v1.z(), v2[2])
 		);
 		
 		return res;
 	}
 	
-	public static <T extends IVec3WF> T revMulAdd(IVec3RF v1, IVec3RF v2, float cX, float cY, float cZ, @ExtractionParam T res)
+	public static <T extends IVec3WF> T clampMin(IVec3RF v1, float v2, @ExtractionParam T res)
 	{
 		res.set(
-			Math.fma(v2.x(), cX, v1.x()),
-			Math.fma(v2.y(), cY, v1.y()),
-			Math.fma(v2.z(), cZ, v1.z())
+			MathUtils.clampMin(v1.x(), v2),
+			MathUtils.clampMin(v1.y(), v2),
+			MathUtils.clampMin(v1.z(), v2)
 		);
 		
 		return res;
 	}
 	
-	public static <T extends IVec3WF> T revMulAdd(IVec3RF v1, float[] v2, IVec3RF c, @ExtractionParam T res)
+	public static <T extends IVec3WF> T clampMin(IVec3RF v1, float v2X, float v2Y, float v2Z, @ExtractionParam T res)
 	{
 		res.set(
-			Math.fma(v2[0], c.x(), v1.x()),
-			Math.fma(v2[1], c.y(), v1.y()),
-			Math.fma(v2[2], c.z(), v1.z())
+			MathUtils.clampMin(v1.x(), v2X),
+			MathUtils.clampMin(v1.y(), v2Y),
+			MathUtils.clampMin(v1.z(), v2Z)
 		);
 		
 		return res;
 	}
 	
-	public static <T extends IVec3WF> T revMulAdd(IVec3RF v1, float[] v2, float[] c, @ExtractionParam T res)
+	public static <T extends IVec3WF> T clampMin(float[] v1, IVec3RF v2, @ExtractionParam T res)
 	{
 		res.set(
-			Math.fma(v2[0], c[0], v1.x()),
-			Math.fma(v2[1], c[1], v1.y()),
-			Math.fma(v2[2], c[2], v1.z())
+			MathUtils.clampMin(v1[0], v2.x()),
+			MathUtils.clampMin(v1[1], v2.y()),
+			MathUtils.clampMin(v1[2], v2.z())
 		);
 		
 		return res;
 	}
 	
-	public static <T extends IVec3WF> T revMulAdd(IVec3RF v1, float[] v2, float cX, float cY, float cZ, @ExtractionParam T res)
+	public static <T extends IVec3WF> T clampMin(float[] v1, float[] v2, @ExtractionParam T res)
 	{
 		res.set(
-			Math.fma(v2[0], cX, v1.x()),
-			Math.fma(v2[1], cY, v1.y()),
-			Math.fma(v2[2], cZ, v1.z())
+			MathUtils.clampMin(v1[0], v2[0]),
+			MathUtils.clampMin(v1[1], v2[1]),
+			MathUtils.clampMin(v1[2], v2[2])
 		);
 		
 		return res;
 	}
 	
-	public static <T extends IVec3WF> T revMulAdd(IVec3RF v1, float v2X, float v2Y, float v2Z, IVec3RF c, @ExtractionParam T res)
+	public static <T extends IVec3WF> T clampMin(float[] v1, float v2, @ExtractionParam T res)
 	{
 		res.set(
-			Math.fma(v2X, c.x(), v1.x()),
-			Math.fma(v2Y, c.y(), v1.y()),
-			Math.fma(v2Z, c.z(), v1.z())
+			MathUtils.clampMin(v1[0], v2),
+			MathUtils.clampMin(v1[1], v2),
+			MathUtils.clampMin(v1[2], v2)
 		);
 		
 		return res;
 	}
 	
-	public static <T extends IVec3WF> T revMulAdd(IVec3RF v1, float v2X, float v2Y, float v2Z, float[] c, @ExtractionParam T res)
+	public static <T extends IVec3WF> T clampMin(float[] v1, float v2X, float v2Y, float v2Z, @ExtractionParam T res)
 	{
 		res.set(
-			Math.fma(v2X, c[0], v1.x()),
-			Math.fma(v2Y, c[1], v1.y()),
-			Math.fma(v2Z, c[2], v1.z())
+			MathUtils.clampMin(v1[0], v2X),
+			MathUtils.clampMin(v1[1], v2Y),
+			MathUtils.clampMin(v1[2], v2Z)
 		);
 		
 		return res;
 	}
 	
-	public static <T extends IVec3WF> T revMulAdd(IVec3RF v1, float v2X, float v2Y, float v2Z, float cX, float cY, float cZ, @ExtractionParam T res)
+	public static <T extends IVec3WF> T clampMin(float v1X, float v1Y, float v1Z, IVec3RF v2, @ExtractionParam T res)
 	{
 		res.set(
-			Math.fma(v2X, cX, v1.x()),
-			Math.fma(v2Y, cY, v1.y()),
-			Math.fma(v2Z, cZ, v1.z())
+			MathUtils.clampMin(v1X, v2.x()),
+			MathUtils.clampMin(v1Y, v2.y()),
+			MathUtils.clampMin(v1Z, v2.z())
 		);
 		
 		return res;
 	}
 	
-	public static <T extends IVec3WF> T revMulAdd(float[] v1, IVec3RF v2, IVec3RF c, @ExtractionParam T res)
+	public static <T extends IVec3WF> T clampMin(float v1X, float v1Y, float v1Z, float[] v2, @ExtractionParam T res)
 	{
 		res.set(
-			Math.fma(v2.x(), c.x(), v1[0]),
-			Math.fma(v2.y(), c.y(), v1[1]),
-			Math.fma(v2.z(), c.z(), v1[2])
+			MathUtils.clampMin(v1X, v2[0]),
+			MathUtils.clampMin(v1Y, v2[1]),
+			MathUtils.clampMin(v1Z, v2[2])
 		);
 		
 		return res;
 	}
 	
-	public static <T extends IVec3WF> T revMulAdd(float[] v1, IVec3RF v2, float[] c, @ExtractionParam T res)
+	public static <T extends IVec3WF> T clampMin(float v1X, float v1Y, float v1Z, float v2X, float v2Y, float v2Z, @ExtractionParam T res)
 	{
 		res.set(
-			Math.fma(v2.x(), c[0], v1[0]),
-			Math.fma(v2.y(), c[1], v1[1]),
-			Math.fma(v2.z(), c[2], v1[2])
+			MathUtils.clampMin(v1X, v2X),
+			MathUtils.clampMin(v1Y, v2Y),
+			MathUtils.clampMin(v1Z, v2Z)
 		);
 		
 		return res;
 	}
 	
-	public static <T extends IVec3WF> T revMulAdd(float[] v1, IVec3RF v2, float cX, float cY, float cZ, @ExtractionParam T res)
-	{
-		res.set(
-			Math.fma(v2.x(), cX, v1[0]),
-			Math.fma(v2.y(), cY, v1[1]),
-			Math.fma(v2.z(), cZ, v1[2])
-		);
-		
-		return res;
-	}
-	
-	public static <T extends IVec3WF> T revMulAdd(float[] v1, float[] v2, IVec3RF c, @ExtractionParam T res)
-	{
-		res.set(
-			Math.fma(v2[0], c.x(), v1[0]),
-			Math.fma(v2[1], c.y(), v1[1]),
-			Math.fma(v2[2], c.z(), v1[2])
-		);
-		
-		return res;
-	}
-	
-	public static <T extends IVec3WF> T revMulAdd(float[] v1, float[] v2, float[] c, @ExtractionParam T res)
-	{
-		res.set(
-			Math.fma(v2[0], c[0], v1[0]),
-			Math.fma(v2[1], c[1], v1[1]),
-			Math.fma(v2[2], c[2], v1[2])
-		);
-		
-		return res;
-	}
-	
-	public static <T extends IVec3WF> T revMulAdd(float[] v1, float[] v2, float cX, float cY, float cZ, @ExtractionParam T res)
-	{
-		res.set(
-			Math.fma(v2[0], cX, v1[0]),
-			Math.fma(v2[1], cY, v1[1]),
-			Math.fma(v2[2], cZ, v1[2])
-		);
-		
-		return res;
-	}
-	
-	public static <T extends IVec3WF> T revMulAdd(float[] v1, float v2X, float v2Y, float v2Z, IVec3RF c, @ExtractionParam T res)
-	{
-		res.set(
-			Math.fma(v2X, c.x(), v1[0]),
-			Math.fma(v2Y, c.y(), v1[1]),
-			Math.fma(v2Z, c.z(), v1[2])
-		);
-		
-		return res;
-	}
-	
-	public static <T extends IVec3WF> T revMulAdd(float[] v1, float v2X, float v2Y, float v2Z, float[] c, @ExtractionParam T res)
-	{
-		res.set(
-			Math.fma(v2X, c[0], v1[0]),
-			Math.fma(v2Y, c[1], v1[1]),
-			Math.fma(v2Z, c[2], v1[2])
-		);
-		
-		return res;
-	}
-	
-	public static <T extends IVec3WF> T revMulAdd(float[] v1, float v2X, float v2Y, float v2Z, float cX, float cY, float cZ, @ExtractionParam T res)
-	{
-		res.set(
-			Math.fma(v2X, cX, v1[0]),
-			Math.fma(v2Y, cY, v1[1]),
-			Math.fma(v2Z, cZ, v1[2])
-		);
-		
-		return res;
-	}
-	
-	public static <T extends IVec3WF> T revMulAdd(float v1X, float v1Y, float v1Z, IVec3RF v2, IVec3RF c, @ExtractionParam T res)
-	{
-		res.set(
-			Math.fma(v2.x(), c.x(), v1X),
-			Math.fma(v2.y(), c.y(), v1Y),
-			Math.fma(v2.z(), c.z(), v1Z)
-		);
-		
-		return res;
-	}
-	
-	public static <T extends IVec3WF> T revMulAdd(float v1X, float v1Y, float v1Z, IVec3RF v2, float[] c, @ExtractionParam T res)
-	{
-		res.set(
-			Math.fma(v2.x(), c[0], v1X),
-			Math.fma(v2.y(), c[1], v1Y),
-			Math.fma(v2.z(), c[2], v1Z)
-		);
-		
-		return res;
-	}
-	
-	public static <T extends IVec3WF> T revMulAdd(float v1X, float v1Y, float v1Z, IVec3RF v2, float cX, float cY, float cZ, @ExtractionParam T res)
-	{
-		res.set(
-			Math.fma(v2.x(), cX, v1X),
-			Math.fma(v2.y(), cY, v1Y),
-			Math.fma(v2.z(), cZ, v1Z)
-		);
-		
-		return res;
-	}
-	
-	public static <T extends IVec3WF> T revMulAdd(float v1X, float v1Y, float v1Z, float[] v2, IVec3RF c, @ExtractionParam T res)
-	{
-		res.set(
-			Math.fma(v2[0], c.x(), v1X),
-			Math.fma(v2[1], c.y(), v1Y),
-			Math.fma(v2[2], c.z(), v1Z)
-		);
-		
-		return res;
-	}
-	
-	public static <T extends IVec3WF> T revMulAdd(float v1X, float v1Y, float v1Z, float[] v2, float[] c, @ExtractionParam T res)
-	{
-		res.set(
-			Math.fma(v2[0], c[0], v1X),
-			Math.fma(v2[1], c[1], v1Y),
-			Math.fma(v2[2], c[2], v1Z)
-		);
-		
-		return res;
-	}
-	
-	public static <T extends IVec3WF> T revMulAdd(float v1X, float v1Y, float v1Z, float[] v2, float cX, float cY, float cZ, @ExtractionParam T res)
-	{
-		res.set(
-			Math.fma(v2[0], cX, v1X),
-			Math.fma(v2[1], cY, v1Y),
-			Math.fma(v2[2], cZ, v1Z)
-		);
-		
-		return res;
-	}
-	
-	public static <T extends IVec3WF> T revMulAdd(float v1X, float v1Y, float v1Z, float v2X, float v2Y, float v2Z, IVec3RF c, @ExtractionParam T res)
-	{
-		res.set(
-			Math.fma(v2X, c.x(), v1X),
-			Math.fma(v2Y, c.y(), v1Y),
-			Math.fma(v2Z, c.z(), v1Z)
-		);
-		
-		return res;
-	}
-	
-	public static <T extends IVec3WF> T revMulAdd(float v1X, float v1Y, float v1Z, float v2X, float v2Y, float v2Z, float[] c, @ExtractionParam T res)
-	{
-		res.set(
-			Math.fma(v2X, c[0], v1X),
-			Math.fma(v2Y, c[1], v1Y),
-			Math.fma(v2Z, c[2], v1Z)
-		);
-		
-		return res;
-	}
-	
-	public static <T extends IVec3WF> T revMulAdd(float v1X, float v1Y, float v1Z, float v2X, float v2Y, float v2Z, float cX, float cY, float cZ, @ExtractionParam T res)
-	{
-		res.set(
-			Math.fma(v2X, cX, v1X),
-			Math.fma(v2Y, cY, v1Y),
-			Math.fma(v2Z, cZ, v1Z)
-		);
-		
-		return res;
-	}
-	
-	public static <T extends IVec3WF> T revMulAddAssign(@ExtractionParam T v1, IVec3RF v2, IVec3RF c)
+	public static <T extends IVec3WF> T clampMinAssign(@ExtractionParam T v1, IVec3RF v2)
 	{
 		v1.set(
-			Math.fma(v2.x(), c.x(), v1.x()),
-			Math.fma(v2.y(), c.y(), v1.y()),
-			Math.fma(v2.z(), c.z(), v1.z())
+			MathUtils.clampMin(v1.x(), v2.x()),
+			MathUtils.clampMin(v1.y(), v2.y()),
+			MathUtils.clampMin(v1.z(), v2.z())
 		);
 		
 		return v1;
 	}
 	
-	public static <T extends IVec3WF> T revMulAddAssign(@ExtractionParam T v1, IVec3RF v2, float[] c)
+	public static <T extends IVec3WF> T clampMinAssign(@ExtractionParam T v1, float[] v2)
 	{
 		v1.set(
-			Math.fma(v2.x(), c[0], v1.x()),
-			Math.fma(v2.y(), c[1], v1.y()),
-			Math.fma(v2.z(), c[2], v1.z())
+			MathUtils.clampMin(v1.x(), v2[0]),
+			MathUtils.clampMin(v1.y(), v2[1]),
+			MathUtils.clampMin(v1.z(), v2[2])
 		);
 		
 		return v1;
 	}
 	
-	public static <T extends IVec3WF> T revMulAddAssign(@ExtractionParam T v1, IVec3RF v2, float cX, float cY, float cZ)
+	public static <T extends IVec3WF> T clampMinAssign(@ExtractionParam T v1, float v2)
 	{
 		v1.set(
-			Math.fma(v2.x(), cX, v1.x()),
-			Math.fma(v2.y(), cY, v1.y()),
-			Math.fma(v2.z(), cZ, v1.z())
+			MathUtils.clampMin(v1.x(), v2),
+			MathUtils.clampMin(v1.y(), v2),
+			MathUtils.clampMin(v1.z(), v2)
 		);
 		
 		return v1;
 	}
 	
-	public static <T extends IVec3WF> T revMulAddAssign(@ExtractionParam T v1, float[] v2, IVec3RF c)
+	public static <T extends IVec3WF> T clampMinAssign(@ExtractionParam T v1, float v2X, float v2Y, float v2Z)
 	{
 		v1.set(
-			Math.fma(v2[0], c.x(), v1.x()),
-			Math.fma(v2[1], c.y(), v1.y()),
-			Math.fma(v2[2], c.z(), v1.z())
+			MathUtils.clampMin(v1.x(), v2X),
+			MathUtils.clampMin(v1.y(), v2Y),
+			MathUtils.clampMin(v1.z(), v2Z)
 		);
 		
 		return v1;
 	}
 	
-	public static <T extends IVec3WF> T revMulAddAssign(@ExtractionParam T v1, float[] v2, float[] c)
+	public static float[] clampMax(IVec3RF v1, IVec3RF min, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.clampMax(v1.x(), min.x());
+		res[1] = MathUtils.clampMax(v1.y(), min.y());
+		res[2] = MathUtils.clampMax(v1.z(), min.z());
+		
+		return res;
+	}
+	
+	public static float[] clampMax(IVec3RF v1, float[] min, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.clampMax(v1.x(), min[0]);
+		res[1] = MathUtils.clampMax(v1.y(), min[1]);
+		res[2] = MathUtils.clampMax(v1.z(), min[2]);
+		
+		return res;
+	}
+	
+	public static float[] clampMax(IVec3RF v1, float min, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.clampMax(v1.x(), min);
+		res[1] = MathUtils.clampMax(v1.y(), min);
+		res[2] = MathUtils.clampMax(v1.z(), min);
+		
+		return res;
+	}
+	
+	public static float[] clampMax(IVec3RF v1, float minX, float minY, float minZ, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.clampMax(v1.x(), minX);
+		res[1] = MathUtils.clampMax(v1.y(), minY);
+		res[2] = MathUtils.clampMax(v1.z(), minZ);
+		
+		return res;
+	}
+	
+	public static float[] clampMax(float[] v1, IVec3RF min, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.clampMax(v1[0], min.x());
+		res[1] = MathUtils.clampMax(v1[1], min.y());
+		res[2] = MathUtils.clampMax(v1[2], min.z());
+		
+		return res;
+	}
+	
+	public static float[] clampMax(float v1X, float v1Y, float v1Z, IVec3RF min, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.clampMax(v1X, min.x());
+		res[1] = MathUtils.clampMax(v1Y, min.y());
+		res[2] = MathUtils.clampMax(v1Z, min.z());
+		
+		return res;
+	}
+	
+	public static float[] clampMaxAssign(@ExtractionParam float[] v1, IVec3RF min)
+	{
+		v1[0] = MathUtils.clampMax(v1[0], min.x());
+		v1[1] = MathUtils.clampMax(v1[1], min.y());
+		v1[2] = MathUtils.clampMax(v1[2], min.z());
+		
+		return v1;
+	}
+	
+	public static <T extends IVec3WF> T clampMax(IVec3RF v1, IVec3RF v2, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.clampMax(v1.x(), v2.x()),
+			MathUtils.clampMax(v1.y(), v2.y()),
+			MathUtils.clampMax(v1.z(), v2.z())
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T clampMax(IVec3RF v1, float[] v2, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.clampMax(v1.x(), v2[0]),
+			MathUtils.clampMax(v1.y(), v2[1]),
+			MathUtils.clampMax(v1.z(), v2[2])
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T clampMax(IVec3RF v1, float v2, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.clampMax(v1.x(), v2),
+			MathUtils.clampMax(v1.y(), v2),
+			MathUtils.clampMax(v1.z(), v2)
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T clampMax(IVec3RF v1, float v2X, float v2Y, float v2Z, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.clampMax(v1.x(), v2X),
+			MathUtils.clampMax(v1.y(), v2Y),
+			MathUtils.clampMax(v1.z(), v2Z)
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T clampMax(float[] v1, IVec3RF v2, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.clampMax(v1[0], v2.x()),
+			MathUtils.clampMax(v1[1], v2.y()),
+			MathUtils.clampMax(v1[2], v2.z())
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T clampMax(float[] v1, float[] v2, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.clampMax(v1[0], v2[0]),
+			MathUtils.clampMax(v1[1], v2[1]),
+			MathUtils.clampMax(v1[2], v2[2])
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T clampMax(float[] v1, float v2, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.clampMax(v1[0], v2),
+			MathUtils.clampMax(v1[1], v2),
+			MathUtils.clampMax(v1[2], v2)
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T clampMax(float[] v1, float v2X, float v2Y, float v2Z, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.clampMax(v1[0], v2X),
+			MathUtils.clampMax(v1[1], v2Y),
+			MathUtils.clampMax(v1[2], v2Z)
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T clampMax(float v1X, float v1Y, float v1Z, IVec3RF v2, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.clampMax(v1X, v2.x()),
+			MathUtils.clampMax(v1Y, v2.y()),
+			MathUtils.clampMax(v1Z, v2.z())
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T clampMax(float v1X, float v1Y, float v1Z, float[] v2, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.clampMax(v1X, v2[0]),
+			MathUtils.clampMax(v1Y, v2[1]),
+			MathUtils.clampMax(v1Z, v2[2])
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T clampMax(float v1X, float v1Y, float v1Z, float v2X, float v2Y, float v2Z, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.clampMax(v1X, v2X),
+			MathUtils.clampMax(v1Y, v2Y),
+			MathUtils.clampMax(v1Z, v2Z)
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T clampMaxAssign(@ExtractionParam T v1, IVec3RF v2)
 	{
 		v1.set(
-			Math.fma(v2[0], c[0], v1.x()),
-			Math.fma(v2[1], c[1], v1.y()),
-			Math.fma(v2[2], c[2], v1.z())
+			MathUtils.clampMax(v1.x(), v2.x()),
+			MathUtils.clampMax(v1.y(), v2.y()),
+			MathUtils.clampMax(v1.z(), v2.z())
 		);
 		
 		return v1;
 	}
 	
-	public static <T extends IVec3WF> T revMulAddAssign(@ExtractionParam T v1, float[] v2, float cX, float cY, float cZ)
+	public static <T extends IVec3WF> T clampMaxAssign(@ExtractionParam T v1, float[] v2)
 	{
 		v1.set(
-			Math.fma(v2[0], cX, v1.x()),
-			Math.fma(v2[1], cY, v1.y()),
-			Math.fma(v2[2], cZ, v1.z())
+			MathUtils.clampMax(v1.x(), v2[0]),
+			MathUtils.clampMax(v1.y(), v2[1]),
+			MathUtils.clampMax(v1.z(), v2[2])
 		);
 		
 		return v1;
 	}
 	
-	public static <T extends IVec3WF> T revMulAddAssign(@ExtractionParam T v1, float v2X, float v2Y, float v2Z, IVec3RF c)
+	public static <T extends IVec3WF> T clampMaxAssign(@ExtractionParam T v1, float v2)
 	{
 		v1.set(
-			Math.fma(v2X, c.x(), v1.x()),
-			Math.fma(v2Y, c.y(), v1.y()),
-			Math.fma(v2Z, c.z(), v1.z())
+			MathUtils.clampMax(v1.x(), v2),
+			MathUtils.clampMax(v1.y(), v2),
+			MathUtils.clampMax(v1.z(), v2)
 		);
 		
 		return v1;
 	}
 	
-	public static <T extends IVec3WF> T revMulAddAssign(@ExtractionParam T v1, float v2X, float v2Y, float v2Z, float[] c)
+	public static <T extends IVec3WF> T clampMaxAssign(@ExtractionParam T v1, float v2X, float v2Y, float v2Z)
 	{
 		v1.set(
-			Math.fma(v2X, c[0], v1.x()),
-			Math.fma(v2Y, c[1], v1.y()),
-			Math.fma(v2Z, c[2], v1.z())
+			MathUtils.clampMax(v1.x(), v2X),
+			MathUtils.clampMax(v1.y(), v2Y),
+			MathUtils.clampMax(v1.z(), v2Z)
 		);
 		
 		return v1;
 	}
 	
-	public static <T extends IVec3WF> T revMulAddAssign(@ExtractionParam T v1, float v2X, float v2Y, float v2Z, float cX, float cY, float cZ)
+	public static float[] clamp(IVec3RF v1, IVec3RF min, IVec3RF max, @ExtractionParam float[] res)
 	{
-		v1.set(
-			Math.fma(v2X, cX, v1.x()),
-			Math.fma(v2Y, cY, v1.y()),
-			Math.fma(v2Z, cZ, v1.z())
+		res[0] = MathUtils.clamp(v1.x(), min.x(), max.x());
+		res[1] = MathUtils.clamp(v1.y(), min.y(), max.y());
+		res[2] = MathUtils.clamp(v1.z(), min.z(), max.z());
+		
+		return res;
+	}
+	
+	public static float[] clamp(IVec3RF v1, IVec3RF min, float[] max, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.clamp(v1.x(), min.x(), max[0]);
+		res[1] = MathUtils.clamp(v1.y(), min.y(), max[1]);
+		res[2] = MathUtils.clamp(v1.z(), min.z(), max[2]);
+		
+		return res;
+	}
+	
+	public static float[] clamp(IVec3RF v1, IVec3RF min, float maxX, float maxY, float maxZ, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.clamp(v1.x(), min.x(), maxX);
+		res[1] = MathUtils.clamp(v1.y(), min.y(), maxY);
+		res[2] = MathUtils.clamp(v1.z(), min.z(), maxZ);
+		
+		return res;
+	}
+	
+	public static float[] clamp(IVec3RF v1, float[] min, IVec3RF max, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.clamp(v1.x(), min[0], max.x());
+		res[1] = MathUtils.clamp(v1.y(), min[1], max.y());
+		res[2] = MathUtils.clamp(v1.z(), min[2], max.z());
+		
+		return res;
+	}
+	
+	public static float[] clamp(IVec3RF v1, float[] min, float[] max, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.clamp(v1.x(), min[0], max[0]);
+		res[1] = MathUtils.clamp(v1.y(), min[1], max[1]);
+		res[2] = MathUtils.clamp(v1.z(), min[2], max[2]);
+		
+		return res;
+	}
+	
+	public static float[] clamp(IVec3RF v1, float[] min, float maxX, float maxY, float maxZ, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.clamp(v1.x(), min[0], maxX);
+		res[1] = MathUtils.clamp(v1.y(), min[1], maxY);
+		res[2] = MathUtils.clamp(v1.z(), min[2], maxZ);
+		
+		return res;
+	}
+	
+	public static float[] clamp(IVec3RF v1, float min, float max, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.clamp(v1.x(), min, max);
+		res[1] = MathUtils.clamp(v1.y(), min, max);
+		res[2] = MathUtils.clamp(v1.z(), min, max);
+		
+		return res;
+	}
+	
+	public static float[] clamp(IVec3RF v1, float minX, float minY, float minZ, IVec3RF max, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.clamp(v1.x(), minX, max.x());
+		res[1] = MathUtils.clamp(v1.y(), minY, max.y());		
+		res[2] = MathUtils.clamp(v1.z(), minZ, max.z());		
+		
+		return res;
+	}
+	
+	public static float[] clamp(IVec3RF v1, float minX, float minY, float minZ, float[] max, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.clamp(v1.x(), minX, max[0]);
+		res[1] = MathUtils.clamp(v1.y(), minY, max[1]);
+		res[2] = MathUtils.clamp(v1.z(), minZ, max[2]);
+		
+		return res;
+	}
+	
+	public static float[] clamp(IVec3RF v1, float minX, float minY, float minZ, float maxX, float maxY, float maxZ, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.clamp(v1.x(), minX, maxX);
+		res[1] = MathUtils.clamp(v1.y(), minY, maxY);
+		res[2] = MathUtils.clamp(v1.z(), minZ, maxZ);
+		
+		return res;
+	}
+	
+	public static float[] clamp(float[] v1, IVec3RF min, IVec3RF max, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.clamp(v1[0], min.x(), max.x());
+		res[1] = MathUtils.clamp(v1[1], min.y(), max.y());
+		res[2] = MathUtils.clamp(v1[2], min.z(), max.z());
+		
+		return res;
+	}
+	
+	public static float[] clamp(float[] v1, IVec3RF min, float[] max, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.clamp(v1[0], min.x(), max[0]);
+		res[1] = MathUtils.clamp(v1[1], min.y(), max[1]);
+		res[2] = MathUtils.clamp(v1[2], min.z(), max[2]);
+		
+		return res;
+	}
+	
+	public static float[] clamp(float[] v1, IVec3RF min, float maxX, float maxY, float maxZ, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.clamp(v1[0], min.x(), maxX);
+		res[1] = MathUtils.clamp(v1[1], min.y(), maxY);
+		res[2] = MathUtils.clamp(v1[2], min.z(), maxZ);
+		
+		return res;
+	}
+	
+	public static float[] clamp(float[] v1, float[] min, IVec3RF max, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.clamp(v1[0], min[0], max.x());
+		res[1] = MathUtils.clamp(v1[1], min[1], max.y());
+		res[2] = MathUtils.clamp(v1[2], min[2], max.z());
+		
+		return res;
+	}
+	
+	public static float[] clamp(float[] v1, float minX, float minY, float minZ, IVec3RF max, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.clamp(v1[0], minX, max.x());
+		res[1] = MathUtils.clamp(v1[1], minY, max.y());
+		res[2] = MathUtils.clamp(v1[2], minZ, max.z());
+		
+		return res;
+	}
+	
+	public static float[] clamp(float v1X, float v1Y, float v1Z, IVec3RF min, IVec3RF max, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.clamp(v1X, min.x(), max.x());
+		res[1] = MathUtils.clamp(v1Y, min.y(), max.y());
+		res[2] = MathUtils.clamp(v1Z, min.z(), max.z());
+		
+		return res;
+	}
+	
+	public static float[] clamp(float v1X, float v1Y, float v1Z, IVec3RF min, float[] max, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.clamp(v1X, min.x(), max[0]);
+		res[1] = MathUtils.clamp(v1Y, min.y(), max[1]);
+		res[2] = MathUtils.clamp(v1Y, min.z(), max[2]);
+		
+		return res;
+	}
+	
+	public static float[] clamp(float v1X, float v1Y, float v1Z, IVec3RF min, float max, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.clamp(v1X, min.x(), max);
+		res[1] = MathUtils.clamp(v1Y, min.y(), max);
+		res[2] = MathUtils.clamp(v1Y, min.z(), max);
+		
+		return res;
+	}
+	
+	public static float[] clamp(float v1X, float v1Y, float v1Z, IVec3RF min, float maxX, float maxY, float maxZ, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.clamp(v1X, min.x(), maxX);
+		res[1] = MathUtils.clamp(v1Y, min.y(), maxY);
+		res[2] = MathUtils.clamp(v1Z, min.z(), maxZ);
+		
+		return res;
+	}
+	
+	public static float[] clamp(float v1X, float v1Y, float v1Z, float[] min, IVec3RF max, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.clamp(v1X, min[0], max.x());
+		res[1] = MathUtils.clamp(v1Y, min[1], max.y());
+		res[2] = MathUtils.clamp(v1Z, min[2], max.z());
+		
+		return res;
+	}
+	
+	public static float[] clamp(float v1X, float v1Y, float v1Z, float minX, float minY, float minZ, IVec3RF max, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.clamp(v1X, minX, max.x());
+		res[1] = MathUtils.clamp(v1Y, minY, max.y());
+		res[2] = MathUtils.clamp(v1Z, minZ, max.z());
+		
+		return res;
+	}
+	
+	public static float[] clampAssign(@ExtractionParam float[] v1, IVec3RF min, IVec3RF max)
+	{
+		v1[0] = MathUtils.clamp(v1[0], min.x(), max.x());
+		v1[1] = MathUtils.clamp(v1[1], min.y(), max.y());
+		v1[2] = MathUtils.clamp(v1[2], min.z(), max.z());
+		
+		return v1;
+	}
+	
+	public static float[] clampAssign(@ExtractionParam float[] v1, IVec3RF min, float[] max)
+	{
+		v1[0] = MathUtils.clamp(v1[0], min.x(), max[0]);
+		v1[1] = MathUtils.clamp(v1[1], min.y(), max[1]);
+		v1[2] = MathUtils.clamp(v1[2], min.z(), max[2]);
+		
+		return v1;
+	}
+	
+	public static float[] clampAssign(@ExtractionParam float[] v1, IVec3RF min, float maxX, float maxY, float maxZ)
+	{
+		v1[0] = MathUtils.clamp(v1[0], min.x(), maxX);
+		v1[1] = MathUtils.clamp(v1[1], min.y(), maxY);
+		v1[2] = MathUtils.clamp(v1[2], min.z(), maxZ);
+		
+		return v1;
+	}
+	
+	public static float[] clampAssign(@ExtractionParam float[] v1, float[] min, IVec3RF max)
+	{
+		v1[0] = MathUtils.clamp(v1[0], min[0], max.x());
+		v1[1] = MathUtils.clamp(v1[1], min[1], max.y());
+		v1[2] = MathUtils.clamp(v1[2], min[2], max.z());
+		
+		return v1;
+	}
+	
+	public static float[] clampAssign(@ExtractionParam float[] v1, float minX, float minY, float minZ, IVec3RF max)
+	{
+		v1[0] = MathUtils.clamp(v1[0], minX, max.x());
+		v1[1] = MathUtils.clamp(v1[1], minY, max.y());
+		v1[2] = MathUtils.clamp(v1[2], minZ, max.z());
+		
+		return v1;
+	}
+	
+	public static <T extends IVec3WF> T clamp(IVec3RF v1, IVec3RF min, IVec3RF max, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.clamp(v1.x(), min.x(), max.x()),
+			MathUtils.clamp(v1.y(), min.y(), max.y()),
+			MathUtils.clamp(v1.z(), min.z(), max.z())
 		);
 		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T clamp(IVec3RF v1, IVec3RF min, float[] max, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.clamp(v1.x(), min.x(), max[0]),
+			MathUtils.clamp(v1.y(), min.y(), max[1]),
+			MathUtils.clamp(v1.z(), min.z(), max[2])
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T clamp(IVec3RF v1, IVec3RF min, float maxX, float maxY, float maxZ, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.clamp(v1.x(), min.x(), maxX),
+			MathUtils.clamp(v1.y(), min.y(), maxY),
+			MathUtils.clamp(v1.z(), min.z(), maxZ)
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T clamp(IVec3RF v1, float[] min, IVec3RF max, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.clamp(v1.x(), min[0], max.x()),
+			MathUtils.clamp(v1.y(), min[1], max.y()),
+			MathUtils.clamp(v1.z(), min[2], max.z())
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T clamp(IVec3RF v1, float[] min, float[] max, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.clamp(v1.x(), min[0], max[0]),
+			MathUtils.clamp(v1.y(), min[1], max[1]),
+			MathUtils.clamp(v1.z(), min[2], max[2])
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T clamp(IVec3RF v1, float[] min, float maxX, float maxY, float maxZ, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.clamp(v1.x(), min[0], maxX),
+			MathUtils.clamp(v1.y(), min[1], maxY),
+			MathUtils.clamp(v1.z(), min[2], maxZ)
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T clamp(IVec3RF v1, float min, float max, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.clamp(v1.x(), min, max),
+			MathUtils.clamp(v1.y(), min, max),
+			MathUtils.clamp(v1.z(), min, max)
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T clamp(IVec3RF v1, float minX, float minY, float minZ, IVec3RF max, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.clamp(v1.x(), minX, max.x()),
+			MathUtils.clamp(v1.y(), minY, max.y()),
+			MathUtils.clamp(v1.z(), minZ, max.z())
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T clamp(IVec3RF v1, float minX, float minY, float minZ, float[] max, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.clamp(v1.x(), minX, max[0]),
+			MathUtils.clamp(v1.y(), minY, max[1]),
+			MathUtils.clamp(v1.z(), minZ, max[2])
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T clamp(IVec3RF v1, float minX, float minY, float minZ, float maxX, float maxY, float maxZ, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.clamp(v1.x(), minX, maxX),
+			MathUtils.clamp(v1.y(), minY, maxY),
+			MathUtils.clamp(v1.z(), minZ, maxZ)
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T clamp(float[] v1, IVec3RF min, IVec3RF max, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.clamp(v1[0], min.x(), max.x()),
+			MathUtils.clamp(v1[1], min.y(), max.y()),
+			MathUtils.clamp(v1[2], min.z(), max.z())
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T clamp(float[] v1, IVec3RF min, float[] max, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.clamp(v1[0], min.x(), max[0]),
+			MathUtils.clamp(v1[1], min.y(), max[1]),
+			MathUtils.clamp(v1[2], min.z(), max[2])
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T clamp(float[] v1, IVec3RF min, float maxX, float maxY, float maxZ, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.clamp(v1[0], min.x(), maxX),
+			MathUtils.clamp(v1[1], min.y(), maxY),
+			MathUtils.clamp(v1[2], min.z(), maxZ)
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T clamp(float[] v1, float[] min, IVec3RF max, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.clamp(v1[0], min[0], max.x()),
+			MathUtils.clamp(v1[1], min[1], max.y()),
+			MathUtils.clamp(v1[2], min[2], max.z())
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T clamp(float[] v1, float[] min, float[] max, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.clamp(v1[0], min[0], max[0]),
+			MathUtils.clamp(v1[1], min[1], max[1]),
+			MathUtils.clamp(v1[2], min[2], max[2])
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T clamp(float[] v1, float[] min, float maxX, float maxY, float maxZ, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.clamp(v1[0], min[0], maxX),
+			MathUtils.clamp(v1[1], min[1], maxY),
+			MathUtils.clamp(v1[2], min[2], maxZ)
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T clamp(float[] v1, float min, float max, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.clamp(v1[0], min, max),
+			MathUtils.clamp(v1[1], min, max),
+			MathUtils.clamp(v1[2], min, max)
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T clamp(float[] v1, float minX, float minY, float minZ, IVec3RF max, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.clamp(v1[0], minX, max.x()),
+			MathUtils.clamp(v1[1], minY, max.y()),
+			MathUtils.clamp(v1[2], minZ, max.z())
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T clamp(float[] v1, float minX, float minY, float minZ, float[] max, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.clamp(v1[0], minX, max[0]),
+			MathUtils.clamp(v1[1], minY, max[1]),
+			MathUtils.clamp(v1[2], minZ, max[2])
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T clamp(float[] v1, float minX, float minY, float minZ, float maxX, float maxY, float maxZ, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.clamp(v1[0], minX, maxX),
+			MathUtils.clamp(v1[1], minY, maxY),
+			MathUtils.clamp(v1[2], minZ, maxZ)
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T clamp(float v1X, float v1Y, float v1Z, IVec3RF min, IVec3RF max, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.clamp(v1X, min.x(), max.x()),
+			MathUtils.clamp(v1Y, min.y(), max.y()),
+			MathUtils.clamp(v1Z, min.z(), max.z())
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T clamp(float v1X, float v1Y, float v1Z, IVec3RF min, float[] max, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.clamp(v1X, min.x(), max[0]),
+			MathUtils.clamp(v1Y, min.y(), max[1]),
+			MathUtils.clamp(v1Z, min.z(), max[2])
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T clamp(float v1X, float v1Y, float v1Z, IVec3RF min, float maxX, float maxY, float maxZ, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.clamp(v1X, min.x(), maxX),
+			MathUtils.clamp(v1Y, min.y(), maxY),
+			MathUtils.clamp(v1Z, min.z(), maxZ)
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T clamp(float v1X, float v1Y, float v1Z, float[] min, IVec3RF max, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.clamp(v1X, min[0], max.x()),
+			MathUtils.clamp(v1Y, min[1], max.y()),
+			MathUtils.clamp(v1Z, min[2], max.z())
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T clamp(float v1X, float v1Y, float v1Z, float[] min, float[] max, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.clamp(v1X, min[0], max[0]),
+			MathUtils.clamp(v1Y, min[1], max[1]),
+			MathUtils.clamp(v1Z, min[2], max[2])
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T clamp(float v1X, float v1Y, float v1Z, float[] min, float maxX, float maxY, float maxZ, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.clamp(v1X, min[0], maxX),
+			MathUtils.clamp(v1Y, min[1], maxY),
+			MathUtils.clamp(v1Z, min[2], maxZ)
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T clamp(float v1X, float v1Y, float v1Z, float minX, float minY, float minZ, IVec3RF max, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.clamp(v1X, minX, max.x()),
+			MathUtils.clamp(v1Y, minY, max.y()),
+			MathUtils.clamp(v1Z, minZ, max.z())
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T clamp(float v1X, float v1Y, float v1Z, float minX, float minY, float minZ, float[] max, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.clamp(v1X, minX, max[0]),
+			MathUtils.clamp(v1Y, minY, max[1]),
+			MathUtils.clamp(v1Z, minZ, max[2])
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T clamp(float v1X, float v1Y, float v1Z, float minX, float minY, float minZ, float maxX, float maxY, float maxZ, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.clamp(v1X, minX, maxX),
+			MathUtils.clamp(v1Y, minY, maxY),
+			MathUtils.clamp(v1Z, minZ, maxZ)
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T clampAssign(@ExtractionParam T v1, IVec3RF min, IVec3RF max)
+	{
+		v1.set(
+			MathUtils.clamp(v1.x(), min.x(), max.x()),
+			MathUtils.clamp(v1.y(), min.y(), max.y()),
+			MathUtils.clamp(v1.z(), min.z(), max.z())
+		);
+		
+		return v1;
+	}
+	
+	public static <T extends IVec3WF> T clampAssign(@ExtractionParam T v1, IVec3RF min, float[] max)
+	{
+		v1.set(
+			MathUtils.clamp(v1.x(), min.x(), max[0]),
+			MathUtils.clamp(v1.y(), min.y(), max[1]),
+			MathUtils.clamp(v1.z(), min.z(), max[2])
+		);
+		
+		return v1;
+	}
+	
+	public static <T extends IVec3WF> T clampAssign(@ExtractionParam T v1, IVec3RF min, float maxX, float maxY, float maxZ)
+	{
+		v1.set(
+			MathUtils.clamp(v1.x(), min.x(), maxX),
+			MathUtils.clamp(v1.y(), min.y(), maxY),
+			MathUtils.clamp(v1.z(), min.z(), maxZ)
+		);
+		
+		return v1;
+	}
+	
+	public static <T extends IVec3WF> T clampAssign(@ExtractionParam T v1, float[] min, IVec3RF max)
+	{
+		v1.set(
+			MathUtils.clamp(v1.x(), min[0], max.x()),
+			MathUtils.clamp(v1.y(), min[1], max.y()),
+			MathUtils.clamp(v1.z(), min[2], max.z())
+		);
+		
+		return v1;
+	}
+	
+	public static <T extends IVec3WF> T clampAssign(@ExtractionParam T v1, float[] min, float[] max)
+	{
+		v1.set(
+			MathUtils.clamp(v1.x(), min[0], max[0]),
+			MathUtils.clamp(v1.y(), min[1], max[1]),
+			MathUtils.clamp(v1.z(), min[2], max[2])
+		);
+		
+		return v1;
+	}
+	
+	public static <T extends IVec3WF> T clampAssign(@ExtractionParam T v1, float[] min, float maxX, float maxY, float maxZ)
+	{
+		v1.set(
+			MathUtils.clamp(v1.x(), min[0], maxX),
+			MathUtils.clamp(v1.y(), min[1], maxY),
+			MathUtils.clamp(v1.z(), min[2], maxZ)
+		);
+		
+		return v1;
+	}
+	
+	public static <T extends IVec3WF> T clampAssign(@ExtractionParam T v1, float min, float max)
+	{
+		v1.set(
+			MathUtils.clamp(v1.x(), min, max),
+			MathUtils.clamp(v1.y(), min, max),
+			MathUtils.clamp(v1.z(), min, max)
+		);
+		
+		return v1;
+	}
+	
+	public static <T extends IVec3WF> T clampAssign(@ExtractionParam T v1, float minX, float minY, float minZ, IVec3RF max)
+	{
+		v1.set(
+			MathUtils.clamp(v1.x(), minX, max.x()),
+			MathUtils.clamp(v1.y(), minY, max.y()),
+			MathUtils.clamp(v1.z(), minZ, max.z())
+		);
+		
+		return v1;
+	}
+	
+	public static <T extends IVec3WF> T clampAssign(@ExtractionParam T v1, float minX, float minY, float minZ, float[] max)
+	{
+		v1.set(
+			MathUtils.clamp(v1.x(), minX, max[0]),
+			MathUtils.clamp(v1.y(), minY, max[1]),
+			MathUtils.clamp(v1.z(), minZ, max[2])
+		);
+		
+		return v1;
+	}
+	
+	public static <T extends IVec3WF> T clampAssign(@ExtractionParam T v1, float minX, float minY, float minZ, float maxX, float maxY, float maxZ)
+	{
+		v1.set(
+			MathUtils.clamp(v1.x(), minX, maxX),
+			MathUtils.clamp(v1.y(), minY, maxY),
+			MathUtils.clamp(v1.z(), minZ, maxZ)
+		);
+		
+		return v1;
+	}
+	
+	public static float[] swizzle(IVec3RF v1, int[] indices, @ExtractionParam float[] res)
+	{
+		float v1X = v1.x();
+		float v1Y = v1.y();
+		float v1Z = v1.z();
+		
+		float x = switch (indices[0]) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+
+		float y = switch (indices[1]) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+
+		float z = switch (indices[2]) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+		
+		res[0] = x;
+		res[1] = y;
+		res[2] = z;
+
+		return res;
+	}
+	
+	public static float[] swizzle(IVec3RF v1, int indexX, int indexY, int indexZ, @ExtractionParam float[] res)
+	{
+		float v1X = v1.x();
+		float v1Y = v1.y();
+		float v1Z = v1.z();
+		
+		float x = switch (indexX) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+
+		float y = switch (indexY) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+
+		float z = switch (indexZ) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+		
+		res[0] = x;
+		res[1] = y;
+		res[2] = z;
+
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T swizzle(IVec3RF v1, int[] indices, @ExtractionParam T res)
+	{
+		float v1X = v1.x();
+		float v1Y = v1.y();
+		float v1Z = v1.z();
+		
+		float x = switch (indices[0]) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+
+		float y = switch (indices[1]) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+		
+		float z = switch (indices[2]) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+		
+		res.set(
+			x,
+			y,
+			z
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T swizzle(IVec3RF v1, int indexX, int indexY, int indexZ, @ExtractionParam T res)
+	{
+		float v1X = v1.x();
+		float v1Y = v1.y();
+		float v1Z = v1.z();
+		
+		float x = switch (indexX) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+
+		float y = switch (indexY) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+		
+		float z = switch (indexZ) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+		
+		res.set(
+			x,
+			y,
+			z
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T swizzle(float[] v1, int[] indices, @ExtractionParam T res)
+	{
+		float v1X = v1[0];
+		float v1Y = v1[1];
+		float v1Z = v1[2];
+		
+		float x = switch (indices[0]) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+
+		float y = switch (indices[1]) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+		
+		float z = switch (indices[2]) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+		
+		res.set(
+			x,
+			y,
+			z
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T swizzle(float[] v1, int indexX, int indexY, int indexZ, @ExtractionParam T res)
+	{
+		float v1X = v1[0];
+		float v1Y = v1[1];
+		float v1Z = v1[2];
+		
+		float x = switch (indexX) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+
+		float y = switch (indexY) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+		
+		float z = switch (indexZ) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+		
+		res.set(
+			x,
+			y,
+			z
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T swizzle(float v1X, float v1Y, float v1Z, int[] indices, @ExtractionParam T res)
+	{
+		float x = switch (indices[0]) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+
+		float y = switch (indices[1]) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+		
+		float z = switch (indices[2]) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+		
+		res.set(
+			x,
+			y,
+			z
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T swizzle(float v1X, float v1Y, float v1Z, int indexX, int indexY, int indexZ, @ExtractionParam T res)
+	{
+		float x = switch (indexX) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+
+		float y = switch (indexY) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+		
+		float z = switch (indexZ) {
+		case 0 -> v1X;
+		case 1 -> v1Y;
+		case 2 -> v1Z;
+		default -> throw new IndexOutOfBoundsException();
+	};
+		
+		res.set(
+			x,
+			y,
+			z
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T swizzleAssign(@ExtractionParam T v1, int[] indices)
+	{
+		float v1X = v1.x();
+		float v1Y = v1.y();
+		float v1Z = v1.z();
+		
+		float x = switch (indices[0]) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+
+		float y = switch (indices[1]) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+		
+		float z = switch (indices[2]) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+		
+		v1.set(
+			x,
+			y,
+			z
+		);
+		
+		return v1;
+	}
+	
+	public static <T extends IVec3WF> T swizzleAssign(@ExtractionParam T v1, int indexX, int indexY, int indexZ)
+	{
+		float v1X = v1.x();
+		float v1Y = v1.y();
+		float v1Z = v1.z();
+		
+		float x = switch (indexX) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+
+		float y = switch (indexY) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+		
+		float z = switch (indexZ) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+		
+		v1.set(
+			x,
+			y,
+			z
+		);
+		
+		return v1;
+	}
+	
+	public static float[] swap(IVec3RF v1, int[] indices, @ExtractionParam float[] res)
+	{
+		float v1X = v1.x();
+		float v1Y = v1.y();
+		float v1Z = v1.z();
+		
+		int indexA = indices[0];
+		int indexB = indices[1];
+		
+		if(indexA == indexB)
+		{
+			res[0] = v1X;
+			res[1] = v1Y;
+			res[2] = v1Z;
+			
+			return res;
+		}
+		
+		float a = switch(indexA) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+		
+		float b = switch(indexB) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+		
+		float rX = v1X;
+		float rY = v1Y;
+		float rZ = v1Z;
+		
+		switch(indexB) {
+			case 0: rX = a; break;
+			case 1: rY = a; break;
+			case 2: rZ = a; break;
+			default: throw new IndexOutOfBoundsException();
+		}
+		
+		switch(indexA) {
+			case 0: rX = b; break;
+			case 1: rY = b; break;
+			case 2: rZ = b; break;
+			default: throw new IndexOutOfBoundsException();
+		}
+		
+		res[0] = rX;
+		res[1] = rY;
+		res[2] = rZ;
+
+		return res;
+	}
+	
+	public static float[] swap(IVec3RF v1, int indexA, int indexB, @ExtractionParam float[] res)
+	{
+		float v1X = v1.x();
+		float v1Y = v1.y();
+		float v1Z = v1.z();
+		
+		if(indexA == indexB)
+		{
+			res[0] = v1X;
+			res[1] = v1Y;
+			res[2] = v1Z;
+			
+			return res;
+		}
+		
+		float a = switch(indexA) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+		
+		float b = switch(indexB) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+		
+		float rX = v1X;
+		float rY = v1Y;
+		float rZ = v1Z;
+		
+		switch(indexB) {
+			case 0: rX = a; break;
+			case 1: rY = a; break;
+			case 2: rZ = a; break;
+			default: throw new IndexOutOfBoundsException();
+		}
+		
+		switch(indexA) {
+			case 0: rX = b; break;
+			case 1: rY = b; break;
+			case 2: rZ = b; break;
+			default: throw new IndexOutOfBoundsException();
+		}
+		
+		res[0] = rX;
+		res[1] = rY;
+		res[2] = rZ;
+
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T swap(IVec3RF v1, int[] indices, @ExtractionParam T res)
+	{
+		float v1X = v1.x();
+		float v1Y = v1.y();
+		float v1Z = v1.z();
+		
+		int indexA = indices[0];
+		int indexB = indices[1];
+		
+		if(indexA == indexB)
+		{
+			res.set(
+				v1X,
+				v1Y,
+				v1Z
+			);
+			
+			return res;
+		}
+		
+		float a = switch(indexA) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+		
+		float b = switch(indexB) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+		
+		float rX = v1X;
+		float rY = v1Y;
+		float rZ = v1Z;
+		
+		switch(indexB) {
+			case 0: rX = a; break;
+			case 1: rY = a; break;
+			case 2: rZ = a; break;
+			default: throw new IndexOutOfBoundsException();
+		}
+		
+		switch(indexA) {
+			case 0: rX = b; break;
+			case 1: rY = b; break;
+			case 2: rZ = b; break;
+			default: throw new IndexOutOfBoundsException();
+		}
+		
+		res.set(
+			rX,
+			rY,
+			rZ
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T swap(IVec3RF v1, int indexA, int indexB, @ExtractionParam T res)
+	{
+		float v1X = v1.x();
+		float v1Y = v1.y();
+		float v1Z = v1.z();
+		
+		if(indexA == indexB)
+		{
+			res.set(
+				v1X,
+				v1Y,
+				v1Z
+			);
+			
+			return res;
+		}
+		
+		float a = switch(indexA) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+		
+		float b = switch(indexB) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+		
+		float rX = v1X;
+		float rY = v1Y;
+		float rZ = v1Z;
+		
+		switch(indexB) {
+			case 0: rX = a; break;
+			case 1: rY = a; break;
+			case 2: rZ = a; break;
+			default: throw new IndexOutOfBoundsException();
+		}
+		
+		switch(indexA) {
+			case 0: rX = b; break;
+			case 1: rY = b; break;
+			case 2: rZ = b; break;
+			default: throw new IndexOutOfBoundsException();
+		}
+		
+		res.set(
+			rX,
+			rY,
+			rZ
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T swap(float[] v1, int[] indices, @ExtractionParam T res)
+	{
+		float v1X = v1[0];
+		float v1Y = v1[1];
+		float v1Z = v1[2];
+		
+		int indexA = indices[0];
+		int indexB = indices[1];
+		
+		if(indexA == indexB)
+		{
+			res.set(
+				v1X,
+				v1Y,
+				v1Z
+			);
+			
+			return res;
+		}
+		
+		float a = switch(indexA) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+		
+		float b = switch(indexB) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+		
+		float rX = v1X;
+		float rY = v1Y;
+		float rZ = v1Z;
+		
+		switch(indexB) {
+			case 0: rX = a; break;
+			case 1: rY = a; break;
+			case 2: rZ = a; break;
+			default: throw new IndexOutOfBoundsException();
+		}
+		
+		switch(indexA) {
+			case 0: rX = b; break;
+			case 1: rY = b; break;
+			case 2: rZ = b; break;
+			default: throw new IndexOutOfBoundsException();
+		}
+		
+		res.set(
+			rX,
+			rY,
+			rZ
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T swap(float[] v1, int indexA, int indexB, @ExtractionParam T res)
+	{
+		float v1X = v1[0];
+		float v1Y = v1[1];
+		float v1Z = v1[2];
+		
+		if(indexA == indexB)
+		{
+			res.set(
+				v1X,
+				v1Y,
+				v1Z
+			);
+			
+			return res;
+		}
+		
+		float a = switch(indexA) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+		
+		float b = switch(indexB) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+		
+		float rX = v1X;
+		float rY = v1Y;
+		float rZ = v1Z;
+		
+		switch(indexB) {
+			case 0: rX = a; break;
+			case 1: rY = a; break;
+			case 2: rZ = a; break;
+			default: throw new IndexOutOfBoundsException();
+		}
+		
+		switch(indexA) {
+			case 0: rX = b; break;
+			case 1: rY = b; break;
+			case 2: rZ = b; break;
+			default: throw new IndexOutOfBoundsException();
+		}
+		
+		res.set(
+			rX,
+			rY,
+			rZ
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T swap(float v1X, float v1Y, float v1Z, int[] indices, @ExtractionParam T res)
+	{
+		int indexA = indices[0];
+		int indexB = indices[1];
+		
+		if(indexA == indexB)
+		{
+			res.set(
+				v1X,
+				v1Y,
+				v1Z
+			);
+			
+			return res;
+		}
+		
+		float a = switch(indexA) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+		
+		float b = switch(indexB) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+		
+		float rX = v1X;
+		float rY = v1Y;
+		float rZ = v1Z;
+		
+		switch(indexB) {
+			case 0: rX = a; break;
+			case 1: rY = a; break;
+			case 2: rZ = a; break;
+			default: throw new IndexOutOfBoundsException();
+		}
+		
+		switch(indexA) {
+			case 0: rX = b; break;
+			case 1: rY = b; break;
+			case 2: rZ = b; break;
+			default: throw new IndexOutOfBoundsException();
+		}
+		
+		res.set(
+			rX,
+			rY,
+			rZ
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T swap(float v1X, float v1Y, float v1Z, int indexA, int indexB, @ExtractionParam T res)
+	{
+		if(indexA == indexB)
+		{
+			res.set(
+				v1X,
+				v1Y,
+				v1Z
+			);
+			
+			return res;
+		}
+		
+		float a = switch(indexA) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+		
+		float b = switch(indexB) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+		
+		float rX = v1X;
+		float rY = v1Y;
+		float rZ = v1Z;
+		
+		switch(indexB) {
+			case 0: rX = a; break;
+			case 1: rY = a; break;
+			case 2: rZ = a; break;
+			default: throw new IndexOutOfBoundsException();
+		}
+		
+		switch(indexA) {
+			case 0: rX = b; break;
+			case 1: rY = b; break;
+			case 2: rZ = b; break;
+			default: throw new IndexOutOfBoundsException();
+		}
+		
+		res.set(
+			rX,
+			rY,
+			rZ
+		);
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T swapAssign(@ExtractionParam T v1, int[] indices)
+	{
+		float v1X = v1.x();
+		float v1Y = v1.y();
+		float v1Z = v1.z();
+		
+		int indexA = indices[0];
+		int indexB = indices[1];
+		
+		if(indexA == indexB)
+		{
+			v1.set(
+				v1X,
+				v1Y,
+				v1Z
+			);
+			
+			return v1;
+		}
+		
+		float a = switch(indexA) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+		
+		float b = switch(indexB) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+		
+		float rX = v1X;
+		float rY = v1Y;
+		float rZ = v1Z;
+		
+		switch(indexB) {
+			case 0: rX = a; break;
+			case 1: rY = a; break;
+			case 2: rZ = a; break;
+			default: throw new IndexOutOfBoundsException();
+		}
+		
+		switch(indexA) {
+			case 0: rX = b; break;
+			case 1: rY = b; break;
+			case 2: rZ = b; break;
+			default: throw new IndexOutOfBoundsException();
+		}
+		
+		v1.set(
+			rX,
+			rY,
+			rZ
+		);
+		
+		return v1;
+	}
+	
+	public static <T extends IVec3WF> T swapAssign(@ExtractionParam T v1, int indexA, int indexB)
+	{
+		float v1X = v1.x();
+		float v1Y = v1.y();
+		float v1Z = v1.z();
+		
+		if(indexA == indexB)
+		{
+			v1.set(
+				v1X,
+				v1Y,
+				v1Z
+			);
+			
+			return v1;
+		}
+		
+		float a = switch(indexA) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+		
+		float b = switch(indexB) {
+			case 0 -> v1X;
+			case 1 -> v1Y;
+			case 2 -> v1Z;
+			default -> throw new IndexOutOfBoundsException();
+		};
+		
+		float rX = v1X;
+		float rY = v1Y;
+		float rZ = v1Z;
+		
+		switch(indexB) {
+			case 0: rX = a; break;
+			case 1: rY = a; break;
+			case 2: rZ = a; break;
+			default: throw new IndexOutOfBoundsException();
+		}
+		
+		switch(indexA) {
+			case 0: rX = b; break;
+			case 1: rY = b; break;
+			case 2: rZ = b; break;
+			default: throw new IndexOutOfBoundsException();
+		}
+		
+		v1.set(
+			rX,
+			rY,
+			rZ
+		);
+		
+		return v1;
+	}
+	
+	public static float[] swapXY(IVec3RF v1, @ExtractionParam float[] res)
+	{
+		float v1X = v1.x();
+		float v1Y = v1.y();
+		float v1Z = v1.z();
+		
+		res[0] = v1Y;
+		res[1] = v1X;
+		res[2] = v1Z;
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T swapXY(IVec3RF v1, @ExtractionParam T res)
+	{
+		float v1X = v1.x();
+		float v1Y = v1.y();
+		float v1Z = v1.z();
+		
+		res.set(
+			v1Y,
+			v1X,
+			v1Z
+		);
+
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T swapXY(float[] v1, @ExtractionParam T res)
+	{
+		float v1X = v1[0];
+		float v1Y = v1[1];
+		float v1Z = v1[2];
+		
+		res.set(
+			v1Y,
+			v1X,
+			v1Z
+		);
+
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T swapXY(float v1X, float v1Y, float v1Z, @ExtractionParam T res)
+	{
+		res.set(
+			v1Y,
+			v1X,
+			v1Z
+		);
+
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T swapXYAssign(@ExtractionParam T v1)
+	{
+		float v1X = v1.x();
+		float v1Y = v1.y();
+		float v1Z = v1.z();
+		
+		v1.set(
+			v1Y,
+			v1X,
+			v1Z
+		);
+
+		return v1;
+	}
+	
+	public static float[] swapXZ(IVec3RF v1, @ExtractionParam float[] res)
+	{
+		float v1X = v1.x();
+		float v1Y = v1.y();
+		float v1Z = v1.z();
+		
+		res[0] = v1Z;
+		res[1] = v1Y;
+		res[2] = v1X;
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T swapXZ(IVec3RF v1, @ExtractionParam T res)
+	{
+		float v1X = v1.x();
+		float v1Y = v1.y();
+		float v1Z = v1.z();
+		
+		res.set(
+			v1Z,
+			v1Y,
+			v1X
+		);
+
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T swapXZ(float[] v1, @ExtractionParam T res)
+	{
+		float v1X = v1[0];
+		float v1Y = v1[1];
+		float v1Z = v1[2];
+		
+		res.set(
+			v1Z,
+			v1Y,
+			v1X
+		);
+
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T swapXZ(float v1X, float v1Y, float v1Z, @ExtractionParam T res)
+	{
+		res.set(
+			v1Z,
+			v1Y,
+			v1X
+		);
+
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T swapXZAssign(@ExtractionParam T v1)
+	{
+		float v1X = v1.x();
+		float v1Y = v1.y();
+		float v1Z = v1.z();
+		
+		v1.set(
+			v1Z,
+			v1Y,
+			v1X
+		);
+
+		return v1;
+	}
+	
+	public static float[] swapYZ(IVec3RF v1, @ExtractionParam float[] res)
+	{
+		float v1X = v1.x();
+		float v1Y = v1.y();
+		float v1Z = v1.z();
+		
+		res[0] = v1X;
+		res[1] = v1Z;
+		res[2] = v1Y;
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T swapYZ(IVec3RF v1, @ExtractionParam T res)
+	{
+		float v1X = v1.x();
+		float v1Y = v1.y();
+		float v1Z = v1.z();
+		
+		res.set(
+			v1X,
+			v1Z,
+			v1Y
+		);
+
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T swapYZ(float[] v1, @ExtractionParam T res)
+	{
+		float v1X = v1[0];
+		float v1Y = v1[1];
+		float v1Z = v1[2];
+		
+		res.set(
+			v1X,
+			v1Z,
+			v1Y
+		);
+
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T swapYZ(float v1X, float v1Y, float v1Z, @ExtractionParam T res)
+	{
+		res.set(
+			v1X,
+			v1Z,
+			v1Y
+		);
+
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T swapYZAssign(@ExtractionParam T v1)
+	{
+		float v1X = v1.x();
+		float v1Y = v1.y();
+		float v1Z = v1.z();
+		
+		v1.set(
+			v1X,
+			v1Z,
+			v1Y
+		);
+
+		return v1;
+	}
+	
+	public static float[] integer(IVec3RF v1, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.integer(v1.x());
+		res[1] = MathUtils.integer(v1.y());
+		res[2] = MathUtils.integer(v1.z());
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T integer(IVec3RF v1, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.integer(v1.x()),
+			MathUtils.integer(v1.y()),
+			MathUtils.integer(v1.z())
+		);
+
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T integer(float[] v1, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.integer(v1[0]),
+			MathUtils.integer(v1[1]),
+			MathUtils.integer(v1[2])
+		);
+
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T integer(float v1X, float v1Y, float v1Z, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.integer(v1X),
+			MathUtils.integer(v1Y),
+			MathUtils.integer(v1Z)
+		);
+
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T integerAssign(@ExtractionParam T v1)
+	{
+		v1.set(
+			MathUtils.integer(v1.x()),
+			MathUtils.integer(v1.y()),
+			MathUtils.integer(v1.z())
+		);
+
+		return v1;
+	}
+	
+	public static float[] frac(IVec3RF v1, @ExtractionParam float[] res)
+	{
+		res[0] = MathUtils.frac(v1.x());
+		res[1] = MathUtils.frac(v1.y());
+		res[2] = MathUtils.frac(v1.z());
+		
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T frac(IVec3RF v1, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.frac(v1.x()),
+			MathUtils.frac(v1.y()),
+			MathUtils.frac(v1.z())
+		);
+
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T frac(float[] v1, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.frac(v1[0]),
+			MathUtils.frac(v1[1]),
+			MathUtils.frac(v1[2])
+		);
+
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T frac(float v1X, float v1Y, float v1Z, @ExtractionParam T res)
+	{
+		res.set(
+			MathUtils.frac(v1X),
+			MathUtils.frac(v1Y),
+			MathUtils.frac(v1Z)
+		);
+
+		return res;
+	}
+	
+	public static <T extends IVec3WF> T fracAssign(@ExtractionParam T v1)
+	{
+		v1.set(
+			MathUtils.frac(v1.x()),
+			MathUtils.frac(v1.y()),
+			MathUtils.frac(v1.z())
+		);
+
 		return v1;
 	}
 	

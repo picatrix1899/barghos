@@ -6,9 +6,9 @@ import org.barghos.api.math.vector.floats.IVec3WF;
 
 public interface ITransform3RF
 {
-	float[] posT(@ExtractionParam float[] res);
+	float[] getPos(@ExtractionParam float[] res);
 	
-	<T extends IVec3WF> T posT(@ExtractionParam T res);
+	<T extends IVec3WF> T getPos(@ExtractionParam T res);
 
 	float posX();
 	
@@ -16,9 +16,9 @@ public interface ITransform3RF
 	
 	float posZ();
 	
-	float[] rotT(@ExtractionParam float[] res);
+	float[] getRot(@ExtractionParam float[] res);
 	
-	<T extends IQuatWF> T rotT(@ExtractionParam T res);
+	<T extends IQuatWF> T getRot(@ExtractionParam T res);
 	
 	float rotX();
 	
@@ -28,9 +28,9 @@ public interface ITransform3RF
 	
 	float rotW();
 	
-	float[] scaleT(@ExtractionParam float[] res);
+	float[] getScale(@ExtractionParam float[] res);
 	
-	<T extends IVec3WF> T scaleT(@ExtractionParam T res);
+	<T extends IVec3WF> T getScale(@ExtractionParam T res);
 	
 	float scaleX();
 	

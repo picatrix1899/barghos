@@ -17,3 +17,5 @@ include('barghos-core-api')
 include('barghos-core-impl')
 
 include('barghos-compat-lwjgl-glfw')
+
+include('barghos-hid')

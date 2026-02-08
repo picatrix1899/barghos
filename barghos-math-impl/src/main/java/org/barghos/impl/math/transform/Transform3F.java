@@ -60,7 +60,7 @@ public class Transform3F implements ITransform3WF
 	}
 	
 	@Override
-	public float[] posT(float[] res)
+	public float[] getPos(float[] res)
 	{
 		res[0] = this.posX;
 		res[1] = this.posY;
@@ -70,7 +70,7 @@ public class Transform3F implements ITransform3WF
 	}
 	
 	@Override
-	public <T extends IVec3WF> T posT(T res)
+	public <T extends IVec3WF> T getPos(T res)
 	{
 		res.set(this.posX, this.posY, this.posZ);
 		
@@ -92,7 +92,7 @@ public class Transform3F implements ITransform3WF
 		return this.posZ;
 	}
 	@Override
-	public float[] rotT(float[] res)
+	public float[] getRot(float[] res)
 	{
 		res[0] = this.rotX;
 		res[1] = this.rotY;
@@ -103,7 +103,7 @@ public class Transform3F implements ITransform3WF
 	}
 	
 	@Override
-	public <T extends IQuatWF> T rotT(T res)
+	public <T extends IQuatWF> T getRot(T res)
 	{
 		res.set(this.rotX, this.rotY, this.rotZ, this.rotW);
 		
@@ -135,7 +135,7 @@ public class Transform3F implements ITransform3WF
 	}
 	
 	@Override
-	public float[] scaleT(float[] res)
+	public float[] getScale(float[] res)
 	{
 		res[0] = this.scaleX;
 		res[1] = this.scaleY;
@@ -145,7 +145,7 @@ public class Transform3F implements ITransform3WF
 	}
 
 	@Override
-	public <T extends IVec3WF> T scaleT(T res)
+	public <T extends IVec3WF> T getScale(T res)
 	{
 		res.set(this.scaleX, this.scaleY, this.scaleZ);
 		
@@ -209,7 +209,7 @@ public class Transform3F implements ITransform3WF
 	}
 	
 	@Override
-	public ITransform3WF pos(IVec3RF pos)
+	public ITransform3WF setPos(IVec3RF pos)
 	{
 		this.posX = pos.x();
 		this.posY = pos.y();
@@ -219,7 +219,7 @@ public class Transform3F implements ITransform3WF
 	}
 	
 	@Override
-	public ITransform3WF pos(float[] pos)
+	public ITransform3WF setPos(float[] pos)
 	{
 		this.posX = pos[0];
 		this.posY = pos[1];
@@ -229,7 +229,7 @@ public class Transform3F implements ITransform3WF
 	}
 	
 	@Override
-	public ITransform3WF pos(float posX, float posY, float posZ)
+	public ITransform3WF setPos(float posX, float posY, float posZ)
 	{
 		this.posX = posX;
 		this.posY = posY;
@@ -263,7 +263,7 @@ public class Transform3F implements ITransform3WF
 	}
 	
 	@Override
-	public ITransform3WF rot(IQuatRF rot)
+	public ITransform3WF setRot(IQuatRF rot)
 	{
 		this.rotX = rot.x();
 		this.rotY = rot.y();
@@ -274,7 +274,7 @@ public class Transform3F implements ITransform3WF
 	}
 
 	@Override
-	public ITransform3WF rot(float[] rot)
+	public ITransform3WF setRot(float[] rot)
 	{
 		this.rotX = rot[0];
 		this.rotY = rot[1];
@@ -285,7 +285,50 @@ public class Transform3F implements ITransform3WF
 	}
 	
 	@Override
-	public ITransform3WF scale(IVec3RF scale)
+	public ITransform3WF setRot(float rotX, float rotY, float rotZ, float rotW)
+	{
+		this.rotX = rotX;
+		this.rotY = rotY;
+		this.rotZ = rotZ;
+		this.rotW = rotW;
+		
+		return this;
+	}
+	
+	@Override
+	public ITransform3WF rotX(float x)
+	{
+		this.rotX = x;
+		
+		return this;
+	}
+	
+	@Override
+	public ITransform3WF rotY(float y)
+	{
+		this.rotY = y;
+		
+		return this;
+	}
+	
+	@Override
+	public ITransform3WF rotZ(float z)
+	{
+		this.rotZ = z;
+		
+		return this;
+	}
+	
+	@Override
+	public ITransform3WF rotW(float w)
+	{
+		this.rotW = w;
+		
+		return this;
+	}
+	
+	@Override
+	public ITransform3WF setScale(IVec3RF scale)
 	{
 		this.scaleX = scale.x();
 		this.scaleY = scale.y();
@@ -295,7 +338,7 @@ public class Transform3F implements ITransform3WF
 	}
 	
 	@Override
-	public ITransform3WF scale(float[] scale)
+	public ITransform3WF setScale(float[] scale)
 	{
 		this.scaleX = scale[0];
 		this.scaleY = scale[1];
@@ -305,7 +348,7 @@ public class Transform3F implements ITransform3WF
 	}
 	
 	@Override
-	public ITransform3WF scale(float scaleX, float scaleY, float scaleZ)
+	public ITransform3WF setScale(float scaleX, float scaleY, float scaleZ)
 	{
 		this.scaleX = scaleX;
 		this.scaleY = scaleY;

@@ -7,6 +7,8 @@ import org.barghos.math.vector.floats.QuatVecOps3F;
 
 public class TransformOpsI3F
 {
+	private TransformOpsI3F() { }
+	
 	public static <T extends ITransform3WF> T mul(ITransform3RF t1, ITransform3RF t2, @ExtractionParam T res)
 	{
 		float t1PosX = t1.posX();
@@ -38,9 +40,9 @@ public class TransformOpsI3F
 		float[] resRot = QuatOpsF.mul(t2RotX, t2RotY, t2RotZ, t2RotW, t1RotX, t1RotY, t1RotZ, t1RotW, new float[4]);
 		float[] resScl = BaseVecOps3F.mul(t2SclX, t2SclY, t2SclZ, t1SclX, t1SclY, t1SclZ, new float[3]);
 		
-		res.pos(resPos);
-		res.rot(resRot);
-		res.scale(resScl);
+		res.setPos(resPos);
+		res.setRot(resRot);
+		res.setScale(resScl);
 		
 		return res;
 	}
