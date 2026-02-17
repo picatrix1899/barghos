@@ -18,7 +18,9 @@ public final class GlfwWindow
 	public static final IOnFramebufferResizeCallback EMPTY_ON_FRAMEBUFFER_RESIZE_CALLBACK = (_, _, _, _) -> {};
 	public static final IOnWindowResizeCallback EMPTY_ON_WINDOW_RESIZE_CALLBACK = (_, _, _, _) -> {};
 	public static final IOnPosChangeCallback EMPTY_ON_POS_CHANGE_CALLBACK = (_, _, _, _) -> {};
-	public static final IOnCursorPosChangeCallback EMPTY_ON_CURSOR_POS_CHANGE_CALLBACK = (_, _, _, _) -> {};
+	public static final IOnCursorPosChangeCallback EMPTY_ON_CURSOR_POS_CHANGE_CALLBACK = (_, _, _, _, _, _) -> {};
+	public static final INativeOnCursorPosChangeCallback EMPTY_NATIVE_ON_CURSOR_POS_CHANGE_CALLBACK = (_, _) -> {};
+	public static final IOnWindowFocusCallback EMPTY_ON_WINDOW_FOCUS_CALLBACK = (_) -> {};
 	
 	private long handle;
 	
@@ -33,6 +35,10 @@ public final class GlfwWindow
 	private int windowHeight;
 	private float lastWindowAspectRatio;
 	private float windowAspectRatio;
+	private int lastWindowCenterX;
+	private int lastWindowCenterY;
+	private int windowCenterX;
+	private int windowCenterY;
 	
 	private int lastFramebufferWidth;
 	private int lastFramebufferHeight;
@@ -44,13 +50,16 @@ public final class GlfwWindow
 	private long lastMonitor;
 	private long monitor;
 	
-	private String lastTitle;
 	private String title;
 	
-	private float lastCursorPosX;
-	private float lastCursorPosY;
-	private float cursorPosX;
-	private float cursorPosY;
+	private double lastCursorPosX;
+	private double lastCursorPosY;
+	private double cursorPosX;
+	private double cursorPosY;
+	private double cursorDeltaX;
+	private double cursorDeltaY;
+	
+	private boolean hasFocus;
 	
 	private final Arena tempArena;
 	private final MemorySegment tempSegIntA;
@@ -67,6 +76,8 @@ public final class GlfwWindow
 	private IOnWindowResizeCallback onWindowResizeCallback = EMPTY_ON_WINDOW_RESIZE_CALLBACK;
 	private IOnPosChangeCallback onPosChangeCallback = EMPTY_ON_POS_CHANGE_CALLBACK;
 	private IOnCursorPosChangeCallback onCursorPosChangeCallback = EMPTY_ON_CURSOR_POS_CHANGE_CALLBACK;
+	private INativeOnCursorPosChangeCallback nativeOnCursorPosChangeCallback = EMPTY_NATIVE_ON_CURSOR_POS_CHANGE_CALLBACK;
+	private IOnWindowFocusCallback onWindowFocusCallback = EMPTY_ON_WINDOW_FOCUS_CALLBACK;
 	
 	public static GlfwWindow create(Settings settings)
 	{
@@ -114,7 +125,42 @@ public final class GlfwWindow
 		glfwSetWindowPosCallback(this.handle, this::onPosChange);
 		glfwSetFramebufferSizeCallback(this.handle, this::onFramebufferResize);
 		glfwSetWindowCloseCallback(this.handle, this::onClose);
-		glfwSetCursorPosCallback(this.handle, this::onCursorPosChange);
+		glfwSetWindowFocusCallback(this.handle, this::onWindowFocus);
+		glfwSetCursorPosCallback(this.handle, this::nativeOnCursorPosChange);
+	}
+	
+	public void update()
+	{
+		this.lastWindowWidth = this.windowWidth;
+		this.lastWindowHeight = this.windowHeight;
+		this.lastWindowAspectRatio = this.windowAspectRatio;
+		this.lastWindowCenterX = this.windowCenterX;
+		this.lastWindowCenterY = this.windowCenterY;
+		
+		this.lastWindowPosX = this.windowPosX;
+		this.lastWindowPosY = this.windowPosY;
+		
+		this.lastFramebufferWidth = this.framebufferWidth;
+		this.lastFramebufferHeight = this.framebufferHeight;
+		this.lastFramebufferAspectRatio = this.framebufferAspectRatio;
+		
+		this.lastMonitor = this.monitor;
+		
+		this.lastCursorPosX = this.cursorPosX;
+		this.lastCursorPosY = this.cursorPosY;
+		
+		glfwGetCursorPos(this.handle, this.tempBufDoubleA, this.tempBufDoubleB);
+		
+		this.cursorPosX = this.tempBufDoubleA.get(0);
+		this.cursorPosY = this.tempBufDoubleB.get(0);
+		
+		this.cursorDeltaX = this.cursorPosX - this.lastCursorPosX;
+		this.cursorDeltaY = this.cursorPosY - this.lastCursorPosY;
+		
+		if(this.cursorDeltaX != 0.0 || this.cursorDeltaY != 0.0)
+		{
+			this.onCursorPosChangeCallback.call(this.lastCursorPosX, this.lastCursorPosY, this.cursorPosX, this.cursorPosY, this.cursorDeltaX, this.cursorDeltaY);
+		}
 	}
 	
 	public void makeContextCurrent()
@@ -190,6 +236,9 @@ public final class GlfwWindow
 	
 	public void disabledCursor()
 	{
+		this.lastCursorPosX = this.cursorPosX;
+		this.lastCursorPosY = this.cursorPosY;
+		
 		glfwSetInputMode(this.handle, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 	}
 	
@@ -201,6 +250,11 @@ public final class GlfwWindow
 	public void setCursor(long cursor)
 	{
 		glfwSetCursor(this.handle, cursor);
+	}
+	
+	public void rawMouseInput(boolean enabled)
+	{
+		glfwSetInputMode(this.handle, GLFW_RAW_MOUSE_MOTION, enabled ? GLFW_TRUE : GLFW_FALSE);
 	}
 	
 	public void releaseResources()
@@ -330,9 +384,64 @@ public final class GlfwWindow
 		return this.windowHeight;
 	}
 	
-	public String lastTitle()
+	public int lastWindowCenterX()
 	{
-		return this.lastTitle;
+		return this.lastWindowCenterX;
+	}
+	
+	public double lastWindowCenterXd()
+	{
+		return this.lastWindowCenterX;
+	}
+	
+	public float lastWindowCenterXf()
+	{
+		return this.lastWindowCenterX;
+	}
+	
+	public int windowCenterX()
+	{
+		return this.windowCenterX;
+	}
+	
+	public double windowCenterXd()
+	{
+		return this.windowCenterX;
+	}
+	
+	public float windowCenterXf()
+	{
+		return this.windowCenterX;
+	}
+	
+	public int lastWindowCenterY()
+	{
+		return this.lastWindowCenterY;
+	}
+	
+	public double lastWindowCenterYd()
+	{
+		return this.lastWindowCenterY;
+	}
+	
+	public float lastWindowCenterYf()
+	{
+		return this.lastWindowCenterY;
+	}
+	
+	public int windowCenterY()
+	{
+		return this.windowCenterY;
+	}
+	
+	public double windowCenterYd()
+	{
+		return this.windowCenterY;
+	}
+	
+	public float windowCenterYf()
+	{
+		return this.windowCenterY;
 	}
 	
 	public String title()
@@ -455,11 +564,6 @@ public final class GlfwWindow
 		return this.lastCursorPosX;
 	}
 	
-	public float lastCursorPosXf()
-	{
-		return this.lastCursorPosX;
-	}
-	
 	public double cursorPosX()
 	{
 		return this.cursorPosX;
@@ -467,15 +571,10 @@ public final class GlfwWindow
 	
 	public float cursorPosXf()
 	{
-		return this.cursorPosX;
+		return (float)this.cursorPosX;
 	}
 	
 	public double lastCursorPosY()
-	{
-		return this.lastCursorPosY;
-	}
-	
-	public float lastCursorPosYf()
 	{
 		return this.lastCursorPosY;
 	}
@@ -487,14 +586,38 @@ public final class GlfwWindow
 	
 	public float cursorPosYf()
 	{
-		return this.cursorPosY;
+		return (float)this.cursorPosY;
+	}
+	
+	public double cursorDeltaX()
+	{
+		return this.cursorDeltaX;
+	}
+	
+	public float cursorDeltaXf()
+	{
+		return (float)this.cursorDeltaX;
+	}
+	
+	public double cursorDeltaY()
+	{
+		return this.cursorDeltaY;
+	}
+	
+	public float cursorDeltaYf()
+	{
+		return (float)this.cursorDeltaY;
+	}
+	
+	public boolean hasFocus()
+	{
+		return this.hasFocus;
 	}
 	
 	public void title(String title)
 	{
 		glfwSetWindowTitle(this.handle, title);
 		
-		this.lastTitle = title;
 		this.title = title;
 	}
 	
@@ -533,6 +656,8 @@ public final class GlfwWindow
 		this.lastWindowWidth = this.windowWidth = this.tempBufIntA.get(0);
 		this.lastWindowHeight = this.windowHeight = this.tempBufIntB.get(0);
 		this.lastWindowAspectRatio = this.windowAspectRatio = (float)this.windowWidth / (float)this.windowHeight;
+		this.lastWindowCenterX = this.windowCenterX = this.windowWidth / 2;
+		this.lastWindowCenterY = this.windowCenterY = this.windowHeight / 2;
 	}
 	
 	private void initFramebufferSize()
@@ -618,6 +743,9 @@ public final class GlfwWindow
 		
 		this.lastCursorPosX = this.cursorPosX = cursorPosX;
 		this.lastCursorPosY = this.cursorPosY = cursorPosY;
+		
+		this.cursorDeltaX = 0.0;
+		this.cursorDeltaY = 0.0;
 	}
 	
 	public void onCloseCallback(IOnCloseCallback callback)
@@ -649,10 +777,14 @@ public final class GlfwWindow
 	{
 		this.lastWindowWidth = this.windowWidth;
 		this.lastWindowHeight = this.windowHeight;
+		this.lastWindowCenterX = this.windowCenterX;
+		this.lastWindowCenterY = this.windowCenterY;
 		
 		this.windowWidth = width;
 		this.windowHeight = height;
 		this.windowAspectRatio = (float)this.windowWidth / (float)this.windowHeight;
+		this.windowCenterX = this.windowWidth / 2;
+		this.windowCenterY = this.windowHeight / 2;
 		
 		this.onWindowResizeCallback.call(this.lastWindowWidth, this.lastWindowHeight, this.windowWidth, this.windowHeight);
 	}
@@ -710,15 +842,36 @@ public final class GlfwWindow
 		return this.onCursorPosChangeCallback;
 	}
 	
-	private void onCursorPosChange(long window, double posX, double posY)
+	private void nativeOnCursorPosChange(long window, double posX, double posY)
 	{
-		this.lastCursorPosX = this.cursorPosX;
-		this.lastCursorPosY = this.cursorPosY;
+		this.nativeOnCursorPosChangeCallback.call(posX, posY);
+	}
+	
+	public void nativeOnCursorPosChangeCallback(INativeOnCursorPosChangeCallback callback)
+	{
+		this.nativeOnCursorPosChangeCallback = callback != null ? callback : EMPTY_NATIVE_ON_CURSOR_POS_CHANGE_CALLBACK;
+	}
+	
+	public INativeOnCursorPosChangeCallback nativeOnCursorPosChangeCallback()
+	{
+		return this.nativeOnCursorPosChangeCallback;
+	}
+	
+	public void onWindowFocusCallback(IOnWindowFocusCallback callback)
+	{
+		this.onWindowFocusCallback = callback != null ? callback : EMPTY_ON_WINDOW_FOCUS_CALLBACK;
+	}
+	
+	public IOnWindowFocusCallback onWindowFocusCallback()
+	{
+		return this.onWindowFocusCallback;
+	}
+	
+	private void onWindowFocus(long window, boolean focused)
+	{
+		this.hasFocus = focused;
 		
-		this.cursorPosX = (float)posX;
-		this.cursorPosY = (float)posY;
-		
-		this.onCursorPosChangeCallback.call(this.lastCursorPosX, this.lastCursorPosY, this.cursorPosX, this.cursorPosY);
+		this.onWindowFocusCallback.call(focused);
 	}
 	
 	public static class Settings
@@ -762,6 +915,18 @@ public final class GlfwWindow
 	@FunctionalInterface
 	public static interface IOnCursorPosChangeCallback
 	{
-		void call(float oldPosX, float oldPosY, float newPosX, float newPosY);
+		void call(double oldPosX, double oldPosY, double newPosX, double newPosY, double deltaX, double deltaY);
+	}
+	
+	@FunctionalInterface
+	public static interface INativeOnCursorPosChangeCallback
+	{
+		void call(double posX, double posY);
+	}
+	
+	@FunctionalInterface
+	public static interface IOnWindowFocusCallback
+	{
+		void call(boolean focused);
 	}
 }

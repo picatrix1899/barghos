@@ -291,6 +291,20 @@ public class QuatOpsF
 		return res;
 	}
 	
+	/**
+	 * q1 * q2
+	 * 
+	 * @param q1X
+	 * @param q1Y
+	 * @param q1Z
+	 * @param q1W
+	 * @param q2X
+	 * @param q2Y
+	 * @param q2Z
+	 * @param q2W
+	 * @param res
+	 * @return
+	 */
 	public static float[] mul(float q1X, float q1Y, float q1Z, float q1W, float q2X, float q2Y, float q2Z, float q2W, @ExtractionParam float[] res)
 	{
 		/*

@@ -36,7 +36,7 @@ public class LerpTransformOpsI3F
 		float resPosY = LerpUtils.lerp(alpha, t1PosY, t2PosY);
 		float resPosZ = LerpUtils.lerp(alpha, t1PosZ, t2PosZ);
 		
-		float[] resRot = LerpQuatOpsF.nlerp(alpha, t1RotX, t1RotY, t1RotZ, t1RotW, t2RotX, t2RotY, t2RotZ, t2RotW, new float[4]);
+		float[] resRot = LerpQuatOpsF.slerp(alpha, t1RotX, t1RotY, t1RotZ, t1RotW, t2RotX, t2RotY, t2RotZ, t2RotW, new float[4]);
 		
 		float resSclX = LerpUtils.lerp(alpha, t1SclX, t2SclX);
 		float resSclY = LerpUtils.lerp(alpha, t1SclY, t2SclY);
