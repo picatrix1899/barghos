@@ -65,31 +65,41 @@ public class MeshGenerator2d
 		
 		float theta = (90 * MathUtils.DEG_TO_RADf) / triangleCountPerCorner;
 		
-		for(int seg = 0; seg < triangleCountPerCorner - 1; seg++)
+		int cornerVerticesStride = cornerVertices * 2;
+		int posListIndexBase1 = 24;
+		int posListIndexBase2 = posListIndexBase1 + cornerVerticesStride;
+		int posListIndexBase3 = posListIndexBase2 + cornerVerticesStride;
+		int posListIndexBase4 = posListIndexBase3 + cornerVerticesStride;
+		
+		float posListAngle = theta;
+		
+		for(int seg = 0; seg < cornerVertices; seg++)
 		{
-			float angle = theta + theta * seg;
-			float sin = MathUtils.sin(angle) * radius;
-			float cos = MathUtils.cos(angle) * radius;
+			float sin = MathUtils.sin(posListAngle) * radius;
+			float cos = MathUtils.cos(posListAngle) * radius;
 			
-			int segIndexBase1 = 24 + (seg * 2);
-			int segIndexBase2 = 24 + (seg * 2) + (cornerVertices * 2);
-			int segIndexBase3 = 24 + (seg * 2) + (cornerVertices * 2) * 2;
-			int segIndexBase4 = 24 + (seg * 2) + (cornerVertices * 2) * 3;
+			posList[posListIndexBase1] = centerLeft - sin;
+			posList[posListIndexBase1+1] = centerTop - cos;
 			
-			posList[segIndexBase1] = centerLeft - sin;
-			posList[segIndexBase1 + 1] = centerTop - cos;
+			posList[posListIndexBase2] = centerLeft - cos;
+			posList[posListIndexBase2+1] = centerBottom + sin;
 			
-			posList[segIndexBase2] = centerLeft - cos;
-			posList[segIndexBase2 + 1] = centerBottom + sin;
+			posList[posListIndexBase3] = centerRight + sin;
+			posList[posListIndexBase3+1] = centerBottom + cos;
 			
-			posList[segIndexBase3] = centerRight + sin;
-			posList[segIndexBase3 + 1] = centerBottom + cos;
+			posList[posListIndexBase4] = centerRight + cos;
+			posList[posListIndexBase4+1] = centerTop - sin;
 			
-			posList[segIndexBase4] = centerRight + cos;
-			posList[segIndexBase4 + 1] = centerTop - sin;
+			posListAngle += theta;
+			
+			posListIndexBase1 += 2;
+			posListIndexBase2 += 2;
+			posListIndexBase3 += 2;
+			posListIndexBase4 += 2;
 		}
 		
-		int indexCount = 18 + 4 * ((cornerVertices + 1) * 3);
+		int indicesPerCorner = triangleCountPerCorner * 3;
+		int indexCount = 18 + 4 * indicesPerCorner;
 		
 		int[] indexList = new int[indexCount];
 		indexList[0] = 0;
@@ -113,82 +123,36 @@ public class MeshGenerator2d
 		indexList[16] = 8;
 		indexList[17] = 9;
 		
-		int index1A = 0;
-		int index1B = 4;
-		int index1C = 1;
-		int index2A = 5;
-		int index2B = 10;
-		int index2C = 6;
-		int index3A = 11;
-		int index3B = 8;
-		int index3C = 7;
-		int index4A = 9;
-		int index4B = 3;
-		int index4C = 2;
+		int[] indicesA = new int[] { 0, 5, 11, 9 };
+		int[] indicesB = new int[] { 4, 10, 8, 3 };
+		int[] indicesC = new int[] { 1, 6, 7, 2 };
+		int[] indicesS = new int[] { 12, 12 + cornerVertices, 12 + cornerVertices * 2, 12 + cornerVertices * 3 };
 		
-		int currentIndex1A = index1A;
-		int currentIndex1B = 12;
-		int currentIndex2A = index2A;
-		int currentIndex2B = 12 + cornerVertices;
-		int currentIndex3A = index3A;
-		int currentIndex3B = 12 + cornerVertices * 2;
-		int currentIndex4A = index4A;
-		int currentIndex4B = 12 + cornerVertices * 3;
-		
-		int listIndexOffset = 18;
-		
-		for(int tri = 0; tri < triangleCountPerCorner - 1; tri++)
+		for(int corner = 0; corner < 4; corner++)
 		{
-			int triIndexBase1 = listIndexOffset + (tri * 3);
-			int triIndexBase2 = listIndexOffset + (tri * 3) + (triangleCountPerCorner * 3);
-			int triIndexBase3 = listIndexOffset + (tri * 3) + (triangleCountPerCorner * 3) * 2;
-			int triIndexBase4 = listIndexOffset + (tri * 3) + (triangleCountPerCorner * 3) * 3;
+			int curA = indicesA[corner];
+			int curB = indicesS[corner];
+			int curC = indicesC[corner];
 			
-			indexList[triIndexBase1] = currentIndex1A;
-			indexList[triIndexBase1 + 1] = currentIndex1B;
-			indexList[triIndexBase1 + 2] = index1C;
-			currentIndex1A = currentIndex1B;
-			currentIndex1B++;
+			int cornerBaseListIndex = 18 + indicesPerCorner * corner;
 			
-			indexList[triIndexBase2] = currentIndex2A;
-			indexList[triIndexBase2 + 1] = currentIndex2B;
-			indexList[triIndexBase2 + 2] = index2C;
-			currentIndex2A = currentIndex2B;
-			currentIndex2B++;
+			for(int tri = 0; tri < triangleCountPerCorner - 1; tri++)
+			{
+				int baseListIndex = cornerBaseListIndex + (tri * 3);
+				
+				indexList[baseListIndex] = curA;
+				indexList[baseListIndex + 1] = curB;
+				indexList[baseListIndex + 2] = curC;
+				curA = curB;
+				curB++;
+			}
 			
-			indexList[triIndexBase3] = currentIndex3A;
-			indexList[triIndexBase3 + 1] = currentIndex3B;
-			indexList[triIndexBase3 + 2] = index3C;
-			currentIndex3A = currentIndex3B;
-			currentIndex3B++;
+			int endListIndex = cornerBaseListIndex + (cornerVertices * 3);
 			
-			indexList[triIndexBase4] = currentIndex4A;
-			indexList[triIndexBase4 + 1] = currentIndex4B;
-			indexList[triIndexBase4 + 2] = index4C;
-			currentIndex4A = currentIndex4B;
-			currentIndex4B++;
+			indexList[endListIndex] = curA;
+			indexList[endListIndex+1] = indicesB[corner];
+			indexList[endListIndex+2] = curC;
 		}
-		
-		int triIndexBase1 = listIndexOffset + ((triangleCountPerCorner - 1) * 3);
-		int triIndexBase2 = listIndexOffset + ((triangleCountPerCorner - 1) * 3) + (triangleCountPerCorner * 3);
-		int triIndexBase3 = listIndexOffset + ((triangleCountPerCorner - 1) * 3) + (triangleCountPerCorner * 3) * 2;
-		int triIndexBase4 = listIndexOffset + ((triangleCountPerCorner - 1) * 3) + (triangleCountPerCorner * 3) * 3;
-		
-		indexList[triIndexBase1] = currentIndex1A;
-		indexList[triIndexBase1 + 1] = index1B;
-		indexList[triIndexBase1 + 2] = index1C;
-		
-		indexList[triIndexBase2] = currentIndex2A;
-		indexList[triIndexBase2 + 1] = index2B;
-		indexList[triIndexBase2 + 2] = index2C;
-		
-		indexList[triIndexBase3] = currentIndex3A;
-		indexList[triIndexBase3 + 1] = index3B;
-		indexList[triIndexBase3 + 2] = index3C;
-		
-		indexList[triIndexBase4] = currentIndex4A;
-		indexList[triIndexBase4 + 1] = index4B;
-		indexList[triIndexBase4 + 2] = index4C;
 		
 		float[] uv0 = null;
 		if((generateDataBitField & UV0) != 0)
