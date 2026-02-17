@@ -28,50 +28,46 @@ public class MeshGenerator2d
 		float sW = (uv2X - uv1X) / (p2X - p1X);
 		float sH = (uv2Y - uv1Y) / (p2Y - p1Y);
 		
-		float centerLeftX = p1X + radius;
-		float centerRightX = p2X - radius;
-		float centerTopY = p1Y + radius;
-		float centerBottomY = p2Y - radius;
+		float centerLeft = p1X + radius;
+		float centerRight = p2X - radius;
+		float centerTop = p1Y + radius;
+		float centerBottom = p2Y - radius;
 		
 		int vertexCount = 12 + (cornerVertices * 4);
 		
+		int triangleCountPerCorner = cornerVertices + 1;
+		
 		float[] posList = new float[vertexCount * 2];
-		posList[0] = centerLeftX;
+		posList[0] = centerLeft;
 		posList[1] = p1Y;
-		posList[2] = centerLeftX;
-		posList[3] = centerTopY;
-		posList[4] = centerRightX;
-		posList[5] = centerTopY;
-		posList[6] = centerRightX;
+		posList[2] = centerLeft;
+		posList[3] = centerTop;
+		posList[4] = centerRight;
+		posList[5] = centerTop;
+		posList[6] = centerRight;
 		posList[7] = p1Y;
-		
 		posList[8] = p1X;
-		posList[9] = centerTopY;
+		posList[9] = centerTop;
 		posList[10] = p1X;
-		posList[11] = centerBottomY;
-		posList[12] = centerLeftX;
-		posList[13] = centerBottomY;
-		
-		posList[14] = centerRightX;
-		posList[15] = centerBottomY;
-		
+		posList[11] = centerBottom;
+		posList[12] = centerLeft;
+		posList[13] = centerBottom;
+		posList[14] = centerRight;
+		posList[15] = centerBottom;
 		posList[16] = p2X;
-		posList[17] = centerBottomY;
+		posList[17] = centerBottom;
 		posList[18] = p2X;
-		posList[19] = centerTopY;
-		
-		posList[20] = centerLeftX;
+		posList[19] = centerTop;
+		posList[20] = centerLeft;
 		posList[21] = p2Y;
-		posList[22] = centerRightX;
+		posList[22] = centerRight;
 		posList[23] = p2Y;
 		
-		int segments = cornerVertices + 1;
+		float theta = (90 * MathUtils.DEG_TO_RADf) / triangleCountPerCorner;
 		
-		float theta = (90 * MathUtils.DEG_TO_RADf) / segments;
-		
-		for(int seg = 0; seg < cornerVertices; seg++)
+		for(int seg = 0; seg < triangleCountPerCorner - 1; seg++)
 		{
-			float angle = theta * seg;
+			float angle = theta + theta * seg;
 			float sin = MathUtils.sin(angle) * radius;
 			float cos = MathUtils.cos(angle) * radius;
 			
@@ -80,17 +76,17 @@ public class MeshGenerator2d
 			int segIndexBase3 = 24 + (seg * 2) + (cornerVertices * 2) * 2;
 			int segIndexBase4 = 24 + (seg * 2) + (cornerVertices * 2) * 3;
 			
-			posList[segIndexBase1] = centerLeftX - sin;
-			posList[segIndexBase1 + 1] = centerTopY - cos;
+			posList[segIndexBase1] = centerLeft - sin;
+			posList[segIndexBase1 + 1] = centerTop - cos;
 			
-			posList[segIndexBase2] = centerLeftX - cos;
-			posList[segIndexBase2 + 1] = centerBottomY + sin;
+			posList[segIndexBase2] = centerLeft - cos;
+			posList[segIndexBase2 + 1] = centerBottom + sin;
 			
-			posList[segIndexBase3] = centerRightX + sin;
-			posList[segIndexBase3 + 1] = centerBottomY + cos;
+			posList[segIndexBase3] = centerRight + sin;
+			posList[segIndexBase3 + 1] = centerBottom + cos;
 			
-			posList[segIndexBase4] = centerRightX + cos;
-			posList[segIndexBase4 + 1] = centerTopY - sin;
+			posList[segIndexBase4] = centerRight + cos;
+			posList[segIndexBase4 + 1] = centerTop - sin;
 		}
 		
 		int indexCount = 18 + 4 * ((cornerVertices + 1) * 3);
@@ -140,7 +136,6 @@ public class MeshGenerator2d
 		int currentIndex4B = 12 + cornerVertices * 3;
 		
 		int listIndexOffset = 18;
-		int triangleCountPerCorner = cornerVertices + 1;
 		
 		for(int tri = 0; tri < triangleCountPerCorner - 1; tri++)
 		{
