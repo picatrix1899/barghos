@@ -12,7 +12,7 @@ public class MeshGenerator2d
 	public static final long POS =			0b10;
 	public static final long UV0 =			0b100;
 	
-	public static MeshVertexData generateRect2D(long generateDataBitField, float p1X, float p1Y, float p2X, float p2Y, float uv1X, float uv1Y, float uv2X, float uv2Y)
+	public static MeshVertexData generateRect(long generateDataBitField, float p1X, float p1Y, float p2X, float p2Y, float uv1X, float uv1Y, float uv2X, float uv2Y)
 	{
 		MeshVertexData meshVertexData = new MeshVertexData();
 		meshVertexData.vertexCount = 4;
@@ -25,9 +25,6 @@ public class MeshGenerator2d
 	
 	public static MeshVertexData generateRoundedRect2D(long generateDataBitField, float p1X, float p1Y, float p2X, float p2Y, float uv1X, float uv1Y, float uv2X, float uv2Y, float radius, int cornerVertices)
 	{
-		float sW = (uv2X - uv1X) / (p2X - p1X);
-		float sH = (uv2Y - uv1Y) / (p2Y - p1Y);
-		
 		float centerLeft = p1X + radius;
 		float centerRight = p2X - radius;
 		float centerTop = p1Y + radius;
@@ -157,6 +154,80 @@ public class MeshGenerator2d
 		float[] uv0 = null;
 		if((generateDataBitField & UV0) != 0)
 		{
+			float sW = (uv2X - uv1X) / (p2X - p1X);
+			float sH = (uv2Y - uv1Y) / (p2Y - p1Y);
+			
+			uv0 = new float[vertexCount * 2];
+			
+			for(int i = 0; i < uv0.length; i+=2)
+			{
+				uv0[i] = uv1X + (posList[i] - p1X) * sW;
+				uv0[i+1] = uv1Y + (posList[i+1] - p1Y) * sH;
+			}
+		}
+		
+		MeshVertexData meshVertexData = new MeshVertexData();
+		meshVertexData.vertexCount = vertexCount;
+		meshVertexData.indexList = indexList;
+		meshVertexData.posList = posList;
+		meshVertexData.uv0List = uv0;
+
+		return meshVertexData;
+	}
+	
+	public static MeshVertexData generateCircle(long generateDataBitField, float cX, float cY, float uv1X, float uv1Y, float uv2X, float uv2Y, float radius, int faceCount)
+	{
+		float theta = (360 * MathUtils.DEG_TO_RADf) / faceCount;
+		
+		int vertexCount = faceCount + 1;
+		
+		float[] posList = new float[vertexCount * 2];
+		
+		float angle = 0;
+		int posListBaseIndex = 2;
+		
+		posList[0] = cX;
+		posList[1] = cY;
+		
+		for(int segment = 0; segment < faceCount; segment++)
+		{
+			posList[posListBaseIndex] = MathUtils.sin(angle) * radius + cX;
+			posList[posListBaseIndex+1] = MathUtils.cos(angle) * radius + cY;
+			
+			posListBaseIndex += 2;
+			
+			angle += theta;
+		}
+		
+		int[] indexList = new int[faceCount * 3];
+		
+		int currentIndex = 1;
+		int baseListIndex = 0;
+		for(int i = 0; i < faceCount - 1; i++)
+		{
+			indexList[baseListIndex] = currentIndex;
+			indexList[baseListIndex+1] = currentIndex + 1;
+			indexList[baseListIndex+2] = 0;
+			currentIndex++;
+			
+			baseListIndex += 3;
+		}
+		
+		indexList[baseListIndex] = currentIndex;
+		indexList[baseListIndex+1] = 1;
+		indexList[baseListIndex+2] = 0;
+		
+		
+		
+		float[] uv0 = null;
+		if((generateDataBitField & UV0) != 0)
+		{
+			float sW = (uv2X - uv1X) / (radius * 2);
+			float sH = (uv2Y - uv1Y) / (radius * 2);
+			
+			float p1X = cX - radius;
+			float p1Y = cY - radius;
+			
 			uv0 = new float[vertexCount * 2];
 			
 			for(int i = 0; i < uv0.length; i+=2)
